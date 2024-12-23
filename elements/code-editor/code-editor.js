@@ -215,7 +215,9 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
 
   get placeholder() {
     let content = `${this.editorValue || this.innerHTML}`;
-    return content.replace(/\s*<\/?template.*>\s*/gm, "").replace(/\s*<\/?iframe>\s*/gm, "");
+    return content
+      .replace(/\s*<\/?template.*>\s*/gm, "")
+      .replace(/\s*<\/?iframe>\s*/gm, "");
   }
 
   static get tag() {
@@ -433,7 +435,11 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     var content = "";
     var children = this.children;
     // check for template tag; it is prefered but if not there support as text string
-    if (this.childNodes[0] && this.childNodes[0].tagName !== "TEMPLATE" && this.children.length === 0) {
+    if (
+      this.childNodes[0] &&
+      this.childNodes[0].tagName !== "TEMPLATE" &&
+      this.children.length === 0
+    ) {
       children = this.childNodes;
       if (children.length > 0) {
         // loop through everything found in the slotted area and put it back in
@@ -454,10 +460,10 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
         this.children[0].content.children &&
         this.children[0].content.children.length === 1 &&
         this.children[0].content.children[0].tagName === "IFRAME" &&
-        this.children[0].content.children[0].innerHTML) {
+        this.children[0].content.children[0].innerHTML
+      ) {
         content = this.children[0].content.children[0].innerHTML;
-      }
-      else {
+      } else {
         content = this.children[0].innerHTML;
       }
     }

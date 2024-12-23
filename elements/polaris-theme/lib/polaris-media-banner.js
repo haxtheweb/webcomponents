@@ -15,7 +15,7 @@ export class PolarisMediaBanner extends LitElement {
     this.mediaType = "";
     this.playing = true;
     this.canPlay = false;
-    this.icon = "av:pause-circle-outline"
+    this.icon = "av:pause-circle-outline";
     this.addEventListener("click", this.__videoHandler);
   }
 
@@ -39,22 +39,26 @@ export class PolarisMediaBanner extends LitElement {
         }
         .media-banner {
           position: relative;
-          height:100%;
+          height: 100%;
           height: var(--polaris-banner-height, 540px);
           width: 100%;
           z-index: 1;
         }
-        .media-banner::before{
+        .media-banner::before {
           position: absolute;
-          content:"";
+          content: "";
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          background-color: var(--polaris-banner-background-color, rgba(30, 64, 124, 0.7));
+          background-color: var(
+            --polaris-banner-background-color,
+            rgba(30, 64, 124, 0.7)
+          );
           z-index: 1;
         }
-        img, video {
+        img,
+        video {
           position: absolute;
           object-fit: cover;
           width: 100%;
@@ -80,7 +84,10 @@ export class PolarisMediaBanner extends LitElement {
         }
         simple-icon-button {
           --simple-icon-color: var(--polaris-banner-font-color, white);
-          --simple-icon-button-focus-color: var(--polaris-banner-font-color, white);
+          --simple-icon-button-focus-color: var(
+            --polaris-banner-font-color,
+            white
+          );
           --simple-icon-width: var(--inline-audio-width, 48px);
           --simple-icon-height: var(--inline-audio-height, 48px);
           margin-bottom: 60px;
@@ -89,34 +96,34 @@ export class PolarisMediaBanner extends LitElement {
     ];
   }
 
-  setMediaType(){
-    this.fileExt = this.source.split('.').pop()
-    if(['mp4', 'webm', 'ogg'].includes(this.fileExt)){
-      this.mediaType = "video"
-    } else if (['png', 'jpg', 'jpeg', 'gif'].includes(this.fileExt)) {
-      this.mediaType = "image"
+  setMediaType() {
+    this.fileExt = this.source.split(".").pop();
+    if (["mp4", "webm", "ogg"].includes(this.fileExt)) {
+      this.mediaType = "video";
+    } else if (["png", "jpg", "jpeg", "gif"].includes(this.fileExt)) {
+      this.mediaType = "image";
     } else {
       this.mediaType = "";
       this.source = "";
     }
   }
 
-  __videoHandler(){
-    if(this.mediaType=="video"){
-      var video = this.shadowRoot.querySelector('video');
-      if(this.playing){
+  __videoHandler() {
+    if (this.mediaType == "video") {
+      var video = this.shadowRoot.querySelector("video");
+      if (this.playing) {
         video.pause();
-        this.icon = "av:play-circle-outline"
+        this.icon = "av:play-circle-outline";
         this.playing = false;
-      } else{
+      } else {
         video.play();
-        this.icon = "av:pause-circle-outline"
+        this.icon = "av:pause-circle-outline";
         this.playing = true;
       }
     }
   }
 
-  updated(changedProperties){
+  updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "source") {
         this.setMediaType();
@@ -126,32 +133,44 @@ export class PolarisMediaBanner extends LitElement {
 
   render() {
     return html`
-      ${this.mediaType === 'image' 
-        ? html `
-        <div class="media-banner">
-          <img crossorigin='anonymous' src=${this.source}>
-          ${this.fileExt === 'gif' ? html `             
-            <div class="content">
-              <div class="page-title">
-                <slot class="title">text text text text</slot>
-              </div>
-            </div>` : html ``}
-      </div>` :
-        this.mediaType === 'video' 
-        ? html `
-        <div class="media-banner">
-          <video crossorigin='anonymous' loop autoplay muted playsinline>
-            <source src=${this.source} type="video/${this.fileExt}">
-          </video>
-          <div class="content">
-             <div class="page-title">
-                <slot class="title">text text text text</slot>
-             </div>
-            <simple-icon-button class="icon" title="${this.title}" aria-label="${this.aria}" icon="${this.icon}"></simple-icon-button>
-          </div>
-          </div>
-          ` :
-        html ``
+      ${
+        this.mediaType === "image"
+          ? html` <div class="media-banner">
+              <img crossorigin="anonymous" src=${this.source} />
+              ${this.fileExt === "gif"
+                ? html` <div class="content">
+                    <div class="page-title">
+                      <slot class="title">text text text text</slot>
+                    </div>
+                  </div>`
+                : html``}
+            </div>`
+          : this.mediaType === "video"
+            ? html`
+                <div class="media-banner">
+                  <video
+                    crossorigin="anonymous"
+                    loop
+                    autoplay
+                    muted
+                    playsinline
+                  >
+                    <source src=${this.source} type="video/${this.fileExt}" />
+                  </video>
+                  <div class="content">
+                    <div class="page-title">
+                      <slot class="title">text text text text</slot>
+                    </div>
+                    <simple-icon-button
+                      class="icon"
+                      title="${this.title}"
+                      aria-label="${this.aria}"
+                      icon="${this.icon}"
+                    ></simple-icon-button>
+                  </div>
+                </div>
+              `
+            : html``
       }
     </div>`;
   }

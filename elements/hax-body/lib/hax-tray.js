@@ -149,16 +149,21 @@ class HaxTray extends I18NMixin(
     autorun(() => {
       this.elementAlign = toJS(HAXStore.elementAlign);
       if (globalThis.document && globalThis.document.body) {
-        if (this.elementAlign === 'left') {
-          globalThis.document.body.style.setProperty("--hax-tray-element-align-margin", `0 0 0 var(--hax-tray-element-custom-width, calc(
+        if (this.elementAlign === "left") {
+          globalThis.document.body.style.setProperty(
+            "--hax-tray-element-align-margin",
+            `0 0 0 var(--hax-tray-element-custom-width, calc(
             var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
-          ))`);
+          ))`,
+          );
+        } else {
+          globalThis.document.body.style.setProperty(
+            "--hax-tray-element-align-margin",
+            `0 var(--hax-tray-element-custom-width, calc(
+            var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
+          )) 0 0`,
+          );
         }
-        else {
-          globalThis.document.body.style.setProperty("--hax-tray-element-align-margin", `0 var(--hax-tray-element-custom-width, calc(
-            var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
-          )) 0 0`);
-        }  
       }
     });
     autorun(() => {
@@ -358,9 +363,10 @@ class HaxTray extends I18NMixin(
           pointer-events: all;
           background-color: var(--hax-ui-background-color);
           max-height: calc(100vh - 48px);
-          width: var(--hax-tray-element-custom-width, calc(
-            var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
-          ));
+          width: var(
+            --hax-tray-element-custom-width,
+            calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width))
+          );
           max-width: 70vw;
           min-width: 200px;
           overflow-x: auto;
@@ -641,9 +647,15 @@ class HaxTray extends I18NMixin(
             base = 0;
           }
           if (this.elementAlign === "right") {
-            globalThis.document.body.style.setProperty("--hax-tray-element-custom-width", globalThis.innerWidth - this.__moveX - base + "px");
+            globalThis.document.body.style.setProperty(
+              "--hax-tray-element-custom-width",
+              globalThis.innerWidth - this.__moveX - base + "px",
+            );
           } else {
-            globalThis.document.body.style.setProperty("--hax-tray-element-custom-width", this.__moveX - base + "px");
+            globalThis.document.body.style.setProperty(
+              "--hax-tray-element-custom-width",
+              this.__moveX - base + "px",
+            );
           }
         }
       },
@@ -1644,7 +1656,10 @@ class HaxTray extends I18NMixin(
       this.shadowRoot &&
       this.shadowRoot.querySelector(".detail")
     ) {
-      globalThis.document.body.style.setProperty("--hax-tray-element-custom-width", null);
+      globalThis.document.body.style.setProperty(
+        "--hax-tray-element-custom-width",
+        null,
+      );
       this.shadowRoot.querySelector(".detail").style.height = "";
     }
     if (newValue == "content-add") {

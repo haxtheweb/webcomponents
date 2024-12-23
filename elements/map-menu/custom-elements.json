@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "map-menu-builder",
-      "description": "Attributes:\n\n  * `selected` {`string`} - \n\n  * `edit-controls` {`boolean`} - \n\n  * `items` {`any[]`} - \n\nProperties:\n\n  * `selected` {`string`} - \n\n  * `editControls` {`boolean`} - \n\n  * `items` {`any[]`} - ",
+      "description": "Attributes:\n\n  * `selected` {`string`} - \n\n  * `edit-controls` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `depth-count` {`number`} - \n\n  * `max-depth` {`number`} - \n\n  * `is-flex` {`boolean`} - \n\n  * `is-horizontal` {`boolean`} - \n\nProperties:\n\n  * `selected` {`string`} - \n\n  * `editControls` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `depthCount` {`number`} - \n\n  * `maxDepth` {`number`} - \n\n  * `isFlex` {`boolean`} - \n\n  * `isNested` {`boolean`} - \n\n  * `isHorizontal` {`boolean`} - ",
       "attributes": [
         {
           "name": "selected",
@@ -17,6 +17,24 @@
         {
           "name": "items",
           "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
+        },
+        {
+          "name": "depth-count",
+          "description": "`depth-count` {`number`} - \n\nProperty: depthCount\n\nDefault: 1"
+        },
+        {
+          "name": "max-depth",
+          "description": "`max-depth` {`number`} - \n\nProperty: maxDepth\n\nDefault: 5"
+        },
+        {
+          "name": "is-flex",
+          "description": "`is-flex` {`boolean`} - \n\nProperty: isFlex\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-horizontal",
+          "description": "`is-horizontal` {`boolean`} - \n\nProperty: isHorizontal\n\nDefault: false",
+          "valueSet": "v"
         }
       ]
     },
@@ -116,7 +134,7 @@
     },
     {
       "name": "map-menu-item",
-      "description": "Events:\n\n  * `active-item` {`CustomEvent<this>`} - \n\n  * `link-clicked` {`CustomEvent<{ id: any; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `edit-controls` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `icon-label` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `url` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `hovered` {`boolean`} - \n\n  * `hide-in-menu` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `editControls` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `iconLabel` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `url` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `hovered` {`boolean`} - \n\n  * `hideInMenu` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `t` - ",
+      "description": "Events:\n\n  * `active-item` {`CustomEvent<this>`} - \n\n  * `link-clicked` {`CustomEvent<{ id: any; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `edit-controls` {`boolean`} - \n\n  * `is-nested` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `icon-label` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `url` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `hovered` {`boolean`} - \n\n  * `hide-in-menu` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `editControls` {`boolean`} - \n\n  * `isNested` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `iconLabel` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `url` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `hovered` {`boolean`} - \n\n  * `hideInMenu` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `t` - ",
       "attributes": [
         {
           "name": "id",
@@ -129,6 +147,11 @@
         {
           "name": "edit-controls",
           "description": "`edit-controls` {`boolean`} - \n\nProperty: editControls\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-nested",
+          "description": "`is-nested` {`boolean`} - \n\nProperty: isNested\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -192,7 +215,7 @@
     },
     {
       "name": "map-menu-submenu",
-      "description": "Events:\n\n  * `map-meu-item-hidden-check` {`CustomEvent<any>`} - \n\n  * `toggle-updated` {`CustomEvent<{ opened: boolean; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `url` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `edit-controls` {`boolean`} - \n\n  * `icon-label` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expand-children` {`boolean`} - \n\n  * `hovered` {`boolean`} - \n\n  * `active` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `status` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `locked` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `hide-in-menu` {`boolean`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `url` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `editControls` {`boolean`} - \n\n  * `iconLabel` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `expandChildren` {`boolean`} - \n\n  * `hovered` {`boolean`} - \n\n  * `active` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `status` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `locked` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `hideInMenu` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `__icon` {`string`} - ",
+      "description": "Events:\n\n  * `opened-changed` {`CustomEvent<any>`} - \n\n  * `map-meu-item-hidden-check` {`CustomEvent<any>`} - \n\n  * `toggle-updated` {`CustomEvent<{ opened: boolean; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `url` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `edit-controls` {`boolean`} - \n\n  * `icon-label` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `is-flex` {`boolean`} - \n\n  * `is-nested` {`boolean`} - \n\n  * `is-horizontal` {`boolean`} - \n\n  * `expand-children` {`boolean`} - \n\n  * `hovered` {`boolean`} - \n\n  * `active` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `status` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `locked` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `hide-in-menu` {`boolean`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `url` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `editControls` {`boolean`} - \n\n  * `iconLabel` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `isFlex` {`boolean`} - \n\n  * `isNested` {`boolean`} - \n\n  * `isHorizontal` {`boolean`} - \n\n  * `expandChildren` {`boolean`} - \n\n  * `hovered` {`boolean`} - \n\n  * `active` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `status` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `locked` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `hideInMenu` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `__icon` {`string`} - ",
       "attributes": [
         {
           "name": "id",
@@ -223,6 +246,21 @@
         {
           "name": "collapsable",
           "description": "`collapsable` {`boolean`} - \n\nProperty: collapsable\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-flex",
+          "description": "`is-flex` {`boolean`} - \n\nProperty: isFlex\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-nested",
+          "description": "`is-nested` {`boolean`} - \n\nProperty: isNested\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-horizontal",
+          "description": "`is-horizontal` {`boolean`} - \n\nProperty: isHorizontal\n\nDefault: false",
           "valueSet": "v"
         },
         {
@@ -272,6 +310,10 @@
           "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: null"
         },
         {
+          "name": "onopened-changed",
+          "description": "`opened-changed` {`CustomEvent<any>`} - "
+        },
+        {
           "name": "onmap-meu-item-hidden-check",
           "description": "`map-meu-item-hidden-check` {`CustomEvent<any>`} - "
         },
@@ -283,7 +325,7 @@
     },
     {
       "name": "map-menu",
-      "description": "`map-menu`\n`A series of elements that generate a hierarchical menu`\n\nEvents:\n\n  * `selected` {`CustomEvent<any>`} - \n\n  * `map-menu-item-hidden-check` {`CustomEvent<{ action: string; target: any; }>`} - \n\nAttributes:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `edit-controls` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `auto-scroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `active-indicator` {`boolean`} - Show active indicator animation\n\nProperties:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `editControls` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `autoScroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `activeIndicator` {`boolean`} - Show active indicator animation",
+      "description": "`map-menu`\n`A series of elements that generate a hierarchical menu`\n\nEvents:\n\n  * `selected` {`CustomEvent<any>`} - \n\n  * `map-menu-item-hidden-check` {`CustomEvent<{ action: string; target: any; }>`} - \n\nAttributes:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `edit-controls` {`boolean`} - \n\n  * `is-flex` {`boolean`} - \n\n  * `is-horizontal` {`boolean`} - \n\n  * `max-depth` {`number`} - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `auto-scroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `active-indicator` {`boolean`} - Show active indicator animation\n\nProperties:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `editControls` {`boolean`} - \n\n  * `isFlex` {`boolean`} - \n\n  * `isHorizontal` {`boolean`} - \n\n  * `maxDepth` {`number`} - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `autoScroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `activeIndicator` {`boolean`} - Show active indicator animation",
       "attributes": [
         {
           "name": "manifest",
@@ -301,6 +343,20 @@
           "name": "edit-controls",
           "description": "`edit-controls` {`boolean`} - \n\nProperty: editControls\n\nDefault: false",
           "valueSet": "v"
+        },
+        {
+          "name": "is-flex",
+          "description": "`is-flex` {`boolean`} - \n\nProperty: isFlex\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-horizontal",
+          "description": "`is-horizontal` {`boolean`} - \n\nProperty: isHorizontal\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "max-depth",
+          "description": "`max-depth` {`number`} - \n\nProperty: maxDepth\n\nDefault: 5"
         },
         {
           "name": "disabled",

@@ -35,10 +35,13 @@ class MapMenu extends LitElement {
           opacity: 1;
           background-color: transparent;
         }
-        :host([is-flex]){
+        :host([is-flex]) {
           --map-menu-after-width: 0px;
           --map-menu-active-item-text-decoration: none;
-          --a11y-collapse-transition-duration: var(--map-menu-flex-transition-duration, 0.15s);
+          --a11y-collapse-transition-duration: var(
+            --map-menu-flex-transition-duration,
+            0.15s
+          );
 
           z-index: 100;
         }
@@ -90,8 +93,14 @@ class MapMenu extends LitElement {
           color: var(--map-menu-layer-1-font-color);
           padding: var(--map-menu-layer-1-padding);
           margin: var(--map-menu-layer-1-margin, 0 auto);
-          --a11y-collapse-icon-position: var(--map-menu-layer-1-icon-position, static);
-          --map-menu-text-transform: var(--map-menu-layer-1-text-transform, uppercase);
+          --a11y-collapse-icon-position: var(
+            --map-menu-layer-1-icon-position,
+            static
+          );
+          --map-menu-text-transform: var(
+            --map-menu-layer-1-text-transform,
+            uppercase
+          );
         }
 
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-item,
@@ -100,13 +109,23 @@ class MapMenu extends LitElement {
 
           color: var(--map-menu-layer-1-font-color);
           --map-menu-font-weight: var(--map-menu-layer-1-font-weight, 500);
-          border-bottom: var(--map-menu-layer-1-bottom-border, 4px transparent solid);
+          border-bottom: var(
+            --map-menu-layer-1-bottom-border,
+            4px transparent solid
+          );
         }
 
         :host([is-flex][is-horizontal]) map-menu-builder map-menu-submenu:hover,
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-submenu:active,
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-submenu:focus {
-          border-bottom: var(--map-menu-layer-1-bottom-border-active, 4px transparent solid);
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-submenu:active,
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-submenu:focus {
+          border-bottom: var(
+            --map-menu-layer-1-bottom-border-active,
+            4px transparent solid
+          );
         }
 
         /* Layer 2 */
@@ -114,12 +133,12 @@ class MapMenu extends LitElement {
           position: static;
         }
 
-        :host([is-flex]) map-menu-builder map-menu-builder .wrapper{
+        :host([is-flex]) map-menu-builder map-menu-builder .wrapper {
           padding: 0;
           margin: 0 12px;
         }
 
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder  {
+        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder {
           position: absolute;
           left: 0;
           width: 100%;
@@ -129,7 +148,10 @@ class MapMenu extends LitElement {
           background-color: var(--map-menu-layer-2-background-color, white);
         }
 
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder .wrapper{
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          .wrapper {
           background-color: transparent;
           max-width: 100%;
           display: grid;
@@ -158,12 +180,24 @@ class MapMenu extends LitElement {
           color: var(--map-menu-layer-2-font-color, #262626);
           --map-menu-header-button-padding: 10px 20px;
           --map-menu-header-title-margin: 0;
-          --map-menu-item-a-active-color: var(--map-menu-layer-2-active-color, #262626);
-          --map-menu-text-transform: var(--map-menu-layer-2-text-transform, uppercase);
+          --map-menu-item-a-active-color: var(
+            --map-menu-layer-2-active-color,
+            #262626
+          );
+          --map-menu-text-transform: var(
+            --map-menu-layer-2-text-transform,
+            uppercase
+          );
         }
 
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-item,
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-submenu {
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          map-menu-item,
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          map-menu-submenu {
           border: none;
           margin: none;
           display: flex;
@@ -171,28 +205,57 @@ class MapMenu extends LitElement {
           flex-wrap: nowrap;
 
           color: var(--map-menu-layer-2-font-color, #001e44);
-          --map-menu-item-a-active-color: var(--map-menu-layer-2-active-color, #262626);
-          --map-menu-text-transform: var(--map-menu-layer-2-text-transform, uppercase);
+          --map-menu-item-a-active-color: var(
+            --map-menu-layer-2-active-color,
+            #262626
+          );
+          --map-menu-text-transform: var(
+            --map-menu-layer-2-text-transform,
+            uppercase
+          );
           --map-menu-font-weight: var(--map-menu-layer-2-font-weight, 700);
         }
-         
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-submenu {
+
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          map-menu-submenu {
           order: 0;
           grid-row-end: span 20;
         }
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-builder map-menu-item:nth-child(n+10) {
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-item:nth-child(n + 10) {
           display: none;
         }
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-submenu ~ map-menu-item {
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          map-menu-submenu
+          ~ map-menu-item {
           align-self: start;
           order: 1;
           grid-auto-flow: row;
         }
 
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-submenu:hover,
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-submenu:active,
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-submenu:focus {
-          border-bottom: var(--map-menu-layer-2-bottom-border-active, var(--map-menu-layer-1-bottom-border-active, none));
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          map-menu-submenu:hover,
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          map-menu-submenu:active,
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          map-menu-submenu:focus {
+          border-bottom: var(
+            --map-menu-layer-2-bottom-border-active,
+            var(--map-menu-layer-1-bottom-border-active, none)
+          );
         }
 
         /* Layer 3 */
@@ -201,19 +264,30 @@ class MapMenu extends LitElement {
           background-color: transparent;
         }
 
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-builder  {
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder {
           position: relative;
           margin: 0;
           padding: 0;
         }
 
-        :host([is-flex]) map-menu-builder map-menu-builder map-menu-builder .wrapper {          
+        :host([is-flex])
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          .wrapper {
           display: inline-flex;
           flex-direction: column;
           flex-wrap: wrap;
         }
 
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-builder .wrapper {          
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          .wrapper {
           border-left: none;
           margin: 0;
           padding: 0;
@@ -232,24 +306,64 @@ class MapMenu extends LitElement {
           margin-left: calc(var(--map-menu-gap) + 2px);
         }
 
-        :host([is-flex]) map-menu-builder map-menu-builder map-menu-builder map-menu-item,
-        :host([is-flex]) map-menu-builder map-menu-builder map-menu-builder map-menu-submenu {
+        :host([is-flex])
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-item,
+        :host([is-flex])
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-submenu {
           border: none;
           --map-menu-header-button-padding: 10px 20px;
         }
 
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-builder map-menu-item,
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-builder map-menu-submenu {
-          --map-menu-text-transform: var(--map-menu-layer-3-text-transform, none);
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-item,
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-submenu {
+          --map-menu-text-transform: var(
+            --map-menu-layer-3-text-transform,
+            none
+          );
           --map-menu-font-weight: var(--map-menu-layer-3-font-weight, 400);
-          --map-menu-header-a-text-decoration-hover: var(--map-menu-layer-3-text-decoration, none);
-          --map-menu-item-a-active-background-color: var(--map-menu-layer-3-active-background-color,#f2f2f4)
+          --map-menu-header-a-text-decoration-hover: var(
+            --map-menu-layer-3-text-decoration,
+            none
+          );
+          --map-menu-item-a-active-background-color: var(
+            --map-menu-layer-3-active-background-color,
+            #f2f2f4
+          );
         }
 
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-builder map-menu-submenu:hover,
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-builder map-menu-submenu:active,
-        :host([is-flex][is-horizontal]) map-menu-builder map-menu-builder map-menu-builder map-menu-submenu:focus {
-          border-bottom: var(--map-menu-layer-3-bottom-border-active, var(--map-menu-layer-2-bottom-border-active, none));
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-submenu:hover,
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-submenu:active,
+        :host([is-flex][is-horizontal])
+          map-menu-builder
+          map-menu-builder
+          map-menu-builder
+          map-menu-submenu:focus {
+          border-bottom: var(
+            --map-menu-layer-3-bottom-border-active,
+            var(--map-menu-layer-2-bottom-border-active, none)
+          );
         }
 
         /* Layer 4 */
@@ -267,12 +381,14 @@ class MapMenu extends LitElement {
             var(--map-menu-item-a-active-background-color, black);
           margin-left: calc(var(--map-menu-gap) + 2px);
         }
-        :host([is-flex]) map-menu-builder
+        :host([is-flex])
+          map-menu-builder
           map-menu-builder
           map-menu-builder
           map-menu-builder
           map-menu-item,
-        :host([is-flex]) map-menu-builder
+        :host([is-flex])
+          map-menu-builder
           map-menu-builder
           map-menu-builder
           map-menu-builder
@@ -298,13 +414,15 @@ class MapMenu extends LitElement {
             var(--map-menu-item-a-active-background-color, black);
           margin-left: calc(var(--map-menu-gap) + 2px);
         }
-        :host([is-flex]) map-menu-builder
+        :host([is-flex])
+          map-menu-builder
           map-menu-builder
           map-menu-builder
           map-menu-builder
           map-menu-builder
           map-menu-item,
-        :host([is-flex]) map-menu-builder
+        :host([is-flex])
+          map-menu-builder
           map-menu-builder
           map-menu-builder
           map-menu-builder
@@ -479,18 +597,20 @@ class MapMenu extends LitElement {
   /**
    * Listen for submenu collapse events and close all other submenus
    */
-  __openChanged(e){
+  __openChanged(e) {
     e.stopImmediatePropagation();
     e.preventDefault();
     e.stopPropagation();
-    if(this.shadowRoot && this.isHorizontal){
-      this.shadowRoot.querySelectorAll('map-menu-submenu').forEach( submenu => {
-        if(submenu.isNested == false){
-          if(submenu.hovered == false){
-            submenu.opened = false;
+    if (this.shadowRoot && this.isHorizontal) {
+      this.shadowRoot
+        .querySelectorAll("map-menu-submenu")
+        .forEach((submenu) => {
+          if (submenu.isNested == false) {
+            if (submenu.hovered == false) {
+              submenu.opened = false;
+            }
           }
-        }
-      });
+        });
     }
   }
 

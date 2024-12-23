@@ -174,21 +174,21 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         if (propName == "responsiveSize" && this[propName]) {
           switch (this[propName]) {
             case "sm":
-              this.isHorizontal=false;
+              this.isHorizontal = false;
               // auto close for small layouts
               if (this.menuOpen && oldValue != "xs") {
                 this.__HAXCMSMobileMenuToggle();
               }
               break;
             case "xs":
-              this.isHorizontal=false;
+              this.isHorizontal = false;
               // auto close for small layouts
               if (this.menuOpen && oldValue != "sm") {
                 this.__HAXCMSMobileMenuToggle();
               }
               break;
             default: {
-              this.isHorizontal=true;
+              this.isHorizontal = true;
               // auto open for larger layouts
               if (!this.menuOpen) {
                 this.__HAXCMSMobileMenuToggle();
@@ -212,12 +212,12 @@ const HAXCMSMobileMenuMixin = function (SuperClass) {
         },
         isFlex: {
           type: Boolean,
-          attribute: "is-flex"
+          attribute: "is-flex",
         },
         isHorizontal: {
           type: Boolean,
-          attribute: "is-horizontal"
-        }
+          attribute: "is-horizontal",
+        },
       };
     }
   };

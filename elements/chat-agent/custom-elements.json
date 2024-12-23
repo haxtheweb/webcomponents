@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "chat-agent",
-      "description": "`chat-agent`\n`chatbot agent style chat widget`\n\nAttributes:\n\n  * `is-full-view` {`boolean`} - \n\n  * `is-interface-hidden` {`boolean`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `isFullView` {`boolean`} - \n\n  * `isInterfaceHidden` {`boolean`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`chat-agent`\n`chatbot agent style chat widget`\n\nAttributes:\n\n  * `is-full-view` {`boolean`} - \n\n  * `is-interface-hidden` {`boolean`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `isFullView` {`boolean`} - \n\n  * `isInterfaceHidden` {`boolean`} - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "is-full-view",

@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "md-block",
-      "description": "`md-block`\n`a markdown block`\n\nAttributes:\n\n  * `markdown` {`string`} - \n\n  * `source` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `markdown` {`string`} - \n\n  * `source` {`string`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`md-block`\n`a markdown block`\n\nAttributes:\n\n  * `markdown` {`string`} - \n\n  * `source` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `markdown` {`string`} - \n\n  * `source` {`string`} - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "markdown",

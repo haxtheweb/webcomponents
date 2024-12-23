@@ -268,7 +268,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
       }),
     );
     autorun((reaction) => {
-      if(!this.isFlex){
+      if (!this.isFlex) {
         this.editControls = toJS(store.isLoggedIn);
       }
     });

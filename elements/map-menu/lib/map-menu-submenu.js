@@ -33,7 +33,10 @@ class MapMenuSubmenu extends LitElement {
           --simple-tooltip-margin: 0 -36px 0 0;
         }
         :host([is-flex]) a11y-collapse {
-          --a11y-collapse-transition-duration: var(--a11y-collapse-transition-duration, 0.15s);
+          --a11y-collapse-transition-duration: var(
+            --a11y-collapse-transition-duration,
+            0.15s
+          );
         }
         :host([is-flex][is-nested]) a11y-collapse {
           --a11y-collapse-transition-duration: 0s;
@@ -64,7 +67,7 @@ class MapMenuSubmenu extends LitElement {
             var(--map-menu-item-a-active-background-color, black);
         }
 
-        :host([is-nested]) a11y-collapse::before, 
+        :host([is-nested]) a11y-collapse::before,
         :host([is-nested]) #container ::slotted(map-menu-builder)::after {
           border-bottom: 0;
         }
@@ -92,10 +95,10 @@ class MapMenuSubmenu extends LitElement {
           color: var(--map-menu-item-icon-active-color, black);
           background-color: var(--map-menu-container-background-color, white);
         }
-        :host([is-flex][is-nested]) a11y-collapse::part(icon){
+        :host([is-flex][is-nested]) a11y-collapse::part(icon) {
           display: none;
         }
-        :host([is-flex][is-nested]) map-menu-header::part(icon){
+        :host([is-flex][is-nested]) map-menu-header::part(icon) {
           display: none;
         }
       `,
@@ -141,16 +144,16 @@ class MapMenuSubmenu extends LitElement {
 
   __active(e) {
     this.hovered = true;
-    if (e.type == "mouseover"){
-      if (this.isHorizontal && !this.isNested && this.opened == false){
+    if (e.type == "mouseover") {
+      if (this.isHorizontal && !this.isNested && this.opened == false) {
         this.opened = true;
       }
     }
   }
   __deactive(e) {
     this.hovered = false;
-    if (e.type == "mouseleave"){
-      if (this.isHorizontal && !this.isNested && this.opened == true){
+    if (e.type == "mouseleave") {
+      if (this.isHorizontal && !this.isNested && this.opened == true) {
         this.opened = false;
       }
     }
@@ -163,15 +166,15 @@ class MapMenuSubmenu extends LitElement {
     e.preventDefault();
     e.stopPropagation();
     this.opened = e.detail.expanded;
-    if(this.isHorizontal){
+    if (this.isHorizontal) {
       // when the user tabs to the open icon
       this.dispatchEvent(
         new CustomEvent("opened-changed", {
           bubbles: true,
           cancelable: true,
           composed: true,
-        })
-      )
+        }),
+      );
     }
   }
   /**
@@ -259,9 +262,7 @@ class MapMenuSubmenu extends LitElement {
       collapsable: {
         type: Boolean,
       },
-      isFlex: { type: Boolean, 
-        attribute: "is-flex" 
-      },
+      isFlex: { type: Boolean, attribute: "is-flex" },
       isNested: {
         type: Boolean,
         attribute: "is-nested",
@@ -334,9 +335,9 @@ class MapMenuSubmenu extends LitElement {
     } else {
       this.active = false;
     }
-    if(this.isHorizontal && !this.isNested){
+    if (this.isHorizontal && !this.isNested) {
       this.blur();
-      this.opened=false;
+      this.opened = false;
     } else {
       this.opened = true;
     }

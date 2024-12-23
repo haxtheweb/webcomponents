@@ -26,7 +26,7 @@ import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HAXCMSToastInstance } from "@haxtheweb/haxcms-elements/lib/core/haxcms-toast.js";
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
-import "@haxtheweb/polaris-theme/lib/polaris-media-banner.js"
+import "@haxtheweb/polaris-theme/lib/polaris-media-banner.js";
 
 /**
  * `polaris-flex-theme`
@@ -101,10 +101,12 @@ class PolarisFlexTheme extends LTIResizingMixin(
 
         :host([edit-mode]) {
           /* react to the screen shifting left to right on edit mode w/ tray direction */
-          margin: var(--hax-tray-element-align-margin, 0 0 0 calc(
-            var(--hax-tray-width) - var(--hax-tray-menubar-min-width)
-          ));
-          transition: margin .6s ease-in-out;
+          margin: var(
+            --hax-tray-element-align-margin,
+            0 0 0
+              calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width))
+          );
+          transition: margin 0.6s ease-in-out;
         }
         :host([is-safari]) {
           background-color: var(--ddd-accent-6);
@@ -118,9 +120,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
           right: 0px;
           bottom: 0px;
           z-index: 10000;
-          --scroll-button-background-color: var(
-            --polaris-nav-bg-color
-          );
+          --scroll-button-background-color: var(--polaris-nav-bg-color);
           --simple-icon-width: 32px;
           --simple-icon-height: 32px;
           --simple-icon-button-border-radius: none;
@@ -162,11 +162,11 @@ class PolarisFlexTheme extends LTIResizingMixin(
           padding: 0 0 var(--ddd-spacing-12);
         }
 
-        article > *:not(polaris-media-banner){
+        article > *:not(polaris-media-banner) {
           padding: 0 var(--polaris-standard-padding);
         }
 
-        site-breadcrumb{
+        site-breadcrumb {
           padding: var(--ddd-spacing-12) 0 0;
         }
 
@@ -194,19 +194,22 @@ class PolarisFlexTheme extends LTIResizingMixin(
           padding-bottom: var(--ddd-spacing-2);
         }
 
-        .header-links, .header-links p {
+        .header-links,
+        .header-links p {
           display: inline-flex;
           margin: 0;
           align-items: center;
           column-gap: var(--ddd-spacing-5);
         }
 
-        .header-links a, site-title {
+        .header-links a,
+        site-title {
           color: var(--polaris-nav-color);
           font-weight: var(--ddd-font-weight-regular);
         }
 
-        .header-links a:hover, site-title:hover {
+        .header-links a:hover,
+        site-title:hover {
           text-decoration: underline;
         }
 
@@ -251,8 +254,10 @@ class PolarisFlexTheme extends LTIResizingMixin(
 
           --map-menu-layer-1-margin: 0 var(--ddd-spacing-9) 0 0;
           --map-menu-layer-1-font-color: var(--polaris-nav-color);
-          --map-menu-layer-1-bottom-border-active: var(--ddd-border-size-lg) solid var(--ddd-theme-default-pughBlue);
-          --map-menu-layer-2-horizontal-padding: 0 var(--polaris-standard-padding);
+          --map-menu-layer-1-bottom-border-active: var(--ddd-border-size-lg)
+            solid var(--ddd-theme-default-pughBlue);
+          --map-menu-layer-2-horizontal-padding: 0
+            var(--polaris-standard-padding);
           --map-menu-layer-2-active-color: var(--ddd-theme-default-nittanyNavy);
           --map-menu-layer-2-font-weight: var(--ddd-font-weight-medium);
           --map-menu-layer-2-bottom-border-active: none;
@@ -281,7 +286,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
           background-color: var(--ddd-theme-default-nittanyNavy);
           color: white;
           clear: both;
-          
+
           padding: var(--ddd-spacing-10) 0;
         }
 
@@ -311,7 +316,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
           row-gap: var(--ddd-spacing-2);
         }
 
-        .footer-secondary-slot ul li{
+        .footer-secondary-slot ul li {
           font-size: 20px;
           font-family: var(--ddd-font-navigation);
           font-weight: var(--ddd-font-weight-medium);
@@ -383,19 +388,18 @@ class PolarisFlexTheme extends LTIResizingMixin(
           margin: 0;
         }
 
-        .footer-primary-slot p:first-of-type{
+        .footer-primary-slot p:first-of-type {
           display: flex;
           column-gap: var(--ddd-spacing-5);
         }
 
         /* Theme Responsive Section */
-        :host([responsive-size="md"]){
+        :host([responsive-size="md"]) {
           site-menu {
             --map-menu-layer-1-margin: 0 var(--ddd-spacing-8) 0 0;
             --map-menu-layer-2-horizontal-padding: 0 var(--polaris-md-padding);
 
             --map-menu-item-button-padding: 10px 0 10px 20px;
-
           }
           .footer-secondary .wrap {
             max-width: 920px;
@@ -403,7 +407,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
           }
         }
 
-        :host([responsive-size="sm"]){
+        :host([responsive-size="sm"]) {
           .header-links {
             display: none;
           }
@@ -419,26 +423,32 @@ class PolarisFlexTheme extends LTIResizingMixin(
             margin: 15px 0;
             width: 156px;
           }
-          site-modal{
+          site-modal {
             padding: 6px 0;
           }
           site-menu {
-            --map-menu-item-icon-active-color: var(--ddd-theme-default-nittanyNavy);
-            --site-menu-container-background-color: var(--ddd-theme-default-white);
+            --map-menu-item-icon-active-color: var(
+              --ddd-theme-default-nittanyNavy
+            );
+            --site-menu-container-background-color: var(
+              --ddd-theme-default-white
+            );
             --map-menu-parent-background-color: var(--ddd-theme-default-white);
             --a11y-collapse-icon-position: static;
 
             --map-menu-width: 100%;
             --map-menu-parent-padding: 40px 0px 128px;
-            --map-menu-layer-1-margin: 0px 128px;       
-            
+            --map-menu-layer-1-margin: 0px 128px;
+
             --map-menu-layer-1-font-color: var(--ddd-theme-default-nittanyNavy);
-            --map-menu-item-a-active-color: var(--ddd-theme-default-nittanyNavy);
+            --map-menu-item-a-active-color: var(
+              --ddd-theme-default-nittanyNavy
+            );
             --map-menu-layer-2-active-color: #262626;
             --map-menu-layer-2-text-transform: none;
           }
 
-          #haxcmsmobilemenubutton{
+          #haxcmsmobilemenubutton {
             display: inline;
           }
 
@@ -456,7 +466,8 @@ class PolarisFlexTheme extends LTIResizingMixin(
             margin: 0 auto;
             padding: 0;
           }
-          .footer-secondary-contact, .footer-secondary-media {
+          .footer-secondary-contact,
+          .footer-secondary-media {
             padding: 0;
             margin: 0 auto;
             text-align: center;
@@ -467,10 +478,11 @@ class PolarisFlexTheme extends LTIResizingMixin(
           .footer-secondary-media {
             max-width: 60%;
           }
-          .footer-secondary-media p, .footer-secondary-media li {
+          .footer-secondary-media p,
+          .footer-secondary-media li {
             text-align: left;
           }
-          .footer-primary { 
+          .footer-primary {
             text-align: center;
             justify-content: center;
           }
@@ -483,10 +495,14 @@ class PolarisFlexTheme extends LTIResizingMixin(
           }
         }
 
-        :host([responsive-size="xs"]){
+        :host([responsive-size="xs"]) {
           site-menu {
-            --map-menu-item-icon-active-color: var(--ddd-theme-default-nittanyNavy);
-            --site-menu-container-background-color: var(--ddd-theme-default-white);
+            --map-menu-item-icon-active-color: var(
+              --ddd-theme-default-nittanyNavy
+            );
+            --site-menu-container-background-color: var(
+              --ddd-theme-default-white
+            );
             --map-menu-parent-background-color: var(--ddd-theme-default-white);
             --a11y-collapse-icon-position: static;
 
@@ -495,7 +511,9 @@ class PolarisFlexTheme extends LTIResizingMixin(
             --map-menu-layer-1-margin: 0px var(--polaris-xs-padding);
 
             --map-menu-layer-1-font-color: var(--ddd-theme-default-nittanyNavy);
-            --map-menu-item-a-active-color: var(--ddd-theme-default-nittanyNavy);
+            --map-menu-item-a-active-color: var(
+              --ddd-theme-default-nittanyNavy
+            );
             --map-menu-layer-2-active-color: #262626;
             --map-menu-layer-2-text-transform: none;
           }
@@ -517,7 +535,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
             margin: 15px 0;
             width: 146px;
           }
-          #haxcmsmobilemenubutton{
+          #haxcmsmobilemenubutton {
             display: inline;
           }
           polaris-media-banner {
@@ -533,7 +551,8 @@ class PolarisFlexTheme extends LTIResizingMixin(
             margin: 0 auto;
             padding: 0;
           }
-          .footer-secondary-contact, .footer-secondary-media {
+          .footer-secondary-contact,
+          .footer-secondary-media {
             padding: 0;
             margin: 0 auto;
             text-align: center;
@@ -544,10 +563,11 @@ class PolarisFlexTheme extends LTIResizingMixin(
           .footer-secondary-media {
             max-width: 75%;
           }
-          .footer-secondary-media p, .footer-secondary-media li {
+          .footer-secondary-media p,
+          .footer-secondary-media li {
             text-align: left;
           }
-          .footer-primary{
+          .footer-primary {
             text-align: center;
             justify-content: center;
           }
@@ -559,9 +579,9 @@ class PolarisFlexTheme extends LTIResizingMixin(
             margin: 0 auto;
           }
         }
-        :host([responsive-size="sm"]:not([menu-open])), 
-        :host([responsive-size="xs"]:not([menu-open])){
-          site-menu{
+        :host([responsive-size="sm"]:not([menu-open])),
+        :host([responsive-size="xs"]:not([menu-open])) {
+          site-menu {
             display: none;
           }
         }
@@ -707,38 +727,38 @@ class PolarisFlexTheme extends LTIResizingMixin(
 
   renderBrandMark() {
     return html`
-    <div id="mark">
-      <a href="${this.imageLink}">
-        <img
-          src="${this.image}"
-          alt="${this.imageAlt}"
-          loading="lazy"
-          decoding="async"
-          fetchpriority="low"
-        />
-      </a>
-    </div>
-    `
+      <div id="mark">
+        <a href="${this.imageLink}">
+          <img
+            src="${this.image}"
+            alt="${this.imageAlt}"
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low"
+          />
+        </a>
+      </div>
+    `;
   }
 
   renderHeaderSlot() {
     return html``;
   }
 
-  renderSideBar(){
+  renderSideBar() {
     return html``;
   }
 
-  renderFooterContactInformation(){
-    return html``
+  renderFooterContactInformation() {
+    return html``;
   }
 
   renderFooterSecondarySlot() {
-    return html``
+    return html``;
   }
 
   renderFooterPrimarySlot() {
-    return html``
+    return html``;
   }
   // render function
   render() {
@@ -748,37 +768,34 @@ class PolarisFlexTheme extends LTIResizingMixin(
         <div class="wrap">
           <div class="header-top-menu">
             <site-modal
-                @site-modal-click="${this.siteModalClick}"
-                .part="${this.editMode ? `edit-mode-active` : ``}"
-                ?disabled="${this.editMode}"
-                icon="icons:search"
-                title="Search site"
-                class="search-modal-btn"
-                button-label="Search"
-                part="search-btn"
-                position="left"
-              >
-                <site-search></site-search>
-              </site-modal>
-              <site-region name="header"></site-region>
-              <div class="header-links">
-                <slot name="header">                
-                  ${this.renderHeaderSlot()}
-                </slot>
-              </div>
+              @site-modal-click="${this.siteModalClick}"
+              .part="${this.editMode ? `edit-mode-active` : ``}"
+              ?disabled="${this.editMode}"
+              icon="icons:search"
+              title="Search site"
+              class="search-modal-btn"
+              button-label="Search"
+              part="search-btn"
+              position="left"
+            >
+              <site-search></site-search>
+            </site-modal>
+            <site-region name="header"></site-region>
+            <div class="header-links">
+              <slot name="header"> ${this.renderHeaderSlot()} </slot>
+            </div>
           </div>
           <div class="nav-section">
-          <div class="header-branding">
-              ${this.renderBrandMark()}
-              ${this.HAXCMSMobileMenuButton("left")}
-          </div>
-          
+            <div class="header-branding">
+              ${this.renderBrandMark()} ${this.HAXCMSMobileMenuButton("left")}
+            </div>
+
             ${this.HAXCMSFlexMenu()}
           </div>
           <polaris-media-banner source="${this.pageMedia}">
-              <site-active-title part="page-title"></site-active-title>
-              ${this.pageDescription}
-            </polaris-media-banner>
+            <site-active-title part="page-title"></site-active-title>
+            ${this.pageDescription}
+          </polaris-media-banner>
         </div>
       </header>
       <div class="content site-inner">
@@ -803,20 +820,19 @@ class PolarisFlexTheme extends LTIResizingMixin(
         <section class="footer-secondary">
           <site-region name="footerSecondary"></site-region>
           <div class="wrap">
-                <div class="footer-secondary-contact">
-                  ${this.renderBrandMark()}
-                  ${this.renderFooterContactInformation()}
-                </div>
-                <div class="footer-secondary-media">
-                  <slot name="footer-secondary" class="footer-secondary-slot">
-                    ${this.renderFooterSecondarySlot()}
-                  </slot>
-              </div>
+            <div class="footer-secondary-contact">
+              ${this.renderBrandMark()} ${this.renderFooterContactInformation()}
+            </div>
+            <div class="footer-secondary-media">
+              <slot name="footer-secondary" class="footer-secondary-slot">
+                ${this.renderFooterSecondarySlot()}
+              </slot>
+            </div>
           </div>
         </section>
         <section class="footer-primary">
           <div class="wrap">
-          <site-region name="footerPrimary"></site-region>
+            <site-region name="footerPrimary"></site-region>
             <slot name="footer-primary" class="footer-primary-slot">
               ${this.renderFooterPrimarySlot()}
             </slot>
@@ -838,7 +854,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
       haxTrayAlignment: {
         type: String,
         reflect: true,
-        attribute: 'hax-tray-alignment'
+        attribute: "hax-tray-alignment",
       },
       searchTerm: {
         type: String,
@@ -975,11 +991,11 @@ class PolarisFlexTheme extends LTIResizingMixin(
     });
     autorun((reaction) => {
       let activeItem = toJS(store.activeItem);
-      let activeID = toJS(store.activeId)
+      let activeID = toJS(store.activeId);
       if (activeItem && activeItem.metadata && activeItem.metadata.image) {
         this.pageMedia = activeItem.metadata.image;
       } else {
-        this.pageMedia = ""
+        this.pageMedia = "";
       }
       this.__disposer.push(reaction);
     });

@@ -30,8 +30,189 @@
       ]
     },
     {
+      "name": "polaris-flex-theme",
+      "description": "`polaris-flex-theme`\n`Polaris theme based on modern flex design system`\n\nEvents:\n\n  * `haxcms-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `siteDescription` {`string`} - \n\n  * `pageTimestamp` {`number`} - \n\n  * `hax-tray-alignment` {`string`} - \n\n  * `searchTerm` {`string`} - \n\n  * `imageAlt` {`string`} - \n\n  * `image` {`string`} - \n\n  * `imageLink` {`string`} - \n\n  * `pageDescription` {`string`} - \n\n  * `pageMedia` {`string`} - \n\n  * `t` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `is-horizontal` {`boolean`} - \n\n  * `is-flex` {`boolean`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `is-safari` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `siteDescription` {`string`} - \n\n  * `pageTimestamp` {`number`} - \n\n  * `haxTrayAlignment` {`string`} - \n\n  * `windowControllersLoaded` - \n\n  * `searchTerm` {`string`} - \n\n  * `imageAlt` {`string`} - \n\n  * `image` {`string`} - \n\n  * `imageLink` {`string`} - \n\n  * `pageDescription` {`string`} - \n\n  * `pageMedia` {`string`} - \n\n  * `__evaluateRoute` {`boolean`} - \n\n  * `HAXCMSI18NMixinBase` {`string`} - \n\n  * `t` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `isHorizontal` {`boolean`} - \n\n  * `isFlex` {`boolean`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `isSafari` {`boolean`} - \n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
+      "attributes": [
+        {
+          "name": "siteDescription",
+          "description": "`siteDescription` {`string`} - \n\nProperty: siteDescription"
+        },
+        {
+          "name": "pageTimestamp",
+          "description": "`pageTimestamp` {`number`} - \n\nProperty: pageTimestamp"
+        },
+        {
+          "name": "hax-tray-alignment",
+          "description": "`hax-tray-alignment` {`string`} - \n\nProperty: haxTrayAlignment"
+        },
+        {
+          "name": "searchTerm",
+          "description": "`searchTerm` {`string`} - \n\nProperty: searchTerm\n\nDefault: "
+        },
+        {
+          "name": "imageAlt",
+          "description": "`imageAlt` {`string`} - \n\nProperty: imageAlt\n\nDefault: "
+        },
+        {
+          "name": "image",
+          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: "
+        },
+        {
+          "name": "imageLink",
+          "description": "`imageLink` {`string`} - \n\nProperty: imageLink\n\nDefault: "
+        },
+        {
+          "name": "pageDescription",
+          "description": "`pageDescription` {`string`} - \n\nProperty: pageDescription\n\nDefault: "
+        },
+        {
+          "name": "pageMedia",
+          "description": "`pageMedia` {`string`} - \n\nProperty: pageMedia\n\nDefault: "
+        },
+        {
+          "name": "t",
+          "description": "`t` - \n\nProperty: t"
+        },
+        {
+          "name": "__pdfLoading",
+          "description": "`__pdfLoading` {`boolean`} - \n\nProperty: __pdfLoading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "__printBranchLoading",
+          "description": "`__printBranchLoading` {`boolean`} - \n\nProperty: __printBranchLoading\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "showQRCode",
+          "description": "`showQRCode` {`boolean`} - \n\nProperty: showQRCode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "dark-mode",
+          "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-horizontal",
+          "description": "`is-horizontal` {`boolean`} - \n\nProperty: isHorizontal\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-flex",
+          "description": "`is-flex` {`boolean`} - \n\nProperty: isFlex\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "menu-open",
+          "description": "`menu-open` {`boolean`} - \n\nProperty: menuOpen\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "hex-color",
+          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
+        },
+        {
+          "name": "color",
+          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
+        },
+        {
+          "name": "contentContainer",
+          "description": "`contentContainer` - DOM node that wraps the slot\n\nProperty: contentContainer"
+        },
+        {
+          "name": "_location",
+          "description": "`_location` - location as object\n\nProperty: _location"
+        },
+        {
+          "name": "is-safari",
+          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
+          "valueSet": "v"
+        },
+        {
+          "name": "edit-mode",
+          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-logged-in",
+          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "responsive-width",
+          "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
+        },
+        {
+          "name": "responsive-size",
+          "description": "`responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\nProperty: responsiveSize\n\nDefault: xs"
+        },
+        {
+          "name": "sm",
+          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 600"
+        },
+        {
+          "name": "md",
+          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 900"
+        },
+        {
+          "name": "lg",
+          "description": "`lg` {`number`} - Miniumum value for large breakpoint\n\nProperty: lg\n\nDefault: 1200"
+        },
+        {
+          "name": "xl",
+          "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
+        },
+        {
+          "name": "disable-responsive",
+          "description": "`disable-responsive` {`boolean`} - \n\nProperty: disableResponsive\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "onhaxcms-toast-hide",
+          "description": "`haxcms-toast-hide` {`CustomEvent<boolean>`} - "
+        },
+        {
+          "name": "onsuper-daemon-define-option",
+          "description": "`super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - "
+        },
+        {
+          "name": "onpopstate",
+          "description": "`popstate` {`PopStateEvent`} - "
+        },
+        {
+          "name": "oncontent-container-changed",
+          "description": "`content-container-changed` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onis-logged-in-changed",
+          "description": "`is-logged-in-changed` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onedit-mode-changed",
+          "description": "`edit-mode-changed` {`CustomEvent<any>`} - "
+        },
+        {
+          "name": "onresize",
+          "description": "`resize` {`Event`} - "
+        },
+        {
+          "name": "onhaxcms-active-item-changed",
+          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
+        },
+        {
+          "name": "onresponsive-element",
+          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
+        },
+        {
+          "name": "onresponsive-element-deleted",
+          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
+        }
+      ]
+    },
+    {
       "name": "polaris-invent-theme",
-      "description": "`polaris-invent-theme`\n`A 2nd polaris theme`\n\nEvents:\n\n  * `haxcms-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `siteDescription` {`string`} - \n\n  * `pageTimestamp` {`number`} - \n\n  * `searchTerm` {`string`} - \n\n  * `imageAlt` {`string`} - \n\n  * `image` {`string`} - \n\n  * `imageLink` {`string`} - \n\n  * `t` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `is-safari` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `siteDescription` {`string`} - \n\n  * `pageTimestamp` {`number`} - \n\n  * `windowControllersLoaded` - \n\n  * `searchTerm` {`string`} - \n\n  * `imageAlt` {`string`} - \n\n  * `image` {`string`} - \n\n  * `imageLink` {`string`} - \n\n  * `__evaluateRoute` {`boolean`} - \n\n  * `HAXCMSI18NMixinBase` {`string`} - \n\n  * `t` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `isSafari` {`boolean`} - \n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
+      "description": "`polaris-invent-theme`\n`A 2nd polaris theme`\n\nEvents:\n\n  * `haxcms-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `siteDescription` {`string`} - \n\n  * `pageTimestamp` {`number`} - \n\n  * `searchTerm` {`string`} - \n\n  * `imageAlt` {`string`} - \n\n  * `image` {`string`} - \n\n  * `imageLink` {`string`} - \n\n  * `t` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `is-horizontal` {`boolean`} - \n\n  * `is-flex` {`boolean`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `is-safari` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `siteDescription` {`string`} - \n\n  * `pageTimestamp` {`number`} - \n\n  * `windowControllersLoaded` - \n\n  * `searchTerm` {`string`} - \n\n  * `imageAlt` {`string`} - \n\n  * `image` {`string`} - \n\n  * `imageLink` {`string`} - \n\n  * `__evaluateRoute` {`boolean`} - \n\n  * `HAXCMSI18NMixinBase` {`string`} - \n\n  * `t` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `isHorizontal` {`boolean`} - \n\n  * `isFlex` {`boolean`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `isSafari` {`boolean`} - \n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
       "attributes": [
         {
           "name": "siteDescription",
@@ -79,6 +260,16 @@
         {
           "name": "dark-mode",
           "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-horizontal",
+          "description": "`is-horizontal` {`boolean`} - \n\nProperty: isHorizontal\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-flex",
+          "description": "`is-flex` {`boolean`} - \n\nProperty: isFlex\n\nDefault: true",
           "valueSet": "v"
         },
         {
@@ -207,6 +398,38 @@
       ]
     },
     {
+      "name": "polaris-media-banner",
+      "description": "Attributes:\n\n  * `source` {`string`} - \n\n  * `fileExt` {`string`} - \n\n  * `mediaType` {`string`} - \n\n  * `playing` {`boolean`} - \n\n  * `canPlay` {`boolean`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `fileExt` {`string`} - \n\n  * `mediaType` {`string`} - \n\n  * `playing` {`boolean`} - \n\n  * `canPlay` {`boolean`} - \n\n  * `icon` {`string`} - ",
+      "attributes": [
+        {
+          "name": "source",
+          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: "
+        },
+        {
+          "name": "fileExt",
+          "description": "`fileExt` {`string`} - \n\nProperty: fileExt\n\nDefault: "
+        },
+        {
+          "name": "mediaType",
+          "description": "`mediaType` {`string`} - \n\nProperty: mediaType\n\nDefault: "
+        },
+        {
+          "name": "playing",
+          "description": "`playing` {`boolean`} - \n\nProperty: playing\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "canPlay",
+          "description": "`canPlay` {`boolean`} - \n\nProperty: canPlay\n\nDefault: false",
+          "valueSet": "v"
+        },
+        {
+          "name": "icon",
+          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: av:pause-circle-outline"
+        }
+      ]
+    },
+    {
       "name": "polaris-story-card",
       "description": "`polaris-story-card`\n`A polaris PSU based branding styled theme`\n\nAttributes:\n\n  * `image` {`string`} - \n\n  * `label` {`string`} - \n\n  * `pillar` {`string`} - \n\nProperties:\n\n  * `image` {`string`} - \n\n  * `label` {`string`} - \n\n  * `pillar` {`string`} - ",
       "attributes": [
@@ -252,7 +475,7 @@
     },
     {
       "name": "polaris-theme",
-      "description": "`polaris-theme`\n`A 2nd polaris theme`\n\nEvents:\n\n  * `super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `siteDescription` {`string`} - \n\n  * `pageTimestamp` {`number`} - \n\n  * `searchTerm` {`string`} - \n\n  * `imageAlt` {`string`} - \n\n  * `image` {`string`} - \n\n  * `imageLink` {`string`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `is-safari` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `siteDescription` {`string`} - \n\n  * `pageTimestamp` {`number`} - \n\n  * `windowControllersLoaded` - \n\n  * `searchTerm` {`string`} - \n\n  * `imageAlt` {`string`} - \n\n  * `image` {`string`} - \n\n  * `imageLink` {`string`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `isSafari` {`boolean`} - \n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
+      "description": "`polaris-theme`\n`A 2nd polaris theme`\n\nEvents:\n\n  * `super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `siteDescription` {`string`} - \n\n  * `pageTimestamp` {`number`} - \n\n  * `searchTerm` {`string`} - \n\n  * `imageAlt` {`string`} - \n\n  * `image` {`string`} - \n\n  * `imageLink` {`string`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `is-horizontal` {`boolean`} - \n\n  * `is-flex` {`boolean`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `is-safari` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `siteDescription` {`string`} - \n\n  * `pageTimestamp` {`number`} - \n\n  * `windowControllersLoaded` - \n\n  * `searchTerm` {`string`} - \n\n  * `imageAlt` {`string`} - \n\n  * `image` {`string`} - \n\n  * `imageLink` {`string`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `isHorizontal` {`boolean`} - \n\n  * `isFlex` {`boolean`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `isSafari` {`boolean`} - \n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
       "attributes": [
         {
           "name": "siteDescription",
@@ -296,6 +519,16 @@
         {
           "name": "dark-mode",
           "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-horizontal",
+          "description": "`is-horizontal` {`boolean`} - \n\nProperty: isHorizontal\n\nDefault: true",
+          "valueSet": "v"
+        },
+        {
+          "name": "is-flex",
+          "description": "`is-flex` {`boolean`} - \n\nProperty: isFlex\n\nDefault: true",
           "valueSet": "v"
         },
         {

@@ -81,6 +81,16 @@
           "default": "{\"moreInformation\":\"More Information\"}"
         },
         {
+          "name": "sm",
+          "type": "number",
+          "default": "768"
+        },
+        {
+          "name": "md",
+          "type": "number",
+          "default": "1080"
+        },
+        {
           "name": "isSafari",
           "attribute": "is-safari",
           "type": "boolean"

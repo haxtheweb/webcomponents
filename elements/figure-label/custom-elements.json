@@ -3,7 +3,7 @@
   "tags": [
     {
       "name": "figure-label",
-      "description": "`figure-label`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
+      "description": "`figure-label`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
       "attributes": [
         {
           "name": "title",

@@ -225,11 +225,11 @@
         },
         {
           "name": "sm",
-          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 600"
+          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 768"
         },
         {
           "name": "md",
-          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 900"
+          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 1080"
         },
         {
           "name": "lg",

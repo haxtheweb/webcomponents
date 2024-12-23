@@ -174,10 +174,13 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
         this.items = [];
       }
       // ensure no trail on the home page if it matches the trail
-      else if(this.includeHome && items.length === 2 && items[0].slug === items[1].slug) {
+      else if (
+        this.includeHome &&
+        items.length === 2 &&
+        items[0].slug === items[1].slug
+      ) {
         this.items = [];
-      }
-      else {
+      } else {
         this.items = [...items];
       }
     }
