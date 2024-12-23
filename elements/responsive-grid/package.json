@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "10.0.0",
+  "version": "10.0.1",
   "description": "Automated conversion of responsive-grid/",
   "repository": {
     "type": "git",
@@ -41,12 +41,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/responsive-utility": "^10.0.0",
+    "@haxtheweb/responsive-utility": "^10.0.1",
     "lit": "^3.2.1"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^10.0.0",
-    "@haxtheweb/storybook-utilities": "^10.0.0",
+    "@haxtheweb/storybook-utilities": "^10.0.1",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

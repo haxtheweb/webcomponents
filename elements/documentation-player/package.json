@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "10.0.0",
+  "version": "10.0.1",
   "description": "playlist like element but for documenting web components in the context of hax",
   "repository": {
     "type": "git",
@@ -43,10 +43,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/code-editor": "^10.0.0",
-    "@haxtheweb/code-sample": "^10.0.0",
-    "@haxtheweb/play-list": "^10.0.0",
-    "@haxtheweb/simple-icon": "^10.0.0",
+    "@haxtheweb/code-editor": "^10.0.1",
+    "@haxtheweb/code-sample": "^10.0.1",
+    "@haxtheweb/play-list": "^10.0.1",
+    "@haxtheweb/simple-icon": "^10.0.1",
     "@haxtheweb/simple-img": "^10.0.0",
     "@haxtheweb/utils": "^10.0.0",
     "lit": "^3.2.1"

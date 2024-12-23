@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "10.0.0",
+  "version": "10.0.1",
   "description": "Automated conversion of simple-blog/",
   "repository": {
     "type": "git",
@@ -42,19 +42,19 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@github/time-elements": "3.1.4",
-    "@haxtheweb/hax-iconset": "^10.0.0",
-    "@haxtheweb/haxcms-elements": "^10.0.0",
-    "@haxtheweb/schema-behaviors": "^10.0.0",
-    "@haxtheweb/simple-colors": "^10.0.0",
-    "@haxtheweb/simple-datetime": "^10.0.0",
-    "@haxtheweb/simple-icon": "^10.0.0",
+    "@haxtheweb/hax-iconset": "^10.0.1",
+    "@haxtheweb/haxcms-elements": "^10.0.1",
+    "@haxtheweb/schema-behaviors": "^10.0.1",
+    "@haxtheweb/simple-colors": "^10.0.1",
+    "@haxtheweb/simple-datetime": "^10.0.1",
+    "@haxtheweb/simple-icon": "^10.0.1",
     "@polymer/iron-list": "^3.0.2",
     "@polymer/iron-pages": "^3.0.0",
     "@polymer/polymer": "^3.5.1"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^10.0.0",
-    "@haxtheweb/storybook-utilities": "^10.0.0",
+    "@haxtheweb/storybook-utilities": "^10.0.1",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

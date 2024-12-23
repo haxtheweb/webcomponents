@@ -20,7 +20,7 @@
       "...super.styles"
     ]
   },
-  "version": "10.0.0",
+  "version": "10.0.1",
   "description": "Simple call to action button",
   "repository": {
     "type": "git",
@@ -45,8 +45,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-colors": "^10.0.0",
-    "@haxtheweb/simple-icon": "^10.0.0",
+    "@haxtheweb/simple-colors": "^10.0.1",
+    "@haxtheweb/simple-icon": "^10.0.1",
     "@haxtheweb/utils": "^10.0.0",
     "lit": "^3.2.1"
   },

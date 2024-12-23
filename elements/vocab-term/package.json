@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "10.0.0",
+  "version": "10.0.1",
   "description": "a vocabulary term visualized in the page",
   "repository": {
     "type": "git",
@@ -44,8 +44,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-modal": "^10.0.0",
-    "@haxtheweb/simple-popover": "^10.0.0",
+    "@haxtheweb/simple-modal": "^10.0.1",
+    "@haxtheweb/simple-popover": "^10.0.1",
     "lit": "^3.2.1"
   },
   "devDependencies": {

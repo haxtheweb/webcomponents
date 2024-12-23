@@ -22,7 +22,7 @@
     },
     "sharedStyles": []
   },
-  "version": "10.0.0",
+  "version": "10.0.1",
   "description": "HAX-specific icons",
   "repository": {
     "type": "git",
@@ -47,7 +47,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-icon": "^10.0.0"
+    "@haxtheweb/simple-icon": "^10.0.1"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^10.0.0",

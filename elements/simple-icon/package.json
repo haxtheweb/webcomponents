@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "10.0.0",
+  "version": "10.0.1",
   "description": "Render an SVG based icon",
   "repository": {
     "type": "git",
@@ -46,8 +46,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^10.0.0",
-    "@haxtheweb/simple-colors": "^10.0.0",
+    "@haxtheweb/d-d-d": "^10.0.1",
+    "@haxtheweb/simple-colors": "^10.0.1",
     "flag-icons": "6.6.4",
     "lit": "^3.2.1"
   },

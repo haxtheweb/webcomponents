@@ -18,7 +18,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "10.0.0",
+  "version": "10.0.1",
   "description": "A simple presentation of a date",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-colors": "^10.0.0",
+    "@haxtheweb/simple-colors": "^10.0.1",
     "lit": "^3.2.1"
   },
   "devDependencies": {

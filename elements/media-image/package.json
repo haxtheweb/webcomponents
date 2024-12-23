@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "10.0.0",
+  "version": "10.0.1",
   "description": "Automated conversion of media-image/",
   "repository": {
     "type": "git",
@@ -41,17 +41,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^10.0.0",
-    "@haxtheweb/figure-label": "^10.0.0",
-    "@haxtheweb/image-inspector": "^10.0.0",
-    "@haxtheweb/schema-behaviors": "^10.0.0",
-    "@haxtheweb/simple-icon": "^10.0.0",
-    "@haxtheweb/simple-modal": "^10.0.0",
+    "@haxtheweb/d-d-d": "^10.0.1",
+    "@haxtheweb/figure-label": "^10.0.1",
+    "@haxtheweb/image-inspector": "^10.0.1",
+    "@haxtheweb/schema-behaviors": "^10.0.1",
+    "@haxtheweb/simple-icon": "^10.0.1",
+    "@haxtheweb/simple-modal": "^10.0.1",
     "lit": "^3.2.1"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^10.0.0",
-    "@haxtheweb/storybook-utilities": "^10.0.0",
+    "@haxtheweb/storybook-utilities": "^10.0.1",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

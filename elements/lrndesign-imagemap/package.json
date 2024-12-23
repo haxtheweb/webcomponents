@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "10.0.0",
+  "version": "10.0.1",
   "description": "Automated conversion of lrndesign-imagemap/",
   "repository": {
     "type": "git",
@@ -41,10 +41,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/hax-iconset": "^10.0.0",
-    "@haxtheweb/relative-heading": "^10.0.0",
-    "@haxtheweb/simple-icon": "^10.0.0",
-    "@haxtheweb/simple-popover": "^10.0.0",
+    "@haxtheweb/hax-iconset": "^10.0.1",
+    "@haxtheweb/relative-heading": "^10.0.1",
+    "@haxtheweb/simple-icon": "^10.0.1",
+    "@haxtheweb/simple-popover": "^10.0.1",
     "@polymer/iron-a11y-keys": "^3.0.1",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/prism-element": "^3.0.0",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^10.0.0",
-    "@haxtheweb/storybook-utilities": "^10.0.0",
+    "@haxtheweb/storybook-utilities": "^10.0.1",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
