@@ -60,7 +60,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
             --map-menu-item-a-active-background-color,
             black
           );
-          border-radius: var(--map-menu-item-border-radius, 4px);
+          border-radius: var(--map-menu-item-border-radius, 0px);
         }
         
         a:hover button,
@@ -75,7 +75,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
             --map-menu-item-a-active-background-color,
             black
           );
-          border-radius: var(--map-menu-item-border-radius, 4px);
+          border-radius: var(--map-menu-item-border-radius, 0px);
         }
         button {
           cursor: pointer;

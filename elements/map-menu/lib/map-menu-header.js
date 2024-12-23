@@ -41,7 +41,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           font-weight: var(--map-menu-item-button-active-font-weight, bold);
           text-decoration: var(--map-menu-active-item-text-decoration, var(--map-menu-header-a-text-decoration-hover, none));
           background-color: var(--map-menu-item-a-active-background-color);
-          border-radius: var(--map-menu-item-border-radius, 4px);
+          border-radius: var(--map-menu-item-border-radius, 0px);
         }
         :host([hovered]) button,
         a:hover button,
@@ -53,7 +53,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
           );
           text-decoration: var(--map-menu-header-a-text-decoration-hover, none);
           background-color: var(--map-menu-item-a-active-background-color);
-          border-radius: var(--map-menu-item-border-radius, 4px);
+          border-radius: var(--map-menu-item-border-radius, 0px);
         }
 
         #link {
@@ -137,7 +137,6 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         }
         :host(:not([icon=""])) button {
           padding-left: 0;
-          padding: var(--map-menu-header-button-padding);
         }
         .ops {
           position: absolute;
