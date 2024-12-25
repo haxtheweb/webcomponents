@@ -141,6 +141,9 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         :host(:not([icon=""])) button {
           padding-left: 0;
         }
+        :host(:not([icon=""])[is-flex]) button {
+          padding: var(--map-menu-header-button-padding);
+        }
         .ops {
           position: absolute;
           display: block;
@@ -210,6 +213,7 @@ class MapMenuHeader extends I18NMixin(LitElement) {
   constructor() {
     super();
     this.editControls = false;
+    this.isFlex = false;
     this.iconLabel = null;
     this.icon = null;
     this.url = "";
@@ -274,6 +278,10 @@ class MapMenuHeader extends I18NMixin(LitElement) {
       editControls: {
         type: Boolean,
         attribute: "edit-controls",
+      },
+      isFlex: { 
+        type: Boolean, 
+        attribute: "is-flex" 
       },
       url: {
         type: String,
