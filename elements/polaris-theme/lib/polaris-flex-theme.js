@@ -807,9 +807,12 @@ class PolarisFlexTheme extends LTIResizingMixin(
               part="page-tags"
               auto-accent-color
             ></site-active-tags>
-            <section id="slot" part="slot">
-              <slot></slot>
-            </section>
+            <div class="main-section">
+              ${this.renderSideBar()}
+              <section id="slot" part="slot">
+                <slot></slot>
+              </section>
+            </div>
           </article>
         </main>
       </div>
