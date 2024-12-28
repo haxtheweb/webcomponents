@@ -190,6 +190,7 @@ class MapMenuSubmenu extends LitElement {
         <map-menu-header
           id="${this.id}"
           ?edit-controls="${this.editControls}"
+          ?is-flex="${this.isFlex}"
           itemtitle="${this.itemtitle}"
           label="${this.label}"
           ?hovered="${this.hovered}"
@@ -262,7 +263,10 @@ class MapMenuSubmenu extends LitElement {
       collapsable: {
         type: Boolean,
       },
-      isFlex: { type: Boolean, attribute: "is-flex" },
+      isFlex: { 
+        type: Boolean, 
+        attribute: "is-flex" 
+      },
       isNested: {
         type: Boolean,
         attribute: "is-nested",
