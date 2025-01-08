@@ -2,26 +2,13 @@ const gulp = require("gulp");
 const fs = require("fs");
 const path = require("path");
 
-// run polymer analyze to generate documentation
-gulp.task("analyze", () => {
-  var exec = require("child_process").exec;
-  return exec(
-    "polymer analyze --input demo/index.html > analysis.json",
-    function(error, stdout, stderr) {
-      if (error !== null) {
-        console.log("exec error: " + error);
-      }
-    }
-  );
-});
-
 
 gulp.task("watch", () => {
-  return gulp.watch("./*.js", gulp.series("analyze"));
+  return gulp.watch("./*.js");
 });
 
 // simple developer flow
-gulp.task("dev", gulp.series("analyze", "watch"));
+gulp.task("dev", gulp.series("watch"));
 
 // walk the tree and build the icon structure
 function dirTree(filename) {
@@ -58,4 +45,4 @@ gulp.task("iconset", (done) => {
   });
   done();
 });
-gulp.task("default", gulp.series("analyze", "iconset"));
+gulp.task("default", gulp.series("iconset"));

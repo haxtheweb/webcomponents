@@ -8,11 +8,6 @@
     "useHAX": true,
     "useSass": false,
     "files": {
-      "css": "src/stop-note.css",
-      "html": "src/stop-note.html",
-      "js": "src/stop-note.js",
-      "properties": "src/stop-note-properties.json",
-      "hax": "src/stop-note-hax.json"
     },
     "sharedStyles": []
   },
@@ -54,6 +49,7 @@
     "@haxtheweb/storybook-utilities": "^10.0.1",
     "wc-dox": "1.1.0",
     "@open-wc/testing": "4.0.0",
+    "@polymer/iron-demo-helpers": "3.1.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2",
     "@custom-elements-manifest/analyzer": "^0.10.4",

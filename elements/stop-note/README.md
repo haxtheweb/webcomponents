@@ -15,7 +15,7 @@ import '@haxtheweb/stop-note.js';
 ```
 
 ## Develop / Demo
-Run `npm start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
+Run `npm start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the directory for changes and automatically rebuilding the element and documentation site for the demo.
 ```bash
 $ npm start
 ```
