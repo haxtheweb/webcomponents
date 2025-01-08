@@ -1,12 +1,72 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "shadow-style",
-      "description": "`shadow-style`\n`write css that is for piercing shadow roots and applying CSS automatically`\n\nProperties:\n\n  * `cssMap` - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "shadow-style.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`shadow-style`\n`write css that is for piercing shadow roots and applying CSS automatically`",
+          "name": "ShadowStyle",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "processShadowText",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "cssMap",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "display",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\""
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "shadow-style",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ShadowStyle",
+            "module": "shadow-style.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ShadowStyle",
+          "declaration": {
+            "name": "ShadowStyle",
+            "module": "shadow-style.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

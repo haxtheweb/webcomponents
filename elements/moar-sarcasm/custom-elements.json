@@ -1,23 +1,95 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "moar-sarcasm",
-      "description": "`moar-sarcasm`\n`Provide a laugh and a good example of VanillaJS for demos`\n\nAttributes:\n\n  * `say` {`string | null`} - \n\n  * `a11y` {`string | null`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `say` {`string | null`} - \n\n  * `a11y` {`string | null`} - \n\n  * `template` - \n\n  * `observer` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "moar-sarcasm.js",
+      "declarations": [
         {
-          "name": "say",
-          "description": "`say` {`string | null`} - \n\nProperty: say",
-          "values": []
+          "kind": "class",
+          "description": "`moar-sarcasm`\n`Provide a laugh and a good example of VanillaJS for demos`",
+          "name": "MoarSarcasm",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "This is a convention, not the standard",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "processText",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ],
+              "description": "Process the text in question"
+            },
+            {
+              "kind": "field",
+              "name": "say"
+            },
+            {
+              "kind": "field",
+              "name": "a11y"
+            },
+            {
+              "kind": "field",
+              "name": "template"
+            },
+            {
+              "kind": "field",
+              "name": "observer",
+              "default": "new MutationObserver((mutations) => { mutations.forEach((mutation) => { this.say = this.innerText; }); })"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "say"
+            },
+            {
+              "name": "a11y"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "moar-sarcasm",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MoarSarcasm",
+            "module": "moar-sarcasm.js"
+          }
         },
         {
-          "name": "a11y",
-          "description": "`a11y` {`string | null`} - \n\nProperty: a11y",
-          "values": []
+          "kind": "js",
+          "name": "MoarSarcasm",
+          "declaration": {
+            "name": "MoarSarcasm",
+            "module": "moar-sarcasm.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

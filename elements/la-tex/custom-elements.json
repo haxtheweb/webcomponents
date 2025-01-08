@@ -1,22 +1,137 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "la-tex",
-      "description": "`la-tex`\n`render LaTeX formatted math and science content`\n\nAttributes:\n\n  * `hydrated` {`boolean`} - \n\n  * `initialText` {`string`} - \n\nProperties:\n\n  * `hydrated` {`boolean`} - \n\n  * `initialText` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "la-tex.js",
+      "declarations": [
         {
-          "name": "hydrated",
-          "description": "`hydrated` {`boolean`} - \n\nProperty: hydrated\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`la-tex`\n`render LaTeX formatted math and science content`",
+          "name": "LaTex",
+          "members": [
+            {
+              "kind": "method",
+              "name": "hydrateLaTeX"
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessNodeToContent",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "hydrated",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hydrated",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "initialText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "initialText"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "hydrated",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hydrated"
+            },
+            {
+              "name": "initialText",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "initialText"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "la-tex",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LaTex",
+            "module": "la-tex.js"
+          }
         },
         {
-          "name": "initialText",
-          "description": "`initialText` {`string`} - \n\nProperty: initialText\n\nDefault: innerText"
+          "kind": "js",
+          "name": "LaTex",
+          "declaration": {
+            "name": "LaTex",
+            "module": "la-tex.js"
+          }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/latex2html5.js",
+      "declarations": [],
+      "exports": []
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,54 +1,294 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "aframe-player",
-      "description": "`aframe-player`\n`A wrapper to do data binding into aframe`\n\nAttributes:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `sky-color` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `source` {`string`} - Source to reference for the 3D object\n\n  * `windowControllers` - \n\n  * `course` {`string`} - \n\n  * `height` {`string`} - height of the element\n\n  * `width` {`string`} - width of the element\n\n  * `skyColor` {`string`} - Color of the sky / background.\n\n  * `ar` {`boolean`} - If this is for augmented reality or not.\n\n  * `x` {`string`} - x position for the AR element.\n\n  * `y` {`string`} - y position for the AR element.\n\n  * `z` {`string`} - z position for the AR element.\n\n  * `position` - Generate a position object when coordinates change.\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "aframe-player.js",
+      "declarations": [
         {
-          "name": "source",
-          "description": "`source` {`string`} - Source to reference for the 3D object\n\nProperty: source"
+          "kind": "class",
+          "description": "`aframe-player`\n`A wrapper to do data binding into aframe`",
+          "name": "AframePlayer",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_aframeLoaded",
+              "parameters": [
+                {
+                  "name": "el"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_computePosition",
+              "parameters": [
+                {
+                  "name": "x"
+                },
+                {
+                  "name": "y"
+                },
+                {
+                  "name": "z"
+                },
+                {
+                  "name": "width"
+                },
+                {
+                  "name": "height"
+                }
+              ],
+              "description": "Generate position object based on format a-frame expects."
+            },
+            {
+              "kind": "method",
+              "name": "_positionChanged",
+              "parameters": [
+                {
+                  "name": "position"
+                }
+              ],
+              "description": "When position is updated, inject this into a-frame tag."
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "course",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "height of the element",
+              "default": "\"480px\"",
+              "attribute": "height"
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "width of the element",
+              "default": "\"640px\"",
+              "attribute": "width"
+            },
+            {
+              "kind": "field",
+              "name": "skyColor",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Color of the sky / background.",
+              "default": "\"#DCDCDC\"",
+              "attribute": "sky-color"
+            },
+            {
+              "kind": "field",
+              "name": "ar",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If this is for augmented reality or not.",
+              "default": "false",
+              "attribute": "ar"
+            },
+            {
+              "kind": "field",
+              "name": "x",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "x position for the AR element.",
+              "default": "\"0\"",
+              "attribute": "x"
+            },
+            {
+              "kind": "field",
+              "name": "y",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "y position for the AR element.",
+              "default": "\"0\"",
+              "attribute": "y"
+            },
+            {
+              "kind": "field",
+              "name": "z",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "z position for the AR element.",
+              "default": "\"0\"",
+              "attribute": "z"
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Generate a position object when coordinates change.",
+              "default": "{}",
+              "attribute": "position"
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Source to reference for the 3D object",
+              "attribute": "source"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "description": "Source to reference for the 3D object",
+              "fieldName": "source"
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "description": "height of the element",
+              "default": "\"480px\"",
+              "fieldName": "height"
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "description": "width of the element",
+              "default": "\"640px\"",
+              "fieldName": "width"
+            },
+            {
+              "name": "sky-color",
+              "type": {
+                "text": "string"
+              },
+              "description": "Color of the sky / background.",
+              "default": "\"#DCDCDC\"",
+              "fieldName": "skyColor"
+            },
+            {
+              "name": "ar",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If this is for augmented reality or not.",
+              "default": "false",
+              "fieldName": "ar"
+            },
+            {
+              "name": "x",
+              "type": {
+                "text": "string"
+              },
+              "description": "x position for the AR element.",
+              "default": "\"0\"",
+              "fieldName": "x"
+            },
+            {
+              "name": "y",
+              "type": {
+                "text": "string"
+              },
+              "description": "y position for the AR element.",
+              "default": "\"0\"",
+              "fieldName": "y"
+            },
+            {
+              "name": "z",
+              "type": {
+                "text": "string"
+              },
+              "description": "z position for the AR element.",
+              "default": "\"0\"",
+              "fieldName": "z"
+            },
+            {
+              "name": "position",
+              "type": {
+                "text": "object"
+              },
+              "description": "Generate a position object when coordinates change.",
+              "default": "{}",
+              "fieldName": "position"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "aframe-player",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "AframePlayer",
+            "module": "aframe-player.js"
+          }
         },
         {
-          "name": "height",
-          "description": "`height` {`string`} - height of the element\n\nProperty: height\n\nDefault: 480px"
-        },
-        {
-          "name": "width",
-          "description": "`width` {`string`} - width of the element\n\nProperty: width\n\nDefault: 640px"
-        },
-        {
-          "name": "sky-color",
-          "description": "`sky-color` {`string`} - Color of the sky / background.\n\nProperty: skyColor\n\nDefault: #DCDCDC"
-        },
-        {
-          "name": "ar",
-          "description": "`ar` {`boolean`} - If this is for augmented reality or not.\n\nProperty: ar\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "x",
-          "description": "`x` {`string`} - x position for the AR element.\n\nProperty: x\n\nDefault: 0"
-        },
-        {
-          "name": "y",
-          "description": "`y` {`string`} - y position for the AR element.\n\nProperty: y\n\nDefault: 0"
-        },
-        {
-          "name": "z",
-          "description": "`z` {`string`} - z position for the AR element.\n\nProperty: z\n\nDefault: 0"
-        },
-        {
-          "name": "position",
-          "description": "`position` - Generate a position object when coordinates change.\n\nProperty: position\n\nDefault: [object Object]"
-        },
-        {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
+          "kind": "js",
+          "name": "AframePlayer",
+          "declaration": {
+            "name": "AframePlayer",
+            "module": "aframe-player.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

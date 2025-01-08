@@ -1,17 +1,108 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "wc-registry",
-      "description": "`wc-registry`\n`optionally build the registry from the innerHTML of an element`\n\nProperties:\n\n  * `loader` - ",
-      "attributes": []
-    },
-    {
-      "name": "wc-autoload",
-      "description": "`wc-autoload`\n`automatically load new tags in the dom`\n\nProperties:\n\n  * `loaded` {`boolean`} - \n\n  * `registry` - \n\n  * `options` - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "wc-autoload.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`wc-registry`\n`optionally build the registry from the innerHTML of an element`",
+          "name": "WcRegistry",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "This is a convention, not the standard",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "loader"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "wc-registry",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "`wc-autoload`\n`automatically load new tags in the dom`",
+          "name": "WcAutoload",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "This is a convention, not the standard",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "processNewElement",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Process new elements"
+            },
+            {
+              "kind": "field",
+              "name": "loaded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "registry"
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ childList: true, subtree: true, }"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "wc-autoload",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "WcRegistry",
+            "module": "wc-autoload.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "WcAutoload",
+            "module": "wc-autoload.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "WcAutoload",
+          "declaration": {
+            "name": "WcAutoload",
+            "module": "wc-autoload.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

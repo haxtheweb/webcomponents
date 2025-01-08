@@ -1,65 +1,362 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "hal-9000",
-      "description": "`hal-9000`\n\nEvents:\n\n  * `super-daemon-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `super-daemon-toast-show` {`CustomEvent<{ text: any; future: boolean; merlin: boolean; accentColor: string; duration: number; alwaysvisible: boolean; awaitingMerlinInput: boolean; }>`} - \n\n  * `hal-9000-online` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `toast` {`boolean`} - \n\n  * `commands` - Commands to listen for and take action on\n\n  * `responds-to` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker\n\nProperties:\n\n  * `auto` {`boolean`} - Start automatically\n\n  * `enabled` {`boolean`} - Status of listening\n\n  * `toast` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `commands` - Commands to listen for and take action on\n\n  * `respondsTo` {`string`} - The name that HAL 9000 should respond to.\n\n  * `debug` {`boolean`} - Debug mode for annyang\n\n  * `pitch` {`number`} - Pitch of speech\n\n  * `rate` {`number`} - Rate of speech\n\n  * `language` {`string`} - Language of the speaker",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "hal-9000.js",
+      "declarations": [
         {
-          "name": "auto",
-          "description": "`auto` {`boolean`} - Start automatically\n\nProperty: auto",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`hal-9000`",
+          "name": "Hal9000",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_commandsChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                }
+              ],
+              "description": "Notice new voice commands added"
+            },
+            {
+              "kind": "method",
+              "name": "addCommands",
+              "parameters": [
+                {
+                  "name": "commands"
+                }
+              ],
+              "description": "Just rout add commands call to the right place"
+            },
+            {
+              "kind": "method",
+              "name": "speak",
+              "parameters": [
+                {
+                  "name": "text"
+                },
+                {
+                  "name": "alwaysvisible",
+                  "default": "false"
+                },
+                {
+                  "name": "awaitingInput",
+                  "default": "true"
+                }
+              ],
+              "description": "And the word was good."
+            },
+            {
+              "kind": "method",
+              "name": "setToast",
+              "parameters": [
+                {
+                  "name": "text"
+                },
+                {
+                  "name": "alwaysvisible",
+                  "default": "false"
+                },
+                {
+                  "name": "awaitingInput",
+                  "default": "true"
+                }
+              ],
+              "description": "Send a toast message to match what is said. This is good for a11y"
+            },
+            {
+              "kind": "method",
+              "name": "_annyangLoaded",
+              "description": "Annyang library has been loaded globally so we can use it"
+            },
+            {
+              "kind": "method",
+              "name": "_respondsToChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "Change the key name that is responded to"
+            },
+            {
+              "kind": "method",
+              "name": "_autoChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                }
+              ],
+              "description": "Notice auto state changed so we start listening"
+            },
+            {
+              "kind": "method",
+              "name": "_enabledChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                }
+              ],
+              "description": "React to enabled state changing"
+            },
+            {
+              "kind": "method",
+              "name": "_debugChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "debug mode changed"
+            },
+            {
+              "kind": "field",
+              "name": "toast",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "toast",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "commands",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Commands to listen for and take action on",
+              "default": "{}",
+              "attribute": "commands"
+            },
+            {
+              "kind": "field",
+              "name": "respondsTo",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The name that HAL 9000 should respond to.",
+              "default": "\"(merlin)\"",
+              "attribute": "responds-to"
+            },
+            {
+              "kind": "field",
+              "name": "debug",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Debug mode for annyang",
+              "default": "false",
+              "attribute": "debug"
+            },
+            {
+              "kind": "field",
+              "name": "pitch",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Pitch of speech",
+              "default": "0.9",
+              "attribute": "pitch",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "rate",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Rate of speech",
+              "default": "0.9",
+              "attribute": "rate",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "language",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Language of the speaker",
+              "attribute": "language",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "Hal9000"
+            },
+            {
+              "kind": "field",
+              "name": "instance",
+              "default": "this"
+            },
+            {
+              "kind": "field",
+              "name": "auto",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Start automatically",
+              "attribute": "auto",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "enabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Status of listening",
+              "attribute": "enabled",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "toast",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "toast"
+            },
+            {
+              "name": "commands",
+              "type": {
+                "text": "object"
+              },
+              "description": "Commands to listen for and take action on",
+              "default": "{}",
+              "fieldName": "commands"
+            },
+            {
+              "name": "responds-to",
+              "type": {
+                "text": "string"
+              },
+              "description": "The name that HAL 9000 should respond to.",
+              "default": "\"(merlin)\"",
+              "fieldName": "respondsTo"
+            },
+            {
+              "name": "debug",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Debug mode for annyang",
+              "default": "false",
+              "fieldName": "debug"
+            },
+            {
+              "name": "auto",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Start automatically",
+              "fieldName": "auto"
+            },
+            {
+              "name": "enabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Status of listening",
+              "fieldName": "enabled"
+            },
+            {
+              "name": "pitch",
+              "type": {
+                "text": "number"
+              },
+              "description": "Pitch of speech",
+              "default": "0.9",
+              "fieldName": "pitch"
+            },
+            {
+              "name": "rate",
+              "type": {
+                "text": "number"
+              },
+              "description": "Rate of speech",
+              "default": "0.9",
+              "fieldName": "rate"
+            },
+            {
+              "name": "language",
+              "type": {
+                "text": "string"
+              },
+              "description": "Language of the speaker",
+              "fieldName": "language"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hal-9000",
+          "customElement": true
         },
         {
-          "name": "enabled",
-          "description": "`enabled` {`boolean`} - Status of listening\n\nProperty: enabled",
-          "valueSet": "v"
+          "kind": "variable",
+          "name": "HAL9000Instance"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "Hal9000",
+            "module": "hal-9000.js"
+          }
         },
         {
-          "name": "toast",
-          "description": "`toast` {`boolean`} - \n\nProperty: toast\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "Hal9000",
+          "declaration": {
+            "name": "Hal9000",
+            "module": "hal-9000.js"
+          }
         },
         {
-          "name": "commands",
-          "description": "`commands` - Commands to listen for and take action on\n\nProperty: commands\n\nDefault: [object Object]"
-        },
-        {
-          "name": "responds-to",
-          "description": "`responds-to` {`string`} - The name that HAL 9000 should respond to.\n\nProperty: respondsTo\n\nDefault: (merlin)"
-        },
-        {
-          "name": "debug",
-          "description": "`debug` {`boolean`} - Debug mode for annyang\n\nProperty: debug\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "pitch",
-          "description": "`pitch` {`number`} - Pitch of speech\n\nProperty: pitch\n\nDefault: 0.9"
-        },
-        {
-          "name": "rate",
-          "description": "`rate` {`number`} - Rate of speech\n\nProperty: rate\n\nDefault: 0.9"
-        },
-        {
-          "name": "language",
-          "description": "`language` {`string`} - Language of the speaker\n\nProperty: language\n\nDefault: language"
-        },
-        {
-          "name": "onsuper-daemon-toast-hide",
-          "description": "`super-daemon-toast-hide` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onsuper-daemon-toast-show",
-          "description": "`super-daemon-toast-show` {`CustomEvent<{ text: any; future: boolean; merlin: boolean; accentColor: string; duration: number; alwaysvisible: boolean; awaitingMerlinInput: boolean; }>`} - "
-        },
-        {
-          "name": "onhal-9000-online",
-          "description": "`hal-9000-online` {`CustomEvent<boolean>`} - "
+          "kind": "js",
+          "name": "HAL9000Instance",
+          "declaration": {
+            "name": "HAL9000Instance",
+            "module": "hal-9000.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

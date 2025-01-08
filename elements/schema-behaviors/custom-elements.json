@@ -1,4 +1,84 @@
 {
-  "version": 2,
-  "tags": []
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "schema-behaviors.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "SchemaBehaviors",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "description": "Popular convention across libraries",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_schemaMapChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "Notice the schema map has changed, reprocess attributes."
+            },
+            {
+              "kind": "field",
+              "name": "schemaResourceID",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "schemaMap",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+              "default": "{ prefix: { oer: \"http://oerschema.org/\", schema: \"http://schema.org/\", dc: \"http://purl.org/dc/terms/\", foaf: \"http://xmlns.com/foaf/0.1/\", cc: \"http://creativecommons.org/ns#\", bib: \"http://bib.schema.org\", }, }",
+              "attribute": "schemaMap"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "schemaMap",
+              "type": {
+                "text": "object"
+              },
+              "description": "Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
+              "default": "{ prefix: { oer: \"http://oerschema.org/\", schema: \"http://schema.org/\", dc: \"http://purl.org/dc/terms/\", foaf: \"http://xmlns.com/foaf/0.1/\", cc: \"http://creativecommons.org/ns#\", bib: \"http://bib.schema.org\", }, }",
+              "fieldName": "schemaMap"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SchemaBehaviors",
+          "declaration": {
+            "name": "SchemaBehaviors",
+            "module": "schema-behaviors.js"
+          }
+        }
+      ]
+    }
+  ]
 }

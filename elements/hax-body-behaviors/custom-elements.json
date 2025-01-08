@@ -1,4 +1,601 @@
 {
-  "version": 2,
-  "tags": []
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "hax-body-behaviors.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HAXWiring",
+          "declaration": {
+            "name": "HAXWiring",
+            "module": "hax-body-behaviors.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HAXElement",
+          "declaration": {
+            "name": "HAXElement",
+            "module": "hax-body-behaviors.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/HAXFields.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "HaxSchematizer",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ defaultSettings: { type: \"string\", }, format: { \"simple-fields\": { defaultSettings: { type: \"object\", format: \"simple-fields\", }, }, }, inputMethod: { alt: { defaultSettings: { type: \"string\", format: \"alt\", }, }, array: { defaultSettings: { type: \"array\", }, properties: { label: \"itemLabel\", }, }, boolean: { defaultSettings: { type: \"boolean\", }, }, code: { defaultSettings: { type: \"markup\", }, }, \"code-editor\": { defaultSettings: { type: \"markup\", }, }, color: { defaultSettings: { type: \"string\", format: \"color\", }, }, colorpicker: { defaultSettings: { type: \"string\", format: \"colorpicker\", }, }, \"date-time\": { defaultSettings: { type: \"string\", format: \"date-time\", }, }, datepicker: { defaultSettings: { type: \"string\", format: \"date\", }, }, fieldset: { defaultSettings: { type: \"object\", }, }, fileupload: { defaultSettings: { type: \"string\", format: \"fileupload\", }, }, haxupload: { defaultSettings: { type: \"string\", format: \"fileupload\", }, }, iconpicker: { defaultSettings: { type: \"string\", format: \"iconpicker\", }, }, markup: { defaultSettings: { type: \"markup\", }, }, \"md-block\": { defaultSettings: { type: \"markup\", format: \"md-block\", }, }, monthpicker: { defaultSettings: { type: \"string\", format: \"month\", }, }, number: { defaultSettings: { type: \"number\", }, }, object: { defaultSettings: { type: \"object\", }, }, select: { defaultSettings: { type: \"string\", format: \"select\", }, }, radio: { defaultSettings: { type: \"string\", format: \"radio\", }, }, slider: { defaultSettings: { type: \"number\", format: \"slider\", }, }, tabs: { defaultSettings: { type: \"object\", format: \"tabs\", }, }, collapse: { defaultSettings: { type: \"object\", format: \"collapse\", }, }, textarea: { defaultSettings: { type: \"string\", format: \"textarea\", }, }, timepicker: { defaultSettings: { type: \"string\", format: \"time\", }, }, weekpicker: { defaultSettings: { type: \"string\", format: \"week\", }, }, }, }",
+          "description": "fields array of input methods to JSON schema object conversion configuration\nthat can be reused outside of Simple Fields"
+        },
+        {
+          "kind": "variable",
+          "name": "HaxElementizer",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ defaultSettings: { element: \"simple-fields-field\", errorProperty: \"errorMessage\", invalidProperty: \"invalid\", noWrap: true, attributes: { type: \"text\", }, properties: { minLength: \"minlength\", maxLength: \"maxlength\", }, }, format: { radio: { defaultSettings: { element: \"simple-fields-field\", noWrap: true, attributes: { autofocus: true, type: \"radio\", }, properties: { options: \"options\", }, child: { element: \"simple-fields-array-item\", noWrap: true, descriptionProperty: \"description\", properties: { previewBy: \"previewBy\", }, }, }, }, select: { defaultSettings: { element: \"simple-fields-field\", noWrap: true, attributes: { autofocus: true, type: \"select\", }, properties: { options: \"options\", items: \"itemsList\", }, }, }, \"simple-picker\": { defaultSettings: { element: \"simple-picker\", attributes: { autofocus: true, }, properties: { options: \"options\", }, }, }, }, type: { array: { defaultSettings: { element: \"simple-fields-array\", noWrap: true, descriptionProperty: \"description\", child: { element: \"simple-fields-array-item\", noWrap: true, descriptionProperty: \"description\", properties: { previewBy: \"previewBy\", }, }, }, }, boolean: { defaultSettings: { element: \"simple-fields-field\", noWrap: true, attributes: { autofocus: true, type: \"checkbox\", value: false, }, }, }, file: { defaultSettings: { import: \"@haxtheweb/hax-body/lib/hax-upload-field.js\", element: \"hax-upload-field\", noWrap: true, attributes: { autofocus: true, type: \"file\", \"show-sources\": true, }, properties: { accepts: \"accepts\", }, }, }, integer: { defaultSettings: { element: \"simple-fields-field\", noWrap: true, attributes: { autofocus: true, step: 1, type: \"number\", }, properties: { minimum: \"min\", maximum: \"max\", multipleOf: \"step\", }, }, }, markup: { defaultSettings: { import: \"@haxtheweb/simple-fields/lib/simple-fields-code.js\", element: \"simple-fields-code\", setValueProperty: \"editorValue\", noWrap: true, }, format: { \"md-block\": { defaultSettings: { element: \"md-block\", setValueProperty: \"source\", noWrap: true, }, }, }, }, number: { defaultSettings: { element: \"simple-fields-field\", noWrap: true, type: \"number\", attributes: { autofocus: true, type: \"number\", }, properties: { minimum: \"min\", maximum: \"max\", multipleOf: \"step\", }, }, }, object: { defaultSettings: { element: \"simple-fields-fieldset\", noWrap: true, }, format: { cardlist: { defaultSettings: { element: \"hax-element-card-list\", noWrap: true, }, }, tabs: { defaultSettings: { import: \"@haxtheweb/simple-fields/lib/simple-fields-tabs.js\", element: \"simple-fields-tabs\", noWrap: true, child: { import: \"@haxtheweb/simple-fields/lib/simple-fields-tab.js\", element: \"simple-fields-tab\", noWrap: true, labelSlot: \"label\", descriptionSlot: \"\", }, properties: { layoutBreakpoint: \"layoutBreakpoint\", iconBreakpoint: \"iconBreakpoint\", sticky: \"sticky\", }, }, }, collapse: { defaultSettings: { import: \"@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js\", element: \"div\", // @todo make this a11y-collapse-group when we get state management right on cascading props noWrap: true, attributes: { radio: true, \"heading-button\": true, accordion: true, }, child: { import: \"@haxtheweb/a11y-collapse/a11y-collapse.js\", element: \"a11y-collapse\", noWrap: true, labelSlot: \"heading\", descriptionSlot: \"\", }, }, }, fields: { defaultSettings: { element: \"simple-fields\", noWrap: true, descriptionProperty: \"description\", properties: { schema: \"schema\", }, }, }, }, }, string: { format: { alt: { defaultSettings: { element: \"simple-fields-field\", noWrap: true, attributes: { autofocus: true, required: true, }, }, }, color: { defaultSettings: { element: \"simple-fields-field\", noWrap: true, attributes: { autofocus: true, type: \"color\", }, }, }, colorpicker: { defaultSettings: { import: \"@haxtheweb/simple-colors/lib/simple-colors-picker.js\", element: \"simple-colors-picker\", attributes: { autofocus: true, }, }, }, date: { defaultSettings: { element: \"simple-fields-field\", noWrap: true, attributes: { autofocus: true, type: \"date\", }, }, }, \"date-time\": { defaultSettings: { element: \"simple-fields-field\", noWrap: true, attributes: { autofocus: true, type: \"datetime-local\", }, }, }, date: { defaultSettings: { element: \"simple-fields-field\", noWrap: true, attributes: { autofocus: true, type: \"date\", }, }, }, email: { defaultSettings: { element: \"simple-fields-field\", noWrap: true, attributes: { autofocus: true, type: \"email\", }, }, }, fileupload: { defaultSettings: { import: \"@haxtheweb/hax-body/lib/hax-upload-field.js\", element: \"hax-upload-field\", noWrap: true, attributes: { autofocus: true, \"show-sources\": true, }, properties: { accepts: \"accepts\", }, }, }, iconpicker: { defaultSettings: { import: \"@haxtheweb/simple-icon-picker/simple-icon-picker.js\", element: \"simple-icon-picker\", attributes: { autofocus: true, }, properties: { options: \"icons\", }, }, }, month: { defaultSettings: { element: \"simple-fields-field\", noWrap: true, attributes: { autofocus: true, type: \"month\", }, }, }, textarea: { defaultSettings: { element: \"simple-fields-field\", noWrap: true, attributes: { autofocus: true, type: \"textarea\", }, }, }, time: { defaultSettings: { element: \"simple-fields-field\", noWrap: true, attributes: { autofocus: true, type: \"time\", }, }, }, uri: { defaultSettings: { element: \"simple-fields-field\", noWrap: true, attributes: { autofocus: true, type: \"file\", }, properties: { accepts: \"accepts\", }, }, }, }, }, }, }",
+          "description": "JSON schema object to form element conversion configuration object\nthat can be reused outside of Simple Fields"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HaxSchematizer",
+          "declaration": {
+            "name": "HaxSchematizer",
+            "module": "lib/HAXFields.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxElementizer",
+          "declaration": {
+            "name": "HaxElementizer",
+            "module": "lib/HAXFields.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/HAXLayouts.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "HaxLayoutBehaviors",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_dragEnter",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_dragLeave",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_dropEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_getSlotOrder",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_slotMonitor",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Use slot events to track which slots have nodes and apply to the shadowRoot\ncolumn wrappers. This helps with trasitions and animations"
+            },
+            {
+              "kind": "method",
+              "name": "canMoveSlot",
+              "parameters": [
+                {
+                  "name": "item"
+                },
+                {
+                  "name": "before"
+                },
+                {
+                  "description": "item",
+                  "name": "the",
+                  "type": {
+                    "text": "object"
+                  }
+                },
+                {
+                  "description": "-1 for left or +1 for right",
+                  "name": "",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Determines if the item can move a set number of slots.",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "moveSlot",
+              "parameters": [
+                {
+                  "name": "item"
+                },
+                {
+                  "name": "before"
+                },
+                {
+                  "description": "item",
+                  "name": "the",
+                  "type": {
+                    "text": "object"
+                  }
+                },
+                {
+                  "description": "-1 for left or +1 for right",
+                  "name": "",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Moves an item a set number of slots."
+            },
+            {
+              "kind": "method",
+              "name": "validateElementSlot",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Validate the slot name"
+            },
+            {
+              "kind": "method",
+              "name": "validElementSlots"
+            },
+            {
+              "kind": "method",
+              "name": "__sortChildren",
+              "description": "Sort children based on slot order"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "ready",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "ready",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "haxLayoutContainer",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hax-layout-container",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dataHaxRay",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "data-hax-ray",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "name": "disable-responsive-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "ready",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "ready"
+            },
+            {
+              "name": "data-hax-ray",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "dataHaxRay"
+            },
+            {
+              "name": "hax-layout-container",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "haxLayoutContainer"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HaxLayoutBehaviors",
+          "declaration": {
+            "name": "HaxLayoutBehaviors",
+            "module": "lib/HAXLayouts.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/HAXWiring.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Object to validate HAX schema. Can be used in and out of element contexts",
+          "name": "HAXWiring",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "type": {
+                "text": "object"
+              },
+              "description": "haxProperties",
+              "default": "{ type: \"element\", editingElement: \"core\", hideDefaultSettings: false, canScale: false, canEditSource: true, settings: { configure: [], advanced: [], developer: [], }, wipeSlot: {}, }"
+            },
+            {
+              "kind": "field",
+              "name": "setup",
+              "description": "Setter to bridge private haxProperties setter.\nThis is to then be implemented by the ready state of whatever is supplying the\nproperties in order to be able to bubble up the properties for a tag."
+            },
+            {
+              "kind": "field",
+              "name": "_haxStoreReady",
+              "description": "HAX store is ready so now we can fire events"
+            },
+            {
+              "kind": "field",
+              "name": "setHaxProperties",
+              "description": "Setter to bridge private haxProperties setter.\nThis is to then be implemented by the ready state of whatever is supplying the\nproperties in order to be able to bubble up the properties for a tag."
+            },
+            {
+              "kind": "field",
+              "name": "readyToFireHAXSchema"
+            },
+            {
+              "kind": "field",
+              "name": "standardAdvancedProps",
+              "description": "Standard advanced properties we support for all forms"
+            },
+            {
+              "kind": "field",
+              "name": "validateSetting",
+              "description": "Validate settings object."
+            },
+            {
+              "kind": "field",
+              "name": "getHaxProperties",
+              "description": "Match convention for set."
+            },
+            {
+              "kind": "field",
+              "name": "getHaxJSONSchema",
+              "description": "Convert haxProperties structure to a simple json-schema.\nThis allows for complex form building systems based on this data.\ntype is configure or advanced"
+            },
+            {
+              "kind": "field",
+              "name": "postProcessgetHaxJSONSchema",
+              "description": "Default postProcessgetHaxJSONSchema to be overridden."
+            },
+            {
+              "kind": "field",
+              "name": "_getHaxJSONSchemaProperty",
+              "description": "Internal helper for getHaxJSONSchema to buiild the properties object\ncorrectly with support for recursive nesting thx to objects / arrays."
+            },
+            {
+              "kind": "field",
+              "name": "getHaxJSONSchemaType",
+              "description": "Convert input method to schema type"
+            },
+            {
+              "kind": "field",
+              "name": "validHAXPropertyInputMethod",
+              "description": "List valid input methods."
+            },
+            {
+              "kind": "field",
+              "name": "prototypeHaxProperties",
+              "description": "Return a haxProperties prototype / example structure"
+            }
+          ]
+        },
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "HAXElement",
+          "members": [
+            {
+              "kind": "method",
+              "name": "designSystemHAXProperties",
+              "parameters": [
+                {
+                  "name": "props",
+                  "description": "HAX properties being set for the schema for an element",
+                  "type": {
+                    "text": "Object"
+                  }
+                },
+                {
+                  "name": "tag",
+                  "description": "tagName of the element",
+                  "type": {
+                    "text": "String"
+                  }
+                }
+              ],
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setHaxProperties",
+              "parameters": [
+                {
+                  "name": "props"
+                },
+                {
+                  "name": "tag",
+                  "default": "\"\""
+                },
+                {
+                  "name": "context",
+                  "default": "this"
+                }
+              ],
+              "description": "Setter to bridge private haxProperties setter.\nThis is to then be implemented by the ready state of whatever is supplying the\nproperties in order to be able to bubble up the properties for a tag."
+            },
+            {
+              "kind": "method",
+              "name": "setup",
+              "parameters": [
+                {
+                  "name": "props"
+                },
+                {
+                  "name": "tag",
+                  "default": "\"\""
+                },
+                {
+                  "name": "context",
+                  "default": "this"
+                }
+              ],
+              "description": "Setter to bridge private haxProperties setter.\nThis is to then be implemented by the ready state of whatever is supplying the\nproperties in order to be able to bubble up the properties for a tag."
+            },
+            {
+              "kind": "method",
+              "name": "_haxStoreReady",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Private function to fire off props when ready"
+            },
+            {
+              "kind": "method",
+              "name": "validateSetting",
+              "parameters": [
+                {
+                  "name": "setting"
+                }
+              ],
+              "description": "Validate settings object."
+            },
+            {
+              "kind": "method",
+              "name": "getHaxProperties",
+              "description": "Match convention for set."
+            },
+            {
+              "kind": "method",
+              "name": "getHaxJSONSchema",
+              "parameters": [
+                {
+                  "name": "type"
+                },
+                {
+                  "name": "haxProperties"
+                },
+                {
+                  "name": "target",
+                  "default": "this"
+                }
+              ],
+              "description": "Convert haxProperties structure to a simple json-schema.\nThis allows for complex form building systems based on this data.\ntype is configure or advanced"
+            },
+            {
+              "kind": "method",
+              "name": "postProcessgetHaxJSONSchema",
+              "parameters": [
+                {
+                  "name": "schema"
+                }
+              ],
+              "description": "Default postProcessgetHaxJSONSchema to be overridden."
+            },
+            {
+              "kind": "method",
+              "name": "_getHaxJSONSchemaProperty",
+              "parameters": [
+                {
+                  "name": "settings"
+                }
+              ],
+              "description": "Internal helper for getHaxJSONSchema to buiild the properties object\ncorrectly with support for recursive nesting thx to objects / arrays."
+            },
+            {
+              "kind": "method",
+              "name": "getHaxJSONSchemaType",
+              "parameters": [
+                {
+                  "name": "inputMethod"
+                }
+              ],
+              "description": "Convert input method to schedma type"
+            },
+            {
+              "kind": "method",
+              "name": "validHAXPropertyInputMethod",
+              "description": "List valid input methods."
+            },
+            {
+              "kind": "method",
+              "name": "prototypeHaxProperties",
+              "description": "Return a haxProperties prototype / example structure"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "HAXWiring",
+              "default": "new HAXWiring()"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "privacy": "public",
+              "description": "haxProperties",
+              "attribute": "haxProperties"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "haxProperties",
+              "description": "haxProperties",
+              "fieldName": "haxProperties"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HAXWiring",
+          "declaration": {
+            "name": "HAXWiring",
+            "module": "lib/HAXWiring.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HAXElement",
+          "declaration": {
+            "name": "HAXElement",
+            "module": "lib/HAXWiring.js"
+          }
+        }
+      ]
+    }
+  ]
 }

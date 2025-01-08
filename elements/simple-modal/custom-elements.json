@@ -1,85 +1,557 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "simple-modal-template",
-      "description": "`simple-modal-template`\n`A simple modal that ensures accessibility and stack order context appropriately`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ id: string | null; elements: { header: any; content: any; buttons: any; custom: any; }; resize: any; invokedBy: any; modalClass: string | null; styles: {}; clone: boolean; mode: any; title: string | boolean; }>`} - \n\nAttributes:\n\n  * `mode` {`string`} - the modal title\n\n  * `title` {`string`} - the modal title\n\n  * `modal` - the simple-modal\n\nProperties:\n\n  * `mode` {`string`} - the modal title\n\n  * `title` {`string`} - the modal title\n\n  * `modal` - the simple-modal",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "simple-modal.js",
+      "declarations": [
         {
-          "name": "mode",
-          "description": "`mode` {`string`} - the modal title\n\nProperty: mode"
+          "kind": "variable",
+          "name": "SimpleModalCssVars",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ \"--simple-modal-resize\", \"--simple-modal-width\", \"--simple-modal-z-index\", \"--simple-modal-height\", \"--simple-modal-min-width\", \"--simple-modal-min-height\", \"--simple-modal-max-width\", \"--simple-modal-max-height\", \"--simple-modal-titlebar-color\", \"--simple-modal-titlebar-height\", \"--simple-modal-titlebar-line-height\", \"--simple-modal-titlebar-background\", \"--simple-modal-titlebar-padding\", \"--simple-modal-header-color\", \"--simple-modal-header-background\", \"--simple-modal-header-padding\", \"--simple-modal-content-container-color\", \"--simple-modal-content-container-background\", \"--simple-modal-content-padding\", \"--simple-modal-buttons-color\", \"--simple-modal-buttons-background\", \"--simple-modal-buttons-padding\", \"--simple-modal-button-color\", \"--simple-modal-button-background\", ]"
         },
         {
-          "name": "title",
-          "description": "`title` {`string`} - the modal title\n\nProperty: title\n\nDefault: "
+          "kind": "class",
+          "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\n\n### Styling\n`<simple-fields>` provides following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|--------\n--simple-modal-resize | whether modal can be resized by user (see https://developer.mozilla.org/en-US/docs/Web/CSS/resize) | unset\n--simple-modal-titlebar-color | height for modal's titlebar | #444\n--simple-modal-titlebar-background | background color for modal's titlebar | #ddd\n--simple-modal-titlebar-padding | padding for modal's titlebar | 0px 16px\n--simple-modal-titlebar-height | height for modal's titlebar | unset\n--simple-modal-titlebar-line-height | text's line height for modal's titlebar | unset\n--simple-modal-header-color | text color for modal's header | #222\n--simple-modal-header-background | background color for modal's header | #ccc\n--simple-modal-header-padding | padding for modal's header | 0px 16px\n--simple-modal-content-container-color | text color for modal's content | #222;\n--simple-modal-content-container-background | text color for modal's content | #fff \n--simple-modal-content-padding | text color for modal's content | 8px 16px\n--simple-modal-buttons-color | text color for modal's buttons | unset\n--simple-modal-buttons-background | background color for modal's buttons | unset\n--simple-modal-buttons-padding | padding for modal's buttons | 0\n--simple-modal-button-color | text color for modal's buttons | var(--simple-modal-buttons-color)\n--simple-modal-button-background | background color for modal's buttons | var(--simple-modal-buttons-background-color)\n--simple-modal-z-index | z-index for modal | 1000\n--simple-modal-width | width of modal | 75vw\n--simple-modal-height | height of modal | auto;\n--simple-modal-min-width | min-width of modal | unset\n--simple-modal-min-height | min-height of modal | unset\n--simple-modal-max-width | max-width of modal | unset\n--simple-modal-max-height | max-height of modal | unset",
+          "name": "SimpleModal",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "convention",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "showEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "show event call to open the modal and display it's content"
+            },
+            {
+              "kind": "method",
+              "name": "show",
+              "parameters": [
+                {
+                  "name": "title"
+                },
+                {
+                  "name": "mode"
+                },
+                {
+                  "name": "elements"
+                },
+                {
+                  "name": "invokedBy"
+                },
+                {
+                  "name": "id",
+                  "default": "null"
+                },
+                {
+                  "name": "modalClass",
+                  "default": "null"
+                },
+                {
+                  "name": "styles",
+                  "default": "null"
+                },
+                {
+                  "name": "clone",
+                  "default": "false"
+                },
+                {
+                  "name": "modal",
+                  "default": "false"
+                }
+              ],
+              "description": "Show the modal and display the material"
+            },
+            {
+              "kind": "method",
+              "name": "close",
+              "description": "Close the modal and do some clean up"
+            },
+            {
+              "kind": "method",
+              "name": "open"
+            },
+            {
+              "kind": "method",
+              "name": "_openedChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_getAriaLabelledby",
+              "parameters": [
+                {
+                  "name": "title"
+                }
+              ],
+              "description": "If there is a title, aria-labelledby should point to #simple-modal-title"
+            },
+            {
+              "kind": "method",
+              "name": "_getAriaLabel",
+              "parameters": [
+                {
+                  "name": "title"
+                }
+              ],
+              "description": "If there is no title, supply a generic aria-label"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "heading / label of the modal",
+              "default": "\"\"",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "opened",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "open state",
+              "default": "false",
+              "attribute": "opened",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "closeLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Close label",
+              "default": "\"Close\"",
+              "attribute": "close-label"
+            },
+            {
+              "kind": "field",
+              "name": "closeIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Close icon",
+              "default": "\"close\"",
+              "attribute": "close-icon"
+            },
+            {
+              "kind": "field",
+              "name": "modal",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "support for modal flag",
+              "default": "false",
+              "attribute": "modal"
+            },
+            {
+              "kind": "field",
+              "name": "invokedBy",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "The element that invoked this. This way we can track our way back accessibly",
+              "attribute": "invokedBy"
+            },
+            {
+              "kind": "field",
+              "name": "mode",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "can add a custom string to style modal based on what is calling it",
+              "attribute": "mode",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "heading / label of the modal",
+              "default": "\"\"",
+              "fieldName": "title"
+            },
+            {
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "open state",
+              "default": "false",
+              "fieldName": "opened"
+            },
+            {
+              "name": "close-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Close label",
+              "default": "\"Close\"",
+              "fieldName": "closeLabel"
+            },
+            {
+              "name": "close-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Close icon",
+              "default": "\"close\"",
+              "fieldName": "closeIcon"
+            },
+            {
+              "name": "invokedBy",
+              "type": {
+                "text": "object"
+              },
+              "description": "The element that invoked this. This way we can track our way back accessibly",
+              "fieldName": "invokedBy"
+            },
+            {
+              "name": "modal",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "support for modal flag",
+              "default": "false",
+              "fieldName": "modal"
+            },
+            {
+              "name": "mode",
+              "type": {
+                "text": "string"
+              },
+              "description": "can add a custom string to style modal based on what is calling it",
+              "fieldName": "mode"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "simple-modal",
+          "customElement": true
         },
         {
-          "name": "modal",
-          "description": "`modal` - the simple-modal\n\nProperty: modal"
+          "kind": "variable",
+          "name": "SimpleModalStore"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleModal",
+            "module": "simple-modal.js"
+          }
         },
         {
-          "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` {`CustomEvent<{ id: string | null; elements: { header: any; content: any; buttons: any; custom: any; }; resize: any; invokedBy: any; modalClass: string | null; styles: {}; clone: boolean; mode: any; title: string | boolean; }>`} - "
+          "kind": "js",
+          "name": "SimpleModal",
+          "declaration": {
+            "name": "SimpleModal",
+            "module": "simple-modal.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SimpleModalCssVars",
+          "declaration": {
+            "name": "SimpleModalCssVars",
+            "module": "simple-modal.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SimpleModalStore",
+          "declaration": {
+            "name": "SimpleModalStore",
+            "module": "simple-modal.js"
+          }
         }
       ]
     },
     {
-      "name": "simple-modal",
-      "description": "`simple-modal`\n`A simple modal that ensures accessibility and stack order context appropriately`\n\n### Styling\n`<simple-fields>` provides following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|--------\n--simple-modal-resize | whether modal can be resized by user (see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/resize}) | unset\n--simple-modal-titlebar-color | height for modal's titlebar | #444\n--simple-modal-titlebar-background | background color for modal's titlebar | #ddd\n--simple-modal-titlebar-padding | padding for modal's titlebar | 0px 16px\n--simple-modal-titlebar-height | height for modal's titlebar | unset\n--simple-modal-titlebar-line-height | text's line height for modal's titlebar | unset\n--simple-modal-header-color | text color for modal's header | #222\n--simple-modal-header-background | background color for modal's header | #ccc\n--simple-modal-header-padding | padding for modal's header | 0px 16px\n--simple-modal-content-container-color | text color for modal's content | #222;\n--simple-modal-content-container-background | text color for modal's content | #fff \n--simple-modal-content-padding | text color for modal's content | 8px 16px\n--simple-modal-buttons-color | text color for modal's buttons | unset\n--simple-modal-buttons-background | background color for modal's buttons | unset\n--simple-modal-buttons-padding | padding for modal's buttons | 0\n--simple-modal-button-color | text color for modal's buttons | var(--simple-modal-buttons-color)\n--simple-modal-button-background | background color for modal's buttons | var(--simple-modal-buttons-background-color)\n--simple-modal-z-index | z-index for modal | 1000\n--simple-modal-width | width of modal | 75vw\n--simple-modal-height | height of modal | auto;\n--simple-modal-min-width | min-width of modal | unset\n--simple-modal-min-height | min-height of modal | unset\n--simple-modal-max-width | max-width of modal | unset\n--simple-modal-max-height | max-height of modal | unset\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-modal-closed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\n  * `simple-modal-dismissed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\n  * `simple-modal-confirmed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\n  * `simple-modal-opened` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - \n\nAttributes:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `mode` {`string`} - can add a custom string to style modal based on what is calling it\n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `close-label` {`string`} - Close label\n\n  * `close-icon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag\n\nProperties:\n\n  * `invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\n  * `mode` {`string`} - can add a custom string to style modal based on what is calling it\n\n  * `windowControllers` - \n\n  * `title` {`string`} - heading / label of the modal\n\n  * `opened` {`boolean`} - open state\n\n  * `closeLabel` {`string`} - Close label\n\n  * `closeIcon` {`string`} - Close icon\n\n  * `modal` {`boolean`} - support for modal flag",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/simple-modal-handler.js",
+      "declarations": [
         {
-          "name": "invokedBy",
-          "description": "`invokedBy` - The element that invoked this. This way we can track our way back accessibly\n\nProperty: invokedBy"
+          "kind": "mixin",
+          "description": "",
+          "name": "SimpleModalHandler",
+          "members": [
+            {
+              "kind": "method",
+              "name": "_keyPress",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "A11y because we are delegating keyboard function to hit the link when enter pressed"
+            },
+            {
+              "kind": "method",
+              "name": "__SimpleModalHandlerClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Click callback"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SimpleModalHandler",
+          "declaration": {
+            "name": "SimpleModalHandler",
+            "module": "lib/simple-modal-handler.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/simple-modal-template.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`simple-modal-template`\n`A simple modal that ensures accessibility and stack order context appropriately`",
+          "name": "SimpleModalTemplate",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "associateEvents",
+              "parameters": [
+                {
+                  "name": "target"
+                },
+                {
+                  "name": "evt",
+                  "default": "\"click\""
+                },
+                {
+                  "name": "bubbles",
+                  "default": "true"
+                },
+                {
+                  "name": "cancelable",
+                  "default": "true"
+                },
+                {
+                  "description": "event name",
+                  "name": "the",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "description": "the event can be canceled (default is true)",
+                  "name": "whether",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "sets event listeners for a specified target",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "openModal",
+              "parameters": [
+                {
+                  "name": "target"
+                },
+                {
+                  "name": "bubbles",
+                  "default": "true"
+                },
+                {
+                  "name": "cancelable",
+                  "default": "true"
+                },
+                {
+                  "description": "object that will have the event listener",
+                  "name": "the",
+                  "type": {
+                    "text": "object"
+                  }
+                },
+                {
+                  "description": "the event can be canceled (default is true)",
+                  "name": "whether",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "dispatches event to populate and open the simple modal based template values"
+            },
+            {
+              "kind": "method",
+              "name": "_getCustom"
+            },
+            {
+              "kind": "method",
+              "name": "_getSlot",
+              "parameters": [
+                {
+                  "name": "slotName"
+                },
+                {
+                  "description": "name of the slot",
+                  "name": "the",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "clones content in a named slot",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "the modal title",
+              "default": "\"\"",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "modal",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "the simple-modal",
+              "attribute": "modal"
+            },
+            {
+              "kind": "field",
+              "name": "mode",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "the modal title",
+              "attribute": "mode"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "modal",
+              "type": {
+                "text": "object"
+              },
+              "description": "the simple-modal",
+              "fieldName": "modal"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "the modal title",
+              "default": "\"\"",
+              "fieldName": "title"
+            },
+            {
+              "name": "mode",
+              "type": {
+                "text": "string"
+              },
+              "description": "the modal title",
+              "fieldName": "mode"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "simple-modal-template",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleModalTemplate",
+            "module": "lib/simple-modal-template.js"
+          }
         },
         {
-          "name": "mode",
-          "description": "`mode` {`string`} - can add a custom string to style modal based on what is calling it\n\nProperty: mode"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - heading / label of the modal\n\nProperty: title\n\nDefault: "
-        },
-        {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - open state\n\nProperty: opened\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "close-label",
-          "description": "`close-label` {`string`} - Close label\n\nProperty: closeLabel\n\nDefault: Close"
-        },
-        {
-          "name": "close-icon",
-          "description": "`close-icon` {`string`} - Close icon\n\nProperty: closeIcon\n\nDefault: close"
-        },
-        {
-          "name": "modal",
-          "description": "`modal` {`boolean`} - support for modal flag\n\nProperty: modal\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onsimple-toast-hide",
-          "description": "`simple-toast-hide` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onsimple-modal-closed",
-          "description": "`simple-modal-closed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - "
-        },
-        {
-          "name": "onsimple-modal-dismissed",
-          "description": "`simple-modal-dismissed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - "
-        },
-        {
-          "name": "onsimple-modal-confirmed",
-          "description": "`simple-modal-confirmed` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - "
-        },
-        {
-          "name": "onsimple-modal-opened",
-          "description": "`simple-modal-opened` {`CustomEvent<{ opened: boolean; invokedBy: any; }>`} - "
+          "kind": "js",
+          "name": "SimpleModalTemplate",
+          "declaration": {
+            "name": "SimpleModalTemplate",
+            "module": "lib/simple-modal-template.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

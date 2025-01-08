@@ -1,21 +1,101 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "full-width-image",
-      "description": "`full-width-image`\n`full width image that flows beyond boundaries`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `caption` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `caption` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "full-width-image.js",
+      "declarations": [
         {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source"
+          "kind": "class",
+          "description": "`full-width-image`\n`full width image that flows beyond boundaries`",
+          "name": "FullWidthImage",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "convention",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_sourceChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "source",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "caption",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "caption",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "source"
+            },
+            {
+              "name": "caption",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "caption"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "full-width-image",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "full-width-image",
+          "declaration": {
+            "name": "FullWidthImage",
+            "module": "full-width-image.js"
+          }
         },
         {
-          "name": "caption",
-          "description": "`caption` {`string`} - \n\nProperty: caption"
+          "kind": "js",
+          "name": "FullWidthImage",
+          "declaration": {
+            "name": "FullWidthImage",
+            "module": "full-width-image.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

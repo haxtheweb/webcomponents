@@ -1,4 +1,48 @@
 {
-  "version": 2,
-  "tags": []
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "hax-iconset.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/elmsln-custom-iconset.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/hax-iconset-manifest.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "HaxIconsetManifest",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ { name: \"courseicons\", icons: [ \"astro1\", \"astro11\", \"astro120\", \"astro130\", \"astro140\", \"astro2\", \"bio1\", \"biol11\", \"biol110\", \"biol120n\", \"biol133\", \"biol141\", \"biol155\", \"biol177\", \"bisci001\", \"bisci002\", \"bisci003\", \"bisci004\", \"bmmb551\", \"bmmb852\", \"chem-connection\", \"chem005\", \"chem1\", \"chem101\", \"chem110\", \"chem2\", \"frnsc100\", \"frnsc200\", \"frnsc210\", \"knowledge\", \"learning-objectives\", \"listen\", \"math021\", \"math022\", \"math034\", \"math036\", \"math110\", \"math140\", \"math220\", \"math436\", \"phys010\", \"phys1\", \"phys2\", \"phys3\", \"strategy\", ], }, { name: \"drawing\", icons: [\"draw-ellip\", \"draw-poly\", \"draw-rect\", \"move\", \"select\"], }, { name: \"editable-table\", icons: [ \"col-striped\", \"column-headers\", \"filter-off\", \"filter\", \"footer\", \"numbers\", \"row-condensed\", \"row-headers\", \"row-striped\", \"sortable\", ], }, { name: \"hax\", icons: [ \"12\", \"3-3-3-3\", \"4-4-4\", \"4-8\", \"6-6\", \"8-4\", \"abbr\", \"accessibility\", \"add-brick\", \"add-child-page\", \"add-item\", \"add-page\", \"add\", \"anchor\", \"apps\", \"arrow-all\", \"arrow-expand-left\", \"arrow-expand-right\", \"arrow-left\", \"arrow-right\", \"assess\", \"bricks\", \"bulletin-board\", \"calendar\", \"camera\", \"case-sensitive-alt\", \"clipboard-pulse\", \"code-json\", \"collaborate\", \"computer\", \"computer2\", \"console-line\", \"consult\", \"container\", \"delete-restore\", \"discord\", \"disqus\", \"documents\", \"duplicate\", \"email\", \"engage\", \"engage2\", \"examity\", \"expand-more\", \"figure\", \"file-ai\", \"file-blank\", \"file-css\", \"file-csv\", \"file-doc\", \"file-docx\", \"file-eps\", \"file-gif\", \"file-html\", \"file-jpg\", \"file-js\", \"file-link-outline\", \"file-pdf\", \"file-png\", \"file-ppt\", \"file-rtf\", \"file-svg\", \"file-xls\", \"flikr\", \"format-textblock\", \"gears\", \"git\", \"globe\", \"graph\", \"h1\", \"h2\", \"h3\", \"h4\", \"h5\", \"h6\", \"hax2022\", \"head-question\", \"home-edit\", \"hr\", \"html-code\", \"idea\", \"iframe\", \"image\", \"keyboard-arrow-down\", \"keyboard-arrow-up\", \"lesson\", \"loading\", \"map-legend\", \"map\", \"math\", \"meme\", \"menu-open\", \"messages-1\", \"messages-2\", \"messages-3\", \"messages-4\", \"messages-5\", \"messages-6\", \"messages-7\", \"messages-8\", \"messages-9-plus\", \"messages-9\", \"module\", \"monitor\", \"motivate\", \"multimedia\", \"multiple-choice\", \"newspaper\", \"ngdle\", \"no-assignment\", \"oer\", \"oerschema\", \"outline-designer-indent\", \"outline-designer-outdent\", \"page-details\", \"page-edit\", \"paragraph\", \"phone\", \"pi\", \"placeholder-image\", \"placeholder\", \"podcast\", \"qr-code\", \"quick\", \"remix\", \"remote\", \"reportcard\", \"reuse\", \"scroll\", \"search-clear\", \"select-element\", \"settings\", \"shovel\", \"site-map\", \"site-settings\", \"slash\", \"spotify\", \"table-column-plus-after\", \"table-column-remove\", \"table-multiple\", \"task\", \"templates\", \"ticket\", \"time\", \"timeline\", \"twitter\", \"unit\", \"video\", \"view-gallery\", \"vimeo\", \"vocab\", \"vr\", \"wand\", \"wizard-hat\", \"wordpress\", ], }, { name: \"lrn\", icons: [ \"about\", \"accessibility\", \"add\", \"apps\", \"arrow-left\", \"arrow-right\", \"assessment\", \"assignment\", \"assignments\", \"beaker\", \"blog\", \"blogs\", \"book\", \"bookmark-outline\", \"bookmark\", \"calendar\", \"canban\", \"cancel\", \"chevron-down\", \"chevron-left\", \"chevron-right\", \"choice1\", \"choice2\", \"choice3\", \"cis\", \"cle\", \"close\", \"collab\", \"columns\", \"comment\", \"compass\", \"comply\", \"content-outline\", \"content\", \"courses\", \"cpr\", \"data_usage\", \"dino\", \"discuss\", \"done\", \"dotgrid\", \"download\", \"ecd\", \"edit\", \"editorial\", \"elmsmedia\", \"explore\", \"file-download\", \"gear\", \"grades\", \"help\", \"hidden\", \"icor\", \"inbox\", \"info\", \"innovate\", \"input\", \"instructor\", \"interact\", \"lab\", \"labs\", \"lecture\", \"letter\", \"media\", \"mooc\", \"more-vert\", \"network\", \"notifications\", \"online\", \"outline\", \"page\", \"palette\", \"pdf\", \"people\", \"play\", \"plus\", \"quiz\", \"replay\", \"resources\", \"save\", \"settings\", \"share\", \"speechballoons\", \"studio-assignment-list\", \"studio\", \"support\", \"syllabus\", \"teacher\", \"tour\", \"user\", \"view-off\", \"view\", \"visible\", \"write\", ], }, { name: \"mdextra\", icons: [ \"cursor-text\", \"hexagon-multiple\", \"hexagon-outline\", \"hexagon\", \"subscript\", \"superscript\", \"unlink\", \"vector-polyline-plus\", ], }, { name: \"mdi-social\", icons: [ \"blogger\", \"disqus\", \"dribble\", \"facebook-box\", \"facebook\", \"github-box\", \"github-circle\", \"google-plus-box\", \"google-plus\", null, \"instagram\", \"instapaper\", \"linkedin\", \"pinterest\", \"pocket\", \"readability\", \"rss-box\", \"tumblr\", \"twitch\", \"twitter-box\", \"twitter\", \"whatsapp\", \"youtube\", ], }, { name: \"paper-audio-icons\", icons: [\"error-outline\", \"pause\", \"play-arrow\", \"replay\"], }, ]"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "HaxIconsetManifest",
+          "declaration": {
+            "name": "HaxIconsetManifest",
+            "module": "lib/hax-iconset-manifest.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/simple-hax-iconset.js",
+      "declarations": [],
+      "exports": []
+    }
+  ]
 }

@@ -1,407 +1,602 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "app-hax",
-      "description": "Events:\n\n  * `jwt-login-logout` {`CustomEvent<boolean>`} - \n\n  * `simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLElement; }; modal: boolean; styles: { \"--simple-modal-titlebar-background\": string; \"--simple-modal-titlebar-color\": string; \"--simple-modal-width\": string; ... 4 more ...; \"--simple-modal-titlebar-height\": string; }; }>`} - \n\n  * `app-hax-loaded` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `userName` {`string`} - \n\n  * `siteReady` {`boolean`} - \n\n  * `token` {`string`} - \n\n  * `unlockComingSoon` {`boolean`} - \n\n  * `unlockTerrible` {`boolean`} - \n\n  * `userMenuOpen` {`boolean`} - \n\n  * `courses` {`any[]`} - \n\n  * `activeItem` - \n\n  * `phrases` - \n\n  * `isNewUser` {`boolean`} - \n\n  * `base-path` {`string`} - \n\n  * `searchTerm` {`string`} - \n\n  * `appMode` {`string`} - \n\n  * `soundIcon` {`string`} - \n\n  * `t` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `userName` {`string`} - \n\n  * `siteReady` {`boolean`} - \n\n  * `token` {`string`} - \n\n  * `unlockComingSoon` {`boolean`} - \n\n  * `unlockTerrible` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `__tour` - \n\n  * `userMenuOpen` {`boolean`} - \n\n  * `courses` {`any[]`} - \n\n  * `activeItem` - \n\n  * `phrases` - \n\n  * `isNewUser` {`boolean`} - \n\n  * `basePath` {`string`} - \n\n  * `searchTerm` {`string`} - \n\n  * `appMode` {`string`} - \n\n  * `soundIcon` {`string`} - \n\n  * `store` - \n\n  * `sound` - \n\n  * `t` - \n\n  * `tourName` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "app-hax.js",
+      "declarations": [
         {
-          "name": "userName",
-          "description": "`userName` {`string`} - \n\nProperty: userName"
+          "kind": "class",
+          "description": "",
+          "name": "AppHax",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_openExternalLink",
+              "parameters": [
+                {
+                  "name": "link"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_haxStoreContribute",
+              "parameters": [
+                {
+                  "name": "type"
+                },
+                {
+                  "name": "tags"
+                },
+                {
+                  "name": "daemonTerm",
+                  "default": "null"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "playSound",
+              "parameters": [
+                {
+                  "name": "sound",
+                  "default": "\"coin2\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_tokenRefreshFailed",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "A token refresh just failed so force to login prompt / state"
+            },
+            {
+              "kind": "method",
+              "name": "goToLocation",
+              "parameters": [
+                {
+                  "name": "location"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "reset",
+              "parameters": [
+                {
+                  "name": "reload",
+                  "default": "false"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "fireTerrible"
+            },
+            {
+              "kind": "method",
+              "name": "fireUnlocked"
+            },
+            {
+              "kind": "method",
+              "name": "logout"
+            },
+            {
+              "kind": "method",
+              "name": "_jwtLoggedIn",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "login"
+            },
+            {
+              "kind": "method",
+              "name": "helpClick"
+            },
+            {
+              "kind": "method",
+              "name": "toggleMenu"
+            },
+            {
+              "kind": "method",
+              "name": "closeMenu"
+            },
+            {
+              "kind": "method",
+              "name": "openMerlin"
+            },
+            {
+              "kind": "method",
+              "name": "getNewWord"
+            },
+            {
+              "kind": "method",
+              "name": "appBody",
+              "parameters": [
+                {
+                  "name": "routine"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "templateHome"
+            },
+            {
+              "kind": "method",
+              "name": "templateCreate"
+            },
+            {
+              "kind": "method",
+              "name": "siteReadyToGo",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "template404"
+            },
+            {
+              "kind": "method",
+              "name": "startJourney"
+            },
+            {
+              "kind": "field",
+              "name": "unlockComingSoon",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "unlockComingSoon"
+            },
+            {
+              "kind": "field",
+              "name": "unlockTerrible",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "unlockTerrible"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, selectPage: \"Select page\", backToSiteList: \"Back to site list\", listMySites: \"List my sites\", cancel: \"Cancel\", editDetails: \"Page details\", add: \"Add\", editSettings: \"Edit settings\", source: \"Source\", viewSource: \"View source\", findMedia: \"Find media\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", outline: \"Outline\", blocks: \"Blocks\", addBlock: \"Add block\", addPage: \"Add page\", addChildPage: \"Add child page\", clonePage: \"Clone page\", delete: \"Delete page\", siteSettings: \"Site settings\", close: \"Close\", settings: \"Settings\", edit: \"Edit\", configureBlock: \"Configure block\", configure: \"Configure\", save: \"Save\", home: \"Home\", startNewJourney: \"Start new journey\", newJourney: \"New Journey\", accountInfo: \"Account Info\", outlineDesigner: \"Outline designer\", pageOutline: \"Page outline\", more: \"More\", siteActions: \"Site actions\", insights: \"Insights dashboard\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", logOut: \"Log out\", menu: \"Menu\", showMore: \"More\", }"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"hax:wizard-hat\""
+            },
+            {
+              "kind": "field",
+              "name": "allowedCallback"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "__tour",
+              "default": "SimpleTourManager"
+            },
+            {
+              "kind": "field",
+              "name": "tourName",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"hax\""
+            },
+            {
+              "kind": "field",
+              "name": "userMenuOpen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "userMenuOpen"
+            },
+            {
+              "kind": "field",
+              "name": "courses",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "courses"
+            },
+            {
+              "kind": "field",
+              "name": "activeItem",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "attribute": "activeItem"
+            },
+            {
+              "kind": "field",
+              "name": "phrases",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ new: [ \"What's ya name?\", \"HAX to the moon\", \"Welcome to the Jungle\", \"We like to party\", \"Build something awesome\", \"Everything is awesome!\", \"Everything is cool\", \"When you're part of the team\", \"When you're living our dream\", \"Welcome to the up-side-down\", ], return: [ \"Welcome back, take 2?\", \"That wasn't very long\", \"Stranger thiings have happened\", \"Student driven platform\", \"Faculty centered platform\", \"Instructional designer influenced platform\", \"Free, Open, Community driven\", \"One brick at a time..\", \"Sup?\", \"You again? Awesome!\", \"Let's do this\", \"There can only be one ring...\", \"There is another\", \"Fancy that, I love HAX and you show up\", ], }",
+              "attribute": "phrases"
+            },
+            {
+              "kind": "field",
+              "name": "isNewUser",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "isNewUser"
+            },
+            {
+              "kind": "field",
+              "name": "basePath",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"/\"",
+              "attribute": "base-path"
+            },
+            {
+              "kind": "field",
+              "name": "searchTerm",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "searchTerm"
+            },
+            {
+              "kind": "field",
+              "name": "appMode",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "appMode"
+            },
+            {
+              "kind": "field",
+              "name": "soundIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "soundIcon"
+            },
+            {
+              "kind": "field",
+              "name": "store",
+              "default": "store"
+            },
+            {
+              "kind": "field",
+              "name": "sound",
+              "default": "new Audio()"
+            },
+            {
+              "kind": "field",
+              "name": "userName",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "userName"
+            },
+            {
+              "kind": "field",
+              "name": "siteReady",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "siteReady"
+            },
+            {
+              "kind": "field",
+              "name": "token",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "token"
+            }
+          ],
+          "events": [
+            {
+              "name": "simple-modal-show",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "app-hax-loaded",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "unlockComingSoon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "unlockComingSoon"
+            },
+            {
+              "name": "unlockTerrible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "unlockTerrible"
+            },
+            {
+              "name": "courses",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "courses"
+            },
+            {
+              "name": "userName",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "userName"
+            },
+            {
+              "name": "activeItem",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "fieldName": "activeItem"
+            },
+            {
+              "name": "soundIcon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "soundIcon"
+            },
+            {
+              "name": "searchTerm",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "searchTerm"
+            },
+            {
+              "name": "appMode",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "appMode"
+            },
+            {
+              "name": "isNewUser",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "isNewUser"
+            },
+            {
+              "name": "phrases",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ new: [ \"What's ya name?\", \"HAX to the moon\", \"Welcome to the Jungle\", \"We like to party\", \"Build something awesome\", \"Everything is awesome!\", \"Everything is cool\", \"When you're part of the team\", \"When you're living our dream\", \"Welcome to the up-side-down\", ], return: [ \"Welcome back, take 2?\", \"That wasn't very long\", \"Stranger thiings have happened\", \"Student driven platform\", \"Faculty centered platform\", \"Instructional designer influenced platform\", \"Free, Open, Community driven\", \"One brick at a time..\", \"Sup?\", \"You again? Awesome!\", \"Let's do this\", \"There can only be one ring...\", \"There is another\", \"Fancy that, I love HAX and you show up\", ], }",
+              "fieldName": "phrases"
+            },
+            {
+              "name": "userMenuOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "userMenuOpen"
+            },
+            {
+              "name": "siteReady",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "siteReady"
+            },
+            {
+              "name": "base-path",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"/\"",
+              "fieldName": "basePath"
+            },
+            {
+              "name": "token",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "token"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
+              "name": "SimpleTourFinder",
+              "package": "@haxtheweb/simple-popover/lib/SimpleTourFinder.js"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "AppHax",
+          "declaration": {
+            "name": "AppHax",
+            "module": "app-hax.js"
+          }
         },
         {
-          "name": "siteReady",
-          "description": "`siteReady` {`boolean`} - \n\nProperty: siteReady",
-          "valueSet": "v"
-        },
-        {
-          "name": "token",
-          "description": "`token` {`string`} - \n\nProperty: token"
-        },
-        {
-          "name": "unlockComingSoon",
-          "description": "`unlockComingSoon` {`boolean`} - \n\nProperty: unlockComingSoon\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "unlockTerrible",
-          "description": "`unlockTerrible` {`boolean`} - \n\nProperty: unlockTerrible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "userMenuOpen",
-          "description": "`userMenuOpen` {`boolean`} - \n\nProperty: userMenuOpen\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "courses",
-          "description": "`courses` {`any[]`} - \n\nProperty: courses\n\nDefault: "
-        },
-        {
-          "name": "activeItem",
-          "description": "`activeItem` - \n\nProperty: activeItem\n\nDefault: [object Object]"
-        },
-        {
-          "name": "phrases",
-          "description": "`phrases` - \n\nProperty: phrases\n\nDefault: [object Object]"
-        },
-        {
-          "name": "isNewUser",
-          "description": "`isNewUser` {`boolean`} - \n\nProperty: isNewUser\n\nDefault: null",
-          "valueSet": "v"
-        },
-        {
-          "name": "base-path",
-          "description": "`base-path` {`string`} - \n\nProperty: basePath\n\nDefault: /"
-        },
-        {
-          "name": "searchTerm",
-          "description": "`searchTerm` {`string`} - \n\nProperty: searchTerm\n\nDefault: "
-        },
-        {
-          "name": "appMode",
-          "description": "`appMode` {`string`} - \n\nProperty: appMode\n\nDefault: "
-        },
-        {
-          "name": "soundIcon",
-          "description": "`soundIcon` {`string`} - \n\nProperty: soundIcon\n\nDefault: "
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onjwt-login-logout",
-          "description": "`jwt-login-logout` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` {`CustomEvent<{ title: string; elements: { content: HTMLElement; }; modal: boolean; styles: { \"--simple-modal-titlebar-background\": string; \"--simple-modal-titlebar-color\": string; \"--simple-modal-width\": string; ... 4 more ...; \"--simple-modal-titlebar-height\": string; }; }>`} - "
-        },
-        {
-          "name": "onapp-hax-loaded",
-          "description": "`app-hax-loaded` {`CustomEvent<boolean>`} - "
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "AppHax",
+            "module": "app-hax.js"
+          }
         }
       ]
     },
     {
-      "name": "clean-one",
-      "description": "`clean-one`\n`Clean HAXcms theme, one.`\n\nEvents:\n\n  * `haxcms-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `t` - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `is-horizontal` {`boolean`} - \n\n  * `is-flex` {`boolean`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `is-safari` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `__evaluateRoute` {`boolean`} - \n\n  * `HAXCMSI18NMixinBase` {`string`} - \n\n  * `t` - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `isHorizontal` {`boolean`} - \n\n  * `isFlex` {`boolean`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `isSafari` {`boolean`} - \n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/app-hax-theme.js",
+      "declarations": [
         {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t"
-        },
-        {
-          "name": "__printBranchLoading",
-          "description": "`__printBranchLoading` {`boolean`} - \n\nProperty: __printBranchLoading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__pdfLoading",
-          "description": "`__pdfLoading` {`boolean`} - \n\nProperty: __pdfLoading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "showQRCode",
-          "description": "`showQRCode` {`boolean`} - \n\nProperty: showQRCode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "dark-mode",
-          "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-horizontal",
-          "description": "`is-horizontal` {`boolean`} - \n\nProperty: isHorizontal\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-flex",
-          "description": "`is-flex` {`boolean`} - \n\nProperty: isFlex\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "menu-open",
-          "description": "`menu-open` {`boolean`} - \n\nProperty: menuOpen\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hex-color",
-          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
-        },
-        {
-          "name": "color",
-          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
-        },
-        {
-          "name": "contentContainer",
-          "description": "`contentContainer` - DOM node that wraps the slot\n\nProperty: contentContainer"
-        },
-        {
-          "name": "_location",
-          "description": "`_location` - location as object\n\nProperty: _location"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "responsive-width",
-          "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
-        },
-        {
-          "name": "responsive-size",
-          "description": "`responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\nProperty: responsiveSize\n\nDefault: xs"
-        },
-        {
-          "name": "sm",
-          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 768"
-        },
-        {
-          "name": "md",
-          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 1080"
-        },
-        {
-          "name": "lg",
-          "description": "`lg` {`number`} - Miniumum value for large breakpoint\n\nProperty: lg\n\nDefault: 1200"
-        },
-        {
-          "name": "xl",
-          "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
-        },
-        {
-          "name": "disable-responsive",
-          "description": "`disable-responsive` {`boolean`} - \n\nProperty: disableResponsive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onhaxcms-toast-hide",
-          "description": "`haxcms-toast-hide` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onsuper-daemon-define-option",
-          "description": "`super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - "
-        },
-        {
-          "name": "onpopstate",
-          "description": "`popstate` {`PopStateEvent`} - "
-        },
-        {
-          "name": "oncontent-container-changed",
-          "description": "`content-container-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onis-logged-in-changed",
-          "description": "`is-logged-in-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onedit-mode-changed",
-          "description": "`edit-mode-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onresize",
-          "description": "`resize` {`Event`} - "
-        },
-        {
-          "name": "onhaxcms-active-item-changed",
-          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
-        },
-        {
-          "name": "onresponsive-element",
-          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
-        },
-        {
-          "name": "onresponsive-element-deleted",
-          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
+          "kind": "class",
+          "description": "`clean-one`\n`Clean HAXcms theme, one.`",
+          "name": "AppHaxTheme",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "HAXCMSGlobalStyleSheetContent"
+            },
+            {
+              "kind": "field",
+              "name": "autoScroll",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "__disposer"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "HAXCMSRememberRoute",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js"
+            },
+            {
+              "name": "PrintBranchMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/PrintBranchMixin.js"
+            },
+            {
+              "name": "PDFPageMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js"
+            },
+            {
+              "name": "QRCodeMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMixin.js"
+            },
+            {
+              "name": "HAXCMSThemeParts",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js"
+            },
+            {
+              "name": "HAXCMSMobileMenuMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js"
+            },
+            {
+              "name": "SimpleColorsSuper",
+              "package": "@haxtheweb/simple-colors/simple-colors.js"
+            },
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            }
+          ],
+          "superclass": {
+            "name": "HAXCMSLitElementTheme",
+            "package": "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"
+          },
+          "tagName": "clean-one",
+          "customElement": true
         }
-      ]
-    },
-    {
-      "name": "app-hax-theme",
-      "description": "`clean-one`\n`Clean HAXcms theme, one.`\n\nEvents:\n\n  * `haxcms-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `t` - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `is-horizontal` {`boolean`} - \n\n  * `is-flex` {`boolean`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `is-safari` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `__evaluateRoute` {`boolean`} - \n\n  * `HAXCMSI18NMixinBase` {`string`} - \n\n  * `t` - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `isHorizontal` {`boolean`} - \n\n  * `isFlex` {`boolean`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `isSafari` {`boolean`} - \n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
-      "attributes": [
+      ],
+      "exports": [
         {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "AppHaxTheme",
+            "module": "lib/app-hax-theme.js"
+          }
         },
         {
-          "name": "__printBranchLoading",
-          "description": "`__printBranchLoading` {`boolean`} - \n\nProperty: __printBranchLoading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__pdfLoading",
-          "description": "`__pdfLoading` {`boolean`} - \n\nProperty: __pdfLoading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "showQRCode",
-          "description": "`showQRCode` {`boolean`} - \n\nProperty: showQRCode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "dark-mode",
-          "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-horizontal",
-          "description": "`is-horizontal` {`boolean`} - \n\nProperty: isHorizontal\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-flex",
-          "description": "`is-flex` {`boolean`} - \n\nProperty: isFlex\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "menu-open",
-          "description": "`menu-open` {`boolean`} - \n\nProperty: menuOpen\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hex-color",
-          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
-        },
-        {
-          "name": "color",
-          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
-        },
-        {
-          "name": "contentContainer",
-          "description": "`contentContainer` - DOM node that wraps the slot\n\nProperty: contentContainer"
-        },
-        {
-          "name": "_location",
-          "description": "`_location` - location as object\n\nProperty: _location"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "responsive-width",
-          "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
-        },
-        {
-          "name": "responsive-size",
-          "description": "`responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\nProperty: responsiveSize\n\nDefault: xs"
-        },
-        {
-          "name": "sm",
-          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 768"
-        },
-        {
-          "name": "md",
-          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 1080"
-        },
-        {
-          "name": "lg",
-          "description": "`lg` {`number`} - Miniumum value for large breakpoint\n\nProperty: lg\n\nDefault: 1200"
-        },
-        {
-          "name": "xl",
-          "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
-        },
-        {
-          "name": "disable-responsive",
-          "description": "`disable-responsive` {`boolean`} - \n\nProperty: disableResponsive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onhaxcms-toast-hide",
-          "description": "`haxcms-toast-hide` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onsuper-daemon-define-option",
-          "description": "`super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - "
-        },
-        {
-          "name": "onpopstate",
-          "description": "`popstate` {`PopStateEvent`} - "
-        },
-        {
-          "name": "oncontent-container-changed",
-          "description": "`content-container-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onis-logged-in-changed",
-          "description": "`is-logged-in-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onedit-mode-changed",
-          "description": "`edit-mode-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onresize",
-          "description": "`resize` {`Event`} - "
-        },
-        {
-          "name": "onhaxcms-active-item-changed",
-          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
-        },
-        {
-          "name": "onresponsive-element",
-          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
-        },
-        {
-          "name": "onresponsive-element-deleted",
-          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "AppHaxTheme",
+          "declaration": {
+            "name": "AppHaxTheme",
+            "module": "lib/app-hax-theme.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

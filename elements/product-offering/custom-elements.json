@@ -1,55 +1,179 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "product-offering",
-      "description": "`product-offering`\n`Simple card for displaying product info`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - \n\n  * `_titleOne` {`string`} - \n\n  * `_titleTwo` {`string`} - \n\n  * `description` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `source` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - \n\n  * `_titleOne` {`string`} - \n\n  * `_titleTwo` {`string`} - \n\n  * `description` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "product-offering.js",
+      "declarations": [
         {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source"
+          "kind": "class",
+          "description": "`product-offering`\n`Simple card for displaying product info`",
+          "name": "ProductOffering",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "alt"
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"blue\""
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "source"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "_titleOne",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "_titleOne"
+            },
+            {
+              "kind": "field",
+              "name": "_titleTwo",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "_titleTwo"
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "description"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "alt"
+            },
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "source"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "icon"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "title"
+            },
+            {
+              "name": "_titleOne",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "_titleOne"
+            },
+            {
+              "name": "_titleTwo",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "_titleTwo"
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "description"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "IntersectionObserverMixin",
+              "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "product-offering",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ProductOffering",
+            "module": "product-offering.js"
+          }
         },
         {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title"
-        },
-        {
-          "name": "_titleOne",
-          "description": "`_titleOne` {`string`} - \n\nProperty: _titleOne"
-        },
-        {
-          "name": "_titleTwo",
-          "description": "`_titleTwo` {`string`} - \n\nProperty: _titleTwo"
-        },
-        {
-          "name": "description",
-          "description": "`description` {`string`} - \n\nProperty: description"
-        },
-        {
-          "name": "alt",
-          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
-        },
-        {
-          "name": "element-visible",
-          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: blue"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "ProductOffering",
+          "declaration": {
+            "name": "ProductOffering",
+            "module": "product-offering.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

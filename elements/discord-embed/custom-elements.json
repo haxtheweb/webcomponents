@@ -1,25 +1,113 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "discord-embed",
-      "description": "`discord-embed`\n`widgetbot.io based embed widget for discord threads and channels`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "discord-embed.js",
+      "declarations": [
         {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: "
+          "kind": "class",
+          "description": "`discord-embed`\n`widgetbot.io based embed widget for discord threads and channels`",
+          "name": "DiscordEmbed",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "source",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "500",
+              "attribute": "height"
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"100%\"",
+              "attribute": "width"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "height",
+              "type": {
+                "text": "number"
+              },
+              "default": "500",
+              "fieldName": "height"
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"100%\"",
+              "fieldName": "width"
+            },
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "source"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "discord-embed",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "DiscordEmbed",
+            "module": "discord-embed.js"
+          }
         },
         {
-          "name": "height",
-          "description": "`height` {`string`} - \n\nProperty: height\n\nDefault: 500"
-        },
-        {
-          "name": "width",
-          "description": "`width` {`string`} - \n\nProperty: width\n\nDefault: 100%"
+          "kind": "js",
+          "name": "DiscordEmbed",
+          "declaration": {
+            "name": "DiscordEmbed",
+            "module": "discord-embed.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

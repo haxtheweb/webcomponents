@@ -1,22 +1,94 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "example-hax-element",
-      "description": "`example-hax-element`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `shiny` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `shiny` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "example-hax-element.js",
+      "declarations": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: null"
+          "kind": "class",
+          "description": "`example-hax-element`",
+          "name": "ExampleHaxElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "shiny",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "shiny",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "title"
+            },
+            {
+              "name": "shiny",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "shiny"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "example-hax-element",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ExampleHaxElement",
+          "declaration": {
+            "name": "ExampleHaxElement",
+            "module": "example-hax-element.js"
+          }
         },
         {
-          "name": "shiny",
-          "description": "`shiny` {`boolean`} - \n\nProperty: shiny\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ExampleHaxElement",
+            "module": "example-hax-element.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,174 +1,240 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "clean-one",
-      "description": "`clean-one`\n`Clean HAXcms theme, one.`\n\nEvents:\n\n  * `super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - \n\n  * `haxcms-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `searchTerm` {`string`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `t` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `is-horizontal` {`boolean`} - \n\n  * `is-flex` {`boolean`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `is-safari` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `searchTerm` {`string`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `HAXCMSI18NMixinBase` {`string`} - \n\n  * `t` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `isHorizontal` {`boolean`} - \n\n  * `isFlex` {`boolean`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `__evaluateRoute` {`boolean`} - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `isSafari` {`boolean`} - \n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "clean-one.js",
+      "declarations": [
         {
-          "name": "searchTerm",
-          "description": "`searchTerm` {`string`} - \n\nProperty: searchTerm\n\nDefault: "
+          "kind": "class",
+          "description": "`clean-one`\n`Clean HAXcms theme, one.`",
+          "name": "CleanOne",
+          "members": [
+            {
+              "kind": "method",
+              "name": "searchChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "prevPage",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Previous page to hook into when prev is hit"
+            },
+            {
+              "kind": "method",
+              "name": "nextPage",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Next page to hook into when next is hit"
+            },
+            {
+              "kind": "field",
+              "name": "searchTerm",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "searchTerm"
+            },
+            {
+              "kind": "field",
+              "name": "__disposer"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "searchTerm",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "searchTerm"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "LTIResizingMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js"
+            },
+            {
+              "name": "PrintBranchMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/PrintBranchMixin.js"
+            },
+            {
+              "name": "PDFPageMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js"
+            },
+            {
+              "name": "EmailPageMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/EmailPageMixin.js"
+            },
+            {
+              "name": "QRCodeMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMixin.js"
+            },
+            {
+              "name": "HAXCMSThemeParts",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js"
+            },
+            {
+              "name": "HAXCMSMobileMenuMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js"
+            },
+            {
+              "name": "HAXCMSRememberRoute",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js"
+            },
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            }
+          ],
+          "superclass": {
+            "name": "HAXCMSLitElementTheme",
+            "package": "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"
+          },
+          "tagName": "clean-one",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CleanOne",
+            "module": "clean-one.js"
+          }
         },
         {
-          "name": "__printBranchLoading",
-          "description": "`__printBranchLoading` {`boolean`} - \n\nProperty: __printBranchLoading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t"
-        },
-        {
-          "name": "__pdfLoading",
-          "description": "`__pdfLoading` {`boolean`} - \n\nProperty: __pdfLoading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "showQRCode",
-          "description": "`showQRCode` {`boolean`} - \n\nProperty: showQRCode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "dark-mode",
-          "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-horizontal",
-          "description": "`is-horizontal` {`boolean`} - \n\nProperty: isHorizontal\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-flex",
-          "description": "`is-flex` {`boolean`} - \n\nProperty: isFlex\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "menu-open",
-          "description": "`menu-open` {`boolean`} - \n\nProperty: menuOpen\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hex-color",
-          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
-        },
-        {
-          "name": "color",
-          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
-        },
-        {
-          "name": "contentContainer",
-          "description": "`contentContainer` - DOM node that wraps the slot\n\nProperty: contentContainer"
-        },
-        {
-          "name": "_location",
-          "description": "`_location` - location as object\n\nProperty: _location"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "responsive-width",
-          "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
-        },
-        {
-          "name": "responsive-size",
-          "description": "`responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\nProperty: responsiveSize\n\nDefault: xs"
-        },
-        {
-          "name": "sm",
-          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 768"
-        },
-        {
-          "name": "md",
-          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 1080"
-        },
-        {
-          "name": "lg",
-          "description": "`lg` {`number`} - Miniumum value for large breakpoint\n\nProperty: lg\n\nDefault: 1200"
-        },
-        {
-          "name": "xl",
-          "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
-        },
-        {
-          "name": "disable-responsive",
-          "description": "`disable-responsive` {`boolean`} - \n\nProperty: disableResponsive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onsuper-daemon-define-option",
-          "description": "`super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - "
-        },
-        {
-          "name": "onhaxcms-toast-hide",
-          "description": "`haxcms-toast-hide` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onpopstate",
-          "description": "`popstate` {`PopStateEvent`} - "
-        },
-        {
-          "name": "oncontent-container-changed",
-          "description": "`content-container-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onis-logged-in-changed",
-          "description": "`is-logged-in-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onedit-mode-changed",
-          "description": "`edit-mode-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onresize",
-          "description": "`resize` {`Event`} - "
-        },
-        {
-          "name": "onhaxcms-active-item-changed",
-          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
-        },
-        {
-          "name": "onresponsive-element",
-          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
-        },
-        {
-          "name": "onresponsive-element-deleted",
-          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "CleanOne",
+          "declaration": {
+            "name": "CleanOne",
+            "module": "clean-one.js"
+          }
         }
       ]
     },
     {
-      "name": "clean-one-search-box",
-      "description": "Events:\n\n  * `input-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `value` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `value` {`string`} - \n\n  * `t` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/clean-one-search-box.js",
+      "declarations": [
         {
-          "name": "value",
-          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: "
+          "kind": "class",
+          "description": "",
+          "name": "CleanOneSearchBox",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "focus"
+            },
+            {
+              "kind": "method",
+              "name": "select"
+            },
+            {
+              "kind": "method",
+              "name": "searchChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ searchSiteContent: \"Search site content\", typeToSearch: \"Type to search\", }"
+            }
+          ],
+          "events": [
+            {
+              "name": "input-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "value"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CleanOneSearchBox",
+          "declaration": {
+            "name": "CleanOneSearchBox",
+            "module": "lib/clean-one-search-box.js"
+          }
         },
         {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "oninput-changed",
-          "description": "`input-changed` {`CustomEvent<{ value: any; }>`} - "
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CleanOneSearchBox",
+            "module": "lib/clean-one-search-box.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

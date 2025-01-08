@@ -1,25 +1,116 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "lrn-vocab",
-      "description": "`lrn-vocab`\nVocabulary term with visual treatment and semantic meaning.\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: any; elements: { content: HTMLDivElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-z-index\": string; \"--simple-modal-min-height\": string; }; invokedBy: this; }>`} - \n\nAttributes:\n\n  * `term` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `term` {`string`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lrn-vocab.js",
+      "declarations": [
         {
-          "name": "term",
-          "description": "`term` {`string`} - \n\nProperty: term"
+          "kind": "class",
+          "description": "`lrn-vocab`\nVocabulary term with visual treatment and semantic meaning.",
+          "name": "LrnVocab",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "double-check that we are set to inactivate click handlers\nthis is for when activated in a duplicate / adding new content state"
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "Set a flag to test if we should block link clicking on the entire card\notherwise when editing in hax you can't actually edit it bc its all clickable.\nif editMode goes off this helps ensure we also become clickable again"
+            },
+            {
+              "kind": "method",
+              "name": "openDialog",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Request the singleton dialog open"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "term",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "term",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "term",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "term"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LrnVocab",
+            "module": "lrn-vocab.js"
+          }
         },
         {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
-        },
-        {
-          "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` {`CustomEvent<{ title: any; elements: { content: HTMLDivElement; }; styles: { \"--simple-modal-width\": string; \"--simple-modal-max-width\": string; \"--simple-modal-z-index\": string; \"--simple-modal-min-height\": string; }; invokedBy: this; }>`} - "
+          "kind": "js",
+          "name": "LrnVocab",
+          "declaration": {
+            "name": "LrnVocab",
+            "module": "lrn-vocab.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

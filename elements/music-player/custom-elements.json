@@ -1,82 +1,626 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "midi-player",
-      "description": "Events:\n\n  * `load` {`CustomEvent<any>`} - \n\n  * `start` {`CustomEvent<any>`} - \n\n  * `note` {`CustomEvent<{ note: any; }>`} - \n\n  * `stop` {`CustomEvent<{ finished: boolean; }>`} - \n\nAttributes:\n\n  * `src` {`string | null`} - \n\n  * `sound-font` {} - \n\n  * `visualizer` {} - \n\nProperties:\n\n  * `noteSequence` - \n\n  * `soundFont` {`string | null`} - \n\n  * `currentTime` {`number`} - \n\n  * `duration` {`number`} - \n\n  * `playing` {`boolean`} - \n\n  * `src` {`string | null`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "music-player.js",
+      "declarations": [
         {
-          "name": "src",
-          "description": "`src` {`string | null`} - \n\nProperty: src",
-          "values": []
+          "kind": "class",
+          "description": "`music-player`\n`Visualize different types of music and simple format player`",
+          "name": "MusicPlayer",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "Attached to the DOM, now fire.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "noWaterfall",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "no-waterfall",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "noVisual",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "no-visual",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "visualizer",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"staff\"",
+              "attribute": "visualizer"
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "source"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "source"
+            },
+            {
+              "name": "visualizer",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"staff\"",
+              "fieldName": "visualizer"
+            },
+            {
+              "name": "no-waterfall",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "noWaterfall"
+            },
+            {
+              "name": "no-visual",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "noVisual"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "music-player",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MusicPlayer",
+            "module": "music-player.js"
+          }
         },
         {
-          "name": "sound-font",
-          "description": "`sound-font` {} - \n\n"
-        },
-        {
-          "name": "visualizer",
-          "description": "`visualizer` {} - \n\n"
-        },
-        {
-          "name": "onload",
-          "description": "`load` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onstart",
-          "description": "`start` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onnote",
-          "description": "`note` {`CustomEvent<{ note: any; }>`} - "
-        },
-        {
-          "name": "onstop",
-          "description": "`stop` {`CustomEvent<{ finished: boolean; }>`} - "
+          "kind": "js",
+          "name": "MusicPlayer",
+          "declaration": {
+            "name": "MusicPlayer",
+            "module": "music-player.js"
+          }
         }
       ]
     },
     {
-      "name": "midi-visualizer",
-      "description": "Attributes:\n\n  * `src` {`string | null`} - \n\n  * `type` {`string | null`} - \n\nProperties:\n\n  * `noteSequence` - \n\n  * `config` - \n\n  * `src` {`string | null`} - \n\n  * `type` {`string | null`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/html-midi-player.js",
+      "declarations": [
         {
-          "name": "src",
-          "description": "`src` {`string | null`} - \n\nProperty: src",
-          "values": []
+          "kind": "variable",
+          "name": "o",
+          "default": "this",
+          "members": [
+            {
+              "kind": "field",
+              "name": "depth",
+              "default": "t"
+            }
+          ]
         },
         {
-          "name": "type",
-          "description": "`type` {`string | null`} - \n\nProperty: type",
-          "values": []
+          "kind": "variable",
+          "name": "c",
+          "members": [
+            {
+              "kind": "field",
+              "name": "depth",
+              "type": {
+                "text": "number"
+              },
+              "default": "1"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "o",
+          "superclass": {
+            "name": "Error",
+            "module": "lib/html-midi-player.js"
+          },
+          "tagName": "midi-visualizer",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "c",
+          "superclass": {
+            "name": "Error",
+            "module": "lib/html-midi-player.js"
+          },
+          "tagName": "midi-player",
+          "customElement": true
+        },
+        {
+          "kind": "function",
+          "name": "o",
+          "parameters": [
+            {
+              "name": "t"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "o",
+          "parameters": [
+            {
+              "name": "t"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "c",
+          "members": [
+            {
+              "kind": "method",
+              "name": "extract",
+              "parameters": [
+                {
+                  "name": "t"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "depth",
+              "type": {
+                "text": "number"
+              },
+              "default": "1"
+            }
+          ],
+          "tagName": "midi-player",
+          "customElement": true
+        },
+        {
+          "kind": "function",
+          "name": "c",
+          "parameters": [
+            {
+              "name": "t"
+            },
+            {
+              "name": "e"
+            },
+            {
+              "name": "n"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "c"
+        },
+        {
+          "kind": "function",
+          "name": "o",
+          "parameters": [
+            {
+              "name": "t"
+            },
+            {
+              "name": "r"
+            },
+            {
+              "name": "i"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "o",
+          "parameters": [
+            {
+              "name": "t"
+            },
+            {
+              "name": "r"
+            },
+            {
+              "name": "i"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "o",
+          "parameters": [
+            {
+              "name": "t"
+            },
+            {
+              "name": "e"
+            },
+            {
+              "name": "n"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "o"
+        },
+        {
+          "kind": "function",
+          "name": "o",
+          "parameters": [
+            {
+              "name": "t"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "o",
+          "members": [
+            {
+              "kind": "field",
+              "name": "depth",
+              "default": "t"
+            }
+          ],
+          "tagName": "midi-visualizer",
+          "customElement": true
+        },
+        {
+          "kind": "function",
+          "name": "o",
+          "parameters": [
+            {
+              "name": "t"
+            },
+            {
+              "name": "e"
+            },
+            {
+              "name": "n"
+            },
+            {
+              "name": "i"
+            },
+            {
+              "name": "o"
+            },
+            {
+              "name": "s",
+              "default": "!1"
+            },
+            {
+              "name": "a",
+              "default": "1"
+            },
+            {
+              "name": "u",
+              "default": "1"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "c",
+          "parameters": [
+            {
+              "name": "t"
+            },
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "c",
+          "parameters": [
+            {
+              "name": "e"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "o",
+          "parameters": [
+            {
+              "name": "t"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "o",
+          "members": [
+            {
+              "kind": "method",
+              "name": "initVisualizer"
+            },
+            {
+              "kind": "method",
+              "name": "initVisualizerNow"
+            },
+            {
+              "kind": "method",
+              "name": "redraw",
+              "parameters": [
+                {
+                  "name": "t"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "clearActiveNotes"
+            },
+            {
+              "kind": "field",
+              "name": "noteSequence"
+            },
+            {
+              "kind": "field",
+              "name": "src"
+            },
+            {
+              "kind": "field",
+              "name": "type"
+            },
+            {
+              "kind": "field",
+              "name": "config"
+            },
+            {
+              "kind": "method",
+              "name": "setOrRemoveAttribute",
+              "parameters": [
+                {
+                  "name": "t"
+                },
+                {
+                  "name": "e"
+                }
+              ]
+            }
+          ],
+          "attributes": [
+            {
+              "name": "src"
+            },
+            {
+              "name": "type"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "midi-visualizer",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "c",
+          "members": [
+            {
+              "kind": "method",
+              "name": "initPlayer",
+              "parameters": [
+                {
+                  "name": "t",
+                  "default": "!0"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "initPlayerNow",
+              "parameters": [
+                {
+                  "name": "t",
+                  "default": "!0"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "start"
+            },
+            {
+              "kind": "method",
+              "name": "stop"
+            },
+            {
+              "kind": "method",
+              "name": "addVisualizer",
+              "parameters": [
+                {
+                  "name": "t"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "removeVisualizer",
+              "parameters": [
+                {
+                  "name": "t"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "noteCallback",
+              "parameters": [
+                {
+                  "name": "t"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleStop",
+              "parameters": [
+                {
+                  "name": "t",
+                  "default": "!1"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setVisualizerSelector",
+              "parameters": [
+                {
+                  "name": "t"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "freeze"
+            },
+            {
+              "kind": "method",
+              "name": "unfreeze"
+            },
+            {
+              "kind": "field",
+              "name": "noteSequence"
+            },
+            {
+              "kind": "field",
+              "name": "src"
+            },
+            {
+              "kind": "field",
+              "name": "soundFont"
+            },
+            {
+              "kind": "field",
+              "name": "currentTime"
+            },
+            {
+              "kind": "field",
+              "name": "duration",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "playing",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setOrRemoveAttribute",
+              "parameters": [
+                {
+                  "name": "t"
+                },
+                {
+                  "name": "e"
+                }
+              ]
+            }
+          ],
+          "events": [
+            {
+              "name": "note",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "stop",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "sound-font"
+            },
+            {
+              "name": "src"
+            },
+            {
+              "name": "visualizer"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "midi-player",
+          "customElement": true
         }
-      ]
-    },
-    {
-      "name": "music-player",
-      "description": "`music-player`\n`Visualize different types of music and simple format player`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `no-waterfall` {`boolean`} - \n\n  * `no-visual` {`boolean`} - \n\n  * `visualizer` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `noWaterfall` {`boolean`} - \n\n  * `noVisual` {`boolean`} - \n\n  * `visualizer` {`string`} - ",
-      "attributes": [
+      ],
+      "exports": [
         {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source"
+          "kind": "custom-element-definition",
+          "name": "midi-player",
+          "declaration": {
+            "name": "c",
+            "module": "lib/html-midi-player.js"
+          }
         },
         {
-          "name": "no-waterfall",
-          "description": "`no-waterfall` {`boolean`} - \n\nProperty: noWaterfall\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "no-visual",
-          "description": "`no-visual` {`boolean`} - \n\nProperty: noVisual\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "visualizer",
-          "description": "`visualizer` {`string`} - \n\nProperty: visualizer\n\nDefault: staff"
+          "kind": "custom-element-definition",
+          "name": "midi-visualizer",
+          "declaration": {
+            "name": "o",
+            "module": "lib/html-midi-player.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,12 +1,67 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "air-horn",
-      "description": "`air-horn`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "air-horn.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`air-horn`",
+          "name": "AirHorn",
+          "members": [
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_playSound",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Play the sound effect."
+            },
+            {
+              "kind": "field",
+              "name": "template"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "air-horn",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "AirHorn",
+            "module": "air-horn.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "AirHorn",
+          "declaration": {
+            "name": "AirHorn",
+            "module": "air-horn.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

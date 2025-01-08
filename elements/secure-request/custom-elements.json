@@ -1,4 +1,100 @@
 {
-  "version": 2,
-  "tags": []
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "secure-request.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "SecureRequestXhr",
+          "members": [
+            {
+              "kind": "method",
+              "name": "setCookies",
+              "parameters": [
+                {
+                  "name": "endPoint"
+                },
+                {
+                  "name": "csrfToken"
+                }
+              ],
+              "description": "Set cookies for the request"
+            },
+            {
+              "kind": "method",
+              "name": "generateUrl",
+              "parameters": [
+                {
+                  "name": "url"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getEndPoint"
+            },
+            {
+              "kind": "method",
+              "name": "getCsrfToken"
+            },
+            {
+              "kind": "method",
+              "name": "_createCookie",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "value"
+                },
+                {
+                  "name": "days"
+                },
+                {
+                  "name": "path"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_readCookie",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_eraseCookie",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SecureRequestXhr",
+          "declaration": {
+            "name": "SecureRequestXhr",
+            "module": "secure-request.js"
+          }
+        }
+      ]
+    }
+  ]
 }

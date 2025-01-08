@@ -263,9 +263,9 @@ class MapMenuSubmenu extends LitElement {
       collapsable: {
         type: Boolean,
       },
-      isFlex: { 
-        type: Boolean, 
-        attribute: "is-flex" 
+      isFlex: {
+        type: Boolean,
+        attribute: "is-flex",
       },
       isNested: {
         type: Boolean,

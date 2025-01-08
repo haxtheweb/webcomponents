@@ -1,70 +1,338 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "check-it-out",
-      "description": "`check-it-out`\n`View codepen or stackblitz demos`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `__computedSource` {`string`} - \n\n  * `label` {`string`} - \n\n  * `file-path` {`string`} - \n\n  * `modal` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `modal-title` {`string`} - \n\n  * `checked-out` {`boolean`} - \n\n  * `type` {`string`} - \n\n  * `hide-explorer` {`boolean`} - \n\n  * `ctl` {`boolean`} - \n\n  * `view` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `__computedSource` {`string`} - \n\n  * `label` {`string`} - \n\n  * `filePath` {`string`} - \n\n  * `modal` {`boolean`} - \n\n  * `typeIconObj` - \n\n  * `icon` {`string`} - \n\n  * `modalTitle` {`string`} - \n\n  * `checkedOut` {`boolean`} - \n\n  * `type` {`string`} - \n\n  * `hideExplorer` {`boolean`} - \n\n  * `ctl` {`boolean`} - \n\n  * `view` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "check-it-out.js",
+      "declarations": [
         {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source"
+          "kind": "class",
+          "description": "`check-it-out`\n`View codepen or stackblitz demos`",
+          "name": "CheckItOut",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "renderLogic"
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "checkType",
+              "parameters": [
+                {
+                  "name": "sourceStr"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "checkStackblitzProps",
+              "parameters": [
+                {
+                  "name": "sourceStr"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "typeIconObj",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ code: \"code\", pdf: \"book\", video: \"av:play-arrow\", }"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"code\"",
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "modalTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "modal-title"
+            },
+            {
+              "kind": "field",
+              "name": "checkedOut",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "checked-out",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "type",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hideExplorer",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hide-explorer"
+            },
+            {
+              "kind": "field",
+              "name": "ctl",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "ctl"
+            },
+            {
+              "kind": "field",
+              "name": "view",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"both\"",
+              "attribute": "view"
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "source"
+            },
+            {
+              "kind": "field",
+              "name": "__computedSource",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "__computedSource"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "label",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "filePath",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "file-path"
+            },
+            {
+              "kind": "field",
+              "name": "modal",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "modal",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "checked-out",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "checkedOut"
+            },
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "source"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"code\"",
+              "fieldName": "icon"
+            },
+            {
+              "name": "__computedSource",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "__computedSource"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "type"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "label"
+            },
+            {
+              "name": "file-path",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "filePath"
+            },
+            {
+              "name": "modal-title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "modalTitle"
+            },
+            {
+              "name": "hide-explorer",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hideExplorer"
+            },
+            {
+              "name": "ctl",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "ctl"
+            },
+            {
+              "name": "view",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"both\"",
+              "fieldName": "view"
+            },
+            {
+              "name": "modal",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "modal"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "IntersectionObserverMixin",
+              "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "check-it-out",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CheckItOut",
+            "module": "check-it-out.js"
+          }
         },
         {
-          "name": "__computedSource",
-          "description": "`__computedSource` {`string`} - \n\nProperty: __computedSource"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label"
-        },
-        {
-          "name": "file-path",
-          "description": "`file-path` {`string`} - \n\nProperty: filePath"
-        },
-        {
-          "name": "modal",
-          "description": "`modal` {`boolean`} - \n\nProperty: modal",
-          "valueSet": "v"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: code"
-        },
-        {
-          "name": "modal-title",
-          "description": "`modal-title` {`string`} - \n\nProperty: modalTitle\n\nDefault: "
-        },
-        {
-          "name": "checked-out",
-          "description": "`checked-out` {`boolean`} - \n\nProperty: checkedOut\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "type",
-          "description": "`type` {`string`} - \n\nProperty: type\n\nDefault: "
-        },
-        {
-          "name": "hide-explorer",
-          "description": "`hide-explorer` {`boolean`} - \n\nProperty: hideExplorer\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "ctl",
-          "description": "`ctl` {`boolean`} - \n\nProperty: ctl\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "view",
-          "description": "`view` {`string`} - \n\nProperty: view\n\nDefault: both"
-        },
-        {
-          "name": "element-visible",
-          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "CheckItOut",
+          "declaration": {
+            "name": "CheckItOut",
+            "module": "check-it-out.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,157 +1,605 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "promise-progress",
-      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`\n\nEvents:\n\n  * `promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - \n\nAttributes:\n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `show-count` {`boolean`} - \n\n  * `canLoad` {`boolean`} - \n\nProperties:\n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `showCount` {`boolean`} - \n\n  * `canLoad` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "promise-progress.js",
+      "declarations": [
         {
-          "name": "list",
-          "description": "`list` {`any[]`} - \n\nProperty: list\n\nDefault: "
+          "kind": "class",
+          "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`",
+          "name": "PromiseProgress",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "process",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "list",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "list",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "value",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "max",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "attribute": "max",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showCount",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "show-count",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "canLoad",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "canLoad",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SimpleColorsSuper",
+              "package": "@haxtheweb/simple-colors/simple-colors.js"
+            }
+          ],
+          "superclass": {
+            "name": "PromiseProgressLite",
+            "module": "/lib/promise-progress-lite.js"
+          },
+          "tagName": "promise-progress",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "fieldName": "max",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "value",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "name": "list",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "list",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "name": "show-count",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "showCount",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "name": "canLoad",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "canLoad",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "name": "promise-progress-finished",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PromiseProgress",
+          "declaration": {
+            "name": "PromiseProgress",
+            "module": "promise-progress.js"
+          }
         },
         {
-          "name": "value",
-          "description": "`value` {`number`} - \n\nProperty: value\n\nDefault: 0"
-        },
-        {
-          "name": "max",
-          "description": "`max` {`number`} - \n\nProperty: max\n\nDefault: 100"
-        },
-        {
-          "name": "show-count",
-          "description": "`show-count` {`boolean`} - \n\nProperty: showCount\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "canLoad",
-          "description": "`canLoad` {`boolean`} - \n\nProperty: canLoad\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onpromise-progress-finished",
-          "description": "`promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - "
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PromiseProgress",
+            "module": "promise-progress.js"
+          }
         }
       ]
     },
     {
-      "name": "promise-progress-lite",
-      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`\n\nEvents:\n\n  * `promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - \n\nAttributes:\n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `show-count` {`boolean`} - \n\n  * `canLoad` {`boolean`} - \n\nProperties:\n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `showCount` {`boolean`} - \n\n  * `canLoad` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/promise-progress-lite.js",
+      "declarations": [
         {
-          "name": "list",
-          "description": "`list` {`any[]`} - \n\nProperty: list\n\nDefault: "
+          "kind": "class",
+          "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`",
+          "name": "PromiseProgressLite",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "process"
+            },
+            {
+              "kind": "field",
+              "name": "list",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "list"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "max",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "attribute": "max"
+            },
+            {
+              "kind": "field",
+              "name": "showCount",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "show-count"
+            },
+            {
+              "kind": "field",
+              "name": "canLoad",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "canLoad"
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "promise-progress-finished",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "fieldName": "max"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "value"
+            },
+            {
+              "name": "list",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "list"
+            },
+            {
+              "name": "show-count",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "showCount"
+            },
+            {
+              "name": "canLoad",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "canLoad"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "promise-progress",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PromiseProgressLite",
+          "declaration": {
+            "name": "PromiseProgressLite",
+            "module": "lib/promise-progress-lite.js"
+          }
         },
         {
-          "name": "value",
-          "description": "`value` {`number`} - \n\nProperty: value\n\nDefault: 0"
-        },
-        {
-          "name": "max",
-          "description": "`max` {`number`} - \n\nProperty: max\n\nDefault: 100"
-        },
-        {
-          "name": "show-count",
-          "description": "`show-count` {`boolean`} - \n\nProperty: showCount\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "canLoad",
-          "description": "`canLoad` {`boolean`} - \n\nProperty: canLoad\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onpromise-progress-finished",
-          "description": "`promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - "
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PromiseProgressLite",
+            "module": "lib/promise-progress-lite.js"
+          }
         }
       ]
     },
     {
-      "name": "wc-preload-progress",
-      "description": "`promise-progress`\n`layer on top of promise progress with specific integration with the WC Autoloader registry`\n\nEvents:\n\n  * `promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - \n\nAttributes:\n\n  * `wcList` {`any[]`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `show-count` {`boolean`} - \n\n  * `canLoad` {`boolean`} - \n\nProperties:\n\n  * `wcList` {`any[]`} - \n\n  * `registry` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `showCount` {`boolean`} - \n\n  * `canLoad` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/wc-preload-progress.js",
+      "declarations": [
         {
-          "name": "wcList",
-          "description": "`wcList` {`any[]`} - \n\nProperty: wcList\n\nDefault: "
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "list",
-          "description": "`list` {`any[]`} - \n\nProperty: list\n\nDefault: "
-        },
-        {
-          "name": "value",
-          "description": "`value` {`number`} - \n\nProperty: value\n\nDefault: 0"
-        },
-        {
-          "name": "max",
-          "description": "`max` {`number`} - \n\nProperty: max\n\nDefault: 100"
-        },
-        {
-          "name": "show-count",
-          "description": "`show-count` {`boolean`} - \n\nProperty: showCount\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "canLoad",
-          "description": "`canLoad` {`boolean`} - \n\nProperty: canLoad\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onpromise-progress-finished",
-          "description": "`promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - "
+          "kind": "class",
+          "description": "`promise-progress`\n`layer on top of promise progress with specific integration with the WC Autoloader registry`",
+          "name": "WCPreloadProgress",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "wcList",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "wcList"
+            },
+            {
+              "kind": "field",
+              "name": "registry"
+            },
+            {
+              "kind": "method",
+              "name": "process",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "list",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "list",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "value",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "max",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "attribute": "max",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showCount",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "show-count",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "canLoad",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "canLoad",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "wcList",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "wcList"
+            },
+            {
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "fieldName": "max",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "value",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "name": "list",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "list",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "name": "show-count",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "showCount",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "name": "canLoad",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "canLoad",
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "PromiseProgress",
+            "module": "/promise-progress.js"
+          },
+          "tagName": "wc-preload-progress",
+          "customElement": true,
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            },
+            {
+              "name": "promise-progress-finished",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "PromiseProgressLite",
+                "module": "lib/promise-progress-lite.js"
+              }
+            }
+          ]
         }
-      ]
-    },
-    {
-      "name": "promise-progress",
-      "description": "`promise-progress`\n`An element to display the progress visually of forfilling an array of JS Promise objects`\n\nEvents:\n\n  * `promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - \n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `show-count` {`boolean`} - \n\n  * `canLoad` {`boolean`} - \n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `list` {`any[]`} - \n\n  * `value` {`number`} - \n\n  * `max` {`number`} - \n\n  * `showCount` {`boolean`} - \n\n  * `canLoad` {`boolean`} - ",
-      "attributes": [
+      ],
+      "exports": [
         {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+          "kind": "js",
+          "name": "WCPreloadProgress",
+          "declaration": {
+            "name": "WCPreloadProgress",
+            "module": "lib/wc-preload-progress.js"
+          }
         },
         {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "list",
-          "description": "`list` {`any[]`} - \n\nProperty: list\n\nDefault: "
-        },
-        {
-          "name": "value",
-          "description": "`value` {`number`} - \n\nProperty: value\n\nDefault: 0"
-        },
-        {
-          "name": "max",
-          "description": "`max` {`number`} - \n\nProperty: max\n\nDefault: 100"
-        },
-        {
-          "name": "show-count",
-          "description": "`show-count` {`boolean`} - \n\nProperty: showCount\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "canLoad",
-          "description": "`canLoad` {`boolean`} - \n\nProperty: canLoad\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onpromise-progress-finished",
-          "description": "`promise-progress-finished` {`CustomEvent<{ value: boolean; }>`} - "
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "WCPreloadProgress",
+            "module": "lib/wc-preload-progress.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

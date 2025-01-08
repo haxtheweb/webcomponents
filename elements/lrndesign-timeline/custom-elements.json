@@ -1,34 +1,143 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "lrndesign-timeline",
-      "description": "`lrndesign-timeline`\n`an element that displays events on a timeline`\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; sm: number; md: number; lg: number; xl: number; }>`} - \n\nAttributes:\n\n  * `events` {`any[]`} - the events of the timeline, in the desired order, as in:```\n[\n{\n\"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n\"details\": \"\",                            //optional, text describing the event\n\"image\": {                                //optional image for the event\n  \"src\": \"path/to/media.jpg\",             //the alt text of the image\n  \"alt\": \"path/to/media.mp3\",             //the url of the image\n},\n{...},\n{...},\n}\n]```\n\n  * `timeline-size` {`string`} - the timline size, calculated by responsive utility\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `eventsElement` - events container element\n\n  * `eventsList` - ensures that events list is an Array\n\n  * `observer` - mutation observer for tabs\n\n  * `events` {`any[]`} - the events of the timeline, in the desired order, as in:```\n[\n{\n\"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n\"details\": \"\",                            //optional, text describing the event\n\"image\": {                                //optional image for the event\n  \"src\": \"path/to/media.jpg\",             //the alt text of the image\n  \"alt\": \"path/to/media.mp3\",             //the url of the image\n},\n{...},\n{...},\n}\n]```\n\n  * `timelineSize` {`string`} - the timline size, calculated by responsive utility\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lrndesign-timeline.js",
+      "declarations": [
         {
-          "name": "events",
-          "description": "`events` {`any[]`} - the events of the timeline, in the desired order, as in:```\n[\n{\n\"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n\"details\": \"\",                            //optional, text describing the event\n\"image\": {                                //optional image for the event\n  \"src\": \"path/to/media.jpg\",             //the alt text of the image\n  \"alt\": \"path/to/media.mp3\",             //the url of the image\n},\n{...},\n{...},\n}\n]```\n\nProperty: events\n\nDefault: "
+          "kind": "class",
+          "description": "`lrndesign-timeline`\n`an element that displays events on a timeline`",
+          "name": "LrndesignTimeline",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "eventsElement",
+              "description": "events container element",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "eventsList",
+              "description": "ensures that events list is an Array",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "observer",
+              "description": "mutation observer for tabs",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_setScroll",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_checkScroll",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "checks the scroll of each event"
+            },
+            {
+              "kind": "method",
+              "name": "updateTimeline"
+            },
+            {
+              "kind": "field",
+              "name": "events",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "the events of the timeline, in the desired order, as in:```\n[\n{\n\"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n\"details\": \"\",                            //optional, text describing the event\n\"image\": {                                //optional image for the event\n \"src\": \"path/to/media.jpg\",             //the alt text of the image\n \"alt\": \"path/to/media.mp3\",             //the url of the image\n},\n{...},\n{...},\n}\n]```",
+              "default": "[]",
+              "attribute": "events"
+            },
+            {
+              "kind": "field",
+              "name": "timelineSize",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "the timline size, calculated by responsive utility",
+              "default": "\"xs\"",
+              "attribute": "timeline-size",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "events",
+              "type": {
+                "text": "array"
+              },
+              "description": "the events of the timeline, in the desired order, as in:```\n[\n{\n\"heading\": \"1855 - Penn State Charter\",   //required, the main heading for the media, usually a date, time, or era\n\"details\": \"\",                            //optional, text describing the event\n\"image\": {                                //optional image for the event\n \"src\": \"path/to/media.jpg\",             //the alt text of the image\n \"alt\": \"path/to/media.mp3\",             //the url of the image\n},\n{...},\n{...},\n}\n]```",
+              "default": "[]",
+              "fieldName": "events"
+            },
+            {
+              "name": "timeline-size",
+              "type": {
+                "text": "string"
+              },
+              "description": "the timline size, calculated by responsive utility",
+              "default": "\"xs\"",
+              "fieldName": "timelineSize"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "lrndesign-timeline",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LrndesignTimeline",
+            "module": "lrndesign-timeline.js"
+          }
         },
         {
-          "name": "timeline-size",
-          "description": "`timeline-size` {`string`} - the timline size, calculated by responsive utility\n\nProperty: timelineSize\n\nDefault: xs"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onresponsive-element",
-          "description": "`responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; sm: number; md: number; lg: number; xl: number; }>`} - "
+          "kind": "js",
+          "name": "LrndesignTimeline",
+          "declaration": {
+            "name": "LrndesignTimeline",
+            "module": "lrndesign-timeline.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

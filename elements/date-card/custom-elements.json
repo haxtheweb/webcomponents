@@ -1,86 +1,310 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "date-card",
-      "description": "`date-card`\n`simple presentation of a date`\n\nAttributes:\n\n  * `month` {`string`} - \n\n  * `date` {`string`} - \n\n  * `day` {`string`} - \n\n  * `title` {`string`} - \n\n  * `start-time` {`string`} - \n\n  * `end-time` {`string`} - \n\n  * `location` {`string`} - \n\n  * `border-spacing` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `month` {`string`} - \n\n  * `date` {`string`} - \n\n  * `day` {`string`} - \n\n  * `title` {`string`} - \n\n  * `startTime` {`string`} - \n\n  * `endTime` {`string`} - \n\n  * `location` {`string`} - \n\n  * `borderSpacing` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "date-card.js",
+      "declarations": [
         {
-          "name": "month",
-          "description": "`month` {`string`} - \n\nProperty: month"
+          "kind": "class",
+          "description": "`date-card`\n`simple presentation of a date`",
+          "name": "DateCard",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "nth",
+              "parameters": [
+                {
+                  "name": "d"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "borderSpacing",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "5",
+              "attribute": "border-spacing"
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"light-blue\""
+            },
+            {
+              "kind": "field",
+              "name": "month",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "month"
+            },
+            {
+              "kind": "field",
+              "name": "date",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "date"
+            },
+            {
+              "kind": "field",
+              "name": "day",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "day"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "startTime",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "start-time"
+            },
+            {
+              "kind": "field",
+              "name": "endTime",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "end-time"
+            },
+            {
+              "kind": "field",
+              "name": "location",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "location"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "month",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "month"
+            },
+            {
+              "name": "date",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "date"
+            },
+            {
+              "name": "day",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "day"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "title"
+            },
+            {
+              "name": "start-time",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "startTime"
+            },
+            {
+              "name": "end-time",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "endTime"
+            },
+            {
+              "name": "location",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "location"
+            },
+            {
+              "name": "border-spacing",
+              "type": {
+                "text": "number"
+              },
+              "default": "5",
+              "fieldName": "borderSpacing"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "date-card",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "DateCard",
+            "module": "date-card.js"
+          }
         },
         {
-          "name": "date",
-          "description": "`date` {`string`} - \n\nProperty: date"
-        },
-        {
-          "name": "day",
-          "description": "`day` {`string`} - \n\nProperty: day"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title"
-        },
-        {
-          "name": "start-time",
-          "description": "`start-time` {`string`} - \n\nProperty: startTime"
-        },
-        {
-          "name": "end-time",
-          "description": "`end-time` {`string`} - \n\nProperty: endTime"
-        },
-        {
-          "name": "location",
-          "description": "`location` {`string`} - \n\nProperty: location"
-        },
-        {
-          "name": "border-spacing",
-          "description": "`border-spacing` {`number`} - \n\nProperty: borderSpacing\n\nDefault: 5"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: light-blue"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "DateCard",
+          "declaration": {
+            "name": "DateCard",
+            "module": "date-card.js"
+          }
         }
       ]
     },
     {
-      "name": "date-chip",
-      "description": "Attributes:\n\n  * `timestamp` {`number`} - \n\n  * `unix` {`boolean`} - \n\n  * `month` {`string`} - \n\n  * `day` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `timestamp` {`number`} - \n\n  * `unix` {`boolean`} - \n\n  * `month` {`string`} - \n\n  * `day` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/date-chip.js",
+      "declarations": [
         {
-          "name": "timestamp",
-          "description": "`timestamp` {`number`} - \n\nProperty: timestamp\n\nDefault: null"
-        },
+          "kind": "class",
+          "description": "",
+          "name": "DateChip",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "timestamp",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "timestamp"
+            },
+            {
+              "kind": "field",
+              "name": "unix",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "unix"
+            },
+            {
+              "kind": "field",
+              "name": "month",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "month"
+            },
+            {
+              "kind": "field",
+              "name": "day",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "day"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "timestamp",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "timestamp"
+            },
+            {
+              "name": "unix",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "unix"
+            },
+            {
+              "name": "month",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "month"
+            },
+            {
+              "name": "day",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "day"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          }
+        }
+      ],
+      "exports": [
         {
-          "name": "unix",
-          "description": "`unix` {`boolean`} - \n\nProperty: unix\n\nDefault: null",
-          "valueSet": "v"
-        },
-        {
-          "name": "month",
-          "description": "`month` {`string`} - \n\nProperty: month\n\nDefault: null"
-        },
-        {
-          "name": "day",
-          "description": "`day` {`number`} - \n\nProperty: day\n\nDefault: null"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "DateChip",
+            "module": "lib/date-chip.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

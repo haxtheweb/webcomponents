@@ -1,55 +1,538 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "responsive-utility-element",
-      "description": "`responsive-utility-element`\nA simpler way to use responsive utility.\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "responsive-utility.js",
+      "declarations": [
         {
-          "name": "responsive-width",
-          "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
+          "kind": "class",
+          "description": "",
+          "name": "ResponsiveUtility",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "responiveElementEvent",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "event to add responsive element",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "adds a responsive element to the details array"
+            },
+            {
+              "kind": "method",
+              "name": "_getObserver",
+              "parameters": [
+                {
+                  "name": "detail"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "deleteResponiveElementEvent",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "event to add responsive element",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "deletes the responsive element from the details array"
+            },
+            {
+              "kind": "field",
+              "name": "details",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ResponsiveUtility",
+            "module": "responsive-utility.js"
+          }
         },
         {
-          "name": "responsive-size",
-          "description": "`responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\nProperty: responsiveSize\n\nDefault: xs"
-        },
-        {
-          "name": "sm",
-          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 600"
-        },
-        {
-          "name": "md",
-          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 900"
-        },
-        {
-          "name": "lg",
-          "description": "`lg` {`number`} - Miniumum value for large breakpoint\n\nProperty: lg\n\nDefault: 1200"
-        },
-        {
-          "name": "xl",
-          "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
-        },
-        {
-          "name": "disable-responsive",
-          "description": "`disable-responsive` {`boolean`} - \n\nProperty: disableResponsive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onresponsive-element",
-          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
-        },
-        {
-          "name": "onresponsive-element-deleted",
-          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "ResponsiveUtility",
+          "declaration": {
+            "name": "ResponsiveUtility",
+            "module": "responsive-utility.js"
+          }
         }
       ]
     },
     {
-      "name": "responsive-utility",
-      "description": "Properties:\n\n  * `details` {`never[]`} - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "lib/responsive-utility-behaviors.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "ResponsiveUtilityBehaviors",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "responsiveSize",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"xs\"",
+              "attribute": "responsive-size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "sm",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "600",
+              "attribute": "sm"
+            },
+            {
+              "kind": "field",
+              "name": "md",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "900",
+              "attribute": "md"
+            },
+            {
+              "kind": "field",
+              "name": "lg",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "1200",
+              "attribute": "lg"
+            },
+            {
+              "kind": "field",
+              "name": "xl",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Miniumum value for extra-large breakpoint",
+              "default": "1500",
+              "attribute": "xl"
+            },
+            {
+              "kind": "field",
+              "name": "disableResponsive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disable-responsive",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "responsiveWidth",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "responsive-width",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "name": "responsive-element",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "responsive-element-deleted",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "disable-responsive",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disableResponsive"
+            },
+            {
+              "name": "responsive-size",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"xs\"",
+              "fieldName": "responsiveSize"
+            },
+            {
+              "name": "responsive-width",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "responsiveWidth"
+            },
+            {
+              "name": "sm",
+              "type": {
+                "text": "number"
+              },
+              "default": "600",
+              "fieldName": "sm"
+            },
+            {
+              "name": "md",
+              "type": {
+                "text": "number"
+              },
+              "default": "900",
+              "fieldName": "md"
+            },
+            {
+              "name": "lg",
+              "type": {
+                "text": "number"
+              },
+              "default": "1200",
+              "fieldName": "lg"
+            },
+            {
+              "name": "xl",
+              "type": {
+                "text": "number"
+              },
+              "description": "Miniumum value for extra-large breakpoint",
+              "default": "1500",
+              "fieldName": "xl"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ResponsiveUtilityBehaviors",
+          "declaration": {
+            "name": "ResponsiveUtilityBehaviors",
+            "module": "lib/responsive-utility-behaviors.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/responsive-utility-element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`responsive-utility-element`\nA simpler way to use responsive utility.",
+          "name": "ResponsiveUtilityElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "responsiveSize",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"xs\"",
+              "attribute": "responsive-size",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "sm",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "600",
+              "attribute": "sm",
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "md",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "900",
+              "attribute": "md",
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "lg",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "1200",
+              "attribute": "lg",
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "xl",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Miniumum value for extra-large breakpoint",
+              "default": "1500",
+              "attribute": "xl",
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disableResponsive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disable-responsive",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "responsiveWidth",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "responsive-width",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "ResponsiveUtilityBehaviors",
+              "module": "/lib/responsive-utility-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "responsive-utility-element",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "disable-responsive",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disableResponsive",
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            },
+            {
+              "name": "responsive-size",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"xs\"",
+              "fieldName": "responsiveSize",
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            },
+            {
+              "name": "responsive-width",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "responsiveWidth",
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            },
+            {
+              "name": "sm",
+              "type": {
+                "text": "number"
+              },
+              "default": "600",
+              "fieldName": "sm",
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            },
+            {
+              "name": "md",
+              "type": {
+                "text": "number"
+              },
+              "default": "900",
+              "fieldName": "md",
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            },
+            {
+              "name": "lg",
+              "type": {
+                "text": "number"
+              },
+              "default": "1200",
+              "fieldName": "lg",
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            },
+            {
+              "name": "xl",
+              "type": {
+                "text": "number"
+              },
+              "description": "Miniumum value for extra-large breakpoint",
+              "default": "1500",
+              "fieldName": "xl",
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "responsive-element",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            },
+            {
+              "name": "responsive-element-deleted",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "ResponsiveUtilityBehaviors",
+                "module": "lib/responsive-utility-behaviors.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ResponsiveUtilityElement",
+            "module": "lib/responsive-utility-element.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ResponsiveUtilityElement",
+          "declaration": {
+            "name": "ResponsiveUtilityElement",
+            "module": "lib/responsive-utility-element.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,112 +1,966 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "relative-heading-lite",
-      "description": "`relative-heading-lite`\n`outputs the correct heading hierarchy based on parent heading`\n\nAttributes:\n\n  * `id` {`string`} - The relative-heading's UUID.\n\n  * `parent` {`string`} - The parent relative-heading's UUID.\n\n  * `level` {`number`} - The parent relative-heading's UUID.\n\n  * `default-level` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.\n\nProperties:\n\n  * `id` {`string`} - The relative-heading's UUID.\n\n  * `template` {`UncompiledTemplateResult<1>`} - \n\n  * `observer` - returns mutation observer\n\n  * `manager` - returns state manager\n\n  * `parent` {`string`} - The parent relative-heading's UUID.\n\n  * `__level` {`number`} - The parent relative-heading's UUID.\n\n  * `defaultLevel` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "relative-heading.js",
+      "declarations": [
         {
-          "name": "id",
-          "description": "`id` {`string`} - The relative-heading's UUID.\n\nProperty: id"
+          "kind": "class",
+          "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`",
+          "name": "RelativeHeading",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "anchored",
+              "description": "gets whether heading is currently anchored",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "button",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleCopyClick"
+            },
+            {
+              "kind": "field",
+              "name": "linkAlignRight",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "label for copy link's button",
+              "default": "false",
+              "attribute": "link-align-right",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disableLink",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The relative-heading resource's UUID.",
+              "default": "false",
+              "attribute": "disable-link"
+            },
+            {
+              "kind": "field",
+              "name": "linkIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "icon for copy link's button",
+              "default": "\"link\"",
+              "attribute": "linkIcon"
+            },
+            {
+              "kind": "field",
+              "name": "linkLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for copy link's button",
+              "default": "\"Get link\"",
+              "attribute": "linkLabel"
+            },
+            {
+              "kind": "field",
+              "name": "closeIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "overrides state manager's default icon for copy link's toast's close button",
+              "attribute": "closeIcon"
+            },
+            {
+              "kind": "field",
+              "name": "closeLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "overrides state manager's default label for copy link's toast's close button",
+              "attribute": "closeLabel"
+            },
+            {
+              "kind": "field",
+              "name": "copyMessage",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "overrides state manager's default message for copy link's toast",
+              "attribute": "copyMessage"
+            },
+            {
+              "kind": "field",
+              "name": "template",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "observer",
+              "description": "returns mutation observer",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "manager",
+              "description": "returns state manager",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkId",
+              "description": "ensures that id is not blank",
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_setLevel",
+              "parameters": [
+                {
+                  "name": "level",
+                  "description": "of heading",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "sets the heading level",
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updateContents",
+              "description": "unwraps tags on slotted content",
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_generateUUID",
+              "description": "generates a unique id",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "parent",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "The parent relative-heading's UUID.",
+              "default": "null",
+              "attribute": "parent",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__level",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "The parent relative-heading's UUID.",
+              "attribute": "level",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "defaultLevel",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.",
+              "default": "1",
+              "attribute": "default-level",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The relative-heading's UUID.",
+              "attribute": "id",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "closeIcon",
+              "type": {
+                "text": "string"
+              },
+              "description": "overrides state manager's default icon for copy link's toast's close button",
+              "fieldName": "closeIcon"
+            },
+            {
+              "name": "closeLabel",
+              "type": {
+                "text": "string"
+              },
+              "description": "overrides state manager's default label for copy link's toast's close button",
+              "fieldName": "closeLabel"
+            },
+            {
+              "name": "copyMessage",
+              "type": {
+                "text": "string"
+              },
+              "description": "overrides state manager's default message for copy link's toast",
+              "fieldName": "copyMessage"
+            },
+            {
+              "name": "disable-link",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The relative-heading resource's UUID.",
+              "default": "false",
+              "fieldName": "disableLink"
+            },
+            {
+              "name": "link-align-right",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "label for copy link's button",
+              "default": "false",
+              "fieldName": "linkAlignRight"
+            },
+            {
+              "name": "linkIcon",
+              "type": {
+                "text": "string"
+              },
+              "description": "icon for copy link's button",
+              "default": "\"link\"",
+              "fieldName": "linkIcon"
+            },
+            {
+              "name": "linkLabel",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for copy link's button",
+              "default": "\"Get link\"",
+              "fieldName": "linkLabel"
+            },
+            {
+              "name": "default-level",
+              "type": {
+                "text": "number"
+              },
+              "description": "The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.",
+              "default": "1",
+              "fieldName": "defaultLevel",
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            },
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "The relative-heading's UUID.",
+              "fieldName": "id",
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            },
+            {
+              "name": "parent",
+              "type": {
+                "text": "null"
+              },
+              "description": "The parent relative-heading's UUID.",
+              "default": "null",
+              "fieldName": "parent",
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            },
+            {
+              "name": "level",
+              "type": {
+                "text": "number"
+              },
+              "description": "The parent relative-heading's UUID.",
+              "fieldName": "__level",
+              "inheritedFrom": {
+                "name": "RelativeHeadingLite",
+                "module": "lib/relative-heading-lite.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "RelativeHeadingLite",
+            "module": "/lib/relative-heading-lite.js"
+          },
+          "tagName": "relative-heading",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "RelativeHeading",
+            "module": "relative-heading.js"
+          }
         },
         {
-          "name": "parent",
-          "description": "`parent` {`string`} - The parent relative-heading's UUID.\n\nProperty: parent\n\nDefault: null"
-        },
-        {
-          "name": "level",
-          "description": "`level` {`number`} - The parent relative-heading's UUID.\n\nProperty: __level"
-        },
-        {
-          "name": "default-level",
-          "description": "`default-level` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.\n\nProperty: defaultLevel\n\nDefault: 1"
+          "kind": "js",
+          "name": "RelativeHeading",
+          "declaration": {
+            "name": "RelativeHeading",
+            "module": "relative-heading.js"
+          }
         }
       ]
     },
     {
-      "name": "relative-heading-state-manager",
-      "description": "`relative-heading-state-manager`\n` A utility that determines headings relative to their parents.`\n\nAttributes:\n\n  * `close-icon` {`string`} - icon for copy link's toast's close button\n\n  * `close-label` {`string`} - label for copy link's toast's close button\n\n  * `copy-message` {`string`} - message for copy link's toast\n\n  * `headings` - Stores an array of all the players on the page.\n\n  * `copy-heading` - active heading for copying link\n\n  * `uses-copy-link` {`boolean`} - indicates is toast is already imported for copy link feature\n\nProperties:\n\n  * `copyUrl` {`string`} - gets URL to be copied\n\n  * `closeIcon` {`string`} - icon for copy link's toast's close button\n\n  * `closeLabel` {`string`} - label for copy link's toast's close button\n\n  * `copyMessage` {`string`} - message for copy link's toast\n\n  * `headings` - Stores an array of all the players on the page.\n\n  * `copyHeading` - active heading for copying link\n\n  * `usesCopyLink` {`boolean`} - indicates is toast is already imported for copy link feature",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/relative-heading-lite.js",
+      "declarations": [
         {
-          "name": "close-icon",
-          "description": "`close-icon` {`string`} - icon for copy link's toast's close button\n\nProperty: closeIcon\n\nDefault: close"
+          "kind": "class",
+          "description": "`relative-heading-lite`\n`outputs the correct heading hierarchy based on parent heading`",
+          "name": "RelativeHeadingLite",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "template",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "observer",
+              "description": "returns mutation observer",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "manager",
+              "description": "returns state manager",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkId",
+              "description": "ensures that id is not blank"
+            },
+            {
+              "kind": "method",
+              "name": "_setLevel",
+              "parameters": [
+                {
+                  "name": "level",
+                  "description": "of heading",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "sets the heading level"
+            },
+            {
+              "kind": "method",
+              "name": "updateContents",
+              "description": "unwraps tags on slotted content"
+            },
+            {
+              "kind": "method",
+              "name": "_generateUUID",
+              "description": "generates a unique id",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "parent",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "The parent relative-heading's UUID.",
+              "default": "null",
+              "attribute": "parent",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__level",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "The parent relative-heading's UUID.",
+              "attribute": "level",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "defaultLevel",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.",
+              "default": "1",
+              "attribute": "default-level",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The relative-heading's UUID.",
+              "attribute": "id",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "default-level",
+              "type": {
+                "text": "number"
+              },
+              "description": "The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.",
+              "default": "1",
+              "fieldName": "defaultLevel"
+            },
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "The relative-heading's UUID.",
+              "fieldName": "id"
+            },
+            {
+              "name": "parent",
+              "type": {
+                "text": "null"
+              },
+              "description": "The parent relative-heading's UUID.",
+              "default": "null",
+              "fieldName": "parent"
+            },
+            {
+              "name": "level",
+              "type": {
+                "text": "number"
+              },
+              "description": "The parent relative-heading's UUID.",
+              "fieldName": "__level"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "relative-heading-lite",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "RelativeHeadingLite",
+            "module": "lib/relative-heading-lite.js"
+          }
         },
         {
-          "name": "close-label",
-          "description": "`close-label` {`string`} - label for copy link's toast's close button\n\nProperty: closeLabel\n\nDefault: Close"
-        },
-        {
-          "name": "copy-message",
-          "description": "`copy-message` {`string`} - message for copy link's toast\n\nProperty: copyMessage\n\nDefault: Copied to Clipboard"
-        },
-        {
-          "name": "headings",
-          "description": "`headings` - Stores an array of all the players on the page.\n\nProperty: headings\n\nDefault: "
-        },
-        {
-          "name": "copy-heading",
-          "description": "`copy-heading` - active heading for copying link\n\nProperty: copyHeading\n\nDefault: [object Object]"
-        },
-        {
-          "name": "uses-copy-link",
-          "description": "`uses-copy-link` {`boolean`} - indicates is toast is already imported for copy link feature\n\nProperty: usesCopyLink\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "RelativeHeadingLite",
+          "declaration": {
+            "name": "RelativeHeadingLite",
+            "module": "lib/relative-heading-lite.js"
+          }
         }
       ]
     },
     {
-      "name": "relative-heading",
-      "description": "`relative-heading`\n`outputs the correct heading hierarchy based on parent heading`\n\nAttributes:\n\n  * `closeIcon` {`string`} - overrides state manager's default icon for copy link's toast's close button\n\n  * `closeLabel` {`string`} - overrides state manager's default label for copy link's toast's close button\n\n  * `copyMessage` {`string`} - overrides state manager's default message for copy link's toast\n\n  * `link-align-right` {`boolean`} - label for copy link's button\n\n  * `disable-link` {`boolean`} - The relative-heading resource's UUID.\n\n  * `linkIcon` {`string`} - icon for copy link's button\n\n  * `linkLabel` {`string`} - label for copy link's button\n\n  * `id` {`string`} - The relative-heading's UUID.\n\n  * `parent` {`string`} - The parent relative-heading's UUID.\n\n  * `level` {`number`} - The parent relative-heading's UUID.\n\n  * `default-level` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.\n\nProperties:\n\n  * `closeIcon` {`string`} - overrides state manager's default icon for copy link's toast's close button\n\n  * `closeLabel` {`string`} - overrides state manager's default label for copy link's toast's close button\n\n  * `copyMessage` {`string`} - overrides state manager's default message for copy link's toast\n\n  * `anchored` {`boolean`} - gets whether heading is currently anchored\n\n  * `button` {`UncompiledTemplateResult<1>`} - \n\n  * `linkAlignRight` {`boolean`} - label for copy link's button\n\n  * `disableLink` {`boolean`} - The relative-heading resource's UUID.\n\n  * `linkIcon` {`string`} - icon for copy link's button\n\n  * `linkLabel` {`string`} - label for copy link's button\n\n  * `id` {`string`} - The relative-heading's UUID.\n\n  * `template` {`UncompiledTemplateResult<1>`} - \n\n  * `observer` - returns mutation observer\n\n  * `manager` - returns state manager\n\n  * `parent` {`string`} - The parent relative-heading's UUID.\n\n  * `__level` {`number`} - The parent relative-heading's UUID.\n\n  * `defaultLevel` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/relative-heading-state-manager.js",
+      "declarations": [
         {
-          "name": "closeIcon",
-          "description": "`closeIcon` {`string`} - overrides state manager's default icon for copy link's toast's close button\n\nProperty: closeIcon"
+          "kind": "class",
+          "description": "`relative-heading-state-manager`\n` A utility that determines headings relative to their parents.`",
+          "name": "RelativeHeadingStateManager",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "copyUrl",
+              "description": "gets URL to be copied",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "useCopyLink",
+              "description": "imports toast if needed and not already loaded"
+            },
+            {
+              "kind": "method",
+              "name": "copyLink",
+              "parameters": [
+                {
+                  "name": "heading"
+                },
+                {
+                  "description": "heading",
+                  "name": "active",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "handles copying the share link"
+            },
+            {
+              "kind": "method",
+              "name": "closeCopyLink",
+              "description": "handles closing link toast"
+            },
+            {
+              "kind": "method",
+              "name": "addHeading",
+              "parameters": [
+                {
+                  "name": "heading",
+                  "description": "to be added",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "adds heading to manager data"
+            },
+            {
+              "kind": "method",
+              "name": "removeHeading",
+              "parameters": [
+                {
+                  "name": "heading",
+                  "description": "to be removed",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "adds heading from manager data"
+            },
+            {
+              "kind": "method",
+              "name": "updateId",
+              "parameters": [
+                {
+                  "name": "heading",
+                  "description": "to be updated",
+                  "type": {
+                    "text": "object"
+                  }
+                },
+                {
+                  "name": "old",
+                  "default": "null",
+                  "description": "heading id",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "updates heading id in manager data"
+            },
+            {
+              "kind": "method",
+              "name": "updateParent",
+              "parameters": [
+                {
+                  "name": "heading",
+                  "description": "to be updated",
+                  "type": {
+                    "text": "object"
+                  }
+                },
+                {
+                  "name": "old",
+                  "default": "null",
+                  "description": "heading parent",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "updates heading parent id in manager data"
+            },
+            {
+              "kind": "method",
+              "name": "updateDefaultLevel",
+              "parameters": [
+                {
+                  "name": "heading",
+                  "description": "to be updated",
+                  "type": {
+                    "text": "object"
+                  }
+                },
+                {
+                  "name": "old",
+                  "default": "null"
+                }
+              ],
+              "description": "updates heading level based on default level"
+            },
+            {
+              "kind": "method",
+              "name": "addSubhead",
+              "parameters": [
+                {
+                  "name": "heading",
+                  "description": "to be added",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "adds heading to subhead data"
+            },
+            {
+              "kind": "method",
+              "name": "removeSubhead",
+              "parameters": [
+                {
+                  "name": "id",
+                  "description": "to be updated",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "heading",
+                  "description": "to be removed",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "removes heading from subhead data"
+            },
+            {
+              "kind": "method",
+              "name": "setHeading",
+              "parameters": [
+                {
+                  "name": "id",
+                  "description": "to be updated",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "heading",
+                  "description": "to be set",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "sets manager's heading data"
+            },
+            {
+              "kind": "method",
+              "name": "updateLevel",
+              "parameters": [
+                {
+                  "name": "heading",
+                  "description": "to be updated",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "updates heading level"
+            },
+            {
+              "kind": "field",
+              "name": "closeIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "icon for copy link's toast's close button",
+              "default": "\"close\"",
+              "attribute": "closeIcon"
+            },
+            {
+              "kind": "field",
+              "name": "closeLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for copy link's toast's close button",
+              "default": "\"Close\"",
+              "attribute": "closeLabel"
+            },
+            {
+              "kind": "field",
+              "name": "copyMessage",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "message for copy link's toast",
+              "default": "\"Copied to Clipboard\"",
+              "attribute": "copyMessage"
+            },
+            {
+              "kind": "field",
+              "name": "headings",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Stores an array of all the players on the page.",
+              "default": "[]",
+              "attribute": "headings"
+            },
+            {
+              "kind": "field",
+              "name": "copyHeading",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "active heading for copying link",
+              "default": "{}",
+              "attribute": "copyHeading"
+            },
+            {
+              "kind": "field",
+              "name": "usesCopyLink",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "indicates is toast is already imported for copy link feature",
+              "default": "false",
+              "attribute": "usesCopyLink"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "closeIcon",
+              "type": {
+                "text": "string"
+              },
+              "description": "icon for copy link's toast's close button",
+              "default": "\"close\"",
+              "fieldName": "closeIcon"
+            },
+            {
+              "name": "closeLabel",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for copy link's toast's close button",
+              "default": "\"Close\"",
+              "fieldName": "closeLabel"
+            },
+            {
+              "name": "copyHeading",
+              "type": {
+                "text": "object"
+              },
+              "description": "active heading for copying link",
+              "default": "{}",
+              "fieldName": "copyHeading"
+            },
+            {
+              "name": "copyMessage",
+              "type": {
+                "text": "string"
+              },
+              "description": "message for copy link's toast",
+              "default": "\"Copied to Clipboard\"",
+              "fieldName": "copyMessage"
+            },
+            {
+              "name": "headings",
+              "type": {
+                "text": "array"
+              },
+              "description": "Stores an array of all the players on the page.",
+              "default": "[]",
+              "fieldName": "headings"
+            },
+            {
+              "name": "usesCopyLink",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "indicates is toast is already imported for copy link feature",
+              "default": "false",
+              "fieldName": "usesCopyLink"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "relative-heading-state-manager",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "RelativeHeadingStateManager",
+            "module": "lib/relative-heading-state-manager.js"
+          }
         },
         {
-          "name": "closeLabel",
-          "description": "`closeLabel` {`string`} - overrides state manager's default label for copy link's toast's close button\n\nProperty: closeLabel"
-        },
-        {
-          "name": "copyMessage",
-          "description": "`copyMessage` {`string`} - overrides state manager's default message for copy link's toast\n\nProperty: copyMessage"
-        },
-        {
-          "name": "link-align-right",
-          "description": "`link-align-right` {`boolean`} - label for copy link's button\n\nProperty: linkAlignRight\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disable-link",
-          "description": "`disable-link` {`boolean`} - The relative-heading resource's UUID.\n\nProperty: disableLink\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "linkIcon",
-          "description": "`linkIcon` {`string`} - icon for copy link's button\n\nProperty: linkIcon\n\nDefault: link"
-        },
-        {
-          "name": "linkLabel",
-          "description": "`linkLabel` {`string`} - label for copy link's button\n\nProperty: linkLabel\n\nDefault: Get link"
-        },
-        {
-          "name": "id",
-          "description": "`id` {`string`} - The relative-heading's UUID.\n\nProperty: id"
-        },
-        {
-          "name": "parent",
-          "description": "`parent` {`string`} - The parent relative-heading's UUID.\n\nProperty: parent\n\nDefault: null"
-        },
-        {
-          "name": "level",
-          "description": "`level` {`number`} - The parent relative-heading's UUID.\n\nProperty: __level"
-        },
-        {
-          "name": "default-level",
-          "description": "`default-level` {`number`} - The default heading level (1-6),\neg., 1 for <h1>, if there  is no parent.\n\nProperty: defaultLevel\n\nDefault: 1"
+          "kind": "js",
+          "name": "RelativeHeadingStateManager",
+          "declaration": {
+            "name": "RelativeHeadingStateManager",
+            "module": "lib/relative-heading-state-manager.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

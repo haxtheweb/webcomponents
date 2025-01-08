@@ -1,58 +1,353 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "sorting-question",
-      "description": "Attributes:\n\n  * `disabled` {`boolean`} - \n\n  * `celebrate` {`boolean`} - \n\n  * `shame` {`boolean`} - \n\n  * `numberOfOptions` {`number`} - \n\n  * `numberCorrrect` {`number`} - \n\n  * `correctOrder` {`any[]`} - \n\n  * `mute` {`boolean`} - \n\n  * `no-background` {`boolean`} - \n\n  * `question` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `disabled` {`boolean`} - \n\n  * `celebrate` {`boolean`} - \n\n  * `shame` {`boolean`} - \n\n  * `numberOfOptions` {`number`} - \n\n  * `numberCorrrect` {`number`} - \n\n  * `correctOrder` {`any[]`} - \n\n  * `mute` {`boolean`} - \n\n  * `noBackground` {`boolean`} - \n\n  * `question` {`string`} - \n\n  * `t` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "sorting-question.js",
+      "declarations": [
         {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "",
+          "name": "SortingQuestion",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "getOptions",
+              "parameters": [
+                {
+                  "name": "flag",
+                  "default": "\"\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "checkAnswerCallback"
+            },
+            {
+              "kind": "method",
+              "name": "resetAnswer"
+            },
+            {
+              "kind": "method",
+              "name": "renderInteraction"
+            },
+            {
+              "kind": "method",
+              "name": "inactiveCase"
+            },
+            {
+              "kind": "method",
+              "name": "renderDirections"
+            },
+            {
+              "kind": "method",
+              "name": "renderFeedback"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxinlineContextMenu",
+              "parameters": [
+                {
+                  "name": "ceMenu"
+                }
+              ],
+              "description": "add buttons when it is in context"
+            },
+            {
+              "kind": "method",
+              "name": "haxClickInlineAdd",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxClickInlineRemove",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "randomize",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "numberCorrect",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "numberCorrect"
+            },
+            {
+              "kind": "field",
+              "name": "quizName",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"default\""
+            },
+            {
+              "kind": "field",
+              "name": "question",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Put the following in order\""
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ numCorrectLeft: \"You have\", numCorrectRight: \"correct\", checkAnswer: \"Check answer\", tryAgain: \"Try again\", }"
+            }
+          ],
+          "events": [
+            {
+              "name": "user-engagement",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "numberCorrect",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "numberCorrect"
+            }
+          ],
+          "superclass": {
+            "name": "QuestionElement",
+            "package": "@haxtheweb/multiple-choice/lib/QuestionElement.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SortingQuestion",
+          "declaration": {
+            "name": "SortingQuestion",
+            "module": "sorting-question.js"
+          }
         },
         {
-          "name": "celebrate",
-          "description": "`celebrate` {`boolean`} - \n\nProperty: celebrate\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SortingQuestion",
+            "module": "sorting-question.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/sorting-option.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SortingOption",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "getCurrentPosition",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "dragStart",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "dragStartCallback",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "dragEnd"
+            },
+            {
+              "kind": "method",
+              "name": "arrowSort",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "arrowSortCallback",
+              "parameters": [
+                {
+                  "name": "target"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "shadowRootOptions",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true, }"
+            },
+            {
+              "kind": "field",
+              "name": "dragging",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "dragging",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "correct",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "correct",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "incorrect",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "incorrect",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "dragging",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "dragging"
+            },
+            {
+              "name": "correct",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "correct"
+            },
+            {
+              "name": "incorrect",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "incorrect"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SortingOption",
+          "declaration": {
+            "name": "SortingOption",
+            "module": "lib/sorting-option.js"
+          }
         },
         {
-          "name": "shame",
-          "description": "`shame` {`boolean`} - \n\nProperty: shame\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "numberOfOptions",
-          "description": "`numberOfOptions` {`number`} - \n\nProperty: numberOfOptions\n\nDefault: length"
-        },
-        {
-          "name": "numberCorrrect",
-          "description": "`numberCorrrect` {`number`} - \n\nProperty: numberCorrrect\n\nDefault: 0"
-        },
-        {
-          "name": "correctOrder",
-          "description": "`correctOrder` {`any[]`} - \n\nProperty: correctOrder\n\nDefault: "
-        },
-        {
-          "name": "mute",
-          "description": "`mute` {`boolean`} - \n\nProperty: mute\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "no-background",
-          "description": "`no-background` {`boolean`} - \n\nProperty: noBackground\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "question",
-          "description": "`question` {`string`} - \n\nProperty: question\n\nDefault: Sort the following in order!"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SortingOption",
+            "module": "lib/sorting-option.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

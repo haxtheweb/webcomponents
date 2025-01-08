@@ -1,59 +1,365 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "lrndesign-imagemap-hotspot",
-      "description": "`lrndesign-imagemap-hotspot`\ncreates an accessible image map\n\nAttributes:\n\n  * `label` {`string`} - Label for the hotspot\n\n  * `hotspot-id` {`string`} - Id of hotspot element inside the SVG\n\n  * `position` {`string`} - \n\n  * `__hotspots` {`any[]`} - \n\nProperties:\n\n  * `label` {`string`} - Label for the hotspot\n\n  * `hotspotId` {`string`} - Id of hotspot element inside the SVG\n\n  * `position` {`string`} - \n\n  * `__hotspots` {`any[]`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lrndesign-imagemap.js",
+      "declarations": [
         {
-          "name": "label",
-          "description": "`label` {`string`} - Label for the hotspot\n\nProperty: label"
+          "kind": "class",
+          "description": "`lrndesign-imagemap`",
+          "name": "LrndesignImagemap",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_fetchSvg",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_getSVGHandler",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ],
+              "description": "Convert from svg text to an array in the table function"
+            },
+            {
+              "kind": "method",
+              "name": "_getInfoNode",
+              "parameters": [
+                {
+                  "name": "svg",
+                  "description": "an svg element",
+                  "type": {
+                    "text": "object"
+                  }
+                },
+                {
+                  "name": "nodeName",
+                  "default": "\"desc\"",
+                  "description": "the name of the info element (title or desc)",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Gets / Sets description and label",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getId",
+              "parameters": [
+                {
+                  "name": "el"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "openHotspot",
+              "parameters": [
+                {
+                  "name": "hotspot"
+                }
+              ],
+              "description": "Selects a hotspot and opens dialog with details about it."
+            },
+            {
+              "kind": "method",
+              "name": "closeHotspot",
+              "description": "Closes a hotspot."
+            },
+            {
+              "kind": "method",
+              "name": "resetHotspots",
+              "description": "Closes dialog and deselects all hotspots."
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the imagemap",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "deprecated": ": (8/27/2020, after v.2.6.24) Using slot instead of the path of the SVG",
+              "attribute": "src"
+            },
+            {
+              "kind": "field",
+              "name": "hotspotDetails",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "The path of the SVG",
+              "attribute": "hotspot-details"
+            },
+            {
+              "kind": "field",
+              "name": "subtopicOf",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "deprecated": ": (8/27/2020, after v.2.6.24) the id of the heading element that this imagemap is a subtopic of",
+              "attribute": "subtopic-of",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "parent",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "parent",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__activeHotspot",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "attribute": "__activeHotspot"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the imagemap",
+              "fieldName": "label"
+            },
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "deprecated": ": (8/27/2020, after v.2.6.24) Using slot instead of the path of the SVG",
+              "fieldName": "src"
+            },
+            {
+              "name": "hotspot-details",
+              "type": {
+                "text": "array"
+              },
+              "description": "The path of the SVG",
+              "fieldName": "hotspotDetails"
+            },
+            {
+              "name": "subtopic-of",
+              "type": {
+                "text": "string"
+              },
+              "deprecated": ": (8/27/2020, after v.2.6.24) the id of the heading element that this imagemap is a subtopic of",
+              "fieldName": "subtopicOf"
+            },
+            {
+              "name": "parent",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "parent"
+            },
+            {
+              "name": "__activeHotspot",
+              "type": {
+                "text": "object"
+              },
+              "fieldName": "__activeHotspot"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "lrndesign-imagemap",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LrndesignImagemap",
+            "module": "lrndesign-imagemap.js"
+          }
         },
         {
-          "name": "hotspot-id",
-          "description": "`hotspot-id` {`string`} - Id of hotspot element inside the SVG\n\nProperty: hotspotId"
-        },
-        {
-          "name": "position",
-          "description": "`position` {`string`} - \n\nProperty: position"
-        },
-        {
-          "name": "__hotspots",
-          "description": "`__hotspots` {`any[]`} - \n\nProperty: __hotspots"
+          "kind": "js",
+          "name": "LrndesignImagemap",
+          "declaration": {
+            "name": "LrndesignImagemap",
+            "module": "lrndesign-imagemap.js"
+          }
         }
       ]
     },
     {
-      "name": "lrndesign-imagemap",
-      "description": "`lrndesign-imagemap`\n\nAttributes:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - \n\n  * `hotspot-details` {`any[]`} - The path of the SVG\n\n  * `subtopic-of` {`string`} - \n\n  * `parent` {`string`} - \n\n  * `__activeHotspot` - \n\nProperties:\n\n  * `label` {`string`} - Label for the imagemap\n\n  * `src` {`string`} - \n\n  * `hotspotDetails` {`any[]`} - The path of the SVG\n\n  * `subtopicOf` {`string`} - \n\n  * `parent` {`string`} - \n\n  * `__activeHotspot` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/lrndesign-imagemap-hotspot.js",
+      "declarations": [
         {
-          "name": "label",
-          "description": "`label` {`string`} - Label for the imagemap\n\nProperty: label"
+          "kind": "class",
+          "description": "`lrndesign-imagemap-hotspot`\ncreates an accessible image map",
+          "name": "LrndesignImagemapHotspot",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "loadSvg",
+              "parameters": [
+                {
+                  "name": "svg"
+                },
+                {
+                  "name": "hotspots"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setParentHeading",
+              "parameters": [
+                {
+                  "name": "parent"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the hotspot",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "hotspotId",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Id of hotspot element inside the SVG",
+              "attribute": "hotspot-id",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "position"
+            },
+            {
+              "kind": "field",
+              "name": "__hotspots",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "attribute": "__hotspots"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the hotspot",
+              "fieldName": "label"
+            },
+            {
+              "name": "hotspot-id",
+              "type": {
+                "text": "string"
+              },
+              "description": "Id of hotspot element inside the SVG",
+              "fieldName": "hotspotId"
+            },
+            {
+              "name": "position",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "position"
+            },
+            {
+              "name": "__hotspots",
+              "type": {
+                "text": "array"
+              },
+              "fieldName": "__hotspots"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "lrndesign-imagemap-hotspot",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LrndesignImagemapHotspot",
+            "module": "lib/lrndesign-imagemap-hotspot.js"
+          }
         },
         {
-          "name": "src",
-          "description": "`src` {`string`} - \n\nProperty: src"
-        },
-        {
-          "name": "hotspot-details",
-          "description": "`hotspot-details` {`any[]`} - The path of the SVG\n\nProperty: hotspotDetails"
-        },
-        {
-          "name": "subtopic-of",
-          "description": "`subtopic-of` {`string`} - \n\nProperty: subtopicOf"
-        },
-        {
-          "name": "parent",
-          "description": "`parent` {`string`} - \n\nProperty: parent"
-        },
-        {
-          "name": "__activeHotspot",
-          "description": "`__activeHotspot` - \n\nProperty: __activeHotspot"
+          "kind": "js",
+          "name": "LrndesignImagemapHotspot",
+          "declaration": {
+            "name": "LrndesignImagemapHotspot",
+            "module": "lib/lrndesign-imagemap-hotspot.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,18 +1,72 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "html-block",
-      "description": "`html-block`\n\nAttributes:\n\n  * `allowscript` {`string | null`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `allowscript` {`string | null`} - \n\n  * `tag` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "html-block.js",
+      "declarations": [
         {
-          "name": "allowscript",
-          "description": "`allowscript` {`string | null`} - \n\nProperty: allowscript",
-          "values": []
+          "kind": "class",
+          "description": "`html-block`",
+          "name": "HtmlBlock",
+          "members": [
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "allowscript"
+            },
+            {
+              "kind": "method",
+              "name": "__sanitizeHTML"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "allowscript"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "html-block",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "HtmlBlock",
+            "module": "html-block.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HtmlBlock",
+          "declaration": {
+            "name": "HtmlBlock",
+            "module": "html-block.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,21 +1,261 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "a11y-details",
-      "description": "`a11y-details`\naccessible progressive disclosure with detail and summary\n### Styling\n#### Summary Button\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-fontSize | font-size | 0.8em\n--a11y-details-summary-color | text color | #000\n--a11y-details-summary-backgroundColor | background-color | #fff\n--a11y-details-summary-borderColor | border-color | #000\n--a11y-details-summary-borderWidth | border-width | 1px\n--a11y-details-summary-borderStyle | border-style | solid\n--a11y-details-summary-borderRadius | border-radius | 3px\n--a11y-details-summary-padding | padding | 0.5em\n\n#### Summary Button (:focus state)\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-focus-color | text color | #000\n--a11y-details-summary-focus-backgroundColor | background-color | #fff\n--a11y-details-summary-focus-borderColor | border-color | #000\n--a11y-details-summary-focus-borderWidth | border-width | 1px\n--a11y-details-summary-focus-borderStyle | border-style | dotted\n--a11y-details-summary-focus-borderRadius | border-radius | 3px\n\n#### Details\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-fontSize | font-size  | 0.8em\n--a11y-details-color | text color | #000\n--a11y-details-backgroundColor | background-color | rgba(255,255,255,1)\n--a11y-details-borderColor | border-color | #000\n--a11y-details-borderWidth | border-width | 1px\n--a11y-details-borderStyle | border-style | solid\n--a11y-details-borderRadius | border-radius | 3px\n--a11y-details-padding | padding | 0.5em\n--a11y-details-left | left position | 0\n--a11y-details-right | right position | 0\n--a11y-details-maxHeight | max-height | 400px\n\nAttributes:\n\n  * `close-text` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `open-text` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\nProperties:\n\n  * `details` {`HTMLDetailsElement | null | undefined`} - gets the details element in shadowRoot\n\n  * `summaryClasses` {`string`} - gets classe sfor summary to hide summary slot if open/closed text is provided\n\n  * `observer` - mutation observer for a11y-details\n\n  * `detailsObserver` - mutation observer for <details/> in unnamed slot\n\n  * `closeText` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `openText` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\n  * `tag` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "a11y-details.js",
+      "declarations": [
         {
-          "name": "close-text",
-          "description": "`close-text` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\nProperty: closeText\n\nDefault: "
+          "kind": "class",
+          "description": "`a11y-details`\naccessible progressive disclosure with detail and summary\n### Styling\n#### Summary Button\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-fontSize | font-size | 0.8em\n--a11y-details-summary-color | text color | #000\n--a11y-details-summary-backgroundColor | background-color | #fff\n--a11y-details-summary-borderColor | border-color | #000\n--a11y-details-summary-borderWidth | border-width | 1px\n--a11y-details-summary-borderStyle | border-style | solid\n--a11y-details-summary-borderRadius | border-radius | 3px\n--a11y-details-summary-padding | padding | 0.5em\n\n#### Summary Button (:focus state)\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-focus-color | text color | #000\n--a11y-details-summary-focus-backgroundColor | background-color | #fff\n--a11y-details-summary-focus-borderColor | border-color | #000\n--a11y-details-summary-focus-borderWidth | border-width | 1px\n--a11y-details-summary-focus-borderStyle | border-style | dotted\n--a11y-details-summary-focus-borderRadius | border-radius | 3px\n\n#### Details\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-fontSize | font-size  | 0.8em\n--a11y-details-color | text color | #000\n--a11y-details-backgroundColor | background-color | rgba(255,255,255,1)\n--a11y-details-borderColor | border-color | #000\n--a11y-details-borderWidth | border-width | 1px\n--a11y-details-borderStyle | border-style | solid\n--a11y-details-borderRadius | border-radius | 3px\n--a11y-details-padding | padding | 0.5em\n--a11y-details-left | left position | 0\n--a11y-details-right | right position | 0\n--a11y-details-maxHeight | max-height | 400px",
+          "name": "A11yDetails",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "details",
+              "description": "gets the details element in shadowRoot",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "summaryClasses",
+              "description": "gets classe sfor summary to hide summary slot if open/closed text is provided",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "observer",
+              "description": "mutation observer for a11y-details",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "detailsObserver",
+              "description": "mutation observer for <details/> in unnamed slot",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "provides click for keyboard if open property is not supported by browser"
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeyup",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "provides support for keyboard if open property is not supported by browser"
+            },
+            {
+              "kind": "method",
+              "name": "toggleOpen",
+              "description": "toggles the element"
+            },
+            {
+              "kind": "method",
+              "name": "_updateElement",
+              "description": "updates an element based on changes in slot"
+            },
+            {
+              "kind": "method",
+              "name": "_watchChildren",
+              "parameters": [
+                {
+                  "name": "mutationsList",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "watches the element's slots for a <details/> element"
+            },
+            {
+              "kind": "method",
+              "name": "_hasMutations",
+              "parameters": [
+                {
+                  "name": "mutationsList",
+                  "type": {
+                    "text": "object"
+                  }
+                },
+                {
+                  "name": "nodeListType",
+                  "default": "\"addedNodes\"",
+                  "description": "\"addedNodes\" of \"removedNodes\"",
+                  "optional": true,
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "searches a mutations list to see if a <details/> element was added or removed",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_copyToSlot",
+              "parameters": [
+                {
+                  "name": "slotName",
+                  "description": "'details' or 'summary' slot",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "clone",
+                  "description": "content cloned from unnamed slot",
+                  "type": {
+                    "text": "object"
+                  }
+                },
+                {
+                  "name": "tagName",
+                  "default": "\"span\"",
+                  "description": "the tag that will become a slot",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "moves content cloned from unnamed slot to designated named slot"
+            },
+            {
+              "kind": "method",
+              "name": "_getSlot",
+              "parameters": [
+                {
+                  "name": "slotName",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "tagName",
+                  "default": "\"span\""
+                }
+              ],
+              "description": "gets an existing named slot or makes one",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "closeText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"",
+              "default": "\"\"",
+              "attribute": "close-text",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "openText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"",
+              "default": "\"\"",
+              "attribute": "open-text",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "close-text",
+              "type": {
+                "text": "string"
+              },
+              "description": "optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"",
+              "default": "\"\"",
+              "fieldName": "closeText"
+            },
+            {
+              "name": "open-text",
+              "type": {
+                "text": "string"
+              },
+              "description": "optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"",
+              "default": "\"\"",
+              "fieldName": "openText"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "a11y-details",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "a11y-details",
+          "declaration": {
+            "name": "A11yDetails",
+            "module": "a11y-details.js"
+          }
         },
         {
-          "name": "open-text",
-          "description": "`open-text` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\nProperty: openText\n\nDefault: "
+          "kind": "js",
+          "name": "A11yDetails",
+          "declaration": {
+            "name": "A11yDetails",
+            "module": "a11y-details.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

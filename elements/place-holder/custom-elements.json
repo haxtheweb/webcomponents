@@ -1,55 +1,231 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "place-holder",
-      "description": "`place-holder`\n\nEvents:\n\n  * `place-holder-replace` {`CustomEvent<string>`} - \n\n  * `place-holder-file-drop` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `calcText` {`string`} - Calculate text based on the type in the event we have no default.\n\n  * `text` {`string`} - Text place holder for describing this place holder element.\n\n  * `iconFromType` {`string`} - calculate an icon based on the type that was used\n\n  * `type` {`string`} - A media type to visualize and also bubble events off of.\n\n  * `drag-over` {`boolean`} - Bind dragging state to a variable so we can apply CSS.\n\n  * `directions` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `calcText` {`string`} - Calculate text based on the type in the event we have no default.\n\n  * `text` {`string`} - Text place holder for describing this place holder element.\n\n  * `iconFromType` {`string`} - calculate an icon based on the type that was used\n\n  * `type` {`string`} - A media type to visualize and also bubble events off of.\n\n  * `dragOver` {`boolean`} - Bind dragging state to a variable so we can apply CSS.\n\n  * `directions` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "place-holder.js",
+      "declarations": [
         {
-          "name": "calcText",
-          "description": "`calcText` {`string`} - Calculate text based on the type in the event we have no default.\n\nProperty: calcText"
+          "kind": "class",
+          "description": "`place-holder`",
+          "name": "PlaceHolder",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "fireReplaceEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Fire an event for things to react to above us"
+            },
+            {
+              "kind": "method",
+              "name": "_getCalcText",
+              "parameters": [
+                {
+                  "name": "text"
+                },
+                {
+                  "name": "type"
+                },
+                {
+                  "name": "dragOver"
+                }
+              ],
+              "description": "Get the calculated text based on text being empty and type being set."
+            },
+            {
+              "kind": "method",
+              "name": "_getColorFromType",
+              "parameters": [
+                {
+                  "name": "type"
+                }
+              ],
+              "description": "Generate an color based on the media type selected"
+            },
+            {
+              "kind": "method",
+              "name": "_getIconFromType",
+              "parameters": [
+                {
+                  "name": "type"
+                },
+                {
+                  "name": "dragOver"
+                }
+              ],
+              "description": "Generate an icon based on the media type selected"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "HAX",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Text place holder for describing this place holder element.",
+              "default": "\"\"",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "iconFromType",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "calculate an icon based on the type that was used",
+              "default": "\"editor:format-align-left\"",
+              "attribute": "iconFromType"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "A media type to visualize and also bubble events off of.",
+              "default": "\"text\"",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "dragOver",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Bind dragging state to a variable so we can apply CSS.",
+              "default": "false",
+              "attribute": "drag-over",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "directions",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Drag and drop file to replace\"",
+              "attribute": "directions"
+            },
+            {
+              "kind": "field",
+              "name": "calcText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Calculate text based on the type in the event we have no default.",
+              "attribute": "calcText"
+            }
+          ],
+          "events": [
+            {
+              "name": "place-holder-replace",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "iconFromType",
+              "type": {
+                "text": "string"
+              },
+              "description": "calculate an icon based on the type that was used",
+              "default": "\"editor:format-align-left\"",
+              "fieldName": "iconFromType"
+            },
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Text place holder for describing this place holder element.",
+              "default": "\"\"",
+              "fieldName": "text"
+            },
+            {
+              "name": "directions",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Drag and drop file to replace\"",
+              "fieldName": "directions"
+            },
+            {
+              "name": "calcText",
+              "type": {
+                "text": "string"
+              },
+              "description": "Calculate text based on the type in the event we have no default.",
+              "fieldName": "calcText"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "description": "A media type to visualize and also bubble events off of.",
+              "default": "\"text\"",
+              "fieldName": "type"
+            },
+            {
+              "name": "drag-over",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Bind dragging state to a variable so we can apply CSS.",
+              "default": "false",
+              "fieldName": "dragOver"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "place-holder",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PlaceHolder",
+            "module": "place-holder.js"
+          }
         },
         {
-          "name": "text",
-          "description": "`text` {`string`} - Text place holder for describing this place holder element.\n\nProperty: text\n\nDefault: "
-        },
-        {
-          "name": "iconFromType",
-          "description": "`iconFromType` {`string`} - calculate an icon based on the type that was used\n\nProperty: iconFromType\n\nDefault: editor:format-align-left"
-        },
-        {
-          "name": "type",
-          "description": "`type` {`string`} - A media type to visualize and also bubble events off of.\n\nProperty: type\n\nDefault: text"
-        },
-        {
-          "name": "drag-over",
-          "description": "`drag-over` {`boolean`} - Bind dragging state to a variable so we can apply CSS.\n\nProperty: dragOver\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "directions",
-          "description": "`directions` {`string`} - \n\nProperty: directions\n\nDefault: Drag and drop file to replace"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onplace-holder-replace",
-          "description": "`place-holder-replace` {`CustomEvent<string>`} - "
-        },
-        {
-          "name": "onplace-holder-file-drop",
-          "description": "`place-holder-file-drop` {`CustomEvent<any>`} - "
+          "kind": "js",
+          "name": "PlaceHolder",
+          "declaration": {
+            "name": "PlaceHolder",
+            "module": "place-holder.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

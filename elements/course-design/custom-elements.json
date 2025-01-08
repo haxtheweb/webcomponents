@@ -1,256 +1,1332 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "course-design",
-      "description": "`course-design`\n`some different elements specific to the design of educational materials. Lots of small elements and a catch all repo`\n\n",
-      "attributes": []
-    },
-    {
-      "name": "activity-box",
-      "description": "Attributes:\n\n  * `nocolourize` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `tag` {`string`} - \n\nProperties:\n\n  * `nocolourize` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `tag` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "course-design.js",
+      "declarations": [
         {
-          "name": "nocolourize",
-          "description": "`nocolourize` {`boolean`} - \n\nProperty: nocolourize",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`course-design`\n`some different elements specific to the design of educational materials. Lots of small elements and a catch all repo`",
+          "name": "CourseDesign",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "course-design",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CourseDesign",
+            "module": "course-design.js"
+          }
         },
         {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
-        },
-        {
-          "name": "tag",
-          "description": "`tag` {`string`} - \n\nProperty: tag\n\nDefault: "
+          "kind": "js",
+          "name": "CourseDesign",
+          "declaration": {
+            "name": "CourseDesign",
+            "module": "course-design.js"
+          }
         }
       ]
     },
     {
-      "name": "block-quote",
-      "description": "Attributes:\n\n  * `citation` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `citation` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/activity-box.js",
+      "declarations": [
         {
-          "name": "citation",
-          "description": "`citation` {`string`} - \n\nProperty: citation\n\nDefault: "
+          "kind": "class",
+          "description": "",
+          "name": "ActivityBox",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "static": true,
+              "readonly": true,
+              "default": "\"\"",
+              "attribute": "tag",
+              "reflects": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "double-check that we are set to inactivate click handlers\nthis is for when activated in a duplicate / adding new content state"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "icon",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "nocolourize",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "nocolourize"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "icon"
+            },
+            {
+              "name": "tag",
+              "type": {
+                "text": "string"
+              },
+              "readonly": true,
+              "default": "\"\"",
+              "fieldName": "tag"
+            },
+            {
+              "name": "nocolourize",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "nocolourize"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ActivityBox",
+          "declaration": {
+            "name": "ActivityBox",
+            "module": "lib/activity-box.js"
+          }
         },
         {
-          "name": "image",
-          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: "
-        },
-        {
-          "name": "alt",
-          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ActivityBox",
+            "module": "lib/activity-box.js"
+          }
         }
       ]
     },
     {
-      "name": "course-intro-header",
-      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `backgroundImage` {`string`} - \n\n  * `color` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `description` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `backgroundImage` {`string`} - \n\n  * `color` {`string`} - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/activity-box.stories.js",
+      "declarations": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+          "kind": "function",
+          "name": "ActivityBoxStory"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "lib/activity-box.stories.js"
+          }
         },
         {
-          "name": "description",
-          "description": "`description` {`string`} - \n\nProperty: description\n\nDefault: "
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
-        },
-        {
-          "name": "backgroundImage",
-          "description": "`backgroundImage` {`string`} - \n\nProperty: backgroundImage\n\nDefault: "
-        },
-        {
-          "name": "color",
-          "description": "`color` {`string`} - \n\nProperty: color\n\nDefault: "
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "ActivityBoxStory",
+          "declaration": {
+            "name": "ActivityBoxStory",
+            "module": "lib/activity-box.stories.js"
+          }
         }
       ]
     },
     {
-      "name": "course-intro-lesson-plan",
-      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `link` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `link` {`string`} - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/block-quote.js",
+      "declarations": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+          "kind": "class",
+          "description": "",
+          "name": "BlockQuote",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "citation",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "citation"
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "alt"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "citation",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "citation"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "image"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "alt"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BlockQuote",
+          "declaration": {
+            "name": "BlockQuote",
+            "module": "lib/block-quote.js"
+          }
         },
         {
-          "name": "link",
-          "description": "`link` {`string`} - \n\nProperty: link\n\nDefault: "
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "BlockQuote",
+            "module": "lib/block-quote.js"
+          }
         }
       ]
     },
     {
-      "name": "course-intro-lesson-plans",
-      "description": "Attributes:\n\n  * `items` {`any[]`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `items` {`any[]`} - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/block-quote.stories.js",
+      "declarations": [
         {
-          "name": "items",
-          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
+          "kind": "function",
+          "name": "BlockQuoteStory"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "lib/block-quote.stories.js"
+          }
         },
         {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "BlockQuoteStory",
+          "declaration": {
+            "name": "BlockQuoteStory",
+            "module": "lib/block-quote.stories.js"
+          }
         }
       ]
     },
     {
-      "name": "course-intro",
-      "description": "Attributes:\n\n  * `color` {`string`} - \n\nProperties:\n\n  * `color` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/course-intro-footer.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/course-intro-header.js",
+      "declarations": [
         {
-          "name": "color",
-          "description": "`color` {`string`} - \n\nProperty: color\n\nDefault: "
+          "kind": "class",
+          "description": "",
+          "name": "CourseIntroHeader",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "description"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "backgroundImage",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "backgroundImage"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "color"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "title"
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "description"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "icon"
+            },
+            {
+              "name": "backgroundImage",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "backgroundImage"
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "color"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CourseIntroHeader",
+            "module": "lib/course-intro-header.js"
+          }
         }
       ]
     },
     {
-      "name": "ebook-button",
-      "description": "Attributes:\n\n  * `link` {`string`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `link` {`string`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/course-intro-lesson-plan.js",
+      "declarations": [
         {
-          "name": "link",
-          "description": "`link` {`string`} - \n\nProperty: link\n\nDefault: "
-        },
+          "kind": "class",
+          "description": "",
+          "name": "CourseIntroLessonPlan",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "link",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "link"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "title"
+            },
+            {
+              "name": "link",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "link"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: icons:book"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CourseIntroLessonPlan",
+            "module": "lib/course-intro-lesson-plan.js"
+          }
         }
       ]
     },
     {
-      "name": "learning-component",
-      "description": "`learning-component`\n`An element for displaying learning materials.`\n\nAttributes:\n\n  * `icon` {`string`} - \n\n  * `type` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `t` - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `icon` {`string`} - \n\n  * `type` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `t` - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/course-intro-lesson-plans.js",
+      "declarations": [
         {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: null"
-        },
+          "kind": "class",
+          "description": "",
+          "name": "CourseIntroLessonPlans",
+          "members": [
+            {
+              "kind": "method",
+              "name": "_itemsChanged",
+              "parameters": [
+                {
+                  "name": "items"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "items"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "items",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "items"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
         {
-          "name": "type",
-          "description": "`type` {`string`} - \n\nProperty: type\n\nDefault: "
-        },
-        {
-          "name": "subtitle",
-          "description": "`subtitle` {`string`} - \n\nProperty: subtitle\n\nDefault: null"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: null"
-        },
-        {
-          "name": "url",
-          "description": "`url` {`string`} - \n\nProperty: url\n\nDefault: null"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: null"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CourseIntroLessonPlans",
+            "module": "lib/course-intro-lesson-plans.js"
+          }
         }
       ]
     },
     {
-      "name": "lrn-h5p",
-      "description": "Attributes:\n\n  * `_editing` {`boolean`} - \n\nProperties:\n\n  * `_editing` {`boolean`} - \n\n  * `_disposer` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/course-intro.js",
+      "declarations": [
         {
-          "name": "_editing",
-          "description": "`_editing` {`boolean`} - \n\nProperty: _editing\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "",
+          "name": "CourseIntro",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "color"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "color"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "CourseIntro",
+          "declaration": {
+            "name": "CourseIntro",
+            "module": "lib/course-intro.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CourseIntro",
+            "module": "lib/course-intro.js"
+          }
         }
       ]
     },
     {
-      "name": "responsive-iframe",
-      "attributes": []
-    },
-    {
-      "name": "worksheet-download",
-      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `link` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `link` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/ebook-button.js",
+      "declarations": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+          "kind": "class",
+          "description": "",
+          "name": "EbookButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "double-check that we are set to inactivate click handlers\nthis is for when activated in a duplicate / adding new content state"
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "Set a flag to test if we should block link clicking on the entire card\notherwise when editing in hax you can't actually edit it bc its all clickable.\nif editMode goes off this helps ensure we also become clickable again"
+            },
+            {
+              "kind": "method",
+              "name": "_clickLink",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "special support for HAX since the whole card is selectable"
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "link",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "link"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"icons:book\"",
+              "attribute": "icon"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "link",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "link"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "title"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"icons:book\"",
+              "fieldName": "icon"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "EbookButton",
+          "declaration": {
+            "name": "EbookButton",
+            "module": "lib/ebook-button.js"
+          }
         },
         {
-          "name": "link",
-          "description": "`link` {`string`} - \n\nProperty: link\n\nDefault: "
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "EbookButton",
+            "module": "lib/ebook-button.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/ebook-button.stories.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "EbookButtonStory"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "lib/ebook-button.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "EbookButtonStory",
+          "declaration": {
+            "name": "EbookButtonStory",
+            "module": "lib/ebook-button.stories.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/learning-component.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "learningComponentNouns",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ content: \"Content\", assessment: \"Assessment\", quiz: \"Quiz\", submission: \"Submission\", lesson: \"Lesson\", module: \"Module\", task: \"Task\", activity: \"Activity\", project: \"Project\", practice: \"Practice\", unit: \"Unit\", objectives: \"Learning Objectives\", }"
+        },
+        {
+          "kind": "variable",
+          "name": "learningComponentVerbs",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ connection: \"Connection\", knowledge: \"Did You Know?\", strategy: \"Learning Strategy\", discuss: \"Discuss\", listen: \"Listen\", make: \"Make\", observe: \"Observe\", present: \"Present\", read: \"Read\", reflect: \"Reflect\", research: \"Research\", watch: \"Watch\", write: \"Write\", }"
+        },
+        {
+          "kind": "variable",
+          "name": "learningComponentTypes",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ ...learningComponentVerbs, ...learningComponentNouns, }"
+        },
+        {
+          "kind": "variable",
+          "name": "learningComponentColors",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ content: \"blue-grey\", assessment: \"red\", quiz: \"blue\", submission: \"deep-purple\", lesson: \"purple\", module: \"red\", task: \"blue-grey\", activity: \"orange\", project: \"deep-orange\", practice: \"brown\", unit: \"light-green\", objectives: \"indigo\", connection: \"green\", knowledge: \"cyan\", strategy: \"teal\", discuss: \"blue\", listen: \"purple\", make: \"orange\", observe: \"yellow\", present: \"light-blue\", read: \"lime\", reflect: \"amber\", research: \"deep-orange\", watch: \"pink\", write: \"deep-purple\", }"
+        },
+        {
+          "kind": "function",
+          "name": "iconFromPageType",
+          "parameters": [
+            {
+              "name": "type"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "`learning-component`\n`An element for displaying learning materials.`",
+          "name": "LearningComponent",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "type",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "subtitle",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "subtitle"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...super.t, readMore: \"Read More\", }"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "type"
+            },
+            {
+              "name": "subtitle",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "subtitle"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "title"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "icon"
+            },
+            {
+              "name": "url",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "url"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "learning-component",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "learningComponentNouns",
+          "declaration": {
+            "name": "learningComponentNouns",
+            "module": "lib/learning-component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "learningComponentVerbs",
+          "declaration": {
+            "name": "learningComponentVerbs",
+            "module": "lib/learning-component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "learningComponentTypes",
+          "declaration": {
+            "name": "learningComponentTypes",
+            "module": "lib/learning-component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "learningComponentColors",
+          "declaration": {
+            "name": "learningComponentColors",
+            "module": "lib/learning-component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "iconFromPageType",
+          "declaration": {
+            "name": "iconFromPageType",
+            "module": "lib/learning-component.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LearningComponent",
+            "module": "lib/learning-component.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "LearningComponent",
+          "declaration": {
+            "name": "LearningComponent",
+            "module": "lib/learning-component.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/lrn-h5p.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "LrnH5p",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "postProcessgetHaxJSONSchema",
+              "parameters": [
+                {
+                  "name": "schema"
+                }
+              ],
+              "description": "Implements getHaxJSONSchema post processing callback."
+            },
+            {
+              "kind": "field",
+              "name": "_editing",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_editing"
+            },
+            {
+              "kind": "field",
+              "name": "_disposer"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "_editing",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_editing"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "LrnH5p",
+          "declaration": {
+            "name": "LrnH5p",
+            "module": "lib/lrn-h5p.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LrnH5p",
+            "module": "lib/lrn-h5p.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/responsive-iframe.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ResponsiveIframe",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "responsive-iframe",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "responsive-iframe",
+          "declaration": {
+            "name": "ResponsiveIframe",
+            "module": "lib/responsive-iframe.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/worksheet-download.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WorksheetDownload",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "double-check that we are set to inactivate click handlers\nthis is for when activated in a duplicate / adding new content state"
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "Set a flag to test if we should block link clicking on the entire card\notherwise when editing in hax you can't actually edit it bc its all clickable.\nif editMode goes off this helps ensure we also become clickable again"
+            },
+            {
+              "kind": "method",
+              "name": "_clickLink",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "special support for HAX since the whole card is selectable"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "link",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "link"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "title"
+            },
+            {
+              "name": "link",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "link"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WorksheetDownload",
+          "declaration": {
+            "name": "WorksheetDownload",
+            "module": "lib/worksheet-download.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "WorksheetDownload",
+            "module": "lib/worksheet-download.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/worksheet-download.stories.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "WorksheetDownloadStory"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "lib/worksheet-download.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "WorksheetDownloadStory",
+          "declaration": {
+            "name": "WorksheetDownloadStory",
+            "module": "lib/worksheet-download.stories.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

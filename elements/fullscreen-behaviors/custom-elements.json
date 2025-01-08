@@ -1,23 +1,266 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "fullscreen-behaviors",
-      "description": "`fullscreen-behaviors`\nabstracted fullscreen behaviors\n\nAttributes:\n\n  * `fullscreen` {`boolean`} - \n\n  * `fullscreen-enabled` {`boolean`} - \n\nProperties:\n\n  * `fullscreenTarget` {`this`} - element to make fullscreen, can be overidden\n\n  * `fullscreen` {`boolean`} - \n\n  * `fullscreenEnabled` {`boolean`} - \n\n  * `onfullscreenchange` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "fullscreen-behaviors.js",
+      "declarations": [
         {
-          "name": "fullscreen",
-          "description": "`fullscreen` {`boolean`} - \n\nProperty: fullscreen\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "mixin",
+          "description": "",
+          "name": "FullscreenBehaviors",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "fullscreenTarget",
+              "description": "element to make fullscreen, can be overidden",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleFullscreenChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toggleFullscreen",
+              "parameters": [
+                {
+                  "name": "mode",
+                  "default": "globalThis.document.fullscreenElement !== this.fullscreenTarget"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "fullscreen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "fullscreen",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "fullscreenEnabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "fullscreen-enabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "onfullscreenchange"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "fullscreen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "fullscreen"
+            },
+            {
+              "name": "fullscreen-enabled",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "fullscreenEnabled"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
         },
         {
-          "name": "fullscreen-enabled",
-          "description": "`fullscreen-enabled` {`boolean`} - \n\nProperty: fullscreenEnabled\n\nDefault: fullscreenEnabled",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`fullscreen-behaviors`\nabstracted fullscreen behaviors",
+          "name": "FullscreenBehaviorsEl",
+          "mixins": [
+            {
+              "name": "FullscreenBehaviors",
+              "module": "fullscreen-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "fullscreen-behaviors",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "fullscreen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "fullscreen",
+              "inheritedFrom": {
+                "name": "FullscreenBehaviors",
+                "module": "fullscreen-behaviors.js"
+              }
+            },
+            {
+              "name": "fullscreen-enabled",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "fullscreenEnabled",
+              "inheritedFrom": {
+                "name": "FullscreenBehaviors",
+                "module": "fullscreen-behaviors.js"
+              }
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "FullscreenBehaviors",
+                "module": "fullscreen-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "FullscreenBehaviors",
+                "module": "fullscreen-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fullscreenTarget",
+              "description": "element to make fullscreen, can be overidden",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "FullscreenBehaviors",
+                "module": "fullscreen-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleFullscreenChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FullscreenBehaviors",
+                "module": "fullscreen-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleFullscreen",
+              "parameters": [
+                {
+                  "name": "mode",
+                  "default": "globalThis.document.fullscreenElement !== this.fullscreenTarget"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FullscreenBehaviors",
+                "module": "fullscreen-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fullscreen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "fullscreen",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "FullscreenBehaviors",
+                "module": "fullscreen-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fullscreenEnabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "fullscreen-enabled",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "FullscreenBehaviors",
+                "module": "fullscreen-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "onfullscreenchange",
+              "inheritedFrom": {
+                "name": "FullscreenBehaviors",
+                "module": "fullscreen-behaviors.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "FullscreenBehaviorsEl",
+            "module": "fullscreen-behaviors.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FullscreenBehaviorsEl",
+          "declaration": {
+            "name": "FullscreenBehaviorsEl",
+            "module": "fullscreen-behaviors.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FullscreenBehaviors",
+          "declaration": {
+            "name": "FullscreenBehaviors",
+            "module": "fullscreen-behaviors.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,61 +1,287 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "a11y-gif-player",
-      "description": "`a11y-gif-player`\nplays gifs in an accessible way by having the user click to play their animation\n### Styling\n\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc\n\nAttributes:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `described-by` {`string`} - other id's to add to aria-describedby\n\n  * `longdesc` {`string`} - longer image description for accesibility\n\n  * `src` {`string`} - Source of animated gif\n\n  * `src-without-animation` {`string`} - Source of static version of image\n\n  * `__gifLoaded` {`boolean`} - if the gif source is loaded to avoid jarring on load\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `t` - \n\n  * `element-visible` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `alt` {`string`} - Alt text of gif\n\n  * `describedBy` {`string`} - other id's to add to aria-describedby\n\n  * `longdesc` {`string`} - longer image description for accesibility\n\n  * `src` {`string`} - Source of animated gif\n\n  * `srcWithoutAnimation` {`string`} - Source of static version of image\n\n  * `observer` - mutation observer for a11y-details\n\n  * `windowControllers` - \n\n  * `__gifLoaded` {`boolean`} - if the gif source is loaded to avoid jarring on load\n\n  * `disabled` {`boolean`} - Whether button is disabled\n\n  * `__playing` {`boolean`} - whether GIF is playing\n\n  * `t` - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "a11y-gif-player.js",
+      "declarations": [
         {
-          "name": "alt",
-          "description": "`alt` {`string`} - Alt text of gif\n\nProperty: alt"
+          "kind": "class",
+          "description": "`a11y-gif-player`\nplays gifs in an accessible way by having the user click to play their animation\n### Styling\n\n`<a11y-gif-player>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-gif-player-border` | border around player/button | none\n`--a11y-gif-player-border-radius` | border-radius for player/button | 0\n`--a11y-gif-player-focus-border` | border-radius for player/button when hovered or focused | none\n`--a11y-gif-player-cursor` | cursor for player/button when hovered or focused | pointer\n`--a11y-gif-player-outline` | outline for player/button when hovered or focused | \n`--a11y-gif-player-disabled-cursor` | cursor for player/button when disabled | not-allowed\n`--a11y-gif-player-arrow-size` | arrow icon size | 30%\n`--a11y-gif-player-arrow-opacity` | default arrow icon opacity | 0.5\n`--a11y-gif-player-button-focus-opacity` | arrow icon opacity when hovered or focused | 0.7\n`--a11y-gif-player-button-color` | arrow icon color | #000000\n`--a11y-gif-player-arrow-border-color` | arrow icon border color | #ffffff\n`--a11y-gif-player-arrow-border-width` | arrow icon border width | 15px\n`--a11y-gif-player-button-text-color` | arrow icon text color | #ffffff\n`--a11y-gif-player-button-bg` | button background color when no static image | #cccccc",
+          "name": "A11yGifPlayer",
+          "members": [
+            {
+              "kind": "method",
+              "name": "__imageLoaded",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "generateStill",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "observer",
+              "description": "mutation observer for a11y-details",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "play",
+              "description": "plays the animation regarless of previous state"
+            },
+            {
+              "kind": "method",
+              "name": "stop",
+              "description": "stops the animation regarless of previous state"
+            },
+            {
+              "kind": "method",
+              "name": "toggle",
+              "description": "toggles the animation based on current state"
+            },
+            {
+              "kind": "method",
+              "name": "toggleAnimation",
+              "description": "deprecated. toggles the animation based on current state"
+            },
+            {
+              "kind": "method",
+              "name": "_updateFromSlot",
+              "description": "when slot changes update with animated gif"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "__gifLoaded",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "if the gif source is loaded to avoid jarring on load",
+              "default": "false",
+              "attribute": "__gifLoaded"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether button is disabled",
+              "default": "false",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "__playing",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether GIF is playing",
+              "default": "false",
+              "attribute": "__playing"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ toggleAnimation: \"Toggle animation\", }"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Alt text of gif",
+              "attribute": "alt"
+            },
+            {
+              "kind": "field",
+              "name": "describedBy",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "described-by"
+            },
+            {
+              "kind": "field",
+              "name": "longdesc",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "longer image description for accesibility",
+              "attribute": "longdesc"
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Source of animated gif",
+              "attribute": "src"
+            },
+            {
+              "kind": "field",
+              "name": "srcWithoutAnimation",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Source of static version of image",
+              "attribute": "src-without-animation"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "description": "Alt text of gif",
+              "fieldName": "alt"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether button is disabled",
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "described-by",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "describedBy"
+            },
+            {
+              "name": "longdesc",
+              "type": {
+                "text": "string"
+              },
+              "description": "longer image description for accesibility",
+              "fieldName": "longdesc"
+            },
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "description": "Source of animated gif",
+              "fieldName": "src"
+            },
+            {
+              "name": "src-without-animation",
+              "type": {
+                "text": "string"
+              },
+              "description": "Source of static version of image",
+              "fieldName": "srcWithoutAnimation"
+            },
+            {
+              "name": "__playing",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether GIF is playing",
+              "default": "false",
+              "fieldName": "__playing"
+            },
+            {
+              "name": "__gifLoaded",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "if the gif source is loaded to avoid jarring on load",
+              "default": "false",
+              "fieldName": "__gifLoaded"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
+              "name": "IntersectionObserverMixin",
+              "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            },
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "a11y-gif-player",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "A11yGifPlayer",
+            "module": "a11y-gif-player.js"
+          }
         },
         {
-          "name": "described-by",
-          "description": "`described-by` {`string`} - other id's to add to aria-describedby\n\nProperty: describedBy"
-        },
-        {
-          "name": "longdesc",
-          "description": "`longdesc` {`string`} - longer image description for accesibility\n\nProperty: longdesc"
-        },
-        {
-          "name": "src",
-          "description": "`src` {`string`} - Source of animated gif\n\nProperty: src"
-        },
-        {
-          "name": "src-without-animation",
-          "description": "`src-without-animation` {`string`} - Source of static version of image\n\nProperty: srcWithoutAnimation"
-        },
-        {
-          "name": "__gifLoaded",
-          "description": "`__gifLoaded` {`boolean`} - if the gif source is loaded to avoid jarring on load\n\nProperty: __gifLoaded\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - Whether button is disabled\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__playing",
-          "description": "`__playing` {`boolean`} - whether GIF is playing\n\nProperty: __playing\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "element-visible",
-          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
+          "kind": "js",
+          "name": "A11yGifPlayer",
+          "declaration": {
+            "name": "A11yGifPlayer",
+            "module": "a11y-gif-player.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

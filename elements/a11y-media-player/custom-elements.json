@@ -1,588 +1,3734 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "a11y-media-player",
-      "description": "`a11y-media-player`\nan accessible video player\n\n### Styling\n`<a11y-media-player>` provides the following basic custom properties\nfor styling:\n\n#### Basic Styling\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-media-color` | default text color | `--simple-colors-default-theme-grey-11`\n`--a11y-media-bg-color` | default background color | `--simple-colors-default-theme-grey-2`\n`--a11y-media-border-color` | default border color | `--simple-colors-default-theme-grey-3`\n`--a11y-media-hover-color` | text color when hovering | `--simple-colors-default-theme-grey-12`\n`--a11y-media-hover-bg-color` | background color when hovering | `--simple-colors-default-theme-grey-2`\n`--a11y-media-accent-color` | accent color | `--simple-colors-default-theme-accent-9`\n`--a11y-media-faded-accent-color` | accent color when faded | `--simple-colors-default-theme-accent-8`\n`--a11y-media-disabled-color` | color for disabled items | `--simple-colors-default-theme-grey-5`\n`--a11y-media-transcript-color` | default text color of transcript | `--simple-colors-default-theme-grey-7`\n`--a11y-media-transcript-bg-color` | default background color of transcript | `--simple-colors-default-theme-grey-1`\n`--a11y-media-transcript-accent-color` | default accent color of transcript | `--simple-colors-default-theme-accent-8`\n`--a11y-media-transcript-faded-accent-color` | accent color of transcript, faded | `--simple-colors-default-theme-accent-10`\n`--a11y-media-transcript-cue-color` | text color of transcript cue | `--simple-colors-fixed-theme-grey-12`\n`--a11y-media-transcript-cue-bg-color` | background color of transcript cue  | `--simple-colors-fixed-theme-grey-1`\n`--a11y-media-transcript-active-cue-color` | text color of active transcript cue  | `--simple-colors-fixed-theme-grey-12`\n`--a11y-media-transcript-active-cue-bg-color` | background color of active transcript cue  | `--simple-colors-fixed-theme-accent-1`\n`--a11y-media-transcript-focused-cue-color` | text color of focused transcript cue  | `--simple-colors-fixed-theme-grey-12`\n`--a11y-media-transcript-focused-cue-bg-color` | background color of focused transcript cue  | `--simple-colors-fixed-theme-grey-2`\n`--a11y-media-transcript-match-color` | text color of matched term in transcript search  | `--simple-colors-fixed-theme-grey-1`\n`--a11y-media-transcript-match-bg-color` | background color of matched term in transcript search | `--simple-colors-fixed-theme-accent-10`\n`--a11y-media-transcript-match-border-color` | border color of matched term in transcript search | `--simple-colors-fixed-theme-accent-12`\n\n#### Controls\nCustom property | Description | Default \n----------------|-------------|----------\n`--a11y-media-scrollbar-width` | default width of scrollbars | `5px`\n`--a11y-media-controls-font-family` | font-family of controls\n\n#### Buttons\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-media-button-color` | button text color | `--a11y-media-color`\n`--a11y-media-button-bg-color` | button background color | `--a11y-media-bg-color`\n`--a11y-media-button-hover-color` | button text color when hovering | `--a11y-media-accent-color`\n`--a11y-media-button-hover-bg-color` | button background color when hovering | `--a11y-media-hover-bg-color`\n`--a11y-media-button-disabled-color` | button text color when disabled | `--a11y-media-disabled-color`\n`--a11y-media-button-toggle-color` | button text color when toggled | `--a11y-media-faded-accent-color`\n\n#### Sliders\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-range-input-active-color` | slider color when active | `--a11y-media-accent-color`\n`--simple-range-input-secondary-color` | slider color for buffering | `--a11y-media-faded-accent-color`\n`--simple-range-input-pin-color` | slider pin color | `--a11y-media-bg-color`\n`--simple-range-input-pin-start-color` | slider pin color in start position | `--a11y-media-bg-color`\n`--simple-range-input-pin-end-color` | slider pin color in end position | `--a11y-media-bg-color`\n`--simple-range-input-knob-color` | slider knob color | `--a11y-media-accent-color`\n`--simple-range-input-knob-start-color` | slider knob color in start position | `--a11y-media-accent-color`\n`--simple-range-input-knob-end-color` | slider knob color in end position | `--a11y-media-bg-accent-color`\n`--simple-range-input-knob-border-color` | slider knob border color | `--a11y-media-accent-color`\n`--simple-range-input-knob-start-border-color` | slider knob border color in start position | `--a11y-media-bg-color`\n`--simple-range-input-knob-end-border-color` | slider knob border color in end position | `--a11y-media-bg-color`\n\n#### Settings Menu\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-media-settings-menu-color` | settings menu text color | `--a11y-media-color`\n`--a11y-media-settings-menu-bg-color` | settings menu background color | `--a11y-media-bg-color`\n`--a11y-media-settings-menu-hover-color` | settings menu text color when hovering | `--a11y-media-hover-color`\n`--a11y-media-settings-menu-hover-bg-color` | settings menu background color when hovering | `--a11y-media-hover-bg-color`\n\n#### Link Sharing Toast\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-toast-color` | toast text color | `--a11y-media-color`\n`--simple-toast-background-color` | toast background color | `--a11y-media-bg-color`\n\nEvents:\n\n  * `mute-changed` {`CustomEvent<this>`} - Fires when closed caption is toggled\n\n  * `transcript-downloaded` {`CustomEvent<this>`} - Fires when transcript is downloaded\n\n  * `transcript-printed` {`CustomEvent<this>`} - Fires when transcript is printed\n\n  * `play` {`CustomEvent<this>`} - Fires when media plays\n\n  * `a11y-player-playing` {`CustomEvent<this>`} - DEPRECATED: Fires when media plays\n\n  * `pause` {`CustomEvent<this>`} - Fires when media pauses\n\n  * `stop` {`CustomEvent<this>`} - Fires when media stops\n\n  * `restart` {`CustomEvent<this>`} - Fires when media retarts\n\n  * `backward` {`CustomEvent<this>`} - Fires when media moves backward\n\n  * `forward` {`CustomEvent<this>`} - Fires when media moves forward\n\n  * `seek` {`CustomEvent<this>`} - Fires when media seeks\n\n  * `playback-rate-changed` {`CustomEvent<this>`} - Fires when video playback rate changes\n\n  * `volume-changed` {`CustomEvent<this>`} - Fires when video volume changes\n\n  * `cc-toggle` {`CustomEvent<this>`} - Fires when closed caption is toggled\n\n  * `fullscreen-toggle` {`CustomEvent<this>`} - Fires when fullscreen is toggled\n\n  * `loop-toggle` {`CustomEvent<this>`} - Fires when looping is toggled\n\n  * `play-toggle` {`CustomEvent<this>`} - Fires when play/pause is toggled\n\n  * `muted-toggle` {`CustomEvent<this>`} - Fires when mute is toggled\n\n  * `settings-toggled` {`CustomEvent<this>`} - Fires when video's settings menu is toggled\n\n  * `player-sticky` {`CustomEvent<this>`} - Fires when video's sticky behavior is toggled\n\n  * `transcript-toggle` {`CustomEvent<this>`} - Fires when transcript toggles\n\n  * `responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; sm: number; md: number; lg: number; xl: number; }>`} - Fires player needs the size of parent container to add responsive styling\n\n  * `a11y-player` {`CustomEvent<this>`} - Fires when a new player is ready for a11y-media-state-manager\n\nAttributes:\n\n  * `crossorigin` {`string`} - crossorigin attribute for <video> and <audio> tags\n\n  * `height` {`string`} - The height of the media player.\n\n  * `source` {`string`} - \n\n  * `thumbnail-src` {`string`} - Source of optional thumbnail image\nHighly recommended for Safari.\n\n  * `__preloadedDuration` {`number`} - temporarily duration in seconds until fully loaded\n\n  * `currentTime` {`number`} - current time for video playback\n\n  * `__playerReady` {`boolean`} - \n\n  * `audio-only` {`boolean`} - Is this an audio file?\n\n  * `autoplay` {`boolean`} - autoplay is an option,\nbut generally not recommended for a11y\n\n  * `allow-concurrent` {`boolean`} - Allow this media to play concurrently with other a11y-media-players?\nDefault is to pause this a11y-media-player when other a11y-media-player starts playing.\n\n  * `cc` {`boolean`} - show closed captions\n\n  * `dark-transcript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\n  * `disable-fullscreen` {`boolean`} - disable fullscreen option\n\n  * `disable-interactive` {`boolean`} - disable interactive mode that makes the transcript clickable\n\n  * `disable-print-button` {`boolean`} - disable transcript print button\n\n  * `disable-search` {`boolean`} - disable transcript search feature\n\n  * `disable-scroll` {`boolean`} - disable autoscrolling as transcript plays\n\n  * `disable-seek` {`boolean`} - disables seeking\n\n  * `hide-elapsed-time` {`boolean`} - Hide elapsed time?\n\n  * `hide-timestamps` {`boolean`} - show cue's start and end time\n\n  * `hide-transcript` {`boolean`} - initially hide the transcript?\n\n  * `id` {`string`} - initially hide the transcript?\n\n  * `lang` {`string`} - Language\n\n  * `learning-mode` {`boolean`} - Learning mode\n\n  * `linkable` {`boolean`} - has link button\n\n  * `localization` - custom localization settings\n\n  * `loop` {`boolean`} - Loop the video?\n\n  * `media-title` {`string`} - optional title of media (shows when printed)\n\n  * `media-lang` {`string`} - Dash.js manifest source?\n/\n\"manifest\": {\n\"attribute\": \"manifest\",\n\"type\": String\n},\n/**\nthe language of the media (if different from user interface language)\n\n  * `muted` {`boolean`} - Is audio muted?\n\n  * `hide-youtube-link` {`boolean`} - Open on YouTube button\n\n  * `preload` {`string`} - Preload `none`, `metadata`, or `auto`.\n\n  * `playback-rate` {`number`} - Playback rate where `1` is normal speed, `0.`5 is half-speed, and `2` is double speed\n\n  * `search` - the search tool for the transcript\n\n  * `stand-alone` {`boolean`} - Is stand-alone player (without transcript)?\n\n  * `responsive-size` {`string`} - Size of the a11y media element for responsive styling\n\n  * `captions-track` - the selected track\n\n  * `transcript-track` - the selected track for the transcript\n\n  * `sources` {`any[]`} - DEPRECATED: array ouf sources\n\n  * `stacked-layout` {`boolean`} - stacked layout instead of side-by-side?\n\n  * `sticky` {`boolean`} - Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?\n\n  * `sticky-corner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.\n\n  * `tracks` {`any[]`} - DEPRECATED: array of tracks.\n\n  * `volume` {`number`} - Range is 0 to 100. Default should not be loud enough to overpower screen readers.\n\n  * `width` {`string`} - The width of the media player.\n\n  * `youtube-id` {`string`} - the id for the video\n\n  * `__cues` {`any[]`} - array of cues provided to readOnly `get cues`\n\n  * `__currentTime` {`number`} - current playback in seconds\n\n  * `__captionsOption` {`number`} - the index of the selected closed captions\n\n  * `__loadedTracks` - media captions/transcript tracks array  provided to readOnly `get loadedTracks`\n\n  * `__playing` {`boolean`} - media playing status readOnly `get playing`\n\n  * `__settingsOpen` {`boolean`} - Is settings menu toggle open?\n\n  * `__transcriptOption` {`number`} - the index of the selected transcript\n\n  * `fullscreen` {`boolean`} - \n\n  * `fullscreen-enabled` {`boolean`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `crossorigin` {`string`} - crossorigin attribute for <video> and <audio> tags\n\n  * `height` {`string`} - The height of the media player.\n\n  * `source` {`string`} - \n\n  * `thumbnailSrc` {`string`} - Source of optional thumbnail image\nHighly recommended for Safari.\n\n  * `__preloadedDuration` {`number`} - temporarily duration in seconds until fully loaded\n\n  * `anchor` {`number`} - gets anchors from page and uses their timecodes\n\n  * `aspect` {`number`} - the aspect ratio of the media, or if unknown, `16/9`\n\n  * `audioNoThumb` {`boolean`} - returns true if an attribute is set to a value\n\n  * `buffered` {`number`} - returns buffered media\n\n  * `captionCues` {`any[]`} - gets caption cues that should be visible for custom captions\n\n  * `captionsPicker` - gets options for captions picker\n\n  * `captionsTrackKey` {`number`} - `key` of selected textTrack based on `captionsTrack` and `cc` values\n\n  * `cues` - returns cues array\n\n  * `duration` {`number`} - returns media duration\n\n  * `flexLayout` {`boolean`} - determines if player is in flex-layout mode\n\n  * `fullFlex` {`boolean`} - determines if parent is wide enough for full flex-layout mode\n\n  * `fullscreenButton` {`boolean`} - whether or not the fullscreen mode is be disabled\n\n  * `hasCaptions` {`boolean`} - whether the media has any tracks\n\n  * `isYoutube` {`boolean`} - whether media is YouTube\n\n  * `loadedTracks` - HTML `audio` or `video` tag where textTracks, if any, can be found\n\n  * `localizationDefaults` - object that contains default localization\n\n  * `media` - media used for playback\n\n  * `mediaCaption` {`string`} - gets media caption\n\n  * `mediaEnd` {`number`} - gets media media time if set\n\n  * `mediaMaxWidth` {`string`} - `style` for `#player-and-controls`\n\n  * `mediaSeekable` {`boolean`} - whether media has a seekable time range\n\n  * `mediaStart` {`number`} - gets media start time\n\n  * `playing` {`boolean`} - whether media is currently playing\n\n  * `playerStyle` {`string`} - `style` for `#player`\n\n  * `poster` {`string`} - `poster`  image for video\n\n  * `printCaption` {`string`} - gets print caption\n\n  * `currentTime` {`number`} - current time for video playback\n\n  * `shareLink` {`string`} - gets the link for sharing the video at a specific timecode\n\n  * `showCustomCaptions` {`boolean`} - Show custom CC (for audio and YouTube)?\n\n  * `status` {`string`} - gets playback status text\n\n  * `stickyMode` {`boolean`} - Show custom CC (for audio and YouTube)?\n\n  * `t` {`any[]`} - gets initial timecode parameter\n\n  * `transcriptCues` {`any[]`} - gets transcript cues that should be visible\n\n  * `transcriptPicker` - gets options for transcript picker\n\n  * `transcriptTrackKey` {`number`} - `key` of selected textTrack based on `transcriptTrack` and `hide-transcript` values\n\n  * `videoData` - \n\n  * `videoId` - \n\n  * `youtube` - youtube embed element\n\n  * `__playerReady` {`boolean`} - \n\n  * `audioOnly` {`boolean`} - Is this an audio file?\n\n  * `autoplay` {`boolean`} - autoplay is an option,\nbut generally not recommended for a11y\n\n  * `allowConcurrent` {`boolean`} - Allow this media to play concurrently with other a11y-media-players?\nDefault is to pause this a11y-media-player when other a11y-media-player starts playing.\n\n  * `cc` {`boolean`} - show closed captions\n\n  * `darkTranscript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\n  * `disableFullscreen` {`boolean`} - disable fullscreen option\n\n  * `disableInteractive` {`boolean`} - disable interactive mode that makes the transcript clickable\n\n  * `disablePrintButton` {`boolean`} - disable transcript print button\n\n  * `disableSearch` {`boolean`} - disable transcript search feature\n\n  * `disableScroll` {`boolean`} - disable autoscrolling as transcript plays\n\n  * `disableSeek` {`boolean`} - disables seeking\n\n  * `hideElapsedTime` {`boolean`} - Hide elapsed time?\n\n  * `hideTimestamps` {`boolean`} - show cue's start and end time\n\n  * `hideTranscript` {`boolean`} - initially hide the transcript?\n\n  * `id` {`string`} - initially hide the transcript?\n\n  * `lang` {`string`} - Language\n\n  * `learningMode` {`boolean`} - Learning mode\n\n  * `linkable` {`boolean`} - has link button\n\n  * `localization` - custom localization settings\n\n  * `loop` {`boolean`} - Loop the video?\n\n  * `mediaTitle` {`string`} - optional title of media (shows when printed)\n\n  * `mediaLang` {`string`} - Dash.js manifest source?\n/\n\"manifest\": {\n\"attribute\": \"manifest\",\n\"type\": String\n},\n/**\nthe language of the media (if different from user interface language)\n\n  * `muted` {`boolean`} - Is audio muted?\n\n  * `hideYoutubeLink` {`boolean`} - Open on YouTube button\n\n  * `preload` {`string`} - Preload `none`, `metadata`, or `auto`.\n\n  * `playbackRate` {`number`} - Playback rate where `1` is normal speed, `0.`5 is half-speed, and `2` is double speed\n\n  * `search` - the search tool for the transcript\n\n  * `standAlone` {`boolean`} - Is stand-alone player (without transcript)?\n\n  * `responsiveSize` {`string`} - Size of the a11y media element for responsive styling\n\n  * `captionsTrack` - the selected track\n\n  * `transcriptTrack` - the selected track for the transcript\n\n  * `sources` {`any[]`} - DEPRECATED: array ouf sources\n\n  * `stackedLayout` {`boolean`} - stacked layout instead of side-by-side?\n\n  * `sticky` {`boolean`} - Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?\n\n  * `stickyCorner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.\n\n  * `tracks` {`any[]`} - DEPRECATED: array of tracks.\n\n  * `volume` {`number`} - Range is 0 to 100. Default should not be loud enough to overpower screen readers.\n\n  * `width` {`string`} - The width of the media player.\n\n  * `youtubeId` {`string`} - the id for the video\n\n  * `__cues` {`any[]`} - array of cues provided to readOnly `get cues`\n\n  * `__currentTime` {`number`} - current playback in seconds\n\n  * `__captionsOption` {`number`} - the index of the selected closed captions\n\n  * `__loadedTracks` - media captions/transcript tracks array  provided to readOnly `get loadedTracks`\n\n  * `__playing` {`boolean`} - media playing status readOnly `get playing`\n\n  * `__settingsOpen` {`boolean`} - Is settings menu toggle open?\n\n  * `__transcriptOption` {`number`} - the index of the selected transcript\n\n  * `fullscreenTarget` - element to make fullscreen, can be overidden\n\n  * `fullscreen` {`boolean`} - \n\n  * `fullscreenEnabled` {`boolean`} - \n\n  * `onfullscreenchange` - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "crossorigin",
-          "description": "`crossorigin` {`string`} - crossorigin attribute for <video> and <audio> tags\n\nProperty: crossorigin"
-        },
-        {
-          "name": "height",
-          "description": "`height` {`string`} - The height of the media player.\n\nProperty: height"
-        },
-        {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source"
-        },
-        {
-          "name": "thumbnail-src",
-          "description": "`thumbnail-src` {`string`} - Source of optional thumbnail image\nHighly recommended for Safari.\n\nProperty: thumbnailSrc"
-        },
-        {
-          "name": "__preloadedDuration",
-          "description": "`__preloadedDuration` {`number`} - temporarily duration in seconds until fully loaded\n\nProperty: __preloadedDuration"
-        },
-        {
-          "name": "currentTime",
-          "description": "`currentTime` {`number`} - current time for video playback\n\nProperty: currentTime"
-        },
-        {
-          "name": "__playerReady",
-          "description": "`__playerReady` {`boolean`} - \n\nProperty: __playerReady\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "audio-only",
-          "description": "`audio-only` {`boolean`} - Is this an audio file?\n\nProperty: audioOnly\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "autoplay",
-          "description": "`autoplay` {`boolean`} - autoplay is an option,\nbut generally not recommended for a11y\n\nProperty: autoplay\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "allow-concurrent",
-          "description": "`allow-concurrent` {`boolean`} - Allow this media to play concurrently with other a11y-media-players?\nDefault is to pause this a11y-media-player when other a11y-media-player starts playing.\n\nProperty: allowConcurrent\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "cc",
-          "description": "`cc` {`boolean`} - show closed captions\n\nProperty: cc\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "dark-transcript",
-          "description": "`dark-transcript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\nProperty: darkTranscript\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disable-fullscreen",
-          "description": "`disable-fullscreen` {`boolean`} - disable fullscreen option\n\nProperty: disableFullscreen\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disable-interactive",
-          "description": "`disable-interactive` {`boolean`} - disable interactive mode that makes the transcript clickable\n\nProperty: disableInteractive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disable-print-button",
-          "description": "`disable-print-button` {`boolean`} - disable transcript print button\n\nProperty: disablePrintButton\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disable-search",
-          "description": "`disable-search` {`boolean`} - disable transcript search feature\n\nProperty: disableSearch\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disable-scroll",
-          "description": "`disable-scroll` {`boolean`} - disable autoscrolling as transcript plays\n\nProperty: disableScroll\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disable-seek",
-          "description": "`disable-seek` {`boolean`} - disables seeking\n\nProperty: disableSeek\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-elapsed-time",
-          "description": "`hide-elapsed-time` {`boolean`} - Hide elapsed time?\n\nProperty: hideElapsedTime\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-timestamps",
-          "description": "`hide-timestamps` {`boolean`} - show cue's start and end time\n\nProperty: hideTimestamps\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-transcript",
-          "description": "`hide-transcript` {`boolean`} - initially hide the transcript?\n\nProperty: hideTranscript\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "id",
-          "description": "`id` {`string`} - initially hide the transcript?\n\nProperty: id\n\nDefault: null"
-        },
-        {
-          "name": "lang",
-          "description": "`lang` {`string`} - Language\n\nProperty: lang\n\nDefault: en"
-        },
-        {
-          "name": "learning-mode",
-          "description": "`learning-mode` {`boolean`} - Learning mode\n\nProperty: learningMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "linkable",
-          "description": "`linkable` {`boolean`} - has link button\n\nProperty: linkable\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "localization",
-          "description": "`localization` - custom localization settings\n\nProperty: localization\n\nDefault: [object Object]"
-        },
-        {
-          "name": "loop",
-          "description": "`loop` {`boolean`} - Loop the video?\n\nProperty: loop\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "media-title",
-          "description": "`media-title` {`string`} - optional title of media (shows when printed)\n\nProperty: mediaTitle\n\nDefault: "
-        },
-        {
-          "name": "media-lang",
-          "description": "`media-lang` {`string`} - Dash.js manifest source?\n/\n\"manifest\": {\n\"attribute\": \"manifest\",\n\"type\": String\n},\n/**\nthe language of the media (if different from user interface language)\n\nProperty: mediaLang\n\nDefault: en"
-        },
-        {
-          "name": "muted",
-          "description": "`muted` {`boolean`} - Is audio muted?\n\nProperty: muted\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-youtube-link",
-          "description": "`hide-youtube-link` {`boolean`} - Open on YouTube button\n\nProperty: hideYoutubeLink\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "preload",
-          "description": "`preload` {`string`} - Preload `none`, `metadata`, or `auto`.\n\nProperty: preload\n\nDefault: metadata"
-        },
-        {
-          "name": "playback-rate",
-          "description": "`playback-rate` {`number`} - Playback rate where `1` is normal speed, `0.`5 is half-speed, and `2` is double speed\n\nProperty: playbackRate\n\nDefault: 1"
-        },
-        {
-          "name": "search",
-          "description": "`search` - the search tool for the transcript\n\nProperty: search\n\nDefault: null"
-        },
-        {
-          "name": "stand-alone",
-          "description": "`stand-alone` {`boolean`} - Is stand-alone player (without transcript)?\n\nProperty: standAlone\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "responsive-size",
-          "description": "`responsive-size` {`string`} - Size of the a11y media element for responsive styling\n\nProperty: responsiveSize\n\nDefault: sm"
-        },
-        {
-          "name": "captions-track",
-          "description": "`captions-track` - the selected track\n\nProperty: captionsTrack\n\nDefault: null"
-        },
-        {
-          "name": "transcript-track",
-          "description": "`transcript-track` - the selected track for the transcript\n\nProperty: transcriptTrack\n\nDefault: null"
-        },
-        {
-          "name": "sources",
-          "description": "`sources` {`any[]`} - DEPRECATED: array ouf sources\n\nProperty: sources\n\nDefault: "
-        },
-        {
-          "name": "stacked-layout",
-          "description": "`stacked-layout` {`boolean`} - stacked layout instead of side-by-side?\n\nProperty: stackedLayout\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "sticky",
-          "description": "`sticky` {`boolean`} - Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?\n\nProperty: sticky\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "sticky-corner",
-          "description": "`sticky-corner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.\n\nProperty: stickyCorner\n\nDefault: top-right"
-        },
-        {
-          "name": "tracks",
-          "description": "`tracks` {`any[]`} - DEPRECATED: array of tracks.\n\nProperty: tracks\n\nDefault: "
-        },
-        {
-          "name": "volume",
-          "description": "`volume` {`number`} - Range is 0 to 100. Default should not be loud enough to overpower screen readers.\n\nProperty: volume\n\nDefault: 70"
-        },
-        {
-          "name": "width",
-          "description": "`width` {`string`} - The width of the media player.\n\nProperty: width\n\nDefault: null"
-        },
-        {
-          "name": "youtube-id",
-          "description": "`youtube-id` {`string`} - the id for the video\n\nProperty: youtubeId\n\nDefault: null"
-        },
-        {
-          "name": "__cues",
-          "description": "`__cues` {`any[]`} - array of cues provided to readOnly `get cues`\n\nProperty: __cues\n\nDefault: "
-        },
-        {
-          "name": "__currentTime",
-          "description": "`__currentTime` {`number`} - current playback in seconds\n\nProperty: __currentTime\n\nDefault: 0"
-        },
-        {
-          "name": "__captionsOption",
-          "description": "`__captionsOption` {`number`} - the index of the selected closed captions\n\nProperty: __captionsOption\n\nDefault: -1"
-        },
-        {
-          "name": "__loadedTracks",
-          "description": "`__loadedTracks` - media captions/transcript tracks array  provided to readOnly `get loadedTracks`\n\nProperty: __loadedTracks\n\nDefault: null"
-        },
-        {
-          "name": "__playing",
-          "description": "`__playing` {`boolean`} - media playing status readOnly `get playing`\n\nProperty: __playing\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__settingsOpen",
-          "description": "`__settingsOpen` {`boolean`} - Is settings menu toggle open?\n\nProperty: __settingsOpen\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__transcriptOption",
-          "description": "`__transcriptOption` {`number`} - the index of the selected transcript\n\nProperty: __transcriptOption\n\nDefault: -1"
-        },
-        {
-          "name": "fullscreen",
-          "description": "`fullscreen` {`boolean`} - \n\nProperty: fullscreen\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "fullscreen-enabled",
-          "description": "`fullscreen-enabled` {`boolean`} - \n\nProperty: fullscreenEnabled\n\nDefault: fullscreenEnabled",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onmute-changed",
-          "description": "`mute-changed` {`CustomEvent<this>`} - Fires when closed caption is toggled"
-        },
-        {
-          "name": "ontranscript-downloaded",
-          "description": "`transcript-downloaded` {`CustomEvent<this>`} - Fires when transcript is downloaded"
-        },
-        {
-          "name": "ontranscript-printed",
-          "description": "`transcript-printed` {`CustomEvent<this>`} - Fires when transcript is printed"
-        },
-        {
-          "name": "onplay",
-          "description": "`play` {`CustomEvent<this>`} - Fires when media plays"
-        },
-        {
-          "name": "ona11y-player-playing",
-          "description": "`a11y-player-playing` {`CustomEvent<this>`} - DEPRECATED: Fires when media plays"
-        },
-        {
-          "name": "onpause",
-          "description": "`pause` {`CustomEvent<this>`} - Fires when media pauses"
-        },
-        {
-          "name": "onstop",
-          "description": "`stop` {`CustomEvent<this>`} - Fires when media stops"
-        },
-        {
-          "name": "onrestart",
-          "description": "`restart` {`CustomEvent<this>`} - Fires when media retarts"
-        },
-        {
-          "name": "onbackward",
-          "description": "`backward` {`CustomEvent<this>`} - Fires when media moves backward"
-        },
-        {
-          "name": "onforward",
-          "description": "`forward` {`CustomEvent<this>`} - Fires when media moves forward"
-        },
-        {
-          "name": "onseek",
-          "description": "`seek` {`CustomEvent<this>`} - Fires when media seeks"
-        },
-        {
-          "name": "onplayback-rate-changed",
-          "description": "`playback-rate-changed` {`CustomEvent<this>`} - Fires when video playback rate changes"
-        },
-        {
-          "name": "onvolume-changed",
-          "description": "`volume-changed` {`CustomEvent<this>`} - Fires when video volume changes"
-        },
-        {
-          "name": "oncc-toggle",
-          "description": "`cc-toggle` {`CustomEvent<this>`} - Fires when closed caption is toggled"
-        },
-        {
-          "name": "onfullscreen-toggle",
-          "description": "`fullscreen-toggle` {`CustomEvent<this>`} - Fires when fullscreen is toggled"
-        },
-        {
-          "name": "onloop-toggle",
-          "description": "`loop-toggle` {`CustomEvent<this>`} - Fires when looping is toggled"
-        },
-        {
-          "name": "onplay-toggle",
-          "description": "`play-toggle` {`CustomEvent<this>`} - Fires when play/pause is toggled"
-        },
-        {
-          "name": "onmuted-toggle",
-          "description": "`muted-toggle` {`CustomEvent<this>`} - Fires when mute is toggled"
-        },
-        {
-          "name": "onsettings-toggled",
-          "description": "`settings-toggled` {`CustomEvent<this>`} - Fires when video's settings menu is toggled"
-        },
-        {
-          "name": "onplayer-sticky",
-          "description": "`player-sticky` {`CustomEvent<this>`} - Fires when video's sticky behavior is toggled"
-        },
-        {
-          "name": "ontranscript-toggle",
-          "description": "`transcript-toggle` {`CustomEvent<this>`} - Fires when transcript toggles"
-        },
-        {
-          "name": "onresponsive-element",
-          "description": "`responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; sm: number; md: number; lg: number; xl: number; }>`} - Fires player needs the size of parent container to add responsive styling"
-        },
-        {
-          "name": "ona11y-player",
-          "description": "`a11y-player` {`CustomEvent<this>`} - Fires when a new player is ready for a11y-media-state-manager"
+      "kind": "javascript-module",
+      "path": "a11y-media-player.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`a11y-media-player`\nan accessible video player\n\n### Styling\n`<a11y-media-player>` provides the following basic custom properties\nfor styling:\n\n#### Basic Styling\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-media-color` | default text color | `--simple-colors-default-theme-grey-11`\n`--a11y-media-bg-color` | default background color | `--simple-colors-default-theme-grey-2`\n`--a11y-media-border-color` | default border color | `--simple-colors-default-theme-grey-3`\n`--a11y-media-hover-color` | text color when hovering | `--simple-colors-default-theme-grey-12`\n`--a11y-media-hover-bg-color` | background color when hovering | `--simple-colors-default-theme-grey-2`\n`--a11y-media-accent-color` | accent color | `--simple-colors-default-theme-accent-9`\n`--a11y-media-faded-accent-color` | accent color when faded | `--simple-colors-default-theme-accent-8`\n`--a11y-media-disabled-color` | color for disabled items | `--simple-colors-default-theme-grey-5`\n`--a11y-media-transcript-color` | default text color of transcript | `--simple-colors-default-theme-grey-7`\n`--a11y-media-transcript-bg-color` | default background color of transcript | `--simple-colors-default-theme-grey-1`\n`--a11y-media-transcript-accent-color` | default accent color of transcript | `--simple-colors-default-theme-accent-8`\n`--a11y-media-transcript-faded-accent-color` | accent color of transcript, faded | `--simple-colors-default-theme-accent-10`\n`--a11y-media-transcript-cue-color` | text color of transcript cue | `--simple-colors-fixed-theme-grey-12`\n`--a11y-media-transcript-cue-bg-color` | background color of transcript cue  | `--simple-colors-fixed-theme-grey-1`\n`--a11y-media-transcript-active-cue-color` | text color of active transcript cue  | `--simple-colors-fixed-theme-grey-12`\n`--a11y-media-transcript-active-cue-bg-color` | background color of active transcript cue  | `--simple-colors-fixed-theme-accent-1`\n`--a11y-media-transcript-focused-cue-color` | text color of focused transcript cue  | `--simple-colors-fixed-theme-grey-12`\n`--a11y-media-transcript-focused-cue-bg-color` | background color of focused transcript cue  | `--simple-colors-fixed-theme-grey-2`\n`--a11y-media-transcript-match-color` | text color of matched term in transcript search  | `--simple-colors-fixed-theme-grey-1`\n`--a11y-media-transcript-match-bg-color` | background color of matched term in transcript search | `--simple-colors-fixed-theme-accent-10`\n`--a11y-media-transcript-match-border-color` | border color of matched term in transcript search | `--simple-colors-fixed-theme-accent-12`\n\n#### Controls\nCustom property | Description | Default \n----------------|-------------|----------\n`--a11y-media-scrollbar-width` | default width of scrollbars | `5px`\n`--a11y-media-controls-font-family` | font-family of controls\n\n#### Buttons\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-media-button-color` | button text color | `--a11y-media-color`\n`--a11y-media-button-bg-color` | button background color | `--a11y-media-bg-color`\n`--a11y-media-button-hover-color` | button text color when hovering | `--a11y-media-accent-color`\n`--a11y-media-button-hover-bg-color` | button background color when hovering | `--a11y-media-hover-bg-color`\n`--a11y-media-button-disabled-color` | button text color when disabled | `--a11y-media-disabled-color`\n`--a11y-media-button-toggle-color` | button text color when toggled | `--a11y-media-faded-accent-color`\n\n#### Sliders\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-range-input-active-color` | slider color when active | `--a11y-media-accent-color`\n`--simple-range-input-secondary-color` | slider color for buffering | `--a11y-media-faded-accent-color`\n`--simple-range-input-pin-color` | slider pin color | `--a11y-media-bg-color`\n`--simple-range-input-pin-start-color` | slider pin color in start position | `--a11y-media-bg-color`\n`--simple-range-input-pin-end-color` | slider pin color in end position | `--a11y-media-bg-color`\n`--simple-range-input-knob-color` | slider knob color | `--a11y-media-accent-color`\n`--simple-range-input-knob-start-color` | slider knob color in start position | `--a11y-media-accent-color`\n`--simple-range-input-knob-end-color` | slider knob color in end position | `--a11y-media-bg-accent-color`\n`--simple-range-input-knob-border-color` | slider knob border color | `--a11y-media-accent-color`\n`--simple-range-input-knob-start-border-color` | slider knob border color in start position | `--a11y-media-bg-color`\n`--simple-range-input-knob-end-border-color` | slider knob border color in end position | `--a11y-media-bg-color`\n\n#### Settings Menu\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-media-settings-menu-color` | settings menu text color | `--a11y-media-color`\n`--a11y-media-settings-menu-bg-color` | settings menu background color | `--a11y-media-bg-color`\n`--a11y-media-settings-menu-hover-color` | settings menu text color when hovering | `--a11y-media-hover-color`\n`--a11y-media-settings-menu-hover-bg-color` | settings menu background color when hovering | `--a11y-media-hover-bg-color`\n\n#### Link Sharing Toast\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-toast-color` | toast text color | `--a11y-media-color`\n`--simple-toast-background-color` | toast background color | `--a11y-media-bg-color`",
+          "name": "A11yMediaPlayer",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "anchor",
+              "description": "gets anchors from page and uses their timecodes",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "aspect",
+              "description": "the aspect ratio of the media, or if unknown, `16/9`",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "audioNoThumb",
+              "description": "returns true if an attribute is set to a value",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "buffered",
+              "description": "returns buffered media",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "captionCues",
+              "description": "gets caption cues that should be visible for custom captions",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "array"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "captionsPicker",
+              "description": "gets options for captions picker",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "captionsTrackKey",
+              "description": "`key` of selected textTrack based on `captionsTrack` and `cc` values",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "cues",
+              "description": "returns cues array",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "duration",
+              "description": "returns media duration",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "flexLayout",
+              "description": "determines if player is in flex-layout mode",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "fullFlex",
+              "description": "determines if parent is wide enough for full flex-layout mode",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "fullscreenButton",
+              "description": "whether or not the fullscreen mode is be disabled",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "hasCaptions",
+              "description": "whether the media has any tracks",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "isYoutube",
+              "description": "whether media is YouTube",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "loadedTracks",
+              "description": "HTML `audio` or `video` tag where textTracks, if any, can be found",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "localizationDefaults",
+              "description": "object that contains default localization",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "media",
+              "description": "media used for playback",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "mediaCaption",
+              "description": "gets media caption",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "mediaEnd",
+              "description": "gets media media time if set",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "mediaMaxWidth",
+              "description": "`style` for `#player-and-controls`",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "mediaSeekable",
+              "description": "whether media has a seekable time range",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "mediaStart",
+              "description": "gets media start time",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "playing",
+              "description": "whether media is currently playing",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "playerStyle",
+              "description": "`style` for `#player`",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "poster",
+              "description": "`poster`  image for video",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "printCaption",
+              "description": "gets print caption",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "currentTime",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "returns the current playback progress or slider position",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
+              "attribute": "currentTime"
+            },
+            {
+              "kind": "field",
+              "name": "shareLink",
+              "description": "gets the link for sharing the video at a specific timecode",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showCustomCaptions",
+              "description": "Show custom CC (for audio and YouTube)?",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "description": "gets playback status text",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "stickyMode",
+              "description": "Show custom CC (for audio and YouTube)?",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "description": "gets initial timecode parameter",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "array"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "transcriptCues",
+              "description": "gets transcript cues that should be visible",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "array"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "transcriptPicker",
+              "description": "gets options for transcript picker",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "transcriptTrackKey",
+              "description": "`key` of selected textTrack based on `transcriptTrack` and `hide-transcript` values",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "videoData",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "videoId",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "youtube",
+              "description": "youtube embed element",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_setAttribute",
+              "parameters": [
+                {
+                  "name": "attr"
+                },
+                {
+                  "name": "val"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_captionsChanged",
+              "description": "updates track mode & `__captionsOption` when `captionsTrack` or `cc` changes"
+            },
+            {
+              "kind": "method",
+              "name": "_captionsOptionChanged",
+              "description": "updates track mode & `captionsTrack` when `__captionsOption` changes"
+            },
+            {
+              "kind": "method",
+              "name": "_handleMuteChanged",
+              "description": "handles mute change"
+            },
+            {
+              "kind": "method",
+              "name": "download",
+              "description": "gets download data for the active transcript",
+              "parameters": [
+                {
+                  "description": "title of the media",
+                  "name": "the",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "goToYoutube",
+              "description": "takes the user to YouTube"
+            },
+            {
+              "kind": "method",
+              "name": "print",
+              "description": "prints the active transcript",
+              "parameters": [
+                {
+                  "description": "title of the media",
+                  "name": "the",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "play",
+              "description": "plays the media"
+            },
+            {
+              "kind": "method",
+              "name": "pause",
+              "description": "pauses the media"
+            },
+            {
+              "kind": "method",
+              "name": "stop",
+              "description": "stops the media"
+            },
+            {
+              "kind": "method",
+              "name": "restart",
+              "description": "restarts the media"
+            },
+            {
+              "kind": "method",
+              "name": "rewind",
+              "parameters": [
+                {
+                  "name": "amt"
+                },
+                {
+                  "description": "elepsed time, in seconds",
+                  "name": "the",
+                  "type": {
+                    "text": "float"
+                  }
+                }
+              ],
+              "description": "seeks media backward at a set increment"
+            },
+            {
+              "kind": "method",
+              "name": "forward",
+              "parameters": [
+                {
+                  "name": "amt"
+                },
+                {
+                  "description": "elepsed time, in seconds",
+                  "name": "the",
+                  "type": {
+                    "text": "float"
+                  }
+                }
+              ],
+              "description": "seeks media forward at a set increment"
+            },
+            {
+              "kind": "method",
+              "name": "seek",
+              "parameters": [
+                {
+                  "name": "time",
+                  "default": "0"
+                },
+                {
+                  "description": "time, in seconds, to seek",
+                  "name": "the",
+                  "type": {
+                    "text": "float"
+                  }
+                }
+              ],
+              "description": "seeks to a specific time"
+            },
+            {
+              "kind": "method",
+              "name": "selectCaptionByKeyEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Event version for Lit version requirements"
+            },
+            {
+              "kind": "method",
+              "name": "selectCaptionByKey",
+              "parameters": [
+                {
+                  "name": "id"
+                }
+              ],
+              "description": "selects `captionsTrack` by key and adjusts `cc` accordingly"
+            },
+            {
+              "kind": "method",
+              "name": "selectTranscriptByKeyEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Event version for Lit version requirements"
+            },
+            {
+              "kind": "method",
+              "name": "selectTranscriptByKey",
+              "parameters": [
+                {
+                  "name": "id"
+                }
+              ],
+              "description": "selects `transcriptTrack` by key and adjusts `hideTranscript` accordingly"
+            },
+            {
+              "kind": "method",
+              "name": "getloadedTracks",
+              "description": "media tag where sources and tracks can be found",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_getTrack",
+              "parameters": [
+                {
+                  "name": "track",
+                  "description": "text track",
+                  "type": {
+                    "text": "track"
+                  }
+                }
+              ],
+              "description": "selects a specific transcript track"
+            },
+            {
+              "kind": "method",
+              "name": "selectTranscript",
+              "parameters": [
+                {
+                  "name": "track",
+                  "description": "text track",
+                  "type": {
+                    "text": "track"
+                  }
+                }
+              ],
+              "description": "selects a specific track as transcript"
+            },
+            {
+              "kind": "method",
+              "name": "setPlaybackRate",
+              "parameters": [
+                {
+                  "name": "value"
+                },
+                {
+                  "description": "playback rate, where 1 = 100%",
+                  "name": "the",
+                  "type": {
+                    "text": "float"
+                  }
+                }
+              ],
+              "description": "set speed/playback rate of media"
+            },
+            {
+              "kind": "method",
+              "name": "setVolume",
+              "parameters": [
+                {
+                  "name": "value",
+                  "default": "70"
+                },
+                {
+                  "description": "volume level from 0-100",
+                  "name": "the",
+                  "type": {
+                    "text": "integer"
+                  }
+                }
+              ],
+              "description": "set volume of media"
+            },
+            {
+              "kind": "method",
+              "name": "toggleCC",
+              "parameters": [
+                {
+                  "name": "mode"
+                },
+                {
+                  "description": "CC on? `true` is on, `false` is off, and `null` toggles based on current state.",
+                  "name": "Toggle",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "toggles captions"
+            },
+            {
+              "kind": "field",
+              "name": "fullscreenTarget",
+              "description": "element to make fullscreen, can be overidden",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "toggleFullscreen",
+              "parameters": [
+                {
+                  "name": "mode"
+                },
+                {
+                  "description": "fullscreen on? `true` is on, `false` is off, and `null` toggles based on current state.",
+                  "name": "Toggle",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "toggles fullscreen"
+            },
+            {
+              "kind": "method",
+              "name": "toggleLoop",
+              "parameters": [
+                {
+                  "name": "mode"
+                },
+                {
+                  "description": "looping on? `true` is on, `false` is off, and `null` toggles based on current state.",
+                  "name": "Toggle",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "toggles looping"
+            },
+            {
+              "kind": "method",
+              "name": "togglePlay",
+              "description": "toggles play",
+              "parameters": [
+                {
+                  "description": "play/pause? `true` is on, `false` is off, and `null` toggles based on current state.",
+                  "name": "Toggle",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toggleMute",
+              "parameters": [
+                {
+                  "name": "mode"
+                },
+                {
+                  "description": "mute on? `true` is on, `false` is off, and `null` toggles based on current state.",
+                  "name": "Toggle",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "toggles mute"
+            },
+            {
+              "kind": "method",
+              "name": "toggleSettings",
+              "parameters": [
+                {
+                  "name": "mode"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toggleSticky",
+              "parameters": [
+                {
+                  "name": "mode"
+                },
+                {
+                  "description": "sticky mode on? `true` is on, `false` is off, and `null` toggles based on current state.",
+                  "name": "Toggle",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "toggles sticky attribute"
+            },
+            {
+              "kind": "method",
+              "name": "toggleTranscript",
+              "parameters": [
+                {
+                  "name": "mode"
+                },
+                {
+                  "description": "transcript on? `true` is on, `false` is off, and `null` toggles based on current state.",
+                  "name": "Toggle",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "toggles transcript"
+            },
+            {
+              "kind": "method",
+              "name": "_addSourcesAndTracks",
+              "parameters": [
+                {
+                  "name": "media"
+                },
+                {
+                  "description": "audio or video object",
+                  "name": "HTML",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "loads a track's cue metadata"
+            },
+            {
+              "kind": "method",
+              "name": "_handleCloseLink",
+              "description": "handles closing the share link toast"
+            },
+            {
+              "kind": "method",
+              "name": "_handleCopyLink",
+              "description": "handles copying the share link"
+            },
+            {
+              "kind": "method",
+              "name": "_handleCueSeek",
+              "parameters": [
+                {
+                  "name": "cue"
+                },
+                {
+                  "description": "seek event",
+                  "name": "e",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles the seek function when a transcript cue is activated"
+            },
+            {
+              "kind": "method",
+              "name": "_handleMediaLoaded",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "handles media metadata when media is loaded"
+            },
+            {
+              "kind": "method",
+              "name": "_handleSearchAdded",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "searchbar event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "sets search the simple-search element"
+            },
+            {
+              "kind": "method",
+              "name": "_handleSpeedChanged",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "slider event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles speed slider change thhat sets playback rate"
+            },
+            {
+              "kind": "method",
+              "name": "_handleSliderDragging",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "slider start event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles duration slider dragging with a mouse"
+            },
+            {
+              "kind": "method",
+              "name": "_handleSliderChanged",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "slider start event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles duration slider dragging with a mouse"
+            },
+            {
+              "kind": "method",
+              "name": "_handleTimeUpdate",
+              "description": "handles time updates"
+            },
+            {
+              "kind": "method",
+              "name": "_getTrackId",
+              "parameters": [
+                {
+                  "name": "track",
+                  "description": "textTrack",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "gets `key` of given track",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleVolumeChanged",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "volume change event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles volume slider change"
+            },
+            {
+              "kind": "method",
+              "name": "_onAddTrack",
+              "parameters": [
+                {
+                  "name": "track"
+                },
+                {
+                  "name": "textTrack",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "adds a track's cues to cues array"
+            },
+            {
+              "kind": "method",
+              "name": "_onRemoveTrack",
+              "parameters": [
+                {
+                  "name": "track"
+                },
+                {
+                  "name": "textTrack",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "removes a track's cues from cues array"
+            },
+            {
+              "kind": "method",
+              "name": "_setActiveCue",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "onenter event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "on a cue.onenter event scrolls the first active cue to position"
+            },
+            {
+              "kind": "method",
+              "name": "_transcriptScroll",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "scroll event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles transcript scroll toggle"
+            },
+            {
+              "kind": "method",
+              "name": "_getHHMMSS",
+              "parameters": [
+                {
+                  "name": "val"
+                },
+                {
+                  "name": "max"
+                },
+                {
+                  "description": "duration, in seconds",
+                  "name": "the",
+                  "type": {
+                    "text": "float"
+                  }
+                }
+              ],
+              "description": "converts time in millesconds to HH:MM:SS",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getSeconds",
+              "parameters": [
+                {
+                  "name": "time",
+                  "default": "0",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "returns time in seconds of a string, such as 00:00:00.0, 0h0m0.0s, or 0hh0mm0.0ss",
+              "return": {
+                "type": {
+                  "text": "float"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getLocal",
+              "parameters": [
+                {
+                  "name": "localization"
+                },
+                {
+                  "name": "key"
+                },
+                {
+                  "name": "subkey"
+                },
+                {
+                  "description": "subkey to search for",
+                  "name": "the",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "gets the localization by compaing the localization set to the defaults",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__playerReady",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "__playerReady"
+            },
+            {
+              "kind": "field",
+              "name": "audioOnly",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Is this an audio file?",
+              "default": "false",
+              "attribute": "audio-only",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "autoplay",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "autoplay is an option,\nbut generally not recommended for a11y",
+              "default": "false",
+              "attribute": "autoplay"
+            },
+            {
+              "kind": "field",
+              "name": "allowConcurrent",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Allow this media to play concurrently with other a11y-media-players?\nDefault is to pause this a11y-media-player when other a11y-media-player starts playing.",
+              "default": "false",
+              "attribute": "allow-concurrent"
+            },
+            {
+              "kind": "field",
+              "name": "cc",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "show closed captions",
+              "default": "false",
+              "attribute": "cc"
+            },
+            {
+              "kind": "field",
+              "name": "darkTranscript",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Use dark theme on transcript? Default is false, even when player is dark.",
+              "default": "false",
+              "attribute": "dark-transcript"
+            },
+            {
+              "kind": "field",
+              "name": "disableFullscreen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disable fullscreen option",
+              "default": "false",
+              "attribute": "disable-fullscreen"
+            },
+            {
+              "kind": "field",
+              "name": "disableInteractive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disable interactive mode that makes the transcript clickable",
+              "default": "false",
+              "attribute": "disable-interactive"
+            },
+            {
+              "kind": "field",
+              "name": "disablePrintButton",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disable transcript print button",
+              "default": "false",
+              "attribute": "disable-print-button"
+            },
+            {
+              "kind": "field",
+              "name": "disableSearch",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disable transcript search feature",
+              "default": "false",
+              "attribute": "disable-search"
+            },
+            {
+              "kind": "field",
+              "name": "disableScroll",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disable autoscrolling as transcript plays",
+              "default": "false",
+              "attribute": "disable-scroll"
+            },
+            {
+              "kind": "field",
+              "name": "disableSeek",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disables seeking",
+              "default": "false",
+              "attribute": "disable-seek"
+            },
+            {
+              "kind": "field",
+              "name": "hideElapsedTime",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hide elapsed time?",
+              "default": "false",
+              "attribute": "hide-elapsed-time"
+            },
+            {
+              "kind": "field",
+              "name": "hideTimestamps",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "show cue's start and end time",
+              "default": "false",
+              "attribute": "hide-timestamps"
+            },
+            {
+              "kind": "field",
+              "name": "hideTranscript",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "initially hide the transcript?",
+              "default": "false",
+              "attribute": "hide-transcript",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "initially hide the transcript?",
+              "default": "null",
+              "attribute": "id",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "lang",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Language",
+              "default": "\"en\"",
+              "attribute": "lang"
+            },
+            {
+              "kind": "field",
+              "name": "learningMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Learning mode",
+              "default": "false",
+              "attribute": "learning-mode"
+            },
+            {
+              "kind": "field",
+              "name": "linkable",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "has link button",
+              "default": "false",
+              "attribute": "linkable"
+            },
+            {
+              "kind": "field",
+              "name": "localization",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "custom localization settings",
+              "default": "{}",
+              "attribute": "localization"
+            },
+            {
+              "kind": "field",
+              "name": "loop",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Loop the video?",
+              "default": "false",
+              "attribute": "loop"
+            },
+            {
+              "kind": "field",
+              "name": "mediaTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "optional title of media (shows when printed)",
+              "default": "\"\"",
+              "attribute": "media-title"
+            },
+            {
+              "kind": "field",
+              "name": "mediaLang",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Dash.js manifest source?\n/\n\"manifest\": {\n\"attribute\": \"manifest\",\n\"type\": String\n},\n/**\nthe language of the media (if different from user interface language)",
+              "default": "\"en\"",
+              "attribute": "media-lang"
+            },
+            {
+              "kind": "field",
+              "name": "muted",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Is audio muted?",
+              "default": "false",
+              "attribute": "muted"
+            },
+            {
+              "kind": "field",
+              "name": "hideYoutubeLink",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Open on YouTube button",
+              "default": "false",
+              "attribute": "hide-youtube-link"
+            },
+            {
+              "kind": "field",
+              "name": "preload",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Preload `none`, `metadata`, or `auto`.",
+              "default": "\"metadata\"",
+              "attribute": "preload",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "playbackRate",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Playback rate where `1` is normal speed, `0.`5 is half-speed, and `2` is double speed",
+              "default": "1",
+              "attribute": "playback-rate"
+            },
+            {
+              "kind": "field",
+              "name": "search",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "the search tool for the transcript",
+              "default": "null",
+              "attribute": "search"
+            },
+            {
+              "kind": "field",
+              "name": "standAlone",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Is stand-alone player (without transcript)?",
+              "default": "false",
+              "attribute": "stand-alone",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "responsiveSize",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Size of the a11y media element for responsive styling",
+              "default": "\"sm\"",
+              "attribute": "responsive-size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "captionsTrack",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "the selected track",
+              "default": "null",
+              "attribute": "captions-track"
+            },
+            {
+              "kind": "field",
+              "name": "transcriptTrack",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "the selected track for the transcript",
+              "default": "null",
+              "attribute": "transcript-track"
+            },
+            {
+              "kind": "field",
+              "name": "sources",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "DEPRECATED: array ouf sources",
+              "default": "[]",
+              "attribute": "sources"
+            },
+            {
+              "kind": "field",
+              "name": "stackedLayout",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "stacked layout instead of side-by-side?",
+              "default": "false",
+              "attribute": "stacked-layout"
+            },
+            {
+              "kind": "field",
+              "name": "sticky",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?",
+              "default": "false",
+              "attribute": "sticky",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "stickyCorner",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.",
+              "default": "\"top-right\"",
+              "attribute": "sticky-corner",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "tracks",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "DEPRECATED: array of tracks.",
+              "default": "[]",
+              "attribute": "tracks"
+            },
+            {
+              "kind": "field",
+              "name": "volume",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Range is 0 to 100. Default should not be loud enough to overpower screen readers.",
+              "default": "70",
+              "attribute": "volume"
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "The width of the media player.",
+              "default": "null",
+              "attribute": "width"
+            },
+            {
+              "kind": "field",
+              "name": "youtubeId",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "the id for the video",
+              "default": "null",
+              "attribute": "youtube-id",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__cues",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "array of cues provided to readOnly `get cues`",
+              "default": "[]",
+              "attribute": "__cues"
+            },
+            {
+              "kind": "field",
+              "name": "__currentTime",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "current playback in seconds",
+              "default": "0",
+              "attribute": "__currentTime"
+            },
+            {
+              "kind": "field",
+              "name": "__captionsOption",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "the index of the selected closed captions",
+              "default": "-1",
+              "attribute": "__captionsOption"
+            },
+            {
+              "kind": "field",
+              "name": "__loadedTracks",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "media captions/transcript tracks array  provided to readOnly `get loadedTracks`",
+              "default": "null",
+              "attribute": "__loadedTracks"
+            },
+            {
+              "kind": "field",
+              "name": "__playing",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "media playing status readOnly `get playing`",
+              "default": "false",
+              "attribute": "__playing"
+            },
+            {
+              "kind": "field",
+              "name": "__settingsOpen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Is settings menu toggle open?",
+              "default": "false",
+              "attribute": "__settingsOpen"
+            },
+            {
+              "kind": "field",
+              "name": "__transcriptOption",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "the index of the selected transcript",
+              "default": "-1",
+              "attribute": "__transcriptOption"
+            },
+            {
+              "kind": "field",
+              "name": "crossorigin",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "crossorigin attribute for <video> and <audio> tags",
+              "attribute": "crossorigin"
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The height of the media player.",
+              "attribute": "height"
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "source",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "thumbnailSrc",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Source of optional thumbnail image\nHighly recommended for Safari.",
+              "attribute": "thumbnail-src",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__preloadedDuration",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "temporarily duration in seconds until fully loaded",
+              "attribute": "__preloadedDuration"
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "mute-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when closed caption is toggled"
+            },
+            {
+              "name": "transcript-downloaded",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when transcript is downloaded"
+            },
+            {
+              "name": "transcript-printed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when transcript is printed"
+            },
+            {
+              "name": "play",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when media plays"
+            },
+            {
+              "name": "a11y-player-playing",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "DEPRECATED: Fires when media plays"
+            },
+            {
+              "name": "pause",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when media pauses"
+            },
+            {
+              "name": "stop",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when media stops"
+            },
+            {
+              "name": "restart",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when media retarts"
+            },
+            {
+              "name": "backward",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when media moves backward"
+            },
+            {
+              "name": "forward",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when media moves forward"
+            },
+            {
+              "name": "seek",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when media seeks"
+            },
+            {
+              "name": "settings-toggled",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when video's settings menu is toggled"
+            },
+            {
+              "name": "player-sticky",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when video's sticky behavior is toggled"
+            },
+            {
+              "name": "transcript-toggle",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when transcript toggles"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "__playerReady",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "__playerReady"
+            },
+            {
+              "name": "allow-concurrent",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Allow this media to play concurrently with other a11y-media-players?\nDefault is to pause this a11y-media-player when other a11y-media-player starts playing.",
+              "default": "false",
+              "fieldName": "allowConcurrent"
+            },
+            {
+              "name": "audio-only",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Is this an audio file?",
+              "default": "false",
+              "fieldName": "audioOnly"
+            },
+            {
+              "name": "autoplay",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "autoplay is an option,\nbut generally not recommended for a11y",
+              "default": "false",
+              "fieldName": "autoplay"
+            },
+            {
+              "name": "captions-track",
+              "type": {
+                "text": "null"
+              },
+              "description": "the selected track",
+              "default": "null",
+              "fieldName": "captionsTrack"
+            },
+            {
+              "name": "cc",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "show closed captions",
+              "default": "false",
+              "fieldName": "cc"
+            },
+            {
+              "name": "currentTime",
+              "type": {
+                "text": "number"
+              },
+              "description": "returns the current playback progress or slider position",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
+              "fieldName": "currentTime"
+            },
+            {
+              "name": "crossorigin",
+              "type": {
+                "text": "string"
+              },
+              "description": "crossorigin attribute for <video> and <audio> tags",
+              "fieldName": "crossorigin"
+            },
+            {
+              "name": "disable-print-button",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disable transcript print button",
+              "default": "false",
+              "fieldName": "disablePrintButton"
+            },
+            {
+              "name": "disable-search",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disable transcript search feature",
+              "default": "false",
+              "fieldName": "disableSearch"
+            },
+            {
+              "name": "disable-scroll",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disable autoscrolling as transcript plays",
+              "default": "false",
+              "fieldName": "disableScroll"
+            },
+            {
+              "name": "disable-seek",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disables seeking",
+              "default": "false",
+              "fieldName": "disableSeek"
+            },
+            {
+              "name": "dark-transcript",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Use dark theme on transcript? Default is false, even when player is dark.",
+              "default": "false",
+              "fieldName": "darkTranscript"
+            },
+            {
+              "name": "disable-fullscreen",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disable fullscreen option",
+              "default": "false",
+              "fieldName": "disableFullscreen"
+            },
+            {
+              "name": "disable-interactive",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disable interactive mode that makes the transcript clickable",
+              "default": "false",
+              "fieldName": "disableInteractive"
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "description": "The height of the media player.",
+              "fieldName": "height"
+            },
+            {
+              "name": "hide-elapsed-time",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hide elapsed time?",
+              "default": "false",
+              "fieldName": "hideElapsedTime"
+            },
+            {
+              "name": "hide-timestamps",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "show cue's start and end time",
+              "default": "false",
+              "fieldName": "hideTimestamps"
+            },
+            {
+              "name": "hide-transcript",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "initially hide the transcript?",
+              "default": "false",
+              "fieldName": "hideTranscript"
+            },
+            {
+              "name": "id",
+              "type": {
+                "text": "null"
+              },
+              "description": "initially hide the transcript?",
+              "default": "null",
+              "fieldName": "id"
+            },
+            {
+              "name": "lang",
+              "type": {
+                "text": "string"
+              },
+              "description": "Language",
+              "default": "\"en\"",
+              "fieldName": "lang"
+            },
+            {
+              "name": "learning-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Learning mode",
+              "default": "false",
+              "fieldName": "learningMode"
+            },
+            {
+              "name": "linkable",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "has link button",
+              "default": "false",
+              "fieldName": "linkable"
+            },
+            {
+              "name": "localization",
+              "type": {
+                "text": "object"
+              },
+              "description": "custom localization settings",
+              "default": "{}",
+              "fieldName": "localization"
+            },
+            {
+              "name": "loop",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Loop the video?",
+              "default": "false",
+              "fieldName": "loop"
+            },
+            {
+              "name": "media-lang",
+              "type": {
+                "text": "string"
+              },
+              "description": "Dash.js manifest source?\n/\n\"manifest\": {\n\"attribute\": \"manifest\",\n\"type\": String\n},\n/**\nthe language of the media (if different from user interface language)",
+              "default": "\"en\"",
+              "fieldName": "mediaLang"
+            },
+            {
+              "name": "media-title",
+              "type": {
+                "text": "string"
+              },
+              "description": "optional title of media (shows when printed)",
+              "default": "\"\"",
+              "fieldName": "mediaTitle"
+            },
+            {
+              "name": "muted",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Is audio muted?",
+              "default": "false",
+              "fieldName": "muted"
+            },
+            {
+              "name": "hide-youtube-link",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Open on YouTube button",
+              "default": "false",
+              "fieldName": "hideYoutubeLink"
+            },
+            {
+              "name": "playback-rate",
+              "type": {
+                "text": "number"
+              },
+              "description": "Playback rate where `1` is normal speed, `0.`5 is half-speed, and `2` is double speed",
+              "default": "1",
+              "fieldName": "playbackRate"
+            },
+            {
+              "name": "preload",
+              "type": {
+                "text": "string"
+              },
+              "description": "Preload `none`, `metadata`, or `auto`.",
+              "default": "\"metadata\"",
+              "fieldName": "preload"
+            },
+            {
+              "name": "responsive-size",
+              "type": {
+                "text": "string"
+              },
+              "description": "Size of the a11y media element for responsive styling",
+              "default": "\"sm\"",
+              "fieldName": "responsiveSize"
+            },
+            {
+              "name": "search",
+              "type": {
+                "text": "null"
+              },
+              "description": "the search tool for the transcript",
+              "default": "null",
+              "fieldName": "search"
+            },
+            {
+              "name": "stand-alone",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Is stand-alone player (without transcript)?",
+              "default": "false",
+              "fieldName": "standAlone"
+            },
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "source"
+            },
+            {
+              "name": "sources",
+              "type": {
+                "text": "array"
+              },
+              "description": "DEPRECATED: array ouf sources",
+              "default": "[]",
+              "fieldName": "sources"
+            },
+            {
+              "name": "stacked-layout",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "stacked layout instead of side-by-side?",
+              "default": "false",
+              "fieldName": "stackedLayout"
+            },
+            {
+              "name": "sticky",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Is the video currently sticky, i.e. it is fixed to the corner when playing but scrolled off screen?",
+              "default": "false",
+              "fieldName": "sticky"
+            },
+            {
+              "name": "sticky-corner",
+              "type": {
+                "text": "string"
+              },
+              "description": "When playing but scrolled off screen, to which corner does it \"stick\":\ntop-left, top-right, bottom-left, bottom-right, or none?\nDefault is \"top-right\". \"None\" disables stickiness.",
+              "default": "\"top-right\"",
+              "fieldName": "stickyCorner"
+            },
+            {
+              "name": "thumbnail-src",
+              "type": {
+                "text": "string"
+              },
+              "description": "Source of optional thumbnail image\nHighly recommended for Safari.",
+              "fieldName": "thumbnailSrc"
+            },
+            {
+              "name": "tracks",
+              "type": {
+                "text": "array"
+              },
+              "description": "DEPRECATED: array of tracks.",
+              "default": "[]",
+              "fieldName": "tracks"
+            },
+            {
+              "name": "transcript-track",
+              "type": {
+                "text": "null"
+              },
+              "description": "the selected track for the transcript",
+              "default": "null",
+              "fieldName": "transcriptTrack"
+            },
+            {
+              "name": "volume",
+              "type": {
+                "text": "number"
+              },
+              "description": "Range is 0 to 100. Default should not be loud enough to overpower screen readers.",
+              "default": "70",
+              "fieldName": "volume"
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "null"
+              },
+              "description": "The width of the media player.",
+              "default": "null",
+              "fieldName": "width"
+            },
+            {
+              "name": "youtube-id",
+              "type": {
+                "text": "null"
+              },
+              "description": "the id for the video",
+              "default": "null",
+              "fieldName": "youtubeId"
+            },
+            {
+              "name": "__currentTime",
+              "type": {
+                "text": "number"
+              },
+              "description": "current playback in seconds",
+              "default": "0",
+              "fieldName": "__currentTime"
+            },
+            {
+              "name": "__captionsOption",
+              "type": {
+                "text": "number"
+              },
+              "description": "the index of the selected closed captions",
+              "default": "-1",
+              "fieldName": "__captionsOption"
+            },
+            {
+              "name": "__cues",
+              "type": {
+                "text": "array"
+              },
+              "description": "array of cues provided to readOnly `get cues`",
+              "default": "[]",
+              "fieldName": "__cues"
+            },
+            {
+              "name": "__loadedTracks",
+              "type": {
+                "text": "null"
+              },
+              "description": "media captions/transcript tracks array  provided to readOnly `get loadedTracks`",
+              "default": "null",
+              "fieldName": "__loadedTracks"
+            },
+            {
+              "name": "__playing",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "media playing status readOnly `get playing`",
+              "default": "false",
+              "fieldName": "__playing"
+            },
+            {
+              "name": "__preloadedDuration",
+              "type": {
+                "text": "number"
+              },
+              "description": "temporarily duration in seconds until fully loaded",
+              "fieldName": "__preloadedDuration"
+            },
+            {
+              "name": "__settingsOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Is settings menu toggle open?",
+              "default": "false",
+              "fieldName": "__settingsOpen"
+            },
+            {
+              "name": "__transcriptOption",
+              "type": {
+                "text": "number"
+              },
+              "description": "the index of the selected transcript",
+              "default": "-1",
+              "fieldName": "__transcriptOption"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "FullscreenBehaviors",
+              "package": "@haxtheweb/fullscreen-behaviors/fullscreen-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "a11y-media-player",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "A11yMediaPlayer",
+            "module": "a11y-media-player.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "A11yMediaPlayer",
+          "declaration": {
+            "name": "A11yMediaPlayer",
+            "module": "a11y-media-player.js"
+          }
         }
       ]
     },
     {
-      "name": "a11y-media-button",
-      "description": "`a11y-media-button`\na button used in a11y-media-controls and a11y-media-transcript-controls.\n\nEvents:\n\n  * `button-click` {`CustomEvent<this>`} - Fires when button is clicked\n\nAttributes:\n\n  * `action` {`string`} - is button action to send as an event\n\n  * `icon` {`string`} - simple-icon type\n\n  * `label` {`string`} - button label\n\n  * `accent-color` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `controls` {`string`} - id of element button controls\n\n  * `disabled` {`boolean`} - Is it disabled?\n\n  * `toggle` {`boolean`} - Is it toggled on?\n\n  * `tooltip-position` {`string`} - Is it disabled?\n\nProperties:\n\n  * `action` {`string`} - is button action to send as an event\n\n  * `icon` {`string`} - simple-icon type\n\n  * `label` {`string`} - button label\n\n  * `accentColor` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `controls` {`string`} - id of element button controls\n\n  * `disabled` {`boolean`} - Is it disabled?\n\n  * `toggle` {`boolean`} - Is it toggled on?\n\n  * `tooltipPosition` {`string`} - Is it disabled?",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/a11y-media-button.js",
+      "declarations": [
         {
-          "name": "action",
-          "description": "`action` {`string`} - is button action to send as an event\n\nProperty: action"
+          "kind": "class",
+          "description": "`a11y-media-button`\na button used in a11y-media-controls and a11y-media-transcript-controls.",
+          "name": "A11yMediaButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "buttonStyles",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_buttonClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "lets player know this button was clicked"
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"red\"",
+              "attribute": "accent-color"
+            },
+            {
+              "kind": "field",
+              "name": "dark",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "dark"
+            },
+            {
+              "kind": "field",
+              "name": "controls",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"video\"",
+              "attribute": "controls",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "toggle",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "toggle",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "tooltipPosition",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"bottom\"",
+              "attribute": "tooltip-position"
+            },
+            {
+              "kind": "field",
+              "name": "action",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "is button action to send as an event",
+              "attribute": "action",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "label"
+            }
+          ],
+          "events": [
+            {
+              "name": "button-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when button is clicked"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "accent-color",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"red\"",
+              "fieldName": "accentColor"
+            },
+            {
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "dark"
+            },
+            {
+              "name": "action",
+              "type": {
+                "text": "string"
+              },
+              "description": "is button action to send as an event",
+              "fieldName": "action"
+            },
+            {
+              "name": "controls",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"video\"",
+              "fieldName": "controls"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "icon"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "label"
+            },
+            {
+              "name": "toggle",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "toggle"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "tooltip-position",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"bottom\"",
+              "fieldName": "tooltipPosition"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "a11y-media-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "A11yMediaButton",
+            "module": "lib/a11y-media-button.js"
+          }
         },
         {
-          "name": "icon",
-          "description": "`icon` {`string`} - simple-icon type\n\nProperty: icon"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - button label\n\nProperty: label"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - \n\nProperty: accentColor\n\nDefault: red"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - \n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "controls",
-          "description": "`controls` {`string`} - id of element button controls\n\nProperty: controls\n\nDefault: video"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - Is it disabled?\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "toggle",
-          "description": "`toggle` {`boolean`} - Is it toggled on?\n\nProperty: toggle\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "tooltip-position",
-          "description": "`tooltip-position` {`string`} - Is it disabled?\n\nProperty: tooltipPosition\n\nDefault: bottom"
-        },
-        {
-          "name": "onbutton-click",
-          "description": "`button-click` {`CustomEvent<this>`} - Fires when button is clicked"
+          "kind": "js",
+          "name": "A11yMediaButton",
+          "declaration": {
+            "name": "A11yMediaButton",
+            "module": "lib/a11y-media-button.js"
+          }
         }
       ]
     },
     {
-      "name": "a11y-media-play-button",
-      "description": "`a11y-media-play-button`\na giant play button that overlays the media in a11y-media-player.\n```\nCustom styles:\n--a11y-play-button-bg-color: overlay background color, default is #000000\n--a11y-play-button-focus-bg-color: overlay background color, default is --a11y-play-button-bg-color```\n\nEvents:\n\n  * `button-click` {`CustomEvent<this>`} - Fires when button is clicked\n\nAttributes:\n\n  * `youtube-id` {`string`} - \n\n  * `action` {`string`} - is button action to send as an event\n\n  * `icon` {`string`} - simple-icon type\n\n  * `label` {`string`} - button label\n\n  * `accent-color` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `controls` {`string`} - id of element button controls\n\n  * `disabled` {`boolean`} - Is it disabled?\n\n  * `toggle` {`boolean`} - Is it toggled on?\n\n  * `tooltip-position` {`string`} - Is it disabled?\n\nProperties:\n\n  * `youtubeId` {`string`} - \n\n  * `action` {`string`} - is button action to send as an event\n\n  * `icon` {`string`} - simple-icon type\n\n  * `label` {`string`} - button label\n\n  * `accentColor` {`string`} - \n\n  * `dark` {`boolean`} - \n\n  * `controls` {`string`} - id of element button controls\n\n  * `disabled` {`boolean`} - Is it disabled?\n\n  * `toggle` {`boolean`} - Is it toggled on?\n\n  * `tooltipPosition` {`string`} - Is it disabled?",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/a11y-media-play-button.js",
+      "declarations": [
         {
-          "name": "youtube-id",
-          "description": "`youtube-id` {`string`} - \n\nProperty: youtubeId\n\nDefault: null"
+          "kind": "class",
+          "description": "`a11y-media-play-button`\na giant play button that overlays the media in a11y-media-player.\n```\nCustom styles:\n--a11y-play-button-bg-color: overlay background color, default is #000000\n--a11y-play-button-focus-bg-color: overlay background color, default is --a11y-play-button-bg-color```",
+          "name": "A11yMediaPlayButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "youtubeId",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "youtube-id"
+            },
+            {
+              "kind": "field",
+              "name": "buttonStyles",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_buttonClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "lets player know this button was clicked",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"red\"",
+              "attribute": "accent-color",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "dark",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "dark",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "controls",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"video\"",
+              "attribute": "controls",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "toggle",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "toggle",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tooltipPosition",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"bottom\"",
+              "attribute": "tooltip-position",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "action",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "is button action to send as an event",
+              "attribute": "action",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "icon",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "label",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "youtube-id",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "youtubeId"
+            },
+            {
+              "name": "accent-color",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"red\"",
+              "fieldName": "accentColor",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "dark",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "name": "action",
+              "type": {
+                "text": "string"
+              },
+              "description": "is button action to send as an event",
+              "fieldName": "action",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "name": "controls",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"video\"",
+              "fieldName": "controls",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "icon",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "label",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "name": "toggle",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "toggle",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            },
+            {
+              "name": "tooltip-position",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"bottom\"",
+              "fieldName": "tooltipPosition",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "A11yMediaButton",
+            "module": "/lib/a11y-media-button.js"
+          },
+          "tagName": "a11y-media-play-button",
+          "customElement": true,
+          "events": [
+            {
+              "name": "button-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when button is clicked",
+              "inheritedFrom": {
+                "name": "A11yMediaButton",
+                "module": "lib/a11y-media-button.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "A11yMediaPlayButton",
+            "module": "lib/a11y-media-play-button.js"
+          }
         },
         {
-          "name": "action",
-          "description": "`action` {`string`} - is button action to send as an event\n\nProperty: action"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - simple-icon type\n\nProperty: icon"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - button label\n\nProperty: label"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - \n\nProperty: accentColor\n\nDefault: red"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - \n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "controls",
-          "description": "`controls` {`string`} - id of element button controls\n\nProperty: controls\n\nDefault: video"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - Is it disabled?\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "toggle",
-          "description": "`toggle` {`boolean`} - Is it toggled on?\n\nProperty: toggle\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "tooltip-position",
-          "description": "`tooltip-position` {`string`} - Is it disabled?\n\nProperty: tooltipPosition\n\nDefault: bottom"
-        },
-        {
-          "name": "onbutton-click",
-          "description": "`button-click` {`CustomEvent<this>`} - Fires when button is clicked"
+          "kind": "js",
+          "name": "A11yMediaPlayButton",
+          "declaration": {
+            "name": "A11yMediaPlayButton",
+            "module": "lib/a11y-media-play-button.js"
+          }
         }
       ]
     },
     {
-      "name": "a11y-media-state-manager",
-      "description": "`a11y-media-state-manager`\nA utility that manages the state of multiple a11y-media-players on a single page.\n\nAttributes:\n\n  * `activePlayer` - Manages which player is currently active.\n\n  * `players` {`any[]`} - Stores an array of all the players on the page.\n\nProperties:\n\n  * `activePlayer` - Manages which player is currently active.\n\n  * `observer` - active player observer\n\n  * `windowControllers` - \n\n  * `players` {`any[]`} - Stores an array of all the players on the page.\n\n  * `__stickyManager` - \n\n  * `__fullscreenManager` - \n\n  * `__playerLoader` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/a11y-media-state-manager.js",
+      "declarations": [
         {
-          "name": "activePlayer",
-          "description": "`activePlayer` - Manages which player is currently active.\n\nProperty: activePlayer"
+          "kind": "class",
+          "description": "`a11y-media-state-manager`\nA utility that manages the state of multiple a11y-media-players on a single page.",
+          "name": "A11yMediaStateManager",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "checkConcurrentPlayers",
+              "description": "if a player disallows concurrent players, pauses other players"
+            },
+            {
+              "kind": "method",
+              "name": "setActivePlayer",
+              "parameters": [
+                {
+                  "name": "player"
+                },
+                {
+                  "description": "player to set stickiness",
+                  "name": "the",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "sets the active player"
+            },
+            {
+              "kind": "field",
+              "name": "observer",
+              "description": "active player observer",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleIntersect",
+              "parameters": [
+                {
+                  "name": "entries",
+                  "type": {
+                    "text": "array"
+                  }
+                },
+                {
+                  "name": "observer",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "\nhandles when active player is out of range and sets stickiness accordingly"
+            },
+            {
+              "kind": "method",
+              "name": "setStickyPlayer",
+              "parameters": [
+                {
+                  "name": "player"
+                },
+                {
+                  "description": "player to set stickiness",
+                  "name": "the",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "stops all other players on the page"
+            },
+            {
+              "kind": "method",
+              "name": "_handleFullscreen",
+              "parameters": [
+                {
+                  "name": "player"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "players",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Stores an array of all the players on the page.",
+              "default": "[]",
+              "attribute": "players"
+            },
+            {
+              "kind": "field",
+              "name": "__stickyManager"
+            },
+            {
+              "kind": "field",
+              "name": "__fullscreenManager"
+            },
+            {
+              "kind": "field",
+              "name": "__playerLoader"
+            },
+            {
+              "kind": "field",
+              "name": "activePlayer",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Manages which player is currently active.",
+              "attribute": "activePlayer"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "players",
+              "type": {
+                "text": "array"
+              },
+              "description": "Stores an array of all the players on the page.",
+              "default": "[]",
+              "fieldName": "players"
+            },
+            {
+              "name": "activePlayer",
+              "type": {
+                "text": "object"
+              },
+              "description": "Manages which player is currently active.",
+              "fieldName": "activePlayer"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "A11yMediaStateManager",
+            "module": "lib/a11y-media-state-manager.js"
+          }
         },
         {
-          "name": "players",
-          "description": "`players` {`any[]`} - Stores an array of all the players on the page.\n\nProperty: players\n\nDefault: "
+          "kind": "js",
+          "name": "A11yMediaStateManager",
+          "declaration": {
+            "name": "A11yMediaStateManager",
+            "module": "lib/a11y-media-state-manager.js"
+          }
         }
       ]
     },
     {
-      "name": "a11y-media-transcript-cue",
-      "description": "`a11y-media-transcript-cue`\na single cue in a11y-media-transcriptas static text or as an button that controls media.\n\nCustom styles:\n```--a11y-media-transcript-bg-color: background color of the transcript, default is #ffffff\n--a11y-media-transcript-text-color: color of the transcript text, default is #000000```\n   \nCustom styles for focused cue:\n```--a11y-media-transcript-focused-cue-text: color of the focused cue text, default is --a11y-media-transcript-text-color\n--a11y-media-transcript-focused-cue-bg: background color of the focused cue, default is --a11y-media-transcript-bg-color\n--a11y-media-transcript-focused-cue-weight: font-weight of the focused cue, default is bold```\n   \nCustom styles for active cue:\n```--a11y-media-transcript-active-cue-text: color of the active cue text, default is --a11y-media-transcript-text-color\n--a11y-media-transcript-active-cue-bg: background color of the active cue, default is #ccfffd\n--a11y-media-transcript-active-cue-weight: font-weight of the active cue, default is normal```\n\nEvents:\n\n  * `active-changed` {`CustomEvent<{ element: this; oldValue: any; value: true; }>`} - \n\nAttributes:\n\n  * `active` {`boolean`} - whether to hide the timestamps\n\n  * `disabled` {`boolean`} - whether to hide the timestamps\n\n  * `hide-timestamps` {`boolean`} - whether to hide the timestamps\n\n  * `start` {`string`} - cue start time\n\n  * `end` {`string`} - cue end time\n\nProperties:\n\n  * `active` {`boolean`} - whether to hide the timestamps\n\n  * `disabled` {`boolean`} - whether to hide the timestamps\n\n  * `hideTimestamps` {`boolean`} - whether to hide the timestamps\n\n  * `start` {`string`} - cue start time\n\n  * `end` {`string`} - cue end time",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/a11y-media-transcript-cue.js",
+      "declarations": [
         {
-          "name": "active",
-          "description": "`active` {`boolean`} - whether to hide the timestamps\n\nProperty: active\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`a11y-media-transcript-cue`\na single cue in a11y-media-transcriptas static text or as an button that controls media.\n\nCustom styles:\n```--a11y-media-transcript-bg-color: background color of the transcript, default is #ffffff\n--a11y-media-transcript-text-color: color of the transcript text, default is #000000```\n  \nCustom styles for focused cue:\n```--a11y-media-transcript-focused-cue-text: color of the focused cue text, default is --a11y-media-transcript-text-color\n--a11y-media-transcript-focused-cue-bg: background color of the focused cue, default is --a11y-media-transcript-bg-color\n--a11y-media-transcript-focused-cue-weight: font-weight of the focused cue, default is bold```\n  \nCustom styles for active cue:\n```--a11y-media-transcript-active-cue-text: color of the active cue text, default is --a11y-media-transcript-text-color\n--a11y-media-transcript-active-cue-bg: background color of the active cue, default is #ccfffd\n--a11y-media-transcript-active-cue-weight: font-weight of the active cue, default is normal```",
+          "name": "A11yMediaTranscriptCue",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether to hide the timestamps",
+              "default": "false",
+              "attribute": "active",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether to hide the timestamps",
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hideTimestamps",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether to hide the timestamps",
+              "default": "false",
+              "attribute": "hide-timestamps",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "start",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "cue start time",
+              "default": "\"\"",
+              "attribute": "start"
+            },
+            {
+              "kind": "field",
+              "name": "end",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "cue end time",
+              "default": "\"\"",
+              "attribute": "end"
+            }
+          ],
+          "events": [
+            {
+              "name": "active-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether to hide the timestamps",
+              "default": "false",
+              "fieldName": "active"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether to hide the timestamps",
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "end",
+              "type": {
+                "text": "string"
+              },
+              "description": "cue end time",
+              "default": "\"\"",
+              "fieldName": "end"
+            },
+            {
+              "name": "hide-timestamps",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether to hide the timestamps",
+              "default": "false",
+              "fieldName": "hideTimestamps"
+            },
+            {
+              "name": "start",
+              "type": {
+                "text": "string"
+              },
+              "description": "cue start time",
+              "default": "\"\"",
+              "fieldName": "start"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "a11y-media-transcript-cue",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "A11yMediaTranscriptCue",
+            "module": "lib/a11y-media-transcript-cue.js"
+          }
         },
         {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - whether to hide the timestamps\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-timestamps",
-          "description": "`hide-timestamps` {`boolean`} - whether to hide the timestamps\n\nProperty: hideTimestamps\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "start",
-          "description": "`start` {`string`} - cue start time\n\nProperty: start\n\nDefault: "
-        },
-        {
-          "name": "end",
-          "description": "`end` {`string`} - cue end time\n\nProperty: end\n\nDefault: "
-        },
-        {
-          "name": "onactive-changed",
-          "description": "`active-changed` {`CustomEvent<{ element: this; oldValue: any; value: true; }>`} - "
+          "kind": "js",
+          "name": "A11yMediaTranscriptCue",
+          "declaration": {
+            "name": "A11yMediaTranscriptCue",
+            "module": "lib/a11y-media-transcript-cue.js"
+          }
         }
       ]
     },
     {
-      "name": "a11y-media-youtube",
-      "description": "`a11y-media-youtube`\nuses YouTubeAPI to create and control an embedded YouTube video.\n\nEvents:\n\n  * `mediastatechange` {`CustomEvent<any>`} - \n\n  * `loadedmetadata` {`CustomEvent<this>`} - \n\n  * `timeupdate` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `id` {`string`} - a11y-media-youtube unique id\n\n  * `t` {`number`} - youTube's unique identifier for the video\n\n  * `video-id` {`string`} - youTube's unique identifier for the video\n\n  * `autoplay` {`boolean`} - video loops back to start\n\n  * `height` {`string`} - height of the embedded video\n\n  * `loop` {`boolean`} - video loops back to start\n\n  * `playback-rate` {`number`} - video playback rate\n\n  * `preload` {`string`} - preload settings\n\n  * `muted` {`boolean`} - video muted\n\n  * `volume` {`number`} - volume between 0 and 100\n\n  * `width` {`string`} - width of the embedded video\n\n  * `__video` - video object\n\n  * `__yt` - youtube object\n\nProperties:\n\n  * `id` {`string`} - a11y-media-youtube unique id\n\n  * `t` {`number`} - youTube's unique identifier for the video\n\n  * `videoId` {`string`} - youTube's unique identifier for the video\n\n  * `api` - single instance of YouTube iframe script\n\n  * `buffered` {`number`} - returns buffered media\n\n  * `currentTime` {`number`} - elapsed time of video\n\n  * `duration` {`number`} - duration of video\n\n  * `paused` {`boolean`} - whether video playback is paused\n\n  * `seekable` - seekable range of video\n\n  * `autoplay` {`boolean`} - video loops back to start\n\n  * `height` {`string`} - height of the embedded video\n\n  * `loop` {`boolean`} - video loops back to start\n\n  * `playbackRate` {`number`} - video playback rate\n\n  * `preload` {`string`} - preload settings\n\n  * `muted` {`boolean`} - video muted\n\n  * `volume` {`number`} - volume between 0 and 100\n\n  * `width` {`string`} - width of the embedded video\n\n  * `__video` - video object\n\n  * `__yt` - youtube object",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/a11y-media-youtube.js",
+      "declarations": [
         {
-          "name": "id",
-          "description": "`id` {`string`} - a11y-media-youtube unique id\n\nProperty: id"
+          "kind": "class",
+          "description": "`a11y-media-youtube`\nuses YouTubeAPI to create and control an embedded YouTube video.",
+          "name": "A11yMediaYoutube",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "warmConnections",
+              "static": true,
+              "description": "inspired by https://github.com/paulirish/lite-youtube-embed/blob/master/src/lite-yt-embed.js"
+            },
+            {
+              "kind": "method",
+              "name": "addPrefetch",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "kind"
+                },
+                {
+                  "name": "url"
+                },
+                {
+                  "name": "as"
+                }
+              ],
+              "description": "Add a <link rel={preload | preconnect} ...> to the head"
+            },
+            {
+              "kind": "field",
+              "name": "api",
+              "description": "single instance of YouTube iframe script",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "buffered",
+              "description": "returns buffered media",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "currentTime",
+              "description": "elapsed time of video",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "duration",
+              "description": "duration of video",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "paused",
+              "description": "whether video playback is paused",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "seekable",
+              "description": "seekable range of video",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "init",
+              "description": "initializes singleton to manage a11y-manager-youtube instances"
+            },
+            {
+              "kind": "method",
+              "name": "play",
+              "description": "plays video"
+            },
+            {
+              "kind": "method",
+              "name": "pause",
+              "description": "pauses video"
+            },
+            {
+              "kind": "method",
+              "name": "seek",
+              "parameters": [
+                {
+                  "name": "time",
+                  "default": "0",
+                  "description": "in seconds",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "seeks video"
+            },
+            {
+              "kind": "method",
+              "name": "setLoop",
+              "parameters": [
+                {
+                  "name": "loop"
+                },
+                {
+                  "description": "video should loop after playback finishes",
+                  "name": "whether",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "sets video looping"
+            },
+            {
+              "kind": "method",
+              "name": "setMute",
+              "parameters": [
+                {
+                  "name": "muted"
+                },
+                {
+                  "description": "the video should be muted",
+                  "name": "whether",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "mutes or unmutes video"
+            },
+            {
+              "kind": "method",
+              "name": "setPlaybackRate",
+              "parameters": [
+                {
+                  "name": "value"
+                },
+                {
+                  "description": "rate X normal speed",
+                  "name": "playback",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "sets playbackRate function"
+            },
+            {
+              "kind": "method",
+              "name": "setVolume",
+              "parameters": [
+                {
+                  "name": "volume",
+                  "default": "0.7",
+                  "description": "from 1 - 10",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "sets video volume"
+            },
+            {
+              "kind": "method",
+              "name": "_getSeconds",
+              "parameters": [
+                {
+                  "name": "time",
+                  "default": "0",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "returns time in seconds of a string, such as 00:00:00.0, 0h0m0.0s, or 0hh0mm0.0ss",
+              "return": {
+                "type": {
+                  "text": "float"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleMediaStateChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Fires as YouTube after video src is loaded"
+            },
+            {
+              "kind": "method",
+              "name": "_handleMediaLoaded",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Fires as YouTube video time changes"
+            },
+            {
+              "kind": "method",
+              "name": "_handleTimeupdate",
+              "description": "Fires as YouTube video time changes"
+            },
+            {
+              "kind": "method",
+              "name": "_autoMetadata",
+              "description": "loads metadata by playing a small clip on mute and stopping"
+            },
+            {
+              "kind": "method",
+              "name": "_loadVideo",
+              "parameters": [
+                {
+                  "name": "preload",
+                  "default": "this.preload",
+                  "description": "mode for preloading: `auto`, `metadata`, `none`",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "loads video (and optionally preloads) from video data object {videoId, optional start timecode, }"
+            },
+            {
+              "kind": "method",
+              "name": "_preloadVideo",
+              "parameters": [
+                {
+                  "name": "auto",
+                  "default": "false"
+                }
+              ],
+              "description": "initializes the youtube player for a given element\nSee https://developers.google.com/youtube/player_parameters for more information",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_removeIframe",
+              "description": "removes iframe aand resets container"
+            },
+            {
+              "kind": "field",
+              "name": "autoplay",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "video loops back to start",
+              "default": "false",
+              "attribute": "autoplay"
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "height of the embedded video",
+              "default": "\"100%\"",
+              "attribute": "height"
+            },
+            {
+              "kind": "field",
+              "name": "loop",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "video loops back to start",
+              "default": "false",
+              "attribute": "loop"
+            },
+            {
+              "kind": "field",
+              "name": "playbackRate",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "video playback rate",
+              "default": "1",
+              "attribute": "playback-rate"
+            },
+            {
+              "kind": "field",
+              "name": "preload",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "preload settings",
+              "default": "\"metadata\"",
+              "attribute": "preload",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "muted",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "video muted",
+              "default": "false",
+              "attribute": "muted"
+            },
+            {
+              "kind": "field",
+              "name": "volume",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "volume between 0 and 100",
+              "default": "0.7",
+              "attribute": "volume"
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "width of the embedded video",
+              "default": "\"100%\"",
+              "attribute": "width"
+            },
+            {
+              "kind": "field",
+              "name": "__video",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "video object",
+              "default": "null",
+              "attribute": "__video"
+            },
+            {
+              "kind": "field",
+              "name": "__yt",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "youtube object",
+              "default": "null",
+              "attribute": "__yt"
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "a11y-media-youtube unique id",
+              "attribute": "id"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "youTube's unique identifier for the video",
+              "attribute": "t",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "videoId",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "youTube's unique identifier for the video",
+              "attribute": "video-id",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "name": "mediastatechange",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "loadedmetadata",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "timeupdate",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "a11y-media-youtube unique id",
+              "fieldName": "id"
+            },
+            {
+              "name": "autoplay",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "video loops back to start",
+              "default": "false",
+              "fieldName": "autoplay"
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "description": "height of the embedded video",
+              "default": "\"100%\"",
+              "fieldName": "height"
+            },
+            {
+              "name": "loop",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "video loops back to start",
+              "default": "false",
+              "fieldName": "loop"
+            },
+            {
+              "name": "muted",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "video muted",
+              "default": "false",
+              "fieldName": "muted"
+            },
+            {
+              "name": "preload",
+              "type": {
+                "text": "string"
+              },
+              "description": "preload settings",
+              "default": "\"metadata\"",
+              "fieldName": "preload"
+            },
+            {
+              "name": "playback-rate",
+              "type": {
+                "text": "number"
+              },
+              "description": "video playback rate",
+              "default": "1",
+              "fieldName": "playbackRate"
+            },
+            {
+              "name": "t",
+              "type": {
+                "text": "number"
+              },
+              "description": "youTube's unique identifier for the video",
+              "fieldName": "t"
+            },
+            {
+              "name": "video-id",
+              "type": {
+                "text": "string"
+              },
+              "description": "youTube's unique identifier for the video",
+              "fieldName": "videoId"
+            },
+            {
+              "name": "volume",
+              "type": {
+                "text": "number"
+              },
+              "description": "volume between 0 and 100",
+              "default": "0.7",
+              "fieldName": "volume"
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "description": "width of the embedded video",
+              "default": "\"100%\"",
+              "fieldName": "width"
+            },
+            {
+              "name": "__video",
+              "type": {
+                "text": "null"
+              },
+              "description": "video object",
+              "default": "null",
+              "fieldName": "__video"
+            },
+            {
+              "name": "__yt",
+              "type": {
+                "text": "null"
+              },
+              "description": "youtube object",
+              "default": "null",
+              "fieldName": "__yt"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "a11y-media-youtube",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "A11yMediaYoutube",
+            "module": "lib/a11y-media-youtube.js"
+          }
         },
         {
-          "name": "t",
-          "description": "`t` {`number`} - youTube's unique identifier for the video\n\nProperty: t"
-        },
-        {
-          "name": "video-id",
-          "description": "`video-id` {`string`} - youTube's unique identifier for the video\n\nProperty: videoId"
-        },
-        {
-          "name": "autoplay",
-          "description": "`autoplay` {`boolean`} - video loops back to start\n\nProperty: autoplay\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "height",
-          "description": "`height` {`string`} - height of the embedded video\n\nProperty: height\n\nDefault: 100%"
-        },
-        {
-          "name": "loop",
-          "description": "`loop` {`boolean`} - video loops back to start\n\nProperty: loop\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "playback-rate",
-          "description": "`playback-rate` {`number`} - video playback rate\n\nProperty: playbackRate\n\nDefault: 1"
-        },
-        {
-          "name": "preload",
-          "description": "`preload` {`string`} - preload settings\n\nProperty: preload\n\nDefault: metadata"
-        },
-        {
-          "name": "muted",
-          "description": "`muted` {`boolean`} - video muted\n\nProperty: muted\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "volume",
-          "description": "`volume` {`number`} - volume between 0 and 100\n\nProperty: volume\n\nDefault: 0.7"
-        },
-        {
-          "name": "width",
-          "description": "`width` {`string`} - width of the embedded video\n\nProperty: width\n\nDefault: 100%"
-        },
-        {
-          "name": "__video",
-          "description": "`__video` - video object\n\nProperty: __video\n\nDefault: null"
-        },
-        {
-          "name": "__yt",
-          "description": "`__yt` - youtube object\n\nProperty: __yt\n\nDefault: null"
-        },
-        {
-          "name": "onmediastatechange",
-          "description": "`mediastatechange` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onloadedmetadata",
-          "description": "`loadedmetadata` {`CustomEvent<this>`} - "
-        },
-        {
-          "name": "ontimeupdate",
-          "description": "`timeupdate` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "A11yMediaYoutube",
+          "declaration": {
+            "name": "A11yMediaYoutube",
+            "module": "lib/a11y-media-youtube.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

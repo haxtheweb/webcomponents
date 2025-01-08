@@ -1,83 +1,185 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "simple-img",
-      "description": "Attributes:\n\n  * `srcconverted` {`string | null`} - \n\n  * `rotate` {`string | null`} - \n\n  * `fit` {`string | null`} - \n\n  * `watermark` {`string | null`} - \n\n  * `wmspot` {`string | null`} - \n\n  * `format` {`string | null`} - \n\n  * `alt` {`string | null`} - \n\n  * `src` {`string | null`} - \n\n  * `loading` {`string | null`} - \n\n  * `decoding` {`string | null`} - \n\n  * `fetchpriority` {`string | null`} - \n\n  * `width` {`string | null`} - \n\n  * `height` {`string | null`} - \n\n  * `quality` {`string | null`} - \n\nProperties:\n\n  * `baseurl` {`string | null`} - \n\n  * `srcconverted` {`string | null`} - \n\n  * `rotate` {`string | null`} - \n\n  * `fit` {`string | null`} - \n\n  * `watermark` {`string | null`} - \n\n  * `wmspot` {`string | null`} - \n\n  * `format` {`string | null`} - \n\n  * `rendering` {`boolean`} - \n\n  * `alt` {`string | null`} - \n\n  * `src` {`string | null`} - \n\n  * `loading` {`string | null`} - \n\n  * `decoding` {`string | null`} - \n\n  * `fetchpriority` {`string | null`} - \n\n  * `width` {`string | null`} - \n\n  * `height` {`string | null`} - \n\n  * `innerHTML` - \n\n  * `quality` {`string | null`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "simple-img.js",
+      "declarations": [
         {
-          "name": "srcconverted",
-          "description": "`srcconverted` {`string | null`} - \n\nProperty: srcconverted",
-          "values": []
+          "kind": "class",
+          "description": "",
+          "name": "SimpleImg",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "updateconvertedurl"
+            },
+            {
+              "kind": "field",
+              "name": "rotate"
+            },
+            {
+              "kind": "field",
+              "name": "fit"
+            },
+            {
+              "kind": "field",
+              "name": "watermark"
+            },
+            {
+              "kind": "field",
+              "name": "wmspot"
+            },
+            {
+              "kind": "field",
+              "name": "format"
+            },
+            {
+              "kind": "field",
+              "name": "height"
+            },
+            {
+              "kind": "field",
+              "name": "width"
+            },
+            {
+              "kind": "field",
+              "name": "src"
+            },
+            {
+              "kind": "field",
+              "name": "srcconverted"
+            },
+            {
+              "kind": "field",
+              "name": "loading"
+            },
+            {
+              "kind": "field",
+              "name": "fetchpriority"
+            },
+            {
+              "kind": "field",
+              "name": "quality"
+            },
+            {
+              "kind": "field",
+              "name": "alt"
+            },
+            {
+              "kind": "field",
+              "name": "baseurl"
+            },
+            {
+              "kind": "field",
+              "name": "decoding"
+            },
+            {
+              "kind": "field",
+              "name": "rendering",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "display",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"inline-block\""
+            },
+            {
+              "kind": "field",
+              "name": "innerHTML",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "srcconverted"
+            },
+            {
+              "name": "src"
+            },
+            {
+              "name": "loading"
+            },
+            {
+              "name": "fetchpriority"
+            },
+            {
+              "name": "decoding"
+            },
+            {
+              "name": "alt"
+            },
+            {
+              "name": "quality"
+            },
+            {
+              "name": "height"
+            },
+            {
+              "name": "width"
+            },
+            {
+              "name": "rotate"
+            },
+            {
+              "name": "fit"
+            },
+            {
+              "name": "watermark"
+            },
+            {
+              "name": "wmspot"
+            },
+            {
+              "name": "format"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SimpleImg",
+          "declaration": {
+            "name": "SimpleImg",
+            "module": "simple-img.js"
+          }
         },
         {
-          "name": "rotate",
-          "description": "`rotate` {`string | null`} - \n\nProperty: rotate",
-          "values": []
-        },
-        {
-          "name": "fit",
-          "description": "`fit` {`string | null`} - \n\nProperty: fit",
-          "values": []
-        },
-        {
-          "name": "watermark",
-          "description": "`watermark` {`string | null`} - \n\nProperty: watermark",
-          "values": []
-        },
-        {
-          "name": "wmspot",
-          "description": "`wmspot` {`string | null`} - \n\nProperty: wmspot",
-          "values": []
-        },
-        {
-          "name": "format",
-          "description": "`format` {`string | null`} - \n\nProperty: format",
-          "values": []
-        },
-        {
-          "name": "alt",
-          "description": "`alt` {`string | null`} - \n\nProperty: alt",
-          "values": []
-        },
-        {
-          "name": "src",
-          "description": "`src` {`string | null`} - \n\nProperty: src",
-          "values": []
-        },
-        {
-          "name": "loading",
-          "description": "`loading` {`string | null`} - \n\nProperty: loading",
-          "values": []
-        },
-        {
-          "name": "decoding",
-          "description": "`decoding` {`string | null`} - \n\nProperty: decoding",
-          "values": []
-        },
-        {
-          "name": "fetchpriority",
-          "description": "`fetchpriority` {`string | null`} - \n\nProperty: fetchpriority",
-          "values": []
-        },
-        {
-          "name": "width",
-          "description": "`width` {`string | null`} - \n\nProperty: width",
-          "values": []
-        },
-        {
-          "name": "height",
-          "description": "`height` {`string | null`} - \n\nProperty: height",
-          "values": []
-        },
-        {
-          "name": "quality",
-          "description": "`quality` {`string | null`} - \n\nProperty: quality",
-          "values": []
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleImg",
+            "module": "simple-img.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

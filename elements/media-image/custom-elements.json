@@ -1,178 +1,582 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "media-image",
-      "description": "`media-image`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `link` {`string`} - \n\n  * `disable-zoom` {`boolean`} - \n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `__figureLabel` {`boolean`} - \n\n  * `_hasCaption` {`boolean`} - \n\n  * `link` {`string`} - \n\n  * `disableZoom` {`boolean`} - \n\n  * `modalTitle` {`string`} - \n\n  * `source` {`string`} - Image source.\n\n  * `citation` {`string`} - Image citation.\n\n  * `caption` {`string`} - Image caption.\n\n  * `figureLabelTitle` {`string`} - Added a figure label title to the top of the media-image\n\n  * `figureLabelDescription` {`string`} - Added a figure label description to the top of the media-image\n\n  * `alt` {`string`} - Image alt.\n\n  * `size` {`string`} - The size of the image (small, wide).\n\n  * `round` {`boolean`} - The shape of the image (round).\n\n  * `card` {`boolean`} - Applies card styling.\n\n  * `box` {`boolean`} - Applies box styling.\n\n  * `offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "media-image.js",
+      "declarations": [
         {
-          "name": "__figureLabel",
-          "description": "`__figureLabel` {`boolean`} - \n\nProperty: __figureLabel",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`media-image`\n`A simple image presentaiton with minor documented options`",
+          "name": "MediaImage",
+          "members": [
+            {
+              "kind": "method",
+              "name": "haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxEditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxActiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_hasFigureLabel",
+              "parameters": [
+                {
+                  "name": "title"
+                },
+                {
+                  "name": "description"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_computeHasCaption"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "link",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "link"
+            },
+            {
+              "kind": "field",
+              "name": "disableZoom",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disable-zoom",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "modalTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "modalTitle"
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image source.",
+              "default": "\"\"",
+              "attribute": "source"
+            },
+            {
+              "kind": "field",
+              "name": "citation",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image citation.",
+              "default": "\"\"",
+              "attribute": "citation"
+            },
+            {
+              "kind": "field",
+              "name": "caption",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image caption.",
+              "default": "\"\"",
+              "attribute": "caption"
+            },
+            {
+              "kind": "field",
+              "name": "figureLabelTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Added a figure label title to the top of the media-image",
+              "default": "\"\"",
+              "attribute": "figure-label-title"
+            },
+            {
+              "kind": "field",
+              "name": "figureLabelDescription",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Added a figure label description to the top of the media-image",
+              "default": "\"\"",
+              "attribute": "figure-label-description"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image alt.",
+              "default": "\"\"",
+              "attribute": "alt"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The size of the image (small, wide).",
+              "default": "\"wide\"",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "round",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The shape of the image (round).",
+              "default": "false",
+              "attribute": "round"
+            },
+            {
+              "kind": "field",
+              "name": "card",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Applies card styling.",
+              "default": "false",
+              "attribute": "card",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "box",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Applies box styling.",
+              "default": "false",
+              "attribute": "box",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "offset",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
+              "default": "\"none\"",
+              "attribute": "offset",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__figureLabel",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "__figureLabel"
+            },
+            {
+              "kind": "field",
+              "name": "_hasCaption",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "_hasCaption"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "link",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "link"
+            },
+            {
+              "name": "__figureLabel",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "__figureLabel"
+            },
+            {
+              "name": "modalTitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "modalTitle"
+            },
+            {
+              "name": "disable-zoom",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disableZoom"
+            },
+            {
+              "name": "_hasCaption",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "_hasCaption"
+            },
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image source.",
+              "default": "\"\"",
+              "fieldName": "source"
+            },
+            {
+              "name": "citation",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image citation.",
+              "default": "\"\"",
+              "fieldName": "citation"
+            },
+            {
+              "name": "caption",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image caption.",
+              "default": "\"\"",
+              "fieldName": "caption"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image alt.",
+              "default": "\"\"",
+              "fieldName": "alt"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "string"
+              },
+              "description": "The size of the image (small, wide).",
+              "default": "\"wide\"",
+              "fieldName": "size"
+            },
+            {
+              "name": "round",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The shape of the image (round).",
+              "default": "false",
+              "fieldName": "round"
+            },
+            {
+              "name": "card",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Applies card styling.",
+              "default": "false",
+              "fieldName": "card"
+            },
+            {
+              "name": "box",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Applies box styling.",
+              "default": "false",
+              "fieldName": "box"
+            },
+            {
+              "name": "offset",
+              "type": {
+                "text": "string"
+              },
+              "description": "Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow",
+              "default": "\"none\"",
+              "fieldName": "offset"
+            },
+            {
+              "name": "figure-label-title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Added a figure label title to the top of the media-image",
+              "default": "\"\"",
+              "fieldName": "figureLabelTitle"
+            },
+            {
+              "name": "figure-label-description",
+              "type": {
+                "text": "string"
+              },
+              "description": "Added a figure label description to the top of the media-image",
+              "default": "\"\"",
+              "fieldName": "figureLabelDescription"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "media-image",
+          "customElement": true
         },
         {
-          "name": "_hasCaption",
-          "description": "`_hasCaption` {`boolean`} - \n\nProperty: _hasCaption",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`",
+          "name": "MediaImageImage",
+          "members": [
+            {
+              "kind": "method",
+              "name": "__modalShowEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Only import the definition if they call up the modal because it's a pretty\nheavy library tree"
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "round",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "round",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "modalTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "modal-title"
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "source"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "alt"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "source"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "alt"
+            },
+            {
+              "name": "round",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "round"
+            },
+            {
+              "name": "modal-title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "modalTitle"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SimpleModalHandler",
+              "package": "@haxtheweb/simple-modal/lib/simple-modal-handler.js"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "media-image-image",
+          "customElement": true
         },
         {
-          "name": "link",
-          "description": "`link` {`string`} - \n\nProperty: link\n\nDefault: null"
+          "kind": "class",
+          "description": "`media-image-citation`\n`A simple image presentaiton with minor documented options`",
+          "name": "MediaImageCitation",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "media-image-citation",
+          "customElement": true
         },
         {
-          "name": "disable-zoom",
-          "description": "`disable-zoom` {`boolean`} - \n\nProperty: disableZoom\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "modalTitle",
-          "description": "`modalTitle` {`string`} - \n\nProperty: modalTitle\n\nDefault: "
-        },
-        {
-          "name": "source",
-          "description": "`source` {`string`} - Image source.\n\nProperty: source\n\nDefault: "
-        },
-        {
-          "name": "citation",
-          "description": "`citation` {`string`} - Image citation.\n\nProperty: citation\n\nDefault: "
-        },
-        {
-          "name": "caption",
-          "description": "`caption` {`string`} - Image caption.\n\nProperty: caption\n\nDefault: "
-        },
-        {
-          "name": "figure-label-title",
-          "description": "`figure-label-title` {`string`} - Added a figure label title to the top of the media-image\n\nProperty: figureLabelTitle\n\nDefault: "
-        },
-        {
-          "name": "figure-label-description",
-          "description": "`figure-label-description` {`string`} - Added a figure label description to the top of the media-image\n\nProperty: figureLabelDescription\n\nDefault: "
-        },
-        {
-          "name": "alt",
-          "description": "`alt` {`string`} - Image alt.\n\nProperty: alt\n\nDefault: "
-        },
-        {
-          "name": "size",
-          "description": "`size` {`string`} - The size of the image (small, wide).\n\nProperty: size\n\nDefault: wide"
-        },
-        {
-          "name": "round",
-          "description": "`round` {`boolean`} - The shape of the image (round).\n\nProperty: round\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "card",
-          "description": "`card` {`boolean`} - Applies card styling.\n\nProperty: card\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "box",
-          "description": "`box` {`boolean`} - Applies box styling.\n\nProperty: box\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "offset",
-          "description": "`offset` {`string`} - Applies left or right offset\n- none\n- left\n- right\n- wide\n- narrow\n\nProperty: offset\n\nDefault: none"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`",
+          "name": "MediaImageCaption",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "media-image-caption",
+          "customElement": true
         }
-      ]
-    },
-    {
-      "name": "media-image-image",
-      "description": "`media-image-image`\n`A simple image presentaiton with minor documented options`\n\nEvents:\n\n  * `simple-modal-show` {`CustomEvent<{ title: any; elements: { content: any; }; styles: { \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: this; clone: boolean; }>`} - \n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modal-title` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `source` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `round` {`boolean`} - \n\n  * `modalTitle` {`string`} - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      ],
+      "exports": [
         {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MediaImage",
+            "module": "media-image.js"
+          }
         },
         {
-          "name": "alt",
-          "description": "`alt` {`string`} - \n\nProperty: alt"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MediaImageImage",
+            "module": "media-image.js"
+          }
         },
         {
-          "name": "round",
-          "description": "`round` {`boolean`} - \n\nProperty: round\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MediaImageCitation",
+            "module": "media-image.js"
+          }
         },
         {
-          "name": "modal-title",
-          "description": "`modal-title` {`string`} - \n\nProperty: modalTitle\n\nDefault: "
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MediaImageCaption",
+            "module": "media-image.js"
+          }
         },
         {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onsimple-modal-show",
-          "description": "`simple-modal-show` {`CustomEvent<{ title: any; elements: { content: any; }; styles: { \"--simple-modal-min-width\": string; \"--simple-modal-min-height\": string; }; invokedBy: this; clone: boolean; }>`} - "
-        }
-      ]
-    },
-    {
-      "name": "media-image-citation",
-      "description": "`media-image-citation`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        }
-      ]
-    },
-    {
-      "name": "media-image-caption",
-      "description": "`media-image-caption`\n`A simple image presentaiton with minor documented options`\n\nAttributes:\n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "MediaImage",
+          "declaration": {
+            "name": "MediaImage",
+            "module": "media-image.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

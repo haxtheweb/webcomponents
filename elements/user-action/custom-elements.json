@@ -1,35 +1,244 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "user-action",
-      "description": "`user-action`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `demo` {`string | null`} - \n\nProperties:\n\n  * `tag` {`string`} - \n\n  * `fired` {`boolean`} - \n\n  * `track` {`string`} - \n\n  * `eventname` {`string`} - \n\n  * `every` {`string | null`} - \n\n  * `demo` {`string | null`} - \n\n  * `visiblelimit` {`number`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "user-action.js",
+      "declarations": [
         {
-          "name": "track",
-          "description": "`track` {`string`} - \n\nProperty: track\n\nDefault: visibility"
+          "kind": "class",
+          "description": "`user-action`",
+          "name": "UserAction",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "every",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "demo",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "handleIntersectionCallback",
+              "parameters": [
+                {
+                  "name": "entries"
+                }
+              ],
+              "description": "Handle this being visible"
+            },
+            {
+              "kind": "method",
+              "name": "userActionEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Redirect event we were monitoring into a trackable event"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxgizmoRegistration",
+              "parameters": [
+                {
+                  "name": "store"
+                }
+              ],
+              "description": "Supply translations for the UI elements of HAX in meme-maker"
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "double-check that we are set to inactivate click handlers\nthis is for when activated in a duplicate / adding new content state"
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "Set a flag to test if we should block link clicking on the entire card\notherwise when editing in hax you can't actually edit it bc its all clickable.\nif editMode goes off this helps ensure we also become clickable again"
+            },
+            {
+              "kind": "field",
+              "name": "fired",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "track",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"visibility\""
+            },
+            {
+              "kind": "field",
+              "name": "eventname",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"user-engagement\""
+            },
+            {
+              "kind": "field",
+              "name": "visiblelimit",
+              "type": {
+                "text": "number"
+              },
+              "default": "0.5"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "track"
+            },
+            {
+              "name": "eventname"
+            },
+            {
+              "name": "every"
+            },
+            {
+              "name": "demo"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "user-action",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "UserAction",
+            "module": "user-action.js"
+          }
         },
         {
-          "name": "eventname",
-          "description": "`eventname` {`string`} - \n\nProperty: eventname\n\nDefault: user-engagement"
+          "kind": "js",
+          "name": "UserAction",
+          "declaration": {
+            "name": "UserAction",
+            "module": "user-action.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/UserActionBroker.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Broker user actions in a normalized way which is abstracted from xAPI\nbut yet mirrors much of that structure and data needs.",
+          "name": "UserActionBroker",
+          "members": [
+            {
+              "kind": "method",
+              "name": "valid",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ],
+              "description": "See if this is a valid event"
+            },
+            {
+              "kind": "method",
+              "name": "fire",
+              "parameters": [
+                {
+                  "name": "eventName"
+                },
+                {
+                  "name": "eventType"
+                },
+                {
+                  "name": "details"
+                },
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "demo",
+                  "default": "false"
+                }
+              ],
+              "description": "Fire the action for the user engagement broker."
+            }
+          ]
         },
         {
-          "name": "every",
-          "description": "`every` {`string | null`} - \n\nProperty: every\n\nDefault: false",
-          "values": []
+          "kind": "variable",
+          "name": "UABroker",
+          "default": "new UserActionBroker()"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UserActionBroker",
+          "declaration": {
+            "name": "UserActionBroker",
+            "module": "lib/UserActionBroker.js"
+          }
         },
         {
-          "name": "demo",
-          "description": "`demo` {`string | null`} - \n\nProperty: demo\n\nDefault: false",
-          "values": []
-        },
-        {
-          "name": "oni18n-manager-register-element",
-          "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
+          "kind": "js",
+          "name": "UABroker",
+          "declaration": {
+            "name": "UABroker",
+            "module": "lib/UserActionBroker.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

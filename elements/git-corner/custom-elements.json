@@ -1,30 +1,129 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "git-corner",
-      "description": "`git-corner`\n`display a quick link with styling to a repo to help with contributions`\n\nAttributes:\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment\n\n  * `alt` {`string`} - alt text\n\n  * `source` {`string`} - source to point to\n\nProperties:\n\n  * `corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\n  * `size` {`string`} - basic size adjustment\n\n  * `alt` {`string`} - alt text\n\n  * `source` {`string`} - source to point to",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "git-corner.js",
+      "declarations": [
         {
-          "name": "corner",
-          "description": "`corner` {`boolean`} - Whether or not to be rendered in the top corner, common on tech sites\n\nProperty: corner",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`git-corner`\n`display a quick link with styling to a repo to help with contributions`",
+          "name": "GitCorner",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "alt text",
+              "default": "null",
+              "attribute": "alt"
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "source to point to",
+              "default": "null",
+              "attribute": "source"
+            },
+            {
+              "kind": "field",
+              "name": "corner",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether or not to be rendered in the top corner, common on tech sites",
+              "attribute": "corner",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "basic size adjustment",
+              "attribute": "size",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "source",
+              "type": {
+                "text": "null"
+              },
+              "description": "source to point to",
+              "default": "null",
+              "fieldName": "source"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "null"
+              },
+              "description": "alt text",
+              "default": "null",
+              "fieldName": "alt"
+            },
+            {
+              "name": "corner",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether or not to be rendered in the top corner, common on tech sites",
+              "fieldName": "corner"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "string"
+              },
+              "description": "basic size adjustment",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "git-corner",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "GitCorner",
+            "module": "git-corner.js"
+          }
         },
         {
-          "name": "size",
-          "description": "`size` {`string`} - basic size adjustment\n\nProperty: size"
-        },
-        {
-          "name": "alt",
-          "description": "`alt` {`string`} - alt text\n\nProperty: alt\n\nDefault: null"
-        },
-        {
-          "name": "source",
-          "description": "`source` {`string`} - source to point to\n\nProperty: source\n\nDefault: null"
+          "kind": "js",
+          "name": "GitCorner",
+          "declaration": {
+            "name": "GitCorner",
+            "module": "git-corner.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

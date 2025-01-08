@@ -1,25 +1,115 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "parallax-image",
-      "description": "`parallax-image`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-bg` {`string`} - Image\n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `windowControllers` - \n\n  * `imageBg` {`string`} - Image\n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "parallax-image.js",
+      "declarations": [
         {
-          "name": "described-by",
-          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
+          "kind": "class",
+          "description": "`parallax-image`",
+          "name": "ParallaxImage",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "scrollBy",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "imageBg",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image",
+              "default": "\"\"",
+              "attribute": "image-bg",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "describedBy",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aria-describedby data passed down to appropriate tag",
+              "attribute": "described-by"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "image-bg",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image",
+              "default": "\"\"",
+              "fieldName": "imageBg"
+            },
+            {
+              "name": "described-by",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aria-describedby data passed down to appropriate tag",
+              "fieldName": "describedBy"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "parallax-image",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ParallaxImage",
+            "module": "parallax-image.js"
+          }
         },
         {
-          "name": "image-bg",
-          "description": "`image-bg` {`string`} - Image\n\nProperty: imageBg\n\nDefault: "
-        },
-        {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
+          "kind": "js",
+          "name": "ParallaxImage",
+          "declaration": {
+            "name": "ParallaxImage",
+            "module": "parallax-image.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

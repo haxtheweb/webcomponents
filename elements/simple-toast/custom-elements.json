@@ -1,94 +1,381 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "simple-toast-el",
-      "description": "Events:\n\n  * `opened-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `text` {`string`} - \n\n  * `alwaysvisible` {`boolean`} - \n\n  * `duration` {`number`} - \n\n  * `opened` {`boolean`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `text` {`string`} - \n\n  * `alwaysvisible` {`boolean`} - \n\n  * `duration` {`number`} - \n\n  * `opened` {`boolean`} - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "simple-toast.js",
+      "declarations": [
         {
-          "name": "text",
-          "description": "`text` {`string`} - \n\nProperty: text\n\nDefault: "
+          "kind": "class",
+          "description": "`simple-toast`\n`A singular toast / message for conistency`",
+          "name": "SimpleToast",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "hideSimpleToast",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Hide callback"
+            },
+            {
+              "kind": "method",
+              "name": "openedChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setDefaultToast"
+            },
+            {
+              "kind": "method",
+              "name": "showSimpleToast",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Show / available callback"
+            },
+            {
+              "kind": "method",
+              "name": "show",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "hide",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "opened",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Opened state of the toast, use event to change",
+              "attribute": "opened",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Plain text based message to display",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "classStyle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Class name, fit-bottom being a useful one",
+              "attribute": "class-style"
+            },
+            {
+              "kind": "field",
+              "name": "closeText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Text for the close button",
+              "attribute": "close-text"
+            },
+            {
+              "kind": "field",
+              "name": "duration",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "How long the toast message should be displayed",
+              "attribute": "duration"
+            },
+            {
+              "kind": "field",
+              "name": "eventCallback",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Event callback when hide is called",
+              "attribute": "event-callback"
+            },
+            {
+              "kind": "field",
+              "name": "closeButton",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If there should be a close button shown",
+              "attribute": "close-button",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Opened state of the toast, use event to change",
+              "fieldName": "opened"
+            },
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Plain text based message to display",
+              "fieldName": "text"
+            },
+            {
+              "name": "class-style",
+              "type": {
+                "text": "string"
+              },
+              "description": "Class name, fit-bottom being a useful one",
+              "fieldName": "classStyle"
+            },
+            {
+              "name": "close-text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Text for the close button",
+              "fieldName": "closeText"
+            },
+            {
+              "name": "duration",
+              "type": {
+                "text": "number"
+              },
+              "description": "How long the toast message should be displayed",
+              "fieldName": "duration"
+            },
+            {
+              "name": "event-callback",
+              "type": {
+                "text": "string"
+              },
+              "description": "Event callback when hide is called",
+              "fieldName": "eventCallback"
+            },
+            {
+              "name": "close-button",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If there should be a close button shown",
+              "fieldName": "closeButton"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "simple-toast",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleToast",
+            "module": "simple-toast.js"
+          }
         },
         {
-          "name": "alwaysvisible",
-          "description": "`alwaysvisible` {`boolean`} - \n\nProperty: alwaysvisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "duration",
-          "description": "`duration` {`number`} - \n\nProperty: duration\n\nDefault: 3000"
-        },
-        {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onopened-changed",
-          "description": "`opened-changed` {`CustomEvent<{ value: any; }>`} - "
+          "kind": "js",
+          "name": "SimpleToast",
+          "declaration": {
+            "name": "SimpleToast",
+            "module": "simple-toast.js"
+          }
         }
       ]
     },
     {
-      "name": "simple-toast",
-      "description": "`simple-toast`\n`A singular toast / message for conistency`\n\nAttributes:\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `text` {`string`} - Plain text based message to display\n\n  * `class-style` {`string`} - Class name, fit-bottom being a useful one\n\n  * `close-text` {`string`} - Text for the close button\n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `event-callback` {`string`} - Event callback when hide is called\n\n  * `close-button` {`boolean`} - If there should be a close button shown\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `opened` {`boolean`} - Opened state of the toast, use event to change\n\n  * `text` {`string`} - Plain text based message to display\n\n  * `classStyle` {`string`} - Class name, fit-bottom being a useful one\n\n  * `closeText` {`string`} - Text for the close button\n\n  * `duration` {`number`} - How long the toast message should be displayed\n\n  * `eventCallback` {`string`} - Event callback when hide is called\n\n  * `closeButton` {`boolean`} - If there should be a close button shown\n\n  * `windowControllers` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/simple-toast-el.js",
+      "declarations": [
         {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - Opened state of the toast, use event to change\n\nProperty: opened",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "",
+          "name": "SimpleToastEl",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_onAnimationEnd",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "hide"
+            },
+            {
+              "kind": "method",
+              "name": "show",
+              "parameters": [
+                {
+                  "name": "text",
+                  "default": "\"\""
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "alwaysvisible",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "alwaysvisible"
+            },
+            {
+              "kind": "field",
+              "name": "duration",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "3000",
+              "attribute": "duration"
+            },
+            {
+              "kind": "field",
+              "name": "opened",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "opened",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "name": "opened-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "text"
+            },
+            {
+              "name": "alwaysvisible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "alwaysvisible"
+            },
+            {
+              "name": "duration",
+              "type": {
+                "text": "number"
+              },
+              "default": "3000",
+              "fieldName": "duration"
+            },
+            {
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "opened"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleToastEl",
+            "module": "lib/simple-toast-el.js"
+          }
         },
         {
-          "name": "text",
-          "description": "`text` {`string`} - Plain text based message to display\n\nProperty: text"
-        },
-        {
-          "name": "class-style",
-          "description": "`class-style` {`string`} - Class name, fit-bottom being a useful one\n\nProperty: classStyle"
-        },
-        {
-          "name": "close-text",
-          "description": "`close-text` {`string`} - Text for the close button\n\nProperty: closeText"
-        },
-        {
-          "name": "duration",
-          "description": "`duration` {`number`} - How long the toast message should be displayed\n\nProperty: duration"
-        },
-        {
-          "name": "event-callback",
-          "description": "`event-callback` {`string`} - Event callback when hide is called\n\nProperty: eventCallback"
-        },
-        {
-          "name": "close-button",
-          "description": "`close-button` {`boolean`} - If there should be a close button shown\n\nProperty: closeButton",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "SimpleToastEl",
+          "declaration": {
+            "name": "SimpleToastEl",
+            "module": "lib/simple-toast-el.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

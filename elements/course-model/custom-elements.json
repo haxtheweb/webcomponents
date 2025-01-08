@@ -1,61 +1,350 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "course-model",
-      "description": "`course-model`\n`view 3d models with multiple angel rotation for a course experience`\n\nAttributes:\n\n  * `alt` {`string`} - \n\n  * `visible` {`string`} - \n\n  * `title` {`string`} - \n\n  * `src` {`string`} - \n\nProperties:\n\n  * `alt` {`string`} - \n\n  * `visible` {`string`} - \n\n  * `title` {`string`} - \n\n  * `src` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "course-model.js",
+      "declarations": [
         {
-          "name": "alt",
-          "description": "`alt` {`string`} - \n\nProperty: alt"
+          "kind": "class",
+          "description": "`course-model`\n`view 3d models with multiple angel rotation for a course experience`",
+          "name": "CourseModel",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_openInfo",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Open Explore Slot"
+            },
+            {
+              "kind": "method",
+              "name": "_openText",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Open Info Slot"
+            },
+            {
+              "kind": "method",
+              "name": "_openAnimation",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Open Animation Slot"
+            },
+            {
+              "kind": "method",
+              "name": "_openCheck",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Open Knowledge-Check Slot"
+            },
+            {
+              "kind": "method",
+              "name": "_srcChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Receives 'model-select' event from 'model-option' and updates properties accordingly."
+            },
+            {
+              "kind": "field",
+              "name": "visible",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"model\"",
+              "attribute": "visible",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "src"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "alt"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "visible",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"model\"",
+              "fieldName": "visible"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "title"
+            },
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "src"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "alt"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "course-model",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CourseModel",
+            "module": "course-model.js"
+          }
         },
         {
-          "name": "visible",
-          "description": "`visible` {`string`} - \n\nProperty: visible\n\nDefault: model"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
-        },
-        {
-          "name": "src",
-          "description": "`src` {`string`} - \n\nProperty: src\n\nDefault: "
+          "kind": "js",
+          "name": "CourseModel",
+          "declaration": {
+            "name": "CourseModel",
+            "module": "course-model.js"
+          }
         }
       ]
     },
     {
-      "name": "model-info",
-      "description": "Attributes:\n\n  * `title` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/model-info.js",
+      "declarations": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+          "kind": "class",
+          "description": "",
+          "name": "ModelInfo",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "title"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "title"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "model-info",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "model-info",
+          "declaration": {
+            "name": "ModelInfo",
+            "module": "lib/model-info.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ModelInfo",
+          "declaration": {
+            "name": "ModelInfo",
+            "module": "lib/model-info.js"
+          }
         }
       ]
     },
     {
-      "name": "model-option",
-      "description": "Events:\n\n  * `model-select` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `src` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `url` {`string`} - \n\n  * `src` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/model-option.js",
+      "declarations": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+          "kind": "class",
+          "description": "",
+          "name": "ModelOption",
+          "members": [
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Sends custom event 'model-select' to 'course-model'."
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "src"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "title"
+            },
+            {
+              "name": "url",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "url"
+            },
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "src"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "model-option",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "model-option",
+          "declaration": {
+            "name": "ModelOption",
+            "module": "lib/model-option.js"
+          }
         },
         {
-          "name": "url",
-          "description": "`url` {`string`} - \n\nProperty: url\n\nDefault: "
-        },
-        {
-          "name": "src",
-          "description": "`src` {`string`} - \n\nProperty: src\n\nDefault: "
-        },
-        {
-          "name": "onmodel-select",
-          "description": "`model-select` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "ModelOption",
+          "declaration": {
+            "name": "ModelOption",
+            "module": "lib/model-option.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

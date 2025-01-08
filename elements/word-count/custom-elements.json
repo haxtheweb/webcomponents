@@ -1,25 +1,108 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "word-count",
-      "description": "`word-count`\n`Count the words on whatever this wraps`\n\nAttributes:\n\n  * `words` {`number`} - \n\n  * `words-prefix` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `words` {`number`} - \n\n  * `wordsPrefix` {`string`} - \n\n  * `t` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "word-count.js",
+      "declarations": [
         {
-          "name": "words",
-          "description": "`words` {`number`} - \n\nProperty: words"
+          "kind": "class",
+          "description": "`word-count`\n`Count the words on whatever this wraps`",
+          "name": "WordCount",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_updateWords",
+              "parameters": [
+                {
+                  "name": "mutations"
+                }
+              ],
+              "description": "Update words based on data in the slot."
+            },
+            {
+              "kind": "field",
+              "name": "wordsPrefix",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Word count\"",
+              "attribute": "words-prefix"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ wordsPrefix: this.wordsPrefix, }"
+            },
+            {
+              "kind": "field",
+              "name": "words",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "words"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "words",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "words"
+            },
+            {
+              "name": "words-prefix",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Word count\"",
+              "fieldName": "wordsPrefix"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "word-count",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "WordCount",
+            "module": "word-count.js"
+          }
         },
         {
-          "name": "words-prefix",
-          "description": "`words-prefix` {`string`} - \n\nProperty: wordsPrefix\n\nDefault: Word count"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+          "kind": "js",
+          "name": "WordCount",
+          "declaration": {
+            "name": "WordCount",
+            "module": "word-count.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

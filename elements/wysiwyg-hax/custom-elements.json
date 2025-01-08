@@ -1,84 +1,363 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "wysiwyg-hax",
-      "description": "`wysiwyg-hax`\n`Integration of wysiwyg edit form for a page with HAX.`\n\nEvents:\n\n  * `hax-save` {`CustomEvent<any>`} - \n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `offset-margin` {`string`} - \n\n  * `body-value` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\n  * `app-store-connection` {`string`} - Connection object for talking to an app store.\n\n  * `saveButtonSelector` - Object reference that will get clicked on\n\n  * `field-class` {`string`} - class on the field\n\n  * `sync-body` {`boolean`} - \n\n  * `open-default` {`boolean`} - Default the panel to open\n\n  * `element-align` {`string`} - Direction to align the hax edit panel\n\n  * `field-id` {`string`} - fieldId, id value on the input field.\n\n  * `field-name` {`string`} - fieldName, internal to the form in whatever system it's in.\n\n  * `end-point` {`string`} - Location to save content to.\n\n  * `allowed-tags` {`any[]`} - allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.\n\n  * `redirect-location` {`string`} - \n\n  * `update-page-data` {`string`} - Page data, body of text as a string.\n\nProperties:\n\n  * `hidePanelOps` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `offsetMargin` {`string`} - \n\n  * `bodyValue` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\n  * `appStoreConnection` {`string`} - Connection object for talking to an app store.\n\n  * `saveButtonSelector` - Object reference that will get clicked on\n\n  * `fieldClass` {`string`} - class on the field\n\n  * `syncBody` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `openDefault` {`boolean`} - Default the panel to open\n\n  * `elementAlign` {`string`} - Direction to align the hax edit panel\n\n  * `fieldId` {`string`} - fieldId, id value on the input field.\n\n  * `fieldName` {`string`} - fieldName, internal to the form in whatever system it's in.\n\n  * `endPoint` {`string`} - Location to save content to.\n\n  * `allowedTags` {`any[]`} - allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.\n\n  * `redirectLocation` {`string`} - \n\n  * `updatePageData` {`string`} - Page data, body of text as a string.",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "wysiwyg-hax.js",
+      "declarations": [
         {
-          "name": "hide-panel-ops",
-          "description": "`hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\nProperty: hidePanelOps",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`wysiwyg-hax`\n`Integration of wysiwyg edit form for a page with HAX.`",
+          "name": "WysiwygHax",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "__saveClicked",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_bodyContentUpdated",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Set the bubbled up event to the body value that just got changed"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "openDefault",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Default the panel to open",
+              "default": "false",
+              "attribute": "open-default"
+            },
+            {
+              "kind": "field",
+              "name": "elementAlign",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Direction to align the hax edit panel",
+              "default": "\"left\"",
+              "attribute": "element-align"
+            },
+            {
+              "kind": "field",
+              "name": "fieldId",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "fieldId, id value on the input field.",
+              "default": "\"textarea-input-field\"",
+              "attribute": "field-id"
+            },
+            {
+              "kind": "field",
+              "name": "fieldName",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "fieldName, internal to the form in whatever system it's in.",
+              "default": "\"data[content]\"",
+              "attribute": "field-name"
+            },
+            {
+              "kind": "field",
+              "name": "endPoint",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Location to save content to.",
+              "default": "null",
+              "attribute": "end-point"
+            },
+            {
+              "kind": "field",
+              "name": "allowedTags",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
+              "default": "[]",
+              "attribute": "allowed-tags"
+            },
+            {
+              "kind": "field",
+              "name": "redirectLocation",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "redirect-location"
+            },
+            {
+              "kind": "field",
+              "name": "updatePageData",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Page data, body of text as a string.",
+              "default": "\"\"",
+              "attribute": "update-page-data"
+            },
+            {
+              "kind": "field",
+              "name": "hidePanelOps",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hide the panel operations (save and cancel),",
+              "attribute": "hide-panel-ops"
+            },
+            {
+              "kind": "field",
+              "name": "offsetMargin",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "offset-margin"
+            },
+            {
+              "kind": "field",
+              "name": "bodyValue",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Data binding of a hidden text area with the value from the hax-body tag",
+              "attribute": "body-value"
+            },
+            {
+              "kind": "field",
+              "name": "appStoreConnection",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Connection object for talking to an app store.",
+              "attribute": "app-store-connection"
+            },
+            {
+              "kind": "field",
+              "name": "saveButtonSelector",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Object reference that will get clicked on",
+              "attribute": "saveButtonSelector"
+            },
+            {
+              "kind": "field",
+              "name": "fieldClass",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "class on the field",
+              "attribute": "field-class"
+            },
+            {
+              "kind": "field",
+              "name": "syncBody",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "sync-body",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "name": "hax-save",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "open-default",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Default the panel to open",
+              "default": "false",
+              "fieldName": "openDefault"
+            },
+            {
+              "name": "redirect-location",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "redirectLocation"
+            },
+            {
+              "name": "hide-panel-ops",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hide the panel operations (save and cancel),",
+              "fieldName": "hidePanelOps"
+            },
+            {
+              "name": "element-align",
+              "type": {
+                "text": "string"
+              },
+              "description": "Direction to align the hax edit panel",
+              "default": "\"left\"",
+              "fieldName": "elementAlign"
+            },
+            {
+              "name": "offset-margin",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "offsetMargin"
+            },
+            {
+              "name": "body-value",
+              "type": {
+                "text": "string"
+              },
+              "description": "Data binding of a hidden text area with the value from the hax-body tag",
+              "fieldName": "bodyValue"
+            },
+            {
+              "name": "allowed-tags",
+              "type": {
+                "text": "array"
+              },
+              "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
+              "default": "[]",
+              "fieldName": "allowedTags"
+            },
+            {
+              "name": "app-store-connection",
+              "type": {
+                "text": "string"
+              },
+              "description": "Connection object for talking to an app store.",
+              "fieldName": "appStoreConnection"
+            },
+            {
+              "name": "saveButtonSelector",
+              "type": {
+                "text": "object"
+              },
+              "description": "Object reference that will get clicked on",
+              "fieldName": "saveButtonSelector"
+            },
+            {
+              "name": "field-class",
+              "type": {
+                "text": "string"
+              },
+              "description": "class on the field",
+              "fieldName": "fieldClass"
+            },
+            {
+              "name": "field-id",
+              "type": {
+                "text": "string"
+              },
+              "description": "fieldId, id value on the input field.",
+              "default": "\"textarea-input-field\"",
+              "fieldName": "fieldId"
+            },
+            {
+              "name": "field-name",
+              "type": {
+                "text": "string"
+              },
+              "description": "fieldName, internal to the form in whatever system it's in.",
+              "default": "\"data[content]\"",
+              "fieldName": "fieldName"
+            },
+            {
+              "name": "sync-body",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "syncBody"
+            },
+            {
+              "name": "end-point",
+              "type": {
+                "text": "null"
+              },
+              "description": "Location to save content to.",
+              "default": "null",
+              "fieldName": "endPoint"
+            },
+            {
+              "name": "update-page-data",
+              "type": {
+                "text": "string"
+              },
+              "description": "Page data, body of text as a string.",
+              "default": "\"\"",
+              "fieldName": "updatePageData"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "wysiwyg-hax",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "WysiwygHax",
+            "module": "wysiwyg-hax.js"
+          }
         },
         {
-          "name": "offset-margin",
-          "description": "`offset-margin` {`string`} - \n\nProperty: offsetMargin"
-        },
-        {
-          "name": "body-value",
-          "description": "`body-value` {`string`} - Data binding of a hidden text area with the value from the hax-body tag\n\nProperty: bodyValue"
-        },
-        {
-          "name": "app-store-connection",
-          "description": "`app-store-connection` {`string`} - Connection object for talking to an app store.\n\nProperty: appStoreConnection"
-        },
-        {
-          "name": "saveButtonSelector",
-          "description": "`saveButtonSelector` - Object reference that will get clicked on\n\nProperty: saveButtonSelector"
-        },
-        {
-          "name": "field-class",
-          "description": "`field-class` {`string`} - class on the field\n\nProperty: fieldClass"
-        },
-        {
-          "name": "sync-body",
-          "description": "`sync-body` {`boolean`} - \n\nProperty: syncBody",
-          "valueSet": "v"
-        },
-        {
-          "name": "open-default",
-          "description": "`open-default` {`boolean`} - Default the panel to open\n\nProperty: openDefault\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "element-align",
-          "description": "`element-align` {`string`} - Direction to align the hax edit panel\n\nProperty: elementAlign\n\nDefault: left"
-        },
-        {
-          "name": "field-id",
-          "description": "`field-id` {`string`} - fieldId, id value on the input field.\n\nProperty: fieldId\n\nDefault: textarea-input-field"
-        },
-        {
-          "name": "field-name",
-          "description": "`field-name` {`string`} - fieldName, internal to the form in whatever system it's in.\n\nProperty: fieldName\n\nDefault: data[content]"
-        },
-        {
-          "name": "end-point",
-          "description": "`end-point` {`string`} - Location to save content to.\n\nProperty: endPoint\n\nDefault: null"
-        },
-        {
-          "name": "allowed-tags",
-          "description": "`allowed-tags` {`any[]`} - allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.\n\nProperty: allowedTags\n\nDefault: "
-        },
-        {
-          "name": "redirect-location",
-          "description": "`redirect-location` {`string`} - \n\nProperty: redirectLocation\n\nDefault: "
-        },
-        {
-          "name": "update-page-data",
-          "description": "`update-page-data` {`string`} - Page data, body of text as a string.\n\nProperty: updatePageData\n\nDefault: "
-        },
-        {
-          "name": "onhax-save",
-          "description": "`hax-save` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onsimple-modal-hide",
-          "description": "`simple-modal-hide` {`CustomEvent<{}>`} - "
+          "kind": "js",
+          "name": "WysiwygHax",
+          "declaration": {
+            "name": "WysiwygHax",
+            "module": "wysiwyg-hax.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

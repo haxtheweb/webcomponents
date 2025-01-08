@@ -1,4 +1,62 @@
 {
-  "version": 2,
-  "tags": []
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "a11y-behaviors.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "A11yBehaviors",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getTextContrastColor",
+              "parameters": [
+                {
+                  "name": "bgColor"
+                }
+              ],
+              "description": "Get a a11y safe text color based on background color",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "computeTextPropContrast",
+              "parameters": [
+                {
+                  "name": "textprop"
+                },
+                {
+                  "name": "bgprop"
+                }
+              ],
+              "description": "Validate and modify the text contrast to ensure the correct contrast"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "A11yBehaviors",
+          "declaration": {
+            "name": "A11yBehaviors",
+            "module": "a11y-behaviors.js"
+          }
+        }
+      ]
+    }
+  ]
 }

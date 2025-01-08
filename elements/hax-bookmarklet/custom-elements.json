@@ -1,4 +1,18 @@
 {
-  "version": 2,
-  "tags": []
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "BOOKMARKLET-SOURCE.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "hax-bookmarklet.js",
+      "declarations": [],
+      "exports": []
+    }
+  ]
 }

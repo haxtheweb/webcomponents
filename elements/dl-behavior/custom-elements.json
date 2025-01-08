@@ -1,4 +1,107 @@
 {
-  "version": 2,
-  "tags": []
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "dl-behavior.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "MtzFileDownloadBehaviors",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "downloadFromData",
+              "parameters": [
+                {
+                  "name": "data",
+                  "description": "data to encode.",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "type",
+                  "description": "type of file to generate (i.e, JSON or CSV).",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "name",
+                  "default": "\"download\"",
+                  "description": "file name to save data under.",
+                  "optional": true,
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "newTab",
+                  "default": "true",
+                  "description": "If false, downloads uri in existing tab. Otherwise,\ndownloads in new tab.",
+                  "optional": true,
+                  "type": {
+                    "text": "Boolean"
+                  }
+                }
+              ],
+              "description": "Converts the data to a blob then uses navigator to save blob if it’s available, otherwise\ncreates an <a> with [download] attribute then simulates a click."
+            },
+            {
+              "kind": "method",
+              "name": "downloadFromURI",
+              "parameters": [
+                {
+                  "name": "uri",
+                  "description": "The uri to open.",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "newTab",
+                  "default": "true",
+                  "description": "If false, downloads uri in existing tab. Otherwise,\ndownloads in new tab.",
+                  "optional": true,
+                  "type": {
+                    "text": "Boolean"
+                  }
+                }
+              ],
+              "description": "Opens a new tab at the URI so that download can be initiated from the page.",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              }
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "MtzFileDownloadBehaviors",
+          "declaration": {
+            "name": "MtzFileDownloadBehaviors",
+            "module": "dl-behavior.js"
+          }
+        }
+      ]
+    }
+  ]
 }

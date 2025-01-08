@@ -1,18 +1,57 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "lazy-import-discover",
-      "description": "`lazy-import-discover`\n\nAttributes:\n\n  * `base` {`string | null`} - \n\nProperties:\n\n  * `base` {`string | null`} - \n\n  * `tag` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lazy-import-discover.js",
+      "declarations": [
         {
-          "name": "base",
-          "description": "`base` {`string | null`} - \n\nProperty: base",
-          "values": []
+          "kind": "class",
+          "description": "`lazy-import-discover`",
+          "name": "LazyImportDiscover",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "base"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "base"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "lazy-import-discover",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LazyImportDiscover",
+            "module": "lazy-import-discover.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "LazyImportDiscover",
+          "declaration": {
+            "name": "LazyImportDiscover",
+            "module": "lazy-import-discover.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

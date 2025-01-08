@@ -1,83 +1,490 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "grid-plate",
-      "description": "`grid-plate`\n`A grid plate based on a layout that manipulates it.`\n\nEvents:\n\n  * `responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `disable-responsive-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\nAttributes:\n\n  * `data-hax-ray` {`string`} - \n\n  * `__columnWidths` {`string`} - name of selected layout\n\n  * `item-margin` {`number`} - \n\n  * `item-padding` {`number`} - \n\n  * `ready` {`boolean`} - \n\n  * `breakpoint-sm` {`number`} - Custom small breakpoint for the layouts; only updated on attached\n\n  * `breakpoint-md` {`number`} - Custom medium breakpoint for the layouts; only updated on attached\n\n  * `breakpoint-lg` {`number`} - Custom large breakpoint for the layouts; only updated on attached\n\n  * `breakpoint-xl` {`number`} - Custom extra-large breakpoint for the layouts; only updated on attached\n\n  * `columns` {`number`} - number of columns at this layout / responsive size\n\n  * `disable-responsive` {`boolean`} - disables responsive layouts\n\n  * `layout` {`string`} - an object with a layout's column sizes\nat the current responsive width\n\n  * `layouts` - Predefined layouts of column sizes and various responsive widths. \nFor example:```\n{\n\"1-1-1-1\": {                         //the name of the layout\n\"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n\"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n\"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n\"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n\"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n},\n{...}\n}```\n\n  * `responsive-size` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\nProperties:\n\n  * `dataHaxRay` {`string`} - \n\n  * `__columnWidths` {`string`} - name of selected layout\n\n  * `itemMargin` {`number`} - \n\n  * `itemPadding` {`number`} - \n\n  * `ready` {`boolean`} - \n\n  * `breakpointSm` {`number`} - Custom small breakpoint for the layouts; only updated on attached\n\n  * `breakpointMd` {`number`} - Custom medium breakpoint for the layouts; only updated on attached\n\n  * `breakpointLg` {`number`} - Custom large breakpoint for the layouts; only updated on attached\n\n  * `breakpointXl` {`number`} - Custom extra-large breakpoint for the layouts; only updated on attached\n\n  * `columns` {`number`} - number of columns at this layout / responsive size\n\n  * `disableResponsive` {`boolean`} - disables responsive layouts\n\n  * `layout` {`string`} - an object with a layout's column sizes\nat the current responsive width\n\n  * `layouts` - Predefined layouts of column sizes and various responsive widths. \nFor example:```\n{\n\"1-1-1-1\": {                         //the name of the layout\n\"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n\"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n\"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n\"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n\"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n},\n{...}\n}```\n\n  * `responsiveSize` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "grid-plate.js",
+      "declarations": [
         {
-          "name": "data-hax-ray",
-          "description": "`data-hax-ray` {`string`} - \n\nProperty: dataHaxRay"
+          "kind": "class",
+          "description": "`grid-plate`\n`A grid plate based on a layout that manipulates it.`",
+          "name": "GridPlate",
+          "members": [
+            {
+              "kind": "method",
+              "name": "_drop",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_dragEnter",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_dragleave",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "Wire to HAX",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "resize"
+            },
+            {
+              "kind": "method",
+              "name": "_getColumnWidths",
+              "parameters": [
+                {
+                  "name": "responsiveSize",
+                  "default": "\"sm\""
+                },
+                {
+                  "name": "layout",
+                  "default": "\"1-1\""
+                },
+                {
+                  "name": "layouts"
+                },
+                {
+                  "name": "disableResponsive"
+                },
+                {
+                  "description": "string that describes the current responsive width",
+                  "name": "a",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "description": "name of selected layout",
+                  "name": "the",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "description": "layouts of column sizes and various responsive widths",
+                  "name": "predefined",
+                  "type": {
+                    "text": "object"
+                  }
+                },
+                {
+                  "description": "responsive sizing?",
+                  "name": "disable",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "gets the column widths based on selected layout and current responsive width",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getColumnWidth",
+              "parameters": [
+                {
+                  "name": "column"
+                },
+                {
+                  "name": "__columnWidths"
+                },
+                {
+                  "description": "index of the column",
+                  "name": "the",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "description": "object with a layout's column sizes at the current responsive width",
+                  "name": "an",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "gets a given column's current width based on layout and current responsive width",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getColumns",
+              "parameters": [
+                {
+                  "name": "__columnWidths"
+                },
+                {
+                  "description": "name of selected layout",
+                  "name": "the",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "gets a given column's current width based on layout and current responsive width",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "itemMargin",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "item-margin",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "itemPadding",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "item-padding",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "ready",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "ready",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "breakpointSm",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Custom small breakpoint for the layouts; only updated on attached",
+              "default": "900",
+              "attribute": "breakpoint-sm"
+            },
+            {
+              "kind": "field",
+              "name": "breakpointMd",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Custom medium breakpoint for the layouts; only updated on attached",
+              "default": "1200",
+              "attribute": "breakpoint-md"
+            },
+            {
+              "kind": "field",
+              "name": "breakpointLg",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Custom large breakpoint for the layouts; only updated on attached",
+              "default": "1500",
+              "attribute": "breakpoint-lg"
+            },
+            {
+              "kind": "field",
+              "name": "breakpointXl",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Custom extra-large breakpoint for the layouts; only updated on attached",
+              "default": "1800",
+              "attribute": "breakpoint-xl"
+            },
+            {
+              "kind": "field",
+              "name": "columns",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "number of columns at this layout / responsive size",
+              "default": "4",
+              "attribute": "columns",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disableResponsive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disables responsive layouts",
+              "default": "false",
+              "attribute": "disable-responsive",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "layout",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "an object with a layout's column sizes\nat the current responsive width",
+              "default": "\"1-1\"",
+              "attribute": "layout",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "layouts",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Predefined layouts of column sizes and various responsive widths. \nFor example:```\n{\n\"1-1-1-1\": {                         //the name of the layout\n\"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n\"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n\"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n\"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n\"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n},\n{...}\n}```",
+              "attribute": "layouts"
+            },
+            {
+              "kind": "field",
+              "name": "responsiveSize",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
+              "default": "\"xs\"",
+              "attribute": "responsive-size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dataHaxRay",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "data-hax-ray",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__columnWidths",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "name of selected layout",
+              "attribute": "__columnWidths"
+            }
+          ],
+          "events": [
+            {
+              "name": "disable-responsive-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "item-padding",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "itemPadding"
+            },
+            {
+              "name": "item-margin",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "itemMargin"
+            },
+            {
+              "name": "breakpoint-sm",
+              "type": {
+                "text": "number"
+              },
+              "description": "Custom small breakpoint for the layouts; only updated on attached",
+              "default": "900",
+              "fieldName": "breakpointSm"
+            },
+            {
+              "name": "breakpoint-md",
+              "type": {
+                "text": "number"
+              },
+              "description": "Custom medium breakpoint for the layouts; only updated on attached",
+              "default": "1200",
+              "fieldName": "breakpointMd"
+            },
+            {
+              "name": "breakpoint-lg",
+              "type": {
+                "text": "number"
+              },
+              "description": "Custom large breakpoint for the layouts; only updated on attached",
+              "default": "1500",
+              "fieldName": "breakpointLg"
+            },
+            {
+              "name": "breakpoint-xl",
+              "type": {
+                "text": "number"
+              },
+              "description": "Custom extra-large breakpoint for the layouts; only updated on attached",
+              "default": "1800",
+              "fieldName": "breakpointXl"
+            },
+            {
+              "name": "columns",
+              "type": {
+                "text": "number"
+              },
+              "description": "number of columns at this layout / responsive size",
+              "default": "4",
+              "fieldName": "columns"
+            },
+            {
+              "name": "data-hax-ray",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "dataHaxRay"
+            },
+            {
+              "name": "disable-responsive",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disables responsive layouts",
+              "default": "false",
+              "fieldName": "disableResponsive"
+            },
+            {
+              "name": "layout",
+              "type": {
+                "text": "string"
+              },
+              "description": "an object with a layout's column sizes\nat the current responsive width",
+              "default": "\"1-1\"",
+              "fieldName": "layout"
+            },
+            {
+              "name": "layouts",
+              "type": {
+                "text": "object"
+              },
+              "description": "Predefined layouts of column sizes and various responsive widths. \nFor example:```\n{\n\"1-1-1-1\": {                         //the name of the layout\n\"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n\"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n\"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n\"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n\"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n},\n{...}\n}```",
+              "fieldName": "layouts"
+            },
+            {
+              "name": "ready",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "ready"
+            },
+            {
+              "name": "responsive-size",
+              "type": {
+                "text": "string"
+              },
+              "description": "Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
+              "default": "\"xs\"",
+              "fieldName": "responsiveSize"
+            },
+            {
+              "name": "__columnWidths",
+              "type": {
+                "text": "string"
+              },
+              "description": "name of selected layout",
+              "fieldName": "__columnWidths"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "grid-plate",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "GridPlate",
+            "module": "grid-plate.js"
+          }
         },
         {
-          "name": "__columnWidths",
-          "description": "`__columnWidths` {`string`} - name of selected layout\n\nProperty: __columnWidths"
-        },
-        {
-          "name": "item-margin",
-          "description": "`item-margin` {`number`} - \n\nProperty: itemMargin\n\nDefault: null"
-        },
-        {
-          "name": "item-padding",
-          "description": "`item-padding` {`number`} - \n\nProperty: itemPadding\n\nDefault: null"
-        },
-        {
-          "name": "ready",
-          "description": "`ready` {`boolean`} - \n\nProperty: ready\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "breakpoint-sm",
-          "description": "`breakpoint-sm` {`number`} - Custom small breakpoint for the layouts; only updated on attached\n\nProperty: breakpointSm\n\nDefault: 900"
-        },
-        {
-          "name": "breakpoint-md",
-          "description": "`breakpoint-md` {`number`} - Custom medium breakpoint for the layouts; only updated on attached\n\nProperty: breakpointMd\n\nDefault: 1200"
-        },
-        {
-          "name": "breakpoint-lg",
-          "description": "`breakpoint-lg` {`number`} - Custom large breakpoint for the layouts; only updated on attached\n\nProperty: breakpointLg\n\nDefault: 1500"
-        },
-        {
-          "name": "breakpoint-xl",
-          "description": "`breakpoint-xl` {`number`} - Custom extra-large breakpoint for the layouts; only updated on attached\n\nProperty: breakpointXl\n\nDefault: 1800"
-        },
-        {
-          "name": "columns",
-          "description": "`columns` {`number`} - number of columns at this layout / responsive size\n\nProperty: columns\n\nDefault: 4"
-        },
-        {
-          "name": "disable-responsive",
-          "description": "`disable-responsive` {`boolean`} - disables responsive layouts\n\nProperty: disableResponsive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "layout",
-          "description": "`layout` {`string`} - an object with a layout's column sizes\nat the current responsive width\n\nProperty: layout\n\nDefault: 1-1"
-        },
-        {
-          "name": "layouts",
-          "description": "`layouts` - Predefined layouts of column sizes and various responsive widths. \nFor example:```\n{\n\"1-1-1-1\": {                         //the name of the layout\n\"xs\": [\"100%\",\"100%\",\"100%\",\"100%] //the responsive width of each column when the grid is extra small\n\"sm\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is small\n\"md\": [\"50%\",\"50%\",\"50%\",\"50%\"]    //the responsive width of each column when the grid is medium\n\"lg\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is large\n\"xl\": [\"25%\",\"25%\",\"25%\",\"25%\"]    //the responsive width of each column when the grid is extra large\n},\n{...}\n}```\n\nProperty: layouts\n\nDefault: layouts"
-        },
-        {
-          "name": "responsive-size",
-          "description": "`responsive-size` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\nProperty: responsiveSize\n\nDefault: xs"
-        },
-        {
-          "name": "onresponsive-element",
-          "description": "`responsive-element` {`CustomEvent<{ element: this; attribute: string; relativeToParent: boolean; sm: number; md: number; lg: number; xl: number; }>`} - "
-        },
-        {
-          "name": "ondisable-responsive-changed",
-          "description": "`disable-responsive-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onresize",
-          "description": "`resize` {`Event`} - "
+          "kind": "js",
+          "name": "GridPlate",
+          "declaration": {
+            "name": "GridPlate",
+            "module": "grid-plate.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

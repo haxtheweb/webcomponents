@@ -1,56 +1,356 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "simple-tooltip",
-      "description": "`simple-tooltip`\n`a simple tooltip forked from paper-tooltip with the same api minus apply removal`\n  ### Styling\n  The following custom properties and mixins are available for styling:\n\n  Custom property | Description | Default\n  ----------------|-------------|----------\n  `--simple-tooltip-background` | The background color of the tooltip | `#616161`\n  `--simple-tooltip-opacity` | The opacity of the tooltip | `0.9`\n  `--simple-tooltip-text-color` | The text color of the tooltip | `white`\n  `--simple-tooltip-delay-in` | Delay before tooltip starts to fade in | `500`\n  `--simple-tooltip-delay-out` | Delay before tooltip starts to fade out | `0`\n  `--simple-tooltip-duration-in` | Timing for animation when showing tooltip | `500`\n  `--simple-tooltip-duration-out` | Timing for animation when hiding tooltip | `0`\n  `--simple-tooltip-padding` | padding on the wrapper for the tip | `8px`\n  `--simple-tooltip-margin` | margin on the wrapper for the tip | `0px`\n\nAttributes:\n\n  * `for` {`string`} - The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.\n\n  * `animation-delay` {`number`} - The delay that will be applied before the `entry` animation is\nplayed when showing the tooltip.\n\n  * `_showing` {`boolean`} - \n\n  * `manual-mode` {`boolean`} - Set this to true if you want to manually control when the tooltip\nis shown or hidden.\n\n  * `position` {`string`} - Positions the tooltip to the top, right, bottom, left of its content.\n\n  * `fit-to-visible-bounds` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `offset` {`number`} - The spacing between the top of the tooltip and the element it is\nanchored to.\n\n  * `margin-top` {`number`} - This property is deprecated, but left over so that it doesn't\nbreak exiting code. Please use `offset` instead. If both `offset` and\n`marginTop` are provided, `marginTop` will be ignored.\n\n  * `animation-entry` {`string`} - The animation that will be played on entry.  This replaces the\ndeprecated animationConfig.  Entries here will override the\nanimationConfig settings.  You can enter your own animation\nby setting it to the css class name.\n\n  * `animation-exit` {`string`} - The animation that will be played on exit.  This replaces the\ndeprecated animationConfig.  Entries here will override the\nanimationConfig settings.  You can enter your own animation\nby setting it to the css class name.\n\nProperties:\n\n  * `for` {`string`} - The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.\n\n  * `animationDelay` {`number`} - The delay that will be applied before the `entry` animation is\nplayed when showing the tooltip.\n\n  * `_showing` {`boolean`} - \n\n  * `target` {Node} - Returns the target element that this tooltip is anchored to. It is\neither the element given by the `for` attribute, or the immediate parent\nof the tooltip.\n\n  * `manualMode` {`boolean`} - Set this to true if you want to manually control when the tooltip\nis shown or hidden.\n\n  * `position` {`string`} - Positions the tooltip to the top, right, bottom, left of its content.\n\n  * `fitToVisibleBounds` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `offset` {`number`} - The spacing between the top of the tooltip and the element it is\nanchored to.\n\n  * `marginTop` {`number`} - This property is deprecated, but left over so that it doesn't\nbreak exiting code. Please use `offset` instead. If both `offset` and\n`marginTop` are provided, `marginTop` will be ignored.\n\n  * `animationEntry` {`string`} - The animation that will be played on entry.  This replaces the\ndeprecated animationConfig.  Entries here will override the\nanimationConfig settings.  You can enter your own animation\nby setting it to the css class name.\n\n  * `animationExit` {`string`} - The animation that will be played on exit.  This replaces the\ndeprecated animationConfig.  Entries here will override the\nanimationConfig settings.  You can enter your own animation\nby setting it to the css class name.\n\n  * `animationConfig` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "simple-tooltip.js",
+      "declarations": [
         {
-          "name": "for",
-          "description": "`for` {`string`} - The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.\n\nProperty: for"
+          "kind": "class",
+          "description": "`simple-tooltip`\n`a simple tooltip forked from paper-tooltip with the same api minus apply removal`\n ### Styling\n The following custom properties and mixins are available for styling:\n\n Custom property | Description | Default\n ----------------|-------------|----------\n `--simple-tooltip-background` | The background color of the tooltip | `#616161`\n `--simple-tooltip-opacity` | The opacity of the tooltip | `0.9`\n `--simple-tooltip-text-color` | The text color of the tooltip | `white`\n `--simple-tooltip-delay-in` | Delay before tooltip starts to fade in | `500`\n `--simple-tooltip-delay-out` | Delay before tooltip starts to fade out | `0`\n `--simple-tooltip-duration-in` | Timing for animation when showing tooltip | `500`\n `--simple-tooltip-duration-out` | Timing for animation when hiding tooltip | `0`\n `--simple-tooltip-padding` | padding on the wrapper for the tip | `8px`\n `--simple-tooltip-margin` | margin on the wrapper for the tip | `0px`",
+          "name": "SimpleTooltip",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "description": "Returns the target element that this tooltip is anchored to. It is\neither the element given by the `for` attribute, or the immediate parent\nof the tooltip.",
+              "type": {
+                "text": "Node"
+              },
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "playAnimation",
+              "parameters": [
+                {
+                  "name": "type",
+                  "description": "Either `entry` or `exit`",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "deprecated": "Use show and hide instead."
+            },
+            {
+              "kind": "method",
+              "name": "cancelAnimation",
+              "description": "Cancels the animation and either fully shows or fully hides tooltip"
+            },
+            {
+              "kind": "method",
+              "name": "show",
+              "description": "Shows the tooltip programatically",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "hide",
+              "description": "Hides the tooltip programatically",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updatePosition",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_addListeners"
+            },
+            {
+              "kind": "method",
+              "name": "_findTarget"
+            },
+            {
+              "kind": "method",
+              "name": "_manualModeChanged"
+            },
+            {
+              "kind": "method",
+              "name": "_cancelAnimation"
+            },
+            {
+              "kind": "method",
+              "name": "_onAnimationFinish"
+            },
+            {
+              "kind": "method",
+              "name": "_onAnimationEnd"
+            },
+            {
+              "kind": "method",
+              "name": "_getAnimationType",
+              "parameters": [
+                {
+                  "name": "type"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_removeListeners"
+            },
+            {
+              "kind": "method",
+              "name": "_delayChange",
+              "parameters": [
+                {
+                  "name": "newValue"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "manualMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Set this to true if you want to manually control when the tooltip\nis shown or hidden.",
+              "default": "false",
+              "attribute": "manual-mode"
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Positions the tooltip to the top, right, bottom, left of its content.",
+              "default": "\"bottom\"",
+              "attribute": "position"
+            },
+            {
+              "kind": "field",
+              "name": "fitToVisibleBounds",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+              "default": "false",
+              "attribute": "fit-to-visible-bounds"
+            },
+            {
+              "kind": "field",
+              "name": "offset",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "The spacing between the top of the tooltip and the element it is\nanchored to.",
+              "default": "14",
+              "attribute": "offset"
+            },
+            {
+              "kind": "field",
+              "name": "marginTop",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "This property is deprecated, but left over so that it doesn't\nbreak exiting code. Please use `offset` instead. If both `offset` and\n`marginTop` are provided, `marginTop` will be ignored.",
+              "deprecated": "since version 1.0.3",
+              "default": "14",
+              "attribute": "margin-top"
+            },
+            {
+              "kind": "field",
+              "name": "animationEntry",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The animation that will be played on entry.  This replaces the\ndeprecated animationConfig.  Entries here will override the\nanimationConfig settings.  You can enter your own animation\nby setting it to the css class name.",
+              "default": "\"\"",
+              "attribute": "animation-entry"
+            },
+            {
+              "kind": "field",
+              "name": "animationExit",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The animation that will be played on exit.  This replaces the\ndeprecated animationConfig.  Entries here will override the\nanimationConfig settings.  You can enter your own animation\nby setting it to the css class name.",
+              "default": "\"\"",
+              "attribute": "animation-exit"
+            },
+            {
+              "kind": "field",
+              "name": "animationConfig",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ entry: [{ name: \"fade-in-animation\", node: this, timing: { delay: 0 } }], exit: [{ name: \"fade-out-animation\", node: this }], }"
+            },
+            {
+              "kind": "field",
+              "name": "for",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.",
+              "attribute": "for"
+            },
+            {
+              "kind": "field",
+              "name": "animationDelay",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "The delay that will be applied before the `entry` animation is\nplayed when showing the tooltip.",
+              "attribute": "animation-delay"
+            },
+            {
+              "kind": "field",
+              "name": "_showing",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "_showing"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "for",
+              "type": {
+                "text": "string"
+              },
+              "description": "The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.",
+              "fieldName": "for"
+            },
+            {
+              "name": "manual-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Set this to true if you want to manually control when the tooltip\nis shown or hidden.",
+              "default": "false",
+              "fieldName": "manualMode"
+            },
+            {
+              "name": "position",
+              "type": {
+                "text": "string"
+              },
+              "description": "Positions the tooltip to the top, right, bottom, left of its content.",
+              "default": "\"bottom\"",
+              "fieldName": "position"
+            },
+            {
+              "name": "fit-to-visible-bounds",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+              "default": "false",
+              "fieldName": "fitToVisibleBounds"
+            },
+            {
+              "name": "offset",
+              "type": {
+                "text": "number"
+              },
+              "description": "The spacing between the top of the tooltip and the element it is\nanchored to.",
+              "default": "14",
+              "fieldName": "offset"
+            },
+            {
+              "name": "margin-top",
+              "type": {
+                "text": "number"
+              },
+              "description": "This property is deprecated, but left over so that it doesn't\nbreak exiting code. Please use `offset` instead. If both `offset` and\n`marginTop` are provided, `marginTop` will be ignored.",
+              "deprecated": "since version 1.0.3",
+              "default": "14",
+              "fieldName": "marginTop"
+            },
+            {
+              "name": "animation-delay",
+              "type": {
+                "text": "number"
+              },
+              "description": "The delay that will be applied before the `entry` animation is\nplayed when showing the tooltip.",
+              "fieldName": "animationDelay"
+            },
+            {
+              "name": "animation-entry",
+              "type": {
+                "text": "string"
+              },
+              "description": "The animation that will be played on entry.  This replaces the\ndeprecated animationConfig.  Entries here will override the\nanimationConfig settings.  You can enter your own animation\nby setting it to the css class name.",
+              "default": "\"\"",
+              "fieldName": "animationEntry"
+            },
+            {
+              "name": "animation-exit",
+              "type": {
+                "text": "string"
+              },
+              "description": "The animation that will be played on exit.  This replaces the\ndeprecated animationConfig.  Entries here will override the\nanimationConfig settings.  You can enter your own animation\nby setting it to the css class name.",
+              "default": "\"\"",
+              "fieldName": "animationExit"
+            },
+            {
+              "name": "_showing",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "_showing"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "simple-tooltip",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleTooltip",
+            "module": "simple-tooltip.js"
+          }
         },
         {
-          "name": "animation-delay",
-          "description": "`animation-delay` {`number`} - The delay that will be applied before the `entry` animation is\nplayed when showing the tooltip.\n\nProperty: animationDelay"
-        },
-        {
-          "name": "_showing",
-          "description": "`_showing` {`boolean`} - \n\nProperty: _showing",
-          "valueSet": "v"
-        },
-        {
-          "name": "manual-mode",
-          "description": "`manual-mode` {`boolean`} - Set this to true if you want to manually control when the tooltip\nis shown or hidden.\n\nProperty: manualMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "position",
-          "description": "`position` {`string`} - Positions the tooltip to the top, right, bottom, left of its content.\n\nProperty: position\n\nDefault: bottom"
-        },
-        {
-          "name": "fit-to-visible-bounds",
-          "description": "`fit-to-visible-bounds` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\nProperty: fitToVisibleBounds\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "offset",
-          "description": "`offset` {`number`} - The spacing between the top of the tooltip and the element it is\nanchored to.\n\nProperty: offset\n\nDefault: 14"
-        },
-        {
-          "name": "margin-top",
-          "description": "`margin-top` {`number`} - This property is deprecated, but left over so that it doesn't\nbreak exiting code. Please use `offset` instead. If both `offset` and\n`marginTop` are provided, `marginTop` will be ignored.\n\nProperty: marginTop\n\nDefault: 14"
-        },
-        {
-          "name": "animation-entry",
-          "description": "`animation-entry` {`string`} - The animation that will be played on entry.  This replaces the\ndeprecated animationConfig.  Entries here will override the\nanimationConfig settings.  You can enter your own animation\nby setting it to the css class name.\n\nProperty: animationEntry\n\nDefault: "
-        },
-        {
-          "name": "animation-exit",
-          "description": "`animation-exit` {`string`} - The animation that will be played on exit.  This replaces the\ndeprecated animationConfig.  Entries here will override the\nanimationConfig settings.  You can enter your own animation\nby setting it to the css class name.\n\nProperty: animationExit\n\nDefault: "
+          "kind": "js",
+          "name": "SimpleTooltip",
+          "declaration": {
+            "name": "SimpleTooltip",
+            "module": "simple-tooltip.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

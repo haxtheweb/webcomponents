@@ -1,38 +1,174 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "lrn-gitgraph",
-      "description": "`lrn-gitgraph`\n\nAttributes:\n\n  * `config` - \n\n  * `commits` {`any[]`} - \n\n  * `template` {`string`} - \n\n  * `orientation` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `reverse-arrow` {`boolean`} - \n\nProperties:\n\n  * `config` - \n\n  * `commits` {`any[]`} - \n\n  * `template` {`string`} - \n\n  * `orientation` {`string`} - \n\n  * `mode` {`string`} - \n\n  * `reverseArrow` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lrn-gitgraph.js",
+      "declarations": [
         {
-          "name": "config",
-          "description": "`config` - \n\nProperty: config"
+          "kind": "class",
+          "description": "`lrn-gitgraph`",
+          "name": "LrnGitgraph",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_commitsChanged",
+              "parameters": [
+                {
+                  "name": "commits"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_treeRemoveDuplicates",
+              "parameters": [
+                {
+                  "name": "tree"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "commits",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "commits"
+            },
+            {
+              "kind": "field",
+              "name": "template",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"blackarrow\"",
+              "attribute": "template"
+            },
+            {
+              "kind": "field",
+              "name": "orientation",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"horizontal\"",
+              "attribute": "orientation"
+            },
+            {
+              "kind": "field",
+              "name": "mode",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "mode"
+            },
+            {
+              "kind": "field",
+              "name": "reverseArrow",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "reverse-arrow"
+            },
+            {
+              "kind": "field",
+              "name": "config",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "attribute": "config"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "commits",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "commits"
+            },
+            {
+              "name": "template",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"blackarrow\"",
+              "fieldName": "template"
+            },
+            {
+              "name": "orientation",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"horizontal\"",
+              "fieldName": "orientation"
+            },
+            {
+              "name": "mode",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "mode"
+            },
+            {
+              "name": "reverse-arrow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "reverseArrow"
+            },
+            {
+              "name": "config",
+              "type": {
+                "text": "object"
+              },
+              "fieldName": "config"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "lrn-gitgraph",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LrnGitgraph",
+            "module": "lrn-gitgraph.js"
+          }
         },
         {
-          "name": "commits",
-          "description": "`commits` {`any[]`} - \n\nProperty: commits\n\nDefault: "
-        },
-        {
-          "name": "template",
-          "description": "`template` {`string`} - \n\nProperty: template\n\nDefault: blackarrow"
-        },
-        {
-          "name": "orientation",
-          "description": "`orientation` {`string`} - \n\nProperty: orientation\n\nDefault: horizontal"
-        },
-        {
-          "name": "mode",
-          "description": "`mode` {`string`} - \n\nProperty: mode\n\nDefault: "
-        },
-        {
-          "name": "reverse-arrow",
-          "description": "`reverse-arrow` {`boolean`} - \n\nProperty: reverseArrow\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "LrnGitgraph",
+          "declaration": {
+            "name": "LrnGitgraph",
+            "module": "lrn-gitgraph.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

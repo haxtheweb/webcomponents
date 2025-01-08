@@ -1,41 +1,165 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "scroll-button",
-      "description": "`scroll-button`\n`button to scroll to an area or back to top`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `target` - \n\n  * `icon` {`string`} - \n\n  * `t` - \n\n  * `_label` {`string`} - \n\n  * `label` {`string`} - \n\n  * `position` {`string`} - \n\nProperties:\n\n  * `target` - \n\n  * `icon` {`string`} - \n\n  * `t` - \n\n  * `_label` {`string`} - \n\n  * `label` {`string`} - \n\n  * `position` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "scroll-button.js",
+      "declarations": [
         {
-          "name": "target",
-          "description": "`target` - \n\nProperty: target"
+          "kind": "class",
+          "description": "`scroll-button`\n`button to scroll to an area or back to top`",
+          "name": "ScrollButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "scrollEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "life cycle, element is afixed to the DOM"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"icons:expand-less\"",
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ backToTop: \"Back to top\", }",
+              "attribute": "t"
+            },
+            {
+              "kind": "field",
+              "name": "_label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "_label"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"top\"",
+              "attribute": "position"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "attribute": "target"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "target",
+              "type": {
+                "text": "object"
+              },
+              "fieldName": "target"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"icons:expand-less\"",
+              "fieldName": "icon"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "label"
+            },
+            {
+              "name": "_label",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "_label"
+            },
+            {
+              "name": "position",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"top\"",
+              "fieldName": "position"
+            },
+            {
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ backToTop: \"Back to top\", }",
+              "fieldName": "t"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "scroll-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ScrollButton",
+            "module": "scroll-button.js"
+          }
         },
         {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: icons:expand-less"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "_label",
-          "description": "`_label` {`string`} - \n\nProperty: _label\n\nDefault: backToTop"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: "
-        },
-        {
-          "name": "position",
-          "description": "`position` {`string`} - \n\nProperty: position\n\nDefault: top"
-        },
-        {
-          "name": "oni18n-manager-register-element",
-          "description": "`i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - "
+          "kind": "js",
+          "name": "ScrollButton",
+          "declaration": {
+            "name": "ScrollButton",
+            "module": "scroll-button.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

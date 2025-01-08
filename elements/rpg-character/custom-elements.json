@@ -1,112 +1,505 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "rpg-character",
-      "description": "`rpg-character`\n`Little RPG character that&#39;s remixable`\n\nAttributes:\n\n  * `reduceMotion` {`boolean`} - \n\n  * `literalseed` {`boolean`} - \n\n  * `height` {`number`} - \n\n  * `width` {`number`} - \n\n  * `accessories` {`number`} - \n\n  * `base` {`number`} - \n\n  * `face` {`number`} - \n\n  * `faceItem` {`number`} - \n\n  * `hair` {`number`} - \n\n  * `pants` {`number`} - \n\n  * `shirt` {`number`} - \n\n  * `skin` {`number`} - \n\n  * `seed` {`string`} - \n\n  * `walking` {`boolean`} - \n\n  * `leg` {`string`} - \n\n  * `speed` {`number`} - \n\n  * `circle` {`boolean`} - \n\n  * `hat` {`string`} - \n\n  * `hatColor` {`number`} - \n\n  * `demo` {`boolean`} - \n\n  * `fire` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `reduceMotion` {`boolean`} - \n\n  * `literalseed` {`boolean`} - \n\n  * `height` {`number`} - \n\n  * `width` {`number`} - \n\n  * `accessories` {`number`} - \n\n  * `base` {`number`} - \n\n  * `face` {`number`} - \n\n  * `faceItem` {`number`} - \n\n  * `hair` {`number`} - \n\n  * `pants` {`number`} - \n\n  * `shirt` {`number`} - \n\n  * `skin` {`number`} - \n\n  * `seed` {`string`} - \n\n  * `walking` {`boolean`} - \n\n  * `leg` {`string`} - \n\n  * `speed` {`number`} - \n\n  * `__walkingTimeout` - \n\n  * `circle` {`boolean`} - \n\n  * `hat` {`string`} - \n\n  * `hatColor` {`number`} - \n\n  * `demo` {`boolean`} - \n\n  * `fire` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "rpg-character.js",
+      "declarations": [
         {
-          "name": "reduceMotion",
-          "description": "`reduceMotion` {`boolean`} - \n\nProperty: reduceMotion",
-          "valueSet": "v"
+          "kind": "variable",
+          "name": "hatList",
+          "type": {
+            "text": "array"
+          },
+          "default": "[ \"bunny\", \"coffee\", \"construction\", \"cowboy\", \"education\", \"knight\", \"ninja\", \"party\", \"pirate\", \"watermelon\", ]"
         },
         {
-          "name": "literalseed",
-          "description": "`literalseed` {`boolean`} - \n\nProperty: literalseed\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "variable",
+          "name": "charBuilder",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ accessories: 9, base: 1, leg: [\"\", \"R\", \"L\"], face: 5, faceItem: 9, hair: 9, pants: 9, shirt: 9, skin: 9, hatColor: 9, }"
         },
         {
-          "name": "height",
-          "description": "`height` {`number`} - \n\nProperty: height\n\nDefault: 142"
+          "kind": "class",
+          "description": "`rpg-character`\n`Little RPG character that&#39;s remixable`",
+          "name": "RpgCharacter",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "randomColor",
+              "parameters": [
+                {
+                  "name": "seed",
+                  "default": "null"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderPiece",
+              "parameters": [
+                {
+                  "name": "piece"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "literalseed",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "literalseed"
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "142",
+              "attribute": "height"
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "113",
+              "attribute": "width"
+            },
+            {
+              "kind": "field",
+              "name": "accessories",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "accessories"
+            },
+            {
+              "kind": "field",
+              "name": "base",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "base"
+            },
+            {
+              "kind": "field",
+              "name": "face",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "face"
+            },
+            {
+              "kind": "field",
+              "name": "faceItem",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "faceItem"
+            },
+            {
+              "kind": "field",
+              "name": "hair",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "hair"
+            },
+            {
+              "kind": "field",
+              "name": "pants",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "pants"
+            },
+            {
+              "kind": "field",
+              "name": "shirt",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "shirt"
+            },
+            {
+              "kind": "field",
+              "name": "skin",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "skin"
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"orange\""
+            },
+            {
+              "kind": "field",
+              "name": "seed",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "seed",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "walking",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "walking",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "leg",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "leg"
+            },
+            {
+              "kind": "field",
+              "name": "speed",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "500",
+              "attribute": "speed"
+            },
+            {
+              "kind": "field",
+              "name": "__walkingTimeout",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "circle",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "circle",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hat",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "attribute": "hat"
+            },
+            {
+              "kind": "field",
+              "name": "hatColor",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "hatColor"
+            },
+            {
+              "kind": "field",
+              "name": "demo",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "demo"
+            },
+            {
+              "kind": "field",
+              "name": "fire",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "fire",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "reduceMotion",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "reduceMotion"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "literalseed",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "literalseed"
+            },
+            {
+              "name": "accessories",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "accessories"
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "number"
+              },
+              "default": "142",
+              "fieldName": "height"
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "number"
+              },
+              "default": "113",
+              "fieldName": "width"
+            },
+            {
+              "name": "base",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "base"
+            },
+            {
+              "name": "face",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "face"
+            },
+            {
+              "name": "faceItem",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "faceItem"
+            },
+            {
+              "name": "hair",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "hair"
+            },
+            {
+              "name": "pants",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "pants"
+            },
+            {
+              "name": "shirt",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "shirt"
+            },
+            {
+              "name": "skin",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "skin"
+            },
+            {
+              "name": "hatColor",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "hatColor"
+            },
+            {
+              "name": "hat",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "fieldName": "hat"
+            },
+            {
+              "name": "walking",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "walking"
+            },
+            {
+              "name": "leg",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "leg"
+            },
+            {
+              "name": "seed",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "seed"
+            },
+            {
+              "name": "speed",
+              "type": {
+                "text": "number"
+              },
+              "default": "500",
+              "fieldName": "speed"
+            },
+            {
+              "name": "circle",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "circle"
+            },
+            {
+              "name": "fire",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "fire"
+            },
+            {
+              "name": "demo",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "demo"
+            },
+            {
+              "name": "reduceMotion",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "reduceMotion"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "rpg-character",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "hatList",
+          "declaration": {
+            "name": "hatList",
+            "module": "rpg-character.js"
+          }
         },
         {
-          "name": "width",
-          "description": "`width` {`number`} - \n\nProperty: width\n\nDefault: 113"
+          "kind": "js",
+          "name": "charBuilder",
+          "declaration": {
+            "name": "charBuilder",
+            "module": "rpg-character.js"
+          }
         },
         {
-          "name": "accessories",
-          "description": "`accessories` {`number`} - \n\nProperty: accessories\n\nDefault: 0"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "RpgCharacter",
+            "module": "rpg-character.js"
+          }
         },
         {
-          "name": "base",
-          "description": "`base` {`number`} - \n\nProperty: base\n\nDefault: 0"
-        },
-        {
-          "name": "face",
-          "description": "`face` {`number`} - \n\nProperty: face\n\nDefault: 0"
-        },
-        {
-          "name": "faceItem",
-          "description": "`faceItem` {`number`} - \n\nProperty: faceItem\n\nDefault: 0"
-        },
-        {
-          "name": "hair",
-          "description": "`hair` {`number`} - \n\nProperty: hair\n\nDefault: 0"
-        },
-        {
-          "name": "pants",
-          "description": "`pants` {`number`} - \n\nProperty: pants\n\nDefault: 0"
-        },
-        {
-          "name": "shirt",
-          "description": "`shirt` {`number`} - \n\nProperty: shirt\n\nDefault: 0"
-        },
-        {
-          "name": "skin",
-          "description": "`skin` {`number`} - \n\nProperty: skin\n\nDefault: 0"
-        },
-        {
-          "name": "seed",
-          "description": "`seed` {`string`} - \n\nProperty: seed\n\nDefault: null"
-        },
-        {
-          "name": "walking",
-          "description": "`walking` {`boolean`} - \n\nProperty: walking\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "leg",
-          "description": "`leg` {`string`} - \n\nProperty: leg\n\nDefault: "
-        },
-        {
-          "name": "speed",
-          "description": "`speed` {`number`} - \n\nProperty: speed\n\nDefault: 500"
-        },
-        {
-          "name": "circle",
-          "description": "`circle` {`boolean`} - \n\nProperty: circle\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hat",
-          "description": "`hat` {`string`} - \n\nProperty: hat\n\nDefault: none"
-        },
-        {
-          "name": "hatColor",
-          "description": "`hatColor` {`number`} - \n\nProperty: hatColor\n\nDefault: 0"
-        },
-        {
-          "name": "demo",
-          "description": "`demo` {`boolean`} - \n\nProperty: demo\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "fire",
-          "description": "`fire` {`boolean`} - \n\nProperty: fire\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: orange"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "RpgCharacter",
+          "declaration": {
+            "name": "RpgCharacter",
+            "module": "rpg-character.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

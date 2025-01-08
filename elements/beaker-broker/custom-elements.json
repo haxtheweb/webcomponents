@@ -1,29 +1,144 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "beaker-broker",
-      "description": "`beaker-broker`\n`An element to help check for and broker calls to read and write beaker browser dat sites.\nThis allows for data binding and figuring out if we're in an environment that we can even use this.`\n\nEvents:\n\n  * `archive-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `dat-url-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `archive` - \n\n  * `dat-url` {`string`} - \n\nProperties:\n\n  * `archive` - \n\n  * `datUrl` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "beaker-broker.js",
+      "declarations": [
         {
-          "name": "archive",
-          "description": "`archive` - \n\nProperty: archive"
+          "kind": "class",
+          "description": "`beaker-broker`\n`An element to help check for and broker calls to read and write beaker browser dat sites.\nThis allows for data binding and figuring out if we're in an environment that we can even use this.`",
+          "name": "BeakerBroker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_datUrlChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                }
+              ],
+              "description": "notice dat address has changed, build the object for it"
+            },
+            {
+              "kind": "method",
+              "name": "write",
+              "parameters": [
+                {
+                  "name": "path"
+                },
+                {
+                  "name": "data"
+                }
+              ],
+              "description": "Write to file"
+            },
+            {
+              "kind": "method",
+              "name": "read",
+              "parameters": [
+                {
+                  "name": "path"
+                },
+                {
+                  "name": "type"
+                }
+              ],
+              "description": "Read to file",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "datUrl",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "dat-url"
+            },
+            {
+              "kind": "field",
+              "name": "archive",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "attribute": "archive"
+            }
+          ],
+          "events": [
+            {
+              "name": "archive-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "dat-url-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "archive",
+              "type": {
+                "text": "object"
+              },
+              "fieldName": "archive"
+            },
+            {
+              "name": "dat-url",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "datUrl"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "beaker-broker",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "BeakerBroker",
+            "module": "beaker-broker.js"
+          }
         },
         {
-          "name": "dat-url",
-          "description": "`dat-url` {`string`} - \n\nProperty: datUrl\n\nDefault: host"
-        },
-        {
-          "name": "onarchive-changed",
-          "description": "`archive-changed` {`CustomEvent<{ value: any; }>`} - "
-        },
-        {
-          "name": "ondat-url-changed",
-          "description": "`dat-url-changed` {`CustomEvent<{ value: any; }>`} - "
+          "kind": "js",
+          "name": "BeakerBroker",
+          "declaration": {
+            "name": "BeakerBroker",
+            "module": "beaker-broker.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

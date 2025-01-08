@@ -1,67 +1,340 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "count-up",
-      "description": "`count-up`\n`count up js wrapper with minimal styling`\n\nAttributes:\n\n  * `thresholds` {`any[]`} - \n\n  * `root-margin` {`string`} - \n\n  * `ratio` {`number`} - \n\n  * `start` {`number`} - Starting point for counting\n\n  * `end` {`number`} - End point for counting stopping\n\n  * `duration` {`number`} - Duration to count\n\n  * `noeasing` {`boolean`} - Disable easing animation\n\n  * `decimalplaces` {`number`} - decimal places to show\n\n  * `separator` {`string`} - separator for 100s groupings\n\n  * `decimal` {`string`} - decimal point character\n\n  * `prefixtext` {`string`} - prefix string before the number counting\n\n  * `suffixtext` {`string`} - suffix string after the number counting\n\n  * `elementVisible` {`boolean`} - \n\nProperties:\n\n  * `thresholds` {`any[]`} - \n\n  * `rootMargin` {`string`} - \n\n  * `ratio` {`number`} - \n\n  * `start` {`number`} - Starting point for counting\n\n  * `end` {`number`} - End point for counting stopping\n\n  * `duration` {`number`} - Duration to count\n\n  * `noeasing` {`boolean`} - Disable easing animation\n\n  * `decimalplaces` {`number`} - decimal places to show\n\n  * `separator` {`string`} - separator for 100s groupings\n\n  * `decimal` {`string`} - decimal point character\n\n  * `prefixtext` {`string`} - prefix string before the number counting\n\n  * `suffixtext` {`string`} - suffix string after the number counting\n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "count-up.js",
+      "declarations": [
         {
-          "name": "thresholds",
-          "description": "`thresholds` {`any[]`} - \n\nProperty: thresholds"
+          "kind": "class",
+          "description": "`count-up`\n`count up js wrapper with minimal styling`",
+          "name": "CountUpElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_buildCountUp"
+            },
+            {
+              "kind": "field",
+              "name": "start",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Starting point for counting",
+              "default": "0",
+              "attribute": "start"
+            },
+            {
+              "kind": "field",
+              "name": "end",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "End point for counting stopping",
+              "default": "100",
+              "attribute": "end"
+            },
+            {
+              "kind": "field",
+              "name": "duration",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Duration to count",
+              "default": "2.5",
+              "attribute": "duration"
+            },
+            {
+              "kind": "field",
+              "name": "noeasing",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disable easing animation",
+              "default": "false",
+              "attribute": "noeasing"
+            },
+            {
+              "kind": "field",
+              "name": "decimalplaces",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "decimal places to show",
+              "default": "0",
+              "attribute": "decimalplaces"
+            },
+            {
+              "kind": "field",
+              "name": "separator",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "separator for 100s groupings",
+              "default": "\",\"",
+              "attribute": "separator"
+            },
+            {
+              "kind": "field",
+              "name": "decimal",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "decimal point character",
+              "default": "\".\"",
+              "attribute": "decimal"
+            },
+            {
+              "kind": "field",
+              "name": "prefixtext",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "prefix string before the number counting",
+              "default": "\" \"",
+              "attribute": "prefixtext"
+            },
+            {
+              "kind": "field",
+              "name": "suffixtext",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "suffix string after the number counting",
+              "default": "\" \"",
+              "attribute": "suffixtext"
+            },
+            {
+              "kind": "field",
+              "name": "thresholds",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "attribute": "thresholds"
+            },
+            {
+              "kind": "field",
+              "name": "rootMargin",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "root-margin"
+            },
+            {
+              "kind": "field",
+              "name": "ratio",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "ratio",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "elementVisible",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "elementVisible"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "start",
+              "type": {
+                "text": "number"
+              },
+              "description": "Starting point for counting",
+              "default": "0",
+              "fieldName": "start"
+            },
+            {
+              "name": "end",
+              "type": {
+                "text": "number"
+              },
+              "description": "End point for counting stopping",
+              "default": "100",
+              "fieldName": "end"
+            },
+            {
+              "name": "duration",
+              "type": {
+                "text": "number"
+              },
+              "description": "Duration to count",
+              "default": "2.5",
+              "fieldName": "duration"
+            },
+            {
+              "name": "noeasing",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disable easing animation",
+              "default": "false",
+              "fieldName": "noeasing"
+            },
+            {
+              "name": "decimalplaces",
+              "type": {
+                "text": "number"
+              },
+              "description": "decimal places to show",
+              "default": "0",
+              "fieldName": "decimalplaces"
+            },
+            {
+              "name": "separator",
+              "type": {
+                "text": "string"
+              },
+              "description": "separator for 100s groupings",
+              "default": "\",\"",
+              "fieldName": "separator"
+            },
+            {
+              "name": "decimal",
+              "type": {
+                "text": "string"
+              },
+              "description": "decimal point character",
+              "default": "\".\"",
+              "fieldName": "decimal"
+            },
+            {
+              "name": "prefixtext",
+              "type": {
+                "text": "string"
+              },
+              "description": "prefix string before the number counting",
+              "default": "\" \"",
+              "fieldName": "prefixtext"
+            },
+            {
+              "name": "suffixtext",
+              "type": {
+                "text": "string"
+              },
+              "description": "suffix string after the number counting",
+              "default": "\" \"",
+              "fieldName": "suffixtext"
+            },
+            {
+              "name": "thresholds",
+              "type": {
+                "text": "array"
+              },
+              "fieldName": "thresholds"
+            },
+            {
+              "name": "root-margin",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "rootMargin"
+            },
+            {
+              "name": "ratio",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "ratio"
+            },
+            {
+              "name": "elementVisible",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "elementVisible"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "IntersectionObserverMixin",
+              "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "count-up",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CountUpElement",
+            "module": "count-up.js"
+          }
         },
         {
-          "name": "root-margin",
-          "description": "`root-margin` {`string`} - \n\nProperty: rootMargin"
+          "kind": "js",
+          "name": "CountUpElement",
+          "declaration": {
+            "name": "CountUpElement",
+            "module": "count-up.js"
+          }
         },
         {
-          "name": "ratio",
-          "description": "`ratio` {`number`} - \n\nProperty: ratio"
-        },
+          "kind": "js",
+          "name": "CountUp",
+          "declaration": {
+            "name": "CountUp",
+            "module": "count-up.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/countup.js",
+      "declarations": [
         {
-          "name": "start",
-          "description": "`start` {`number`} - Starting point for counting\n\nProperty: start\n\nDefault: 0"
-        },
+          "kind": "variable",
+          "name": "CountUp"
+        }
+      ],
+      "exports": [
         {
-          "name": "end",
-          "description": "`end` {`number`} - End point for counting stopping\n\nProperty: end\n\nDefault: 100"
-        },
-        {
-          "name": "duration",
-          "description": "`duration` {`number`} - Duration to count\n\nProperty: duration\n\nDefault: 2.5"
-        },
-        {
-          "name": "noeasing",
-          "description": "`noeasing` {`boolean`} - Disable easing animation\n\nProperty: noeasing\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "decimalplaces",
-          "description": "`decimalplaces` {`number`} - decimal places to show\n\nProperty: decimalplaces\n\nDefault: 0"
-        },
-        {
-          "name": "separator",
-          "description": "`separator` {`string`} - separator for 100s groupings\n\nProperty: separator\n\nDefault: ,"
-        },
-        {
-          "name": "decimal",
-          "description": "`decimal` {`string`} - decimal point character\n\nProperty: decimal\n\nDefault: ."
-        },
-        {
-          "name": "prefixtext",
-          "description": "`prefixtext` {`string`} - prefix string before the number counting\n\nProperty: prefixtext\n\nDefault:  "
-        },
-        {
-          "name": "suffixtext",
-          "description": "`suffixtext` {`string`} - suffix string after the number counting\n\nProperty: suffixtext\n\nDefault:  "
-        },
-        {
-          "name": "elementVisible",
-          "description": "`elementVisible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "CountUp",
+          "declaration": {
+            "name": "CountUp",
+            "module": "lib/countup.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

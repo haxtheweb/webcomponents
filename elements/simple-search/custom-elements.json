@@ -1,114 +1,717 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "simple-search-content",
-      "description": "`simple-search-content`\ncontent that can be searched with simple-search (DEPRECATED)\n\n",
-      "attributes": []
-    },
-    {
-      "name": "simple-search-match",
-      "description": "`simple-search-match`\n\nAttributes:\n\n  * `match-number` {`number`} - \n\nProperties:\n\n  * `matchNumber` {`number`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "simple-search.js",
+      "declarations": [
         {
-          "name": "match-number",
-          "description": "`match-number` {`number`} - \n\nProperty: matchNumber"
+          "kind": "class",
+          "description": "`simple-search`",
+          "name": "SimpleSearch",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "are there any results to navigate?"
+            },
+            {
+              "kind": "method",
+              "name": "_searchSelection",
+              "parameters": [
+                {
+                  "name": "selection"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_hasNoSearch",
+              "parameters": [
+                {
+                  "name": "terms"
+                },
+                {
+                  "description": "of search terms",
+                  "name": "array",
+                  "type": {
+                    "text": "array"
+                  }
+                }
+              ],
+              "description": "are there any results to navigate?",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getResultsSpan",
+              "parameters": [
+                {
+                  "name": "pointer"
+                },
+                {
+                  "name": "count"
+                },
+                {
+                  "description": "or not there are search terms",
+                  "name": "whether",
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "description": "total number of search results",
+                  "name": "the",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "get results span text",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_navigateResults",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "navigate results"
+            },
+            {
+              "kind": "method",
+              "name": "_getNavDisabled",
+              "parameters": [
+                {
+                  "name": "pointer"
+                },
+                {
+                  "name": "count"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_isNavButtonDisabled",
+              "parameters": [
+                {
+                  "name": "pointer"
+                },
+                {
+                  "name": "count"
+                },
+                {
+                  "name": "inc",
+                  "default": "1"
+                }
+              ],
+              "description": "navigate results"
+            },
+            {
+              "kind": "method",
+              "name": "_getSearchText",
+              "description": "gets the tab-index of cues based on whether or not interactive cues are disabled",
+              "parameters": [
+                {
+                  "description": "string of search text",
+                  "name": "a",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "findMatches",
+              "parameters": [
+                {
+                  "name": "results"
+                },
+                {
+                  "description": "array of search terms",
+                  "name": "an",
+                  "type": {
+                    "text": "array"
+                  }
+                }
+              ],
+              "description": "search a string of content for any terms and return an array of results.\nFor example if I searched for the with\n`findMatches(\"The quick brown fox jumps over the lazy dog.\")`,\nthe array would be:\n```[\n  {\n    \"matched\": true,\n    \"matchNumber\": 1,\n    \"text\": \"The\",\n    \"searchObject\": root\n  },{\n    \"matched\": false,\n    \"text\": \" quick brown fox jumps over \",\n    \"searchObject\": root\n  },{\n    \"matched\": true,\n    \"matchNumber\": 2,\n    \"text\": \"the\",\n    \"searchObject\": root\n  },{\n    \"matched\": false,\n    \"text\": \" lazy dog.\",\n    \"searchObject\": root\n  }\n]```\n\nor `findMatches(\"The quick brown fox jumps over the lazy dog.\",true)`,\nthe array would be:\n```[\n  {\n    \"matched\": false,\n    \"text\": \"The quick brown fox jumps over \",\n    \"searchObject\": root\n  },{\n    \"matched\": true,\n    \"matchNumber\": 1,\n    \"text\": \"the\",\n    \"searchObject\": root\n  },{\n    \"matched\": false,\n    \"text\": \" lazy dog.\",\n    \"searchObject\": root\n  }\n]```",
+              "return": {
+                "type": {
+                  "text": "array"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "alwaysFloatLabel",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "deprecated": "always float the label",
+              "default": "false",
+              "attribute": "always-float-label"
+            },
+            {
+              "kind": "field",
+              "name": "caseSensitive",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Is the search case-sensitive",
+              "default": "null",
+              "attribute": "case-sensitive"
+            },
+            {
+              "kind": "field",
+              "name": "controls",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "The id of the container element that the navigation buttons control",
+              "default": "null",
+              "attribute": "controls"
+            },
+            {
+              "kind": "field",
+              "name": "nextButtonIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for next result icon",
+              "default": "\"arrow-forward\"",
+              "attribute": "next-button-icon"
+            },
+            {
+              "kind": "field",
+              "name": "nextButtonLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for next result button",
+              "default": "\"next result\"",
+              "attribute": "next-button-label"
+            },
+            {
+              "kind": "field",
+              "name": "noLabelFloat",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "deprecated": "never float the label",
+              "default": "false",
+              "attribute": "no-label-float"
+            },
+            {
+              "kind": "field",
+              "name": "prevButtonIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for previous result icon",
+              "default": "\"arrow-back\"",
+              "attribute": "prev-button-icon"
+            },
+            {
+              "kind": "field",
+              "name": "prevButtonLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for previous result button",
+              "default": "\"previous result\"",
+              "attribute": "prev-button-label"
+            },
+            {
+              "kind": "field",
+              "name": "resultCount",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Number of results.",
+              "default": "0",
+              "attribute": "result-count"
+            },
+            {
+              "kind": "field",
+              "name": "resultPointer",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Which result are we currently on?",
+              "default": "0",
+              "attribute": "result-pointer"
+            },
+            {
+              "kind": "field",
+              "name": "searchInputIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for search icon",
+              "default": "\"search\"",
+              "attribute": "search-input-icon"
+            },
+            {
+              "kind": "field",
+              "name": "searchInputLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for search input",
+              "default": "\"search\"",
+              "attribute": "search-input-label"
+            },
+            {
+              "kind": "field",
+              "name": "searchTerms",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "an array of search terms",
+              "default": "[]",
+              "attribute": "search-terms"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "If set, search will be automated and restricted to this object.",
+              "default": "null",
+              "attribute": "target"
+            },
+            {
+              "kind": "field",
+              "name": "selector",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "limits search to within target's elements that match a selectgor",
+              "default": "null",
+              "attribute": "selector"
+            },
+            {
+              "kind": "field",
+              "name": "__hideNext",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hide next button",
+              "default": "true",
+              "attribute": "__hideNext"
+            },
+            {
+              "kind": "field",
+              "name": "__hidePrev",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hide prev button",
+              "default": "true",
+              "attribute": "__hidePrev"
+            },
+            {
+              "kind": "field",
+              "name": "inline",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "displays with label inline",
+              "attribute": "inline"
+            }
+          ],
+          "events": [
+            {
+              "name": "simple-search",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when search changes (detail = { search: this, content: event })"
+            },
+            {
+              "name": "goto-result",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "always-float-label",
+              "type": {
+                "text": "boolean"
+              },
+              "deprecated": "always float the label",
+              "default": "false",
+              "fieldName": "alwaysFloatLabel"
+            },
+            {
+              "name": "case-sensitive",
+              "type": {
+                "text": "null"
+              },
+              "description": "Is the search case-sensitive",
+              "default": "null",
+              "fieldName": "caseSensitive"
+            },
+            {
+              "name": "controls",
+              "type": {
+                "text": "null"
+              },
+              "description": "The id of the container element that the navigation buttons control",
+              "default": "null",
+              "fieldName": "controls"
+            },
+            {
+              "name": "inline",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "displays with label inline",
+              "fieldName": "inline"
+            },
+            {
+              "name": "next-button-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for next result icon",
+              "default": "\"arrow-forward\"",
+              "fieldName": "nextButtonIcon"
+            },
+            {
+              "name": "next-button-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for next result button",
+              "default": "\"next result\"",
+              "fieldName": "nextButtonLabel"
+            },
+            {
+              "name": "no-label-float",
+              "type": {
+                "text": "boolean"
+              },
+              "deprecated": "never float the label",
+              "default": "false",
+              "fieldName": "noLabelFloat"
+            },
+            {
+              "name": "prev-button-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for previous result icon",
+              "default": "\"arrow-back\"",
+              "fieldName": "prevButtonIcon"
+            },
+            {
+              "name": "prev-button-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for previous result button",
+              "default": "\"previous result\"",
+              "fieldName": "prevButtonLabel"
+            },
+            {
+              "name": "result-count",
+              "type": {
+                "text": "number"
+              },
+              "description": "Number of results.",
+              "default": "0",
+              "fieldName": "resultCount"
+            },
+            {
+              "name": "result-pointer",
+              "type": {
+                "text": "number"
+              },
+              "description": "Which result are we currently on?",
+              "default": "0",
+              "fieldName": "resultPointer"
+            },
+            {
+              "name": "selector",
+              "type": {
+                "text": "null"
+              },
+              "description": "limits search to within target's elements that match a selectgor",
+              "default": "null",
+              "fieldName": "selector"
+            },
+            {
+              "name": "search-input-icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for search icon",
+              "default": "\"search\"",
+              "fieldName": "searchInputIcon"
+            },
+            {
+              "name": "search-input-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "label for search input",
+              "default": "\"search\"",
+              "fieldName": "searchInputLabel"
+            },
+            {
+              "name": "search-terms",
+              "type": {
+                "text": "array"
+              },
+              "description": "an array of search terms",
+              "default": "[]",
+              "fieldName": "searchTerms"
+            },
+            {
+              "name": "target",
+              "type": {
+                "text": "null"
+              },
+              "description": "If set, search will be automated and restricted to this object.",
+              "default": "null",
+              "fieldName": "target"
+            },
+            {
+              "name": "__hideNext",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hide next button",
+              "default": "true",
+              "fieldName": "__hideNext"
+            },
+            {
+              "name": "__hidePrev",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hide prev button",
+              "default": "true",
+              "fieldName": "__hidePrev"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "simple-search",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleSearch",
+            "module": "simple-search.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SimpleSearch",
+          "declaration": {
+            "name": "SimpleSearch",
+            "module": "simple-search.js"
+          }
         }
       ]
     },
     {
-      "name": "simple-search",
-      "description": "`simple-search`\n\nEvents:\n\n  * `simple-search` {`CustomEvent<{ search: this; content: any; }>`} - Fires when search changes (detail = { search: this, content: event })\n\n  * `goto-result` {`CustomEvent<number>`} - \n\nAttributes:\n\n  * `inline` {`boolean`} - displays with label inline\n\n  * `always-float-label` {`boolean`} - \n\n  * `case-sensitive` {`boolean`} - Is the search case-sensitive\n\n  * `controls` {`string`} - The id of the container element that the navigation buttons control\n\n  * `next-button-icon` {`string`} - label for next result icon\n\n  * `next-button-label` {`string`} - label for next result button\n\n  * `no-label-float` {`boolean`} - \n\n  * `prev-button-icon` {`string`} - label for previous result icon\n\n  * `prev-button-label` {`string`} - label for previous result button\n\n  * `result-count` {`number`} - Number of results.\n\n  * `result-pointer` {`number`} - Which result are we currently on?\n\n  * `search-input-icon` {`string`} - label for search icon\n\n  * `search-input-label` {`string`} - label for search input\n\n  * `search-terms` {`any[]`} - an array of search terms\n\n  * `target` - If set, search will be automated and restricted to this object.\n\n  * `selector` {`string`} - limits search to within target's elements that match a selectgor\n\n  * `__hideNext` {`boolean`} - Hide next button\n\n  * `__hidePrev` {`boolean`} - Hide prev button\n\nProperties:\n\n  * `inline` {`boolean`} - displays with label inline\n\n  * `alwaysFloatLabel` {`boolean`} - \n\n  * `caseSensitive` {`boolean`} - Is the search case-sensitive\n\n  * `controls` {`string`} - The id of the container element that the navigation buttons control\n\n  * `nextButtonIcon` {`string`} - label for next result icon\n\n  * `nextButtonLabel` {`string`} - label for next result button\n\n  * `noLabelFloat` {`boolean`} - \n\n  * `prevButtonIcon` {`string`} - label for previous result icon\n\n  * `prevButtonLabel` {`string`} - label for previous result button\n\n  * `resultCount` {`number`} - Number of results.\n\n  * `resultPointer` {`number`} - Which result are we currently on?\n\n  * `searchInputIcon` {`string`} - label for search icon\n\n  * `searchInputLabel` {`string`} - label for search input\n\n  * `searchTerms` {`any[]`} - an array of search terms\n\n  * `target` - If set, search will be automated and restricted to this object.\n\n  * `selector` {`string`} - limits search to within target's elements that match a selectgor\n\n  * `__hideNext` {`boolean`} - Hide next button\n\n  * `__hidePrev` {`boolean`} - Hide prev button",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/simple-search-content.js",
+      "declarations": [
         {
-          "name": "inline",
-          "description": "`inline` {`boolean`} - displays with label inline\n\nProperty: inline",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`simple-search-content`\ncontent that can be searched with simple-search (DEPRECATED)",
+          "name": "SimpleSearchContent",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "enableSearch",
+              "parameters": [
+                {
+                  "name": "searchObject"
+                },
+                {
+                  "description": "simple-search element",
+                  "name": "the",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "associates simple-search-content with a simple-search"
+            },
+            {
+              "kind": "method",
+              "name": "_searchContent",
+              "parameters": [
+                {
+                  "name": "searchObject"
+                }
+              ],
+              "description": "sets focus on a matched result based on match number"
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "parameters": [
+                {
+                  "name": "matchNumber"
+                },
+                {
+                  "description": "number of a search result",
+                  "name": "the",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "sets focus on a matched result based on match number"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleSearchContent",
+            "module": "lib/simple-search-content.js"
+          }
         },
         {
-          "name": "always-float-label",
-          "description": "`always-float-label` {`boolean`} - \n\nProperty: alwaysFloatLabel\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "SimpleSearchContent",
+          "declaration": {
+            "name": "SimpleSearchContent",
+            "module": "lib/simple-search-content.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/simple-search-match.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`simple-search-match`",
+          "name": "SimpleSearchMatch",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "matchNumber",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "match-number",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "match-number",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "matchNumber"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "simple-search-match",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleSearchMatch",
+            "module": "lib/simple-search-match.js"
+          }
         },
         {
-          "name": "case-sensitive",
-          "description": "`case-sensitive` {`boolean`} - Is the search case-sensitive\n\nProperty: caseSensitive\n\nDefault: null",
-          "valueSet": "v"
-        },
-        {
-          "name": "controls",
-          "description": "`controls` {`string`} - The id of the container element that the navigation buttons control\n\nProperty: controls\n\nDefault: null"
-        },
-        {
-          "name": "next-button-icon",
-          "description": "`next-button-icon` {`string`} - label for next result icon\n\nProperty: nextButtonIcon\n\nDefault: arrow-forward"
-        },
-        {
-          "name": "next-button-label",
-          "description": "`next-button-label` {`string`} - label for next result button\n\nProperty: nextButtonLabel\n\nDefault: next result"
-        },
-        {
-          "name": "no-label-float",
-          "description": "`no-label-float` {`boolean`} - \n\nProperty: noLabelFloat\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "prev-button-icon",
-          "description": "`prev-button-icon` {`string`} - label for previous result icon\n\nProperty: prevButtonIcon\n\nDefault: arrow-back"
-        },
-        {
-          "name": "prev-button-label",
-          "description": "`prev-button-label` {`string`} - label for previous result button\n\nProperty: prevButtonLabel\n\nDefault: previous result"
-        },
-        {
-          "name": "result-count",
-          "description": "`result-count` {`number`} - Number of results.\n\nProperty: resultCount\n\nDefault: 0"
-        },
-        {
-          "name": "result-pointer",
-          "description": "`result-pointer` {`number`} - Which result are we currently on?\n\nProperty: resultPointer\n\nDefault: 0"
-        },
-        {
-          "name": "search-input-icon",
-          "description": "`search-input-icon` {`string`} - label for search icon\n\nProperty: searchInputIcon\n\nDefault: search"
-        },
-        {
-          "name": "search-input-label",
-          "description": "`search-input-label` {`string`} - label for search input\n\nProperty: searchInputLabel\n\nDefault: search"
-        },
-        {
-          "name": "search-terms",
-          "description": "`search-terms` {`any[]`} - an array of search terms\n\nProperty: searchTerms\n\nDefault: "
-        },
-        {
-          "name": "target",
-          "description": "`target` - If set, search will be automated and restricted to this object.\n\nProperty: target\n\nDefault: null"
-        },
-        {
-          "name": "selector",
-          "description": "`selector` {`string`} - limits search to within target's elements that match a selectgor\n\nProperty: selector\n\nDefault: null"
-        },
-        {
-          "name": "__hideNext",
-          "description": "`__hideNext` {`boolean`} - Hide next button\n\nProperty: __hideNext\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "__hidePrev",
-          "description": "`__hidePrev` {`boolean`} - Hide prev button\n\nProperty: __hidePrev\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "onsimple-search",
-          "description": "`simple-search` {`CustomEvent<{ search: this; content: any; }>`} - Fires when search changes (detail = { search: this, content: event })"
-        },
-        {
-          "name": "ongoto-result",
-          "description": "`goto-result` {`CustomEvent<number>`} - "
+          "kind": "js",
+          "name": "SimpleSearchMatch",
+          "declaration": {
+            "name": "SimpleSearchMatch",
+            "module": "lib/simple-search-match.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

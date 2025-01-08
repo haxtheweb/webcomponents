@@ -1,144 +1,590 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "flash-card",
-      "description": "Attributes:\n\n  * `inverted` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `img-keyword` {`string`} - \n\n  * `img-source` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `inverted` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `imgKeyword` {`string`} - \n\n  * `imgSource` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "flash-card.js",
+      "declarations": [
         {
-          "name": "inverted",
-          "description": "`inverted` {`boolean`} - \n\nProperty: inverted",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "",
+          "name": "FlashCard",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "statusChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "imgKeyword",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "img-keyword"
+            },
+            {
+              "kind": "field",
+              "name": "imgSource",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "img-source",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "inverted",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "inverted"
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "status",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "inverted",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "inverted"
+            },
+            {
+              "name": "img-source",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "imgSource"
+            },
+            {
+              "name": "img-keyword",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "imgKeyword"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "status"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FlashCard",
+          "declaration": {
+            "name": "FlashCard",
+            "module": "flash-card.js"
+          }
         },
         {
-          "name": "status",
-          "description": "`status` {`string`} - \n\nProperty: status"
-        },
-        {
-          "name": "img-keyword",
-          "description": "`img-keyword` {`string`} - \n\nProperty: imgKeyword\n\nDefault: "
-        },
-        {
-          "name": "img-source",
-          "description": "`img-source` {`string`} - \n\nProperty: imgSource\n\nDefault: "
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "FlashCard",
+            "module": "flash-card.js"
+          }
         }
       ]
     },
     {
-      "name": "flash-card-answer-box",
-      "description": "Events:\n\n  * `flash-card-status-change` {`CustomEvent<string>`} - \n\nAttributes:\n\n  * `back` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `show-result` {`boolean`} - \n\n  * `side-to-show` {`string`} - \n\n  * `user-answer` {`string`} - \n\n  * `t` - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `back` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `correctAnswer` {`string`} - \n\n  * `showResult` {`boolean`} - \n\n  * `statusIcon` {`string`} - \n\n  * `sideToShow` {`string`} - \n\n  * `userAnswer` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `message` {`string`} - \n\n  * `t` - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/flash-card-answer-box.js",
+      "declarations": [
         {
-          "name": "back",
-          "description": "`back` {`boolean`} - \n\nProperty: back\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "",
+          "name": "FlashCardAnswerBox",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "equalsIgnoringCase",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "checkUserAnswer"
+            },
+            {
+              "kind": "method",
+              "name": "inputChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "resetCard"
+            },
+            {
+              "kind": "field",
+              "name": "back",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "back",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"pending\"",
+              "attribute": "status",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "correctAnswer",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "showResult",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "show-result",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "statusIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "sideToShow",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"front\"",
+              "attribute": "side-to-show",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "userAnswer",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "user-answer"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ yourAnswer: \"Your answer\", checkAnswer: \"Check answer\", retry: \"Retry\", }"
+            }
+          ],
+          "events": [
+            {
+              "name": "flash-card-status-change",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "back",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "back"
+            },
+            {
+              "name": "side-to-show",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"front\"",
+              "fieldName": "sideToShow"
+            },
+            {
+              "name": "user-answer",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "userAnswer"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"pending\"",
+              "fieldName": "status"
+            },
+            {
+              "name": "show-result",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "showResult"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FlashCardAnswerBox",
+          "declaration": {
+            "name": "FlashCardAnswerBox",
+            "module": "lib/flash-card-answer-box.js"
+          }
         },
         {
-          "name": "status",
-          "description": "`status` {`string`} - \n\nProperty: status\n\nDefault: pending"
-        },
-        {
-          "name": "show-result",
-          "description": "`show-result` {`boolean`} - \n\nProperty: showResult\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "side-to-show",
-          "description": "`side-to-show` {`string`} - \n\nProperty: sideToShow\n\nDefault: front"
-        },
-        {
-          "name": "user-answer",
-          "description": "`user-answer` {`string`} - \n\nProperty: userAnswer\n\nDefault: "
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onflash-card-status-change",
-          "description": "`flash-card-status-change` {`CustomEvent<string>`} - "
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "FlashCardAnswerBox",
+            "module": "lib/flash-card-answer-box.js"
+          }
         }
       ]
     },
     {
-      "name": "flash-card-image-prompt",
-      "description": "Attributes:\n\n  * `img-src` {`string`} - \n\n  * `img-keyword` {`string`} - \n\n  * `status` {`string`} - \n\n  * `answerIcon` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `imgSrc` {`string`} - \n\n  * `imgKeyword` {`string`} - \n\n  * `status` {`string`} - \n\n  * `answerIcon` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/flash-card-prompt-img.js",
+      "declarations": [
         {
-          "name": "img-src",
-          "description": "`img-src` {`string`} - \n\nProperty: imgSrc\n\nDefault: "
+          "kind": "class",
+          "description": "",
+          "name": "FlashCardPromptImg",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "imgSrc",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "img-src",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "imgKeyword",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"grey box\"",
+              "attribute": "img-keyword"
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"pending\"",
+              "attribute": "status",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "answerIcon",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "answerIcon",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "icon"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "img-src",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "imgSrc"
+            },
+            {
+              "name": "img-keyword",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"grey box\"",
+              "fieldName": "imgKeyword"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"pending\"",
+              "fieldName": "status"
+            },
+            {
+              "name": "answerIcon",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "answerIcon"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "icon"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FlashCardPromptImg",
+          "declaration": {
+            "name": "FlashCardPromptImg",
+            "module": "lib/flash-card-prompt-img.js"
+          }
         },
         {
-          "name": "img-keyword",
-          "description": "`img-keyword` {`string`} - \n\nProperty: imgKeyword\n\nDefault: grey box"
-        },
-        {
-          "name": "status",
-          "description": "`status` {`string`} - \n\nProperty: status\n\nDefault: pending"
-        },
-        {
-          "name": "answerIcon",
-          "description": "`answerIcon` {`boolean`} - \n\nProperty: answerIcon\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: "
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "FlashCardPromptImg",
+            "module": "lib/flash-card-prompt-img.js"
+          }
         }
       ]
     },
     {
-      "name": "flash-card-set",
-      "description": "Attributes:\n\n  * `questions` {`any[]`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `questions` {`any[]`} - \n\n  * `currentQuestion` {`number`} - \n\n  * `cardLength` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/flash-card-set.js",
+      "declarations": [
         {
-          "name": "questions",
-          "description": "`questions` {`any[]`} - \n\nProperty: questions\n\nDefault: "
+          "kind": "class",
+          "description": "",
+          "name": "FlashCardSet",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "getData"
+            },
+            {
+              "kind": "method",
+              "name": "renderTags"
+            },
+            {
+              "kind": "method",
+              "name": "formatEl",
+              "parameters": [
+                {
+                  "name": "number"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "changeVisible"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "questions",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "questions"
+            },
+            {
+              "kind": "field",
+              "name": "currentQuestion",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "cardLength",
+              "type": {
+                "text": "number"
+              },
+              "default": "4"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "questions",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "questions"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "FlashCardSet",
+          "declaration": {
+            "name": "FlashCardSet",
+            "module": "lib/flash-card-set.js"
+          }
         },
         {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "FlashCardSet",
+            "module": "lib/flash-card-set.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

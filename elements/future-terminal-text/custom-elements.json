@@ -1,103 +1,512 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "future-terminal-text",
-      "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`\n\nAttributes:\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitch-max` {`number`} - \n\n  * `glitch-duration` {`number`} - \n\nProperties:\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitchMax` {`number`} - \n\n  * `glitchDuration` {`number`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "future-terminal-text.js",
+      "declarations": [
         {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: green"
+          "kind": "class",
+          "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`",
+          "name": "FutureTerminalText",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLite",
+                "module": "lib/future-terminal-text-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"green\""
+            },
+            {
+              "kind": "method",
+              "name": "_doGlitch",
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLiteSuper",
+                "module": "lib/FutureTerminalTextSuper.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_scramble",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLiteSuper",
+                "module": "lib/FutureTerminalTextSuper.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_wait",
+              "parameters": [
+                {
+                  "name": "ms"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLiteSuper",
+                "module": "lib/FutureTerminalTextSuper.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "red",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "red",
+              "reflects": true,
+              "default": "false",
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLite",
+                "module": "lib/future-terminal-text-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fadein",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "fadein",
+              "reflects": true,
+              "default": "false",
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLite",
+                "module": "lib/future-terminal-text-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "glitch",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "glitch",
+              "default": "false",
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLite",
+                "module": "lib/future-terminal-text-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "glitchMax",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "glitch-max",
+              "default": "5",
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLite",
+                "module": "lib/future-terminal-text-lite.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "glitchDuration",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "glitch-duration",
+              "default": "50",
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLite",
+                "module": "lib/future-terminal-text-lite.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SimpleColorsSuper",
+              "package": "@haxtheweb/simple-colors/simple-colors.js"
+            }
+          ],
+          "superclass": {
+            "name": "FutureTerminalTextLite",
+            "module": "/lib/future-terminal-text-lite.js"
+          },
+          "tagName": "future-terminal-text",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "glitch",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "glitch",
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLite",
+                "module": "lib/future-terminal-text-lite.js"
+              }
+            },
+            {
+              "name": "red",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "red",
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLite",
+                "module": "lib/future-terminal-text-lite.js"
+              }
+            },
+            {
+              "name": "fadein",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "fadein",
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLite",
+                "module": "lib/future-terminal-text-lite.js"
+              }
+            },
+            {
+              "name": "glitch-max",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "glitchMax",
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLite",
+                "module": "lib/future-terminal-text-lite.js"
+              }
+            },
+            {
+              "name": "glitch-duration",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "glitchDuration",
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLite",
+                "module": "lib/future-terminal-text-lite.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "FutureTerminalText",
+            "module": "future-terminal-text.js"
+          }
         },
         {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "red",
-          "description": "`red` {`boolean`} - \n\nProperty: red\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "fadein",
-          "description": "`fadein` {`boolean`} - \n\nProperty: fadein\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "glitch",
-          "description": "`glitch` {`boolean`} - \n\nProperty: glitch\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "glitch-max",
-          "description": "`glitch-max` {`number`} - \n\nProperty: glitchMax\n\nDefault: 5"
-        },
-        {
-          "name": "glitch-duration",
-          "description": "`glitch-duration` {`number`} - \n\nProperty: glitchDuration\n\nDefault: 50"
+          "kind": "js",
+          "name": "FutureTerminalText",
+          "declaration": {
+            "name": "FutureTerminalText",
+            "module": "future-terminal-text.js"
+          }
         }
       ]
     },
     {
-      "name": "future-terminal-text",
-      "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`\n\nAttributes:\n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitch-max` {`number`} - \n\n  * `glitch-duration` {`number`} - \n\nProperties:\n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitchMax` {`number`} - \n\n  * `glitchDuration` {`number`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/FutureTerminalTextSuper.js",
+      "declarations": [
         {
-          "name": "red",
-          "description": "`red` {`boolean`} - \n\nProperty: red\n\nDefault: false",
-          "valueSet": "v"
-        },
+          "kind": "mixin",
+          "description": "",
+          "name": "FutureTerminalTextLiteSuper",
+          "members": [
+            {
+              "kind": "method",
+              "name": "_doGlitch"
+            },
+            {
+              "kind": "method",
+              "name": "_scramble",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_wait",
+              "parameters": [
+                {
+                  "name": "ms"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "red",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "fadein",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "glitch",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "glitchMax",
+              "type": {
+                "text": "number"
+              },
+              "default": "5"
+            },
+            {
+              "kind": "field",
+              "name": "glitchDuration",
+              "type": {
+                "text": "number"
+              },
+              "default": "50"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
         {
-          "name": "fadein",
-          "description": "`fadein` {`boolean`} - \n\nProperty: fadein\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "glitch",
-          "description": "`glitch` {`boolean`} - \n\nProperty: glitch\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "glitch-max",
-          "description": "`glitch-max` {`number`} - \n\nProperty: glitchMax\n\nDefault: 5"
-        },
-        {
-          "name": "glitch-duration",
-          "description": "`glitch-duration` {`number`} - \n\nProperty: glitchDuration\n\nDefault: 50"
+          "kind": "js",
+          "name": "FutureTerminalTextLiteSuper",
+          "declaration": {
+            "name": "FutureTerminalTextLiteSuper",
+            "module": "lib/FutureTerminalTextSuper.js"
+          }
         }
       ]
     },
     {
-      "name": "future-terminal-text-lite",
-      "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`\n\nAttributes:\n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitch-max` {`number`} - \n\n  * `glitch-duration` {`number`} - \n\nProperties:\n\n  * `red` {`boolean`} - \n\n  * `fadein` {`boolean`} - \n\n  * `glitch` {`boolean`} - \n\n  * `glitchMax` {`number`} - \n\n  * `glitchDuration` {`number`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/future-terminal-text-lite.js",
+      "declarations": [
         {
-          "name": "red",
-          "description": "`red` {`boolean`} - \n\nProperty: red\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`future-terminal-text`\n`this is to provide a futuristic terminal text type of environment`",
+          "name": "FutureTerminalTextLite",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "glitch",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "glitch",
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLiteSuper",
+                "module": "lib/FutureTerminalTextSuper.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "red",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "red",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLiteSuper",
+                "module": "lib/FutureTerminalTextSuper.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fadein",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "privacy": "public",
+              "attribute": "fadein",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLiteSuper",
+                "module": "lib/FutureTerminalTextSuper.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "glitchMax",
+              "type": {
+                "text": "number"
+              },
+              "default": "5",
+              "privacy": "public",
+              "attribute": "glitch-max",
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLiteSuper",
+                "module": "lib/FutureTerminalTextSuper.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "glitchDuration",
+              "type": {
+                "text": "number"
+              },
+              "default": "50",
+              "privacy": "public",
+              "attribute": "glitch-duration",
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLiteSuper",
+                "module": "lib/FutureTerminalTextSuper.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_doGlitch",
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLiteSuper",
+                "module": "lib/FutureTerminalTextSuper.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_scramble",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLiteSuper",
+                "module": "lib/FutureTerminalTextSuper.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_wait",
+              "parameters": [
+                {
+                  "name": "ms"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FutureTerminalTextLiteSuper",
+                "module": "lib/FutureTerminalTextSuper.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "glitch",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "glitch"
+            },
+            {
+              "name": "red",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "red"
+            },
+            {
+              "name": "fadein",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "fadein"
+            },
+            {
+              "name": "glitch-max",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "glitchMax"
+            },
+            {
+              "name": "glitch-duration",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "glitchDuration"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "FutureTerminalTextLiteSuper",
+              "module": "/lib/FutureTerminalTextSuper.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "future-terminal-text",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "FutureTerminalTextLite",
+            "module": "lib/future-terminal-text-lite.js"
+          }
         },
         {
-          "name": "fadein",
-          "description": "`fadein` {`boolean`} - \n\nProperty: fadein\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "glitch",
-          "description": "`glitch` {`boolean`} - \n\nProperty: glitch\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "glitch-max",
-          "description": "`glitch-max` {`number`} - \n\nProperty: glitchMax\n\nDefault: 5"
-        },
-        {
-          "name": "glitch-duration",
-          "description": "`glitch-duration` {`number`} - \n\nProperty: glitchDuration\n\nDefault: 50"
+          "kind": "js",
+          "name": "FutureTerminalTextLite",
+          "declaration": {
+            "name": "FutureTerminalTextLite",
+            "module": "lib/future-terminal-text-lite.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

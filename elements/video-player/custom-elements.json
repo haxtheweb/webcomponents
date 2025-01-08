@@ -1,141 +1,1162 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "video-player",
-      "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`\n\nAttributes:\n\n  * `height` {`string`} - Height of media player.\n\n  * `id` {`string`} - Unique id\n\n  * `media-title` {`string`} - Simple caption for video\n\n  * `track` {`string`} - Url for a single subtitle track\n\n  * `thumbnail-src` {`string`} - Source of optional thumbnail image\n\n  * `width` {`string`} - Width of media player for non-a11y-media.\n\n  * `sourceData` - Source properties and slotted sources\n\n  * `sourceType` {`string`} - \n\n  * `crossorigin` {`string`} - Cross origin flag for transcripts to load\n\n  * `darkTranscript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\n  * `disableInteractive` {`boolean`} - disable interactive mode that makes transcript clickable\n\n  * `hide-timestamps` {`boolean`} - show cue's start and end time\n\n  * `hide-transcript` {`boolean`} - Hide transcript by default\n\n  * `hide-youtube-link` {`boolean`} - Open on YouTube button\n\n  * `lang` {`string`} - Language of media\n\n  * `playing` {`boolean`} - Data reactivity for play status from a11y-media-player\n\n  * `allow-background-play` {`boolean`} - Option to allow playing while not active tab\n\n  * `learning-mode` {`boolean`} - Learning mode\n\n  * `linkable` {`boolean`} - Include a share link?\n\n  * `sources` {`any[]`} - Array of multiple video sources\n\n  * `sticky-corner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\n`top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?\nDefault is `top-right`. `None` disables stickiness.\n\n  * `tracks` {`any[]`} - Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`\n\n  * `source` {`string`} - Single sources of video\n\n  * `element-visible` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.\n\n  * `dark` {`boolean`} - Enables darker player.\n\nProperties:\n\n  * `height` {`string`} - Height of media player.\n\n  * `id` {`string`} - Unique id\n\n  * `mediaTitle` {`string`} - Simple caption for video\n\n  * `track` {`string`} - Url for a single subtitle track\n\n  * `thumbnailSrc` {`string`} - Source of optional thumbnail image\n\n  * `width` {`string`} - Width of media player for non-a11y-media.\n\n  * `html5` - gets the HTML5 `audio` or `video` children\n\n  * `iframed` {`boolean`} - Computes whether uses iframe\n\n  * `isA11yMedia` {`boolean`} - Determines if compatible with `a11y-media-player`\n\n  * `observer` - mutation observer for tabs\n\n  * `sandboxed` {`boolean`} - Compute sandboxed status\n\n  * `sourceProperties` {`any[]`} - Gets cleaned source list from source and sources properties\n\n  * `trackProperties` {`any[]`} - Gets cleaned track list from track and tracks properties\n\n  * `sourceData` - Source properties and slotted sources\n\n  * `audioOnly` {`boolean`} - \n\n  * `standAlone` {`boolean`} - \n\n  * `trackData` {`any[]`} - Gets cleaned track list\n\n  * `youtubeId` {`string`} - Gets Youtube ID from source string\n\n  * `playerId` {`string`} - gets an id for a11y-media-player\n\n  * `currentTime` - mapping down into the shadowRoot element bc these are common things to want to know\n\n  * `windowControllers` - \n\n  * `sourceType` {`string`} - \n\n  * `crossorigin` {`string`} - Cross origin flag for transcripts to load\n\n  * `darkTranscript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\n  * `disableInteractive` {`boolean`} - disable interactive mode that makes transcript clickable\n\n  * `hideTimestamps` {`boolean`} - show cue's start and end time\n\n  * `hideTranscript` {`boolean`} - Hide transcript by default\n\n  * `hideYoutubeLink` {`boolean`} - Open on YouTube button\n\n  * `lang` {`string`} - Language of media\n\n  * `playing` {`boolean`} - Data reactivity for play status from a11y-media-player\n\n  * `__setVisChange` {`boolean`} - \n\n  * `allowBackgroundPlay` {`boolean`} - Option to allow playing while not active tab\n\n  * `learningMode` {`boolean`} - Learning mode\n\n  * `linkable` {`boolean`} - Include a share link?\n\n  * `sources` {`any[]`} - Array of multiple video sources\n\n  * `stickyCorner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\n`top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?\nDefault is `top-right`. `None` disables stickiness.\n\n  * `tracks` {`any[]`} - Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`\n\n  * `source` {`string`} - Single sources of video\n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.\n\n  * `dark` {`boolean`} - Enables darker player.\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "video-player.js",
+      "declarations": [
         {
-          "name": "height",
-          "description": "`height` {`string`} - Height of media player.\n\nProperty: height"
+          "kind": "class",
+          "description": "`video-player`\n`A simple responsive video player with ridiculously powerful backing`",
+          "name": "VideoPlayer",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "querySelectorAll",
+              "parameters": [
+                {
+                  "name": "query"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "html5",
+              "description": "gets the HTML5 `audio` or `video` children",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "iframed",
+              "description": "Computes whether uses iframe",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "isA11yMedia",
+              "description": "Determines if compatible with `a11y-media-player`",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "observer",
+              "description": "mutation observer for tabs",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "sandboxed",
+              "description": "Compute sandboxed status",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "sourceProperties",
+              "description": "Gets cleaned source list from source and sources properties",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "Array"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "trackProperties",
+              "description": "Gets cleaned track list from track and tracks properties",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "Array"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "sourceData",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Source properties and slotted sources",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "Array"
+                }
+              },
+              "attribute": "sourceData"
+            },
+            {
+              "kind": "field",
+              "name": "audioOnly",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "standAlone",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "trackData",
+              "description": "Gets cleaned track list",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "Array"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "youtubeId",
+              "description": "Gets Youtube ID from source string",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "String"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "playerId",
+              "description": "gets an id for a11y-media-player",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_computeMediaType",
+              "parameters": [
+                {
+                  "name": "source"
+                }
+              ],
+              "description": "Compute media type based on source, i.e. 'audio/wav' for '.wav'"
+            },
+            {
+              "kind": "method",
+              "name": "_computeSRC",
+              "parameters": [
+                {
+                  "name": "source"
+                },
+                {
+                  "name": "type"
+                }
+              ],
+              "description": "Compute src from type / source combo.\nType is set by source so this ensures a waterfall\nof valid values."
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxinlineContextMenu",
+              "parameters": [
+                {
+                  "name": "ceMenu"
+                }
+              ],
+              "description": "add buttons when it is in context"
+            },
+            {
+              "kind": "method",
+              "name": "haxClickTimeCode",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxpostProcessNodeToContent",
+              "parameters": [
+                {
+                  "name": "content"
+                }
+              ],
+              "description": "postProcesshaxNodeToContent - clean up so we don't have empty array data"
+            },
+            {
+              "kind": "method",
+              "name": "setSourceData",
+              "description": "triggers an update of sourceData property when slot changes"
+            },
+            {
+              "kind": "method",
+              "name": "playEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "pauseEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "currentTime",
+              "description": "mapping down into the shadowRoot element bc these are common things to want to know",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "restart"
+            },
+            {
+              "kind": "method",
+              "name": "pause"
+            },
+            {
+              "kind": "method",
+              "name": "play"
+            },
+            {
+              "kind": "method",
+              "name": "seek",
+              "parameters": [
+                {
+                  "name": "time"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_visChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "sourceType",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "sourceType"
+            },
+            {
+              "kind": "field",
+              "name": "crossorigin",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Cross origin flag for transcripts to load",
+              "default": "\"anonymous\"",
+              "attribute": "crossorigin",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dark",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Enables darker player.",
+              "default": "false",
+              "attribute": "dark",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "darkTranscript",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Use dark theme on transcript? Default is false, even when player is dark.",
+              "default": "false",
+              "attribute": "darkTranscript"
+            },
+            {
+              "kind": "field",
+              "name": "disableInteractive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disable interactive mode that makes transcript clickable",
+              "default": "false",
+              "attribute": "disableInteractive"
+            },
+            {
+              "kind": "field",
+              "name": "hideTimestamps",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "show cue's start and end time",
+              "default": "false",
+              "attribute": "hide-timestamps"
+            },
+            {
+              "kind": "field",
+              "name": "hideTranscript",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hide transcript by default",
+              "default": "false",
+              "attribute": "hide-transcript",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hideYoutubeLink",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Open on YouTube button",
+              "default": "false",
+              "attribute": "hide-youtube-link"
+            },
+            {
+              "kind": "field",
+              "name": "lang",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Language of media",
+              "default": "\"en\"",
+              "attribute": "lang"
+            },
+            {
+              "kind": "field",
+              "name": "playing",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Data reactivity for play status from a11y-media-player",
+              "default": "false",
+              "attribute": "playing",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__setVisChange",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "allowBackgroundPlay",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Option to allow playing while not active tab",
+              "default": "false",
+              "attribute": "allow-background-play",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "learningMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Learning mode",
+              "default": "false",
+              "attribute": "learning-mode"
+            },
+            {
+              "kind": "field",
+              "name": "linkable",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Include a share link?",
+              "default": "false",
+              "attribute": "linkable"
+            },
+            {
+              "kind": "field",
+              "name": "sources",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Array of multiple video sources",
+              "default": "[]",
+              "attribute": "sources"
+            },
+            {
+              "kind": "field",
+              "name": "stickyCorner",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "When playing but scrolled off screen, to which corner does it \"stick\":\n`top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?\nDefault is `top-right`. `None` disables stickiness.",
+              "default": "\"none\"",
+              "attribute": "sticky-corner",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "tracks",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`",
+              "default": "[]",
+              "attribute": "tracks"
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Single sources of video",
+              "default": "\"\"",
+              "attribute": "source",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, embeddedMedia: \"embedded media\", }"
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.",
+              "attribute": "accent-color",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Height of media player.",
+              "attribute": "height"
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Unique id",
+              "attribute": "id",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "mediaTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Simple caption for video",
+              "attribute": "media-title",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "track",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Url for a single subtitle track",
+              "attribute": "track"
+            },
+            {
+              "kind": "field",
+              "name": "thumbnailSrc",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Source of optional thumbnail image",
+              "attribute": "thumbnail-src",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Width of media player for non-a11y-media.",
+              "attribute": "width"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "sourceType",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "sourceType"
+            },
+            {
+              "name": "accent-color",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.",
+              "fieldName": "accentColor"
+            },
+            {
+              "name": "crossorigin",
+              "type": {
+                "text": "string"
+              },
+              "description": "Cross origin flag for transcripts to load",
+              "default": "\"anonymous\"",
+              "fieldName": "crossorigin"
+            },
+            {
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Enables darker player.",
+              "default": "false",
+              "fieldName": "dark"
+            },
+            {
+              "name": "darkTranscript",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Use dark theme on transcript? Default is false, even when player is dark.",
+              "default": "false",
+              "fieldName": "darkTranscript"
+            },
+            {
+              "name": "disableInteractive",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disable interactive mode that makes transcript clickable",
+              "default": "false",
+              "fieldName": "disableInteractive"
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "string"
+              },
+              "description": "Height of media player.",
+              "fieldName": "height"
+            },
+            {
+              "name": "hide-timestamps",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "show cue's start and end time",
+              "default": "false",
+              "fieldName": "hideTimestamps"
+            },
+            {
+              "name": "hide-transcript",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hide transcript by default",
+              "default": "false",
+              "fieldName": "hideTranscript"
+            },
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "Unique id",
+              "fieldName": "id"
+            },
+            {
+              "name": "learning-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Learning mode",
+              "default": "false",
+              "fieldName": "learningMode"
+            },
+            {
+              "name": "lang",
+              "type": {
+                "text": "string"
+              },
+              "description": "Language of media",
+              "default": "\"en\"",
+              "fieldName": "lang"
+            },
+            {
+              "name": "linkable",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Include a share link?",
+              "default": "false",
+              "fieldName": "linkable"
+            },
+            {
+              "name": "media-title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Simple caption for video",
+              "fieldName": "mediaTitle"
+            },
+            {
+              "name": "hide-youtube-link",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Open on YouTube button",
+              "default": "false",
+              "fieldName": "hideYoutubeLink"
+            },
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "description": "Single sources of video",
+              "default": "\"\"",
+              "fieldName": "source"
+            },
+            {
+              "name": "sources",
+              "type": {
+                "text": "array"
+              },
+              "description": "Array of multiple video sources",
+              "default": "[]",
+              "fieldName": "sources"
+            },
+            {
+              "name": "sourceData",
+              "type": {
+                "text": "object"
+              },
+              "description": "Source properties and slotted sources",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "Array"
+                }
+              },
+              "fieldName": "sourceData"
+            },
+            {
+              "name": "sticky-corner",
+              "type": {
+                "text": "string"
+              },
+              "description": "When playing but scrolled off screen, to which corner does it \"stick\":\n`top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?\nDefault is `top-right`. `None` disables stickiness.",
+              "default": "\"none\"",
+              "fieldName": "stickyCorner"
+            },
+            {
+              "name": "track",
+              "type": {
+                "text": "string"
+              },
+              "description": "Url for a single subtitle track",
+              "fieldName": "track"
+            },
+            {
+              "name": "tracks",
+              "type": {
+                "text": "array"
+              },
+              "description": "Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`",
+              "default": "[]",
+              "fieldName": "tracks"
+            },
+            {
+              "name": "thumbnail-src",
+              "type": {
+                "text": "string"
+              },
+              "description": "Source of optional thumbnail image",
+              "fieldName": "thumbnailSrc"
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "description": "Width of media player for non-a11y-media.",
+              "fieldName": "width"
+            },
+            {
+              "name": "playing",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Data reactivity for play status from a11y-media-player",
+              "default": "false",
+              "fieldName": "playing"
+            },
+            {
+              "name": "allow-background-play",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Option to allow playing while not active tab",
+              "default": "false",
+              "fieldName": "allowBackgroundPlay"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "IntersectionObserverMixin",
+              "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            },
+            {
+              "name": "MediaBehaviorsVideo",
+              "package": "@haxtheweb/media-behaviors/media-behaviors.js"
+            },
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "video-player",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "VideoPlayer",
+            "module": "video-player.js"
+          }
         },
         {
-          "name": "id",
-          "description": "`id` {`string`} - Unique id\n\nProperty: id"
-        },
+          "kind": "js",
+          "name": "VideoPlayer",
+          "declaration": {
+            "name": "VideoPlayer",
+            "module": "video-player.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/lecture-anchor.js",
+      "declarations": [
         {
-          "name": "media-title",
-          "description": "`media-title` {`string`} - Simple caption for video\n\nProperty: mediaTitle"
-        },
+          "kind": "class",
+          "description": "",
+          "name": "LectureAnchor",
+          "members": [
+            {
+              "kind": "method",
+              "name": "clickHandler",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "static": true,
+              "readonly": true,
+              "default": "0",
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "jumbotronHeading",
+              "static": true,
+              "readonly": true,
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "jumbotronContent",
+              "static": true,
+              "readonly": true,
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"icons:flag\"",
+              "attribute": "icon",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"video-player\"",
+              "attribute": "target",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "associatedID",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "associatedID",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"icons:flag\"",
+              "fieldName": "icon"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "number"
+              },
+              "readonly": true,
+              "default": "0",
+              "fieldName": "value"
+            },
+            {
+              "name": "target",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"video-player\"",
+              "fieldName": "target"
+            },
+            {
+              "name": "associatedID",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "associatedID"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "lecture-anchor",
+          "customElement": true
+        }
+      ],
+      "exports": [
         {
-          "name": "track",
-          "description": "`track` {`string`} - Url for a single subtitle track\n\nProperty: track"
-        },
+          "kind": "custom-element-definition",
+          "name": "lecture-anchor",
+          "declaration": {
+            "name": "LectureAnchor",
+            "module": "lib/lecture-anchor.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/lecture-player.js",
+      "declarations": [
         {
-          "name": "thumbnail-src",
-          "description": "`thumbnail-src` {`string`} - Source of optional thumbnail image\n\nProperty: thumbnailSrc"
-        },
+          "kind": "class",
+          "description": "",
+          "name": "LecturePlayer",
+          "members": [
+            {
+              "kind": "method",
+              "name": "setJumbotronAttributes"
+            },
+            {
+              "kind": "method",
+              "name": "getNextSiblingHTML",
+              "parameters": [
+                {
+                  "name": "element"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "addPrevNextListeners"
+            },
+            {
+              "kind": "method",
+              "name": "updateJumbotron"
+            },
+            {
+              "kind": "method",
+              "name": "updatePlaylist"
+            },
+            {
+              "kind": "method",
+              "name": "seek",
+              "parameters": [
+                {
+                  "name": "timestamp"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "play"
+            },
+            {
+              "kind": "method",
+              "name": "checkDisabledButtons"
+            },
+            {
+              "kind": "method",
+              "name": "endVideo"
+            },
+            {
+              "kind": "method",
+              "name": "showModal"
+            },
+            {
+              "kind": "field",
+              "name": "associatedNodes",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "new Object()",
+              "attribute": "associatedNodes",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "videoPlayer"
+            },
+            {
+              "kind": "field",
+              "name": "videoInterval",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "activeIndex",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "activeIndex",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "source",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "open",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "open",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "activeIndex",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "activeIndex"
+            },
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "source"
+            },
+            {
+              "name": "associatedNodes",
+              "type": {
+                "text": "object"
+              },
+              "default": "new Object()",
+              "fieldName": "associatedNodes"
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "open"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "lecture-player",
+          "customElement": true
+        }
+      ],
+      "exports": [
         {
-          "name": "width",
-          "description": "`width` {`string`} - Width of media player for non-a11y-media.\n\nProperty: width"
-        },
-        {
-          "name": "sourceData",
-          "description": "`sourceData` - Source properties and slotted sources\n\nProperty: sourceData"
-        },
-        {
-          "name": "sourceType",
-          "description": "`sourceType` {`string`} - \n\nProperty: sourceType\n\nDefault: "
-        },
-        {
-          "name": "crossorigin",
-          "description": "`crossorigin` {`string`} - Cross origin flag for transcripts to load\n\nProperty: crossorigin\n\nDefault: anonymous"
-        },
-        {
-          "name": "darkTranscript",
-          "description": "`darkTranscript` {`boolean`} - Use dark theme on transcript? Default is false, even when player is dark.\n\nProperty: darkTranscript\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disableInteractive",
-          "description": "`disableInteractive` {`boolean`} - disable interactive mode that makes transcript clickable\n\nProperty: disableInteractive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-timestamps",
-          "description": "`hide-timestamps` {`boolean`} - show cue's start and end time\n\nProperty: hideTimestamps\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-transcript",
-          "description": "`hide-transcript` {`boolean`} - Hide transcript by default\n\nProperty: hideTranscript\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-youtube-link",
-          "description": "`hide-youtube-link` {`boolean`} - Open on YouTube button\n\nProperty: hideYoutubeLink\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "lang",
-          "description": "`lang` {`string`} - Language of media\n\nProperty: lang\n\nDefault: en"
-        },
-        {
-          "name": "playing",
-          "description": "`playing` {`boolean`} - Data reactivity for play status from a11y-media-player\n\nProperty: playing\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "allow-background-play",
-          "description": "`allow-background-play` {`boolean`} - Option to allow playing while not active tab\n\nProperty: allowBackgroundPlay\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "learning-mode",
-          "description": "`learning-mode` {`boolean`} - Learning mode\n\nProperty: learningMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "linkable",
-          "description": "`linkable` {`boolean`} - Include a share link?\n\nProperty: linkable\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "sources",
-          "description": "`sources` {`any[]`} - Array of multiple video sources\n\nProperty: sources\n\nDefault: "
-        },
-        {
-          "name": "sticky-corner",
-          "description": "`sticky-corner` {`string`} - When playing but scrolled off screen, to which corner does it \"stick\":\n`top-left`, `top-right`, `bottom-left`, `bottom-right`, or `none`?\nDefault is `top-right`. `None` disables stickiness.\n\nProperty: stickyCorner\n\nDefault: none"
-        },
-        {
-          "name": "tracks",
-          "description": "`tracks` {`any[]`} - Array of text tracks, eg. `[{ \"src\": \"path/to/track.vtt\", \"label\": \"English\", \"srclang\": \"en\", \"kind\": \"subtitles\", }]`\n\nProperty: tracks\n\nDefault: "
-        },
-        {
-          "name": "source",
-          "description": "`source` {`string`} - Single sources of video\n\nProperty: source\n\nDefault: "
-        },
-        {
-          "name": "element-visible",
-          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - Optional accent color for controls,\nusing these colors:\n`red`, `pink`, `purple`, `deep-purple`, `indigo`, `blue`,\n`light-blue`, `cyan`, `teal`, `green`, `light-green`, `lime`,\n`yellow`, `amber`, orange, deep-orange, and brown.\nDefault is null.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - Enables darker player.\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "custom-element-definition",
+          "name": "lecture-player",
+          "declaration": {
+            "name": "LecturePlayer",
+            "module": "lib/lecture-player.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

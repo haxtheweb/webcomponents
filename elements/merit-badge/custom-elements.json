@@ -1,180 +1,589 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "merit-badge",
-      "description": "`badge-sticker`\n`visual badge to communicate obtaining a skill`\n\nAttributes:\n\n  * `badgeDate` {`string`} - \n\n  * `badgeImage` {`string`} - \n\n  * `badgeTitle` {`string`} - \n\n  * `badgeDetails` {`string`} - \n\n  * `hyperLink` {`string`} - \n\n  * `badgeSkills` {`string`} - \n\n  * `skillsOpened` {`boolean`} - \n\n  * `detailsOpened` {`boolean`} - \n\n  * `badgeColor` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `badgeDate` {`string`} - \n\n  * `badgeImage` {`string`} - \n\n  * `badgeTitle` {`string`} - \n\n  * `badgeDetails` {`string`} - \n\n  * `hyperLink` {`string`} - \n\n  * `badgeSkills` {`string`} - \n\n  * `skillsOpened` {`boolean`} - \n\n  * `detailsOpened` {`boolean`} - \n\n  * `skillsArray` {`never[]`} - \n\n  * `badgeColor` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "merit-badge.js",
+      "declarations": [
         {
-          "name": "badgeDate",
-          "description": "`badgeDate` {`string`} - \n\nProperty: badgeDate"
+          "kind": "class",
+          "description": "`merit-badge`\n`visual badge to communicate obtaining a skill`",
+          "name": "MeritBadge",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "unlockButtonClicked"
+            },
+            {
+              "kind": "method",
+              "name": "unlockButtonClicked"
+            },
+            {
+              "kind": "field",
+              "name": "badgeUnlocked",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "badgeUnlocked"
+            },
+            {
+              "kind": "field",
+              "name": "badgeDate",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "badgeDate"
+            },
+            {
+              "kind": "field",
+              "name": "badgeImage",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "badgeImage"
+            },
+            {
+              "kind": "field",
+              "name": "badgeTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "badgeTitle"
+            },
+            {
+              "kind": "field",
+              "name": "badgeDetails",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "badgeDetails"
+            },
+            {
+              "kind": "field",
+              "name": "hyperLink",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "hyperLink"
+            },
+            {
+              "kind": "field",
+              "name": "badgeSkills",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "badgeSkills"
+            },
+            {
+              "kind": "field",
+              "name": "skillsOpened",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "skillsOpened"
+            },
+            {
+              "kind": "field",
+              "name": "detailsOpened",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "detailsOpened"
+            },
+            {
+              "kind": "field",
+              "name": "badgeColor",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "badgeColor"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "badgeDate",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "badgeDate"
+            },
+            {
+              "name": "badgeImage",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "badgeImage"
+            },
+            {
+              "name": "badgeTitle",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "badgeTitle"
+            },
+            {
+              "name": "badgeDetails",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "badgeDetails"
+            },
+            {
+              "name": "hyperLink",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "hyperLink"
+            },
+            {
+              "name": "badgeSkills",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "badgeSkills"
+            },
+            {
+              "name": "skillsOpened",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "skillsOpened"
+            },
+            {
+              "name": "detailsOpened",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "detailsOpened"
+            },
+            {
+              "name": "badgeUnlocked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "badgeUnlocked"
+            },
+            {
+              "name": "badgeColor",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "badgeColor"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "merit-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MeritBadge",
+            "module": "merit-badge.js"
+          }
         },
         {
-          "name": "badgeImage",
-          "description": "`badgeImage` {`string`} - \n\nProperty: badgeImage\n\nDefault: "
-        },
-        {
-          "name": "badgeTitle",
-          "description": "`badgeTitle` {`string`} - \n\nProperty: badgeTitle\n\nDefault: "
-        },
-        {
-          "name": "badgeDetails",
-          "description": "`badgeDetails` {`string`} - \n\nProperty: badgeDetails\n\nDefault: "
-        },
-        {
-          "name": "hyperLink",
-          "description": "`hyperLink` {`string`} - \n\nProperty: hyperLink\n\nDefault: "
-        },
-        {
-          "name": "badgeSkills",
-          "description": "`badgeSkills` {`string`} - \n\nProperty: badgeSkills\n\nDefault: "
-        },
-        {
-          "name": "skillsOpened",
-          "description": "`skillsOpened` {`boolean`} - \n\nProperty: skillsOpened\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "detailsOpened",
-          "description": "`detailsOpened` {`boolean`} - \n\nProperty: detailsOpened\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "badgeColor",
-          "description": "`badgeColor` {`string`} - \n\nProperty: badgeColor\n\nDefault: "
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "MeritBadge",
+          "declaration": {
+            "name": "MeritBadge",
+            "module": "merit-badge.js"
+          }
         }
       ]
     },
     {
-      "name": "badge-sticker",
-      "description": "`badge-sticker`\n`visual badge to communicate obtaining a skill`\n\nAttributes:\n\n  * `badgeDate` {`string`} - \n\n  * `badgeImage` {`string`} - \n\n  * `badgeTitle` {`string`} - \n\n  * `badgeDetails` {`string`} - \n\n  * `hyperLink` {`string`} - \n\n  * `badgeSkills` {`string`} - \n\n  * `skillsOpened` {`boolean`} - \n\n  * `detailsOpened` {`boolean`} - \n\n  * `badgeColor` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `badgeDate` {`string`} - \n\n  * `badgeImage` {`string`} - \n\n  * `badgeTitle` {`string`} - \n\n  * `badgeDetails` {`string`} - \n\n  * `hyperLink` {`string`} - \n\n  * `badgeSkills` {`string`} - \n\n  * `skillsOpened` {`boolean`} - \n\n  * `detailsOpened` {`boolean`} - \n\n  * `skillsArray` {`never[]`} - \n\n  * `badgeColor` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/badge-sticker.js",
+      "declarations": [
         {
-          "name": "badgeDate",
-          "description": "`badgeDate` {`string`} - \n\nProperty: badgeDate"
+          "kind": "class",
+          "description": "`badge-sticker`\n`visual badge to communicate obtaining a skill`",
+          "name": "BadgeSticker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "skillClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "badgeDate",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "badgeDate"
+            },
+            {
+              "kind": "field",
+              "name": "badgeImage",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "badgeImage"
+            },
+            {
+              "kind": "field",
+              "name": "badgeTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "badgeTitle"
+            },
+            {
+              "kind": "field",
+              "name": "badgeDetails",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "badgeDetails"
+            },
+            {
+              "kind": "field",
+              "name": "hyperLink",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "hyperLink"
+            },
+            {
+              "kind": "field",
+              "name": "badgeSkills",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "badgeSkills"
+            },
+            {
+              "kind": "field",
+              "name": "skillsOpened",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "skillsOpened"
+            },
+            {
+              "kind": "field",
+              "name": "detailsOpened",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "detailsOpened"
+            },
+            {
+              "kind": "field",
+              "name": "skillsArray",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "badgeColor",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "badgeColor"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "badgeDate",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "badgeDate"
+            },
+            {
+              "name": "badgeImage",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "badgeImage"
+            },
+            {
+              "name": "badgeTitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "badgeTitle"
+            },
+            {
+              "name": "badgeDetails",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "badgeDetails"
+            },
+            {
+              "name": "hyperLink",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "hyperLink"
+            },
+            {
+              "name": "badgeSkills",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "badgeSkills"
+            },
+            {
+              "name": "skillsOpened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "skillsOpened"
+            },
+            {
+              "name": "detailsOpened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "detailsOpened"
+            },
+            {
+              "name": "badgeColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "badgeColor"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "merit-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "BadgeSticker",
+            "module": "lib/badge-sticker.js"
+          }
         },
         {
-          "name": "badgeImage",
-          "description": "`badgeImage` {`string`} - \n\nProperty: badgeImage\n\nDefault: "
-        },
-        {
-          "name": "badgeTitle",
-          "description": "`badgeTitle` {`string`} - \n\nProperty: badgeTitle\n\nDefault: "
-        },
-        {
-          "name": "badgeDetails",
-          "description": "`badgeDetails` {`string`} - \n\nProperty: badgeDetails\n\nDefault: "
-        },
-        {
-          "name": "hyperLink",
-          "description": "`hyperLink` {`string`} - \n\nProperty: hyperLink\n\nDefault: "
-        },
-        {
-          "name": "badgeSkills",
-          "description": "`badgeSkills` {`string`} - \n\nProperty: badgeSkills\n\nDefault: "
-        },
-        {
-          "name": "skillsOpened",
-          "description": "`skillsOpened` {`boolean`} - \n\nProperty: skillsOpened\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "detailsOpened",
-          "description": "`detailsOpened` {`boolean`} - \n\nProperty: detailsOpened\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "badgeColor",
-          "description": "`badgeColor` {`string`} - \n\nProperty: badgeColor\n\nDefault: "
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "BadgeSticker",
+          "declaration": {
+            "name": "BadgeSticker",
+            "module": "lib/badge-sticker.js"
+          }
         }
       ]
     },
     {
-      "name": "date-title",
-      "description": "Attributes:\n\n  * `title` {`string`} - \n\n  * `date` {`string`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `date` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/date-title.js",
+      "declarations": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+          "kind": "class",
+          "description": "",
+          "name": "DateTitle",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "generateCircularText",
+              "parameters": [
+                {
+                  "name": "className"
+                },
+                {
+                  "name": "text"
+                },
+                {
+                  "name": "radius"
+                },
+                {
+                  "name": "range"
+                },
+                {
+                  "name": "startPos"
+                },
+                {
+                  "name": "css"
+                },
+                {
+                  "name": "bottomCss"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "date",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "date"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "date",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "date"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "title"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "DateTitle",
+            "module": "lib/date-title.js"
+          }
         },
         {
-          "name": "date",
-          "description": "`date` {`string`} - \n\nProperty: date\n\nDefault: "
+          "kind": "js",
+          "name": "DateTitle",
+          "declaration": {
+            "name": "DateTitle",
+            "module": "lib/date-title.js"
+          }
         }
       ]
     },
     {
-      "name": "locked-badge",
-      "attributes": []
-    },
-    {
-      "name": "merit-badge",
-      "description": "`merit-badge`\n`visual badge to communicate obtaining a skill`\n\nAttributes:\n\n  * `badgeDate` {`string`} - \n\n  * `badgeImage` {`string`} - \n\n  * `badgeTitle` {`string`} - \n\n  * `badgeDetails` {`string`} - \n\n  * `hyperLink` {`string`} - \n\n  * `badgeSkills` {`string`} - \n\n  * `skillsOpened` {`boolean`} - \n\n  * `detailsOpened` {`boolean`} - \n\n  * `badgeColor` {`string`} - \n\n  * `badgeUnlocked` {`boolean`} - \n\nProperties:\n\n  * `badgeDate` {`string`} - \n\n  * `badgeImage` {`string`} - \n\n  * `badgeTitle` {`string`} - \n\n  * `badgeDetails` {`string`} - \n\n  * `hyperLink` {`string`} - \n\n  * `badgeSkills` {`string`} - \n\n  * `skillsOpened` {`boolean`} - \n\n  * `detailsOpened` {`boolean`} - \n\n  * `badgeColor` {`string`} - \n\n  * `badgeUnlocked` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/locked-badge.js",
+      "declarations": [
         {
-          "name": "badgeDate",
-          "description": "`badgeDate` {`string`} - \n\nProperty: badgeDate"
+          "kind": "class",
+          "description": "",
+          "name": "LockedBadge",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LockedBadge",
+            "module": "lib/locked-badge.js"
+          }
         },
         {
-          "name": "badgeImage",
-          "description": "`badgeImage` {`string`} - \n\nProperty: badgeImage"
-        },
-        {
-          "name": "badgeTitle",
-          "description": "`badgeTitle` {`string`} - \n\nProperty: badgeTitle"
-        },
-        {
-          "name": "badgeDetails",
-          "description": "`badgeDetails` {`string`} - \n\nProperty: badgeDetails"
-        },
-        {
-          "name": "hyperLink",
-          "description": "`hyperLink` {`string`} - \n\nProperty: hyperLink"
-        },
-        {
-          "name": "badgeSkills",
-          "description": "`badgeSkills` {`string`} - \n\nProperty: badgeSkills"
-        },
-        {
-          "name": "skillsOpened",
-          "description": "`skillsOpened` {`boolean`} - \n\nProperty: skillsOpened",
-          "valueSet": "v"
-        },
-        {
-          "name": "detailsOpened",
-          "description": "`detailsOpened` {`boolean`} - \n\nProperty: detailsOpened",
-          "valueSet": "v"
-        },
-        {
-          "name": "badgeColor",
-          "description": "`badgeColor` {`string`} - \n\nProperty: badgeColor"
-        },
-        {
-          "name": "badgeUnlocked",
-          "description": "`badgeUnlocked` {`boolean`} - \n\nProperty: badgeUnlocked\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "LockedBadge",
+          "declaration": {
+            "name": "LockedBadge",
+            "module": "lib/locked-badge.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

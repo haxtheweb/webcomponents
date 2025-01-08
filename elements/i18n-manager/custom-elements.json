@@ -1,23 +1,256 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "i18n-manager",
-      "description": "`i18n-manager`\n`internationalization management singleton and helper classes`\n\nAttributes:\n\n  * `lang` {`string | null`} - \n\n  * `dir` {`string | null`} - \n\nProperties:\n\n  * `documentLang` {`string`} - Set document language from these common sources\n\n  * `documentDir` {`string`} - Set document direction from these common sources\n\n  * `windowControllers` - \n\n  * `fetchTargets` - \n\n  * `elements` {`never[]`} - \n\n  * `locales` {`Set<never>`} - \n\n  * `lang` {`string | null`} - \n\n  * `dir` {`string | null`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "i18n-manager.js",
+      "declarations": [
         {
-          "name": "lang",
-          "description": "`lang` {`string | null`} - \n\nProperty: lang\n\nDefault: documentLang",
-          "values": []
+          "kind": "variable",
+          "name": "I18NManagerStore"
         },
         {
-          "name": "dir",
-          "description": "`dir` {`string | null`} - \n\nProperty: dir\n\nDefault: documentDir",
-          "values": []
+          "kind": "class",
+          "description": "`i18n-manager`\n`internationalization management singleton and helper classes`",
+          "name": "I18NManager",
+          "members": [
+            {
+              "kind": "field",
+              "name": "documentLang",
+              "description": "Set document language from these common sources",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "documentDir",
+              "description": "Set document direction from these common sources",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "changeLanguageEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Browser level languagechange event"
+            },
+            {
+              "kind": "method",
+              "name": "registerLocalizationEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Register a localization via event; this allow for a 0 dependency solution!"
+            },
+            {
+              "kind": "method",
+              "name": "detailNormalize",
+              "parameters": [
+                {
+                  "name": "detail"
+                }
+              ],
+              "description": "Apply normalization to all details bubbling up to improve\nflexibility and patching to how other people implement our\nAPI. This also can improve DX downstream by making educated\nguesses as to intent (like namespace, localesPath, updateCallback)"
+            },
+            {
+              "kind": "method",
+              "name": "registerLocalization",
+              "parameters": [
+                {
+                  "name": "detail"
+                }
+              ],
+              "description": "Register a localization with the manager"
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "loadNamespaceFile",
+              "parameters": [
+                {
+                  "name": "ns"
+                },
+                {
+                  "name": "lang",
+                  "default": "this.lang"
+                }
+              ],
+              "description": "Return language file for a specific context"
+            },
+            {
+              "kind": "method",
+              "name": "updateLanguage",
+              "parameters": [
+                {
+                  "name": "lang"
+                }
+              ],
+              "description": "trigger an update of the language after loading everything"
+            },
+            {
+              "kind": "field",
+              "name": "lang"
+            },
+            {
+              "kind": "field",
+              "name": "dir"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "fetchTargets",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "elements",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "locales",
+              "default": "new Set([])"
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "lang"
+            },
+            {
+              "name": "dir"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "i18n-manager",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "I18NManagerStore",
+          "declaration": {
+            "name": "I18NManagerStore",
+            "module": "i18n-manager.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "I18NManager",
+            "module": "i18n-manager.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "I18NManager",
+          "declaration": {
+            "name": "I18NManager",
+            "module": "i18n-manager.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/I18NMixin.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "I18NMixin",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "description": "Enhanced data reactivity for LitElement if available",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "registerLocalization",
+              "parameters": [
+                {
+                  "name": "detail"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "attribute": "t"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "fieldName": "t"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "I18NManagerStore",
+          "declaration": {
+            "name": "I18NManagerStore",
+            "module": "lib/I18NMixin.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "I18NMixin",
+          "declaration": {
+            "name": "I18NMixin",
+            "module": "lib/I18NMixin.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

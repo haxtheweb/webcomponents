@@ -1,39 +1,253 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "hexagon-loader",
-      "description": "`hexagon-loader`\n\nAttributes:\n\n  * `color` {`string`} - Color to make the loader\n\n  * `size` {`string`} - The relative size of this loader. Options small, medium, large\n\n  * `loading` {`boolean`} - Loading state\n\n  * `item-count` {`number`} - Count of the items\n\n  * `items` {`any[]`} - \n\nProperties:\n\n  * `color` {`string`} - Color to make the loader\n\n  * `size` {`string`} - The relative size of this loader. Options small, medium, large\n\n  * `loading` {`boolean`} - Loading state\n\n  * `itemCount` {`number`} - Count of the items\n\n  * `items` {`any[]`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "hexagon-loader.js",
+      "declarations": [
         {
-          "name": "color",
-          "description": "`color` {`string`} - Color to make the loader\n\nProperty: color"
+          "kind": "class",
+          "description": "`hexagon-loader`",
+          "name": "HexagonLoader",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_colorChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "Color changed"
+            },
+            {
+              "kind": "field",
+              "name": "itemCount",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Count of the items",
+              "default": "37",
+              "attribute": "item-count",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "items"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Color to make the loader",
+              "attribute": "color",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The relative size of this loader. Options small, medium, large",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Loading state",
+              "attribute": "loading",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "description": "Color to make the loader",
+              "fieldName": "color"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "string"
+              },
+              "description": "The relative size of this loader. Options small, medium, large",
+              "fieldName": "size"
+            },
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Loading state",
+              "fieldName": "loading"
+            },
+            {
+              "name": "items",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "items"
+            },
+            {
+              "name": "item-count",
+              "type": {
+                "text": "number"
+              },
+              "description": "Count of the items",
+              "default": "37",
+              "fieldName": "itemCount"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hexagon-loader",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "HexagonLoader",
+            "module": "hexagon-loader.js"
+          }
         },
         {
-          "name": "size",
-          "description": "`size` {`string`} - The relative size of this loader. Options small, medium, large\n\nProperty: size"
-        },
-        {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - Loading state\n\nProperty: loading",
-          "valueSet": "v"
-        },
-        {
-          "name": "item-count",
-          "description": "`item-count` {`number`} - Count of the items\n\nProperty: itemCount\n\nDefault: 37"
-        },
-        {
-          "name": "items",
-          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
+          "kind": "js",
+          "name": "HexagonLoader",
+          "declaration": {
+            "name": "HexagonLoader",
+            "module": "hexagon-loader.js"
+          }
         }
       ]
     },
     {
-      "name": "hex-a-gon",
-      "description": "`hex-a-gon`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `_queue` {`never[]`} - \n\n  * `template` - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "lib/hex-a-gon.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`hex-a-gon`",
+          "name": "Hexagon",
+          "members": [
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_copyAttribute",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "to"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_queueAction",
+              "parameters": [
+                {
+                  "name": "action"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_processQueue"
+            },
+            {
+              "kind": "method",
+              "name": "_setProperty",
+              "parameters": [
+                {
+                  "name": "{ name, value }"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_queue",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "template"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "hex-a-gon",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "Hexagon",
+            "module": "lib/hex-a-gon.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Hexagon",
+          "declaration": {
+            "name": "Hexagon",
+            "module": "lib/hex-a-gon.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,12 +1,84 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "data-viz",
-      "description": "`data-viz`\n`display pouch-db data using graphs`\n\nProperties:\n\n  * `windowControllers` - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "data-viz.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`data-viz`\n`display pouch-db data using graphs`",
+          "name": "DataViz",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "showDataFunction",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Show the data based on user selecting the view and\nthat they want to see how they did."
+            },
+            {
+              "kind": "method",
+              "name": "hideDataViz",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Hide callback"
+            },
+            {
+              "kind": "method",
+              "name": "showDataViz",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Show / available callback"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "data-viz",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "DataViz",
+            "module": "data-viz.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DataViz",
+          "declaration": {
+            "name": "DataViz",
+            "module": "data-viz.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

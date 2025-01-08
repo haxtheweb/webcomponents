@@ -1,111 +1,1970 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "a11y-menu-button",
-      "description": "a11y-menu-button\nA toggle button for an property in editable-table interface (editable-table.html).\n\n### Styling\n\n`<a11y-menu-button>` provides custom properties for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-menu-button-vertical-padding | vertical padding for menu button | 2px\n--a11y-menu-button-horizontal-padding | horizontal padding for menu button | 5px\n--a11y-menu-button-text-align | text alignment for menu button | center\n--a11y-menu-button-bg-color | default background color | white\n--a11y-menu-button-color | default text color | black\n--a11y-menu-button-box-shadow | menu button box-shadow | unset\n--a11y-menu-button-border-radius | menu button border-radius | 0\n--a11y-menu-button-border | default border | 1px solid #ddd\n--a11y-menu-button-border-left | overrides default left-border | unset\n--a11y-menu-button-border-top | overrides default top-border | unset\n--a11y-menu-button-border-right | overrides default right-border | unset\n--a11y-menu-button-border-bottom | overrides default bottom-border | unset\n--a11y-menu-button-focus-bg-color | background color for menu button when focused | --a11y-menu-button-bg-color\n--a11y-menu-button-focus-color | text color for menu button when focused | --a11y-menu-button-color\n--a11y-menu-button-focus-border | border for menu button when focused | --a11y-menu-button-border\n--a11y-menu-button-focus-border-left | menu button left-border when focused | --a11y-menu-button-border-left\n--a11y-menu-button-focus-border-top | menu button top-border when focused | --a11y-menu-button-border-top\n--a11y-menu-button-focus-border-right | menu button right-border when focused | --a11y-menu-button-border-right\n--a11y-menu-button-focus-border-bottom | menu button bottom-border when focused | --a11y-menu-button-border-bottom\n--a11y-menu-button-focus-box-shadow | menu button box-shadow when focused | --a11y-menu-button-box-shadow\n--a11y-menu-button-list-width | width of menu list | unset\n--a11y-menu-button-list-height | height of menu list | unset\n--a11y-menu-button-list-left | left position of menu list | 0\n--a11y-menu-button-list-top | top position of menu list | unset\n--a11y-menu-button-list-bottom | bottom position of menu list | unset\n--a11y-menu-button-list-right | right position of menu list | unset\n--a11y-menu-button-list-bg-color | overrides default background color for list box | --a11y-menu-button-bg-color\n--a11y-menu-button-border | overrides default border for list box | --a11y-menu-button-list-border\n--a11y-menu-button-list-box-shadow | overrides default box shadow for list box | unset\n\nEvents:\n\n  * `close` {`CustomEvent<this>`} - Fires when menu is closed\n\n  * `open` {`CustomEvent<this>`} - Fires when menu is opened\n\n  * `item-click` {`CustomEvent<Event>`} - \n\nAttributes:\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `keep-open-on-click` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\n  * `no-open-on-hover` {`boolean`} - disables menu i=opening on hover\n\nProperties:\n\n  * `currentItem` - Whether toggle is disabled\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `focused` {`boolean`} - Whether button is toggled\n\n  * `hovered` {`boolean`} - Whether button is toggled\n\n  * `menuTemplate` {`UncompiledTemplateResult<1>`} - template for dropdown menu\n\n  * `buttonTemplate` {`UncompiledTemplateResult<1>`} - template for button\n\n  * `listItemTemplate` {`UncompiledTemplateResult<1>`} - template for slotted list items\n\n  * `keyCode` {`{ TAB: number; RETURN: number; ESC: number; SPACE: number; PAGEUP: number; PAGEDOWN: number; END: number; HOME: number; LEFT: number; UP: number; RIGHT: number; DOWN: number; }`} - key code translations as object\n\n  * `firstItem` - gets first menu item\n\n  * `previousItem` - gets previous menu item\n\n  * `nextItem` - gets next menu item\n\n  * `lastItem` - gets last menu item\n\n  * `firstChars` {`any[]`} - gets list of menu item first characters\n\n  * `itemListeners` {`{ click: (event: Event | undefined) => void; focus: (event: Event | undefined) => void; blur: (event: Event | undefined) => void; mouseover: (event: Event | undefined) => void; mouseout: (event: Event | undefined) => void; keydown: (event: Event | undefined) => void; }`} - menuitem event listeners and their handlers\n\n  * `position` {`string`} - Positions list to top, right, bottom, left of its content.\n\n  * `positionAlign` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\n  * `offset` {`number`} - spacing between top of list and menu button\n\n  * `expanded` {`boolean`} - Whether toggle is disabled\n\n  * `menuItems` {`any[]`} - menu items in array form to move from prev to next\n\n  * `keepOpenOnClick` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\n  * `noOpenOnHover` {`boolean`} - disables menu i=opening on hover",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "a11y-menu-button.js",
+      "declarations": [
         {
-          "name": "currentItem",
-          "description": "`currentItem` - Whether toggle is disabled\n\nProperty: currentItem"
+          "kind": "mixin",
+          "description": "",
+          "name": "A11yMenuButtonBehaviors",
+          "members": [
+            {
+              "kind": "field",
+              "name": "menuButtonCoreStyles",
+              "static": true,
+              "description": "the core styles needed to make a menu button",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "menuButtonThemeStyles",
+              "static": true,
+              "description": "styles that can be customized by\nextending and overriding this getter",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "menuTemplate",
+              "description": "template for dropdown menu",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "buttonTemplate",
+              "description": "template for button",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "listItemTemplate",
+              "description": "template for slotted list items",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "keyCode",
+              "description": "key code translations as object",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "close",
+              "parameters": [
+                {
+                  "name": "force",
+                  "default": "false",
+                  "description": "close even if other items have focus",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "closes menu"
+            },
+            {
+              "kind": "method",
+              "name": "open",
+              "description": "opens menu"
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "description": "gives focus to menu"
+            },
+            {
+              "kind": "method",
+              "name": "focusOn",
+              "parameters": [
+                {
+                  "name": "item",
+                  "description": "menu item",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "focuses on a menu item"
+            },
+            {
+              "kind": "method",
+              "name": "focusByCharacter",
+              "parameters": [
+                {
+                  "name": "char",
+                  "description": "character pressed",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "focuses on item based on character pressed"
+            },
+            {
+              "kind": "field",
+              "name": "firstItem",
+              "description": "gets first menu item",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "previousItem",
+              "description": "gets previous menu item",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "nextItem",
+              "description": "gets next menu item",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "lastItem",
+              "description": "gets last menu item",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "firstChars",
+              "description": "gets list of menu item first characters",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "getItemIndex",
+              "description": "gets index of a menuitem",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getItem",
+              "parameters": [
+                {
+                  "name": "offset",
+                  "default": "1",
+                  "description": "number of items after current menuitem in order, -1 for item before",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "gets a menuitem relative to the current item",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "itemListeners",
+              "description": "menuitem event listeners and their handlers",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "addItem",
+              "parameters": [
+                {
+                  "name": "item",
+                  "description": "menu item element",
+                  "type": {
+                    "text": "ibject"
+                  }
+                }
+              ],
+              "description": "adds a menuitem to lists and sets up its listeners"
+            },
+            {
+              "kind": "method",
+              "name": "removeItem",
+              "parameters": [
+                {
+                  "name": "item",
+                  "description": "menu item element",
+                  "type": {
+                    "text": "ibject"
+                  }
+                }
+              ],
+              "description": "removes a menuitem's listners and menuitem istelf from list"
+            },
+            {
+              "kind": "method",
+              "name": "_handleAddItem",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "when a new menu item is added to slot,\nupdates menu items list and adds event listeners for item"
+            },
+            {
+              "kind": "method",
+              "name": "_handleRemoveItem",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "when a new menu item is removed from slot,\nupdates menu items list and removes event listeners for item"
+            },
+            {
+              "kind": "method",
+              "name": "_handleItemClick",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "when menu item is clicked,\nfocus on menu button and close menu"
+            },
+            {
+              "kind": "method",
+              "name": "_excludeEvent",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "can be overridden when extending this button,\nso that certain elements in menuitems are excluded from keyboard handling",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleItemKeydown",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles menu item keydown, as prescribed in\nhttps://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-links.html and\nhttps://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-actions-active-descendant.html"
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles menu button keydown"
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles when menu is clicked"
+            },
+            {
+              "kind": "method",
+              "name": "_handleFocus",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles when menu has focus"
+            },
+            {
+              "kind": "method",
+              "name": "_handleBlur",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles when menu loses focus"
+            },
+            {
+              "kind": "method",
+              "name": "_handleMouseover",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles menu mouseover"
+            },
+            {
+              "kind": "method",
+              "name": "_handleMouseout",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles menu mouseout"
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Positions list to top, right, bottom, left of its content.",
+              "default": "\"bottom\"",
+              "attribute": "position",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "positionAlign",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aligns list at start, or end fo target. Default is centered.",
+              "default": "\"start\"",
+              "attribute": "position-align",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "offset",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "spacing between top of list and menu button",
+              "default": "0",
+              "attribute": "offset"
+            },
+            {
+              "kind": "field",
+              "name": "expanded",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "default": "false",
+              "attribute": "expanded",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "menuItems",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "menu items in array form to move from prev to next",
+              "default": "[]",
+              "attribute": "menuItems"
+            },
+            {
+              "kind": "field",
+              "name": "keepOpenOnClick",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "overrides default behavior of closing\nmenu after an item is clicked",
+              "default": "false",
+              "attribute": "keep-open-on-click"
+            },
+            {
+              "kind": "field",
+              "name": "noOpenOnHover",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disables menu i=opening on hover",
+              "default": "false",
+              "attribute": "no-open-on-hover"
+            },
+            {
+              "kind": "field",
+              "name": "currentItem",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Whether toggle is disabled",
+              "attribute": "currentItem"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "focused",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether button is toggled",
+              "attribute": "focused"
+            },
+            {
+              "kind": "field",
+              "name": "hovered",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether button is toggled",
+              "attribute": "hovered"
+            }
+          ],
+          "events": [
+            {
+              "name": "close",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when menu is closed"
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when menu is opened"
+            },
+            {
+              "name": "item-click",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "currentItem",
+              "type": {
+                "text": "object"
+              },
+              "description": "Whether toggle is disabled",
+              "fieldName": "currentItem"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "expanded",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "default": "false",
+              "fieldName": "expanded"
+            },
+            {
+              "name": "focused",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether button is toggled",
+              "fieldName": "focused"
+            },
+            {
+              "name": "hovered",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether button is toggled",
+              "fieldName": "hovered"
+            },
+            {
+              "name": "keep-open-on-click",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "overrides default behavior of closing\nmenu after an item is clicked",
+              "default": "false",
+              "fieldName": "keepOpenOnClick"
+            },
+            {
+              "name": "menuItems",
+              "type": {
+                "text": "array"
+              },
+              "description": "menu items in array form to move from prev to next",
+              "default": "[]",
+              "fieldName": "menuItems"
+            },
+            {
+              "name": "no-open-on-hover",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disables menu i=opening on hover",
+              "default": "false",
+              "fieldName": "noOpenOnHover"
+            },
+            {
+              "name": "offset",
+              "type": {
+                "text": "number"
+              },
+              "description": "spacing between top of list and menu button",
+              "default": "0",
+              "fieldName": "offset"
+            },
+            {
+              "name": "position",
+              "type": {
+                "text": "string"
+              },
+              "description": "Positions list to top, right, bottom, left of its content.",
+              "default": "\"bottom\"",
+              "fieldName": "position"
+            },
+            {
+              "name": "position-align",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aligns list at start, or end fo target. Default is centered.",
+              "default": "\"start\"",
+              "fieldName": "positionAlign"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
         },
         {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - Whether toggle is disabled\n\nProperty: disabled",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "a11y-menu-button\nA toggle button for an property in editable-table interface (editable-table.html).\n\n### Styling\n\n`<a11y-menu-button>` provides custom properties for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-menu-button-vertical-padding | vertical padding for menu button | 2px\n--a11y-menu-button-horizontal-padding | horizontal padding for menu button | 5px\n--a11y-menu-button-text-align | text alignment for menu button | center\n--a11y-menu-button-bg-color | default background color | white\n--a11y-menu-button-color | default text color | black\n--a11y-menu-button-box-shadow | menu button box-shadow | unset\n--a11y-menu-button-border-radius | menu button border-radius | 0\n--a11y-menu-button-border | default border | 1px solid #ddd\n--a11y-menu-button-border-left | overrides default left-border | unset\n--a11y-menu-button-border-top | overrides default top-border | unset\n--a11y-menu-button-border-right | overrides default right-border | unset\n--a11y-menu-button-border-bottom | overrides default bottom-border | unset\n--a11y-menu-button-focus-bg-color | background color for menu button when focused | --a11y-menu-button-bg-color\n--a11y-menu-button-focus-color | text color for menu button when focused | --a11y-menu-button-color\n--a11y-menu-button-focus-border | border for menu button when focused | --a11y-menu-button-border\n--a11y-menu-button-focus-border-left | menu button left-border when focused | --a11y-menu-button-border-left\n--a11y-menu-button-focus-border-top | menu button top-border when focused | --a11y-menu-button-border-top\n--a11y-menu-button-focus-border-right | menu button right-border when focused | --a11y-menu-button-border-right\n--a11y-menu-button-focus-border-bottom | menu button bottom-border when focused | --a11y-menu-button-border-bottom\n--a11y-menu-button-focus-box-shadow | menu button box-shadow when focused | --a11y-menu-button-box-shadow\n--a11y-menu-button-list-width | width of menu list | unset\n--a11y-menu-button-list-height | height of menu list | unset\n--a11y-menu-button-list-left | left position of menu list | 0\n--a11y-menu-button-list-top | top position of menu list | unset\n--a11y-menu-button-list-bottom | bottom position of menu list | unset\n--a11y-menu-button-list-right | right position of menu list | unset\n--a11y-menu-button-list-bg-color | overrides default background color for list box | --a11y-menu-button-bg-color\n--a11y-menu-button-border | overrides default border for list box | --a11y-menu-button-list-border\n--a11y-menu-button-list-box-shadow | overrides default box shadow for list box | unset",
+          "name": "A11yMenuButton",
+          "mixins": [
+            {
+              "name": "A11yMenuButtonBehaviors",
+              "module": "a11y-menu-button.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "a11y-menu-button",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "currentItem",
+              "type": {
+                "text": "object"
+              },
+              "description": "Whether toggle is disabled",
+              "fieldName": "currentItem",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "name": "expanded",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "default": "false",
+              "fieldName": "expanded",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "name": "focused",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether button is toggled",
+              "fieldName": "focused",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "name": "hovered",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether button is toggled",
+              "fieldName": "hovered",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "name": "keep-open-on-click",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "overrides default behavior of closing\nmenu after an item is clicked",
+              "default": "false",
+              "fieldName": "keepOpenOnClick",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "name": "menuItems",
+              "type": {
+                "text": "array"
+              },
+              "description": "menu items in array form to move from prev to next",
+              "default": "[]",
+              "fieldName": "menuItems",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "name": "no-open-on-hover",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disables menu i=opening on hover",
+              "default": "false",
+              "fieldName": "noOpenOnHover",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "name": "offset",
+              "type": {
+                "text": "number"
+              },
+              "description": "spacing between top of list and menu button",
+              "default": "0",
+              "fieldName": "offset",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "name": "position",
+              "type": {
+                "text": "string"
+              },
+              "description": "Positions list to top, right, bottom, left of its content.",
+              "default": "\"bottom\"",
+              "fieldName": "position",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "name": "position-align",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aligns list at start, or end fo target. Default is centered.",
+              "default": "\"start\"",
+              "fieldName": "positionAlign",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "menuButtonCoreStyles",
+              "static": true,
+              "description": "the core styles needed to make a menu button",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "menuButtonThemeStyles",
+              "static": true,
+              "description": "styles that can be customized by\nextending and overriding this getter",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "menuTemplate",
+              "description": "template for dropdown menu",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "buttonTemplate",
+              "description": "template for button",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "listItemTemplate",
+              "description": "template for slotted list items",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "keyCode",
+              "description": "key code translations as object",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "close",
+              "parameters": [
+                {
+                  "name": "force",
+                  "default": "false",
+                  "description": "close even if other items have focus",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "closes menu",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "open",
+              "description": "opens menu",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "description": "gives focus to menu",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "focusOn",
+              "parameters": [
+                {
+                  "name": "item",
+                  "description": "menu item",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "focuses on a menu item",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "focusByCharacter",
+              "parameters": [
+                {
+                  "name": "char",
+                  "description": "character pressed",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "focuses on item based on character pressed",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "firstItem",
+              "description": "gets first menu item",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "previousItem",
+              "description": "gets previous menu item",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "nextItem",
+              "description": "gets next menu item",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "lastItem",
+              "description": "gets last menu item",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "firstChars",
+              "description": "gets list of menu item first characters",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getItemIndex",
+              "description": "gets index of a menuitem",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getItem",
+              "parameters": [
+                {
+                  "name": "offset",
+                  "default": "1",
+                  "description": "number of items after current menuitem in order, -1 for item before",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "gets a menuitem relative to the current item",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "itemListeners",
+              "description": "menuitem event listeners and their handlers",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "addItem",
+              "parameters": [
+                {
+                  "name": "item",
+                  "description": "menu item element",
+                  "type": {
+                    "text": "ibject"
+                  }
+                }
+              ],
+              "description": "adds a menuitem to lists and sets up its listeners",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "removeItem",
+              "parameters": [
+                {
+                  "name": "item",
+                  "description": "menu item element",
+                  "type": {
+                    "text": "ibject"
+                  }
+                }
+              ],
+              "description": "removes a menuitem's listners and menuitem istelf from list",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleAddItem",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "when a new menu item is added to slot,\nupdates menu items list and adds event listeners for item",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleRemoveItem",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "when a new menu item is removed from slot,\nupdates menu items list and removes event listeners for item",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleItemClick",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "when menu item is clicked,\nfocus on menu button and close menu",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_excludeEvent",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "can be overridden when extending this button,\nso that certain elements in menuitems are excluded from keyboard handling",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleItemKeydown",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles menu item keydown, as prescribed in\nhttps://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-links.html and\nhttps://www.w3.org/TR/wai-aria-practices/examples/menu-button/menu-button-actions-active-descendant.html",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles menu button keydown",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles when menu is clicked",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleFocus",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles when menu has focus",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleBlur",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles when menu loses focus",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleMouseover",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles menu mouseover",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleMouseout",
+              "parameters": [
+                {
+                  "name": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles menu mouseout",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Positions list to top, right, bottom, left of its content.",
+              "default": "\"bottom\"",
+              "attribute": "position",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "positionAlign",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aligns list at start, or end fo target. Default is centered.",
+              "default": "\"start\"",
+              "attribute": "position-align",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "offset",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "spacing between top of list and menu button",
+              "default": "0",
+              "attribute": "offset",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "expanded",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "default": "false",
+              "attribute": "expanded",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "menuItems",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "menu items in array form to move from prev to next",
+              "default": "[]",
+              "attribute": "menuItems",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "keepOpenOnClick",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "overrides default behavior of closing\nmenu after an item is clicked",
+              "default": "false",
+              "attribute": "keep-open-on-click",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "noOpenOnHover",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disables menu i=opening on hover",
+              "default": "false",
+              "attribute": "no-open-on-hover",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "currentItem",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Whether toggle is disabled",
+              "attribute": "currentItem",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "focused",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether button is toggled",
+              "attribute": "focused",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hovered",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether button is toggled",
+              "attribute": "hovered",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "close",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when menu is closed",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "name": "open",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when menu is opened",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            },
+            {
+              "name": "item-click",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "A11yMenuButtonBehaviors",
+                "module": "a11y-menu-button.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "A11yMenuButton",
+            "module": "a11y-menu-button.js"
+          }
         },
         {
-          "name": "focused",
-          "description": "`focused` {`boolean`} - Whether button is toggled\n\nProperty: focused",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "A11yMenuButton",
+          "declaration": {
+            "name": "A11yMenuButton",
+            "module": "a11y-menu-button.js"
+          }
         },
         {
-          "name": "hovered",
-          "description": "`hovered` {`boolean`} - Whether button is toggled\n\nProperty: hovered",
-          "valueSet": "v"
-        },
-        {
-          "name": "position",
-          "description": "`position` {`string`} - Positions list to top, right, bottom, left of its content.\n\nProperty: position\n\nDefault: bottom"
-        },
-        {
-          "name": "position-align",
-          "description": "`position-align` {`string`} - Aligns list at start, or end fo target. Default is centered.\n\nProperty: positionAlign\n\nDefault: start"
-        },
-        {
-          "name": "offset",
-          "description": "`offset` {`number`} - spacing between top of list and menu button\n\nProperty: offset\n\nDefault: 0"
-        },
-        {
-          "name": "expanded",
-          "description": "`expanded` {`boolean`} - Whether toggle is disabled\n\nProperty: expanded\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "menuItems",
-          "description": "`menuItems` {`any[]`} - menu items in array form to move from prev to next\n\nProperty: menuItems\n\nDefault: "
-        },
-        {
-          "name": "keep-open-on-click",
-          "description": "`keep-open-on-click` {`boolean`} - overrides default behavior of closing\nmenu after an item is clicked\n\nProperty: keepOpenOnClick\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "no-open-on-hover",
-          "description": "`no-open-on-hover` {`boolean`} - disables menu i=opening on hover\n\nProperty: noOpenOnHover\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onclose",
-          "description": "`close` {`CustomEvent<this>`} - Fires when menu is closed"
-        },
-        {
-          "name": "onopen",
-          "description": "`open` {`CustomEvent<this>`} - Fires when menu is opened"
-        },
-        {
-          "name": "onitem-click",
-          "description": "`item-click` {`CustomEvent<Event>`} - "
+          "kind": "js",
+          "name": "A11yMenuButtonBehaviors",
+          "declaration": {
+            "name": "A11yMenuButtonBehaviors",
+            "module": "a11y-menu-button.js"
+          }
         }
       ]
     },
     {
-      "name": "a11y-menu-button-item",
-      "description": "a11y-menu-button-item\nA toggle button for an property in editable-table interface (editable-table.html).\n\n### Styling\n\n`<a11y-menu-button-item>` provides custom properties for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-menu-button-item-text-decoration | button or link text decoration | none\n--a11y-menu-button-item-color | button or link text color | --a11y-menu-button-color\n--a11y-menu-button-item-text-align | button or link text alignment | left\n--a11y-menu-button-item-vertical-padding | button or link vertical padding | --a11y-menu-button-vertical-padding\n--a11y-menu-button-item-horizontal-padding | button or link horizontal padding | --a11y-menu-button-horizontal-padding\n--a11y-menu-button-item-bg-color | button or link background color | --a11y-menu-button-bg-color\n--a11y-menu-button-item-border | default button or link border  | none\n--a11y-menu-button-item-border-left | overrides button or link left border  | none\n--a11y-menu-button-item-border-right | overrides button or link right border | none\n--a11y-menu-button-item-border-top | overrides button or link top border | none\n--a11y-menu-button-item-border-bottom | overrides button or link bottom border | none\n--a11y-menu-button-item-focus-text-decoration | button or link text decoration when focused | none\n--a11y-menu-button-item-focus-color | button or link text color when focused | black\n--a11y-menu-button-item-focus-bg-color | button or link background color when focused | #e0e0ff\n--a11y-menu-button-item-focus-border-left | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border-right | overrides button or link left border when focused | unset)\n--a11y-menu-button-item-focus-border-top | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border-bottom | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border | button or link border when focused | unset\n\nEvents:\n\n  * `add-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is added to dom\n\n  * `remove-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is removed from dom\n\nAttributes:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `href` {`string`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Whether toggle is disabled\n\n  * `slot` {`string`} - \n\nProperties:\n\n  * `disabled` {`boolean`} - Whether toggle is disabled\n\n  * `hidden` {`boolean`} - Whether toggle is disabled\n\n  * `href` {`string`} - Whether toggle is disabled\n\n  * `controls` {`string`} - Whether toggle is disabled\n\n  * `linkTemplate` {`UncompiledTemplateResult<1>`} - renders item as a link\n\n  * `buttonTemplate` {`UncompiledTemplateResult<1>`} - renders item as a button\n\n  * `menuItem` - gets item with role=\"menuitem\"\n\n  * `slot` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/a11y-menu-button-item.js",
+      "declarations": [
         {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - Whether toggle is disabled\n\nProperty: disabled",
-          "valueSet": "v"
+          "kind": "mixin",
+          "description": "",
+          "name": "A11yMenuButtonItemBehaviors",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "linkTemplate",
+              "description": "renders item as a link",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "buttonTemplate",
+              "description": "renders item as a button",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "menuItem",
+              "description": "gets item with role=\"menuitem\"",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "description": "allows link or button to get focus"
+            },
+            {
+              "kind": "field",
+              "name": "slot",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"menuitem\"",
+              "attribute": "slot",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "hidden",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "attribute": "hidden",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Whether toggle is disabled",
+              "attribute": "href"
+            },
+            {
+              "kind": "field",
+              "name": "controls",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Whether toggle is disabled",
+              "attribute": "controls"
+            }
+          ],
+          "events": [
+            {
+              "name": "add-a11y-menu-button-item",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when menu item is added to dom"
+            },
+            {
+              "name": "remove-a11y-menu-button-item",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when menu item is removed from dom"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "hidden",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "fieldName": "hidden"
+            },
+            {
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "description": "Whether toggle is disabled",
+              "fieldName": "href"
+            },
+            {
+              "name": "controls",
+              "type": {
+                "text": "string"
+              },
+              "description": "Whether toggle is disabled",
+              "fieldName": "controls"
+            },
+            {
+              "name": "slot",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"menuitem\"",
+              "fieldName": "slot"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
         },
         {
-          "name": "hidden",
-          "description": "`hidden` {`boolean`} - Whether toggle is disabled\n\nProperty: hidden",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "a11y-menu-button-item\nA toggle button for an property in editable-table interface (editable-table.html).\n\n### Styling\n\n`<a11y-menu-button-item>` provides custom properties for styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-menu-button-item-text-decoration | button or link text decoration | none\n--a11y-menu-button-item-color | button or link text color | --a11y-menu-button-color\n--a11y-menu-button-item-text-align | button or link text alignment | left\n--a11y-menu-button-item-vertical-padding | button or link vertical padding | --a11y-menu-button-vertical-padding\n--a11y-menu-button-item-horizontal-padding | button or link horizontal padding | --a11y-menu-button-horizontal-padding\n--a11y-menu-button-item-bg-color | button or link background color | --a11y-menu-button-bg-color\n--a11y-menu-button-item-border | default button or link border  | none\n--a11y-menu-button-item-border-left | overrides button or link left border  | none\n--a11y-menu-button-item-border-right | overrides button or link right border | none\n--a11y-menu-button-item-border-top | overrides button or link top border | none\n--a11y-menu-button-item-border-bottom | overrides button or link bottom border | none\n--a11y-menu-button-item-focus-text-decoration | button or link text decoration when focused | none\n--a11y-menu-button-item-focus-color | button or link text color when focused | black\n--a11y-menu-button-item-focus-bg-color | button or link background color when focused | #e0e0ff\n--a11y-menu-button-item-focus-border-left | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border-right | overrides button or link left border when focused | unset)\n--a11y-menu-button-item-focus-border-top | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border-bottom | overrides button or link left border when focused | unset\n--a11y-menu-button-item-focus-border | button or link border when focused | unset",
+          "name": "A11yMenuButtonItem",
+          "mixins": [
+            {
+              "name": "A11yMenuButtonItemBehaviors",
+              "module": "lib/a11y-menu-button-item.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "a11y-menu-button-item",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "name": "hidden",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "fieldName": "hidden",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "name": "href",
+              "type": {
+                "text": "string"
+              },
+              "description": "Whether toggle is disabled",
+              "fieldName": "href",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "name": "controls",
+              "type": {
+                "text": "string"
+              },
+              "description": "Whether toggle is disabled",
+              "fieldName": "controls",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "name": "slot",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"menuitem\"",
+              "fieldName": "slot",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "linkTemplate",
+              "description": "renders item as a link",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "buttonTemplate",
+              "description": "renders item as a button",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "menuItem",
+              "description": "gets item with role=\"menuitem\"",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "description": "allows link or button to get focus",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "slot",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"menuitem\"",
+              "attribute": "slot",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "attribute": "disabled",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hidden",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether toggle is disabled",
+              "attribute": "hidden",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "href",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Whether toggle is disabled",
+              "attribute": "href",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "controls",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Whether toggle is disabled",
+              "attribute": "controls",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "add-a11y-menu-button-item",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when menu item is added to dom",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            },
+            {
+              "name": "remove-a11y-menu-button-item",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when menu item is removed from dom",
+              "inheritedFrom": {
+                "name": "A11yMenuButtonItemBehaviors",
+                "module": "lib/a11y-menu-button-item.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "A11yMenuButtonItem",
+            "module": "lib/a11y-menu-button-item.js"
+          }
         },
         {
-          "name": "href",
-          "description": "`href` {`string`} - Whether toggle is disabled\n\nProperty: href"
+          "kind": "js",
+          "name": "A11yMenuButtonItem",
+          "declaration": {
+            "name": "A11yMenuButtonItem",
+            "module": "lib/a11y-menu-button-item.js"
+          }
         },
         {
-          "name": "controls",
-          "description": "`controls` {`string`} - Whether toggle is disabled\n\nProperty: controls"
-        },
-        {
-          "name": "slot",
-          "description": "`slot` {`string`} - \n\nProperty: slot\n\nDefault: menuitem"
-        },
-        {
-          "name": "onadd-a11y-menu-button-item",
-          "description": "`add-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is added to dom"
-        },
-        {
-          "name": "onremove-a11y-menu-button-item",
-          "description": "`remove-a11y-menu-button-item` {`CustomEvent<this>`} - Fires when menu item is removed from dom"
+          "kind": "js",
+          "name": "A11yMenuButtonItemBehaviors",
+          "declaration": {
+            "name": "A11yMenuButtonItemBehaviors",
+            "module": "lib/a11y-menu-button-item.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

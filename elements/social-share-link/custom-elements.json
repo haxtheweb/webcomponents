@@ -1,59 +1,347 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "social-share-link",
-      "description": "`social-share-link`\n`a link to share content on social`\n\nAttributes:\n\n  * `__href` {`string`} - the href for the link\n\n  * `__icon` {`string`} - the icon name for the link\n\n  * `__linkText` {`string`} - the link text specified, or the default link text\n\n  * `__showIcon` {`boolean`} - \n\n  * `button-style` {`boolean`} - display link as a button\n\n  * `image` {`string`} - optional image to attach to the share\n(Pinterest only)\n\n  * `message` {`string`} - the message to attach to the social share\n(not used in Facebook)\n\n  * `mode` {`string`} - optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text\n\n  * `text` {`string`} - the link text; if null, the text will be \"Share on (type of social)\"\n\n  * `type` {`string`} - the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)\n\n  * `url` {`string`} - the url to share\n\nProperties:\n\n  * `__href` {`string`} - the href for the link\n\n  * `__icon` {`string`} - the icon name for the link\n\n  * `__linkText` {`string`} - the link text specified, or the default link text\n\n  * `__showIcon` {`boolean`} - \n\n  * `buttonStyle` {`boolean`} - display link as a button\n\n  * `image` {`string`} - optional image to attach to the share\n(Pinterest only)\n\n  * `message` {`string`} - the message to attach to the social share\n(not used in Facebook)\n\n  * `mode` {`string`} - optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text\n\n  * `text` {`string`} - the link text; if null, the text will be \"Share on (type of social)\"\n\n  * `type` {`string`} - the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)\n\n  * `url` {`string`} - the url to share",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "social-share-link.js",
+      "declarations": [
         {
-          "name": "__href",
-          "description": "`__href` {`string`} - the href for the link\n\nProperty: __href"
+          "kind": "class",
+          "description": "`social-share-link`\n`a link to share content on social`",
+          "name": "SocialShareLink",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_getHref",
+              "parameters": [
+                {
+                  "name": "image"
+                },
+                {
+                  "name": "message"
+                },
+                {
+                  "name": "type"
+                },
+                {
+                  "name": "url"
+                },
+                {
+                  "description": "image url (Pinterest only)",
+                  "name": "optional",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "description": "url",
+                  "name": "the",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "returns the href",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getLinkText",
+              "parameters": [
+                {
+                  "name": "text"
+                },
+                {
+                  "name": "type"
+                },
+                {
+                  "description": "link type",
+                  "name": "the",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "gets the link text or a default",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getIcon",
+              "parameters": [
+                {
+                  "name": "type"
+                },
+                {
+                  "description": "link type",
+                  "name": "the",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "returns the icon name",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "buttonStyle",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "display link as a button",
+              "default": "false",
+              "attribute": "button-style",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "optional image to attach to the share\n(Pinterest only)",
+              "default": "\"\"",
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "the message to attach to the social share\n(not used in Facebook)",
+              "default": "\"\"",
+              "attribute": "message"
+            },
+            {
+              "kind": "field",
+              "name": "mode",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text",
+              "default": "null",
+              "attribute": "mode"
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "the link text; if null, the text will be \"Share on (type of social)\"",
+              "default": "null",
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)",
+              "default": "\"Twitter\"",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "the url to share",
+              "default": "null",
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "__href",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "the href for the link",
+              "attribute": "__href"
+            },
+            {
+              "kind": "field",
+              "name": "__icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "the icon name for the link",
+              "attribute": "__icon"
+            },
+            {
+              "kind": "field",
+              "name": "__linkText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "the link text specified, or the default link text",
+              "attribute": "__linkText"
+            },
+            {
+              "kind": "field",
+              "name": "__showIcon",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "__showIcon"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "button-style",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "display link as a button",
+              "default": "false",
+              "fieldName": "buttonStyle"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "description": "optional image to attach to the share\n(Pinterest only)",
+              "default": "\"\"",
+              "fieldName": "image"
+            },
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "description": "the message to attach to the social share\n(not used in Facebook)",
+              "default": "\"\"",
+              "fieldName": "message"
+            },
+            {
+              "name": "mode",
+              "type": {
+                "text": "null"
+              },
+              "description": "optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text",
+              "default": "null",
+              "fieldName": "mode"
+            },
+            {
+              "name": "text",
+              "type": {
+                "text": "null"
+              },
+              "description": "the link text; if null, the text will be \"Share on (type of social)\"",
+              "default": "null",
+              "fieldName": "text"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "description": "the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)",
+              "default": "\"Twitter\"",
+              "fieldName": "type"
+            },
+            {
+              "name": "url",
+              "type": {
+                "text": "null"
+              },
+              "description": "the url to share",
+              "default": "null",
+              "fieldName": "url"
+            },
+            {
+              "name": "__href",
+              "type": {
+                "text": "string"
+              },
+              "description": "the href for the link",
+              "fieldName": "__href"
+            },
+            {
+              "name": "__icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "the icon name for the link",
+              "fieldName": "__icon"
+            },
+            {
+              "name": "__linkText",
+              "type": {
+                "text": "string"
+              },
+              "description": "the link text specified, or the default link text",
+              "fieldName": "__linkText"
+            },
+            {
+              "name": "__showIcon",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "__showIcon"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "social-share-link",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SocialShareLink",
+            "module": "social-share-link.js"
+          }
         },
         {
-          "name": "__icon",
-          "description": "`__icon` {`string`} - the icon name for the link\n\nProperty: __icon"
-        },
-        {
-          "name": "__linkText",
-          "description": "`__linkText` {`string`} - the link text specified, or the default link text\n\nProperty: __linkText"
-        },
-        {
-          "name": "__showIcon",
-          "description": "`__showIcon` {`boolean`} - \n\nProperty: __showIcon",
-          "valueSet": "v"
-        },
-        {
-          "name": "button-style",
-          "description": "`button-style` {`boolean`} - display link as a button\n\nProperty: buttonStyle\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "image",
-          "description": "`image` {`string`} - optional image to attach to the share\n(Pinterest only)\n\nProperty: image\n\nDefault: "
-        },
-        {
-          "name": "message",
-          "description": "`message` {`string`} - the message to attach to the social share\n(not used in Facebook)\n\nProperty: message\n\nDefault: "
-        },
-        {
-          "name": "mode",
-          "description": "`mode` {`string`} - optional display mode for the link,\"text-only\" or \"icon-only\";\ndefault is to dislay both an icon and text\n\nProperty: mode\n\nDefault: null"
-        },
-        {
-          "name": "text",
-          "description": "`text` {`string`} - the link text; if null, the text will be \"Share on (type of social)\"\n\nProperty: text\n\nDefault: null"
-        },
-        {
-          "name": "type",
-          "description": "`type` {`string`} - the type of social; currently supports\nFacebook, LinkedIn, Pinterest, and Twitter (default)\n\nProperty: type\n\nDefault: Twitter"
-        },
-        {
-          "name": "url",
-          "description": "`url` {`string`} - the url to share\n\nProperty: url\n\nDefault: null"
+          "kind": "js",
+          "name": "SocialShareLink",
+          "declaration": {
+            "name": "SocialShareLink",
+            "module": "social-share-link.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

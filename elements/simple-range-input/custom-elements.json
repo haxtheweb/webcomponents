@@ -1,64 +1,230 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "simple-range-input",
-      "description": "`simple-range-input`\n`simple styling on a range input`\n\nEvents:\n\n  * `immediate-value-changed` {`CustomEvent<{ value: number; }>`} - \n\n  * `value-changed` {`CustomEvent<{ value: number; }>`} - \n\nAttributes:\n\n  * `dragging` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `min` {`number`} - \n\n  * `max` {`number`} - \n\n  * `step` {`number`} - \n\n  * `value` {`number`} - \n\n  * `immediate-value` {`number`} - \n\n  * `disabled` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `dragging` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `min` {`number`} - \n\n  * `max` {`number`} - \n\n  * `step` {`number`} - \n\n  * `value` {`number`} - \n\n  * `immediateValue` {`number`} - \n\n  * `disabled` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "simple-range-input.js",
+      "declarations": [
         {
-          "name": "dragging",
-          "description": "`dragging` {`boolean`} - \n\nProperty: dragging\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`simple-range-input`\n`simple styling on a range input`",
+          "name": "SimpleRangeInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "This is a convention, not the standard",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_inputChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_valueChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "dragging",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "dragging",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Range input\"",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "min",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "min"
+            },
+            {
+              "kind": "field",
+              "name": "max",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "attribute": "max"
+            },
+            {
+              "kind": "field",
+              "name": "step",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "attribute": "step"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "immediateValue",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "immediate-value"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "name": "immediate-value-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "dragging",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "dragging"
+            },
+            {
+              "name": "immediate-value",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "immediateValue"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "value"
+            },
+            {
+              "name": "min",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "min"
+            },
+            {
+              "name": "step",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "fieldName": "step"
+            },
+            {
+              "name": "max",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "fieldName": "max"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Range input\"",
+              "fieldName": "label"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "simple-range-input",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleRangeInput",
+            "module": "simple-range-input.js"
+          }
         },
         {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Range input"
-        },
-        {
-          "name": "min",
-          "description": "`min` {`number`} - \n\nProperty: min\n\nDefault: 0"
-        },
-        {
-          "name": "max",
-          "description": "`max` {`number`} - \n\nProperty: max\n\nDefault: 100"
-        },
-        {
-          "name": "step",
-          "description": "`step` {`number`} - \n\nProperty: step\n\nDefault: 1"
-        },
-        {
-          "name": "value",
-          "description": "`value` {`number`} - \n\nProperty: value\n\nDefault: 0"
-        },
-        {
-          "name": "immediate-value",
-          "description": "`immediate-value` {`number`} - \n\nProperty: immediateValue\n\nDefault: 0"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onimmediate-value-changed",
-          "description": "`immediate-value-changed` {`CustomEvent<{ value: number; }>`} - "
-        },
-        {
-          "name": "onvalue-changed",
-          "description": "`value-changed` {`CustomEvent<{ value: number; }>`} - "
+          "kind": "js",
+          "name": "SimpleRangeInput",
+          "declaration": {
+            "name": "SimpleRangeInput",
+            "module": "simple-range-input.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

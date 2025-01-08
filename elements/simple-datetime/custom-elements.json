@@ -1,30 +1,148 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "simple-datetime",
-      "description": "`simple-datetime`\n\nAttributes:\n\n  * `timestamp` {`number`} - Javascript timestamp\n\n  * `date` {`string`} - Date, generated from timestamp + format\n\n  * `format` {`string`} - Format to output, see https://github.com/jacwright/date.format#supported-identifiers\n\n  * `unix` {`boolean`} - Support for UNIX timestamp conversion on the fly\n\nProperties:\n\n  * `timestamp` {`number`} - Javascript timestamp\n\n  * `date` {`string`} - Date, generated from timestamp + format\n\n  * `format` {`string`} - Format to output, see https://github.com/jacwright/date.format#supported-identifiers\n\n  * `unix` {`boolean`} - Support for UNIX timestamp conversion on the fly",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "simple-datetime.js",
+      "declarations": [
         {
-          "name": "timestamp",
-          "description": "`timestamp` {`number`} - Javascript timestamp\n\nProperty: timestamp"
+          "kind": "class",
+          "description": "`simple-datetime`",
+          "name": "SimpleDatetime",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "formatDate",
+              "parameters": [
+                {
+                  "name": "timestamp"
+                },
+                {
+                  "name": "format"
+                },
+                {
+                  "name": "unix"
+                }
+              ],
+              "description": "Figure out the date"
+            },
+            {
+              "kind": "field",
+              "name": "format",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Format to output, see https://github.com/jacwright/date.format#supported-identifiers",
+              "default": "\"M jS, Y\"",
+              "attribute": "format"
+            },
+            {
+              "kind": "field",
+              "name": "unix",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Support for UNIX timestamp conversion on the fly",
+              "default": "false",
+              "attribute": "unix"
+            },
+            {
+              "kind": "field",
+              "name": "timestamp",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Javascript timestamp",
+              "attribute": "timestamp"
+            },
+            {
+              "kind": "field",
+              "name": "date",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Date, generated from timestamp + format",
+              "attribute": "date"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "timestamp",
+              "type": {
+                "text": "number"
+              },
+              "description": "Javascript timestamp",
+              "fieldName": "timestamp"
+            },
+            {
+              "name": "format",
+              "type": {
+                "text": "string"
+              },
+              "description": "Format to output, see https://github.com/jacwright/date.format#supported-identifiers",
+              "default": "\"M jS, Y\"",
+              "fieldName": "format"
+            },
+            {
+              "name": "date",
+              "type": {
+                "text": "string"
+              },
+              "description": "Date, generated from timestamp + format",
+              "fieldName": "date"
+            },
+            {
+              "name": "unix",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Support for UNIX timestamp conversion on the fly",
+              "default": "false",
+              "fieldName": "unix"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "simple-datetime",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleDatetime",
+            "module": "simple-datetime.js"
+          }
         },
         {
-          "name": "date",
-          "description": "`date` {`string`} - Date, generated from timestamp + format\n\nProperty: date"
-        },
-        {
-          "name": "format",
-          "description": "`format` {`string`} - Format to output, see https://github.com/jacwright/date.format#supported-identifiers\n\nProperty: format\n\nDefault: M jS, Y"
-        },
-        {
-          "name": "unix",
-          "description": "`unix` {`boolean`} - Support for UNIX timestamp conversion on the fly\n\nProperty: unix\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "SimpleDatetime",
+          "declaration": {
+            "name": "SimpleDatetime",
+            "module": "simple-datetime.js"
+          }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/date.format.js",
+      "declarations": [],
+      "exports": []
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

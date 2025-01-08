@@ -1,21 +1,124 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "dynamic-import-registry",
-      "description": "`dynamic-import-registry`\n`maintain manage the registration and usage of dynamic imports`\n\nEvents:\n\n  * `dynamic-import-registry-loaded` {`CustomEvent<{ tag: any; path: any; module: any; }>`} - \n\n  * `dynamic-import-registry-failure` {`CustomEvent<{ tag: any; path: any; module: null; }>`} - \n\nProperties:\n\n  * `windowControllers` - \n\n  * `list` - \n\n  * `__loaded` - \n\n  * `basePath` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "dynamic-import-registry.js",
+      "declarations": [
         {
-          "name": "ondynamic-import-registry-loaded",
-          "description": "`dynamic-import-registry-loaded` {`CustomEvent<{ tag: any; path: any; module: any; }>`} - "
+          "kind": "class",
+          "description": "`dynamic-import-registry`\n`maintain manage the registration and usage of dynamic imports`",
+          "name": "DynamicImportRegistry",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "register",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "registerDefinitionEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "This doesn't actually do the import, it just holds the definition"
+            },
+            {
+              "kind": "method",
+              "name": "getPathToTag",
+              "parameters": [
+                {
+                  "name": "tag"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "loadDefinition",
+              "parameters": [
+                {
+                  "name": "tag"
+                }
+              ],
+              "description": "This implements the definition with checks to ensure it need not run"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "list",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "__loaded",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "basePath"
+            }
+          ],
+          "events": [
+            {
+              "name": "dynamic-import-registry-loaded",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "dynamic-import-registry-failure",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "dynamic-import-registry",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "DynamicImportRegistry",
+            "module": "dynamic-import-registry.js"
+          }
         },
         {
-          "name": "ondynamic-import-registry-failure",
-          "description": "`dynamic-import-registry-failure` {`CustomEvent<{ tag: any; path: any; module: null; }>`} - "
+          "kind": "js",
+          "name": "DynamicImportRegistry",
+          "declaration": {
+            "name": "DynamicImportRegistry",
+            "module": "dynamic-import-registry.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

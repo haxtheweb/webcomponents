@@ -1,51 +1,288 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "iframe-loader",
-      "description": "Attributes:\n\n  * `source` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `invalidSource` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `height` {`string`} - \n\n  * `width` {`string`} - \n\n  * `__iframe` - \n\n  * `__mutationObserver` - \n\n  * `__observer` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "iframe-loader.js",
+      "declarations": [
         {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source"
+          "kind": "class",
+          "description": "",
+          "name": "IframeLoader",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "iframeLoadingCallback",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessNodeToContent",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "invalidSource",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "loading"
+            },
+            {
+              "kind": "field",
+              "name": "height",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "500",
+              "attribute": "height"
+            },
+            {
+              "kind": "field",
+              "name": "width",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"100%\"",
+              "attribute": "width"
+            },
+            {
+              "kind": "field",
+              "name": "__iframe",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "__mutationObserver",
+              "default": "new MutationObserver((mutations) => { mutations.forEach((mutation) => { if (mutation.target.offsetHeight) { // if we are still in the loading state if (this.loading) { this.height = mutation.target.offsetHeight; } } }); })"
+            },
+            {
+              "kind": "field",
+              "name": "__observer",
+              "default": "new MutationObserver((mutations) => { if (this.querySelector(\"iframe\")) { this.__iframe = this.querySelector(\"iframe\"); this.source = this.__iframe.getAttribute(\"src\"); // Listen for new this.__iframe.addEventListener( \"load\", this.iframeLoadingCallback.bind(this), ); this.__mutationObserver.observe(this.__iframe, { attributes: true, }); } })"
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "source",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "loading"
+            },
+            {
+              "name": "height",
+              "type": {
+                "text": "number"
+              },
+              "default": "500",
+              "fieldName": "height"
+            },
+            {
+              "name": "width",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"100%\"",
+              "fieldName": "width"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "source"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "IframeLoader",
+          "declaration": {
+            "name": "IframeLoader",
+            "module": "iframe-loader.js"
+          }
         },
         {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "height",
-          "description": "`height` {`string`} - \n\nProperty: height\n\nDefault: 500"
-        },
-        {
-          "name": "width",
-          "description": "`width` {`string`} - \n\nProperty: width\n\nDefault: 100%"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "IframeLoader",
+            "module": "iframe-loader.js"
+          }
         }
       ]
     },
     {
-      "name": "loading-indicator",
-      "description": "Attributes:\n\n  * `full` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\nProperties:\n\n  * `full` {`boolean`} - \n\n  * `loading` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/loading-indicator.js",
+      "declarations": [
         {
-          "name": "full",
-          "description": "`full` {`boolean`} - \n\nProperty: full\n\nDefault: false",
-          "valueSet": "v"
-        },
+          "kind": "class",
+          "description": "",
+          "name": "LoadingIndicator",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "full",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "full",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "loading",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "full",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "full"
+            },
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "loading"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
         {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LoadingIndicator",
+            "module": "lib/loading-indicator.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,316 +1,3323 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "confetti-container",
-      "description": "Attributes:\n\n  * `popped` {} - \n\nProperties:\n\n  * `canvas` - \n\n  * `confetti` {`never[]`} - \n\n  * `sequins` {`never[]`} - \n\n  * `options` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "multiple-choice.js",
+      "declarations": [
         {
-          "name": "popped",
-          "description": "`popped` {} - \n\n"
+          "kind": "class",
+          "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`",
+          "name": "MultipleChoice",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "renderDirections",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxinlineContextMenu",
+              "parameters": [
+                {
+                  "name": "ceMenu"
+                }
+              ],
+              "description": "add buttons when it is in context",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxClickInlineAdd",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxClickInlineRemove",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getGuess",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "guessCount",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkedEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "resetAnswer",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Reset user answers and shuffle the board again.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "isCorrect",
+              "description": "Return if the current answers are correct",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "makeItRain",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkAnswer",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Verify the answers of the user based on their saying\nthat they want to see how they did.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkAnswerCallback",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_computeDisplayedAnswers",
+              "parameters": [
+                {
+                  "name": "answers"
+                },
+                {
+                  "name": "randomize"
+                }
+              ],
+              "description": "Figure out the order of the answers which will be displayed",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "playSound",
+              "parameters": [
+                {
+                  "name": "sound"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessNodeToContent",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "HAX preprocess Node to Content hook",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessInsertContent",
+              "parameters": [
+                {
+                  "name": "detail"
+                },
+                {
+                  "name": "activeNode"
+                }
+              ],
+              "description": "HAX preprocess insert content hook",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderInteraction",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "inactiveCase",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderButtons",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderLegend",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderFeedback",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "clickSingle",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "cleanAnswerData",
+              "parameters": [
+                {
+                  "name": "answers"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "cleanAnswerDataBeforeSend",
+              "parameters": [
+                {
+                  "name": "answer"
+                },
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "answers"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "answerPrototype",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "processInput",
+              "parameters": [
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "inputs"
+                },
+                {
+                  "name": "answers"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "loadLightDomData",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderEditModeFeedbackAreas",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxToggleEdit",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "guessDataValue",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"display\"",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "shadowRootOptions",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true, }",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "maxAttempts",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "max-attempts",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "attempts",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "attempts",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showAnswer",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "show-answer",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "randomize",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Randomize the display of the answers",
+              "default": "false",
+              "attribute": "randomize",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideButtons",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "flag to hide buttons",
+              "default": "false",
+              "attribute": "hide-buttons",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Support disabling interaction with the entire board",
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "singleOption",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Simple option, otherwise allow multiple via checkbox",
+              "default": "false",
+              "attribute": "single-option",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "media",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "media",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "question",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Question to ask",
+              "default": "\"\"",
+              "attribute": "question",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "answers",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Array of possible answers",
+              "default": "[]",
+              "attribute": "answers",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "displayedAnswers",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Displayed Answer set.",
+              "default": "[]",
+              "attribute": "displayedAnswers",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "correctText",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"You are correct!\"",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "incorrectText",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Try again!\"",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "quizName",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name of the quiz - hardcoded for now from HTML",
+              "default": "\"default\"",
+              "attribute": "quiz-name",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ numCorrectLeft: \"You have\", numCorrectRight: \"correct\", checkAnswer: \"Check answer\", tryAgain: \"Try again\", }",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "edit",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "edit",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "relatedResource",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Related Resource ID",
+              "attribute": "related-resource",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "QuestionElement",
+            "module": "/lib/QuestionElement.js"
+          },
+          "tagName": "multiple-choice",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "edit",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "edit",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "show-answer",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "showAnswer",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "media",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "media",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "max-attempts",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "maxAttempts",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "attempts",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "attempts",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Support disabling interaction with the entire board",
+              "default": "false",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "single-option",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Simple option, otherwise allow multiple via checkbox",
+              "default": "false",
+              "fieldName": "singleOption",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "related-resource",
+              "type": {
+                "text": "string"
+              },
+              "description": "Related Resource ID",
+              "fieldName": "relatedResource",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "question",
+              "type": {
+                "text": "string"
+              },
+              "description": "Question to ask",
+              "default": "\"\"",
+              "fieldName": "question",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "answers",
+              "type": {
+                "text": "array"
+              },
+              "description": "Array of possible answers",
+              "default": "[]",
+              "fieldName": "answers",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "displayedAnswers",
+              "type": {
+                "text": "array"
+              },
+              "description": "Displayed Answer set.",
+              "default": "[]",
+              "fieldName": "displayedAnswers",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "quiz-name",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name of the quiz - hardcoded for now from HTML",
+              "default": "\"default\"",
+              "fieldName": "quizName",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "randomize",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Randomize the display of the answers",
+              "default": "false",
+              "fieldName": "randomize",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "hide-buttons",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "flag to hide buttons",
+              "default": "false",
+              "fieldName": "hideButtons",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "eventName",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "user-engagement",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MultipleChoice",
+            "module": "multiple-choice.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MultipleChoice",
+          "declaration": {
+            "name": "MultipleChoice",
+            "module": "multiple-choice.js"
+          }
         }
       ]
     },
     {
-      "name": "short-answer-question",
-      "description": "`short-answer-question`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `shortanswer` {`string`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `is-safari` {`boolean`} - \n\nProperties:\n\n  * `shortanswer` {`string`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - \n\n  * `incorrectText` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/QuestionElement.js",
+      "declarations": [
         {
-          "name": "shortanswer",
-          "description": "`shortanswer` {`string`} - \n\nProperty: shortanswer\n\nDefault: null"
-        },
+          "kind": "class",
+          "description": "",
+          "name": "QuestionElement",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getGuess"
+            },
+            {
+              "kind": "method",
+              "name": "guessCount"
+            },
+            {
+              "kind": "method",
+              "name": "checkedEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "resetAnswer",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Reset user answers and shuffle the board again."
+            },
+            {
+              "kind": "method",
+              "name": "isCorrect",
+              "description": "Return if the current answers are correct"
+            },
+            {
+              "kind": "method",
+              "name": "makeItRain"
+            },
+            {
+              "kind": "method",
+              "name": "checkAnswer",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Verify the answers of the user based on their saying\nthat they want to see how they did."
+            },
+            {
+              "kind": "method",
+              "name": "checkAnswerCallback"
+            },
+            {
+              "kind": "method",
+              "name": "_computeDisplayedAnswers",
+              "parameters": [
+                {
+                  "name": "answers"
+                },
+                {
+                  "name": "randomize"
+                }
+              ],
+              "description": "Figure out the order of the answers which will be displayed"
+            },
+            {
+              "kind": "method",
+              "name": "playSound",
+              "parameters": [
+                {
+                  "name": "sound"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessNodeToContent",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "HAX preprocess Node to Content hook"
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessInsertContent",
+              "parameters": [
+                {
+                  "name": "detail"
+                },
+                {
+                  "name": "activeNode"
+                }
+              ],
+              "description": "HAX preprocess insert content hook"
+            },
+            {
+              "kind": "method",
+              "name": "renderInteraction"
+            },
+            {
+              "kind": "method",
+              "name": "inactiveCase"
+            },
+            {
+              "kind": "method",
+              "name": "renderButtons"
+            },
+            {
+              "kind": "method",
+              "name": "renderDirections"
+            },
+            {
+              "kind": "method",
+              "name": "renderLegend"
+            },
+            {
+              "kind": "method",
+              "name": "renderFeedback"
+            },
+            {
+              "kind": "method",
+              "name": "clickSingle",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "cleanAnswerData",
+              "parameters": [
+                {
+                  "name": "answers"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "cleanAnswerDataBeforeSend",
+              "parameters": [
+                {
+                  "name": "answer"
+                },
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "answers"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "answerPrototype"
+            },
+            {
+              "kind": "method",
+              "name": "processInput",
+              "parameters": [
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "inputs"
+                },
+                {
+                  "name": "answers"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "loadLightDomData"
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderEditModeFeedbackAreas"
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxinlineContextMenu",
+              "parameters": [
+                {
+                  "name": "ceMenu"
+                }
+              ],
+              "description": "add buttons when it is in context"
+            },
+            {
+              "kind": "method",
+              "name": "haxToggleEdit",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "guessDataValue",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"display\""
+            },
+            {
+              "kind": "field",
+              "name": "shadowRootOptions",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true, }"
+            },
+            {
+              "kind": "field",
+              "name": "maxAttempts",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "max-attempts",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "attempts",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "attempts",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showAnswer",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "show-answer",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "randomize",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Randomize the display of the answers",
+              "default": "false",
+              "attribute": "randomize",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hideButtons",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "flag to hide buttons",
+              "default": "false",
+              "attribute": "hide-buttons"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Support disabling interaction with the entire board",
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "singleOption",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Simple option, otherwise allow multiple via checkbox",
+              "default": "false",
+              "attribute": "single-option"
+            },
+            {
+              "kind": "field",
+              "name": "media",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "media"
+            },
+            {
+              "kind": "field",
+              "name": "question",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Question to ask",
+              "default": "\"\"",
+              "attribute": "question"
+            },
+            {
+              "kind": "field",
+              "name": "answers",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Array of possible answers",
+              "default": "[]",
+              "attribute": "answers"
+            },
+            {
+              "kind": "field",
+              "name": "displayedAnswers",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Displayed Answer set.",
+              "default": "[]",
+              "attribute": "displayedAnswers"
+            },
+            {
+              "kind": "field",
+              "name": "correctText",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"You are correct!\""
+            },
+            {
+              "kind": "field",
+              "name": "incorrectText",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Try again!\""
+            },
+            {
+              "kind": "field",
+              "name": "quizName",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name of the quiz - hardcoded for now from HTML",
+              "default": "\"default\"",
+              "attribute": "quiz-name"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ numCorrectLeft: \"You have\", numCorrectRight: \"correct\", checkAnswer: \"Check answer\", tryAgain: \"Try again\", }"
+            },
+            {
+              "kind": "field",
+              "name": "edit",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "edit",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "relatedResource",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Related Resource ID",
+              "attribute": "related-resource"
+            }
+          ],
+          "events": [
+            {
+              "name": "eventName",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "user-engagement",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "edit",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "edit"
+            },
+            {
+              "name": "show-answer",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "showAnswer"
+            },
+            {
+              "name": "media",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "media"
+            },
+            {
+              "name": "max-attempts",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "maxAttempts"
+            },
+            {
+              "name": "attempts",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "attempts"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Support disabling interaction with the entire board",
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "single-option",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Simple option, otherwise allow multiple via checkbox",
+              "default": "false",
+              "fieldName": "singleOption"
+            },
+            {
+              "name": "related-resource",
+              "type": {
+                "text": "string"
+              },
+              "description": "Related Resource ID",
+              "fieldName": "relatedResource"
+            },
+            {
+              "name": "question",
+              "type": {
+                "text": "string"
+              },
+              "description": "Question to ask",
+              "default": "\"\"",
+              "fieldName": "question"
+            },
+            {
+              "name": "answers",
+              "type": {
+                "text": "array"
+              },
+              "description": "Array of possible answers",
+              "default": "[]",
+              "fieldName": "answers"
+            },
+            {
+              "name": "displayedAnswers",
+              "type": {
+                "text": "array"
+              },
+              "description": "Displayed Answer set.",
+              "default": "[]",
+              "fieldName": "displayedAnswers"
+            },
+            {
+              "name": "quiz-name",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name of the quiz - hardcoded for now from HTML",
+              "default": "\"default\"",
+              "fieldName": "quizName"
+            },
+            {
+              "name": "randomize",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Randomize the display of the answers",
+              "default": "false",
+              "fieldName": "randomize"
+            },
+            {
+              "name": "hide-buttons",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "flag to hide buttons",
+              "default": "false",
+              "fieldName": "hideButtons"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
         {
-          "name": "related-resource",
-          "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"
-        },
-        {
-          "name": "max-attempts",
-          "description": "`max-attempts` {`number`} - \n\nProperty: maxAttempts\n\nDefault: 0"
-        },
-        {
-          "name": "attempts",
-          "description": "`attempts` {`number`} - \n\nProperty: attempts\n\nDefault: 0"
-        },
-        {
-          "name": "show-answer",
-          "description": "`show-answer` {`boolean`} - \n\nProperty: showAnswer\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "randomize",
-          "description": "`randomize` {`boolean`} - Randomize the display of the answers\n\nProperty: randomize\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-buttons",
-          "description": "`hide-buttons` {`boolean`} - flag to hide buttons\n\nProperty: hideButtons\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - Support disabling interaction with the entire board\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "single-option",
-          "description": "`single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\nProperty: singleOption\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "media",
-          "description": "`media` {`string`} - \n\nProperty: media\n\nDefault: null"
-        },
-        {
-          "name": "question",
-          "description": "`question` {`string`} - Question to ask\n\nProperty: question\n\nDefault: "
-        },
-        {
-          "name": "answers",
-          "description": "`answers` {`any[]`} - Array of possible answers\n\nProperty: answers\n\nDefault: "
-        },
-        {
-          "name": "displayedAnswers",
-          "description": "`displayedAnswers` {`any[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
-        },
-        {
-          "name": "quiz-name",
-          "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
-        },
-        {
-          "name": "edit",
-          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "onsimple-toast-hide",
-          "description": "`simple-toast-hide` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - "
-        },
-        {
-          "name": "onuser-engagement",
-          "description": "`user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - "
-        },
-        {
-          "name": "onplayaudio",
-          "description": "`playaudio` {`CustomEvent<{ sound: any; }>`} - "
+          "kind": "js",
+          "name": "QuestionElement",
+          "declaration": {
+            "name": "QuestionElement",
+            "module": "lib/QuestionElement.js"
+          }
         }
       ]
     },
     {
-      "name": "true-false-question",
-      "description": "`true-false-question`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `_tfanswer` {`string`} - \n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `is-safari` {`boolean`} - \n\nProperties:\n\n  * `_tfanswer` {`string`} - \n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - \n\n  * `incorrectText` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/confetti-container.js",
+      "declarations": [
         {
-          "name": "_tfanswer",
-          "description": "`_tfanswer` {`string`} - \n\nProperty: _tfanswer\n\nDefault: null"
-        },
+          "kind": "class",
+          "description": "",
+          "name": "Confetti",
+          "members": [
+            {
+              "kind": "method",
+              "name": "popConfetti"
+            },
+            {
+              "kind": "field",
+              "name": "canvas",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "confetti",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "sequins",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ confettiCount: 55, sequinCount: 30, gravityConfetti: 0.25, gravitySequins: 0.35, dragConfetti: 0.025, dragSequins: 0.02, terminalVelocity: 4, }"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "popped"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "confetti-container",
+          "customElement": true
+        }
+      ],
+      "exports": [
         {
-          "name": "related-resource",
-          "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"
-        },
-        {
-          "name": "max-attempts",
-          "description": "`max-attempts` {`number`} - \n\nProperty: maxAttempts\n\nDefault: 0"
-        },
-        {
-          "name": "attempts",
-          "description": "`attempts` {`number`} - \n\nProperty: attempts\n\nDefault: 0"
-        },
-        {
-          "name": "show-answer",
-          "description": "`show-answer` {`boolean`} - \n\nProperty: showAnswer\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "randomize",
-          "description": "`randomize` {`boolean`} - Randomize the display of the answers\n\nProperty: randomize\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-buttons",
-          "description": "`hide-buttons` {`boolean`} - flag to hide buttons\n\nProperty: hideButtons\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - Support disabling interaction with the entire board\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "single-option",
-          "description": "`single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\nProperty: singleOption\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "media",
-          "description": "`media` {`string`} - \n\nProperty: media\n\nDefault: null"
-        },
-        {
-          "name": "question",
-          "description": "`question` {`string`} - Question to ask\n\nProperty: question\n\nDefault: "
-        },
-        {
-          "name": "answers",
-          "description": "`answers` {`any[]`} - Array of possible answers\n\nProperty: answers\n\nDefault: "
-        },
-        {
-          "name": "displayedAnswers",
-          "description": "`displayedAnswers` {`any[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
-        },
-        {
-          "name": "quiz-name",
-          "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
-        },
-        {
-          "name": "edit",
-          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "onsimple-toast-hide",
-          "description": "`simple-toast-hide` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - "
-        },
-        {
-          "name": "onuser-engagement",
-          "description": "`user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - "
-        },
-        {
-          "name": "onplayaudio",
-          "description": "`playaudio` {`CustomEvent<{ sound: any; }>`} - "
+          "kind": "custom-element-definition",
+          "name": "confetti-container",
+          "declaration": {
+            "name": "Confetti",
+            "module": "lib/confetti-container.js"
+          }
         }
       ]
     },
     {
-      "name": "multiple-choice",
-      "description": "`multiple-choice`\n`Ask the user a question from a set of possible answers.`\n\nEvents:\n\n  * `simple-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - \n\n  * `user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - \n\n  * `playaudio` {`CustomEvent<{ sound: any; }>`} - \n\nAttributes:\n\n  * `related-resource` {`string`} - Related Resource ID\n\n  * `max-attempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `show-answer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hide-buttons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `is-safari` {`boolean`} - \n\nProperties:\n\n  * `relatedResource` {`string`} - Related Resource ID\n\n  * `guessDataValue` {`string`} - \n\n  * `shadowRootOptions` - \n\n  * `maxAttempts` {`number`} - \n\n  * `attempts` {`number`} - \n\n  * `showAnswer` {`boolean`} - \n\n  * `randomize` {`boolean`} - Randomize the display of the answers\n\n  * `hideButtons` {`boolean`} - flag to hide buttons\n\n  * `disabled` {`boolean`} - Support disabling interaction with the entire board\n\n  * `singleOption` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\n  * `media` {`string`} - \n\n  * `question` {`string`} - Question to ask\n\n  * `answers` {`any[]`} - Array of possible answers\n\n  * `displayedAnswers` {`any[]`} - Displayed Answer set.\n\n  * `correctText` {`string`} - \n\n  * `incorrectText` {`string`} - \n\n  * `quizName` {`string`} - Name of the quiz - hardcoded for now from HTML\n\n  * `edit` {`boolean`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `t` - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/short-answer-question.js",
+      "declarations": [
         {
-          "name": "related-resource",
-          "description": "`related-resource` {`string`} - Related Resource ID\n\nProperty: relatedResource"
+          "kind": "class",
+          "description": "`short-answer-question`\n`Ask the user a question from a set of possible answers.`",
+          "name": "ShortAnswerQuestion",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "inactiveCase",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderDirections",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderInteraction",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "resetAnswer",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Reset user answers and shuffle the board again.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "valueUpdate",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "isCorrect",
+              "description": "Return if the current answers are correct",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "guessDataValue",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"shortanswer\"",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "shortanswer",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "shortanswer"
+            },
+            {
+              "kind": "field",
+              "name": "singleOption",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Simple option, otherwise allow multiple via checkbox",
+              "default": "true",
+              "attribute": "single-option",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getGuess",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "guessCount",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkedEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "makeItRain",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkAnswer",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Verify the answers of the user based on their saying\nthat they want to see how they did.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkAnswerCallback",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_computeDisplayedAnswers",
+              "parameters": [
+                {
+                  "name": "answers"
+                },
+                {
+                  "name": "randomize"
+                }
+              ],
+              "description": "Figure out the order of the answers which will be displayed",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "playSound",
+              "parameters": [
+                {
+                  "name": "sound"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessNodeToContent",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "HAX preprocess Node to Content hook",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessInsertContent",
+              "parameters": [
+                {
+                  "name": "detail"
+                },
+                {
+                  "name": "activeNode"
+                }
+              ],
+              "description": "HAX preprocess insert content hook",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderButtons",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderLegend",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderFeedback",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "clickSingle",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "cleanAnswerData",
+              "parameters": [
+                {
+                  "name": "answers"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "cleanAnswerDataBeforeSend",
+              "parameters": [
+                {
+                  "name": "answer"
+                },
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "answers"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "answerPrototype",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "processInput",
+              "parameters": [
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "inputs"
+                },
+                {
+                  "name": "answers"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "loadLightDomData",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderEditModeFeedbackAreas",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxinlineContextMenu",
+              "parameters": [
+                {
+                  "name": "ceMenu"
+                }
+              ],
+              "description": "add buttons when it is in context",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxToggleEdit",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "shadowRootOptions",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true, }",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "maxAttempts",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "max-attempts",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "attempts",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "attempts",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showAnswer",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "show-answer",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "randomize",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Randomize the display of the answers",
+              "default": "false",
+              "attribute": "randomize",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideButtons",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "flag to hide buttons",
+              "default": "false",
+              "attribute": "hide-buttons",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Support disabling interaction with the entire board",
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "media",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "media",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "question",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Question to ask",
+              "default": "\"\"",
+              "attribute": "question",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "answers",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Array of possible answers",
+              "default": "[]",
+              "attribute": "answers",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "displayedAnswers",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Displayed Answer set.",
+              "default": "[]",
+              "attribute": "displayedAnswers",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "correctText",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"You are correct!\"",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "incorrectText",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Try again!\"",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "quizName",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name of the quiz - hardcoded for now from HTML",
+              "default": "\"default\"",
+              "attribute": "quiz-name",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ numCorrectLeft: \"You have\", numCorrectRight: \"correct\", checkAnswer: \"Check answer\", tryAgain: \"Try again\", }",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "edit",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "edit",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "relatedResource",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Related Resource ID",
+              "attribute": "related-resource",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "shortanswer",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "shortanswer"
+            },
+            {
+              "name": "edit",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "edit",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "show-answer",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "showAnswer",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "media",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "media",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "max-attempts",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "maxAttempts",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "attempts",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "attempts",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Support disabling interaction with the entire board",
+              "default": "false",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "single-option",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Simple option, otherwise allow multiple via checkbox",
+              "default": "false",
+              "fieldName": "singleOption",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "related-resource",
+              "type": {
+                "text": "string"
+              },
+              "description": "Related Resource ID",
+              "fieldName": "relatedResource",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "question",
+              "type": {
+                "text": "string"
+              },
+              "description": "Question to ask",
+              "default": "\"\"",
+              "fieldName": "question",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "answers",
+              "type": {
+                "text": "array"
+              },
+              "description": "Array of possible answers",
+              "default": "[]",
+              "fieldName": "answers",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "displayedAnswers",
+              "type": {
+                "text": "array"
+              },
+              "description": "Displayed Answer set.",
+              "default": "[]",
+              "fieldName": "displayedAnswers",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "quiz-name",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name of the quiz - hardcoded for now from HTML",
+              "default": "\"default\"",
+              "fieldName": "quizName",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "randomize",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Randomize the display of the answers",
+              "default": "false",
+              "fieldName": "randomize",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "hide-buttons",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "flag to hide buttons",
+              "default": "false",
+              "fieldName": "hideButtons",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "QuestionElement",
+            "module": "/lib/QuestionElement.js"
+          },
+          "tagName": "short-answer-question",
+          "customElement": true,
+          "events": [
+            {
+              "name": "eventName",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "user-engagement",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ShortAnswerQuestion",
+            "module": "lib/short-answer-question.js"
+          }
         },
         {
-          "name": "max-attempts",
-          "description": "`max-attempts` {`number`} - \n\nProperty: maxAttempts\n\nDefault: 0"
+          "kind": "js",
+          "name": "ShortAnswerQuestion",
+          "declaration": {
+            "name": "ShortAnswerQuestion",
+            "module": "lib/short-answer-question.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/true-false-question.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`true-false-question`\n`Ask the user a question from a set of possible answers.`",
+          "name": "TrueFalseQuestion",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_tfanswer",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "_tfanswer"
+            },
+            {
+              "kind": "field",
+              "name": "singleOption",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Simple option, otherwise allow multiple via checkbox",
+              "default": "true",
+              "attribute": "single-option",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getGuess",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "guessCount",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkedEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "resetAnswer",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Reset user answers and shuffle the board again.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "isCorrect",
+              "description": "Return if the current answers are correct",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "makeItRain",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkAnswer",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Verify the answers of the user based on their saying\nthat they want to see how they did.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkAnswerCallback",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_computeDisplayedAnswers",
+              "parameters": [
+                {
+                  "name": "answers"
+                },
+                {
+                  "name": "randomize"
+                }
+              ],
+              "description": "Figure out the order of the answers which will be displayed",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "playSound",
+              "parameters": [
+                {
+                  "name": "sound"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessNodeToContent",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "HAX preprocess Node to Content hook",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessInsertContent",
+              "parameters": [
+                {
+                  "name": "detail"
+                },
+                {
+                  "name": "activeNode"
+                }
+              ],
+              "description": "HAX preprocess insert content hook",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderInteraction",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "inactiveCase",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderButtons",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderDirections",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderLegend",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderFeedback",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "clickSingle",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "cleanAnswerData",
+              "parameters": [
+                {
+                  "name": "answers"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "cleanAnswerDataBeforeSend",
+              "parameters": [
+                {
+                  "name": "answer"
+                },
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "answers"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "answerPrototype",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "processInput",
+              "parameters": [
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "inputs"
+                },
+                {
+                  "name": "answers"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "loadLightDomData",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderEditModeFeedbackAreas",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists.",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxinlineContextMenu",
+              "parameters": [
+                {
+                  "name": "ceMenu"
+                }
+              ],
+              "description": "add buttons when it is in context",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "haxToggleEdit",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "guessDataValue",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"display\"",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "shadowRootOptions",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...LitElement.shadowRootOptions, delegatesFocus: true, }",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "maxAttempts",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "max-attempts",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "attempts",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "attempts",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showAnswer",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "show-answer",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "randomize",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Randomize the display of the answers",
+              "default": "false",
+              "attribute": "randomize",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideButtons",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "flag to hide buttons",
+              "default": "false",
+              "attribute": "hide-buttons",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Support disabling interaction with the entire board",
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "media",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "media",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "question",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Question to ask",
+              "default": "\"\"",
+              "attribute": "question",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "answers",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Array of possible answers",
+              "default": "[]",
+              "attribute": "answers",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "displayedAnswers",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Displayed Answer set.",
+              "default": "[]",
+              "attribute": "displayedAnswers",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "correctText",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"You are correct!\"",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "incorrectText",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Try again!\"",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "quizName",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name of the quiz - hardcoded for now from HTML",
+              "default": "\"default\"",
+              "attribute": "quiz-name",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ numCorrectLeft: \"You have\", numCorrectRight: \"correct\", checkAnswer: \"Check answer\", tryAgain: \"Try again\", }",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "edit",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "edit",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "relatedResource",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Related Resource ID",
+              "attribute": "related-resource",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "_tfanswer",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "_tfanswer"
+            },
+            {
+              "name": "edit",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "edit",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "show-answer",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "showAnswer",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "media",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "media",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "max-attempts",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "maxAttempts",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "attempts",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "attempts",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Support disabling interaction with the entire board",
+              "default": "false",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "single-option",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Simple option, otherwise allow multiple via checkbox",
+              "default": "false",
+              "fieldName": "singleOption",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "related-resource",
+              "type": {
+                "text": "string"
+              },
+              "description": "Related Resource ID",
+              "fieldName": "relatedResource",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "question",
+              "type": {
+                "text": "string"
+              },
+              "description": "Question to ask",
+              "default": "\"\"",
+              "fieldName": "question",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "answers",
+              "type": {
+                "text": "array"
+              },
+              "description": "Array of possible answers",
+              "default": "[]",
+              "fieldName": "answers",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "displayedAnswers",
+              "type": {
+                "text": "array"
+              },
+              "description": "Displayed Answer set.",
+              "default": "[]",
+              "fieldName": "displayedAnswers",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "quiz-name",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name of the quiz - hardcoded for now from HTML",
+              "default": "\"default\"",
+              "fieldName": "quizName",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "randomize",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Randomize the display of the answers",
+              "default": "false",
+              "fieldName": "randomize",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "hide-buttons",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "flag to hide buttons",
+              "default": "false",
+              "fieldName": "hideButtons",
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "QuestionElement",
+            "module": "/lib/QuestionElement.js"
+          },
+          "tagName": "true-false-question",
+          "customElement": true,
+          "events": [
+            {
+              "name": "eventName",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            },
+            {
+              "name": "user-engagement",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "QuestionElement",
+                "module": "lib/QuestionElement.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "TrueFalseQuestion",
+            "module": "lib/true-false-question.js"
+          }
         },
         {
-          "name": "attempts",
-          "description": "`attempts` {`number`} - \n\nProperty: attempts\n\nDefault: 0"
-        },
-        {
-          "name": "show-answer",
-          "description": "`show-answer` {`boolean`} - \n\nProperty: showAnswer\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "randomize",
-          "description": "`randomize` {`boolean`} - Randomize the display of the answers\n\nProperty: randomize\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-buttons",
-          "description": "`hide-buttons` {`boolean`} - flag to hide buttons\n\nProperty: hideButtons\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - Support disabling interaction with the entire board\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "single-option",
-          "description": "`single-option` {`boolean`} - Simple option, otherwise allow multiple via checkbox\n\nProperty: singleOption\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "media",
-          "description": "`media` {`string`} - \n\nProperty: media\n\nDefault: null"
-        },
-        {
-          "name": "question",
-          "description": "`question` {`string`} - Question to ask\n\nProperty: question\n\nDefault: "
-        },
-        {
-          "name": "answers",
-          "description": "`answers` {`any[]`} - Array of possible answers\n\nProperty: answers\n\nDefault: "
-        },
-        {
-          "name": "displayedAnswers",
-          "description": "`displayedAnswers` {`any[]`} - Displayed Answer set.\n\nProperty: displayedAnswers\n\nDefault: "
-        },
-        {
-          "name": "quiz-name",
-          "description": "`quiz-name` {`string`} - Name of the quiz - hardcoded for now from HTML\n\nProperty: quizName\n\nDefault: default"
-        },
-        {
-          "name": "edit",
-          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "onsimple-toast-hide",
-          "description": "`simple-toast-hide` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` {`CustomEvent<{ hat: string; fire: boolean; text: string; accentColor: string; duration: number; slot: HTMLElement; }>`} - "
-        },
-        {
-          "name": "onuser-engagement",
-          "description": "`user-engagement` {`CustomEvent<{ activityDisplay: string; objectName: string; resultSuccess: boolean; }>`} - "
-        },
-        {
-          "name": "onplayaudio",
-          "description": "`playaudio` {`CustomEvent<{ sound: any; }>`} - "
+          "kind": "js",
+          "name": "TrueFalseQuestion",
+          "declaration": {
+            "name": "TrueFalseQuestion",
+            "module": "lib/true-false-question.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

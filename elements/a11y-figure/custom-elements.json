@@ -1,34 +1,163 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "a11y-figure",
-      "description": "`a11y-figure`\naccessible progressive disclosure with detail and summary\n### Styling\n#### Figure Caption\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-figcaption-fontSize | font-size | unset\n--a11y-details-figcaption-color | text color | #000\n--a11y-details-figcaption-backgroundColor | background-color | #fff\n--a11y-details-figcaption-margin | padding | 0\n--a11y-details-figcaption-padding | padding | 0\n\n#### Summary Button\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-fontSize | font-size | 0.8em\n--a11y-details-summary-color | text color | #000\n--a11y-details-summary-backgroundColor | background-color | #fff\n--a11y-details-summary-borderColor | border-color | #000\n--a11y-details-summary-borderWidth | border-width | 1px\n--a11y-details-summary-borderStyle | border-style | solid\n--a11y-details-summary-borderRadius | border-radius | 3px\n--a11y-details-summary-padding | padding | 0.5em\n\n#### Summary Button (:focus state)\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-focus-color | text color | #000\n--a11y-details-summary-focus-backgroundColor | background-color | #fff\n--a11y-details-summary-focus-borderColor | border-color | #000\n--a11y-details-summary-focus-borderWidth | border-width | 1px\n--a11y-details-summary-focus-borderStyle | border-style | dotted\n--a11y-details-summary-focus-borderRadius | border-radius | 3px\n\n#### Details\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-fontSize | font-size  | 0.8em\n--a11y-details-color | text color | #000\n--a11y-details-backgroundColor | background-color | rgba(255,255,255,1)\n--a11y-details-borderColor | border-color | #000\n--a11y-details-borderWidth | border-width | 1px\n--a11y-details-borderStyle | border-style | solid\n--a11y-details-borderRadius | border-radius | 3px\n--a11y-details-padding | padding | 0.5em\n--a11y-details-maxHeight | max-height | 400px\n\nAttributes:\n\n  * `img-src` {`string`} - \n\n  * `img-alt` {`string`} - \n\n  * `__hasDetail` {`boolean`} - \n\n  * `close-text` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `open-text` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\nProperties:\n\n  * `imgSrc` {`string`} - \n\n  * `imgAlt` {`string`} - \n\n  * `__hasDetail` {`boolean`} - \n\n  * `figureObserver` - mutation observer for <details/> in unnamed slot\n\n  * `details` {`HTMLDetailsElement | null | undefined`} - gets the details element in shadowRoot\n\n  * `summaryClasses` {`string`} - gets classe sfor summary to hide summary slot if open/closed text is provided\n\n  * `observer` - mutation observer for a11y-details\n\n  * `detailsObserver` - mutation observer for <details/> in unnamed slot\n\n  * `closeText` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\n  * `openText` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\n  * `tag` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "a11y-figure.js",
+      "declarations": [
         {
-          "name": "img-src",
-          "description": "`img-src` {`string`} - \n\nProperty: imgSrc"
+          "kind": "class",
+          "description": "`a11y-figure`\naccessible progressive disclosure with detail and summary\n### Styling\n#### Figure Caption\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-figcaption-fontSize | font-size | unset\n--a11y-details-figcaption-color | text color | #000\n--a11y-details-figcaption-backgroundColor | background-color | #fff\n--a11y-details-figcaption-margin | padding | 0\n--a11y-details-figcaption-padding | padding | 0\n\n#### Summary Button\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-fontSize | font-size | 0.8em\n--a11y-details-summary-color | text color | #000\n--a11y-details-summary-backgroundColor | background-color | #fff\n--a11y-details-summary-borderColor | border-color | #000\n--a11y-details-summary-borderWidth | border-width | 1px\n--a11y-details-summary-borderStyle | border-style | solid\n--a11y-details-summary-borderRadius | border-radius | 3px\n--a11y-details-summary-padding | padding | 0.5em\n\n#### Summary Button (:focus state)\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-summary-focus-color | text color | #000\n--a11y-details-summary-focus-backgroundColor | background-color | #fff\n--a11y-details-summary-focus-borderColor | border-color | #000\n--a11y-details-summary-focus-borderWidth | border-width | 1px\n--a11y-details-summary-focus-borderStyle | border-style | dotted\n--a11y-details-summary-focus-borderRadius | border-radius | 3px\n\n#### Details\nCustom property | Description | Default\n----------------|-------------|----------\n--a11y-details-fontSize | font-size  | 0.8em\n--a11y-details-color | text color | #000\n--a11y-details-backgroundColor | background-color | rgba(255,255,255,1)\n--a11y-details-borderColor | border-color | #000\n--a11y-details-borderWidth | border-width | 1px\n--a11y-details-borderStyle | border-style | solid\n--a11y-details-borderRadius | border-radius | 3px\n--a11y-details-padding | padding | 0.5em\n--a11y-details-maxHeight | max-height | 400px",
+          "name": "A11yFigure",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "observer",
+              "description": "mutation observer for a11y-details",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "figureObserver",
+              "description": "mutation observer for <details/> in unnamed slot",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_updateElement",
+              "description": "updates an element based on changes in slot"
+            },
+            {
+              "kind": "method",
+              "name": "_copyAndFilter",
+              "parameters": [
+                {
+                  "name": "clone"
+                },
+                {
+                  "name": "nodenames",
+                  "default": "[]"
+                },
+                {
+                  "name": "i",
+                  "default": "0"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_watchChildren",
+              "parameters": [
+                {
+                  "name": "mutationsList",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "watches the element's slots for a <details/> element"
+            },
+            {
+              "kind": "field",
+              "name": "imgSrc",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "img-src"
+            },
+            {
+              "kind": "field",
+              "name": "imgAlt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "img-alt"
+            },
+            {
+              "kind": "field",
+              "name": "__hasDetail",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "__hasDetail"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "img-src",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "imgSrc"
+            },
+            {
+              "name": "img-alt",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "imgAlt"
+            },
+            {
+              "name": "__hasDetail",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "__hasDetail"
+            }
+          ],
+          "superclass": {
+            "name": "A11yDetails",
+            "package": "@haxtheweb/a11y-details/a11y-details.js"
+          },
+          "tagName": "a11y-figure",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "a11y-figure",
+          "declaration": {
+            "name": "A11yFigure",
+            "module": "a11y-figure.js"
+          }
         },
         {
-          "name": "img-alt",
-          "description": "`img-alt` {`string`} - \n\nProperty: imgAlt"
-        },
-        {
-          "name": "__hasDetail",
-          "description": "`__hasDetail` {`boolean`} - \n\nProperty: __hasDetail",
-          "valueSet": "v"
-        },
-        {
-          "name": "close-text",
-          "description": "`close-text` {`string`} - optional text for when summary button is open,\neg. \"Hide\", \"Less\" or \"Close\"\n\nProperty: closeText\n\nDefault: "
-        },
-        {
-          "name": "open-text",
-          "description": "`open-text` {`string`} - optional text for when summary button is closed,\neg. \"Show\", \"More\" or \"Open\"\n\nProperty: openText\n\nDefault: "
+          "kind": "js",
+          "name": "A11yFigure",
+          "declaration": {
+            "name": "A11yFigure",
+            "module": "a11y-figure.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

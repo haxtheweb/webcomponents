@@ -1,83 +1,968 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "rich-text-editor",
-      "description": "`rich-text-editor`\na standalone rich text editor\n(can customize by extending RichTextEditorBehaviors)\n### Styling\n\n`<rich-text-editor>`  uses RichTextStyles variables, \nas well as an additional style:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--rich-text-editor-min-height | minimum height of editor | 20px\n\nEvents:\n\n  * `focus` {`CustomEvent<any>`} - \n\n  * `contenteditable-change` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `contenteditable` {`string`} - Maps to editing attribute\n\n  * `disable-hover` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `rawhtml` {`string`} - raw html\n\n  * `view-source` {`boolean`} - whether editor is view source code mode\n\n  * `__codeEditorValue` {`string`} - code-editor for view source\n\n  * `__needsUpdate` {`boolean`} - has focus\n\n  * `aria-placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbar-id` {`string`} - id for toolbar\n\n  * `type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\n  * `id` {`string`} - editor's unique id\n\n  * `range` - current range\n\n  * `disabled` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `__focused` {`boolean`} - has focus\n\n  * `__hovered` {`boolean`} - is hovered\n\nProperties:\n\n  * `contenteditable` {`string`} - Maps to editing attribute\n\n  * `disableHover` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `rawhtml` {`string`} - raw html\n\n  * `viewSource` {`boolean`} - whether editor is view source code mode\n\n  * `__codeEditorValue` {`string`} - code-editor for view source\n\n  * `__needsUpdate` {`boolean`} - has focus\n\n  * `editable` {`boolean`} - \n\n  * `isEmpty` {`boolean`} - \n\n  * `placeholder` {`string`} - Placeholder text for empty editable regions\n\n  * `toolbarId` {`string`} - id for toolbar\n\n  * `type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\n  * `id` {`string`} - editor's unique id\n\n  * `range` - current range\n\n  * `disabled` {`boolean`} - don't reveal toolbar on mouseover\n\n  * `__focused` {`boolean`} - has focus\n\n  * `__hovered` {`boolean`} - is hovered\n\n  * `editing` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "rich-text-editor.js",
+      "declarations": [
         {
-          "name": "contenteditable",
-          "description": "`contenteditable` {`string`} - Maps to editing attribute\n\nProperty: contenteditable"
+          "kind": "mixin",
+          "description": "",
+          "name": "RichTextEditorBehaviors",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "editable",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "isEmpty",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "description": "focuses on the contenteditable region"
+            },
+            {
+              "kind": "method",
+              "name": "makeSticky",
+              "parameters": [
+                {
+                  "name": "sticky",
+                  "default": "true",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "allows editor to fit within a stick toolbar"
+            },
+            {
+              "kind": "method",
+              "name": "_contenteditableChange",
+              "description": "fires when contenteditable changed"
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "click event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "Handles clicking to edit.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Placeholder text for empty editable regions",
+              "default": "\"Click to edit\"",
+              "attribute": "aria-placeholder"
+            },
+            {
+              "kind": "field",
+              "name": "toolbarId",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "id for toolbar",
+              "default": "\"\"",
+              "attribute": "toolbar-id",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.",
+              "default": "\"rich-text-editor-toolbar\"",
+              "attribute": "type",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "editor's unique id",
+              "default": "\"\"",
+              "attribute": "id",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "range",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "current range",
+              "default": "undefined",
+              "attribute": "range"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "don't reveal toolbar on mouseover",
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__focused",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "has focus",
+              "default": "false",
+              "attribute": "__focused"
+            },
+            {
+              "kind": "field",
+              "name": "__hovered",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "is hovered",
+              "default": "false",
+              "attribute": "__hovered"
+            },
+            {
+              "kind": "field",
+              "name": "editing",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "contenteditable",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Maps to editing attribute",
+              "attribute": "contenteditable",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disableHover",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "don't reveal toolbar on mouseover",
+              "attribute": "disable-hover"
+            },
+            {
+              "kind": "field",
+              "name": "rawhtml",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "raw html",
+              "attribute": "rawhtml"
+            },
+            {
+              "kind": "field",
+              "name": "viewSource",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether editor is view source code mode",
+              "attribute": "view-source",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__codeEditorValue",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "code-editor for view source",
+              "attribute": "__codeEditorValue"
+            },
+            {
+              "kind": "field",
+              "name": "__needsUpdate",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "has focus",
+              "attribute": "__needsUpdate"
+            }
+          ],
+          "events": [
+            {
+              "name": "focus",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "contenteditable-change",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "editor's unique id",
+              "default": "\"\"",
+              "fieldName": "id"
+            },
+            {
+              "name": "contenteditable",
+              "type": {
+                "text": "string"
+              },
+              "description": "Maps to editing attribute",
+              "fieldName": "contenteditable"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "don't reveal toolbar on mouseover",
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "disable-hover",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "don't reveal toolbar on mouseover",
+              "fieldName": "disableHover"
+            },
+            {
+              "name": "aria-placeholder",
+              "type": {
+                "text": "string"
+              },
+              "description": "Placeholder text for empty editable regions",
+              "default": "\"Click to edit\"",
+              "fieldName": "placeholder"
+            },
+            {
+              "name": "toolbar-id",
+              "type": {
+                "text": "string"
+              },
+              "description": "id for toolbar",
+              "default": "\"\"",
+              "fieldName": "toolbarId"
+            },
+            {
+              "name": "range",
+              "type": {
+                "text": "object"
+              },
+              "description": "current range",
+              "default": "undefined",
+              "fieldName": "range"
+            },
+            {
+              "name": "rawhtml",
+              "type": {
+                "text": "string"
+              },
+              "description": "raw html",
+              "fieldName": "rawhtml"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "description": "type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.",
+              "default": "\"rich-text-editor-toolbar\"",
+              "fieldName": "type"
+            },
+            {
+              "name": "view-source",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether editor is view source code mode",
+              "fieldName": "viewSource"
+            },
+            {
+              "name": "__codeEditorValue",
+              "type": {
+                "text": "string"
+              },
+              "description": "code-editor for view source",
+              "fieldName": "__codeEditorValue"
+            },
+            {
+              "name": "__needsUpdate",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "has focus",
+              "fieldName": "__needsUpdate"
+            },
+            {
+              "name": "__focused",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "has focus",
+              "default": "false",
+              "fieldName": "__focused"
+            },
+            {
+              "name": "__hovered",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "is hovered",
+              "default": "false",
+              "fieldName": "__hovered"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
         },
         {
-          "name": "disable-hover",
-          "description": "`disable-hover` {`boolean`} - don't reveal toolbar on mouseover\n\nProperty: disableHover",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`rich-text-editor`\na standalone rich text editor\n(can customize by extending RichTextEditorBehaviors)\n### Styling\n\n`<rich-text-editor>`  uses RichTextStyles variables, \nas well as an additional style:\n\nCustom property | Description | Default\n----------------|-------------|----------\n--rich-text-editor-min-height | minimum height of editor | 20px",
+          "name": "RichTextEditor",
+          "mixins": [
+            {
+              "name": "RichTextEditorBehaviors",
+              "module": "rich-text-editor.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "rich-text-editor",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "editor's unique id",
+              "default": "\"\"",
+              "fieldName": "id",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "name": "contenteditable",
+              "type": {
+                "text": "string"
+              },
+              "description": "Maps to editing attribute",
+              "fieldName": "contenteditable",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "don't reveal toolbar on mouseover",
+              "default": "false",
+              "fieldName": "disabled",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "name": "disable-hover",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "don't reveal toolbar on mouseover",
+              "fieldName": "disableHover",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "name": "aria-placeholder",
+              "type": {
+                "text": "string"
+              },
+              "description": "Placeholder text for empty editable regions",
+              "default": "\"Click to edit\"",
+              "fieldName": "placeholder",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "name": "toolbar-id",
+              "type": {
+                "text": "string"
+              },
+              "description": "id for toolbar",
+              "default": "\"\"",
+              "fieldName": "toolbarId",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "name": "range",
+              "type": {
+                "text": "object"
+              },
+              "description": "current range",
+              "default": "undefined",
+              "fieldName": "range",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "name": "rawhtml",
+              "type": {
+                "text": "string"
+              },
+              "description": "raw html",
+              "fieldName": "rawhtml",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "description": "type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.",
+              "default": "\"rich-text-editor-toolbar\"",
+              "fieldName": "type",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "name": "view-source",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether editor is view source code mode",
+              "fieldName": "viewSource",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "name": "__codeEditorValue",
+              "type": {
+                "text": "string"
+              },
+              "description": "code-editor for view source",
+              "fieldName": "__codeEditorValue",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "name": "__needsUpdate",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "has focus",
+              "fieldName": "__needsUpdate",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "name": "__focused",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "has focus",
+              "default": "false",
+              "fieldName": "__focused",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "name": "__hovered",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "is hovered",
+              "default": "false",
+              "fieldName": "__hovered",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "editable",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "isEmpty",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "focus",
+              "description": "focuses on the contenteditable region",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "makeSticky",
+              "parameters": [
+                {
+                  "name": "sticky",
+                  "default": "true",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "allows editor to fit within a stick toolbar",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_contenteditableChange",
+              "description": "fires when contenteditable changed",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "click event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "Handles clicking to edit.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Placeholder text for empty editable regions",
+              "default": "\"Click to edit\"",
+              "attribute": "aria-placeholder",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "toolbarId",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "id for toolbar",
+              "default": "\"\"",
+              "attribute": "toolbar-id",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.",
+              "default": "\"rich-text-editor-toolbar\"",
+              "attribute": "type",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "editor's unique id",
+              "default": "\"\"",
+              "attribute": "id",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "range",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "current range",
+              "default": "undefined",
+              "attribute": "range",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "don't reveal toolbar on mouseover",
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__focused",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "has focus",
+              "default": "false",
+              "attribute": "__focused",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__hovered",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "is hovered",
+              "default": "false",
+              "attribute": "__hovered",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "editing",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "contenteditable",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Maps to editing attribute",
+              "attribute": "contenteditable",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "disableHover",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "don't reveal toolbar on mouseover",
+              "attribute": "disable-hover",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "rawhtml",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "raw html",
+              "attribute": "rawhtml",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "viewSource",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "whether editor is view source code mode",
+              "attribute": "view-source",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__codeEditorValue",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "code-editor for view source",
+              "attribute": "__codeEditorValue",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__needsUpdate",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "has focus",
+              "attribute": "__needsUpdate",
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "focus",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            },
+            {
+              "name": "contenteditable-change",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "RichTextEditorBehaviors",
+                "module": "rich-text-editor.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "RichTextEditor",
+            "module": "rich-text-editor.js"
+          }
         },
         {
-          "name": "rawhtml",
-          "description": "`rawhtml` {`string`} - raw html\n\nProperty: rawhtml"
+          "kind": "js",
+          "name": "RichTextEditor",
+          "declaration": {
+            "name": "RichTextEditor",
+            "module": "rich-text-editor.js"
+          }
         },
         {
-          "name": "view-source",
-          "description": "`view-source` {`boolean`} - whether editor is view source code mode\n\nProperty: viewSource",
-          "valueSet": "v"
-        },
-        {
-          "name": "__codeEditorValue",
-          "description": "`__codeEditorValue` {`string`} - code-editor for view source\n\nProperty: __codeEditorValue"
-        },
-        {
-          "name": "__needsUpdate",
-          "description": "`__needsUpdate` {`boolean`} - has focus\n\nProperty: __needsUpdate",
-          "valueSet": "v"
-        },
-        {
-          "name": "aria-placeholder",
-          "description": "`aria-placeholder` {`string`} - Placeholder text for empty editable regions\n\nProperty: placeholder\n\nDefault: Click to edit"
-        },
-        {
-          "name": "toolbar-id",
-          "description": "`toolbar-id` {`string`} - id for toolbar\n\nProperty: toolbarId\n\nDefault: "
-        },
-        {
-          "name": "type",
-          "description": "`type` {`string`} - type of editor toolbar, i.e.\nfull - full for full toolbar with breadcrumb,\nmini - mini for mini floating toolbar, or\ndefault toolbar if neither.\n\nProperty: type\n\nDefault: rich-text-editor-toolbar"
-        },
-        {
-          "name": "id",
-          "description": "`id` {`string`} - editor's unique id\n\nProperty: id\n\nDefault: "
-        },
-        {
-          "name": "range",
-          "description": "`range` - current range\n\nProperty: range\n\nDefault: undefined"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - don't reveal toolbar on mouseover\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__focused",
-          "description": "`__focused` {`boolean`} - has focus\n\nProperty: __focused\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__hovered",
-          "description": "`__hovered` {`boolean`} - is hovered\n\nProperty: __hovered\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onfocus",
-          "description": "`focus` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "oncontenteditable-change",
-          "description": "`contenteditable-change` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "RichTextEditorBehaviors",
+          "declaration": {
+            "name": "RichTextEditorBehaviors",
+            "module": "rich-text-editor.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

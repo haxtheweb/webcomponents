@@ -1,4 +1,66 @@
 {
-  "version": 2,
-  "tags": []
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "media-behaviors.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "MediaBehaviorsVideo",
+          "members": [
+            {
+              "kind": "method",
+              "name": "_sourceIsIframe",
+              "parameters": [
+                {
+                  "name": "source"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "cleanVideoSource",
+              "parameters": [
+                {
+                  "name": "input"
+                },
+                {
+                  "name": "type"
+                }
+              ],
+              "description": "Check source of the video, potentially correcting bad links."
+            },
+            {
+              "kind": "method",
+              "name": "getVideoType",
+              "parameters": [
+                {
+                  "name": "source"
+                }
+              ],
+              "description": "Figure out the type of video based on source."
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "MediaBehaviorsVideo",
+          "declaration": {
+            "name": "MediaBehaviorsVideo",
+            "module": "media-behaviors.js"
+          }
+        }
+      ]
+    }
+  ]
 }

@@ -1,31 +1,223 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "hex-picker",
-      "description": "`hex-picker`\n`Choose a color by hex or rgba code`\n\nEvents:\n\n  * `value-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `large-display` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `largeDisplay` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `_rValue` {`number`} - \n\n  * `_gValue` {`number`} - \n\n  * `_bValue` {`number`} - \n\n  * `_oValue` {`number`} - \n\n  * `disabled` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "hex-picker.js",
+      "declarations": [
         {
-          "name": "large-display",
-          "description": "`large-display` {`boolean`} - \n\nProperty: largeDisplay",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`hex-picker`\n`Choose a color by hex or rgba code`",
+          "name": "HexPicker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_validateInput",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_padHex",
+              "parameters": [
+                {
+                  "name": "n"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_computeHex"
+            },
+            {
+              "kind": "method",
+              "name": "_inputChanged",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_updateSliders",
+              "parameters": [
+                {
+                  "name": "rgb"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_hexToRgb",
+              "parameters": [
+                {
+                  "name": "hex"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_fieldSetChange",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_dispatchChange"
+            },
+            {
+              "kind": "method",
+              "name": "renderFieldSet",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"#000000FF\"",
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_rValue",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_gValue",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_bValue",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "_oValue",
+              "type": {
+                "text": "number"
+              },
+              "default": "255"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "largeDisplay",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "large-display",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"#000000FF\"",
+              "fieldName": "value"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "large-display",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "largeDisplay"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "hex-picker",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "HexPicker",
+            "module": "hex-picker.js"
+          }
         },
         {
-          "name": "value",
-          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: #000000FF"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onvalue-changed",
-          "description": "`value-changed` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "HexPicker",
+          "declaration": {
+            "name": "HexPicker",
+            "module": "hex-picker.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

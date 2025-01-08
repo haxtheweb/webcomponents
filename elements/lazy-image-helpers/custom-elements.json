@@ -1,73 +1,324 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "lazy-image-helpers",
-      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - Alt text for image.\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `loaded` {`boolean`} - \n\n  * `image-loaded` {`boolean`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - Alt text for image.\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `loaded` {`boolean`} - \n\n  * `replacementDelay` {`number`} - \n\n  * `imageLoaded` {`boolean`} - \n\n  * `loadingImg` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lazy-image-helpers.js",
+      "declarations": [
         {
-          "name": "src",
-          "description": "`src` {`string`} - \n\nProperty: src"
+          "kind": "mixin",
+          "description": "",
+          "name": "lazyImageLoader",
+          "members": [
+            {
+              "kind": "method",
+              "name": "_lazyImageLoadComplete"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "renderSVGLoader"
+            },
+            {
+              "kind": "field",
+              "name": "IOVisibleLimit",
+              "type": {
+                "text": "number"
+              },
+              "default": "0.1"
+            },
+            {
+              "kind": "field",
+              "name": "IOThresholds",
+              "type": {
+                "text": "array"
+              },
+              "default": "[0.0, 0.1, 0.25, 0.5, 0.75, 1.0]"
+            },
+            {
+              "kind": "field",
+              "name": "replacementDelay",
+              "type": {
+                "text": "number"
+              },
+              "default": "1000"
+            },
+            {
+              "kind": "field",
+              "name": "imageLoaded",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "image-loaded",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "loadingImg",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"loading:bars\""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "image-loaded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "imageLoaded"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "IntersectionObserverMixin",
+              "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
         },
         {
-          "name": "alt",
-          "description": "`alt` {`string`} - Alt text for image.\n\nProperty: alt"
-        },
-        {
-          "name": "described-by",
-          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
-        },
-        {
-          "name": "loaded",
-          "description": "`loaded` {`boolean`} - \n\nProperty: loaded\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "image-loaded",
-          "description": "`image-loaded` {`boolean`} - \n\nProperty: imageLoaded\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "element-visible",
-          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`",
+          "name": "lazyImage",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "src",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Alt text for image.",
+              "attribute": "alt",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "describedBy",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aria-describedby data passed down to appropriate tag",
+              "attribute": "described-by"
+            },
+            {
+              "kind": "method",
+              "name": "_lazyImageLoadComplete",
+              "inheritedFrom": {
+                "name": "lazyImageLoader",
+                "module": "lazy-image-helpers.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "lazyImageLoader",
+                "module": "lazy-image-helpers.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "lazyImageLoader",
+                "module": "lazy-image-helpers.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderSVGLoader",
+              "inheritedFrom": {
+                "name": "lazyImageLoader",
+                "module": "lazy-image-helpers.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "IOVisibleLimit",
+              "type": {
+                "text": "number"
+              },
+              "default": "0.1",
+              "inheritedFrom": {
+                "name": "lazyImageLoader",
+                "module": "lazy-image-helpers.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "IOThresholds",
+              "type": {
+                "text": "array"
+              },
+              "default": "[0.0, 0.1, 0.25, 0.5, 0.75, 1.0]",
+              "inheritedFrom": {
+                "name": "lazyImageLoader",
+                "module": "lazy-image-helpers.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "replacementDelay",
+              "type": {
+                "text": "number"
+              },
+              "default": "1000",
+              "inheritedFrom": {
+                "name": "lazyImageLoader",
+                "module": "lazy-image-helpers.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "imageLoaded",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "image-loaded",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "lazyImageLoader",
+                "module": "lazy-image-helpers.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "loadingImg",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"loading:bars\"",
+              "inheritedFrom": {
+                "name": "lazyImageLoader",
+                "module": "lazy-image-helpers.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "src"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "description": "Alt text for image.",
+              "fieldName": "alt"
+            },
+            {
+              "name": "described-by",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aria-describedby data passed down to appropriate tag",
+              "fieldName": "describedBy"
+            },
+            {
+              "name": "image-loaded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "imageLoaded",
+              "inheritedFrom": {
+                "name": "lazyImageLoader",
+                "module": "lazy-image-helpers.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "LoadingHelper",
+              "package": "@haxtheweb/replace-tag/lib/LoadingHelper.js"
+            },
+            {
+              "name": "lazyImageLoader",
+              "module": "lazy-image-helpers.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "lazy-image-helpers",
+          "customElement": true
         }
-      ]
-    },
-    {
-      "name": "lazy-image",
-      "description": "`lazy-image-helpers`\n`helpers for building lazy loading images`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - Alt text for image.\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `loaded` {`boolean`} - \n\n  * `image-loaded` {`boolean`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - Alt text for image.\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `loaded` {`boolean`} - \n\n  * `replacementDelay` {`number`} - \n\n  * `imageLoaded` {`boolean`} - \n\n  * `loadingImg` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
-      "attributes": [
+      ],
+      "exports": [
         {
-          "name": "src",
-          "description": "`src` {`string`} - \n\nProperty: src"
+          "kind": "js",
+          "name": "lazyImageLoader",
+          "declaration": {
+            "name": "lazyImageLoader",
+            "module": "lazy-image-helpers.js"
+          }
         },
         {
-          "name": "alt",
-          "description": "`alt` {`string`} - Alt text for image.\n\nProperty: alt"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "lazyImage",
+            "module": "lazy-image-helpers.js"
+          }
         },
         {
-          "name": "described-by",
-          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
-        },
-        {
-          "name": "loaded",
-          "description": "`loaded` {`boolean`} - \n\nProperty: loaded\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "image-loaded",
-          "description": "`image-loaded` {`boolean`} - \n\nProperty: imageLoaded\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "element-visible",
-          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "lazyImage",
+          "declaration": {
+            "name": "lazyImage",
+            "module": "lazy-image-helpers.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

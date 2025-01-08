@@ -1,17 +1,270 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "performance-detect",
-      "description": "Properties:\n\n  * `details` {`Promise<{}>`} - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "replace-tag.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ReplaceTag",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "exists",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "method",
+              "name": "performanceBasedReplacement",
+              "inheritedFrom": {
+                "name": "ReplaceTagSuper",
+                "module": "replace-tag.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "evaluateReplaceMethod",
+              "description": "evaluate based on user device and other settings HOW to handle the replacement",
+              "inheritedFrom": {
+                "name": "ReplaceTagSuper",
+                "module": "replace-tag.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "handleIntersectionCallback",
+              "parameters": [
+                {
+                  "name": "entries"
+                }
+              ],
+              "description": "Very basic IntersectionObserver callback which will replace on visible",
+              "inheritedFrom": {
+                "name": "ReplaceTagSuper",
+                "module": "replace-tag.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "runReplacement",
+              "description": "replacement callback; avoiding use of replace bc of built in JS expectation for this method",
+              "inheritedFrom": {
+                "name": "ReplaceTagSuper",
+                "module": "replace-tag.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "ReplaceTagSuper",
+              "module": "replace-tag.js"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ReplaceTag",
+            "module": "replace-tag.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ReplaceTag",
+          "declaration": {
+            "name": "ReplaceTag",
+            "module": "replace-tag.js"
+          }
+        }
+      ]
     },
     {
-      "name": "replace-tag",
-      "description": "Properties:\n\n  * `html` {`string`} - \n\n  * `exists` {`boolean`} - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "lib/LoadingHelper.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "LoadingHelper",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "description": "LitElement specific callback",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "loaded",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "loaded",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "loaded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "loaded"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "LoadingHelper",
+          "declaration": {
+            "name": "LoadingHelper",
+            "module": "lib/LoadingHelper.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/PerformanceDetect.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "DeviceDetails"
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PerformanceDetect",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "badDevice"
+            },
+            {
+              "kind": "method",
+              "name": "getDetails",
+              "parameters": [
+                {
+                  "name": "detail",
+                  "default": "null"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "updateDetails"
+            },
+            {
+              "kind": "field",
+              "name": "details"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "DeviceDetails",
+          "declaration": {
+            "name": "DeviceDetails",
+            "module": "lib/PerformanceDetect.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PerformanceDetect",
+            "module": "lib/PerformanceDetect.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PerformanceDetect",
+          "declaration": {
+            "name": "PerformanceDetect",
+            "module": "lib/PerformanceDetect.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/loading-styles.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "WCRegistryLoaderCSS",
+          "parameters": [
+            {
+              "name": "auto",
+              "default": "false"
+            },
+            {
+              "name": "parent",
+              "default": "\"*\""
+            },
+            {
+              "name": "selectorBase",
+              "default": "\":not(:defined)\""
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WCRegistryLoaderCSS",
+          "declaration": {
+            "name": "WCRegistryLoaderCSS",
+            "module": "lib/loading-styles.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

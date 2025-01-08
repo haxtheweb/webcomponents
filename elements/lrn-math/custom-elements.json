@@ -1,22 +1,151 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "lrn-math",
-      "description": "lrn-math\nA mathjax wrapper tag in vanillaJS\n\nAttributes:\n\n  * `mathtext` {`string | null`} - \n\nProperties:\n\n  * `mathtext` {`string | null`} - \n\n  * `_private` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lrn-math.js",
+      "declarations": [
         {
-          "name": "mathtext",
-          "description": "`mathtext` {`string | null`} - \n\nProperty: mathtext",
-          "values": []
+          "kind": "class",
+          "description": "",
+          "name": "LrnMathController",
+          "members": [
+            {
+              "kind": "method",
+              "name": "typeset",
+              "parameters": [
+                {
+                  "name": "math"
+                },
+                {
+                  "name": "displayMode"
+                },
+                {
+                  "name": "cb"
+                }
+              ]
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "lrn-math-controller",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "lrn-math\nA mathjax wrapper tag in vanillaJS",
+          "name": "LrnMath",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "double-check that we are set to inactivate click handlers\nthis is for when activated in a duplicate / adding new content state"
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "Set a flag to test if we should block link clicking on the entire card\notherwise when editing in hax you can't actually edit it bc its all clickable.\nif editMode goes off this helps ensure we also become clickable again"
+            },
+            {
+              "kind": "method",
+              "name": "updateMath"
+            },
+            {
+              "kind": "field",
+              "name": "mathtext"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "refresh",
+              "description": "forces a refresh to prevent dom reattachment issue"
+            },
+            {
+              "kind": "field",
+              "name": "_private",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ check: \"\", observer: new MutationObserver(() => { this.updateMath(); }), }"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "mathtext"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "lrn-math",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "lrn-math",
+          "declaration": {
+            "name": "LrnMath",
+            "module": "lrn-math.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "LrnMath",
+          "declaration": {
+            "name": "LrnMath",
+            "module": "lrn-math.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "lrn-math-controller",
+          "declaration": {
+            "name": "LrnMathController",
+            "module": "lrn-math.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "LrnMathController",
+          "declaration": {
+            "name": "LrnMathController",
+            "module": "lrn-math.js"
+          }
         }
       ]
-    },
-    {
-      "name": "lrn-math-controller",
-      "attributes": []
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,4 +1,12 @@
 {
-  "version": 2,
-  "tags": []
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "baseline-build-hax.js",
+      "declarations": [],
+      "exports": []
+    }
+  ]
 }

@@ -1,108 +1,1627 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "github-preview",
-      "description": "`github-preview`\n`A simple element that displays information about a github repository.`\n\nEvents:\n\n  * `hax-register-app` {`CustomEvent<{ details: { title: string; icon: string; color: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { format: string; origin: string; }; operations: { ...; }; }; }>`} - \n\nAttributes:\n\n  * `repo` {`string`} - \n\n  * `org` {`string`} - \n\n  * `__description` {`string`} - \n\n  * `repo-lang` {`string`} - \n\n  * `__stars` {`number`} - \n\n  * `__forks` {`number`} - \n\n  * `__assetAvailable` {`boolean`} - \n\n  * `readme-extended` {`boolean`} - \n\n  * `__readmeText` {`string`} - \n\n  * `url` {`string`} - \n\n  * `api-url` {`string`} - \n\n  * `raw-url` {`string`} - \n\n  * `extended` {`boolean`} - \n\n  * `read-me` {`string`} - \n\n  * `branch` {`string`} - \n\n  * `view-more-text` {`string`} - \n\n  * `not-found-text` {`string`} - \n\n  * `headers` - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `repo` {`string`} - \n\n  * `org` {`string`} - \n\n  * `__description` {`string`} - \n\n  * `repoLang` {`string`} - \n\n  * `__stars` {`number`} - \n\n  * `__forks` {`number`} - \n\n  * `__assetAvailable` {`boolean`} - \n\n  * `readmeExtended` {`boolean`} - \n\n  * `__readmeText` {`string`} - \n\n  * `haxAppDetails` {`{ details: { title: string; icon: string; color: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { format: string; origin: string; }; operations: { ...; }; }; }`} - \n\n  * `url` {`string`} - \n\n  * `apiUrl` {`string`} - \n\n  * `rawUrl` {`string`} - \n\n  * `extended` {`boolean`} - \n\n  * `readMe` {`string`} - \n\n  * `branch` {`string`} - \n\n  * `viewMoreText` {`string`} - \n\n  * `notFoundText` {`string`} - \n\n  * `headers` - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "github-preview.js",
+      "declarations": [
         {
-          "name": "repo",
-          "description": "`repo` {`string`} - \n\nProperty: repo"
+          "kind": "class",
+          "description": "`github-preview`\n`A simple element that displays information about a github repository.`",
+          "name": "GithubPreview",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxAppDetails",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "fetchGithubData",
+              "parameters": [
+                {
+                  "name": "repo"
+                },
+                {
+                  "name": "org"
+                },
+                {
+                  "name": "headers"
+                },
+                {
+                  "name": "branch"
+                },
+                {
+                  "name": "rawUrl"
+                },
+                {
+                  "name": "apiUrl"
+                },
+                {
+                  "name": "readMe"
+                },
+                {
+                  "name": "extended"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "readmeViewMoreHandler",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleResponse",
+              "parameters": [
+                {
+                  "name": "response"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "haxgizmoRegistration",
+              "parameters": [
+                {
+                  "name": "store"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_clickLink",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"https://github.com\"",
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "apiUrl",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"https://api.github.com\"",
+              "attribute": "api-url"
+            },
+            {
+              "kind": "field",
+              "name": "rawUrl",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"https://raw.githubusercontent.com\"",
+              "attribute": "raw-url"
+            },
+            {
+              "kind": "field",
+              "name": "extended",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "extended",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "readMe",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"README.md\"",
+              "attribute": "read-me"
+            },
+            {
+              "kind": "field",
+              "name": "branch",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"master\"",
+              "attribute": "branch"
+            },
+            {
+              "kind": "field",
+              "name": "viewMoreText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"View More\"",
+              "attribute": "view-more-text"
+            },
+            {
+              "kind": "field",
+              "name": "notFoundText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Asset not found\"",
+              "attribute": "not-found-text"
+            },
+            {
+              "kind": "field",
+              "name": "headers",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ cache: \"force-cache\", }",
+              "attribute": "headers"
+            },
+            {
+              "kind": "field",
+              "name": "repo",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "repo"
+            },
+            {
+              "kind": "field",
+              "name": "org",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "org"
+            },
+            {
+              "kind": "field",
+              "name": "__description",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "__description"
+            },
+            {
+              "kind": "field",
+              "name": "repoLang",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "repo-lang",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__stars",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "__stars"
+            },
+            {
+              "kind": "field",
+              "name": "__forks",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "__forks"
+            },
+            {
+              "kind": "field",
+              "name": "__assetAvailable",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "__assetAvailable"
+            },
+            {
+              "kind": "field",
+              "name": "readmeExtended",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "readme-extended",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__readmeText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "__readmeText"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "repo",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "repo"
+            },
+            {
+              "name": "org",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "org"
+            },
+            {
+              "name": "__description",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "__description"
+            },
+            {
+              "name": "repo-lang",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "repoLang"
+            },
+            {
+              "name": "__stars",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "__stars"
+            },
+            {
+              "name": "__forks",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "__forks"
+            },
+            {
+              "name": "__assetAvailable",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "__assetAvailable"
+            },
+            {
+              "name": "extended",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "extended"
+            },
+            {
+              "name": "readme-extended",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "readmeExtended"
+            },
+            {
+              "name": "headers",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ cache: \"force-cache\", }",
+              "fieldName": "headers"
+            },
+            {
+              "name": "view-more-text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"View More\"",
+              "fieldName": "viewMoreText"
+            },
+            {
+              "name": "not-found-text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Asset not found\"",
+              "fieldName": "notFoundText"
+            },
+            {
+              "name": "__readmeText",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "__readmeText"
+            },
+            {
+              "name": "branch",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"master\"",
+              "fieldName": "branch"
+            },
+            {
+              "name": "url",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"https://github.com\"",
+              "fieldName": "url"
+            },
+            {
+              "name": "api-url",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"https://api.github.com\"",
+              "fieldName": "apiUrl"
+            },
+            {
+              "name": "raw-url",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"https://raw.githubusercontent.com\"",
+              "fieldName": "rawUrl"
+            },
+            {
+              "name": "read-me",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"README.md\"",
+              "fieldName": "readMe"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "IntersectionObserverMixin",
+              "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "github-preview",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "GithubPreview",
+            "module": "github-preview.js"
+          }
         },
         {
-          "name": "org",
-          "description": "`org` {`string`} - \n\nProperty: org"
-        },
-        {
-          "name": "__description",
-          "description": "`__description` {`string`} - \n\nProperty: __description"
-        },
-        {
-          "name": "repo-lang",
-          "description": "`repo-lang` {`string`} - \n\nProperty: repoLang"
-        },
-        {
-          "name": "__stars",
-          "description": "`__stars` {`number`} - \n\nProperty: __stars"
-        },
-        {
-          "name": "__forks",
-          "description": "`__forks` {`number`} - \n\nProperty: __forks"
-        },
-        {
-          "name": "__assetAvailable",
-          "description": "`__assetAvailable` {`boolean`} - \n\nProperty: __assetAvailable",
-          "valueSet": "v"
-        },
-        {
-          "name": "readme-extended",
-          "description": "`readme-extended` {`boolean`} - \n\nProperty: readmeExtended",
-          "valueSet": "v"
-        },
-        {
-          "name": "__readmeText",
-          "description": "`__readmeText` {`string`} - \n\nProperty: __readmeText"
-        },
-        {
-          "name": "url",
-          "description": "`url` {`string`} - \n\nProperty: url\n\nDefault: https://github.com"
-        },
-        {
-          "name": "api-url",
-          "description": "`api-url` {`string`} - \n\nProperty: apiUrl\n\nDefault: https://api.github.com"
-        },
-        {
-          "name": "raw-url",
-          "description": "`raw-url` {`string`} - \n\nProperty: rawUrl\n\nDefault: https://raw.githubusercontent.com"
-        },
-        {
-          "name": "extended",
-          "description": "`extended` {`boolean`} - \n\nProperty: extended\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "read-me",
-          "description": "`read-me` {`string`} - \n\nProperty: readMe\n\nDefault: README.md"
-        },
-        {
-          "name": "branch",
-          "description": "`branch` {`string`} - \n\nProperty: branch\n\nDefault: master"
-        },
-        {
-          "name": "view-more-text",
-          "description": "`view-more-text` {`string`} - \n\nProperty: viewMoreText\n\nDefault: View More"
-        },
-        {
-          "name": "not-found-text",
-          "description": "`not-found-text` {`string`} - \n\nProperty: notFoundText\n\nDefault: Asset not found"
-        },
-        {
-          "name": "headers",
-          "description": "`headers` - \n\nProperty: headers\n\nDefault: [object Object]"
-        },
-        {
-          "name": "element-visible",
-          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onhax-register-app",
-          "description": "`hax-register-app` {`CustomEvent<{ details: { title: string; icon: string; color: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { format: string; origin: string; }; operations: { ...; }; }; }>`} - "
+          "kind": "js",
+          "name": "GithubPreview",
+          "declaration": {
+            "name": "GithubPreview",
+            "module": "github-preview.js"
+          }
         }
       ]
     },
     {
-      "name": "wc-markdown",
-      "description": "Attributes:\n\n  * `src` {`string | null`} - \n\nProperties:\n\n  * `value` - \n\n  * `src` {`string | null`} - \n\n  * `__value` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/marked.js",
+      "declarations": [
         {
-          "name": "src",
-          "description": "`src` {`string | null`} - \n\nProperty: src",
-          "values": []
+          "kind": "function",
+          "name": "getDefaults",
+          "description": "DO NOT EDIT THIS FILE\nThe code in this file is generated from files in ./src/"
+        },
+        {
+          "kind": "variable",
+          "name": "defaults"
+        },
+        {
+          "kind": "class",
+          "description": "Tokenizer",
+          "name": "Tokenizer",
+          "members": [
+            {
+              "kind": "method",
+              "name": "space",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "code",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "fences",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "heading",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "hr",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "blockquote",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "list",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "html",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "def",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "table",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "lheading",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "paragraph",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "text",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "escape",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "tag",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "link",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "reflink",
+              "parameters": [
+                {
+                  "name": "src"
+                },
+                {
+                  "name": "links"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "emStrong",
+              "parameters": [
+                {
+                  "name": "src"
+                },
+                {
+                  "name": "maskedSrc"
+                },
+                {
+                  "name": "prevChar",
+                  "default": "\"\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "codespan",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "br",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "del",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "autolink",
+              "parameters": [
+                {
+                  "name": "src"
+                },
+                {
+                  "name": "mangle"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "url",
+              "parameters": [
+                {
+                  "name": "src"
+                },
+                {
+                  "name": "mangle"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "inlineText",
+              "parameters": [
+                {
+                  "name": "src"
+                },
+                {
+                  "name": "smartypants"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "options"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "Block Lexer",
+          "name": "Lexer",
+          "members": [
+            {
+              "kind": "field",
+              "name": "rules",
+              "static": true,
+              "description": "Expose Rules",
+              "readonly": true,
+              "default": "{ block: block.normal, inline: inline.normal, }",
+              "type": {
+                "text": "object"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "lex",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "src"
+                },
+                {
+                  "name": "options"
+                }
+              ],
+              "description": "Static Lex Method"
+            },
+            {
+              "kind": "method",
+              "name": "lexInline",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "src"
+                },
+                {
+                  "name": "options"
+                }
+              ],
+              "description": "Static Lex Inline Method"
+            },
+            {
+              "kind": "method",
+              "name": "lex",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ],
+              "description": "Preprocessing"
+            },
+            {
+              "kind": "method",
+              "name": "blockTokens",
+              "parameters": [
+                {
+                  "name": "src"
+                },
+                {
+                  "name": "tokens",
+                  "default": "[]"
+                }
+              ],
+              "description": "Lexing"
+            },
+            {
+              "kind": "method",
+              "name": "inline",
+              "parameters": [
+                {
+                  "name": "src"
+                },
+                {
+                  "name": "tokens"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "inlineTokens",
+              "parameters": [
+                {
+                  "name": "src"
+                },
+                {
+                  "name": "tokens",
+                  "default": "[]"
+                }
+              ],
+              "description": "Lexing/Compiling"
+            },
+            {
+              "kind": "field",
+              "name": "tokens",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "links"
+            },
+            {
+              "kind": "field",
+              "name": "options"
+            },
+            {
+              "kind": "field",
+              "name": "tokenizer"
+            },
+            {
+              "kind": "field",
+              "name": "lexer",
+              "default": "this"
+            },
+            {
+              "kind": "field",
+              "name": "inlineQueue",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "state",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ inLink: false, inRawBlock: false, top: true, }"
+            }
+          ]
+        },
+        {
+          "kind": "variable",
+          "name": "lexer",
+          "default": "new Lexer(options)"
+        },
+        {
+          "kind": "class",
+          "description": "Renderer",
+          "name": "Renderer",
+          "members": [
+            {
+              "kind": "method",
+              "name": "code",
+              "parameters": [
+                {
+                  "name": "code"
+                },
+                {
+                  "name": "infostring"
+                },
+                {
+                  "name": "escaped"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "blockquote",
+              "parameters": [
+                {
+                  "name": "quote"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "html",
+              "parameters": [
+                {
+                  "name": "html"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "heading",
+              "parameters": [
+                {
+                  "name": "text"
+                },
+                {
+                  "name": "level"
+                },
+                {
+                  "name": "raw"
+                },
+                {
+                  "name": "slugger"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "hr"
+            },
+            {
+              "kind": "method",
+              "name": "list",
+              "parameters": [
+                {
+                  "name": "body"
+                },
+                {
+                  "name": "ordered"
+                },
+                {
+                  "name": "start"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "listitem",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "checkbox",
+              "parameters": [
+                {
+                  "name": "checked"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "paragraph",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "table",
+              "parameters": [
+                {
+                  "name": "header"
+                },
+                {
+                  "name": "body"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "tablerow",
+              "parameters": [
+                {
+                  "name": "content"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "tablecell",
+              "parameters": [
+                {
+                  "name": "content"
+                },
+                {
+                  "name": "flags"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "strong",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "em",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "codespan",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "br"
+            },
+            {
+              "kind": "method",
+              "name": "del",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "link",
+              "parameters": [
+                {
+                  "name": "href"
+                },
+                {
+                  "name": "title"
+                },
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "image",
+              "parameters": [
+                {
+                  "name": "href"
+                },
+                {
+                  "name": "title"
+                },
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "text",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "options"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "TextRenderer\nreturns only the textual part of the token",
+          "name": "TextRenderer",
+          "members": [
+            {
+              "kind": "method",
+              "name": "strong",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "em",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "codespan",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "del",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "html",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "text",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "link",
+              "parameters": [
+                {
+                  "name": "href"
+                },
+                {
+                  "name": "title"
+                },
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "image",
+              "parameters": [
+                {
+                  "name": "href"
+                },
+                {
+                  "name": "title"
+                },
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "br"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "Slugger generates header id",
+          "name": "Slugger",
+          "members": [
+            {
+              "kind": "method",
+              "name": "serialize",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getNextSafeSlug",
+              "parameters": [
+                {
+                  "name": "originalSlug"
+                },
+                {
+                  "name": "isDryRun"
+                }
+              ],
+              "description": "Finds the next safe (unique) slug to use"
+            },
+            {
+              "kind": "method",
+              "name": "slug",
+              "parameters": [
+                {
+                  "name": "value"
+                },
+                {
+                  "name": "options",
+                  "default": "{}",
+                  "type": {
+                    "text": "@param {boolean} options.dryrun Generates the next unique slug without updating the internal accumulator.\n   "
+                  }
+                }
+              ],
+              "description": "Convert string to unique id"
+            },
+            {
+              "kind": "field",
+              "name": "seen",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "Parsing & Compiling",
+          "name": "Parser",
+          "members": [
+            {
+              "kind": "method",
+              "name": "parse",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "tokens"
+                },
+                {
+                  "name": "options"
+                }
+              ],
+              "description": "Static Parse Method"
+            },
+            {
+              "kind": "method",
+              "name": "parseInline",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "tokens"
+                },
+                {
+                  "name": "options"
+                }
+              ],
+              "description": "Static Parse Inline Method"
+            },
+            {
+              "kind": "method",
+              "name": "parse",
+              "parameters": [
+                {
+                  "name": "tokens"
+                },
+                {
+                  "name": "top",
+                  "default": "true"
+                }
+              ],
+              "description": "Parse Loop"
+            },
+            {
+              "kind": "method",
+              "name": "parseInline",
+              "parameters": [
+                {
+                  "name": "tokens"
+                },
+                {
+                  "name": "renderer"
+                }
+              ],
+              "description": "Parse Inline Tokens"
+            },
+            {
+              "kind": "field",
+              "name": "options"
+            },
+            {
+              "kind": "field",
+              "name": "renderer"
+            },
+            {
+              "kind": "field",
+              "name": "textRenderer",
+              "default": "new TextRenderer()"
+            },
+            {
+              "kind": "field",
+              "name": "slugger",
+              "default": "new Slugger()"
+            }
+          ]
+        },
+        {
+          "kind": "variable",
+          "name": "parser",
+          "default": "new Parser(options)"
+        },
+        {
+          "kind": "function",
+          "name": "marked",
+          "parameters": [
+            {
+              "name": "src"
+            },
+            {
+              "name": "opt"
+            },
+            {
+              "name": "callback"
+            }
+          ],
+          "description": "Marked"
+        },
+        {
+          "kind": "variable",
+          "name": "walkTokens"
+        },
+        {
+          "kind": "variable",
+          "name": "options"
+        },
+        {
+          "kind": "variable",
+          "name": "setOptions"
+        },
+        {
+          "kind": "variable",
+          "name": "use"
+        },
+        {
+          "kind": "variable",
+          "name": "parseInline"
+        },
+        {
+          "kind": "variable",
+          "name": "parse",
+          "default": "marked"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Lexer",
+          "declaration": {
+            "name": "Lexer",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Parser",
+          "declaration": {
+            "name": "Parser",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Renderer",
+          "declaration": {
+            "name": "Renderer",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Slugger",
+          "declaration": {
+            "name": "Slugger",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TextRenderer",
+          "declaration": {
+            "name": "TextRenderer",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Tokenizer",
+          "declaration": {
+            "name": "Tokenizer",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "defaults",
+          "declaration": {
+            "name": "defaults",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "getDefaults",
+          "declaration": {
+            "name": "getDefaults",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "lexer",
+          "declaration": {
+            "name": "lexer",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "marked",
+          "declaration": {
+            "name": "marked",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "options",
+          "declaration": {
+            "name": "options",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "parse",
+          "declaration": {
+            "name": "parse",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "parseInline",
+          "declaration": {
+            "name": "parseInline",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "parser",
+          "declaration": {
+            "name": "parser",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "setOptions",
+          "declaration": {
+            "name": "setOptions",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "use",
+          "declaration": {
+            "name": "use",
+            "module": "lib/marked.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "walkTokens",
+          "declaration": {
+            "name": "walkTokens",
+            "module": "lib/marked.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/wc-markdown.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "WCMarkdown",
+          "members": [
+            {
+              "kind": "field",
+              "name": "src"
+            },
+            {
+              "kind": "field",
+              "name": "value"
+            },
+            {
+              "kind": "method",
+              "name": "renderSlotMD"
+            },
+            {
+              "kind": "method",
+              "name": "setSrc",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "fetchSrc",
+              "parameters": [
+                {
+                  "name": "src"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setValue"
+            },
+            {
+              "kind": "method",
+              "name": "prepare",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "markdown"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toHtml",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "markdown"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "dedentText",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "text",
+                  "description": "the text to dedent",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "De-dents the code by getting the padding from the first line,\nthen removes the same indent amount padding from the rest of the lines",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "src"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "wc-markdown",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "WCMarkdown",
+          "declaration": {
+            "name": "WCMarkdown",
+            "module": "lib/wc-markdown.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "wc-markdown",
+          "declaration": {
+            "name": "WCMarkdown",
+            "module": "lib/wc-markdown.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

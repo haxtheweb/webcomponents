@@ -1,29 +1,149 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "documentation-player",
-      "description": "`documentation-player`\n`playlist like element but for documenting web components in the context of hax`\n\nEvents:\n\n  * `hax-insert` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `label` {`string`} - \n\n  * `image-url` {`string`} - \n\n  * `url` {`string`} - \n\nProperties:\n\n  * `label` {`string`} - \n\n  * `haxSchema` {`any[]`} - \n\n  * `imageUrl` {`string`} - \n\n  * `url` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "documentation-player.js",
+      "declarations": [
         {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: "
+          "kind": "class",
+          "description": "`documentation-player`\n`playlist like element but for documenting web components in the context of hax`",
+          "name": "DocumentationPlayer",
+          "members": [
+            {
+              "kind": "method",
+              "name": "_getDataString",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "codePenData",
+              "parameters": [
+                {
+                  "name": "label"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderPlayListTemplate"
+            },
+            {
+              "kind": "method",
+              "name": "renderHAXInjectButton"
+            },
+            {
+              "kind": "method",
+              "name": "_injectHAX",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "haxSchema",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "imageUrl",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "image-url"
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "url"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "label"
+            },
+            {
+              "name": "image-url",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "imageUrl"
+            },
+            {
+              "name": "url",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "url"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "documentation-player",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "DocumentationPlayer",
+            "module": "documentation-player.js"
+          }
         },
         {
-          "name": "image-url",
-          "description": "`image-url` {`string`} - \n\nProperty: imageUrl\n\nDefault: "
-        },
-        {
-          "name": "url",
-          "description": "`url` {`string`} - \n\nProperty: url\n\nDefault: "
-        },
-        {
-          "name": "onhax-insert",
-          "description": "`hax-insert` {`CustomEvent<{ value: any[]; }>`} - "
+          "kind": "js",
+          "name": "DocumentationPlayer",
+          "declaration": {
+            "name": "DocumentationPlayer",
+            "module": "documentation-player.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

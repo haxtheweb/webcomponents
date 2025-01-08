@@ -1,30 +1,183 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "spotify-embed",
-      "description": "`spotify-embed`\n`embed spotify playlists`\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `theme` {`string`} - \n\n  * `size` {`string`} - \n\n  * `editing` {`boolean`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `theme` {`string`} - \n\n  * `size` {`string`} - \n\n  * `playlistid` {`string`} - \n\n  * `type` {`string`} - \n\n  * `editing` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "spotify-embed.js",
+      "declarations": [
         {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: null"
+          "kind": "class",
+          "description": "`spotify-embed`\n`embed spotify playlists`",
+          "name": "SpotifyEmbed",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessNodeToContent",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "source"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "theme"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"normal\"",
+              "attribute": "size"
+            },
+            {
+              "kind": "field",
+              "name": "playlistid",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "editing",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "editing",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "source",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "source"
+            },
+            {
+              "name": "theme",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "theme"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"normal\"",
+              "fieldName": "size"
+            },
+            {
+              "name": "editing",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "editing"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "spotify-embed",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SpotifyEmbed",
+            "module": "spotify-embed.js"
+          }
         },
         {
-          "name": "theme",
-          "description": "`theme` {`string`} - \n\nProperty: theme\n\nDefault: null"
-        },
-        {
-          "name": "size",
-          "description": "`size` {`string`} - \n\nProperty: size\n\nDefault: normal"
-        },
-        {
-          "name": "editing",
-          "description": "`editing` {`boolean`} - \n\nProperty: editing\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "SpotifyEmbed",
+          "declaration": {
+            "name": "SpotifyEmbed",
+            "module": "spotify-embed.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

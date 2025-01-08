@@ -1,26 +1,501 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "voice-recorder",
-      "description": "`voice-recorder`\n`LAME bridge`\n\nEvents:\n\n  * `voice-recorder-recording-blob` {`CustomEvent<{ value: Blob; }>`} - \n\nAttributes:\n\n  * `recording` {`boolean`} - \n\n  * `label` {`string`} - \n\nProperties:\n\n  * `recording` {`boolean`} - \n\n  * `label` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "voice-recorder.js",
+      "declarations": [
         {
-          "name": "recording",
-          "description": "`recording` {`boolean`} - \n\nProperty: recording\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`voice-recorder`\n`LAME bridge`",
+          "name": "VoiceRecorder",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "toggleRecording",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "recorder",
+              "description": "Toggle the LAME bridge"
+            },
+            {
+              "kind": "field",
+              "name": "recording",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "recording"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Activate Recorder\"",
+              "attribute": "label"
+            }
+          ],
+          "events": [
+            {
+              "name": "voice-recorder-recording-blob",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "recording",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "recording"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Activate Recorder\"",
+              "fieldName": "label"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "voice-recorder",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "VoiceRecorder",
+            "module": "voice-recorder.js"
+          }
         },
         {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Activate Recorder"
+          "kind": "js",
+          "name": "VoiceRecorder",
+          "declaration": {
+            "name": "VoiceRecorder",
+            "module": "voice-recorder.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/vmsg-fork.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Recorder",
+          "members": [
+            {
+              "kind": "method",
+              "name": "close"
+            },
+            {
+              "kind": "method",
+              "name": "initAudio"
+            },
+            {
+              "kind": "method",
+              "name": "initWorker"
+            },
+            {
+              "kind": "method",
+              "name": "init"
+            },
+            {
+              "kind": "method",
+              "name": "startRecording"
+            },
+            {
+              "kind": "method",
+              "name": "stopRecording"
+            },
+            {
+              "kind": "method",
+              "name": "stopTracks"
+            },
+            {
+              "kind": "field",
+              "name": "wasmURL"
+            },
+            {
+              "kind": "field",
+              "name": "shimURL"
+            },
+            {
+              "kind": "field",
+              "name": "onStop",
+              "default": "onStop"
+            },
+            {
+              "kind": "field",
+              "name": "pitch"
+            },
+            {
+              "kind": "field",
+              "name": "stream",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "audioCtx",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "gainNode",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "pitchFX",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "encNode",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "worker",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "workerURL",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "blob",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "blobURL",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "resolve",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "reject",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            }
+          ]
         },
         {
-          "name": "onvoice-recorder-recording-blob",
-          "description": "`voice-recorder-recording-blob` {`CustomEvent<{ value: Blob; }>`} - "
+          "kind": "class",
+          "description": "",
+          "name": "Form",
+          "members": [
+            {
+              "kind": "method",
+              "name": "drawInit"
+            },
+            {
+              "kind": "method",
+              "name": "drawTime",
+              "parameters": [
+                {
+                  "name": "msecs"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "drawAll"
+            },
+            {
+              "kind": "method",
+              "name": "drawError",
+              "parameters": [
+                {
+                  "name": "err"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "clearAll"
+            },
+            {
+              "kind": "method",
+              "name": "close",
+              "parameters": [
+                {
+                  "name": "blob"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "onStop"
+            },
+            {
+              "kind": "method",
+              "name": "startRecording"
+            },
+            {
+              "kind": "method",
+              "name": "stopRecording"
+            },
+            {
+              "kind": "method",
+              "name": "updateTime"
+            },
+            {
+              "kind": "field",
+              "name": "recorder",
+              "default": "new Recorder(opts, this.onStop.bind(this))"
+            },
+            {
+              "kind": "field",
+              "name": "resolve",
+              "default": "resolve"
+            },
+            {
+              "kind": "field",
+              "name": "reject",
+              "default": "reject"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "default": "target"
+            },
+            {
+              "kind": "field",
+              "name": "renderArea",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "recordBtn",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "stopBtn",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "timer",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "audio",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "saveBtn",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "previewBtn",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "tid",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "playing",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "hasRecording",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "start",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "record",
+          "parameters": [
+            {
+              "name": "opts",
+              "description": "Options",
+              "type": {
+                "text": "Object="
+              }
+            },
+            {
+              "name": "target"
+            },
+            {
+              "description": "URL of the module\n  (\"/static/js/vmsg.wasm\" by default)",
+              "name": "opts.wasmURL",
+              "type": {
+                "text": "string="
+              }
+            },
+            {
+              "description": "URL of the WebAssembly polyfill\n  (\"/static/js/wasm-polyfill.js\" by default)",
+              "name": "opts.shimURL",
+              "type": {
+                "text": "string="
+              }
+            },
+            {
+              "description": "Initial pitch shift ([-1, 1], 0 by default)",
+              "name": "opts.pitch",
+              "type": {
+                "text": "number="
+              }
+            }
+          ],
+          "description": "Record a new voice message.",
+          "return": {
+            "type": {
+              "text": "Promise.<Blob>"
+            }
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "Recorder",
+          "declaration": {
+            "name": "Recorder",
+            "module": "lib/vmsg-fork.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Form",
+          "declaration": {
+            "name": "Form",
+            "module": "lib/vmsg-fork.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "record",
+          "declaration": {
+            "name": "record",
+            "module": "lib/vmsg-fork.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "lib/vmsg-fork.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,12 +1,67 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "portal-launcher",
-      "description": "`portal-launcher`\n\nProperties:\n\n  * `tag` {`string`} - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "portal-launcher.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`portal-launcher`",
+          "name": "PortalLauncher",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "normalizeEventPath",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "click",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Basic feature detecting event handler"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "portal-launcher",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PortalLauncher",
+            "module": "portal-launcher.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PortalLauncher",
+          "declaration": {
+            "name": "PortalLauncher",
+            "module": "portal-launcher.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

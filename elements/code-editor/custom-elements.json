@@ -1,126 +1,687 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "code-editor",
-      "description": "`code-editor`\n`Wrapper on top of a code editor`\n\nEvents:\n\n  * `show-code-pen-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `value-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `focused-changed` {`CustomEvent<{ focused: any; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - Title\n\n  * `editor-value` {`string`} - contents of the editor\n\n  * `value` {`string`} - value of the editor after the fact\n\n  * `mode` {`string`} - Mode / language for editor\n\n  * `ready` {`boolean`} - \n\n  * `code-pen-data` - Code pen data, computed based on the HTML editor\n\n  * `show-code-pen` {`boolean`} - Show codePen button to fork it to there to run\n\n  * `read-only` {`boolean`} - Readonly setting for the editor\n\n  * `theme` {`string`} - Theme for the Ace editor.\n\n  * `language` {`string`} - Language to present color coding for\n\n  * `font-size` {`number`} - font size for the editor\n\n  * `word-wrap` {`boolean`} - \n\n  * `tab-size` {`number`} - number of characters for tabs\n\n  * `autofocus` {`boolean`} - automatically set focus on the editor\n\n  * `hide-line-numbers` {`boolean`} - hide the line numbers\n\n  * `focused` {`boolean`} - does the monaco-editor have focus\n\n  * `libPath` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `placeholder` {`string`} - \n\n  * `title` {`string`} - Title\n\n  * `editorValue` {`string`} - contents of the editor\n\n  * `value` {`string`} - value of the editor after the fact\n\n  * `mode` {`string`} - Mode / language for editor\n\n  * `ready` {`boolean`} - \n\n  * `codePenData` - Code pen data, computed based on the HTML editor\n\n  * `haxUIElement` {`boolean`} - \n\n  * `showCodePen` {`boolean`} - Show codePen button to fork it to there to run\n\n  * `readOnly` {`boolean`} - Readonly setting for the editor\n\n  * `theme` {`string`} - Theme for the Ace editor.\n\n  * `language` {`string`} - Language to present color coding for\n\n  * `fontSize` {`number`} - font size for the editor\n\n  * `wordWrap` {`boolean`} - \n\n  * `tabSize` {`number`} - number of characters for tabs\n\n  * `autofocus` {`boolean`} - automatically set focus on the editor\n\n  * `hideLineNumbers` {`boolean`} - hide the line numbers\n\n  * `focused` {`boolean`} - does the monaco-editor have focus\n\n  * `libPath` {`string`} - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "code-editor.js",
+      "declarations": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
+          "kind": "class",
+          "description": "`code-editor`\n`Wrapper on top of a code editor`",
+          "name": "CodeEditor",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getTheme",
+              "parameters": [
+                {
+                  "name": "theme"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "placeholder",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_computeCodePenData",
+              "parameters": [
+                {
+                  "name": "title"
+                },
+                {
+                  "name": "editorValue"
+                }
+              ],
+              "description": "Update the post data whenever the editor has been updated"
+            },
+            {
+              "kind": "method",
+              "name": "_handleFocus",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "the monaco-elements's focus event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "sets focused attribute when monaco-elements's focus event fires"
+            },
+            {
+              "kind": "method",
+              "name": "_handleBlur",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "the monaco-elements's blur event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "unsets focused attribute when monaco-elements's blur event fires"
+            },
+            {
+              "kind": "method",
+              "name": "_modeChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                }
+              ],
+              "description": "LEGACY: pass down mode to language if that api is used"
+            },
+            {
+              "kind": "method",
+              "name": "_editorDataChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Notice code editor changes and reflect them into this element"
+            },
+            {
+              "kind": "method",
+              "name": "updateEditorValue",
+              "description": "Calculate what's in slot currently and then inject it into the editor."
+            },
+            {
+              "kind": "method",
+              "name": "_editorValueChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "allow HAX to toggle edit state when activated"
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessNodeToContent",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Ensure fields don't pass through to HAX if in that context"
+            },
+            {
+              "kind": "method",
+              "name": "getValueAsNode",
+              "parameters": [
+                {
+                  "name": "wrap",
+                  "default": "null"
+                }
+              ],
+              "description": "return HTML object of table data",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "editorReady",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "codePenData",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Code pen data, computed based on the HTML editor",
+              "default": "null",
+              "attribute": "code-pen-data"
+            },
+            {
+              "kind": "field",
+              "name": "haxUIElement",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "showCodePen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Show codePen button to fork it to there to run",
+              "default": "false",
+              "attribute": "show-code-pen",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "readOnly",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Readonly setting for the editor",
+              "default": "false",
+              "attribute": "read-only",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Theme for the Ace editor.",
+              "default": "\"vs-dark\"",
+              "attribute": "theme",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "language",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Language to present color coding for",
+              "default": "\"javascript\"",
+              "attribute": "language"
+            },
+            {
+              "kind": "field",
+              "name": "fontSize",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "font size for the editor",
+              "default": "16",
+              "attribute": "font-size"
+            },
+            {
+              "kind": "field",
+              "name": "wordWrap",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "word-wrap"
+            },
+            {
+              "kind": "field",
+              "name": "tabSize",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "number of characters for tabs",
+              "default": "2",
+              "attribute": "tab-size"
+            },
+            {
+              "kind": "field",
+              "name": "autofocus",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "automatically set focus on the editor",
+              "default": "false",
+              "attribute": "autofocus",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hideLineNumbers",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "hide the line numbers",
+              "default": "false",
+              "attribute": "hide-line-numbers"
+            },
+            {
+              "kind": "field",
+              "name": "focused",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "does the monaco-editor have focus",
+              "default": "false",
+              "attribute": "focused",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "libPath",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"monaco-editor/min/vs\"",
+              "attribute": "libPath"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Title",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "editorValue",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "contents of the editor",
+              "attribute": "editor-value"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "value of the editor after the fact",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "mode",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Mode / language for editor",
+              "attribute": "mode"
+            },
+            {
+              "kind": "field",
+              "name": "ready",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "ready"
+            }
+          ],
+          "events": [
+            {
+              "name": "show-code-pen-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "focused-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "libPath",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"monaco-editor/min/vs\"",
+              "fieldName": "libPath"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Title",
+              "fieldName": "title"
+            },
+            {
+              "name": "show-code-pen",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Show codePen button to fork it to there to run",
+              "default": "false",
+              "fieldName": "showCodePen"
+            },
+            {
+              "name": "read-only",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Readonly setting for the editor",
+              "default": "false",
+              "fieldName": "readOnly"
+            },
+            {
+              "name": "code-pen-data",
+              "type": {
+                "text": "null"
+              },
+              "description": "Code pen data, computed based on the HTML editor",
+              "default": "null",
+              "fieldName": "codePenData"
+            },
+            {
+              "name": "editor-value",
+              "type": {
+                "text": "string"
+              },
+              "description": "contents of the editor",
+              "fieldName": "editorValue"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "description": "value of the editor after the fact",
+              "fieldName": "value"
+            },
+            {
+              "name": "theme",
+              "type": {
+                "text": "string"
+              },
+              "description": "Theme for the Ace editor.",
+              "default": "\"vs-dark\"",
+              "fieldName": "theme"
+            },
+            {
+              "name": "mode",
+              "type": {
+                "text": "string"
+              },
+              "description": "Mode / language for editor",
+              "fieldName": "mode"
+            },
+            {
+              "name": "language",
+              "type": {
+                "text": "string"
+              },
+              "description": "Language to present color coding for",
+              "default": "\"javascript\"",
+              "fieldName": "language"
+            },
+            {
+              "name": "font-size",
+              "type": {
+                "text": "number"
+              },
+              "description": "font size for the editor",
+              "default": "16",
+              "fieldName": "fontSize"
+            },
+            {
+              "name": "word-wrap",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "wordWrap"
+            },
+            {
+              "name": "autofocus",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "automatically set focus on the editor",
+              "default": "false",
+              "fieldName": "autofocus"
+            },
+            {
+              "name": "hide-line-numbers",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "hide the line numbers",
+              "default": "false",
+              "fieldName": "hideLineNumbers"
+            },
+            {
+              "name": "focused",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "does the monaco-editor have focus",
+              "default": "false",
+              "fieldName": "focused"
+            },
+            {
+              "name": "tab-size",
+              "type": {
+                "text": "number"
+              },
+              "description": "number of characters for tabs",
+              "default": "2",
+              "fieldName": "tabSize"
+            },
+            {
+              "name": "ready",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "ready"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "code-editor",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CodeEditor",
+            "module": "code-editor.js"
+          }
         },
         {
-          "name": "editor-value",
-          "description": "`editor-value` {`string`} - contents of the editor\n\nProperty: editorValue"
-        },
-        {
-          "name": "value",
-          "description": "`value` {`string`} - value of the editor after the fact\n\nProperty: value"
-        },
-        {
-          "name": "mode",
-          "description": "`mode` {`string`} - Mode / language for editor\n\nProperty: mode"
-        },
-        {
-          "name": "ready",
-          "description": "`ready` {`boolean`} - \n\nProperty: ready",
-          "valueSet": "v"
-        },
-        {
-          "name": "code-pen-data",
-          "description": "`code-pen-data` - Code pen data, computed based on the HTML editor\n\nProperty: codePenData\n\nDefault: null"
-        },
-        {
-          "name": "show-code-pen",
-          "description": "`show-code-pen` {`boolean`} - Show codePen button to fork it to there to run\n\nProperty: showCodePen\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "read-only",
-          "description": "`read-only` {`boolean`} - Readonly setting for the editor\n\nProperty: readOnly\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "theme",
-          "description": "`theme` {`string`} - Theme for the Ace editor.\n\nProperty: theme\n\nDefault: vs-dark"
-        },
-        {
-          "name": "language",
-          "description": "`language` {`string`} - Language to present color coding for\n\nProperty: language\n\nDefault: javascript"
-        },
-        {
-          "name": "font-size",
-          "description": "`font-size` {`number`} - font size for the editor\n\nProperty: fontSize\n\nDefault: 16"
-        },
-        {
-          "name": "word-wrap",
-          "description": "`word-wrap` {`boolean`} - \n\nProperty: wordWrap\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "tab-size",
-          "description": "`tab-size` {`number`} - number of characters for tabs\n\nProperty: tabSize\n\nDefault: 2"
-        },
-        {
-          "name": "autofocus",
-          "description": "`autofocus` {`boolean`} - automatically set focus on the editor\n\nProperty: autofocus\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-line-numbers",
-          "description": "`hide-line-numbers` {`boolean`} - hide the line numbers\n\nProperty: hideLineNumbers\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "focused",
-          "description": "`focused` {`boolean`} - does the monaco-editor have focus\n\nProperty: focused\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "libPath",
-          "description": "`libPath` {`string`} - \n\nProperty: libPath\n\nDefault: monaco-editor/min/vs"
-        },
-        {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
-        },
-        {
-          "name": "onshow-code-pen-changed",
-          "description": "`show-code-pen-changed` {`CustomEvent<{ value: any; }>`} - "
-        },
-        {
-          "name": "onvalue-changed",
-          "description": "`value-changed` {`CustomEvent<{ value: any; }>`} - "
-        },
-        {
-          "name": "onfocused-changed",
-          "description": "`focused-changed` {`CustomEvent<{ focused: any; }>`} - "
+          "kind": "js",
+          "name": "CodeEditor",
+          "declaration": {
+            "name": "CodeEditor",
+            "module": "code-editor.js"
+          }
         }
       ]
     },
     {
-      "name": "code-pen-button",
-      "description": "`code-pen-button`\n`Post data to codepen to form a new pen`\n\nAttributes:\n\n  * `check-it-out` {`string`} - \n\n  * `end-point` {`string`} - End point for posting should it change in the future.\n\n  * `data` - Data object to post to code pen\n\n  * `data-string` {`string`} - Data object as a JSON string for the POST data in page.\n\nProperties:\n\n  * `checkItOut` {`string`} - \n\n  * `endPoint` {`string`} - End point for posting should it change in the future.\n\n  * `data` - Data object to post to code pen\n\n  * `dataString` {`string`} - Data object as a JSON string for the POST data in page.",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/code-pen-button.js",
+      "declarations": [
         {
-          "name": "check-it-out",
-          "description": "`check-it-out` {`string`} - \n\nProperty: checkItOut\n\nDefault: Check it out on codepen"
+          "kind": "class",
+          "description": "`code-pen-button`\n`Post data to codepen to form a new pen`",
+          "name": "CodePenButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_getDataString",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ],
+              "description": "Return string from data object so it can be posted correctly."
+            },
+            {
+              "kind": "field",
+              "name": "checkItOut",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Check it out on codepen\"",
+              "attribute": "check-it-out"
+            },
+            {
+              "kind": "field",
+              "name": "endPoint",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "End point for posting should it change in the future.",
+              "default": "\"https://codepen.io/pen/define\"",
+              "attribute": "end-point"
+            },
+            {
+              "kind": "field",
+              "name": "data",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Data object to post to code pen",
+              "default": "{}",
+              "attribute": "data"
+            },
+            {
+              "kind": "field",
+              "name": "dataString",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Data object as a JSON string for the POST data in page.",
+              "default": "\"\"",
+              "attribute": "data-string"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "check-it-out",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Check it out on codepen\"",
+              "fieldName": "checkItOut"
+            },
+            {
+              "name": "end-point",
+              "type": {
+                "text": "string"
+              },
+              "description": "End point for posting should it change in the future.",
+              "default": "\"https://codepen.io/pen/define\"",
+              "fieldName": "endPoint"
+            },
+            {
+              "name": "data-string",
+              "type": {
+                "text": "string"
+              },
+              "description": "Data object as a JSON string for the POST data in page.",
+              "default": "\"\"",
+              "fieldName": "dataString"
+            },
+            {
+              "name": "data",
+              "type": {
+                "text": "object"
+              },
+              "description": "Data object to post to code pen",
+              "default": "{}",
+              "fieldName": "data"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "code-pen-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CodePenButton",
+            "module": "lib/code-pen-button.js"
+          }
         },
         {
-          "name": "end-point",
-          "description": "`end-point` {`string`} - End point for posting should it change in the future.\n\nProperty: endPoint\n\nDefault: https://codepen.io/pen/define"
-        },
-        {
-          "name": "data",
-          "description": "`data` - Data object to post to code pen\n\nProperty: data\n\nDefault: [object Object]"
-        },
-        {
-          "name": "data-string",
-          "description": "`data-string` {`string`} - Data object as a JSON string for the POST data in page.\n\nProperty: dataString\n\nDefault: "
+          "kind": "js",
+          "name": "CodePenButton",
+          "declaration": {
+            "name": "CodePenButton",
+            "module": "lib/code-pen-button.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

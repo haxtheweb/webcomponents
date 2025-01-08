@@ -1,17 +1,78 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "b-r",
-      "description": "`b-r`\n`Creates break statements to show conditional rendering`\n\nAttributes:\n\n  * `amount` {`number`} - \n\nProperties:\n\n  * `amount` {`number`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "b-r.js",
+      "declarations": [
         {
-          "name": "amount",
-          "description": "`amount` {`number`} - \n\nProperty: amount\n\nDefault: 0"
+          "kind": "class",
+          "description": "`b-r`\n`Creates break statements to show conditional rendering`",
+          "name": "BR",
+          "members": [
+            {
+              "kind": "method",
+              "name": "renderBR",
+              "parameters": [
+                {
+                  "name": "amount"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "amount",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "amount"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "amount",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "amount"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "b-r",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "BR",
+            "module": "b-r.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "BR",
+          "declaration": {
+            "name": "BR",
+            "module": "b-r.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

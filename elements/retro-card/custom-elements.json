@@ -1,64 +1,300 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "retro-card",
-      "description": "`retro-card`\n`Simple card in a cool retro design`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `tags` {`string`} - \n\n  * `media-source` {`string`} - \n\n  * `url` {`string`} - \n\n  * `hover-source` {`string`} - \n\n  * `__source` {`string`} - \n\n  * `__cardTags` {`any[]`} - \n\n  * `hover-state` {`boolean`} - \n\n  * `nosource` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `tags` {`string`} - \n\n  * `mediaSource` {`string`} - \n\n  * `url` {`string`} - \n\n  * `hoverSource` {`string`} - \n\n  * `__source` {`string`} - \n\n  * `__cardTags` {`any[]`} - \n\n  * `hoverState` {`boolean`} - \n\n  * `nosource` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "retro-card.js",
+      "declarations": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title"
+          "kind": "class",
+          "description": "`retro-card`\n`Simple card in a cool retro design`",
+          "name": "RetroCard",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_keyPress",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "A11y because we are delegating keyboard function to hit the link when enter pressed"
+            },
+            {
+              "kind": "method",
+              "name": "_hoverStateOff",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_hoverStateOn",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "double-check that we are set to inactivate click handlers\nthis is for when activated in a duplicate / adding new content state"
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "Set a flag to test if we should block link clicking on the entire card\notherwise when editing in hax you can't actually edit it bc its all clickable.\nif editMode goes off this helps ensure we also become clickable again"
+            },
+            {
+              "kind": "method",
+              "name": "_clickCard",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "special support for HAX since the whole card is selectable"
+            },
+            {
+              "kind": "method",
+              "name": "_tagsChanged",
+              "parameters": [
+                {
+                  "name": "tags"
+                }
+              ],
+              "description": "Convert string based tags into array"
+            },
+            {
+              "kind": "field",
+              "name": "__cardTags",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "__cardTags"
+            },
+            {
+              "kind": "field",
+              "name": "hoverState",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hover-state",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "nosource",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "nosource"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "subtitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "subtitle"
+            },
+            {
+              "kind": "field",
+              "name": "tags",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "tags"
+            },
+            {
+              "kind": "field",
+              "name": "mediaSource",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "media-source"
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "hoverSource",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "hover-source"
+            },
+            {
+              "kind": "field",
+              "name": "__source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "__source"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "title"
+            },
+            {
+              "name": "subtitle",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "subtitle"
+            },
+            {
+              "name": "tags",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "tags"
+            },
+            {
+              "name": "media-source",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "mediaSource"
+            },
+            {
+              "name": "url",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "url"
+            },
+            {
+              "name": "hover-source",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "hoverSource"
+            },
+            {
+              "name": "hover-state",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hoverState"
+            },
+            {
+              "name": "__cardTags",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "__cardTags"
+            },
+            {
+              "name": "nosource",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "nosource"
+            },
+            {
+              "name": "__source",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "__source"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "retro-card",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "RetroCard",
+            "module": "retro-card.js"
+          }
         },
         {
-          "name": "subtitle",
-          "description": "`subtitle` {`string`} - \n\nProperty: subtitle"
-        },
-        {
-          "name": "tags",
-          "description": "`tags` {`string`} - \n\nProperty: tags"
-        },
-        {
-          "name": "media-source",
-          "description": "`media-source` {`string`} - \n\nProperty: mediaSource"
-        },
-        {
-          "name": "url",
-          "description": "`url` {`string`} - \n\nProperty: url"
-        },
-        {
-          "name": "hover-source",
-          "description": "`hover-source` {`string`} - \n\nProperty: hoverSource"
-        },
-        {
-          "name": "__source",
-          "description": "`__source` {`string`} - \n\nProperty: __source"
-        },
-        {
-          "name": "__cardTags",
-          "description": "`__cardTags` {`any[]`} - \n\nProperty: __cardTags\n\nDefault: "
-        },
-        {
-          "name": "hover-state",
-          "description": "`hover-state` {`boolean`} - \n\nProperty: hoverState\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "nosource",
-          "description": "`nosource` {`boolean`} - \n\nProperty: nosource\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "RetroCard",
+          "declaration": {
+            "name": "RetroCard",
+            "module": "retro-card.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

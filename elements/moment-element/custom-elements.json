@@ -1,42 +1,212 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "moment-element",
-      "description": "Polymer element wrapper for the [moment](https://github.com/moment/moment) library.\n\nExamples:\n\n<moment-element></moment-element>\n<moment-element datetime=\"1991-12-31\" output-format=\"MMM DD[,] YYYY\"></moment-element>\n\nAttributes:\n\n  * `output` {`string`} - \n\n  * `libraryLoaded` {`boolean`} - \n\n  * `datetime` {`string`} - \n\n  * `input-format` {`string`} - \n\n  * `output-format` {`string`} - \n\n  * `from` {`string`} - \n\n  * `to` {`string`} - \n\nProperties:\n\n  * `output` {`string`} - \n\n  * `libraryLoaded` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `datetime` {`string`} - \n\n  * `inputFormat` {`string`} - \n\n  * `outputFormat` {`string`} - \n\n  * `from` {`string`} - \n\n  * `to` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "moment-element.js",
+      "declarations": [
         {
-          "name": "output",
-          "description": "`output` {`string`} - \n\nProperty: output"
+          "kind": "class",
+          "description": "Polymer element wrapper for the [moment](https://github.com/moment/moment) library.\n\nExamples:\n\n<moment-element></moment-element>\n<moment-element datetime=\"1991-12-31\" output-format=\"MMM DD[,] YYYY\"></moment-element>",
+          "name": "MomentElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_momentLoaded"
+            },
+            {
+              "kind": "method",
+              "name": "_computeOutput",
+              "parameters": [
+                {
+                  "name": "datetime"
+                },
+                {
+                  "name": "inputFormat"
+                },
+                {
+                  "name": "outputFormat"
+                },
+                {
+                  "name": "from"
+                },
+                {
+                  "name": "to"
+                },
+                {
+                  "name": "libraryLoaded"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "datetime",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "new Date()",
+              "attribute": "datetime"
+            },
+            {
+              "kind": "field",
+              "name": "inputFormat",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "input-format"
+            },
+            {
+              "kind": "field",
+              "name": "outputFormat",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "output-format"
+            },
+            {
+              "kind": "field",
+              "name": "from",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "from"
+            },
+            {
+              "kind": "field",
+              "name": "to",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "to"
+            },
+            {
+              "kind": "field",
+              "name": "output",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "output"
+            },
+            {
+              "kind": "field",
+              "name": "libraryLoaded",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "libraryLoaded"
+            }
+          ],
+          "events": [
+            {
+              "name": "eventName",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "datetime",
+              "type": {
+                "text": "string"
+              },
+              "default": "new Date()",
+              "fieldName": "datetime"
+            },
+            {
+              "name": "input-format",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "inputFormat"
+            },
+            {
+              "name": "output-format",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "outputFormat"
+            },
+            {
+              "name": "from",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "from"
+            },
+            {
+              "name": "to",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "to"
+            },
+            {
+              "name": "output",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "output"
+            },
+            {
+              "name": "libraryLoaded",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "libraryLoaded"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MomentElement",
+            "module": "moment-element.js"
+          }
         },
         {
-          "name": "libraryLoaded",
-          "description": "`libraryLoaded` {`boolean`} - \n\nProperty: libraryLoaded",
-          "valueSet": "v"
-        },
-        {
-          "name": "datetime",
-          "description": "`datetime` {`string`} - \n\nProperty: datetime"
-        },
-        {
-          "name": "input-format",
-          "description": "`input-format` {`string`} - \n\nProperty: inputFormat\n\nDefault: "
-        },
-        {
-          "name": "output-format",
-          "description": "`output-format` {`string`} - \n\nProperty: outputFormat\n\nDefault: "
-        },
-        {
-          "name": "from",
-          "description": "`from` {`string`} - \n\nProperty: from\n\nDefault: "
-        },
-        {
-          "name": "to",
-          "description": "`to` {`string`} - \n\nProperty: to\n\nDefault: "
+          "kind": "js",
+          "name": "MomentElement",
+          "declaration": {
+            "name": "MomentElement",
+            "module": "moment-element.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

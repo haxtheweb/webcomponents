@@ -1,324 +1,876 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "collection-list",
-      "description": "`collection-list`\n`listing and display elements for collections of items`\n\nAttributes:\n\n  * `responsive-size` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `responsiveSize` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "collection-list.js",
+      "declarations": [
         {
-          "name": "responsive-size",
-          "description": "`responsive-size` {`string`} - Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`\n\nProperty: responsiveSize\n\nDefault: lg"
+          "kind": "class",
+          "description": "`collection-list`\n`listing and display elements for collections of items`",
+          "name": "CollectionList",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "responsiveSize",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
+              "default": "\"lg\"",
+              "attribute": "responsive-size",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "responsive-size",
+              "type": {
+                "text": "string"
+              },
+              "description": "Responsive size as `xs`, `sm`, `md`, `lg`, or `xl`",
+              "default": "\"lg\"",
+              "fieldName": "responsiveSize"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "collection-list",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CollectionList",
+            "module": "collection-list.js"
+          }
         },
         {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "CollectionList",
+          "declaration": {
+            "name": "CollectionList",
+            "module": "collection-list.js"
+          }
         }
       ]
     },
     {
-      "name": "collection-item",
-      "description": "Attributes:\n\n  * `tags` {`string`} - \n\n  * `saturate` {`boolean`} - \n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `line3` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `_haxstate` {`boolean`} - \n\n  * `tags` {`string`} - \n\n  * `saturate` {`boolean`} - \n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `line3` {`string`} - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/collection-item.js",
+      "declarations": [
         {
-          "name": "tags",
-          "description": "`tags` {`string`} - \n\nProperty: tags\n\nDefault: null"
+          "kind": "class",
+          "description": "",
+          "name": "CollectionItem",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_haxstate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "tags",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "tags"
+            },
+            {
+              "kind": "field",
+              "name": "saturate",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "saturate",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "alt"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "line1",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "line1"
+            },
+            {
+              "kind": "field",
+              "name": "line2",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "line2"
+            },
+            {
+              "kind": "field",
+              "name": "line3",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "line3"
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "url",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "url"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "image"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "alt"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "icon"
+            },
+            {
+              "name": "line1",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "line1"
+            },
+            {
+              "name": "line2",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "line2"
+            },
+            {
+              "name": "line3",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "line3"
+            },
+            {
+              "name": "saturate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "saturate"
+            },
+            {
+              "name": "tags",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "tags"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CollectionItem",
+            "module": "lib/collection-item.js"
+          }
         },
         {
-          "name": "saturate",
-          "description": "`saturate` {`boolean`} - \n\nProperty: saturate\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "url",
-          "description": "`url` {`string`} - \n\nProperty: url\n\nDefault: null"
-        },
-        {
-          "name": "image",
-          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: null"
-        },
-        {
-          "name": "alt",
-          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: null"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: null"
-        },
-        {
-          "name": "line1",
-          "description": "`line1` {`string`} - \n\nProperty: line1\n\nDefault: null"
-        },
-        {
-          "name": "line2",
-          "description": "`line2` {`string`} - \n\nProperty: line2\n\nDefault: null"
-        },
-        {
-          "name": "line3",
-          "description": "`line3` {`string`} - \n\nProperty: line3\n\nDefault: null"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: null"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "CollectionItem",
+          "declaration": {
+            "name": "CollectionItem",
+            "module": "lib/collection-item.js"
+          }
         }
       ]
     },
     {
-      "name": "collection-row",
-      "description": "Attributes:\n\n  * `tags` {`string`} - \n\n  * `saturate` {`boolean`} - \n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `_haxstate` {`boolean`} - \n\n  * `tags` {`string`} - \n\n  * `saturate` {`boolean`} - \n\n  * `url` {`string`} - \n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `line1` {`string`} - \n\n  * `line2` {`string`} - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/collection-row.js",
+      "declarations": [
         {
-          "name": "tags",
-          "description": "`tags` {`string`} - \n\nProperty: tags\n\nDefault: null"
+          "kind": "class",
+          "description": "",
+          "name": "CollectionRow",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_haxstate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "tags",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "tags"
+            },
+            {
+              "kind": "field",
+              "name": "saturate",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "saturate",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "alt"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "line1",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "line1"
+            },
+            {
+              "kind": "field",
+              "name": "line2",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "line2"
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "url",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "url"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "image"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "alt"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "icon"
+            },
+            {
+              "name": "line1",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "line1"
+            },
+            {
+              "name": "line2",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "line2"
+            },
+            {
+              "name": "saturate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "saturate"
+            },
+            {
+              "name": "tags",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "tags"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CollectionRow",
+            "module": "lib/collection-row.js"
+          }
         },
         {
-          "name": "saturate",
-          "description": "`saturate` {`boolean`} - \n\nProperty: saturate\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "url",
-          "description": "`url` {`string`} - \n\nProperty: url\n\nDefault: null"
-        },
-        {
-          "name": "image",
-          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: null"
-        },
-        {
-          "name": "alt",
-          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: null"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: null"
-        },
-        {
-          "name": "line1",
-          "description": "`line1` {`string`} - \n\nProperty: line1\n\nDefault: null"
-        },
-        {
-          "name": "line2",
-          "description": "`line2` {`string`} - \n\nProperty: line2\n\nDefault: null"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: null"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "CollectionRow",
+          "declaration": {
+            "name": "CollectionRow",
+            "module": "lib/collection-row.js"
+          }
         }
       ]
     },
     {
-      "name": "collections-theme-banner",
-      "description": "Attributes:\n\n  * `image` {`string`} - \n\n  * `sitename` {`string`} - \n\n  * `pagetitle` {`string`} - \n\n  * `logo` {`string`} - \n\nProperties:\n\n  * `image` {`string`} - \n\n  * `sitename` {`string`} - \n\n  * `pagetitle` {`string`} - \n\n  * `logo` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/collections-theme-banner.js",
+      "declarations": [
         {
-          "name": "image",
-          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: null"
+          "kind": "class",
+          "description": "",
+          "name": "CollectionsThemeBanner",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "sitename",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "sitename"
+            },
+            {
+              "kind": "field",
+              "name": "pagetitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "pagetitle"
+            },
+            {
+              "kind": "field",
+              "name": "logo",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "logo"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "image",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "image"
+            },
+            {
+              "name": "sitename",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "sitename"
+            },
+            {
+              "name": "pagetitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "pagetitle"
+            },
+            {
+              "name": "logo",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "logo"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CollectionsThemeBanner",
+            "module": "lib/collections-theme-banner.js"
+          }
         },
         {
-          "name": "sitename",
-          "description": "`sitename` {`string`} - \n\nProperty: sitename\n\nDefault: "
-        },
-        {
-          "name": "pagetitle",
-          "description": "`pagetitle` {`string`} - \n\nProperty: pagetitle\n\nDefault: "
-        },
-        {
-          "name": "logo",
-          "description": "`logo` {`string`} - \n\nProperty: logo\n\nDefault: null"
+          "kind": "js",
+          "name": "CollectionsThemeBanner",
+          "declaration": {
+            "name": "CollectionsThemeBanner",
+            "module": "lib/collections-theme-banner.js"
+          }
         }
       ]
     },
     {
-      "name": "collections-theme",
-      "description": "`collections-theme`\n`A theme for presenting collections of material`\n\nEvents:\n\n  * `haxcms-toast-hide` {`CustomEvent<boolean>`} - \n\n  * `super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `image` {`string`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `activeTitle` {`string`} - \n\n  * `t` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `is-horizontal` {`boolean`} - \n\n  * `is-flex` {`boolean`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `is-safari` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `image` {`string`} - \n\n  * `title` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `activeTitle` {`string`} - \n\n  * `__evaluateRoute` {`boolean`} - \n\n  * `HAXCMSI18NMixinBase` {`string`} - \n\n  * `t` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__printBranchLoading` {`boolean`} - \n\n  * `showQRCode` {`boolean`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `isHorizontal` {`boolean`} - \n\n  * `isFlex` {`boolean`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `isSafari` {`boolean`} - \n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/collections-theme.js",
+      "declarations": [
         {
-          "name": "image",
-          "description": "`image` {`string`} - \n\nProperty: image"
+          "kind": "class",
+          "description": "`collections-theme`\n`A theme for presenting collections of material`",
+          "name": "CollectionsTheme",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_getColor",
+              "parameters": [
+                {
+                  "name": "manifest"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "autoScroll",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "color"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "activeTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "activeTitle"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "image"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "title"
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "color"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "icon"
+            },
+            {
+              "name": "activeTitle",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "activeTitle"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "HAXCMSOperationButtons",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSOperationButtons.js"
+            },
+            {
+              "name": "HAXCMSRememberRoute",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js"
+            },
+            {
+              "name": "PDFPageMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js"
+            },
+            {
+              "name": "PrintBranchMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/PrintBranchMixin.js"
+            },
+            {
+              "name": "QRCodeMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMixin.js"
+            },
+            {
+              "name": "HAXCMSThemeParts",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js"
+            },
+            {
+              "name": "HAXCMSMobileMenuMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js"
+            },
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            }
+          ],
+          "superclass": {
+            "name": "HAXCMSLitElementTheme",
+            "package": "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"
+          },
+          "tagName": "collections-theme",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CollectionsTheme",
+            "module": "lib/collections-theme.js"
+          }
         },
         {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon"
-        },
-        {
-          "name": "activeTitle",
-          "description": "`activeTitle` {`string`} - \n\nProperty: activeTitle"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t"
-        },
-        {
-          "name": "__pdfLoading",
-          "description": "`__pdfLoading` {`boolean`} - \n\nProperty: __pdfLoading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__printBranchLoading",
-          "description": "`__printBranchLoading` {`boolean`} - \n\nProperty: __printBranchLoading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "showQRCode",
-          "description": "`showQRCode` {`boolean`} - \n\nProperty: showQRCode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "dark-mode",
-          "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-horizontal",
-          "description": "`is-horizontal` {`boolean`} - \n\nProperty: isHorizontal\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-flex",
-          "description": "`is-flex` {`boolean`} - \n\nProperty: isFlex\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "menu-open",
-          "description": "`menu-open` {`boolean`} - \n\nProperty: menuOpen\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hex-color",
-          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
-        },
-        {
-          "name": "color",
-          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
-        },
-        {
-          "name": "contentContainer",
-          "description": "`contentContainer` - DOM node that wraps the slot\n\nProperty: contentContainer"
-        },
-        {
-          "name": "_location",
-          "description": "`_location` - location as object\n\nProperty: _location"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "responsive-width",
-          "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
-        },
-        {
-          "name": "responsive-size",
-          "description": "`responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\nProperty: responsiveSize\n\nDefault: xs"
-        },
-        {
-          "name": "sm",
-          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 768"
-        },
-        {
-          "name": "md",
-          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 1080"
-        },
-        {
-          "name": "lg",
-          "description": "`lg` {`number`} - Miniumum value for large breakpoint\n\nProperty: lg\n\nDefault: 1200"
-        },
-        {
-          "name": "xl",
-          "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
-        },
-        {
-          "name": "disable-responsive",
-          "description": "`disable-responsive` {`boolean`} - \n\nProperty: disableResponsive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onhaxcms-toast-hide",
-          "description": "`haxcms-toast-hide` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onsuper-daemon-define-option",
-          "description": "`super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - "
-        },
-        {
-          "name": "onpopstate",
-          "description": "`popstate` {`PopStateEvent`} - "
-        },
-        {
-          "name": "oncontent-container-changed",
-          "description": "`content-container-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onis-logged-in-changed",
-          "description": "`is-logged-in-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onedit-mode-changed",
-          "description": "`edit-mode-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onresize",
-          "description": "`resize` {`Event`} - "
-        },
-        {
-          "name": "onhaxcms-active-item-changed",
-          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
-        },
-        {
-          "name": "onresponsive-element",
-          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
-        },
-        {
-          "name": "onresponsive-element-deleted",
-          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "CollectionsTheme",
+          "declaration": {
+            "name": "CollectionsTheme",
+            "module": "lib/collections-theme.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

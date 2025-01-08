@@ -1,56 +1,192 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "media-quote",
-      "description": "`media-quote`\n`A quote focused around a piece of media with citation and optional caption`\n\nAttributes:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `quote` {`string`} - \n\n  * `author` {`string`} - \n\n  * `author-detail` {`string`} - \n\n  * `caption` {`string`} - \n\n  * `filter` {`boolean`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `src` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `quote` {`string`} - \n\n  * `author` {`string`} - \n\n  * `authorDetail` {`string`} - \n\n  * `caption` {`string`} - \n\n  * `hasFilter` {`boolean`} - \n\n  * `_isCaptionOpen` {`boolean`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "media-quote.js",
+      "declarations": [
         {
-          "name": "src",
-          "description": "`src` {`string`} - \n\nProperty: src\n\nDefault: "
+          "kind": "class",
+          "description": "`media-quote`\n`A quote focused around a piece of media with citation and optional caption`",
+          "name": "MediaQuote",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "src",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "src"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "alt"
+            },
+            {
+              "kind": "field",
+              "name": "quote",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "quote"
+            },
+            {
+              "kind": "field",
+              "name": "author",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "author"
+            },
+            {
+              "kind": "field",
+              "name": "authorDetail",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "author-detail"
+            },
+            {
+              "kind": "field",
+              "name": "caption",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "caption"
+            },
+            {
+              "kind": "field",
+              "name": "hasFilter",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "filter"
+            },
+            {
+              "kind": "field",
+              "name": "_isCaptionOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "src"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "alt"
+            },
+            {
+              "name": "filter",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hasFilter"
+            },
+            {
+              "name": "quote",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "quote"
+            },
+            {
+              "name": "author",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "author"
+            },
+            {
+              "name": "author-detail",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "authorDetail"
+            },
+            {
+              "name": "caption",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "caption"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "media-quote",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MediaQuote",
+            "module": "media-quote.js"
+          }
         },
         {
-          "name": "alt",
-          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
-        },
-        {
-          "name": "quote",
-          "description": "`quote` {`string`} - \n\nProperty: quote\n\nDefault: "
-        },
-        {
-          "name": "author",
-          "description": "`author` {`string`} - \n\nProperty: author\n\nDefault: "
-        },
-        {
-          "name": "author-detail",
-          "description": "`author-detail` {`string`} - \n\nProperty: authorDetail\n\nDefault: "
-        },
-        {
-          "name": "caption",
-          "description": "`caption` {`string`} - \n\nProperty: caption\n\nDefault: "
-        },
-        {
-          "name": "filter",
-          "description": "`filter` {`boolean`} - \n\nProperty: hasFilter\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "MediaQuote",
+          "declaration": {
+            "name": "MediaQuote",
+            "module": "media-quote.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

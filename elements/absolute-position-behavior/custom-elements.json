@@ -1,93 +1,1123 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "absolute-position-behavior",
-      "description": "`absolute-position-behavior`\nabstracts absolute positioning behavior to be resusable in other elements\n\nAttributes:\n\n  * `allow-overlap` {`boolean`} - Element has absolututely positioned children, such as menus\nand tooltips that are allowed to overlap the target\n\n  * `position-align` {`string`} - Aligns at the start, or end fo target. Default is centered.\n\n  * `justify` {`boolean`} - \n\n  * `auto` {`boolean`} - Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.\n\n  * `fit-to-visible-bounds` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `for` {`string`} - The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.\n\n  * `offset` {`number`} - The spacing between the top of the tooltip and the element it is\nanchored to.\n\n  * `position` {`string`} - Positions the tooltip to the top, right, bottom, left of its content.\n\n  * `target` - The actual target element\n\n  * `sticky` {`boolean`} - Stays on screen while target is on screen\n\n  * `hidden` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `__positions` - The element's style\n\nProperties:\n\n  * `allowOverlap` {`boolean`} - Element has absolututely positioned children, such as menus\nand tooltips that are allowed to overlap the target\n\n  * `positionAlign` {`string`} - Aligns at the start, or end fo target. Default is centered.\n\n  * `justify` {`boolean`} - \n\n  * `_ticking` {`boolean`} - \n\n  * `scrollTarget` - \n\n  * `auto` {`boolean`} - Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.\n\n  * `fitToVisibleBounds` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `for` {`string`} - The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.\n\n  * `offset` {`number`} - The spacing between the top of the tooltip and the element it is\nanchored to.\n\n  * `position` {`string`} - Positions the tooltip to the top, right, bottom, left of its content.\n\n  * `target` - The actual target element\n\n  * `sticky` {`boolean`} - Stays on screen while target is on screen\n\n  * `hidden` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `__positions` - The element's style\n\n  * `__observe` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "absolute-position-behavior.js",
+      "declarations": [
         {
-          "name": "allow-overlap",
-          "description": "`allow-overlap` {`boolean`} - Element has absolututely positioned children, such as menus\nand tooltips that are allowed to overlap the target\n\nProperty: allowOverlap",
-          "valueSet": "v"
+          "kind": "mixin",
+          "description": "",
+          "name": "AbsolutePositionBehaviorClass",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setPosition",
+              "description": "Registers element with AbsolutePositionStateManager",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "unsetPosition",
+              "description": "Unregisters element with AbsolutePositionStateManager",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updatePosition",
+              "description": "Updates  element's position",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_ticking",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "scrollTarget",
+              "default": "globalThis"
+            },
+            {
+              "kind": "field",
+              "name": "auto",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.",
+              "default": "false",
+              "attribute": "auto"
+            },
+            {
+              "kind": "field",
+              "name": "fitToVisibleBounds",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+              "default": "false",
+              "attribute": "fit-to-visible-bounds"
+            },
+            {
+              "kind": "field",
+              "name": "for",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.",
+              "default": "null",
+              "attribute": "for",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "offset",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "The spacing between the top of the tooltip and the element it is\nanchored to.",
+              "default": "0",
+              "attribute": "offset"
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Positions the tooltip to the top, right, bottom, left of its content.",
+              "default": "\"bottom\"",
+              "attribute": "position",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "The actual target element",
+              "default": "null",
+              "attribute": "target"
+            },
+            {
+              "kind": "field",
+              "name": "sticky",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Stays on screen while target is on screen",
+              "default": "false",
+              "attribute": "sticky",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hidden",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+              "default": "false",
+              "attribute": "hidden",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__positions",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "The element's style",
+              "default": "{}",
+              "attribute": "__positions"
+            },
+            {
+              "kind": "field",
+              "name": "__observe",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "allowOverlap",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Element has absolututely positioned children, such as menus\nand tooltips that are allowed to overlap the target",
+              "attribute": "allow-overlap"
+            },
+            {
+              "kind": "field",
+              "name": "positionAlign",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aligns at the start, or end fo target. Default is centered.",
+              "attribute": "position-align",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "justify",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "justify",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "allow-overlap",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Element has absolututely positioned children, such as menus\nand tooltips that are allowed to overlap the target",
+              "fieldName": "allowOverlap"
+            },
+            {
+              "name": "auto",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.",
+              "default": "false",
+              "fieldName": "auto"
+            },
+            {
+              "name": "fit-to-visible-bounds",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+              "default": "false",
+              "fieldName": "fitToVisibleBounds"
+            },
+            {
+              "name": "hidden",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+              "default": "false",
+              "fieldName": "hidden"
+            },
+            {
+              "name": "for",
+              "type": {
+                "text": "null"
+              },
+              "description": "The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.",
+              "default": "null",
+              "fieldName": "for"
+            },
+            {
+              "name": "offset",
+              "type": {
+                "text": "number"
+              },
+              "description": "The spacing between the top of the tooltip and the element it is\nanchored to.",
+              "default": "0",
+              "fieldName": "offset"
+            },
+            {
+              "name": "sticky",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Stays on screen while target is on screen",
+              "default": "false",
+              "fieldName": "sticky"
+            },
+            {
+              "name": "position",
+              "type": {
+                "text": "string"
+              },
+              "description": "Positions the tooltip to the top, right, bottom, left of its content.",
+              "default": "\"bottom\"",
+              "fieldName": "position"
+            },
+            {
+              "name": "position-align",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aligns at the start, or end fo target. Default is centered.",
+              "fieldName": "positionAlign"
+            },
+            {
+              "name": "justify",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "justify"
+            },
+            {
+              "name": "target",
+              "type": {
+                "text": "null"
+              },
+              "description": "The actual target element",
+              "default": "null",
+              "fieldName": "target"
+            },
+            {
+              "name": "__positions",
+              "type": {
+                "text": "object"
+              },
+              "description": "The element's style",
+              "default": "{}",
+              "fieldName": "__positions"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
         },
         {
-          "name": "position-align",
-          "description": "`position-align` {`string`} - Aligns at the start, or end fo target. Default is centered.\n\nProperty: positionAlign"
+          "kind": "class",
+          "description": "`absolute-position-behavior`\nabstracts absolute positioning behavior to be resusable in other elements",
+          "name": "AbsolutePositionBehavior",
+          "mixins": [
+            {
+              "name": "AbsolutePositionBehaviorClass",
+              "module": "absolute-position-behavior.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "absolute-position-behavior",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "allow-overlap",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Element has absolututely positioned children, such as menus\nand tooltips that are allowed to overlap the target",
+              "fieldName": "allowOverlap",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "name": "auto",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.",
+              "default": "false",
+              "fieldName": "auto",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "name": "fit-to-visible-bounds",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+              "default": "false",
+              "fieldName": "fitToVisibleBounds",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "name": "hidden",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+              "default": "false",
+              "fieldName": "hidden",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "name": "for",
+              "type": {
+                "text": "null"
+              },
+              "description": "The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.",
+              "default": "null",
+              "fieldName": "for",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "name": "offset",
+              "type": {
+                "text": "number"
+              },
+              "description": "The spacing between the top of the tooltip and the element it is\nanchored to.",
+              "default": "0",
+              "fieldName": "offset",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "name": "sticky",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Stays on screen while target is on screen",
+              "default": "false",
+              "fieldName": "sticky",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "name": "position",
+              "type": {
+                "text": "string"
+              },
+              "description": "Positions the tooltip to the top, right, bottom, left of its content.",
+              "default": "\"bottom\"",
+              "fieldName": "position",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "name": "position-align",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aligns at the start, or end fo target. Default is centered.",
+              "fieldName": "positionAlign",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "name": "justify",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "justify",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "text": "null"
+              },
+              "description": "The actual target element",
+              "default": "null",
+              "fieldName": "target",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "name": "__positions",
+              "type": {
+                "text": "object"
+              },
+              "description": "The element's style",
+              "default": "{}",
+              "fieldName": "__positions",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store tag name to make it easier to obtain directly.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "setPosition",
+              "description": "Registers element with AbsolutePositionStateManager",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "unsetPosition",
+              "description": "Unregisters element with AbsolutePositionStateManager",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updatePosition",
+              "description": "Updates  element's position",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              },
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_ticking",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "scrollTarget",
+              "default": "globalThis",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "auto",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.",
+              "default": "false",
+              "attribute": "auto",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fitToVisibleBounds",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+              "default": "false",
+              "attribute": "fit-to-visible-bounds",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "for",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.",
+              "default": "null",
+              "attribute": "for",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "offset",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "The spacing between the top of the tooltip and the element it is\nanchored to.",
+              "default": "0",
+              "attribute": "offset",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Positions the tooltip to the top, right, bottom, left of its content.",
+              "default": "\"bottom\"",
+              "attribute": "position",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "The actual target element",
+              "default": "null",
+              "attribute": "target",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "sticky",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Stays on screen while target is on screen",
+              "default": "false",
+              "attribute": "sticky",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hidden",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If true, no parts of the tooltip will ever be shown offscreen.",
+              "default": "false",
+              "attribute": "hidden",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__positions",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "The element's style",
+              "default": "{}",
+              "attribute": "__positions",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__observe",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "allowOverlap",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Element has absolututely positioned children, such as menus\nand tooltips that are allowed to overlap the target",
+              "attribute": "allow-overlap",
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "positionAlign",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aligns at the start, or end fo target. Default is centered.",
+              "attribute": "position-align",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "justify",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "justify",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "AbsolutePositionBehaviorClass",
+                "module": "absolute-position-behavior.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "AbsolutePositionBehavior",
+            "module": "absolute-position-behavior.js"
+          }
         },
         {
-          "name": "justify",
-          "description": "`justify` {`boolean`} - \n\nProperty: justify",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "AbsolutePositionBehaviorClass",
+          "declaration": {
+            "name": "AbsolutePositionBehaviorClass",
+            "module": "absolute-position-behavior.js"
+          }
         },
         {
-          "name": "auto",
-          "description": "`auto` {`boolean`} - Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.\n\nProperty: auto\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "fit-to-visible-bounds",
-          "description": "`fit-to-visible-bounds` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\nProperty: fitToVisibleBounds\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "for",
-          "description": "`for` {`string`} - The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.\n\nProperty: for\n\nDefault: null"
-        },
-        {
-          "name": "offset",
-          "description": "`offset` {`number`} - The spacing between the top of the tooltip and the element it is\nanchored to.\n\nProperty: offset\n\nDefault: 0"
-        },
-        {
-          "name": "position",
-          "description": "`position` {`string`} - Positions the tooltip to the top, right, bottom, left of its content.\n\nProperty: position\n\nDefault: bottom"
-        },
-        {
-          "name": "target",
-          "description": "`target` - The actual target element\n\nProperty: target\n\nDefault: null"
-        },
-        {
-          "name": "sticky",
-          "description": "`sticky` {`boolean`} - Stays on screen while target is on screen\n\nProperty: sticky\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hidden",
-          "description": "`hidden` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\nProperty: hidden\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__positions",
-          "description": "`__positions` - The element's style\n\nProperty: __positions\n\nDefault: [object Object]"
+          "kind": "js",
+          "name": "AbsolutePositionBehavior",
+          "declaration": {
+            "name": "AbsolutePositionBehavior",
+            "module": "absolute-position-behavior.js"
+          }
         }
       ]
     },
     {
-      "name": "absolute-position-state-manager",
-      "description": "`absolute-position-state-manager`\nmanages state of multiple absolute-positioned elements on a page\n\nAttributes:\n\n  * `scrollTarget` - \n\n  * `__timeout2` - resize timeout\n\n  * `elements` {`any[]`} - Stores an array of all elements using manager.\n\n  * `__timeout` - resize timeout\n\n  * `__observer` - mutation observer\n\nProperties:\n\n  * `scrollTarget` - \n\n  * `__timeout2` - resize timeout\n\n  * `windowControllers` - \n\n  * `elements` {`any[]`} - Stores an array of all elements using manager.\n\n  * `__timeout` - resize timeout\n\n  * `__observer` - mutation observer",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/absolute-position-state-manager.js",
+      "declarations": [
         {
-          "name": "scrollTarget",
-          "description": "`scrollTarget` - \n\nProperty: scrollTarget"
+          "kind": "class",
+          "description": "`absolute-position-state-manager`\nmanages state of multiple absolute-positioned elements on a page",
+          "name": "AbsolutePositionStateManager",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "loadElement",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "description": "to be added",
+                  "name": "element",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "Loads element into array"
+            },
+            {
+              "kind": "method",
+              "name": "unloadElement",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "description": "to be removed",
+                  "name": "element",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "Unloads element from array"
+            },
+            {
+              "kind": "method",
+              "name": "_handleScroll",
+              "description": "handles resize event"
+            },
+            {
+              "kind": "method",
+              "name": "_handleResize",
+              "description": "handles resize event"
+            },
+            {
+              "kind": "method",
+              "name": "checkMutations",
+              "parameters": [
+                {
+                  "name": "mutations"
+                },
+                {
+                  "description": "records",
+                  "name": "mutation",
+                  "type": {
+                    "text": "array"
+                  }
+                }
+              ],
+              "description": "Checks if there are any changes other than to\nelement's position and update accordioningly.\nThis is needed so that positioning elements\ndoesn't trigger an infinite loop of updates.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "findTarget",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "description": "using absolute-position behavior",
+                  "name": "element",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "Returns target element that this element is anchored to. It is\neither element given by `for` attribute, or immediate parent\nof element.\n\nUses `target` object if specified.\nIf not, queries document for elements with id specified in `for` attribute.\nIf there is more than one element that matches, gets closest matching element.",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "removeEventListeners",
+              "description": "Removes event listeners",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updateElements",
+              "description": "Updates position for all elements on page.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updateStickyElements",
+              "description": "Updates position for all elements on page.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "loadSticky",
+              "description": "Only listen for scrolling if there is a sticky element",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getParentNode",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "positionElement",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "description": "using absolute-position behavior",
+                  "name": "element",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "Gets an updated position based on target.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "elements",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Stores an array of all elements using manager.",
+              "default": "[]",
+              "attribute": "elements"
+            },
+            {
+              "kind": "field",
+              "name": "__timeout",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "resize timeout",
+              "default": "false",
+              "attribute": "__timeout"
+            },
+            {
+              "kind": "field",
+              "name": "__observer",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "mutation observer",
+              "default": "new MutationObserver((mutations) => this.checkMutations(mutations), )",
+              "attribute": "__observer"
+            },
+            {
+              "kind": "field",
+              "name": "scrollTarget",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "attribute": "scrollTarget"
+            },
+            {
+              "kind": "field",
+              "name": "__timeout2",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "resize timeout",
+              "attribute": "__timeout2"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "scrollTarget",
+              "type": {
+                "text": "object"
+              },
+              "fieldName": "scrollTarget"
+            },
+            {
+              "name": "elements",
+              "type": {
+                "text": "array"
+              },
+              "description": "Stores an array of all elements using manager.",
+              "default": "[]",
+              "fieldName": "elements"
+            },
+            {
+              "name": "__observer",
+              "type": {
+                "text": "object"
+              },
+              "description": "mutation observer",
+              "default": "new MutationObserver((mutations) => this.checkMutations(mutations), )",
+              "fieldName": "__observer"
+            },
+            {
+              "name": "__timeout",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "resize timeout",
+              "default": "false",
+              "fieldName": "__timeout"
+            },
+            {
+              "name": "__timeout2",
+              "type": {
+                "text": "object"
+              },
+              "description": "resize timeout",
+              "fieldName": "__timeout2"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "absolute-position-state-manager",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "AbsolutePositionStateManager",
+            "module": "lib/absolute-position-state-manager.js"
+          }
         },
         {
-          "name": "__timeout2",
-          "description": "`__timeout2` - resize timeout\n\nProperty: __timeout2"
-        },
-        {
-          "name": "elements",
-          "description": "`elements` {`any[]`} - Stores an array of all elements using manager.\n\nProperty: elements\n\nDefault: "
-        },
-        {
-          "name": "__timeout",
-          "description": "`__timeout` - resize timeout\n\nProperty: __timeout\n\nDefault: false"
-        },
-        {
-          "name": "__observer",
-          "description": "`__observer` - mutation observer\n\nProperty: __observer"
+          "kind": "js",
+          "name": "AbsolutePositionStateManager",
+          "declaration": {
+            "name": "AbsolutePositionStateManager",
+            "module": "lib/absolute-position-state-manager.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

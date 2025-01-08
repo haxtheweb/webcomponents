@@ -1,18 +1,69 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "simple-progress",
-      "description": "`simple-progress`\n`a simple progress slider bar`\n\nAttributes:\n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `template` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "simple-progress.js",
+      "declarations": [
         {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`simple-progress`\n`a simple progress slider bar`",
+          "name": "SimpleProgress",
+          "members": [
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled"
+            },
+            {
+              "kind": "method",
+              "name": "_iterationCallback"
+            },
+            {
+              "kind": "field",
+              "name": "template"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "disabled"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "simple-progress",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleProgress",
+            "module": "simple-progress.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SimpleProgress",
+          "declaration": {
+            "name": "SimpleProgress",
+            "module": "simple-progress.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

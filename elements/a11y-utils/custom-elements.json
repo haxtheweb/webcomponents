@@ -1,15 +1,27 @@
 {
-  "version": "experimental",
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "a11y-utils",
-      "path": "./a11y-utils.js",
-      "description": "`a11y-utils`\n`a collection of accessibility patterns and styles`"
-    },
-    {
-      "name": "a11y-utils",
-      "path": "./src/a11y-utils.js",
-      "description": "`a11y-utils`\n`a collection of accessibility patterns and styles`"
+      "kind": "javascript-module",
+      "path": "a11y-utils.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "screenreaderOnlyCSS",
+          "default": "css` .sr-only { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; } `"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "screenreaderOnlyCSS",
+          "declaration": {
+            "name": "screenreaderOnlyCSS",
+            "module": "a11y-utils.js"
+          }
+        }
+      ]
     }
   ]
 }

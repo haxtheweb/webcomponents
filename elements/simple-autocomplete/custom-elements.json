@@ -1,92 +1,420 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "simple-autocomplete-text-trigger",
-      "description": "Attributes:\n\n  * `target` - \n\n  * `triggers` - \n\n  * `value` {`string`} - \n\nProperties:\n\n  * `windowControllers` - \n\n  * `haxUIElement` {`boolean`} - \n\n  * `target` - \n\n  * `triggers` - \n\n  * `value` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "simple-autocomplete.js",
+      "declarations": [
         {
-          "name": "target",
-          "description": "`target` - \n\nProperty: target\n\nDefault: null"
+          "kind": "class",
+          "description": "`simple-autocomplete`\n`auto complete either from an endpoint or local json array`",
+          "name": "SimpleAutocomplete",
+          "members": [
+            {
+              "kind": "method",
+              "name": "setValue",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "processInput",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "description": "Logic for processing input and ensuring list is filtered"
+            },
+            {
+              "kind": "method",
+              "name": "inputChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "When input changes as in user types into the contenteditable area\nThen we need to open the autocomplete menu and start filtering"
+            },
+            {
+              "kind": "method",
+              "name": "a11yListKeys",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Accessibility enhancements for key presses while in the list of items"
+            },
+            {
+              "kind": "method",
+              "name": "hardStopEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "a11yInputKeys",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Accessibility enhancements when typing in order to move to the autocomplete list easily"
+            },
+            {
+              "kind": "method",
+              "name": "getSelection",
+              "description": "Selection normalizer"
+            },
+            {
+              "kind": "method",
+              "name": "getRange",
+              "description": "Get a normalized range based on current selection"
+            },
+            {
+              "kind": "method",
+              "name": "resetFocusOnInput",
+              "description": "Reset focus back on the input area while closing the popover"
+            },
+            {
+              "kind": "method",
+              "name": "itemSelect",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "handle item selection and reset focus"
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "itemLimit",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "6",
+              "attribute": "item-limit"
+            },
+            {
+              "kind": "field",
+              "name": "hideInput",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hide-input"
+            },
+            {
+              "kind": "field",
+              "name": "selectionPosition",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "selection-position"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "opened",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "opened",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "name": "item-selected",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "opened"
+            },
+            {
+              "name": "hide-input",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hideInput"
+            },
+            {
+              "name": "selection-position",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "selectionPosition"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "value"
+            },
+            {
+              "name": "item-limit",
+              "type": {
+                "text": "number"
+              },
+              "default": "6",
+              "fieldName": "itemLimit"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SimpleFilterMixin",
+              "package": "@haxtheweb/simple-filter/simple-filter.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "simple-autocomplete",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleAutocomplete",
+            "module": "simple-autocomplete.js"
+          }
         },
         {
-          "name": "triggers",
-          "description": "`triggers` - \n\nProperty: triggers\n\nDefault: [object Object]"
-        },
-        {
-          "name": "value",
-          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: "
+          "kind": "js",
+          "name": "SimpleAutocomplete",
+          "declaration": {
+            "name": "SimpleAutocomplete",
+            "module": "simple-autocomplete.js"
+          }
         }
       ]
     },
     {
-      "name": "simple-autocomplete",
-      "description": "`simple-autocomplete`\n`auto complete either from an endpoint or local json array`\n\nEvents:\n\n  * `item-selected` {`CustomEvent<{ value: any; }>`} - \n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `item-limit` {`number`} - \n\n  * `hide-input` {`boolean`} - \n\n  * `selection-position` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multi-match` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\nProperties:\n\n  * `itemLimit` {`number`} - \n\n  * `hideInput` {`boolean`} - \n\n  * `selectionPosition` {`boolean`} - \n\n  * `value` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multiMatch` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/simple-autocomplete-text-trigger.js",
+      "declarations": [
         {
-          "name": "item-limit",
-          "description": "`item-limit` {`number`} - \n\nProperty: itemLimit\n\nDefault: 6"
+          "kind": "class",
+          "description": "",
+          "name": "SimpleAutocompleteTextTrigger",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "valueChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "connectTargetEvents",
+              "parameters": [
+                {
+                  "name": "enable",
+                  "default": "true"
+                }
+              ],
+              "description": "Manage events on the target which is external to this element"
+            },
+            {
+              "kind": "method",
+              "name": "getSelection",
+              "description": "Selection normalizer"
+            },
+            {
+              "kind": "method",
+              "name": "getRange",
+              "description": "Get a normalized range based on current selection"
+            },
+            {
+              "kind": "method",
+              "name": "targetKeyDownMonitor",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "process in the autocompletes handling of this"
+            },
+            {
+              "kind": "method",
+              "name": "targetKeyMonitor",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Monitor keys in the target to look for a tigger key so we can start paying attention"
+            },
+            {
+              "kind": "method",
+              "name": "setTargetValue",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "description": "Set target correctly between inputs and contenteditable"
+            },
+            {
+              "kind": "method",
+              "name": "getTargetValue",
+              "description": "Resolve target value between contenteditable and native inputs"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "haxUIElement",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "target"
+            },
+            {
+              "kind": "field",
+              "name": "triggers",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "attribute": "triggers"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "value"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "target",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "target"
+            },
+            {
+              "name": "triggers",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "fieldName": "triggers"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "value"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "SimpleAutocompleteTextTrigger",
+          "declaration": {
+            "name": "SimpleAutocompleteTextTrigger",
+            "module": "lib/simple-autocomplete-text-trigger.js"
+          }
         },
         {
-          "name": "hide-input",
-          "description": "`hide-input` {`boolean`} - \n\nProperty: hideInput\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "selection-position",
-          "description": "`selection-position` {`boolean`} - \n\nProperty: selectionPosition\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "value",
-          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: "
-        },
-        {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "items",
-          "description": "`items` {`any[]`} - These are the items to be filtered\n\nProperty: items"
-        },
-        {
-          "name": "like",
-          "description": "`like` {`string`} - Filter regular expression string\n\nProperty: like"
-        },
-        {
-          "name": "where",
-          "description": "`where` {`string`} - The filter-by field of your items array of objects\n\nProperty: where"
-        },
-        {
-          "name": "case-sensitive",
-          "description": "`case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\nProperty: caseSensitive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "filtered",
-          "description": "`filtered` {`any[]`} - Filtered items\n\nProperty: filtered\n\nDefault: "
-        },
-        {
-          "name": "multi-match",
-          "description": "`multi-match` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\nProperty: multiMatch\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onitem-selected",
-          "description": "`item-selected` {`CustomEvent<{ value: any; }>`} - "
-        },
-        {
-          "name": "onfilter",
-          "description": "`filter` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onfiltered-changed",
-          "description": "`filtered-changed` {`CustomEvent<{ value: any[]; }>`} - "
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleAutocompleteTextTrigger",
+            "module": "lib/simple-autocomplete-text-trigger.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

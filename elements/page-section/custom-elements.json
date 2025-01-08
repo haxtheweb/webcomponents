@@ -1,67 +1,290 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "page-section",
-      "description": "`page-section`\n`A well designed section of a page with many options for marketing purposes`\n\nAttributes:\n\n  * `filter` {`boolean`} - \n\n  * `fold` {`boolean`} - \n\n  * `full` {`boolean`} - \n\n  * `scroller` {`boolean`} - \n\n  * `bg` {`string`} - \n\n  * `image` {`string`} - \n\n  * `scroller-label` {`string`} - \n\n  * `preset` {`string`} - \n\n  * `anchor` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `AbortControllers` - \n\n  * `filter` {`boolean`} - \n\n  * `fold` {`boolean`} - \n\n  * `full` {`boolean`} - \n\n  * `scroller` {`boolean`} - \n\n  * `bg` {`string`} - \n\n  * `image` {`string`} - \n\n  * `scrollerLabel` {`string`} - \n\n  * `preset` {`string`} - \n\n  * `anchor` {`string`} - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "page-section.js",
+      "declarations": [
         {
-          "name": "filter",
-          "description": "`filter` {`boolean`} - \n\nProperty: filter\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`page-section`\n`A well designed section of a page with many options for marketing purposes`",
+          "name": "PageSection",
+          "members": [
+            {
+              "kind": "method",
+              "name": "cleanAnchor",
+              "parameters": [
+                {
+                  "name": "anchor"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "videoPlay",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "videoPause",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "bgStyle",
+              "parameters": [
+                {
+                  "name": "bg"
+                },
+                {
+                  "name": "filter"
+                },
+                {
+                  "name": "image"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "scrollToNextTarget",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "AbortControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "filter",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "filter",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "fold",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "fold",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "full",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "full",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "scroller",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "scroller",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "bg",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "bg"
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "image",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"blue\""
+            },
+            {
+              "kind": "field",
+              "name": "scrollerLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Scroll to reveal content\"",
+              "attribute": "scroller-label"
+            },
+            {
+              "kind": "field",
+              "name": "preset",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "preset",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "anchor",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "anchor"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "anchor",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "anchor"
+            },
+            {
+              "name": "scroller-label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Scroll to reveal content\"",
+              "fieldName": "scrollerLabel"
+            },
+            {
+              "name": "filter",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "filter"
+            },
+            {
+              "name": "fold",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "fold"
+            },
+            {
+              "name": "full",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "full"
+            },
+            {
+              "name": "scroller",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "scroller"
+            },
+            {
+              "name": "bg",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "bg"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "image"
+            },
+            {
+              "name": "preset",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "preset"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "page-section",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PageSection",
+            "module": "page-section.js"
+          }
         },
         {
-          "name": "fold",
-          "description": "`fold` {`boolean`} - \n\nProperty: fold\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "full",
-          "description": "`full` {`boolean`} - \n\nProperty: full\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "scroller",
-          "description": "`scroller` {`boolean`} - \n\nProperty: scroller\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "bg",
-          "description": "`bg` {`string`} - \n\nProperty: bg\n\nDefault: null"
-        },
-        {
-          "name": "image",
-          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: null"
-        },
-        {
-          "name": "scroller-label",
-          "description": "`scroller-label` {`string`} - \n\nProperty: scrollerLabel\n\nDefault: Scroll to reveal content"
-        },
-        {
-          "name": "preset",
-          "description": "`preset` {`string`} - \n\nProperty: preset\n\nDefault: null"
-        },
-        {
-          "name": "anchor",
-          "description": "`anchor` {`string`} - \n\nProperty: anchor\n\nDefault: null"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: blue"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "PageSection",
+          "declaration": {
+            "name": "PageSection",
+            "module": "page-section.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

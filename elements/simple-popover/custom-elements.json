@@ -1,140 +1,754 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "simple-popover-manager",
-      "description": "Attributes:\n\n  * `popover` - \n\n  * `opened` {`boolean`} - \n\n  * `orientation` {`string`} - \n\n  * `position` {`string`} - \n\nProperties:\n\n  * `popover` - \n\n  * `opened` {`boolean`} - \n\n  * `context` - \n\n  * `orientation` {`string`} - \n\n  * `position` {`string`} - \n\n  * `__ignore` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "simple-popover.js",
+      "declarations": [
         {
-          "name": "popover",
-          "description": "`popover` - \n\nProperty: popover\n\nDefault: null"
+          "kind": "class",
+          "description": "`simple-popover`\na popover alertdialog that is positioned next to a target element\n\n### Styling\n\n`<simple-popover>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-popover-border-radius` | popover border-radius | 3px\n`--simple-popover-color` | popover text color| #222\n`--simple-popover-padding` | popover padding | 10px\n`--simple-popover-background-color` | popover background-color | white\n`--simple-popover-border-color` | popover border-color | #bbb\n`--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;",
+          "name": "SimplePopover",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_getMargins",
+              "parameters": [
+                {
+                  "name": "positions",
+                  "description": "object that contains postions for popover and target",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "sets pointer position based on popover and target middles",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "offset",
+              "type": {
+                "text": "number"
+              },
+              "default": "-10"
+            },
+            {
+              "kind": "field",
+              "name": "fitToVisibleBounds",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "superclass": {
+            "name": "AbsolutePositionBehavior",
+            "package": "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js"
+          },
+          "tagName": "simple-popover",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimplePopover",
+            "module": "simple-popover.js"
+          }
         },
         {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "orientation",
-          "description": "`orientation` {`string`} - \n\nProperty: orientation\n\nDefault: tb"
-        },
-        {
-          "name": "position",
-          "description": "`position` {`string`} - \n\nProperty: position\n\nDefault: bottom"
+          "kind": "js",
+          "name": "SimplePopover",
+          "declaration": {
+            "name": "SimplePopover",
+            "module": "simple-popover.js"
+          }
         }
       ]
     },
     {
-      "name": "simple-popover-selection",
-      "description": "Events:\n\n  * `simple-popover-selection-changed` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `opened` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\n  * `event` {`string`} - event activation type\n\nProperties:\n\n  * `opened` {`boolean`} - \n\n  * `disabled` {`boolean`} - disabled state\n\n  * `event` {`string`} - event activation type",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/SimpleTourFinder.js",
+      "declarations": [
         {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
-          "valueSet": "v"
-        },
+          "kind": "mixin",
+          "description": "",
+          "name": "SimpleTourFinder",
+          "members": [
+            {
+              "kind": "method",
+              "name": "discoverSimpleTourStops"
+            },
+            {
+              "kind": "field",
+              "name": "tourName",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"default\""
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
         {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - disabled state\n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "event",
-          "description": "`event` {`string`} - event activation type\n\nProperty: event\n\nDefault: click"
-        },
-        {
-          "name": "onsimple-popover-selection-changed",
-          "description": "`simple-popover-selection-changed` {`CustomEvent<any>`} - "
+          "kind": "js",
+          "name": "SimpleTourFinder",
+          "declaration": {
+            "name": "SimpleTourFinder",
+            "module": "lib/SimpleTourFinder.js"
+          }
         }
       ]
     },
     {
-      "name": "simple-tour",
-      "description": "Events:\n\n  * `tour-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `stacks` - \n\n  * `active` {`string`} - \n\n  * `activeElementDelay` {`number`} - \n\n  * `stop` {`number`} - \n\nProperties:\n\n  * `stacks` - \n\n  * `orientation` {`string`} - \n\n  * `active` {`string`} - \n\n  * `tourInfo` - \n\n  * `activeElementDelay` {`number`} - \n\n  * `stop` {`number`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/simple-popover-manager.js",
+      "declarations": [
         {
-          "name": "stacks",
-          "description": "`stacks` - \n\nProperty: stacks\n\nDefault: [object Object]"
+          "kind": "class",
+          "description": "",
+          "name": "SimplePopoverManager",
+          "members": [
+            {
+              "kind": "method",
+              "name": "setPopover",
+              "parameters": [
+                {
+                  "name": "context"
+                },
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "opened",
+                  "default": "null"
+                },
+                {
+                  "name": "orientation",
+                  "default": "\"tb\""
+                },
+                {
+                  "name": "mode"
+                }
+              ],
+              "description": "set target and optionally change content and open state"
+            },
+            {
+              "kind": "field",
+              "name": "popover",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "popover"
+            },
+            {
+              "kind": "field",
+              "name": "opened",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "opened"
+            },
+            {
+              "kind": "field",
+              "name": "context",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "orientation",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"tb\"",
+              "attribute": "orientation"
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"bottom\"",
+              "attribute": "position"
+            },
+            {
+              "kind": "field",
+              "name": "__ignore",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "position",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"bottom\"",
+              "fieldName": "position"
+            },
+            {
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "opened"
+            },
+            {
+              "name": "orientation",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"tb\"",
+              "fieldName": "orientation"
+            },
+            {
+              "name": "popover",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "popover"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "simple-popover-manager",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "simple-popover-manager",
+          "declaration": {
+            "name": "SimplePopoverManager",
+            "module": "lib/simple-popover-manager.js"
+          }
         },
         {
-          "name": "active",
-          "description": "`active` {`string`} - \n\nProperty: active\n\nDefault: null"
-        },
-        {
-          "name": "activeElementDelay",
-          "description": "`activeElementDelay` {`number`} - \n\nProperty: activeElementDelay\n\nDefault: 500"
-        },
-        {
-          "name": "stop",
-          "description": "`stop` {`number`} - \n\nProperty: stop\n\nDefault: -1"
-        },
-        {
-          "name": "ontour-changed",
-          "description": "`tour-changed` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "SimplePopoverManager",
+          "declaration": {
+            "name": "SimplePopoverManager",
+            "module": "lib/simple-popover-manager.js"
+          }
         }
       ]
     },
     {
-      "name": "simple-popover",
-      "description": "`simple-popover`\na popover alertdialog that is positioned next to a target element\n\n### Styling\n\n`<simple-popover>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--simple-popover-border-radius` | popover border-radius | 3px\n`--simple-popover-color` | popover text color| #222\n`--simple-popover-padding` | popover padding | 10px\n`--simple-popover-background-color` | popover background-color | white\n`--simple-popover-border-color` | popover border-color | #bbb\n`--simple-popover-box-shadow` | popover box-shadow | rgba(60, 64, 67, 0.3) 0px 4px 8px 3px;\n\nAttributes:\n\n  * `allow-overlap` {`boolean`} - Element has absolututely positioned children, such as menus\nand tooltips that are allowed to overlap the target\n\n  * `position-align` {`string`} - Aligns at the start, or end fo target. Default is centered.\n\n  * `justify` {`boolean`} - \n\n  * `auto` {`boolean`} - Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.\n\n  * `fit-to-visible-bounds` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `for` {`string`} - The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.\n\n  * `offset` {`number`} - The spacing between the top of the tooltip and the element it is\nanchored to.\n\n  * `position` {`string`} - Positions the tooltip to the top, right, bottom, left of its content.\n\n  * `target` - The actual target element\n\n  * `sticky` {`boolean`} - Stays on screen while target is on screen\n\n  * `hidden` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `__positions` - The element's style\n\nProperties:\n\n  * `allowOverlap` {`boolean`} - Element has absolututely positioned children, such as menus\nand tooltips that are allowed to overlap the target\n\n  * `positionAlign` {`string`} - Aligns at the start, or end fo target. Default is centered.\n\n  * `justify` {`boolean`} - \n\n  * `_ticking` {`boolean`} - \n\n  * `scrollTarget` - \n\n  * `auto` {`boolean`} - Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.\n\n  * `fitToVisibleBounds` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `for` {`string`} - The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.\n\n  * `offset` {`number`} - The spacing between the top of the tooltip and the element it is\nanchored to.\n\n  * `position` {`string`} - Positions the tooltip to the top, right, bottom, left of its content.\n\n  * `target` - The actual target element\n\n  * `sticky` {`boolean`} - Stays on screen while target is on screen\n\n  * `hidden` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\n  * `__positions` - The element's style\n\n  * `__observe` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/simple-popover-selection.js",
+      "declarations": [
         {
-          "name": "allow-overlap",
-          "description": "`allow-overlap` {`boolean`} - Element has absolututely positioned children, such as menus\nand tooltips that are allowed to overlap the target\n\nProperty: allowOverlap",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "",
+          "name": "SimplePopoverSelection",
+          "members": [
+            {
+              "kind": "method",
+              "name": "openedToggle",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "openedChanged",
+              "parameters": [
+                {
+                  "name": "state"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "managerReset",
+              "description": "The manager called and its time to pack it up. We got a better offer from someone else\nto maintain the state of the singleton and thus, you no longer matter. Please pack up\nyour bags and don't let the door hit ya."
+            },
+            {
+              "kind": "method",
+              "name": "itemSelect",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "openPopover"
+            },
+            {
+              "kind": "method",
+              "name": "closePopover"
+            },
+            {
+              "kind": "field",
+              "name": "opened",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "opened",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disabled state",
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "event",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "event activation type",
+              "default": "\"click\"",
+              "attribute": "event"
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "simple-popover-selection-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "opened"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "disabled state",
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "event",
+              "type": {
+                "text": "string"
+              },
+              "description": "event activation type",
+              "default": "\"click\"",
+              "fieldName": "event"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "simple-popover-selection",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "simple-popover-selection",
+          "declaration": {
+            "name": "SimplePopoverSelection",
+            "module": "lib/simple-popover-selection.js"
+          }
         },
         {
-          "name": "position-align",
-          "description": "`position-align` {`string`} - Aligns at the start, or end fo target. Default is centered.\n\nProperty: positionAlign"
+          "kind": "js",
+          "name": "SimplePopoverSelection",
+          "declaration": {
+            "name": "SimplePopoverSelection",
+            "module": "lib/simple-popover-selection.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/simple-tour.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "SimpleTour",
+          "members": [
+            {
+              "kind": "method",
+              "name": "registerNewTourEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "registerNewTour",
+              "parameters": [
+                {
+                  "name": "newTour"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "createTourStopEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "create tour stop via events"
+            },
+            {
+              "kind": "method",
+              "name": "createTourStop",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "target"
+                },
+                {
+                  "name": "title"
+                },
+                {
+                  "name": "description"
+                },
+                {
+                  "name": "mode"
+                }
+              ],
+              "description": "Create a tour stop, add to the stack, then return the stop object"
+            },
+            {
+              "kind": "method",
+              "name": "removeTarget",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "target"
+                }
+              ],
+              "description": "It's possible we drop a target from the DOM and then\nhave to remove it from the tour"
+            },
+            {
+              "kind": "method",
+              "name": "addStops",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "stops"
+                }
+              ],
+              "description": "Add stops to the tour"
+            },
+            {
+              "kind": "method",
+              "name": "hasNext"
+            },
+            {
+              "kind": "method",
+              "name": "hasPrev"
+            },
+            {
+              "kind": "method",
+              "name": "nextStop",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Move ahead or back in the stack"
+            },
+            {
+              "kind": "method",
+              "name": "prevStop",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "startTour",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "stopTour",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "tourButtons",
+              "description": "Render tour buttons as block"
+            },
+            {
+              "kind": "method",
+              "name": "scrollHere",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Simple utility to do nice scrolling or only scroll if we can't see it\nas that is better behavior but not in all browsers"
+            },
+            {
+              "kind": "method",
+              "name": "managerReset",
+              "description": "The manager was called and he's pissed. Do not cross Go, do not collect $200 in tips.\nYou're fired. Me, you, every body. We're fired because someone just asked for the manager\nto do something else and we were already taking people on a tour and now the kitchen\nis on fire and someone must be blamed.\n\nAlso, global calls this to clean up local state when global is hijacked by another project\nthat also leverages the singleton and wants to ensure everyone cleans up after themselves\ninstead of flipping tables on their way out the door. We'll call this function pack up\non a Friday to avoid incidents."
+            },
+            {
+              "kind": "field",
+              "name": "stacks",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "attribute": "stacks"
+            },
+            {
+              "kind": "field",
+              "name": "orientation",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"lr\""
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "active"
+            },
+            {
+              "kind": "field",
+              "name": "tourInfo",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "activeElementDelay",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "500",
+              "attribute": "activeElementDelay"
+            },
+            {
+              "kind": "field",
+              "name": "stop",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "-1",
+              "attribute": "stop"
+            }
+          ],
+          "events": [
+            {
+              "name": "tour-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "stop",
+              "type": {
+                "text": "number"
+              },
+              "default": "-1",
+              "fieldName": "stop"
+            },
+            {
+              "name": "active",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "active"
+            },
+            {
+              "name": "stacks",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "fieldName": "stacks"
+            },
+            {
+              "name": "activeElementDelay",
+              "type": {
+                "text": "number"
+              },
+              "default": "500",
+              "fieldName": "activeElementDelay"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "simple-tour",
+          "customElement": true
         },
         {
-          "name": "justify",
-          "description": "`justify` {`boolean`} - \n\nProperty: justify",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "Simple Tour Stop object for consistency",
+          "name": "TourStop",
+          "members": [
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Title\""
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"<p>Description</p>\""
+            }
+          ]
         },
         {
-          "name": "auto",
-          "description": "`auto` {`boolean`} - Element is positioned from connected to disconnected?\nOtherwise setPosition and unsetPosition must be called manually.\n\nProperty: auto\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "variable",
+          "name": "SimpleTourManager"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "simple-tour",
+          "declaration": {
+            "name": "SimpleTour",
+            "module": "lib/simple-tour.js"
+          }
         },
         {
-          "name": "fit-to-visible-bounds",
-          "description": "`fit-to-visible-bounds` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\nProperty: fitToVisibleBounds\n\nDefault: true",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "SimpleTour",
+          "declaration": {
+            "name": "SimpleTour",
+            "module": "lib/simple-tour.js"
+          }
         },
         {
-          "name": "for",
-          "description": "`for` {`string`} - The id of the element that the tooltip is anchored to. This element\nmust be a sibling of the tooltip. If this property is not set,\nthen the tooltip will be centered to the parent node containing it.\n\nProperty: for\n\nDefault: null"
+          "kind": "js",
+          "name": "TourStop",
+          "declaration": {
+            "name": "TourStop",
+            "module": "lib/simple-tour.js"
+          }
         },
         {
-          "name": "offset",
-          "description": "`offset` {`number`} - The spacing between the top of the tooltip and the element it is\nanchored to.\n\nProperty: offset\n\nDefault: -10"
-        },
-        {
-          "name": "position",
-          "description": "`position` {`string`} - Positions the tooltip to the top, right, bottom, left of its content.\n\nProperty: position\n\nDefault: bottom"
-        },
-        {
-          "name": "target",
-          "description": "`target` - The actual target element\n\nProperty: target\n\nDefault: null"
-        },
-        {
-          "name": "sticky",
-          "description": "`sticky` {`boolean`} - Stays on screen while target is on screen\n\nProperty: sticky\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hidden",
-          "description": "`hidden` {`boolean`} - If true, no parts of the tooltip will ever be shown offscreen.\n\nProperty: hidden\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__positions",
-          "description": "`__positions` - The element's style\n\nProperty: __positions\n\nDefault: [object Object]"
+          "kind": "js",
+          "name": "SimpleTourManager",
+          "declaration": {
+            "name": "SimpleTourManager",
+            "module": "lib/simple-tour.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

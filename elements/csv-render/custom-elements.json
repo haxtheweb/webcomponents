@@ -1,56 +1,208 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "csv-render",
-      "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`\n\nAttributes:\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `loading` {`boolean`} - \n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `table-data` {`string`} - Raw data pulled in from the csv file.\n\n  * `element-visible` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `caption` {`string`} - Caption for the table to improve accessibility and readability.\n\n  * `summary` {`string`} - Summary to improve accessibility for screen readers.\n\n  * `loading` {`boolean`} - \n\n  * `table` {`any[]`} - Table busted out as an array.\n\n  * `tableHeadings` {`any[]`} - Headings from the first row of the csv\n\n  * `tableData` {`string`} - Raw data pulled in from the csv file.\n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "csv-render.js",
+      "declarations": [
         {
-          "name": "data-source",
-          "description": "`data-source` {`string`} - Location of the CSV file.\n\nProperty: dataSource"
+          "kind": "class",
+          "description": "`csv-render`\n`Remote render a CSV file in place as an accessible table.`",
+          "name": "CsvRender",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "handleResponse",
+              "description": "Convert from csv text to an array in the table function"
+            },
+            {
+              "kind": "method",
+              "name": "CSVtoArray",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ],
+              "description": "Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data"
+            },
+            {
+              "kind": "method",
+              "name": "loadCSVData",
+              "description": "generate appstore query"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "loading"
+            },
+            {
+              "kind": "field",
+              "name": "table",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Table busted out as an array.",
+              "default": "[]",
+              "attribute": "table"
+            },
+            {
+              "kind": "field",
+              "name": "tableHeadings",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Headings from the first row of the csv",
+              "default": "[]",
+              "attribute": "tableHeadings"
+            },
+            {
+              "kind": "field",
+              "name": "tableData",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Raw data pulled in from the csv file.",
+              "default": "\"\"",
+              "attribute": "table-data"
+            },
+            {
+              "kind": "field",
+              "name": "dataSource",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Location of the CSV file.",
+              "attribute": "data-source"
+            },
+            {
+              "kind": "field",
+              "name": "caption",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Caption for the table to improve accessibility and readability.",
+              "attribute": "caption"
+            },
+            {
+              "kind": "field",
+              "name": "summary",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Summary to improve accessibility for screen readers.",
+              "attribute": "summary"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "data-source",
+              "type": {
+                "text": "string"
+              },
+              "description": "Location of the CSV file.",
+              "fieldName": "dataSource"
+            },
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "loading"
+            },
+            {
+              "name": "caption",
+              "type": {
+                "text": "string"
+              },
+              "description": "Caption for the table to improve accessibility and readability.",
+              "fieldName": "caption"
+            },
+            {
+              "name": "summary",
+              "type": {
+                "text": "string"
+              },
+              "description": "Summary to improve accessibility for screen readers.",
+              "fieldName": "summary"
+            },
+            {
+              "name": "table",
+              "type": {
+                "text": "array"
+              },
+              "description": "Table busted out as an array.",
+              "default": "[]",
+              "fieldName": "table"
+            },
+            {
+              "name": "tableHeadings",
+              "type": {
+                "text": "array"
+              },
+              "description": "Headings from the first row of the csv",
+              "default": "[]",
+              "fieldName": "tableHeadings"
+            },
+            {
+              "name": "table-data",
+              "type": {
+                "text": "string"
+              },
+              "description": "Raw data pulled in from the csv file.",
+              "default": "\"\"",
+              "fieldName": "tableData"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "IntersectionObserverMixin",
+              "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "csv-render",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CsvRender",
+            "module": "csv-render.js"
+          }
         },
         {
-          "name": "caption",
-          "description": "`caption` {`string`} - Caption for the table to improve accessibility and readability.\n\nProperty: caption"
-        },
-        {
-          "name": "summary",
-          "description": "`summary` {`string`} - Summary to improve accessibility for screen readers.\n\nProperty: summary"
-        },
-        {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "table",
-          "description": "`table` {`any[]`} - Table busted out as an array.\n\nProperty: table\n\nDefault: "
-        },
-        {
-          "name": "tableHeadings",
-          "description": "`tableHeadings` {`any[]`} - Headings from the first row of the csv\n\nProperty: tableHeadings\n\nDefault: "
-        },
-        {
-          "name": "table-data",
-          "description": "`table-data` {`string`} - Raw data pulled in from the csv file.\n\nProperty: tableData\n\nDefault: "
-        },
-        {
-          "name": "element-visible",
-          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "CsvRender",
+          "declaration": {
+            "name": "CsvRender",
+            "module": "csv-render.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,57 +1,301 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "awesome-explosion",
-      "description": "`awesome-explosion`\n`An awesome, explosion.`\n\nEvents:\n\n  * `awesome-event` {`CustomEvent<{ message: string; }>`} - \n\nAttributes:\n\n  * `stopped` {`boolean`} - Allow for stopping the sound effect.\n\n  * `playing` {`boolean`} - Allow for playing the sound effect.\n\n  * `paused` {`boolean`} - Allow for pausing the sound effect.\n\n  * `state` {`string`} - State is for setting:\nPossible values: play, pause, stop\n\n  * `image` {`string`} - This allows you to swap out the image\n\n  * `sound` {`string`} - This allows you to swap out the sound.\n\n  * `size` {`string`} - This is the size of the element. Possible values are:\ntiny, small, medium, large, epic\n\n  * `color` {`string`} - This is to change the color of the element. Possible values are:\nred, blue, orange, yellow\n\n  * `reset-sound` {`boolean`} - Allow for resetting the sound effect.\n\nProperties:\n\n  * `stopped` {`boolean`} - Allow for stopping the sound effect.\n\n  * `playing` {`boolean`} - Allow for playing the sound effect.\n\n  * `paused` {`boolean`} - Allow for pausing the sound effect.\n\n  * `state` {`string`} - State is for setting:\nPossible values: play, pause, stop\n\n  * `image` {`string`} - This allows you to swap out the image\n\n  * `sound` {`string`} - This allows you to swap out the sound.\n\n  * `size` {`string`} - This is the size of the element. Possible values are:\ntiny, small, medium, large, epic\n\n  * `color` {`string`} - This is to change the color of the element. Possible values are:\nred, blue, orange, yellow\n\n  * `resetSound` {`boolean`} - Allow for resetting the sound effect.",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "awesome-explosion.js",
+      "declarations": [
         {
-          "name": "stopped",
-          "description": "`stopped` {`boolean`} - Allow for stopping the sound effect.\n\nProperty: stopped",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`awesome-explosion`\n`An awesome, explosion.`",
+          "name": "AwesomeExplosion",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_calculateStopped",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "calculate if it is stopped"
+            },
+            {
+              "kind": "method",
+              "name": "_calculatePlaying",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "calculate if it is stopped"
+            },
+            {
+              "kind": "method",
+              "name": "_calculatePaused",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "calculate if it is stopped"
+            },
+            {
+              "kind": "method",
+              "name": "_stopSound",
+              "description": "Stop the sound effect."
+            },
+            {
+              "kind": "method",
+              "name": "_setPlaySound",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Set the state to play from an event."
+            },
+            {
+              "kind": "method",
+              "name": "_setStopSound",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Set the state to play from an event."
+            },
+            {
+              "kind": "method",
+              "name": "_playSound",
+              "description": "Play the sound effect."
+            },
+            {
+              "kind": "field",
+              "name": "state",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "State is for setting:\nPossible values: play, pause, stop",
+              "default": "\"stop\"",
+              "attribute": "state",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "This allows you to swap out the image",
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "sound",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "This allows you to swap out the sound.",
+              "attribute": "sound"
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "This is the size of the element. Possible values are:\ntiny, small, medium, large, epic",
+              "default": "\"medium\"",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
+              "default": "\"\"",
+              "attribute": "color",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "resetSound",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Allow for resetting the sound effect.",
+              "default": "false",
+              "attribute": "reset-sound",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "stopped",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Allow for stopping the sound effect.",
+              "attribute": "stopped"
+            },
+            {
+              "kind": "field",
+              "name": "playing",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Allow for playing the sound effect.",
+              "attribute": "playing"
+            },
+            {
+              "kind": "field",
+              "name": "paused",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Allow for pausing the sound effect.",
+              "attribute": "paused"
+            }
+          ],
+          "events": [
+            {
+              "name": "awesome-event",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "state",
+              "type": {
+                "text": "string"
+              },
+              "description": "State is for setting:\nPossible values: play, pause, stop",
+              "default": "\"stop\"",
+              "fieldName": "state"
+            },
+            {
+              "name": "stopped",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Allow for stopping the sound effect.",
+              "fieldName": "stopped"
+            },
+            {
+              "name": "playing",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Allow for playing the sound effect.",
+              "fieldName": "playing"
+            },
+            {
+              "name": "paused",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Allow for pausing the sound effect.",
+              "fieldName": "paused"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "description": "This allows you to swap out the image",
+              "fieldName": "image"
+            },
+            {
+              "name": "sound",
+              "type": {
+                "text": "string"
+              },
+              "description": "This allows you to swap out the sound.",
+              "fieldName": "sound"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "string"
+              },
+              "description": "This is the size of the element. Possible values are:\ntiny, small, medium, large, epic",
+              "default": "\"medium\"",
+              "fieldName": "size"
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
+              "default": "\"\"",
+              "fieldName": "color"
+            },
+            {
+              "name": "reset-sound",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Allow for resetting the sound effect.",
+              "default": "false",
+              "fieldName": "resetSound"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "awesome-explosion",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "AwesomeExplosion",
+            "module": "awesome-explosion.js"
+          }
         },
         {
-          "name": "playing",
-          "description": "`playing` {`boolean`} - Allow for playing the sound effect.\n\nProperty: playing",
-          "valueSet": "v"
-        },
-        {
-          "name": "paused",
-          "description": "`paused` {`boolean`} - Allow for pausing the sound effect.\n\nProperty: paused",
-          "valueSet": "v"
-        },
-        {
-          "name": "state",
-          "description": "`state` {`string`} - State is for setting:\nPossible values: play, pause, stop\n\nProperty: state\n\nDefault: stop"
-        },
-        {
-          "name": "image",
-          "description": "`image` {`string`} - This allows you to swap out the image\n\nProperty: image\n\nDefault: href"
-        },
-        {
-          "name": "sound",
-          "description": "`sound` {`string`} - This allows you to swap out the sound.\n\nProperty: sound\n\nDefault: href"
-        },
-        {
-          "name": "size",
-          "description": "`size` {`string`} - This is the size of the element. Possible values are:\ntiny, small, medium, large, epic\n\nProperty: size\n\nDefault: medium"
-        },
-        {
-          "name": "color",
-          "description": "`color` {`string`} - This is to change the color of the element. Possible values are:\nred, blue, orange, yellow\n\nProperty: color\n\nDefault: "
-        },
-        {
-          "name": "reset-sound",
-          "description": "`reset-sound` {`boolean`} - Allow for resetting the sound effect.\n\nProperty: resetSound\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onawesome-event",
-          "description": "`awesome-event` {`CustomEvent<{ message: string; }>`} - "
+          "kind": "js",
+          "name": "AwesomeExplosion",
+          "declaration": {
+            "name": "AwesomeExplosion",
+            "module": "awesome-explosion.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

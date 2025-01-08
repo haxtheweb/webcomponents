@@ -1,21 +1,2292 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "lorem-data",
-      "description": "`lorem-data`\na threaded discussions component\n\n### Styling\n\n`<lorem-data>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--lorem-data-FontSize` | default font-size | 14px\n\nAttributes:\n\n  * `schemas` - \n\n  * `__demo` - \n\nProperties:\n\n  * `data` - \n\n  * `schemas` - \n\n  * `__demo` - \n\n  * `colors` {`any[]`} - colors from Simple Colors\n\n  * `icons` {`(string | null)[]`} - \n\n  * `text` {`string`} - \n\n  * `words` {`string[]`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lorem-data.js",
+      "declarations": [
         {
-          "name": "schemas",
-          "description": "`schemas` - \n\nProperty: schemas\n\nDefault: [object Object]"
+          "kind": "class",
+          "description": "`lorem-data`\na threaded discussions component\n\n### Styling\n\n`<lorem-data>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--lorem-data-FontSize` | default font-size | 14px",
+          "name": "LoremData",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "saveAll",
+              "description": "downloads all generated schema JSON files"
+            },
+            {
+              "kind": "method",
+              "name": "getJson",
+              "parameters": [
+                {
+                  "name": "schema",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "converts generated schema to JSON",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "saveDataUrl",
+              "parameters": [
+                {
+                  "name": "schema",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "genertates a url to download schema JSON",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "data",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "colors",
+              "readonly": true,
+              "description": "colors from Simple Colors",
+              "return": {
+                "type": {
+                  "text": "array"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "filterQuery",
+              "parameters": [
+                {
+                  "name": "records"
+                },
+                {
+                  "name": "filter"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "addDays",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "new Date()",
+                  "description": "starting date",
+                  "type": {
+                    "text": "date"
+                  }
+                },
+                {
+                  "name": "amt",
+                  "default": "0"
+                },
+                {
+                  "description": "number of weeks",
+                  "name": "days",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "gets date x days from start date",
+              "return": {
+                "type": {
+                  "text": "date"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "addHours",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "new Date()",
+                  "description": "starting date",
+                  "type": {
+                    "text": "date"
+                  }
+                },
+                {
+                  "name": "amt",
+                  "default": "0"
+                },
+                {
+                  "description": "number of weeks",
+                  "name": "days",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "gets date x days from start date",
+              "return": {
+                "type": {
+                  "text": "date"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "addMinutes",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "new Date()",
+                  "description": "starting date",
+                  "type": {
+                    "text": "date"
+                  }
+                },
+                {
+                  "name": "amt",
+                  "default": "0"
+                },
+                {
+                  "description": "number of weeks",
+                  "name": "days",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "gets date x days from start date",
+              "return": {
+                "type": {
+                  "text": "date"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "addSeconds",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "new Date()",
+                  "description": "starting date",
+                  "type": {
+                    "text": "date"
+                  }
+                },
+                {
+                  "name": "amt",
+                  "default": "0"
+                },
+                {
+                  "description": "number of weeks",
+                  "name": "days",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "gets date x days from start date",
+              "return": {
+                "type": {
+                  "text": "date"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "addWeeks",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "new Date()",
+                  "description": "starting date",
+                  "type": {
+                    "text": "date"
+                  }
+                },
+                {
+                  "name": "amt",
+                  "default": "0"
+                },
+                {
+                  "description": "number of weeks",
+                  "name": "weeks",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "gets date x weeks from start date",
+              "return": {
+                "type": {
+                  "text": "date"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "addYears",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "new Date()",
+                  "description": "starting date",
+                  "type": {
+                    "text": "date"
+                  }
+                },
+                {
+                  "name": "amt",
+                  "default": "0"
+                },
+                {
+                  "description": "number of years",
+                  "name": "years",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "gets date x years from start date",
+              "return": {
+                "type": {
+                  "text": "date"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "dateFormat",
+              "parameters": [
+                {
+                  "name": "d"
+                },
+                {
+                  "name": "format"
+                },
+                {
+                  "name": "date",
+                  "type": {
+                    "text": "object"
+                  }
+                },
+                {
+                  "description": "(Weekday, Month, Day, Year), short (Month, Day), or default (Month, Day, Year)",
+                  "name": "long",
+                  "type": {
+                    "text": "format"
+                  }
+                }
+              ],
+              "description": "gets formatted date",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "arr",
+                  "default": "[]",
+                  "description": "array",
+                  "type": {
+                    "text": "array"
+                  }
+                },
+                {
+                  "name": "min",
+                  "default": "0",
+                  "description": "minimum number of items",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "max",
+                  "default": "min",
+                  "description": "max number of items",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "draws x-y items from shuffled array",
+              "return": {
+                "type": {
+                  "text": "array"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomArray",
+              "parameters": [
+                {
+                  "name": "children",
+                  "default": "{}",
+                  "description": "schema each generated array item should follow",
+                  "optional": true,
+                  "type": {
+                    "text": "object"
+                  }
+                },
+                {
+                  "name": "min",
+                  "default": "1",
+                  "description": "minimum number of array items",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "max",
+                  "default": "4",
+                  "description": "maximum number of array items",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "generates an array based on a schema and nim/max number of items",
+              "return": {
+                "type": {
+                  "text": "array"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomAspect",
+              "parameters": [
+                {
+                  "name": "minwidth",
+                  "default": "200",
+                  "description": "minimum aspect height",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "maxwidth",
+                  "default": "1000",
+                  "description": "minimum aspect width",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "minheight",
+                  "default": "200",
+                  "description": "maximum aspect height",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "maxheight",
+                  "default": "1000",
+                  "description": "maximum aspect width",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "generates a string representing a random aspect ratio",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomBool",
+              "description": "randomly true or false",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomColor",
+              "description": "random color from Simple Colors",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomDate",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "Date.now()"
+                },
+                {
+                  "name": "units",
+                  "default": "\"years\""
+                },
+                {
+                  "name": "min",
+                  "default": "-3"
+                },
+                {
+                  "name": "max",
+                  "default": "3"
+                }
+              ],
+              "description": "random color from Simple Colors",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomHex",
+              "description": "random color as hex code",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomIcon",
+              "parameters": [
+                {
+                  "name": "includeNull",
+                  "default": "false",
+                  "description": "include a 50/50 change of no icon?",
+                  "optional": true,
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "gets a random icon for an iconpicker",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomPlaceImg",
+              "parameters": [
+                {
+                  "name": "aspect",
+                  "description": "aspect ration as w/h",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "filter",
+                  "description": "optional 'greyscale' or 'sepia' filter",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "topic",
+                  "default": "\"any\"",
+                  "description": "optional topic image, as in 'places'",
+                  "optional": true,
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "generates URL for random image from placeimg.com",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomPicsum",
+              "parameters": [
+                {
+                  "name": "aspect",
+                  "description": "aspect ration as w/h",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "greyscale",
+                  "description": "whether image should be greyscale",
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "name": "blur",
+                  "default": "0",
+                  "description": "level of blurring filter to apply",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "id",
+                  "description": "specific image identifier",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "generates URL for random image from picsum.photos",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomKitten",
+              "parameters": [
+                {
+                  "name": "aspect",
+                  "description": "aspect ration as w/h",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "greyscale",
+                  "description": "whether image should be greyscale",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "generates URL for placeholder",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomFlickr",
+              "parameters": [
+                {
+                  "name": "aspect",
+                  "description": "aspect ration as w/h",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "searchTerms",
+                  "default": "[]",
+                  "description": "array of search terms for finding image",
+                  "optional": true,
+                  "type": {
+                    "text": "*"
+                  }
+                },
+                {
+                  "name": "searchAll",
+                  "default": "false",
+                  "description": "whether results must meet all search terms",
+                  "optional": true,
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "name": "multiple",
+                  "default": "-1",
+                  "description": "gives image a unique URL so that image isn't cached everywhere",
+                  "optional": true,
+                  "type": {
+                    "text": "*"
+                  }
+                }
+              ],
+              "description": "\ngenerates URL for random image from loremflickr.com",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomImage",
+              "parameters": [
+                {
+                  "name": "aspect",
+                  "description": "aspect ration as w/h",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "greyscale",
+                  "description": "whether image should be greyscale",
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "name": "topic",
+                  "description": "optional topic image, as in 'places'",
+                  "optional": true,
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "multiple",
+                  "description": "gives image a unique URL so that image isn't cached everywhere",
+                  "optional": true,
+                  "type": {
+                    "text": "*"
+                  }
+                }
+              ],
+              "description": "selects a url from an image generator based on params and the generator APIs",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomImageData",
+              "parameters": [
+                {
+                  "name": "aspect",
+                  "description": "aspect ration as w/h",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "greyscale",
+                  "description": "whether image should be greyscale",
+                  "type": {
+                    "text": "boolean"
+                  }
+                },
+                {
+                  "name": "topic",
+                  "description": "optional topic image, as in 'places'",
+                  "optional": true,
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "multiple",
+                  "description": "gives image a unique URL so that image isn't cached everywhere",
+                  "optional": true,
+                  "type": {
+                    "text": "*"
+                  }
+                }
+              ],
+              "description": "generates object with randome image src, alt, and longdesc",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomProfileImage",
+              "parameters": [
+                {
+                  "name": "aspect",
+                  "description": "aspect ration as w/h",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "topic",
+                  "description": "\"man\", \"woman\", etc",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "multiple",
+                  "description": "gives image a unique URL so that image isn't cached everywhere",
+                  "optional": true,
+                  "type": {
+                    "text": "*"
+                  }
+                }
+              ],
+              "description": "generates a random profile image",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomLink",
+              "parameters": [
+                {
+                  "name": "type"
+                },
+                {
+                  "name": "min",
+                  "default": "1"
+                },
+                {
+                  "name": "max",
+                  "default": "4"
+                }
+              ],
+              "description": "generates random link data",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomNumber",
+              "parameters": [
+                {
+                  "name": "min",
+                  "default": "0",
+                  "description": "lowest value",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "max",
+                  "default": "100 + min",
+                  "description": "highest value",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "step",
+                  "default": "1",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "random number within a range",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomObject",
+              "parameters": [
+                {
+                  "name": "schema",
+                  "default": "{}",
+                  "description": "schema for object data",
+                  "optional": true,
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "generates a random data object based oin a schema for that object",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomOption",
+              "parameters": [
+                {
+                  "name": "options",
+                  "default": "[]",
+                  "type": {
+                    "text": "array"
+                  }
+                }
+              ],
+              "description": "random option from and array of options",
+              "return": {
+                "type": {
+                  "text": "*"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomParagraph",
+              "parameters": [
+                {
+                  "name": "min",
+                  "default": "3",
+                  "description": "minimum number of sentences",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "max",
+                  "default": "7",
+                  "description": "maximum number of sentences",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "wordMinPerSent",
+                  "description": "minimum number of words per sentence",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "wordMaxPerSent",
+                  "description": "maximum number of words per sentence",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "generates a random paragraph",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomSentence",
+              "parameters": [
+                {
+                  "name": "min",
+                  "default": "3",
+                  "description": "minimum number of words",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "max",
+                  "default": "15",
+                  "description": "maximum number of words",
+                  "optional": true,
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "generates a random paragraph",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomType",
+              "parameters": [
+                {
+                  "name": "schema",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "generates random data based on schema",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomWeightedOption",
+              "parameters": [
+                {
+                  "name": "arr",
+                  "default": "[]",
+                  "description": "array of objects with weight and value, eg. [{value: true, weight: 80%},{value: false, weight: 20%}]",
+                  "optional": true,
+                  "type": {
+                    "text": "array"
+                  }
+                }
+              ],
+              "description": "given array of objects with weight and value, selects random value based on its weight",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomWord",
+              "description": "returns a random word",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "shuffle",
+              "parameters": [
+                {
+                  "name": "arr",
+                  "default": "[]",
+                  "description": "array",
+                  "type": {
+                    "text": "array"
+                  }
+                }
+              ],
+              "description": "gets shuffled array",
+              "return": {
+                "type": {
+                  "text": "arr"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "sortDates",
+              "parameters": [
+                {
+                  "name": "arr",
+                  "description": "array",
+                  "type": {
+                    "text": "array"
+                  }
+                },
+                {
+                  "name": "oldest",
+                  "default": "false"
+                },
+                {
+                  "description": "by most recent? (default is true)",
+                  "name": "sort",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "sorts array by most recent (or by oldest)",
+              "return": {
+                "type": {
+                  "text": "arr"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "titleCase",
+              "parameters": [
+                {
+                  "name": "str",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "converts text to title case",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "schemas",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "attribute": "schemas"
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "icons",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "words",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "camelToKebab",
+              "parameters": [
+                {
+                  "name": "camel",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "convert camelcase to kebab (for converting properties in attributes)",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "kebabToCamel",
+              "parameters": [
+                {
+                  "name": "kebab"
+                },
+                {
+                  "name": "camel",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "convert camelcase to kebab (for converting properties in attributes)",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomPassage",
+              "parameters": [
+                {
+                  "name": "min",
+                  "default": "2"
+                },
+                {
+                  "name": "max",
+                  "default": "5"
+                },
+                {
+                  "name": "sentMinPerPara",
+                  "default": "2"
+                },
+                {
+                  "name": "sentMaxPerPara",
+                  "default": "5"
+                },
+                {
+                  "name": "wordMinPerSent",
+                  "default": "3"
+                },
+                {
+                  "name": "wordMaxPerSent",
+                  "default": "10"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomPhrase",
+              "parameters": [
+                {
+                  "name": "min",
+                  "default": "1"
+                },
+                {
+                  "name": "max",
+                  "default": "5"
+                },
+                {
+                  "name": "titlecase",
+                  "default": "true"
+                },
+                {
+                  "name": "colon",
+                  "default": "false"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__demo",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "attribute": "__demo",
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "schemas",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "fieldName": "schemas"
+            },
+            {
+              "name": "__demo",
+              "type": {
+                "text": "object"
+              },
+              "fieldName": "__demo",
+              "inheritedFrom": {
+                "name": "LoremDataBehaviors",
+                "module": "lib/lorem-data-behaviors.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "LoremDataBehaviors",
+              "module": "/lib/lorem-data-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "lorem-data",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LoremData",
+            "module": "lorem-data.js"
+          }
         },
         {
-          "name": "__demo",
-          "description": "`__demo` - \n\nProperty: __demo"
+          "kind": "js",
+          "name": "LoremData",
+          "declaration": {
+            "name": "LoremData",
+            "module": "lorem-data.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/lorem-data-behaviors.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "LoremDataBehaviors",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "colors",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "icons",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "words",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "addDays",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "new Date()",
+                  "description": "starting date",
+                  "type": {
+                    "text": "date"
+                  }
+                },
+                {
+                  "name": "amt",
+                  "default": "0"
+                },
+                {
+                  "description": "number of weeks",
+                  "name": "days",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "gets date x days from start date",
+              "return": {
+                "type": {
+                  "text": "date"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "addHours",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "new Date()",
+                  "description": "starting date",
+                  "type": {
+                    "text": "date"
+                  }
+                },
+                {
+                  "name": "amt",
+                  "default": "0"
+                },
+                {
+                  "description": "number of weeks",
+                  "name": "days",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "gets date x days from start date",
+              "return": {
+                "type": {
+                  "text": "date"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "addMinutes",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "new Date()",
+                  "description": "starting date",
+                  "type": {
+                    "text": "date"
+                  }
+                },
+                {
+                  "name": "amt",
+                  "default": "0"
+                },
+                {
+                  "description": "number of weeks",
+                  "name": "days",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "gets date x days from start date",
+              "return": {
+                "type": {
+                  "text": "date"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "addSeconds",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "new Date()",
+                  "description": "starting date",
+                  "type": {
+                    "text": "date"
+                  }
+                },
+                {
+                  "name": "amt",
+                  "default": "0"
+                },
+                {
+                  "description": "number of weeks",
+                  "name": "days",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "gets date x days from start date",
+              "return": {
+                "type": {
+                  "text": "date"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "addWeeks",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "new Date()",
+                  "description": "starting date",
+                  "type": {
+                    "text": "date"
+                  }
+                },
+                {
+                  "name": "amt",
+                  "default": "0"
+                },
+                {
+                  "description": "number of weeks",
+                  "name": "weeks",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "gets date x weeks from start date",
+              "return": {
+                "type": {
+                  "text": "date"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "addYears",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "new Date()",
+                  "description": "starting date",
+                  "type": {
+                    "text": "date"
+                  }
+                },
+                {
+                  "name": "amt",
+                  "default": "0"
+                },
+                {
+                  "description": "number of years",
+                  "name": "years",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "gets date x years from start date",
+              "return": {
+                "type": {
+                  "text": "date"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "camelToKebab",
+              "parameters": [
+                {
+                  "name": "camel",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "convert camelcase to kebab (for converting properties in attributes)",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "dateFormat",
+              "parameters": [
+                {
+                  "name": "d"
+                },
+                {
+                  "name": "format"
+                },
+                {
+                  "name": "date",
+                  "type": {
+                    "text": "object"
+                  }
+                },
+                {
+                  "description": "(Weekday, Month, Day, Year), short (Month, Day), or default (Month, Day, Year)",
+                  "name": "long",
+                  "type": {
+                    "text": "format"
+                  }
+                }
+              ],
+              "description": "gets formatted date",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "draw",
+              "parameters": [
+                {
+                  "name": "arr",
+                  "default": "[]",
+                  "description": "array",
+                  "type": {
+                    "text": "array"
+                  }
+                },
+                {
+                  "name": "min",
+                  "default": "0",
+                  "description": "minimum number of items",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "max",
+                  "default": "min",
+                  "description": "max number of items",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "draws x-y items from shuffled array",
+              "return": {
+                "type": {
+                  "text": "arr"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "kebabToCamel",
+              "parameters": [
+                {
+                  "name": "kebab"
+                },
+                {
+                  "name": "camel",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "convert camelcase to kebab (for converting properties in attributes)",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomArray",
+              "parameters": [
+                {
+                  "name": "children",
+                  "default": "{}"
+                },
+                {
+                  "name": "min",
+                  "default": "1"
+                },
+                {
+                  "name": "max",
+                  "default": "4"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomAspect",
+              "parameters": [
+                {
+                  "name": "minwidth",
+                  "default": "200"
+                },
+                {
+                  "name": "maxwidth",
+                  "default": "1000"
+                },
+                {
+                  "name": "minheight",
+                  "default": "200"
+                },
+                {
+                  "name": "maxheight",
+                  "default": "1000"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomBool",
+              "description": "randomly true or false",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomColor",
+              "description": "random color from Simple Colors",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomDate",
+              "parameters": [
+                {
+                  "name": "start",
+                  "default": "Date.now()"
+                },
+                {
+                  "name": "units",
+                  "default": "\"years\""
+                },
+                {
+                  "name": "min",
+                  "default": "-3"
+                },
+                {
+                  "name": "max",
+                  "default": "3"
+                }
+              ],
+              "description": "random color from Simple Colors",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomHex",
+              "description": "random color as hex code",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomIcon",
+              "parameters": [
+                {
+                  "name": "includeNull",
+                  "default": "false",
+                  "description": "include a 50/50 change of no icon?",
+                  "optional": true,
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "gets a random icon for an iconpicker",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomLink",
+              "parameters": [
+                {
+                  "name": "type"
+                },
+                {
+                  "name": "min",
+                  "default": "1"
+                },
+                {
+                  "name": "max",
+                  "default": "4"
+                }
+              ],
+              "description": "generates random link data",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomFlickr",
+              "parameters": [
+                {
+                  "name": "aspect",
+                  "default": "this.randomAspect()"
+                },
+                {
+                  "name": "searchTerms",
+                  "default": "[]"
+                },
+                {
+                  "name": "searchAll",
+                  "default": "false"
+                },
+                {
+                  "name": "multiple",
+                  "default": "-1"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomImage",
+              "parameters": [
+                {
+                  "name": "aspect",
+                  "default": "this.randomAspect()"
+                },
+                {
+                  "name": "greyscale"
+                },
+                {
+                  "name": "topic"
+                },
+                {
+                  "name": "multiple"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomImageData",
+              "parameters": [
+                {
+                  "name": "aspect",
+                  "default": "this.randomAspect()"
+                },
+                {
+                  "name": "greyscale"
+                },
+                {
+                  "name": "topic"
+                },
+                {
+                  "name": "multiple"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomKitten",
+              "parameters": [
+                {
+                  "name": "aspect",
+                  "default": "this.randomAspect()"
+                },
+                {
+                  "name": "greyscale"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomNumber",
+              "parameters": [
+                {
+                  "name": "min",
+                  "default": "0",
+                  "description": "lowest value",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "max",
+                  "default": "100 + min",
+                  "description": "highest value",
+                  "type": {
+                    "text": "number"
+                  }
+                },
+                {
+                  "name": "step",
+                  "default": "1",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "random number within a range",
+              "return": {
+                "type": {
+                  "text": "number"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomObject",
+              "parameters": [
+                {
+                  "name": "schema",
+                  "default": "{}"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomOption",
+              "parameters": [
+                {
+                  "name": "options",
+                  "default": "[]",
+                  "type": {
+                    "text": "array"
+                  }
+                }
+              ],
+              "description": "random option from and array of options",
+              "return": {
+                "type": {
+                  "text": "*"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "randomPicsum",
+              "parameters": [
+                {
+                  "name": "aspect",
+                  "default": "this.randomAspect()"
+                },
+                {
+                  "name": "greyscale"
+                },
+                {
+                  "name": "blur",
+                  "default": "0"
+                },
+                {
+                  "name": "id"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomPlaceImg",
+              "parameters": [
+                {
+                  "name": "aspect",
+                  "default": "this.randomAspect()"
+                },
+                {
+                  "name": "filter"
+                },
+                {
+                  "name": "topic",
+                  "default": "\"any\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomProfileImage",
+              "parameters": [
+                {
+                  "name": "aspect",
+                  "default": "this.randomAspect()"
+                },
+                {
+                  "name": "topic"
+                },
+                {
+                  "name": "multiple"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomParagraph",
+              "parameters": [
+                {
+                  "name": "min",
+                  "default": "3"
+                },
+                {
+                  "name": "max",
+                  "default": "7"
+                },
+                {
+                  "name": "wordMinPerSent",
+                  "default": "3"
+                },
+                {
+                  "name": "wordMaxPerSent",
+                  "default": "10"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomPassage",
+              "parameters": [
+                {
+                  "name": "min",
+                  "default": "2"
+                },
+                {
+                  "name": "max",
+                  "default": "5"
+                },
+                {
+                  "name": "sentMinPerPara",
+                  "default": "2"
+                },
+                {
+                  "name": "sentMaxPerPara",
+                  "default": "5"
+                },
+                {
+                  "name": "wordMinPerSent",
+                  "default": "3"
+                },
+                {
+                  "name": "wordMaxPerSent",
+                  "default": "10"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomPhrase",
+              "parameters": [
+                {
+                  "name": "min",
+                  "default": "1"
+                },
+                {
+                  "name": "max",
+                  "default": "5"
+                },
+                {
+                  "name": "titlecase",
+                  "default": "true"
+                },
+                {
+                  "name": "colon",
+                  "default": "false"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomSentence",
+              "parameters": [
+                {
+                  "name": "min",
+                  "default": "3"
+                },
+                {
+                  "name": "max",
+                  "default": "15"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomType",
+              "parameters": [
+                {
+                  "name": "schema"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomWeightedOption",
+              "parameters": [
+                {
+                  "name": "arr",
+                  "default": "[]"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "randomWord"
+            },
+            {
+              "kind": "method",
+              "name": "shuffle",
+              "parameters": [
+                {
+                  "name": "arr",
+                  "default": "[]",
+                  "description": "array",
+                  "type": {
+                    "text": "array"
+                  }
+                }
+              ],
+              "description": "gets shuffled array",
+              "return": {
+                "type": {
+                  "text": "arr"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "sortDates",
+              "parameters": [
+                {
+                  "name": "arr",
+                  "description": "array",
+                  "type": {
+                    "text": "array"
+                  }
+                },
+                {
+                  "name": "oldest",
+                  "default": "false"
+                },
+                {
+                  "description": "by most recent? (default is true)",
+                  "name": "sort",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "sorts array by most recent (or by oldest)",
+              "return": {
+                "type": {
+                  "text": "arr"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "titleCase",
+              "parameters": [
+                {
+                  "name": "str"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "__demo",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "attribute": "__demo"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "__demo",
+              "type": {
+                "text": "object"
+              },
+              "fieldName": "__demo"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "LoremDataBehaviors",
+          "declaration": {
+            "name": "LoremDataBehaviors",
+            "module": "lib/lorem-data-behaviors.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,17 +1,97 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "pouch-db",
-      "description": "`pouch-db`\n`read and write localized data elements`\n\nEvents:\n\n  * `pouch-db-show-data` {`CustomEvent<string[]>`} - \n\nProperties:\n\n  * `windowControllers` - \n\n  * `type` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "pouch-db.js",
+      "declarations": [
         {
-          "name": "onpouch-db-show-data",
-          "description": "`pouch-db-show-data` {`CustomEvent<string[]>`} - "
+          "kind": "variable",
+          "name": "PouchDBElement"
+        },
+        {
+          "kind": "class",
+          "description": "`pouch-db`\n`read and write localized data elements`",
+          "name": "PouchDb",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "userEngagmentFunction",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getDataFunction",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"xapi\""
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "pouch-db",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PouchDBElement",
+          "declaration": {
+            "name": "PouchDBElement",
+            "module": "pouch-db.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PouchDb",
+            "module": "pouch-db.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PouchDb",
+          "declaration": {
+            "name": "PouchDb",
+            "module": "pouch-db.js"
+          }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/pouchdb.min.js",
+      "declarations": [],
+      "exports": []
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

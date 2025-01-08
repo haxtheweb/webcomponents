@@ -1,71 +1,318 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "page-contents-menu",
-      "description": "`page-contents-menu`\n`Links that jump you to the right place in the page's content`\n\nEvents:\n\n  * `popstate` {`PopStateEvent`} - \n\nAttributes:\n\n  * `relationship` {`string`} - \n\n  * `items` {`any[]`} - \n\n  * `is-empty` {`boolean`} - \n\n  * `hide-if-empty` {`boolean`} - \n\n  * `position` {`string`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `windowControllers` - \n\n  * `relationship` {`string`} - \n\n  * `fallbackText` - \n\n  * `items` {`any[]`} - \n\n  * `isEmpty` {`boolean`} - \n\n  * `hideIfEmpty` {`boolean`} - \n\n  * `position` {`string`} - \n\n  * `contentContainer` - \n\n  * `mobile` {`boolean`} - \n\n  * `scrollPolling` {`number`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `hierarchyTags` {`string[]`} - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "page-contents-menu.js",
+      "declarations": [
         {
-          "name": "relationship",
-          "description": "`relationship` {`string`} - \n\nProperty: relationship\n\nDefault: null"
+          "kind": "class",
+          "description": "`page-contents-menu`\n`Links that jump you to the right place in the page's content`",
+          "name": "PageContentsMenu",
+          "members": [
+            {
+              "kind": "method",
+              "name": "keyToggle",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "keyScroll",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toggleSettings",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "scrollToObject",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderItem",
+              "parameters": [
+                {
+                  "name": "item"
+                },
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "updateMenu",
+              "description": "Update the menu. This can be run manually to easily wire into mutationobservers\nor other events that modify what's in the content container node without\nconstantly monitoring it for changes."
+            },
+            {
+              "kind": "method",
+              "name": "_applyScrollDetect",
+              "description": "Event listener for scrolling"
+            },
+            {
+              "kind": "method",
+              "name": "scrollFinished",
+              "description": "Scrolling has paused, re-evaluate what's visible"
+            },
+            {
+              "kind": "method",
+              "name": "_contentContainerChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                }
+              ],
+              "description": "When our content container changes, process the hierarchy in question"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "relationship",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "relationship"
+            },
+            {
+              "kind": "field",
+              "name": "fallbackText",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "items"
+            },
+            {
+              "kind": "field",
+              "name": "isEmpty",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "is-empty",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hideIfEmpty",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hide-if-empty",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"left\"",
+              "attribute": "position"
+            },
+            {
+              "kind": "field",
+              "name": "contentContainer",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "contentContainer"
+            },
+            {
+              "kind": "field",
+              "name": "mobile",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "mobile",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "scrollPolling",
+              "type": {
+                "text": "number"
+              },
+              "default": "200"
+            },
+            {
+              "kind": "field",
+              "name": "hideSettings",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hideSettings"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Contents\"",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "hierarchyTags",
+              "type": {
+                "text": "array"
+              },
+              "default": "[\"h1\", \"h2\", \"h3\", \"h4\", \"h5\", \"h6\"]"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "contentContainer",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "contentContainer"
+            },
+            {
+              "name": "relationship",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "relationship"
+            },
+            {
+              "name": "items",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "items"
+            },
+            {
+              "name": "position",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"left\"",
+              "fieldName": "position"
+            },
+            {
+              "name": "mobile",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "mobile"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Contents\"",
+              "fieldName": "label"
+            },
+            {
+              "name": "hideSettings",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hideSettings"
+            },
+            {
+              "name": "hide-if-empty",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hideIfEmpty"
+            },
+            {
+              "name": "is-empty",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "isEmpty"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "page-contents-menu",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PageContentsMenu",
+            "module": "page-contents-menu.js"
+          }
         },
         {
-          "name": "items",
-          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
-        },
-        {
-          "name": "is-empty",
-          "description": "`is-empty` {`boolean`} - \n\nProperty: isEmpty\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-if-empty",
-          "description": "`hide-if-empty` {`boolean`} - \n\nProperty: hideIfEmpty\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "position",
-          "description": "`position` {`string`} - \n\nProperty: position\n\nDefault: left"
-        },
-        {
-          "name": "contentContainer",
-          "description": "`contentContainer` - \n\nProperty: contentContainer\n\nDefault: null"
-        },
-        {
-          "name": "mobile",
-          "description": "`mobile` {`boolean`} - \n\nProperty: mobile\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideSettings",
-          "description": "`hideSettings` {`boolean`} - \n\nProperty: hideSettings\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Contents"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onpopstate",
-          "description": "`popstate` {`PopStateEvent`} - "
+          "kind": "js",
+          "name": "PageContentsMenu",
+          "declaration": {
+            "name": "PageContentsMenu",
+            "module": "page-contents-menu.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

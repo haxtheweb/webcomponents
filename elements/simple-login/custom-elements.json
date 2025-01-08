@@ -1,120 +1,632 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "simple-camera-snap",
-      "description": "Events:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - \n\n  * `simple-camera-snap-image` {`CustomEvent<{ img: string; raw: any; }>`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `t` - \n\n  * `template` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "simple-login.js",
+      "declarations": [
         {
-          "name": "oni18n-manager-register-element",
-          "description": "`i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - "
+          "kind": "class",
+          "description": "`simple-login`",
+          "name": "SimpleLogin",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_keyPressLogin",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Key pressed for the login"
+            },
+            {
+              "kind": "method",
+              "name": "_passwordChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_usernameChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_login",
+              "description": "Login"
+            },
+            {
+              "kind": "field",
+              "name": "password",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Content of the password field",
+              "default": "\"\"",
+              "attribute": "password"
+            },
+            {
+              "kind": "field",
+              "name": "username",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Content of the username field",
+              "default": "\"\"",
+              "attribute": "username"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "When true, all fields are disabled and the progress bar is visible",
+              "default": "false",
+              "attribute": "loading"
+            },
+            {
+              "kind": "field",
+              "name": "userInputLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Placeholder of the username field",
+              "default": "\"User name\"",
+              "attribute": "user-input-label"
+            },
+            {
+              "kind": "field",
+              "name": "userInputErrMsg",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Error message of the username field",
+              "default": "\"User name required\"",
+              "attribute": "userInputErrMsg"
+            },
+            {
+              "kind": "field",
+              "name": "passwordInputLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Placeholder of the password field",
+              "default": "\"Password\"",
+              "attribute": "password-input-label"
+            },
+            {
+              "kind": "field",
+              "name": "passwordInputErrMsg",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Error message of the password field",
+              "default": "\"Password required\"",
+              "attribute": "passwordInputErrMsg"
+            },
+            {
+              "kind": "field",
+              "name": "loginBtnText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Login button label",
+              "default": "\"Login\"",
+              "attribute": "login-btn-text"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "description": "Title of the loginscreen",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "subtitle",
+              "privacy": "public",
+              "description": "Subtitle of the loginscreen",
+              "attribute": "subtitle"
+            },
+            {
+              "kind": "field",
+              "name": "errorMsg",
+              "privacy": "public",
+              "description": "Error message to show (example : \"Invalid username\")",
+              "attribute": "errorMsg"
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "simple-login-login",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "description": "Title of the loginscreen",
+              "fieldName": "title"
+            },
+            {
+              "name": "subtitle",
+              "description": "Subtitle of the loginscreen",
+              "fieldName": "subtitle"
+            },
+            {
+              "name": "errorMsg",
+              "description": "Error message to show (example : \"Invalid username\")",
+              "fieldName": "errorMsg"
+            },
+            {
+              "name": "username",
+              "type": {
+                "text": "string"
+              },
+              "description": "Content of the username field",
+              "default": "\"\"",
+              "fieldName": "username"
+            },
+            {
+              "name": "password",
+              "type": {
+                "text": "string"
+              },
+              "description": "Content of the password field",
+              "default": "\"\"",
+              "fieldName": "password"
+            },
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "When true, all fields are disabled and the progress bar is visible",
+              "default": "false",
+              "fieldName": "loading"
+            },
+            {
+              "name": "user-input-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Placeholder of the username field",
+              "default": "\"User name\"",
+              "fieldName": "userInputLabel"
+            },
+            {
+              "name": "userInputErrMsg",
+              "type": {
+                "text": "string"
+              },
+              "description": "Error message of the username field",
+              "default": "\"User name required\"",
+              "fieldName": "userInputErrMsg"
+            },
+            {
+              "name": "password-input-label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Placeholder of the password field",
+              "default": "\"Password\"",
+              "fieldName": "passwordInputLabel"
+            },
+            {
+              "name": "passwordInputErrMsg",
+              "type": {
+                "text": "string"
+              },
+              "description": "Error message of the password field",
+              "default": "\"Password required\"",
+              "fieldName": "passwordInputErrMsg"
+            },
+            {
+              "name": "login-btn-text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Login button label",
+              "default": "\"Login\"",
+              "fieldName": "loginBtnText"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "simple-login",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleLogin",
+            "module": "simple-login.js"
+          }
         },
         {
-          "name": "onsimple-camera-snap-image",
-          "description": "`simple-camera-snap-image` {`CustomEvent<{ img: string; raw: any; }>`} - "
+          "kind": "js",
+          "name": "SimpleLogin",
+          "declaration": {
+            "name": "SimpleLogin",
+            "module": "simple-login.js"
+          }
         }
       ]
     },
     {
-      "name": "simple-login-avatar",
-      "description": "`simple-login-avatar`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
-      "attributes": []
-    },
-    {
-      "name": "simple-login-camera",
-      "description": "Inspiration from https://github.com/wanoo21/MyCamera\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - \n\n  * `site-listing-video-activate` {`CustomEvent<this>`} - \n\n  * `simple-login-camera-icon-click` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `autoplay` {} - \n\n  * `controls` {} - \n\n  * `audio` {} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `windowControllers` - \n\n  * `t` - \n\n  * `template` - \n\n  * `_shadow` - \n\n  * `_video` - \n\n  * `_error` - \n\n  * `_record` - \n\n  * `_pauseRecord` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/simple-camera-snap.js",
+      "declarations": [
         {
-          "name": "autoplay",
-          "description": "`autoplay` {} - \n\n"
+          "kind": "class",
+          "description": "",
+          "name": "SimpleCameraSnap",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "snapPhoto",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "clearPhoto",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ takePhoto: \"Take Photo\", }"
+            },
+            {
+              "kind": "field",
+              "name": "template"
+            }
+          ],
+          "events": [
+            {
+              "name": "simple-camera-snap-image",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleCameraSnap",
+            "module": "lib/simple-camera-snap.js"
+          }
         },
         {
-          "name": "controls",
-          "description": "`controls` {} - \n\n"
-        },
-        {
-          "name": "audio",
-          "description": "`audio` {} - \n\n"
-        },
-        {
-          "name": "oni18n-manager-register-element",
-          "description": "`i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - "
-        },
-        {
-          "name": "onsite-listing-video-activate",
-          "description": "`site-listing-video-activate` {`CustomEvent<this>`} - "
-        },
-        {
-          "name": "onsimple-login-camera-icon-click",
-          "description": "`simple-login-camera-icon-click` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "SimpleCameraSnap",
+          "declaration": {
+            "name": "SimpleCameraSnap",
+            "module": "lib/simple-camera-snap.js"
+          }
         }
       ]
     },
     {
-      "name": "simple-login",
-      "description": "`simple-login`\n\nEvents:\n\n  * `simple-login-login` {`CustomEvent<{ u: any; p: any; }>`} - \n\nAttributes:\n\n  * `title` - Title of the loginscreen\n\n  * `subtitle` - Subtitle of the loginscreen\n\n  * `errorMsg` - Error message to show (example : \"Invalid username\")\n\n  * `password` {`string`} - Content of the password field\n\n  * `username` {`string`} - Content of the username field\n\n  * `loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\n  * `user-input-label` {`string`} - Placeholder of the username field\n\n  * `userInputErrMsg` {`string`} - Error message of the username field\n\n  * `password-input-label` {`string`} - Placeholder of the password field\n\n  * `passwordInputErrMsg` {`string`} - Error message of the password field\n\n  * `login-btn-text` {`string`} - Login button label\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` - Title of the loginscreen\n\n  * `subtitle` - Subtitle of the loginscreen\n\n  * `errorMsg` - Error message to show (example : \"Invalid username\")\n\n  * `password` {`string`} - Content of the password field\n\n  * `username` {`string`} - Content of the username field\n\n  * `loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\n  * `userInputLabel` {`string`} - Placeholder of the username field\n\n  * `userInputErrMsg` {`string`} - Error message of the username field\n\n  * `passwordInputLabel` {`string`} - Placeholder of the password field\n\n  * `passwordInputErrMsg` {`string`} - Error message of the password field\n\n  * `loginBtnText` {`string`} - Login button label\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/simple-login-avatar.js",
+      "declarations": [
         {
-          "name": "title",
-          "description": "`title` - Title of the loginscreen\n\nProperty: title"
+          "kind": "class",
+          "description": "`simple-login-avatar`",
+          "name": "SimpleLoginAvatar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_copyAttribute",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "to"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "template"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "simple-login-avatar",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleLoginAvatar",
+            "module": "lib/simple-login-avatar.js"
+          }
         },
         {
-          "name": "subtitle",
-          "description": "`subtitle` - Subtitle of the loginscreen\n\nProperty: subtitle"
+          "kind": "js",
+          "name": "SimpleLoginAvatar",
+          "declaration": {
+            "name": "SimpleLoginAvatar",
+            "module": "lib/simple-login-avatar.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/simple-login-camera.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Inspiration from https://github.com/wanoo21/MyCamera",
+          "name": "SimpleLoginCamera",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_startRecording"
+            },
+            {
+              "kind": "method",
+              "name": "_stopRecording"
+            },
+            {
+              "kind": "method",
+              "name": "_pauseRecording"
+            },
+            {
+              "kind": "method",
+              "name": "_resumeRecording"
+            },
+            {
+              "kind": "method",
+              "name": "_saveVideo",
+              "parameters": [
+                {
+                  "name": "blob"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_cameraStream"
+            },
+            {
+              "kind": "method",
+              "name": "takeASnap"
+            },
+            {
+              "kind": "method",
+              "name": "renderImage",
+              "parameters": [
+                {
+                  "name": "blob"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "imageBlob",
+              "parameters": [
+                {
+                  "name": "blob"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "download",
+              "parameters": [
+                {
+                  "name": "blob"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_addVideoAtributes"
+            },
+            {
+              "kind": "method",
+              "name": "_msrLoaded",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_applyMSR"
+            },
+            {
+              "kind": "method",
+              "name": "documentLoaded",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Try to apply when fully loaded dom"
+            },
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ record: \"Record\", pause: \"Pause record\", stopSave: \"Stop & Save\", clickToTakePhoto: \"Click to take photo\", }"
+            },
+            {
+              "kind": "field",
+              "name": "template"
+            },
+            {
+              "kind": "field",
+              "name": "_shadow"
+            },
+            {
+              "kind": "field",
+              "name": "_video"
+            },
+            {
+              "kind": "field",
+              "name": "_error"
+            },
+            {
+              "kind": "field",
+              "name": "_record"
+            },
+            {
+              "kind": "field",
+              "name": "_pauseRecord"
+            }
+          ],
+          "events": [
+            {
+              "name": "site-listing-video-activate",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "simple-login-camera-icon-click",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "autoplay"
+            },
+            {
+              "name": "controls"
+            },
+            {
+              "name": "audio"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleLoginCamera",
+            "module": "lib/simple-login-camera.js"
+          }
         },
         {
-          "name": "errorMsg",
-          "description": "`errorMsg` - Error message to show (example : \"Invalid username\")\n\nProperty: errorMsg"
-        },
-        {
-          "name": "password",
-          "description": "`password` {`string`} - Content of the password field\n\nProperty: password\n\nDefault: "
-        },
-        {
-          "name": "username",
-          "description": "`username` {`string`} - Content of the username field\n\nProperty: username\n\nDefault: "
-        },
-        {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - When true, all fields are disabled and the progress bar is visible\n\nProperty: loading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "user-input-label",
-          "description": "`user-input-label` {`string`} - Placeholder of the username field\n\nProperty: userInputLabel\n\nDefault: User name"
-        },
-        {
-          "name": "userInputErrMsg",
-          "description": "`userInputErrMsg` {`string`} - Error message of the username field\n\nProperty: userInputErrMsg\n\nDefault: User name required"
-        },
-        {
-          "name": "password-input-label",
-          "description": "`password-input-label` {`string`} - Placeholder of the password field\n\nProperty: passwordInputLabel\n\nDefault: Password"
-        },
-        {
-          "name": "passwordInputErrMsg",
-          "description": "`passwordInputErrMsg` {`string`} - Error message of the password field\n\nProperty: passwordInputErrMsg\n\nDefault: Password required"
-        },
-        {
-          "name": "login-btn-text",
-          "description": "`login-btn-text` {`string`} - Login button label\n\nProperty: loginBtnText\n\nDefault: Login"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onsimple-login-login",
-          "description": "`simple-login-login` {`CustomEvent<{ u: any; p: any; }>`} - "
+          "kind": "js",
+          "name": "SimpleLoginCamera",
+          "declaration": {
+            "name": "SimpleLoginCamera",
+            "module": "lib/simple-login-camera.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,12 +1,824 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "micro-frontend-registry",
-      "description": "`micro-frontend-registry`\n`A singleton for registration and managing access to leverage microservices for web components`\n\nProperties:\n\n  * `list` {`never[]`} - \n\n  * `MicroFrontend` - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "micro-frontend-registry.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MicroFrontend"
+        },
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "MicroFrontendRegCapabilities",
+          "members": [
+            {
+              "kind": "method",
+              "name": "add",
+              "parameters": [
+                {
+                  "name": "params",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "Adding more or less alias for define"
+            },
+            {
+              "kind": "method",
+              "name": "define",
+              "parameters": [
+                {
+                  "name": "item",
+                  "description": "instanceof MicroFrontend",
+                  "type": {
+                    "text": "MicroFrontend"
+                  }
+                }
+              ],
+              "description": "define a new micro frontend",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "get",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "machine name of the micro record requested",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "testOnly",
+                  "default": "false"
+                }
+              ],
+              "description": "get the definition for a machine named micro",
+              "return": {
+                "type": {
+                  "text": "MicroFrontend"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "has",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "machine name of the micro record requested",
+                  "type": {
+                    "text": "String"
+                  }
+                }
+              ],
+              "description": "boolean for having the definition for a machine named micro",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "set",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "machine name of the micro record requested",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "item",
+                  "default": "{}",
+                  "description": "updated micro data",
+                  "type": {
+                    "text": "MicroFrontend"
+                  }
+                }
+              ],
+              "description": "set the definition for a machine named micro that was already registered",
+              "return": {
+                "type": {
+                  "text": "MicroFrontend"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "call",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "machine name for the micro to call",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "params",
+                  "default": "{}",
+                  "description": "data to send to endpoint",
+                  "type": {
+                    "text": "Object"
+                  }
+                },
+                {
+                  "name": "callback",
+                  "default": "null",
+                  "description": "Function callback on data return",
+                  "type": {
+                    "text": "Function"
+                  }
+                },
+                {
+                  "name": "caller",
+                  "default": "null",
+                  "description": "reference to DOM node that called this",
+                  "type": {
+                    "text": "Object"
+                  }
+                },
+                {
+                  "name": "urlStringAddon",
+                  "default": "\"\"",
+                  "description": "a string to add onto the fetch at the end. edge of edge of edge land here",
+                  "type": {
+                    "text": "String"
+                  }
+                }
+              ],
+              "description": "generate the call to the micro based on accepting name and params",
+              "return": {
+                "type": {
+                  "text": "Object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "url",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "machine name for the micro to call",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "params",
+                  "default": "{}",
+                  "description": "data to send to endpoint",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "generate the call to the micro as a URL",
+              "return": {
+                "type": {
+                  "text": "String"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "list",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "MicroFrontend",
+              "default": "MicroFrontend"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MicroFrontendRegistryNodeJS",
+          "mixins": [
+            {
+              "name": "MicroFrontendRegCapabilities",
+              "module": "micro-frontend-registry.js"
+            }
+          ],
+          "superclass": {
+            "name": "Object",
+            "module": "micro-frontend-registry.js"
+          },
+          "members": [
+            {
+              "kind": "method",
+              "name": "add",
+              "parameters": [
+                {
+                  "name": "params",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "Adding more or less alias for define",
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "define",
+              "parameters": [
+                {
+                  "name": "item",
+                  "description": "instanceof MicroFrontend",
+                  "type": {
+                    "text": "MicroFrontend"
+                  }
+                }
+              ],
+              "description": "define a new micro frontend",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "get",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "machine name of the micro record requested",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "testOnly",
+                  "default": "false"
+                }
+              ],
+              "description": "get the definition for a machine named micro",
+              "return": {
+                "type": {
+                  "text": "MicroFrontend"
+                }
+              },
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "has",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "machine name of the micro record requested",
+                  "type": {
+                    "text": "String"
+                  }
+                }
+              ],
+              "description": "boolean for having the definition for a machine named micro",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "set",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "machine name of the micro record requested",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "item",
+                  "default": "{}",
+                  "description": "updated micro data",
+                  "type": {
+                    "text": "MicroFrontend"
+                  }
+                }
+              ],
+              "description": "set the definition for a machine named micro that was already registered",
+              "return": {
+                "type": {
+                  "text": "MicroFrontend"
+                }
+              },
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "call",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "machine name for the micro to call",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "params",
+                  "default": "{}",
+                  "description": "data to send to endpoint",
+                  "type": {
+                    "text": "Object"
+                  }
+                },
+                {
+                  "name": "callback",
+                  "default": "null",
+                  "description": "Function callback on data return",
+                  "type": {
+                    "text": "Function"
+                  }
+                },
+                {
+                  "name": "caller",
+                  "default": "null",
+                  "description": "reference to DOM node that called this",
+                  "type": {
+                    "text": "Object"
+                  }
+                },
+                {
+                  "name": "urlStringAddon",
+                  "default": "\"\"",
+                  "description": "a string to add onto the fetch at the end. edge of edge of edge land here",
+                  "type": {
+                    "text": "String"
+                  }
+                }
+              ],
+              "description": "generate the call to the micro based on accepting name and params",
+              "return": {
+                "type": {
+                  "text": "Object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "url",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "machine name for the micro to call",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "params",
+                  "default": "{}",
+                  "description": "data to send to endpoint",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "generate the call to the micro as a URL",
+              "return": {
+                "type": {
+                  "text": "String"
+                }
+              },
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "list",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "MicroFrontend",
+              "default": "MicroFrontend",
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "`micro-frontend-registry`\n`A singleton for registration and managing access to leverage microservices for web components`",
+          "name": "MicroFrontendRegistryEl",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "add",
+              "parameters": [
+                {
+                  "name": "params",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "Adding more or less alias for define",
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "define",
+              "parameters": [
+                {
+                  "name": "item",
+                  "description": "instanceof MicroFrontend",
+                  "type": {
+                    "text": "MicroFrontend"
+                  }
+                }
+              ],
+              "description": "define a new micro frontend",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "get",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "machine name of the micro record requested",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "testOnly",
+                  "default": "false"
+                }
+              ],
+              "description": "get the definition for a machine named micro",
+              "return": {
+                "type": {
+                  "text": "MicroFrontend"
+                }
+              },
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "has",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "machine name of the micro record requested",
+                  "type": {
+                    "text": "String"
+                  }
+                }
+              ],
+              "description": "boolean for having the definition for a machine named micro",
+              "return": {
+                "type": {
+                  "text": "Boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "set",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "machine name of the micro record requested",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "item",
+                  "default": "{}",
+                  "description": "updated micro data",
+                  "type": {
+                    "text": "MicroFrontend"
+                  }
+                }
+              ],
+              "description": "set the definition for a machine named micro that was already registered",
+              "return": {
+                "type": {
+                  "text": "MicroFrontend"
+                }
+              },
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "call",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "machine name for the micro to call",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "params",
+                  "default": "{}",
+                  "description": "data to send to endpoint",
+                  "type": {
+                    "text": "Object"
+                  }
+                },
+                {
+                  "name": "callback",
+                  "default": "null",
+                  "description": "Function callback on data return",
+                  "type": {
+                    "text": "Function"
+                  }
+                },
+                {
+                  "name": "caller",
+                  "default": "null",
+                  "description": "reference to DOM node that called this",
+                  "type": {
+                    "text": "Object"
+                  }
+                },
+                {
+                  "name": "urlStringAddon",
+                  "default": "\"\"",
+                  "description": "a string to add onto the fetch at the end. edge of edge of edge land here",
+                  "type": {
+                    "text": "String"
+                  }
+                }
+              ],
+              "description": "generate the call to the micro based on accepting name and params",
+              "return": {
+                "type": {
+                  "text": "Object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "url",
+              "parameters": [
+                {
+                  "name": "name",
+                  "description": "machine name for the micro to call",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "params",
+                  "default": "{}",
+                  "description": "data to send to endpoint",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "generate the call to the micro as a URL",
+              "return": {
+                "type": {
+                  "text": "String"
+                }
+              },
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "list",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "MicroFrontend",
+              "default": "MicroFrontend",
+              "inheritedFrom": {
+                "name": "MicroFrontendRegCapabilities",
+                "module": "micro-frontend-registry.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "MicroFrontendRegCapabilities",
+              "module": "micro-frontend-registry.js"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "micro-frontend-registry",
+          "customElement": true
+        },
+        {
+          "kind": "variable",
+          "name": "MicroFrontendRegistry"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "MicroFrontend",
+          "declaration": {
+            "name": "MicroFrontend",
+            "module": "micro-frontend-registry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MicroFrontendRegCapabilities",
+          "declaration": {
+            "name": "MicroFrontendRegCapabilities",
+            "module": "micro-frontend-registry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MicroFrontendRegistryNodeJS",
+          "declaration": {
+            "name": "MicroFrontendRegistryNodeJS",
+            "module": "micro-frontend-registry.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MicroFrontendRegistryEl",
+            "module": "micro-frontend-registry.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MicroFrontendRegistry",
+          "declaration": {
+            "name": "MicroFrontendRegistry",
+            "module": "micro-frontend-registry.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/microServices.js",
+      "declarations": [
+        {
+          "kind": "function",
+          "name": "enableServices",
+          "parameters": [
+            {
+              "name": "services"
+            }
+          ]
+        },
+        {
+          "kind": "function",
+          "name": "enableCoreServices"
+        },
+        {
+          "kind": "function",
+          "name": "enableHAXcmsServices"
+        },
+        {
+          "kind": "function",
+          "name": "enableExperimentalServices"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "enableServices",
+          "declaration": {
+            "name": "enableServices",
+            "module": "lib/microServices.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "enableCoreServices",
+          "declaration": {
+            "name": "enableCoreServices",
+            "module": "lib/microServices.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "enableHAXcmsServices",
+          "declaration": {
+            "name": "enableHAXcmsServices",
+            "module": "lib/microServices.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "enableExperimentalServices",
+          "declaration": {
+            "name": "enableExperimentalServices",
+            "module": "lib/microServices.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

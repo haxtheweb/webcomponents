@@ -1,12 +1,57 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "fluid-type",
-      "description": "`fluid-type`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "fluid-type.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`fluid-type`",
+          "name": "FluidType",
+          "members": [
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "template"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "fluid-type",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "FluidType",
+            "module": "fluid-type.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FluidType",
+          "declaration": {
+            "name": "FluidType",
+            "module": "fluid-type.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

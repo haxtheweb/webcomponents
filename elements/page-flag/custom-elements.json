@@ -1,90 +1,505 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "page-flag-comment",
-      "description": "Events:\n\n  * `page-flag-comment-delete` {`CustomEvent<this>`} - \n\n  * `page-flag-comment-reply` {`CustomEvent<this>`} - \n\n  * `page-flag-comment-edit` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `mood` {`string`} - \n\n  * `seed` {`string`} - \n\n  * `timestamp` {`number`} - \n\n  * `reply` {`number`} - \n\n  * `edit-mode` {`boolean`} - \n\n  * `canEdit` {`boolean`} - \n\n  * `readOnly` {`boolean`} - \n\nProperties:\n\n  * `mood` {`string`} - \n\n  * `seed` {`string`} - \n\n  * `timestamp` {`number`} - \n\n  * `reply` {`number`} - \n\n  * `editMode` {`boolean`} - \n\n  * `canEdit` {`boolean`} - \n\n  * `readOnly` {`boolean`} - \n\n  * `haxUIElement` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "page-flag.js",
+      "declarations": [
         {
-          "name": "mood",
-          "description": "`mood` {`string`} - \n\nProperty: mood\n\nDefault: null"
+          "kind": "class",
+          "description": "`page-flag`\n`visual flag for notes about a piece of content`",
+          "name": "PageFlag",
+          "members": [
+            {
+              "kind": "method",
+              "name": "toggleOpen",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleEdit",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleDelete",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleReply",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "description": "ensure that when we flip states here that we are actively switching the original level var"
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "haxinlineContextMenu",
+              "parameters": [
+                {
+                  "name": "ceMenu"
+                }
+              ],
+              "description": "add buttons when it is in context"
+            },
+            {
+              "kind": "method",
+              "name": "haxResolveThread",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the flag",
+              "default": "\"note\"",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "opened",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Opened state",
+              "default": "false",
+              "attribute": "opened",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"cyan\""
+            },
+            {
+              "kind": "field",
+              "name": "show",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "show",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_haxState",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "description": "Label for the flag",
+              "default": "\"note\"",
+              "fieldName": "label"
+            },
+            {
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Opened state",
+              "default": "false",
+              "fieldName": "opened"
+            },
+            {
+              "name": "show",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "show"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "page-flag",
+          "customElement": true
         },
         {
-          "name": "seed",
-          "description": "`seed` {`string`} - \n\nProperty: seed\n\nDefault: abc123"
+          "kind": "class",
+          "description": "",
+          "name": "pageFlagManagerEl",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "userDataUpdated",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "activeUser",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "allFlags",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
         },
         {
-          "name": "timestamp",
-          "description": "`timestamp` {`number`} - \n\nProperty: timestamp"
+          "kind": "variable",
+          "name": "pageFlagManager"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PageFlag",
+            "module": "page-flag.js"
+          }
         },
         {
-          "name": "reply",
-          "description": "`reply` {`number`} - \n\nProperty: reply\n\nDefault: 0"
+          "kind": "js",
+          "name": "PageFlag",
+          "declaration": {
+            "name": "PageFlag",
+            "module": "page-flag.js"
+          }
         },
         {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "pageFlagManagerEl",
+          "declaration": {
+            "name": "pageFlagManagerEl",
+            "module": "page-flag.js"
+          }
         },
         {
-          "name": "canEdit",
-          "description": "`canEdit` {`boolean`} - \n\nProperty: canEdit\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "pageFlagManagerEl",
+            "module": "page-flag.js"
+          }
         },
         {
-          "name": "readOnly",
-          "description": "`readOnly` {`boolean`} - \n\nProperty: readOnly\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "onpage-flag-comment-delete",
-          "description": "`page-flag-comment-delete` {`CustomEvent<this>`} - "
-        },
-        {
-          "name": "onpage-flag-comment-reply",
-          "description": "`page-flag-comment-reply` {`CustomEvent<this>`} - "
-        },
-        {
-          "name": "onpage-flag-comment-edit",
-          "description": "`page-flag-comment-edit` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "pageFlagManager",
+          "declaration": {
+            "name": "pageFlagManager",
+            "module": "page-flag.js"
+          }
         }
       ]
     },
     {
-      "name": "page-flag",
-      "description": "`page-flag`\n`visual flag for notes about a piece of content`\n\nAttributes:\n\n  * `label` {`string`} - Label for the flag\n\n  * `opened` {`boolean`} - Opened state\n\n  * `show` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `label` {`string`} - Label for the flag\n\n  * `opened` {`boolean`} - Opened state\n\n  * `show` {`boolean`} - \n\n  * `_haxState` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/page-flag-comment.js",
+      "declarations": [
         {
-          "name": "label",
-          "description": "`label` {`string`} - Label for the flag\n\nProperty: label\n\nDefault: note"
+          "kind": "class",
+          "description": "",
+          "name": "PageFlagComment",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "testCanUpdate",
+              "parameters": [
+                {
+                  "name": "user"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "deleteOp"
+            },
+            {
+              "kind": "method",
+              "name": "replyOp"
+            },
+            {
+              "kind": "method",
+              "name": "editOp"
+            },
+            {
+              "kind": "method",
+              "name": "emojiChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "mood",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "mood"
+            },
+            {
+              "kind": "field",
+              "name": "seed",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"abc123\"",
+              "attribute": "seed"
+            },
+            {
+              "kind": "field",
+              "name": "timestamp",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "timestamp"
+            },
+            {
+              "kind": "field",
+              "name": "reply",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "reply",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "editMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "edit-mode",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "canEdit",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "canEdit"
+            },
+            {
+              "kind": "field",
+              "name": "readOnly",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "readOnly"
+            },
+            {
+              "kind": "field",
+              "name": "haxUIElement",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "events": [
+            {
+              "name": "page-flag-comment-delete",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "page-flag-comment-reply",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "page-flag-comment-edit",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "seed",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"abc123\"",
+              "fieldName": "seed"
+            },
+            {
+              "name": "timestamp",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "timestamp"
+            },
+            {
+              "name": "mood",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "mood"
+            },
+            {
+              "name": "edit-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "editMode"
+            },
+            {
+              "name": "canEdit",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "canEdit"
+            },
+            {
+              "name": "reply",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "reply"
+            },
+            {
+              "name": "readOnly",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "readOnly"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PageFlagComment",
+          "declaration": {
+            "name": "PageFlagComment",
+            "module": "lib/page-flag-comment.js"
+          }
         },
         {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - Opened state\n\nProperty: opened\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "show",
-          "description": "`show` {`boolean`} - \n\nProperty: show\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: cyan"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PageFlagComment",
+            "module": "lib/page-flag-comment.js"
+          }
         }
       ]
-    },
-    {
-      "name": "page-flag-manager",
-      "description": "Properties:\n\n  * `windowControllers` - \n\n  * `activeUser` - \n\n  * `allFlags` {`never[]`} - ",
-      "attributes": []
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

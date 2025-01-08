@@ -1,47 +1,192 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "star-rating",
-      "description": "`star-rating`\n`Rating display widget or button to do rating`\n\nEvents:\n\n  * `star-rating-click` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `interactive` {`boolean`} - \n\n  * `_calPercent` {`number`} - \n\n  * `num-stars` {`number`} - \n\n  * `score` {`number`} - \n\n  * `possible` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `interactive` {`boolean`} - \n\n  * `_calPercent` {`number`} - \n\n  * `numStars` {`number`} - \n\n  * `score` {`number`} - \n\n  * `possible` {`number`} - \n\n  * `contrast` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "star-rating.js",
+      "declarations": [
         {
-          "name": "interactive",
-          "description": "`interactive` {`boolean`} - \n\nProperty: interactive",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`star-rating`\n`Rating display widget or button to do rating`",
+          "name": "StarRating",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "renderStar",
+              "parameters": [
+                {
+                  "name": "amount"
+                },
+                {
+                  "name": "interactive"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "interactiveEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_calPercent",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "_calPercent"
+            },
+            {
+              "kind": "field",
+              "name": "numStars",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "5",
+              "attribute": "num-stars"
+            },
+            {
+              "kind": "field",
+              "name": "score",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "10",
+              "attribute": "score"
+            },
+            {
+              "kind": "field",
+              "name": "possible",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "attribute": "possible"
+            },
+            {
+              "kind": "field",
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "contrast",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"yellow\""
+            },
+            {
+              "kind": "field",
+              "name": "interactive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "interactive",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "name": "star-rating-click",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "score",
+              "type": {
+                "text": "number"
+              },
+              "default": "10",
+              "fieldName": "score"
+            },
+            {
+              "name": "possible",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "fieldName": "possible"
+            },
+            {
+              "name": "interactive",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "interactive"
+            },
+            {
+              "name": "num-stars",
+              "type": {
+                "text": "number"
+              },
+              "default": "5",
+              "fieldName": "numStars"
+            },
+            {
+              "name": "_calPercent",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "_calPercent"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "star-rating",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "StarRating",
+            "module": "star-rating.js"
+          }
         },
         {
-          "name": "_calPercent",
-          "description": "`_calPercent` {`number`} - \n\nProperty: _calPercent\n\nDefault: 0"
-        },
-        {
-          "name": "num-stars",
-          "description": "`num-stars` {`number`} - \n\nProperty: numStars\n\nDefault: 5"
-        },
-        {
-          "name": "score",
-          "description": "`score` {`number`} - \n\nProperty: score\n\nDefault: 10"
-        },
-        {
-          "name": "possible",
-          "description": "`possible` {`number`} - \n\nProperty: possible\n\nDefault: 100"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: yellow"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "onstar-rating-click",
-          "description": "`star-rating-click` {`CustomEvent<{ value: any; }>`} - "
+          "kind": "js",
+          "name": "StarRating",
+          "declaration": {
+            "name": "StarRating",
+            "module": "star-rating.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

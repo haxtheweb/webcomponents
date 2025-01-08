@@ -1,22 +1,412 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "h5p-element",
-      "description": "`h5p-element`\n\nAttributes:\n\n  * `source` {`string`} - Source of the .h5p file\n\nProperties:\n\n  * `source` {`string`} - Source of the .h5p file\n\n  * `contentId` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "h5p-element.js",
+      "declarations": [
         {
-          "name": "source",
-          "description": "`source` {`string`} - Source of the .h5p file\n\nProperty: source"
+          "kind": "class",
+          "description": "`h5p-element`",
+          "name": "H5PElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "H5PDepsLoader",
+              "description": "load dependencies that need to be global in scope"
+            },
+            {
+              "kind": "method",
+              "name": "generateUUID"
+            },
+            {
+              "kind": "method",
+              "name": "_uuidPart"
+            },
+            {
+              "kind": "method",
+              "name": "h5pJqueryReady",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "h5pReadyCallback",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setupH5P",
+              "parameters": [
+                {
+                  "name": "id",
+                  "default": "1"
+                },
+                {
+                  "name": "displayOptions",
+                  "default": "{}"
+                }
+              ],
+              "description": "This does the heavy lifting to kick it off"
+            },
+            {
+              "kind": "field",
+              "name": "contentId"
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Source of the .h5p file",
+              "attribute": "source"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "description": "Source of the .h5p file",
+              "fieldName": "source"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "h5p-element",
+          "customElement": true
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "H5PStandalone",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getJSONPromise",
+              "parameters": [
+                {
+                  "name": "url"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "init",
+              "description": "Initialize the H5P"
+            },
+            {
+              "kind": "method",
+              "name": "checkIfPathIncludesVersion",
+              "description": "Check if the library folder include the version or not\nThis was changed at some point in H5P and we need to be backwards compatible",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "libraryPath",
+              "parameters": [
+                {
+                  "name": "library",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ],
+              "description": "return the path to a library",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "findMainLibrary",
+              "description": "FInd the main library for this H5P",
+              "return": {
+                "type": {
+                  "text": "Promise"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "findAllDependencies",
+              "description": "find all the libraries used in this H5P",
+              "return": {
+                "type": {
+                  "text": "Promise"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "loadDependencies",
+              "parameters": [
+                {
+                  "name": "toFind",
+                  "description": "list of libraries to find the dependencies of",
+                  "type": {
+                    "text": "string[]"
+                  }
+                },
+                {
+                  "name": "alreadyFound",
+                  "description": "the dependencies that have already been found",
+                  "type": {
+                    "text": "string[]"
+                  }
+                }
+              ],
+              "description": "searches through all supplied libraries for dependencies, this is recursive and repeats until all deep dependencies have been found"
+            },
+            {
+              "kind": "method",
+              "name": "findLibraryDependencies",
+              "parameters": [
+                {
+                  "name": "libraryName",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Loads a dependencies library.json and finds the libraries it dependson as well ass the JS and CSS it needs"
+            },
+            {
+              "kind": "method",
+              "name": "sortDependencies",
+              "parameters": [
+                {
+                  "name": "dependencies",
+                  "type": {
+                    "text": "object[]"
+                  }
+                }
+              ],
+              "description": "Resolves the library dependency tree and sorts the JS and CSS files into order",
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "default": "id"
+            },
+            {
+              "kind": "field",
+              "name": "path",
+              "default": "pathToContent"
+            },
+            {
+              "kind": "field",
+              "name": "displayOptions",
+              "default": "displayOptions"
+            }
+          ]
+        },
+        {
+          "kind": "class",
+          "description": "",
+          "name": "Toposort",
+          "members": [
+            {
+              "kind": "method",
+              "name": "add",
+              "parameters": [
+                {
+                  "name": "item",
+                  "description": "An dependent name. Must be an string and not empty",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "deps",
+                  "description": "An dependency or array of dependencies",
+                  "optional": true,
+                  "type": {
+                    "text": "String[]|String"
+                  }
+                }
+              ],
+              "description": "Adds dependency edges.",
+              "return": {
+                "type": {
+                  "text": "Toposort"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "sort",
+              "description": "Runs the toposorting and return an ordered array of strings",
+              "return": {
+                "type": {
+                  "text": "String[]"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "clear",
+              "description": "Clears edges",
+              "return": {
+                "type": {
+                  "text": "Toposort"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "edges",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "h5p-element",
+          "declaration": {
+            "name": "H5PElement",
+            "module": "h5p-element.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "H5PElement",
+          "declaration": {
+            "name": "H5PElement",
+            "module": "h5p-element.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "H5PStandalone",
+          "declaration": {
+            "name": "H5PStandalone",
+            "module": "h5p-element.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Toposort",
+          "declaration": {
+            "name": "Toposort",
+            "module": "h5p-element.js"
+          }
         }
       ]
     },
     {
-      "name": "h5p-wrapped-element",
-      "description": "Properties:\n\n  * `__editLink` {`string`} - \n\n  * `__editMode` {`boolean`} - \n\n  * `src` {`string`} - \n\n  * `__disposer` - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "lib/h5p-resizer.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/h5p-wrapped-element.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "H5pWrappedElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "src",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "__disposer"
+            },
+            {
+              "kind": "field",
+              "name": "__editLink",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__editMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "h5p-wrapped-element",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "h5p-wrapped-element",
+          "declaration": {
+            "name": "H5pWrappedElement",
+            "module": "lib/h5p-wrapped-element.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "H5pWrappedElement",
+          "declaration": {
+            "name": "H5pWrappedElement",
+            "module": "lib/h5p-wrapped-element.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

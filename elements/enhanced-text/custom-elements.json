@@ -1,55 +1,245 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "enhanced-text",
-      "description": "`enhanced-text`\n`take text and process it with various enhancements`\n\nAttributes:\n\n  * `loading` {`boolean`} - \n\n  * `auto` {`boolean`} - \n\n  * `fixation-point` {`number`} - \n\n  * `vide` {`boolean`} - \n\n  * `wikipedia` {`boolean`} - \n\n  * `haxcms-glossary` {`boolean`} - \n\n  * `haxcms-site-location` {`string`} - \n\n  * `haxcms-site` - \n\n  * `haxcms-mark-all` {`boolean`} - \n\nProperties:\n\n  * `loading` {`boolean`} - \n\n  * `auto` {`boolean`} - \n\n  * `fixationPoint` {`number`} - \n\n  * `vide` {`boolean`} - \n\n  * `wikipedia` {`boolean`} - \n\n  * `haxcmsGlossary` {`boolean`} - \n\n  * `haxcmsSiteLocation` {`string`} - \n\n  * `haxcmsSite` - \n\n  * `haxcmsMarkAll` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "enhanced-text.js",
+      "declarations": [
         {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`enhanced-text`\n`take text and process it with various enhancements`",
+          "name": "EnhancedText",
+          "members": [
+            {
+              "kind": "method",
+              "name": "applyTermFromList",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "enhance"
+            },
+            {
+              "kind": "method",
+              "name": "enahncedTextResponse",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "loading",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "auto",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "auto",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "fixationPoint",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "4",
+              "attribute": "fixation-point"
+            },
+            {
+              "kind": "field",
+              "name": "vide",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "vide",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "wikipedia",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "wikipedia",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "haxcmsGlossary",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "haxcms-glossary"
+            },
+            {
+              "kind": "field",
+              "name": "haxcmsSiteLocation",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "haxcms-site-location"
+            },
+            {
+              "kind": "field",
+              "name": "haxcmsSite",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "haxcms-site"
+            },
+            {
+              "kind": "field",
+              "name": "haxcmsMarkAll",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "haxcms-mark-all"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "wikipedia",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "wikipedia"
+            },
+            {
+              "name": "vide",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "vide"
+            },
+            {
+              "name": "fixation-point",
+              "type": {
+                "text": "number"
+              },
+              "default": "4",
+              "fieldName": "fixationPoint"
+            },
+            {
+              "name": "haxcms-glossary",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "haxcmsGlossary"
+            },
+            {
+              "name": "haxcms-site-location",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "haxcmsSiteLocation"
+            },
+            {
+              "name": "haxcms-site",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "haxcmsSite"
+            },
+            {
+              "name": "haxcms-mark-all",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "haxcmsMarkAll"
+            },
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "loading"
+            },
+            {
+              "name": "auto",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "auto"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "enhanced-text",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "EnhancedText",
+            "module": "enhanced-text.js"
+          }
         },
         {
-          "name": "auto",
-          "description": "`auto` {`boolean`} - \n\nProperty: auto\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "fixation-point",
-          "description": "`fixation-point` {`number`} - \n\nProperty: fixationPoint\n\nDefault: 4"
-        },
-        {
-          "name": "vide",
-          "description": "`vide` {`boolean`} - \n\nProperty: vide\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "wikipedia",
-          "description": "`wikipedia` {`boolean`} - \n\nProperty: wikipedia\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "haxcms-glossary",
-          "description": "`haxcms-glossary` {`boolean`} - \n\nProperty: haxcmsGlossary\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "haxcms-site-location",
-          "description": "`haxcms-site-location` {`string`} - \n\nProperty: haxcmsSiteLocation\n\nDefault: "
-        },
-        {
-          "name": "haxcms-site",
-          "description": "`haxcms-site` - \n\nProperty: haxcmsSite\n\nDefault: null"
-        },
-        {
-          "name": "haxcms-mark-all",
-          "description": "`haxcms-mark-all` {`boolean`} - \n\nProperty: haxcmsMarkAll\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "EnhancedText",
+          "declaration": {
+            "name": "EnhancedText",
+            "module": "enhanced-text.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,38 +1,128 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "person-testimonial",
-      "description": "`person-testimonial`\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image` {`string`} - The profile image to display to the left of the quote.\n\n  * `name` {`string`} - Name of the person making the quote.\n\n  * `position` {`string`} - The title / position of the person in question.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "person-testimonial.js",
+      "declarations": [
         {
-          "name": "described-by",
-          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
+          "kind": "class",
+          "description": "`person-testimonial`",
+          "name": "PersonTestimonial",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "describedBy",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aria-describedby data passed down to appropriate tag",
+              "attribute": "described-by"
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The profile image to display to the left of the quote.",
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name of the person making the quote.",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The title / position of the person in question.",
+              "attribute": "position"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "described-by",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aria-describedby data passed down to appropriate tag",
+              "fieldName": "describedBy"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "description": "The profile image to display to the left of the quote.",
+              "fieldName": "image"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name of the person making the quote.",
+              "fieldName": "name"
+            },
+            {
+              "name": "position",
+              "type": {
+                "text": "string"
+              },
+              "description": "The title / position of the person in question.",
+              "fieldName": "position"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "person-testimonial",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PersonTestimonial",
+            "module": "person-testimonial.js"
+          }
         },
         {
-          "name": "image",
-          "description": "`image` {`string`} - The profile image to display to the left of the quote.\n\nProperty: image"
-        },
-        {
-          "name": "name",
-          "description": "`name` {`string`} - Name of the person making the quote.\n\nProperty: name"
-        },
-        {
-          "name": "position",
-          "description": "`position` {`string`} - The title / position of the person in question.\n\nProperty: position"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "PersonTestimonial",
+          "declaration": {
+            "name": "PersonTestimonial",
+            "module": "person-testimonial.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

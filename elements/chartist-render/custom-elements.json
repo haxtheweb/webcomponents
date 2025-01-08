@@ -1,98 +1,1212 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "chartist-render",
-      "description": "Events:\n\n  * `chartist-render-ready` {`CustomEvent<this>`} - Fired once once chart is ready.\n\n  * `chart-data-changed` {`CustomEvent<this>`} - Fires when chartData changes\n\n  * `data-source-changed` {`CustomEvent<this>`} - Fires when data-source changes\n\n  * `data-changed` {`CustomEvent<this>`} - Fires when data changes\n\n  * `chartist-render-data` {`CustomEvent<any>`} - Fired when chart is rendering.\n\n  * `chartist-render-created` {`CustomEvent<any>`} - Fired once chart is created features are added.\n\n  * `chartist-render-draw` {`CustomEvent<any>`} - Fired as shapes are being drawn.\n\nAttributes:\n\n  * `chart-title` {`string`} - DEPRECATED: Use heading slot instead for progressive enhancement.\n\n  * `chart-data` {`any[]`} - Raw data pulled in from the csv file and converted to an array.\n\n  * `chart-desc` {`string`} - DEPRECATED: Use desc slot instead for progressive enhancement.\n\n  * `options` - The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.\n\n  * `pluginAxisTitle` - Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle\n\n  * `pluginPointLabels` - Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels\n\n  * `pluginFillDonutItems` {`any[]`} - Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut\n\n  * `id` {`string`} - The unique identifier of the chart.\n\n  * `type` {`string`} - The type of chart:bar, line, or pie\n\n  * `scale` {`string`} - The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```\n\n  * `responsive-options` {`any[]`} - The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`\n\n  * `data` - Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n     <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n     <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n   labels: [\"label 1\", \"label 2\", \"label 3\"]\n   series: [\n     [1,2,3],\n     [4,5,6]\n   ]\n}\n\n  * `data-source` {`string`} - Location of the CSV file.\n\n  * `show-table` {`boolean`} - The show data in table form as well? Default is false.\n\nProperties:\n\n  * `chartTitle` {`string`} - DEPRECATED: Use heading slot instead for progressive enhancement.\n\n  * `chartData` {`any[]`} - Raw data pulled in from the csv file and converted to an array.\n\n  * `chartDesc` {`string`} - DEPRECATED: Use desc slot instead for progressive enhancement.\n\n  * `options` - The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.\n\n  * `pluginAxisTitle` - Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle\n\n  * `pluginPointLabels` - Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels\n\n  * `pluginFillDonutItems` {`any[]`} - Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut\n\n  * `plugins` {`string[][]`} - an array of plugins to load as [ [classname,  relativePath] ]\n\n  * `observer` - mutation observer for table\n\n  * `fullOptions` - gets options plus plugins\n\n  * `windowControllers` - \n\n  * `id` {`string`} - The unique identifier of the chart.\n\n  * `type` {`string`} - The type of chart:bar, line, or pie\n\n  * `scale` {`string`} - The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```\n\n  * `responsiveOptions` {`any[]`} - The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`\n\n  * `data` - Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n     <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n     <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n   labels: [\"label 1\", \"label 2\", \"label 3\"]\n   series: [\n     [1,2,3],\n     [4,5,6]\n   ]\n}\n\n  * `dataSource` {`string`} - Location of the CSV file.\n\n  * `showTable` {`boolean`} - The show data in table form as well? Default is false.\n\n  * `__chartId` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "chartist-render.js",
+      "declarations": [
         {
-          "name": "chart-title",
-          "description": "`chart-title` {`string`} - DEPRECATED: Use heading slot instead for progressive enhancement.\n\nProperty: chartTitle"
+          "kind": "mixin",
+          "description": "",
+          "name": "ChartistRenderSuper",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "plugins",
+              "description": "an array of plugins to load as [ [classname,  relativePath] ]",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "observer",
+              "description": "mutation observer for table",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "makeChart",
+              "description": "Makes chart and returns the chart object."
+            },
+            {
+              "kind": "method",
+              "name": "_chartistLoaded",
+              "description": "determines if Chartist is ready"
+            },
+            {
+              "kind": "method",
+              "name": "_CSVtoArray",
+              "parameters": [
+                {
+                  "name": "text",
+                  "description": "csv",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data",
+              "return": {
+                "type": {
+                  "text": "array"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getUniqueId",
+              "parameters": [
+                {
+                  "name": "prefix",
+                  "description": "for unique ID",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Get unique ID from the chart",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fullOptions",
+              "description": "gets options plus plugins",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_getChart",
+              "description": "Renders chart when chartData changes"
+            },
+            {
+              "kind": "method",
+              "name": "_loadScripts",
+              "parameters": [
+                {
+                  "name": "classname",
+                  "description": "class to import from script",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "path",
+                  "description": "relative path of script",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "fnc",
+                  "default": "this._getChart",
+                  "description": "function to rerun when script is loaded",
+                  "optional": true,
+                  "type": {
+                    "text": "function"
+                  }
+                }
+              ],
+              "description": "uses ESGlobalBridge to load scripts"
+            },
+            {
+              "kind": "method",
+              "name": "_renderTable",
+              "description": "updates table when data changes"
+            },
+            {
+              "kind": "method",
+              "name": "_updateChartData",
+              "description": "updates chartData from data"
+            },
+            {
+              "kind": "method",
+              "name": "_updateData",
+              "parameters": [
+                {
+                  "name": "mutationsList"
+                },
+                {
+                  "name": "observer"
+                }
+              ],
+              "description": "Updates data from table"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The unique identifier of the chart.",
+              "default": "\"chart\"",
+              "attribute": "id"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The type of chart:bar, line, or pie",
+              "default": "\"bar\"",
+              "attribute": "type"
+            },
+            {
+              "kind": "field",
+              "name": "scale",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```",
+              "default": "\"ct-minor-seventh\"",
+              "attribute": "scale"
+            },
+            {
+              "kind": "field",
+              "name": "responsiveOptions",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n ['screen and (min-width: 641px) and (max-width: 1024px)', {\n   showPoint: false,\n   axisX: {\n     labelInterpolationFnc: function(value) {\n       // Will return Mon, Tue, Wed etc. on medium screens\n       return value.slice(0, 3);\n     }\n   }\n }],\n ['screen and (max-width: 640px)', {\n   showLine: false,\n   axisX: {\n     labelInterpolationFnc: function(value) {\n       // Will return M, T, W etc. on small screens\n       return value[0];\n     }\n   }\n }]\n];`",
+              "default": "[]",
+              "attribute": "responsive-options"
+            },
+            {
+              "kind": "field",
+              "name": "data",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n    <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n    <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n  labels: [\"label 1\", \"label 2\", \"label 3\"]\n  series: [\n    [1,2,3],\n    [4,5,6]\n  ]\n}",
+              "default": "[]",
+              "attribute": "data"
+            },
+            {
+              "kind": "field",
+              "name": "dataSource",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Location of the CSV file.",
+              "default": "\"\"",
+              "attribute": "data-source",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showTable",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The show data in table form as well? Default is false.",
+              "default": "false",
+              "attribute": "show-table"
+            },
+            {
+              "kind": "field",
+              "name": "__chartId"
+            },
+            {
+              "kind": "field",
+              "name": "chartTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "DEPRECATED: Use heading slot instead for progressive enhancement.",
+              "attribute": "chart-title"
+            },
+            {
+              "kind": "field",
+              "name": "chartData",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Raw data pulled in from the csv file and converted to an array.",
+              "attribute": "chart-data"
+            },
+            {
+              "kind": "field",
+              "name": "chartDesc",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "DEPRECATED: Use desc slot instead for progressive enhancement.",
+              "attribute": "chart-desc"
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.",
+              "attribute": "options"
+            },
+            {
+              "kind": "field",
+              "name": "pluginAxisTitle",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle",
+              "attribute": "pluginAxisTitle"
+            },
+            {
+              "kind": "field",
+              "name": "pluginPointLabels",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels",
+              "attribute": "pluginPointLabels"
+            },
+            {
+              "kind": "field",
+              "name": "pluginFillDonutItems",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut",
+              "attribute": "pluginFillDonutItems"
+            }
+          ],
+          "events": [
+            {
+              "name": "chart-data-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when chartData changes"
+            },
+            {
+              "name": "data-source-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when data-source changes"
+            },
+            {
+              "name": "data-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when data changes"
+            },
+            {
+              "name": "chartist-render-data",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when chart is rendering."
+            },
+            {
+              "name": "chartist-render-created",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired once chart is created features are added."
+            },
+            {
+              "name": "chartist-render-draw",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired as shapes are being drawn."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "chart-title",
+              "type": {
+                "text": "string"
+              },
+              "description": "DEPRECATED: Use heading slot instead for progressive enhancement.",
+              "fieldName": "chartTitle"
+            },
+            {
+              "name": "chart-data",
+              "type": {
+                "text": "array"
+              },
+              "description": "Raw data pulled in from the csv file and converted to an array.",
+              "fieldName": "chartData"
+            },
+            {
+              "name": "chart-desc",
+              "type": {
+                "text": "string"
+              },
+              "description": "DEPRECATED: Use desc slot instead for progressive enhancement.",
+              "fieldName": "chartDesc"
+            },
+            {
+              "name": "data",
+              "type": {
+                "text": "array"
+              },
+              "description": "Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n    <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n    <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n  labels: [\"label 1\", \"label 2\", \"label 3\"]\n  series: [\n    [1,2,3],\n    [4,5,6]\n  ]\n}",
+              "default": "[]",
+              "fieldName": "data"
+            },
+            {
+              "name": "data-source",
+              "type": {
+                "text": "string"
+              },
+              "description": "Location of the CSV file.",
+              "default": "\"\"",
+              "fieldName": "dataSource"
+            },
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "The unique identifier of the chart.",
+              "default": "\"chart\"",
+              "fieldName": "id"
+            },
+            {
+              "name": "options",
+              "type": {
+                "text": "object"
+              },
+              "description": "The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.",
+              "fieldName": "options"
+            },
+            {
+              "name": "pluginAxisTitle",
+              "type": {
+                "text": "object"
+              },
+              "description": "Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle",
+              "fieldName": "pluginAxisTitle"
+            },
+            {
+              "name": "pluginPointLabels",
+              "type": {
+                "text": "object"
+              },
+              "description": "Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels",
+              "fieldName": "pluginPointLabels"
+            },
+            {
+              "name": "pluginFillDonutItems",
+              "type": {
+                "text": "array"
+              },
+              "description": "Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut",
+              "fieldName": "pluginFillDonutItems"
+            },
+            {
+              "name": "responsive-options",
+              "type": {
+                "text": "array"
+              },
+              "description": "The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n ['screen and (min-width: 641px) and (max-width: 1024px)', {\n   showPoint: false,\n   axisX: {\n     labelInterpolationFnc: function(value) {\n       // Will return Mon, Tue, Wed etc. on medium screens\n       return value.slice(0, 3);\n     }\n   }\n }],\n ['screen and (max-width: 640px)', {\n   showLine: false,\n   axisX: {\n     labelInterpolationFnc: function(value) {\n       // Will return M, T, W etc. on small screens\n       return value[0];\n     }\n   }\n }]\n];`",
+              "default": "[]",
+              "fieldName": "responsiveOptions"
+            },
+            {
+              "name": "scale",
+              "type": {
+                "text": "string"
+              },
+              "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```",
+              "default": "\"ct-minor-seventh\"",
+              "fieldName": "scale"
+            },
+            {
+              "name": "show-table",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The show data in table form as well? Default is false.",
+              "default": "false",
+              "fieldName": "showTable"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "description": "The type of chart:bar, line, or pie",
+              "default": "\"bar\"",
+              "fieldName": "type"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
         },
         {
-          "name": "chart-data",
-          "description": "`chart-data` {`any[]`} - Raw data pulled in from the csv file and converted to an array.\n\nProperty: chartData"
+          "kind": "class",
+          "description": "",
+          "name": "ChartistRender",
+          "mixins": [
+            {
+              "name": "ChartistRenderSuper",
+              "module": "chartist-render.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "chartist-render",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "chart-title",
+              "type": {
+                "text": "string"
+              },
+              "description": "DEPRECATED: Use heading slot instead for progressive enhancement.",
+              "fieldName": "chartTitle",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "chart-data",
+              "type": {
+                "text": "array"
+              },
+              "description": "Raw data pulled in from the csv file and converted to an array.",
+              "fieldName": "chartData",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "chart-desc",
+              "type": {
+                "text": "string"
+              },
+              "description": "DEPRECATED: Use desc slot instead for progressive enhancement.",
+              "fieldName": "chartDesc",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "data",
+              "type": {
+                "text": "array"
+              },
+              "description": "Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n    <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n    <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n  labels: [\"label 1\", \"label 2\", \"label 3\"]\n  series: [\n    [1,2,3],\n    [4,5,6]\n  ]\n}",
+              "default": "[]",
+              "fieldName": "data",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "data-source",
+              "type": {
+                "text": "string"
+              },
+              "description": "Location of the CSV file.",
+              "default": "\"\"",
+              "fieldName": "dataSource",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "description": "The unique identifier of the chart.",
+              "default": "\"chart\"",
+              "fieldName": "id",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "options",
+              "type": {
+                "text": "object"
+              },
+              "description": "The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.",
+              "fieldName": "options",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "pluginAxisTitle",
+              "type": {
+                "text": "object"
+              },
+              "description": "Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle",
+              "fieldName": "pluginAxisTitle",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "pluginPointLabels",
+              "type": {
+                "text": "object"
+              },
+              "description": "Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels",
+              "fieldName": "pluginPointLabels",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "pluginFillDonutItems",
+              "type": {
+                "text": "array"
+              },
+              "description": "Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut",
+              "fieldName": "pluginFillDonutItems",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "responsive-options",
+              "type": {
+                "text": "array"
+              },
+              "description": "The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n ['screen and (min-width: 641px) and (max-width: 1024px)', {\n   showPoint: false,\n   axisX: {\n     labelInterpolationFnc: function(value) {\n       // Will return Mon, Tue, Wed etc. on medium screens\n       return value.slice(0, 3);\n     }\n   }\n }],\n ['screen and (max-width: 640px)', {\n   showLine: false,\n   axisX: {\n     labelInterpolationFnc: function(value) {\n       // Will return M, T, W etc. on small screens\n       return value[0];\n     }\n   }\n }]\n];`",
+              "default": "[]",
+              "fieldName": "responsiveOptions",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "scale",
+              "type": {
+                "text": "string"
+              },
+              "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```",
+              "default": "\"ct-minor-seventh\"",
+              "fieldName": "scale",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "show-table",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The show data in table form as well? Default is false.",
+              "default": "false",
+              "fieldName": "showTable",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "description": "The type of chart:bar, line, or pie",
+              "default": "\"bar\"",
+              "fieldName": "type",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "plugins",
+              "description": "an array of plugins to load as [ [classname,  relativePath] ]",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "observer",
+              "description": "mutation observer for table",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              },
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "makeChart",
+              "description": "Makes chart and returns the chart object.",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_chartistLoaded",
+              "description": "determines if Chartist is ready",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_CSVtoArray",
+              "parameters": [
+                {
+                  "name": "text",
+                  "description": "csv",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Mix of solutions from https://stackoverflow.com/questions/8493195/how-can-i-parse-a-csv-string-with-javascript-which-contains-comma-in-data",
+              "return": {
+                "type": {
+                  "text": "array"
+                }
+              },
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getUniqueId",
+              "parameters": [
+                {
+                  "name": "prefix",
+                  "description": "for unique ID",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Get unique ID from the chart",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              },
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fullOptions",
+              "description": "gets options plus plugins",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getChart",
+              "description": "Renders chart when chartData changes",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_loadScripts",
+              "parameters": [
+                {
+                  "name": "classname",
+                  "description": "class to import from script",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "path",
+                  "description": "relative path of script",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "fnc",
+                  "default": "this._getChart",
+                  "description": "function to rerun when script is loaded",
+                  "optional": true,
+                  "type": {
+                    "text": "function"
+                  }
+                }
+              ],
+              "description": "uses ESGlobalBridge to load scripts",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_renderTable",
+              "description": "updates table when data changes",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_updateChartData",
+              "description": "updates chartData from data",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_updateData",
+              "parameters": [
+                {
+                  "name": "mutationsList"
+                },
+                {
+                  "name": "observer"
+                }
+              ],
+              "description": "Updates data from table",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The unique identifier of the chart.",
+              "default": "\"chart\"",
+              "attribute": "id",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The type of chart:bar, line, or pie",
+              "default": "\"bar\"",
+              "attribute": "type",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "scale",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```",
+              "default": "\"ct-minor-seventh\"",
+              "attribute": "scale",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "responsiveOptions",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n ['screen and (min-width: 641px) and (max-width: 1024px)', {\n   showPoint: false,\n   axisX: {\n     labelInterpolationFnc: function(value) {\n       // Will return Mon, Tue, Wed etc. on medium screens\n       return value.slice(0, 3);\n     }\n   }\n }],\n ['screen and (max-width: 640px)', {\n   showLine: false,\n   axisX: {\n     labelInterpolationFnc: function(value) {\n       // Will return M, T, W etc. on small screens\n       return value[0];\n     }\n   }\n }]\n];`",
+              "default": "[]",
+              "attribute": "responsive-options",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "data",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n    <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n    <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n  labels: [\"label 1\", \"label 2\", \"label 3\"]\n  series: [\n    [1,2,3],\n    [4,5,6]\n  ]\n}",
+              "default": "[]",
+              "attribute": "data",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "dataSource",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Location of the CSV file.",
+              "default": "\"\"",
+              "attribute": "data-source",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "showTable",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "The show data in table form as well? Default is false.",
+              "default": "false",
+              "attribute": "show-table",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__chartId",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "chartTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "DEPRECATED: Use heading slot instead for progressive enhancement.",
+              "attribute": "chart-title",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "chartData",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Raw data pulled in from the csv file and converted to an array.",
+              "attribute": "chart-data",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "chartDesc",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "DEPRECATED: Use desc slot instead for progressive enhancement.",
+              "attribute": "chart-desc",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "options",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.",
+              "attribute": "options",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "pluginAxisTitle",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle",
+              "attribute": "pluginAxisTitle",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "pluginPointLabels",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels",
+              "attribute": "pluginPointLabels",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "pluginFillDonutItems",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut",
+              "attribute": "pluginFillDonutItems",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "chart-data-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when chartData changes",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "data-source-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when data-source changes",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "data-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when data changes",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "chartist-render-data",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired when chart is rendering.",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "chartist-render-created",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired once chart is created features are added.",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            },
+            {
+              "name": "chartist-render-draw",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fired as shapes are being drawn.",
+              "inheritedFrom": {
+                "name": "ChartistRenderSuper",
+                "module": "chartist-render.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ChartistRender",
+            "module": "chartist-render.js"
+          }
         },
         {
-          "name": "chart-desc",
-          "description": "`chart-desc` {`string`} - DEPRECATED: Use desc slot instead for progressive enhancement.\n\nProperty: chartDesc"
+          "kind": "js",
+          "name": "ChartistRender",
+          "declaration": {
+            "name": "ChartistRender",
+            "module": "chartist-render.js"
+          }
         },
         {
-          "name": "options",
-          "description": "`options` - The options available at  https://gionkunz.github.io/chartist-js/api-documentation.html.\n\nProperty: options"
-        },
-        {
-          "name": "pluginAxisTitle",
-          "description": "`pluginAxisTitle` - Optional data for chartist-plugin-axistitle,\nas in { axisX: { axisTitle: \"Time (mins)\", offset: { x: 0, y: 50 }, textAnchor: \"middle\" }, axisY: { axisTitle: \"Goals\", axisClass: \"ct-axis-title\", offset: { x: 0, y: -1 }, flipTitle: false } }\nSee https://github.com/alexstanbury/chartist-plugin-axistitle\n\nProperty: pluginAxisTitle"
-        },
-        {
-          "name": "pluginPointLabels",
-          "description": "`pluginPointLabels` - Optional data for chartist-plugin-pointlabels,\nas in { labelOffset: { x: 0, y: -10 }, textAnchor: 'middle', labelInterpolationFnc: Chartist.noop }\nSee https://github.com/gionkunz/chartist-plugin-pointlabels\n\nProperty: pluginPointLabels"
-        },
-        {
-          "name": "pluginFillDonutItems",
-          "description": "`pluginFillDonutItems` {`any[]`} - Optional array of items for chartist-plugin-filldonut,\nas in items : [{ class : '', id: '', content : 'fillText', position: 'center', offsetY: 0, offsetX: 0 }]\nSee https://github.com/moxx/chartist-plugin-fill-donut\n\nProperty: pluginFillDonutItems"
-        },
-        {
-          "name": "id",
-          "description": "`id` {`string`} - The unique identifier of the chart.\n\nProperty: id\n\nDefault: chart"
-        },
-        {
-          "name": "type",
-          "description": "`type` {`string`} - The type of chart:bar, line, or pie\n\nProperty: type\n\nDefault: bar"
-        },
-        {
-          "name": "scale",
-          "description": "`scale` {`string`} - The scale of the chart. (See https://gionkunz.github.io/chartist-js/api-documentation.html)```\nContainer class\tRatio\n.ct-square          1\n.ct-minor-second\t  15:16\n.ct-major-second\t  8:9\n.ct-minor-third\t    5:6\n.ct-major-third\t    4:5\n.ct-perfect-fourth\t3:4\n.ct-perfect-fifth\t  2:3\n.ct-minor-sixth\t    5:8\n.ct-golden-section\t1:1.618\n.ct-major-sixth\t    3:5\n.ct-minor-seventh\t  9:16\n.ct-major-seventh\t  8:15\n.ct-octave\t        1:2\n.ct-major-tenth\t    2:5\n.ct-major-eleventh\t3:8\n.ct-major-twelfth\t  1:3\n.ct-double-octave\t  1:4```\n\nProperty: scale\n\nDefault: ct-minor-seventh"
-        },
-        {
-          "name": "responsive-options",
-          "description": "`responsive-options` {`any[]`} - The responsive options.\n\nFrom https://gionkunz.github.io/chartist-js/api-documentation.html:\n\nIn addition to the regular options we specify responsive option \noverrides that will override the default configutation based \non the matching media queries.\n\n`var responsiveOptions = [\n  ['screen and (min-width: 641px) and (max-width: 1024px)', {\n    showPoint: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return Mon, Tue, Wed etc. on medium screens\n        return value.slice(0, 3);\n      }\n    }\n  }],\n  ['screen and (max-width: 640px)', {\n    showLine: false,\n    axisX: {\n      labelInterpolationFnc: function(value) {\n        // Will return M, T, W etc. on small screens\n        return value[0];\n      }\n    }\n  }]\n];`\n\nProperty: responsiveOptions\n\nDefault: "
-        },
-        {
-          "name": "data",
-          "description": "`data` - Use an accessible table in unnamed slot for maxium accessibility and SEO.\nAs table:\n<table>\n     <thead><tr><th scope=\"col\">label 1</th>...</tr></thead>\n     <tbody><tr><td>1</td>...</tr>...</tbody>\n</table>\n\nDEPRECATED Method:\n{\n   labels: [\"label 1\", \"label 2\", \"label 3\"]\n   series: [\n     [1,2,3],\n     [4,5,6]\n   ]\n}\n\nProperty: data\n\nDefault: "
-        },
-        {
-          "name": "data-source",
-          "description": "`data-source` {`string`} - Location of the CSV file.\n\nProperty: dataSource\n\nDefault: "
-        },
-        {
-          "name": "show-table",
-          "description": "`show-table` {`boolean`} - The show data in table form as well? Default is false.\n\nProperty: showTable\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onchartist-render-ready",
-          "description": "`chartist-render-ready` {`CustomEvent<this>`} - Fired once once chart is ready."
-        },
-        {
-          "name": "onchart-data-changed",
-          "description": "`chart-data-changed` {`CustomEvent<this>`} - Fires when chartData changes"
-        },
-        {
-          "name": "ondata-source-changed",
-          "description": "`data-source-changed` {`CustomEvent<this>`} - Fires when data-source changes"
-        },
-        {
-          "name": "ondata-changed",
-          "description": "`data-changed` {`CustomEvent<this>`} - Fires when data changes"
-        },
-        {
-          "name": "onchartist-render-data",
-          "description": "`chartist-render-data` {`CustomEvent<any>`} - Fired when chart is rendering."
-        },
-        {
-          "name": "onchartist-render-created",
-          "description": "`chartist-render-created` {`CustomEvent<any>`} - Fired once chart is created features are added."
-        },
-        {
-          "name": "onchartist-render-draw",
-          "description": "`chartist-render-draw` {`CustomEvent<any>`} - Fired as shapes are being drawn."
+          "kind": "js",
+          "name": "ChartistRenderSuper",
+          "declaration": {
+            "name": "ChartistRenderSuper",
+            "module": "chartist-render.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

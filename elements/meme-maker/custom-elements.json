@@ -1,42 +1,195 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "meme-maker",
-      "description": "`meme-maker`\nMeme all the things\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `image-url` {`string`} - url to the meme image\n\n  * `top-text` {`string`} - Text on top of the image.\n\n  * `bottom-text` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\n  * `crossorigin` {`boolean`} - \n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `imageUrl` {`string`} - url to the meme image\n\n  * `topText` {`string`} - Text on top of the image.\n\n  * `bottomText` {`string`} - Bottom text for the image.\n\n  * `alt` {`string`} - Alt data passed down to appropriate tag\n\n  * `crossorigin` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "meme-maker.js",
+      "declarations": [
         {
-          "name": "described-by",
-          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
+          "kind": "class",
+          "description": "`meme-maker`\nMeme all the things",
+          "name": "MemeMaker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxgizmoRegistration",
+              "parameters": [
+                {
+                  "name": "store"
+                }
+              ],
+              "description": "Supply translations for the UI elements of HAX in meme-maker"
+            },
+            {
+              "kind": "method",
+              "name": "haxprogressiveEnhancement",
+              "parameters": [
+                {
+                  "name": "el"
+                }
+              ],
+              "description": "Hook for HAX to support progressive enhancement and return a string\nto place in the slot of this tag for RSS, bots and legacy formats"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Alt data passed down to appropriate tag",
+              "default": "\"\"",
+              "attribute": "alt"
+            },
+            {
+              "kind": "field",
+              "name": "crossorigin",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "crossorigin"
+            },
+            {
+              "kind": "field",
+              "name": "describedBy",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aria-describedby data passed down to appropriate tag",
+              "attribute": "described-by"
+            },
+            {
+              "kind": "field",
+              "name": "imageUrl",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "url to the meme image",
+              "attribute": "image-url",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "topText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Text on top of the image.",
+              "attribute": "top-text",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "bottomText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Bottom text for the image.",
+              "attribute": "bottom-text",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "description": "Alt data passed down to appropriate tag",
+              "default": "\"\"",
+              "fieldName": "alt"
+            },
+            {
+              "name": "crossorigin",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "crossorigin"
+            },
+            {
+              "name": "described-by",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aria-describedby data passed down to appropriate tag",
+              "fieldName": "describedBy"
+            },
+            {
+              "name": "image-url",
+              "type": {
+                "text": "string"
+              },
+              "description": "url to the meme image",
+              "fieldName": "imageUrl"
+            },
+            {
+              "name": "top-text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Text on top of the image.",
+              "fieldName": "topText"
+            },
+            {
+              "name": "bottom-text",
+              "type": {
+                "text": "string"
+              },
+              "description": "Bottom text for the image.",
+              "fieldName": "bottomText"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "meme-maker",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MemeMaker",
+            "module": "meme-maker.js"
+          }
         },
         {
-          "name": "image-url",
-          "description": "`image-url` {`string`} - url to the meme image\n\nProperty: imageUrl"
-        },
-        {
-          "name": "top-text",
-          "description": "`top-text` {`string`} - Text on top of the image.\n\nProperty: topText"
-        },
-        {
-          "name": "bottom-text",
-          "description": "`bottom-text` {`string`} - Bottom text for the image.\n\nProperty: bottomText"
-        },
-        {
-          "name": "alt",
-          "description": "`alt` {`string`} - Alt data passed down to appropriate tag\n\nProperty: alt\n\nDefault: "
-        },
-        {
-          "name": "crossorigin",
-          "description": "`crossorigin` {`boolean`} - \n\nProperty: crossorigin\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "oni18n-manager-register-element",
-          "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
+          "kind": "js",
+          "name": "MemeMaker",
+          "declaration": {
+            "name": "MemeMaker",
+            "module": "meme-maker.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

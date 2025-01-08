@@ -1,29 +1,307 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "figure-carousel",
-      "description": "`figure-carousel`\n\nEvents:\n\n  * `selection-changed` {`CustomEvent<this>`} - Fires when selection update, so that parent radio group can listen for it.\n\nAttributes:\n\n  * `figures` {`any[]`} - \n\n  * `itemData` {`any[]`} - \n\n  * `selection` {`string`} - \n\nProperties:\n\n  * `figures` {`any[]`} - \n\n  * `itemData` {`any[]`} - \n\n  * `selection` {`string`} - \n\n  * `selectedIndex` {`number`} - index of selected item\n\n  * `__observer` - mutation observer for tabs\n\n  * `__allowNull` {`boolean`} - allows no item to be selected\n\n  * `__query` {`string`} - query selector for slotted children, can be overridden\n\n  * `__selected` {`string`} - attribute to apply to selected item, can be overridden\n\n  * `__selectEvent` {`string`} - name of event that selects item, can be overridden",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "radio-behaviors.js",
+      "declarations": [
         {
-          "name": "figures",
-          "description": "`figures` {`any[]`} - \n\nProperty: figures"
-        },
+          "kind": "mixin",
+          "description": "",
+          "name": "RadioBehaviors",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "selectedIndex",
+              "description": "index of selected item",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "__observer",
+              "description": "mutation observer for tabs",
+              "readonly": true,
+              "return": {
+                "type": {
+                  "text": "object"
+                }
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__allowNull",
+              "description": "allows no item to be selected",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "__query",
+              "description": "query selector for slotted children, can be overridden",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "__selected",
+              "description": "attribute to apply to selected item, can be overridden",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "__selectEvent",
+              "description": "name of event that selects item, can be overridden",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "selectItem",
+              "parameters": [
+                {
+                  "name": "item",
+                  "description": "id or node",
+                  "type": {
+                    "text": "string|object"
+                  }
+                }
+              ],
+              "description": "selects an item"
+            },
+            {
+              "kind": "method",
+              "name": "_getDataFromItems",
+              "description": "updates array of items",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getDataFromItem",
+              "parameters": [
+                {
+                  "name": "item"
+                },
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "selected"
+                }
+              ],
+              "description": "updates iitem for item array",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_generateUUID",
+              "description": "generates a unique id",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getItemById",
+              "parameters": [
+                {
+                  "name": "id",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "gets first non-disabled item that matches a given id",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getItemByIndex",
+              "parameters": [
+                {
+                  "name": "index",
+                  "type": {
+                    "text": "integer"
+                  }
+                }
+              ],
+              "description": "gets non-disabled item at a given index",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_getItemByQuery",
+              "parameters": [
+                {
+                  "name": "query",
+                  "default": "\"\"",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "gets first non-disabled item that matches query",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleItemChange",
+              "parameters": [
+                {
+                  "name": "mutationsList",
+                  "type": {
+                    "text": "*"
+                  }
+                },
+                {
+                  "name": "observer",
+                  "type": {
+                    "text": "*"
+                  }
+                }
+              ],
+              "description": "updates when slotted item changes"
+            },
+            {
+              "kind": "method",
+              "name": "_handleSelectItem",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "handles item selection event"
+            },
+            {
+              "kind": "method",
+              "name": "_handleSelectionChange",
+              "description": "shows or hides items based on selection"
+            },
+            {
+              "kind": "method",
+              "name": "_isItemSelected",
+              "parameters": [
+                {
+                  "name": "item",
+                  "type": {
+                    "text": "*"
+                  }
+                }
+              ],
+              "description": "checks to see if item is the selected item",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_setItemSelected",
+              "parameters": [
+                {
+                  "name": "item",
+                  "type": {
+                    "text": "*"
+                  }
+                }
+              ],
+              "description": "sets item __selected attribute"
+            },
+            {
+              "kind": "method",
+              "name": "_updateItemData",
+              "description": "updates items list and rerenders as needed;"
+            },
+            {
+              "kind": "field",
+              "name": "itemData",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "attribute": "itemData"
+            },
+            {
+              "kind": "field",
+              "name": "selection",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "selection"
+            }
+          ],
+          "events": [
+            {
+              "name": "selection-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Fires when selection update, so that parent radio group can listen for it."
+            }
+          ],
+          "attributes": [
+            {
+              "name": "itemData",
+              "type": {
+                "text": "array"
+              },
+              "fieldName": "itemData"
+            },
+            {
+              "name": "selection",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "selection"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
         {
-          "name": "itemData",
-          "description": "`itemData` {`any[]`} - \n\nProperty: itemData"
-        },
-        {
-          "name": "selection",
-          "description": "`selection` {`string`} - \n\nProperty: selection"
-        },
-        {
-          "name": "onselection-changed",
-          "description": "`selection-changed` {`CustomEvent<this>`} - Fires when selection update, so that parent radio group can listen for it."
+          "kind": "js",
+          "name": "RadioBehaviors",
+          "declaration": {
+            "name": "RadioBehaviors",
+            "module": "radio-behaviors.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

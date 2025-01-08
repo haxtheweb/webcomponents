@@ -10,9 +10,9 @@
     "@lit-labs/ssr": "^3.2.2",
     "lit": "^3.2.1",
     "node-html-parser": "^6.1.13",
-    "@haxtheweb/course-design": "^9.0.21",
-    "@haxtheweb/video-player": "^9.0.21",
-    "@haxtheweb/lrn-math": "^9.0.18",
-    "@haxtheweb/media-image": "^9.0.21"
+    "@haxtheweb/course-design": "^10.0.1",
+    "@haxtheweb/video-player": "^10.0.1",
+    "@haxtheweb/lrn-math": "^10.0.1",
+    "@haxtheweb/media-image": "^10.0.1"
   }
 }

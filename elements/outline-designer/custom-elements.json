@@ -1,69 +1,688 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "outline-designer",
-      "description": "`outline-designer`\n\nEvents:\n\n  * `simple-modal-hide` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `fidelity` {`string`} - \n\n  * `haxGizmos` {`any[]`} - \n\n  * `hideDelete` {`boolean`} - \n\n  * `activeItemForActions` {`string`} - \n\n  * `storeTools` {`boolean`} - \n\n  * `hide-content-ops` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `appReady` {`boolean`} - \n\n  * `eventData` - \n\n  * `activePreview` - \n\n  * `activePreviewIndex` {`number`} - \n\n  * `t` - \n\nProperties:\n\n  * `_blurBlock` {`boolean`} - \n\n  * `fidelity` {`string`} - \n\n  * `haxGizmos` {`any[]`} - \n\n  * `hideDelete` {`boolean`} - \n\n  * `activeItemForActions` {`string`} - \n\n  * `storeTools` {`boolean`} - \n\n  * `hideContentOps` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `appReady` {`boolean`} - \n\n  * `eventData` - \n\n  * `activeId` - \n\n  * `activePreview` - \n\n  * `activePreviewIndex` {`number`} - \n\n  * `t` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "outline-designer.js",
+      "declarations": [
         {
-          "name": "fidelity",
-          "description": "`fidelity` {`string`} - \n\nProperty: fidelity\n\nDefault: medium"
+          "kind": "class",
+          "description": "`outline-designer`",
+          "name": "OutlineDesigner",
+          "members": [
+            {
+              "kind": "method",
+              "name": "resetPopOver"
+            },
+            {
+              "kind": "method",
+              "name": "getSiteItems"
+            },
+            {
+              "kind": "method",
+              "name": "hasDeletedItems"
+            },
+            {
+              "kind": "method",
+              "name": "toggleDelete",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderActiveContentItem",
+              "parameters": [
+                {
+                  "name": "activeItemContentNode"
+                },
+                {
+                  "name": "targetNodeIndex"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setActiveItemForActions",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderItem",
+              "parameters": [
+                {
+                  "name": "item"
+                },
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "hasContents",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderItemContents",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "itemContentsOperations",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "prependNodeToContent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderNodeAsItem",
+              "parameters": [
+                {
+                  "name": "node"
+                },
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "item"
+                },
+                {
+                  "name": "indent"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setActivePreview",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "modifyContentAction",
+              "parameters": [
+                {
+                  "name": "e"
+                },
+                {
+                  "name": "item"
+                },
+                {
+                  "name": "action"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "pageBreakHere",
+              "parameters": [
+                {
+                  "name": "e"
+                },
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__syncUIAndDataModel"
+            },
+            {
+              "kind": "method",
+              "name": "collapseAll"
+            },
+            {
+              "kind": "method",
+              "name": "expandAll"
+            },
+            {
+              "kind": "method",
+              "name": "getItemParents",
+              "parameters": [
+                {
+                  "name": "activeItem"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getItemParentsCollapsed",
+              "parameters": [
+                {
+                  "name": "activeItem"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "isCollapsed",
+              "parameters": [
+                {
+                  "name": "itemId"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "hasChildren",
+              "parameters": [
+                {
+                  "name": "itemId"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "collapseExpand",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toggleContent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "editTitle",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "monitorTitle",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "monitorHeading",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "monitorEsc",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "blurTitle",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_mouseDownDrag",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_dragEnter",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Enter an element, meaning we've over it while dragging"
+            },
+            {
+              "kind": "method",
+              "name": "_dragLeave",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Leaving an element while dragging."
+            },
+            {
+              "kind": "method",
+              "name": "_dragEnd",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "When we end dragging this is the same as a drop event; ensure we remove the mover class."
+            },
+            {
+              "kind": "method",
+              "name": "_dragStart",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Drag start so we know what target to set"
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "addItemToTop"
+            },
+            {
+              "kind": "method",
+              "name": "getData",
+              "description": "Return all data associated with the current tree"
+            },
+            {
+              "kind": "method",
+              "name": "isLocked",
+              "parameters": [
+                {
+                  "name": "index"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "addNewItem",
+              "parameters": [
+                {
+                  "name": "targetItemIndex"
+                },
+                {
+                  "name": "duplicate",
+                  "default": "false"
+                },
+                {
+                  "name": "newItems",
+                  "default": "[]"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "recurseCopyChildren",
+              "parameters": [
+                {
+                  "name": "itemId"
+                },
+                {
+                  "name": "map"
+                },
+                {
+                  "name": "newItems"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "recurseAction",
+              "parameters": [
+                {
+                  "name": "itemId"
+                },
+                {
+                  "name": "action"
+                },
+                {
+                  "name": "value",
+                  "default": "true"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "itemOp",
+              "parameters": [
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "action"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_recurseUpdateIndent",
+              "parameters": [
+                {
+                  "name": "topItem",
+                  "default": "{ id: null }"
+                },
+                {
+                  "name": "incr",
+                  "default": "0"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_schemaOrderUpdate"
+            },
+            {
+              "kind": "field",
+              "name": "_blurBlock",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "fidelity",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"medium\"",
+              "attribute": "fidelity"
+            },
+            {
+              "kind": "field",
+              "name": "haxGizmos",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "haxGizmos"
+            },
+            {
+              "kind": "field",
+              "name": "hideDelete",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hideDelete"
+            },
+            {
+              "kind": "field",
+              "name": "activeItemForActions",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "activeItemForActions"
+            },
+            {
+              "kind": "field",
+              "name": "storeTools",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "storeTools"
+            },
+            {
+              "kind": "field",
+              "name": "hideContentOps",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hide-content-ops",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "items"
+            },
+            {
+              "kind": "field",
+              "name": "appReady",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "appReady"
+            },
+            {
+              "kind": "field",
+              "name": "eventData",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "attribute": "eventData"
+            },
+            {
+              "kind": "field",
+              "name": "activeId",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "activePreview",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "activePreview"
+            },
+            {
+              "kind": "field",
+              "name": "activePreviewIndex",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "-1",
+              "attribute": "activePreviewIndex"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ selectTarget: \"Select target\", importContentUnderThisPage: \"Import content under this page\", importThisContent: \"Import this content\", thisPage: \"this page\", newPage: \"New page\", copyOf: \"Copy of\", }"
+            }
+          ],
+          "events": [
+            {
+              "name": "simple-modal-hide",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "haxGizmos",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "haxGizmos"
+            },
+            {
+              "name": "hideDelete",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hideDelete"
+            },
+            {
+              "name": "activeItemForActions",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "activeItemForActions"
+            },
+            {
+              "name": "storeTools",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "storeTools"
+            },
+            {
+              "name": "eventData",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "fieldName": "eventData"
+            },
+            {
+              "name": "items",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "items"
+            },
+            {
+              "name": "appReady",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "appReady"
+            },
+            {
+              "name": "activePreview",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "activePreview"
+            },
+            {
+              "name": "activePreviewIndex",
+              "type": {
+                "text": "number"
+              },
+              "default": "-1",
+              "fieldName": "activePreviewIndex"
+            },
+            {
+              "name": "hide-content-ops",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hideContentOps"
+            },
+            {
+              "name": "fidelity",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"medium\"",
+              "fieldName": "fidelity"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "outline-designer",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "OutlineDesigner",
+          "declaration": {
+            "name": "OutlineDesigner",
+            "module": "outline-designer.js"
+          }
         },
         {
-          "name": "haxGizmos",
-          "description": "`haxGizmos` {`any[]`} - \n\nProperty: haxGizmos\n\nDefault: "
-        },
-        {
-          "name": "hideDelete",
-          "description": "`hideDelete` {`boolean`} - \n\nProperty: hideDelete\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "activeItemForActions",
-          "description": "`activeItemForActions` {`string`} - \n\nProperty: activeItemForActions\n\nDefault: null"
-        },
-        {
-          "name": "storeTools",
-          "description": "`storeTools` {`boolean`} - \n\nProperty: storeTools\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-content-ops",
-          "description": "`hide-content-ops` {`boolean`} - \n\nProperty: hideContentOps\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "items",
-          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
-        },
-        {
-          "name": "appReady",
-          "description": "`appReady` {`boolean`} - \n\nProperty: appReady\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "eventData",
-          "description": "`eventData` - \n\nProperty: eventData\n\nDefault: [object Object]"
-        },
-        {
-          "name": "activePreview",
-          "description": "`activePreview` - \n\nProperty: activePreview\n\nDefault: null"
-        },
-        {
-          "name": "activePreviewIndex",
-          "description": "`activePreviewIndex` {`number`} - \n\nProperty: activePreviewIndex\n\nDefault: -1"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "onsimple-modal-hide",
-          "description": "`simple-modal-hide` {`CustomEvent<{}>`} - "
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "OutlineDesigner",
+            "module": "outline-designer.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

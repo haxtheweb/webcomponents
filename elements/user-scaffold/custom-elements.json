@@ -1,12 +1,227 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "user-scaffold",
-      "description": "`user-scaffold`\n`memory and context to establish and maintain appropriate user scaffolding`\n\nProperties:\n\n  * `memory` - \n\n  * `debug` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `stMemory` - \n\n  * `ltMemory` - \n\n  * `action` - \n\n  * `data` - \n\n  * `active` {`boolean`} - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "user-scaffold.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "UserScaffoldInstance"
+        },
+        {
+          "kind": "class",
+          "description": "`user-scaffold`\n`memory and context to establish and maintain appropriate user scaffolding`",
+          "name": "UserScaffold",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "userActionArchitypes"
+            },
+            {
+              "kind": "method",
+              "name": "userKeyDownAction",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "userPasteAction",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "userDropAction",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "userDragAction",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "userMouseAction",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "incrementWriteMemory",
+              "parameters": [
+                {
+                  "name": "key"
+                },
+                {
+                  "name": "value"
+                },
+                {
+                  "name": "type",
+                  "default": "\"short\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "writeMemory",
+              "parameters": [
+                {
+                  "name": "key"
+                },
+                {
+                  "name": "value"
+                },
+                {
+                  "name": "type",
+                  "default": "\"short\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "deleteMemory",
+              "parameters": [
+                {
+                  "name": "key"
+                },
+                {
+                  "name": "type",
+                  "default": "\"short\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "readMemory",
+              "parameters": [
+                {
+                  "name": "key"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "memory",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "isBase64",
+              "parameters": [
+                {
+                  "name": "str"
+                }
+              ],
+              "description": "detect base64 object"
+            },
+            {
+              "kind": "field",
+              "name": "debug",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "stMemory",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ interactionDelay: 0, interactionCount: 0, }"
+            },
+            {
+              "kind": "field",
+              "name": "ltMemory"
+            },
+            {
+              "kind": "field",
+              "name": "action",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ type: null, architype: null, }"
+            },
+            {
+              "kind": "field",
+              "name": "data",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ raw: null, value: null, architype: null, }"
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "user-scaffold",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UserScaffoldInstance",
+          "declaration": {
+            "name": "UserScaffoldInstance",
+            "module": "user-scaffold.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "UserScaffold",
+          "declaration": {
+            "name": "UserScaffold",
+            "module": "user-scaffold.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "UserScaffold",
+            "module": "user-scaffold.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

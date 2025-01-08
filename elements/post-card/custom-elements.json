@@ -1,96 +1,418 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "post-card-photo",
-      "description": "Attributes:\n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "post-card.js",
+      "declarations": [
         {
-          "name": "image",
-          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: href"
+          "kind": "class",
+          "description": "",
+          "name": "PostCard",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ label: \"Post Card\", send: \"To\", receive: \"From\", }",
+              "attribute": "t"
+            },
+            {
+              "kind": "field",
+              "name": "photoSrc",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "photo-src",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "stampSrc",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "stamp-src",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "postMarkLocations",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"insert - locations - here\"",
+              "attribute": "post-mark-locations",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "to",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "to",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "from",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "from",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "message",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ label: \"Post Card\", send: \"To\", receive: \"From\", }",
+              "fieldName": "t"
+            },
+            {
+              "name": "to",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "to"
+            },
+            {
+              "name": "from",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "from"
+            },
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "message"
+            },
+            {
+              "name": "photo-src",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "photoSrc"
+            },
+            {
+              "name": "stamp-src",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "stampSrc"
+            },
+            {
+              "name": "post-mark-locations",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"insert - locations - here\"",
+              "fieldName": "postMarkLocations"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PostCard",
+          "declaration": {
+            "name": "PostCard",
+            "module": "post-card.js"
+          }
         },
         {
-          "name": "alt",
-          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PostCard",
+            "module": "post-card.js"
+          }
         }
       ]
     },
     {
-      "name": "post-card-postmark",
-      "description": "Attributes:\n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `locations` {`string`} - \n\nProperties:\n\n  * `image` {`string`} - \n\n  * `alt` {`string`} - \n\n  * `locations` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/PostCardPhoto.js",
+      "declarations": [
         {
-          "name": "image",
-          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: href"
+          "kind": "class",
+          "description": "",
+          "name": "PostCardPhoto",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"grey\""
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "alt",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "image"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "alt"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PostCardPhoto",
+          "declaration": {
+            "name": "PostCardPhoto",
+            "module": "lib/PostCardPhoto.js"
+          }
         },
         {
-          "name": "alt",
-          "description": "`alt` {`string`} - \n\nProperty: alt\n\nDefault: "
-        },
-        {
-          "name": "locations",
-          "description": "`locations` {`string`} - \n\nProperty: locations\n\nDefault: "
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PostCardPhoto",
+            "module": "lib/PostCardPhoto.js"
+          }
         }
       ]
     },
     {
-      "name": "post-card-stamp",
-      "description": "Attributes:\n\n  * `image` {`string`} - \n\nProperties:\n\n  * `image` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/PostCardPostmark.js",
+      "declarations": [
         {
-          "name": "image",
-          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: href"
+          "kind": "class",
+          "description": "",
+          "name": "PostCardPostmark",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "alt"
+            },
+            {
+              "kind": "field",
+              "name": "locations",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "locations"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "image"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "alt"
+            },
+            {
+              "name": "locations",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "locations"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PostCardPostmark",
+          "declaration": {
+            "name": "PostCardPostmark",
+            "module": "lib/PostCardPostmark.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PostCardPostmark",
+            "module": "lib/PostCardPostmark.js"
+          }
         }
       ]
     },
     {
-      "name": "post-card",
-      "description": "Events:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `to` {`string`} - \n\n  * `from` {`string`} - \n\n  * `message` {`string`} - \n\n  * `t` - \n\n  * `photo-src` {`string`} - \n\n  * `stamp-src` {`string`} - \n\n  * `post-mark-locations` {`string`} - \n\nProperties:\n\n  * `to` {`string`} - \n\n  * `from` {`string`} - \n\n  * `message` {`string`} - \n\n  * `t` - \n\n  * `photoSrc` {`string`} - \n\n  * `stampSrc` {`string`} - \n\n  * `postMarkLocations` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/PostCardStamp.js",
+      "declarations": [
         {
-          "name": "to",
-          "description": "`to` {`string`} - \n\nProperty: to"
+          "kind": "class",
+          "description": "",
+          "name": "PostCardStamp",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "image",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "image"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PostCardStamp",
+          "declaration": {
+            "name": "PostCardStamp",
+            "module": "lib/PostCardStamp.js"
+          }
         },
         {
-          "name": "from",
-          "description": "`from` {`string`} - \n\nProperty: from"
-        },
-        {
-          "name": "message",
-          "description": "`message` {`string`} - \n\nProperty: message"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "photo-src",
-          "description": "`photo-src` {`string`} - \n\nProperty: photoSrc\n\nDefault: href"
-        },
-        {
-          "name": "stamp-src",
-          "description": "`stamp-src` {`string`} - \n\nProperty: stampSrc\n\nDefault: href"
-        },
-        {
-          "name": "post-mark-locations",
-          "description": "`post-mark-locations` {`string`} - \n\nProperty: postMarkLocations\n\nDefault: insert - locations - here"
-        },
-        {
-          "name": "oni18n-manager-register-element",
-          "description": "`i18n-manager-register-element` {`CustomEvent<{ context: this; namespace: string; localesPath: string; updateCallback: string; locales: string[]; }>`} - "
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PostCardStamp",
+            "module": "lib/PostCardStamp.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,117 +1,204 @@
 {
-  "version": "experimental",
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "stop-note",
-      "path": "./stop-note.js",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "stop-note.js",
+      "declarations": [
         {
-          "name": "url",
-          "description": "url to additional resources",
-          "type": "string"
+          "kind": "variable",
+          "name": "StopNoteIconList",
+          "type": {
+            "text": "object"
+          },
+          "default": "{ stop: \"stopnoteicons:stop-icon\", warning: \"stopnoteicons:warning-icon\", success: \"stopnoteicons:confirm-icon\", info: \"stopnoteicons:book-icon\", }",
+          "description": "`stop-note`\n`A note that directs people to an action item of different warning levels`"
         },
         {
-          "name": "title",
-          "description": "Title Message",
-          "type": "string",
-          "default": "\"\""
-        },
-        {
-          "name": "status",
-          "type": "string"
-        },
-        {
-          "name": "icon",
-          "description": "Icon selected",
-          "type": "string",
-          "default": "\"stopnoteicons:stop-icon\""
-        },
-        {
-          "name": "t",
-          "type": "object",
-          "default": "{\"moreInformation\":\"More Information\"}"
-        },
-        {
-          "name": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
-        },
-        {
-          "name": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
+          "kind": "class",
+          "description": "",
+          "name": "StopNote",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "Set a flag to test if we should block link clicking on the entire card\notherwise when editing in hax you can't actually edit it bc its all clickable.\nif editMode goes off this helps ensure we also become clickable again"
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "double-check that we are set to inactivate click handlers\nthis is for when activated in a duplicate / adding new content state"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "url to additional resources",
+              "default": "null",
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Title Message",
+              "default": "\"\"",
+              "attribute": "title",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "status",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"grey\""
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon selected",
+              "default": "\"stopnoteicons:stop-icon\"",
+              "attribute": "icon",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ moreInformation: \"More Information\", }"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Title Message",
+              "default": "\"\"",
+              "fieldName": "title"
+            },
+            {
+              "name": "url",
+              "type": {
+                "text": "null"
+              },
+              "description": "url to additional resources",
+              "default": "null",
+              "fieldName": "url"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "description": "Icon selected",
+              "default": "\"stopnoteicons:stop-icon\"",
+              "fieldName": "icon"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "status"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
+              "name": "remoteLinkBehavior",
+              "package": "@haxtheweb/utils/lib/remoteLinkBehavior.js"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
         }
       ],
-      "properties": [
+      "exports": [
         {
-          "name": "url",
-          "attribute": "url",
-          "description": "url to additional resources",
-          "type": "string"
+          "kind": "js",
+          "name": "StopNoteIconList",
+          "declaration": {
+            "name": "StopNoteIconList",
+            "module": "stop-note.js"
+          }
         },
         {
-          "name": "title",
-          "attribute": "title",
-          "description": "Title Message",
-          "type": "string",
-          "default": "\"\""
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "StopNote",
+            "module": "stop-note.js"
+          }
         },
         {
-          "name": "status",
-          "attribute": "status",
-          "type": "string"
-        },
-        {
-          "name": "icon",
-          "attribute": "icon",
-          "description": "Icon selected",
-          "type": "string",
-          "default": "\"stopnoteicons:stop-icon\""
-        },
-        {
-          "name": "t",
-          "attribute": "t",
-          "type": "object",
-          "default": "{\"moreInformation\":\"More Information\"}"
-        },
-        {
-          "name": "sm",
-          "type": "number",
-          "default": "768"
-        },
-        {
-          "name": "md",
-          "type": "number",
-          "default": "1080"
-        },
-        {
-          "name": "isSafari",
-          "attribute": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "accentColor",
-          "attribute": "accent-color",
-          "description": "a selected accent-\"color\": grey, red, pink, purple, etc.",
-          "type": "string",
-          "default": "\"grey\""
-        },
-        {
-          "name": "dark",
-          "attribute": "dark",
-          "description": "make the default theme dark?",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "colors",
-          "default": "\"colors\""
+          "kind": "js",
+          "name": "StopNote",
+          "declaration": {
+            "name": "StopNote",
+            "module": "stop-note.js"
+          }
         }
       ]
     }

@@ -1,55 +1,95 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "example-haxcms-theme",
-      "description": "`example-haxcms-theme`\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\nAttributes:\n\n  * `active-manifest-index` {`number`} - Current array index of the active page that's been loaded.\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `edit-mode` {`boolean`} - Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `content-container` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\nProperties:\n\n  * `activeManifestIndex` {`number`} - Current array index of the active page that's been loaded.\n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `editMode` {`boolean`} - Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` {`never[]`} - \n\n  * `HAXCMSThemeWiring` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "example-haxcms-theme.js",
+      "declarations": [
         {
-          "name": "active-manifest-index",
-          "description": "`active-manifest-index` {`number`} - Current array index of the active page that's been loaded.\n\nProperty: activeManifestIndex"
+          "kind": "class",
+          "description": "`example-haxcms-theme`",
+          "name": "ExampleHaxcmsTheme",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "editMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.",
+              "attribute": "editMode"
+            },
+            {
+              "kind": "field",
+              "name": "activeManifestIndex",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Current array index of the active page that's been loaded.",
+              "attribute": "activeManifestIndex"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "editMode",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.",
+              "fieldName": "editMode"
+            },
+            {
+              "name": "activeManifestIndex",
+              "type": {
+                "text": "number"
+              },
+              "description": "Current array index of the active page that's been loaded.",
+              "fieldName": "activeManifestIndex"
+            }
+          ],
+          "superclass": {
+            "name": "HAXCMSPolymerElementTheme",
+            "package": "@haxtheweb/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js"
+          },
+          "tagName": "example-haxcms-theme",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ExampleHaxcmsTheme",
+            "module": "example-haxcms-theme.js"
+          }
         },
         {
-          "name": "hex-color",
-          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
-        },
-        {
-          "name": "color",
-          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
-        },
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - Edit mode which will be updated whenever HAXcms store\nhas been updated. It's also reflected to attribute which\nis a Polymer convention to allow it to be leveraged in\nCSS styling.\n\nProperty: editMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "content-container",
-          "description": "`content-container` - DOM node that wraps the slot\n\nProperty: contentContainer"
-        },
-        {
-          "name": "_location",
-          "description": "`_location` - location as object\n\nProperty: _location"
-        },
-        {
-          "name": "onresize",
-          "description": "`resize` {`Event`} - "
-        },
-        {
-          "name": "onpopstate",
-          "description": "`popstate` {`PopStateEvent`} - "
-        },
-        {
-          "name": "onhaxcms-active-item-changed",
-          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
+          "kind": "js",
+          "name": "ExampleHaxcmsTheme",
+          "declaration": {
+            "name": "ExampleHaxcmsTheme",
+            "module": "example-haxcms-theme.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

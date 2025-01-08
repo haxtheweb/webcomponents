@@ -1,401 +1,1991 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "map-menu-builder",
-      "description": "Attributes:\n\n  * `selected` {`string`} - \n\n  * `edit-controls` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `depth-count` {`number`} - \n\n  * `max-depth` {`number`} - \n\n  * `is-flex` {`boolean`} - \n\n  * `is-horizontal` {`boolean`} - \n\nProperties:\n\n  * `selected` {`string`} - \n\n  * `editControls` {`boolean`} - \n\n  * `items` {`any[]`} - \n\n  * `depthCount` {`number`} - \n\n  * `maxDepth` {`number`} - \n\n  * `isFlex` {`boolean`} - \n\n  * `isNested` {`boolean`} - \n\n  * `isHorizontal` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "map-menu.js",
+      "declarations": [
         {
-          "name": "selected",
-          "description": "`selected` {`string`} - \n\nProperty: selected"
+          "kind": "class",
+          "description": "`map-menu`\n`A series of elements that generate a hierarchical menu`",
+          "name": "MapMenu",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "__openChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Listen for submenu collapse events and close all other submenus"
+            },
+            {
+              "kind": "method",
+              "name": "__activeItemHandler",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_mapMeuItemHiddenCheckHandler",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "refreshActiveChildren",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                },
+                {
+                  "name": "activeItem",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Set and unset active properties on children"
+            },
+            {
+              "kind": "method",
+              "name": "__scrollHandler",
+              "parameters": [
+                {
+                  "name": "target"
+                },
+                {
+                  "name": "options"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_manifestChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_dataChanged",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ],
+              "description": "Convert data from a linear array\nto a nested array for template rendering"
+            },
+            {
+              "kind": "method",
+              "name": "_setChildren",
+              "parameters": [
+                {
+                  "name": "item",
+                  "description": "item of an array to search on. Passed by reference.",
+                  "type": {
+                    "text": "object"
+                  }
+                },
+                {
+                  "name": "data",
+                  "description": "linear array of the data set.",
+                  "type": {
+                    "text": "array"
+                  }
+                }
+              ],
+              "description": "Recursively search through a data to find children\nof a specified item.",
+              "return": {
+                "type": {
+                  "text": "void"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__hasChildren",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ],
+              "description": "Determine if a menu item has children"
+            },
+            {
+              "kind": "method",
+              "name": "__linkClickedHandler",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "asdf"
+            },
+            {
+              "kind": "method",
+              "name": "__toggleUpdated",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "When a user clicks the toggle button to collapse or\nexpand a submenu, this event gets triggered after\nthe animation has been triggered"
+            },
+            {
+              "kind": "method",
+              "name": "__isInViewport",
+              "parameters": [
+                {
+                  "name": "element"
+                }
+              ],
+              "description": "Find out if"
+            },
+            {
+              "kind": "method",
+              "name": "__getScrollParent",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Get scroll parent"
+            },
+            {
+              "kind": "method",
+              "name": "__updateActiveIndicator",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "hidden",
+                  "default": "false"
+                }
+              ],
+              "description": "Move the highlight widget over active element"
+            },
+            {
+              "kind": "method",
+              "name": "__parentsHidden",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Find out if any parents of the item are collapsed"
+            },
+            {
+              "kind": "field",
+              "name": "editControls",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "edit-controls"
+            },
+            {
+              "kind": "field",
+              "name": "isFlex",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "is-flex"
+            },
+            {
+              "kind": "field",
+              "name": "isHorizontal",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "is-horizontal",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "maxDepth",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "5",
+              "attribute": "max-depth"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Content outline\"",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "data",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "data"
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "items"
+            },
+            {
+              "kind": "field",
+              "name": "autoScroll",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Auto scroll an active element if not in view",
+              "default": "false",
+              "attribute": "auto-scroll"
+            },
+            {
+              "kind": "field",
+              "name": "activeIndicator",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Show active indicator animation",
+              "default": "false",
+              "attribute": "active-indicator",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "manifest",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Support for JSON Outline Schema manifest format",
+              "attribute": "manifest"
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Current selected item.",
+              "attribute": "selected"
+            },
+            {
+              "kind": "field",
+              "name": "activeItem",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "attribute": "activeItem"
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "selected",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "edit-controls",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "editControls"
+            },
+            {
+              "name": "is-flex",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "isFlex"
+            },
+            {
+              "name": "is-horizontal",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "isHorizontal"
+            },
+            {
+              "name": "max-depth",
+              "type": {
+                "text": "number"
+              },
+              "default": "5",
+              "fieldName": "maxDepth"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Content outline\"",
+              "fieldName": "title"
+            },
+            {
+              "name": "data",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "data"
+            },
+            {
+              "name": "manifest",
+              "type": {
+                "text": "object"
+              },
+              "description": "Support for JSON Outline Schema manifest format",
+              "fieldName": "manifest"
+            },
+            {
+              "name": "items",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "items"
+            },
+            {
+              "name": "selected",
+              "type": {
+                "text": "string"
+              },
+              "description": "Current selected item.",
+              "fieldName": "selected"
+            },
+            {
+              "name": "activeItem",
+              "type": {
+                "text": "object"
+              },
+              "fieldName": "activeItem"
+            },
+            {
+              "name": "auto-scroll",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Auto scroll an active element if not in view",
+              "default": "false",
+              "fieldName": "autoScroll"
+            },
+            {
+              "name": "active-indicator",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Show active indicator animation",
+              "default": "false",
+              "fieldName": "activeIndicator"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "map-menu",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MapMenu",
+            "module": "map-menu.js"
+          }
         },
         {
-          "name": "edit-controls",
-          "description": "`edit-controls` {`boolean`} - \n\nProperty: editControls\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "items",
-          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
-        },
-        {
-          "name": "depth-count",
-          "description": "`depth-count` {`number`} - \n\nProperty: depthCount\n\nDefault: 1"
-        },
-        {
-          "name": "max-depth",
-          "description": "`max-depth` {`number`} - \n\nProperty: maxDepth\n\nDefault: 5"
-        },
-        {
-          "name": "is-flex",
-          "description": "`is-flex` {`boolean`} - \n\nProperty: isFlex\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-horizontal",
-          "description": "`is-horizontal` {`boolean`} - \n\nProperty: isHorizontal\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "MapMenu",
+          "declaration": {
+            "name": "MapMenu",
+            "module": "map-menu.js"
+          }
         }
       ]
     },
     {
-      "name": "map-menu-container",
-      "description": "`map-menu`\nA LRN element\n\n",
-      "attributes": []
-    },
-    {
-      "name": "map-menu-header",
-      "description": "Events:\n\n  * `toggle-header` {`CustomEvent<boolean>`} - \n\n  * `active-item` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `__collapseIcon` {`string`} - \n\n  * `__collapseAria` {`string`} - \n\n  * `edit-controls` {`boolean`} - \n\n  * `icon-label` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `url` {`string`} - \n\n  * `status` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `active` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `hide-in-menu` {`boolean`} - \n\n  * `hovered` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `itemtitle` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `__collapseIcon` {`string`} - \n\n  * `__collapseAria` {`string`} - \n\n  * `editControls` {`boolean`} - \n\n  * `iconLabel` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `url` {`string`} - \n\n  * `status` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `active` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `hideInMenu` {`boolean`} - \n\n  * `hovered` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `itemtitle` {`string`} - \n\n  * `t` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/map-menu-builder.js",
+      "declarations": [
         {
-          "name": "id",
-          "description": "`id` {`string`} - \n\nProperty: id"
+          "kind": "class",
+          "description": "",
+          "name": "MapMenuBuilder",
+          "members": [
+            {
+              "kind": "method",
+              "name": "hideInMenuStatus",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getPublishedStatus",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "editControls",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "edit-controls"
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "items"
+            },
+            {
+              "kind": "field",
+              "name": "depthCount",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "attribute": "depth-count"
+            },
+            {
+              "kind": "field",
+              "name": "maxDepth",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "5",
+              "attribute": "max-depth",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "isFlex",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "is-flex"
+            },
+            {
+              "kind": "field",
+              "name": "isNested",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "isHorizontal",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "is-horizontal"
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "selected"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "items",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "items"
+            },
+            {
+              "name": "selected",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "selected"
+            },
+            {
+              "name": "edit-controls",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "editControls"
+            },
+            {
+              "name": "max-depth",
+              "type": {
+                "text": "number"
+              },
+              "default": "5",
+              "fieldName": "maxDepth"
+            },
+            {
+              "name": "depth-count",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "fieldName": "depthCount"
+            },
+            {
+              "name": "is-flex",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "isFlex"
+            },
+            {
+              "name": "is-horizontal",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "isHorizontal"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MapMenuBuilder",
+            "module": "lib/map-menu-builder.js"
+          }
         },
         {
-          "name": "selected",
-          "description": "`selected` {`string`} - \n\nProperty: selected"
-        },
-        {
-          "name": "__collapseIcon",
-          "description": "`__collapseIcon` {`string`} - \n\nProperty: __collapseIcon"
-        },
-        {
-          "name": "__collapseAria",
-          "description": "`__collapseAria` {`string`} - \n\nProperty: __collapseAria"
-        },
-        {
-          "name": "edit-controls",
-          "description": "`edit-controls` {`boolean`} - \n\nProperty: editControls\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "icon-label",
-          "description": "`icon-label` {`string`} - \n\nProperty: iconLabel\n\nDefault: null"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: null"
-        },
-        {
-          "name": "url",
-          "description": "`url` {`string`} - \n\nProperty: url\n\nDefault: "
-        },
-        {
-          "name": "status",
-          "description": "`status` {`string`} - \n\nProperty: status\n\nDefault: "
-        },
-        {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "active",
-          "description": "`active` {`boolean`} - \n\nProperty: active\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "published",
-          "description": "`published` {`boolean`} - \n\nProperty: published\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-in-menu",
-          "description": "`hide-in-menu` {`boolean`} - \n\nProperty: hideInMenu\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hovered",
-          "description": "`hovered` {`boolean`} - \n\nProperty: hovered\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "locked",
-          "description": "`locked` {`boolean`} - \n\nProperty: locked\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "itemtitle",
-          "description": "`itemtitle` {`string`} - \n\nProperty: itemtitle\n\nDefault: "
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "ontoggle-header",
-          "description": "`toggle-header` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onactive-item",
-          "description": "`active-item` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "MapMenuBuilder",
+          "declaration": {
+            "name": "MapMenuBuilder",
+            "module": "lib/map-menu-builder.js"
+          }
         }
       ]
     },
     {
-      "name": "map-menu-item",
-      "description": "Events:\n\n  * `active-item` {`CustomEvent<this>`} - \n\n  * `link-clicked` {`CustomEvent<{ id: any; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `edit-controls` {`boolean`} - \n\n  * `is-nested` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `icon-label` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `url` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `hovered` {`boolean`} - \n\n  * `hide-in-menu` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `editControls` {`boolean`} - \n\n  * `isNested` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `iconLabel` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `url` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `hovered` {`boolean`} - \n\n  * `hideInMenu` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `locked` {`boolean`} - \n\n  * `status` {`string`} - \n\n  * `t` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/map-menu-container.js",
+      "declarations": [
         {
-          "name": "id",
-          "description": "`id` {`string`} - \n\nProperty: id"
+          "kind": "class",
+          "description": "`map-menu`\nA LRN element",
+          "name": "MapMenuContainer",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MapMenuContainer",
+            "module": "lib/map-menu-container.js"
+          }
         },
         {
-          "name": "selected",
-          "description": "`selected` {`string`} - \n\nProperty: selected"
-        },
-        {
-          "name": "edit-controls",
-          "description": "`edit-controls` {`boolean`} - \n\nProperty: editControls\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-nested",
-          "description": "`is-nested` {`boolean`} - \n\nProperty: isNested\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: null"
-        },
-        {
-          "name": "icon-label",
-          "description": "`icon-label` {`string`} - \n\nProperty: iconLabel\n\nDefault: null"
-        },
-        {
-          "name": "itemtitle",
-          "description": "`itemtitle` {`string`} - \n\nProperty: itemtitle\n\nDefault: "
-        },
-        {
-          "name": "url",
-          "description": "`url` {`string`} - \n\nProperty: url\n\nDefault: "
-        },
-        {
-          "name": "active",
-          "description": "`active` {`boolean`} - \n\nProperty: active\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hovered",
-          "description": "`hovered` {`boolean`} - \n\nProperty: hovered\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-in-menu",
-          "description": "`hide-in-menu` {`boolean`} - \n\nProperty: hideInMenu\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "published",
-          "description": "`published` {`boolean`} - \n\nProperty: published\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "locked",
-          "description": "`locked` {`boolean`} - \n\nProperty: locked\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "status",
-          "description": "`status` {`string`} - \n\nProperty: status\n\nDefault: "
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "onactive-item",
-          "description": "`active-item` {`CustomEvent<this>`} - "
-        },
-        {
-          "name": "onlink-clicked",
-          "description": "`link-clicked` {`CustomEvent<{ id: any; }>`} - "
+          "kind": "js",
+          "name": "MapMenuContainer",
+          "declaration": {
+            "name": "MapMenuContainer",
+            "module": "lib/map-menu-container.js"
+          }
         }
       ]
     },
     {
-      "name": "map-menu-submenu",
-      "description": "Events:\n\n  * `opened-changed` {`CustomEvent<any>`} - \n\n  * `map-meu-item-hidden-check` {`CustomEvent<any>`} - \n\n  * `toggle-updated` {`CustomEvent<{ opened: boolean; }>`} - \n\nAttributes:\n\n  * `id` {`string`} - \n\n  * `url` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `edit-controls` {`boolean`} - \n\n  * `icon-label` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `is-flex` {`boolean`} - \n\n  * `is-nested` {`boolean`} - \n\n  * `is-horizontal` {`boolean`} - \n\n  * `expand-children` {`boolean`} - \n\n  * `hovered` {`boolean`} - \n\n  * `active` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `status` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `locked` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `hide-in-menu` {`boolean`} - \n\n  * `icon` {`string`} - \n\nProperties:\n\n  * `id` {`string`} - \n\n  * `url` {`string`} - \n\n  * `selected` {`string`} - \n\n  * `editControls` {`boolean`} - \n\n  * `iconLabel` {`string`} - \n\n  * `opened` {`boolean`} - \n\n  * `collapsable` {`boolean`} - \n\n  * `isFlex` {`boolean`} - \n\n  * `isNested` {`boolean`} - \n\n  * `isHorizontal` {`boolean`} - \n\n  * `expandChildren` {`boolean`} - \n\n  * `hovered` {`boolean`} - \n\n  * `active` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `status` {`string`} - \n\n  * `itemtitle` {`string`} - \n\n  * `locked` {`boolean`} - \n\n  * `published` {`boolean`} - \n\n  * `hideInMenu` {`boolean`} - \n\n  * `icon` {`string`} - \n\n  * `__icon` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/map-menu-header.js",
+      "declarations": [
         {
-          "name": "id",
-          "description": "`id` {`string`} - \n\nProperty: id"
+          "kind": "class",
+          "description": "",
+          "name": "MapMenuHeader",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_openedChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__selectedChanged",
+              "parameters": [
+                {
+                  "name": "selected"
+                },
+                {
+                  "name": "id"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__tap",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__keypress",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__toggleEventHandler",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "editControls",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "edit-controls"
+            },
+            {
+              "kind": "field",
+              "name": "isFlex",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "is-flex"
+            },
+            {
+              "kind": "field",
+              "name": "iconLabel",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "icon-label"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "icon",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "status",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "opened",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "opened",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "active",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "published",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "published",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hideInMenu",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hide-in-menu",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hovered",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hovered",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "locked",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "locked"
+            },
+            {
+              "kind": "field",
+              "name": "itemtitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "itemtitle"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ pageIsUnpublished: \"Page is unpublished\", }"
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "id",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "selected",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__collapseIcon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "__collapseIcon"
+            },
+            {
+              "kind": "field",
+              "name": "__collapseAria",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "__collapseAria"
+            }
+          ],
+          "events": [
+            {
+              "name": "toggle-header",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "active-item",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "opened"
+            },
+            {
+              "name": "itemtitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "itemtitle"
+            },
+            {
+              "name": "icon-label",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "iconLabel"
+            },
+            {
+              "name": "edit-controls",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "editControls"
+            },
+            {
+              "name": "is-flex",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "isFlex"
+            },
+            {
+              "name": "url",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "url"
+            },
+            {
+              "name": "hide-in-menu",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hideInMenu"
+            },
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "id"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "icon"
+            },
+            {
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "active"
+            },
+            {
+              "name": "hovered",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hovered"
+            },
+            {
+              "name": "published",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "published"
+            },
+            {
+              "name": "locked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "locked"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "status"
+            },
+            {
+              "name": "selected",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "selected"
+            },
+            {
+              "name": "__collapseIcon",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "__collapseIcon"
+            },
+            {
+              "name": "__collapseAria",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "__collapseAria"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MapMenuHeader",
+            "module": "lib/map-menu-header.js"
+          }
         },
         {
-          "name": "url",
-          "description": "`url` {`string`} - \n\nProperty: url"
-        },
-        {
-          "name": "selected",
-          "description": "`selected` {`string`} - \n\nProperty: selected"
-        },
-        {
-          "name": "edit-controls",
-          "description": "`edit-controls` {`boolean`} - \n\nProperty: editControls\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "icon-label",
-          "description": "`icon-label` {`string`} - \n\nProperty: iconLabel\n\nDefault: null"
-        },
-        {
-          "name": "opened",
-          "description": "`opened` {`boolean`} - \n\nProperty: opened\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "collapsable",
-          "description": "`collapsable` {`boolean`} - \n\nProperty: collapsable\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-flex",
-          "description": "`is-flex` {`boolean`} - \n\nProperty: isFlex\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-nested",
-          "description": "`is-nested` {`boolean`} - \n\nProperty: isNested\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-horizontal",
-          "description": "`is-horizontal` {`boolean`} - \n\nProperty: isHorizontal\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "expand-children",
-          "description": "`expand-children` {`boolean`} - \n\nProperty: expandChildren\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hovered",
-          "description": "`hovered` {`boolean`} - \n\nProperty: hovered\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "active",
-          "description": "`active` {`boolean`} - \n\nProperty: active\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: "
-        },
-        {
-          "name": "status",
-          "description": "`status` {`string`} - \n\nProperty: status\n\nDefault: "
-        },
-        {
-          "name": "itemtitle",
-          "description": "`itemtitle` {`string`} - \n\nProperty: itemtitle\n\nDefault: "
-        },
-        {
-          "name": "locked",
-          "description": "`locked` {`boolean`} - \n\nProperty: locked\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "published",
-          "description": "`published` {`boolean`} - \n\nProperty: published\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-in-menu",
-          "description": "`hide-in-menu` {`boolean`} - \n\nProperty: hideInMenu\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: null"
-        },
-        {
-          "name": "onopened-changed",
-          "description": "`opened-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onmap-meu-item-hidden-check",
-          "description": "`map-meu-item-hidden-check` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "ontoggle-updated",
-          "description": "`toggle-updated` {`CustomEvent<{ opened: boolean; }>`} - "
+          "kind": "js",
+          "name": "MapMenuHeader",
+          "declaration": {
+            "name": "MapMenuHeader",
+            "module": "lib/map-menu-header.js"
+          }
         }
       ]
     },
     {
-      "name": "map-menu",
-      "description": "`map-menu`\n`A series of elements that generate a hierarchical menu`\n\nEvents:\n\n  * `selected` {`CustomEvent<any>`} - \n\n  * `map-menu-item-hidden-check` {`CustomEvent<{ action: string; target: any; }>`} - \n\nAttributes:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `edit-controls` {`boolean`} - \n\n  * `is-flex` {`boolean`} - \n\n  * `is-horizontal` {`boolean`} - \n\n  * `max-depth` {`number`} - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `auto-scroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `active-indicator` {`boolean`} - Show active indicator animation\n\nProperties:\n\n  * `manifest` - Support for JSON Outline Schema manifest format\n\n  * `selected` {`string`} - Current selected item.\n\n  * `activeItem` - \n\n  * `editControls` {`boolean`} - \n\n  * `isFlex` {`boolean`} - \n\n  * `isHorizontal` {`boolean`} - \n\n  * `maxDepth` {`number`} - \n\n  * `disabled` {`boolean`} - \n\n  * `title` {`string`} - \n\n  * `data` {`any[]`} - \n\n  * `items` {`any[]`} - \n\n  * `autoScroll` {`boolean`} - Auto scroll an active element if not in view\n\n  * `activeIndicator` {`boolean`} - Show active indicator animation",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/map-menu-item.js",
+      "declarations": [
         {
-          "name": "manifest",
-          "description": "`manifest` - Support for JSON Outline Schema manifest format\n\nProperty: manifest"
+          "kind": "class",
+          "description": "",
+          "name": "MapMenuItem",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "__active"
+            },
+            {
+              "kind": "method",
+              "name": "__deactive"
+            },
+            {
+              "kind": "method",
+              "name": "__selectedChanged",
+              "parameters": [
+                {
+                  "name": "selected"
+                },
+                {
+                  "name": "id"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_click"
+            },
+            {
+              "kind": "field",
+              "name": "editControls",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "edit-controls"
+            },
+            {
+              "kind": "field",
+              "name": "isNested",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "is-nested"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "icon",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "iconLabel",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "icon-label"
+            },
+            {
+              "kind": "field",
+              "name": "itemtitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "itemtitle"
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "active",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hovered",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hovered",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hideInMenu",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hide-in-menu",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "published",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "published",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "locked",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "locked",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "status",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ pageIsUnpublished: \"Page is unpublished\", }"
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "id",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "selected"
+            }
+          ],
+          "events": [
+            {
+              "name": "active-item",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "link-clicked",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "icon",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "icon"
+            },
+            {
+              "name": "edit-controls",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "editControls"
+            },
+            {
+              "name": "is-nested",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "isNested"
+            },
+            {
+              "name": "hovered",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hovered"
+            },
+            {
+              "name": "icon-label",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "iconLabel"
+            },
+            {
+              "name": "itemtitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "itemtitle"
+            },
+            {
+              "name": "url",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "url"
+            },
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "id"
+            },
+            {
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "active"
+            },
+            {
+              "name": "selected",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "selected"
+            },
+            {
+              "name": "published",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "published"
+            },
+            {
+              "name": "hide-in-menu",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hideInMenu"
+            },
+            {
+              "name": "locked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "locked"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "status"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MapMenuItem",
+            "module": "lib/map-menu-item.js"
+          }
         },
         {
-          "name": "selected",
-          "description": "`selected` {`string`} - Current selected item.\n\nProperty: selected"
+          "kind": "js",
+          "name": "MapMenuItem",
+          "declaration": {
+            "name": "MapMenuItem",
+            "module": "lib/map-menu-item.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/map-menu-submenu.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "MapMenuSubmenu",
+          "members": [
+            {
+              "kind": "method",
+              "name": "__active",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__deactive",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__alignCollapseState",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_headerClickHandler",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_mapMenuItemHiddenCheckHandler",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__toggleHeader",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__activeChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "editControls",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "edit-controls"
+            },
+            {
+              "kind": "field",
+              "name": "iconLabel",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "icon-label"
+            },
+            {
+              "kind": "field",
+              "name": "opened",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "opened",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "collapsable",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "collapsable"
+            },
+            {
+              "kind": "field",
+              "name": "isFlex",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "is-flex"
+            },
+            {
+              "kind": "field",
+              "name": "isNested",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "is-nested"
+            },
+            {
+              "kind": "field",
+              "name": "isHorizontal",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "is-horizontal",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "expandChildren",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "expand-children"
+            },
+            {
+              "kind": "field",
+              "name": "hovered",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hovered",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "active",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "status",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "itemtitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "itemtitle"
+            },
+            {
+              "kind": "field",
+              "name": "locked",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "locked"
+            },
+            {
+              "kind": "field",
+              "name": "published",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "published",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hideInMenu",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hide-in-menu",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "icon",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "id",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "id"
+            },
+            {
+              "kind": "field",
+              "name": "url",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "url"
+            },
+            {
+              "kind": "field",
+              "name": "selected",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "selected"
+            }
+          ],
+          "events": [
+            {
+              "name": "opened-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "map-meu-item-hidden-check",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "toggle-updated",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "id",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "id"
+            },
+            {
+              "name": "itemtitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "itemtitle"
+            },
+            {
+              "name": "icon-label",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "iconLabel"
+            },
+            {
+              "name": "edit-controls",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "editControls"
+            },
+            {
+              "name": "hide-in-menu",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hideInMenu"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "label"
+            },
+            {
+              "name": "hovered",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hovered"
+            },
+            {
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "active"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "icon"
+            },
+            {
+              "name": "url",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "url"
+            },
+            {
+              "name": "opened",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "opened"
+            },
+            {
+              "name": "collapsable",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "collapsable"
+            },
+            {
+              "name": "is-flex",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "isFlex"
+            },
+            {
+              "name": "is-nested",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "isNested"
+            },
+            {
+              "name": "is-horizontal",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "isHorizontal"
+            },
+            {
+              "name": "expand-children",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "expandChildren"
+            },
+            {
+              "name": "selected",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "selected"
+            },
+            {
+              "name": "published",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "published"
+            },
+            {
+              "name": "locked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "locked"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "status"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MapMenuSubmenu",
+            "module": "lib/map-menu-submenu.js"
+          }
         },
         {
-          "name": "activeItem",
-          "description": "`activeItem` - \n\nProperty: activeItem"
-        },
-        {
-          "name": "edit-controls",
-          "description": "`edit-controls` {`boolean`} - \n\nProperty: editControls\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-flex",
-          "description": "`is-flex` {`boolean`} - \n\nProperty: isFlex\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-horizontal",
-          "description": "`is-horizontal` {`boolean`} - \n\nProperty: isHorizontal\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "max-depth",
-          "description": "`max-depth` {`number`} - \n\nProperty: maxDepth\n\nDefault: 5"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: Content outline"
-        },
-        {
-          "name": "data",
-          "description": "`data` {`any[]`} - \n\nProperty: data\n\nDefault: null"
-        },
-        {
-          "name": "items",
-          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
-        },
-        {
-          "name": "auto-scroll",
-          "description": "`auto-scroll` {`boolean`} - Auto scroll an active element if not in view\n\nProperty: autoScroll\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "active-indicator",
-          "description": "`active-indicator` {`boolean`} - Show active indicator animation\n\nProperty: activeIndicator\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onselected",
-          "description": "`selected` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onmap-menu-item-hidden-check",
-          "description": "`map-menu-item-hidden-check` {`CustomEvent<{ action: string; target: any; }>`} - "
+          "kind": "js",
+          "name": "MapMenuSubmenu",
+          "declaration": {
+            "name": "MapMenuSubmenu",
+            "module": "lib/map-menu-submenu.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

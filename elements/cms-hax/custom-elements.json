@@ -1,280 +1,1732 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "cms-hax",
-      "description": "`cms-hax`\n\nEvents:\n\n  * `hax-body-content-changed` {`CustomEvent<any>`} - \n\n  * `simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - \n\n  * `cms-hax-saved` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `offset-margin` {`string`} - \n\n  * `allowed-tags` {`any[]`} - allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.\n\n  * `app-store-connection` {`string`} - Connection object for talking to an app store.\n\n  * `__appStore` {`string`} - \n\n  * `redirect-location` {`string`} - Optional URL to redirect to once we save.\n\n  * `redirect-on-save` {`boolean`} - Option to redirect once we save successfully\n\n  * `ready` {`boolean`} - \n\n  * `end-point` {`string`} - Location to save content to.\n\n  * `open-default` {`boolean`} - Default the panel to open\n\n  * `hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `element-align` {`string`} - Direction to elementAlign the hax edit panel\n\n  * `method` {`string`} - Method to save content.\n\n  * `sync-body` {`boolean`} - syncBody\n\n  * `body-value` {`string`} - Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n\n  * `hide-message` {`boolean`} - Flag to hide the toast.\n\n  * `__imported` {`boolean`} - \n\nProperties:\n\n  * `offsetMargin` {`string`} - \n\n  * `allowedTags` {`any[]`} - allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.\n\n  * `appStoreConnection` {`string`} - Connection object for talking to an app store.\n\n  * `__appStore` {`string`} - \n\n  * `redirectLocation` {`string`} - Optional URL to redirect to once we save.\n\n  * `redirectOnSave` {`boolean`} - Option to redirect once we save successfully\n\n  * `windowControllers` - \n\n  * `windowControllersReady` - \n\n  * `windowControllersLoaded` - \n\n  * `ready` {`boolean`} - \n\n  * `__lock` {`boolean`} - \n\n  * `endPoint` {`string`} - Location to save content to.\n\n  * `openDefault` {`boolean`} - Default the panel to open\n\n  * `hidePanelOps` {`boolean`} - Hide the panel operations (save and cancel),\n\n  * `elementAlign` {`string`} - Direction to elementAlign the hax edit panel\n\n  * `method` {`string`} - Method to save content.\n\n  * `syncBody` {`boolean`} - syncBody\n\n  * `bodyValue` {`string`} - Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n\n  * `hideMessage` {`boolean`} - Flag to hide the toast.\n\n  * `__imported` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "cms-hax.js",
+      "declarations": [
         {
-          "name": "offset-margin",
-          "description": "`offset-margin` {`string`} - \n\nProperty: offsetMargin"
+          "kind": "class",
+          "description": "`cms-hax`",
+          "name": "CmsHax",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "decodeHTMLEntities",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_activeHaxBodyUpdated",
+              "parameters": [
+                {
+                  "name": "ready"
+                }
+              ],
+              "description": "Ensure we've imported our content on initial setup"
+            },
+            {
+              "kind": "method",
+              "name": "_computeRedirectOnSave",
+              "parameters": [
+                {
+                  "name": "redirectLocation"
+                }
+              ],
+              "description": "Calculate if we have anywhere to redirect to."
+            },
+            {
+              "kind": "method",
+              "name": "_noticeTagChanges",
+              "parameters": [
+                {
+                  "name": "allowedTags"
+                },
+                {
+                  "name": "hidePanelOps"
+                },
+                {
+                  "name": "offsetMargin"
+                },
+                {
+                  "name": "elementAlign"
+                }
+              ],
+              "description": "Set certain data bound values to the store once it's ready"
+            },
+            {
+              "kind": "method",
+              "name": "_storeReady",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Set certain data bound values to the store once it's ready"
+            },
+            {
+              "kind": "method",
+              "name": "_appstoreLoaded",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_makeAppStore",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__applyMO"
+            },
+            {
+              "kind": "method",
+              "name": "_cancelFired",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "_cancelFired"
+            },
+            {
+              "kind": "method",
+              "name": "_saveFired",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "_saveFired"
+            },
+            {
+              "kind": "method",
+              "name": "_handleUpdateResponse",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "_handleUpdateResponse"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllersReady",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllersLoaded",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "ready",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "ready"
+            },
+            {
+              "kind": "field",
+              "name": "__lock",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "endPoint",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Location to save content to.",
+              "default": "null",
+              "attribute": "end-point"
+            },
+            {
+              "kind": "field",
+              "name": "openDefault",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Default the panel to open",
+              "default": "false",
+              "attribute": "open-default",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hidePanelOps",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hide the panel operations (save and cancel),",
+              "default": "false",
+              "attribute": "hide-panel-ops"
+            },
+            {
+              "kind": "field",
+              "name": "elementAlign",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Direction to elementAlign the hax edit panel",
+              "default": "\"left\"",
+              "attribute": "element-align"
+            },
+            {
+              "kind": "field",
+              "name": "method",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Method to save content.",
+              "default": "\"PUT\"",
+              "attribute": "method"
+            },
+            {
+              "kind": "field",
+              "name": "syncBody",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "syncBody",
+              "default": "false",
+              "attribute": "sync-body"
+            },
+            {
+              "kind": "field",
+              "name": "bodyValue",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
+              "default": "\"\"",
+              "attribute": "body-value"
+            },
+            {
+              "kind": "field",
+              "name": "hideMessage",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Flag to hide the toast.",
+              "default": "false",
+              "attribute": "hide-message"
+            },
+            {
+              "kind": "field",
+              "name": "__imported",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "__imported"
+            },
+            {
+              "kind": "field",
+              "name": "offsetMargin",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "offset-margin",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "allowedTags",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
+              "attribute": "allowed-tags"
+            },
+            {
+              "kind": "field",
+              "name": "appStoreConnection",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Connection object for talking to an app store.",
+              "attribute": "app-store-connection"
+            },
+            {
+              "kind": "field",
+              "name": "__appStore",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "__appStore"
+            },
+            {
+              "kind": "field",
+              "name": "redirectLocation",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional URL to redirect to once we save.",
+              "attribute": "redirect-location"
+            },
+            {
+              "kind": "field",
+              "name": "redirectOnSave",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Option to redirect once we save successfully",
+              "attribute": "redirect-on-save"
+            }
+          ],
+          "events": [
+            {
+              "name": "hax-body-content-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "cms-hax-saved",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "ready",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "ready"
+            },
+            {
+              "name": "open-default",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Default the panel to open",
+              "default": "false",
+              "fieldName": "openDefault"
+            },
+            {
+              "name": "hide-panel-ops",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hide the panel operations (save and cancel),",
+              "default": "false",
+              "fieldName": "hidePanelOps"
+            },
+            {
+              "name": "offset-margin",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "offsetMargin"
+            },
+            {
+              "name": "element-align",
+              "type": {
+                "text": "string"
+              },
+              "description": "Direction to elementAlign the hax edit panel",
+              "default": "\"left\"",
+              "fieldName": "elementAlign"
+            },
+            {
+              "name": "allowed-tags",
+              "type": {
+                "text": "array"
+              },
+              "description": "allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.",
+              "fieldName": "allowedTags"
+            },
+            {
+              "name": "end-point",
+              "type": {
+                "text": "null"
+              },
+              "description": "Location to save content to.",
+              "default": "null",
+              "fieldName": "endPoint"
+            },
+            {
+              "name": "method",
+              "type": {
+                "text": "string"
+              },
+              "description": "Method to save content.",
+              "default": "\"PUT\"",
+              "fieldName": "method"
+            },
+            {
+              "name": "app-store-connection",
+              "type": {
+                "text": "string"
+              },
+              "description": "Connection object for talking to an app store.",
+              "fieldName": "appStoreConnection"
+            },
+            {
+              "name": "__appStore",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "__appStore"
+            },
+            {
+              "name": "sync-body",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "syncBody",
+              "default": "false",
+              "fieldName": "syncBody"
+            },
+            {
+              "name": "body-value",
+              "type": {
+                "text": "string"
+              },
+              "description": "Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag",
+              "default": "\"\"",
+              "fieldName": "bodyValue"
+            },
+            {
+              "name": "hide-message",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Flag to hide the toast.",
+              "default": "false",
+              "fieldName": "hideMessage"
+            },
+            {
+              "name": "redirect-location",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional URL to redirect to once we save.",
+              "fieldName": "redirectLocation"
+            },
+            {
+              "name": "redirect-on-save",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Option to redirect once we save successfully",
+              "fieldName": "redirectOnSave"
+            },
+            {
+              "name": "__imported",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "__imported"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "cms-hax",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CmsHax",
+            "module": "cms-hax.js"
+          }
         },
         {
-          "name": "allowed-tags",
-          "description": "`allowed-tags` {`any[]`} - allowed Tags, usually as dictated by the input filtering\nlayer of the backend system that HAX is riding on.\nWhile not fullproof, this at least will enforce front-end\nfiltering to match what actually is going to be allowed\nto be saved in the first place.\n\nProperty: allowedTags"
-        },
-        {
-          "name": "app-store-connection",
-          "description": "`app-store-connection` {`string`} - Connection object for talking to an app store.\n\nProperty: appStoreConnection"
-        },
-        {
-          "name": "__appStore",
-          "description": "`__appStore` {`string`} - \n\nProperty: __appStore"
-        },
-        {
-          "name": "redirect-location",
-          "description": "`redirect-location` {`string`} - Optional URL to redirect to once we save.\n\nProperty: redirectLocation"
-        },
-        {
-          "name": "redirect-on-save",
-          "description": "`redirect-on-save` {`boolean`} - Option to redirect once we save successfully\n\nProperty: redirectOnSave",
-          "valueSet": "v"
-        },
-        {
-          "name": "ready",
-          "description": "`ready` {`boolean`} - \n\nProperty: ready\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "end-point",
-          "description": "`end-point` {`string`} - Location to save content to.\n\nProperty: endPoint\n\nDefault: null"
-        },
-        {
-          "name": "open-default",
-          "description": "`open-default` {`boolean`} - Default the panel to open\n\nProperty: openDefault\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hide-panel-ops",
-          "description": "`hide-panel-ops` {`boolean`} - Hide the panel operations (save and cancel),\n\nProperty: hidePanelOps\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "element-align",
-          "description": "`element-align` {`string`} - Direction to elementAlign the hax edit panel\n\nProperty: elementAlign\n\nDefault: left"
-        },
-        {
-          "name": "method",
-          "description": "`method` {`string`} - Method to save content.\n\nProperty: method\n\nDefault: PUT"
-        },
-        {
-          "name": "sync-body",
-          "description": "`sync-body` {`boolean`} - syncBody\n\nProperty: syncBody\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "body-value",
-          "description": "`body-value` {`string`} - Only available if syncBody is true; this allows data binding to the value being worked on in hax-body tag\n\nProperty: bodyValue\n\nDefault: "
-        },
-        {
-          "name": "hide-message",
-          "description": "`hide-message` {`boolean`} - Flag to hide the toast.\n\nProperty: hideMessage\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__imported",
-          "description": "`__imported` {`boolean`} - \n\nProperty: __imported\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onhax-body-content-changed",
-          "description": "`hax-body-content-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onsimple-toast-show",
-          "description": "`simple-toast-show` {`CustomEvent<{ text: string; duration: number; }>`} - "
-        },
-        {
-          "name": "oncms-hax-saved",
-          "description": "`cms-hax-saved` {`CustomEvent<boolean>`} - "
+          "kind": "js",
+          "name": "CmsHax",
+          "declaration": {
+            "name": "CmsHax",
+            "module": "cms-hax.js"
+          }
         }
       ]
     },
     {
-      "name": "cms-block",
-      "description": "`cms-block`\n\nAttributes:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `block-module` {`string`} - Module supplying the block\n\n  * `block-delta` {`string`} - A delta value relative to the module\n\n  * `block-end-point` {`string`} - block end point updated, change the way we do processing.\n\n  * `body-data` - Body data which is just block with some encapsulation.\n\n  * `block-data` {`string`} - block data from the end point.\n\n  * `block-prefix` {`string`} - Prefix for the block to be processed\n\n  * `block-suffix` {`string`} - Suffix for the block to be processed\n\n  * `hax-edit-mode` {`boolean`} - \n\nProperties:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `blockModule` {`string`} - Module supplying the block\n\n  * `blockDelta` {`string`} - A delta value relative to the module\n\n  * `blockEndPoint` {`string`} - block end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just block with some encapsulation.\n\n  * `blockData` {`string`} - block data from the end point.\n\n  * `blockPrefix` {`string`} - Prefix for the block to be processed\n\n  * `blockSuffix` {`string`} - Suffix for the block to be processed\n\n  * `haxEditMode` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/cms-block.js",
+      "declarations": [
         {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - Loading state\n\nProperty: loading\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`cms-block`",
+          "name": "CMSBlock",
+          "members": [
+            {
+              "kind": "field",
+              "name": "template",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_generateBodyData",
+              "parameters": [
+                {
+                  "name": "blockModule"
+                },
+                {
+                  "name": "blockDelta"
+                }
+              ],
+              "description": "Generate body data."
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleblockResponse",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "Handle the response from the block processing endpoint"
+            },
+            {
+              "kind": "method",
+              "name": "_blockChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "block end point changed"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "postProcessgetHaxJSONSchema",
+              "parameters": [
+                {
+                  "name": "schema"
+                }
+              ],
+              "description": "Implements getHaxJSONSchema post processing callback."
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Loading state",
+              "attribute": "loading"
+            },
+            {
+              "kind": "field",
+              "name": "blockModule",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Module supplying the block",
+              "attribute": "blockModule"
+            },
+            {
+              "kind": "field",
+              "name": "blockDelta",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "A delta value relative to the module",
+              "attribute": "blockDelta"
+            },
+            {
+              "kind": "field",
+              "name": "blockEndPoint",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "block end point updated, change the way we do processing.",
+              "attribute": "blockEndPoint"
+            },
+            {
+              "kind": "field",
+              "name": "bodyData",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Body data which is just block with some encapsulation.",
+              "attribute": "bodyData"
+            },
+            {
+              "kind": "field",
+              "name": "blockData",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "block data from the end point.",
+              "attribute": "blockData"
+            },
+            {
+              "kind": "field",
+              "name": "blockPrefix",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Prefix for the block to be processed",
+              "attribute": "blockPrefix"
+            },
+            {
+              "kind": "field",
+              "name": "blockSuffix",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Suffix for the block to be processed",
+              "attribute": "blockSuffix"
+            },
+            {
+              "kind": "field",
+              "name": "haxEditMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "hax-edit-mode"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Loading state",
+              "fieldName": "loading"
+            },
+            {
+              "name": "blockModule",
+              "type": {
+                "text": "string"
+              },
+              "description": "Module supplying the block",
+              "fieldName": "blockModule"
+            },
+            {
+              "name": "blockDelta",
+              "type": {
+                "text": "string"
+              },
+              "description": "A delta value relative to the module",
+              "fieldName": "blockDelta"
+            },
+            {
+              "name": "blockEndPoint",
+              "type": {
+                "text": "string"
+              },
+              "description": "block end point updated, change the way we do processing.",
+              "fieldName": "blockEndPoint"
+            },
+            {
+              "name": "bodyData",
+              "type": {
+                "text": "object"
+              },
+              "description": "Body data which is just block with some encapsulation.",
+              "fieldName": "bodyData"
+            },
+            {
+              "name": "blockData",
+              "type": {
+                "text": "string"
+              },
+              "description": "block data from the end point.",
+              "fieldName": "blockData"
+            },
+            {
+              "name": "blockPrefix",
+              "type": {
+                "text": "string"
+              },
+              "description": "Prefix for the block to be processed",
+              "fieldName": "blockPrefix"
+            },
+            {
+              "name": "blockSuffix",
+              "type": {
+                "text": "string"
+              },
+              "description": "Suffix for the block to be processed",
+              "fieldName": "blockSuffix"
+            },
+            {
+              "name": "hax-edit-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "haxEditMode"
+            }
+          ],
+          "superclass": {
+            "name": "PolymerElement",
+            "package": "@polymer/polymer/polymer-element.js"
+          },
+          "tagName": "cms-block",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CMSBlock",
+            "module": "lib/cms-block.js"
+          }
         },
         {
-          "name": "block-module",
-          "description": "`block-module` {`string`} - Module supplying the block\n\nProperty: blockModule"
-        },
-        {
-          "name": "block-delta",
-          "description": "`block-delta` {`string`} - A delta value relative to the module\n\nProperty: blockDelta"
-        },
-        {
-          "name": "block-end-point",
-          "description": "`block-end-point` {`string`} - block end point updated, change the way we do processing.\n\nProperty: blockEndPoint"
-        },
-        {
-          "name": "body-data",
-          "description": "`body-data` - Body data which is just block with some encapsulation.\n\nProperty: bodyData"
-        },
-        {
-          "name": "block-data",
-          "description": "`block-data` {`string`} - block data from the end point.\n\nProperty: blockData"
-        },
-        {
-          "name": "block-prefix",
-          "description": "`block-prefix` {`string`} - Prefix for the block to be processed\n\nProperty: blockPrefix"
-        },
-        {
-          "name": "block-suffix",
-          "description": "`block-suffix` {`string`} - Suffix for the block to be processed\n\nProperty: blockSuffix"
-        },
-        {
-          "name": "hax-edit-mode",
-          "description": "`hax-edit-mode` {`boolean`} - \n\nProperty: haxEditMode\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "CMSBlock",
+          "declaration": {
+            "name": "CMSBlock",
+            "module": "lib/cms-block.js"
+          }
         }
       ]
     },
     {
-      "name": "cms-entity",
-      "description": "`cms-entity`\n\nAttributes:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `entity-type` {`string`} - Type of entity to load\n\n  * `entity-id` {`string`} - ID of the item to load\n\n  * `entity-display-mode` {`string`} - Display mode of the entity\n\n  * `entity-end-point` {`string`} - entity end point updated, change the way we do processing.\n\n  * `body-data` - Body data which is just entity with some encapsulation.\n\n  * `entity-data` {`string`} - entity data from the end point.\n\n  * `entity-prefix` {`string`} - Prefix for the entity to be processed\n\n  * `entity-suffix` {`string`} - Suffix for the entity to be processed\n\n  * `hax-edit-mode` {`boolean`} - \n\nProperties:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `entityType` {`string`} - Type of entity to load\n\n  * `entityId` {`string`} - ID of the item to load\n\n  * `entityDisplayMode` {`string`} - Display mode of the entity\n\n  * `entityEndPoint` {`string`} - entity end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just entity with some encapsulation.\n\n  * `entityData` {`string`} - entity data from the end point.\n\n  * `entityPrefix` {`string`} - Prefix for the entity to be processed\n\n  * `entitySuffix` {`string`} - Suffix for the entity to be processed\n\n  * `haxEditMode` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/cms-entity.js",
+      "declarations": [
         {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - Loading state\n\nProperty: loading\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`cms-entity`",
+          "name": "CMSEntity",
+          "members": [
+            {
+              "kind": "field",
+              "name": "template",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_generateBodyData",
+              "parameters": [
+                {
+                  "name": "entityType"
+                },
+                {
+                  "name": "entityId"
+                },
+                {
+                  "name": "entityDisplayMode"
+                }
+              ],
+              "description": "Generate body data."
+            },
+            {
+              "kind": "method",
+              "name": "_handleEntityResponse",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "Handle the response from the entity processing endpoint"
+            },
+            {
+              "kind": "method",
+              "name": "_entityChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "entity end point changed"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "postProcessgetHaxJSONSchema",
+              "parameters": [
+                {
+                  "name": "schema"
+                }
+              ],
+              "description": "Implements getHaxJSONSchema post processing callback."
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Loading state",
+              "attribute": "loading"
+            },
+            {
+              "kind": "field",
+              "name": "entityType",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Type of entity to load",
+              "attribute": "entityType"
+            },
+            {
+              "kind": "field",
+              "name": "entityId",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "ID of the item to load",
+              "attribute": "entityId"
+            },
+            {
+              "kind": "field",
+              "name": "entityDisplayMode",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display mode of the entity",
+              "attribute": "entityDisplayMode"
+            },
+            {
+              "kind": "field",
+              "name": "entityEndPoint",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "entity end point updated, change the way we do processing.",
+              "attribute": "entityEndPoint"
+            },
+            {
+              "kind": "field",
+              "name": "bodyData",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Body data which is just entity with some encapsulation.",
+              "attribute": "bodyData"
+            },
+            {
+              "kind": "field",
+              "name": "entityData",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "entity data from the end point.",
+              "attribute": "entityData"
+            },
+            {
+              "kind": "field",
+              "name": "entityPrefix",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Prefix for the entity to be processed",
+              "attribute": "entityPrefix"
+            },
+            {
+              "kind": "field",
+              "name": "entitySuffix",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Suffix for the entity to be processed",
+              "attribute": "entitySuffix"
+            },
+            {
+              "kind": "field",
+              "name": "haxEditMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "hax-edit-mode"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Loading state",
+              "fieldName": "loading"
+            },
+            {
+              "name": "entityType",
+              "type": {
+                "text": "string"
+              },
+              "description": "Type of entity to load",
+              "fieldName": "entityType"
+            },
+            {
+              "name": "entityId",
+              "type": {
+                "text": "string"
+              },
+              "description": "ID of the item to load",
+              "fieldName": "entityId"
+            },
+            {
+              "name": "entityDisplayMode",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display mode of the entity",
+              "fieldName": "entityDisplayMode"
+            },
+            {
+              "name": "entityEndPoint",
+              "type": {
+                "text": "string"
+              },
+              "description": "entity end point updated, change the way we do processing.",
+              "fieldName": "entityEndPoint"
+            },
+            {
+              "name": "bodyData",
+              "type": {
+                "text": "object"
+              },
+              "description": "Body data which is just entity with some encapsulation.",
+              "fieldName": "bodyData"
+            },
+            {
+              "name": "entityData",
+              "type": {
+                "text": "string"
+              },
+              "description": "entity data from the end point.",
+              "fieldName": "entityData"
+            },
+            {
+              "name": "entityPrefix",
+              "type": {
+                "text": "string"
+              },
+              "description": "Prefix for the entity to be processed",
+              "fieldName": "entityPrefix"
+            },
+            {
+              "name": "entitySuffix",
+              "type": {
+                "text": "string"
+              },
+              "description": "Suffix for the entity to be processed",
+              "fieldName": "entitySuffix"
+            },
+            {
+              "name": "hax-edit-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "haxEditMode"
+            }
+          ],
+          "superclass": {
+            "name": "PolymerElement",
+            "package": "@polymer/polymer/polymer-element.js"
+          },
+          "tagName": "cms-entity",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CMSEntity",
+            "module": "lib/cms-entity.js"
+          }
         },
         {
-          "name": "entity-type",
-          "description": "`entity-type` {`string`} - Type of entity to load\n\nProperty: entityType"
-        },
-        {
-          "name": "entity-id",
-          "description": "`entity-id` {`string`} - ID of the item to load\n\nProperty: entityId"
-        },
-        {
-          "name": "entity-display-mode",
-          "description": "`entity-display-mode` {`string`} - Display mode of the entity\n\nProperty: entityDisplayMode"
-        },
-        {
-          "name": "entity-end-point",
-          "description": "`entity-end-point` {`string`} - entity end point updated, change the way we do processing.\n\nProperty: entityEndPoint"
-        },
-        {
-          "name": "body-data",
-          "description": "`body-data` - Body data which is just entity with some encapsulation.\n\nProperty: bodyData"
-        },
-        {
-          "name": "entity-data",
-          "description": "`entity-data` {`string`} - entity data from the end point.\n\nProperty: entityData"
-        },
-        {
-          "name": "entity-prefix",
-          "description": "`entity-prefix` {`string`} - Prefix for the entity to be processed\n\nProperty: entityPrefix"
-        },
-        {
-          "name": "entity-suffix",
-          "description": "`entity-suffix` {`string`} - Suffix for the entity to be processed\n\nProperty: entitySuffix"
-        },
-        {
-          "name": "hax-edit-mode",
-          "description": "`hax-edit-mode` {`boolean`} - \n\nProperty: haxEditMode\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "CMSEntity",
+          "declaration": {
+            "name": "CMSEntity",
+            "module": "lib/cms-entity.js"
+          }
         }
       ]
     },
     {
-      "name": "cms-token",
-      "description": "`cms-token`\nRender and process a shortcode / token from a content management system.\n\nAttributes:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `token` {`string`} - Token changed (somehow) do the token processing.\n\n  * `token-end-point` {`string`} - Token end point updated, change the way we do processing.\n\n  * `body-data` - Body data which is just token with some encapsulation.\n\n  * `_click-invoked` {`string`} - internal tracking for edit button being clicked in HAX presentation\n\n  * `token-data` {`string`} - Token data from the end point.\n\n  * `token-prefix` {`string`} - Prefix for the token to be processed\n\n  * `token-suffix` {`string`} - Suffix for the token to be processed\n\n  * `_display-mode` {`string`} - \n\n  * `hax-edit-mode` {`boolean`} - \n\nProperties:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `token` {`string`} - Token changed (somehow) do the token processing.\n\n  * `tokenEndPoint` {`string`} - Token end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just token with some encapsulation.\n\n  * `_clickInvoked` {`string`} - internal tracking for edit button being clicked in HAX presentation\n\n  * `tokenData` {`string`} - Token data from the end point.\n\n  * `tokenPrefix` {`string`} - Prefix for the token to be processed\n\n  * `tokenSuffix` {`string`} - Suffix for the token to be processed\n\n  * `_displayMode` {`string`} - \n\n  * `haxEditMode` {`boolean`} - \n\n  * `windowControllers` - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/cms-token.js",
+      "declarations": [
         {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - Loading state\n\nProperty: loading\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`cms-token`\nRender and process a shortcode / token from a content management system.",
+          "name": "CMSToken",
+          "members": [
+            {
+              "kind": "field",
+              "name": "template",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_displayModeChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "Display mode value updated."
+            },
+            {
+              "kind": "method",
+              "name": "_generateBodyData",
+              "parameters": [
+                {
+                  "name": "token"
+                },
+                {
+                  "name": "$editingState"
+                }
+              ],
+              "description": "Generate body data."
+            },
+            {
+              "kind": "method",
+              "name": "_handleTokenResponse",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "Handle the response from the token processing endpoint"
+            },
+            {
+              "kind": "method",
+              "name": "_tokenChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "Token end point changed"
+            },
+            {
+              "kind": "method",
+              "name": "_windowVisibilityChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Window visibility callback to monitor when we are being seen"
+            },
+            {
+              "kind": "method",
+              "name": "__tokenClicked",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Notice a click on our edit button and set a flag."
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "postProcessgetHaxJSONSchema",
+              "parameters": [
+                {
+                  "name": "schema"
+                }
+              ],
+              "description": "Implements getHaxJSONSchema post processing callback."
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Loading state",
+              "attribute": "loading"
+            },
+            {
+              "kind": "field",
+              "name": "token",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Token changed (somehow) do the token processing.",
+              "attribute": "token"
+            },
+            {
+              "kind": "field",
+              "name": "tokenEndPoint",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Token end point updated, change the way we do processing.",
+              "attribute": "tokenEndPoint"
+            },
+            {
+              "kind": "field",
+              "name": "bodyData",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Body data which is just token with some encapsulation.",
+              "attribute": "bodyData"
+            },
+            {
+              "kind": "field",
+              "name": "_clickInvoked",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "internal tracking for edit button being clicked in HAX presentation",
+              "attribute": "_clickInvoked"
+            },
+            {
+              "kind": "field",
+              "name": "tokenData",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Token data from the end point.",
+              "attribute": "tokenData"
+            },
+            {
+              "kind": "field",
+              "name": "tokenPrefix",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Prefix for the token to be processed",
+              "attribute": "tokenPrefix"
+            },
+            {
+              "kind": "field",
+              "name": "tokenSuffix",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Suffix for the token to be processed",
+              "attribute": "tokenSuffix"
+            },
+            {
+              "kind": "field",
+              "name": "_displayMode",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "_displayMode"
+            },
+            {
+              "kind": "field",
+              "name": "haxEditMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "hax-edit-mode"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Loading state",
+              "fieldName": "loading"
+            },
+            {
+              "name": "token",
+              "type": {
+                "text": "string"
+              },
+              "description": "Token changed (somehow) do the token processing.",
+              "fieldName": "token"
+            },
+            {
+              "name": "tokenEndPoint",
+              "type": {
+                "text": "string"
+              },
+              "description": "Token end point updated, change the way we do processing.",
+              "fieldName": "tokenEndPoint"
+            },
+            {
+              "name": "bodyData",
+              "type": {
+                "text": "object"
+              },
+              "description": "Body data which is just token with some encapsulation.",
+              "fieldName": "bodyData"
+            },
+            {
+              "name": "_clickInvoked",
+              "type": {
+                "text": "string"
+              },
+              "description": "internal tracking for edit button being clicked in HAX presentation",
+              "fieldName": "_clickInvoked"
+            },
+            {
+              "name": "tokenData",
+              "type": {
+                "text": "string"
+              },
+              "description": "Token data from the end point.",
+              "fieldName": "tokenData"
+            },
+            {
+              "name": "tokenPrefix",
+              "type": {
+                "text": "string"
+              },
+              "description": "Prefix for the token to be processed",
+              "fieldName": "tokenPrefix"
+            },
+            {
+              "name": "tokenSuffix",
+              "type": {
+                "text": "string"
+              },
+              "description": "Suffix for the token to be processed",
+              "fieldName": "tokenSuffix"
+            },
+            {
+              "name": "_displayMode",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "_displayMode"
+            },
+            {
+              "name": "hax-edit-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "haxEditMode"
+            }
+          ],
+          "superclass": {
+            "name": "PolymerElement",
+            "package": "@polymer/polymer/polymer-element.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CMSToken",
+            "module": "lib/cms-token.js"
+          }
         },
         {
-          "name": "token",
-          "description": "`token` {`string`} - Token changed (somehow) do the token processing.\n\nProperty: token"
-        },
-        {
-          "name": "token-end-point",
-          "description": "`token-end-point` {`string`} - Token end point updated, change the way we do processing.\n\nProperty: tokenEndPoint"
-        },
-        {
-          "name": "body-data",
-          "description": "`body-data` - Body data which is just token with some encapsulation.\n\nProperty: bodyData"
-        },
-        {
-          "name": "_click-invoked",
-          "description": "`_click-invoked` {`string`} - internal tracking for edit button being clicked in HAX presentation\n\nProperty: _clickInvoked\n\nDefault: false"
-        },
-        {
-          "name": "token-data",
-          "description": "`token-data` {`string`} - Token data from the end point.\n\nProperty: tokenData"
-        },
-        {
-          "name": "token-prefix",
-          "description": "`token-prefix` {`string`} - Prefix for the token to be processed\n\nProperty: tokenPrefix\n\nDefault: ["
-        },
-        {
-          "name": "token-suffix",
-          "description": "`token-suffix` {`string`} - Suffix for the token to be processed\n\nProperty: tokenSuffix\n\nDefault: ]"
-        },
-        {
-          "name": "_display-mode",
-          "description": "`_display-mode` {`string`} - \n\nProperty: _displayMode\n\nDefault: full"
-        },
-        {
-          "name": "hax-edit-mode",
-          "description": "`hax-edit-mode` {`boolean`} - \n\nProperty: haxEditMode\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "CMSToken",
+          "declaration": {
+            "name": "CMSToken",
+            "module": "lib/cms-token.js"
+          }
         }
       ]
     },
     {
-      "name": "cms-views",
-      "description": "`cms-views`\n\nAttributes:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `views-name` {`string`} - Name of the views to render\n\n  * `views-display` {`string`} - Display from the views\n\n  * `views-end-point` {`string`} - views end point updated, change the way we do processing.\n\n  * `body-data` - Body data which is just views with some encapsulation.\n\n  * `views-data` {`string`} - views data from the end point.\n\n  * `views-prefix` {`string`} - Prefix for the views to be processed\n\n  * `views-suffix` {`string`} - Suffix for the views to be processed\n\n  * `hax-edit-mode` {`boolean`} - \n\nProperties:\n\n  * `loading` {`boolean`} - Loading state\n\n  * `viewsName` {`string`} - Name of the views to render\n\n  * `viewsDisplay` {`string`} - Display from the views\n\n  * `viewsEndPoint` {`string`} - views end point updated, change the way we do processing.\n\n  * `bodyData` - Body data which is just views with some encapsulation.\n\n  * `viewsData` {`string`} - views data from the end point.\n\n  * `viewsPrefix` {`string`} - Prefix for the views to be processed\n\n  * `viewsSuffix` {`string`} - Suffix for the views to be processed\n\n  * `haxEditMode` {`boolean`} - \n\n  * `_template` {`HTMLTemplateElement | null`} - \n\n  * `_importPath` {`string`} - \n\n  * `rootPath` {`string`} - \n\n  * `importPath` {`string`} - \n\n  * `root` {`HTMLElement | ShadowRoot | StampedTemplate | null`} - \n\n  * `$` - \n\n  * `_overrideLegacyUndefined` {`boolean`} - \n\n  * `PROPERTY_EFFECT_TYPES` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/cms-views.js",
+      "declarations": [
         {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - Loading state\n\nProperty: loading\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`cms-views`",
+          "name": "CMSViews",
+          "members": [
+            {
+              "kind": "field",
+              "name": "template",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_generateBodyData",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "display"
+                }
+              ],
+              "description": "Generate body data."
+            },
+            {
+              "kind": "method",
+              "name": "_handleviewsResponse",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "Handle the response from the views processing endpoint"
+            },
+            {
+              "kind": "method",
+              "name": "_viewsChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "views end point changed"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "postProcessgetHaxJSONSchema",
+              "parameters": [
+                {
+                  "name": "schema"
+                }
+              ],
+              "description": "Implements getHaxJSONSchema post processing callback."
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Loading state",
+              "attribute": "loading"
+            },
+            {
+              "kind": "field",
+              "name": "viewsName",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name of the views to render",
+              "attribute": "viewsName"
+            },
+            {
+              "kind": "field",
+              "name": "viewsDisplay",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display from the views",
+              "attribute": "viewsDisplay"
+            },
+            {
+              "kind": "field",
+              "name": "viewsEndPoint",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "views end point updated, change the way we do processing.",
+              "attribute": "viewsEndPoint"
+            },
+            {
+              "kind": "field",
+              "name": "bodyData",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Body data which is just views with some encapsulation.",
+              "attribute": "bodyData"
+            },
+            {
+              "kind": "field",
+              "name": "viewsData",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "views data from the end point.",
+              "attribute": "viewsData"
+            },
+            {
+              "kind": "field",
+              "name": "viewsPrefix",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Prefix for the views to be processed",
+              "attribute": "viewsPrefix"
+            },
+            {
+              "kind": "field",
+              "name": "viewsSuffix",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Suffix for the views to be processed",
+              "attribute": "viewsSuffix"
+            },
+            {
+              "kind": "field",
+              "name": "haxEditMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "hax-edit-mode"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Loading state",
+              "fieldName": "loading"
+            },
+            {
+              "name": "viewsName",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name of the views to render",
+              "fieldName": "viewsName"
+            },
+            {
+              "name": "viewsDisplay",
+              "type": {
+                "text": "string"
+              },
+              "description": "Display from the views",
+              "fieldName": "viewsDisplay"
+            },
+            {
+              "name": "viewsEndPoint",
+              "type": {
+                "text": "string"
+              },
+              "description": "views end point updated, change the way we do processing.",
+              "fieldName": "viewsEndPoint"
+            },
+            {
+              "name": "bodyData",
+              "type": {
+                "text": "object"
+              },
+              "description": "Body data which is just views with some encapsulation.",
+              "fieldName": "bodyData"
+            },
+            {
+              "name": "viewsData",
+              "type": {
+                "text": "string"
+              },
+              "description": "views data from the end point.",
+              "fieldName": "viewsData"
+            },
+            {
+              "name": "viewsPrefix",
+              "type": {
+                "text": "string"
+              },
+              "description": "Prefix for the views to be processed",
+              "fieldName": "viewsPrefix"
+            },
+            {
+              "name": "viewsSuffix",
+              "type": {
+                "text": "string"
+              },
+              "description": "Suffix for the views to be processed",
+              "fieldName": "viewsSuffix"
+            },
+            {
+              "name": "hax-edit-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "haxEditMode"
+            }
+          ],
+          "superclass": {
+            "name": "PolymerElement",
+            "package": "@polymer/polymer/polymer-element.js"
+          },
+          "tagName": "cms-views",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CMSViews",
+            "module": "lib/cms-views.js"
+          }
         },
         {
-          "name": "views-name",
-          "description": "`views-name` {`string`} - Name of the views to render\n\nProperty: viewsName"
-        },
-        {
-          "name": "views-display",
-          "description": "`views-display` {`string`} - Display from the views\n\nProperty: viewsDisplay"
-        },
-        {
-          "name": "views-end-point",
-          "description": "`views-end-point` {`string`} - views end point updated, change the way we do processing.\n\nProperty: viewsEndPoint"
-        },
-        {
-          "name": "body-data",
-          "description": "`body-data` - Body data which is just views with some encapsulation.\n\nProperty: bodyData"
-        },
-        {
-          "name": "views-data",
-          "description": "`views-data` {`string`} - views data from the end point.\n\nProperty: viewsData"
-        },
-        {
-          "name": "views-prefix",
-          "description": "`views-prefix` {`string`} - Prefix for the views to be processed\n\nProperty: viewsPrefix"
-        },
-        {
-          "name": "views-suffix",
-          "description": "`views-suffix` {`string`} - Suffix for the views to be processed\n\nProperty: viewsSuffix"
-        },
-        {
-          "name": "hax-edit-mode",
-          "description": "`hax-edit-mode` {`boolean`} - \n\nProperty: haxEditMode\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "CMSViews",
+          "declaration": {
+            "name": "CMSViews",
+            "module": "lib/cms-views.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

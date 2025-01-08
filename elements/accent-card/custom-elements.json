@@ -1,86 +1,310 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "accent-card",
-      "description": "`accent-card`\n\nAttributes:\n\n  * `icon-size` {`string`} - \n\n  * `image-width` {`string`} - \n\n  * `accent-background` {`boolean`} - Apply accent color to card background\n\n  * `accent-heading` {`boolean`} - Apply accent color to heading\n\n  * `flat` {`boolean`} - Display card as flat (no box shadow);\n\n  * `horizontal` {`boolean`} - Display card as a horizontal layout? Default is vertical.\n\n  * `image-align` {`string`} - \"Optional\": Horizontal alignment of image, so that:\n- \"left\" will align left edge of image.\n- \"right\" will align right edge of image.\n- \"center\" will align center of image\n- A null will allow temporary support to deprecated CSS variables\n\n  * `image-src` {`string`} - \"Optional\": source for an image on card\n\n  * `image-valign` {`string`} - \"Optional\": vertical alignment of image, so that:\n- \"top\" will align top of edge of image.\n- \"bottom\" will align bottom edge of image.\n- \"center\" will align middle of image.\n- A null will allow temporary support to deprecated CSS variables\n\n  * `no-border` {`boolean`} - Removes think accent border\n\n  * `ready` {`boolean`} - \n\n  * `link` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `iconSize` {`string`} - \n\n  * `imageWidth` {`string`} - \n\n  * `accentBackground` {`boolean`} - Apply accent color to card background\n\n  * `accentHeading` {`boolean`} - Apply accent color to heading\n\n  * `flat` {`boolean`} - Display card as flat (no box shadow);\n\n  * `horizontal` {`boolean`} - Display card as a horizontal layout? Default is vertical.\n\n  * `imageAlign` {`string`} - \"Optional\": Horizontal alignment of image, so that:\n- \"left\" will align left edge of image.\n- \"right\" will align right edge of image.\n- \"center\" will align center of image\n- A null will allow temporary support to deprecated CSS variables\n\n  * `imageSrc` {`string`} - \"Optional\": source for an image on card\n\n  * `imageValign` {`string`} - \"Optional\": vertical alignment of image, so that:\n- \"top\" will align top of edge of image.\n- \"bottom\" will align bottom edge of image.\n- \"center\" will align middle of image.\n- A null will allow temporary support to deprecated CSS variables\n\n  * `noBorder` {`boolean`} - Removes think accent border\n\n  * `ready` {`boolean`} - \n\n  * `link` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "accent-card.js",
+      "declarations": [
         {
-          "name": "icon-size",
-          "description": "`icon-size` {`string`} - \n\nProperty: iconSize"
+          "kind": "class",
+          "description": "`accent-card`",
+          "name": "AccentCard",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "accentBackground",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Apply accent color to card background",
+              "default": "false",
+              "attribute": "accent-background",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "accentHeading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Apply accent color to heading",
+              "default": "false",
+              "attribute": "accent-heading",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "flat",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Display card as flat (no box shadow);",
+              "default": "false",
+              "attribute": "flat",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "horizontal",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Display card as a horizontal layout? Default is vertical.",
+              "default": "false",
+              "attribute": "horizontal",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "imageAlign",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "\"Optional\": Horizontal alignment of image, so that:\n- \"left\" will align left edge of image.\n- \"right\" will align right edge of image.\n- \"center\" will align center of image\n- A null will allow temporary support to deprecated CSS variables",
+              "default": "null",
+              "attribute": "image-align",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "imageSrc",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "\"Optional\": source for an image on card",
+              "default": "null",
+              "attribute": "image-src"
+            },
+            {
+              "kind": "field",
+              "name": "imageValign",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "\"Optional\": vertical alignment of image, so that:\n- \"top\" will align top of edge of image.\n- \"bottom\" will align bottom edge of image.\n- \"center\" will align middle of image.\n- A null will allow temporary support to deprecated CSS variables",
+              "default": "null",
+              "attribute": "image-valign",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "noBorder",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Removes think accent border",
+              "default": "false",
+              "attribute": "no-border",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "ready",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "ready",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "link",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "link",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"icons:add-circle-outline\""
+            },
+            {
+              "kind": "field",
+              "name": "iconSize",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "icon-size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "imageWidth",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "image-width",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "accent-background",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Apply accent color to card background",
+              "default": "false",
+              "fieldName": "accentBackground"
+            },
+            {
+              "name": "accent-heading",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Apply accent color to heading",
+              "default": "false",
+              "fieldName": "accentHeading"
+            },
+            {
+              "name": "flat",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Display card as flat (no box shadow);",
+              "default": "false",
+              "fieldName": "flat"
+            },
+            {
+              "name": "horizontal",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Display card as a horizontal layout? Default is vertical.",
+              "default": "false",
+              "fieldName": "horizontal"
+            },
+            {
+              "name": "image-align",
+              "type": {
+                "text": "null"
+              },
+              "description": "\"Optional\": Horizontal alignment of image, so that:\n- \"left\" will align left edge of image.\n- \"right\" will align right edge of image.\n- \"center\" will align center of image\n- A null will allow temporary support to deprecated CSS variables",
+              "default": "null",
+              "fieldName": "imageAlign"
+            },
+            {
+              "name": "image-src",
+              "type": {
+                "text": "null"
+              },
+              "description": "\"Optional\": source for an image on card",
+              "default": "null",
+              "fieldName": "imageSrc"
+            },
+            {
+              "name": "image-valign",
+              "type": {
+                "text": "null"
+              },
+              "description": "\"Optional\": vertical alignment of image, so that:\n- \"top\" will align top of edge of image.\n- \"bottom\" will align bottom edge of image.\n- \"center\" will align middle of image.\n- A null will allow temporary support to deprecated CSS variables",
+              "default": "null",
+              "fieldName": "imageValign"
+            },
+            {
+              "name": "no-border",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Removes think accent border",
+              "default": "false",
+              "fieldName": "noBorder"
+            },
+            {
+              "name": "ready",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "ready"
+            },
+            {
+              "name": "link",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "link"
+            },
+            {
+              "name": "icon-size",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "iconSize"
+            },
+            {
+              "name": "image-width",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "imageWidth"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "IntersectionObserverMixin",
+              "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "accent-card",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "AccentCard",
+            "module": "accent-card.js"
+          }
         },
         {
-          "name": "image-width",
-          "description": "`image-width` {`string`} - \n\nProperty: imageWidth"
-        },
-        {
-          "name": "accent-background",
-          "description": "`accent-background` {`boolean`} - Apply accent color to card background\n\nProperty: accentBackground\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-heading",
-          "description": "`accent-heading` {`boolean`} - Apply accent color to heading\n\nProperty: accentHeading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "flat",
-          "description": "`flat` {`boolean`} - Display card as flat (no box shadow);\n\nProperty: flat\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "horizontal",
-          "description": "`horizontal` {`boolean`} - Display card as a horizontal layout? Default is vertical.\n\nProperty: horizontal\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "image-align",
-          "description": "`image-align` {`string`} - \"Optional\": Horizontal alignment of image, so that:\n- \"left\" will align left edge of image.\n- \"right\" will align right edge of image.\n- \"center\" will align center of image\n- A null will allow temporary support to deprecated CSS variables\n\nProperty: imageAlign\n\nDefault: null"
-        },
-        {
-          "name": "image-src",
-          "description": "`image-src` {`string`} - \"Optional\": source for an image on card\n\nProperty: imageSrc\n\nDefault: null"
-        },
-        {
-          "name": "image-valign",
-          "description": "`image-valign` {`string`} - \"Optional\": vertical alignment of image, so that:\n- \"top\" will align top of edge of image.\n- \"bottom\" will align bottom edge of image.\n- \"center\" will align middle of image.\n- A null will allow temporary support to deprecated CSS variables\n\nProperty: imageValign\n\nDefault: null"
-        },
-        {
-          "name": "no-border",
-          "description": "`no-border` {`boolean`} - Removes think accent border\n\nProperty: noBorder\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "ready",
-          "description": "`ready` {`boolean`} - \n\nProperty: ready\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "link",
-          "description": "`link` {`string`} - \n\nProperty: link\n\nDefault: null"
-        },
-        {
-          "name": "element-visible",
-          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "AccentCard",
+          "declaration": {
+            "name": "AccentCard",
+            "module": "accent-card.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

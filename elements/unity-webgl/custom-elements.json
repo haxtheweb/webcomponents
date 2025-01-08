@@ -1,12 +1,100 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "unity-webgl",
-      "description": "`unity-webgl`\n`Unity WebGL player`\n\nProperties:\n\n  * `html` {`string`} - This is a convention, not the standard to return HTML of the element\n\n  * `target` {`string | null`} - \n\n  * `compression` {`string | null`} - \n\n  * `streamingurl` {`string | null`} - \n\n  * `companyname` {`string | null`} - \n\n  * `productname` {`string | null`} - \n\n  * `productversion` {`string | null`} - \n\n  * `width` {`string | null`} - \n\n  * `height` {`string | null`} - \n\n  * `background` {`string | null`} - \n\n  * `template` - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "unity-webgl.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`unity-webgl`\n`Unity WebGL player`",
+          "name": "UnityWebgl",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "This is a convention, not the standard",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "html",
+              "description": "This is a convention, not the standard to return HTML of the element",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "target"
+            },
+            {
+              "kind": "field",
+              "name": "compression"
+            },
+            {
+              "kind": "field",
+              "name": "streamingurl"
+            },
+            {
+              "kind": "field",
+              "name": "companyname"
+            },
+            {
+              "kind": "field",
+              "name": "productname"
+            },
+            {
+              "kind": "field",
+              "name": "productversion"
+            },
+            {
+              "kind": "field",
+              "name": "width"
+            },
+            {
+              "kind": "field",
+              "name": "height"
+            },
+            {
+              "kind": "field",
+              "name": "background"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "template"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "unity-webgl",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "UnityWebgl",
+            "module": "unity-webgl.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "UnityWebgl",
+          "declaration": {
+            "name": "UnityWebgl",
+            "module": "unity-webgl.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

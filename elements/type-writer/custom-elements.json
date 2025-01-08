@@ -1,55 +1,249 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "type-writer",
-      "description": "`type-writer`\n`typewritter effect`\nbased off of https://github.com/PolymerEl/type-writer\n\nEvents:\n\n  * `type-writer-end` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `text` {`string`} - \n\n  * `_length` {`number`} - \n\n  * `_oldText` {`string`} - \n\n  * `delay` {`number`} - \n\n  * `cursor-duration` {`number`} - \n\n  * `speed` {`number`} - \n\n  * `erase-speed` {`number`} - \n\n  * `typing` {`boolean`} - \n\n  * `elementVisible` {`boolean`} - \n\nProperties:\n\n  * `text` {`string`} - \n\n  * `_length` {`number`} - \n\n  * `_oldText` {`string`} - \n\n  * `delay` {`number`} - \n\n  * `cursorDuration` {`number`} - \n\n  * `speed` {`number`} - \n\n  * `eraseSpeed` {`number`} - \n\n  * `typing` {`boolean`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "type-writer.js",
+      "declarations": [
         {
-          "name": "text",
-          "description": "`text` {`string`} - \n\nProperty: text"
+          "kind": "class",
+          "description": "`type-writer`\n`typewritter effect`\nbased off of https://github.com/PolymerEl/type-writer",
+          "name": "TypeWriter",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_observeText",
+              "parameters": [
+                {
+                  "name": "text"
+                },
+                {
+                  "name": "delay"
+                },
+                {
+                  "name": "elementVisible"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "type"
+            },
+            {
+              "kind": "method",
+              "name": "erase"
+            },
+            {
+              "kind": "field",
+              "name": "delay",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "attribute": "delay"
+            },
+            {
+              "kind": "field",
+              "name": "cursorDuration",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "cursor-duration"
+            },
+            {
+              "kind": "field",
+              "name": "speed",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "150",
+              "attribute": "speed"
+            },
+            {
+              "kind": "field",
+              "name": "eraseSpeed",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "80",
+              "attribute": "erase-speed"
+            },
+            {
+              "kind": "field",
+              "name": "typing",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "typing",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "text",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "text"
+            },
+            {
+              "kind": "field",
+              "name": "elementVisible",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "elementVisible"
+            },
+            {
+              "kind": "field",
+              "name": "_length",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "_length"
+            },
+            {
+              "kind": "field",
+              "name": "_oldText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "_oldText"
+            }
+          ],
+          "events": [
+            {
+              "name": "type-writer-end",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "delay",
+              "type": {
+                "text": "number"
+              },
+              "default": "100",
+              "fieldName": "delay"
+            },
+            {
+              "name": "cursor-duration",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "cursorDuration"
+            },
+            {
+              "name": "text",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "text"
+            },
+            {
+              "name": "speed",
+              "type": {
+                "text": "number"
+              },
+              "default": "150",
+              "fieldName": "speed"
+            },
+            {
+              "name": "elementVisible",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "elementVisible"
+            },
+            {
+              "name": "erase-speed",
+              "type": {
+                "text": "number"
+              },
+              "default": "80",
+              "fieldName": "eraseSpeed"
+            },
+            {
+              "name": "typing",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "typing"
+            },
+            {
+              "name": "_length",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "_length"
+            },
+            {
+              "name": "_oldText",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "_oldText"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "IntersectionObserverMixin",
+              "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "type-writer",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "TypeWriter",
+            "module": "type-writer.js"
+          }
         },
         {
-          "name": "_length",
-          "description": "`_length` {`number`} - \n\nProperty: _length"
-        },
-        {
-          "name": "_oldText",
-          "description": "`_oldText` {`string`} - \n\nProperty: _oldText"
-        },
-        {
-          "name": "delay",
-          "description": "`delay` {`number`} - \n\nProperty: delay\n\nDefault: 100"
-        },
-        {
-          "name": "cursor-duration",
-          "description": "`cursor-duration` {`number`} - \n\nProperty: cursorDuration\n\nDefault: 0"
-        },
-        {
-          "name": "speed",
-          "description": "`speed` {`number`} - \n\nProperty: speed\n\nDefault: 150"
-        },
-        {
-          "name": "erase-speed",
-          "description": "`erase-speed` {`number`} - \n\nProperty: eraseSpeed\n\nDefault: 80"
-        },
-        {
-          "name": "typing",
-          "description": "`typing` {`boolean`} - \n\nProperty: typing\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "elementVisible",
-          "description": "`elementVisible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "ontype-writer-end",
-          "description": "`type-writer-end` {`CustomEvent<any>`} - "
+          "kind": "js",
+          "name": "TypeWriter",
+          "declaration": {
+            "name": "TypeWriter",
+            "module": "type-writer.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

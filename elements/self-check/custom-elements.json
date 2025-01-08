@@ -1,74 +1,262 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "self-check",
-      "description": "`self-check`\n\n### Styling\n\n`<self-check>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0\n`--self-check-question-color` | question background color | var(--simple-colors-default-theme-grey-1, #fff)\n`--self-check-question-text` | question text color  | var(--simple-colors-default-theme-grey-12, #000)\n`--self-check-heading-color` | heading background color | var(--simple-colors-default-theme-accent-8, #444)\n`--self-check-heading-text` | heading text color | var(--simple-colors-default-theme-grey-1, #fff)\n`--self-check-answer-color` | answer background color | var(--simple-colors-default-theme-light-green-8, #00762e)\n`--self-check-answer-text` | answer text color | var(--simple-colors-default-theme-grey-1, #fff)\n\nAttributes:\n\n  * `described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `link` {`string`} - Link for more information.\n\n  * `correct` {`boolean`} - Property for toggling \"checkbtn\".\n\n  * `alt` {`string`} - Alt text for image.\n\n  * `image` {`string`} - Image.\n\n  * `question` {`string`} - Question.\n\n  * `title` {`string`} - Title.\n\n  * `t` - \n\n  * `image-loaded` {`boolean`} - \n\n  * `element-visible` {`boolean`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `describedBy` {`string`} - Aria-describedby data passed down to appropriate tag\n\n  * `link` {`string`} - Link for more information.\n\n  * `correct` {`boolean`} - Property for toggling \"checkbtn\".\n\n  * `alt` {`string`} - Alt text for image.\n\n  * `image` {`string`} - Image.\n\n  * `question` {`string`} - Question.\n\n  * `title` {`string`} - Title.\n\n  * `fullWidthImage` {`boolean`} - \n\n  * `t` - \n\n  * `replacementDelay` {`number`} - \n\n  * `imageLoaded` {`boolean`} - \n\n  * `loadingImg` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "self-check.js",
+      "declarations": [
         {
-          "name": "described-by",
-          "description": "`described-by` {`string`} - Aria-describedby data passed down to appropriate tag\n\nProperty: describedBy"
+          "kind": "class",
+          "description": "`self-check`\n\n### Styling\n\n`<self-check>` provides the following custom properties\nfor styling:\n\nCustom property | Description | Default\n----------------|-------------|----------\n`--a11y-collapse-margin` | margin around a11y-collapse | 15px 0\n`--self-check-question-color` | question background color | var(--simple-colors-default-theme-grey-1, #fff)\n`--self-check-question-text` | question text color  | var(--simple-colors-default-theme-grey-12, #000)\n`--self-check-heading-color` | heading background color | var(--simple-colors-default-theme-accent-8, #444)\n`--self-check-heading-text` | heading text color | var(--simple-colors-default-theme-grey-1, #fff)\n`--self-check-answer-color` | answer background color | var(--simple-colors-default-theme-light-green-8, #00762e)\n`--self-check-answer-text` | answer text color | var(--simple-colors-default-theme-grey-1, #fff)",
+          "name": "SelfCheck",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "double-check that we are set to inactivate click handlers\nthis is for when activated in a duplicate / adding new content state"
+            },
+            {
+              "kind": "method",
+              "name": "openAnswer",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Property for toggling \"checkbtn\"."
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "correct",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Property for toggling \"checkbtn\".",
+              "default": "false",
+              "attribute": "correct",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "alt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Alt text for image.",
+              "default": "\"\"",
+              "attribute": "alt",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image.",
+              "default": "\"\"",
+              "attribute": "image",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "question",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Question.",
+              "default": "\"\"",
+              "attribute": "question"
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"blue\""
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Title.",
+              "default": "\"Self-Check\"",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "fullWidthImage",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ revealAnswer: \"Reveal Answer\", close: \"Close\", moreInformation: \"More information\", }"
+            },
+            {
+              "kind": "field",
+              "name": "describedBy",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aria-describedby data passed down to appropriate tag",
+              "attribute": "described-by"
+            },
+            {
+              "kind": "field",
+              "name": "link",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Link for more information.",
+              "attribute": "link"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Title.",
+              "default": "\"Self-Check\"",
+              "fieldName": "title"
+            },
+            {
+              "name": "question",
+              "type": {
+                "text": "string"
+              },
+              "description": "Question.",
+              "default": "\"\"",
+              "fieldName": "question"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "description": "Image.",
+              "default": "\"\"",
+              "fieldName": "image"
+            },
+            {
+              "name": "alt",
+              "type": {
+                "text": "string"
+              },
+              "description": "Alt text for image.",
+              "default": "\"\"",
+              "fieldName": "alt"
+            },
+            {
+              "name": "described-by",
+              "type": {
+                "text": "string"
+              },
+              "description": "Aria-describedby data passed down to appropriate tag",
+              "fieldName": "describedBy"
+            },
+            {
+              "name": "link",
+              "type": {
+                "text": "string"
+              },
+              "description": "Link for more information.",
+              "fieldName": "link"
+            },
+            {
+              "name": "correct",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Property for toggling \"checkbtn\".",
+              "default": "false",
+              "fieldName": "correct"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
+              "name": "lazyImageLoader",
+              "package": "@haxtheweb/lazy-image-helpers/lazy-image-helpers.js"
+            },
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "self-check",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SelfCheck",
+            "module": "self-check.js"
+          }
         },
         {
-          "name": "link",
-          "description": "`link` {`string`} - Link for more information.\n\nProperty: link"
-        },
-        {
-          "name": "correct",
-          "description": "`correct` {`boolean`} - Property for toggling \"checkbtn\".\n\nProperty: correct\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "alt",
-          "description": "`alt` {`string`} - Alt text for image.\n\nProperty: alt\n\nDefault: "
-        },
-        {
-          "name": "image",
-          "description": "`image` {`string`} - Image.\n\nProperty: image\n\nDefault: "
-        },
-        {
-          "name": "question",
-          "description": "`question` {`string`} - Question.\n\nProperty: question\n\nDefault: "
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - Title.\n\nProperty: title\n\nDefault: Self-Check"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "image-loaded",
-          "description": "`image-loaded` {`boolean`} - \n\nProperty: imageLoaded\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "element-visible",
-          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: blue"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "SelfCheck",
+          "declaration": {
+            "name": "SelfCheck",
+            "module": "self-check.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

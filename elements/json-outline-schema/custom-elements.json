@@ -1,79 +1,680 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "json-outline-schema",
-      "description": "`json-outline-schema`\n`JS based state management helper for the json outline schema spec`\n\nEvents:\n\n  * `json-outline-schema-ready` {`CustomEvent<boolean>`} - \n\n  * `json-outline-schema-unready` {`CustomEvent<boolean>`} - \n\nAttributes:\n\n  * `file` {`string | null`} - \n\n  * `id` {`string | null`} - \n\n  * `title` {`string | null`} - \n\n  * `author` {`string | null`} - \n\n  * `description` {`string | null`} - \n\n  * `license` {`string | null`} - \n\n  * `debug` {`string | null`} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `windowControllers` - \n\n  * `tag` {`string`} - \n\n  * `template` - \n\n  * `__ready` {`boolean`} - \n\n  * `file` {`string | null`} - \n\n  * `id` {`string | null`} - \n\n  * `title` {`string | null`} - \n\n  * `author` {`string | null`} - \n\n  * `description` {`string | null`} - \n\n  * `license` {`string | null`} - \n\n  * `metadata` - \n\n  * `items` {`never[]`} - \n\n  * `debug` {`string | null`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "json-outline-schema.js",
+      "declarations": [
         {
-          "name": "file",
-          "description": "`file` {`string | null`} - \n\nProperty: file\n\nDefault: null",
-          "values": []
+          "kind": "class",
+          "description": "`json-outline-schema`\n`JS based state management helper for the json outline schema spec`",
+          "name": "JsonOutlineSchema",
+          "members": [
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_copyAttribute",
+              "parameters": [
+                {
+                  "name": "name"
+                },
+                {
+                  "name": "to"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_setProperty",
+              "parameters": [
+                {
+                  "name": "{ name, value }"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "clone",
+              "description": "Get a clone of this JSONOutlineSchema object",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "newItem",
+              "description": "Get a new item matching schema standards",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "addItem",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ],
+              "description": "Add an item to the outline",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "validateItem",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ],
+              "description": "Validate that an item matches JSONOutlineSchemaItem format",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "removeItem",
+              "parameters": [
+                {
+                  "name": "id"
+                }
+              ],
+              "description": "Remove an item from the outline if it exists",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "updateItem",
+              "parameters": [
+                {
+                  "name": "item"
+                },
+                {
+                  "name": "save",
+                  "default": "false"
+                }
+              ],
+              "description": "Remove an item from the outline if it exists",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "load",
+              "parameters": [
+                {
+                  "name": "location"
+                }
+              ],
+              "description": "Load a schema from a file"
+            },
+            {
+              "kind": "method",
+              "name": "save",
+              "description": "Save data back to the file system location"
+            },
+            {
+              "kind": "method",
+              "name": "generateUUID",
+              "description": "Generate a UUID"
+            },
+            {
+              "kind": "method",
+              "name": "_uuidPart"
+            },
+            {
+              "kind": "method",
+              "name": "_toggleDebug",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Allow toggling of debug mode which visualizes the outline and writes it to console."
+            },
+            {
+              "kind": "method",
+              "name": "_triggerDebugPaint",
+              "parameters": [
+                {
+                  "name": "debug"
+                }
+              ],
+              "description": "Paint the slot in order to debug the object inside"
+            },
+            {
+              "kind": "field",
+              "name": "file",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "id"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"New site\""
+            },
+            {
+              "kind": "field",
+              "name": "author",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "license",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"by-sa\""
+            },
+            {
+              "kind": "field",
+              "name": "debug",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "method",
+              "name": "updateMetadata",
+              "parameters": [
+                {
+                  "name": "key"
+                },
+                {
+                  "name": "value"
+                }
+              ],
+              "description": "Set individual key values pairs on metdata so we can notice it change"
+            },
+            {
+              "kind": "method",
+              "name": "getItemValues",
+              "parameters": [
+                {
+                  "name": "item"
+                },
+                {
+                  "name": "parent",
+                  "default": "false"
+                }
+              ],
+              "description": "Return some items populated correctly"
+            },
+            {
+              "kind": "method",
+              "name": "getItemSchema",
+              "parameters": [
+                {
+                  "name": "requested",
+                  "default": "\"item\""
+                }
+              ],
+              "description": "Return valid JSON Schema relative to what asked for"
+            },
+            {
+              "kind": "method",
+              "name": "itemsToNodes",
+              "parameters": [
+                {
+                  "name": "items",
+                  "default": "[]"
+                }
+              ],
+              "description": "Take the items of the manifest (or passed in) and generate an HTML list hierarchy from it"
+            },
+            {
+              "kind": "method",
+              "name": "treeToNodes",
+              "parameters": [
+                {
+                  "name": "tree"
+                },
+                {
+                  "name": "appendTarget"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "unflattenItems",
+              "parameters": [
+                {
+                  "name": "items"
+                },
+                {
+                  "name": "parent"
+                },
+                {
+                  "name": "tree"
+                }
+              ],
+              "description": "Helper to unflatten an array and make it into a tree"
+            },
+            {
+              "kind": "method",
+              "name": "scrubElementJOSData",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Scrubs data-jos metadata from node and any children of the node.\nUseful when dealing with text based data being turned into nodes (like a paste)"
+            },
+            {
+              "kind": "method",
+              "name": "nodesToItems",
+              "parameters": [
+                {
+                  "name": "node"
+                },
+                {
+                  "name": "save",
+                  "default": "false"
+                }
+              ],
+              "description": "Take an HTML node and convert it into a JSON Outline Schema based\non parent child relationshios found in the node. Commonly used with ul / ol"
+            },
+            {
+              "kind": "method",
+              "name": "getChildOutline",
+              "parameters": [
+                {
+                  "name": "node"
+                },
+                {
+                  "name": "order",
+                  "default": "0"
+                },
+                {
+                  "name": "indent",
+                  "default": "0"
+                },
+                {
+                  "name": "parent",
+                  "default": "null"
+                }
+              ],
+              "description": "Generate a flat listing of items in JSON OUtline Schema format\nfrom a hierarchy of HTML nodes"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "template"
+            },
+            {
+              "kind": "field",
+              "name": "__ready",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "metadata",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "instance",
+              "default": "this"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "file"
+            },
+            {
+              "name": "id"
+            },
+            {
+              "name": "title"
+            },
+            {
+              "name": "author"
+            },
+            {
+              "name": "description"
+            },
+            {
+              "name": "license"
+            },
+            {
+              "name": "debug"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "json-outline-schema",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "JsonOutlineSchema",
+            "module": "json-outline-schema.js"
+          }
         },
         {
-          "name": "id",
-          "description": "`id` {`string | null`} - \n\nProperty: id",
-          "values": []
+          "kind": "js",
+          "name": "JsonOutlineSchema",
+          "declaration": {
+            "name": "JsonOutlineSchema",
+            "module": "json-outline-schema.js"
+          }
         },
         {
-          "name": "title",
-          "description": "`title` {`string | null`} - \n\nProperty: title\n\nDefault: New site",
-          "values": []
-        },
-        {
-          "name": "author",
-          "description": "`author` {`string | null`} - \n\nProperty: author\n\nDefault: ",
-          "values": []
-        },
-        {
-          "name": "description",
-          "description": "`description` {`string | null`} - \n\nProperty: description\n\nDefault: ",
-          "values": []
-        },
-        {
-          "name": "license",
-          "description": "`license` {`string | null`} - \n\nProperty: license\n\nDefault: by-sa",
-          "values": []
-        },
-        {
-          "name": "debug",
-          "description": "`debug` {`string | null`} - \n\nProperty: debug\n\nDefault: false",
-          "values": []
-        },
-        {
-          "name": "onjson-outline-schema-ready",
-          "description": "`json-outline-schema-ready` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onjson-outline-schema-unready",
-          "description": "`json-outline-schema-unready` {`CustomEvent<boolean>`} - "
+          "kind": "js",
+          "name": "JSONOutlineSchemaItem",
+          "declaration": {
+            "name": "JSONOutlineSchemaItem",
+            "module": "json-outline-schema.js"
+          }
         }
       ]
     },
     {
-      "name": "jos-render",
-      "description": "Attributes:\n\n  * `source` {`string`} - \n\n  * `map` - \n\n  * `items` {`any[]`} - \n\nProperties:\n\n  * `source` {`string`} - \n\n  * `map` - \n\n  * `registry` - \n\n  * `items` {`any[]`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/jos-render.js",
+      "declarations": [
         {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source"
+          "kind": "class",
+          "description": "",
+          "name": "JosRender",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "renderItems",
+              "parameters": [
+                {
+                  "name": "items"
+                }
+              ],
+              "description": "Render any item list passed in and handle it via our map\nSeparate function to support dynamic property remapping"
+            },
+            {
+              "kind": "field",
+              "name": "registry"
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "items"
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "source"
+            },
+            {
+              "kind": "field",
+              "name": "map",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "attribute": "map"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "source"
+            },
+            {
+              "name": "map",
+              "type": {
+                "text": "object"
+              },
+              "fieldName": "map"
+            },
+            {
+              "name": "items",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "items"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "JosRender",
+            "module": "lib/jos-render.js"
+          }
         },
         {
-          "name": "map",
-          "description": "`map` - \n\nProperty: map"
-        },
-        {
-          "name": "items",
-          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
+          "kind": "js",
+          "name": "JosRender",
+          "declaration": {
+            "name": "JosRender",
+            "module": "lib/jos-render.js"
+          }
         }
       ]
     },
     {
-      "name": "json-outline-schema-item",
-      "description": "`json-outline-schema-item`\n\nProperties:\n\n  * `id` {`string`} - \n\n  * `title` {`string`} - \n\n  * `location` {`string`} - \n\n  * `slug` {`string`} - \n\n  * `description` {`string`} - \n\n  * `parent` {`string`} - \n\n  * `metadata` - \n\n  * `order` {`number`} - \n\n  * `indent` {`number`} - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "lib/json-outline-schema-item.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`json-outline-schema-item`",
+          "name": "JSONOutlineSchemaItem",
+          "members": [
+            {
+              "kind": "method",
+              "name": "readLocation",
+              "parameters": [
+                {
+                  "name": "basePath",
+                  "default": "\"\""
+                }
+              ],
+              "description": "Load data from the location specified"
+            },
+            {
+              "kind": "method",
+              "name": "writeLocation",
+              "parameters": [
+                {
+                  "name": "body"
+                },
+                {
+                  "name": "basePath",
+                  "default": "\"\""
+                }
+              ],
+              "description": "Load data from the location specified"
+            },
+            {
+              "kind": "method",
+              "name": "generateUUID",
+              "description": "Generate a UUID"
+            },
+            {
+              "kind": "method",
+              "name": "_uuidPart"
+            },
+            {
+              "kind": "field",
+              "name": "id"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"New item\""
+            },
+            {
+              "kind": "field",
+              "name": "location",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "parent",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "metadata",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "order",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "indent",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            }
+          ],
+          "tagName": "json-outline-schema-item",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "JSONOutlineSchemaItem",
+          "declaration": {
+            "name": "JSONOutlineSchemaItem",
+            "module": "lib/json-outline-schema-item.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

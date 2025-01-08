@@ -1,2089 +1,408 @@
 {
-  "version": "experimental",
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "terrible-best-themes",
-      "path": "./lib/terrible-best-themes.js",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "terrible-themes.js",
+      "declarations": [
         {
-          "name": "t",
-          "type": "object"
-        },
-        {
-          "name": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
+          "kind": "class",
+          "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
+          "name": "TerribleThemes",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "__prevPageLabelChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__nextPageLabelChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "HAXCMSRememberRoute",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js"
+            },
+            {
+              "name": "HAXCMSThemeParts",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js"
+            }
+          ],
+          "superclass": {
+            "name": "HAXCMSLitElementTheme",
+            "package": "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"
+          },
+          "tagName": "terrible-themes",
+          "customElement": true
         }
       ],
-      "properties": [
+      "exports": [
         {
-          "name": "HAXCMSI18NMixinBase",
-          "type": "string",
-          "default": "\"../../\""
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "TerribleThemes",
+            "module": "terrible-themes.js"
+          }
         },
         {
-          "name": "t",
-          "attribute": "t",
-          "type": "object"
-        },
-        {
-          "name": "darkMode",
-          "attribute": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hexColor",
-          "attribute": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "attribute": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "isSafari",
-          "attribute": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "editMode",
-          "attribute": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "isLoggedIn",
-          "attribute": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "windowControllers"
-        },
-        {
-          "name": "HAXCMSThemeSettings",
-          "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
-        },
-        {
-          "name": "HAXCMSThemeWiring"
-        },
-        {
-          "name": "responsiveWidth",
-          "attribute": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsiveSize",
-          "attribute": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "attribute": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "attribute": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "attribute": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "attribute": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disableResponsive",
-          "attribute": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "haxcms-toast-hide"
-        },
-        {
-          "name": "popstate"
-        },
-        {
-          "name": "content-container-changed"
-        },
-        {
-          "name": "is-logged-in-changed"
-        },
-        {
-          "name": "edit-mode-changed"
-        },
-        {
-          "name": "resize"
-        },
-        {
-          "name": "haxcms-active-item-changed"
-        },
-        {
-          "name": "responsive-element"
-        },
-        {
-          "name": "responsive-element-deleted"
+          "kind": "js",
+          "name": "TerribleThemes",
+          "declaration": {
+            "name": "TerribleThemes",
+            "module": "terrible-themes.js"
+          }
         }
       ]
     },
     {
-      "name": "terrible-themes",
-      "path": "./lib/terrible-outlet-themes.js",
-      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/terrible-best-themes.js",
+      "declarations": [
         {
-          "name": "t",
-          "type": "object"
-        },
-        {
-          "name": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
+          "kind": "class",
+          "description": "",
+          "name": "TerribleBestThemes",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "backgroundColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"#e6fbff\""
+            }
+          ],
+          "mixins": [
+            {
+              "name": "HAXCMSRememberRoute",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js"
+            },
+            {
+              "name": "HAXCMSThemeParts",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js"
+            }
+          ],
+          "superclass": {
+            "name": "HAXCMSLitElementTheme",
+            "package": "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"
+          }
         }
       ],
-      "properties": [
+      "exports": [
         {
-          "name": "HAXCMSI18NMixinBase",
-          "type": "string",
-          "default": "\"../../\""
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "TerribleBestThemes",
+            "module": "lib/terrible-best-themes.js"
+          }
         },
         {
-          "name": "t",
-          "attribute": "t",
-          "type": "object"
-        },
-        {
-          "name": "darkMode",
-          "attribute": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hexColor",
-          "attribute": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "attribute": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "isSafari",
-          "attribute": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "editMode",
-          "attribute": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "isLoggedIn",
-          "attribute": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "windowControllers"
-        },
-        {
-          "name": "HAXCMSThemeSettings",
-          "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
-        },
-        {
-          "name": "HAXCMSThemeWiring"
-        },
-        {
-          "name": "responsiveWidth",
-          "attribute": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsiveSize",
-          "attribute": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "attribute": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "attribute": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "attribute": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "attribute": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disableResponsive",
-          "attribute": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "haxcms-toast-hide"
-        },
-        {
-          "name": "popstate"
-        },
-        {
-          "name": "content-container-changed"
-        },
-        {
-          "name": "is-logged-in-changed"
-        },
-        {
-          "name": "edit-mode-changed"
-        },
-        {
-          "name": "resize"
-        },
-        {
-          "name": "haxcms-active-item-changed"
-        },
-        {
-          "name": "responsive-element"
-        },
-        {
-          "name": "responsive-element-deleted"
+          "kind": "js",
+          "name": "TerribleBestThemes",
+          "declaration": {
+            "name": "TerribleBestThemes",
+            "module": "lib/terrible-best-themes.js"
+          }
         }
       ]
     },
     {
-      "name": "terrible-outlet-themes",
-      "path": "./lib/terrible-outlet-themes.js",
-      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/terrible-outlet-themes.js",
+      "declarations": [
         {
-          "name": "t",
-          "type": "object"
-        },
-        {
-          "name": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
+          "kind": "class",
+          "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
+          "name": "TerribleOutletThemes",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "backgroundColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"#e6fbff\""
+            }
+          ],
+          "mixins": [
+            {
+              "name": "HAXCMSRememberRoute",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js"
+            },
+            {
+              "name": "HAXCMSThemeParts",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js"
+            }
+          ],
+          "superclass": {
+            "name": "HAXCMSLitElementTheme",
+            "package": "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"
+          },
+          "tagName": "terrible-themes",
+          "customElement": true
         }
       ],
-      "properties": [
+      "exports": [
         {
-          "name": "HAXCMSI18NMixinBase",
-          "type": "string",
-          "default": "\"../../\""
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "TerribleOutletThemes",
+            "module": "lib/terrible-outlet-themes.js"
+          }
         },
         {
-          "name": "t",
-          "attribute": "t",
-          "type": "object"
-        },
-        {
-          "name": "darkMode",
-          "attribute": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hexColor",
-          "attribute": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "attribute": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "isSafari",
-          "attribute": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "editMode",
-          "attribute": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "isLoggedIn",
-          "attribute": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "windowControllers"
-        },
-        {
-          "name": "HAXCMSThemeSettings",
-          "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
-        },
-        {
-          "name": "HAXCMSThemeWiring"
-        },
-        {
-          "name": "responsiveWidth",
-          "attribute": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsiveSize",
-          "attribute": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "attribute": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "attribute": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "attribute": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "attribute": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disableResponsive",
-          "attribute": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "haxcms-toast-hide"
-        },
-        {
-          "name": "popstate"
-        },
-        {
-          "name": "content-container-changed"
-        },
-        {
-          "name": "is-logged-in-changed"
-        },
-        {
-          "name": "edit-mode-changed"
-        },
-        {
-          "name": "resize"
-        },
-        {
-          "name": "haxcms-active-item-changed"
-        },
-        {
-          "name": "responsive-element"
-        },
-        {
-          "name": "responsive-element-deleted"
+          "kind": "js",
+          "name": "TerribleOutletThemes",
+          "declaration": {
+            "name": "TerribleOutletThemes",
+            "module": "lib/terrible-outlet-themes.js"
+          }
         }
       ]
     },
     {
-      "name": "terrible-themes",
-      "path": "./lib/terrible-productionz-themes.js",
-      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/terrible-productionz-themes.js",
+      "declarations": [
         {
-          "name": "activeItem",
-          "description": "The active item to render",
-          "type": "object"
-        },
-        {
-          "name": "author",
-          "description": "The author of the item",
-          "type": "string"
-        },
-        {
-          "name": "t",
-          "type": "object"
-        },
-        {
-          "name": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
+          "kind": "class",
+          "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
+          "name": "TerribleProductionzThemes",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "backgroundColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"#000000\""
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"#D2D2D2\""
+            },
+            {
+              "kind": "field",
+              "name": "backgroundImage",
+              "default": "`url(${ new URL(\"assets/header.jpg\", import.meta.url).href }/../productionzbg.jpg)`"
+            },
+            {
+              "kind": "field",
+              "name": "activeItem",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "The active item to render",
+              "attribute": "activeItem"
+            },
+            {
+              "kind": "field",
+              "name": "author",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The author of the item",
+              "attribute": "author"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "activeItem",
+              "type": {
+                "text": "object"
+              },
+              "description": "The active item to render",
+              "fieldName": "activeItem"
+            },
+            {
+              "name": "author",
+              "type": {
+                "text": "string"
+              },
+              "description": "The author of the item",
+              "fieldName": "author"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "HAXCMSRememberRoute",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js"
+            },
+            {
+              "name": "HAXCMSThemeParts",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js"
+            }
+          ],
+          "superclass": {
+            "name": "HAXCMSLitElementTheme",
+            "package": "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"
+          },
+          "tagName": "terrible-themes",
+          "customElement": true
         }
       ],
-      "properties": [
+      "exports": [
         {
-          "name": "activeItem",
-          "attribute": "activeItem",
-          "description": "The active item to render",
-          "type": "object"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "TerribleProductionzThemes",
+            "module": "lib/terrible-productionz-themes.js"
+          }
         },
         {
-          "name": "author",
-          "attribute": "author",
-          "description": "The author of the item",
-          "type": "string"
-        },
-        {
-          "name": "HAXCMSI18NMixinBase",
-          "type": "string",
-          "default": "\"../../\""
-        },
-        {
-          "name": "t",
-          "attribute": "t",
-          "type": "object"
-        },
-        {
-          "name": "darkMode",
-          "attribute": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hexColor",
-          "attribute": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "attribute": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "isSafari",
-          "attribute": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "editMode",
-          "attribute": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "isLoggedIn",
-          "attribute": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "windowControllers"
-        },
-        {
-          "name": "HAXCMSThemeSettings",
-          "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
-        },
-        {
-          "name": "HAXCMSThemeWiring"
-        },
-        {
-          "name": "responsiveWidth",
-          "attribute": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsiveSize",
-          "attribute": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "attribute": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "attribute": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "attribute": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "attribute": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disableResponsive",
-          "attribute": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "haxcms-toast-hide"
-        },
-        {
-          "name": "popstate"
-        },
-        {
-          "name": "content-container-changed"
-        },
-        {
-          "name": "is-logged-in-changed"
-        },
-        {
-          "name": "edit-mode-changed"
-        },
-        {
-          "name": "resize"
-        },
-        {
-          "name": "haxcms-active-item-changed"
-        },
-        {
-          "name": "responsive-element"
-        },
-        {
-          "name": "responsive-element-deleted"
+          "kind": "js",
+          "name": "TerribleProductionzThemes",
+          "declaration": {
+            "name": "TerribleProductionzThemes",
+            "module": "lib/terrible-productionz-themes.js"
+          }
         }
       ]
     },
     {
-      "name": "terrible-productionz-themes",
-      "path": "./lib/terrible-productionz-themes.js",
-      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/terrible-resume-themes.js",
+      "declarations": [
         {
-          "name": "activeItem",
-          "description": "The active item to render",
-          "type": "object"
-        },
-        {
-          "name": "author",
-          "description": "The author of the item",
-          "type": "string"
-        },
-        {
-          "name": "t",
-          "type": "object"
-        },
-        {
-          "name": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
+          "kind": "class",
+          "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
+          "name": "TerribleResumeThemes",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "backgroundColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"#e6fbff\""
+            }
+          ],
+          "mixins": [
+            {
+              "name": "HAXCMSRememberRoute",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js"
+            },
+            {
+              "name": "HAXCMSThemeParts",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js"
+            }
+          ],
+          "superclass": {
+            "name": "HAXCMSLitElementTheme",
+            "package": "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"
+          },
+          "tagName": "terrible-themes",
+          "customElement": true
         }
       ],
-      "properties": [
-        {
-          "name": "activeItem",
-          "attribute": "activeItem",
-          "description": "The active item to render",
-          "type": "object"
-        },
-        {
-          "name": "author",
-          "attribute": "author",
-          "description": "The author of the item",
-          "type": "string"
-        },
-        {
-          "name": "HAXCMSI18NMixinBase",
-          "type": "string",
-          "default": "\"../../\""
-        },
-        {
-          "name": "t",
-          "attribute": "t",
-          "type": "object"
-        },
-        {
-          "name": "darkMode",
-          "attribute": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hexColor",
-          "attribute": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "attribute": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "isSafari",
-          "attribute": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "editMode",
-          "attribute": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "isLoggedIn",
-          "attribute": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "windowControllers"
-        },
-        {
-          "name": "HAXCMSThemeSettings",
-          "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
-        },
-        {
-          "name": "HAXCMSThemeWiring"
-        },
-        {
-          "name": "responsiveWidth",
-          "attribute": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsiveSize",
-          "attribute": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "attribute": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "attribute": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "attribute": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "attribute": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disableResponsive",
-          "attribute": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "haxcms-toast-hide"
-        },
-        {
-          "name": "popstate"
-        },
-        {
-          "name": "content-container-changed"
-        },
-        {
-          "name": "is-logged-in-changed"
-        },
-        {
-          "name": "edit-mode-changed"
-        },
-        {
-          "name": "resize"
-        },
-        {
-          "name": "haxcms-active-item-changed"
-        },
-        {
-          "name": "responsive-element"
-        },
-        {
-          "name": "responsive-element-deleted"
-        }
-      ]
-    },
-    {
-      "name": "terrible-themes",
-      "path": "./lib/terrible-resume-themes.js",
-      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
-      "attributes": [
-        {
-          "name": "t",
-          "type": "object"
-        },
-        {
-          "name": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "HAXCMSI18NMixinBase",
-          "type": "string",
-          "default": "\"../../\""
-        },
-        {
-          "name": "t",
-          "attribute": "t",
-          "type": "object"
-        },
-        {
-          "name": "darkMode",
-          "attribute": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hexColor",
-          "attribute": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "attribute": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "isSafari",
-          "attribute": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "editMode",
-          "attribute": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "isLoggedIn",
-          "attribute": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "windowControllers"
-        },
-        {
-          "name": "HAXCMSThemeSettings",
-          "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
-        },
-        {
-          "name": "HAXCMSThemeWiring"
-        },
-        {
-          "name": "responsiveWidth",
-          "attribute": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsiveSize",
-          "attribute": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "attribute": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "attribute": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "attribute": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "attribute": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disableResponsive",
-          "attribute": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "haxcms-toast-hide"
-        },
-        {
-          "name": "popstate"
-        },
-        {
-          "name": "content-container-changed"
-        },
-        {
-          "name": "is-logged-in-changed"
-        },
-        {
-          "name": "edit-mode-changed"
-        },
-        {
-          "name": "resize"
-        },
-        {
-          "name": "haxcms-active-item-changed"
-        },
-        {
-          "name": "responsive-element"
-        },
-        {
-          "name": "responsive-element-deleted"
-        }
-      ]
-    },
-    {
-      "name": "terrible-resume-themes",
-      "path": "./lib/terrible-resume-themes.js",
-      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
-      "attributes": [
-        {
-          "name": "t",
-          "type": "object"
-        },
-        {
-          "name": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "HAXCMSI18NMixinBase",
-          "type": "string",
-          "default": "\"../../\""
-        },
-        {
-          "name": "t",
-          "attribute": "t",
-          "type": "object"
-        },
-        {
-          "name": "darkMode",
-          "attribute": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hexColor",
-          "attribute": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "attribute": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "isSafari",
-          "attribute": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "editMode",
-          "attribute": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "isLoggedIn",
-          "attribute": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "windowControllers"
-        },
-        {
-          "name": "HAXCMSThemeSettings",
-          "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
-        },
-        {
-          "name": "HAXCMSThemeWiring"
-        },
-        {
-          "name": "responsiveWidth",
-          "attribute": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsiveSize",
-          "attribute": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "attribute": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "attribute": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "attribute": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "attribute": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disableResponsive",
-          "attribute": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "haxcms-toast-hide"
-        },
-        {
-          "name": "popstate"
-        },
-        {
-          "name": "content-container-changed"
-        },
-        {
-          "name": "is-logged-in-changed"
-        },
-        {
-          "name": "edit-mode-changed"
-        },
-        {
-          "name": "resize"
-        },
-        {
-          "name": "haxcms-active-item-changed"
-        },
-        {
-          "name": "responsive-element"
-        },
-        {
-          "name": "responsive-element-deleted"
-        }
-      ]
-    },
-    {
-      "name": "terrible-themes",
-      "path": "./src/terrible-themes.js",
-      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
-      "attributes": [
-        {
-          "name": "t",
-          "type": "object"
-        },
-        {
-          "name": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "HAXCMSI18NMixinBase",
-          "type": "string",
-          "default": "\"../../\""
-        },
-        {
-          "name": "t",
-          "attribute": "t",
-          "type": "object"
-        },
-        {
-          "name": "darkMode",
-          "attribute": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hexColor",
-          "attribute": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "attribute": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "isSafari",
-          "attribute": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "editMode",
-          "attribute": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "isLoggedIn",
-          "attribute": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "windowControllers"
-        },
-        {
-          "name": "HAXCMSThemeSettings",
-          "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
-        },
-        {
-          "name": "HAXCMSThemeWiring"
-        },
-        {
-          "name": "responsiveWidth",
-          "attribute": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsiveSize",
-          "attribute": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "attribute": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "attribute": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "attribute": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "attribute": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disableResponsive",
-          "attribute": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "haxcms-toast-hide"
-        },
-        {
-          "name": "popstate"
-        },
-        {
-          "name": "content-container-changed"
-        },
-        {
-          "name": "is-logged-in-changed"
-        },
-        {
-          "name": "edit-mode-changed"
-        },
-        {
-          "name": "resize"
-        },
-        {
-          "name": "haxcms-active-item-changed"
-        },
-        {
-          "name": "responsive-element"
-        },
-        {
-          "name": "responsive-element-deleted"
-        }
-      ]
-    },
-    {
-      "name": "terrible-themes",
-      "path": "./terrible-themes.js",
-      "description": "`terrible-themes`\n`themes inspired by creations by btopro from his youth. legitimate, terrible websites.`",
-      "attributes": [
-        {
-          "name": "t",
-          "type": "object"
-        },
-        {
-          "name": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "properties": [
-        {
-          "name": "HAXCMSI18NMixinBase",
-          "type": "string",
-          "default": "\"../../\""
-        },
-        {
-          "name": "t",
-          "attribute": "t",
-          "type": "object"
-        },
-        {
-          "name": "darkMode",
-          "attribute": "dark-mode",
-          "type": "boolean"
-        },
-        {
-          "name": "hexColor",
-          "attribute": "hex-color",
-          "description": "Class for the color",
-          "type": "string"
-        },
-        {
-          "name": "color",
-          "attribute": "color",
-          "description": "Color class work to apply",
-          "type": "string"
-        },
-        {
-          "name": "contentContainer",
-          "attribute": "contentContainer",
-          "description": "DOM node that wraps the slot",
-          "type": "object"
-        },
-        {
-          "name": "isSafari",
-          "attribute": "is-safari",
-          "type": "boolean"
-        },
-        {
-          "name": "editMode",
-          "attribute": "edit-mode",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "isLoggedIn",
-          "attribute": "is-logged-in",
-          "description": "editting state for the page",
-          "type": "boolean",
-          "default": "false"
-        },
-        {
-          "name": "windowControllers"
-        },
-        {
-          "name": "HAXCMSThemeSettings",
-          "type": "object",
-          "default": "{\"autoScroll\":false,\"scrollTarget\":\"globalThis\"}"
-        },
-        {
-          "name": "HAXCMSThemeWiring"
-        },
-        {
-          "name": "responsiveWidth",
-          "attribute": "responsive-width",
-          "description": "width in pixels",
-          "type": "number"
-        },
-        {
-          "name": "responsiveSize",
-          "attribute": "responsive-size",
-          "description": "size for responsive styling: xs, sm, md, lg, xl",
-          "type": "string",
-          "default": "\"xs\""
-        },
-        {
-          "name": "sm",
-          "attribute": "sm",
-          "description": "Miniumum value for small breakpoint",
-          "type": "number",
-          "default": "600"
-        },
-        {
-          "name": "md",
-          "attribute": "md",
-          "description": "Miniumum value for medium breakpoint",
-          "type": "number",
-          "default": "900"
-        },
-        {
-          "name": "lg",
-          "attribute": "lg",
-          "description": "Miniumum value for large breakpoint",
-          "type": "number",
-          "default": "1200"
-        },
-        {
-          "name": "xl",
-          "attribute": "xl",
-          "description": "Miniumum value for extra-large breakpoint",
-          "type": "number",
-          "default": "1500"
-        },
-        {
-          "name": "disableResponsive",
-          "attribute": "disable-responsive",
-          "type": "boolean",
-          "default": "false"
-        }
-      ],
-      "events": [
-        {
-          "name": "haxcms-toast-hide"
-        },
-        {
-          "name": "popstate"
-        },
-        {
-          "name": "content-container-changed"
-        },
-        {
-          "name": "is-logged-in-changed"
-        },
-        {
-          "name": "edit-mode-changed"
-        },
-        {
-          "name": "resize"
-        },
-        {
-          "name": "haxcms-active-item-changed"
-        },
-        {
-          "name": "responsive-element"
-        },
-        {
-          "name": "responsive-element-deleted"
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "TerribleResumeThemes",
+            "module": "lib/terrible-resume-themes.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "TerribleResumeThemes",
+          "declaration": {
+            "name": "TerribleResumeThemes",
+            "module": "lib/terrible-resume-themes.js"
+          }
         }
       ]
     }

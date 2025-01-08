@@ -1,17 +1,38 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "page-scroll-position",
-      "description": "Events:\n\n  * `value-changed` {`CustomEvent<{ value: number; }>`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "page-scroll-position.js",
+      "declarations": [
         {
-          "name": "onvalue-changed",
-          "description": "`value-changed` {`CustomEvent<{ value: number; }>`} - "
+          "kind": "class",
+          "description": "",
+          "name": "PageScrollPosition",
+          "members": [
+            {
+              "kind": "method",
+              "name": "attachedCallback"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "page-scroll-position",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "page-scroll-position",
+          "declaration": {
+            "name": "PageScrollPosition",
+            "module": "page-scroll-position.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

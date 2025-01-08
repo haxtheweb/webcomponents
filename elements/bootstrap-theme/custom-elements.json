@@ -1,208 +1,979 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "bootstrap-theme",
-      "description": "`bootstrap-theme`\n`Hax bootstrap themeing`\n\nEvents:\n\n  * `super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `resize` {`Event`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `searchTerm` {`string`} - \n\n  * `dark-mode` {`boolean`} - \n\n  * `hideUserStylesMenu` {`boolean`} - \n\n  * `font-size` {`number`} - \n\n  * `font-family` {`number`} - \n\n  * `color-theme` {`string`} - \n\n  * `is-horizontal` {`boolean`} - \n\n  * `is-flex` {`boolean`} - \n\n  * `menu-open` {`boolean`} - \n\n  * `t` - \n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `is-safari` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `_themeElements` {`never[]`} - \n\n  * `searchTerm` {`string`} - \n\n  * `__siteTitle` {`string`} - \n\n  * `___pageTitle` {`string`} - \n\n  * `__siteImage` {`string`} - \n\n  * `darkMode` {`boolean`} - \n\n  * `hideUserStylesMenu` {`boolean`} - \n\n  * `fontSize` {`number`} - \n\n  * `fontFamily` {`number`} - \n\n  * `colorTheme` {`string`} - \n\n  * `_bootstrapPath` {`string`} - \n\n  * `isHorizontal` {`boolean`} - \n\n  * `isFlex` {`boolean`} - \n\n  * `menuOpen` {`boolean`} - \n\n  * `HAXCMSI18NMixinBase` {`string`} - \n\n  * `t` - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `isSafari` {`boolean`} - \n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "bootstrap-theme.js",
+      "declarations": [
         {
-          "name": "searchTerm",
-          "description": "`searchTerm` {`string`} - \n\nProperty: searchTerm\n\nDefault: "
+          "kind": "class",
+          "description": "`bootstrap-theme`\n`Hax bootstrap themeing`",
+          "name": "BootstrapTheme",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "searchChanged",
+              "parameters": [
+                {
+                  "name": "evt"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "searchItemSelected",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_generateBootstrapLink"
+            },
+            {
+              "kind": "method",
+              "name": "_loadScripts"
+            },
+            {
+              "kind": "method",
+              "name": "_bootstrapLoaded",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_loadBootstrap"
+            },
+            {
+              "kind": "method",
+              "name": "_jqueryLoaded",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getBasePath",
+              "parameters": [
+                {
+                  "name": "url"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "autoScroll",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "kind": "field",
+              "name": "menuOpen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "menu-open",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_bootstrapPath",
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "_themeElements",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "colorTheme",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"0\"",
+              "attribute": "color-theme",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "searchTerm",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "searchTerm"
+            },
+            {
+              "kind": "field",
+              "name": "__siteTitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "___pageTitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "__siteImage",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "__disposer"
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "BootstrapUserStylesMenu",
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "checkUserStylesMenuOpen",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleUserStylesMenu",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "UserStylesSizeDown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "UserStylesSizeUp",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "UserStylesFontFamilyChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "UserStylesColorThemeChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideUserStylesMenu",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hideUserStylesMenu",
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fontSize",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "attribute": "font-size",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fontFamily",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "font-family",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "searchTerm",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "searchTerm"
+            },
+            {
+              "name": "menu-open",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "menuOpen"
+            },
+            {
+              "name": "color-theme",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"0\"",
+              "fieldName": "colorTheme",
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "name": "hideUserStylesMenu",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hideUserStylesMenu",
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "name": "font-size",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "fieldName": "fontSize",
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            },
+            {
+              "name": "font-family",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "fontFamily",
+              "inheritedFrom": {
+                "name": "BootstrapUserStylesMenuMixin",
+                "module": "lib/BootstrapUserStylesMenuMixin.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "HAXCMSThemeParts",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js"
+            },
+            {
+              "name": "BootstrapUserStylesMenuMixin",
+              "package": "@haxtheweb/bootstrap-theme/lib/BootstrapUserStylesMenuMixin.js"
+            },
+            {
+              "name": "HAXCMSMobileMenuMixin",
+              "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js"
+            }
+          ],
+          "superclass": {
+            "name": "HAXCMSLitElementTheme",
+            "package": "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"
+          },
+          "tagName": "bootstrap-theme",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "BootstrapTheme",
+            "module": "bootstrap-theme.js"
+          }
         },
         {
-          "name": "dark-mode",
-          "description": "`dark-mode` {`boolean`} - \n\nProperty: darkMode",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideUserStylesMenu",
-          "description": "`hideUserStylesMenu` {`boolean`} - \n\nProperty: hideUserStylesMenu\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "font-size",
-          "description": "`font-size` {`number`} - \n\nProperty: fontSize\n\nDefault: 1"
-        },
-        {
-          "name": "font-family",
-          "description": "`font-family` {`number`} - \n\nProperty: fontFamily\n\nDefault: 0"
-        },
-        {
-          "name": "color-theme",
-          "description": "`color-theme` {`string`} - \n\nProperty: colorTheme\n\nDefault: 0"
-        },
-        {
-          "name": "is-horizontal",
-          "description": "`is-horizontal` {`boolean`} - \n\nProperty: isHorizontal\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-flex",
-          "description": "`is-flex` {`boolean`} - \n\nProperty: isFlex\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "menu-open",
-          "description": "`menu-open` {`boolean`} - \n\nProperty: menuOpen\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t"
-        },
-        {
-          "name": "hex-color",
-          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
-        },
-        {
-          "name": "color",
-          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
-        },
-        {
-          "name": "contentContainer",
-          "description": "`contentContainer` - DOM node that wraps the slot\n\nProperty: contentContainer"
-        },
-        {
-          "name": "_location",
-          "description": "`_location` - location as object\n\nProperty: _location"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "responsive-width",
-          "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
-        },
-        {
-          "name": "responsive-size",
-          "description": "`responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\nProperty: responsiveSize\n\nDefault: xs"
-        },
-        {
-          "name": "sm",
-          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 600"
-        },
-        {
-          "name": "md",
-          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 900"
-        },
-        {
-          "name": "lg",
-          "description": "`lg` {`number`} - Miniumum value for large breakpoint\n\nProperty: lg\n\nDefault: 1200"
-        },
-        {
-          "name": "xl",
-          "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
-        },
-        {
-          "name": "disable-responsive",
-          "description": "`disable-responsive` {`boolean`} - \n\nProperty: disableResponsive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onsuper-daemon-define-option",
-          "description": "`super-daemon-define-option` {`CustomEvent<{ title: any; icon: string; tags: string[]; value: { target: this; method: string; }; context: string; eventName: string; path: string; }>`} - "
-        },
-        {
-          "name": "onpopstate",
-          "description": "`popstate` {`PopStateEvent`} - "
-        },
-        {
-          "name": "oncontent-container-changed",
-          "description": "`content-container-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onis-logged-in-changed",
-          "description": "`is-logged-in-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onedit-mode-changed",
-          "description": "`edit-mode-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onresize",
-          "description": "`resize` {`Event`} - "
-        },
-        {
-          "name": "onhaxcms-active-item-changed",
-          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
-        },
-        {
-          "name": "onresponsive-element",
-          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
-        },
-        {
-          "name": "onresponsive-element-deleted",
-          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "BootstrapTheme",
+          "declaration": {
+            "name": "BootstrapTheme",
+            "module": "bootstrap-theme.js"
+          }
         }
       ]
     },
     {
-      "name": "bootstrap-breadcrumb",
-      "description": "`bootstrap-breadcrumb`\n`Breadcrumb element for bootstrap theme`\n\nAttributes:\n\n  * `color-theme` {`string`} - \n\n  * `items` {`any[]`} - \n\n  * `homeItem` - \n\nProperties:\n\n  * `colorTheme` {`string`} - \n\n  * `items` {`any[]`} - \n\n  * `_activeItem` - \n\n  * `homeItem` - \n\n  * `_bootstrapPath` {`string`} - \n\n  * `__disposer` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/BootstrapBreadcrumb.js",
+      "declarations": [
         {
-          "name": "color-theme",
-          "description": "`color-theme` {`string`} - \n\nProperty: colorTheme"
+          "kind": "class",
+          "description": "`bootstrap-breadcrumb`\n`Breadcrumb element for bootstrap theme`",
+          "name": "BootstrapBreadcrumb",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "getBasePath",
+              "parameters": [
+                {
+                  "name": "url"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getParentById",
+              "parameters": [
+                {
+                  "name": "parentId"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "addParentToItems",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "items"
+            },
+            {
+              "kind": "field",
+              "name": "_activeItem",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "homeItem",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "attribute": "homeItem"
+            },
+            {
+              "kind": "field",
+              "name": "_bootstrapPath"
+            },
+            {
+              "kind": "field",
+              "name": "__disposer"
+            },
+            {
+              "kind": "field",
+              "name": "colorTheme",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "color-theme",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "items",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "items"
+            },
+            {
+              "name": "homeItem",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "fieldName": "homeItem"
+            },
+            {
+              "name": "color-theme",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "colorTheme"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "bootstrap-breadcrumb",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "BootstrapBreadcrumb",
+            "module": "lib/BootstrapBreadcrumb.js"
+          }
         },
         {
-          "name": "items",
-          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
-        },
-        {
-          "name": "homeItem",
-          "description": "`homeItem` - \n\nProperty: homeItem\n\nDefault: [object Object]"
+          "kind": "js",
+          "name": "BootstrapBreadcrumb",
+          "declaration": {
+            "name": "BootstrapBreadcrumb",
+            "module": "lib/BootstrapBreadcrumb.js"
+          }
         }
       ]
     },
     {
-      "name": "bootstrap-footer",
-      "description": "Attributes:\n\n  * `color-theme` {`string`} - \n\n  * `_forwardItem` - \n\n  * `_backwardItem` - \n\nProperties:\n\n  * `colorTheme` {`string`} - \n\n  * `_bootstrapPath` {`string`} - \n\n  * `_forwardItem` - \n\n  * `_backwardItem` - \n\n  * `_activeItemIndex` {`number`} - \n\n  * `_routerManifest` - \n\n  * `__disposer` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/BootstrapFooter.js",
+      "declarations": [
         {
-          "name": "color-theme",
-          "description": "`color-theme` {`string`} - \n\nProperty: colorTheme"
+          "kind": "class",
+          "description": "",
+          "name": "BootstrapFooter",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "getBasePath",
+              "parameters": [
+                {
+                  "name": "url"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_bootstrapPath"
+            },
+            {
+              "kind": "field",
+              "name": "_forwardItem",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "attribute": "_forwardItem"
+            },
+            {
+              "kind": "field",
+              "name": "_backwardItem",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "attribute": "_backwardItem"
+            },
+            {
+              "kind": "field",
+              "name": "_activeItemIndex",
+              "type": {
+                "text": "number"
+              },
+              "default": "-1"
+            },
+            {
+              "kind": "field",
+              "name": "_routerManifest",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "__disposer"
+            },
+            {
+              "kind": "field",
+              "name": "colorTheme",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "color-theme"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "_backwardItem",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "fieldName": "_backwardItem"
+            },
+            {
+              "name": "_forwardItem",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "fieldName": "_forwardItem"
+            },
+            {
+              "name": "color-theme",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "colorTheme"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "BootstrapFooter",
+            "module": "lib/BootstrapFooter.js"
+          }
         },
         {
-          "name": "_forwardItem",
-          "description": "`_forwardItem` - \n\nProperty: _forwardItem\n\nDefault: [object Object]"
-        },
-        {
-          "name": "_backwardItem",
-          "description": "`_backwardItem` - \n\nProperty: _backwardItem\n\nDefault: [object Object]"
+          "kind": "js",
+          "name": "BootstrapFooter",
+          "declaration": {
+            "name": "BootstrapFooter",
+            "module": "lib/BootstrapFooter.js"
+          }
         }
       ]
     },
     {
-      "name": "bootstrap-search",
-      "description": "Events:\n\n  * `search-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `color-theme` {`string`} - \n\n  * `searchText` {`string`} - \n\nProperties:\n\n  * `colorTheme` {`string`} - \n\n  * `_bootstrapPath` {`string`} - \n\n  * `searchText` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/BootstrapSearch.js",
+      "declarations": [
         {
-          "name": "color-theme",
-          "description": "`color-theme` {`string`} - \n\nProperty: colorTheme"
+          "kind": "class",
+          "description": "",
+          "name": "BootstrapSearch",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "inputChanged",
+              "parameters": [
+                {
+                  "name": "evt"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getBasePath",
+              "parameters": [
+                {
+                  "name": "url"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "_bootstrapPath"
+            },
+            {
+              "kind": "field",
+              "name": "searchText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "searchText"
+            },
+            {
+              "kind": "field",
+              "name": "colorTheme",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "color-theme",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "name": "search-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "color-theme",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "colorTheme"
+            },
+            {
+              "name": "searchText",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "searchText"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "BootstrapSearch",
+            "module": "lib/BootstrapSearch.js"
+          }
         },
         {
-          "name": "searchText",
-          "description": "`searchText` {`string`} - \n\nProperty: searchText\n\nDefault: "
-        },
+          "kind": "js",
+          "name": "BootstrapSearch",
+          "declaration": {
+            "name": "BootstrapSearch",
+            "module": "lib/BootstrapSearch.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/BootstrapUserStylesMenuMixin.js",
+      "declarations": [
         {
-          "name": "onsearch-changed",
-          "description": "`search-changed` {`CustomEvent<this>`} - "
+          "kind": "mixin",
+          "description": "",
+          "name": "BootstrapUserStylesMenuMixin",
+          "members": [
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "BootstrapUserStylesMenu"
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "checkUserStylesMenuOpen",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toggleUserStylesMenu",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "UserStylesSizeDown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "UserStylesSizeUp",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "UserStylesFontFamilyChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "UserStylesColorThemeChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "hideUserStylesMenu",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hideUserStylesMenu"
+            },
+            {
+              "kind": "field",
+              "name": "fontSize",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "attribute": "font-size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "fontFamily",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "font-family",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "colorTheme",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"0\"",
+              "attribute": "color-theme",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_bootstrapPath"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "hideUserStylesMenu",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hideUserStylesMenu"
+            },
+            {
+              "name": "font-size",
+              "type": {
+                "text": "number"
+              },
+              "default": "1",
+              "fieldName": "fontSize"
+            },
+            {
+              "name": "font-family",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "fontFamily"
+            },
+            {
+              "name": "color-theme",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"0\"",
+              "fieldName": "colorTheme"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "BootstrapUserStylesMenuMixin",
+          "declaration": {
+            "name": "BootstrapUserStylesMenuMixin",
+            "module": "lib/BootstrapUserStylesMenuMixin.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

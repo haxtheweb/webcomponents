@@ -1,38 +1,247 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "qr-code",
-      "description": "Properties:\n\n  * `windowControllers` - \n\n  * `_defineProperty` - ",
-      "attributes": []
-    },
-    {
-      "name": "q-r",
-      "description": "`q-r`\n`Polymer wrapper for a qr code.`\n\nAttributes:\n\n  * `data` {`string`} - Data to code via QR code\n\n  * `title` {`string`} - Alternate title for the data\n\n  * `modulesize` {`number`} - module size of the square\n\n  * `margin` {`number`} - Margin on the square\n\n  * `format` {`string`} - format to output\n\nProperties:\n\n  * `data` {`string`} - Data to code via QR code\n\n  * `title` {`string`} - Alternate title for the data\n\n  * `modulesize` {`number`} - module size of the square\n\n  * `margin` {`number`} - Margin on the square\n\n  * `format` {`string`} - format to output",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "q-r.js",
+      "declarations": [
         {
-          "name": "data",
-          "description": "`data` {`string`} - Data to code via QR code\n\nProperty: data"
+          "kind": "class",
+          "description": "`q-r`\n`Polymer wrapper for a qr code.`",
+          "name": "QR",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "Attached to the DOM, now fire.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "modulesize",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "module size of the square",
+              "default": "4",
+              "attribute": "modulesize"
+            },
+            {
+              "kind": "field",
+              "name": "margin",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "Margin on the square",
+              "default": "2",
+              "attribute": "margin"
+            },
+            {
+              "kind": "field",
+              "name": "format",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "format to output",
+              "default": "\"png\"",
+              "attribute": "format"
+            },
+            {
+              "kind": "field",
+              "name": "data",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Data to code via QR code",
+              "attribute": "data"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Alternate title for the data",
+              "attribute": "title"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "data",
+              "type": {
+                "text": "string"
+              },
+              "description": "Data to code via QR code",
+              "fieldName": "data"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Alternate title for the data",
+              "fieldName": "title"
+            },
+            {
+              "name": "modulesize",
+              "type": {
+                "text": "number"
+              },
+              "description": "module size of the square",
+              "default": "4",
+              "fieldName": "modulesize"
+            },
+            {
+              "name": "margin",
+              "type": {
+                "text": "number"
+              },
+              "description": "Margin on the square",
+              "default": "2",
+              "fieldName": "margin"
+            },
+            {
+              "name": "format",
+              "type": {
+                "text": "string"
+              },
+              "description": "format to output",
+              "default": "\"png\"",
+              "fieldName": "format"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "q-r",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "QR",
+            "module": "q-r.js"
+          }
         },
         {
-          "name": "title",
-          "description": "`title` {`string`} - Alternate title for the data\n\nProperty: title"
-        },
-        {
-          "name": "modulesize",
-          "description": "`modulesize` {`number`} - module size of the square\n\nProperty: modulesize\n\nDefault: 4"
-        },
-        {
-          "name": "margin",
-          "description": "`margin` {`number`} - Margin on the square\n\nProperty: margin\n\nDefault: 2"
-        },
-        {
-          "name": "format",
-          "description": "`format` {`string`} - format to output\n\nProperty: format\n\nDefault: png"
+          "kind": "js",
+          "name": "QR",
+          "declaration": {
+            "name": "QR",
+            "module": "q-r.js"
+          }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/qr-code.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "QRCodeElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_qrLoaded"
+            },
+            {
+              "kind": "field",
+              "name": "defaultAttributes",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_defineProperty",
+              "parameters": [
+                {
+                  "name": "attributeName"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getOptions"
+            },
+            {
+              "kind": "method",
+              "name": "generate"
+            },
+            {
+              "kind": "method",
+              "name": "generatePNG"
+            },
+            {
+              "kind": "method",
+              "name": "generateHTML"
+            },
+            {
+              "kind": "method",
+              "name": "generateSVG"
+            },
+            {
+              "kind": "method",
+              "name": "clear"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "QRCodeElement",
+            "module": "lib/qr-code.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "QRCodeElement",
+          "declaration": {
+            "name": "QRCodeElement",
+            "module": "lib/qr-code.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/qr.js",
+      "declarations": [],
+      "exports": []
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

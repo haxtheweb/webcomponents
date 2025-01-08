@@ -1,51 +1,205 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "a11y-compare-image",
-      "description": "`a11y-compare-image`\nLayers images over each other with a slider interface to compare them\n\nAttributes:\n\n  * `active-layer` {`number`} - \n\n  * `__lower` {`string`} - \n\n  * `__upper` {`string`} - \n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - \n\n  * `__markers` {`any[]`} - \n\n  * `label` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `activeLayer` {`number`} - \n\n  * `__lower` {`string`} - \n\n  * `__upper` {`string`} - \n\n  * `opacity` {`boolean`} - mode for the slider: wipe\n\n  * `position` {`number`} - \n\n  * `__markers` {`any[]`} - \n\n  * `label` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "a11y-compare-image.js",
+      "declarations": [
         {
-          "name": "active-layer",
-          "description": "`active-layer` {`number`} - \n\nProperty: activeLayer"
+          "kind": "class",
+          "description": "`a11y-compare-image`\nLayers images over each other with a slider interface to compare them",
+          "name": "a11yCompareImage",
+          "members": [
+            {
+              "kind": "method",
+              "name": "_valueChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_slide",
+              "description": "updates the slider"
+            },
+            {
+              "kind": "method",
+              "name": "_updateMarkers",
+              "parameters": [
+                {
+                  "name": "total"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "opacity",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "mode for the slider: wipe",
+              "default": "false",
+              "attribute": "opacity"
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "50",
+              "attribute": "position",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"blue\""
+            },
+            {
+              "kind": "field",
+              "name": "__markers",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "__markers"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Compare images\"",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "activeLayer",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "active-layer",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__lower",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "__lower"
+            },
+            {
+              "kind": "field",
+              "name": "__upper",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "__upper"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "active-layer",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "activeLayer"
+            },
+            {
+              "name": "opacity",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "mode for the slider: wipe",
+              "default": "false",
+              "fieldName": "opacity"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Compare images\"",
+              "fieldName": "label"
+            },
+            {
+              "name": "position",
+              "type": {
+                "text": "number"
+              },
+              "default": "50",
+              "fieldName": "position"
+            },
+            {
+              "name": "__lower",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "__lower"
+            },
+            {
+              "name": "__upper",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "__upper"
+            },
+            {
+              "name": "__markers",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "__markers"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "a11y-compare-image",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "a11yCompareImage",
+            "module": "a11y-compare-image.js"
+          }
         },
         {
-          "name": "__lower",
-          "description": "`__lower` {`string`} - \n\nProperty: __lower"
-        },
-        {
-          "name": "__upper",
-          "description": "`__upper` {`string`} - \n\nProperty: __upper"
-        },
-        {
-          "name": "opacity",
-          "description": "`opacity` {`boolean`} - mode for the slider: wipe\n\nProperty: opacity\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "position",
-          "description": "`position` {`number`} - \n\nProperty: position\n\nDefault: 50"
-        },
-        {
-          "name": "__markers",
-          "description": "`__markers` {`any[]`} - \n\nProperty: __markers\n\nDefault: "
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: Compare images"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: blue"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "a11yCompareImage",
+          "declaration": {
+            "name": "a11yCompareImage",
+            "module": "a11y-compare-image.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

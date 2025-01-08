@@ -1,47 +1,652 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "undo-manager",
-      "description": "Events:\n\n  * `stack-changed` {`CustomEvent<{ value: Undo; }>`} - \n\n  * `can-undo-changed` {`CustomEvent<{ value: any; }>`} - \n\n  * `can-redo-changed` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `can-undo` {`boolean`} - If we can currently undo based on stack position\n\n  * `can-redo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\nProperties:\n\n  * `canUndo` {`boolean`} - If we can currently undo based on stack position\n\n  * `canRedo` {`boolean`} - If we can currently redo based on stack position\n\n  * `target` - Allow for targetting OTHER elements w/ this behavior\n\n  * `stack` - The undo stack order\n\n  * `undoStackLimit` {`number`} - \n\n  * `undoStackTimer` {`number`} - \n\n  * `undoStackIgnore` {`boolean`} - \n\n  * `undoStackObserver` - \n\n  * `undoStackObserverProps` - Properties for the mutation observer\n\n  * `undoStackInitialValue` - \n\n  * `undoStackPrevValue` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "undo-manager.js",
+      "declarations": [
         {
-          "name": "can-undo",
-          "description": "`can-undo` {`boolean`} - If we can currently undo based on stack position\n\nProperty: canUndo",
-          "valueSet": "v"
+          "kind": "mixin",
+          "description": "",
+          "name": "UndoManagerBehaviors",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "description": "LitElement / popular convention",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "undoManagerStackLogic",
+              "parameters": [
+                {
+                  "name": "mutations"
+                }
+              ],
+              "description": "While a mutation observer, we only respond to there being ANY change\nnot the specfic record. This lets the developer select granularity\nin what to notice (lots of stuff) yet only push state change\nif it matches what they care to monitor as far as detail.\nDefault is to monitor every possible useful detail"
+            },
+            {
+              "kind": "method",
+              "name": "undo"
+            },
+            {
+              "kind": "method",
+              "name": "redo"
+            },
+            {
+              "kind": "method",
+              "name": "commands"
+            },
+            {
+              "kind": "field",
+              "name": "undoStackLimit",
+              "type": {
+                "text": "number"
+              },
+              "default": "20"
+            },
+            {
+              "kind": "field",
+              "name": "undoStackTimer",
+              "type": {
+                "text": "number"
+              },
+              "default": "300"
+            },
+            {
+              "kind": "field",
+              "name": "undoStackIgnore",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "undoStackObserver",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "undoStackObserverProps",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Properties for the mutation observer",
+              "default": "{ attributes: true, attributeOldValue: true, childList: true, characterData: true, characterDataOldValue: true, subtree: true, }",
+              "attribute": "undoStackObserverProps"
+            },
+            {
+              "kind": "field",
+              "name": "undoStackInitialValue"
+            },
+            {
+              "kind": "field",
+              "name": "undoStackPrevValue"
+            },
+            {
+              "kind": "field",
+              "name": "canUndo",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If we can currently undo based on stack position",
+              "attribute": "can-undo"
+            },
+            {
+              "kind": "field",
+              "name": "canRedo",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If we can currently redo based on stack position",
+              "attribute": "can-redo"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Allow for targetting OTHER elements w/ this behavior",
+              "attribute": "target"
+            },
+            {
+              "kind": "field",
+              "name": "stack",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "The undo stack order",
+              "attribute": "stack"
+            }
+          ],
+          "events": [
+            {
+              "name": "stack-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "can-undo-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "can-redo-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "can-undo",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If we can currently undo based on stack position",
+              "fieldName": "canUndo"
+            },
+            {
+              "name": "can-redo",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If we can currently redo based on stack position",
+              "fieldName": "canRedo"
+            },
+            {
+              "name": "undoStackObserverProps",
+              "type": {
+                "text": "object"
+              },
+              "description": "Properties for the mutation observer",
+              "default": "{ attributes: true, attributeOldValue: true, childList: true, characterData: true, characterDataOldValue: true, subtree: true, }",
+              "fieldName": "undoStackObserverProps"
+            },
+            {
+              "name": "target",
+              "type": {
+                "text": "object"
+              },
+              "description": "Allow for targetting OTHER elements w/ this behavior",
+              "fieldName": "target"
+            },
+            {
+              "name": "stack",
+              "type": {
+                "text": "object"
+              },
+              "description": "The undo stack order",
+              "fieldName": "stack"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
         },
         {
-          "name": "can-redo",
-          "description": "`can-redo` {`boolean`} - If we can currently redo based on stack position\n\nProperty: canRedo",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "",
+          "name": "UndoManager",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "description": "LitElement / popular convention",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "undoManagerStackLogic",
+              "parameters": [
+                {
+                  "name": "mutations"
+                }
+              ],
+              "description": "While a mutation observer, we only respond to there being ANY change\nnot the specfic record. This lets the developer select granularity\nin what to notice (lots of stuff) yet only push state change\nif it matches what they care to monitor as far as detail.\nDefault is to monitor every possible useful detail",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "undo",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "redo",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "commands",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "undoStackLimit",
+              "type": {
+                "text": "number"
+              },
+              "default": "20",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "undoStackTimer",
+              "type": {
+                "text": "number"
+              },
+              "default": "300",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "undoStackIgnore",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "undoStackObserver",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "undoStackObserverProps",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Properties for the mutation observer",
+              "default": "{ attributes: true, attributeOldValue: true, childList: true, characterData: true, characterDataOldValue: true, subtree: true, }",
+              "attribute": "undoStackObserverProps",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "undoStackInitialValue",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "undoStackPrevValue",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "canUndo",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If we can currently undo based on stack position",
+              "attribute": "can-undo",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "canRedo",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If we can currently redo based on stack position",
+              "attribute": "can-redo",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Allow for targetting OTHER elements w/ this behavior",
+              "attribute": "target",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "stack",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "The undo stack order",
+              "attribute": "stack",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "UndoManagerBehaviors",
+              "module": "undo-manager.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "undo-manager",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "can-undo",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If we can currently undo based on stack position",
+              "fieldName": "canUndo",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "name": "can-redo",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "If we can currently redo based on stack position",
+              "fieldName": "canRedo",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "name": "undoStackObserverProps",
+              "type": {
+                "text": "object"
+              },
+              "description": "Properties for the mutation observer",
+              "default": "{ attributes: true, attributeOldValue: true, childList: true, characterData: true, characterDataOldValue: true, subtree: true, }",
+              "fieldName": "undoStackObserverProps",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "name": "target",
+              "type": {
+                "text": "object"
+              },
+              "description": "Allow for targetting OTHER elements w/ this behavior",
+              "fieldName": "target",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "name": "stack",
+              "type": {
+                "text": "object"
+              },
+              "description": "The undo stack order",
+              "fieldName": "stack",
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "stack-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "name": "can-undo-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            },
+            {
+              "name": "can-redo-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "UndoManagerBehaviors",
+                "module": "undo-manager.js"
+              }
+            }
+          ]
         },
         {
-          "name": "target",
-          "description": "`target` - Allow for targetting OTHER elements w/ this behavior\n\nProperty: target"
+          "kind": "class",
+          "description": "",
+          "name": "Undo",
+          "members": [
+            {
+              "kind": "method",
+              "name": "execute",
+              "parameters": [
+                {
+                  "name": "command"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "undo"
+            },
+            {
+              "kind": "method",
+              "name": "canUndo"
+            },
+            {
+              "kind": "method",
+              "name": "redo"
+            },
+            {
+              "kind": "method",
+              "name": "canRedo"
+            },
+            {
+              "kind": "method",
+              "name": "_clearRedo"
+            },
+            {
+              "kind": "method",
+              "name": "changed"
+            },
+            {
+              "kind": "field",
+              "name": "commands",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "undoStackPosition",
+              "type": {
+                "text": "number"
+              },
+              "default": "-1"
+            },
+            {
+              "kind": "field",
+              "name": "undoStackLimit",
+              "type": {
+                "text": "number"
+              },
+              "default": "20"
+            }
+          ]
         },
         {
-          "name": "stack",
-          "description": "`stack` - The undo stack order\n\nProperty: stack"
+          "kind": "class",
+          "description": "UndoManagerCommand, simple command scaffold to bridge undo.js with element",
+          "name": "UndoManagerCommand",
+          "members": [
+            {
+              "kind": "method",
+              "name": "execute"
+            },
+            {
+              "kind": "method",
+              "name": "undo"
+            },
+            {
+              "kind": "method",
+              "name": "redo"
+            },
+            {
+              "kind": "field",
+              "name": "el",
+              "default": "el"
+            },
+            {
+              "kind": "field",
+              "name": "oldValue",
+              "default": "oldValue"
+            },
+            {
+              "kind": "field",
+              "name": "newValue",
+              "default": "newValue"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "undo-manager",
+          "declaration": {
+            "name": "UndoManager",
+            "module": "undo-manager.js"
+          }
         },
         {
-          "name": "undoStackObserverProps",
-          "description": "`undoStackObserverProps` - Properties for the mutation observer\n\nProperty: undoStackObserverProps\n\nDefault: [object Object]"
+          "kind": "js",
+          "name": "UndoManager",
+          "declaration": {
+            "name": "UndoManager",
+            "module": "undo-manager.js"
+          }
         },
         {
-          "name": "onstack-changed",
-          "description": "`stack-changed` {`CustomEvent<{ value: Undo; }>`} - "
+          "kind": "js",
+          "name": "Undo",
+          "declaration": {
+            "name": "Undo",
+            "module": "undo-manager.js"
+          }
         },
         {
-          "name": "oncan-undo-changed",
-          "description": "`can-undo-changed` {`CustomEvent<{ value: any; }>`} - "
+          "kind": "js",
+          "name": "UndoManagerCommand",
+          "declaration": {
+            "name": "UndoManagerCommand",
+            "module": "undo-manager.js"
+          }
         },
         {
-          "name": "oncan-redo-changed",
-          "description": "`can-redo-changed` {`CustomEvent<{ value: any; }>`} - "
+          "kind": "js",
+          "name": "UndoManagerBehaviors",
+          "declaration": {
+            "name": "UndoManagerBehaviors",
+            "module": "undo-manager.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

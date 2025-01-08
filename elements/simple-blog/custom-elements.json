@@ -1,288 +1,795 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "simple-blog-footer",
-      "description": "`simple-blog-footer`\n\nEvents:\n\n  * `popstate` {`PopStateEvent`} - \n\nAttributes:\n\n  * `active-manifest-index` {`number`} - active manifest index, key to location in the manifest itemsarray\n\n  * `manifest` - Manifest, JSON Outline Schema object\n\n  * `edit-mode` {`boolean`} - \n\n  * `prevTitle` {`string`} - \n\n  * `prevChanged` {`string`} - \n\n  * `nextTitle` {`string`} - \n\n  * `nextChanged` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `activeManifestIndex` {`number`} - active manifest index, key to location in the manifest itemsarray\n\n  * `manifest` - Manifest, JSON Outline Schema object\n\n  * `editMode` {`boolean`} - \n\n  * `prevTitle` {`string`} - \n\n  * `prevChanged` {`string`} - \n\n  * `nextTitle` {`string`} - \n\n  * `nextChanged` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "simple-blog.js",
+      "declarations": [
         {
-          "name": "active-manifest-index",
-          "description": "`active-manifest-index` {`number`} - active manifest index, key to location in the manifest itemsarray\n\nProperty: activeManifestIndex"
+          "kind": "class",
+          "description": "`simple-blog`\n`A simple blog and associated elements`",
+          "name": "SimpleBlog",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_locationChanged",
+              "parameters": [
+                {
+                  "name": "location"
+                }
+              ],
+              "description": "Listen for router location changes"
+            },
+            {
+              "kind": "method",
+              "name": "_goBack",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Reset the active item to reset state"
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "selectedPage",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "selected-page",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "selected-page",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "selectedPage"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SimpleColorsSuper",
+              "package": "@haxtheweb/simple-colors/simple-colors.js"
+            },
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            }
+          ],
+          "superclass": {
+            "name": "HAXCMSLitElementTheme",
+            "package": "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"
+          },
+          "tagName": "simple-blog",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleBlog",
+            "module": "simple-blog.js"
+          }
         },
         {
-          "name": "manifest",
-          "description": "`manifest` - Manifest, JSON Outline Schema object\n\nProperty: manifest"
-        },
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode",
-          "valueSet": "v"
-        },
-        {
-          "name": "prevTitle",
-          "description": "`prevTitle` {`string`} - \n\nProperty: prevTitle\n\nDefault: "
-        },
-        {
-          "name": "prevChanged",
-          "description": "`prevChanged` {`string`} - \n\nProperty: prevChanged\n\nDefault: "
-        },
-        {
-          "name": "nextTitle",
-          "description": "`nextTitle` {`string`} - \n\nProperty: nextTitle\n\nDefault: "
-        },
-        {
-          "name": "nextChanged",
-          "description": "`nextChanged` {`string`} - \n\nProperty: nextChanged\n\nDefault: "
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onpopstate",
-          "description": "`popstate` {`PopStateEvent`} - "
+          "kind": "js",
+          "name": "SimpleBlog",
+          "declaration": {
+            "name": "SimpleBlog",
+            "module": "simple-blog.js"
+          }
         }
       ]
     },
     {
-      "name": "simple-blog-header",
-      "description": "`simple-blog-header`\n`A simple blog header to the front of the site`\n\nAttributes:\n\n  * `description` {`string`} - \n\n  * `image` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `description` {`string`} - \n\n  * `image` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `title` {`string`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/simple-blog-footer.js",
+      "declarations": [
         {
-          "name": "description",
-          "description": "`description` {`string`} - \n\nProperty: description"
+          "kind": "class",
+          "description": "`simple-blog-footer`",
+          "name": "SimpleBlogFooter",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_activeManifestIndexChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_backButtonTap",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Fire event to unset the global activeItem."
+            },
+            {
+              "kind": "field",
+              "name": "prevTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "prevTitle"
+            },
+            {
+              "kind": "field",
+              "name": "prevChanged",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "prevChanged"
+            },
+            {
+              "kind": "field",
+              "name": "nextTitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "nextTitle"
+            },
+            {
+              "kind": "field",
+              "name": "nextChanged",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "nextChanged"
+            },
+            {
+              "kind": "field",
+              "name": "activeManifestIndex",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "active manifest index, key to location in the manifest itemsarray",
+              "attribute": "active-manifest-index"
+            },
+            {
+              "kind": "field",
+              "name": "manifest",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "Manifest, JSON Outline Schema object",
+              "attribute": "manifest"
+            },
+            {
+              "kind": "field",
+              "name": "editMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "edit-mode",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "active-manifest-index",
+              "type": {
+                "text": "number"
+              },
+              "description": "active manifest index, key to location in the manifest itemsarray",
+              "fieldName": "activeManifestIndex"
+            },
+            {
+              "name": "manifest",
+              "type": {
+                "text": "object"
+              },
+              "description": "Manifest, JSON Outline Schema object",
+              "fieldName": "manifest"
+            },
+            {
+              "name": "edit-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "editMode"
+            },
+            {
+              "name": "prevChanged",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "prevChanged"
+            },
+            {
+              "name": "nextChanged",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "nextChanged"
+            },
+            {
+              "name": "prevTitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "prevTitle"
+            },
+            {
+              "name": "nextTitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "nextTitle"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "simple-blog-footer",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleBlogFooter",
+            "module": "lib/simple-blog-footer.js"
+          }
         },
         {
-          "name": "image",
-          "description": "`image` {`string`} - \n\nProperty: image"
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "SimpleBlogFooter",
+          "declaration": {
+            "name": "SimpleBlogFooter",
+            "module": "lib/simple-blog-footer.js"
+          }
         }
       ]
     },
     {
-      "name": "simple-blog-listing",
-      "description": "`simple-blog-listing`\n\nAttributes:\n\n  * `__items` {`any[]`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `__items` {`any[]`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/simple-blog-header.js",
+      "declarations": [
         {
-          "name": "__items",
-          "description": "`__items` {`any[]`} - \n\nProperty: __items\n\nDefault: "
+          "kind": "class",
+          "description": "`simple-blog-header`\n`A simple blog header to the front of the site`",
+          "name": "SimpleBlogHeader",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "description"
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "title"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "description",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "description"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "image"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "icon"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "title"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "simple-blog-header",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleBlogHeader",
+            "module": "lib/simple-blog-header.js"
+          }
         },
         {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "SimpleBlogHeader",
+          "declaration": {
+            "name": "SimpleBlogHeader",
+            "module": "lib/simple-blog-header.js"
+          }
         }
       ]
     },
     {
-      "name": "simple-blog-overview",
-      "description": "`simple-blog-overview`\n\nAttributes:\n\n  * `item-id` {`string`} - ID of this item, this is used for selection UX when back button hit, leave this here\n\n  * `title` {`string`} - Title\n\n  * `body` {`string`} - Body of text\n\n  * `link` {`string`} - Link referencing the page content.\n\n  * `changed` {`number`} - timestamp (unix) of last time changed\n\n  * `elevation` {`number`} - elevation\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `itemId` {`string`} - ID of this item, this is used for selection UX when back button hit, leave this here\n\n  * `title` {`string`} - Title\n\n  * `body` {`string`} - Body of text\n\n  * `link` {`string`} - Link referencing the page content.\n\n  * `changed` {`number`} - timestamp (unix) of last time changed\n\n  * `elevation` {`number`} - elevation\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/simple-blog-listing.js",
+      "declarations": [
         {
-          "name": "item-id",
-          "description": "`item-id` {`string`} - ID of this item, this is used for selection UX when back button hit, leave this here\n\nProperty: itemId"
+          "kind": "class",
+          "description": "`simple-blog-listing`",
+          "name": "SimpleBlogListing",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "__itemsChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Respond to change in query"
+            },
+            {
+              "kind": "field",
+              "name": "__items",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "__items"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "__items",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "__items"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "simple-blog-listing",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleBlogListing",
+            "module": "lib/simple-blog-listing.js"
+          }
         },
         {
-          "name": "title",
-          "description": "`title` {`string`} - Title\n\nProperty: title"
-        },
-        {
-          "name": "body",
-          "description": "`body` {`string`} - Body of text\n\nProperty: body"
-        },
-        {
-          "name": "link",
-          "description": "`link` {`string`} - Link referencing the page content.\n\nProperty: link"
-        },
-        {
-          "name": "changed",
-          "description": "`changed` {`number`} - timestamp (unix) of last time changed\n\nProperty: changed"
-        },
-        {
-          "name": "elevation",
-          "description": "`elevation` {`number`} - elevation\n\nProperty: elevation\n\nDefault: 0"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "SimpleBlogListing",
+          "declaration": {
+            "name": "SimpleBlogListing",
+            "module": "lib/simple-blog-listing.js"
+          }
         }
       ]
     },
     {
-      "name": "simple-blog-post",
-      "description": "`simple-blog-post`\n\nAttributes:\n\n  * `has-image` {`boolean`} - calculate if we have a header image.\n\n  * `image` {`string`} - \n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `hasImage` {`boolean`} - calculate if we have a header image.\n\n  * `image` {`string`} - \n\n  * `windowControllers` - \n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/simple-blog-overview.js",
+      "declarations": [
         {
-          "name": "has-image",
-          "description": "`has-image` {`boolean`} - calculate if we have a header image.\n\nProperty: hasImage",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`simple-blog-overview`",
+          "name": "SimpleBlogOverview",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "tapEventOn",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "special handling for taps on the thing"
+            },
+            {
+              "kind": "method",
+              "name": "tapEventOff",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Hover off stop showing the deeper shadow."
+            },
+            {
+              "kind": "field",
+              "name": "elevation",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "elevation",
+              "default": "0",
+              "attribute": "elevation",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "itemId",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "ID of this item, this is used for selection UX when back button hit, leave this here",
+              "attribute": "item-id",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Title",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "body",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Body of text",
+              "attribute": "body"
+            },
+            {
+              "kind": "field",
+              "name": "link",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Link referencing the page content.",
+              "attribute": "link"
+            },
+            {
+              "kind": "field",
+              "name": "changed",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "timestamp (unix) of last time changed",
+              "attribute": "changed"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "item-id",
+              "type": {
+                "text": "string"
+              },
+              "description": "ID of this item, this is used for selection UX when back button hit, leave this here",
+              "fieldName": "itemId"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "description": "Title",
+              "fieldName": "title"
+            },
+            {
+              "name": "body",
+              "type": {
+                "text": "string"
+              },
+              "description": "Body of text",
+              "fieldName": "body"
+            },
+            {
+              "name": "link",
+              "type": {
+                "text": "string"
+              },
+              "description": "Link referencing the page content.",
+              "fieldName": "link"
+            },
+            {
+              "name": "changed",
+              "type": {
+                "text": "number"
+              },
+              "description": "timestamp (unix) of last time changed",
+              "fieldName": "changed"
+            },
+            {
+              "name": "elevation",
+              "type": {
+                "text": "number"
+              },
+              "description": "elevation",
+              "default": "0",
+              "fieldName": "elevation"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "simple-blog-overview",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleBlogOverview",
+            "module": "lib/simple-blog-overview.js"
+          }
         },
         {
-          "name": "image",
-          "description": "`image` {`string`} - \n\nProperty: image"
-        },
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "SimpleBlogOverview",
+          "declaration": {
+            "name": "SimpleBlogOverview",
+            "module": "lib/simple-blog-overview.js"
+          }
         }
       ]
     },
     {
-      "name": "simple-blog",
-      "description": "`simple-blog`\n`A simple blog and associated elements`\n\nEvents:\n\n  * `resize` {`Event`} - \n\n  * `popstate` {`PopStateEvent`} - \n\n  * `json-outline-schema-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `content-container-changed` {`CustomEvent<any>`} - \n\n  * `is-logged-in-changed` {`CustomEvent<any>`} - \n\n  * `edit-mode-changed` {`CustomEvent<any>`} - \n\n  * `haxcms-active-item-changed` {`CustomEvent<{}>`} - \n\n  * `responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - \n\n  * `responsive-element-deleted` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `selected-page` {`number`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `hex-color` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `is-safari` {`boolean`} - \n\n  * `edit-mode` {`boolean`} - editting state for the page\n\n  * `is-logged-in` {`boolean`} - editting state for the page\n\n  * `responsive-width` {`number`} - width in pixels\n\n  * `responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disable-responsive` {`boolean`} - \n\nProperties:\n\n  * `selectedPage` {`number`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - \n\n  * `hexColor` {`string`} - Class for the color\n\n  * `color` {`string`} - Color class work to apply\n\n  * `contentContainer` - DOM node that wraps the slot\n\n  * `_location` - location as object\n\n  * `isSafari` {`boolean`} - \n\n  * `editMode` {`boolean`} - editting state for the page\n\n  * `isLoggedIn` {`boolean`} - editting state for the page\n\n  * `windowControllers` - \n\n  * `HAXCMSThemeSettings` - \n\n  * `__disposer` {`never[]`} - \n\n  * `HAXCMSThemeWiring` - \n\n  * `responsiveWidth` {`number`} - width in pixels\n\n  * `responsiveSize` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\n  * `sm` {`number`} - Miniumum value for small breakpoint\n\n  * `md` {`number`} - Miniumum value for medium breakpoint\n\n  * `lg` {`number`} - Miniumum value for large breakpoint\n\n  * `xl` {`number`} - Miniumum value for extra-large breakpoint\n\n  * `disableResponsive` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/simple-blog-post.js",
+      "declarations": [
         {
-          "name": "selected-page",
-          "description": "`selected-page` {`number`} - \n\nProperty: selectedPage\n\nDefault: 0"
+          "kind": "class",
+          "description": "`simple-blog-post`",
+          "name": "SimpleBlogPost",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_scrollListener",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Scroll event listener to do image effects."
+            },
+            {
+              "kind": "method",
+              "name": "_hasImageChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "image has changed, ensure we set padding appropriately."
+            },
+            {
+              "kind": "method",
+              "name": "_computeHasImage",
+              "parameters": [
+                {
+                  "name": "fields"
+                }
+              ],
+              "description": "see if there's an image in the metadata blob."
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "editMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "editting state for the page",
+              "default": "false",
+              "attribute": "edit-mode",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hasImage",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "calculate if we have a header image.",
+              "attribute": "has-image",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "image"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "has-image",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "calculate if we have a header image.",
+              "fieldName": "hasImage"
+            },
+            {
+              "name": "edit-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "editting state for the page",
+              "default": "false",
+              "fieldName": "editMode"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "image"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "simple-blog-post",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleBlogPost",
+            "module": "lib/simple-blog-post.js"
+          }
         },
         {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hex-color",
-          "description": "`hex-color` {`string`} - Class for the color\n\nProperty: hexColor"
-        },
-        {
-          "name": "color",
-          "description": "`color` {`string`} - Color class work to apply\n\nProperty: color"
-        },
-        {
-          "name": "contentContainer",
-          "description": "`contentContainer` - DOM node that wraps the slot\n\nProperty: contentContainer"
-        },
-        {
-          "name": "_location",
-          "description": "`_location` - location as object\n\nProperty: _location"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - editting state for the page\n\nProperty: editMode\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "is-logged-in",
-          "description": "`is-logged-in` {`boolean`} - editting state for the page\n\nProperty: isLoggedIn\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "responsive-width",
-          "description": "`responsive-width` {`number`} - width in pixels\n\nProperty: responsiveWidth"
-        },
-        {
-          "name": "responsive-size",
-          "description": "`responsive-size` {`string`} - size for responsive styling: xs, sm, md, lg, xl\n\nProperty: responsiveSize\n\nDefault: xs"
-        },
-        {
-          "name": "sm",
-          "description": "`sm` {`number`} - Miniumum value for small breakpoint\n\nProperty: sm\n\nDefault: 768"
-        },
-        {
-          "name": "md",
-          "description": "`md` {`number`} - Miniumum value for medium breakpoint\n\nProperty: md\n\nDefault: 1080"
-        },
-        {
-          "name": "lg",
-          "description": "`lg` {`number`} - Miniumum value for large breakpoint\n\nProperty: lg\n\nDefault: 1200"
-        },
-        {
-          "name": "xl",
-          "description": "`xl` {`number`} - Miniumum value for extra-large breakpoint\n\nProperty: xl\n\nDefault: 1500"
-        },
-        {
-          "name": "disable-responsive",
-          "description": "`disable-responsive` {`boolean`} - \n\nProperty: disableResponsive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onresize",
-          "description": "`resize` {`Event`} - "
-        },
-        {
-          "name": "onpopstate",
-          "description": "`popstate` {`PopStateEvent`} - "
-        },
-        {
-          "name": "onjson-outline-schema-active-item-changed",
-          "description": "`json-outline-schema-active-item-changed` {`CustomEvent<{}>`} - "
-        },
-        {
-          "name": "oncontent-container-changed",
-          "description": "`content-container-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onis-logged-in-changed",
-          "description": "`is-logged-in-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onedit-mode-changed",
-          "description": "`edit-mode-changed` {`CustomEvent<any>`} - "
-        },
-        {
-          "name": "onhaxcms-active-item-changed",
-          "description": "`haxcms-active-item-changed` {`CustomEvent<{}>`} - "
-        },
-        {
-          "name": "onresponsive-element",
-          "description": "`responsive-element` {`CustomEvent<{ attribute: string; custom: string; element: this; sm: number; md: number; lg: number; xl: number; }>`} - "
-        },
-        {
-          "name": "onresponsive-element-deleted",
-          "description": "`responsive-element-deleted` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "SimpleBlogPost",
+          "declaration": {
+            "name": "SimpleBlogPost",
+            "module": "lib/simple-blog-post.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -9,10 +9,20 @@
   <script type="module">
     import "@polymer/iron-demo-helpers/demo-snippet.js";
     import "../stop-note.js";
+    import { setWcDoxConfig } from 'wc-dox/index.js';
+    setTimeout(async () => {
+      const manifest = await fetch("../custom-elements.json").then(res => res.json());
+      console.log(manifest);
+      setWcDoxConfig(manifest);
+      const docx = document.createElement('wc-dox');
+      docx.setAttribute('tag', 'stop-note');
+      globalThis.document.body.querySelector('#demo').appendChild(docx);      
+    }, 0);
   </script>
 </head>
 
 <body>
+  <div id="demo"></div>
 <div class="vertical-section-container">
     <h3>Basic stop-note demo: Default</h3>
     <demo-snippet>

@@ -1,55 +1,232 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "wikipedia-query",
-      "description": "`wikipedia-query`\n`Query and present information from wikipedia.`\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\n  * `hax-register-app` {`CustomEvent<{ details: { title: string; icon: string; color: string; author: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { action: string; list: string; format: string; origin: string; }; operations: { ...; }; }; }>`} - \n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `hide-title` {`boolean`} - hideTitle\n\n  * `language` {`string`} - Two letter language abbreviation used by\nWikipedia (ex: Spanish = \"es\").\n\n  * `headers` - \n\n  * `__now` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `title` {`string`} - \n\n  * `_title` {`string`} - \n\n  * `search` {`string`} - Search string.\n\n  * `haxAppDetails` {`{ details: { title: string; icon: string; color: string; author: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { action: string; list: string; format: string; origin: string; }; operations: { ...; }; }; }`} - \n\n  * `hideTitle` {`boolean`} - hideTitle\n\n  * `language` {`string`} - Two letter language abbreviation used by\nWikipedia (ex: Spanish = \"es\").\n\n  * `headers` - \n\n  * `__now` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "wikipedia-query.js",
+      "declarations": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title"
+          "kind": "class",
+          "description": "`wikipedia-query`\n`Query and present information from wikipedia.`",
+          "name": "WikipediaQuery",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "updateArticle",
+              "parameters": [
+                {
+                  "name": "search"
+                },
+                {
+                  "name": "headers"
+                },
+                {
+                  "name": "language"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleResponse",
+              "parameters": [
+                {
+                  "name": "response"
+                }
+              ],
+              "description": "Process response from wikipedia."
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxgizmoRegistration",
+              "parameters": [
+                {
+                  "name": "store"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxAppDetails",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "hideTitle",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "hideTitle",
+              "default": "false",
+              "attribute": "hide-title"
+            },
+            {
+              "kind": "field",
+              "name": "language",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Two letter language abbreviation used by\nWikipedia (ex: Spanish = \"es\").",
+              "default": "language.split(\"-\")[0]",
+              "attribute": "language"
+            },
+            {
+              "kind": "field",
+              "name": "headers",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ cache: \"force-cache\", }",
+              "attribute": "headers"
+            },
+            {
+              "kind": "field",
+              "name": "__now",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "__now"
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "_title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "_title"
+            },
+            {
+              "kind": "field",
+              "name": "search",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Search string.",
+              "attribute": "search"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "title"
+            },
+            {
+              "name": "__now",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "__now"
+            },
+            {
+              "name": "_title",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "_title"
+            },
+            {
+              "name": "headers",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ cache: \"force-cache\", }",
+              "fieldName": "headers"
+            },
+            {
+              "name": "hide-title",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "hideTitle",
+              "default": "false",
+              "fieldName": "hideTitle"
+            },
+            {
+              "name": "search",
+              "type": {
+                "text": "string"
+              },
+              "description": "Search string.",
+              "fieldName": "search"
+            },
+            {
+              "name": "language",
+              "type": {
+                "text": "string"
+              },
+              "description": "Two letter language abbreviation used by\nWikipedia (ex: Spanish = \"es\").",
+              "default": "language.split(\"-\")[0]",
+              "fieldName": "language"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "IntersectionObserverMixin",
+              "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "wikipedia-query",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "WikipediaQuery",
+            "module": "wikipedia-query.js"
+          }
         },
         {
-          "name": "_title",
-          "description": "`_title` {`string`} - \n\nProperty: _title"
-        },
-        {
-          "name": "search",
-          "description": "`search` {`string`} - Search string.\n\nProperty: search"
-        },
-        {
-          "name": "hide-title",
-          "description": "`hide-title` {`boolean`} - hideTitle\n\nProperty: hideTitle\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "language",
-          "description": "`language` {`string`} - Two letter language abbreviation used by\nWikipedia (ex: Spanish = \"es\").\n\nProperty: language"
-        },
-        {
-          "name": "headers",
-          "description": "`headers` - \n\nProperty: headers\n\nDefault: [object Object]"
-        },
-        {
-          "name": "__now",
-          "description": "`__now` {`string`} - \n\nProperty: __now"
-        },
-        {
-          "name": "element-visible",
-          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "oni18n-manager-register-element",
-          "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
-        },
-        {
-          "name": "onhax-register-app",
-          "description": "`hax-register-app` {`CustomEvent<{ details: { title: string; icon: string; color: string; author: string; description: string; status: string; tags: string[]; }; connection: { protocol: string; url: string; data: { action: string; list: string; format: string; origin: string; }; operations: { ...; }; }; }>`} - "
+          "kind": "js",
+          "name": "WikipediaQuery",
+          "declaration": {
+            "name": "WikipediaQuery",
+            "module": "wikipedia-query.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

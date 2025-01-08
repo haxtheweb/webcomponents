@@ -1,83 +1,333 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "twitter-embed-vanilla",
-      "description": "Attributes:\n\n  * `lang` {`string | null`} - \n\n  * `tweet` {`string | null`} - \n\n  * `data-width` {} - \n\n  * `data-theme` {} - \n\n  * `tweet-id` {} - \n\n  * `no-popups` {} - \n\nProperties:\n\n  * `html` {`string`} - my own convention, easy to remember\n\n  * `lang` {`string | null`} - \n\n  * `dataWidth` {`string | null`} - \n\n  * `dataTheme` {`string | null`} - \n\n  * `tweet` {`string | null`} - \n\n  * `tweetId` {`string | null`} - \n\n  * `allowPopups` {`string | string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "twitter-embed.js",
+      "declarations": [
         {
-          "name": "lang",
-          "description": "`lang` {`string | null`} - \n\nProperty: lang",
-          "values": []
+          "kind": "class",
+          "description": "`twitter-embed`\n`A simple way to embed tweets from twitter without their whole API, with LitElement",
+          "name": "TwitterEmbed",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxgizmoRegistration",
+              "parameters": [
+                {
+                  "name": "store"
+                }
+              ],
+              "description": "Supply translations for the UI elements of HAX in meme-maker"
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "double-check that we are set to inactivate click handlers\nthis is for when activated in a duplicate / adding new content state"
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "Set a flag to test if we should block link clicking on the entire card\notherwise when editing in hax you can't actually edit it bc its all clickable.\nif editMode goes off this helps ensure we also become clickable again"
+            },
+            {
+              "kind": "method",
+              "name": "_clickPrevent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "special support for HAX since the whole card is selectable"
+            },
+            {
+              "kind": "field",
+              "name": "lang",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "lang"
+            },
+            {
+              "kind": "field",
+              "name": "dataWidth",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"550px\"",
+              "attribute": "data-width"
+            },
+            {
+              "kind": "field",
+              "name": "dataTheme",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"light\"",
+              "attribute": "data-theme"
+            },
+            {
+              "kind": "field",
+              "name": "tweet",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "tweet"
+            },
+            {
+              "kind": "field",
+              "name": "tweetId",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "tweet-id"
+            },
+            {
+              "kind": "field",
+              "name": "allowPopups",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"allow-popups\"",
+              "attribute": "allowPopups"
+            },
+            {
+              "kind": "field",
+              "name": "_haxstate",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "_haxstate"
+            },
+            {
+              "kind": "field",
+              "name": "noPopups",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "attribute": "no-popups"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "tweet",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "tweet"
+            },
+            {
+              "name": "_haxstate",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "_haxstate"
+            },
+            {
+              "name": "lang",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "lang"
+            },
+            {
+              "name": "data-width",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"550px\"",
+              "fieldName": "dataWidth"
+            },
+            {
+              "name": "data-theme",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"light\"",
+              "fieldName": "dataTheme"
+            },
+            {
+              "name": "tweet-id",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "tweetId"
+            },
+            {
+              "name": "no-popups",
+              "type": {
+                "text": "boolean"
+              },
+              "fieldName": "noPopups"
+            },
+            {
+              "name": "allowPopups",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"allow-popups\"",
+              "fieldName": "allowPopups"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "twitter-embed",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "TwitterEmbed",
+            "module": "twitter-embed.js"
+          }
         },
         {
-          "name": "tweet",
-          "description": "`tweet` {`string | null`} - \n\nProperty: tweet",
-          "values": []
-        },
-        {
-          "name": "data-width",
-          "description": "`data-width` {} - \n\n"
-        },
-        {
-          "name": "data-theme",
-          "description": "`data-theme` {} - \n\n"
-        },
-        {
-          "name": "tweet-id",
-          "description": "`tweet-id` {} - \n\n"
-        },
-        {
-          "name": "no-popups",
-          "description": "`no-popups` {} - \n\n"
+          "kind": "js",
+          "name": "TwitterEmbed",
+          "declaration": {
+            "name": "TwitterEmbed",
+            "module": "twitter-embed.js"
+          }
         }
       ]
     },
     {
-      "name": "twitter-embed",
-      "description": "`twitter-embed`\n`A simple way to embed tweets from twitter without their whole API, with LitElement\n\nEvents:\n\n  * `i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - \n\nAttributes:\n\n  * `_haxstate` {`boolean`} - \n\n  * `no-popups` {`boolean`} - \n\n  * `lang` {`string`} - \n\n  * `data-width` {`string`} - \n\n  * `data-theme` {`string`} - \n\n  * `tweet` {`string`} - \n\n  * `tweet-id` {`string`} - \n\n  * `allowPopups` {`string`} - \n\nProperties:\n\n  * `_haxstate` {`boolean`} - \n\n  * `noPopups` {`boolean`} - \n\n  * `lang` {`string`} - \n\n  * `dataWidth` {`string`} - \n\n  * `dataTheme` {`string`} - \n\n  * `tweet` {`string`} - \n\n  * `tweetId` {`string`} - \n\n  * `allowPopups` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/twitter-embed-vanilla.js",
+      "declarations": [
         {
-          "name": "_haxstate",
-          "description": "`_haxstate` {`boolean`} - \n\nProperty: _haxstate",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "",
+          "name": "TwitterEmbedVanilla",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "dataWidth"
+            },
+            {
+              "kind": "field",
+              "name": "dataTheme"
+            },
+            {
+              "kind": "field",
+              "name": "lang"
+            },
+            {
+              "kind": "field",
+              "name": "tweetId"
+            },
+            {
+              "kind": "field",
+              "name": "tweet"
+            },
+            {
+              "kind": "field",
+              "name": "html",
+              "description": "my own convention, easy to remember",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "allowPopups"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "lang"
+            },
+            {
+              "name": "tweet"
+            },
+            {
+              "name": "data-width"
+            },
+            {
+              "name": "data-theme"
+            },
+            {
+              "name": "tweet-id"
+            },
+            {
+              "name": "no-popups"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "TwitterEmbedVanilla",
+            "module": "lib/twitter-embed-vanilla.js"
+          }
         },
         {
-          "name": "no-popups",
-          "description": "`no-popups` {`boolean`} - \n\nProperty: noPopups",
-          "valueSet": "v"
-        },
-        {
-          "name": "lang",
-          "description": "`lang` {`string`} - \n\nProperty: lang"
-        },
-        {
-          "name": "data-width",
-          "description": "`data-width` {`string`} - \n\nProperty: dataWidth\n\nDefault: 550px"
-        },
-        {
-          "name": "data-theme",
-          "description": "`data-theme` {`string`} - \n\nProperty: dataTheme\n\nDefault: light"
-        },
-        {
-          "name": "tweet",
-          "description": "`tweet` {`string`} - \n\nProperty: tweet\n\nDefault: null"
-        },
-        {
-          "name": "tweet-id",
-          "description": "`tweet-id` {`string`} - \n\nProperty: tweetId\n\nDefault: null"
-        },
-        {
-          "name": "allowPopups",
-          "description": "`allowPopups` {`string`} - \n\nProperty: allowPopups\n\nDefault: allow-popups"
-        },
-        {
-          "name": "oni18n-manager-register-element",
-          "description": "`i18n-manager-register-element` {`CustomEvent<{ namespace: string; localesPath: string; locales: string[]; }>`} - "
+          "kind": "js",
+          "name": "TwitterEmbedVanilla",
+          "declaration": {
+            "name": "TwitterEmbedVanilla",
+            "module": "lib/twitter-embed-vanilla.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

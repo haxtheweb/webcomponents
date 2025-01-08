@@ -1,48 +1,185 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "runkit-embed",
-      "description": "`runkit-embed`\n``\n\nAttributes:\n\n  * `source` {`string`} - \n\n  * `data-hax-active` {`string`} - \n\n  * `loading` {`boolean`} - \n\n  * `mode` {`string`} - \n\n  * `node-version` {`string`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `source` {`string`} - \n\n  * `dataHaxActive` {`string`} - \n\n  * `__runkitloaded` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `mode` {`string`} - \n\n  * `nodeVersion` {`string`} - \n\n  * `__observer` - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "runkit-embed.js",
+      "declarations": [
         {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source"
+          "kind": "class",
+          "description": "`runkit-embed`\n``",
+          "name": "RunkitEmbed",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "buildRunKit"
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessNodeToContent",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "__runkitloaded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "loading"
+            },
+            {
+              "kind": "field",
+              "name": "mode",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"endpoint\"",
+              "attribute": "mode"
+            },
+            {
+              "kind": "field",
+              "name": "nodeVersion",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"18.x.x\"",
+              "attribute": "node-version"
+            },
+            {
+              "kind": "field",
+              "name": "__observer",
+              "default": "new MutationObserver((mutations) => { if (this.querySelector(\"template\") && !this.loading) { this.source = this.querySelector(\"template\").content.textContent; } })"
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "source"
+            },
+            {
+              "kind": "field",
+              "name": "dataHaxActive",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "data-hax-active",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "node-version",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"18.x.x\"",
+              "fieldName": "nodeVersion"
+            },
+            {
+              "name": "mode",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"endpoint\"",
+              "fieldName": "mode"
+            },
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "loading"
+            },
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "source"
+            },
+            {
+              "name": "data-hax-active",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "dataHaxActive"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "runkit-embed",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "RunkitEmbed",
+            "module": "runkit-embed.js"
+          }
         },
         {
-          "name": "data-hax-active",
-          "description": "`data-hax-active` {`string`} - \n\nProperty: dataHaxActive"
-        },
-        {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "mode",
-          "description": "`mode` {`string`} - \n\nProperty: mode\n\nDefault: endpoint"
-        },
-        {
-          "name": "node-version",
-          "description": "`node-version` {`string`} - \n\nProperty: nodeVersion\n\nDefault: 18.x.x"
-        },
-        {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "RunkitEmbed",
+          "declaration": {
+            "name": "RunkitEmbed",
+            "module": "runkit-embed.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

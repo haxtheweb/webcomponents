@@ -1,64 +1,247 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "event-badge",
-      "description": "`event-badge`\n`a conference style badge`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `name` {`string`} - \n\n  * `position` {`string`} - \n\n  * `organization` {`string`} - \n\n  * `image` {`string`} - \n\n  * `tvcolor` {`string`} - \n\n  * `knobcolor` {`string`} - \n\n  * `logo` {`string`} - \n\n  * `sepia` {`boolean`} - \n\n  * `blackwhite` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `name` {`string`} - \n\n  * `position` {`string`} - \n\n  * `organization` {`string`} - \n\n  * `image` {`string`} - \n\n  * `tvcolor` {`string`} - \n\n  * `knobcolor` {`string`} - \n\n  * `logo` {`string`} - \n\n  * `sepia` {`boolean`} - \n\n  * `blackwhite` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "event-badge.js",
+      "declarations": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: haxor"
+          "kind": "class",
+          "description": "`event-badge`\n`a conference style badge`",
+          "name": "EventBadge",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"haxor\"",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"bto.pro\"",
+              "attribute": "name"
+            },
+            {
+              "kind": "field",
+              "name": "position",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"1337 dev\"",
+              "attribute": "position"
+            },
+            {
+              "kind": "field",
+              "name": "organization",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Penn State\"",
+              "attribute": "organization"
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"https://avatars1.githubusercontent.com/u/329735?s=400&v=4\"",
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "tvcolor",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"light-blue\"",
+              "attribute": "tvcolor"
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"blue\""
+            },
+            {
+              "kind": "field",
+              "name": "knobcolor",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"purple\"",
+              "attribute": "knobcolor"
+            },
+            {
+              "kind": "field",
+              "name": "logo",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "logo"
+            },
+            {
+              "kind": "field",
+              "name": "sepia",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "sepia",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "blackwhite",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "blackwhite",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"haxor\"",
+              "fieldName": "title"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"https://avatars1.githubusercontent.com/u/329735?s=400&v=4\"",
+              "fieldName": "image"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"bto.pro\"",
+              "fieldName": "name"
+            },
+            {
+              "name": "position",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"1337 dev\"",
+              "fieldName": "position"
+            },
+            {
+              "name": "logo",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "logo"
+            },
+            {
+              "name": "organization",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Penn State\"",
+              "fieldName": "organization"
+            },
+            {
+              "name": "tvcolor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"light-blue\"",
+              "fieldName": "tvcolor"
+            },
+            {
+              "name": "knobcolor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"purple\"",
+              "fieldName": "knobcolor"
+            },
+            {
+              "name": "sepia",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "sepia"
+            },
+            {
+              "name": "blackwhite",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "blackwhite"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "event-badge",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "EventBadge",
+            "module": "event-badge.js"
+          }
         },
         {
-          "name": "name",
-          "description": "`name` {`string`} - \n\nProperty: name\n\nDefault: bto.pro"
-        },
-        {
-          "name": "position",
-          "description": "`position` {`string`} - \n\nProperty: position\n\nDefault: 1337 dev"
-        },
-        {
-          "name": "organization",
-          "description": "`organization` {`string`} - \n\nProperty: organization\n\nDefault: Penn State"
-        },
-        {
-          "name": "image",
-          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: https://avatars1.githubusercontent.com/u/329735?s=400&v=4"
-        },
-        {
-          "name": "tvcolor",
-          "description": "`tvcolor` {`string`} - \n\nProperty: tvcolor\n\nDefault: light-blue"
-        },
-        {
-          "name": "knobcolor",
-          "description": "`knobcolor` {`string`} - \n\nProperty: knobcolor\n\nDefault: purple"
-        },
-        {
-          "name": "logo",
-          "description": "`logo` {`string`} - \n\nProperty: logo\n\nDefault: null"
-        },
-        {
-          "name": "sepia",
-          "description": "`sepia` {`boolean`} - \n\nProperty: sepia\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "blackwhite",
-          "description": "`blackwhite` {`boolean`} - \n\nProperty: blackwhite\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: blue"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "EventBadge",
+          "declaration": {
+            "name": "EventBadge",
+            "module": "event-badge.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

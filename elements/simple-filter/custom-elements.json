@@ -1,27 +1,586 @@
 {
-  "version": "experimental",
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "simple-filter",
-      "path": "./simple-filter.js",
-      "description": "`simple-filter`\n`a super class element to provide filtering capabilities`",
-      "properties": [
+      "kind": "javascript-module",
+      "path": "simple-filter.js",
+      "declarations": [
         {
-          "name": "html",
-          "type": "string"
+          "kind": "mixin",
+          "description": "",
+          "name": "SimpleFilterMixin",
+          "members": [
+            {
+              "kind": "method",
+              "name": "resetList",
+              "parameters": [
+                {
+                  "name": "list",
+                  "default": "[]"
+                }
+              ],
+              "description": "Reset this browser."
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "filter",
+              "description": "Filters the items using the f function provided. Recommended when f function is provided"
+            },
+            {
+              "kind": "method",
+              "name": "escapeRegExp",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_computeFiltered",
+              "parameters": [
+                {
+                  "name": "items",
+                  "description": "These are the items to be filtered.",
+                  "type": {
+                    "text": "array"
+                  }
+                },
+                {
+                  "name": "where",
+                  "description": "The filterby string.",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "like",
+                  "description": "The filter string.",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "caseSensitive"
+                },
+                {
+                  "name": "multiMatch"
+                },
+                {
+                  "description": "This is a flag to determine whether filter should be case sensitive or not.",
+                  "name": "capital",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "This filters the items provided",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_decomposeWhere",
+              "parameters": [
+                {
+                  "name": "where"
+                },
+                {
+                  "name": "item"
+                }
+              ],
+              "description": "This decomposes `where` property to object attributes using . notation"
+            },
+            {
+              "kind": "field",
+              "name": "caseSensitive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Enable case sensitivity when filtering",
+              "default": "false",
+              "attribute": "case-sensitive",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "filtered",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Filtered items",
+              "default": "[]",
+              "attribute": "filtered"
+            },
+            {
+              "kind": "field",
+              "name": "multiMatch",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase",
+              "default": "false",
+              "attribute": "multi-match"
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "These are the items to be filtered",
+              "attribute": "items"
+            },
+            {
+              "kind": "field",
+              "name": "like",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Filter regular expression string",
+              "attribute": "like"
+            },
+            {
+              "kind": "field",
+              "name": "where",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The filter-by field of your items array of objects",
+              "attribute": "where"
+            }
+          ],
+          "events": [
+            {
+              "name": "filter",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "filtered-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "items",
+              "type": {
+                "text": "array"
+              },
+              "description": "These are the items to be filtered",
+              "fieldName": "items"
+            },
+            {
+              "name": "like",
+              "type": {
+                "text": "string"
+              },
+              "description": "Filter regular expression string",
+              "fieldName": "like"
+            },
+            {
+              "name": "where",
+              "type": {
+                "text": "string"
+              },
+              "description": "The filter-by field of your items array of objects",
+              "fieldName": "where"
+            },
+            {
+              "name": "case-sensitive",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Enable case sensitivity when filtering",
+              "default": "false",
+              "fieldName": "caseSensitive"
+            },
+            {
+              "name": "multi-match",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase",
+              "default": "false",
+              "fieldName": "multiMatch"
+            },
+            {
+              "name": "filtered",
+              "type": {
+                "text": "array"
+              },
+              "description": "Filtered items",
+              "default": "[]",
+              "fieldName": "filtered"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
         },
         {
-          "name": "template"
+          "kind": "class",
+          "description": "",
+          "name": "SimpleFilter",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "resetList",
+              "parameters": [
+                {
+                  "name": "list",
+                  "default": "[]"
+                }
+              ],
+              "description": "Reset this browser.",
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "filter",
+              "description": "Filters the items using the f function provided. Recommended when f function is provided",
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "escapeRegExp",
+              "parameters": [
+                {
+                  "name": "text"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_computeFiltered",
+              "parameters": [
+                {
+                  "name": "items",
+                  "description": "These are the items to be filtered.",
+                  "type": {
+                    "text": "array"
+                  }
+                },
+                {
+                  "name": "where",
+                  "description": "The filterby string.",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "like",
+                  "description": "The filter string.",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "caseSensitive"
+                },
+                {
+                  "name": "multiMatch"
+                },
+                {
+                  "description": "This is a flag to determine whether filter should be case sensitive or not.",
+                  "name": "capital",
+                  "type": {
+                    "text": "boolean"
+                  }
+                }
+              ],
+              "description": "This filters the items provided",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_decomposeWhere",
+              "parameters": [
+                {
+                  "name": "where"
+                },
+                {
+                  "name": "item"
+                }
+              ],
+              "description": "This decomposes `where` property to object attributes using . notation",
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "caseSensitive",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Enable case sensitivity when filtering",
+              "default": "false",
+              "attribute": "case-sensitive",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "filtered",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "Filtered items",
+              "default": "[]",
+              "attribute": "filtered",
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "multiMatch",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase",
+              "default": "false",
+              "attribute": "multi-match",
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "description": "These are the items to be filtered",
+              "attribute": "items",
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "like",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Filter regular expression string",
+              "attribute": "like",
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "where",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "The filter-by field of your items array of objects",
+              "attribute": "where",
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "SimpleFilterMixin",
+              "module": "simple-filter.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "items",
+              "type": {
+                "text": "array"
+              },
+              "description": "These are the items to be filtered",
+              "fieldName": "items",
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "name": "like",
+              "type": {
+                "text": "string"
+              },
+              "description": "Filter regular expression string",
+              "fieldName": "like",
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "name": "where",
+              "type": {
+                "text": "string"
+              },
+              "description": "The filter-by field of your items array of objects",
+              "fieldName": "where",
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "name": "case-sensitive",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Enable case sensitivity when filtering",
+              "default": "false",
+              "fieldName": "caseSensitive",
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "name": "multi-match",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase",
+              "default": "false",
+              "fieldName": "multiMatch",
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "name": "filtered",
+              "type": {
+                "text": "array"
+              },
+              "description": "Filtered items",
+              "default": "[]",
+              "fieldName": "filtered",
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            }
+          ],
+          "events": [
+            {
+              "name": "filter",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            },
+            {
+              "name": "filtered-changed",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "inheritedFrom": {
+                "name": "SimpleFilterMixin",
+                "module": "simple-filter.js"
+              }
+            }
+          ]
         }
-      ]
-    },
-    {
-      "name": "simple-filter",
-      "path": "./src/simple-filter.js",
-      "description": "`simple-filter`\n`a super class element to provide filtering capabilities`",
-      "properties": [
+      ],
+      "exports": [
         {
-          "name": "template"
+          "kind": "js",
+          "name": "SimpleFilterMixin",
+          "declaration": {
+            "name": "SimpleFilterMixin",
+            "module": "simple-filter.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SimpleFilter",
+          "declaration": {
+            "name": "SimpleFilter",
+            "module": "simple-filter.js"
+          }
         }
       ]
     }

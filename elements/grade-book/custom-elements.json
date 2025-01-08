@@ -1,535 +1,3037 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "grade-book",
-      "description": "`grade-book`\n`A headless gradebook that supports multiple backends with rubrics`\n\nEvents:\n\n  * `simple-tag-drop` {`CustomEvent<{ value: string; }>`} - \n\n  * `simple-tag-dragstart` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `active-student` {`number`} - \n\n  * `active-assignment` {`number`} - \n\n  * `source-data` {`string`} - \n\n  * `source` {`string`} - \n\n  * `ready` {`boolean`} - \n\n  * `displayMode` {`number`} - \n\n  * `totalScore` {`number`} - \n\n  * `activeStudentSubmissions` {`any[]`} - \n\n  * `scoreLock` {`boolean`} - \n\n  * `settings` - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `hideGradeScale` {`boolean`} - \n\n  * `hideActiveStudentOverview` {`boolean`} - \n\n  * `hideActiveAssignment` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `hideRubricInfo` {`any[]`} - \n\n  * `t` - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `activeStudent` {`number`} - \n\n  * `activeAssignment` {`number`} - \n\n  * `sourceData` {`string`} - \n\n  * `activeSubmission` {`string`} - \n\n  * `database` - \n\n  * `hasFilePicker` {`boolean`} - \n\n  * `source` {`string`} - \n\n  * `ready` {`boolean`} - \n\n  * `displayMode` {`number`} - \n\n  * `assessmentView` - \n\n  * `totalScore` {`number`} - \n\n  * `activeStudentSubmissions` {`any[]`} - \n\n  * `scoreLock` {`boolean`} - \n\n  * `activeRubric` - \n\n  * `activeGrading` - \n\n  * `settings` - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `hideGradeScale` {`boolean`} - \n\n  * `hideActiveStudentOverview` {`boolean`} - \n\n  * `hideActiveAssignment` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `hideRubricInfo` {`any[]`} - \n\n  * `t` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "grade-book.js",
+      "declarations": [
         {
-          "name": "active-student",
-          "description": "`active-student` {`number`} - \n\nProperty: activeStudent"
+          "kind": "class",
+          "description": "`grade-book`\n`A headless gradebook that supports multiple backends with rubrics`",
+          "name": "GradeBook",
+          "members": [
+            {
+              "kind": "method",
+              "name": "resetAssessmentView"
+            },
+            {
+              "kind": "method",
+              "name": "getStudentSubmissions",
+              "parameters": [
+                {
+                  "name": "activeStudent"
+                }
+              ],
+              "description": "Return an object representing all scores on all assignments\nwhich allows us to make a visual of all submissions this student\nhas had."
+            },
+            {
+              "kind": "method",
+              "name": "getAssignmentByShortName",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getCurrentScore",
+              "parameters": [
+                {
+                  "name": "activeStudent"
+                },
+                {
+                  "name": "activeAssignment"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getActiveRubric"
+            },
+            {
+              "kind": "method",
+              "name": "importStateCleanup"
+            },
+            {
+              "kind": "method",
+              "name": "transformTable",
+              "parameters": [
+                {
+                  "name": "table"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "maintainScrollPosition",
+              "description": "maintain scroll position within the table overflow scroll whenever assignment or student changes"
+            },
+            {
+              "kind": "method",
+              "name": "processassignmentsData",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ],
+              "description": "process assignment data to normalize date string"
+            },
+            {
+              "kind": "method",
+              "name": "processtagsData",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ],
+              "description": "Process our tagging structure for use in the rubric\nTag structure allows the instructor to drag and drop elements into\nqualitative areas of a rubric"
+            },
+            {
+              "kind": "method",
+              "name": "processrubricsData",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "processrosterData",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "processsettingsData",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "changeStudent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "changeAssignment",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderSubmission",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "studentLetterGradeHistoryClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "activateOption",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "mouseHighlight",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "mouseLeave",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "settingChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleGridScaling",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "checkTabHeight",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "studentreportClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "openWindow",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderSubmissionInWindow"
+            },
+            {
+              "kind": "method",
+              "name": "selectSource",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "loadFromSource",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "loadFromExistingSource",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "loadFromFilesystem",
+              "parameters": [
+                {
+                  "name": "existing",
+                  "default": "false"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "saveToFilesystem",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "rubricCriteriaPointsChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Listen for value change coming from the fields in the active rubric\nand update the overall point total to match"
+            },
+            {
+              "kind": "method",
+              "name": "updateTotalScore"
+            },
+            {
+              "kind": "method",
+              "name": "totalScoreChangedEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toggleLock",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "lock toggle"
+            },
+            {
+              "kind": "method",
+              "name": "updateStudentReport",
+              "description": "update student report when that tab is activated"
+            },
+            {
+              "kind": "method",
+              "name": "getCriteriaScore",
+              "parameters": [
+                {
+                  "name": "criteria"
+                }
+              ],
+              "description": "Return the criteria score, current value"
+            },
+            {
+              "kind": "method",
+              "name": "getCriteriaFeedback",
+              "parameters": [
+                {
+                  "name": "criteria"
+                }
+              ],
+              "description": "Return the criteria written feedback, current value"
+            },
+            {
+              "kind": "method",
+              "name": "qualitativeFeedbackUpdate",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "A qualitative feedback field got a new value"
+            },
+            {
+              "kind": "method",
+              "name": "keyDown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "pickColor",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleDragDrop",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setDragTransfer",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "hasFilePicker",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"googledocs\"",
+              "attribute": "source"
+            },
+            {
+              "kind": "field",
+              "name": "ready",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "ready",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "displayMode",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "displayMode"
+            },
+            {
+              "kind": "field",
+              "name": "assessmentView",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "totalScore",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "totalScore"
+            },
+            {
+              "kind": "field",
+              "name": "activeStudentSubmissions",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "activeStudentSubmissions"
+            },
+            {
+              "kind": "field",
+              "name": "scoreLock",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "scoreLock"
+            },
+            {
+              "kind": "field",
+              "name": "activeRubric",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "activeGrading",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "settings",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ photo: true, fname: true, surname: true, email: true, }",
+              "attribute": "settings"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "loading",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ csvURL: \"CSV URL\", points: \"Points\", criteria: \"Criteria\", description: \"Description\", assessmentWeight: \"Assessment weight\", overallFeedback: \"Overall feedback\", letterGrade: \"Letter grade\", highRange: \"High range\", lowRange: \"Low range\", noSubmission: \"No submission found\", studentSubmission: \"Student submission\", openInNewWindow: \"Open in new window\", gradingScale: \"Grading scale\", activeStudent: \"Active student\", activeAssignment: \"Active assignment\", submitted: \"Submitted\", dueDate: \"Due date\", firstName: \"First name\", surname: \"Surname\", photo: \"Photo\", email: \"Email\", settings: \"Settings\", previous: \"Previous\", next: \"Next\", previousStudent: \"Previous student\", nextStudent: \"Next student\", previousAssignment: \"Previous assignment\", nextAssignment: \"Next assignment\", student: \"Student\", assessmentView: \"Assessment View\", activeAssessment: \"Active assessment\", studentReportView: \"Student report view\", loadGradebook: \"Load gradebook\", load: \"Load\", saveGradebook: \"Save gradebook\", selectGradebookSource: \"Select gradebook source\", sourceData: \"Source data\", pasteValidJSONHere: \"Paste valid JSON here\", loadingFilePleaseWait: \"LOADING FILE PLEASE WAIT..\", }"
+            },
+            {
+              "kind": "field",
+              "name": "activeStudent",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "active-student"
+            },
+            {
+              "kind": "field",
+              "name": "activeAssignment",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "active-assignment"
+            },
+            {
+              "kind": "field",
+              "name": "sourceData",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "source-data"
+            },
+            {
+              "kind": "field",
+              "name": "activeSubmission",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "database",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderActiveStudentBtn",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleActiveStudentOverview",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderGradeScaleBtn",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleGradeScale",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderSettingsBtn",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleSettings",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderActiveAssignmentBtn",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleActiveAssignment",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderRubricInfoBtn",
+              "parameters": [
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "criteria"
+                },
+                {
+                  "name": "details"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleRubricInfo",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderDisplayModeBtn",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "displayModeData",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleDisplayMode",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideGradeScale",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hideGradeScale",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideActiveStudentOverview",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hideActiveStudentOverview",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideActiveAssignment",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hideActiveAssignment",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideSettings",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hideSettings",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideRubricInfo",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "hideRubricInfo",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "displayMode",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "displayMode"
+            },
+            {
+              "name": "settings",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ photo: true, fname: true, surname: true, email: true, }",
+              "fieldName": "settings"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "loading"
+            },
+            {
+              "name": "ready",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "ready"
+            },
+            {
+              "name": "active-student",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "activeStudent"
+            },
+            {
+              "name": "active-assignment",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "activeAssignment"
+            },
+            {
+              "name": "totalScore",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "totalScore"
+            },
+            {
+              "name": "scoreLock",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "scoreLock"
+            },
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"googledocs\"",
+              "fieldName": "source"
+            },
+            {
+              "name": "source-data",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "sourceData"
+            },
+            {
+              "name": "activeStudentSubmissions",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "activeStudentSubmissions"
+            },
+            {
+              "name": "hideSettings",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hideSettings",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "name": "hideGradeScale",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hideGradeScale",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "name": "hideActiveStudentOverview",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hideActiveStudentOverview",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "name": "hideActiveAssignment",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hideActiveAssignment",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "name": "hideRubricInfo",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "hideRubricInfo",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "UIRenderPieces",
+              "module": "/lib/GradeBookUIPieces.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "grade-book",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "GradeBook",
+            "module": "grade-book.js"
+          }
         },
         {
-          "name": "active-assignment",
-          "description": "`active-assignment` {`number`} - \n\nProperty: activeAssignment"
-        },
-        {
-          "name": "source-data",
-          "description": "`source-data` {`string`} - \n\nProperty: sourceData"
-        },
-        {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: googledocs"
-        },
-        {
-          "name": "ready",
-          "description": "`ready` {`boolean`} - \n\nProperty: ready\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "displayMode",
-          "description": "`displayMode` {`number`} - \n\nProperty: displayMode\n\nDefault: 0"
-        },
-        {
-          "name": "totalScore",
-          "description": "`totalScore` {`number`} - \n\nProperty: totalScore\n\nDefault: 0"
-        },
-        {
-          "name": "activeStudentSubmissions",
-          "description": "`activeStudentSubmissions` {`any[]`} - \n\nProperty: activeStudentSubmissions\n\nDefault: "
-        },
-        {
-          "name": "scoreLock",
-          "description": "`scoreLock` {`boolean`} - \n\nProperty: scoreLock\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "settings",
-          "description": "`settings` - \n\nProperty: settings\n\nDefault: [object Object]"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideGradeScale",
-          "description": "`hideGradeScale` {`boolean`} - \n\nProperty: hideGradeScale\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideActiveStudentOverview",
-          "description": "`hideActiveStudentOverview` {`boolean`} - \n\nProperty: hideActiveStudentOverview\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideActiveAssignment",
-          "description": "`hideActiveAssignment` {`boolean`} - \n\nProperty: hideActiveAssignment\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideSettings",
-          "description": "`hideSettings` {`boolean`} - \n\nProperty: hideSettings\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideRubricInfo",
-          "description": "`hideRubricInfo` {`any[]`} - \n\nProperty: hideRubricInfo\n\nDefault: "
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onsimple-tag-drop",
-          "description": "`simple-tag-drop` {`CustomEvent<{ value: string; }>`} - "
-        },
-        {
-          "name": "onsimple-tag-dragstart",
-          "description": "`simple-tag-dragstart` {`CustomEvent<{ value: any; }>`} - "
+          "kind": "js",
+          "name": "GradeBook",
+          "declaration": {
+            "name": "GradeBook",
+            "module": "grade-book.js"
+          }
         }
       ]
     },
     {
-      "name": "grade-book",
-      "description": "`grade-book`\n`A headless gradebook that supports multiple backends with rubrics`\n\nEvents:\n\n  * `simple-tag-drop` {`CustomEvent<{ value: string; }>`} - \n\n  * `simple-tag-dragstart` {`CustomEvent<{ value: any; }>`} - \n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `active-student` {`number`} - \n\n  * `active-assignment` {`number`} - \n\n  * `source-data` {`string`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__hashLoading` {`boolean`} - \n\n  * `source` {`string`} - \n\n  * `ready` {`boolean`} - \n\n  * `displayMode` {`number`} - \n\n  * `totalScore` {`number`} - \n\n  * `activeStudentSubmissions` {`any[]`} - \n\n  * `scoreLock` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `hideGradeScale` {`boolean`} - \n\n  * `hideActiveStudentOverview` {`boolean`} - \n\n  * `hideActiveAssignment` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `hideRubricInfo` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multi-match` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `activeStudent` {`number`} - \n\n  * `activeAssignment` {`number`} - \n\n  * `sourceData` {`string`} - \n\n  * `activeSubmission` {`string`} - \n\n  * `database` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__hashLoading` {`boolean`} - \n\n  * `hasFilePicker` {`boolean`} - \n\n  * `source` {`string`} - \n\n  * `ready` {`boolean`} - \n\n  * `displayMode` {`number`} - \n\n  * `assessmentView` - \n\n  * `totalScore` {`number`} - \n\n  * `activeStudentSubmissions` {`any[]`} - \n\n  * `scoreLock` {`boolean`} - \n\n  * `activeRubric` - \n\n  * `activeGrading` - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `hideGradeScale` {`boolean`} - \n\n  * `hideActiveStudentOverview` {`boolean`} - \n\n  * `hideActiveAssignment` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `hideRubricInfo` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multiMatch` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/GradeBookUIPieces.js",
+      "declarations": [
         {
-          "name": "active-student",
-          "description": "`active-student` {`number`} - \n\nProperty: activeStudent"
-        },
+          "kind": "mixin",
+          "description": "",
+          "name": "UIRenderPieces",
+          "members": [
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "renderActiveStudentBtn"
+            },
+            {
+              "kind": "method",
+              "name": "toggleActiveStudentOverview",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderGradeScaleBtn"
+            },
+            {
+              "kind": "method",
+              "name": "toggleGradeScale",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderSettingsBtn"
+            },
+            {
+              "kind": "method",
+              "name": "toggleSettings",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderActiveAssignmentBtn"
+            },
+            {
+              "kind": "method",
+              "name": "toggleActiveAssignment",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderRubricInfoBtn",
+              "parameters": [
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "criteria"
+                },
+                {
+                  "name": "details"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toggleRubricInfo",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderDisplayModeBtn"
+            },
+            {
+              "kind": "method",
+              "name": "displayModeData"
+            },
+            {
+              "kind": "method",
+              "name": "toggleDisplayMode",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "hideGradeScale",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hideGradeScale"
+            },
+            {
+              "kind": "field",
+              "name": "hideActiveStudentOverview",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hideActiveStudentOverview"
+            },
+            {
+              "kind": "field",
+              "name": "hideActiveAssignment",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hideActiveAssignment"
+            },
+            {
+              "kind": "field",
+              "name": "hideSettings",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hideSettings"
+            },
+            {
+              "kind": "field",
+              "name": "hideRubricInfo",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "hideRubricInfo"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "hideSettings",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hideSettings"
+            },
+            {
+              "name": "hideGradeScale",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hideGradeScale"
+            },
+            {
+              "name": "hideActiveStudentOverview",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hideActiveStudentOverview"
+            },
+            {
+              "name": "hideActiveAssignment",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hideActiveAssignment"
+            },
+            {
+              "name": "hideRubricInfo",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "hideRubricInfo"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
         {
-          "name": "active-assignment",
-          "description": "`active-assignment` {`number`} - \n\nProperty: activeAssignment"
-        },
-        {
-          "name": "source-data",
-          "description": "`source-data` {`string`} - \n\nProperty: sourceData"
-        },
-        {
-          "name": "__pdfLoading",
-          "description": "`__pdfLoading` {`boolean`} - \n\nProperty: __pdfLoading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__hashLoading",
-          "description": "`__hashLoading` {`boolean`} - \n\nProperty: __hashLoading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: googledocs"
-        },
-        {
-          "name": "ready",
-          "description": "`ready` {`boolean`} - \n\nProperty: ready\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "displayMode",
-          "description": "`displayMode` {`number`} - \n\nProperty: displayMode\n\nDefault: 0"
-        },
-        {
-          "name": "totalScore",
-          "description": "`totalScore` {`number`} - \n\nProperty: totalScore\n\nDefault: 0"
-        },
-        {
-          "name": "activeStudentSubmissions",
-          "description": "`activeStudentSubmissions` {`any[]`} - \n\nProperty: activeStudentSubmissions\n\nDefault: "
-        },
-        {
-          "name": "scoreLock",
-          "description": "`scoreLock` {`boolean`} - \n\nProperty: scoreLock\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideGradeScale",
-          "description": "`hideGradeScale` {`boolean`} - \n\nProperty: hideGradeScale\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideActiveStudentOverview",
-          "description": "`hideActiveStudentOverview` {`boolean`} - \n\nProperty: hideActiveStudentOverview\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideActiveAssignment",
-          "description": "`hideActiveAssignment` {`boolean`} - \n\nProperty: hideActiveAssignment\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideSettings",
-          "description": "`hideSettings` {`boolean`} - \n\nProperty: hideSettings\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideRubricInfo",
-          "description": "`hideRubricInfo` {`any[]`} - \n\nProperty: hideRubricInfo\n\nDefault: "
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "items",
-          "description": "`items` {`any[]`} - These are the items to be filtered\n\nProperty: items"
-        },
-        {
-          "name": "like",
-          "description": "`like` {`string`} - Filter regular expression string\n\nProperty: like"
-        },
-        {
-          "name": "where",
-          "description": "`where` {`string`} - The filter-by field of your items array of objects\n\nProperty: where\n\nDefault: term"
-        },
-        {
-          "name": "case-sensitive",
-          "description": "`case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\nProperty: caseSensitive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "filtered",
-          "description": "`filtered` {`any[]`} - Filtered items\n\nProperty: filtered\n\nDefault: "
-        },
-        {
-          "name": "multi-match",
-          "description": "`multi-match` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\nProperty: multiMatch\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onsimple-tag-drop",
-          "description": "`simple-tag-drop` {`CustomEvent<{ value: string; }>`} - "
-        },
-        {
-          "name": "onsimple-tag-dragstart",
-          "description": "`simple-tag-dragstart` {`CustomEvent<{ value: any; }>`} - "
-        },
-        {
-          "name": "onfilter",
-          "description": "`filter` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onfiltered-changed",
-          "description": "`filtered-changed` {`CustomEvent<{ value: any[]; }>`} - "
+          "kind": "js",
+          "name": "UIRenderPieces",
+          "declaration": {
+            "name": "UIRenderPieces",
+            "module": "lib/GradeBookUIPieces.js"
+          }
         }
       ]
     },
     {
-      "name": "grade-book-lite",
-      "description": "`grade-book`\n`A headless gradebook that supports multiple backends with rubrics`\n\nEvents:\n\n  * `simple-tag-drop` {`CustomEvent<{ value: string; }>`} - \n\n  * `simple-tag-dragstart` {`CustomEvent<{ value: any; }>`} - \n\n  * `filter` {`CustomEvent<boolean>`} - \n\n  * `filtered-changed` {`CustomEvent<{ value: any[]; }>`} - \n\nAttributes:\n\n  * `active-student` {`number`} - \n\n  * `active-assignment` {`number`} - \n\n  * `source-data` {`string`} - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__hashLoading` {`boolean`} - \n\n  * `source` {`string`} - \n\n  * `ready` {`boolean`} - \n\n  * `displayMode` {`number`} - \n\n  * `totalScore` {`number`} - \n\n  * `activeStudentSubmissions` {`any[]`} - \n\n  * `scoreLock` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `hideGradeScale` {`boolean`} - \n\n  * `hideActiveStudentOverview` {`boolean`} - \n\n  * `hideActiveAssignment` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `hideRubricInfo` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multi-match` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `activeStudent` {`number`} - \n\n  * `activeAssignment` {`number`} - \n\n  * `sourceData` {`string`} - \n\n  * `activeSubmission` {`string`} - \n\n  * `database` - \n\n  * `__pdfLoading` {`boolean`} - \n\n  * `__hashLoading` {`boolean`} - \n\n  * `hasFilePicker` {`boolean`} - \n\n  * `source` {`string`} - \n\n  * `ready` {`boolean`} - \n\n  * `displayMode` {`number`} - \n\n  * `assessmentView` - \n\n  * `totalScore` {`number`} - \n\n  * `activeStudentSubmissions` {`any[]`} - \n\n  * `scoreLock` {`boolean`} - \n\n  * `activeRubric` - \n\n  * `activeGrading` - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `hideGradeScale` {`boolean`} - \n\n  * `hideActiveStudentOverview` {`boolean`} - \n\n  * `hideActiveAssignment` {`boolean`} - \n\n  * `hideSettings` {`boolean`} - \n\n  * `hideRubricInfo` {`any[]`} - \n\n  * `t` - \n\n  * `items` {`any[]`} - These are the items to be filtered\n\n  * `like` {`string`} - Filter regular expression string\n\n  * `where` {`string`} - The filter-by field of your items array of objects\n\n  * `caseSensitive` {`boolean`} - Enable case sensitivity when filtering\n\n  * `filtered` {`any[]`} - Filtered items\n\n  * `multiMatch` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/grade-book-lite.js",
+      "declarations": [
         {
-          "name": "active-student",
-          "description": "`active-student` {`number`} - \n\nProperty: activeStudent"
+          "kind": "class",
+          "description": "`grade-book`\n`A headless gradebook that supports multiple backends with rubrics`",
+          "name": "GradeBookLite",
+          "members": [
+            {
+              "kind": "method",
+              "name": "resetAssessmentView"
+            },
+            {
+              "kind": "method",
+              "name": "getStudentSubmissions",
+              "parameters": [
+                {
+                  "name": "activeStudent"
+                }
+              ],
+              "description": "Return an object representing all scores on all assignments\nwhich allows us to make a visual of all submissions this student\nhas had."
+            },
+            {
+              "kind": "method",
+              "name": "getAssignmentByShortName",
+              "parameters": [
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getCurrentScore",
+              "parameters": [
+                {
+                  "name": "activeStudent"
+                },
+                {
+                  "name": "activeAssignment"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getActiveRubric"
+            },
+            {
+              "kind": "method",
+              "name": "importStateCleanup"
+            },
+            {
+              "kind": "method",
+              "name": "transformTable",
+              "parameters": [
+                {
+                  "name": "table"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "processassignmentsData",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ],
+              "description": "process assignment data to normalize date string"
+            },
+            {
+              "kind": "method",
+              "name": "processtagsData",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ],
+              "description": "Process our tagging structure for use in the rubric\nTag structure allows the instructor to drag and drop elements into\nqualitative areas of a rubric"
+            },
+            {
+              "kind": "method",
+              "name": "processrubricsData",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "processrosterData",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "processsettingsData",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "changeAssignment",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "studentLetterGradeHistoryClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "activateOption",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleGridScaling",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "PDFPageButton",
+              "parameters": [
+                {
+                  "name": "position",
+                  "default": "\"auto\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "downloadPDFviaMicro",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Download PDF, via microservice"
+            },
+            {
+              "kind": "method",
+              "name": "createHashLink",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Download PDF, via microservice"
+            },
+            {
+              "kind": "method",
+              "name": "openWindow",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "inputfilterChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "expandAll",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "collapseAll",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "selectSource",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "loadFromSource",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "loadFromExistingSource",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "loadFromFilesystem",
+              "parameters": [
+                {
+                  "name": "existing",
+                  "default": "false"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "saveToFilesystem",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "rubricCriteriaPointsChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Listen for value change coming from the fields in the active rubric\nand update the overall point total to match"
+            },
+            {
+              "kind": "method",
+              "name": "updateTotalScore"
+            },
+            {
+              "kind": "method",
+              "name": "totalScoreChangedEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "toggleLock",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "lock toggle"
+            },
+            {
+              "kind": "method",
+              "name": "updateStudentReport",
+              "description": "update student report when that tab is activated"
+            },
+            {
+              "kind": "method",
+              "name": "getCriteriaScore",
+              "parameters": [
+                {
+                  "name": "criteria"
+                }
+              ],
+              "description": "Return the criteria score, current value"
+            },
+            {
+              "kind": "method",
+              "name": "getCriteriaFeedback",
+              "parameters": [
+                {
+                  "name": "criteria"
+                }
+              ],
+              "description": "Return the criteria written feedback, current value"
+            },
+            {
+              "kind": "method",
+              "name": "qualitativeFeedbackUpdate",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "A qualitative feedback field got a new value"
+            },
+            {
+              "kind": "method",
+              "name": "keyDown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "pickColor",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleDragDrop",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "setDragTransfer",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "__pdfLoading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "__pdfLoading"
+            },
+            {
+              "kind": "field",
+              "name": "__hashLoading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "__hashLoading"
+            },
+            {
+              "kind": "field",
+              "name": "where",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"term\""
+            },
+            {
+              "kind": "field",
+              "name": "hasFilePicker",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "source",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"googledocs\"",
+              "attribute": "source"
+            },
+            {
+              "kind": "field",
+              "name": "ready",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "ready",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "displayMode",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "displayMode"
+            },
+            {
+              "kind": "field",
+              "name": "assessmentView",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "totalScore",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "totalScore"
+            },
+            {
+              "kind": "field",
+              "name": "activeStudentSubmissions",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "activeStudentSubmissions"
+            },
+            {
+              "kind": "field",
+              "name": "scoreLock",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "scoreLock"
+            },
+            {
+              "kind": "field",
+              "name": "activeRubric",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "activeGrading",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "loading",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ generateHashLink: \"Generate hash link\", generatingPleaseWait: \"Generating please wait..\", downloadingPdfPleaseWait: \"Downloading PDF please wait..\", downloadPdf: \"Download PDF\", csvURL: \"CSV URL\", points: \"Points\", criteria: \"Criteria\", description: \"Description\", assessmentWeight: \"Assessment weight\", overallFeedback: \"Overall feedback\", letterGrade: \"Letter grade\", highRange: \"High range\", lowRange: \"Low range\", noSubmission: \"No submission found\", studentSubmission: \"Student submission\", openInNewWindow: \"Open in new window\", gradingScale: \"Grading scale\", activeStudent: \"Active student\", activeAssignment: \"Active assignment\", submitted: \"Submitted\", dueDate: \"Due date\", firstName: \"First name\", surname: \"Surname\", photo: \"Photo\", email: \"Email\", previous: \"Previous\", next: \"Next\", previousStudent: \"Previous student\", nextStudent: \"Next student\", previousAssignment: \"Previous assignment\", nextAssignment: \"Next assignment\", student: \"Student\", assessmentView: \"Assessment View\", activeAssessment: \"Active assessment\", studentReportView: \"Student report view\", loadGradebook: \"Load gradebook\", load: \"Load\", saveGradebook: \"Save gradebook\", selectGradebookSource: \"Select gradebook source\", sourceData: \"Source data\", pasteValidJSONHere: \"Paste valid JSON here\", loadingFilePleaseWait: \"LOADING FILE PLEASE WAIT..\", }"
+            },
+            {
+              "kind": "field",
+              "name": "activeStudent",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "active-student"
+            },
+            {
+              "kind": "field",
+              "name": "activeAssignment",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "active-assignment"
+            },
+            {
+              "kind": "field",
+              "name": "sourceData",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "source-data"
+            },
+            {
+              "kind": "field",
+              "name": "activeSubmission",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "database",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "properties",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "styles",
+              "static": true,
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderActiveStudentBtn",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleActiveStudentOverview",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderGradeScaleBtn",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleGradeScale",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderSettingsBtn",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleSettings",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderActiveAssignmentBtn",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleActiveAssignment",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderRubricInfoBtn",
+              "parameters": [
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "criteria"
+                },
+                {
+                  "name": "details"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleRubricInfo",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderDisplayModeBtn",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "displayModeData",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "toggleDisplayMode",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideGradeScale",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hideGradeScale",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideActiveStudentOverview",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hideActiveStudentOverview",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideActiveAssignment",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hideActiveAssignment",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideSettings",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "hideSettings",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "hideRubricInfo",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "hideRubricInfo",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "displayMode",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "displayMode"
+            },
+            {
+              "name": "__pdfLoading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "__pdfLoading"
+            },
+            {
+              "name": "__hashLoading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "__hashLoading"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "loading"
+            },
+            {
+              "name": "ready",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "ready"
+            },
+            {
+              "name": "active-student",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "activeStudent"
+            },
+            {
+              "name": "active-assignment",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "activeAssignment"
+            },
+            {
+              "name": "totalScore",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "totalScore"
+            },
+            {
+              "name": "scoreLock",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "scoreLock"
+            },
+            {
+              "name": "source",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"googledocs\"",
+              "fieldName": "source"
+            },
+            {
+              "name": "source-data",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "sourceData"
+            },
+            {
+              "name": "activeStudentSubmissions",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "activeStudentSubmissions"
+            },
+            {
+              "name": "hideSettings",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hideSettings",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "name": "hideGradeScale",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hideGradeScale",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "name": "hideActiveStudentOverview",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hideActiveStudentOverview",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "name": "hideActiveAssignment",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "hideActiveAssignment",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            },
+            {
+              "name": "hideRubricInfo",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "hideRubricInfo",
+              "inheritedFrom": {
+                "name": "UIRenderPieces",
+                "module": "lib/GradeBookUIPieces.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "UIRenderPieces",
+              "module": "/lib/GradeBookUIPieces.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
+              "name": "SimpleFilterMixin",
+              "package": "@haxtheweb/simple-filter/simple-filter.js"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "grade-book",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "GradeBookLite",
+            "module": "lib/grade-book-lite.js"
+          }
         },
         {
-          "name": "active-assignment",
-          "description": "`active-assignment` {`number`} - \n\nProperty: activeAssignment"
-        },
-        {
-          "name": "source-data",
-          "description": "`source-data` {`string`} - \n\nProperty: sourceData"
-        },
-        {
-          "name": "__pdfLoading",
-          "description": "`__pdfLoading` {`boolean`} - \n\nProperty: __pdfLoading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "__hashLoading",
-          "description": "`__hashLoading` {`boolean`} - \n\nProperty: __hashLoading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "source",
-          "description": "`source` {`string`} - \n\nProperty: source\n\nDefault: googledocs"
-        },
-        {
-          "name": "ready",
-          "description": "`ready` {`boolean`} - \n\nProperty: ready\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "displayMode",
-          "description": "`displayMode` {`number`} - \n\nProperty: displayMode\n\nDefault: 0"
-        },
-        {
-          "name": "totalScore",
-          "description": "`totalScore` {`number`} - \n\nProperty: totalScore\n\nDefault: 0"
-        },
-        {
-          "name": "activeStudentSubmissions",
-          "description": "`activeStudentSubmissions` {`any[]`} - \n\nProperty: activeStudentSubmissions\n\nDefault: "
-        },
-        {
-          "name": "scoreLock",
-          "description": "`scoreLock` {`boolean`} - \n\nProperty: scoreLock\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideGradeScale",
-          "description": "`hideGradeScale` {`boolean`} - \n\nProperty: hideGradeScale\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideActiveStudentOverview",
-          "description": "`hideActiveStudentOverview` {`boolean`} - \n\nProperty: hideActiveStudentOverview\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideActiveAssignment",
-          "description": "`hideActiveAssignment` {`boolean`} - \n\nProperty: hideActiveAssignment\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideSettings",
-          "description": "`hideSettings` {`boolean`} - \n\nProperty: hideSettings\n\nDefault: true",
-          "valueSet": "v"
-        },
-        {
-          "name": "hideRubricInfo",
-          "description": "`hideRubricInfo` {`any[]`} - \n\nProperty: hideRubricInfo\n\nDefault: "
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "items",
-          "description": "`items` {`any[]`} - These are the items to be filtered\n\nProperty: items"
-        },
-        {
-          "name": "like",
-          "description": "`like` {`string`} - Filter regular expression string\n\nProperty: like"
-        },
-        {
-          "name": "where",
-          "description": "`where` {`string`} - The filter-by field of your items array of objects\n\nProperty: where\n\nDefault: term"
-        },
-        {
-          "name": "case-sensitive",
-          "description": "`case-sensitive` {`boolean`} - Enable case sensitivity when filtering\n\nProperty: caseSensitive\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "filtered",
-          "description": "`filtered` {`any[]`} - Filtered items\n\nProperty: filtered\n\nDefault: "
-        },
-        {
-          "name": "multi-match",
-          "description": "`multi-match` {`boolean`} - Enable multi match when filtering so that space separated words are matched\nas separate words as opposed to a single phrase\n\nProperty: multiMatch\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onsimple-tag-drop",
-          "description": "`simple-tag-drop` {`CustomEvent<{ value: string; }>`} - "
-        },
-        {
-          "name": "onsimple-tag-dragstart",
-          "description": "`simple-tag-dragstart` {`CustomEvent<{ value: any; }>`} - "
-        },
-        {
-          "name": "onfilter",
-          "description": "`filter` {`CustomEvent<boolean>`} - "
-        },
-        {
-          "name": "onfiltered-changed",
-          "description": "`filtered-changed` {`CustomEvent<{ value: any[]; }>`} - "
+          "kind": "js",
+          "name": "GradeBookLite",
+          "declaration": {
+            "name": "GradeBookLite",
+            "module": "lib/grade-book-lite.js"
+          }
         }
       ]
     },
     {
-      "name": "grade-book-pop-up",
-      "description": "Attributes:\n\n  * `activeSubmission` {`string`} - \n\n  * `data` {`string`} - \n\n  * `t` - \n\nProperties:\n\n  * `activeSubmission` {`string`} - \n\n  * `data` {`string`} - \n\n  * `t` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/grade-book-pop-up.js",
+      "declarations": [
         {
-          "name": "activeSubmission",
-          "description": "`activeSubmission` {`string`} - \n\nProperty: activeSubmission"
+          "kind": "class",
+          "description": "",
+          "name": "GradeBookPopUp",
+          "members": [
+            {
+              "kind": "method",
+              "name": "changeActive",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderStudentSubmission",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ studentSubmission: \"Student submission\", openInNewWindow: \"Open in new window\", submitted: \"Submitted\", }"
+            },
+            {
+              "kind": "field",
+              "name": "activeSubmission",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "activeSubmission"
+            },
+            {
+              "kind": "field",
+              "name": "data",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "data"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "activeSubmission",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "activeSubmission"
+            },
+            {
+              "name": "data",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "data"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "GradeBookPopUp",
+            "module": "lib/grade-book-pop-up.js"
+          }
         },
         {
-          "name": "data",
-          "description": "`data` {`string`} - \n\nProperty: data"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+          "kind": "js",
+          "name": "GradeBookPopUp",
+          "declaration": {
+            "name": "GradeBookPopUp",
+            "module": "lib/grade-book-pop-up.js"
+          }
         }
       ]
     },
     {
-      "name": "grade-book-store",
-      "description": "Properties:\n\n  * `activeSubmission` {`null`} - \n\n  * `gradeScale` {`never[]`} - \n\n  * `activeRubric` {`never[]`} - \n\n  * `database` - \n\n  * `activeStudent` {`number`} - \n\n  * `activeAssignment` {`number`} - ",
-      "attributes": []
-    },
-    {
-      "name": "grade-book-student-block",
-      "description": "Attributes:\n\n  * `student` - \n\n  * `t` - \n\nProperties:\n\n  * `student` - \n\n  * `t` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/grade-book-store.js",
+      "declarations": [
         {
-          "name": "student",
-          "description": "`student` - \n\nProperty: student\n\nDefault: [object Object]"
+          "kind": "class",
+          "description": "",
+          "name": "GradeBookStoreClass",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "activeSubmission",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "gradeScale",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "activeRubric",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "database",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ tags: { categories: [], data: [], }, submissions: [], rubrics: [], assignments: [], roster: [], grades: {}, gradesDetails: {}, gradeScale: [], settings: {}, }"
+            },
+            {
+              "kind": "field",
+              "name": "activeStudent",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "activeAssignment",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
         },
         {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+          "kind": "variable",
+          "name": "GradeBookStore"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "GradeBookStoreClass",
+            "module": "lib/grade-book-store.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "GradeBookStoreClass",
+          "declaration": {
+            "name": "GradeBookStoreClass",
+            "module": "lib/grade-book-store.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "GradeBookStore",
+          "declaration": {
+            "name": "GradeBookStore",
+            "module": "lib/grade-book-store.js"
+          }
         }
       ]
     },
     {
-      "name": "grade-book-table",
-      "description": "Attributes:\n\n  * `edit-mode` {`boolean`} - \n\nProperties:\n\n  * `editMode` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/grade-book-student-block.js",
+      "declarations": [
         {
-          "name": "edit-mode",
-          "description": "`edit-mode` {`boolean`} - \n\nProperty: editMode\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "",
+          "name": "GradeBookStudentBlock",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "student",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "attribute": "student"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ profileImageFor: \"Profile image for\", userID: \"User ID\", preferredName: \"Preferred name\", emailAddress: \"Email this student\", notes: \"Notes\", interests: \"Interests\", }"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "student",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "fieldName": "student"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "GradeBookStudentBlock",
+            "module": "lib/grade-book-student-block.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "GradeBookStudentBlock",
+          "declaration": {
+            "name": "GradeBookStudentBlock",
+            "module": "lib/grade-book-student-block.js"
+          }
         }
       ]
     },
     {
-      "name": "letter-grade-picker",
-      "description": "`letter-grade-picker`\n`A headless gradebook that supports multiple backends with rubrics`\n\nAttributes:\n\n  * `value` {`string`} - \n\n  * `label` {`string`} - \n\n  * `reveal` {`boolean`} - \n\n  * `arrow` {`boolean`} - \n\n  * `input` {`boolean`} - \n\n  * `possible` {`number`} - \n\n  * `score` {`number`} - \n\nProperties:\n\n  * `value` {`string`} - \n\n  * `label` {`string`} - \n\n  * `reveal` {`boolean`} - \n\n  * `arrow` {`boolean`} - \n\n  * `input` {`boolean`} - \n\n  * `possible` {`number`} - \n\n  * `score` {`number`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/grade-book-table.js",
+      "declarations": [
         {
-          "name": "value",
-          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: null"
+          "kind": "class",
+          "description": "",
+          "name": "GradeBookTable",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "editMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "edit-mode",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "edit-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "editMode"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "GradeBookTable",
+            "module": "lib/grade-book-table.js"
+          }
         },
         {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: null"
-        },
-        {
-          "name": "reveal",
-          "description": "`reveal` {`boolean`} - \n\nProperty: reveal\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "arrow",
-          "description": "`arrow` {`boolean`} - \n\nProperty: arrow\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "input",
-          "description": "`input` {`boolean`} - \n\nProperty: input\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "possible",
-          "description": "`possible` {`number`} - \n\nProperty: possible\n\nDefault: 0"
-        },
-        {
-          "name": "score",
-          "description": "`score` {`number`} - \n\nProperty: score\n\nDefault: 0"
+          "kind": "js",
+          "name": "GradeBookTable",
+          "declaration": {
+            "name": "GradeBookTable",
+            "module": "lib/grade-book-table.js"
+          }
         }
       ]
     },
     {
-      "name": "letter-grade",
-      "description": "Attributes:\n\n  * `points-system` {`string`} - \n\n  * `score` {`number`} - \n\n  * `total` {`number`} - \n\n  * `gradeScale` {`any[]`} - \n\n  * `display-only` {`boolean`} - \n\n  * `letter` {`string`} - \n\n  * `show-scale` {`boolean`} - \n\n  * `value` {`number`} - \n\n  * `mini` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `active` {`boolean`} - \n\nProperties:\n\n  * `pointsSystem` {`string`} - \n\n  * `score` {`number`} - \n\n  * `total` {`number`} - \n\n  * `gradeScale` {`any[]`} - \n\n  * `displayOnly` {`boolean`} - \n\n  * `_letterIndex` - \n\n  * `letter` {`string`} - \n\n  * `showScale` {`boolean`} - \n\n  * `value` {`number`} - \n\n  * `mini` {`boolean`} - \n\n  * `label` {`string`} - \n\n  * `active` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/jspdf.min.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/letter-grade-picker.js",
+      "declarations": [
         {
-          "name": "points-system",
-          "description": "`points-system` {`string`} - \n\nProperty: pointsSystem\n\nDefault: pts"
+          "kind": "class",
+          "description": "`letter-grade-picker`\n`A headless gradebook that supports multiple backends with rubrics`",
+          "name": "LetterGradePicker",
+          "members": [
+            {
+              "kind": "method",
+              "name": "activeEventOn",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "activeEventOff",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "clickScore",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "scoreUpdated",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "reveal",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "reveal"
+            },
+            {
+              "kind": "field",
+              "name": "arrow",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "arrow"
+            },
+            {
+              "kind": "field",
+              "name": "input",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "input"
+            },
+            {
+              "kind": "field",
+              "name": "possible",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "possible"
+            },
+            {
+              "kind": "field",
+              "name": "score",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "score"
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "value"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "label"
+            },
+            {
+              "name": "reveal",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "reveal"
+            },
+            {
+              "name": "arrow",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "arrow"
+            },
+            {
+              "name": "input",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "input"
+            },
+            {
+              "name": "possible",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "possible"
+            },
+            {
+              "name": "score",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "score"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "letter-grade-picker",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LetterGradePicker",
+            "module": "lib/letter-grade-picker.js"
+          }
         },
         {
-          "name": "score",
-          "description": "`score` {`number`} - \n\nProperty: score\n\nDefault: null"
+          "kind": "js",
+          "name": "LetterGradePicker",
+          "declaration": {
+            "name": "LetterGradePicker",
+            "module": "lib/letter-grade-picker.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/letter-grade.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "LetterGrade",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "calculateLetterGrade",
+              "description": "return the letter grade based on score and gradeScale existing"
+            },
+            {
+              "kind": "field",
+              "name": "pointsSystem",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"pts\"",
+              "attribute": "points-system"
+            },
+            {
+              "kind": "field",
+              "name": "score",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "score"
+            },
+            {
+              "kind": "field",
+              "name": "total",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "total"
+            },
+            {
+              "kind": "field",
+              "name": "gradeScale",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "gradeScale"
+            },
+            {
+              "kind": "field",
+              "name": "displayOnly",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "display-only"
+            },
+            {
+              "kind": "field",
+              "name": "_letterIndex",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "letter",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "letter",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "showScale",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "show-scale",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "mini",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "mini",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "label",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "active",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "score",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "score"
+            },
+            {
+              "name": "total",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "total"
+            },
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "value"
+            },
+            {
+              "name": "points-system",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"pts\"",
+              "fieldName": "pointsSystem"
+            },
+            {
+              "name": "gradeScale",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "gradeScale"
+            },
+            {
+              "name": "letter",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "letter"
+            },
+            {
+              "name": "show-scale",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "showScale"
+            },
+            {
+              "name": "mini",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "mini"
+            },
+            {
+              "name": "label",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "label"
+            },
+            {
+              "name": "display-only",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "displayOnly"
+            },
+            {
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "active"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LetterGrade",
+            "module": "lib/letter-grade.js"
+          }
         },
         {
-          "name": "total",
-          "description": "`total` {`number`} - \n\nProperty: total\n\nDefault: null"
-        },
-        {
-          "name": "gradeScale",
-          "description": "`gradeScale` {`any[]`} - \n\nProperty: gradeScale\n\nDefault: "
-        },
-        {
-          "name": "display-only",
-          "description": "`display-only` {`boolean`} - \n\nProperty: displayOnly\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "letter",
-          "description": "`letter` {`string`} - \n\nProperty: letter\n\nDefault: "
-        },
-        {
-          "name": "show-scale",
-          "description": "`show-scale` {`boolean`} - \n\nProperty: showScale\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "value",
-          "description": "`value` {`number`} - \n\nProperty: value\n\nDefault: "
-        },
-        {
-          "name": "mini",
-          "description": "`mini` {`boolean`} - \n\nProperty: mini\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "label",
-          "description": "`label` {`string`} - \n\nProperty: label\n\nDefault: "
-        },
-        {
-          "name": "active",
-          "description": "`active` {`boolean`} - \n\nProperty: active\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "LetterGrade",
+          "declaration": {
+            "name": "LetterGrade",
+            "module": "lib/letter-grade.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

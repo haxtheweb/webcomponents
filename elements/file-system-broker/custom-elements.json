@@ -1,40 +1,997 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "file-system-broker",
-      "description": "`file-system-broker`\n`singleton to simplify interactions with the file system on a user&#39;s device`\n\nProperties:\n\n  * `dirHandler` - \n\n  * `fileHandler` - \n\n  * `files` {`never[]`} - ",
-      "attributes": []
-    },
-    {
-      "name": "docx-file-system-broker",
-      "description": "Web component that bridges local file system via File API and\ncombines the functionality of the DOCX parser so that you can easily\nload a file / directory from the user's file system and then access\nthat data from DOCX\n\nEvents:\n\n  * `docx-reader-ready` {`CustomEvent<this>`} - \n\n  * `docx-file-system-data` {`CustomEvent<{ name: any; value: any; }>`} - \n\nProperties:\n\n  * `libPath` {`string`} - \n\n  * `dirHandler` - \n\n  * `fileHandler` - \n\n  * `files` {`never[]`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "file-system-broker.js",
+      "declarations": [
         {
-          "name": "ondocx-reader-ready",
-          "description": "`docx-reader-ready` {`CustomEvent<this>`} - "
+          "kind": "class",
+          "description": "`file-system-broker`\n`singleton to simplify interactions with the file system on a user&#39;s device`",
+          "name": "FileSystemBroker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "This is a convention, not the standard",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "loadFile",
+              "parameters": [
+                {
+                  "name": "type",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "multiple",
+                  "default": "false",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                },
+                {
+                  "name": "excludeAll",
+                  "default": "true",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                }
+              ],
+              "description": "Get contents of a file based on type",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getFileContents",
+              "parameters": [
+                {
+                  "name": "type",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "multiple",
+                  "default": "false",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                },
+                {
+                  "name": "excludeAll",
+                  "default": "true",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                }
+              ],
+              "description": "Get contents of a file based on type",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "typeToAccept",
+              "parameters": [
+                {
+                  "name": "type"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "saveFile",
+              "parameters": [
+                {
+                  "name": "type"
+                },
+                {
+                  "name": "content"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "openDir",
+              "parameters": [
+                {
+                  "name": "recursive",
+                  "default": "true"
+                },
+                {
+                  "name": "options",
+                  "default": "{}"
+                }
+              ],
+              "description": "Open directory"
+            },
+            {
+              "kind": "method",
+              "name": "readFileInDir",
+              "parameters": [
+                {
+                  "name": "fileName"
+                },
+                {
+                  "name": "options",
+                  "default": "{}"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "writeFileInDir",
+              "parameters": [
+                {
+                  "name": "fileName"
+                },
+                {
+                  "name": "content",
+                  "default": "\"\""
+                },
+                {
+                  "name": "options",
+                  "default": "{}"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__readDir",
+              "parameters": [
+                {
+                  "name": "dirHandle"
+                },
+                {
+                  "name": "recursive"
+                },
+                {
+                  "name": "folder"
+                },
+                {
+                  "name": "parentHandler"
+                }
+              ],
+              "description": "Read contents of a directory and recursively load down from there"
+            },
+            {
+              "kind": "field",
+              "name": "dirHandler",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "fileHandler",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "files",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "file-system-broker",
+          "customElement": true
         },
         {
-          "name": "ondocx-file-system-data",
-          "description": "`docx-file-system-data` {`CustomEvent<{ name: any; value: any; }>`} - "
+          "kind": "variable",
+          "name": "FileSystemBrokerSingleton"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "FileSystemBroker",
+            "module": "file-system-broker.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FileSystemBroker",
+          "declaration": {
+            "name": "FileSystemBroker",
+            "module": "file-system-broker.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FileSystemBrokerSingleton",
+          "declaration": {
+            "name": "FileSystemBrokerSingleton",
+            "module": "file-system-broker.js"
+          }
         }
       ]
     },
     {
-      "name": "xlsx-file-system-broker",
-      "description": "Web component that bridges local file system via File API and\ncombines the functionality of the XSLX parser so that you can easily\nload a file / directory from the user's file system and then access\nthat data from XLSX / ODS / CSV repos\n\nEvents:\n\n  * `xlsx-ready` {`CustomEvent<this>`} - \n\n  * `xlsx-file-system-data` {`CustomEvent<{ filename: string; format: any; operation: string; data: string; }>`} - \n\nProperties:\n\n  * `XLSX` - \n\n  * `libPath` {`string`} - \n\n  * `XW` - \n\n  * `dirHandler` - \n\n  * `fileHandler` - \n\n  * `files` {`never[]`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/docx-file-system-broker.js",
+      "declarations": [
         {
-          "name": "onxlsx-ready",
-          "description": "`xlsx-ready` {`CustomEvent<this>`} - "
+          "kind": "class",
+          "description": "Web component that bridges local file system via File API and\ncombines the functionality of the DOCX parser so that you can easily\nload a file / directory from the user's file system and then access\nthat data from DOCX",
+          "name": "DOCXFileSystemBroker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "This is a convention, not the standard",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__toHTML",
+              "parameters": [
+                {
+                  "name": "buffer"
+                },
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "HTMLToDOCX",
+              "parameters": [
+                {
+                  "name": "content"
+                },
+                {
+                  "name": "filename"
+                },
+                {
+                  "name": "dl",
+                  "default": "true"
+                }
+              ],
+              "description": "Take contents and return a docx file downloaded to the user's browser"
+            },
+            {
+              "kind": "method",
+              "name": "fileToHTML",
+              "parameters": [
+                {
+                  "name": "input"
+                },
+                {
+                  "name": "name",
+                  "default": "\"filepicked\""
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "libPath",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"mammoth/\""
+            },
+            {
+              "kind": "method",
+              "name": "loadFile",
+              "parameters": [
+                {
+                  "name": "type",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "multiple",
+                  "default": "false",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                },
+                {
+                  "name": "excludeAll",
+                  "default": "true",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                }
+              ],
+              "description": "Get contents of a file based on type",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getFileContents",
+              "parameters": [
+                {
+                  "name": "type",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "multiple",
+                  "default": "false",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                },
+                {
+                  "name": "excludeAll",
+                  "default": "true",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                }
+              ],
+              "description": "Get contents of a file based on type",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "typeToAccept",
+              "parameters": [
+                {
+                  "name": "type"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "saveFile",
+              "parameters": [
+                {
+                  "name": "type"
+                },
+                {
+                  "name": "content"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "openDir",
+              "parameters": [
+                {
+                  "name": "recursive",
+                  "default": "true"
+                },
+                {
+                  "name": "options",
+                  "default": "{}"
+                }
+              ],
+              "description": "Open directory",
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "readFileInDir",
+              "parameters": [
+                {
+                  "name": "fileName"
+                },
+                {
+                  "name": "options",
+                  "default": "{}"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "writeFileInDir",
+              "parameters": [
+                {
+                  "name": "fileName"
+                },
+                {
+                  "name": "content",
+                  "default": "\"\""
+                },
+                {
+                  "name": "options",
+                  "default": "{}"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__readDir",
+              "parameters": [
+                {
+                  "name": "dirHandle"
+                },
+                {
+                  "name": "recursive"
+                },
+                {
+                  "name": "folder"
+                },
+                {
+                  "name": "parentHandler"
+                }
+              ],
+              "description": "Read contents of a directory and recursively load down from there",
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "dirHandler",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fileHandler",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "files",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "FileSystemBroker",
+            "module": "/file-system-broker.js"
+          }
         },
         {
-          "name": "onxlsx-file-system-data",
-          "description": "`xlsx-file-system-data` {`CustomEvent<{ filename: string; format: any; operation: string; data: string; }>`} - "
+          "kind": "variable",
+          "name": "DOCXFileSystemBrokerSingleton"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "DOCXFileSystemBroker",
+            "module": "lib/docx-file-system-broker.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DOCXFileSystemBrokerSingleton",
+          "declaration": {
+            "name": "DOCXFileSystemBrokerSingleton",
+            "module": "lib/docx-file-system-broker.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DOCXFileSystemBroker",
+          "declaration": {
+            "name": "DOCXFileSystemBroker",
+            "module": "lib/docx-file-system-broker.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FileSystemBroker",
+          "declaration": {
+            "name": "FileSystemBroker",
+            "module": "lib/docx-file-system-broker.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FileSystemBrokerSingleton",
+          "declaration": {
+            "name": "FileSystemBrokerSingleton",
+            "module": "lib/docx-file-system-broker.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/xlsx-file-system-broker.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Web component that bridges local file system via File API and\ncombines the functionality of the XSLX parser so that you can easily\nload a file / directory from the user's file system and then access\nthat data from XLSX / ODS / CSV repos",
+          "name": "XLSXFileSystemBroker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "This is a convention, not the standard",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "workbookFromJSON",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__toJSON",
+              "parameters": [
+                {
+                  "name": "workbook"
+                },
+                {
+                  "name": "stringify"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__toCSV",
+              "parameters": [
+                {
+                  "name": "workbook"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__toFMLA",
+              "parameters": [
+                {
+                  "name": "workbook"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__toHTML",
+              "parameters": [
+                {
+                  "name": "workbook"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__toXLSX",
+              "parameters": [
+                {
+                  "name": "workbook"
+                },
+                {
+                  "name": "filename"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "processWorker",
+              "parameters": [
+                {
+                  "name": "wb"
+                },
+                {
+                  "name": "format"
+                },
+                {
+                  "name": "filename"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "processFile",
+              "parameters": [
+                {
+                  "name": "input"
+                },
+                {
+                  "name": "format"
+                },
+                {
+                  "name": "filename"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "__executeWorker",
+              "parameters": [
+                {
+                  "name": "data"
+                },
+                {
+                  "name": "format"
+                },
+                {
+                  "name": "op",
+                  "default": "\"read\""
+                },
+                {
+                  "name": "filename",
+                  "default": "\"\""
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "XLSX",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "libPath",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"xlsx/\""
+            },
+            {
+              "kind": "field",
+              "name": "XW",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ msg: \"xlsx\", worker: this.libPath + \"xlsxworker.js\", }"
+            },
+            {
+              "kind": "method",
+              "name": "loadFile",
+              "parameters": [
+                {
+                  "name": "type",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "multiple",
+                  "default": "false",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                },
+                {
+                  "name": "excludeAll",
+                  "default": "true",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                }
+              ],
+              "description": "Get contents of a file based on type",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getFileContents",
+              "parameters": [
+                {
+                  "name": "type",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "multiple",
+                  "default": "false",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                },
+                {
+                  "name": "excludeAll",
+                  "default": "true",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                }
+              ],
+              "description": "Get contents of a file based on type",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              },
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "typeToAccept",
+              "parameters": [
+                {
+                  "name": "type"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "saveFile",
+              "parameters": [
+                {
+                  "name": "type"
+                },
+                {
+                  "name": "content"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "openDir",
+              "parameters": [
+                {
+                  "name": "recursive",
+                  "default": "true"
+                },
+                {
+                  "name": "options",
+                  "default": "{}"
+                }
+              ],
+              "description": "Open directory",
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "readFileInDir",
+              "parameters": [
+                {
+                  "name": "fileName"
+                },
+                {
+                  "name": "options",
+                  "default": "{}"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "writeFileInDir",
+              "parameters": [
+                {
+                  "name": "fileName"
+                },
+                {
+                  "name": "content",
+                  "default": "\"\""
+                },
+                {
+                  "name": "options",
+                  "default": "{}"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "__readDir",
+              "parameters": [
+                {
+                  "name": "dirHandle"
+                },
+                {
+                  "name": "recursive"
+                },
+                {
+                  "name": "folder"
+                },
+                {
+                  "name": "parentHandler"
+                }
+              ],
+              "description": "Read contents of a directory and recursively load down from there",
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "dirHandler",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "fileHandler",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "files",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "FileSystemBroker",
+            "module": "/file-system-broker.js"
+          }
+        },
+        {
+          "kind": "variable",
+          "name": "XLSXFileSystemBrokerSingleton"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "XLSXFileSystemBroker",
+            "module": "lib/xlsx-file-system-broker.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "XLSXFileSystemBrokerSingleton",
+          "declaration": {
+            "name": "XLSXFileSystemBrokerSingleton",
+            "module": "lib/xlsx-file-system-broker.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "XLSXFileSystemBroker",
+          "declaration": {
+            "name": "XLSXFileSystemBroker",
+            "module": "lib/xlsx-file-system-broker.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FileSystemBroker",
+          "declaration": {
+            "name": "FileSystemBroker",
+            "module": "lib/xlsx-file-system-broker.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "FileSystemBrokerSingleton",
+          "declaration": {
+            "name": "FileSystemBrokerSingleton",
+            "module": "lib/xlsx-file-system-broker.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

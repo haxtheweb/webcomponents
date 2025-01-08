@@ -1,30 +1,144 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "barcode-reader",
-      "description": "`barcode-reader`\n`Element to read barcodes and QR codes through a video stream`\n\nEvents:\n\n  * `value-changed` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `scale` {`number`} - \n\n  * `value` {`string`} - \n\n  * `hideinput` {`boolean`} - \n\nProperties:\n\n  * `scale` {`number`} - \n\n  * `value` {`string`} - \n\n  * `hideinput` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "barcode-reader.js",
+      "declarations": [
         {
-          "name": "scale",
-          "description": "`scale` {`number`} - \n\nProperty: scale"
+          "kind": "class",
+          "description": "`barcode-reader`\n`Element to read barcodes and QR codes through a video stream`",
+          "name": "BarcodeReader",
+          "members": [
+            {
+              "kind": "method",
+              "name": "_control"
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_onFrame"
+            },
+            {
+              "kind": "method",
+              "name": "_drawFrame",
+              "parameters": [
+                {
+                  "name": "frameData"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "start"
+            },
+            {
+              "kind": "method",
+              "name": "_renderVideo"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "value",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hideinput",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hideinput"
+            },
+            {
+              "kind": "field",
+              "name": "scale",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "scale",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "name": "value-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "value"
+            },
+            {
+              "name": "scale",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "scale"
+            },
+            {
+              "name": "hideinput",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hideinput"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "barcode-reader",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "BarcodeReader",
+            "module": "barcode-reader.js"
+          }
         },
         {
-          "name": "value",
-          "description": "`value` {`string`} - \n\nProperty: value\n\nDefault: "
-        },
-        {
-          "name": "hideinput",
-          "description": "`hideinput` {`boolean`} - \n\nProperty: hideinput\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onvalue-changed",
-          "description": "`value-changed` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "BarcodeReader",
+          "declaration": {
+            "name": "BarcodeReader",
+            "module": "barcode-reader.js"
+          }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/zxing.js",
+      "declarations": [],
+      "exports": []
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,34 +1,136 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "elmsln-loading",
-      "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.\n\nAttributes:\n\n  * `color` {`string`} - color\n\n  * `contrast` {`number`} - contrast\n\n  * `size` {`string`} - tiny, small, medium, large, epic sizing.\n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - dark\n\nProperties:\n\n  * `color` {`string`} - color\n\n  * `contrast` {`number`} - contrast\n\n  * `size` {`string`} - tiny, small, medium, large, epic sizing.\n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - dark\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "elmsln-loading.js",
+      "declarations": [
         {
-          "name": "color",
-          "description": "`color` {`string`} - color\n\nProperty: color"
+          "kind": "class",
+          "description": "`elmsln-loading`\nA spinner to tell the user that something is loading.\nThis is just the spinner though and doesn't provide any text or anything else.",
+          "name": "ElmslnLoading",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_getAccentColor",
+              "parameters": [
+                {
+                  "name": "color"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "size",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "tiny, small, medium, large, epic sizing.",
+              "default": "\"medium\"",
+              "attribute": "size",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dark",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "dark",
+              "default": "false",
+              "attribute": "dark"
+            },
+            {
+              "kind": "field",
+              "name": "color",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "color",
+              "attribute": "color"
+            },
+            {
+              "kind": "field",
+              "name": "contrast",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "description": "contrast",
+              "attribute": "contrast"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "dark",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "dark",
+              "default": "false",
+              "fieldName": "dark"
+            },
+            {
+              "name": "color",
+              "type": {
+                "text": "string"
+              },
+              "description": "color",
+              "fieldName": "color"
+            },
+            {
+              "name": "contrast",
+              "type": {
+                "text": "number"
+              },
+              "description": "contrast",
+              "fieldName": "contrast"
+            },
+            {
+              "name": "size",
+              "type": {
+                "text": "string"
+              },
+              "description": "tiny, small, medium, large, epic sizing.",
+              "default": "\"medium\"",
+              "fieldName": "size"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "elmsln-loading",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ElmslnLoading",
+            "module": "elmsln-loading.js"
+          }
         },
         {
-          "name": "contrast",
-          "description": "`contrast` {`number`} - contrast\n\nProperty: contrast"
-        },
-        {
-          "name": "size",
-          "description": "`size` {`string`} - tiny, small, medium, large, epic sizing.\n\nProperty: size\n\nDefault: medium"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - dark\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "ElmslnLoading",
+          "declaration": {
+            "name": "ElmslnLoading",
+            "module": "elmsln-loading.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

@@ -1,12 +1,71 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "hax-logo",
-      "description": "`hax-logo`\n`logo element for hax, obviously as a hax capable element.`\n\nProperties:\n\n  * `html` {`string`} - \n\n  * `size` {`string | null`} - \n\n  * `toupper` {`string | null`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "hax-logo.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`hax-logo`\n`logo element for hax, obviously as a hax capable element.`",
+          "name": "HaxLogo",
+          "members": [
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "size"
+            },
+            {
+              "kind": "field",
+              "name": "toupper"
+            },
+            {
+              "kind": "field",
+              "name": "template"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "hax-logo",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "HaxLogo",
+            "module": "hax-logo.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "HaxLogo",
+          "declaration": {
+            "name": "HaxLogo",
+            "module": "hax-logo.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

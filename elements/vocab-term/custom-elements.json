@@ -1,35 +1,213 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "vocab-term",
-      "description": "`vocab-term`\n`a vocabulary term visualized in the page`\n\nAttributes:\n\n  * `popover-mode` {`boolean`} - \n\n  * `term` {`string`} - \n\n  * `information` {`string`} - \n\n  * `links` {`any[]`} - \n\n  * `detailsOpen` {`boolean`} - \n\nProperties:\n\n  * `_haxstate` {`boolean`} - \n\n  * `popoverMode` {`boolean`} - \n\n  * `term` {`string`} - \n\n  * `information` {`string`} - \n\n  * `links` {`any[]`} - \n\n  * `detailsOpen` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "vocab-term.js",
+      "declarations": [
         {
-          "name": "popover-mode",
-          "description": "`popover-mode` {`boolean`} - \n\nProperty: popoverMode\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`vocab-term`\n`a vocabulary term visualized in the page`",
+          "name": "VocabTerm",
+          "members": [
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "double-check that we are set to inactivate click handlers\nthis is for when activated in a duplicate / adding new content state"
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "val"
+                }
+              ],
+              "description": "Set a flag to test if we should block link clicking on the entire card\notherwise when editing in hax you can't actually edit it bc its all clickable.\nif editMode goes off this helps ensure we also become clickable again"
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeyup",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "provides support for keyboard if open property is not supported by browser"
+            },
+            {
+              "kind": "method",
+              "name": "toggleOpen",
+              "description": "toggles the element"
+            },
+            {
+              "kind": "method",
+              "name": "detailsFocusOut"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "_haxstate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "popoverMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "popover-mode",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "term",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "term"
+            },
+            {
+              "kind": "field",
+              "name": "information",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "information"
+            },
+            {
+              "kind": "field",
+              "name": "links",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "links"
+            },
+            {
+              "kind": "field",
+              "name": "detailsOpen",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "detailsOpen"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "popover-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "popoverMode"
+            },
+            {
+              "name": "detailsOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "detailsOpen"
+            },
+            {
+              "name": "links",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "links"
+            },
+            {
+              "name": "information",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "information"
+            },
+            {
+              "name": "term",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "term"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "vocab-term",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "VocabTerm",
+            "module": "vocab-term.js"
+          }
         },
         {
-          "name": "term",
-          "description": "`term` {`string`} - \n\nProperty: term\n\nDefault: null"
-        },
-        {
-          "name": "information",
-          "description": "`information` {`string`} - \n\nProperty: information\n\nDefault: null"
-        },
-        {
-          "name": "links",
-          "description": "`links` {`any[]`} - \n\nProperty: links\n\nDefault: "
-        },
-        {
-          "name": "detailsOpen",
-          "description": "`detailsOpen` {`boolean`} - \n\nProperty: detailsOpen\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "VocabTerm",
+          "declaration": {
+            "name": "VocabTerm",
+            "module": "vocab-term.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

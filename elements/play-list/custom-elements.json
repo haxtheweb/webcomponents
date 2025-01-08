@@ -1,49 +1,296 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "play-list",
-      "description": "`play-list`\n`scrollable component that accepts lightDom or data driven lists and generates a content player`\n\nAttributes:\n\n  * `items` {`any[]`} - \n\n  * `loop` {`boolean`} - \n\n  * `edit` {`boolean`} - \n\n  * `navigation` {`boolean`} - \n\n  * `pagination` {`boolean`} - \n\n  * `aspect-ratio` {`string`} - \n\n  * `slide` {`number`} - \n\n  * `orientation` {`string`} - \n\nProperties:\n\n  * `items` {`any[]`} - \n\n  * `loop` {`boolean`} - \n\n  * `edit` {`boolean`} - \n\n  * `navigation` {`boolean`} - \n\n  * `pagination` {`boolean`} - \n\n  * `aspectRatio` {`string`} - \n\n  * `slide` {`number`} - \n\n  * `orientation` {`string`} - \n\n  * `_observer` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "play-list.js",
+      "declarations": [
         {
-          "name": "items",
-          "description": "`items` {`any[]`} - \n\nProperty: items\n\nDefault: "
+          "kind": "class",
+          "description": "`play-list`\n`scrollable component that accepts lightDom or data driven lists and generates a content player`",
+          "name": "PlayList",
+          "members": [
+            {
+              "kind": "method",
+              "name": "mirrorLightDomToItems"
+            },
+            {
+              "kind": "method",
+              "name": "renderHAXItem",
+              "parameters": [
+                {
+                  "name": "item"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "slideIndexChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxClickSlideIndex",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxinlineContextMenu",
+              "parameters": [
+                {
+                  "name": "ceMenu"
+                }
+              ],
+              "description": "add buttons when it is in context"
+            },
+            {
+              "kind": "method",
+              "name": "haxToggleEdit",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "items",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "items"
+            },
+            {
+              "kind": "field",
+              "name": "loop",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "loop",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "edit",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "edit",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "navigation",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "navigation",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "pagination",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "pagination",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "aspectRatio",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"16:9\"",
+              "attribute": "aspect-ratio",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "slide",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "slide",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "orientation",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"horizontal\"",
+              "attribute": "orientation",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_observer",
+              "default": "new MutationObserver((mutations) => { clearTimeout(this._debounceMutations); this._debounceMutations = setTimeout(() => { this.mirrorLightDomToItems(); }, 100); })"
+            }
+          ],
+          "events": [
+            {
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "items",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "items"
+            },
+            {
+              "name": "loop",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "loop"
+            },
+            {
+              "name": "edit",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "edit"
+            },
+            {
+              "name": "navigation",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "navigation"
+            },
+            {
+              "name": "pagination",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "pagination"
+            },
+            {
+              "name": "aspect-ratio",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"16:9\"",
+              "fieldName": "aspectRatio"
+            },
+            {
+              "name": "orientation",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"horizontal\"",
+              "fieldName": "orientation"
+            },
+            {
+              "name": "slide",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "slide"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "play-list",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PlayList",
+            "module": "play-list.js"
+          }
         },
         {
-          "name": "loop",
-          "description": "`loop` {`boolean`} - \n\nProperty: loop\n\nDefault: false",
-          "valueSet": "v"
-        },
+          "kind": "js",
+          "name": "PlayList",
+          "declaration": {
+            "name": "PlayList",
+            "module": "play-list.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/SLStyleManager.js",
+      "declarations": [
         {
-          "name": "edit",
-          "description": "`edit` {`boolean`} - \n\nProperty: edit\n\nDefault: false",
-          "valueSet": "v"
-        },
+          "kind": "function",
+          "name": "generateStyleLinkEls"
+        }
+      ],
+      "exports": [
         {
-          "name": "navigation",
-          "description": "`navigation` {`boolean`} - \n\nProperty: navigation\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "pagination",
-          "description": "`pagination` {`boolean`} - \n\nProperty: pagination\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "aspect-ratio",
-          "description": "`aspect-ratio` {`string`} - \n\nProperty: aspectRatio\n\nDefault: 16:9"
-        },
-        {
-          "name": "slide",
-          "description": "`slide` {`number`} - \n\nProperty: slide\n\nDefault: 0"
-        },
-        {
-          "name": "orientation",
-          "description": "`orientation` {`string`} - \n\nProperty: orientation\n\nDefault: horizontal"
+          "kind": "js",
+          "name": "generateStyleLinkEls",
+          "declaration": {
+            "name": "generateStyleLinkEls",
+            "module": "lib/SLStyleManager.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

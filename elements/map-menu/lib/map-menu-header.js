@@ -279,9 +279,9 @@ class MapMenuHeader extends I18NMixin(LitElement) {
         type: Boolean,
         attribute: "edit-controls",
       },
-      isFlex: { 
-        type: Boolean, 
-        attribute: "is-flex" 
+      isFlex: {
+        type: Boolean,
+        attribute: "is-flex",
       },
       url: {
         type: String,

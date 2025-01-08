@@ -1,17 +1,127 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "mutation-observer-import-mixin",
-      "description": "`mutation-observer-import-mixin`\n`a SuperClass mixin that dynamically imports undefined custom element definitions`\n\n",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "mutation-observer-import-mixin.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`mutation-observer-import-mixin`\n`a SuperClass mixin that dynamically imports undefined custom element definitions`",
+          "name": "MutationObserverImportElement",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "processElementList",
+              "parameters": [
+                {
+                  "name": "list"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "MutationObserverImportMixin",
+                "module": "lib/MutationObserverImportMixin.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "processNewElement",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Process new elements",
+              "inheritedFrom": {
+                "name": "MutationObserverImportMixin",
+                "module": "lib/MutationObserverImportMixin.js"
+              }
+            }
+          ],
+          "mixins": [
+            {
+              "name": "MutationObserverImportMixin",
+              "module": "/lib/MutationObserverImportMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "mutation-observer-import-mixin",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MutationObserverImportElement",
+            "module": "mutation-observer-import-mixin.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MutationObserverImportElement",
+          "declaration": {
+            "name": "MutationObserverImportElement",
+            "module": "mutation-observer-import-mixin.js"
+          }
+        }
+      ]
     },
     {
-      "name": "mutation-observer-import",
-      "description": "`mutation-observer-import-mixin`\n`a SuperClass mixin that dynamically imports undefined custom element definitions`\n\n",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "lib/MutationObserverImportMixin.js",
+      "declarations": [
+        {
+          "kind": "mixin",
+          "description": "",
+          "name": "MutationObserverImportMixin",
+          "members": [
+            {
+              "kind": "method",
+              "name": "processElementList",
+              "parameters": [
+                {
+                  "name": "list"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "processNewElement",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Process new elements"
+            }
+          ],
+          "parameters": [
+            {
+              "name": "SuperClass"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "MutationObserverImportMixin",
+          "declaration": {
+            "name": "MutationObserverImportMixin",
+            "module": "lib/MutationObserverImportMixin.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

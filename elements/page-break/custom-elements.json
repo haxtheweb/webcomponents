@@ -1,149 +1,1028 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "page-break-manager",
-      "description": "Properties:\n\n  * `windowControllers` - \n\n  * `target` - \n\n  * `breaks` {`never[]`} - \n\n  * `_timer` {`number`} - ",
-      "attributes": []
-    },
-    {
-      "name": "page-break-outline",
-      "description": "Attributes:\n\n  * `selector` - \n\n  * `base-path` {} - \n\nProperties:\n\n  * `windowControllers` - \n\n  * `target` - \n\n  * `selector` - \n\n  * `div` - \n\n  * `basePath` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "page-break.js",
+      "declarations": [
         {
-          "name": "selector",
-          "description": "`selector` - \n\nProperty: selector\n\nDefault: null"
+          "kind": "class",
+          "description": "`page-break`\n`a visual break but also helps manage hierarchy`",
+          "name": "PageBreak",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "setupTargetData",
+              "parameters": [
+                {
+                  "name": "newTarget"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessInsertContent",
+              "parameters": [
+                {
+                  "name": "details"
+                },
+                {
+                  "name": "activeNode"
+                }
+              ],
+              "description": "on insert, test for other page-break tags via manager to see\nif we're able to steal sane defaults from there"
+            },
+            {
+              "kind": "method",
+              "name": "haxtrayDragNDropToNode",
+              "parameters": [
+                {
+                  "name": "activeNode"
+                }
+              ],
+              "description": "Same as the above hook in capability however because of the interim state\nof a drag event, we need a specialized hook that is for when the new\nelement has been dropped into the page"
+            },
+            {
+              "kind": "method",
+              "name": "haxsetupActiveElementForm",
+              "parameters": [
+                {
+                  "name": "props"
+                }
+              ],
+              "description": "Allow for dynamic setting of the parent field if we have the store around\nwith values to do so"
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ],
+              "description": "Ensure that if we WERE active and now are not\nand have a reference to the custom element menu in hax\nand are the right break type, that we reset these items"
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "description": "ensure that when we flip states here that we are actively switching the original level var"
+            },
+            {
+              "kind": "method",
+              "name": "haxinlineContextMenu",
+              "parameters": [
+                {
+                  "name": "ceMenu"
+                }
+              ],
+              "description": "add buttons when it is in context"
+            },
+            {
+              "kind": "method",
+              "name": "_updateHAXCEMenu"
+            },
+            {
+              "kind": "method",
+              "name": "haxClickLockInPage",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxClickInlineLock",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxClickInlinePublished",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "relatedItems",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "related-items"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "accentColor",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "accent-color"
+            },
+            {
+              "kind": "field",
+              "name": "entityType",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"page\"",
+              "attribute": "entity-type"
+            },
+            {
+              "kind": "field",
+              "name": "status",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "status"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ newPage: \"New page\", pageBreak: \"Page break\", selectToEditPageDetails: \"Select to edit Page details\", clickToUnlock: \"Click to unlock\", noParent: \"No parent\", toggleLock: \"Toggle lock\", togglePublished: \"Toggle published\", }"
+            },
+            {
+              "kind": "field",
+              "name": "description",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "description"
+            },
+            {
+              "kind": "field",
+              "name": "hideInMenu",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hide-in-menu",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "noderefs",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "developerTheme",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "developer-theme"
+            },
+            {
+              "kind": "field",
+              "name": "tags",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "tags",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "title",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "pageType",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "page-type"
+            },
+            {
+              "kind": "field",
+              "name": "slug",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "slug"
+            },
+            {
+              "kind": "field",
+              "name": "published",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "published",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "image"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "locked",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "locked",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "order",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "order"
+            },
+            {
+              "kind": "field",
+              "name": "depth",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "attribute": "depth",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "itemId",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "item-id",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_haxState",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_haxState"
+            },
+            {
+              "kind": "field",
+              "name": "IORemoveOnVisible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "IODelay",
+              "type": {
+                "text": "number"
+              },
+              "default": "250"
+            },
+            {
+              "kind": "field",
+              "name": "remoteHeadingobserver",
+              "default": "new MutationObserver(() => { // lock ensures that title update, then updating hte innerText // doesn't generate another mutation record if (this.title != this.target.innerText) { this.__moUpdate = true; this.title = this.target.innerText; } })"
+            },
+            {
+              "kind": "field",
+              "name": "iconType",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"editor:format-page-break\"",
+              "attribute": "iconType"
+            },
+            {
+              "kind": "field",
+              "name": "breakType",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"node\"",
+              "attribute": "break-type"
+            },
+            {
+              "kind": "field",
+              "name": "parent",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "parent",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "iconType",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"editor:format-page-break\"",
+              "fieldName": "iconType"
+            },
+            {
+              "name": "related-items",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "relatedItems"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "icon"
+            },
+            {
+              "name": "accent-color",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "accentColor"
+            },
+            {
+              "name": "entity-type",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"page\"",
+              "fieldName": "entityType"
+            },
+            {
+              "name": "description",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "description"
+            },
+            {
+              "name": "order",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "order"
+            },
+            {
+              "name": "hide-in-menu",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hideInMenu"
+            },
+            {
+              "name": "tags",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "tags"
+            },
+            {
+              "name": "developer-theme",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "developerTheme"
+            },
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "title"
+            },
+            {
+              "name": "slug",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "slug"
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "image"
+            },
+            {
+              "name": "parent",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "parent"
+            },
+            {
+              "name": "published",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "published"
+            },
+            {
+              "name": "locked",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "locked"
+            },
+            {
+              "name": "depth",
+              "type": {
+                "text": "number"
+              },
+              "default": "0",
+              "fieldName": "depth"
+            },
+            {
+              "name": "item-id",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "itemId"
+            },
+            {
+              "name": "break-type",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"node\"",
+              "fieldName": "breakType"
+            },
+            {
+              "name": "status",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "status"
+            },
+            {
+              "name": "page-type",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "pageType"
+            },
+            {
+              "name": "_haxState",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_haxState"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "IntersectionObserverMixin",
+              "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            },
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "page-break",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PageBreak",
+          "declaration": {
+            "name": "PageBreak",
+            "module": "page-break.js"
+          }
         },
         {
-          "name": "base-path",
-          "description": "`base-path` {} - \n\n"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PageBreak",
+            "module": "page-break.js"
+          }
         }
       ]
     },
     {
-      "name": "page-break",
-      "description": "`page-break`\n`a visual break but also helps manage hierarchy`\n\nEvents:\n\n  * `page-break-registration` {`CustomEvent<{ value: this; action: string; }>`} - \n\n  * `page-break-change` {`CustomEvent<{ value: this; }>`} - \n\n  * `hax-refresh-tray-form` {`CustomEvent<any>`} - \n\nAttributes:\n\n  * `parent` {`string`} - \n\n  * `related-items` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `accent-color` {`string`} - \n\n  * `entity-type` {`string`} - \n\n  * `status` {`string`} - \n\n  * `description` {`string`} - \n\n  * `hide-in-menu` {`boolean`} - \n\n  * `developer-theme` {`string`} - \n\n  * `tags` {`string`} - \n\n  * `title` {`string`} - \n\n  * `page-type` {`string`} - \n\n  * `slug` {`string`} - \n\n  * `published` {`boolean`} - \n\n  * `image` {`string`} - \n\n  * `locked` {`boolean`} - \n\n  * `order` {`number`} - \n\n  * `depth` {`number`} - \n\n  * `item-id` {`string`} - \n\n  * `_haxState` {`boolean`} - \n\n  * `iconType` {`string`} - \n\n  * `break-type` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\n  * `t` - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperties:\n\n  * `parent` {`string`} - \n\n  * `relatedItems` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `accentColor` {`string`} - \n\n  * `entityType` {`string`} - \n\n  * `status` {`string`} - \n\n  * `description` {`string`} - \n\n  * `hideInMenu` {`boolean`} - \n\n  * `noderefs` {`any[]`} - \n\n  * `developerTheme` {`string`} - \n\n  * `tags` {`string`} - \n\n  * `title` {`string`} - \n\n  * `pageType` {`string`} - \n\n  * `slug` {`string`} - \n\n  * `published` {`boolean`} - \n\n  * `image` {`string`} - \n\n  * `target` - \n\n  * `locked` {`boolean`} - \n\n  * `order` {`number`} - \n\n  * `depth` {`number`} - \n\n  * `itemId` {`string`} - \n\n  * `_haxState` {`boolean`} - \n\n  * `remoteHeadingobserver` - \n\n  * `iconType` {`string`} - \n\n  * `breakType` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - \n\n  * `t` - \n\n  * `schemaResourceID` {`string`} - \n\n  * `schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/page-anchor.js",
+      "declarations": [
         {
-          "name": "parent",
-          "description": "`parent` {`string`} - \n\nProperty: parent"
+          "kind": "class",
+          "description": "",
+          "name": "PageAnchor",
+          "members": [
+            {
+              "kind": "method",
+              "name": "clickHandler",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getMatchFromFields",
+              "parameters": [
+                {
+                  "name": "id"
+                },
+                {
+                  "name": "target"
+                },
+                {
+                  "name": "field",
+                  "default": "\"accentColor\""
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks"
+            },
+            {
+              "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ],
+              "description": "ensure that when we flip states here that we are actively switching the original level var"
+            },
+            {
+              "kind": "method",
+              "name": "haxsetupActiveElementForm",
+              "parameters": [
+                {
+                  "name": "props"
+                }
+              ],
+              "description": "Allow for dynamic setting of the parent field if we have the store around\nwith values to do so"
+            },
+            {
+              "kind": "field",
+              "name": "value",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "value used for the deep reference within the anchor",
+              "default": "null",
+              "attribute": "value"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "the selector to target in the DOM; css selector",
+              "default": "\"\"",
+              "attribute": "target",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "entityId",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "entity to reference to pull associated visuals for such as icon / color",
+              "default": "null",
+              "attribute": "entity-id"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "value",
+              "type": {
+                "text": "null"
+              },
+              "description": "value used for the deep reference within the anchor",
+              "default": "null",
+              "fieldName": "value"
+            },
+            {
+              "name": "target",
+              "type": {
+                "text": "string"
+              },
+              "description": "the selector to target in the DOM; css selector",
+              "default": "\"\"",
+              "fieldName": "target"
+            },
+            {
+              "name": "entity-id",
+              "type": {
+                "text": "null"
+              },
+              "description": "entity to reference to pull associated visuals for such as icon / color",
+              "default": "null",
+              "fieldName": "entityId"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PageAnchor",
+          "declaration": {
+            "name": "PageAnchor",
+            "module": "lib/page-anchor.js"
+          }
         },
         {
-          "name": "related-items",
-          "description": "`related-items` {`string`} - \n\nProperty: relatedItems\n\nDefault: null"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PageAnchor",
+            "module": "lib/page-anchor.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/page-break-manager.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PageBreakManagerEl",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getParent",
+              "parameters": [
+                {
+                  "name": "el"
+                },
+                {
+                  "name": "rel",
+                  "default": "null"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "elementsBetween",
+              "parameters": [
+                {
+                  "name": "elem"
+                },
+                {
+                  "name": "selector",
+                  "default": "\"page-break\""
+                },
+                {
+                  "name": "filter"
+                },
+                {
+                  "name": "direction",
+                  "default": "\"nextElementSibling\""
+                }
+              ],
+              "description": "get all elements between a target and a selector; inspired by\n(c) 2017 Chris Ferdinandi, MIT License, https://gomakethings.com"
+            },
+            {
+              "kind": "method",
+              "name": "associatedPageBreak",
+              "parameters": [
+                {
+                  "name": "elem"
+                }
+              ],
+              "description": "Return the previous page-break relative to a target element.\nThis is useful for finding the page-break associated with an element in the page"
+            },
+            {
+              "kind": "method",
+              "name": "betweenElementsQuery",
+              "parameters": [
+                {
+                  "name": "type",
+                  "default": "\"all\""
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "registerPageBreak",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "breaks",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "_timer",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "page-break-manager",
+          "customElement": true
         },
         {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: null"
+          "kind": "variable",
+          "name": "pageBreakManager"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PageBreakManagerEl",
+          "declaration": {
+            "name": "PageBreakManagerEl",
+            "module": "lib/page-break-manager.js"
+          }
         },
         {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - \n\nProperty: accentColor\n\nDefault: null"
+          "kind": "custom-element-definition",
+          "name": "page-break-manager",
+          "declaration": {
+            "name": "PageBreakManagerEl",
+            "module": "lib/page-break-manager.js"
+          }
         },
         {
-          "name": "entity-type",
-          "description": "`entity-type` {`string`} - \n\nProperty: entityType\n\nDefault: page"
+          "kind": "js",
+          "name": "pageBreakManager",
+          "declaration": {
+            "name": "pageBreakManager",
+            "module": "lib/page-break-manager.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/page-break-outline.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "PageBreakOutline",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "clickHandler",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "rerender"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "target",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "selector",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "div"
+            },
+            {
+              "kind": "field",
+              "name": "basePath",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\""
+            }
+          ],
+          "attributes": [
+            {
+              "name": "selector"
+            },
+            {
+              "name": "base-path"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PageBreakOutline",
+          "declaration": {
+            "name": "PageBreakOutline",
+            "module": "lib/page-break-outline.js"
+          }
         },
         {
-          "name": "status",
-          "description": "`status` {`string`} - \n\nProperty: status\n\nDefault: "
-        },
-        {
-          "name": "description",
-          "description": "`description` {`string`} - \n\nProperty: description\n\nDefault: null"
-        },
-        {
-          "name": "hide-in-menu",
-          "description": "`hide-in-menu` {`boolean`} - \n\nProperty: hideInMenu\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "developer-theme",
-          "description": "`developer-theme` {`string`} - \n\nProperty: developerTheme\n\nDefault: null"
-        },
-        {
-          "name": "tags",
-          "description": "`tags` {`string`} - \n\nProperty: tags\n\nDefault: null"
-        },
-        {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: newPage"
-        },
-        {
-          "name": "page-type",
-          "description": "`page-type` {`string`} - \n\nProperty: pageType\n\nDefault: null"
-        },
-        {
-          "name": "slug",
-          "description": "`slug` {`string`} - \n\nProperty: slug\n\nDefault: "
-        },
-        {
-          "name": "published",
-          "description": "`published` {`boolean`} - \n\nProperty: published\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "image",
-          "description": "`image` {`string`} - \n\nProperty: image\n\nDefault: null"
-        },
-        {
-          "name": "locked",
-          "description": "`locked` {`boolean`} - \n\nProperty: locked\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "order",
-          "description": "`order` {`number`} - \n\nProperty: order\n\nDefault: null"
-        },
-        {
-          "name": "depth",
-          "description": "`depth` {`number`} - \n\nProperty: depth\n\nDefault: 0"
-        },
-        {
-          "name": "item-id",
-          "description": "`item-id` {`string`} - \n\nProperty: itemId\n\nDefault: null"
-        },
-        {
-          "name": "_haxState",
-          "description": "`_haxState` {`boolean`} - \n\nProperty: _haxState\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "iconType",
-          "description": "`iconType` {`string`} - \n\nProperty: iconType\n\nDefault: editor:format-page-break"
-        },
-        {
-          "name": "break-type",
-          "description": "`break-type` {`string`} - \n\nProperty: breakType\n\nDefault: node"
-        },
-        {
-          "name": "element-visible",
-          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
-        },
-        {
-          "name": "schemaMap",
-          "description": "`schemaMap` - Schema Map for the element, used to generate a valid prefix on the fly\nProps set for Polymer compatibility\n\nProperty: schemaMap\n\nDefault: [object Object]"
-        },
-        {
-          "name": "onpage-break-registration",
-          "description": "`page-break-registration` {`CustomEvent<{ value: this; action: string; }>`} - "
-        },
-        {
-          "name": "onpage-break-change",
-          "description": "`page-break-change` {`CustomEvent<{ value: this; }>`} - "
-        },
-        {
-          "name": "onhax-refresh-tray-form",
-          "description": "`hax-refresh-tray-form` {`CustomEvent<any>`} - "
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PageBreakOutline",
+            "module": "lib/page-break-outline.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

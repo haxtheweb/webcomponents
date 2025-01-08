@@ -1,76 +1,348 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "a11y-carousel",
-      "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them\n\nEvents:\n\n  * `selection-changed` {`CustomEvent<this>`} - Fires when selection update, so that parent radio group can listen for it.\n\nAttributes:\n\n  * `no-buttons` {`boolean`} - \n\n  * `no-prev-next` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - \n\n  * `itemData` {`any[]`} - \n\n  * `selection` {`string`} - \n\nProperties:\n\n  * `first` - gets id for first figure\n\n  * `prev` - gets id for previous figure\n\n  * `last` - gets id for last figure\n\n  * `next` - gets id for next figure\n\n  * `noButtons` {`boolean`} - \n\n  * `noPrevNext` {`boolean`} - \n\n  * `prevLabel` {`string`} - \n\n  * `nextLabel` {`string`} - \n\n  * `itemData` {`any[]`} - \n\n  * `selection` {`string`} - \n\n  * `selectedIndex` {`number`} - index of selected item\n\n  * `__observer` - mutation observer for tabs\n\n  * `__allowNull` {`boolean`} - allows no item to be selected\n\n  * `__query` {`string`} - overrides query selector for slotted children\n\n  * `__selected` {`string`} - overrides attribute to apply to selected item\n\n  * `__selectEvent` {`string`} - overrides name of event that selects item",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "a11y-carousel.js",
+      "declarations": [
         {
-          "name": "no-buttons",
-          "description": "`no-buttons` {`boolean`} - \n\nProperty: noButtons\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`a11y-carousel`\nLayers images over each other with a slider interface to compare them",
+          "name": "a11yCarousel",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "__query",
+              "description": "overrides query selector for slotted children",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "__selected",
+              "description": "\noverrides attribute to apply to selected item",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "__selectEvent",
+              "description": "overrides name of event that selects item",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "first",
+              "description": "gets id for first figure",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "prev",
+              "description": "gets id for previous figure",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "last",
+              "description": "gets id for last figure",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "next",
+              "description": "gets id for next figure",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_getImage",
+              "description": "gets image css for selected image",
+              "return": {
+                "type": {
+                  "text": ""
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_handleSelectionChange",
+              "description": "shows or hides items based on selection"
+            },
+            {
+              "kind": "field",
+              "name": "noButtons",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "no-buttons"
+            },
+            {
+              "kind": "field",
+              "name": "noPrevNext",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "no-prev-next"
+            },
+            {
+              "kind": "field",
+              "name": "prevLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"previous\"",
+              "attribute": "prevLabel"
+            },
+            {
+              "kind": "field",
+              "name": "nextLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"next\"",
+              "attribute": "nextLabel"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "nextLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"next\"",
+              "fieldName": "nextLabel"
+            },
+            {
+              "name": "no-prev-next",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "noPrevNext"
+            },
+            {
+              "name": "no-buttons",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "noButtons"
+            },
+            {
+              "name": "prevLabel",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"previous\"",
+              "fieldName": "prevLabel"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "RadioBehaviors",
+              "package": "@haxtheweb/radio-behaviors/radio-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "a11y-carousel",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "a11yCarousel",
+            "module": "a11y-carousel.js"
+          }
         },
         {
-          "name": "no-prev-next",
-          "description": "`no-prev-next` {`boolean`} - \n\nProperty: noPrevNext\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "prevLabel",
-          "description": "`prevLabel` {`string`} - \n\nProperty: prevLabel\n\nDefault: previous"
-        },
-        {
-          "name": "nextLabel",
-          "description": "`nextLabel` {`string`} - \n\nProperty: nextLabel\n\nDefault: next"
-        },
-        {
-          "name": "itemData",
-          "description": "`itemData` {`any[]`} - \n\nProperty: itemData"
-        },
-        {
-          "name": "selection",
-          "description": "`selection` {`string`} - \n\nProperty: selection"
-        },
-        {
-          "name": "onselection-changed",
-          "description": "`selection-changed` {`CustomEvent<this>`} - Fires when selection update, so that parent radio group can listen for it."
+          "kind": "js",
+          "name": "a11yCarousel",
+          "declaration": {
+            "name": "a11yCarousel",
+            "module": "a11y-carousel.js"
+          }
         }
       ]
     },
     {
-      "name": "a11y-carousel-button",
-      "description": "`a11y-carousel-button`\nbutton that controls a carousel\n\nEvents:\n\n  * `select-carousel-item` {`CustomEvent<this>`} - \n\nAttributes:\n\n  * `button-type` {`string`} - \n\n  * `controls` {`string`} - \n\n  * `active` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `disabled` {`boolean`} - \n\nProperties:\n\n  * `buttonType` {`string`} - \n\n  * `controls` {`string`} - \n\n  * `tabindex` {`number`} - \n\n  * `active` {`boolean`} - \n\n  * `hidden` {`boolean`} - \n\n  * `disabled` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/a11y-carousel-button.js",
+      "declarations": [
         {
-          "name": "button-type",
-          "description": "`button-type` {`string`} - \n\nProperty: buttonType"
+          "kind": "class",
+          "description": "`a11y-carousel-button`\nbutton that controls a carousel",
+          "name": "a11yCarouselButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Fires when clicked."
+            },
+            {
+              "kind": "field",
+              "name": "tabindex",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
+            },
+            {
+              "kind": "field",
+              "name": "active",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "active",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hidden",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hidden",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "buttonType",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "button-type",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "controls",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "controls",
+              "reflects": true
+            }
+          ],
+          "events": [
+            {
+              "name": "select-carousel-item",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "active",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "active"
+            },
+            {
+              "name": "button-type",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "buttonType"
+            },
+            {
+              "name": "controls",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "controls"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "hidden",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hidden"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "a11y-carousel-button",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "a11yCarouselButton",
+            "module": "lib/a11y-carousel-button.js"
+          }
         },
         {
-          "name": "controls",
-          "description": "`controls` {`string`} - \n\nProperty: controls"
-        },
-        {
-          "name": "active",
-          "description": "`active` {`boolean`} - \n\nProperty: active\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "hidden",
-          "description": "`hidden` {`boolean`} - \n\nProperty: hidden\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onselect-carousel-item",
-          "description": "`select-carousel-item` {`CustomEvent<this>`} - "
+          "kind": "js",
+          "name": "a11yCarouselButton",
+          "declaration": {
+            "name": "a11yCarouselButton",
+            "module": "lib/a11y-carousel-button.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

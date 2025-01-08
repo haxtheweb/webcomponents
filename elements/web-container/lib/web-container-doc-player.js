@@ -66,6 +66,7 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
   </head>
   <body>
       <h1>Demo of ${this.importpath ? this.importpath : this.project} : ${this.version}</h1>
+      <div id="dox"></div>
       <div id="codesample"></div>
       <div id="demo"></div>
   </body>
@@ -78,6 +79,21 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
   </script>
   <script type="module" async defer>
     import "${this.importpath ? this.importpath : this.project}";
+    import { setWcDoxConfig } from 'wc-dox/index.js';
+    const customElPath = new URL('./node_modules/${this.project}/custom-elements.json', import.meta.url).href;
+    const manifest = await fetch(customElPath).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+    });
+    if (manifest) {
+      setTimeout(() => {
+        setWcDoxConfig(manifest);
+        const docx = document.createElement('wc-dox');
+        docx.setAttribute('tag', '${this.element}');
+        globalThis.document.body.querySelector('#dox').appendChild(docx);
+      }, 0);
+    }
     import "@haxtheweb/code-sample/code-sample.js";
     import "@haxtheweb/code-editor/lib/code-pen-button.js";
     import { haxElementToNode } from "@haxtheweb/utils/utils.js";
@@ -133,9 +149,10 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
               "name": "${this.element} doc example",
               "type": "module",
               "dependencies": {
-                "@haxtheweb/utils": "^9.0.2",
-                "@haxtheweb/code-sample": "^9.0.6",
-                "@haxtheweb/code-editor": "^9.0.6",
+                "@haxtheweb/utils": "^10.0.0",
+                "@haxtheweb/code-sample": "^10.0.1",
+                "@haxtheweb/code-editor": "^10.0.1",
+                "wc-dox": "^1.1.0",
                 "${this.project}": "${this.version}"
               },
               "devDependencies": {

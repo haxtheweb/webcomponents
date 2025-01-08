@@ -1,73 +1,309 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "lesson-overview",
-      "description": "`lesson-overview`\n`Clean presentation of what to expect in an upcoming lesson of instruction`\n\nAttributes:\n\n  * `t` - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `ancestor` - \n\n  * `t` - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lesson-overview.js",
+      "declarations": [
         {
-          "name": "t",
-          "description": "`t` - \n\nProperty: t\n\nDefault: [object Object]"
+          "kind": "class",
+          "description": "`lesson-overview`\n`Clean presentation of what to expect in an upcoming lesson of instruction`",
+          "name": "LessonOverview",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "getSmartData",
+              "parameters": [
+                {
+                  "name": "manualSite",
+                  "default": "null"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "updateSmartHighlightElements",
+              "parameters": [
+                {
+                  "name": "data"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, hour: \"hour\", hours: \"hours\", minute: \"minute\", minutes: \"minutes\", }"
+            },
+            {
+              "kind": "field",
+              "name": "ancestor",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
+              "name": "IntersectionObserverMixin",
+              "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "lesson-overview",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LessonOverview",
+            "module": "lesson-overview.js"
+          }
         },
         {
-          "name": "element-visible",
-          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "LessonOverview",
+          "declaration": {
+            "name": "LessonOverview",
+            "module": "lesson-overview.js"
+          }
         }
       ]
     },
     {
-      "name": "lesson-highlight",
-      "description": "`lesson-highlight`\n`Clean presentation of what to expect in an upcoming lesson of instruction`\n\nAttributes:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `smart` {`string`} - \n\n  * `hidden` {`boolean`} - \n\n  * `loaded` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `title` {`string`} - \n\n  * `subtitle` {`string`} - \n\n  * `icon` {`string`} - \n\n  * `disabled` {`boolean`} - \n\n  * `loading` {`boolean`} - \n\n  * `smart` {`string`} - \n\n  * `hidden` {`boolean`} - \n\n  * `loaded` {`boolean`} - \n\n  * `__disabled` - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/lesson-highlight.js",
+      "declarations": [
         {
-          "name": "title",
-          "description": "`title` {`string`} - \n\nProperty: title\n\nDefault: "
+          "kind": "class",
+          "description": "`lesson-highlight`\n`Clean presentation of what to expect in an upcoming lesson of instruction`",
+          "name": "LessonHighlight",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "title",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "title"
+            },
+            {
+              "kind": "field",
+              "name": "subtitle",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "subtitle"
+            },
+            {
+              "kind": "field",
+              "name": "icon",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"star\"",
+              "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "loading",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "loading",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "smart",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "smart"
+            },
+            {
+              "kind": "field",
+              "name": "hidden",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "hidden",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "loaded",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "loaded",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "__disabled",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "title",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "title"
+            },
+            {
+              "name": "subtitle",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "subtitle"
+            },
+            {
+              "name": "icon",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"star\"",
+              "fieldName": "icon"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "hidden",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hidden"
+            },
+            {
+              "name": "loading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "loading"
+            },
+            {
+              "name": "loaded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "loaded"
+            },
+            {
+              "name": "smart",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "smart"
+            }
+          ],
+          "superclass": {
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
+          },
+          "tagName": "lesson-highlight",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LessonHighlight",
+            "module": "lib/lesson-highlight.js"
+          }
         },
         {
-          "name": "subtitle",
-          "description": "`subtitle` {`string`} - \n\nProperty: subtitle\n\nDefault: "
-        },
-        {
-          "name": "icon",
-          "description": "`icon` {`string`} - \n\nProperty: icon\n\nDefault: star"
-        },
-        {
-          "name": "disabled",
-          "description": "`disabled` {`boolean`} - \n\nProperty: disabled\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "loading",
-          "description": "`loading` {`boolean`} - \n\nProperty: loading\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "smart",
-          "description": "`smart` {`string`} - \n\nProperty: smart\n\nDefault: false"
-        },
-        {
-          "name": "hidden",
-          "description": "`hidden` {`boolean`} - \n\nProperty: hidden\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "loaded",
-          "description": "`loaded` {`boolean`} - \n\nProperty: loaded\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
-        },
-        {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "LessonHighlight",
+          "declaration": {
+            "name": "LessonHighlight",
+            "module": "lib/lesson-highlight.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

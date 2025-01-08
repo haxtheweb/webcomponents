@@ -1,72 +1,469 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "disqus-embed",
-      "description": "`disqus-embed`\n`Disqus service integration`\n\nAttributes:\n\n  * `loading-text` {`string`} - \n\n  * `page-url` {`string`} - \n\n  * `page-identifier` {`string`} - \n\n  * `page-title` {`string`} - \n\n  * `short-name` {`string`} - \n\n  * `lang` {`string`} - \n\nProperties:\n\n  * `loadingText` {`string`} - \n\n  * `pageURL` {`string`} - \n\n  * `pageIdentifier` {`string`} - \n\n  * `pageTitle` {`string`} - \n\n  * `shortName` {`string`} - \n\n  * `lang` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "disqus-embed.js",
+      "declarations": [
         {
-          "name": "loading-text",
-          "description": "`loading-text` {`string`} - \n\nProperty: loadingText\n\nDefault: Loading comments.."
+          "kind": "class",
+          "description": "`disqus-embed`\n`Disqus service integration`",
+          "name": "DisqusEmbed",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "loadingText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Loading comments..\"",
+              "attribute": "loading-text"
+            },
+            {
+              "kind": "field",
+              "name": "pageURL",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "page-url"
+            },
+            {
+              "kind": "field",
+              "name": "pageIdentifier",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "page-identifier"
+            },
+            {
+              "kind": "field",
+              "name": "pageTitle",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "page-title"
+            },
+            {
+              "kind": "field",
+              "name": "shortName",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "short-name"
+            },
+            {
+              "kind": "field",
+              "name": "lang",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"en\"",
+              "attribute": "lang"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "loading-text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Loading comments..\"",
+              "fieldName": "loadingText"
+            },
+            {
+              "name": "page-url",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "pageURL"
+            },
+            {
+              "name": "page-identifier",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "pageIdentifier"
+            },
+            {
+              "name": "page-title",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "pageTitle"
+            },
+            {
+              "name": "short-name",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "shortName"
+            },
+            {
+              "name": "lang",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"en\"",
+              "fieldName": "lang"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "disqus-embed",
+          "customElement": true
         },
         {
-          "name": "page-url",
-          "description": "`page-url` {`string`} - \n\nProperty: pageURL\n\nDefault: null"
+          "kind": "class",
+          "description": "",
+          "name": "DisqusBroker",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "createEmbedScript",
+              "parameters": [
+                {
+                  "name": "target"
+                },
+                {
+                  "name": "name"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "rebuildConfiguration",
+              "parameters": [
+                {
+                  "name": "target"
+                },
+                {
+                  "name": "identifier"
+                },
+                {
+                  "name": "url"
+                },
+                {
+                  "name": "title"
+                },
+                {
+                  "name": "lang"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderToTarget"
+            },
+            {
+              "kind": "method",
+              "name": "apiCallback",
+              "parameters": [
+                {
+                  "name": "call"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "renderTarget",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
         },
         {
-          "name": "page-identifier",
-          "description": "`page-identifier` {`string`} - \n\nProperty: pageIdentifier\n\nDefault: null"
+          "kind": "variable",
+          "name": "DisqusInstance"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "DisqusEmbed",
+            "module": "disqus-embed.js"
+          }
         },
         {
-          "name": "page-title",
-          "description": "`page-title` {`string`} - \n\nProperty: pageTitle\n\nDefault: null"
+          "kind": "js",
+          "name": "DisqusEmbed",
+          "declaration": {
+            "name": "DisqusEmbed",
+            "module": "disqus-embed.js"
+          }
         },
         {
-          "name": "short-name",
-          "description": "`short-name` {`string`} - \n\nProperty: shortName\n\nDefault: null"
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "DisqusBroker",
+            "module": "disqus-embed.js"
+          }
         },
         {
-          "name": "lang",
-          "description": "`lang` {`string`} - \n\nProperty: lang\n\nDefault: en"
+          "kind": "js",
+          "name": "DisqusBroker",
+          "declaration": {
+            "name": "DisqusBroker",
+            "module": "disqus-embed.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "DisqusInstance",
+          "declaration": {
+            "name": "DisqusInstance",
+            "module": "disqus-embed.js"
+          }
         }
       ]
     },
     {
-      "name": "disqus-broker",
-      "description": "Properties:\n\n  * `renderTarget` - ",
-      "attributes": []
-    },
-    {
-      "name": "haxcms-site-disqus",
-      "description": "Attributes:\n\n  * `loading-text` {`string`} - \n\n  * `page-url` {`string`} - \n\n  * `page-identifier` {`string`} - \n\n  * `page-title` {`string`} - \n\n  * `short-name` {`string`} - \n\n  * `lang` {`string`} - \n\nProperties:\n\n  * `loadingText` {`string`} - \n\n  * `pageURL` {`string`} - \n\n  * `pageIdentifier` {`string`} - \n\n  * `pageTitle` {`string`} - \n\n  * `shortName` {`string`} - \n\n  * `lang` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/haxcms-site-disqus.js",
+      "declarations": [
         {
-          "name": "loading-text",
-          "description": "`loading-text` {`string`} - \n\nProperty: loadingText\n\nDefault: Loading comments.."
+          "kind": "class",
+          "description": "",
+          "name": "HAXCMSSiteDisqus",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "DisqusEmbed",
+                "module": "disqus-embed.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "loadingText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Loading comments..\"",
+              "attribute": "loading-text",
+              "inheritedFrom": {
+                "name": "DisqusEmbed",
+                "module": "disqus-embed.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "pageURL",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "page-url",
+              "inheritedFrom": {
+                "name": "DisqusEmbed",
+                "module": "disqus-embed.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "pageIdentifier",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "page-identifier",
+              "inheritedFrom": {
+                "name": "DisqusEmbed",
+                "module": "disqus-embed.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "pageTitle",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "page-title",
+              "inheritedFrom": {
+                "name": "DisqusEmbed",
+                "module": "disqus-embed.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "shortName",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "short-name",
+              "inheritedFrom": {
+                "name": "DisqusEmbed",
+                "module": "disqus-embed.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "lang",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"en\"",
+              "attribute": "lang",
+              "inheritedFrom": {
+                "name": "DisqusEmbed",
+                "module": "disqus-embed.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "DisqusEmbed",
+            "module": "/disqus-embed"
+          },
+          "attributes": [
+            {
+              "name": "loading-text",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Loading comments..\"",
+              "fieldName": "loadingText",
+              "inheritedFrom": {
+                "name": "DisqusEmbed",
+                "module": "disqus-embed.js"
+              }
+            },
+            {
+              "name": "page-url",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "pageURL",
+              "inheritedFrom": {
+                "name": "DisqusEmbed",
+                "module": "disqus-embed.js"
+              }
+            },
+            {
+              "name": "page-identifier",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "pageIdentifier",
+              "inheritedFrom": {
+                "name": "DisqusEmbed",
+                "module": "disqus-embed.js"
+              }
+            },
+            {
+              "name": "page-title",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "pageTitle",
+              "inheritedFrom": {
+                "name": "DisqusEmbed",
+                "module": "disqus-embed.js"
+              }
+            },
+            {
+              "name": "short-name",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "shortName",
+              "inheritedFrom": {
+                "name": "DisqusEmbed",
+                "module": "disqus-embed.js"
+              }
+            },
+            {
+              "name": "lang",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"en\"",
+              "fieldName": "lang",
+              "inheritedFrom": {
+                "name": "DisqusEmbed",
+                "module": "disqus-embed.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "HAXCMSSiteDisqus",
+            "module": "lib/haxcms-site-disqus.js"
+          }
         },
         {
-          "name": "page-url",
-          "description": "`page-url` {`string`} - \n\nProperty: pageURL\n\nDefault: null"
-        },
-        {
-          "name": "page-identifier",
-          "description": "`page-identifier` {`string`} - \n\nProperty: pageIdentifier\n\nDefault: null"
-        },
-        {
-          "name": "page-title",
-          "description": "`page-title` {`string`} - \n\nProperty: pageTitle\n\nDefault: null"
-        },
-        {
-          "name": "short-name",
-          "description": "`short-name` {`string`} - \n\nProperty: shortName\n\nDefault: null"
-        },
-        {
-          "name": "lang",
-          "description": "`lang` {`string`} - \n\nProperty: lang\n\nDefault: en"
+          "kind": "js",
+          "name": "HAXCMSSiteDisqus",
+          "declaration": {
+            "name": "HAXCMSSiteDisqus",
+            "module": "lib/haxcms-site-disqus.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

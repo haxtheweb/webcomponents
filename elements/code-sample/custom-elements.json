@@ -1,34 +1,251 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "code-sample",
-      "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.\n\nAttributes:\n\n  * `highlight-start` {`number`} - \n\n  * `highlight-end` {`number`} - \n\n  * `theme` - \n\n  * `type` {`string`} - \n\n  * `copy-clipboard-button` {`boolean`} - \n\nProperties:\n\n  * `highlightStart` {`number`} - \n\n  * `highlightEnd` {`number`} - \n\n  * `_observer` - \n\n  * `theme` - \n\n  * `type` {`string`} - \n\n  * `copyClipboardButton` {`boolean`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "code-sample.js",
+      "declarations": [
         {
-          "name": "highlight-start",
-          "description": "`highlight-start` {`number`} - \n\nProperty: highlightStart\n\nDefault: null"
+          "kind": "class",
+          "description": "`code-sample`\n`<code-sample>` uses [highlight.js](https://highlightjs.org/) for syntax highlighting.",
+          "name": "CodeSample",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "haxHooks",
+              "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxgizmoRegistration",
+              "parameters": [
+                {
+                  "name": "store"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getExample",
+              "parameters": [
+                {
+                  "name": "type"
+                }
+              ],
+              "description": "returns a very simple example of the type of data requested"
+            },
+            {
+              "kind": "method",
+              "name": "highlightLines",
+              "parameters": [
+                {
+                  "name": "start"
+                },
+                {
+                  "name": "end"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_themeChanged",
+              "parameters": [
+                {
+                  "name": "theme"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_updateContent"
+            },
+            {
+              "kind": "method",
+              "name": "_getCodeTemplate"
+            },
+            {
+              "kind": "method",
+              "name": "_applyHighlightjs",
+              "parameters": [
+                {
+                  "name": "str"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_cleanIndentation",
+              "parameters": [
+                {
+                  "name": "str"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_entitize",
+              "parameters": [
+                {
+                  "name": "str"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_copyToClipboard",
+              "parameters": [
+                {
+                  "name": "event"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_textAreaWithClonedContent"
+            },
+            {
+              "kind": "field",
+              "name": "highlightStart",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "highlight-start",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "highlightEnd",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "highlight-end",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "_observer",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "theme",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "oneDark",
+              "attribute": "theme"
+            },
+            {
+              "kind": "field",
+              "name": "type",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"html\"",
+              "attribute": "type",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "copyClipboardButton",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "copy-clipboard-button"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "copy-clipboard-button",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "copyClipboardButton"
+            },
+            {
+              "name": "theme",
+              "type": {
+                "text": "object"
+              },
+              "default": "oneDark",
+              "fieldName": "theme"
+            },
+            {
+              "name": "type",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"html\"",
+              "fieldName": "type"
+            },
+            {
+              "name": "highlight-start",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "highlightStart"
+            },
+            {
+              "name": "highlight-end",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "highlightEnd"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "code-sample",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CodeSample",
+            "module": "code-sample.js"
+          }
         },
         {
-          "name": "highlight-end",
-          "description": "`highlight-end` {`number`} - \n\nProperty: highlightEnd\n\nDefault: null"
-        },
-        {
-          "name": "theme",
-          "description": "`theme` - \n\nProperty: theme\n\nDefault: oneDark"
-        },
-        {
-          "name": "type",
-          "description": "`type` {`string`} - \n\nProperty: type\n\nDefault: html"
-        },
-        {
-          "name": "copy-clipboard-button",
-          "description": "`copy-clipboard-button` {`boolean`} - \n\nProperty: copyClipboardButton\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "CodeSample",
+          "declaration": {
+            "name": "CodeSample",
+            "module": "code-sample.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

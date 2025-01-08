@@ -1,54 +1,359 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "lrs-bridge-haxcms",
-      "description": "`lrs-bridge-haxcms`\n`Adds HAXcms event listeners for our LRS.`\n\nAttributes:\n\n  * `endpoint` {`string`} - \n\nProperties:\n\n  * `endpoint` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lrs-elements.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/lrs-bridge-haxcms.js",
+      "declarations": [
         {
-          "name": "endpoint",
-          "description": "`endpoint` {`string`} - \n\nProperty: endpoint\n\nDefault: "
+          "kind": "class",
+          "description": "`lrs-bridge-haxcms`\n`Adds HAXcms event listeners for our LRS.`",
+          "name": "LrsBridgeHaxcms",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "LrsBridge",
+                "module": "lib/lrs-bridge.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "_locationChanged",
+              "parameters": [
+                {
+                  "name": "location"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_lrsEmitterHander",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "LrsBridge",
+                "module": "lib/lrs-bridge.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "recordStatement",
+              "parameters": [
+                {
+                  "name": "options"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "LrsBridge",
+                "module": "lib/lrs-bridge.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "getUserName",
+              "description": "Get the user name from local storage",
+              "inheritedFrom": {
+                "name": "LrsBridge",
+                "module": "lib/lrs-bridge.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "makeGUID",
+              "description": "Create a unique id",
+              "inheritedFrom": {
+                "name": "LrsBridge",
+                "module": "lib/lrs-bridge.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "endpoint",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "endpoint",
+              "inheritedFrom": {
+                "name": "LrsBridge",
+                "module": "lib/lrs-bridge.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "LrsBridge",
+            "module": "/lib/lrs-bridge.js"
+          },
+          "attributes": [
+            {
+              "name": "endpoint",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "endpoint",
+              "inheritedFrom": {
+                "name": "LrsBridge",
+                "module": "lib/lrs-bridge.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LrsBridgeHaxcms",
+            "module": "lib/lrs-bridge-haxcms.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "LrsBridgeHaxcms",
+          "declaration": {
+            "name": "LrsBridgeHaxcms",
+            "module": "lib/lrs-bridge-haxcms.js"
+          }
         }
       ]
     },
     {
-      "name": "lrs-bridge",
-      "description": "`lrs-bridge`\n`LRS element that captures lrn-emitter events and forwards them to the learnig record store.`\n\nAttributes:\n\n  * `endpoint` {`string`} - \n\nProperties:\n\n  * `endpoint` {`string`} - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/lrs-bridge.js",
+      "declarations": [
         {
-          "name": "endpoint",
-          "description": "`endpoint` {`string`} - \n\nProperty: endpoint\n\nDefault: "
+          "kind": "class",
+          "description": "`lrs-bridge`\n`LRS element that captures lrn-emitter events and forwards them to the learnig record store.`",
+          "name": "LrsBridge",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_lrsEmitterHander",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "recordStatement",
+              "parameters": [
+                {
+                  "name": "options"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getUserName",
+              "description": "Get the user name from local storage"
+            },
+            {
+              "kind": "method",
+              "name": "makeGUID",
+              "description": "Create a unique id"
+            },
+            {
+              "kind": "field",
+              "name": "endpoint",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "endpoint"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "endpoint",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "endpoint"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LrsBridge",
+            "module": "lib/lrs-bridge.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "LrsBridge",
+          "declaration": {
+            "name": "LrsBridge",
+            "module": "lib/lrs-bridge.js"
+          }
         }
       ]
     },
     {
-      "name": "lrs-emitter",
-      "description": "`lrs-emitter`\n`Emit learning statements occuring in your app.`\n\nEvents:\n\n  * `lrs-emitter` {`CustomEvent<{ verb: string; object: string; }>`} - \n\nAttributes:\n\n  * `verb` {`string`} - \n\n  * `event` {`string`} - \n\n  * `object` {`string`} - \n\n  * `element-visible` {`boolean`} - \n\nProperties:\n\n  * `verb` {`string`} - \n\n  * `event` {`string`} - \n\n  * `object` {`string`} - \n\n  * `elementVisible` {`boolean`} - \n\n  * `IOThresholds` {`number[]`} - \n\n  * `IORootMargin` {`string`} - \n\n  * `IOVisibleLimit` {`number`} - \n\n  * `IORemoveOnVisible` {`boolean`} - \n\n  * `IODelay` {`number`} - \n\n  * `IORoot` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "lib/lrs-emitter.js",
+      "declarations": [
         {
-          "name": "verb",
-          "description": "`verb` {`string`} - \n\nProperty: verb\n\nDefault: "
+          "kind": "class",
+          "description": "`lrs-emitter`\n`Emit learning statements occuring in your app.`",
+          "name": "LrsEmitter",
+          "members": [
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_clickEventHandler",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_viewEventHandler"
+            },
+            {
+              "kind": "field",
+              "name": "verb",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "verb"
+            },
+            {
+              "kind": "field",
+              "name": "event",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"click\"",
+              "attribute": "event"
+            },
+            {
+              "kind": "field",
+              "name": "object",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "object"
+            }
+          ],
+          "events": [
+            {
+              "name": "lrs-emitter",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "verb",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "verb"
+            },
+            {
+              "name": "object",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "object"
+            },
+            {
+              "name": "event",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"click\"",
+              "fieldName": "event"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "IntersectionObserverMixin",
+              "package": "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "LrsEmitter",
+            "module": "lib/lrs-emitter.js"
+          }
         },
         {
-          "name": "event",
-          "description": "`event` {`string`} - \n\nProperty: event\n\nDefault: click"
-        },
-        {
-          "name": "object",
-          "description": "`object` {`string`} - \n\nProperty: object\n\nDefault: "
-        },
-        {
-          "name": "element-visible",
-          "description": "`element-visible` {`boolean`} - \n\nProperty: elementVisible\n\nDefault: false",
-          "valueSet": "v"
-        },
-        {
-          "name": "onlrs-emitter",
-          "description": "`lrs-emitter` {`CustomEvent<{ verb: string; object: string; }>`} - "
+          "kind": "js",
+          "name": "LrsEmitter",
+          "declaration": {
+            "name": "LrsEmitter",
+            "module": "lib/lrs-emitter.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

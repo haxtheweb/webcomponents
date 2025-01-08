@@ -1,33 +1,176 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "h-a-x",
-      "description": "`h-a-x`\n\nEvents:\n\n  * `hax-save-body-value` {`CustomEvent<{ value: any; }>`} - \n\nAttributes:\n\n  * `element-align` {} - \n\n  * `offset-margin` {} - \n\n  * `app-store` {} - \n\n  * `hide-panel-ops` {} - \n\nProperties:\n\n  * `html` {`string`} - \n\n  * `elementAlign` {`string | null`} - \n\n  * `offsetMargin` {`string | null`} - \n\n  * `hideToolbar` {`string | null`} - \n\n  * `hidePanelOps` {`string | null`} - \n\n  * `appStore` {`string | null`} - \n\n  * `windowControllers` - \n\n  * `windowControllersLoaded` - \n\n  * `windowControllersReady` - \n\n  * `__rendered` {`boolean`} - \n\n  * `tag` {`string`} - \n\n  * `template` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "h-a-x.js",
+      "declarations": [
         {
-          "name": "element-align",
-          "description": "`element-align` {} - \n\n"
+          "kind": "class",
+          "description": "`h-a-x`",
+          "name": "HAX",
+          "members": [
+            {
+              "kind": "field",
+              "name": "html",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "cancelEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "saveEvent",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "storeReady",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Store is ready, now we can pass along the app store definition\nwhich HAX will react to an load the data it finds."
+            },
+            {
+              "kind": "method",
+              "name": "importSlotToHaxBody"
+            },
+            {
+              "kind": "method",
+              "name": "appStoreReady",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Appstore has been loaded, NOW we can safely do an import"
+            },
+            {
+              "kind": "method",
+              "name": "applyHAX",
+              "description": "Apply tags to the screen to establish HAX"
+            },
+            {
+              "kind": "field",
+              "name": "elementAlign"
+            },
+            {
+              "kind": "field",
+              "name": "offsetMargin"
+            },
+            {
+              "kind": "field",
+              "name": "hideToolbar"
+            },
+            {
+              "kind": "field",
+              "name": "hidePanelOps"
+            },
+            {
+              "kind": "field",
+              "name": "appStore"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllers",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllersLoaded",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "windowControllersReady",
+              "default": "new AbortController()"
+            },
+            {
+              "kind": "field",
+              "name": "__rendered",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "template"
+            }
+          ],
+          "events": [
+            {
+              "name": "hax-save-body-value",
+              "type": {
+                "text": "CustomEvent"
+              }
+            }
+          ],
+          "attributes": [
+            {
+              "name": "element-align"
+            },
+            {
+              "name": "offset-margin"
+            },
+            {
+              "name": "app-store"
+            },
+            {
+              "name": "hide-panel-ops"
+            }
+          ],
+          "superclass": {
+            "name": "HTMLElement"
+          },
+          "tagName": "h-a-x",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "name": "h-a-x",
+          "declaration": {
+            "name": "HAX",
+            "module": "h-a-x.js"
+          }
         },
         {
-          "name": "offset-margin",
-          "description": "`offset-margin` {} - \n\n"
-        },
-        {
-          "name": "app-store",
-          "description": "`app-store` {} - \n\n"
-        },
-        {
-          "name": "hide-panel-ops",
-          "description": "`hide-panel-ops` {} - \n\n"
-        },
-        {
-          "name": "onhax-save-body-value",
-          "description": "`hax-save-body-value` {`CustomEvent<{ value: any; }>`} - "
+          "kind": "js",
+          "name": "HAX",
+          "declaration": {
+            "name": "HAX",
+            "module": "h-a-x.js"
+          }
         }
       ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/h-a-x-dependencies.js",
+      "declarations": [],
+      "exports": []
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

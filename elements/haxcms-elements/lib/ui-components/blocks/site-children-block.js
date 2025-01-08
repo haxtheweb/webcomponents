@@ -156,7 +156,10 @@ class SiteChildrenBlock extends LitElement {
         }
         .active {
           background-color: var(--site-children-block-link-active-bg);
-          border-left: var(--site-children-block-active-border-left, 4px solid #000000);
+          border-left: var(
+            --site-children-block-active-border-left,
+            4px solid #000000
+          );
         }
         .active button {
           font-weight: 700;
@@ -219,9 +222,9 @@ class SiteChildrenBlock extends LitElement {
             item.metadata.published === false
               ? ``
               : html`
-                  <li class="spacing ${item.indent === 0 ? 'top-level' : ''}">
+                  <li class="spacing ${item.indent === 0 ? "top-level" : ""}">
                     <a
-                      class="link ${item.id === this.activeId ? 'active' : ''}"
+                      class="link ${item.id === this.activeId ? "active" : ""}"
                       tabindex="-1"
                       href="${item.slug}"
                     >
@@ -291,7 +294,6 @@ class SiteChildrenBlock extends LitElement {
       },
     };
   }
-
 }
 customElements.define(SiteChildrenBlock.tag, SiteChildrenBlock);
 export { SiteChildrenBlock };

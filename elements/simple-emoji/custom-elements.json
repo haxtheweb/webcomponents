@@ -1,12 +1,49 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "simple-emoji",
-      "description": "`simple-emoji`\n`simplify emoji creation and management`\n\n",
-      "attributes": []
+      "kind": "javascript-module",
+      "path": "simple-emoji.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`simple-emoji`\n`simplify emoji creation and management`",
+          "name": "SimpleEmoji",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "simple-emoji",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "SimpleEmoji",
+            "module": "simple-emoji.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "SimpleEmoji",
+          "declaration": {
+            "name": "SimpleEmoji",
+            "module": "simple-emoji.js"
+          }
+        }
+      ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }

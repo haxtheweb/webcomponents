@@ -1,37 +1,1202 @@
 {
-  "version": 1,
-  "tags": [
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
     {
-      "name": "chat-agent",
-      "description": "`chat-agent`\n`chatbot agent style chat widget`\n\nAttributes:\n\n  * `is-full-view` {`boolean`} - \n\n  * `is-interface-hidden` {`boolean`} - \n\n  * `is-safari` {`boolean`} - \n\n  * `accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\nProperties:\n\n  * `isFullView` {`boolean`} - \n\n  * `isInterfaceHidden` {`boolean`} - \n\n  * `sm` {`number`} - \n\n  * `md` {`number`} - \n\n  * `isSafari` {`boolean`} - \n\n  * `accentColor` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\n  * `dark` {`boolean`} - make the default theme dark?\n\n  * `colors` - ",
-      "attributes": [
+      "kind": "javascript-module",
+      "path": "chat-agent.js",
+      "declarations": [
         {
-          "name": "is-full-view",
-          "description": "`is-full-view` {`boolean`} - \n\nProperty: isFullView\n\nDefault: null",
-          "valueSet": "v"
+          "kind": "class",
+          "description": "`chat-agent`\n`chatbot agent style chat widget`",
+          "name": "ChatAgent",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "isFullView",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "is-full-view",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "isInterfaceHidden",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "is-interface-hidden",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "is-full-view",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "isFullView"
+            },
+            {
+              "name": "is-interface-hidden",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "isInterfaceHidden"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "chat-agent",
+          "customElement": true
         },
         {
-          "name": "is-interface-hidden",
-          "description": "`is-interface-hidden` {`boolean`} - \n\nProperty: isInterfaceHidden\n\nDefault: null",
-          "valueSet": "v"
+          "kind": "variable",
+          "name": "ChatAgentModalStore"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ChatAgent",
+            "module": "chat-agent.js"
+          }
         },
         {
-          "name": "is-safari",
-          "description": "`is-safari` {`boolean`} - \n\nProperty: isSafari",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "ChatAgent",
+          "declaration": {
+            "name": "ChatAgent",
+            "module": "chat-agent.js"
+          }
         },
         {
-          "name": "accent-color",
-          "description": "`accent-color` {`string`} - a selected accent-\"color\": grey, red, pink, purple, etc.\n\nProperty: accentColor\n\nDefault: grey"
+          "kind": "js",
+          "name": "ChatAgentModalStore",
+          "declaration": {
+            "name": "ChatAgentModalStore",
+            "module": "chat-agent.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/chat-agent-store.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "ChatStore",
+          "default": "new ChatAgentStore()"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "ChatStore",
+          "declaration": {
+            "name": "ChatStore",
+            "module": "lib/chat-agent-store.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/chat-button.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ChatButton",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "keyPress",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "enter key press",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleChatButton"
+            },
+            {
+              "kind": "field",
+              "name": "buttonIcon",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "button-icon"
+            },
+            {
+              "kind": "field",
+              "name": "darkMode",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "dark-mode",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "isFullView",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "is-full-view",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "isInterfaceHidden",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "is-interface-hidden",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "button-icon",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "buttonIcon"
+            },
+            {
+              "name": "dark-mode",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "darkMode"
+            },
+            {
+              "name": "is-full-view",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "isFullView"
+            },
+            {
+              "name": "is-interface-hidden",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "isInterfaceHidden"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ChatButton",
+            "module": "lib/chat-button.js"
+          }
         },
         {
-          "name": "dark",
-          "description": "`dark` {`boolean`} - make the default theme dark?\n\nProperty: dark\n\nDefault: false",
-          "valueSet": "v"
+          "kind": "js",
+          "name": "ChatButton",
+          "declaration": {
+            "name": "ChatButton",
+            "module": "lib/chat-button.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/chat-control-bar.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ChatControlBar",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "handleDownloadLogButton"
+            },
+            {
+              "kind": "method",
+              "name": "handleResetButton"
+            },
+            {
+              "kind": "method",
+              "name": "handleDataCollectionButton"
+            },
+            {
+              "kind": "method",
+              "name": "handleDevModeButton"
+            },
+            {
+              "kind": "method",
+              "name": "handleViewButton"
+            },
+            {
+              "kind": "method",
+              "name": "handleHideButton"
+            },
+            {
+              "kind": "method",
+              "name": "downloadChatLog"
+            },
+            {
+              "kind": "method",
+              "name": "resetChat"
+            },
+            {
+              "kind": "field",
+              "name": "dataCollectionEnabled",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "data-collection-enabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "isFullView",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "is-full-view",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "isInterfaceHidden",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "is-interface-hidden",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "data-collection-enabled",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "dataCollectionEnabled"
+            },
+            {
+              "name": "is-full-view",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "isFullView"
+            },
+            {
+              "name": "is-interface-hidden",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "isInterfaceHidden"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ChatControlBar",
+            "module": "lib/chat-control-bar.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ChatControlBar",
+          "declaration": {
+            "name": "ChatControlBar",
+            "module": "lib/chat-control-bar.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/chat-developer-panel.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ChatDeveloperPanel",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "handleConsoleTableButton",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "event",
+                  "type": {
+                    "text": "object"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "compileChatLog",
+              "parameters": [
+                {
+                  "name": "author",
+                  "description": "the name of the author of the messages. Either the user's name or \"merlin\".",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleDownloadAsJsonButton"
+            },
+            {
+              "kind": "method",
+              "name": "handleSwitchEngine"
+            },
+            {
+              "kind": "method",
+              "name": "handleContextChange"
+            },
+            {
+              "kind": "field",
+              "name": "chatLog",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "context",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "context"
+            },
+            {
+              "kind": "field",
+              "name": "engine",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "engine"
+            },
+            {
+              "kind": "field",
+              "name": "isFullView",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "is-full-view",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "context",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "context"
+            },
+            {
+              "name": "engine",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "engine"
+            },
+            {
+              "name": "is-full-view",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "isFullView"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ChatDeveloperPanel",
+            "module": "lib/chat-developer-panel.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ChatDeveloperPanel",
+          "declaration": {
+            "name": "ChatDeveloperPanel",
+            "module": "lib/chat-developer-panel.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/chat-input.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ChatInput",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "handleKeyPress",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleSendButtonKeyPress",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleDirectionButtons",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "event",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleSendButton"
+            },
+            {
+              "kind": "method",
+              "name": "displayPreviousMessages",
+              "parameters": [
+                {
+                  "name": "direction"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "chatLog",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]"
+            },
+            {
+              "kind": "field",
+              "name": "darkMode",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "dark-mode",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "messageIndex",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "userIndex",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "previousMessagesIndex",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "userName",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "username"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "dark-mode",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "darkMode"
+            },
+            {
+              "name": "username",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "userName"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ChatInput",
+            "module": "lib/chat-input.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ChatInput",
+          "declaration": {
+            "name": "ChatInput",
+            "module": "lib/chat-input.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/chat-interface.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ChatInterface",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "finishedTyping",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "scrollControl"
+            },
+            {
+              "kind": "field",
+              "name": "chatLog",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "chatLog"
+            },
+            {
+              "kind": "field",
+              "name": "darkMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "dark-mode",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "developerModeEnabled",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "developer-mode",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "isFullView",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "is-full-view",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "isInterfaceHidden",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "is-interface-hidden",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hasEditorUI",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "has-editor-ui",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "chatLog",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "chatLog"
+            },
+            {
+              "name": "dark-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "darkMode"
+            },
+            {
+              "name": "developer-mode",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "developerModeEnabled"
+            },
+            {
+              "name": "is-full-view",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "isFullView"
+            },
+            {
+              "name": "is-interface-hidden",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "isInterfaceHidden"
+            },
+            {
+              "name": "has-editor-ui",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "hasEditorUI"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ChatInterface",
+            "module": "lib/chat-interface.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ChatInterface",
+          "declaration": {
+            "name": "ChatInterface",
+            "module": "lib/chat-interface.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/chat-message.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ChatMessage",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "renderReceivedMessage"
+            },
+            {
+              "kind": "method",
+              "name": "renderSentMessage"
+            },
+            {
+              "kind": "method",
+              "name": "pickHat"
+            },
+            {
+              "kind": "method",
+              "name": "disableSuggestions",
+              "parameters": [
+                {
+                  "name": "e",
+                  "description": "click",
+                  "type": {
+                    "text": "Event"
+                  }
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "darkMode",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "dark-mode",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "editMode",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "edit-mode",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "hasSuggestedPrompts",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "suggested-prompts"
+            },
+            {
+              "kind": "field",
+              "name": "hat",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "attribute": "hat"
+            },
+            {
+              "kind": "field",
+              "name": "isSentPrompt",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "sent-prompt"
+            },
+            {
+              "kind": "field",
+              "name": "message",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "message"
+            },
+            {
+              "kind": "field",
+              "name": "messageWasSuggestedPrompt",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "suggested-message"
+            },
+            {
+              "kind": "field",
+              "name": "suggestedPrompts",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "attribute": "suggestedPrompts"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "dark-mode",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "darkMode"
+            },
+            {
+              "name": "edit-mode",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "editMode"
+            },
+            {
+              "name": "suggested-prompts",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "hasSuggestedPrompts"
+            },
+            {
+              "name": "hat",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"none\"",
+              "fieldName": "hat"
+            },
+            {
+              "name": "sent-prompt",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "isSentPrompt"
+            },
+            {
+              "name": "message",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "message"
+            },
+            {
+              "name": "suggested-message",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "messageWasSuggestedPrompt"
+            },
+            {
+              "name": "suggestedPrompts",
+              "type": {
+                "text": "array"
+              },
+              "fieldName": "suggestedPrompts"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ChatMessage",
+            "module": "lib/chat-message.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ChatMessage",
+          "declaration": {
+            "name": "ChatMessage",
+            "module": "lib/chat-message.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/chat-suggestion.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "ChatSuggestion",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "handleSuggestion"
+            },
+            {
+              "kind": "field",
+              "name": "chosenPrompt",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "chosen-prompt"
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "disabled"
+            },
+            {
+              "kind": "field",
+              "name": "promptType",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "prompt-type"
+            },
+            {
+              "kind": "field",
+              "name": "suggestion",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "suggestion"
+            },
+            {
+              "kind": "field",
+              "name": "messageIndex",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "userIndex",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "chosen-prompt",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "chosenPrompt"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "disabled"
+            },
+            {
+              "name": "prompt-type",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "promptType"
+            },
+            {
+              "name": "suggestion",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "suggestion"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          }
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "ChatSuggestion",
+            "module": "lib/chat-suggestion.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "ChatSuggestion",
+          "declaration": {
+            "name": "ChatSuggestion",
+            "module": "lib/chat-suggestion.js"
+          }
         }
       ]
     }
-  ],
-  "globalAttributes": [],
-  "valueSets": []
+  ]
 }
