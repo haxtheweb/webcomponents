@@ -29,7 +29,7 @@ export const StopNoteIconList = {
   warning: "stopnoteicons:warning-icon",
   success: "stopnoteicons:confirm-icon",
   info: "stopnoteicons:book-icon",
-};   
+};
 
 class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
   /**

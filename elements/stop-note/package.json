@@ -7,8 +7,7 @@
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,
     "useSass": false,
-    "files": {
-    },
+    "files": {},
     "sharedStyles": []
   },
   "version": "10.0.1",
@@ -22,7 +21,7 @@
   "module": "stop-note.js",
   "scripts": {
     "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\"",
+    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && cem analyze --litelement --dev --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\"",
     "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
     "watch": "gulp dev --gulpfile=gulpfile.cjs",
     "serve": "web-dev-server -c ../../web-dev-server.config.mjs",

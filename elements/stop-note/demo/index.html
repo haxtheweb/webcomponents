@@ -6,16 +6,66 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
   <title>stop-note demo</title>
+  <style>
+    tr th {
+          background-color: var(--ddd-theme-default-pughBlue);
+          padding: 10px 50px;
+          border-top: none;
+        }
+        tr td {
+          padding: 10px 50px;
+          background-color: var(--ddd-theme-default-skyMaxlight);
+          border-left: 1px solid var(--ddd-theme-default-limestoneLight);
+          border-top: 1px solid var(--ddd-theme-default-limestoneLight);
+        }
+        tr:nth-child(odd) {
+          background-color: var(--ddd-theme-default-skyMaxLight);
+        }
+        table {
+          border-collapse: collapse;
+          border-radius: 0px;
+          overflow: hidden;
+          border: 1px solid var(--ddd-theme-default-limestoneLight);
+        }
+        td:first-child,
+        th:first-child {
+          border-left: none;
+        }
+  </style>
   <script type="module">
     import "@polymer/iron-demo-helpers/demo-snippet.js";
     import "../stop-note.js";
     import { setWcDoxConfig } from 'wc-dox/index.js';
     setTimeout(async () => {
       const manifest = await fetch("../custom-elements.json").then(res => res.json());
-      console.log(manifest);
-      setWcDoxConfig(manifest);
       const docx = document.createElement('wc-dox');
-      docx.setAttribute('tag', 'stop-note');
+      docx.componentName = 'StopNote';
+      docx.tag = 'stop-note';
+      setWcDoxConfig(manifest, {
+        imports: {
+          heading: 'Imports',
+          headingId: 'imports',
+          description: 'You can import the component in the following ways:',
+          copyIcon:
+            '<?xml version="1.0" ?><svg style="enable-background:new 0 0 24 24;" version="1.1" viewBox="0 0 24 24" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g class="st0" id="grid_system"/><g id="_icons"><path d="M17,3h-6C8.8,3,7,4.8,7,7c-2.2,0-4,1.8-4,4v6c0,2.2,1.8,4,4,4h6c2.2,0,4-1.8,4-4c2.2,0,4-1.8,4-4V7C21,4.8,19.2,3,17,3z    M15,17c0,1.1-0.9,2-2,2H7c-1.1,0-2-0.9-2-2v-6c0-1.1,0.9-2,2-2h1h5c1.1,0,2,0.9,2,2v5V17z M19,13c0,1.1-0.9,2-2,2v-4   c0-2.2-1.8-4-4-4H9c0-1.1,0.9-2,2-2h6c1.1,0,2,0.9,2,2V13z"/></g></svg>',
+          copyLabel: 'Copy import',
+          copiedIcon:
+            '<?xml version="1.0" ?><svg style="enable-background:new 0 0 36 36;" version="1.1" viewBox="0 0 36 36" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="Layer_1"/><g id="icons"><path class="st0" d="M12.8,28.7l-9.5-9.5c-0.4-0.4-0.4-1.1,0-1.6l1.5-1.5c0.4-0.4,1.1-0.4,1.6,0l7.2,7.2   l16-16c0.4-0.4,1.1-0.4,1.6,0l1.5,1.5c0.4,0.4,0.4,1.1,0,1.6L14.4,28.7C13.9,29.1,13.2,29.1,12.8,28.7z" id="check_x5F_mark_1_"/></g></svg>',
+          copiedLabel: 'Import copied',
+          imports: [
+            {
+              label: 'HTML',
+              lang: 'html',
+              importTemplate: (tagName, className) => `<script type="module" src="https://cdn.jsdelivr.net/npm/@haxtheweb/${docx.tag}\/${docx.tag}.js"><\/script>`,
+            },
+            {
+              label: 'NPM',
+              lang: 'js',
+              importTemplate: (tagName, className) => `import '@haxtheweb/${docx.tag}/${docx.tag}.js';`,
+            },
+          ],
+        },
+      });
       globalThis.document.body.querySelector('#demo').appendChild(docx);      
     }, 0);
   </script>
