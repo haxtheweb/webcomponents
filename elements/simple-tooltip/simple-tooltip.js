@@ -198,15 +198,12 @@ class SimpleTooltip extends LitElement {
         .hidden {
           position: absolute;
           left: -10000px;
+          inset-inline-start: -10000px;
+          inset-inline-end: initial;
           top: auto;
           width: 1px;
           height: 1px;
           overflow: hidden;
-        }
-
-        :host([dir="rtl"]) .hidden {
-          inset-inline-start: -10000px;
-          inset-inline-end: initial;
         }
       `,
     ];
