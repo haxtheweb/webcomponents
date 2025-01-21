@@ -1,0 +1,48 @@
+
+<p>autoloader is an object of references to web components that HAX should load the definitions of once it's done bootstrapping. Here's a basic example with the steps as to what HAX does with this information</p>
+<ol><li>HAX loads the appstore definition</li><li>HAX finishes its bootstrap and is ready to use (slides in from top of UI)</li><li>It then loops through each autoloader element and does the following:</li><ul><li>attempts to dynamically import the definition of the element</li><li>It then creates an instance of the element (virtually) and looks for <strong>static get haxProperties</strong></li><li>If this exists and is valid <a href="documentation/developers/schema/haxschema" target="_blank">haxSchema</a> then it shows up as a valid block in HAX!</li></ul></ol>
+<h3 id="header-e807791d-f308-d370-20fc-d0109381f279">Spec details</h3>
+<p>There are a few different ways you can declare references to the autoloader schema. Here is a simple example of all three common forms an then we'll explain each.</p>
+<p></p>
+<code-sample copy-clipboard-button type="json"><template preserve-content="preserve-content">"autoloader": {
+"meme-maker": "@lrnwebcomponents/meme-maker/meme-maker.js",
+"another-tag": {
+  "import": "some-other-location/bare-import-name/whatever.js"
+},
+"vaadin-upload": {
+    "import": "@vaadin/vaadin-upload/vaadin-upload.js",
+    "haxProperties": {
+      "canScale": false,
+      "canPosition": false,
+      "canEditSource": true,
+      "gizmo": {
+        "title": "Vaadin upload button",
+        "icon": "upload",
+        "color": "orange",
+        "groups": ["upload", "community"],
+        "meta": {
+          "author": "Vaadin Elements"
+        }
+      },
+      "settings": {
+        "configure": [
+          {
+            "property": "label",
+            "title": "Label",
+            "description": "Label for the upload button",
+            "inputMethod": "textfield"
+          }
+        ]
+      },
+      "saveOptions": {
+        "wipeSlot": true
+      }
+    }
+  }
+}</template></code-sample>
+<h4 id="header-c15818dc-abac-d30d-8286-17f08032bc91">Definition from file</h4>
+<p>The most common method of import is simply <strong>"tag-name": "location-of-tag.js"</strong> . You'll see this for importing anything that's been published <i>WITH</i> &#160; <strong>static get haxProperties</strong> . You can also use this to add your own published / built elements that have their own haxProperties.</p>
+<h4 id="header-4ecad565-470f-a4a1-e0b7-597501ef35f3">Definition import</h4>
+<p>This is basically just to enable future support for defining capabilities at run time. It could also be used to issue an element but not actually import anything (so <strong>"whatever": { "import": ""}</strong> ). This is because possibly other logistics of your CMS / application are in charge of <i>WHEN</i> this definition gets imported.</p>
+<h4 id="header-a4ac9954-9f58-5a4c-2c08-68c3529c392d">Definition import + schema</h4>
+<p>This is the most powerful but also most verbose. This allows you to potentially import someone else's element that <i>DOES NOT</i> have <strong>haxSchema</strong> defined, and then define it yourself on the fly! This means you can leverage community elements and supply their wiring to talk to HAX based on your own mental model. This allows wiring up anything to HAX, but also the performance benefit of potentially building a design library but not including references to the <strong>static get haxProperties</strong> in your class for the element.</p>

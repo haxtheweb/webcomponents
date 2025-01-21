@@ -1,0 +1,44 @@
+
+<p>Example of HAX element schema JSON object. It's a pretty simple abstraction of HTML
+  elements that helps with packaging and sanitation. This is effectively HAX version
+  of a <abbr title="Virtual Document Object Model">VDOM</abbr> in which all elements
+  in the page must be converted into HAXElement Schema in order to get in and out of
+  the DOM that HAX is controlling.</p>
+<h2 data-original-level="H2" id="header-ce89e6f6-6efe-f10e-f39f-71525b70b4e7">Examples of where this is used</h2>
+<ul>
+  <li>In HAXschema it is the demoSchema definitions</li>
+  <li>When creating templates that are reusable</li>
+  <li>Under View Source -&gt; Download content -&gt; HAXSchema for debugging purposes</li>
+</ul>
+<h2 data-original-level="H2" id="h2-1773272425" data-primary="15" data-design-treatment="horz-10p">h2 tag (core HTML)</h2>
+<code-sample copy-clipboard-button type="json">
+  
+<template preserve-content="preserve-content">{
+"tag": "h2", 
+"properties": {
+  "data-primary": "15",
+  "data-design-treatment": "hoz-10p"
+},
+"content": "Introduction to ELMS: Learning Network"
+}</template></code-sample>
+<h2 data-original-level="H2" id="h2-395437327">p tag (core HTML)</h2>
+<code-sample copy-clipboard-button type="json">
+  
+<template preserve-content="preserve-content">{
+  "tag": "p",
+  "properties": {},
+  "content": "What is ELMS: Learning Network? How
+is it fundamentally different from other learning technologies? Why is it your reading
+this when it's example text that you've just added to see how to make a really solid
+introduction to a new unit of instruction? Let's keep reading to find out!"
+}</template></code-sample>
+<h2 data-original-level="H2" id="h2-407012243">video-player (web component)</h2>
+<code-sample type="json" copy-clipboard-button>
+  
+<template preserve-content="preserve-content">{
+  "tag": "video-player",
+  "properties": {
+     "source": "https://www.youtube.com/watch?v=pKLPQ4ufo64"
+  },
+  "content": ""
+  }</template></code-sample>

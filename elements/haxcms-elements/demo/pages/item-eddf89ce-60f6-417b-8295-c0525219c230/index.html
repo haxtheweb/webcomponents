@@ -1,0 +1,768 @@
+
+<h2 data-original-level="H2" class="h4" id="header-dff2ac93-d2a6-e350-52df-4ea0f001a842">
+</h2>
+<h2 data-original-level="H2" class="h4" id="header-a4853429-a6ca-676f-7d0e-17bb446b008f">Schema v1.0</h2>
+<p>You can dig into the technical documentation of the schema itself
+  <a href="https://oerschema.org/docs/schema.html" target="_blank">at the OERSchema schema site</a>
+. Because of how these ontologies are managed it is kept as a stand alone resource. Keep reading below for details on what and why this was created and how it's wired into HAX blocks at all levels.
+</p>
+<h2 data-original-level="H2" class="h4" id="header-a4853429-a6ca-676f-7d0e-17bb446b008f">What is OER Schema?</h2>
+<p class="flow-text">
+  <span>Computer software doesn't see learning content in the same way that humans do. Where educators and students see lessons, modules and assessments, computer software sees headings, paragraphs and sections.</span>
+</p>
+<p class="flow-text">
+  <span>OER Schema is metadata that works behind the scenes to describe content to software. OER Schema adds a vocabulary of terms that expands the Google developed Schema.org vocabulary to include pedagogical terms that anyone can apply to their own learning content. By adding OER Schema to your content, you enable software to have the ability to understand it as might a person. This project hopes to give software the ability to see OER pedagogy.</span>
+</p>
+<p class="flow-text">
+  <span>In addition, OER Schema has profound implications for the future of how OER content is located, authored, shared, and remixed. Even though digital education workers may produce learning content on different platforms, workflows, and tools, OER Schema would allow it all to become interoperable. This is the foundational element needed to create remix interfaces for educational materials.</span>
+</p>
+<div class="row padding-top-bottom">
+  <div class="col s12 m10 push-m1">
+    <div class="card-panel grey lighten-4">
+      <h2 id="header-e9655267-f2a4-07cd-15dd-ebd41a51ed10">What can you do with OER Schema?</h2>
+      <ul class="browser-default">
+        <li class="flow-text">
+          <span>Granularly associate proper copyright infromation and usage licenses to content</span>
+        </li>
+        <li>
+          <span>Describe pedagogical associations between content and objectives</span>
+        </li>
+        <li>
+          <span>Describe learning content dependencies for pathways and prereqs</span>
+        </li>
+        <li>
+          <span>Transport content easily and consistently between systems, people, and publishing endpoints</span>
+        </li>
+        <li>
+          <span>Prepare content for online publishing and remix</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<h2 data-original-level="H2" class="h4" id="header-dff2ac93-d2a6-e350-52df-4ea0f001a842">About the Schema</h2>
+<p>The
+  <strong>Open Educational Resource Schema</strong>
+, or
+  <strong>OER Schema</strong>
+for short, is a
+  <a href="https://www.w3.org/RDF/" target="_blank">Resource Description Framework (RDF) vocabulary</a>
+which extends
+  <a href="http://schema.org/" target="_blank">schema.org</a>
+,
+  <a href="http://creativecommons.org/ns" target="_blank">Creative Commons</a>
+and
+  <a href="http://purl.org/dc/terms/" target="_blank">Dublin Core</a>
+vocabularies. Our goal is to unify OER content on the web to a standard vocabulary in effort to enhance its discoverability in public and private indexes and allow content to be more easily remixed and re-purposed.
+</p>
+<h2 data-original-level="H2" class="h4" id="header-6ff6b18d-3b9d-d495-fa84-e1353a560ace">What is a Schema?</h2>
+<p>In short, a schema is just metadata, or information about information. While computers are great at processing and calculating great amounts of information, they lack contextual understanding innate to human beings. A schema, in our case an RDF vocabulary, allows developers to apply human concepts to marked-up information, typically using HTML, so that software applications can determine the context of the information and contextual relationships pieces of content have with one another. A schema ensures a common understanding about the information being processed.</p>
+<h2 data-original-level="H2" class="h4" id="header-701f5a6c-a18a-6a76-9471-5596664fe7da">How do I use the OER Schema?</h2>
+<p>Ideally, an Instructional Designer or Faculty Member won't have to worry about implementing the schema; rather, they should petition the content delivery platforms they use to implement this schema for them. However, if you are skilled in HTML or are a developer looking to implement this schema, you can follow along with some examples below.</p>
+<h3 data-original-level="H3" class="h4 grey-text text-darken-2" id="header-d8f6caa3-4726-e5d5-9548-a171b18c85e7">Understanding Schema Relationships</h3>
+<p>Before we get into the meat and potatoes of how to implement the schema, it helps to understand how it is organized and how things relate to one another. After all, a good reason to use the schema is to build relationships between the parts of your content.</p>
+<p>Looking at the
+  <a href="/docs/schema.html">schema</a>
+page, you'll notice the a list of items, some nested deeper than others. These items are called
+  <strong>types</strong>
+and the structured format they are listed in represents a
+  <strong>hierarchical tree</strong>
+. At the top of this tree is the first
+  <strong>type</strong>
+, named a
+  <a href="/Resource">Resource</a>
+. Resource is the
+  <strong>parent</strong>
+of all the types indented below it. Each
+  <strong>child</strong>
+in the tree extends its parent, meaning it gains all of the
+  <strong>properties</strong>
+of the parent and its parent's parents. A child can also be used in cases when its parent type is specified.
+</p>
+<h4 data-original-level="H4" class="h4 grey-text text-lighten-1" id="header-eab1d6ab-dcfe-bb18-8e64-842a6280fe85">Types</h4>
+<p>Often times a
+  <strong>type</strong>
+is thought of as an object or a noun. A type says what something is. When you apply a type to a section of content, you're saying that the content is of that type. In the case of the OER Schema, you could specify that something is a
+  <a href="/Course">Course</a>
+.
+</p>
+<h4 data-original-level="H4" class="h4 grey-text text-lighten-1" id="header-b93af602-55fe-c147-7923-c8d9c0a24ea9">Properties</h4>
+<p>If a
+  <strong>type</strong>
+is a noun, a
+  <strong>property</strong>
+would be an adjective in that
+  <strong>properties describe the type</strong>
+. Looking at
+  <a href="/Course">Course</a>
+, you'll notice a list of properties, some for the Course type itself and other inherited from the
+  <a href="/Resource">Resource</a>
+type as well as external vocabulary types from
+  <a href="http://schema.org/" target="_blank">schema.org</a>
+.
+</p>
+<p>A property is associated with one or more types and has a
+  <strong>value</strong>
+and the value, itself, has a type. In the properties table for
+  <a href="/Course">Course</a>
+, there is an "Expected Type" column, which denotes the expected type for the value of the property. Sometimes this type is simply
+  <a href="/Text">Text</a>
+or
+  <a href="/Number">Number</a>
+, i.e. "Some Text" or "1", and other times the expected type is another type in the schema, like
+  <a href="/LearningComponent">LearningComponent</a>
+. In the case of
+  <a href="/LearningComponent">LearningComponent</a>
+, the value could be
+  <a href="/LearningComponent">LearningComponent</a>
+or any of its child types such as
+  <a href="/LearningObject">LearningObjective</a>
+or
+  <a href="/Lesson">Lesson</a>
+.
+</p>
+<h3 data-original-level="H3" class="h4 grey-text text-darken-2" id="header-bf64861b-d953-add4-f00a-fc2b365f2458">Applying the Schema</h3>
+<p>In the following examples, we will use
+  <a href="https://www.w3.org/TR/rdfa-lite/" target="_blank">RDFa Lite 1.1</a>
+to apply the schema to HTML 5 markup. There are a number of ways to apply an RDF vocabulary to HTML. Some alternatives to RDFa Lite is
+  <a href="https://www.w3.org/TR/html-rdfa/" target="_blank">HTML+RDFa 1.1</a>
+and
+  <a href="https://www.w3.org/TR/microdata-rdf/">Microdata</a>
+. Whichever way you prefer is completely up to you.
+</p>
+<h4 data-original-level="H4" class="h4 grey-text text-lighten-1" id="header-d8dbafbf-9e58-48ca-b7ff-d5ffafbf371c">RDFa Lite 1.1</h4>
+<p>RDFa is an acronym for
+  <strong>Resource Document Framework in attributes</strong>
+. RDFa allows us to apply RDF vocabularies to HTML using attributes on HTML 5 tags. Which tags? Any tags. The attributes used in RDFa can be applied to any tag used to markup content, though more commonly
+  <code>&#60;span&#62;</code>
+and
+  <code>&#60;div&#62;</code>
+tags are used.
+</p>
+<p>The following attributes are used to apply RDFa to HTML:</p>
+<dl>
+  <dt>
+    <b>vocab=""</b>
+  </dt>
+  <dd>
+The
+    <code>vocab</code>
+attribute specified the root URL of the vocabulary you would like to apply. The vocabulary is applied to the element itself and all child elements. For this reason, the vocab attribute is commonly applied to the
+    <code>&#60;body&#62;</code>
+tag.
+    <pre>      <code class="hljs html">
+        <span class="hljs-comment">&#60;!-- http://example.com/my-course.html --&#62;</span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">body</span>
+          <span class="hljs-attr">vocab</span>=
+          <span class="hljs-string">"http://oerschema.org"</span>&#62;
+        </span>
+        <span class="hljs-comment">&#60;!-- ... --&#62;</span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">body</span>&#62;
+        </span>
+      </code>
+    </pre>
+  </dd>
+  <dt>
+    <b>typeof=""</b>
+  </dt>
+  <dd>
+    <p>The
+      <code>typeof</code>
+attribute allows you to specify which
+      <strong>type</strong>
+you want to apply to the element.
+    </p>
+    <pre>      <code class="hljs html">
+        <span class="hljs-comment">&#60;!-- http://example.com/my-course.html --&#62;</span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">body</span>
+          <span class="hljs-attr">vocab</span>=
+          <span class="hljs-string">"http://oerschema.org"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">div</span>
+          <span class="hljs-attr">typeof</span>=
+          <span class="hljs-string">"Course"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">h2</span>&#62;
+        </span>My Course
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">h2</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">p</span>&#62;
+        </span>A description of my course.
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">p</span>&#62;
+        </span>
+        <span class="hljs-comment">&#60;!-- ... --&#62;</span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">div</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">body</span>&#62;
+        </span>
+      </code>
+    </pre>
+  </dd>
+  <dt>
+    <b>property=""</b>
+  </dt>
+  <dd>
+    <p>The
+      <code>property</code>
+attribute is used to specify which property to use for the associated
+      <strong>type</strong>
+. The
+      <code>property</code>
+attribute is placed on a child element whose parent makes use of the
+      <code>typeof</code>
+attribte. The property attribute's value is the name of property to use. The property name must be a valid property name associated with the
+      <strong>type</strong>
+referenced in the parent element's
+      <code>typeof</code>
+attribute.
+    </p>
+    <pre>      <code class="hljs html">
+        <span class="hljs-comment">&#60;!-- http://example.com/my-course.html --&#62;</span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">body</span>
+          <span class="hljs-attr">vocab</span>=
+          <span class="hljs-string">"http://oerschema.org"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">div</span>
+          <span class="hljs-attr">typeof</span>=
+          <span class="hljs-string">"Course"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">h2</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"courseIdentifier"</span>&#62;
+        </span>My Course
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">h2</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">p</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"description"</span>&#62;
+        </span>A description of my course.
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">p</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">img</span>
+          <span class="hljs-attr">src</span>=
+          <span class="hljs-string">"/path/to/my/image.jpg"</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"http://schema.org/image"</span>&#62;
+        </span>
+        <span class="hljs-comment">&#60;!-- ... --&#62;</span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">div</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">body</span>&#62;
+        </span>
+      </code>
+    </pre>
+    <p>In the example above, we've create an object using the type Course located in the http://oerschema.org/ vocabulary. We've described the Course object using the
+      <code>courseIdentifier</code>
+and
+      <code>description</code>
+properties. The values of these properties is the content of their respective elements. So
+      <code>courseIdentifier</code>
+'s value is
+      <code>My Course</code>
+and
+      <code>description</code>
+'s value is
+      <code>A description of my course.</code>
+    </p>
+    <p>Take notice of the
+      <code>&#60;img&#62;</code>
+element. The value of the property attribute is a URL to a property found in schema.org. Since
+      <a href="/Course">Course</a>
+is a child of
+      <a href="/Resource">Resource</a>
+which also extends
+      <a href="http://schema.org/Thing">http://schema.org/Thing</a>
+, all of the properties of http://schema.org/Thing can also be used on
+      <a href="/Course">Course</a>
+, but since they exist in a different vocabulary, you have to provide the full URL path of the property. In this case, the value of the
+      <code>http://schema.org/image</code>
+property is actually the value of the
+      <code>src</code>
+parameter,
+      <code>/path/to/my/image.jpg</code>
+. Later, you'll see how to use
+      <code>prefixes</code>
+with the
+      <code>vocab</code>
+attribute to make it easier to use multiple libraries.
+    </p>
+  </dd>
+  <dt>
+    <b>resource=""</b>
+  </dt>
+  <dd>
+    <p>So far, we've created a
+      <a href="/Course">Course</a>
+object and applied some attributes to it. But how do we reference this object? Enter the
+      <code>resource</code>
+attribute. Without the
+      <code>resource</code>
+attribute, you must use the full URL of the HTML page as a reference, but this makes this complicated when there are multiple objects on a page and they need to reference one another.
+    </p>
+    <p>What do I mean by reference? I mean create a relationship. The
+      <code>resource</code>
+attribute allows an object to have be identified for use as a value of a
+      <strong>property</strong>
+. Let's see an example:
+    </p>
+    <pre>      <code class="hljs html">
+        <span class="hljs-comment">&#60;!-- http://example.com/my-course.html --&#62;</span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">body</span>
+          <span class="hljs-attr">vocab</span>=
+          <span class="hljs-string">"http://oerschema.org"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">div</span>
+          <span class="hljs-attr">typeof</span>=
+          <span class="hljs-string">"Course"</span>
+          <span class="hljs-attr">resource</span>=
+          <span class="hljs-string">"#my-course"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">h2</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"courseIdentifier"</span>&#62;
+        </span>My Course
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">h2</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">p</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"description"</span>&#62;
+        </span>A description of my course.
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">p</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">img</span>
+          <span class="hljs-attr">src</span>=
+          <span class="hljs-string">"/path/to/my/image.jpg"</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"http://schema.org/image"</span>&#62;
+        </span>
+        <span class="hljs-comment">&#60;!-- ... --&#62;</span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">div</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">body</span>&#62;
+        </span>
+      </code>
+    </pre>
+    <p>First, notice the
+      <code>#</code>
+prefix on the resource name. Essentially, the
+      <code>resource</code>
+is the unique URL of the object. On the web, the URL gets you to the page, but a page anchor, which starts with the prefix
+      <code>#</code>
+, takes you to the element on the page. So by prefixing our resource name with
+      <code>#</code>
+, we're just saying that this is the element on the page with this ID.
+    </p>
+    <p>Next, we need to put it to good use. In the following example, you'll see how the
+      <code>resource</code>
+attribute and its value play a role with mapping a schema object as a value of a property in another object on the same page.
+    </p>
+    <pre>      <code class="hljs html">
+        <span class="hljs-comment">&#60;!-- http://example.com/my-course.html --&#62;</span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">body</span>
+          <span class="hljs-attr">vocab</span>=
+          <span class="hljs-string">"http://oerschema.org"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">div</span>
+          <span class="hljs-attr">typeof</span>=
+          <span class="hljs-string">"Course"</span>
+          <span class="hljs-attr">resource</span>=
+          <span class="hljs-string">"#my-course"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">h2</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"courseIdentifier"</span>&#62;
+        </span>My Course
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">h2</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">p</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"description"</span>&#62;
+        </span>A description of my course.
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">p</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">img</span>
+          <span class="hljs-attr">src</span>=
+          <span class="hljs-string">"/path/to/my/image.jpg"</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"http://schema.org/image"</span>&#62;
+        </span>
+        <span class="hljs-comment">&#60;!-- ... --&#62;</span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">link</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"primaryInstructor"</span>
+          <span class="hljs-attr">href</span>=
+          <span class="hljs-string">"#instructor"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">div</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">div</span>
+          <span class="hljs-attr">typeof</span>=
+          <span class="hljs-string">"Person"</span>
+          <span class="hljs-attr">resource</span>=
+          <span class="hljs-string">"#instructor"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">h2</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"name"</span>&#62;
+        </span>Dr. Bob Jones
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">h2</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">p</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"description"</span>&#62;
+        </span>An instructor at a university somewhere.
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">p</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">div</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">body</span>&#62;
+        </span>
+      </code>
+    </pre>
+    <p>Now we've created another object,
+      <a href="/Person">Person</a>
+, as a sibling to
+      <a href="/Course">Course</a>
+. We want relate the
+      <a href="/Person">Person</a>
+as the
+      <a href="/primaryInstructor">primaryInstructor</a>
+of the
+      <a href="/Course">Course</a>
+. In order to do so, we make use of the
+      <code>&#60;link&#62;</code>
+tag. The
+      <code>&#60;link&#62;</code>
+tag doesn't render any output to the page. Just like a
+      <code>&#60;meta&#62;</code>
+tag, it's only for use as metadata on the page. More specifically, for the linking of resource.
+    </p>
+    <p>In the example above, the
+      <code>&#60;link&#62;</code>
+element is a child of the
+      <a href="/Course">Course</a>
+element and has the
+      <code>property</code>
+attribute with a value of
+      <a href="/primaryInstructor">primaryInstructor</a>
+. The
+      <code>href</code>
+attribute on the
+      <code>&#60;link&#62;</code>
+element is the URL of the resource to be used as the value of the
+      <a href="/primaryInstructor">primaryInstructor</a>
+property on the
+      <a href="/Course">Course</a>
+object. Since they are on the same page, only the value of the
+      <code>resource</code>
+attribute on the
+      <a href="/Person">Person</a>
+element is required to link the
+      <a href="/Person">Person</a>
+resource to the
+      <a href="/Course">Course</a>
+resource.
+    </p>
+    <p>Let's pretend that this instructor, Dr. Jones, is teaching another course and also puts his course online. He could reference the
+      <a href="/Person">Person</a>
+object,
+      <code>#instructor</code>
+, from the http://example.com/my-course.html my course page:
+    </p>
+    <pre>      <code class="hljs html">
+        <span class="hljs-comment">&#60;!-- http://example.com/my-other-course.html --&#62;</span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">body</span>
+          <span class="hljs-attr">vocab</span>=
+          <span class="hljs-string">"http://oerschema.org"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">div</span>
+          <span class="hljs-attr">typeof</span>=
+          <span class="hljs-string">"Course"</span>
+          <span class="hljs-attr">resource</span>=
+          <span class="hljs-string">"#my-course"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">h2</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"courseIdentifier"</span>&#62;
+        </span>My Other Course
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">h2</span>&#62;
+        </span>
+        <span class="hljs-comment">&#60;!-- ... --&#62;</span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">link</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"primaryInstructor"</span>
+          <span class="hljs-attr">href</span>=
+          <span class="hljs-string">"http://example.com/my-course.html#instructor"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">div</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">body</span>&#62;
+        </span>
+      </code>
+    </pre>
+    <p>Alternatively, he may want to use an
+      <code>&#60;a&#62;</code>
+tag in place of the
+      <code>&#60;link&#62;</code>
+tag. This will render a link on the page that students can see and click on.
+    </p>
+    <pre>      <code class="hljs html">
+        <span class="hljs-comment">&#60;!-- http://example.com/my-other-course.html --&#62;</span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">body</span>
+          <span class="hljs-attr">vocab</span>=
+          <span class="hljs-string">"http://oerschema.org"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">div</span>
+          <span class="hljs-attr">typeof</span>=
+          <span class="hljs-string">"Course"</span>
+          <span class="hljs-attr">resource</span>=
+          <span class="hljs-string">"#my-course"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">h2</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"courseIdentifier"</span>&#62;
+        </span>My Other Course
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">h2</span>&#62;
+        </span>
+        <span class="hljs-comment">&#60;!-- ... --&#62;</span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">a</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"primaryInstructor"</span>
+          <span class="hljs-attr">href</span>=
+          <span class="hljs-string">"http://example.com/my-course.html#instructor"</span>&#62;
+        </span>Instructor Bio
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">a</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">div</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">body</span>&#62;
+        </span>
+      </code>
+    </pre>
+    <p>With respect to OER content, you may have an introduction page to your course, a syllabus page, multiple lesson or module pages and different supporting materials. Using the
+      <code>resource</code>
+attribute with
+      <code>&#60;link&#62;</code>
+and
+      <code>&#60;a&#62;</code>
+elements to link resources together contextually helps to connect content pieces into a larger "sum of parts" that becomes a complete resource.
+    </p>
+    <p>There may also be times when you want to apply metadata to content without having it render on the page, but the value is just basic text. The
+      <code>&#60;meta&#62;</code>
+tag is very useful for this.
+    </p>
+    <pre>      <code class="hljs html">
+        <span class="hljs-comment">&#60;!-- http://example.com/my-other-course.html --&#62;</span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">body</span>
+          <span class="hljs-attr">vocab</span>=
+          <span class="hljs-string">"http://oerschema.org"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">div</span>
+          <span class="hljs-attr">typeof</span>=
+          <span class="hljs-string">"Course"</span>
+          <span class="hljs-attr">resource</span>=
+          <span class="hljs-string">"#my-course"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">h2</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"courseIdentifier"</span>&#62;
+        </span>My Other Course
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">h2</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">meta</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"duration"</span>
+          <span class="hljs-attr">content</span>=
+          <span class="hljs-string">"3 Weeks"</span>&#62;
+        </span>
+        <span class="hljs-comment">&#60;!-- ... --&#62;</span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">link</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"primaryInstructor"</span>
+          <span class="hljs-attr">href</span>=
+          <span class="hljs-string">"http://example.com/my-course.html#instructor"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">div</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">body</span>&#62;
+        </span>
+      </code>
+    </pre>
+  </dd>
+  <dt>
+    <b>prefix=""</b>
+  </dt>
+  <dd>
+    <p>The
+      <code>prefix</code>
+attribute allows multiple vocabularies to work together without collision. You may use the
+      <code>vocab</code>
+to declare a primary vocabulary and
+      <code>prefix</code>
+to include new vocabs with a namespace prefix. Just like
+      <code>vocab</code>
+,
+      <code>prefix</code>
+uses the base URL of the vocabulary, the difference is that the URL is prefixed with a namespace identifier and a '
+      <code>:</code>
+'. The example below revises the example from the
+      <code>property</code>
+attribute above:
+    </p>
+    <pre>      <code class="hljs html">
+        <span class="hljs-comment">&#60;!-- http://example.com/my-course.html --&#62;</span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">body</span>
+          <span class="hljs-attr">vocab</span>=
+          <span class="hljs-string">"http://oerschema.org"</span>
+          <span class="hljs-attr">prefix</span>=
+          <span class="hljs-string">"schema:http://schema.org/"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">div</span>
+          <span class="hljs-attr">typeof</span>=
+          <span class="hljs-string">"Course"</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">h2</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"courseIdentifier"</span>&#62;
+        </span>My Course
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">h2</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">p</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"description"</span>&#62;
+        </span>A description of my course.
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">p</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">img</span>
+          <span class="hljs-attr">src</span>=
+          <span class="hljs-string">"/path/to/my/image.jpg"</span>
+          <span class="hljs-attr">property</span>=
+          <span class="hljs-string">"schema:image"</span>&#62;
+        </span>
+        <span class="hljs-comment">&#60;!-- ... --&#62;</span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">div</span>&#62;
+        </span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">body</span>&#62;
+        </span>
+      </code>
+    </pre>
+    <p>See how the URL, http://schema.org, is prefixed with
+      <code>schema:</code>
+and the property value on the
+      <code>&#60;img&#62;</code>
+element has the http://schema.org/ prefix replaced with the namespace prefix
+      <code>schema:</code>
+?
+    </p>
+    <p>Adding multiple prefixes is as easy as separating them with a space.</p>
+    <pre>      <code class="hljs html">
+        <span class="hljs-comment">&#60;!-- http://example.com/my-course.html --&#62;</span>
+        <span class="hljs-tag">&#60;
+          <span class="hljs-name">body</span>
+          <span class="hljs-attr">vocab</span>=
+          <span class="hljs-string">"http://oerschema.org"</span>
+          <span class="hljs-attr">prefix</span>=
+          <span class="hljs-string">"schema:http://schema.org/ cc:http://creativecommons.org/ns dc:http://purl.org/dc/terms/"</span>&#62;
+        </span>
+        <span class="hljs-comment">&#60;!-- ... --&#62;</span>
+        <span class="hljs-tag">&#60;/
+          <span class="hljs-name">body</span>&#62;
+        </span>
+      </code>
+    </pre>
+    <p>Though a namespace prefix can be anything as long as it's unique to other vocabularies used along with it,
+      <a href="https://www.w3.org/2011/rdfa-context/rdfa-1.1&quot;" target="_blank">there is a set of common name prefixes</a>
+. It is recommended you stick to them.
+    </p>
+    <p>
+      <i>The OER Schema is not yet on the above list, though we hope to rectify that soon. We prefer to use the prefix "</i>
+      <strong>oer:</strong>
+      <i>" when applicable.</i>
+    </p>
+  </dd>
+</dl>
+<h2 data-original-level="H2" class="h4" id="header-53d2fc97-fe32-1dbd-422a-fa054064b886">Development and Requests</h2>
+<p>In the future, there will be documentation on how developers can contribute to the schema. For right now, you may
+  <a href="https://github.com/open-curriculum/oerschema" target="_blank">fork us on GitHub</a>
+and create a pull request at your own risk.
+</p>
+<p>Non-developers and developers, alike, may make requests for changes and additions in the
+  <a href="https://github.com/open-curriculum/oerschema/issues" target="_blank">issue queue in our GitHub repository</a>
+.
+</p>
