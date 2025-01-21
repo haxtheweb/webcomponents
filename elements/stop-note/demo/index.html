@@ -38,9 +38,8 @@
     import { setWcDoxConfig } from 'wc-dox/index.js';
     setTimeout(async () => {
       const manifest = await fetch("../custom-elements.json").then(res => res.json());
-      const docx = document.createElement('wc-dox');
-      docx.componentName = 'StopNote';
-      docx.tag = 'stop-note';
+      const docTag = 'stop-note';
+      const componentName = 'StopNote';
       setWcDoxConfig(manifest, {
         imports: {
           heading: 'Imports',
@@ -56,17 +55,35 @@
             {
               label: 'HTML',
               lang: 'html',
-              importTemplate: (tagName, className) => `<script type="module" src="https://cdn.jsdelivr.net/npm/@haxtheweb/${docx.tag}\/${docx.tag}.js"><\/script>`,
+              importTemplate: (tagName, className) => `<script type="module" src="https://cdn.jsdelivr.net/npm/@haxtheweb/${docTag}\/${docTag}.js"><\/script>`,
+            },
+            {
+              label: 'CDN',
+              lang: 'text',
+              importTemplate: (tagName, className) => `https://cdn.jsdelivr.net/npm/@haxtheweb/${docTag}\/${docTag}.js`,
             },
             {
               label: 'NPM',
               lang: 'js',
-              importTemplate: (tagName, className) => `import '@haxtheweb/${docx.tag}/${docx.tag}.js';`,
+              importTemplate: (tagName, className) => `import '@haxtheweb/${docTag}/${docTag}.js';`,
             },
           ],
         },
       });
-      globalThis.document.body.querySelector('#demo').appendChild(docx);      
+      [
+        'wc-css-parts',
+        'wc-css-states',
+        'wc-events',
+        'wc-imports',
+        'wc-methods',
+        'wc-props',
+        'wc-slots',
+      ].map((tag) => {
+        const el = globalThis.document.createElement(tag);
+        el.componentName = componentName;
+        el.tag = docTag;
+        globalThis.document.body.querySelector('#demo').appendChild(el);
+      });
     }, 0);
   </script>
 </head>
