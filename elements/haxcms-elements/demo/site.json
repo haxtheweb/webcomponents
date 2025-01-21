@@ -484,7 +484,7 @@
                 "images": [],
                 "videos": [],
                 "updated": 1736889444,
-                "published": "1",
+                "published": false,
                 "status": "",
                 "files": [
                     {
@@ -495,7 +495,7 @@
                         "size": "427319"
                     }
                 ],
-                "hideInMenu": "",
+                "hideInMenu": true,
                 "image": "files\/CopyQ.pRVKqr.png",
                 "readtime": "1",
                 "tags": "remix"
