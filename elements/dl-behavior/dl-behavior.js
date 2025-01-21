@@ -37,7 +37,7 @@ export const MtzFileDownloadBehaviors = function (SuperClass) {
       }
     }
     /**
-     * Converts the data to a blob then uses navigator to save blob if it’s available, otherwise
+     * Converts the data to a blob, then uses navigator to save blob if it’s available, otherwise
      * creates an <a> with [download] attribute then simulates a click.
      * @param {String} data - data to encode.
      * @param {String} type - type of file to generate (i.e, JSON or CSV).
