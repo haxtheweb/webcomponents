@@ -1307,10 +1307,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   async _onPaste(e) {
     if (
+      // only apply if we're editing, othewise don't listen
       this.editMode &&
-      globalThis.document.activeElement.tagName !== "HAX-TRAY" &&
-      globalThis.document.activeElement.tagName !== "BODY" &&
-      globalThis.document.activeElement.tagName !== "SIMPLE-MODAL"
+      // ensure we're not in the surrounding UI elements that allow pasting
+      !["HAX-TRAY", "BODY", "SIMPLE-MODAL", "SUPER-DAEMON" ].includes(globalThis.document.activeElement.tagName) &&
+      // special test for the table editor as it's a rare element that can accept text
+      this.activeNode && this.activeNode.tagName !== "EDITABLE-TABLE"
     ) {
       // only perform this on a text element that is active
       // otherwise inject a P so we can paste into it
