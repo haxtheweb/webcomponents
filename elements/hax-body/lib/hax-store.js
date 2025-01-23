@@ -624,6 +624,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           "bold",
           "em",
           "strong",
+          "pre",
+          "section",
           "blockquote",
           "code",
           "figure",
@@ -1758,6 +1760,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "h4",
       "h5",
       "h6",
+      "pre",
       "blockquote",
       "code",
       "figure",
@@ -2242,6 +2245,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       code: {
         title: "Code",
+        icon: "icons:code",
+      },
+      pre: {
+        title: "Preformatted",
         icon: "icons:code",
       },
       embed: {
