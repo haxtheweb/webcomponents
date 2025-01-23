@@ -2665,7 +2665,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       if (
         containerNode.tagName === "SPAN" &&
         HAXStore.isTextElement(containerNode.parentNode) &&
-        containerNode.parentNode.getAttribute("slot") == ""
+        containerNode.parentNode.getAttribute &&
+        (containerNode.parentNode.getAttribute("slot") == "" ||
+          containerNode.parentNode.getAttribute("slot") == null
+        )
       ) {
         containerNode = target.parentNode;
       }
