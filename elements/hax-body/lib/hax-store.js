@@ -622,6 +622,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           "abbr",
           "i",
           "bold",
+          "time",
+          "cite",
           "em",
           "strong",
           "pre",
@@ -664,6 +666,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           "span",
           "code",
           "mark",
+          "time",
+          "cite",
           "abbr",
           "i",
           "bold",
@@ -1769,12 +1773,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "iframe",
       "video",
       "audio",
+      "picture",
       "section",
       "dl",
       "dt",
       "dd",
       "template",
       "webview",
+      "time",
+      "cite",
     ];
   }
   /**
@@ -2251,9 +2258,21 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         title: "Preformatted",
         icon: "icons:code",
       },
+      time: {
+        title: "Time",
+        icon: "icons:code",
+      },
+      cite: {
+        title: "Citation",
+        icon: "icons:code",
+      },
       embed: {
         title: "Embedded object",
         icon: "icons:fullscreen",
+      },
+      picture: {
+        title: "Picture",
+        icon: "image:image",
       },
     };
     this.validTagList = this.__validTags();
@@ -3013,6 +3032,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 "sub",
                 "sup",
                 "span",
+                "time",
+                "cite",
               ].includes(tag)
                 ? true
                 : false,
