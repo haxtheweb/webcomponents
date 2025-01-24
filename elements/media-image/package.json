@@ -47,6 +47,7 @@
     "@haxtheweb/schema-behaviors": "^10.0.1",
     "@haxtheweb/simple-icon": "^10.0.1",
     "@haxtheweb/simple-modal": "^10.0.1",
+    "@haxtheweb/md-block": "^10.0.1",
     "lit": "^3.2.1"
   },
   "devDependencies": {
