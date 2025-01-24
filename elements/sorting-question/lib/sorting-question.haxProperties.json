@@ -35,7 +35,7 @@
         "inputMethod": "array",
         "itemLabel": "label",
         "hideReorder": true,
-        "expanded": true,
+        "expanded": false,
         "hideDuplicate": true,
         "properties": [
           {
@@ -43,6 +43,20 @@
             "title": "Answer",
             "inputMethod": "textfield",
             "required": true
+          },
+          {
+            "property": "image",
+            "title": "Image",
+            "description": "Image to display with this answer",
+            "inputMethod": "haxupload",
+            "noVoiceRecord": true,
+            "noCamera": true
+          },
+          {
+            "property": "alt",
+            "title": "Image Alternative text",
+            "description": "Alternative text for the image",
+            "inputMethod": "textfield"
           }
         ]
       }

@@ -727,6 +727,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
       let icon = this.getOptionIcon(checked);
       return html`
         <span class="input-option" part="option-inner">
+          <slot name="input-prefix"></slot>
           <input
             ?autofocus="${this.autofocus}"
             .aria-descrbedby="${this.describedBy || ""}"
@@ -759,6 +760,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             value="${!option ? this.value : (option || {}).value}"
             part="option-input"
           />
+          <slot name="input-suffix"></slot>
           ${this.type !== "checkbox" && this.type !== "radio"
             ? ""
             : html`
