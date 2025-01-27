@@ -1,7 +1,6 @@
 {
   "canScale": false,
-
-  "canEditSource": true,
+  "canEditSource": false,
   "editElement": "editMode",
   "type": "grid",
   "gizmo": {

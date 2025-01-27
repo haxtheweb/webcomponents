@@ -2315,14 +2315,30 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // when recent updates anywhere, write this to memory
     autorun(() => {
       const recentGizmoList = toJS(this.recentGizmoList);
-      if (recentGizmoList.length > 0) {
+      if (recentGizmoList.length > 6) {
+        recentGizmoList.length = 6;
+      }
+      // prevent writing to memory while we are writing to memory
+      // so that MobX doesn't loop on itself
+      if (recentGizmoList.length > 0 && !this.__writingMemory) {
+        this.__writingMemory = true;
         UserScaffoldInstance.writeMemory(
           "recentGizmoList",
           recentGizmoList,
           "long",
         );
       }
+      else {
+        this.__writingMemory = false;
+      }
     });
+  }
+  pushWithLimit(array, element, limit) {
+    array.push(element);
+  
+    if (array.length > limit) {
+      array.shift(); // Remove the first element (oldest)
+    }
   }
   // select the text in question and insert in the correct location
   async _insertTextResult(text) {
@@ -2898,7 +2914,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         callback: this.setupEditableTable.bind(this),
       },
       canScale: true,
-      canEditSource: true,
+      canEditSource: false,
       gizmo: {
         title: "Table",
         description: "A table for displaying data",

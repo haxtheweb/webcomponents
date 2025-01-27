@@ -681,7 +681,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         sticky
         data-node-type="${!this.activeNode
           ? ""
-          : this.viewSourceToggle
+          : this.viewSourceToggle && this.activeNode && this.activeNode.parentNode && this.activeNode.parentNode.tagName
             ? this.activeNode.parentNode.tagName
             : this.activeNode.tagName}"
         .target="${!this.activeNode
