@@ -50,11 +50,6 @@ curl -fsSL https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scri
 git clone https://github.com/haxtheweb/webcomponents.git
 cd webcomponents
 npm install --global @haxtheweb/create
-yarn global add polymer-cli
-yarn global add @web/test-runner
-yarn global add @web/test-runner-commands
-yarn global add @web/test-runner-puppeteer
-yarn global add @web/test-runner-playwright
 yarn global add lerna
 yarn global add web-component-analyzer
 yarn install
@@ -83,11 +78,6 @@ git config --global core.autocrlf true
 git clone https://github.com/haxtheweb/webcomponents.git
 cd webcomponents
 npm install --global @haxtheweb/create
-yarn global add polymer-cli
-yarn global add @web/test-runner
-yarn global add @web/test-runner-commands
-yarn global add @web/test-runner-puppeteer
-yarn global add @web/test-runner-playwright
 yarn global add lerna
 yarn global add web-component-analyzer
 yarn install
@@ -125,7 +115,7 @@ Because this is a monorepo, each web component will need to be independently bui
 While still running `yarn start` in one terminal window (which runs the local server), you will need to open another terminal window, drill into the directory of the web component you'd like to work on, and execute the `yarn run dev` command. This command will use gulp tasks to watch the files within that web component directory and will automatically re-run the build command and refresh the browser when you make changes to the web component.
 
 ### Working on elements (new-element)
-Run `wcf element` to make a new element. Go to the new element following the directions generated at the end of the element's creation. To work on the new-element run `yarn start` from it's directory. If you are pulling in another element to use, run `yarn add projectname --save`.
+Run `hax webcomponent` to make a new element. Go to the new element following the directions generated at the end of the element's creation. To work on the new-element run `yarn start` from it's directory. If you are pulling in another element to use, run `yarn add projectname --save` or edit the `package.json` file local to the element you are working on. **ALWAYS INSTALL FROM THE REPO ROOT, NOT THE ELEMENT YOU ARE WORKING ON**
 
 ### Example development on a web component
 
