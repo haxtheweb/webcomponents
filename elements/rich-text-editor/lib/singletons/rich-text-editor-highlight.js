@@ -58,6 +58,23 @@ class RichTextEditorHighlight extends LitElement {
     return "rich-text-editor-highlight";
   }
 
+  haxHooks() {
+    return {
+      preProcessNodeToContent: "haxpreProcessNodeToContent",
+    };
+  }
+
+  /**
+   * this tag is not actually content; though because of how it works it shows up
+   * in content and potentially can appear in output based on order the user takes
+   * to save content. This helps trap to ensure it turns into a textNode because
+   * it's not actually content
+   */
+  haxpreProcessNodeToContent(node) {
+    let textNode = globalThis.document.createTextNode(node.innerHTML);
+    node.replaceWith(textNode);
+    return textNode;
+  }
   /**
    * Makes sure there is a utility ready and listening for elements.
    */
@@ -70,11 +87,6 @@ class RichTextEditorHighlight extends LitElement {
     this.id = "rte-" + "ss-s-s-s-sss".replace(/s/g, hex);
   }
 
-  firstUpdated(changedProperties) {
-    if (super.firstUpdated) {
-      super.firstUpdated(changedProperties);
-    }
-  }
   emptyContents() {
     let nodes = [...this.childNodes];
     nodes.forEach((node) => {

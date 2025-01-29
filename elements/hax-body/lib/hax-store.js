@@ -3570,6 +3570,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (this.testHook(node, "preProcessNodeToContent")) {
       node = await this.runHook(node, "preProcessNodeToContent", [node]);
     }
+    // preprocess could have destroyed the node in the process
+    if (node && !node.tagName) {
+      return node;
+    }
     let tag = node.tagName.toLowerCase();
     // support sandboxed environments which
     // will hate iframe tags but love webview
@@ -3783,7 +3787,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             // case for the web in general as it'll register as not a primative
             // even though it is...
             if (
-              !this.HTMLPrimativeTest(slotnodes[j]) &&
+              (!this.HTMLPrimativeTest(slotnodes[j]) || (this.HTMLPrimativeTest(slotnodes[j]) && slotnodes[j].children.length > 0)) &&
               slotnodes[j].tagName !== "TEMPLATE"
             ) {
               content += await this.nodeToContent(slotnodes[j]);

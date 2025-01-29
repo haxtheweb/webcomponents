@@ -690,7 +690,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             ? this.activeNode.parentNode
             : this.activeNode}"
         .trayStatus="${this.trayStatus}"
-        ?hidden="${!this.activeNode}"
+        ?hidden="${!this.activeNode || !this.editMode}"
       >
         <div id="topcontextmenu" @mouseenter="${this.revealMenuIfHidden}">
           <hax-plate-context
@@ -2887,6 +2887,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
     // hide menus when state changes
     if (newValue == false) {
+      if (globalThis.document.querySelector("rich-text-editor-prompt")) {
+        globalThis.document.querySelector("rich-text-editor-prompt").close()        
+      }
       // this effectively removes the editing element
       unwrap(HAXStore.activeEditingElement);
       HAXStore.activeEditingElement = null;
