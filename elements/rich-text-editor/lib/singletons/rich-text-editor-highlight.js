@@ -71,9 +71,13 @@ class RichTextEditorHighlight extends LitElement {
    * it's not actually content
    */
   haxpreProcessNodeToContent(node) {
-    let textNode = globalThis.document.createTextNode(node.innerHTML);
-    node.replaceWith(textNode);
-    return textNode;
+    // I don't love span but it's the most neutral tag to use here
+    // because the user attempted to save / copied a range that was highlighted
+    // and it should not be in the output
+    let span = globalThis.document.createElement('span');
+    span.innerText = node.innerText;
+    node.replaceWith(span);
+    return span;
   }
   /**
    * Makes sure there is a utility ready and listening for elements.
