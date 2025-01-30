@@ -488,6 +488,11 @@ export class QuestionElement extends SchemaBehaviors(
         ul li {
           padding: 0;
         }
+        img {
+          max-width: var(--question-element-img-max-width, 250px);
+          height: var(--question-element-img-height, 100px);
+          vertical-align: middle;
+        }
         simple-icon {
           display: inline-flex;
         }
@@ -880,7 +885,9 @@ export class QuestionElement extends SchemaBehaviors(
               .value="${answer ? answer.userGuess : ""}"
               @value-changed="${this.checkedEvent}"
               label="${answer && answer.label ? answer.label : ""}"
-            ></simple-fields-field>
+            >${answer.image
+                ? html`<img src="${answer.image}" alt="${answer.alt}" slot="label-prefix" part="image" />`
+                : nothing}</simple-fields-field>
           `,
         )}
       </fieldset>

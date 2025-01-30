@@ -1,0 +1,39 @@
+
+<p>DDD provides our design language, but it also is a BaseClass and (technically) a web component in our repo (d-d-d). This guide will help you implement DDD in your projects. DDD Extends LitElement and provides some built in ways that it manages font and CSS application both globally as well as localized to your element.</p>
+<h2 data-original-level="H2" id="header-7c96d98e-7d5f-a1fc-9bf8-b415807b7c4a">Install</h2>
+<p></p>
+<code-sample copy-clipboard-button type="html"><template preserve-content="preserve-content">npm install @lrnwebcomponents/d-d-d --save</template></code-sample>
+<p>After installing in your project, we leverage DDD by importing either the <mark data-hax-layout="true">BaseClass</mark> OR the <mark data-hax-layout="true">SuperClass</mark>.</p>
+<p></p>
+<code-sample copy-clipboard-button type="javascript" highlight-start="2" highlight-end="2"><template preserve-content="preserve-content">import { html, css } from "lit";
+import { DDD } from "@lrnwebcomponents/d-d-d/d-d-d.js";
+
+export class WhatEver extends DDD {
+  static get styles() {
+    return [
+      super.styles,
+      css`
+      :host {
+        display: block;
+      }
+      .my-div {
+        padding: var(-ddd-spacing-5);
+        margin: var(--ddd-spacing-2) var(--ddd-spacing-0);
+        color: var(--ddd-theme-default-keystoneYellow);
+      }
+    `];
+  }
+
+  static get properties() {
+    return {
+      ...super.properties,
+      title: { type: String }
+    }
+  }
+}</template></code-sample>
+<p>You can also implement DDD by just using DDDSuper. The difference is that DDD also pulls in SimpleColorsSuper which supplies logic and color theory for a spectrum of values we are currently phasing out. While not required, these colors are still under consideration for being official colors to leverage along side&#160; those in DDD</p>
+<h2 data-original-level="H2" id="header-a0328c16-c846-5412-72f7-9e540b5202f4">DDD usage</h2>
+<p>The big deal with DDD is that it's resetting styling on things like h1, h2, p, etc, bringing in our standard fonts (and applying them) but also that it's supplying tons of CSS variables. To see them all in one place, <a href="https://github.com/elmsln/lrnwebcomponents/blob/master/elements/d-d-d/lib/DDDStyles.js" target="_blank" data-hax-layout="true">see this file in the code repo</a> for a sense of what and how you can change things&#160;&#160;however the <a href="documentation/ddd" data-hax-layout="true">Design Documentation page</a>&#160;has all of this laid out in visual detail.</p>
+<h3 id="header-eaa37c8f-9992-0730-d9e1-568f91fdcb19">Common things you'll want to use the CSS variables to do</h3>
+<ul><li data-hax-layout="true"="true">Modify the colors via things like <b>--ddd-theme-default-keystoneYellow</b></li><li data-hax-layout="true"="true">Ensure proper spacing for padding and margins via things like <b>--ddd-spacing-10</b> (meaning 10th level of spacing)</li><li data-hax-layout="true"="true">Ensuring correct border, icon, shadow depth, and other accentuation to elements you build</li></ul>
+<p>Those three things alone will make your elements <i>feel </i>like it is part of the HAX ecosystem. Fonts should automatically be applied as a result of how DDD naturally works but if not you can apply the <b>font-family</b> and <b>font-weight</b> to match the standard as well.</p>

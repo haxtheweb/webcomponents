@@ -1,0 +1,20 @@
+
+<p>We all enjoy memes, so let's understand HAX through a simple meme based example.</p>
+<h2 id="header-30a6acbb-304b-a99e-5bda-d8af30833b3b">How to make a meme</h2>
+<ul><li>Find image</li><li>submit to service</li><li>enter text on image</li><li>download meme and share</li></ul>
+<h2 id="header-0a4045d9-8074-6241-e46d-ca6dddc40269">HAX based meme</h2>
+<ul><li>We created an HTML tag called meme-maker</li><li>point to image / upload one</li><li>edit text and it live updates</li></ul>
+<h2 id="header-f4a14a35-59eb-caba-1528-cfb463469742">HTML for this to be possible</h2>
+<p>We create a new HTML tag that looks like below. If you care to <a href="https://github.com/haxtheweb/webcomponents/blob/master/elements/meme-maker/src/meme-maker.js" target="_blank">see the code powering it</a> look in our repo.</p>
+<code-sample type="xml" highlight-start="1" highlight-end="0"><template preserve-content="preserve-content">&lt; meme-maker
+alt="Up your meme game with hax and allow for more accessible memes"
+image-url="files/giphy.gif"
+bottom-text="HTML is anything"
+top-text="HAX is html"&gt;
+&lt; /meme-maker&gt;</template></code-sample>
+<p>Writing that block above, you would see the following in the page below&#160;👇</p>
+<meme-maker alt="Up your meme game with hax and allow for more accessible memes" image-url="files/giphy.gif" bottom-text="HTML is anything" top-text="HAX is html" data-width="25" data-margin="center">
+    <div>HAX is html</div>
+      <img src="files/giphy.gif" alt="Up your meme game with hax and allow for more accessible memes" preload="lazy" aria-describedby=""/>
+    <div>HTML is anything</div></meme-maker>
+<p>If you want to edit it in the page, you can hit edit when logged in, click the meme, and live change the text. Now, replace the word meme with tables, images, layouts, text, multiple choice, collapses, 3D models, video and more and you've got why HAX is so powerful! HAX changes the meme game, but the web in general, into something live editable and re-mixable by more people than the web before it!</p>

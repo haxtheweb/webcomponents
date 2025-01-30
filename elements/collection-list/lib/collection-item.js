@@ -57,6 +57,7 @@ class CollectionItem extends DDD {
           --collection-row-accent-color: var(
             --simple-colors-default-theme-accent-10
           );
+          min-width: 240px;
         }
         a.link,
         a.link:-webkit-any-link {

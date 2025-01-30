@@ -1,7 +1,6 @@
 {
   "canScale": false,
-
-  "canEditSource": true,
+  "canEditSource": false,
   "editElement": "editMode",
   "type": "grid",
   "gizmo": {
@@ -29,80 +28,21 @@
   "settings": {
     "configure": [
       {
-        "property": "bordered",
-        "title": "Bordered",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "condensed",
-        "title": "Condense Rows",
-        "description": "Condenses row height",
-        "inputMethod": "boolean"
-      },
-      {
         "property": "rowHeader",
         "title": "Row Header",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "striped",
-        "title": "Striped Rows",
-        "description": "Add shading to every other row",
+        "description": "Treats first row as header",
         "inputMethod": "boolean"
       },
       {
         "property": "columnHeader",
         "title": "Column Header",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "columnStriped",
-        "title": "Striped Columns",
-        "description": "Add shading to every other column",
+        "description": "Treats first column as header",
         "inputMethod": "boolean"
       },
       {
         "property": "footer",
         "title": "Footer",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "responsive",
-        "title": "Responsive",
-        "description": "Automatically adjusts table when viewed on small screens",
-        "inputMethod": "boolean"
-      }
-    ],
-    "advanced": [
-      {
-        "property": "dataCsv",
-        "title": "CSV Data",
-        "description": "Make a table from an uploaded CSV file",
-        "inputMethod": "fileupload",
-        "accepts": "csv"
-      },
-      {
-        "property": "downloadable",
-        "title": "Download Button",
-        "description": "Adds a button to download the table",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "printable",
-        "title": "Print Button",
-        "description": "Adds a button to print just the table",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "condensed",
-        "title": "Condense Rows",
-        "description": "Condenses row height",
-        "inputMethod": "boolean"
-      },
-      {
-        "property": "numericStyles",
-        "title": "Numeric Styling",
-        "description": "Styling for numeric columns",
+        "description": "Treats last row as footer",
         "inputMethod": "boolean"
       },
       {
@@ -116,6 +56,58 @@
         "title": "Allow Filter",
         "description": "Allows data to be filtered by a column value",
         "inputMethod": "boolean"
+      },
+      {
+        "property": "numericStyles",
+        "title": "Numeric Styling",
+        "description": "Styling for numeric columns",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "responsive",
+        "title": "Responsive",
+        "description": "Automatically adjusts table when viewed on small screens",
+        "inputMethod": "boolean"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "bordered",
+        "title": "Bordered",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "condensed",
+        "title": "Condense Rows",
+        "description": "Condenses row height",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "striped",
+        "title": "Striped Rows",
+        "description": "Add shading to every other row",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "downloadable",
+        "title": "Download Button",
+        "description": "Adds a button to download the table",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "printable",
+        "title": "Print Button",
+        "description": "Adds a button to print just the table",
+        "inputMethod": "boolean"
+      }
+    ],
+    "developer": [
+      {
+        "property": "dataCsv",
+        "title": "CSV Data",
+        "description": "Make a table from an uploaded CSV file",
+        "inputMethod": "fileupload",
+        "accepts": "csv"
       }
     ]
   },
@@ -135,7 +127,11 @@
       "tag": "editable-table",
       "content": "<table><tr><td>one</td><td>two</td></tr><tr><td>three</td><td>four</td></tr></table>",
       "properties": {
-        "downloadable": true
+        "downloadable": true,
+        "printable": true,
+        "bordered": true,
+        "striped": true,
+        "condensed": true
       }
     }
   ]

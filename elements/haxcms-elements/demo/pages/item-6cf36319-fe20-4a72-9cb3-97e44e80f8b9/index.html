@@ -1,0 +1,14 @@
+
+<grid-plate layout="2-1" item-margin="20" disable-responsive data-width="100" style="--grid-plate-item-margin: 20px;"><p slot="col-1">HAX seeks to be the most performant platform it can possibly be. It does this through methodology, low level platform APIs, leveraging micro-services, and lazy loading expensive assets as needed. Performance is not a nice to have. It is access, it is usability, it is not a feature but a core ideal.</p><p slot="col-1" role="textbox">Much like accessibility, when we don't think of the bytes we send, we are discriminating against those with slow devices or low quality internet connections. This leaves people out of the conversation and reduces access to information.</p><un-sdg goal="7" slot="col-2" loading="lazy" fetchpriority="low"></un-sdg>
+
+
+<un-sdg loading="lazy" fetchpriority="low" slot="col-2" goal="12"></un-sdg>
+
+
+</grid-plate>
+<p></p>
+<h2 data-original-level="H2" id="header-a278ca5e-63b5-4f31-6f4a-ad293ae09022">Ways we directly work toward performance</h2>
+<ul><li>We seek to build directly against ES21+ (as of 2024) and seek to slide that scale forward over time</li><li>Seek to maximize lighthouse / <a href="https://pagespeed.web.dev/" target="_blank">Google Page Speed</a> metrics but not at the expense of shipping less data over time (see unbundling)</li><li>We will unbundle assets on our CDN as much as possible</li><li><a href="https://oer.hax.psu.edu/bto108/sites/web-ubiquity/magic-script-cdn-network" target="_blank">HAX.cloud and the Magic Script</a>, ensure that we ship with maximal performance given unbundling considerations</li><li>HTML send in initial page load (when possible)</li><li>Server Side Rendering will be employed to the best of its technical ability (has many limitations as of 2024 writing)</li><li>We will leverage web native APIs as much as possible, sticking to targets within the last three years</li><li>HAXcms injects <a href="https://dev.to/btopro/replace-tag-with-high-performance-3ghj" target="_blank">replace-tag on page load</a> to ensure content below the fold is not loaded until the user scrolls it into the viewport</li><li>Lit and template literal syntax to ensure minimal DOM updates on data change</li></ul>
+<h2 data-original-level="H2" id="header-ee17cce4-e669-7716-9fda-43d0af18cfcb">Discuss Performance pillar</h2>
+<p></p>
+<discord-embed source="https://e.widgetbot.io/channels/1032350524315537429/1200492889982124092" height="500" width="100%"></discord-embed>

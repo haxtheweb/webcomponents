@@ -118,6 +118,7 @@ class MediaImage extends DDD {
     this.figureLabelTitle = "";
     this.figureLabelDescription = "";
     this.alt = "";
+    this.asMd = false;
     this.size = "wide";
     this.round = false;
     this.card = false;
@@ -129,6 +130,9 @@ class MediaImage extends DDD {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === "asMd" && this[propName]) {
+        import("@haxtheweb/md-block/md-block.js");
+      }
       if (propName == "caption") {
         this._computeHasCaption(this[propName]);
       }
@@ -184,12 +188,12 @@ class MediaImage extends DDD {
             @click="${this._handleClick}"
           ></media-image-image>`}
       <media-image-citation>
-        <slot class="citation" name="citation">${this.citation}</slot>
+        <slot class="citation" name="citation">${this.citation && this.asMd ? html`<md-block style="--ddd-spacing-6:0px;" markdown="${this.citation}"></md-block>` : html`${this.citation}`}</slot>
       </media-image-citation>
       ${this._hasCaption
         ? html`
             <media-image-caption tabindex="0">
-              <slot name="caption">${this.caption}</slot>
+              <slot name="caption">${this.caption && this.asMd ? html`<md-block style="--ddd-spacing-6:0px;" markdown="${this.caption}"></md-block>` : html`${this.caption}`}</slot>
             </media-image-caption>
           `
         : ``}
@@ -229,6 +233,10 @@ class MediaImage extends DDD {
       ...super.properties,
       link: {
         type: String,
+      },
+      asMd: {
+        type: Boolean,
+        attribute: "as-md",
       },
       __figureLabel: {
         type: Boolean,
@@ -486,6 +494,15 @@ class MediaImage extends DDD {
             required: false,
           },
         ],
+        developer: [
+          {
+            property: "asMd",
+            title: "Render as markdown",
+            description: "Render the caption and citation as markdown.",
+            inputMethod: "boolean",
+            required: false,
+          }
+        ]
       },
       demoSchema: [
         {
@@ -681,7 +698,7 @@ class MediaImageCaption extends DDD {
   render() {
     return html`
       <div class="caption">
-        ${!this.__hasContent ? html` <slot id="slot"></slot> ` : ``}
+        ${!this.__hasContent ? html`<slot id="slot"></slot>` : ``}
       </div>
     `;
   }

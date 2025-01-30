@@ -622,8 +622,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           "abbr",
           "i",
           "bold",
+          "time",
+          "cite",
           "em",
           "strong",
+          "pre",
+          "section",
           "blockquote",
           "code",
           "figure",
@@ -662,6 +666,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           "span",
           "code",
           "mark",
+          "time",
+          "cite",
           "abbr",
           "i",
           "bold",
@@ -1301,10 +1307,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   async _onPaste(e) {
     if (
+      // only apply if we're editing, othewise don't listen
       this.editMode &&
-      globalThis.document.activeElement.tagName !== "HAX-TRAY" &&
-      globalThis.document.activeElement.tagName !== "BODY" &&
-      globalThis.document.activeElement.tagName !== "SIMPLE-MODAL"
+      // ensure we're not in the surrounding UI elements that allow pasting
+      !["HAX-TRAY", "BODY", "SIMPLE-MODAL", "SUPER-DAEMON" ].includes(globalThis.document.activeElement.tagName) &&
+      // special test for the table editor as it's a rare element that can accept text
+      this.activeNode && this.activeNode.tagName !== "EDITABLE-TABLE"
     ) {
       // only perform this on a text element that is active
       // otherwise inject a P so we can paste into it
@@ -1758,6 +1766,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "h4",
       "h5",
       "h6",
+      "pre",
       "blockquote",
       "code",
       "figure",
@@ -1766,12 +1775,15 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       "iframe",
       "video",
       "audio",
+      "picture",
       "section",
       "dl",
       "dt",
       "dd",
       "template",
       "webview",
+      "time",
+      "cite",
     ];
   }
   /**
@@ -2244,9 +2256,25 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         title: "Code",
         icon: "icons:code",
       },
+      pre: {
+        title: "Preformatted",
+        icon: "icons:code",
+      },
+      time: {
+        title: "Time",
+        icon: "icons:code",
+      },
+      cite: {
+        title: "Citation",
+        icon: "icons:code",
+      },
       embed: {
         title: "Embedded object",
         icon: "icons:fullscreen",
+      },
+      picture: {
+        title: "Picture",
+        icon: "image:image",
       },
     };
     this.validTagList = this.__validTags();
@@ -2287,14 +2315,30 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // when recent updates anywhere, write this to memory
     autorun(() => {
       const recentGizmoList = toJS(this.recentGizmoList);
-      if (recentGizmoList.length > 0) {
+      if (recentGizmoList.length > 6) {
+        recentGizmoList.length = 6;
+      }
+      // prevent writing to memory while we are writing to memory
+      // so that MobX doesn't loop on itself
+      if (recentGizmoList.length > 0 && !this.__writingMemory) {
+        this.__writingMemory = true;
         UserScaffoldInstance.writeMemory(
           "recentGizmoList",
           recentGizmoList,
           "long",
         );
       }
+      else {
+        this.__writingMemory = false;
+      }
     });
+  }
+  pushWithLimit(array, element, limit) {
+    array.push(element);
+  
+    if (array.length > limit) {
+      array.shift(); // Remove the first element (oldest)
+    }
   }
   // select the text in question and insert in the correct location
   async _insertTextResult(text) {
@@ -2870,7 +2914,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         callback: this.setupEditableTable.bind(this),
       },
       canScale: true,
-      canEditSource: true,
+      canEditSource: false,
       gizmo: {
         title: "Table",
         description: "A table for displaying data",
@@ -3006,6 +3050,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 "sub",
                 "sup",
                 "span",
+                "time",
+                "cite",
               ].includes(tag)
                 ? true
                 : false,
@@ -3524,6 +3570,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (this.testHook(node, "preProcessNodeToContent")) {
       node = await this.runHook(node, "preProcessNodeToContent", [node]);
     }
+    // preprocess could have destroyed the node in the process
+    if (node && !node.tagName) {
+      return node;
+    }
     let tag = node.tagName.toLowerCase();
     // support sandboxed environments which
     // will hate iframe tags but love webview
@@ -3737,7 +3787,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             // case for the web in general as it'll register as not a primative
             // even though it is...
             if (
-              !this.HTMLPrimativeTest(slotnodes[j]) &&
+              (!this.HTMLPrimativeTest(slotnodes[j]) || (this.HTMLPrimativeTest(slotnodes[j]) && slotnodes[j].children.length > 0)) &&
               slotnodes[j].tagName !== "TEMPLATE"
             ) {
               content += await this.nodeToContent(slotnodes[j]);

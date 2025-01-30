@@ -62,27 +62,21 @@ class CollectionList extends DDD {
           grid-column: span 1; /* Ensures each item takes up exactly one column */
         }
 
-        @container (min-width: 480px) {
+        @container (min-width: 360px) {
           .wrapper {
             grid-template-columns: repeat(2, 1fr);
           }
         }
 
-        @container (min-width: 720px) {
+        @container (min-width: 768px) {
           .wrapper {
             grid-template-columns: repeat(3, 1fr);
           }
         }
 
-        @container (min-width: 960px) {
+        @container (min-width: 1080px) {
           .wrapper {
             grid-template-columns: repeat(4, 1fr);
-          }
-        }
-
-        @container (min-width: 1200px) {
-          .wrapper {
-            grid-template-columns: repeat(5, 1fr);
           }
         }
 

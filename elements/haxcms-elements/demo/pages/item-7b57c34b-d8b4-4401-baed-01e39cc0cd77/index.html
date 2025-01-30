@@ -1,0 +1,120 @@
+
+<p>There is a simple working example of a HAX element provided in our monorepo. The&#160;example-hax-element tag implements very basic wiring for a title and boolean value to demonstrate how you can integrate your web component with the design system as well as form settings</p>
+<ul><li><a href="https://github.com/haxtheweb/webcomponents/tree/master/elements/example-hax-element" target="_blank" role="textbox">Github source</a></li><li><a href="https://www.npmjs.com/package/@haxtheweb/example-hax-element" target="_blank">npm install @haxtheweb/hax-example-element</a></li></ul>
+<h2 id="header-4bab5e2d-58ed-a0b7-d945-7b6eaaca8868">example-hax-element.js</h2>
+<p><a href="https://github.com/haxtheweb/webcomponents/blob/master/elements/example-hax-element/src/example-hax-element.js" target="_blank">Source of this file</a></p>
+<code-sample copy-clipboard-button type="javascript"><template preserve-content="preserve-content">/**
+ * Copyright 2024 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { LitElement, html, css } from "lit";
+/**
+ * `example-hax-element`
+ * @element example-hax-element
+ * `Provide an example to pick apart of a working HAX element`
+ * @demo demo/index.html
+ */
+export class ExampleHaxElement extends LitElement {
+  // convention our team enjoys
+  static get tag() {
+    return "example-hax-element";
+  }
+
+  constructor() {
+    super();
+    this.title = null;
+    this.shiny = false;
+  }
+
+  static get properties() {
+    return {
+      title: {
+        type: String
+      },
+      shiny: {
+        type: Boolean,
+        reflect: true
+      }
+    };
+  }
+
+  static get styles() {
+    return [css`
+      :host {
+        display: block;
+      }
+      :host([shiny]) h2 {
+        background-color: var(--ddd-theme-accent);
+      }
+    `];
+  }
+
+  render() {
+    return html`<h2>${this.title}</h2>`;
+  }
+
+  /**
+   * haxProperties integration via file reference
+   */
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url).href;
+  }
+}
+globalThis.customElements.define(ExampleHaxElement.tag, ExampleHaxElement);
+</template></code-sample>
+<h2 id="header-a8166345-5a75-2a9c-fec0-31a5038b9c15">lib/example-hax-element.haxProperties.js</h2>
+<p><a href="https://github.com/haxtheweb/webcomponents/blob/master/elements/example-hax-element/lib/example-hax-element.haxProperties.json" target="_blank">Source of this file</a></p>
+<code-sample copy-clipboard-button type="json"><template preserve-content="preserve-content">{
+"designSystem": {
+"primary": true,
+"accent": true
+},
+"hideDefaultSettings": false,
+"canEditSource": true,
+"gizmo": {
+"title": "Example element",
+"description": "Example Title text element",
+"icon": "icons:android",
+"color": "green",
+"tags": [
+"Other",
+"example"
+],
+"handles": [],
+"meta": {
+"author": "HAXTheWeb core team"
+}
+},
+"settings": {
+"configure": [
+{
+"property": "title",
+"title": "Title",
+"description": "Simple heading title to present",
+"inputMethod": "textfield"
+},
+{
+"property": "shiny",
+"title": "Shiny",
+"description": "Is this shiny or plain",
+"inputMethod": "boolean"
+}
+],
+"advanced": [],
+"developer": []
+},
+"saveOptions": {
+"unsetAttributes": []
+},
+"demoSchema": [
+{
+"tag": "example-hax-element",
+"properties": {
+"title": "This is my title",
+"shiny": true
+},
+"content": ""
+}
+]
+}</template></code-sample>
+<p></p>

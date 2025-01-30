@@ -120,6 +120,7 @@ class EditableTable extends editBehaviors(DDD) {
         ?bordered="${this.bordered}"
         caption="${this.caption}"
         @change="${this._handleSync}"
+        @cell-changed="${this._handleCellChanged}"
         .config="${this.config}"
         ?column-header="${this.columnHeader}"
         ?column-striped="${this.columnStriped}"
@@ -169,10 +170,15 @@ class EditableTable extends editBehaviors(DDD) {
     return node;
   }
   // allow HAX to toggle edit state when activated
-  haxactiveElementChanged(el, val) {
+  async haxactiveElementChanged(el, val) {
     this.editMode = val;
     if (val) {
       this.focus();
+    }
+    // ensure same on loss of focus to another element so it is fully in sync
+    if (!val && el === this) {
+      this.innerHTML = "";
+      await this.appendChild(this.getTableHTML(true, true));
     }
     return this;
   }
@@ -222,6 +228,19 @@ class EditableTable extends editBehaviors(DDD) {
     if (this.editor && property) this[property] = this.editor[property];
   }
 
+  async _handleCellChanged(e) {
+    // ensure the DOM is updated to match the data
+    if (this.editor && globalThis.HaxStore) {
+      // if HAX is here, ensure we ignore activation
+      globalThis.HaxStore.instance.activeBodyIgnoreActive(true);
+      // sync the light DOM
+      this.innerHTML = "";
+      await this.appendChild(this.getTableHTML(true, true));
+      // resume activation
+      globalThis.HaxStore.instance.activeBodyIgnoreActive(false);
+    }
+  }
+
   /**
    * makes toggle focusable
    */
@@ -246,7 +265,6 @@ class EditableTable extends editBehaviors(DDD) {
   toggleEditMode(edit) {
     this.editMode = edit !== undefined ? edit : !this.editMode;
     this.focus();
-
     this.dispatchEvent(
       new CustomEvent("toggle-edit-mode", {
         bubbles: true,

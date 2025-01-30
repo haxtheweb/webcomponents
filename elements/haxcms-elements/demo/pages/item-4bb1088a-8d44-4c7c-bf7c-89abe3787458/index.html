@@ -1,0 +1,52 @@
+
+<p>These are in-progress design documentation for the HAX design system, code named
+  DDD (Develop, Design, Destroy!).</p>
+<h2 data-original-level="H2" id="header-0a967973-a529-499d-c6eb-43467dedd9e2" data-instructional-action="connection" data-id-emphasize="data-id-emphasize">What is DDD?!</h2>
+<p>DDD is short for Develop, Design, Destroy!</p>
+<ul>
+  <li data-hax-layout="true" ="true"=""="true"><b>Develop</b>
+: we needed to develop HAX and its ecosystem of elements to test the
+    theory of how it's built and learn to build sustainable elements. They could have
+    looked great from day one, but we might not have a day two to build in if we did!</li>
+  <li data-hax-layout="true" ="true"=""="true"><b>Design</b>
+: Everything in HAX will begin to feel intentionally designed. This
+    is because of the standardization of CSS variables, spacing and other naming considerations.
+    All of the things invisible to our users will be leveraged to ensure that anyone
+    and everyone gets a well designed experience.</li>
+    <li data-hax-layout="true" ="true"=""="true"><b>Destroy</b>
+: With a rock solid development pattern, and a rock solid design pattern,
+      we are able to start destroying connotations of what HAX is, what it can do, and
+      the types of sites it can create. We don't want to be another brand in a marketplace
+      of inaccessible, high energy consumption, expensive web. We want to destroy the web
+      as it was and recreate a new web that works for everyone regardless of resources
+      or abilities! A more inclusive web than we have today; <i>we want to HAX The Web</i>
+.</li>
+</ul>
+<p>DDD seeks to solve a long standing criticism of web components and the HAX ecosystem
+  more broadly, that it feels created and implemented by many people building in similar
+  yet different ways. The resources used to build HAX over many years has created this
+  problem; but fortunately, there is a solution. DDD is that solution, by creating
+  a unified theory of css variables, classes and spacing, we can retroactively update
+  existing HAX properties and HAX blocks to feel like they were all built at the same
+  time.</p>
+<h2 data-original-level="H2" id="header-95d7a00e-9e94-e2d0-c9f5-2f970f5deca0">How does this work?</h2>
+<p>HAX is primarily built on LitElement, a baseClass JavaScript library called Lit
+  that we use to standardize our development experience. Lit makes things fast, small,
+  and simple to read in the web components universe that is HAX. Because of this standardization,
+  we can build a new baseClass that has baked in assumptions about spacing, color,
+  and design. Previously we had this in a class called SimpleColors. SimpleColors provided
+  a unified color theory to all things HAX. You'll see it at times when there is an
+  "Accent Color" or "Dark mode" flag on elements. This is because they inherit from
+  the same base of colors and css variables, then implemented in that element.</p>
+<p>DDD then is a new base class that builds on top of SimpleColors to mix color in
+  with fonts, spacing, borders, additional color pallets, breakpoints, and more to
+  produce a consistent way of building and communicating blocks in HAX. In-fact the
+  theme you are reading on right now is built using DDD which is why it feels consistent
+  and cleanly spaced.</p>
+<h2 data-original-level="H2" id="header-49c52575-9f63-be23-8850-7ba272794fa2">DDD - Develop, Design, Destroy</h2>
+<p>Below is the guide to DDD, built using the DDD based class itself. This ensures
+  that this guide is always up to date as we push out changes! This is currently a
+  highly functional work in progress but is not considered API stable or API complete.
+  HAX 9 should provide the pathway toward DDD reaching beta in which it is API stable,
+  but in the midst of clean up.</p>
+<d-d-docs accent-color="grey" option="*" options="[&quot;Borders&quot;,&quot;Breakpoints&quot;,&quot;DefaultColors&quot;,&quot;DefaultFunctionalColors&quot;,&quot;Gradients&quot;,&quot;Radius&quot;,&quot;Shadows&quot;,&quot;Spacing&quot;,&quot;Typography&quot;,&quot;RichText&quot;,&quot;Buttons&quot;,&quot;InstructionalComponents&quot;,&quot;PageSections&quot;]"></d-d-docs>

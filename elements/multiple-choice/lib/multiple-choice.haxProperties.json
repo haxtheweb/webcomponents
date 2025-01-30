@@ -57,9 +57,15 @@
         "inputMethod": "array",
         "itemLabel": "label",
         "hideReorder": true,
-        "expanded": true,
+        "expanded": false,
         "hideDuplicate": true,
         "properties": [
+          {
+            "property": "label",
+            "title": "Answer",
+            "inputMethod": "textfield",
+            "required": true
+          },
           {
             "property": "correct",
             "title": "Correct",
@@ -67,10 +73,18 @@
             "inputMethod": "boolean"
           },
           {
-            "property": "label",
-            "title": "Answer",
-            "inputMethod": "textfield",
-            "required": true
+            "property": "image",
+            "title": "Image",
+            "description": "Image to display with this answer",
+            "inputMethod": "haxupload",
+            "noVoiceRecord": true,
+            "noCamera": true
+          },
+          {
+            "property": "alt",
+            "title": "Image Alternative text",
+            "description": "Alternative text for the image",
+            "inputMethod": "textfield"
           }
         ]
       }
@@ -105,7 +119,7 @@
         "singleOption": true,
         "randomize": true
       },
-      "content": "<input type=\"checkbox\" value=\"Correct answer\" correct>\n<input type=\"checkbox\" value=\"Another option\">"
+      "content": "<input type=\"checkbox\" value=\"Answer 1\" correct>\n<input type=\"checkbox\" value=\"Another potential answer\">"
     }
   ]
 }

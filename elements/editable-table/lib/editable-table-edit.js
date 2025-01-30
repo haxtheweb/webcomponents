@@ -1022,9 +1022,8 @@ class EditableTableEdit extends editBehaviors(DDD) {
   _dataChanged(data, oldData) {
     if ((data && data.length < 1) || data[0].length < 1) {
       this.data = [
-        ["", "", ""],
-        ["", "", ""],
-        ["", "", ""],
+        ["", ""],
+        ["", ""],
       ];
     }
     this._handleChange("data");

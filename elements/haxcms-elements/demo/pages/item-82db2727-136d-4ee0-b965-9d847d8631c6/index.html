@@ -1,0 +1,11 @@
+
+<p>Mark the Words allows you to write a sentence and have the user select individual words as solutions to the question. Marked words as well as those not marked are able to give feedback to the user per answer if desired.</p>
+<h2 id="header-63b80e61-718d-9e7f-bcb8-cf853bec3756">Example</h2>
+<mark-the-words question="Select all of the contractions" statement="I have not been to the farm-house, however; it'll be fun to attend!" max-attempts="0" typeof="oer:Assessment" resource="#c1d4cff6-5be0-e87d-06c3-2305b5d484fc" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " quiz-name="default"><input type="checkbox" value="it'll" correct="correct" data-selected="you are correct"><input type="checkbox" value="attend!" data-selected="Hey, ! is NOT for "></mark-the-words>
+<h2 id="header-5eec6b85-3456-8202-23bc-36eabb1ef6bb">Developer</h2>
+<ul><li><a href="https://npmjs.com/package/@haxtheweb/mark-the-words" target="_blank">npm install @haxtheweb/mark-the-words --save</a></li><li><a href="https://github.com/haxtheweb/webcomponents/tree/master/elements/mark-the-words" target="_blank">Source on Github</a></li><li><a href="https://codepen.io/btopro/pen/XWLjPaY" target="_blank">Codepen example from CDN</a></li></ul>
+<p></p>
+<code-sample copy-clipboard-button type="html"><template preserve-content="preserve-content"><mark-the-words question="Select all of the contractions" statement="I have not been to the farm-house, however; it'll be fun to attend!">
+  <input type="checkbox" value="it'll" correct="correct" data-selected="you are correct" role="textbox">
+  <input type="checkbox" value="attend!" data-selected="Hey, ! is NOT for ">
+</mark-the-words></template></code-sample>

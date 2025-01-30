@@ -168,6 +168,10 @@ class SiteQuery extends LitElement {
     if (routerManifest && routerManifest.items) {
       // ensure no data references, clone object
       var items = [...toJS(routerManifest.items)];
+      // ensure that metadata is not a proxy because it's not deep cloning this dataset
+      for (var i in items) {
+        items[i].metadata = toJS(items[i].metadata);
+      }
       // ohhh.... boy.... let's completely alter how this thing works
       if (entity !== "node") {
         var newItems = [];
@@ -248,6 +252,28 @@ class SiteQuery extends LitElement {
           // apply the conditions in order
           items = items.filter((item) => {
             switch (conditions[i].operator) {
+              case "includes":
+                // try catching this whole block because a lot could go wrong. This assumes
+                // that the data passed in is already an array and then that we've either got an arra
+                // or something we can treat as an array or it's a comma delimited string
+                try {
+                  const includesAll = (arr, values) => values.every(v => arr.includes(v));
+                  if (typeof Object.byString(item, i) === "object") {
+                    if (includesAll(Array.from(Object.byString(item, i)), evaluate)) {
+                      return true;
+                    }
+                  }
+                  else {
+                    if (includesAll(Array.from(Object.byString(item, i).replaceAll(', ',',').split(',')), evaluate)) {
+                      return true;
+                    }
+                  }
+                }
+                catch (e) {
+                  console.warn(e);
+                }
+                return false;
+              break;
               case ">":
                 if (Object.byString(item, i) > evaluate) {
                   return true;
@@ -266,11 +292,26 @@ class SiteQuery extends LitElement {
                   !evaluate.includes(Object.byString(item, i))
                 ) {
                   return true;
-                } else if (
+                }
+                else if (
                   typeof evaluate === "string" &&
                   Object.byString(item, i) !== evaluate
                 ) {
                   return true;
+                }
+                else if (
+                  typeof evaluate === "boolean" &&
+                  Object.byString(item, i) != evaluate
+                ) {
+                  // @todo figure out how to evaluate this appropriately
+                  // right now the data gets here but defaults seem off
+                  // and then everything computes to false
+                  // as if earlier filters are taking hold
+                 // if (i === 'metadata.published') {
+                 //   console.log(Object.byString(item, i));
+                 //   console.log(evaluate);
+                 // }
+//                  return true;
                 }
                 return false;
                 break;
@@ -282,11 +323,26 @@ class SiteQuery extends LitElement {
                   !evaluate.includes(Object.byString(item, i))
                 ) {
                   return false;
-                } else if (
+                }
+                else if (
                   typeof evaluate === "string" &&
                   Object.byString(item, i) !== evaluate
                 ) {
                   return false;
+                }
+                else if (
+                  typeof evaluate === "boolean" &&
+                  Object.byString(item, i) != evaluate
+                ) {
+                  // @todo figure out how to evaluate this appropriately
+                  // right now the data gets here but defaults seem off
+                  // and then everything computes to false
+                  // as if earlier filters are taking hold
+                 // if (i === 'metadata.published') {
+                 //   console.log(Object.byString(item, i));
+                 //   console.log(evaluate);
+                 // }
+//                  return false;
                 }
                 return true;
                 break;

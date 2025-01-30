@@ -147,6 +147,7 @@ class VideoPlayer extends IntersectionObserverMixin(
                 ?hide-youtube-link="${this.hideYoutubeLink}"
                 id="${this.playerId}"
                 @play="${this.playEvent}"
+                @restart="${this.restartEvent}"
                 @pause="${this.pauseEvent}"
                 lang="${this.lang || "en"}"
                 ?learning-mode="${this.learningMode}"
@@ -176,7 +177,6 @@ class VideoPlayer extends IntersectionObserverMixin(
         step: 25,
       },
       designSystem: {
-        primary: true,
         card: true,
       },
       canEditSource: true,
@@ -236,11 +236,15 @@ class VideoPlayer extends IntersectionObserverMixin(
             validationType: "text",
           },
           {
-            property: "accentColor",
-            title: "Accent color",
-            description: "Select the accent color for the player.",
-            inputMethod: "colorpicker",
+            property: "thumbnailSrc",
+            title: "Thumbnail image",
+            description: "The URL for a thumbnail/poster image.",
+            inputMethod: "haxupload",
+            noVoiceRecord: true,
+            validationType: "url",
           },
+        ],
+        advanced: [
           {
             property: "track",
             title: "Closed captions",
@@ -250,15 +254,17 @@ class VideoPlayer extends IntersectionObserverMixin(
             noVoiceRecord: true,
             validationType: "url",
           },
-        ],
-        advanced: [
           {
-            property: "thumbnailSrc",
-            title: "Thumbnail image",
-            description: "Optional. The URL for a thumbnail/poster image.",
-            inputMethod: "haxupload",
-            noVoiceRecord: true,
-            validationType: "url",
+            property: "startTime",
+            title: "Start time",
+            description: "Start video at a specific time (seconds)",
+            inputMethod: "number",
+          },
+          {
+            property: "endTime",
+            title: "End time",
+            description: "End video at a specific time (seconds), requires a start time.",
+            inputMethod: "number",
           },
           {
             property: "learningMode",
@@ -329,6 +335,12 @@ class VideoPlayer extends IntersectionObserverMixin(
             description: "Language of the media.",
             inputMethod: "textfield",
             validationType: "text",
+          },
+          {
+            property: "accentColor",
+            title: "Accent color",
+            description: "(deprecated) Select the accent color for the player.",
+            inputMethod: "colorpicker",
           },
         ],
       },
@@ -530,6 +542,20 @@ class VideoPlayer extends IntersectionObserverMixin(
         reflect: true,
         attribute: "allow-background-play",
       },
+      /**
+       * Start time for video
+       */
+      startTime: {
+        type: Number,
+        attribute: "start-time",
+      },
+      /**
+       * End time for video
+       */
+      endTime: {
+        type: Number,
+        attribute: "end-time",
+      },
     };
   }
   /**
@@ -564,6 +590,8 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.learningMode = false;
     this.linkable = false;
     this.sources = [];
+    this.startTime = null;
+    this.endTime = null;
     this.stickyCorner = "none";
     this.tracks = [];
     this.source = "";
@@ -888,6 +916,12 @@ class VideoPlayer extends IntersectionObserverMixin(
           source += "?parent=" + globalThis.location.hostname;
         }
       }
+      else if (type == "youtube" && !this.startTime) {
+        let timestamp = this.source.split("t=");
+        if (timestamp.length > 1) {
+          this.startTime = timestamp[1];
+        }
+      }
     }
     return source;
   }
@@ -949,6 +983,14 @@ class VideoPlayer extends IntersectionObserverMixin(
   }
   playEvent(e) {
     this.playing = e.detail.__playing;
+    // time stamp found
+    if (this.playing && this.startTime) {
+      if (!this.__hasPlayed) {
+        this.seek(this.startTime);
+        this.endTimeTest();
+        this.__hasPlayed = true;
+      }
+    }
   }
   pauseEvent(e) {
     this.playing = e.detail.__playing;
@@ -961,7 +1003,9 @@ class VideoPlayer extends IntersectionObserverMixin(
       if (
         propName === "source" &&
         this.sourceType &&
-        typeof oldValue !== typeof undefined
+        typeof oldValue !== typeof undefined &&
+        this.sourceData &&
+        this.sourceData[0]
       ) {
         let type = globalThis.MediaBehaviors.Video.getVideoType(
           this.sourceData[0].src,
@@ -1008,6 +1052,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         );
       }
     });
+
     // set source type based on available data
     if (
       this.sourceData &&
@@ -1031,8 +1076,20 @@ class VideoPlayer extends IntersectionObserverMixin(
   }
   restart() {
     this.pause();
-    this.seek(0);
+    if (this.startTime) {
+      this.seek(this.startTime);
+      this.endTimeTest();
+    }
+    else {
+      this.seek(0);
+    }
     this.play();
+  }
+  restartEvent() {
+    if (this.startTime) {
+      this.seek(this.startTime);
+      this.endTimeTest();
+    }
   }
   pause() {
     if (
@@ -1058,6 +1115,32 @@ class VideoPlayer extends IntersectionObserverMixin(
       setTimeout(() => {
         this.shadowRoot.querySelector("a11y-media-player").seek(parseInt(time));
       }, 0);
+    }
+  }
+  // end timer needs to be handled in a special way so we don't flood listeners
+  // or run forever
+  endTimeTest() {
+    if (this.endTime && !this.__endTimerTest) {
+      // we are playing and have an endtime so we need to listen
+      // to see when we should pause the video
+      // this helps ensure we are not even listener flooding
+      // or getting stuck in really bad loops that kill performance
+      // for this one feature
+      this.__endTimerTest = true;
+      setTimeout(() => {
+        this.__endTimeInterval = setInterval(() => {
+          if (parseInt(this.currentTime) >= parseInt(this.endTime)) {
+            this.pause();
+            this.__endTimerTest = false;
+            clearInterval(this.__endTimeInterval);
+          }
+          // if we stop playing we need to clear regardless
+          if (!this.playing) {
+            this.__endTimerTest = false;
+            clearInterval(this.__endTimeInterval);
+          }
+        }, 1000);
+      }, 1000);
     }
   }
   _visChange(e) {

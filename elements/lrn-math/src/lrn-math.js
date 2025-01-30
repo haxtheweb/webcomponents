@@ -281,7 +281,7 @@ class LrnMath extends HTMLElement {
           {
             property: "mathtext",
             title: "Math",
-            description: "Enter equation as MathML",
+            description: "Enter equation as LaTeX",
             inputMethod: "textarea",
           },
         ],

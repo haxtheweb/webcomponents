@@ -1,0 +1,54 @@
+
+<h3 data-original-level="H3" id="header-557d309a-d9b7-27b8-ce47-1328b3df50e8">TLDR; give me a command</h3>
+<code-sample copy-clipboard-button type="html" highlight-start="0" highlight-end="0"><template preserve-content="preserve-content">npm install --global @haxtheweb/create
+# now you can run
+hax webcomponent
+# or for interactive options
+hax start</template></code-sample>
+<p>That will get you started with our CLI tools. Keep reading if you are here for more than just building things quickly.</p>
+<p>HAX primary audience is to empower no tech and low tech implementations to empower as many voices as possible. That said, it is built on highly sophisticated tools that you can use in your own workflows to build web properties with or without HAX..</p>
+<h3 data-original-level="H3" id="header-418d5e82-8a19-86ec-2e72-2f5420aa16dd">I need a primer on web components</h3>
+<p>Here's a <a href="https://github.com/elmsln/wc-workshop" target="_blank">stand alone workshop our team built</a>
+ using Open WC as the foundation that can get you started into the world of Web components. It steps through decent tooling and gives you boilerplate code to fill in and enhance as well as publishing workflows to create static apps on vercel.</p>
+<h3 data-original-level="H3" id="header-00990a68-a25d-9fd2-7ec0-d87bb66a03f3">Codepen stand alone example</h3>
+<p>Through the magic of CDNs and our <a href="https://dev.to/btopro/uwc-part-3-the-magic-script-122a" target="_blank">"magic script"</a>
+ for dynamic element hydration, the <a href="https://codepen.io/btopro/pen/BabVdwq?editors=1010" target="_blank">following code pen is possible</a>
+ as a way of demonstrating HAX and it's elements stand alone. This <i>DOES NOT</i>
+ include the CMS capabilities you find discussed in this site as that is a different tag. What you are seeing here is <code ="true"="">h-a-x</code>
+ leveraged without a CMS but rest assured the same code powering this is embedded in <code ="true"="">haxcms-site-builder</code>
+ which builds the entire website you see now!</p>
+<h3 data-original-level="H3" id="header-5a9c030a-9514-d6ec-4468-e4c359fa74b7">I know npm, let's dig into technical docs</h3>
+<p>Our storybook for all elements we document and provide examples for can be found here: <a href="https://haxapi.vercel.app/" target="_blank">HAXapi visual component doc site</a>
+. Below is a code sample of how to implement the HTML in order to get HAX to load (it looks a little weird because of limitations with the system it can't be embedded in itself to avoid hax-ception!</p>
+<p><code ="true"="">&lt;h-a-x&gt;</code>
+</p>
+<p>Any HTML content you want, web components or otherwise. As Long as HAX understands the tags in between then they are editable.</p>
+<p><code ="true"="">&lt;/h-a-x&gt;</code>
+</p>
+<p><code ="true"="">&lt;script type="module" src="@haxtheweb/h-a-x/h-a-x.js"&gt;</code>
+</p>
+<p>NPM / Yarn can be used to obtain the packages associated with HAX. The following will not get you access to all the blocks we support (HAXcms compiles all of these for end users but developers would need to include them one at a time). The HAX visual component doc site has a lot of the blocks we produce and most of these work with HAX the editor is told to support them</p>
+<code-sample copy-clipboard-button type="yaml"><template preserve-content="preserve-content"># Install HAX primary asset
+npm i --save @haxtheweb/h-a-x
+</template></code-sample>
+<h3 data-original-level="H3" id="header-87889bb0-60ea-9b18-c8e3-61ccfff6d8b2">How do I add more blocks to HAX?</h3>
+<p>HAX by default supports HTML primitives and a few minor built in ones like a table editor, simple grids, and citations. To obtain the full set often shown in demonstrations you need to feed the hax editor a valid "app store" JSON based API.</p>
+<ul><li ="true"="">Learn more about <a href="https://haxtheweb.org/documentation-1/hax-development/hax-app-store" target="_blank">HAX AppStore spec</a>
+</li>
+<li ="true"="">Learn more about <a href="https://haxtheweb.org/documentation-1/hax-development/hax-schema" target="_blank">wiring your elements to support HAX</a>
+</li>
+<li ="true"="">See an <a href="https://github.com/elmsln/lrnwebcomponents/blob/master/elements/video-player/video-player.js#L128" target="_parent">implementation of HAX Schema</a>
+</li>
+<li ="true"="">Read the <a href="https://github.com/elmsln/lrnwebcomponents/blob/master/elements/hax-body-behaviors/lib/HAXWiring.js#L11" target="_blank">API for HAX Schema as documented in the class</a>
+ itself</li>
+</ul>
+<h3 data-original-level="H3" id="header-a43cab9c-ca7a-8e30-5db5-df71ad597134">How can I capture "save" events off HAX to store data?</h3>
+<p>HAXcms does this automatically but HAX 'save' event can be captured and then give you access to what HAX sees as HTML rather easily. The following example is scoped for SSR compatibility but works anywhere on window as well.</p>
+<code-sample copy-clipboard-button type="javascript" highlight-start="4" highlight-end="4"><template preserve-content="preserve-content">// listen for the event hax-save which fires when the user executes save
+globalThis.addEventListener("hax-save", async (e) =&gt; {
+  // ask the store what the current content is as HTML
+  const body = await globalThis.HaxStore.requestAvailability().activeHaxBody.haxToContent();
+  // do what you want with this at this point as it will be sanitized and reasonably formatted HTML
+});
+</template></code-sample>
+<p></p>

@@ -1,0 +1,32 @@
+
+<p>This question type allows the user to complete a sentance by answering in context
+  of other written material. Input fields are visualized directly in the paragraph
+  and they are be modified easily via a simple convention:</p>
+<ul>
+  <li>[answer] - single match only</li>
+  <li>[answer~or~other~optional~answer] - single written answer, but multiple possible
+    correct answers</li>
+  <li>[correct|incorrect|another] - Select field, first answer is correct but rest become
+    options; these are randomized to the user</li>
+</ul>
+<h2 data-original-level="H2" id="header-0d33768c-2be2-e390-4779-98396a0cfec7">Example</h2>
+<fill-in-the-blanks question="Complete this sentence" statement="[hax] is really [good~great] at authoring [content|kittens] !" max-attempts="0" typeof="oer:Assessment" resource="#7e3d48c1-4f3b-74aa-973b-6fbb3f880b8d" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " quiz-name="default">
+<input type="checkbox" value="undefined" correct="correct"><input type="checkbox" value="undefined" correct="correct"><input type="checkbox" value="undefined" correct="correct"></fill-in-the-blanks>
+<h2 data-original-level="H2" id="header-41726220-1835-a8da-11e7-8934119a585f">Developer</h2>
+<ul>
+  <li><a href="https://npmjs.com/package/@haxtheweb/fill-in-the-blanks" target="_blank" role="textbox">npm install @haxtheweb/fill-in-the-blanks --save</a>
+
+  </li>
+  <li><a href="https://github.com/haxtheweb/webcomponents/tree/master/elements/fill-in-the-blanks" target="_blank">Source on Github</a>
+
+  </li>
+  <li><a href="https://codepen.io/btopro/pen/GRbjXjR" target="_blank">Codepen example from CDN</a>
+
+  </li>
+</ul>
+<p></p>
+<code-sample copy-clipboard-button type="html">
+  
+<template preserve-content="preserve-content"><fill-in-the-blanks question="Complete the sentence" statement="[hax] is really [good~great] at authoring [content|kittens] !">
+  
+</fill-in-the-blanks></template></code-sample>
