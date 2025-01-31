@@ -2346,6 +2346,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             "polaris-theme",
             "polaris-invent-theme",
             "polaris-flex-theme",
+            "polaris-flex-sidebar",
             "ddd-brochure-theme",
             "collections-theme",
             "training-theme",
