@@ -253,8 +253,8 @@ class HaxAutoloader extends HAXElement(LitElement) {
       // try and make this have SOME fields, again, really guessing here
       let tmpProps = {};
       // relatively cross library
-      if (customElements.get(name)) {
-        tmpProps = customElements.get(name).properties;
+      if (globalThis.customElements.get(name)) {
+        tmpProps = globalThis.customElements.get(name).properties;
       }
       if (tmpProps) {
         for (let propName in tmpProps) {

@@ -26,15 +26,6 @@ class RichTextEditorHeadingPicker extends RichTextEditorPickerBehaviors(
     return "rich-text-editor-heading-picker";
   }
 
-  static get styles() {
-    return [...super.styles];
-  }
-
-  // render function for template
-  render() {
-    return super.render();
-  }
-
   constructor() {
     super();
     this.allowNull = true;

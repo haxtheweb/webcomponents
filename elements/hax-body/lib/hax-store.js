@@ -3063,6 +3063,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             configure: [],
             advanced: [],
           },
+          saveOptions: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag) ?
+            {
+              unsetAttributes: ["data-original-level"],
+            } : {},
           demoSchema: [
             {
               tag: tag,
@@ -3586,6 +3590,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // account for things that say NOT to save slot values
     var props = this.elementList[tag];
     var propvals = {};
+    // something is causing this to be written out, so we're going to remove it
+    node.removeAttribute("data-hax-ray");
+    node.removeAttribute("data-hax-layout");
+    node.removeAttribute("data-hax-grid");
+    node.removeAttribute("data-hax-active");
+    node.removeAttribute('="true"');
+    node.removeAttribute('contenteditable');
     // grab all of the original's attributes, and pass them to the replacement
     for (let j = 0, l = node.attributes.length; j < l; ++j) {
       var nodeName = node.attributes.item(j).nodeName;
@@ -3632,8 +3643,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // now look through properties
     let tmpProps;
     // relatively cross library
-    if (customElements.get(tag)) {
-      tmpProps = customElements.get(tag).properties;
+    if (globalThis.customElements.get(tag)) {
+      tmpProps = globalThis.customElements.get(tag).properties;
     }
     // weak fallback
     if (typeof tmpProps === typeof undefined) {
@@ -3793,7 +3804,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               content += await this.nodeToContent(slotnodes[j]);
             } else {
               slotnodes[j].removeAttribute("data-hax-ray");
-              slotnodes[j].contentEditable = false;
+              slotnodes[j].removeAttribute("data-hax-layout");
+              slotnodes[j].removeAttribute("data-hax-grid");
+              slotnodes[j].removeAttribute("data-hax-active");
+              slotnodes[j].removeAttribute('="true"');
+              slotnodes[j].removeAttribute('contenteditable');
+              slotnodes[j].removeAttribute('draggable');
+              slotnodes[j].removeAttribute('role');
               content += slotnodes[j].outerHTML;
             }
           }
@@ -3833,7 +3850,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     content = content.replace(/ data-hax-ray="(\s|.)*?"/gim, "");
     content = content.replace(/ data-hax-active="(\s|.)*?"/gim, "");
     content = content.replace(/ class=""/gim, "");
-    content = content.replace(/ contenteditable="(\s|.)*?"/gim, "");
+    content = content.replace(/ style=""/gim, "");
+    content = content.replace(/ contenteditable="(\s|.)*?"/gim, "")
     // wipe pure style spans which can pop up on copy paste if we didn't catch it
     // also ensure that we then remove purely visual chars laying around
     // this also helps clean up when we did a normal contenteditable paste
