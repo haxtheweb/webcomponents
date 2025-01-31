@@ -15,7 +15,7 @@
       "hax": "src/dynamic-import-registry-hax.json"
     }
   },
-  "version": "10.0.0",
+  "version": "10.0.2",
   "description": "maintain manage the registration and usage of dynamic imports",
   "repository": {
     "type": "git",
@@ -40,6 +40,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
+    "@custom-elements-manifest/analyzer": "^0.10.4",
     "@haxtheweb/deduping-fix": "^10.0.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
@@ -47,7 +48,6 @@
     "@web/dev-server": "0.4.6",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "9.1.2",
-    "@custom-elements-manifest/analyzer": "^0.10.4",
     "wct-browser-legacy": "1.0.2"
   },
   "private": false,
