@@ -37,8 +37,14 @@ class HaxorSlevin extends HAXCMSThemeParts(
       css`
         :host {
           display: block;
-          background-color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray));
-          color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
           transition:
             0.6s ease-in-out color,
             0.6s ease-in-out background-color;

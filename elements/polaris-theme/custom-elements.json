@@ -355,6 +355,389 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/polaris-flex-sidebar.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`psu-flex-sidebar`\n`PSU theme based on modern flex design system`",
+          "name": "PolarisFlexSidebar",
+          "members": [
+            {
+              "kind": "method",
+              "name": "renderSideBar",
+              "description": "Overload methods for customization of slots from the base class",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true,
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderBrandMark",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderHeaderSlot",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderFooterContactInformation",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderFooterSecondarySlot",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "renderFooterPrimarySlot",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "appStoreReady",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "siteModalClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Delay importing site-search until we click to open it directly",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "haxTrayAlignment",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "hax-tray-alignment",
+              "reflects": true,
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "backgroundColor",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"light-dark(var(--ddd-accent-6), var(--ddd-primary-4))\"",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "windowControllersLoaded",
+              "default": "new AbortController()",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "searchTerm",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "searchTerm",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "imageAlt",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "imageAlt",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "image",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "image",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "imageLink",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "imageLink",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "pageDescription",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "pageDescription",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "pageMedia",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "pageMedia",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "__disposer",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "siteDescription",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "attribute": "siteDescription",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "kind": "field",
+              "name": "pageTimestamp",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "attribute": "pageTimestamp",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            }
+          ],
+          "superclass": {
+            "name": "PolarisFlexTheme",
+            "module": "/lib/polaris-flex-theme"
+          },
+          "tagName": "psu-flex-base",
+          "customElement": true,
+          "attributes": [
+            {
+              "name": "hax-tray-alignment",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "haxTrayAlignment",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "name": "searchTerm",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "searchTerm",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "name": "siteDescription",
+              "type": {
+                "text": "string"
+              },
+              "fieldName": "siteDescription",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "name": "imageLink",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "imageLink",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "name": "image",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "image",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "name": "imageAlt",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "imageAlt",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "name": "pageDescription",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "pageDescription",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "name": "pageMedia",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "pageMedia",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
+              "name": "pageTimestamp",
+              "type": {
+                "text": "number"
+              },
+              "fieldName": "pageTimestamp",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PolarisFlexSidebar",
+            "module": "lib/polaris-flex-sidebar.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "PolarisFlexSidebar",
+          "declaration": {
+            "name": "PolarisFlexSidebar",
+            "module": "lib/polaris-flex-sidebar.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/polaris-flex-theme.js",
       "declarations": [
         {

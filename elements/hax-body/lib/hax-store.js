@@ -1310,9 +1310,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // only apply if we're editing, othewise don't listen
       this.editMode &&
       // ensure we're not in the surrounding UI elements that allow pasting
-      !["HAX-TRAY", "BODY", "SIMPLE-MODAL", "SUPER-DAEMON" ].includes(globalThis.document.activeElement.tagName) &&
+      !["HAX-TRAY", "BODY", "SIMPLE-MODAL", "SUPER-DAEMON"].includes(
+        globalThis.document.activeElement.tagName,
+      ) &&
       // special test for the table editor as it's a rare element that can accept text
-      this.activeNode && this.activeNode.tagName !== "EDITABLE-TABLE"
+      this.activeNode &&
+      this.activeNode.tagName !== "EDITABLE-TABLE"
     ) {
       // only perform this on a text element that is active
       // otherwise inject a P so we can paste into it
@@ -2327,15 +2330,14 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           recentGizmoList,
           "long",
         );
-      }
-      else {
+      } else {
         this.__writingMemory = false;
       }
     });
   }
   pushWithLimit(array, element, limit) {
     array.push(element);
-  
+
     if (array.length > limit) {
       array.shift(); // Remove the first element (oldest)
     }
@@ -3063,10 +3065,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             configure: [],
             advanced: [],
           },
-          saveOptions: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag) ?
-            {
-              unsetAttributes: ["data-original-level"],
-            } : {},
+          saveOptions: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)
+            ? {
+                unsetAttributes: ["data-original-level"],
+              }
+            : {},
           demoSchema: [
             {
               tag: tag,
@@ -3596,7 +3599,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     node.removeAttribute("data-hax-grid");
     node.removeAttribute("data-hax-active");
     node.removeAttribute('="true"');
-    node.removeAttribute('contenteditable');
+    node.removeAttribute("contenteditable");
     // grab all of the original's attributes, and pass them to the replacement
     for (let j = 0, l = node.attributes.length; j < l; ++j) {
       var nodeName = node.attributes.item(j).nodeName;
@@ -3798,7 +3801,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             // case for the web in general as it'll register as not a primative
             // even though it is...
             if (
-              (!this.HTMLPrimativeTest(slotnodes[j]) || (this.HTMLPrimativeTest(slotnodes[j]) && slotnodes[j].children.length > 0)) &&
+              (!this.HTMLPrimativeTest(slotnodes[j]) ||
+                (this.HTMLPrimativeTest(slotnodes[j]) &&
+                  slotnodes[j].children.length > 0)) &&
               slotnodes[j].tagName !== "TEMPLATE"
             ) {
               content += await this.nodeToContent(slotnodes[j]);
@@ -3808,9 +3813,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               slotnodes[j].removeAttribute("data-hax-grid");
               slotnodes[j].removeAttribute("data-hax-active");
               slotnodes[j].removeAttribute('="true"');
-              slotnodes[j].removeAttribute('contenteditable');
-              slotnodes[j].removeAttribute('draggable');
-              slotnodes[j].removeAttribute('role');
+              slotnodes[j].removeAttribute("contenteditable");
+              slotnodes[j].removeAttribute("draggable");
+              slotnodes[j].removeAttribute("role");
               content += slotnodes[j].outerHTML;
             }
           }
@@ -3851,7 +3856,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     content = content.replace(/ data-hax-active="(\s|.)*?"/gim, "");
     content = content.replace(/ class=""/gim, "");
     content = content.replace(/ style=""/gim, "");
-    content = content.replace(/ contenteditable="(\s|.)*?"/gim, "")
+    content = content.replace(/ contenteditable="(\s|.)*?"/gim, "");
     // wipe pure style spans which can pop up on copy paste if we didn't catch it
     // also ensure that we then remove purely visual chars laying around
     // this also helps clean up when we did a normal contenteditable paste

@@ -35,31 +35,39 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
 
         aside section {
           margin-bottom: var(--ddd-spacing-10);
-          padding-right: var(--ddd-spacing-10); 
+          padding-right: var(--ddd-spacing-10);
           padding-bottom: var(--ddd-spacing-10);
         }
 
         site-children-block {
-          --site-children-block-border-bottom: var(--ddd-theme-default-pughBlue) var(--ddd-border-size-xs) solid;
+          --site-children-block-border-bottom: var(--ddd-theme-default-pughBlue)
+            var(--ddd-border-size-xs) solid;
           --site-children-block-li-padding: var(--ddd-spacing-2) 0;
           --site-children-block-link-hover-color: var(--ddd-theme-default-link);
-          --site-children-block-active-border-left: var(--ddd-theme-default-link) var(--ddd-border-size-md) solid;
-          --site-children-block-link-active-color: var(--ddd-theme-default-link);
+          --site-children-block-active-border-left: var(
+              --ddd-theme-default-link
+            )
+            var(--ddd-border-size-md) solid;
+          --site-children-block-link-active-color: var(
+            --ddd-theme-default-link
+          );
           font-family: var(--ddd-font-navigation);
           --site-children-block-font-size: var(--ddd-font-size-4xs);
           --site-children-block-parent-active-padding: var(--ddd-spacing-2);
-          --site-children-block-parent-font-weight: var(--ddd-font-weight-medium);
+          --site-children-block-parent-font-weight: var(
+            --ddd-font-weight-medium
+          );
         }
 
         :host([responsive-size="xl"]) {
-          aside{
+          aside {
             width: 320px;
             margin-left: var(--ddd-spacing-15);
           }
         }
 
         :host([responsive-size="lg"]) {
-          aside{
+          aside {
             width: 280px;
           }
         }
@@ -68,7 +76,7 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
           .site-inner {
             flex-wrap: wrap;
           }
-          aside{
+          aside {
             order: 2;
             margin-left: auto;
             margin-right: auto;
@@ -78,7 +86,7 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
             --site-children-block-font-size: 18px;
           }
           aside section {
-            padding-right: 0; 
+            padding-right: 0;
           }
         }
 
@@ -86,7 +94,7 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
           .site-inner {
             flex-wrap: wrap;
           }
-          aside{
+          aside {
             order: 2;
             margin-left: auto;
             margin-right: auto;
@@ -96,7 +104,7 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
             --site-children-block-font-size: 18px;
           }
           aside section {
-            padding-right: 0; 
+            padding-right: 0;
           }
         }
       `,
@@ -104,25 +112,26 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
   }
 
   /**
-   * Overload methods for customization of slots from the base class 
+   * Overload methods for customization of slots from the base class
    */
 
   renderSideBar() {
     return html`
-    <aside
-          role="complementary"
-          aria-label="Primary Sidebar"
-          itemtype="http://schema.org/WPSideBar"
-          part="page-primary-sidebar">
-          <section>
-            <!-- <h4>Contents</h4> -->
-            <site-children-block
-              part="page-children-block"
-              dynamic-methodology="ancestor"
-            ></site-children-block>
-          </section>
-        </aside>
-    `
+      <aside
+        role="complementary"
+        aria-label="Primary Sidebar"
+        itemtype="http://schema.org/WPSideBar"
+        part="page-primary-sidebar"
+      >
+        <section>
+          <!-- <h4>Contents</h4> -->
+          <site-children-block
+            part="page-children-block"
+            dynamic-methodology="ancestor"
+          ></site-children-block>
+        </section>
+      </aside>
+    `;
   }
 
   /**
@@ -132,11 +141,10 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
   static get tag() {
     return "polaris-flex-sidebar";
   }
- 
+
   constructor() {
     super();
   }
 }
 customElements.define(PolarisFlexSidebar.tag, PolarisFlexSidebar);
 export { PolarisFlexSidebar };
-

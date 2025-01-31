@@ -74,7 +74,7 @@ class RichTextEditorHighlight extends LitElement {
     // I don't love span but it's the most neutral tag to use here
     // because the user attempted to save / copied a range that was highlighted
     // and it should not be in the output
-    let span = globalThis.document.createElement('span');
+    let span = globalThis.document.createElement("span");
     span.innerText = node.innerText;
     node.replaceWith(span);
     return span;

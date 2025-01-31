@@ -742,13 +742,12 @@ class PolarisFlexTheme extends LTIResizingMixin(
   }
 
   renderHeaderSlot() {
-    return html`              
-    <p class="site-title" itemprop="headline">
-    <site-title
-      .part="${this.editMode ? `edit-mode-active` : ``}"
-      ?disabled="${this.editMode}"
-      part="site-title"
-    ></site-title>
+    return html` <p class="site-title" itemprop="headline">
+      <site-title
+        .part="${this.editMode ? `edit-mode-active` : ``}"
+        ?disabled="${this.editMode}"
+        part="site-title"
+      ></site-title>
     </p>`;
   }
 

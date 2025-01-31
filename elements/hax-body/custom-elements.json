@@ -5572,6 +5572,21 @@
             },
             {
               "kind": "method",
+              "name": "pushWithLimit",
+              "parameters": [
+                {
+                  "name": "array"
+                },
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "limit"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_insertTextResult",
               "parameters": [
                 {
@@ -6246,7 +6261,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ caption: { title: \"Caption\", icon: \"av:call-to-action\", }, video: { title: \"Video\", icon: \"av:play-circle-filled\", }, audio: { title: \"Audio\", icon: \"image:music-note\", }, section: { title: \"Section\", icon: \"image:crop-landscape\", }, dl: { title: \"Data list\", icon: \"editor:format-list-bulleted\", }, dt: { title: \"Data term\", icon: \"editor:format-list-bulleted\", }, dd: { title: \"Data definition\", icon: \"editor:format-list-bulleted\", }, ol: { title: \"Numbered list\", icon: \"editor:format-list-numbered\", }, ul: { title: \"Bulleted list\", icon: \"editor:format-list-bulleted\", }, li: { title: \"List item\", icon: \"editor:format-list-bulleted\", }, h1: { title: \"Heading\", icon: \"hax:h1\", }, h2: { title: \"Heading\", icon: \"hax:h2\", tags: [\"Text\", \"h2\", \"html\", \"text\", \"heading\", \"header\"], }, h3: { title: \"Heading\", icon: \"hax:h3\", }, h4: { title: \"Heading\", icon: \"hax:h4\", }, h5: { title: \"Heading\", icon: \"hax:h5\", }, h6: { title: \"Heading\", icon: \"hax:h6\", }, strike: { title: \"Cross out\", icon: \"editor:format-strikethrough\", }, u: { title: \"Underline\", icon: \"editor:format-underlined\", }, sub: { title: \"Subscript\", icon: \"mdextra:subscript\", }, sup: { title: \"Superscript\", icon: \"mdextra:superscript\", }, div: { title: \"DIV\", icon: \"image:crop-landscape\", }, span: { title: \"SPAN\", icon: \"editor:short-text\", handles: [ { type: \"inline\", text: \"text\", }, ], }, i: { title: \"Italic\", icon: \"editor:format-italic\", }, em: { title: \"Emphasis\", icon: \"editor:format-italic\", }, strong: { title: \"Bold\", icon: \"editor:format-bold\", }, b: { title: \"Bold\", icon: \"editor:format-bold\", }, blockquote: { title: \"Block quote\", icon: \"editor:format-quote\", }, code: { title: \"Code\", icon: \"icons:code\", }, embed: { title: \"Embedded object\", icon: \"icons:fullscreen\", }, }"
+              "default": "{ caption: { title: \"Caption\", icon: \"av:call-to-action\", }, video: { title: \"Video\", icon: \"av:play-circle-filled\", }, audio: { title: \"Audio\", icon: \"image:music-note\", }, section: { title: \"Section\", icon: \"image:crop-landscape\", }, dl: { title: \"Data list\", icon: \"editor:format-list-bulleted\", }, dt: { title: \"Data term\", icon: \"editor:format-list-bulleted\", }, dd: { title: \"Data definition\", icon: \"editor:format-list-bulleted\", }, ol: { title: \"Numbered list\", icon: \"editor:format-list-numbered\", }, ul: { title: \"Bulleted list\", icon: \"editor:format-list-bulleted\", }, li: { title: \"List item\", icon: \"editor:format-list-bulleted\", }, h1: { title: \"Heading\", icon: \"hax:h1\", }, h2: { title: \"Heading\", icon: \"hax:h2\", tags: [\"Text\", \"h2\", \"html\", \"text\", \"heading\", \"header\"], }, h3: { title: \"Heading\", icon: \"hax:h3\", }, h4: { title: \"Heading\", icon: \"hax:h4\", }, h5: { title: \"Heading\", icon: \"hax:h5\", }, h6: { title: \"Heading\", icon: \"hax:h6\", }, strike: { title: \"Cross out\", icon: \"editor:format-strikethrough\", }, u: { title: \"Underline\", icon: \"editor:format-underlined\", }, sub: { title: \"Subscript\", icon: \"mdextra:subscript\", }, sup: { title: \"Superscript\", icon: \"mdextra:superscript\", }, div: { title: \"DIV\", icon: \"image:crop-landscape\", }, span: { title: \"SPAN\", icon: \"editor:short-text\", handles: [ { type: \"inline\", text: \"text\", }, ], }, i: { title: \"Italic\", icon: \"editor:format-italic\", }, em: { title: \"Emphasis\", icon: \"editor:format-italic\", }, strong: { title: \"Bold\", icon: \"editor:format-bold\", }, b: { title: \"Bold\", icon: \"editor:format-bold\", }, blockquote: { title: \"Block quote\", icon: \"editor:format-quote\", }, code: { title: \"Code\", icon: \"icons:code\", }, pre: { title: \"Preformatted\", icon: \"icons:code\", }, time: { title: \"Time\", icon: \"icons:code\", }, cite: { title: \"Citation\", icon: \"icons:code\", }, embed: { title: \"Embedded object\", icon: \"icons:fullscreen\", }, picture: { title: \"Picture\", icon: \"image:image\", }, }"
             },
             {
               "kind": "field",

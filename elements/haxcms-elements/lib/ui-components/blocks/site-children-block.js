@@ -164,13 +164,19 @@ class SiteChildrenBlock extends LitElement {
         .top-level button {
           font-weight: var(--site-children-block-parent-font-weight);
           font-size: calc(var(--site-children-block-font-size, inherit) + 2px);
-          text-transform: var(--site-children-block-parent-text-transform, uppercase);
+          text-transform: var(
+            --site-children-block-parent-text-transform,
+            uppercase
+          );
         }
         .top-level .active button {
           font-weight: 700;
         }
         .sub-level button {
-          text-transform: var(--site-children-block-child-text-transform, capitalize);
+          text-transform: var(
+            --site-children-block-child-text-transform,
+            capitalize
+          );
         }
 
         .spacing .indent {
@@ -230,14 +236,20 @@ class SiteChildrenBlock extends LitElement {
             item.metadata.published === false
               ? ``
               : html`
-                  <li class="spacing ${item.indent === 0 ? "top-level" : "sub-level"}">
+                  <li
+                    class="spacing ${item.indent === 0
+                      ? "top-level"
+                      : "sub-level"}"
+                  >
                     <a
                       class="link ${item.id === this.activeId ? "active" : ""}"
                       tabindex="-1"
                       href="${item.slug}"
                     >
                       <button>
-                        <div class="indent indent-${item.indent}">${item.title}</div>
+                        <div class="indent indent-${item.indent}">
+                          ${item.title}
+                        </div>
                       </button>
                     </a>
                   </li>

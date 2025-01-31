@@ -36,7 +36,7 @@
                   "name": "commands"
                 }
               ],
-              "description": "Just rout add commands call to the right place"
+              "description": "Just route add commands call to the right place"
             },
             {
               "kind": "method",

@@ -188,12 +188,26 @@ class MediaImage extends DDD {
             @click="${this._handleClick}"
           ></media-image-image>`}
       <media-image-citation>
-        <slot class="citation" name="citation">${this.citation && this.asMd ? html`<md-block style="--ddd-spacing-6:0px;" markdown="${this.citation}"></md-block>` : html`${this.citation}`}</slot>
+        <slot class="citation" name="citation"
+          >${this.citation && this.asMd
+            ? html`<md-block
+                style="--ddd-spacing-6:0px;"
+                markdown="${this.citation}"
+              ></md-block>`
+            : html`${this.citation}`}</slot
+        >
       </media-image-citation>
       ${this._hasCaption
         ? html`
             <media-image-caption tabindex="0">
-              <slot name="caption">${this.caption && this.asMd ? html`<md-block style="--ddd-spacing-6:0px;" markdown="${this.caption}"></md-block>` : html`${this.caption}`}</slot>
+              <slot name="caption"
+                >${this.caption && this.asMd
+                  ? html`<md-block
+                      style="--ddd-spacing-6:0px;"
+                      markdown="${this.caption}"
+                    ></md-block>`
+                  : html`${this.caption}`}</slot
+              >
             </media-image-caption>
           `
         : ``}
@@ -501,8 +515,8 @@ class MediaImage extends DDD {
             description: "Render the caption and citation as markdown.",
             inputMethod: "boolean",
             required: false,
-          }
-        ]
+          },
+        ],
       },
       demoSchema: [
         {

@@ -261,6 +261,10 @@
             },
             {
               "kind": "method",
+              "name": "restartEvent"
+            },
+            {
+              "kind": "method",
               "name": "pause"
             },
             {
@@ -275,6 +279,10 @@
                   "name": "time"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "endTimeTest"
             },
             {
               "kind": "method",
@@ -455,6 +463,28 @@
               "description": "Array of multiple video sources",
               "default": "[]",
               "attribute": "sources"
+            },
+            {
+              "kind": "field",
+              "name": "startTime",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "Start time for video",
+              "default": "null",
+              "attribute": "start-time"
+            },
+            {
+              "kind": "field",
+              "name": "endTime",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "description": "End time for video",
+              "default": "null",
+              "attribute": "end-time"
             },
             {
               "kind": "field",
@@ -796,6 +826,24 @@
               "description": "Option to allow playing while not active tab",
               "default": "false",
               "fieldName": "allowBackgroundPlay"
+            },
+            {
+              "name": "start-time",
+              "type": {
+                "text": "null"
+              },
+              "description": "Start time for video",
+              "default": "null",
+              "fieldName": "startTime"
+            },
+            {
+              "name": "end-time",
+              "type": {
+                "text": "null"
+              },
+              "description": "End time for video",
+              "default": "null",
+              "fieldName": "endTime"
             }
           ],
           "mixins": [

@@ -172,6 +172,16 @@
             },
             {
               "kind": "field",
+              "name": "asMd",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "as-md"
+            },
+            {
+              "kind": "field",
               "name": "size",
               "privacy": "public",
               "type": {
@@ -256,6 +266,14 @@
               },
               "default": "null",
               "fieldName": "link"
+            },
+            {
+              "name": "as-md",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "asMd"
             },
             {
               "name": "__figureLabel",

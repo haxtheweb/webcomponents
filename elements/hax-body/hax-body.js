@@ -681,7 +681,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         sticky
         data-node-type="${!this.activeNode
           ? ""
-          : this.viewSourceToggle && this.activeNode && this.activeNode.parentNode && this.activeNode.parentNode.tagName
+          : this.viewSourceToggle &&
+              this.activeNode &&
+              this.activeNode.parentNode &&
+              this.activeNode.parentNode.tagName
             ? this.activeNode.parentNode.tagName
             : this.activeNode.tagName}"
         .target="${!this.activeNode
@@ -2667,8 +2670,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         HAXStore.isTextElement(containerNode.parentNode) &&
         containerNode.parentNode.getAttribute &&
         (containerNode.parentNode.getAttribute("slot") == "" ||
-          containerNode.parentNode.getAttribute("slot") == null
-        )
+          containerNode.parentNode.getAttribute("slot") == null)
       ) {
         containerNode = target.parentNode;
       }
@@ -2888,7 +2890,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // hide menus when state changes
     if (newValue == false) {
       if (globalThis.document.querySelector("rich-text-editor-prompt")) {
-        globalThis.document.querySelector("rich-text-editor-prompt").close()        
+        globalThis.document.querySelector("rich-text-editor-prompt").close();
       }
       // this effectively removes the editing element
       unwrap(HAXStore.activeEditingElement);

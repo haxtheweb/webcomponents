@@ -263,7 +263,8 @@ class VideoPlayer extends IntersectionObserverMixin(
           {
             property: "endTime",
             title: "End time",
-            description: "End video at a specific time (seconds), requires a start time.",
+            description:
+              "End video at a specific time (seconds), requires a start time.",
             inputMethod: "number",
           },
           {
@@ -915,8 +916,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         } else {
           source += "?parent=" + globalThis.location.hostname;
         }
-      }
-      else if (type == "youtube" && !this.startTime) {
+      } else if (type == "youtube" && !this.startTime) {
         let timestamp = this.source.split("t=");
         if (timestamp.length > 1) {
           this.startTime = timestamp[1];
@@ -1079,8 +1079,7 @@ class VideoPlayer extends IntersectionObserverMixin(
     if (this.startTime) {
       this.seek(this.startTime);
       this.endTimeTest();
-    }
-    else {
+    } else {
       this.seek(0);
     }
     this.play();

@@ -885,9 +885,15 @@ export class QuestionElement extends SchemaBehaviors(
               .value="${answer ? answer.userGuess : ""}"
               @value-changed="${this.checkedEvent}"
               label="${answer && answer.label ? answer.label : ""}"
-            >${answer.image
-                ? html`<img src="${answer.image}" alt="${answer.alt}" slot="label-prefix" part="image" />`
-                : nothing}</simple-fields-field>
+              >${answer.image
+                ? html`<img
+                    src="${answer.image}"
+                    alt="${answer.alt}"
+                    slot="label-prefix"
+                    part="image"
+                  />`
+                : nothing}</simple-fields-field
+            >
           `,
         )}
       </fieldset>
