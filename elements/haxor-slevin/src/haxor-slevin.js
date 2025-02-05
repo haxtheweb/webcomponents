@@ -666,8 +666,13 @@ class HaxorSlevin extends HAXCMSThemeParts(
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "editMode") {
+      if (propName === "editMode") {
         this.stateClass = this._getStateClass(this[propName]);
+      }
+      if (propName === "selectedPage" && this.selectedPage === 0) {
+        setTimeout(() => {
+          store.activeId = null;          
+        }, 0);
       }
     });
   }
