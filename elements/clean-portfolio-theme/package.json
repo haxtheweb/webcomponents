@@ -28,7 +28,7 @@
     },
     "dependencies": {
       "lit": "^3.2.1",
-      "@haxtheweb/d-d-d": "^10.0.1",
+      "@haxtheweb/d-d-d": "^10.0.2",
       "@haxtheweb/i18n-manager": "^10.0.0"
     },
     "devDependencies": {
