@@ -86,8 +86,8 @@
       },
       {
         "property": "image",
-        "title": "Image",
-        "description": "Image that represents the page, used in some themes and views.",
+        "title": "Media",
+        "description": "Media that represents the page, used in some themes and views.",
         "inputMethod": "haxupload",
         "noCamera": true,
         "noVoiceRecord": true
