@@ -658,7 +658,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
     // haxor is a bit odd bc it has this anti-pattern currently
     setTimeout(() => {
       let location = toJS(store.location);
-      this._noticeLocationChange(location);
+      this._noticeLocationChange(location, true);
     }, 1000);
   }
   updated(changedProperties) {
@@ -671,7 +671,12 @@ class HaxorSlevin extends HAXCMSThemeParts(
       }
       if (propName === "selectedPage" && this.selectedPage === 0) {
         setTimeout(() => {
-          store.activeId = null;          
+          store.pageAllowed = false;
+        }, 0);
+      }
+      else if (propName === "selectedPage" && this.selectedPage === 1) {
+        setTimeout(() => {
+          store.pageAllowed = true;
         }, 0);
       }
     });
@@ -679,11 +684,16 @@ class HaxorSlevin extends HAXCMSThemeParts(
   /**
    * Listen for router location changes and select page to match
    */
-  _noticeLocationChange(location) {
+  _noticeLocationChange(location, firstRun = false) {
     if (!location || typeof location.route === "undefined") return;
     const name = location.route.name;
     if (name === "home" || name === "404") {
       this.selectedPage = 0;
+      if (firstRun) {
+        setTimeout(() => {
+          store.pageAllowed = false;
+        }, 1000);
+      }
     } else {
       globalThis.scrollTo({
         top: 0,
