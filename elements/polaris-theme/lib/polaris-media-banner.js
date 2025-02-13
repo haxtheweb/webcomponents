@@ -23,7 +23,7 @@ export class PolarisMediaBanner extends LitElement {
     return {
       source: { type: String },
       fileExt: { type: String },
-      mediaType: { type: String, relfect: true },
+      mediaType: { type: String, reflect: true, attribute: "media-type" },
       playing: { type: Boolean, reflect: true },
       canPlay: { type: Boolean },
       icon: { type: String },
