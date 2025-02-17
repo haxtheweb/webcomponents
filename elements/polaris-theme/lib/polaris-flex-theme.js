@@ -16,8 +16,8 @@ import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/Prin
 import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js";
@@ -26,7 +26,6 @@ import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HAXCMSToastInstance } from "@haxtheweb/haxcms-elements/lib/core/haxcms-toast.js";
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
-import "@haxtheweb/polaris-theme/lib/polaris-media-banner.js";
 
 /**
  * `polaris-flex-theme`
@@ -129,14 +128,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
           color: #1173ca;
         }
 
-        site-active-title h1 {
-          font-size: var(--ddd-font-size-l);
-          padding: 0;
-          margin: 0 0 var(--ddd-spacing-5) 0;
-          text-align: start;
-          line-height: normal;
-        }
-
         header .wrap {
           padding: 0;
         }
@@ -162,7 +153,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
           padding: 0 0 var(--ddd-spacing-12);
         }
 
-        article > *:not(polaris-media-banner) {
+        article > *:not(site-active-media-banner) {
           padding: 0 var(--polaris-standard-padding);
         }
 
@@ -277,7 +268,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
           color: var(--polaris-nav-color);
         }
 
-        polaris-media-banner {
+        site-active-media-banner {
           margin: 0;
         }
 
@@ -452,9 +443,9 @@ class PolarisFlexTheme extends LTIResizingMixin(
             display: inline;
           }
 
-          polaris-media-banner {
-            --polaris-banner-height: 400px;
-            --polaris-banner-max-width: 768px;
+          site-active-media-banner {
+            --media-banner-height: 400px;
+            --media-banner-max-width: 768px;
           }
 
           .footer-secondary .wrap {
@@ -538,9 +529,9 @@ class PolarisFlexTheme extends LTIResizingMixin(
           #haxcmsmobilemenubutton {
             display: inline;
           }
-          polaris-media-banner {
-            --polaris-banner-height: 360px;
-            --polaris-banner-max-width: 360px;
+          site-active-media-banner {
+            --media-banner-height: 360px;
+            --media-banner-max-width: 360px;
           }
           .footer-secondary .wrap {
             padding: 0;
@@ -674,10 +665,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
           margin: 2px 6px 0 6px;
         }
         @media only screen and (max-width: 1023px) {
-          site-active-title h1 {
-            font-size: var(--ddd-font-size-xs);
-            margin: 0 0 var(--ddd-spacing-2) 0;
-          }
           scroll-button {
             --simple-icon-width: 20px;
             --simple-icon-height: 20px;
@@ -798,10 +785,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
 
             ${this.HAXCMSFlexMenu()}
           </div>
-          <polaris-media-banner source="${this.pageMedia}">
-            <site-active-title part="page-title"></site-active-title>
-            ${this.pageDescription}
-          </polaris-media-banner>
+          <site-active-media-banner></site-active-media-banner>
         </div>
       </header>
       <div class="content site-inner">
@@ -877,12 +861,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
         type: String,
       },
       imageAlt: {
-        type: String,
-      },
-      pageDescription: {
-        type: String,
-      },
-      pageMedia: {
         type: String,
       },
       pageTimestamp: {
@@ -969,8 +947,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
     this.imageAlt = "";
     this.image = "";
     this.imageLink = "";
-    this.pageDescription = "";
-    this.pageMedia = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
 
     autorun((reaction) => {
@@ -990,24 +966,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
       this.activeManifestIndex = toJS(store.activeManifestIndex);
       this.__disposer.push(reaction);
     });
-    autorun((reaction) => {
-      let activeItem = toJS(store.activeItem);
-      if (activeItem && activeItem.description) {
-        this.pageDescription = activeItem.description;
-      }
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      let activeItem = toJS(store.activeItem);
-      let activeID = toJS(store.activeId);
-      if (activeItem && activeItem.metadata && activeItem.metadata.image) {
-        this.pageMedia = activeItem.metadata.image;
-      } else {
-        this.pageMedia = "";
-      }
-      this.__disposer.push(reaction);
-    });
-
     autorun((reaction) => {
       if (
         store.activeItem &&
