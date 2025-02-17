@@ -16,7 +16,6 @@ import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/Prin
 import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tags.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
@@ -128,14 +127,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
         .entry-content a {
           color: #1173ca;
         }
-
-        /* site-active-title h1 {
-          font-size: var(--ddd-font-size-l);
-          padding: 0;
-          margin: 0 0 var(--ddd-spacing-5) 0;
-          text-align: start;
-          line-height: normal;
-        } */
 
         header .wrap {
           padding: 0;
@@ -674,10 +665,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
           margin: 2px 6px 0 6px;
         }
         @media only screen and (max-width: 1023px) {
-          /* site-active-title h1 {
-            font-size: var(--ddd-font-size-xs);
-            margin: 0 0 var(--ddd-spacing-2) 0;
-          } */
           scroll-button {
             --simple-icon-width: 20px;
             --simple-icon-height: 20px;
