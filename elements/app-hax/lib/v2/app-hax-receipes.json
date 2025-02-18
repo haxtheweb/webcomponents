@@ -7,7 +7,7 @@
       "recipe": "recipes/portfolio/portfolio.recipe",
       "theme": {
         "element": "clean-portfolio",
-        "path": "@haxtheweb/clean-portfolio/clean-portfolio.js",
+        "path": "@haxtheweb/clean-portfolio/clean-portfolio.js"
       },
       "author": "haxtheweb",
       "image": "@haxtheweb/clean-portfolio/assets/screenshot.jpg",
