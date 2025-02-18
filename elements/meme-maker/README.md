@@ -1,16 +1,11 @@
 # &lt;meme-maker&gt;
 
-Maker
-> Automated conversion of meme-maker/
-
 ## Usage
 To use this web component in your project you can utilize one of the following styles of syntax.
 
 ```js
 /* In an existing module / web component */
-import '@haxtheweb/meme-maker.js';
-
-
+import '@haxtheweb/meme-maker/meme-maker.js';
 
 ```
 
