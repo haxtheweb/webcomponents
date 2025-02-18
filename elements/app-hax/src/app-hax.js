@@ -3,17 +3,18 @@ import { toJS, autorun } from "mobx";
 import { localStorageSet, localStorageGet } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
-import { store } from "./lib/v1/AppHaxStore.js";
+import { store } from "./lib/v2/AppHaxStore.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import { AppHaxAPI } from "./lib/v1/AppHaxBackendAPI.js";
+import { AppHaxAPI } from "./lib/v2/AppHaxBackendAPI.js";
 import { SimpleTourManager } from "@haxtheweb/simple-popover/lib/simple-tour.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
-import "./lib/v1/AppHaxRouter.js";
-import "./lib/v1/app-hax-label.js";
-import "./lib/v1/app-hax-top-bar.js";
+import "./lib/v2/AppHaxRouter.js";
+import "./lib/v2/app-hax-label.js";
+import "./lib/v2/app-hax-top-bar.js";
 import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
+import "./lib/v2/app-hax-use-case.js";
 
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
@@ -716,7 +717,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
   // eslint-disable-next-line class-methods-use-this
   login() {
-    import("./lib/v1/app-hax-site-login.js").then(() => {
+    import("./lib/2/app-hax-site-login.js").then(() => {
       const p = globalThis.document.createElement("app-hax-site-login");
       if (this.querySelector('[slot="externalproviders"]')) {
         const cloneSlot = this.querySelector(
@@ -759,7 +760,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       css`
         :host {
           display: block;
-          --app-hax-background-color-active: var(--app-hax-accent-color);
         }
         #home {
           display: inline-flex;
@@ -984,6 +984,23 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             border: var(--simple-colors-default-theme-grey-12) 2px solid;
           }
         }
+        .filter {
+            display:flex;
+            background-color: white;
+            flex-direction: column;
+            margin: var(--ddd-spacing-2);
+            padding: var(--ddd-spacing-4);
+            background-color: var(--ddd-theme-default-white);
+            border-radius: var(--ddd-radius-xs);
+            width: 300px;
+          }
+          .filterButtons {
+            text-align: start;
+            display: flex;
+            flex-direction: column;
+            gap: var(--ddd-spacing-2);
+            max-width: 150px;
+          }
         @media (prefers-reduced-motion: reduce) {
           app-hax-label {
             animation: none;
@@ -1000,6 +1017,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           .start-journey {
             padding-top: 0;
           }
+
+          //added code 
+          
+
           app-hax-site-button {
             --app-hax-site-button-font-size: 12px;
           }
@@ -1048,15 +1069,15 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (store.AppHaxAPI && this.basePath) {
       store.AppHaxAPI.basePath = this.basePath;
     }
-    import("./lib/v1/app-hax-steps.js");
-    import("./lib/v1/app-hax-site-button.js");
+    import("./lib/v2/app-hax-steps.js");
+    import("./lib/v2/app-hax-site-button.js");
     import("wired-elements/lib/wired-button.js");
-    import("./lib/v1/app-hax-toast.js");
-    import("./lib/v1/app-hax-wired-toggle.js");
-    import("./lib/v1/app-hax-search-bar.js");
-    import("./lib/v1/app-hax-search-results.js");
-    import("./lib/v1/app-hax-user-menu.js");
-    import("./lib/v1/app-hax-user-menu-button.js");
+    import("./lib/v2/app-hax-toast.js");
+    import("./lib/v2/app-hax-wired-toggle.js");
+    import("./lib/v2/app-hax-search-bar.js");
+    import("./lib/v2/app-hax-search-results.js");
+    import("./lib/v2/app-hax-user-menu.js");
+    import("./lib/v2/app-hax-user-menu-button.js");
     this.dispatchEvent(
       new CustomEvent("app-hax-loaded", {
         composed: true,
@@ -1321,20 +1342,30 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     return template;
   }
 
+  //EDIT STARTING FROM HERE TO TEST CODE
   templateHome() {
     return html`<div class="start-journey">
-        <a
-          href="createSite-step-1"
-          @click="${this.startJourney}"
-          tabindex="-1"
-          title="${this.t.startNewJourney}"
-        >
-          <app-hax-site-button
-            label="&gt; ${this.t.startNewJourney}"
-          ></app-hax-site-button>
-        </a>
+      <div class="filter">
+      <app-hax-search-bar></app-hax-search-bar>
+      <div class="filterButtons">
+        <label><input type="checkbox" data-id="portfolio" @change=${this.updateFilterState}>Portfolio</label>
+        <label><input type="checkbox" data-id="blog" @change=${this.updateFilterState}>Blog</label>
+        <label><input type="checkbox" data-id="research" @change=${this.updateFilterState}>Research Site</label>
+        <label><input type="checkbox" data-id="resume" @change=${this.updateFilterState}>Resume</label>
+        <label><input type="checkbox" data-id="course" @change=${this.updateFilterState}>Course</label>
       </div>
-      <app-hax-search-results></app-hax-search-results>`;
+      </div>
+      <div class="testing">
+        <app-hax-use-case
+          title="Test"
+          description="This is a test use case"
+          source="https://tse2.mm.bing.net/th?id=OIP.wJ7ApaHySIvW5828GiIKTQHaF2&pid=Api"
+          demoLink="https://www.aclu.org/know-your-rights"
+        >
+        </app-hax-use-case>
+      </div>
+      <app-hax-search-results></app-hax-search-results>
+      </div>`
   }
 
   // eslint-disable-next-line class-methods-use-this

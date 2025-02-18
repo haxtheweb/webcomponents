@@ -14,7 +14,6 @@ import "./lib/v2/AppHaxRouter.js";
 import "./lib/v2/app-hax-label.js";
 import "./lib/v2/app-hax-top-bar.js";
 import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
-import "./lib/v2/app-hax-use-case.js";
 
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
@@ -760,6 +759,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       css`
         :host {
           display: block;
+          --app-hax-background-color-active: var(--app-hax-accent-color);
         }
         #home {
           display: inline-flex;
@@ -984,23 +984,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             border: var(--simple-colors-default-theme-grey-12) 2px solid;
           }
         }
-        .filter {
-            display:flex;
-            background-color: white;
-            flex-direction: column;
-            margin: var(--ddd-spacing-2);
-            padding: var(--ddd-spacing-4);
-            background-color: var(--ddd-theme-default-white);
-            border-radius: var(--ddd-radius-xs);
-            width: 300px;
-          }
-          .filterButtons {
-            text-align: start;
-            display: flex;
-            flex-direction: column;
-            gap: var(--ddd-spacing-2);
-            max-width: 150px;
-          }
         @media (prefers-reduced-motion: reduce) {
           app-hax-label {
             animation: none;
@@ -1017,9 +1000,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           .start-journey {
             padding-top: 0;
           }
-
-          //added code 
-          
 
           app-hax-site-button {
             --app-hax-site-button-font-size: 12px;
@@ -1341,31 +1321,21 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     return template;
   }
-
-  //EDIT STARTING FROM HERE TO TEST CODE
+  
   templateHome() {
     return html`<div class="start-journey">
-      <div class="filter">
-      <app-hax-search-bar></app-hax-search-bar>
-      <div class="filterButtons">
-        <label><input type="checkbox" data-id="portfolio" @change=${this.updateFilterState}>Portfolio</label>
-        <label><input type="checkbox" data-id="blog" @change=${this.updateFilterState}>Blog</label>
-        <label><input type="checkbox" data-id="research" @change=${this.updateFilterState}>Research Site</label>
-        <label><input type="checkbox" data-id="resume" @change=${this.updateFilterState}>Resume</label>
-        <label><input type="checkbox" data-id="course" @change=${this.updateFilterState}>Course</label>
-      </div>
-      </div>
-      <div class="testing">
-        <app-hax-use-case
-          title="Test"
-          description="This is a test use case"
-          source="https://tse2.mm.bing.net/th?id=OIP.wJ7ApaHySIvW5828GiIKTQHaF2&pid=Api"
-          demoLink="https://www.aclu.org/know-your-rights"
+        <a
+          href="createSite-step-1"
+          @click="${this.startJourney}"
+          tabindex="-1"
+          title="${this.t.startNewJourney}"
         >
-        </app-hax-use-case>
+          <app-hax-site-button
+            label="&gt; ${this.t.startNewJourney}"
+          ></app-hax-site-button>
+        </a>
       </div>
-      <app-hax-search-results></app-hax-search-results>
-      </div>`
+      <app-hax-search-results></app-hax-search-results>`;
   }
 
   // eslint-disable-next-line class-methods-use-this
