@@ -37,8 +37,14 @@ class HaxorSlevin extends HAXCMSThemeParts(
       css`
         :host {
           display: block;
-          background-color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray));
-          color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
           transition:
             0.6s ease-in-out color,
             0.6s ease-in-out background-color;
@@ -652,7 +658,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
     // haxor is a bit odd bc it has this anti-pattern currently
     setTimeout(() => {
       let location = toJS(store.location);
-      this._noticeLocationChange(location);
+      this._noticeLocationChange(location, true);
     }, 1000);
   }
   updated(changedProperties) {
@@ -660,19 +666,34 @@ class HaxorSlevin extends HAXCMSThemeParts(
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName == "editMode") {
+      if (propName === "editMode") {
         this.stateClass = this._getStateClass(this[propName]);
+      }
+      if (propName === "selectedPage" && this.selectedPage === 0) {
+        setTimeout(() => {
+          store.pageAllowed = false;
+        }, 0);
+      }
+      else if (propName === "selectedPage" && this.selectedPage === 1) {
+        setTimeout(() => {
+          store.pageAllowed = true;
+        }, 0);
       }
     });
   }
   /**
    * Listen for router location changes and select page to match
    */
-  _noticeLocationChange(location) {
+  _noticeLocationChange(location, firstRun = false) {
     if (!location || typeof location.route === "undefined") return;
     const name = location.route.name;
     if (name === "home" || name === "404") {
       this.selectedPage = 0;
+      if (firstRun) {
+        setTimeout(() => {
+          store.pageAllowed = false;
+        }, 1000);
+      }
     } else {
       globalThis.scrollTo({
         top: 0,

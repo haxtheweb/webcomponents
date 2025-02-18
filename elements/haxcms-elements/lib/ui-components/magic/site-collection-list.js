@@ -35,9 +35,7 @@ export class SiteCollectionList extends CollectionList {
         .conditions="${this.conditions}"
         limit="${this.limit}"
       ></site-query>
-      <collection-list
-        ?lock-items="${this.editMode}"
-      >
+      <collection-list ?lock-items="${this.editMode}">
         ${this.results.map(
           (item) => html`
             <collection-item
@@ -129,7 +127,7 @@ export class SiteCollectionList extends CollectionList {
         }
         if (this.tags !== "" && this.tags !== null) {
           conditions["metadata.tags"] = {
-            value: this.tags.split(','),
+            value: this.tags.split(","),
             operator: "includes",
           };
         }

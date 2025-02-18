@@ -54,7 +54,7 @@
                   }
                 }
               ],
-              "description": "Converts the data to a blob then uses navigator to save blob if it’s available, otherwise\ncreates an <a> with [download] attribute then simulates a click."
+              "description": "Converts the data to a blob, then uses navigator to save blob if it’s available, otherwise\ncreates an <a> with [download] attribute then simulates a click."
             },
             {
               "kind": "method",

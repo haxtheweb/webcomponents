@@ -79,6 +79,15 @@
             },
             {
               "kind": "method",
+              "name": "_handleCellChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "focus",
               "description": "makes toggle focusable",
               "inheritedFrom": {

@@ -20,7 +20,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "10.0.0",
+  "version": "10.0.2",
   "description": "render LaTeX formatted math and science content",
   "repository": {
     "type": "git",

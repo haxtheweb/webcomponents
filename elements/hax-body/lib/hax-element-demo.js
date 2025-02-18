@@ -68,6 +68,8 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
             ],
           );
         } else if (
+          schema &&
+          schema.gizmo &&
           schema.gizmo.tag &&
           schema.demoSchema &&
           schema.demoSchema[0]

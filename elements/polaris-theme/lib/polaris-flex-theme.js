@@ -742,7 +742,13 @@ class PolarisFlexTheme extends LTIResizingMixin(
   }
 
   renderHeaderSlot() {
-    return html``;
+    return html` <p class="site-title" itemprop="headline">
+      <site-title
+        .part="${this.editMode ? `edit-mode-active` : ``}"
+        ?disabled="${this.editMode}"
+        part="site-title"
+      ></site-title>
+    </p>`;
   }
 
   renderSideBar() {
@@ -808,7 +814,6 @@ class PolarisFlexTheme extends LTIResizingMixin(
               auto-accent-color
             ></site-active-tags>
             <div class="main-section">
-              ${this.renderSideBar()}
               <section id="slot" part="slot">
                 <slot></slot>
               </section>

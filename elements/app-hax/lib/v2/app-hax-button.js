@@ -11,8 +11,9 @@ export class AppHaxButton extends LitElement {
   static get tag() {
     return "app-hax-button";
   }
+
 // heeyyyyyyyy heeeyyyyyy
-  constructor() {
+constructor() {
     super();
     this.icon = "save";
     this.type = null;

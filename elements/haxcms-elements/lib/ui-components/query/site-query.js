@@ -257,23 +257,36 @@ class SiteQuery extends LitElement {
                 // that the data passed in is already an array and then that we've either got an arra
                 // or something we can treat as an array or it's a comma delimited string
                 try {
-                  const includesAll = (arr, values) => values.every(v => arr.includes(v));
+                  const includesAll = (arr, values) =>
+                    values.every((v) => arr.includes(v));
                   if (typeof Object.byString(item, i) === "object") {
-                    if (includesAll(Array.from(Object.byString(item, i)), evaluate)) {
+                    if (
+                      includesAll(
+                        Array.from(Object.byString(item, i)),
+                        evaluate,
+                      )
+                    ) {
+                      return true;
+                    }
+                  } else {
+                    if (
+                      includesAll(
+                        Array.from(
+                          Object.byString(item, i)
+                            .replaceAll(", ", ",")
+                            .split(","),
+                        ),
+                        evaluate,
+                      )
+                    ) {
                       return true;
                     }
                   }
-                  else {
-                    if (includesAll(Array.from(Object.byString(item, i).replaceAll(', ',',').split(',')), evaluate)) {
-                      return true;
-                    }
-                  }
-                }
-                catch (e) {
+                } catch (e) {
                   console.warn(e);
                 }
                 return false;
-              break;
+                break;
               case ">":
                 if (Object.byString(item, i) > evaluate) {
                   return true;
@@ -292,14 +305,12 @@ class SiteQuery extends LitElement {
                   !evaluate.includes(Object.byString(item, i))
                 ) {
                   return true;
-                }
-                else if (
+                } else if (
                   typeof evaluate === "string" &&
                   Object.byString(item, i) !== evaluate
                 ) {
                   return true;
-                }
-                else if (
+                } else if (
                   typeof evaluate === "boolean" &&
                   Object.byString(item, i) != evaluate
                 ) {
@@ -307,11 +318,11 @@ class SiteQuery extends LitElement {
                   // right now the data gets here but defaults seem off
                   // and then everything computes to false
                   // as if earlier filters are taking hold
-                 // if (i === 'metadata.published') {
-                 //   console.log(Object.byString(item, i));
-                 //   console.log(evaluate);
-                 // }
-//                  return true;
+                  // if (i === 'metadata.published') {
+                  //   console.log(Object.byString(item, i));
+                  //   console.log(evaluate);
+                  // }
+                  //                  return true;
                 }
                 return false;
                 break;
@@ -323,14 +334,12 @@ class SiteQuery extends LitElement {
                   !evaluate.includes(Object.byString(item, i))
                 ) {
                   return false;
-                }
-                else if (
+                } else if (
                   typeof evaluate === "string" &&
                   Object.byString(item, i) !== evaluate
                 ) {
                   return false;
-                }
-                else if (
+                } else if (
                   typeof evaluate === "boolean" &&
                   Object.byString(item, i) != evaluate
                 ) {
@@ -338,11 +347,11 @@ class SiteQuery extends LitElement {
                   // right now the data gets here but defaults seem off
                   // and then everything computes to false
                   // as if earlier filters are taking hold
-                 // if (i === 'metadata.published') {
-                 //   console.log(Object.byString(item, i));
-                 //   console.log(evaluate);
-                 // }
-//                  return false;
+                  // if (i === 'metadata.published') {
+                  //   console.log(Object.byString(item, i));
+                  //   console.log(evaluate);
+                  // }
+                  //                  return false;
                 }
                 return true;
                 break;

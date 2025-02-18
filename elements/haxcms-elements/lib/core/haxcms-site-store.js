@@ -42,6 +42,7 @@ class Store {
     this.appReady = false;
     this.editMode = false;
     this.manifest = null;
+    this.pageAllowed = false;
     this.activeItemContent = "";
     this.themeElement = null;
     this.themeStyleElement = globalThis.document.createElement("style");
@@ -94,6 +95,7 @@ class Store {
       soundStatus: observable, // toggle sounds on and off
       appReady: observable, // system is ready via firstUpdated of haxcms-site-builder
       badDevice: observable, // if we have a low performance device
+      pageAllowed: observable, // if the page operations are allowed to be viewed
     });
   }
 

@@ -2346,6 +2346,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             "polaris-theme",
             "polaris-invent-theme",
             "polaris-flex-theme",
+            "polaris-flex-sidebar",
             "ddd-brochure-theme",
             "collections-theme",
             "training-theme",
@@ -2660,16 +2661,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this.icon = "hax:site-settings";
       this.__disposer.push(reaction);
     });
-
+    autorun((reaction) => {
+      this.pageAllowed = toJS(store.pageAllowed);
+      this.__disposer.push(reaction);
+    });
     autorun((reaction) => {
       const activeItem = toJS(store.activeItem);
       // update buttons to match since we got a state response
       this.updateAvailableButtons();
       if (activeItem && activeItem.id && !activeItem._internalRoute) {
         this.activeTitle = activeItem.title;
-        this.pageAllowed = true;
+        store.pageAllowed = true;
       } else {
-        this.pageAllowed = false;
+        store.pageAllowed = false;
       }
       this.__disposer.push(reaction);
     });

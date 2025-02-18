@@ -75,7 +75,7 @@
           {
             "value": "true",
             "text": "Only hidden items"
-          } 
+          }
         ]
       },
       {
@@ -116,8 +116,10 @@
   "saveOptions": {
     "unsetAttributes": [
       "editMode",
+      "edit-mode",
       "conditions",
       "sortObj",
+      "sort-obj",
       "results",
       "breakSmartCollection",
       "t"

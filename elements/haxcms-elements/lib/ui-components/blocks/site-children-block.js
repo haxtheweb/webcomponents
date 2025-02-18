@@ -114,8 +114,8 @@ class SiteChildrenBlock extends LitElement {
           color: var(--site-children-block-link-color, #444444);
           text-decoration: none;
         }
-        .link button:hover,
-        .link button:focus {
+        .link button:hover div,
+        .link button:focus div {
           text-decoration: underline;
           color: var(--site-children-block-link-hover-color, #000000);
         }
@@ -123,7 +123,7 @@ class SiteChildrenBlock extends LitElement {
           cursor: pointer;
           display: block;
           line-height: inherit;
-          font-size: inherit;
+          font-size: var(--site-children-block-font-size, inherit);
           font-family: inherit;
           padding: 0;
           margin: 0;
@@ -148,23 +148,37 @@ class SiteChildrenBlock extends LitElement {
           padding: var(--site-children-block-li-padding, 0);
           border-bottom: var(--site-children-block-border-bottom, none);
         }
-        .top-level {
-          font-size: 20px;
-          border-bottom-width: 2px;
-          padding: 0px 0px 8px;
-          text-transform: uppercase;
-        }
         .active {
           background-color: var(--site-children-block-link-active-bg);
-          border-left: var(
-            --site-children-block-active-border-left,
-            4px solid #000000
-          );
+          padding-left: 4px;
+          border-left: var(--site-children-block-active-border-left);
         }
         .active button {
           font-weight: 700;
           color: var(--site-children-block-link-active-color, #000000);
         }
+
+        .top-level .active {
+          padding-left: var(--site-children-block-parent-active-padding);
+        }
+        .top-level button {
+          font-weight: var(--site-children-block-parent-font-weight);
+          font-size: calc(var(--site-children-block-font-size, inherit) + 2px);
+          text-transform: var(
+            --site-children-block-parent-text-transform,
+            uppercase
+          );
+        }
+        .top-level .active button {
+          font-weight: 700;
+        }
+        .sub-level button {
+          text-transform: var(
+            --site-children-block-child-text-transform,
+            capitalize
+          );
+        }
+
         .spacing .indent {
           display: inline-flex;
         }
@@ -222,15 +236,20 @@ class SiteChildrenBlock extends LitElement {
             item.metadata.published === false
               ? ``
               : html`
-                  <li class="spacing ${item.indent === 0 ? "top-level" : ""}">
+                  <li
+                    class="spacing ${item.indent === 0
+                      ? "top-level"
+                      : "sub-level"}"
+                  >
                     <a
                       class="link ${item.id === this.activeId ? "active" : ""}"
                       tabindex="-1"
                       href="${item.slug}"
                     >
                       <button>
-                        <div class="indent indent-${item.indent}"></div>
-                        ${item.title}
+                        <div class="indent indent-${item.indent}">
+                          ${item.title}
+                        </div>
                       </button>
                     </a>
                   </li>

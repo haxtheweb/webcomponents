@@ -143,7 +143,7 @@ class Hal9000 extends LitElement {
     this.addCommands(newValue);
   }
   /**
-   * Just rout add commands call to the right place
+   * Just route add commands call to the right place
    */
   addCommands(commands) {
     if (this.annyang) {
