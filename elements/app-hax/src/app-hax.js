@@ -15,6 +15,8 @@ import "./lib/v2/app-hax-label.js";
 import "./lib/v2/app-hax-top-bar.js";
 import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
 import "./lib/v2/app-hax-use-case.js";
+import "./lib/v2/app-hax-filter.js";
+import "./lib/v2/app-hax-filter-results.js";
 
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
@@ -165,6 +167,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     this.unlockComingSoon = false;
     this.unlockTerrible = false;
     this.t = this.t || {};
+
+
+    this.items = [];
+    this.filteredItems = [];
+    this.errorMessage = "";
+    this.loading = false;
+    this.demoLink = "";
+
 
     this.t = {
       ...this.t,
@@ -647,6 +657,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       siteReady: { type: Boolean },
       basePath: { type: String, attribute: "base-path" },
       token: { type: String },
+
+
+      items: { type: Array },
+      filteredItems: { type: Array },
+      errorMessage: { type: String },
+      loading: { type: Boolean },
+      demoLink: { type: String}
     };
   }
 
@@ -984,23 +1001,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             border: var(--simple-colors-default-theme-grey-12) 2px solid;
           }
         }
-        .filter {
-            display:flex;
-            background-color: white;
-            flex-direction: column;
-            margin: var(--ddd-spacing-2);
-            padding: var(--ddd-spacing-4);
-            background-color: var(--ddd-theme-default-white);
-            border-radius: var(--ddd-radius-xs);
-            width: 300px;
-          }
-          .filterButtons {
-            text-align: start;
-            display: flex;
-            flex-direction: column;
-            gap: var(--ddd-spacing-2);
-            max-width: 150px;
-          }
         @media (prefers-reduced-motion: reduce) {
           app-hax-label {
             animation: none;
@@ -1346,15 +1346,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   templateHome() {
     return html`<div class="start-journey">
       <div class="filter">
-      <app-hax-search-bar></app-hax-search-bar>
-      <div class="filterButtons">
-        <label><input type="checkbox" data-id="portfolio" @change=${this.updateFilterState}>Portfolio</label>
-        <label><input type="checkbox" data-id="blog" @change=${this.updateFilterState}>Blog</label>
-        <label><input type="checkbox" data-id="research" @change=${this.updateFilterState}>Research Site</label>
-        <label><input type="checkbox" data-id="resume" @change=${this.updateFilterState}>Resume</label>
-        <label><input type="checkbox" data-id="course" @change=${this.updateFilterState}>Course</label>
+        <app-hax-filter></app-hax-filter>
       </div>
-      </div>
+
       <div class="testing">
         <app-hax-use-case
           title="Test"
@@ -1363,6 +1357,29 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           demoLink="https://www.aclu.org/know-your-rights"
         >
         </app-hax-use-case>
+      </div>
+
+      <!--Izzy's code from hax-use-case-app-->
+      <div class="card-grid">
+          ${this.filteredItems.length > 0
+            ? this.filteredItems.map(
+                (item, index) => html`
+                  <div>
+                    <a href="${item.demoLink}" target="_blank">
+                      <app-hax-use-case
+                        .source=${item.useCaseImage || ""}
+                        .title=${item.useCaseTitle || ""}
+                        .description=${item.useCaseDescription || ""}
+                        .demoLink=${item.demoLink || ""}
+                        .iconImage=${item.useCaseIcon || []}
+                      ></app-hax-use-case>
+                    </a>
+                    </div>
+                  </div>
+                `
+              )
+            : html`<p>No templates match the filters specified.</p>`}
+        </div>
       </div>
       <app-hax-search-results></app-hax-search-results>
       </div>`

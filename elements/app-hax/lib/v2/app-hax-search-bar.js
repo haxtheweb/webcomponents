@@ -136,7 +136,7 @@ export class AppHaxSearchBar extends LitElement {
         @input="${this.search}"
         @keydown="${this.testKeydown}"
         type="text"
-        placeholder="Site name.."
+        placeholder="Search Sites.."
       />
     `;
   }

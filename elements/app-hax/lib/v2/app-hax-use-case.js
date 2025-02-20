@@ -102,6 +102,16 @@ export class AppHaxUseCase extends LitElement {
         </div>
           <h3>${this.title}</h3>
           <p>${this.description}</p>
+          <div style="background-color: transparent; display: flex; padding: 8px;" class="haxIcons">
+            ${this.iconImage.map(
+            (icon) => html`
+              <simple-icon-lite
+                icon="${icon.icon}" 
+                title="${icon.tooltip || ''}" 
+              ></simple-icon-lite>
+            `
+            )}
+          </div>
           <div style="background-color: transparent; display: flex; padding: 8px;" class="cardBottom"> 
             <button class="select ${this.isSelected ? 'selected' : ''}" @click=${this.toggleDisplay}>${this.isSelected ? 'Selected' : 'Select'}</button>
             <button class="continue ${this.isSelected ? 'visible' : ''}" @click=${this.continueAction}>Continue</button>
