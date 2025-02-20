@@ -148,7 +148,8 @@ export class AppHaxUseCaseFilter extends LitElement {
         ? this.filteredItems.map(
         (item, index) => html`
           <div>
-            <a href="${item.demoLink}" target="_blank">
+            <a href="${item.demoLink}" target="_blank"
+            class="${index === this.activeUseCase ? "active-card" : ""}"></a>>
             <app-hax-use-case
               .source=${item.useCaseImage || ""}
               .title=${item.useCaseTitle || ""}
@@ -246,16 +247,16 @@ export class AppHaxUseCaseFilter extends LitElement {
             icon: attributes.icon,
             tooltip: attributes.tooltip
           })),
-          useCaseTag: item[template-tag]
+          useCaseTag: item[category]
         }));
         this.filteredItems = this.items;
         this.filters = [];
     
         data.item.forEach(item => {
-          if (Array.isArray(item[template-tag])) {
-            item.template-tag.forEach(tag => {
-              if (!this.filters.includes([template-tag])) {
-                this.filters = [...this.filters, [template-tag]];
+          if (Array.isArray(item[category])) {
+            item.category.forEach(tag => {
+              if (!this.filters.includes([category])) {
+                this.filters = [...this.filters, [category]
               }
             });
           }
