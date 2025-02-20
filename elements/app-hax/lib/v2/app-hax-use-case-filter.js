@@ -2,7 +2,7 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { store } from "./AppHaxStore.js";
-import "/lib/v2/app-hax-use-case.js";
+import "./app-hax-use-case.js";
 
 export class AppHaxUseCaseFilter extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -15,22 +15,15 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.searchTerm = "";
     this.disabled = false;
     this.showSearch = false;
-    this.searchQuery = "";
-
+    
+    this.items = [];
+    this.filteredItems = [];
     this.activeFilters = [];
     this.filters = [];
-
-    this.items = [];
-    this.useCaseTitle = "";
-    this.useCaseImage = "";
-    this.useCaseDescription = "";
-    this.useCaseIcon = [];
-    this.useCaseTag = "";
-
-    this.filteredItems = [];
+    this.searchQuery = "";
+    this.demoLink = "";
     this.errorMessage = "";
     this.loading = false;
-    this.demoLink = "";
   }
 
   // Site.json is coming from
@@ -40,15 +33,15 @@ export class AppHaxUseCaseFilter extends LitElement {
       searchTerm: { type: String },
       showSearch: { type: Boolean, reflect: true, attribute: "show-search" },
       disabled: { type: Boolean, reflect: true },
-      searchQuery: { type: String },
-      activeFilters: { type: Array },
-      filters: { type: Array },
 
       items: { type: Array },
       filteredItems: { type: Array },
+      activeFilters: { type: Array },
+      filters: { type: Array },
+      searchQuery: { type: String },
+      demoLink: { type: String},
       errorMessage: { type: String },
-      loading: { type: Boolean },
-      demoLink: { type: String}
+      loading: { type: Boolean }
     };
   }
 
@@ -57,6 +50,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       css`
         :host {
           overflow: hidden;
+          display: block !important;
         }
         input {
           visibility: none;
@@ -75,6 +69,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           max-width: 25vw;
         }
         .filter {
+          visibility: visible;
           display:flex;
           background-color: white;
           flex-direction: column;
@@ -113,12 +108,12 @@ export class AppHaxUseCaseFilter extends LitElement {
     ) {
       this.applyFilters();
     }
-  }S
+  }
 
   render() {
     return html`
     <div class="filter">
-    <simple-toolbar-button
+      <simple-toolbar-button
         id="searchico"
         icon-position="left"
         show-text-label
@@ -131,10 +126,11 @@ export class AppHaxUseCaseFilter extends LitElement {
       <simple-tooltip for="searchico" position="bottom"
         >Toggle Search</simple-tooltip
       >
+  <!--search bar-->
       <input
         ?disabled="${!this.showSearch}"
         id="searchField"
-        @input="${this.search}"
+        @input="${this.handleSearch}"
         @keydown="${this.testKeydown}"
         type="text"
         placeholder="Search Template.."
@@ -148,6 +144,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         <label><input type="checkbox" data-id="course" @change="${() => this.toggleFilter(filter)}">Course</label>
       </div>
     </div>
+
     <div class="results">
       ${this.filteredItems.length > 0
         ? this.filteredItems.map(
@@ -181,100 +178,102 @@ export class AppHaxUseCaseFilter extends LitElement {
     }
   }
 
-    applyFilters() {
-      const lowerCaseQuery = this.searchQuery.toLowerCase();
-    
-      this.filteredItems = this.items.filter((item) => {
-        const matchesSearch = item.useCaseTitle.toLowerCase().includes(lowerCaseQuery);
-    
-        const matchesFilters =
-          this.activeFilters.length === 0 || // No filters means match all
-          this.activeFilters.some((filter) => item.useCaseTag.includes(filter));
-    
-        return matchesSearch && matchesFilters;
-      }); 
-    }
-    
-    handleSearch(event) {
-      this.searchQuery = event.target.value.toLowerCase();
-    }
-    
-    toggleFilter(filter) {
-      if (this.activeFilters.includes(filter)) {
-        this.activeFilters = this.activeFilters.filter((f) => f !== filter);
-      } else {
-        this.activeFilters = [...this.activeFilters, filter];
-      }
-    }
+  handleSearch(event) {
+    this.searchQuery = event.target.value.toLowerCase();
+  }
   
-    resetFilters() {
-      this.searchQuery = "";
-      this.activeFilters = []; // Clear active filters
-      this.filteredItems = this.items; // Reset to show all items
-      this.requestUpdate(); // Trigger an update
-  
-      // Uncheck checkboxes
-      const checkboxes = this.shadowRoot.querySelectorAll(
-        '.filterButtons input[type="checkbox"]'
-      );
-      checkboxes.forEach((checkbox) => (checkbox.checked = false)); 
-  
-      // Clear search bar
-      const searchInput = this.shadowRoot.querySelector('#searchField input[type="text"]');
-      if (searchInput) {
-        searchInput.value = "";
-      }
+  toggleFilter(filter) {
+    if (this.activeFilters.includes(filter)) {
+      this.activeFilters = this.activeFilters.filter((f) => f !== filter);
+    } else {
+      this.activeFilters = [...this.activeFilters, filter];
     }
+  }
 
-    updateResults() {
-        this.loading = true;
-        this.errorMessage = ""; // Reset error before fetching
+  applyFilters() {
+    const lowerCaseQuery = this.searchQuery.toLowerCase();
     
-        fetch(new URL('./lib/v2/app-hax-receipes.json', import.meta.url).href)  
-          .then(response => {
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            return response.json(); // Parse JSON data
-          })
-          .then(data => {
-          // Map JSON data to component's items
+    this.filteredItems = this.items.filter((item) => {
+      const matchesSearch = item.useCaseTitle.toLowerCase().includes(lowerCaseQuery);
+    
+      const matchesFilters =
+        this.activeFilters.length === 0 || // No filters means match all
+        this.activeFilters.some((filter) => item.useCaseTag.includes(filter));
+    
+      return matchesSearch && matchesFilters;
+    }); 
+  }
+    
+    
+  
+  resetFilters() {
+    this.searchQuery = "";
+    this.activeFilters = []; // Clear active filters
+    this.filteredItems = this.items; // Reset to show all items
+    this.requestUpdate(); // Trigger an update
+  
+    // Uncheck checkboxes
+    const checkboxes = this.shadowRoot.querySelectorAll(
+      '.filterButtons input[type="checkbox"]'
+    );
+    checkboxes.forEach((checkbox) => (checkbox.checked = false)); 
+  
+    // Clear search bar
+    const searchInput = this.shadowRoot.querySelector('#searchField input[type="text"]');
+    if (searchInput) {
+      searchInput.value = "";
+    }
+  }
+
+  updateResults() {
+    this.loading = true;
+    this.errorMessage = ""; // Reset error before fetching
+    
+    fetch(new URL('./lib/v2/app-hax-receipes.json', import.meta.url).href)  
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json(); // Parse JSON data
+    })
+    .then(data => {
+    // Map JSON data to component's items
           
-          if (Array.isArray(data.item)) {
-            this.items = data.item.map(item => ({
-              useCaseTitle: item.title,
-              useCaseImage: item.image,
-              useCaseDescription: item.description,
-              useCaseIcon: item.useCaseAttributes.map(attribute => ({
-                icon: attribute.icon,
-                tooltip: attribute.tooltip
-              })),
-              useCaseTag: item.template-tag
-            }));
-            this.filteredItems = this.items;
-            this.filters = [];
+      if (Array.isArray(data.item)) {
+        this.items = data.item.map(item => ({
+          useCaseTitle: item.title,
+          useCaseImage: item.image,
+          useCaseDescription: item.description,
+          useCaseIcon: item.attributes.map(attributes => ({
+            icon: attributes.icon,
+            tooltip: attributes.tooltip
+          })),
+          useCaseTag: item[template-tag]
+        }));
+        this.filteredItems = this.items;
+        this.filters = [];
     
-            data.item.forEach(item => {
-              if (Array.isArray(item.tag)) {
-                item.tag.forEach(tag => {
-                  if (!this.filters.includes(tag)) {
-                    this.filters = [...this.filters, tag];
-                  }
-                });
+        data.item.forEach(item => {
+          if (Array.isArray(item[template-tag])) {
+            item.template-tag.forEach(tag => {
+              if (!this.filters.includes([template-tag])) {
+                this.filters = [...this.filters, [template-tag]];
               }
             });
-          } else {
-            this.errorMessage = 'No Templates Found';
           }
-        })
-        .catch(error => {
-          this.errorMessage = `Failed to load data: ${error.message}`;
-          this.items = [];
-          this.filteredItems = [];
-        })
-        .finally(() => {
-          this.loading = false;
         });
+      } else {
+        this.errorMessage = 'No Templates Found';
       }
+    })
+    .catch(error => {
+      this.errorMessage = `Failed to load data: ${error.message}`;
+      this.items = [];
+      this.filteredItems = [];
+    })
+    .finally(() => {
+      this.loading = false;
+    });
+  }
 }
-customElements.define(AppHaxUseCaseFilter.tag, AppHaxUseCaseFilter);
+customElements.define("app-hax-use-case-filter", AppHaxUseCaseFilter);

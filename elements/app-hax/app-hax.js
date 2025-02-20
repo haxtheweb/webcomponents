@@ -15,7 +15,7 @@ import "./lib/v2/app-hax-label.js";
 import "./lib/v2/app-hax-top-bar.js";
 import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
 import "./lib/v2/app-hax-use-case.js";
-import "./lib/v2/app-hax-use-case.js";
+import "./lib/v2/app-hax-use-case-filter.js";
 
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
@@ -718,7 +718,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
   // eslint-disable-next-line class-methods-use-this
   login() {
-    import("./lib/2/app-hax-site-login.js").then(() => {
+    import("./lib/v2/app-hax-site-login.js").then(() => {
       const p = globalThis.document.createElement("app-hax-site-login");
       if (this.querySelector('[slot="externalproviders"]')) {
         const cloneSlot = this.querySelector(
@@ -1334,8 +1334,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       source="https://i.kym-cdn.com/photos/images/original/002/717/773/6d7.jpeg"
       >
       </app-hax-use-case>
+      <app-hax-use-case-filter></app-hax-use-case-filter>
       </div>
-      <app-hax-search-results></app-hax-search-results>`;
+      `;
   }
 
   // eslint-disable-next-line class-methods-use-this
