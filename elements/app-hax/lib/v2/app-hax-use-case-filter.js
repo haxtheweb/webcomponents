@@ -2,11 +2,12 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { store } from "./AppHaxStore.js";
+import "/lib/v2/app-hax-use-case.js";
 
-export class AppHaxFilter extends LitElement {
+export class AppHaxUseCaseFilter extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
-    return "app-hax-filter";
+    return "app-hax-use-case-filter";
   }
 
   constructor() {
@@ -15,8 +16,21 @@ export class AppHaxFilter extends LitElement {
     this.disabled = false;
     this.showSearch = false;
     this.searchQuery = "";
+
     this.activeFilters = [];
     this.filters = [];
+
+    this.items = [];
+    this.useCaseTitle = "";
+    this.useCaseImage = "";
+    this.useCaseDescription = "";
+    this.useCaseIcon = [];
+    this.useCaseTag = "";
+
+    this.filteredItems = [];
+    this.errorMessage = "";
+    this.loading = false;
+    this.demoLink = "";
   }
 
   // Site.json is coming from
@@ -29,6 +43,12 @@ export class AppHaxFilter extends LitElement {
       searchQuery: { type: String },
       activeFilters: { type: Array },
       filters: { type: Array },
+
+      items: { type: Array },
+      filteredItems: { type: Array },
+      errorMessage: { type: String },
+      loading: { type: Boolean },
+      demoLink: { type: String}
     };
   }
 
@@ -85,6 +105,16 @@ export class AppHaxFilter extends LitElement {
     this.searchTerm = this.shadowRoot.querySelector("#searchField").value;
   }
 
+  updated(changedProperties) {
+    if (
+      changedProperties.has("searchQuery") ||
+      changedProperties.has("activeFilters") ||
+      changedProperties.has("item")
+    ) {
+      this.applyFilters();
+    }
+  }S
+
   render() {
     return html`
     <div class="filter">
@@ -117,6 +147,25 @@ export class AppHaxFilter extends LitElement {
         <label><input type="checkbox" data-id="resume" @change="${() => this.toggleFilter(filter)}">Resume</label>
         <label><input type="checkbox" data-id="course" @change="${() => this.toggleFilter(filter)}">Course</label>
       </div>
+    </div>
+    <div class="results">
+      ${this.filteredItems.length > 0
+        ? this.filteredItems.map(
+        (item, index) => html`
+          <div>
+            <a href="${item.demoLink}" target="_blank">
+            <app-hax-use-case
+              .source=${item.useCaseImage || ""}
+              .title=${item.useCaseTitle || ""}
+              .description=${item.useCaseDescription || ""}
+              .demoLink=${item.demoLink || ""}
+              .iconImage=${item.useCaseIcon || []}
+            ></app-hax-use-case>
+            </a>
+          </div>
+        `
+        )
+        : html`<p>No templates match the filters specified.</p>`}
     </div>
     `;
   }
@@ -176,5 +225,56 @@ export class AppHaxFilter extends LitElement {
         searchInput.value = "";
       }
     }
+
+    updateResults() {
+        this.loading = true;
+        this.errorMessage = ""; // Reset error before fetching
+    
+        fetch(new URL('./lib/v2/app-hax-receipes.json', import.meta.url).href)  
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json(); // Parse JSON data
+          })
+          .then(data => {
+          // Map JSON data to component's items
+          
+          if (Array.isArray(data.item)) {
+            this.items = data.item.map(item => ({
+              useCaseTitle: item.title,
+              useCaseImage: item.image,
+              useCaseDescription: item.description,
+              useCaseIcon: item.useCaseAttributes.map(attribute => ({
+                icon: attribute.icon,
+                tooltip: attribute.tooltip
+              })),
+              useCaseTag: item.template-tag
+            }));
+            this.filteredItems = this.items;
+            this.filters = [];
+    
+            data.item.forEach(item => {
+              if (Array.isArray(item.tag)) {
+                item.tag.forEach(tag => {
+                  if (!this.filters.includes(tag)) {
+                    this.filters = [...this.filters, tag];
+                  }
+                });
+              }
+            });
+          } else {
+            this.errorMessage = 'No Templates Found';
+          }
+        })
+        .catch(error => {
+          this.errorMessage = `Failed to load data: ${error.message}`;
+          this.items = [];
+          this.filteredItems = [];
+        })
+        .finally(() => {
+          this.loading = false;
+        });
+      }
 }
-customElements.define(AppHaxFilter.tag, AppHaxFilter);
+customElements.define(AppHaxUseCaseFilter.tag, AppHaxUseCaseFilter);

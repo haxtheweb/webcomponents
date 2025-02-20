@@ -15,8 +15,7 @@ import "./lib/v2/app-hax-label.js";
 import "./lib/v2/app-hax-top-bar.js";
 import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
 import "./lib/v2/app-hax-use-case.js";
-import "./lib/v2/app-hax-filter.js";
-import "./lib/v2/app-hax-filter-results.js";
+import "./lib/v2/app-hax-use-case.js";
 
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
@@ -167,14 +166,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     this.unlockComingSoon = false;
     this.unlockTerrible = false;
     this.t = this.t || {};
-
-
-    this.items = [];
-    this.filteredItems = [];
-    this.errorMessage = "";
-    this.loading = false;
-    this.demoLink = "";
-
 
     this.t = {
       ...this.t,
@@ -657,13 +648,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       siteReady: { type: Boolean },
       basePath: { type: String, attribute: "base-path" },
       token: { type: String },
-
-
-      items: { type: Array },
-      filteredItems: { type: Array },
-      errorMessage: { type: String },
-      loading: { type: Boolean },
-      demoLink: { type: String}
     };
   }
 
@@ -777,6 +761,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       css`
         :host {
           display: block;
+          --app-hax-background-color-active: var(--app-hax-accent-color);
         }
         #home {
           display: inline-flex;
@@ -1017,9 +1002,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           .start-journey {
             padding-top: 0;
           }
-
-          //added code 
-          
 
           app-hax-site-button {
             --app-hax-site-button-font-size: 12px;
@@ -1341,48 +1323,19 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     return template;
   }
-
-  //EDIT STARTING FROM HERE TO TEST CODE
+  
+  //EDIT HERE
   templateHome() {
     return html`<div class="start-journey">
-      <div class="filter">
-        <app-hax-filter></app-hax-filter>
+      <app-hax-use-case
+      title="Test"
+      demoLink="#"
+      description="Test use case"
+      source="https://i.kym-cdn.com/photos/images/original/002/717/773/6d7.jpeg"
+      >
+      </app-hax-use-case>
       </div>
-
-      <div class="testing">
-        <app-hax-use-case
-          title="Test"
-          description="This is a test use case"
-          source="https://tse2.mm.bing.net/th?id=OIP.wJ7ApaHySIvW5828GiIKTQHaF2&pid=Api"
-          demoLink="https://www.aclu.org/know-your-rights"
-        >
-        </app-hax-use-case>
-      </div>
-
-      <!--Izzy's code from hax-use-case-app-->
-      <div class="card-grid">
-          ${this.filteredItems.length > 0
-            ? this.filteredItems.map(
-                (item, index) => html`
-                  <div>
-                    <a href="${item.demoLink}" target="_blank">
-                      <app-hax-use-case
-                        .source=${item.useCaseImage || ""}
-                        .title=${item.useCaseTitle || ""}
-                        .description=${item.useCaseDescription || ""}
-                        .demoLink=${item.demoLink || ""}
-                        .iconImage=${item.useCaseIcon || []}
-                      ></app-hax-use-case>
-                    </a>
-                    </div>
-                  </div>
-                `
-              )
-            : html`<p>No templates match the filters specified.</p>`}
-        </div>
-      </div>
-      <app-hax-search-results></app-hax-search-results>
-      </div>`
+      <app-hax-search-results></app-hax-search-results>`;
   }
 
   // eslint-disable-next-line class-methods-use-this
