@@ -14,11 +14,12 @@ export class AppHaxUseCaseFilter extends LitElement {
     super();
     this.searchTerm = "";
     this.disabled = false;
-    this.showSearch = false; 
+    this.showSearch = false;
+    
     this.items = [];
     this.filteredItems = [];
     this.activeFilters = [];
-    this.filters = [];
+    this.filters = ['portfolio', 'blog', 'course', 'resume', 'research site'];
     this.searchQuery = "";
     this.demoLink = "";
     this.errorMessage = "";
@@ -32,6 +33,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       searchTerm: { type: String },
       showSearch: { type: Boolean, reflect: true, attribute: "show-search" },
       disabled: { type: Boolean, reflect: true },
+
       items: { type: Array },
       filteredItems: { type: Array },
       activeFilters: { type: Array },
@@ -48,7 +50,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       css`
         :host {
           overflow: hidden;
-          display: block !important;
+          
         }
         input {
           visibility: none;
@@ -135,11 +137,14 @@ export class AppHaxUseCaseFilter extends LitElement {
       />
       <button class="reset-button" @click="${this.resetFilters}">Reset Filters</button>
       <div class="filterButtons">
-        <label><input type="checkbox" data-id="portfolio" @change="${() => this.toggleFilter(filter)}">Portfolio</label>
-        <label><input type="checkbox" data-id="blog" @change="${() => this.toggleFilter(filter)}">Blog</label>
-        <label><input type="checkbox" data-id="research" @change="${() => this.toggleFilter(filter)}">Research Site</label>
-        <label><input type="checkbox" data-id="resume" @change="${() => this.toggleFilter(filter)}">Resume</label>
-        <label><input type="checkbox" data-id="course" @change="${() => this.toggleFilter(filter)}">Course</label>
+        ${this.filters.map(
+          (filter) => html`
+            <label>
+              <input type="checkbox" data-id="${filter}" @change="${(e) => this.toggleFilter(e)}">
+              ${filter.charAt(0).toUpperCase() + filter.slice(1)}
+            </label>
+          `
+          )}
       </div>
     </div>
 
@@ -153,7 +158,7 @@ export class AppHaxUseCaseFilter extends LitElement {
               .source=${item.useCaseImage || ""}
               .title=${item.useCaseTitle || ""}
               .description=${item.useCaseDescription || ""}
-              .demoLink=${item.demoLink || ""}
+              .demoLink=${item[demo-url] || ""}
               .iconImage=${item.useCaseIcon || []}
             ></app-hax-use-case>
             </a>
@@ -180,11 +185,13 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.searchQuery = event.target.value.toLowerCase();
   }
   
-  toggleFilter(filter) {
-    if (this.activeFilters.includes(filter)) {
-      this.activeFilters = this.activeFilters.filter((f) => f !== filter);
+  toggleFilter(event) {
+    const filterId = event.target.dataset.id;
+
+    if (this.activeFilters.includes(filterId)) {
+      this.activeFilters = this.activeFilters.filter((f) => f !== filterId);
     } else {
-      this.activeFilters = [...this.activeFilters, filter];
+      this.activeFilters = [...this.activeFilters, filterId];
     }
   }
 
@@ -197,7 +204,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       const matchesFilters =
         this.activeFilters.length === 0 || // No filters means match all
         this.activeFilters.some((filter) => item.useCaseTag.includes(filter));
-    
+
       return matchesSearch && matchesFilters;
     }); 
   }
@@ -226,6 +233,7 @@ export class AppHaxUseCaseFilter extends LitElement {
   updateResults() {
     this.loading = true;
     this.errorMessage = ""; // Reset error before fetching
+    this.checkActiveFilters;
     
     fetch(new URL('./lib/v2/app-hax-receipes.json', import.meta.url).href)  
     .then(response => {
@@ -253,7 +261,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     
         data.item.forEach(item => {
           if (Array.isArray(item.category)) {
-            item.category.forEach(tag => {
+            item.category.forEach(category => {
               if (!this.filters.includes(category)) {
                 this.filters = [...this.filters, category];
               }
@@ -263,6 +271,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       } else {
         this.errorMessage = 'No Templates Found';
       }
+      console.log(data);
     })
     .catch(error => {
       this.errorMessage = `Failed to load data: ${error.message}`;
