@@ -454,7 +454,6 @@ export class QuestionElement extends SchemaBehaviors(
         }
         details {
           max-width: unset;
-          display: block;
         }
         details[open] {
           view-transition-name: details-open;

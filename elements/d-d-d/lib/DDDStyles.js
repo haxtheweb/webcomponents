@@ -2093,7 +2093,7 @@ export const DDDReset = css`
   }
   details {
     overflow: hidden;
-    display: flex;
+    display: block;
     position: relative;
     max-width: 650px;
     padding: 0;
