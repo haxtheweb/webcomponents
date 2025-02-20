@@ -248,16 +248,16 @@ export class AppHaxUseCaseFilter extends LitElement {
             icon: attributes.icon,
             tooltip: attributes.tooltip
           })),
-          useCaseTag: item[template-tag]
+          useCaseTag: item.category
         }));
         this.filteredItems = this.items;
         this.filters = [];
     
         data.item.forEach(item => {
-          if (Array.isArray(item[template-tag])) {
-            item.template-tag.forEach(tag => {
-              if (!this.filters.includes([template-tag])) {
-                this.filters = [...this.filters, [template-tag]];
+          if (Array.isArray(item.category)) {
+            item.category.forEach(tag => {
+              if (!this.filters.includes(category)) {
+                this.filters = [...this.filters, category];
               }
             });
           }
