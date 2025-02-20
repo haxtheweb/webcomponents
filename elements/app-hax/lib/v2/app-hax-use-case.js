@@ -20,8 +20,6 @@ export class AppHaxUseCase extends LitElement {
 
   static get properties() {
     return {
-        id: { type: String },
-        tag: { type: String },
         title: { type: String },
         description: { type: String },
         source: { type: String },
@@ -80,6 +78,15 @@ export class AppHaxUseCase extends LitElement {
           justify-content: center;
           color: white;
         }
+        #haxIcons {
+        position: absolute; 
+        bottom: var(--ddd-spacing-2); 
+        left: var(--ddd-spacing-2); 
+        padding: var(--ddd-spacing-1) var(--ddd-spacing-1);
+        opacity: 0.8;
+        gap: var(--ddd-spacing-3);
+        color: var(--ddd-primary-8);
+        }
       `,
     ];
   }
@@ -88,27 +95,24 @@ export class AppHaxUseCase extends LitElement {
     return html`
       <div class="card">
         <div class="image">
-          <a href="${this.demoLink}" target="_blank">
+          <a id="demo" href="https://hax.cloud?use-case-${this.title}" target="_blank"></a>
           <img src="${this.source}" alt="${this.title}" ></a>
         </div>
           <h3>${this.title}</h3>
           <p>${this.description}</p>
-          <div style="background-color: transparent; display: flex; padding: 8px;" class="haxIcons">
-            ${this.iconImage.map(
-            (icon) => html`
-              <simple-icon-lite
-                icon="${icon.icon}" 
-                title="${icon.tooltip || ''}" 
-              ></simple-icon-lite>
-            `
-            )}
-          </div>
+          ${this.iconImage.map(
+          (icon) => html`
+            <simple-icon-lite
+              icon="${icon.icon}" 
+              title="${icon.tooltip || ''}" 
+            ></simple-icon-lite>
+          `
+          )}
           <div style="background-color: transparent; display: flex; padding: 8px;" class="cardBottom"> 
             <button class="select ${this.isSelected ? 'selected' : ''}" @click=${this.toggleDisplay}>${this.isSelected ? 'Selected' : 'Select'}</button>
             <button class="continue ${this.isSelected ? 'visible' : ''}" @click=${this.continueAction}>Continue</button>
-            <a href="${this.demoLink}" target="_blank" style="text-align: end;"><p class="bottomRightText">Demo></p></a>
+            <a id="demo" href="https://hax.cloud?use-case-${this.title}" target="_blank">Demo -> </a>
           </div>
-          
         </div>
       </div>
     `;

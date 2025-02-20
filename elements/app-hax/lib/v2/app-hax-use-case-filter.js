@@ -14,8 +14,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     super();
     this.searchTerm = "";
     this.disabled = false;
-    this.showSearch = false;
-    
+    this.showSearch = false; 
     this.items = [];
     this.filteredItems = [];
     this.activeFilters = [];
@@ -33,7 +32,6 @@ export class AppHaxUseCaseFilter extends LitElement {
       searchTerm: { type: String },
       showSearch: { type: Boolean, reflect: true, attribute: "show-search" },
       disabled: { type: Boolean, reflect: true },
-
       items: { type: Array },
       filteredItems: { type: Array },
       activeFilters: { type: Array },
