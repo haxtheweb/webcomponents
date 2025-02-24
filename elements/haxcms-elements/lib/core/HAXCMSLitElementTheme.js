@@ -70,6 +70,13 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       this.__disposer.push(reaction);
     });
   }
+  // Render method
+  render() {
+    return html`
+    <div id="contentcontainer">
+      <div id="slot"><slot></slot></div>
+    </div>`;
+  }
 
   hoverIntentEnter(e) {
     e.target.classList.add("haxcms-copyable");
