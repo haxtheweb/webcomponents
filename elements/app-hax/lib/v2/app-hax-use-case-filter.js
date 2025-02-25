@@ -83,7 +83,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           border-radius: var(--ddd-radius-xs);
           width: 300px;
         }
-        .filterButtons input[type="checkbox"] {
+        .filterButtons {
           text-align: start;
           display: flex;
           flex-direction: column;
@@ -266,12 +266,14 @@ export class AppHaxUseCaseFilter extends LitElement {
         this.filteredItems = this.items;
         this.filters = [];
     
-        this.items.forEach(item => {
-          item.useCaseTag.forEach(category => {
-            if (!this.filters.includes(category)) {
-              this.filters = [...this.filters, category];
-            }
-          });
+        data.item.forEach(item => {
+          if (Array.isArray(item.category)) {
+            item.category.forEach(category => {
+              if (!this.filters.includes(category)) {
+                this.filters = [...this.filters, category];
+              }
+            });
+          }
         });
       } else {
         this.errorMessage = 'No Templates Found';
