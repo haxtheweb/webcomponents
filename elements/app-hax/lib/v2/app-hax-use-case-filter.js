@@ -246,7 +246,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     // Map JSON data to component's items
           
       if (Array.isArray(data.item)) {
-        this.items = data.item.map(item => ({
+        this.items = data.map(item => ({
           useCaseTitle: item.title,
           useCaseImage: item.image,
           useCaseDescription: item.description,
