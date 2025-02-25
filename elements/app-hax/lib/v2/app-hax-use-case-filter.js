@@ -15,7 +15,6 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.searchTerm = "";
     this.disabled = false;
     this.showSearch = false;
-    
     this.items = [];
     this.filteredItems = [];
     this.activeFilters = [];
@@ -33,7 +32,6 @@ export class AppHaxUseCaseFilter extends LitElement {
       searchTerm: { type: String },
       showSearch: { type: Boolean, reflect: true, attribute: "show-search" },
       disabled: { type: Boolean, reflect: true },
-
       items: { type: Array },
       filteredItems: { type: Array },
       activeFilters: { type: Array },
@@ -50,23 +48,29 @@ export class AppHaxUseCaseFilter extends LitElement {
       css`
         :host {
           overflow: hidden;
-          
+          display: inline-flex;
+        }
+        .results {
+          display: flex;
+        }
+        .reset-button {
+          width: 50px;
+          height: 24px;
+          margin: 8px;
         }
         input {
-          visibility: none;
-          opacity: 0;
-          width: 0;
+          opacity: 1;
+          width: 200px;
+          max-width: 25vw;
           transition: all ease-in-out 0.3s;
           padding: 4px;
           font-family: "Press Start 2P", sans-serif;
-          font-size: 20px;
+          font-size: 12px;
           margin: 2px 0 0 16px;
+          height: 24px;
         }
-        :host([show-search]) input {
-          visibility: visible;
-          opacity: 1;
-          width: 250px;
-          max-width: 25vw;
+        .upper-filter {
+          display: flex;
         }
         .filter {
           visibility: visible;
@@ -103,30 +107,22 @@ export class AppHaxUseCaseFilter extends LitElement {
   render() {
     return html`
     <div class="filter">
-      <simple-toolbar-button
-        id="searchico"
-        icon-position="left"
-        show-text-label
-        ?toggles="${this.showSearch}"
-        ?disabled="${this.disabled}"
-        label="Search Sites"
-        icon="icons:search"
-        @click="${this.toggleSearch}"
-      ></simple-toolbar-button>
-      <simple-tooltip for="searchico" position="bottom"
-        >Toggle Search</simple-tooltip
-      >
   <!--search bar-->
+    <div class="upper-filter">
       <input
-        ?disabled="${!this.showSearch}"
+        icon="icons:search"
+        icon-position="left"
         id="searchField"
+        @click="${this.toggleSearch}"
         @input="${this.handleSearch}"
         @keydown="${this.testKeydown}"
         type="text"
-        placeholder="Search Template.."
+        placeholder="Search Templates"
       />
       
-      <button class="reset-button" @click="${this.resetFilters}">Reset Filters</button>
+      <button class="reset-button" @click="${this.resetFilters}">Reset</button>
+    </div>
+      
       <div class="filterButtons">
       ${this.filters.map(
           (filter) => html`
@@ -154,7 +150,7 @@ export class AppHaxUseCaseFilter extends LitElement {
               .source=${item.useCaseImage || ""}
               .title=${item.useCaseTitle || ""}
               .description=${item.useCaseDescription || ""}
-              .demoLink=${item[demo-url] || ""}
+              .demoLink=${item.demoLink || ""}
               .iconImage=${item.useCaseIcon || []}
             ></app-hax-use-case>
             </a>
@@ -244,7 +240,6 @@ export class AppHaxUseCaseFilter extends LitElement {
   updateResults() {
     this.loading = true;
     this.errorMessage = ""; // Reset error before fetching
-    this.checkActiveFilters;
     
     fetch(new URL('./app-hax-recipes.json', import.meta.url).href)  
     .then(response => {
@@ -257,7 +252,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     // Map JSON data to component's items
           
       if (Array.isArray(data.item)) {
-        this.items = data.map(item => ({
+        this.items = data.item.map(item => ({
           useCaseTitle: item.title,
           useCaseImage: item.image,
           useCaseDescription: item.description,

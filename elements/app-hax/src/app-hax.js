@@ -1327,13 +1327,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   //EDIT HERE
   templateHome() {
     return html`<div class="start-journey">
-      <app-hax-use-case
-        title="Test"
-        description="Test use case"
-        source="https://i.kym-cdn.com/photos/images/original/002/717/773/6d7.jpeg"
-        demoLink="#"
-      >
-      </app-hax-use-case>
       <app-hax-use-case-filter></app-hax-use-case-filter>
       </div>
       `;
