@@ -4,7 +4,7 @@
     {
       "uuid": "72e00632-f4a2-48d5-9b1b-f39ab26ec350",
       "title": "Portfolio",
-      "category": "Portfolio",
+      "category": ["Portfolio"],
       "recipe": "recipes/portfolio/portfolio.recipe",
       "theme": {
         "element": "clean-portfolio",
@@ -22,9 +22,9 @@
       ]
      },
      {
-      "uuid": "72e00632-f4a2-48d5-9b1b-f39ab26ec350",
+      "uuid": "b12c82ef-1545-4697-9c76-90f1aa6f352c",
       "title": "Course",
-      "category": "Course",
+      "category": ["Course"],
       "recipe": "recipes/course/course.recipe",
       "theme": {
         "element": "clean-course",
@@ -42,8 +42,8 @@
       ]
      },
      {
-      "uuid": "72e00632-f4a2-48d5-9b1b-f39ab26ec350",
-      "title": "Blog",
+      "uuid": "1b4132dd-c557-4576-89c7-f89446feda4a",
+      "title": ["Blog"],
       "category": "Blog",
       "recipe": "recipes/blog/blog.recipe",
       "theme": {

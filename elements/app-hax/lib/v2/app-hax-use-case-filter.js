@@ -26,7 +26,7 @@ export class AppHaxUseCaseFilter extends LitElement {
   }
 
   // Site.json is coming from
-
+  
   static get properties() {
     return {
       searchTerm: { type: String },
@@ -98,16 +98,6 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.searchTerm = this.shadowRoot.querySelector("#searchField").value;
   }
 
-  updated(changedProperties) {
-    if (
-      changedProperties.has("searchQuery") ||
-      changedProperties.has("activeFilters") ||
-      changedProperties.has("item")
-    ) {
-      this.applyFilters();
-    }
-  }
-
   render() {
     return html`
     <div class="filter">
@@ -133,13 +123,21 @@ export class AppHaxUseCaseFilter extends LitElement {
         type="text"
         placeholder="Search Template.."
       />
+      
       <button class="reset-button" @click="${this.resetFilters}">Reset Filters</button>
       <div class="filterButtons">
-        <label><input type="checkbox" data-id="portfolio" @change="${() => this.toggleFilter(filter)}">Portfolio</label>
-        <label><input type="checkbox" data-id="blog" @change="${() => this.toggleFilter(filter)}">Blog</label>
-        <label><input type="checkbox" data-id="research" @change="${() => this.toggleFilter(filter)}">Research Site</label>
-        <label><input type="checkbox" data-id="resume" @change="${() => this.toggleFilter(filter)}">Resume</label>
-        <label><input type="checkbox" data-id="course" @change="${() => this.toggleFilter(filter)}">Course</label>
+      ${this.filters.map(
+          (filter) => html`
+            <label>
+              <input
+                type="checkbox"
+                .checked=${this.activeFilters.includes(filter)}
+                @change=${() => this.toggleFilter(filter)}
+              />
+              ${filter}
+            </label>
+          `
+        )}
       </div>
     </div>
 
@@ -149,7 +147,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         (item, index) => html`
           <div>
             <a href="${item.demoLink}" target="_blank"
-            class="${index === this.activeUseCase ? "active-card" : ""}"></a>>
+            class="${index === this.activeUseCase ? "active-card" : ""}"></a>
             <app-hax-use-case
               .source=${item.useCaseImage || ""}
               .title=${item.useCaseTitle || ""}
@@ -165,6 +163,22 @@ export class AppHaxUseCaseFilter extends LitElement {
     </div>
     `;
   }
+
+  firstUpdated() {
+    super.firstUpdated();
+    this.updateResults();
+  }
+
+  updated(changedProperties) {
+    if (
+      changedProperties.has("searchQuery") ||
+      changedProperties.has("activeFilters") ||
+      changedProperties.has("item")
+    ) {
+      this.applyFilters();
+    }
+  }
+
 
   toggleSearch() {
     if (!this.disabled) {
@@ -195,16 +209,15 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.filteredItems = this.items.filter((item) => {
       const matchesSearch = item.useCaseTitle.toLowerCase().includes(lowerCaseQuery);
     
-      const matchesFilters =
-        this.activeFilters.length === 0 || // No filters means match all
-        this.activeFilters.some((filter) => item.useCaseTag.includes(filter));
+      const matchesFilters = this.activeFilters.length === 0 || 
+      this.activeFilters.some(filter => 
+        item.useCaseTag.includes(filter));
     
       return matchesSearch && matchesFilters;
     }); 
   }
     
     
-  
   resetFilters() {
     this.searchQuery = "";
     this.activeFilters = []; // Clear active filters
@@ -218,7 +231,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     checkboxes.forEach((checkbox) => (checkbox.checked = false)); 
   
     // Clear search bar
-    const searchInput = this.shadowRoot.querySelector('#searchField input[type="text"]');
+    const searchInput = this.shadowRoot.querySelector('#searchField');
     if (searchInput) {
       searchInput.value = "";
     }
@@ -228,7 +241,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.loading = true;
     this.errorMessage = ""; // Reset error before fetching
     
-    fetch(new URL('./lib/v2/app-hax-receipes.json', import.meta.url).href)  
+    fetch(new URL('./app-hax-recipes.json', import.meta.url).href)  
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -247,16 +260,17 @@ export class AppHaxUseCaseFilter extends LitElement {
             icon: attributes.icon,
             tooltip: attributes.tooltip
           })),
-          useCaseTag: item[category]
+          useCaseTag: Array.isArray(item.category) ? item.category : [item.category],
+          demoLink: item["demo-url"],
         }));
         this.filteredItems = this.items;
         this.filters = [];
     
         data.item.forEach(item => {
-          if (Array.isArray(item[category])) {
-            item.category.forEach(tag => {
-              if (!this.filters.includes([category])) {
-                this.filters = [...this.filters, [category]
+          if (Array.isArray(item.category)) {
+            item.category.forEach(category => {
+              if (!this.filters.includes(category)) {
+                this.filters = [...this.filters, category];
               }
             });
           }
