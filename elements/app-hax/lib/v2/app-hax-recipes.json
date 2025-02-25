@@ -43,8 +43,8 @@
      },
      {
       "uuid": "1b4132dd-c557-4576-89c7-f89446feda4a",
-      "title": ["Blog"],
-      "category": "Blog",
+      "title": "Blog",
+      "category": ["Blog"],
       "recipe": "recipes/blog/blog.recipe",
       "theme": {
         "element": "clean-blog",
