@@ -14,7 +14,8 @@ export class AppHaxUseCaseFilter extends LitElement {
     super();
     this.searchTerm = "";
     this.disabled = false;
-    this.showSearch = false; 
+    this.showSearch = false;
+    
     this.items = [];
     this.filteredItems = [];
     this.activeFilters = [];
@@ -32,6 +33,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       searchTerm: { type: String },
       showSearch: { type: Boolean, reflect: true, attribute: "show-search" },
       disabled: { type: Boolean, reflect: true },
+
       items: { type: Array },
       filteredItems: { type: Array },
       activeFilters: { type: Array },
@@ -48,7 +50,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       css`
         :host {
           overflow: hidden;
-          display: block !important;
+          
         }
         input {
           visibility: none;
@@ -152,7 +154,7 @@ export class AppHaxUseCaseFilter extends LitElement {
               .source=${item.useCaseImage || ""}
               .title=${item.useCaseTitle || ""}
               .description=${item.useCaseDescription || ""}
-              .demoLink=${item.demoLink || ""}
+              .demoLink=${item[demo-url] || ""}
               .iconImage=${item.useCaseIcon || []}
             ></app-hax-use-case>
             </a>
@@ -195,11 +197,13 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.searchQuery = event.target.value.toLowerCase();
   }
   
-  toggleFilter(filter) {
-    if (this.activeFilters.includes(filter)) {
-      this.activeFilters = this.activeFilters.filter((f) => f !== filter);
+  toggleFilter(event) {
+    const filterId = event.target.dataset.id;
+
+    if (this.activeFilters.includes(filterId)) {
+      this.activeFilters = this.activeFilters.filter((f) => f !== filterId);
     } else {
-      this.activeFilters = [...this.activeFilters, filter];
+      this.activeFilters = [...this.activeFilters, filterId];
     }
   }
 
@@ -240,6 +244,7 @@ export class AppHaxUseCaseFilter extends LitElement {
   updateResults() {
     this.loading = true;
     this.errorMessage = ""; // Reset error before fetching
+    this.checkActiveFilters;
     
     fetch(new URL('./app-hax-recipes.json', import.meta.url).href)  
     .then(response => {
@@ -252,7 +257,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     // Map JSON data to component's items
           
       if (Array.isArray(data.item)) {
-        this.items = data.item.map(item => ({
+        this.items = data.map(item => ({
           useCaseTitle: item.title,
           useCaseImage: item.image,
           useCaseDescription: item.description,
@@ -276,6 +281,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       } else {
         this.errorMessage = 'No Templates Found';
       }
+      console.log(data);
     })
     .catch(error => {
       this.errorMessage = `Failed to load data: ${error.message}`;
