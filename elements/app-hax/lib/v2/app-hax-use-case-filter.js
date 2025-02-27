@@ -64,7 +64,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         input [type="text"]{
           opacity: 1;
-          width: 200px;
+          width: 216px;
           max-width: 25vw;
           transition: all ease-in-out 0.3s;
           padding: 4px;
@@ -211,6 +211,16 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   handleSearch(event) {
     this.searchQuery = event.target.value.toLowerCase();
+
+    const matchingFilter = this.filters.find(filter => 
+      filter.toLowerCase() === this.searchQuery
+    );
+
+    const checkbox = this.shadowRoot.querySelector(`input[value="${matchingFilter}"]`);
+    if (checkbox) {
+      checkbox.checked = true;
+    }
+
     this.applyFilters();
   }
   
@@ -231,7 +241,9 @@ export class AppHaxUseCaseFilter extends LitElement {
     console.log("Active Filters:", this.activeFilters);
 
     this.filteredItems = this.items.filter((item) => {
-      const matchesSearch = item.useCaseTitle.toLowerCase().includes(lowerCaseQuery);
+      const matchesSearch = lowerCaseQuery === "" ||
+        item.useCaseTitle.toLowerCase().includes(lowerCaseQuery) ||
+        item.useCaseTag.some(tag => tag.toLowerCase() === lowerCaseQuery);
     
       const matchesFilters = this.activeFilters.length === 0 || 
       this.activeFilters.some(filter => 
