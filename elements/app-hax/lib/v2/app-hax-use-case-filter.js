@@ -69,7 +69,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           font-family: "Press Start 2P", sans-serif;
           font-size: 12px;
           margin: 2px 0 0 16px;
-          height: 24px;
+          
         }
         .upper-filter {
           display: flex;
@@ -103,6 +103,10 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: flex;
           align-items: center;
           justify-content: flex-start;
+          padding: 8px;
+        }
+        input[type="checkbox"] {
+          width: 30px;
         }
       `,
     ];
