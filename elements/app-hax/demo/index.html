@@ -31,7 +31,7 @@
         padding: 0;
         font-family: 'Press Start 2P', sans-serif;
         overflow-x: hidden;
-        background-image: url('../lib/assets/images/LMGridBox.svg');
+        background-image: url('../lib/assets/images/LMBackgroundImage.svg');
         background-repeat: repeat;
         background-position: center center;
         background-size: auto, 20% auto, 20% auto;
@@ -56,11 +56,10 @@
         --app-hax-background-color: black;
       }
       body.app-loaded:not(.bad-device) {
-        background-image: url('../lib/assets/images/LMGridBox.svg'), url('../lib/assets/images/DesignLightModeLeft.svg'), url('../lib/assets/images/DesignLightModeRight.svg');
-        background-repeat: repeat, repeat-y, repeat-y;
-        background-position: center center, top left, top right;
+        background-image: url('../lib/assets/images/LMBackgroundImage.svg'), url('../lib/assets/images/DesignLightModeLeft.svg'), url('../lib/assets/images/DesignLightModeRight.svg');
+        background-position: top;
         background-size: auto, 20% auto, 20% auto;
-        background-attachment: fixed, fixed, fixed;
+        
       }
       div[slot="externalproviders"] {
         display: none;
