@@ -48,12 +48,14 @@ export class AppHaxUseCaseFilter extends LitElement {
       css`
         :host {
           overflow: hidden;
-          display: inline-flex;
+          display: block;
+          width: 100%;
         }
         .results {
-          flex-grow: 1;
           display: flex;
-          margin-left: 320px;
+          margin-left: 360px;
+          justify-content: flex-start;
+          align-items: flex-start;
         }
         .reset-button {
           width: 50px;
@@ -69,7 +71,6 @@ export class AppHaxUseCaseFilter extends LitElement {
           font-family: "Press Start 2P", sans-serif;
           font-size: 12px;
           margin: 2px 0 0 16px;
-          
         }
         .upper-filter {
           display: flex;
