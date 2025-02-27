@@ -16,6 +16,7 @@ import "./lib/v2/app-hax-top-bar.js";
 import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
 import "./lib/v2/app-hax-use-case.js";
 import "./lib/v2/app-hax-use-case-filter.js";
+import "./lib/v2/app-hax-search-results.js";
 
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
@@ -1326,7 +1327,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   
   //EDIT HERE
   templateHome() {
-    return html`<div class="start-journey">
+    return html`
+    <app-hax-search-results></app-hax-search-results>
+    <div class="start-journey">
+      
       <app-hax-use-case-filter></app-hax-use-case-filter>
       </div>
       `;
