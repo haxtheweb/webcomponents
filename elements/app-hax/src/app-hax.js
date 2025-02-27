@@ -1328,9 +1328,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   //EDIT HERE
   templateHome() {
     return html`
-    <app-hax-search-results></app-hax-search-results>
     <div class="start-journey">
-      
       <app-hax-use-case-filter></app-hax-use-case-filter>
       </div>
       `;

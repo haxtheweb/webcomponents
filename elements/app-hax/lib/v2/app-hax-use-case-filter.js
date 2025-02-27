@@ -3,6 +3,7 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { store } from "./AppHaxStore.js";
 import "./app-hax-use-case.js";
+import "./app-hax-search-results.js";
 
 export class AppHaxUseCaseFilter extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -57,10 +58,22 @@ export class AppHaxUseCaseFilter extends LitElement {
           justify-content: flex-start;
           align-items: flex-start;
         }
+        app-hax-search-results {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+          margin-left: 365px;
+        }
         .reset-button {
           width: 50px;
           height: 24px;
           margin: 8px;
+        }
+        h3 {
+          font-family: "Press Start 2P";
+          justify-content: flex-start;
+          align-items: flex-start;
+          color: var(--app-hax-accent-color, var(--accent-color));
         }
         input [type="text"]{
           opacity: 1;
@@ -89,7 +102,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           background-color: var(--ddd-theme-default-white);
           border: solid var(--ddd-theme-default-limestoneGray) 1px;
           border-radius: var(--ddd-radius-xs);
-          width: 300px;
+          width: px;
         }
         .filterButtons {
           text-align: left;
@@ -157,6 +170,14 @@ export class AppHaxUseCaseFilter extends LitElement {
           `
         )}
       </div>
+    </div>
+
+    <div class="userSites">
+      <app-hax-search-results></app-hax-search-results>
+    </div>
+
+    <div>
+      <h3>Start New Journey</h3>
     </div>
 
     <div class="results">

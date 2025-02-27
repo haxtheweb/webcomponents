@@ -68,16 +68,26 @@ export class AppHaxSiteBars extends SimpleColors {
       super.styles,
       css`
         :host {
-          --main-banner-width: 513px;
-          --main-banner-height: 60px;
-          --band-banner-height: 208px;
-          display: inline-block;
+          --main-banner-width: 240px;
+          --main-banner-height: 240px;
+          --band-banner-height: 240px;
+          display: block;
           background-color: var(--simple-colors-default-theme-accent-3);
           color: var(--simple-colors-default-theme-grey-12);
           border-color: var(--simple-colors-default-theme-accent-4);
           border-style: solid;
           border-width: 5px 10px 5px 10px;
+          box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.6);
         }
+
+        .imageLink img{
+            display: block;
+            width: 240px;
+            height: 150px;
+            overflow: clip;
+            justify-self: center;
+            border-radius: 4px;
+          }
 
         #labels {
           display: block;
@@ -87,7 +97,7 @@ export class AppHaxSiteBars extends SimpleColors {
         }
         #labels ::slotted(*) {
           font-family: "Press Start 2P", sans-serif;
-          font-size: 25px;
+          font-size: 16px;
         }
         #labels ::slotted(a) {
           color: var(--simple-colors-default-theme-accent-11);
@@ -104,7 +114,7 @@ export class AppHaxSiteBars extends SimpleColors {
           background-color: var(--simple-colors-default-theme-accent-3);
         }
         #mainCard {
-          display: flex;
+          display: block;
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
@@ -128,6 +138,9 @@ export class AppHaxSiteBars extends SimpleColors {
           flex: 1;
         }
         #labels {
+          display: flex;
+          text-align: center;
+          justify-content: center;
           flex: 6;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -144,12 +157,12 @@ export class AppHaxSiteBars extends SimpleColors {
           background-color: var(--simple-colors-default-theme-accent-11);
         }
         #dots {
-          --simple-icon-width: 49px;
-          --simple-icon-height: 49px;
-          color: var(--simple-colors-default-theme-grey-12);
-          background-image: url(${unsafeCSS(DropDownBorder)});
-          background-repeat: no-repeat;
-          background-position: center;
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
+          color: var(--simple-colors-default-theme-accent-11);
+          border: solid var(--simple-colors-default-theme-accent-11);
+          border-radius: 4px;
+          margin-left: 8px;
         }
         @media (max-width: 640px) {
           :host {
@@ -164,6 +177,7 @@ export class AppHaxSiteBars extends SimpleColors {
           #mainCard {
             padding: 0;
           }
+          
         }
       `,
     ];
@@ -177,19 +191,24 @@ export class AppHaxSiteBars extends SimpleColors {
   render() {
     return html`
       <div id="mainCard">
-        <a href="${this.iconLink}" tabindex="-1" id="icon">
-          <simple-icon-button-lite
-            icon="${this.icon}"
-          ></simple-icon-button-lite>
-        </a>
+        <div class="imageLink">
+          <img src="https://i.pinimg.com/originals/a0/42/8b/a0428b95538d471b344081d7ebede5d9.jpg">
+          <a href="${this.iconLink}" tabindex="-1" id="icon">
+            <simple-icon-button-lite
+              icon="${this.icon}"
+            ></simple-icon-button-lite>
+          </a>
+        </div>
+        
         <div id="labels">
           <slot name="heading"></slot>
-        </div>
-        <simple-icon-button-lite
+          <simple-icon-button-lite
           icon="more-vert"
           id="dots"
           @click=${this.__clickButton}
         ></simple-icon-button-lite>
+        </div>
+        
       </div>
       <div id="band-container" ${animate()}>
         <slot name="band"></slot>
