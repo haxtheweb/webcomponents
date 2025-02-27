@@ -11,14 +11,14 @@
         "path": "@haxtheweb/clean-portfolio/clean-portfolio.js"
       },
       "author": "haxtheweb",
-      "image": "./webcomponents/elements/app-hax/lib/assets/screenshots/clean-one.jpg",
+      "image": "/elements/app-hax/lib/assets/screenshots/clean-one.jpg",
       "description": "Art gallery, blog posts, any collection of work and self presentation",
       "icon": "hax:hax2022",
       "demo-url": "https://playground.hax.cloud/site.html?recipe=",
       "attributes": [
         { "icon": "icons:favorite", "tooltip": "Mark as Favorite" },
-        { "icon": "value", "tooltip": "value"},
-        { "icon": "value", "tooltip": "value"}
+        { "icon": "icons:language", "tooltip": "Translatable"},
+        { "icon": "icons:thumb-up", "tooltip": "Popular"}
       ]
      },
      {
@@ -31,14 +31,14 @@
         "path": "@haxtheweb/clean-course/clean-course.js"
       },
       "author": "haxtheweb",
-      "image": "webcomponents/elements/app-hax/lib/clean-one.jpg",
+      "image": "/elements/app-hax/lib/assets/screenshots/clean-one.jpg",
       "description": "Art gallery, blog posts, any collection of work and self presentation",
       "icon": "hax:hax2022",
       "demo-url": "https://playground.hax.cloud/site.html?recipe=",
       "attributes": [
         { "icon": "icons:favorite", "tooltip": "Mark as Favorite" },
-        { "icon": "value", "tooltip": "value"},
-        { "icon": "value", "tooltip": "value"}
+        { "icon": "icons:language", "tooltip": "Translatable"},
+        { "icon": "icons:thumb-up", "tooltip": "Popular"}
       ]
      },
      {
@@ -51,14 +51,14 @@
         "path": "@haxtheweb/clean-blog/clean-blog.js"
       },
       "author": "haxtheweb",
-      "image": "webcomponents/elements/app-hax/lib/clean-one.jpg",
+      "image": "/elements/app-hax/lib/assets/screenshots/clean-one.jpg",
       "description": "Art gallery, blog posts, any collection of work and self presentation",
       "icon": "hax:hax2022",
       "demo-url": "https://playground.hax.cloud/site.html?recipe=",
       "attributes": [
         { "icon": "icons:favorite", "tooltip": "Mark as Favorite" },
-        { "icon": "value", "tooltip": "value"},
-        { "icon": "value", "tooltip": "value"}
+        { "icon": "icons:language", "tooltip": "Translatable"},
+        { "icon": "icons:thumb-up", "tooltip": "Popular"}
       ]
      }]
 }

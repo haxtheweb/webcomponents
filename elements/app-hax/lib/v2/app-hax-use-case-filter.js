@@ -48,17 +48,21 @@ export class AppHaxUseCaseFilter extends LitElement {
       css`
         :host {
           overflow: hidden;
-          display: inline-flex;
+          display: block;
+          width: 100%;
         }
         .results {
           display: flex;
+          margin-left: 360px;
+          justify-content: flex-start;
+          align-items: flex-start;
         }
         .reset-button {
           width: 50px;
           height: 24px;
           margin: 8px;
         }
-        input {
+        input [type="text"]{
           opacity: 1;
           width: 200px;
           max-width: 25vw;
@@ -67,28 +71,43 @@ export class AppHaxUseCaseFilter extends LitElement {
           font-family: "Press Start 2P", sans-serif;
           font-size: 12px;
           margin: 2px 0 0 16px;
-          height: 24px;
         }
         .upper-filter {
           display: flex;
         }
         .filter {
-          visibility: visible;
+          position: fixed;
+          top: 225px;
+          left: 20px;
+          height: 300px;
+          justify-self: flex-start;
           display:flex;
           background-color: white;
           flex-direction: column;
           margin: var(--ddd-spacing-2);
           padding: var(--ddd-spacing-4);
           background-color: var(--ddd-theme-default-white);
+          border: solid var(--ddd-theme-default-limestoneGray) 1px;
           border-radius: var(--ddd-radius-xs);
           width: 300px;
         }
         .filterButtons {
-          text-align: start;
+          text-align: left;
+          align-items: flex-start;
+          justify-self: flex-start;
           display: flex;
           flex-direction: column;
           gap: var(--ddd-spacing-2);
-          max-width: 150px;
+          width: 150px;
+        }
+        .filterButtons label {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          padding: 8px;
+        }
+        input[type="checkbox"] {
+          width: 30px;
         }
       `,
     ];
@@ -129,8 +148,9 @@ export class AppHaxUseCaseFilter extends LitElement {
             <label>
               <input
                 type="checkbox"
+                .value=${filter}
                 .checked=${this.activeFilters.includes(filter)}
-                @change=${() => this.toggleFilter(filter)}
+                @change=${(e) => this.toggleFilter(e)}
               />
               ${filter}
             </label>
@@ -191,21 +211,25 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   handleSearch(event) {
     this.searchQuery = event.target.value.toLowerCase();
+    this.applyFilters();
   }
   
   toggleFilter(event) {
-    const filterId = event.target.dataset.id;
+    const filterValue = event.target.value;
 
-    if (this.activeFilters.includes(filterId)) {
-      this.activeFilters = this.activeFilters.filter((f) => f !== filterId);
+    if (this.activeFilters.includes(filterValue)) {
+      this.activeFilters = this.activeFilters.filter((f) => f !== filterValue);
     } else {
-      this.activeFilters = [...this.activeFilters, filterId];
+      this.activeFilters = [...this.activeFilters, filterValue];
     }
+    this.applyFilters();
   }
 
   applyFilters() {
     const lowerCaseQuery = this.searchQuery.toLowerCase();
     
+    console.log("Active Filters:", this.activeFilters);
+
     this.filteredItems = this.items.filter((item) => {
       const matchesSearch = item.useCaseTitle.toLowerCase().includes(lowerCaseQuery);
     
@@ -215,6 +239,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     
       return matchesSearch && matchesFilters;
     }); 
+    this.requestUpdate();
   }
     
     

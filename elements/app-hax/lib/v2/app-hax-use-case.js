@@ -76,7 +76,7 @@ export class AppHaxUseCase extends LitElement {
           border-radius: var(--ddd-radius-xs);
           align-items: center;
           justify-content: center;
-          color: white;
+          
         }
         #haxIcons {
         position: absolute; 
