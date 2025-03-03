@@ -6,9 +6,7 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS, autorun } from "mobx";
 
 /**
@@ -67,18 +65,66 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   constructor() {
     super();
-    this.siteTitle = "";
-    this.activeLayout = "Text"; //Text, Media, Listing
-
+    // gets site title for site-title
     autorun((reaction) => {
       this.siteTitle = toJS(store.siteTitle);
       this.__disposer.push(reaction);
     });
-    autorun(() => {
-      let items = store.getItemChildren(toJS(store.activeId));
+    // gets home link for site-title
+    autorun((reaction) => {
+      this.homeLink = toJS(store.homeLink);
+      this.__disposer.push(reaction);
+    });
+    // gets current page title for listing-title, media-title, and breadcrumb-title
+    autorun((reaction) => {
+      this.activeTitle = toJS(store.activeTitle);
+      this.__disposer.push(reaction);
+    });
+    // gets current page's parent title for breadcrumb-back
+    autorun((reaction) => {
+      this.parentTitle = toJS(store.parentTitle);
+      this.__disposer.push(reaction);
+    });
+    // gets current page's parent slug for breadcrumb-back
+    autorun((reaction) => {
+      this.parentSlug = toJS(store.parentSlug);
+      this.__disposer.push(reaction);
+    });
+    // gets current page's tags and inserts them into an array for media-tag
+    autorun((reaction) => {
+      this.activeTags = toJS(store.activeTags).split(',');
+      this.__disposer.push(reaction);
+    });
+    // gets top level items for menu-item
+    autorun((reaction) => {
+      // const manifest = store.manifest;
+      let items = store.getItemChildren(null); 
       if (items && items.length > 0) {
         this.topItems = [...items];
       }
+      this.__disposer.push(reaction);
+    });
+    // determines active layout based on following conditions:
+    // - if the current page has no child, it's Text
+    // - if the current page has a child, it's Listing
+    // - if the current page has a parent, it's Media
+    autorun((reaction) => {
+      // const manifest = store.manifest;
+      this.activeItem = toJS(store.activeItem);
+      if (this.activeItem.parent) {
+        this.activeLayout = "Media";
+      } else {
+        let items = store.getItemChildren(store.activeId);
+        if (items) {
+          if (items.length > 0) {
+            this.activeLayout = "Listing";
+            this.items = items;
+          } else if (items.length == 0) {
+            this.activeLayout = "Text";
+          }
+        }
+      }
+      this.__disposer.push(reaction);
     });
   }
 
@@ -86,9 +132,15 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   static get properties() {
     return {
       ...super.properties,
-      title: { type: String },
+      siteTitle: { type: String },
+      homeLink: { type: String },
+      activeTitle: { type: String },
       activeLayout: { type: String },
+      activeTags: { type: Array },
+      parentTitle: { type: String },
+      parentSlug: { type: String },
       topItems: { type: Array },
+      items: { type: Array }
     };
   }
 
@@ -202,35 +254,26 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         padding: 0.5rem 0.5rem;
         transition: all 0.2s ease-in-out;
       }
-      #site-title:hover {
+      #site-title:hover,
+      #site-title:focus {
         color: var(--portfolio-textHeaderHover);
       }
 
-      header a.header-menu-item {
+      header a.menu-item {
         display: inline-block;
-        text-align: center;
         color: var(--portfolio-textHeader);
         font-family: "Work Sans";
+        font-weight: 450;
+        text-align: center;
         text-decoration: none;
         transition: all 0.3s ease-in-out;
-
-        font-weight: 450;
         margin: 10px;
         position: relative;
       }
-      .title {
-        text-align: center;
-        color: var(--portfolio-textHeader);
-        font-family: "Work Sans";
-        font-weight: 450;
-        text-decoration: none;
-        transition: all 0.3s ease-in-out;
-        margin: 10px;
-      }
-      .menu-item-underline {
+      header a.menu-item:after {
         content: "";
         position: absolute;
-        bottom: -12px;
+        bottom: -8px;
         left: 50%;
         width: 0;
         height: 4px;
@@ -239,92 +282,78 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         transition: all 0.2s ease-in-out;
       }
 
-      .header-menu-item:hover,
-      .header-menu-item:focus {
+      .menu-item:hover,
+      .menu-item:focus {
         color: var(--portfolio-textHeaderHover);
       }
-      .header-menu-item:hover .menu-item-underline,
-      .header-menu-item:focus .menu-item-underline {
+      .menu-item:hover:after,
+      .menu-item:focus:after {
         width: 100%;
         transform: translateX(-50%) scaleX(1);
       }
-
-      .breadcrumb-container {
-        background-color: var(--portfolio-grey);
-        width: 100%;
-        height: 60px;
-        display: flex;
-        justify-content: center;
-      }
-      .breadcrumb-border {
-        border-top: 1px solid var(--portfolio-lighterGrey);
-        background-color: var(--portfolio-grey);
-        width: 75%;
-        display: flex;
-        justify-content: center;
-      }
+      
       .breadcrumb {
-        background-color: var(--portfolio-grey);
-        font-family: "Work Sans";
-        font-weight: 450;
-        width: 95%;
-        height: 100%;
         display: flex;
         align-items: center;
+        width: 100%;
+        height: 60px;
         gap: 10px;
-      }
-      .breadcrumb-separator {
-        color: var(--portfolio-white);
-      }
-      .breadcrumb-item {
-        color: var(--portfolio-white);
-        font-weight: bold;
-      }
-      div .breadcrumb-link {
-        color: var(--portfolio-white);
+        margin-left: 250px;
+        font-family: "Work Sans";
         font-weight: 450;
       }
+      div .breadcrumb-back {
+        color: var(--portfolio-lightDark-blackWhite);
+        font-weight: 450;
+      }
+      .breadcrumb-split {
+        color: var(--portfolio-lightDark-blackWhite);
+      }
+      .breadcrumb-title {
+        color: var(--portfolio-lightDark-blackWhite);
+        font-weight: bold;
+      }
 
-      .text-layout-container {
+      .text-container {
         margin: auto;
         margin-top: 50px;
         width: 40%;
         text-align: left;
       }
 
-      .listing-layout-container {
+      .listing-container {
         margin: auto;
         width: 50%;
       }
-      .listing-layout-title {
+      .listing-title {
         font-family: "Playfair Display";
         font-size: 96px;
         font-weight: bold;
         margin-top: 100px;
       }
-      .listing-layout-category {
+      .listing-category {
         font-family: "Source Code Pro";
         text-transform: uppercase;
         border-top: 6px solid var(--portfolio-lightDark-blackWhite);
         margin-bottom: 25px;
       }
-      .listing-layout-list {
+      .listing-list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 5px;
         width: 100%;
         transition: all 0.2s ease-in-out;
       }
-      div .listing-layout-card {
+      div .listing-card {
         width: 180px;
         max-width: 100%;
         margin: 10px;
         text-decoration: none;
       }
-      .listing-layout-card:hover .listing-layout-cardtitle {
+      .listing-card:hover .listing-cardtitle {
         text-decoration: underline;
       }
-      .listing-layout-card img {
+      .listing-card img {
         width: 100%;
         height: 125px;
         object-fit: cover;
@@ -332,57 +361,56 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         border-radius: 6px;
         margin-bottom: 12px;
       }
-      .listing-layout-cardtitle {
+      .listing-cardtitle {
         color: var(--portfolio-lightDark-blackWhite);
         font-family: "Work Sans";
         font-weight: 400;
         text-transform: uppercase;
       }
-      .listing-layout-cardyear {
+      .listing-cardyear {
         color: #6D4C41;
         font-family: "Source Code Pro";
         font-size: 14px;
         font-weight: 400;
       }
 
-      .media-layout-container {
-        background-color: var(--portfolio-grey);
-      }
-      .media-layout-content {
+      .media-content {
         margin: auto;
         margin-top: 100px;
         width: 38%;
         padding-bottom: 50px;
       }
-      .media-layout-banner {
+      .media-banner {
         width: 100%;
         height: auto;
         transition: width 0.75s ease-in-out;
       }
-      .media-layout-title {
-        color: var(--portfolio-white);
+      .media-title {
+        color: var(--portfolio-lightDark-blackWhite);
         font-family: "Playfair Display";
         font-size: 72px;
         font-weight: bold;
         margin-top: 100px;
         margin-bottom: 25px;
       }
-      .media-layout-year {
-        color: var(--portfolio-white);
+      .media-tag-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .media-tag {
+        color: var(--portfolio-lightDark-blackWhite);
         font-family: "Source Code Pro";
-        font-size: 28px;
+        font-size: 1.25em;
         font-weight: 400;
         padding-top: 5px;
         padding-bottom: 5px;
-        border-top: 3px solid var(--portfolio-white);
-        border-bottom: 1px solid var(--portfolio-white);
         margin-bottom: 25px;
       }
-      .media-layout-text {
-        color: var(--portfolio-lightGrey);
+      .media-text {
+        color: var(--portfolio-lightDark-blackWhite);
         font-family: "Source Code Pro";
       }
-      .media-layout-image {
+      .media-image {
         width: 100%;
         height: auto;
         margin-bottom: 18px;
@@ -412,49 +440,28 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   renderText() {
     return html`
-      <div class="text-layout-container" id="contentcontainer">
+      <div class="text-container" id="contentcontainer">
         <div id="slot"><slot></slot></div>
-        
       </div>
     `;
   }
 
   renderListing() {
     return html`
-          <div class="listing-layout-container">
-            <h1 class="listing-layout-title">Design</h1> 
-            <h3 class="listing-layout-category">Art Installations</h3>
+          <div class="listing-container" id="contentcontainer">
+            <h1 class="listing-title">${this.activeTitle}</h1> 
+            <h3 class="listing-category">Art Installations</h3>
 
-            <div class="listing-layout-list">
-              <a class="listing-layout-card" href="">
-                <img src="https://michaelcollins.xyz/assets/images/portfolio/privy-exhibition/privy-gallery-02.jpg">
-                <div class="listing-layout-cardtitle">Privy</div>
-                  <div class="listing-layout-cardyear">2016</div>
-              </a>
-
-              <a class="listing-layout-card" href="">
-                <img src="https://michaelcollins.xyz/assets/images/portfolio/the-real-estate/theRealEstate_02.jpg">
-                <div class="listing-layout-cardtitle">The Real Estate</div>
-                  <div class="listing-layout-cardyear">2012</div>
-              </a>
-
-              <a class="listing-layout-card" href="">
-                <img src="https://michaelcollins.xyz/assets/images/portfolio/subrosa/subRosa-000.jpg">
-                <div class="listing-layout-cardtitle">Subrosa</div>
-                  <div class="listing-layout-cardyear">2012</div>
-              </a>
-
-              <a class="listing-layout-card" href="">
-                <img src="https://michaelcollins.xyz/assets/images/portfolio/american-cheese/americancheese_z-corp_01.jpg">
-                <div class="listing-layout-cardtitle">American Cheese</div>
-                  <div class="listing-layout-cardyear">2012</div>
-              </a>
-
-              <a class="listing-layout-card" href="">
-                <img src="https://michaelcollins.xyz/assets/images/portfolio/interspatial/interspatial-front.jpg">
-                <div class="listing-layout-cardtitle">Interspatial</div>
-                  <div class="listing-layout-cardyear">2011</div>
-              </a>
+            <div class="listing-list">
+              ${this.items.map(
+                (item) => html`
+                  <a class="listing-card" href="${item.slug}">
+                    <img src="https://michaelcollins.xyz/assets/images/portfolio/privy-exhibition/privy-gallery-02.jpg">
+                    <div class="listing-cardtitle">${item.title}</div>
+                      <div class="listing-cardyear">2025</div>
+                  </a>
+                `,
+              )}
             </div>
           </div>
     `;
@@ -462,35 +469,34 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   renderMedia() {
     // TODO: recolor header and footer on this layout
-    console.log(document.querySelector("header"));
     // document.querySelector("header").style.color = "#ffffff";
-
+    console.log(this.activeItem.parent.title);
     return html`
     <div class="breadcrumb-container">
-      <div class="breadcrumb-border">
-        <div class="breadcrumb">
-          <a class="breadcrumb-link" href="">← Design</a>
-          <span class="breadcrumb-separator">/</span>
-          <span class="breadcrumb-item">Interspatial</span>
-        </div>
+      <div class="breadcrumb">
+        <a class="breadcrumb-back" href=${this.parentSlug}>← ${this.parentTitle}</a>
+        <span class="breadcrumb-split">/</span>
+        <span class="breadcrumb-title">${this.activeTitle}</span>
       </div>
     </div>
 
-    <div class="media-layout-container">
-      <img class="media-layout-banner" src="https://michaelcollins.xyz/assets/images/portfolio/interspatial/interspatial-front.jpg">
+    <img class="media-banner" src="https://michaelcollins.xyz/assets/images/portfolio/interspatial/interspatial-front.jpg">
 
-      <div class="media-layout-content">
-        <h1 class="media-layout-title">Interspatial</h1>
-        <h3 class="media-layout-year">2011</h3>
-
-        <p class="media-layout-text">Hey there, it's me, the one and only:</p>
-        <p class="media-layout-text">Collin Michaels.</p>
-        <p class="media-layout-text">This is a portfolio website so I imagine you're here to look at projects. You should see this really awesome project I worked on (the one in the image above, AND it's in the images below too - how freakin' cool is that?) I spent a lot of time on it, so I think you should check it out. I made it in 2011, as you can see... wow, that was 14 years ago! Crazy how time flies like that, huh? Anyhow, did you look at the project yet? You should do that, I promise you won't be disappointed. Look at it! Do it!</p>
-
-        <img class="media-layout-image" src="https://michaelcollins.xyz/assets/images/portfolio/interspatial/breakdown.jpg">
-        <img class="media-layout-image" src="https://michaelcollins.xyz/assets/images/portfolio/interspatial/07_student_polymer_full_production.559.png">
-        <img class="media-layout-image" src="https://michaelcollins.xyz/assets/images/portfolio/interspatial/interspatial-front.jpg">
+    <div class="media-content" id="contentcontainer">
+      <h1 class="media-title">${this.activeTitle}</h1>
+      <div class="media-tag-list" >
+       ${this.activeTags && this.activeTags.length > 0
+        ? this.activeTags.map(
+            (item, index) => html`
+              <h3 class="media-tag">
+                ${item}${index < this.activeTags.length - 1 ? ',' : ''}
+              </h3>
+            `
+          )
+        : ''}
       </div>
+      
+      <div id="slot"><slot></slot></div>
     </div>
     `;
   }
@@ -508,18 +514,19 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   // Lit render the HTML
   render() {
     this.loadFonts();
+    console.log("ACTIVE LAYOUT:", this.activeLayout);
 
     return html`
       <button id="layout-button" @click="${this.ChangeLayout}">Active layout: ${this.activeLayout}</button>
       
       <header>
-        <!-- <a id="site-title" href="">Michael Collins</a> -->
-        <a id="site-title" href="">${this.siteTitle}</a>
+        <a id="site-title" href="${this.homeLink}">${this.siteTitle}</a>
         <div>
-          <a class="header-menu-item" href="">About<div class="menu-item-underline"></div></a>
-          <a class="header-menu-item" href="">Design<div class="menu-item-underline"></div></a>
-          <a class="header-menu-item" href="">Publications<div class="menu-item-underline"></div></a>
-          <a class="header-menu-item" href="">Curriculum<div class="menu-item-underline"></div></a>
+          ${this.topItems.map(
+              (item) => html`
+                <a class="menu-item" href="${item.slug}"> ${item.title} </a>
+              `,
+          )}
         </div>
       </header>
 
