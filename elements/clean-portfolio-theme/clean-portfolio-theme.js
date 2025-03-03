@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
@@ -64,8 +65,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   constructor() {
     super();
-    this.title = "";
+    this.siteTitle = "";
     this.activeLayout = "Text"; //Text, Media, Listing
+
+    autorun((reaction) => {
+      this.siteTitle = toJS(store.siteTitle);
+      this.__disposer.push(reaction);
+    });
   }
 
   // Lit reactive properties
@@ -203,6 +209,15 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         margin: 10px;
         position: relative;
       }
+      .title {
+        text-align: center;
+        color: var(--portfolio-textHeader);
+        font-family: "Work Sans";
+        font-weight: 450;
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+        margin: 10px;
+      }
       .menu-item-underline {
         content: "";
         position: absolute;
@@ -214,6 +229,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         transform: translateX(-50%);
         transition: all 0.2s ease-in-out;
       }
+
       .header-menu-item:hover,
       .header-menu-item:focus {
         color: var(--portfolio-textHeaderHover);
@@ -488,7 +504,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       <button id="layout-button" @click="${this.ChangeLayout}">Active layout: ${this.activeLayout}</button>
       
       <header>
-        <a id="site-title" href="">Michael Collins</a>
+        <!-- <a id="site-title" href="">Michael Collins</a> -->
+        <a id="site-title" href="">${this.siteTitle}</a>
         <div>
           <a class="header-menu-item" href="">About<div class="menu-item-underline"></div></a>
           <a class="header-menu-item" href="">Design<div class="menu-item-underline"></div></a>
