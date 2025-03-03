@@ -8,6 +8,8 @@ import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCM
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { toJS, autorun } from "mobx";
 
 /**
  * `clean-portfolio-theme`
@@ -72,6 +74,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       this.siteTitle = toJS(store.siteTitle);
       this.__disposer.push(reaction);
     });
+    autorun(() => {
+      let items = store.getItemChildren(toJS(store.activeId));
+      if (items && items.length > 0) {
+        this.topItems = [...items];
+      }
+    });
   }
 
   // Lit reactive properties
@@ -80,6 +88,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       ...super.properties,
       title: { type: String },
       activeLayout: { type: String },
+      topItems: { type: Array },
     };
   }
 

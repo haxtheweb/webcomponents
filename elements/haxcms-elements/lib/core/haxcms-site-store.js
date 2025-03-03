@@ -393,6 +393,14 @@ class Store {
 
   get processedItems() {}
   /**
+   * Get children given an item
+   */
+  getItemChildren(itemId) {
+    if (this.manifest && this.manifest.items) {
+      return this.manifest.items.filter((item) => item.parent === itemId);
+    }
+  }
+  /**
    * Compute items leveraging the site query engine
    */
   _computeItems(start, end, parent, dynamicMethodology, _routerManifest) {
