@@ -626,6 +626,11 @@ export class WebContainerEl extends DDDSuper(LitElement) {
     <div class="terminal" part="terminal"></div>`;
   }
 
+  refreshIframe() {
+    const iframe = this.shadowRoot.querySelector('iframe');
+    iframe.src = iframe.src;
+  }
+
   /**
    * haxProperties integration via file reference
    */
