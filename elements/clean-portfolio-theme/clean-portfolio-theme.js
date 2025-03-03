@@ -4,6 +4,8 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { toJS, autorun } from "mobx";
 
 /**
  * `clean-portfolio-theme`
@@ -20,6 +22,12 @@ export class CleanPortfolioTheme extends DDDSuper(LitElement) {
   constructor() {
     super();
     this.title = "";
+    autorun(() => {
+      let items = store.getItemChildren(toJS(store.activeId));
+      if (items && items.length > 0) {
+        this.topItems = [...items];
+      }
+    });
   }
 
   // Lit reactive properties
@@ -27,6 +35,7 @@ export class CleanPortfolioTheme extends DDDSuper(LitElement) {
     return {
       ...super.properties,
       title: { type: String },
+      topItems: { type: Array },
     };
   }
 
