@@ -3,8 +3,9 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
-//import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js";
-//import { autorun, toJS } from "mobx";
+import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js";
+import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
@@ -23,6 +24,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 //    - Condensed menu
 // - Light-dark support
 // - Abstraction
+//    - Active media banner
 //    - Breadcrumb
 //    - Social media card
 // - Other
@@ -30,7 +32,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 //    - Focus should only highlight a menu item and not its underline
 //    - Header and footer should change color for media layout
 
-export class CleanPortfolioTheme extends DDDSuper(LitElement) {
+export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   static PortfolioFonts = [
     "https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap",
@@ -99,14 +101,14 @@ export class CleanPortfolioTheme extends DDDSuper(LitElement) {
         --portfolio-lightDark-bg: light-dark(var(--portfolio-backgroundWhite), var(--portfolio-black));
         --portfolio-lightDark-footer: light-dark(var(--portfolio-black), var(--portfolio-darkGrey));
         
-        background-color: var(--portfolio-lightDark-bg);
+        background-color: red;
       }
 
       header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 30px 250px;
+        padding: 26px 250px;
         background-color: var(--portfolio-darkGrey);
         border-bottom: 1px;
       }
@@ -144,20 +146,24 @@ export class CleanPortfolioTheme extends DDDSuper(LitElement) {
       p {
         font-family: "Source Code Pro";
         font-size: 24px;
+        line-height: 1.5;
         margin-bottom: 1.3em;
       }
 
       ul {
         list-style-type: disc;
       }
-
       li {
         font-family: "Source Code Pro";
       }
-
-      /* DDD overrides bullet point color */
       li::marker {
         color: var(--portfolio-lightDark-blackWhite) !important;
+      }
+      ul li, ol li {
+          margin-bottom: 0.5em
+      }
+      li ul,li ol {
+          margin-top: 0.5em
       }
 
       footer {
@@ -173,15 +179,14 @@ export class CleanPortfolioTheme extends DDDSuper(LitElement) {
       #site-title {
         color: var(--portfolio-textHeader);
         font-family: "Work Sans";
-        text-decoration: none;
-        transition: all 0.2s ease-in-out;
-
+        font-weight: bold;
+        font-size: 20px;
         text-transform: uppercase;
+        text-decoration: none;
         border: 5px solid white;
-        font-weight: 750;
-        padding: 12px;
+        padding: 0.5rem 0.5rem;
+        transition: all 0.2s ease-in-out;
       }
-
       #site-title:hover {
         color: var(--portfolio-textHeaderHover);
       }
@@ -198,15 +203,9 @@ export class CleanPortfolioTheme extends DDDSuper(LitElement) {
         margin: 10px;
         position: relative;
       }
-
-      header a.header-menu-item:hover {
-        color: var(--portfolio-textHeaderHover);
-      }
-
       .menu-item-underline {
         content: "";
         position: absolute;
-        outline: none;
         bottom: -12px;
         left: 50%;
         width: 0;
@@ -215,80 +214,14 @@ export class CleanPortfolioTheme extends DDDSuper(LitElement) {
         transform: translateX(-50%);
         transition: all 0.2s ease-in-out;
       }
-
-      header a.header-menu-item:hover .menu-item-underline {
+      .header-menu-item:hover,
+      .header-menu-item:focus {
+        color: var(--portfolio-textHeaderHover);
+      }
+      .header-menu-item:hover .menu-item-underline,
+      .header-menu-item:focus .menu-item-underline {
         width: 100%;
         transform: translateX(-50%) scaleX(1);
-      }
-
-      header a.header-menu-item:focus .menu-item-underline {
-        width: 100%;
-        transform: translateX(-50%) scaleX(1);
-      }
-      
-      .page-content-1 {
-        margin: auto;
-        margin-top: 50px;
-        width: 40%;
-        text-align: left;
-      }
-
-      .page-content-2 {
-        margin: auto;
-        width: 50%;
-      }
-
-      .page-title {
-        font-family: "Playfair Display";
-        font-size: 96px;
-        font-weight: bold;
-        margin-top: 100px;
-      }
-
-      .page-category {
-        font-family: "Source Code Pro";
-        text-transform: uppercase;
-        border-top: 6px solid var(--portfolio-lightDark-blackWhite);
-        margin-bottom: 25px;
-      }
-
-      .page-card-list {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 5px;
-        width: 100%;
-        transition: all 0.2s ease-in-out;
-      }
-      .page-card {
-        width: 180px;
-        max-width: 100%;
-        margin: 10px;
-
-        /* blue underline from DDD shows here, override is needed */
-        text-decoration: none !important;
-      }
-      .page-card:hover .page-card-title {
-        text-decoration: underline;
-      }
-      .page-card img {
-        width: 100%;
-        height: 125px;
-        object-fit: cover;
-        display: block;
-        border-radius: 6px;
-        margin-bottom: 12px;
-      }
-      .page-card-title {
-        color: var(--portfolio-lightDark-blackWhite);
-        font-family: "Work Sans";
-        font-weight: 400;
-        text-transform: uppercase;
-      }
-      .page-card-year {
-        color: #6D4C41;
-        font-family: "Source Code Pro";
-        font-size: 14px;
-        font-weight: 400;
       }
 
       .breadcrumb-container {
@@ -322,10 +255,69 @@ export class CleanPortfolioTheme extends DDDSuper(LitElement) {
         color: var(--portfolio-white);
         font-weight: bold;
       }
-      .breadcrumb-link {
-        /* blue text color and weight for links from DDD show here, override is needed */
-        color: var(--portfolio-white) !important;
-        font-weight: 450 !important;
+      div .breadcrumb-link {
+        color: var(--portfolio-white);
+        font-weight: 450;
+      }
+
+      .text-layout-container {
+        margin: auto;
+        margin-top: 50px;
+        width: 40%;
+        text-align: left;
+      }
+
+      .listing-layout-container {
+        margin: auto;
+        width: 50%;
+      }
+      .listing-layout-title {
+        font-family: "Playfair Display";
+        font-size: 96px;
+        font-weight: bold;
+        margin-top: 100px;
+      }
+      .listing-layout-category {
+        font-family: "Source Code Pro";
+        text-transform: uppercase;
+        border-top: 6px solid var(--portfolio-lightDark-blackWhite);
+        margin-bottom: 25px;
+      }
+      .listing-layout-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        width: 100%;
+        transition: all 0.2s ease-in-out;
+      }
+      div .listing-layout-card {
+        width: 180px;
+        max-width: 100%;
+        margin: 10px;
+        text-decoration: none;
+      }
+      .listing-layout-card:hover .listing-layout-cardtitle {
+        text-decoration: underline;
+      }
+      .listing-layout-card img {
+        width: 100%;
+        height: 125px;
+        object-fit: cover;
+        display: block;
+        border-radius: 6px;
+        margin-bottom: 12px;
+      }
+      .listing-layout-cardtitle {
+        color: var(--portfolio-lightDark-blackWhite);
+        font-family: "Work Sans";
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+      .listing-layout-cardyear {
+        color: #6D4C41;
+        font-family: "Source Code Pro";
+        font-size: 14px;
+        font-weight: 400;
       }
 
       .media-layout-container {
@@ -395,56 +387,48 @@ export class CleanPortfolioTheme extends DDDSuper(LitElement) {
 
   renderText() {
     return html`
-      <div class="page-content-1">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <h3>Chapter 1 - Genesis</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        <h3>Shopping list</h3>
-        <ul>
-          <li>Milk</li>
-          <li>Eggs</li>
-          <li>Cheese</li>
-        </ul>
+      <div class="text-layout-container" id="contentcontainer">
+        <div id="slot"><slot></slot></div>
+        
       </div>
     `;
   }
 
   renderListing() {
     return html`
-          <div class="page-content-2">
-            <h1 class="page-title">Design</h1> 
-            <h3 class="page-category">Art Installations</h3>
+          <div class="listing-layout-container">
+            <h1 class="listing-layout-title">Design</h1> 
+            <h3 class="listing-layout-category">Art Installations</h3>
 
-            <div class="page-card-list">
-              <a class="page-card" href="">
+            <div class="listing-layout-list">
+              <a class="listing-layout-card" href="">
                 <img src="https://michaelcollins.xyz/assets/images/portfolio/privy-exhibition/privy-gallery-02.jpg">
-                <div class="page-card-title">Privy</div>
-                  <div class="page-card-year">2016</div>
+                <div class="listing-layout-cardtitle">Privy</div>
+                  <div class="listing-layout-cardyear">2016</div>
               </a>
 
-              <a class="page-card" href="">
+              <a class="listing-layout-card" href="">
                 <img src="https://michaelcollins.xyz/assets/images/portfolio/the-real-estate/theRealEstate_02.jpg">
-                <div class="page-card-title">The Real Estate</div>
-                  <div class="page-card-year">2012</div>
+                <div class="listing-layout-cardtitle">The Real Estate</div>
+                  <div class="listing-layout-cardyear">2012</div>
               </a>
 
-              <a class="page-card" href="">
+              <a class="listing-layout-card" href="">
                 <img src="https://michaelcollins.xyz/assets/images/portfolio/subrosa/subRosa-000.jpg">
-                <div class="page-card-title">Subrosa</div>
-                  <div class="page-card-year">2012</div>
+                <div class="listing-layout-cardtitle">Subrosa</div>
+                  <div class="listing-layout-cardyear">2012</div>
               </a>
 
-              <a class="page-card" href="">
+              <a class="listing-layout-card" href="">
                 <img src="https://michaelcollins.xyz/assets/images/portfolio/american-cheese/americancheese_z-corp_01.jpg">
-                <div class="page-card-title">American Cheese</div>
-                  <div class="page-card-year">2012</div>
+                <div class="listing-layout-cardtitle">American Cheese</div>
+                  <div class="listing-layout-cardyear">2012</div>
               </a>
 
-              <a class="page-card" href="">
+              <a class="listing-layout-card" href="">
                 <img src="https://michaelcollins.xyz/assets/images/portfolio/interspatial/interspatial-front.jpg">
-                <div class="page-card-title">Interspatial</div>
-                  <div class="page-card-year">2011</div>
+                <div class="listing-layout-cardtitle">Interspatial</div>
+                  <div class="listing-layout-cardyear">2011</div>
               </a>
             </div>
           </div>
@@ -453,6 +437,7 @@ export class CleanPortfolioTheme extends DDDSuper(LitElement) {
 
   renderMedia() {
     // TODO: recolor header and footer on this layout
+    console.log(document.querySelector("header"));
     // document.querySelector("header").style.color = "#ffffff";
 
     return html`
@@ -505,16 +490,16 @@ export class CleanPortfolioTheme extends DDDSuper(LitElement) {
       <header>
         <a id="site-title" href="">Michael Collins</a>
         <div>
-          <a class="header-menu-item" href="">About <div class="menu-item-underline"></div></a>
-          <a class="header-menu-item" href="">Design <div class="menu-item-underline"></div></a>
-          <a class="header-menu-item" href="">Publications <div class="menu-item-underline"></div></a>
-          <a class="header-menu-item" href="">Curriculum <div class="menu-item-underline"></div></a>
+          <a class="header-menu-item" href="">About<div class="menu-item-underline"></div></a>
+          <a class="header-menu-item" href="">Design<div class="menu-item-underline"></div></a>
+          <a class="header-menu-item" href="">Publications<div class="menu-item-underline"></div></a>
+          <a class="header-menu-item" href="">Curriculum<div class="menu-item-underline"></div></a>
         </div>
       </header>
 
-      ${this.activeLayout === "Text"
+      ${this.activeLayout == "Text"
       ? this.renderText()
-      : this.activeLayout === "Media"
+      : this.activeLayout == "Media"
       ? this.renderMedia()
       : this.renderListing()}
       
