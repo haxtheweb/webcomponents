@@ -6,9 +6,7 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS, autorun } from "mobx";
 
 /**
@@ -74,11 +72,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       this.siteTitle = toJS(store.siteTitle);
       this.__disposer.push(reaction);
     });
-    autorun(() => {
-      let items = store.getItemChildren(toJS(store.activeId));
+    autorun((reaction) => {
+      const manifest = store.manifest;
+      let items = store.getItemChildren(null);
       if (items && items.length > 0) {
         this.topItems = [...items];
       }
+      this.__disposer.push(reaction);
     });
   }
 
