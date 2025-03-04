@@ -77,9 +77,11 @@ export class AppHaxSearchResults extends SimpleColors {
         }
         ul,
         li {
-          margin: 0;
+          margin: 4px;
           padding: 0;
           list-style: none;
+          display: flex;
+          flex-wrap: wrap;
         }
         app-hax-site-bar {
           margin: 8px 0;

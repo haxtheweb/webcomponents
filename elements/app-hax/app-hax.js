@@ -16,6 +16,7 @@ import "./lib/v2/app-hax-top-bar.js";
 import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
 import "./lib/v2/app-hax-use-case.js";
 import "./lib/v2/app-hax-use-case-filter.js";
+import "./lib/v2/app-hax-search-results.js";
 
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
@@ -947,8 +948,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           padding: 12px;
           font-size: 12px;
           border: 4px solid var(--simple-colors-default-theme-grey-12);
-          background-color: var(--simple-colors-default-theme-yellow-5);
-          color: var(--simple-colors-default-theme-grey-12);
+          background-color: var(--ddd-theme-default-nittanyNavy);
+          color: var(--ddd-theme-default-slateMaxLight);
           width: 100px;
           word-wrap: break-word;
           text-align: center;
@@ -1326,7 +1327,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   
   //EDIT HERE
   templateHome() {
-    return html`<div class="start-journey">
+    return html`
+    <div class="start-journey">
       <app-hax-use-case-filter></app-hax-use-case-filter>
       </div>
       `;

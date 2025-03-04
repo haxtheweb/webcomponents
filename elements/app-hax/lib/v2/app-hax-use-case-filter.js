@@ -3,6 +3,7 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { store } from "./AppHaxStore.js";
 import "./app-hax-use-case.js";
+import "./app-hax-search-results.js";
 
 export class AppHaxUseCaseFilter extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -57,18 +58,31 @@ export class AppHaxUseCaseFilter extends LitElement {
           justify-content: flex-start;
           align-items: flex-start;
         }
+        app-hax-search-results {
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+          margin-left: 365px;
+        }
         .reset-button {
           width: 50px;
           height: 24px;
           margin: 8px;
         }
+        h3 {
+          background-color: white, black;
+          font-family: "Press Start 2P";
+          justify-content: flex-start;
+          align-items: flex-start;
+          color: var(--app-hax-accent-color, var(--accent-color));
+        }
         input [type="text"]{
           opacity: 1;
-          width: 200px;
+          width: 216px;
           max-width: 25vw;
           transition: all ease-in-out 0.3s;
           padding: 4px;
-          font-family: "Press Start 2P", sans-serif;
+          font-family: "Press Start 2P";
           font-size: 12px;
           margin: 2px 0 0 16px;
         }
@@ -77,7 +91,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         .filter {
           position: fixed;
-          top: 225px;
+          top: 215px;
           left: 20px;
           height: 300px;
           justify-self: flex-start;
@@ -88,8 +102,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           padding: var(--ddd-spacing-4);
           background-color: var(--ddd-theme-default-white);
           border: solid var(--ddd-theme-default-limestoneGray) 1px;
-          border-radius: var(--ddd-radius-xs);
-          width: 300px;
+          width: px;
         }
         .filterButtons {
           text-align: left;
@@ -101,6 +114,8 @@ export class AppHaxUseCaseFilter extends LitElement {
           width: 150px;
         }
         .filterButtons label {
+          font-family: "Press Start 2P";
+          font-size: 16px;
           display: flex;
           align-items: center;
           justify-content: flex-start;
@@ -159,6 +174,14 @@ export class AppHaxUseCaseFilter extends LitElement {
       </div>
     </div>
 
+    <div class="userSites">
+      <app-hax-search-results></app-hax-search-results>
+    </div>
+
+    <div>
+      <h3>Start New Journey</h3>
+    </div>
+
     <div class="results">
       ${this.filteredItems.length > 0
         ? this.filteredItems.map(
@@ -211,6 +234,16 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   handleSearch(event) {
     this.searchQuery = event.target.value.toLowerCase();
+
+    const matchingFilter = this.filters.find(filter => 
+      filter.toLowerCase() === this.searchQuery
+    );
+
+    const checkbox = this.shadowRoot.querySelector(`input[value="${matchingFilter}"]`);
+    if (checkbox) {
+      checkbox.checked = true;
+    }
+
     this.applyFilters();
   }
   
@@ -231,7 +264,9 @@ export class AppHaxUseCaseFilter extends LitElement {
     console.log("Active Filters:", this.activeFilters);
 
     this.filteredItems = this.items.filter((item) => {
-      const matchesSearch = item.useCaseTitle.toLowerCase().includes(lowerCaseQuery);
+      const matchesSearch = lowerCaseQuery === "" ||
+        item.useCaseTitle.toLowerCase().includes(lowerCaseQuery) ||
+        item.useCaseTag.some(tag => tag.toLowerCase() === lowerCaseQuery);
     
       const matchesFilters = this.activeFilters.length === 0 || 
       this.activeFilters.some(filter => 
