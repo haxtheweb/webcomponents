@@ -39,12 +39,13 @@ export class AppHaxUseCase extends LitElement {
           display: flex;
           flex-direction: column;
           max-width: 240px;
-          margin:20px;
+          margin:16px;
           font-family: var(--ddd-font-primary);
-          background-color: #EDF8F7;
+          color: var(--simple-colors-default-theme-light-blue-12, var(--accent-color));
+          background-color: var(--simple-colors-default-theme-light-blue-1, var(--accent-color));
           padding:  4px;
           min-height: 270px;
-          border: solid var(--ddd-theme-default-limestoneGray) 1px;
+          border: solid var(--simple-colors-default-theme-light-blue-12, var(--accent-9)) 8px;
           box-shadow: var(--ddd-boxShadow-md);
           text-align: center;
         }

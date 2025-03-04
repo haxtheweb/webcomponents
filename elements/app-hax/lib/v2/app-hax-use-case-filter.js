@@ -70,13 +70,22 @@ export class AppHaxUseCaseFilter extends LitElement {
           margin: 8px;
         }
         h3 {
-          background-color: white, black;
+          background-color: var(--simple-colors-default-theme-accent-1, var(--app-hax-accent-color));
+          width: 500px;
+          height: 50px;
+          text-align: center;
           font-family: "Press Start 2P";
-          justify-content: flex-start;
-          align-items: flex-start;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           color: var(--app-hax-accent-color, var(--accent-color));
         }
-        input [type="text"]{
+        .startNew {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        input[type="text"]{
           opacity: 1;
           width: 216px;
           max-width: 25vw;
@@ -85,6 +94,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           font-family: "Press Start 2P";
           font-size: 12px;
           margin: 2px 0 0 16px;
+          height: 20px;
         }
         .upper-filter {
           display: flex;
@@ -92,19 +102,20 @@ export class AppHaxUseCaseFilter extends LitElement {
         .filter {
           position: fixed;
           top: 215px;
-          left: 20px;
+          left: 16px;
           height: 300px;
           justify-self: flex-start;
           display:flex;
-          background-color: white;
+          background-color: var(--simple-colors-default-theme-accent-2, var(--accent-color));
+          color: var(--simple-colors-default-theme-accent-12, var(--accent-color));
           flex-direction: column;
           margin: var(--ddd-spacing-2);
           padding: var(--ddd-spacing-4);
-          background-color: var(--ddd-theme-default-white);
           border: solid var(--ddd-theme-default-limestoneGray) 1px;
-          width: px;
+          width: 300px;
         }
         .filterButtons {
+          margin-top: 8px;
           text-align: left;
           align-items: flex-start;
           justify-self: flex-start;
@@ -178,7 +189,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       <app-hax-search-results></app-hax-search-results>
     </div>
 
-    <div>
+    <div class="startNew">
       <h3>Start New Journey</h3>
     </div>
 
