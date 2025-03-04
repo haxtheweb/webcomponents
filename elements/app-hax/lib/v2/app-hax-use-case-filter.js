@@ -70,6 +70,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           margin: 8px;
         }
         h3 {
+          background-color: white, black;
           font-family: "Press Start 2P";
           justify-content: flex-start;
           align-items: flex-start;
