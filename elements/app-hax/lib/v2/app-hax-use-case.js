@@ -41,11 +41,10 @@ export class AppHaxUseCase extends LitElement {
           max-width: 240px;
           margin:20px;
           font-family: var(--ddd-font-primary);
-          background-color: var(--ddd-theme-default-white);
+          background-color: #EDF8F7;
           padding:  4px;
           min-height: 270px;
           border: solid var(--ddd-theme-default-limestoneGray) 1px;
-          border-radius: var(--ddd-radius-sm);
           box-shadow: var(--ddd-boxShadow-md);
           text-align: center;
         }
@@ -55,7 +54,6 @@ export class AppHaxUseCase extends LitElement {
           height: 200px;
           overflow: clip;
           justify-self: center;
-          border-radius: 4px;
         }
         h3, p {
           margin: 8px;
@@ -66,14 +64,16 @@ export class AppHaxUseCase extends LitElement {
         a:link {
           color: var(--ddd-theme-defaut-slateMaxLight);
           text-decoration: none;
+          font-size: 16px;
         }
         button {
           display: flex;
-          font-size: 10px;
+          background-color: #D9D9D9;
+          font-family: 'Press Start 2P';
+          font-size: 8px;
           padding: 8px;
           margin: 0px 2px 0px 2px;
           height: 16px;
-          border-radius: var(--ddd-radius-xs);
           align-items: center;
           justify-content: center;
           
@@ -98,7 +98,7 @@ export class AppHaxUseCase extends LitElement {
           <a id="demo" href="https://hax.cloud?use-case-${this.title}" target="_blank"></a>
           <img src="${this.source}" alt="${this.title}" ></a>
         </div>
-          <h3>${this.title}</h3>
+          <h3 style="font-family: 'Press Start 2P'; font-size: 16px;">${this.title}</h3>
           <p>${this.description}</p>
           ${this.iconImage.map(
           (icon) => html`
@@ -110,8 +110,8 @@ export class AppHaxUseCase extends LitElement {
           )}
           <div style="background-color: transparent; display: flex; padding: 8px;" class="cardBottom"> 
             <button class="select ${this.isSelected ? 'selected' : ''}" @click=${this.toggleDisplay}>${this.isSelected ? 'Selected' : 'Select'}</button>
-            <button class="continue ${this.isSelected ? 'visible' : ''}" @click=${this.continueAction}>Continue</button>
-            <a id="demo" href="https://hax.cloud?use-case-${this.title}" target="_blank">Demo -> </a>
+            <button class="continue ${this.isSelected ? 'visible' : ''}" @click=${this.continueAction}>CONTINUE?</button>
+            <a id="demo" href="https://hax.cloud?use-case-${this.title}" target="_blank">Demo-> </a>
           </div>
         </div>
       </div>

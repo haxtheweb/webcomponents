@@ -44,7 +44,7 @@ export class AppHaxLabel extends LitElement {
       .subtitle {
         color: var(--app-hax-accent-color, var(--accent-color));
         font-weight: normal;
-        margin-top: 2px;
+        margin-top: 12px;
         font-size: 20px;
       }
       @media (max-width: 700px) {
@@ -81,8 +81,8 @@ export class AppHaxLabel extends LitElement {
     return html`
       <div class="topBar">
         <div class="title" part="title">
-          <span class="bracket">&#60;</span><slot>${this.title}</slot
-          ><span class="bracket">&#62;</span>
+          <span class="bracket"></span><slot>${this.title}</slot
+          ><span class="bracket"></span>
         </div>
         <div class="subtitle" part="subtitle">
           <slot name="subtitle">${this.subtitle}</slot>

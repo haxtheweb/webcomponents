@@ -82,7 +82,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           max-width: 25vw;
           transition: all ease-in-out 0.3s;
           padding: 4px;
-          font-family: "Press Start 2P", sans-serif;
+          font-family: "Press Start 2P";
           font-size: 12px;
           margin: 2px 0 0 16px;
         }
@@ -91,7 +91,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         .filter {
           position: fixed;
-          top: 225px;
+          top: 215px;
           left: 20px;
           height: 300px;
           justify-self: flex-start;
@@ -102,7 +102,6 @@ export class AppHaxUseCaseFilter extends LitElement {
           padding: var(--ddd-spacing-4);
           background-color: var(--ddd-theme-default-white);
           border: solid var(--ddd-theme-default-limestoneGray) 1px;
-          border-radius: var(--ddd-radius-xs);
           width: px;
         }
         .filterButtons {
@@ -115,6 +114,8 @@ export class AppHaxUseCaseFilter extends LitElement {
           width: 150px;
         }
         .filterButtons label {
+          font-family: "Press Start 2P";
+          font-size: 16px;
           display: flex;
           align-items: center;
           justify-content: flex-start;

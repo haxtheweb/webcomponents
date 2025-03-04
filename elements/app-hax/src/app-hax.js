@@ -948,8 +948,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           padding: 12px;
           font-size: 12px;
           border: 4px solid var(--simple-colors-default-theme-grey-12);
-          background-color: var(--simple-colors-default-theme-yellow-5);
-          color: var(--simple-colors-default-theme-grey-12);
+          background-color: var(--ddd-theme-default-nittanyNavy);
+          color: var(--ddd-theme-default-slateMaxLight);
           width: 100px;
           word-wrap: break-word;
           text-align: center;
