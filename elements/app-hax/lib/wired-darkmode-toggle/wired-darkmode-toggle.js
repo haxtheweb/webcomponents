@@ -9,6 +9,7 @@ import { html, css, unsafeCSS } from "lit";
 // need to highjack in order to alter the scale so we can fit our icon
 // for states
 const sun = new URL("./images/sunIcon.png", import.meta.url).href;
+const lightModeCircle = new URL("./images/lightModeIcon.png", import.meta.url).href;
 const moon = new URL("./images/moon.svg", import.meta.url).href;
 
 export class WiredDarkmodeToggle extends WiredToggle {
@@ -16,6 +17,7 @@ export class WiredDarkmodeToggle extends WiredToggle {
     super();
     this.checked = false;
     this.label = "Dark mode";
+    this.knobFill = svgNode("circle");
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -33,11 +35,29 @@ export class WiredDarkmodeToggle extends WiredToggle {
     this.knob = svgNode("g");
     this.knob.classList.add("knob");
     svg.appendChild(this.knob);
-    const knobFill = hachureEllipseFill(26, 26, 40, 40, this.seed);
-    knobFill.classList.add("knobfill");
-    this.knob.appendChild(knobFill);
+    
+    this.knobFill.setAttribute("cx", 26);
+    this.knobFill.setAttribute("cy", 26);
+    this.knobFill.setAttribute("r", 20);
+    this.knobFill.setAttribute("style", "fill: var(--wired-toggle-off-color); transition: fill 0.3s ease-in-out;");
+    this.knobFill.classList.add("knobfill");
+    this.knob.appendChild(this.knobFill);
     ellipse(this.knob, 26, 26, 40, 40, this.seed);
   }
+
+  toggleMode(checked) {
+    if (checked) {
+      this.knobFill.setAttribute("style", "fill: var(--wired-toggle-on-color);");
+    } else {
+      this.knobFill.setAttribute("style", "fill: var(--wired-toggle-off-color);");
+    }
+  }
+
+  onChange(event) {
+    this.checked = event.target.checked;
+    this.toggleMode(this.checked);
+    this.dispatchEvent(new Event("change", { bubbles: true, composed: true }));
+}
 
   static get properties() {
     return {
@@ -58,7 +78,7 @@ export class WiredDarkmodeToggle extends WiredToggle {
   render() {
     return html`
       <div style="position: relative;">
-        <svg id="svg"></svg>
+      <svg class="svg"></svg>
         <label for="input">${this.label}</label>
         <input
           id="input"
@@ -87,7 +107,8 @@ export class WiredDarkmodeToggle extends WiredToggle {
           --wired-toggle-on-color: var(
             --simple-colors-fixed-theme-light-blue-9
           );
-          background-position-x: 50px;
+          background-position-x: 60px;
+          background-position-y: 8px;
           width: 100px;
           display: inline-flex;
         }
@@ -110,10 +131,11 @@ export class WiredDarkmodeToggle extends WiredToggle {
           white-space: nowrap;
           width: 1px;
         }
-        sun {
-          width: 51;
-          height: 30;
-        }
+        /*img {
+          top: 8px;
+          max-width: 20
+          height: 35;
+        }*/
       `,
     ];
   }
