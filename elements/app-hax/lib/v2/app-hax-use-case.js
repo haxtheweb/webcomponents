@@ -142,7 +142,7 @@ export class AppHaxUseCase extends LitElement {
               ${this.isSelected ? 'Selected' : 'Select'}
             </button>
             ${this.isSelected 
-              ? html`<button class="continue" @click=${this.continueAction}>CONTINUE?</button>`
+              ? html`<button class="continue" @click=${this.continueAction}>Continue?</button>`
               : html`<a id="demo" href="${this.demoLink}" target="_blank">Demo -> </a>`
             }
           </div>
