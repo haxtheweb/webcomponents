@@ -24,6 +24,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.demoLink = "";
     this.errorMessage = "";
     this.loading = false;
+    this.selectedCardIndex = null;
   }
 
   // Site.json is coming from
@@ -40,7 +41,8 @@ export class AppHaxUseCaseFilter extends LitElement {
       searchQuery: { type: String },
       demoLink: { type: String},
       errorMessage: { type: String },
-      loading: { type: Boolean }
+      loading: { type: Boolean },
+      selectedCardIndex: { type: Number }
     };
   }
 
@@ -367,6 +369,21 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   toggleDisplay(index, event) {
     const isSelected = event.detail.isSelected;
+  
+    if (this.selectedCardIndex !== null && this.selectedCardIndex !== index) {
+      // Deselect the previously selected card
+      this.filteredItems[this.selectedCardIndex].isSelected = false;
+      this.filteredItems[this.selectedCardIndex].showContinue = false;
+    }
+  
+    if (isSelected) {
+      // Select the new card
+      this.selectedCardIndex = index;
+    } else {
+      // Deselect the current card
+      this.selectedCardIndex = null;
+    }
+  
     this.filteredItems[index].isSelected = isSelected;
     this.filteredItems[index].showContinue = isSelected;
     this.requestUpdate();
