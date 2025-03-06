@@ -8,7 +8,7 @@ import { WiredToggle } from "wired-elements/lib/wired-toggle.js";
 import { html, css, unsafeCSS } from "lit";
 // need to highjack in order to alter the scale so we can fit our icon
 // for states
-const sun = new URL("./images/sun.svg", import.meta.url).href;
+const sun = new URL("./images/sunIcon.svg", import.meta.url).href;
 const moon = new URL("./images/moon.svg", import.meta.url).href;
 
 export class WiredDarkmodeToggle extends WiredToggle {

@@ -73,14 +73,14 @@ export class AppHaxUseCaseFilter extends LitElement {
           background-color: var(--simple-colors-default-theme-accent-1, var(--app-hax-accent-color));
           width: 500px;
           height: 50px;
-          text-align: center;
+          text-align: left;
           font-family: "Press Start 2P";
           display: flex;
           justify-content: center;
           align-items: center;
           color: var(--app-hax-accent-color, var(--accent-color));
         }
-        .startNew {
+        .startNew, .returnTo {
           display: flex;
           justify-content: center;
           align-items: center;
@@ -106,7 +106,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           height: 300px;
           justify-self: flex-start;
           display:flex;
-          background-color: var(--simple-colors-default-theme-accent-2, var(--accent-color));
+          background-color: var(--simple-colors-default-theme-accent-1, var(--accent-color));
           color: var(--simple-colors-default-theme-accent-12, var(--accent-color));
           flex-direction: column;
           margin: var(--ddd-spacing-2);
@@ -183,6 +183,10 @@ export class AppHaxUseCaseFilter extends LitElement {
           `
         )}
       </div>
+    </div>
+
+    <div class="returnTo">
+      <h3>Return to...</h3>
     </div>
 
     <div class="userSites">
