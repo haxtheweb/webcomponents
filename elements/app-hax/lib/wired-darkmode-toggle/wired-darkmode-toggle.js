@@ -10,7 +10,7 @@ import { html, css, unsafeCSS } from "lit";
 // for states
 const sun = new URL("./images/sunIcon.png", import.meta.url).href;
 const lightModeCircle = new URL("./images/lightModeIcon.png", import.meta.url).href;
-const moon = new URL("./images/moon.svg", import.meta.url).href;
+const moon = new URL("./images/moonIcon.png", import.meta.url).href;
 
 export class WiredDarkmodeToggle extends WiredToggle {
   constructor() {
