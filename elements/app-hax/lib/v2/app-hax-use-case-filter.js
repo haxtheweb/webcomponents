@@ -103,6 +103,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           background-color: var(--ddd-theme-default-white);
           border: solid var(--ddd-theme-default-limestoneGray) 1px;
           width: px;
+          color: black;
         }
         .filterButtons {
           text-align: left;
@@ -195,6 +196,10 @@ export class AppHaxUseCaseFilter extends LitElement {
               .description=${item.useCaseDescription || ""}
               .demoLink=${item.demoLink || ""}
               .iconImage=${item.useCaseIcon || []}
+              .isSelected=${item.isSelected || false}
+              .showContinue=${item.showContinue || false}
+              @toggle-display=${(e) => this.toggleDisplay(index, e)}
+              @continue-action=${() => this.continueAction(index)}
             ></app-hax-use-case>
             </a>
           </div>
@@ -230,6 +235,15 @@ export class AppHaxUseCaseFilter extends LitElement {
         this.shadowRoot.querySelector("#searchField").focus();
       }, 300);
     }
+  }
+
+  toggleSelection(index) {
+    if (this.activeUseCase === index) {
+      this.activeUseCase = false; // Deselect if the same card is clicked
+    } else {
+      this.activeUseCase = index; // Select the new card
+    }
+    this.requestUpdate();
   }
 
   handleSearch(event) {
@@ -350,5 +364,18 @@ export class AppHaxUseCaseFilter extends LitElement {
       this.requestUpdate();
     });
   }
+
+  toggleDisplay(index, event) {
+    const isSelected = event.detail.isSelected;
+    this.filteredItems[index].isSelected = isSelected;
+    this.filteredItems[index].showContinue = isSelected;
+    this.requestUpdate();
+  }
+
+  continueAction(index) {
+    console.log(`Continue action for item at index ${index}`);
+    // Implement the continue action for the selected item
+  }
+
 }
 customElements.define("app-hax-use-case-filter", AppHaxUseCaseFilter);

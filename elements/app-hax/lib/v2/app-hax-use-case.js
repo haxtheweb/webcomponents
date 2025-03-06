@@ -16,6 +16,8 @@ export class AppHaxUseCase extends LitElement {
     this.source = '';
     this.demoLink = '';
     this.iconImage = [];
+    this.isSelected = false;
+    this.showContinue = false;
   }
 
   static get properties() {
@@ -24,7 +26,9 @@ export class AppHaxUseCase extends LitElement {
         description: { type: String },
         source: { type: String },
         demoLink: { type: String },
-        iconImage: {type: Array }
+        iconImage: { type: Array },
+        isSelected: { type: Boolean },
+        showContinue: { type: Boolean }
     };
   }
 
@@ -76,7 +80,6 @@ export class AppHaxUseCase extends LitElement {
           height: 16px;
           align-items: center;
           justify-content: center;
-          
         }
         #haxIcons {
         position: absolute; 
@@ -87,15 +90,41 @@ export class AppHaxUseCase extends LitElement {
         gap: var(--ddd-spacing-3);
         color: var(--ddd-primary-8);
         }
+
+        .cardBottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 8px;
+        }
+
+        .cardBottom button, .cardBottom a {
+        flex: 1;
+        margin: 0 4px;
+        }
       `,
     ];
+  }
+
+  toggleDisplay() {
+    this.isSelected = !this.isSelected;
+    this.showContinue = this.isSelected;
+    this.dispatchEvent(new CustomEvent('toggle-display', { 
+      detail: { isSelected: this.isSelected },
+      bubbles: true,
+      composed: true
+   }));
+  }
+
+  continueAction() {
+    this.dispatchEvent(new CustomEvent('continue-action'));
   }
 
   render() {
     return html`
       <div class="card">
         <div class="image">
-          <a id="demo" href="https://hax.cloud?use-case-${this.title}" target="_blank"></a>
+          <a id="demo" href="${this.demoLink}" target="_blank"></a>
           <img src="${this.source}" alt="${this.title}" ></a>
         </div>
           <h3 style="font-family: 'Press Start 2P'; font-size: 16px;">${this.title}</h3>
@@ -108,10 +137,14 @@ export class AppHaxUseCase extends LitElement {
             ></simple-icon-lite>
           `
           )}
-          <div style="background-color: transparent; display: flex; padding: 8px;" class="cardBottom"> 
-            <button class="select ${this.isSelected ? 'selected' : ''}" @click=${this.toggleDisplay}>${this.isSelected ? 'Selected' : 'Select'}</button>
-            <button class="continue ${this.isSelected ? 'visible' : ''}" @click=${this.continueAction}>CONTINUE?</button>
-            <a id="demo" href="https://hax.cloud?use-case-${this.title}" target="_blank">Demo-> </a>
+          <div class="cardBottom"> 
+            <button class="select ${this.isSelected ? 'selected' : ''}" @click=${this.toggleDisplay}>
+              ${this.isSelected ? 'Selected' : 'Select'}
+            </button>
+            ${this.isSelected 
+              ? html`<button class="continue" @click=${this.continueAction}>CONTINUE?</button>`
+              : html`<a id="demo" href="${this.demoLink}" target="_blank">Demo -> </a>`
+            }
           </div>
         </div>
       </div>
