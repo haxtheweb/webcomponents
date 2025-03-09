@@ -113,8 +113,8 @@ class HAXWiring {
         unsetAttributes: ["end-point", "secondary-color"],
       },
       documentation: {
-        howTo: "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome",
-        purpose: "https://oer.hax.psu.edu/bto108/sites/haxcellence/welcome",
+        howTo: "https://haxtheweb.org/welcome",
+        purpose: "https://haxtheweb.org/welcome",
       },
       demoSchema: [
         {

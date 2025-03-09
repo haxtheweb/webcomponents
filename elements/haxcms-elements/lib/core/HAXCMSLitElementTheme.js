@@ -2,7 +2,7 @@
  * Copyright 2019 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { css, LitElement, render, unsafeCSS, html } from "lit";
+import { css, LitElement, render, unsafeCSS, html, svg, mathml } from "lit";
 import { HAXCMSTheme } from "./HAXCMSThemeWiring.js";
 import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -15,9 +15,7 @@ import { copyToClipboard } from "@haxtheweb/utils/utils.js";
 /**
  * LitElement Version of HAXCMSTheme
  */
-class HAXCMSLitElementTheme extends HAXCMSTheme(
-  ResponsiveUtilityBehaviors(LitElement),
-) {
+class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitElement)) {
   constructor() {
     super();
     this.isSafari = globalThis.safari !== undefined;
@@ -334,4 +332,4 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
   }
 }
 
-export { HAXCMSLitElementTheme, css, unsafeCSS, html, store, autorun, toJS };
+export { HAXCMSLitElementTheme, css, unsafeCSS, html, svg, mathml, store, autorun, toJS };
