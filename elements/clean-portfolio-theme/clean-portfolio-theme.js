@@ -33,31 +33,13 @@ import { toJS, autorun } from "mobx";
 //    - Focus should only highlight a menu item and not its underline
 //    - Header and footer should change color for media layout
 
+const PortfolioFonts = [
+  "https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap",
+  "https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap",
+  "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap",
+];
+
 export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
-
-  static PortfolioFonts = [
-    "https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap",
-    "https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap",
-    "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap",
-  ];
-
-  loadFonts() {
-    if (
-      globalThis &&
-      globalThis.document //&&
-      //!globalThis.document.querySelector('[data-ddd="font"]')
-    ) {
-      CleanPortfolioTheme.PortfolioFonts.forEach((font) => {
-        const link = globalThis.document.createElement("link");
-        link.setAttribute("href", font);
-        link.setAttribute("rel", "stylesheet");
-        link.setAttribute("fetchpriority", "low");
-        //link.setAttribute("display", "swap");
-        //link.setAttribute("data-ddd", "font");
-        globalThis.document.head.appendChild(link);
-      });
-    }
-  }
 
   static get tag() {
     return "clean-portfolio-theme";
@@ -67,7 +49,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     super();
     this.siteTitle = "";
     this.activeLayout = "Text"; //Text, Media, Listing
-
     autorun((reaction) => {
       this.siteTitle = toJS(store.siteTitle);
       this.__disposer.push(reaction);
@@ -80,6 +61,18 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
       this.__disposer.push(reaction);
     });
+  }
+
+  firstUpdated(changedProperties) {
+    super.firstUpdated(changedProperties);
+    let DesignSystemManager = globalThis.DesignSystemManager.requestAvailability();
+    DesignSystemManager.addDesignSystem({
+      name: "clean-portfolio-theme",
+      styles: CleanPortfolioTheme.styles,
+      fonts: PortfolioFonts,
+      hax: true,
+    });
+    DesignSystemManager.active = 'clean-portfolio-theme';
   }
 
   // Lit reactive properties
@@ -507,7 +500,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   // Lit render the HTML
   render() {
-    this.loadFonts();
 
     return html`
       <button id="layout-button" @click="${this.ChangeLayout}">Active layout: ${this.activeLayout}</button>
