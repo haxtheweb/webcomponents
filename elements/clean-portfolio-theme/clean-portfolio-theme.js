@@ -7,6 +7,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-med
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { toJS, autorun } from "mobx";
 
 /**
@@ -68,7 +69,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     let DesignSystemManager = globalThis.DesignSystemManager.requestAvailability();
     DesignSystemManager.addDesignSystem({
       name: "clean-portfolio-theme",
-      styles: CleanPortfolioTheme.styles,
+      styles: [...CleanPortfolioTheme.styles, DDDVariables],
       fonts: PortfolioFonts,
       hax: true,
     });
