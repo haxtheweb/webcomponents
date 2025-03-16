@@ -33,7 +33,7 @@ export class DesignSystem extends LitElement {
         // remove the current global stylesheet / adopted styles for the design system
         // replace it with the new active one
         if (this.systems[this.active] && globalThis.document && globalThis.document.head) {
-          this.applyDesignSystem(oldValue, this.systems[this.active]);
+          this.applyDesignSystem(oldValue ? this.systems[oldValue] : null, this.systems[this.active]);
         }
       }
     });
@@ -65,7 +65,6 @@ export class DesignSystem extends LitElement {
       }
       if (oldSystem.fonts) {
         globalThis.document.head.querySelectorAll('[data-ds]').forEach((font) => {
-          console.log(font);
           font.remove();
         });
       }
