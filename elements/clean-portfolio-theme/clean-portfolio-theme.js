@@ -26,9 +26,9 @@ import { toJS, autorun } from "mobx";
 //    - Condensed menu
 // - Light-dark support
 // - Abstraction
-//    - Active media banner
+//    - Active media banner (use active-media-banner.js)
 //    - Breadcrumb (use site-breadcrumb.js?)
-//    - Social media card
+//    - Social media card(?)
 // - Other
 //    - Site background color should be overriden with --portfolio-lightDark-bg
 //    - Focus should only highlight a menu item and not its underline
