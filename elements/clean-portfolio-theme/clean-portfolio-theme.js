@@ -54,7 +54,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     super();
     // gets site title for site-title
     this.siteTitle = "";
-    this.activeLayout = "Text"; //Text, Media, Listing
+    this.activeLayout = "text"; //text, media, listing
     autorun((reaction) => {
       this.siteTitle = toJS(store.siteTitle);
       this.__disposer.push(reaction);
@@ -114,15 +114,15 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       let active = toJS(store.activeItem);
       if (active) {
         if (active.parent) {
-          this.activeLayout = "Media";
+          this.activeLayout = "media";
         } else {
           let items = store.getItemChildren(store.activeId);
           if (items) {
             if (items.length > 0) {
-              this.activeLayout = "Listing";
+              this.activeLayout = "listing";
               this.items = [...items];
             } else {
-              this.activeLayout = "Text";
+              this.activeLayout = "text";
             }
           }
         }
@@ -447,7 +447,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         font-weight: bold;
       }
 
-      .media-content {
+      .media-container {
         margin: auto;
         margin-top: 100px;
         width: 38%;
@@ -521,17 +521,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     `];
   }
 
-  renderText() {
-    return html`
-      <div class="text-container" id="contentcontainer">
-        <div id="slot"><slot></slot></div>
-      </div>
-    `;
-  }
-
   renderListing() {
     return html`
-          <div class="listing-container" id="contentcontainer">
+          <div class="listing-container">
             <h1 class="listing-title">${this.activeTitle}</h1> 
             <h3 class="listing-category">Art Installations</h3>
 
@@ -548,8 +540,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                   )
                 : ''}
             </div>
-
-            <div id="slot"><slot></slot></div>
           </div>
     `;
   }
@@ -567,7 +557,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
     <img class="media-banner" src="https://michaelcollins.xyz/assets/images/portfolio/interspatial/interspatial-front.jpg">
 
-    <div class="media-content" id="contentcontainer">
+    <div class="media-container">
       <h1 class="media-title">${this.activeTitle}</h1>
       <div class="media-tag-list" >
        ${this.activeTags && this.activeTags.length > 0
@@ -580,19 +570,17 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           )
         : ''}
       </div>
-      
-      <div id="slot"><slot></slot></div>
     </div>
     `;
   }
 
   ChangeLayout() {
-    if (this.activeLayout == "Text") {
-      this.activeLayout = "Listing";
-    } else if (this.activeLayout == "Listing") {
-      this.activeLayout = "Media";
+    if (this.activeLayout == "text") {
+      this.activeLayout = "listing";
+    } else if (this.activeLayout == "listing") {
+      this.activeLayout = "media";
     } else {
-      this.activeLayout = "Text";
+      this.activeLayout = "text";
     }
   }
 
@@ -616,13 +604,14 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           )}
         </div>
       </header>
-
-      ${this.activeLayout == "Text"
-      ? this.renderText()
-      : this.activeLayout == "Media"
+      ${this.activeLayout == "text"
+      ? ``
+      : this.activeLayout == "media"
       ? this.renderMedia()
       : this.renderListing()}
-      
+      <div class="${this.activeLayout}-container" id="contentcontainer">
+        <div id="slot"><slot></slot></div>
+      </div>
       <footer>© 2025 Collin Micheals.</footer>
     `;
   }
