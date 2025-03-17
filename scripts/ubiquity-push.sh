@@ -100,6 +100,9 @@ cp -R ~/haxtheweb/haxcms-nodejs/src/boilerplate ~/haxtheweb/haxcms-php/system/bo
 rm -rf ~/haxtheweb/haxcms-php/system/coreConfig
 cp -R ~/haxtheweb/haxcms-nodejs/src/coreConfig ~/haxtheweb/haxcms-php/system/coreConfig
 
+# create cli needs wc-reg for validation purposes
+cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/create/src/lib/wc-registry.json
+
 
 ## STEP 4 STORYBOOK NEEDS REBUILT FOR CDN PUBLISHING
 cd ~/haxtheweb/webcomponents
@@ -150,14 +153,11 @@ git push --follow-tags origin master
 
 # STEP 6 THESE NEED THEIR PACKAGE UPDATED FOR NODEJS VERSION INTERNALLY
 
-cd ~/haxtheweb/create/
-npm update @haxtheweb/haxcms-nodejs --save
+cd ~/haxtheweb/open-apis
 git add -A
 git commit -m "ubiquity publish"
-npm run build
 ./node_modules/.bin/commit-and-tag-version --release-as $version
 git push --follow-tags origin main
-npm publish
 
 cd ~/haxtheweb/desktop/
 npm update @haxtheweb/haxcms-nodejs --save
@@ -168,9 +168,12 @@ npm run build
 git push --follow-tags origin master
 
 
-cd ~/haxtheweb/open-apis
+cd ~/haxtheweb/create/
+npm update @haxtheweb/haxcms-nodejs --save
+npm update @haxtheweb/open-apis --save
 git add -A
 git commit -m "ubiquity publish"
+npm run build
 ./node_modules/.bin/commit-and-tag-version --release-as $version
 git push --follow-tags origin main
-
+npm publish

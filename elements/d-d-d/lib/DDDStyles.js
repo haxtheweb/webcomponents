@@ -611,12 +611,7 @@ export const DDDFonts = [
 ];
 // CSS variables which is most of the system needed
 export const DDDVariables = css`
-  :root {
-    color-scheme: light dark;
-  }
   :root,
-  html,
-  body,
   :host {
     /* base colors */
     --ddd-theme-default-beaverBlue: #1e407c;
@@ -1031,13 +1026,6 @@ export const DDDVariables = css`
     --ddd-icon-3xl: 84px;
     --ddd-icon-4xl: 96px;
 
-    /* borrowed from base styling */
-
-    scroll-behavior: smooth;
-    font-family: var(--ddd-font-primary);
-    font-size: var(--ddd-theme-body-font-size);
-    font-weight: var(--ddd-font-weight-regular);
-    letter-spacing: normal;
     --simple-modal-content-container-color: light-dark(
       var(--ddd-primary-4),
       var(--ddd-accent-6)
@@ -1046,6 +1034,17 @@ export const DDDVariables = css`
       var(--ddd-accent-6),
       var(--ddd-primary-4)
     );
+  }
+`;
+// global styles from the design system. Not a reset so much as how DDD likes to present defaults
+export const DDDGlobalStyles = css`
+  :root {
+    color-scheme: light dark;{
+    scroll-behavior: smooth;
+    font-family: var(--ddd-font-primary);
+    font-size: var(--ddd-theme-body-font-size);
+    font-weight: var(--ddd-font-weight-regular);
+    letter-spacing: normal;
   }
 
   body.dark-mode {
@@ -4340,7 +4339,9 @@ export const DDDAnimations = css`
 
 // export that has all of them for easy stamping as a single sheet
 export const DDDAllStyles = [
+  DDDGlobalStyles,
   DDDVariables,
+  DDDGlobalStyles,
   ...DDDDataAttributes,
   DDDReset,
   DDDBreadcrumb,

@@ -89,3 +89,6 @@ rm -rf ~/haxtheweb/haxcms-php/system/boilerplate
 cp -R ~/haxtheweb/haxcms-nodejs/src/boilerplate ~/haxtheweb/haxcms-php/system/boilerplate
 rm -rf ~/haxtheweb/haxcms-php/system/coreConfig
 cp -R ~/haxtheweb/haxcms-nodejs/src/coreConfig ~/haxtheweb/haxcms-php/system/coreConfig
+
+# create cli needs wc-reg for validation purposes
+cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/create/src/lib/wc-registry.json
