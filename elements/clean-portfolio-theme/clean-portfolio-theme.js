@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
@@ -26,12 +27,15 @@ import { toJS, autorun } from "mobx";
 // - Light-dark support
 // - Abstraction
 //    - Active media banner
-//    - Breadcrumb
+//    - Breadcrumb (use site-breadcrumb.js?)
 //    - Social media card
 // - Other
 //    - Site background color should be overriden with --portfolio-lightDark-bg
 //    - Focus should only highlight a menu item and not its underline
-//    - Header and footer should change color for media layout
+//    - Header and footer should change color for media layout(?)
+//      - document.querySelector("header").style.color = "#ffffff";
+//    - Footer should stay at the bottom of the page
+//    - Switching pages breaks edit button
 
 export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
@@ -65,36 +69,48 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   constructor() {
     super();
+
     // gets site title for site-title
     autorun((reaction) => {
       this.siteTitle = toJS(store.siteTitle);
       this.__disposer.push(reaction);
     });
+
     // gets home link for site-title
     autorun((reaction) => {
       this.homeLink = toJS(store.homeLink);
       this.__disposer.push(reaction);
     });
+
     // gets current page title for listing-title, media-title, and breadcrumb-title
     autorun((reaction) => {
       this.activeTitle = toJS(store.activeTitle);
       this.__disposer.push(reaction);
     });
+
     // gets current page's parent title for breadcrumb-back
     autorun((reaction) => {
       this.parentTitle = toJS(store.parentTitle);
       this.__disposer.push(reaction);
     });
+
     // gets current page's parent slug for breadcrumb-back
-    autorun((reaction) => {
-      this.parentSlug = toJS(store.parentSlug);
-      this.__disposer.push(reaction);
-    });
+    // autorun((reaction) => {
+    //   this.parentSlug = toJS(store.parentSlug);
+    //   this.__disposer.push(reaction);
+    // });
+
     // gets current page's tags and inserts them into an array for media-tag
     autorun((reaction) => {
-      this.activeTags = toJS(store.activeTags).split(',');
+      let tags = toJS(store.activeTags);
+      if (tags && tags.length > 0) {
+        this.activeTags = tags.split(',');
+      } else {
+        this.activeTags = [];
+      }
       this.__disposer.push(reaction);
     });
+
     // gets top level items for menu-item
     autorun((reaction) => {
       // const manifest = store.manifest;
@@ -104,23 +120,26 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
       this.__disposer.push(reaction);
     });
+    
     // determines active layout based on following conditions:
     // - if the current page has no child, it's Text
     // - if the current page has a child, it's Listing
     // - if the current page has a parent, it's Media
     autorun((reaction) => {
       // const manifest = store.manifest;
-      this.activeItem = toJS(store.activeItem);
-      if (this.activeItem.parent) {
-        this.activeLayout = "Media";
-      } else {
-        let items = store.getItemChildren(store.activeId);
-        if (items) {
-          if (items.length > 0) {
-            this.activeLayout = "Listing";
-            this.items = items;
-          } else if (items.length == 0) {
-            this.activeLayout = "Text";
+      let active = toJS(store.activeItem);
+      if (active) {
+        if (active.parent) {
+          this.activeLayout = "Media";
+        } else {
+          let items = store.getItemChildren(store.activeId);
+          if (items) {
+            if (items.length > 0) {
+              this.activeLayout = "Listing";
+              this.items = [...items];
+            } else {
+              this.activeLayout = "Text";
+            }
           }
         }
       }
@@ -138,10 +157,24 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       activeLayout: { type: String },
       activeTags: { type: Array },
       parentTitle: { type: String },
-      parentSlug: { type: String },
+      // parentSlug: { type: String },
       topItems: { type: Array },
       items: { type: Array }
     };
+  }
+
+  HAXCMSGlobalStyleSheetContent() {
+      return [
+        ...super.HAXCMSGlobalStyleSheetContent(),
+        css`
+        :root, html, body {
+            --ddd-font-primary: "Source Code Pro" !important;
+            font-family: var(--ddd-font-primary);
+            font-size: var(--ddd-theme-body-font-size);
+            font-weight: var(--ddd-font-weight-regular);
+        }
+        `
+    ];
   }
 
   // Lit scoped styles
@@ -165,11 +198,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
         --portfolio-lightDark-blackWhite: light-dark(var(--portfolio-black), var(--portfolio-white));
         --portfolio-lightDark-whiteBlack: light-dark(var(--portfolio-white), var(--portfolio-black));
-        --portfolio-lightDark-bg: light-dark(var(--portfolio-backgroundWhite), var(--portfolio-black));
+        --portfolio-lightDark-bg: light-dark(var(--portfolio-backgroundWhite), var(--portfolio-grey));
         --portfolio-lightDark-footer: light-dark(var(--portfolio-black), var(--portfolio-darkGrey));
         
-        background-color: red;
+        background-color: var(--portfolio-lightDark-bg);
       }
+
+      /* Semantic elements */
 
       header {
         display: flex;
@@ -192,19 +227,24 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       /* h1 {
           font-size: 2.5rem;
       }
+      
       h2 {
           font-size: 2rem;
       } */
+      
       h3 {
           font-size: 24px;
           text-transform: uppercase;
       }
+
       /* h4 {
           font-size: 1.5rem;
       }
+      
       h5 {
           font-size: 1.25rem;
       }
+      
       h6 {
           font-size: 1rem;
       } */
@@ -220,15 +260,19 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       ul {
         list-style-type: disc;
       }
+
       li {
         font-family: "Source Code Pro";
       }
+
       li::marker {
         color: var(--portfolio-lightDark-blackWhite) !important;
       }
+
       ul li, ol li {
           margin-bottom: 0.5em
       }
+
       li ul,li ol {
           margin-top: 0.5em
       }
@@ -242,6 +286,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         padding-left: 200px;
       }
 
+      /* Site header elements */
+
       /* font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif; */
       #site-title {
         color: var(--portfolio-textHeader);
@@ -254,6 +300,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         padding: 0.5rem 0.5rem;
         transition: all 0.2s ease-in-out;
       }
+
       #site-title:hover,
       #site-title:focus {
         color: var(--portfolio-textHeaderHover);
@@ -270,6 +317,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         margin: 10px;
         position: relative;
       }
+
       header a.menu-item:after {
         content: "";
         position: absolute;
@@ -286,11 +334,97 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       .menu-item:focus {
         color: var(--portfolio-textHeaderHover);
       }
+
       .menu-item:hover:after,
       .menu-item:focus:after {
         width: 100%;
         transform: translateX(-50%) scaleX(1);
       }
+
+      /* Text layout */
+
+      .text-container {
+        margin: auto;
+        margin-top: 50px;
+        width: 40%;
+        text-align: left;
+      }
+
+      /* Listing layout */
+
+      .listing-container {
+        margin: auto;
+        width: 50%;
+      }
+
+      .listing-title {
+        font-family: "Playfair Display";
+        font-size: 96px;
+        font-weight: bold;
+        margin-top: 100px;
+      }
+
+      .listing-category {
+        font-family: "Source Code Pro";
+        text-transform: uppercase;
+        border-top: 6px solid var(--portfolio-lightDark-blackWhite);
+        margin-bottom: 25px;
+      }
+
+      .listing-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        width: 100%;
+        transition: all 0.2s ease-in-out;
+      }
+
+      div .listing-card {
+        width: 180px;
+        max-width: 100%;
+        margin: 10px;
+        text-decoration: none;
+      }
+
+      .listing-card:hover .listing-cardtitle {
+        text-decoration: underline;
+      }
+
+      .listing-card img {
+        width: 100%;
+        height: 125px;
+        object-fit: cover;
+        display: block;
+        border-radius: 6px;
+        margin-bottom: 12px;
+      }
+
+      .listing-cardtitle {
+        color: var(--portfolio-lightDark-blackWhite);
+        font-family: "Work Sans";
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+
+      .listing-cardyear {
+        color: #6D4C41;
+        font-family: "Source Code Pro";
+        font-size: 14px;
+        font-weight: 400;
+      }
+      
+      /* Media layout */
+
+      /* site-breadcrumb {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 60px;
+        gap: 10px;
+        margin-left: 250px;
+        font-family: "Work Sans";
+        font-weight: 450;
+      } */
       
       .breadcrumb {
         display: flex;
@@ -302,76 +436,19 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         font-family: "Work Sans";
         font-weight: 450;
       }
+
       div .breadcrumb-back {
         color: var(--portfolio-lightDark-blackWhite);
         font-weight: 450;
       }
+
       .breadcrumb-split {
         color: var(--portfolio-lightDark-blackWhite);
       }
+
       .breadcrumb-title {
         color: var(--portfolio-lightDark-blackWhite);
         font-weight: bold;
-      }
-
-      .text-container {
-        margin: auto;
-        margin-top: 50px;
-        width: 40%;
-        text-align: left;
-      }
-
-      .listing-container {
-        margin: auto;
-        width: 50%;
-      }
-      .listing-title {
-        font-family: "Playfair Display";
-        font-size: 96px;
-        font-weight: bold;
-        margin-top: 100px;
-      }
-      .listing-category {
-        font-family: "Source Code Pro";
-        text-transform: uppercase;
-        border-top: 6px solid var(--portfolio-lightDark-blackWhite);
-        margin-bottom: 25px;
-      }
-      .listing-list {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 5px;
-        width: 100%;
-        transition: all 0.2s ease-in-out;
-      }
-      div .listing-card {
-        width: 180px;
-        max-width: 100%;
-        margin: 10px;
-        text-decoration: none;
-      }
-      .listing-card:hover .listing-cardtitle {
-        text-decoration: underline;
-      }
-      .listing-card img {
-        width: 100%;
-        height: 125px;
-        object-fit: cover;
-        display: block;
-        border-radius: 6px;
-        margin-bottom: 12px;
-      }
-      .listing-cardtitle {
-        color: var(--portfolio-lightDark-blackWhite);
-        font-family: "Work Sans";
-        font-weight: 400;
-        text-transform: uppercase;
-      }
-      .listing-cardyear {
-        color: #6D4C41;
-        font-family: "Source Code Pro";
-        font-size: 14px;
-        font-weight: 400;
       }
 
       .media-content {
@@ -380,11 +457,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         width: 38%;
         padding-bottom: 50px;
       }
+
       .media-banner {
         width: 100%;
         height: auto;
         transition: width 0.75s ease-in-out;
       }
+
       .media-title {
         color: var(--portfolio-lightDark-blackWhite);
         font-family: "Playfair Display";
@@ -393,10 +472,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         margin-top: 100px;
         margin-bottom: 25px;
       }
+
       .media-tag-list {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
       }
+
       .media-tag {
         color: var(--portfolio-lightDark-blackWhite);
         font-family: "Source Code Pro";
@@ -406,26 +487,32 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         padding-bottom: 5px;
         margin-bottom: 25px;
       }
+
       .media-text {
         color: var(--portfolio-lightDark-blackWhite);
         font-family: "Source Code Pro";
       }
+
       .media-image {
         width: 100%;
         height: auto;
         margin-bottom: 18px;
       }
 
+      /* Media queries */
+
       @media (max-width: 1200px) {
         .page-card-list {
           grid-template-columns: repeat(3, 1fr);
         }
       }
+      
       @media (max-width: 800px) {
         .page-card-list {
           grid-template-columns: repeat(2, 1fr);
         }
       }
+
       @media (max-width: 600px) {
         .page-card-list {
           grid-template-columns: 1fr;
@@ -453,24 +540,25 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             <h3 class="listing-category">Art Installations</h3>
 
             <div class="listing-list">
-              ${this.items.map(
-                (item) => html`
-                  <a class="listing-card" href="${item.slug}">
-                    <img src="https://michaelcollins.xyz/assets/images/portfolio/privy-exhibition/privy-gallery-02.jpg">
-                    <div class="listing-cardtitle">${item.title}</div>
-                      <div class="listing-cardyear">2025</div>
-                  </a>
-                `,
-              )}
+              ${this.items && this.items.length > 0
+                ? this.items.map(
+                    (item) => html`
+                      <a class="listing-card" href="${item.slug}">
+                        <img src="https://michaelcollins.xyz/assets/images/portfolio/privy-exhibition/privy-gallery-02.jpg">
+                        <div class="listing-cardtitle">${item.title}</div>
+                          <div class="listing-cardyear">2025</div>
+                      </a>
+                    `
+                  )
+                : ''}
             </div>
+
+            <div id="slot"><slot></slot></div>
           </div>
     `;
   }
 
   renderMedia() {
-    // TODO: recolor header and footer on this layout
-    // document.querySelector("header").style.color = "#ffffff";
-    console.log(this.activeItem.parent.title);
     return html`
     <div class="breadcrumb-container">
       <div class="breadcrumb">
@@ -478,6 +566,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         <span class="breadcrumb-split">/</span>
         <span class="breadcrumb-title">${this.activeTitle}</span>
       </div>
+      <!-- <site-breadcrumb></site-breadcrumb> -->
     </div>
 
     <img class="media-banner" src="https://michaelcollins.xyz/assets/images/portfolio/interspatial/interspatial-front.jpg">
@@ -511,10 +600,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     }
   }
 
+  breadCrumbDecoration(){
+    return html``
+  }
+
   // Lit render the HTML
   render() {
     this.loadFonts();
-    console.log("ACTIVE LAYOUT:", this.activeLayout);
 
     return html`
       <button id="layout-button" @click="${this.ChangeLayout}">Active layout: ${this.activeLayout}</button>
