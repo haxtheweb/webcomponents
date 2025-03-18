@@ -24,6 +24,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.demoLink = "";
     this.errorMessage = "";
     this.loading = false;
+    this.isDarkMode = document.body.classList.contains("dark-mode");
     this.selectedCardIndex = null;
   }
 
@@ -42,8 +43,25 @@ export class AppHaxUseCaseFilter extends LitElement {
       demoLink: { type: String},
       errorMessage: { type: String },
       loading: { type: Boolean },
+      isDarkMode: {type: Boolean, reflect: true},
       selectedCardIndex: { type: Number }
     };
+  }
+
+  //detecting darkmode to change background images ->> there is probably an easier way to do this
+  connectedCallback() {
+    super.connectedCallback();
+    this._darkModeObserver = new MutationObserver(() => {
+      this.isDarkMode = document.body.classList.contains("dark-mode");
+    });
+    this._darkModeObserver.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    if (this._darkModeObserver) {
+      this._darkModeObserver.disconnect();
+    }
   }
 
   static get styles() {
@@ -76,7 +94,8 @@ export class AppHaxUseCaseFilter extends LitElement {
           padding: 8px;
         }
         h3 {
-          background-color: var(--simple-colors-default-theme-accent-1, var(--app-hax-accent-color));
+          
+          background-image: url("/elements/app-hax/lib/assets/images/h3-background-LM.png");
           width: 500px;
           height: 50px;
           text-align: left;
@@ -86,10 +105,14 @@ export class AppHaxUseCaseFilter extends LitElement {
           align-items: center;
           color: var(--app-hax-accent-color, var(--accent-color));
         }
+        :host([isDarkMode]) h3 {
+          background-image: url("/elements/app-hax/lib/assets/images/h3-background-DM.png");
+        }
         .startNew, .returnTo {
           display: flex;
           justify-content: center;
           align-items: center;
+          
         }
         input[type="text"]{
           opacity: 1;
@@ -145,6 +168,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       `,
     ];
   }
+
   testKeydown(e) {
     if (e.key === "Escape" || e.key === "Enter") {
       this.toggleSearch();
