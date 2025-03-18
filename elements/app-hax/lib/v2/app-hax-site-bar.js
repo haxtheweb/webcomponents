@@ -80,6 +80,9 @@ export class AppHaxSiteBars extends SimpleColors {
           box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.6);
         }
 
+        .imageLink{
+          position: relative;
+        }
         .imageLink img{
             display: block;
             width: 240px;
@@ -144,11 +147,21 @@ export class AppHaxSiteBars extends SimpleColors {
           flex: 6;
           overflow: hidden;
           text-overflow: ellipsis;
+          margin-top: 30px;
         }
         #icon {
           --simple-icon-width: 49px;
           --simple-icon-height: 49px;
           color: var(--simple-colors-default-theme-accent-11);
+          background-color: var(--simple-colors-default-theme-accent-3);
+        }
+        .imageLink .iconContainer {
+          background-color: var(--simple-colors-default-theme-accent-3);
+          width: 55px;
+          height: 55px;
+          position: absolute;
+          bottom: -24px;
+          right: 95px;
         }
         #icon:hover,
         #icon:focus,
@@ -196,6 +209,7 @@ export class AppHaxSiteBars extends SimpleColors {
           <a href="${this.iconLink}" tabindex="-1" id="icon">
             <simple-icon-button-lite
               icon="${this.icon}"
+              class="iconContainer"
             ></simple-icon-button-lite>
           </a>
         </div>
