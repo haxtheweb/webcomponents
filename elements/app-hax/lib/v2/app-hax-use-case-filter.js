@@ -4,6 +4,7 @@ import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { store } from "./AppHaxStore.js";
 import "./app-hax-use-case.js";
 import "./app-hax-search-results.js";
+import "./app-hax-filter-tag.js";
 
 export class AppHaxUseCaseFilter extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -72,9 +73,12 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: block;
           width: 100%;
         }
+        .rightSection{
+          display: block;
+          margin-left: 336px;
+        }
         .results {
           display: flex;
-          margin-left: 360px;
           justify-content: flex-start;
           align-items: flex-start;
         }
@@ -82,15 +86,15 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: flex;
           justify-content: flex-start;
           align-items: flex-start;
-          margin-left: 365px;
+          margin-left: 60px;
         }
         .reset-button {
+          display: flex;
           font-family: "Press Start 2P";
           font-size: 12px;
           width: 216px;
           display: inline-flex;
           align-items: center;
-          text-align: center;
           justify-content: center;
           padding: 8px;
           margin: 2px 0 0 16px;
@@ -130,19 +134,18 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: flex;
         }
         .filter {
-          position: fixed;
-          top: 215px;
+          position: absolute;
           left: 16px;
           justify-self: flex-start;
           display:flex;
           background-color: var(--simple-colors-default-theme-accent-1, var(--accent-color));
           color: var(--simple-colors-default-theme-accent-12, var(--accent-color));
+          border-radius: 8px;
           flex-direction: column;
           margin: var(--ddd-spacing-2);
           padding: var(--ddd-spacing-4);
-          border: solid var(--ddd-theme-default-limestoneGray) 1px;
-          width: 250px;
-          border-radius: 10px;
+          border: solid var(--ddd-theme-default-nittanyNavy, var(--ddd-theme-default-limestoneGray)) 1px;
+          width: 300px;
         }
         .filterButtons {
           margin-top: 8px;
@@ -165,6 +168,9 @@ export class AppHaxUseCaseFilter extends LitElement {
         input[type="checkbox"] {
           width: 30px;
         }
+        .newJourneySection {
+          display: inline-flex;
+        }
       `,
     ];
   }
@@ -182,7 +188,19 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   render() {
     return html`
-    <div class="filter">
+    <div class="returnTo">
+      <h3>Return to...</h3>
+    </div>
+
+    <div class="userSites">
+      <app-hax-search-results></app-hax-search-results>
+    </div>
+
+    <div class="startNew">
+      <h3>Start New Journey</h3>
+    </div>
+  <div class="newJourneySection">
+  <div class="filter">
   <!--search bar-->
     <div class="upper-filter">
       <input
@@ -214,19 +232,16 @@ export class AppHaxUseCaseFilter extends LitElement {
       </div>
     </div>
 
-    <div class="returnTo">
-      <h3>Return to...</h3>
+    <div class="rightSection">
+    <div class="selectedTags">
+      ${this.activeFilters.map(
+      (filter) => html`
+        <app-hax-filter-tag .label=${filter} @remove-tag=${this.removeFilter}></app-hax-filter-tag>
+      `
+      )}
     </div>
-
-    <div class="userSites">
-      <app-hax-search-results></app-hax-search-results>
-    </div>
-
-    <div class="startNew">
-      <h3>Start New Journey</h3>
-    </div>
-
     <div class="results">
+      
       ${this.filteredItems.length > 0
         ? this.filteredItems.map(
         (item, index) => html`
@@ -250,6 +265,11 @@ export class AppHaxUseCaseFilter extends LitElement {
         )
         : html`<p>No templates match the filters specified.</p>`}
     </div>
+    </div>
+    
+    
+  </div>
+    
     `;
   }
 
@@ -333,7 +353,13 @@ export class AppHaxUseCaseFilter extends LitElement {
     }); 
     this.requestUpdate();
   }
-    
+  
+  removeFilter(event) {
+    const filterToRemove = event.detail;
+    this.activeFilters = this.activeFilters.filter((f) => f !== filterToRemove);
+    this.applyFilters(); // Re-filter results
+    this.requestUpdate();
+  }
     
   resetFilters() {
     this.searchQuery = "";

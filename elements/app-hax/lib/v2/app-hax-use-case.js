@@ -27,7 +27,7 @@ export class AppHaxUseCase extends LitElement {
         source: { type: String },
         demoLink: { type: String },
         iconImage: { type: Array },
-        isSelected: { type: Boolean },
+        isSelected: { type: Boolean , reflect: true},
         showContinue: { type: Boolean }
     };
   }
@@ -56,7 +56,7 @@ export class AppHaxUseCase extends LitElement {
         .image img{
           display: block;
           width: 220px;
-          height: 200px;
+          height: 150px;
           overflow: clip;
           justify-self: center;
         }
@@ -69,11 +69,15 @@ export class AppHaxUseCase extends LitElement {
         a:link {
           color: var(--ddd-theme-defaut-slateMaxLight);
           text-decoration: none;
-          font-size: 16px;
+          font-family: 'Press Start 2P';
+          font-size: 12px;
         }
         button {
           display: flex;
-          background-color: #D9D9D9;
+          background-color: var(--simple-colors-default-theme-light-blue-1, var(--accent-color));
+          color: var(--simple-colors-default-theme-light-blue-12, var(--accent-color));
+          border: 2px solid var(--simple-colors-default-theme-light-blue-12, var(--accent-color));
+          border-radius: 2px;
           font-family: 'Press Start 2P';
           font-size: 8px;
           padding: 8px;
@@ -102,6 +106,14 @@ export class AppHaxUseCase extends LitElement {
         .cardBottom button, .cardBottom a {
         flex: 1;
         margin: 0 4px;
+        }
+        .cardBottom a:visited {
+          color: var(--simple-colors-default-theme-light-blue-9);
+        }
+        
+        :host([isSelected]) button.select {
+          background-color: var(--simple-colors-default-theme-light-blue-12, --accent-color);
+          color: var(--simple-colors-default-theme-light-blue-1, --accent-color);
         }
       `,
     ];
