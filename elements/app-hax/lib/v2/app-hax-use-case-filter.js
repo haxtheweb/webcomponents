@@ -89,7 +89,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         h3 {
           
-          background-image: url("/elements/app-hax/lib/assets/images/pixilart-drawing.png");
+          background-image: url("/elements/app-hax/lib/assets/images/h3-background-LM.png");
           width: 500px;
           height: 50px;
           text-align: left;
