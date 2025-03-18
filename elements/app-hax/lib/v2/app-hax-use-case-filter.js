@@ -68,9 +68,11 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         .reset-button {
           font-family: "Press Start 2P";
-          font-size: 16px;
-          display: flex;
+          font-size: 12px;
+          width: 100px;
+          display: inline-flex;
           align-items: center;
+          justify-content: center;
           padding: 8px;
         }
         h3 {
@@ -116,7 +118,8 @@ export class AppHaxUseCaseFilter extends LitElement {
           margin: var(--ddd-spacing-2);
           padding: var(--ddd-spacing-4);
           border: solid var(--ddd-theme-default-limestoneGray) 1px;
-          width: 300px;
+          width: 250px;
+          border-radius: 10px;
         }
         .filterButtons {
           margin-top: 8px;
@@ -172,19 +175,19 @@ export class AppHaxUseCaseFilter extends LitElement {
     <div class="filterButtons">
       ${this.filters.map(
         (filter) => html`
-          <label>
-            <input
-              type="checkbox"
-              .value=${filter}
-              .checked=${this.activeFilters.includes(filter)}
-              @change=${(e) => this.toggleFilter(e)}
-            />
-            ${filter}
-          </label>
-        `
-      )}
-    </div>
-      <button class="reset-button" @click="${this.resetFilters}">Reset</button>
+            <label>
+              <input
+                type="checkbox"
+                .value=${filter}
+                .checked=${this.activeFilters.includes(filter)}
+                @change=${(e) => this.toggleFilter(e)}
+              />
+              ${filter}
+            </label>
+          `
+        )}
+        <button class="reset-button" @click="${this.resetFilters}">Reset</button>
+      </div>
     </div>
 
     <div class="returnTo">
