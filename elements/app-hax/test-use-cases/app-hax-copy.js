@@ -1263,6 +1263,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         </app-hax-top-bar>
       </header>
       <main @click="${this.closeMenu}">
+        <confetti-container id="confetti">
           <div class="label">
             <app-hax-label>
               ${this.activeItem && !this.siteReady
@@ -1294,6 +1295,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             @click="${this.getNewWord}"
           ></random-word>
           <section class="content">${this.appBody(this.appMode)}</section>
+        </confetti-container>
       </main>`;
   }
 
@@ -1343,6 +1345,19 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       ?unlock-coming-soon="${this.unlockComingSoon}"
       ?unlock-terrible="${this.unlockTerrible}"
     ></app-hax-steps>`;
+  }
+
+  siteReadyToGo(e) {
+    import("@haxtheweb/multiple-choice/lib/confetti-container.js").then(
+      (module) => {
+        setTimeout(() => {
+          this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
+        }, 0);
+      },
+    );
+    if (e.detail) {
+      store.siteReady = true;
+    }
   }
 
   template404() {
