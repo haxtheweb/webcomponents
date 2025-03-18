@@ -87,14 +87,15 @@ export class AppHaxUseCaseFilter extends LitElement {
         .reset-button {
           font-family: "Press Start 2P";
           font-size: 12px;
-          width: 100px;
+          width: 216px;
           display: inline-flex;
           align-items: center;
+          text-align: center;
           justify-content: center;
           padding: 8px;
+          margin: 2px 0 0 16px;
         }
         h3 {
-          
           background-image: url("/elements/app-hax/lib/assets/images/h3-background-LM.png");
           width: 500px;
           height: 50px;
@@ -132,7 +133,6 @@ export class AppHaxUseCaseFilter extends LitElement {
           position: fixed;
           top: 215px;
           left: 16px;
-          height: 300px;
           justify-self: flex-start;
           display:flex;
           background-color: var(--simple-colors-default-theme-accent-1, var(--accent-color));
