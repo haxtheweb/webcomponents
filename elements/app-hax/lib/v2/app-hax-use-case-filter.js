@@ -71,6 +71,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         h3 {
           background-color: var(--simple-colors-default-theme-accent-1, var(--app-hax-accent-color));
+          background-image: url("/elements/app-hax/lib/assets/images/pixilart-drawing.png");
           width: 500px;
           height: 50px;
           text-align: left;
@@ -84,6 +85,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: flex;
           justify-content: center;
           align-items: center;
+          
         }
         input[type="text"]{
           opacity: 1;
