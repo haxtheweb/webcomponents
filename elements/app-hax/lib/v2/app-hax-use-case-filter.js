@@ -25,6 +25,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.errorMessage = "";
     this.loading = false;
     this.isDarkMode = document.body.classList.contains("dark-mode");
+    this.selectedCardIndex = null;
   }
 
   // Site.json is coming from
@@ -42,7 +43,8 @@ export class AppHaxUseCaseFilter extends LitElement {
       demoLink: { type: String},
       errorMessage: { type: String },
       loading: { type: Boolean },
-      isDarkMode: {type: Boolean, reflect: true}
+      isDarkMode: {type: Boolean, reflect: true},
+      selectedCardIndex: { type: Number }
     };
   }
 
@@ -234,6 +236,10 @@ export class AppHaxUseCaseFilter extends LitElement {
               .description=${item.useCaseDescription || ""}
               .demoLink=${item.demoLink || ""}
               .iconImage=${item.useCaseIcon || []}
+              .isSelected=${item.isSelected || false}
+              .showContinue=${item.showContinue || false}
+              @toggle-display=${(e) => this.toggleDisplay(index, e)}
+              @continue-action=${() => this.continueAction(index)}
             ></app-hax-use-case>
             </a>
           </div>
@@ -269,6 +275,15 @@ export class AppHaxUseCaseFilter extends LitElement {
         this.shadowRoot.querySelector("#searchField").focus();
       }, 300);
     }
+  }
+
+  toggleSelection(index) {
+    if (this.activeUseCase === index) {
+      this.activeUseCase = false; // Deselect if the same card is clicked
+    } else {
+      this.activeUseCase = index; // Select the new card
+    }
+    this.requestUpdate();
   }
 
   handleSearch(event) {
@@ -386,7 +401,36 @@ export class AppHaxUseCaseFilter extends LitElement {
     })
     .finally(() => {
       this.loading = false;
+      this.requestUpdate();
     });
   }
+
+  toggleDisplay(index, event) {
+    const isSelected = event.detail.isSelected;
+  
+    if (this.selectedCardIndex !== null && this.selectedCardIndex !== index) {
+      // Deselect the previously selected card
+      this.filteredItems[this.selectedCardIndex].isSelected = false;
+      this.filteredItems[this.selectedCardIndex].showContinue = false;
+    }
+  
+    if (isSelected) {
+      // Select the new card
+      this.selectedCardIndex = index;
+    } else {
+      // Deselect the current card
+      this.selectedCardIndex = null;
+    }
+  
+    this.filteredItems[index].isSelected = isSelected;
+    this.filteredItems[index].showContinue = isSelected;
+    this.requestUpdate();
+  }
+
+  continueAction(index) {
+    console.log(`Continue action for item at index ${index}`);
+    // Implement the continue action for the selected item
+  }
+
 }
 customElements.define("app-hax-use-case-filter", AppHaxUseCaseFilter);
