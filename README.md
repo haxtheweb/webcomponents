@@ -92,7 +92,7 @@ yarn start
 Edit files in `lib/`, `src/`, `locales/` and `demo/` in order to modify the element to contribute back to us via PR.
 ## Scripts
 
-- `hax create`
+- `hax webcomponent my-element --y`
     - Run HAX CLI to create a new web component
 - `yarn test`
     -  Run tests on ALL webcomponents.
