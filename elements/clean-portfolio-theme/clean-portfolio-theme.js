@@ -19,24 +19,21 @@ import { toJS, autorun } from "mobx";
  */
 
 // TODO
-// - Layouts
+// - Layouts✔️
 //    - Text✔️
 //    - Listing✔️
 //    - Media✔️
+// - Light-dark support✔️
 // - Responsiveness
 //    - Condensed menu
-// - Light-dark support
 // - Abstraction
 //    - Active media banner (use active-media-banner.js)
 //    - Breadcrumb (use site-breadcrumb.js?)
 //    - Social media card(?)
 // - Other
-//    - Site background color should be overriden with --portfolio-lightDark-bg
+//    - Site background color should be overriden with --portfolio-lightDark-bg✔️
 //    - Focus should only highlight a menu item and not its underline
-//    - Header and footer should change color for media layout(?)
-//      - document.querySelector("header").style.color = "#ffffff";
 //    - Footer should stay at the bottom of the page
-//    - Switching pages breaks edit button
 
 const PortfolioFonts = [
   "https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap",
@@ -52,9 +49,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   constructor() {
     super();
+    this.activeLayout = "text"; // text, media, listing
+    this.isActiveLayoutButtonVisible = false; // flag for change layout debug button
+
+    // MobX listeners
+
     // gets site title for site-title
-    this.siteTitle = "";
-    this.activeLayout = "text"; //text, media, listing
     autorun((reaction) => {
       this.siteTitle = toJS(store.siteTitle);
       this.__disposer.push(reaction);
@@ -66,25 +66,19 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       this.__disposer.push(reaction);
     });
 
-    // gets current page title for listing-title, media-title, and breadcrumb-title
+    // gets active page's title for listing-title, media-title, and breadcrumb-title
     autorun((reaction) => {
       this.activeTitle = toJS(store.activeTitle);
       this.__disposer.push(reaction);
     });
 
-    // gets current page's parent title for breadcrumb-back
+    // gets active page's parent title for breadcrumb-back
     autorun((reaction) => {
       this.parentTitle = toJS(store.parentTitle);
       this.__disposer.push(reaction);
     });
 
-    // gets current page's parent slug for breadcrumb-back
-    // autorun((reaction) => {
-    //   this.parentSlug = toJS(store.parentSlug);
-    //   this.__disposer.push(reaction);
-    // });
-
-    // gets current page's tags and inserts them into an array for media-tag
+    // gets active page's tags and inserts them into an array for media-tag
     autorun((reaction) => {
       let tags = toJS(store.activeTags);
       if (tags && tags.length > 0) {
@@ -121,6 +115,25 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             if (items.length > 0) {
               this.activeLayout = "listing";
               this.items = [...items];
+
+              // get tags for all children of activeItem, push to arrays
+              this.childrenTopTags = [];
+              this.childrenAllTags = [];
+              this.items.forEach(item => {
+                let tags = toJS(item.metadata.tags);
+                if (tags) {
+                  tags = tags.split(',');
+                  if (!this.childrenTopTags.includes(tags[0])) {
+                    this.childrenTopTags.push(tags[0]);
+                  }
+                  tags.forEach(tag => {
+                    if (!this.childrenAllTags.includes(tag)) {
+                      this.childrenAllTags.push(tag);
+                    }
+                  });
+                }
+              });
+              console.log(this.childrenAllTags);
             } else {
               this.activeLayout = "text";
             }
@@ -129,6 +142,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
       this.__disposer.push(reaction);
     });
+
+    
   }
 
   firstUpdated(changedProperties) {
@@ -153,9 +168,10 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       activeLayout: { type: String },
       activeTags: { type: Array },
       parentTitle: { type: String },
-      // parentSlug: { type: String },
       topItems: { type: Array },
-      items: { type: Array }
+      items: { type: Array },
+      childrenTopTags: { type: Array },
+      childrenAllTags: { type: Array },
     };
   }
 
@@ -164,10 +180,28 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         ...super.HAXCMSGlobalStyleSheetContent(),
         css`
         :root, html, body {
+            /* site color variables */
+            --portfolio-black: #000000;
+            --portfolio-white: #ffffff;
+            --portfolio-lighterGrey: #bfbfbf;
+            --portfolio-lightGrey: #8a8a8a;
+            --portfolio-grey: #424242;
+            --portfolio-darkGrey: #333;
+            --portfolio-textHeader: #efefef;
+            --portfolio-textHeaderHover: #b7b7b7;
+            --portfolio-backgroundWhite: #f7f7f7;
+            --portfolio-menuItemUnderline: #ff0000; 
+
+            --portfolio-lightDark-blackWhite: light-dark(var(--portfolio-black), var(--portfolio-white));
+            --portfolio-lightDark-whiteBlack: light-dark(var(--portfolio-white), var(--portfolio-black));
+            --portfolio-lightDark-bg: light-dark(var(--portfolio-backgroundWhite), var(--portfolio-grey));
+            --portfolio-lightDark-footer: light-dark(var(--portfolio-black), var(--portfolio-darkGrey));
+
             --ddd-font-primary: "Source Code Pro" !important;
             font-family: var(--ddd-font-primary);
             font-size: var(--ddd-theme-body-font-size);
             font-weight: var(--ddd-font-weight-regular);
+            background-color: var(--portfolio-lightDark-bg);
         }
         `
     ];
@@ -177,29 +211,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   static get styles() {
     return [super.styles,
     css`
-      :host {
-        color: var(--ddd-theme-primary);
-
-        /* site color variables */
-        --portfolio-black: #000000;
-        --portfolio-white: #ffffff;
-        --portfolio-lighterGrey: #bfbfbf;
-        --portfolio-lightGrey: #8a8a8a;
-        --portfolio-grey: #424242;
-        --portfolio-darkGrey: #333;
-        --portfolio-textHeader: #efefef;
-        --portfolio-textHeaderHover: #b7b7b7;
-        --portfolio-backgroundWhite: #f7f7f7;
-        --portfolio-menuItemUnderline: #ff0000; 
-
-        --portfolio-lightDark-blackWhite: light-dark(var(--portfolio-black), var(--portfolio-white));
-        --portfolio-lightDark-whiteBlack: light-dark(var(--portfolio-white), var(--portfolio-black));
-        --portfolio-lightDark-bg: light-dark(var(--portfolio-backgroundWhite), var(--portfolio-grey));
-        --portfolio-lightDark-footer: light-dark(var(--portfolio-black), var(--portfolio-darkGrey));
-        
-        background-color: var(--portfolio-lightDark-bg);
-      }
-
       /* Semantic elements */
 
       header {
@@ -280,6 +291,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         font-size: .6875em;
         padding: 40px;
         padding-left: 200px;
+        margin-top: 150px;
       }
 
       /* Site header elements */
@@ -355,22 +367,23 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       .listing-title {
         font-family: "Playfair Display";
-        font-size: 96px;
+        font-size: 88px;
         font-weight: bold;
         margin-top: 100px;
+        margin-bottom: 50px;
       }
 
       .listing-category {
         font-family: "Source Code Pro";
         text-transform: uppercase;
         border-top: 6px solid var(--portfolio-lightDark-blackWhite);
-        margin-bottom: 25px;
+        min-height: 36px;
       }
 
-      .listing-list {
+      .listing-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 5px;
+        gap: 15px;
         width: 100%;
         transition: all 0.2s ease-in-out;
       }
@@ -378,7 +391,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       div .listing-card {
         width: 180px;
         max-width: 100%;
-        margin: 10px;
+        margin-bottom: 48px;
         text-decoration: none;
       }
 
@@ -402,7 +415,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         text-transform: uppercase;
       }
 
-      .listing-cardyear {
+      .listing-cardtag {
         color: #6D4C41;
         font-family: "Source Code Pro";
         font-size: 14px;
@@ -410,17 +423,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
       
       /* Media layout */
-
-      /* site-breadcrumb {
-        display: flex;
-        align-items: center;
-        width: 100%;
-        height: 60px;
-        gap: 10px;
-        margin-left: 250px;
-        font-family: "Work Sans";
-        font-weight: 450;
-      } */
       
       .breadcrumb {
         display: flex;
@@ -470,14 +472,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .media-tag-list {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
       }
 
       .media-tag {
-        color: var(--portfolio-lightDark-blackWhite);
+        color: var(--portfolio-lightDark-blackWhite) !important;
         font-family: "Source Code Pro";
         font-size: 1.25em;
+        text-transform: uppercase;
         font-weight: 400;
         padding-top: 5px;
         padding-bottom: 5px;
@@ -514,32 +515,72 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           grid-template-columns: 1fr;
         }
       }
-
-      #layout-button {
-        position: absolute;
-      }
     `];
   }
 
   renderListing() {
     return html`
           <div class="listing-container">
-            <h1 class="listing-title">${this.activeTitle}</h1> 
-            <h3 class="listing-category">Art Installations</h3>
+            <h1 class="listing-title">${this.activeTitle}</h1>
 
-            <div class="listing-list">
-              ${this.items && this.items.length > 0
-                ? this.items.map(
-                    (item) => html`
-                      <a class="listing-card" href="${item.slug}">
-                        <img src="https://michaelcollins.xyz/assets/images/portfolio/privy-exhibition/privy-gallery-02.jpg">
-                        <div class="listing-cardtitle">${item.title}</div>
-                          <div class="listing-cardyear">2025</div>
-                      </a>
-                    `
-                  )
-                : ''}
-            </div>
+            <!-- Render cards with tags -->
+            ${this.childrenTopTags && this.childrenTopTags.length > 0
+              ? this.childrenTopTags.map(
+                  (topTag) => html`
+                    <h3 class="listing-category">${topTag}</h3>
+                    <div class="listing-grid">
+                      ${this.items.filter(
+                        (item) => {
+                          // Check if current item's tag has the top-level tag
+                          let tags = toJS(item.metadata.tags);
+                          if (tags) {
+                            tags = tags.split(',');
+                            return tags.some((tag) => tag === topTag);
+                          }
+                          return false;
+                        }).map(
+                          (item) => {
+                          let tags = toJS(item.metadata.tags);
+                          tags = tags.split(',');
+
+                          let secondTag = '';
+                          secondTag = tags[1];
+
+                          return html`
+                            <a class="listing-card" href="${item.slug}">
+                              <img src="https://michaelcollins.xyz/assets/images/portfolio/privy-exhibition/privy-gallery-02.jpg">
+                              <div class="listing-cardtitle">${item.title}</div>
+                              <div class="listing-cardtag">${secondTag}</div>
+                            </a>
+                          `
+                        })
+                      }
+                    </div>
+                  `
+                )
+              : ''}
+
+            <!-- Render cards with no tags -->
+            ${this.items.some(item => {
+              // Checks if any item has no tags
+              let tags = toJS(item.metadata.tags);
+              return !tags;
+            }) ? html`
+              <h3 class="listing-category"></h3>
+              <div class="listing-grid">
+                ${this.items.filter((item) => {
+                  // Filter out items with no tags
+                  let tags = toJS(item.metadata.tags);
+                  return !tags;
+                }).map((item) => html`
+                  <a class="listing-card" href="${item.slug}">
+                    <img src="https://michaelcollins.xyz/assets/images/portfolio/privy-exhibition/privy-gallery-02.jpg">
+                    <div class="listing-cardtitle">${item.title}</div>
+                    <!-- <div class="listing-cardtag"></div> -->
+                  </a>
+                `)}
+              </div>
+            ` : ''}
           </div>
     `;
   }
@@ -552,20 +593,19 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         <span class="breadcrumb-split">/</span>
         <span class="breadcrumb-title">${this.activeTitle}</span>
       </div>
-      <!-- <site-breadcrumb></site-breadcrumb> -->
     </div>
 
     <img class="media-banner" src="https://michaelcollins.xyz/assets/images/portfolio/interspatial/interspatial-front.jpg">
 
     <div class="media-container">
       <h1 class="media-title">${this.activeTitle}</h1>
-      <div class="media-tag-list" >
+      <div class="media-tag-list">
        ${this.activeTags && this.activeTags.length > 0
         ? this.activeTags.map(
             (item, index) => html`
-              <h3 class="media-tag">
+              <a class="media-tag" href="http://localhost:8000/elements/haxcms-elements/demo/x/views?tags=${item}">
                 ${item}${index < this.activeTags.length - 1 ? ',' : ''}
-              </h3>
+              </a>
             `
           )
         : ''}
@@ -574,6 +614,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     `;
   }
 
+  // for debugging
   ChangeLayout() {
     if (this.activeLayout == "text") {
       this.activeLayout = "listing";
@@ -584,15 +625,17 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     }
   }
 
+  // TODO: add support for back arrow svg
   breadCrumbDecoration(){
     return html``
   }
 
   // Lit render the HTML
   render() {
-
     return html`
-      <button id="layout-button" @click="${this.ChangeLayout}">Active layout: ${this.activeLayout}</button>
+      ${this.isActiveLayoutButtonVisible
+      ? html`<button id="layout-button" @click="${this.ChangeLayout}">Active layout: ${this.activeLayout}</button>`
+      : ``}
       
       <header>
         <a id="site-title" href="${this.homeLink}">${this.siteTitle}</a>
@@ -604,18 +647,20 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           )}
         </div>
       </header>
+
       ${this.activeLayout == "text"
       ? ``
       : this.activeLayout == "media"
       ? this.renderMedia()
       : this.renderListing()}
+
       <div class="${this.activeLayout}-container" id="contentcontainer">
         <div id="slot"><slot></slot></div>
       </div>
+
       <footer>© 2025 Collin Micheals.</footer>
     `;
   }
-
 }
 
 globalThis.customElements.define(CleanPortfolioTheme.tag, CleanPortfolioTheme);
