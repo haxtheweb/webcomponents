@@ -19,13 +19,13 @@ import { toJS, autorun } from "mobx";
  */
 
 // TODO
-// - Layouts
+// - Layouts✔️
 //    - Text✔️
 //    - Listing✔️
 //    - Media✔️
+// - Light-dark support✔️
 // - Responsiveness
 //    - Condensed menu
-// - Light-dark support
 // - Abstraction
 //    - Active media banner (use active-media-banner.js)
 //    - Breadcrumb (use site-breadcrumb.js?)
@@ -33,8 +33,6 @@ import { toJS, autorun } from "mobx";
 // - Other
 //    - Site background color should be overriden with --portfolio-lightDark-bg✔️
 //    - Focus should only highlight a menu item and not its underline
-//    - Header and footer should change color for media layout(?)
-//      - document.querySelector("header").style.color = "#ffffff";
 //    - Footer should stay at the bottom of the page
 
 const PortfolioFonts = [
