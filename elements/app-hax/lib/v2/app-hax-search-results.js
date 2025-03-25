@@ -72,16 +72,50 @@ export class AppHaxSearchResults extends SimpleColors {
     return [
       super.styles,
       css`
-        :host {
-          overflow: hidden;
-        }
-        ul,
-        li {
-          margin: 4px;
-          padding: 0;
-          list-style: none;
+        
+        .carousel-container {
           display: flex;
-          flex-wrap: wrap;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          overflow: hidden;
+          margin: 0px;
+        }
+        .scroll-left,
+        .scroll-right {
+          background: var(--app-hax-accent-color, black);
+          color: white;
+          border: none;
+          padding: 10px;
+          cursor: pointer;
+        }
+        
+        #results {
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          overflow-y: hidden;
+          scroll-snap-type: x mandatory;
+          gap: 36px;
+          padding: 8px;
+          white-space: nowrap;
+          scrollbar-width: none;
+          -ms-overflow-style: none; 
+        }
+
+        #results::-webkit-scrollbar {
+          display: none;
+        }
+
+        li {
+          flex: 0 0 auto;
+          scroll-snap-align: start;
+          width: 240px;
+          height: 300px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
         }
         app-hax-site-bar {
           margin: 8px 0;
@@ -126,6 +160,8 @@ export class AppHaxSearchResults extends SimpleColors {
   }
   render() {
     return html`
+    <div class="carousel-container">
+    <button class="scroll-left" @click="${this.scrollLeft}">◀</button>
       <ul id="results">
         ${this.displayItems.length > 0
           ? this.displayItems.map(
@@ -137,7 +173,7 @@ export class AppHaxSearchResults extends SimpleColors {
                     accent-color="${varGet(
                       item,
                       "metadata.theme.variables.cssVariable",
-                      "orange",
+                      "",
                     )
                       .replace("--simple-colors-default-theme-", "")
                       .replace("-7", "")}"
@@ -169,7 +205,18 @@ export class AppHaxSearchResults extends SimpleColors {
                 : "your account, try starting a new journey!"}.
             </div>`}
       </ul>
+      <button class="scroll-right" @click="${this.scrollRight}">▶</button>
+    </div>
+    
     `;
+  }
+
+  scrollLeft() {
+    this.shadowRoot.querySelector("#results").scrollBy({ left: -300, behavior: "smooth" });
+  }
+  
+  scrollRight() {
+    this.shadowRoot.querySelector("#results").scrollBy({ left: 300, behavior: "smooth" });
   }
 
   getItemDetails(item) {

@@ -11,16 +11,26 @@ export class AppHaxScrollButton extends LitElement {
   constructor() {
     super();
     this.label = '';
+    this.targetId = '';
     this.isDarkMode = document.body.classList.contains("dark-mode");
   }
 
   static get properties() {
     return {
         label: { type: String },
+        targetId: { type: String },
         isDarkMode: {type: Boolean, reflect: true},
     };
   }
 
+  scrollToTarget() {
+    if (this.targetId) {
+      const targetElement = document.getElementById(this.targetId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }
   connectedCallback() {
     super.connectedCallback();
     this._darkModeObserver = new MutationObserver(() => {
@@ -67,10 +77,9 @@ export class AppHaxScrollButton extends LitElement {
 
   render() {
     return html`
-    <div>
-      <h4>${this.label}</h4>  
+    <div @click="${this.scrollToTarget}">
+      <h5>${this.label}</h5>  
     </div>
-      
     `;
   }
 

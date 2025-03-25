@@ -42,21 +42,22 @@ export class AppHaxUseCase extends LitElement {
         :host {
           display: flex;
           flex-direction: column;
+          text-align: flex-start;
           max-width: 240px;
           margin:16px;
           font-family: var(--ddd-font-primary);
-          color: var(--simple-colors-default-theme-light-blue-12, var(--accent-color));
-          background-color: var(--simple-colors-default-theme-light-blue-1, var(--accent-color));
+          color: var(--ddd-theme-default-nittanyNavy);
+          background-color: white;
           padding:  4px;
           min-height: 270px;
-          border: solid var(--simple-colors-default-theme-light-blue-12, var(--accent-9)) 8px;
           box-shadow: var(--ddd-boxShadow-md);
-          text-align: center;
+          border-radius: 8px;
         }
         .image img{
           display: block;
-          width: 220px;
+          width: 100%;
           height: 150px;
+          border-bottom: solid var(--ddd-theme-default-nittanyNavy) 12px;
           overflow: clip;
           justify-self: center;
         }
@@ -67,19 +68,20 @@ export class AppHaxUseCase extends LitElement {
           font-size: 12px;
         }
         a:link {
-          color: var(--ddd-theme-defaut-slateMaxLight);
+          color: var(--ddd-theme-defaut-skyBlue);
           text-decoration: none;
-          font-family: 'Press Start 2P';
+          font-family: var(--ddd-font-primary);
           font-size: 12px;
         }
         button {
           display: flex;
-          background-color: var(--simple-colors-default-theme-light-blue-1, var(--accent-color));
-          color: var(--simple-colors-default-theme-light-blue-12, var(--accent-color));
-          border: 2px solid var(--simple-colors-default-theme-light-blue-12, var(--accent-color));
-          border-radius: 2px;
-          font-family: 'Press Start 2P';
-          font-size: 8px;
+          background-color: white;
+          color: var(--ddd-theme-default-nittanyNavy);
+          border: 2px solid var(--ddd-theme-default-nittanyNavy);
+          border-radius: 4px;
+          font-family: var(--ddd-font-primary);
+          font-size: 12px;
+          font-weight: 20px;
           padding: 8px;
           margin: 0px 2px 0px 2px;
           height: 16px;
@@ -115,6 +117,11 @@ export class AppHaxUseCase extends LitElement {
           background-color: var(--simple-colors-default-theme-light-blue-12, --accent-color);
           color: var(--simple-colors-default-theme-light-blue-1, --accent-color);
         }
+        .titleBar {
+          display: inline-flex;
+          align-items: center;
+          text-align: flex-start;
+        }
       `,
     ];
   }
@@ -140,16 +147,20 @@ export class AppHaxUseCase extends LitElement {
           <a id="demo" href="${this.demoLink}" target="_blank"></a>
           <img src="${this.source}" alt="${this.title}" ></a>
         </div>
-          <h3 style="font-family: 'Press Start 2P'; font-size: 16px;">${this.title}</h3>
+        <div class="titleBar">
+          <h3 style="font-size: 20px;">${this.title}</h3>
+            ${this.iconImage.map(
+            (icon) => html`
+              <simple-icon-lite
+                icon="${icon.icon}" 
+                title="${icon.tooltip || ''}" 
+              ></simple-icon-lite>
+            `
+            )}
+        </div>
+          
           <p>${this.description}</p>
-          ${this.iconImage.map(
-          (icon) => html`
-            <simple-icon-lite
-              icon="${icon.icon}" 
-              title="${icon.tooltip || ''}" 
-            ></simple-icon-lite>
-          `
-          )}
+          
           <div class="cardBottom"> 
             <button class="select ${this.isSelected ? 'selected' : ''}" @click=${this.toggleDisplay}>
               ${this.isSelected ? 'Selected' : 'Select'}

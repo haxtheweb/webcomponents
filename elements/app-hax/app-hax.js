@@ -1273,11 +1273,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             <div class="returnTo">
               <app-hax-scroll-button
                 label="Return to..."
+                targetId="returnToSection"
               ></app-hax-scroll-button>
             </div>
             <div class="startNew">
               <app-hax-scroll-button
-                label="Start New Journey"
+                label="New Journey"
+                targetId="startJourneySection"
               ></app-hax-scroll-button>
             </div>
           </div>

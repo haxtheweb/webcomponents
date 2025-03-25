@@ -70,10 +70,11 @@ export class AppHaxUseCaseFilter extends LitElement {
           justify-content: flex-start;
           align-items: flex-start;
           margin-left: 60px;
+          width: 750px;
         }
         .reset-button {
           display: flex;
-          font-family: "Press Start 2P";
+          font-family: var(--ddd-font-primary);
           font-size: 16px;
           display: flex;
           align-items: center;
@@ -81,14 +82,17 @@ export class AppHaxUseCaseFilter extends LitElement {
           padding: 8px;
         }
         h4 {
-          font-family: "Veranda";
+          font-family: var(--ddd-font-primary);
           font-size: 24px;
           color: var(--app-hax-accent-color, var(--accent-color));
         }
         .startNew, .returnTo {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          display: inline-flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          margin-left: 48px;
+          margin-right: 48px;
           
         }
         input[type="text"]{
@@ -97,7 +101,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           max-width: 25vw;
           transition: all ease-in-out 0.3s;
           padding: 4px;
-          font-family: "Press Start 2P";
+          font-family: var(--ddd-font-primary);
           font-size: 12px;
           margin: 2px 0 0 16px;
           height: 20px;
@@ -131,7 +135,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           width: 150px;
         }
         .filterButtons label {
-          font-family: "Press Start 2P";
+          font-family: var(--ddd-font-primary);
           font-size: 16px;
           display: flex;
           align-items: center;
@@ -153,26 +157,9 @@ export class AppHaxUseCaseFilter extends LitElement {
       this.toggleSearch();
     }
   }
-  // eslint-disable-next-line class-methods-use-this
-  search() {
-    store.appEl.playSound("click");
-    this.searchTerm = this.shadowRoot.querySelector("#searchField").value;
-  }
 
   render() {
     return html`
-    <div class="returnTo">
-      <h4>Resume Journey</h4>
-    </div>
-
-
-    <div class="userSites">
-      <app-hax-search-results></app-hax-search-results>
-    </div>
-
-    <div class="startNew">
-      <h4>Start New Journey</h4>
-    </div>
   <div class="newJourneySection">
   <div class="filter">
   <!--search bar-->
@@ -214,7 +201,18 @@ export class AppHaxUseCaseFilter extends LitElement {
       `
       )}
     </div>
-    <div class="results">
+
+    <!--returning sites-->
+    <div id="returnToSection" class="returnTo">
+      <h4>Return to...</h4>
+      <app-hax-search-results></app-hax-search-results>
+    </div>
+    
+
+    <!--templates-->
+    <div id="startJourneySection" class="startNew">
+      <h4>Start New Journey</h4>
+      <div class="results">
       
       ${this.filteredItems.length > 0
         ? this.filteredItems.map(
@@ -239,6 +237,8 @@ export class AppHaxUseCaseFilter extends LitElement {
         )
         : html`<p>No templates match the filters specified.</p>`}
     </div>
+    </div>
+    
     </div>
     
     
