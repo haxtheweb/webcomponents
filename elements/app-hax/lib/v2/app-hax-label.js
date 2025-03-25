@@ -25,7 +25,8 @@ export class AppHaxLabel extends LitElement {
     return css`
       :host {
         font-family: "Press Start 2P", sans-serif;
-        text-align: center;
+        text-align: flex-start;
+        width: 500px;
       }
 
       .title {
@@ -38,7 +39,7 @@ export class AppHaxLabel extends LitElement {
         font-weight: normal;
         font-size: 3.5vw;
         display: inline-flex;
-        align-items: center;
+        align-items: flex-start;
       }
 
       .subtitle {

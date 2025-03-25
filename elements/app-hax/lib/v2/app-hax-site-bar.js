@@ -79,13 +79,9 @@ export class AppHaxSiteBars extends SimpleColors {
           border-width: 5px 10px 5px 10px;
           box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.6);
         }
-
-        .imageLink{
-          position: relative;
-        }
         .imageLink img{
             display: block;
-            width: 240px;
+            width: 200px;
             height: 150px;
             overflow: clip;
             justify-self: center;
@@ -149,26 +145,6 @@ export class AppHaxSiteBars extends SimpleColors {
           text-overflow: ellipsis;
           margin-top: 30px;
         }
-        #icon {
-          --simple-icon-width: 49px;
-          --simple-icon-height: 49px;
-          color: var(--simple-colors-default-theme-accent-11);
-          background-color: var(--simple-colors-default-theme-accent-3);
-        }
-        .imageLink .iconContainer {
-          background-color: var(--simple-colors-default-theme-accent-3);
-          width: 55px;
-          height: 55px;
-          position: absolute;
-          bottom: -24px;
-          right: 95px;
-        }
-        #icon:hover,
-        #icon:focus,
-        #icon:active {
-          color: var(--simple-colors-default-theme-accent-3);
-          background-color: var(--simple-colors-default-theme-accent-11);
-        }
         #dots {
           --simple-icon-width: 24px;
           --simple-icon-height: 24px;
@@ -206,12 +182,6 @@ export class AppHaxSiteBars extends SimpleColors {
       <div id="mainCard">
         <div class="imageLink">
           <img src="https://i.pinimg.com/originals/a0/42/8b/a0428b95538d471b344081d7ebede5d9.jpg">
-          <a href="${this.iconLink}" tabindex="-1" id="icon">
-            <simple-icon-button-lite
-              icon="${this.icon}"
-              class="iconContainer"
-            ></simple-icon-button-lite>
-          </a>
         </div>
         
         <div id="labels">

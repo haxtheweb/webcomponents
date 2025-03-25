@@ -5,6 +5,7 @@ import { store } from "./AppHaxStore.js";
 import "./app-hax-use-case.js";
 import "./app-hax-search-results.js";
 import "./app-hax-filter-tag.js";
+import "./app-hax-scroll-button.js";
 
 export class AppHaxUseCaseFilter extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -25,7 +26,6 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.demoLink = "";
     this.errorMessage = "";
     this.loading = false;
-    this.isDarkMode = document.body.classList.contains("dark-mode");
     this.selectedCardIndex = null;
   }
 
@@ -44,25 +44,8 @@ export class AppHaxUseCaseFilter extends LitElement {
       demoLink: { type: String},
       errorMessage: { type: String },
       loading: { type: Boolean },
-      isDarkMode: {type: Boolean, reflect: true},
-      selectedCardIndex: { type: Number }
+      selectedCardIndex: { type: Number },
     };
-  }
-
-  //detecting darkmode to change background images ->> there is probably an easier way to do this
-  connectedCallback() {
-    super.connectedCallback();
-    this._darkModeObserver = new MutationObserver(() => {
-      this.isDarkMode = document.body.classList.contains("dark-mode");
-    });
-    this._darkModeObserver.observe(document.body, { attributes: true, attributeFilter: ["class"] });
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    if (this._darkModeObserver) {
-      this._darkModeObserver.disconnect();
-    }
   }
 
   static get styles() {
@@ -87,36 +70,37 @@ export class AppHaxUseCaseFilter extends LitElement {
           justify-content: flex-start;
           align-items: flex-start;
           margin-left: 60px;
+          width: 750px;
         }
         .reset-button {
           display: flex;
+<<<<<<< HEAD
           font-family: "Press Start 2P";
           font-size: 12px;
           width: 216px;
           display: inline-flex;
+=======
+          font-family: var(--ddd-font-primary);
+          font-size: 16px;
+          display: flex;
+>>>>>>> 89f54b583ed8963bda59df9a444727c0d10b53f6
           align-items: center;
           justify-content: center;
           padding: 8px;
           margin: 2px 0 0 16px;
         }
-        h3 {
-          background-image: url("/elements/app-hax/lib/assets/images/h3-background-LM.png");
-          width: 500px;
-          height: 50px;
-          text-align: left;
-          font-family: "Press Start 2P";
-          display: flex;
-          justify-content: center;
-          align-items: center;
+        h4 {
+          font-family: var(--ddd-font-primary);
+          font-size: 24px;
           color: var(--app-hax-accent-color, var(--accent-color));
         }
-        :host([isDarkMode]) h3 {
-          background-image: url("/elements/app-hax/lib/assets/images/h3-background-DM.png");
-        }
         .startNew, .returnTo {
-          display: flex;
-          justify-content: center;
-          align-items: center;
+          display: inline-flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          margin-left: 48px;
+          margin-right: 48px;
           
         }
         input[type="text"]{
@@ -125,7 +109,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           max-width: 25vw;
           transition: all ease-in-out 0.3s;
           padding: 4px;
-          font-family: "Press Start 2P";
+          font-family: var(--ddd-font-primary);
           font-size: 12px;
           margin: 2px 0 0 16px;
           height: 20px;
@@ -158,7 +142,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           width: 150px;
         }
         .filterButtons label {
-          font-family: "Press Start 2P";
+          font-family: var(--ddd-font-primary);
           font-size: 16px;
           display: flex;
           align-items: center;
@@ -180,25 +164,9 @@ export class AppHaxUseCaseFilter extends LitElement {
       this.toggleSearch();
     }
   }
-  // eslint-disable-next-line class-methods-use-this
-  search() {
-    store.appEl.playSound("click");
-    this.searchTerm = this.shadowRoot.querySelector("#searchField").value;
-  }
 
   render() {
     return html`
-    <div class="returnTo">
-      <h3>Return to...</h3>
-    </div>
-
-    <div class="userSites">
-      <app-hax-search-results></app-hax-search-results>
-    </div>
-
-    <div class="startNew">
-      <h3>Start New Journey</h3>
-    </div>
   <div class="newJourneySection">
   <div class="filter">
   <!--search bar-->
@@ -240,7 +208,18 @@ export class AppHaxUseCaseFilter extends LitElement {
       `
       )}
     </div>
-    <div class="results">
+
+    <!--returning sites-->
+    <div id="returnToSection" class="returnTo">
+      <h4>Return to...</h4>
+      <app-hax-search-results></app-hax-search-results>
+    </div>
+    
+
+    <!--templates-->
+    <div id="startJourneySection" class="startNew">
+      <h4>Start New Journey</h4>
+      <div class="results">
       
       ${this.filteredItems.length > 0
         ? this.filteredItems.map(
@@ -265,6 +244,8 @@ export class AppHaxUseCaseFilter extends LitElement {
         )
         : html`<p>No templates match the filters specified.</p>`}
     </div>
+    </div>
+    
     </div>
     
     
