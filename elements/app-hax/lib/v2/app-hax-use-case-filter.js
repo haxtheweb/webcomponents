@@ -5,6 +5,7 @@ import { store } from "./AppHaxStore.js";
 import "./app-hax-use-case.js";
 import "./app-hax-search-results.js";
 import "./app-hax-filter-tag.js";
+import "./app-hax-scroll-button.js";
 
 export class AppHaxUseCaseFilter extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -25,7 +26,6 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.demoLink = "";
     this.errorMessage = "";
     this.loading = false;
-    this.isDarkMode = document.body.classList.contains("dark-mode");
     this.selectedCardIndex = null;
   }
 
@@ -44,25 +44,8 @@ export class AppHaxUseCaseFilter extends LitElement {
       demoLink: { type: String},
       errorMessage: { type: String },
       loading: { type: Boolean },
-      isDarkMode: {type: Boolean, reflect: true},
-      selectedCardIndex: { type: Number }
+      selectedCardIndex: { type: Number },
     };
-  }
-
-  //detecting darkmode to change background images ->> there is probably an easier way to do this
-  connectedCallback() {
-    super.connectedCallback();
-    this._darkModeObserver = new MutationObserver(() => {
-      this.isDarkMode = document.body.classList.contains("dark-mode");
-    });
-    this._darkModeObserver.observe(document.body, { attributes: true, attributeFilter: ["class"] });
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    if (this._darkModeObserver) {
-      this._darkModeObserver.disconnect();
-    }
   }
 
   static get styles() {
@@ -97,19 +80,10 @@ export class AppHaxUseCaseFilter extends LitElement {
           justify-content: center;
           padding: 8px;
         }
-        h3 {
-          background-image: url("/elements/app-hax/lib/assets/images/h3-background-LM.png");
-          width: 500px;
-          height: 50px;
-          text-align: left;
-          font-family: "Press Start 2P";
-          display: flex;
-          justify-content: center;
-          align-items: center;
+        h4 {
+          font-family: "Veranda";
+          font-size: 24px;
           color: var(--app-hax-accent-color, var(--accent-color));
-        }
-        :host([isDarkMode]) h3 {
-          background-image: url("/elements/app-hax/lib/assets/images/h3-background-DM.png");
         }
         .startNew, .returnTo {
           display: flex;
@@ -188,15 +162,16 @@ export class AppHaxUseCaseFilter extends LitElement {
   render() {
     return html`
     <div class="returnTo">
-      <h3>Return to...</h3>
+      <h4>Resume Journey</h4>
     </div>
+
 
     <div class="userSites">
       <app-hax-search-results></app-hax-search-results>
     </div>
 
     <div class="startNew">
-      <h3>Start New Journey</h3>
+      <h4>Start New Journey</h4>
     </div>
   <div class="newJourneySection">
   <div class="filter">
