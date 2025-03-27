@@ -70,7 +70,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: flex;
           justify-content: flex-start;
           align-items: flex-start;
-          width: 800px;
+          width: 816px;
         }
         .reset-button {
           display: flex;
@@ -80,7 +80,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           align-items: center;
           justify-content: center;
           padding: 8px;
-          margin-top: 16px;
+          margin-top: 36px;
         }
         h4 {
           font-family: var(--ddd-font-primary);

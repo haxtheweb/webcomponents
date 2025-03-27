@@ -68,7 +68,7 @@ export class AppHaxSiteBars extends SimpleColors {
       super.styles,
       css`
         :host {
-          --main-banner-width: 240px;
+          --main-banner-width: 220px;
           --main-banner-height: 220px;
           --band-banner-height: 220px;
           display: block;
@@ -81,7 +81,7 @@ export class AppHaxSiteBars extends SimpleColors {
         }
         .imageLink img{
             display: block;
-            width: 240px;
+            width: 216px;
             height: 125px;
             overflow: clip;
             justify-self: center;

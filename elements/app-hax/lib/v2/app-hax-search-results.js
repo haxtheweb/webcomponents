@@ -89,7 +89,7 @@ export class AppHaxSearchResults extends SimpleColors {
           background: var(--app-hax-accent-color, black);
           color: white;
           border: none;
-          padding: 20px;
+          padding: 16px;
           cursor: pointer;
           height: 240px;
           opacity: 50%;
@@ -102,12 +102,11 @@ export class AppHaxSearchResults extends SimpleColors {
           overflow-x: auto;
           overflow-y: hidden;
           scroll-snap-type: x mandatory;
-          gap: 36px;
+          gap: 20px;
           white-space: nowrap;
           scrollbar-width: none;
           -ms-overflow-style: none; 
-          padding: 16px;
-          scroll-padding-left: 16px;
+          padding: 4px;
         }
 
         #results::-webkit-scrollbar {
@@ -117,7 +116,7 @@ export class AppHaxSearchResults extends SimpleColors {
         li {
           flex: 0 0 auto;
           scroll-snap-align: center;
-          width: 240px;
+          width: 220px;
           height: 300px;
           display: flex;
           flex-direction: column;
@@ -219,11 +218,11 @@ export class AppHaxSearchResults extends SimpleColors {
   }
 
   scrollLeft() {
-    this.shadowRoot.querySelector("#results").scrollBy({ left: -250, behavior: "smooth" });
+    this.shadowRoot.querySelector("#results").scrollBy({ left: -750, behavior: "smooth" });
   }
   
   scrollRight() {
-    this.shadowRoot.querySelector("#results").scrollBy({ left: 250, behavior: "smooth" });
+    this.shadowRoot.querySelector("#results").scrollBy({ left: 750, behavior: "smooth" });
   }
 
   getItemDetails(item) {
