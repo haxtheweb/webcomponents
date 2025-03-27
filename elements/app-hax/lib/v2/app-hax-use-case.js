@@ -52,15 +52,68 @@ export class AppHaxUseCase extends LitElement {
           box-shadow: var(--ddd-boxShadow-md);
           border-radius: 8px;
         }
-        .image img{
-          display: block;
+        .image img {
           width: 100%;
-          height: 150px;
           border-top-right-radius: 8px;
           border-top-left-radius: 8px;
+          height: 125px;
           border-bottom: solid var(--ddd-theme-default-nittanyNavy) 12px;
           overflow: clip;
           justify-self: center;
+        }
+        .image {
+          position: relative;
+          display: inline-block;
+        }
+        #haxicons {
+          position: absolute; 
+          bottom: var(--ddd-spacing-2); 
+          left: var(--ddd-spacing-2); 
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-1);
+          opacity: 0.8;
+          gap: var(--ddd-spacing-3);
+          color: var(--ddd-primary-8);
+          position: absolute;
+          width: 40px; /* Adjust size as needed */
+          display: flex;
+        }
+        .icons {
+          position: absolute;
+          bottom: 15px;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          gap: 8px;
+        }
+        .icon-wrapper {
+          position: relative;
+        }
+        .tooltip-container {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: white;
+          color: black;
+          padding: 8px;
+          border-radius: 6px;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px;
+          width: max-content;
+        }
+        .tooltip {
+          font-size: 12px;
+          padding: 4px 8px;
+          border-bottom: 1px solid #ccc;
+          text-align: left;
+          white-space: nowrap;
+        }
+        .tooltip:last-child {
+          border-bottom: none;
+        }
+        .icons:hover .tooltip-container {
+          display: block;
         }
         h3, p {
           margin: 8px;
@@ -89,16 +142,6 @@ export class AppHaxUseCase extends LitElement {
           align-items: center;
           justify-content: center;
         }
-        #haxIcons {
-        position: absolute; 
-        bottom: var(--ddd-spacing-2); 
-        left: var(--ddd-spacing-2); 
-        padding: var(--ddd-spacing-1) var(--ddd-spacing-1);
-        opacity: 0.8;
-        gap: var(--ddd-spacing-3);
-        color: var(--ddd-primary-8);
-        }
-
         .cardBottom {
         display: flex;
         justify-content: space-between;
@@ -147,30 +190,35 @@ export class AppHaxUseCase extends LitElement {
         <div class="image">
           <a id="demo" href="${this.demoLink}" target="_blank"></a>
           <img src="${this.source}" alt="${this.title}" ></a>
+          <div class="icons">
+            ${this.iconImage.map(
+              (icon) => html`
+                <div class="icon-wrapper">
+                  <simple-icon-lite icon="${icon.icon}"></simple-icon-lite>
+                </div>
+              `
+            )}
+            <div class="tooltip-container">
+              ${this.iconImage.map(
+                (icon) => html`<div class="tooltip">${icon.tooltip}</div>`
+              )}
+            </div>
+          </div>
         </div>
         <div class="titleBar">
           <h3 style="font-size: 20px;">${this.title}</h3>
-            ${this.iconImage.map(
-            (icon) => html`
-              <simple-icon-lite
-                icon="${icon.icon}" 
-                title="${icon.tooltip || ''}" 
-              ></simple-icon-lite>
-            `
-            )}
         </div>
           
-          <p>${this.description}</p>
+        <p>${this.description}</p>
           
-          <div class="cardBottom"> 
-            <button class="select ${this.isSelected ? 'selected' : ''}" @click=${this.toggleDisplay}>
-              ${this.isSelected ? 'Selected' : 'Select'}
-            </button>
-            ${this.isSelected 
-              ? html`<button class="continue" @click=${this.continueAction}>Continue?</button>`
-              : html`<a id="demo" href="${this.demoLink}" target="_blank">Demo -> </a>`
-            }
-          </div>
+        <div class="cardBottom"> 
+          <button class="select ${this.isSelected ? 'selected' : ''}" @click=${this.toggleDisplay}>
+            ${this.isSelected ? 'Selected' : 'Select'}
+          </button>
+          ${this.isSelected 
+            ? html`<button class="continue" @click=${this.continueAction}>Continue?</button>`
+            : html`<a id="demo" href="${this.demoLink}" target="_blank">Demo -> </a>`
+          }
         </div>
       </div>
     `;
