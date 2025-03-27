@@ -18,7 +18,8 @@
       "attributes": [
         { "icon": "icons:favorite", "tooltip": "Mark as Favorite" },
         { "icon": "icons:language", "tooltip": "Translatable"},
-        { "icon": "icons:thumb-up", "tooltip": "Popular"}
+        { "icon": "icons:thumb-up", "tooltip": "Popular"},
+        { "icon": "icons:accessibility", "tooltip": "Accessible"} 
       ]
      },
      {
@@ -77,8 +78,8 @@
       "demo-url": "https://playground.hax.cloud/site.html?recipe=",
       "attributes": [
         { "icon": "icons:favorite", "tooltip": "Mark as Favorite" },
-        { "icon": "icons:language", "tooltip": "Translatable"},
-        { "icon": "icons:thumb-up", "tooltip": "Popular"}
+        { "icon": "icons:language", "tooltip": "Translatable" },
+        { "icon": "icons:thumb-up", "tooltip": "Popular" }
       ]
      }]
 }

@@ -74,20 +74,12 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         .reset-button {
           display: flex;
-<<<<<<< HEAD
-          font-family: "Press Start 2P";
-          font-size: 12px;
-          width: 216px;
-          display: inline-flex;
-=======
           font-family: var(--ddd-font-primary);
           font-size: 16px;
           display: flex;
->>>>>>> 89f54b583ed8963bda59df9a444727c0d10b53f6
           align-items: center;
           justify-content: center;
           padding: 8px;
-          margin: 2px 0 0 16px;
         }
         h4 {
           font-family: var(--ddd-font-primary);
@@ -120,6 +112,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         .filter {
           position: absolute;
           left: 16px;
+          height: 300px;
           justify-self: flex-start;
           display:flex;
           background-color: var(--simple-colors-default-theme-accent-1, var(--accent-color));
@@ -185,19 +178,19 @@ export class AppHaxUseCaseFilter extends LitElement {
     <div class="filterButtons">
       ${this.filters.map(
         (filter) => html`
-            <label>
-              <input
-                type="checkbox"
-                .value=${filter}
-                .checked=${this.activeFilters.includes(filter)}
-                @change=${(e) => this.toggleFilter(e)}
-              />
-              ${filter}
-            </label>
-          `
-        )}
-        <button class="reset-button" @click="${this.resetFilters}">Reset</button>
-      </div>
+          <label>
+            <input
+              type="checkbox"
+              .value=${filter}
+              .checked=${this.activeFilters.includes(filter)}
+              @change=${(e) => this.toggleFilter(e)}
+            />
+            ${filter}
+          </label>
+        `
+      )}
+    </div>
+      <button class="reset-button" @click="${this.resetFilters}">Reset</button>
     </div>
 
     <div class="rightSection">
