@@ -30,13 +30,14 @@ export class AppHaxFilterTag extends LitElement {
       css`
         :host {
           display: inline-flex;
-          font-family: "Press Start 2P";
+          font-family: var(--ddd-font-primary);
           color: white;
           padding-left: 8px;
           padding-right: 8px;
+          height: 32px;
           background-color: black;
           border-radius: 8px;
-          font-size: 12px;
+          font-size: 16px;
           align-items: center;
           justify-content: flex-start;
         }

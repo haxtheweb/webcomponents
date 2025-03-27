@@ -48,7 +48,6 @@ export class AppHaxUseCase extends LitElement {
           font-family: var(--ddd-font-primary);
           color: var(--ddd-theme-default-nittanyNavy);
           background-color: white;
-          padding:  4px;
           min-height: 270px;
           box-shadow: var(--ddd-boxShadow-md);
           border-radius: 8px;
@@ -57,6 +56,8 @@ export class AppHaxUseCase extends LitElement {
           display: block;
           width: 100%;
           height: 150px;
+          border-top-right-radius: 8px;
+          border-top-left-radius: 8px;
           border-bottom: solid var(--ddd-theme-default-nittanyNavy) 12px;
           overflow: clip;
           justify-self: center;

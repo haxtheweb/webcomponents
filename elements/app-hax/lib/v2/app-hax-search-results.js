@@ -80,6 +80,9 @@ export class AppHaxSearchResults extends SimpleColors {
           gap: 10px;
           overflow: hidden;
           margin: 0px;
+          height: 300px;
+          justify-self: flex-start;
+          align-self: flex-start;
         }
         .scroll-left,
         .scroll-right {
@@ -88,6 +91,9 @@ export class AppHaxSearchResults extends SimpleColors {
           border: none;
           padding: 10px;
           cursor: pointer;
+          height: 240px;
+          opacity: 50%;
+          color: var(--simple-colors-default-theme-accent-1, var(--simple-colors-default-theme-accent-12));
         }
         
         #results {
@@ -97,10 +103,11 @@ export class AppHaxSearchResults extends SimpleColors {
           overflow-y: hidden;
           scroll-snap-type: x mandatory;
           gap: 36px;
-          padding: 8px;
           white-space: nowrap;
           scrollbar-width: none;
           -ms-overflow-style: none; 
+          padding: 16px;
+          scroll-padding-left: 16px;
         }
 
         #results::-webkit-scrollbar {
@@ -109,7 +116,7 @@ export class AppHaxSearchResults extends SimpleColors {
 
         li {
           flex: 0 0 auto;
-          scroll-snap-align: start;
+          scroll-snap-align: center;
           width: 240px;
           height: 300px;
           display: flex;
@@ -118,7 +125,7 @@ export class AppHaxSearchResults extends SimpleColors {
           justify-content: center;
         }
         app-hax-site-bar {
-          margin: 8px 0;
+          margin: 12px 0;
         }
         .description {
           max-height: 64px;
@@ -212,11 +219,11 @@ export class AppHaxSearchResults extends SimpleColors {
   }
 
   scrollLeft() {
-    this.shadowRoot.querySelector("#results").scrollBy({ left: -300, behavior: "smooth" });
+    this.shadowRoot.querySelector("#results").scrollBy({ left: -250, behavior: "smooth" });
   }
   
   scrollRight() {
-    this.shadowRoot.querySelector("#results").scrollBy({ left: 300, behavior: "smooth" });
+    this.shadowRoot.querySelector("#results").scrollBy({ left: 250, behavior: "smooth" });
   }
 
   getItemDetails(item) {

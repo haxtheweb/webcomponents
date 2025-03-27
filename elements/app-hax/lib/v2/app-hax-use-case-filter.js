@@ -69,22 +69,23 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: flex;
           justify-content: flex-start;
           align-items: flex-start;
-          margin-left: 60px;
-          width: 750px;
+          width: 800px;
         }
         .reset-button {
           display: flex;
           font-family: var(--ddd-font-primary);
-          font-size: 16px;
+          font-size: 12px;
           display: flex;
           align-items: center;
           justify-content: center;
           padding: 8px;
+          margin-top: 16px;
         }
         h4 {
           font-family: var(--ddd-font-primary);
           font-size: 24px;
           color: var(--app-hax-accent-color, var(--accent-color));
+          margin: 16px;
         }
         .startNew, .returnTo {
           display: inline-flex;
@@ -97,17 +98,27 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         input[type="text"]{
           opacity: 1;
-          width: 216px;
+          width: 250px;
+          padding: 4px;
+          padding-left: 35px;
           max-width: 25vw;
           transition: all ease-in-out 0.3s;
-          padding: 4px;
           font-family: var(--ddd-font-primary);
-          font-size: 12px;
-          margin: 2px 0 0 16px;
+          font-size: 16px;
+          margin: 4px 0 0 4px;
           height: 20px;
         }
         .upper-filter {
-          display: flex;
+          position: relative;
+          display: inline-block;
+        }
+        .search-icon {
+          position: absolute;
+          left: 12px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 16px;
+          align-self: center;
         }
         .filter {
           position: absolute;
@@ -121,7 +132,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           flex-direction: column;
           margin: var(--ddd-spacing-2);
           padding: var(--ddd-spacing-4);
-          border: solid var(--ddd-theme-default-nittanyNavy, var(--ddd-theme-default-limestoneGray)) 1px;
+          border: solid 1px var(--simple-colors-default-theme-accent-12, var(--accent-color));
           width: 300px;
         }
         .filterButtons {
@@ -164,6 +175,9 @@ export class AppHaxUseCaseFilter extends LitElement {
   <div class="filter">
   <!--search bar-->
     <div class="upper-filter">
+      <slot>
+        <simple-icon class="search-icon" icon="icons:search"></simple-icon>
+      </slot>
       <input
         icon="icons:search"
         icon-position="left"
@@ -174,6 +188,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         type="text"
         placeholder="Search Templates"
       />
+     
     </div>
     <div class="filterButtons">
       ${this.filters.map(

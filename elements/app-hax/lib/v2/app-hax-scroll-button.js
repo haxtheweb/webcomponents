@@ -25,9 +25,28 @@ export class AppHaxScrollButton extends LitElement {
 
   scrollToTarget() {
     if (this.targetId) {
-      const targetElement = document.getElementById(this.targetId);
+      let targetElement = null;
+      let appHax = this.closest('app-hax') || document.querySelector('app-hax');
+      
+      if (appHax) {
+        
+        let useCaseFilter = appHax.shadowRoot 
+        ? appHax.shadowRoot.querySelector('app-hax-use-case-filter') 
+        : appHax.querySelector('app-hax-use-case-filter');
+        if (useCaseFilter) {
+          targetElement = useCaseFilter.shadowRoot 
+          ? useCaseFilter.shadowRoot.getElementById(this.targetId)
+          : useCaseFilter.querySelector(`#${this.targetId}`);
+        }
+      } 
+      if (!targetElement) {
+        targetElement = document.getElementById(this.targetId);
+      }
       if (targetElement) {
+        console.log(`Scrolling to:`, targetElement);
         targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        console.warn(`Element with id '${this.targetId}' not found inside app-hax-use-case-filter.`);
       }
     }
   }
@@ -77,9 +96,9 @@ export class AppHaxScrollButton extends LitElement {
 
   render() {
     return html`
-    <div @click="${this.scrollToTarget}">
+    <div @click="${this.scrollToTarget}" tabindex="0" role="button">
       <h5>${this.label}</h5>  
-    </div>
+  </div>
     `;
   }
 

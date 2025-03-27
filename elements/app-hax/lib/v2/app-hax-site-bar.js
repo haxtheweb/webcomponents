@@ -69,23 +69,23 @@ export class AppHaxSiteBars extends SimpleColors {
       css`
         :host {
           --main-banner-width: 240px;
-          --main-banner-height: 240px;
-          --band-banner-height: 240px;
+          --main-banner-height: 220px;
+          --band-banner-height: 220px;
           display: block;
-          background-color: var(--simple-colors-default-theme-accent-3);
-          color: var(--simple-colors-default-theme-grey-12);
-          border-color: var(--simple-colors-default-theme-accent-4);
-          border-style: solid;
-          border-width: 5px 10px 5px 10px;
-          box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.6);
+          background-color: var(--simple-colors-default-theme-light-blue-3);
+          color: var(--simple-colors-default-theme-grey-3);
+          outline: 5px solid var(--simple-colors-default-theme-light-blue-4);
+          outline-offset: -5px;
+          border-radius: 8px;
         }
         .imageLink img{
             display: block;
-            width: 200px;
-            height: 150px;
+            width: 240px;
+            height: 125px;
             overflow: clip;
             justify-self: center;
-            border-radius: 4px;
+            border-top-right-radius: 8px;
+            border-top-left-radius: 8px;
           }
 
         #labels {
@@ -95,22 +95,23 @@ export class AppHaxSiteBars extends SimpleColors {
           white-space: nowrap;
         }
         #labels ::slotted(*) {
-          font-family: "Press Start 2P", sans-serif;
-          font-size: 16px;
+          font-family: var(--ddd-font-primary);
+          font-size: 20px;
+          font-weight: bold;
         }
         #labels ::slotted(a) {
-          color: var(--simple-colors-default-theme-accent-11);
+          color: var(--simple-colors-default-theme-light-blue-11);
           padding: 8px 0;
           display: block;
         }
         #labels ::slotted(a:focus),
         #labels ::slotted(a:hover) {
-          color: var(--simple-colors-default-theme-accent-3);
-          background-color: var(--simple-colors-default-theme-accent-11);
+          color: var(--simple-colors-default-theme-light-blue-3);
+          background-color: var(--simple-colors-default-theme-light-blue-11);
         }
 
         :host([opened]) {
-          background-color: var(--simple-colors-default-theme-accent-3);
+          background-color: var(--simple-colors-default-theme-light-blue-3);
         }
         #mainCard {
           display: block;
@@ -143,13 +144,13 @@ export class AppHaxSiteBars extends SimpleColors {
           flex: 6;
           overflow: hidden;
           text-overflow: ellipsis;
-          margin-top: 30px;
+          margin-top: 20px;
         }
         #dots {
           --simple-icon-width: 24px;
           --simple-icon-height: 24px;
-          color: var(--simple-colors-default-theme-accent-11);
-          border: solid var(--simple-colors-default-theme-accent-11);
+          color: var(--simple-colors-default-theme-light-blue-11);
+          border: solid var(--simple-colors-default-theme-light-blue-11);
           border-radius: 4px;
           margin-left: 8px;
         }

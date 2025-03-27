@@ -864,6 +864,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         .label {
           display: inline-flex;
           text-align: flex-start;
+          align-items: center;
         }
         app-hax-label {
           animation: 0.8s ease-in-out 0s scrollin;
