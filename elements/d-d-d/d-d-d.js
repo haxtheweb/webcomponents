@@ -21,15 +21,6 @@ import {DesignSystemManager} from "./lib/DesignSystemManager.js";
  * @demo demo/index.html
  */
 
-export function dddCSSFeatureDetection() {
-  // check for css feature support
-  if (!CSS.supports("initial-letter", "1")) {
-    console.warn("CSS feature: initial-letter not supported");
-    console.warn("Adding dropCap-noSupport class");
-    globalThis.document.body.classList.add("dropCap-noSupport");
-  }
-}
-
 // will have just pulse effect
 
 export const DDDPulseEffectSuper = function (SuperClass) {
@@ -102,7 +93,14 @@ export const DDDSuper = function (SuperClass) {
           name: "ddd",
           styles: DDDAllStyles,
           fonts: DDDFonts,
-          onload: dddCSSFeatureDetection(),
+          onload: () =>{
+            // check for css feature support
+            if (!CSS.supports("initial-letter", "1")) {
+              console.warn("CSS feature: initial-letter not supported");
+              console.warn("Adding dropCap-noSupport class");
+              globalThis.document.body.classList.add("dropCap-noSupport");
+            }
+          },
           hax: true,
         });
         DesignSystemManager.active = 'ddd';

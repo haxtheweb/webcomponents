@@ -645,6 +645,8 @@ class CleanTwo extends LTIResizingMixin(
     // shadow ready which means we should be able to open this even on a slow load
     // if we are the route in question
     store.internalRoutes["search"].callback = this.siteModalForceClick;
+    let DesignSystemManager = globalThis.DesignSystemManager.requestAvailability();
+    DesignSystemManager.active = 'ddd';
   }
 
   searchItemSelected(e) {

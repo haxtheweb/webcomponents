@@ -81,6 +81,7 @@ export class DesignSystem extends LitElement {
       ).join("");
       try {
         const adoptableDS = new CSSStyleSheet();
+        // flag it so we can remove it later
         adoptableDS.ds = true;
         adoptableDS.replaceSync(globalStyles);
         // THIS FLAG MAKES HAX LOAD IT IN ITS SHADOW ROOT!!!!

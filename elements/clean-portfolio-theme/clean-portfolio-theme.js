@@ -197,10 +197,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             --portfolio-lightDark-bg: light-dark(var(--portfolio-backgroundWhite), var(--portfolio-grey));
             --portfolio-lightDark-footer: light-dark(var(--portfolio-black), var(--portfolio-darkGrey));
 
-            --ddd-font-primary: "Source Code Pro" !important;
-            font-family: var(--ddd-font-primary);
-            font-size: var(--ddd-theme-body-font-size);
-            font-weight: var(--ddd-font-weight-regular);
             background-color: var(--portfolio-lightDark-bg);
         }
         `

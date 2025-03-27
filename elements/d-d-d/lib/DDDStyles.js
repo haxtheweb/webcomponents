@@ -1039,7 +1039,7 @@ export const DDDVariables = css`
 // global styles from the design system. Not a reset so much as how DDD likes to present defaults
 export const DDDGlobalStyles = css`
   :root {
-    color-scheme: light dark;{
+    color-scheme: light dark;
     scroll-behavior: smooth;
     font-family: var(--ddd-font-primary);
     font-size: var(--ddd-theme-body-font-size);
