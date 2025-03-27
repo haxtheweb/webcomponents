@@ -64,6 +64,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: flex;
           justify-content: flex-start;
           align-items: flex-start;
+          flex-wrap: wrap;
         }
         app-hax-search-results {
           display: flex;

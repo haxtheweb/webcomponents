@@ -89,7 +89,7 @@ export class AppHaxSearchResults extends SimpleColors {
           background: var(--app-hax-accent-color, black);
           color: white;
           border: none;
-          padding: 10px;
+          padding: 20px;
           cursor: pointer;
           height: 240px;
           opacity: 50%;

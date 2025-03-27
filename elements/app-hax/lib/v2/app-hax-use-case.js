@@ -49,14 +49,14 @@ export class AppHaxUseCase extends LitElement {
           color: var(--ddd-theme-default-nittanyNavy);
           background-color: white;
           min-height: 270px;
-          box-shadow: var(--ddd-boxShadow-md);
+          box-shadow: var(--ddd-boxShadow-lg);
           border-radius: 8px;
         }
         .image img {
-          width: 100%;
+          width: 240px;
+          height: 142px;
           border-top-right-radius: 8px;
           border-top-left-radius: 8px;
-          height: 125px;
           border-bottom: solid var(--ddd-theme-default-nittanyNavy) 12px;
           overflow: clip;
           justify-self: center;
@@ -79,8 +79,8 @@ export class AppHaxUseCase extends LitElement {
         }
         .icons {
           position: absolute;
-          bottom: 15px;
-          left: 50%;
+          bottom: 16px;
+          left: 27%;
           transform: translateX(-50%);
           display: flex;
           gap: 8px;
@@ -116,7 +116,7 @@ export class AppHaxUseCase extends LitElement {
           display: block;
         }
         h3, p {
-          margin: 8px;
+          margin: 4px;
         }
         p {
           font-size: 12px;
@@ -125,7 +125,7 @@ export class AppHaxUseCase extends LitElement {
           color: var(--ddd-theme-defaut-skyBlue);
           text-decoration: none;
           font-family: var(--ddd-font-primary);
-          font-size: 12px;
+          font-size: 16px;
         }
         button {
           display: flex;
@@ -137,7 +137,7 @@ export class AppHaxUseCase extends LitElement {
           font-size: 12px;
           font-weight: 20px;
           padding: 8px;
-          margin: 0px 2px 0px 2px;
+          margin: 0px 4px 0px 4px;
           height: 16px;
           align-items: center;
           justify-content: center;
@@ -146,7 +146,7 @@ export class AppHaxUseCase extends LitElement {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 8px;
+        margin-top: 16px;
         }
 
         .cardBottom button, .cardBottom a {

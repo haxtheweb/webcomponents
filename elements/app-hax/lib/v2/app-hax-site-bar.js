@@ -77,6 +77,7 @@ export class AppHaxSiteBars extends SimpleColors {
           outline: 5px solid var(--simple-colors-default-theme-light-blue-4);
           outline-offset: -5px;
           border-radius: 8px;
+          box-shadow: var(--ddd-boxShadow-lg);
         }
         .imageLink img{
             display: block;
