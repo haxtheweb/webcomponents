@@ -51,6 +51,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     super();
     this.activeLayout = "text"; // text, media, listing
     this.isActiveLayoutButtonVisible = false; // flag for change layout debug button
+    this.selectedTag = ""; // for filtering listing items
 
     // MobX listeners
 
@@ -107,36 +108,37 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       // const manifest = store.manifest;
       let active = toJS(store.activeItem);
       if (active) {
-        if (active.parent) {
-          this.activeLayout = "media";
-        } else {
-          let items = store.getItemChildren(store.activeId);
-          if (items) {
-            if (items.length > 0) {
-              this.activeLayout = "listing";
-              this.items = [...items];
+        this.activeItem = active;
+        let items = store.getItemChildren(store.activeId);
+        if (items) {
+          if (items.length > 0) {
+            this.activeLayout = "listing";
+            this.items = [...items];
+            this.selectedTag = "";
 
-              // get tags for all children of activeItem, push to arrays
-              this.childrenTopTags = [];
-              this.childrenAllTags = [];
-              this.items.forEach(item => {
-                let tags = toJS(item.metadata.tags);
-                if (tags) {
-                  tags = tags.split(',');
-                  if (!this.childrenTopTags.includes(tags[0])) {
-                    this.childrenTopTags.push(tags[0]);
-                  }
-                  tags.forEach(tag => {
-                    if (!this.childrenAllTags.includes(tag)) {
-                      this.childrenAllTags.push(tag);
-                    }
-                  });
+            // get tags for all children of activeItem, push to arrays
+            this.childrenTopTags = [];
+            this.childrenAllTags = [];
+            this.items.forEach(item => {
+              let tags = toJS(item.metadata.tags);
+              if (tags) {
+                tags = tags.split(',');
+                if (!this.childrenTopTags.includes(tags[0])) {
+                  this.childrenTopTags.push(tags[0]);
                 }
-              });
-              console.log(this.childrenAllTags);
-            } else {
-              this.activeLayout = "text";
-            }
+                tags.forEach(tag => {
+                  if (!this.childrenAllTags.includes(tag)) {
+                    this.childrenAllTags.push(tag);
+                  }
+                });
+              }
+            });
+
+            console.log(this.childrenAllTags);
+          } else if (active.parent) {
+            this.activeLayout = "media";
+          } else {
+            this.activeLayout = "text";
           }
         }
       }
@@ -164,6 +166,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       ...super.properties,
       siteTitle: { type: String },
       homeLink: { type: String },
+      activeItem: { type: String },
       activeTitle: { type: String },
       activeLayout: { type: String },
       activeTags: { type: Array },
@@ -172,6 +175,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       items: { type: Array },
       childrenTopTags: { type: Array },
       childrenAllTags: { type: Array },
+      selectedTag: { type: String }
     };
   }
 
@@ -190,12 +194,16 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             --portfolio-textHeader: #efefef;
             --portfolio-textHeaderHover: #b7b7b7;
             --portfolio-backgroundWhite: #f7f7f7;
-            --portfolio-menuItemUnderline: #ff0000; 
+            --portfolio-menuItemUnderline: #ff0000;
+            --portfolio-cardTag: #6D4C41;
+            --portfolio-cardTagLight: #c2a399;
 
             --portfolio-lightDark-blackWhite: light-dark(var(--portfolio-black), var(--portfolio-white));
             --portfolio-lightDark-whiteBlack: light-dark(var(--portfolio-white), var(--portfolio-black));
             --portfolio-lightDark-bg: light-dark(var(--portfolio-backgroundWhite), var(--portfolio-grey));
             --portfolio-lightDark-footer: light-dark(var(--portfolio-black), var(--portfolio-darkGrey));
+            --portfolio-lightDark-cardTag: light-dark(var(--portfolio-cardTag), var(--portfolio-cardTagLight));
+            --portfolio-lightDark-cardImg: light-dark(var(--portfolio-lighterGrey), var(--portfolio-darkGrey));
 
             background-color: var(--portfolio-lightDark-bg);
         }
@@ -361,12 +369,24 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         width: 50%;
       }
 
+      .listing-titlecontainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
       .listing-title {
-        font-family: "Playfair Display";
+        font-family: "Playfair Display" !important;
         font-size: 88px;
         font-weight: bold;
         margin-top: 100px;
         margin-bottom: 50px;
+      }
+
+      .listing-select {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
 
       .listing-category {
@@ -391,17 +411,31 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         text-decoration: none;
       }
 
-      .listing-card:hover .listing-cardtitle {
+      .listing-card:hover .listing-cardtitle,
+      .listing-card:focus .listing-cardtitle{
         text-decoration: underline;
       }
 
-      .listing-card img {
+      .listing-card:hover .listing-cardimg,
+      .listing-card:focus .listing-cardimg {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 10px 0px;
+      }
+
+      .listing-cardimg {
+        background-color: var(--portfolio-lightDark-cardImg);
         width: 100%;
         height: 125px;
-        object-fit: cover;
-        display: block;
         border-radius: 6px;
         margin-bottom: 12px;
+        transition: all 0.2s ease-in-out;
+        overflow: hidden;
+        display: block;
+      }
+
+      .listing-cardimg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       .listing-cardtitle {
@@ -412,7 +446,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .listing-cardtag {
-        color: #6D4C41;
+        color: var(--portfolio-lightDark-cardTag);
         font-family: "Source Code Pro";
         font-size: 14px;
         font-weight: 400;
@@ -468,17 +502,22 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .media-tag-list {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .media-tag-list li {
+        display: inline-block;
       }
 
       .media-tag {
         color: var(--portfolio-lightDark-blackWhite) !important;
-        font-family: "Source Code Pro";
+        font-weight: 300 !important;
         font-size: 1.25em;
         text-transform: uppercase;
-        font-weight: 400;
         padding-top: 5px;
         padding-bottom: 5px;
-        margin-bottom: 25px;
       }
 
       .media-text {
@@ -495,84 +534,122 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       /* Media queries */
 
       @media (max-width: 1200px) {
-        .page-card-list {
+        .listing-grid {
           grid-template-columns: repeat(3, 1fr);
         }
       }
       
       @media (max-width: 800px) {
-        .page-card-list {
+        .listing-grid {
           grid-template-columns: repeat(2, 1fr);
         }
       }
 
       @media (max-width: 600px) {
-        .page-card-list {
+        .listing-grid {
           grid-template-columns: 1fr;
         }
       }
     `];
   }
 
+  filterItems(e) {
+    this.selectedTag = e.target.value;
+    this.requestUpdate();
+  }  
+
   renderListing() {
+    // Filter items based on selected tag
+    const filteredItems = this.selectedTag
+    ? this.items.filter(item => {
+        let tags = toJS(item.metadata.tags);
+        if (tags) {
+          // Only include items with selected tag
+          tags = tags.split(',');
+          return tags.includes(this.selectedTag);
+        }
+        return false;
+      })
+    : this.items;
+
+    // Filter top tags based on selected tag
+    const filteredTags = this.selectedTag
+      ? this.childrenTopTags.filter(tag => 
+          filteredItems.some(item => {
+            let tags = toJS(item.metadata.tags);
+            if (tags) {
+              tags = tags.split(',');
+              return tags.includes(tag);
+            }
+            return false;
+          })
+        )
+    : this.childrenTopTags;
+
     return html`
           <div class="listing-container">
-            <h1 class="listing-title">${this.activeTitle}</h1>
+            <div class="listing-titlecontainer">
+              <h1 class="listing-title">${this.activeTitle}</h1>
+              
+              <!-- Render select for filtering tags -->
+              ${this.childrenTopTags.length > 0 
+                ? html`
+                  <select class="listing-select" @change="${this.filterItems}" value="${this.selectedTag}">
+                    <option value="">All</option>
+                    ${this.childrenTopTags.map(
+                      (tag) => html`<option value="${tag}">${tag}</option>`
+                    )}
+                  </select>`
+                : ''
+              }
+            </div>
 
-            <!-- Render cards with tags -->
-            ${this.childrenTopTags && this.childrenTopTags.length > 0
-              ? this.childrenTopTags.map(
+            <!-- Render cards based on filtered tags -->
+            ${filteredTags.length > 0
+              ? filteredTags.map(
                   (topTag) => html`
                     <h3 class="listing-category">${topTag}</h3>
                     <div class="listing-grid">
-                      ${this.items.filter(
-                        (item) => {
-                          // Check if current item's tag has the top-level tag
-                          let tags = toJS(item.metadata.tags);
-                          if (tags) {
-                            tags = tags.split(',');
-                            return tags.some((tag) => tag === topTag);
-                          }
-                          return false;
-                        }).map(
-                          (item) => {
-                          let tags = toJS(item.metadata.tags);
-                          tags = tags.split(',');
+                      ${filteredItems.filter(item => {
+                        // Check if current item has the top-level tag
+                        let tags = toJS(item.metadata.tags);
+                        if (tags) {
+                          return tags.includes(topTag);
+                        }
+                        return false;
+                      }).map(item => {
+                        // Get all tags from the item
+                        let secondTag = toJS(item.metadata.tags).split(',')[1];
 
-                          let secondTag = '';
-                          secondTag = tags[1];
-
-                          return html`
-                            <a class="listing-card" href="${item.slug}">
-                              <img src="https://michaelcollins.xyz/assets/images/portfolio/privy-exhibition/privy-gallery-02.jpg">
-                              <div class="listing-cardtitle">${item.title}</div>
-                              <div class="listing-cardtag">${secondTag}</div>
-                            </a>
-                          `
-                        })
-                      }
+                        return html`
+                          <a class="listing-card" href="${item.slug}">
+                            <div class="listing-cardimg">
+                              <img src="${item.metadata.image}" onerror="this.style.display='none'">
+                            </div>
+                            <div class="listing-cardtitle">${item.title}</div>
+                            <div class="listing-cardtag">${secondTag}</div>
+                          </a>
+                        `;
+                      })}
                     </div>
-                  `
-                )
-              : ''}
+                  `)
+              : html``
+            }
 
             <!-- Render cards with no tags -->
-            ${this.items.some(item => {
-              // Checks if any item has no tags
-              let tags = toJS(item.metadata.tags);
-              return !tags;
-            }) ? html`
+            ${(!this.selectedTag && this.items.some(item => {
+              return !toJS(item.metadata.tags);
+            })) ? html`
               <h3 class="listing-category"></h3>
               <div class="listing-grid">
-                ${this.items.filter((item) => {
-                  // Filter out items with no tags
-                  let tags = toJS(item.metadata.tags);
-                  return !tags;
-                }).map((item) => html`
+                ${this.items.filter(item => {
+                  return !toJS(item.metadata.tags);
+                }).map(item => html`
                   <a class="listing-card" href="${item.slug}">
-                    <img src="https://michaelcollins.xyz/assets/images/portfolio/privy-exhibition/privy-gallery-02.jpg">
+                    <div class="listing-cardimg">
+                      <img src="${item.metadata.image}" onerror="this.style.display='none'">
+                    </div>
                     <div class="listing-cardtitle">${item.title}</div>
-                    <!-- <div class="listing-cardtag"></div> -->
                   </a>
                 `)}
               </div>
@@ -591,21 +668,19 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       </div>
     </div>
 
-    <img class="media-banner" src="https://michaelcollins.xyz/assets/images/portfolio/interspatial/interspatial-front.jpg">
+    <img class="media-banner" src="${this.activeItem.metadata.image}">
 
     <div class="media-container">
       <h1 class="media-title">${this.activeTitle}</h1>
-      <div class="media-tag-list">
+      <ul class="media-tag-list">
        ${this.activeTags && this.activeTags.length > 0
         ? this.activeTags.map(
-            (item, index) => html`
-              <a class="media-tag" href="http://localhost:8000/elements/haxcms-elements/demo/x/views?tags=${item}">
-                ${item}${index < this.activeTags.length - 1 ? ',' : ''}
-              </a>
+            (item) => html`
+              <li><a class="media-tag" href="http://localhost:8000/elements/haxcms-elements/demo/x/views?tags=${item}">${item}</a></li>
             `
           )
         : ''}
-      </div>
+      </ul>
     </div>
     `;
   }
@@ -630,7 +705,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   render() {
     return html`
       ${this.isActiveLayoutButtonVisible
-      ? html`<button id="layout-button" @click="${this.ChangeLayout}">Active layout: ${this.activeLayout}</button>`
+      ? html`<button @click="${this.ChangeLayout}">Active layout: ${this.activeLayout}</button>`
       : ``}
       
       <header>
