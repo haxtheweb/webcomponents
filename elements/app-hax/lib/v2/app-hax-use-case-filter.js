@@ -6,6 +6,7 @@ import "./app-hax-use-case.js";
 import "./app-hax-search-results.js";
 import "./app-hax-filter-tag.js";
 import "./app-hax-scroll-button.js";
+import "./app-hax-search-bar.js";
 
 export class AppHaxUseCaseFilter extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -124,7 +125,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         .filter {
           position: absolute;
           left: 16px;
-          height: 300px;
+          height: auto;
           justify-self: flex-start;
           display:flex;
           background-color: var(--simple-colors-default-theme-accent-1, var(--accent-color));
@@ -176,6 +177,8 @@ export class AppHaxUseCaseFilter extends LitElement {
   <div class="filter">
   <!--search bar-->
     <div class="upper-filter">
+      <app-hax-search-bar></app-hax-search-bar>
+    <!--search bar-->
       <slot>
         <simple-icon class="search-icon" icon="icons:search"></simple-icon>
       </slot>
