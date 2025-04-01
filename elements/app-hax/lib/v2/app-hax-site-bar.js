@@ -5,7 +5,6 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
-import { animate } from "@lit-labs/motion";
 
 const DropDownBorder = new URL(
   "../assets/images/DropDownBorder.svg",
@@ -78,6 +77,7 @@ export class AppHaxSiteBars extends SimpleColors {
           outline-offset: -5px;
           border-radius: 8px;
           box-shadow: var(--ddd-boxShadow-lg);
+          position: relative;
         }
         .imageLink img{
             display: block;
@@ -124,16 +124,36 @@ export class AppHaxSiteBars extends SimpleColors {
           padding: 2px 4px;
         }
 
-        #band-container {
-          display: block;
+        #overlay {
+          display: flex;
+          position: absolute;
+          top: 0;
+          left: 0;
           visibility: hidden;
+          justify-content: center;
+          align-items: center;
           height: 1px;
           width: var(--main-banner-width);
+          z-index: 999;
+        }
+        #closeButton {
+          position: absolute;
+          top: 10px;
+          right: 5px;
+          background: var(--simple-colors-default-theme-light-blue-1, var(--simple-colors-default-theme-light-blue-11));
+          color: var(--simple-colors-default-theme-light-blue-11, var(--simple-colors-default-theme-light-blue-1));
+          border: none;
+          font-size: 12px;
+          cursor: pointer;
+          z-index: 1001;
+          border-radius: 100;
         }
 
-        :host([opened]) #band-container {
-          height: var(--band-banner-height);
+        :host([opened]) #overlay {
+          height: var(--main-banner-height);
           visibility: visible;
+          width: 100%;
+          height: 100%;
         }
         a {
           flex: 1;
@@ -196,9 +216,11 @@ export class AppHaxSiteBars extends SimpleColors {
         </div>
         
       </div>
-      <div id="band-container" ${animate()}>
+      <div id="overlay">
+        <button id="closeButton" @click=${this.__clickButton}>✖</button>
         <slot name="band"></slot>
       </div>
+
       <simple-tooltip for="icon" position="left">Access site</simple-tooltip>
       <simple-tooltip for="dots" position="right">More options</simple-tooltip>
     `;
