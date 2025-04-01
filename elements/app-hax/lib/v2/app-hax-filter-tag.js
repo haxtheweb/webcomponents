@@ -31,11 +31,11 @@ export class AppHaxFilterTag extends LitElement {
         :host {
           display: inline-flex;
           font-family: var(--ddd-font-primary);
-          color: white;
+          color: var(--simple-colors-default-theme-grey-1, var(--accent-color));
           padding-left: 8px;
           padding-right: 8px;
           height: 32px;
-          background-color: black;
+          background-color: var(--app-hax-accent-color, var(--accent-color));
           border-radius: 8px;
           font-size: 16px;
           align-items: center;

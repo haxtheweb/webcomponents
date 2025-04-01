@@ -71,6 +71,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           justify-content: flex-start;
           align-items: flex-start;
           width: 816px;
+          z-index: 5;
         }
         .reset-button {
           display: flex;
@@ -89,13 +90,17 @@ export class AppHaxUseCaseFilter extends LitElement {
           margin: 16px;
         }
         .startNew, .returnTo {
-          display: inline-flex;
+          padding-top: 40px;
+          position: relative;
+          display: flex;
           flex-direction: column;
           justify-content: flex-start;
           align-items: flex-start;
           margin-left: 48px;
           margin-right: 48px;
-          
+        }
+        .startNew h4, .returnTo h4 {
+          flex-shrink: 0;
         }
         input[type="text"]{
           opacity: 1;
@@ -180,8 +185,6 @@ export class AppHaxUseCaseFilter extends LitElement {
         <simple-icon class="search-icon" icon="icons:search"></simple-icon>
       </slot>
       <input
-        icon="icons:search"
-        icon-position="left"
         id="searchField"
         @click="${this.toggleSearch}"
         @input="${this.handleSearch}"
