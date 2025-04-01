@@ -210,17 +210,11 @@ export class AppHaxUseCaseFilter extends LitElement {
     </div>
 
     <div class="rightSection">
-    <div class="selectedTags">
-      ${this.activeFilters.map(
-      (filter) => html`
-        <app-hax-filter-tag .label=${filter} @remove-tag=${this.removeFilter}></app-hax-filter-tag>
-      `
-      )}
-    </div>
 
     <!--returning sites-->
     <div id="returnToSection" class="returnTo">
       <h4>Return to...</h4>
+      <app-hax-search-bar></app-hax-search-bar>
       <app-hax-search-results></app-hax-search-results>
     </div>
     
@@ -228,6 +222,14 @@ export class AppHaxUseCaseFilter extends LitElement {
     <!--templates-->
     <div id="startJourneySection" class="startNew">
       <h4>Start New Journey</h4>
+      
+      <div class="selectedTags">
+      ${this.activeFilters.map(
+      (filter) => html`
+        <app-hax-filter-tag .label=${filter} @remove-tag=${this.removeFilter}></app-hax-filter-tag>
+      `
+      )}
+    </div>
       <div class="results">
       
       ${this.filteredItems.length > 0

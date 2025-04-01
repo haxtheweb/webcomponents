@@ -181,7 +181,6 @@ export class AppHaxUseCase extends LitElement {
   }
 
   continueAction() {
-    window.confirm("Are you sure?");
     if (confirm("Are you sure?")) {
       this.dispatchEvent(new CustomEvent('continue-action'));
     }

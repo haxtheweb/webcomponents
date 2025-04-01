@@ -256,7 +256,6 @@ export class AppHaxSiteDetails extends SimpleColors {
                 elements: { content: div, buttons: bcontainer },
                 invokedBy: target,
                 styles: {
-                  "font-weight": "bold",
                   "--simple-modal-titlebar-background": "orange",
                   "--simple-modal-titlebar-color": "black",
                   "--simple-modal-width": "30vw",

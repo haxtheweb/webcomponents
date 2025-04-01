@@ -45,22 +45,18 @@ export class AppHaxSearchBar extends LitElement {
       css`
         :host {
           overflow: hidden;
+          position: relative;
+          display: inline-block;
         }
         input {
-          visibility: none;
-          opacity: 0;
-          width: 0;
+          opacity: 1;
+          width: 750px;
           transition: all ease-in-out 0.3s;
           padding: 4px;
-          font-family: "Press Start 2P", sans-serif;
-          font-size: 20px;
+          padding-left: 35px;
+          font-family: sans-serif;
+          font-size: 16px;
           margin: 2px 0 0 16px;
-        }
-        :host([show-search]) input {
-          visibility: visible;
-          opacity: 1;
-          width: 250px;
-          max-width: 25vw;
         }
         @media (max-width: 780px) {
           :host([show-search]) input {
@@ -101,6 +97,14 @@ export class AppHaxSearchBar extends LitElement {
         simple-toolbar-button:focus {
           --simple-toolbar-border-color: var(--hax-ui-color-accent);
         }
+        .search-icon {
+          position: absolute;
+          left: 24px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 16px;
+          align-self: center;
+        }
       `,
     ];
   }
@@ -111,32 +115,21 @@ export class AppHaxSearchBar extends LitElement {
   }
   // eslint-disable-next-line class-methods-use-this
   search() {
-    store.appEl.playSound("click");
     this.searchTerm = this.shadowRoot.querySelector("#searchField").value;
   }
 
   render() {
     return html`
-      <simple-toolbar-button
-        id="searchico"
-        icon-position="left"
-        show-text-label
-        ?toggles="${this.showSearch}"
-        ?disabled="${this.disabled}"
-        label="Search Sites"
-        icon="icons:search"
-        @click="${this.toggleSearch}"
-      ></simple-toolbar-button>
-      <simple-tooltip for="searchico" position="bottom"
-        >Toggle Search</simple-tooltip
-      >
+      <slot>
+        <simple-icon class="search-icon" icon="icons:search"></simple-icon>
+      </slot>
       <input
-        ?disabled="${!this.showSearch}"
         id="searchField"
+        @click="${this.toggleSearch}"
         @input="${this.search}"
         @keydown="${this.testKeydown}"
         type="text"
-        placeholder="Search Sites.."
+        placeholder="Search Existing Sites"
       />
     `;
   }
@@ -144,11 +137,6 @@ export class AppHaxSearchBar extends LitElement {
   toggleSearch() {
     if (!this.disabled) {
       this.shadowRoot.querySelector("#searchField").value = "";
-      store.appEl.playSound("click");
-      this.showSearch = !this.showSearch;
-      setTimeout(() => {
-        this.shadowRoot.querySelector("#searchField").focus();
-      }, 300);
     }
   }
 }
