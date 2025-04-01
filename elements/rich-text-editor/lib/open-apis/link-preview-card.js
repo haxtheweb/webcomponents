@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 
 /**
  * `link-preview-card`
@@ -55,15 +56,14 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
         padding: var(--ddd-spacing-2);
       }
       .card {
-        border: var(--ddd-border-sm);
-        border-left: var(--ddd-border-lg);
+        border: var(--ddd-border-md);
         padding: var(--ddd-spacing-2);
         border-radius: var(--ddd-radius-xs);
-        transition: border-left-color 0.3s ease-in-out;
+        transition: border-color 0.3s ease-in-out;
       }
       :host(:focus-within) .card,
       :host(:hover) .card {
-        border-left-color: var(--theme-color, var(--ddd-theme-primary));
+        border-color: var(--theme-color, var(--ddd-theme-primary));
       }
       .card .title {
         margin: var(--ddd-spacing-0);
@@ -73,7 +73,6 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
       .card a {
         font-size: var(--ddd-font-size-4xs);
         color: var(--ddd-theme-primary);
-        text-decoration: none;
       }
       .card p {
         font-size: var(--ddd-font-size-4xs);
@@ -146,15 +145,20 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
     }
   }
 
-  async fetchData(link) {
-    this.loadingState = true;
-    const url = `https://open-apis.hax.cloud/api/services/website/metadata?q=${link}`;
-  
+  async fetchData(src) {
+    // enable core services, though should be available
+    const MicroFrontendRegistry =
+      globalThis.MicroFrontendRegistry.requestAvailability();
+    await import(
+      "@haxtheweb/micro-frontend-registry/lib/microServices.js"
+    ).then((e) => {
+      MicroFrontendRegistry.enableServices(["core"]);
+    });
+    this.loadingState = true;  
     try {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`Status: ${response.status}`);
-
-      const data = await response.json();
+      let data = await MicroFrontendRegistry.call("@core/websiteMetadata", {
+        q: src,
+      });
 
       this.title = data.data["og:title"] || data.data["title"] || "No title available";
       this.description = this.truncateText(data.data["og:description"] || data.data["description"] || "No description available", 250);

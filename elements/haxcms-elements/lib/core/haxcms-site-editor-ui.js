@@ -885,7 +885,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       store.editMode = true;
     }
     if (mode) {
-      const response = await MicroFrontendRegistry.call("@core/metadata", {
+      const response = await MicroFrontendRegistry.call("@core/websiteMetadata", {
         q: input,
       });
       if (response.data && (response.data["og:title"] || response.data.title)) {

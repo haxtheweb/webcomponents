@@ -42,7 +42,7 @@ export function enableCoreServices() {
   // metadata
   MicroFrontendRegistry.add({
     endpoint: "/api/services/website/metadata",
-    name: "@core/metadata",
+    name: "@core/websiteMetadata",
     method: "GET",
     title: "URL Metadata",
     description: "Skims metadata off a link",
