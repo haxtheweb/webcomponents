@@ -2459,13 +2459,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     setTimeout(() => {
       const actions = globalThis.document
         .querySelector("rich-text-editor-prompt")
-        .shadowRoot.querySelector(".actions");
+        .shadowRoot.querySelector("simple-popover");
       if (typeof actions.scrollIntoViewIfNeeded === "function") {
         actions.scrollIntoViewIfNeeded(true);
       } else {
         actions.scrollIntoView({
           behavior: "smooth",
           inline: "center",
+          block: "center",
         });
       }
     }, 100);

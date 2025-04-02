@@ -1011,6 +1011,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.editMode &&
       globalThis.document.activeElement.tagName !== "HAX-TRAY" &&
       globalThis.document.activeElement.tagName !== "BODY" &&
+      globalThis.document.activeElement.tagName !== "RICH-TEXT-EDITOR-PROMPT" &&
       globalThis.document.activeElement.tagName !== "SIMPLE-MODAL"
     ) {
       if (this.getAttribute("contenteditable")) {
@@ -4117,6 +4118,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   async _activeNodeChanged(newValue, oldValue) {
     // close any open popover items
     globalThis.SimplePopoverManager.requestAvailability().opened = false;
+    // ensures this is not visible as we could be editing a link and click away
+    if (globalThis.document.querySelector("rich-text-editor-prompt")) {
+      globalThis.document.querySelector("rich-text-editor-prompt").close();
+    }
     this.contextMenus.plate.disableDuplicate = false;
     this.contextMenus.plate.disableOps = false;
     this.contextMenus.plate.disableItemOps = false;

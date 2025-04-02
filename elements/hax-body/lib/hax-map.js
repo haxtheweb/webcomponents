@@ -454,6 +454,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
         activeChild.scrollIntoView({
           behavior: "smooth",
           inline: "center",
+          block: "center",
         });
       }
       setTimeout(() => {
