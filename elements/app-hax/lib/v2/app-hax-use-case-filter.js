@@ -72,6 +72,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           justify-content: flex-start;
           align-items: flex-start;
           width: 816px;
+          z-index: 5;
         }
         .reset-button {
           display: flex;
@@ -90,13 +91,17 @@ export class AppHaxUseCaseFilter extends LitElement {
           margin: 16px;
         }
         .startNew, .returnTo {
-          display: inline-flex;
+          padding-top: 40px;
+          position: relative;
+          display: flex;
           flex-direction: column;
           justify-content: flex-start;
           align-items: flex-start;
           margin-left: 48px;
           margin-right: 48px;
-          
+        }
+        .startNew h4, .returnTo h4 {
+          flex-shrink: 0;
         }
         input[type="text"]{
           opacity: 1;
@@ -183,8 +188,6 @@ export class AppHaxUseCaseFilter extends LitElement {
         <simple-icon class="search-icon" icon="icons:search"></simple-icon>
       </slot>
       <input
-        icon="icons:search"
-        icon-position="left"
         id="searchField"
         @click="${this.toggleSearch}"
         @input="${this.handleSearch}"
@@ -213,17 +216,11 @@ export class AppHaxUseCaseFilter extends LitElement {
     </div>
 
     <div class="rightSection">
-    <div class="selectedTags">
-      ${this.activeFilters.map(
-      (filter) => html`
-        <app-hax-filter-tag .label=${filter} @remove-tag=${this.removeFilter}></app-hax-filter-tag>
-      `
-      )}
-    </div>
 
     <!--returning sites-->
     <div id="returnToSection" class="returnTo">
       <h4>Return to...</h4>
+      <app-hax-search-bar></app-hax-search-bar>
       <app-hax-search-results></app-hax-search-results>
     </div>
     
@@ -231,6 +228,14 @@ export class AppHaxUseCaseFilter extends LitElement {
     <!--templates-->
     <div id="startJourneySection" class="startNew">
       <h4>Start New Journey</h4>
+      
+      <div class="selectedTags">
+      ${this.activeFilters.map(
+      (filter) => html`
+        <app-hax-filter-tag .label=${filter} @remove-tag=${this.removeFilter}></app-hax-filter-tag>
+      `
+      )}
+    </div>
       <div class="results">
       
       ${this.filteredItems.length > 0

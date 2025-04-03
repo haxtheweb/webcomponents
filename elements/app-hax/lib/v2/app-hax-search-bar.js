@@ -41,18 +41,24 @@ export class AppHaxSearchBar extends LitElement {
       css`
         :host {
           overflow: hidden;
+          position: relative;
+          display: inline-block;
         }
-        input[type="text"]{
+        input {
+          visibility: none;
+          opacity: 0;
+          width: 0;
+          transition: all ease-in-out 0.3s;
+          padding: 4px;
+          font-family: "Press Start 2P", sans-serif;
+          font-size: 20px;
+          margin: 2px 0 0 16px;
+        }
+        :host([show-search]) input {
+          visibility: visible;
           opacity: 1;
           width: 250px;
-          padding: 4px;
-          padding-left: 35px;
           max-width: 25vw;
-          transition: all ease-in-out 0.3s;
-          font-family: var(--ddd-font-primary);
-          font-size: 16px;
-          margin: 4px 0 0 4px;
-          height: 20px;
         }
         @media (max-width: 780px) {
           :host([show-search]) input {
@@ -66,6 +72,33 @@ export class AppHaxSearchBar extends LitElement {
             max-width: 20vw;
           }
         }
+
+        simple-toolbar-button[disabled] {
+          background-color: #cccccc;
+          pointer-events: none;
+          cursor: help;
+        }
+        simple-toolbar-button {
+          min-width: 48px;
+          margin: 0;
+          --simple-toolbar-border-color: #dddddddd;
+          height: 48px;
+          --simple-toolbar-button-disabled-border-color: transparent;
+          --simple-toolbar-button-disabled-opacity: 0.3;
+          --simple-toolbar-button-padding: 3px 6px;
+          --simple-toolbar-border-radius: 0;
+        }
+        simple-toolbar-button:hover,
+        simple-toolbar-button:active,
+        simple-toolbar-button:focus {
+          background-color: var(--hax-ui-background-color-accent);
+          color: var(--hax-ui-color);
+        }
+        simple-toolbar-button:hover,
+        simple-toolbar-button:active,
+        simple-toolbar-button:focus {
+          --simple-toolbar-border-color: var(--hax-ui-color-accent);
+        }
       `,
     ];
   }
@@ -76,21 +109,44 @@ export class AppHaxSearchBar extends LitElement {
   }
   // eslint-disable-next-line class-methods-use-this
   search() {
-    store.appEl.playSound("click");
     this.searchTerm = this.shadowRoot.querySelector("#searchField").value;
   }
 
   render() {
     return html`
+      <simple-toolbar-button
+        id="searchico"
+        icon-position="left"
+        show-text-label
+        ?toggles="${this.showSearch}"
+        ?disabled="${this.disabled}"
+        label="Search Sites"
+        icon="icons:search"
+        @click="${this.toggleSearch}"
+      ></simple-toolbar-button>
+      <simple-tooltip for="searchico" position="bottom"
+        >Toggle Search</simple-tooltip
+      >
       <input
         id="searchField"
+        @click="${this.toggleSearch}"
         @input="${this.search}"
         @keydown="${this.testKeydown}"
         type="text"
-        placeholder="Search Sites.."
+        placeholder="Search Existing Sites"
       />
     `;
   }
 
+  toggleSearch() {
+    if (!this.disabled) {
+      this.shadowRoot.querySelector("#searchField").value = "";
+      store.appEl.playSound("click");
+      this.showSearch = !this.showSearch;
+      setTimeout(() => {
+        this.shadowRoot.querySelector("#searchField").focus();
+      }, 300);
+    }
+  }
 }
 customElements.define(AppHaxSearchBar.tag, AppHaxSearchBar);

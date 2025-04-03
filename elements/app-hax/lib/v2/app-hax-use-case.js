@@ -181,7 +181,10 @@ export class AppHaxUseCase extends LitElement {
   }
 
   continueAction() {
-    this.dispatchEvent(new CustomEvent('continue-action'));
+    if (confirm("Are you sure?")) {
+      this.dispatchEvent(new CustomEvent('continue-action'));
+    }
+    
   }
 
   render() {

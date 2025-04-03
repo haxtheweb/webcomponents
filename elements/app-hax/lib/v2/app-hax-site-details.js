@@ -76,13 +76,16 @@ export class AppHaxSiteDetails extends SimpleColors {
           justify-content: center;
           font-size: 12px;
           align-items: stretch;
-          background-color: var(--simple-colors-default-theme-grey-2);
+          background-color: var(--simple-colors-default-theme-light-blue-11);
+          color: var(--simple-colors-default-theme-light-blue-1);
+          max-width: 220px;
           height: 208px;
+          border-radius: 8px;
         }
 
         .flex-container {
           flex: 1;
-          background-color: var(--simple-colors-default-theme-grey-2);
+          background-color: var(--simple-colors-default-theme-light-blue-11);
           margin: 8px;
           display: flex;
           flex-direction: row;
@@ -102,8 +105,8 @@ export class AppHaxSiteDetails extends SimpleColors {
         simple-icon-button-lite:active,
         simple-icon-button-lite:hover,
         simple-icon-button-lite:focus {
-          background-color: var(--simple-colors-default-theme-grey-4, #eeeeee);
-          outline: 2px solid var(--simple-colors-default-theme-grey-12);
+          background-color: var(--simple-colors-default-theme-light-blue-8, #cde8ff);
+          outline: 2px solid var(--simple-colors-default-theme-light-blue-1);
           outline-offset: 1px;
         }
 
@@ -111,14 +114,14 @@ export class AppHaxSiteDetails extends SimpleColors {
           font-size: 12px;
         }
         .info-item {
-          font-family: "Press Start 2P", sans-serif;
+          font-family: sans-serif;
           display: block;
           text-overflow: ellipsis;
           overflow: hidden;
-          color: var(--simple-colors-default-theme-grey-12);
+          color: var(--simple-colors-default-theme-light-blue-1);
           line-height: 12px;
           max-width: 100%;
-          font-size: 12px;
+          font-size: 14px;
         }
         .pre ::slotted(*) {
           padding: 12px;
@@ -131,7 +134,7 @@ export class AppHaxSiteDetails extends SimpleColors {
           text-decoration: underline;
         }
         .info-date {
-          color: var(--simple-colors-default-theme-grey-12);
+          color: var(--simple-colors-default-theme-light-blue-1);
           line-height: 12px;
           font-size: 12px;
         }
@@ -142,7 +145,7 @@ export class AppHaxSiteDetails extends SimpleColors {
           --simple-icon-button-border-radius: 0px;
           --simple-icon-button-border: 0px;
           outline: 0;
-          border: 2px solid var(--simple-colors-default-theme-grey-12);
+          border: 2px solid var(--simple-colors-default-theme-light-blue-1);
           border-radius: 4px;
           padding: 4px;
           width: 80%;
