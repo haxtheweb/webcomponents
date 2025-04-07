@@ -107,10 +107,6 @@ export class AppHaxButton extends LitElement {
             this.icon = "hax:file-docx";
             this.value = "docx";
             break;
-          case "evolution":
-            this.icon = "communication:business";
-            this.value = "evo";
-            break;
           case "pressbooks":
             this.icon = "hax:wordpress";
             this.value = "pressbooks";

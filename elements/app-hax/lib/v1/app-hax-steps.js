@@ -204,63 +204,6 @@ export class AppHaxSteps extends SimpleColors {
       });
     }
   }
-  // evolution import
-  async evoImport(e) {
-    if (!e.target.comingSoon) {
-      const { type } = e.target;
-      import("@haxtheweb/file-system-broker/file-system-broker.js").then(
-        async (e) => {
-          // enable core services
-          enableServices(["haxcms"]);
-          // get the broker for docx selection
-          const broker = globalThis.FileSystemBroker.requestAvailability();
-          const file = await broker.loadFile("zip");
-          // tee up as a form for upload
-          const formData = new FormData();
-          formData.append("method", "site"); // this is a site based importer
-          formData.append("type", toJS(store.site.structure));
-          formData.append("upload", file);
-          // local end point + stupid JWT thing
-          this.setProcessingVisual();
-          const response = await MicroFrontendRegistry.call(
-            "@haxcms/evolutionToSite",
-            formData,
-            null,
-            null,
-            "?jwt=" + toJS(store.AppHaxAPI.jwt),
-          );
-          store.toast(`Processed!`, 300);
-          // must be a valid response and have at least SOME html to bother attempting
-          if (
-            response.status == 200 &&
-            response.data &&
-            response.data.contents != ""
-          ) {
-            store.items = response.data.items;
-            // invoke a file broker for a docx file
-            // send to the endpoint and wait
-            // if it comes back with content, then we engineer details off of it
-            this.nameTyped = response.data.filename
-              .replace(".zip", "")
-              .replace("outline", "")
-              .replace(/\s/g, "")
-              .replace(/-/g, "")
-              .toLowerCase();
-            setTimeout(() => {
-              this.shadowRoot.querySelector("#sitename").value = this.nameTyped;
-              this.shadowRoot.querySelector("#sitename").select();
-            }, 800);
-            store.site.type = type;
-            store.site.theme = "clean-one";
-            store.appEl.playSound("click2");
-          } else {
-            store.appEl.playSound("error");
-            store.toast(`File did not return valid HTML structure`);
-          }
-        },
-      );
-    }
-  }
   // gitbook import endpoint
   async gbImport(e) {
     if (!e.target.comingSoon) {
@@ -1079,11 +1022,6 @@ export class AppHaxSteps extends SimpleColors {
             prompt="URL for the HAXcms site"
             callback="@haxcms/haxcmsToSite"
             param="repoUrl"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.evoImport}
-            type="evolution"
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"

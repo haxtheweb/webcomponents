@@ -253,16 +253,6 @@ export function enableHAXcmsServices() {
       repoUrl: "Location of the repo",
     },
   });
-  // evolutionToSite
-  MicroFrontendRegistry.add({
-    endpoint: "/system/api/importEvolution",
-    name: "@haxcms/evolutionToSite",
-    title: "Evolution to Site",
-    description: "Convert .zip and schema to valid HAXcms",
-    params: {
-      body: "FormData class w/ uploaded file encoded into it",
-    },
-  });
   // gitbookToSite
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/convert/gitbookToSite",
