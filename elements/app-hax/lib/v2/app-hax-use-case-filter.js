@@ -182,8 +182,6 @@ export class AppHaxUseCaseFilter extends LitElement {
   <div class="filter">
   <!--search bar-->
     <div class="upper-filter">
-      <app-hax-search-bar></app-hax-search-bar>
-    <!--search bar-->
       <slot>
         <simple-icon class="search-icon" icon="icons:search"></simple-icon>
       </slot>
@@ -260,12 +258,9 @@ export class AppHaxUseCaseFilter extends LitElement {
         `
         )
         : html`<p>No templates match the filters specified.</p>`}
+      </div>
     </div>
     </div>
-    
-    </div>
-    
-    
   </div>
     
     `;

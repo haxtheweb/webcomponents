@@ -65,42 +65,45 @@ export class AppHaxUseCase extends LitElement {
           position: relative;
           display: inline-block;
         }
-        #haxicons {
-          position: absolute; 
-          bottom: var(--ddd-spacing-2); 
-          left: var(--ddd-spacing-2); 
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-1);
-          opacity: 0.8;
-          gap: var(--ddd-spacing-3);
-          color: var(--ddd-primary-8);
-          position: absolute;
-          width: 40px; /* Adjust size as needed */
-          display: flex;
-        }
         .icons {
           position: absolute;
-          bottom: 16px;
-          left: 27%;
-          transform: translateX(-50%);
+          bottom: 18px;
+          left: 10px;
           display: flex;
-          gap: 8px;
+          gap: 6px;
+          z-index: 10;
         }
         .icon-wrapper {
           position: relative;
+          width: 32px;
+          height: 32px;
+          flex-shrink: 0; 
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .icon-wrapper::before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: white;
+          border-radius: 50%;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .tooltip-container {
           display: none;
           flex-direction: column;
           position: absolute;
-          top: 100%;
-          left: 50%;
-          transform: translateX(-50%);
+          top: 32px;
+          left: 0; /* Align with first icon */
           background-color: white;
           color: black;
           padding: 8px;
           border-radius: 6px;
           box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 6px;
           width: max-content;
+          z-index: 20;
         }
         .tooltip {
           font-size: 12px;
@@ -114,6 +117,22 @@ export class AppHaxUseCase extends LitElement {
         }
         .icons:hover .tooltip-container {
           display: block;
+        }
+        .tooltip-row {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          padding: 4px 8px;
+          border-bottom: 1px solid #ccc;
+        }
+
+        .tooltip-row:last-child {
+          border-bottom: none;
+        }
+
+        .tooltip-icon {
+          width: 20px;
+          height: 20px;
         }
         h3, p {
           margin: 4px;
@@ -189,31 +208,34 @@ export class AppHaxUseCase extends LitElement {
 
   render() {
     return html`
-      <div class="card">
-        <div class="image">
-          <a id="demo" href="${this.demoLink}" target="_blank"></a>
-          <img src="${this.source}" alt="${this.title}" ></a>
-          <div class="icons">
+    <div class="card">
+      <div class="image">
+        <a id="demo" href="${this.demoLink}" target="_blank"></a>
+        <img src="${this.source}" alt="${this.title}">
+        <div class="icons">
+          ${this.iconImage.map(
+            (icon) => html`
+              <div class="icon-wrapper">
+                <simple-icon-lite icon="${icon.icon}"></simple-icon-lite>
+              </div>
+            `
+          )}
+          <div class="tooltip-container">
             ${this.iconImage.map(
               (icon) => html`
-                <div class="icon-wrapper">
-                  <simple-icon-lite icon="${icon.icon}"></simple-icon-lite>
+                <div class="tooltip-row">
+                  <simple-icon-lite class="tooltip-icon" icon="${icon.icon}"></simple-icon-lite>
+                  <div class="tooltip">${icon.tooltip}</div>
                 </div>
               `
             )}
-            <div class="tooltip-container">
-              ${this.iconImage.map(
-                (icon) => html`<div class="tooltip">${icon.tooltip}</div>`
-              )}
-            </div>
           </div>
         </div>
+      </div>
         <div class="titleBar">
           <h3 style="font-size: 20px;">${this.title}</h3>
         </div>
-          
         <p>${this.description}</p>
-          
         <div class="cardBottom"> 
           <button class="select ${this.isSelected ? 'selected' : ''}" @click=${this.toggleDisplay}>
             ${this.isSelected ? 'Selected' : 'Select'}

@@ -19,7 +19,7 @@
         { "icon": "icons:favorite", "tooltip": "Mark as Favorite" },
         { "icon": "icons:language", "tooltip": "Translatable"},
         { "icon": "icons:thumb-up", "tooltip": "Popular"},
-        { "icon": "icons:accessibility", "tooltip": "Accessible"} 
+        { "icon": "icons:accessibility", "tooltip": "Accessible"}
       ]
      },
      {
