@@ -6,7 +6,6 @@ import "./app-hax-use-case.js";
 import "./app-hax-search-results.js";
 import "./app-hax-filter-tag.js";
 import "./app-hax-scroll-button.js";
-import "./app-hax-search-bar.js";
 
 export class AppHaxUseCaseFilter extends LitElement {
   // a convention I enjoy so you can change the tag name in 1 place
@@ -187,11 +186,10 @@ export class AppHaxUseCaseFilter extends LitElement {
       </slot>
       <input
         id="searchField"
-        @click="${this.toggleSearch}"
         @input="${this.handleSearch}"
         @keydown="${this.testKeydown}"
         type="text"
-        placeholder="Search Templates"
+        placeholder="Search Templates & Exisiting Sites"
       />
      
     </div>
@@ -218,7 +216,6 @@ export class AppHaxUseCaseFilter extends LitElement {
     <!--returning sites-->
     <div id="returnToSection" class="returnTo">
       <h4>Return to...</h4>
-      <app-hax-search-bar></app-hax-search-bar>
       <app-hax-search-results></app-hax-search-results>
     </div>
     
@@ -303,19 +300,27 @@ export class AppHaxUseCaseFilter extends LitElement {
   }
 
   handleSearch(event) {
-    this.searchQuery = event.target.value.toLowerCase();
-
-    const matchingFilter = this.filters.find(filter => 
-      filter.toLowerCase() === this.searchQuery
+    const searchTerm = event.target.value.toLowerCase();
+    this.searchTerm = searchTerm;
+    store.searchTerm = searchTerm; // Update store with search term
+  
+    // Filter templates
+    this.filteredItems = this.items.filter(item => 
+      item.useCaseTitle.toLowerCase().includes(searchTerm) ||
+      item.useCaseTag.some(tag => tag.toLowerCase().includes(searchTerm))
     );
-
-    const checkbox = this.shadowRoot.querySelector(`input[value="${matchingFilter}"]`);
-    if (checkbox) {
-      checkbox.checked = true;
+  
+    // Filter returning sites (assuming you have access to sites data)
+    if (this.returningSites) {
+      this.filteredSites = this.returningSites.filter(site =>
+        site.title.toLowerCase().includes(searchTerm)
+      );
     }
-
-    this.applyFilters();
+  
+    this.requestUpdate();
   }
+  
+  
   
   toggleFilter(event) {
     const filterValue = event.target.value;
@@ -329,23 +334,27 @@ export class AppHaxUseCaseFilter extends LitElement {
   }
 
   applyFilters() {
-    const lowerCaseQuery = this.searchQuery.toLowerCase();
+    const lowerCaseQuery = this.searchTerm.toLowerCase();
     
-    console.log("Active Filters:", this.activeFilters);
-
+    // Combined filter logic
     this.filteredItems = this.items.filter((item) => {
       const matchesSearch = lowerCaseQuery === "" ||
         item.useCaseTitle.toLowerCase().includes(lowerCaseQuery) ||
-        item.useCaseTag.some(tag => tag.toLowerCase() === lowerCaseQuery);
-    
+        item.useCaseTag.some(tag => tag.toLowerCase().includes(lowerCaseQuery));
+  
       const matchesFilters = this.activeFilters.length === 0 || 
-      this.activeFilters.some(filter => 
-        item.useCaseTag.includes(filter));
-    
+        this.activeFilters.some(filter => item.useCaseTag.includes(filter));
+  
       return matchesSearch && matchesFilters;
-    }); 
-    this.requestUpdate();
+    });
+  
+    // Update search results in store
+    store.searchResults = {
+      templates: this.filteredItems,
+      sites: this.filteredSites || []
+    };
   }
+  
   
   removeFilter(event) {
     const filterToRemove = event.detail;
@@ -355,23 +364,23 @@ export class AppHaxUseCaseFilter extends LitElement {
   }
     
   resetFilters() {
-    this.searchQuery = "";
-    this.activeFilters = []; // Clear active filters
-    this.filteredItems = this.items; // Reset to show all items
-    this.requestUpdate(); // Trigger an update
-  
-    // Uncheck checkboxes
-    const checkboxes = this.shadowRoot.querySelectorAll(
-      '.filterButtons input[type="checkbox"]'
-    );
-    checkboxes.forEach((checkbox) => (checkbox.checked = false)); 
-  
-    // Clear search bar
-    const searchInput = this.shadowRoot.querySelector('#searchField');
-    if (searchInput) {
-      searchInput.value = "";
+    this.searchTerm = "";
+    store.searchTerm = "";
+    this.activeFilters = [];
+    this.filteredItems = this.items;
+    
+    if (this.returningSites) {
+      this.filteredSites = this.returningSites;
     }
+    
+    // Clear UI elements
+    this.shadowRoot.querySelector("#searchField").value = "";
+    this.shadowRoot.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    
+    this.requestUpdate();
   }
+  
+  
 
   updateResults() {
     this.loading = true;
