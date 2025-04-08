@@ -56,9 +56,20 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: block;
           width: 100%;
         }
-        .rightSection{
+        .contentSection {
+          display: flex; 
+          align-items: flex-start; 
+          justify-content: flex-start; 
+          gap: 16px; 
+          width: 100%; 
+        }
+        .leftSection {
           display: block;
-          margin-left: 336px;
+          width: 460px; 
+          margin-left: 12px;
+        }
+        .rightSection {
+          display: block;
         }
         .results {
           display: flex;
@@ -119,7 +130,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: inline-block;
         }
         .search-icon {
-          position: absolute;
+          position: absolute; 
           left: 12px;
           top: 50%;
           transform: translateY(-50%);
@@ -127,11 +138,10 @@ export class AppHaxUseCaseFilter extends LitElement {
           align-self: center;
         }
         .filter {
-          position: absolute;
-          left: 16px;
-          height: auto;
-          justify-self: flex-start;
-          display:flex;
+          position: sticky;
+          top: 0; 
+          height: 280px;
+          display: flex;
           background-color: var(--simple-colors-default-theme-accent-1, var(--accent-color));
           color: var(--simple-colors-default-theme-accent-12, var(--accent-color));
           border-radius: 8px;
@@ -162,9 +172,6 @@ export class AppHaxUseCaseFilter extends LitElement {
         input[type="checkbox"] {
           width: 30px;
         }
-        .newJourneySection {
-          display: inline-flex;
-        }
       `,
     ];
   }
@@ -177,91 +184,88 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   render() {
     return html`
-  <div class="newJourneySection">
-  <div class="filter">
-  <!--search bar-->
-    <div class="upper-filter">
-      <slot>
-        <simple-icon class="search-icon" icon="icons:search"></simple-icon>
-      </slot>
-      <input
-        id="searchField"
-        @input="${this.handleSearch}"
-        @keydown="${this.testKeydown}"
-        type="text"
-        placeholder="Search Templates & Exisiting Sites"
-      />
-     
-    </div>
-    <div class="filterButtons">
-      ${this.filters.map(
-        (filter) => html`
-          <label>
-            <input
-              type="checkbox"
-              .value=${filter}
-              .checked=${this.activeFilters.includes(filter)}
-              @change=${(e) => this.toggleFilter(e)}
-            />
-            ${filter}
-          </label>
-        `
-      )}
-    </div>
-      <button class="reset-button" @click="${this.resetFilters}">Reset</button>
-    </div>
-
-    <div class="rightSection">
-
-    <!--returning sites-->
-    <div id="returnToSection" class="returnTo">
-      <h4>Return to...</h4>
-      <app-hax-search-results></app-hax-search-results>
-    </div>
-    
-
-    <!--templates-->
-    <div id="startJourneySection" class="startNew">
-      <h4>Start New Journey</h4>
-      
-      <div class="selectedTags">
-      ${this.activeFilters.map(
-      (filter) => html`
-        <app-hax-filter-tag .label=${filter} @remove-tag=${this.removeFilter}></app-hax-filter-tag>
-      `
-      )}
-    </div>
-      <div class="results">
-      
-      ${this.filteredItems.length > 0
-        ? this.filteredItems.map(
-        (item, index) => html`
-          <div>
-            <a href="${item.demoLink}" target="_blank"
-            class="${index === this.activeUseCase ? "active-card" : ""}"></a>
-            <app-hax-use-case
-              .source=${item.useCaseImage || ""}
-              .title=${item.useCaseTitle || ""}
-              .description=${item.useCaseDescription || ""}
-              .demoLink=${item.demoLink || ""}
-              .iconImage=${item.useCaseIcon || []}
-              .isSelected=${item.isSelected || false}
-              .showContinue=${item.showContinue || false}
-              @toggle-display=${(e) => this.toggleDisplay(index, e)}
-              @continue-action=${() => this.continueAction(index)}
-            ></app-hax-use-case>
-            </a>
+      <div class="contentSection">
+        <div class="leftSection"> 
+          <div class="filter">
+            <!-- Search bar -->
+            <div class="upper-filter">
+              <slot>
+                <simple-icon class="search-icon" icon="icons:search"></simple-icon>
+              </slot>
+              <input
+                id="searchField"
+                @input="${this.handleSearch}"
+                @keydown="${this.testKeydown}"
+                type="text"
+                placeholder="Search Templates & Sites"
+              />
+            </div>
+            <!-- Filter Buttons -->
+            <div class="filterButtons">
+              ${this.filters.map(
+                (filter) => html`
+                  <label>
+                    <input
+                      type="checkbox"
+                      .value=${filter}
+                      .checked=${this.activeFilters.includes(filter)}
+                      @change=${(e) => this.toggleFilter(e)}
+                    />
+                    ${filter}
+                  </label>
+                `
+              )}
+            </div>
+            <button class="reset-button" @click="${this.resetFilters}">Reset</button>
           </div>
-        `
-        )
-        : html`<p>No templates match the filters specified.</p>`}
+        </div>
+        <!-- Content Section -->
+        <div class="rightSection">
+          <!-- Returning Sites -->
+          <div id="returnToSection" class="returnTo">
+            <h4>Return to...</h4>
+            <app-hax-search-results></app-hax-search-results>
+          </div>
+  
+          <!-- Templates -->
+          <div id="startJourneySection" class="startNew">
+            <h4>Start New Journey</h4>
+            <div class="selectedTags">
+              ${this.activeFilters.map(
+                (filter) => html`
+                  <app-hax-filter-tag .label=${filter} @remove-tag=${this.removeFilter}></app-hax-filter-tag>
+                `
+              )}
+            </div>
+            <div class="results">
+              ${this.filteredItems.length > 0
+                ? this.filteredItems.map(
+                    (item, index) => html`
+                      <div>
+                        <a href="${item.demoLink}" target="_blank"
+                          class="${index === this.activeUseCase ? "active-card" : ""}"></a>
+                        <app-hax-use-case
+                          .source=${item.useCaseImage || ""}
+                          .title=${item.useCaseTitle || ""}
+                          .description=${item.useCaseDescription || ""}
+                          .demoLink=${item.demoLink || ""}
+                          .iconImage=${item.useCaseIcon || []}
+                          .isSelected=${item.isSelected || false}
+                          .showContinue=${item.showContinue || false}
+                          @toggle-display=${(e) => this.toggleDisplay(index, e)}
+                          @continue-action=${() => this.continueAction(index)}
+                        ></app-hax-use-case>
+                      </div>
+                    `
+                  )
+                : html`<p>No templates match the filters specified.</p>`}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    </div>
-  </div>
-    
     `;
   }
+  
 
   firstUpdated() {
     super.firstUpdated();
