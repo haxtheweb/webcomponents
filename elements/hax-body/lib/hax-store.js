@@ -1109,47 +1109,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    // see if a global was used to prevent this check
-    // this is useful when in trusted environments where the statement
-    // has been consented to in the application this is utilized in
-    if (this.skipHAXConfirmation) {
-      sessionStorageSet("haxConfirm", true);
-      localStorageSet("haxConfirm", true);
-    }
-    // check for local storage object
-    // if not, then store it in sessionStorage so that all our checks
-    // and balances are the same. This could allow for storing these
-    // settings on a server in theory
-    let haxConfirm =
-      sessionStorageGet("haxConfirm") || localStorageGet("haxConfirm");
-    if (!haxConfirm) {
-      // this way it isn't shown EVERY reload, but if they didn't confirm
-      // it will show up in the future
-      sessionStorageSet("haxConfirm", true);
-      let msg = `
-    The HAX content editor keeps preferences in order to improve your experience.
-    This data is stored in your browser and is never sent anywhere.
-    Click to accept.
-    `;
-      this.toast(msg, "-1", {}, "fit-bottom", "I Accept", "hax-consent-tap");
-    } else {
-      if (sessionStorageGet("haxConfirm") && !localStorageGet("haxConfirm")) {
-        // verify there is something there
-        try {
-          let globalData = sessionStorageGet("haxUserData")
-            ? JSON.parse(sessionStorageGet("haxUserData"))
-            : {};
-          this.storageData = globalData;
-          this._storageDataChanged(this.storageData);
-        } catch (e) {}
-      } else {
-        try {
-          let globalData = localStorageGet("haxUserData", {});
-          this.storageData = globalData;
-          this._storageDataChanged(this.storageData);
-        } catch (e) {}
-      }
-    }
     // set this global flag so we know it's safe to start trusting data
     // that is written to global preferences / storage bin
     setTimeout(() => {
@@ -1198,6 +1157,47 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         }
       }
       this.ready = true;
+      // see if a global was used to prevent this check
+      // this is useful when in trusted environments where the statement
+      // has been consented to in the application this is utilized in
+      if (this.skipHAXConfirmation) {
+        sessionStorageSet("haxConfirm", true);
+        localStorageSet("haxConfirm", true);
+      }
+      // check for local storage object
+      // if not, then store it in sessionStorage so that all our checks
+      // and balances are the same. This could allow for storing these
+      // settings on a server in theory
+      let haxConfirm =
+        sessionStorageGet("haxConfirm") || localStorageGet("haxConfirm");
+      if (!haxConfirm) {
+        // this way it isn't shown EVERY reload, but if they didn't confirm
+        // it will show up in the future
+        sessionStorageSet("haxConfirm", true);
+        let msg = `
+      The HAX content editor keeps preferences in order to improve your experience.
+      This data is stored in your browser and is never sent anywhere.
+      Click to accept.
+      `;
+        this.toast(msg, "-1", {}, "fit-bottom", "I Accept", "hax-consent-tap");
+      } else {
+        if (sessionStorageGet("haxConfirm") && !localStorageGet("haxConfirm")) {
+          // verify there is something there
+          try {
+            let globalData = sessionStorageGet("haxUserData")
+              ? JSON.parse(sessionStorageGet("haxUserData"))
+              : {};
+            this.storageData = globalData;
+            this._storageDataChanged(this.storageData);
+          } catch (e) {}
+        } else {
+          try {
+            let globalData = localStorageGet("haxUserData", {});
+            this.storageData = globalData;
+            this._storageDataChanged(this.storageData);
+          } catch (e) {}
+        }
+      }
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
     }
