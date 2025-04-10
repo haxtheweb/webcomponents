@@ -174,7 +174,6 @@ export class AppHaxSearchResults extends SimpleColors {
               (item) =>
                 html` <li>
                   <app-hax-site-bar
-                    @opened-changed="${this.openedChanged}"
                     ?dark="${this.dark}"
                     accent-color="${varGet(
                       item,
@@ -183,12 +182,6 @@ export class AppHaxSearchResults extends SimpleColors {
                     )
                       .replace("--simple-colors-default-theme-", "")
                       .replace("-7", "")}"
-                    icon-link="${item.slug}"
-                    icon="${varGet(
-                      item,
-                      "metadata.theme.variables.icon",
-                      "link",
-                    )}"
                   >
                     <a href="${item.slug}" slot="heading">${item.title}</a>
                     <span slot="subHeading">${item.author}</span>

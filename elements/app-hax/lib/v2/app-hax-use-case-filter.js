@@ -35,6 +35,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     return {
       searchTerm: { type: String },
       showSearch: { type: Boolean, reflect: true, attribute: "show-search" },
+      showFilter: {type: Boolean, reflect: true, attribute: "show-filter"},
       disabled: { type: Boolean, reflect: true },
       items: { type: Array },
       filteredItems: { type: Array },
@@ -76,7 +77,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         .reset-button {
           display: flex;
           font-family: var(--ddd-font-primary);
-          font-size: 12px;
+          font-size: 16px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -141,6 +142,35 @@ export class AppHaxUseCaseFilter extends LitElement {
           border: solid 1px var(--simple-colors-default-theme-accent-12, var(--accent-color));
           width: 300px;
         }
+        .collapseFilter {
+          display: none;
+        }
+        @media (max-width: 780px) {
+          :host .filter {
+            display: none;
+          }
+          :host([show-filter]) .filter {
+            display: flex;
+            width: 250px;
+            max-width: 20vw;
+          }
+          :host .collapseFilter {
+            display: flex;
+          }
+        }
+        @media (max-width: 600px) {
+          :host .filter {
+            display: none;
+          }
+          :host([show-filter]) .filter {
+            display: flex;
+            width: 200px;
+            max-width: 20vw;
+          }
+          :host .collapseFilter {
+            display: flex;
+          }
+        }
         .filterButtons {
           margin-top: 8px;
           text-align: left;
@@ -175,9 +205,16 @@ export class AppHaxUseCaseFilter extends LitElement {
     }
   }
 
+  toggleFilterVisibility() {
+    this.showFilter = !this.showFilter;
+  }
+
   render() {
     return html`
   <div class="newJourneySection">
+  <div class="collapseFilter">
+    <slot><simple-icon class="menu-icon" icon="icons:menu" @click="${this.toggleFilterVisibility}"></simple-icon></slot>
+  </div>
   <div class="filter">
   <!--search bar-->
     <div class="upper-filter">
