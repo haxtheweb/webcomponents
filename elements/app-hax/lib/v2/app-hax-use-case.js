@@ -42,15 +42,18 @@ export class AppHaxUseCase extends LitElement {
         :host {
           display: flex;
           flex-direction: column;
-          text-align: flex-start;
+          text-align: left;
           max-width: 240px;
-          margin:16px;
+          margin:12px;
           font-family: var(--ddd-font-primary);
           color: var(--ddd-theme-default-nittanyNavy);
           background-color: white;
           min-height: 270px;
           box-shadow: var(--ddd-boxShadow-lg);
           border-radius: 8px;
+        }
+        .cardContent {
+          padding: 12px 16px 20px;
         }
         .image img {
           width: 240px;
@@ -116,7 +119,7 @@ export class AppHaxUseCase extends LitElement {
           display: block;
         }
         h3, p {
-          margin: 4px;
+          margin: 2px;
         }
         p {
           font-size: 12px;
@@ -129,24 +132,27 @@ export class AppHaxUseCase extends LitElement {
         }
         button {
           display: flex;
-          background-color: white;
-          color: var(--ddd-theme-default-nittanyNavy);
-          border: 2px solid var(--ddd-theme-default-nittanyNavy);
+          background-color: #005fa9;
+          color: white;
+          border: 0px;
           border-radius: 4px;
           font-family: var(--ddd-font-primary);
           font-size: 12px;
           font-weight: 20px;
-          padding: 8px;
+          padding: 12px 16px 12px 24px;
           margin: 0px 4px 0px 4px;
           height: 16px;
           align-items: center;
           justify-content: center;
         }
+        button:hover {
+          background-color: var(--ddd-theme-default-nittanyNavy);
+        }
         .cardBottom {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        margin-top: 16px;
+        margin-top: 8px;
         }
 
         .cardBottom button, .cardBottom a {
@@ -158,13 +164,22 @@ export class AppHaxUseCase extends LitElement {
         }
         
         :host([isSelected]) button.select {
-          background-color: var(--simple-colors-default-theme-light-blue-12, --accent-color);
-          color: var(--simple-colors-default-theme-light-blue-1, --accent-color);
+          background-color: var(--ddd-theme-default-nittanyNavy);
         }
         .titleBar {
           display: inline-flex;
           align-items: center;
           text-align: flex-start;
+        }
+        @media (max-width: 1440px) {
+          :host, .image img {
+            display: flex;
+            width: 250px;
+            max-width: 20vw;
+          }
+          :host .collapseFilter {
+            display: flex;
+          }
         }
       `,
     ];
@@ -208,21 +223,24 @@ export class AppHaxUseCase extends LitElement {
             </div>
           </div>
         </div>
-        <div class="titleBar">
-          <h3 style="font-size: 20px;">${this.title}</h3>
-        </div>
+        <div class="cardContent">
+          <div class="titleBar">
+            <h3 style="font-size: 20px;">${this.title}</h3>
+          </div>
           
-        <p>${this.description}</p>
+          <p>${this.description}</p>
           
-        <div class="cardBottom"> 
-          <button class="select ${this.isSelected ? 'selected' : ''}" @click=${this.toggleDisplay}>
-            ${this.isSelected ? 'Selected' : 'Select'}
-          </button>
-          ${this.isSelected 
-            ? html`<button class="continue" @click=${this.continueAction}>Continue?</button>`
-            : html`<a id="demo" href="${this.demoLink}" target="_blank">Demo -> </a>`
-          }
+          <div class="cardBottom"> 
+            <button class="select ${this.isSelected ? 'selected' : ''}" @click=${this.toggleDisplay}>
+              ${this.isSelected ? 'Selected' : 'Select'}
+            </button>
+            ${this.isSelected 
+              ? html`<button class="continue" @click=${this.continueAction}>Continue?</button>`
+              : html`<a id="demo" href="${this.demoLink}" target="_blank">Demo -> </a>`
+            }
+          </div>
         </div>
+        
       </div>
     `;
   }

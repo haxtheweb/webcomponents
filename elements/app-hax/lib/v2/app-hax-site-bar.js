@@ -76,7 +76,7 @@ export class AppHaxSiteBars extends SimpleColors {
           font-family: var(--ddd-font-primary);
           color: var(--ddd-theme-default-nittanyNavy);
           background-color: white;
-          min-height: 240px;
+          min-height: 220px;
           box-shadow: var(--ddd-boxShadow-lg);
           border-radius: 8px;
         }
@@ -144,9 +144,9 @@ export class AppHaxSiteBars extends SimpleColors {
         }
         button {
           display: flex;
-          background-color: white;
-          color: var(--ddd-theme-default-nittanyNavy);
-          border: 2px solid var(--ddd-theme-default-nittanyNavy);
+          background-color: #005fa9;
+          color: white;
+          border: 0px;
           border-radius: 4px;
           font-family: var(--ddd-font-primary);
           font-size: 12px;
@@ -156,15 +156,17 @@ export class AppHaxSiteBars extends SimpleColors {
           align-items: center;
           justify-content: center;
         }
+        button:hover {
+          background-color: var(--ddd-theme-default-nittanyNavy);
+        }
         .cardBottom {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 8px 8px 6px 10px;
         }
         .cardBottom button{
         flex: 1;
-        margin: 0 4px;
+        margin-top: 8px;
         }
         ::slotted(a[slot="heading"]),
         ::slotted(span[slot="subHeading"]),
