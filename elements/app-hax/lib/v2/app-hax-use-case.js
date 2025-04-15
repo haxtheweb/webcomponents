@@ -168,15 +168,16 @@ export class AppHaxUseCase extends LitElement {
           background-color: var(--ddd-theme-default-nittanyNavy);
         }
         .cardBottom {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 8px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 8px;
+          padding: 0px 16px 20px 16px;
         }
 
         .cardBottom button, .cardBottom a {
-        flex: 1;
-        margin: 0 4px;
+          flex: 1;
+          margin: 0 4px;
         }
         .cardBottom a:visited {
           color: var(--simple-colors-default-theme-light-blue-9);
@@ -187,8 +188,9 @@ export class AppHaxUseCase extends LitElement {
         }
         .titleBar {
           display: inline-flex;
-          align-items: center;
-          text-align: flex-start;
+          flex-direction: column;
+          text-align: left;
+          padding: 0px 16px;
         }
         @media (max-width: 1440px) {
           :host, .image img {
@@ -249,8 +251,8 @@ export class AppHaxUseCase extends LitElement {
       </div>
         <div class="titleBar">
           <h3 style="font-size: 20px;">${this.title}</h3>
+          <p>${this.description}</p>
         </div>
-        <p>${this.description}</p>
         <div class="cardBottom"> 
           <button class="select ${this.isSelected ? 'selected' : ''}" @click=${this.toggleDisplay}>
             ${this.isSelected ? 'Selected' : 'Select'}
