@@ -8,7 +8,6 @@ import "./app-hax-filter-tag.js";
 import "./app-hax-scroll-button.js";
 
 export class AppHaxUseCaseFilter extends LitElement {
-  // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
     return "app-hax-use-case-filter";
   }
@@ -20,6 +19,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.showSearch = false;
     this.items = [];
     this.filteredItems = [];
+    this.filteredSites = [];
     this.activeFilters = [];
     this.filters = [];
     this.searchQuery = "";
@@ -27,10 +27,9 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.errorMessage = "";
     this.loading = false;
     this.selectedCardIndex = null;
+    this.returningSites = [];
   }
 
-  // Site.json is coming from
-  
   static get properties() {
     return {
       searchTerm: { type: String },
@@ -38,6 +37,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       disabled: { type: Boolean, reflect: true },
       items: { type: Array },
       filteredItems: { type: Array },
+      filteredSites: { type: Array },
       activeFilters: { type: Array },
       filters: { type: Array },
       searchQuery: { type: String },
@@ -45,6 +45,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       errorMessage: { type: String },
       loading: { type: Boolean },
       selectedCardIndex: { type: Number },
+      returningSites: { type: Array }
     };
   }
 
@@ -71,7 +72,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         .rightSection {
           display: block;
         }
-        .results {
+        .template-results {
           display: flex;
           justify-content: flex-start;
           align-items: flex-start;
@@ -224,7 +225,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           <!-- Returning Sites -->
           <div id="returnToSection" class="returnTo">
             <h4>Return to...</h4>
-            <app-hax-search-results></app-hax-search-results>
+            <app-hax-search-results .results=${this.filteredSites}></app-hax-search-results>
           </div>
   
           <!-- Templates -->
@@ -237,7 +238,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                 `
               )}
             </div>
-            <div class="results">
+            <div class="template-results">
               ${this.filteredItems.length > 0
                 ? this.filteredItems.map(
                     (item, index) => html`
@@ -265,7 +266,6 @@ export class AppHaxUseCaseFilter extends LitElement {
       </div>
     `;
   }
-  
 
   firstUpdated() {
     super.firstUpdated();
@@ -281,7 +281,6 @@ export class AppHaxUseCaseFilter extends LitElement {
       this.applyFilters();
     }
   }
-
 
   toggleSearch() {
     if (!this.disabled) {
@@ -307,25 +306,30 @@ export class AppHaxUseCaseFilter extends LitElement {
     const searchTerm = event.target.value.toLowerCase();
     this.searchTerm = searchTerm;
     store.searchTerm = searchTerm; // Update store with search term
-  
-    // Filter templates
-    this.filteredItems = this.items.filter(item => 
-      item.useCaseTitle.toLowerCase().includes(searchTerm) ||
-      item.useCaseTag.some(tag => tag.toLowerCase().includes(searchTerm))
+
+    // Filter templates (recipes)
+    this.filteredItems = this.items.filter(
+      item =>
+        item.dataType === "recipe" &&
+        (
+          item.useCaseTitle.toLowerCase().includes(searchTerm) ||
+          (item.useCaseTag && item.useCaseTag.some(tag => tag.toLowerCase().includes(searchTerm)))
+        )
     );
-  
-    // Filter returning sites (assuming you have access to sites data)
-    if (this.returningSites) {
-      this.filteredSites = this.returningSites.filter(site =>
-        site.title.toLowerCase().includes(searchTerm)
-      );
-    }
-  
+
+    // Filter returning sites
+    this.filteredSites = this.items.filter(
+      item =>
+        item.dataType === "site" &&
+        (
+          (item.originalData.title && item.originalData.title.toLowerCase().includes(searchTerm)) ||
+          (item.useCaseTag && item.useCaseTag.some(tag => tag.toLowerCase().includes(searchTerm)))
+        )
+    );
+
     this.requestUpdate();
   }
-  
-  
-  
+
   toggleFilter(event) {
     const filterValue = event.target.value;
 
@@ -339,116 +343,192 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   applyFilters() {
     const lowerCaseQuery = this.searchTerm.toLowerCase();
-    
-    // Combined filter logic
+
+    // Filter templates (recipes)
     this.filteredItems = this.items.filter((item) => {
-      const matchesSearch = lowerCaseQuery === "" ||
+      if (item.dataType !== "recipe") return false;
+      const matchesSearch =
+        lowerCaseQuery === "" ||
         item.useCaseTitle.toLowerCase().includes(lowerCaseQuery) ||
-        item.useCaseTag.some(tag => tag.toLowerCase().includes(lowerCaseQuery));
-  
-      const matchesFilters = this.activeFilters.length === 0 || 
-        this.activeFilters.some(filter => item.useCaseTag.includes(filter));
-  
+        (item.useCaseTag && item.useCaseTag.some(tag => tag.toLowerCase().includes(lowerCaseQuery)));
+
+      const matchesFilters =
+        this.activeFilters.length === 0 ||
+        (item.useCaseTag && this.activeFilters.some(filter => item.useCaseTag.includes(filter)));
+
       return matchesSearch && matchesFilters;
     });
-  
+
+    // Filter returning sites
+    this.filteredSites = this.items.filter((item) => {
+      if (item.dataType !== "site") return false;
+      const matchesSearch =
+        lowerCaseQuery === "" ||
+        (item.originalData.title && item.originalData.title.toLowerCase().includes(lowerCaseQuery)) ||
+        (item.useCaseTag && item.useCaseTag.some(tag => tag.toLowerCase().includes(lowerCaseQuery)));
+
+      const matchesFilters =
+        this.activeFilters.length === 0 ||
+        (item.useCaseTag && this.activeFilters.some(filter => item.useCaseTag.includes(filter)));
+
+      return matchesSearch && matchesFilters;
+    });
+
     // Update search results in store
     store.searchResults = {
       templates: this.filteredItems,
-      sites: this.filteredSites || []
+      sites: this.filteredSites
     };
+
+    this.requestUpdate();
   }
-  
-  
+
   removeFilter(event) {
     const filterToRemove = event.detail;
     this.activeFilters = this.activeFilters.filter((f) => f !== filterToRemove);
     this.applyFilters(); // Re-filter results
     this.requestUpdate();
   }
-    
+
   resetFilters() {
     this.searchTerm = "";
     store.searchTerm = "";
     this.activeFilters = [];
-    this.filteredItems = this.items;
-    
-    if (this.returningSites) {
-      this.filteredSites = this.returningSites;
-    }
-    
+    // Show all templates and all sites
+    this.filteredItems = this.items.filter(item => item.dataType === "recipe");
+    this.filteredSites = this.items.filter(item => item.dataType === "site");
+
     // Clear UI elements
     this.shadowRoot.querySelector("#searchField").value = "";
     this.shadowRoot.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
-    
+
     this.requestUpdate();
   }
-  
-  
 
   updateResults() {
     this.loading = true;
-    this.errorMessage = ""; // Reset error before fetching
-    
-    fetch(new URL('./app-hax-recipes.json', import.meta.url).href)  
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json(); // Parse JSON data
-    })
-    .then(data => {
-    // Map JSON data to component's items
-          
-      if (Array.isArray(data.item)) {
-        this.items = data.item.map(item => ({
-          useCaseTitle: item.title,
-          useCaseImage: item.image,
-          useCaseDescription: item.description,
-          useCaseIcon: item.attributes.map(attributes => ({
-            icon: attributes.icon,
-            tooltip: attributes.tooltip
-          })),
-          useCaseTag: Array.isArray(item.category) ? item.category : [item.category],
-          demoLink: item["demo-url"],
-        }));
-        this.filteredItems = this.items;
-        this.filters = [];
-    
-        data.item.forEach(item => {
+    this.errorMessage = "";
+    this.items = []; // Clear previous items
+    this.filters = []; // Clear previous filters
+
+    const recipesUrl = new URL('./app-hax-recipes.json', import.meta.url).href;
+    const sitesUrl = new URL('../../demo/sites.json', import.meta.url).href;
+
+    Promise.all([
+      fetch(recipesUrl).then(response => {
+        if (!response.ok) throw new Error(`Failed Recipes (${response.status})`);
+        return response.json();
+      }),
+      fetch(sitesUrl).then(response => {
+        if (!response.ok) throw new Error(`Failed Sites (${response.status})`);
+        return response.json();
+      })
+    ])
+    .then(([recipesData, sitesData]) => {
+      let combinedItems = [];
+      let allFilters = new Set();
+
+      // --- 1. Process Recipes Data (app-hax-recipes.json) ---
+      if (recipesData && Array.isArray(recipesData.item)) {
+        const mappedRecipes = recipesData.item.map(item => {
+          // Ensure category is an array, default if missing
+          let tags = [];
           if (Array.isArray(item.category)) {
-            item.category.forEach(category => {
-              if (!this.filters.includes(category)) {
-                this.filters = [...this.filters, category];
-              }
-            });
+            tags = item.category.filter(c => typeof c === 'string' && c.trim() !== ''); // Clean array
+          } else if (typeof item.category === 'string' && item.category.trim() !== '') {
+            tags = [item.category.trim()];
           }
+          // Add a default tag if none are valid
+          if (tags.length === 0) {
+             tags = ['Empty']; // Default category for recipes
+          }
+          tags.forEach(tag => allFilters.add(tag)); // Add to unique filter list
+
+          // Map attributes to useCaseIcon format
+          const icons = Array.isArray(item.attributes) ? item.attributes.map(attr => ({
+              icon: attr.icon || '',
+              tooltip: attr.tooltip || ''
+            })) : [];
+
+          return {
+            dataType: 'recipe', // Identifier
+            useCaseTitle: item.title || 'Untitled Template',
+            useCaseImage: item.image || '', 
+            useCaseDescription: item.description || '',
+            useCaseIcon: icons,
+            useCaseTag: tags, 
+            demoLink: item["demo-url"] || '#',
+            originalData: item
+          };
         });
+        combinedItems = combinedItems.concat(mappedRecipes);
       } else {
-        this.errorMessage = 'No Templates Found';
+        console.warn("Recipes data missing or not in expected format:", recipesData);
       }
-      console.log(data);
+
+      // --- 2. Process Sites Data (site.json) ---
+      if (sitesData && sitesData.data && Array.isArray(sitesData.data.items)) {
+        const mappedSites = sitesData.data.items.map(item => {
+          // CORRECTED: Use ONLY metadata.site.category
+          let categorySource = item.metadata.site.category;
+          let tags = [];
+          if (typeof categorySource === 'string' && categorySource.trim() !== '') {
+            tags = [categorySource.trim()];
+          } else if (Array.isArray(categorySource)) {
+            tags = categorySource.filter(c => typeof c === 'string' && c.trim() !== '');
+          }
+          // Add default ONLY if no valid category
+          if (tags.length === 0) {
+            tags = ['Site'];
+          }
+          tags.forEach(tag => allFilters.add(tag));
+          return {
+            dataType: 'site',
+            useCaseTag: tags, 
+            originalData: item
+          };
+        });
+        combinedItems = combinedItems.concat(mappedSites);
+      }
+
+      // --- 3. Update Component State ---
+      this.items = combinedItems;
+      // Sort filters alphabetically for UI consistency
+      this.filters = Array.from(allFilters).sort((a, b) => a.localeCompare(b));
+
+      // Separate out returningSites for reference (not strictly needed, but kept for clarity)
+      this.returningSites = combinedItems.filter(item => item.dataType === "site");
+
+      if (this.items.length === 0 && !this.errorMessage) {
+         this.errorMessage = 'No Templates or Sites Found';
+      }
+
+      // Apply initial filters (which will be none, showing all items)
+      this.resetFilters();
+
     })
     .catch(error => {
       this.errorMessage = `Failed to load data: ${error.message}`;
+      console.error("Error fetching or processing data:", error);
       this.items = [];
       this.filteredItems = [];
+      this.filteredSites = [];
+      this.filters = [];
     })
     .finally(() => {
       this.loading = false;
-      this.requestUpdate();
     });
   }
 
   toggleDisplay(index, event) {
     const isSelected = event.detail.isSelected;
-  
+
     if (this.selectedCardIndex !== null && this.selectedCardIndex !== index) {
       // Deselect the previously selected card
       this.filteredItems[this.selectedCardIndex].isSelected = false;
       this.filteredItems[this.selectedCardIndex].showContinue = false;
     }
-  
+
     if (isSelected) {
       // Select the new card
       this.selectedCardIndex = index;
@@ -456,7 +536,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       // Deselect the current card
       this.selectedCardIndex = null;
     }
-  
+
     this.filteredItems[index].isSelected = isSelected;
     this.filteredItems[index].showContinue = isSelected;
     this.requestUpdate();
@@ -466,6 +546,5 @@ export class AppHaxUseCaseFilter extends LitElement {
     console.log(`Continue action for item at index ${index}`);
     // Implement the continue action for the selected item
   }
-
 }
 customElements.define("app-hax-use-case-filter", AppHaxUseCaseFilter);

@@ -25,6 +25,7 @@
             "name": "ist402",
             "created": 1565898366,
             "updated": 1615262120,
+            "category": "Course",
             "git": {
               "autoPush": false,
               "branch": "master",
@@ -81,6 +82,7 @@
             "name": "acctg211",
             "created": 1610048864,
             "updated": 1612555993,
+            "category": "Course",
             "version": "2.0.9",
             "domain": "",
             "logo": "",
@@ -149,6 +151,7 @@
             "name": "geodz511",
             "created": 1569349769,
             "updated": 1640014827,
+            "category": "Course",
             "git": {
               "vendor": "github",
               "branch": "master",
@@ -206,6 +209,7 @@
             "logo": "assets/banner.jpg",
             "created": 1635276018,
             "updated": 1635276048,
+            "category": "Course",
             "git": {}
           },
           "theme": {
@@ -246,6 +250,7 @@
             "name": "ist210",
             "created": 1592403069,
             "updated": 1598281185,
+            "category": "Course",
             "git": {
               "autoPush": false,
               "branch": "",
@@ -296,6 +301,7 @@
         "author": "",
         "description": "",
         "license": "by-sa",
+        "category": "Course",
         "metadata": {
           "author": {
             "image": "",
@@ -308,6 +314,7 @@
             "logo": "assets/banner.jpg",
             "created": 1594994550,
             "updated": 1595266163,
+            "category": "Course",
             "git": {
               "autoPush": false,
               "branch": "",
@@ -369,6 +376,7 @@
             "logo": "assets/banner.jpg",
             "created": 1629208877,
             "updated": 1642013655,
+            "category": "Course",
             "git": {
               "autoPush": false,
               "branch": "",
@@ -425,6 +433,7 @@
             "logo": "assets/banner.jpg",
             "created": 1644856484,
             "updated": 1644856484,
+            "category": "Course",
             "git": {}
           },
           "theme": {
@@ -459,7 +468,8 @@
           "domain": null,
           "site": {
             "created": 1558624482,
-            "updated": 1558624504
+            "updated": 1558624504,
+            "category": "Course"
           },
           "theme": {
             "element": "learn-two-theme",
