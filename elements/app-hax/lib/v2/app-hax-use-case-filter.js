@@ -71,7 +71,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: flex;
           justify-content: flex-start;
           align-items: flex-start;
-          width: 816px;
+          width: 828px;
           z-index: 5;
         }
         .reset-button {
@@ -102,6 +102,9 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         .startNew h4, .returnTo h4 {
           flex-shrink: 0;
+        }
+        .returnTo h4 {
+          margin-top: 0px;
         }
         input[type="text"]{
           opacity: 1;
@@ -254,7 +257,6 @@ export class AppHaxUseCaseFilter extends LitElement {
     <!--returning sites-->
     <div id="returnToSection" class="returnTo">
       <h4>Return to...</h4>
-      <app-hax-search-bar></app-hax-search-bar>
       <app-hax-search-results></app-hax-search-results>
     </div>
     

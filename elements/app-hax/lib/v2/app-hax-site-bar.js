@@ -72,12 +72,12 @@ export class AppHaxSiteBars extends SimpleColors {
         :host {
           text-align: left;
           max-width: 240px;
-          margin: 16px;
+          
           font-family: var(--ddd-font-primary);
           color: var(--ddd-theme-default-nittanyNavy);
           background-color: white;
           min-height: 220px;
-          box-shadow: var(--ddd-boxShadow-lg);
+          box-shadow: 2px 2px 10px #1c1c1c;
           border-radius: 8px;
         }
         #mainCard {

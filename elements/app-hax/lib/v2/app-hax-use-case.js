@@ -49,7 +49,7 @@ export class AppHaxUseCase extends LitElement {
           color: var(--ddd-theme-default-nittanyNavy);
           background-color: white;
           min-height: 270px;
-          box-shadow: var(--ddd-boxShadow-lg);
+          box-shadow: 2px 2px 12px #1c1c1c;
           border-radius: 8px;
         }
         .cardContent {

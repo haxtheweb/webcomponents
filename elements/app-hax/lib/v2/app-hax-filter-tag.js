@@ -35,7 +35,7 @@ export class AppHaxFilterTag extends LitElement {
           padding-left: 8px;
           padding-right: 8px;
           height: 32px;
-          background-color: var(--app-hax-accent-color, var(--accent-color));
+          background-color: var(--simple-colors-default-theme-light-blue-12, var(--accent-color));
           border-radius: 8px;
           font-size: 16px;
           align-items: center;
