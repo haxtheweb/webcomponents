@@ -42,6 +42,7 @@ export class AppHaxSearchResults extends SimpleColors {
       searchTerm: { type: String, reflect: true },
       searchItems: { type: Array },
       displayItems: { type: Array },
+      siteUrl: { type: String, attribute: "site-url" },
     };
   }
 
@@ -80,7 +81,7 @@ export class AppHaxSearchResults extends SimpleColors {
           gap: 10px;
           overflow: hidden;
           margin: 0px;
-          height: 300px;
+          max-height: 260px;
           justify-self: flex-start;
           align-self: flex-start;
         }
@@ -107,6 +108,8 @@ export class AppHaxSearchResults extends SimpleColors {
           scrollbar-width: none;
           -ms-overflow-style: none; 
           padding: 4px;
+          padding-left: 8px;
+          padding-right: 8px;
         }
 
         #results::-webkit-scrollbar {
@@ -117,14 +120,14 @@ export class AppHaxSearchResults extends SimpleColors {
           flex: 0 0 auto;
           scroll-snap-align: center;
           width: 220px;
-          height: 300px;
+          height: 260px;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
         }
         app-hax-site-bar {
-          margin: 12px 0;
+          margin: 0 12px;
         }
         .description {
           max-height: 64px;
@@ -174,8 +177,8 @@ export class AppHaxSearchResults extends SimpleColors {
               (item) =>
                 html` <li>
                   <app-hax-site-bar
-                    @opened-changed="${this.openedChanged}"
                     ?dark="${this.dark}"
+                    .siteUrl="${item.slug}"
                     accent-color="${varGet(
                       item,
                       "metadata.theme.variables.cssVariable",
@@ -183,14 +186,8 @@ export class AppHaxSearchResults extends SimpleColors {
                     )
                       .replace("--simple-colors-default-theme-", "")
                       .replace("-7", "")}"
-                    icon-link="${item.slug}"
-                    icon="${varGet(
-                      item,
-                      "metadata.theme.variables.icon",
-                      "link",
-                    )}"
                   >
-                    <a href="${item.slug}" slot="heading">${item.title}</a>
+                    <span slot="heading">${item.title}</span>
                     <span slot="subHeading">${item.author}</span>
                     <app-hax-site-details
                       slot="band"
@@ -218,11 +215,11 @@ export class AppHaxSearchResults extends SimpleColors {
   }
 
   scrollLeft() {
-    this.shadowRoot.querySelector("#results").scrollBy({ left: -750, behavior: "smooth" });
+    this.shadowRoot.querySelector("#results").scrollBy({ left: -800, behavior: "smooth" });
   }
   
   scrollRight() {
-    this.shadowRoot.querySelector("#results").scrollBy({ left: 750, behavior: "smooth" });
+    this.shadowRoot.querySelector("#results").scrollBy({ left: 800, behavior: "smooth" });
   }
 
   getItemDetails(item) {

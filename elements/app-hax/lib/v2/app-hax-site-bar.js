@@ -21,44 +21,47 @@ export class AppHaxSiteBars extends SimpleColors {
   // HTMLElement life-cycle, built in; use this for setting defaults
   constructor() {
     super();
-    this.icon = "link";
-    this.opened = false;
+    this.showOptions = false;
     this.inprogress = false;
-    this.iconLink = "/";
     this.textInfo = {};
     this.siteId = "";
+    this.description = '';
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
   static get properties() {
     return {
       ...super.properties,
-      opened: { type: Boolean, reflect: true },
-      icon: { type: String },
+      showOptions: { type: Boolean },
       inprogress: { type: Boolean, reflect: true },
-      iconLink: { type: String, attribute: "icon-link" },
       textInfo: { type: Object },
       siteId: { type: String, reflect: true, attribute: "site-id" },
+      title: { type: String },
+        description: { type: String },
     };
   }
 
   // updated fires every time a property defined above changes
   // this allows you to react to variables changing and use javascript to perform logic
   updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "opened" && oldValue !== undefined) {
-        this.dispatchEvent(
-          new CustomEvent(`${propName}-changed`, {
-            detail: {
-              value: this[propName],
-            },
-          }),
-        );
-      }
-    });
+  }
+
+  toggleOptionsMenu() {
+    this.showOptions = !this.showOptions;
+  }
+  copySite() {
+    console.log("Copy clicked");
+    // implement logic
+  }
+  
+  downloadSite() {
+    console.log("Download clicked");
+    // implement logic
+  }
+  
+  archiveSite() {
+    console.log("Archive clicked");
+    // implement logic
   }
 
   // CSS - specific to Lit
@@ -67,128 +70,108 @@ export class AppHaxSiteBars extends SimpleColors {
       super.styles,
       css`
         :host {
-          --main-banner-width: 220px;
-          --main-banner-height: 220px;
-          --band-banner-height: 220px;
-          display: block;
-          background-color: var(--simple-colors-default-theme-light-blue-3);
-          color: var(--simple-colors-default-theme-grey-3);
-          outline: 5px solid var(--simple-colors-default-theme-light-blue-4);
-          outline-offset: -5px;
-          border-radius: 8px;
-          box-shadow: var(--ddd-boxShadow-lg);
-          position: relative;
-        }
-        .imageLink img{
-            display: block;
-            width: 216px;
-            height: 125px;
-            overflow: clip;
-            justify-self: center;
-            border-top-right-radius: 8px;
-            border-top-left-radius: 8px;
-          }
-
-        #labels {
-          display: block;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          white-space: nowrap;
-        }
-        #labels ::slotted(*) {
+          text-align: left;
+          max-width: 240px;
+          
           font-family: var(--ddd-font-primary);
-          font-size: 20px;
-          font-weight: bold;
-        }
-        #labels ::slotted(a) {
-          color: var(--simple-colors-default-theme-light-blue-11);
-          padding: 8px 0;
-          display: block;
-        }
-        #labels ::slotted(a:focus),
-        #labels ::slotted(a:hover) {
-          color: var(--simple-colors-default-theme-light-blue-3);
-          background-color: var(--simple-colors-default-theme-light-blue-11);
-        }
-
-        :host([opened]) {
-          background-color: var(--simple-colors-default-theme-light-blue-3);
+          color: var(--ddd-theme-default-nittanyNavy);
+          background-color: white;
+          min-height: 220px;
+          box-shadow: 2px 2px 10px #1c1c1c;
+          border-radius: 8px;
         }
         #mainCard {
-          display: block;
-          flex-direction: row;
+          display: flex;
+          flex-direction: column;
+        }
+        .cardContent {
+          padding: 12px 16px 20px;
+        }
+        .imageLink img {
+          width: 220px;
+          height: 125px;
+          border-top-right-radius: 8px;
+          border-top-left-radius: 8px;
+          border-bottom: solid var(--ddd-theme-default-nittanyNavy) 12px;
+          overflow: clip;
+          justify-self: center;
+        }
+        .imageLink {
+          position: relative;
+          display: inline-block;
+        }
+        .settings-button {
+          position: relative;
+          display: inline-block;
+          align-self: center;
+        }
+
+        .options-menu {
+          position: absolute;
+          top: -110px;
+          right: 0;
+          background: var(--haxcms-color-ui-white, #fff);
+          border: 1px solid var(--haxcms-color-ui-1, #ccc);
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+          border-radius: 8px;
+          padding: 8px 8px 6px 10px;
+          display: flex;
+          flex-direction: column;
+          z-index: 1000;
+          overflow:visible;
+        }
+        .options-menu simple-icon-button-lite {
+          margin: 4px 0;
+        }
+
+        .titleBar {
+          display: flex;
           justify-content: space-between;
           align-items: center;
-          width: var(--main-banner-width);
-          height: var(--main-banner-height);
-          padding: 2px 4px;
+          font-size: 20px;
+          color: var(--ddd-theme-default-nittanyNavy);
         }
-
-        #overlay {
-          display: flex;
-          position: absolute;
-          top: 0;
-          left: 0;
-          visibility: hidden;
-          justify-content: center;
-          align-items: center;
-          height: 1px;
-          width: var(--main-banner-width);
-          z-index: 999;
-        }
-        #closeButton {
-          position: absolute;
-          top: 10px;
-          right: 5px;
-          background: var(--simple-colors-default-theme-light-blue-1, var(--simple-colors-default-theme-light-blue-11));
-          color: var(--simple-colors-default-theme-light-blue-11, var(--simple-colors-default-theme-light-blue-1));
-          border: none;
+        p {
           font-size: 12px;
-          cursor: pointer;
-          z-index: 1001;
-          border-radius: 100;
+          padding: 8px 8px 6px 10px;
         }
-
-        :host([opened]) #overlay {
-          height: var(--main-banner-height);
-          visibility: visible;
-          width: 100%;
-          height: 100%;
+        ::slotted([slot="heading"]) {
+          font-size: 20px;
+          font-weight: bold;
+          color: var(--ddd-theme-default-nittanyNavy);
+          text-decoration: none;
+          display: block;
         }
-        a {
-          flex: 1;
-        }
-        #labels {
+        button {
           display: flex;
-          text-align: center;
-          justify-content: center;
-          flex: 6;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          margin-top: 20px;
-        }
-        #dots {
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
-          color: var(--simple-colors-default-theme-light-blue-11);
-          border: solid var(--simple-colors-default-theme-light-blue-11);
+          background-color: #005fa9;
+          color: white;
+          border: 0px;
           border-radius: 4px;
-          margin-left: 8px;
+          font-family: var(--ddd-font-primary);
+          font-size: 12px;
+          font-weight: 20px;
+          padding: 12px 16px 12px 24px;
+          height: 16px;
+          align-items: center;
+          justify-content: center;
         }
-        @media (max-width: 640px) {
-          :host {
-            --main-banner-height: 40px;
-            --band-banner-height: 140px;
-          }
-          #icon,
-          #dots {
-            --simple-icon-width: 30px;
-            --simple-icon-height: 30px;
-          }
-          #mainCard {
-            padding: 0;
-          }
-          
+        button:hover {
+          background-color: var(--ddd-theme-default-nittanyNavy);
+        }
+        .cardBottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+        .cardBottom button{
+        flex: 1;
+        margin-top: 8px;
+        }
+        ::slotted(a[slot="heading"]),
+        ::slotted(span[slot="subHeading"]),
+        ::slotted(div[slot="pre"]) {
+          display: block;
         }
       `,
     ];
@@ -203,26 +186,54 @@ export class AppHaxSiteBars extends SimpleColors {
     return html`
       <div id="mainCard">
         <div class="imageLink">
-          <img src="https://i.pinimg.com/originals/a0/42/8b/a0428b95538d471b344081d7ebede5d9.jpg">
+          <img src="https://image.freepik.com/free-vector/programming-website-landing-page_23-2148452312.jpg">
         </div>
         
-        <div id="labels">
-          <slot name="heading"></slot>
-          <simple-icon-button-lite
-          icon="more-vert"
-          id="dots"
-          @click=${this.__clickButton}
-        ></simple-icon-button-lite>
-        </div>
-        
-      </div>
-      <div id="overlay">
-        <button id="closeButton" @click=${this.__clickButton}>✖</button>
-        <slot name="band"></slot>
-      </div>
+        <div class="cardContent">
+          <div class="titleBar">
+            <slot name="heading"></slot>
+            <div class="settings-button">
+              <simple-tooltip for="settingsIcon" position="top" animation-delay="0">
+                Options
+              </simple-tooltip>
+              <simple-icon-button-lite
+                id="settingsIcon"
+                icon="hax:settings"
+                @click="${this.toggleOptionsMenu}"
+                aria-label="Open options"
+              ></simple-icon-button-lite>
 
-      <simple-tooltip for="icon" position="left">Access site</simple-tooltip>
-      <simple-tooltip for="dots" position="right">More options</simple-tooltip>
+              ${this.showOptions
+                ? html`
+                  <div class="options-menu">
+                    <span @click="${this.copySite}">
+                      <simple-icon-button-lite icon="content-copy" title="Copy"></simple-icon-button-lite>
+                      Copy
+                    </span>
+                    <span @click="${this.downloadSite}">
+                      <simple-icon-button-lite icon="file-download" title="Download"></simple-icon-button-lite>
+                      Download
+                    </span>
+                    <span @click="${this.archiveSite}">
+                      <simple-icon-button-lite icon="archive" title="Archive"></simple-icon-button-lite>
+                      Archive
+                    </span>
+                  </div>
+                `
+                : ''}
+            </div>
+          </div>
+          
+          <slot name="pre"></slot>
+          
+          <div class="cardBottom"> 
+            <button class="open" @click=${() => window.open(this.siteUrl, "_blank")}>
+              Open
+            </button>
+          </div>
+        </div>
+        
+      </div>
     `;
   }
 

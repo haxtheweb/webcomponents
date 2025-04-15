@@ -34,6 +34,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     return {
       searchTerm: { type: String },
       showSearch: { type: Boolean, reflect: true, attribute: "show-search" },
+      showFilter: {type: Boolean, reflect: true, attribute: "show-filter"},
       disabled: { type: Boolean, reflect: true },
       items: { type: Array },
       filteredItems: { type: Array },
@@ -82,13 +83,13 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: flex;
           justify-content: flex-start;
           align-items: flex-start;
-          width: 816px;
+          width: 828px;
           z-index: 5;
         }
         .reset-button {
           display: flex;
           font-family: var(--ddd-font-primary);
-          font-size: 12px;
+          font-size: 16px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -113,6 +114,9 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         .startNew h4, .returnTo h4 {
           flex-shrink: 0;
+        }
+        .returnTo h4 {
+          margin-top: 0px;
         }
         input[type="text"]{
           opacity: 1;
@@ -152,6 +156,35 @@ export class AppHaxUseCaseFilter extends LitElement {
           border: solid 1px var(--simple-colors-default-theme-accent-12, var(--accent-color));
           width: 300px;
         }
+        .collapseFilter {
+          display: none;
+        }
+        @media (max-width: 780px) {
+          :host .filter {
+            display: none;
+          }
+          :host([show-filter]) .filter {
+            display: flex;
+            width: 250px;
+            max-width: 20vw;
+          }
+          :host .collapseFilter {
+            display: flex;
+          }
+        }
+        @media (max-width: 600px) {
+          :host .filter {
+            display: none;
+          }
+          :host([show-filter]) .filter {
+            display: flex;
+            width: 200px;
+            max-width: 20vw;
+          }
+          :host .collapseFilter {
+            display: flex;
+          }
+        }
         .filterButtons {
           margin-top: 8px;
           text-align: left;
@@ -183,87 +216,100 @@ export class AppHaxUseCaseFilter extends LitElement {
     }
   }
 
+  toggleFilterVisibility() {
+    this.showFilter = !this.showFilter;
+  }
+
   render() {
     return html`
-      <div class="contentSection">
-        <div class="leftSection"> 
-          <div class="filter">
-            <!-- Search bar -->
-            <div class="upper-filter">
-              <slot>
-                <simple-icon class="search-icon" icon="icons:search"></simple-icon>
-              </slot>
-              <input
-                id="searchField"
-                @input="${this.handleSearch}"
-                @keydown="${this.testKeydown}"
-                type="text"
-                placeholder="Search Templates & Sites"
-              />
-            </div>
-            <!-- Filter Buttons -->
-            <div class="filterButtons">
-              ${this.filters.map(
-                (filter) => html`
-                  <label>
-                    <input
-                      type="checkbox"
-                      .value=${filter}
-                      .checked=${this.activeFilters.includes(filter)}
-                      @change=${(e) => this.toggleFilter(e)}
-                    />
-                    ${filter}
-                  </label>
-                `
-              )}
-            </div>
-            <button class="reset-button" @click="${this.resetFilters}">Reset</button>
+  <div class="newJourneySection">
+  <div class="filter">
+  <!--search bar-->
+    <div class="upper-filter">
+      <slot>
+        <simple-icon class="search-icon" icon="icons:search"></simple-icon>
+      </slot>
+      <input
+        id="searchField"
+        @click="${this.toggleSearch}"
+        @input="${this.handleSearch}"
+        @keydown="${this.testKeydown}"
+        type="text"
+        placeholder="Search Templates"
+      />
+     
+    </div>
+    <div class="filterButtons">
+      ${this.filters.map(
+        (filter) => html`
+          <label>
+            <input
+              type="checkbox"
+              .value=${filter}
+              .checked=${this.activeFilters.includes(filter)}
+              @change=${(e) => this.toggleFilter(e)}
+            />
+            ${filter}
+          </label>
+        `
+      )}
+    </div>
+      <button class="reset-button" @click="${this.resetFilters}">Reset</button>
+    </div>
+
+    <div class="rightSection">
+
+    <!--returning sites-->
+    <div id="returnToSection" class="returnTo">
+      <h4>Return to...</h4>
+      <app-hax-search-bar></app-hax-search-bar>
+      <app-hax-search-results></app-hax-search-results>
+    </div>
+    
+
+    <!--templates-->
+    <div id="startJourneySection" class="startNew">
+      <h4>Start New Journey</h4>
+      
+      <div class="selectedTags">
+      ${this.activeFilters.map(
+      (filter) => html`
+        <app-hax-filter-tag .label=${filter} @remove-tag=${this.removeFilter}></app-hax-filter-tag>
+      `
+      )}
+    </div>
+      <div class="results">
+      
+      ${this.filteredItems.length > 0
+        ? this.filteredItems.map(
+        (item, index) => html`
+          <div>
+            <a href="${item.demoLink}" target="_blank"
+            class="${index === this.activeUseCase ? "active-card" : ""}"></a>
+            <app-hax-use-case
+              .source=${item.useCaseImage || ""}
+              .title=${item.useCaseTitle || ""}
+              .description=${item.useCaseDescription || ""}
+              .demoLink=${item.demoLink || ""}
+              .iconImage=${item.useCaseIcon || []}
+              .isSelected=${item.isSelected || false}
+              .showContinue=${item.showContinue || false}
+              @toggle-display=${(e) => this.toggleDisplay(index, e)}
+              @continue-action=${() => this.continueAction(index)}
+            ></app-hax-use-case>
+            </a>
           </div>
-        </div>
-        <!-- Content Section -->
-        <div class="rightSection">
-          <!-- Returning Sites -->
-          <div id="returnToSection" class="returnTo">
-            <h4>Return to...</h4>
-            <app-hax-search-results .results=${this.filteredSites}></app-hax-search-results>
-          </div>
-  
-          <!-- Templates -->
-          <div id="startJourneySection" class="startNew">
-            <h4>Start New Journey</h4>
-            <div class="selectedTags">
-              ${this.activeFilters.map(
-                (filter) => html`
-                  <app-hax-filter-tag .label=${filter} @remove-tag=${this.removeFilter}></app-hax-filter-tag>
-                `
-              )}
-            </div>
-            <div class="template-results">
-              ${this.filteredItems.length > 0
-                ? this.filteredItems.map(
-                    (item, index) => html`
-                      <div>
-                        <a href="${item.demoLink}" target="_blank"
-                          class="${index === this.activeUseCase ? "active-card" : ""}"></a>
-                        <app-hax-use-case
-                          .source=${item.useCaseImage || ""}
-                          .title=${item.useCaseTitle || ""}
-                          .description=${item.useCaseDescription || ""}
-                          .demoLink=${item.demoLink || ""}
-                          .iconImage=${item.useCaseIcon || []}
-                          .isSelected=${item.isSelected || false}
-                          .showContinue=${item.showContinue || false}
-                          @toggle-display=${(e) => this.toggleDisplay(index, e)}
-                          @continue-action=${() => this.continueAction(index)}
-                        ></app-hax-use-case>
-                      </div>
-                    `
-                  )
-                : html`<p>No templates match the filters specified.</p>`}
-            </div>
-          </div>
-        </div>
-      </div>
+        `
+        )
+        : html`<p>No templates match the filters specified.</p>`}
+    </div>
+    </div>
+    
+    </div>
+    
+    
+  </div>
+    
     `;
   }
 
