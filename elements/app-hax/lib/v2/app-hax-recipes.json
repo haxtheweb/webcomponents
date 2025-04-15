@@ -3,7 +3,7 @@
   "item": [
     {
       "uuid": "72e00632-f4a2-48d5-9b1b-f39ab26ec350",
-      "title": "Portfolio",
+      "title": "Art",
       "category": ["Portfolio"],
       "recipe": "recipes/portfolio/portfolio.recipe",
       "theme": {
@@ -19,7 +19,7 @@
         { "icon": "icons:favorite", "tooltip": "Mark as Favorite" },
         { "icon": "icons:language", "tooltip": "Translatable"},
         { "icon": "icons:thumb-up", "tooltip": "Popular"},
-        { "icon": "icons:accessibility", "tooltip": "Accessible"} 
+        { "icon": "icons:accessibility", "tooltip": "Accessible"}
       ]
      },
      {

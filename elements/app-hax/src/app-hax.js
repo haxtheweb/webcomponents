@@ -1146,10 +1146,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             data-event="super-daemon"
             show-text-label
           ></simple-toolbar-button>
-          <app-hax-search-bar
-            slot="center"
-            ?disabled="${this.isNewUser}"
-          ></app-hax-search-bar>
           <wired-button
             elevation="1"
             slot="right"
