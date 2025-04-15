@@ -246,24 +246,6 @@ export class AppHaxUseCase extends LitElement {
             )}
           </div>
         </div>
-<<<<<<< HEAD
-        <div class="cardContent">
-          <div class="titleBar">
-            <h3 style="font-size: 20px;">${this.title}</h3>
-          </div>
-          
-          <p>${this.description}</p>
-          
-          <div class="cardBottom"> 
-            <button class="select ${this.isSelected ? 'selected' : ''}" @click=${this.toggleDisplay}>
-              ${this.isSelected ? 'Selected' : 'Select'}
-            </button>
-            ${this.isSelected 
-              ? html`<button class="continue" @click=${this.continueAction}>Continue?</button>`
-              : html`<a id="demo" href="${this.demoLink}" target="_blank">Demo -> </a>`
-            }
-          </div>
-=======
       </div>
         <div class="titleBar">
           <h3 style="font-size: 20px;">${this.title}</h3>
@@ -277,7 +259,6 @@ export class AppHaxUseCase extends LitElement {
             ? html`<button class="continue" @click=${this.continueAction}>Continue?</button>`
             : html`<a id="demo" href="${this.demoLink}" target="_blank">Demo -> </a>`
           }
->>>>>>> 841408d9d577e4e7105928b729f9e74fb8125a66
         </div>
         
       </div>
