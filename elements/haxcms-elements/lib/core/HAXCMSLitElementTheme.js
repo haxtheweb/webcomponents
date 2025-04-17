@@ -233,7 +233,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitEl
     // delay bc this shouldn't block page load in any way
     setTimeout(() => {
       setTimeout(() => {
-        if (this._location && this._location.hash) {
+        if (this._location && this._location.hash && this.HAXCMSThemeSettings.autoScroll) {
           let target = this.querySelector(this._location.hash);
           if (target) {
             if (this.isSafari) {
@@ -274,7 +274,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitEl
       if (propName == "_location") {
         this._locationChanged(this[propName], oldValue);
         setTimeout(() => {
-          if (this._location && this._location.hash) {
+          if (this._location && this._location.hash && this.HAXCMSThemeSettings.autoScroll) {
             let target = this.querySelector(this._location.hash);
             if (target) {
               if (this.isSafari) {

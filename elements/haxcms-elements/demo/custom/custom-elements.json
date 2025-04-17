@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "src/custom-journey-theme.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`CustomJourneyTheme`\n`CustomJourneyTheme based on HAXCMS theming ecosystem`\n`This theme is an example of extending an existing theme component`",
+          "name": "CustomJourneyTheme",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Store the tag name to make it easier to obtain directly.",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "HAXCMSGlobalStyleSheetContent"
+            },
+            {
+              "kind": "field",
+              "name": "_items",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "_items"
+            },
+            {
+              "kind": "field",
+              "name": "activeId",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "activeId"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "activeId",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "activeId"
+            },
+            {
+              "name": "_items",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "_items"
+            }
+          ],
+          "superclass": {
+            "name": "HAXCMSLitElementTheme",
+            "package": "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js"
+          },
+          "tagName": "custom-journey-theme",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "CustomJourneyTheme",
+            "module": "src/custom-journey-theme.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "CustomJourneyTheme",
+          "declaration": {
+            "name": "CustomJourneyTheme",
+            "module": "src/custom-journey-theme.js"
+          }
+        }
+      ]
+    }
+  ]
+}
