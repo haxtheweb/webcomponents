@@ -266,7 +266,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             <h4>Return to...</h4>
             <app-hax-search-results 
               .results=${this.filteredSites}
-              .searchTerm=${this.searchTerm}></app-hax-search-results>
+              .searchTerm=${this.searchTerm}>
             </app-hax-search-results>
           </div>
   
@@ -319,7 +319,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     if (
       changedProperties.has("searchQuery") ||
       changedProperties.has("activeFilters") ||
-      changedProperties.has("item")
+      changedProperties.has("items")
     ) {
       this.applyFilters();
     }
@@ -409,7 +409,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       
       const matchesSearch =
         lowerCaseQuery === "" ||
-        (item.originalData.title && item.originalData.title.toLowerCase().includes(lowerCaseQuery)) ||
+        (item.originalData.category && item.originalData.category.toLowerCase().includes(lowerCaseQuery)) ||
         (item.useCaseTag && item.useCaseTag.some(tag => tag.toLowerCase().includes(lowerCaseQuery)));
   
       const matchesFilters =
@@ -537,7 +537,7 @@ export class AppHaxUseCaseFilter extends LitElement {
   
         this.returningSites = siteItems;
         this.filters = Array.from(this.allFilters).sort(); // Set AFTER all items
-        this.filteredSites = siteItems;
+        this.filteredSites = [...siteItems];
   
         if (siteItems.length === 0 && !this.errorMessage) {
           this.errorMessage = 'No Sites Found';
