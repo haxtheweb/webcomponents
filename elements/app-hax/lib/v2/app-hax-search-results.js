@@ -27,9 +27,9 @@ export class AppHaxSearchResults extends SimpleColors {
     });
     /*autorun(() => {
       const manifest = toJS(store.manifest);
-      if (manifest && manifest.items) {
-        this.searchItems = manifest.items;
-        this.displayItems = [...this.searchItems];
+      if (manifest && manifest.data.items) {
+        this.results = manifest.data.items;
+        this.displayItems = [...this.results];
       }
     });*/
   }
@@ -56,7 +56,7 @@ export class AppHaxSearchResults extends SimpleColors {
         return (
           word.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
           word.description.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-          word.author.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          word.metadata.author.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
           word.slug.toLowerCase().includes(this.searchTerm.toLowerCase())
         );
       });
@@ -203,7 +203,7 @@ export class AppHaxSearchResults extends SimpleColors {
               No results for
               ${this.searchTerm !== ""
                 ? html`<strong>"${this.searchTerm}"</strong>`
-                : "your account, try starting a new journey!"}.
+                : "your account, try starting a new journey!"}
             </div>`}
       </ul>
       <button class="scroll-right" @click="${this.scrollRight}">▶</button>
@@ -218,29 +218,6 @@ export class AppHaxSearchResults extends SimpleColors {
   
   scrollRight() {
     this.shadowRoot.querySelector("#results").scrollBy({ left: 800, behavior: "smooth" });
-  }
-
-  getItemDetails(item) {
-    const details = {
-      created: varGet(item, "metadata.site.created", new Date() / 1000),
-      updated: varGet(item, "metadata.site.updated", new Date() / 1000),
-      pages: varGet(item, "metadata.pageCount", 0),
-      url: item.slug,
-    };
-    return details;
-  }
-
-  openedChanged(e) {
-    store.appEl.playSound("click");
-    if (!e.detail.value) {
-      this.shadowRoot
-        .querySelector("app-hax-site-details")
-        .setAttribute("tabindex", "-1");
-    } else {
-      this.shadowRoot
-        .querySelector("app-hax-site-details")
-        .removeAttribute("tabindex");
-    }
   }
 }
 customElements.define(AppHaxSearchResults.tag, AppHaxSearchResults);

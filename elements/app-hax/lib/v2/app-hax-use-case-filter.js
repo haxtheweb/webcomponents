@@ -266,7 +266,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             <h4>Return to...</h4>
             <app-hax-search-results 
               .results=${this.filteredSites}
-              .searchTerm=${this.searchTerm}></app-hax-search-results>
+              .searchTerm=${this.searchTerm}>
             </app-hax-search-results>
           </div>
   
@@ -517,7 +517,8 @@ export class AppHaxUseCaseFilter extends LitElement {
         return response.json();
       })
       .then(sitesData => {
-        const siteItems = Array.isArray(sitesData.items) ? sitesData.items.map(item => {
+        const items = sitesData.data?.items || [];
+        const siteItems = Array.isArray(items) ? items.map(item => {
           let categorySource = item?.metadata?.site?.category;
           let tags = [];
           if (Array.isArray(categorySource)) {
