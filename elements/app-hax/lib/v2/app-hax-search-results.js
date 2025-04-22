@@ -15,7 +15,7 @@ export class AppHaxSearchResults extends SimpleColors {
 
   constructor() {
     super();
-    this.searchItems = [];
+    this.results = [];
     this.displayItems = [];
     this.searchTerm = "";
     this.dark = false;
@@ -25,13 +25,13 @@ export class AppHaxSearchResults extends SimpleColors {
     autorun(() => {
       this.dark = toJS(store.darkMode);
     });
-    autorun(() => {
+    /*autorun(() => {
       const manifest = toJS(store.manifest);
       if (manifest && manifest.items) {
         this.searchItems = manifest.items;
         this.displayItems = [...this.searchItems];
       }
-    });
+    });*/
   }
 
   // Site.json is coming from
@@ -40,9 +40,9 @@ export class AppHaxSearchResults extends SimpleColors {
     return {
       ...super.properties,
       searchTerm: { type: String, reflect: true },
-      searchItems: { type: Array },
       displayItems: { type: Array },
       siteUrl: { type: String, attribute: "site-url" },
+      results: { type: Array }
     };
   }
 
@@ -50,24 +50,22 @@ export class AppHaxSearchResults extends SimpleColors {
     if (super.updated) {
       super.updated(changedProperties);
     }
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "searchTerm") {
-        this.displayItems = this.searchItems.filter((word) => {
-          if (
-            word.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            word.description
-              .toLowerCase()
-              .includes(this.searchTerm.toLowerCase()) ||
-            word.author.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            word.slug.toLowerCase().includes(this.searchTerm.toLowerCase())
-          ) {
-            return true;
-          }
-          return false;
-        });
-      }
-    });
+    if (changedProperties.has("searchTerm")) {
+      // If you want to filter based on searchTerm
+      this.displayItems = this.results.filter((word) => {
+        return (
+          word.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          word.description.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          word.author.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          word.slug.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+      });
+    } else if (changedProperties.has("results")) {
+      // When results change, update displayItems
+      this.displayItems = [...this.results];
+    }
   }
+  
 
   static get styles() {
     return [

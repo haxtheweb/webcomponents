@@ -28,6 +28,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.loading = false;
     this.selectedCardIndex = null;
     this.returningSites = [];
+    this.allFilters = new Set();
   }
 
   static get properties() {
@@ -46,7 +47,8 @@ export class AppHaxUseCaseFilter extends LitElement {
       errorMessage: { type: String },
       loading: { type: Boolean },
       selectedCardIndex: { type: Number },
-      returningSites: { type: Array }
+      returningSites: { type: Array },
+      allFilters: { attribute: false }
     };
   }
 
@@ -262,7 +264,10 @@ export class AppHaxUseCaseFilter extends LitElement {
           <!-- Returning Sites -->
           <div id="returnToSection" class="returnTo">
             <h4>Return to...</h4>
-            <app-hax-search-results .results=${this.filteredSites}></app-hax-search-results>
+            <app-hax-search-results 
+              .results=${this.filteredSites}
+              .searchTerm=${this.searchTerm}></app-hax-search-results>
+            </app-hax-search-results>
           </div>
   
           <!-- Templates -->
@@ -306,7 +311,8 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   firstUpdated() {
     super.firstUpdated();
-    this.updateResults();
+    this.updateRecipeResults(); 
+    this.updateSiteResults();
   }
 
   updated(changedProperties) {
@@ -380,46 +386,43 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   applyFilters() {
     const lowerCaseQuery = this.searchTerm.toLowerCase();
-
-    // Filter templates (recipes)
+  
+    // Filter recipes (from this.items)
     this.filteredItems = this.items.filter((item) => {
       if (item.dataType !== "recipe") return false;
-      const matchesSearch =
+      const matchesSearch = 
         lowerCaseQuery === "" ||
         item.useCaseTitle.toLowerCase().includes(lowerCaseQuery) ||
         (item.useCaseTag && item.useCaseTag.some(tag => tag.toLowerCase().includes(lowerCaseQuery)));
-
-      const matchesFilters =
+  
+      const matchesFilters = 
         this.activeFilters.length === 0 ||
         (item.useCaseTag && this.activeFilters.some(filter => item.useCaseTag.includes(filter)));
-
+  
       return matchesSearch && matchesFilters;
     });
-
-    // Filter returning sites
-    this.filteredSites = this.items.filter((item) => {
+  
+    // Filter sites (from this.returningSites)
+    this.filteredSites = this.returningSites.filter((item) => {
       if (item.dataType !== "site") return false;
+      const siteCategory = item.originalData.metadata?.site?.category || [];
+      
       const matchesSearch =
         lowerCaseQuery === "" ||
         (item.originalData.title && item.originalData.title.toLowerCase().includes(lowerCaseQuery)) ||
         (item.useCaseTag && item.useCaseTag.some(tag => tag.toLowerCase().includes(lowerCaseQuery)));
-
+  
       const matchesFilters =
         this.activeFilters.length === 0 ||
-        (item.useCaseTag && this.activeFilters.some(filter => item.useCaseTag.includes(filter)));
-
+        this.activeFilters.some(filter => 
+          siteCategory.includes(filter)
+        );
+  
       return matchesSearch && matchesFilters;
     });
-
-    // Update search results in store
-    store.searchResults = {
-      templates: this.filteredItems,
-      sites: this.filteredSites
-    };
-
-    this.requestUpdate();
   }
-
+  
+  
   removeFilter(event) {
     const filterToRemove = event.detail;
     this.activeFilters = this.activeFilters.filter((f) => f !== filterToRemove);
@@ -433,7 +436,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.activeFilters = [];
     // Show all templates and all sites
     this.filteredItems = this.items.filter(item => item.dataType === "recipe");
-    this.filteredSites = this.items.filter(item => item.dataType === "site");
+    this.filteredSites = this.returningSites;
 
     // Clear UI elements
     this.shadowRoot.querySelector("#searchField").value = "";
@@ -442,121 +445,118 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.requestUpdate();
   }
 
-  updateResults() {
+  updateRecipeResults() {
     this.loading = true;
     this.errorMessage = "";
-    this.items = []; // Clear previous items
-    this.filters = []; // Clear previous filters
-
+  
     const recipesUrl = new URL('./app-hax-recipes.json', import.meta.url).href;
-    const sitesUrl = new URL('../../demo/sites.json', import.meta.url).href;
-
-    Promise.all([
-      fetch(recipesUrl).then(response => {
+  
+    fetch(recipesUrl)
+      .then(response => {
         if (!response.ok) throw new Error(`Failed Recipes (${response.status})`);
         return response.json();
-      }),
-      fetch(sitesUrl).then(response => {
-        if (!response.ok) throw new Error(`Failed Sites (${response.status})`);
-        return response.json();
       })
-    ])
-    .then(([recipesData, sitesData]) => {
-      let combinedItems = [];
-      let allFilters = new Set();
-
-      // --- 1. Process Recipes Data (app-hax-recipes.json) ---
-      if (recipesData && Array.isArray(recipesData.item)) {
-        const mappedRecipes = recipesData.item.map(item => {
-          // Ensure category is an array, default if missing
+      .then(recipesData => {
+        const recipeItems = Array.isArray(recipesData.item) ? recipesData.item.map(item => {
           let tags = [];
           if (Array.isArray(item.category)) {
-            tags = item.category.filter(c => typeof c === 'string' && c.trim() !== ''); // Clean array
+            tags = item.category.filter(c => typeof c === 'string' && c.trim() !== '');
           } else if (typeof item.category === 'string' && item.category.trim() !== '') {
             tags = [item.category.trim()];
           }
-          // Add a default tag if none are valid
-          if (tags.length === 0) {
-             tags = ['Empty']; // Default category for recipes
-          }
-          tags.forEach(tag => allFilters.add(tag)); // Add to unique filter list
-
-          // Map attributes to useCaseIcon format
-          const icons = Array.isArray(item.attributes) ? item.attributes.map(attr => ({
-              icon: attr.icon || '',
-              tooltip: attr.tooltip || ''
-            })) : [];
-
+          if (tags.length === 0) tags = ['Empty'];
+          tags.forEach(tag => this.allFilters.add(tag)); // Add to global Set
+  
+          const icons = Array.isArray(item.attributes)
+            ? item.attributes.map(attr => ({
+                icon: attr.icon || '',
+                tooltip: attr.tooltip || ''
+              }))
+            : [];
+  
           return {
-            dataType: 'recipe', // Identifier
+            dataType: 'recipe',
             useCaseTitle: item.title || 'Untitled Template',
-            useCaseImage: item.image || '', 
+            useCaseImage: item.image || '',
             useCaseDescription: item.description || '',
             useCaseIcon: icons,
-            useCaseTag: tags, 
+            useCaseTag: tags,
             demoLink: item["demo-url"] || '#',
             originalData: item
           };
-        });
-        combinedItems = combinedItems.concat(mappedRecipes);
-      } else {
-        console.warn("Recipes data missing or not in expected format:", recipesData);
-      }
+        }) : [];
+  
+        this.items = recipeItems;
+        this.filters = Array.from(this.allFilters).sort(); // Set AFTER all items
+  
+        if (this.items.length === 0 && !this.errorMessage) {
+          this.errorMessage = 'No Recipes Found';
+        }
+  
+        this.resetFilters();
+      })
+      .catch(error => {
+        this.errorMessage = `Failed to load data: ${error.message}`;
+        this.items = [];
+        this.filters = [];
+      })
+      .finally(() => {
+        this.loading = false;
+      });
+  }  
 
-      // --- 2. Process Sites Data (site.json) ---
-      if (sitesData && sitesData.data && Array.isArray(sitesData.data.items)) {
-        const mappedSites = sitesData.data.items.map(item => {
-          // CORRECTED: Use ONLY metadata.site.category
-          let categorySource = item.metadata.site.category;
+  updateSiteResults() {
+    this.loading = true;
+    this.errorMessage = "";
+  
+    const sitesUrl = new URL('../../demo/sites.json', import.meta.url).href;
+  
+    fetch(sitesUrl)
+      .then(response => {
+        if (!response.ok) throw new Error(`Failed Sites (${response.status})`);
+        return response.json();
+      })
+      .then(sitesData => {
+        const siteItems = Array.isArray(sitesData.items) ? sitesData.items.map(item => {
+          let categorySource = item?.metadata?.site?.category;
           let tags = [];
-          if (typeof categorySource === 'string' && categorySource.trim() !== '') {
-            tags = [categorySource.trim()];
-          } else if (Array.isArray(categorySource)) {
+          if (Array.isArray(categorySource)) {
             tags = categorySource.filter(c => typeof c === 'string' && c.trim() !== '');
+          } else if (typeof categorySource === 'string' && categorySource.trim() !== '') {
+            tags = [categorySource.trim()];
           }
-          // Add default ONLY if no valid category
-          if (tags.length === 0) {
-            tags = ['Site'];
-          }
-          tags.forEach(tag => allFilters.add(tag));
+          if (tags.length === 0) tags = ['Empty'];
+          tags.forEach(tag => this.allFilters.add(tag)); // Add to global Set
+  
           return {
             dataType: 'site',
-            useCaseTag: tags, 
+            useCaseTag: tags,
             originalData: item
           };
-        });
-        combinedItems = combinedItems.concat(mappedSites);
-      }
-
-      // --- 3. Update Component State ---
-      this.items = combinedItems;
-      // Sort filters alphabetically for UI consistency
-      this.filters = Array.from(allFilters).sort((a, b) => a.localeCompare(b));
-
-      // Separate out returningSites for reference (not strictly needed, but kept for clarity)
-      this.returningSites = combinedItems.filter(item => item.dataType === "site");
-
-      if (this.items.length === 0 && !this.errorMessage) {
-         this.errorMessage = 'No Templates or Sites Found';
-      }
-
-      // Apply initial filters (which will be none, showing all items)
-      this.resetFilters();
-
-    })
-    .catch(error => {
-      this.errorMessage = `Failed to load data: ${error.message}`;
-      console.error("Error fetching or processing data:", error);
-      this.items = [];
-      this.filteredItems = [];
-      this.filteredSites = [];
-      this.filters = [];
-    })
-    .finally(() => {
-      this.loading = false;
-    });
+        }) : [];
+  
+        this.returningSites = siteItems;
+        this.filters = Array.from(this.allFilters).sort(); // Set AFTER all items
+        this.filteredSites = siteItems;
+  
+        if (siteItems.length === 0 && !this.errorMessage) {
+          this.errorMessage = 'No Sites Found';
+        }
+  
+        this.requestUpdate();
+      })
+      .catch(error => {
+        this.errorMessage = `Failed to load data: ${error.message}`;
+        this.returningSites = [];
+        this.filteredSites = [];
+        this.filters = [];
+      })
+      .finally(() => {
+        this.loading = false;
+      });
   }
-
+  
+  
   toggleDisplay(index, event) {
     const isSelected = event.detail.isSelected;
 
