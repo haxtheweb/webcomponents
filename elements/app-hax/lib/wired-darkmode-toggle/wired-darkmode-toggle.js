@@ -30,8 +30,8 @@ export class WiredDarkmodeToggle extends WiredToggle {
   }
 
   draw(svg, size) {
-    const rect = rectangle(svg, 0, 0, size[0], 48, this.seed);
-    rect.classList.add("toggle-bar");
+    //const rect = rectangle(svg, 0, 0, size[0], 48, this.seed);
+    //rect.classList.add("toggle-bar");
     this.knob = svgNode("g");
     this.knob.classList.add("knob");
     svg.appendChild(this.knob);

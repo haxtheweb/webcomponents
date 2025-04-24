@@ -767,6 +767,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         #home {
           display: inline-flex;
         }
+        #wt {
+          border: solid 1px var(--simple-colors-default-theme-accent-12, var(--accent-color));
+        }
         simple-toolbar-button {
           min-width: 48px;
           margin: 0;

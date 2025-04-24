@@ -157,6 +157,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           padding: var(--ddd-spacing-4);
           border: solid 1px var(--simple-colors-default-theme-accent-12, var(--accent-color));
           width: 300px;
+          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
         .collapseFilter {
           display: none;
