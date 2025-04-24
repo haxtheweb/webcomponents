@@ -518,7 +518,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       })
       .then(sitesData => {
         const siteItems = Array.isArray(sitesData.items) ? sitesData.items.map(item => {
-          let categorySource = item?.metadata?.site?.category;
+          let categorySource = item.metadata.site.category;
           let tags = [];
           if (Array.isArray(categorySource)) {
             tags = categorySource.filter(c => typeof c === 'string' && c.trim() !== '');
