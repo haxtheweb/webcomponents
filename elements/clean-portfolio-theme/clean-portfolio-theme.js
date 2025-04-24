@@ -91,6 +91,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
     autorun(() => {
       let location = toJS(store.location);
+      console.log(location);
       if (globalThis.document && globalThis.document.startViewTransition) {
         globalThis.document.startViewTransition(() => {
           this.location = location;
@@ -230,7 +231,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   static get properties() {
     return {
       ...super.properties,
-      location: { type: String },
+      location: { type: Object },
       siteTitle: { type: String },
       homeLink: { type: String },
       activeItem: { type: String },
