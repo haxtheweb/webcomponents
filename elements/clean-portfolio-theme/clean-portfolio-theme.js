@@ -10,7 +10,7 @@ import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCM
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
-import { toJS, autorun } from "mobx";
+import { toJS, autorun, reaction } from "mobx";
 
 /**
  * `clean-portfolio-theme`
@@ -33,12 +33,15 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   constructor() {
     super();
+    this.location = null;
     this.activeLayout = "text"; // text, media, listing
     this.isActiveLayoutButtonVisible = false; // flag for change layout debug button
     this.selectedTag = ""; // for filtering listing items
     this.menuOpen = false; // for mobile menu button
     this.menuOverflow = []; // items under the mobile menu
-
+    this.childrenTopTags = [];
+    this.childrenAllTags = [];
+    this.items = [];
     // MobX listeners
 
     // gets site title for site-title
@@ -85,6 +88,18 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
       this.__disposer.push(reaction);
     });
+
+    autorun(() => {
+      let location = toJS(store.location);
+      if (globalThis.document && globalThis.document.startViewTransition) {
+        globalThis.document.startViewTransition(() => {
+          this.location = location;
+        });
+      }
+      else {
+        this.location = location;
+      }
+    });
     
     // determines active layout based on following conditions:
     // - if the current page has no child, it's Text
@@ -110,31 +125,41 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         let items = store.getItemChildren(store.activeId);
         if (items) {
           if (items.length > 0) {
-            this.activeLayout = "listing";
-            this.items = [...items];
+            this.setLayout("listing");
+            if (globalThis.document && globalThis.document.startViewTransition) {
+              globalThis.document.startViewTransition(() => {
+                this.items = [...items];
+              });
+            }
+            else {
+              this.items = [...items];              
+            }
             this.selectedTag = "";
 
             // get tags for all children of activeItem, push to arrays
-            this.childrenTopTags = [];
-            this.childrenAllTags = [];
+            let childrenTopTags = [];
+            
+            let childrenAllTags = [];
             this.items.forEach(item => {
               let tags = toJS(item.metadata.tags);
               if (tags) {
                 tags = tags.split(',');
                 if (!this.childrenTopTags.includes(tags[0])) {
-                  this.childrenTopTags.push(tags[0]);
+                  childrenTopTags.push(tags[0]);
                 }
                 tags.forEach(tag => {
                   if (!this.childrenAllTags.includes(tag)) {
-                    this.childrenAllTags.push(tag);
+                    childrenAllTags.push(tag);
                   }
                 });
               }
             });
+            this.childrenTopTags = [...childrenTopTags];
+            this.childrenAllTags = [...childrenAllTags];
           } else if (this.parentSlug) {
-            this.activeLayout = "media";
+            this.setLayout("media");
           } else {
-            this.activeLayout = "text";
+            this.setLayout("text");
           }
         }
       }
@@ -151,6 +176,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         el?.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
+  }
+
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    if (changedProperties.has('activeLayout')) {
+
+    }
   }
 
   firstUpdated(changedProperties) {
@@ -198,6 +230,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   static get properties() {
     return {
       ...super.properties,
+      location: { type: String },
       siteTitle: { type: String },
       homeLink: { type: String },
       activeItem: { type: String },
@@ -561,6 +594,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         font-weight: bold;
         margin-top: 80px;
         margin-bottom: 24px;
+        view-transition-name: location;
       }
 
       .listing-titlecontainer site-active-title h1 {
@@ -602,6 +636,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         width: 90%;
         max-width: 800px;
         text-align: left;
+        view-transition-name: location;
       }
 
       /* Listing layout */
@@ -854,14 +889,25 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     `;
   }
 
+  setLayout(layout) {
+    if (globalThis.document && globalThis.document.startViewTransition) {
+      globalThis.document.startViewTransition(() => {
+        this.activeLayout = layout;
+      });
+    }
+    else {
+      this.activeLayout = layout;
+    }
+  }
+
   // for debugging
   ChangeLayout() {
     if (this.activeLayout == "text") {
-      this.activeLayout = "listing";
+      this.setLayout("listing");
     } else if (this.activeLayout == "listing") {
-      this.activeLayout = "media";
+      this.setLayout("media");
     } else {
-      this.activeLayout = "text";
+      this.setLayout("text");
     }
   }
 
