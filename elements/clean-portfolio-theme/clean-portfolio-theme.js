@@ -10,7 +10,7 @@ import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCM
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
-import { toJS, autorun, reaction } from "mobx";
+import { toJS, autorun } from "mobx";
 
 /**
  * `clean-portfolio-theme`
@@ -169,21 +169,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
     // determines if hax editor is enabled
     autorun((reaction) => {
-      this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
-
-      if (this.editMode) {
+      const editMode = toJS(store.editMode);
+      if (editMode) {
         const el = this.shadowRoot.querySelector("#contentcontainer") || document.querySelector("#contentcontainer");
         el?.scrollIntoView({ behavior: "smooth", block: "start" });
       }
+      this.__disposer.push(reaction);
     });
-  }
-
-  updated(changedProperties) {
-    super.updated(changedProperties);
-    if (changedProperties.has('activeLayout')) {
-
-    }
   }
 
   firstUpdated(changedProperties) {
@@ -244,7 +236,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       childrenTopTags: { type: Array },
       childrenAllTags: { type: Array },
       selectedTag: { type: String },
-      editMode: { type: Boolean },
       menuOpen: { type: Boolean },
       menuOverflow: { type: Array },
       isActiveLayoutButtonVisible: {type: Boolean}
