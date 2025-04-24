@@ -50,20 +50,6 @@ export class AppHaxSearchResults extends SimpleColors {
     if (super.updated) {
       super.updated(changedProperties);
     }
-    if (changedProperties.has("searchTerm")) {
-      // If you want to filter based on searchTerm
-      this.displayItems = this.results.filter((word) => {
-        return (
-          word.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-          word.description.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-          word.metadata.author.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-          word.slug.toLowerCase().includes(this.searchTerm.toLowerCase())
-        );
-      });
-    } else if (changedProperties.has("results")) {
-      // When results change, update displayItems
-      this.displayItems = [...this.results];
-    }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "searchTerm") {
         this.displayItems = this.searchItems.filter((word) => {

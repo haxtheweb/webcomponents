@@ -503,7 +503,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       .finally(() => {
         this.loading = false;
       });
-  }  
+  }   
 
   updateSiteResults() {
     this.loading = true;
@@ -517,9 +517,8 @@ export class AppHaxUseCaseFilter extends LitElement {
         return response.json();
       })
       .then(sitesData => {
-        const items = sitesData.data?.items || [];
-        const siteItems = Array.isArray(items) ? items.map(item => {
-          let categorySource = item?.metadata?.site?.category;
+        const siteItems = Array.isArray(sitesData.items) ? sitesData.items.map(item => {
+          let categorySource = item.metadata.site.category;
           let tags = [];
           if (Array.isArray(categorySource)) {
             tags = categorySource.filter(c => typeof c === 'string' && c.trim() !== '');
