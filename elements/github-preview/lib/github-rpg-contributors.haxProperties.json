@@ -1,0 +1,51 @@
+{
+  "canScale": true,
+  "designSystem": false,
+  "canEditSource": false,
+  "contentEditable": false,
+  "hideDefaultSettings": false,
+  "gizmo": {
+    "title": "Github Contributors list",
+    "description": "Rendered as RPG characters using github API",
+    "icon": "mdi-social:github-circle",
+    "color": "light-blue",
+    "tags": ["Other", "developer", "community", "git"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "org",
+        "title": "Organization",
+        "description": "github.com/ORGANIZATIONANME/REPONAME",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "repo",
+        "title": "Repository",
+        "description": "/REPONAME the name of the repository",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "limit",
+        "title": "Limit",
+        "description": "Use this if there are a lot of contributors",
+        "inputMethod": "number"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "github-rpg-contributors",
+      "properties": {
+        "org": "haxtheweb",
+        "repo": "hax-lab"
+      },
+      "content": ""
+    }
+  ]
+}
