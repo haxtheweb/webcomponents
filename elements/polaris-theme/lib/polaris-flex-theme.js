@@ -887,6 +887,8 @@ class PolarisFlexTheme extends LTIResizingMixin(
         "polaris-mark",
         "polaris-story-card",
         "polaris-tile",
+        "simple-cta",
+        "ddd-card",
         "media-quote",
       ].map((name) => {
         let el = globalThis.document.createElement(name);

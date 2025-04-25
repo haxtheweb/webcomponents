@@ -1,0 +1,113 @@
+{
+  "type": "grid",
+  "canScale": false,
+  "designSystem": {
+    "card": true,
+    "primary": true
+  },
+  "canEditSource": true,
+  "contentEditable": true,
+  "gizmo": {
+    "title": "Card",
+    "description": "A well designed card to design system.",
+    "icon": "chrome-reader-mode",
+    "color": "light-blue",
+    "tags": ["Layout", "content", "card", "Image"],
+    "handles": [
+      {
+        "type": "image",
+        "url": "src"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "src",
+        "title": "Image",
+        "description": "Optional image",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true
+      },
+      {
+        "property": "alt",
+        "title": "Image alt",
+        "description": "Alternative text to describe the image",
+        "inputMethod": "alt",
+        "noVoiceRecord": true
+      },
+      {
+        "property": "title",
+        "title": "Title",
+        "description": "Card title",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "",
+        "title": "Content",
+        "description": "Content area of the card",
+        "inputMethod": "textfield",
+        "slotWrapper": "p",
+        "allowedSlotWrappers": ["p"]
+      },
+      {
+        "property": "href",
+        "title": "Link",
+        "description": "Link for card button",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "noCamera": true
+      }
+    ],
+    "advanced": [
+      {
+        "property": "label",
+        "title": "Label",
+        "description": "Button label for link",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "noArrow",
+        "title": "No Arrow",
+        "description": "Remove arrow on button",
+        "inputMethod": "boolean"
+      }
+    ],
+    "developer": [
+      {
+        "property": "target",
+        "title": "Link: target",
+        "description": "Where to open the link",
+        "inputMethod": "select",
+        "options": {
+          "": "Same window",
+          "_blank": "New window - _blank",
+          "_top": "Top window - _top",
+          "_parent": "Parent window - _parent"
+        }
+      },
+      {
+        "property": "rel",
+        "title": "Link: rel",
+        "description": "relationship between a linked resource and the current document",
+        "inputMethod": "textfield"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "ddd-card",
+      "properties": {
+        "src": "https://placehold.co/400x300",
+        "title": "Title",
+        "link": "https://hax.cloud"
+      },
+      "content":
+        "<p>The card content</p>"
+    }
+  ]
+}

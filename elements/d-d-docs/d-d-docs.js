@@ -15,6 +15,8 @@ import "@haxtheweb/course-design/lib/block-quote.js";
 import "@haxtheweb/self-check/self-check.js";
 import "@haxtheweb/media-image/media-image.js";
 import "@haxtheweb/accent-card/accent-card.js";
+import "@haxtheweb/d-d-d/lib/ddd-card.js";
+
 /**
  * `d-d-docs`
  * `design, develop, destroy the competition, documentation`
@@ -36,6 +38,7 @@ export const styleGuideTopics = {
   Typography: "Typography",
   RichText: "RichText",
   InstructionalComponents: "InstructionalComponents",
+  Cards: "Cards",
   Buttons: "Buttons",
   PageSections: "PageSections",
 };
@@ -334,6 +337,7 @@ class DDDocs extends DDD {
         <li>accent-card</li>
         <li>page-section</li>
         <li>simple-cta</li>
+        <li>ddd-card</li>
         <li>video-player</li>
         <li>citation-element</li>
         <li>license-element</li>
@@ -1673,6 +1677,99 @@ class DDDocs extends DDD {
         </ul>
       </div>
     `;
+  }
+
+  renderCards() {
+    return html`
+    <h3>ddd-card</h3>
+          <ddd-card
+            src="https://images.ctfassets.net/ni9rh5nu0d99/1paFaX2Dc7iHh9Z6K7mIim/1427b9970ff21dd9c8a770067638efc1/abington-02.jpg?fm=webp&w=1080&q=75"
+            title="Abington"
+            href="https://www.psu.edu/academics/campuses/abington"
+          >
+            <p>
+              Close to Philadelphia, Penn State Abington's suburban campus offers
+              bachelor's degrees, athletics, and a diverse student community.
+            </p>
+          </ddd-card>
+          <ddd-card
+            src="https://images.ctfassets.net/ni9rh5nu0d99/6oBUNrVTNPJaoE9ahnVX2E/2c655bdcf28befdf81d5a24248a9dca5/altoona-01.jpg?fm=webp&w=1080&q=75"
+            title="Altoona"
+            href="https://www.psu.edu/academics/campuses/altoona"
+            data-primary="10"
+          >
+            <p>
+              In central Pennsylvania close to University Park, Penn State Altoona
+              offers the appeal of a small college with the prestige of a major
+              research university.
+            </p>
+          </ddd-card>
+          <ddd-card
+            src="https://images.ctfassets.net/ni9rh5nu0d99/C6YPZMqHyRaPeRrVTun8k/1ca61866afa1b3d903944a38ea34cecc/beaver-01.jpg?fm=webp&w=1080&q=75"
+            title="Beaver"
+            href="https://www.psu.edu/academics/campuses/beaver"
+            data-primary="20"
+          >
+            <p>
+              Situated on one hundred acres, Penn State Beaver offers several
+              bachelor's degrees, on-campus housing, and varsity sports, all within
+              easy reach of Pittsburgh.
+            </p>
+          </ddd-card>
+          <ddd-card
+            title="Behrend"
+            href="https://www.psu.edu/academics/campuses/behrend"
+            label="LETS DO THIS!"
+            no-arrow
+          >
+            <p>
+              Located in northwestern Pennsylvania, Penn State Behrend offers
+              undergraduate and graduate degrees, research experiences, on-campus
+              living, and athletics.
+            </p>
+          </ddd-card>
+          <ddd-card
+            src="https://images.ctfassets.net/ni9rh5nu0d99/3WXgadpl3oKX50MmPHGV6m/a91103dc9e4bbe123e29fd25b81e3402/berks-02.jpg?fm=webp&w=1080&q=75"
+            title="Berks"
+          >
+            <p>
+              Penn State Berks offers bachelor's degrees and four associate
+              programs with small classes, internships, undergraduate research
+              opportunities, and residential campus life.
+            </p>
+          </ddd-card>
+          <ddd-card
+            src="https://images.ctfassets.net/ni9rh5nu0d99/2p1eWsDl9umbeRKa02UEsQ/bba80b11dd34aecab19db215eaa8bb59/brandywine-01.jpg?fm=webp&w=1080&q=75"
+            title="Brandywine"
+            href="https://www.psu.edu/academics/campuses/brandywine"
+          >
+            <p>
+              Penn State Brandywine is all about the highest quality in teaching,
+              research, scholarship, and service to the campus, students, and the
+              Delaware County community.
+            </p>
+          </ddd-card>
+          <ddd-card
+            src="https://images.ctfassets.net/ni9rh5nu0d99/3rzA2HLc3Sy7uePX63LmYU/55d57acd326e0476cf70b5d7011e23b0/carlisle-01.jpg?fm=webp&w=1080&q=75"
+            title="Carlisle"
+            href="https://www.psu.edu/academics/campuses/carlisle"
+          >
+            <p>
+              Dickinson Law, located in Carlisle, offers study in various types of
+              law and across disciplines.
+            </p>
+          </ddd-card>
+          <ddd-card
+            src="https://images.ctfassets.net/ni9rh5nu0d99/eR6sYQ8zjwro8K2PxH20N/b495fd6e0f8f501631793c176c017859/dubois-01.jpg?fm=webp&w=1080&q=75"
+            title="Dubois"
+            href="https://www.psu.edu/academics/campuses/dubois"
+          >
+            <p>
+              Penn State DuBois prepares leaders through cutting-edge technology,
+              faculty expertise, and dedication to excellence in a small-town
+              setting in north-central Pennsylvania.
+            </p>
+          </ddd-card>`;
   }
 
   renderButtons() {
