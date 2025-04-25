@@ -2,14 +2,14 @@
   "type": "grid",
   "canScale": false,
   "designSystem": {
-    "card": true,
     "primary": true
   },
   "canEditSource": true,
   "contentEditable": true,
+  "hideDefaultSettings": true,
   "gizmo": {
     "title": "Card",
-    "description": "A well designed card to design system.",
+    "description": "A well designed card to the DDD design system.",
     "icon": "chrome-reader-mode",
     "color": "light-blue",
     "tags": ["Layout", "content", "card", "Image"],

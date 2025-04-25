@@ -158,18 +158,65 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
         </div>
         <div class="button-wrapper" part="button-wrapper">
         ${this.href ? html`
-          <a href="${this.href}" rel="${this.rel}" target="${this.target}" part="a"><button part="button">${this.label || this.t.explore} ${!this.noArrow ? `>` : nothing}</button></a>
+          <a 
+            @click="${this._clickCard}"
+            href="${this.href}"
+            role="button"
+            rel="${this.rel}"
+            target="${this.target}"
+            part="a"
+            >
+            <button part="button" tabindex="-1">
+              ${this.label || this.t.explore} ${!this.noArrow ? `>` : nothing}
+            </button>
+          </a>
         `: nothing}
         </div>
       </div>
     `;
   }
 
-    // haxProperty definition
-    static get haxProperties() {
-      return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
+  // haxProperties definition
+  static get haxProperties() {
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
+  }
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
+    };
+  }
+  /**
+   * Set a flag to test if we should block link clicking on the entire card
+   * otherwise when editing in hax you can't actually edit it bc its all clickable.
+   * if editMode goes off this helps ensure we also become clickable again
+   */
+  haxeditModeChanged(val) {
+    this.editMode = val;
+  }
+  /**
+   * special support for HAX since the whole card is selectable
+   */
+  _clickCard(e) {
+    if (this.editMode) {
+      // do not do default
+      e.preventDefault();
+      e.stopPropagation();
+      e.stopImmediatePropagation();
     }
-
+  }
+  /**
+   * double-check that we are set to inactivate click handlers
+   * this is for when activated in a duplicate / adding new content state
+   */
+  haxactiveElementChanged(el, val) {
+    // flag for HAX to not trigger active on changes
+    this.editMode = val;
+    return false;
+  }
 }
 
 globalThis.customElements.define(DddCard.tag, DddCard);
