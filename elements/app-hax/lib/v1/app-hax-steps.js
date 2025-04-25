@@ -31,8 +31,8 @@ const enabledCircle = new URL(
 ).href;
 
 const themeContext = {
-  collection: ["collections-theme", "bootstrap-theme"],
-  blog: ["haxor-slevin"],
+  portfolio: ["journey-theme", "clean-portfolio-theme"],
+  blog: ["journey-theme", "clean-portfolio-theme", "haxor-slevin"],
   course: ["clean-one", "clean-two", "learn-two-theme"],
   website: ["polaris-flex-theme"],
   training: ["training-theme"],
@@ -122,11 +122,11 @@ export class AppHaxSteps extends SimpleColors {
       }
       if (value === "blog") {
         store.site.type = "own";
-        store.site.theme = "haxor-slevin";
+        store.site.theme = "journey-theme";
       }
-      if (value === "collection") {
+      if (value === "portfolio") {
         store.site.type = "own";
-        store.site.theme = "collections-theme";
+        store.site.theme = "clean-portfolio-theme";
       }
       if (value === "website") {
         store.site.type = "own";
@@ -944,7 +944,7 @@ export class AppHaxSteps extends SimpleColors {
     const structure = toJS(store.site.structure);
     var template = html``;
     switch (structure) {
-      case "collection":
+      case "portfolio":
         template = html` <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
@@ -952,20 +952,7 @@ export class AppHaxSteps extends SimpleColors {
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.chooseType}
-            type="technology"
-            ?coming-soon="${!this.unlockComingSoon}"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
-            type="business"
-            ?coming-soon="${!this.unlockComingSoon}"
-          ></app-hax-button>
-          <app-hax-button
-            tabindex="${step !== 2 ? "-1" : ""}"
-            @click=${this.chooseType}
             type="art"
-            ?coming-soon="${!this.unlockComingSoon}"
           ></app-hax-button>`;
         break;
       default:
@@ -1118,8 +1105,8 @@ export class AppHaxSteps extends SimpleColors {
                 ></app-hax-site-button>
                 <app-hax-site-button
                   tabindex="${this.step !== 1 ? "-1" : ""}"
-                  label="&gt; Collection"
-                  value="collection"
+                  label="&gt; Portfolio"
+                  value="portfolio"
                   @click=${this.chooseStructure}
                 ></app-hax-site-button>
                 <app-hax-site-button
