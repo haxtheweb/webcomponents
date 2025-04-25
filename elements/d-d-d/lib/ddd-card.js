@@ -106,6 +106,8 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
         /** helps normalize global ddd p spacing */
         :host .description ::slotted(p) {
           margin: var(--ddd-card-content-p-margin, 0) !important;
+          line-height: normal;
+          text-align: start;
         }
 
         .button-wrapper {

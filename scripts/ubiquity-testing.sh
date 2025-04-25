@@ -92,3 +92,11 @@ cp -R ~/haxtheweb/haxcms-nodejs/src/coreConfig ~/haxtheweb/haxcms-php/system/cor
 
 # create cli needs wc-reg for validation purposes
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/create/src/lib/wc-registry.json
+
+# BUILD CLI/NODE FOR LOCAL TESTING
+
+cd ~/haxtheweb/haxcms-nodejs/
+npm run build
+
+cd ~/haxtheweb/create
+npm run build
