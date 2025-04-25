@@ -265,14 +265,14 @@ export class AppHaxUseCaseFilter extends LitElement {
           <div id="returnToSection" class="returnTo">
             <h4>Return to...</h4>
             <app-hax-search-results 
-              .results=${this.filteredSites}
+              .displayItems=${this.filteredSites}
               .searchTerm=${this.searchTerm}>
             </app-hax-search-results>
           </div>
   
           <!-- Templates -->
           <div id="startJourneySection" class="startNew">
-            <h4>Start New Journey</h4>
+            <h4>Create New Site</h4>
             <div class="selectedTags">
               ${this.activeFilters.map(
                 (filter) => html`
@@ -351,24 +351,24 @@ export class AppHaxUseCaseFilter extends LitElement {
     store.searchTerm = searchTerm; // Update store with search term
 
     // Filter templates (recipes)
-    this.filteredItems = this.items.filter(
+    this.filteredItems = [...this.items.filter(
       item =>
         item.dataType === "recipe" &&
         (
           item.useCaseTitle.toLowerCase().includes(searchTerm) ||
           (item.useCaseTag && item.useCaseTag.some(tag => tag.toLowerCase().includes(searchTerm)))
         )
-    );
+    )];
 
     // Filter returning sites
-    this.filteredSites = this.items.filter(
+    this.filteredSites = [...this.items.filter(
       item =>
         item.dataType === "site" &&
         (
           (item.originalData.title && item.originalData.title.toLowerCase().includes(searchTerm)) ||
           (item.useCaseTag && item.useCaseTag.some(tag => tag.toLowerCase().includes(searchTerm)))
         )
-    );
+    )];
 
     this.requestUpdate();
   }
@@ -377,7 +377,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     const filterValue = event.target.value;
 
     if (this.activeFilters.includes(filterValue)) {
-      this.activeFilters = this.activeFilters.filter((f) => f !== filterValue);
+      this.activeFilters = [...this.activeFilters.filter((f) => f !== filterValue)];
     } else {
       this.activeFilters = [...this.activeFilters, filterValue];
     }
@@ -388,7 +388,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     const lowerCaseQuery = this.searchTerm.toLowerCase();
   
     // Filter recipes (from this.items)
-    this.filteredItems = this.items.filter((item) => {
+    this.filteredItems = [...this.items.filter((item) => {
       if (item.dataType !== "recipe") return false;
       const matchesSearch = 
         lowerCaseQuery === "" ||
@@ -400,26 +400,22 @@ export class AppHaxUseCaseFilter extends LitElement {
         (item.useCaseTag && this.activeFilters.some(filter => item.useCaseTag.includes(filter)));
   
       return matchesSearch && matchesFilters;
-    });
-  
+    })];
     // Filter sites (from this.returningSites)
-    this.filteredSites = this.returningSites.filter((item) => {
+    this.filteredSites = [...this.returningSites.filter((item) => {
       if (item.dataType !== "site") return false;
       const siteCategory = item.originalData.metadata?.site?.category || [];
-      
       const matchesSearch =
         lowerCaseQuery === "" ||
-        (item.originalData.category && item.originalData.category.toLowerCase().includes(lowerCaseQuery)) ||
+        (item.originalData.category && item.originalData.category && item.originalData.category.includes(lowerCaseQuery)) ||
         (item.useCaseTag && item.useCaseTag.some(tag => tag.toLowerCase().includes(lowerCaseQuery)));
-  
       const matchesFilters =
         this.activeFilters.length === 0 ||
-        this.activeFilters.some(filter => 
-          siteCategory.includes(filter)
-        );
-  
+        this.activeFilters.some((filter) => {
+          return siteCategory.includes(filter);
+        });
       return matchesSearch && matchesFilters;
-    });
+    })];
   }
   
   
@@ -435,8 +431,8 @@ export class AppHaxUseCaseFilter extends LitElement {
     store.searchTerm = "";
     this.activeFilters = [];
     // Show all templates and all sites
-    this.filteredItems = this.items.filter(item => item.dataType === "recipe");
-    this.filteredSites = this.returningSites;
+    this.filteredItems = [...this.items.filter(item => item.dataType === "recipe")];
+    this.filteredSites = [...this.returningSites];
 
     // Clear UI elements
     this.shadowRoot.querySelector("#searchField").value = "";
@@ -517,7 +513,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         return response.json();
       })
       .then(sitesData => {
-        const siteItems = Array.isArray(sitesData.items) ? sitesData.items.map(item => {
+        const siteItems = Array.isArray(sitesData.data.items) ? sitesData.data.items.map(item => {
           let categorySource = item.metadata.site.category;
           let tags = [];
           if (Array.isArray(categorySource)) {
@@ -527,15 +523,14 @@ export class AppHaxUseCaseFilter extends LitElement {
           }
           if (tags.length === 0) tags = ['Empty'];
           tags.forEach(tag => this.allFilters.add(tag)); // Add to global Set
-  
           return {
             dataType: 'site',
             useCaseTag: tags,
-            originalData: item
+            originalData: item,
+            ...item // this spreads every prop into this area that way it can be filtered correctly
           };
         }) : [];
-  
-        this.returningSites = siteItems;
+        this.returningSites = [...siteItems];
         this.filters = Array.from(this.allFilters).sort(); // Set AFTER all items
         this.filteredSites = [...siteItems];
   
