@@ -37,6 +37,12 @@ const HAXCMSTheme = function (SuperClass) {
         // is selected
         autoScroll: false,
         scrollTarget: globalThis,
+        scrollSettings: {
+          behavior: "instant",
+          block: "start",
+          inline: "nearest",
+        },
+        locationStartViewTransition: true,
       };
       this.__disposer = this.__disposer ? this.__disposer : [];
       this.HAXCMSThemeWiring = new HAXCMSThemeWiring(this);

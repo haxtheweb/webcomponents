@@ -1,42 +1,49 @@
-# &lt;example-hax-element&gt;
+# example-hax-element
+DDD + Lit web component based on OpenWC toolchain. This is intended to provide the following:
+- Look good via DDD, HAX design system
+- Simple, easy to read code via Lit
+- Great workflow via OpenWC tooling + Vercel for sharing demos
+- Simplify contribution to the HAX ecosystem
+- Publish and distribute via npmjs.com
 
-Hax
-> Provide an example to pick apart of a working HAX element
+## Install dependencies
+- `npm install` - installs dependencies so you can work
 
-## Usage
-To use this web component in your project you can utilize one of the following styles of syntax.
+## Commands
+- `npm start` - runs your web component for development, reloading on file changes
+- `npm run build` - builds your web component and outputs it in your `dist` directory for placement on web servers in a compiled form. Vercel automatically does this on commit to github.
+- `npm run release` - this will build your code, update the version, and publish it to npm for others to use
 
-```js
-/* In an existing JS module / web component */
-import '@haxtheweb/example-hax-element/example-hax-element.js';
+## Working with your web component
+- edit `./example-hax-element.js`
+- edit your 'demo' by modifying `./index.html`
+- add dependencies using `npm install --save @whatever/repo` or editing `./package.json` directly
+- if you must reference additional non-JS files, ensure you use the `new URL('./my-file.jpg', import.meta.url).href` syntax so that it builds correctly
+- if you add additional `.js` files / web components then place them under `/lib/`
+- to improve HAX wiring edit file in `/lib/example-hax-element.haxProperties.json`
+- for i18n / internationalization efforts, see associated language `.json` files in `/locales/` as well as `/lib/` for haxProperties related translation examples.
 
-/* CDN */
-<script type="module" src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/example-hax-element/example-hax-element.js"></script>
-```
+## Recommended setup
+- Load VS code in 1 window to project root
+- Browser open
+- Right click -> Inspect and open the Console to see error output
 
-## Develop / Demo
-Run `npm start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
-```bash
-$ npm start
-```
+## Recommended Integrated Development Environment (IDE)
+- [VSCode](https://code.visualstudio.com/Download)
 
+### Plugins
 
-## Contributing
+Name: lit-html
+Description: Syntax highlighting and IntelliSense for html inside of JavaScript and TypeScript tagged template strings
+Publisher: Matt Bierner
+VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=bierner.lit-html
 
-1. Fork it! `git clone git@github.com/haxtheweb/webcomponents.git`
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+Name: lit-plugin
+Description: Syntax highlighting, type checking and code completion for lit-html
+Publisher: Rune Mehlsen
+VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=runem.lit-plugin
 
-## Code style
+# Credits
+A brighter future dreamed and developed by the Penn State [HAXTheWeb](https://hax.psu.edu/) initative.
 
-Hax  use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
-
-[prettier]: https://github.com/prettier/prettier/
-[prettier-ed]: https://github.com/prettier/prettier/#editor-integration
-[polyserve]: https://github.com/Polymer/polyserve
-[web-component-tester]: https://github.com/Polymer/web-component-tester
-
-## License
-[Apache-2.0 License](http://opensource.org/licenses/Apache-2.0)
+Never. Stop. innovating.

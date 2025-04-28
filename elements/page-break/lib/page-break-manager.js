@@ -205,10 +205,16 @@ export class PageBreakManagerEl extends HTMLElement {
             const newH = globalThis.document.createElement(`h${tagNumber}`);
             newH.setAttribute("data-original-level", el.tagName);
             for (var i = 0, l = el.attributes.length; i < l; ++i) {
-              newH.setAttribute(
-                el.attributes.item(i).nodeName,
-                el.attributes.item(i).nodeValue,
-              );
+              // can't assume attributes in the HTML are all valid
+              try {
+                newH.setAttribute(
+                  el.attributes.item(i).nodeName,
+                  el.attributes.item(i).nodeValue,
+                );  
+              }
+              catch (e) {
+                console.warn(e);
+              }
             }
             newH.innerHTML = el.innerHTML;
             el.parentNode.replaceChild(newH, el);

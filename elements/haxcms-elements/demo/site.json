@@ -32,8 +32,8 @@
       "tags": ""
     },
     "theme": {
-      "element": "polaris-flex-theme",
-      "path": "@haxtheweb/polaris-theme/lib/polaris-invent-theme.js",
+      "element": "journey-theme",
+      "path": "@haxtheweb/journey-theme/journey-theme.js",
       "name": "Polaris - Invent",
       "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg",
       "variables": {
@@ -2111,7 +2111,7 @@
       "order": 0,
       "parent": "item-c8edb5fb-6fa9-4d47-b07f-e030d26c2a9f",
       "title": "Effective Educational Video",
-      "description": "      \u00a0Rationale for Getting It Right  Multiple studies have shown that video can be a highly effec\u00adtive educational tool. But if videos are not well designed or developed, students won",
+      "description": "Rationale for Getting It Right  Multiple studies have shown that video can be a highly effective educational tool. But if videos are not well designed or developed, students won",
       "metadata": {
         "created": "1704305842",
         "updated": 1736889446,

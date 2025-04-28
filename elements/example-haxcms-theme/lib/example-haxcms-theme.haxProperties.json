@@ -1,0 +1,51 @@
+{
+    "api": "1",
+    "canScale": true,
+    "canEditSource": true,
+    "type": "element",
+    "designSystem": {
+        "accent": true,
+        "primary": true,
+        "card": true,
+        "text": true,
+        "designTreatment": false
+    },
+    "gizmo": {
+        "title": "example-haxcms-theme",
+        "description": "",
+        "icon": "icons:android",
+        "color": "purple",
+        "tags": [
+            "Other"
+        ],
+        "handles": [],
+        "meta": {
+            "author": "haxtheweb"
+        }
+    },
+    "settings": {
+        "configure": [
+            {
+                "property": "title",
+                "title": "Title",
+                "description": "",
+                "inputMethod": "textfield",
+                "icon": "editor:title",
+                "required": true
+            }
+        ]
+    },
+    "saveOptions": {
+        "wipeSlot": false,
+        "unsetAttributes": []
+    },
+    "demoSchema": [
+        {
+            "tag": "example-haxcms-theme",
+            "properties": {
+              "title": "Sample property title"
+            },
+            "content": ""
+        }
+    ]
+}

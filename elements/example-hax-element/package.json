@@ -1,63 +1,61 @@
 {
-  "name": "@haxtheweb/example-hax-element",
-  "wcfactory": {
-    "className": "ExampleHaxElement",
-    "customElementClass": "LitElement",
-    "elementName": "example-hax-element",
-    "generator-wcfactory-version": "0.5.0",
-    "useHAX": false,
-    "useSass": false,
-    "files": {},
-    "sharedStyles": []
-  },
-  "version": "10.0.2",
-  "description": "Provide an example to pick apart of a working HAX element",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/haxtheweb/webcomponents.git"
-  },
-  "type": "module",
-  "main": "example-hax-element.js",
-  "module": "example-hax-element.js",
-  "scripts": {
-    "start": "yarn run dev",
-    "build": "gulp --gulpfile=gulpfile.cjs && prettier --ignore-path ../../.prettierignore --write \"**/*.{js,json}\" && cem analyze --litelement --exclude \"(public|*.stories.js)\" --globs \"{*,lib/**}.js\"",
-    "dev": "concurrently --kill-others \"yarn run watch\" \"yarn run serve\"",
-    "watch": "gulp dev --gulpfile=gulpfile.cjs",
-    "serve": "web-dev-server -c ../../web-dev-server.config.mjs",
-    "lighthouse": "gulp lighthouse --gulpfile=gulpfile.cjs",
-    "test:watch": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium --watch",
-    "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
-  },
-  "author": {
-    "name": "haxtheweb",
-    "url": "https://hax.psu.edu/"
-  },
-  "license": "Apache-2.0",
-  "dependencies": {
-    "lit": "^3.2.1"
-  },
-  "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.10.4",
-    "@haxtheweb/deduping-fix": "^10.0.0",
-    "@haxtheweb/storybook-utilities": "^10.0.2",
-    "@open-wc/testing": "4.0.0",
-    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
-    "@polymer/iron-demo-helpers": "3.1.0",
-    "@web/dev-server": "0.4.6",
-    "@webcomponents/webcomponentsjs": "^2.8.0",
-    "concurrently": "9.1.2",
-    "wct-browser-legacy": "1.0.2"
-  },
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
-  "customElements": "custom-elements.json",
-  "keywords": [
-    "webcomponents",
-    "html",
-    "example"
-  ],
-  "gitHead": "73a678e1d035b003097fd50b7b23c0d9c30f9b26"
-}
+    "name": "@haxtheweb/example-hax-element",
+    "version": "0.0.0",
+    "description": "Webcomponent example-hax-element following hax / open-wc recommendations",
+    "license": "Apache-2.0",
+    "author": {
+      "name": "haxtheweb"
+    },
+    "keywords": [
+      "webcomponents",
+      "lit",
+      "haxtheweb"
+    ],
+    "repository": {
+      "type": "git",
+      "url": ""
+    },
+    "type": "module",
+    "main": "example-hax-element.js",
+    "module": "example-hax-element.js",
+    "scripts": {
+      "start": "web-dev-server",
+      "build": "rimraf public && rollup -c rollup.config.js && npm run analyze",
+      "analyze": "cem analyze --litelement --exclude public",
+      "dddaudit": "hax audit",
+      "release": "npm run build && commit-and-tag-version && git push --follow-tags origin main && npm publish",
+      "test": "web-test-runner test/**/*.test.js --coverage --node-resolve",
+      "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
+    },
+    "dependencies": {
+      "lit": "^3.2.1",
+      "@haxtheweb/d-d-d": "^10.0.2",
+      "@haxtheweb/i18n-manager": "^10.0.2"
+    },
+    "devDependencies": {
+      "@babel/preset-env": "^7.16.4",
+      "@custom-elements-manifest/analyzer": "^0.10.3",
+      "@open-wc/building-rollup": "^3.0.2",
+      "@rollup/plugin-babel": "^6.0.4",
+      "@rollup/plugin-node-resolve": "^15.2.3",
+      "@rollup/plugin-terser": "^0.4.4",
+      "@open-wc/testing": "^4.0.0",
+      "@web/dev-server": "^0.4.6",
+      "@web/test-runner": "^0.19.0",
+      "@web/rollup-plugin-html": "^2.3.0",
+      "@web/rollup-plugin-import-meta-assets": "^2.2.1",
+      "babel-plugin-template-html-minifier": "^4.1.0",
+      "babel-plugin-transform-dynamic-import": "^2.1.0",
+      "rollup-plugin-esbuild": "^6.1.1",
+      "rimraf": "^5.0.7",
+      "commit-and-tag-version": "^12.4.1"
+    },
+    "private": false,
+    "publishConfig": {
+      "access": "public"
+    },
+    "hax": {
+      "cli": true
+    },
+    "customElements": "custom-elements.json"
+  }

@@ -1,53 +1,75 @@
 /**
- * Copyright 2024 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * Copyright 2025 haxtheweb
+ * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+
 /**
  * `example-hax-element`
+ * 
+ * @demo index.html
  * @element example-hax-element
- * `Provide an example to pick apart of a working HAX element`
- * @demo demo/index.html
  */
-export class ExampleHaxElement extends LitElement {
-  // convention our team enjoys
+export class ExampleHaxElement extends DDDSuper(I18NMixin(LitElement)) {
+
   static get tag() {
     return "example-hax-element";
   }
 
   constructor() {
     super();
-    this.title = null;
-    this.shiny = false;
+    this.title = "";
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      title: "Title",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("./locales/example-hax-element.ar.json", import.meta.url).href +
+        "/../",
+      locales: ["ar", "es", "hi", "zh"],
+    });
   }
 
+  // Lit reactive properties
   static get properties() {
     return {
-      title: {
-        type: String,
-      },
-      shiny: {
-        type: Boolean,
-        reflect: true,
-      },
+      ...super.properties,
+      title: { type: String },
     };
   }
 
+  // Lit scoped styles
   static get styles() {
-    return [
-      css`
-        :host {
-          display: block;
-        }
-        :host([shiny]) h2 {
-          background-color: var(--ddd-theme-accent);
-        }
-      `,
-    ];
+    return [super.styles,
+    css`
+      :host {
+        display: block;
+        color: var(--ddd-theme-primary);
+        background-color: var(--ddd-theme-accent);
+        font-family: var(--ddd-font-navigation);
+      }
+      .wrapper {
+        margin: var(--ddd-spacing-2);
+        padding: var(--ddd-spacing-4);
+      }
+      h3 span {
+        font-size: var(--example-hax-element-label-font-size, var(--ddd-font-size-s));
+      }
+    `];
   }
 
+  // Lit render the HTML
   render() {
-    return html`<h2>${this.title}</h2>`;
+    return html`
+<div class="wrapper">
+  <h3><span>${this.t.title}:</span> ${this.title}</h3>
+  <slot></slot>
+</div>`;
   }
 
   /**
@@ -58,4 +80,5 @@ export class ExampleHaxElement extends LitElement {
       .href;
   }
 }
+
 globalThis.customElements.define(ExampleHaxElement.tag, ExampleHaxElement);

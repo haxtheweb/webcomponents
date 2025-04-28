@@ -39,11 +39,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitEl
           this.HAXCMSThemeSettings.scrollTarget.scrollIntoView();
         } else {
           setTimeout(() => {
-            this.HAXCMSThemeSettings.scrollTarget.scrollIntoView({
-              behavior: "instant",
-              block: "start",
-              inline: "nearest",
-            });
+            this.HAXCMSThemeSettings.scrollTarget.scrollIntoView(this.HAXCMSThemeSettings.scrollSettings);
           }, 0);
         }
       }
@@ -109,11 +105,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitEl
     if (this.isSafari) {
       target.scrollIntoView();
     } else {
-      target.scrollIntoView({
-        behavior: "instant",
-        block: "start",
-        inline: "nearest",
-      });
+      target.scrollIntoView(this.HAXCMSThemeSettings.scrollSettings);
     }
     // alter URL state
     let headingLink =
@@ -239,11 +231,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitEl
             if (this.isSafari) {
               target.scrollIntoView();
             } else {
-              target.scrollIntoView({
-                behavior: "instant",
-                block: "start",
-                inline: "nearest",
-              });
+              target.scrollIntoView(this.HAXCMSThemeSettings.scrollSettings);
             }
           }
         }
@@ -272,7 +260,16 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitEl
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "_location") {
-        this._locationChanged(this[propName], oldValue);
+        if (this.HAXCMSThemeSettings.locationStartViewTransition && 
+          globalThis.document && 
+          globalThis.document.startViewTransition) {
+          globalThis.document.startViewTransition(() => {
+            this._locationChanged(this[propName], oldValue);
+          });
+        }
+        else {
+          this._locationChanged(this[propName], oldValue);
+        }
         setTimeout(() => {
           if (this._location && this._location.hash && this.HAXCMSThemeSettings.autoScroll) {
             let target = this.querySelector(this._location.hash);
@@ -280,11 +277,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitEl
               if (this.isSafari) {
                 target.scrollIntoView();
               } else {
-                target.scrollIntoView({
-                  behavior: "instant",
-                  block: "start",
-                  inline: "nearest",
-                });
+                target.scrollIntoView(this.HAXCMSThemeSettings.scrollSettings);
               }
             }
           }

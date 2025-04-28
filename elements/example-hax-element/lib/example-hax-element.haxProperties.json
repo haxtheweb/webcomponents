@@ -1,50 +1,51 @@
 {
-  "designSystem": {
-    "primary": true,
-    "accent": true
-  },
-  "hideDefaultSettings": false,
-  "canEditSource": true,
-  "gizmo": {
-    "title": "Example element",
-    "description": "Example Title text element",
-    "icon": "icons:android",
-    "color": "green",
-    "tags": ["Other", "example"],
-    "handles": [],
-    "meta": {
-      "author": "HAXTheWeb core team"
-    }
-  },
-  "settings": {
-    "configure": [
-      {
-        "property": "title",
-        "title": "Title",
-        "description": "Simple heading title to present",
-        "inputMethod": "textfield"
-      },
-      {
-        "property": "shiny",
-        "title": "Shiny",
-        "description": "Is this shiny or plain",
-        "inputMethod": "boolean"
-      }
-    ],
-    "advanced": [],
-    "developer": []
-  },
-  "saveOptions": {
-    "unsetAttributes": []
-  },
-  "demoSchema": [
-    {
-      "tag": "example-hax-element",
-      "properties": {
-        "title": "This is my title",
-        "shiny": true
-      },
-      "content": ""
-    }
-  ]
+    "api": "1",
+    "canScale": true,
+    "canEditSource": true,
+    "type": "element",
+    "designSystem": {
+        "accent": true,
+        "primary": true,
+        "card": true,
+        "text": true,
+        "designTreatment": false
+    },
+    "gizmo": {
+        "title": "example-hax-element",
+        "description": "",
+        "icon": "icons:android",
+        "color": "purple",
+        "tags": [
+            "Other"
+        ],
+        "handles": [],
+        "meta": {
+            "author": "haxtheweb"
+        }
+    },
+    "settings": {
+        "configure": [
+            {
+                "property": "title",
+                "title": "Title",
+                "description": "",
+                "inputMethod": "textfield",
+                "icon": "editor:title",
+                "required": true
+            }
+        ]
+    },
+    "saveOptions": {
+        "wipeSlot": false,
+        "unsetAttributes": []
+    },
+    "demoSchema": [
+        {
+            "tag": "example-hax-element",
+            "properties": {
+              "title": "Sample property title"
+            },
+            "content": ""
+        }
+    ]
 }

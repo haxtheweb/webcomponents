@@ -1,97 +1,32 @@
 /**
- * Copyright 2019 The Pennsylvania State University
- * @license Apache-2.0, see License.md for full text.
+ * Copyright 2025 haxtheweb
+ * @license Apache-2.0, see LICENSE for full text.
  */
-// html to handle template variable binding
-import { html } from "@polymer/polymer/polymer-element.js";
-// this is the PolymerElement base theme
-import { HAXCMSPolymerElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSPolymerElementTheme.js";
-// our store implements Mobx and ensures that we maintain state across the application
+import { html, css } from "lit";
+import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-// While not needing to directly implement mobx classes this can let you do more advanced
-// integrations with the store and listening for updates to properties elsewhere in the application
 import { autorun, toJS } from "mobx";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-title.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+
 /**
- * `example-haxcms-theme`
- * @element example-haxcms-theme
- * `A basic, well documented example theme for HAXcms`
+ * `ExampleHaxcmsTheme`
+ * `ExampleHaxcmsTheme based on HAXCMS theming ecosystem`
+ * `This theme is an example of extending an existing theme component`
  *
  * @microcopy - language worth noting:
- *  - HAXcms - A content management system that builds state of the art one page apps via GUI
+ *  - HAXcms - A headless content management system
+ *  - HAXCMSLitElementTheme - A class that provides correct baseline wiring to build a new theme that HAX can use
  *
-
- * @polymerElement
- * @demo demo/index.html
+ * @documentation - see HAX docs to learn more about theming
+ *  - Custom theme development - https://haxtheweb.org/documentation/developers/haxsite/custom-theme-development
+ *  - Theme Blocks - https://haxtheweb.org/documentation/developers/theme-blocks
+ *  - DDD - https://haxtheweb.org/documentation/ddd
+ *  - Data Store - https://haxtheweb.org/documentation/developers/haxsite/data-store
+ * @element example-haxcms-theme
  */
-class ExampleHaxcmsTheme extends HAXCMSPolymerElementTheme {
-  // render function
-  render() {
-    return html` <style>
-        :host {
-          display: block;
-
-          --example-haxcms-theme-color: #222222;
-        }
-
-        :host([hidden]) {
-          display: none;
-        }
-
-        :host([edit-mode]) #slot {
-          display: none;
-        }
-
-        :host #slot ::slotted(*) {
-          color: var(--example-haxcms-theme-color);
-        }
-      </style>
-      <site-top-menu noink indicator="arrow" arrow-size="8">
-        <site-title slot="prefix" class="spacing"></site-title>
-        <site-modal
-          slot="suffix"
-          icon="icons:search"
-          title="Search site"
-          button-label="Search"
-        >
-          <site-search></site-search>
-        </site-modal>
-      </site-top-menu>
-      <site-breadcrumb></site-breadcrumb>
-      <div id="contentcontainer">
-        <div id="slot">
-          <slot></slot>
-        </div>
-      </div>
-      <site-menu-button type="prev" position="top"></site-menu-button>
-      <site-menu-button type="next" position="top"></site-menu-button>`;
-  }
-
-  // properties available to the custom element for data binding
-  static get properties() {
-    return {
-      ...super.properties,
-
-      /**
-       * Edit mode which will be updated whenever HAXcms store
-       * has been updated. It's also reflected to attribute which
-       * is a Polymer convention to allow it to be leveraged in
-       * CSS styling.
-       */
-      editMode: {
-        name: "editMode",
-        type: Boolean,
-        reflectToAttribute: true,
-      },
-      /**
-       * Current array index of the active page that's been loaded.
-       */
-      activeManifestIndex: {
-        name: "activeManifestIndex",
-        type: Number,
-      },
-    };
-  }
-
+class ExampleHaxcmsTheme extends HAXCMSLitElementTheme {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -99,75 +34,158 @@ class ExampleHaxcmsTheme extends HAXCMSPolymerElementTheme {
   static get tag() {
     return "example-haxcms-theme";
   }
-  /**
-   * life cycle, constructor
-   */
+
+  // set defaults or tie into the store
   constructor() {
     super();
-    // dynamic import ensures that your theme will end users a better experience
-    // by reducing the time to first paint. JS Modules block the tree until all imports
-    // at the top of the document have been resolved. Dynamic imports ike these
-    // can be used to ensure that they still load but that the user starts to see
-    // content prior to all assets loading.
-    // prettier-ignore
-    import(
-      "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-top-menu.js"
-    );
-    // prettier-ignore
-    import(
-      "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js"
-    );
-    // prettier-ignore
-    import(
-      "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js"
-    );
-    // prettier-ignore
-    import(
-      "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"
-    );
-    // prettier-ignore
-    import(
-      "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js"
-    );
-    // create a blank array to store mobx reactions
-    // this allows us to nicely clean up state after the theme
-    // has been disconnected from the DOM
-    this.__disposer = [];
-  }
-  /**
-   * life cycle, element is afixed to the DOM
-   */
-  connectedCallback() {
-    super.connectedCallback();
-    // HAXcms's theme layer uses Mobx to ensure state is simple and maintained
-    // accurately across theme changes and the many site- elements.
-    // This example will maintain the active manifest index in this theme
-    // meaning the array position of the currently active page. This is
-    // useful when creating in theme pagination or reacting to specific
-    // indexes like 1st and last.
-    autorun((reaction) => {
-      this.activeManifestIndex = toJS(store.activeManifestIndex);
-      this.__disposer.push(reaction);
-    });
-    // editMode is the global state of the HAXeditor as reflected in HAXcms
-    autorun((reaction) => {
-      this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
+    this._items = [];
+    this.activeId = null;
+    autorun(() => {
+      this.activeId = toJS(store.activeId);
+      this._items = toJS(store.manifest.items);
     });
   }
-  /**
-   * life cycle, element is removed from the DOM
-   */
-  disconnectedCallback() {
-    // this ensures that we clean up the listeners on mobx after the theme
-    // has been disconnected. This happens when we have multiple theme tags or
-    // the user has defined that specific nodes should have different designs
-    // which then disconnects this theme and connects the new one.
-    for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
+
+  // properties to respond to the activeID and list of items
+  static get properties() {
+    return {
+      ...super.properties,
+      activeId: { type: String },
+      _items: { type: Array },
+    };
+  }
+
+  // allows for global styles to be set against the entire document
+  // you can also use this to cascade styles down to the theme
+  // but the more common reason is to influence the body or other things
+  // put into the global index.html context by the system itself
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      css`
+      :root {
+        --my-theme-low-tone: var(--ddd-theme-default-slateMaxLight);
+        --my-theme-high-tone: var(--ddd-theme-default-coalyGray);
+      }
+      body {
+        padding: var(--ddd-spacing-0);
+        margin: var(--ddd-spacing-0);
+        background-color: var(--my-theme-low-tone);
+      }
+      body.dark-mode {
+        background-color: var(--my-theme-high-tone);
+      }
+      `,
+    ];
+  }
+
+  //styles function
+  static get styles() {
+    return [
+      super.styles,
+      css`
+        :host {
+          display: block;
+          padding: var(--ddd-spacing-10) var(--ddd-spacing-20);
+          max-width: 960px;
+          min-width: 400px;
+          margin: var(--ddd-spacing-0) auto;
+          border: var(--ddd-border-lg);
+          border-width: var(--ddd-spacing-5);
+          border-radius: var(--ddd-radius-lg);
+          background-color: light-dark(var(--my-theme-low-tone), var(--my-theme-high-tone));
+          color: light-dark(var(--my-theme-high-tone), var(--my-theme-low-tone));
+        }
+        .wrapper {
+          border-radius: var(--ddd-radius-lg);
+        }
+
+        site-title {
+          font-size: var(--ddd-font-size-l);
+        }
+
+        header {
+          display: flex;
+        }
+        ul {
+          margin: var(--ddd-spacing-0);
+          padding: var(--ddd-spacing-0);
+        }
+        ul li {
+          display: inline-block;
+          margin: var(--ddd-spacing-0);
+          padding: var(--ddd-spacing-0);
+          list-style-type: none;
+          vertical-align: top;
+        }
+        ul li a {
+          display: block;
+        }
+
+        button {
+          height: var(--ddd-spacing-8);
+          width: var(--ddd-spacing-8);
+          margin: var(--ddd-spacing-0);
+          padding: 0;
+          font-size: var(--ddd-font-size-sm);
+          cursor: pointer;
+        }
+
+        .active button {
+          background-color: light-dark(var(--my-theme-low-tone), var(--my-theme-high-tone));
+          color: light-dark(var(--my-theme-high-tone), var(--my-theme-low-tone));
+          font-weight: bold;
+        }
+
+        site-menu-button {
+          display: inline-block;
+          vertical-align: top;
+        }
+      `,
+    ];
+  }
+
+  render() {
+    return html`
+    <div class="wrapper">
+    <header>
+      <ul>
+        <li>
+          <site-menu-button
+            type="prev"
+            position="top"
+          ></site-menu-button>
+        </li>
+    ${this._items.map((item, index) => {
+      return html`
+        <li class="${item.id === this.activeId ? "active" : ""}">
+          <a href="${item.slug}"><button title="${item.title}">${(index+1)}</button></a>
+        </li>
+      `;
     }
-    super.disconnectedCallback();
+    )}
+        <li>
+          <site-menu-button
+            type="next"
+            position="top"
+          ></site-menu-button>
+        </li>
+      </ul>
+    </header>
+    <main>
+      <site-active-title></site-active-title>
+      <article>
+        <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
+        <div id="contentcontainer"><div id="slot"><slot></slot></div></div>
+      </article>
+    </main>
+    <footer>
+      <slot name="footer"></slot>
+    </footer>
+  </div>
+    `;
   }
+
 }
-customElements.define(ExampleHaxcmsTheme.tag, ExampleHaxcmsTheme);
-export { ExampleHaxcmsTheme };
+
+globalThis.customElements.define(ExampleHaxcmsTheme.tag, ExampleHaxcmsTheme);

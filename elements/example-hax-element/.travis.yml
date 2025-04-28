@@ -13,6 +13,5 @@ before_install:
   - npm install -g web-component-tester
 install:
   - npm install
-before_script:
 script:
   - xvfb-run npm run test

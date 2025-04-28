@@ -16,7 +16,6 @@ LICENSE
 .dddignore
 .editorconfig
 .gitignore
-.gitkeep
 .nojekyll
 .npmignore
 .surgeignore
@@ -24,7 +23,6 @@ rollup.config.js
 
 # File extension
 # (Must start with *, as seen below)
-*.html
 *.md
 *.yml
 *.json
@@ -36,4 +34,3 @@ rollup.config.js
 *.svg
 *.jpg
 *.jpeg
-*.stories.js

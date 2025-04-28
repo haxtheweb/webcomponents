@@ -462,17 +462,20 @@ if ($MrTheCheat) {
   }
   // support highlighting lines now that we have line endings!
   highlightLines(start, end) {
-    Array.from(
-      this.shadowRoot.querySelector("code.hljs table tbody").children,
-    ).map((node, index) => {
-      if (index < start - 1 || index > end - 1) {
-        node.classList.remove("line-highlighted");
-        node.setAttribute("part", "line");
-      } else {
-        node.classList.add("line-highlighted");
-        node.setAttribute("part", "line line-highlighted");
-      }
-    });
+    // verify selector exists
+    if (this.shadowRoot.querySelector("code.hljs table tbody")) {
+      Array.from(
+        this.shadowRoot.querySelector("code.hljs table tbody").children,
+      ).map((node, index) => {
+        if (index < start - 1 || index > end - 1) {
+          node.classList.remove("line-highlighted");
+          node.setAttribute("part", "line");
+        } else {
+          node.classList.add("line-highlighted");
+          node.setAttribute("part", "line line-highlighted");
+        }
+      });
+    }
   }
   _themeChanged(theme) {
     if (theme) {

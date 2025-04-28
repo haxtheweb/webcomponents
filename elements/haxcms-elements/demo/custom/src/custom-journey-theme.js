@@ -41,7 +41,6 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
   // set defaults or tie into the store
   constructor() {
     super();
-    this.HAXCMSThemeSettings.autoScroll = false;
     this.siteTheme = "";
     this._items = [];
     this.location = null;
@@ -537,7 +536,8 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
 
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
-    this.HAXCMSThemeSettings.autoScroll = false;
+    console.log(this.HAXCMSThemeSettings);
+    this.HAXCMSThemeSettings.autoScroll = true;
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector(".lower-header-box");
     globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =

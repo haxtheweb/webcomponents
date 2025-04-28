@@ -44,12 +44,12 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
   // set defaults or tie into the store
   constructor() {
     super();
-    this.HAXCMSThemeSettings.autoScroll = false;
     this.siteTheme = "";
     this.dataPrimary = 2;
     this._items = [];
     this.location = null;
     this.activeItem = {};
+    this.ancestorItem = {};
     this.basePath = null;
     this.manifest = {};
     this.t = {
@@ -76,20 +76,11 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
       this.activeItem = toJS(store.activeItem);
     });
     autorun(() => {
+      this.ancestorItem = toJS(store.ancestorItem);
+    });
+    autorun(() => {
       let location = toJS(store.location);
-      if (globalThis.document && globalThis.document.startViewTransition) {
-        globalThis.document.startViewTransition(() => {
-          this.shadowRoot.querySelector('.lower-header-box').scrollIntoView();
-          this.location = location;
-          this.shadowRoot.querySelector('.lower-header-box').scrollIntoView();
-          setTimeout(() => {
-            this.shadowRoot.querySelector('.lower-header-box').scrollIntoView();
-          }, 10);
-        });
-      }
-      else {
-        this.location = location;
-      }
+      this.location = location;
     });
   }
 
@@ -103,7 +94,8 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     return {
       ...super.properties,
       activeItem: { type: Object },
-      location: { type: String },
+      ancestorItem: { type: Object },
+      location: { type: Object },
       basePath: { type: String },
       dataPrimary: { type: String, attribute: "data-primary", reflect: true },
       _items: { type: Array },
@@ -467,6 +459,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           padding: var(--ddd-spacing-15);
           max-width: 960px;
           margin: 0 auto;
+          min-height: 70vh;
         }
         article.home {
           display: none;
@@ -581,12 +574,16 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
 
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
-    this.HAXCMSThemeSettings.autoScroll = false;
+    this.HAXCMSThemeSettings.autoScroll = true;
     this.HAXCMSThemeSettings.scrollTarget =
       this.shadowRoot.querySelector(".lower-header-box");
+    this.HAXCMSThemeSettings.scrollSettings = {
+      behavior: "instant",
+      block: "start",
+      inline: "start",
+    };
     globalThis.AbsolutePositionStateManager.requestAvailability().scrollTarget =
       this.HAXCMSThemeSettings.scrollTarget;
-   // console.log(this.HAXCMSThemeSettings);
   }
 
   toggleSiteTheme(e) {
@@ -639,14 +636,14 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
         </a>
       </div>
     </header>
-    <div class="lower-header-box ${this.location && this.location.route.name === "home" ? "home" : "not-home"}"">
+    <div class="lower-header-box ${this.location && this.location.route.name === "home" ? "home" : "not-home"}">
       <simple-tooltip for="top" position="bottom">${this.t.home}</simple-tooltip>
       <a tabindex="-1" href="${this.basePath}" class="top article-link-icon"><simple-icon-button-lite id="top" label="${this.t.home}" icon="${this.manifest.metadata.icon ? this.manifest.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
       ${this.location && this.location.route.name !== "home" ? html`
           ${this._items.map((item, index) => {
           return html`
             <simple-tooltip for="${item.id}" position="bottom">${item.title}</simple-tooltip>
-            <a tabindex="-1" href="${item.slug}" class="article-link-icon top ${this.activeItem && (item.id === this.activeItem.id || item.id === this.activeItem.parent) ? "active" : ""}"><simple-icon-button-lite id="${item.id}" class="article" icon="${item.metadata.icon ? item.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
+            <a tabindex="-1" href="${item.slug}" class="article-link-icon top ${this.activeItem && (item.id === this.activeItem.id || (this.ancestorItem && item.id === this.ancestorItem.id)) ? "active" : ""}"><simple-icon-button-lite id="${item.id}" class="article" icon="${item.metadata.icon ? item.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
           `;
         })}` : ``}
     </div>
@@ -656,7 +653,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           ${this._items.map((item, index) => {
           return html`
             <article class="post ${index % 2 === 0 ? "even" : "odd"}">
-            <simple-tooltip for="v-${item.id}" position="${index % 2 === 0 ? "left" : "right"}"">${item.title}</simple-tooltip>
+            <simple-tooltip for="v-${item.id}" position="${index % 2 === 0 ? "left" : "right"}">${item.title}</simple-tooltip>
             <a tabindex="-1" href="${item.slug}" class="article-link-icon"><simple-icon-button-lite id="v-${item.id}" class="article" icon="${item.metadata.icon ? item.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
               <div class="article-wrap">
                 <h3>${item.title}</h3>
@@ -693,7 +690,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
         ` : ``}
         <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
         <div id="contentcontainer"><div id="slot">${this.location && this.location.route.name !== "home" ? html`<slot></slot>
-        <site-collection-list published limit="0" sort="order" parent="${this.activeItem ? this.activeItem.id : null}"></site-collection-list>` : ``}</div></div>
+        <site-collection-list published="true" limit="0" sort="order" parent="${this.activeItem ? this.activeItem.id : null}"></site-collection-list>` : ``}</div></div>
       </article>
     </main>
     <footer>
