@@ -28,8 +28,8 @@ export class AppHaxSearchResults extends SimpleColors {
     autorun(() => {
       const manifest = toJS(store.manifest);
       if (manifest && manifest.data.items) {
-        this.results = manifest.data.items;
-        this.displayItems = [...this.results];
+        this.searchItems = manifest.data.items;
+        this.displayItems = [...this.searchItems];
       }
     });
   }
