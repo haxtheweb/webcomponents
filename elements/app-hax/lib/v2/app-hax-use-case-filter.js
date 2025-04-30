@@ -102,16 +102,22 @@ export class AppHaxUseCaseFilter extends LitElement {
           box-sizing: border-box;
         }
         #returnToSection app-hax-search-results {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          display: flex;
           gap: 24px; /* or your preferred gap */
           width: 100%;
-          max-width: 100%;
+          max-width: 824px;
           min-height: 120px;
           box-sizing: border-box;
           justify-items: center;
           align-items: stretch;
+          flex-direction: row;
+          overflow-x: auto;
+          scroll-behavior: smooth;
         }
+        :host(:not([show-filter])) app-hax-search-results {
+          width: 100%;
+        }
+
         h4,
         .returnTo h4,
         .startNew h4 {
@@ -244,6 +250,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: var(--ddd-spacing-3);
           box-shadow: var(--ddd-boxShadow-sm);
         }  
@@ -346,7 +353,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           <div id="returnToSection" class="returnTo">
             <h4>Return to...</h4>
             <app-hax-search-results 
-              .displayItems=${this.filteredSites.slice(0, 3)}
+              .displayItems=${this.filteredSites}
               .searchTerm=${this.searchTerm}>
             </app-hax-search-results>
           </div>
