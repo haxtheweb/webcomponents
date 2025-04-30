@@ -1278,7 +1278,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             </div>
             <div class="startNew">
               <app-hax-scroll-button
-                label="New Journey"
+                label="Create Site"
                 targetId="startJourneySection"
               ></app-hax-scroll-button>
             </div>
