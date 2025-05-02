@@ -27,8 +27,8 @@ export class AppHaxSearchResults extends SimpleColors {
     });
     autorun(() => {
       const manifest = toJS(store.manifest);
-      if (manifest && manifest.items) {
-        this.searchItems = manifest.items;
+      if (manifest && manifest.data.items) {
+        this.searchItems = manifest.data.items;
         this.displayItems = [...this.searchItems];
       }
     });
@@ -68,6 +68,7 @@ export class AppHaxSearchResults extends SimpleColors {
       }
     });
   }
+  
 
   static get styles() {
     return [

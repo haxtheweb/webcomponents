@@ -80,11 +80,12 @@ export class AppHaxUseCaseFilter extends LitElement {
           margin-right: 24px;
           padding-top: 0;
           box-sizing: border-box;
+          position: sticky;
         }
         .rightSection {
-          flex: 1 1 0;
-          width: 100%;
+          flex: 1;
           min-width: 0;
+          width: 100%;
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
@@ -96,6 +97,27 @@ export class AppHaxUseCaseFilter extends LitElement {
           min-height: 330px;
           box-sizing: border-box;
         }
+        #returnToSection {
+          width: 100%;
+        }
+        #returnToSection app-hax-search-results {
+          display: flex;
+          gap: 24px;
+          max-width: 824px;
+          min-width: 824px;
+          min-height: 120px;
+          box-sizing: border-box;
+          justify-content: flex-start;
+          align-items: stretch;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          scroll-behavior: smooth;
+        }
+        :host(:not([show-filter])) app-hax-search-results {
+          width: 100%;
+        }
+
         h4,
         .returnTo h4,
         .startNew h4 {
@@ -127,7 +149,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           font-size: 15px;
           border-radius: var(--ddd-radius-md);
           border: var(--ddd-border-xs);
-          background: var(--ddd-accent-2, #f2f2f4);
+          background: var(--simple-colors-default-theme-accent-2, var(--accent-color));
           color: #222;
           transition: border 0.2s;
           box-sizing: border-box;
@@ -137,15 +159,15 @@ export class AppHaxUseCaseFilter extends LitElement {
         } 
         input[type="text"]:focus {
           border: var(--ddd-border-sm);
-          background: #fff;
+          background: var(--simple-colors-default-theme-accent-1, var(--accent-color));
           outline: none;
         }  
         .search-icon {
           position: absolute;
           left: 16px;
-          top: 50%;
-          transform: translateY(-50%);
-          font-size: 22px;
+          top: 65%;
+          transform: translateY(-60%);
+          font-size: 18px;
           color: var(--ddd-primary-8, #009cde);
           align-self: center;
         }  
@@ -156,10 +178,11 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: flex;
           flex-direction: column;
           gap: var(--ddd-spacing-4);
-          background: var(--ddd-accent-6, #fff);
+          background: var(--simple-colors-default-theme-accent-1, var(--accent-color));
           border-radius: var(--ddd-radius-lg);
           box-shadow: var(--ddd-boxShadow-lg);
           border: var(--ddd-border-xs);
+          border-color: var(--simple-colors-default-theme-accent-3, var(accent-color));
           padding: var(--ddd-spacing-6) var(--ddd-spacing-5) var(--ddd-spacing-5) var(--ddd-spacing-5);
           margin-top: 0;
           margin-left: 24px;
@@ -187,8 +210,8 @@ export class AppHaxUseCaseFilter extends LitElement {
           padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
           border-radius: var(--ddd-radius-rounded);
           border: none;
-          background: var(--ddd-accent-2, #f2f2f4);
-          color: var(--ddd-primary-2, #001e44);
+          background: var(--simple-colors-default-theme-accent-2, var(--accent-color));
+          color: var( --simple-colors-default-theme-blue-11, var(--accent-color));
           font-size: 1rem;
           font-family: var(--ddd-font-primary);
           font-weight: 600;
@@ -208,7 +231,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           background: var(--ddd-accent-3, #e4e5e7);
         }
         .filter-btn .icon {
-          font-size: 22px;
+          font-size: 18px;
           color: inherit;
           display: flex;
           align-items: center;
@@ -228,11 +251,14 @@ export class AppHaxUseCaseFilter extends LitElement {
           padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: var(--ddd-spacing-3);
           box-shadow: var(--ddd-boxShadow-sm);
         }  
         .reset-button:hover {
-          background: var(--ddd-primary-8, #009cde);
+          background-color: var(--simple-colors-default-theme-light-blue-7, var(--accent-color));
+          //background: var(--ddd-primary-8, var(--ddd-primary-1));
+          //background: #009cde;
         }
         .collapseFilter {
           display: none;
@@ -330,7 +356,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           <div id="returnToSection" class="returnTo">
             <h4>Return to...</h4>
             <app-hax-search-results 
-              .displayItems=${this.filteredSites.slice(0, 3)}
+              .displayItems=${this.filteredSites}
               .searchTerm=${this.searchTerm}>
             </app-hax-search-results>
           </div>
@@ -592,7 +618,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       .finally(() => {
         this.loading = false;
       });
-  }  
+  }   
 
   updateSiteResults() {
     this.loading = true;

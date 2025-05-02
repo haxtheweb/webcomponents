@@ -24,7 +24,6 @@ export class AppHAXWiredToggle extends SimpleTourFinder(WiredDarkmodeToggle) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "checked" && oldValue !== undefined) {
         store.darkMode = this[propName];
-        store.appEl.playSound("click");
       }
     });
   }

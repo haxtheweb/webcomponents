@@ -767,6 +767,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         #home {
           display: inline-flex;
         }
+        #wt {
+          border: solid 1px var(--simple-colors-default-theme-accent-12, var(--accent-color));
+        }
         simple-toolbar-button {
           min-width: 48px;
           margin: 0;
@@ -1266,19 +1269,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                   `
                 : ``}
             </app-hax-label>
-
-            <div class="returnTo">
-              <app-hax-scroll-button
-                label="Return to..."
-                targetId="returnToSection"
-              ></app-hax-scroll-button>
-            </div>
-            <div class="startNew">
-              <app-hax-scroll-button
-                label="Create Site"
-                targetId="startJourneySection"
-              ></app-hax-scroll-button>
-            </div>
           </div>
           
           <section class="content">${this.appBody(this.appMode)}</section>
