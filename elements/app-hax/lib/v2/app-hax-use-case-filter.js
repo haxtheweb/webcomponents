@@ -60,16 +60,12 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: block;
           max-width: 100%;
         }
-        :host, *, *::before, *::after {
-          box-sizing: border-box;
-        }
         .contentSection {
-          display: flex;
-          align-items: stretch;
-          width: 100%;
-          box-sizing: border-box;
-          max-width: 100vw;
-          overflow-x: hidden;
+          display: flex; 
+          align-items: flex-start; 
+          justify-content: flex-start; 
+          gap: 16px; 
+          width: 100%; 
         }
         .leftSection, .rightSection {
           display: flex;
@@ -80,7 +76,6 @@ export class AppHaxUseCaseFilter extends LitElement {
           width: 340px;
           min-width: 260px;
           max-width: 380px;
-          flex: 0 0 340px; 
           margin-left: 0;
           margin-right: 24px;
           padding-top: 0;
@@ -100,17 +95,6 @@ export class AppHaxUseCaseFilter extends LitElement {
           width: 100%;
           min-height: 330px;
           box-sizing: border-box;
-        }
-        #returnToSection app-hax-search-results {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 24px; /* or your preferred gap */
-          width: 100%;
-          max-width: 100%;
-          min-height: 120px;
-          box-sizing: border-box;
-          justify-items: center;
-          align-items: stretch;
         }
         h4,
         .returnTo h4,
@@ -389,6 +373,9 @@ export class AppHaxUseCaseFilter extends LitElement {
       </div>
     `;
   }
+
+ 
+
 
   iconForFilter(filter) {
     switch (filter.toLowerCase()) {
