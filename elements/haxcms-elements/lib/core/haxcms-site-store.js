@@ -19,6 +19,7 @@ class Store {
     this.internalRoutes = {
       search: {},
       views: {},
+      tags: {},
     };
     this.evaluatebadDevice();
     this.location = null;
@@ -50,7 +51,8 @@ class Store {
     this.t = {
       close: "Close",
       search: "Search",
-      views: "Content Views",
+      views: "Content views",
+      tags: "Content tags",
       pageNotFound: "Page not found",
     };
     this.activeId = null;
