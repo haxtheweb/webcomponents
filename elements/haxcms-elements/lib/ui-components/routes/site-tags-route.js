@@ -2,11 +2,14 @@
  * Copyright 2022 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
+import { html, css, nothing } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
 import { toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/collection-list/collection-list.js";
+import "@haxtheweb/collection-list/lib/collection-item.js";
+import "@haxtheweb/simple-fields/lib/simple-tag.js";
 
 /**
  * `site-tags-route`
@@ -32,7 +35,10 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
           margin: 0 4px 4px 0;
           cursor: pointer;
         }
-        
+
+        .all-tags {
+          display: block;
+        }        
       `,
     ];
   }
@@ -43,7 +49,8 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
     this.search = globalThis.location.search;
     this.t.tags = "Tags";
     this.filteredItems = [];
-    this.resultsTags = [];
+    this.resultsTags = {};
+    this.params = {};
   }
 
   _tagClick(e) {
@@ -58,15 +65,29 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
     this.search = globalThis.location.search;
   }
 
+  _resetClick(e) {
+    const rawParams = new URLSearchParams(this.search);
+    rawParams.delete("tag");
+    globalThis.history.replaceState(
+      {},
+      "",
+      decodeURIComponent(`./x/tags?${rawParams}`),
+    );
+    this.search = globalThis.location.search;
+  }
+
   render() {
     return html`
-    ${this.resultsTags.map((tag) => html`
+    ${this.params && this.params.tag ? html`<simple-tag class="all-tags" value="Remove '${this.params.tag}' filter" @click="${this._resetClick}"></simple-tag>` : nothing}
+    ${Object.keys(this.resultsTags).map((tag) => html`
+      ${this.params.tag === tag.trim() ? nothing : html`
       <simple-tag auto-accent-color
         value="${tag.trim()}"
         @click="${this._tagClick}"
-      ></simple-tag>
+      >${this.resultsTags[tag] > 1 ? html` (${this.resultsTags[tag]})` : nothing}</simple-tag>
+      `}
     `)}
-    
+    <collection-list>
     ${this.filteredItems.map((item) => html`
       <collection-item
         line1="${item.title}"
@@ -76,7 +97,8 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
         tags="${item.metadata.tags}"
         icon="${item.metadata.icon}"
         accent-color="${item.metadata.accentColor}"></collection-item>
-      `)}`;
+    `)}
+    </collection-list>`;
   }
 
   updated(changedProperties) {
@@ -123,7 +145,15 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
         resultsTags.push(...tags);
       }
     });
-    this.resultsTags = [...new Set(resultsTags)];
+    this.resultsTags = {...this.countDuplicates(resultsTags)};
+  }
+
+  countDuplicates(arr) {
+    const counts = {};
+    for (const element of arr) {
+      counts[element] = (counts[element] || 0) + 1;
+    }
+    return counts;
   }
 
   static get properties() {
@@ -139,7 +169,7 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
         type: Array,
       },
       resultsTags: {
-        type: Array,
+        type: Object,
       },
     };
   }
