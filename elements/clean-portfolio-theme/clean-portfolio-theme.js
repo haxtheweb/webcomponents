@@ -987,7 +987,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             ${this.activeTags && this.activeTags.length > 0
             ? this.activeTags.slice(1).map(
                 (item) => html`
-                  <li><a @click="${this.testEditMode}" href="x/views?tags=${item.trim()}">${item}</a></li>
+                  <li><a @click="${this.testEditMode}" href="x/tags?display=card&tag=${item.trim()}">${item}</a></li>
                 `
               )
             : ''}

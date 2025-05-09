@@ -46,7 +46,7 @@ class SiteActiveTags extends LitElement {
             (tag) =>
               html` <a
                 @click="${this.testEditMode}"
-                href="x/views?tags=${tag.trim()}"
+                href="x/tags?display=card&tag=${tag.trim()}"
               >
                 <simple-tag
                   ?auto-accent-color="${this.autoAccentColor}"
