@@ -1,0 +1,44 @@
+{
+  "type": "grid",
+  "canScale": false,
+  "designSystem": false,
+  "canEditSource": true,
+  "contentEditable": true,
+  "hideDefaultSettings": true,
+  "gizmo": {
+    "title": "Steps item",
+    "description": "Item that is part of a steps list",
+    "icon": "chrome-reader-mode",
+    "color": "light-blue",
+    "tags": ["Content", "list", "step"],
+    "handles": [
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "title",
+        "title": "Title",
+        "inputMethod": "textfield"
+      }
+    ],
+    "advanced": [
+    ],
+    "developer": [
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "ddd-steps-list",
+      "properties": {
+        "title": "Step "
+      },
+      "content":
+      "<p>Step 1 description</p>"
+    }
+  ]
+}

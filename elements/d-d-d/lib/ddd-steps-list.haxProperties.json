@@ -1,0 +1,40 @@
+{
+  "type": "grid",
+  "canScale": false,
+  "designSystem": {
+    "primary": true
+  },
+  "canEditSource": false,
+  "contentEditable": false,
+  "hideDefaultSettings": true,
+  "gizmo": {
+    "title": "Steps list",
+    "description": "Numerical steps to complete tasks",
+    "icon": "chrome-reader-mode",
+    "color": "light-blue",
+    "tags": ["Content", "list", "step"],
+    "handles": [
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team",
+      "owner": "The Pennsylvania State University"
+    }
+  },
+  "settings": {
+    "configure": [
+    ],
+    "advanced": [
+    ],
+    "developer": [
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "ddd-steps-list",
+      "properties": {
+      },
+      "content":
+        "<ddd-steps-list-item title=\"Step 1\">\n <p>Step 1 description</p>\n</ddd-steps-list-item>\n<ddd-steps-list-item title=\"Step 2\">\n <p>Step 2 description</p>\n</ddd-steps-list-item>\n<ddd-steps-list-item title=\"Step 3\">\n  <p>Step 3 description</p>\n</ddd-steps-list-item>"
+    }
+  ]
+}

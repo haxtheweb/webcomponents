@@ -16,6 +16,8 @@ import "@haxtheweb/self-check/self-check.js";
 import "@haxtheweb/media-image/media-image.js";
 import "@haxtheweb/accent-card/accent-card.js";
 import "@haxtheweb/d-d-d/lib/ddd-card.js";
+import "@haxtheweb/d-d-d/lib/ddd-steps-list.js";
+import "@haxtheweb/d-d-d/lib/ddd-steps-list-item.js";
 
 /**
  * `d-d-docs`
@@ -39,6 +41,7 @@ export const styleGuideTopics = {
   RichText: "RichText",
   InstructionalComponents: "InstructionalComponents",
   Cards: "Cards",
+  StepsList: "Steps List",
   Buttons: "Buttons",
   PageSections: "PageSections",
 };
@@ -338,6 +341,7 @@ class DDDocs extends DDD {
         <li>page-section</li>
         <li>simple-cta</li>
         <li>ddd-card</li>
+        <li>ddd-steps-list</li>
         <li>video-player</li>
         <li>citation-element</li>
         <li>license-element</li>
@@ -1770,6 +1774,23 @@ class DDDocs extends DDD {
               setting in north-central Pennsylvania.
             </p>
           </ddd-card>`;
+  }
+
+  renderStepsList() {
+    return html`
+    <h3>ddd-steps-list</h3>
+    <ddd-steps-list>
+      <ddd-steps-list-item title="Register for classes">
+        <p>This is the first awesome step so that you are ready for class!</p>
+      </ddd-steps-list-item>
+      <ddd-steps-list-item title="Pay for class">
+        <p></p>
+      </ddd-steps-list-item>
+      <ddd-steps-list-item title="Go to class">
+        <p>You really need to go to class in order to learn everything</p>
+      </ddd-steps-list-item>
+    </ddd-steps-list>
+    `;
   }
 
   renderButtons() {
