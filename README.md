@@ -62,18 +62,35 @@ git fetch upstream
 git pull
 ```
 
-## Windows
+## Windows Install
 
-[Git bash](https://git-scm.com/) should already be installed on your Windows machine and can be found by searching through your computer's applications or by right-clicking anywhere inside of the File Explorer.
-[Cygwin command line](https://www.cygwin.com/) is lightly tested, but slower than a true Bash environment.
+### Installing Windows Subsystem for Linux (WSL) 
+[Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) is required for this setup. To install WSL, run the following command in Command Prompt or PowerShell:
+```
+wsl --install
+```
 
-### Windows Install
+### Installing Yarn in WSL
+To install Yarn, open WSL and run:
+```
+curl -o- -L https://yarnpkg.com/install.sh | bash
+```
+To install Yarn globally, restart WSL and run:
+```
+npm install --global yarn
+```
+To verify installation, run: 
+```
+yarn --version
+```
 
-To properly configure git endlines for Windows, run this configuration
+### Clone and Set Up the webcomponents in WSL
+
+Run this configuration in WSL to properly configure git endlines for Windows:
 ```bash
 git config --global core.autocrlf true
 ```
-
+To clone webcomponents, run:
 ```bash
 git clone https://github.com/haxtheweb/webcomponents.git
 cd webcomponents
