@@ -84,7 +84,7 @@ To verify installation, run:
 yarn --version
 ```
 
-### Clone and Set Up the webcomponents in WSL
+### Clone and Set Up webcomponents in WSL
 
 Run this configuration in WSL to properly configure git endlines for Windows:
 ```bash
