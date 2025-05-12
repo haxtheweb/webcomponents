@@ -92,6 +92,10 @@ Run this configuration in WSL to properly configure git endlines for Windows:
 ```bash
 git config --global core.autocrlf true
 ```
+Install bzip2 (required to required to extract PhantomJS during installation):
+```
+sudo apt install bzip2
+```
 To clone webcomponents, run:
 ```bash
 git clone https://github.com/haxtheweb/webcomponents.git
