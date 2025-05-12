@@ -69,6 +69,8 @@ git pull
 ```
 wsl --install
 ```
+### Installing Node.js in WSL
+Refer to the official [Windows guide here](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl)
 
 ### Installing Yarn in WSL
 To install Yarn, open WSL and run:
