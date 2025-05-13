@@ -584,7 +584,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   
       if (this.isLoggedIn && !this.loggedInTime) {
         this.displayConsoleWarning();
-
         this.loggedInTime = tstamp;
         this._timeStamp = this.loggedInTime;
         var ll = UserScaffoldInstance.readMemory("recentLogins");
@@ -682,7 +681,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-
     this.displayConsoleLearnMore();
     this.__ready = true;
     store.appReady = true;
