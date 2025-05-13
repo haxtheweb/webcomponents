@@ -2344,6 +2344,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             "clean-two",
             "clean-portfolio-theme",
             "journey-theme",
+            "journey-sidebar-theme",
+            "journey-topbar-theme",
             "learn-two-theme",
             "polaris-theme",
             "polaris-invent-theme",
