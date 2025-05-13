@@ -117,7 +117,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
       :root {
         --haxcms-site-theme-low-tone: white;
         --haxcms-site-theme-high-tone: var(--ddd-theme-default-coalyGray);
-        --color: light-dark(var(--haxcms-site-theme-low-tone), var(--haxcms-site-theme-high-tone));
+        --color: light-dark(var(--haxcms-site-theme-high-tone), var(--haxcms-site-theme-low-tone));
         --bg: light-dark(var(--haxcms-site-theme-low-tone), var(--haxcms-site-theme-high-tone));
       }
       body {
@@ -145,14 +145,14 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
       body.dark-mode {
         background-color: var(--haxcms-site-theme-high-tone);
         color: var(--haxcms-site-theme-low-tone);
-        --color: light-dark(var(--haxcms-site-theme-low-tone), var(--haxcms-site-theme-high-tone));
+        --color: light-dark(var(--haxcms-site-theme-high-tone), var(--haxcms-site-theme-low-tone));
         --bg: light-dark(var(--haxcms-site-theme-low-tone), var(--haxcms-site-theme-high-tone));
       }
       @media (prefers-color-scheme: dark) {
         body {
           background-color: var(--haxcms-site-theme-high-tone);
           color: var(--haxcms-site-theme-low-tone);
-          --color: light-dark(var(--haxcms-site-theme-low-tone), var(--haxcms-site-theme-high-tone));
+          --color: light-dark(var(--haxcms-site-theme-high-tone), var(--haxcms-site-theme-low-tone));
           --bg: light-dark(var(--haxcms-site-theme-low-tone), var(--haxcms-site-theme-high-tone));
         }
       }
@@ -477,7 +477,18 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
         site-breadcrumb {
           display: flex;
           min-height: 20px;
+          --site-breadcrumb-color: var(--color);
+          --site-breadcrumb-last-color: var(--color);
+          --site-breadcrumb-separator-color: var(--haxcms-site-theme-color-2);
           --site-breadcrumb-margin: 0 0 var(--ddd-spacing-1) 2px;
+          --site-breadcrumb-separator-color: var(--haxcms-site-theme-color-1);        
+          --site-breadcrumb-color-hover: var(--haxcms-site-theme-color-1);
+          --site-breadcrumb-decoration-color-hover: var(--haxcms-site-theme-color-2);
+        }
+        :host([site-theme=""]) site-breadcrumb {
+          --site-breadcrumb-color-hover: var(--haxcms-site-theme-color-2);
+          --site-breadcrumb-decoration-color-hover: var(--haxcms-site-theme-color-1);
+          --site-breadcrumb-separator-color: var(--haxcms-site-theme-color-2);
         }
         site-active-title h1 {
           font-size: var(--ddd-font-size-4xl);

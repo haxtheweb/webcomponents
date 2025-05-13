@@ -65,12 +65,29 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
             var(--ddd-theme-default-link, #383f45)
           );
         }
+        ol.breadcrumb li a:hover,
+        ol.breadcrumb li a:focus,
+        ol.breadcrumb li a:active {
+          color: var(
+            --site-breadcrumb-color-hover,
+            var(--ddd-theme-default-link, #383f45)
+          );
+          text-decoration: underline;
+          text-decoration-color: var(--site-breadcrumb-decoration-color-hover, var(--ddd-theme-default-link, #383f45));
+          text-decoration-thickness: 2px;
+          text-underline-offset: 2px;
+          text-underline-position: under;
+        }
         ol.breadcrumb li:first-child a {
           padding-left: 0;
         }
         ol.breadcrumb li:last-child a {
           color: var(--site-breadcrumb-last-color, black);
           pointer-events: none;
+        }
+
+        ol.breadcrumb li::marker {
+          color: var(--site-breadcrumb-separator-color, light-dark(black, white));
         }
       `,
     ];
