@@ -581,7 +581,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       this.isLoggedIn = toJS(store.isLoggedIn);
       UserScaffoldInstance.writeMemory("isLoggedIn", this.isLoggedIn);
       const tstamp = Math.floor(Date.now() / 1000);
+  
       if (this.isLoggedIn && !this.loggedInTime) {
+        this.displayConsoleWarning();
         this.loggedInTime = tstamp;
         this._timeStamp = this.loggedInTime;
         var ll = UserScaffoldInstance.readMemory("recentLogins");
@@ -656,11 +658,30 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     });
   }
 
+  displayConsoleWarning(){
+    setTimeout(()=>{
+      const headStyle = 'color: white; font-weight: bold; font-size: 5em;font-family: arial; background-color: darkred; border: 5px solid white; border: 5px solid white;'
+      const bodyStyle = "font-size: 1.5em; font-family: arial; color: white; background-color: darkred; "
+      console.warn("%c⚠️STOP⚠️", headStyle);
+      console.warn("%cThis is a browser feature intended for developers. If someone told you to copy and paste something here to enable a hidden feature or \"hack\" someone's account, it is a scam and will give them access to your account.", bodyStyle);  
+    },3500)
+   
+  }
+
+  displayConsoleLearnMore(){
+    setTimeout(()=>{
+      const headStyle = 'color: white; font-weight: bold; font-size: 5em;font-family: arial; background-color: black; border: 5px solid white; border: 5px solid white; font-style: italic;'
+      const bodyStyle = 'color: white; background-color: black; font-size: 1.5em; font-family: arial;'
+      console.log("%c👩‍💻HAXcms🧑‍💻", headStyle);
+      console.log("%cThis site was created using HAXcms.\nLearn more about HAXcms at https://hax.psu.edu/.", bodyStyle);
+    },3000)
+  }
+
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-
+    this.displayConsoleLearnMore();
     this.__ready = true;
     store.appReady = true;
     globalThis.dispatchEvent(
