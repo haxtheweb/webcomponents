@@ -104,7 +104,7 @@ export const PrintBranchMixin = function (SuperClass) {
         link: base,
         magic: globalThis.__appCDN,
         base: base,
-        format: 'json',
+        format: "json",
       };
       const response = await MicroFrontendRegistry.call(
         "@haxcms/siteToHtml",
@@ -204,7 +204,7 @@ export const PrintBranchMixin = function (SuperClass) {
         link: base,
         magic: globalThis.__appCDN,
         base: base,
-        format: 'json',
+        format: "json",
       };
       const response = await MicroFrontendRegistry.call(
         "@haxcms/siteToHtml",

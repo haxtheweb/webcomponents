@@ -210,9 +210,8 @@ export class PageBreakManagerEl extends HTMLElement {
                 newH.setAttribute(
                   el.attributes.item(i).nodeName,
                   el.attributes.item(i).nodeValue,
-                );  
-              }
-              catch (e) {
+                );
+              } catch (e) {
                 console.warn(e);
               }
             }

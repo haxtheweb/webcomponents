@@ -38,7 +38,7 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
 
         .all-tags {
           display: block;
-        }        
+        }
       `,
     ];
   }
@@ -77,28 +77,44 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
   }
 
   render() {
-    return html`
-    ${this.params && this.params.tag ? html`<simple-tag class="all-tags" value="Remove '${this.params.tag}' filter" @click="${this._resetClick}"></simple-tag>` : nothing}
-    ${Object.keys(this.resultsTags).map((tag) => html`
-      ${this.params.tag === tag.trim() ? nothing : html`
-      <simple-tag auto-accent-color
-        value="${tag.trim()}"
-        @click="${this._tagClick}"
-      >${this.resultsTags[tag] > 1 ? html` (${this.resultsTags[tag]})` : nothing}</simple-tag>
-      `}
-    `)}
-    <collection-list>
-    ${this.filteredItems.map((item) => html`
-      <collection-item
-        line1="${item.title}"
-        line2="${item.description}"
-        url="${item.slug}"
-        image="${item.metadata.image}"
-        tags="${item.metadata.tags}"
-        icon="${item.metadata.icon}"
-        accent-color="${item.metadata.accentColor}"></collection-item>
-    `)}
-    </collection-list>`;
+    return html` ${this.params && this.params.tag
+        ? html`<simple-tag
+            class="all-tags"
+            value="Remove '${this.params.tag}' filter"
+            @click="${this._resetClick}"
+          ></simple-tag>`
+        : nothing}
+      ${Object.keys(this.resultsTags).map(
+        (tag) => html`
+          ${this.params.tag === tag.trim()
+            ? nothing
+            : html`
+                <simple-tag
+                  auto-accent-color
+                  value="${tag.trim()}"
+                  @click="${this._tagClick}"
+                  >${this.resultsTags[tag] > 1
+                    ? html` (${this.resultsTags[tag]})`
+                    : nothing}</simple-tag
+                >
+              `}
+        `,
+      )}
+      <collection-list>
+        ${this.filteredItems.map(
+          (item) => html`
+            <collection-item
+              line1="${item.title}"
+              line2="${item.description}"
+              url="${item.slug}"
+              image="${item.metadata.image}"
+              tags="${item.metadata.tags}"
+              icon="${item.metadata.icon}"
+              accent-color="${item.metadata.accentColor}"
+            ></collection-item>
+          `,
+        )}
+      </collection-list>`;
   }
 
   updated(changedProperties) {
@@ -122,14 +138,21 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
         }
       }
       if (propName === "params" && store.manifest.items) {
-        this.filteredItems = [...toJS(store.manifest.items).filter((item) => {
-          if (!this.params.tag) {
-            return true;
-          }
-          return item.metadata.tags && item.metadata.tags.split(',').some((tag) => {
-            return tag.toLowerCase().includes(this.params.tag.toLowerCase());
-          });
-        })];
+        this.filteredItems = [
+          ...toJS(store.manifest.items).filter((item) => {
+            if (!this.params.tag) {
+              return true;
+            }
+            return (
+              item.metadata.tags &&
+              item.metadata.tags.split(",").some((tag) => {
+                return tag
+                  .toLowerCase()
+                  .includes(this.params.tag.toLowerCase());
+              })
+            );
+          }),
+        ];
       }
       if (propName === "filteredItems") {
         this.updateResultsTags(this.filteredItems);
@@ -141,11 +164,11 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
     let resultsTags = [];
     await filteredItems.forEach(async (item) => {
       if (item.metadata.tags) {
-        const tags = item.metadata.tags.trim().split(',');
+        const tags = item.metadata.tags.trim().split(",");
         resultsTags.push(...tags);
       }
     });
-    this.resultsTags = {...this.countDuplicates(resultsTags)};
+    this.resultsTags = { ...this.countDuplicates(resultsTags) };
   }
 
   countDuplicates(arr) {

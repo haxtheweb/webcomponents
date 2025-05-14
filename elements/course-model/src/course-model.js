@@ -145,8 +145,9 @@ class CourseModel extends LitElement {
     if (globalThis.HaxStore) {
       globalThis.ModelViewerController = new AbortController();
       globalThis.addEventListener(
-        "hax-insert-content", (e) => {
-          if (e.detail.tag === 'model-viewer') {
+        "hax-insert-content",
+        (e) => {
+          if (e.detail.tag === "model-viewer") {
             // import when something gets inserted that matches the model
             // this is because the library is memory intense even for editing users
             import("@google/model-viewer/dist/model-viewer.js");
@@ -364,7 +365,7 @@ class CourseModel extends LitElement {
 
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
-      super.firstUpdated(changedProperties)
+      super.firstUpdated(changedProperties);
     }
     // this is a heavy library in memory so import if we actually are rendering
     import("@google/model-viewer/dist/model-viewer.js");

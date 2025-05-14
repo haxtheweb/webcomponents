@@ -542,34 +542,6 @@
             },
             {
               "kind": "field",
-              "name": "pageDescription",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "pageDescription",
-              "inheritedFrom": {
-                "name": "PolarisFlexTheme",
-                "module": "lib/polaris-flex-theme.js"
-              }
-            },
-            {
-              "kind": "field",
-              "name": "pageMedia",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "pageMedia",
-              "inheritedFrom": {
-                "name": "PolarisFlexTheme",
-                "module": "lib/polaris-flex-theme.js"
-              }
-            },
-            {
-              "kind": "field",
               "name": "__disposer",
               "inheritedFrom": {
                 "name": "PolarisFlexTheme",
@@ -675,30 +647,6 @@
               },
               "default": "\"\"",
               "fieldName": "imageAlt",
-              "inheritedFrom": {
-                "name": "PolarisFlexTheme",
-                "module": "lib/polaris-flex-theme.js"
-              }
-            },
-            {
-              "name": "pageDescription",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "pageDescription",
-              "inheritedFrom": {
-                "name": "PolarisFlexTheme",
-                "module": "lib/polaris-flex-theme.js"
-              }
-            },
-            {
-              "name": "pageMedia",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "pageMedia",
               "inheritedFrom": {
                 "name": "PolarisFlexTheme",
                 "module": "lib/polaris-flex-theme.js"
@@ -860,26 +808,6 @@
             },
             {
               "kind": "field",
-              "name": "pageDescription",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "pageDescription"
-            },
-            {
-              "kind": "field",
-              "name": "pageMedia",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "pageMedia"
-            },
-            {
-              "kind": "field",
               "name": "__disposer"
             },
             {
@@ -947,22 +875,6 @@
               },
               "default": "\"\"",
               "fieldName": "imageAlt"
-            },
-            {
-              "name": "pageDescription",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "pageDescription"
-            },
-            {
-              "name": "pageMedia",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "pageMedia"
             },
             {
               "name": "pageTimestamp",
@@ -1377,166 +1289,6 @@
           "declaration": {
             "name": "PolarisMark",
             "module": "lib/polaris-mark.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "lib/polaris-media-banner.js",
-      "declarations": [
-        {
-          "kind": "class",
-          "description": "",
-          "name": "PolarisMediaBanner",
-          "members": [
-            {
-              "kind": "field",
-              "name": "tag",
-              "static": true,
-              "readonly": true
-            },
-            {
-              "kind": "method",
-              "name": "setMediaType"
-            },
-            {
-              "kind": "method",
-              "name": "__videoHandler"
-            },
-            {
-              "kind": "field",
-              "name": "source",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "source"
-            },
-            {
-              "kind": "field",
-              "name": "fileExt",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "fileExt"
-            },
-            {
-              "kind": "field",
-              "name": "mediaType",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "attribute": "mediaType"
-            },
-            {
-              "kind": "field",
-              "name": "playing",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "attribute": "playing",
-              "reflects": true
-            },
-            {
-              "kind": "field",
-              "name": "canPlay",
-              "privacy": "public",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "attribute": "canPlay"
-            },
-            {
-              "kind": "field",
-              "name": "icon",
-              "privacy": "public",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"av:pause-circle-outline\"",
-              "attribute": "icon"
-            }
-          ],
-          "attributes": [
-            {
-              "name": "source",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "source"
-            },
-            {
-              "name": "fileExt",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "fileExt"
-            },
-            {
-              "name": "mediaType",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"\"",
-              "fieldName": "mediaType"
-            },
-            {
-              "name": "playing",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "true",
-              "fieldName": "playing"
-            },
-            {
-              "name": "canPlay",
-              "type": {
-                "text": "boolean"
-              },
-              "default": "false",
-              "fieldName": "canPlay"
-            },
-            {
-              "name": "icon",
-              "type": {
-                "text": "string"
-              },
-              "default": "\"av:pause-circle-outline\"",
-              "fieldName": "icon"
-            }
-          ],
-          "superclass": {
-            "name": "LitElement",
-            "package": "lit"
-          },
-          "customElement": true
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "PolarisMediaBanner",
-          "declaration": {
-            "name": "PolarisMediaBanner",
-            "module": "lib/polaris-media-banner.js"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "declaration": {
-            "name": "PolarisMediaBanner",
-            "module": "lib/polaris-media-banner.js"
           }
         }
       ]

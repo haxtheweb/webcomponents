@@ -2,7 +2,15 @@
  * Copyright 2025 btopro
  * @license Apache-2.0, see License.md for full text.
  */
-import { HAXCMSLitElementTheme, css, unsafeCSS, html, store, autorun, toJS } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import {
+  HAXCMSLitElementTheme,
+  css,
+  unsafeCSS,
+  html,
+  store,
+  autorun,
+  toJS,
+} from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/magic/site-collection-list.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
@@ -29,7 +37,7 @@ import { licenseList } from "@haxtheweb/license-element/license-element.js";
  *  - Data Store - https://haxtheweb.org/documentation/developers/haxsite/data-store
  * @element custom-journey-theme
  */
-class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
+class CustomJourneyTheme extends HAXCMSLitElementTheme {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -52,9 +60,8 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
       home: "Home",
     };
     try {
-      this.basePath = globalThis.document.querySelector('base').href;
-    }
-    catch (e) {
+      this.basePath = globalThis.document.querySelector("base").href;
+    } catch (e) {
       this.basePath = globalThis.location.origin;
     }
     autorun(() => {
@@ -74,15 +81,14 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
       let location = toJS(store.location);
       if (globalThis.document && globalThis.document.startViewTransition) {
         globalThis.document.startViewTransition(() => {
-          this.shadowRoot.querySelector('.lower-header-box').scrollIntoView();
+          this.shadowRoot.querySelector(".lower-header-box").scrollIntoView();
           this.location = location;
-          this.shadowRoot.querySelector('.lower-header-box').scrollIntoView();
+          this.shadowRoot.querySelector(".lower-header-box").scrollIntoView();
           setTimeout(() => {
-            this.shadowRoot.querySelector('.lower-header-box').scrollIntoView();
+            this.shadowRoot.querySelector(".lower-header-box").scrollIntoView();
           }, 10);
         });
-      }
-      else {
+      } else {
         this.location = location;
       }
     });
@@ -104,7 +110,7 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
       licenseName: { type: String },
       licenseLink: { type: String },
       licenseImage: { type: String },
-      siteTheme: { type: String, reflect: true, attribute: 'site-theme' },
+      siteTheme: { type: String, reflect: true, attribute: "site-theme" },
     };
   }
 
@@ -116,41 +122,41 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
-      :root {
-        --haxcms-site-theme-low-tone: white;
-        --haxcms-site-theme-high-tone: var(--ddd-theme-default-coalyGray);
-      }
-      body {
-        padding: var(--ddd-spacing-0);
-        margin: var(--ddd-spacing-0);
-        background-color: var(--haxcms-site-theme-low-tone);
-      }
-      custom-journey-theme::before {
-        height: 100vh;
-        content: "";
-        border-left: 4px dashed var(--haxcms-site-theme-color-2);
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin: 0 auto;
-        z-index: -1;
-      }
-      @media (max-width: 800px) {
-        custom-journey-theme::before {
-          display: none;
+        :root {
+          --haxcms-site-theme-low-tone: white;
+          --haxcms-site-theme-high-tone: var(--ddd-theme-default-coalyGray);
         }
-      }
-      body.dark-mode {
-        background-color: var(--haxcms-site-theme-high-tone);
-        color: var(--haxcms-site-theme-low-tone);
-      }
-      @media (prefers-color-scheme: dark) {
         body {
+          padding: var(--ddd-spacing-0);
+          margin: var(--ddd-spacing-0);
+          background-color: var(--haxcms-site-theme-low-tone);
+        }
+        custom-journey-theme::before {
+          height: 100vh;
+          content: "";
+          border-left: 4px dashed var(--haxcms-site-theme-color-2);
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          margin: 0 auto;
+          z-index: -1;
+        }
+        @media (max-width: 800px) {
+          custom-journey-theme::before {
+            display: none;
+          }
+        }
+        body.dark-mode {
           background-color: var(--haxcms-site-theme-high-tone);
           color: var(--haxcms-site-theme-low-tone);
         }
-      }
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: var(--haxcms-site-theme-high-tone);
+            color: var(--haxcms-site-theme-low-tone);
+          }
+        }
       `,
     ];
   }
@@ -167,27 +173,29 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
           padding: var(--ddd-spacing-0);
           margin: var(--ddd-spacing-0);
           --haxcms-site-theme-color-1: var(--ddd-primary-2);
-          --haxcms-site-theme-color-2: var(--ddd-primary-8);  
+          --haxcms-site-theme-color-2: var(--ddd-primary-8);
         }
 
         :host([site-theme="earth"]) {
-          --haxcms-site-theme-color-1: var(--ddd-theme-default-opportunityGreen);
-          --haxcms-site-theme-color-2: var(--ddd-theme-default-futureLime);          
+          --haxcms-site-theme-color-1: var(
+            --ddd-theme-default-opportunityGreen
+          );
+          --haxcms-site-theme-color-2: var(--ddd-theme-default-futureLime);
         }
 
         :host([site-theme="water"]) {
           --haxcms-site-theme-color-1: var(--ddd-theme-default-creekTeal);
-          --haxcms-site-theme-color-2: var(--ddd-theme-default-creekLight);          
+          --haxcms-site-theme-color-2: var(--ddd-theme-default-creekLight);
         }
 
         :host([site-theme="fire"]) {
           --haxcms-site-theme-color-1: var(--ddd-theme-default-original87Pink);
-          --haxcms-site-theme-color-2: var(--ddd-theme-default-discoveryCoral);          
+          --haxcms-site-theme-color-2: var(--ddd-theme-default-discoveryCoral);
         }
 
         :host([site-theme="sand"]) {
           --haxcms-site-theme-color-1: var(--ddd-primary-15);
-          --haxcms-site-theme-color-2: var(--ddd-primary-10);         
+          --haxcms-site-theme-color-2: var(--ddd-primary-10);
         }
 
         header {
@@ -201,7 +209,7 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
           overflow: hidden;
           padding: var(--ddd-spacing-10);
           z-index: 1;
-          transition: .3s all ease-in-out;
+          transition: 0.3s all ease-in-out;
         }
         .theme-picker {
           z-index: 1;
@@ -220,7 +228,7 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
         }
         .lower-header-box {
           background-color: var(--haxcms-site-theme-color-2);
-          transition: .3s all ease-in-out;
+          transition: 0.3s all ease-in-out;
           height: var(--ddd-spacing-12);
           padding: var(--ddd-spacing-6);
           display: flex;
@@ -251,17 +259,17 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
           border-radius: 50%;
           width: 15vw;
           height: 15vw;
-          border: 4px solid var(--haxcms-site-theme-color-2)
+          border: 4px solid var(--haxcms-site-theme-color-2);
         }
         .author-image:hover,
         .author-image:focus-within {
-          transition: .3s all ease-in-out;
+          transition: 0.3s all ease-in-out;
           transform: scale(1.1);
         }
         footer .author-image {
           width: 5vw;
           height: 5vw;
-          border: 4px solid var(--haxcms-site-theme-color-1)
+          border: 4px solid var(--haxcms-site-theme-color-1);
         }
         header h1 {
           font-size: var(--ddd-font-size-4xl);
@@ -284,14 +292,29 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
           border-radius: 50%;
         }
         simple-tooltip {
-          --simple-tooltip-font-size: var(--page-section-tooltip-font-size, var(--ddd-font-size-s, 16px));
-          --simple-tooltip-background: var(--page-section-tooltip-background, #000000);
+          --simple-tooltip-font-size: var(
+            --page-section-tooltip-font-size,
+            var(--ddd-font-size-s, 16px)
+          );
+          --simple-tooltip-background: var(
+            --page-section-tooltip-background,
+            #000000
+          );
           --simple-tooltip-opacity: var(--page-section-tooltip-opacity, 0.8);
-          --simple-tooltip-text-color: var(--page-section-tooltip-text-color, var(--haxcms-site-theme-low-tone));
+          --simple-tooltip-text-color: var(
+            --page-section-tooltip-text-color,
+            var(--haxcms-site-theme-low-tone)
+          );
           --simple-tooltip-delay-in: var(--page-section-tooltip-delay-in, 300);
           --simple-tooltip-delay-out: var(--page-section-tooltip-delay-out, 0);
-          --simple-tooltip-duration-in: var(--page-section-tooltip-duration-in, 300);
-          --simple-tooltip-duration-out: var(--page-section-tooltip-duration-out, 0);
+          --simple-tooltip-duration-in: var(
+            --page-section-tooltip-duration-in,
+            300
+          );
+          --simple-tooltip-duration-out: var(
+            --page-section-tooltip-duration-out,
+            0
+          );
         }
         scroll-button {
           --scroll-button-color: var(--haxcms-site-theme-color-2);
@@ -303,8 +326,10 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
           color: var(--haxcms-site-theme-color-1);
           margin: 0 var(--ddd-spacing-4);
         }
-        .article-link-icon.top:not(.active) simple-icon-button-lite::part(button):hover,
-        .article-link-icon.top:not(.active) simple-icon-button-lite::part(button):focus-within {
+        .article-link-icon.top:not(.active)
+          simple-icon-button-lite::part(button):hover,
+        .article-link-icon.top:not(.active)
+          simple-icon-button-lite::part(button):focus-within {
           transition: all 0.3s ease-in-out;
           transform: scale(1.05);
           background-color: white;
@@ -321,20 +346,20 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
         .article-link-icon.top:last-of-type::before {
           display: none;
         }
-        .article-link-icon.top  simple-icon-button-lite::part(button) {
+        .article-link-icon.top simple-icon-button-lite::part(button) {
           background-color: var(--haxcms-site-theme-color-2);
-          transition: .3s all ease-in-out;
+          transition: 0.3s all ease-in-out;
         }
         .article-link-icon.active simple-icon-button-lite.article {
           color: var(--haxcms-site-theme-low-tone);
         }
-        .article-link-icon.active  simple-icon-button-lite::part(button) {
+        .article-link-icon.active simple-icon-button-lite::part(button) {
           background-color: var(--ddd-primary-4);
         }
         a {
           display: block;
         }
-        
+
         simple-icon-button-lite.article {
           color: var(--haxcms-site-theme-color-1);
         }
@@ -343,12 +368,12 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
           background-color: var(--haxcms-site-theme-low-tone);
         }
         .even .article-link-icon {
-          margin-left: -20px;          
+          margin-left: -20px;
         }
         .odd .article-link-icon {
           margin-right: -28px;
         }
-        
+
         .even {
           margin-left: 50%;
         }
@@ -401,7 +426,7 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
         .child-page-link:focus-within img {
           border-radius: 50%;
           transform: scale(1.1);
-        }        
+        }
         .odd .article-wrap p {
           margin-right: var(--ddd-spacing-4);
           justify-content: right;
@@ -413,11 +438,17 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
         .article-wrap simple-cta {
           margin-top: var(--ddd-spacing-4);
           --component-background-color: var(--haxcms-site-theme-color-2);
-          --component-color: var(--lowContrast-override, var(--haxcms-site-theme-low-tone));
+          --component-color: var(
+            --lowContrast-override,
+            var(--haxcms-site-theme-low-tone)
+          );
         }
         .article-wrap simple-cta:hover,
         .article-wrap simple-cta:focus-visible {
-          --component-color: var(--lowContrast-override, var(--haxcms-site-theme-low-tone));
+          --component-color: var(
+            --lowContrast-override,
+            var(--haxcms-site-theme-low-tone)
+          );
           --component-background-color: var(--haxcms-site-theme-color-1);
         }
         main {
@@ -429,7 +460,7 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
           background-color: var(--haxcms-site-theme-color-2);
           color: var(--haxcms-site-theme-low-tone);
           min-height: var(--ddd-spacing-5);
-          transition: .3s all ease-in-out;
+          transition: 0.3s all ease-in-out;
         }
 
         main.not-home {
@@ -529,7 +560,7 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
             max-width: unset;
             font-size: var(--ddd-font-size-s);
           }
-        } 
+        }
       `,
     ];
   }
@@ -549,57 +580,95 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
     switch (this.siteTheme) {
       case "earth":
         this.siteTheme = "water";
-      break;
+        break;
       case "water":
         this.siteTheme = "fire";
-      break;
+        break;
       case "fire":
         this.siteTheme = "sand";
-      break;
+        break;
       case "sand":
         this.siteTheme = "";
-      break;
+        break;
       default:
-        this.siteTheme = "earth";        
-      break;
+        this.siteTheme = "earth";
+        break;
     }
   }
 
   render() {
     return html`
-    <header>
-      <simple-icon-button-lite icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
-      <div class="author">
-        <a href="${this.basePath}">${this.manifest.metadata.author.image ? html`
-          <img 
-            class="author-image"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            src="${this.manifest.metadata.author.image}"
-            alt="${this.manifest.metadata.author.name}"
-          />`: ``}
-          <h1>${this.manifest.title}</h1>
-          <h2>${this.manifest.description}</h2>
-        </a>
+      <header>
+        <simple-icon-button-lite
+          icon="image:style"
+          class="theme-picker"
+          @click="${this.toggleSiteTheme}"
+        ></simple-icon-button-lite>
+        <div class="author">
+          <a href="${this.basePath}"
+            >${this.manifest.metadata.author.image
+              ? html` <img
+                  class="author-image"
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                  src="${this.manifest.metadata.author.image}"
+                  alt="${this.manifest.metadata.author.name}"
+                />`
+              : ``}
+            <h1>${this.manifest.title}</h1>
+            <h2>${this.manifest.description}</h2>
+          </a>
+        </div>
+      </header>
+      <div class="lower-header-box">
+        <simple-tooltip for="top" position="bottom"
+          >${this.t.home}</simple-tooltip
+        >
+        <a tabindex="-1" href="${this.basePath}" class="top article-link-icon"
+          ><simple-icon-button-lite
+            id="top"
+            label="${this.t.home}"
+            icon="${this.manifest.metadata.icon
+              ? this.manifest.metadata.icon
+              : "av:album"}"
+          ></simple-icon-button-lite
+        ></a>
+        ${this.location && this.location.route.name !== "home"
+          ? html` ${this._items.map((item, index) => {
+              return html`
+                <simple-tooltip for="${item.id}" position="bottom"
+                  >${item.title}</simple-tooltip
+                >
+                <a
+                  tabindex="-1"
+                  href="${item.slug}"
+                  class="article-link-icon top ${this.activeItem &&
+                  (item.id === this.activeItem.id ||
+                    item.id === this.activeItem.parent)
+                    ? "active"
+                    : ""}"
+                  ><simple-icon-button-lite
+                    id="${item.id}"
+                    class="article"
+                    icon="${item.metadata.icon
+                      ? item.metadata.icon
+                      : "av:album"}"
+                  ></simple-icon-button-lite
+                ></a>
+              `;
+            })}`
+          : ``}
       </div>
-    </header>
-    <div class="lower-header-box">
-      <simple-tooltip for="top" position="bottom">${this.t.home}</simple-tooltip>
-      <a tabindex="-1" href="${this.basePath}" class="top article-link-icon"><simple-icon-button-lite id="top" label="${this.t.home}" icon="${this.manifest.metadata.icon ? this.manifest.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
-      ${this.location && this.location.route.name !== "home" ? html`
-          ${this._items.map((item, index) => {
-          return html`
-            <simple-tooltip for="${item.id}" position="bottom">${item.title}</simple-tooltip>
-            <a tabindex="-1" href="${item.slug}" class="article-link-icon top ${this.activeItem && (item.id === this.activeItem.id || item.id === this.activeItem.parent) ? "active" : ""}"><simple-icon-button-lite id="${item.id}" class="article" icon="${item.metadata.icon ? item.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
-          `;
-        })}` : ``}
-    </div>
-    <main class="main ${this.location && this.location.route.name === "home" ? "home" : "not-home"}"> 
-      <div class="articles">  
-        ${this.location && this.location.route.name === "home" ? html`
-          ${this._items.map((item, index) => {
-          return html`
+      <main
+        class="main ${this.location && this.location.route.name === "home"
+          ? "home"
+          : "not-home"}"
+      >
+        <div class="articles">
+          ${this.location && this.location.route.name === "home"
+            ? html` ${this._items.map((item, index) => {
+                return html`
             <article class="post ${index % 2 === 0 ? "even" : "odd"}">
             <simple-tooltip for="v-${item.id}" position="${index % 2 === 0 ? "left" : "right"}"">${item.title}</simple-tooltip>
             <a tabindex="-1" href="${item.slug}" class="article-link-icon"><simple-icon-button-lite id="v-${item.id}" class="article" icon="${item.metadata.icon ? item.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
@@ -608,85 +677,129 @@ class CustomJourneyTheme extends (HAXCMSLitElementTheme) {
                 <div>
                   <p>${item.description}</p>
                 </div>
-                ${this.getItemChildren(item.id).length > 0 ? html`
-                  <div class="child-pages-container">
-                    ${this.getItemChildren(item.id).map((child) => 
-                    html`
-                      <simple-tooltip for="v-${child.id}" position="bottom">${child.title}</simple-tooltip>
-                      <a id="v-${child.id}" href="${child.slug}" class="child-page-link">${child.metadata.image ? html`<img src="${child.metadata.image}" loading="lazy"
-                        decoding="async"
-                        fetchpriority="low" alt="${child.title}"/>` : html`<img 
-                          loading="lazy"
-                          decoding="async"
-                          fetchpriority="low"
-                          src="${this.manifest.metadata.author.image}"
-                          alt="${this.manifest.metadata.author.name}"
-                        />`}
-                      </a>
-                      `)}
-                  </div>` : ``}
+                ${
+                  this.getItemChildren(item.id).length > 0
+                    ? html` <div class="child-pages-container">
+                        ${this.getItemChildren(item.id).map(
+                          (child) => html`
+                            <simple-tooltip
+                              for="v-${child.id}"
+                              position="bottom"
+                              >${child.title}</simple-tooltip
+                            >
+                            <a
+                              id="v-${child.id}"
+                              href="${child.slug}"
+                              class="child-page-link"
+                              >${child.metadata.image
+                                ? html`<img
+                                    src="${child.metadata.image}"
+                                    loading="lazy"
+                                    decoding="async"
+                                    fetchpriority="low"
+                                    alt="${child.title}"
+                                  />`
+                                : html`<img
+                                    loading="lazy"
+                                    decoding="async"
+                                    fetchpriority="low"
+                                    src="${this.manifest.metadata.author.image}"
+                                    alt="${this.manifest.metadata.author.name}"
+                                  />`}
+                            </a>
+                          `,
+                        )}
+                      </div>`
+                    : ``
+                }
                 <simple-cta link="${item.slug}" label="${this.t.readMore}"></simple-cta>
               </div>
             </article>
           `;
-        })}` : ``}
-      </div>
-      <article part="transitioncontent" class="${this.location && this.location.route.name === "home" ? "home" : "not-home"}">
-        ${this.location && this.location.route.name !== "home" ? html`
-        <site-breadcrumb></site-breadcrumb>
-        <site-active-title></site-active-title>
-        ` : ``}
-        <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
-        <div id="contentcontainer"><div id="slot">${this.location && this.location.route.name !== "home" ? html`<slot></slot>
-        <site-collection-list published limit="0" sort="order" parent="${this.activeItem ? this.activeItem.id : null}"></site-collection-list>` : ``}</div></div>
-      </article>
-    </main>
-    <footer>
-      <div class="author">
-        <div class="spacing"><a href="${this.basePath}">${this.manifest.metadata.author.image ? html`
-          <img 
-            class="author-image"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            src="${this.manifest.metadata.author.image}"
-            alt="${this.manifest.metadata.author.name}"
-          />`: ``}
-          </a>
-          <h1>${this.manifest.title}</h1>
-          <h2>${this.manifest.description}</h2>
-          <div
-            class="license-body"
-            xmlns:cc="${this.licenseLink}"
-            xmlns:dc="http://purl.org/dc/elements/1.1/"
-          >
-          ${this.licenseImage
+              })}`
+            : ``}
+        </div>
+        <article
+          part="transitioncontent"
+          class="${this.location && this.location.route.name === "home"
+            ? "home"
+            : "not-home"}"
+        >
+          ${this.location && this.location.route.name !== "home"
             ? html`
-                <a
-                  class="big-license-link"
-                  target="_blank"
-                  href="${this.licenseLink}"
-                  rel="noopener noreferrer"
-                  >
-                  <img
+                <site-breadcrumb></site-breadcrumb>
+                <site-active-title></site-active-title>
+              `
+            : ``}
+          <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
+          <div id="contentcontainer">
+            <div id="slot">
+              ${this.location && this.location.route.name !== "home"
+                ? html`<slot></slot>
+                    <site-collection-list
+                      published
+                      limit="0"
+                      sort="order"
+                      parent="${this.activeItem ? this.activeItem.id : null}"
+                    ></site-collection-list>`
+                : ``}
+            </div>
+          </div>
+        </article>
+      </main>
+      <footer>
+        <div class="author">
+          <div class="spacing">
+            <a href="${this.basePath}"
+              >${this.manifest.metadata.author.image
+                ? html` <img
+                    class="author-image"
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low"
-                    alt="${this.licenseName} graphic"
-                    src="${this.licenseImage}"
-                  />
-                </a>
-              ` : ``}
+                    src="${this.manifest.metadata.author.image}"
+                    alt="${this.manifest.metadata.author.name}"
+                  />`
+                : ``}
+            </a>
+            <h1>${this.manifest.title}</h1>
+            <h2>${this.manifest.description}</h2>
+            <div
+              class="license-body"
+              xmlns:cc="${this.licenseLink}"
+              xmlns:dc="http://purl.org/dc/elements/1.1/"
+            >
+              ${this.licenseImage
+                ? html`
+                    <a
+                      class="big-license-link"
+                      target="_blank"
+                      href="${this.licenseLink}"
+                      rel="noopener noreferrer"
+                    >
+                      <img
+                        loading="lazy"
+                        decoding="async"
+                        fetchpriority="low"
+                        alt="${this.licenseName} graphic"
+                        src="${this.licenseImage}"
+                      />
+                    </a>
+                  `
+                : ``}
+            </div>
+            <simple-icon-button-lite
+              icon="image:style"
+              class="theme-picker"
+              @click="${this.toggleSiteTheme}"
+            ></simple-icon-button-lite>
+            <scroll-button></scroll-button>
           </div>
-          <simple-icon-button-lite icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
-          <scroll-button></scroll-button>
         </div>
-        </div>
-      <slot name="footer"></slot>
-    </footer>
+        <slot name="footer"></slot>
+      </footer>
     `;
   }
-
 }
 globalThis.customElements.define(CustomJourneyTheme.tag, CustomJourneyTheme);
 export { CustomJourneyTheme };

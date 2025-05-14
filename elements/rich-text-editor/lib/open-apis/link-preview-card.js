@@ -8,12 +8,11 @@ import "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 
 /**
  * `link-preview-card`
- * 
+ *
  * @demo index.html
  * @element link-preview-card
  */
 export class LinkPreviewCard extends DDDSuper(LitElement) {
-
   static get tag() {
     return "link-preview-card";
   }
@@ -38,103 +37,120 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
       image: { type: String },
       link: { type: String },
       href: { type: String },
-      loadingState: { type: Boolean, reflect: true, attribute: "loading-state"},
-      themeColor: { type: String, reflect: true, attribute: "theme-color"},
+      loadingState: {
+        type: Boolean,
+        reflect: true,
+        attribute: "loading-state",
+      },
+      themeColor: { type: String, reflect: true, attribute: "theme-color" },
     };
   }
 
   // Lit scoped styles
   static get styles() {
-    return [super.styles,
-    css`
-      :host {
-        display: block;
-        font-family: var(--ddd-font-navigation);
-      }
-      .wrapper {
-        margin: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-2);
-      }
-      .card {
-        border: var(--ddd-border-md);
-        padding: var(--ddd-spacing-2);
-        border-radius: var(--ddd-radius-xs);
-        transition: border-color 0.3s ease-in-out;
-      }
-      :host(:focus-within) .card,
-      :host(:hover) .card {
-        border-color: var(--theme-color, var(--ddd-theme-primary));
-      }
-      .card .title {
-        margin: var(--ddd-spacing-0);
-        font-size: var(--ddd-font-size-xs);
-        color: var(--ddd-theme-primary);
-      }
-      .card a {
-        font-size: var(--ddd-font-size-4xs);
-        color: var(--ddd-theme-primary);
-      }
-      .card p {
-        font-size: var(--ddd-font-size-4xs);
-        margin: var(--ddd-spacing-0);
-        padding: var(--ddd-spacing-2) var(--ddd-spacing-0);
-      }
-      .loader {
-        border: var(--ddd-spacing-4) solid var(--ddd-accent-1);
-        border-top: var(--ddd-spacing-4) solid var(--ddd-primary-1);
-        border-radius: 50%;
-        width: var(--ddd-spacing-6);
-        height: var(--ddd-spacing-6);
-        animation: spin 2s linear infinite;
-      }
-      @keyframes spin {
-        0% {transform: rotate(0deg); }
-        100% {transform: rotate(360deg); }
-      }
-      @media (max-width: 600px) {
+    return [
+      super.styles,
+      css`
         :host {
-          max-width: 100%;
-          padding: var(--ddd-spacing-3);
+          display: block;
+          font-family: var(--ddd-font-navigation);
         }
-      }
+        .wrapper {
+          margin: var(--ddd-spacing-2);
+          padding: var(--ddd-spacing-2);
+        }
+        .card {
+          border: var(--ddd-border-md);
+          padding: var(--ddd-spacing-2);
+          border-radius: var(--ddd-radius-xs);
+          transition: border-color 0.3s ease-in-out;
+        }
+        :host(:focus-within) .card,
+        :host(:hover) .card {
+          border-color: var(--theme-color, var(--ddd-theme-primary));
+        }
+        .card .title {
+          margin: var(--ddd-spacing-0);
+          font-size: var(--ddd-font-size-xs);
+          color: var(--ddd-theme-primary);
+        }
+        .card a {
+          font-size: var(--ddd-font-size-4xs);
+          color: var(--ddd-theme-primary);
+        }
+        .card p {
+          font-size: var(--ddd-font-size-4xs);
+          margin: var(--ddd-spacing-0);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-0);
+        }
+        .loader {
+          border: var(--ddd-spacing-4) solid var(--ddd-accent-1);
+          border-top: var(--ddd-spacing-4) solid var(--ddd-primary-1);
+          border-radius: 50%;
+          width: var(--ddd-spacing-6);
+          height: var(--ddd-spacing-6);
+          animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+        @media (max-width: 600px) {
+          :host {
+            max-width: 100%;
+            padding: var(--ddd-spacing-3);
+          }
+        }
 
-      .image {
-        display: inline-block;
-        background-color: var(--ddd-accent-1);
-      }
-      .image img {
-        height: auto;
-        width: var(--ddd-spacing-20);
-        margin: 0 auto;
-        display: block;
-      }
-      .details {
-        display: inline-block;
-        width: 78%;
-        vertical-align: top;
-      }
-    `];
+        .image {
+          display: inline-block;
+          background-color: var(--ddd-accent-1);
+        }
+        .image img {
+          height: auto;
+          width: var(--ddd-spacing-20);
+          margin: 0 auto;
+          display: block;
+        }
+        .details {
+          display: inline-block;
+          width: 78%;
+          vertical-align: top;
+        }
+      `,
+    ];
   }
 
   // Lit render the HTML
   render() {
     return html`
-    <div class="wrapper">
-      ${this.loadingState ? html`<div class="loader"></div>` : ""}
-      <div class="card" style="--theme-color:${this.themeColor}">
-        <div class="image">
-        ${this.image ? html`<img src="${this.image}" alt=""
-          loading="lazy" decoding="async" fetchpriority="low">` : ''}
-        </div>
-        <div class="details">
-          <a href="${this.link}" target="_blank" rel="noopener noreferrer">  
-            <div class="title">${this.title || "No preview available"}</div>
-            <div class="link">${this.link}</div>
-          </a>
-          <p>${this.description}</p>
+      <div class="wrapper">
+        ${this.loadingState ? html`<div class="loader"></div>` : ""}
+        <div class="card" style="--theme-color:${this.themeColor}">
+          <div class="image">
+            ${this.image
+              ? html`<img
+                  src="${this.image}"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
+                />`
+              : ""}
+          </div>
+          <div class="details">
+            <a href="${this.link}" target="_blank" rel="noopener noreferrer">
+              <div class="title">${this.title || "No preview available"}</div>
+              <div class="link">${this.link}</div>
+            </a>
+            <p>${this.description}</p>
+          </div>
         </div>
       </div>
-    </div>
     `;
   }
 
@@ -154,14 +170,20 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
     ).then((e) => {
       MicroFrontendRegistry.enableServices(["core"]);
     });
-    this.loadingState = true;  
+    this.loadingState = true;
     try {
       let data = await MicroFrontendRegistry.call("@core/websiteMetadata", {
         q: src,
       });
 
-      this.title = data.data["og:title"] || data.data["title"] || "No title available";
-      this.description = this.truncateText(data.data["og:description"] || data.data["description"] || "No description available", 250);
+      this.title =
+        data.data["og:title"] || data.data["title"] || "No title available";
+      this.description = this.truncateText(
+        data.data["og:description"] ||
+          data.data["description"] ||
+          "No description available",
+        250,
+      );
       this.image = data.data["og:image"] || data.data["image"] || "";
       if (this.image && !this.isValidURL(this.image)) {
         if (data.data["og:url"]) {
@@ -169,8 +191,8 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
         }
       }
       this.link = data.data["og:url"] || data.data["url"] || link;
-      this.themeColor = data.data?.["theme-color"]?.trim() || this.getThemeColor(link);
-
+      this.themeColor =
+        data.data?.["theme-color"]?.trim() || this.getThemeColor(link);
     } catch (error) {
       console.error("Error fetching data:", error);
       this.title = "No preview available";
@@ -193,8 +215,9 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
   }
 
   truncateText(text, maxLength) {
-    return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
-
+    return text.length > maxLength
+      ? text.substring(0, maxLength) + "..."
+      : text;
   }
 
   getThemeColor(link) {
@@ -210,7 +233,6 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
     const randomNum = Math.floor(Math.random() * 26);
     return `var(--ddd-primary-${randomNum})`;
   }
-
 }
 
 globalThis.customElements.define(LinkPreviewCard.tag, LinkPreviewCard);

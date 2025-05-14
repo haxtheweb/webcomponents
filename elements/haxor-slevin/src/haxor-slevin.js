@@ -673,8 +673,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
         setTimeout(() => {
           store.pageAllowed = false;
         }, 0);
-      }
-      else if (propName === "selectedPage" && this.selectedPage === 1) {
+      } else if (propName === "selectedPage" && this.selectedPage === 1) {
         setTimeout(() => {
           store.pageAllowed = true;
         }, 0);

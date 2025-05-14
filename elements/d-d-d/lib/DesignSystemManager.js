@@ -14,14 +14,14 @@ export class DesignSystem extends LitElement {
     this.systems = [];
   }
   static get tag() {
-    return 'design-system';
+    return "design-system";
   }
 
   static get properties() {
     return {
       active: { type: String },
       systems: { type: Object },
-    }
+    };
   }
 
   updated(changedProperties) {
@@ -29,11 +29,18 @@ export class DesignSystem extends LitElement {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === 'active' && this[propName]) {
+      if (propName === "active" && this[propName]) {
         // remove the current global stylesheet / adopted styles for the design system
         // replace it with the new active one
-        if (this.systems[this.active] && globalThis.document && globalThis.document.head) {
-          this.applyDesignSystem(oldValue ? this.systems[oldValue] : null, this.systems[this.active]);
+        if (
+          this.systems[this.active] &&
+          globalThis.document &&
+          globalThis.document.head
+        ) {
+          this.applyDesignSystem(
+            oldValue ? this.systems[oldValue] : null,
+            this.systems[this.active],
+          );
         }
       }
     });
@@ -57,16 +64,17 @@ export class DesignSystem extends LitElement {
             }
           });
         }
-        
       } catch (e) {
         const oldStyleSafariBs = globalThis.document.createElement("style");
         oldStyleSafariBs.innerHTML = globalStyles;
         globalThis.document.head.appendChild(oldStyleSafariBs);
       }
       if (oldSystem.fonts) {
-        globalThis.document.head.querySelectorAll('[data-ds]').forEach((font) => {
-          font.remove();
-        });
+        globalThis.document.head
+          .querySelectorAll("[data-ds]")
+          .forEach((font) => {
+            font.remove();
+          });
       }
       if (oldSystem.onload) {
         globalThis.document.onload = null;
@@ -76,9 +84,9 @@ export class DesignSystem extends LitElement {
     if (newSystem) {
       // convert css into text content of arrays mashed together
       // this way we can inject it into a global style sheet
-      let globalStyles = newSystem.styles.map((st) =>
-        st.cssText ? st.cssText : "",
-      ).join("");
+      let globalStyles = newSystem.styles
+        .map((st) => (st.cssText ? st.cssText : ""))
+        .join("");
       try {
         const adoptableDS = new CSSStyleSheet();
         // flag it so we can remove it later
@@ -118,15 +126,19 @@ export class DesignSystem extends LitElement {
 
 globalThis.customElements.define(DesignSystem.tag, DesignSystem);
 
-
 globalThis.DesignSystemManager = globalThis.DesignSystemManager || {};
 globalThis.DesignSystemManager.requestAvailability = () => {
-  if (!globalThis.DesignSystemManager.instance && globalThis.document && globalThis.document.body) {
-    let ds = globalThis.document.createElement('design-system');
+  if (
+    !globalThis.DesignSystemManager.instance &&
+    globalThis.document &&
+    globalThis.document.body
+  ) {
+    let ds = globalThis.document.createElement("design-system");
     globalThis.document.body.appendChild(ds);
     globalThis.DesignSystemManager.instance = ds;
   }
   return globalThis.DesignSystemManager.instance;
 };
 
-export const DesignSystemManager = globalThis.DesignSystemManager.requestAvailability();
+export const DesignSystemManager =
+  globalThis.DesignSystemManager.requestAvailability();

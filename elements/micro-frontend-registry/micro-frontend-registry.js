@@ -163,7 +163,7 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
       callback = null,
       caller = null,
       urlStringAddon = "",
-      rawResponse = false
+      rawResponse = false,
     ) {
       if (this.has(name)) {
         const item = this.get(name);

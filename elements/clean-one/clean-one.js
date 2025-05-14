@@ -816,8 +816,9 @@ class CleanOne extends LTIResizingMixin(
         }, 0);
       });
     }
-    let DesignSystemManager = globalThis.DesignSystemManager.requestAvailability();
-    DesignSystemManager.active = 'ddd';
+    let DesignSystemManager =
+      globalThis.DesignSystemManager.requestAvailability();
+    DesignSystemManager.active = "ddd";
   }
   /**
    * life cycle, element is removed from the DOM

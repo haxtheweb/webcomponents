@@ -8,12 +8,11 @@ import "./ddd-steps-list-item.js";
 
 /**
  * `ddd-steps-list`
- * 
+ *
  * @demo index.html
  * @element ddd-steps-list
  */
 export class DddStepsList extends DDDSuper(LitElement) {
-
   static get tag() {
     return "ddd-steps-list";
   }
@@ -26,35 +25,39 @@ export class DddStepsList extends DDDSuper(LitElement) {
   static get properties() {
     return {
       ...super.properties,
-      dddPrimary: { type: String, attribute: 'ddd-primary'},
+      dddPrimary: { type: String, attribute: "ddd-primary" },
     };
   }
 
   // Lit scoped styles
   static get styles() {
-    return [super.styles,
-    css`
-      :host {
-        display: block;
-        position: relative;
-        padding: var(--ddd-spacing-4, 16px);
-        font-family: var(--ddd-font-primary, sans-serif);
-      }
-
-      .steps-container {
-        position: relative;
-        padding-left: calc(var(--ddd-icon-size-xl, 50px) + var(--ddd-spacing-4, 16px));
-      }      
-
-      @media (max-width: 768px){
+    return [
+      super.styles,
+      css`
         :host {
-          padding: 0px;
+          display: block;
+          position: relative;
+          padding: var(--ddd-spacing-4, 16px);
+          font-family: var(--ddd-font-primary, sans-serif);
         }
+
         .steps-container {
-          padding-left: 0px;
+          position: relative;
+          padding-left: calc(
+            var(--ddd-icon-size-xl, 50px) + var(--ddd-spacing-4, 16px)
+          );
         }
-      }
-    `];
+
+        @media (max-width: 768px) {
+          :host {
+            padding: 0px;
+          }
+          .steps-container {
+            padding-left: 0px;
+          }
+        }
+      `,
+    ];
   }
 
   firstUpdated(changedProperties) {
@@ -79,18 +82,17 @@ export class DddStepsList extends DDDSuper(LitElement) {
   // Lit render the HTML
   render() {
     return html`
-    <div class="steps-container">
-      <slot @slotchange="${this.updateNumbers}"></slot>
-    </div>
-`;
+      <div class="steps-container">
+        <slot @slotchange="${this.updateNumbers}"></slot>
+      </div>
+    `;
   }
 
   /**
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
+    return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
   }
 }
 

@@ -159,6 +159,10 @@
                   "type": {
                     "text": "String"
                   }
+                },
+                {
+                  "name": "rawResponse",
+                  "default": "false"
                 }
               ],
               "description": "generate the call to the micro based on accepting name and params",
@@ -393,6 +397,10 @@
                   "type": {
                     "text": "String"
                   }
+                },
+                {
+                  "name": "rawResponse",
+                  "default": "false"
                 }
               ],
               "description": "generate the call to the micro based on accepting name and params",
@@ -634,6 +642,10 @@
                   "type": {
                     "text": "String"
                   }
+                },
+                {
+                  "name": "rawResponse",
+                  "default": "false"
                 }
               ],
               "description": "generate the call to the micro based on accepting name and params",

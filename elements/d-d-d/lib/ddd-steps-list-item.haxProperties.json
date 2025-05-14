@@ -11,8 +11,7 @@
     "icon": "chrome-reader-mode",
     "color": "light-blue",
     "tags": ["Content", "list", "step"],
-    "handles": [
-    ],
+    "handles": [],
     "meta": {
       "author": "HAXTheWeb core team",
       "owner": "The Pennsylvania State University"
@@ -26,10 +25,8 @@
         "inputMethod": "textfield"
       }
     ],
-    "advanced": [
-    ],
-    "developer": [
-    ]
+    "advanced": [],
+    "developer": []
   },
   "demoSchema": [
     {
@@ -37,8 +34,7 @@
       "properties": {
         "title": "Step "
       },
-      "content":
-      "<p>Step 1 description</p>"
+      "content": "<p>Step 1 description</p>"
     }
   ]
 }

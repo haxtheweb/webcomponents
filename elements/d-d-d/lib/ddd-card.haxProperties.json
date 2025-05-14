@@ -106,8 +106,7 @@
         "title": "Title",
         "link": "https://hax.cloud"
       },
-      "content":
-        "<p>The card content</p>"
+      "content": "<p>The card content</p>"
     }
   ]
 }

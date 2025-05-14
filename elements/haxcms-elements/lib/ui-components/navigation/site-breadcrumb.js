@@ -73,7 +73,10 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
             var(--ddd-theme-default-link, #383f45)
           );
           text-decoration: underline;
-          text-decoration-color: var(--site-breadcrumb-decoration-color-hover, var(--ddd-theme-default-link, #383f45));
+          text-decoration-color: var(
+            --site-breadcrumb-decoration-color-hover,
+            var(--ddd-theme-default-link, #383f45)
+          );
           text-decoration-thickness: 2px;
           text-underline-offset: 2px;
           text-underline-position: under;
@@ -87,7 +90,10 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
         }
 
         ol.breadcrumb li::marker {
-          color: var(--site-breadcrumb-separator-color, light-dark(black, white));
+          color: var(
+            --site-breadcrumb-separator-color,
+            light-dark(black, white)
+          );
         }
       `,
     ];

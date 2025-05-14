@@ -1,9 +1,8 @@
-import { LitElement, html, css, nothing } from 'lit';
+import { LitElement, html, css, nothing } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
-
   static get tag() {
     return "ddd-card";
   }
@@ -13,18 +12,19 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
     this.title = null;
     this.src = null;
     this.href = null;
-    this.target = '';
+    this.target = "";
     this.rel = "noopener nofollow noreferrer";
-    this.alt = '';
+    this.alt = "";
     this.label = null;
     this.noArrow = false;
     this.t = {
-      explore: "Explore"
+      explore: "Explore",
     };
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL(`../locales/${this.tag}.es.json`, import.meta.url).href + "/../",
+        new URL(`../locales/${this.tag}.es.json`, import.meta.url).href +
+        "/../",
       locales: ["es"],
     });
   }
@@ -39,7 +39,7 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
       rel: { type: String },
       target: { type: String },
       label: { type: String },
-      noArrow: { type: Boolean, attribute: 'no-arrow' },
+      noArrow: { type: Boolean, attribute: "no-arrow" },
     };
   }
 
@@ -48,10 +48,16 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
       super.styles,
       css`
         :host {
-          --ddd-card-border-color: light-dark(var(--ddd-theme-default-limestoneLight),var(--ddd-theme-default-limestoneGray));
+          --ddd-card-border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-limestoneGray)
+          );
           display: inline-block;
           width: 400px;
-          background-color: light-dark(white, var(--ddd-theme-default-coalyGray));
+          background-color: light-dark(
+            white,
+            var(--ddd-theme-default-coalyGray)
+          );
           color: light-dark(var(--ddd-theme-default-coalyGray), white);
           border: var(--ddd-border-sm);
           border-color: var(--ddd-card-border-color);
@@ -74,11 +80,15 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
         }
 
         .image {
-          border-bottom: var(--ddd-spacing-3) var(--ddd-theme-primary, var(--ddd-primary-1)) solid;
+          border-bottom: var(--ddd-spacing-3)
+            var(--ddd-theme-primary, var(--ddd-primary-1)) solid;
           border-radius: var(--ddd-spacing-4) var(--ddd-spacing-4) 0 0;
           overflow: hidden;
           height: var(--ddd-card-img-height, 260px);
-          background-color: var(--ddd-card-border-color, var(--ddd-theme-default-limestoneLight));
+          background-color: var(
+            --ddd-card-border-color,
+            var(--ddd-theme-default-limestoneLight)
+          );
         }
 
         .image img {
@@ -90,7 +100,8 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
         }
 
         .title {
-          padding: var(--ddd-spacing-4) var(--ddd-spacing-4) var(--ddd-spacing-0) var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-4) var(--ddd-spacing-4)
+            var(--ddd-spacing-0) var(--ddd-spacing-4);
           font-size: var(--ddd-font-size-s);
           font-weight: var(--ddd-font-weight-bold);
           color: light-dark(var(--ddd-theme-default-nittanyNavy), white);
@@ -119,7 +130,10 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
         .button-wrapper:hover button,
         .button-wrapper:focus-within button {
           background-color: var(--ddd-theme-primary, var(--ddd-primary-1));
-          color: var(--lowContrast-override, var(--ddd-card-button-color, white));
+          color: var(
+            --lowContrast-override,
+            var(--ddd-card-button-color, white)
+          );
         }
 
         .button-wrapper a {
@@ -131,7 +145,7 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
         }
 
         button {
-          transition: var(--ddd-card-button-transition, .3s all ease-in-out);
+          transition: var(--ddd-card-button-transition, 0.3s all ease-in-out);
           color: var(--ddd-card-button-color, white);
           background-color: var(--ddd-theme-default-nittanyNavy);
           font-size: var(--ddd-font-size-4xs);
@@ -152,27 +166,39 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
     return html`
       <div class="card">
         <div class="image" part="image">
-          ${this.src ? html`<img src="${this.src}" alt="${this.alt}" part="img" loading="lazy" decoding="async" fetchpriority="low" />`: nothing}
+          ${this.src
+            ? html`<img
+                src="${this.src}"
+                alt="${this.alt}"
+                part="img"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+              />`
+            : nothing}
         </div>
         <div class="title" part="title">${this.title}</div>
         <div class="description" part="description">
           <slot></slot>
         </div>
         <div class="button-wrapper" part="button-wrapper">
-        ${this.href ? html`
-          <a 
-            @click="${this._clickCard}"
-            href="${this.href}"
-            role="button"
-            rel="${this.rel}"
-            target="${this.target}"
-            part="a"
-            >
-            <button part="button" tabindex="-1">
-              ${this.label || this.t.explore} ${!this.noArrow ? `>` : nothing}
-            </button>
-          </a>
-        `: nothing}
+          ${this.href
+            ? html`
+                <a
+                  @click="${this._clickCard}"
+                  href="${this.href}"
+                  role="button"
+                  rel="${this.rel}"
+                  target="${this.target}"
+                  part="a"
+                >
+                  <button part="button" tabindex="-1">
+                    ${this.label || this.t.explore}
+                    ${!this.noArrow ? `>` : nothing}
+                  </button>
+                </a>
+              `
+            : nothing}
         </div>
       </div>
     `;

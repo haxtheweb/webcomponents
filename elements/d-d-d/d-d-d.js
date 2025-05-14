@@ -13,7 +13,7 @@ import {
   DDDDataAttributes,
   ApplicationAttributeData,
 } from "./lib/DDDStyles.js";
-import {DesignSystemManager} from "./lib/DesignSystemManager.js";
+import { DesignSystemManager } from "./lib/DesignSystemManager.js";
 
 /**
  * `d-d-d`
@@ -93,7 +93,7 @@ export const DDDSuper = function (SuperClass) {
           name: "ddd",
           styles: DDDAllStyles,
           fonts: DDDFonts,
-          onload: () =>{
+          onload: () => {
             // check for css feature support
             if (!CSS.supports("initial-letter", "1")) {
               console.warn("CSS feature: initial-letter not supported");
@@ -103,7 +103,7 @@ export const DDDSuper = function (SuperClass) {
           },
           hax: true,
         });
-        DesignSystemManager.active = 'ddd';
+        DesignSystemManager.active = "ddd";
       }
     }
     static get properties() {

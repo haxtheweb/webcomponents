@@ -15,7 +15,9 @@ import { copyToClipboard } from "@haxtheweb/utils/utils.js";
 /**
  * LitElement Version of HAXCMSTheme
  */
-class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitElement)) {
+class HAXCMSLitElementTheme extends HAXCMSTheme(
+  ResponsiveUtilityBehaviors(LitElement),
+) {
   constructor() {
     super();
     this.isSafari = globalThis.safari !== undefined;
@@ -39,7 +41,9 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitEl
           this.HAXCMSThemeSettings.scrollTarget.scrollIntoView();
         } else {
           setTimeout(() => {
-            this.HAXCMSThemeSettings.scrollTarget.scrollIntoView(this.HAXCMSThemeSettings.scrollSettings);
+            this.HAXCMSThemeSettings.scrollTarget.scrollIntoView(
+              this.HAXCMSThemeSettings.scrollSettings,
+            );
           }, 0);
         }
       }
@@ -66,8 +70,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitEl
   }
   // Render method
   render() {
-    return html`
-    <div id="contentcontainer">
+    return html` <div id="contentcontainer">
       <div id="slot"><slot></slot></div>
     </div>`;
   }
@@ -225,7 +228,11 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitEl
     // delay bc this shouldn't block page load in any way
     setTimeout(() => {
       setTimeout(() => {
-        if (this._location && this._location.hash && this.HAXCMSThemeSettings.autoScroll) {
+        if (
+          this._location &&
+          this._location.hash &&
+          this.HAXCMSThemeSettings.autoScroll
+        ) {
           let target = this.querySelector(this._location.hash);
           if (target) {
             if (this.isSafari) {
@@ -260,18 +267,23 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitEl
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "_location") {
-        if (this.HAXCMSThemeSettings.locationStartViewTransition && 
-          globalThis.document && 
-          globalThis.document.startViewTransition) {
+        if (
+          this.HAXCMSThemeSettings.locationStartViewTransition &&
+          globalThis.document &&
+          globalThis.document.startViewTransition
+        ) {
           globalThis.document.startViewTransition(() => {
             this._locationChanged(this[propName], oldValue);
           });
-        }
-        else {
+        } else {
           this._locationChanged(this[propName], oldValue);
         }
         setTimeout(() => {
-          if (this._location && this._location.hash && this.HAXCMSThemeSettings.autoScroll) {
+          if (
+            this._location &&
+            this._location.hash &&
+            this.HAXCMSThemeSettings.autoScroll
+          ) {
             let target = this.querySelector(this._location.hash);
             if (target) {
               if (this.isSafari) {
@@ -325,4 +337,14 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(ResponsiveUtilityBehaviors(LitEl
   }
 }
 
-export { HAXCMSLitElementTheme, css, unsafeCSS, html, svg, mathml, store, autorun, toJS };
+export {
+  HAXCMSLitElementTheme,
+  css,
+  unsafeCSS,
+  html,
+  svg,
+  mathml,
+  store,
+  autorun,
+  toJS,
+};

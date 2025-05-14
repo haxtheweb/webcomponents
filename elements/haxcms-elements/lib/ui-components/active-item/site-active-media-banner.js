@@ -52,7 +52,7 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
       playing: { type: Boolean, reflect: true },
       canPlay: { type: Boolean, attribute: "can-play" },
       icon: { type: String },
-      description: { type: String }
+      description: { type: String },
     };
   }
 
@@ -189,7 +189,10 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
                     muted
                     playsinline
                   >
-                    <source src=${this.mediaSource} type="video/${this.fileExt}" />
+                    <source
+                      src=${this.mediaSource}
+                      type="video/${this.fileExt}"
+                    />
                   </video>
                   <div class="content">
                     <div class="page-title">
@@ -218,15 +221,15 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
     });
   }
 
-    /**
+  /**
    * life cycle, element is removed from the DOM
    */
-    disconnectedCallback() {
-      for (var i in this.__disposer) {
-        this.__disposer[i].dispose();
-      }
-      super.disconnectedCallback();
+  disconnectedCallback() {
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
     }
+    super.disconnectedCallback();
+  }
 }
 
 customElements.define(SiteActiveMediaBanner.tag, SiteActiveMediaBanner);

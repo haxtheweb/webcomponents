@@ -101,11 +101,9 @@ class SpotifyEmbed extends LitElement {
           this.type = "album";
         } else if (this[propName].includes("/track/")) {
           this.type = "track";
-        }
-        else if (this[propName].includes("/playlist/")) {
+        } else if (this[propName].includes("/playlist/")) {
           this.type = "playlist";
-        }
-        else if (this[propName].includes("/artist/")) {
+        } else if (this[propName].includes("/artist/")) {
           this.type = "artist";
         }
       }

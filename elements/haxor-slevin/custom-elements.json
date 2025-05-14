@@ -70,6 +70,10 @@
               "parameters": [
                 {
                   "name": "location"
+                },
+                {
+                  "name": "firstRun",
+                  "default": "false"
                 }
               ],
               "description": "Listen for router location changes and select page to match"

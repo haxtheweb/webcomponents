@@ -466,6 +466,140 @@
     },
     {
       "kind": "javascript-module",
+      "path": "lib/github-rpg-contributors.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`github-rpg-contributors`",
+          "name": "GithubRpgContributors",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "fetchContributors"
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "org",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "org"
+            },
+            {
+              "kind": "field",
+              "name": "repo",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "repo"
+            },
+            {
+              "kind": "field",
+              "name": "limit",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "50",
+              "attribute": "limit",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "contributors",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "contributors"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "org",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "org"
+            },
+            {
+              "name": "repo",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "repo"
+            },
+            {
+              "name": "limit",
+              "type": {
+                "text": "number"
+              },
+              "default": "50",
+              "fieldName": "limit"
+            },
+            {
+              "name": "contributors",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "contributors"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "github-rpg-contributors",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "GithubRpgContributors",
+          "declaration": {
+            "name": "GithubRpgContributors",
+            "module": "lib/github-rpg-contributors.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "GithubRpgContributors",
+            "module": "lib/github-rpg-contributors.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
       "path": "lib/marked.js",
       "declarations": [
         {
