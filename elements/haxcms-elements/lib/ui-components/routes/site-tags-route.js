@@ -35,6 +35,13 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
           margin: 0 4px 4px 0;
           cursor: pointer;
         }
+        simple-tag:hover,
+        simple-tag:focus {
+          background-color: var(--simple-colors-default-theme-accent-color-3);
+          color: var(--simple-colors-default-theme-accent-color-12);
+          border-color: var(--simple-colors-default-theme-accent-color-12);
+          transition: all 0.3s ease-in-out;
+        }
 
         .all-tags {
           display: block;
@@ -76,12 +83,27 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
     this.search = globalThis.location.search;
   }
 
+  // i don't know why I have to do this, but I do
+  _tagKeydown(e) {
+    if (e.key === "Enter") {
+      this._tagClick(e);
+    }
+  }
+  // i don't know why I have to do this either, but I do
+  _resetKeydown(e) {
+    if (e.key === "Enter") {
+      this._resetClick(e);
+    }
+  }
+
   render() {
     return html` ${this.params && this.params.tag
         ? html`<simple-tag
             class="all-tags"
             value="Remove '${this.params.tag}' filter"
             @click="${this._resetClick}"
+            @keydown="${this._resetKeydown}"
+            tabindex="0"
           ></simple-tag>`
         : nothing}
       ${Object.keys(this.resultsTags).map(
@@ -90,9 +112,11 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
             ? nothing
             : html`
                 <simple-tag
-                  auto-accent-color
+                  accent-color="grey"
                   value="${tag.trim()}"
                   @click="${this._tagClick}"
+                  @keydown="${this._tagKeydown}"
+                  tabindex="0"
                   >${this.resultsTags[tag] > 1
                     ? html` (${this.resultsTags[tag]})`
                     : nothing}</simple-tag
@@ -110,7 +134,8 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
               image="${item.metadata.image}"
               tags="${item.metadata.tags}"
               icon="${item.metadata.icon}"
-              accent-color="${item.metadata.accentColor}"
+              accent-color="grey"
+              saturate
             ></collection-item>
           `,
         )}
