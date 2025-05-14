@@ -50,10 +50,12 @@ curl -fsSL https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scri
 git clone https://github.com/haxtheweb/webcomponents.git
 cd webcomponents
 npm install --global @haxtheweb/create
-yarn global add lerna
 yarn global add web-component-analyzer
 yarn install
 ```
+
+### Lerna
+This monorepo has configuration settings for lerna. Lerna is for the core team, but to bulk run commands against the monorepo consider things like `npx lerna run build` to run build against all elements. This is useful when getting ready to ship.
 
 ### Syncing Your Fork
 ```
@@ -101,7 +103,6 @@ To clone webcomponents, run:
 git clone https://github.com/haxtheweb/webcomponents.git
 cd webcomponents
 npm install --global @haxtheweb/create
-yarn global add lerna
 yarn global add web-component-analyzer
 yarn install
 ```
@@ -125,11 +126,6 @@ Edit files in `lib/`, `src/`, `locales/` and `demo/` in order to modify the elem
     - Run storybook
 - `yarn run build-storybook`
     - Build storybook for deployment
-- `lerna publish`
-    - Publish ALL webcomponents' elements to npmjs.com
-
-- `lerna run build --no-bail`
-    - Run `build` command in all projects in the repo, don't bail if there's an issue
 
 ## Web Component development
 
