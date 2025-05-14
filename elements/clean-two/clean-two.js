@@ -704,16 +704,7 @@ class CleanTwo extends LTIResizingMixin(
                 ? this.PDFPageButton()
                 : ``}
               ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
-                ? this.PrintSiteButton()
-                : html`<replace-tag
-                    with="site-print-button"
-                    position="right"
-                    class="btn js-toolbar-action"
-                    import-method="view"
-                    part="print-btn"
-                  ></replace-tag>`}
-              ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
-                ? this.PrintBranchButton()
+                ? html`${this.PrintSiteButton()}${this.PrintBranchButton()}`
                 : html`<replace-tag
                     with="site-print-button"
                     position="right"
