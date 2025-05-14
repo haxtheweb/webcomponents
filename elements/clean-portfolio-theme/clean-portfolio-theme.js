@@ -3,14 +3,16 @@
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
-import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js";
-import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
+import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js";
+import "@haxtheweb/scroll-button/scroll-button.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
-import { toJS, autorun } from "mobx";
+import { licenseList } from "@haxtheweb/license-element/license-element.js";
 
 /**
  * `clean-portfolio-theme`
@@ -33,39 +35,32 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   constructor() {
     super();
-    this.location = null;
+    this.siteTheme = ""; // theme name
+    this.dataPrimary = 2; // theme ID
     this.activeLayout = "text"; // text, media, listing
-    this.isActiveLayoutButtonVisible = false; // flag for change layout debug button
+    this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
     this.selectedTag = ""; // for filtering listing items
     this.menuOpen = false; // for mobile menu button
     this.menuOverflow = []; // items under the mobile menu
+    this.lastUpdated = ""; // for footer timestamp
+    this.copyrightYear = 0; // for footer copyright year
+
+    // MobX variables/listeners
+    this.location = null;
     this.childrenTopTags = [];
     this.childrenAllTags = [];
     this.items = [];
-    // MobX listeners
 
-    // gets site title for site-title
+    // gets site title and home link for site-title
     autorun((reaction) => {
       this.siteTitle = toJS(store.siteTitle);
-      this.__disposer.push(reaction);
-    });
-
-    // gets home link for site-title
-    autorun((reaction) => {
       this.homeLink = toJS(store.homeLink);
       this.__disposer.push(reaction);
     });
 
-    // gets active page's title for breadcrumb-title
-    autorun((reaction) => {
-      this.activeTitle = toJS(store.activeTitle);
-      this.__disposer.push(reaction);
-    });
-
-    // gets active page's parent title for breadcrumb-back
-    autorun((reaction) => {
-      this.parentTitle = toJS(store.parentTitle);
-      this.__disposer.push(reaction);
+    // gets active page's ancestor for menu-item:after
+    autorun(() => {
+      this.ancestorItem = toJS(store.ancestorItem);
     });
 
     // gets active page's tags and inserts them into an array for media-tag
@@ -81,7 +76,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
     // gets top level items for menu-item
     autorun((reaction) => {
-      // const manifest = store.manifest;
       let items = store.getItemChildren(null); 
       if (items && items.length > 0) {
         this.topItems = [...items];
@@ -107,57 +101,71 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     // - if the current page has a child, it's Listing
     // - if the current page has a parent, it's Media
     autorun((reaction) => {
-      // const manifest = store.manifest;
-      let active = toJS(store.activeItem);
+      const active = toJS(store.activeItem);
       if (active) {
-        this.activeItem = active;
-
-        // use site-store's parentTitle method to find parentSlug
-        let tmpItem = store.manifest.items.find(
-          (d) => store.activeItem.parent === d.id,
+        // find parent of activeItem
+        let parent = store.manifest.items.find(
+          (d) => active.parent === d.id,
         );
-        // shift up 1 if we found something
-        if (tmpItem) {
-          this.parentSlug = tmpItem.slug;
-        } else {
-          this.parentSlug = "";
+        if (!parent) {
+          parent = "";
         }
         
-        let items = store.getItemChildren(store.activeId);
+        if (globalThis.document && globalThis.document.startViewTransition) {
+          globalThis.document.startViewTransition(() => {
+            this.activeItem = active;
+            this.activeParent = parent;
+          });
+        }
+        else {
+          this.activeItem = active;
+          this.activeParent = parent;  
+        }
+        
+        const items = store.getItemChildren(store.activeId);
         if (items) {
           if (items.length > 0) {
             this.setLayout("listing");
-            if (globalThis.document && globalThis.document.startViewTransition) {
-              globalThis.document.startViewTransition(() => {
-                this.items = [...items];
-              });
-            }
-            else {
-              this.items = [...items];              
-            }
-            this.selectedTag = "";
+
+            const childrenTopTags = [];
+            const childrenAllTags = [];
 
             // get tags for all children of activeItem, push to arrays
-            let childrenTopTags = [];
-            
-            let childrenAllTags = [];
-            this.items.forEach(item => {
+            items.forEach(item => {
               let tags = toJS(item.metadata.tags);
               if (tags) {
-                tags = tags.split(',');
-                if (!this.childrenTopTags.includes(tags[0])) {
-                  childrenTopTags.push(tags[0]);
+                const tagArray = tags.split(',');
+                if (tagArray[0] && !childrenTopTags.includes(tagArray[0])) {
+                  childrenTopTags.push(tagArray[0]);
                 }
-                tags.forEach(tag => {
-                  if (!this.childrenAllTags.includes(tag)) {
+                tagArray.forEach(tag => {
+                  if (tag && !childrenAllTags.includes(tag)) {
                     childrenAllTags.push(tag);
                   }
                 });
               }
             });
-            this.childrenTopTags = [...childrenTopTags];
-            this.childrenAllTags = [...childrenAllTags];
-          } else if (this.parentSlug) {
+
+            if (globalThis.document && globalThis.document.startViewTransition) {
+              globalThis.document.startViewTransition(() => {
+                this.items = [...items];
+                this.childrenTopTags = [...childrenTopTags];
+                this.childrenAllTags = [...childrenAllTags];
+              });
+            }
+            else {
+              this.items = [...items];
+              this.childrenTopTags = [...childrenTopTags];
+              this.childrenAllTags = [...childrenAllTags];         
+            }
+
+            // reset tag select filter
+            this.selectedTag = "";
+            const select = this.shadowRoot?.querySelector('#listing-select');
+            if (select) {
+              select.value = ""
+            };
+          } else if (active.parent) {
             this.setLayout("media");
           } else {
             this.setLayout("text");
@@ -176,9 +184,21 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
       this.__disposer.push(reaction);
     });
+
+    // gets licensing stuff
+    autorun(() => {
+      this.manifest = toJS(store.manifest);
+      let LList = new licenseList();
+      if (this.manifest.license && LList[this.manifest.license]) {
+        this.licenseName = LList[this.manifest.license].name;
+        this.licenseLink = LList[this.manifest.license].link;
+        this.licenseImage = LList[this.manifest.license].image;
+      }
+    });
   }
 
   firstUpdated(changedProperties) {
+    // design system override
     super.firstUpdated(changedProperties);
     let DesignSystemManager = globalThis.DesignSystemManager.requestAvailability();
     DesignSystemManager.addDesignSystem({
@@ -188,57 +208,82 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       hax: true,
     });
     DesignSystemManager.active = 'clean-portfolio-theme';
-    this._checkOverflow();
-    window.addEventListener('resize', () => {this._checkOverflow()});
+
+    // get timestamps for footer
+    this.lastUpdated = new Date(store.manifest.metadata.site.updated * 1000).toDateString();
+    this.copyrightYear = new Date(store.manifest.metadata.site.created * 1000).getFullYear();
+
+    // window resize observer for mobile menu
+    // NOTE: an event listener works for this too, but only for manual resizing and not in
+    //       certain cases when the window is popped out via minimize or dragging
+    const nav = this.renderRoot.querySelector('nav');
+    if (nav) {
+      this._resizeObserver = new ResizeObserver(() => {
+        this._checkOverflow();
+      });
+      this._resizeObserver.observe(nav);
+    }
+    setTimeout(() => this._checkOverflow(), 100);
   }
 
+  // manages window resize observer
+  disconnectedCallback() {
+    if (this._resizeObserver) {
+      this._resizeObserver.disconnect();
+    }
+    super.disconnectedCallback();
+  }
+
+  // checks children of nav on resize for mobile menu
   _checkOverflow() {
-    const container = this.renderRoot.querySelector('nav');
-    const items = Array.from(container.children);
-    const availableWidth = container.clientWidth - 100;
-    let usedWidth = 0;
-    const overflow = [];
+    const nav = this.renderRoot.querySelector('nav');
+    if (nav) {
+      const items = Array.from(nav.children);
+      const availableWidth = nav.clientWidth - 100;
 
-    for (const item of items) {
-      item.style.display = 'inline-block'; // Ensure all are visible before measuring
-    }
+      let usedWidth = 0;
+      const overflow = [];
 
-    for (const item of items) {
-      usedWidth += item.offsetWidth + 25;
-      if (usedWidth > availableWidth) {
-        const itemSlug = item.getAttribute('href');
-        const itemData = this.topItems.find(i => i.slug === itemSlug);
-        if (itemData) overflow.push(itemData);
-        item.style.display = 'none';
-      } else {
+      for (const item of items) {
         item.style.display = 'inline-block';
+        usedWidth += item.offsetWidth + 25;
+        if (usedWidth > availableWidth) {
+          item.style.display = 'none';
+          overflow.push(this.topItems.find(i => i.slug === item.getAttribute('href')));
+        }
       }
-    }
 
-    this.menuOverflow = overflow;
-    this.requestUpdate();
+      this.menuOverflow = overflow;
+      this.requestUpdate();
+    }
   }
 
   // Lit reactive properties
   static get properties() {
     return {
       ...super.properties,
+      activeItem: { type: Object },
+      activeParent: { type: Object },
+      ancestorItem: { type: Object },
       location: { type: Object },
-      siteTitle: { type: String },
-      homeLink: { type: String },
-      activeItem: { type: String },
-      activeTitle: { type: String },
-      activeLayout: { type: String },
-      activeTags: { type: Array },
-      parentTitle: { type: String },
       topItems: { type: Array },
       items: { type: Array },
+      activeTags: { type: Array },
       childrenTopTags: { type: Array },
       childrenAllTags: { type: Array },
-      selectedTag: { type: String },
-      menuOpen: { type: Boolean },
       menuOverflow: { type: Array },
-      isActiveLayoutButtonVisible: {type: Boolean}
+      menuOpen: { type: Boolean },
+      copyrightYear: { type: Number },
+      siteTitle: { type: String },
+      homeLink: { type: String },
+      activeLayout: { type: String },
+      selectedTag: { type: String },
+      lastUpdated: { type: String },
+      licenseName: { type: String },
+      licenseLink: { type: String },
+      licenseImage: { type: String },
+      dataPrimary: { type: String, attribute: "data-primary", reflect: true },
+      siteTheme: { type: String, reflect: true, attribute: 'site-theme' }
     };
   }
 
@@ -272,27 +317,11 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             --portfolio-font-body: "Source Code Pro", Monaco, Consolas, "Lucida Console", monospace;
             --portfolio-font-header: "Work Sans", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
 
+            --portfolio-fontsize-responsive: clamp(16px, 2vw, 22px);
+
             background-color: var(--portfolio-lightDark-bg);
             font-family: var(--portfolio-font-body);
-            font-size: 16px;
-        }
-
-        @media (min-width: 80em) {
-          :root, html, body {
-            font-size: 22px;
-          }
-        }
-
-        @media (min-width: 64em) {
-          :root, html, body {
-            font-size: 20px;
-          }
-        }
-
-        @media (min-width: 48em) {
-          :root, html, body {
-            font-size: 18px;
-          }
+            font-size: var(--portfolio-fontsize-responsive);
         }
         `
     ];
@@ -302,30 +331,58 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   static get styles() {
     return [super.styles,
     css`
-      /* Semantic elements */
+      /* Theme colors */
+      :host([site-theme="earth"]) {
+        --portfolio-menuItemUnderline:var(--ddd-primary-18);
+        --portfolio-lightGrey: var(--ddd-primary-18);
+        --portfolio-darkGrey: var(--ddd-primary-17);
+      }
 
+      :host([site-theme="water"]) {
+        --portfolio-menuItemUnderline: var(--ddd-primary-7);
+        --portfolio-lightGrey: var(--ddd-primary-7);
+        --portfolio-darkGrey: var(--ddd-primary-1);
+      }
+
+      :host([site-theme="fire"]) {
+        --portfolio-menuItemUnderline: var(--ddd-primary-12);
+        --portfolio-lightGrey: var(--ddd-primary-12);
+        --portfolio-darkGrey: var(--ddd-primary-11);
+      }
+
+      :host([site-theme="sand"]) {
+        --portfolio-menuItemUnderline: var(--ddd-primary-15);
+        --portfolio-lightGrey: var(--ddd-primary-15);
+        --portfolio-darkGrey: var(--ddd-primary-23);
+      }
+
+      /* Semantic elements */
       :host {
         display: block;
       }
 
       header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        white-space: nowrap;
-        position: relative;
-        padding: 26px 5vw;
         background-color: var(--portfolio-darkGrey);
-        border-bottom: 1px;
+        transition: all 0.2s ease-in-out;
+        padding: 22px;
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        max-width: 1236px;
+        margin: 0 auto;
+        line-height: 1.7;
+        position: relative;
       }
 
       nav {
         display: flex;
-        gap: 1rem;
+        gap: .5rem;
         justify-content: flex-end;
-        flex: 1;
-        padding-right: 2rem;
-        overflow: hidden;
+        flex: 1 1 auto;
+        min-width: 0;
       }
 
       h1, h2, h3, h4, h5, h6 {
@@ -335,33 +392,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         margin-bottom: 0.75rem;
         margin-top: 0;
       }
-
-      /* h1 {
-          font-size: 2.5rem;
-      }
-      
-      h2 {
-          font-size: 2rem;
-      } */
-      
-      h3 {
-          font-size: 24px;
-      }
-
-      /* h4 {
-          font-size: 1.5rem;
-      }
-      
-      h5 {
-          font-size: 1.25rem;
-      }
-      
-      h6 {
-          font-size: 1rem;
-      } */
       
       p {
-        font-size: 24px;
+        font-size: var(--portfolio-fontsize-responsive);
         line-height: 1.5;
         margin-bottom: 1.3em;
       }
@@ -379,10 +412,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       footer {
-        background-color: var(--portfolio-lightDark-footer);
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        background-color: var(--portfolio-black);
         color: var(--portfolio-white);
         font-family: var(--portfolio-font-body);
-        font-size: .6875em;
+        font-size: clamp(11px, 2vw, 15px);
         padding: 40px 5vw;
         margin-top: 150px;
       }
@@ -392,16 +428,15 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       /* Site header elements */
-
       #site-title {
+        padding: 0.5rem;
         color: var(--portfolio-textHeader);
         font-family: var(--portfolio-font-header);
         font-weight: bold;
-        font-size: 20px;
+        font-size: var(--portfolio-fontsize-responsive);
         text-transform: uppercase;
         text-decoration: none;
         border: 5px solid white;
-        padding: 0.5rem 0.5rem;
         transition: all 0.2s ease-in-out;
       }
 
@@ -411,21 +446,24 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       header a.menu-item {
+        display: inline-block;
+        position: relative;
+        margin: 10px;
+        padding: 0 5px;
+        white-space: nowrap;
         color: var(--portfolio-textHeader);
         font-family: var(--portfolio-font-header);
+        font-size: var(--portfolio-fontsize-responsive);
         font-weight: 450;
         text-align: center;
         text-decoration: none;
         transition: all 0.3s ease-in-out;
-        margin: 10px;
-        display: inline-block;
-        position: relative;
       }
 
       header a.menu-item:after {
         content: "";
         position: absolute;
-        bottom: -8px;
+        bottom: -10px;
         left: 50%;
         width: 0;
         height: 4px;
@@ -448,17 +486,22 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       /* Mobile menu */
+      .mobile-menu-wrapper {
+        position: relative;
+        display: flex;
+        justify-content: center;
+      }
 
-      /* Button */
       header button {
           display: inline-block;
           color: #fff;
           background-color: var(--portfolio-lightGrey);
-          align-self: stretch;
           border: 0;
           width: 45px;
           height: 50px;
           cursor: pointer;
+          margin-left: 10px;
+          transition: all 0.2s ease-in-out;
       }
 
       .navicon {
@@ -495,7 +538,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       .close .navicon:before,
       .close .navicon:after {
-          -ms-transform-origin: 50% 50%;
           transform-origin: 50% 50%;
           top: 0;
           width: 1.5rem;
@@ -509,28 +551,26 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           transform: rotate3d(0, 0, 1, -45deg);
       }
 
-      .visually-hidden,
-      .screen-reader-text,
-      .screen-reader-text span,
-      .screen-reader-shortcut {
-        position: absolute !important;
-        clip: rect(1px, 1px, 1px, 1px);
-        height: 1px !important;
-        width: 1px !important;
-        border: 0 !important;
-        overflow: hidden;
-      }
-
-      /* Dropdown */
       .hidden-links {
         position: absolute;
-        top: 90%;
-        right: 5.5%;
+        top: calc(100% + 8px);
+        right: 0;
         padding: 5px;
         gap: 0;
         border-radius: 4px;
         box-shadow: 0 2px 4px 0 rgba(#000, 0.16), 0 2px 10px 0 rgba(#000, 0.12);
         background-color: var(--portfolio-lightGrey);
+        z-index: 5;
+      }
+
+      .hidden-links:before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        right: 12px;
+        border-style: solid;
+        border-width: 0 10px 10px;
+        border-color: var(--portfolio-lightGrey) transparent;
       }
 
       .hidden-links li {
@@ -550,52 +590,60 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         font-family: var(--portfolio-font-header);
         text-decoration: none;
         display: block;
-      }
-
-      .hidden-links a:hover,
-      .hidden-links a:focus {
-        color: var(--portfolio-lighterGrey);
         transition: .3s;
       }
 
+      .hidden-links a:hover,
+      .hidden-links a:focus,
       .hidden-links a.active {
         color: var(--portfolio-lighterGrey);
-        transition: none;
       }
 
       .hidden {
         display: none;
       }
 
-      /* Pointy arrow thing for dropdown */
-      .hidden-links:before {
-        content: "";
-        position: absolute;
-        top: -10px;
-        right: 10px;
-        border-style: solid;
-        border-width: 0 10px 10px;
-        border-color: var(--portfolio-lightGrey) transparent;
+      .visually-hidden,
+      .screen-reader-text,
+      .screen-reader-text span,
+      .screen-reader-shortcut {
+        position: absolute !important;
+        clip: rect(1px, 1px, 1px, 1px);
+        height: 1px !important;
+        width: 1px !important;
+        border: 0 !important;
+        overflow: hidden;
       }
 
       /* Imported elements */
-
       site-active-title h1 {
         font-family: "Playfair Display";
-        font-size: 72px;
+        font-size: 88px;
         font-weight: bold;
-        margin-top: 80px;
-        margin-bottom: 24px;
+        transition: .3s;
         view-transition-name: location;
       }
 
-      .listing-titlecontainer site-active-title h1 {
-        font-size: 88px;
-        margin-bottom: 50px;
+      site-active-media-banner {
+        --media-banner-background-color: none;
+        --media-banner-height: clamp(320px, 80vw, 640px);
+        margin: 0;
+      }
+
+      .theme-picker {
+        --simple-icon-width: 24px;
+        --simple-icon-height: 24px;
+        padding: 0;
+        border-radius: 50%;
+      }
+
+      header .theme-picker {
+        position: absolute;
+        top: 0;
+        right: 0;
       }
 
       /* Tags */
-
       .tag-list {
         flex-direction: row;
         flex-wrap: wrap;
@@ -619,109 +667,22 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         text-transform: uppercase;
       }
 
-      /* Layouts */
-
-      .text-container,
-      .listing-container,
-      .media-container {
-        margin: 50px auto;
-        width: 90%;
-        max-width: 800px;
-        text-align: left;
+      /* Breadcrumb */
+      .breadcrumb-wrapper {
+        max-width: 1236px;
+        margin: 0 auto;
+        padding: 0 22px;
         view-transition-name: location;
       }
 
-      /* Listing layout */
-
-      .listing-titlecontainer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .listing-select {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 200px;
-      }
-
-      .listing-category {
-        font-family: var(--portfolio-font-body);
-        text-transform: uppercase;
-        border-top: 6px solid var(--portfolio-lightDark-blackWhite);
-        min-height: 36px;
-      }
-
-      .listing-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 15px;
-        width: 100%;
-        transition: all 0.2s ease-in-out;
-      }
-
-      div .listing-card {
-        width: 180px;
-        max-width: 100%;
-        margin-bottom: 48px;
-        text-decoration: none;
-      }
-
-      .listing-card:hover .listing-cardtitle,
-      .listing-card:focus .listing-cardtitle{
-        text-decoration: underline;
-      }
-
-      .listing-card:hover .listing-cardimg,
-      .listing-card:focus .listing-cardimg {
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 10px 0px;
-      }
-
-      .listing-cardimg {
-        background-color: var(--portfolio-lightDark-cardImg);
-        width: 100%;
-        height: 125px;
-        border-radius: 6px;
-        margin-bottom: 12px;
-        transition: all 0.2s ease-in-out;
-        overflow: hidden;
-        display: block;
-      }
-
-      .listing-cardimg img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .listing-cardtitle {
-        color: var(--portfolio-lightDark-blackWhite);
-        font-family: var(--portfolio-font-header);
-        font-weight: 400;
-        font-size: 21px;
-        text-transform: uppercase;
-      }
-
-      .listing-cardtag {
-        color: var(--portfolio-lightDark-cardTag);
-        font-family: var(--portfolio-font-body);
-        font-size: 14px;
-        font-weight: 400;
-      }
-      
-      /* Media layout */
-      
       .breadcrumb {
         display: flex;
         align-items: center;
-        width: 100%;
-        height: 60px;
         gap: 10px;
-        margin-left: 5%;
+        height: clamp(56px, 2vw, 60px);
         font-family: var(--portfolio-font-header);
-        font-weight: 450;
-        transition: .3s;
+        font-size: clamp(14px, 2vw, 18px);
+        transition: 0.3s;
       }
 
       div .breadcrumb-back {
@@ -737,64 +698,154 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         color: var(--portfolio-lightDark-blackWhite);
         font-weight: bold;
       }
-
-      .media-banner {
-        width: 100%;
-        height: auto;
-        transition: width 0.75s ease-in-out;
+      
+      /* Layouts */
+      .container {
+        margin: 64px auto;
+        width: 90%;
+        max-width: 840px;
+        text-align: left;
+        view-transition-name: location;
       }
 
-      .media-text {
-        color: var(--portfolio-lightDark-blackWhite);
+      .listing-titlecontainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+
+      #listing-select {
+        font-size: 1rem;
+        padding: 0.5em;
+        max-width: 240px;
+        width: 100%;
+      }
+
+      .listing-category {
         font-family: var(--portfolio-font-body);
+        font-size: var(--portfolio-fontsize-responsive);
+        text-transform: uppercase;
+        border-top: 6px solid var(--portfolio-lightDark-blackWhite);
+        min-height: 36px;
       }
 
-      .media-image {
+      .listing-category a {
+        color: var(--portfolio-lightDark-blackWhite);
+      }
+
+      .listing-grid {
+        display: grid;
+        gap: 24px;
         width: 100%;
-        height: auto;
-        margin-bottom: 18px;
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      div .listing-card {
+        width: 188px;
+        margin-bottom: 48px;
+        text-decoration: none;
+        transition: .4s;
+      }
+
+      .listing-cardimg {
+        background-color: var(--portfolio-lightDark-cardImg);
+        border-radius: 6px;
+        margin-bottom: 12px;
+        height: 120px;
+        transition: all 0.2s ease-in-out;
+        overflow: hidden;
+        display: block;
+      }
+
+      .listing-card:hover .listing-cardtitle,
+      .listing-card:focus .listing-cardtitle{
+        text-decoration: underline;
+      }
+
+      .listing-card:hover .listing-cardimg,
+      .listing-card:focus .listing-cardimg {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 10px 0px;
+      }
+
+      .listing-cardimg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .listing-cardtitle {
+        color: var(--portfolio-lightDark-blackWhite);
+        font-family: var(--portfolio-font-header);
+        font-weight: 400;
+        font-size: clamp(15px, 2vw, 21px);
+        text-transform: uppercase;
+      }
+
+      .listing-cardtag {
+        color: var(--portfolio-lightDark-cardTag);
+        font-family: var(--portfolio-font-body);
+        font-size: clamp(8px, 2vw, 14px);
+        font-weight: 400;
       }
 
       /* Media queries */
-
-      @media (max-width: 1200px) {
-        .listing-grid {
-          grid-template-columns: repeat(3, 1fr);
-        }
-      }
-      
-      @media (max-width: 800px) {
+      @media (max-width: 60em) {
         .listing-grid {
           grid-template-columns: repeat(2, 1fr);
         }
+        div .listing-card {
+          width: 100%;
+          margin-bottom: 36px;
+        }
+        .listing-cardimg {
+          height: 210px;
+        }
+        site-active-title h1 {
+          font-size: 72px;
+        }
+        .breadcrumb {
+          height: 40px;
+        }
       }
 
-      @media (max-width: 600px) {
+      @media (max-width: 37.5em) {
         .listing-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: repeat(1, 1fr);
+        }
+        div .listing-card {
+          margin-bottom: 24px;
+        }
+        .listing-cardimg {
+          height: 240px;
+        }
+        site-active-title h1 {
+          font-size: 64px;
         }
       }
     `];
   }
 
-  filterItems(e) {
+  _filterItems(e) {
     this.selectedTag = e.target.value;
     this.requestUpdate();
   }  
 
-  renderListing() {
+  _renderListing() {
     // Filter items based on selected tag
     const filteredItems = this.selectedTag
-    ? this.items.filter(item => {
-        let tags = toJS(item.metadata.tags);
-        if (tags) {
-          // Only include items with selected tag
-          tags = tags.split(',');
-          return tags.includes(this.selectedTag);
-        }
-        return false;
-      })
-    : this.items;
+      ? this.items.filter(item => {
+          let tags = toJS(item.metadata.tags);
+          if (tags) {
+            // Only include items with selected tag
+            tags = tags.split(',');
+            return tags.includes(this.selectedTag);
+          }
+          return false;
+        })
+      : this.items;
 
     // Filter top tags based on selected tag
     const filteredTags = this.selectedTag
@@ -808,76 +859,59 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             return false;
           })
         )
-    : this.childrenTopTags;
+      : this.childrenTopTags;
 
     return html`
-          <div class="listing-container">
-            <div class="listing-titlecontainer">
-              <site-active-title></site-active-title>
-              <!-- Render select for filtering tags (only appears if >1 tag OR 1 tag and items with no tag) -->
-              ${(this.childrenTopTags.length > 1 || (this.childrenTopTags.length > 0 && this.items.some(item => !item.metadata.tags)))
-                ? html`
-                  <select class="listing-select" @change="${this.filterItems}" value="${this.selectedTag}">
-                    <option value="">All</option>
-                    ${this.childrenTopTags.map(
-                      (tag) => html`<option value="${tag}">${tag}</option>`
-                    )}
-                  </select>`
-                : ''
-              }
-            </div>
-
-            <!-- Render cards based on filtered tags -->
-            ${filteredTags.length > 0
-              ? filteredTags.map(
-                  (topTag) => html`
-                    <h3 class="listing-category">${topTag}</h3>
-                    <div class="listing-grid">
-                      ${filteredItems.filter(item => {
-                        // Check if current item has the top-level tag
-                        let tags = toJS(item.metadata.tags);
-                        if (tags) {
-                          return tags.includes(topTag);
-                        }
-                        return false;
-                      }).map(item => {
-                        // Get all tags from the item
-                        let secondTag = toJS(item.metadata.tags).split(',')[1];
-
-                        return html`
-                          <a class="listing-card" href="${item.slug}">
-                            <div class="listing-cardimg">
-                              <img src="${item.metadata.image}" onerror="this.style.display='none'">
-                            </div>
-                            <div class="listing-cardtitle">${item.title}</div>
-                            <div class="listing-cardtag">${secondTag}</div>
-                          </a>
-                        `;
-                      })}
-                    </div>
-                  `)
-              : html``
-            }
-
-            <!-- Render cards with no tags -->
-            ${(!this.selectedTag && this.items.some(item => {
-              return !toJS(item.metadata.tags);
-            })) ? html`
-              <h3 class="listing-category"></h3>
+      <!-- Render cards based on filtered tags -->
+      ${filteredTags.length > 0
+        ? filteredTags.map(
+            (topTag) => html`
+              <h3 class="listing-category"><a @click="${this.testEditMode}" href="x/tags?display=card&tag=${topTag.trim()}">${topTag}</a></h3>
               <div class="listing-grid">
-                ${this.items.filter(item => {
-                  return !toJS(item.metadata.tags);
-                }).map(item => html`
-                  <a class="listing-card" href="${item.slug}">
-                    <div class="listing-cardimg">
-                      <img src="${item.metadata.image}" onerror="this.style.display='none'">
-                    </div>
-                    <div class="listing-cardtitle">${item.title}</div>
-                  </a>
-                `)}
+                ${filteredItems.filter(item => {
+                  // Check if current item has the top-level tag
+                  let tags = toJS(item.metadata.tags);
+                  if (tags) {
+                    return tags.includes(topTag);
+                  }
+                  return false;
+                }).map(item => {
+                  // Get all tags from the item
+                  let secondTag = toJS(item.metadata.tags).split(',')[1];
+
+                  return html`
+                    <a class="listing-card" href="${item.slug}">
+                      <div class="listing-cardimg">
+                        <img src="${item.metadata.image}" onerror="this.style.display='none'">
+                      </div>
+                      <div class="listing-cardtitle">${item.title}</div>
+                      <div class="listing-cardtag">${secondTag}</div>
+                    </a>
+                  `;
+                })}
               </div>
-            ` : ''}
-          </div>
+            `)
+        : html``
+      }
+
+      <!-- Render cards with no tags -->
+      ${(!this.selectedTag && this.items.some(item => {
+        return !toJS(item.metadata.tags);
+      })) ? html`
+        <h3 class="listing-category"></h3>
+        <div class="listing-grid">
+          ${this.items.filter(item => {
+            return !toJS(item.metadata.tags);
+          }).map(item => html`
+            <a class="listing-card" href="${item.slug}">
+              <div class="listing-cardimg">
+                <img src="${item.metadata.image}" onerror="this.style.display='none'">
+              </div>
+              <div class="listing-cardtitle">${item.title}</div>
+            </a>
+          `)}
+        </div>
+      ` : ''}
     `;
   }
 
@@ -892,33 +926,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     }
   }
 
-  // for debugging
-  ChangeLayout() {
-    if (this.activeLayout == "text") {
-      this.setLayout("listing");
-    } else if (this.activeLayout == "listing") {
-      this.setLayout("media");
-    } else {
-      this.setLayout("text");
-    }
-  }
-
-  // TODO: add support for back arrow svg
-  breadCrumbDecoration(){
-    return html``
-  }
-
-  // disable tags in edit mode
-  testEditMode(e) {
-    if (this.editMode) {
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation();
-    }
-  }
-
-  // removes focus from title and dropdown links after clicking them
-  handleLinkClick(e) {
+  // removes focus from title, scroll-button, theme-picker, and mobile menu items after clicking
+  removeFocus(e) {
     e.currentTarget.blur();
   }
 
@@ -927,77 +936,163 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     this.menuOpen = !this.menuOpen;
   }
 
+  // site theme footer button
+  toggleSiteTheme(e) {
+    e.currentTarget.blur();
+    switch (this.siteTheme) {
+      case "earth":
+        this.siteTheme = "water";
+        this.dataPrimary = 1;
+      break;
+      case "water":
+        this.siteTheme = "fire";
+        this.dataPrimary = 11;
+      break;
+      case "fire":
+        this.siteTheme = "sand";
+        this.dataPrimary = 23;
+      break;
+      case "sand":
+        this.siteTheme = "";
+        this.dataPrimary = 2;
+      break;
+      default:
+        this.siteTheme = "earth";
+        this.dataPrimary = 1;
+      break;
+    }
+  }
+
   // Lit render the HTML
   render() {
     return html`
-      ${this.isActiveLayoutButtonVisible
-      ? html`<button @click="${this.ChangeLayout}">Active layout: ${this.activeLayout}</button>`
-      : ``}
-      
       <header>
-        <a id="site-title" @click="${this.handleLinkClick}" href="${this.homeLink}">${this.siteTitle}</a>
-        <nav>
-          ${this.topItems.map(
-              (item) => html`
-                <a class="menu-item ${this.activeItem && this.activeItem.slug === item.slug ? 'active' : ''}" href="${item.slug}">${item.title}</a>
-              `,
-          )}
-        </nav>
-        ${this.menuOverflow.length > 0
-          ? html`
-            <button type="button" class=${this.menuOpen ? 'close' : ''} @click="${this._toggleMenu}">
-              <span class="visually-hidden">Toggle Menu</span>
-              <div class="navicon"></div>
-            </button>
-            <ul class="hidden-links ${!this.menuOpen ? 'hidden' : ''}">
-              ${this.menuOverflow.map(
-                (item) => html`<li><a class="${this.activeItem && this.activeItem.slug === item.slug ? 'active' : ''}" href="${item.slug}" @click="${this.handleLinkClick}">${item.title}</a></li>`
-              )}
-            </ul>
-          `
-        : ''}
-      </header>
-
-      <!-- single-level breadcrumb appears on any page with a parent -->
-      ${this.parentSlug
-      ? html`
-        <div class="breadcrumb-container">
-          <div class="breadcrumb">
-            <a class="breadcrumb-back" href=${this.parentSlug}>← ${this.parentTitle}</a>
-            <span class="breadcrumb-split">/</span>
-            <span class="breadcrumb-title">${this.activeItem.title}</span>
-          </div>
-        </div>
-      `
-      : ``}
-
-      ${this.activeLayout == "text"
-      ? ``
-      : this.activeLayout == "media"
-      ? html`
-        <img class="media-banner" src="${this.activeItem.metadata.image}">
-      `
-      : this.renderListing()}
-
-      <div class="${this.activeLayout}-container" id="contentcontainer">
-        ${this.activeLayout == "text" || this.activeLayout == "media"
-        ? html`
-          <site-active-title></site-active-title>
-          <ul class="tag-list">
-            ${this.activeTags && this.activeTags.length > 0
-            ? this.activeTags.slice(1).map(
+        <div class="header-inner">
+          <a id="site-title" @click="${this.removeFocus}" href="${this.homeLink}">${this.siteTitle}</a>
+          <nav>
+            ${this.topItems.map(
                 (item) => html`
-                  <li><a @click="${this.testEditMode}" href="x/tags?display=card&tag=${item.trim()}">${item}</a></li>
-                `
-              )
-            : ''}
-          </ul>
-        `
-        : ``}
+                  <a
+                    class="menu-item ${this.activeItem && (item.id === this.activeItem.id || (this.ancestorItem && item.id === this.ancestorItem.id)) ? 'active' : ''}"
+                    href="${item.slug}"
+                  >
+                    ${item.title}
+                  </a>
+                `,
+            )}
+          </nav>
+          ${this.menuOverflow.length > 0
+            ? html`
+              <div class="mobile-menu-wrapper">
+                <button type="button" class=${this.menuOpen ? 'close' : ''} @click="${this._toggleMenu}">
+                  <span class="visually-hidden">Toggle Menu</span>
+                  <div class="navicon"></div>
+                </button>
+                <ul class="hidden-links ${!this.menuOpen ? 'hidden' : ''}">
+                  ${this.menuOverflow.map(
+                    (item) => html`
+                    <li>
+                      <a
+                        class="${this.activeItem && (item.id === this.activeItem.id || (this.ancestorItem && item.id === this.ancestorItem.id)) ? 'active' : ''}"
+                        href="${item.slug}"
+                        @click="${this.removeFocus}"
+                      >
+                        ${item.title}
+                      </a>
+                    </li>`
+                  )}
+                </ul>
+              </div>
+            ` : ''}
+        </div>
+        <simple-icon-button-lite icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
+      </header>
+      
+      <div class="breadcrumb-wrapper">
+        <div class="breadcrumb">
+          ${this.activeParent
+            ? html`
+              <a class="breadcrumb-back" href=${this.activeParent.slug}>← ${this.activeParent.title}</a>
+              <span class="breadcrumb-split">/</span>
+              <span class="breadcrumb-title">${this.activeItem.title}</span>
+            ` : ``}
+        </div>
+      </div>
+
+      ${this.activeLayout == "media"
+        ? html`<site-active-media-banner></site-active-media-banner>`
+        : ''}
+
+      <div id="contentcontainer" class="container">
+        ${this.activeLayout == "listing"
+          ? html`
+              <div class="listing-titlecontainer">
+                <site-active-title></site-active-title>
+                <!-- Render select for filtering tags (only appears if >1 tag OR 1 tag and items with no tag) -->
+                ${(this.childrenTopTags.length > 1 || (this.childrenTopTags.length > 0 && this.items.some(item => !item.metadata.tags)))
+                  ? html`
+                    <select id="listing-select" @change="${this._filterItems}">
+                      <option value="" ?selected="${this.selectedTag === ''}">All</option>
+                      ${this.childrenTopTags.map(
+                        (tag) => html`
+                          <option value="${tag}" ?selected="${this.selectedTag === tag}">
+                            ${tag}
+                          </option>`
+                      )}
+                    </select>`
+                    : ''}
+              </div>
+          ` : html`
+                <site-active-title></site-active-title>
+                ${this.activeTags && this.activeTags.length > 0
+                  ? html`
+                      <ul class="tag-list">
+                        ${(this.activeLayout === "listing"
+                          ? this.activeTags
+                          : this.activeTags.slice(1)
+                        ).map(
+                          (item) => html`<li><a @click="${this.testEditMode}" href="x/tags?display=card&tag=${item.trim()}">${item}</a></li>`
+                        )}
+                      </ul>
+                  ` : ''}
+          `}
+
+        ${this.activeLayout == "listing"
+          ? this._renderListing()
+          : ''}
+
         <div id="slot"><slot></slot></div>
       </div>
 
-      <footer>© 2025 Collin Micheals.</footer>
+      <footer>
+        Generated: ${this.lastUpdated}<br><br>
+        © ${this.copyrightYear} ${store.manifest.author}.
+        <div
+          class="license-body"
+          xmlns:cc="${this.licenseLink}"
+          xmlns:dc="http://purl.org/dc/elements/1.1/"
+        >
+          ${this.licenseImage
+            ? html`
+                <a
+                  class="big-license-link"
+                  target="_blank"
+                  href="${this.licenseLink}"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    alt="${this.licenseName} graphic"
+                    src="${this.licenseImage}"
+                  />
+                </a>
+              ` : ``}
+        </div>
+        <simple-icon-button-lite icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
+        <scroll-button @click="${this.removeFocus}"></scroll-button>
+      </footer>
     `;
   }
 }
