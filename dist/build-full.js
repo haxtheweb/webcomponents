@@ -46,7 +46,6 @@ import "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-slide-theme.js";
 import "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-minimalist-theme.js";
 import "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-basic-theme.js";
 import "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-custom-theme.js";
-import "@haxtheweb/haxcms-elements/lib/core/themes/haxcms-user-theme.js";
 import "@haxtheweb/outline-player/outline-player.js";
 import "@haxtheweb/simple-blog/simple-blog.js";
 import "@haxtheweb/learn-two-theme/learn-two-theme.js";
