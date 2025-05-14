@@ -15,6 +15,7 @@ export const PrintBranchMixin = function (SuperClass) {
       super();
       enableServices(["haxcms"]);
       this.t.print = "Print";
+      this.t.printSite = "Print site";
       this.t.printPage = "Print page";
       this.t.printingPleaseWait = "Printing, please wait..";
       this.__printBranchLoading = false;
@@ -63,14 +64,14 @@ export const PrintBranchMixin = function (SuperClass) {
                 icon-position="top"
                 label="${this.__printBranchLoading
                   ? this.t.printingPleaseWait
-                  : this.t.print}"
+                  : this.t.printPage}"
                 id="print-branch-btn"
               >
               </simple-icon-button-lite>
               <simple-tooltip for="print-branch-btn" position="${position}">
                 ${this.__printBranchLoading
                   ? this.t.printingPleaseWait
-                  : this.t.print}
+                  : this.t.printPage}
               </simple-tooltip>
             </div>`
           : ``}
@@ -103,6 +104,107 @@ export const PrintBranchMixin = function (SuperClass) {
         link: base,
         magic: globalThis.__appCDN,
         base: base,
+        format: 'json',
+      };
+      const response = await MicroFrontendRegistry.call(
+        "@haxcms/siteToHtml",
+        params,
+      );
+      if (response.status == 200 && response.data) {
+        const link = globalThis.document.createElement("a");
+        // click link to download file
+        // @todo this downloads but claims to be corrupt.
+        link.href = globalThis.URL.createObjectURL(
+          b64toBlob(
+            btoa(unescape(encodeURIComponent(response.data))),
+            "text/html",
+          ),
+        );
+        /*link.download = `${toJS(store.activeTitle)}.html`;
+        link.target = "_blank";
+        this.appendChild(link);
+        link.click();
+        this.removeChild(link);*/
+        // fallback in case the service fails
+        globalThis.open(
+          globalThis.URL.createObjectURL(
+            b64toBlob(
+              btoa(unescape(encodeURIComponent(response.data))),
+              "text/html",
+            ),
+          ),
+          "",
+          "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
+        );
+      } else {
+        // fallback in case the service fails
+        globalThis.open(
+          globalThis.location.href + "?format=print-page",
+          "",
+          "left=0,top=0,width=800,height=800,toolbar=0,scrollbars=0,status=0,noopener=1,noreferrer=1",
+        );
+      }
+      this.__printBranchLoading = false;
+    }
+    // full site print button
+    PrintSiteButton(position = "auto") {
+      return html`
+        ${MicroFrontendRegistry.has("@haxcms/siteToHtml")
+          ? html` <div
+              class="print-branch-btn"
+              part="${this.editMode ? `edit-mode-active` : ``}"
+            >
+              <simple-icon-button-lite
+                part="print-branch-btn"
+                class="btn"
+                icon="${this.__printBranchLoading
+                  ? `hax:loading`
+                  : `icons:print`}"
+                @click="${this.printWholeSite}"
+                icon-position="top"
+                label="${this.__printBranchLoading
+                  ? this.t.printingPleaseWait
+                  : this.t.printSite}"
+                id="print-branch-btn"
+              >
+              </simple-icon-button-lite>
+              <simple-tooltip for="print-branch-btn" position="${position}">
+                ${this.__printBranchLoading
+                  ? this.t.printingPleaseWait
+                  : this.t.printSite}
+              </simple-tooltip>
+            </div>`
+          : ``}
+      `;
+    }
+    /**
+     * Download PDF, via microservice
+     */
+    async printWholeSite(e) {
+      this.__printBranchLoading = true;
+      // base helps w/ calculating URLs in content
+      var base = "";
+      if (globalThis.document.querySelector("base")) {
+        base = globalThis.document.querySelector("base").href;
+      }
+      const site = toJS(store.manifest);
+      const params = {
+        type: "site",
+        site: {
+          file: base + "site.json",
+          id: site.id,
+          title: site.title,
+          author: site.author,
+          description: site.description,
+          license: site.license,
+          metadata: site.metadata,
+          items: site.items,
+        },
+        ancestor: null,
+        link: base,
+        magic: globalThis.__appCDN,
+        base: base,
+        format: 'json',
       };
       const response = await MicroFrontendRegistry.call(
         "@haxcms/siteToHtml",

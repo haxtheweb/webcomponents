@@ -163,6 +163,7 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
       callback = null,
       caller = null,
       urlStringAddon = "",
+      rawResponse = false
     ) {
       if (this.has(name)) {
         const item = this.get(name);
@@ -192,6 +193,9 @@ export const MicroFrontendRegCapabilities = function (SuperClass) {
               },
             )
               .then((d) => {
+                if (rawResponse) {
+                  return d.text();
+                }
                 return d.ok ? d.json() : { status: d.status, data: null };
               })
               .catch((e, d) => {
