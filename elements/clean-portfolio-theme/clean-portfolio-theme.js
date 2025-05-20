@@ -307,7 +307,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             background-color: var(--portfolio-lightDark-bg);
             font-family: var(--portfolio-font-body);
             font-size: var(--portfolio-fontsize-responsive);
-
+            color-scheme: light dark;
+            scroll-behavior: smooth;
             /* theme colors */
             --portfolio-earth-accentLight: #689f38;
             --portfolio-earth-accentDark: #33691e;
@@ -321,6 +322,10 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             --portfolio-rose-accentDark:  #6a1b4d;
             --portfolio-violet-accentLight: #a27dff;
             --portfolio-violet-accentDark:  #392b6a;
+        }
+
+        body.dark-mode {
+          color-scheme: only dark;
         }
         `
     ];
