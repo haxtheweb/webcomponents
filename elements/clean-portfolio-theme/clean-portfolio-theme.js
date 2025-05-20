@@ -83,9 +83,14 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
     autorun(() => {
       let location = toJS(store.location);
-      this.transition(() => {
+      if (globalThis.document && globalThis.document.startViewTransition) {
+        globalThis.document.startViewTransition(() => {
+          this.location = location;
+        });
+      }
+      else {
         this.location = location;
-      });
+      }
     });
     
     // determines active layout based on following conditions:
@@ -103,10 +108,16 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           parent = "";
         }
 
-        this.transition(() => {
-          this.activeItem = active;
+        if (globalThis.document && globalThis.document.startViewTransition) {
+          globalThis.document.startViewTransition(() => {
+            this.activeItem = active;
             this.activeParent = parent;
-        });
+          });
+        }
+        else {
+          this.activeItem = active;
+          this.activeParent = parent;
+        }
         
         const items = store.getItemChildren(store.activeId);
         if (items) {
@@ -132,11 +143,18 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
               }
             });
 
-            this.transition(() => {
+            if (globalThis.document && globalThis.document.startViewTransition) {
+              globalThis.document.startViewTransition(() => {
+                this.items = [...items];
+                this.categoryTags = [...categoryTags];
+                this.allTags = [...allTags];
+              });
+            }
+            else {
               this.items = [...items];
               this.categoryTags = [...categoryTags];
-              this.allTags = [...allTags];
-            });
+              this.allTags = [...allTags];         
+            }
 
             // reset tag select filter
             this.selectedTag = "";
@@ -234,15 +252,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       this.menuOverflow = overflow;
       this.requestUpdate();
-    }
-  }
-
-  // util function for view transitions
-  transition(callback) {
-    if (globalThis.document?.startViewTransition) {
-      globalThis.document.startViewTransition(callback);
-    } else {
-      callback();
     }
   }
 
@@ -997,9 +1006,14 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   }
 
   setLayout(layout) {
-    this.transition(() => {
+    if (globalThis.document && globalThis.document.startViewTransition) {
+      globalThis.document.startViewTransition(() => {
+        this.activeLayout = layout;
+      });
+    }
+    else {
       this.activeLayout = layout;
-    });
+    }
   }
 
   // site theme footer button
