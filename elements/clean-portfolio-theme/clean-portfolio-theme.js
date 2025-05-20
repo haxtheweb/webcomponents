@@ -44,7 +44,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     this.copyrightYear = 0; // for footer copyright year
 
     // MobX variables/listeners
-    this.location = null;
     this.categoryTags = [];
     this.allTags = [];
     this.items = [];
@@ -79,18 +78,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         this.topItems = [...items];
       }
       this.__disposer.push(reaction);
-    });
-
-    autorun(() => {
-      let location = toJS(store.location);
-      if (globalThis.document && globalThis.document.startViewTransition) {
-        globalThis.document.startViewTransition(() => {
-          this.location = location;
-        });
-      }
-      else {
-        this.location = location;
-      }
     });
     
     // determines active layout based on following conditions:
@@ -262,7 +249,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       activeItem: { type: Object },
       activeParent: { type: Object },
       ancestorItem: { type: Object },
-      location: { type: Object },
       topItems: { type: Array },
       items: { type: Array },
       activeTags: { type: Array },
@@ -731,6 +717,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         flex-wrap: wrap;
         gap: 12px;
         margin-bottom: 20px;
+        view-transition-name: location;
       }
 
       #listing-select {
@@ -756,6 +743,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         display: grid;
         gap: 24px;
         width: 100%;
+        view-transition-name: location;
         grid-template-columns: repeat(4, 1fr);
       }
 
