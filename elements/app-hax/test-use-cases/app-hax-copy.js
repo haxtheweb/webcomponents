@@ -14,10 +14,6 @@ import "./lib/v2/AppHaxRouter.js";
 import "./lib/v2/app-hax-label.js";
 import "./lib/v2/app-hax-top-bar.js";
 import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
-import "./lib/v2/app-hax-use-case.js";
-import "./lib/v2/app-hax-use-case-filter.js";
-import "./lib/v2/app-hax-search-results.js";
-import "./lib/v2/app-hax-scroll-button.js";
 
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
@@ -476,6 +472,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       const badDevice = toJS(store.badDevice);
       if (badDevice === false) {
         import("@haxtheweb/rpg-character/rpg-character.js");
+        import("./lib/random-word/random-word.js");
       } else if (badDevice === true) {
         globalThis.document.body.classList.add("bad-device");
       }
@@ -719,7 +716,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
   // eslint-disable-next-line class-methods-use-this
   login() {
-    import("./lib/v2/app-hax-site-login.js").then(() => {
+    import("./lib/2/app-hax-site-login.js").then(() => {
       const p = globalThis.document.createElement("app-hax-site-login");
       if (this.querySelector('[slot="externalproviders"]')) {
         const cloneSlot = this.querySelector(
@@ -766,9 +763,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         }
         #home {
           display: inline-flex;
-        }
-        #wt {
-          border: solid 1px var(--simple-colors-default-theme-accent-12, var(--accent-color));
         }
         simple-toolbar-button {
           min-width: 48px;
@@ -865,18 +859,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           }
         }
         .label {
-          display: inline-flex;
-          text-align: flex-start;
-          align-items: center;
+          text-align: center;
         }
         app-hax-label {
           animation: 0.8s ease-in-out 0s scrollin;
           -webkit-animation: 0.8s ease-in-out 0s scrollin;
-          display: flex;
-          align-self: flex-start;
+          display: block;
           overflow: hidden;
-          margin-left: 24px;
-          margin-right: 24px;
         }
         app-hax-label h1 {
           font-weight: normal;
@@ -944,6 +933,29 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           font-family: "Press Start 2P", sans-serif;
           font-size: 12px;
         }
+
+        random-word:not(:defined) {
+          display: none;
+        }
+        random-word {
+          transform: rotate(25deg);
+          position: absolute;
+          right: 10px;
+          top: 120px;
+          padding: 12px;
+          font-size: 12px;
+          border: 4px solid var(--simple-colors-default-theme-grey-12);
+          background-color: var(--simple-colors-default-theme-yellow-5);
+          color: var(--simple-colors-default-theme-grey-12);
+          width: 100px;
+          word-wrap: break-word;
+          text-align: center;
+          cursor: pointer;
+          user-select: none;
+          opacity: 1;
+          visibility: visible;
+          transition: all 0.3s ease-in-out;
+        }
         #helpbtn {
           --simple-icon-height: 50px;
           --simple-icon-width: 50px;
@@ -979,6 +991,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           }
         }
         @media (max-width: 640px) {
+          random-word {
+            display: none;
+          }
           .content {
             margin-top: 4px;
           }
@@ -1149,6 +1164,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             data-event="super-daemon"
             show-text-label
           ></simple-toolbar-button>
+          <app-hax-search-bar
+            slot="center"
+            ?disabled="${this.isNewUser}"
+          ></app-hax-search-bar>
           <wired-button
             elevation="1"
             slot="right"
@@ -1270,10 +1289,19 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 : ``}
             </app-hax-label>
           </div>
-          
+          <random-word
+            key="${this.isNewUser ? `new` : `return`}"
+            .phrases="${this.phrases}"
+            @click="${this.getNewWord}"
+          ></random-word>
           <section class="content">${this.appBody(this.appMode)}</section>
         </confetti-container>
       </main>`;
+  }
+
+  getNewWord() {
+    this.shadowRoot.querySelector("random-word").getNewWord();
+    store.appEl.playSound("click");
   }
 
   appBody(routine) {
@@ -1294,14 +1322,20 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     return template;
   }
   
-  //EDIT HERE
   templateHome() {
-    return html`
-    <div class="start-journey">
-      <app-hax-use-case-filter></app-hax-use-case-filter>
+    return html`<div class="start-journey">
+        <a
+          href="createSite-step-1"
+          @click="${this.startJourney}"
+          tabindex="-1"
+          title="${this.t.startNewJourney}"
+        >
+          <app-hax-site-button
+            label="&gt; ${this.t.startNewJourney}"
+          ></app-hax-site-button>
+        </a>
       </div>
-      
-      `;
+      <app-hax-search-results></app-hax-search-results>`;
   }
 
   // eslint-disable-next-line class-methods-use-this
