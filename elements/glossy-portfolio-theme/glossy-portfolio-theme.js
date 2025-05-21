@@ -1,13 +1,18 @@
 /**
- * Copyright 2025 haxtheweb
+ * Copyright 2025 NazmanRosman
  * @license Apache-2.0, see LICENSE for full text.
  */
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-
+import "./lib/glossy-portfolio-card.js";
+import "./lib/glossy-portfolio-header.js";
+import "./lib/glossy-portfolio-page.js";
+import "./lib/glossy-portfolio-home.js";
+import "./lib/glossy-portfolio-grid.js";
+import "./lib/glossy-portfolio-about.js";
 /**
- * `glossy-portfolio-theme`
+ * `glossy-portfolio`
  * 
  * @demo index.html
  * @element glossy-portfolio-theme
@@ -21,6 +26,9 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "";
+    this.currentView = "home";
+
+
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -29,7 +37,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(LitElement)) {
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL("./locales/glossy-portfolio-theme.ar.json", import.meta.url).href +
+        new URL("./locales/glossy-portfolio.ar.json", import.meta.url).href +
         "/../",
       locales: ["ar", "es", "hi", "zh"],
     });
@@ -40,37 +48,57 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      currentView: { type: String },
     };
   }
+
+
 
   // Lit scoped styles
   static get styles() {
     return [super.styles,
     css`
+      :host{
+        --bg-color: #111111;
+        --main-font: "Manrope", "Manrope Placeholder", sans-serif;
+        --max-width: 1200px;
+        --page-padding: 0 25px;
+        --mobile-page-padding: 0 15px;
+        
+    
+      }
+ 
+      
       :host {
         display: block;
         color: var(--ddd-theme-primary);
-        background-color: var(--ddd-theme-accent);
-        font-family: var(--ddd-font-navigation);
-      }
-      .wrapper {
-        margin: var(--ddd-spacing-2);
-        padding: var(--ddd-spacing-4);
-      }
-      h3 span {
-        font-size: var(--glossy-portfolio-theme-label-font-size, var(--ddd-font-size-s));
+        background-color: var(--bg-color);
+        font-family: var(--main-font);
+        margin: auto;
+        box-sizing: border-box;
+        overflow: visible;
+        min-height: 100vh;
       }
     `];
   }
 
   // Lit render the HTML
+  
   render() {
-    return html`
-<div class="wrapper">
-  <h3><span>${this.t.title}:</span> ${this.title}</h3>
-  <slot></slot>
-</div>`;
-  }
+    if(this.currentView==="home"){
+      return html`
+      <glossy-portfolio-home></glossy-portfolio-home>
+      <!-- <glossy-portfolio-about></glossy-portfolio-about> -->
+      <!-- <glossy-portfolio-page></glossy-portfolio-page> -->
+      <!-- <glossy-portfolio-grid class="projects"></glossy-portfolio-grid> -->
+
+      `;
+    } 
+
+  } 
+
+  //changes currentview to project page when card is clicked
+
 
   /**
    * haxProperties integration via file reference

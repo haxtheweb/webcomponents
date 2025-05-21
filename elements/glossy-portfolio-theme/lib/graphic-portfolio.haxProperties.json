@@ -11,7 +11,7 @@
         "designTreatment": false
     },
     "gizmo": {
-        "title": "glossy-portfolio-theme",
+        "title": "glossy-portfolio",
         "description": "",
         "icon": "icons:android",
         "color": "purple",
@@ -20,7 +20,7 @@
         ],
         "handles": [],
         "meta": {
-            "author": "haxtheweb"
+            "author": "NazmanRosman"
         }
     },
     "settings": {
@@ -41,7 +41,7 @@
     },
     "demoSchema": [
         {
-            "tag": "glossy-portfolio-theme",
+            "tag": "glossy-portfolio",
             "properties": {
               "title": "Sample property title"
             },
