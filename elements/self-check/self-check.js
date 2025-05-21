@@ -461,5 +461,5 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
       .href;
   }
 }
-customElements.define(SelfCheck.tag, SelfCheck);
+globalThis.customElements.define(SelfCheck.tag, SelfCheck);
 export { SelfCheck };

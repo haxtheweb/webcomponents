@@ -140,4 +140,4 @@ export class LrnH5p extends LitElement {
     return schema;
   }
 }
-customElements.define(LrnH5p.tag, LrnH5p);
+globalThis.customElements.define(LrnH5p.tag, LrnH5p);

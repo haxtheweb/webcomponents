@@ -58,9 +58,6 @@ for project in */ ; do
     if [ -d "build" ]; then
       create_symlink_win ../../../elements/${p}/build ../../node_modules/@haxtheweb/${p}/build
     fi
-    if [ -d "src" ]; then
-      create_symlink_win ../../../elements/${p}/src ../../node_modules/@haxtheweb/${p}/src
-    fi
     if [ -d "dist" ]; then
       create_symlink_win ../../../elements/${p}/dist ../../node_modules/@haxtheweb/${p}/dist
     fi
@@ -83,16 +80,9 @@ for project in */ ; do
     if [ -d "build" ]; then
        ln -s ../../../elements/${p}/build ../../node_modules/@haxtheweb/${p}/build
     fi
-    if [ -d "src" ]; then
-       ln -s ../../../elements/${p}/src ../../node_modules/@haxtheweb/${p}/src
-    fi
     if [ -d "dist" ]; then
        ln -s ../../../elements/${p}/dist ../../node_modules/@haxtheweb/${p}/dist
     fi
-  fi
-  if [ -d "src/src" ]; then
-    echo "Found nested src/src in $project, deleting..."
-    unlink src/src
   fi
   if [ -d "lib/lib" ]; then
     echo "Found nested lib/lib in $project, deleting..."

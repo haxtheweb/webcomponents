@@ -808,5 +808,5 @@ class PolarisInventTheme extends LTIResizingMixin(
     super.disconnectedCallback();
   }
 }
-customElements.define(PolarisInventTheme.tag, PolarisInventTheme);
+globalThis.customElements.define(PolarisInventTheme.tag, PolarisInventTheme);
 export { PolarisInventTheme };

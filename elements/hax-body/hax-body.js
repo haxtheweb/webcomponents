@@ -4431,5 +4431,5 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     }
   }
 }
-customElements.define(HaxBody.tag, HaxBody);
+globalThis.customElements.define(HaxBody.tag, HaxBody);
 export { HaxBody };

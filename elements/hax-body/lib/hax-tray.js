@@ -2004,5 +2004,5 @@ class HaxTray extends I18NMixin(
   }
 }
 
-customElements.define(HaxTray.tag, HaxTray);
+globalThis.customElements.define(HaxTray.tag, HaxTray);
 export { HaxTray };

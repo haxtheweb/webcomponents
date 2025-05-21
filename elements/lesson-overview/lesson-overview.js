@@ -219,7 +219,7 @@ class LessonOverview extends I18NMixin(IntersectionObserverMixin(LitElement)) {
       .href;
   }
 }
-customElements.define(LessonOverview.tag, LessonOverview);
+globalThis.customElements.define(LessonOverview.tag, LessonOverview);
 export { LessonOverview };
 
 // convert seconds back into full time stamp

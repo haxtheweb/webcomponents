@@ -299,5 +299,5 @@ class HAXCMSSiteDashboard extends SimpleColors {
     );
   }
 }
-customElements.define(HAXCMSSiteDashboard.tag, HAXCMSSiteDashboard);
+globalThis.customElements.define(HAXCMSSiteDashboard.tag, HAXCMSSiteDashboard);
 export { HAXCMSSiteDashboard };

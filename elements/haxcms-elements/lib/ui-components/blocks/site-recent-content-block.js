@@ -218,5 +218,8 @@ class SiteRecentContentBlock extends LitElement {
     super.disconnectedCallback();
   }
 }
-customElements.define(SiteRecentContentBlock.tag, SiteRecentContentBlock);
+globalThis.customElements.define(
+  SiteRecentContentBlock.tag,
+  SiteRecentContentBlock,
+);
 export { SiteRecentContentBlock };

@@ -232,4 +232,7 @@ export class SiteActiveMediaBanner extends DDDSuper(LitElement) {
   }
 }
 
-customElements.define(SiteActiveMediaBanner.tag, SiteActiveMediaBanner);
+globalThis.customElements.define(
+  SiteActiveMediaBanner.tag,
+  SiteActiveMediaBanner,
+);

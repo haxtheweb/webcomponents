@@ -229,5 +229,5 @@ class BadgeSticker extends SimpleColors {
     this.skillsOpened = !this.skillsOpened;
   }
 }
-customElements.define(BadgeSticker.tag, BadgeSticker);
+globalThis.customElements.define(BadgeSticker.tag, BadgeSticker);
 export { BadgeSticker };

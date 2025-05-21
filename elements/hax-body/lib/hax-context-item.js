@@ -126,5 +126,5 @@ class HaxContextItem extends HaxToolbarItemBehaviors(LitElement) {
   }
 }
 
-customElements.define(HaxContextItem.tag, HaxContextItem);
+globalThis.customElements.define(HaxContextItem.tag, HaxContextItem);
 export { HaxContextItem };

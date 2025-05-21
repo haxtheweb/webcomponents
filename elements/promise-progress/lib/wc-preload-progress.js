@@ -40,4 +40,4 @@ export class WCPreloadProgress extends PromiseProgress {
   }
 }
 
-customElements.define(WCPreloadProgress.tag, WCPreloadProgress);
+globalThis.customElements.define(WCPreloadProgress.tag, WCPreloadProgress);

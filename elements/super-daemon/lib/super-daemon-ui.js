@@ -598,4 +598,4 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   }
 }
 
-customElements.define(SuperDaemonUI.tag, SuperDaemonUI);
+globalThis.customElements.define(SuperDaemonUI.tag, SuperDaemonUI);

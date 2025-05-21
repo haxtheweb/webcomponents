@@ -341,5 +341,5 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
       .href;
   }
 }
-customElements.define(StopNote.tag, StopNote);
+globalThis.customElements.define(StopNote.tag, StopNote);
 export { StopNote };

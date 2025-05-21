@@ -151,5 +151,5 @@ class MapMenuBuilder extends LitElement {
     return this;
   }
 }
-customElements.define(MapMenuBuilder.tag, MapMenuBuilder);
+globalThis.customElements.define(MapMenuBuilder.tag, MapMenuBuilder);
 export { MapMenuBuilder };

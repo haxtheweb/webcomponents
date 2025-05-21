@@ -101,5 +101,8 @@ class LrndesignImagemapHotspot extends LitElement {
     this.shadowRoot.querySelector("#heading").parent = parent;
   }
 }
-customElements.define(LrndesignImagemapHotspot.tag, LrndesignImagemapHotspot);
+globalThis.customElements.define(
+  LrndesignImagemapHotspot.tag,
+  LrndesignImagemapHotspot,
+);
 export { LrndesignImagemapHotspot };

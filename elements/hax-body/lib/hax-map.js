@@ -509,5 +509,5 @@ class HaxMap extends I18NMixin(SimpleColors) {
     };
   }
 }
-customElements.define(HaxMap.tag, HaxMap);
+globalThis.customElements.define(HaxMap.tag, HaxMap);
 export { HaxMap };

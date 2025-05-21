@@ -93,5 +93,5 @@ class DiscordEmbed extends LitElement {
     });
   }
 }
-customElements.define(DiscordEmbed.tag, DiscordEmbed);
+globalThis.customElements.define(DiscordEmbed.tag, DiscordEmbed);
 export { DiscordEmbed };

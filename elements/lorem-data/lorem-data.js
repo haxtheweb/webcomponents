@@ -717,5 +717,5 @@ class LoremData extends LoremDataBehaviors(LitElement) {
     changedProperties.forEach((oldValue, propName) => {});
   }
 }
-customElements.define(LoremData.tag, LoremData);
+globalThis.customElements.define(LoremData.tag, LoremData);
 export { LoremData };

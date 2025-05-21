@@ -120,5 +120,5 @@ class LrsEmitter extends IntersectionObserverMixin(LitElement) {
    */
   //disconnectedCallback() {}
 }
-customElements.define(LrsEmitter.tag, LrsEmitter);
+globalThis.customElements.define(LrsEmitter.tag, LrsEmitter);
 export { LrsEmitter };

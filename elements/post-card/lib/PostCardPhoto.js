@@ -93,4 +93,4 @@ export class PostCardPhoto extends SimpleColors {
     `;
   }
 }
-customElements.define(PostCardPhoto.tag, PostCardPhoto);
+globalThis.customElements.define(PostCardPhoto.tag, PostCardPhoto);

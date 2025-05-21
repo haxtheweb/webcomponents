@@ -154,4 +154,4 @@ export class BlockQuote extends DDD {
   }
 }
 
-customElements.define(BlockQuote.tag, BlockQuote);
+globalThis.customElements.define(BlockQuote.tag, BlockQuote);

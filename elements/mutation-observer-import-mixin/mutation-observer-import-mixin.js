@@ -20,7 +20,7 @@ class MutationObserverImportElement extends MutationObserverImportMixin(
     this.processElementList(this.children);
   }
 }
-customElements.define(
+globalThis.customElements.define(
   MutationObserverImportElement.tag,
   MutationObserverImportElement,
 );

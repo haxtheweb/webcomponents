@@ -1053,7 +1053,10 @@ class SimpleColorsSharedStyles extends LitElement {
     return parseInt(shade) - 1;
   }
 }
-customElements.define(SimpleColorsSharedStyles.tag, SimpleColorsSharedStyles);
+globalThis.customElements.define(
+  SimpleColorsSharedStyles.tag,
+  SimpleColorsSharedStyles,
+);
 export { SimpleColorsSharedStyles };
 /**
  * Checks to see if there is an instance available, and if not appends one

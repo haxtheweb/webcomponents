@@ -1734,7 +1734,7 @@ class GradeBookLite extends UIRenderPieces(
     return "grade-book-lite";
   }
 }
-customElements.define(GradeBookLite.tag, GradeBookLite);
+globalThis.customElements.define(GradeBookLite.tag, GradeBookLite);
 export { GradeBookLite };
 globalThis.GradeBook = globalThis.GradeBook || {};
 globalThis.GradeBook.requestAvailability = () => {

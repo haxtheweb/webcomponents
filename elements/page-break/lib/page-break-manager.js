@@ -294,6 +294,6 @@ globalThis.PageBreakManager.requestAvailability = () => {
   }
   return globalThis.PageBreakManager.instance;
 };
-customElements.define("page-break-manager", PageBreakManagerEl);
+globalThis.customElements.define("page-break-manager", PageBreakManagerEl);
 export const pageBreakManager =
   globalThis.PageBreakManager.requestAvailability();

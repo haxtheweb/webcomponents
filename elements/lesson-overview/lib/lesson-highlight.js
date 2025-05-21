@@ -188,5 +188,5 @@ class LessonHighlight extends SimpleColors {
     return new URL(`./${this.tag}.haxProperties.json`, import.meta.url).href;
   }
 }
-customElements.define(LessonHighlight.tag, LessonHighlight);
+globalThis.customElements.define(LessonHighlight.tag, LessonHighlight);
 export { LessonHighlight };

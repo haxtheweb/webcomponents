@@ -283,5 +283,5 @@ class RelativeHeading extends RelativeHeadingLite {
       this.manager.copyLink(this);
   }
 }
-customElements.define(RelativeHeading.tag, RelativeHeading);
+globalThis.customElements.define(RelativeHeading.tag, RelativeHeading);
 export { RelativeHeading };

@@ -186,5 +186,5 @@ class TwitterEmbed extends LitElement {
   }
 }
 
-customElements.define(TwitterEmbed.tag, TwitterEmbed);
+globalThis.customElements.define(TwitterEmbed.tag, TwitterEmbed);
 export { TwitterEmbed };

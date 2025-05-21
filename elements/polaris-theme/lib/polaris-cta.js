@@ -133,4 +133,4 @@ export class PolarisCta extends LitElement {
   }
 }
 
-customElements.define(PolarisCta.tag, PolarisCta);
+globalThis.customElements.define(PolarisCta.tag, PolarisCta);

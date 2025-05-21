@@ -78,5 +78,5 @@ class SiteDrawer extends LitElement {
     };
   }
 }
-customElements.define(SiteDrawer.tag, SiteDrawer);
+globalThis.customElements.define(SiteDrawer.tag, SiteDrawer);
 export { SiteDrawer };

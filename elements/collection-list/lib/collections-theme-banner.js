@@ -150,5 +150,8 @@ class CollectionsThemeBanner extends LitElement {
     return "collections-theme-banner";
   }
 }
-customElements.define(CollectionsThemeBanner.tag, CollectionsThemeBanner);
+globalThis.customElements.define(
+  CollectionsThemeBanner.tag,
+  CollectionsThemeBanner,
+);
 export { CollectionsThemeBanner };

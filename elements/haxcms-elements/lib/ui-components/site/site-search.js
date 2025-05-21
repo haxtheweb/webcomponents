@@ -372,5 +372,5 @@ class SiteSearch extends HAXCMSI18NMixin(DDD) {
     }
   }
 }
-customElements.define(SiteSearch.tag, SiteSearch);
+globalThis.customElements.define(SiteSearch.tag, SiteSearch);
 export { SiteSearch };

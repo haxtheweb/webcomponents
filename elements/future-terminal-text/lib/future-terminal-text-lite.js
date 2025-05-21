@@ -130,5 +130,8 @@ class FutureTerminalTextLite extends FutureTerminalTextLiteSuper(LitElement) {
     return "future-terminal-text-lite";
   }
 }
-customElements.define(FutureTerminalTextLite.tag, FutureTerminalTextLite);
+globalThis.customElements.define(
+  FutureTerminalTextLite.tag,
+  FutureTerminalTextLite,
+);
 export { FutureTerminalTextLite };

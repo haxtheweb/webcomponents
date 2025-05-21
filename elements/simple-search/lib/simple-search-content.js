@@ -51,6 +51,6 @@ class SimpleSearchContent extends LitElement {
     return html` <slot></slot> `;
   }
 }
-customElements.define(SimpleSearchContent.tag, SimpleSearchContent);
+globalThis.customElements.define(SimpleSearchContent.tag, SimpleSearchContent);
 
 export { SimpleSearchContent };

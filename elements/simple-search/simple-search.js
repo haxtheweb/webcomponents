@@ -498,6 +498,6 @@ class SimpleSearch extends LitElement {
     return results;
   }
 }
-customElements.define(SimpleSearch.tag, SimpleSearch);
+globalThis.customElements.define(SimpleSearch.tag, SimpleSearch);
 
 export { SimpleSearch };

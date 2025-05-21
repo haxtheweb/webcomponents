@@ -215,5 +215,5 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
     super.disconnectedCallback();
   }
 }
-customElements.define(SiteBreadcrumb.tag, SiteBreadcrumb);
+globalThis.customElements.define(SiteBreadcrumb.tag, SiteBreadcrumb);
 export { SiteBreadcrumb };

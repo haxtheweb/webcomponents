@@ -185,5 +185,5 @@ class SiteUuidLink extends LitElement {
     }
   }
 }
-customElements.define(SiteUuidLink.tag, SiteUuidLink);
+globalThis.customElements.define(SiteUuidLink.tag, SiteUuidLink);
 export { SiteUuidLink };

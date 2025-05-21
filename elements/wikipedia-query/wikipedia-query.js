@@ -318,5 +318,5 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
       .href;
   }
 }
-customElements.define(WikipediaQuery.tag, WikipediaQuery);
+globalThis.customElements.define(WikipediaQuery.tag, WikipediaQuery);
 export { WikipediaQuery };

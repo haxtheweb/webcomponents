@@ -933,5 +933,5 @@ class CleanTwo extends LTIResizingMixin(
     super.disconnectedCallback();
   }
 }
-customElements.define(CleanTwo.tag, CleanTwo);
+globalThis.customElements.define(CleanTwo.tag, CleanTwo);
 export { CleanTwo };

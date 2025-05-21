@@ -168,5 +168,5 @@ class DateCard extends SimpleColors {
     `;
   }
 }
-customElements.define(DateCard.tag, DateCard);
+globalThis.customElements.define(DateCard.tag, DateCard);
 export { DateCard };

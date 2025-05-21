@@ -297,7 +297,7 @@ class TourStop {
   }
 }
 
-customElements.define("simple-tour", SimpleTour);
+globalThis.customElements.define("simple-tour", SimpleTour);
 export { SimpleTour, TourStop };
 
 // register globally so we can make sure there is only one

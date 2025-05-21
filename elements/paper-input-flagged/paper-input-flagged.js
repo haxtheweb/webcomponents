@@ -262,5 +262,5 @@ class PaperInputFlagged extends LitElement {
     }
   }
 }
-customElements.define(PaperInputFlagged.tag, PaperInputFlagged);
+globalThis.customElements.define(PaperInputFlagged.tag, PaperInputFlagged);
 export { PaperInputFlagged };

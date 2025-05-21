@@ -189,4 +189,4 @@ class CourseIntroHeader extends DDD {
     return "course-intro-header";
   }
 }
-customElements.define(CourseIntroHeader.tag, CourseIntroHeader);
+globalThis.customElements.define(CourseIntroHeader.tag, CourseIntroHeader);

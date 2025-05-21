@@ -158,5 +158,5 @@ class BeakerBroker extends LitElement {
     return await response;
   }
 }
-customElements.define(BeakerBroker.tag, BeakerBroker);
+globalThis.customElements.define(BeakerBroker.tag, BeakerBroker);
 export { BeakerBroker };

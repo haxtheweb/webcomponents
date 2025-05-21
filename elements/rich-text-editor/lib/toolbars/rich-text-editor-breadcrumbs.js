@@ -145,5 +145,8 @@ class RichTextEditorBreadcrumbs extends RichTextEditorRangeBehaviors(
     ];
   }
 }
-customElements.define(RichTextEditorBreadcrumbs.tag, RichTextEditorBreadcrumbs);
+globalThis.customElements.define(
+  RichTextEditorBreadcrumbs.tag,
+  RichTextEditorBreadcrumbs,
+);
 export { RichTextEditorBreadcrumbs };

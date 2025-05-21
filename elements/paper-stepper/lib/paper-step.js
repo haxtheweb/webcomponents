@@ -4,5 +4,5 @@ class PaperStep extends LitElement {
     return "paper-step";
   }
 }
-customElements.define(PaperStep.tag, PaperStep);
+globalThis.customElements.define(PaperStep.tag, PaperStep);
 export { PaperStep };

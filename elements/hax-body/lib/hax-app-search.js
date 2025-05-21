@@ -433,5 +433,5 @@ class HaxAppSearch extends LitElement {
     }, obj || self);
   }
 }
-customElements.define(HaxAppSearch.tag, HaxAppSearch);
+globalThis.customElements.define(HaxAppSearch.tag, HaxAppSearch);
 export { HaxAppSearch };

@@ -333,5 +333,5 @@ class HAXElementCardList extends LitElement {
     });
   }
 }
-customElements.define(HAXElementCardList.tag, HAXElementCardList);
+globalThis.customElements.define(HAXElementCardList.tag, HAXElementCardList);
 export { HAXElementCardList };

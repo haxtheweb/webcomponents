@@ -146,5 +146,5 @@ class HAXCMSBackendDemo extends LitElement {
     }, 500);
   }
 }
-customElements.define(HAXCMSBackendDemo.tag, HAXCMSBackendDemo);
+globalThis.customElements.define(HAXCMSBackendDemo.tag, HAXCMSBackendDemo);
 export { HAXCMSBackendDemo };

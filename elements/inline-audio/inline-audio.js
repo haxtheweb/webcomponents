@@ -294,5 +294,5 @@ class InlineAudio extends I18NMixin(DDD) {
   }
 }
 
-customElements.define(InlineAudio.tag, InlineAudio);
+globalThis.customElements.define(InlineAudio.tag, InlineAudio);
 export { InlineAudio };

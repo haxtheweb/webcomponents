@@ -44,4 +44,4 @@ export class AppHAXWiredToggle extends SimpleTourFinder(WiredDarkmodeToggle) {
     `;
   }
 }
-customElements.define(AppHAXWiredToggle.tag, AppHAXWiredToggle);
+globalThis.customElements.define(AppHAXWiredToggle.tag, AppHAXWiredToggle);

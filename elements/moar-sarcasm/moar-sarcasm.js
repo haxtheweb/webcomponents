@@ -163,5 +163,5 @@ class MoarSarcasm extends HTMLElement {
     }
   }
 }
-customElements.define(MoarSarcasm.tag, MoarSarcasm);
+globalThis.customElements.define(MoarSarcasm.tag, MoarSarcasm);
 export { MoarSarcasm };

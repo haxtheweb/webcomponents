@@ -419,5 +419,5 @@ class TerribleThemes extends HAXCMSRememberRoute(
     this.nextPage = e.detail.value;
   }
 }
-customElements.define(TerribleThemes.tag, TerribleThemes);
+globalThis.customElements.define(TerribleThemes.tag, TerribleThemes);
 export { TerribleThemes };

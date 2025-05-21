@@ -116,6 +116,6 @@ class ModelInfo extends LitElement {
   }
 }
 
-customElements.define("model-info", ModelInfo);
+globalThis.customElements.define("model-info", ModelInfo);
 
 export { ModelInfo };

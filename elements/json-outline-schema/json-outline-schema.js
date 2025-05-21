@@ -694,5 +694,5 @@ class JsonOutlineSchema extends HTMLElement {
     return items;
   }
 }
-customElements.define(JsonOutlineSchema.tag, JsonOutlineSchema);
+globalThis.customElements.define(JsonOutlineSchema.tag, JsonOutlineSchema);
 export { JsonOutlineSchema, JSONOutlineSchemaItem };

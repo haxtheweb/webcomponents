@@ -72,5 +72,8 @@ class SimpleToolbarButtonGroup extends RadioBehaviors(LitElement) {
     this.selectItem(e.detail.isToggled ? e.detail.id : undefined);
   }
 }
-customElements.define(SimpleToolbarButtonGroup.tag, SimpleToolbarButtonGroup);
+globalThis.customElements.define(
+  SimpleToolbarButtonGroup.tag,
+  SimpleToolbarButtonGroup,
+);
 export { SimpleToolbarButtonGroup };

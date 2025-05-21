@@ -114,4 +114,4 @@ export class WiredDarkmodeToggle extends WiredToggle {
     ];
   }
 }
-customElements.define(WiredDarkmodeToggle.tag, WiredDarkmodeToggle);
+globalThis.customElements.define(WiredDarkmodeToggle.tag, WiredDarkmodeToggle);

@@ -247,5 +247,5 @@ class WysiwygHax extends LitElement {
     this.bodyValue = e.detail.value;
   }
 }
-customElements.define(WysiwygHax.tag, WysiwygHax);
+globalThis.customElements.define(WysiwygHax.tag, WysiwygHax);
 export { WysiwygHax };

@@ -1330,5 +1330,5 @@ class HAXCMSSiteStore extends HTMLElement {
     }
   }
 }
-customElements.define(HAXCMSSiteStore.tag, HAXCMSSiteStore);
+globalThis.customElements.define(HAXCMSSiteStore.tag, HAXCMSSiteStore);
 export { HAXCMSSiteStore };

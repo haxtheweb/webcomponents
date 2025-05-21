@@ -74,5 +74,8 @@ const FullscreenBehaviors = function (SuperClass) {
  * @element fullscreen-behaviors
  */
 class FullscreenBehaviorsEl extends FullscreenBehaviors(LitElement) {}
-customElements.define(FullscreenBehaviorsEl.tag, FullscreenBehaviorsEl);
+globalThis.customElements.define(
+  FullscreenBehaviorsEl.tag,
+  FullscreenBehaviorsEl,
+);
 export { FullscreenBehaviorsEl, FullscreenBehaviors };

@@ -180,5 +180,5 @@ class ImgViewModal extends LitElement {
     }
   }
 }
-customElements.define(ImgViewModal.tag, ImgViewModal);
+globalThis.customElements.define(ImgViewModal.tag, ImgViewModal);
 export { ImgViewModal };

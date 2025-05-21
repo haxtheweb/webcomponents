@@ -103,4 +103,4 @@ class DateChip extends SimpleColors {
   }
 }
 
-customElements.define(DateChip.tag, DateChip);
+globalThis.customElements.define(DateChip.tag, DateChip);

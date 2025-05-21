@@ -42,8 +42,8 @@
   "dependencies": {
     "@haxtheweb/intersection-element": "^10.0.0",
     "@haxtheweb/simple-icon": "^10.0.2",
-    "@lit-labs/virtualizer": "^2.0.14",
-    "lit": "^3.2.1"
+    "@lit-labs/virtualizer": "^2.1.0",
+    "lit": "^3.3.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.4",

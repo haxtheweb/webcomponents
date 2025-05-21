@@ -51,5 +51,8 @@ class SimpleFieldsHtmlBlock extends LitElement {
   }
 }
 
-customElements.define(SimpleFieldsHtmlBlock.tag, SimpleFieldsHtmlBlock);
+globalThis.customElements.define(
+  SimpleFieldsHtmlBlock.tag,
+  SimpleFieldsHtmlBlock,
+);
 export { SimpleFieldsHtmlBlock };

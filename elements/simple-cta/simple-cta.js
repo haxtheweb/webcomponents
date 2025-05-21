@@ -411,5 +411,5 @@ class SimpleCta extends DDDPulseEffectSuper(
     });
   }
 }
-customElements.define(SimpleCta.tag, SimpleCta);
+globalThis.customElements.define(SimpleCta.tag, SimpleCta);
 export { SimpleCta };

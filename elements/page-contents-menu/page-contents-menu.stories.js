@@ -12,7 +12,7 @@ export default {
 };
 const utils = new StorybookUtilities();
 export const HeadersBelowTag = () => {
-  const contents = document.createElement("div");
+  const contents = globalThis.document.createElement("div");
   contents.innerHTML = `<page-contents-menu relationship="parent"></page-contents-menu>
   <h1>This is a menu position to a heading</h1>
   <p>Stuff and things</p>

@@ -171,5 +171,5 @@ class A11yMediaPlayButton extends A11yMediaButton {
     `;
   }
 }
-customElements.define(A11yMediaPlayButton.tag, A11yMediaPlayButton);
+globalThis.customElements.define(A11yMediaPlayButton.tag, A11yMediaPlayButton);
 export { A11yMediaPlayButton };

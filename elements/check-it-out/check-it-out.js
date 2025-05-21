@@ -421,5 +421,5 @@ class CheckItOut extends IntersectionObserverMixin(LitElement) {
     });
   }
 }
-customElements.define(CheckItOut.tag, CheckItOut);
+globalThis.customElements.define(CheckItOut.tag, CheckItOut);
 export { CheckItOut };

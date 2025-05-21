@@ -275,5 +275,5 @@ class LrndesignImagemap extends LitElement {
     }
   }
 }
-customElements.define(LrndesignImagemap.tag, LrndesignImagemap);
+globalThis.customElements.define(LrndesignImagemap.tag, LrndesignImagemap);
 export { LrndesignImagemap };

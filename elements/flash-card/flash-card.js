@@ -102,4 +102,4 @@ export class FlashCard extends SimpleColors {
   }
 }
 
-customElements.define(FlashCard.tag, FlashCard);
+globalThis.customElements.define(FlashCard.tag, FlashCard);

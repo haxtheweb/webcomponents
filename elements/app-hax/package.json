@@ -73,8 +73,8 @@
     "@haxtheweb/wc-autoload": "^10.0.2",
     "@lit-labs/motion": "^1.0.7",
     "@vaadin/router": "^1.7.5",
-    "lit": "^3.2.1",
-    "mobx": "6.12.4",
+    "lit": "^3.3.0",
+    "mobx": "6.13.7",
     "roughjs": "4.4.5",
     "scrollable-component": "^1.2.0",
     "wired-elements": "3.0.0-rc.6"

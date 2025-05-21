@@ -94,5 +94,8 @@ class GradeBookStudentBlock extends I18NMixin(LitElement) {
     return "grade-book-student-block";
   }
 }
-customElements.define(GradeBookStudentBlock.tag, GradeBookStudentBlock);
+globalThis.customElements.define(
+  GradeBookStudentBlock.tag,
+  GradeBookStudentBlock,
+);
 export { GradeBookStudentBlock };

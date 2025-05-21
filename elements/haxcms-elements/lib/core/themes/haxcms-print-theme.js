@@ -109,5 +109,5 @@ class HAXCMSPrintTheme extends CleanTwo {
     return "haxcms-print-theme";
   }
 }
-customElements.define(HAXCMSPrintTheme.tag, HAXCMSPrintTheme);
+globalThis.customElements.define(HAXCMSPrintTheme.tag, HAXCMSPrintTheme);
 export { HAXCMSPrintTheme };

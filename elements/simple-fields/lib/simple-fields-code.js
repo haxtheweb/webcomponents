@@ -261,5 +261,5 @@ class SimpleFieldsCode extends SimpleFieldsContainerBehaviors(LitElement) {
     );
   }
 }
-customElements.define(SimpleFieldsCode.tag, SimpleFieldsCode);
+globalThis.customElements.define(SimpleFieldsCode.tag, SimpleFieldsCode);
 export { SimpleFieldsCode };

@@ -314,5 +314,5 @@ class SiteChildrenBlock extends LitElement {
     };
   }
 }
-customElements.define(SiteChildrenBlock.tag, SiteChildrenBlock);
+globalThis.customElements.define(SiteChildrenBlock.tag, SiteChildrenBlock);
 export { SiteChildrenBlock };

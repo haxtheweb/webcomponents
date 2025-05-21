@@ -177,4 +177,4 @@ export class EbookButton extends LitElement {
     return "ebook-button";
   }
 }
-customElements.define(EbookButton.tag, EbookButton);
+globalThis.customElements.define(EbookButton.tag, EbookButton);

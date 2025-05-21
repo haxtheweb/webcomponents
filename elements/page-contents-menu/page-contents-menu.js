@@ -613,5 +613,5 @@ class PageContentsMenu extends DDD {
     }
   }
 }
-customElements.define(PageContentsMenu.tag, PageContentsMenu);
+globalThis.customElements.define(PageContentsMenu.tag, PageContentsMenu);
 export { PageContentsMenu };

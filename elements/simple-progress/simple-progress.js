@@ -154,5 +154,5 @@ class SimpleProgress extends HTMLElement {
     else progress.classList.remove("finished");
   }
 }
-customElements.define(SimpleProgress.tag, SimpleProgress);
+globalThis.customElements.define(SimpleProgress.tag, SimpleProgress);
 export { SimpleProgress };

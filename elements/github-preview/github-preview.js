@@ -690,5 +690,5 @@ class GithubPreview extends IntersectionObserverMixin(LitElement) {
   }
 }
 
-customElements.define(GithubPreview.tag, GithubPreview);
+globalThis.customElements.define(GithubPreview.tag, GithubPreview);
 export { GithubPreview };

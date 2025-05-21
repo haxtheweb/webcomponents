@@ -149,4 +149,4 @@ export class ActivityBox extends LitElement {
   }
 }
 
-customElements.define(ActivityBox.tag, ActivityBox);
+globalThis.customElements.define(ActivityBox.tag, ActivityBox);

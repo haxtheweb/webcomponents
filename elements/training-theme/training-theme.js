@@ -371,5 +371,5 @@ class TrainingTheme extends HAXCMSOperationButtons(
     `;
   }
 }
-customElements.define(TrainingTheme.tag, TrainingTheme);
+globalThis.customElements.define(TrainingTheme.tag, TrainingTheme);
 export { TrainingTheme };

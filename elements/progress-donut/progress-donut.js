@@ -280,5 +280,5 @@ class ProgressDonut extends LrndesignPie {
     super.updated(changedProperties);
   }
 }
-customElements.define(ProgressDonut.tag, ProgressDonut);
+globalThis.customElements.define(ProgressDonut.tag, ProgressDonut);
 export { ProgressDonut };

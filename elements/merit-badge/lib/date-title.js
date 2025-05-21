@@ -122,5 +122,5 @@ class DateTitle extends LitElement {
   }
 }
 
-customElements.define(DateTitle.tag, DateTitle);
+globalThis.customElements.define(DateTitle.tag, DateTitle);
 export { DateTitle };

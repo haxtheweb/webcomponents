@@ -101,7 +101,7 @@ export const SimpleColorsStory = () => {
 };
 
 export const AllTheSimpleColors = () => {
-  return document.createElement("simple-colors-swatches");
+  return globalThis.document.createElement("simple-colors-swatches");
 };
 
 export const SimpleColorsPickerStory = () => {

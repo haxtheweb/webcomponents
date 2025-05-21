@@ -519,4 +519,4 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
   }
 }
 
-customElements.define(SuperDaemonSearch.tag, SuperDaemonSearch);
+globalThis.customElements.define(SuperDaemonSearch.tag, SuperDaemonSearch);

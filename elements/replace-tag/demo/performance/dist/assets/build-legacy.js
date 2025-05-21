@@ -1,15 +1,15 @@
 var defs,
   ancient = !1,
   cdn = "./";
-window.WCGlobalCDNPath && (cdn = window.WCGlobalCDNPath),
-  window.__appCDN && (cdn = window.__appCDN);
+globalThis.WCGlobalCDNPath && (cdn = globalThis.WCGlobalCDNPath),
+  globalThis.__appCDN && (cdn = globalThis.__appCDN);
 try {
   "undefined" == typeof Symbol && (ancient = !0), new Function("let a;");
 } catch (e) {
   ancient = !0;
 }
-(window.__appForceUpgrade || window.WCForceUpgrade) && ancient
-  ? (window.location = "assets/upgrade-browser.html")
+(globalThis.__appForceUpgrade || globalThis.WCForceUpgrade) && ancient
+  ? (globalThis.location = "assets/upgrade-browser.html")
   : (!(function () {
       function e(e, n, t) {
         var o = e;
@@ -188,16 +188,16 @@ try {
       function c() {
         return (
           document.baseURI ||
-          (document.querySelector("base") || window.location).href
+          (document.querySelector("base") || globalThis.location).href
         );
       }
-      if (!window.define) {
+      if (!globalThis.define) {
         var l = Object.create(null),
           f = void 0,
           p = 0,
           m = void 0,
           w = c();
-        (window.define = function (e, n) {
+        (globalThis.define = function (e, n) {
           var o = !1;
           f = function () {
             return (o = !0), (f = void 0), [e, n];
@@ -205,8 +205,8 @@ try {
           var r = (function () {
               var e = document.currentScript;
               if (!e) return w;
-              if (window.HTMLImports) {
-                var n = window.HTMLImports.importForElement(e);
+              if (globalThis.HTMLImports) {
+                var n = globalThis.HTMLImports.importForElement(e);
                 return n ? n.href : w;
               }
               var t = e.ownerDocument.createElement("a");
@@ -242,14 +242,14 @@ try {
             }
           }, 0);
         }),
-          (window.define._reset = function () {
+          (globalThis.define._reset = function () {
             for (var e in l) delete l[e];
             (f = void 0), (p = 0), (m = void 0), (w = c());
           });
         var v = document.createElement("a");
       }
     })(),
-    (defs = window.customElements
+    (defs = globalThis.customElements
       ? [
           cdn + "assets/babel-top.js",
           cdn +
@@ -266,15 +266,15 @@ try {
           cdn +
             "build/es5-amd/node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
         ]),
-    (window.WCAutoloadPolyfillEntryPoint =
+    (globalThis.WCAutoloadPolyfillEntryPoint =
       cdn + "build/es5-amd/node_modules/@haxtheweb/wc-autoload/wc-autoload.js"),
     define(defs, function () {
       "use strict";
       define([
         cdn +
           "build/es5-amd/node_modules/@haxtheweb/deduping-fix/deduping-fix.js",
-        window.WCAutoloadPolyfillEntryPoint,
+        globalThis.WCAutoloadPolyfillEntryPoint,
       ], function () {
-        window.WCAutoload.process();
+        globalThis.WCAutoload.process();
       });
     }));

@@ -1248,5 +1248,5 @@ const SimpleColorsSuper = function (SuperClass) {
   * @element simple-colors
   */
 class SimpleColors extends SimpleColorsSuper(LitElement) {}
-customElements.define(SimpleColors.tag, SimpleColors);
+globalThis.customElements.define(SimpleColors.tag, SimpleColors);
 export { SimpleColors, SimpleColorsSuper };

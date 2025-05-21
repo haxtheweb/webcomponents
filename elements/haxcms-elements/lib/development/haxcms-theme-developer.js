@@ -360,5 +360,8 @@ class HAXCMSThemeDeveloper extends HAXCMSPolymerElementTheme {
     this.windowControllers.abort();
   }
 }
-customElements.define(HAXCMSThemeDeveloper.tag, HAXCMSThemeDeveloper);
+globalThis.customElements.define(
+  HAXCMSThemeDeveloper.tag,
+  HAXCMSThemeDeveloper,
+);
 export { HAXCMSThemeDeveloper };

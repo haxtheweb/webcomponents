@@ -4139,7 +4139,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     return properties;
   }
 }
-customElements.define(HaxStore.tag, HaxStore);
+globalThis.customElements.define(HaxStore.tag, HaxStore);
 export { HaxStore };
 // window bridge for external projects that want to account for HAX
 // yet don't want to require it as part of an import chain

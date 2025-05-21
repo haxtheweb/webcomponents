@@ -73,4 +73,4 @@ class LoadingIndicator extends LitElement {
     return "loading-indicator";
   }
 }
-customElements.define(LoadingIndicator.tag, LoadingIndicator);
+globalThis.customElements.define(LoadingIndicator.tag, LoadingIndicator);

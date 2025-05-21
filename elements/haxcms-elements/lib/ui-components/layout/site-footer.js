@@ -92,5 +92,5 @@ class SiteFooter extends LitElement {
     super.disconnectedCallback();
   }
 }
-customElements.define(SiteFooter.tag, SiteFooter);
+globalThis.customElements.define(SiteFooter.tag, SiteFooter);
 export { SiteFooter };

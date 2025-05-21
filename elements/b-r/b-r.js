@@ -50,5 +50,5 @@ class BR extends LitElement {
     return "b-r";
   }
 }
-customElements.define(BR.tag, BR);
+globalThis.customElements.define(BR.tag, BR);
 export { BR };

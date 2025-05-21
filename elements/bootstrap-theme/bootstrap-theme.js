@@ -692,5 +692,5 @@ class BootstrapTheme extends HAXCMSThemeParts(
     changedProperties.forEach((oldValue, propName) => {});
   }
 }
-customElements.define(BootstrapTheme.tag, BootstrapTheme);
+globalThis.customElements.define(BootstrapTheme.tag, BootstrapTheme);
 export { BootstrapTheme };

@@ -78,4 +78,4 @@ export class AppHaxRouter extends HTMLElement {
     store.location = e.detail.location;
   }
 }
-customElements.define(AppHaxRouter.tag, AppHaxRouter);
+globalThis.customElements.define(AppHaxRouter.tag, AppHaxRouter);

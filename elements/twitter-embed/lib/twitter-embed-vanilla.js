@@ -153,5 +153,5 @@ class TwitterEmbedVanilla extends HTMLElement {
     </div>`;
   }
 }
-customElements.define(TwitterEmbedVanilla.tag, TwitterEmbedVanilla);
+globalThis.customElements.define(TwitterEmbedVanilla.tag, TwitterEmbedVanilla);
 export { TwitterEmbedVanilla };

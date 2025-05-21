@@ -55,7 +55,7 @@ class GradeBookStoreClass extends LitElement {
     return null;
   }
 }
-customElements.define(GradeBookStoreClass.tag, GradeBookStoreClass);
+globalThis.customElements.define(GradeBookStoreClass.tag, GradeBookStoreClass);
 export { GradeBookStoreClass };
 globalThis.GradeBookStore = globalThis.GradeBookStore || {};
 globalThis.GradeBookStore.requestAvailability = function () {

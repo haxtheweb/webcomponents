@@ -844,5 +844,5 @@ class CleanOne extends LTIResizingMixin(
     super.nextPage(e);
   }
 }
-customElements.define(CleanOne.tag, CleanOne);
+globalThis.customElements.define(CleanOne.tag, CleanOne);
 export { CleanOne };

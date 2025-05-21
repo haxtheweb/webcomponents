@@ -94,4 +94,7 @@ class CourseIntroLessonPlans extends DDD {
     return "course-intro-lesson-plans";
   }
 }
-customElements.define(CourseIntroLessonPlans.tag, CourseIntroLessonPlans);
+globalThis.customElements.define(
+  CourseIntroLessonPlans.tag,
+  CourseIntroLessonPlans,
+);

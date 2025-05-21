@@ -205,7 +205,10 @@ class SimplePopoverManager extends LitElement {
     this.popover = this.shadowRoot.querySelector("simple-popover");
   }
 }
-customElements.define("simple-popover-manager", SimplePopoverManager);
+globalThis.customElements.define(
+  "simple-popover-manager",
+  SimplePopoverManager,
+);
 export { SimplePopoverManager };
 
 // register globally so we can make sure there is only one

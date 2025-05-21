@@ -125,7 +125,7 @@ class DisqusEmbed extends LitElement {
     }
   }
 }
-customElements.define(DisqusEmbed.tag, DisqusEmbed);
+globalThis.customElements.define(DisqusEmbed.tag, DisqusEmbed);
 export { DisqusEmbed };
 
 class DisqusBroker extends LitElement {
@@ -238,7 +238,7 @@ class DisqusBroker extends LitElement {
     }
   }
 }
-customElements.define(DisqusBroker.tag, DisqusBroker);
+globalThis.customElements.define(DisqusBroker.tag, DisqusBroker);
 export { DisqusBroker };
 
 globalThis.DisqusSingleton = globalThis.DisqusSingleton || {};

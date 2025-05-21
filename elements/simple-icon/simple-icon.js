@@ -97,5 +97,5 @@ class SimpleIcon extends SimpleIconBehaviors(DDD) {
     this.contrast = 0;
   }
 }
-customElements.define(SimpleIcon.tag, SimpleIcon);
+globalThis.customElements.define(SimpleIcon.tag, SimpleIcon);
 export { SimpleIcon };

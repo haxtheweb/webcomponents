@@ -241,5 +241,5 @@ class BootstrapBreadcrumb extends LitElement {
     changedProperties.forEach((oldValue, propName) => {});
   }
 }
-customElements.define(BootstrapBreadcrumb.tag, BootstrapBreadcrumb);
+globalThis.customElements.define(BootstrapBreadcrumb.tag, BootstrapBreadcrumb);
 export { BootstrapBreadcrumb };

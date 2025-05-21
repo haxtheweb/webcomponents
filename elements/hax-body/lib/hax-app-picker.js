@@ -114,5 +114,5 @@ class HaxAppPicker extends LitElement {
     );
   }
 }
-customElements.define(HaxAppPicker.tag, HaxAppPicker);
+globalThis.customElements.define(HaxAppPicker.tag, HaxAppPicker);
 export { HaxAppPicker };

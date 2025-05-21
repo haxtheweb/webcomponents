@@ -141,5 +141,5 @@ class SpotifyEmbed extends LitElement {
       .href;
   }
 }
-customElements.define(SpotifyEmbed.tag, SpotifyEmbed);
+globalThis.customElements.define(SpotifyEmbed.tag, SpotifyEmbed);
 export { SpotifyEmbed };

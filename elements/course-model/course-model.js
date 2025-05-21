@@ -504,5 +504,5 @@ class CourseModel extends LitElement {
   }
 }
 
-customElements.define(CourseModel.tag, CourseModel);
+globalThis.customElements.define(CourseModel.tag, CourseModel);
 export { CourseModel };

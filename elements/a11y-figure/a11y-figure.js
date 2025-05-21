@@ -341,5 +341,5 @@ class A11yFigure extends A11yDetails {
     }
   }
 }
-customElements.define("a11y-figure", A11yFigure);
+globalThis.customElements.define("a11y-figure", A11yFigure);
 export { A11yFigure };

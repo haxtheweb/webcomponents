@@ -499,5 +499,5 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
     this.shadowRoot.querySelector("app-drawer").toggle();
   }
 }
-customElements.define(LearnTwoTheme.tag, LearnTwoTheme);
+globalThis.customElements.define(LearnTwoTheme.tag, LearnTwoTheme);
 export { LearnTwoTheme };

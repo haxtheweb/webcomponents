@@ -621,5 +621,5 @@ class PolarisTheme extends HAXCMSOperationButtons(
     super.disconnectedCallback();
   }
 }
-customElements.define(PolarisTheme.tag, PolarisTheme);
+globalThis.customElements.define(PolarisTheme.tag, PolarisTheme);
 export { PolarisTheme };

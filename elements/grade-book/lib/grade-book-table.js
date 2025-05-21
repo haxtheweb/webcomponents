@@ -57,5 +57,5 @@ class GradeBookTable extends LitElement {
   }
 }
 
-customElements.define(GradeBookTable.tag, GradeBookTable);
+globalThis.customElements.define(GradeBookTable.tag, GradeBookTable);
 export { GradeBookTable };

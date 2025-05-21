@@ -300,5 +300,5 @@ class CsvRender extends IntersectionObserverMixin(SimpleColors) {
       });
   }
 }
-customElements.define(CsvRender.tag, CsvRender);
+globalThis.customElements.define(CsvRender.tag, CsvRender);
 export { CsvRender };

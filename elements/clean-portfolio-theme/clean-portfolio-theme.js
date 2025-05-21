@@ -168,7 +168,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     autorun((reaction) => {
       const editMode = toJS(store.editMode);
       if (editMode) {
-        const el = this.shadowRoot.querySelector("#slot") || document.querySelector("#slot");
+        const el = this.shadowRoot.querySelector("#slot") || globalThis.document.querySelector("#slot");
         el?.scrollIntoView({ behavior: "smooth", block: "start" });
       }
       this.__disposer.push(reaction);

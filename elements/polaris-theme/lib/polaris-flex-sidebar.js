@@ -146,5 +146,5 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
     super();
   }
 }
-customElements.define(PolarisFlexSidebar.tag, PolarisFlexSidebar);
+globalThis.customElements.define(PolarisFlexSidebar.tag, PolarisFlexSidebar);
 export { PolarisFlexSidebar };

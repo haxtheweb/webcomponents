@@ -330,5 +330,5 @@ class SimpleRangeInput extends SimpleColors {
     }
   }
 }
-customElements.define(SimpleRangeInput.tag, SimpleRangeInput);
+globalThis.customElements.define(SimpleRangeInput.tag, SimpleRangeInput);
 export { SimpleRangeInput };

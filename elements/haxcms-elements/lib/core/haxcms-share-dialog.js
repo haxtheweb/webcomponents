@@ -151,5 +151,5 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     this.link = globalThis.location.href;
   }
 }
-customElements.define(HAXCMSShareDialog.tag, HAXCMSShareDialog);
+globalThis.customElements.define(HAXCMSShareDialog.tag, HAXCMSShareDialog);
 export { HAXCMSShareDialog };

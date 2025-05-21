@@ -120,4 +120,4 @@ export class ProductGlance extends SimpleColors {
       .href;
   }
 }
-customElements.define(ProductGlance.tag, ProductGlance);
+globalThis.customElements.define(ProductGlance.tag, ProductGlance);

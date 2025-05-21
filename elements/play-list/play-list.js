@@ -306,5 +306,5 @@ class PlayList extends LitElement {
     return true;
   }
 }
-customElements.define(PlayList.tag, PlayList);
+globalThis.customElements.define(PlayList.tag, PlayList);
 export { PlayList };

@@ -70,5 +70,5 @@ class HAXCMSBlankTheme extends CleanTwo {
     return "haxcms-blank-theme";
   }
 }
-customElements.define(HAXCMSBlankTheme.tag, HAXCMSBlankTheme);
+globalThis.customElements.define(HAXCMSBlankTheme.tag, HAXCMSBlankTheme);
 export { HAXCMSBlankTheme };

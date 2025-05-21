@@ -124,5 +124,5 @@ class a11yCarouselButton extends LitElement {
     }
   }
 }
-customElements.define(a11yCarouselButton.tag, a11yCarouselButton);
+globalThis.customElements.define(a11yCarouselButton.tag, a11yCarouselButton);
 export { a11yCarouselButton };

@@ -384,5 +384,5 @@ globalThis.SimplePickerSymbols = globalThis.SimplePickerSymbols || {
   ],
 };
 
-customElements.define(SimpleSymbolPicker.tag, SimpleSymbolPicker);
+globalThis.customElements.define(SimpleSymbolPicker.tag, SimpleSymbolPicker);
 export { SimpleSymbolPicker };

@@ -275,4 +275,4 @@ export class AppHaxButton extends LitElement {
     `;
   }
 }
-customElements.define(AppHaxButton.tag, AppHaxButton);
+globalThis.customElements.define(AppHaxButton.tag, AppHaxButton);

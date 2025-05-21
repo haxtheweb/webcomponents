@@ -354,4 +354,4 @@ export class PostCard extends LitElement {
   }
 }
 
-customElements.define(PostCard.tag, PostCard);
+globalThis.customElements.define(PostCard.tag, PostCard);

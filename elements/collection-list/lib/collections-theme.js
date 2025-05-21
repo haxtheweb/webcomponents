@@ -418,5 +418,5 @@ class CollectionsTheme extends HAXCMSOperationButtons(
     }
   }
 }
-customElements.define(CollectionsTheme.tag, CollectionsTheme);
+globalThis.customElements.define(CollectionsTheme.tag, CollectionsTheme);
 export { CollectionsTheme };

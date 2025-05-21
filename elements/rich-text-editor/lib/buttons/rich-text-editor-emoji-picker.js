@@ -107,5 +107,8 @@ class RichTextEditorEmojiPicker extends RichTextEditorPickerBehaviors(
    */
   _setOptions() {}
 }
-customElements.define(RichTextEditorEmojiPicker.tag, RichTextEditorEmojiPicker);
+globalThis.customElements.define(
+  RichTextEditorEmojiPicker.tag,
+  RichTextEditorEmojiPicker,
+);
 export { RichTextEditorEmojiPicker };

@@ -45,7 +45,7 @@ export class AppHaxToast extends RPGCharacterToast {
     super.disconnectedCallback();
   }
 }
-customElements.define(AppHaxToast.tag, AppHaxToast);
+globalThis.customElements.define(AppHaxToast.tag, AppHaxToast);
 globalThis.AppHaxToast = globalThis.AppHaxToast || {};
 
 globalThis.AppHaxToast.requestAvailability = () => {

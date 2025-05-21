@@ -508,5 +508,5 @@ class A11yDetails extends LitElement {
     return slot;
   }
 }
-customElements.define("a11y-details", A11yDetails);
+globalThis.customElements.define("a11y-details", A11yDetails);
 export { A11yDetails };

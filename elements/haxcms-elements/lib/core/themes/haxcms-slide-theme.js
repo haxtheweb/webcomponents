@@ -262,5 +262,5 @@ class HAXCMSSlideTheme extends DDDSuper(
     super.disconnectedCallback();
   }
 }
-customElements.define(HAXCMSSlideTheme.tag, HAXCMSSlideTheme);
+globalThis.customElements.define(HAXCMSSlideTheme.tag, HAXCMSSlideTheme);
 export { HAXCMSSlideTheme };

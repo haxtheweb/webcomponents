@@ -193,4 +193,4 @@ export class AppHaxSearchResults extends SimpleColors {
     }
   }
 }
-customElements.define(AppHaxSearchResults.tag, AppHaxSearchResults);
+globalThis.customElements.define(AppHaxSearchResults.tag, AppHaxSearchResults);

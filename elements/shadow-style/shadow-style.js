@@ -115,5 +115,5 @@ class ShadowStyle extends HTMLElement {
     }, 0);
   }
 }
-customElements.define(ShadowStyle.tag, ShadowStyle);
+globalThis.customElements.define(ShadowStyle.tag, ShadowStyle);
 export { ShadowStyle };

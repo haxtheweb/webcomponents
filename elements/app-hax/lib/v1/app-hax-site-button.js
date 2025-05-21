@@ -154,4 +154,4 @@ export class AppHaxSiteButton extends SimpleColors {
    */
 }
 
-customElements.define(AppHaxSiteButton.tag, AppHaxSiteButton);
+globalThis.customElements.define(AppHaxSiteButton.tag, AppHaxSiteButton);

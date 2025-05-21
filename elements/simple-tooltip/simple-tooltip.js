@@ -638,5 +638,5 @@ class SimpleTooltip extends LitElement {
     }
   }
 }
-customElements.define(SimpleTooltip.tag, SimpleTooltip);
+globalThis.customElements.define(SimpleTooltip.tag, SimpleTooltip);
 export { SimpleTooltip };

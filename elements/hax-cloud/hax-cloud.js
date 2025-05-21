@@ -241,5 +241,5 @@ class HaxCloud extends DDD {
     }, 0);
   }
 }
-customElements.define(HaxCloud.tag, HaxCloud);
+globalThis.customElements.define(HaxCloud.tag, HaxCloud);
 export { HaxCloud };

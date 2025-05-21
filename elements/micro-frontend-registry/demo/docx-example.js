@@ -167,4 +167,4 @@ export class DocxExample extends LitElement {
   }
 }
 
-customElements.define(DocxExample.tag, DocxExample);
+globalThis.customElements.define(DocxExample.tag, DocxExample);

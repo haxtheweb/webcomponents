@@ -94,5 +94,5 @@ class QR extends LitElement {
     return new URL("./lib/q-r.haxProperties.json", import.meta.url).href;
   }
 }
-customElements.define(QR.tag, QR);
+globalThis.customElements.define(QR.tag, QR);
 export { QR };

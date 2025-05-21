@@ -456,5 +456,5 @@ class SiteTopMenu extends LitElement {
     super.disconnectedCallback();
   }
 }
-customElements.define(SiteTopMenu.tag, SiteTopMenu);
+globalThis.customElements.define(SiteTopMenu.tag, SiteTopMenu);
 export { SiteTopMenu };

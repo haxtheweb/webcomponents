@@ -561,5 +561,5 @@ class A11yCollapse extends DDD {
     this._makeHeadingButton();
   }
 }
-customElements.define(A11yCollapse.tag, A11yCollapse);
+globalThis.customElements.define(A11yCollapse.tag, A11yCollapse);
 export { A11yCollapse };

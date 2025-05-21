@@ -112,5 +112,5 @@ class MusicPlayer extends LitElement {
       .href;
   }
 }
-customElements.define(MusicPlayer.tag, MusicPlayer);
+globalThis.customElements.define(MusicPlayer.tag, MusicPlayer);
 export { MusicPlayer };

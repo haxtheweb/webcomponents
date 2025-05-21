@@ -46,8 +46,8 @@
     "@haxtheweb/haxcms-elements": "^10.0.2",
     "@haxtheweb/intersection-element": "^10.0.0",
     "@haxtheweb/utils": "^10.0.0",
-    "lit": "^3.2.1",
-    "mobx": "6.12.4"
+    "lit": "^3.3.0",
+    "mobx": "6.13.7"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.4",

@@ -163,5 +163,5 @@ class UserAction extends HTMLElement {
     this._haxstate = val;
   }
 }
-customElements.define(UserAction.tag, UserAction);
+globalThis.customElements.define(UserAction.tag, UserAction);
 export { UserAction };

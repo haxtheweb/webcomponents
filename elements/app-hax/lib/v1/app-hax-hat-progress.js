@@ -229,4 +229,4 @@ export class AppHaxHatProgress extends SimpleColors {
     `;
   }
 }
-customElements.define(AppHaxHatProgress.tag, AppHaxHatProgress);
+globalThis.customElements.define(AppHaxHatProgress.tag, AppHaxHatProgress);

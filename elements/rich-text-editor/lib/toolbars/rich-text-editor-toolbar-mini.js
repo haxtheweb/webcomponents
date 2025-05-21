@@ -51,4 +51,7 @@ class RichTextEditorToolbarMini extends RichTextEditorToolbarBehaviors(
 }
 export { RichTextEditorToolbarMini };
 
-customElements.define(RichTextEditorToolbarMini.tag, RichTextEditorToolbarMini);
+globalThis.customElements.define(
+  RichTextEditorToolbarMini.tag,
+  RichTextEditorToolbarMini,
+);

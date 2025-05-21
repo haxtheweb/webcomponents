@@ -280,5 +280,5 @@ class TypeWriter extends IntersectionObserverMixin(LitElement) {
     });
   }
 }
-customElements.define(TypeWriter.tag, TypeWriter);
+globalThis.customElements.define(TypeWriter.tag, TypeWriter);
 export { TypeWriter };

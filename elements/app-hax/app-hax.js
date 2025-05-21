@@ -1399,7 +1399,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     store.appEl.playSound("click2");
   }
 }
-customElements.define(AppHax.tag, AppHax);
+globalThis.customElements.define(AppHax.tag, AppHax);
 
 globalThis.AppHax = globalThis.AppHax || {};
 

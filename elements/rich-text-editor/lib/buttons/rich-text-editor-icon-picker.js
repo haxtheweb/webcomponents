@@ -120,5 +120,8 @@ class RichTextEditorIconPicker extends RichTextEditorPickerBehaviors(
    */
   _setOptions() {}
 }
-customElements.define(RichTextEditorIconPicker.tag, RichTextEditorIconPicker);
+globalThis.customElements.define(
+  RichTextEditorIconPicker.tag,
+  RichTextEditorIconPicker,
+);
 export { RichTextEditorIconPicker };

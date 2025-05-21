@@ -476,6 +476,6 @@ class MonacoElement extends LitElement {
   }
 }
 
-customElements.define("monaco-element", MonacoElement);
+globalThis.customElements.define("monaco-element", MonacoElement);
 export { MonacoElement };
 globalThis.MonacoData = globalThis.MonacoData || {};

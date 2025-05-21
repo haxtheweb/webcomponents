@@ -132,4 +132,4 @@ export class WCMarkdown extends HTMLElement {
   }
 }
 
-customElements.define("wc-markdown", WCMarkdown);
+globalThis.customElements.define("wc-markdown", WCMarkdown);

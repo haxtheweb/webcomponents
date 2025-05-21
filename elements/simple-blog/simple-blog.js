@@ -265,5 +265,5 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
     this.selectedPage = 0;
   }
 }
-customElements.define(SimpleBlog.tag, SimpleBlog);
+globalThis.customElements.define(SimpleBlog.tag, SimpleBlog);
 export { SimpleBlog };

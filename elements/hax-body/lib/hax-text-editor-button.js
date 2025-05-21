@@ -197,5 +197,5 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
   }
 }
 
-customElements.define(HaxTextEditorButton.tag, HaxTextEditorButton);
+globalThis.customElements.define(HaxTextEditorButton.tag, HaxTextEditorButton);
 export { HaxTextEditorButton };

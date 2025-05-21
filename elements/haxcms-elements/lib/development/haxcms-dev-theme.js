@@ -232,5 +232,5 @@ class HAXCMSDevTheme extends HAXCMSLitElementTheme {
     }
   }
 }
-customElements.define(HAXCMSDevTheme.tag, HAXCMSDevTheme);
+globalThis.customElements.define(HAXCMSDevTheme.tag, HAXCMSDevTheme);
 export { HAXCMSDevTheme };

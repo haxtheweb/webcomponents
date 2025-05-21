@@ -185,5 +185,5 @@ class AudioPlayer extends VideoPlayer {
     };
   }
 }
-customElements.define(AudioPlayer.tag, AudioPlayer);
+globalThis.customElements.define(AudioPlayer.tag, AudioPlayer);
 export { AudioPlayer };

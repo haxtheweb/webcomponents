@@ -531,7 +531,7 @@ class MediaImage extends DDD {
     };
   }
 }
-customElements.define(MediaImage.tag, MediaImage);
+globalThis.customElements.define(MediaImage.tag, MediaImage);
 
 /**
  * `media-image-image`
@@ -637,7 +637,7 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
     return "media-image-image";
   }
 }
-customElements.define(MediaImageImage.tag, MediaImageImage);
+globalThis.customElements.define(MediaImageImage.tag, MediaImageImage);
 
 /**
  * `media-image-citation`
@@ -675,7 +675,7 @@ class MediaImageCitation extends DDD {
     return "media-image-citation";
   }
 }
-customElements.define(MediaImageCitation.tag, MediaImageCitation);
+globalThis.customElements.define(MediaImageCitation.tag, MediaImageCitation);
 
 /**
  * `media-image-caption`
@@ -720,6 +720,6 @@ class MediaImageCaption extends DDD {
     return "media-image-caption";
   }
 }
-customElements.define(MediaImageCaption.tag, MediaImageCaption);
+globalThis.customElements.define(MediaImageCaption.tag, MediaImageCaption);
 
 export { MediaImage };

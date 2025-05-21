@@ -188,7 +188,7 @@ class WcRegistry extends HTMLElement {
     }, 0);
   }
 }
-customElements.define(WcRegistry.tag, WcRegistry);
+globalThis.customElements.define(WcRegistry.tag, WcRegistry);
 /**
  * `wc-autoload`
  * `automatically load new tags in the dom`
@@ -254,5 +254,5 @@ class WcAutoload extends HTMLElement {
     }
   }
 }
-customElements.define(WcAutoload.tag, WcAutoload);
+globalThis.customElements.define(WcAutoload.tag, WcAutoload);
 export { WcAutoload };

@@ -132,5 +132,5 @@ class MdBlock extends DDD {
     return "md-block";
   }
 }
-customElements.define(MdBlock.tag, MdBlock);
+globalThis.customElements.define(MdBlock.tag, MdBlock);
 export { MdBlock };

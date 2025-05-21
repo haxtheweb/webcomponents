@@ -446,5 +446,5 @@ class OutlinePlayer extends LTIResizingMixin(
     super.disconnectedCallback();
   }
 }
-customElements.define(OutlinePlayer.tag, OutlinePlayer);
+globalThis.customElements.define(OutlinePlayer.tag, OutlinePlayer);
 export { OutlinePlayer };

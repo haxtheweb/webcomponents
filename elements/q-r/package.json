@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/es-global-bridge": "^10.0.0",
-    "lit": "^3.2.1"
+    "lit": "^3.3.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.4",

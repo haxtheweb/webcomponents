@@ -1196,4 +1196,4 @@ export class AppHaxSteps extends SimpleColors {
     `;
   }
 }
-customElements.define(AppHaxSteps.tag, AppHaxSteps);
+globalThis.customElements.define(AppHaxSteps.tag, AppHaxSteps);

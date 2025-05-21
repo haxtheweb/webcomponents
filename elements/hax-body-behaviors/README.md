@@ -6,7 +6,7 @@ Body
 ## Usage
 [Video showing how we integrate HAX with elements](https://www.youtube.com/watch?v=P-ZA4CQASpY&index=1&list=PLJQupiji7J5eTqv8JFiW8SZpSeKouZACH)
 
-HAX body behaviors provide a consistent way to rapidly wire Polymer elements up to HAX. While anything can talk to HAX via consistent property and event usage, these body behaviors reduce the time and increase accuracy when trying to wire to HAX (drastically).
+HAX body behaviors provide a consistent way to rapidly wire elements up to HAX. While anything can talk to HAX via consistent property and event usage, these body behaviors reduce the time and increase accuracy when trying to wire to HAX (drastically).
 
 The major is in HAX Schema defintion which can be translated to JSON Schema with a single function. This allows for rapidly building out headless "forms" in HAX while the elements themselves just define the JSON blob as to how it should function and what should be wired where. It's more complicated then it sounds.
 
@@ -93,7 +93,7 @@ class ExampleHaxElement extends HTMLElement {
 
 ```
 
-Here's a much more complex example from a Polymer Legacy style element who calls attached when it is fixed to the DOM (`video-player/video-player.js`):
+Here's a much more complex example from a element who calls attached when it is fixed to the DOM (`video-player/video-player.js`):
 ```
   /**
    * Attached.
@@ -324,7 +324,7 @@ Here's a much more complex example from a Polymer Legacy style element who calls
 
 ## Demo
 
-Run `npm start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
+Running `npm start` will start a local development server and open your default browser to display it. It will start watching *.js and lib/*.js files for changes automatically for your demo.
 
 ## Contributing
 
@@ -334,14 +334,7 @@ Run `npm start` will start a local development server, open your default browser
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
-## Code style
-
-Body  use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
-
-[prettier]: https://github.com/prettier/prettier/
-[prettier-ed]: https://github.com/prettier/prettier/#editor-integration
-[polyserve]: https://github.com/Polymer/polyserve
-[web-component-tester]: https://github.com/Polymer/web-component-tester
+Body
 
 ## License
 [Apache-2.0 License](http://opensource.org/licenses/Apache-2.0)

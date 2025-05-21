@@ -26,5 +26,5 @@ class SimpleFieldsTab extends A11yTab {
     };
   }
 }
-customElements.define(SimpleFieldsTab.tag, SimpleFieldsTab);
+globalThis.customElements.define(SimpleFieldsTab.tag, SimpleFieldsTab);
 export { SimpleFieldsTab };

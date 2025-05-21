@@ -295,5 +295,5 @@ class ReplaceTag extends ReplaceTagSuper(HTMLElement) {
     }
   }
 }
-customElements.define(ReplaceTag.tag, ReplaceTag);
+globalThis.customElements.define(ReplaceTag.tag, ReplaceTag);
 export { ReplaceTag };

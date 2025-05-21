@@ -1,15 +1,15 @@
 var defs,
   ancient = !1,
   cdn = "./";
-window.WCGlobalCDNPath && (cdn = window.WCGlobalCDNPath),
-  window.__appCDN && (cdn = window.__appCDN);
+globalThis.WCGlobalCDNPath && (cdn = globalThis.WCGlobalCDNPath),
+  globalThis.__appCDN && (cdn = globalThis.__appCDN);
 try {
   "undefined" == typeof Symbol && (ancient = !0), new Function("let a;");
 } catch (err) {
   ancient = !0;
 }
-(window.__appForceUpgrade || window.WCForceUpgrade) && ancient
-  ? (window.location = "assets/upgrade-browser.html")
+(globalThis.__appForceUpgrade || globalThis.WCForceUpgrade) && ancient
+  ? (globalThis.location = "assets/upgrade-browser.html")
   : (!(function () {
       function a(a, b, c) {
         var d = a;
@@ -188,16 +188,16 @@ try {
       function o() {
         return (
           document.baseURI ||
-          (document.querySelector("base") || window.location).href
+          (document.querySelector("base") || globalThis.location).href
         );
       }
-      if (!window.define) {
+      if (!globalThis.define) {
         var q = Object.create(null),
           r = void 0,
           s = 0,
           t = void 0,
           u = o();
-        (window.define = function (a, b) {
+        (globalThis.define = function (a, b) {
           var d = !1;
           r = function () {
             return (d = !0), (r = void 0), [a, b];
@@ -205,8 +205,8 @@ try {
           var f = (function p() {
               var b = document.currentScript;
               if (!b) return u;
-              if (window.HTMLImports) {
-                var c = window.HTMLImports.importForElement(b);
+              if (globalThis.HTMLImports) {
+                var c = globalThis.HTMLImports.importForElement(b);
                 return c ? c.href : u;
               }
               var d = b.ownerDocument.createElement("a");
@@ -242,14 +242,14 @@ try {
             }
           }, 0);
         }),
-          (window.define._reset = function () {
+          (globalThis.define._reset = function () {
             for (var a in q) delete q[a];
             (r = void 0), (s = 0), (t = void 0), (u = o());
           });
         var v = document.createElement("a");
       }
     })(),
-    (defs = window.customElements
+    (defs = globalThis.customElements
       ? [
           cdn + "assets/babel-top.js",
           cdn +
@@ -268,14 +268,14 @@ try {
           cdn +
             "build/es5-amd/node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
         ]),
-    (window.WCAutoloadPolyfillEntryPoint =
+    (globalThis.WCAutoloadPolyfillEntryPoint =
       cdn + "build/es5-amd/node_modules/@haxtheweb/wc-autoload/wc-autoload.js"),
     define(defs, function () {
       define([
         cdn +
           "build/es5-amd/node_modules/@haxtheweb/deduping-fix/deduping-fix.js",
-        window.WCAutoloadPolyfillEntryPoint,
+        globalThis.WCAutoloadPolyfillEntryPoint,
       ], function () {
-        window.WCAutoload.process();
+        globalThis.WCAutoload.process();
       });
     }));

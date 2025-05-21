@@ -166,5 +166,5 @@ class ElmslnLoading extends SimpleColors {
     }
   }
 }
-customElements.define(ElmslnLoading.tag, ElmslnLoading);
+globalThis.customElements.define(ElmslnLoading.tag, ElmslnLoading);
 export { ElmslnLoading };

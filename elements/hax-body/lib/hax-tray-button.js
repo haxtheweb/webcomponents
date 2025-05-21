@@ -84,5 +84,5 @@ class HaxButton extends HaxToolbarItemBehaviors(LitElement) {
     });
   }
 }
-customElements.define(HaxButton.tag, HaxButton);
+globalThis.customElements.define(HaxButton.tag, HaxButton);
 export { HaxButton };

@@ -174,5 +174,5 @@ class A11yCollapseGroup extends LitElement {
     }
   }
 }
-customElements.define(A11yCollapseGroup.tag, A11yCollapseGroup);
+globalThis.customElements.define(A11yCollapseGroup.tag, A11yCollapseGroup);
 export { A11yCollapseGroup };

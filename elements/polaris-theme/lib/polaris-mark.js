@@ -172,6 +172,6 @@ class PolarisMark extends LitElement {
   }
 }
 
-customElements.define(PolarisMark.tag, PolarisMark);
+globalThis.customElements.define(PolarisMark.tag, PolarisMark);
 
 export { PolarisMark };

@@ -263,5 +263,5 @@ class UnityWebgl extends HTMLElement {
     };
   }
 }
-customElements.define(UnityWebgl.tag, UnityWebgl);
+globalThis.customElements.define(UnityWebgl.tag, UnityWebgl);
 export { UnityWebgl };

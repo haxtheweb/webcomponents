@@ -53,5 +53,5 @@ class LockedBadge extends LitElement {
   }
 }
 
-customElements.define(LockedBadge.tag, LockedBadge);
+globalThis.customElements.define(LockedBadge.tag, LockedBadge);
 export { LockedBadge };

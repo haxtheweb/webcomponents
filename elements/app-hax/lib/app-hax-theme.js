@@ -791,5 +791,5 @@ class AppHaxTheme extends HAXCMSRememberRoute(
     super.disconnectedCallback();
   }
 }
-customElements.define(AppHaxTheme.tag, AppHaxTheme);
+globalThis.customElements.define(AppHaxTheme.tag, AppHaxTheme);
 export { AppHaxTheme };

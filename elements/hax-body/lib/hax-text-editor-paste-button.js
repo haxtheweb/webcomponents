@@ -52,5 +52,8 @@ class HaxTextEditorPasteButton extends RichTextEditorButtonBehaviors(
       });
   }
 }
-customElements.define(HaxTextEditorPasteButton.tag, HaxTextEditorPasteButton);
+globalThis.customElements.define(
+  HaxTextEditorPasteButton.tag,
+  HaxTextEditorPasteButton,
+);
 export { HaxTextEditorPasteButton };

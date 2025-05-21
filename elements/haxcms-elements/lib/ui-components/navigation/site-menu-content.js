@@ -147,5 +147,5 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
   }
 }
 
-customElements.define(SiteMenuContent.tag, SiteMenuContent);
+globalThis.customElements.define(SiteMenuContent.tag, SiteMenuContent);
 export { SiteMenuContent };

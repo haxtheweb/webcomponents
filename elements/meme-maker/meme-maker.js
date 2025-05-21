@@ -185,5 +185,5 @@ class MemeMaker extends LitElement {
     return new URL(`./lib/meme-maker.haxProperties.json`, import.meta.url).href;
   }
 }
-customElements.define(MemeMaker.tag, MemeMaker);
+globalThis.customElements.define(MemeMaker.tag, MemeMaker);
 export { MemeMaker };

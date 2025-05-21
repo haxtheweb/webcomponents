@@ -343,5 +343,5 @@ class RpgCharacter extends SimpleColors {
       .href;
   }
 }
-customElements.define(RpgCharacter.tag, RpgCharacter);
+globalThis.customElements.define(RpgCharacter.tag, RpgCharacter);
 export { RpgCharacter };

@@ -1159,7 +1159,7 @@ class SuperDaemon extends SimpleColors {
     return "super-daemon";
   }
 }
-customElements.define(SuperDaemon.tag, SuperDaemon);
+globalThis.customElements.define(SuperDaemon.tag, SuperDaemon);
 export { SuperDaemon };
 
 // register globally so we can make sure there is only one

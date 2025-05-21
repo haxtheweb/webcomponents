@@ -184,7 +184,10 @@ class XLSXFileSystemBroker extends FileSystemBroker {
   }
 }
 
-customElements.define(XLSXFileSystemBroker.tag, XLSXFileSystemBroker);
+globalThis.customElements.define(
+  XLSXFileSystemBroker.tag,
+  XLSXFileSystemBroker,
+);
 // register globally so we can make sure there is only one
 globalThis.XLSXFileSystemBroker = globalThis.XLSXFileSystemBroker || {};
 globalThis.XLSXFileSystemBroker.requestAvailability = () => {

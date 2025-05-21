@@ -248,4 +248,4 @@ export class MfHtmlExample extends LitElement {
   }
 }
 
-customElements.define(MfHtmlExample.tag, MfHtmlExample);
+globalThis.customElements.define(MfHtmlExample.tag, MfHtmlExample);

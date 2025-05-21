@@ -408,5 +408,5 @@ class SiteMenuButton extends HAXCMSI18NMixin(
     super.disconnectedCallback();
   }
 }
-customElements.define(SiteMenuButton.tag, SiteMenuButton);
+globalThis.customElements.define(SiteMenuButton.tag, SiteMenuButton);
 export { SiteMenuButton };

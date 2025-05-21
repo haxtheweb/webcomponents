@@ -43,7 +43,7 @@
   "dependencies": {
     "@haxtheweb/d-d-d": "^10.0.2",
     "@polymer/marked-element": "3.0.1",
-    "lit": "^3.2.1",
+    "lit": "^3.3.0",
     "marked": "5.1.0"
   },
   "devDependencies": {

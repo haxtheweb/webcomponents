@@ -223,7 +223,7 @@ class UndoManager extends UndoManagerBehaviors(LitElement) {
     return html`<slot></slot>`;
   }
 }
-customElements.define("undo-manager", UndoManager);
+globalThis.customElements.define("undo-manager", UndoManager);
 
 /*
  * Fork of Undo.js - A undo/redo framework for JavaScript

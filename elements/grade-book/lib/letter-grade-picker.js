@@ -187,5 +187,5 @@ class LetterGradePicker extends LitElement {
     return "letter-grade-picker";
   }
 }
-customElements.define(LetterGradePicker.tag, LetterGradePicker);
+globalThis.customElements.define(LetterGradePicker.tag, LetterGradePicker);
 export { LetterGradePicker };

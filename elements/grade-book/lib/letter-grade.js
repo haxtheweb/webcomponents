@@ -210,5 +210,5 @@ class LetterGrade extends LitElement {
   }
 }
 
-customElements.define(LetterGrade.tag, LetterGrade);
+globalThis.customElements.define(LetterGrade.tag, LetterGrade);
 export { LetterGrade };

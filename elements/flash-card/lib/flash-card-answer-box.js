@@ -314,4 +314,4 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
   }
 }
 
-customElements.define(FlashCardAnswerBox.tag, FlashCardAnswerBox);
+globalThis.customElements.define(FlashCardAnswerBox.tag, FlashCardAnswerBox);

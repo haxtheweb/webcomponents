@@ -175,6 +175,6 @@ class FigureLabel extends DDD {
     return "figure-label";
   }
 }
-customElements.define(FigureLabel.tag, FigureLabel);
+globalThis.customElements.define(FigureLabel.tag, FigureLabel);
 
 export { FigureLabel };

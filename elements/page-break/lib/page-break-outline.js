@@ -154,4 +154,4 @@ export class PageBreakOutline extends HTMLElement {
   }
 }
 
-customElements.define(PageBreakOutline.tag, PageBreakOutline);
+globalThis.customElements.define(PageBreakOutline.tag, PageBreakOutline);

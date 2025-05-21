@@ -168,5 +168,5 @@ class ImageCompareSlider extends I18NMixin(
       .href;
   }
 }
-customElements.define(ImageCompareSlider.tag, ImageCompareSlider);
+globalThis.customElements.define(ImageCompareSlider.tag, ImageCompareSlider);
 export { ImageCompareSlider };

@@ -1795,4 +1795,4 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     this.items = newItems;
   }
 }
-customElements.define(OutlineDesigner.tag, OutlineDesigner);
+globalThis.customElements.define(OutlineDesigner.tag, OutlineDesigner);

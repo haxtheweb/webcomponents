@@ -357,5 +357,5 @@ class HexPicker extends LitElement {
     });
   }
 }
-customElements.define(HexPicker.tag, HexPicker);
+globalThis.customElements.define(HexPicker.tag, HexPicker);
 export { HexPicker };

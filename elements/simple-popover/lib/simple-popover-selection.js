@@ -186,5 +186,8 @@ class SimplePopoverSelection extends LitElement {
   }
 }
 
-customElements.define("simple-popover-selection", SimplePopoverSelection);
+globalThis.customElements.define(
+  "simple-popover-selection",
+  SimplePopoverSelection,
+);
 export { SimplePopoverSelection };

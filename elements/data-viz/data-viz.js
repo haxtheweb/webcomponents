@@ -119,5 +119,5 @@ class DataViz extends LitElement {
     // add your code to run when the singleton is called for
   }
 }
-customElements.define(DataViz.tag, DataViz);
+globalThis.customElements.define(DataViz.tag, DataViz);
 export { DataViz };

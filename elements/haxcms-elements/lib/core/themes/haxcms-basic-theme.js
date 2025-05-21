@@ -162,5 +162,5 @@ class HAXCMSBasicTheme extends BasicTemplate(HAXCMSLitElementTheme) {
     ];
   }
 }
-customElements.define("haxcms-basic-theme", HAXCMSBasicTheme);
+globalThis.customElements.define("haxcms-basic-theme", HAXCMSBasicTheme);
 export { HAXCMSBasicTheme };

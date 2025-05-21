@@ -40,7 +40,7 @@
     "@haxtheweb/hax-body-behaviors": "^10.0.2",
     "@haxtheweb/responsive-grid": "^10.0.2",
     "@haxtheweb/utils": "^10.0.0",
-    "lit": "^3.2.1"
+    "lit": "^3.3.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.4",

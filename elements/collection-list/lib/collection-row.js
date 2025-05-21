@@ -241,5 +241,5 @@ class CollectionRow extends DDD {
     return "collection-row";
   }
 }
-customElements.define(CollectionRow.tag, CollectionRow);
+globalThis.customElements.define(CollectionRow.tag, CollectionRow);
 export { CollectionRow };

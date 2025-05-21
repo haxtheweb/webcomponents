@@ -434,4 +434,4 @@ export class RPGCharacterToast extends SimpleToastEl {
     }
   }
 }
-customElements.define(RPGCharacterToast.tag, RPGCharacterToast);
+globalThis.customElements.define(RPGCharacterToast.tag, RPGCharacterToast);

@@ -68,5 +68,5 @@ class SimpleIconButton extends SimpleIconButtonBehaviors(SimpleColors) {
     };
   }
 }
-customElements.define(SimpleIconButton.tag, SimpleIconButton);
+globalThis.customElements.define(SimpleIconButton.tag, SimpleIconButton);
 export { SimpleIconButton };

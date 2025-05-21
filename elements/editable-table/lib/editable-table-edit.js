@@ -1096,5 +1096,5 @@ class EditableTableEdit extends editBehaviors(DDD) {
     return index === 0;
   }
 }
-customElements.define(EditableTableEdit.tag, EditableTableEdit);
+globalThis.customElements.define(EditableTableEdit.tag, EditableTableEdit);
 export { EditableTableEdit };

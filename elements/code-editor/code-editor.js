@@ -570,5 +570,5 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     }
   }
 }
-customElements.define(CodeEditor.tag, CodeEditor);
+globalThis.customElements.define(CodeEditor.tag, CodeEditor);
 export { CodeEditor };

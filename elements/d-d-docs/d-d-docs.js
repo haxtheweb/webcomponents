@@ -2332,5 +2332,5 @@ class DDDocs extends DDD {
     };
   }
 }
-customElements.define(DDDocs.tag, DDDocs);
+globalThis.customElements.define(DDDocs.tag, DDDocs);
 export { DDDocs };

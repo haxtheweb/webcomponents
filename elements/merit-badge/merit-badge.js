@@ -111,5 +111,5 @@ class MeritBadge extends LitElement {
   }
 }
 
-customElements.define(MeritBadge.tag, MeritBadge);
+globalThis.customElements.define(MeritBadge.tag, MeritBadge);
 export { MeritBadge };

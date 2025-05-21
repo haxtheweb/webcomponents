@@ -624,5 +624,5 @@ class HexagonLoader extends LitElement {
     }
   }
 }
-customElements.define(HexagonLoader.tag, HexagonLoader);
+globalThis.customElements.define(HexagonLoader.tag, HexagonLoader);
 export { HexagonLoader };

@@ -781,5 +781,5 @@ class ImgPanZoom extends LitElement {
     });
   }
 }
-customElements.define(ImgPanZoom.tag, ImgPanZoom);
+globalThis.customElements.define(ImgPanZoom.tag, ImgPanZoom);
 export { ImgPanZoom };

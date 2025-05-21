@@ -184,5 +184,5 @@ class SimpleToastEl extends DDD {
   }
 }
 
-customElements.define(SimpleToastEl.tag, SimpleToastEl);
+globalThis.customElements.define(SimpleToastEl.tag, SimpleToastEl);
 export { SimpleToastEl };

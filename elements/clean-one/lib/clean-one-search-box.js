@@ -87,4 +87,4 @@ export class CleanOneSearchBox extends I18NMixin(LitElement) {
     }
   }
 }
-customElements.define(CleanOneSearchBox.tag, CleanOneSearchBox);
+globalThis.customElements.define(CleanOneSearchBox.tag, CleanOneSearchBox);

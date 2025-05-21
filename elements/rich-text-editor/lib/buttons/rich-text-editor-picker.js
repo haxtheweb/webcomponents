@@ -281,5 +281,8 @@ const RichTextEditorPickerBehaviors = function (SuperClass) {
  * @demo ./demo/buttons.html
  */
 class RichTextEditorPicker extends RichTextEditorPickerBehaviors(LitElement) {}
-customElements.define(RichTextEditorPicker.tag, RichTextEditorPicker);
+globalThis.customElements.define(
+  RichTextEditorPicker.tag,
+  RichTextEditorPicker,
+);
 export { RichTextEditorPicker, RichTextEditorPickerBehaviors };

@@ -351,4 +351,4 @@ export class MarkTheWords extends QuestionElement {
   }
 }
 
-customElements.define(MarkTheWords.tag, MarkTheWords);
+globalThis.customElements.define(MarkTheWords.tag, MarkTheWords);

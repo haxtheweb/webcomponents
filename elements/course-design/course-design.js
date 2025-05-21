@@ -83,5 +83,5 @@ class CourseDesign extends LitElement {
     });
   }
 }
-customElements.define(CourseDesign.tag, CourseDesign);
+globalThis.customElements.define(CourseDesign.tag, CourseDesign);
 export { CourseDesign };

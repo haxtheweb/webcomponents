@@ -443,5 +443,5 @@ class CmsHax extends LitElement {
     }
   }
 }
-customElements.define(CmsHax.tag, CmsHax);
+globalThis.customElements.define(CmsHax.tag, CmsHax);
 export { CmsHax };

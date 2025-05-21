@@ -1129,5 +1129,5 @@ class SimpleFieldsLite extends LitElement {
     if (newValue && newValue !== oldValue) this._fireValueChanged();
   }
 }
-customElements.define(SimpleFieldsLite.tag, SimpleFieldsLite);
+globalThis.customElements.define(SimpleFieldsLite.tag, SimpleFieldsLite);
 export { SimpleFieldsLite };

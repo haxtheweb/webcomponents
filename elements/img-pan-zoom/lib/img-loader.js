@@ -98,5 +98,5 @@ class ImgLoader extends LitElement {
     this.loaded = false;
   }
 }
-customElements.define(ImgLoader.tag, ImgLoader);
+globalThis.customElements.define(ImgLoader.tag, ImgLoader);
 export { ImgLoader };

@@ -506,5 +506,5 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
     }
   }
 }
-customElements.define(SiteRemoteContent.tag, SiteRemoteContent);
+globalThis.customElements.define(SiteRemoteContent.tag, SiteRemoteContent);
 export { SiteRemoteContent };

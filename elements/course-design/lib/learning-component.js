@@ -466,5 +466,5 @@ class LearningComponent extends I18NMixin(DDD) {
     };
   }
 }
-customElements.define(LearningComponent.tag, LearningComponent);
+globalThis.customElements.define(LearningComponent.tag, LearningComponent);
 export { LearningComponent };

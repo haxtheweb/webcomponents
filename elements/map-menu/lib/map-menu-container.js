@@ -36,5 +36,5 @@ class MapMenuContainer extends LitElement {
     return "map-menu-container";
   }
 }
-customElements.define(MapMenuContainer.tag, MapMenuContainer);
+globalThis.customElements.define(MapMenuContainer.tag, MapMenuContainer);
 export { MapMenuContainer };

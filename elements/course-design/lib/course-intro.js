@@ -75,4 +75,4 @@ export class CourseIntro extends LitElement {
     `;
   }
 }
-customElements.define(CourseIntro.tag, CourseIntro);
+globalThis.customElements.define(CourseIntro.tag, CourseIntro);

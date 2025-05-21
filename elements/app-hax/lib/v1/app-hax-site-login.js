@@ -275,4 +275,4 @@ export class AppHaxSiteLogin extends SimpleColors {
     `;
   }
 }
-customElements.define(AppHaxSiteLogin.tag, AppHaxSiteLogin);
+globalThis.customElements.define(AppHaxSiteLogin.tag, AppHaxSiteLogin);

@@ -67,4 +67,7 @@ export class AppHaxUserMenuButton extends LitElement {
     `;
   }
 }
-customElements.define(AppHaxUserMenuButton.tag, AppHaxUserMenuButton);
+globalThis.customElements.define(
+  AppHaxUserMenuButton.tag,
+  AppHaxUserMenuButton,
+);

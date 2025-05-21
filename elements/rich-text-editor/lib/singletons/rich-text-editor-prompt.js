@@ -346,7 +346,10 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
     }, 10);
   }
 }
-customElements.define(RichTextEditorPrompt.tag, RichTextEditorPrompt);
+globalThis.customElements.define(
+  RichTextEditorPrompt.tag,
+  RichTextEditorPrompt,
+);
 export { RichTextEditorPrompt };
 
 // register globally so we can make sure there is only one

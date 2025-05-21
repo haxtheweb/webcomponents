@@ -73,7 +73,7 @@ class LazyImportDiscover extends HTMLElement {
     }
   }
 }
-customElements.define(LazyImportDiscover.tag, LazyImportDiscover);
+globalThis.customElements.define(LazyImportDiscover.tag, LazyImportDiscover);
 export { LazyImportDiscover };
 
 // self append. this is beyond trippy but the window loading will actually self invoke

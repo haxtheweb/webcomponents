@@ -108,4 +108,4 @@ export class SimpleTag extends SimpleTagLiteSuper(DDD) {
     return "simple-tag";
   }
 }
-customElements.define(SimpleTag.tag, SimpleTag);
+globalThis.customElements.define(SimpleTag.tag, SimpleTag);
