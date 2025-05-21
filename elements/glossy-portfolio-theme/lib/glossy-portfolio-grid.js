@@ -36,8 +36,20 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
       title: "Title",
     };
     autorun(() => {
-      this.data = toJS(store.manifest.items);
+      // this.data = toJS(store.manifest.items);
+      this.dats = toJS(store.manifest.items);
       console.log(this.data);
+      const objectToSave = this.dats ; // Replace with your object
+const jsonString = JSON.stringify(objectToSave, null, 2); // Pretty-print JSON
+const blob = new Blob([jsonString], { type: 'application/json' });
+const url = URL.createObjectURL(blob);
+
+const a = this.renderRoot.createElement('a');
+a.href = url;
+a.download = 'data.json'; // File name
+a.click();
+
+URL.revokeObjectURL(url); 
     }
   );
   }

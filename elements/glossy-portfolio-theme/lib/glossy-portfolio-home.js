@@ -73,7 +73,8 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
       }
 
       .background{
-        background-image: url("lib/components/bg.webp");
+        /* background-image: url("lib/components/bg.webp"); */
+        background-image: url("https://github.com/NazmanRosman/graphic-portfolio/raw/refs/heads/main/lib/components/bg.webp");
         background-attachment: fixed;
         background-size: cover;
         /* background-color: gray; */

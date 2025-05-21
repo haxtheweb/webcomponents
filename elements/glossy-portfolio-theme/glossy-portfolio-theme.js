@@ -44,6 +44,9 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         "/../",
       locales: ["ar", "es", "hi", "zh"],
     });
+
+
+
   }
 
   // Lit reactive properties
@@ -98,18 +101,22 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   render() {
     if(this.currentView==="home"){
       return html`
-      <div id="contentcontainer">
+
+    <glossy-portfolio-home></glossy-portfolio-home>
+      <!-- <div id="contentcontainer">
         <div id="slot"><slot></slot></div>
-      </div>
-      <glossy-portfolio-home></glossy-portfolio-home>
+      </div>  -->
       <!-- <glossy-portfolio-about></glossy-portfolio-about> -->
       <!-- <glossy-portfolio-page></glossy-portfolio-page> -->
+      <!-- <glossy-portfolio-header></glossy-portfolio-header> -->
+      
       <!-- <glossy-portfolio-grid class="projects"></glossy-portfolio-grid> -->
 
       `;
     } 
 
   } 
+  
 
   //changes currentview to project page when card is clicked
 
