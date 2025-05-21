@@ -4,12 +4,14 @@
   "description": "Webcomponent un-sdg following hax / open-wc recommendations",
   "license": "Apache-2.0",
   "author": {
-    "name": "haxtheweb"
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
   },
   "keywords": [
     "webcomponents",
-    "lit",
-    "haxtheweb"
+    "html",
+    "haxtheweb",
+    "lit"
   ],
   "repository": {
     "type": "git",
@@ -27,7 +29,7 @@
     "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
   },
   "dependencies": {
-    "lit": "^3.2.1"
+    "lit": "^3.3.0"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",

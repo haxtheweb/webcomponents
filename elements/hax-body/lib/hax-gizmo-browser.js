@@ -366,5 +366,5 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     }
   }
 }
-customElements.define(HaxGizmoBrowser.tag, HaxGizmoBrowser);
+globalThis.customElements.define(HaxGizmoBrowser.tag, HaxGizmoBrowser);
 export { HaxGizmoBrowser };

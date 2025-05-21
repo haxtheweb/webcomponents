@@ -2068,7 +2068,7 @@ class GradeBook extends UIRenderPieces(I18NMixin(SimpleColors)) {
     return "grade-book";
   }
 }
-customElements.define(GradeBook.tag, GradeBook);
+globalThis.customElements.define(GradeBook.tag, GradeBook);
 export { GradeBook };
 globalThis.GradeBook = globalThis.GradeBook || {};
 globalThis.GradeBook.requestAvailability = () => {

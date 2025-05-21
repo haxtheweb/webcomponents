@@ -242,5 +242,8 @@ class SimpleFieldsUrlCombo extends SimpleFieldsCombo {
     }
   }
 }
-customElements.define(SimpleFieldsUrlCombo.tag, SimpleFieldsUrlCombo);
+globalThis.customElements.define(
+  SimpleFieldsUrlCombo.tag,
+  SimpleFieldsUrlCombo,
+);
 export { SimpleFieldsUrlCombo };

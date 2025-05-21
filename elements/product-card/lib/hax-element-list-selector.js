@@ -413,4 +413,7 @@ class HaxElementListSelector extends LitElement {
   }
 }
 
-customElements.define(HaxElementListSelector.tag, HaxElementListSelector);
+globalThis.customElements.define(
+  HaxElementListSelector.tag,
+  HaxElementListSelector,
+);

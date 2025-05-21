@@ -127,5 +127,5 @@ class PortalLauncher extends HTMLElement {
     }
   }
 }
-customElements.define(PortalLauncher.tag, PortalLauncher);
+globalThis.customElements.define(PortalLauncher.tag, PortalLauncher);
 export { PortalLauncher };

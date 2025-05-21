@@ -86,5 +86,8 @@ class RichTextEditorUnderline extends RichTextEditorPromptButtonBehaviors(
     this.toggled = !!this.getPropValue("confirm");
   }
 }
-customElements.define(RichTextEditorUnderline.tag, RichTextEditorUnderline);
+globalThis.customElements.define(
+  RichTextEditorUnderline.tag,
+  RichTextEditorUnderline,
+);
 export { RichTextEditorUnderline };

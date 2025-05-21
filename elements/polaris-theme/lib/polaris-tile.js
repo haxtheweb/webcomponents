@@ -160,4 +160,4 @@ export class PolarisTile extends LitElement {
   }
 }
 
-customElements.define(PolarisTile.tag, PolarisTile);
+globalThis.customElements.define(PolarisTile.tag, PolarisTile);

@@ -106,4 +106,4 @@ export class TrainingTop extends LitElement {
   }
 }
 // tell the browser about our tag and class it should run when it sees it
-customElements.define(TrainingTop.tag, TrainingTop);
+globalThis.customElements.define(TrainingTop.tag, TrainingTop);

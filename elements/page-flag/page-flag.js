@@ -259,7 +259,7 @@ class PageFlag extends SimpleColors {
     }
   }
 }
-customElements.define(PageFlag.tag, PageFlag);
+globalThis.customElements.define(PageFlag.tag, PageFlag);
 export { PageFlag };
 
 export class pageFlagManagerEl extends HTMLElement {
@@ -290,7 +290,7 @@ export class pageFlagManagerEl extends HTMLElement {
     });
   }
 }
-customElements.define(pageFlagManagerEl.tag, pageFlagManagerEl);
+globalThis.customElements.define(pageFlagManagerEl.tag, pageFlagManagerEl);
 
 // register globally so we can make sure there is only one
 globalThis.pageFlagManager = globalThis.pageFlagManager || {};

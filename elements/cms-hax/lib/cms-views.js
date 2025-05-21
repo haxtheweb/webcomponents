@@ -312,5 +312,5 @@ class CMSViews extends PolymerElement {
     return schema;
   }
 }
-customElements.define(CMSViews.tag, CMSViews);
+globalThis.customElements.define(CMSViews.tag, CMSViews);
 export { CMSViews };

@@ -165,5 +165,5 @@ class GitCorner extends LitElement {
     this.source = null;
   }
 }
-customElements.define(GitCorner.tag, GitCorner);
+globalThis.customElements.define(GitCorner.tag, GitCorner);
 export { GitCorner };

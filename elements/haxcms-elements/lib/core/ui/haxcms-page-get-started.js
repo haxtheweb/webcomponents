@@ -121,4 +121,7 @@ class HAXCMSPageGetStarted extends HAXCMSI18NMixin(LitElement) {
   }
 }
 
-customElements.define(HAXCMSPageGetStarted.tag, HAXCMSPageGetStarted);
+globalThis.customElements.define(
+  HAXCMSPageGetStarted.tag,
+  HAXCMSPageGetStarted,
+);

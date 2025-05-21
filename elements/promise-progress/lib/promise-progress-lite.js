@@ -144,4 +144,4 @@ export class PromiseProgressLite extends LitElement {
     }
   }
 }
-customElements.define(PromiseProgressLite.tag, PromiseProgressLite);
+globalThis.customElements.define(PromiseProgressLite.tag, PromiseProgressLite);

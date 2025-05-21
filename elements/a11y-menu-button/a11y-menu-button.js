@@ -826,5 +826,5 @@ Custom property | Description | Default
  * @element a11y-menu-button
  */
 class A11yMenuButton extends A11yMenuButtonBehaviors(LitElement) {}
-customElements.define(A11yMenuButton.tag, A11yMenuButton);
+globalThis.customElements.define(A11yMenuButton.tag, A11yMenuButton);
 export { A11yMenuButton, A11yMenuButtonBehaviors };

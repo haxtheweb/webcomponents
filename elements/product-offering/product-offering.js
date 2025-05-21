@@ -174,5 +174,5 @@ class ProductOffering extends IntersectionObserverMixin(SimpleColors) {
     });
   }
 }
-customElements.define(ProductOffering.tag, ProductOffering);
+globalThis.customElements.define(ProductOffering.tag, ProductOffering);
 export { ProductOffering };

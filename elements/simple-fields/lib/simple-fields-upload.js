@@ -630,5 +630,5 @@ class SimpleFieldsUpload extends I18NMixin(
     }, obj || self);
   }
 }
-customElements.define(SimpleFieldsUpload.tag, SimpleFieldsUpload);
+globalThis.customElements.define(SimpleFieldsUpload.tag, SimpleFieldsUpload);
 export { SimpleFieldsUpload };

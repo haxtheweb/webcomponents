@@ -35,4 +35,4 @@ export class PromiseProgress extends SimpleColorsSuper(PromiseProgressLite) {
     `;
   }
 }
-customElements.define(PromiseProgress.tag, PromiseProgress);
+globalThis.customElements.define(PromiseProgress.tag, PromiseProgress);

@@ -173,5 +173,5 @@ class StarRating extends SimpleColors {
     });
   }
 }
-customElements.define(StarRating.tag, StarRating);
+globalThis.customElements.define(StarRating.tag, StarRating);
 export { StarRating };

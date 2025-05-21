@@ -265,4 +265,4 @@ export class SiteCollectionList extends CollectionList {
   }
 }
 
-customElements.define(SiteCollectionList.tag, SiteCollectionList);
+globalThis.customElements.define(SiteCollectionList.tag, SiteCollectionList);

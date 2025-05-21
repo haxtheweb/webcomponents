@@ -91,4 +91,4 @@ export class AppHaxLabel extends LitElement {
     `;
   }
 }
-customElements.define(AppHaxLabel.tag, AppHaxLabel);
+globalThis.customElements.define(AppHaxLabel.tag, AppHaxLabel);

@@ -148,5 +148,5 @@ class HAXCMSEditorBuilder extends HTMLElement {
     }
   }
 }
-customElements.define(HAXCMSEditorBuilder.tag, HAXCMSEditorBuilder);
+globalThis.customElements.define(HAXCMSEditorBuilder.tag, HAXCMSEditorBuilder);
 export { HAXCMSEditorBuilder };

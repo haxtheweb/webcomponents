@@ -109,16 +109,16 @@ export const secureFeedback = () => {
 };
 
 setTimeout(() => {
-  if (document.querySelector("#securefeedbackbtn")) {
-    document
+  if (globalThis.document.querySelector("#securefeedbackbtn")) {
+    globalThis.document
       .querySelector("#securefeedbackbtn")
       .addEventListener("click", async (e) => {
         const response = await MicroFrontendRegistry.call("@core/crypto", {
           op: "hash",
-          data: document.querySelector("#data").value,
+          data: globalThis.document.querySelector("#data").value,
         });
         if (response.status == 200 && response.data) {
-          window.open(
+          globalThis.open(
             `https://secure-feedback.vercel.app/?message=${response.data}`,
             "_blank",
           );

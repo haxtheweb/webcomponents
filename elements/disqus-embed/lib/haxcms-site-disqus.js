@@ -40,5 +40,5 @@ class HAXCMSSiteDisqus extends DisqusEmbed {
   }
 }
 
-customElements.define(HAXCMSSiteDisqus.tag, HAXCMSSiteDisqus);
+globalThis.customElements.define(HAXCMSSiteDisqus.tag, HAXCMSSiteDisqus);
 export { HAXCMSSiteDisqus };

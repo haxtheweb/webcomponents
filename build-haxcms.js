@@ -1,10 +1,10 @@
 // overload how define works so that we can prevent bricking issues
 // when classes get loaded from multiple sources with the same name space
 // this is a copy of the dedup-fix.js script we use in local testing / es5 routines
-const _customElementsDefine = window.customElements.define;
-window.customElements.define = (name, cl, conf) => {
-  if (!customElements.get(name)) {
-    _customElementsDefine.call(window.customElements, name, cl, conf);
+const _customElementsDefine = globalThis.customElements.define;
+globalThis.customElements.define = (name, cl, conf) => {
+  if (!globalThis.customElements.get(name)) {
+    _customElementsDefine.call(globalThis.customElements, name, cl, conf);
   } else {
     console.warn(`${name} has been defined twice`);
   }

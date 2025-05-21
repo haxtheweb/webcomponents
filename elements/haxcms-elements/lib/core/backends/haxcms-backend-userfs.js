@@ -430,5 +430,5 @@ class HAXCMSBackendUserfs extends LitElement {
     }
   }
 }
-customElements.define(HAXCMSBackendUserfs.tag, HAXCMSBackendUserfs);
+globalThis.customElements.define(HAXCMSBackendUserfs.tag, HAXCMSBackendUserfs);
 export { HAXCMSBackendUserfs };

@@ -473,4 +473,4 @@ export class SiteViewsRoute extends HAXCMSI18NMixin(SimpleColors) {
   }
 }
 
-customElements.define(SiteViewsRoute.tag, SiteViewsRoute);
+globalThis.customElements.define(SiteViewsRoute.tag, SiteViewsRoute);

@@ -173,4 +173,4 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
   }
 }
 
-customElements.define(HAXCMSButtonAdd.tag, HAXCMSButtonAdd);
+globalThis.customElements.define(HAXCMSButtonAdd.tag, HAXCMSButtonAdd);

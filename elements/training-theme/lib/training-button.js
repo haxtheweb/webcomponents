@@ -154,4 +154,4 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
 }
 
 // tell the browser about our tag and class it should run when it sees it
-customElements.define(TrainingButton.tag, TrainingButton);
+globalThis.customElements.define(TrainingButton.tag, TrainingButton);

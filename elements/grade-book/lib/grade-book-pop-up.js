@@ -141,5 +141,5 @@ class GradeBookPopUp extends I18NMixin(LitElement) {
     };
   }
 }
-customElements.define(GradeBookPopUp.tag, GradeBookPopUp);
+globalThis.customElements.define(GradeBookPopUp.tag, GradeBookPopUp);
 export { GradeBookPopUp };

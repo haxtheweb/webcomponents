@@ -715,5 +715,5 @@ class GridPlate extends LitElement {
   }
   haxactiveElementChanged(el, val) {}
 }
-customElements.define(GridPlate.tag, GridPlate);
+globalThis.customElements.define(GridPlate.tag, GridPlate);
 export { GridPlate };

@@ -267,5 +267,5 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
  * @demo ./demo/menu.html
  */
 class SimpleToolbarMenu extends SimpleToolbarMenuBehaviors(LitElement) {}
-customElements.define(SimpleToolbarMenu.tag, SimpleToolbarMenu);
+globalThis.customElements.define(SimpleToolbarMenu.tag, SimpleToolbarMenu);
 export { SimpleToolbarMenu, SimpleToolbarMenuBehaviors };

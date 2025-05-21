@@ -158,5 +158,5 @@ class SitePrintButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
     );
   }
 }
-customElements.define(SitePrintButton.tag, SitePrintButton);
+globalThis.customElements.define(SitePrintButton.tag, SitePrintButton);
 export { SitePrintButton };

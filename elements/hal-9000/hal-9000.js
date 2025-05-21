@@ -334,7 +334,7 @@ class Hal9000 extends LitElement {
 }
 
 // ensure we can generate a singleton
-customElements.define(Hal9000.tag, Hal9000);
+globalThis.customElements.define(Hal9000.tag, Hal9000);
 export { Hal9000 };
 globalThis.Hal9000 = globalThis.Hal9000 || {};
 

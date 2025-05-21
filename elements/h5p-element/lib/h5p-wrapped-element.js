@@ -93,5 +93,5 @@ class H5pWrappedElement extends LitElement {
     `;
   }
 }
-customElements.define("h5p-wrapped-element", H5pWrappedElement);
+globalThis.customElements.define("h5p-wrapped-element", H5pWrappedElement);
 export { H5pWrappedElement };

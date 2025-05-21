@@ -306,5 +306,5 @@ class HaxAutoloader extends HAXElement(LitElement) {
     }
   }
 }
-customElements.define(HaxAutoloader.tag, HaxAutoloader);
+globalThis.customElements.define(HaxAutoloader.tag, HaxAutoloader);
 export { HaxAutoloader };

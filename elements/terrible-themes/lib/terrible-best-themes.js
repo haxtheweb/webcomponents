@@ -149,5 +149,5 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
     super.disconnectedCallback();
   }
 }
-customElements.define(TerribleBestThemes.tag, TerribleBestThemes);
+globalThis.customElements.define(TerribleBestThemes.tag, TerribleBestThemes);
 export { TerribleBestThemes };

@@ -156,5 +156,5 @@ class ScrollButton extends LitElement {
     }
   }
 }
-customElements.define(ScrollButton.tag, ScrollButton);
+globalThis.customElements.define(ScrollButton.tag, ScrollButton);
 export { ScrollButton };

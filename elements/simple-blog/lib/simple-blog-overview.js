@@ -190,5 +190,5 @@ class SimpleBlogOverview extends SimpleColors {
   }
 }
 
-customElements.define(SimpleBlogOverview.tag, SimpleBlogOverview);
+globalThis.customElements.define(SimpleBlogOverview.tag, SimpleBlogOverview);
 export { SimpleBlogOverview };

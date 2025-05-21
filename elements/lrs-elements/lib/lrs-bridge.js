@@ -115,5 +115,5 @@ class LrsBridge extends LitElement {
     );
   }
 }
-customElements.define(LrsBridge.tag, LrsBridge);
+globalThis.customElements.define(LrsBridge.tag, LrsBridge);
 export { LrsBridge };

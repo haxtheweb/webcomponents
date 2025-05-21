@@ -837,5 +837,5 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     `;
   }
 }
-customElements.define(A11yTabs.tag, A11yTabs);
+globalThis.customElements.define(A11yTabs.tag, A11yTabs);
 export { A11yTabs };

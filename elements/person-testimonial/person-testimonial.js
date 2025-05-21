@@ -216,5 +216,5 @@ class PersonTestimonial extends SimpleColors {
     ).href;
   }
 }
-customElements.define(PersonTestimonial.tag, PersonTestimonial);
+globalThis.customElements.define(PersonTestimonial.tag, PersonTestimonial);
 export { PersonTestimonial };

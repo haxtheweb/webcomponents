@@ -180,5 +180,5 @@ class HAXCMSBackendPHP extends LitElement {
     }
   }
 }
-customElements.define(HAXCMSBackendPHP.tag, HAXCMSBackendPHP);
+globalThis.customElements.define(HAXCMSBackendPHP.tag, HAXCMSBackendPHP);
 export { HAXCMSBackendPHP };

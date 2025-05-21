@@ -1277,5 +1277,5 @@ class HAXCMSSiteEditor extends LitElement {
   }
 }
 
-customElements.define(HAXCMSSiteEditor.tag, HAXCMSSiteEditor);
+globalThis.customElements.define(HAXCMSSiteEditor.tag, HAXCMSSiteEditor);
 export { HAXCMSSiteEditor };

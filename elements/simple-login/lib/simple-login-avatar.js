@@ -78,5 +78,5 @@ class SimpleLoginAvatar extends HTMLElement {
     </div>`;
   }
 }
-customElements.define(SimpleLoginAvatar.tag, SimpleLoginAvatar);
+globalThis.customElements.define(SimpleLoginAvatar.tag, SimpleLoginAvatar);
 export { SimpleLoginAvatar };

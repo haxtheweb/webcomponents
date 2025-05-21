@@ -202,5 +202,5 @@ class RelativeHeadingLite extends LitElement {
     super.disconnectedCallback();
   }
 }
-customElements.define(RelativeHeadingLite.tag, RelativeHeadingLite);
+globalThis.customElements.define(RelativeHeadingLite.tag, RelativeHeadingLite);
 export { RelativeHeadingLite };

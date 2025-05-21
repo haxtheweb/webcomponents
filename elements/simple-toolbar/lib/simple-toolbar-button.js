@@ -919,5 +919,5 @@ Custom property | Description | Default
 class SimpleToolbarButton extends SimpleToolbarButtonBehaviors(
   DDDPulseEffectSuper(LitElement),
 ) {}
-customElements.define(SimpleToolbarButton.tag, SimpleToolbarButton);
+globalThis.customElements.define(SimpleToolbarButton.tag, SimpleToolbarButton);
 export { SimpleToolbarButton, SimpleToolbarButtonBehaviors };

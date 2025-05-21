@@ -106,5 +106,5 @@ class SiteRenderQuery extends LitElement {
     });
   }
 }
-customElements.define(SiteRenderQuery.tag, SiteRenderQuery);
+globalThis.customElements.define(SiteRenderQuery.tag, SiteRenderQuery);
 export { SiteRenderQuery };

@@ -218,5 +218,8 @@ class SimpleIconButtonLite extends SimpleIconButtonBehaviors(LitElement) {
     this.type = "button";
   }
 }
-customElements.define(SimpleIconButtonLite.tag, SimpleIconButtonLite);
+globalThis.customElements.define(
+  SimpleIconButtonLite.tag,
+  SimpleIconButtonLite,
+);
 export { SimpleIconButtonLite };

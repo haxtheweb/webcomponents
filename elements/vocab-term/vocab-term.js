@@ -298,5 +298,5 @@ class VocabTerm extends LitElement {
       .href;
   }
 }
-customElements.define(VocabTerm.tag, VocabTerm);
+globalThis.customElements.define(VocabTerm.tag, VocabTerm);
 export { VocabTerm };

@@ -146,5 +146,5 @@ class SimpleEmojiPicker extends IntersectionObserverMixin(
   }
 }
 
-customElements.define(SimpleEmojiPicker.tag, SimpleEmojiPicker);
+globalThis.customElements.define(SimpleEmojiPicker.tag, SimpleEmojiPicker);
 export { SimpleEmojiPicker };

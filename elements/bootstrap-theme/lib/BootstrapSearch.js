@@ -71,5 +71,5 @@ class BootstrapSearch extends LitElement {
     return url.substring(0, url.lastIndexOf("/@haxtheweb/") + 1);
   }
 }
-customElements.define(BootstrapSearch.tag, BootstrapSearch);
+globalThis.customElements.define(BootstrapSearch.tag, BootstrapSearch);
 export { BootstrapSearch };

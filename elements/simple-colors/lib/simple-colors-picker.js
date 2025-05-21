@@ -143,4 +143,4 @@ class SimpleColorsPicker extends SimplePickerBehaviors(
 
 export { SimpleColorsPicker };
 
-customElements.define(SimpleColorsPicker.tag, SimpleColorsPicker);
+globalThis.customElements.define(SimpleColorsPicker.tag, SimpleColorsPicker);

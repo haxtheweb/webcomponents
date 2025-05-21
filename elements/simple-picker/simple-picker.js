@@ -1141,5 +1141,5 @@ const SimplePickerBehaviors = function (SuperClass) {
  */
 class SimplePicker extends SimplePickerBehaviors(LitElement) {}
 
-customElements.define(SimplePicker.tag, SimplePicker);
+globalThis.customElements.define(SimplePicker.tag, SimplePicker);
 export { SimplePickerBehaviors, SimplePicker };

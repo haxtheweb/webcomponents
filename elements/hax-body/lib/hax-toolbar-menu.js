@@ -65,5 +65,5 @@ class HaxToolbarMenu extends SimpleToolbarMenuBehaviors(LitElement) {
     };
   }
 }
-customElements.define(HaxToolbarMenu.tag, HaxToolbarMenu);
+globalThis.customElements.define(HaxToolbarMenu.tag, HaxToolbarMenu);
 export { HaxToolbarMenu };

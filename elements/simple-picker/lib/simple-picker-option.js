@@ -227,5 +227,5 @@ class SimplePickerOption extends LitElement {
     this.dispatchEvent(new CustomEvent("option-focus", { detail: this }));
   }
 }
-customElements.define(SimplePickerOption.tag, SimplePickerOption);
+globalThis.customElements.define(SimplePickerOption.tag, SimplePickerOption);
 export { SimplePickerOption };

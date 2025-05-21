@@ -1,5 +1,7 @@
-const packageJson = require("./package.json");
 const gulp = require("gulp");
+const fs = require("fs"); 
+const path = require("path");
+const packageJson = require("./package.json");
 // run polymer analyze to generate documentation
 gulp.task("analyze", () => {
   var exec = require("child_process").exec;
@@ -12,17 +14,11 @@ gulp.task("analyze", () => {
     }
   );
 });
-// merge all the src files together
-gulp.task("merge", () => {
-  return gulp
-    .src("./src/" + packageJson.wcfactory.elementName + ".js")
-    .pipe(gulp.dest("./"));
-});
 
 gulp.task("watch", () => {
-  return gulp.watch("./src/*", gulp.series("merge","analyze"));
+  return gulp.watch(["./*.js","./lib/*", "./demo/*"], gulp.series("analyze"));
 });
 
-gulp.task("dev", gulp.series("merge","analyze", "watch"));
+gulp.task("dev", gulp.series("analyze", "watch"));
 
-gulp.task("default", gulp.series("merge","analyze"));
+gulp.task("default", gulp.series("analyze"));

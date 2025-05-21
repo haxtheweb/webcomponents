@@ -1162,5 +1162,5 @@ class VideoPlayer extends IntersectionObserverMixin(
     }, 500);
   }
 }
-customElements.define(VideoPlayer.tag, VideoPlayer);
+globalThis.customElements.define(VideoPlayer.tag, VideoPlayer);
 export { VideoPlayer };

@@ -169,5 +169,5 @@ class SiteActiveTags extends LitElement {
     super.disconnectedCallback();
   }
 }
-customElements.define(SiteActiveTags.tag, SiteActiveTags);
+globalThis.customElements.define(SiteActiveTags.tag, SiteActiveTags);
 export { SiteActiveTags };

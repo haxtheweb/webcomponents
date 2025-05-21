@@ -317,5 +317,5 @@ class CMSBlock extends PolymerElement {
     return schema;
   }
 }
-customElements.define(CMSBlock.tag, CMSBlock);
+globalThis.customElements.define(CMSBlock.tag, CMSBlock);
 export { CMSBlock };

@@ -191,5 +191,5 @@ class BootstrapFooter extends LitElement {
   }
 }
 
-customElements.define(BootstrapFooter.tag, BootstrapFooter);
+globalThis.customElements.define(BootstrapFooter.tag, BootstrapFooter);
 export { BootstrapFooter };

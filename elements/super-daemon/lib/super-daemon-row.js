@@ -347,4 +347,4 @@ export class SuperDaemonRow extends SimpleColors {
   }
 }
 
-customElements.define(SuperDaemonRow.tag, SuperDaemonRow);
+globalThis.customElements.define(SuperDaemonRow.tag, SuperDaemonRow);

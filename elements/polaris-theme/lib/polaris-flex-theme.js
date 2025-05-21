@@ -1014,7 +1014,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
     super.disconnectedCallback();
   }
 }
-customElements.define(PolarisFlexTheme.tag, PolarisFlexTheme);
+globalThis.customElements.define(PolarisFlexTheme.tag, PolarisFlexTheme);
 export { PolarisFlexTheme };
 
 function localStorageGet(name, defaultValue = "") {

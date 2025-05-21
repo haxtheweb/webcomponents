@@ -208,5 +208,8 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
     super.disconnectedCallback();
   }
 }
-customElements.define(TerribleResumeThemes.tag, TerribleResumeThemes);
+globalThis.customElements.define(
+  TerribleResumeThemes.tag,
+  TerribleResumeThemes,
+);
 export { TerribleResumeThemes };

@@ -96,5 +96,5 @@ class VoiceRecorder extends LitElement {
     });
   }
 }
-customElements.define(VoiceRecorder.tag, VoiceRecorder);
+globalThis.customElements.define(VoiceRecorder.tag, VoiceRecorder);
 export { VoiceRecorder };

@@ -211,5 +211,5 @@ Custom property | Description | Default
  * @demo demo/grid.html
  */
 class SimpleButtonGrid extends SimpleButtonGridBehaviors(LitElement) {}
-customElements.define("simple-button-grid", SimpleButtonGrid);
+globalThis.customElements.define("simple-button-grid", SimpleButtonGrid);
 export { SimpleButtonGrid, SimpleButtonGridBehaviors };

@@ -28,7 +28,7 @@ let containerdules = import.meta.url.match(/node_modules/)
   ? new URL("../../", import.meta.url)
   : new URL("../../node_modules/", import.meta.url);
 
-window.WCGlobalBasePath = containerdules;
+globalThis.WCGlobalBasePath = containerdules;
 class StorybookFunctions {
   constructor() {}
 }
@@ -195,12 +195,12 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
    */
   async getHaxField(el, title) {
     var hProps = el.haxProperties;
-    if (el.tag && JSON.parse(window.localStorage.getItem(`${el.tag}-props`))) {
-      hProps = JSON.parse(window.localStorage.getItem(`${el.tag}-props`));
+    if (el.tag && JSON.parse(globalThis.localStorage.getItem(`${el.tag}-props`))) {
+      hProps = JSON.parse(globalThis.localStorage.getItem(`${el.tag}-props`));
     }
     else if (el.tag && typeof hProps == 'string') {
       setTimeout( async () => {
-        window.localStorage.setItem(`${el.tag}-props`, JSON.stringify(await fetch(hProps).then((e) => e.json())))        
+        globalThis.localStorage.setItem(`${el.tag}-props`, JSON.stringify(await fetch(hProps).then((e) => e.json())))        
       }, 0);    }
     let settings =
       hProps && hProps.settings
@@ -535,7 +535,7 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
    */
   updateSlot(text, slot) {
     if (text) {
-      let div = document.createElement("div"),
+      let div = globalThis.document.createElement("div"),
         inner = div.cloneNode(),
         parent = div,
         target = inner,
@@ -580,8 +580,8 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
    * @memberof StorybookUtilities
    */
   makeElement(el, knobs, noDemo = false) {
-    let demo = document.createElement("demo-snippet"),
-      template = document.createElement("template"),
+    let demo = globalThis.document.createElement("demo-snippet"),
+      template = globalThis.document.createElement("template"),
       tag = typeof el === "string" ? el : el.tag,
       attrs = `${this._getDemoAttributes(knobs.props)}${this._getDemoAttributes(
         knobs.attr
@@ -621,7 +621,7 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
     let entryFile = el.tag;
     let importPath = url.pathname.replace('/storybook/', '/').replace('/elements/','@haxtheweb/').replace('.stories.js','.js');
     packageName = packageName || `${importPath.split('/')[0]}/${importPath.split('/')[1]}`;
-    var description = window.localStorage.getItem(`${entryFile}-description`);
+    var description = globalThis.localStorage.getItem(`${entryFile}-description`);
     setTimeout( async () => {
       // pull from the custom-elements json file since our tooling rebuilds this
       const d = await fetch(`${url.pathname}/../custom-elements.json`.replace('/lib/','/')).then((e) => e.json()).then(async (d) => {
@@ -636,9 +636,9 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
         }
         return allD;
       })
-      window.localStorage.setItem(`${entryFile}-description`, d);
+      globalThis.localStorage.setItem(`${entryFile}-description`, d);
     }, 0);
-    const div = document.createElement('div');
+    const div = globalThis.document.createElement('div');
     div.style.padding = "20px";
     div.innerHTML = `
     <h2>${entryFile} Demo</h2>
@@ -695,12 +695,12 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
    * @param {string} before
    */
   getDemo(el, before = "") {
-    let demo = document.createElement("demo-snippet"),
-      template = document.createElement("template");
+    let demo = globalThis.document.createElement("demo-snippet"),
+      template = globalThis.document.createElement("template");
     template.innerHTML += el;
     demo.innerHTML += before;
     demo.appendChild(template);
-    document.querySelector("body").style.margin = "0";
+    globalThis.document.querySelector("body").style.margin = "0";
     demo.style.margin = "0px";
     demo.style.boxShadow = "none";
     demo.style.borderBottom = "1px solid #e0e0e0";
@@ -725,15 +725,15 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
     container = false
   ) {
     var hProps = el.haxProperties;
-    if (el.tag && JSON.parse(window.localStorage.getItem(`${el.tag}-props`))) {
-      hProps = JSON.parse(window.localStorage.getItem(`${el.tag}-props`));
+    if (el.tag && JSON.parse(globalThis.localStorage.getItem(`${el.tag}-props`))) {
+      hProps = JSON.parse(globalThis.localStorage.getItem(`${el.tag}-props`));
       setTimeout( async () => {
-        window.localStorage.setItem(`${el.tag}-props`, JSON.stringify(await fetch(el.haxProperties).then((e) => e.json())))        
+        globalThis.localStorage.setItem(`${el.tag}-props`, JSON.stringify(await fetch(el.haxProperties).then((e) => e.json())))        
       }, 0);
     }
     else if (el.tag && typeof hProps === 'string') {
       setTimeout( async () => {
-        window.localStorage.setItem(`${el.tag}-props`, JSON.stringify(await fetch(hProps).then((e) => e.json())))
+        globalThis.localStorage.setItem(`${el.tag}-props`, JSON.stringify(await fetch(hProps).then((e) => e.json())))
       }, 0);
     }
     let demoschema =
@@ -751,7 +751,7 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
         demo.properties && demo.properties.style
           ? demo.properties.style.replace(/;$/, "").split(/;/)
           : [],
-      content = document.createElement("div");
+      content = globalThis.document.createElement("div");
       // map props to attr equivalent; even if it's not there story will just ignore it
       if (props && Object.keys(props).length > 0) {
         Object.entries(props).forEach(prop => {
@@ -857,10 +857,10 @@ export class StorybookUtilities extends LoremDataBehaviors(StorybookFunctions) {
 }
 
 // register global bridge on window if needed
-window.StorybookUtilities = window.StorybookUtilities || {};
+globalThis.StorybookUtilities = globalThis.StorybookUtilities || {};
 
-window.StorybookUtilities.requestAvailability = () => {
-  if (!window.StorybookUtilities.instance) {
-    window.StorybookUtilities.instance = new StorybookUtilities();
+globalThis.StorybookUtilities.requestAvailability = () => {
+  if (!globalThis.StorybookUtilities.instance) {
+    globalThis.StorybookUtilities.instance = new StorybookUtilities();
   }
 };

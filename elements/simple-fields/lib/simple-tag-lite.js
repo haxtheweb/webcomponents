@@ -145,4 +145,4 @@ export class SimpleTagLite extends SimpleTagLiteSuper(LitElement) {
     return "simple-tag-lite";
   }
 }
-customElements.define(SimpleTagLite.tag, SimpleTagLite);
+globalThis.customElements.define(SimpleTagLite.tag, SimpleTagLite);

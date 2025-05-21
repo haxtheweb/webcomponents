@@ -60,5 +60,5 @@ class SiteActiveFields extends LitElement {
     super.disconnectedCallback();
   }
 }
-customElements.define(SiteActiveFields.tag, SiteActiveFields);
+globalThis.customElements.define(SiteActiveFields.tag, SiteActiveFields);
 export { SiteActiveFields };

@@ -308,7 +308,7 @@ class RelativeHeadingStateManager extends LitElement {
     }
   }
 }
-customElements.define(
+globalThis.customElements.define(
   RelativeHeadingStateManager.tag,
   RelativeHeadingStateManager,
 );

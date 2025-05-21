@@ -1648,5 +1648,8 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
 class RichTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   LitElement,
 ) {}
-customElements.define(RichTextEditorToolbar.tag, RichTextEditorToolbar);
+globalThis.customElements.define(
+  RichTextEditorToolbar.tag,
+  RichTextEditorToolbar,
+);
 export { RichTextEditorToolbar, RichTextEditorToolbarBehaviors };

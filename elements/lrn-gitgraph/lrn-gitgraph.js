@@ -137,5 +137,5 @@ class LrnGitgraph extends LitElement {
     this.config = config;
   }
 }
-customElements.define(LrnGitgraph.tag, LrnGitgraph);
+globalThis.customElements.define(LrnGitgraph.tag, LrnGitgraph);
 export { LrnGitgraph };

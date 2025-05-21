@@ -665,5 +665,5 @@ class AccentCard extends IntersectionObserverMixin(DDD) {
     };
   }
 }
-customElements.define(AccentCard.tag, AccentCard);
+globalThis.customElements.define(AccentCard.tag, AccentCard);
 export { AccentCard };

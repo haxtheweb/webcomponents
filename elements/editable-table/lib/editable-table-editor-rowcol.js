@@ -176,5 +176,8 @@ class EditableTableEditorRowcol extends SimpleToolbarMenuBehaviors(
     this.rowColAction(this.row ? this.index : this.index + 1);
   }
 }
-customElements.define(EditableTableEditorRowcol.tag, EditableTableEditorRowcol);
+globalThis.customElements.define(
+  EditableTableEditorRowcol.tag,
+  EditableTableEditorRowcol,
+);
 export { EditableTableEditorRowcol };

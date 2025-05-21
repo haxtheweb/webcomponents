@@ -158,5 +158,5 @@ class ProductCard extends SimpleColors {
     this.disabled = false;
   }
 }
-customElements.define(ProductCard.tag, ProductCard);
+globalThis.customElements.define(ProductCard.tag, ProductCard);
 export { ProductCard };

@@ -113,5 +113,5 @@ class CollectionList extends DDD {
     return "collection-list";
   }
 }
-customElements.define(CollectionList.tag, CollectionList);
+globalThis.customElements.define(CollectionList.tag, CollectionList);
 export { CollectionList };

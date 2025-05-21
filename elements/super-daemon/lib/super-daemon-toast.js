@@ -340,7 +340,7 @@ export class SuperDaemonToast extends SimpleToastEl {
     }
   }
 }
-customElements.define(SuperDaemonToast.tag, SuperDaemonToast);
+globalThis.customElements.define(SuperDaemonToast.tag, SuperDaemonToast);
 globalThis.SuperDaemonToast = globalThis.SuperDaemonToast || {};
 
 globalThis.SuperDaemonToast.requestAvailability = () => {

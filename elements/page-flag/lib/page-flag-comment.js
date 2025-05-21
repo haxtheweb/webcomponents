@@ -270,4 +270,4 @@ export class PageFlagComment extends LitElement {
     ];
   }
 }
-customElements.define(PageFlagComment.tag, PageFlagComment);
+globalThis.customElements.define(PageFlagComment.tag, PageFlagComment);

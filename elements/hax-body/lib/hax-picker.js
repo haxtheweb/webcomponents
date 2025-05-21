@@ -324,5 +324,5 @@ class HaxPicker extends LitElement {
     );
   }
 }
-customElements.define(HaxPicker.tag, HaxPicker);
+globalThis.customElements.define(HaxPicker.tag, HaxPicker);
 export { HaxPicker };

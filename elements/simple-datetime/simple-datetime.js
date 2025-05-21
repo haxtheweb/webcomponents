@@ -90,5 +90,5 @@ class SimpleDatetime extends LitElement {
     return new Date(timestamp).format(format);
   }
 }
-customElements.define(SimpleDatetime.tag, SimpleDatetime);
+globalThis.customElements.define(SimpleDatetime.tag, SimpleDatetime);
 export { SimpleDatetime };

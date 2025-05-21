@@ -111,5 +111,5 @@ class EditableTableFilter extends SimpleToolbarButtonBehaviors(DDD) {
     );
   }
 }
-customElements.define(EditableTableFilter.tag, EditableTableFilter);
+globalThis.customElements.define(EditableTableFilter.tag, EditableTableFilter);
 export { EditableTableFilter };

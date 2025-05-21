@@ -64,5 +64,5 @@ class HaxTextEditor extends RichTextEditorBehaviors(LitElement) {
 
   // attributeChangedCallback(attr, oldValue, newValue) {}
 }
-customElements.define("hax-text-editor", HaxTextEditor);
+globalThis.customElements.define("hax-text-editor", HaxTextEditor);
 export { HaxTextEditor };

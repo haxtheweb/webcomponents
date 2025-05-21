@@ -174,7 +174,7 @@ class ChatAgent extends DDD {
   }
 }
 
-customElements.define(ChatAgent.tag, ChatAgent);
+globalThis.customElements.define(ChatAgent.tag, ChatAgent);
 export { ChatAgent };
 
 // register globally so we can make sure there is only one
@@ -184,8 +184,9 @@ globalThis.ChatAgentStore = globalThis.ChatAgentStore || {};
 // is rendered through the same modal
 globalThis.ChatAgentStore.requestAvailability = () => {
   if (!globalThis.ChatAgentStore.instance) {
-    globalThis.ChatAgentStore.instance = document.createElement("chat-agent");
-    document.body.appendChild(globalThis.ChatAgentStore.instance);
+    globalThis.ChatAgentStore.instance =
+      globalThis.document.createElement("chat-agent");
+    globalThis.document.body.appendChild(globalThis.ChatAgentStore.instance);
   }
   return globalThis.ChatAgentStore.instance;
 };

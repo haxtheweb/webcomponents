@@ -343,4 +343,4 @@ export class UserScaffold extends HTMLElement {
     super.disconnectedCallback();
   }
 }
-customElements.define(UserScaffold.tag, UserScaffold);
+globalThis.customElements.define(UserScaffold.tag, UserScaffold);

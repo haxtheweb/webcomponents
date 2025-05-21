@@ -1094,5 +1094,5 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
  * @extends {SimpleFieldsFieldBehaviors(LitElement)}
  */
 class SimpleFieldsField extends SimpleFieldsFieldBehaviors(LitElement) {}
-customElements.define(SimpleFieldsField.tag, SimpleFieldsField);
+globalThis.customElements.define(SimpleFieldsField.tag, SimpleFieldsField);
 export { SimpleFieldsField, SimpleFieldsFieldBehaviors };

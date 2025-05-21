@@ -246,5 +246,5 @@ class LrndesignBar extends LrndesignChart(SimpleColors) {
  * life cycle, element is removed from the DOM
  */
 //disconnectedCallback() {}
-customElements.define(LrndesignBar.tag, LrndesignBar);
+globalThis.customElements.define(LrndesignBar.tag, LrndesignBar);
 export { LrndesignBar };

@@ -461,7 +461,10 @@ Custom property | Description | Default
  * @demo ./demo/buttons.html
  */
 class RichTextEditorButton extends RichTextEditorButtonBehaviors(LitElement) {}
-customElements.define(RichTextEditorButton.tag, RichTextEditorButton);
+globalThis.customElements.define(
+  RichTextEditorButton.tag,
+  RichTextEditorButton,
+);
 export {
   RichTextEditorButton,
   RichTextEditorButtonBehaviors,

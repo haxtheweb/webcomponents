@@ -153,5 +153,5 @@ class DocumentationPlayer extends LitElement {
     this.renderPlayListTemplate();
   }
 }
-customElements.define(DocumentationPlayer.tag, DocumentationPlayer);
+globalThis.customElements.define(DocumentationPlayer.tag, DocumentationPlayer);
 export { DocumentationPlayer };

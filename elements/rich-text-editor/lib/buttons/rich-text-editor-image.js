@@ -135,5 +135,5 @@ class RichTextEditorImage extends RichTextEditorPromptButtonBehaviors(
     this.toggled = !!this.value;
   }
 }
-customElements.define(RichTextEditorImage.tag, RichTextEditorImage);
+globalThis.customElements.define(RichTextEditorImage.tag, RichTextEditorImage);
 export { RichTextEditorImage };

@@ -92,7 +92,10 @@ class DOCXFileSystemBroker extends FileSystemBroker {
   }
 }
 
-customElements.define(DOCXFileSystemBroker.tag, DOCXFileSystemBroker);
+globalThis.customElements.define(
+  DOCXFileSystemBroker.tag,
+  DOCXFileSystemBroker,
+);
 // register globally so we can make sure there is only one
 globalThis.DOCXFileSystemBroker = globalThis.DOCXFileSystemBroker || {};
 globalThis.DOCXFileSystemBroker.requestAvailability = () => {

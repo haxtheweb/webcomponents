@@ -61,4 +61,4 @@ export class SimpleTags extends LitElement {
     ];
   }
 }
-customElements.define(SimpleTags.tag, SimpleTags);
+globalThis.customElements.define(SimpleTags.tag, SimpleTags);

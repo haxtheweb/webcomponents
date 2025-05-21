@@ -205,4 +205,4 @@ export class AppHaxSiteBars extends SimpleColors {
    * haxProperties integration via file reference
    */
 }
-customElements.define(AppHaxSiteBars.tag, AppHaxSiteBars);
+globalThis.customElements.define(AppHaxSiteBars.tag, AppHaxSiteBars);

@@ -914,6 +914,10 @@
             },
             {
               "kind": "field",
+              "name": "__disposer"
+            },
+            {
+              "kind": "field",
               "name": "properties",
               "static": true,
               "readonly": true,

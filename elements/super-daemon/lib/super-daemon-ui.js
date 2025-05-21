@@ -302,7 +302,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           }
         } else {
           // only a select mode makes this happen but still worth trapping for
-          globalThis.document.body.style.overflow = "";
+          globalThis.document.body.style.removeProperty("overflow");
         }
       }
       if (propName == "commandContext") {
@@ -598,4 +598,4 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   }
 }
 
-customElements.define(SuperDaemonUI.tag, SuperDaemonUI);
+globalThis.customElements.define(SuperDaemonUI.tag, SuperDaemonUI);

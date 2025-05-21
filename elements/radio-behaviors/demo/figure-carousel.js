@@ -74,5 +74,5 @@ class figureCarousel extends RadioBehaviors(LitElement) {
     return "active";
   }
 }
-customElements.define(figureCarousel.tag, figureCarousel);
+globalThis.customElements.define(figureCarousel.tag, figureCarousel);
 export { figureCarousel };

@@ -64,7 +64,7 @@ import '@haxtheweb/hax-body/hax-body.js';
 - end point / API location to save the data (if building your own HAX integration not the cms or wysiwyg option)
 - optional: place to save uploaded files (though you'll probably want this)
 - Some end point (or a static file) that supplies the appstore spec shown above
-If you think you can use HAX, try one of the methods below of integration. HAX is a pretty deep dive into Polymer / Webcomponents so these areas might be good starting points and then working down from there if you find it useful.
+If you think you can use HAX, try one of the methods below of integration. HAX is a pretty deep dive into Webcomponents so these areas might be good starting points and then working down from there if you find it useful.
 
 #### Drop in integrations
 - Working on a desktop or mobile app? Use the `app-editor-hax` tag - https://github.com/haxtheweb/app-editor-hax
@@ -98,7 +98,7 @@ If you think you can use HAX, try one of the methods below of integration. HAX i
 - *Stack* - A stack (-stax) is a series of hax-blox, HTML primatives, and custom elements. Think of it like a "template" in other systems. It's just stamping down a series of things which can then be modified on their own. It's meant to be forked and not maintained after stamping. An example could be a standard page layout with an image justified to the right and broken out into three paragraphs.
 
 ## element scope / definitions
-- `<hax-body-behaviors>` - any element that wants to be wired to HAX (in the polymer universe) should use hax-body-behaviors in order to provide consistency of property names, functions and utility functions.
+- `<hax-body-behaviors>` - any element that wants to be wired to HAX should use hax-body-behaviors in order to provide consistency of property names, functions and utility functions.
 - `<hax-body>` - the body area that all of the magic happens within. This is the thing providing the content for manipulation and injection of things.
   - `<hax-blox>` - a layout element that can help group the elements with in it
   - `<hax-ce-context>` - figures out the options for a custom element by reading off of the haxProperties object on the custom element.
@@ -148,7 +148,7 @@ And we've done it! Now we can ship this off to a back-end to do whatever we need
 
 
 ## Develop / Demo
-Run `npm start` will start a local development server, open your default browser to display it, open your finder to the correct window and start watching the `/src` directory for changes and automatically rebuilding the element and documentation site for the demo.
+Running `npm start` will start a local development server and open your default browser to display it. It will start watching *.js and lib/*.js files for changes automatically for your demo.
 ```bash
 $ npm start
 ```
@@ -162,14 +162,7 @@ $ npm start
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
-## Code style
-
-Body  use [Prettier][prettier] to auto-format JS and JSON.  The style rules get applied when you commit a change.  If you choose to, you can [integrate your editor][prettier-ed] with Prettier to have the style rules applied on every save.
-
-[prettier]: https://github.com/prettier/prettier/
-[prettier-ed]: https://github.com/prettier/prettier/#editor-integration
-[polyserve]: https://github.com/Polymer/polyserve
-[web-component-tester]: https://github.com/Polymer/web-component-tester
+Body
 
 ## License
 [Apache-2.0 License](http://opensource.org/licenses/Apache-2.0)

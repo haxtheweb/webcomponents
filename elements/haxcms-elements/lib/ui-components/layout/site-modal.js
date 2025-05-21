@@ -135,5 +135,5 @@ class SiteModal extends HAXCMSThemeParts(LitElement) {
     }, 0);
   }
 }
-customElements.define(SiteModal.tag, SiteModal);
+globalThis.customElements.define(SiteModal.tag, SiteModal);
 export { SiteModal };

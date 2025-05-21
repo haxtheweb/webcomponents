@@ -256,4 +256,4 @@ globalThis.AppHaxAPI.requestAvailability = () => {
 };
 export const AppHaxAPI = globalThis.AppHaxAPI.requestAvailability();
 
-customElements.define(AppHaxBackendAPI.tag, AppHaxBackendAPI);
+globalThis.customElements.define(AppHaxBackendAPI.tag, AppHaxBackendAPI);

@@ -337,5 +337,5 @@ class PlaceHolder extends SimpleColors {
     };
   }
 }
-customElements.define(PlaceHolder.tag, PlaceHolder);
+globalThis.customElements.define(PlaceHolder.tag, PlaceHolder);
 export { PlaceHolder };

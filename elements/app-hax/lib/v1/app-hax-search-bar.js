@@ -152,4 +152,4 @@ export class AppHaxSearchBar extends LitElement {
     }
   }
 }
-customElements.define(AppHaxSearchBar.tag, AppHaxSearchBar);
+globalThis.customElements.define(AppHaxSearchBar.tag, AppHaxSearchBar);

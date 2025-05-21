@@ -37,4 +37,7 @@ export class HAXCMSDarkmodeToggle extends WiredDarkmodeToggle {
     });
   }
 }
-customElements.define(HAXCMSDarkmodeToggle.tag, HAXCMSDarkmodeToggle);
+globalThis.customElements.define(
+  HAXCMSDarkmodeToggle.tag,
+  HAXCMSDarkmodeToggle,
+);

@@ -30,4 +30,4 @@ class PageScrollPosition extends HTMLElement {
     });
   }
 }
-customElements.define("page-scroll-position", PageScrollPosition);
+globalThis.customElements.define("page-scroll-position", PageScrollPosition);

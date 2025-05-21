@@ -132,5 +132,5 @@ let MinimalistTemplate = (superclass) =>
     }
   };
 class Minimalist extends MinimalistTemplate(HTMLElement) {}
-customElements.define("minimalist-template", Minimalist);
+globalThis.customElements.define("minimalist-template", Minimalist);
 export { MinimalistTemplate, Minimalist };

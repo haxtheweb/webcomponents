@@ -94,6 +94,6 @@ class ModelOption extends LitElement {
   }
 }
 
-customElements.define("model-option", ModelOption);
+globalThis.customElements.define("model-option", ModelOption);
 
 export { ModelOption };

@@ -183,5 +183,8 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
     };
   }
 }
-customElements.define(HaxPreferencesDialog.tag, HaxPreferencesDialog);
+globalThis.customElements.define(
+  HaxPreferencesDialog.tag,
+  HaxPreferencesDialog,
+);
 export { HaxPreferencesDialog };

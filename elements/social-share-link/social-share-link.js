@@ -302,5 +302,5 @@ class SocialShareLink extends LitElement {
     return "mdi-social:" + type.toLowerCase();
   }
 }
-customElements.define(SocialShareLink.tag, SocialShareLink);
+globalThis.customElements.define(SocialShareLink.tag, SocialShareLink);
 export { SocialShareLink };

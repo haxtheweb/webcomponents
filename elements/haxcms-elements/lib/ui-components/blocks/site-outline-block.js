@@ -282,5 +282,5 @@ class SiteOutlineBlock extends PolymerElement {
     this.windowControllers.abort();
   }
 }
-customElements.define(SiteOutlineBlock.tag, SiteOutlineBlock);
+globalThis.customElements.define(SiteOutlineBlock.tag, SiteOutlineBlock);
 export { SiteOutlineBlock };

@@ -56,5 +56,8 @@ class RichTextEditorUnlink extends RichTextEditorButtonBehaviors(LitElement) {
     });
   }
 }
-customElements.define(RichTextEditorUnlink.tag, RichTextEditorUnlink);
+globalThis.customElements.define(
+  RichTextEditorUnlink.tag,
+  RichTextEditorUnlink,
+);
 export { RichTextEditorUnlink };

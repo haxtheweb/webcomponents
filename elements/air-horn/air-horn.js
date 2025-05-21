@@ -72,5 +72,5 @@ class AirHorn extends HTMLElement {
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
   }
 }
-customElements.define(AirHorn.tag, AirHorn);
+globalThis.customElements.define(AirHorn.tag, AirHorn);
 export { AirHorn };

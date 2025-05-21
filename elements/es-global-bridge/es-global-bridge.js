@@ -25,7 +25,7 @@ export class ESGlobalBridge {
         importing = !webpack && this.webpack && this.webpack[name];
       if (!importing && !imported) {
         return new Promise((resolve, reject) => {
-          const script = document.createElement("script");
+          const script = globalThis.document.createElement("script");
           script.src = location;
           script.setAttribute("data-name", name);
           this.imports[name] = location;
@@ -42,7 +42,7 @@ export class ESGlobalBridge {
                   location: location,
                 },
               });
-              document.dispatchEvent(evt);
+              globalThis.document.dispatchEvent(evt);
             }, 100);
           };
           script.onerror = () => {
@@ -54,7 +54,7 @@ export class ESGlobalBridge {
             delete this.imports[name];
             this.imports[name] = false;
           };
-          document.documentElement.appendChild(script);
+          globalThis.document.documentElement.appendChild(script);
         });
       } else {
         return new Promise((resolve, reject) => {
@@ -65,12 +65,12 @@ export class ESGlobalBridge {
   }
 }
 // register global bridge on window if needed
-window.ESGlobalBridge = window.ESGlobalBridge || {};
+globalThis.ESGlobalBridge = globalThis.ESGlobalBridge || {};
 
-window.ESGlobalBridge.requestAvailability = () => {
-  if (!window.ESGlobalBridge.instance) {
-    window.ESGlobalBridge.instance = new ESGlobalBridge();
+globalThis.ESGlobalBridge.requestAvailability = () => {
+  if (!globalThis.ESGlobalBridge.instance) {
+    globalThis.ESGlobalBridge.instance = new ESGlobalBridge();
   }
-  return window.ESGlobalBridge.instance;
+  return globalThis.ESGlobalBridge.instance;
 };
-export const ESGlobalBridgeStore = window.ESGlobalBridge.requestAvailability();
+export const ESGlobalBridgeStore = globalThis.ESGlobalBridge.requestAvailability();

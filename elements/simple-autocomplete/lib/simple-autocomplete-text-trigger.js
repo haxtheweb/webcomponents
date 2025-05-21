@@ -249,7 +249,7 @@ export class SimpleAutocompleteTextTrigger extends LitElement {
     super.disconnectedCallback();
   }
 }
-customElements.define(
+globalThis.customElements.define(
   SimpleAutocompleteTextTrigger.tag,
   SimpleAutocompleteTextTrigger,
 );

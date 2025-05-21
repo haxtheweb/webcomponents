@@ -179,5 +179,5 @@ class SimplePopover extends AbsolutePositionBehavior {
     return ``;
   }
 }
-customElements.define(SimplePopover.tag, SimplePopover);
+globalThis.customElements.define(SimplePopover.tag, SimplePopover);
 export { SimplePopover };

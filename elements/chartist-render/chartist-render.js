@@ -1782,5 +1782,5 @@ const ChartistRenderSuper = function (SuperClass) {
  `--chartist-color-label-o` | color for 15th series label |  `--chartist-label-color`
   */
 class ChartistRender extends ChartistRenderSuper(LitElement) {}
-customElements.define(ChartistRender.tag, ChartistRender);
+globalThis.customElements.define(ChartistRender.tag, ChartistRender);
 export { ChartistRender, ChartistRenderSuper };

@@ -276,5 +276,8 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     );
   }
 }
-customElements.define(HAXCMSOutlineEditorDialog.tag, HAXCMSOutlineEditorDialog);
+globalThis.customElements.define(
+  HAXCMSOutlineEditorDialog.tag,
+  HAXCMSOutlineEditorDialog,
+);
 export { HAXCMSOutlineEditorDialog };

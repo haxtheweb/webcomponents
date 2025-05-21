@@ -209,5 +209,5 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   }
 }
 
-customElements.define(HaxUploadField.tag, HaxUploadField);
+globalThis.customElements.define(HaxUploadField.tag, HaxUploadField);
 export { HaxUploadField };

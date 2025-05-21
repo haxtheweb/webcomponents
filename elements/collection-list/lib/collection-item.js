@@ -270,5 +270,5 @@ class CollectionItem extends DDD {
     return "collection-item";
   }
 }
-customElements.define(CollectionItem.tag, CollectionItem);
+globalThis.customElements.define(CollectionItem.tag, CollectionItem);
 export { CollectionItem };

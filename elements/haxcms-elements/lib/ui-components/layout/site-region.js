@@ -84,4 +84,4 @@ class SiteRegion extends LitElement {
     return html`<slot></slot>`;
   }
 }
-customElements.define(SiteRegion.tag, SiteRegion);
+globalThis.customElements.define(SiteRegion.tag, SiteRegion);

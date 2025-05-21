@@ -1,10 +1,10 @@
-var link = document.createElement("script");
+var link = globalThis.document.createElement("script");
 link.type = "module";
-window.__appliedHax = false;
+globalThis.__appliedHax = false;
 link.src =
   "https://cdn.waxam.io/build/es6/node_modules/@haxtheweb/h-a-x/h-a-x.js";
-document.body.appendChild(link);
-var style = document.createElement("style");
+globalThis.document.body.appendChild(link);
+var style = globalThis.document.createElement("style");
 style.innerHTML = `.hax-injected-highlighter {
 outline: 2px dotted #34e79a!important;
 outline-offset: 2px!important;
@@ -13,27 +13,27 @@ h-a-x {
   width: 50%;
   margin: 100px auto;
 }`;
-document.body.appendChild(style);
-document.body.addEventListener("click", function (e) {
-  if (!window.__appliedHax) {
+globalThis.document.body.appendChild(style);
+globalThis.document.body.addEventListener("click", function (e) {
+  if (!globalThis.__appliedHax) {
     var org_html = e.target.outerHTML;
     var new_html = "<h-a-x>" + org_html + "</h-a-x>";
     e.target.outerHTML = new_html;
-    window.__appliedHax = true;
+    globalThis.__appliedHax = true;
   }
 });
-document.body.addEventListener("mouseover", function (e) {
-  if (!window.__appliedHax) {
+globalThis.document.body.addEventListener("mouseover", function (e) {
+  if (!globalThis.__appliedHax) {
     e.target.classList.add("hax-injected-highlighter");
   }
 });
-document.body.addEventListener("mouseout", function (e) {
-  if (!window.__appliedHax) {
+globalThis.document.body.addEventListener("mouseout", function (e) {
+  if (!globalThis.__appliedHax) {
     e.target.classList.remove("hax-injected-highlighter");
   }
 });
-window.addEventListener("hax-store-ready", () => {
-  window.HaxStore.instance.appStore = {
+globalThis.addEventListener("hax-store-ready", () => {
+  globalThis.HaxStore.instance.appStore = {
     status: 200,
     apps: [
       {

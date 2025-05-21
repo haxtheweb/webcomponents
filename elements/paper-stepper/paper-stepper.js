@@ -113,5 +113,5 @@ class PaperStepper extends PolymerElement {
     this._items = this.shadowRoot.querySelector("#selector").items;
   }
 }
-customElements.define(PaperStepper.tag, PaperStepper);
+globalThis.customElements.define(PaperStepper.tag, PaperStepper);
 export { PaperStepper };

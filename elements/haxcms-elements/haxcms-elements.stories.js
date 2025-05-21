@@ -5,7 +5,7 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 // need to account for polymer goofiness when webpack rolls this up
 const base = "https://haxtheweb.org/";
 setTimeout(async () => {
-  window.localStorage.setItem(
+  globalThis.localStorage.setItem(
     `haxcms-demo-manifest`,
     JSON.stringify(await fetch(`${base}site.json`).then((e) => e.json())),
   );
@@ -50,9 +50,9 @@ const getRenderString = (data) => {
 // site insights
 export const SiteInsights = () => {
   // tee up a demo
-  if (JSON.parse(window.localStorage.getItem(`haxcms-demo-manifest`))) {
+  if (JSON.parse(globalThis.localStorage.getItem(`haxcms-demo-manifest`))) {
     const manifest = JSON.parse(
-      window.localStorage.getItem(`haxcms-demo-manifest`),
+      globalThis.localStorage.getItem(`haxcms-demo-manifest`),
     );
     store.loadManifest(manifest);
     // sets to UX concepts as default so that we get a faster initial render

@@ -393,5 +393,5 @@ class BarcodeReader extends LitElement {
       });
   }
 }
-customElements.define(BarcodeReader.tag, BarcodeReader);
+globalThis.customElements.define(BarcodeReader.tag, BarcodeReader);
 export { BarcodeReader };

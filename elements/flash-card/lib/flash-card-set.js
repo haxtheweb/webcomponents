@@ -199,4 +199,4 @@ export class FlashCardSet extends SimpleColors {
   }
 }
 
-customElements.define(FlashCardSet.tag, FlashCardSet);
+globalThis.customElements.define(FlashCardSet.tag, FlashCardSet);

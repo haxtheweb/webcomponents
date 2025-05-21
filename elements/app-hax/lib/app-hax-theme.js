@@ -786,8 +786,10 @@ class AppHaxTheme extends HAXCMSRememberRoute(
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
+    // remove overflow
+    globalThis.document.body.style.removeProperty("overflow");
     super.disconnectedCallback();
   }
 }
-customElements.define(AppHaxTheme.tag, AppHaxTheme);
+globalThis.customElements.define(AppHaxTheme.tag, AppHaxTheme);
 export { AppHaxTheme };

@@ -186,5 +186,8 @@ class A11yMediaStateManager extends LitElement {
     super.disconnectedCallback();
   }
 }
-customElements.define(A11yMediaStateManager.tag, A11yMediaStateManager);
+globalThis.customElements.define(
+  A11yMediaStateManager.tag,
+  A11yMediaStateManager,
+);
 export { A11yMediaStateManager };

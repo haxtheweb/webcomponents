@@ -43,7 +43,7 @@
   "dependencies": {
     "@haxtheweb/schema-behaviors": "^10.0.2",
     "@haxtheweb/utils": "^10.0.0",
-    "lit": "^3.2.1",
+    "lit": "^3.3.0",
     "monaco-editor": "0.32.1"
   },
   "devDependencies": {

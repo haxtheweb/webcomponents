@@ -493,5 +493,5 @@ class SimpleAutocomplete extends SimpleFilterMixin(LitElement) {
     });
   }
 }
-customElements.define(SimpleAutocomplete.tag, SimpleAutocomplete);
+globalThis.customElements.define(SimpleAutocomplete.tag, SimpleAutocomplete);
 export { SimpleAutocomplete };

@@ -68,6 +68,6 @@ class SimpleSearchMatch extends LitElement {
     return html` <slot></slot> `;
   }
 }
-customElements.define(SimpleSearchMatch.tag, SimpleSearchMatch);
+globalThis.customElements.define(SimpleSearchMatch.tag, SimpleSearchMatch);
 
 export { SimpleSearchMatch };

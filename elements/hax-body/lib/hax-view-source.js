@@ -568,5 +568,5 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     });
   }
 }
-customElements.define(HaxViewSource.tag, HaxViewSource);
+globalThis.customElements.define(HaxViewSource.tag, HaxViewSource);
 export { HaxViewSource };

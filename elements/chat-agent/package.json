@@ -47,8 +47,8 @@
     "@haxtheweb/micro-frontend-registry": "^10.0.2",
     "@haxtheweb/rpg-character": "^10.0.2",
     "@haxtheweb/type-writer": "^10.0.2",
-    "lit": "^3.2.1",
-    "mobx": "^6.3.0"
+    "lit": "^3.3.0",
+    "mobx": "6.13.7"
   },
   "devDependencies": {
     "@haxtheweb/deduping-fix": "^10.0.0",

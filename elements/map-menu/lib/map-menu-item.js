@@ -326,5 +326,5 @@ class MapMenuItem extends I18NMixin(LitElement) {
     );
   }
 }
-customElements.define(MapMenuItem.tag, MapMenuItem);
+globalThis.customElements.define(MapMenuItem.tag, MapMenuItem);
 export { MapMenuItem };

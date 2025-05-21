@@ -321,5 +321,8 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
     super.disconnectedCallback();
   }
 }
-customElements.define(TerribleProductionzThemes.tag, TerribleProductionzThemes);
+globalThis.customElements.define(
+  TerribleProductionzThemes.tag,
+  TerribleProductionzThemes,
+);
 export { TerribleProductionzThemes };

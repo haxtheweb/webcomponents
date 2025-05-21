@@ -67,4 +67,4 @@ export class PostCardStamp extends LitElement {
     `;
   }
 }
-customElements.define(PostCardStamp.tag, PostCardStamp);
+globalThis.customElements.define(PostCardStamp.tag, PostCardStamp);

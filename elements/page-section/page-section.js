@@ -512,5 +512,5 @@ class PageSection extends DDD {
     }
   */
 }
-customElements.define(PageSection.tag, PageSection);
+globalThis.customElements.define(PageSection.tag, PageSection);
 export { PageSection };

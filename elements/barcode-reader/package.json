@@ -50,7 +50,7 @@
     "@zxing/library": "0.19.1",
     "javascript-barcode-reader": "0.6.9",
     "jquery": "^3.6.0",
-    "lit": "^3.2.1"
+    "lit": "^3.3.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.4",

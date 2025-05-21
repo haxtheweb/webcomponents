@@ -68,4 +68,4 @@ export class PostCardPostmark extends LitElement {
     `;
   }
 }
-customElements.define(PostCardPostmark.tag, PostCardPostmark);
+globalThis.customElements.define(PostCardPostmark.tag, PostCardPostmark);

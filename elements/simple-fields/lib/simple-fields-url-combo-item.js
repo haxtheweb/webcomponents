@@ -456,5 +456,8 @@ class SimpleFieldsUrlComboItem extends LitElement {
     changedProperties.forEach((oldValue, propName) => {});
   }
 }
-customElements.define(SimpleFieldsUrlComboItem.tag, SimpleFieldsUrlComboItem);
+globalThis.customElements.define(
+  SimpleFieldsUrlComboItem.tag,
+  SimpleFieldsUrlComboItem,
+);
 export { SimpleFieldsUrlComboItem };

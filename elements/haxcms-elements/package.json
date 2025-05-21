@@ -111,8 +111,8 @@
     "@polymer/polymer": "^3.5.1",
     "@vaadin/router": "^1.7.5",
     "@vaadin/vaadin-grid": "^5.2.5",
-    "lit": "^3.2.1",
-    "mobx": "6.12.4",
+    "lit": "^3.3.0",
+    "mobx": "6.13.7",
     "web-social-share": "8.0.1",
     "wired-elements": "3.0.0-rc.6"
   },

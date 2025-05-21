@@ -225,5 +225,5 @@ globalThis.FileSystemBroker.requestAvailability = () => {
 const FileSystemBrokerSingleton =
   globalThis.FileSystemBroker.requestAvailability();
 
-customElements.define(FileSystemBroker.tag, FileSystemBroker);
+globalThis.customElements.define(FileSystemBroker.tag, FileSystemBroker);
 export { FileSystemBroker, FileSystemBrokerSingleton };

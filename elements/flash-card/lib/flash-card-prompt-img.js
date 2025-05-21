@@ -145,4 +145,4 @@ export class FlashCardPromptImg extends SimpleColors {
     `;
   }
 }
-customElements.define(FlashCardPromptImg.tag, FlashCardPromptImg);
+globalThis.customElements.define(FlashCardPromptImg.tag, FlashCardPromptImg);

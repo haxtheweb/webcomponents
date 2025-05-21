@@ -226,7 +226,7 @@ class H5PElement extends LitElement {
     super.disconnectedCallback();
   }
 }
-customElements.define("h5p-element", H5PElement);
+globalThis.customElements.define("h5p-element", H5PElement);
 globalThis.H5P = globalThis.H5P || {};
 
 globalThis.H5PIntegration = globalThis.H5PIntegration || {};

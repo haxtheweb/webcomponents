@@ -350,5 +350,5 @@ class LunrSearch extends LitElement {
     }
   }
 }
-customElements.define(LunrSearch.tag, LunrSearch);
+globalThis.customElements.define(LunrSearch.tag, LunrSearch);
 export { LunrSearch };

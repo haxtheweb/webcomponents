@@ -180,5 +180,5 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
     };
   }
 }
-customElements.define(LrnVocab.tag, LrnVocab);
+globalThis.customElements.define(LrnVocab.tag, LrnVocab);
 export { LrnVocab };

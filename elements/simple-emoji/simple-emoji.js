@@ -91,5 +91,5 @@ class SimpleEmoji extends LitElement {
     });
   }
 }
-customElements.define(SimpleEmoji.tag, SimpleEmoji);
+globalThis.customElements.define(SimpleEmoji.tag, SimpleEmoji);
 export { SimpleEmoji };

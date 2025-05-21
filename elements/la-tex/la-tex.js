@@ -168,5 +168,5 @@ class LaTex extends LitElement {
       .href;
   }
 }
-customElements.define(LaTex.tag, LaTex);
+globalThis.customElements.define(LaTex.tag, LaTex);
 export { LaTex };

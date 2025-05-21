@@ -14,15 +14,15 @@ export default {
   },
 };
 setTimeout(() => {
-  if (document.querySelector("#loadstatsbutton")) {
-    document
+  if (globalThis.document.querySelector("#loadstatsbutton")) {
+    globalThis.document
       .querySelector("#loadstatsbutton")
       .addEventListener("click", (e) => {
-        document.querySelector("#target").ancestor =
-          document.querySelector("#ancestor").value;
-        document
+        globalThis.document.querySelector("#target").ancestor =
+          globalThis.document.querySelector("#ancestor").value;
+        globalThis.document
           .querySelector("#target")
-          .getSmartData(document.querySelector("#text").value);
+          .getSmartData(globalThis.document.querySelector("#text").value);
       });
   }
 }, 1000);

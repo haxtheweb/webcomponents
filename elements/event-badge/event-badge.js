@@ -192,5 +192,5 @@ class EventBadge extends SimpleColors {
   }
 }
 
-customElements.define(EventBadge.tag, EventBadge);
+globalThis.customElements.define(EventBadge.tag, EventBadge);
 export { EventBadge };

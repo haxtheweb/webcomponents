@@ -187,5 +187,5 @@ class lazyImage extends LoadingHelper(lazyImageLoader(LitElement)) {
     </div>`;
   }
 }
-customElements.define(lazyImage.tag, lazyImage);
+globalThis.customElements.define(lazyImage.tag, lazyImage);
 export { lazyImage };

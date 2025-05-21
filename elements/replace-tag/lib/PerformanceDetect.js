@@ -99,5 +99,5 @@ class PerformanceDetect extends HTMLElement {
     return details;
   }
 }
-customElements.define(PerformanceDetect.tag, PerformanceDetect);
+globalThis.customElements.define(PerformanceDetect.tag, PerformanceDetect);
 export { PerformanceDetect };

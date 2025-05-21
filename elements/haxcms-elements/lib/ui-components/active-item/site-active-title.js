@@ -259,5 +259,5 @@ class SiteActiveTitle extends LitElement {
     return this;
   }
 }
-customElements.define(SiteActiveTitle.tag, SiteActiveTitle);
+globalThis.customElements.define(SiteActiveTitle.tag, SiteActiveTitle);
 export { SiteActiveTitle };

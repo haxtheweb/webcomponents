@@ -189,5 +189,5 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
     range.commonAncestorContainer.children[0].setAttribute("target", target);
   }
 }
-customElements.define(RichTextEditorLink.tag, RichTextEditorLink);
+globalThis.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);
 export { RichTextEditorLink };

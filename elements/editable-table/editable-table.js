@@ -275,5 +275,5 @@ class EditableTable extends editBehaviors(DDD) {
     );
   }
 }
-customElements.define(EditableTable.tag, EditableTable);
+globalThis.customElements.define(EditableTable.tag, EditableTable);
 export { EditableTable };

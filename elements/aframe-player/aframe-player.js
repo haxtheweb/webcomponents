@@ -270,5 +270,5 @@ class AframePlayer extends SchemaBehaviors(LitElement) {
       this.__entity.setAttribute("position", position);
   }
 }
-customElements.define(AframePlayer.tag, AframePlayer);
+globalThis.customElements.define(AframePlayer.tag, AframePlayer);
 export { AframePlayer };

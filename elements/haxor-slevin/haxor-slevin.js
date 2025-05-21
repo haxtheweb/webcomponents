@@ -740,5 +740,5 @@ class HaxorSlevin extends HAXCMSThemeParts(
     this.selectedPage = 0;
   }
 }
-customElements.define(HaxorSlevin.tag, HaxorSlevin);
+globalThis.customElements.define(HaxorSlevin.tag, HaxorSlevin);
 export { HaxorSlevin };

@@ -60,4 +60,4 @@ class ResponsiveIframe extends LitElement {
     `;
   }
 }
-customElements.define("responsive-iframe", ResponsiveIframe);
+globalThis.customElements.define("responsive-iframe", ResponsiveIframe);

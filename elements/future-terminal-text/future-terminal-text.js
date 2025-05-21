@@ -38,5 +38,5 @@ class FutureTerminalText extends SimpleColorsSuper(FutureTerminalTextLite) {
     return html`<span><slot></slot></span>`;
   }
 }
-customElements.define(FutureTerminalText.tag, FutureTerminalText);
+globalThis.customElements.define(FutureTerminalText.tag, FutureTerminalText);
 export { FutureTerminalText };

@@ -99,7 +99,7 @@ class ResponsiveUtility extends LitElement {
       globalThis.ResponsiveUtility.instance = this;
   }
 }
-customElements.define(ResponsiveUtility.tag, ResponsiveUtility);
+globalThis.customElements.define(ResponsiveUtility.tag, ResponsiveUtility);
 export { ResponsiveUtility };
 
 /**

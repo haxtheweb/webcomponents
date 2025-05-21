@@ -234,5 +234,8 @@ class HAXCMSMinimalistTheme extends MinimalistTemplate(
     `;
   }
 }
-customElements.define("haxcms-minimalist-theme", HAXCMSMinimalistTheme);
+globalThis.customElements.define(
+  "haxcms-minimalist-theme",
+  HAXCMSMinimalistTheme,
+);
 export { HAXCMSMinimalistTheme };

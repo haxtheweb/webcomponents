@@ -679,4 +679,4 @@ export class PageBreak extends IntersectionObserverMixin(
     return true;
   }
 }
-customElements.define(PageBreak.tag, PageBreak);
+globalThis.customElements.define(PageBreak.tag, PageBreak);

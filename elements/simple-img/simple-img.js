@@ -272,4 +272,4 @@ export class SimpleImg extends HTMLElement {
   }
 }
 
-customElements.define(SimpleImg.tag, SimpleImg);
+globalThis.customElements.define(SimpleImg.tag, SimpleImg);

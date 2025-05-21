@@ -749,5 +749,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         ];
   }
 }
-customElements.define("hax-text-editor-toolbar", HaxTextEditorToolbar);
+globalThis.customElements.define(
+  "hax-text-editor-toolbar",
+  HaxTextEditorToolbar,
+);
 export { HaxTextEditorToolbar };

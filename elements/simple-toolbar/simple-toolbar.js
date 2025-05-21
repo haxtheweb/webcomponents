@@ -900,5 +900,5 @@ Custom property | Description | Default
  * @demo ./demo/menu.html Menu
  */
 class SimpleToolbar extends SimpleToolbarBehaviors(LitElement) {}
-customElements.define("simple-toolbar", SimpleToolbar);
+globalThis.customElements.define("simple-toolbar", SimpleToolbar);
 export { SimpleToolbar, SimpleToolbarBehaviors };

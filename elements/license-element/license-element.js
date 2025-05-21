@@ -386,5 +386,5 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
     }
   }
 }
-customElements.define(LicenseElement.tag, LicenseElement);
+globalThis.customElements.define(LicenseElement.tag, LicenseElement);
 export { LicenseElement };

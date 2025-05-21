@@ -127,4 +127,4 @@ export class AppHaxTopBar extends LitElement {
     `;
   }
 }
-customElements.define(AppHaxTopBar.tag, AppHaxTopBar);
+globalThis.customElements.define(AppHaxTopBar.tag, AppHaxTopBar);

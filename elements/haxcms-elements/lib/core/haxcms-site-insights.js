@@ -1317,7 +1317,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     </div>`;
   }
 }
-customElements.define(HAXCMSShareDialog.tag, HAXCMSShareDialog);
+globalThis.customElements.define(HAXCMSShareDialog.tag, HAXCMSShareDialog);
 export { HAXCMSShareDialog };
 
 // convert seconds back into full time stamp

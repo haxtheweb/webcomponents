@@ -268,5 +268,5 @@ class CountUpElement extends IntersectionObserverMixin(LitElement) {
     });
   }
 }
-customElements.define(CountUpElement.tag, CountUpElement);
+globalThis.customElements.define(CountUpElement.tag, CountUpElement);
 export { CountUpElement, CountUp };

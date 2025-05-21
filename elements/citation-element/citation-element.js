@@ -394,5 +394,5 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
     }
   }
 }
-customElements.define(CitationElement.tag, CitationElement);
+globalThis.customElements.define(CitationElement.tag, CitationElement);
 export { CitationElement };

@@ -37,16 +37,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       ...this.t,
       title: "Title",
     };
-    this.registerLocalization({
-      context: this,
-      localesPath:
-        new URL("./locales/glossy-portfolio.ar.json", import.meta.url).href +
-        "/../",
-      locales: ["ar", "es", "hi", "zh"],
-    });
-
-
-
   }
 
   // Lit reactive properties

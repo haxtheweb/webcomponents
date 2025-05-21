@@ -541,4 +541,4 @@ export class SiteView extends SimpleColors {
   }
 }
 
-customElements.define(SiteView.tag, SiteView);
+globalThis.customElements.define(SiteView.tag, SiteView);

@@ -194,5 +194,5 @@ class SimpleIconLite extends SimpleIconBehaviors(LitElement) {
     return "simple-icon-lite";
   }
 }
-customElements.define(SimpleIconLite.tag, SimpleIconLite);
+globalThis.customElements.define(SimpleIconLite.tag, SimpleIconLite);
 export { SimpleIconLite };

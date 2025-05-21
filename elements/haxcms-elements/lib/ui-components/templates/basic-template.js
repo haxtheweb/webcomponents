@@ -146,5 +146,5 @@ let BasicTemplate = (superclass) =>
     }
   };
 class Basic extends BasicTemplate(HTMLElement) {}
-customElements.define("basic-template", Basic);
+globalThis.customElements.define("basic-template", Basic);
 export { BasicTemplate, Basic };

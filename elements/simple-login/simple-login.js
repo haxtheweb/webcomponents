@@ -296,5 +296,5 @@ class SimpleLogin extends SimpleColors {
     }
   }
 }
-customElements.define(SimpleLogin.tag, SimpleLogin);
+globalThis.customElements.define(SimpleLogin.tag, SimpleLogin);
 export { SimpleLogin };

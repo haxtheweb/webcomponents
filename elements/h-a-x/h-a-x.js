@@ -310,5 +310,5 @@ class HAX extends HTMLElement {
   }
   attributeChangedCallback(attr, oldValue, newValue) {}
 }
-customElements.define("h-a-x", HAX);
+globalThis.customElements.define("h-a-x", HAX);
 export { HAX };

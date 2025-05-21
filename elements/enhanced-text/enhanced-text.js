@@ -486,5 +486,5 @@ class EnhancedText extends LitElement {
     };
   }
 }
-customElements.define(EnhancedText.tag, EnhancedText);
+globalThis.customElements.define(EnhancedText.tag, EnhancedText);
 export { EnhancedText };

@@ -51,7 +51,7 @@ export class HAXCMSToast extends RPGCharacterToast {
     super.disconnectedCallback();
   }
 }
-customElements.define(HAXCMSToast.tag, HAXCMSToast);
+globalThis.customElements.define(HAXCMSToast.tag, HAXCMSToast);
 globalThis.HAXCMSToast = globalThis.HAXCMSToast || {};
 
 globalThis.HAXCMSToast.requestAvailability = () => {

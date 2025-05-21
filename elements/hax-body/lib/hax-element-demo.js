@@ -84,4 +84,4 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
   }
 }
 
-customElements.define(HaxElementDemo.tag, HaxElementDemo);
+globalThis.customElements.define(HaxElementDemo.tag, HaxElementDemo);

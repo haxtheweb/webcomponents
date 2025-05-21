@@ -213,4 +213,4 @@ export class IframeLoader extends LitElement {
     `;
   }
 }
-customElements.define(IframeLoader.tag, IframeLoader);
+globalThis.customElements.define(IframeLoader.tag, IframeLoader);

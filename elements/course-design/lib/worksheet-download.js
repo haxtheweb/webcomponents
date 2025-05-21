@@ -156,4 +156,4 @@ export class WorksheetDownload extends LitElement {
     `;
   }
 }
-customElements.define(WorksheetDownload.tag, WorksheetDownload);
+globalThis.customElements.define(WorksheetDownload.tag, WorksheetDownload);

@@ -487,5 +487,5 @@ class RetroCard extends SimpleColors {
     this.__cardTags = [...ary];
   }
 }
-customElements.define(RetroCard.tag, RetroCard);
+globalThis.customElements.define(RetroCard.tag, RetroCard);
 export { RetroCard };

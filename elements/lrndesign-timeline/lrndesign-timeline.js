@@ -698,5 +698,5 @@ class LrndesignTimeline extends SimpleColors {
     this._checkScroll();
   }
 }
-customElements.define(LrndesignTimeline.tag, LrndesignTimeline);
+globalThis.customElements.define(LrndesignTimeline.tag, LrndesignTimeline);
 export { LrndesignTimeline };

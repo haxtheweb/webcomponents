@@ -1049,5 +1049,5 @@ globalThis.HAXme = function (context = null) {
   }
 };
 
-customElements.define(HAXCMSSiteBuilder.tag, HAXCMSSiteBuilder);
+globalThis.customElements.define(HAXCMSSiteBuilder.tag, HAXCMSSiteBuilder);
 export { HAXCMSSiteBuilder };

@@ -1010,5 +1010,5 @@ class SimpleFields extends SimpleFieldsLite {
       this.activeTabs[e.detail.id] = e.detail.activeTab;
   }
 }
-customElements.define(SimpleFields.tag, SimpleFields);
+globalThis.customElements.define(SimpleFields.tag, SimpleFields);
 export { SimpleFields };

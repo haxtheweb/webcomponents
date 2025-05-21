@@ -14,5 +14,8 @@ class ResponsiveUtilityElement extends ResponsiveUtilityBehaviors(LitElement) {
     return "responsive-utility-element";
   }
 }
-customElements.define(ResponsiveUtilityElement.tag, ResponsiveUtilityElement);
+globalThis.customElements.define(
+  ResponsiveUtilityElement.tag,
+  ResponsiveUtilityElement,
+);
 export { ResponsiveUtilityElement };

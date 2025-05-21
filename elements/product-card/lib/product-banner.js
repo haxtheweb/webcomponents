@@ -172,5 +172,5 @@ class ProductBanner extends SimpleColors {
     return "product-banner";
   }
 }
-customElements.define(ProductBanner.tag, ProductBanner);
+globalThis.customElements.define(ProductBanner.tag, ProductBanner);
 export { ProductBanner };

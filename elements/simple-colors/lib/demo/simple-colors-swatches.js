@@ -212,4 +212,7 @@ class simpleColorsSwatches extends SimpleColors {
 
 export { simpleColorsSwatches };
 
-customElements.define(simpleColorsSwatches.tag, simpleColorsSwatches);
+globalThis.customElements.define(
+  simpleColorsSwatches.tag,
+  simpleColorsSwatches,
+);

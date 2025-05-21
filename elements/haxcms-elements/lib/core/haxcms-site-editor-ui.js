@@ -3011,5 +3011,5 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
   }
 }
-customElements.define(HAXCMSSiteEditorUI.tag, HAXCMSSiteEditorUI);
+globalThis.customElements.define(HAXCMSSiteEditorUI.tag, HAXCMSSiteEditorUI);
 export { HAXCMSSiteEditorUI };

@@ -109,5 +109,5 @@ class PolarisStoryCard extends LitElement {
     return "polaris-story-card";
   }
 }
-customElements.define(PolarisStoryCard.tag, PolarisStoryCard);
+globalThis.customElements.define(PolarisStoryCard.tag, PolarisStoryCard);
 export { PolarisStoryCard };

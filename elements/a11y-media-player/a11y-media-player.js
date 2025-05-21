@@ -3647,5 +3647,5 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
     return local;
   }
 }
-customElements.define(A11yMediaPlayer.tag, A11yMediaPlayer);
+globalThis.customElements.define(A11yMediaPlayer.tag, A11yMediaPlayer);
 export { A11yMediaPlayer };
