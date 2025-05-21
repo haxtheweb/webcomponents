@@ -2,7 +2,10 @@
  * Copyright 2025 NazmanRosman
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
+import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "./lib/glossy-portfolio-card.js";
@@ -12,12 +15,12 @@ import "./lib/glossy-portfolio-home.js";
 import "./lib/glossy-portfolio-grid.js";
 import "./lib/glossy-portfolio-about.js";
 /**
- * `glossy-portfolio`
+ * `glossy-portfolio-theme`
  * 
  * @demo index.html
  * @element glossy-portfolio-theme
  */
-export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(LitElement)) {
+export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementTheme)) {
 
   static get tag() {
     return "glossy-portfolio-theme";
@@ -52,6 +55,14 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(LitElement)) {
     };
   }
 
+  disconnectedCallback() {
+    if (this.__disposer) {
+      for (var i in this.__disposer) {
+        this.__disposer[i].dispose();
+      }
+    }
+    super.disconnectedCallback();
+  }
 
 
   // Lit scoped styles
@@ -87,6 +98,9 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     if(this.currentView==="home"){
       return html`
+      <div id="contentcontainer">
+        <div id="slot"><slot></slot></div>
+      </div>
       <glossy-portfolio-home></glossy-portfolio-home>
       <!-- <glossy-portfolio-about></glossy-portfolio-about> -->
       <!-- <glossy-portfolio-page></glossy-portfolio-page> -->

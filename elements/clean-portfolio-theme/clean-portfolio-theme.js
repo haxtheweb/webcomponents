@@ -47,17 +47,22 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     this.categoryTags = [];
     this.allTags = [];
     this.items = [];
-
+    this.__disposer = this.__disposer || [];
     // gets site title and home link for site-title
     autorun((reaction) => {
-      this.siteTitle = toJS(store.siteTitle);
       this.homeLink = toJS(store.homeLink);
       this.__disposer.push(reaction);
     });
 
+    autorun((reaction) => {
+      this.siteTitle = toJS(store.siteTitle);
+      this.__disposer.push(reaction);
+    });
+
     // gets active page's ancestor for menu-item:after
-    autorun(() => {
+    autorun((reaction) => {
       this.ancestorItem = toJS(store.ancestorItem);
+      this.__disposer.push(reaction);
     });
 
     // gets active page's tags and inserts them into an array for media-tag
@@ -170,7 +175,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     });
 
     // gets licensing stuff
-    autorun(() => {
+    autorun((reaction) => {
       this.manifest = toJS(store.manifest);
       let LList = new licenseList();
       if (this.manifest.license && LList[this.manifest.license]) {
@@ -178,6 +183,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         this.licenseLink = LList[this.manifest.license].link;
         this.licenseImage = LList[this.manifest.license].image;
       }
+      this.__disposer.push(reaction);
     });
   }
 
@@ -214,6 +220,11 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   disconnectedCallback() {
     if (this._resizeObserver) {
       this._resizeObserver.disconnect();
+    }
+    if (this.__disposer) {
+      for (var i in this.__disposer) {
+        this.__disposer[i].dispose();
+      }
     }
     super.disconnectedCallback();
   }

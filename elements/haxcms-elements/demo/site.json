@@ -32,8 +32,8 @@
       "tags": ""
     },
     "theme": {
-      "element": "clean-portfolio-theme",
-      "path": "@haxtheweb/journey-theme/journey-theme.js",
+      "element": "glossy-portfolio-theme",
+      "path": "@haxtheweb/glossy-portfolio-theme/glossy-portfolio-theme.js",
       "name": "Polaris - Invent",
       "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg",
       "variables": {

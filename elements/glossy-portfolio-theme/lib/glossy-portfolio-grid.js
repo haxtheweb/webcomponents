@@ -5,6 +5,8 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 
 /**
  * `glossy-portfolio-grid`
@@ -28,15 +30,16 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
     this.data = [];
     this.activeFilter = '';
 
-
     this.t = this.t || {};
     this.t = {
       ...this.t,
       title: "Title",
-
-      
     };
-
+    autorun(() => {
+      this.data = toJS(store.manifest.items);
+      console.log(this.data);
+    }
+  );
   }
 
   // Lit reactive properties
@@ -46,9 +49,9 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
       title: { type: String },
       thumbnail: {type: String},
       link: {type: String},
-      filteredData: { type: Array, reflect: true },
-
-
+      filteredData: { type: Array },
+      data: { type: Array },
+      filtersList: { type: Array },
     };
   }
 
@@ -189,39 +192,23 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
       .join(" ");                             
   }
 
-  fetchData(){
-    let jsonUrl = new URL('../lib/data.json', import.meta.url).href
-    fetch(jsonUrl)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok ' + response.statusText);
-      }
-      return response.json();
-    })
-    .then(data => {
-      this.data = [...data.data]; 
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    if (changedProperties.has("data")) {
       //sort alphabetically
       this.data.sort((a, b) => a.title.localeCompare(b.title));
       this.filteredData = this.data; 
 
       //add tags to filters list (which is a *Set* to prevent dups)
       this.data.forEach((d) => {
-        this.filtersList.add(d.tag);
-      });          
-      this.requestUpdate();
-    })
-    .catch(error => console.error('Error fetching the JSON:', error));
-
+        if (d.metadata.tags !== undefined && d.metadata.tags !== null && d.metadata.tags.split(',').length > 0) {
+          this.filtersList.add(d.metadata.tags.split(",")[0]);
+        }
+      });
+    }
   }
-    //update currentView to project when card is clicked
-
-  
 
 
-  firstUpdated(){
-    super.firstUpdated();
-    this.fetchData();
-  }
 
   _updateFilter(target, currentTarget){
     this.activeFilter = target.getAttribute("name");
