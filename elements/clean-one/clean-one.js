@@ -827,6 +827,8 @@ class CleanOne extends LTIResizingMixin(
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
+    // remove overflow
+    globalThis.document.body.style.removeProperty("overflow");
     super.disconnectedCallback();
   }
   /**

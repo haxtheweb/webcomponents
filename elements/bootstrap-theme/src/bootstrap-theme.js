@@ -490,7 +490,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-print-button.js"
     );
-    this.__disposer = this.__disposer ? this.__disposer : [];
+    this.__disposer = this.__disposer || [];
     autorun((reaction) => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
       this.__siteTitle = toJS(store.manifest.title);
@@ -607,10 +607,18 @@ class BootstrapTheme extends HAXCMSThemeParts(
     return link;
   }
 
+  /**
+   * life cycle, element is removed from the DOM
+   */
   disconnectedCallback() {
     if (this._bootstrapLink) {
       globalThis.document.head.removeChild(this._bootstrapLink);
     }
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
+    // remove overflow
+    globalThis.document.body.style.removeProperty("overflow");
     super.disconnectedCallback();
   }
 

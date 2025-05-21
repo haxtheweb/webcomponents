@@ -23,10 +23,12 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
     this._observer.observe(this, {
       childList: true,
     });
+    this.__disposer = this.__disposer || [];
     autorun((reaction) => {
       if (store && store.location && store.location.pathname) {
         this.activePathName = toJS(store.location.pathname);
       }
+      this.__disposer.push(reaction);
     });
   }
   getSections() {
@@ -117,6 +119,19 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
     // in-case coming from a theme that undoes this
     globalThis.document.body.style.overflow = "auto";
   }
+
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  disconnectedCallback() {
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
+    // remove overflow
+    globalThis.document.body.style.removeProperty("overflow");
+    super.disconnectedCallback();
+  }
+
   static get styles() {
     return [
       super.styles,

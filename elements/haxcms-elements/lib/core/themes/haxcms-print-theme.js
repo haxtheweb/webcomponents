@@ -81,6 +81,14 @@ class HAXCMSPrintTheme extends CleanTwo {
       this.shadowRoot.querySelector("#printbtn").focus();
     }, 0);
   }
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  disconnectedCallback() {
+    // remove overflow
+    globalThis.document.body.style.removeProperty("overflow");
+    super.disconnectedCallback();
+  }
   static get styles() {
     return css`
       :host {

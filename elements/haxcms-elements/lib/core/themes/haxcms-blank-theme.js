@@ -26,6 +26,14 @@ class HAXCMSBlankTheme extends CleanTwo {
     // in-case coming from a theme that undoes this
     globalThis.document.body.style.overflow = "auto";
   }
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  disconnectedCallback() {
+    // remove overflow
+    globalThis.document.body.style.removeProperty("overflow");
+    super.disconnectedCallback();
+  }
   static get styles() {
     return css`
       :host([edit-mode]) {
