@@ -8,6 +8,7 @@ import {
   localStorageSet,
   winEventsElement,
   mimeTypeToName,
+  validURL,
 } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -1323,6 +1324,84 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (globalThis.appSettings && globalThis.appSettings.backLink) {
       this.backLink = globalThis.appSettings.backLink;
     }
+    autorun(() => {
+      const isLoggedIn = toJS(store.isLoggedIn);
+      UserScaffoldInstance.writeMemory("isLoggedIn", this.isLoggedIn);
+      const tstamp = Math.floor(Date.now() / 1000);
+
+      if (isLoggedIn && !this.loggedInTime) {
+        this.displayConsoleWarning();
+        this.loggedInTime = tstamp;
+        var ll = UserScaffoldInstance.readMemory("recentLogins");
+        if (!ll) {
+          UserScaffoldInstance.writeMemory("recentLogins", [tstamp], "long");
+        } else if (ll) {
+          // cap at last 5 login times
+          if (ll.length < 5) {
+            ll.shift();
+          }
+          ll.push(tstamp);
+          UserScaffoldInstance.writeMemory("recentLogins", ll, "long");
+        }
+      }
+    });
+    // user scaffolding wired up to superDaemon
+    autorun(() => {
+      const memory = toJS(UserScaffoldInstance.memory);
+      const usAction = toJS(UserScaffoldInstance.action);
+      // try to pulse edit / merlin if they are here and don't do anything...
+      if (
+        memory.editMode === false &&
+        memory.interactionDelay >= 3600 &&
+        usAction.type === null &&
+        store.cmsSiteEditor.haxCmsSiteEditorUIElement &&
+        store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot
+      ) {
+        // delay since it slides in
+        setTimeout(() => {
+          const editbtn =
+            store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot.querySelector(
+              "#editbutton",
+            );
+          editbtn.dataPulse = "1";
+        }, 300);
+      }
+      // try to evaluate typing in merlin
+      if (
+        UserScaffoldInstance.active &&
+        UserScaffoldInstance.memory.isLoggedIn &&
+        UserScaffoldInstance.memory.recentTarget === SuperDaemonInstance &&
+        SuperDaemonInstance.programName === null &&
+        UserScaffoldInstance.memory.interactionDelay > 600 &&
+        ["paste", "key"].includes(usAction.type)
+      ) {
+        if (validURL(SuperDaemonInstance.value)) {
+          SuperDaemonInstance.waveWand(
+            [SuperDaemonInstance.value, "/", {}, "hax-agent", "Agent"],
+            null,
+            "coin2",
+          );
+        }
+      } else if (
+        UserScaffoldInstance.active &&
+        UserScaffoldInstance.memory.isLoggedIn &&
+        SuperDaemonInstance.programName === null &&
+        ["paste"].includes(usAction.type) &&
+        UserScaffoldInstance.data.architype == "url"
+      ) {
+        SuperDaemonInstance.waveWand(
+          [
+            toJS(UserScaffoldInstance.data.value),
+            "/",
+            {},
+            "hax-agent",
+            "Agent",
+          ],
+          null,
+          "coin2",
+        );
+      }
+    });
     // user scaffolding wired up to superDaemon
     autorun(() => {
       const usAction = toJS(UserScaffoldInstance.action);
@@ -1406,7 +1485,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
     }, 0);
   }
-
+  displayConsoleWarning() {
+    setTimeout(() => {
+      const headStyle =
+        "color: white; padding: 10px; font-weight: bold; font-size: 5em;font-family: arial; background-color: darkred; border: 5px solid white; border: 5px solid white;";
+      const bodyStyle =
+        "font-size: 1.5em; font-family: arial; color: white; background-color: darkred; padding: 10px";
+      console.warn("%c⚠️STOP⚠️", headStyle);
+      console.warn(
+        '%cThis is a browser feature intended for developers. If someone told you to copy and paste something here to enable a hidden feature, it is likely a scam and could give them access to your account.',
+        bodyStyle,
+      );
+    }, 3500);
+  }
   soundToggle() {
     const status = !toJS(store.soundStatus);
     store.soundStatus = status;
