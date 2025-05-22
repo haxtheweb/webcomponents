@@ -87,7 +87,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
       <slot name="haxcms-site-editor-ui-main-menu"></slot>
       <slot name="haxcms-site-editor-ui-topbar-character-button"></slot>
-      <simple-colors-polymer></simple-colors-polymer>
     `;
   }
   /**
