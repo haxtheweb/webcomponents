@@ -22,7 +22,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
     super();
     this.title = "Title";
     this.thumbnail = "impactra.png",
-    this.link = "https://google.com",
+    this.slug = "https://google.com",
     this.tags =  [];
 
 
@@ -41,7 +41,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
       ...super.properties,
       title: { type: String },
       thumbnail: {type: String},
-      link: {type: String},
+      slug: {type: String},
       tags: { type: Array },
 
       
@@ -163,9 +163,9 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-<a href="https://google.com"  target="_blank" rel="noopener">
+<a href=${this.slug}>
   <div class="container">
-    <img src=${`/lib/thumbnails/${this.thumbnail}`} class="thumbnail">
+    <img src=${`${this.thumbnail}`} class="thumbnail">
     <div class="title">${this.title}</div>
     <div class="arrow arrow-box"></div>
     <!-- <img src="lib/components/arrow.png" class="arrow arrow-shape"> -->

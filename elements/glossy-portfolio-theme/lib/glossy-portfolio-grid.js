@@ -149,6 +149,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
   // Lit render the HTML
   render() {
+
     return html`
           
 <div class = "container-background">
@@ -169,11 +170,12 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
   </div>
   <div class="card-container">
-
     ${this.filteredData.map((item)=>{ return html`
         <glossy-portfolio-card class="card" 
         title="${item.title}" 
-        thumbnail=${item.thumbnail}>
+        thumbnail=${item.metadata.images[0]}
+        slug="${item.slug}"
+        >
       </glossy-portfolio-card>
       `})}
     </div> 
@@ -192,18 +194,21 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
     super.updated(changedProperties);
     if (changedProperties.has("data")) {
       //sort alphabetically
-      this.data.sort((a, b) => a.title.localeCompare(b.title));
-      this.filteredData = this.data; 
-      this.filtersList = [];
-      
-      this.data.forEach((d) => {
-        if (d.metadata.tags !== undefined && d.metadata.tags !== null && d.metadata.tags.split(',').length > 0) {
-          const firstTag = d.metadata.tags.split(",")[0];
-          if (!this.filtersList.includes(firstTag)) { //check for duplicate
-            this.filtersList.push(firstTag);
+      if(this.data.length > 0){
+        this.data.sort((a, b) => a.title.localeCompare(b.title));
+        this.filteredData = this.data; 
+        this.filtersList = [];
+        
+        this.data.forEach((d) => {
+          if (d.metadata.tags !== undefined && d.metadata.tags !== null && d.metadata.tags.split(',').length > 0) {
+            const firstTag = d.metadata.tags.split(",")[0];
+            if (!this.filtersList.includes(firstTag)) { //check for duplicate
+              this.filtersList.push(firstTag);
+            }
           }
-        }
-      });
+        });
+      }
+      
     }
   }
 

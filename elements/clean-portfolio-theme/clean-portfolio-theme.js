@@ -1057,6 +1057,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   // Lit render the HTML
   render() {
+    console.log(this.activeLayout);
     return html`
       <header>
         <div class="header-inner">

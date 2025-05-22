@@ -40,9 +40,11 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     if(changedProperties.has('activeTitle')){
       let items = this.renderRoot.querySelectorAll(`.link`);
       let title = this.renderRoot.querySelector(`.link.${this.toKebabCase(this.activeTitle)}`);
-      items.forEach(el => el.classList.remove('active-title'));
-      title.classList.toggle('active-title');
-      console.log(title);
+      if(title){
+        items.forEach(el => el.classList.remove('active-title'));
+        title.classList.toggle('active-title');
+      }
+      
     }
   }
 
@@ -136,11 +138,10 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         color: white;
         text-decoration: none;
         font-weight: 500;
-        .active-title{
-  
-          font-weight: 700;
-        }
 
+      }
+      a .active-title, div.link .active-title {
+        font-weight: 600;
       }
       a:hover, div.link:hover{
         /* all: unset; */
@@ -240,7 +241,6 @@ openHamburger(){
   const container = this.renderRoot.querySelector('.container');
   navLinks.classList.toggle('active');
   container.classList.toggle('active');
-  // console.log(navLinks.classList);
 }
 
   // Lit render the HTML

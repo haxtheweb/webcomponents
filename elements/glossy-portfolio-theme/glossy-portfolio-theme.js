@@ -144,6 +144,8 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   // Lit render the HTML
   
   render() {
+    const activeTitle = this.activeItem?.title || "Default Title"; // Use optional chaining and a fallback value
+
     if(this.activeLayout==="grid"){
       return html`
 
@@ -153,8 +155,8 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       </div>  -->
       <!-- <glossy-portfolio-about></glossy-portfolio-about> -->
       <!-- <glossy-portfolio-page></glossy-portfolio-page> -->
-      <glossy-portfolio-header .topItems=${this.topItems} activeTitle=${this.activeItem.title}></glossy-portfolio-header>
-      <glossy-portfolio-grid title=${this.activeItem.title} .data=${this.items} style="margin-top: 50px"></glossy-portfolio-grid>
+      <glossy-portfolio-header .topItems=${this.topItems} activeTitle=${activeTitle}></glossy-portfolio-header>
+      <glossy-portfolio-grid title=${activeTitle} .data=${this.items} style="margin-top: 50px"></glossy-portfolio-grid>
 
       `;
     } 
