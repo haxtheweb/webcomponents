@@ -32,6 +32,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
     this.activeLayout = "grid"; // text, media, listing
     this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
+    this.__disposer = this.__disposer || [];
 
 
     this.t = this.t || {};
@@ -46,7 +47,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     // - if the current page has a parent, it's Media
     autorun((reaction) => {
       const activeItem = toJS(store.activeItem);
-      // console.log(1, active);
       if (activeItem) {
         this.activeItem = activeItem;
         // find parent of activeItem
@@ -62,15 +62,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
             const categoryTags = []; 
 
             // get tags for all children of activeItem, push to arrays
-            items.forEach(item => {
-              let tags = toJS(item.metadata.tags);
-              if (tags) {
-                const tagArray = tags.split(',');
-                if (tagArray[0] && !categoryTags.includes(tagArray[0])) {
-                  categoryTags.push(tagArray[0]);
-                }
-              }
-            });
 
             this.items = [...items];
             // this.categoryTags = [...categoryTags];
@@ -161,8 +152,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       <!-- <glossy-portfolio-about></glossy-portfolio-about> -->
       <!-- <glossy-portfolio-page></glossy-portfolio-page> -->
       <glossy-portfolio-header></glossy-portfolio-header>
-      
-      <glossy-portfolio-grid .data=${this.items} style="margin-top: 50px"></glossy-portfolio-grid>
+      <glossy-portfolio-grid title=${this.activeItem.title} .data=${this.items} style="margin-top: 50px"></glossy-portfolio-grid>
 
       `;
     } 

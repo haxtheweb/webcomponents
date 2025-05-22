@@ -25,7 +25,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
     this.title = "Title";
     this.thumbnail = "impactra.png",
     this.link = "https://google.com",
-    this.filtersList = new Set(),
+    this.filtersList = [],
     this.filteredData = [];
     this.data = [];
     this.activeFilter = '';
@@ -154,7 +154,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 <div class = "container-background">
   <div class="projects-header">
 
-    <div class="latest-projects">LATEST PROJECTS</div>
+    <div class="latest-projects">${this.title.toUpperCase()}</div>
     <div class="filters">
       <button class="filter active" name="all" @click="${this.updateFilter}">All</button>
       
@@ -194,11 +194,14 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
       //sort alphabetically
       this.data.sort((a, b) => a.title.localeCompare(b.title));
       this.filteredData = this.data; 
-
-      //add tags to filters list (which is a *Set* to prevent dups)
+      this.filtersList = [];
+      
       this.data.forEach((d) => {
         if (d.metadata.tags !== undefined && d.metadata.tags !== null && d.metadata.tags.split(',').length > 0) {
-          this.filtersList.add(d.metadata.tags.split(",")[0]);
+          const firstTag = d.metadata.tags.split(",")[0];
+          if (!this.filtersList.includes(firstTag)) { //check for duplicate
+            this.filtersList.push(firstTag);
+          }
         }
       });
     }
@@ -234,8 +237,6 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
       this.filteredData = [];
 
       this.data.forEach((item)=>{
-        console.log(1)
-
         if(item.metadata.tags && item.metadata.tags.includes(this.activeFilter)){ //check if filter includes item tag
           this.filteredData.push(item);
         }
