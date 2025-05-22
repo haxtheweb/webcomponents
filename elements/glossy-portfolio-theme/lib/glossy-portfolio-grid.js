@@ -207,8 +207,6 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
     }
   }
 
-
-
   _updateFilter(target, currentTarget){
     this.activeFilter = target.getAttribute("name");
     const filters = this.renderRoot.querySelectorAll('.filter');

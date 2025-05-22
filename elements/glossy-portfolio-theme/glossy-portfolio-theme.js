@@ -30,6 +30,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     super();
     this.title = "";
 
+    this.topItems = [];
     this.activeLayout = "grid"; // text, media, listing
     this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
     this.__disposer = this.__disposer || [];
@@ -40,7 +41,15 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       ...this.t,
       title: "Title",
     };
+    //get top level items (items shown on header -- they have no parent)
+    autorun((reaction) => {
+      let items = store.getItemChildren(null); 
+      if (items && items.length > 0) {
+        this.topItems = [...items];
+      }
+      this.__disposer.push(reaction);
 
+    });
     // determines active layout based on following conditions:
     // - if the current page has no child, it's Text
     // - if the current page has a child, it's Listing
@@ -51,20 +60,12 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         this.activeItem = activeItem;
         // find parent of activeItem
         this.activeParent = store.manifest.items.find((d) => activeItem.parent === d.id)||"";
-    
- 
-        
+  
         const items = store.getItemChildren(store.activeId);
         if (items) {
           if (items.length > 0) {
             this.setLayout("grid");
-
-            const categoryTags = []; 
-
-            // get tags for all children of activeItem, push to arrays
-
             this.items = [...items];
-            // this.categoryTags = [...categoryTags];
 
           } else if (activeItem.parent) {
             this.setLayout("media");
@@ -86,6 +87,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       activeItem: { type: Object },
       activeParent: { type: Object },
       categoryTags: { type: Array },
+      topItems: { type: Array },
       items: { type: Object },
     };
   }
@@ -151,7 +153,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       </div>  -->
       <!-- <glossy-portfolio-about></glossy-portfolio-about> -->
       <!-- <glossy-portfolio-page></glossy-portfolio-page> -->
-      <glossy-portfolio-header></glossy-portfolio-header>
+      <glossy-portfolio-header .topItems=${this.topItems} activeTitle=${this.activeItem.title}></glossy-portfolio-header>
       <glossy-portfolio-grid title=${this.activeItem.title} .data=${this.items} style="margin-top: 50px"></glossy-portfolio-grid>
 
       `;

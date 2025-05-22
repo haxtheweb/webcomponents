@@ -25,26 +25,25 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     this.thumbnail = "impactra.png",
     this.link = "https://google.com",
     this.topItems = [];
+    this.activeTitle = "";
     this.__disposer = this.__disposer || [];
 
     this.t = this.t || {};
     this.t = {
       ...this.t,
       title: "Title",
-
-      
     };
 
-    //get top level items (items with no parent)
-    autorun((reaction) => {
-      let items = store.getItemChildren(null); 
-      if (items && items.length > 0) {
-        this.topItems = [...items];
-      }
-      this.__disposer.push(reaction);
+  }
 
-    });
-
+  updated(changedProperties) {
+    if(changedProperties.has('activeTitle')){
+      let items = this.renderRoot.querySelectorAll(`.link`);
+      let title = this.renderRoot.querySelector(`.link.${this.toKebabCase(this.activeTitle)}`);
+      items.forEach(el => el.classList.remove('active-title'));
+      title.classList.toggle('active-title');
+      console.log(title);
+    }
   }
 
   // Lit reactive properties
@@ -55,6 +54,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       thumbnail: {type: String},
       link: {type: String},
       topItems: {type: Array},
+      activeTitle: {type: String},
     };
   }
 
@@ -136,18 +136,24 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         color: white;
         text-decoration: none;
         font-weight: 500;
+        .active-title{
+  
+          font-weight: 700;
+        }
+
       }
       a:hover, div.link:hover{
         /* all: unset; */
         color: white;
         text-decoration: none;
-        font-weight: 500;
+        /* font-weight: 500; */
 
       }
       button{
         all: unset;
         cursor: pointer;
       }
+
 
       /* Extra small devices (phones) */
       @media (max-width: 575.98px) {
@@ -253,8 +259,7 @@ openHamburger(){
   </button>
   <ul class="nav-links">
     ${Array.from(this.topItems).map((item) => html`
-        
-      <li><a class="right-side-item" href="${item.slug}"><div class="link">${item.title} </div></a></li>
+        <li><a class="right-side-item" href="${item.slug}"><div class="link ${this.toKebabCase(item.title)}">${item.title}</div></a></li>
       `)}
   </ul>
   
@@ -263,7 +268,10 @@ openHamburger(){
 `;
   }
 
-
+  toKebabCase(str) {
+    return str.replace(/\s+/g, '-');
+  }
+  
 
   /**
    * haxProperties integration via file reference
