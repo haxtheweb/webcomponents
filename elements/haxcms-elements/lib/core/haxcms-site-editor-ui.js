@@ -2,7 +2,6 @@ import { html, css, unsafeCSS } from "lit";
 import { store } from "./haxcms-site-store.js";
 import { HaxStore, HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
-import "@haxtheweb/haxcms-elements/lib/ui-components/magic/site-view.js";
 import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
 import {
   localStorageSet,
@@ -1212,7 +1211,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "site-remote-content",
         "citation-element",
         "page-flag",
-        "site-view",
         "site-collection-list",
         "collection-list",
         "collection-item",
@@ -1301,7 +1299,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       more: "More",
       siteActions: "Site actions",
       insights: "Insights dashboard (beta)",
-      viewBuilder: "View builder (alpha)",
       merlin: "Merlin",
       summonMerlin: "Summon Merlin",
       logOut: "Log out",
@@ -1793,20 +1790,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               show-text-label
               voice-command="insights"
             ></simple-toolbar-button>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item>
-              <a href="views">
-                <simple-toolbar-button
-                  ?hidden="${this.editMode}"
-                  ?disabled="${this.editMode}"
-                  tabindex="${this.editMode ? "-1" : "0"}"
-                  icon="hax:module"
-                  icon-position="left"
-                  label="${this.t.viewBuilder}"
-                  show-text-label
-                  voice-command="views"
-                ></simple-toolbar-button>
-              </a>
             </simple-toolbar-menu-item>
 
             <simple-toolbar-menu-item>
