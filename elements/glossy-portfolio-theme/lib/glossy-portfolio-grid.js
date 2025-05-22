@@ -35,23 +35,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
       ...this.t,
       title: "Title",
     };
-    autorun(() => {
-      // this.data = toJS(store.manifest.items);
-      this.dats = toJS(store.manifest.items);
-      console.log(this.data);
-      const objectToSave = this.dats ; // Replace with your object
-const jsonString = JSON.stringify(objectToSave, null, 2); // Pretty-print JSON
-const blob = new Blob([jsonString], { type: 'application/json' });
-const url = URL.createObjectURL(blob);
-
-const a = this.renderRoot.createElement('a');
-a.href = url;
-a.download = 'data.json'; // File name
-a.click();
-
-URL.revokeObjectURL(url); 
-    }
-  );
+    
   }
 
   // Lit reactive properties
@@ -248,11 +232,14 @@ URL.revokeObjectURL(url);
       this.filteredData=this.data;
     } else{
       this.filteredData = [];
+
       this.data.forEach((item)=>{
-        if(item.tag === this.activeFilter){ //check if filter includes item tag
+        console.log(1)
+
+        if(item.metadata.tags && item.metadata.tags.includes(this.activeFilter)){ //check if filter includes item tag
           this.filteredData.push(item);
         }
-    })
+      })
     
     }
   }

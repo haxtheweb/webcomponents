@@ -25,6 +25,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     this.thumbnail = "impactra.png",
     this.link = "https://google.com",
     this.topItems = [];
+    this.__disposer = this.__disposer || [];
 
     this.t = this.t || {};
     this.t = {
@@ -40,7 +41,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       if (items && items.length > 0) {
         this.topItems = [...items];
       }
-      console.log(this.topItems[0].title);
       this.__disposer.push(reaction);
 
     });
@@ -254,7 +254,7 @@ openHamburger(){
   <ul class="nav-links">
     ${Array.from(this.topItems).map((item) => html`
         
-      <li><a class="right-side-item" href="${item}" target="_blank" rel="noopener"><div class="link">${item.title} </div></a></li>
+      <li><a class="right-side-item" href="${item.slug}"><div class="link">${item.title} </div></a></li>
       `)}
   </ul>
   

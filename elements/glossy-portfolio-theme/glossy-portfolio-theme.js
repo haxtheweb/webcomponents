@@ -29,7 +29,9 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   constructor() {
     super();
     this.title = "";
-    this.currentView = "home";
+
+    this.activeLayout = "grid"; // text, media, listing
+    this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
 
 
     this.t = this.t || {};
@@ -37,6 +39,51 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       ...this.t,
       title: "Title",
     };
+
+    // determines active layout based on following conditions:
+    // - if the current page has no child, it's Text
+    // - if the current page has a child, it's Listing
+    // - if the current page has a parent, it's Media
+    autorun((reaction) => {
+      const activeItem = toJS(store.activeItem);
+      // console.log(1, active);
+      if (activeItem) {
+        this.activeItem = activeItem;
+        // find parent of activeItem
+        this.activeParent = store.manifest.items.find((d) => activeItem.parent === d.id)||"";
+    
+ 
+        
+        const items = store.getItemChildren(store.activeId);
+        if (items) {
+          if (items.length > 0) {
+            this.setLayout("grid");
+
+            const categoryTags = []; 
+
+            // get tags for all children of activeItem, push to arrays
+            items.forEach(item => {
+              let tags = toJS(item.metadata.tags);
+              if (tags) {
+                const tagArray = tags.split(',');
+                if (tagArray[0] && !categoryTags.includes(tagArray[0])) {
+                  categoryTags.push(tagArray[0]);
+                }
+              }
+            });
+
+            this.items = [...items];
+            // this.categoryTags = [...categoryTags];
+
+          } else if (activeItem.parent) {
+            this.setLayout("media");
+          } else {
+            this.setLayout("text");
+          }
+        }
+      }
+      this.__disposer.push(reaction);
+    });
   }
 
   // Lit reactive properties
@@ -44,7 +91,11 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     return {
       ...super.properties,
       title: { type: String },
-      currentView: { type: String },
+      activeLayout: { type: String },
+      activeItem: { type: Object },
+      activeParent: { type: Object },
+      categoryTags: { type: Array },
+      items: { type: Object },
     };
   }
 
@@ -57,6 +108,17 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     super.disconnectedCallback();
   }
 
+
+  setLayout(layout) {
+    if (globalThis.document && globalThis.document.startViewTransition) {
+      globalThis.document.startViewTransition(() => {
+        this.activeLayout = layout;
+      });
+    }
+    else {
+      this.activeLayout = layout;
+    }
+  }
 
   // Lit scoped styles
   static get styles() {
@@ -89,18 +151,18 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   // Lit render the HTML
   
   render() {
-    if(this.currentView==="home"){
+    if(this.activeLayout==="grid"){
       return html`
 
-    <glossy-portfolio-home></glossy-portfolio-home>
+    <!-- <glossy-portfolio-home></glossy-portfolio-home> -->
       <!-- <div id="contentcontainer">
         <div id="slot"><slot></slot></div>
       </div>  -->
       <!-- <glossy-portfolio-about></glossy-portfolio-about> -->
       <!-- <glossy-portfolio-page></glossy-portfolio-page> -->
-      <!-- <glossy-portfolio-header></glossy-portfolio-header> -->
+      <glossy-portfolio-header></glossy-portfolio-header>
       
-      <!-- <glossy-portfolio-grid class="projects"></glossy-portfolio-grid> -->
+      <glossy-portfolio-grid .data=${this.items} style="margin-top: 50px"></glossy-portfolio-grid>
 
       `;
     } 
