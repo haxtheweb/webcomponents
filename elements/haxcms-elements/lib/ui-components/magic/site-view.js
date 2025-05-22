@@ -4,7 +4,7 @@
  */
 import { html, css, render, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { store, iconFromPageType } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 import "@haxtheweb/simple-fields/lib/simple-tags.js";
@@ -15,7 +15,6 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/editable-table/lib/editable-table-display.js";
 import "@haxtheweb/play-list/play-list.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-remote-content.js";
-import { iconFromPageType } from "@haxtheweb/course-design/lib/learning-component.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { autorun, toJS } from "mobx";
 

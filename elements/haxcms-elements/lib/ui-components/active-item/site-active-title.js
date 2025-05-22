@@ -3,8 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import { iconFromPageType } from "@haxtheweb/course-design/lib/learning-component.js";
+import { store, iconFromPageType } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 
