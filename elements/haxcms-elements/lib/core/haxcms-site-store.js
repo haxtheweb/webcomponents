@@ -159,7 +159,8 @@ class Store {
       parentTitle: computed, // active page parent title
       ancestorTitle: computed, // active page ancestor title
       ancestorItem: computed, // active page ancestor
-      siblingsPrevNext: computed, // get previous and next siblings from activeItem
+      siblingsPrevNext: computed, // get previous and next siblingItems from activeItem
+      pageCounter: computed, // get current and total page number
       darkMode: observable, // dark mode pref
       soundStatus: observable, // toggle sounds on and off
       appReady: observable, // system is ready via firstUpdated of haxcms-site-builder
