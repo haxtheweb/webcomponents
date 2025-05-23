@@ -113,6 +113,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     super.firstUpdated(changedProperties);
     const PortfolioFonts = [
       "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      ,"https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" 
     ];
     let DesignSystemManager = globalThis.DesignSystemManager.requestAvailability();
     DesignSystemManager.addDesignSystem({
@@ -157,10 +158,10 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         box-sizing: border-box;
         overflow: visible;
         min-height: 100vh;
-        /* background-color: var(--bg-color); */
+        background-color: var(--bg-color);
 
       }
-
+      /* text style */
       p, a, blockquote, pre, code, span, strong, em {
         margin: 1em 0; /* Top and bottom margins equal to the font size, no left/right margin */
         font-size: 1rem;
@@ -183,13 +184,14 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       
       p, h1, h2, h3, h4, h5, h6, li, a, blockquote, pre, code, span, strong, em {
         max-width: 840px;
+        /* letter-spacing: .01em; */
       }
       h1, h2, h3, h4, h5, h6 {
         margin: 0.5em 0; /* Slightly smaller margins for headings */
       }
       h1 {
         font-size: 2.5rem;
-        font-weight: 600;
+        font-weight: 700;
         line-height: 1.2;
         font-family: inherit;
 
@@ -197,7 +199,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
       h2 {
         font-size: 1.75rem;
-        font-weight: 600;
+        font-weight: 700;
         line-height: 1.3;
         font-family: inherit;
 
@@ -217,20 +219,15 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         font-family: inherit;
 
       }
-      site-active-title h1{
-        margin-bottom: 0;
-      }
+      
       a:hover {
         color: #00ffff; /* Bright Cyan for hover effect */
         text-decoration: underline;
       }
-      .body {
-        margin: 0 auto;
-        /* display: flex;
-        flex-direction: column;
-        align-items: center; */
-        /* background-color: blue; */
-
+      
+      /* wrapper style */
+      site-active-title h1{
+        margin-bottom: 0;
       }
       .wrapper {
         /* min-width: 100%; */
@@ -267,16 +264,10 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     if(this.activeLayout==="grid"){
       const activeTitle = this.activeItem?.title || "Default Title"; // Use optional chaining and a fallback value
         return html`
-      <!-- <glossy-portfolio-home></glossy-portfolio-home> -->
-        <!-- <div id="contentcontainer">
-          <div id="slot"><slot></slot></div>
-        </div>  -->
-        <!-- <glossy-portfolio-about></glossy-portfolio-about> -->
-        <!-- <glossy-portfolio-page></glossy-portfolio-page> -->
         <div class="body-wrapper" style="margin-top: 120px">
           <div id="contentcontainer">
             <div class="wrapper">
-              <!-- <site-active-title></site-active-title>           -->
+              <site-active-title></site-active-title>          
               <div id="slot"><slot></slot></div>
             </div>
         

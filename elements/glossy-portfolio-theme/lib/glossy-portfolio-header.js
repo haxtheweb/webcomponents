@@ -83,7 +83,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         position: fixed;
         top: 0px;
         width: 100vw;
-        display: flex;
         position: fixed;
         left: 0;
         right: 0;
@@ -97,8 +96,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       
 
       .nav-links li{
-        font-size: 18px;
-        font-weight: 500;
+        font-weight: 700;
         font-family: var(--main-font);
 
       }
@@ -111,7 +109,9 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
       .logo{
         /* background-color: blue; */
-        width: 70px;
+        max-height: 70px;
+        min-height: 70px;
+        flex: 0 0 auto;
         position: relative;
         z-index: 10;
       }
@@ -121,22 +121,25 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         flex-direction: row;
         align-items: center;
         gap: 50px;
-        font-size: 18px;
         list-style: none;
+      }
+      li{
+        flex: 0 1 auto;
+        text-align: center;
       }
       .nav-links{
         transition: all 0.3s ease-in-out;
-
       }
       a, div.header-link{
         all: unset;
         color: white;
         text-decoration: none;
-        font-weight: 100;
+        font-weight: 500;
+        font-size: 1rem;
 
       }
       a .active-title, div.header-link .active-title {
-        font-weight: 600;
+        font-weight: 800;
       }
       a:hover, div.header-lik:hover{
         /* all: unset; */
@@ -181,10 +184,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           border-radius: 10px;
         }
         
-        .nav-links li{
-          font-size: 16px;
 
-        }
         .hamburger{
           display: block;
           padding-right: 15px;

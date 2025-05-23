@@ -77,8 +77,8 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
         max-width: 100%;
       }
       .grid-title{
-        font-size: 18px;
-        font-weight: 500;
+        font-size: 1rem;
+        font-weight: 800;
         letter-spacing: 1.7px;
 
       }
@@ -95,7 +95,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
       .filter{
         font-family: "Inter", "Inter Placeholder", sans-serif;
-        font-size: 16px;
+        font-size: 1rem;
         color: rgb(153, 153, 153);
       }
       .card-container {
