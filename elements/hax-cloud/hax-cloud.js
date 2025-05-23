@@ -208,10 +208,7 @@ class HaxCloud extends DDD {
       createNodePath: "dist/dev/saveNode.json",
       deleteNodePath: "dist/dev/saveNode.json",
       saveOutlinePath: "dist/dev/saveNode.json",
-      publishSitePath: "dist/dev/saveNode.json",
-      syncSitePath: "dist/dev/saveNode.json",
       getSiteFieldsPath: "dist/dev/getSiteFieldsPath.json",
-      revertSitePath: "dist/dev/saveNode.json",
       getFormToken: "adskjadshjudfu823u823u8fu8fij",
       appStore: {
         url: new URL("./lib/appstore.json", import.meta.url).href,

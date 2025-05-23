@@ -1,10 +1,23 @@
 import { autorun, toJS } from "mobx";
+import { css } from "lit";
 import { store } from "./haxcms-site-store.js";
 import { RPGCharacterToast } from "@haxtheweb/app-hax/lib/rpg-character-toast/rpg-character-toast.js";
 
 export class HAXCMSToast extends RPGCharacterToast {
   static get tag() {
     return "haxcms-toast";
+  }
+
+  static get styles() {
+    return [
+      super.styles,
+      css`
+      :host {
+        transform: scale(.7);
+        background-color: var(--simple-toast-background-color, light-dark(white, black));
+      }
+      `
+    ]
   }
 
   constructor() {

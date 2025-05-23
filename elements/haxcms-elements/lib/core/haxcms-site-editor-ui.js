@@ -485,11 +485,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     loadingIcon.icon = "hax:loading";
     loadingIcon.style.setProperty("--simple-icon-height", "40px");
     loadingIcon.style.setProperty("--simple-icon-width", "40px");
-    loadingIcon.style.height = "150px";
     loadingIcon.style.marginLeft = "8px";
     store.toast(`Processing`, 5000, {
       hat: "construction",
-      speed: 100,
+      speed: 150,
       walking: true,
       slot: loadingIcon,
     });
