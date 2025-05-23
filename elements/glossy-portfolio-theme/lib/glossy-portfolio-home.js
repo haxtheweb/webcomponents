@@ -22,16 +22,6 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
     super();
     this.title = "Title";
 
-
-
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-
-      
-    };
-
   }
 
   // Lit reactive properties

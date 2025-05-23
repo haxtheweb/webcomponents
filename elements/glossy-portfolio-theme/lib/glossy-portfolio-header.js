@@ -26,20 +26,12 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     this.link = "https://google.com",
     this.topItems = [];
     this.activeTitle = "";
-    this.__disposer = this.__disposer || [];
-
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
-
   }
 
   updated(changedProperties) {
     if(changedProperties.has('activeTitle')){
-      let items = this.renderRoot.querySelectorAll(`.link`);
-      let title = this.renderRoot.querySelector(`.link.${this.toKebabCase(this.activeTitle)}`);
+      let items = this.renderRoot.querySelectorAll(`.header-link`);
+      let title = this.renderRoot.querySelector(`.header-link.${this.toKebabCase(this.activeTitle)}`);
       if(title){
         items.forEach(el => el.classList.remove('active-title'));
         title.classList.toggle('active-title');
@@ -67,9 +59,9 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       :host {
         display: block;
         
-        font-family: var(--ddd-font-navigation);
         /* min-width: 400px; */
         height: auto;
+        background-color: #1d1d1d;
       }
 
       *{
@@ -82,6 +74,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       }
 
       .container{
+        background-color: var(--bg-color);
+
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -93,7 +87,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         position: fixed;
         left: 0;
         right: 0;
-        padding: 30px 50px 10px 50px;
+        padding: 90px 50px 40px 50px;
+        border-bottom: 2px solid #ffffff;
         height: 80px;
         /* background-color: #11111150; */
         font-family: var(--main-font);  
@@ -133,17 +128,17 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         transition: all 0.3s ease-in-out;
 
       }
-      a, div.link{
+      a, div.header-link{
         all: unset;
         color: white;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 100;
 
       }
-      a .active-title, div.link .active-title {
+      a .active-title, div.header-link .active-title {
         font-weight: 600;
       }
-      a:hover, div.link:hover{
+      a:hover, div.header-lik:hover{
         /* all: unset; */
         color: white;
         text-decoration: none;
@@ -198,7 +193,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         .logo{
           width: 60px;
           padding-left: 15px;
-          flex: 1 0 0;
+      /* flex: 1 0 0;  */
         }
    
         li, a.right-side-item{
@@ -259,7 +254,7 @@ openHamburger(){
   </button>
   <ul class="nav-links">
     ${Array.from(this.topItems).map((item) => html`
-        <li><a class="right-side-item" href="${item.slug}"><div class="link ${this.toKebabCase(item.title)}">${item.title}</div></a></li>
+        <li><a class="right-side-item" href="${item.slug}"><div class="header-link ${this.toKebabCase(item.title)}">${item.title}</div></a></li>
       `)}
   </ul>
   

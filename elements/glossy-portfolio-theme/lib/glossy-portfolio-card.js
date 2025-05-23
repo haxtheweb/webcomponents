@@ -25,13 +25,6 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
     this.slug = "https://google.com",
     this.tags =  [];
 
-
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
-
   }
 
 

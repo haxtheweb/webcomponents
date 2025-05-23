@@ -29,12 +29,6 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
     this.filteredData = [];
     this.data = [];
     this.activeFilter = '';
-
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
     
   }
 
@@ -82,7 +76,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
         padding: 50px 0;
         max-width: 100%;
       }
-      .latest-projects{
+      .grid-title{
         font-size: 18px;
         font-weight: 500;
         letter-spacing: 1.7px;
@@ -155,7 +149,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 <div class = "container-background">
   <div class="projects-header">
 
-    <div class="latest-projects">${this.title.toUpperCase()}</div>
+    <div class="grid-title">${this.title.toUpperCase()}</div>
     <div class="filters">
       <button class="filter active" name="all" @click="${this.updateFilter}">All</button>
       
