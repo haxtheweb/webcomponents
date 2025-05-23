@@ -2543,7 +2543,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       editingElement: "core",
       canEditSource: true,
       gizmo: {
-        title: "Image",
+        title: "Basic Image",
         description: "A basic img tag",
         icon: "image:image",
         color: "blue-grey",
@@ -2551,7 +2551,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         handles: [],
         meta: {
           author: "W3C",
-          hidden: true,
         },
       },
       settings: {
