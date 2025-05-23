@@ -231,13 +231,6 @@ class HAXCMSSiteEditor extends LitElement {
       },
 
       /**
-       * Publishing end point, this has CDN implications so show message
-       */
-      publishing: {
-        type: Boolean,
-      },
-
-      /**
        * end point for saving outline
        */
       saveOutlinePath: {
@@ -299,14 +292,14 @@ class HAXCMSSiteEditor extends LitElement {
     // sanity check we have a slug, move to this page that we just made
     if (e.detail.value && e.detail.value.data && e.detail.value.data.slug) {
       setTimeout(() => {
+        store.playSound("coin");        
         const node = e.detail.value.data;
         globalThis.history.pushState({}, null, node.slug);
         globalThis.dispatchEvent(new PopStateEvent("popstate"));
-        store.toast(`Created ${node.title}!`, 3000, {
+        store.toast(`Created ${node.title}!`, 4000, {
           hat: "random",
         });
-        store.playSound("coin");        
-      }, 1000);
+      }, 900);
     }
   }
 
@@ -451,9 +444,7 @@ class HAXCMSSiteEditor extends LitElement {
           JSON.stringify(this[propName]),
         );
       }
-      if (propName == "publishing") {
-        this._publishingChanged(this[propName], oldValue);
-      } else if (propName == "activeItem") {
+      if (propName == "activeItem") {
         this.dispatchEvent(
           new CustomEvent("manifest-changed", {
             detail: this[propName],
@@ -865,17 +856,7 @@ class HAXCMSSiteEditor extends LitElement {
       HAXStore.connectionRewrites.appendJwt = "jwt";
     }
   }
-  /**
-   * notice publishing callback changing state
-   */
 
-  _publishingChanged(newValue, oldValue) {
-    if (newValue) {
-      store.toast(`Publishing...`, 0, { hat: "random" });
-    } else if (!newValue && oldValue) {
-      store.toast(`Publishing...`, 2000, { hat: "random" });
-    }
-  }
   /**
    * react to manifest being changed
    */
@@ -927,9 +908,8 @@ class HAXCMSSiteEditor extends LitElement {
       globalThis.history.replaceState({}, null, e.detail.value.data.slug);
       globalThis.dispatchEvent(new PopStateEvent("popstate"));
     }
-    store.toast(`Page saved!`, 3000, { hat: "random" });
-    store.playSound("coin");
     setTimeout(() => {
+      store.playSound("coin");
       this.dispatchEvent(
         new CustomEvent("haxcms-trigger-update", {
           bubbles: true,
@@ -953,14 +933,14 @@ class HAXCMSSiteEditor extends LitElement {
       let tmp = store.activeId;
       store.activeId = null;
       store.activeId = tmp;
+      store.toast(`Page saved!`, 4000, { hat: "random" });
     }, 300);
   }
 
   _handleOutlineResponse(e) {
     // trigger a refresh of the data in node
-    store.toast(`Outline saved!`, 3000, { hat: "random" });
-    store.playSound("coin");
     setTimeout(() => {
+      store.playSound("coin");
       this.dispatchEvent(
         new CustomEvent("haxcms-trigger-update", {
           bubbles: true,
@@ -969,6 +949,7 @@ class HAXCMSSiteEditor extends LitElement {
           detail: true,
         }),
       );
+      store.toast(`Outline saved!`, 4000, { hat: "random" });
     }, 300);
   }
 
