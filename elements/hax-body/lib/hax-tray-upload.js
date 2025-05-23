@@ -53,6 +53,8 @@ class HaxTrayUpload extends HaxUploadField {
     // the super class if successful will have set the #url field to a parsed value
     if (e.detail.xhr.status === 200 && this.shadowRoot.querySelector("#url")) {
       this.newAssetConfigure();
+      // ensures that if we have selfie / audio it closes those widgets
+      this.option = "fileupload";
     }
   }
 

@@ -272,9 +272,6 @@ class SimpleFieldsUpload extends I18NMixin(
     // placeholder as those implementing this will need to respond to it
     // elements upstream of this class typically will know how they
     // want to handle the response
-    if (e.detail.xhr.status === 200) {
-      this.option = "fileupload";
-    }
   }
   /**
    * LitElement life cycle - render callback
