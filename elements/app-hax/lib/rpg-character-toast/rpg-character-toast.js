@@ -149,9 +149,6 @@ export class RPGCharacterToast extends SimpleToastEl {
           border: 4px solid black;
           border-radius: none;
           margin-left: 4px;
-          position: absolute;
-          top: 0;
-          right: 0;
           cursor: pointer;
         }
         .leftedge {
