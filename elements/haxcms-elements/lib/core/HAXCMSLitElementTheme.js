@@ -11,6 +11,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import { editableTableDisplayStyles } from "@haxtheweb/editable-table/lib/editable-table-behaviors.js";
 import { copyToClipboard } from "@haxtheweb/utils/utils.js";
+import "@haxtheweb/absolute-position-behavior/lib/absolute-position-state-manager.js";
 
 /**
  * LitElement Version of HAXCMSTheme

@@ -9,10 +9,76 @@ import {
 import { varExists, varGet, localStorageGet } from "@haxtheweb/utils/utils.js";
 import { JsonOutlineSchema } from "@haxtheweb/json-outline-schema/json-outline-schema.js";
 import { DeviceDetails } from "@haxtheweb/replace-tag/lib/PerformanceDetect.js";
-import { iconFromPageType } from "@haxtheweb/course-design/lib/learning-component.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 configure({ enforceActions: false }); // strict mode off
+
+export function iconFromPageType(type) {
+  switch (type) {
+    case "content":
+      return "lrn:page";
+    case "assessment":
+      return "lrn:assessment";
+    case "quiz":
+      return "lrn:quiz";
+    case "submission":
+      return "icons:move-to-inbox";
+    case "lesson":
+      return "hax:lesson";
+    case "module":
+      return "hax:module";
+    case "unit":
+      return "hax:unit";
+    case "task":
+      return "hax:task";
+    case "activity":
+      return "hax:ticket";
+    case "project":
+      return "hax:bulletin-board";
+    case "practice":
+      return "hax:shovel";
+    case "connection":
+      return "courseicons:chem-connection";
+      break;
+    case "knowledge":
+      return "courseicons:knowledge";
+      break;
+    case "strategy":
+      return "courseicons:strategy";
+      break;
+    case "discuss":
+      return "courseicons:strategy";
+      break;
+    case "listen":
+      return "courseicons:listen";
+      break;
+    case "make":
+      return "courseicons:strategy";
+      break;
+    case "observe":
+      return "courseicons:strategy";
+      break;
+    case "present":
+      return "courseicons:strategy";
+      break;
+    case "read":
+      return "courseicons:strategy";
+      break;
+    case "reflect":
+      return "courseicons:strategy";
+      break;
+    case "research":
+      return "courseicons:strategy";
+      break;
+    case "watch":
+      return "courseicons:strategy";
+      break;
+    case "write":
+      return "lrn:write";
+      break;
+  }
+  return "courseicons:learning-objectives";
+}
 class Store {
   constructor() {
     this.badDevice = false;

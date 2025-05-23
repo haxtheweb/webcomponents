@@ -5,7 +5,6 @@
 import { LitElement, html, css } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import "../../core/micros/haxcms-button-add.js";
 import "@haxtheweb/map-menu/map-menu.js";
 import { localStorageGet } from "@haxtheweb/utils/utils.js";
 import { HAXCMSThemeParts } from "../../core/utils/HAXCMSThemeParts.js";
@@ -270,6 +269,10 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
     autorun((reaction) => {
       if (!this.isFlex) {
         this.editControls = toJS(store.isLoggedIn);
+        // dynamic import if we are logged in
+        if (this.editControls) {
+          import("../../core/micros/haxcms-button-add.js");
+        }
       }
     });
     // executing this here ensures that the timing is correct with highlighting the active item in the menu

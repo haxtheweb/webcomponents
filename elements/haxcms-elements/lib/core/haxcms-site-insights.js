@@ -1,4 +1,4 @@
-import { store } from "./haxcms-site-store.js";
+import { store, iconFromPageType } from "./haxcms-site-store.js";
 import { toJS } from "mobx";
 import { LitElement, html, css } from "lit";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
@@ -12,10 +12,8 @@ import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/lesson-overview/lib/lesson-highlight.js";
 import "@github/time-elements/dist/relative-time-element.js";
 import "@haxtheweb/iframe-loader/lib/loading-indicator.js";
-import {
-  learningComponentTypes,
-  iconFromPageType,
-} from "@haxtheweb/course-design/lib/learning-component.js";
+import { learningComponentTypes } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+
 enableServices(["haxcms", "core"]);
 
 /**

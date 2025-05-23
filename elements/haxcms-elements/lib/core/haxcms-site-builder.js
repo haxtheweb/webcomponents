@@ -5,15 +5,12 @@ import {
   wipeSlot,
   varExists,
   localStorageSet,
-  validURL,
 } from "@haxtheweb/utils/utils.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
 import "./haxcms-site-router.js";
 import "@haxtheweb/simple-progress/simple-progress.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
-import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import "@haxtheweb/replace-tag/replace-tag.js";
 // toggle store darkmode
 function darkToggle(e) {
@@ -90,7 +87,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
       <slot name="haxcms-site-editor-ui-main-menu"></slot>
       <slot name="haxcms-site-editor-ui-topbar-character-button"></slot>
-      <simple-colors-polymer></simple-colors-polymer>
     `;
   }
   /**
@@ -579,81 +575,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     });
     autorun(() => {
       this.isLoggedIn = toJS(store.isLoggedIn);
-      UserScaffoldInstance.writeMemory("isLoggedIn", this.isLoggedIn);
       const tstamp = Math.floor(Date.now() / 1000);
-
       if (this.isLoggedIn && !this.loggedInTime) {
-        this.displayConsoleWarning();
         this.loggedInTime = tstamp;
         this._timeStamp = this.loggedInTime;
-        var ll = UserScaffoldInstance.readMemory("recentLogins");
-        if (!ll) {
-          UserScaffoldInstance.writeMemory("recentLogins", [tstamp], "long");
-        } else if (ll) {
-          // cap at last 5 login times
-          if (ll.length < 5) {
-            ll.shift();
-          }
-          ll.push(tstamp);
-          UserScaffoldInstance.writeMemory("recentLogins", ll, "long");
-        }
-      }
-    });
-    // user scaffolding wired up to superDaemon
-    autorun(() => {
-      const memory = toJS(UserScaffoldInstance.memory);
-      const usAction = toJS(UserScaffoldInstance.action);
-      // try to pulse edit / merlin if they are here and don't do anything...
-      if (
-        memory.editMode === false &&
-        memory.interactionDelay >= 3600 &&
-        usAction.type === null &&
-        store.cmsSiteEditor.haxCmsSiteEditorUIElement &&
-        store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot
-      ) {
-        // delay since it slides in
-        setTimeout(() => {
-          const editbtn =
-            store.cmsSiteEditor.haxCmsSiteEditorUIElement.shadowRoot.querySelector(
-              "#editbutton",
-            );
-          editbtn.dataPulse = "1";
-        }, 300);
-      }
-      // try to evaluate typing in merlin
-      if (
-        UserScaffoldInstance.active &&
-        UserScaffoldInstance.memory.isLoggedIn &&
-        UserScaffoldInstance.memory.recentTarget === SuperDaemonInstance &&
-        SuperDaemonInstance.programName === null &&
-        UserScaffoldInstance.memory.interactionDelay > 600 &&
-        ["paste", "key"].includes(usAction.type)
-      ) {
-        if (validURL(SuperDaemonInstance.value)) {
-          SuperDaemonInstance.waveWand(
-            [SuperDaemonInstance.value, "/", {}, "hax-agent", "Agent"],
-            null,
-            "coin2",
-          );
-        }
-      } else if (
-        UserScaffoldInstance.active &&
-        UserScaffoldInstance.memory.isLoggedIn &&
-        SuperDaemonInstance.programName === null &&
-        ["paste"].includes(usAction.type) &&
-        UserScaffoldInstance.data.architype == "url"
-      ) {
-        SuperDaemonInstance.waveWand(
-          [
-            toJS(UserScaffoldInstance.data.value),
-            "/",
-            {},
-            "hax-agent",
-            "Agent",
-          ],
-          null,
-          "coin2",
-        );
       }
     });
   }
@@ -671,13 +596,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       );
     }, 3500);
   }
-
+  // how to get involved with the project, right in the core
   displayConsoleLearnMore() {
     setTimeout(() => {
       const headStyle =
-        "color: white; font-weight: bold; font-size: 5em;font-family: arial; background-color: black; border: 5px solid white; border: 5px solid white; font-style: italic;";
+        "color: white; font-weight: bold; padding: 10px; font-size: 5em;font-family: arial; background-color: black; border: 5px solid white; border: 5px solid white; font-style: italic;";
       const bodyStyle =
-        "color: white; background-color: black; font-size: 1.5em; font-family: arial;";
+        "color: white; background-color: black; font-size: 1.5em; font-family: arial; padding: 10px;";
       console.log("%c👩‍💻HAXcms🧑‍💻", headStyle);
       console.log(
         "%cThis site was created using HAXcms.\nLearn more about HAXcms at https://hax.psu.edu/.",
