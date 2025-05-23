@@ -134,6 +134,7 @@ class SimpleCameraSnap extends HTMLElement {
       }
       camera.removeAttribute("autoplay");
       const selfie = this.shadowRoot.querySelector("#selfie");
+      console.log(selfie);
       selfie.innerHTML = "";
       selfie.appendChild(img);
       // throw up event for other things to find the image

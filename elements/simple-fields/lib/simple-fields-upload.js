@@ -267,6 +267,12 @@ class SimpleFieldsUpload extends I18NMixin(
       </simple-toolbar-button>
     `;
   }
+
+  _fileUploadResponse(e) {
+    // placeholder as those implementing this will need to respond to it
+    // elements upstream of this class typically will know how they
+    // want to handle the response
+  }
   /**
    * LitElement life cycle - render callback
    */
