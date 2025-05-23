@@ -14,6 +14,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
+import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 
 /**
  * `clean-portfolio-theme`
@@ -34,8 +35,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   constructor() {
     super();
-    this.siteTheme = ""; // theme name
-    this.dataPrimary = 2; // theme ID
+    this.siteTheme = UserScaffoldInstance.readMemory("HAXCMSSiteTheme") || "";
+    this.dataPrimary = 2;
     this.activeLayout = "text"; // text, media, listing
     this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
     this.selectedTag = ""; // for filtering listing items
@@ -159,10 +160,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
             // reset tag select filter
             this.selectedTag = "";
-            const select = this.shadowRoot.querySelector('#listing-filter');
-            if (select) {
-              select.value = ""
-            };
+            if (this.shadowRoot) {
+              let select = this.shadowRoot.querySelector('#listing-filter');
+              if (select) {
+                select.value = ""
+              }
+            }
           } else if (active.parent) {
             this.setLayout("media");
           } else {
@@ -202,14 +205,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       this.pageTotal = counter.total;
       this.__disposer.push(reaction);
     });
-
-    // gets current a total page count
-    autorun((reaction) => {
-      const counter = toJS(store.pageCounter);
-      this.pageCurrent = counter.current;
-      this.pageTotal = counter.total;
-      this.__disposer.push(reaction);
-    });
   }
 
   firstUpdated(changedProperties) {
@@ -239,6 +234,40 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       this._resizeObserver.observe(nav);
     }
     requestAnimationFrame(() => this._checkOverflow());
+  }
+
+    updated(changedProperties) {
+    super.updated(changedProperties);
+    if (changedProperties.has("siteTheme")) {
+      switch (this.siteTheme) {
+        case "earth":
+          this.dataPrimary = 1;
+        break;
+        case "water":
+          this.dataPrimary = 11;
+        break;
+        case "fire":
+          this.dataPrimary = 23;
+        break;
+        case "sand":
+          this.dataPrimary = 35;
+        break;
+        case "rose":
+          this.dataPrimary = 47;
+        break;
+        case "violet":
+          this.dataPrimary = 2;
+        break;
+        default:
+          this.dataPrimary = 1;
+        break;
+      }
+      UserScaffoldInstance.writeMemory(
+          "HAXCMSSiteTheme",
+          this.siteTheme,
+          "long",
+        );
+    }
   }
 
   // manages window resize observer
@@ -1176,31 +1205,24 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     switch (this.siteTheme) {
       case "earth":
         this.siteTheme = "water";
-        this.dataPrimary = 1;
       break;
       case "water":
         this.siteTheme = "fire";
-        this.dataPrimary = 11;
       break;
       case "fire":
         this.siteTheme = "sand";
-        this.dataPrimary = 23;
       break;
       case "sand":
         this.siteTheme = "rose";
-        this.dataPrimary = 35;
       break;
       case "rose":
         this.siteTheme = "violet";
-        this.dataPrimary = 47;
       break;
       case "violet":
         this.siteTheme = "";
-        this.dataPrimary = 2;
       break;
       default:
         this.siteTheme = "earth";
-        this.dataPrimary = 1;
       break;
     }
   }

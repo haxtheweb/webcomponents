@@ -15,6 +15,7 @@ import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
+import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 
 /**
  * `JourneyTheme`
@@ -44,7 +45,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
   // set defaults or tie into the store
   constructor() {
     super();
-    this.siteTheme = "";
+    this.siteTheme = UserScaffoldInstance.readMemory("HAXCMSSiteTheme") || "";
     this.dataPrimary = 2;
     this._items = [];
     this.location = null;
@@ -52,6 +53,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     this.ancestorItem = {};
     this.basePath = null;
     this.manifest = {};
+    this.__disposer = this.__disposer || [];
     this.t = {
       readMore: "Read more",
       home: "Home",
@@ -62,8 +64,11 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     catch (e) {
       this.basePath = globalThis.location.origin;
     }
-    autorun(() => {
+
+    autorun((reaction) => {
       this.manifest = toJS(store.manifest);
+      this.lastUpdated = new Date(store.manifest.metadata.site.updated * 1000).toDateString();
+      this.copyrightYear = new Date(store.manifest.metadata.site.created * 1000).getFullYear();
       let LList = new licenseList();
       if (this.manifest.license && LList[this.manifest.license]) {
         this.licenseName = LList[this.manifest.license].name;
@@ -71,16 +76,27 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
         this.licenseImage = LList[this.manifest.license].image;
       }
       this._items = this.getItemChildren(null);
+      this.__disposer.push(reaction);
     });
-    autorun(() => {
+    autorun((reaction) => {
       this.activeItem = toJS(store.activeItem);
+      this.__disposer.push(reaction);
     });
-    autorun(() => {
+    autorun((reaction) => {
       this.ancestorItem = toJS(store.ancestorItem);
+      this.__disposer.push(reaction);
     });
-    autorun(() => {
+    autorun((reaction) => {
       let location = toJS(store.location);
       this.location = location;
+      this.__disposer.push(reaction);
+    });
+    // gets current a total page count
+    autorun((reaction) => {
+      const counter = toJS(store.pageCounter);
+      this.pageCurrent = counter.current;
+      this.pageTotal = counter.total;
+      this.__disposer.push(reaction);
     });
   }
 
@@ -90,19 +106,57 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     }
   }
 
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    if (changedProperties.has("siteTheme")) {
+      switch (this.siteTheme) {
+        case "earth":
+          this.dataPrimary = 1;
+        break;
+        case "water":
+          this.dataPrimary = 11;
+        break;
+        case "fire":
+          this.dataPrimary = 23;
+        break;
+        case "sand":
+          this.dataPrimary = 2;
+        break;
+        case "rose":
+          this.dataPrimary = 47;
+        break;
+        case "violet":
+          this.dataPrimary = 2;
+        break;
+        default:
+          this.dataPrimary = 1;
+        break;
+      }
+      UserScaffoldInstance.writeMemory(
+          "HAXCMSSiteTheme",
+          this.siteTheme,
+          "long",
+        );
+    }
+  }
+
   static get properties() {
     return {
       ...super.properties,
+     _items: { type: Array },
       activeItem: { type: Object },
       ancestorItem: { type: Object },
       location: { type: Object },
       basePath: { type: String },
-      dataPrimary: { type: String, attribute: "data-primary", reflect: true },
-      _items: { type: Array },
+      dataPrimary: { type: String, reflect: true, attribute: "data-primary" },
+      siteTheme: { type: String, reflect: true, attribute: "site-theme" },
       licenseName: { type: String },
       licenseLink: { type: String },
       licenseImage: { type: String },
-      siteTheme: { type: String, reflect: true, attribute: 'site-theme' },
+      lastUpdated: { type: String },
+      copyrightYear: { type: Number },
+      pageCurrent: { type: Number },
+      pageTotal: { type: Number },
     };
   }
 
@@ -194,6 +248,14 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
         :host([site-theme="sand"]) {
           --haxcms-site-theme-color-1: var(--ddd-primary-15);
           --haxcms-site-theme-color-2: var(--ddd-primary-23);
+        }
+        :host([site-theme="rose"]) {
+          --haxcms-site-theme-color-1: var(--ddd-primary-12);
+          --haxcms-site-theme-color-2: var(--ddd-primary-11);
+        }
+        :host([site-theme="violet"]) {
+          --haxcms-site-theme-color-1: var(--ddd-primary-13);
+          --haxcms-site-theme-color-2: var(--ddd-primary-14);
         }
 
         header {
@@ -597,33 +659,39 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
       this.HAXCMSThemeSettings.scrollTarget;
   }
 
+  // manages window resize observer
+  disconnectedCallback() {
+    if (this.__disposer) {
+      for (var i in this.__disposer) {
+        this.__disposer[i].dispose();
+      }
+    }
+    super.disconnectedCallback();
+  }
+
   toggleSiteTheme(e) {
     switch (this.siteTheme) {
       // make this the captain planet powers
-      // earth
-      // wind
-      // fire
-      // water
-      // heart???????
       case "earth":
         this.siteTheme = "water";
-        this.dataPrimary = 1;
       break;
       case "water":
         this.siteTheme = "fire";
-        this.dataPrimary = 11;
       break;
       case "fire":
         this.siteTheme = "sand";
-        this.dataPrimary = 23;
       break;
       case "sand":
+        this.siteTheme = "rose";
+      break;
+      case "rose":
+        this.siteTheme = "violet";
+      break;
+      case "violet":
         this.siteTheme = "";
-        this.dataPrimary = 2;
       break;
       default:
         this.siteTheme = "earth";
-        this.dataPrimary = 1;
       break;
     }
   }
@@ -718,6 +786,11 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           </a>
           <div class="h1">${this.manifest.title}</div>
           <div class="h2">${this.manifest.description}</div class="h2">
+          <div>
+              Page ${this.pageCurrent} of ${this.pageTotal}<br><br>
+              Site generated: ${this.lastUpdated}<br><br>
+              © ${this.copyrightYear} ${this.manifest.author}.
+          </div>
           <div
             class="license-body"
             xmlns:cc="${this.licenseLink}"

@@ -166,37 +166,42 @@ export const SimpleFilterMixin = function (SuperClass) {
         // but we have multiple regex patterns to apply against multiple
         // textual targets. So, we have to rebuild it EVERY run or we get
         // really inconsistent results
-        regex = null;
-        if (caseSensitive) {
-          regex = new RegExp(like, "g");
-        } else {
-          regex = new RegExp(like, "ig");
-        }
-        //This is when a complex object is provided
-        if (typeof item == "object") {
-          //Decompose where incase it is represented in . notation for complex objects
-          var decomposed = this._decomposeWhere(where, item);
-          //Check if the items specified are defined
-          if (typeof decomposed == "undefined" && where != "") {
-            //Do what I know best
-            console.warn(
-              "simple-filter was unable to find a property in '" + where + "'",
-            );
+        try {
+          regex = null;
+          if (caseSensitive) {
+            regex = new RegExp(like, "g");
+          } else {
+            regex = new RegExp(like, "ig");
           }
-          // every call to .test will iterate against the same regex
-          // so we can't console log without causing discrepancies in output
-          // classic monitoring of a value deforms the experiment
-          let result = regex.test(decomposed);
-          return result;
-        }
+          // This is when a complex object is provided
+          if (typeof item == "object") {
+            //Decompose where incase it is represented in . notation for complex objects
+            var decomposed = this._decomposeWhere(where, item);
+            //Check if the items specified are defined
+            if (typeof decomposed == "undefined" && where != "") {
+              //Do what I know best
+              console.warn(
+                "simple-filter was unable to find a property in '" + where + "'",
+              );
+            }
+            // every call to .test will iterate against the same regex
+            // so we can't console log without causing discrepancies in output
+            // classic monitoring of a value deforms the experiment
+            let result = regex.test(decomposed);
+            return result;
+          }
 
-        //When a simple object of strings is provided
-        if (typeof item == "string") {
-          return regex.test(item);
+          //When a simple object of strings is provided
+          if (typeof item == "string") {
+            return regex.test(item);
+          }
+          //When a simple object of numbers is provided
+          if (typeof item == "number") {
+            return regex.test(item.toString());
+          }
         }
-        //When a simple object of numbers is provided
-        if (typeof item == "number") {
-          return regex.test(item.toString());
+        catch(e) {
+          // if use types a ? or other form of regex, it will throw an error
         }
       });
       return filtered;
