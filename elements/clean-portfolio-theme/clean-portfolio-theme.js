@@ -10,6 +10,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tit
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-media-banner.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
@@ -100,6 +101,14 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           parent = "";
         }
 
+        if (this.menuOpen) {
+          this.menuOpen = false;
+        }
+        
+        const siblings = toJS(store.siblingsPrevNext);
+        this.prevSibling = siblings.prev;
+        this.nextSibling = siblings.next;
+
         if (globalThis.document && globalThis.document.startViewTransition) {
           globalThis.document.startViewTransition(() => {
             this.activeItem = active;
@@ -150,7 +159,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
             // reset tag select filter
             this.selectedTag = "";
-            const select = this.shadowRoot?.querySelector('#listing-select');
+            const select = this.shadowRoot.querySelector('#listing-filter');
             if (select) {
               select.value = ""
             };
@@ -169,7 +178,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       const editMode = toJS(store.editMode);
       if (editMode) {
         const el = this.shadowRoot.querySelector("#slot") || globalThis.document.querySelector("#slot");
-        el?.scrollIntoView({ behavior: "smooth", block: "start" });
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
       }
       this.__disposer.push(reaction);
     });
@@ -183,6 +192,22 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         this.licenseLink = LList[this.manifest.license].link;
         this.licenseImage = LList[this.manifest.license].image;
       }
+      this.__disposer.push(reaction);
+    });
+
+    // gets current a total page count
+    autorun((reaction) => {
+      const counter = toJS(store.pageCounter);
+      this.pageCurrent = counter.current;
+      this.pageTotal = counter.total;
+      this.__disposer.push(reaction);
+    });
+
+    // gets current a total page count
+    autorun((reaction) => {
+      const counter = toJS(store.pageCounter);
+      this.pageCurrent = counter.current;
+      this.pageTotal = counter.total;
       this.__disposer.push(reaction);
     });
   }
@@ -260,6 +285,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       activeItem: { type: Object },
       activeParent: { type: Object },
       ancestorItem: { type: Object },
+      prevSibling: { type: Object },
+      nextSibling: { type: Object },
       topItems: { type: Array },
       items: { type: Array },
       activeTags: { type: Array },
@@ -268,6 +295,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       menuOverflow: { type: Array },
       menuOpen: { type: Boolean },
       copyrightYear: { type: Number },
+      pageCurrent: { type: Number },
+      pageTotal: { type: Number },
       siteTitle: { type: String },
       homeLink: { type: String },
       activeLayout: { type: String },
@@ -295,19 +324,22 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             --portfolio-darkGrey: #333;
             --portfolio-textHeader: #efefef;
             --portfolio-textHeaderHover: #b7b7b7;
-            --portfolio-backgroundWhite: #f7f7f7;
             --portfolio-menuItemUnderline: #ff0000;
             --portfolio-cardTag: #6D4C41;
             --portfolio-cardTagLight: #c2a399;
+            --portfolio-linkLight: #788cff;
+            --portfolio-linkDark: #a2a5ff;
+            --portfolio-bgLight: #f7f7f7;
+            --portfolio-bgDark: #262626;
 
             --portfolio-lightDark-blackWhite: light-dark(var(--portfolio-black), var(--portfolio-white));
-            --portfolio-lightDark-whiteBlack: light-dark(var(--portfolio-white), var(--portfolio-black));
-            --portfolio-lightDark-bg: light-dark(var(--portfolio-backgroundWhite), var(--portfolio-grey));
+            --portfolio-lightDark-bg: light-dark(var(--portfolio-bgLight), var(--portfolio-bgDark));
             --portfolio-lightDark-footer: light-dark(var(--portfolio-black), var(--portfolio-darkGrey));
             --portfolio-lightDark-cardTag: light-dark(var(--portfolio-cardTag), var(--portfolio-cardTagLight));
             --portfolio-lightDark-cardImg: light-dark(var(--portfolio-lighterGrey), var(--portfolio-darkGrey));
+            --portfolio-lightDark-link: light-dark(var(--portfolio-linkLight), var(--portfolio-linkDark));
 
-            --portfolio-breadcrumb: var(--portfolio-lightDark-blackWhite);
+            --portfolio-accentHighlight: var(--portfolio-lightDark-blackWhite);
 
             /* site font variables */
             --portfolio-font-body: "Source Code Pro", system-ui, Monaco, Consolas, "Lucida Console", monospace;
@@ -329,9 +361,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             --portfolio-fire-accentDark: #8e2424;
             --portfolio-sand-accentLight: #f57c00;
             --portfolio-sand-accentDark: #6d4c41;
-            --portfolio-rose-accentLight: #ef50a2;
+            --portfolio-rose-accentLight: #e770ad;
             --portfolio-rose-accentDark:  #6a1b4d;
-            --portfolio-violet-accentLight: #a27dff;
+            --portfolio-violet-accentLight: #a392d0;
             --portfolio-violet-accentDark:  #392b6a;
         }
 
@@ -349,6 +381,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       /* Semantic elements */
       :host {
         display: block;
+        background-color: var(--portfolio-lightDark-bg);
+        transition: background-color .3s ease-in-out;
+      }
+
+      html, body {
+        height: 100%;
+        background-color: var(--portfolio-lightDark-bg);
       }
 
       header {
@@ -375,6 +414,11 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         min-width: 0;
       }
 
+      a {
+        color: var(--portfolio-lightDark-link);
+        transition: color .3s;
+      }
+
       h1, h2, h3, h4, h5, h6 {
         color: var(--portfolio-lightDark-blackWhite);
         line-height: 1.2;
@@ -384,12 +428,14 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
       
       p {
+        color: var(--portfolio-lightDark-blackWhite);
         font-size: var(--portfolio-fontsize-responsive);
         line-height: 1.5;
         margin-bottom: 1.3em;
       }
 
       ul {
+        color: var(--portfolio-lightDark-blackWhite);
         list-style-type: disc;
       }
 
@@ -410,8 +456,15 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         font-family: var(--portfolio-font-body);
         font-size: clamp(11px, 2vw, 15px);
         padding: 40px 5vw;
-        margin-top: 150px;
+        margin-top: 96px;
         transition: .3s;
+      }
+
+      .page-counter {
+        font-family: var(--portfolio-font-body);
+        font-size: 0.9rem;
+        color: var(--portfolio-lightDark-blackWhite);
+        margin: 0 0 1rem;
       }
 
       :focus {
@@ -568,7 +621,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       .hidden-links li {
         display: block;
-        border-bottom: 1px solid var(--portfolio-lighterGrey);
+        border-bottom: 1px solid var(--portfolio-white);
         padding: 10px;
       }
 
@@ -589,7 +642,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       .hidden-links a:hover,
       .hidden-links a:focus,
       .hidden-links a.active {
-        color: var(--portfolio-lighterGrey);
+        color: var(--portfolio-grey);
       }
 
       .hidden {
@@ -690,23 +743,33 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .breadcrumb a {
-        color: var(--portfolio-breadcrumb);
-        text-decoration-color: var(--portfolio-breadcrumb);
-        transition: 0.3s;
+        color: var(--portfolio-accentHighlight);
+        text-decoration: underline;
+        text-decoration-color: var(--portfolio-lightDark-bg);
+        text-decoration-thickness: 2px;
+        text-underline-offset: 8px;
         font-weight: 450;
+        transition: .3s ease-in-out;
       }
 
       .breadcrumb-parent {
         color: var(--portfolio-lightDark-blackWhite);
+        transition: color .3s ease-in-out;
       }
 
       .breadcrumb-split {
-        color: var(--portfolio-breadcrumb);
-        transition: .3s;
+        color: var(--portfolio-accentHighlight);
+        transition: color .3s ease-in-out;
       }
 
       .breadcrumb-title {
         font-weight: bold;
+        transition: color .3s ease-in-out;
+      }
+
+      .breadcrumb a:hover,
+      .breadcrumb a:focus{
+        text-decoration-color: var(--portfolio-accentHighlight);
       }
       
       /* Layouts */
@@ -736,7 +799,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         view-transition-name: location;
       }
 
-      #listing-select {
+      #listing-filter {
         font-size: 1rem;
         padding: 0.5em;
         max-width: 240px;
@@ -749,6 +812,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         text-transform: uppercase;
         border-top: 6px solid var(--portfolio-lightDark-blackWhite);
         min-height: 36px;
+        transition: color .3s;
       }
 
       .listing-category a {
@@ -780,16 +844,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         display: block;
       }
 
-      .listing-card:hover .listing-cardtitle,
-      .listing-card:focus .listing-cardtitle{
-        text-decoration: underline;
-      }
-
-      .listing-card:hover .listing-cardimg,
-      .listing-card:focus .listing-cardimg {
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 10px 0px;
-      }
-
       .listing-cardimg img {
         width: 100%;
         height: 100%;
@@ -798,19 +852,94 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       .listing-cardtitle {
         color: var(--portfolio-lightDark-blackWhite);
+        text-decoration: underline;
+        text-decoration-color: var(--portfolio-lightDark-bg);
+        text-decoration-thickness: 4px !important;
+        text-underline-offset: 8px;
         font-family: var(--portfolio-font-header);
         font-weight: 400;
+        line-height: 1.7;
         font-size: clamp(15px, 2vw, 21px);
         text-transform: uppercase;
         margin-bottom: 5.5px;
+        transition: color, text-decoration-color .3s ease-in-out;
       }
 
       .listing-cardtag {
         color: var(--portfolio-lightDark-cardTag);
         font-family: var(--portfolio-font-body);
-        font-size: clamp(8px, 2vw, 14px);
+        font-size: clamp(10px, 2vw, 16px);
         font-weight: 400;
         transition: .3s;
+      }
+
+      .listing-card:hover .listing-cardtitle,
+      .listing-card:focus .listing-cardtitle{
+        text-decoration-color: var(--portfolio-accentHighlight);
+      }
+
+      .listing-card:hover .listing-cardimg,
+      .listing-card:focus .listing-cardimg {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 10px 0px;
+      }
+
+      /* Pagination */
+      .pagination {
+        max-width: 840px;
+        margin: 0 auto;
+        padding: 0 22px;
+        display: flex;
+        gap: 24px;
+        flex-direction: row;
+        align-items: center;
+        view-transition-name: location;
+      }
+      .pagination a {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        overflow: hidden;
+        width: 400px;
+        height: clamp(48px, 8vw, 96px);
+        border-radius: 8px;
+        color: var(--portfolio-white);
+        background-color: var(--portfolio-lightGrey);
+        text-decoration: underline;
+        text-decoration-color: var(--portfolio-lightGrey);
+        text-decoration-thickness: 4px;
+        text-underline-offset: 8px;
+        line-height: 1.8;
+        font-family: var(--portfolio-font-header);
+        font-weight: 400;
+        transition: background-color .3s, text-decoration-color .3s, box-shadow .3s;
+      }
+      .pagination-text {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+      }
+      .pagination a simple-icon-lite {
+        --simple-icon-color: var(--portfolio-white);
+        --simple-icon-width: clamp(24px, 4vw, 40px);
+        --simple-icon-height: clamp(24px, 4vw, 40px);
+      }
+      .pagination a:hover,
+      .pagination a:focus {
+        text-decoration-color: var(--portfolio-darkGrey);
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 10px 0px;
+      }
+      .pagination a.prev {
+        margin-left: 24px;
+        margin-right: auto;
+        padding-right: 12px;
+        justify-content: flex-start;
+      }
+      .pagination a.next {
+        margin-right: 24px;
+        margin-left: auto;
+        padding-left: 12px;
+        justify-content: flex-end;
       }
 
       /* Media queries */
@@ -834,6 +963,22 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         .breadcrumb .theme-picker {
           visibility: visible;
         }
+        .pagination {
+          flex-direction: column;
+          gap: 12px;
+        }
+        .pagination-text {
+          -webkit-line-clamp: 1;
+          overflow: hidden;
+          padding: 4px 0;
+          line-height: 2;
+        }
+        .pagination a.prev,
+        .pagination a.next {
+          margin-left: 0;
+          margin-right: 0;
+          width: 100%;
+        }
       }
 
       @media (max-width: 37.5em) {
@@ -855,8 +1000,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       :host([site-theme="earth"]) {
         --portfolio-menuItemUnderline:var(--portfolio-earth-accentLight);
         --portfolio-lightGrey: var(--portfolio-earth-accentLight);
-        --portfolio-breadcrumb: var(--portfolio-earth-accentLight);
+        --portfolio-accentHighlight: var(--portfolio-earth-accentLight);
         --portfolio-darkGrey: var(--portfolio-earth-accentDark);
+        --portfolio-lightDark-link: var(--portfolio-earth-accentLight);
         --portfolio-lightDark-cardTag: light-dark(
           var(--portfolio-earth-accentDark),
           var(--portfolio-earth-accentLight)
@@ -866,8 +1012,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       :host([site-theme="water"]) {
         --portfolio-menuItemUnderline:var(--portfolio-water-accentLight);
         --portfolio-lightGrey: var(--portfolio-water-accentLight);
-        --portfolio-breadcrumb: var(--portfolio-water-accentLight);
+        --portfolio-accentHighlight: var(--portfolio-water-accentLight);
         --portfolio-darkGrey: var(--portfolio-water-accentDark);
+        --portfolio-lightDark-link: var(--portfolio-water-accentLight);
         --portfolio-lightDark-cardTag: light-dark(
           var(--portfolio-water-accentDark),
           var(--portfolio-water-accentLight)
@@ -877,8 +1024,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       :host([site-theme="fire"]) {
         --portfolio-menuItemUnderline:var(--portfolio-fire-accentLight);
         --portfolio-lightGrey: var(--portfolio-fire-accentLight);
-        --portfolio-breadcrumb: var(--portfolio-fire-accentLight);
+        --portfolio-accentHighlight: var(--portfolio-fire-accentLight);
         --portfolio-darkGrey: var(--portfolio-fire-accentDark);
+        --portfolio-lightDark-link: var(--portfolio-fire-accentLight);
         --portfolio-lightDark-cardTag: light-dark(
           var(--portfolio-fire-accentDark),
           var(--portfolio-fire-accentLight)
@@ -888,8 +1036,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       :host([site-theme="sand"]) {
         --portfolio-menuItemUnderline:var(--portfolio-sand-accentLight);
         --portfolio-lightGrey: var(--portfolio-sand-accentLight);
-        --portfolio-breadcrumb: var(--portfolio-sand-accentLight);
+        --portfolio-accentHighlight: var(--portfolio-sand-accentLight);
         --portfolio-darkGrey: var(--portfolio-sand-accentDark);
+        --portfolio-lightDark-link: var(--portfolio-sand-accentLight);
         --portfolio-lightDark-cardTag: light-dark(
           var(--portfolio-sand-accentDark),
           var(--portfolio-sand-accentLight)
@@ -899,8 +1048,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       :host([site-theme="rose"]) {
         --portfolio-menuItemUnderline:var(--portfolio-rose-accentLight);
         --portfolio-lightGrey: var(--portfolio-rose-accentLight);
-        --portfolio-breadcrumb: var(--portfolio-rose-accentLight);
+        --portfolio-accentHighlight: var(--portfolio-rose-accentLight);
         --portfolio-darkGrey: var(--portfolio-rose-accentDark);
+        --portfolio-lightDark-link: var(--portfolio-rose-accentLight);
         --portfolio-lightDark-cardTag: light-dark(
           var(--portfolio-rose-accentDark),
           var(--portfolio-rose-accentLight)
@@ -910,8 +1060,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       :host([site-theme="violet"]) {
         --portfolio-menuItemUnderline:var(--portfolio-violet-accentLight);
         --portfolio-lightGrey: var(--portfolio-violet-accentLight);
-        --portfolio-breadcrumb: var(--portfolio-violet-accentLight);
+        --portfolio-accentHighlight: var(--portfolio-violet-accentLight);
         --portfolio-darkGrey: var(--portfolio-violet-accentDark);
+        --portfolio-lightDark-link: var(--portfolio-violet-accentLight);
         --portfolio-lightDark-cardTag: light-dark(
           var(--portfolio-violet-accentDark),
           var(--portfolio-violet-accentLight)
@@ -1022,7 +1173,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   // site theme footer button
   toggleSiteTheme(e) {
-    e.currentTarget.blur();
     switch (this.siteTheme) {
       case "earth":
         this.siteTheme = "water";
@@ -1104,7 +1254,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         <div class="breadcrumb">
           ${this.activeParent
             ? html`
-              <a href=${this.activeParent.slug}>
+              <a href=${this.activeParent.slug} @click=${(e) => e.currentTarget.blur()}>
                 <span>←</span>
                 <span class="breadcrumb-parent">${this.activeParent.title}</span>
               </a>
@@ -1127,7 +1277,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                 <!-- Render select for filtering tags (only appears if >1 tag OR 1 tag and items with no tag) -->
                 ${(this.categoryTags.length > 1 || (this.categoryTags.length > 0 && this.items.some(item => !item.metadata.tags)))
                   ? html`
-                    <select id="listing-select" @change=${(e) => this.selectedTag = e.target.value}>
+                    <select id="listing-filter" @change=${(e) => this.selectedTag = e.target.value}>
                       <option value="" ?selected="${this.selectedTag === ''}">All</option>
                       ${this.categoryTags.map(
                         (tag) => html`
@@ -1160,8 +1310,37 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         <div id="slot"><slot></slot></div>
       </div>
 
+      <div class="pagination">
+        ${this.activeParent
+        ? html`
+          ${this.prevSibling
+          ? html`
+            <a
+              class="prev"
+              href="${this.prevSibling.slug}"
+              @click=${(e) => e.currentTarget.blur()}
+            >
+              <simple-icon-lite icon="icons:chevron-left"></simple-icon-lite>
+              <span class="pagination-text">${this.prevSibling.title}</span>
+            </a>
+          ` : ""}
+          ${this.nextSibling
+          ? html`
+            <a
+              class="next"
+              href="${this.nextSibling.slug}"
+              @click=${(e) => e.currentTarget.blur()}
+            >
+              <span class="pagination-text">${this.nextSibling.title}</span>
+              <simple-icon-lite icon="icons:chevron-right"></simple-icon-lite>
+            </a>
+          ` : ""}
+        ` : ''}
+      </div>
+
       <footer>
-        Generated: ${this.lastUpdated}<br><br>
+        Page ${this.pageCurrent} of ${this.pageTotal}<br><br>
+        Site generated: ${this.lastUpdated}<br><br>
         © ${this.copyrightYear} ${store.manifest.author}.
         <div
           class="license-body"
