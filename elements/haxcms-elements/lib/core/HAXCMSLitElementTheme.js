@@ -24,6 +24,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     this.isSafari = globalThis.safari !== undefined;
     this.editMode = false;
     this.isLoggedIn = false;
+    this.HAXSiteCustomRenderRoutes = {};
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun((reaction) => {
       this.editMode = toJS(store.editMode);

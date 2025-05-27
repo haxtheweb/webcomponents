@@ -44,7 +44,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     this.menuOverflow = []; // items under the mobile menu
     this.lastUpdated = ""; // for footer timestamp
     this.copyrightYear = 0; // for footer copyright year
-
+    // support for custom rendering of route html
+    this.HAXSiteCustomRenderRoutes = {
+      "x/tags": {
+        "items": this.HAXSiteRenderXTagsItems,
+      }
+    };
     // MobX variables/listeners
     this.categoryTags = [];
     this.allTags = [];
@@ -356,7 +361,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             --portfolio-menuItemUnderline: #ff0000;
             --portfolio-cardTag: #6D4C41;
             --portfolio-cardTagLight: #c2a399;
-            --portfolio-linkLight: #788cff;
+            --portfolio-linkLight: #1F26FF;
             --portfolio-linkDark: #a2a5ff;
             --portfolio-bgLight: #f7f7f7;
             --portfolio-bgDark: #262626;
@@ -399,7 +404,81 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         body.dark-mode {
           color-scheme: only dark;
         }
-        `
+        site-tags-route::part(simple-tag) {
+          border-color: var(--portfolio-darkGrey);
+        }
+        site-tags-route::part(simple-tag):hover,
+        site-tags-route::part(simple-tag):focus {
+          color: var(--portfolio-lightGrey);
+          border-color: var(--portfolio-lightGrey);
+          font-family: var(--portfolio-font-header);
+        }
+
+        site-tags-route::part(listing-grid) {
+          display: grid;
+          gap: 24px;
+          width: 100%;
+          view-transition-name: location;
+          grid-template-columns: repeat(4, 1fr);
+        }
+        
+
+        site-tags-route::part(listing-card) {
+          width: 188px;
+          margin-bottom: 48px;
+          text-decoration: none;
+          transition: .4s;
+        }
+
+        site-tags-route::part(listing-cardimg) {
+          background-color: var(--portfolio-lightDark-cardImg);
+          border-radius: 6px;
+          margin-bottom: 12px;
+          height: 120px;
+          transition: all 0.2s ease-in-out;
+          overflow: hidden;
+          display: block;
+        }
+
+        site-tags-route::part(listing-cardimg-img) {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        site-tags-route::part(listing-cardtitle) {
+          color: var(--portfolio-lightDark-blackWhite);
+          text-decoration: underline;
+          text-decoration-color: var(--portfolio-lightDark-bg);
+          text-decoration-thickness: 4px !important;
+          text-underline-offset: 8px;
+          font-family: var(--portfolio-font-header);
+          font-weight: 400;
+          line-height: 1.7;
+          font-size: clamp(15px, 2vw, 21px);
+          text-transform: uppercase;
+          margin-bottom: 5.5px;
+          transition: color, text-decoration-color .3s ease-in-out;
+        }
+
+        site-tags-route::part(listing-cardtag) {
+          color: var(--portfolio-lightDark-cardTag);
+          font-family: var(--portfolio-font-body);
+          font-size: clamp(10px, 2vw, 16px);
+          font-weight: 400;
+          transition: .3s;
+        }
+
+      site-tags-route::part(listing-cardtitle):hover,
+      site-tags-route::part(listing-cardtitle):focus {
+        text-decoration-color: var(--portfolio-accentHighlight);
+      }
+
+      site-tags-route::part(listing-cardimg):hover,
+      site-tags-route::part(listing-cardimg):focus {
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 10px 0px;
+      }
+`
     ];
   }
 
@@ -1031,7 +1110,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         --portfolio-lightGrey: var(--portfolio-earth-accentLight);
         --portfolio-accentHighlight: var(--portfolio-earth-accentLight);
         --portfolio-darkGrey: var(--portfolio-earth-accentDark);
-        --portfolio-lightDark-link: var(--portfolio-earth-accentLight);
+        --portfolio-lightDark-link: light-dark(var(--portfolio-earth-accentDark), var(--portfolio-earth-accentLight));
         --portfolio-lightDark-cardTag: light-dark(
           var(--portfolio-earth-accentDark),
           var(--portfolio-earth-accentLight)
@@ -1043,7 +1122,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         --portfolio-lightGrey: var(--portfolio-water-accentLight);
         --portfolio-accentHighlight: var(--portfolio-water-accentLight);
         --portfolio-darkGrey: var(--portfolio-water-accentDark);
-        --portfolio-lightDark-link: var(--portfolio-water-accentLight);
+        --portfolio-lightDark-link: light-dark(var(--portfolio-water-accentDark), var(--portfolio-water-accentLight));
         --portfolio-lightDark-cardTag: light-dark(
           var(--portfolio-water-accentDark),
           var(--portfolio-water-accentLight)
@@ -1055,7 +1134,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         --portfolio-lightGrey: var(--portfolio-fire-accentLight);
         --portfolio-accentHighlight: var(--portfolio-fire-accentLight);
         --portfolio-darkGrey: var(--portfolio-fire-accentDark);
-        --portfolio-lightDark-link: var(--portfolio-fire-accentLight);
+        --portfolio-lightDark-link: light-dark(var(--portfolio-fire-accentDark), #F49B99);
         --portfolio-lightDark-cardTag: light-dark(
           var(--portfolio-fire-accentDark),
           var(--portfolio-fire-accentLight)
@@ -1067,7 +1146,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         --portfolio-lightGrey: var(--portfolio-sand-accentLight);
         --portfolio-accentHighlight: var(--portfolio-sand-accentLight);
         --portfolio-darkGrey: var(--portfolio-sand-accentDark);
-        --portfolio-lightDark-link: var(--portfolio-sand-accentLight);
+        --portfolio-lightDark-link: light-dark(var(--portfolio-sand-accentDark), var(--portfolio-sand-accentLight));
         --portfolio-lightDark-cardTag: light-dark(
           var(--portfolio-sand-accentDark),
           var(--portfolio-sand-accentLight)
@@ -1079,7 +1158,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         --portfolio-lightGrey: var(--portfolio-rose-accentLight);
         --portfolio-accentHighlight: var(--portfolio-rose-accentLight);
         --portfolio-darkGrey: var(--portfolio-rose-accentDark);
-        --portfolio-lightDark-link: var(--portfolio-rose-accentLight);
+        --portfolio-lightDark-link: light-dark(var(--portfolio-rose-accentDark), var(--portfolio-rose-accentLight));
         --portfolio-lightDark-cardTag: light-dark(
           var(--portfolio-rose-accentDark),
           var(--portfolio-rose-accentLight)
@@ -1091,7 +1170,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         --portfolio-lightGrey: var(--portfolio-violet-accentLight);
         --portfolio-accentHighlight: var(--portfolio-violet-accentLight);
         --portfolio-darkGrey: var(--portfolio-violet-accentDark);
-        --portfolio-lightDark-link: var(--portfolio-violet-accentLight);
+        --portfolio-lightDark-link: light-dark(var(--portfolio-violet-accentDark), var(--portfolio-violet-accentLight));
         --portfolio-lightDark-cardTag: light-dark(
           var(--portfolio-violet-accentDark),
           var(--portfolio-violet-accentLight)
@@ -1140,7 +1219,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       ${filteredTags.length > 0
         ? filteredTags.map(
             (topTag) => html`
-              <h3 class="listing-category"><a @click="${this.testEditMode}" href="x/tags?display=card&tag=${topTag.trim()}">${topTag}</a></h3>
+              <h3 class="listing-category"><a @click="${this.testEditMode}" href="x/tags?tag=${topTag.trim()}">${topTag}</a></h3>
               <div class="listing-grid">
                 ${filteredItems.filter(item => {
                   // Check if current item has the top-level tag
@@ -1187,6 +1266,22 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         </div>
       ` : ''}
     `;
+  }
+
+  // custom rendering of the x/tags route
+  // node is site-tags-route reference
+  HAXSiteRenderXTagsItems(items) {
+    return html`
+    <div part="listing-grid">
+      ${items.map(item => html`
+        <a class="listing-card" href="${item.slug}" part="listing-card">
+          <div class="listing-cardimg" part="listing-cardimg">
+            <img src="${item.metadata.image}" onerror="this.style.display='none'" part="listing-cardimg-img">
+          </div>
+          <div class="listing-cardtitle" part="listing-cardtitle">${item.title}</div>
+        </a>`
+      )}
+    </div>`;
   }
 
   setLayout(layout) {
@@ -1319,7 +1414,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                           ? this.activeTags
                           : this.activeTags.slice(1)
                         ).map(
-                          (item) => html`<li><a @click="${this.testEditMode}" href="x/tags?display=card&tag=${item.trim()}">${item}</a></li>`
+                          (item) => html`<li><a @click="${this.testEditMode}" href="x/tags?tag=${item.trim()}">${item}</a></li>`
                         )}
                       </ul>
                   ` : ''}
@@ -1392,6 +1487,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       </footer>
     `;
   }
+  
 }
 
 globalThis.customElements.define(CleanPortfolioTheme.tag, CleanPortfolioTheme);

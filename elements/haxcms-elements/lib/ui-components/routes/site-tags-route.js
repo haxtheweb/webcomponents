@@ -5,7 +5,7 @@
 import { html, css, nothing } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXCMSI18NMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSI18NMixin.js";
-import { toJS } from "mobx";
+import { autorun, toJS } from "mobx";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/collection-list/collection-list.js";
 import "@haxtheweb/collection-list/lib/collection-item.js";
@@ -52,12 +52,55 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
 
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.HAXCMSI18NMixinBase = "../../../";
     this.search = globalThis.location.search;
     this.t.tags = "Tags";
     this.filteredItems = [];
     this.resultsTags = {};
     this.params = {};
+    this.renderXTagsItems = this._renderXTagsItems;
+    this.renderXTagsTag = this._renderXTagsTag;
+    this.__disposer = this.__disposer || [];
+    autorun((reaction) => {
+      const theme = toJS(store.themeElement);
+      this._processCustomThemeRoutes();
+      this.__disposer.push(reaction);
+    })
+    window.addEventListener("haxcms-theme-ready",(e) => {
+        this._processCustomThemeRoutes();
+      },
+      { signal: this.windowControllers.signal }
+    );
+  }
+
+  _processCustomThemeRoutes() {
+    const theme = toJS(store.themeElement);
+    if (theme && theme.HAXSiteCustomRenderRoutes && theme.HAXSiteCustomRenderRoutes['x/tags']) {
+      if (theme.HAXSiteCustomRenderRoutes['x/tags'].items) {
+        this.renderXTagsItems = theme.HAXSiteCustomRenderRoutes['x/tags'].items;
+      }
+      else {
+        this.renderXTagsItems = this._renderXTagsItems;
+      }
+      if (store.themeElement.HAXSiteCustomRenderRoutes['x/tags'].tag) {
+        this.renderXTagsTag = theme.HAXSiteCustomRenderRoutes['x/tags'].tag;
+      }
+      else {
+        this.renderXTagsTag = this._renderXTagsTag;
+      }
+    }
+  }
+
+  /**
+   * life cycle, element is removed from the DOM
+   */
+  disconnectedCallback() {
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
+    this.windowControllers.abort();
+    super.disconnectedCallback();
   }
 
   _tagClick(e) {
@@ -78,7 +121,7 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
     globalThis.history.replaceState(
       {},
       "",
-      decodeURIComponent(`./x/tags?${rawParams}`),
+      decodeURIComponent(`./x/tags`),
     );
     this.search = globalThis.location.search;
   }
@@ -97,49 +140,69 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
   }
 
   render() {
+    return html`${this.renderXTags(this)}`;
+  }
+
+  firstUpdated(changedProperties) {
+    super.firstUpdated(changedProperties);
+    // I don't love this but only way to get it to consistently work
+    // as we paint so quickly (if this is the page that starts) that
+    // we end up missing the data. It's fine if it wasn't the initial route
+    setTimeout(() => {
+      this._processCustomThemeRoutes();
+      this.requestUpdate();
+    }, 500);
+  }
+
+  renderXTags() {
     return html` ${this.params && this.params.tag
         ? html`<simple-tag
             class="all-tags"
+            part="simple-tag all-tags"
             value="Remove '${this.params.tag}' filter"
             @click="${this._resetClick}"
             @keydown="${this._resetKeydown}"
             tabindex="0"
           ></simple-tag>`
         : nothing}
-      ${Object.keys(this.resultsTags).map(
-        (tag) => html`
-          ${this.params.tag === tag.trim()
-            ? nothing
-            : html`
-                <simple-tag
-                  accent-color="grey"
-                  value="${tag.trim()}"
-                  @click="${this._tagClick}"
-                  @keydown="${this._tagKeydown}"
-                  tabindex="0"
-                  >${this.resultsTags[tag] > 1
-                    ? html` (${this.resultsTags[tag]})`
-                    : nothing}</simple-tag
-                >
-              `}
-        `,
+      ${Object.keys(this.resultsTags).map((tag) => html`
+        ${this.params.tag === tag.trim() ? nothing : html`${this.renderXTagsTag(tag)}`}`,
       )}
+      ${this.renderXTagsItems(this.filteredItems)}`;
+  }
+
+  _renderXTagsTag(tag) {
+    return html`
+    <simple-tag
+      part="simple-tag"
+      accent-color="grey"
+      value="${tag.trim()}"
+      @click="${this._tagClick}"
+      @keydown="${this._tagKeydown}"
+      tabindex="0"
+    >${this.resultsTags[tag] > 1
+      ? html` (${this.resultsTags[tag]})` : nothing}
+    </simple-tag>`
+  }
+
+  _renderXTagsItems(items) {
+    return html`
       <collection-list>
-        ${this.filteredItems.map(
+        ${items.map(
           (item) => html`
-            <collection-item
-              line1="${item.title}"
-              line2="${item.description}"
-              url="${item.slug}"
-              image="${item.metadata.image}"
-              tags="${item.metadata.tags}"
-              icon="${item.metadata.icon}"
-              accent-color="grey"
-              saturate
-            ></collection-item>
-          `,
+          <collection-item
+            line1="${item.title}"
+            line2="${item.description}"
+            url="${item.slug}"
+            image="${item.metadata.image}"
+            tags="${item.metadata.tags}"
+            icon="${item.metadata.icon}"
+            accent-color="grey"
+            saturate
+          ></collection-item>`
         )}
-      </collection-list>`;
+      </collection-list>
+    `;
   }
 
   updated(changedProperties) {
@@ -147,20 +210,11 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "search" && this.search) {
+      if (propName === "search") {
         const rawParams = new URLSearchParams(this.search);
         const searchParams = Object.fromEntries(rawParams);
         this.params = {};
         this.params = searchParams;
-        // ensure display is always stateful even if not directly set
-        if (!searchParams.display) {
-          rawParams.set("display", this.params.display || "card");
-          globalThis.history.replaceState(
-            {},
-            "",
-            decodeURIComponent(`./x/tags?${rawParams}`),
-          );
-        }
       }
       if (propName === "params" && store.manifest.items) {
         this.filteredItems = [

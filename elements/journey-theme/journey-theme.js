@@ -2,7 +2,7 @@
  * Copyright 2025 btopro
  * @license Apache-2.0, see License.md for full text.
  */
-import { css, html} from "lit";
+import { css, html, nothing} from "lit";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -64,6 +64,13 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     catch (e) {
       this.basePath = globalThis.location.origin;
     }
+
+    // support for custom rendering of route html
+    this.HAXSiteCustomRenderRoutes = {
+      "x/tags": {
+        "items": this.HAXSiteRenderXTagsItems,
+      }
+    };
 
     autorun((reaction) => {
       this.manifest = toJS(store.manifest);
@@ -160,6 +167,31 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     };
   }
 
+
+  // custom rendering of the x/tags route
+  // node is site-tags-route reference
+  HAXSiteRenderXTagsItems(items) {
+    return html`
+    <div>
+    ${items.map(item => html`
+      <a href="${item.slug}" part="child-page-link" class="child-page-link">${item.metadata.image ? html`<img src="${item.metadata.image}" loading="lazy"
+        decoding="async"
+        part="child-page-link-img"
+        fetchpriority="low" alt="${item.title}"/>` : html`<img 
+        part="child-page-link-img"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+        src="${store.manifest.metadata.author.image}"
+        alt="${store.manifest.metadata.author.name}"
+        />`}
+        ${item.title}
+      </a>`
+    )}
+    </div>
+    `;
+  }
+
   // allows for global styles to be set against the entire document
   // you can also use this to cascade styles down to the theme
   // but the more common reason is to influence the body or other things
@@ -190,6 +222,28 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
         left: 50%;
         margin: 0 auto;
         z-index: -1;
+      }
+      site-tags-route::part(child-pages-container) {
+        display: block;
+        margin-bottom: var(--ddd-spacing-6);
+      }
+      site-tags-route::part(child-page-link) {
+        display: inline-block;
+        width: var(--ddd-spacing-20);
+        height: var(--ddd-spacing-20);
+        line-height: normal;
+        margin: var(--ddd-spacing-4);
+      }
+      site-tags-route::part(child-page-link-img) {
+        width: var(--ddd-spacing-20);
+        height: var(--ddd-spacing-20);
+        border: 4px solid var(--haxcms-site-theme-color-2);
+        transition: var(--haxcms-site-transition);
+      }
+      site-tags-route::part(child-page-link-img):hover,
+      site-tags-route::part(child-page-link-img):focus-within {
+        border-radius: 50%;
+        transform: scale(1.1);
       }
       @media (max-width: 800px) {
         journey-theme::before {
@@ -457,12 +511,10 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           line-height: normal;
           font-family: var(--ddd-font-secondary);
         }
-
         .child-pages-container {
           display: block;
           margin-bottom: var(--ddd-spacing-6);
         }
-
         .child-page-link {
           display: inline-block;
           width: var(--ddd-spacing-20);
@@ -475,12 +527,11 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           height: var(--ddd-spacing-20);
           border: 4px solid var(--haxcms-site-theme-color-2);
           transition: var(--haxcms-site-transition);
-        }
-        .child-page-link img:hover,
+        }        .child-page-link img:hover,
         .child-page-link:focus-within img {
           border-radius: 50%;
           transform: scale(1.1);
-        }        
+        }
         .odd .article-wrap p {
           margin-right: var(--ddd-spacing-4);
           justify-content: right;
@@ -787,7 +838,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           <div class="h1">${this.manifest.title}</div>
           <div class="h2">${this.manifest.description}</div class="h2">
           <div>
-              Page ${this.pageCurrent} of ${this.pageTotal}<br><br>
+              ${this.pageCurrent > 0 ? html`Page ${this.pageCurrent} of ${this.pageTotal}`: nothing} <br /><br />
               Site generated: ${this.lastUpdated}<br><br>
               © ${this.copyrightYear} ${this.manifest.author}.
           </div>
