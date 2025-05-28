@@ -21,7 +21,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "Title";
-    this.thumbnail = "impactra.png",
+    this.thumbnail = "https://github.com/NazmanRosman/graphic-portfolio/blob/main/lib/thumbnails/impactra.png?raw=true",
     this.slug = "https://google.com",
     this.tags =  [];
 
@@ -77,7 +77,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
         bottom: 36px;
         left: 36px;
         font-family: "Manrope", "Manrope Placeholder", sans-serif;
-        font-size: 22px;
+        font-size: 1.25rem;
         color: white;
         opacity: 0;
         font-weight: 500;
@@ -139,13 +139,10 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .arrow-shape{
-          opacity: 1;
-          transform: scale(0.3) rotate(0);
-          right:24px;
+          display: none;
         }
         .arrow-box{
-          opacity: 0.3;
-          right:24px;
+          display: none;
         }
       }
 
@@ -155,10 +152,11 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
 
   // Lit render the HTML
   render() {
+    console.log(this.thumbnail);
     return html`
 <a href=${this.slug}>
   <div class="container">
-    <img src=${`${this.thumbnail}`} class="thumbnail">
+    <img src=${this.thumbnail} class="thumbnail">
     <div class="title">${this.title}</div>
     <div class="arrow arrow-box"></div>
     <!-- <img src="lib/components/arrow.png" class="arrow arrow-shape"> -->

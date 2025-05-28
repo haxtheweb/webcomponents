@@ -66,6 +66,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
       *{
         box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
 
       ul{
@@ -87,12 +89,10 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         left: 0;
         right: 0;
         padding: 50px 50px 40px 50px;
+        /* temporary */
         margin-top: 50px;
-        /* border-bottom: 0.1px solid #ffffff; */
         height: 80px;
-        /* background-color: #11111150; */
         font-family: var(--main-font);  
-        /* position: relative; */
       }
       
 
@@ -109,9 +109,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       }
 
       .logo{
-        /* background-color: blue; */
-        max-height: 70px;
-        min-height: 70px;
+        max-height: 60px;
+        min-height: 60px;
         flex: 0 0 auto;
         position: relative;
         z-index: 10;
@@ -158,18 +157,31 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       @media (max-width: 575.98px) {
         /* Styles for phones */
         .container{
-          font-size: 9px;
-          padding: 15px 0px;
-
+          /* padding: 15px 0px; */
+          padding: 0;
           background: var(--bg-color);
-
-        } 
-        .container{
           flex-wrap: wrap;
-          height: auto;
+          align-items: center;
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          overflow-y: scroll;
+          align-content: start;
+
         }
+
+        .logo-hamburger{
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          max-height: 60px;
+          flex: 0 0 auto;
+        }
+
         .container.active{
-          padding: 15px 0 0 0;
+          /* padding: 15px 0 0 0; */
+          height: auto;
+          overflow-y: scroll;
         }
         .nav-links.active{
           display: flex;
@@ -180,8 +192,9 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
           gap: 0px;
           width: 100vw;
-          padding: 20px 0 0 0;
+          padding: 0;
           border-radius: 10px;
+
         }
         
 
@@ -190,18 +203,28 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           padding-right: 15px;
 
         }
-        .logo{
-          width: 60px;
+        svg.logo{
+          /* max-height: 60px; */
+          max-height: 60px;
           padding-left: 15px;
-      /* flex: 1 0 0;  */
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
+
+        .container button{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+
    
         li, a.right-side-item{
           display: flex;
           flex-direction: column;
           justify-content: center;
           width: 100vw;
-          /* background-color:blue; */
           text-align: center; /* Centers the text horizontally */
           height: 80px;
           
@@ -212,6 +235,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           text-decoration: none; /* Ensures underline is removed on hover */
 
         }
+
         
         
       }
@@ -243,17 +267,20 @@ openHamburger(){
     return html`
 <div class="container">
   <!-- <img class="logo" src="lib/components/logo.svg" > -->
-  <a href="${this.homeLink}">
-  <svg class="logo" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="50px"><path d="M36,3.99H14c-5.51,0-10,4.49-10,10v22c0,5.51,4.49,10,10,10h22c5.51,0,10-4.49,10-10v-22C46,8.48,41.51,3.99,36,3.99z M27,35c-0.55,0-1-0.45-1-1v-4c0-0.55,0.45-1,1-1c3.86,0,7-3.14,7-7c0-3.52-2.61-6.44-6-6.93v2.03c2.28,0.46,4,2.49,4,4.9	c0,2.76-2.24,5-5,5c-0.55,0-1-0.45-1-1s0.45-1,1-1c1.65,0,3-1.35,3-3c0-1.65-1.35-3-3-3c-0.55,0-1-0.45-1-1v-4c0-0.55,0.45-1,1-1	c4.96,0,9,4.04,9,9c0,4.62-3.51,8.45-8,8.94v2.02c5.6-0.51,10-5.23,10-10.96c0-6.07-4.93-11-11-11h-3v29c0,0.55-0.45,1-1,1h-4	c-0.55,0-1-0.45-1-1V11h-2v29c0,0.55-0.45,1-1,1s-1-0.45-1-1V10c0-0.55,0.45-1,1-1h4c0.55,0,1,0.45,1,1v29h2V10c0-0.55,0.45-1,1-1h4	c7.17,0,13,5.83,13,13C40,29.17,34.17,35,27,35z"/></svg>
-  </a>
-  <button>
-    <!-- <img @click="" class="hamburger" src="../lib/components/hamburger.svg" width="70px"> -->
-    <svg class="hamburger" @click="${this.openHamburger}"  width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-      <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-      <g id="SVGRepo_iconCarrier"> <path d="M4 18L20 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> <path d="M4 12L20 12" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> <path d="M4 6L20 6" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> </g>
-    </svg>
-  </button>
+  <div class="logo-hamburger">
+    <a href="${this.homeLink}">
+    <svg class="logo" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="50px"><path d="M36,3.99H14c-5.51,0-10,4.49-10,10v22c0,5.51,4.49,10,10,10h22c5.51,0,10-4.49,10-10v-22C46,8.48,41.51,3.99,36,3.99z M27,35c-0.55,0-1-0.45-1-1v-4c0-0.55,0.45-1,1-1c3.86,0,7-3.14,7-7c0-3.52-2.61-6.44-6-6.93v2.03c2.28,0.46,4,2.49,4,4.9	c0,2.76-2.24,5-5,5c-0.55,0-1-0.45-1-1s0.45-1,1-1c1.65,0,3-1.35,3-3c0-1.65-1.35-3-3-3c-0.55,0-1-0.45-1-1v-4c0-0.55,0.45-1,1-1	c4.96,0,9,4.04,9,9c0,4.62-3.51,8.45-8,8.94v2.02c5.6-0.51,10-5.23,10-10.96c0-6.07-4.93-11-11-11h-3v29c0,0.55-0.45,1-1,1h-4	c-0.55,0-1-0.45-1-1V11h-2v29c0,0.55-0.45,1-1,1s-1-0.45-1-1V10c0-0.55,0.45-1,1-1h4c0.55,0,1,0.45,1,1v29h2V10c0-0.55,0.45-1,1-1h4	c7.17,0,13,5.83,13,13C40,29.17,34.17,35,27,35z"/></svg>
+    </a>
+    <button>
+      <!-- <img @click="" class="hamburger" src="../lib/components/hamburger.svg" width="70px"> -->
+      <svg class="hamburger" @click="${this.openHamburger}"  width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+        <g id="SVGRepo_iconCarrier"> <path d="M4 18L20 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> <path d="M4 12L20 12" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> <path d="M4 6L20 6" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> </g>
+      </svg>
+      
+    </button>
+  </div>
   <ul class="nav-links">
     ${Array.from(this.topItems).map((item) => html`
         <li><a class="right-side-item" href="${item.slug}"><div class="header-link ${this.toKebabCase(item.title)}">${item.title}</div></a></li>

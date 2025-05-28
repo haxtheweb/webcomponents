@@ -294,7 +294,8 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     
     const activeTitle = this.activeItem?.title || "Default Title"; // Use optional chaining and a fallback value
     return html`
-<div class="body-wrapper" style="margin-top: 150px">
+    <!-- temporary margin-top  -->
+<div class="body-wrapper" style="margin-top: 150px"> 
   <div id="contentcontainer">
     <div class="wrapper">
       <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
