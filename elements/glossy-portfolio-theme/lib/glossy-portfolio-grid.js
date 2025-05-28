@@ -69,6 +69,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
         width: 100%;
         padding: var(--page-padding);
         min-height: 100vh;
+        padding-bottom: 30px;
       }
       .projects-header{
         display: flex;

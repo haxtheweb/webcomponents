@@ -91,9 +91,10 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         padding: 50px 50px 40px 50px;
         /* temporary */
         margin-top: 50px;
-        height: 80px;
+        max-height: 80px;
         font-family: var(--main-font);  
         overflow-x: auto;
+        overflow-y: hidden;
 
       }
       
@@ -168,7 +169,9 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           top: 0;
           bottom: 0;
           overflow-y: scroll;
+          overflow-x: hidden;
           align-content: start;
+          height: 60px;
 
         }
 
@@ -180,9 +183,11 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           flex: 0 0 auto;
         }
 
+        /* active after hamburger is clicked */
         .container.active{
           /* padding: 15px 0 0 0; */
           height: auto;
+          max-height: 100vh;
           overflow-y: scroll;
         }
         .nav-links.active{
@@ -209,19 +214,11 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           /* max-height: 60px; */
           max-height: 60px;
           padding-left: 15px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
 
-        .container button{
-          display: flex;
-          align-items: center;
-          justify-content: center;
         }
 
 
-   
+        /* nav links */
         li, a.right-side-item{
           display: flex;
           flex-direction: column;

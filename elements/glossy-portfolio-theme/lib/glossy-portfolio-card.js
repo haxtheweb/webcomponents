@@ -152,7 +152,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
 
   // Lit render the HTML
   render() {
-    console.log(this.thumbnail);
+    // console.log(this.thumbnail);
     return html`
 <a href=${this.slug}>
   <div class="container">

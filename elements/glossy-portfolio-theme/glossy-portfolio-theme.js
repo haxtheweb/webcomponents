@@ -15,7 +15,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.
 
 import "./lib/glossy-portfolio-card.js";
 import "./lib/glossy-portfolio-header.js";
-import "./lib/glossy-portfolio-page.js";
+import "./lib/glossy-portfolio-footer.js";
 import "./lib/glossy-portfolio-home.js";
 import "./lib/glossy-portfolio-grid.js";
 import "./lib/glossy-portfolio-about.js";
@@ -50,21 +50,25 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     // - if no child, and no parent: it is text
     autorun((reaction) => {
       const activeItem = toJS(store.activeItem);
+      
+      // console.log(activeItem);
       if (activeItem) {
         this.activeItem = activeItem;
         // find parent of activeItem
         this.activeParent = store.manifest.items.find((d) => activeItem.parent === d.id)||"";
         const children = store.getItemChildren(store.activeId);
-        
-
 
         if (children) {
           if (children.length > 0) {
             this.setLayout("grid");
+
             this.childrenArray = [...children];
           } else if (activeItem.parent) {
+            this.childrenArray = [];
             this.setLayout("media"); //currently unused
           } else {
+            this.childrenArray = [];
+
             this.setLayout("text");//currently unused
           }
         }
@@ -89,9 +93,11 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         this.__disposer.push(reaction);
       }
     });
-  
+
+
   
   }
+
 
   // Lit reactive properties
   static get properties() {
@@ -309,14 +315,15 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   <glossy-portfolio-header></glossy-portfolio-header>
 
   <!-- display grid of children items -->
-  ${ this.childrenArray.length > 0
-  ? html` <glossy-portfolio-grid title=${activeTitle} .data=${this.childrenArray} style=""></glossy-portfolio-grid>`
+  ${ this.childrenArray && this.childrenArray.length > 0
+  ? html` ${console.log(this.childrenArray)} <glossy-portfolio-grid title=${activeTitle} .data=${this.childrenArray} style=""></glossy-portfolio-grid>`
   : ``}
 
   <!-- display grid of related items -->
   ${ this.relatedItems.length > 0
   ? html` <glossy-portfolio-grid title="RELATED CONTENT" .data=${this.relatedItems} style=""></glossy-portfolio-grid>`
   : ``}
+    <glossy-portfolio-footer></glossy-portfolio-footer>
 
 
 
