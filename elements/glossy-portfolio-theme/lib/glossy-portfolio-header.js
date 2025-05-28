@@ -34,6 +34,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
     });
 
+    // get home link (lading page slug)
     autorun((reaction) => {
       
       this.homeLink = toJS(store.homeLink);

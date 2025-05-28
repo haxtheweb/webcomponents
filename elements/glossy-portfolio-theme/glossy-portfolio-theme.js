@@ -38,6 +38,8 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
     this.activeLayout = "grid"; // text, media, listing
     this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
+    this.relatedItems = []; 
+    this.childrenArray = []; // used for grid layout, holds children of activeItem
     this.__disposer = this.__disposer || [];
 
     //get top level items (items shown on header -- they have no parent)
@@ -52,21 +54,43 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         this.activeItem = activeItem;
         // find parent of activeItem
         this.activeParent = store.manifest.items.find((d) => activeItem.parent === d.id)||"";
-  
         const children = store.getItemChildren(store.activeId);
+        
+
+
         if (children) {
           if (children.length > 0) {
             this.setLayout("grid");
-            this.items = [...children];
+            this.childrenArray = [...children];
           } else if (activeItem.parent) {
-            this.setLayout("media");
+            this.setLayout("media"); //currently unused
           } else {
-            this.setLayout("text");
+            this.setLayout("text");//currently unused
           }
         }
       }
       this.__disposer.push(reaction);
     });
+    
+    //get related items of activeItem
+    autorun((reaction) => {
+      const activeItem = toJS(store.activeItem);
+      if (activeItem) {
+        this.activeItem = activeItem;
+        
+        if(this. activeItem.metadata.relatedItems){
+          let relatedItem = store.findItem(activeItem.metadata.relatedItems);
+          if (!this.relatedItems.some((item) => item.id === relatedItem.id)) { //check for duplicates
+            this.relatedItems.push(relatedItem);
+          }
+        }
+
+        // console.log(this.relatedItems);
+        this.__disposer.push(reaction);
+      }
+    });
+  
+  
   }
 
   // Lit reactive properties
@@ -75,8 +99,10 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       ...super.properties,
       title: { type: String },
       activeLayout: { type: String },
-      activeItem: { type: Object },
+      activeItems: { type: Array },
       activeParent: { type: Object },
+      relatedItem: { type: Object },
+      childrenArray: { type: Array },
       categoryTags: { type: Array },
       items: { type: Object },
     };
@@ -265,47 +291,45 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   
   render() {
     // console.log("activeLayout", this.activeLayout);
-    if(this.activeLayout==="grid"){
-      const activeTitle = this.activeItem?.title || "Default Title"; // Use optional chaining and a fallback value
-        return html`
-        <div class="body-wrapper" style="margin-top: 150px">
-          <div id="contentcontainer">
-            <div class="wrapper">
-              <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
+    
+    const activeTitle = this.activeItem?.title || "Default Title"; // Use optional chaining and a fallback value
+    return html`
+<div class="body-wrapper" style="margin-top: 150px">
+  <div id="contentcontainer">
+    <div class="wrapper">
+      <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
 
-              <site-active-title></site-active-title>          
-              <div id="slot"><slot></slot></div>
-            </div>
-  
-          </div> 
-  
-          <glossy-portfolio-header></glossy-portfolio-header>
-          <glossy-portfolio-grid title=${activeTitle} .data=${this.items} style="padding-top: 50px"></glossy-portfolio-grid>
-          <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
+      <site-active-title></site-active-title>          
+      <div id="slot"><slot></slot></div>
+    </div>
 
-        </div>  
-        `;
-    } else if(this.activeLayout==="media"){
-      const activeTitle = this.activeItem?.title || "Default Title"; // Use optional chaining and a fallback value
-        return html`
-        <glossy-portfolio-header></glossy-portfolio-header>
+  </div> 
 
-        <div class="body-wrapper" style="margin-top: 150px">
-          <div id="contentcontainer">
-            <div class="wrapper">
-              <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
-              <site-active-title></site-active-title>          
+  <glossy-portfolio-header></glossy-portfolio-header>
 
-              <div id="slot"><slot></slot></div>
-            </div>
-        
-        
-          </div>  
-        </div>  
-       `;
-    }
+  <!-- display grid of children items -->
+  ${ this.childrenArray.length > 0
+  ? html` <glossy-portfolio-grid title=${activeTitle} .data=${this.childrenArray} style=""></glossy-portfolio-grid>`
+  : ``}
 
-  } 
+  <!-- display grid of related items -->
+  ${ this.relatedItems.length > 0
+  ? html` <glossy-portfolio-grid title="RELATED CONTENT" .data=${this.relatedItems} style=""></glossy-portfolio-grid>`
+  : ``}
+
+
+
+</div>  
+
+       
+       
+
+`;
+  }
+
+
+
+
   
 
   //changes currentview to project page when card is clicked
