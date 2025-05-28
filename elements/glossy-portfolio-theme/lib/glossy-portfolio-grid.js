@@ -188,7 +188,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
     super.updated(changedProperties);
     if (changedProperties.has("data")) {
       //sort alphabetically
-      if(this.data.length > 0){
+      if(this.data && this.data.length > 0){
         this.data.sort((a, b) => a.title.localeCompare(b.title));
         this.filteredData = this.data; 
         this.filtersList = [];

@@ -82,7 +82,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
         opacity: 0;
         font-weight: 500;
         text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.5); /* Horizontal offset, vertical offset, blur radius, color */
-
+        width: 70%;
         
       }
       .arrow{

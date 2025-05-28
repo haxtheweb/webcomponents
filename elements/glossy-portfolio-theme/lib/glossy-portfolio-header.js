@@ -74,7 +74,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       }
 
       .container{
-        background-color: var(--bg-color);
+        background: linear-gradient(180deg, rgba(17, 17, 17, 1) 0%, rgba(17, 17, 17, 0) 100%);;
 
         display: flex;
         justify-content: space-between;
@@ -86,8 +86,9 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         position: fixed;
         left: 0;
         right: 0;
-        padding: 90px 50px 40px 50px;
-        border-bottom: 2px solid #ffffff;
+        padding: 50px 50px 40px 50px;
+        margin-top: 50px;
+        /* border-bottom: 0.1px solid #ffffff; */
         height: 80px;
         /* background-color: #11111150; */
         font-family: var(--main-font);  
@@ -144,7 +145,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       a:hover, div.header-lik:hover{
         /* all: unset; */
         color: white;
-        text-decoration: none;
         /* font-weight: 500; */
 
       }

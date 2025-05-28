@@ -10,6 +10,8 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "@haxtheweb/bootstrap-theme/lib/BootstrapBreadcrumb.js";
+import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 
 import "./lib/glossy-portfolio-card.js";
 import "./lib/glossy-portfolio-header.js";
@@ -17,6 +19,7 @@ import "./lib/glossy-portfolio-page.js";
 import "./lib/glossy-portfolio-home.js";
 import "./lib/glossy-portfolio-grid.js";
 import "./lib/glossy-portfolio-about.js";
+import "./lib/glossy-portfolio-breadcrumb.js";
 /**
  * `glossy-portfolio-theme`
  * 
@@ -114,6 +117,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     const PortfolioFonts = [
       "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       ,"https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" 
+    ,"https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
     ];
     let DesignSystemManager = globalThis.DesignSystemManager.requestAvailability();
     DesignSystemManager.addDesignSystem({
@@ -137,6 +141,10 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         --main-font: "Manrope", "Manrope Placeholder", sans-serif;
         --max-width: 1200px;
         --page-padding: 0 25px;
+        --link-color: #6cddff;
+        --link-color-hover: #9ae7ff;
+        --main-font-size: 18px;
+        
         --mobile-page-padding: 0 15px;
 
         
@@ -146,7 +154,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         font-family: var(--main-font);
         color: white;
         background-color: var(--bg-color);
-        font-size: 18px;
+        font-size: var(--main-font-size);
 
       }
 
@@ -190,7 +198,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         margin: 0.5em 0; /* Slightly smaller margins for headings */
       }
       h1 {
-        font-size: 2.5rem;
+        font-size: 3rem;
         font-weight: 700;
         line-height: 1.2;
         font-family: inherit;
@@ -198,15 +206,15 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       }
 
       h2 {
-        font-size: 1.75rem;
+        font-size: 2rem;
         font-weight: 700;
         line-height: 1.3;
         font-family: inherit;
 
       }
       h3{
-        font-size: 1.25rem; /* 28px if root font size is 16px */
-        font-weight: 600;
+        font-size: 1.75rem; /* 28px if root font size is 16px */
+        font-weight: 700;
         line-height: 1.4; 
         font-family: inherit;
 
@@ -215,13 +223,13 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       a {
  
         text-decoration: none;
-        color: #6cddff; /* Sky Blue */
+        color: var(--link-color); /* Sky Blue */
         font-family: inherit;
 
       }
       
       a:hover {
-        color: #00ffff; /* Bright Cyan for hover effect */
+        color: var(--link-color-hover); /* Bright Cyan for hover effect */
         text-decoration: underline;
       }
       
@@ -240,6 +248,10 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
       #contentcontainer {
         min-width: 100%;
+      }
+
+      site-breadcrumb {
+        color: white;
       }
 
   
@@ -264,18 +276,21 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     if(this.activeLayout==="grid"){
       const activeTitle = this.activeItem?.title || "Default Title"; // Use optional chaining and a fallback value
         return html`
-        <div class="body-wrapper" style="margin-top: 120px">
+        <div class="body-wrapper" style="margin-top: 150px">
           <div id="contentcontainer">
             <div class="wrapper">
+              <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
+
               <site-active-title></site-active-title>          
               <div id="slot"><slot></slot></div>
             </div>
-        
-        
-            <glossy-portfolio-header .topItems=${this.topItems} activeTitle=${activeTitle}></glossy-portfolio-header>
-            <glossy-portfolio-grid title=${activeTitle} .data=${this.items} style="padding-top: 50px"></glossy-portfolio-grid>
-          
-          </div>  
+  
+          </div> 
+  
+          <glossy-portfolio-header .topItems=${this.topItems} activeTitle=${activeTitle}></glossy-portfolio-header>
+          <glossy-portfolio-grid title=${activeTitle} .data=${this.items} style="padding-top: 50px"></glossy-portfolio-grid>
+          <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
+
         </div>  
         `;
     } else if(this.activeLayout==="media"){
@@ -283,9 +298,10 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         return html`
         <glossy-portfolio-header .topItems=${this.topItems} activeTitle=${activeTitle}></glossy-portfolio-header>
 
-        <div class="body-wrapper" style="margin-top: 120px">
+        <div class="body-wrapper" style="margin-top: 150px">
           <div id="contentcontainer">
             <div class="wrapper">
+              <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
               <site-active-title></site-active-title>          
 
               <div id="slot"><slot></slot></div>
