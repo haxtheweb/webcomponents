@@ -163,12 +163,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       frag.appendChild(p);
       wipeSlot(store.themeElement, "*");
       store.themeElement.appendChild(frag);
-      setTimeout(() => {
-        store.toast(this.t.pageNotFound, 4000, {
-          fire: true,
-          walking: true,
-        });
-      }, 1000);
     }
   }
   // interenal routes supply their own component which we render
@@ -940,10 +934,7 @@ globalThis.HAXme = function (context = null) {
       createNodePath: "dist/dev/saveNode.json",
       deleteNodePath: "dist/dev/saveNode.json",
       saveOutlinePath: "dist/dev/saveNode.json",
-      publishSitePath: "dist/dev/saveNode.json",
-      syncSitePath: "dist/dev/saveNode.json",
       getSiteFieldsPath: "dist/dev/getSiteFieldsPath.json",
-      revertSitePath: "dist/dev/saveNode.json",
       getFormToken: "adskjadshjudfu823u823u8fu8fij",
       appStore: {
         url: "dist/dev/appstore.json",

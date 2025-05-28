@@ -73,7 +73,6 @@ class HAXCMSSiteEditor extends LitElement {
         haxcms-site-editor {
           display: block;
         }
-
         haxcms-site-editor[edit-mode] #editbutton {
           width: 100%;
           z-index: 100;
@@ -124,41 +123,6 @@ class HAXCMSSiteEditor extends LitElement {
         content-type="application/json"
         handle-as="json"
         @response="${this._handleManifestResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
-        id="publishajax"
-        .loading="${this.publishing}"
-        @loading-changed="${this.loadingChanged}"
-        .url="${this.publishSitePath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handlePublishResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
-        id="revertajax"
-        .url="${this.revertSitePath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleRevertResponse}"
-        @last-error-changed="${this.lastErrorChanged}"
-      ></iron-ajax>
-      <iron-ajax
-        reject-with-request
-        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
-        id="syncajax"
-        .url="${this.syncSitePath}"
-        .method="${this.method}"
-        content-type="application/json"
-        handle-as="json"
-        @response="${this._handleSyncResponse}"
         @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
@@ -258,40 +222,12 @@ class HAXCMSSiteEditor extends LitElement {
         type: String,
         attribute: "save-manifest-path",
       },
-      /**
-       * end point for publishing
-       */
-      publishSitePath: {
-        type: String,
-        attribute: "publish-site-path",
-      },
-      /**
-       * end point for revert
-       */
-      revertSitePath: {
-        type: String,
-        attribute: "revert-site-path",
-      },
+
       appendTarget: {
         type: Object,
       },
       appElement: {
         type: Object,
-      },
-
-      /**
-       * end point for sync
-       */
-      syncSitePath: {
-        type: String,
-        attribute: "sync-site-path",
-      },
-
-      /**
-       * Publishing end point, this has CDN implications so show message
-       */
-      publishing: {
-        type: Boolean,
       },
 
       /**
@@ -355,12 +291,15 @@ class HAXCMSSiteEditor extends LitElement {
   __createNodeResponseChanged(e) {
     // sanity check we have a slug, move to this page that we just made
     if (e.detail.value && e.detail.value.data && e.detail.value.data.slug) {
-      globalThis.history.pushState({}, null, e.detail.value.data.slug);
-      globalThis.dispatchEvent(new PopStateEvent("popstate"));
-      store.toast(`Created ${e.detail.value.data.title}!`, 3000, {
-        hat: "random",
-      });
-      store.playSound("coin");
+      setTimeout(() => {
+        store.playSound("coin");        
+        const node = e.detail.value.data;
+        globalThis.history.pushState({}, null, node.slug);
+        globalThis.dispatchEvent(new PopStateEvent("popstate"));
+        store.toast(`Created ${node.title}!`, 4000, {
+          hat: "random",
+        });
+      }, 900);
     }
   }
 
@@ -451,6 +390,7 @@ class HAXCMSSiteEditor extends LitElement {
       element.generateRequest();
     }, 0);
   }
+
   loadingChanged(e) {
     this.loading = e.detail.value;
   }
@@ -504,9 +444,7 @@ class HAXCMSSiteEditor extends LitElement {
           JSON.stringify(this[propName]),
         );
       }
-      if (propName == "publishing") {
-        this._publishingChanged(this[propName], oldValue);
-      } else if (propName == "activeItem") {
+      if (propName == "activeItem") {
         this.dispatchEvent(
           new CustomEvent("manifest-changed", {
             detail: this[propName],
@@ -828,7 +766,7 @@ class HAXCMSSiteEditor extends LitElement {
       } else {
         this.querySelector("#createajax").body = reqBody;
         this.setProcessingVisual();
-        this.querySelector("#createajax").generateRequest();
+        await this.querySelector("#createajax").generateRequest();
         const evt = new CustomEvent("simple-modal-hide", {
           bubbles: true,
           composed: true,
@@ -841,25 +779,27 @@ class HAXCMSSiteEditor extends LitElement {
   }
 
   _handleCreateResponse(response) {
-    this.dispatchEvent(
-      new CustomEvent("haxcms-trigger-update", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: true,
-      }),
-    );
-    this.dispatchEvent(
-      new CustomEvent("haxcms-create-node-success", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: {
-          value: true,
-          originalTarget: this._originalTarget,
-        },
-      }),
-    );
+    setTimeout(() => {
+      this.dispatchEvent(
+        new CustomEvent("haxcms-trigger-update", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: true,
+        }),
+      );
+      this.dispatchEvent(
+        new CustomEvent("haxcms-create-node-success", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            value: true,
+            originalTarget: this._originalTarget,
+          },
+        }),
+      );
+    }, 300);
   }
   /**
    * delete the node we just got
@@ -905,7 +845,7 @@ class HAXCMSSiteEditor extends LitElement {
           detail: true,
         }),
       );
-    }, 100);
+    }, 300);
   }
   /**
    * Establish certain global settings in HAX once it claims to be ready to go
@@ -916,17 +856,7 @@ class HAXCMSSiteEditor extends LitElement {
       HAXStore.connectionRewrites.appendJwt = "jwt";
     }
   }
-  /**
-   * notice publishing callback changing state
-   */
 
-  _publishingChanged(newValue, oldValue) {
-    if (newValue) {
-      store.toast(`Publishing...`, 0, { hat: "random" });
-    } else if (!newValue && oldValue) {
-      store.toast(`Publishing...`, 2000, { hat: "random" });
-    }
-  }
   /**
    * react to manifest being changed
    */
@@ -978,39 +908,39 @@ class HAXCMSSiteEditor extends LitElement {
       globalThis.history.replaceState({}, null, e.detail.value.data.slug);
       globalThis.dispatchEvent(new PopStateEvent("popstate"));
     }
-    store.toast(`Page saved!`, 3000, { hat: "random" });
-    store.playSound("coin");
+    setTimeout(() => {
+      store.playSound("coin");
+      this.dispatchEvent(
+        new CustomEvent("haxcms-trigger-update", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: true,
+        }),
+      ); // updates the node contents itself
 
-    this.dispatchEvent(
-      new CustomEvent("haxcms-trigger-update", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: true,
-      }),
-    ); // updates the node contents itself
-
-    this.dispatchEvent(
-      new CustomEvent("haxcms-trigger-update-node", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: true,
-      }),
-    );
-    // force an update in the store to reprocess what is "active"
-    // otherwise the page data that was just saved won't be reflected until hitting a different
-    // page, causing a temporary state error if going to edit again
-    let tmp = store.activeId;
-    store.activeId = null;
-    store.activeId = tmp;
+      this.dispatchEvent(
+        new CustomEvent("haxcms-trigger-update-node", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: true,
+        }),
+      );
+      // force an update in the store to reprocess what is "active"
+      // otherwise the page data that was just saved won't be reflected until hitting a different
+      // page, causing a temporary state error if going to edit again
+      let tmp = store.activeId;
+      store.activeId = null;
+      store.activeId = tmp;
+      store.toast(`Page saved!`, 4000, { hat: "random" });
+    }, 300);
   }
 
   _handleOutlineResponse(e) {
     // trigger a refresh of the data in node
-    store.toast(`Outline saved!`, 3000, { hat: "random" });
-    store.playSound("coin");
     setTimeout(() => {
+      store.playSound("coin");
       this.dispatchEvent(
         new CustomEvent("haxcms-trigger-update", {
           bubbles: true,
@@ -1019,12 +949,12 @@ class HAXCMSSiteEditor extends LitElement {
           detail: true,
         }),
       );
-    }, 100);
+      store.toast(`Outline saved!`, 4000, { hat: "random" });
+    }, 300);
   }
 
   _handleManifestResponse(e) {
     // trigger a refresh of the data in node
-    store.toast(`Site details saved, reloading to reflect changes!`, 2000);
     store.playSound("coin");
     this.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
@@ -1036,73 +966,12 @@ class HAXCMSSiteEditor extends LitElement {
     );
     setTimeout(() => {
       globalThis.location.reload();
-    }, 2000);
+    }, 300);
   }
-  /**
-   * Tell the user we undid their last state of the site and trigger
-   * everything to update to reflect this
-   */
 
-  _handleRevertResponse(e) {
-    // trigger a refresh of the data in node
-    store.toast(`Last save undone`, 2000);
-    store.playSound("error");
-    this.dispatchEvent(
-      new CustomEvent("haxcms-trigger-update", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: true,
-      }),
-    );
-  }
-  /**
-   * Handle sync response that site may have changed or been updated
-   */
-
-  _handleSyncResponse(e) {
-    store.toast(`Site synced`, 2000, { hat: "random" });
-    store.playSound("success");
-    // trigger a refresh of the data in node
-    this.dispatchEvent(
-      new CustomEvent("haxcms-trigger-update", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: true,
-      }),
-    );
-  }
-  /**
-   * Publish response
-   */
-
-  _handlePublishResponse(e) {
-    let data = e.detail.response; // show the published response
-
-    let content = globalThis.document.createElement("span");
-    content.innerHTML = `
-    <a href="${data.url}" target="_blank">
-      <button raised style="color:yellow;text-transform: none;font-weight: bold;">
-      ${data.label}
-      </button>
-    </a>`;
-    const evt = new CustomEvent("haxcms-toast-show", {
-      bubbles: true,
-      composed: true,
-      cancelable: true,
-      detail: {
-        text: data.response,
-        duration: 10000,
-        slot: content.cloneNode(true),
-      },
-    });
-    globalThis.dispatchEvent(evt);
-  }
   /**
    * Save node event
    */
-
   async saveNode(e) {
     // send the request
     if (this.saveNodePath) {
@@ -1221,58 +1090,9 @@ class HAXCMSSiteEditor extends LitElement {
   /**
    * Notice body of content has changed and import into HAX
    */
-
   _bodyChanged(e) {
     if (HAXStore.activeHaxBody) {
       HAXStore.activeHaxBody.importContent(e.detail);
-    }
-  }
-  /**
-   * Save the outline based on an event firing.
-   */
-
-  publishSite(e) {
-    if (this.publishSitePath) {
-      this.querySelector("#publishajax").body = {
-        jwt: this.jwt,
-        site: {
-          name: this.manifest.metadata.site.name,
-        },
-      };
-      this.setProcessingVisual();
-      this.querySelector("#publishajax").generateRequest();
-    }
-  }
-  /**
-   * Revert last commit
-   */
-
-  syncSite(e) {
-    if (this.syncSitePath) {
-      this.querySelector("#syncajax").body = {
-        jwt: this.jwt,
-        site: {
-          name: store.manifest.metadata.site.name,
-        },
-      };
-      this.setProcessingVisual();
-      this.querySelector("#syncajax").generateRequest();
-    }
-  }
-  /**
-   * Revert last commit
-   */
-
-  revertCommit(e) {
-    if (this.revertSitePath) {
-      this.querySelector("#revertajax").body = {
-        jwt: this.jwt,
-        site: {
-          name: store.manifest.metadata.site.name,
-        },
-      };
-      this.setProcessingVisual();
-      this.querySelector("#revertajax").generateRequest();
     }
   }
 }

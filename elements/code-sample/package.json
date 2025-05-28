@@ -41,7 +41,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "^3.3.0"
+    "lit": "^3.3.0",
+    "@haxtheweb/i18n-manager": "^10.0.2",
+    "@haxtheweb/code-editor": "^10.0.2"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.4",

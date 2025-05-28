@@ -49,17 +49,15 @@ class HaxTrayUpload extends HaxUploadField {
    */
   _fileUploadResponse(e) {
     super._fileUploadResponse(e);
-    // @todo put in logic to support the response actually
-    // just outright returning a haxElement. This is rare
-    // but if the HAX developer has control over the endpoint
-    // then they could get HAX to streamline some workflows
-    // or by-pass the gizmo selection step to improve UX
-    // for end users even further. Examples could be a media
-    // management system that has remote rendering (cms-token)
-    // or a highly specific endpoint that we know we can only
-    // present in one way effectively Box / Google doc viewer.
-    this.newAssetConfigure();
+    // if we don't have a URL we shouldn't do asset configuration
+    // the super class if successful will have set the #url field to a parsed value
+    if (e.detail.xhr.status === 200 && this.shadowRoot.querySelector("#url")) {
+      this.newAssetConfigure();
+      // ensures that if we have selfie / audio it closes those widgets
+      this.option = "fileupload";
+    }
   }
+
   _canUpload() {
     return !this.__allowUpload;
   }

@@ -125,12 +125,6 @@ class HAXCMSBackendDemo extends LitElement {
               globalThis.appSettings.createNodePath;
             store.cmsSiteEditor.instance.deleteNodePath =
               globalThis.appSettings.deleteNodePath;
-            store.cmsSiteEditor.instance.publishSitePath =
-              globalThis.appSettings.publishSitePath;
-            store.cmsSiteEditor.instance.syncSitePath =
-              globalThis.appSettings.syncSitePath;
-            store.cmsSiteEditor.instance.revertSitePath =
-              globalThis.appSettings.revertSitePath;
             store.cmsSiteEditor.instance.getUserDataPath =
               globalThis.appSettings.getUserDataPath;
             store.cmsSiteEditor.instance.appStore = globalThis.appSettings.appStore;

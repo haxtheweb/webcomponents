@@ -50,6 +50,15 @@ class SimpleLoginCamera extends HTMLElement {
     this._error = this._shadow.querySelector("p");
     this._record = this._shadow.querySelector("button.record");
     this._pauseRecord = this._shadow.querySelector("button.pause-record");
+    this._shadow.querySelector("#wrapper").addEventListener("click", () => {
+      this.dispatchEvent(
+        new CustomEvent("site-listing-video-activate", {
+          detail: this,
+          bubbles: true,
+          composed: true,
+        }),
+      );
+    });
     globalThis.document.addEventListener(
       "DOMContentLoaded",
       this.documentLoaded.bind(this),
@@ -176,15 +185,6 @@ class SimpleLoginCamera extends HTMLElement {
   }
   _msrLoaded(e) {
     this._applyMSR();
-    this._shadow.querySelector("#wrapper").addEventListener("click", () => {
-      this.dispatchEvent(
-        new CustomEvent("site-listing-video-activate", {
-          detail: this,
-          bubbles: true,
-          composed: true,
-        }),
-      );
-    });
   }
   async _applyMSR() {
     globalThis.addEventListener(
@@ -255,19 +255,6 @@ class SimpleLoginCamera extends HTMLElement {
 
   disconnectedCallback() {
     this.windowControllers.abort();
-  }
-
-  attributeChangedCallback(name, oldValue, newValue) {
-    // console.log(newValue);
-    // console.log(name);
-    // console.log(typeof newValue);
-    // // if (newValue === '' || newValue === null) return;
-    // if (newValue || newValue === null) {
-    //   this.setAttribute(name, '');
-    // } else {
-    //   this.removeAttribute(name);
-    // }
-    // this._addVideoAtributes();
   }
 
   get html() {

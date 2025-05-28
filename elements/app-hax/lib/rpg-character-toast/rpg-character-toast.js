@@ -43,7 +43,6 @@ export class RPGCharacterToast extends SimpleToastEl {
           display: block;
           padding: 0;
           margin: 0;
-          background-color: #22222222;
         }
 
         future-terminal-text {
@@ -92,7 +91,6 @@ export class RPGCharacterToast extends SimpleToastEl {
             --simple-toast-color,
             var(--simple-colors-default-theme-accent-12, black)
           );
-          background-color: transparent;
           top: var(--simple-toast-top);
           bottom: var(--simple-toast-bottom, 36px);
           right: var(--simple-toast-right, 0px);
@@ -121,7 +119,6 @@ export class RPGCharacterToast extends SimpleToastEl {
         .mid {
           min-width: 100px;
           line-height: var(--rpg-character-toast-height, 142px);
-          background-color: white;
           background-repeat: repeat-x;
           background-image: var(
             --rpg-character-toast-mid-background-image,
@@ -160,7 +157,6 @@ export class RPGCharacterToast extends SimpleToastEl {
             url("${unsafeCSS(SpeechBubbleL)}")
           );
           width: 20px;
-          background-color: white;
         }
         .rightedge {
           background-image: var(
@@ -168,7 +164,6 @@ export class RPGCharacterToast extends SimpleToastEl {
             url("${unsafeCSS(SpeechBubbleR)}")
           );
           width: 40px;
-          background-color: white;
         }
         :host([dark-mode]) .mid,
         :host([dark-mode]) .leftedge,
@@ -176,10 +171,9 @@ export class RPGCharacterToast extends SimpleToastEl {
           filter: invert(1);
         }
         .progress {
-          width: calc(100% + 6px);
           border: 2px solid var(--ddd-theme-default-keystoneYellow);
-          height: 8px;
-          margin: -4px 0px 0px 0px;
+          height: 4px;
+          margin: -6px 0px 0px 0px;
         }
 
         .progress .progress__bar {
@@ -264,12 +258,7 @@ export class RPGCharacterToast extends SimpleToastEl {
   }
 
   render() {
-    return html` <div class="progress">
-        <div
-          class="progress__bar"
-          style="animation-duration:${this.duration}ms;"
-        ></div>
-      </div>
+    return html`
       <div class="bubble bubble-wrapper" part="bubble-wrapper">
         <span class="bubble leftedge" part="bubble-left"></span>
         <span class="bubble mid" part="bubble-mid">
@@ -287,14 +276,6 @@ export class RPGCharacterToast extends SimpleToastEl {
                 class="awaiting-input"
                 icon="hax:loading"
               ></simple-icon-lite>`
-            : ``}
-          ${!this.merlin
-            ? html`<div class="buttons">
-                <slot></slot
-                ><button class="dismiss" @click="${this.hide}">
-                  ${this.closeText}
-                </button>
-              </div>`
             : ``}
         </span>
         <span class="bubble rightedge" part="bubble-right"></span>
@@ -316,7 +297,17 @@ export class RPGCharacterToast extends SimpleToastEl {
                 ?walking="${this.walking}"
               ></rpg-character>
             `}
-      </div>`;
+    ${!this.merlin
+    ? html`<div class="buttons">
+        <slot></slot
+        ><button class="dismiss" @click="${this.hide}">
+          ${this.closeText}
+        </button>
+      </div>`
+    : ``}
+      </div>
+<div class="progress"><div class="progress__bar" style="animation-duration:${this.duration}ms;"></div></div>
+`;
   }
 
   updated(changedProperties) {

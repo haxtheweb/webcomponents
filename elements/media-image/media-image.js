@@ -377,10 +377,9 @@ class MediaImage extends DDD {
   static get haxProperties() {
     return {
       canScale: true,
-
       canEditSource: true,
       gizmo: {
-        title: "Image",
+        title: "Enhanced Image",
         descrption: "A way of presenting images with various enhancements.",
         icon: "editor:insert-photo",
         color: "indigo",

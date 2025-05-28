@@ -2,7 +2,7 @@
  * Copyright 2025 btopro
  * @license Apache-2.0, see License.md for full text.
  */
-import { css, html} from "lit";
+import { css, html, nothing} from "lit";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -15,6 +15,7 @@ import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
+import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 
 /**
  * `JourneyTheme`
@@ -44,7 +45,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
   // set defaults or tie into the store
   constructor() {
     super();
-    this.siteTheme = "";
+    this.siteTheme = UserScaffoldInstance.readMemory("HAXCMSSiteTheme") || "";
     this.dataPrimary = 2;
     this._items = [];
     this.location = null;
@@ -52,6 +53,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     this.ancestorItem = {};
     this.basePath = null;
     this.manifest = {};
+    this.__disposer = this.__disposer || [];
     this.t = {
       readMore: "Read more",
       home: "Home",
@@ -62,8 +64,18 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     catch (e) {
       this.basePath = globalThis.location.origin;
     }
-    autorun(() => {
+
+    // support for custom rendering of route html
+    this.HAXSiteCustomRenderRoutes = {
+      "x/tags": {
+        "items": this.HAXSiteRenderXTagsItems,
+      }
+    };
+
+    autorun((reaction) => {
       this.manifest = toJS(store.manifest);
+      this.lastUpdated = new Date(store.manifest.metadata.site.updated * 1000).toDateString();
+      this.copyrightYear = new Date(store.manifest.metadata.site.created * 1000).getFullYear();
       let LList = new licenseList();
       if (this.manifest.license && LList[this.manifest.license]) {
         this.licenseName = LList[this.manifest.license].name;
@@ -71,16 +83,27 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
         this.licenseImage = LList[this.manifest.license].image;
       }
       this._items = this.getItemChildren(null);
+      this.__disposer.push(reaction);
     });
-    autorun(() => {
+    autorun((reaction) => {
       this.activeItem = toJS(store.activeItem);
+      this.__disposer.push(reaction);
     });
-    autorun(() => {
+    autorun((reaction) => {
       this.ancestorItem = toJS(store.ancestorItem);
+      this.__disposer.push(reaction);
     });
-    autorun(() => {
+    autorun((reaction) => {
       let location = toJS(store.location);
       this.location = location;
+      this.__disposer.push(reaction);
+    });
+    // gets current a total page count
+    autorun((reaction) => {
+      const counter = toJS(store.pageCounter);
+      this.pageCurrent = counter.current;
+      this.pageTotal = counter.total;
+      this.__disposer.push(reaction);
     });
   }
 
@@ -90,20 +113,83 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     }
   }
 
+  updated(changedProperties) {
+    super.updated(changedProperties);
+    if (changedProperties.has("siteTheme")) {
+      switch (this.siteTheme) {
+        case "earth":
+          this.dataPrimary = 1;
+        break;
+        case "water":
+          this.dataPrimary = 11;
+        break;
+        case "fire":
+          this.dataPrimary = 23;
+        break;
+        case "sand":
+          this.dataPrimary = 2;
+        break;
+        case "rose":
+          this.dataPrimary = 47;
+        break;
+        case "violet":
+          this.dataPrimary = 2;
+        break;
+        default:
+          this.dataPrimary = 1;
+        break;
+      }
+      UserScaffoldInstance.writeMemory(
+          "HAXCMSSiteTheme",
+          this.siteTheme,
+          "long",
+        );
+    }
+  }
+
   static get properties() {
     return {
       ...super.properties,
+     _items: { type: Array },
       activeItem: { type: Object },
       ancestorItem: { type: Object },
       location: { type: Object },
       basePath: { type: String },
-      dataPrimary: { type: String, attribute: "data-primary", reflect: true },
-      _items: { type: Array },
+      dataPrimary: { type: String, reflect: true, attribute: "data-primary" },
+      siteTheme: { type: String, reflect: true, attribute: "site-theme" },
       licenseName: { type: String },
       licenseLink: { type: String },
       licenseImage: { type: String },
-      siteTheme: { type: String, reflect: true, attribute: 'site-theme' },
+      lastUpdated: { type: String },
+      copyrightYear: { type: Number },
+      pageCurrent: { type: Number },
+      pageTotal: { type: Number },
     };
+  }
+
+
+  // custom rendering of the x/tags route
+  // node is site-tags-route reference
+  HAXSiteRenderXTagsItems(items) {
+    return html`
+    <div>
+    ${items.map(item => html`
+      <a href="${item.slug}" part="child-page-link" class="child-page-link">${item.metadata.image ? html`<img src="${item.metadata.image}" loading="lazy"
+        decoding="async"
+        part="child-page-link-img"
+        fetchpriority="low" alt="${item.title}"/>` : html`<img 
+        part="child-page-link-img"
+        loading="lazy"
+        decoding="async"
+        fetchpriority="low"
+        src="${store.manifest.metadata.author.image}"
+        alt="${store.manifest.metadata.author.name}"
+        />`}
+        ${item.title}
+      </a>`
+    )}
+    </div>
+    `;
   }
 
   // allows for global styles to be set against the entire document
@@ -136,6 +222,28 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
         left: 50%;
         margin: 0 auto;
         z-index: -1;
+      }
+      site-tags-route::part(child-pages-container) {
+        display: block;
+        margin-bottom: var(--ddd-spacing-6);
+      }
+      site-tags-route::part(child-page-link) {
+        display: inline-block;
+        width: var(--ddd-spacing-20);
+        height: var(--ddd-spacing-20);
+        line-height: normal;
+        margin: var(--ddd-spacing-4);
+      }
+      site-tags-route::part(child-page-link-img) {
+        width: var(--ddd-spacing-20);
+        height: var(--ddd-spacing-20);
+        border: 4px solid var(--haxcms-site-theme-color-2);
+        transition: var(--haxcms-site-transition);
+      }
+      site-tags-route::part(child-page-link-img):hover,
+      site-tags-route::part(child-page-link-img):focus-within {
+        border-radius: 50%;
+        transform: scale(1.1);
       }
       @media (max-width: 800px) {
         journey-theme::before {
@@ -194,6 +302,14 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
         :host([site-theme="sand"]) {
           --haxcms-site-theme-color-1: var(--ddd-primary-15);
           --haxcms-site-theme-color-2: var(--ddd-primary-23);
+        }
+        :host([site-theme="rose"]) {
+          --haxcms-site-theme-color-1: var(--ddd-primary-12);
+          --haxcms-site-theme-color-2: var(--ddd-primary-11);
+        }
+        :host([site-theme="violet"]) {
+          --haxcms-site-theme-color-1: var(--ddd-primary-13);
+          --haxcms-site-theme-color-2: var(--ddd-primary-14);
         }
 
         header {
@@ -395,12 +511,10 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           line-height: normal;
           font-family: var(--ddd-font-secondary);
         }
-
         .child-pages-container {
           display: block;
           margin-bottom: var(--ddd-spacing-6);
         }
-
         .child-page-link {
           display: inline-block;
           width: var(--ddd-spacing-20);
@@ -413,12 +527,11 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           height: var(--ddd-spacing-20);
           border: 4px solid var(--haxcms-site-theme-color-2);
           transition: var(--haxcms-site-transition);
-        }
-        .child-page-link img:hover,
+        }        .child-page-link img:hover,
         .child-page-link:focus-within img {
           border-radius: 50%;
           transform: scale(1.1);
-        }        
+        }
         .odd .article-wrap p {
           margin-right: var(--ddd-spacing-4);
           justify-content: right;
@@ -597,33 +710,39 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
       this.HAXCMSThemeSettings.scrollTarget;
   }
 
+  // manages window resize observer
+  disconnectedCallback() {
+    if (this.__disposer) {
+      for (var i in this.__disposer) {
+        this.__disposer[i].dispose();
+      }
+    }
+    super.disconnectedCallback();
+  }
+
   toggleSiteTheme(e) {
     switch (this.siteTheme) {
       // make this the captain planet powers
-      // earth
-      // wind
-      // fire
-      // water
-      // heart???????
       case "earth":
         this.siteTheme = "water";
-        this.dataPrimary = 1;
       break;
       case "water":
         this.siteTheme = "fire";
-        this.dataPrimary = 11;
       break;
       case "fire":
         this.siteTheme = "sand";
-        this.dataPrimary = 23;
       break;
       case "sand":
+        this.siteTheme = "rose";
+      break;
+      case "rose":
+        this.siteTheme = "violet";
+      break;
+      case "violet":
         this.siteTheme = "";
-        this.dataPrimary = 2;
       break;
       default:
         this.siteTheme = "earth";
-        this.dataPrimary = 1;
       break;
     }
   }
@@ -718,6 +837,11 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           </a>
           <div class="h1">${this.manifest.title}</div>
           <div class="h2">${this.manifest.description}</div class="h2">
+          <div>
+              ${this.pageCurrent > 0 ? html`Page ${this.pageCurrent} of ${this.pageTotal}`: nothing} <br /><br />
+              Site generated: ${this.lastUpdated}<br><br>
+              © ${this.copyrightYear} ${this.manifest.author}.
+          </div>
           <div
             class="license-body"
             xmlns:cc="${this.licenseLink}"

@@ -2247,6 +2247,7 @@ export const DDDReset = css`
   }
   *::selection {
     background-color: var(--ddd-theme-default-linkLight);
+    color: black;
   }
   select {
     display: flex;

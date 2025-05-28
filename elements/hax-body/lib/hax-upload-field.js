@@ -130,43 +130,54 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
    * do a gizmo guess from there!
    */
   _fileUploadResponse(e) {
-    // convert response to object
-    let response = JSON.parse(e.detail.xhr.response);
-    // access the app that did the upload
-    let map = this.__appUsed.connection.operations.add.resultMap;
-    let data = {};
-    let item = {};
-    // look for the items element to draw our data from at its root
-    if (
-      typeof this._resolveObjectPath(map.item, response) !== typeof undefined
-    ) {
-      data = this._resolveObjectPath(map.item, response);
+    // ensure we had a positive response
+    if (e.detail.xhr.status === 200) {
+      try {
+        // convert response to object        
+        let response = JSON.parse(e.detail.xhr.response);
+        // access the app that did the upload
+        let map = this.__appUsed.connection.operations.add.resultMap;
+        let data = {};
+        let item = {};
+        // look for the items element to draw our data from at its root
+        if (
+          typeof this._resolveObjectPath(map.item, response) !== typeof undefined
+        ) {
+          data = this._resolveObjectPath(map.item, response);
+        }
+        item.type = map.defaultGizmoType;
+        // pull in prop matches
+        for (var prop in map.gizmo) {
+          item[prop] = this._resolveObjectPath(map.gizmo[prop], data);
+        }
+        // another sanity check, if we don't have a url but have a source bind that too
+        if (
+          typeof item.url === typeof undefined &&
+          typeof item.source !== typeof undefined
+        ) {
+          item.url = item.source;
+        }
+        // gizmo type is also supported in the mapping element itself
+        // Think an asset management backend as opposed to a specific
+        // type of asset like video. If the item coming across can
+        // effectively check what kind of gizmo is required for it
+        // to work then we need to support that asset declaring the
+        // gizmo type needed
+        if (typeof map.gizmo.type !== typeof undefined) {
+          item.type = this._resolveObjectPath(map.gizmo.type, data);
+        }
+        // set the value of the url which will update our URL and notify
+        this.shadowRoot.querySelector("#url").value = item.url;
+        //TODO need a way to get suggestedResources from HAXStore and then add uploaded resource
+        //this.suggestedResources['item.url'] = ''; or this.suggestedResources['item.url'] = { name, icon, type, preview };
+      } catch (e) {
+        console.warn("Error parsing response", e);
+      }
+      if (this.shadowRoot.querySelector("#url")) {
+        // clear the file upload field because it went through so no reason to keep it
+        this.shadowRoot.querySelector("#fileupload").files = [];
+      }
     }
-    item.type = map.defaultGizmoType;
-    // pull in prop matches
-    for (var prop in map.gizmo) {
-      item[prop] = this._resolveObjectPath(map.gizmo[prop], data);
-    }
-    // another sanity check, if we don't have a url but have a source bind that too
-    if (
-      typeof item.url === typeof undefined &&
-      typeof item.source !== typeof undefined
-    ) {
-      item.url = item.source;
-    }
-    // gizmo type is also supported in the mapping element itself
-    // Think an asset management backend as opposed to a specific
-    // type of asset like video. If the item coming across can
-    // effectively check what kind of gizmo is required for it
-    // to work then we need to support that asset declaring the
-    // gizmo type needed
-    if (typeof map.gizmo.type !== typeof undefined) {
-      item.type = this._resolveObjectPath(map.gizmo.type, data);
-    }
-    // set the value of the url which will update our URL and notify
-    this.shadowRoot.querySelector("#url").value = item.url;
-    //TODO need a way to get suggestedResources from HAXStore and then add uploaded resource
-    //this.suggestedResources['item.url'] = ''; or this.suggestedResources['item.url'] = { name, icon, type, preview };
   }
   // add button for merlin
   get sources() {
@@ -183,6 +194,9 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       >
       </simple-toolbar-button>
       ${super.sources}`;
+  }
+  valueChanged(e) {
+    this.value = e.detail.value;
   }
   _clickMediaButton(e) {
     var type = "sources";
