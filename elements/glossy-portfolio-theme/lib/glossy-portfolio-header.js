@@ -22,9 +22,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "Title";
-    this.thumbnail = "impactra.png",
-    this.link = "https://google.com",
-    this.activeTitle = "";
+    this.homeLink = "";
     this.__disposer = this.__disposer || [];
     //get top level items (items shown on header -- they have no parent)
     autorun((reaction) => {
@@ -35,50 +33,13 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       this.__disposer.push(reaction);
 
     });
+
     autorun((reaction) => {
-      this._activeItemChanged(toJS(store.activeItem));
+      
+      this.homeLink = toJS(store.homeLink);
       this.__disposer.push(reaction);
     });
   }
-
-  //get activeTite (copied from breadcrumb)
-  _activeItemChanged(active) {
-    const activeItem = active;
-    if (activeItem) {
-      var items = [
-        {
-          title: activeItem.title,
-        },
-      ];
-
-      let itemBuilder = activeItem;
-      let manifest = toJS(store.routerManifest);
-      // walk back through parent tree
-      while (itemBuilder && itemBuilder.parent != null) {
-        itemBuilder = manifest.items.find((i) => i.id == itemBuilder.parent);
-        // double check structure is sound
-        if (itemBuilder) {
-          items.unshift({
-            title: itemBuilder.title,
-          });
-        }
-      }
-      this.activeTitle = items[0].title;
-    }
-  }
-    updated(changedProperties) {
-    if(changedProperties.has('activeTitle')){
-      console.log()
-      let items = this.renderRoot.querySelectorAll(`.header-link`);
-      let title = this.renderRoot.querySelector(`.header-link.${this.toKebabCase(this.activeTitle)}`);
-      if(title){
-        items.forEach(el => el.classList.remove('active-title'));
-        title.classList.toggle('active-title');
-      }
-      
-    }
-  }
-
   // Lit reactive properties
   static get properties() {
     return {
@@ -87,7 +48,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       thumbnail: {type: String},
       link: {type: String},
       topItems: {type: Array},
-      activeTitle: {type: String},
     };
   }
 
@@ -282,7 +242,9 @@ openHamburger(){
     return html`
 <div class="container">
   <!-- <img class="logo" src="lib/components/logo.svg" > -->
+  <a href="${this.homeLink}">
   <svg class="logo" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="50px"><path d="M36,3.99H14c-5.51,0-10,4.49-10,10v22c0,5.51,4.49,10,10,10h22c5.51,0,10-4.49,10-10v-22C46,8.48,41.51,3.99,36,3.99z M27,35c-0.55,0-1-0.45-1-1v-4c0-0.55,0.45-1,1-1c3.86,0,7-3.14,7-7c0-3.52-2.61-6.44-6-6.93v2.03c2.28,0.46,4,2.49,4,4.9	c0,2.76-2.24,5-5,5c-0.55,0-1-0.45-1-1s0.45-1,1-1c1.65,0,3-1.35,3-3c0-1.65-1.35-3-3-3c-0.55,0-1-0.45-1-1v-4c0-0.55,0.45-1,1-1	c4.96,0,9,4.04,9,9c0,4.62-3.51,8.45-8,8.94v2.02c5.6-0.51,10-5.23,10-10.96c0-6.07-4.93-11-11-11h-3v29c0,0.55-0.45,1-1,1h-4	c-0.55,0-1-0.45-1-1V11h-2v29c0,0.55-0.45,1-1,1s-1-0.45-1-1V10c0-0.55,0.45-1,1-1h4c0.55,0,1,0.45,1,1v29h2V10c0-0.55,0.45-1,1-1h4	c7.17,0,13,5.83,13,13C40,29.17,34.17,35,27,35z"/></svg>
+  </a>
   <button>
     <!-- <img @click="" class="hamburger" src="../lib/components/hamburger.svg" width="70px"> -->
     <svg class="hamburger" @click="${this.openHamburger}"  width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
