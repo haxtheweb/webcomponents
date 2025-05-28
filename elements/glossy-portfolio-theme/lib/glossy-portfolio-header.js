@@ -93,6 +93,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         margin-top: 50px;
         height: 80px;
         font-family: var(--main-font);  
+        overflow-x: auto;
+
       }
       
 
