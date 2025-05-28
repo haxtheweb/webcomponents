@@ -296,13 +296,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           this.focusInput();
           // ensure whole recordset is on screen if in mini mode
           if (this.mini && !this.wand) {
-            globalThis.document.body.style.overflow = "hidden";
             // reset to top of results
             this.shadowRoot.querySelector(".results").scrollTo(0, 0);
           }
-        } else {
-          // only a select mode makes this happen but still worth trapping for
-          globalThis.document.body.style.removeProperty("overflow");
         }
       }
       if (propName == "commandContext") {
@@ -567,8 +563,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
                       scroller
                       .items=${this.filtered}
                       .renderItem=${(item, i) =>
-                        item
-                          ? html`<super-daemon-row
+                        html`<super-daemon-row
                               data-row-index="${i}"
                               .value="${item.value}"
                               icon="${item.icon}"
@@ -585,7 +580,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
                                 ? item.more
                                 : nothing}</super-daemon-row
                             >`
-                          : ``}
+                          }
                     ></lit-virtualizer>
                   `}
             `}
