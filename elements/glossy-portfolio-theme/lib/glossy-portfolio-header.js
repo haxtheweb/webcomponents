@@ -24,12 +24,51 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     this.title = "Title";
     this.thumbnail = "impactra.png",
     this.link = "https://google.com",
-    this.topItems = [];
     this.activeTitle = "";
+    this.__disposer = this.__disposer || [];
+    //get top level items (items shown on header -- they have no parent)
+    autorun((reaction) => {
+      let items = store.getItemChildren(null); 
+      if (items && items.length > 0) {
+        this.topItems = [...items];
+      }
+      this.__disposer.push(reaction);
+
+    });
+    autorun((reaction) => {
+      this._activeItemChanged(toJS(store.activeItem));
+      this.__disposer.push(reaction);
+    });
   }
 
-  updated(changedProperties) {
+  //get activeTite (copied from breadcrumb)
+  _activeItemChanged(active) {
+    const activeItem = active;
+    if (activeItem) {
+      var items = [
+        {
+          title: activeItem.title,
+        },
+      ];
+
+      let itemBuilder = activeItem;
+      let manifest = toJS(store.routerManifest);
+      // walk back through parent tree
+      while (itemBuilder && itemBuilder.parent != null) {
+        itemBuilder = manifest.items.find((i) => i.id == itemBuilder.parent);
+        // double check structure is sound
+        if (itemBuilder) {
+          items.unshift({
+            title: itemBuilder.title,
+          });
+        }
+      }
+      this.activeTitle = items[0].title;
+    }
+  }
+    updated(changedProperties) {
     if(changedProperties.has('activeTitle')){
+      console.log()
       let items = this.renderRoot.querySelectorAll(`.header-link`);
       let title = this.renderRoot.querySelector(`.header-link.${this.toKebabCase(this.activeTitle)}`);
       if(title){

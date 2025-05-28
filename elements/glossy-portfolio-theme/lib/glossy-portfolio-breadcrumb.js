@@ -26,6 +26,7 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
       css`
         :host {
           display: block;
+          box-sizing: border-box;
         }
         ol.breadcrumb{
           list-style: none;
@@ -33,30 +34,35 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
           padding: 0;
           display: flex;
           flex-direction: row;
+          flex-wrap: wrap;
           font-family: inherit;
           font-size: 0.9rem;
-          gap: 15px;
+          gap: 8px;
           list-style: ">";
+          list-style-position: inside; /* Place bullets inside the container */
+
         }
 
+
+        ol.breadcrumb li {
+          /* padding-left: 8px; */
+          font-size: 0.9rem;
+          font-weight: 300;
+        }
         ol.breadcrumb li a {
-          /* padding-left: 7px; */
+          margin-left: 4px;
           font-size: 0.9rem;
           /* color: var(--link-color); */
           color: #ffffffa6;
           font-weight: 400;
         }
-        ol.breadcrumb li {
-          padding-left: 8px;
-          font-size: 0.9rem;
-          font-weight: 300;
-        }
-
         ol.breadcrumb li a:hover {
+          color: var(--link-color);
+
         }
         ol.breadcrumb li::marker {
           font-size: 0.9rem;
-          color: #aaaaaa;
+          color: #ffffffa6;
         }
         ol.breadcrumb li:last-child a{
           color: white;
@@ -69,11 +75,11 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
           content: "";
           
         }
-        ol.breadcrumb li:first-child {
-          padding-left: 0;
+        ol.breadcrumb li:first-child a {
+          margin-left: 0;
       
         }
-
+ 
 
       `,
     ];
@@ -83,7 +89,6 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
    */
 
   constructor() {
-    console.log(1);
     super();
     this.__disposer = [];
     this.items = [];
@@ -96,7 +101,6 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
   }
   // render function
   render() {
-    console.log(1);
     return html` ${this.items.length > 0
       ? html`
           <ol
@@ -147,7 +151,6 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
    */
   _activeItemChanged(active) {
     const activeItem = active;
-    console.log(activeItem);
     if (activeItem && this.shadowRoot) {
       var items = [
         {
@@ -155,17 +158,20 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
           slug: activeItem.slug,
         },
       ];
+
       let itemBuilder = activeItem;
       let manifest = toJS(store.routerManifest);
       // walk back through parent tree
       while (itemBuilder && itemBuilder.parent != null) {
         itemBuilder = manifest.items.find((i) => i.id == itemBuilder.parent);
+
         // double check structure is sound
         if (itemBuilder) {
           items.unshift({
             title: itemBuilder.title,
             slug: itemBuilder.slug,
           });
+
         }
       }
       if (this.includeHome) {

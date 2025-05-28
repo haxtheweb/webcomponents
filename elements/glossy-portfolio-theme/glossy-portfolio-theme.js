@@ -36,20 +36,12 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     super();
     this.title = "";
 
-    this.topItems = [];
     this.activeLayout = "grid"; // text, media, listing
     this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
     this.__disposer = this.__disposer || [];
 
     //get top level items (items shown on header -- they have no parent)
-    autorun((reaction) => {
-      let items = store.getItemChildren(null); 
-      if (items && items.length > 0) {
-        this.topItems = [...items];
-      }
-      this.__disposer.push(reaction);
 
-    });
     // determines active layout based on following conditions:
     // - if current page has a child, it is grid
     // - if no child, and has a parent: it is media
@@ -86,7 +78,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       activeItem: { type: Object },
       activeParent: { type: Object },
       categoryTags: { type: Array },
-      topItems: { type: Array },
       items: { type: Object },
     };
   }
@@ -236,6 +227,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       /* wrapper style */
       site-active-title h1{
         margin-bottom: 0;
+        /* margin-top: 0.25em; */
       }
       .wrapper {
         /* min-width: 100%; */
@@ -287,7 +279,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   
           </div> 
   
-          <glossy-portfolio-header .topItems=${this.topItems} activeTitle=${activeTitle}></glossy-portfolio-header>
+          <glossy-portfolio-header></glossy-portfolio-header>
           <glossy-portfolio-grid title=${activeTitle} .data=${this.items} style="padding-top: 50px"></glossy-portfolio-grid>
           <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
 
@@ -296,7 +288,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     } else if(this.activeLayout==="media"){
       const activeTitle = this.activeItem?.title || "Default Title"; // Use optional chaining and a fallback value
         return html`
-        <glossy-portfolio-header .topItems=${this.topItems} activeTitle=${activeTitle}></glossy-portfolio-header>
+        <glossy-portfolio-header></glossy-portfolio-header>
 
         <div class="body-wrapper" style="margin-top: 150px">
           <div id="contentcontainer">
