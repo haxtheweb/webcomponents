@@ -513,8 +513,8 @@ class CodeEditor extends SchemaBehaviors(LitElement) {
     return node;
   }
   /**
-   * return HTML object of table data
-   * @returns {object} HTML object for managed table
+   * return HTML object of data
+   * @returns {object} HTML object for managed data
    */
   getValueAsNode(wrap = null) {
     if (wrap == null) {

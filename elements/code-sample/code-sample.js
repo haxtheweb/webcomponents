@@ -10,6 +10,8 @@ import { jsonLang } from "./lib/highlightjs/languages/json.js";
 import { cssLang } from "./lib/highlightjs/languages/css.js";
 import { phpLang } from "./lib/highlightjs/languages/php.js";
 import { xml } from "./lib/highlightjs/languages/xml.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+
 hljs.registerLanguage("javascript", javascript);
 hljs.registerLanguage("json", jsonLang);
 hljs.registerLanguage("css", cssLang);
@@ -26,7 +28,7 @@ highlightjs_line_numbers();
  * @demo demo/index.html
  * @element code-sample
  */
-class CodeSample extends LitElement {
+class CodeSample extends I18NMixin(LitElement) {
   //styles function
   static get styles() {
     return [
@@ -116,7 +118,7 @@ class CodeSample extends LitElement {
         }
 
         button {
-          background: var(--code-sample-copy-button-bg-color, #e0e0e0);
+          background: var(--code-sample-copy-button-bg-color);
           border: none;
           cursor: pointer;
           display: block;
@@ -125,13 +127,28 @@ class CodeSample extends LitElement {
           top: 0;
           text-transform: uppercase;
         }
+
+        :host([edit-mode]) .code-sample-wrapper {
+          display: none;
+        }
+
+        code-editor {
+          display: none;
+        }
+
+        :host([edit-mode]) code-editor {
+          display: block;
+        }
       `,
     ];
   }
 
   // render function
   render() {
-    return html` <div id="theme"></div>
+    return html`
+    ${this._haxstate ? html`<code-editor language="${this.type}"></code-editor>` : ``}
+    <div class="code-sample-wrapper">
+      <div id="theme"></div>
       <div id="demo" class="demo"></div>
       <slot></slot>
       <div id="code-container">
@@ -139,22 +156,31 @@ class CodeSample extends LitElement {
           type="button"
           ?hidden="${!this.copyClipboardButton}"
           id="copyButton"
-          title="Copy to clipboard"
+          title="${this.t.copyToClipboard}"
           @click="${this._copyToClipboard}"
-        >
-          Copy
-        </button>
+        >${this.t.copy}</button>
         <pre id="code"></pre>
-      </div>`;
+      </div>
+    </div>`;
+  }
+
+  /**
+   * set up the editableTable to behave as the node itself
+   */
+  setupCodeEditor(editor) {
+    this.activeNode = editor;
+    setTimeout(() => {
+      editor.focus();
+    }, 0);
   }
 
   // haxProperty definition
   static get haxProperties() {
     return {
       type: "element",
-      canScale: true,
-
-      canEditSource: true,
+      canScale: false,
+      canEditSource: false,
+      hideDefaultSettings: true,
       gizmo: {
         title: "Code sample",
         description: "A sample of code highlighted in the page",
@@ -183,16 +209,6 @@ class CodeSample extends LitElement {
             },
           },
           {
-            slot: "",
-            slotWrapper: "template",
-            slotAttributes: {
-              "preserve-content": "preserve-content",
-            },
-            title: "Source",
-            description: "Code to be presented in content area",
-            inputMethod: "code-editor",
-          },
-          {
             property: "copyClipboardButton",
             title: "Copy to clipboard button",
             description: "button in top right that says copy to clipboard",
@@ -214,17 +230,17 @@ class CodeSample extends LitElement {
         advanced: [],
       },
       saveOptions: {
-        unsetAttributes: ["theme"],
+        unsetAttributes: ["theme", "editMode", "_haxstate", "t"],
       },
       demoSchema: [
         {
           tag: "code-sample",
           content: `<template preserve-content="preserve-content">const great = "example";
-            const great = "example";
-            const great = "example";</template>`,
+const great = "example";
+const great = "example";</template>`,
           properties: {
             type: "javascript",
-            "copy-clipboard-button": "copy-clipboard-button",
+            "copy-clipboard-button": true,
           },
         },
       ],
@@ -234,7 +250,15 @@ class CodeSample extends LitElement {
   static get properties() {
     return {
       ...super.properties,
-
+      // Set to true to enable edit mode.
+      editMode: {
+        type: Boolean,
+        reflect: true,
+        attribute: "edit-mode",
+      },
+      _haxstate: {
+        type: Boolean,
+      },
       // Set to true to show a copy to clipboard button.
       copyClipboardButton: {
         type: Boolean,
@@ -272,12 +296,26 @@ class CodeSample extends LitElement {
   }
   constructor() {
     super();
+    this._haxstate = false;
+    this.editMode = false;
     this.highlightStart = null;
     this.highlightEnd = null;
     this._observer = null;
     this.theme = oneDark;
     this.type = "html";
     this.copyClipboardButton = false;
+    this.t = {
+      copy: "Copy",
+      done: "Done",
+      error: "Error",
+      copyToClipboard: "Copy to clipboard",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("./locales/code-sample.es.json", import.meta.url).href + "/../",
+      locales: ["es"],
+    });
   }
   /**
    * Implements haxHooks to tie into life-cycle if hax exists.
@@ -285,7 +323,29 @@ class CodeSample extends LitElement {
   haxHooks() {
     return {
       gizmoRegistration: "haxgizmoRegistration",
+      inlineContextMenu: "haxinlineContextMenu",
+      activeElementChanged: "haxactiveElementChanged",
+      editModeChanged: "haxEditModeChanged",
     };
+  }
+  haxeditModeChanged(value) {
+    this._haxstate = value;
+    if (!value) {
+      const codeSampleEditor = this.shadowRoot.querySelector(
+        "code-editor",
+      );
+      if (codeSampleEditor) {
+        this.innerHTML = `<template preserve-content="preserve-content">${codeSampleEditor.getValueAsNode().innerHTML}</template>`;
+      }
+    }
+  }
+  
+  // ensure that we are in edit mode as soon as we activate this element
+  haxactiveElementChanged(element, value) {
+    if (value) {
+      this._haxstate = true;
+      this.editMode = value;
+    }
   }
   /**
    * @see haxHooks: gizmoRegistration
@@ -314,6 +374,22 @@ class CodeSample extends LitElement {
     }
     // force the default to now be code-sample instead of code
     store.keyboardShortcuts["```"] = store.keyboardShortcuts["```html"];
+  }
+  /**
+   * add buttons when it is in context
+   */
+  haxinlineContextMenu(ceMenu) {
+    ceMenu.ceButtons = [
+      {
+        icon: "lrn:edit",
+        callback: "haxToggleEdit",
+        label: "Toggle edit mode",
+      },
+    ];
+  }
+  haxToggleEdit(e) {
+    this.editMode = !this.editMode;
+    return true;
   }
   /**
    * returns a very simple example of the type of data requested
@@ -377,6 +453,7 @@ if ($MrTheCheat) {
         break;
     }
   }
+
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
@@ -430,6 +507,26 @@ if ($MrTheCheat) {
    */
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
+      if (propName === "editMode") {
+        if (this.editMode) {
+          import("@haxtheweb/code-editor/code-editor.js").then((module) => {
+            const codeSampleEditor = this.shadowRoot.querySelector(
+              "code-editor",
+            );
+            if (codeSampleEditor) {
+              codeSampleEditor.innerHTML = this.innerHTML;
+            }
+          });
+        }
+        else {
+          const codeSampleEditor = this.shadowRoot.querySelector(
+            "code-editor",
+          );
+          if (codeSampleEditor) {
+            this.innerHTML = `<template preserve-content="preserve-content">${codeSampleEditor.getValueAsNode().innerHTML}</template>`;
+          }
+        }
+      }
       if (propName == "theme" && this.shadowRoot) {
         this._themeChanged(this[propName]);
       }
@@ -538,16 +635,16 @@ if ($MrTheCheat) {
 
     try {
       globalThis.document.execCommand("copy", false);
-      copyButton.textContent = "Done";
+      copyButton.textContent = this.t.done;
     } catch (err) {
       console.error(err);
-      copyButton.textContent = "Error";
+      copyButton.textContent = this.t.error;
     }
 
     textarea.remove();
 
     setTimeout(() => {
-      copyButton.textContent = "Copy";
+      copyButton.textContent = this.t.copy;
     }, 1000);
   }
   _textAreaWithClonedContent() {
