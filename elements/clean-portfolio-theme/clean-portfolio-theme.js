@@ -27,18 +27,6 @@ const PortfolioFonts = [
   "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
 ];
 
-function getPostLogo(item) {
-    // Check if item has a logo, otherwise use the image from metadata
-    if (item.metadata.image) {
-      return item.metadata.image;
-    } else if (store.manifest.metadata.theme.variables.image) {
-      return toJS(store.manifest.metadata.theme.variables.image);
-    } else {
-      // Fallback to the site's default image
-      return toJS(store.manifest.metadata.site.logo);
-    }
-  }
-
 export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   static get tag() {
@@ -49,13 +37,16 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     super();
     this.siteTheme = UserScaffoldInstance.readMemory("HAXCMSSiteTheme") || "";
     this.dataPrimary = 2;
+    this.selectedTag = "";
+    // item objects
     this.activeLayout = "text"; // text, media, listing
-    this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
-    this.selectedTag = ""; // for filtering listing items
-    this.menuOpen = false; // for mobile menu button
-    this.menuOverflow = []; // items under the mobile menu
-    this.lastUpdated = ""; // for footer timestamp
-    this.copyrightYear = 0; // for footer copyright year
+    this.activeParent = ""; // for parentSlug and parentTitle
+    // mobile menu
+    this.menuOpen = false;
+    this.menuOverflow = [];
+    // footer indo
+    this.lastUpdated = "";
+    this.copyrightYear = 0;
     // support for custom rendering of route html
     this.HAXSiteCustomRenderRoutes = {
       "x/tags": {
@@ -67,6 +58,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     this.allTags = [];
     this.items = [];
     this.__disposer = this.__disposer || [];
+
     // gets site title and home link for site-title
     autorun((reaction) => {
       this.homeLink = toJS(store.homeLink);
@@ -115,17 +107,31 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         let parent = store.manifest.items.find(
           (d) => active.parent === d.id,
         );
-        if (!parent) {
+
+        if (parent) {
+          const activeTags = active.metadata.tags?.split(",").map(tag => tag.trim());
+          const firstTag = activeTags?.[0] || null;
+
+          const siblings = store.manifest.items
+            .filter((item) => {
+              const itemTags = item.metadata?.tags?.split(",").map(tag => tag.trim());
+              const itemFirstTag = itemTags?.[0] || null;
+              return (
+                item.parent === active.parent &&
+                itemFirstTag === firstTag
+              );
+            });
+
+          const i = siblings.findIndex((item) => item.id === active.id);
+          this.prevSibling = siblings[i - 1] || null;
+          this.nextSibling = siblings[i + 1] || null;
+        } else {
           parent = "";
         }
 
         if (this.menuOpen) {
           this.menuOpen = false;
         }
-        
-        const siblings = toJS(store.siblingsPrevNext);
-        this.prevSibling = siblings.prev;
-        this.nextSibling = siblings.next;
 
         if (globalThis.document && globalThis.document.startViewTransition) {
           globalThis.document.startViewTransition(() => {
@@ -183,10 +189,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                 select.value = ""
               }
             }
-          } else if (active.parent) {
-            this.setLayout("media");
           } else {
-            this.setLayout("text");
+            if (active.parent) {
+              this.setLayout("media");
+            } else {
+              this.setLayout("text");
+            }
           }
         }
       }
@@ -215,7 +223,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       this.__disposer.push(reaction);
     });
 
-    // gets current a total page count
+    // gets current and total page count
     autorun((reaction) => {
       const counter = toJS(store.pageCounter);
       this.pageCurrent = counter.current;
@@ -579,9 +587,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         margin-top: 96px;
         transition: .3s;
       }
-      footer a, footer a:any-link, footer a:-webkit-any-link {
-        color: var(--portfolio-white);
-      }
 
       .page-counter {
         font-family: var(--portfolio-font-body);
@@ -633,7 +638,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         bottom: -10px;
         left: 50%;
         width: 0;
-        height: 4px;
+        height: clamp(0.1em, 5vw, 0.2em);
         background-color: var(--portfolio-menuItemUnderline);
         transform: translateX(-50%);
         transition: all 0.2s ease-in-out;
@@ -817,12 +822,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         right: 6px;
       }
 
-      .breadcrumb .theme-picker {
-        visibility: hidden;
-        margin-left: auto;
-        margin-right: 8px;
-      }
-
       /* Tags */
       .tag-list {
         flex-direction: row;
@@ -848,51 +847,63 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       /* Breadcrumb */
-      .breadcrumb-wrapper {
-        max-width: 1236px;
-        margin: 0 auto;
-        padding: 0 22px;
-        view-transition-name: location;
-      }
-
       .breadcrumb {
         display: flex;
+        margin: 0 auto;
+        margin-top: 4px;
+        padding: 0 22px;
+        height: clamp(40px, 5vw, 60px);
+        max-width: 1236px;
         align-items: center;
         gap: 10px;
-        height: clamp(40px, 5vw, 60px);
         color: var(--portfolio-lightDark-blackWhite);
         font-family: var(--portfolio-font-header);
         font-size: clamp(14px, 2vw, 18px);
+        view-transition-name: location;
       }
 
       .breadcrumb a {
-        color: var(--portfolio-accentHighlight);
-        text-decoration: underline;
-        text-decoration-color: var(--portfolio-lightDark-bg);
-        text-decoration-thickness: 2px;
-        text-underline-offset: 8px;
+        color: var(--portfolio-lightDark-blackWhite);
+        text-decoration: none;
+        border-bottom: 2px solid var(--portfolio-lightDark-bg);
         font-weight: 450;
         transition: .3s ease-in-out;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding-bottom: 4px;
+      }
+
+      .breadcrumb-arrow {
+        color: var(--portfolio-accentHighlight);
+        transition: color .3s ease-in-out;
+        padding-bottom: 4px;
       }
 
       .breadcrumb-parent {
         color: var(--portfolio-lightDark-blackWhite);
         transition: color .3s ease-in-out;
+        padding-bottom: 4px;
       }
 
       .breadcrumb-split {
         color: var(--portfolio-accentHighlight);
         transition: color .3s ease-in-out;
+        padding-bottom: 4px;
       }
 
       .breadcrumb-title {
         font-weight: bold;
         transition: color .3s ease-in-out;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-bottom: 4px;
       }
 
       .breadcrumb a:hover,
       .breadcrumb a:focus{
-        text-decoration-color: var(--portfolio-accentHighlight);
+        border-bottom: 2px solid var(--portfolio-accentHighlight);
       }
       
       /* Layouts */
@@ -1080,15 +1091,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         site-active-title h1 {
           font-size: 72px;
         }
-        header .theme-picker {
-          visibility: hidden;
-        }
-        .breadcrumb .theme-picker {
-          visibility: visible;
-        }
         .pagination {
           flex-direction: column;
-          gap: 12px;
+          gap: 16px;
         }
         .pagination-text {
           -webkit-line-clamp: 1;
@@ -1204,12 +1209,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   }
 
   _renderListing() {
-    // Filter items based on selected tag
+    // Filter content based on selected tag, if there is one
     const filteredItems = this.selectedTag
       ? this.items.filter(item => {
+          // Check if item has tags, and return it if it has the tag
           let tags = toJS(item.metadata.tags);
           if (tags) {
-            // Only include items with selected tag
             return tags.includes(this.selectedTag);
           }
           return false;
@@ -1220,6 +1225,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     const filteredTags = this.selectedTag
       ? this.categoryTags.filter(tag => 
           filteredItems.some(item => {
+            // Will return true if at least one category has the selected tag
             let tags = toJS(item.metadata.tags);
             if (tags) {
               return tags.includes(tag);
@@ -1237,9 +1243,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
               <h3 class="listing-category"><a @click="${this.testEditMode}" href="x/tags?tag=${topTag.trim()}">${topTag}</a></h3>
               <div class="listing-grid">
                 ${filteredItems.filter(item => {
-                  // Check if current item has the top-level tag
                   let tags = toJS(item.metadata.tags);
                   if (tags) {
+                    // Return all items with the filtered tag
                     return tags.includes(topTag);
                   }
                   return false;
@@ -1250,9 +1256,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                   return html`
                     <a class="listing-card" href="${item.slug}">
                       <div class="listing-cardimg">
-                        <img src="${getPostLogo(item)}" onerror="this.style.display='none'" alt="" loading="lazy"
-                    decoding="async"
-                    fetchpriority="low" />
+                        <img src="${item.metadata.image}" onerror="this.style.display='none'">
                       </div>
                       <div class="listing-cardtitle">${item.title}</div>
                       <div class="listing-cardtag">${secondTag}</div>
@@ -1266,18 +1270,18 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       <!-- Render cards with no tags -->
       ${(!this.selectedTag && this.items.some(item => {
+        // Will return true if at least one item does not have tags
         return !toJS(item.metadata.tags);
       })) ? html`
         <h3 class="listing-category"></h3>
         <div class="listing-grid">
           ${this.items.filter(item => {
+            // Return all items with no tags
             return !toJS(item.metadata.tags);
           }).map(item => html`
             <a class="listing-card" href="${item.slug}">
               <div class="listing-cardimg">
-                <img src="${getPostLogo(item)}" onerror="this.style.display='none'" alt="" loading="lazy"
-                    decoding="async"
-                    fetchpriority="low" />
+                <img src="${item.metadata.image}" onerror="this.style.display='none'">
               </div>
               <div class="listing-cardtitle">${item.title}</div>
             </a>
@@ -1295,9 +1299,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       ${items.map(item => html`
         <a class="listing-card" href="${item.slug}" part="listing-card">
           <div class="listing-cardimg" part="listing-cardimg">
-            <img src="${getPostLogo(item)}" onerror="this.style.display='none'" part="listing-cardimg-img" alt="" loading="lazy"
-                    decoding="async"
-                    fetchpriority="low" />
+            <img src="${item.metadata.image}" onerror="this.style.display='none'" part="listing-cardimg-img">
           </div>
           <div class="listing-cardtitle" part="listing-cardtitle">${item.title}</div>
         </a>`
@@ -1385,22 +1387,22 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
               </div>
             ` : ''}
         </div>
-        <simple-icon-button-lite icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
+        ${this.menuOverflow.length == 0
+            ? html`
+              <simple-icon-button-lite icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
+            ` : ''}
       </header>
       
-      <div class="breadcrumb-wrapper">
-        <div class="breadcrumb">
-          ${this.activeParent
-            ? html`
-              <a href="${this.activeParent.slug}" @click="${(e) => e.currentTarget.blur()}">
-                <span>←</span>
-                <span class="breadcrumb-parent">${this.activeParent.title}</span>
-              </a>
-              <span class="breadcrumb-split">/</span>
-              <span class="breadcrumb-title">${this.activeItem.title}</span>
-            ` : ``}
-          <simple-icon-button-lite icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
-        </div>
+      <div class="breadcrumb">
+        ${this.activeParent
+          ? html`
+            <a href=${this.activeParent.slug} @click=${(e) => e.currentTarget.blur()}>
+              <span class="breadcrumb-arrow">←</span>
+              <span class="breadcrumb-parent">${this.activeParent.title}</span>
+            </a>
+            <span class="breadcrumb-split">/</span>
+            <span class="breadcrumb-title">${this.activeItem.title}</span>
+          ` : ``}
       </div>
 
       ${this.activeLayout == "media"
@@ -1477,12 +1479,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       </div>
 
       <footer>
-        <div> 
-          <div>Page number: ${this.pageCurrent} of ${this.pageTotal}</div>
-          <div>Site generated: ${this.lastUpdated}</div>
-          <div>Copyright: ${this.copyrightYear} ${store.manifest.author}</div>
-          <div><a @click="${this.testEditMode}" href="x/tags">View Content by Tag</a></div>
-        </div>
+        Page ${this.pageCurrent} of ${this.pageTotal}<br><br>
+        Site generated: ${this.lastUpdated}<br><br>
+        © ${this.copyrightYear} ${store.manifest.author}.
         <div
           class="license-body"
           xmlns:cc="${this.licenseLink}"
