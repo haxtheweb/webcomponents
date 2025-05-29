@@ -27,6 +27,18 @@ const PortfolioFonts = [
   "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
 ];
 
+function getPostLogo(item) {
+  // Check if item has a logo, otherwise use the image from metadata
+  if (item.metadata.image) {
+    return item.metadata.image;
+  } else if (store.manifest.metadata.theme.variables.image) {
+    return toJS(store.manifest.metadata.theme.variables.image);
+  } else {
+    // Fallback to the site's default image
+    return toJS(store.manifest.metadata.site.logo);
+  }
+}
+
 export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   static get tag() {
@@ -38,13 +50,11 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     this.siteTheme = UserScaffoldInstance.readMemory("HAXCMSSiteTheme") || "";
     this.dataPrimary = 2;
     this.selectedTag = "";
-    // item objects
     this.activeLayout = "text"; // text, media, listing
-    this.activeParent = ""; // for parentSlug and parentTitle
     // mobile menu
     this.menuOpen = false;
     this.menuOverflow = [];
-    // footer indo
+    // footer info
     this.lastUpdated = "";
     this.copyrightYear = 0;
     // support for custom rendering of route html
@@ -411,7 +421,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             --portfolio-earth-accentDark: #33691e;
             --portfolio-water-accentLight: #2a95cf;
             --portfolio-water-accentDark: #1e53a2;
-            --portfolio-fire-accentLight: #ef5350;
+            --portfolio-fire-accentLight: #F49B99;
             --portfolio-fire-accentDark: #8e2424;
             --portfolio-sand-accentLight: #f57c00;
             --portfolio-sand-accentDark: #6d4c41;
@@ -586,6 +596,11 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         padding: 40px 5vw;
         margin-top: 96px;
         transition: .3s;
+      }
+
+      .footer-link {
+        color: var(--portfolio-lightGrey) !important;
+        transition: color .3s;
       }
 
       .page-counter {
@@ -842,7 +857,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       .tag-list li a {
         color: var(--portfolio-lightDark-blackWhite);
         font-weight: 400;
-        font-size: 1.25em;
+        font-size: clamp(20px, 3vw, 27.5px);
         text-transform: uppercase;
       }
 
@@ -1154,7 +1169,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         --portfolio-lightGrey: var(--portfolio-fire-accentLight);
         --portfolio-accentHighlight: var(--portfolio-fire-accentLight);
         --portfolio-darkGrey: var(--portfolio-fire-accentDark);
-        --portfolio-lightDark-link: light-dark(var(--portfolio-fire-accentDark), #F49B99);
+        --portfolio-lightDark-link: light-dark(var(--portfolio-fire-accentDark), var(--portfolio-fire-accentLight));
         --portfolio-lightDark-cardTag: light-dark(
           var(--portfolio-fire-accentDark),
           var(--portfolio-fire-accentLight)
@@ -1256,7 +1271,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                   return html`
                     <a class="listing-card" href="${item.slug}">
                       <div class="listing-cardimg">
-                        <img src="${item.metadata.image}" onerror="this.style.display='none'">
+                        <img src="${getPostLogo(item)}" onerror="this.style.display='none'" alt="" loading="lazy"
+                            decoding="async"
+                            fetchpriority="low" />
                       </div>
                       <div class="listing-cardtitle">${item.title}</div>
                       <div class="listing-cardtag">${secondTag}</div>
@@ -1281,7 +1298,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           }).map(item => html`
             <a class="listing-card" href="${item.slug}">
               <div class="listing-cardimg">
-                <img src="${item.metadata.image}" onerror="this.style.display='none'">
+                <img src="${getPostLogo(item)}" onerror="this.style.display='none'" alt="" loading="lazy"
+                    decoding="async"
+                    fetchpriority="low" />
               </div>
               <div class="listing-cardtitle">${item.title}</div>
             </a>
@@ -1479,9 +1498,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       </div>
 
       <footer>
-        Page ${this.pageCurrent} of ${this.pageTotal}<br><br>
-        Site generated: ${this.lastUpdated}<br><br>
-        © ${this.copyrightYear} ${store.manifest.author}.
+        <div> 
+          <div>Page number: ${this.pageCurrent} of ${this.pageTotal}</div>
+          <div>Site generated: ${this.lastUpdated}</div>
+          <div>Copyright: ${this.copyrightYear} ${store.manifest.author}</div>
+          <div><a class="footer-link" @click="${this.testEditMode}" href="x/tags">View Content by Tag</a></div>
+        </div>
         <div
           class="license-body"
           xmlns:cc="${this.licenseLink}"
