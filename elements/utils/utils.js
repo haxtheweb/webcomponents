@@ -1,6 +1,44 @@
 /**
  * A collection of utility functions exported for convenience
  */
+export var badJSEventAttributes = [
+  // these are all leaker JS event attributes we don't allow
+  'onauxclick', 'onafterprint', 'onbeforematch', 'onbeforeprint',
+  'onbeforeunload', 'onbeforetoggle', 'onblur', 'oncancel',
+  'oncanplay', 'oncanplaythrough', 'onchange', 'onclick', 'onclose',
+  'oncontextlost', 'oncontextmenu', 'oncontextrestored', 'oncopy',
+  'oncuechange', 'oncut', 'ondblclick', 'ondrag', 'ondragend',
+  'ondragenter', 'ondragleave', 'ondragover', 'ondragstart',
+  'ondrop', 'ondurationchange', 'onemptied', 'onended',
+  'onerror', 'onfocus', 'onformdata', 'onhashchange', 'oninput',
+  'oninvalid', 'onkeydown', 'onkeypress', 'onkeyup',
+  'onlanguagechange', 'onload', 'onloadeddata', 'onloadedmetadata',
+  'onloadstart', 'onmessage', 'onmessageerror', 'onmousedown',
+  'onmouseenter', 'onmouseleave', 'onmousemove', 'onmouseout',
+  'onmouseover', 'onmouseup', 'onoffline', 'ononline', 'onpagehide',
+  'onpageshow', 'onpaste', 'onpause', 'onplay', 'onplaying',
+  'onpopstate', 'onprogress', 'onratechange', 'onreset', 'onresize',
+  'onrejectionhandled', 'onscroll', 'onscrollend',
+  'onsecuritypolicyviolation', 'onseeked', 'onseeking', 'onselect',
+  'onslotchange', 'onstalled', 'onstorage', 'onsubmit', 'onsuspend',
+  'ontimeupdate', 'ontoggle', 'onunhandledrejection', 'onunload',
+  'onvolumechange', 'onwaiting', 'onwheel'];
+
+export function removeBadJSEventAttributes(el) {
+  // remove any bad event attributes that might have snuck in
+  if (el && el.attributes) {
+    // remove any attributes that are not allowed
+    for (let i = 0; i < badJSEventAttributes.length; i++) {
+      el.removeAttribute(badJSEventAttributes[i]);
+      // regex the innerHTML to remove the current attribute
+      let replacement = el.querySelectorAll(`[${badJSEventAttributes[i]}]`);
+      for (let j = 0; j < replacement.length; j++) {
+        replacement[j].removeAttribute(badJSEventAttributes[i]);
+      }
+    }
+  }
+  return el;
+}
 
 /**
  * copy to clipboard w/ toast and authorization
@@ -862,7 +900,9 @@ function haxElementToNode(haxSchema) {
   // support for properties if they exist
   for (var property in properties) {
     let attributeName = camelToDash(property);
-    if (properties.hasOwnProperty(property)) {
+    // as we handle our VDOM through here regularly, make sure the bad JSEventAttributes
+    // don't get set as attributes on the node, ever.
+    if (properties.hasOwnProperty(property) && badJSEventAttributes.indexOf(property) === -1) {
       // special supporting for boolean because html is weird :p
       if (properties[property] === true) {
         newNode.setAttribute(attributeName, properties[property]);

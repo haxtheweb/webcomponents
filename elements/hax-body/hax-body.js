@@ -6,6 +6,7 @@ import { autorun, toJS } from "mobx";
 import "./lib/hax-text-editor-toolbar.js";
 import {
   encapScript,
+  removeBadJSEventAttributes,
   wipeSlot,
   generateResourceID,
   nodeToHaxElement,
@@ -1617,11 +1618,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           active.parentNode.insertBefore(newNode, active);
         } else {
           // something odd happened let's just make sure we insert this safely
+          removeBadJSEventAttributes(newNode);
           this.appendChild(newNode);
         }
       }
     } else {
       // send this into the root, which should filter it back down into the slot
+      removeBadJSEventAttributes(newNode);
       this.appendChild(newNode);
     }
     this.contextMenus.text.hasSelectedText = false;
@@ -2250,6 +2253,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             }
             this.appendChild(replacement);
           } else {
+            removeBadJSEventAttributes(fragment.firstChild);
             this.appendChild(fragment.firstChild);
           }
         } else {
@@ -2477,6 +2481,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               );
             }
           }
+          removeBadJSEventAttributes(replacement);
           // this implies there was a replacement had AND that this response HTML object
           // is different than what was passed in. In this instance we will end up
           // firing the unwrap to unpeal the element w/ the new content but
