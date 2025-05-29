@@ -292,7 +292,7 @@ class HAXCMSSiteEditor extends LitElement {
     // sanity check we have a slug, move to this page that we just made
     if (e.detail.value && e.detail.value.data && e.detail.value.data.slug) {
       setTimeout(() => {
-        store.playSound("coin");        
+        store.playSound("coin");
         const node = e.detail.value.data;
         globalThis.history.pushState({}, null, node.slug);
         globalThis.dispatchEvent(new PopStateEvent("popstate"));

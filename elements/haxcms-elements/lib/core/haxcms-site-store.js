@@ -831,7 +831,27 @@ class Store {
       total: this.manifest.items.length,
     };
   }
-
+  /**
+   * gets and previous siblings of activeItem
+   */
+  get siblingsPrevNext() {
+    if (this.manifest.items && this.activeItem) {
+      // filter siblings out from items using activeItem
+      const siblings = this.manifest.items.filter(
+        (item) => item.parent === this.activeItem.parent,
+      );
+      // find index of activeItem from siblings
+      const currentIndex = siblings.findIndex(
+        (item) => item.id === this.activeItem.id,
+      );
+      // return items at previous and next index of activeItem, if exists
+      return {
+        prev: siblings[currentIndex - 1] || null,
+        next: siblings[currentIndex + 1] || null,
+      };
+    }
+    return { prev: null, next: null };
+  }
 
   get isLoggedIn() {
     // account for keypair storage issue since its a string bin

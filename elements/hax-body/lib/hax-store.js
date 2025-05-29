@@ -3601,11 +3601,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       "data-hax-grid",
       "data-hax-active",
       '="true"',
-      'contenteditable',
-      'draggable',
-      'role'
+      "contenteditable",
+      "draggable",
+      "role",
     ];
-      // remove any attributes that are not allowed
+    // remove any attributes that are not allowed
     for (let i = 0; i < badAttributes.length; i++) {
       node.removeAttribute(badAttributes[i]);
     }

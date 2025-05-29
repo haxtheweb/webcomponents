@@ -297,17 +297,22 @@ export class RPGCharacterToast extends SimpleToastEl {
                 ?walking="${this.walking}"
               ></rpg-character>
             `}
-    ${!this.merlin
-    ? html`<div class="buttons">
-        <slot></slot
-        ><button class="dismiss" @click="${this.hide}">
-          ${this.closeText}
-        </button>
-      </div>`
-    : ``}
+        ${!this.merlin
+          ? html`<div class="buttons">
+              <slot></slot
+              ><button class="dismiss" @click="${this.hide}">
+                ${this.closeText}
+              </button>
+            </div>`
+          : ``}
       </div>
-<div class="progress"><div class="progress__bar" style="animation-duration:${this.duration}ms;"></div></div>
-`;
+      <div class="progress">
+        <div
+          class="progress__bar"
+          style="animation-duration:${this.duration}ms;"
+        ></div>
+      </div>
+    `;
   }
 
   updated(changedProperties) {

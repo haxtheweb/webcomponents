@@ -145,23 +145,26 @@ class CodeSample extends I18NMixin(LitElement) {
 
   // render function
   render() {
-    return html`
-    ${this._haxstate ? html`<code-editor language="${this.type}"></code-editor>` : ``}
-    <div class="code-sample-wrapper">
-      <div id="theme"></div>
-      <div id="demo" class="demo"></div>
-      <slot></slot>
-      <div id="code-container">
-        <button
-          type="button"
-          ?hidden="${!this.copyClipboardButton}"
-          id="copyButton"
-          title="${this.t.copyToClipboard}"
-          @click="${this._copyToClipboard}"
-        >${this.t.copy}</button>
-        <pre id="code"></pre>
-      </div>
-    </div>`;
+    return html` ${this._haxstate
+        ? html`<code-editor language="${this.type}"></code-editor>`
+        : ``}
+      <div class="code-sample-wrapper">
+        <div id="theme"></div>
+        <div id="demo" class="demo"></div>
+        <slot></slot>
+        <div id="code-container">
+          <button
+            type="button"
+            ?hidden="${!this.copyClipboardButton}"
+            id="copyButton"
+            title="${this.t.copyToClipboard}"
+            @click="${this._copyToClipboard}"
+          >
+            ${this.t.copy}
+          </button>
+          <pre id="code"></pre>
+        </div>
+      </div>`;
   }
 
   /**
@@ -331,15 +334,13 @@ const great = "example";</template>`,
   haxeditModeChanged(value) {
     this._haxstate = value;
     if (!value) {
-      const codeSampleEditor = this.shadowRoot.querySelector(
-        "code-editor",
-      );
+      const codeSampleEditor = this.shadowRoot.querySelector("code-editor");
       if (codeSampleEditor) {
         this.innerHTML = `<template preserve-content="preserve-content">${codeSampleEditor.getValueAsNode().innerHTML}</template>`;
       }
     }
   }
-  
+
   // ensure that we are in edit mode as soon as we activate this element
   haxactiveElementChanged(element, value) {
     if (value) {
@@ -510,18 +511,14 @@ if ($MrTheCheat) {
       if (propName === "editMode") {
         if (this.editMode) {
           import("@haxtheweb/code-editor/code-editor.js").then((module) => {
-            const codeSampleEditor = this.shadowRoot.querySelector(
-              "code-editor",
-            );
+            const codeSampleEditor =
+              this.shadowRoot.querySelector("code-editor");
             if (codeSampleEditor) {
               codeSampleEditor.innerHTML = this.innerHTML;
             }
           });
-        }
-        else {
-          const codeSampleEditor = this.shadowRoot.querySelector(
-            "code-editor",
-          );
+        } else {
+          const codeSampleEditor = this.shadowRoot.querySelector("code-editor");
           if (codeSampleEditor) {
             this.innerHTML = `<template preserve-content="preserve-content">${codeSampleEditor.getValueAsNode().innerHTML}</template>`;
           }

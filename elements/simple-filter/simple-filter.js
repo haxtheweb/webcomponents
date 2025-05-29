@@ -181,7 +181,9 @@ export const SimpleFilterMixin = function (SuperClass) {
             if (typeof decomposed == "undefined" && where != "") {
               //Do what I know best
               console.warn(
-                "simple-filter was unable to find a property in '" + where + "'",
+                "simple-filter was unable to find a property in '" +
+                  where +
+                  "'",
               );
             }
             // every call to .test will iterate against the same regex
@@ -199,8 +201,7 @@ export const SimpleFilterMixin = function (SuperClass) {
           if (typeof item == "number") {
             return regex.test(item.toString());
           }
-        }
-        catch(e) {
+        } catch (e) {
           // if use types a ? or other form of regex, it will throw an error
         }
       });

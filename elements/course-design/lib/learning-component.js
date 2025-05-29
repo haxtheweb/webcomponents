@@ -10,10 +10,22 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { learningComponentNouns, learningComponentVerbs, learningComponentTypes, learningComponentColors, iconFromPageType } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import {
+  learningComponentNouns,
+  learningComponentVerbs,
+  learningComponentTypes,
+  learningComponentColors,
+  iconFromPageType,
+} from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 
 // export as other things have imported this previously
-export { learningComponentNouns, learningComponentVerbs, learningComponentTypes, learningComponentColors, iconFromPageType };
+export {
+  learningComponentNouns,
+  learningComponentVerbs,
+  learningComponentTypes,
+  learningComponentColors,
+  iconFromPageType,
+};
 /**
  * `learning-component`
  * `An element for displaying learning materials.`

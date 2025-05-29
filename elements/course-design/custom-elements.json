@@ -814,47 +814,6 @@
       "path": "lib/learning-component.js",
       "declarations": [
         {
-          "kind": "variable",
-          "name": "learningComponentNouns",
-          "type": {
-            "text": "object"
-          },
-          "default": "{ content: \"Content\", assessment: \"Assessment\", quiz: \"Quiz\", submission: \"Submission\", lesson: \"Lesson\", module: \"Module\", task: \"Task\", activity: \"Activity\", project: \"Project\", practice: \"Practice\", unit: \"Unit\", objectives: \"Learning Objectives\", }"
-        },
-        {
-          "kind": "variable",
-          "name": "learningComponentVerbs",
-          "type": {
-            "text": "object"
-          },
-          "default": "{ connection: \"Connection\", knowledge: \"Did You Know?\", strategy: \"Learning Strategy\", discuss: \"Discuss\", listen: \"Listen\", make: \"Make\", observe: \"Observe\", present: \"Present\", read: \"Read\", reflect: \"Reflect\", research: \"Research\", watch: \"Watch\", write: \"Write\", }"
-        },
-        {
-          "kind": "variable",
-          "name": "learningComponentTypes",
-          "type": {
-            "text": "object"
-          },
-          "default": "{ ...learningComponentVerbs, ...learningComponentNouns, }"
-        },
-        {
-          "kind": "variable",
-          "name": "learningComponentColors",
-          "type": {
-            "text": "object"
-          },
-          "default": "{ content: \"blue-grey\", assessment: \"red\", quiz: \"blue\", submission: \"deep-purple\", lesson: \"purple\", module: \"red\", task: \"blue-grey\", activity: \"orange\", project: \"deep-orange\", practice: \"brown\", unit: \"light-green\", objectives: \"indigo\", connection: \"green\", knowledge: \"cyan\", strategy: \"teal\", discuss: \"blue\", listen: \"purple\", make: \"orange\", observe: \"yellow\", present: \"light-blue\", read: \"lime\", reflect: \"amber\", research: \"deep-orange\", watch: \"pink\", write: \"deep-purple\", }"
-        },
-        {
-          "kind": "function",
-          "name": "iconFromPageType",
-          "parameters": [
-            {
-              "name": "type"
-            }
-          ]
-        },
-        {
           "kind": "class",
           "description": "`learning-component`\n`An element for displaying learning materials.`",
           "name": "LearningComponent",
