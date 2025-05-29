@@ -1250,7 +1250,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                   return html`
                     <a class="listing-card" href="${item.slug}">
                       <div class="listing-cardimg">
-                        <img src="${getPostLogo(item)}" onerror="this.style.display='none'" alt="" />
+                        <img src="${getPostLogo(item)}" onerror="this.style.display='none'" alt="" loading="lazy"
+                    decoding="async"
+                    fetchpriority="low" />
                       </div>
                       <div class="listing-cardtitle">${item.title}</div>
                       <div class="listing-cardtag">${secondTag}</div>
@@ -1273,7 +1275,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           }).map(item => html`
             <a class="listing-card" href="${item.slug}">
               <div class="listing-cardimg">
-                <img src="${getPostLogo(item)}" onerror="this.style.display='none'" alt="" />
+                <img src="${getPostLogo(item)}" onerror="this.style.display='none'" alt="" loading="lazy"
+                    decoding="async"
+                    fetchpriority="low" />
               </div>
               <div class="listing-cardtitle">${item.title}</div>
             </a>
@@ -1291,7 +1295,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       ${items.map(item => html`
         <a class="listing-card" href="${item.slug}" part="listing-card">
           <div class="listing-cardimg" part="listing-cardimg">
-            <img src="${getPostLogo(item)}" onerror="this.style.display='none'" part="listing-cardimg-img" alt="" />
+            <img src="${getPostLogo(item)}" onerror="this.style.display='none'" part="listing-cardimg-img" alt="" loading="lazy"
+                    decoding="async"
+                    fetchpriority="low" />
           </div>
           <div class="listing-cardtitle" part="listing-cardtitle">${item.title}</div>
         </a>`
