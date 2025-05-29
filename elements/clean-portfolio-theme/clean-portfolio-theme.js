@@ -196,12 +196,10 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                 select.value = ""
               }
             }
+          } else if (active.parent) {
+            this.setLayout("media");
           } else {
-            if (active.parent) {
-              this.setLayout("media");
-            } else {
-              this.setLayout("text");
-            }
+            this.setLayout("text");
           }
         }
       }
