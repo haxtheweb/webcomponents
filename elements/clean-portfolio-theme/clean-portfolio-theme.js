@@ -119,16 +119,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         );
 
         if (parent) {
-          const activeTags = active.metadata.tags?.split(",").map(tag => tag.trim());
-          const firstTag = activeTags?.[0] || null;
-
+          const category = active.metadata.tags?.split(",").map(tag => tag.trim())?.[0] || null;
           const siblings = store.manifest.items
             .filter((item) => {
-              const itemTags = item.metadata?.tags?.split(",").map(tag => tag.trim());
-              const itemFirstTag = itemTags?.[0] || null;
+              const itemCategory = item.metadata?.tags?.split(",").map(tag => tag.trim())?.[0] || null;
               return (
                 item.parent === active.parent &&
-                itemFirstTag === firstTag
+                itemCategory === category
               );
             });
 
