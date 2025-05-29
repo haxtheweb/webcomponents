@@ -9014,6 +9014,19 @@
             },
             {
               "kind": "method",
+              "name": "valueChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "method",
               "name": "_clickMediaButton",
               "parameters": [
                 {
@@ -10245,6 +10258,15 @@
               "kind": "field",
               "name": "sources",
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "valueChanged",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
             },
             {
               "kind": "method",

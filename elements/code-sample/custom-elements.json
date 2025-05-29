@@ -12,6 +12,16 @@
           "name": "CodeSample",
           "members": [
             {
+              "kind": "method",
+              "name": "setupCodeEditor",
+              "parameters": [
+                {
+                  "name": "editor"
+                }
+              ],
+              "description": "set up the editableTable to behave as the node itself"
+            },
+            {
               "kind": "field",
               "name": "haxProperties",
               "static": true,
@@ -31,10 +41,50 @@
             },
             {
               "kind": "method",
+              "name": "haxeditModeChanged",
+              "parameters": [
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxactiveElementChanged",
+              "parameters": [
+                {
+                  "name": "element"
+                },
+                {
+                  "name": "value"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "haxgizmoRegistration",
               "parameters": [
                 {
                   "name": "store"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "haxinlineContextMenu",
+              "parameters": [
+                {
+                  "name": "ceMenu"
+                }
+              ],
+              "description": "add buttons when it is in context"
+            },
+            {
+              "kind": "method",
+              "name": "haxToggleEdit",
+              "parameters": [
+                {
+                  "name": "e"
                 }
               ]
             },
@@ -119,6 +169,27 @@
             },
             {
               "kind": "field",
+              "name": "_haxstate",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "_haxstate"
+            },
+            {
+              "kind": "field",
+              "name": "editMode",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "edit-mode",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "highlightStart",
               "privacy": "public",
               "type": {
@@ -177,9 +248,33 @@
               },
               "default": "false",
               "attribute": "copy-clipboard-button"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ copy: \"Copy\", done: \"Done\", error: \"Error\", copyToClipboard: \"Copy to clipboard\", }"
             }
           ],
           "attributes": [
+            {
+              "name": "edit-mode",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "editMode"
+            },
+            {
+              "name": "_haxstate",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "_haxstate"
+            },
             {
               "name": "copy-clipboard-button",
               "type": {
@@ -219,6 +314,12 @@
               },
               "default": "null",
               "fieldName": "highlightEnd"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
             }
           ],
           "superclass": {

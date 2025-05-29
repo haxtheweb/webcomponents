@@ -12,12 +12,15 @@ export class HAXCMSToast extends RPGCharacterToast {
     return [
       super.styles,
       css`
-      :host {
-        transform: scale(.7);
-        background-color: var(--simple-toast-background-color, light-dark(white, black));
-      }
-      `
-    ]
+        :host {
+          transform: scale(0.7);
+          background-color: var(
+            --simple-toast-background-color,
+            light-dark(white, black)
+          );
+        }
+      `,
+    ];
   }
 
   constructor() {

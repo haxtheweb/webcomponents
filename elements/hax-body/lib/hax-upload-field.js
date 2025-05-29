@@ -133,7 +133,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     // ensure we had a positive response
     if (e.detail.xhr.status === 200) {
       try {
-        // convert response to object        
+        // convert response to object
         let response = JSON.parse(e.detail.xhr.response);
         // access the app that did the upload
         let map = this.__appUsed.connection.operations.add.resultMap;
@@ -141,7 +141,8 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         let item = {};
         // look for the items element to draw our data from at its root
         if (
-          typeof this._resolveObjectPath(map.item, response) !== typeof undefined
+          typeof this._resolveObjectPath(map.item, response) !==
+          typeof undefined
         ) {
           data = this._resolveObjectPath(map.item, response);
         }

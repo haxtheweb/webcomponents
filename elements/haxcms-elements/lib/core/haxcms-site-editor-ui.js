@@ -1489,7 +1489,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "font-size: 1.5em; font-family: arial; color: white; background-color: darkred; padding: 10px";
       console.warn("%c⚠️STOP⚠️", headStyle);
       console.warn(
-        '%cThis is a browser feature intended for developers. If someone told you to copy and paste something here to enable a hidden feature, it is likely a scam and could give them access to your account.',
+        "%cThis is a browser feature intended for developers. If someone told you to copy and paste something here to enable a hidden feature, it is likely a scam and could give them access to your account.",
         bodyStyle,
       );
     }, 3500);

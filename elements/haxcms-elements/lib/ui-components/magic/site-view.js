@@ -4,7 +4,10 @@
  */
 import { html, css, render, nothing } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
-import { store, iconFromPageType } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import {
+  store,
+  iconFromPageType,
+} from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
 import "@haxtheweb/simple-fields/lib/simple-tags.js";

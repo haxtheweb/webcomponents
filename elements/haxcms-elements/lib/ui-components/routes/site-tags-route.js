@@ -66,27 +66,31 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
       const theme = toJS(store.themeElement);
       this._processCustomThemeRoutes();
       this.__disposer.push(reaction);
-    })
-    window.addEventListener("haxcms-theme-ready",(e) => {
+    });
+    window.addEventListener(
+      "haxcms-theme-ready",
+      (e) => {
         this._processCustomThemeRoutes();
       },
-      { signal: this.windowControllers.signal }
+      { signal: this.windowControllers.signal },
     );
   }
 
   _processCustomThemeRoutes() {
     const theme = toJS(store.themeElement);
-    if (theme && theme.HAXSiteCustomRenderRoutes && theme.HAXSiteCustomRenderRoutes['x/tags']) {
-      if (theme.HAXSiteCustomRenderRoutes['x/tags'].items) {
-        this.renderXTagsItems = theme.HAXSiteCustomRenderRoutes['x/tags'].items;
-      }
-      else {
+    if (
+      theme &&
+      theme.HAXSiteCustomRenderRoutes &&
+      theme.HAXSiteCustomRenderRoutes["x/tags"]
+    ) {
+      if (theme.HAXSiteCustomRenderRoutes["x/tags"].items) {
+        this.renderXTagsItems = theme.HAXSiteCustomRenderRoutes["x/tags"].items;
+      } else {
         this.renderXTagsItems = this._renderXTagsItems;
       }
-      if (store.themeElement.HAXSiteCustomRenderRoutes['x/tags'].tag) {
-        this.renderXTagsTag = theme.HAXSiteCustomRenderRoutes['x/tags'].tag;
-      }
-      else {
+      if (store.themeElement.HAXSiteCustomRenderRoutes["x/tags"].tag) {
+        this.renderXTagsTag = theme.HAXSiteCustomRenderRoutes["x/tags"].tag;
+      } else {
         this.renderXTagsTag = this._renderXTagsTag;
       }
     }
@@ -118,11 +122,7 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
   _resetClick(e) {
     const rawParams = new URLSearchParams(this.search);
     rawParams.delete("tag");
-    globalThis.history.replaceState(
-      {},
-      "",
-      decodeURIComponent(`./x/tags`),
-    );
+    globalThis.history.replaceState({}, "", decodeURIComponent(`./x/tags`));
     this.search = globalThis.location.search;
   }
 
@@ -156,50 +156,53 @@ export class SiteTagsRoute extends HAXCMSI18NMixin(DDD) {
 
   renderXTags() {
     return html` ${this.params && this.params.tag
-        ? html`<simple-tag
-            class="all-tags"
-            part="simple-tag all-tags"
-            value="Remove '${this.params.tag}' filter"
-            @click="${this._resetClick}"
-            @keydown="${this._resetKeydown}"
-            tabindex="0"
-          ></simple-tag>`
-        : nothing}
-      ${Object.keys(this.resultsTags).map((tag) => html`
-        ${this.params.tag === tag.trim() ? nothing : html`${this.renderXTagsTag(tag)}`}`,
-      )}
-      ${this.renderXTagsItems(this.filteredItems)}`;
+      ? html`<simple-tag
+          class="all-tags"
+          part="simple-tag all-tags"
+          value="Remove '${this.params.tag}' filter"
+          @click="${this._resetClick}"
+          @keydown="${this._resetKeydown}"
+          tabindex="0"
+        ></simple-tag>`
+      : nothing}
+    ${Object.keys(this.resultsTags).map(
+      (tag) =>
+        html` ${this.params.tag === tag.trim()
+          ? nothing
+          : html`${this.renderXTagsTag(tag)}`}`,
+    )}
+    ${this.renderXTagsItems(this.filteredItems)}`;
   }
 
   _renderXTagsTag(tag) {
-    return html`
-    <simple-tag
+    return html` <simple-tag
       part="simple-tag"
       accent-color="grey"
       value="${tag.trim()}"
       @click="${this._tagClick}"
       @keydown="${this._tagKeydown}"
       tabindex="0"
-    >${this.resultsTags[tag] > 1
-      ? html` (${this.resultsTags[tag]})` : nothing}
-    </simple-tag>`
+      >${this.resultsTags[tag] > 1
+        ? html` (${this.resultsTags[tag]})`
+        : nothing}
+    </simple-tag>`;
   }
 
   _renderXTagsItems(items) {
     return html`
       <collection-list>
         ${items.map(
-          (item) => html`
-          <collection-item
-            line1="${item.title}"
-            line2="${item.description}"
-            url="${item.slug}"
-            image="${item.metadata.image}"
-            tags="${item.metadata.tags}"
-            icon="${item.metadata.icon}"
-            accent-color="grey"
-            saturate
-          ></collection-item>`
+          (item) =>
+            html` <collection-item
+              line1="${item.title}"
+              line2="${item.description}"
+              url="${item.slug}"
+              image="${item.metadata.image}"
+              tags="${item.metadata.tags}"
+              icon="${item.metadata.icon}"
+              accent-color="grey"
+              saturate
+            ></collection-item>`,
         )}
       </collection-list>
     `;

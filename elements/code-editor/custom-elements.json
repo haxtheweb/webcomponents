@@ -143,7 +143,7 @@
                   "default": "null"
                 }
               ],
-              "description": "return HTML object of table data",
+              "description": "return HTML object of data",
               "return": {
                 "type": {
                   "text": "object"

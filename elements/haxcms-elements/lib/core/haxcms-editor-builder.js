@@ -111,9 +111,9 @@ class HAXCMSEditorBuilder extends HTMLElement {
           script.src = `../../system/api/connectionSettings`;
         }
         await fetch(script.src).then((response) => {
-          const contentType = response.headers.get('content-type');
+          const contentType = response.headers.get("content-type");
           // verify that we have a js file as that's the only valid response if appending a script tag into DOM
-          if (response.ok && contentType.includes('application/javascript')) {
+          if (response.ok && contentType.includes("application/javascript")) {
             this.__hasConnectionSettings = true;
             globalThis.document.documentElement.appendChild(script);
           }
