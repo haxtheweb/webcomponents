@@ -27,6 +27,18 @@ const PortfolioFonts = [
   "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap"
 ];
 
+function getPostLogo(item) {
+    // Check if item has a logo, otherwise use the image from metadata
+    if (item.metadata.image) {
+      return item.metadata.image;
+    } else if (store.manifest.metadata.theme.variables.image) {
+      return toJS(store.manifest.metadata.theme.variables.image);
+    } else {
+      // Fallback to the site's default image
+      return toJS(store.manifest.metadata.site.logo);
+    }
+  }
+
 export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   static get tag() {
@@ -566,6 +578,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         padding: 40px 5vw;
         margin-top: 96px;
         transition: .3s;
+      }
+      footer a, footer a:any-link, footer a:-webkit-any-link {
+        color: var(--portfolio-white);
       }
 
       .page-counter {
@@ -1235,7 +1250,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                   return html`
                     <a class="listing-card" href="${item.slug}">
                       <div class="listing-cardimg">
-                        <img src="${item.metadata.image}" onerror="this.style.display='none'">
+                        <img src="${getPostLogo(item)}" onerror="this.style.display='none'" alt="" />
                       </div>
                       <div class="listing-cardtitle">${item.title}</div>
                       <div class="listing-cardtag">${secondTag}</div>
@@ -1258,7 +1273,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           }).map(item => html`
             <a class="listing-card" href="${item.slug}">
               <div class="listing-cardimg">
-                <img src="${item.metadata.image}" onerror="this.style.display='none'">
+                <img src="${getPostLogo(item)}" onerror="this.style.display='none'" alt="" />
               </div>
               <div class="listing-cardtitle">${item.title}</div>
             </a>
@@ -1276,7 +1291,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       ${items.map(item => html`
         <a class="listing-card" href="${item.slug}" part="listing-card">
           <div class="listing-cardimg" part="listing-cardimg">
-            <img src="${item.metadata.image}" onerror="this.style.display='none'" part="listing-cardimg-img">
+            <img src="${getPostLogo(item)}" onerror="this.style.display='none'" part="listing-cardimg-img" alt="" />
           </div>
           <div class="listing-cardtitle" part="listing-cardtitle">${item.title}</div>
         </a>`
@@ -1372,7 +1387,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         <div class="breadcrumb">
           ${this.activeParent
             ? html`
-              <a href=${this.activeParent.slug} @click=${(e) => e.currentTarget.blur()}>
+              <a href="${this.activeParent.slug}" @click="${(e) => e.currentTarget.blur()}">
                 <span>←</span>
                 <span class="breadcrumb-parent">${this.activeParent.title}</span>
               </a>
@@ -1457,9 +1472,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       </div>
 
       <footer>
-        Page ${this.pageCurrent} of ${this.pageTotal}<br><br>
-        Site generated: ${this.lastUpdated}<br><br>
-        © ${this.copyrightYear} ${store.manifest.author}.
+        <div> 
+          <div>Page number: ${this.pageCurrent} of ${this.pageTotal}</div>
+          <div>Site generated: ${this.lastUpdated}</div>
+          <div>Copyright: ${this.copyrightYear} ${store.manifest.author}</div>
+          <div><a @click="${this.testEditMode}" href="x/tags">View Content by Tag</a></div>
+        </div>
         <div
           class="license-body"
           xmlns:cc="${this.licenseLink}"
