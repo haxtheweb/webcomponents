@@ -215,8 +215,8 @@ class MediaImage extends DDD {
   }
   haxHooks() {
     return {
-      editModeChanged: "haxEditModeChanged",
-      activeElementChanged: "haxActiveElementChanged",
+      editModeChanged: "haxeditModeChanged",
+      activeElementChanged: "haxactiveElementChanged",
     };
   }
   _handleClick(event) {
@@ -231,10 +231,10 @@ class MediaImage extends DDD {
       this.shadowRoot.querySelector("a").click();
     }
   }
-  haxEditModeChanged(value) {
+  haxeditModeChanged(value) {
     this._haxState = value;
   }
-  haxActiveElementChanged(element, value) {
+  haxactiveElementChanged(element, value) {
     if (value) {
       this._haxState = value;
     }

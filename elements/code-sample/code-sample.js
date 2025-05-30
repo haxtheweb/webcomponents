@@ -328,15 +328,15 @@ const great = "example";</template>`,
       gizmoRegistration: "haxgizmoRegistration",
       inlineContextMenu: "haxinlineContextMenu",
       activeElementChanged: "haxactiveElementChanged",
-      editModeChanged: "haxEditModeChanged",
+      editModeChanged: "haxeditModeChanged",
     };
   }
   haxeditModeChanged(value) {
     this._haxstate = value;
-    if (!value) {
-      const codeSampleEditor = this.shadowRoot.querySelector("code-editor");
-      if (codeSampleEditor) {
-        this.innerHTML = `<template preserve-content="preserve-content">${codeSampleEditor.getValueAsNode().innerHTML}</template>`;
+    if (!value && this.shadowRoot) {
+      const codeEditor = this.shadowRoot.querySelector("code-editor");
+      if (codeEditor) {
+        this.innerHTML = `<template preserve-content="preserve-content">${codeEditor.getValueAsNode().innerHTML}</template>`;
       }
     }
   }
@@ -511,16 +511,16 @@ if ($MrTheCheat) {
       if (propName === "editMode") {
         if (this.editMode) {
           import("@haxtheweb/code-editor/code-editor.js").then((module) => {
-            const codeSampleEditor =
+            const codeEditor =
               this.shadowRoot.querySelector("code-editor");
-            if (codeSampleEditor) {
-              codeSampleEditor.innerHTML = this.innerHTML;
+            if (codeEditor) {
+              codeEditor.innerHTML = this.innerHTML;
             }
           });
         } else {
-          const codeSampleEditor = this.shadowRoot.querySelector("code-editor");
-          if (codeSampleEditor) {
-            this.innerHTML = `<template preserve-content="preserve-content">${codeSampleEditor.getValueAsNode().innerHTML}</template>`;
+          const codeEditor = this.shadowRoot.querySelector("code-editor");
+          if (codeEditor) {
+            this.innerHTML = `<template preserve-content="preserve-content">${codeEditor.getValueAsNode().innerHTML}</template>`;
           }
         }
       }
