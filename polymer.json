@@ -89,7 +89,7 @@
     "node_modules/@webcomponents/webcomponentsjs/bundles/*.js",
     "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js.map",
     "node_modules/monaco-editor/min/**",
-    "!node_modules/monaco-editor/min/vs/language/typescript/tsWorker.js",
+    "!node_modules/monaco-editor/min/vs/language/typescript/*",
     "!node_modules/monaco-editor/min-maps/**",
     "node_modules/lunr/lunr.js",
     "node_modules/msr/MediaStreamRecorder.min.js",
