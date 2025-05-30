@@ -243,7 +243,7 @@ function formatHTML(html_source, options) {
     indent_character = options.indent_char || ' ';
     brace_style = options.brace_style || 'collapse';
     max_char = options.max_char == 0 ? Infinity : options.max_char || 80;
-    unformatted = options.unformatted || ['simple-icon', 'vocab-term', 'inline-audio', 'lrn-math', 'moar-sarcasm', 'a', 'span', 'bdo', 'em', 'strong', 'dfn', 'code', 'samp', 'kbd', 'var', 'cite', 'abbr', 'acronym', 'q', 'sub', 'sup', 'tt', 'i', 'b', 'big', 'small', 'u', 's', 'strike', 'font', 'ins', 'del', 'pre', 'address', 'dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+    unformatted = options.unformatted || ['template', 'code-sample', 'simple-icon', 'vocab-term', 'inline-audio', 'lrn-math', 'oer-schema', 'moar-sarcasm', 'a', 'span', 'bdo', 'em', 'strong', 'dfn', 'code', 'mark', 'samp', 'kbd', 'var', 'cite', 'abbr', 'acronym', 'q', 'sub', 'sup', 'tt', 'i', 'b', 'big', 'small', 'u', 's', 'strike', 'font', 'ins', 'del', 'pre', 'address', 'dt', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
     function Parser() {
   
       this.pos = 0; //Parser position

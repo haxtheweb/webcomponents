@@ -143,10 +143,19 @@ class CodeSample extends I18NMixin(LitElement) {
     ];
   }
 
+  getMinHeight() {
+    if (this.shadowRoot && this.shadowRoot.querySelector("#code-container")) {
+      if (this.shadowRoot.querySelector("#code-container").getBoundingClientRect().height > 250) {
+        return this.shadowRoot.querySelector("#code-container").getBoundingClientRect().height + "px"
+      }
+    }
+    return "250px";    
+  }
+
   // render function
   render() {
     return html` ${this._haxstate
-        ? html`<code-editor language="${this.type}"></code-editor>`
+        ? html`<code-editor language="${this.type}" style="--monaco-element-iframe-min-height:${this.getMinHeight}"></code-editor>`
         : ``}
       <div class="code-sample-wrapper">
         <div id="theme"></div>
@@ -165,16 +174,6 @@ class CodeSample extends I18NMixin(LitElement) {
           <pre id="code"></pre>
         </div>
       </div>`;
-  }
-
-  /**
-   * set up the editableTable to behave as the node itself
-   */
-  setupCodeEditor(editor) {
-    this.activeNode = editor;
-    setTimeout(() => {
-      editor.focus();
-    }, 0);
   }
 
   // haxProperty definition
@@ -329,8 +328,24 @@ const great = "example";</template>`,
       inlineContextMenu: "haxinlineContextMenu",
       activeElementChanged: "haxactiveElementChanged",
       editModeChanged: "haxeditModeChanged",
+      preProcessNodeToContent: "haxpreProcessNodeToContent",
     };
   }
+  /**
+ * Ensure fields don't pass through to HAX if in that context
+ */
+  haxpreProcessNodeToContent(node) {
+    if (this.shadowRoot) {
+      const codeEditor = this.shadowRoot.querySelector("code-editor");
+      if (codeEditor) {
+        this.innerHTML = `<template preserve-content="preserve-content">${codeEditor.getValueAsNode().innerHTML}</template>`;
+      }
+    }
+    node.editMode = false;
+    node._haxstate = false;
+    return node;
+  }
+
   haxeditModeChanged(value) {
     this._haxstate = value;
     if (!value && this.shadowRoot) {
@@ -585,7 +600,6 @@ if ($MrTheCheat) {
     if (this._code && this._code.parentNode) {
       this._code.parentNode.removeChild(this._code);
     }
-
     let template = this._getCodeTemplate();
     if (!template) {
       template = globalThis.document.createElement("template");
@@ -594,18 +608,16 @@ if ($MrTheCheat) {
     }
     this._applyHighlightjs(template.innerHTML);
   }
+
   _getCodeTemplate() {
-    const nodes = this.children;
-    return [].filter.call(
-      nodes,
-      (node) => node.nodeType === Node.ELEMENT_NODE,
-    )[0];
+    return (this.children[0] && this.children[0].tagName === "TEMPLATE") ? this.children[0] : null;
   }
+
   _applyHighlightjs(str) {
     this._code = globalThis.document.createElement("code");
     if (this.type) this._code.classList.add(this.type);
     this._code.innerHTML = this._entitize(this._cleanIndentation(str));
-    if (this.shadowRoot && this.shadowRoot.querySelector("#code")) {
+    if (this.shadowRoot && this.shadowRoot.querySelector("#code") && this._code && this._code.innerHTML) {
       this.shadowRoot.querySelector("#code").appendChild(this._code);
       hljs.highlightBlock(this._code);
       hljs.initLineNumbersOnLoad({}, this.shadowRoot.querySelector("code"));
