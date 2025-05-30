@@ -247,7 +247,7 @@ class CleanTwo extends LTIResizingMixin(
           overflow-x: hidden;
         }
         :host([is-logged-in]) .body-wrapper {
-          height: calc(100vh - 48px);
+          height: calc(100vh - 56px);
         }
         :host([menu-open]) .body-wrapper .left-col {
           margin-left: 0px;
@@ -358,7 +358,7 @@ class CleanTwo extends LTIResizingMixin(
         }
 
         :host([is-logged-in]) site-menu {
-          height: calc(100vh - 48px);
+          height: calc(100vh - 56px);
         }
 
         main {
@@ -558,6 +558,7 @@ class CleanTwo extends LTIResizingMixin(
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
         }
+
         .right-col site-menu-content::before {
           top: 0;
           left: 0;
@@ -858,6 +859,7 @@ class CleanTwo extends LTIResizingMixin(
    */
   constructor() {
     super();
+    this.xl = 1800;
     this.HAXCMSThemeSettings.autoScroll = true;
     this.searchTerm = "";
     this.__disposer = this.__disposer ? this.__disposer : [];

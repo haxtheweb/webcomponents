@@ -64,7 +64,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         :host {
           display: block;
           position: relative;
-          height: 48px;
+          height: 56px;
           left: 0;
           top: 0;
           right: 0;
@@ -119,9 +119,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         #addmenubutton,
         #addmenubutton haxcms-button-add,
         #editbutton[icon="icons:save"] {
-          --simple-toolbar-border-color: var(
-            --simple-colors-default-theme-light-green-2
-          );
           color: var(--simple-colors-default-theme-green-11);
           background-color: var(--simple-colors-default-theme-grey-1);
         }
@@ -138,20 +135,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         #deletebutton,
         #cancelbutton {
           color: var(--simple-colors-default-theme-red-11);
-          --simple-toolbar-border-color: var(
-            --simple-colors-default-theme-red-2
-          );
         }
         .merlin {
-          color: var(--simple-colors-default-theme-purple-10);
-          --simple-toolbar-border-color: var(
-            --simple-colors-default-theme-purple-2
-          );
+          color: var(--simple-colors-default-theme-purple-11);
+        }
+        simple-toolbar-button.top-bar-button::part(button) {
+          --simple-toolbar-button-border-width: 1px;
+          border-top: 0;
+          border-bottom: 0;
         }
         simple-toolbar-button.merlin:hover,
         simple-toolbar-button.merlin:active,
         simple-toolbar-button.merlin:focus {
           background-color: var(--simple-colors-default-theme-purple-1);
+          color: light-darK(black, white);
         }
         #deletebutton:hover,
         #deletebutton:active,
@@ -179,7 +176,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         haxcms-button-add:hover,
         haxcms-button-add:active,
         haxcms-button-add:focus {
-          --simple-toolbar-border-color: var(--hax-ui-color-accent);
+          --simple-toolbar-border-color: black;
         }
         :host(:hover),
         :host(:active),
@@ -199,9 +196,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         app-hax-top-bar {
           z-index: 1000;
-          right: 0;
-          left: 0;
+          right: 8px;
+          left: 8px;
           position: fixed;
+          transition-delay: .9s;
+          transition: all .9s ease-in-out;
+        }
+        app-hax-top-bar[edit-mode] {
+          right: 0px;
+          left: 0px;
         }
         :host([dark-mode]) app-hax-top-bar {
           --bg-color: #222;
@@ -223,9 +226,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           color: var(--haxcms-color);
         }
         .haxLogo simple-icon-lite {
-          --simple-icon-height: 40px;
-          --simple-icon-width: 40px;
-          margin: 4px;
+          --simple-icon-height: 32px;
+          --simple-icon-width: 32px;
+          margin: 8px;
+          transition: all 0.3s ease-in-out;
         }
         .soundToggle {
           position: relative;
@@ -240,8 +244,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
         :host([edit-mode]) simple-toolbar simple-toolbar-button,
         :host([edit-mode]) simple-toolbar simple-toolbar-menu {
-          --simple-toolbar-border-color: var(--hax-ui-color-accent);
-          --simple-toolbar-border-color: #dddddddd;
+          --simple-toolbar-border-color: #dddddd;
         }
 
         simple-toolbar simple-toolbar-button,
@@ -345,14 +348,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           min-width: 48px;
           margin: 0;
           --simple-toolbar-border-color: #dddddddd;
-        }
-        :host([responsive-size="xs"]) #deletebutton,
-        :host([responsive-size="sm"]) #deletebutton,
-        :host([responsive-size="md"]) #deletebutton,
-        :host([responsive-size="xs"]) #cancelbutton,
-        :host([responsive-size="sm"]) #cancelbutton,
-        :host([responsive-size="md"]) #cancelbutton {
-          margin-right: 16px;
         }
 
         @media screen and (max-width: 800px) {
@@ -1545,6 +1540,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
           <simple-toolbar-button
             hidden
+            class="top-bar-button"
             id="editbutton"
             icon="${this.__editIcon}"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -1556,6 +1552,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           ></simple-toolbar-button>
            <simple-toolbar-button
             icon="icons:undo"
+            class="top-bar-button"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
             ?disabled="${!this.canUndo}"
             @click="${this.haxButtonOp}"
@@ -1569,6 +1566,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           </simple-toolbar-button>
           <simple-toolbar-button
             icon="icons:redo"
+            class="top-bar-button"
             @click="${this.haxButtonOp}"
             ?disabled="${!this.canRedo}"
             ?hidden="${!this.editMode}"
@@ -1583,6 +1581,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
           <simple-toolbar-button
             id="cancelbutton"
+            class="top-bar-button"
             icon="icons:cancel"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
             @click="${this._cancelButtonTap}"
@@ -1596,6 +1595,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
           <simple-toolbar-menu
             id="addmenubutton"
+            class="top-bar-button"
             ?hidden="${this.editMode}"
             ?disabled="${this.editMode}"
             icon="hax:add-page"
@@ -1652,6 +1652,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             id="deletebutton"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
             icon="icons:delete"
+            class="top-bar-button"
             @click="${this._deleteButtonTap}"
             label="${this.t.delete}"
             show-text-label
@@ -1661,6 +1662,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           <simple-toolbar-button
             data-event="content-edit"
             icon="settings"
+            class="top-bar-button"
             @click="${this.haxButtonOp}"
             id="content-edit"
             label="${this.t.configureBlock}"
@@ -1686,6 +1688,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             data-event="content-add"
             icon="hax:add-brick"
             id="content-add"
+            class="top-bar-button"
             label="${this.t.addBlock}"
             voice-command="select blocks (menu)"
             toggles
@@ -1699,6 +1702,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             ?hidden="${!this.editMode}"
             ?disabled="${!this.editMode}"
             icon="hax:multimedia"
+            class="top-bar-button"
             label="${this.t.findMedia}"
             voice-command="select media (menu)"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -1713,6 +1717,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             data-event="content-map"
             icon="hax:newspaper"
             id="content-map"
+            class="top-bar-button"
             label="${this.t.pageOutline}"
             voice-command="select content outline (menu)"
             toggles
@@ -1728,6 +1733,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             icon="hax:html-code"
             label="${this.t.viewSource}"
             data-event="view-source"
+            class="top-bar-button"
             @click="${this.haxButtonOp}"
             voice-command="view (page) source"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -1743,6 +1749,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             ?disabled="${this.editMode}"
             icon="hax:home-edit"
             part="morebtn"
+            class="top-bar-button"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
             label="${this.t.siteActions}"
             tabindex="${this.editMode ? "-1" : "0"}"
@@ -1812,7 +1819,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             label="${this.t.merlin}"
             voice-command="${this.t.merlin}"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
-            class="merlin"
+            class="merlin top-bar-button"
             id="merlin"
             @click="${this.haxButtonOp}"
             data-event="${

@@ -39,7 +39,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           position: relative;
         }
         :host([is-logged-in]) {
-          max-height: calc(100vh - 48px);
+          max-height: calc(100vh - 56px);
         }
         :host #slot {
           opacity: 0.2;
