@@ -114,7 +114,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         #editbutton[icon="icons:save"]:focus,
         #editbutton[icon="icons:save"]:active,
         #editbutton[icon="icons:save"]:hover {
-          background-color: var(--simple-colors-default-theme-light-green-1);
+          background-color: #edf7ed;
         }
         #addmenubutton,
         #addmenubutton haxcms-button-add,
