@@ -23,8 +23,8 @@ class MonacoElement extends LitElement {
         iframe {
           border: none;
           width: 100%;
-          min-height: var(--monaco-element-iframe-min-height, 250px);
-          height: 100%;
+          min-height: 250px;
+          height: var(--monaco-element-iframe-min-height, 100%);
           padding: 0;
           margin: 0;
           resize: vertical;

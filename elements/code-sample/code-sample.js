@@ -155,7 +155,7 @@ class CodeSample extends I18NMixin(LitElement) {
   // render function
   render() {
     return html` ${this._haxstate
-        ? html`<code-editor language="${this.type}" style="--monaco-element-iframe-min-height:${this.getMinHeight}"></code-editor>`
+        ? html`<code-editor language="${this.type}" style="--monaco-element-iframe-height:${this.getMinHeight()};"></code-editor>`
         : ``}
       <div class="code-sample-wrapper">
         <div id="theme"></div>
@@ -335,14 +335,6 @@ const great = "example";</template>`,
  * Ensure fields don't pass through to HAX if in that context
  */
   haxpreProcessNodeToContent(node) {
-    if (this.shadowRoot) {
-      const codeEditor = this.shadowRoot.querySelector("code-editor");
-      if (codeEditor) {
-        this.innerHTML = `<template preserve-content="preserve-content">${codeEditor.getValueAsNode().innerHTML}</template>`;
-      }
-    }
-    node.editMode = false;
-    node._haxstate = false;
     return node;
   }
 
