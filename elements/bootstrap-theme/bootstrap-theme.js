@@ -223,7 +223,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
           float: right;
         }
         :host([is-logged-in]) .site-body {
-          top: 48px;
+          top: 56px;
         }
         .btn-container {
           z-index: 2;

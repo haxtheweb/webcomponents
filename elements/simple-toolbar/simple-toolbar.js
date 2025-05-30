@@ -738,7 +738,14 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      *
      */
     _handleFocusChange() {
-      this.__focused = this.contains(document.activeElement);
+      if (globalThis.document.activeElement && globalThis.document.activeElement.shadowRoot) {
+        this.__focused = this.contains(
+          globalThis.document.activeElement.shadowRoot.activeElement,
+        );
+      }
+      else {
+        this.__focused = this.contains(document.activeElement);
+      }
     }
     /**
      * handles appended button
