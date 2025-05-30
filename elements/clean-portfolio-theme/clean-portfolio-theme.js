@@ -1216,6 +1216,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       e.stopPropagation();
       e.stopImmediatePropagation();
     }
+    else {
+      e.currentTarget.blur();
+    }
   }
 
   _renderListing() {
@@ -1250,7 +1253,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       ${filteredTags.length > 0
         ? filteredTags.map(
             (topTag) => html`
-              <h3 class="listing-category"><a @click="${this.testEditMode}" href="x/tags?tag=${topTag.trim()}">${topTag}</a></h3>
+              <h3 class="listing-category"><a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" @click="${this.testEditMode}" href="x/tags?tag=${topTag.trim()}">${topTag}</a></h3>
               <div class="listing-grid">
                 ${filteredItems.filter(item => {
                   let tags = toJS(item.metadata.tags);
@@ -1264,7 +1267,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                   let secondTag = toJS(item.metadata.tags).split(',')[1];
 
                   return html`
-                    <a class="listing-card" href="${item.slug}">
+                    <a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" class="listing-card" href="${item.slug}" @click="${this.testEditMode}">
                       <div class="listing-cardimg">
                         <img src="${getPostLogo(item)}" onerror="this.style.display='none'" alt="" loading="lazy"
                             decoding="async"
@@ -1291,7 +1294,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
             // Return all items with no tags
             return !toJS(item.metadata.tags);
           }).map(item => html`
-            <a class="listing-card" href="${item.slug}">
+            <a class="listing-card" href="${item.slug}" tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" @click="${this.testEditMode}">
               <div class="listing-cardimg">
                 <img src="${getPostLogo(item)}" onerror="this.style.display='none'" alt="" loading="lazy"
                     decoding="async"
@@ -1364,11 +1367,14 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     return html`
       <header>
         <div class="header-inner">
-          <a id="site-title" @click=${(e) => e.currentTarget.blur()} href="${this.homeLink}">${this.siteTitle}</a>
+          <a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" id="site-title" @click="${this.testEditMode}" href="${this.homeLink}">${this.siteTitle}</a>
           <nav>
             ${this.topItems.map(
                 (item) => html`
                   <a
+                    tabindex="${this.editMode ? '-1' : '0'}"
+                    ?disabled="${this.editMode}"
+                    @click="${this.testEditMode}"
                     class="menu-item ${this.activeItem && (item.id === this.activeItem.id || (this.ancestorItem && item.id === this.ancestorItem.id)) ? 'active' : ''}"
                     href="${item.slug}"
                   >
@@ -1380,7 +1386,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           ${this.menuOverflow.length > 0
             ? html`
               <div class="mobile-menu-wrapper">
-                <button type="button" class=${this.menuOpen ? 'close' : ''} @click=${() => this.menuOpen = !this.menuOpen}>
+                <button type="button" class=${this.menuOpen ? 'close' : ''} @click="${() => this.menuOpen = !this.menuOpen}">
                   <span class="visually-hidden">Toggle Menu</span>
                   <div class="navicon"></div>
                 </button>
@@ -1391,7 +1397,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                       <a
                         class="${this.activeItem && (item.id === this.activeItem.id || (this.ancestorItem && item.id === this.ancestorItem.id)) ? 'active' : ''}"
                         href="${item.slug}"
-                        @click=${(e) => e.currentTarget.blur()}
+                        tabindex="${this.editMode ? '-1' : '0'}"
+                        ?disabled="${this.editMode}"
+                        @click="${this.testEditMode}"
                       >
                         ${item.title}
                       </a>
@@ -1410,7 +1418,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       <div class="breadcrumb">
         ${this.activeParent
           ? html`
-            <a href=${this.activeParent.slug} @click=${(e) => e.currentTarget.blur()}>
+            <a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" href=${this.activeParent.slug} @click="${this.testEditMode}">
               <span class="breadcrumb-arrow">←</span>
               <span class="breadcrumb-parent">${this.activeParent.title}</span>
             </a>
@@ -1431,7 +1439,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                 <!-- Render select for filtering tags (only appears if >1 tag OR 1 tag and items with no tag) -->
                 ${(this.categoryTags.length > 1 || (this.categoryTags.length > 0 && this.items.some(item => !item.metadata.tags)))
                   ? html`
-                    <select id="listing-filter" @change=${(e) => this.selectedTag = e.target.value}>
+                    <select ?disabled="${this.editMode}" id="listing-filter" @change=${(e) => this.selectedTag = e.target.value}>
                       <option value="" ?selected="${this.selectedTag === ''}">All</option>
                       ${this.categoryTags.map(
                         (tag) => html`
@@ -1451,7 +1459,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                           ? this.activeTags
                           : this.activeTags.slice(1)
                         ).map(
-                          (item) => html`<li><a @click="${this.testEditMode}" href="x/tags?tag=${item.trim()}">${item}</a></li>`
+                          (item) => html`<li><a tabindex="${this.editMode ? '-1' : '0'}" @click="${this.testEditMode}" ?disabled="${this.editMode}" href="x/tags?tag=${item.trim()}">${item}</a></li>`
                         )}
                       </ul>
                   ` : ''}
@@ -1471,8 +1479,10 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           ? html`
             <a
               class="prev"
+              tabindex="${this.editMode ? '-1' : '0'}"
+              ?disabled="${this.editMode}"
               href="${this.prevSibling.slug}"
-              @click=${(e) => e.currentTarget.blur()}
+              @click="${this.testEditMode}"
             >
               <simple-icon-lite icon="icons:chevron-left"></simple-icon-lite>
               <span class="pagination-text">${this.prevSibling.title}</span>
@@ -1481,9 +1491,11 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           ${this.nextSibling
           ? html`
             <a
+              tabindex="${this.editMode ? '-1' : '0'}"
+              ?disabled="${this.editMode}"
               class="next"
               href="${this.nextSibling.slug}"
-              @click=${(e) => e.currentTarget.blur()}
+              @click="${this.testEditMode}"
             >
               <span class="pagination-text">${this.nextSibling.title}</span>
               <simple-icon-lite icon="icons:chevron-right"></simple-icon-lite>
@@ -1497,7 +1509,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           <div>Page number: ${this.pageCurrent} of ${this.pageTotal}</div>
           <div>Site generated: ${this.lastUpdated}</div>
           <div>Copyright: ${this.copyrightYear} ${store.manifest.author}</div>
-          <div><a class="footer-link" @click="${this.testEditMode}" href="x/tags">View Content by Tag</a></div>
+          <div><a class="footer-link" @click="${this.testEditMode}" tabindex="${this.editMode ? '-1' : '0'}" href="x/tags" ?disabled="${this.editMode}">View Content by Tag</a></div>
         </div>
         <div
           class="license-body"
@@ -1523,7 +1535,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
               ` : ``}
         </div>
         <simple-icon-button-lite icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
-        <scroll-button @click=${(e) => e.currentTarget.blur()}></scroll-button>
+        <scroll-button @click="${(e) => e.currentTarget.blur()}"></scroll-button>
       </footer>
     `;
   }
