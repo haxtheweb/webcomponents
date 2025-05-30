@@ -19,7 +19,7 @@ hljs.registerLanguage("php", phpLang);
 hljs.registerLanguage("yaml", yaml);
 hljs.registerLanguage("xml", xml);
 hljs.registerLanguage("html", xml);
-window["hljs"] = hljs;
+globalThis["hljs"] = hljs;
 highlightjs_line_numbers();
 
 /**

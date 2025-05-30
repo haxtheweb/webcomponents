@@ -594,7 +594,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .footer-link {
-        color: var(--portfolio-lightGrey) !important;
+        color: white !important;
         transition: color .3s;
       }
 
