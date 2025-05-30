@@ -44,11 +44,11 @@ export const HaxUiColors = [
 
       --hax-ui-color-accent: #009dc7;
       --hax-ui-color-accent-secondary: #007999;
-      --hax-ui-background-color-accent: #ccf3fd;
+      --hax-ui-background-color-accent: #e5f6fd;
 
       --hax-ui-color-danger: #ee0000;
       --hax-ui-color-danger-secondary: #850000;
-      --hax-ui-background-color-danger: #ffdddd;
+      --hax-ui-background-color-danger: #fdeded;
 
       --hax-ui-border-color: #ddd;
     }
