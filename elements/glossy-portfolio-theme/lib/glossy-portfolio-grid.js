@@ -163,7 +163,9 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
     ${this.filteredData.map((item)=>{ return html`
         <glossy-portfolio-card class="card" 
         title="${item.title}" 
-        thumbnail=${item.metadata.images[0]}
+        thumbnail=${item.metadata.images[0]?
+        item.metadata.images[0]
+        :"https://img.freepik.com/premium-photo/cool-cat-wearing-pink-sunglasses-with-neon-light-background_514761-16858.jpg"}
         slug="${item.slug}"
         >
       </glossy-portfolio-card>
@@ -185,7 +187,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
     if (changedProperties.has("data")) {
       //sort alphabetically
       if(this.data && this.data.length > 0){
-        this.data.sort((a, b) => a.title.localeCompare(b.title));
+        // this.data.sort((a, b) => a.title.localeCompare(b.title));
         this.filteredData = this.data; 
         this.filtersList = [];
         

@@ -21,7 +21,8 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "Title";
-    this.thumbnail = "https://github.com/NazmanRosman/graphic-portfolio/blob/main/lib/thumbnails/impactra.png?raw=true",
+    // this.thumbnail = "https://github.com/NazmanRosman/graphic-portfolio/blob/main/lib/thumbnails/impactra.png?raw=true",
+    this.thumbnail ="https://img.freepik.com/premium-photo/cool-cat-wearing-pink-sunglasses-with-neon-light-background_514761-16858.jpg",
     this.slug = "https://google.com",
     this.tags =  [];
 

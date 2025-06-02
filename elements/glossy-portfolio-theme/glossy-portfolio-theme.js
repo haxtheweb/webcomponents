@@ -209,7 +209,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         font-family: inherit;
       }
 
-      ul{
+      ol, ul{
         margin-bottom: 1em;
       }
       
@@ -278,6 +278,24 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         color: white;
       }
 
+      glossy-portfolio-footer{
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+      .body-wrapper { 
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      .grow {
+        flex: 1 0 auto; /* Allow this element to grow and fill available space */
+      }
+      .not-grow {
+        flex: 0 0 auto; /* Prevent this element from growing */
+      }
+
   
       /* Extra small devices (phones) */
       @media (max-width: 575.98px) {
@@ -302,7 +320,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     return html`
     <!-- temporary margin-top  -->
 <div class="body-wrapper" style="margin-top: 150px"> 
-  <div id="contentcontainer">
+  <div id="contentcontainer" class="grow">
     <div class="wrapper">
       <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
 
@@ -316,14 +334,15 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
   <!-- display grid of children items -->
   ${ this.childrenArray && this.childrenArray.length > 0
-  ? html` <glossy-portfolio-grid title=${activeTitle} .data=${this.childrenArray} style=""></glossy-portfolio-grid>`
+  ? html` <glossy-portfolio-grid class="grow" title=${activeTitle} .data=${this.childrenArray} style=""></glossy-portfolio-grid>`
   : ``}
 
   <!-- display grid of related items -->
   ${ this.relatedItems&&this.relatedItems.length > 0
-  ? html` <glossy-portfolio-grid title="RELATED CONTENT" .data=${this.relatedItems} style=""></glossy-portfolio-grid>`
+  ? html` <glossy-portfolio-grid class="grow" title="RELATED CONTENT" .data=${this.relatedItems} style=""></glossy-portfolio-grid>`
   : ``}
-    <glossy-portfolio-footer></glossy-portfolio-footer>
+  <footer><glossy-portfolio-footer class="not-grow"></glossy-portfolio-footer></footer>
+  <!-- <glossy-portfolio-footer></glossy-portfolio-footer> -->
 
 
 

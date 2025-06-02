@@ -70,40 +70,61 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
       *{
         box-sizing: border-box;
       }
-      .wrapper{
-        height: 300px;
-        padding-top: 10px;
-        background-color: #1d1d1d;
+      .background{
+        background-color: #161616;
         display: flex;
-        justify-content: space-evenly;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
       }
+      .wrapper {
+        height: auto;
+        padding: var(--page-padding);
+        padding-top: 20px;
+        padding-bottom: 20px;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr; /* Three columns: left, center, right */
+        align-items: center;
+        width: 100%;
+        max-width: var(--max-width);
 
-      .license{
-
+        
       }
+      p {
+        margin: 0;
+        font-family: Inter;
+        color: #ffffff97;
+        font-size: 0.8rem;
+        text-align: center; /* Center-align text inside the grid cell */
+        font-weight: 300;
+      }
+      .item {
+        justify-self: start; /* Align left-side text to the start */
+      }
+      .center {
+        justify-self: center; /* Center-align the copyright text */
+      }
+      .license {
+        justify-self: end; /* Align the license image to the end */
+      }
+
 
     `];
   }
 
-openHamburger(){
-
-}
 
   // Lit render the HTML
   render() {
     return html`
-<div class="wrapper">
-  <div class="site-details">
-    <p>Last updated: ${this.lastUpdated}</p>
-
-    <p>© ${this.copyrightYear}</p>
-  </div>
-
-  <div class="license"> 
-    <a href="${this.licenseLink}" target="_blank">
-      <img src="${this.licenseImage}" alt="${this.licenseName}" />
-    </a>
+<div class="background">
+  <div class="wrapper">
+      <p class="item"> Last updated: ${this.lastUpdated} </p>
+      <p class="center">© ${this.copyrightYear}   </p>
+    <div class="license item"> 
+      <a href="${this.licenseLink}" target="_blank">
+        <img src="${this.licenseImage}" alt="${this.licenseName}" />
+      </a>
+    </div>
   </div>
 </div>
 
