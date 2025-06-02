@@ -759,7 +759,18 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       css`
         :host {
           display: block;
+          --app-hax-accent-color: light-dark(black, white);
+          --app-hax-background-color: light-dark(white, black);
           --app-hax-background-color-active: var(--app-hax-accent-color);
+          --simple-toast-z-index: 10000000;
+          --simple-toast-color: light-dark(black, white);
+          --simple-toast-bg: light-dark(white, black);
+          --simple-toast-font-size: 16px;
+          --simple-toast-margin: 0;
+          --simple-toast-left: 0;
+          --simple-toast-bottom: 0;
+          --simple-toast-right: 0;
+          --simple-toast-height: 80px;
         }
         #home {
           display: inline-flex;
