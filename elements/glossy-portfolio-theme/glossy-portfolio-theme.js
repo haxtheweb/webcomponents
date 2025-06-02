@@ -316,11 +316,11 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
   <!-- display grid of children items -->
   ${ this.childrenArray && this.childrenArray.length > 0
-  ? html` ${console.log(this.childrenArray)} <glossy-portfolio-grid title=${activeTitle} .data=${this.childrenArray} style=""></glossy-portfolio-grid>`
+  ? html` <glossy-portfolio-grid title=${activeTitle} .data=${this.childrenArray} style=""></glossy-portfolio-grid>`
   : ``}
 
   <!-- display grid of related items -->
-  ${ this.relatedItems.length > 0
+  ${ this.relatedItems&&this.relatedItems.length > 0
   ? html` <glossy-portfolio-grid title="RELATED CONTENT" .data=${this.relatedItems} style=""></glossy-portfolio-grid>`
   : ``}
     <glossy-portfolio-footer></glossy-portfolio-footer>

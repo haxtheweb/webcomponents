@@ -22,9 +22,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
-    this.title = "Title";
-    this.thumbnail = "impactra.png",
-    this.link = "https://google.com",
+
     this.filtersList = [],
     this.filteredData = [];
     this.data = [];
@@ -36,9 +34,6 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
   static get properties() {
     return {
       ...super.properties,
-      title: { type: String },
-      thumbnail: {type: String},
-      link: {type: String},
       filteredData: { type: Array },
       data: { type: Array },
       filtersList: { type: Array },

@@ -13,6 +13,17 @@ import { autorun, toJS } from "mobx";
  * @demo index.html
  * @element glossy-portfolio-header
  */
+function getPostLogo(item) {
+  // Check if item has a logo, otherwise use the image from metadata
+  if (item.metadata.image) {
+    return item.metadata.image;
+  } else if (store.manifest.metadata.theme.variables.image) {
+    return toJS(store.manifest.metadata.theme.variables.image);
+  } else {
+    // Fallback to the site's default image
+    return toJS(store.manifest.metadata.site.logo);
+  }
+}
 export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
   static get tag() {
@@ -40,7 +51,16 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       this.homeLink = toJS(store.homeLink);
       this.__disposer.push(reaction);
     });
+    //get logo
+    autorun((reaction) => {
+      this.logo = toJS(store.logo);
+      console.log(this.logo)
+      this.__disposer.push(reaction);
+    });
   }
+  
+
+  
   // Lit reactive properties
   static get properties() {
     return {
@@ -268,8 +288,8 @@ openHamburger(){
   <!-- <img class="logo" src="lib/components/logo.svg" > -->
   <div class="logo-hamburger">
     <a href="${this.homeLink}">
-    <svg class="logo" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="50px" height="50px"><path d="M36,3.99H14c-5.51,0-10,4.49-10,10v22c0,5.51,4.49,10,10,10h22c5.51,0,10-4.49,10-10v-22C46,8.48,41.51,3.99,36,3.99z M27,35c-0.55,0-1-0.45-1-1v-4c0-0.55,0.45-1,1-1c3.86,0,7-3.14,7-7c0-3.52-2.61-6.44-6-6.93v2.03c2.28,0.46,4,2.49,4,4.9	c0,2.76-2.24,5-5,5c-0.55,0-1-0.45-1-1s0.45-1,1-1c1.65,0,3-1.35,3-3c0-1.65-1.35-3-3-3c-0.55,0-1-0.45-1-1v-4c0-0.55,0.45-1,1-1	c4.96,0,9,4.04,9,9c0,4.62-3.51,8.45-8,8.94v2.02c5.6-0.51,10-5.23,10-10.96c0-6.07-4.93-11-11-11h-3v29c0,0.55-0.45,1-1,1h-4	c-0.55,0-1-0.45-1-1V11h-2v29c0,0.55-0.45,1-1,1s-1-0.45-1-1V10c0-0.55,0.45-1,1-1h4c0.55,0,1,0.45,1,1v29h2V10c0-0.55,0.45-1,1-1h4	c7.17,0,13,5.83,13,13C40,29.17,34.17,35,27,35z"/></svg>
-    </a>
+      <img class="logo" src="${getPostLogo(store.manifest)}" alt="Logo" />
+  </a>
     <button>
       <!-- <img @click="" class="hamburger" src="../lib/components/hamburger.svg" width="70px"> -->
       <svg class="hamburger" @click="${this.openHamburger}"  width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
