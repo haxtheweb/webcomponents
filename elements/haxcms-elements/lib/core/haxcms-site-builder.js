@@ -131,10 +131,8 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       data = tmp.innerHTML;
       // cheat to ensure we get a rebuild of the content in case
       // they only modified page title / other page-break based details
-      this.activeItemContent = "";
-      setTimeout(() => {
-        this.activeItemContent = data;
-      }, 0);
+      this.__pageContent = data;
+      this._activeItemContentChanged(this.__pageContent, toJS(store.activeItem));
     }
     // punt, we didn't find anything
     else if (
@@ -142,8 +140,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       store.cmsSiteEditorBackend.instance.updateActiveItemContent
     ) {
       store.cmsSiteEditorBackend.instance.updateActiveItemContent();
-    } else {
-      this.activeItemContent = "";
     }
   }
   display404Error() {
@@ -312,26 +308,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           }),
         );
         this._manifestChanged(this[propName], oldValue);
-      } else if (propName == "activeItem") {
-        // fire an to match notify
-        this.dispatchEvent(
-          new CustomEvent("active-item-changed", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: this[propName],
-          }),
-        );
-        this._activeItemChanged(this[propName], oldValue);
-      } else if (propName == "activeItemContent") {
-        // fire an to match notify
-        this.dispatchEvent(
-          new CustomEvent("active-item-content-changed", {
-            bubbles: true,
-            detail: this[propName],
-          }),
-        );
-        this._activeItemContentChanged(this[propName], oldValue);
       }
     });
     if (loadOutline && this.__ready) {
@@ -414,12 +390,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         attribute: "theme-loaded",
       },
       /**
-       * Active item content
-       */
-      activeItemContent: {
-        type: String,
-      },
-      /**
        * Location of the site.json file
        */
       file: {
@@ -459,7 +429,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       if (e.detail && e.detail.value) {
         // if we force reloads then let's do it now
         if (
-          window &&
+          globalThis &&
           globalThis.location &&
           globalThis.appSettings &&
           globalThis.appSettings.reloadOnError
@@ -475,7 +445,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         // no detail is bad, this implies a server level connection error
         // if we force reloads then let's do it now
         if (
-          window &&
+          globalThis &&
           globalThis.location &&
           globalThis.appSettings &&
           globalThis.appSettings.reloadOnError
@@ -490,6 +460,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    */
   constructor() {
     super();
+    this.__pageContent = '';
     this.windowControllers = new AbortController();
     this.t = {
       ...super.t,
@@ -678,6 +649,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       });
       autorun((reaction) => {
         const activeItem = toJS(store.activeItem);
+        // often, active item is in the process of being updated on a page save
+        // this generates potential delay in presentation of the node, leading to the
+        // a short time where activeItem is not accurate while manifest is being rebuilt
+        if (activeItem && this.__pageContent) {
+          this._activeItemContentChanged(this.__pageContent, activeItem)
+        }
         if (activeItem && activeItem.location) {
           this.activeItemLocation = activeItem.location;
         }
@@ -736,111 +713,84 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   /**
    * React to content being loaded from a page.
    */
-  _activeItemContentChanged(newValue, oldValue) {
-    if (newValue) {
-      var html = newValue;
-      // only append if not empty
-      if (html !== null && store.activeItem && store.activeItem.metadata) {
-        wipeSlot(store.themeElement, "*");
-        // force a page break w/ the relevant details in code
-        // this allows the UI to be modified
-        // required fields followed by optional fields if defined
-        newValue = `<page-break
-        break-type="site"
-        title="${store.activeItem.title}"
-        parent="${store.activeItem.parent}"
-        item-id="${store.activeItem.id}"
-        slug="${store.activeItem.slug}"
-        description="${store.activeItem.description}"
-        order="${store.activeItem.order}"
-        ${store.activeItem.metadata.pageType ? `page-type="${store.activeItem.metadata.pageType}"` : ``}
-        ${store.activeItem.metadata.tags ? `tags="${store.activeItem.metadata.tags}"` : ``}
-        ${store.activeItem.metadata.hideInMenu ? `hide-in-menu="hide-in-menu"` : ``}
-        ${store.activeItem.metadata.relatedItems ? `related-items="${store.activeItem.metadata.relatedItems}"` : ``}
-        ${store.activeItem.metadata.image ? `image="${store.activeItem.metadata.image}"` : ``}
-        ${store.activeItem.metadata.icon ? `icon="${store.activeItem.metadata.icon}"` : ``}
-        ${store.activeItem.metadata.accentColor ? `accent-color="${store.activeItem.metadata.accentColor}"` : ``}
-        ${store.activeItem.metadata.theme && store.activeItem.metadata.theme.key ? `developer-theme="${store.activeItem.metadata.theme.key}"` : ``}
-        ${store.activeItem.metadata.locked ? 'locked="locked"' : ""}
-        ${store.activeItem.metadata.published === false ? "" : 'published="published"'} ></page-break>${newValue}`;
-        html = encapScript(newValue);
-        // set in the store
-        store.activeItemContent = html;
-        // insert the content as quickly as possible, then work on the dynamic imports
-        setTimeout(() => {
-          if (store.themeElement.childNodes.length === 0) {
-            let frag = document
-              .createRange()
-              .createContextualFragment(this.replaceTagReplacement(html));
-            store.themeElement.appendChild(frag);
-            this.dispatchEvent(
-              new CustomEvent("json-outline-schema-active-body-changed", {
-                bubbles: true,
-                composed: true,
-                cancelable: false,
-                detail: html,
-              }),
-            );
-          }
-          // if there are, dynamically import them but only if we don't have a global manager
-          if (
-            !globalThis.WCAutoload &&
-            varExists(this.manifest, "metadata.node.dynamicElementLoader")
-          ) {
-            let tagsFound = findTagsInHTML(html);
-            const basePath =
-              new URL("../../locales/haxcms.es.json", import.meta.url).href +
-              "/../";
-            for (var i in tagsFound) {
-              const tagName = tagsFound[i];
-              if (
-                this.manifest.metadata.node.dynamicElementLoader[tagName] &&
-                !globalThis.customElements.get(tagName)
-              ) {
-                // prettier-ignore
-                import(
-                  `${basePath}../../../../${this.manifest.metadata.node.dynamicElementLoader[tagName]}`
-                )
-                  .then((response) => {
-                    //console.warn(tagName + ' dynamic import');
-                  })
-                  .catch((error) => {
-                    /* Error handling */
-                    console.warn(error);
-                  });
-              }
+  _activeItemContentChanged(newValue, activeItem) {
+    var htmlcontent = newValue;
+    if (htmlcontent !== null && activeItem && activeItem.metadata) {
+      wipeSlot(store.themeElement, "*");
+      // force a page break w/ the relevant details in code
+      // this allows the UI to be modified
+      // required fields followed by optional fields if defined
+      htmlcontent = `<page-break
+      break-type="site"
+      title="${activeItem.title}"
+      parent="${activeItem.parent}"
+      item-id="${activeItem.id}"
+      slug="${activeItem.slug}"
+      description="${activeItem.description}"
+      order="${activeItem.order}"
+      ${activeItem.metadata.pageType ? `page-type="${activeItem.metadata.pageType}"` : ``}
+      ${activeItem.metadata.tags ? `tags="${activeItem.metadata.tags}"` : ``}
+      ${activeItem.metadata.hideInMenu ? `hide-in-menu="hide-in-menu"` : ``}
+      ${activeItem.metadata.relatedItems ? `related-items="${activeItem.metadata.relatedItems}"` : ``}
+      ${activeItem.metadata.image ? `image="${activeItem.metadata.image}"` : ``}
+      ${activeItem.metadata.icon ? `icon="${activeItem.metadata.icon}"` : ``}
+      ${activeItem.metadata.accentColor ? `accent-color="${activeItem.metadata.accentColor}"` : ``}
+      ${activeItem.metadata.theme && activeItem.metadata.theme.key ? `developer-theme="${activeItem.metadata.theme.key}"` : ``}
+      ${activeItem.metadata.locked ? 'locked="locked"' : ""}
+      ${activeItem.metadata.published === false ? "" : 'published="published"'} ></page-break>${htmlcontent}`;
+      htmlcontent = encapScript(htmlcontent);
+      // set in the store
+      store.activeItemContent = htmlcontent;
+      // insert the content as quickly as possible, then work on the dynamic imports
+      setTimeout(() => {
+        if (store.themeElement.childNodes.length === 0) {
+          let frag = document
+            .createRange()
+            .createContextualFragment(this.replaceTagReplacement(htmlcontent));
+          store.themeElement.appendChild(frag);
+          this.dispatchEvent(
+            new CustomEvent("json-outline-schema-active-body-changed", {
+              bubbles: true,
+              composed: true,
+              cancelable: false,
+              detail: htmlcontent,
+            }),
+          );
+        }
+        // if there are, dynamically import them but only if we don't have a global manager
+        if (
+          !globalThis.WCAutoload &&
+          varExists(this.manifest, "metadata.node.dynamicElementLoader")
+        ) {
+          let tagsFound = findTagsInHTML(htmlcontent);
+          const basePath =
+            new URL("../../locales/haxcms.es.json", import.meta.url).href +
+            "/../";
+          for (var i in tagsFound) {
+            const tagName = tagsFound[i];
+            if (
+              this.manifest.metadata.node.dynamicElementLoader[tagName] &&
+              !globalThis.customElements.get(tagName)
+            ) {
+              // prettier-ignore
+              import(
+                `${basePath}../../../../${this.manifest.metadata.node.dynamicElementLoader[tagName]}`
+              )
+                .then((response) => {
+                  //console.warn(tagName + ' dynamic import');
+                })
+                .catch((error) => {
+                  /* Error handling */
+                  console.warn(error);
+                });
             }
-          } else if (globalThis.WCAutoload) {
-            setTimeout(() => {
-              globalThis.WCAutoload.process();
-            }, 0);
           }
-        }, 5);
-      }
-    }
-  }
-  /**
-   * Active item updated, let's request the content from it
-   */
-  _activeItemChanged(newValue, oldValue) {
-    if (
-      this.shadowRoot &&
-      newValue &&
-      typeof newValue.id !== typeof undefined
-    ) {
-      this.queryParams.nodeId = newValue.id;
-    }
-    // we had something, now we don't. wipe out the content area of the theme
-    else if (oldValue && !newValue) {
-      // fire event w/ nothing, this is because there is no content
-      this.dispatchEvent(
-        new CustomEvent("json-outline-schema-active-body-changed", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: null,
-        }),
-      );
+        } else if (globalThis.WCAutoload) {
+          setTimeout(() => {
+            globalThis.WCAutoload.process();
+          }, 0);
+        }
+      }, 5);
     }
   }
 
