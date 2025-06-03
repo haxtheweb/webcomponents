@@ -656,10 +656,8 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           this._activeItemContentChanged(this.__pageContent, activeItem)
         }
         if (activeItem && activeItem.location) {
-          this.activeItemLocation = '';
-          setTimeout(() => {
-            this.activeItemLocation = activeItem.location;            
-          }, 0);
+            this.activeItemLocation = activeItem.location;
+            this.loadPageData();         
         }
         this.__disposer.push(reaction);
       });
@@ -719,7 +717,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   _activeItemContentChanged(newValue, activeItem) {
     var htmlcontent = newValue;
     if (htmlcontent !== null && activeItem && activeItem.metadata) {
-      wipeSlot(store.themeElement, "*");
       // force a page break w/ the relevant details in code
       // this allows the UI to be modified
       // required fields followed by optional fields if defined
@@ -742,7 +739,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       ${activeItem.metadata.locked ? 'locked="locked"' : ""}
       ${activeItem.metadata.published === false ? "" : 'published="published"'} ></page-break>${htmlcontent}`;
       htmlcontent = encapScript(htmlcontent);
-      // set in the store
+      wipeSlot(store.themeElement, "*");
       store.activeItemContent = htmlcontent;
       // insert the content as quickly as possible, then work on the dynamic imports
       setTimeout(() => {
