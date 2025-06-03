@@ -339,13 +339,13 @@ const great = "example";</template>`,
   }
 
   haxeditModeChanged(value) {
-    this._haxstate = value;
     if (!value && this.shadowRoot) {
       const codeEditor = this.shadowRoot.querySelector("code-editor");
-      if (codeEditor) {
+      if (codeEditor && codeEditor.getValueAsNode) {
         this.innerHTML = `<template preserve-content="preserve-content">${codeEditor.getValueAsNode().innerHTML}</template>`;
       }
     }
+    this._haxstate = value;
   }
 
   // ensure that we are in edit mode as soon as we activate this element

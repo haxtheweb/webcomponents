@@ -599,8 +599,8 @@ class AppHaxTheme extends HAXCMSRememberRoute(
             auto,
             20% auto,
             20% auto;
-          --app-hax-accent-color: black;
-          --app-hax-background-color: white;
+          --app-hax-accent-color: light-dark(black, white);
+          --app-hax-background-color: light-dark(white, black);
           --simple-tooltip-background: #000000;
           --simple-tooltip-opacity: 1;
           --simple-tooltip-text-color: #ffffff;

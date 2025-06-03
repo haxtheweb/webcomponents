@@ -1240,7 +1240,7 @@ class HAXCMSSiteStore extends HTMLElement {
         // get the id from the router
         const id = store.location.route.name;
         // make sure that we aren't in edit mode
-        let found = store.manifest.items.filter((item) => {
+        let found = store.manifest.items.find((item) => {
           if (item.id !== id) {
             return false;
           }
@@ -1248,6 +1248,18 @@ class HAXCMSSiteStore extends HTMLElement {
         });
         if (found) {
           store.activeId = id;
+        }
+        else if (store.getInternalRoute()) {
+          // we need other stuff to work with this.
+          store.activeId = '404';
+        }
+        else {
+          const firstItem = store.manifest.items.find(
+            (i) => typeof i.id !== "undefined",
+          );
+          if (firstItem) {
+            store.activeId = firstItem.id;
+          }
         }
       }
     });

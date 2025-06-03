@@ -91,6 +91,10 @@ export class RPGCharacterToast extends SimpleToastEl {
             --simple-toast-color,
             var(--simple-colors-default-theme-accent-12, black)
           );
+          background-color: var(
+            --simple-toast-bg,
+            var(--simple-colors-default-theme-accent-1, white)
+          );
           top: var(--simple-toast-top);
           bottom: var(--simple-toast-bottom, 36px);
           right: var(--simple-toast-right, 0px);
@@ -164,11 +168,6 @@ export class RPGCharacterToast extends SimpleToastEl {
             url("${unsafeCSS(SpeechBubbleR)}")
           );
           width: 40px;
-        }
-        :host([dark-mode]) .mid,
-        :host([dark-mode]) .leftedge,
-        :host([dark-mode]) .rightedge {
-          filter: invert(1);
         }
         .progress {
           border: 2px solid var(--ddd-theme-default-keystoneYellow);

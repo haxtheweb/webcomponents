@@ -47,8 +47,8 @@
 
   /** simple-toast **/
   --simple-toast-z-index: 10000000;
-  --simple-toast-color: black;
-  --simple-toast-bg: white;
+  --simple-toast-color: light-dark(black, white);
+  --simple-toast-bg: light-dark(white, black);
   --simple-toast-font-size: 16px;
   --simple-toast-margin: 0;
   --simple-toast-left: 0;
@@ -143,12 +143,10 @@ hax-tray {
 }
 
 body {
-  --app-hax-accent-color: black;
-  --app-hax-background-color: white;
+  --app-hax-accent-color: light-dark(black, white);
+  --app-hax-background-color: light-dark(white, black);
 }
 body.dark-mode {
-  --app-hax-accent-color: white;
-  --app-hax-background-color: black;
   --editable-table-bg-color: var(--simple-colors-default-theme-grey-8);
   --editable-table-stripe-bg-color: var(--simple-colors-default-theme-grey-9);
   --editable-table-color: var(--simple-colors-default-theme-grey-1);
