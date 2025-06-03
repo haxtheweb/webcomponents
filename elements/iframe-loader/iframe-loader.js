@@ -10,6 +10,11 @@ export class IframeLoader extends LitElement {
       loading: { type: Boolean },
       height: { type: String },
       width: { type: String },
+      isPDF: {
+        type: Boolean,
+        reflect: true,
+        attribute: "is-pdf",
+      },
       disabled: {
         type: Boolean,
         reflect: true,
@@ -53,6 +58,7 @@ export class IframeLoader extends LitElement {
   }
   constructor() {
     super();
+    this.isPDF = false;
     this.invalidSource = false;
     this.disabled = false;
     this.loading = true;
@@ -72,7 +78,8 @@ export class IframeLoader extends LitElement {
         this.height = this.__iframe.getAttribute("height") || this.height;
         this.width = this.__iframe.getAttribute("width") || this.width;
       }
-    } else {
+    }
+    else {
       this.source = null;
     }
     this.__mutationObserver = new MutationObserver((mutations) => {
@@ -109,7 +116,8 @@ export class IframeLoader extends LitElement {
   }
 
   iframeLoadingCallback(e) {
-    setTimeout(() => {
+    clearTimeout(this.__debounce);
+    this.__debounce = setTimeout(() => {
       this.loading = false;
       if (e && e.path && e.path[0] && e.path[0].height) {
         this.height = e.path[0].height;
@@ -162,7 +170,10 @@ export class IframeLoader extends LitElement {
         attributes: true,
       });
       this.__iframe.setAttribute("src", this.source);
-      this.__iframe.setAttribute("sandbox", "allow-scripts allow-same-origin");
+      // PDFs can't work if this security is applied so we need to check
+      if (!this.isPDF) {
+        this.__iframe.setAttribute("sandbox", "allow-scripts allow-same-origin");
+      }
       this.appendChild(this.__iframe);
     }
   }
@@ -183,8 +194,26 @@ export class IframeLoader extends LitElement {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (!this.invalidSource) {
-        if (propName === "source") {
+        if (propName === "isPDF" && this.__iframe) {
+          if (this.isPDF) {
+            this.__iframe.removeAttribute("sandbox");
+          } else {
+            this.__iframe.setAttribute("sandbox", "allow-scripts allow-same-origin");
+          }
+        }
+        else if (propName === "source") {
+          this.isPDF = false;
+          // test if source is a PDF
+          if (this.source && this.source.endsWith(".pdf")) {
+            this.isPDF = true;
+          }
+
           if (this.__iframe) {
+            if (this.isPDF) {
+              this.__iframe.removeAttribute("sandbox");
+            } else {
+              this.__iframe.setAttribute("sandbox", "allow-scripts allow-same-origin");
+            }
             this.__iframe.setAttribute("src", this.source);
           } else {
             this.__iframe = globalThis.document.createElement("iframe");
@@ -193,10 +222,16 @@ export class IframeLoader extends LitElement {
             this.__mutationObserver.observe(this.__iframe, {
               attributes: true,
             });
+            if (this.isPDF) {
+              this.__iframe.removeAttribute("sandbox");
+            } else {
+              this.__iframe.setAttribute("sandbox", "allow-scripts allow-same-origin");
+            }
             this.__iframe.setAttribute("src", this.source);
             this.appendChild(this.__iframe);
           }
-        } else if (["height", "width"].includes(propName)) {
+        }
+        else if (["height", "width"].includes(propName)) {
           if (this.__iframe) {
             this.__iframe.setAttribute(propName, this[propName]);
           }
