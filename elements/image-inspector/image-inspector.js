@@ -89,7 +89,7 @@ class ImageInspector extends LitElement {
             icon="image:flip"
             @click="${this.mirrorImage}"
           ></simple-icon-button>
-          <a href="${this.src}" target="_blank" rel="noopener noreferrer">
+          <a href="${this.src}" target="_blank" rel="noopener noreferrer" tabindex="-1">
             <simple-icon-button
               label="Open in new window"
               icon="launch"

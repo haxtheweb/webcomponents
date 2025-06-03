@@ -200,6 +200,7 @@ export const HaxUiSingletons = [
     }
     simple-modal[opened] {
       z-index: 100000001 !important;
+      position: fixed;
     }
     simple-modal[mode="hax-ui"]::part(titlebar),
     simple-popover-manager[mode="hax"]::part(simple-popover-heading),

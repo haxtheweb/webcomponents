@@ -67,6 +67,11 @@
   --place-holder-drag-over-border: 4px dashed var(--haxcms-color, --haxcms-system-bg);
 }
 
+simple-modal[opened] {
+  z-index: var(--simple-modal-z-index) !important;
+  position: fixed;
+}
+
 super-daemon {
   --simple-modal-z-index: 100000001;
 }
