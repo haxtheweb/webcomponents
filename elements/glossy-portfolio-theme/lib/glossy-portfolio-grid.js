@@ -22,33 +22,18 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
-    this.title = "Title";
-    this.thumbnail = "impactra.png",
-    this.link = "https://google.com",
-    this.filtersList = new Set(),
+
+    this.filtersList = [],
     this.filteredData = [];
     this.data = [];
     this.activeFilter = '';
-
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
-    autorun(() => {
-      this.data = toJS(store.manifest.items);
-      console.log(this.data);
-    }
-  );
+    
   }
 
   // Lit reactive properties
   static get properties() {
     return {
       ...super.properties,
-      title: { type: String },
-      thumbnail: {type: String},
-      link: {type: String},
       filteredData: { type: Array },
       data: { type: Array },
       filtersList: { type: Array },
@@ -79,6 +64,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
         width: 100%;
         padding: var(--page-padding);
         min-height: 100vh;
+        padding-bottom: 30px;
       }
       .projects-header{
         display: flex;
@@ -86,9 +72,9 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
         padding: 50px 0;
         max-width: 100%;
       }
-      .latest-projects{
-        font-size: 18px;
-        font-weight: 500;
+      .grid-title{
+        font-size: 1rem;
+        font-weight: 800;
         letter-spacing: 1.7px;
 
       }
@@ -105,7 +91,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
       .filter{
         font-family: "Inter", "Inter Placeholder", sans-serif;
-        font-size: 16px;
+        font-size: 1rem;
         color: rgb(153, 153, 153);
       }
       .card-container {
@@ -153,12 +139,13 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
   // Lit render the HTML
   render() {
+
     return html`
           
 <div class = "container-background">
   <div class="projects-header">
 
-    <div class="latest-projects">LATEST PROJECTS</div>
+    <div class="grid-title">${this.title.toUpperCase()}</div>
     <div class="filters">
       <button class="filter active" name="all" @click="${this.updateFilter}">All</button>
       
@@ -173,11 +160,14 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
   </div>
   <div class="card-container">
-
     ${this.filteredData.map((item)=>{ return html`
         <glossy-portfolio-card class="card" 
         title="${item.title}" 
-        thumbnail=${item.thumbnail}>
+        thumbnail=${item.metadata.images[0]?
+        item.metadata.images[0]
+        :"https://img.freepik.com/premium-photo/cool-cat-wearing-pink-sunglasses-with-neon-light-background_514761-16858.jpg"}
+        slug="${item.slug}"
+        >
       </glossy-portfolio-card>
       `})}
     </div> 
@@ -196,19 +186,23 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
     super.updated(changedProperties);
     if (changedProperties.has("data")) {
       //sort alphabetically
-      this.data.sort((a, b) => a.title.localeCompare(b.title));
-      this.filteredData = this.data; 
-
-      //add tags to filters list (which is a *Set* to prevent dups)
-      this.data.forEach((d) => {
-        if (d.metadata.tags !== undefined && d.metadata.tags !== null && d.metadata.tags.split(',').length > 0) {
-          this.filtersList.add(d.metadata.tags.split(",")[0]);
-        }
-      });
+      if(this.data && this.data.length > 0){
+        // this.data.sort((a, b) => a.title.localeCompare(b.title));
+        this.filteredData = this.data; 
+        this.filtersList = [];
+        
+        this.data.forEach((d) => {
+          if (d.metadata.tags !== undefined && d.metadata.tags !== null && d.metadata.tags.split(',').length > 0) {
+            const firstTag = d.metadata.tags.split(",")[0];
+            if (!this.filtersList.includes(firstTag)) { //check for duplicate
+              this.filtersList.push(firstTag);
+            }
+          }
+        });
+      }
+      
     }
   }
-
-
 
   _updateFilter(target, currentTarget){
     this.activeFilter = target.getAttribute("name");
@@ -236,11 +230,12 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
       this.filteredData=this.data;
     } else{
       this.filteredData = [];
+
       this.data.forEach((item)=>{
-        if(item.tag === this.activeFilter){ //check if filter includes item tag
+        if(item.metadata.tags && item.metadata.tags.includes(this.activeFilter)){ //check if filter includes item tag
           this.filteredData.push(item);
         }
-    })
+      })
     
     }
   }

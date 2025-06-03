@@ -21,16 +21,10 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "Title";
-    this.thumbnail = "impactra.png",
-    this.link = "https://google.com",
+    // this.thumbnail = "https://github.com/NazmanRosman/graphic-portfolio/blob/main/lib/thumbnails/impactra.png?raw=true",
+    this.thumbnail ="https://img.freepik.com/premium-photo/cool-cat-wearing-pink-sunglasses-with-neon-light-background_514761-16858.jpg",
+    this.slug = "https://google.com",
     this.tags =  [];
-
-
-    this.t = this.t || {};
-    this.t = {
-      ...this.t,
-      title: "Title",
-    };
 
   }
 
@@ -41,7 +35,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
       ...super.properties,
       title: { type: String },
       thumbnail: {type: String},
-      link: {type: String},
+      slug: {type: String},
       tags: { type: Array },
 
       
@@ -84,12 +78,12 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
         bottom: 36px;
         left: 36px;
         font-family: "Manrope", "Manrope Placeholder", sans-serif;
-        font-size: 22px;
+        font-size: 1.25rem;
         color: white;
         opacity: 0;
         font-weight: 500;
         text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.5); /* Horizontal offset, vertical offset, blur radius, color */
-
+        width: 70%;
         
       }
       .arrow{
@@ -146,13 +140,10 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .arrow-shape{
-          opacity: 1;
-          transform: scale(0.3) rotate(0);
-          right:24px;
+          display: none;
         }
         .arrow-box{
-          opacity: 0.3;
-          right:24px;
+          display: none;
         }
       }
 
@@ -162,13 +153,15 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
 
   // Lit render the HTML
   render() {
+    // console.log(this.thumbnail);
     return html`
-<a href="https://google.com"  target="_blank" rel="noopener">
+<a href=${this.slug}>
   <div class="container">
-    <img src=${`/lib/thumbnails/${this.thumbnail}`} class="thumbnail">
+    <img src=${this.thumbnail} class="thumbnail">
     <div class="title">${this.title}</div>
     <div class="arrow arrow-box"></div>
-    <img src="lib/components/arrow.png" class="arrow arrow-shape">
+    <!-- <img src="lib/components/arrow.png" class="arrow arrow-shape"> -->
+    <img src="https://github.com/NazmanRosman/graphic-portfolio/blob/main/lib/components/arrow.png?raw=true" class="arrow arrow-shape">
   </div>
 </a>
 `;
