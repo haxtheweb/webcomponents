@@ -41,60 +41,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     this.relatedItems = []; 
     this.childrenArray = []; // used for grid layout, holds children of activeItem
     this.__disposer = this.__disposer || [];
-
-    //get top level items (items shown on header -- they have no parent)
-
-    // determines active layout based on following conditions:
-    // - if current page has a child, it is grid
-    // - if no child, and has a parent: it is media
-    // - if no child, and no parent: it is text
-    autorun((reaction) => {
-      const activeItem = toJS(store.activeItem);
-      
-      // console.log(activeItem);
-      if (activeItem) {
-        this.activeItem = activeItem;
-        // find parent of activeItem
-        this.activeParent = store.manifest.items.find((d) => activeItem.parent === d.id)||"";
-        const children = store.getItemChildren(store.activeId);
-
-        if (children) {
-          if (children.length > 0) {
-            this.setLayout("grid");
-
-            this.childrenArray = [...children];
-          } else if (activeItem.parent) {
-            this.childrenArray = [];
-            this.setLayout("media"); //currently unused
-          } else {
-            this.childrenArray = [];
-
-            this.setLayout("text");//currently unused
-          }
-        }
-      }
-      this.__disposer.push(reaction);
-    });
-    
-    //get related items of activeItem
-    autorun((reaction) => {
-      const activeItem = toJS(store.activeItem);
-      if (activeItem) {
-        this.activeItem = activeItem;
-        
-        if(this. activeItem.metadata.relatedItems){
-          let relatedItem = store.findItem(activeItem.metadata.relatedItems);
-          if (!this.relatedItems.some((item) => item.id === relatedItem.id)) { //check for duplicates
-            this.relatedItems.push(relatedItem);
-          }
-        }
-
-        // console.log(this.relatedItems);
-        this.__disposer.push(reaction);
-      }
-    });
-
-
   
   }
 
@@ -332,20 +278,11 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
   <glossy-portfolio-header></glossy-portfolio-header>
 
-  <!-- display grid of children items -->
-  ${ this.childrenArray && this.childrenArray.length > 0
-  ? html` <glossy-portfolio-grid class="grow" title=${activeTitle} .data=${this.childrenArray} style=""></glossy-portfolio-grid>`
-  : ``}
 
-  <!-- display grid of related items -->
-  ${ this.relatedItems&&this.relatedItems.length > 0
-  ? html` <glossy-portfolio-grid class="grow" title="RELATED CONTENT" .data=${this.relatedItems} style=""></glossy-portfolio-grid>`
-  : ``}
-  <footer><glossy-portfolio-footer class="not-grow"></glossy-portfolio-footer></footer>
-  <!-- <glossy-portfolio-footer></glossy-portfolio-footer> -->
+  <glossy-portfolio-grid class="grow"></glossy-portfolio-grid>
+  
 
-
-
+ 
 </div>  
 
        

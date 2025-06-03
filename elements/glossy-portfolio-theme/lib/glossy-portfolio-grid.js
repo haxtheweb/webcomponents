@@ -25,8 +25,50 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
     this.filtersList = [],
     this.filteredData = [];
-    this.data = [];
     this.activeFilter = '';
+    this.__disposer = this.__disposer || [];
+
+    
+    // get children, related content, or prev and next pages
+    autorun((reaction) => {
+      const activeItem = toJS(store.activeItem);
+      
+      if (activeItem) {
+        this.activeItem = activeItem;
+        // find parent of activeItem
+        this.activeParent = store.manifest.items.find((d) => activeItem.parent === d.id)||"";
+        const children = store.getItemChildren(store.activeId);
+        let siblings = store.manifest.items.find((d) => activeItem.parent === d.id)
+        this.title = "";
+        this.data = [];
+
+        if (children && children.length > 0) { //display children if available
+          this.data = [...children];
+          this.title = this.activeItem?.title || ""; // Use optional chaining and a fallback value       
+        
+        } else if(this.activeItem.metadata.relatedItems) { //display related items if available
+          
+          this.title = "Related Content";
+          let relatedItem = store.findItem(activeItem.metadata.relatedItems);      
+          if (!this.relatedItems.some((item) => item.id === relatedItem.id)) { //check for duplicates
+           this.data.push(relatedItem);
+          }
+
+        } else if(siblings) { //display prev and next pages if available
+          this.title = "Related Content";
+
+          let siblingsArray = [...store.getItemChildren(this.activeParent.id)];
+          let activeIndex = siblingsArray.findIndex((item) => item.id === this.activeItem.id);
+          if (siblingsArray[activeIndex - 1]) { //check for previous item
+            this.data.push(siblingsArray[activeIndex - 1]);
+          }
+          if (siblingsArray[activeIndex + 1]) { //check for next item
+            this.data.push(siblingsArray[activeIndex + 1]);
+          }
+        }
+          this.__disposer.push(reaction);
+      } 
+    });
     
   }
 
@@ -63,7 +105,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
         width: 100%;
         padding: var(--page-padding);
-        min-height: 100vh;
+        /* min-height: 100vh; */
         padding-bottom: 30px;
       }
       .projects-header{
@@ -80,19 +122,23 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
       }
       .filters{
         display: flex;
-        gap: 16px;
+        /* gap: 16px; */
         flex-wrap: wrap;
 
       }
-      .filters:hover{
+      .filter:hover{
         cursor: pointer;
-
+        background-color: #1f1f1f;
+        /* text-decoration: underline; */
+        /* font-size: 1.05rem; */
       }
 
       .filter{
         font-family: "Inter", "Inter Placeholder", sans-serif;
         font-size: 1rem;
         color: rgb(153, 153, 153);
+        padding: 8px 12px;
+        border-radius: 24px;
       }
       .card-container {
         display: grid;
@@ -139,41 +185,53 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
   // Lit render the HTML
   render() {
+return html`
+${this.data.length > 0 ?   html`        
+  <div class = "container-background">
+    <div class="projects-header">
 
+      <div class="grid-title">${this.title.toUpperCase()}</div>
+      <div class="filters">
+        ${this.displayFilters()}
+      </div>
+
+    </div>
+    <div class="card-container">
+      ${this.filteredData.map((item)=>{ return html`
+          <glossy-portfolio-card class="card" 
+          title="${item.title}" 
+          thumbnail=${item.metadata.images[0]?
+          item.metadata.images[0]
+          :"https://img.freepik.com/premium-photo/cool-cat-wearing-pink-sunglasses-with-neon-light-background_514761-16858.jpg"}
+          slug="${item.slug}"
+          >
+        </glossy-portfolio-card>
+        `})}
+      </div> 
+  </div> `
+  :  html``
+  }
+`;}
+
+  displayFilters() {
+    //display/print filters (top left of the grid)
+
+    if(this.filtersList.length === 0){
+      // hide "All" button if there are no filters
+      return html`   
+       <button style = "display: none" class="filter active" name="all" @click="${this.updateFilter}">All</button>
+      `
+    }
     return html`
-          
-<div class = "container-background">
-  <div class="projects-header">
-
-    <div class="grid-title">${this.title.toUpperCase()}</div>
-    <div class="filters">
       <button class="filter active" name="all" @click="${this.updateFilter}">All</button>
       
-        <!-- print filters -->
       ${Array.from(this.filtersList).map((filter) => html`
         <button @click="${this.updateFilter}" name="${filter}"  class="filter"> 
           ${this.capitalizeWords(filter)} 
-      </button>
+        </button>
       `)}
-
-    </div>
-
-  </div>
-  <div class="card-container">
-    ${this.filteredData.map((item)=>{ return html`
-        <glossy-portfolio-card class="card" 
-        title="${item.title}" 
-        thumbnail=${item.metadata.images[0]?
-        item.metadata.images[0]
-        :"https://img.freepik.com/premium-photo/cool-cat-wearing-pink-sunglasses-with-neon-light-background_514761-16858.jpg"}
-        slug="${item.slug}"
-        >
-      </glossy-portfolio-card>
-      `})}
-    </div> 
-</div> 
-
-`;}
+    `;
+  }
 
   capitalizeWords(sentence) {
     return sentence
@@ -185,9 +243,14 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
   updated(changedProperties) {
     super.updated(changedProperties);
     if (changedProperties.has("data")) {
-      //sort alphabetically
+
+      // Reset filters and filteredData when data changes (when change pages)
+      this.activeFilter = "all";
+      let all = this.renderRoot.querySelector('[name="all"]');
+      all.classList.add('active'); //set active filter to "all"
       if(this.data && this.data.length > 0){
-        // this.data.sort((a, b) => a.title.localeCompare(b.title));
+        
+        // if there is data, set filteredData to data and populate filtersList
         this.filteredData = this.data; 
         this.filtersList = [];
         
@@ -202,40 +265,43 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
       }
       
     }
+
   }
 
-  _updateFilter(target, currentTarget){
-    this.activeFilter = target.getAttribute("name");
-    const filters = this.renderRoot.querySelectorAll('.filter');
-    filters.forEach(el => el.classList.remove('active'));
-    currentTarget.classList.add('active');
-    this.filterData();
-  }
-
+  //called when a filter is clicked
   updateFilter(e){
-    const target = e.target;
     const currentTarget = e.currentTarget;
     if (globalThis.document.startViewTransition) {
       globalThis.document.startViewTransition(() => {
-        this._updateFilter(target, currentTarget);
+        this._updateFilter(currentTarget);
       });
     }
     else {
       this._updateFilter(target, currentTarget);
     }
   }
+  _updateFilter(currentTarget){   
+
+    //bold active filter
+    const filters = this.renderRoot.querySelectorAll('.filter');
+    filters.forEach(el => el.classList.remove('active')); //remove active class from all filters
+    currentTarget.classList.add('active');
+
+    //set activeFilter to the name of the clicked filter and call filterData
+    this.activeFilter = currentTarget.getAttribute("name"); //filter name: "All" or "Blo"
+    this.filterData(this.activeFilter);
+  }
+      
+  // Filter data based on activeFilter
   filterData(){
 
     if(this.activeFilter === 'all'){
       this.filteredData=this.data;
     } else{
       this.filteredData = [];
-
-      this.data.forEach((item)=>{
-        if(item.metadata.tags && item.metadata.tags.includes(this.activeFilter)){ //check if filter includes item tag
-          this.filteredData.push(item);
-        }
-      })
+      this.filteredData = this.data.filter((item) => 
+        item.metadata.tags && item.metadata.tags.includes(this.activeFilter)
+      );
     
     }
   }

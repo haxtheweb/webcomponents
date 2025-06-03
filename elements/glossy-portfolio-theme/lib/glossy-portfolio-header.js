@@ -54,7 +54,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     //get logo
     autorun((reaction) => {
       this.logo = toJS(store.logo);
-      console.log(this.logo)
       this.__disposer.push(reaction);
     });
   }
