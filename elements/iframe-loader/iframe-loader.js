@@ -140,11 +140,17 @@ export class IframeLoader extends LitElement {
   }
   // ALWAYS enable edit mode if HAX is around
   haxactiveElementChanged(el, val) {
-    if (this.source !== el.src) {
-      this.source = el.src;
+    if (this.__iframe) {
+      if (this.source !== this.__iframe.getAttribute("src")) {
+        this.source = this.__iframe.getAttribute("src");
+      }
+    }
+    else {
+      if (el && el.src && this.source !== el.src) {
+        this.source = el.src;
+      }
     }
     this.disabled = true;
-    el.disabled = true;
     return el;
   }
   // allow HAX to toggle edit state when activated
@@ -158,6 +164,9 @@ export class IframeLoader extends LitElement {
     return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
       .href;
   }
+  /**
+   * LitElement lifecycle
+   */
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
@@ -176,8 +185,13 @@ export class IframeLoader extends LitElement {
       }
       this.appendChild(this.__iframe);
     }
+    if (globalThis.HaxStore && globalThis.HaxStore.instance && globalThis.HaxStore.instance.editMode) {
+      this.disabled = true;
+    }
   }
-
+  /**
+   * HTMLElement lifecycle
+   */
   disconnectedCallback() {
     super.disconnectedCallback();
     if (this.__iframe) {
@@ -188,6 +202,9 @@ export class IframeLoader extends LitElement {
     }
     this.__observer.disconnect();
   }
+  /**
+   * LitElement lifecycle
+   */
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
