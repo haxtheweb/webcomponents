@@ -105,17 +105,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           visibility: visible;
           opacity: 1;
         }
-        #addmenubutton:hover,
-        #addmenubutton:active,
-        #addmenubutton:focus,
-        #addmenubutton haxcms-button-add:hover,
-        #addmenubutton haxcms-button-add:active,
-        #addmenubutton haxcms-button-add:focus,
-        #editbutton[icon="icons:save"]:focus,
-        #editbutton[icon="icons:save"]:active,
-        #editbutton[icon="icons:save"]:hover {
-          background-color: #edf7ed;
-        }
         #addmenubutton,
         #addmenubutton haxcms-button-add,
         #editbutton[icon="icons:save"] {
