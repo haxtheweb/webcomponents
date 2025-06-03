@@ -70,10 +70,10 @@
   },
   "demoSchema": [
     {
-      "tag": "iframe-loader",
+      "tag": "iframe",
       "properties": {
-        "source": "https://haxtheweb.org",
-        "disabled": true
+        "src": "https://haxtheweb.org",
+        "sandbox": "allow-scripts allow-same-origin"
       },
       "content": ""
     }

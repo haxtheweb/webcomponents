@@ -3588,6 +3588,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (this._isSandboxed && tag === "webview") {
       tag = "iframe";
     }
+    // force any and all content being taken from a dom node to content to be forced into sandbox mode
+    // this way we can ensure that we don't have any scripts running that confuse the user into
+    // leaking sensative information
+    if (tag === "iframe") {
+      node.setAttribute("sandbox", "allow-scripts allow-same-origin");
+    }
+
     var content = "";
     // start to rebuild the same tag we got in a generalized way
     content += "<" + tag;

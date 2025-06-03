@@ -132,6 +132,9 @@ export class IframeLoader extends LitElement {
   }
   // ALWAYS enable edit mode if HAX is around
   haxactiveElementChanged(el, val) {
+    if (this.source !== el.src) {
+      this.source = el.src;
+    }
     this.disabled = true;
     el.disabled = true;
     return el;
@@ -159,6 +162,7 @@ export class IframeLoader extends LitElement {
         attributes: true,
       });
       this.__iframe.setAttribute("src", this.source);
+      this.__iframe.setAttribute("sandbox", "allow-scripts allow-same-origin");
       this.appendChild(this.__iframe);
     }
   }
