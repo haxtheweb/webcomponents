@@ -1521,6 +1521,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             href="${this.backLink}"
             class="haxLogo"
             id="backtosites"
+            title="${this.backText}"
             part="hax-logo"
           >
             <simple-icon-lite icon="hax:hax2022"></simple-icon-lite>
