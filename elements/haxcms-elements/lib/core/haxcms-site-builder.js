@@ -656,7 +656,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           this._activeItemContentChanged(this.__pageContent, activeItem)
         }
         if (activeItem && activeItem.location) {
-          this.activeItemLocation = activeItem.location;
+          this.activeItemLocation = '';
+          setTimeout(() => {
+            this.activeItemLocation = activeItem.location;            
+          }, 0);
         }
         this.__disposer.push(reaction);
       });
