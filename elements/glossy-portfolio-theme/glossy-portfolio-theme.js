@@ -41,6 +41,12 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     this.relatedItems = []; 
     this.childrenArray = []; // used for grid layout, holds children of activeItem
     this.__disposer = this.__disposer || [];
+
+    //get top level items (items shown on header -- they have no parent)
+
+
+
+
   
   }
 
@@ -242,7 +248,9 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         flex: 0 0 auto; /* Prevent this element from growing */
       }
 
-  
+      body.no-scroll {
+        overflow: hidden; /* Prevents scrolling when open mobile nav link*/
+      }
       /* Extra small devices (phones) */
       @media (max-width: 575.98px) {
         :root, html, body{
@@ -280,7 +288,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
 
   <glossy-portfolio-grid class="grow"></glossy-portfolio-grid>
-  
+  <glossy-portfolio-footer class="not-grow"></glossy-portfolio-footer>
 
  
 </div>  
