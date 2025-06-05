@@ -273,7 +273,7 @@ render() {
             
         <ul class="nav-links mobile">
           ${Array.from(this.topItems).map((item) => html`
-              <li class="mobile"><a class="right-side-item mobile" href="${item.slug}"><div class="header-link mobile ${this.toKebabCase(item.title)}">${item.title}</div></a></li>
+              <li class="mobile"><a class="right-side-item mobile" href="${item.slug}" @click="${this.toggleHamburger}"><div class="header-link mobile ${this.toKebabCase(item.title)}">${item.title}</div></a></li>
             `)}
         </ul>
         </dialog>
