@@ -764,6 +764,7 @@ class CleanOne extends LTIResizingMixin(
   constructor() {
     super();
     this.searchTerm = "";
+    this.HAXCMSThemeSettings.autoScroll = true;
     // prettier-ignore
     import(
        "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js"

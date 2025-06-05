@@ -151,11 +151,14 @@ export class IframeLoader extends LitElement {
       }
     }
     this.disabled = true;
+    el.disabled = true;
     return el;
   }
   // allow HAX to toggle edit state when activated
   haxeditModeChanged(val) {
-    this.disabled = val;
+    setTimeout(() => {
+      this.disabled = val;      
+    }, 0);
   }
   /**
    * haxProperties integration via file reference

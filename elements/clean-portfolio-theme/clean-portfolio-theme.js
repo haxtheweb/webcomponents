@@ -63,6 +63,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         "items": this.HAXSiteRenderXTagsItems,
       }
     };
+    this.HAXCMSThemeSettings.autoScroll = true;
     // MobX variables/listeners
     this.categoryTags = [];
     this.allTags = [];

@@ -352,6 +352,7 @@ class VideoPlayer extends IntersectionObserverMixin(
           "colors",
           "playing",
           "__forcePaused",
+          "t"
         ],
       },
       demoSchema: [

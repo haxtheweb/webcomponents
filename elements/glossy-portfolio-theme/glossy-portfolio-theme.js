@@ -35,7 +35,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   constructor() {
     super();
     this.title = "";
-
+    this.HAXCMSThemeSettings.autoScroll = true;
     this.activeLayout = "grid"; // text, media, listing
     this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
     this.relatedItems = []; 
