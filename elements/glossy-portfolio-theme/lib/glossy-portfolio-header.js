@@ -123,18 +123,14 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         overflow-y: hidden;
 
       }
-      
 
-
- 
-
-      .logo{
-        max-height: 60px;
-        min-height: 60px;
+      .logo, .logo-link{
+        max-height: 40px;
         flex: 0 0 auto;
         position: relative;
         z-index: 10;
       }
+      
 
       ul{
         display: flex;
@@ -191,6 +187,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         display: flex;
         justify-content: space-between;
         width: 100%;
+        align-items: center;
         /* max-height: 60px; */
       }
 
@@ -250,9 +247,9 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           display: block;
           height: 30px;
         }
-        svg.logo{
+        /* svg.logo{
           max-height: 60px;
-        }
+        } */
 
         .container{
           padding: 15px 15px ;
@@ -270,8 +267,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       <!-- ------------DESKTOP HEADER--------------- -->
       <div class="container desktop" >
 \        <div class="logo-hamburger desktop">
-          <a href="${this.homeLink}">
-            <img class="logo desktop" src="${getPostLogo(store.manifest)}" alt="Logo" />
+          <a class="logo-link desktop" href="${this.homeLink}">
+            <img class="logo desktop" src="${store.manifest.metadata.site.logo}" @error=${this.handleImageError} alt="Logo" />
           </a>
         </div>
         <ul class="nav-links desktop">
@@ -284,8 +281,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       <!-- -----------MOBILE HEADER--------------- -->
       <div class="container mobile">
         <div class="logo-hamburger mobile">
-          <a href="${this.homeLink}">
-            <img class="logo mobile" src="${getPostLogo(store.manifest)}" alt="Logo" />
+          <a class="logo-link mobile" href="${this.homeLink}">
+            <img class="logo mobile" src="${store.manifest.metadata.site.logo}" @error=${this.handleImageError} alt="Logo" />
           </a> 
           <button @click="${this.toggleHamburger}">
             <!-- <img @click="" class="hamburger" src="../lib/components/hamburger.svg" width="70px"> -->
@@ -323,9 +320,7 @@ toggleHamburger() {
   }
 }
 
-  toKebabCase(str) {
-    return str.replace(/\s+/g, '-');
-  }
+
 
   firstUpdated(changedProperties) {
       // window resize observer for mobile menu
@@ -374,6 +369,14 @@ toggleHamburger() {
       }
     }
   }
+
+  //hide logo if it fails to load
+  handleImageError(event) {
+    const img = event.target;
+    img.src='https://img.icons8.com/m_sharp/512/FFFFFF/home.png';
+  
+  }
+  
   /**
    * haxProperties integration via file reference
    */

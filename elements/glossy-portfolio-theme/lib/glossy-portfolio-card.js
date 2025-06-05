@@ -68,6 +68,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
         background-color: black;
         overflow: hidden;
         border-radius: 1.5%;
+        background-color: #000000; 
 
  
       }
@@ -158,6 +159,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
 <a href=${this.slug}>
   <div class="container">
     <img 
+      @error=${this.handleImageError}
       src=${this.thumbnail} 
       class="thumbnail"
       alt=""
@@ -174,6 +176,12 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
 `;
   }
 
+  // hides image if it fails to load
+handleImageError(event) {
+  const img = event.target;
+  img.style.visibility='hidden'
+
+}
 
   /**
    * haxProperties integration via file reference

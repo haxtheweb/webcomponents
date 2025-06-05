@@ -202,7 +202,7 @@ ${this.data.length > 0 ?   html`
           title="${item.title}" 
           thumbnail=${item.metadata.images[0]?
           item.metadata.images[0]
-          :"https://img.freepik.com/premium-photo/cool-cat-wearing-pink-sunglasses-with-neon-light-background_514761-16858.jpg"}
+          :store.manifest.metadata.site.logo}
           slug="${item.slug}"
           >
         </glossy-portfolio-card>
@@ -217,7 +217,7 @@ ${this.data.length > 0 ?   html`
     //display/print filters (top left of the grid)
 
     if(this.filtersList.length === 0){
-      // hide "All" button if there are no filters
+      // hide "All" button if there is no filter
       return html`   
        <button style = "display: none" class="filter active" name="all" @click="${this.updateFilter}">All</button>
       `
@@ -248,8 +248,8 @@ ${this.data.length > 0 ?   html`
       this.activeFilter = "all";
       let all = this.renderRoot.querySelector('[name="all"]');
       all.classList.add('active'); //set active filter to "all"
-      if(this.data && this.data.length > 0){
-        
+      
+      if(this.data && this.data.length > 0){  
         // if there is data, set filteredData to data and populate filtersList
         this.filteredData = this.data; 
         this.filtersList = [];
