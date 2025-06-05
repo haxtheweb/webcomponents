@@ -222,8 +222,9 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
       }
 
-      #contentcontainer {
+      #contentcontainer, #slot {
         min-width: 100%;
+        max-width: var(--max-width);
       }
 
       site-breadcrumb {
@@ -241,6 +242,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         min-height: 100vh;
       }
 
+      /* .grow and .not-grow makes sure the footer is at the bottom og page */
       .grow {
         flex: 1 0 auto; /* Allow this element to grow and fill available space */
       }

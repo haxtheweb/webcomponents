@@ -157,7 +157,14 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
     return html`
 <a href=${this.slug}>
   <div class="container">
-    <img src=${this.thumbnail} class="thumbnail">
+    <img 
+      src=${this.thumbnail} 
+      class="thumbnail"
+      alt=""
+      loading="lazy"
+      decoding="async"
+      fetchpriority="low"
+    />
     <div class="title">${this.title}</div>
     <div class="arrow arrow-box"></div>
     <!-- <img src="lib/components/arrow.png" class="arrow arrow-shape"> -->

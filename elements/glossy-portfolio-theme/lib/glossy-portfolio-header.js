@@ -35,6 +35,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     this.title = "Title";
     this.homeLink = "";
     this.__disposer = this.__disposer || [];
+    this.isOverflow = "false"
+
     //get top level items (items shown on header -- they have no parent)
     autorun((reaction) => {
       let items = store.getItemChildren(null); 
@@ -68,6 +70,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       thumbnail: {type: String},
       link: {type: String},
       topItems: {type: Array},
+      isOverflow: {type: Boolean},
     };
   }
 
@@ -123,11 +126,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       
 
 
-      .hamburger{
-        width: 40px;
-        height: 40px;
-        /* display: none; */
-      }
+ 
 
       .logo{
         max-height: 60px;
@@ -143,7 +142,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         align-items: center;
         gap: 50px;
         list-style: none;
-        /* padding: 0 25px; */
       }
       .nav-links li{
         font-weight: 700;
@@ -169,9 +167,24 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         color: white;
 
       }
+
+      /* ----MOBILE HEADER---- */
+      .hamburger{
+        width: 40px;
+        height: 40px;
+      }
+
       button{
         all: unset;
         cursor: pointer;
+        border-radius: 15%; 
+
+
+      }
+
+      button:focus-visible{
+        border: 1px solid white;
+
       }
 
       .logo-hamburger.mobile{
@@ -221,17 +234,17 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         
       }
 
-      a.right-side-item.mobile:active, a.right-side-item.mobile:hover{
+      a.right-side-item.mobile:active, a.right-side-item.mobile:hover, a.right-side-item.mobile:focus-visible{
         background-color: #1d1d1d;
         text-decoration: none; /* Ensures underline is removed on hover */
 
       }  
 
           /* Extra small devices (phones) */
+          /* Make padding, logo and hamburger smaller*/
       @media (max-width: 575.98px) {
         *{
           --nav-bar-height: 60px;
-
         }
         .hamburger{
           display: block;
@@ -250,44 +263,56 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     `];
   }
 
+  // Lit render the HTML
+  render() {
+    return html`
 
-render() {
-  return html `
-
-    <div class="container mobile">
-
-      <div class="logo-hamburger mobile">
-        <a href="${this.homeLink}">
-          <img class="logo mobile" src="${getPostLogo(store.manifest)}" alt="Logo" />
-        </a> 
-        <button @click="${this.toggleHamburger}">
-          <!-- <img @click="" class="hamburger" src="../lib/components/hamburger.svg" width="70px"> -->
-          <svg class="hamburger mobile"  width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-            <g id="SVGRepo_iconCarrier"> <path d="M4 18L20 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> <path d="M4 12L20 12" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> <path d="M4 6L20 6" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> </g>
-          </svg>
-          
-        </button>
-        <dialog class="mobile nav-menu" >
-            
-        <ul class="nav-links mobile">
+      <!-- ------------DESKTOP HEADER--------------- -->
+      <div class="container desktop" >
+\        <div class="logo-hamburger desktop">
+          <a href="${this.homeLink}">
+            <img class="logo desktop" src="${getPostLogo(store.manifest)}" alt="Logo" />
+          </a>
+        </div>
+        <ul class="nav-links desktop">
           ${Array.from(this.topItems).map((item) => html`
-              <li class="mobile"><a class="right-side-item mobile" href="${item.slug}" @click="${this.toggleHamburger}"><div class="header-link mobile ${this.toKebabCase(item.title)}">${item.title}</div></a></li>
+              <li><a class="right-side-item desktop" href="${item.slug}"><div class="header-link desktop">${item.title}</div></a></li>
             `)}
         </ul>
-        </dialog>
       </div>
-    </div>
-
-  `
-}
+      
+      <!-- -----------MOBILE HEADER--------------- -->
+      <div class="container mobile">
+        <div class="logo-hamburger mobile">
+          <a href="${this.homeLink}">
+            <img class="logo mobile" src="${getPostLogo(store.manifest)}" alt="Logo" />
+          </a> 
+          <button @click="${this.toggleHamburger}">
+            <!-- <img @click="" class="hamburger" src="../lib/components/hamburger.svg" width="70px"> -->
+            <svg class="hamburger mobile"  width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+              <g id="SVGRepo_iconCarrier"> <path d="M4 18L20 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> <path d="M4 12L20 12" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> <path d="M4 6L20 6" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> </g>
+            </svg>
+            
+          </button>
+          <dialog class="mobile nav-menu" >
+              
+            <ul class="nav-links mobile">
+              ${Array.from(this.topItems).map((item) => html`
+                  <li class="mobile"><a class="right-side-item mobile" href="${item.slug}" @click="${this.toggleHamburger}"><div class="header-link mobile">${item.title}</div></a></li>
+                `)}
+            </ul>
+          </dialog>
+        </div>
+      </div>
+    `;
+  }
 
 
 toggleHamburger() {
+  this._checkOverflow();
   let dialog = this.renderRoot.querySelector('dialog');
-  console.log(1);
-  console.log(dialog.open);
   if (dialog.open){
     dialog.close();
     document.body.classList.remove('no-scroll'); // Re-enable scrolling on the body
@@ -298,59 +323,57 @@ toggleHamburger() {
   }
 }
 
- 
-  // Lit render the HTML
-  arender() {
-    return html`
-<div class="container">
-  <!-- <img class="logo" src="lib/components/logo.svg" > -->
-  <div class="logo-hamburger">
-    <a href="${this.homeLink}">
-      <img class="logo" src="${getPostLogo(store.manifest)}" alt="Logo" />
-    </a>
-  </div>
-  <ul class="nav-links">
-    ${Array.from(this.topItems).map((item) => html`
-        <li><a class="right-side-item" href="${item.slug}"><div class="header-link ${this.toKebabCase(item.title)}">${item.title}</div></a></li>
-      `)}
-  </ul>
-  
-    
-</div>
-`;
-  }
-
-
   toKebabCase(str) {
     return str.replace(/\s+/g, '-');
   }
 
+  firstUpdated(changedProperties) {
+      // window resize observer for mobile menu
+    // NOTE: an event listener works for this too, but only for manual resizing and not in
+    //       certain cases when the window is popped out via minimize or dragging
+    const desktopHeader = this.renderRoot.querySelector('.container.desktop');
+    if (desktopHeader) {
+      this._resizeObserver = new ResizeObserver(() => {
+        this._checkOverflow();
+      });
+      this._resizeObserver.observe(desktopHeader);
+    }
+    requestAnimationFrame(() => this._checkOverflow());
+  }
 
+ 
   
   // checks children of nav on resize for mobile menu
   _checkOverflow() {
-    const nav = this.renderRoot.querySelector('nav');
-    if (nav) {
-      const items = Array.from(nav.children);
-      const availableWidth = nav.clientWidth - 100;
+    const desktopHeader = this.renderRoot.querySelector('.container.desktop');
+    const mobileHeader = this.renderRoot.querySelector('.container.mobile');
+
+
+    if (desktopHeader) {
+
+      const items = Array.from(desktopHeader.children);
+      const availableWidth = desktopHeader.clientWidth - 100;
 
       let usedWidth = 0;
-      const overflow = [];
-
+      // render();
       for (const item of items) {
-        item.style.display = 'inline-block';
         usedWidth += item.offsetWidth + 25;
-        if (usedWidth > availableWidth) {
-          item.style.display = 'none';
-          overflow.push(this.topItems.find(i => i.slug === item.getAttribute('href')));
-        }
-      }
 
-      this.menuOverflow = overflow;
-      this.requestUpdate();
+       
+        if (usedWidth > availableWidth) {
+          this.isOverflow = true;
+          desktopHeader.style.visibility = "hidden"; // Hide desktop header
+          mobileHeader.style.display = "flex"; // Show mobile header
+        } else {
+          this.isOverflow = false;
+          desktopHeader.style.visibility = "visible"; // Show desktop header
+          mobileHeader.style.display = "none"; // Hide mobile header
+        }
+
+        this.requestUpdate();
+      }
     }
   }
-
   /**
    * haxProperties integration via file reference
    */

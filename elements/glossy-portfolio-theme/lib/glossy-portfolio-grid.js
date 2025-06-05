@@ -126,11 +126,11 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
         flex-wrap: wrap;
 
       }
-      .filter:hover{
+      .filter:hover, .filter:active, .filter:focus-visible {
         cursor: pointer;
         background-color: #1f1f1f;
-        /* text-decoration: underline; */
-        /* font-size: 1.05rem; */
+        
+        /* font-size: 1.05rem;   */
       }
 
       .filter{
