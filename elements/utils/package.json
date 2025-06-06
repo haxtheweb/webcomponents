@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/utils",
-  "version": "10.0.0",
+  "version": "11.0.0",
   "description": "Helper functions to clean up web component data handling.",
   "repository": {
     "type": "git",
