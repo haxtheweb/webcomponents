@@ -690,7 +690,6 @@ export const DDDVariables = css`
     --ddd-theme-default-alertAllClear: #f2ffcc;
     --ddd-theme-default-alertNonEmergency: #e6f7ff;
     --ddd-theme-default-background: #eff2f5;
-    --ddd-theme-default-disabled: #f4f4f4;
 
     /* DDDSpecific: Define primary colors in RGB for use in rgba() */
     --ddd-primary-0-rgb: 150, 190, 230, 0.7; /* Pugh Blue */
@@ -1034,6 +1033,13 @@ export const DDDVariables = css`
       var(--ddd-accent-6),
       var(--ddd-primary-4)
     );
+
+    --simple-tooltip-opacity: 1;
+    --simple-tooltip-delay-in: 0;
+    --simple-tooltip-duration-in: 300ms;
+    --simple-tooltip-duration-out: 0;
+    --simple-tooltip-border-radius: 0;
+    --simple-tooltip-font-size: var(--ddd-font-size-4xs);
   }
 `;
 // global styles from the design system. Not a reset so much as how DDD likes to present defaults
@@ -1125,6 +1131,10 @@ export const DDDDataAttributes = [
     }
 
     /* primary color */
+    [data-primary] {
+      --ddd-theme-primary: var(--ddd-primary-0);
+      --lowContrast-override: black;
+    }
     [data-primary="0"] {
       --ddd-theme-primary: var(--ddd-primary-0);
       --lowContrast-override: black;
@@ -1486,8 +1496,8 @@ export const DDDReset = css`
   h6 {
     font-family: var(--ddd-font-primary);
     font-weight: var(--ddd-font-weight-bold);
-    line-height: auto;
-    letter-spacing: auto;
+    line-height: normal;
+    letter-spacing: normal;
   }
 
   h1 {
@@ -1635,10 +1645,29 @@ export const DDDReset = css`
   a:any-link,
   a:-webkit-any-link {
     line-break: auto;
-    color: var(--ddd-theme-default-link);
     font-weight: var(--ddd-font-weight-bold);
     text-decoration: none;
     background-color: var(--ddd-theme-accent);
+  }
+  body a,
+  body a:any-link,
+  body a:-webkit-any-link {
+    color: light-dark(
+      var(--ddd-theme-default-link),
+      var(--ddd-theme-colorContrast, var(--ddd-theme-default-linkLight))
+    );
+  }
+  @media (prefers-color-scheme: dark) {
+    body a,
+    body a:any-link,
+    body a:-webkit-any-link {
+      text-decoration: underline;
+    }
+  }
+  body.dark-mode a,
+  body.dark-mode a:any-link,
+  body.dark-mode a:-webkit-any-link {
+    text-decoration: underline;
   }
   a:hover {
     text-decoration: underline;
@@ -1815,7 +1844,7 @@ export const DDDReset = css`
 
   [data-design-treatment="bg"] {
     background-color: var(--ddd-theme-primary, var(--ddd-primary-0));
-    color: var(--ddd-theme-bgContrast);
+    color: var(--ddd-theme-bgContrast, var(--lowContrast-override, black));
     padding: var(--ddd-spacing-3);
   }
 

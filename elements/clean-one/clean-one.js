@@ -59,6 +59,7 @@ class CleanOne extends LTIResizingMixin(
           display: flex;
           padding: 0;
           min-height: 100vh;
+          position: fixed;
           flex-direction: column;
           -webkit-box-orient: vertical;
           -webkit-box-direction: normal;
@@ -68,11 +69,6 @@ class CleanOne extends LTIResizingMixin(
             var(--ddd-primary-4)
           );
           color: light-dark(black, var(--ddd-accent-6));
-          --simple-tooltip-background: var(--ddd-theme-default-info);
-          --simple-tooltip-text-color: var(--ddd-theme-default-infoLight);
-          --simple-tooltip-opacity: 1;
-          --simple-tooltip-delay-in: 0;
-          --simple-tooltip-border-radius: 0;
         }
         :host([is-logged-in]) {
           min-height: calc(100vh - 56px);
@@ -112,8 +108,6 @@ class CleanOne extends LTIResizingMixin(
             --simple-colors-default-theme-light-blue-1,
             rgba(100, 100, 255, 0.1)
           );
-          --haxcms-tooltip-color: var(--ddd-theme-default-infoLight);
-          --haxcms-tooltip-background-color: var(--ddd-theme-default-info);
           --map-menu-item-a-active-background-color: light-dark(
             var(--ddd-primary-4),
             var(--ddd-accent-6)
@@ -167,8 +161,6 @@ class CleanOne extends LTIResizingMixin(
           --simple-icon-fill-color: var(
             --haxcms-user-styles-color-theme-color-1
           );
-          --haxcms-tooltip-color: var(--ddd-theme-default-infoLight);
-          --haxcms-tooltip-background-color: var(--ddd-theme-default-info);
         }
         .pdf-page-btn,
         .print-branch-btn {
@@ -176,6 +168,7 @@ class CleanOne extends LTIResizingMixin(
           display: inline-flex;
         }
         site-breadcrumb {
+          min-height: 48px;
           --site-breadcrumb-margin: var(--ddd-spacing-2) 0 var(--ddd-spacing-7);
         }
         site-menu-button {
@@ -185,13 +178,11 @@ class CleanOne extends LTIResizingMixin(
           --site-menu-button-link-decoration: none;
           --site-menu-button-button-hover-color: light-dark(
             var(--ddd-primary-4),
-            var(--ddd-accent-6)
+            black
           );
-          --haxcms-tooltip-color: var(--ddd-theme-default-infoLight);
-          --haxcms-tooltip-background-color: var(--ddd-theme-default-info);
-          --site-menu-button-button-hover-background-color: var(
+          --site-menu-button-button-hover-background-color: light-dark(var(
             --ddd-theme-default-limestoneLight
-          );
+          ), var(--ddd-primary-5));
         }
         scroll-button,
         site-breadcrumb {
@@ -232,7 +223,7 @@ class CleanOne extends LTIResizingMixin(
           );
           color: light-dark(black, var(--ddd-accent-6));
           border-right: var(--ddd-border-xs);
-          transition: left 0.3s ease;
+          transition: left 0.3s ease-in-out;
         }
         /* content */
         .main-section h1 {
@@ -298,7 +289,7 @@ class CleanOne extends LTIResizingMixin(
           bottom: 0;
           min-width: 375px;
           overflow-y: auto;
-          transition: left 0.3s ease;
+          transition: left 0.3s ease-in-out;
         }
 
         :host([responsive-size="xs"]) .page-wrapper,
@@ -457,6 +448,11 @@ class CleanOne extends LTIResizingMixin(
           .link-actions {
             display: none;
           }
+          footer {
+            color: light-dark(black, white);
+            background-color: light-dark(#FFFFFFCC, #000000CC);
+            margin-bottom: -1px;
+          }
         }
         @media (max-width: 1240px) {
           .site-body .body-inner {
@@ -500,8 +496,8 @@ class CleanOne extends LTIResizingMixin(
         }
         /* Navigation arrows */
         site-menu-button {
-          --site-menu-button-icon-width: 64px;
-          --site-menu-button-icon-height: 64px;
+          --site-menu-button-icon-width: 100px;
+          --site-menu-button-icon-height: 100px;
         }
         :host([menu-open]) site-menu-button[type="prev"] {
           left: 300px;
@@ -603,7 +599,7 @@ class CleanOne extends LTIResizingMixin(
         #site-search-input {
           padding: 6px;
           background: 0 0;
-          transition: top 0.5s ease;
+          transition: top 0.3s ease-in-out;
           border-bottom: 1px solid rgba(0, 0, 0, 0.07);
           border-top: 1px solid rgba(0, 0, 0, 0.07);
           margin-bottom: 10px;
@@ -787,6 +783,18 @@ class CleanOne extends LTIResizingMixin(
       this.searchTerm = "";
       this.__disposer.push(reaction);
     });
+  }
+
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      css`
+      body stop-note a,
+      body stop-note a:any-link,
+      body stop-note a:-webkit-any-link {
+        color: var(--ddd-theme-colorContrast, var(--ddd-theme-default-link));
+      }
+    `];
   }
 
   /**

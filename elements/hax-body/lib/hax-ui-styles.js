@@ -103,7 +103,7 @@ export const HaxUiTooltip = [
       --simple-tooltip-text-color: var(--hax-ui-background-color);
       --simple-tooltip-opacity: 1;
       --simple-tooltip-delay-in: 0;
-      --simple-tooltip-duration-in: 100ms;
+      --simple-tooltip-duration-in: 300ms;
       --simple-tooltip-duration-out: 0;
       --simple-tooltip-border-radius: 2px;
       --simple-tooltip-font-size: var(--hax-ui-font-size-sm);

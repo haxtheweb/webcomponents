@@ -71,20 +71,6 @@ class ScrollButton extends LitElement {
           color: var(--scroll-button-background-color, rgba(0, 0, 0, 1));
           background-color: var(--scroll-button-color, white);
         }
-
-        simple-tooltip {
-          --simple-tooltip-background: var(
-            --scroll-button-tooltip-background-color,
-            #000000
-          );
-          --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: var(
-            --scroll-button-tooltip-color,
-            #ffffff
-          );
-          --simple-tooltip-delay-in: 0;
-          --simple-tooltip-border-radius: 0;
-        }
       `,
     ];
   }

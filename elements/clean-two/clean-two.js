@@ -66,11 +66,6 @@ class CleanTwo extends LTIResizingMixin(
             var(--ddd-accent-6),
             var(--ddd-primary-4)
           );
-          --simple-tooltip-background: #000000;
-          --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: #ffffff;
-          --simple-tooltip-delay-in: 0;
-          --simple-tooltip-border-radius: 0;
         }
         .link-actions {
           margin: 0;

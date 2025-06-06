@@ -266,7 +266,7 @@ export class DDDSample extends DDDSuper(LitElement) {
           font-weight: bold;
           --ddd-theme-primary: var(
             --ddd-sample-theme-primary,
-            var(--ddd-primary-16)
+            var(--ddd-primary-0)
           );
           min-height: calc(
             (var(--initialLetter) / 3 * var(--ddd-theme-body-font-size) * 1.5) +
@@ -274,9 +274,8 @@ export class DDDSample extends DDDSuper(LitElement) {
           );
         }
 
-        /** TODO this needs to be set via some kind of similar ddd-samples global in order to work for the bg option */
         :host([type="design-treatment"][option="bg"]) .label {
-          color: var(--ddd-theme-bgContrast);
+          color: var(--ddd-theme-bgContrast, var(--lowContrast-override, black));
         }
 
         :host([type="font-weight"]) .label,

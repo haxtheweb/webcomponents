@@ -605,7 +605,7 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           --simple-tooltip-opacity: 1;
           --simple-tooltip-text-color: #ffffff;
           --simple-tooltip-delay-in: 0;
-          --simple-tooltip-duration-in: 200ms;
+          --simple-tooltip-duration-in: 300ms;
           --simple-tooltip-duration-out: 0;
           --simple-tooltip-border-radius: 0;
           --simple-tooltip-font-size: 14px;

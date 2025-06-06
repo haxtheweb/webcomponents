@@ -34,16 +34,6 @@ class SiteRSSButton extends HAXCMSI18NMixin(HAXCMSThemeParts(LitElement)) {
         simple-icon-button-lite {
           color: var(--site-rss-button-color, inherit);
         }
-        simple-tooltip {
-          --simple-tooltip-background: var(
-            --haxcms-tooltip-background-color,
-            #000000
-          );
-          --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: var(--haxcms-tooltip-color, #ffffff);
-          --simple-tooltip-delay-in: 0;
-          --simple-tooltip-border-radius: 0;
-        }
       `,
     ];
   }

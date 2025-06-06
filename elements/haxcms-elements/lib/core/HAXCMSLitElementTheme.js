@@ -87,18 +87,29 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
   HAXCMSGlobalStyleSheetContent() {
     return [
       css`
-        .haxcms-copyable {
+        .haxcms-copyable::after {
+          display: block;
+          content: '';
           background-image: url("${unsafeCSS(
             SimpleIconsetStore.getIcon("icons:link"),
           )}");
-          background-position: right;
-          background-repeat: no-repeat;
-          background-size: 36px;
+          float: right;
+          height: 36px;
+          width: 36px;
+        }
+        body.dark-mode .haxcms-copyable::after {
+          filter: invert(1);
+        }
+        @media (prefers-color-scheme: dark) {
+          .haxcms-copyable::after {
+            filter: invert(1);
+          }
         }
       `,
       editableTableDisplayStyles,
     ];
   }
+
   copyLink(e) {
     let target = e.target;
     if (!target) {
