@@ -116,28 +116,33 @@ mv ~/haxtheweb/webcomponents/storybook ~/haxtheweb/psucdn/storybook
 version=`cat ~/haxtheweb/webcomponents/VERSION.txt`
 
 cd ~/elmsln/
+git pull origin master
 git add -A
 git commit -m "ubiquity publish" --no-verify
 git push --follow-tags origin master
 
 cd ~/haxtheweb/webcomponents
+git pull origin master
 git add -A
 git commit -m "ubiquity publish"
 git push --follow-tags origin master
 
 cd ~/haxtheweb/hax11ty/
+git pull origin master
 git add -A
 git commit -m "ubiquity publish"
 ./node_modules/.bin/commit-and-tag-version --release-as $version
 git push --follow-tags origin master
 
 cd ~/haxtheweb/haxcms-php/
+git pull origin master
 git add -A
 git commit -m "ubiquity publish"
 ./node_modules/.bin/commit-and-tag-version --release-as $version
 git push --follow-tags origin master
 
 cd ~/haxtheweb/haxcms-nodejs/
+git pull origin main
 git add -A
 git commit -m "ubiquity publish"
 npm run build
@@ -146,6 +151,7 @@ git push --follow-tags origin main
 npm publish
 
 cd ~/haxtheweb/psucdn/
+git pull origin master
 git add -A
 git commit -m "ubiquity publish"
 ./node_modules/.bin/commit-and-tag-version --release-as $version
@@ -154,12 +160,14 @@ git push --follow-tags origin master
 # STEP 6 THESE NEED THEIR PACKAGE UPDATED FOR NODEJS VERSION INTERNALLY
 
 cd ~/haxtheweb/open-apis
+git pull origin main
 git add -A
 git commit -m "ubiquity publish"
 ./node_modules/.bin/commit-and-tag-version --release-as $version
 git push --follow-tags origin main
 
 cd ~/haxtheweb/desktop/
+git pull origin master
 npm update @haxtheweb/haxcms-nodejs --save
 git add -A
 git commit -m "ubiquity publish"
@@ -169,6 +177,7 @@ git push --follow-tags origin master
 
 
 cd ~/haxtheweb/create/
+git pull origin main
 npm update @haxtheweb/haxcms-nodejs --save
 npm update @haxtheweb/open-apis --save
 git add -A
