@@ -141,7 +141,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
         site-print-button {
           color: white;
           --simple-icon-fill-color: white;
-          --haxcms-tooltip-color: #FFFFFF;
+          --haxcms-tooltip-color: #ffffff;
           --haxcms-tooltip-background-color: #000000;
         }
 

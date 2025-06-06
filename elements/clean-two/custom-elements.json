@@ -75,6 +75,14 @@
             },
             {
               "kind": "field",
+              "name": "xl",
+              "type": {
+                "text": "number"
+              },
+              "default": "1800"
+            },
+            {
+              "kind": "field",
               "name": "autoScroll",
               "type": {
                 "text": "boolean"

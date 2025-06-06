@@ -49,7 +49,10 @@ export class AppHaxTopBar extends LitElement {
 
       .topBar {
         overflow: hidden;
-        background-color: light-dark(rgba(255, 255, 255, 0.95), rgba(0, 0, 0, 0.95));
+        background-color: light-dark(
+          rgba(255, 255, 255, 0.95),
+          rgba(0, 0, 0, 0.95)
+        );
         color: var(--accent-color);
         height: var(--top-bar-height);
         text-align: center;
@@ -58,10 +61,11 @@ export class AppHaxTopBar extends LitElement {
         border-radius: var(--ddd-radius-md);
         display: grid;
         grid-template-columns: 32.5% 35% 32.5%;
-        transition-delay: .9s;
-        transition: all .9s ease-in-out;
+        transition-delay: 0.9s;
+        transition: all 0.9s ease-in-out;
       }
-      .topBar:hover, .topBar:focus-within {
+      .topBar:hover,
+      .topBar:focus-within {
         box-shadow: var(--ddd-boxShadow-md);
         background-color: light-dark(rgba(255, 255, 255, 1), rgba(0, 0, 0, 1));
       }

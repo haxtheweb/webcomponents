@@ -69,6 +69,17 @@
             },
             {
               "kind": "field",
+              "name": "isPDF",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "is-pdf",
+              "reflects": true
+            },
+            {
+              "kind": "field",
               "name": "invalidSource",
               "type": {
                 "text": "boolean"
@@ -169,6 +180,14 @@
               },
               "default": "\"100%\"",
               "fieldName": "width"
+            },
+            {
+              "name": "is-pdf",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "isPDF"
             },
             {
               "name": "disabled",

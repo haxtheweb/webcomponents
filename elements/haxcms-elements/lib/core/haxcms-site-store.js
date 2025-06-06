@@ -1248,12 +1248,10 @@ class HAXCMSSiteStore extends HTMLElement {
         });
         if (found) {
           store.activeId = id;
-        }
-        else if (store.getInternalRoute()) {
+        } else if (store.getInternalRoute()) {
           // we need other stuff to work with this.
-          store.activeId = '404';
-        }
-        else {
+          store.activeId = "404";
+        } else {
           const firstItem = store.manifest.items.find(
             (i) => typeof i.id !== "undefined",
           );

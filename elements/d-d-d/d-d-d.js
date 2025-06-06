@@ -275,7 +275,10 @@ export class DDDSample extends DDDSuper(LitElement) {
         }
 
         :host([type="design-treatment"][option="bg"]) .label {
-          color: var(--ddd-theme-bgContrast, var(--lowContrast-override, black));
+          color: var(
+            --ddd-theme-bgContrast,
+            var(--lowContrast-override, black)
+          );
         }
 
         :host([type="font-weight"]) .label,

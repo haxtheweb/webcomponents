@@ -78,8 +78,7 @@ export class IframeLoader extends LitElement {
         this.height = this.__iframe.getAttribute("height") || this.height;
         this.width = this.__iframe.getAttribute("width") || this.width;
       }
-    }
-    else {
+    } else {
       this.source = null;
     }
     this.__mutationObserver = new MutationObserver((mutations) => {
@@ -144,8 +143,7 @@ export class IframeLoader extends LitElement {
       if (this.source !== this.__iframe.getAttribute("src")) {
         this.source = this.__iframe.getAttribute("src");
       }
-    }
-    else {
+    } else {
       if (el && el.src && this.source !== el.src) {
         this.source = el.src;
       }
@@ -157,7 +155,7 @@ export class IframeLoader extends LitElement {
   // allow HAX to toggle edit state when activated
   haxeditModeChanged(val) {
     setTimeout(() => {
-      this.disabled = val;      
+      this.disabled = val;
     }, 0);
   }
   /**
@@ -184,11 +182,18 @@ export class IframeLoader extends LitElement {
       this.__iframe.setAttribute("src", this.source);
       // PDFs can't work if this security is applied so we need to check
       if (!this.isPDF) {
-        this.__iframe.setAttribute("sandbox", "allow-scripts allow-same-origin");
+        this.__iframe.setAttribute(
+          "sandbox",
+          "allow-scripts allow-same-origin",
+        );
       }
       this.appendChild(this.__iframe);
     }
-    if (globalThis.HaxStore && globalThis.HaxStore.instance && globalThis.HaxStore.instance.editMode) {
+    if (
+      globalThis.HaxStore &&
+      globalThis.HaxStore.instance &&
+      globalThis.HaxStore.instance.editMode
+    ) {
       this.disabled = true;
     }
   }
@@ -218,10 +223,12 @@ export class IframeLoader extends LitElement {
           if (this.isPDF) {
             this.__iframe.removeAttribute("sandbox");
           } else {
-            this.__iframe.setAttribute("sandbox", "allow-scripts allow-same-origin");
+            this.__iframe.setAttribute(
+              "sandbox",
+              "allow-scripts allow-same-origin",
+            );
           }
-        }
-        else if (propName === "source") {
+        } else if (propName === "source") {
           this.isPDF = false;
           // test if source is a PDF
           if (this.source && this.source.endsWith(".pdf")) {
@@ -232,7 +239,10 @@ export class IframeLoader extends LitElement {
             if (this.isPDF) {
               this.__iframe.removeAttribute("sandbox");
             } else {
-              this.__iframe.setAttribute("sandbox", "allow-scripts allow-same-origin");
+              this.__iframe.setAttribute(
+                "sandbox",
+                "allow-scripts allow-same-origin",
+              );
             }
             this.__iframe.setAttribute("src", this.source);
           } else {
@@ -245,13 +255,15 @@ export class IframeLoader extends LitElement {
             if (this.isPDF) {
               this.__iframe.removeAttribute("sandbox");
             } else {
-              this.__iframe.setAttribute("sandbox", "allow-scripts allow-same-origin");
+              this.__iframe.setAttribute(
+                "sandbox",
+                "allow-scripts allow-same-origin",
+              );
             }
             this.__iframe.setAttribute("src", this.source);
             this.appendChild(this.__iframe);
           }
-        }
-        else if (["height", "width"].includes(propName)) {
+        } else if (["height", "width"].includes(propName)) {
           if (this.__iframe) {
             this.__iframe.setAttribute(propName, this[propName]);
           }

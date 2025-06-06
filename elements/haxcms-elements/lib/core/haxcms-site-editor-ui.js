@@ -187,8 +187,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           right: 8px;
           left: 8px;
           position: fixed;
-          transition-delay: .9s;
-          transition: all .9s ease-in-out;
+          transition-delay: 0.9s;
+          transition: all 0.9s ease-in-out;
         }
         app-hax-top-bar[edit-mode] {
           right: 0px;

@@ -89,7 +89,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       css`
         .haxcms-copyable::after {
           display: block;
-          content: '';
+          content: "";
           background-image: url("${unsafeCSS(
             SimpleIconsetStore.getIcon("icons:link"),
           )}");

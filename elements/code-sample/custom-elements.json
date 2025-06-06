@@ -13,13 +13,7 @@
           "members": [
             {
               "kind": "method",
-              "name": "setupCodeEditor",
-              "parameters": [
-                {
-                  "name": "editor"
-                }
-              ],
-              "description": "set up the editableTable to behave as the node itself"
+              "name": "getMinHeight"
             },
             {
               "kind": "field",
@@ -38,6 +32,16 @@
               "kind": "method",
               "name": "haxHooks",
               "description": "Implements haxHooks to tie into life-cycle if hax exists."
+            },
+            {
+              "kind": "method",
+              "name": "haxpreProcessNodeToContent",
+              "parameters": [
+                {
+                  "name": "node"
+                }
+              ],
+              "description": "Ensure fields don't pass through to HAX if in that context"
             },
             {
               "kind": "method",

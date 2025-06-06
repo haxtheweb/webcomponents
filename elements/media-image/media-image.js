@@ -29,7 +29,10 @@ class MediaImage extends DDD {
           font-family: var(--ddd-font-secondary);
           font-weight: var(--ddd-font-secondary-light);
           font-size: var(--ddd-font-size-4xs);
-          color: light-dark(var(--media-image-color, black), var(---media-image-color, white));
+          color: light-dark(
+            var(--media-image-color, black),
+            var(---media-image-color, white)
+          );
         }
 
         :host([card]) {
@@ -45,8 +48,11 @@ class MediaImage extends DDD {
 
         :host([box]) {
           padding: var(--ddd-spacing-5);
-          background-color: light-dark(var(--ddd-theme-accent, var(--ddd-accent-2)), var(--ddd-theme-accent, var(--ddd-primary-4)));
-        }        
+          background-color: light-dark(
+            var(--ddd-theme-accent, var(--ddd-accent-2)),
+            var(--ddd-theme-accent, var(--ddd-primary-4))
+          );
+        }
 
         @media screen and (min-width: 650px) {
           :host([size="small"]) {

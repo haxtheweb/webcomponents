@@ -132,7 +132,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       // cheat to ensure we get a rebuild of the content in case
       // they only modified page title / other page-break based details
       this.__pageContent = data;
-      this._activeItemContentChanged(this.__pageContent, toJS(store.activeItem));
+      this._activeItemContentChanged(
+        this.__pageContent,
+        toJS(store.activeItem),
+      );
     }
     // punt, we didn't find anything
     else if (
@@ -460,7 +463,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    */
   constructor() {
     super();
-    this.__pageContent = '';
+    this.__pageContent = "";
     this.windowControllers = new AbortController();
     this.t = {
       ...super.t,
@@ -653,11 +656,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         // this generates potential delay in presentation of the node, leading to the
         // a short time where activeItem is not accurate while manifest is being rebuilt
         if (activeItem && this.__pageContent) {
-          this._activeItemContentChanged(this.__pageContent, activeItem)
+          this._activeItemContentChanged(this.__pageContent, activeItem);
         }
         if (activeItem && activeItem.location) {
-            this.activeItemLocation = activeItem.location;
-            this.loadPageData();         
+          this.activeItemLocation = activeItem.location;
+          this.loadPageData();
         }
         this.__disposer.push(reaction);
       });

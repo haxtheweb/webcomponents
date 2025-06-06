@@ -29,6 +29,10 @@
             },
             {
               "kind": "method",
+              "name": "HAXCMSGlobalStyleSheetContent"
+            },
+            {
+              "kind": "method",
               "name": "prevPage",
               "parameters": [
                 {
@@ -56,6 +60,14 @@
               },
               "default": "\"\"",
               "attribute": "searchTerm"
+            },
+            {
+              "kind": "field",
+              "name": "autoScroll",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true"
             },
             {
               "kind": "field",

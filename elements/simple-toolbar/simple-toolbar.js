@@ -738,12 +738,14 @@ const SimpleToolbarBehaviors = function (SuperClass) {
      *
      */
     _handleFocusChange() {
-      if (globalThis.document.activeElement && globalThis.document.activeElement.shadowRoot) {
+      if (
+        globalThis.document.activeElement &&
+        globalThis.document.activeElement.shadowRoot
+      ) {
         this.__focused = this.contains(
           globalThis.document.activeElement.shadowRoot.activeElement,
         );
-      }
-      else {
+      } else {
         this.__focused = this.contains(document.activeElement);
       }
     }

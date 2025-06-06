@@ -145,17 +145,27 @@ class CodeSample extends I18NMixin(LitElement) {
 
   getMinHeight() {
     if (this.shadowRoot && this.shadowRoot.querySelector("#code-container")) {
-      if (this.shadowRoot.querySelector("#code-container").getBoundingClientRect().height > 250) {
-        return this.shadowRoot.querySelector("#code-container").getBoundingClientRect().height + "px"
+      if (
+        this.shadowRoot.querySelector("#code-container").getBoundingClientRect()
+          .height > 250
+      ) {
+        return (
+          this.shadowRoot
+            .querySelector("#code-container")
+            .getBoundingClientRect().height + "px"
+        );
       }
     }
-    return "250px";    
+    return "250px";
   }
 
   // render function
   render() {
     return html` ${this._haxstate
-        ? html`<code-editor language="${this.type}" style="--monaco-element-iframe-height:${this.getMinHeight()};"></code-editor>`
+        ? html`<code-editor
+            language="${this.type}"
+            style="--monaco-element-iframe-height:${this.getMinHeight()};"
+          ></code-editor>`
         : ``}
       <div class="code-sample-wrapper">
         <div id="theme"></div>
@@ -332,8 +342,8 @@ const great = "example";</template>`,
     };
   }
   /**
- * Ensure fields don't pass through to HAX if in that context
- */
+   * Ensure fields don't pass through to HAX if in that context
+   */
   haxpreProcessNodeToContent(node) {
     return node;
   }
@@ -518,8 +528,7 @@ if ($MrTheCheat) {
       if (propName === "editMode") {
         if (this.editMode) {
           import("@haxtheweb/code-editor/code-editor.js").then((module) => {
-            const codeEditor =
-              this.shadowRoot.querySelector("code-editor");
+            const codeEditor = this.shadowRoot.querySelector("code-editor");
             if (codeEditor) {
               codeEditor.innerHTML = this.innerHTML;
             }
@@ -602,14 +611,21 @@ if ($MrTheCheat) {
   }
 
   _getCodeTemplate() {
-    return (this.children[0] && this.children[0].tagName === "TEMPLATE") ? this.children[0] : null;
+    return this.children[0] && this.children[0].tagName === "TEMPLATE"
+      ? this.children[0]
+      : null;
   }
 
   _applyHighlightjs(str) {
     this._code = globalThis.document.createElement("code");
     if (this.type) this._code.classList.add(this.type);
     this._code.innerHTML = this._entitize(this._cleanIndentation(str));
-    if (this.shadowRoot && this.shadowRoot.querySelector("#code") && this._code && this._code.innerHTML) {
+    if (
+      this.shadowRoot &&
+      this.shadowRoot.querySelector("#code") &&
+      this._code &&
+      this._code.innerHTML
+    ) {
       this.shadowRoot.querySelector("#code").appendChild(this._code);
       hljs.highlightBlock(this._code);
       hljs.initLineNumbersOnLoad({}, this.shadowRoot.querySelector("code"));
