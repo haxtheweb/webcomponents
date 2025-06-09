@@ -71,6 +71,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       link: {type: String},
       topItems: {type: Array},
       isOverflow: {type: Boolean},
+      isOpen: {type: Boolean, reflect: true},
     };
   }
 
@@ -178,7 +179,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
       }
 
-      button:focus-visible{
+      a:focus-visible, button:focus-visible{
         border: 1px solid white;
 
       }
@@ -198,9 +199,9 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         color: white;
         position: fixed;
         /* temporary bcs edit mode*/
-        margin-top: 50px;
-
-        top: var(--nav-bar-height);
+        top: 50px;
+        /* top: 0; */
+        margin-top: var(--nav-bar-height);
         /* height: 100vh; */
         overflow-y: scroll;
         left: 0;
@@ -236,6 +237,9 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         text-decoration: none; /* Ensures underline is removed on hover */
 
       }  
+      :host([isOpen]) dialog {
+      
+      }
 
           /* Extra small devices (phones) */
           /* Make padding, logo and hamburger smaller*/
@@ -313,6 +317,7 @@ toggleHamburger() {
   if (dialog.open){
     dialog.close();
     document.body.classList.remove('no-scroll'); // Re-enable scrolling on the body
+    this.isOpen = true; // 
   } else{
     dialog.show();
     document.body.classList.add('no-scroll'); // Disable scrolling on the body
@@ -363,6 +368,7 @@ toggleHamburger() {
           this.isOverflow = false;
           desktopHeader.style.visibility = "visible"; // Show desktop header
           mobileHeader.style.display = "none"; // Hide mobile header
+          document.body.classList.remove('no-scroll');
         }
 
         this.requestUpdate();
@@ -370,7 +376,7 @@ toggleHamburger() {
     }
   }
 
-  //hide logo if it fails to load
+  //show home icon if it fails to load
   handleImageError(event) {
     const img = event.target;
     img.src='https://img.icons8.com/m_sharp/512/FFFFFF/home.png';

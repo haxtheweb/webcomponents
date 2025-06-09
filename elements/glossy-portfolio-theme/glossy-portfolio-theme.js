@@ -36,18 +36,25 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     super();
     this.title = "";
     this.HAXCMSThemeSettings.autoScroll = true;
-    this.activeLayout = "grid"; // text, media, listing
     this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
     this.relatedItems = []; 
     this.childrenArray = []; // used for grid layout, holds children of activeItem
     this.__disposer = this.__disposer || [];
 
-    //get top level items (items shown on header -- they have no parent)
 
 
+   autorun((reaction) => {
+    this.isHome = false; // default to false
+      const active = toJS(store.activeItem);
+      if (active) {
+        console.log("order", active.order, "indent", active.indent)
+        if(active.order === 0 && active.indent === 0) {
+          this.isHome = true; 
+        }
+      }
+      console.log("isHome", this.isHome);
+    });
 
-
-  
   }
 
 
@@ -56,12 +63,13 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     return {
       ...super.properties,
       title: { type: String },
-      activeLayout: { type: String },
+      siteDescription: { type: String },
       activeItems: { type: Array },
       activeParent: { type: Object },
       relatedItem: { type: Object },
       childrenArray: { type: Array },
       categoryTags: { type: Array },
+      isHome: { type: Boolean },
       items: { type: Object },
     };
   }
@@ -76,16 +84,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   }
 
 
-  setLayout(layout) {
-    if (globalThis.document && globalThis.document.startViewTransition) {
-      globalThis.document.startViewTransition(() => {
-        this.activeLayout = layout;
-      });
-    }
-    else {
-      this.activeLayout = layout;
-    }
-  }
+
   
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
@@ -119,7 +118,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         --link-color: #6cddff;
         --link-color-hover: #9ae7ff;
         --main-font-size: 18px;
-        
         --mobile-page-padding: 0 15px;
 
         
@@ -208,16 +206,16 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         text-decoration: underline;
       }
       
-      /* wrapper style */
       site-active-title h1{
         margin-bottom: 0;
         /* margin-top: 0.25em; */
       }
+
+      /* PAGE PADDING */
       .wrapper {
         /* min-width: 100%; */
         max-width: var(--max-width);
         padding: var(--page-padding);
-        /* background-color: red; */
         margin: 0 auto;
 
       }
@@ -225,6 +223,8 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       #contentcontainer, #slot {
         min-width: 100%;
         max-width: var(--max-width);
+        z-index: 2;
+        background-color: var(--bg-color);
       }
 
       site-breadcrumb {
@@ -253,6 +253,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       body.no-scroll {
         overflow: hidden; /* Prevents scrolling when open mobile nav link*/
       }
+      
       /* Extra small devices (phones) */
       @media (max-width: 575.98px) {
         :root, html, body{
@@ -275,18 +276,20 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     const activeTitle = this.activeItem?.title || "Default Title"; // Use optional chaining and a fallback value
     return html`
     <!-- temporary margin-top  -->
-<div class="body-wrapper" style="margin-top: 150px"> 
+<div class="body-wrapper"> 
+  <glossy-portfolio-header></glossy-portfolio-header>
+  ${this.isHome ? html`<glossy-portfolio-home></glossy-portfolio-home>` : html``}
   <div id="contentcontainer" class="grow">
-    <div class="wrapper">
+    
+    <div class="wrapper"> <!-- PAGE PADDING  -->
+      
       <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
-
       <site-active-title></site-active-title>          
       <div id="slot"><slot></slot></div>
     </div>
 
   </div> 
 
-  <glossy-portfolio-header></glossy-portfolio-header>
 
 
   <glossy-portfolio-grid class="grow"></glossy-portfolio-grid>

@@ -5,7 +5,8 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 /**
  * `glossy-portfolio-home`
  * 
@@ -21,7 +22,15 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "Title";
+    this.__disposer = this.__disposer || [];
 
+    // get csite description
+    autorun((reaction) => {
+    
+      this.siteDescription = toJS(store.siteDescription) || "A portfolio showcasing my work and projects.";
+      this.__disposer.push(reaction);
+      
+    });
   }
 
   // Lit reactive properties
@@ -29,6 +38,7 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      siteDescription: { type: String },
 
     };
   }
@@ -69,6 +79,7 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
         background-size: cover;
         /* background-color: gray; */
         width: 100%;
+
         
       }
       .background-opacity{
@@ -103,17 +114,13 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
         /* font-style: normal; */
       }
 
-      .title-container{
-      height: 100vh;
-      position: relative;
-      z-index: 1;
+        .title-container{
+        height: 100vh;
+        position: relative;
+        z-index: 0;
 
-     }
+      }
 
-     glossy-portfolio-grid{
-      position: relative;
-      z-index: 2;
-     }
      @media (max-width: 575.98px) {
       /* Styles for phones */
       .title{
@@ -144,20 +151,17 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
     return html`
 <div class="background">
   <div class="background-opacity">
-    <div class="wrapper">
-
-      <glossy-portfolio-header> </glossy-portfolio-header>
+    <div class="wrapper"> <!-- page padding -->
       
-      <div class="title-container">
+      <div class="title-container"> <!-- centralize title vertically -->
         <div class="title">
-        I make things and what not
+        ${this.siteDescription}
         </div>  
       </div>  
     
     </div>  
   </div>
 </div>
-<glossy-portfolio-grid class="projects"></glossy-portfolio-grid>
 
 `;
   }
