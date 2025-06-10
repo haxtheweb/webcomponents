@@ -95,6 +95,11 @@ export class WiredDarkmodeToggle extends WiredToggle {
           background-image: url("${unsafeCSS(moon)}");
           background-position: left;
         }
+        :host([disabled]) {
+          opacity: .5;
+          pointer-events: none;
+          cursor: not-allowed;
+        }
         input {
           width: 100px;
           height: 48px;
