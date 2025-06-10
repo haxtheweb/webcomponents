@@ -142,6 +142,31 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         background-color: var(--bg-color);
 
       }
+
+      :host([edit-mode]) {
+          /* react to the screen shifting left to right on edit mode w/ tray direction */
+          margin: var(
+            --hax-tray-element-align-margin,
+            0 0 0
+              calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width))
+          );
+          transition: margin 0.6s ease-in-out;
+      }
+
+      :host([is-logged-in]) {
+        glossy-portfolio-header {
+          padding-top: 52px;
+
+        }
+      }
+
+      glossy-portfolio-header {
+        position: fixed;
+        top: 0;
+        z-index: 1000; /* Ensure header is above other content */
+        /* padding-top: 100px; */
+      }
+
       /* text style */
       p, a, blockquote, pre, code, span, strong, em {
         margin: 1em 0; /* Top and bottom margins equal to the font size, no left/right margin */
@@ -213,18 +238,24 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
       /* PAGE PADDING */
       .wrapper {
-        /* min-width: 100%; */
-        max-width: var(--max-width);
-        padding: var(--page-padding);
-        margin: 0 auto;
+
 
       }
 
       #contentcontainer, #slot {
-        min-width: 100%;
-        max-width: var(--max-width);
         z-index: 2;
         background-color: var(--bg-color);
+        width: 100%;
+        
+      }
+ 
+      
+
+      #contentcontainer {
+        max-width: var(--max-width);
+        margin: auto;
+        padding: var(--page-padding);
+        padding-top: 80px;
       }
 
       site-breadcrumb {
@@ -237,12 +268,14 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         width: 100%;
       }
       .body-wrapper { 
-        display: flex;
-        flex-direction: column;
+        display: block;
+        /* flex-direction: column; */
         min-height: 100vh;
+        /* align-items: center;  */
+        width: 100%;
       }
 
-      /* .grow and .not-grow makes sure the footer is at the bottom og page */
+      /* .grow and .not-grow makes sure the footer is at the bottom of page */
       .grow {
         flex: 1 0 auto; /* Allow this element to grow and fill available space */
       }
@@ -276,19 +309,19 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     const activeTitle = this.activeItem?.title || "Default Title"; // Use optional chaining and a fallback value
     return html`
     <!-- temporary margin-top  -->
-<div class="body-wrapper"> 
   <glossy-portfolio-header></glossy-portfolio-header>
+
+<div class="body-wrapper"> 
   ${this.isHome ? html`<glossy-portfolio-home></glossy-portfolio-home>` : html``}
-  <div id="contentcontainer" class="grow">
+
+    <article id="contentcontainer" class="grow contentcontainer">
     
-    <div class="wrapper"> <!-- PAGE PADDING  -->
-      
+
       <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
       <site-active-title></site-active-title>          
       <div id="slot"><slot></slot></div>
-    </div>
-
-  </div> 
+    </article>
+  </div>
 
 
 

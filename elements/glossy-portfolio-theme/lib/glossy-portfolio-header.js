@@ -35,7 +35,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     this.title = "Title";
     this.homeLink = "";
     this.__disposer = this.__disposer || [];
-    this.isOverflow = "false"
+    this.isOverflow = false;
+    this.isOpen = false;
 
     //get top level items (items shown on header -- they have no parent)
     autorun((reaction) => {
@@ -86,8 +87,9 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         
         /* min-width: 400px; */
         height: auto;
-        background-color: #1d1d1d;
+        /* background-color: #1d1d1d; */
       }
+
 
       *{
         box-sizing: border-box;
@@ -102,27 +104,26 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         padding: 0;
       }
 
-      .container{
-        background: linear-gradient(180deg, rgba(17, 17, 17, 1) 0%, rgba(17, 17, 17, 0) 100%);;
-
+      .container.desktop{
+        background: transparent;
+              
+        background: linear-gradient(180deg, rgba(17, 17, 17, 1) 0%, rgba(17, 17, 17, 0) 100%);
+        
         display: flex;
         justify-content: space-between;
         align-items: center;
         z-index: 10;
-        position: fixed;
-        top: 0px;
         width: 100vw;
-        position: fixed;
-        left: 0;
-        right: 0;
+
         padding: 50px 50px 40px 50px;
-        /* temporary */
-        margin-top: 50px;
         max-height: var(--nav-bar-height);
         font-family: var(--main-font);  
-        overflow-x: auto;
-        overflow-y: hidden;
+        /* overflow-x: scroll; */
+        /* overflow-y: scroll; */
 
+      }
+      .container{
+        
       }
 
       .logo, .logo-link{
@@ -189,31 +190,23 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         justify-content: space-between;
         width: 100%;
         align-items: center;
+        padding: 0 50px ;
+        height: var(--nav-bar-height);
         /* max-height: 60px; */
       }
 
-      dialog{
-        background-color: var(--bg-color);
-        min-width: 100vw;
-        border: none;
-        color: white;
-        position: fixed;
-        /* temporary bcs edit mode*/
-        top: 50px;
-        /* top: 0; */
-        margin-top: var(--nav-bar-height);
-        /* height: 100vh; */
-        overflow-y: scroll;
-        left: 0;
-        right: 0;
-        /* font-size: 200px; */
-      }
+
 
       .container.mobile{
         background-color: var(--bg-color);
+        display: flex;
+        flex-direction: column;
+        width: 100vw;
+
+        height: auto;
       }
 
-      dialog ul.mobile{
+      ul.mobile{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -239,6 +232,9 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       }  
       :host([isOpen]) dialog {
       
+      }
+      .nav-menu{
+        display: none;
       }
 
           /* Extra small devices (phones) */
@@ -297,15 +293,16 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
             </svg>
             
           </button>
-          <dialog class="mobile nav-menu" >
-              
-            <ul class="nav-links mobile">
-              ${Array.from(this.topItems).map((item) => html`
-                  <li class="mobile"><a class="right-side-item mobile" href="${item.slug}" @click="${this.toggleHamburger}"><div class="header-link mobile">${item.title}</div></a></li>
-                `)}
-            </ul>
-          </dialog>
+
         </div>
+        <div class="mobile nav-menu" >
+          
+          <ul class="nav-links mobile">
+            ${Array.from(this.topItems).map((item) => html`
+                <li class="mobile"><a class="right-side-item mobile" href="${item.slug}" @click="${this.toggleHamburger}"><div class="header-link mobile">${item.title}</div></a></li>
+              `)}
+          </ul>
+    </div>
       </div>
     `;
   }
@@ -313,16 +310,22 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
 toggleHamburger() {
   this._checkOverflow();
-  let dialog = this.renderRoot.querySelector('dialog');
-  if (dialog.open){
-    dialog.close();
+  let nav = this.renderRoot.querySelector('.nav-menu');
+  console.log("toggleHamburger", this.isOpen, nav);
+  if (this.isOpen === true){
+    console.log(2);
+    nav.style.display = "none"; // Hide the mobile menu
     document.body.classList.remove('no-scroll'); // Re-enable scrolling on the body
-    this.isOpen = true; // 
-  } else{
-    dialog.show();
+    this.isOpen = false; // 
+  } else if (this.isOpen === false) {
+    console.log(1);
+    nav.style.display = "flex"; // Show the mobile menu
     document.body.classList.add('no-scroll'); // Disable scrolling on the body
-      
+    this.isOpen = true; // 
+
   }
+
+
 }
 
 
@@ -363,10 +366,16 @@ toggleHamburger() {
         if (usedWidth > availableWidth) {
           this.isOverflow = true;
           desktopHeader.style.visibility = "hidden"; // Hide desktop header
+          desktopHeader.style.height = "0px"; // Hide desktop header
+          desktopHeader.style.padding = "0px 50px"; // Hide desktop header
           mobileHeader.style.display = "flex"; // Show mobile header
         } else {
           this.isOverflow = false;
           desktopHeader.style.visibility = "visible"; // Show desktop header
+          desktopHeader.style.padding = "50px 50px 40px 50px"; // Hide desktop header
+          desktopHeader.style.height = "auto"; // Show desktop header
+          
+
           mobileHeader.style.display = "none"; // Hide mobile header
           document.body.classList.remove('no-scroll');
         }
