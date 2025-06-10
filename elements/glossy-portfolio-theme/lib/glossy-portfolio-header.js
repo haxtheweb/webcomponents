@@ -182,6 +182,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
       a:focus-visible, button:focus-visible{
         border: 1px solid white;
+        border-radius: 10px; 
+
 
       }
 
@@ -201,7 +203,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         background-color: var(--bg-color);
         display: flex;
         flex-direction: column;
-        width: 100vw;
+        width: 100%;
 
         height: auto;
       }
@@ -211,15 +213,17 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         flex-direction: column;
         align-items: center;
         gap: 0;
+        width: 100%;
       }
    
    
       /* nav links */
+      
       li.mobile, a.right-side-item.mobile{
         display: flex;
         flex-direction: column;
         justify-content: center;
-        width: 100vw;
+        width: 100%;
         text-align: center; /* Centers the text horizontally */
         height: 80px;
         
@@ -230,11 +234,12 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         text-decoration: none; /* Ensures underline is removed on hover */
 
       }  
-      :host([isOpen]) dialog {
-      
-      }
+
       .nav-menu{
         display: none;
+        overflow-y: scroll;
+        overflow-y: hidden;
+        max-height: calc(100vh - var(--nav-bar-height));
       }
 
           /* Extra small devices (phones) */
@@ -247,11 +252,11 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           display: block;
           height: 30px;
         }
-        /* svg.logo{
-          max-height: 60px;
-        } */
+        .logo{
+          max-height: 30px;
+        }
 
-        .container{
+        .logo-hamburger.mobile{
           padding: 15px 15px ;
         }
       }

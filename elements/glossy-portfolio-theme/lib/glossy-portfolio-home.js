@@ -87,6 +87,7 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
         width: 100%;
 
 
+
       }
 
       .title{

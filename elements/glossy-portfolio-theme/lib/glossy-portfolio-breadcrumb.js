@@ -28,6 +28,11 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
           display: block;
           box-sizing: border-box;
         }
+
+        *{
+          --breadcrumb-font-size: 0.9rem;
+        }
+
         ol.breadcrumb{
           list-style: none;
           margin: 0;
@@ -36,7 +41,7 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
           flex-direction: row;
           flex-wrap: wrap;
           font-family: inherit;
-          font-size: 0.9rem;
+          font-size: var(--breadcrumb-font-size);
           gap: 8px;
           list-style: ">";
           list-style-position: inside; /* Place bullets inside the container */
@@ -46,12 +51,12 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
 
         ol.breadcrumb li {
           /* padding-left: 8px; */
-          font-size: 0.9rem;
+          font-size: var(--breadcrumb-font-size);
           font-weight: 300;
         }
         ol.breadcrumb li a {
           margin-left: 4px;
-          font-size: 0.9rem;
+          font-size: var(--breadcrumb-font-size);
           /* color: var(--link-color); */
           color: #ffffffa6;
           font-weight: 400;
@@ -61,7 +66,7 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
 
         }
         ol.breadcrumb li::marker {
-          font-size: 0.9rem;
+          font-size: var(--breadcrumb-font-size);
           color: #ffffffa6;
         }
         ol.breadcrumb li:last-child a{
@@ -78,6 +83,12 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
         ol.breadcrumb li:first-child a {
           margin-left: 0;
       
+        }
+
+        @media (max-width: 575.98px) {
+          *{
+            --breadcrumb-font-size: 1rem;
+          }
         }
  
 

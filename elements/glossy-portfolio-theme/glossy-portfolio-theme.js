@@ -236,12 +236,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         /* margin-top: 0.25em; */
       }
 
-      /* PAGE PADDING */
-      .wrapper {
-
-
-      }
-
       #contentcontainer, #slot {
         z-index: 2;
         background-color: var(--bg-color);
@@ -268,11 +262,11 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         width: 100%;
       }
       .body-wrapper { 
-        display: block;
-        /* flex-direction: column; */
+        display: flex;
+        flex-direction: column;
         min-height: 100vh;
-        /* align-items: center;  */
         width: 100%;
+        z-index: 2;
       }
 
       /* .grow and .not-grow makes sure the footer is at the bottom of page */
@@ -297,6 +291,9 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
           font-size: 14px;
 
        }
+       #contentcontainer {
+        padding-top: 60px;
+        }
       }
     `];
   }
@@ -314,21 +311,16 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 <div class="body-wrapper"> 
   ${this.isHome ? html`<glossy-portfolio-home></glossy-portfolio-home>` : html``}
 
-    <article id="contentcontainer" class="grow contentcontainer">
+  <article id="contentcontainer" class="grow contentcontainer">
     
 
       <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
       <site-active-title></site-active-title>          
       <div id="slot"><slot></slot></div>
-    </article>
-  </div>
-
-
-
+  </article>
   <glossy-portfolio-grid class="grow"></glossy-portfolio-grid>
   <glossy-portfolio-footer class="not-grow"></glossy-portfolio-footer>
 
- 
 </div>  
 
        
