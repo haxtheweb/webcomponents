@@ -150,7 +150,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
             0 0 0
               calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width))
           );
-          transition: margin 0.6s ease-in-out;
+          transition: margin 0.15s ease-in-out;
       }
 
       :host([is-logged-in]) {
@@ -283,6 +283,9 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       
       /* Extra small devices (phones) */
       @media (max-width: 575.98px) {
+        *{
+          --page-padding: 0 15px;
+        }
         :root, html, body{
           /* font-size: 124px; */
           font-family: var(--main-font);

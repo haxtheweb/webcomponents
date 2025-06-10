@@ -136,9 +136,7 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
         font-size: 40px;
         
       }
-      .wrapper{
-        padding: var(--mobile-page-padding);
-      }
+
       
      }
 

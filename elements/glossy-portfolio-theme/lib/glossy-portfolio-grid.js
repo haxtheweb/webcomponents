@@ -177,10 +177,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
          gap: 25px;
 
         }
-        .container-background{
-          padding: var(--mobile-page-padding);
 
-        }
       }
 
     `];

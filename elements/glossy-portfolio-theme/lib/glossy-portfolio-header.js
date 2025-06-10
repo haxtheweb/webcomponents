@@ -237,8 +237,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
       .nav-menu{
         display: none;
-        overflow-y: scroll;
-        overflow-y: hidden;
+        overflow-y: auto;
+        overflow-x: hidden;
         max-height: calc(100vh - var(--nav-bar-height));
       }
 
