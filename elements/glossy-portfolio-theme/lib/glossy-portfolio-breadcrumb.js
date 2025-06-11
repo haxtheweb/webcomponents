@@ -68,7 +68,7 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
           color: #ffffffa6;
         }
         ol.breadcrumb li:last-child a{
-          color: white;
+          color: var(--text-color);
         }
         ol.breadcrumb li:last-child a:hover{
           text-decoration: none;

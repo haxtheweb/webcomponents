@@ -89,7 +89,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        color: white;
+        color: var(--text-color);
         z-index: 2;
         width: 100%;
 

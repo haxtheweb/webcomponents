@@ -150,7 +150,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
  
       a, div.header-link{
         all: unset;
-        color: white;
+        color: var(--text-color);
         text-decoration: none;
         font-weight: 500;
         font-size: 1rem;
@@ -159,7 +159,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
       /* white underline when hover */
       a:hover{
-        color: white;
+        color: var(--text-color);
 
       }
 

@@ -76,7 +76,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
         left: 36px;
         font-family: "Manrope", "Manrope Placeholder", sans-serif;
         font-size: 1.25rem;
-        color: white;
+        color: var(--text-color);
         opacity: 0;
         font-weight: 500;
         text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.5); /* Horizontal offset, vertical offset, blur radius, color */
