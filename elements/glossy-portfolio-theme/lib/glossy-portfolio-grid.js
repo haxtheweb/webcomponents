@@ -38,9 +38,9 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
         // find parent of activeItem
         this.activeParent = store.manifest.items.find((d) => activeItem.parent === d.id)||"";
         const children = store.getItemChildren(store.activeId);
-        let siblings = store.manifest.items.find((d) => activeItem.parent === d.id)
         this.title = "";
         this.data = [];
+        let tmpData = [];
 
         if (children && children.length > 0) { //display children if available
           this.data = [...children];
@@ -48,23 +48,27 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
         
         } else if(this.activeItem.metadata.relatedItems) { //display related items if available
           
+          
           this.title = "Related Content";
           let relatedItem = store.findItem(activeItem.metadata.relatedItems);      
-          if (!this.relatedItems.some((item) => item.id === relatedItem.id)) { //check for duplicates
-           this.data.push(relatedItem);
+          if (!this.data.some((item) => item.id === relatedItem.id)) { //check for duplicates
+           tmpData.push(relatedItem);
           }
+          this.data = [...tmpData];
 
-        } else if(siblings) { //display prev and next pages if available
+        } else if(this.activeParent) { //display prev and next pages if available
           this.title = "Related Content";
 
           let siblingsArray = [...store.getItemChildren(this.activeParent.id)];
           let activeIndex = siblingsArray.findIndex((item) => item.id === this.activeItem.id);
           if (siblingsArray[activeIndex - 1]) { //check for previous item
-            this.data.push(siblingsArray[activeIndex - 1]);
+            tmpData.push(siblingsArray[activeIndex - 1]);
           }
           if (siblingsArray[activeIndex + 1]) { //check for next item
-            this.data.push(siblingsArray[activeIndex + 1]);
+            tmpData.push(siblingsArray[activeIndex + 1]);
           }
+          this.data = [...tmpData];
+
         }
           this.__disposer.push(reaction);
       } 
@@ -108,7 +112,6 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
         width: 100%;
         padding: var(--page-padding);
-        /* min-height: 100vh; */
         padding-bottom: 30px;
       }
       .projects-header{
@@ -125,15 +128,13 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
       }
       .filters{
         display: flex;
-        /* gap: 16px; */
         flex-wrap: wrap;
 
       }
       .filter:hover, .filter:active, .filter:focus-visible {
         cursor: pointer;
         background-color: #1f1f1f;
-        
-        /* font-size: 1.05rem;   */
+  
       }
 
       .filter{
@@ -145,11 +146,9 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
       }
       .card-container {
         display: grid;
-        /* border: 1px solid red; */
         grid-template-columns: repeat(2, minmax(200px, 1fr));
         gap: 45px;
         justify-content: center;
-        /* width: 100vw; */
         overflow: hidden;
         max-width: var(--max-width); 
       }
@@ -187,7 +186,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
   render() {
 return html`
 ${this.data.length > 0 ?   html`        
-  <div class = "container-background">
+  <div class="container-background">
     <div class="projects-header">
 
       <div class="grid-title">${this.title.toUpperCase()}</div>
@@ -216,21 +215,18 @@ ${this.data.length > 0 ?   html`
   displayFilters() {
     //display/print filters (top left of the grid)
 
-    if(this.filtersList.length === 0){
-      // hide "All" button if there is no filter
-      return html`   
-       <button style = "display: none" class="filter active" name="all" @click="${this.updateFilter}">All</button>
-      `
-    }
-    return html`
+    if(this.filtersList.length > 0){
+      return html`
       <button class="filter active" name="all" @click="${this.updateFilter}">All</button>
-      
       ${Array.from(this.filtersList).map((filter) => html`
         <button @click="${this.updateFilter}" name="${filter}"  class="filter"> 
           ${this.capitalizeWords(filter)} 
         </button>
       `)}
     `;
+    }
+
+ 
   }
 
   capitalizeWords(sentence) {
@@ -244,10 +240,13 @@ ${this.data.length > 0 ?   html`
     super.updated(changedProperties);
     if (changedProperties.has("data")) {
 
-      // Reset filters and filteredData when data changes (when change pages)
-      this.activeFilter = "all";
-      let all = this.renderRoot.querySelector('[name="all"]');
-      all.classList.add('active'); //set active filter to "all"
+      // Reset filters and filteredData when data changes (when changing pages)
+      if(this.filtersList.length > 0){
+        this.activeFilter = "all";
+        let all = this.renderRoot.querySelector('[name="all"]');
+        all.classList.add('active'); //set active filter to "all"
+      }
+
       
       if(this.data && this.data.length > 0){  
         // if there is data, set filteredData to data and populate filtersList

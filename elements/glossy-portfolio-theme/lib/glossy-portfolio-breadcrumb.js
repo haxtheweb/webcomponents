@@ -29,7 +29,7 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
           box-sizing: border-box;
         }
 
-        *{
+        :host{
           --breadcrumb-font-size: 0.9rem;
         }
 
@@ -50,14 +50,12 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
 
 
         ol.breadcrumb li {
-          /* padding-left: 8px; */
           font-size: var(--breadcrumb-font-size);
           font-weight: 300;
         }
         ol.breadcrumb li a {
           margin-left: 4px;
           font-size: var(--breadcrumb-font-size);
-          /* color: var(--link-color); */
           color: #ffffffa6;
           font-weight: 400;
         }
@@ -86,7 +84,7 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         @media (max-width: 575.98px) {
-          *{
+          :host{
             --breadcrumb-font-size: 1rem;
           }
         }

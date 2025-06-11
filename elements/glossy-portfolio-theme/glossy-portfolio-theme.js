@@ -37,8 +37,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     this.title = "";
     this.HAXCMSThemeSettings.autoScroll = true;
     this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
-    this.relatedItems = []; 
-    this.childrenArray = []; // used for grid layout, holds children of activeItem
     this.__disposer = this.__disposer || [];
 
 
@@ -47,12 +45,10 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     this.isHome = false; // default to false
       const active = toJS(store.activeItem);
       if (active) {
-        console.log("order", active.order, "indent", active.indent)
         if(active.order === 0 && active.indent === 0) {
           this.isHome = true; 
         }
       }
-      console.log("isHome", this.isHome);
     });
 
   }
@@ -64,11 +60,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       ...super.properties,
       title: { type: String },
       siteDescription: { type: String },
-      activeItems: { type: Array },
-      activeParent: { type: Object },
       relatedItem: { type: Object },
-      childrenArray: { type: Array },
-      categoryTags: { type: Array },
       isHome: { type: Boolean },
       items: { type: Object },
     };
@@ -108,7 +100,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   static get styles() {
     return [super.styles,
     css`
-      * {
+      :host{
         box-sizing: border-box;
     
         --bg-color: #111111;
@@ -121,6 +113,10 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         --mobile-page-padding: 0 15px;
 
         
+      }
+      *{
+        box-sizing: border-box;
+
       }
       :root, html, body{
         /* font-size: 124px; */
@@ -164,7 +160,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         position: fixed;
         top: 0;
         z-index: 1000; /* Ensure header is above other content */
-        /* padding-top: 100px; */
       }
 
       /* text style */
@@ -186,11 +181,18 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
       ol, ul{
         margin-bottom: 1em;
+      
+        display: block;
+        list-style-type: disc;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        padding-inline-start: 40px;
+        unicode-bidi: isolate;
+
       }
       
       p, h1, h2, h3, h4, h5, h6, li, a, blockquote, pre, code, span, strong, em {
         max-width: 840px;
-        /* letter-spacing: .01em; */
       }
       h1, h2, h3, h4, h5, h6 {
         margin: 0.5em 0; /* Slightly smaller margins for headings */
@@ -233,7 +235,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       
       site-active-title h1{
         margin-bottom: 0;
-        /* margin-top: 0.25em; */
       }
 
       #contentcontainer, #slot {
@@ -283,11 +284,10 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       
       /* Extra small devices (phones) */
       @media (max-width: 575.98px) {
-        *{
+        :host *, :root *{
           --page-padding: 0 15px;
         }
         :root, html, body{
-          /* font-size: 124px; */
           font-family: var(--main-font);
           color: white;
           background-color: var(--bg-color);
@@ -307,7 +307,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   // Lit render the HTML
   
   render() {
-    // console.log("activeLayout", this.activeLayout);
     
     const activeTitle = this.activeItem?.title || "Default Title"; // Use optional chaining and a fallback value
     return html`

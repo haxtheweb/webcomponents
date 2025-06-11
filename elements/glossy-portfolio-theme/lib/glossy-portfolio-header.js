@@ -72,7 +72,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       link: {type: String},
       topItems: {type: Array},
       isOverflow: {type: Boolean},
-      isOpen: {type: Boolean, reflect: true},
+      isOpen: {type: Boolean},
     };
   }
 
@@ -84,20 +84,14 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
       :host {
         display: block;
-        
-        /* min-width: 400px; */
         height: auto;
-        /* background-color: #1d1d1d; */
+        --nav-bar-height: 80px;
       }
 
 
-      *{
+      * {
         box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        --nav-bar-height: 80px;
-
-        
+ 
       }
 
       ul{
@@ -107,7 +101,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
       .container.desktop{
         background: transparent;
-              
         background: linear-gradient(180deg, rgba(17, 17, 17, 1) 0%, rgba(17, 17, 17, 0) 100%);
         
         display: flex;
@@ -119,11 +112,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         padding: 50px 50px 40px 50px;
         max-height: var(--nav-bar-height);
         font-family: var(--main-font);  
-        transition: background-color 1s ease-in-out;
-
-
-        /* overflow-x: scroll; */
-        /* overflow-y: scroll; */
 
       }
 
@@ -189,11 +177,21 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         all: unset;
         cursor: pointer;
         border-radius: 15%; 
-        height: 40px;
+        height: 55px;
+        width: 55px;
+        padding: 8px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
 
       }
+      button:hover, button:focus-visible{
+        background-color: #1f1f1f;
+      }
 
-      a:focus-visible, button:focus-visible{
+      a:focus-visible{
         border: 1px solid white;
         border-radius: 10px; 
 
@@ -207,7 +205,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         align-items: center;
         padding: 0 50px ;
         height: var(--nav-bar-height);
-        /* max-height: 60px; */
       }
 
 
@@ -229,8 +226,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         width: 100%;
       }
    
-   
-      /* nav links */
       
       li.mobile, a.right-side-item.mobile{
         display: flex;
@@ -260,22 +255,25 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           /* Extra small devices (phones) */
           /* Make padding, logo and hamburger smaller*/
       @media (max-width: 575.98px) {
-        *{
+        :host {
           --nav-bar-height: 60px;
         }
         .hamburger{
           display: block;
           height: 30px;
           width: 30px;
+          flex-shrink: 0;
         }
         .cross{
           height: 15px;
           width: 30px;
+          flex-shrink: 0;
         }
         button{
-          height: 30px;
-          width: 30px;
+          height: 40px;
+          width: 40px;
         }
+
         .logo{
           max-height: 30px;
         }
@@ -295,7 +293,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
       <!-- ------------DESKTOP HEADER--------------- -->
       <div class="container desktop" >
-\        <div class="logo-hamburger desktop">
+        <div class="logo-hamburger desktop">
           <a class="logo-link desktop" href="${this.homeLink}">
             <img class="logo desktop" src="${store.manifest.metadata.site.logo}" @error=${this.handleImageError} alt="Logo" />
           </a>
@@ -310,11 +308,12 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       <!-- -----------MOBILE HEADER--------------- -->
       <div class="container mobile">
         <div class="logo-hamburger mobile">
-          <a class="logo-link mobile" href="${this.homeLink}">
+          <a class="logo-link mobile" href="${this.homeLink}" @click="${this.closeHamburger}">
             <img class="logo mobile" src="${store.manifest.metadata.site.logo}" @error=${this.handleImageError} alt="Logo" />
           </a> 
-          <button @click="${this.toggleHamburger}">
 
+          <!-- hamburger/close button -->
+          <button @click="${this.toggleHamburger}">
             ${this.isOpen ? html`
               <svg class="cross mobile"
                 version="1.1" 
@@ -342,9 +341,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
                 <g id="SVGRepo_iconCarrier"> <path d="M4 18L20 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> <path d="M4 12L20 12" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> <path d="M4 6L20 6" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> </g>
               </svg>
             `}
-
-
-        
           </button>
 
         </div>
@@ -352,7 +348,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           
           <ul class="nav-links mobile">
             ${Array.from(this.topItems).map((item) => html`
-                <li class="mobile"><a class="right-side-item mobile" href="${item.slug}" @click="${this.toggleHamburger}"><div class="header-link mobile">${item.title}</div></a></li>
+                <li class="mobile"><a class="right-side-item mobile" href="${item.slug}" @click="${this.closeHamburger}"><div class="header-link mobile">${item.title}</div></a></li>
               `)}
           </ul>
     </div>
@@ -363,21 +359,29 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
 _toggleHamburger() {
   this._checkOverflow();
-  let nav = this.renderRoot.querySelector('.nav-menu');
-  console.log("toggleHamburger", this.isOpen, nav);
+
   if (this.isOpen === true){
-    console.log(2);
-    nav.style.display = "none"; // Hide the mobile menu
-    document.body.classList.remove('no-scroll'); // Re-enable scrolling on the body
-    this.isOpen = false; // 
+    this.closeHamburger();
   } else if (this.isOpen === false) {
-    console.log(1);
-    nav.style.display = "flex"; // Show the mobile menu
-    document.body.classList.add('no-scroll'); // Disable scrolling on the body
-    this.isOpen = true; // 
+    this.openHamburger();
+
 
   }
 }
+
+openHamburger() {
+  let nav = this.renderRoot.querySelector('.nav-menu');
+  nav.style.display = "flex"; // Show the mobile menu
+  document.body.classList.add('no-scroll'); // Disable scrolling on the body
+  this.isOpen = true; // 
+}
+closeHamburger() {
+  let nav = this.renderRoot.querySelector('.nav-menu');
+  nav.style.display = "none"; // Hide the mobile menu
+  document.body.classList.remove('no-scroll'); // Re-enable scrolling on the body
+  this.isOpen = false; // 
+}
+
 
 toggleHamburger(){
   if (globalThis.document.startViewTransition) {

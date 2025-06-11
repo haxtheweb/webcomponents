@@ -23,9 +23,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
     this.title = "Title";
     // this.thumbnail = "https://github.com/NazmanRosman/graphic-portfolio/blob/main/lib/thumbnails/impactra.png?raw=true",
     this.thumbnail ="https://img.freepik.com/premium-photo/cool-cat-wearing-pink-sunglasses-with-neon-light-background_514761-16858.jpg",
-    this.slug = "https://google.com",
-    this.tags =  [];
-
+    this.slug = "https://google.com";
   }
 
 
@@ -36,9 +34,7 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
       title: { type: String },
       thumbnail: {type: String},
       slug: {type: String},
-      tags: { type: Array },
-
-      
+   
     };
   }
 
@@ -48,18 +44,19 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        
-        font-family: var(--ddd-font-navigation);
-        /* min-width: 400px; */
         height: auto;
 
       }
+
+      *{
+        box-sizing: border-box;
+      }
+
 
       .thumbnail{
         transition: 0.3s ease-out;
         width: 100%;
         height:448px; 
-        /* max-width:100px; */
         border-radius: 1.5%;
         object-fit: cover;
       }
@@ -74,7 +71,6 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
       }
       .title{
         transition: opacity 0.3s ease-out;
-        /* content: "aaas"; */
         position: absolute;
         bottom: 36px;
         left: 36px;
@@ -169,7 +165,6 @@ export class GlossyPortfolioCard extends DDDSuper(I18NMixin(LitElement)) {
     />
     <div class="title">${this.title}</div>
     <div class="arrow arrow-box"></div>
-    <!-- <img src="lib/components/arrow.png" class="arrow arrow-shape"> -->
     <img src="https://github.com/NazmanRosman/graphic-portfolio/blob/main/lib/components/arrow.png?raw=true" class="arrow arrow-shape">
   </div>
 </a>

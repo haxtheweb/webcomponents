@@ -49,9 +49,7 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        
         font-family: var(--ddd-font-navigation);
-        /* min-width: 400px; */
         height: auto;
       }
 
@@ -59,44 +57,31 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
         box-sizing: border-box;
       }
 
-  
       .wrapper {
         display: flex;
-        flex-direction: column;
-        
+        flex-direction: column; 
         max-width: var(--max-width); 
         margin: 0 auto ;
         padding: var(--page-padding);
         overflow: visible;
-
-        /* gap: 24px; */
       }
 
       .background{
-        /* background-image: url("lib/components/bg.webp"); */
         background-image: url("https://github.com/NazmanRosman/graphic-portfolio/raw/refs/heads/main/lib/components/bg.webp");
         background-attachment: fixed;
         background-size: cover;
-        /* background-color: gray; */
         width: 100%;
-
-        
       }
       .background-opacity{
         background-color:rgba(0, 0, 0, 0.7);
         width: 100%;
-
-
-
       }
 
       .title{
-       
         font-family: "Inter", "Inter Placeholder", sans-serif;
         font-size: 50px;
         font-weight: 600;
-        color: white;
-        
+        color: white; 
         position: fixed;
         top: 50%;
         transform: translate(0, -50%);
@@ -112,10 +97,9 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
         font-weight: 100; 
         font-size: 55px;
         font-family: 'DM Serif Display';
-        /* font-style: normal; */
       }
 
-        .title-container{
+      .title-container{
         height: 100vh;
         position: relative;
         z-index: 0;
@@ -129,18 +113,11 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
         max-width: 1000px; 
         width: 90%;
         letter-spacing: -0.5px;
-        /* top: 40%; */
       }
       .title em{
-        
         font-size: 40px;
-        
       }
-
-      
      }
-
-
 
     `];
   }
