@@ -252,8 +252,8 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         padding-top: 80px;
       }
 
-      site-breadcrumb {
-        color: white;
+      glossy-portfolio-breadcrumb {
+        margin-top: 40px;
       }
 
       glossy-portfolio-footer{
@@ -296,6 +296,9 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
        }
        #contentcontainer {
         padding-top: 60px;
+        }
+        glossy-portfolio-breadcrumb {
+          margin-top: 20px;
         }
       }
     `];

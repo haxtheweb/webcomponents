@@ -752,6 +752,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     <header>
       <simple-icon-button-lite icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
       <div class="author">
+        <journey-theme-sidebar></journey-theme-sidebar>
         <a href="${this.basePath}">${this.manifest.metadata.author.image ? html`
           <img 
             class="author-image"

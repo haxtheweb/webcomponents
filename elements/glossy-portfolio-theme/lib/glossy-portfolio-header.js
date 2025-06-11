@@ -96,6 +96,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         margin: 0;
         padding: 0;
         --nav-bar-height: 80px;
+
         
       }
 
@@ -118,13 +119,21 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         padding: 50px 50px 40px 50px;
         max-height: var(--nav-bar-height);
         font-family: var(--main-font);  
+        transition: background-color 1s ease-in-out;
+
+
         /* overflow-x: scroll; */
         /* overflow-y: scroll; */
 
       }
-      .container{
-        
+
+      .container.desktop:hover, .container.desktop:focus-within {
+        background: #111111;
+        background: linear-gradient(180deg,rgba(17, 17, 17, 1) 0%, rgba(17, 17, 17, 0.53) 83%, rgba(255, 255, 255, 0) 100%);        
+        transition: background-color 1s ease-in-out;
+
       }
+
 
       .logo, .logo-link{
         max-height: 40px;
@@ -171,12 +180,16 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         width: 40px;
         height: 40px;
       }
+      .cross{
+        height: 20px;
+        width: 40px;
+      }
 
       button{
         all: unset;
         cursor: pointer;
         border-radius: 15%; 
-
+        height: 40px;
 
       }
 
@@ -240,6 +253,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         overflow-y: auto;
         overflow-x: hidden;
         max-height: calc(100vh - var(--nav-bar-height));
+        transition: all 0.1s ease-in-out;
+
       }
 
           /* Extra small devices (phones) */
@@ -251,6 +266,15 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         .hamburger{
           display: block;
           height: 30px;
+          width: 30px;
+        }
+        .cross{
+          height: 15px;
+          width: 30px;
+        }
+        button{
+          height: 30px;
+          width: 30px;
         }
         .logo{
           max-height: 30px;
@@ -290,13 +314,37 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
             <img class="logo mobile" src="${store.manifest.metadata.site.logo}" @error=${this.handleImageError} alt="Logo" />
           </a> 
           <button @click="${this.toggleHamburger}">
-            <!-- <img @click="" class="hamburger" src="../lib/components/hamburger.svg" width="70px"> -->
-            <svg class="hamburger mobile"  width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g id="SVGRepo_bgCarrier" stroke-width="0"/>
-              <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
-              <g id="SVGRepo_iconCarrier"> <path d="M4 18L20 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> <path d="M4 12L20 12" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> <path d="M4 6L20 6" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> </g>
-            </svg>
-            
+
+            ${this.isOpen ? html`
+              <svg class="cross mobile"
+                version="1.1" 
+                id="Layer_1" 
+                xmlns="http://www.w3.org/2000/svg" 
+                xmlns:xlink="http://www.w3.org/1999/xlink" 
+                x="0px" 
+                y="0px" 
+                width="122.878px" 
+                height="122.88px" 
+                viewBox="0 0 122.878 122.88" 
+                enable-background="new 0 0 122.878 122.88" 
+                xml:space="preserve">
+                <g>
+                  <path 
+                    d="M1.426,8.313c-1.901-1.901-1.901-4.984,0-6.886c1.901-1.902,4.984-1.902,6.886,0l53.127,53.127l53.127-53.127 c1.901-1.902,4.984-1.902,6.887,0c1.901,1.901,1.901,4.985,0,6.886L68.324,61.439l53.128,53.128c1.901,1.901,1.901,4.984,0,6.886 c-1.902,1.902-4.985,1.902-6.887,0L61.438,68.326L8.312,121.453c-1.901,1.902-4.984,1.902-6.886,0 c-1.901-1.901-1.901-4.984,0-6.886l53.127-53.128L1.426,8.313L1.426,8.313z" 
+                    fill="white" />
+                </g>
+              </svg>    
+
+            `:html`
+              <svg class="hamburger mobile"  width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                <g id="SVGRepo_iconCarrier"> <path d="M4 18L20 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> <path d="M4 12L20 12" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> <path d="M4 6L20 6" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/> </g>
+              </svg>
+            `}
+
+
+        
           </button>
 
         </div>
@@ -313,7 +361,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
   }
 
 
-toggleHamburger() {
+_toggleHamburger() {
   this._checkOverflow();
   let nav = this.renderRoot.querySelector('.nav-menu');
   console.log("toggleHamburger", this.isOpen, nav);
@@ -329,8 +377,17 @@ toggleHamburger() {
     this.isOpen = true; // 
 
   }
+}
 
-
+toggleHamburger(){
+  if (globalThis.document.startViewTransition) {
+    globalThis.document.startViewTransition(() => {
+      this._toggleHamburger();
+    });
+  }
+  else {
+    this._toggleHamburger();
+  }
 }
 
 
