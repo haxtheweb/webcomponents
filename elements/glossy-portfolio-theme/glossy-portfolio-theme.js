@@ -36,66 +36,21 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     super();
     this.title = "";
     this.HAXCMSThemeSettings.autoScroll = true;
-    this.activeLayout = "grid"; // text, media, listing
     this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
-    this.relatedItems = []; 
-    this.childrenArray = []; // used for grid layout, holds children of activeItem
     this.__disposer = this.__disposer || [];
 
-    //get top level items (items shown on header -- they have no parent)
 
-    // determines active layout based on following conditions:
-    // - if current page has a child, it is grid
-    // - if no child, and has a parent: it is media
-    // - if no child, and no parent: it is text
-    autorun((reaction) => {
-      const activeItem = toJS(store.activeItem);
-      
-      // console.log(activeItem);
-      if (activeItem) {
-        this.activeItem = activeItem;
-        // find parent of activeItem
-        this.activeParent = store.manifest.items.find((d) => activeItem.parent === d.id)||"";
-        const children = store.getItemChildren(store.activeId);
 
-        if (children) {
-          if (children.length > 0) {
-            this.setLayout("grid");
-
-            this.childrenArray = [...children];
-          } else if (activeItem.parent) {
-            this.childrenArray = [];
-            this.setLayout("media"); //currently unused
-          } else {
-            this.childrenArray = [];
-
-            this.setLayout("text");//currently unused
-          }
+   autorun((reaction) => {
+    this.isHome = false; // default to false
+      const active = toJS(store.activeItem);
+      if (active) {
+        if(active.order === 0 && active.indent === 0) {
+          this.isHome = true; 
         }
-      }
-      this.__disposer.push(reaction);
-    });
-    
-    //get related items of activeItem
-    autorun((reaction) => {
-      const activeItem = toJS(store.activeItem);
-      if (activeItem) {
-        this.activeItem = activeItem;
-        
-        if(this. activeItem.metadata.relatedItems){
-          let relatedItem = store.findItem(activeItem.metadata.relatedItems);
-          if (!this.relatedItems.some((item) => item.id === relatedItem.id)) { //check for duplicates
-            this.relatedItems.push(relatedItem);
-          }
-        }
-
-        // console.log(this.relatedItems);
-        this.__disposer.push(reaction);
       }
     });
 
-
-  
   }
 
 
@@ -104,12 +59,9 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     return {
       ...super.properties,
       title: { type: String },
-      activeLayout: { type: String },
-      activeItems: { type: Array },
-      activeParent: { type: Object },
+      siteDescription: { type: String },
       relatedItem: { type: Object },
-      childrenArray: { type: Array },
-      categoryTags: { type: Array },
+      isHome: { type: Boolean },
       items: { type: Object },
     };
   }
@@ -124,16 +76,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   }
 
 
-  setLayout(layout) {
-    if (globalThis.document && globalThis.document.startViewTransition) {
-      globalThis.document.startViewTransition(() => {
-        this.activeLayout = layout;
-      });
-    }
-    else {
-      this.activeLayout = layout;
-    }
-  }
+
   
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
@@ -157,7 +100,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   static get styles() {
     return [super.styles,
     css`
-      * {
+      :host{
         box-sizing: border-box;
     
         --bg-color: #111111;
@@ -167,10 +110,13 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         --link-color: #6cddff;
         --link-color-hover: #9ae7ff;
         --main-font-size: 18px;
-        
         --mobile-page-padding: 0 15px;
 
         
+      }
+      *{
+        box-sizing: border-box;
+
       }
       :root, html, body{
         /* font-size: 124px; */
@@ -192,6 +138,30 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         background-color: var(--bg-color);
 
       }
+
+      :host([edit-mode]) {
+          /* react to the screen shifting left to right on edit mode w/ tray direction */
+          margin: var(
+            --hax-tray-element-align-margin,
+            0 0 0
+              calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width))
+          );
+          transition: margin 0.15s ease-in-out;
+      }
+
+      :host([is-logged-in]) {
+        glossy-portfolio-header {
+          padding-top: 52px;
+
+        }
+      }
+
+      glossy-portfolio-header {
+        position: fixed;
+        top: 0;
+        z-index: 1000; /* Ensure header is above other content */
+      }
+
       /* text style */
       p, a, blockquote, pre, code, span, strong, em {
         margin: 1em 0; /* Top and bottom margins equal to the font size, no left/right margin */
@@ -211,11 +181,18 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
       ol, ul{
         margin-bottom: 1em;
+      
+        display: block;
+        list-style-type: disc;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        padding-inline-start: 40px;
+        unicode-bidi: isolate;
+
       }
       
       p, h1, h2, h3, h4, h5, h6, li, a, blockquote, pre, code, span, strong, em {
         max-width: 840px;
-        /* letter-spacing: .01em; */
       }
       h1, h2, h3, h4, h5, h6 {
         margin: 0.5em 0; /* Slightly smaller margins for headings */
@@ -256,26 +233,28 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         text-decoration: underline;
       }
       
-      /* wrapper style */
       site-active-title h1{
         margin-bottom: 0;
-        /* margin-top: 0.25em; */
       }
-      .wrapper {
-        /* min-width: 100%; */
-        max-width: var(--max-width);
-        padding: var(--page-padding);
-        /* background-color: red; */
-        margin: 0 auto;
 
+      #contentcontainer, #slot {
+        z-index: 2;
+        background-color: var(--bg-color);
+        width: 100%;
+        
       }
+ 
+      
 
       #contentcontainer {
-        min-width: 100%;
+        max-width: var(--max-width);
+        margin: auto;
+        padding: var(--page-padding);
+        padding-top: 80px;
       }
 
-      site-breadcrumb {
-        color: white;
+      glossy-portfolio-breadcrumb {
+        margin-top: 40px;
       }
 
       glossy-portfolio-footer{
@@ -287,8 +266,11 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         display: flex;
         flex-direction: column;
         min-height: 100vh;
+        width: 100%;
+        z-index: 2;
       }
 
+      /* .grow and .not-grow makes sure the footer is at the bottom of page */
       .grow {
         flex: 1 0 auto; /* Allow this element to grow and fill available space */
       }
@@ -296,17 +278,28 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         flex: 0 0 auto; /* Prevent this element from growing */
       }
 
-  
+      body.no-scroll {
+        overflow: hidden; /* Prevents scrolling when open mobile nav link*/
+      }
+      
       /* Extra small devices (phones) */
       @media (max-width: 575.98px) {
+        :host *, :root *{
+          --page-padding: 0 15px;
+        }
         :root, html, body{
-          /* font-size: 124px; */
           font-family: var(--main-font);
           color: white;
           background-color: var(--bg-color);
           font-size: 14px;
 
        }
+       #contentcontainer {
+        padding-top: 60px;
+        }
+        glossy-portfolio-breadcrumb {
+          margin-top: 20px;
+        }
       }
     `];
   }
@@ -314,37 +307,24 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   // Lit render the HTML
   
   render() {
-    // console.log("activeLayout", this.activeLayout);
     
     const activeTitle = this.activeItem?.title || "Default Title"; // Use optional chaining and a fallback value
     return html`
     <!-- temporary margin-top  -->
-<div class="body-wrapper" style="margin-top: 150px"> 
-  <div id="contentcontainer" class="grow">
-    <div class="wrapper">
-      <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
-
-      <site-active-title></site-active-title>          
-      <div id="slot"><slot></slot></div>
-    </div>
-
-  </div> 
-
   <glossy-portfolio-header></glossy-portfolio-header>
 
-  <!-- display grid of children items -->
-  ${ this.childrenArray && this.childrenArray.length > 0
-  ? html` <glossy-portfolio-grid class="grow" title=${activeTitle} .data=${this.childrenArray} style=""></glossy-portfolio-grid>`
-  : ``}
+<div class="body-wrapper"> 
+  ${this.isHome ? html`<glossy-portfolio-home></glossy-portfolio-home>` : html``}
 
-  <!-- display grid of related items -->
-  ${ this.relatedItems&&this.relatedItems.length > 0
-  ? html` <glossy-portfolio-grid class="grow" title="RELATED CONTENT" .data=${this.relatedItems} style=""></glossy-portfolio-grid>`
-  : ``}
-  <footer><glossy-portfolio-footer class="not-grow"></glossy-portfolio-footer></footer>
-  <!-- <glossy-portfolio-footer></glossy-portfolio-footer> -->
+  <article id="contentcontainer" class="grow contentcontainer">
+    
 
-
+      <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
+      <site-active-title></site-active-title>          
+      <div id="slot"><slot></slot></div>
+  </article>
+  <glossy-portfolio-grid class="grow"></glossy-portfolio-grid>
+  <glossy-portfolio-footer class="not-grow"></glossy-portfolio-footer>
 
 </div>  
 
