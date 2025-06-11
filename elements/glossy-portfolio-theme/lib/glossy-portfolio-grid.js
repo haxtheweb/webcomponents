@@ -36,7 +36,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
       if (activeItem) {
         this.activeItem = activeItem;
         // find parent of activeItem
-        this.activeParent = store.manifest.items.find((d) => activeItem.parent === d.id)||"";
+        this.activeParent = store.findItem(activeItem.parent)||"";
         const children = store.getItemChildren(store.activeId);
         this.title = "";
         this.data = [];
@@ -47,8 +47,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
           this.title = this.activeItem?.title || ""; // Use optional chaining and a fallback value       
         
         } else if(this.activeItem.metadata.relatedItems) { //display related items if available
-          
-          
+
           this.title = "Related Content";
           let relatedItem = store.findItem(activeItem.metadata.relatedItems);      
           if (!this.data.some((item) => item.id === relatedItem.id)) { //check for duplicates
@@ -58,7 +57,6 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
         } else if(this.activeParent) { //display prev and next pages if available
           this.title = "Related Content";
-
           let siblingsArray = [...store.getItemChildren(this.activeParent.id)];
           let activeIndex = siblingsArray.findIndex((item) => item.id === this.activeItem.id);
           if (siblingsArray[activeIndex - 1]) { //check for previous item
@@ -68,7 +66,6 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
             tmpData.push(siblingsArray[activeIndex + 1]);
           }
           this.data = [...tmpData];
-
         }
           this.__disposer.push(reaction);
       } 
