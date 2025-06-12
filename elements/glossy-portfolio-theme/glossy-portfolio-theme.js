@@ -111,7 +111,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         --link-color-hover: #9ae7ff;
         --main-font-size: 18px;
         --mobile-page-padding: 0 15px;
-        --text-color: white; /* Default text color */
+        --text-color: #ffffff; /* Default text color */
 
         
       }
@@ -192,7 +192,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
       }
       
-      p, h1, h2, h3, h4, h5, h6, li, a, blockquote, pre, code, span, strong, em {
+      p, h2, h3, h4, h5, h6, a, blockquote, pre, code, span, strong, em {
         max-width: 840px;
       }
       h1, h2, h3, h4, h5, h6 {
@@ -243,6 +243,10 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         background-color: var(--bg-color);
         width: 100%;
         
+      }
+
+      #slot {
+        min-height: 0;
       }
  
       
