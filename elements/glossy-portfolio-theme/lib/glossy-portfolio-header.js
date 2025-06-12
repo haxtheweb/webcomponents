@@ -357,8 +357,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
 
   _toggleHamburger() {
-    this._checkOverflow();
-
+    // this._checkOverflow();
     if (this.isOpen === true){
       this.closeHamburger();
     } else if (this.isOpen === false) {
@@ -368,15 +367,16 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
   openHamburger() {
     let nav = this.renderRoot.querySelector('.nav-menu');
+    console.log("open")
+    this.isOpen = true; // 
     nav.style.display = "flex"; // Show the mobile menu
     document.body.classList.add('no-scroll'); // Disable scrolling on the body
-    this.isOpen = true; // 
   }
   closeHamburger() {
     let nav = this.renderRoot.querySelector('.nav-menu');
+    this.isOpen = false; // 
     nav.style.display = "none"; // Hide the mobile menu
     document.body.classList.remove('no-scroll'); // Re-enable scrolling on the body
-    this.isOpen = false; // 
   }
 
 
@@ -443,7 +443,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     const desktopHeader = this.renderRoot.querySelector('.container.desktop');
     const mobileHeader = this.renderRoot.querySelector('.container.mobile');
 
-
     if (desktopHeader) {
 
       const items = Array.from(desktopHeader.children);
@@ -453,7 +452,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       // render();
       for (const item of items) {
         usedWidth += item.offsetWidth + 25;
-
        
         if (usedWidth > availableWidth) {  // Show mobile header
           this.isOverflow = true;
@@ -466,8 +464,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           desktopHeader.style.visibility = "visible"; // Show desktop header
           desktopHeader.style.padding = "var(--desktop-header-padding)"; // Hide desktop header
           desktopHeader.style.height = "auto"; // Show desktop header
-          
-
           mobileHeader.style.display = "none"; // Hide mobile header
           document.body.classList.remove('no-scroll');
           this.closeHamburger();
