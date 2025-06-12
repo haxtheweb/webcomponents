@@ -37,6 +37,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     this.__disposer = this.__disposer || [];
     this.isOverflow = false;
     this.isOpen = false;
+    this.scrollPosition = 0; // Track scroll position
 
     //get top level items (items shown on header -- they have no parent)
     autorun((reaction) => {
@@ -86,8 +87,8 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         display: block;
         height: auto;
         --nav-bar-height: 80px;
+        --desktop-header-padding: 50px 50px 40px 50px;
       }
-
 
       * {
         box-sizing: border-box;
@@ -101,26 +102,22 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
       .container.desktop{
         background: transparent;
-        background: linear-gradient(180deg, rgba(17, 17, 17, 1) 0%, rgba(17, 17, 17, 0) 100%);
-        
+        background: #111111;
+
+        /* background: linear-gradient(180deg, rgba(17, 17, 17, 1) 0%, rgba(17, 17, 17, 0) 100%);         */
+        background: linear-gradient(180deg,rgba(17, 17, 17, 1) 0%, rgba(17, 17, 17, 0.69) 80%, rgba(17, 17, 17, 0) 100%);
+
         display: flex;
         justify-content: space-between;
         align-items: center;
         z-index: 10;
         width: 100vw;
-
-        padding: 50px 50px 40px 50px;
+        padding: var(--desktop-header-padding);
         max-height: var(--nav-bar-height);
         font-family: var(--main-font);  
-
+        transition: all 0.1s ease-in-out;
       }
 
-      .container.desktop:hover, .container.desktop:focus-within {
-        background: #111111;
-        background: linear-gradient(180deg,rgba(17, 17, 17, 1) 0%, rgba(17, 17, 17, 0.53) 83%, rgba(255, 255, 255, 0) 100%);        
-        transition: background-color 1s ease-in-out;
-
-      }
 
 
       .logo, .logo-link{
@@ -129,7 +126,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         position: relative;
         z-index: 10;
       }
-      
 
       ul{
         display: flex;
@@ -146,11 +142,9 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
       }
     
-
- 
       a, div.header-link{
         all: unset;
-        color: white;
+        color: var(--text-color);
         text-decoration: none;
         font-weight: 500;
         font-size: 1rem;
@@ -159,7 +153,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
       /* white underline when hover */
       a:hover{
-        color: white;
+        color: var(--text-color);
 
       }
 
@@ -194,8 +188,6 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
       a:focus-visible{
         border: 1px solid white;
         border-radius: 10px; 
-
-
       }
 
       .logo-hamburger.mobile{
@@ -207,15 +199,13 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         height: var(--nav-bar-height);
       }
 
-
-
       .container.mobile{
         background-color: var(--bg-color);
         display: flex;
         flex-direction: column;
         width: 100%;
-
         height: auto;
+        
       }
 
       ul.mobile{
@@ -224,6 +214,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         align-items: center;
         gap: 0;
         width: 100%;
+        height: 100%;
       }
    
       
@@ -234,22 +225,18 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
         width: 100%;
         text-align: center; /* Centers the text horizontally */
         height: 80px;
-        
       }
 
       a.right-side-item.mobile:active, a.right-side-item.mobile:hover, a.right-side-item.mobile:focus-visible{
         background-color: #1d1d1d;
         text-decoration: none; /* Ensures underline is removed on hover */
-
       }  
 
       .nav-menu{
         display: none;
         overflow-y: auto;
         overflow-x: hidden;
-        max-height: calc(100vh - var(--nav-bar-height));
-        transition: all 0.1s ease-in-out;
-
+        height: calc(100vh - var(--nav-bar-height));
       }
 
           /* Extra small devices (phones) */
@@ -292,15 +279,23 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     return html`
 
       <!-- ------------DESKTOP HEADER--------------- -->
-      <div class="container desktop" >
+      <div class="container desktop" 
+         @mouseenter="${this.fullOpacity}" 
+         @mouseleave="${this.halfOpacity  }"
+      >
+
         <div class="logo-hamburger desktop">
-          <a class="logo-link desktop" href="${this.homeLink}">
+          <a class="logo-link desktop" href="${this.homeLink}" @focus=${this.fullOpacity}>
             <img class="logo desktop" src="${store.manifest.metadata.site.logo}" @error=${this.handleImageError} alt="Logo" />
           </a>
         </div>
         <ul class="nav-links desktop">
           ${Array.from(this.topItems).map((item) => html`
-              <li><a class="right-side-item desktop" href="${item.slug}"><div class="header-link desktop">${item.title}</div></a></li>
+              <li>
+                <a class="right-side-item desktop" href="${item.slug}" @focus=${this.fullOpacity}>
+                  <div class="header-link desktop">${item.title}</div>
+                </a>
+              </li>
             `)}
         </ul>
       </div>
@@ -348,51 +343,53 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           
           <ul class="nav-links mobile">
             ${Array.from(this.topItems).map((item) => html`
-                <li class="mobile"><a class="right-side-item mobile" href="${item.slug}" @click="${this.closeHamburger}"><div class="header-link mobile">${item.title}</div></a></li>
+                <li class="mobile">
+                  <a class="right-side-item mobile" href="${item.slug}" @click="${this.closeHamburger}">
+                    <div class="header-link mobile">${item.title}</div>
+                  </a>
+                </li>
               `)}
           </ul>
-    </div>
+        </div>
       </div>
     `;
   }
 
 
-_toggleHamburger() {
-  this._checkOverflow();
-
-  if (this.isOpen === true){
-    this.closeHamburger();
-  } else if (this.isOpen === false) {
-    this.openHamburger();
-
-
+  _toggleHamburger() {
+    // this._checkOverflow();
+    if (this.isOpen === true){
+      this.closeHamburger();
+    } else if (this.isOpen === false) {
+      this.openHamburger();
+    }
   }
-}
 
-openHamburger() {
-  let nav = this.renderRoot.querySelector('.nav-menu');
-  nav.style.display = "flex"; // Show the mobile menu
-  document.body.classList.add('no-scroll'); // Disable scrolling on the body
-  this.isOpen = true; // 
-}
-closeHamburger() {
-  let nav = this.renderRoot.querySelector('.nav-menu');
-  nav.style.display = "none"; // Hide the mobile menu
-  document.body.classList.remove('no-scroll'); // Re-enable scrolling on the body
-  this.isOpen = false; // 
-}
+  openHamburger() {
+    let nav = this.renderRoot.querySelector('.nav-menu');
+    console.log("open")
+    this.isOpen = true; // 
+    nav.style.display = "flex"; // Show the mobile menu
+    document.body.classList.add('no-scroll'); // Disable scrolling on the body
+  }
+  closeHamburger() {
+    let nav = this.renderRoot.querySelector('.nav-menu');
+    this.isOpen = false; // 
+    nav.style.display = "none"; // Hide the mobile menu
+    document.body.classList.remove('no-scroll'); // Re-enable scrolling on the body
+  }
 
 
-toggleHamburger(){
-  if (globalThis.document.startViewTransition) {
-    globalThis.document.startViewTransition(() => {
+  toggleHamburger(){
+    if (globalThis.document.startViewTransition) {
+      globalThis.document.startViewTransition(() => {
+        this._toggleHamburger();
+      });
+    }
+    else {
       this._toggleHamburger();
-    });
+    }
   }
-  else {
-    this._toggleHamburger();
-  }
-}
 
 
 
@@ -408,7 +405,36 @@ toggleHamburger(){
       this._resizeObserver.observe(desktopHeader);
     }
     requestAnimationFrame(() => this._checkOverflow());
+
+    window.onscroll = this.scrollFunction.bind(this); 
   }
+
+
+  scrollFunction() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    this.scrollPosition = scrollTop;
+    if (scrollTop > 50) {
+      this.halfOpacity();
+    } else {
+      this.fullOpacity();
+    }
+  }
+
+  fullOpacity() {
+    const desktopContainer = this.renderRoot.querySelector('.container.desktop');
+
+    desktopContainer.style.transition = 'opacity 0.05s ease-in-out';
+    desktopContainer.style.opacity = '1';
+  }
+  halfOpacity() {
+    const desktopContainer = this.renderRoot.querySelector('.container.desktop');
+
+    if (this.scrollPosition > 50){
+      desktopContainer.style.transition = 'opacity 0.1s ease-in-out';
+      desktopContainer.style.opacity = '0.4';
+    }
+  }
+
 
  
   
@@ -416,7 +442,6 @@ toggleHamburger(){
   _checkOverflow() {
     const desktopHeader = this.renderRoot.querySelector('.container.desktop');
     const mobileHeader = this.renderRoot.querySelector('.container.mobile');
-
 
     if (desktopHeader) {
 
@@ -427,23 +452,22 @@ toggleHamburger(){
       // render();
       for (const item of items) {
         usedWidth += item.offsetWidth + 25;
-
        
-        if (usedWidth > availableWidth) {
+        if (usedWidth > availableWidth) {  // Show mobile header
           this.isOverflow = true;
           desktopHeader.style.visibility = "hidden"; // Hide desktop header
           desktopHeader.style.height = "0px"; // Hide desktop header
           desktopHeader.style.padding = "0px 50px"; // Hide desktop header
           mobileHeader.style.display = "flex"; // Show mobile header
-        } else {
+        } else { // show desktop header
           this.isOverflow = false;
           desktopHeader.style.visibility = "visible"; // Show desktop header
-          desktopHeader.style.padding = "50px 50px 40px 50px"; // Hide desktop header
+          desktopHeader.style.padding = "var(--desktop-header-padding)"; // Hide desktop header
           desktopHeader.style.height = "auto"; // Show desktop header
-          
-
           mobileHeader.style.display = "none"; // Hide mobile header
           document.body.classList.remove('no-scroll');
+          this.closeHamburger();
+
         }
 
         this.requestUpdate();

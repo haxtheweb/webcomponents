@@ -111,6 +111,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         --link-color-hover: #9ae7ff;
         --main-font-size: 18px;
         --mobile-page-padding: 0 15px;
+        --text-color: #ffffff; /* Default text color */
 
         
       }
@@ -129,7 +130,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
       :host {
         display: block;
-        color: var(--ddd-theme-primary);
+        color: var(--text-color);
         font-family: var(--main-font);
         margin: auto;
         box-sizing: border-box;
@@ -191,7 +192,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
       }
       
-      p, h1, h2, h3, h4, h5, h6, li, a, blockquote, pre, code, span, strong, em {
+      p, h2, h3, h4, h5, h6, a, blockquote, pre, code, span, strong, em {
         max-width: 840px;
       }
       h1, h2, h3, h4, h5, h6 {
@@ -243,6 +244,10 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         width: 100%;
         
       }
+
+      #slot {
+        min-height: 0;
+      }
  
       
 
@@ -288,12 +293,9 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
           --page-padding: 0 15px;
         }
         :root, html, body{
-          font-family: var(--main-font);
-          color: white;
-          background-color: var(--bg-color);
           font-size: 14px;
-
-       }
+         
+        }
        #contentcontainer {
         padding-top: 60px;
         }
