@@ -196,8 +196,8 @@ ${this.data.length > 0 ?   html`
       ${this.filteredData.map((item)=>{ return html`
           <glossy-portfolio-card class="card" 
           title="${item.title}" 
-          thumbnail=${item.metadata.images[0]?
-          item.metadata.images[0]
+          thumbnail=${item.metadata.image?
+          item.metadata.image
           :store.manifest.metadata.site.logo}
           slug="${item.slug}"
           >
