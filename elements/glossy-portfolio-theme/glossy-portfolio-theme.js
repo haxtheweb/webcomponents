@@ -39,13 +39,11 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
     this.__disposer = this.__disposer || [];
 
-
-
    autorun((reaction) => {
     this.isHome = false; // default to false
       const active = toJS(store.activeItem);
       if (active) {
-        if(active.order === 0 && active.indent === 0) {
+        if(active.order === 0 && store.ancestorItem === null) {
           this.isHome = true; 
         }
       }
