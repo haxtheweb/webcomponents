@@ -951,6 +951,11 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         width: 100%;
       }
 
+      .list-filter-label {
+        font-size: 14px;
+        margin-right: 54px;
+      }
+
       .listing-category {
         font-family: var(--portfolio-font-body);
         font-size: var(--portfolio-fontsize-responsive);
@@ -1254,7 +1259,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       ${filteredTags.length > 0
         ? filteredTags.map(
             (topTag) => html`
-              <h3 class="listing-category"><a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" @click="${this.testEditMode}" href="x/tags?tag=${topTag.trim()}">${topTag}</a></h3>
+              <h2 class="listing-category"><a tabindex="${this.editMode ? '-1' : '0'}" ?disabled="${this.editMode}" @click="${this.testEditMode}" href="x/tags?tag=${topTag.trim()}">${topTag}</a></h2>
               <div class="listing-grid">
                 ${filteredItems.filter(item => {
                   let tags = toJS(item.metadata.tags);
@@ -1289,7 +1294,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         // Will return true if at least one item does not have tags
         return !toJS(item.metadata.tags);
       })) ? html`
-        <h3 class="listing-category"></h3>
+        <div class="listing-category"></div>
         <div class="listing-grid">
           ${this.items.filter(item => {
             // Return all items with no tags
@@ -1412,7 +1417,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         </div>
         ${this.menuOverflow.length == 0
             ? html`
-              <simple-icon-button-lite icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
+              <simple-icon-button-lite title="Change theme" label="Change theme" icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
             ` : ''}
       </header>
       
@@ -1440,6 +1445,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                 <!-- Render select for filtering tags (only appears if >1 tag OR 1 tag and items with no tag) -->
                 ${(this.categoryTags.length > 1 || (this.categoryTags.length > 0 && this.items.some(item => !item.metadata.tags)))
                   ? html`
+                    <label class="list-filter-label" for="listing-filter">Tag filter:</label>
                     <select ?disabled="${this.editMode}" id="listing-filter" @change=${(e) => this.selectedTag = e.target.value}>
                       <option value="" ?selected="${this.selectedTag === ''}">All</option>
                       ${this.categoryTags.map(
@@ -1535,7 +1541,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                 </a>
               ` : ``}
         </div>
-        <simple-icon-button-lite icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
+        <simple-icon-button-lite icon="image:style" title="Change theme" label="Change theme" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
         <scroll-button @click="${(e) => e.currentTarget.blur()}"></scroll-button>
       </footer>
     `;

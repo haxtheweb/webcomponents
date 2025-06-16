@@ -1221,7 +1221,6 @@ class GradeBookLite extends UIRenderPieces(
                       id="inputfilter"
                       @value-changed="${this.inputfilterChanged}"
                       .value="${this.like}"
-                      aria-controls="filter"
                       label="Filter"
                       placeholder="Tag search"
                       type="text"
