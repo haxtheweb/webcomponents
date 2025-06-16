@@ -750,7 +750,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
   render() {
     return html`
     <header>
-      <simple-icon-button-lite icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
+      <simple-icon-button-lite icon="image:style" label="Change theme" title="Change theme" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
       <div class="author">
         <a href="${this.basePath}">${this.manifest.metadata.author.image ? html`
           <img 
@@ -768,12 +768,12 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     </header>
     <div class="lower-header-box ${this.location && this.location.route.name === "home" ? "home" : "not-home"}">
       <simple-tooltip for="top" position="bottom">${this.t.home}</simple-tooltip>
-      <a tabindex="-1" href="${this.basePath}" class="top article-link-icon"><simple-icon-button-lite id="top" label="${this.t.home}" icon="${this.manifest.metadata.icon ? this.manifest.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
+      <a tabindex="-1" href="${this.basePath}" class="top article-link-icon"><simple-icon-button-lite id="top" title="${this.t.home}" label="${this.t.home}" icon="${this.manifest.metadata.icon ? this.manifest.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
       ${this.location && this.location.route.name !== "home" ? html`
           ${this._items.map((item, index) => {
           return html`
             <simple-tooltip for="${item.id}" position="bottom">${item.title}</simple-tooltip>
-            <a tabindex="-1" href="${item.slug}" class="article-link-icon top ${this.activeItem && (item.id === this.activeItem.id || (this.ancestorItem && item.id === this.ancestorItem.id)) ? "active" : ""}"><simple-icon-button-lite id="${item.id}" class="article" icon="${item.metadata.icon ? item.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
+            <a tabindex="-1" href="${item.slug}" class="article-link-icon top ${this.activeItem && (item.id === this.activeItem.id || (this.ancestorItem && item.id === this.ancestorItem.id)) ? "active" : ""}"><simple-icon-button-lite id="${item.id}" title="${item.title}" label="${item.title}" class="article" icon="${item.metadata.icon ? item.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
           `;
         })}` : ``}
     </div>
@@ -784,7 +784,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           return html`
             <article class="post ${index % 2 === 0 ? "even" : "odd"}">
             <simple-tooltip for="v-${item.id}" position="${index % 2 === 0 ? "left" : "right"}">${item.title}</simple-tooltip>
-            <a tabindex="-1" href="${item.slug}" class="article-link-icon"><simple-icon-button-lite id="v-${item.id}" class="article" icon="${item.metadata.icon ? item.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
+            <a tabindex="-1" href="${item.slug}" class="article-link-icon"><simple-icon-button-lite id="v-${item.id}" label="${item.title}" title="${item.title}" class="article" icon="${item.metadata.icon ? item.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
               <div class="article-wrap">
                 <h3>${item.title}</h3>
                 <div>
@@ -795,7 +795,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
                     ${this.getItemChildren(item.id).map((child) => 
                     html`
                       <simple-tooltip for="v-${child.id}" position="bottom">${child.title}</simple-tooltip>
-                      <a id="v-${child.id}" href="${child.slug}" class="child-page-link">${child.metadata.image ? html`<img src="${child.metadata.image}" loading="lazy"
+                      <a id="v-${child.id}" href="${child.slug}" title="${child.title}" class="child-page-link">${child.metadata.image ? html`<img src="${child.metadata.image}" loading="lazy"
                         decoding="async"
                         fetchpriority="low" alt="${child.title}"/>` : html`<img 
                           loading="lazy"
@@ -825,7 +825,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     </main>
     <footer>
       <div class="author">
-        <div class="spacing"><a href="${this.basePath}">${this.manifest.metadata.author.image ? html`
+        <div class="spacing"><a href="${this.basePath}" title="${this.t.home}">${this.manifest.metadata.author.image ? html`
           <img 
             class="author-image"
             loading="lazy"
@@ -865,7 +865,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
                 </a>
               ` : ``}
           </div>
-          <simple-icon-button-lite icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
+          <simple-icon-button-lite label="Change theme" title="Change theme" icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
           <scroll-button></scroll-button>
         </div>
         </div>
