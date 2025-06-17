@@ -99,8 +99,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     return [super.styles,
     css`
       :host{
-        box-sizing: border-box;
-    
+        box-sizing: border-box; 
         --bg-color: #111111;
         --main-font: "Manrope", "Manrope Placeholder", sans-serif;
         --max-width: 1200px;
@@ -110,9 +109,9 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         --main-font-size: 18px;
         --mobile-page-padding: 0 15px;
         --text-color: #ffffff; /* Default text color */
-
-        
+        --footer-height: 76px;    
       }
+
       *{
         box-sizing: border-box;
 
@@ -123,7 +122,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         color: white;
         background-color: var(--bg-color);
         font-size: var(--main-font-size);
-
       }
 
       :host {
@@ -190,7 +188,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
       }
       
-      p, h2, h3, h4, h5, h6, a, blockquote, pre, code, span, strong, em {
+      p, h2, h3, h4, h5, h6, a, blockquote, pre, code, span, strong, em, grid-plate {
         max-width: 840px;
       }
       h1, h2, h3, h4, h5, h6 {
@@ -268,7 +266,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       .body-wrapper { 
         display: flex;
         flex-direction: column;
-        min-height: 100vh;
+        min-height: calc(100vh + var(--footer-height));        ;
         width: 100%;
         z-index: 2;
       }
