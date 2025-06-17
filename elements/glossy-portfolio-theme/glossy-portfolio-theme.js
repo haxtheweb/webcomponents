@@ -109,7 +109,8 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         --main-font-size: 18px;
         --mobile-page-padding: 0 15px;
         --text-color: #ffffff; /* Default text color */
-        --footer-height: 76px;    
+        --footer-height: 76px;   
+        --max-width-text: 840px; /* Max width for text content */ 
       }
 
       *{
@@ -178,7 +179,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
       ol, ul{
         margin-bottom: 1em;
-      
         display: block;
         list-style-type: disc;
         margin-block-start: 1em;
@@ -188,9 +188,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
       }
       
-      p, h2, h3, h4, h5, h6, a, blockquote, pre, code, span, strong, em, grid-plate {
-        max-width: 840px;
-      }
+
       h1, h2, h3, h4, h5, h6 {
         margin: 0.5em 0; /* Slightly smaller margins for headings */
       }
@@ -246,10 +244,15 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       }
  
       
-
-      #contentcontainer {
+      .max-body-width {
+        width: 100%;
         max-width: var(--max-width);
         margin: auto;
+        z-index: 1; /* Ensure content is above the background */
+      }
+      #contentcontainer {
+        max-width: var(--max-width-text);
+        margin: 0;
         padding: var(--page-padding);
         padding-top: 80px;
       }
@@ -313,14 +316,15 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
 <div class="body-wrapper"> 
   ${this.isHome ? html`<glossy-portfolio-home></glossy-portfolio-home>` : html``}
-
-  <article id="contentcontainer" class="grow contentcontainer">
-    
-
-      <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
-      <site-active-title></site-active-title>          
-      <div id="slot"><slot></slot></div>
-  </article>
+  <div class="max-body-width">
+  
+    <article id="contentcontainer" class="grow contentcontainer">
+  
+        <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
+        <site-active-title></site-active-title>          
+        <div id="slot"><slot></slot></div>
+    </article>
+  </div>
   <glossy-portfolio-grid class="grow"></glossy-portfolio-grid>
   <glossy-portfolio-footer class="not-grow"></glossy-portfolio-footer>
 
