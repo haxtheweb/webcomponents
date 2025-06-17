@@ -100,6 +100,8 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
       }
       .item {
         justify-self: start; /* Align left-side text to the start */
+        text-align: left; /* Ensure text is left-aligned */
+
       }
       .center {
         justify-self: center; /* Center-align the copyright text */
