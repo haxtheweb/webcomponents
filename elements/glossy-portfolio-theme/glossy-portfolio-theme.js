@@ -98,7 +98,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   static get styles() {
     return [super.styles,
     css`
-      :host{
+    :host{
         box-sizing: border-box; 
         --bg-color: #111111;
         --main-font: "Manrope", "Manrope Placeholder", sans-serif;
@@ -187,8 +187,9 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         unicode-bidi: isolate;
 
       }
-      
-
+      img{
+        margin: 1em 0;
+      }
       h1, h2, h3, h4, h5, h6 {
         margin: 0.5em 0; /* Slightly smaller margins for headings */
       }
@@ -212,7 +213,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         font-weight: 700;
         line-height: 1.4; 
         font-family: inherit;
-
       }
 
       a {
@@ -242,13 +242,13 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       #slot {
         min-height: 0;
       }
- 
-      
+
       .max-body-width {
         width: 100%;
         max-width: var(--max-width);
         margin: auto;
-        z-index: 1; /* Ensure content is above the background */
+        z-index: 2; /* Ensure content is above the background */
+        background-color: var(--bg-color); /* Match background color */
       }
       #contentcontainer {
         max-width: var(--max-width-text);
@@ -312,27 +312,23 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     const activeTitle = this.activeItem?.title || "Default Title"; // Use optional chaining and a fallback value
     return html`
     <!-- temporary margin-top  -->
-  <glossy-portfolio-header></glossy-portfolio-header>
+    <glossy-portfolio-header></glossy-portfolio-header>
 
-<div class="body-wrapper"> 
-  ${this.isHome ? html`<glossy-portfolio-home></glossy-portfolio-home>` : html``}
-  <div class="max-body-width">
-  
-    <article id="contentcontainer" class="grow contentcontainer">
-  
-        <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
-        <site-active-title></site-active-title>          
-        <div id="slot"><slot></slot></div>
-    </article>
-  </div>
-  <glossy-portfolio-grid class="grow"></glossy-portfolio-grid>
-  <glossy-portfolio-footer class="not-grow"></glossy-portfolio-footer>
+    <div class="body-wrapper"> 
+      ${this.isHome ? html`<glossy-portfolio-home></glossy-portfolio-home>` : html``}
+      <div class="max-body-width">
+      
+        <article id="contentcontainer" class="grow contentcontainer">
+      
+            <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
+            <site-active-title></site-active-title>          
+            <div id="slot"><slot></slot></div>
+        </article>
+      </div>
+      <glossy-portfolio-grid class="grow"></glossy-portfolio-grid>
+      <glossy-portfolio-footer class="not-grow"></glossy-portfolio-footer>
 
-</div>  
-
-       
-       
-
+    </div>  
 `;
   }
 
