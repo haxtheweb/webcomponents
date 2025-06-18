@@ -39,13 +39,11 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     this.activeParent = ""; // set with activeItem, used for parentSlug and parentTitle
     this.__disposer = this.__disposer || [];
 
-
-
    autorun((reaction) => {
     this.isHome = false; // default to false
       const active = toJS(store.activeItem);
       if (active) {
-        if(active.order === 0 && active.indent === 0) {
+        if(active.order === 0 && store.ancestorItem === null) {
           this.isHome = true; 
         }
       }
@@ -100,9 +98,8 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   static get styles() {
     return [super.styles,
     css`
-      :host{
-        box-sizing: border-box;
-    
+    :host{
+        box-sizing: border-box; 
         --bg-color: #111111;
         --main-font: "Manrope", "Manrope Placeholder", sans-serif;
         --max-width: 1200px;
@@ -112,9 +109,10 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         --main-font-size: 18px;
         --mobile-page-padding: 0 15px;
         --text-color: #ffffff; /* Default text color */
-
-        
+        --footer-height: 76px;   
+        --max-width-text: 840px; /* Max width for text content */ 
       }
+
       *{
         box-sizing: border-box;
 
@@ -125,7 +123,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         color: white;
         background-color: var(--bg-color);
         font-size: var(--main-font-size);
-
       }
 
       :host {
@@ -182,7 +179,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
 
       ol, ul{
         margin-bottom: 1em;
-      
         display: block;
         list-style-type: disc;
         margin-block-start: 1em;
@@ -191,9 +187,8 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         unicode-bidi: isolate;
 
       }
-      
-      p, h2, h3, h4, h5, h6, a, blockquote, pre, code, span, strong, em {
-        max-width: 840px;
+      img{
+        margin: 1em 0;
       }
       h1, h2, h3, h4, h5, h6 {
         margin: 0.5em 0; /* Slightly smaller margins for headings */
@@ -218,7 +213,6 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         font-weight: 700;
         line-height: 1.4; 
         font-family: inherit;
-
       }
 
       a {
@@ -248,12 +242,17 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       #slot {
         min-height: 0;
       }
- 
-      
 
-      #contentcontainer {
+      .max-body-width {
+        width: 100%;
         max-width: var(--max-width);
         margin: auto;
+        z-index: 2; /* Ensure content is above the background */
+        background-color: var(--bg-color); /* Match background color */
+      }
+      #contentcontainer {
+        max-width: var(--max-width-text);
+        margin: 0;
         padding: var(--page-padding);
         padding-top: 80px;
       }
@@ -270,7 +269,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       .body-wrapper { 
         display: flex;
         flex-direction: column;
-        min-height: 100vh;
+        min-height: calc(100vh + var(--footer-height));        ;
         width: 100%;
         z-index: 2;
       }
@@ -313,26 +312,23 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
     const activeTitle = this.activeItem?.title || "Default Title"; // Use optional chaining and a fallback value
     return html`
     <!-- temporary margin-top  -->
-  <glossy-portfolio-header></glossy-portfolio-header>
+    <glossy-portfolio-header></glossy-portfolio-header>
 
-<div class="body-wrapper"> 
-  ${this.isHome ? html`<glossy-portfolio-home></glossy-portfolio-home>` : html``}
+    <div class="body-wrapper"> 
+      ${this.isHome ? html`<glossy-portfolio-home></glossy-portfolio-home>` : html``}
+      <div class="max-body-width">
+      
+        <article id="contentcontainer" class="grow contentcontainer">
+      
+            <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
+            <site-active-title></site-active-title>          
+            <div id="slot"><slot></slot></div>
+        </article>
+      </div>
+      <glossy-portfolio-grid class="grow"></glossy-portfolio-grid>
+      <glossy-portfolio-footer class="not-grow"></glossy-portfolio-footer>
 
-  <article id="contentcontainer" class="grow contentcontainer">
-    
-
-      <glossy-portfolio-breadcrumb></glossy-portfolio-breadcrumb>
-      <site-active-title></site-active-title>          
-      <div id="slot"><slot></slot></div>
-  </article>
-  <glossy-portfolio-grid class="grow"></glossy-portfolio-grid>
-  <glossy-portfolio-footer class="not-grow"></glossy-portfolio-footer>
-
-</div>  
-
-       
-       
-
+    </div>  
 `;
   }
 

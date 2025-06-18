@@ -26,10 +26,12 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
 
     // get csite description
     autorun((reaction) => {
-    
       this.siteDescription = toJS(store.siteDescription) || "A portfolio showcasing my work and projects.";
       this.__disposer.push(reaction);
-      
+    });
+    autorun((reaction) => {
+      this.backgroundImage = toJS(store.themeData.variables.image) || "https://preview.redd.it/ppbbhgt5xof71.jpg?width=1080&crop=smart&auto=webp&s=4e51c19ae4ece47b329052b99b48494bd86954aa";
+      this.__disposer.push(reaction);
     });
   }
 
@@ -39,6 +41,7 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
       ...super.properties,
       title: { type: String },
       siteDescription: { type: String },
+      backgroundImage: { type: String },
 
     };
   }
@@ -67,7 +70,7 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
       }
 
       .background{
-        background-image: url("https://github.com/NazmanRosman/graphic-portfolio/raw/refs/heads/main/lib/components/bg.webp");
+        background-image: var(--background-image);
         background-attachment: fixed;
         background-size: cover;
         width: 100%;
@@ -125,7 +128,7 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-<div class="background">
+<div class="background" style="--background-image: url(${this.backgroundImage})">
   <div class="background-opacity">
     <div class="wrapper"> <!-- page padding -->
       

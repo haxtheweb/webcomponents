@@ -41,7 +41,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
 
     //get top level items (items shown on header -- they have no parent)
     autorun((reaction) => {
-      let items = store.getItemChildren(null); 
+      let items = toJS(store.getItemChildren(null)); 
       if (items && items.length > 0) {
         this.topItems = [...items];
       }

@@ -109,12 +109,15 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
         width: 100%;
         padding: var(--page-padding);
-        padding-bottom: 30px;
+        padding-bottom: 100px;
       }
       .projects-header{
         display: flex;
         justify-content: space-between;
-        padding: 50px 0;
+        padding: 30px 0;
+        height: 35px;
+        align-items: center;
+        box-sizing: content-box;
         max-width: 100%;
       }
       .grid-title{
@@ -165,8 +168,9 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
       @media (max-width: 575.98px) {
         .projects-header{
           flex-direction: column;
-          gap: 16px;
-          padding: 50px 0 20px 0;
+          align-items: flex-start;
+          gap: 12px;
+          height: auto;
         }
         .card-container {
          grid-template-columns: 1fr;
@@ -196,8 +200,8 @@ ${this.data.length > 0 ?   html`
       ${this.filteredData.map((item)=>{ return html`
           <glossy-portfolio-card class="card" 
           title="${item.title}" 
-          thumbnail=${item.metadata.images[0]?
-          item.metadata.images[0]
+          thumbnail=${item.metadata.image?
+          item.metadata.image
           :store.manifest.metadata.site.logo}
           slug="${item.slug}"
           >

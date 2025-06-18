@@ -78,7 +78,7 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
         align-items: center;
       }
       .wrapper {
-        height: auto;
+        height: var(--footer-height, 76px); /* Default height if not set */
         padding: var(--page-padding);
         padding-top: 20px;
         padding-bottom: 20px;
@@ -100,6 +100,8 @@ export class GlossyPortfolioFooter extends DDDSuper(I18NMixin(LitElement)) {
       }
       .item {
         justify-self: start; /* Align left-side text to the start */
+        text-align: left; /* Ensure text is left-aligned */
+
       }
       .center {
         justify-self: center; /* Center-align the copyright text */
