@@ -18,7 +18,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "11.0.0",
+  "version": "11.0.5",
   "description": "A 2nd clean theme",
   "repository": {
     "type": "git",
@@ -43,11 +43,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/haxcms-elements": "^11.0.0",
+    "@haxtheweb/haxcms-elements": "^11.0.5",
     "@haxtheweb/micro-frontend-registry": "^11.0.0",
-    "@haxtheweb/q-r": "^11.0.0",
-    "@haxtheweb/simple-colors": "^11.0.0",
-    "@haxtheweb/simple-icon": "^11.0.0",
+    "@haxtheweb/q-r": "^11.0.5",
+    "@haxtheweb/simple-colors": "^11.0.5",
+    "@haxtheweb/simple-icon": "^11.0.5",
     "@haxtheweb/utils": "^11.0.0",
     "lit": "^3.3.0",
     "mobx": "6.13.7"

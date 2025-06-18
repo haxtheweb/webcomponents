@@ -18,7 +18,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "11.0.0",
+  "version": "11.0.5",
   "description": "A simple element that displays information about a github repository.",
   "repository": {
     "type": "git",
@@ -43,10 +43,10 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^11.0.0",
+    "@haxtheweb/d-d-d": "^11.0.5",
     "@haxtheweb/intersection-element": "^11.0.0",
-    "@haxtheweb/rpg-character": "^11.0.0",
-    "@haxtheweb/simple-icon": "^11.0.0",
+    "@haxtheweb/rpg-character": "^11.0.5",
+    "@haxtheweb/simple-icon": "^11.0.5",
     "lit": "^3.3.0"
   },
   "devDependencies": {

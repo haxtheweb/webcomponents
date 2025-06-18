@@ -18,7 +18,7 @@
       "...super.styles"
     ]
   },
-  "version": "11.0.0",
+  "version": "11.0.5",
   "description": "Automated conversion of video-player/",
   "repository": {
     "type": "git",
@@ -43,21 +43,21 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/a11y-media-player": "^11.0.0",
-    "@haxtheweb/d-d-d": "^11.0.0",
+    "@haxtheweb/a11y-media-player": "^11.0.5",
+    "@haxtheweb/d-d-d": "^11.0.5",
     "@haxtheweb/i18n-manager": "^11.0.0",
     "@haxtheweb/intersection-element": "^11.0.0",
-    "@haxtheweb/media-behaviors": "^11.0.0",
-    "@haxtheweb/schema-behaviors": "^11.0.0",
+    "@haxtheweb/media-behaviors": "^11.0.5",
+    "@haxtheweb/schema-behaviors": "^11.0.5",
     "@haxtheweb/simple-cta": "^11.0.0",
-    "@haxtheweb/simple-modal": "^11.0.0",
+    "@haxtheweb/simple-modal": "^11.0.5",
     "@haxtheweb/utils": "^11.0.0",
     "lit": "^3.3.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.4",
     "@haxtheweb/deduping-fix": "^11.0.0",
-    "@haxtheweb/storybook-utilities": "^11.0.0",
+    "@haxtheweb/storybook-utilities": "^11.0.5",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

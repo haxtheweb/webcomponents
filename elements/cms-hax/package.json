@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "11.0.0",
+  "version": "11.0.5",
   "description": "HAX integration geared toward CMSs",
   "repository": {
     "type": "git",
@@ -37,8 +37,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/h-a-x": "^11.0.0",
-    "@haxtheweb/hax-body": "^11.0.0",
+    "@haxtheweb/h-a-x": "^11.0.5",
+    "@haxtheweb/hax-body": "^11.0.5",
     "@polymer/iron-ajax": "^3.0.0",
     "@polymer/paper-spinner": "3.0.2",
     "@polymer/polymer": "^3.5.1",
@@ -47,7 +47,7 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.4",
     "@haxtheweb/deduping-fix": "^11.0.0",
-    "@haxtheweb/storybook-utilities": "^11.0.0",
+    "@haxtheweb/storybook-utilities": "^11.0.5",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

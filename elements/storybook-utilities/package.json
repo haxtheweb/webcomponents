@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/storybook-utilities",
-  "version": "11.0.0",
+  "version": "11.0.5",
   "description": "A series of utilities for `story.js` files",
   "repository": {
     "type": "git",
@@ -16,7 +16,7 @@
   "dependencies": {
     "@haxtheweb/es-global-bridge": "^11.0.0",
     "@haxtheweb/lorem-data": "^11.0.0",
-    "@haxtheweb/simple-colors": "^11.0.0",
+    "@haxtheweb/simple-colors": "^11.0.5",
     "@storybook/addon-knobs": "6.4.0",
     "@storybook/polymer": "5.3.21",
     "lorem-ipsum": "^2.0.3"
