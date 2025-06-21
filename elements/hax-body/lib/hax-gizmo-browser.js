@@ -140,7 +140,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
             <simple-fields-field
               id="inputfilter"
               @value-changed="${this.inputfilterChanged}"
-              aria-controls="filter"
               label="${this.t.filterContentTypes}"
               type="text"
               auto-validate=""

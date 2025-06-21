@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "11.0.0",
+  "version": "11.0.5",
   "description": "h5p wrapper for loading and presenting .h5p files",
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/es-global-bridge": "^11.0.0",
-    "@haxtheweb/haxcms-elements": "^11.0.0",
+    "@haxtheweb/haxcms-elements": "^11.0.5",
     "lit": "^3.3.0"
   },
   "devDependencies": {

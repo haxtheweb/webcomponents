@@ -32,7 +32,7 @@
       "tags": ""
     },
     "theme": {
-      "element": "clean-one",
+      "element": "journey-theme",
       "path": "@haxtheweb/glossy-portfolio-theme/glossy-portfolio-theme.js",
       "name": "Polaris - Invent",
       "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg",

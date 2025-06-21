@@ -10,12 +10,9 @@ export class AppHAXWiredToggle extends SimpleTourFinder(WiredDarkmodeToggle) {
     this.tourName = "hax";
     autorun(() => {
       this.checked = toJS(store.darkMode);
-      if (globalThis.matchMedia(
-        "(prefers-color-scheme: dark)",
-      ).matches) {
+      if (globalThis.matchMedia("(prefers-color-scheme: dark)").matches) {
         this.disabled = true;
-      }
-      else {
+      } else {
         this.disabled = false;
       }
     });

@@ -177,7 +177,6 @@ class A11yCollapse extends DDD {
       <div
         id="content"
         aria-hidden="${this.expanded ? "false" : "true"}"
-        aria-labelledby="heading"
         aria-live="polite"
       >
         <div id="content-inner">

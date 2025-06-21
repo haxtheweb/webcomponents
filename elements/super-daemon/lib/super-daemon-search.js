@@ -185,7 +185,6 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         @focus="${this.fieldFocus}"
         @blur="${this.fieldFocusLoss}"
         .value="${this.value}"
-        aria-controls="filter"
         label="${this.t.filterCommands}"
         type="text"
         auto-validate=""
@@ -199,6 +198,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
             icon="${this.listeningForInput ? "hax:loading" : "settings-voice"}"
             ?dark="${this.dark}"
             title="${this.t.voiceSearch}"
+            label="${this.t.voiceSearch}"
           ></simple-icon-button-lite>`
         : ``}`;
   }

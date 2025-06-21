@@ -324,7 +324,23 @@ class JwtLogin extends LitElement {
     this.body = {};
     // reset jwt which will do all the events / local storage work
     this.jwt = null;
-    this.generateRequest(this.logoutUrl);
+    if (this.isDifferentDomain(this.logoutUrl)) {
+      globalThis.location.href = this.logoutUrl;
+    }
+    else {
+      this.generateRequest(this.logoutUrl);
+    }
+  }
+  isDifferentDomain(urlToCheck) {
+    try {
+      const currentUrl = new URL(globalThis.location.href);
+      const targetUrl = new URL(urlToCheck);
+
+      return currentUrl.hostname !== targetUrl.hostname;
+    } catch (error) {
+      console.error("Invalid URL provided:", error);
+      return false; // Or handle the error as appropriate for your application
+    }
   }
   /**
    * Login bridge to get a JWT and hang onto it

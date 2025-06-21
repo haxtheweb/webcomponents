@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "11.0.0",
+  "version": "11.0.5",
   "description": "Automated conversion of self-check/",
   "repository": {
     "type": "git",
@@ -41,14 +41,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/a11y-behaviors": "^11.0.0",
-    "@haxtheweb/d-d-d": "^11.0.0",
+    "@haxtheweb/a11y-behaviors": "^11.0.5",
+    "@haxtheweb/d-d-d": "^11.0.5",
     "@haxtheweb/i18n-manager": "^11.0.0",
     "@haxtheweb/lazy-image-helpers": "^11.0.0",
     "@haxtheweb/replace-tag": "^11.0.0",
-    "@haxtheweb/schema-behaviors": "^11.0.0",
-    "@haxtheweb/simple-colors": "^11.0.0",
-    "@haxtheweb/simple-icon": "^11.0.0",
+    "@haxtheweb/schema-behaviors": "^11.0.5",
+    "@haxtheweb/simple-colors": "^11.0.5",
+    "@haxtheweb/simple-icon": "^11.0.5",
     "@haxtheweb/simple-tooltip": "^11.0.0",
     "@haxtheweb/user-action": "^11.0.0",
     "lit": "^3.3.0"
@@ -56,7 +56,7 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.4",
     "@haxtheweb/deduping-fix": "^11.0.0",
-    "@haxtheweb/storybook-utilities": "^11.0.0",
+    "@haxtheweb/storybook-utilities": "^11.0.5",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

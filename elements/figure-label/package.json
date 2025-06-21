@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "11.0.0",
+  "version": "11.0.5",
   "description": "Figure label element to mark media assets within content.",
   "repository": {
     "type": "git",
@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^11.0.0",
+    "@haxtheweb/d-d-d": "^11.0.5",
     "lit": "^3.3.0"
   },
   "devDependencies": {

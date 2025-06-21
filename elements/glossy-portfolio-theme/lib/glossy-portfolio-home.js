@@ -5,7 +5,8 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 /**
  * `glossy-portfolio-home`
  * 
@@ -21,7 +22,17 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
   constructor() {
     super();
     this.title = "Title";
+    this.__disposer = this.__disposer || [];
 
+    // get csite description
+    autorun((reaction) => {
+      this.siteDescription = toJS(store.siteDescription) || "A portfolio showcasing my work and projects.";
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.backgroundImage = toJS(store.themeData.variables.image) || "https://preview.redd.it/ppbbhgt5xof71.jpg?width=1080&crop=smart&auto=webp&s=4e51c19ae4ece47b329052b99b48494bd86954aa";
+      this.__disposer.push(reaction);
+    });
   }
 
   // Lit reactive properties
@@ -29,6 +40,8 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      siteDescription: { type: String },
+      backgroundImage: { type: String },
 
     };
   }
@@ -39,9 +52,7 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
     css`
       :host {
         display: block;
-        
         font-family: var(--ddd-font-navigation);
-        /* min-width: 400px; */
         height: auto;
       }
 
@@ -49,42 +60,31 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
         box-sizing: border-box;
       }
 
-  
       .wrapper {
         display: flex;
-        flex-direction: column;
-        
+        flex-direction: column; 
         max-width: var(--max-width); 
         margin: 0 auto ;
         padding: var(--page-padding);
         overflow: visible;
-
-        /* gap: 24px; */
       }
 
       .background{
-        /* background-image: url("lib/components/bg.webp"); */
-        background-image: url("https://github.com/NazmanRosman/graphic-portfolio/raw/refs/heads/main/lib/components/bg.webp");
+        background-image: var(--background-image);
         background-attachment: fixed;
         background-size: cover;
-        /* background-color: gray; */
         width: 100%;
-        
       }
       .background-opacity{
         background-color:rgba(0, 0, 0, 0.7);
         width: 100%;
-
-
       }
 
       .title{
-       
         font-family: "Inter", "Inter Placeholder", sans-serif;
         font-size: 50px;
         font-weight: 600;
-        color: white;
-        
+        color: var(--text-color); 
         position: fixed;
         top: 50%;
         transform: translate(0, -50%);
@@ -100,20 +100,15 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
         font-weight: 100; 
         font-size: 55px;
         font-family: 'DM Serif Display';
-        /* font-style: normal; */
       }
 
       .title-container{
-      height: 100vh;
-      position: relative;
-      z-index: 1;
+        height: 100vh;
+        position: relative;
+        z-index: 0;
 
-     }
+      }
 
-     glossy-portfolio-grid{
-      position: relative;
-      z-index: 2;
-     }
      @media (max-width: 575.98px) {
       /* Styles for phones */
       .title{
@@ -121,20 +116,11 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
         max-width: 1000px; 
         width: 90%;
         letter-spacing: -0.5px;
-        /* top: 40%; */
       }
       .title em{
-        
         font-size: 40px;
-        
       }
-      .wrapper{
-        padding: var(--mobile-page-padding);
-      }
-      
      }
-
-
 
     `];
   }
@@ -142,22 +128,19 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
   // Lit render the HTML
   render() {
     return html`
-<div class="background">
+<div class="background" style="--background-image: url(${this.backgroundImage})">
   <div class="background-opacity">
-    <div class="wrapper">
-
-      <glossy-portfolio-header> </glossy-portfolio-header>
+    <div class="wrapper"> <!-- page padding -->
       
-      <div class="title-container">
+      <div class="title-container"> <!-- centralize title vertically -->
         <div class="title">
-        I make things and what not
+        ${this.siteDescription}
         </div>  
       </div>  
     
     </div>  
   </div>
 </div>
-<glossy-portfolio-grid class="projects"></glossy-portfolio-grid>
 
 `;
   }
