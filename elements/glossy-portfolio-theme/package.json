@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/glossy-portfolio-theme",
-  "version": "11.0.0",
+  "version": "11.0.5",
   "description": "Webcomponent glossy-portfolio-theme following hax / open-wc recommendations",
   "license": "Apache-2.0",
   "author": {
@@ -28,7 +28,7 @@
     "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
   },
   "dependencies": {
-    "@haxtheweb/d-d-d": "^11.0.0",
+    "@haxtheweb/d-d-d": "^11.0.5",
     "lit": "^3.3.0"
   },
   "devDependencies": {

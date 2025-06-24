@@ -96,7 +96,7 @@ export class WiredDarkmodeToggle extends WiredToggle {
           background-position: left;
         }
         :host([disabled]) {
-          opacity: .5;
+          opacity: 0.5;
           pointer-events: none;
           cursor: not-allowed;
         }

@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "11.0.0",
+  "version": "11.0.5",
   "description": "take text and process it with various enhancements",
   "repository": {
     "type": "git",
@@ -45,7 +45,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/micro-frontend-registry": "^11.0.0",
-    "@haxtheweb/vocab-term": "^11.0.0",
+    "@haxtheweb/vocab-term": "^11.0.5",
     "lit": "^3.3.0"
   },
   "devDependencies": {

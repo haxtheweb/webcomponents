@@ -20,7 +20,8 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     this.t = {
       ...this.t,
       whereUpload: "Where would you like to upload this",
-      cantHandle: "Sorry, you don't have a storage location that can handle",
+      serverStorageLocationCantHandle: "Server storage location can't handle",
+      fileUploadsMustHaveAFileExtension: "File uploads must have a file extension",
       uploads: "uploads",
       dropMediaHereOr: "drop media here or",
       selectMedia: "Select media",
@@ -67,22 +68,30 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         source: e.detail.file.name,
         type: e.detail.file.type,
       };
-      // we have no clue what this is.. let's try and guess..
-      var type = HAXStore.guessGizmoType(values);
-      // find targets that support this type
-      let targets = HAXStore.getHaxAppStoreTargets(type);
-      // make sure we have targets
-      if (targets.length === 1) {
-        this._haxAppPickerSelection({ detail: targets[0] });
-      } else if (targets.length !== 0) {
-        HAXStore.haxAppPicker.presentOptions(
-          targets,
-          type,
-          `${this.t.whereUpload} ${type}?`,
-          "app",
-        );
-      } else {
-        HAXStore.toast(`${this.t.cantHandle} ${type} ${this.t.uploads}!`, 5000);
+      // account for no file type / extension on the upload and block it
+      if (e.detail.file.type === "" && !e.detail.file.name.includes('.')) {
+        HAXStore.toast(`${this.t.fileUploadsMustHaveAFileExtension}!`, 5000);
+        // clear upload because it is never allowed anywhere
+        this.shadowRoot.querySelector("#fileupload").files = [];
+      }
+      else {
+        // we have no clue what this is.. let's try and guess..
+        var type = HAXStore.guessGizmoType(values);
+        // find targets that support this type
+        let targets = HAXStore.getHaxAppStoreTargets(type);
+        // make sure we have targets
+        if (targets.length === 1) {
+          this._haxAppPickerSelection({ detail: targets[0] });
+        } else if (targets.length !== 0) {
+          HAXStore.haxAppPicker.presentOptions(
+            targets,
+            type,
+            `${this.t.whereUpload} ${type}?`,
+            "app",
+          );
+        } else {
+          HAXStore.toast(`${this.t.serverStorageLocationCantHandle} ${type} ${this.t.uploads}!`, 5000);
+        }
       }
     } else {
       this.__allowUpload = false;

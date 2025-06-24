@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "11.0.0",
+  "version": "11.0.5",
   "description": "Robot assistant tag, hopefully not evil",
   "repository": {
     "type": "git",
@@ -42,14 +42,14 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/es-global-bridge": "^11.0.0",
-    "@haxtheweb/simple-toast": "^11.0.0",
-    "@haxtheweb/super-daemon": "^11.0.0",
+    "@haxtheweb/simple-toast": "^11.0.5",
+    "@haxtheweb/super-daemon": "^11.0.5",
     "lit": "^3.3.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.10.4",
     "@haxtheweb/deduping-fix": "^11.0.0",
-    "@haxtheweb/storybook-utilities": "^11.0.0",
+    "@haxtheweb/storybook-utilities": "^11.0.5",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",
