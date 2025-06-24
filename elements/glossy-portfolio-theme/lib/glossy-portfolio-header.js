@@ -308,7 +308,7 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
           </a> 
 
           <!-- hamburger/close button -->
-          <button @click="${this.toggleHamburger}">
+          <button @click="${this.toggleHamburger}" aria-label="Toggle navigation menu"></button>>
             ${this.isOpen ? html`
               <svg class="cross mobile"
                 version="1.1" 
