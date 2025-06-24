@@ -285,6 +285,10 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       body.no-scroll {
         overflow: hidden; /* Prevents scrolling when open mobile nav link*/
       }
+
+      .padding-bottom {
+        padding-bottom: 100px;
+      }
       
       /* Extra small devices (phones) */
       @media (max-width: 575.98px) {
@@ -326,6 +330,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         </article>
       </div>
       <glossy-portfolio-grid class="grow"></glossy-portfolio-grid>
+      <div class="padding-bottom"></div>
       <glossy-portfolio-footer class="not-grow"></glossy-portfolio-footer>
 
     </div>  
