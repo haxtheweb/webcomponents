@@ -296,7 +296,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
           --page-padding: 0 15px;
         }
         :root, html, body{
-          font-size: 14px;
+          font-size: 16px;
          
         }
        #contentcontainer {
