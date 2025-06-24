@@ -2,7 +2,7 @@
  * Copyright 2025 btopro
  * @license Apache-2.0, see License.md for full text.
  */
-import { css, html, nothing} from "lit";
+import { css, html, nothing } from "lit";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -16,6 +16,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
+import "./journey-sidebar-theme.js";
 
 /**
  * `JourneyTheme`
@@ -33,7 +34,7 @@ import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js"
  *  - Data Store - https://haxtheweb.org/documentation/developers/haxsite/data-store
  * @element journey-theme
  */
-class JourneyTheme extends (HAXCMSLitElementTheme) {
+class JourneyTheme extends HAXCMSLitElementTheme {
   /**
    * Store the tag name to make it easier to obtain directly.
    * @notice function name must be here for tooling to operate correctly
@@ -59,23 +60,26 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
       home: "Home",
     };
     try {
-      this.basePath = globalThis.document.querySelector('base').href;
-    }
-    catch (e) {
+      this.basePath = globalThis.document.querySelector("base").href;
+    } catch (e) {
       this.basePath = globalThis.location.origin;
     }
 
     // support for custom rendering of route html
     this.HAXSiteCustomRenderRoutes = {
       "x/tags": {
-        "items": this.HAXSiteRenderXTagsItems,
-      }
+        items: this.HAXSiteRenderXTagsItems,
+      },
     };
 
     autorun((reaction) => {
       this.manifest = toJS(store.manifest);
-      this.lastUpdated = new Date(store.manifest.metadata.site.updated * 1000).toDateString();
-      this.copyrightYear = new Date(store.manifest.metadata.site.created * 1000).getFullYear();
+      this.lastUpdated = new Date(
+        store.manifest.metadata.site.updated * 1000,
+      ).toDateString();
+      this.copyrightYear = new Date(
+        store.manifest.metadata.site.created * 1000,
+      ).getFullYear();
       let LList = new licenseList();
       if (this.manifest.license && LList[this.manifest.license]) {
         this.licenseName = LList[this.manifest.license].name;
@@ -119,38 +123,38 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
       switch (this.siteTheme) {
         case "earth":
           this.dataPrimary = 1;
-        break;
+          break;
         case "water":
           this.dataPrimary = 11;
-        break;
+          break;
         case "fire":
           this.dataPrimary = 23;
-        break;
+          break;
         case "sand":
           this.dataPrimary = 2;
-        break;
+          break;
         case "rose":
           this.dataPrimary = 47;
-        break;
+          break;
         case "violet":
           this.dataPrimary = 2;
-        break;
+          break;
         default:
           this.dataPrimary = 1;
-        break;
+          break;
       }
       UserScaffoldInstance.writeMemory(
-          "HAXCMSSiteTheme",
-          this.siteTheme,
-          "long",
-        );
+        "HAXCMSSiteTheme",
+        this.siteTheme,
+        "long",
+      );
     }
   }
 
   static get properties() {
     return {
       ...super.properties,
-     _items: { type: Array },
+      _items: { type: Array },
       activeItem: { type: Object },
       ancestorItem: { type: Object },
       location: { type: Object },
@@ -167,28 +171,38 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     };
   }
 
-
   // custom rendering of the x/tags route
   // node is site-tags-route reference
   HAXSiteRenderXTagsItems(items) {
     return html`
-    <div>
-    ${items.map(item => html`
-      <a href="${item.slug}" part="child-page-link" class="child-page-link">${item.metadata.image ? html`<img src="${item.metadata.image}" loading="lazy"
-        decoding="async"
-        part="child-page-link-img"
-        fetchpriority="low" alt="${item.title}"/>` : html`<img 
-        part="child-page-link-img"
-        loading="lazy"
-        decoding="async"
-        fetchpriority="low"
-        src="${store.manifest.metadata.author.image}"
-        alt="${store.manifest.metadata.author.name}"
-        />`}
-        ${item.title}
-      </a>`
-    )}
-    </div>
+      <div>
+        ${items.map(
+          (item) =>
+            html` <a
+              href="${item.slug}"
+              part="child-page-link"
+              class="child-page-link"
+              >${item.metadata.image
+                ? html`<img
+                    src="${item.metadata.image}"
+                    loading="lazy"
+                    decoding="async"
+                    part="child-page-link-img"
+                    fetchpriority="low"
+                    alt="${item.title}"
+                  />`
+                : html`<img
+                    part="child-page-link-img"
+                    loading="lazy"
+                    decoding="async"
+                    fetchpriority="low"
+                    src="${store.manifest.metadata.author.image}"
+                    alt="${store.manifest.metadata.author.name}"
+                  />`}
+              ${item.title}
+            </a>`,
+        )}
+      </div>
     `;
   }
 
@@ -200,70 +214,88 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
-      :root {
-        --haxcms-site-theme-low-tone: white;
-        --haxcms-site-theme-high-tone: var(--ddd-theme-default-coalyGray);
-        --color: light-dark(var(--haxcms-site-theme-high-tone), var(--haxcms-site-theme-low-tone));
-        --bg: light-dark(var(--haxcms-site-theme-low-tone), var(--haxcms-site-theme-high-tone));
-      }
-      body {
-        padding: var(--ddd-spacing-0);
-        margin: var(--ddd-spacing-0);
-        background-color: var(--haxcms-site-theme-low-tone);
-      }
-      journey-theme::before {
-        height: 100vh;
-        content: "";
-        transition: var(--haxcms-site-transition);
-        border-left: 8px dashed var(--haxcms-site-theme-color-2);
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 50%;
-        margin: 0 auto;
-        z-index: -1;
-      }
-      site-tags-route::part(child-pages-container) {
-        display: block;
-        margin-bottom: var(--ddd-spacing-6);
-      }
-      site-tags-route::part(child-page-link) {
-        display: inline-block;
-        width: var(--ddd-spacing-20);
-        height: var(--ddd-spacing-20);
-        line-height: normal;
-        margin: var(--ddd-spacing-4);
-      }
-      site-tags-route::part(child-page-link-img) {
-        width: var(--ddd-spacing-20);
-        height: var(--ddd-spacing-20);
-        border: 4px solid var(--haxcms-site-theme-color-2);
-        transition: var(--haxcms-site-transition);
-      }
-      site-tags-route::part(child-page-link-img):hover,
-      site-tags-route::part(child-page-link-img):focus-within {
-        border-radius: 50%;
-        transform: scale(1.1);
-      }
-      @media (max-width: 800px) {
-        journey-theme::before {
-          display: none;
+        :root {
+          --haxcms-site-theme-low-tone: white;
+          --haxcms-site-theme-high-tone: var(--ddd-theme-default-coalyGray);
+          --color: light-dark(
+            var(--haxcms-site-theme-high-tone),
+            var(--haxcms-site-theme-low-tone)
+          );
+          --bg: light-dark(
+            var(--haxcms-site-theme-low-tone),
+            var(--haxcms-site-theme-high-tone)
+          );
         }
-      }
-      body.dark-mode {
-        background-color: var(--haxcms-site-theme-high-tone);
-        color: var(--haxcms-site-theme-low-tone);
-        --color: light-dark(var(--haxcms-site-theme-high-tone), var(--haxcms-site-theme-low-tone));
-        --bg: light-dark(var(--haxcms-site-theme-low-tone), var(--haxcms-site-theme-high-tone));
-      }
-      @media (prefers-color-scheme: dark) {
         body {
+          padding: var(--ddd-spacing-0);
+          margin: var(--ddd-spacing-0);
+          background-color: var(--haxcms-site-theme-low-tone);
+        }
+        journey-theme::before {
+          height: 100vh;
+          content: "";
+          transition: var(--haxcms-site-transition);
+          border-left: 8px dashed var(--haxcms-site-theme-color-2);
+          position: fixed;
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          margin: 0 auto;
+          z-index: -1;
+        }
+        site-tags-route::part(child-pages-container) {
+          display: block;
+          margin-bottom: var(--ddd-spacing-6);
+        }
+        site-tags-route::part(child-page-link) {
+          display: inline-block;
+          width: var(--ddd-spacing-20);
+          height: var(--ddd-spacing-20);
+          line-height: normal;
+          margin: var(--ddd-spacing-4);
+        }
+        site-tags-route::part(child-page-link-img) {
+          width: var(--ddd-spacing-20);
+          height: var(--ddd-spacing-20);
+          border: 4px solid var(--haxcms-site-theme-color-2);
+          transition: var(--haxcms-site-transition);
+        }
+        site-tags-route::part(child-page-link-img):hover,
+        site-tags-route::part(child-page-link-img):focus-within {
+          border-radius: 50%;
+          transform: scale(1.1);
+        }
+        @media (max-width: 800px) {
+          journey-theme::before {
+            display: none;
+          }
+        }
+        body.dark-mode {
           background-color: var(--haxcms-site-theme-high-tone);
           color: var(--haxcms-site-theme-low-tone);
-          --color: light-dark(var(--haxcms-site-theme-high-tone), var(--haxcms-site-theme-low-tone));
-          --bg: light-dark(var(--haxcms-site-theme-low-tone), var(--haxcms-site-theme-high-tone));
+          --color: light-dark(
+            var(--haxcms-site-theme-high-tone),
+            var(--haxcms-site-theme-low-tone)
+          );
+          --bg: light-dark(
+            var(--haxcms-site-theme-low-tone),
+            var(--haxcms-site-theme-high-tone)
+          );
         }
-      }
+        @media (prefers-color-scheme: dark) {
+          body {
+            background-color: var(--haxcms-site-theme-high-tone);
+            color: var(--haxcms-site-theme-low-tone);
+            --color: light-dark(
+              var(--haxcms-site-theme-high-tone),
+              var(--haxcms-site-theme-low-tone)
+            );
+            --bg: light-dark(
+              var(--haxcms-site-theme-low-tone),
+              var(--haxcms-site-theme-high-tone)
+            );
+          }
+        }
       `,
     ];
   }
@@ -281,7 +313,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           margin: var(--ddd-spacing-0);
           --haxcms-site-theme-color-1: var(--ddd-primary-2);
           --haxcms-site-theme-color-2: var(--ddd-primary-8);
-          --haxcms-site-transition: .3s all ease-in-out;
+          --haxcms-site-transition: 0.3s all ease-in-out;
         }
 
         :host([site-theme="earth"]) {
@@ -361,7 +393,10 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           align-items: center;
         }
         footer .author {
-          --component-color: var(--lowContrast-override, var(--haxcms-site-theme-low-tone));
+          --component-color: var(
+            --lowContrast-override,
+            var(--haxcms-site-theme-low-tone)
+          );
           color: var(--component-color);
         }
         footer .author .h1 {
@@ -378,7 +413,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           border-radius: 50%;
           width: 15vw;
           height: 15vw;
-          border: 4px solid var(--haxcms-site-theme-color-2)
+          border: 4px solid var(--haxcms-site-theme-color-2);
         }
         .author-image:hover,
         .author-image:focus-within {
@@ -388,7 +423,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
         footer .author-image {
           width: 5vw;
           height: 5vw;
-          border: 4px solid var(--haxcms-site-theme-color-1)
+          border: 4px solid var(--haxcms-site-theme-color-1);
         }
         header h1 {
           font-size: var(--ddd-font-size-4xl);
@@ -411,14 +446,29 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           border-radius: 50%;
         }
         simple-tooltip {
-          --simple-tooltip-font-size: var(--page-section-tooltip-font-size, var(--ddd-font-size-s, 16px));
-          --simple-tooltip-background: var(--page-section-tooltip-background, #000000);
+          --simple-tooltip-font-size: var(
+            --page-section-tooltip-font-size,
+            var(--ddd-font-size-s, 16px)
+          );
+          --simple-tooltip-background: var(
+            --page-section-tooltip-background,
+            #000000
+          );
           --simple-tooltip-opacity: var(--page-section-tooltip-opacity, 0.8);
-          --simple-tooltip-text-color: var(--page-section-tooltip-text-color, var(--haxcms-site-theme-low-tone));
+          --simple-tooltip-text-color: var(
+            --page-section-tooltip-text-color,
+            var(--haxcms-site-theme-low-tone)
+          );
           --simple-tooltip-delay-in: var(--page-section-tooltip-delay-in, 300);
           --simple-tooltip-delay-out: var(--page-section-tooltip-delay-out, 0);
-          --simple-tooltip-duration-in: var(--page-section-tooltip-duration-in, 300);
-          --simple-tooltip-duration-out: var(--page-section-tooltip-duration-out, 0);
+          --simple-tooltip-duration-in: var(
+            --page-section-tooltip-duration-in,
+            300
+          );
+          --simple-tooltip-duration-out: var(
+            --page-section-tooltip-duration-out,
+            0
+          );
         }
         scroll-button {
           --scroll-button-color: var(--haxcms-site-theme-color-2);
@@ -431,8 +481,10 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           margin: 0 var(--ddd-spacing-3);
           padding-left: 4px;
         }
-        .article-link-icon.top:not(.active) simple-icon-button-lite::part(button):hover,
-        .article-link-icon.top:not(.active) simple-icon-button-lite::part(button):focus-within {
+        .article-link-icon.top:not(.active)
+          simple-icon-button-lite::part(button):hover,
+        .article-link-icon.top:not(.active)
+          simple-icon-button-lite::part(button):focus-within {
           transition: var(--haxcms-site-transition);
           transform: scale(1.05);
           background-color: white;
@@ -451,23 +503,23 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
         .article-link-icon.top:last-of-type::before {
           display: none;
         }
-        .article-link-icon.top  simple-icon-button-lite::part(button) {
+        .article-link-icon.top simple-icon-button-lite::part(button) {
           background-color: var(--haxcms-site-theme-color-2);
           transition: var(--haxcms-site-transition);
         }
-        .home .article-link-icon.top  simple-icon-button-lite::part(button) {
+        .home .article-link-icon.top simple-icon-button-lite::part(button) {
           background-color: white;
         }
         .article-link-icon.active simple-icon-button-lite.article {
           color: var(--haxcms-site-theme-low-tone);
         }
-        .article-link-icon.active  simple-icon-button-lite::part(button) {
+        .article-link-icon.active simple-icon-button-lite::part(button) {
           background-color: var(--ddd-primary-4);
         }
         a {
           display: block;
         }
-        
+
         simple-icon-button-lite.article {
           color: var(--haxcms-site-theme-color-1);
         }
@@ -476,12 +528,12 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           background-color: var(--haxcms-site-theme-low-tone);
         }
         .even .article-link-icon {
-          margin-left: -20px;          
+          margin-left: -20px;
         }
         .odd .article-link-icon {
           margin-right: -28px;
         }
-        
+
         .even {
           margin-left: 50%;
         }
@@ -527,7 +579,8 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           height: var(--ddd-spacing-20);
           border: 4px solid var(--haxcms-site-theme-color-2);
           transition: var(--haxcms-site-transition);
-        }        .child-page-link img:hover,
+        }
+        .child-page-link img:hover,
         .child-page-link:focus-within img {
           border-radius: 50%;
           transform: scale(1.1);
@@ -543,11 +596,17 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
         .article-wrap simple-cta {
           margin-top: var(--ddd-spacing-4);
           --component-background-color: var(--haxcms-site-theme-color-2);
-          --component-color: var(--lowContrast-override, var(--haxcms-site-theme-low-tone));
+          --component-color: var(
+            --lowContrast-override,
+            var(--haxcms-site-theme-low-tone)
+          );
         }
         .article-wrap simple-cta:hover,
         .article-wrap simple-cta:focus-visible {
-          --component-color: var(--lowContrast-override, var(--haxcms-site-theme-low-tone));
+          --component-color: var(
+            --lowContrast-override,
+            var(--haxcms-site-theme-low-tone)
+          );
           --component-background-color: var(--haxcms-site-theme-color-1);
         }
         main {
@@ -594,13 +653,17 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           --site-breadcrumb-last-color: var(--color);
           --site-breadcrumb-separator-color: var(--haxcms-site-theme-color-2);
           --site-breadcrumb-margin: 0 0 var(--ddd-spacing-1) 2px;
-          --site-breadcrumb-separator-color: var(--haxcms-site-theme-color-1);        
+          --site-breadcrumb-separator-color: var(--haxcms-site-theme-color-1);
           --site-breadcrumb-color-hover: var(--haxcms-site-theme-color-1);
-          --site-breadcrumb-decoration-color-hover: var(--haxcms-site-theme-color-2);
+          --site-breadcrumb-decoration-color-hover: var(
+            --haxcms-site-theme-color-2
+          );
         }
         :host([site-theme=""]) site-breadcrumb {
           --site-breadcrumb-color-hover: var(--haxcms-site-theme-color-2);
-          --site-breadcrumb-decoration-color-hover: var(--haxcms-site-theme-color-1);
+          --site-breadcrumb-decoration-color-hover: var(
+            --haxcms-site-theme-color-1
+          );
           --site-breadcrumb-separator-color: var(--haxcms-site-theme-color-2);
         }
         site-active-title h1 {
@@ -691,7 +754,7 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
           footer .author .h2 {
             display: none;
           }
-        } 
+        }
       `,
     ];
   }
@@ -725,25 +788,25 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
       // make this the captain planet powers
       case "earth":
         this.siteTheme = "water";
-      break;
+        break;
       case "water":
         this.siteTheme = "fire";
-      break;
+        break;
       case "fire":
         this.siteTheme = "sand";
-      break;
+        break;
       case "sand":
         this.siteTheme = "rose";
-      break;
+        break;
       case "rose":
         this.siteTheme = "violet";
-      break;
+        break;
       case "violet":
         this.siteTheme = "";
-      break;
+        break;
       default:
         this.siteTheme = "earth";
-      break;
+        break;
     }
   }
 
@@ -752,15 +815,18 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     <header>
       <simple-icon-button-lite icon="image:style" label="Change theme" title="Change theme" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
       <div class="author">
-        <a href="${this.basePath}">${this.manifest.metadata.author.image ? html`
-          <img 
-            class="author-image"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            src="${this.manifest.metadata.author.image}"
-            alt="${this.manifest.metadata.author.name}"
-          />`: ``}
+        <a href="${this.basePath}">${
+          this.manifest.metadata.author.image
+            ? html` <img
+                class="author-image"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                src="${this.manifest.metadata.author.image}"
+                alt="${this.manifest.metadata.author.name}"
+              />`
+            : ``
+        }
           <h1>${this.manifest.title}</h1>
           <h2>${this.manifest.description}</h2>
         </a>
@@ -769,76 +835,156 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     <div class="lower-header-box ${this.location && this.location.route.name === "home" ? "home" : "not-home"}">
       <simple-tooltip for="top" position="bottom">${this.t.home}</simple-tooltip>
       <a tabindex="-1" href="${this.basePath}" class="top article-link-icon"><simple-icon-button-lite id="top" title="${this.t.home}" label="${this.t.home}" icon="${this.manifest.metadata.icon ? this.manifest.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
-      ${this.location && this.location.route.name !== "home" ? html`
-          ${this._items.map((item, index) => {
-          return html`
-            <simple-tooltip for="${item.id}" position="bottom">${item.title}</simple-tooltip>
-            <a tabindex="-1" href="${item.slug}" class="article-link-icon top ${this.activeItem && (item.id === this.activeItem.id || (this.ancestorItem && item.id === this.ancestorItem.id)) ? "active" : ""}"><simple-icon-button-lite id="${item.id}" title="${item.title}" label="${item.title}" class="article" icon="${item.metadata.icon ? item.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
-          `;
-        })}` : ``}
+      ${
+        this.location && this.location.route.name !== "home"
+          ? html` ${this._items.map((item, index) => {
+              return html`
+                <simple-tooltip for="${item.id}" position="bottom"
+                  >${item.title}</simple-tooltip
+                >
+                <a
+                  tabindex="-1"
+                  href="${item.slug}"
+                  class="article-link-icon top ${this.activeItem &&
+                  (item.id === this.activeItem.id ||
+                    (this.ancestorItem && item.id === this.ancestorItem.id))
+                    ? "active"
+                    : ""}"
+                  ><simple-icon-button-lite
+                    id="${item.id}"
+                    title="${item.title}"
+                    label="${item.title}"
+                    class="article"
+                    icon="${item.metadata.icon
+                      ? item.metadata.icon
+                      : "av:album"}"
+                  ></simple-icon-button-lite
+                ></a>
+              `;
+            })}`
+          : ``
+      }
     </div>
     <main class="main ${this.location && this.location.route.name === "home" ? "home" : "not-home"}"> 
       <div class="articles">
-        ${this.location && this.location.route.name === "home" ? html`
-          ${this._items.map((item, index) => {
-          return html`
-            <article class="post ${index % 2 === 0 ? "even" : "odd"}">
-            <simple-tooltip for="v-${item.id}" position="${index % 2 === 0 ? "left" : "right"}">${item.title}</simple-tooltip>
-            <a tabindex="-1" href="${item.slug}" class="article-link-icon"><simple-icon-button-lite id="v-${item.id}" label="${item.title}" title="${item.title}" class="article" icon="${item.metadata.icon ? item.metadata.icon : "av:album"}"></simple-icon-button-lite></a>
-              <div class="article-wrap">
-                <h3>${item.title}</h3>
-                <div>
-                  <p>${item.description}</p>
-                </div>
-                ${this.getItemChildren(item.id).length > 0 ? html`
-                  <div class="child-pages-container">
-                    ${this.getItemChildren(item.id).map((child) => 
-                    html`
-                      <simple-tooltip for="v-${child.id}" position="bottom">${child.title}</simple-tooltip>
-                      <a id="v-${child.id}" href="${child.slug}" title="${child.title}" class="child-page-link">${child.metadata.image ? html`<img src="${child.metadata.image}" loading="lazy"
-                        decoding="async"
-                        fetchpriority="low" alt="${child.title}"/>` : html`<img 
-                          loading="lazy"
-                          decoding="async"
-                          fetchpriority="low"
-                          src="${this.manifest.metadata.author.image}"
-                          alt="${this.manifest.metadata.author.name}"
-                        />`}
-                      </a>
-                      `)}
-                  </div>` : ``}
-                <simple-cta link="${item.slug}" label="${this.t.readMore}"></simple-cta>
-              </div>
-            </article>
-          `;
-        })}` : ``}
+        ${
+          this.location && this.location.route.name === "home"
+            ? html` ${this._items.map((item, index) => {
+                return html`
+                  <article class="post ${index % 2 === 0 ? "even" : "odd"}">
+                    <simple-tooltip
+                      for="v-${item.id}"
+                      position="${index % 2 === 0 ? "left" : "right"}"
+                      >${item.title}</simple-tooltip
+                    >
+                    <a
+                      tabindex="-1"
+                      href="${item.slug}"
+                      class="article-link-icon"
+                      ><simple-icon-button-lite
+                        id="v-${item.id}"
+                        label="${item.title}"
+                        title="${item.title}"
+                        class="article"
+                        icon="${item.metadata.icon
+                          ? item.metadata.icon
+                          : "av:album"}"
+                      ></simple-icon-button-lite
+                    ></a>
+                    <div class="article-wrap">
+                      <h3>${item.title}</h3>
+                      <div>
+                        <p>${item.description}</p>
+                      </div>
+                      ${this.getItemChildren(item.id).length > 0
+                        ? html` <div class="child-pages-container">
+                            ${this.getItemChildren(item.id).map(
+                              (child) => html`
+                                <simple-tooltip
+                                  for="v-${child.id}"
+                                  position="bottom"
+                                  >${child.title}</simple-tooltip
+                                >
+                                <a
+                                  id="v-${child.id}"
+                                  href="${child.slug}"
+                                  title="${child.title}"
+                                  class="child-page-link"
+                                  >${child.metadata.image
+                                    ? html`<img
+                                        src="${child.metadata.image}"
+                                        loading="lazy"
+                                        decoding="async"
+                                        fetchpriority="low"
+                                        alt="${child.title}"
+                                      />`
+                                    : html`<img
+                                        loading="lazy"
+                                        decoding="async"
+                                        fetchpriority="low"
+                                        src="${this.manifest.metadata.author
+                                          .image}"
+                                        alt="${this.manifest.metadata.author
+                                          .name}"
+                                      />`}
+                                </a>
+                              `,
+                            )}
+                          </div>`
+                        : ``}
+                      <simple-cta
+                        link="${item.slug}"
+                        label="${this.t.readMore}"
+                      ></simple-cta>
+                    </div>
+                  </article>
+                `;
+              })}`
+            : ``
+        }
       </div>
       <article part="transitioncontent" class="${this.location && this.location.route.name === "home" ? "home" : "not-home"}">
-        ${this.location && this.location.route.name !== "home" ? html`
-        <site-breadcrumb></site-breadcrumb>
-        <site-active-title></site-active-title>
-        ` : ``}
+        ${
+          this.location && this.location.route.name !== "home"
+            ? html`
+                <site-breadcrumb></site-breadcrumb>
+                <site-active-title></site-active-title>
+              `
+            : ``
+        }
         <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
-        <div id="contentcontainer"><div id="slot">${this.location && this.location.route.name !== "home" ? html`<slot></slot>
-        <site-collection-list published="true" limit="0" sort="order" parent="${this.activeItem ? this.activeItem.id : null}"></site-collection-list>` : ``}</div></div>
+        <div id="contentcontainer"><div id="slot">${
+          this.location && this.location.route.name !== "home"
+            ? html`<slot></slot>
+                <site-collection-list
+                  published="true"
+                  limit="0"
+                  sort="order"
+                  parent="${this.activeItem ? this.activeItem.id : null}"
+                ></site-collection-list>`
+            : ``
+        }</div></div>
       </article>
     </main>
     <footer>
       <div class="author">
-        <div class="spacing"><a href="${this.basePath}" title="${this.t.home}">${this.manifest.metadata.author.image ? html`
-          <img 
-            class="author-image"
-            loading="lazy"
-            decoding="async"
-            fetchpriority="low"
-            src="${this.manifest.metadata.author.image}"
-            alt="${this.manifest.metadata.author.name}"
-          />`: ``}
+        <div class="spacing"><a href="${this.basePath}" title="${this.t.home}">${
+          this.manifest.metadata.author.image
+            ? html` <img
+                class="author-image"
+                loading="lazy"
+                decoding="async"
+                fetchpriority="low"
+                src="${this.manifest.metadata.author.image}"
+                alt="${this.manifest.metadata.author.name}"
+              />`
+            : ``
+        }
           </a>
           <div class="h1">${this.manifest.title}</div>
           <div class="h2">${this.manifest.description}</div class="h2">
           <div>
-              ${this.pageCurrent > 0 ? html`Page ${this.pageCurrent} of ${this.pageTotal}`: nothing} <br /><br />
+              ${this.pageCurrent > 0 ? html`Page ${this.pageCurrent} of ${this.pageTotal}` : nothing} <br /><br />
               Site generated: ${this.lastUpdated}<br><br>
               © ${this.copyrightYear} ${this.manifest.author}.
           </div>
@@ -847,23 +993,26 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
             xmlns:cc="${this.licenseLink}"
             xmlns:dc="http://purl.org/dc/elements/1.1/"
           >
-          ${this.licenseImage
-            ? html`
-                <a
-                  class="big-license-link"
-                  target="_blank"
-                  href="${this.licenseLink}"
-                  rel="noopener noreferrer"
+          ${
+            this.licenseImage
+              ? html`
+                  <a
+                    class="big-license-link"
+                    target="_blank"
+                    href="${this.licenseLink}"
+                    rel="noopener noreferrer"
                   >
-                  <img
-                    loading="lazy"
-                    decoding="async"
-                    fetchpriority="low"
-                    alt="${this.licenseName} graphic"
-                    src="${this.licenseImage}"
-                  />
-                </a>
-              ` : ``}
+                    <img
+                      loading="lazy"
+                      decoding="async"
+                      fetchpriority="low"
+                      alt="${this.licenseName} graphic"
+                      src="${this.licenseImage}"
+                    />
+                  </a>
+                `
+              : ``
+          }
           </div>
           <simple-icon-button-lite label="Change theme" title="Change theme" icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
           <scroll-button></scroll-button>
@@ -873,7 +1022,6 @@ class JourneyTheme extends (HAXCMSLitElementTheme) {
     </footer>
     `;
   }
-
 }
 globalThis.customElements.define(JourneyTheme.tag, JourneyTheme);
 export { JourneyTheme };
