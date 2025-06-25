@@ -83,12 +83,6 @@ export class GlossyPortfolioBreadcrumb extends DDDSuper(I18NMixin(LitElement)) {
       
         }
 
-        @media (max-width: 575.98px) {
-          :host{
-            --breadcrumb-font-size: 1rem;
-          }
-        }
- 
 
       `,
     ];
