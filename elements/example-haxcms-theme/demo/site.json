@@ -32,9 +32,9 @@
       "tags": ""
     },
     "theme": {
-      "element": "example-haxcms-theme",
-      "path": "@haxtheweb/example-haxcms-theme/example-haxcms-theme.js",
-      "name": "example-haxcms-theme",
+      "element": "journey-theme",
+      "path": "@haxtheweb/journey-theme/journey-theme.js",
+      "name": "journey-theme",
       "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg",
       "variables": {
         "image": "",
