@@ -2,7 +2,7 @@
  * Copyright 2025 btopro
  * @license Apache-2.0, see License.md for full text.
  */
-import { css, html} from "lit";
+import { css, html } from "lit";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -61,18 +61,18 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
-      :root {
-        --my-theme-low-tone: var(--ddd-theme-default-slateMaxLight);
-        --my-theme-high-tone: var(--ddd-theme-default-coalyGray);
-      }
-      body {
-        padding: var(--ddd-spacing-0);
-        margin: var(--ddd-spacing-0);
-        background-color: var(--my-theme-low-tone);
-      }
-      body.dark-mode {
-        background-color: var(--my-theme-high-tone);
-      }
+        :root {
+          --my-theme-low-tone: var(--ddd-theme-default-slateMaxLight);
+          --my-theme-high-tone: var(--ddd-theme-default-coalyGray);
+        }
+        body {
+          padding: var(--ddd-spacing-0);
+          margin: var(--ddd-spacing-0);
+          background-color: var(--my-theme-low-tone);
+        }
+        body.dark-mode {
+          background-color: var(--my-theme-high-tone);
+        }
       `,
     ];
   }
@@ -86,8 +86,14 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
           display: block;
           padding: var(--ddd-spacing-0) var(--ddd-spacing-10);
           min-width: 400px;
-          background-color: light-dark(var(--my-theme-low-tone), var(--my-theme-high-tone));
-          color: light-dark(var(--my-theme-high-tone), var(--my-theme-low-tone));
+          background-color: light-dark(
+            var(--my-theme-low-tone),
+            var(--my-theme-high-tone)
+          );
+          color: light-dark(
+            var(--my-theme-high-tone),
+            var(--my-theme-low-tone)
+          );
         }
 
         site-title {
@@ -137,14 +143,21 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
           text-align: start;
         }
 
-        ul li a:hover, ul li a:focus {
+        ul li a:hover,
+        ul li a:focus {
           text-decoration: underline;
           outline-color: var(--ddd-primary-21);
         }
 
         .active button {
-          background-color: light-dark(var(--my-theme-low-tone), var(--my-theme-high-tone));
-          color: light-dark(var(--my-theme-high-tone), var(--my-theme-low-tone));
+          background-color: light-dark(
+            var(--my-theme-low-tone),
+            var(--my-theme-high-tone)
+          );
+          color: light-dark(
+            var(--my-theme-high-tone),
+            var(--my-theme-low-tone)
+          );
           font-weight: bold;
         }
         main {
@@ -156,28 +169,28 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
 
   render() {
     return html`
-    <nav>
-      <ul>
-      ${this._items.map((item, index) => {
-      return html`
-        <li class="${item.id === this.activeId ? "active" : ""}">
-          <a href="${item.slug}">${item.title}</a>
-        </li>
-      `;
-      }
-      )}
-      </ul>
-    </nav>
-    <main>
-      <site-active-title></site-active-title>
-      <article>
-        <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
-        <div id="contentcontainer"><div id="slot"><slot></slot></div></div>
-      </article>
-    </main>
+      <nav>
+        <ul>
+          ${this._items.map((item, index) => {
+            return html`
+              <li class="${item.id === this.activeId ? "active" : ""}">
+                <a href="${item.slug}">${item.title}</a>
+              </li>
+            `;
+          })}
+        </ul>
+      </nav>
+      <main>
+        <site-active-title></site-active-title>
+        <article>
+          <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
+          <div id="contentcontainer">
+            <div id="slot"><slot></slot></div>
+          </div>
+        </article>
+      </main>
     `;
   }
-
 }
 globalThis.customElements.define(JourneySidebarTheme.tag, JourneySidebarTheme);
 export { JourneySidebarTheme };
