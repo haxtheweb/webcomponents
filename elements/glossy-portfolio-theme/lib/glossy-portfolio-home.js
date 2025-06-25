@@ -30,7 +30,7 @@ export class GlossyPortfolioHome extends DDDSuper(I18NMixin(LitElement)) {
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
-      this.backgroundImage = toJS(store.themeData.variables.image) || "https://preview.redd.it/ppbbhgt5xof71.jpg?width=1080&crop=smart&auto=webp&s=4e51c19ae4ece47b329052b99b48494bd86954aa";
+      this.backgroundImage = toJS(store.themeData.variables.image);
       this.__disposer.push(reaction);
     });
   }
