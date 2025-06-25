@@ -8,6 +8,8 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 import "./journey-menu.js";
+// import "./journey-scroll-top.js";
+import "@haxtheweb/scroll-button/scroll-button.js";
 
 /**
  * `JourneySidebarTheme`
@@ -166,24 +168,18 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
         main {
           margin-left: 332px;
         }
+        scroll-button {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          z-index: 1000;
+        }
       `,
     ];
   }
 
   render() {
     return html`
-      <!-- <nav>
-        <ul>
-          ${this._items.map((item, index) => {
-        return html`
-          <li class="${item.id === this.activeId ? "active" : ""}">
-            <a href="${item.slug}">${item.title}</a>
-          </li>
-        `;
-      })}
-        </ul>
-      </nav> -->
-
       <journey-menu .items="${this._items}" .activeID="${this.activeId}">
       </journey-menu>
 
@@ -196,6 +192,7 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
           </div>
         </article>
       </main>
+      <scroll-button></scroll-button>
     `;
   }
 }
