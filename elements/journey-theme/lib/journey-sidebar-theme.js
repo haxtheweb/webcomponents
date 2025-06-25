@@ -7,6 +7,7 @@ import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCM
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import "./journey-menu.js";
 
 /**
  * `JourneySidebarTheme`
@@ -84,7 +85,9 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
       css`
         :host {
           display: block;
-          padding: var(--ddd-spacing-0) var(--ddd-spacing-10);
+          /* padding: var(--ddd-spacing-0) var(--ddd-spacing-10); */
+          margin: 0;
+          padding: 0;
           min-width: 400px;
           background-color: light-dark(
             var(--my-theme-low-tone),
@@ -169,17 +172,21 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
 
   render() {
     return html`
-      <nav>
+      <!-- <nav>
         <ul>
           ${this._items.map((item, index) => {
-            return html`
-              <li class="${item.id === this.activeId ? "active" : ""}">
-                <a href="${item.slug}">${item.title}</a>
-              </li>
-            `;
-          })}
+        return html`
+          <li class="${item.id === this.activeId ? "active" : ""}">
+            <a href="${item.slug}">${item.title}</a>
+          </li>
+        `;
+      })}
         </ul>
-      </nav>
+      </nav> -->
+
+      <journey-menu .items="${this._items}" .activeID="${this.activeId}">
+      </journey-menu>
+
       <main>
         <site-active-title></site-active-title>
         <article>

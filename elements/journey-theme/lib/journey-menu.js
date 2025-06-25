@@ -55,16 +55,21 @@ class JourneyMenu extends LitElement {
   }
 
   render() {
+    let menuItems = [];
+
+    if (Array.isArray(this.items)) {
+      menuItems = this.items;
+    }
+
     return html`
       <nav>
         <ul>
-          ${Array.isArray(this.items) &&
-          this.items.map(
+          ${menuItems.map(
             (item) => html`
               <li>
                 <a
                   href="${item.slug}"
-                  class="${item.id === this.activeId ? "active" : ""}"
+                  class="${item.id === this.activeID ? "active" : ""}"
                 >
                   ${item.title}
                 </a>
@@ -73,6 +78,14 @@ class JourneyMenu extends LitElement {
           )}
         </ul>
       </nav>
+
+      <!-- <nav>
+        <ul>
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav> -->
     `;
   }
 }
