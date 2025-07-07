@@ -43,16 +43,16 @@
   "dependencies": {
     "@haxtheweb/es-global-bridge": "^11.0.0",
     "@haxtheweb/utils": "^11.0.0",
-    "@polymer/iron-ajax": "^3.0.0",
+    "@polymer/iron-ajax": "3.0.1",
     "chartist": "^0.11.0",
     "chartist-plugin-accessibility": "0.0.5",
     "chartist-plugin-axistitle": "^0.0.7",
     "chartist-plugin-fill-donut": "^0.1.4",
     "chartist-plugin-pointlabels": "0.0.6",
-    "lit": "^3.3.0"
+    "lit": "3.3.0"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/deduping-fix": "^11.0.0",
     "@haxtheweb/storybook-utilities": "^11.0.5",
     "@open-wc/testing": "4.0.0",

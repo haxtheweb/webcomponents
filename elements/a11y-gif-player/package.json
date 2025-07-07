@@ -43,10 +43,10 @@
     "@haxtheweb/micro-frontend-registry": "^11.0.0",
     "@haxtheweb/schema-behaviors": "^11.0.5",
     "@haxtheweb/simple-tooltip": "^11.0.0",
-    "lit": "^3.3.0"
+    "lit": "3.3.0"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/deduping-fix": "^11.0.0",
     "@haxtheweb/simple-img": "^11.0.0",
     "@haxtheweb/storybook-utilities": "^11.0.5",

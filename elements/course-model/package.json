@@ -44,10 +44,10 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@google/model-viewer": "3.2.1",
-    "lit": "^3.3.0"
+    "lit": "3.3.0"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/deduping-fix": "^11.0.0",
     "@haxtheweb/media-image": "^11.0.5",
     "@haxtheweb/video-player": "^11.0.5",

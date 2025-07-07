@@ -42,16 +42,16 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/hax-iconset": "^11.0.0",
-    "@haxtheweb/simple-icon": "^11.0.0",
+    "@haxtheweb/simple-icon": "^11.0.5",
     "@polymer/iron-selector": "^3.0.0",
-    "@polymer/paper-progress": "^3.0.0",
+    "@polymer/paper-progress": "3.0.1",
     "@polymer/paper-styles": "^3.0.0",
-    "@polymer/polymer": "^3.5.1"
+    "@polymer/polymer": "3.5.2"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/deduping-fix": "^11.0.0",
-    "@haxtheweb/storybook-utilities": "^11.0.0",
+    "@haxtheweb/storybook-utilities": "^11.0.5",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@polymer/iron-demo-helpers": "3.1.0",

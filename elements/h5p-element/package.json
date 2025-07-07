@@ -43,10 +43,10 @@
   "dependencies": {
     "@haxtheweb/es-global-bridge": "^11.0.0",
     "@haxtheweb/haxcms-elements": "^11.0.5",
-    "lit": "^3.3.0"
+    "lit": "3.3.0"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/deduping-fix": "^11.0.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

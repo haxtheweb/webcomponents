@@ -47,10 +47,10 @@
     "@haxtheweb/hax-iconset": "^11.0.0",
     "@haxtheweb/simple-colors": "^11.0.5",
     "@haxtheweb/simple-icon": "^11.0.5",
-    "lit": "^3.3.0"
+    "lit": "3.3.0"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/d-d-docs": "^11.0.5",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",

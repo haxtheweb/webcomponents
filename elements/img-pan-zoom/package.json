@@ -43,11 +43,11 @@
   "dependencies": {
     "@haxtheweb/es-global-bridge": "^11.0.0",
     "@haxtheweb/hexagon-loader": "^11.0.5",
-    "@polymer/paper-spinner": "^3.0.0",
-    "@polymer/polymer": "^3.5.1"
+    "@polymer/paper-spinner": "3.0.2",
+    "@polymer/polymer": "3.5.2"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/deduping-fix": "^11.0.0",
     "@haxtheweb/storybook-utilities": "^11.0.5",
     "@open-wc/testing": "4.0.0",

@@ -41,7 +41,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/chartist-render": "^11.0.5",
     "@haxtheweb/deduping-fix": "^11.0.0",
     "@haxtheweb/multiple-choice": "^11.0.5",
