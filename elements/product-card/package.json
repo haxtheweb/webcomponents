@@ -46,10 +46,10 @@
     "@haxtheweb/grid-plate": "^11.0.5",
     "@haxtheweb/simple-colors": "^11.0.5",
     "@haxtheweb/utils": "^11.0.0",
-    "lit": "^3.3.0"
+    "lit": "3.3.0"
   },
   "devDependencies": {
-    "@custom-elements-manifest/analyzer": "^0.10.4",
+    "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/a11y-gif-player": "^11.0.5",
     "@haxtheweb/citation-element": "^11.0.5",
     "@haxtheweb/deduping-fix": "^11.0.0",

@@ -6,13 +6,13 @@
   },
   "dependencies": {
     "patch-package": "^8.0.0",
-    "lit-html": "^3.3.0",
+    "lit-html": "3.3.0",
     "@lit-labs/ssr": "^3.3.1",
-    "lit": "^3.3.0",
+    "lit": "3.3.0",
     "node-html-parser": "^6.1.13",
-    "@haxtheweb/course-design": "^10.0.2",
-    "@haxtheweb/lrn-math": "^10.0.2",
-    "@haxtheweb/media-image": "^10.0.2",
-    "@haxtheweb/video-player": "^10.0.2"
+    "@haxtheweb/course-design": "^11.0.5",
+    "@haxtheweb/lrn-math": "^11.0.5",
+    "@haxtheweb/media-image": "^11.0.5",
+    "@haxtheweb/video-player": "^11.0.5"
   }
 }
