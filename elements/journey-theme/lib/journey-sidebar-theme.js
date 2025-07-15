@@ -10,6 +10,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tit
 import "./journey-menu.js";
 // import "./journey-scroll-top.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
+import { JourneySidebarThemeStyles } from "./journey-sidebar-theme-styles.js"; // custom styles for this theme
 
 /**
  * `JourneySidebarTheme`
@@ -65,8 +66,8 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
         :root {
-          --my-theme-low-tone: var(--ddd-theme-default-slateMaxLight);
-          --my-theme-high-tone: var(--ddd-theme-default-coalyGray);
+          --my-theme-low-tone: var(--ddd-theme-default-coalyGray);
+          --my-theme-high-tone: var(--ddd-theme-default-coalyDark);
         }
         body {
           padding: var(--ddd-spacing-0);
@@ -84,11 +85,13 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
   static get styles() {
     return [
       super.styles,
-      css`
-        :host {
-          display: block;
-          /* padding: var(--ddd-spacing-0) var(--ddd-spacing-10); */
-          margin: 0;
+      JourneySidebarThemeStyles,
+      // css`
+      /* :host { */
+      /* original theme styles */
+      /* display: block; */
+      /* padding: var(--ddd-spacing-0) var(--ddd-spacing-10); */
+      /* margin: 0;
           padding: 0;
           min-width: 400px;
           background-color: light-dark(
@@ -99,16 +102,31 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
             var(--my-theme-high-tone),
             var(--my-theme-low-tone)
           );
+        } */
+
+      /* new theme styles */
+      /*sidebar with dark blue background and white text*/
+      /* --sidebar-bg: var(--ddd-primary-21);
+          --content-bg: var(--ddd-primary-0);
+          --text-heading: var(--ddd-primary-7);
+          --text-body: var(--ddd-primary-5);
+          --accent-color: var(--ddd-primary-9);
+
+          background-color: var(--content-bg);
+          color: var(--text-body);
+          font-family: "Inter", sans-serif;
         }
 
         site-title {
           font-size: var(--ddd-font-size-l);
-        }
+        } */
 
-        header {
+      /*original stuff
+        /* header {
           display: flex;
-        }
-        nav {
+        } */
+
+      /* nav {
           display: flex;
           justify-content: center;
           align-items: center;
@@ -146,15 +164,15 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
           text-overflow: ellipsis;
           overflow: hidden;
           text-align: start;
-        }
+        } */
 
-        ul li a:hover,
+      /* ul li a:hover,
         ul li a:focus {
           text-decoration: underline;
           outline-color: var(--ddd-primary-21);
-        }
+        } */
 
-        .active button {
+      /* .active button {
           background-color: light-dark(
             var(--my-theme-low-tone),
             var(--my-theme-high-tone)
@@ -164,23 +182,82 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
             var(--my-theme-low-tone)
           );
           font-weight: bold;
+        } */
+
+      /* main {
+          margin-left: 332px;
+        } */
+
+      /* new stuff for nav, ul and main*/
+      /* nav {
+          background-color: var(--sidebar-bg);
         }
+
+        ul li a {
+          color: var(--text-body);
+          font-size: var(--ddd-font-size-m);
+        }
+
+        ul li a:hover,
+        ul li a:focus {
+          color: var(--accent-color);
+        }
+
+        site-active-title {
+          display: block;
+          font-size: var(--ddd-font-size-xl);
+          font-weight: bold;
+          color: var(--accent-color);
+          border-bottom: 3px solid var(--accent-color);
+          padding-bottom: var(--ddd-spacing-2);
+          margin: var(--ddd-spacing-6) 0;
+        }
+
+        site-active-title h1 {
+          margin: 0;
+        } */
+
+      /* site-active-title h2 {
+          display: block;
+          font-size: var(--ddd-font-size-m);
+          color: var(--text-body);
+          margin-top: var(--ddd-spacing-1);
+        }
+
         main {
           margin-left: 332px;
+          background-color: var(--content-bg);
+          color: var(--text-body);
+          padding: var(--ddd-spacing-6);
         }
+        main p,
+        main li {
+          font-size: var(--ddd-font-size-m);
+          line-height: 1.6;
+        }
+
+        main a {
+          color: var(--accent-color);
+          text-decoration: none;
+        }
+
+        main a:hover {
+          text-decoration: underline;
+        }
+
         scroll-button {
           position: fixed;
           bottom: 20px;
           right: 20px;
-          z-index: 1000;
-        }
-      `,
+          z-index: 1000; */
+      /* } */
+      // `,
     ];
   }
 
   render() {
     return html`
-      <journey-menu .items="${this._items}" .activeID="${this.activeId}">
+      <journey-menu .items="${this._items}" .activeId="${this.activeId}">
       </journey-menu>
 
       <main>
