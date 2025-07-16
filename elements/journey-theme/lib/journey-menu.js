@@ -1,6 +1,4 @@
 import { LitElement, html, css, unsafeCSS } from "lit";
-// const SB_bg = new URL("./assets/sidebar_bg.png", import.meta.url).href;
-
 export class JourneyMenu extends LitElement {
   static get tag() {
     return "journey-menu";
