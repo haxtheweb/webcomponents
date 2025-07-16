@@ -1,10 +1,12 @@
-import { css } from "lit";
+import { css, unsafeCSS } from "lit";
+// const Sidebar_bg_image = new URL("./assets/sidebar_bg.png", import.meta.url)
+// .href;
 export const JourneySidebarThemeStyles = css`
   :host {
     --sidebar-bg: var(--ddd-theme-accent);
-    --content-bg: var(--ddd-theme-default-coalyGray);
+    --content-bg: var(--ddd-theme-default-white);
     --text-heading: var(--ddd-theme-deault-nittanyNavy);
-    --text-body: var(--ddd-theme-default-coalyDark);
+    --text-body: var(--ddd-theme-default-nittanyNavy);
     --accent-color: var(--ddd-theme-primary-9);
     font-family: var(--ddd-font-body, sans-serif);
     background-color: var(--content-bg);
@@ -12,24 +14,23 @@ export const JourneySidebarThemeStyles = css`
 
   nav {
     position: fixed;
-    top: 0;
+    top: 0px;
     bottom: 0;
     left: 0;
+    overflow-y: auto;
     width: 250px;
     padding: var(--ddd-spacing-4);
     z-index: 1000;
-    background-image: url("../assets/blurry-gradient-haikei.jpg");
+
+    background: var(--ddd-theme-default-gradient-footer);
     background-size: cover;
     background-position: center;
-    border-right: 2px solid var(--text-primary);
   }
 
   ul {
     list-style: none;
     padding: var(--ddd-spacing-2);
     margin: 0;
-    /* display: flex;
-    flex-direction: column; */
   }
 
   ul li a {
@@ -37,7 +38,6 @@ export const JourneySidebarThemeStyles = css`
     padding: var(--ddd-spacing-2) 0;
     color: var(--text-primary);
     text-decoration: none;
-    font-size: var(--ddd-font-size-m);
     transition: color 0.2s ease;
   }
 
@@ -62,7 +62,7 @@ export const JourneySidebarThemeStyles = css`
 
   main {
     margin-left: 340px;
-    padding: var(--ddd-spacing-6);
+    padding: var(--ddd-spacing-8);
     background-color: var(--content-bg);
     color: var(--text-body);
     min-height: 100vh;

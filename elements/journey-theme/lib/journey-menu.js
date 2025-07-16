@@ -1,6 +1,7 @@
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, unsafeCSS } from "lit";
+// const SB_bg = new URL("./assets/sidebar_bg.png", import.meta.url).href;
 
-class JourneyMenu extends LitElement {
+export class JourneyMenu extends LitElement {
   static get tag() {
     return "journey-menu";
   }
@@ -14,15 +15,17 @@ class JourneyMenu extends LitElement {
   static get styles() {
     return css`
       nav {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 300px;
         position: fixed;
-        top: 0;
+        top: 35px;
         bottom: 0;
+        left: 0;
+        width: 308px;
+        text-align: left;
+        overflow-y: auto;
         padding: var(--ddd-spacing-4);
-        background-color: var(--ddd-primary-3);
+        background: var(--ddd-theme-default-gradient-footer);
+        background-size: cover;
+        background-position: center;
       }
 
       ul {
@@ -37,7 +40,7 @@ class JourneyMenu extends LitElement {
         display: block;
         text-decoration: none;
         color: white;
-        font-size: var(--ddd-font-size-m);
+        font-size: var(--ddd-font-size-s);
         margin: 20px 0;
         cursor: pointer;
       }
