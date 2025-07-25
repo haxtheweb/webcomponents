@@ -126,12 +126,9 @@ class TrainingTheme extends HAXCMSOperationButtons(
           border: 1px solid #dadce0;
           border-radius: 5px;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-          background-color: #f8f9fa;
           -webkit-font-smoothing: antialiased;
           text-size-adjust: 100%;
-          color: #4e5256;
           font-family: var(--devsite-primary-font-family);
-          background: #f8f9fa;
         }
 
         site-active-title h1 {
@@ -214,7 +211,6 @@ class TrainingTheme extends HAXCMSOperationButtons(
             --haxcms-color,
             var(--ddd-theme-default-wonderPurple)
           );
-          color: #242a31;
           border: 1px solid #e6ecf1;
           margin: 0;
           display: block;
@@ -229,7 +225,6 @@ class TrainingTheme extends HAXCMSOperationButtons(
           border-radius: 3px;
           flex-direction: row;
           text-decoration: none;
-          background-color: #ffffff;
           -webkit-box-align: center;
           page-break-inside: avoid;
           -ms-grid-row-align: stretch;
@@ -244,10 +239,8 @@ class TrainingTheme extends HAXCMSOperationButtons(
           margin-left: -66px;
           padding: 0;
           --github-corner-size: 40px;
-          --site-git-corner-color: black;
           --site-git-corner-background: transparent;
           background-color: transparent;
-          color: black;
           padding: 8px;
           display: block;
           float: unset;
@@ -257,7 +250,6 @@ class TrainingTheme extends HAXCMSOperationButtons(
         .pdf-page-btn simple-icon-button-lite {
           --simple-icon-height: 24px;
           --simple-icon-width: 24px;
-          color: black;
           padding: 8px;
           display: block;
           width: 36px;
@@ -288,10 +280,6 @@ class TrainingTheme extends HAXCMSOperationButtons(
           font-size: 12px;
           font-weight: 400;
           line-height: 1.625;
-          color: #444444;
-        }
-        simple-datetime {
-          color: #444444;
         }
         site-menu-button div .bottom {
           font-size: 16px;
