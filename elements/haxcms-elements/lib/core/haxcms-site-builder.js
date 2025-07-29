@@ -526,8 +526,12 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       this._triggerUpdatedNode.bind(this),
       { signal: this.windowControllers.signal },
     );
-
-    window
+    // in-case we miss the initial state as opposed to a change event
+    if (globalThis.matchMedia("(prefers-color-scheme: dark)").matches) {
+      store.darkMode = true;
+    }
+    // change is if platform / browser preference changes while using
+    globalThis
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", darkToggle, {
         signal: this.windowControllers.signal,
