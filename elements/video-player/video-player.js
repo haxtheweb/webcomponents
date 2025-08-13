@@ -285,6 +285,18 @@ class VideoPlayer extends IntersectionObserverMixin(
             description: "Provides a link to share the video.",
             inputMethod: "boolean",
           },
+          {
+            property: "hideTimestamps",
+            title: "Hide timestamps",
+            description: "Hide the time stamps on the transcript.",
+            inputMethod: "boolean",
+          },
+          {
+            property: "hideTranscript",
+            title: "Hide Transcript",
+            description: "Hide transcript by default.",
+            inputMethod: "boolean",
+          },
         ],
         developer: [
           {
@@ -316,18 +328,6 @@ class VideoPlayer extends IntersectionObserverMixin(
             title: "Disable Interactive",
             description:
               "Disable interactive mode that makes transcript clickable.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "hideTimestamps",
-            title: "Hide timestamps",
-            description: "Hide the time stamps on the transcript.",
-            inputMethod: "boolean",
-          },
-          {
-            property: "hideTranscript",
-            title: "Hide Transcript",
-            description: "Hide transcript by default.",
             inputMethod: "boolean",
           },
           {
