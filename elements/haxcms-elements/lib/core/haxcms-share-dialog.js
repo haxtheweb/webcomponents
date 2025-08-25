@@ -1,42 +1,78 @@
 import { LitElement, html, css } from "lit";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import "@haxtheweb/code-sample/code-sample.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
- * `haxcms-outline-editor-dialog`
- * `Dialog for presenting an editable outline`
+ * `haxcms-share-dialog`
+ * `Dialog for sharing site content with links and embed codes`
  *
  * @demo demo/index.html
  *
  * @microcopy - the mental model for this element
  */
-class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
+class HAXCMSShareDialog extends HAXCMSI18NMixin(DDDSuper(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      super.styles,
       css`
         :host {
           display: block;
           overflow: auto;
+          padding: var(--d-d-d-spacing-4);
         }
-        .buttons {
-          position: absolute;
-          bottom: 0;
-          z-index: 1000000;
-          background-color: var(--simple-modal-titlebar-background, #000000);
-          color: var(--simple-modal-titlebar-color, #ffffff);
-          left: 0;
-          right: 0;
+        
+        .field-group {
+          margin-bottom: var(--d-d-d-spacing-6);
         }
-        .buttons button {
-          color: black;
-          background-color: white;
+        
+        .field-group:last-child {
+          margin-bottom: 0;
         }
-        simple-icon {
-          margin-right: 4px;
+        
+        label {
+          display: block;
+          margin-bottom: var(--d-d-d-spacing-2);
+          font-size: var(--d-d-d-font-size-l);
+          font-weight: var(--d-d-d-font-weight-medium);
+          color: var(--d-d-d-color-text-primary);
+        }
+        
+        input {
+          font-size: var(--d-d-d-font-size-m);
+          padding: var(--d-d-d-spacing-3);
+          border: 2px solid var(--d-d-d-color-border);
+          border-radius: var(--d-d-d-border-radius-s);
+          width: 100%;
+          box-sizing: border-box;
+          transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        input[readonly] {
+          background-color: var(--d-d-d-color-surface-2);
+          cursor: text;
+          font-family: var(--d-d-d-font-family-mono);
+          font-size: var(--d-d-d-font-size-s);
+        }
+        
+        input:focus {
+          outline: none;
+          border-color: var(--d-d-d-color-primary);
+          box-shadow: 0 0 0 3px var(--d-d-d-color-primary-alpha-20);
+        }
+        
+        #link {
+          min-width: 600px;
+          overflow: auto;
+        }
+        
+        code-sample {
+          margin-top: var(--d-d-d-spacing-2);
+          font-size: var(--d-d-d-font-size-m);
         }
       `,
     ];
@@ -50,89 +86,67 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   // render function
   render() {
     return html`
-      <form>
-        <label for="access">Who are you sharing with?</label>
-        <select @change="${this.calculateShareCode}" name="access" id="access">
-          <option value="oer">Open to anyone</option>
-          <option value="courses">Account required to view</option>
-          <option value="iam">Editor rights required</option>
-        </select>
-        <details>
-          <summary>Disable features</summary>
-          <div>
-            ${[
-              "left-col",
-              "right-col",
-              "search",
-              "breadcrumb",
-              "print",
-              "rss",
-              "git-link",
-              "footer",
-              "qr-code",
-            ].map(
-              (item) => html`
-                <input
-                  type="checkbox"
-                  name="disable-features"
-                  id="${item}"
-                  value="${item}"
-                  @change="${this.calculateShareCode}"
-                /><label for="${item}">${item.replace("-", " ")}</label><br />
-              `,
-            )}
-          </div>
-        </details>
-        <label for="link">Link</label
-        ><input type="text" id="link" value="${this.link}" size="125" /><br />
-        <label for="iframe">Embed</label>
-        <code-sample
-          type="html"
-          copy-clipboard-button
-          id="iframe"
-        ></code-sample>
-        <label for="height">Embed height</label>
-        <input
-          id="height"
-          type="text"
-          name="height"
-          value="600px"
-          @input="${this.calculateShareCode}"
-        />
-      </form>
+      <div>
+        <div class="field-group">
+          <label for="link">Share Link</label>
+          <input 
+            type="text" 
+            id="link" 
+            value="${this.link}" 
+            readonly
+            title="Click to select all"
+          />
+        </div>
+        
+        <div class="field-group">
+          <label for="iframe">Embed Code</label>
+          <code-sample
+            type="html"
+            copy-clipboard-button
+            id="iframe"
+          ></code-sample>
+        </div>
+        
+        <div class="field-group">
+          <label for="height">Embed Height</label>
+          <input
+            id="height"
+            type="text"
+            name="height"
+            value="600px"
+            @input="${this.calculateShareCode}"
+            placeholder="e.g., 600px, 50vh, 400px"
+          />
+        </div>
+      </div>
     `;
   }
 
   // generate the share
   calculateShareCode() {
-    const formData = new FormData(this.shadowRoot.querySelector("form"));
-    let form = {};
-    for (var pair of formData.entries()) {
-      if (form[pair[0]]) {
-        form[pair[0]] += `,${pair[1]}`;
-      } else {
-        form[pair[0]] = pair[1];
-      }
-    }
-    this.link = `${globalThis.location.href.replace(
-      "iam.",
-      `${form.access}.`,
-    )}${
-      form["disable-features"]
-        ? `?disable-features=${form["disable-features"]}`
-        : ``
-    }`;
+    // Get the height value from the input field
+    const heightInput = this.shadowRoot.querySelector("#height");
+    const height = heightInput ? heightInput.value : "600px";
+    
+    // Use current URL as the share link
+    this.link = globalThis.location.href;
+    
+    // Generate the embed code
     var shareCode = `<template>
       <iframe
         src="${this.link}"
-        height="${form.height}"
+        height="${height}"
         width="100%"
         frameborder="0"
         allow="autoplay; encrypted-media; fullscreen; picture-in-picture"
       ></iframe>
     </template>`;
-    this.shadowRoot.querySelector("code-sample").innerHTML = shareCode;
-    this.shadowRoot.querySelector("code-sample")._updateContent();
+    
+    const codeElement = this.shadowRoot.querySelector("code-sample");
+    if (codeElement) {
+      codeElement.innerHTML = shareCode;
+      codeElement._updateContent();
+    }
   }
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
