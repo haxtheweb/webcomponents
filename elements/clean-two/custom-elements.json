@@ -176,10 +176,6 @@
               "package": "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js"
             },
             {
-              "name": "EmailPageMixin",
-              "package": "@haxtheweb/haxcms-elements/lib/core/utils/EmailPageMixin.js"
-            },
-            {
               "name": "PDFPageMixin",
               "package": "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js"
             },

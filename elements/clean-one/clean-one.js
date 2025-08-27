@@ -7,7 +7,6 @@ import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCM
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { HAXCMSRememberRoute } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { QRCodeMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMixin.js";
-import { EmailPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/EmailPageMixin.js";
 import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -36,12 +35,10 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 class CleanOne extends LTIResizingMixin(
   PrintBranchMixin(
     PDFPageMixin(
-      EmailPageMixin(
-        QRCodeMixin(
-          HAXCMSThemeParts(
-            HAXCMSMobileMenuMixin(
-              HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
-            ),
+      QRCodeMixin(
+        HAXCMSThemeParts(
+          HAXCMSMobileMenuMixin(
+            HAXCMSRememberRoute(DDDSuper(HAXCMSLitElementTheme)),
           ),
         ),
       ),
@@ -653,7 +650,7 @@ class CleanOne extends LTIResizingMixin(
                     : ``}
                 </div>
                 <div class="pull-right">
-                  ${this.EmailPageButton()} ${this.QRCodeButton()}
+                  ${this.QRCodeButton()}
                   <site-rss-button
                     type="rss"
                     class="btn js-toolbar-action"

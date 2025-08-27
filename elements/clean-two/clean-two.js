@@ -7,7 +7,6 @@ import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCM
 import { HAXCMSRememberRoute } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
-import { EmailPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/EmailPageMixin.js";
 import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js";
 import { QRCodeMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMixin.js";
 import { HAXCMSMobileMenuMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSMobileMenu.js";
@@ -39,13 +38,11 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 class CleanTwo extends LTIResizingMixin(
   HAXCMSOperationButtons(
     HAXCMSRememberRoute(
-      EmailPageMixin(
-        PDFPageMixin(
-          PrintBranchMixin(
-            QRCodeMixin(
-              HAXCMSThemeParts(
-                HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
-              ),
+      PDFPageMixin(
+        PrintBranchMixin(
+          QRCodeMixin(
+            HAXCMSThemeParts(
+              HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
             ),
           ),
         ),
@@ -708,7 +705,7 @@ class CleanTwo extends LTIResizingMixin(
                     import-method="view"
                     part="print-btn"
                   ></replace-tag>`}
-              ${this.EmailPageButton("right")} ${this.QRCodeButton("right")}
+              ${this.QRCodeButton("right")}
               <replace-tag
                 with="site-rss-button"
                 type="rss"

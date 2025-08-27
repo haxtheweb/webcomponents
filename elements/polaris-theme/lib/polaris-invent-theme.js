@@ -11,7 +11,6 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { HAXCMSRememberRoute } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSRememberRoute.js";
 import { QRCodeMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMixin.js";
-import { EmailPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/EmailPageMixin.js";
 import { PrintBranchMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PrintBranchMixin.js";
 import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js";
 import "@haxtheweb/scroll-button/scroll-button.js";
@@ -40,13 +39,11 @@ import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIR
 class PolarisInventTheme extends LTIResizingMixin(
   HAXCMSOperationButtons(
     HAXCMSRememberRoute(
-      EmailPageMixin(
-        PDFPageMixin(
-          PrintBranchMixin(
-            QRCodeMixin(
-              HAXCMSThemeParts(
-                HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
-              ),
+      PDFPageMixin(
+        PrintBranchMixin(
+          QRCodeMixin(
+            HAXCMSThemeParts(
+              HAXCMSMobileMenuMixin(DDDSuper(HAXCMSLitElementTheme)),
             ),
           ),
         ),
@@ -571,7 +568,7 @@ class PolarisInventTheme extends LTIResizingMixin(
                 import-method="view"
                 part="print-btn"
               ></replace-tag>`}
-          ${this.QRCodeButton("right")} ${this.EmailPageButton("right")}
+          ${this.QRCodeButton("right")}
           <div class="left-col ddd-font-navigation" part="left-col">
             ${this.HAXCMSMobileMenu()}
           </div>

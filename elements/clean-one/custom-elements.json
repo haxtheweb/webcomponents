@@ -98,10 +98,6 @@
               "package": "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageMixin.js"
             },
             {
-              "name": "EmailPageMixin",
-              "package": "@haxtheweb/haxcms-elements/lib/core/utils/EmailPageMixin.js"
-            },
-            {
               "name": "QRCodeMixin",
               "package": "@haxtheweb/haxcms-elements/lib/core/utils/QRCodeMixin.js"
             },
