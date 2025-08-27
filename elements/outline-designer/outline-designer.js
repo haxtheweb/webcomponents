@@ -42,14 +42,23 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         .controls {
           position: sticky;
           top: -32px;
-          background-color: light-dark(white, #262626);
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
           z-index: 1;
-          padding: 16px 0 8px 0;
+          padding: var(--ddd-spacing-4) 0 var(--ddd-spacing-2) 0;
+          border-bottom: var(--ddd-border-xs);
+          border-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-primary-5));
         }
         .controls .control {
-          border: 1px solid black;
-          border-radius: 0;
-          padding: 4px;
+          border: var(--ddd-border-xs);
+          border-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-1);
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+        }
+        .controls .control:hover {
+          background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-primary-5));
+          border-color: light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
         }
         simple-popover {
           --simple-popover-max-height: 300px;
@@ -62,8 +71,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         }
         .close-btn {
           z-index: 1000;
-          background-color: white;
-          border: 0px;
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          border: var(--ddd-border-xs);
+          border-color: light-dark(var(--ddd-primary-5), var(--ddd-accent-5));
           border-radius: 50%;
           position: absolute;
           top: 24px;
@@ -91,10 +102,17 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           display: inline-flex;
           --simple-icon-width: 24px;
           --simple-icon-height: 24px;
-          margin: 0 4px;
-          border: 1px solid black;
-          border-radius: 0;
-          padding: 4px;
+          margin: 0 var(--ddd-spacing-1);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-1);
+          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+        }
+        .content-adding-operations .operation:hover {
+          background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-primary-5));
+          border-color: light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
         }
         .lock {
           margin-right: 16px !important;
@@ -125,7 +143,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           justify-content: space-evenly;
           display: flex;
         }
-        li.content-child:hover .content-operation {
+        li.content-child:hover .content-operation,
+        li.content-child:focus-within .content-operation {
           visibility: visible;
           opacity: 1;
         }
@@ -157,10 +176,11 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           z-index: -1;
         }
         li simple-icon-button:hover {
-          background-color: #f5f5f5;
+          background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-primary-5));
         }
         .active-preview-item {
-          outline: 1px solid grey;
+          outline: var(--ddd-border-xs);
+          outline-color: light-dark(var(--ddd-primary-5), var(--ddd-accent-5));
           outline-offset: -1px;
         }
         .label,
@@ -175,9 +195,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           display: inline-block;
         }
         .outline-designer-hovered {
-          outline: 2px solid black;
+          outline: var(--ddd-border-sm);
+          outline-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           outline-offset: -1px;
-          background-color: #e5e5e5;
+          background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-primary-5));
         }
         .make-child-btn {
           transition: 0.3s all ease-in-out;
@@ -193,14 +214,15 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         }
         .modified .label::after {
           content: "*";
-          color: red;
+          color: light-dark(var(--ddd-primary-22), var(--ddd-primary-12));
           font-size: 20px;
           line-height: 20px;
         }
         .new {
           --simple-icon-width: 16px;
           --simple-icon-height: 16px;
-          background-color: black;
+          background-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
           display: block;
           margin: -14px 0 0 4px;
         }
@@ -209,10 +231,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         }
         .item {
           display: -webkit-box;
-          border: 1px solid;
-          border-color: grey;
+          border: var(--ddd-border-xs);
+          border-color: light-dark(var(--ddd-primary-5), var(--ddd-accent-5));
           margin: 0;
-          padding: 4px;
+          padding: var(--ddd-spacing-1);
           cursor: pointer;
           opacity: 1;
           visibility: visible;
@@ -233,9 +255,9 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           visibility: visible;
         }
         .item[data-about-to-delete] {
-          background-color: #ffa5a5;
-          opacity: 0.5;
-          border-color: red;
+          background-color: light-dark(var(--ddd-theme-default-errorLight), var(--ddd-primary-22));
+          opacity: 0.8;
+          border-color: light-dark(var(--ddd-primary-22), var(--ddd-primary-12));
         }
         .item[data-about-to-delete][hidden] {
           visibility: hidden !important;
@@ -246,12 +268,17 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           border: 0;
         }
         .item:hover,
-        .item:focus {
-          background-color: #f5f5f5;
+        .item:focus,
+        .item:focus-within {
+          background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-primary-5));
+          outline: var(--ddd-border-sm);
+          outline-color: light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
+          outline-offset: -2px;
         }
         .item:hover .label,
-        .item:focus .label {
-          color: black;
+        .item:focus .label,
+        .item:focus-within .label {
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
         ul {
           list-style: none;
@@ -266,7 +293,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           max-width: 40%;
           line-height: 1.2;
           padding: 0 4px;
-          color: light-dark(black, white);
+          color: light-dark(var(--ddd-theme-default-originalBlack), var(--ddd-theme-default-white));
         }
 
         .content-child {
@@ -343,6 +370,14 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         .indent-20 {
           padding-left: calc(16px * 20);
         }
+        .sr-only {
+          position: absolute;
+          left: -10000px;
+          top: auto;
+          width: 1px;
+          height: 1px;
+          overflow: hidden;
+        }
       `,
     ];
   }
@@ -361,6 +396,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     this.activeId = null;
     this.activePreview = null;
     this.activePreviewIndex = -1;
+    this.liveRegionText = "";
     this.t = {
       selectTarget: "Select target",
       importContentUnderThisPage: "Import content under this page",
@@ -499,13 +535,20 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             >`
           : ``}
       </div>
-      <ul id="list">
+      <ul 
+        id="list"
+        role="tree"
+        aria-label="Outline structure of pages and content"
+      >
         ${this.items.map((item, index) =>
           this.getItemParentsCollapsed(item) === ""
             ? this.renderItem(item, index)
             : ``,
         )}
       </ul>
+      <div aria-live="polite" aria-atomic="true" class="sr-only">
+        ${this.liveRegionText}
+      </div>
       <simple-popover auto for="list" hidden>
         <simple-icon-button
           @click="${this.resetPopOver}"
@@ -517,7 +560,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           this.activePreview,
           this.activePreviewIndex,
         )}
-      </simple-popover>`;
+      </simple-popover>`
   }
 
   hasDeletedItems() {
@@ -562,6 +605,14 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   renderItem(item, index) {
     return html`
       <li
+        role="treeitem"
+        tabindex="${index === 0 ? '0' : '-1'}"
+        aria-label="${item.title}${item.modified ? ' (modified)' : ''}${item.delete ? ' (marked for deletion)' : ''}"
+        aria-expanded="${this.hasChildren(item.id) ? (this.isCollapsed(item.id) ? 'false' : 'true') : 'undefined'}"
+        aria-level="${item.indent + 1}"
+        aria-setsize="${this.items.filter(i => i.parent === item.parent).length}"
+        aria-posinset="${this.items.filter(i => i.parent === item.parent).indexOf(item) + 1}"
+        @keydown="${this.handleTreeItemKeydown}"
         @dragenter="${this._dragEnter}"
         @dragleave="${this._dragLeave}"
         @mouseenter="${this.setActiveItemForActions}"
@@ -617,6 +668,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           class="label shown"
           ?disabled="${this.isLocked(index)}"
           @dblclick="${this.editTitle}"
+          @keydown="${this.handleLabelKeydown}"
+          tabindex="0"
           >${item.title}</span
         >
         <span
@@ -1273,6 +1326,225 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       this._blurBlock = false;
     }, 0);
   }
+
+  // Handle Enter key on label to activate editing mode
+  handleLabelKeydown(e) {
+    // Only handle Enter key and prevent if disabled
+    if (e.key === 'Enter' && !e.target.hasAttribute('disabled')) {
+      e.preventDefault();
+      e.stopPropagation();
+      this.editTitle(e);
+      this.announceAction('Title editing activated');
+    }
+  }
+
+  // Handle keyboard navigation for tree structure
+  handleTreeItemKeydown(e) {
+    // Only handle navigation keys when focused directly on the tree item
+    // Allow other elements (buttons, inputs) to handle their own keyboard events
+    if (e.target.tagName.toLowerCase() !== 'li' || !e.target.hasAttribute('role')) {
+      return;
+    }
+
+    const currentItem = e.target;
+    const itemId = currentItem.getAttribute('data-item-id');
+    const itemIndex = this.items.findIndex(item => item.id === itemId);
+    
+    switch(e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        this.focusNextItem(itemIndex);
+        this.announceNavigation('Moved to next item');
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        this.focusPreviousItem(itemIndex);
+        this.announceNavigation('Moved to previous item');
+        break;
+      case 'ArrowRight':
+        e.preventDefault();
+        if (this.hasChildren(itemId) && this.isCollapsed(itemId)) {
+          this.collapseExpand(e);
+          this.announceStateChange('Expanded');
+        } else {
+          this.focusFirstChild(itemIndex);
+          this.announceNavigation('Moved to first child');
+        }
+        break;
+      case 'ArrowLeft':
+        e.preventDefault();
+        if (this.hasChildren(itemId) && !this.isCollapsed(itemId)) {
+          this.collapseExpand(e);
+          this.announceStateChange('Collapsed');
+        } else {
+          this.focusParent(itemIndex);
+          this.announceNavigation('Moved to parent');
+        }
+        break;
+      case 'Enter':
+      case ' ':
+        // Only handle expand/collapse if no operations are visible
+        if (this.activeItemForActions !== itemId && this.hasChildren(itemId)) {
+          e.preventDefault();
+          this.collapseExpand(e);
+          const newState = this.isCollapsed(itemId) ? 'Collapsed' : 'Expanded';
+          this.announceStateChange(newState);
+        }
+        break;
+      case 'Home':
+        e.preventDefault();
+        this.focusFirstItem();
+        this.announceNavigation('Moved to first item');
+        break;
+      case 'End':
+        e.preventDefault();
+        this.focusLastItem();
+        this.announceNavigation('Moved to last item');
+        break;
+      case 'Delete':
+      case 'Backspace':
+        // Keyboard shortcut for delete operation
+        if (this.activeItemForActions === itemId && !this.isLocked(itemIndex)) {
+          e.preventDefault();
+          this.itemOp(itemIndex, 'delete');
+          this.announceAction('Item marked for deletion');
+        }
+        break;
+      case 'd':
+        // Keyboard shortcut for duplicate
+        if (e.ctrlKey && this.activeItemForActions === itemId && !this.isLocked(itemIndex)) {
+          e.preventDefault();
+          this.itemOp(itemIndex, 'duplicate');
+          this.announceAction('Item duplicated');
+        }
+        break;
+    }
+  }
+
+  focusNextItem(currentIndex) {
+    const visibleItems = this.items.filter((item, index) => 
+      this.getItemParentsCollapsed(item) === '' && !this.hideDelete || !item.delete
+    );
+    const currentVisibleIndex = visibleItems.findIndex(item => item.id === this.items[currentIndex].id);
+    const nextIndex = Math.min(currentVisibleIndex + 1, visibleItems.length - 1);
+    this.focusItem(visibleItems[nextIndex].id);
+  }
+
+  focusPreviousItem(currentIndex) {
+    const visibleItems = this.items.filter((item, index) => 
+      this.getItemParentsCollapsed(item) === '' && !this.hideDelete || !item.delete
+    );
+    const currentVisibleIndex = visibleItems.findIndex(item => item.id === this.items[currentIndex].id);
+    const prevIndex = Math.max(currentVisibleIndex - 1, 0);
+    this.focusItem(visibleItems[prevIndex].id);
+  }
+
+  focusFirstChild(parentIndex) {
+    const parentId = this.items[parentIndex].id;
+    const firstChild = this.items.find(item => item.parent === parentId);
+    if (firstChild && this.getItemParentsCollapsed(firstChild) === '') {
+      this.focusItem(firstChild.id);
+    }
+  }
+
+  focusParent(childIndex) {
+    const parentId = this.items[childIndex].parent;
+    if (parentId) {
+      this.focusItem(parentId);
+    }
+  }
+
+  focusFirstItem() {
+    const firstItem = this.items.find(item => 
+      this.getItemParentsCollapsed(item) === '' && (!this.hideDelete || !item.delete)
+    );
+    if (firstItem) {
+      this.focusItem(firstItem.id);
+    }
+  }
+
+  focusLastItem() {
+    const visibleItems = this.items.filter(item => 
+      this.getItemParentsCollapsed(item) === '' && (!this.hideDelete || !item.delete)
+    );
+    if (visibleItems.length > 0) {
+      this.focusItem(visibleItems[visibleItems.length - 1].id);
+    }
+  }
+
+  focusItem(itemId) {
+    // Remove tabindex from all items
+    const allItems = this.shadowRoot.querySelectorAll('[role="treeitem"]');
+    allItems.forEach(item => {
+      item.setAttribute('tabindex', '-1');
+    });
+    
+    // Set tabindex and focus on target item
+    const targetItem = this.shadowRoot.querySelector(`[data-item-id="${itemId}"]`);
+    if (targetItem) {
+      targetItem.setAttribute('tabindex', '0');
+      targetItem.focus();
+    }
+  }
+
+  // Accessibility announcement helpers
+  announceNavigation(message) {
+    this.liveRegionText = message;
+    this.requestUpdate();
+    // Clear after announcement to avoid repetition
+    setTimeout(() => {
+      this.liveRegionText = '';
+      this.requestUpdate();
+    }, 1000);
+  }
+
+  announceStateChange(state) {
+    this.liveRegionText = state;
+    this.requestUpdate();
+    // Clear after announcement
+    setTimeout(() => {
+      this.liveRegionText = '';
+      this.requestUpdate();
+    }, 1000);
+  }
+
+  announceAction(action) {
+    this.liveRegionText = action;
+    this.requestUpdate();
+    // Clear after announcement
+    setTimeout(() => {
+      this.liveRegionText = '';
+      this.requestUpdate();
+    }, 1000);
+  }
+
+  // Helper method to scroll item into view if not visible
+  scrollIntoViewIfNeeded(itemId, delay = 2000) {
+    setTimeout(() => {
+      const targetItem = this.shadowRoot.querySelector(`[data-item-id="${itemId}"]`);
+      if (targetItem) {
+        const rect = targetItem.getBoundingClientRect();
+        const viewportHeight = globalThis.innerHeight;
+        const viewportWidth = globalThis.innerWidth;
+        
+        // Check if item is outside viewport
+        const isOutsideViewport = (
+          rect.bottom < 0 || 
+          rect.top > viewportHeight || 
+          rect.right < 0 || 
+          rect.left > viewportWidth
+        );
+        
+        if (isOutsideViewport) {
+          targetItem.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest'
+          });
+        }
+      }
+    }, delay);
+  }
   _mouseDownDrag(e) {
     // force collapse kids on move
     let itemId = e.target
@@ -1344,6 +1616,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       this._targetDrop = null;
       this.setAttribute("stop-animation", "true");
       this.__syncUIAndDataModel();
+      // Scroll moved item into view after a delay if it's outside viewport
+      this.scrollIntoViewIfNeeded(this.items[from].id);
     }
   }
   /**
@@ -1383,6 +1657,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         attribute: "hide-content-ops",
       },
       fidelity: { type: String },
+      liveRegionText: { type: String },
     };
   }
 
@@ -1736,6 +2011,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
                   }
                 }
               });
+              // Scroll moved item into view after a delay if it's outside viewport
+              this.scrollIntoViewIfNeeded(element.id);
             }
             break;
         }
