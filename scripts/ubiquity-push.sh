@@ -104,11 +104,11 @@ cp -R ~/haxtheweb/haxcms-nodejs/src/coreConfig ~/haxtheweb/haxcms-php/system/cor
 cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/create/src/lib/wc-registry.json
 
 
-## STEP 4 STORYBOOK NEEDS REBUILT FOR CDN PUBLISHING
+## STEP 4 COMPONENT GALLERY NEEDS REBUILT FOR CDN PUBLISHING
 cd ~/haxtheweb/webcomponents
-yarn run build-storybook
-rm -rf ~/haxtheweb/psucdn/storybook
-mv ~/haxtheweb/webcomponents/storybook ~/haxtheweb/psucdn/storybook
+yarn run build-gallery
+rm -rf ~/haxtheweb/psucdn/component-gallery
+cp ~/haxtheweb/webcomponents/component-gallery.html ~/haxtheweb/psucdn/component-gallery.html
 
 
 ## STEP 5 VERSION CONTROL ALL THE THINGS AND TAG

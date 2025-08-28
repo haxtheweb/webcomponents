@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>Demo Snippet: demo-snippet Demo</title>
+    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+
+    <script type="module">
+      import '../demo-snippet.js';
+      import '@haxtheweb/d-d-d/d-d-d.js';
+    </script>
+    <style>
+      body {
+        font-family: var(--ddd-font-primary);
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-potentialMidnight)
+        );
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
+        margin: var(--ddd-spacing-4);
+        padding: var(--ddd-spacing-4);
+        line-height: var(--ddd-lh-150);
+      }
+      
+      h1 {
+        color: var(--ddd-theme-default-beaverBlue);
+        font-size: var(--ddd-font-size-l);
+        margin-bottom: var(--ddd-spacing-6);
+      }
+      
+      h2 {
+        color: var(--ddd-theme-default-nittanyNavy);
+        font-size: var(--ddd-font-size-m);
+        margin: var(--ddd-spacing-8) 0 var(--ddd-spacing-4) 0;
+      }
+      
+      p {
+        margin-bottom: var(--ddd-spacing-4);
+      }
+      
+      .dark-mode-toggle {
+        position: fixed;
+        top: var(--ddd-spacing-4);
+        right: var(--ddd-spacing-4);
+        padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+        background: var(--ddd-theme-default-skyBlue);
+        color: white;
+        border: none;
+        border-radius: var(--ddd-radius-sm);
+        cursor: pointer;
+        font-family: var(--ddd-font-primary);
+      }
+    </style>
+  </head>
+  <body>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">🌙 Toggle Dark Mode</button>
+    
+    <h1>Demo Snippet Examples</h1>
+    <p>This page demonstrates the new Lit-based demo-snippet element with dark mode compatibility.</p>
+
+    <h2>Basic HTML Element Demo</h2>
+    <p>A simple native HTML input element:</p>
+    <demo-snippet>
+      <template>
+        <input type="date" value="2023-12-25">
+        <input type="color" value="#1e407c">
+        <input type="range" min="0" max="100" value="50">
+      </template>
+    </demo-snippet>
+
+    <h2>Multiple Elements Demo</h2>
+    <p>Multiple elements in a single demo:</p>
+    <demo-snippet>
+      <template>
+        <div style="display: flex; gap: 16px; align-items: center;">
+          <button>Click me</button>
+          <label>
+            <input type="checkbox" checked> Enable notifications
+          </label>
+          <select>
+            <option>Option 1</option>
+            <option selected>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </div>
+      </template>
+    </demo-snippet>
+
+    <h2>Styled Content Demo</h2>
+    <p>Demo with custom styling:</p>
+    <demo-snippet>
+      <template>
+        <div style="
+          background: linear-gradient(45deg, #1e407c, #96bee6);
+          color: white;
+          padding: 20px;
+          border-radius: 8px;
+          text-align: center;
+          font-family: Arial, sans-serif;
+        ">
+          <h3 style="margin: 0 0 10px 0;">Beautiful Card</h3>
+          <p style="margin: 0;">This is a demo of styled content with gradients and custom CSS.</p>
+        </div>
+      </template>
+    </demo-snippet>
+
+    <h2>Form Elements Demo</h2>
+    <p>Various form elements:</p>
+    <demo-snippet>
+      <template>
+        <form style="display: grid; gap: 12px; max-width: 300px;">
+          <label>
+            Name:
+            <input type="text" placeholder="Enter your name" style="width: 100%; margin-top: 4px;">
+          </label>
+          
+          <label>
+            Email:
+            <input type="email" placeholder="your@email.com" style="width: 100%; margin-top: 4px;">
+          </label>
+          
+          <label>
+            Message:
+            <textarea placeholder="Your message here..." rows="3" style="width: 100%; margin-top: 4px;"></textarea>
+          </label>
+          
+          <button type="submit" style="background: #1e407c; color: white; padding: 8px 16px; border: none; border-radius: 4px;">
+            Send Message
+          </button>
+        </form>
+      </template>
+    </demo-snippet>
+
+    <script>
+      function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        
+        // Update the button text
+        const button = document.querySelector('.dark-mode-toggle');
+        if (document.body.classList.contains('dark-mode')) {
+          button.textContent = '☀️ Toggle Light Mode';
+        } else {
+          button.textContent = '🌙 Toggle Dark Mode';
+        }
+      }
+
+      // Listen for demo-snippet dom-ready events
+      document.addEventListener('dom-ready', (e) => {
+        console.log('Demo snippet ready:', e.detail);
+      });
+    </script>
+  </body>
+</html>

@@ -122,10 +122,10 @@ Edit files in `lib/`, `src/`, `locales/` and `demo/` in order to modify the elem
     -  Run tests on ALL webcomponents.
 - `yarn run build`
     -  Run build on ALL webcomponents.
-- `yarn run storybook`
-    - Run storybook
-- `yarn run build-storybook`
-    - Build storybook for deployment
+- `yarn run gallery`
+    - Run component gallery (replaces storybook)
+- `yarn run build-gallery`
+    - Build component gallery for deployment
 
 ## Web Component development
 
@@ -167,38 +167,34 @@ yarn test -- -p
 
 Then open the URL that will be printed in the terminal. It looks something like this: `http://localhost:8081/components/@@haxtheweb/haxtheweb/generated-index.html?cli_browser_id=0`.
 
-## Storybook
+## Component Gallery
 
-We've added [Storybook](https://storybook.js.org/) to webcomponents as a way to preview our web components as they are being developed. We'll also use Storybook to export a static site that will be the demo site for webcomponents.
+We've replaced [Storybook](https://storybook.js.org/) with our own **Component Gallery** to preview and document our web components. The Component Gallery provides a better integrated experience with HAX design system and build tools.
 
-To run storybook
-
-```bash
-yarn run storybook
-```
-
-This will start a web server on port 9001. Navigate in your browser to `http://localhost:9001` to see Storybook in action. Storybook will watch for file changes and reload the browser automatically for you. This is a little slow at the moment, but we'll look into speeding this up.
-
-To export the storybook static site
+To run the component gallery locally
 
 ```bash
-yarn run build-storybook
+yarn run gallery
 ```
 
-This places a build of the storybook site in the .storybook_out directory.
+This will build the gallery and start a web server. Navigate to the URL shown in the terminal to see the Component Gallery in action. The gallery will automatically rebuild when components change.
 
-### Known Issues with Storybook
+To build the component gallery for deployment
 
-For any web component that has a third-party dependency you will need to update the `/.storybook/webpack.config.js` file. You will need to create an alias for your depedency.
-
-For example:
-
-```js
-"../../whatwg-fetch/fetch.js": path.join( // this is the third-party dependency in the webcomponents
-  __dirname,
-  "../node_modules/whatwg-fetch/fetch.js" // this is where it lives in node_modules
-)
+```bash
+yarn run build-gallery
 ```
+
+This generates the component gallery as a single HTML file: `component-gallery.html`.
+
+### Component Gallery Features
+
+- **HAX Integration**: Built-in support for HAX-enabled components
+- **DDD Design System**: Uses our Design, Develop, Destroy design tokens
+- **Live Demos**: Interactive component demonstrations
+- **CodePen Export**: Direct export to CodePen for experimentation
+- **Search & Filter**: Easy component discovery
+- **Mobile Responsive**: Works on all device sizes
 
 ## Tech Stack
 

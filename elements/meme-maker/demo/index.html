@@ -7,10 +7,44 @@
     
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      import '@polymer/iron-demo-helpers/demo-snippet.js';
+      import '../../utils/demo-snippet.js';
       import '../meme-maker.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      body {
+        font-family: var(--ddd-font-primary, sans-serif);
+        background-color: light-dark(
+          var(--ddd-theme-default-white, #ffffff),
+          var(--ddd-theme-default-potentialMidnight, #000321)
+        );
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray, #262626),
+          var(--ddd-theme-default-white, #ffffff)
+        );
+        margin: var(--ddd-spacing-4, 16px);
+        padding: var(--ddd-spacing-4, 16px);
+        line-height: var(--ddd-lh-150, 1.5);
+      }
+      
+      .vertical-section-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      
+      .centered {
+        text-align: center;
+      }
+      
+      h3 {
+        color: var(--ddd-theme-default-beaverBlue, #1e407c);
+        font-size: var(--ddd-font-size-m, 32px);
+        margin-bottom: var(--ddd-spacing-6, 24px);
+      }
+      
+      p {
+        margin: var(--ddd-spacing-6, 24px) 0;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">

@@ -345,13 +345,13 @@ The HAX CLI supports various options for fine-tuned control. Use `hax help`, `ha
 ├── hax11ty/              # 11ty integration
 ├── json-outline-schema/   # Content schemas
 ├── hax-schema/           # HAX property schemas
-├── open-apis/            # Microservice APIs & Storybook
+├── open-apis/            # Microservice APIs & Component Gallery
 │   ├── api/               # Express Vercel endpoints
 │   │   ├── apps/         # HAXcms conversion services
 │   │   ├── services/     # Media processing, analysis
 │   │   ├── users/        # Authentication endpoints
 │   │   └── utilities/    # Shared API helpers
-│   └── storybook/        # Component documentation
+│   └── component-gallery/# Component documentation
 ├── docs/                 # Official HAX documentation
 │   ├── site.json         # JSON Outline Schema structure
 │   ├── pages/            # Documentation content (HTML)
