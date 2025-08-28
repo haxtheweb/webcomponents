@@ -32,7 +32,7 @@ describe("a11y-carousel test", () => {
 
   describe("Property type validation with accessibility", () => {
     let testElement;
-    
+
     beforeEach(async () => {
       testElement = await fixture(html`
         <a11y-carousel>
@@ -55,12 +55,12 @@ describe("a11y-carousel test", () => {
         await testElement.updateComplete;
         expect(testElement.nextLabel).to.equal("Forward");
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.nextLabel = "Next Item";
         await testElement.updateComplete;
         expect(testElement.nextLabel).to.equal("Next Item");
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         // Note: Empty string labels can cause accessibility issues
         testElement.nextLabel = "";
         await testElement.updateComplete;
@@ -73,12 +73,12 @@ describe("a11y-carousel test", () => {
         await testElement.updateComplete;
         expect(testElement.nextLabel).to.equal(123);
         // Skip accessibility test for numeric values - they render as strings but may not be ideal
-        
+
         testElement.nextLabel = true;
         await testElement.updateComplete;
         expect(testElement.nextLabel).to.equal(true);
         // Skip accessibility test for boolean values
-        
+
         testElement.nextLabel = null;
         await testElement.updateComplete;
         expect(testElement.nextLabel).to.equal(null);
@@ -96,12 +96,12 @@ describe("a11y-carousel test", () => {
         await testElement.updateComplete;
         expect(testElement.prevLabel).to.equal("Back");
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.prevLabel = "Previous Item";
         await testElement.updateComplete;
         expect(testElement.prevLabel).to.equal("Previous Item");
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.prevLabel = "";
         await testElement.updateComplete;
         expect(testElement.prevLabel).to.equal("");
@@ -113,12 +113,12 @@ describe("a11y-carousel test", () => {
         await testElement.updateComplete;
         expect(testElement.prevLabel).to.equal(456);
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.prevLabel = false;
         await testElement.updateComplete;
         expect(testElement.prevLabel).to.equal(false);
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.prevLabel = undefined;
         await testElement.updateComplete;
         expect(testElement.prevLabel).to.equal(undefined);
@@ -136,7 +136,7 @@ describe("a11y-carousel test", () => {
         await testElement.updateComplete;
         expect(testElement.noPrevNext).to.equal(true);
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.noPrevNext = false;
         await testElement.updateComplete;
         expect(testElement.noPrevNext).to.equal(false);
@@ -148,17 +148,17 @@ describe("a11y-carousel test", () => {
         await testElement.updateComplete;
         expect(testElement.noPrevNext).to.equal(1);
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.noPrevNext = "true";
         await testElement.updateComplete;
         expect(testElement.noPrevNext).to.equal("true");
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.noPrevNext = "any string";
         await testElement.updateComplete;
         expect(testElement.noPrevNext).to.equal("any string");
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.noPrevNext = {};
         await testElement.updateComplete;
         expect(testElement.noPrevNext).to.deep.equal({});
@@ -170,17 +170,17 @@ describe("a11y-carousel test", () => {
         await testElement.updateComplete;
         expect(testElement.noPrevNext).to.equal(0);
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.noPrevNext = "";
         await testElement.updateComplete;
         expect(testElement.noPrevNext).to.equal("");
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.noPrevNext = null;
         await testElement.updateComplete;
         expect(testElement.noPrevNext).to.equal(null);
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.noPrevNext = undefined;
         await testElement.updateComplete;
         expect(testElement.noPrevNext).to.equal(undefined);
@@ -198,7 +198,7 @@ describe("a11y-carousel test", () => {
         await testElement.updateComplete;
         expect(testElement.noButtons).to.equal(true);
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.noButtons = false;
         await testElement.updateComplete;
         expect(testElement.noButtons).to.equal(false);
@@ -210,17 +210,17 @@ describe("a11y-carousel test", () => {
         await testElement.updateComplete;
         expect(testElement.noButtons).to.equal(42);
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.noButtons = "false";
         await testElement.updateComplete;
         expect(testElement.noButtons).to.equal("false");
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.noButtons = [];
         await testElement.updateComplete;
         expect(testElement.noButtons).to.deep.equal([]);
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.noButtons = { test: true };
         await testElement.updateComplete;
         expect(testElement.noButtons).to.deep.equal({ test: true });
@@ -232,17 +232,17 @@ describe("a11y-carousel test", () => {
         await testElement.updateComplete;
         expect(testElement.noButtons).to.equal(0);
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.noButtons = "";
         await testElement.updateComplete;
         expect(testElement.noButtons).to.equal("");
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.noButtons = null;
         await testElement.updateComplete;
         expect(testElement.noButtons).to.equal(null);
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.noButtons = undefined;
         await testElement.updateComplete;
         expect(testElement.noButtons).to.equal(undefined);
@@ -336,14 +336,14 @@ describe("a11y-carousel test", () => {
           </figure>
         </a11y-carousel>
       `);
-      
+
       // Set empty labels programmatically
       testElement.nextLabel = "";
       testElement.prevLabel = "";
       await testElement.updateComplete;
       expect(testElement.nextLabel).to.equal("");
       expect(testElement.prevLabel).to.equal("");
-      
+
       // Note: Empty labels might cause accessibility warnings, but component should still function
       // Skip accessibility test for empty labels as they cause violations
     });

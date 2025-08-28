@@ -268,6 +268,117 @@
             },
             {
               "kind": "method",
+              "name": "handleLabelKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleTreeItemKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "focusNextItem",
+              "parameters": [
+                {
+                  "name": "currentIndex"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "focusPreviousItem",
+              "parameters": [
+                {
+                  "name": "currentIndex"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "focusFirstChild",
+              "parameters": [
+                {
+                  "name": "parentIndex"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "focusParent",
+              "parameters": [
+                {
+                  "name": "childIndex"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "focusFirstItem"
+            },
+            {
+              "kind": "method",
+              "name": "focusLastItem"
+            },
+            {
+              "kind": "method",
+              "name": "focusItem",
+              "parameters": [
+                {
+                  "name": "itemId"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "announceNavigation",
+              "parameters": [
+                {
+                  "name": "message"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "announceStateChange",
+              "parameters": [
+                {
+                  "name": "state"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "announceAction",
+              "parameters": [
+                {
+                  "name": "action"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "scrollIntoViewIfNeeded",
+              "parameters": [
+                {
+                  "name": "itemId"
+                },
+                {
+                  "name": "delay",
+                  "default": "2000"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "_mouseDownDrag",
               "parameters": [
                 {
@@ -547,6 +658,16 @@
             },
             {
               "kind": "field",
+              "name": "liveRegionText",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "liveRegionText"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
@@ -650,6 +771,14 @@
               },
               "default": "\"medium\"",
               "fieldName": "fidelity"
+            },
+            {
+              "name": "liveRegionText",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "liveRegionText"
             }
           ],
           "mixins": [

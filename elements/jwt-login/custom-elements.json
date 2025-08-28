@@ -92,6 +92,15 @@
             },
             {
               "kind": "method",
+              "name": "isDifferentDomain",
+              "parameters": [
+                {
+                  "name": "urlToCheck"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "loginResponse",
               "parameters": [
                 {

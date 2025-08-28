@@ -21,7 +21,8 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       ...this.t,
       whereUpload: "Where would you like to upload this",
       serverStorageLocationCantHandle: "Server storage location can't handle",
-      fileUploadsMustHaveAFileExtension: "File uploads must have a file extension",
+      fileUploadsMustHaveAFileExtension:
+        "File uploads must have a file extension",
       uploads: "uploads",
       dropMediaHereOr: "drop media here or",
       selectMedia: "Select media",
@@ -69,12 +70,11 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         type: e.detail.file.type,
       };
       // account for no file type / extension on the upload and block it
-      if (e.detail.file.type === "" && !e.detail.file.name.includes('.')) {
+      if (e.detail.file.type === "" && !e.detail.file.name.includes(".")) {
         HAXStore.toast(`${this.t.fileUploadsMustHaveAFileExtension}!`, 5000);
         // clear upload because it is never allowed anywhere
         this.shadowRoot.querySelector("#fileupload").files = [];
-      }
-      else {
+      } else {
         // we have no clue what this is.. let's try and guess..
         var type = HAXStore.guessGizmoType(values);
         // find targets that support this type
@@ -90,7 +90,10 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
             "app",
           );
         } else {
-          HAXStore.toast(`${this.t.serverStorageLocationCantHandle} ${type} ${this.t.uploads}!`, 5000);
+          HAXStore.toast(
+            `${this.t.serverStorageLocationCantHandle} ${type} ${this.t.uploads}!`,
+            5000,
+          );
         }
       }
     } else {

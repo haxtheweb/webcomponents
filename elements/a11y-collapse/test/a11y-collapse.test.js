@@ -19,7 +19,7 @@ describe("a11y-collapse test", () => {
 
   describe("Property type validation with accessibility (Lit-aware)", () => {
     let testElement;
-    
+
     beforeEach(async () => {
       testElement = await fixture(html`
         <a11y-collapse>
@@ -42,7 +42,7 @@ describe("a11y-collapse test", () => {
           expect(testElement.headingButton).to.equal(true);
           expect(testElement.hasAttribute("heading-button")).to.be.true;
           await expect(testElement).shadowDom.to.be.accessible();
-          
+
           testElement.headingButton = false;
           await testElement.updateComplete;
           expect(testElement.headingButton).to.equal(false);
@@ -54,11 +54,11 @@ describe("a11y-collapse test", () => {
           testElement.headingButton = 1;
           await testElement.updateComplete;
           expect(testElement.headingButton).to.equal(1);
-          
+
           testElement.headingButton = "true";
           await testElement.updateComplete;
           expect(testElement.headingButton).to.equal("true");
-          
+
           testElement.headingButton = null;
           await testElement.updateComplete;
           expect(testElement.headingButton).to.equal(null);
@@ -76,7 +76,7 @@ describe("a11y-collapse test", () => {
           expect(testElement.disabled).to.equal(true);
           expect(testElement.hasAttribute("disabled")).to.be.true;
           await expect(testElement).shadowDom.to.be.accessible();
-          
+
           testElement.disabled = false;
           await testElement.updateComplete;
           expect(testElement.disabled).to.equal(false);
@@ -96,7 +96,7 @@ describe("a11y-collapse test", () => {
           expect(testElement.expanded).to.equal(true);
           expect(testElement.hasAttribute("expanded")).to.be.true;
           await expect(testElement).shadowDom.to.be.accessible();
-          
+
           testElement.expanded = false;
           await testElement.updateComplete;
           expect(testElement.expanded).to.equal(false);
@@ -115,7 +115,7 @@ describe("a11y-collapse test", () => {
           await testElement.updateComplete;
           expect(testElement.hidden).to.equal(true);
           expect(testElement.hasAttribute("hidden")).to.be.true;
-          
+
           testElement.hidden = false;
           await testElement.updateComplete;
           expect(testElement.hidden).to.equal(false);
@@ -149,7 +149,7 @@ describe("a11y-collapse test", () => {
           await testElement.updateComplete;
           expect(testElement.icon).to.equal("icons:keyboard-arrow-down");
           await expect(testElement).shadowDom.to.be.accessible();
-          
+
           testElement.icon = "";
           await testElement.updateComplete;
           expect(testElement.icon).to.equal("");
@@ -160,7 +160,7 @@ describe("a11y-collapse test", () => {
           testElement.icon = 123;
           await testElement.updateComplete;
           expect(testElement.icon).to.equal(123);
-          
+
           testElement.icon = null;
           await testElement.updateComplete;
           expect(testElement.icon).to.equal(null);
@@ -240,7 +240,9 @@ describe("a11y-collapse test", () => {
         it("should accept string values and maintain accessibility", async () => {
           testElement.tooltipExpanded = "Click to collapse section";
           await testElement.updateComplete;
-          expect(testElement.tooltipExpanded).to.equal("Click to collapse section");
+          expect(testElement.tooltipExpanded).to.equal(
+            "Click to collapse section",
+          );
           await expect(testElement).shadowDom.to.be.accessible();
         });
       });
@@ -295,7 +297,7 @@ describe("a11y-collapse test", () => {
 
   describe("Functional behavior with accessibility", () => {
     let testElement;
-    
+
     beforeEach(async () => {
       testElement = await fixture(html`
         <a11y-collapse>
@@ -308,12 +310,12 @@ describe("a11y-collapse test", () => {
 
     it("should toggle expanded state and maintain accessibility", async () => {
       expect(testElement.expanded).to.equal(false);
-      
+
       testElement.toggle(true);
       await testElement.updateComplete;
       expect(testElement.expanded).to.equal(true);
       await expect(testElement).shadowDom.to.be.accessible();
-      
+
       testElement.toggle(false);
       await testElement.updateComplete;
       expect(testElement.expanded).to.equal(false);
@@ -338,9 +340,9 @@ describe("a11y-collapse test", () => {
   describe("Edge cases and property combinations", () => {
     it("should remain accessible with multiple properties set", async () => {
       const testElement = await fixture(html`
-        <a11y-collapse 
-          heading-button 
-          expanded 
+        <a11y-collapse
+          heading-button
+          expanded
           tooltip="Click to collapse"
           icon-expanded="icons:expand-less"
         >
@@ -349,14 +351,14 @@ describe("a11y-collapse test", () => {
         </a11y-collapse>
       `);
       await testElement.updateComplete;
-      
+
       expect(testElement.headingButton).to.equal(true);
       expect(testElement.expanded).to.equal(true);
       // Note: label and tooltip get automatically set to "collapse" when expanded=true in _fireToggleEvents
       expect(testElement.label).to.equal("collapse");
       expect(testElement.tooltip).to.equal("collapse");
       expect(testElement.iconExpanded).to.equal("icons:expand-less");
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });

@@ -9071,7 +9071,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", cantHandle: \"Sorry, you don't have a storage location that can handle\", uploads: \"uploads\", dropMediaHereOr: \"drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", }",
+              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", }",
               "inheritedFrom": {
                 "name": "HaxUploadField",
                 "module": "lib/hax-upload-field.js"
@@ -10310,7 +10310,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", cantHandle: \"Sorry, you don't have a storage location that can handle\", uploads: \"uploads\", dropMediaHereOr: \"drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", }"
+              "default": "{ ...this.t, whereUpload: \"Where would you like to upload this\", serverStorageLocationCantHandle: \"Server storage location can't handle\", fileUploadsMustHaveAFileExtension: \"File uploads must have a file extension\", uploads: \"uploads\", dropMediaHereOr: \"drop media here or\", selectMedia: \"Select media\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", }"
             }
           ],
           "attributes": [

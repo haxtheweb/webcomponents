@@ -42,22 +42,34 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         .controls {
           position: sticky;
           top: -32px;
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           z-index: 1;
           padding: var(--ddd-spacing-4) 0 var(--ddd-spacing-2) 0;
           border-bottom: var(--ddd-border-xs);
-          border-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-primary-5));
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-primary-5)
+          );
         }
         .controls .control {
           border: var(--ddd-border-xs);
           border-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           border-radius: var(--ddd-radius-xs);
           padding: var(--ddd-spacing-1);
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-3)
+          );
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
         .controls .control:hover {
-          background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-primary-5));
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-primary-5)
+          );
           border-color: light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
         }
         simple-popover {
@@ -71,7 +83,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         }
         .close-btn {
           z-index: 1000;
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-4)
+          );
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           border: var(--ddd-border-xs);
           border-color: light-dark(var(--ddd-primary-5), var(--ddd-accent-5));
@@ -107,11 +122,17 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           border-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           border-radius: var(--ddd-radius-xs);
           padding: var(--ddd-spacing-1);
-          background-color: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-3)
+          );
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
         .content-adding-operations .operation:hover {
-          background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-primary-5));
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-primary-5)
+          );
           border-color: light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
         }
         .lock {
@@ -176,7 +197,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           z-index: -1;
         }
         li simple-icon-button:hover {
-          background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-primary-5));
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-primary-5)
+          );
         }
         .active-preview-item {
           outline: var(--ddd-border-xs);
@@ -198,7 +222,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           outline: var(--ddd-border-sm);
           outline-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           outline-offset: -1px;
-          background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-primary-5));
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-primary-5)
+          );
         }
         .make-child-btn {
           transition: 0.3s all ease-in-out;
@@ -221,7 +248,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         .new {
           --simple-icon-width: 16px;
           --simple-icon-height: 16px;
-          background-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          background-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
           color: light-dark(var(--ddd-accent-6), var(--ddd-primary-4));
           display: block;
           margin: -14px 0 0 4px;
@@ -255,9 +285,15 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           visibility: visible;
         }
         .item[data-about-to-delete] {
-          background-color: light-dark(var(--ddd-theme-default-errorLight), var(--ddd-primary-22));
+          background-color: light-dark(
+            var(--ddd-theme-default-errorLight),
+            var(--ddd-primary-22)
+          );
           opacity: 0.8;
-          border-color: light-dark(var(--ddd-primary-22), var(--ddd-primary-12));
+          border-color: light-dark(
+            var(--ddd-primary-22),
+            var(--ddd-primary-12)
+          );
         }
         .item[data-about-to-delete][hidden] {
           visibility: hidden !important;
@@ -270,7 +306,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         .item:hover,
         .item:focus,
         .item:focus-within {
-          background-color: light-dark(var(--ddd-theme-default-limestoneMaxLight), var(--ddd-primary-5));
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-primary-5)
+          );
           outline: var(--ddd-border-sm);
           outline-color: light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
           outline-offset: -2px;
@@ -293,7 +332,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           max-width: 40%;
           line-height: 1.2;
           padding: 0 4px;
-          color: light-dark(var(--ddd-theme-default-originalBlack), var(--ddd-theme-default-white));
+          color: light-dark(
+            var(--ddd-theme-default-originalBlack),
+            var(--ddd-theme-default-white)
+          );
         }
 
         .content-child {
@@ -535,7 +577,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             >`
           : ``}
       </div>
-      <ul 
+      <ul
         id="list"
         role="tree"
         aria-label="Outline structure of pages and content"
@@ -560,7 +602,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           this.activePreview,
           this.activePreviewIndex,
         )}
-      </simple-popover>`
+      </simple-popover>`;
   }
 
   hasDeletedItems() {
@@ -606,12 +648,21 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     return html`
       <li
         role="treeitem"
-        tabindex="${index === 0 ? '0' : '-1'}"
-        aria-label="${item.title}${item.modified ? ' (modified)' : ''}${item.delete ? ' (marked for deletion)' : ''}"
-        aria-expanded="${this.hasChildren(item.id) ? (this.isCollapsed(item.id) ? 'false' : 'true') : 'undefined'}"
+        tabindex="${index === 0 ? "0" : "-1"}"
+        aria-label="${item.title}${item.modified
+          ? " (modified)"
+          : ""}${item.delete ? " (marked for deletion)" : ""}"
+        aria-expanded="${this.hasChildren(item.id)
+          ? this.isCollapsed(item.id)
+            ? "false"
+            : "true"
+          : "undefined"}"
         aria-level="${item.indent + 1}"
-        aria-setsize="${this.items.filter(i => i.parent === item.parent).length}"
-        aria-posinset="${this.items.filter(i => i.parent === item.parent).indexOf(item) + 1}"
+        aria-setsize="${this.items.filter((i) => i.parent === item.parent)
+          .length}"
+        aria-posinset="${this.items
+          .filter((i) => i.parent === item.parent)
+          .indexOf(item) + 1}"
         @keydown="${this.handleTreeItemKeydown}"
         @dragenter="${this._dragEnter}"
         @dragleave="${this._dragLeave}"
@@ -1330,11 +1381,11 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   // Handle Enter key on label to activate editing mode
   handleLabelKeydown(e) {
     // Only handle Enter key and prevent if disabled
-    if (e.key === 'Enter' && !e.target.hasAttribute('disabled')) {
+    if (e.key === "Enter" && !e.target.hasAttribute("disabled")) {
       e.preventDefault();
       e.stopPropagation();
       this.editTitle(e);
-      this.announceAction('Title editing activated');
+      this.announceAction("Title editing activated");
     }
   }
 
@@ -1342,107 +1393,125 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   handleTreeItemKeydown(e) {
     // Only handle navigation keys when focused directly on the tree item
     // Allow other elements (buttons, inputs) to handle their own keyboard events
-    if (e.target.tagName.toLowerCase() !== 'li' || !e.target.hasAttribute('role')) {
+    if (
+      e.target.tagName.toLowerCase() !== "li" ||
+      !e.target.hasAttribute("role")
+    ) {
       return;
     }
 
     const currentItem = e.target;
-    const itemId = currentItem.getAttribute('data-item-id');
-    const itemIndex = this.items.findIndex(item => item.id === itemId);
-    
-    switch(e.key) {
-      case 'ArrowDown':
+    const itemId = currentItem.getAttribute("data-item-id");
+    const itemIndex = this.items.findIndex((item) => item.id === itemId);
+
+    switch (e.key) {
+      case "ArrowDown":
         e.preventDefault();
         this.focusNextItem(itemIndex);
-        this.announceNavigation('Moved to next item');
+        this.announceNavigation("Moved to next item");
         break;
-      case 'ArrowUp':
+      case "ArrowUp":
         e.preventDefault();
         this.focusPreviousItem(itemIndex);
-        this.announceNavigation('Moved to previous item');
+        this.announceNavigation("Moved to previous item");
         break;
-      case 'ArrowRight':
+      case "ArrowRight":
         e.preventDefault();
         if (this.hasChildren(itemId) && this.isCollapsed(itemId)) {
           this.collapseExpand(e);
-          this.announceStateChange('Expanded');
+          this.announceStateChange("Expanded");
         } else {
           this.focusFirstChild(itemIndex);
-          this.announceNavigation('Moved to first child');
+          this.announceNavigation("Moved to first child");
         }
         break;
-      case 'ArrowLeft':
+      case "ArrowLeft":
         e.preventDefault();
         if (this.hasChildren(itemId) && !this.isCollapsed(itemId)) {
           this.collapseExpand(e);
-          this.announceStateChange('Collapsed');
+          this.announceStateChange("Collapsed");
         } else {
           this.focusParent(itemIndex);
-          this.announceNavigation('Moved to parent');
+          this.announceNavigation("Moved to parent");
         }
         break;
-      case 'Enter':
-      case ' ':
+      case "Enter":
+      case " ":
         // Only handle expand/collapse if no operations are visible
         if (this.activeItemForActions !== itemId && this.hasChildren(itemId)) {
           e.preventDefault();
           this.collapseExpand(e);
-          const newState = this.isCollapsed(itemId) ? 'Collapsed' : 'Expanded';
+          const newState = this.isCollapsed(itemId) ? "Collapsed" : "Expanded";
           this.announceStateChange(newState);
         }
         break;
-      case 'Home':
+      case "Home":
         e.preventDefault();
         this.focusFirstItem();
-        this.announceNavigation('Moved to first item');
+        this.announceNavigation("Moved to first item");
         break;
-      case 'End':
+      case "End":
         e.preventDefault();
         this.focusLastItem();
-        this.announceNavigation('Moved to last item');
+        this.announceNavigation("Moved to last item");
         break;
-      case 'Delete':
-      case 'Backspace':
+      case "Delete":
+      case "Backspace":
         // Keyboard shortcut for delete operation
         if (this.activeItemForActions === itemId && !this.isLocked(itemIndex)) {
           e.preventDefault();
-          this.itemOp(itemIndex, 'delete');
-          this.announceAction('Item marked for deletion');
+          this.itemOp(itemIndex, "delete");
+          this.announceAction("Item marked for deletion");
         }
         break;
-      case 'd':
+      case "d":
         // Keyboard shortcut for duplicate
-        if (e.ctrlKey && this.activeItemForActions === itemId && !this.isLocked(itemIndex)) {
+        if (
+          e.ctrlKey &&
+          this.activeItemForActions === itemId &&
+          !this.isLocked(itemIndex)
+        ) {
           e.preventDefault();
-          this.itemOp(itemIndex, 'duplicate');
-          this.announceAction('Item duplicated');
+          this.itemOp(itemIndex, "duplicate");
+          this.announceAction("Item duplicated");
         }
         break;
     }
   }
 
   focusNextItem(currentIndex) {
-    const visibleItems = this.items.filter((item, index) => 
-      this.getItemParentsCollapsed(item) === '' && !this.hideDelete || !item.delete
+    const visibleItems = this.items.filter(
+      (item, index) =>
+        (this.getItemParentsCollapsed(item) === "" && !this.hideDelete) ||
+        !item.delete,
     );
-    const currentVisibleIndex = visibleItems.findIndex(item => item.id === this.items[currentIndex].id);
-    const nextIndex = Math.min(currentVisibleIndex + 1, visibleItems.length - 1);
+    const currentVisibleIndex = visibleItems.findIndex(
+      (item) => item.id === this.items[currentIndex].id,
+    );
+    const nextIndex = Math.min(
+      currentVisibleIndex + 1,
+      visibleItems.length - 1,
+    );
     this.focusItem(visibleItems[nextIndex].id);
   }
 
   focusPreviousItem(currentIndex) {
-    const visibleItems = this.items.filter((item, index) => 
-      this.getItemParentsCollapsed(item) === '' && !this.hideDelete || !item.delete
+    const visibleItems = this.items.filter(
+      (item, index) =>
+        (this.getItemParentsCollapsed(item) === "" && !this.hideDelete) ||
+        !item.delete,
     );
-    const currentVisibleIndex = visibleItems.findIndex(item => item.id === this.items[currentIndex].id);
+    const currentVisibleIndex = visibleItems.findIndex(
+      (item) => item.id === this.items[currentIndex].id,
+    );
     const prevIndex = Math.max(currentVisibleIndex - 1, 0);
     this.focusItem(visibleItems[prevIndex].id);
   }
 
   focusFirstChild(parentIndex) {
     const parentId = this.items[parentIndex].id;
-    const firstChild = this.items.find(item => item.parent === parentId);
-    if (firstChild && this.getItemParentsCollapsed(firstChild) === '') {
+    const firstChild = this.items.find((item) => item.parent === parentId);
+    if (firstChild && this.getItemParentsCollapsed(firstChild) === "") {
       this.focusItem(firstChild.id);
     }
   }
@@ -1455,8 +1524,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   }
 
   focusFirstItem() {
-    const firstItem = this.items.find(item => 
-      this.getItemParentsCollapsed(item) === '' && (!this.hideDelete || !item.delete)
+    const firstItem = this.items.find(
+      (item) =>
+        this.getItemParentsCollapsed(item) === "" &&
+        (!this.hideDelete || !item.delete),
     );
     if (firstItem) {
       this.focusItem(firstItem.id);
@@ -1464,8 +1535,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   }
 
   focusLastItem() {
-    const visibleItems = this.items.filter(item => 
-      this.getItemParentsCollapsed(item) === '' && (!this.hideDelete || !item.delete)
+    const visibleItems = this.items.filter(
+      (item) =>
+        this.getItemParentsCollapsed(item) === "" &&
+        (!this.hideDelete || !item.delete),
     );
     if (visibleItems.length > 0) {
       this.focusItem(visibleItems[visibleItems.length - 1].id);
@@ -1475,14 +1548,16 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   focusItem(itemId) {
     // Remove tabindex from all items
     const allItems = this.shadowRoot.querySelectorAll('[role="treeitem"]');
-    allItems.forEach(item => {
-      item.setAttribute('tabindex', '-1');
+    allItems.forEach((item) => {
+      item.setAttribute("tabindex", "-1");
     });
-    
+
     // Set tabindex and focus on target item
-    const targetItem = this.shadowRoot.querySelector(`[data-item-id="${itemId}"]`);
+    const targetItem = this.shadowRoot.querySelector(
+      `[data-item-id="${itemId}"]`,
+    );
     if (targetItem) {
-      targetItem.setAttribute('tabindex', '0');
+      targetItem.setAttribute("tabindex", "0");
       targetItem.focus();
     }
   }
@@ -1493,7 +1568,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     this.requestUpdate();
     // Clear after announcement to avoid repetition
     setTimeout(() => {
-      this.liveRegionText = '';
+      this.liveRegionText = "";
       this.requestUpdate();
     }, 1000);
   }
@@ -1503,7 +1578,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     this.requestUpdate();
     // Clear after announcement
     setTimeout(() => {
-      this.liveRegionText = '';
+      this.liveRegionText = "";
       this.requestUpdate();
     }, 1000);
   }
@@ -1513,7 +1588,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     this.requestUpdate();
     // Clear after announcement
     setTimeout(() => {
-      this.liveRegionText = '';
+      this.liveRegionText = "";
       this.requestUpdate();
     }, 1000);
   }
@@ -1521,25 +1596,26 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   // Helper method to scroll item into view if not visible
   scrollIntoViewIfNeeded(itemId, delay = 2000) {
     setTimeout(() => {
-      const targetItem = this.shadowRoot.querySelector(`[data-item-id="${itemId}"]`);
+      const targetItem = this.shadowRoot.querySelector(
+        `[data-item-id="${itemId}"]`,
+      );
       if (targetItem) {
         const rect = targetItem.getBoundingClientRect();
         const viewportHeight = globalThis.innerHeight;
         const viewportWidth = globalThis.innerWidth;
-        
+
         // Check if item is outside viewport
-        const isOutsideViewport = (
-          rect.bottom < 0 || 
-          rect.top > viewportHeight || 
-          rect.right < 0 || 
-          rect.left > viewportWidth
-        );
-        
+        const isOutsideViewport =
+          rect.bottom < 0 ||
+          rect.top > viewportHeight ||
+          rect.right < 0 ||
+          rect.left > viewportWidth;
+
         if (isOutsideViewport) {
           targetItem.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center',
-            inline: 'nearest'
+            behavior: "smooth",
+            block: "center",
+            inline: "nearest",
           });
         }
       }
