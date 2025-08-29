@@ -2,11 +2,12 @@
  * Copyright 2025 btopro
  * @license Apache-2.0, see License.md for full text.
  */
-import { css, html} from "lit";
+import { css, html } from "lit";
 import { HAXCMSLitElementTheme } from "@haxtheweb/haxcms-elements/lib/core/HAXCMSLitElementTheme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
+import { JourneyTopbarThemeStyles } from "./journey-topbar-theme-styles.js";
 
 /**
  * `JourneyTopbarTheme`
@@ -61,118 +62,56 @@ class JourneyTopbarTheme extends HAXCMSLitElementTheme {
     return [
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
-      :root {
-        --my-theme-low-tone: var(--ddd-theme-default-slateMaxLight);
-        --my-theme-high-tone: var(--ddd-theme-default-coalyGray);
-      }
-      body {
-        padding: var(--ddd-spacing-0);
-        margin: var(--ddd-spacing-0);
-        background-color: var(--my-theme-low-tone);
-      }
-      body.dark-mode {
-        background-color: var(--my-theme-high-tone);
-      }
+        :root {
+          --my-theme-low-tone: var(--ddd-theme-default-slateMaxLight);
+          --my-theme-high-tone: var(--ddd-theme-default-coalyGray);
+        }
+        body {
+          padding: var(--ddd-spacing-0);
+          margin: var(--ddd-spacing-0);
+          background-color: var(--my-theme-low-tone);
+        }
+        body.dark-mode {
+          background-color: var(--my-theme-high-tone);
+        }
       `,
     ];
   }
 
   //styles function
   static get styles() {
-    return [
-      super.styles,
-      css`
-        :host {
-          display: block;
-          padding: var(--ddd-spacing-0) var(--ddd-spacing-10);
-          min-width: 400px;
-          max-width: 960px;
-          margin: 0 auto;
-          background-color: light-dark(var(--my-theme-low-tone), var(--my-theme-high-tone));
-          color: light-dark(var(--my-theme-high-tone), var(--my-theme-low-tone));
-        }
-
-        site-title {
-          font-size: var(--ddd-font-size-l);
-        }
-
-        header {
-          display: flex;
-        }
-        nav {
-          display: flex;
-          margin: var(--ddd-spacing-0);
-          padding: var(--ddd-spacing-0);
-          top: 0;
-          left: 0;
-          right: 0;
-          position: fixed;
-          background-color: var(--ddd-primary-3);
-          padding: var(--ddd-spacing-2);
-        }
-        ul {
-          margin: var(--ddd-spacing-0);
-          padding: var(--ddd-spacing-0);
-          display: flex;
-        }
-        ul li {
-          display: block;
-          margin: var(--ddd-spacing-0);
-          padding: var(--ddd-spacing-0);
-          list-style-type: none;
-        }
-        ul li a {
-          color: white;
-          text-decoration: none;
-          font-size: var(--ddd-font-size-4xs);
-          cursor: pointer;
-          line-height: normal;
-          text-overflow: ellipsis;
-          overflow: hidden;
-          text-align: start;
-        }
-
-        ul li a:hover, ul li a:focus {
-          text-decoration: underline;
-          outline-color: var(--ddd-primary-21);
-        }
-
-        .active button {
-          background-color: light-dark(var(--my-theme-low-tone), var(--my-theme-high-tone));
-          color: light-dark(var(--my-theme-high-tone), var(--my-theme-low-tone));
-          font-weight: bold;
-        }
-        main {
-          margin-top: 64px;
-        }
-      `,
-    ];
+    return [super.styles, JourneyTopbarThemeStyles];
   }
 
+  // render function
   render() {
     return html`
-    <nav>
-      <ul>
-      ${this._items.map((item, index) => {
-      return html`
-        <li class="${item.id === this.activeId ? "active" : ""}">
-          <a href="${item.slug}">${item.title}</a>
-        </li>
-      `;
-      }
-      )}
-      </ul>
-    </nav>
-    <main>
-      <site-active-title></site-active-title>
-      <article>
-        <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
-        <div id="contentcontainer"><div id="slot"><slot></slot></div></div>
-      </article>
-    </main>
+      <div class="topbar-container">
+        <nav class="topbar-scroll">
+          <ul>
+            ${this._items.map(
+              (item) => html`
+                <li class="${item.id === this.activeId ? "active" : ""}">
+                  <a href="${item.slug}">${item.title}</a>
+                </li>
+              `,
+            )}
+          </ul>
+        </nav>
+      </div>
+
+      <main>
+        <site-active-title></site-active-title>
+        <article>
+          <!-- this block and names are required for HAX to edit the content of the page. contentcontainer, slot, and wrapping the slot. -->
+          <div id="contentcontainer">
+            <div id="slot"><slot></slot></div>
+          </div>
+        </article>
+      </main>
+      <scroll-button></scroll-button>
     `;
   }
-
 }
 globalThis.customElements.define(JourneyTopbarTheme.tag, JourneyTopbarTheme);
 export { JourneyTopbarTheme };
