@@ -20,13 +20,25 @@ export class CleanOneSearchBox extends I18NMixin(LitElement) {
         input,
         input:focus,
         input:hover {
-          background: 0 0;
-          border: 1px solid transparent;
+          background: light-dark(
+            var(--ddd-accent-6, #fff),
+            var(--ddd-primary-4, #333)
+          );
+          border: 1px solid light-dark(
+            rgba(0, 0, 0, 0.1),
+            rgba(255, 255, 255, 0.2)
+          );
           box-shadow: none;
           outline: 0;
           line-height: 22px;
           padding: 7px 7px;
-          color: inherit;
+          color: light-dark(black, var(--ddd-accent-6, #fff));
+        }
+        input::placeholder {
+          color: light-dark(
+            rgba(0, 0, 0, 0.6),
+            rgba(255, 255, 255, 0.7)
+          );
         }
       `,
     ];

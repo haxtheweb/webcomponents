@@ -326,8 +326,7 @@ class JwtLogin extends LitElement {
     this.jwt = null;
     if (this.isDifferentDomain(this.logoutUrl)) {
       globalThis.location.href = this.logoutUrl;
-    }
-    else {
+    } else {
       this.generateRequest(this.logoutUrl);
     }
   }
