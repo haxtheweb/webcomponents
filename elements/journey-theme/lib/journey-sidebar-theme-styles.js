@@ -1,6 +1,5 @@
 import { css, unsafeCSS } from "lit";
-// const Sidebar_bg_image = new URL("./assets/sidebar_bg.png", import.meta.url)
-// .href;
+
 export const JourneySidebarThemeStyles = css`
   :host {
     --sidebar-bg: var(--ddd-theme-accent);
