@@ -107,8 +107,6 @@ cp ~/haxtheweb/webcomponents/wc-registry.json ~/haxtheweb/create/src/lib/wc-regi
 ## STEP 4 COMPONENT GALLERY NEEDS REBUILT FOR CDN PUBLISHING
 cd ~/haxtheweb/webcomponents
 yarn run build-gallery
-rm -rf ~/haxtheweb/psucdn/component-gallery
-cp ~/haxtheweb/webcomponents/component-gallery.html ~/haxtheweb/psucdn/component-gallery.html
 
 
 ## STEP 5 VERSION CONTROL ALL THE THINGS AND TAG
