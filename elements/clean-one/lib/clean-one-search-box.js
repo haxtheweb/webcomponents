@@ -24,10 +24,8 @@ export class CleanOneSearchBox extends I18NMixin(LitElement) {
             var(--ddd-accent-6, #fff),
             var(--ddd-primary-4, #333)
           );
-          border: 1px solid light-dark(
-            rgba(0, 0, 0, 0.1),
-            rgba(255, 255, 255, 0.2)
-          );
+          border: 1px solid
+            light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.2));
           box-shadow: none;
           outline: 0;
           line-height: 22px;
@@ -35,10 +33,7 @@ export class CleanOneSearchBox extends I18NMixin(LitElement) {
           color: light-dark(black, var(--ddd-accent-6, #fff));
         }
         input::placeholder {
-          color: light-dark(
-            rgba(0, 0, 0, 0.6),
-            rgba(255, 255, 255, 0.7)
-          );
+          color: light-dark(rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.7));
         }
       `,
     ];

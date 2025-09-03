@@ -36,4 +36,3 @@ rollup.config.js
 *.svg
 *.jpg
 *.jpeg
-*.stories.js

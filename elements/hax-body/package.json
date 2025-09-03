@@ -94,7 +94,6 @@
     "@haxtheweb/q-r": "^11.0.5",
     "@haxtheweb/self-check": "^11.0.5",
     "@haxtheweb/stop-note": "^11.0.5",
-    "@haxtheweb/storybook-utilities": "^11.0.5",
     "@haxtheweb/video-player": "^11.0.5",
     "@haxtheweb/wikipedia-query": "^11.0.5",
     "@open-wc/testing": "4.0.0",

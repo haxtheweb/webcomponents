@@ -15,7 +15,7 @@ export class gSheetInterface {
   async loadSheetData(page) {
     return await this.loadCSVData(
       `https://docs.google.com/spreadsheets/d/e/${this.sheet}/pub?output=csv&gid=${this.sheetGids[page]}`,
-      page
+      page,
     );
   }
   /**

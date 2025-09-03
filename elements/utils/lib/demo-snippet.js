@@ -1,7 +1,7 @@
 /**
  * Copyright 2025 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
- * 
+ *
  * Inspired by @polymer version, updated for lit, DDD,
  * dark mode and to leverage the HAX ecosystem.
  */
@@ -13,7 +13,7 @@ import "@haxtheweb/code-sample/code-sample.js";
 /**
  * `demo-snippet` is a helper element that displays the source of a code snippet
  * and its rendered demo. It can be used for both native elements and Web Components.
- * 
+ *
  * This is a modernized Lit-based version of the original Polymer demo-snippet
  * with dark mode compatibility using the DDD design system.
  *
@@ -69,7 +69,8 @@ class DemoSnippet extends DDDSuper(LitElement) {
           transition: all 0.3s ease-in-out;
         }
 
-        :host(:hover), :host(:focus-within) {
+        :host(:hover),
+        :host(:focus-within) {
           box-shadow: var(--ddd-boxShadow-lg);
         }
 
@@ -93,7 +94,7 @@ class DemoSnippet extends DDDSuper(LitElement) {
           :host {
             border: 2px solid;
           }
-          
+
           .demo {
             border-bottom-width: 2px;
           }
@@ -113,11 +114,8 @@ class DemoSnippet extends DDDSuper(LitElement) {
       <div class="demo">
         <slot id="content" @slotchange="${this._onSlotChange}"></slot>
       </div>
-      
-      <code-sample 
-        id="codeDisplay"
-        type="html" 
-        copy-clipboard-button>
+
+      <code-sample id="codeDisplay" type="html" copy-clipboard-button>
         <template></template>
       </code-sample>
     `;
@@ -139,9 +137,9 @@ class DemoSnippet extends DDDSuper(LitElement) {
 
   updated(changedProperties) {
     super.updated(changedProperties);
-    
+
     // React to _markdown changes and update the code-sample
-    if (changedProperties.has('_markdown') && this._markdown) {
+    if (changedProperties.has("_markdown") && this._markdown) {
       this._updateCodeSample();
     }
   }
@@ -163,8 +161,9 @@ class DemoSnippet extends DDDSuper(LitElement) {
     if (!slot) return;
 
     const assignedNodes = slot.assignedNodes({ flatten: true });
-    const template = assignedNodes.find(node => 
-      node.nodeType === Node.ELEMENT_NODE && node.tagName === "TEMPLATE"
+    const template = assignedNodes.find(
+      (node) =>
+        node.nodeType === Node.ELEMENT_NODE && node.tagName === "TEMPLATE",
     );
 
     // If there's no template, render empty code
@@ -174,13 +173,13 @@ class DemoSnippet extends DDDSuper(LitElement) {
     }
 
     let snippet = template.innerHTML;
-    
+
     // Clean up the snippet
     snippet = this._unindent(snippet);
-    
+
     // Hack: In safari + shady dom, sometime we get an empty 'class' attribute
     snippet = snippet.replace(/ class=""/g, "");
-    
+
     // Boolean properties are displayed as checked="", so remove the ="" bit
     snippet = snippet.replace(/=""/g, "");
 
@@ -190,7 +189,7 @@ class DemoSnippet extends DDDSuper(LitElement) {
     if (!template.hasAttribute("is")) {
       // Create a document fragment from the template content
       const fragment = document.importNode(template.content, true);
-      
+
       // Clear any existing demo content and append new content
       const demoSection = this.shadowRoot.querySelector(".demo slot");
       if (demoSection) {
@@ -201,12 +200,14 @@ class DemoSnippet extends DDDSuper(LitElement) {
     }
 
     // Dispatch dom-ready event
-    this.dispatchEvent(new CustomEvent("dom-ready", {
-      bubbles: true,
-      cancelable: true,
-      composed: true,
-      detail: this
-    }));
+    this.dispatchEvent(
+      new CustomEvent("dom-ready", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: this,
+      }),
+    );
   }
 
   /**
@@ -214,18 +215,18 @@ class DemoSnippet extends DDDSuper(LitElement) {
    * and inserting it with the current _markdown content
    */
   _updateCodeSample() {
-    const codeDisplay = this.shadowRoot.querySelector('#codeDisplay');
+    const codeDisplay = this.shadowRoot.querySelector("#codeDisplay");
     if (!codeDisplay) return;
 
     // Clear any existing template elements in the code-sample
-    const existingTemplate = codeDisplay.querySelector('template');
+    const existingTemplate = codeDisplay.querySelector("template");
     if (existingTemplate) {
       codeDisplay.removeChild(existingTemplate);
     }
 
     // Create a new template element with the markdown content
-    const newTemplate = document.createElement('template');
-    newTemplate.setAttribute('preserve-content', 'preserve-content');
+    const newTemplate = document.createElement("template");
+    newTemplate.setAttribute("preserve-content", "preserve-content");
     newTemplate.innerHTML = this._markdown;
     console.log(newTemplate);
 
@@ -236,18 +237,18 @@ class DemoSnippet extends DDDSuper(LitElement) {
   // Unindent helper method (simplified version of marked-element's unindent)
   _unindent(text) {
     if (!text) return "";
-    
+
     const lines = text.split("\n");
-    
+
     // Remove leading/trailing empty lines
     while (lines.length && lines[0].trim() === "") lines.shift();
     while (lines.length && lines[lines.length - 1].trim() === "") lines.pop();
-    
+
     if (lines.length === 0) return "";
-    
+
     // Find minimum indentation (ignoring empty lines)
     let minIndent = Infinity;
-    lines.forEach(line => {
+    lines.forEach((line) => {
       if (line.trim()) {
         const match = line.match(/^(\s*)/);
         if (match) {
@@ -255,13 +256,12 @@ class DemoSnippet extends DDDSuper(LitElement) {
         }
       }
     });
-    
-    if (minIndent === Infinity) minIndent = 0;
-    
-    // Remove common indentation
-    return lines.map(line => line.substring(minIndent)).join("\n");
-  }
 
+    if (minIndent === Infinity) minIndent = 0;
+
+    // Remove common indentation
+    return lines.map((line) => line.substring(minIndent)).join("\n");
+  }
 }
 
 globalThis.customElements.define(DemoSnippet.tag, DemoSnippet);

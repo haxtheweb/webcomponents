@@ -21,6 +21,5 @@
 /out-tsc/
 /public/
 
-storybook-static
 custom-elements.json
 .vercel

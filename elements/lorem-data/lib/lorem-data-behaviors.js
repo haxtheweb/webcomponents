@@ -98,7 +98,6 @@ export const LoremDataBehaviors = function (SuperClass) {
      * convert camelcase to kebab (for converting properties in attributes)
      * @param {string} camel
      * @returns {string} kebab
-     * @memberof StorybookUtilities
      */
     camelToKebab(camel) {
       return camel
@@ -150,7 +149,6 @@ export const LoremDataBehaviors = function (SuperClass) {
      * convert camelcase to kebab (for converting properties in attributes)
      * @param {string} camel
      * @returns {string} kebab
-     * @memberof StorybookUtilities
      */
     kebabToCamel(kebab) {
       return kebab

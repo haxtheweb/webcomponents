@@ -45,7 +45,6 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/deduping-fix": "^11.0.0",
-    "@haxtheweb/storybook-utilities": "^11.0.5",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
     "@haxtheweb/utils": "^11.0.0",

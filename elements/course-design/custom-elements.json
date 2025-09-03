@@ -165,33 +165,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "lib/activity-box.stories.js",
-      "declarations": [
-        {
-          "kind": "function",
-          "name": "ActivityBoxStory"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "module": "lib/activity-box.stories.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "ActivityBoxStory",
-          "declaration": {
-            "name": "ActivityBoxStory",
-            "module": "lib/activity-box.stories.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "lib/block-quote.js",
       "declarations": [
         {
@@ -288,33 +261,6 @@
           "declaration": {
             "name": "BlockQuote",
             "module": "lib/block-quote.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "lib/block-quote.stories.js",
-      "declarations": [
-        {
-          "kind": "function",
-          "name": "BlockQuoteStory"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "module": "lib/block-quote.stories.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "BlockQuoteStory",
-          "declaration": {
-            "name": "BlockQuoteStory",
-            "module": "lib/block-quote.stories.js"
           }
         }
       ]
@@ -784,33 +730,6 @@
     },
     {
       "kind": "javascript-module",
-      "path": "lib/ebook-button.stories.js",
-      "declarations": [
-        {
-          "kind": "function",
-          "name": "EbookButtonStory"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "module": "lib/ebook-button.stories.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "EbookButtonStory",
-          "declaration": {
-            "name": "EbookButtonStory",
-            "module": "lib/ebook-button.stories.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
       "path": "lib/learning-component.js",
       "declarations": [
         {
@@ -1256,33 +1175,6 @@
           "declaration": {
             "name": "WorksheetDownload",
             "module": "lib/worksheet-download.js"
-          }
-        }
-      ]
-    },
-    {
-      "kind": "javascript-module",
-      "path": "lib/worksheet-download.stories.js",
-      "declarations": [
-        {
-          "kind": "function",
-          "name": "WorksheetDownloadStory"
-        }
-      ],
-      "exports": [
-        {
-          "kind": "js",
-          "name": "default",
-          "declaration": {
-            "module": "lib/worksheet-download.stories.js"
-          }
-        },
-        {
-          "kind": "js",
-          "name": "WorksheetDownloadStory",
-          "declaration": {
-            "name": "WorksheetDownloadStory",
-            "module": "lib/worksheet-download.stories.js"
           }
         }
       ]
