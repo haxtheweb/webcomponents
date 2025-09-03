@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import "@haxtheweb/deduping-fix/deduping-fix.js";
-import "@polymer/iron-demo-helpers/demo-snippet.js";
+import "@haxtheweb/utils/lib/demo-snippet.js";
 import { LoremDataBehaviors } from "../lorem-data/lib/lorem-data-behaviors.js";
 
 import {

@@ -123,7 +123,7 @@
     "@haxtheweb/storybook-utilities": "^11.0.5",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
-    "@polymer/iron-demo-helpers": "3.1.0",
+    "@haxtheweb/utils": "^11.0.0",
     "@web/dev-server": "0.4.6",
     "@web/dev-server-esbuild": "1.0.2",
     "@webcomponents/webcomponentsjs": "^2.8.0",

@@ -118,7 +118,8 @@ class CodeSample extends I18NMixin(LitElement) {
         }
 
         button {
-          background: var(--code-sample-copy-button-bg-color);
+          background: var(--code-sample-copy-button-bg-color, white);
+          color: var(--code-sample-copy-button-color, black);
           border: none;
           cursor: pointer;
           display: block;

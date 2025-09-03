@@ -48,7 +48,7 @@
     "@haxtheweb/deduping-fix": "^11.0.0",
     "@haxtheweb/storybook-utilities": "^11.0.5",
     "@open-wc/testing": "4.0.0",
-    "@polymer/iron-demo-helpers": "3.1.0",
+
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2",
     "wc-dox": "1.1.0",

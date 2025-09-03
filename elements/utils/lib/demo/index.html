@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Snippet with Syntax Highlighting Test</title>
+    <script type="module">
+        import '../demo-snippet.js';
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: var(--ddd-theme-default-limestoneMaxLight);
+        }
+        h1, h2 {
+            color: var(--ddd-theme-default-coalyGray);
+        }
+    </style>
+</head>
+<body>
+    <h1>Demo Snippet with Prism.js Syntax Highlighting</h1>
+    
+    <h2>HTML Element Demo</h2>
+    <demo-snippet>
+        <template>
+            <div class="example-container">
+                <input type="text" placeholder="Enter your name" id="nameInput">
+                <button onclick="greetUser()">Greet</button>
+                <p id="greeting" style="color: blue; font-weight: bold;"></p>
+            </div>
+            <script>
+                function greetUser() {
+                    const name = document.getElementById('nameInput').value;
+                    document.getElementById('greeting').textContent = `Hello, ${name}!`;
+                }
+            </script>
+        </template>
+    </demo-snippet>
+
+    <h2>Web Component Demo</h2>
+    <demo-snippet>
+        <template>
+            <my-custom-element
+                title="Sample Component"
+                description="This is a test component"
+                active
+                count="5">
+                <span slot="content">This is slotted content</span>
+            </my-custom-element>
+        </template>
+    </demo-snippet>
+
+    <h2>CSS Demo</h2>
+    <demo-snippet>
+        <template>
+            <style>
+                .fancy-button {
+                    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+                    border: none;
+                    padding: 12px 24px;
+                    border-radius: 8px;
+                    color: white;
+                    font-weight: bold;
+                    cursor: pointer;
+                    transition: transform 0.2s ease;
+                }
+                .fancy-button:hover {
+                    transform: translateY(-2px);
+                }
+            </style>
+            <button class="fancy-button">Fancy Button</button>
+        </template>
+    </demo-snippet>
+</body>
+</html>

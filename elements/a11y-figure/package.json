@@ -44,7 +44,7 @@
     "@haxtheweb/deduping-fix": "^11.0.0",
     "@open-wc/testing": "4.0.0",
     "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
-    "@polymer/iron-demo-helpers": "3.1.0",
+    "@haxtheweb/utils": "^11.0.0",
     "@web/dev-server": "0.4.6",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "9.1.2",
