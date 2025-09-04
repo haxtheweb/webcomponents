@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile File Selection Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .test-section {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+    button {
+      background: #007cba;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 5px;
+    }
+    button:hover {
+      background: #005a87;
+    }
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .status {
+      margin: 10px 0;
+      padding: 10px;
+      border-radius: 4px;
+      background: #f0f0f0;
+      min-height: 50px;
+    }
+    .success {
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+    }
+    .error {
+      background: #f8d7da;
+      border: 1px solid #f1aeb5;
+      color: #721c24;
+    }
+    .info {
+      background: #d1ecf1;
+      border: 1px solid #b7d4ea;
+      color: #0c5460;
+    }
+    .feature-detection {
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      color: #856404;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    pre {
+      background: #f8f9fa;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧙‍♂️ Magic File Wand - Mobile Test</h1>
+  
+  <div class="feature-detection">
+    <h3>🔍 Feature Detection</h3>
+    <div id="feature-status">Checking browser capabilities...</div>
+  </div>
+
+  <div class="test-section">
+    <h3>📁 File Selection Test</h3>
+    <p>Test the Magic File Wand's ability to prompt for file selection on mobile devices.</p>
+    
+    <button id="test-any-file">Select Any File</button>
+    <button id="test-image">Select Image</button>
+    <button id="test-document">Select Document</button>
+    <button id="test-spreadsheet">Select Spreadsheet</button>
+    
+    <div id="test-status" class="status">
+      Click a button above to test file selection. On mobile devices, this should fall back to using a standard file input dialog.
+    </div>
+    
+    <div id="file-info" style="display: none;">
+      <h4>📄 Selected File Info:</h4>
+      <pre id="file-details"></pre>
+    </div>
+  </div>
+
+  <div class="test-section">
+    <h3>🧪 API Compatibility Test</h3>
+    <p>This section tests the decision tree logic for choosing the appropriate file selection method.</p>
+    
+    <button id="force-fallback">Force Fallback Method</button>
+    <button id="force-modern">Force Modern API (if available)</button>
+    
+    <div id="api-test-status" class="status">
+      Use the buttons above to test specific API implementations.
+    </div>
+  </div>
+
+  <script type="module">
+    import '../file-system-broker.js';
+    
+    // Get the FileSystemBroker instance
+    const broker = globalThis.FileSystemBroker.requestAvailability();
+    
+    // Update feature detection status
+    function updateFeatureStatus() {
+      const statusDiv = document.getElementById('feature-status');
+      const hasFileSystemAPI = broker.isFileSystemAccessSupported();
+      const isMobile = broker.isMobileDevice();
+      
+      statusDiv.innerHTML = `
+        <strong>File System Access API:</strong> ${hasFileSystemAPI ? '✅ Supported' : '❌ Not Supported'}<br>
+        <strong>Mobile Device:</strong> ${isMobile ? '📱 Yes' : '🖥️ No'}<br>
+        <strong>User Agent:</strong> ${navigator.userAgent}<br>
+        <strong>Recommended Method:</strong> ${hasFileSystemAPI ? 'Modern API' : 'Fallback Input'}
+      `;
+      
+      if (hasFileSystemAPI) {
+        statusDiv.className = 'feature-detection';
+      } else {
+        statusDiv.className = 'feature-detection';
+      }
+    }
+    
+    // Update file info display
+    function displayFileInfo(file) {
+      const fileInfoDiv = document.getElementById('file-info');
+      const fileDetailsDiv = document.getElementById('file-details');
+      
+      if (file) {
+        fileDetailsDiv.textContent = JSON.stringify({
+          name: file.name,
+          size: file.size,
+          type: file.type,
+          lastModified: new Date(file.lastModified).toISOString()
+        }, null, 2);
+        fileInfoDiv.style.display = 'block';
+      } else {
+        fileInfoDiv.style.display = 'none';
+      }
+    }
+    
+    // Generic test function
+    async function testFileSelection(type, buttonId, statusId = 'test-status') {
+      const button = document.getElementById(buttonId);
+      const status = document.getElementById(statusId);
+      
+      button.disabled = true;
+      status.className = 'status info';
+      status.textContent = `Opening file picker for ${type}...`;
+      
+      try {
+        const file = await broker.loadFile(type);
+        status.className = 'status success';
+        status.innerHTML = `
+          ✅ <strong>Success!</strong> Selected file: ${file.name}<br>
+          <small>Size: ${file.size} bytes | Type: ${file.type}</small><br>
+          <small>Method used: ${broker.isFileSystemAccessSupported() ? 'File System Access API' : 'HTML Input Fallback'}</small>
+        `;
+        displayFileInfo(file);
+        
+        // Try to read a small portion of the file to verify it works
+        if (file.size < 10000) { // Only for small files
+          try {
+            const content = await file.text();
+            console.log('File content preview:', content.substring(0, 100));
+          } catch (e) {
+            console.log('Could not read file as text:', e);
+          }
+        }
+        
+      } catch (error) {
+        status.className = 'status error';
+        status.innerHTML = `❌ <strong>Error:</strong> ${error.message}`;
+        displayFileInfo(null);
+        console.error('File selection error:', error);
+      } finally {
+        button.disabled = false;
+      }
+    }
+    
+    // Test with forced fallback method
+    async function testForcedFallback() {
+      const status = document.getElementById('api-test-status');
+      const button = document.getElementById('force-fallback');
+      
+      button.disabled = true;
+      status.className = 'status info';
+      status.textContent = 'Testing fallback method...';
+      
+      try {
+        const file = await broker.loadFileFallback('*');
+        status.className = 'status success';
+        status.innerHTML = `✅ <strong>Fallback Success!</strong> Selected: ${file.name}<br>
+                            <small>This used the HTML input fallback method regardless of browser support.</small>`;
+        displayFileInfo(file);
+      } catch (error) {
+        status.className = 'status error';
+        status.innerHTML = `❌ <strong>Fallback Error:</strong> ${error.message}`;
+        displayFileInfo(null);
+      } finally {
+        button.disabled = false;
+      }
+    }
+    
+    // Test with forced modern API
+    async function testForcedModern() {
+      const status = document.getElementById('api-test-status');
+      const button = document.getElementById('force-modern');
+      
+      if (!broker.isFileSystemAccessSupported()) {
+        status.className = 'status error';
+        status.innerHTML = '❌ <strong>Cannot test:</strong> File System Access API is not supported in this browser.';
+        return;
+      }
+      
+      button.disabled = true;
+      status.className = 'status info';
+      status.textContent = 'Testing modern File System Access API...';
+      
+      try {
+        // Directly call the modern API
+        const [fileHandle] = await globalThis.showOpenFilePicker({
+          types: [{ description: 'All files', accept: { '*/*': ['*'] } }],
+          excludeAcceptAllOption: false,
+          multiple: false
+        });
+        const file = await fileHandle.getFile();
+        broker.fileHandler = file;
+        
+        status.className = 'status success';
+        status.innerHTML = `✅ <strong>Modern API Success!</strong> Selected: ${file.name}<br>
+                            <small>This used the File System Access API directly.</small>`;
+        displayFileInfo(file);
+      } catch (error) {
+        status.className = 'status error';
+        status.innerHTML = `❌ <strong>Modern API Error:</strong> ${error.message}`;
+        displayFileInfo(null);
+      } finally {
+        button.disabled = false;
+      }
+    }
+    
+    // Event listeners
+    document.getElementById('test-any-file').addEventListener('click', () => {
+      testFileSelection('*', 'test-any-file');
+    });
+    
+    document.getElementById('test-image').addEventListener('click', () => {
+      testFileSelection('image', 'test-image');
+    });
+    
+    document.getElementById('test-document').addEventListener('click', () => {
+      testFileSelection('html', 'test-document');
+    });
+    
+    document.getElementById('test-spreadsheet').addEventListener('click', () => {
+      testFileSelection('xlsx', 'test-spreadsheet');
+    });
+    
+    document.getElementById('force-fallback').addEventListener('click', testForcedFallback);
+    document.getElementById('force-modern').addEventListener('click', testForcedModern);
+    
+    // Initialize
+    updateFeatureStatus();
+    
+    // Update feature status if window is resized (for responsive mobile detection)
+    window.addEventListener('resize', updateFeatureStatus);
+  </script>
+</body>
+</html>

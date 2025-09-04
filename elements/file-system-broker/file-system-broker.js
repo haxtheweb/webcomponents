@@ -22,12 +22,118 @@ class FileSystemBroker extends HTMLElement {
     this.fileHandler = null;
     this.files = [];
   }
+
+  /**
+   * Check if File System Access API is available
+   * @returns {boolean} true if showOpenFilePicker is available
+   */
+  isFileSystemAccessSupported() {
+    return 'showOpenFilePicker' in globalThis && typeof globalThis.showOpenFilePicker === 'function';
+  }
+
+  /**
+   * Check if device is likely mobile based on user agent and touch capability
+   * @returns {boolean} true if device appears to be mobile
+   */
+  isMobileDevice() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const isMobileUA = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+    const hasTouch = 'ontouchstart' in globalThis || navigator.maxTouchPoints > 0;
+    const smallScreen = globalThis.screen && globalThis.screen.width <= 768;
+    return isMobileUA || (hasTouch && smallScreen);
+  }
   /**
    * This is a convention, not the standard
    */
   static get tag() {
     return "file-system-broker";
   }
+  /**
+   * Fallback file selection using HTML input element for mobile devices
+   * @param {String} type
+   * @param {Boolean} multiple
+   * @returns {Promise<File>}
+   */
+  async loadFileFallback(type, multiple = false) {
+    return new Promise((resolve, reject) => {
+      // Create a hidden file input element
+      const input = globalThis.document.createElement('input');
+      input.type = 'file';
+      input.multiple = multiple;
+      
+      // Set accept attribute based on file type
+      const acceptTypes = this.typeToAcceptString(type);
+      if (acceptTypes) {
+        input.accept = acceptTypes;
+      }
+      
+      // Style the input to be invisible but still functional
+      input.style.position = 'absolute';
+      input.style.left = '-9999px';
+      input.style.opacity = '0';
+      input.style.pointerEvents = 'none';
+      
+      // Handle file selection
+      input.addEventListener('change', (event) => {
+        const files = event.target.files;
+        if (files && files.length > 0) {
+          this.fileHandler = files[0];
+          // Clean up
+          globalThis.document.body.removeChild(input);
+          resolve(this.fileHandler);
+        } else {
+          // Clean up
+          globalThis.document.body.removeChild(input);
+          reject(new Error('No file selected'));
+        }
+      });
+      
+      // Handle cancel (ESC or clicking away)
+      input.addEventListener('cancel', () => {
+        globalThis.document.body.removeChild(input);
+        reject(new Error('File selection cancelled'));
+      });
+      
+      // Add to DOM and trigger click
+      globalThis.document.body.appendChild(input);
+      
+      // Use a timeout to ensure the element is added to DOM before clicking
+      setTimeout(() => {
+        input.click();
+      }, 10);
+    });
+  }
+
+  /**
+   * Convert type to accept string for HTML input element
+   * @param {String} type
+   * @returns {String}
+   */
+  typeToAcceptString(type) {
+    switch (type) {
+      case "html":
+        return ".html,.htm";
+      case "xls":
+      case "xlsx":
+      case "ods":
+        return ".csv,.xls,.xlsx,.ods";
+      case "zip":
+        return ".zip,.gz,.tar";
+      case "csv":
+        return ".csv,.txt";
+      case "image":
+        return "image/*";
+      case "video":
+        return "video/*";
+      case "markdown":
+        return ".txt,.md";
+      case "*":
+        return "*/*";
+      default:
+        return "*/*";
+    }
+  }
+
   /**
    * Get contents of a file based on type
    * @param {String} type
@@ -36,21 +142,28 @@ class FileSystemBroker extends HTMLElement {
    * @returns
    */
   async loadFile(type, multiple = false, excludeAll = true) {
-    let accept = this.typeToAccept(type);
-    let fileHandle;
-    let description = `${type} file`;
-    [fileHandle] = await globalThis.showOpenFilePicker({
-      types: [
-        {
-          description: description,
-          accept: accept,
-        },
-      ],
-      excludeAcceptAllOption: excludeAll,
-      multiple: multiple,
-    });
-    this.fileHandler = await fileHandle.getFile();
-    return this.fileHandler;
+    // Check if File System Access API is supported
+    if (this.isFileSystemAccessSupported()) {
+      // Use modern File System Access API
+      let accept = this.typeToAccept(type);
+      let fileHandle;
+      let description = `${type} file`;
+      [fileHandle] = await globalThis.showOpenFilePicker({
+        types: [
+          {
+            description: description,
+            accept: accept,
+          },
+        ],
+        excludeAcceptAllOption: excludeAll,
+        multiple: multiple,
+      });
+      this.fileHandler = await fileHandle.getFile();
+      return this.fileHandler;
+    } else {
+      // Use fallback method for mobile/unsupported browsers
+      return await this.loadFileFallback(type, multiple);
+    }
   }
   /**
    * Get contents of a file based on type

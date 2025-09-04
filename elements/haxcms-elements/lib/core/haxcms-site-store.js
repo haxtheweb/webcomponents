@@ -1121,6 +1121,36 @@ class Store {
       }
     }
   }
+  
+  /**
+   * Load content for a specific item by ID
+   * @param {string} itemId - The ID of the item to load content for
+   * @returns {Promise<string>} - The HTML content of the item
+   */
+  async loadItemContent(itemId) {
+    const item = this.findItem(itemId);
+    if (!item || !item.location) {
+      return '';
+    }
+    
+    try {
+      // Get outlineLocation from site builder if available
+      let outlineLocation = '';
+      if (HAXcmsStore.storePieces && HAXcmsStore.storePieces.siteBuilder) {
+        outlineLocation = HAXcmsStore.storePieces.siteBuilder.outlineLocation || '';
+      }
+      
+      const url = `${outlineLocation}${item.location}`;
+      const response = await fetch(url);
+      if (response.ok) {
+        return await response.text();
+      }
+    } catch (error) {
+      console.warn('Failed to load content for item:', itemId, error);
+    }
+    
+    return '';
+  }
   /**
    * Spider children based on criteria and return what we found
    */
