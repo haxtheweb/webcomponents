@@ -1,0 +1,2584 @@
+[
+  {
+    "element": ".idea",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_TEST_FILE",
+        "message": "No test file found. Create test/${elementName}.test.js"
+      }
+    ]
+  },
+  {
+    "element": ".vscode",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_TEST_FILE",
+        "message": "No test file found. Create test/${elementName}.test.js"
+      }
+    ]
+  },
+  {
+    "element": "a11y-behaviors",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_A11Y_TESTS",
+        "message": "Add accessibility tests using await expect(element).shadowDom.to.be.accessible()"
+      }
+    ]
+  },
+  {
+    "element": "a11y-compare-image",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: activeLayer, opacity, label, position, __lower, __upper, __markers"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: active-layer"
+      }
+    ]
+  },
+  {
+    "element": "a11y-details",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: closeText, openText"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: summary, details, default"
+      }
+    ]
+  },
+  {
+    "element": "a11y-figure",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: imgSrc, imgAlt, __hasDetail"
+      }
+    ]
+  },
+  {
+    "element": "a11y-gif-player",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: alt, disabled, describedBy, longdesc, src, srcWithoutAnimation, __playing, __gifLoaded"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "a11y-media-player",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: __playerReady, allowConcurrent, audioOnly, autoplay, captionsTrack, cc, currentTime, crossorigin, disablePrintButton, disableSearch, disableScroll, disableSeek, darkTranscript, disableFullscreen, disableInteractive, height, hideElapsedTime, hideTimestamps, hideTranscript, id, lang, learningMode, linkable, localization, loop, mediaLang, mediaTitle, muted, hideYoutubeLink, playbackRate, preload, responsiveSize, search, standAlone, source, sources, stackedLayout, sticky, stickyCorner, thumbnailSrc, tracks, transcriptTrack, volume, width, youtubeId, __currentTime, __captionsOption, __cues, __loadedTracks, __playing, __preloadedDuration, __settingsOpen, __transcriptOption"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: mute-changed, transcript-downloaded, transcript-printed, play, a11y-player-playing, pause, stop, restart, backward, forward, seek, playback-rate-changed, volume-changed, cc-toggle, fullscreen-toggle, loop-toggle, play-toggle, muted-toggle, settings-toggled, player-sticky, transcript-toggle, responsive-element, a11y-player"
+      }
+    ]
+  },
+  {
+    "element": "a11y-menu-button",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: currentItem, disabled, expanded, focused, hovered, keepOpenOnClick, menuItems, noOpenOnHover, offset, position, positionAlign"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: close, open, item-click"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: disabled, expanded, focused, hovered, keep-open-on-click, no-open-on-hover, offset, position, position-align"
+      }
+    ]
+  },
+  {
+    "element": "a11y-tabs",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: ariaLabel, activeTab, fullWidth, disabled, hidden, iconBreakpoint, id, layoutBreakpoint, responsiveSize, sticky, __tabs, __tabButtons, __tabFocus"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: a11y-tabs-active-changed"
+      }
+    ]
+  },
+  {
+    "element": "a11y-utils",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_A11Y_TESTS",
+        "message": "Add accessibility tests using await expect(element).shadowDom.to.be.accessible()"
+      }
+    ]
+  },
+  {
+    "element": "absolute-position-behavior",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: allowOverlap, auto, fitToVisibleBounds, hidden, for, offset, sticky, position, positionAlign, justify, target, __positions"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "accent-card",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: accentBackground, accentHeading, flat, horizontal, imageAlign, imageSrc, imageValign, noBorder, ready, link, iconSize, imageWidth"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: image-corner, heading, corner, subheading, content, footer"
+      }
+    ]
+  },
+  {
+    "element": "aframe-player",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: source, height, width, skyColor, ar, x, y, z, position"
+      }
+    ]
+  },
+  {
+    "element": "app-hax",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: unlockComingSoon, unlockTerrible, courses, userName, activeItem, soundIcon, searchTerm, appMode, isNewUser, phrases, userMenuOpen, siteReady, basePath, token"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: jwt-login-logout, simple-modal-show, app-hax-loaded"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: base-path"
+      }
+    ]
+  },
+  {
+    "element": "audio-player",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_A11Y_TESTS",
+        "message": "Add accessibility tests using await expect(element).shadowDom.to.be.accessible()"
+      }
+    ]
+  },
+  {
+    "element": "awesome-explosion",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: state, stopped, playing, paused, image, sound, size, color, resetSound"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: awesome-event"
+      }
+    ]
+  },
+  {
+    "element": "b-r",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: amount"
+      }
+    ]
+  },
+  {
+    "element": "barcode-reader",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_A11Y_TESTS",
+        "message": "Add accessibility tests using await expect(element).shadowDom.to.be.accessible()"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: value, scale, hideinput"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: value-changed"
+      }
+    ]
+  },
+  {
+    "element": "baseline-build-hax",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_A11Y_TESTS",
+        "message": "Add accessibility tests using await expect(element).shadowDom.to.be.accessible()"
+      }
+    ]
+  },
+  {
+    "element": "beaker-broker",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: archive, datUrl"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: archive-changed, dat-url-changed"
+      }
+    ]
+  },
+  {
+    "element": "bootstrap-theme",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_A11Y_TESTS",
+        "message": "Add accessibility tests using await expect(element).shadowDom.to.be.accessible()"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: searchTerm, menuOpen, colorTheme"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: menu-open, color-theme"
+      }
+    ]
+  },
+  {
+    "element": "chartist-render",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: chartTitle, chartData, chartDesc, data, dataSource, id, options, axisX, axisY"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: chartist-render-ready, chart-data-changed, data-source-changed, data-changed, chartist-render-data, chartist-render-created, chartist-render-draw"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: chart-title, chart-data, chart-desc, data, data-source"
+      }
+    ]
+  },
+  {
+    "element": "chat-agent",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: isFullView, isInterfaceHidden"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: is-full-view, is-interface-hidden"
+      }
+    ]
+  },
+  {
+    "element": "check-it-out",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: checkedOut, source, icon, __computedSource, type, label, filePath, modalTitle, hideExplorer, ctl, view, modal"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: checked-out, file-path, modal-title, hide-explorer"
+      }
+    ]
+  },
+  {
+    "element": "citation-element",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: title, scope, displayMethod, creator, source, date, licenseName, licenseLink, license"
+      }
+    ]
+  },
+  {
+    "element": "clean-one",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: searchTerm"
+      }
+    ]
+  },
+  {
+    "element": "clean-portfolio-theme",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: activeItem, activeParent, ancestorItem, prevSibling, nextSibling, topItems, items, activeTags, categoryTags, allTags, menuOverflow, menuOpen, copyrightYear, pageCurrent, pageTotal, siteTitle, homeLink, activeLayout, selectedTag, lastUpdated, licenseName, licenseLink, licenseImage, dataPrimary"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: data-primary"
+      }
+    ]
+  },
+  {
+    "element": "clean-two",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: searchTerm, prevPage, nextPage, pageTimestamp"
+      }
+    ]
+  },
+  {
+    "element": "cms-hax",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: ready, openDefault, hidePanelOps, offsetMargin, elementAlign, allowedTags, endPoint, method, appStoreConnection, __appStore, syncBody, bodyValue, hideMessage, redirectLocation, redirectOnSave, __imported"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: hax-body-content-changed, cms-hax-saved"
+      }
+    ]
+  },
+  {
+    "element": "code-editor",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: libPath, title, showCodePen, readOnly, codePenData, editorValue, value, theme, mode, language, fontSize, wordWrap, autofocus, hideLineNumbers, focused, tabSize, ready"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: show-code-pen-changed, value-changed, focused-changed"
+      }
+    ]
+  },
+  {
+    "element": "code-sample",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: editMode, _haxstate, copyClipboardButton, theme, type, highlightStart, highlightEnd"
+      }
+    ]
+  },
+  {
+    "element": "collection-list",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: responsiveSize"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: responsive-size"
+      }
+    ]
+  },
+  {
+    "element": "count-up",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: start, end, duration, noeasing, decimalplaces, separator, decimal, prefixtext, suffixtext, thresholds, rootMargin, ratio, elementVisible"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: prefix, suffix"
+      }
+    ]
+  },
+  {
+    "element": "course-model",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: visible, title, src, alt"
+      }
+    ]
+  },
+  {
+    "element": "csv-render",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: dataSource, loading, caption, summary, table, tableHeadings, tableData"
+      }
+    ]
+  },
+  {
+    "element": "d-d-d",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: dataPulse"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: data-pulse"
+      }
+    ]
+  },
+  {
+    "element": "d-d-docs",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: option, options"
+      }
+    ]
+  },
+  {
+    "element": "date-card",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: month, date, day, title, startTime, endTime, location, borderSpacing"
+      }
+    ]
+  },
+  {
+    "element": "deduping-fix",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_TEST_FILE",
+        "message": "No test file found. Create test/${elementName}.test.js"
+      }
+    ]
+  },
+  {
+    "element": "discord-embed",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: height, width, source"
+      }
+    ]
+  },
+  {
+    "element": "disqus-embed",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: loadingText, pageURL, pageIdentifier, pageTitle, shortName, lang"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: loading-text, page-url, page-identifier, page-title, short-name"
+      }
+    ]
+  },
+  {
+    "element": "documentation-player",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: label, haxSchema, imageUrl, url"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: hax-insert"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: image-url, url"
+      }
+    ]
+  },
+  {
+    "element": "editable-table",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: editMode"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: toggle-edit-mode"
+      }
+    ]
+  },
+  {
+    "element": "elmsln-loading",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: dark, color, contrast, size"
+      }
+    ]
+  },
+  {
+    "element": "enhanced-text",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: wikipedia, vide, fixationPoint, haxcmsGlossary, haxcmsSiteLocation, haxcmsSite, haxcmsMarkAll, loading, auto"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: fixation-point, haxcms-glossary, haxcms-site-location, haxcms-site, haxcms-mark-all"
+      }
+    ]
+  },
+  {
+    "element": "es-global-bridge",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_TEST_FILE",
+        "message": "No test file found. Create test/${elementName}.test.js"
+      }
+    ]
+  },
+  {
+    "element": "event-badge",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: title, image, name, position, logo, organization, tvcolor, knobcolor, sepia, blackwhite"
+      }
+    ]
+  },
+  {
+    "element": "example-hax-element",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: title"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "example-haxcms-theme",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: activeId, _items"
+      }
+    ]
+  },
+  {
+    "element": "figure-label",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: title, description"
+      }
+    ]
+  },
+  {
+    "element": "fill-in-the-blanks",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_TEST_FILE",
+        "message": "No test file found. Create test/${elementName}.test.js"
+      }
+    ]
+  },
+  {
+    "element": "flash-card",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: inverted, imgSource, imgKeyword, status"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: img-source, img-keyword"
+      }
+    ]
+  },
+  {
+    "element": "full-width-image",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: source, caption"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "fullscreen-behaviors",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: fullscreen, fullscreenEnabled"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "git-corner",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: source, alt, corner, size"
+      }
+    ]
+  },
+  {
+    "element": "github-preview",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: repo, org, __description, repoLang, __stars, __forks, __assetAvailable, extended, readmeExtended, headers, viewMoreText, notFoundText, __readmeText, branch, url, apiUrl, rawUrl, readMe"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: hax-register-app"
+      }
+    ]
+  },
+  {
+    "element": "glossy-portfolio-theme",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: title, siteDescription, relatedItem, isHome, items"
+      }
+    ]
+  },
+  {
+    "element": "grade-book",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: displayMode, settings, disabled, loading, ready, activeStudent, activeAssignment, totalScore, scoreLock, source, sourceData, activeSubmission, database, activeRubric, assessmentView, activeGrading, activeStudentSubmissions"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: app-name"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: simple-tag-drop, simple-tag-dragstart"
+      }
+    ]
+  },
+  {
+    "element": "grid-plate",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: itemPadding, itemMargin, breakpointSm, breakpointMd, breakpointLg, breakpointXl, columns, dataHaxRay, disableResponsive, layout"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: col-${num}"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: responsive-element, disable-responsive-changed, resize"
+      }
+    ]
+  },
+  {
+    "element": "h5p-element",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: source"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "hal-9000",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: toast, commands, respondsTo, debug, auto, enabled, pitch, rate, language"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: super-daemon-toast-hide, super-daemon-toast-show"
+      }
+    ]
+  },
+  {
+    "element": "hax-body",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: _useristyping, haxMover, editMode, elementAlign, trayDetail, trayStatus, activeNode, canMoveElement, viewSourceToggle"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: hax-register-body, place-holder-file-drop, hax-drop-focus-event"
+      }
+    ]
+  },
+  {
+    "element": "haxor-slevin",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: color, selectedPage, activeManifestIndexCounter, activeItem, stateClass, __mainPosts, __followUpPosts"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: resize"
+      }
+    ]
+  },
+  {
+    "element": "hex-picker",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: value, disabled, largeDisplay"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: value-changed"
+      }
+    ]
+  },
+  {
+    "element": "hexagon-loader",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: color, size, loading, items, itemCount"
+      }
+    ]
+  },
+  {
+    "element": "iframe-loader",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: loading, height, width, isPDF, disabled, source"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "image-compare-slider",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: bottomAlt, bottomDescriptionId, bottomSrc, opacity, position, title, topAlt, topDescriptionId, topSrc"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: bottom-alt, bottom-description-id, bottom-src, top-alt, top-description-id, top-src"
+      }
+    ]
+  },
+  {
+    "element": "image-inspector",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: noLeft, degrees, src, hoverClass"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: toolbar, default"
+      }
+    ]
+  },
+  {
+    "element": "img-pan-zoom",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: src, sources, page, describedBy, dzi, fadeIn, fullscreenToggled, flipToggled, loading, hideSpinner, loaded, showNavigationControl, showNavigator, zoomPerClick, zoomPerScroll, animationTime, navPrevNextWrap, showRotationControl, minZoomImageRatio, maxZoomPixelRatio, constrainDuringPan, visibilityRatio, navigatorAutoFade, navigatorPosition, navigatorTop, navigatorBottom, navigatorLeft, navigatorRight, navigatorHeight, navigatorWidth, navigatorToggled, sequenceMode, preserveViewport, showReferenceStrip, referenceStripScroll, previousButton, nextButton, homeButton, zoomInButton, zoomOutButton, fullScreenButton"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: loading-changed, loaded-changed, zoom, page, pan, update-viewport, viewport-changed"
+      }
+    ]
+  },
+  {
+    "element": "img-view-modal",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: title, modal"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: modal-button-click"
+      }
+    ]
+  },
+  {
+    "element": "inline-audio",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: source, icon, aria, title, playing, shiny"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: playing-changed"
+      }
+    ]
+  },
+  {
+    "element": "intersection-element",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_TEST_FILE",
+        "message": "No test file found. Create test/${elementName}.test.js"
+      }
+    ]
+  },
+  {
+    "element": "journey-theme",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: _items, activeItem, ancestorItem, location, basePath, dataPrimary, siteTheme, licenseName, licenseLink, licenseImage, lastUpdated, copyrightYear, pageCurrent, pageTotal"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: data-primary, site-theme"
+      }
+    ]
+  },
+  {
+    "element": "jwt-login",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: auto, refreshUrl, redirectUrl, logoutUrl, url, method, body, key, jwt"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: jwt-login-refresh-error, jwt-changed, jwt-logged-in, jwt-token, jwt-login-login-failed"
+      }
+    ]
+  },
+  {
+    "element": "la-tex",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: hydrated, initialText"
+      }
+    ]
+  },
+  {
+    "element": "lazy-image-helpers",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: imageLoaded"
+      }
+    ]
+  },
+  {
+    "element": "learn-two-theme",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: opened"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "license-element",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: title, creator, source, licenseName, licenseImage, licenseLink, license, moreLabel, moreLink, hasMore"
+      }
+    ]
+  },
+  {
+    "element": "lorem-data",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: schemas"
+      }
+    ]
+  },
+  {
+    "element": "lrn-gitgraph",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: commits, template, orientation, mode, reverseArrow, config"
+      }
+    ]
+  },
+  {
+    "element": "lrn-table",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: title, csvFile, description"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "lrn-vocab",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: term"
+      }
+    ]
+  },
+  {
+    "element": "lrndesign-chart",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: accentColor, dark, height, reverseData, width"
+      }
+    ]
+  },
+  {
+    "element": "lrndesign-imagemap",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: label, src, hotspotDetails, subtopicOf, parent, __activeHotspot"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: heading"
+      }
+    ]
+  },
+  {
+    "element": "lrndesign-timeline",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: events, timelineSize, title"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: responsive-element"
+      }
+    ]
+  },
+  {
+    "element": "lunr-search",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: dataSource, __auto, data, method, search, results, noStopWords, fields, indexNoStopWords, index, __lunrLoaded, limit, minScore, log, demo"
+      }
+    ]
+  },
+  {
+    "element": "map-menu",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: disabled, editControls, isFlex, isHorizontal, maxDepth, title, data, manifest, items, selected, activeItem, autoScroll, activeIndicator"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: selected, map-menu-item-hidden-check"
+      }
+    ]
+  },
+  {
+    "element": "mark-the-words",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: wordList, statement, missedAnswers, numberCorrect, numberGuessed"
+      }
+    ]
+  },
+  {
+    "element": "matching-question",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_TEST_FILE",
+        "message": "No test file found. Create test/${elementName}.test.js"
+      }
+    ]
+  },
+  {
+    "element": "md-block",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: source, markdown"
+      }
+    ]
+  },
+  {
+    "element": "media-image",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: link, asMd, __figureLabel, modalTitle, disableZoom, _hasCaption, source, citation, caption, alt, size, round, card, box, offset, figureLabelTitle, figureLabelDescription"
+      }
+    ]
+  },
+  {
+    "element": "media-quote",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_TEST_FILE",
+        "message": "No test file found. Create test/${elementName}.test.js"
+      }
+    ]
+  },
+  {
+    "element": "meme-maker",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: alt, crossorigin, describedBy, imageUrl, topText, bottomText"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: i18n-manager-register-element"
+      }
+    ]
+  },
+  {
+    "element": "merit-badge",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: badgeDate, badgeImage, badgeTitle, badgeDetails, hyperLink, badgeSkills, skillsOpened, detailsOpened, badgeUnlocked, badgeColor"
+      }
+    ]
+  },
+  {
+    "element": "moment-element",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: datetime, inputFormat, outputFormat, from, to, output, libraryLoaded"
+      }
+    ]
+  },
+  {
+    "element": "music-player",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: source, visualizer, noWaterfall, noVisual"
+      }
+    ]
+  },
+  {
+    "element": "oer-schema",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: text, oerProperty, typeof, relatedResource"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "outline-designer",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: haxGizmos, hideDelete, activeItemForActions, storeTools, eventData, items, appReady, activePreview, activePreviewIndex, hideContentOps, fidelity, liveRegionText"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: simple-modal-hide"
+      }
+    ]
+  },
+  {
+    "element": "outline-player",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: opened, closed, activeId, narrow"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: title, default"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: closed-changed, resize"
+      }
+    ]
+  },
+  {
+    "element": "page-break",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: iconType, noderefs, relatedItems, icon, accentColor, entityType, description, order, hideInMenu, tags, developerTheme, title, slug, image, parent, published, locked, depth, itemId, breakType, status, pageType, _haxState"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: page-break-registration, page-break-change, hax-refresh-tray-form"
+      }
+    ]
+  },
+  {
+    "element": "page-contents-menu",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: contentContainer, relationship, items, position, mobile, label, hideSettings, hideIfEmpty, isEmpty"
+      }
+    ]
+  },
+  {
+    "element": "page-flag",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: label, opened, show"
+      }
+    ]
+  },
+  {
+    "element": "page-section",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: anchor, scrollerLabel, filter, fold, full, scroller, bg, image, preset"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default, entice, buttons"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: scroller-label"
+      }
+    ]
+  },
+  {
+    "element": "paper-input-flagged",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: label, disabled, icon, maxlength, minlength, status, value, flaggedInput, inputSuccess, __activeMessage"
+      }
+    ]
+  },
+  {
+    "element": "paper-stepper",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: selected, progressBar, backLabel, nextLabel, disablePrevious, disableNext, noButtons"
+      }
+    ]
+  },
+  {
+    "element": "parallax-image",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: imageBg, describedBy"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: parallax_heading"
+      }
+    ]
+  },
+  {
+    "element": "pdf-browser-viewer",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: file, notSupportedMessage, notSupportedLinkMessage, height, width, card, downloadLabel, elevation"
+      }
+    ]
+  },
+  {
+    "element": "person-testimonial",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: describedBy, image, name, position"
+      }
+    ]
+  },
+  {
+    "element": "place-holder",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: iconFromType, text, directions, calcText, type, dragOver"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: place-holder-replace, place-holder-file-drop"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: drag-over"
+      }
+    ]
+  },
+  {
+    "element": "play-list",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: items, loop, edit, navigation, pagination, aspectRatio, orientation, slide"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: aspect-ratio"
+      }
+    ]
+  },
+  {
+    "element": "polaris-theme",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: searchTerm, siteDescription, imageLink, image, imageAlt, pageTimestamp"
+      }
+    ]
+  },
+  {
+    "element": "post-card",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: t, to, from, message, photoSrc, stampSrc, postMarkLocations"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: i18n-manager-register-element"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: photo-src, stamp-src, post-mark-locations"
+      }
+    ]
+  },
+  {
+    "element": "product-card",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: disabled, heading, subheading, icon, hasDemo"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: product-card-demo-show"
+      }
+    ]
+  },
+  {
+    "element": "product-glance",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: title, subtitle, icon"
+      }
+    ]
+  },
+  {
+    "element": "product-offering",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: alt, source, icon, title, _titleOne, _titleTwo, description"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: description"
+      }
+    ]
+  },
+  {
+    "element": "progress-donut",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: animation, animationDelay, complete, desc, imageSrc, imageAlt"
+      }
+    ]
+  },
+  {
+    "element": "q-r",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: data, title, modulesize, margin, format"
+      }
+    ]
+  },
+  {
+    "element": "radio-behaviors",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: itemData, selection"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: selection-changed"
+      }
+    ]
+  },
+  {
+    "element": "relative-heading",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: closeIcon, closeLabel, copyMessage, disableLink, linkAlignRight, linkIcon, linkLabel"
+      }
+    ]
+  },
+  {
+    "element": "retro-card",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: title, subtitle, tags, mediaSource, url, hoverSource, hoverState, __cardTags, nosource, __source"
+      }
+    ]
+  },
+  {
+    "element": "rich-text-editor",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: id, contenteditable, disabled, disableHover, placeholder, toolbarId, range, rawhtml, type, viewSource, __codeEditorValue, __needsUpdate, __focused, __hovered"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: focus, contenteditable-change"
+      }
+    ]
+  },
+  {
+    "element": "rpg-character",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: literalseed, accessories, height, width, base, face, faceItem, hair, pants, shirt, skin, hatColor, hat, walking, leg, seed, speed, circle, fire, demo, reduceMotion"
+      }
+    ]
+  },
+  {
+    "element": "runkit-embed",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_TEST_FILE",
+        "message": "No test file found. Create test/${elementName}.test.js"
+      }
+    ]
+  },
+  {
+    "element": "schema-behaviors",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: schemaMap"
+      }
+    ]
+  },
+  {
+    "element": "scroll-button",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: target, icon, label, _label, position, t"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: i18n-manager-register-element"
+      }
+    ]
+  },
+  {
+    "element": "self-check",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: title, question, image, alt, describedBy, link, correct"
+      }
+    ]
+  },
+  {
+    "element": "simple-autocomplete",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: opened, hideInput, selectionPosition, value, itemLimit"
+      }
+    ]
+  },
+  {
+    "element": "simple-blog",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: selectedPage"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: resize"
+      }
+    ]
+  },
+  {
+    "element": "simple-colors",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: accentColor, dark"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "simple-colors-shared-styles",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: colors, contrasts"
+      }
+    ]
+  },
+  {
+    "element": "simple-cta",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: link, label, icon, editMode, hideIcon, large, light, hotline, saturate, disabled"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "simple-datetime",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: timestamp, format, date, unix"
+      }
+    ]
+  },
+  {
+    "element": "simple-fields",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: disableResponsive, fields, schematizer, label, __activeTabs, codeTheme"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: active-tabs-changed"
+      }
+    ]
+  },
+  {
+    "element": "simple-filter",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: items, like, where, caseSensitive, multiMatch, filtered"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: filter, filtered-changed"
+      }
+    ]
+  },
+  {
+    "element": "simple-icon",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: contrast"
+      }
+    ]
+  },
+  {
+    "element": "simple-icon-picker",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: allowNull, icons, includeSets, excludeSets, exclude, value, optionsPerRow, __iconList"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: value-changed"
+      }
+    ]
+  },
+  {
+    "element": "simple-login",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: username, password, loading, userInputLabel, userInputErrMsg, passwordInputLabel, passwordInputErrMsg, loginBtnText"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: simple-login-login"
+      }
+    ]
+  },
+  {
+    "element": "simple-modal",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: title, opened, closeLabel, closeIcon, invokedBy, modal, mode"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: simple-toast-hide"
+      }
+    ]
+  },
+  {
+    "element": "simple-picker",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: allowNull, alignRight, ariaLabelledby, blockLabel, disabled, expanded, hideOptionLabels, hideNullOption, hideSample, justify, label, options, titleAsHtml, value, __activeDesc, __options, __selectedOption, __ready"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: changed, click, mousedown, keydown, option-focus, value-changed, change, expand, collapse"
+      }
+    ]
+  },
+  {
+    "element": "simple-range-input",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: dragging, immediateValue, value, min, step, max, label, disabled"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: immediate-value-changed, value-changed"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: immediate-value"
+      }
+    ]
+  },
+  {
+    "element": "simple-search",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: alwaysFloatLabel, caseSensitive, controls, inline, nextButtonIcon, nextButtonLabel, noLabelFloat, prevButtonIcon, prevButtonLabel, resultCount, resultPointer, selector, searchInputIcon, searchInputLabel, searchTerms, target, __hideNext, __hidePrev"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: simple-search, goto-result"
+      }
+    ]
+  },
+  {
+    "element": "simple-toast",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: opened, text, classStyle, closeText, duration, eventCallback, closeButton"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "simple-toolbar",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: alwaysExpanded, ariaControls, ariaLabel, collapsed, config, id, moreShortcuts, shortcutKeys, sticky, __buttons, collapseDisabled, __focused, __hovered"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: shortcut-key-pressed"
+      }
+    ]
+  },
+  {
+    "element": "simple-tooltip",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: for, manualMode, position, fitToVisibleBounds, offset, marginTop, animationDelay, animationEntry, animationExit, _showing"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "social-share-link",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: buttonStyle, image, message, mode, text, type, url, __href, __icon, __linkText, __showIcon"
+      }
+    ]
+  },
+  {
+    "element": "sorting-question",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: numberCorrect"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: simple-toast-hide, user-engagement"
+      }
+    ]
+  },
+  {
+    "element": "spotify-embed",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: source, theme, size, playlistid, type, editing"
+      }
+    ]
+  },
+  {
+    "element": "star-rating",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: score, possible, interactive, numStars, _calPercent"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: star-rating-click"
+      }
+    ]
+  },
+  {
+    "element": "stop-note",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: title, url, icon, status"
+      }
+    ]
+  },
+  {
+    "element": "super-daemon",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: santaMode, opened, loading, key1, key2, icon, items, programResults, programName, allItems, context, commandContext, program, programSearch, like, value, mini, wand, activeNode, programTarget, voiceSearch, voiceCommands, listeningForInput"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: super-daemon-close, super-daemon-toast-hide, super-daemon-command-context-changed, super-daemon-context-changed"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: santa-mode, voice-search, listening-for-input"
+      }
+    ]
+  },
+  {
+    "element": "tagging-question",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_TEST_FILE",
+        "message": "No test file found. Create test/${elementName}.test.js"
+      }
+    ]
+  },
+  {
+    "element": "training-theme",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: items, activeId, time, prevPage, nextPage, maxIndex"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "twitter-embed",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: tweet, _haxstate, lang, dataWidth, dataTheme, tweetId, noPopups, allowPopups"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: i18n-manager-register-element"
+      }
+    ]
+  },
+  {
+    "element": "type-writer",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: delay, cursorDuration, text, speed, elementVisible, eraseSpeed, typing, _length, _oldText"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: type-writer-end"
+      }
+    ]
+  },
+  {
+    "element": "un-sdg",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: loading, fetchpriority, goal, colorOnly, alt"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: color-only"
+      }
+    ]
+  },
+  {
+    "element": "undo-manager",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: canUndo, canRedo, undoStackObserverProps, target, stack"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: stack-changed, can-undo-changed, can-redo-changed"
+      }
+    ]
+  },
+  {
+    "element": "utils",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_TEST_FILE",
+        "message": "No test file found. Create test/${elementName}.test.js"
+      }
+    ]
+  },
+  {
+    "element": "video-player",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: sourceType, accentColor, crossorigin, dark, darkTranscript, disableInteractive, height, hideTimestamps, hideTranscript, id, learningMode, lang, linkable, mediaTitle, hideYoutubeLink, source, sources, sourceData, stickyCorner, track, tracks, thumbnailSrc, width, playing, allowBackgroundPlay, startTime, endTime"
+      }
+    ]
+  },
+  {
+    "element": "vocab-term",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: popoverMode, detailsOpen"
+      }
+    ]
+  },
+  {
+    "element": "voice-recorder",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: recording, label"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: voice-recorder-recording-blob"
+      }
+    ]
+  },
+  {
+    "element": "web-container",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: fname, status, files, filesShown, hideTerminal, hideEditor, hideWindow"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: web-container-dependencies-installing, web-container-dependencies-installed, web-container-npm-start, web-container-server-ready, web-container-command-start, web-container-command-finished"
+      },
+      {
+        "priority": "HIGH",
+        "type": "MISSING_ATTRIBUTE_TESTS",
+        "message": "Add attribute-to-property mapping tests for: hide-terminal, hide-editor, hide-window"
+      }
+    ]
+  },
+  {
+    "element": "wikipedia-query",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: title, __now, _title, headers, hideTitle, search, language"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: i18n-manager-register-element, hax-register-app"
+      }
+    ]
+  },
+  {
+    "element": "word-count",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: words, wordsPrefix"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "wysiwyg-hax",
+    "priority": "HIGH",
+    "recommendations": [
+      {
+        "priority": "HIGH",
+        "type": "MISSING_PROPERTY_TESTS",
+        "message": "Add comprehensive property tests for: openDefault, redirectLocation, hidePanelOps, elementAlign, offsetMargin, bodyValue, allowedTags, appStoreConnection, saveButtonSelector, fieldClass, fieldId, fieldName, syncBody, endPoint, updatePageData"
+      },
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: hax-save, simple-modal-hide"
+      }
+    ]
+  },
+  {
+    "element": "a11y-carousel",
+    "priority": "MEDIUM",
+    "recommendations": [
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: above, img, default"
+      }
+    ]
+  },
+  {
+    "element": "course-design",
+    "priority": "MEDIUM",
+    "recommendations": [
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "dynamic-import-registry",
+    "priority": "MEDIUM",
+    "recommendations": [
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: dynamic-import-registry-loaded, dynamic-import-registry-failure"
+      }
+    ]
+  },
+  {
+    "element": "future-terminal-text",
+    "priority": "MEDIUM",
+    "recommendations": [
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "h-a-x",
+    "priority": "MEDIUM",
+    "recommendations": [
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: hax-save-body-value"
+      }
+    ]
+  },
+  {
+    "element": "lesson-overview",
+    "priority": "MEDIUM",
+    "recommendations": [
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: prefix, default"
+      }
+    ]
+  },
+  {
+    "element": "pouch-db",
+    "priority": "MEDIUM",
+    "recommendations": [
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: pouch-db-show-data"
+      }
+    ]
+  },
+  {
+    "element": "responsive-utility",
+    "priority": "MEDIUM",
+    "recommendations": [
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "simple-emoji",
+    "priority": "MEDIUM",
+    "recommendations": [
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "simple-popover",
+    "priority": "MEDIUM",
+    "recommendations": [
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "terrible-themes",
+    "priority": "MEDIUM",
+    "recommendations": [
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_SLOT_TESTS",
+        "message": "Add slot tests for: default"
+      }
+    ]
+  },
+  {
+    "element": "user-action",
+    "priority": "MEDIUM",
+    "recommendations": [
+      {
+        "priority": "MEDIUM",
+        "type": "MISSING_EVENT_TESTS",
+        "message": "Add event tests for: i18n-manager-register-element"
+      }
+    ]
+  }
+]
