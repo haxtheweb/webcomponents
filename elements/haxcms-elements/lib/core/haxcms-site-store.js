@@ -86,6 +86,7 @@ class Store {
       search: {},
       views: {},
       tags: {},
+      random: {},
     };
     this.evaluatebadDevice();
     this.location = null;
@@ -119,6 +120,7 @@ class Store {
       search: "Search",
       views: "Content views",
       tags: "Content tags",
+      random: "Random page",
       pageNotFound: "Page not found",
     };
     this.activeId = null;
