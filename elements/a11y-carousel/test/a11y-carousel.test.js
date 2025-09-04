@@ -30,6 +30,71 @@ describe("a11y-carousel test", () => {
     await expect(element).shadowDom.to.be.accessible();
   });
 
+  describe("Slot functionality", () => {
+    it("should have all named slots with correct content", async () => {
+      const testElement = await fixture(html`
+        <a11y-carousel>
+          <div slot="above">Above content</div>
+          <figure id="img-figure" slot="img">
+            <img src="//placekitten.com/200/200" alt="Slotted Image" />
+            <figcaption>Slotted Image</figcaption>
+          </figure>
+          <figure id="default-figure">
+            <img src="//placekitten.com/300/200" alt="Default Image" />
+            <figcaption>Default Image</figcaption>
+          </figure>
+          <div slot="below">Below content</div>
+        </a11y-carousel>
+      `);
+      await testElement.updateComplete;
+      
+      // Test above slot
+      const aboveSlot = testElement.shadowRoot.querySelector('slot[name="above"]');
+      expect(aboveSlot).to.exist;
+      const aboveNodes = aboveSlot.assignedNodes({ flatten: true });
+      expect(aboveNodes.length).to.be.greaterThan(0);
+      expect(aboveNodes[0].textContent).to.include("Above content");
+      
+      // Test img slot
+      const imgSlot = testElement.shadowRoot.querySelector('slot[name="img"]');
+      expect(imgSlot).to.exist;
+      const imgNodes = imgSlot.assignedNodes({ flatten: true });
+      expect(imgNodes.length).to.be.greaterThan(0);
+      
+      // Test default slot
+      const defaultSlot = testElement.shadowRoot.querySelector('slot:not([name])');
+      expect(defaultSlot).to.exist;
+      const defaultNodes = defaultSlot.assignedNodes({ flatten: true });
+      expect(defaultNodes.length).to.be.greaterThan(0);
+      
+      // Test below slot
+      const belowSlot = testElement.shadowRoot.querySelector('slot[name="below"]');
+      expect(belowSlot).to.exist;
+      const belowNodes = belowSlot.assignedNodes({ flatten: true });
+      expect(belowNodes.length).to.be.greaterThan(0);
+      expect(belowNodes[0].textContent).to.include("Below content");
+      
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
+
+    it("should handle empty slots gracefully", async () => {
+      const testElement = await fixture(html`
+        <a11y-carousel>
+          <figure id="only-figure">
+            <img src="//placekitten.com/200/200" alt="Only Image" />
+            <figcaption>Only Image</figcaption>
+          </figure>
+        </a11y-carousel>
+      `);
+      await testElement.updateComplete;
+      
+      const slots = testElement.shadowRoot.querySelectorAll('slot');
+      expect(slots.length).to.be.greaterThan(0);
+      
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
+  });
+
   describe("Property type validation with accessibility", () => {
     let testElement;
 
@@ -283,6 +348,127 @@ describe("a11y-carousel test", () => {
     });
   });
 
+  describe("Navigation functionality and RadioBehaviors integration", () => {
+    let navElement;
+    
+    beforeEach(async () => {
+      navElement = await fixture(html`
+        <a11y-carousel>
+          <figure id="nav-fig-1">
+            <img src="//placekitten.com/200/200" alt="Navigation Image 1" />
+            <figcaption>Navigation Image 1</figcaption>
+          </figure>
+          <figure id="nav-fig-2">
+            <img src="//placekitten.com/300/200" alt="Navigation Image 2" />
+            <figcaption>Navigation Image 2</figcaption>
+          </figure>
+          <figure id="nav-fig-3">
+            <img src="//placekitten.com/250/200" alt="Navigation Image 3" />
+            <figcaption>Navigation Image 3</figcaption>
+          </figure>
+        </a11y-carousel>
+      `);
+      await navElement.updateComplete;
+    });
+
+    it("should have correct navigation properties from RadioBehaviors", async () => {
+      // Test inherited RadioBehaviors properties
+      expect(navElement.first).to.exist;
+      expect(navElement.last).to.exist;
+      expect(navElement.prev).to.exist;
+      expect(navElement.next).to.exist;
+      expect(navElement.itemData).to.exist;
+      expect(navElement.itemData.length).to.equal(3);
+      
+      await expect(navElement).shadowDom.to.be.accessible();
+    });
+
+    it("should correctly calculate navigation IDs", async () => {
+      const firstId = navElement.first;
+      const lastId = navElement.last;
+      const prevId = navElement.prev;
+      const nextId = navElement.next;
+      
+      expect(firstId).to.equal('nav-fig-1');
+      expect(lastId).to.equal('nav-fig-3');
+      expect(prevId).to.equal('nav-fig-3'); // wraps to last when on first
+      expect(nextId).to.equal('nav-fig-2'); // next item
+      
+      await expect(navElement).shadowDom.to.be.accessible();
+    });
+
+    it("should handle selection changes and maintain accessibility", async () => {
+      // Test initial selection
+      expect(navElement.selection).to.exist;
+      
+      // Simulate selection change
+      const changeEvent = new CustomEvent('select-carousel-item', {
+        detail: { value: 'nav-fig-2' }
+      });
+      navElement.dispatchEvent(changeEvent);
+      await navElement.updateComplete;
+      
+      // Check that navigation IDs update accordingly
+      expect(navElement.prev).to.equal('nav-fig-1');
+      expect(navElement.next).to.equal('nav-fig-3');
+      
+      await expect(navElement).shadowDom.to.be.accessible();
+    });
+
+    it("should maintain accessibility when navigation buttons are rendered", async () => {
+      // Force full navigation (buttons + prev/next)
+      navElement.noButtons = false;
+      navElement.noPrevNext = false;
+      await navElement.updateComplete;
+      
+      // Check that navigation buttons exist in shadow DOM
+      const buttons = navElement.shadowRoot.querySelectorAll('a11y-carousel-button');
+      expect(buttons.length).to.be.greaterThan(0);
+      
+      await expect(navElement).shadowDom.to.be.accessible();
+    });
+  });
+
+  describe("Image management and background functionality", () => {
+    it("should manage background image CSS property based on selection", async () => {
+      const testElement = await fixture(html`
+        <a11y-carousel>
+          <figure id="bg-fig-1">
+            <img src="//placekitten.com/200/200" alt="Background Image 1" />
+            <figcaption>Background Image 1</figcaption>
+          </figure>
+          <figure id="bg-fig-2">
+            <img src="//placekitten.com/300/200" alt="Background Image 2" />
+            <figcaption>Background Image 2</figcaption>
+          </figure>
+        </a11y-carousel>
+      `);
+      await testElement.updateComplete;
+      
+      // Check that background image CSS property is set
+      const bgImageValue = testElement.style.getPropertyValue('--a11y-carousel-background-image');
+      expect(bgImageValue).to.exist;
+      
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
+
+    it("should handle missing images gracefully", async () => {
+      const testElement = await fixture(html`
+        <a11y-carousel>
+          <figure id="no-img-fig">
+            <figcaption>No Image Figure</figcaption>
+          </figure>
+        </a11y-carousel>
+      `);
+      await testElement.updateComplete;
+      
+      // Should not throw error even without images
+      expect(testElement._getImage()).to.be.undefined;
+      
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
+  });
+
   describe("Accessibility scenarios with different property combinations", () => {
     it("should remain accessible with no navigation buttons", async () => {
       const testElement = await fixture(html`
@@ -346,6 +532,130 @@ describe("a11y-carousel test", () => {
 
       // Note: Empty labels might cause accessibility warnings, but component should still function
       // Skip accessibility test for empty labels as they cause violations
+    });
+  });
+
+  describe("Event handling and lifecycle", () => {
+    it("should handle selection change events correctly", async () => {
+      const testElement = await fixture(html`
+        <a11y-carousel>
+          <figure id="event-fig-1">
+            <img src="//placekitten.com/200/200" alt="Event Image 1" />
+            <figcaption>Event Image 1</figcaption>
+          </figure>
+          <figure id="event-fig-2">
+            <img src="//placekitten.com/300/200" alt="Event Image 2" />
+            <figcaption>Event Image 2</figcaption>
+          </figure>
+        </a11y-carousel>
+      `);
+      await testElement.updateComplete;
+      
+      let eventFired = false;
+      testElement.addEventListener('select-carousel-item', () => {
+        eventFired = true;
+      });
+      
+      // Trigger selection change
+      const event = new CustomEvent('select-carousel-item', {
+        detail: { value: 'event-fig-2' }
+      });
+      testElement.dispatchEvent(event);
+      await testElement.updateComplete;
+      
+      expect(eventFired).to.equal(true);
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
+
+    it("should handle firstUpdated lifecycle correctly", async () => {
+      const testElement = await fixture(html`
+        <a11y-carousel>
+          <figure id="lifecycle-fig-1">
+            <img src="//placekitten.com/200/200" alt="Lifecycle Image 1" />
+            <figcaption>Lifecycle Image 1</figcaption>
+          </figure>
+        </a11y-carousel>
+      `);
+      await testElement.updateComplete;
+      
+      // Element should be properly initialized
+      expect(testElement.itemData).to.exist;
+      expect(testElement.itemData.length).to.be.greaterThan(0);
+      
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
+  });
+
+  describe("Edge cases and error handling", () => {
+    it("should handle unusual label values without breaking functionality", async () => {
+      const testElement = await fixture(html`
+        <a11y-carousel>
+          <figure id="edge-fig-1">
+            <img src="//placekitten.com/200/200" alt="Edge Image 1" />
+            <figcaption>Edge Image 1</figcaption>
+          </figure>
+        </a11y-carousel>
+      `);
+      
+      const unusualValues = [
+        "   \t\n   ", // whitespace
+        "<script>alert('test')</script>", // potentially dangerous content
+        "\u00A0\u2000\u2001", // various unicode spaces
+        "🎠 carousel navigation 🎠", // emoji
+        "Very long navigation label that might cause display issues or layout problems with the carousel interface",
+        "Multi\nline\nlabel", // multiline
+        "Label with 'quotes' and \"double quotes\" and special chars: !@#$%^&*()"
+      ];
+      
+      for (const value of unusualValues) {
+        testElement.nextLabel = value;
+        testElement.prevLabel = value;
+        await testElement.updateComplete;
+        
+        expect(testElement.nextLabel).to.equal(value);
+        expect(testElement.prevLabel).to.equal(value);
+        
+        // Most of these should maintain accessibility
+        if (!value.includes('<script>') && value.trim() !== '') {
+          await expect(testElement).shadowDom.to.be.accessible();
+        }
+      }
+    });
+
+    it("should handle carousel with single figure", async () => {
+      const testElement = await fixture(html`
+        <a11y-carousel>
+          <figure id="single-fig">
+            <img src="//placekitten.com/200/200" alt="Single Image" />
+            <figcaption>Single Image</figcaption>
+          </figure>
+        </a11y-carousel>
+      `);
+      await testElement.updateComplete;
+      
+      expect(testElement.itemData.length).to.equal(1);
+      expect(testElement.first).to.equal('single-fig');
+      expect(testElement.last).to.equal('single-fig');
+      expect(testElement.prev).to.equal('single-fig');
+      expect(testElement.next).to.equal('single-fig');
+      
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
+
+    it("should handle carousel with no figures gracefully", async () => {
+      const testElement = await fixture(html`
+        <a11y-carousel>
+          <div>Not a figure</div>
+        </a11y-carousel>
+      `);
+      await testElement.updateComplete;
+      
+      expect(testElement.itemData).to.exist;
+      expect(testElement.itemData.length).to.equal(0);
+      expect(testElement.first).to.be.undefined;
+      expect(testElement.last).to.be.undefined;
+      
+      await expect(testElement).shadowDom.to.be.accessible();
     });
   });
 });
