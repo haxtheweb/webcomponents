@@ -638,6 +638,7 @@
     "video-player": "@haxtheweb/video-player/video-player.js",
     "audio-player": "@haxtheweb/audio-player/audio-player.js",
     "wikipedia-query": "@haxtheweb/wikipedia-query/wikipedia-query.js",
-    "date-card": "@haxtheweb/date-card/date-card.js"
+    "date-card": "@haxtheweb/date-card/date-card.js",
+    "site-random-content": "@haxtheweb/haxcms-elements/lib/ui-components/site/site-random-content.js"
   }
 }
