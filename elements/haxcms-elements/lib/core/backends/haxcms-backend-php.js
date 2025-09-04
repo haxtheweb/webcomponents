@@ -5,6 +5,7 @@
 import { LitElement, html } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import "@haxtheweb/jwt-login/jwt-login.js";
 /**
  * `haxcms-backend-php`
@@ -125,6 +126,12 @@ class HAXCMSBackendPHP extends LitElement {
    * Import the editor
    */
   dynamicallyImportEditor() {
+    // Check if we're in view-only mode - if so, don't import editor
+    const viewOnlyMode = UserScaffoldInstance.readMemory("ViewOnlyMode");
+    if (viewOnlyMode) {
+      return;
+    }
+    
     // attempt to dynamically import the hax cms site editor
     // which will appear to be injecting into the page
     // but because of this approach it should be non-blocking

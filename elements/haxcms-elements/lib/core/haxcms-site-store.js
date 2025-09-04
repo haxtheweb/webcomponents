@@ -161,6 +161,7 @@ class Store {
       ancestorItem: computed, // active page ancestor
       pageCounter: computed, // current and total page count
       darkMode: observable, // dark mode pref
+      viewOnlyMode: computed, // view only mode pref
       soundStatus: observable, // toggle sounds on and off
       appReady: observable, // system is ready via firstUpdated of haxcms-site-builder
       badDevice: observable, // if we have a low performance device
@@ -453,6 +454,11 @@ class Store {
    * Ensure there's a copy of the site-editor globally available
    */
   cmsSiteEditorAvailability() {
+    // Check if we're in view-only mode - if so, don't create editor
+    if (this.viewOnlyMode) {
+      return null;
+    }
+    
     if (!this.cmsSiteEditor.instance) {
       this.cmsSiteEditor.instance =
         globalThis.document.createElement("haxcms-site-editor");
@@ -853,7 +859,46 @@ class Store {
     return { prev: null, next: null };
   }
 
+    // show view only mode toast with exit option
+  showViewOnlyModeToast() {
+    // Create exit button
+    const exitButton = globalThis.document.createElement("button");
+    exitButton.innerText = "Exit View Only Mode";
+    exitButton.style.cssText = `
+      background-color: var(--simple-colors-default-theme-blue-7);
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 0;
+    `;
+    exitButton.addEventListener("click", () => {
+      // Remove ViewOnlyMode from session
+      UserScaffoldInstance.deleteMemory("ViewOnlyMode", "long");
+      setTimeout(() => {
+        globalThis.location.reload();
+      }, 300);
+    });
+    // Show toast with button
+    store.toast(
+      "You are now viewing the site as a visitor would see it. All editing tools are hidden.",
+      0,
+      {
+        hat: "coffee",
+        slot: exitButton,
+      }
+    );
+  }
+
+  get viewOnlyMode() {
+    return UserScaffoldInstance.readMemory("ViewOnlyMode");
+  }
+
   get isLoggedIn() {
+    // Check if we're in view-only mode - if so, treat as not logged in
+    if (this.viewOnlyMode) {
+      return false;
+    }
+    
     // account for keypair storage issue since its a string bin
     if (this.jwt && this.jwt != "null") {
       return true;
@@ -1289,6 +1334,13 @@ class HAXCMSSiteStore extends HTMLElement {
           this.faviconInstance = favicon;
         }
       }
+    });
+    autorun(() => {
+      setTimeout(() => {
+        if (store.viewOnlyMode) {
+          store.showViewOnlyModeToast();
+        }        
+      }, 1000);
     });
     autorun(() => {
       const memVersion = UserScaffoldInstance.readMemory("versionLatest");

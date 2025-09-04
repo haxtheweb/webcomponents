@@ -2472,6 +2472,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         args: [],
       },
     });
+    SuperDaemonInstance.defineOption({
+      title: "View only mode",
+      icon: "visibility",
+      tags: ["CMS", "view", "read-only", "preview"],
+      eventName: "super-daemon-element-method",
+      path: "CMS/mode/view-only",
+      context: ["CMS"],
+      more: html`<span
+        >Enable view only mode to hide all editing tools and experience the site as a visitor would see it</span
+      >`,
+      voice: "view only mode",
+      value: {
+        target: this,
+        method: "enableViewOnlyMode",
+        args: [],
+      },
+    });
     // force item to load schema
     SuperDaemonInstance.defineOption({
       title: "Go to site",
@@ -2547,6 +2564,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/magic/site-ai-chat.js"
     );
+  }
+
+  // enable view only mode
+  enableViewOnlyMode() {
+    // Set ViewOnlyMode in UserContext as a session variable
+    UserScaffoldInstance.writeMemory("ViewOnlyMode", true, "long");
+    
+    // Show toast notification with exit button
+    store.showViewOnlyModeToast();
+    
+    // Refresh the page to apply view only mode
+    setTimeout(() => {
+      globalThis.location.reload();
+    }, 600);
   }
 
   goToLocation(location) {

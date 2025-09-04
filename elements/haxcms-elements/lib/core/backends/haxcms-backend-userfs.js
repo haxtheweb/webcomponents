@@ -10,6 +10,7 @@ import {
 } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import { generateResourceID } from "@haxtheweb/utils/utils.js";
+import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 
 /**
@@ -408,10 +409,14 @@ class HAXCMSBackendUserfs extends LitElement {
     ).then((response) => {
       return response.json();
     });
-    // attempt to dynamically import the hax cms site editor
-    // which will appear to be injecting into the page
-    // but because of this approach it should be non-blocking
-    try {
+    
+    // Check if we're in view-only mode - if so, don't import editor
+    const viewOnlyMode = UserScaffoldInstance.readMemory("ViewOnlyMode");
+    if (!viewOnlyMode) {
+      // attempt to dynamically import the hax cms site editor
+      // which will appear to be injecting into the page
+      // but because of this approach it should be non-blocking
+      try {
       // prettier-ignore
       import(
         "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js"
@@ -425,8 +430,9 @@ class HAXCMSBackendUserfs extends LitElement {
           //import failed
         }
       );
-    } catch (err) {
-      // error in the event this is a double registration
+      } catch (err) {
+        // error in the event this is a double registration
+      }
     }
   }
 }

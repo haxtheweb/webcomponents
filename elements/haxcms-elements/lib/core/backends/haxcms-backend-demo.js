@@ -5,6 +5,7 @@
 import { LitElement, html } from "lit";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
+import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import "@haxtheweb/jwt-login/jwt-login.js";
 /**
  * `haxcms-backend-demo`
@@ -102,14 +103,18 @@ class HAXCMSBackendDemo extends LitElement {
           this.jwt = globalThis.appSettings.jwt;
         }
       }
-      try {
-        // prettier-ignore
-        import(
-          "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js"
-        ).then(
-          (e) => {
-            // validate availability
-            store.cmsSiteEditorAvailability();
+      
+      // Check if we're in view-only mode - if so, don't import editor
+      const viewOnlyMode = UserScaffoldInstance.readMemory("ViewOnlyMode");
+      if (!viewOnlyMode) {
+        try {
+          // prettier-ignore
+          import(
+            "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js"
+          ).then(
+            (e) => {
+              // validate availability
+              store.cmsSiteEditorAvailability();
             store.cmsSiteEditor.instance.jwt = this.jwt;
             store.jwt = this.jwt;
             store.cmsSiteEditor.instance.method = "GET";
@@ -134,8 +139,9 @@ class HAXCMSBackendDemo extends LitElement {
             console.warn(e);
           }
         );
-      } catch (err) {
-        // error in the event this is a double registration
+        } catch (err) {
+          // error in the event this is a double registration
+        }
       }
     }, 500);
   }
