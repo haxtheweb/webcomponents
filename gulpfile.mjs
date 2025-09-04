@@ -363,7 +363,7 @@ gulp.task("wc-autoloader", async () => {
         // This Regex is looking for tags that are defined by string values
         // this will work for customElements.define("local-time",s))
         // This will NOT work for customElements.define(LocalTime.tagName,s))
-        const defineStatements = /customElements\.define\(["|'|`](.*?)["|'|`]/gm.exec(
+        const defineStatements = /customElements\.define\(["'`](.*?)["'`]/gm.exec(
           contents
         );
         // basic
@@ -430,4 +430,15 @@ gulp.task("wc-autoloader", async () => {
       {encoding:'utf8',flag:'w'}
     );
   });
+});
+
+import { execSync } from 'child_process';
+
+gulp.task("theme-discovery", async () => {
+  try {
+    execSync('node scripts/theme-discovery.js', { stdio: 'inherit' });
+    console.log('✅ Theme discovery completed successfully');
+  } catch (error) {
+    console.error('❌ Theme discovery failed:', error.message);
+  }
 });

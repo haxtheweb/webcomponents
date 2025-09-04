@@ -12,7 +12,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tit
 import "@haxtheweb/scroll-button/scroll-button.js";
 import { autorun, toJS } from "mobx";
 /**
- * `terrible-themes`
+ * `Terrible 90s - productionz theme`
  * `themes inspired by creations by btopro from his youth. legitimate, terrible websites.`
  *
  * @microcopy - language worth noting:

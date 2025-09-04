@@ -21,8 +21,8 @@ import "./lib/glossy-portfolio-grid.js";
 import "./lib/glossy-portfolio-about.js";
 import "./lib/glossy-portfolio-breadcrumb.js";
 /**
- * `glossy-portfolio-theme`
- * 
+ * `Glossy Portfolio Theme`
+ * `A theme for creating glossy portfolio-style websites`
  * @demo index.html
  * @element glossy-portfolio-theme
  */

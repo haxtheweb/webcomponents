@@ -18,9 +18,8 @@ import { licenseList } from "@haxtheweb/license-element/license-element.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 
 /**
- * `JourneyTheme`
+ * `Journey Theme`
  * `JourneyTheme based on HAXCMS theming ecosystem`
- * `This theme is an example of extending an existing theme component`
  *
  * @microcopy - language worth noting:
  *  - HAXcms - A headless content management system

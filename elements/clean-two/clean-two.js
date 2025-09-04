@@ -25,8 +25,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-content.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
- * `clean-two`
- * `A 2nd clean theme`
+ * `Clean two`
  *
  * @microcopy - language worth noting:
  *  - HAXcms - A headless content management system

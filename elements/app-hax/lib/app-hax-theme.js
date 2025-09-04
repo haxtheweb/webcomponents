@@ -21,15 +21,14 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
- * `clean-one`
- * `Clean HAXcms theme, one.`
+ * `8-bit Overworld theme`
  *
  * @microcopy - language worth noting:
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
  * @demo demo/index.html
- * @element clean-one
+ * @element app-hax-theme
  */
 class AppHaxTheme extends HAXCMSRememberRoute(
   PrintBranchMixin(

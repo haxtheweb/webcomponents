@@ -10,7 +10,12 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
 
-// a "blank" theme that allows for production of a brochure design by reading off of the page-sections used
+/**
+ * `Brochure Theme`
+ * `A theme for brochure style sites that reads page-sections and builds a nav off of them`
+ * @demo demo/index.html
+ * @element ddd-brochure-theme
+ */
 class DDDBrochureTheme extends HAXCMSRememberRoute(
   DDDSuper(HAXCMSLitElementTheme),
 ) {

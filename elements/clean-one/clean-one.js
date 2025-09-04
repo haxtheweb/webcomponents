@@ -22,8 +22,7 @@ import { PDFPageMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/PDFPageM
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
- * `clean-one`
- * `Clean HAXcms theme, one.`
+ * `Clean one`
  *
  * @microcopy - language worth noting:
  *  - HAXcms - A headless content management system

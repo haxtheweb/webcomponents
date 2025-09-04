@@ -2411,42 +2411,50 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         context: ">",
         program: async (input, values) => {
           let results = [];
-          [
-            "clean-one",
-            "clean-two",
-            "clean-portfolio-theme",
-            "glossy-portfolio-theme",
-            "journey-theme",
-            "journey-sidebar-theme",
-            "journey-topbar-theme",
-            "learn-two-theme",
-            "polaris-theme",
-            "polaris-invent-theme",
-            "polaris-flex-theme",
-            "polaris-flex-sidebar",
-            "ddd-brochure-theme",
-            "collections-theme",
-            "training-theme",
-            "bootstrap-theme",
-            "outline-player",
-            "haxor-slevin",
-          ].forEach(async (name) => {
-            if (input == "" || name.includes(input)) {
+          
+          // Load themes dynamically from generated themes.json
+          try {
+            const themesResponse = await fetch(new URL("../themes.json", import.meta.url).href);
+            const themesData = await themesResponse.json();
+            
+            Object.keys(themesData).forEach((elementName) => {
+              const theme = themesData[elementName];
+              if (input == "" || elementName.includes(input) || theme.name.toLowerCase().includes(input.toLowerCase())) {
+                results.push({
+                  title: theme.name,
+                  icon: "image:style",
+                  tags: ["theme"],
+                  value: {
+                    target: globalThis.HAXCMS,
+                    method: "setTheme",
+                    args: [elementName],
+                  },
+                  eventName: "super-daemon-element-method",
+                  context: [">", ">settings/theme/" + elementName],
+                  path: ">settings/theme/" + elementName,
+                });
+              }
+            });
+          } catch (error) {
+            console.warn("Failed to load themes.json, falling back to basic theme:", error);
+            // Fallback to a basic theme if themes.json fails to load
+            if (input == "" || "clean-one".includes(input)) {
               results.push({
-                title: name.replace("-theme", "").replace("-", " "),
+                title: "Clean One",
                 icon: "image:style",
                 tags: ["theme"],
                 value: {
                   target: globalThis.HAXCMS,
                   method: "setTheme",
-                  args: [name],
+                  args: ["clean-one"],
                 },
                 eventName: "super-daemon-element-method",
-                context: [">", ">settings/theme/" + name],
-                path: ">settings/theme/" + name,
+                context: [">", ">settings/theme/clean-one"],
+                path: ">settings/theme/clean-one",
               });
             }
-          });
+          }
+          
           return results;
         },
       },

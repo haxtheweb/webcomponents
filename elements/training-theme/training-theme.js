@@ -24,7 +24,7 @@ import "./lib/training-button.js";
 import "./lib/training-top.js";
 
 /**
- * `training-theme`
+ * `Training Theme`
  * `theme for training content in HAXcms`
  * @demo demo/index.html
  * @element training-theme

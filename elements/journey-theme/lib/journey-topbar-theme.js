@@ -10,9 +10,8 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tit
 import { JourneyTopbarThemeStyles } from "./journey-topbar-theme-styles.js";
 
 /**
- * `JourneyTopbarTheme`
+ * `Journey Topbar`
  * `JourneyTopbarTheme based on HAXCMS theming ecosystem`
- * `This theme is an example of extending an existing theme component`
  *
  * @microcopy - language worth noting:
  *  - HAXcms - A headless content management system

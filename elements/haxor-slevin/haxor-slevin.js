@@ -23,8 +23,8 @@ import "@haxtheweb/accent-card/accent-card.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-title.js";
 /**
- * `haxor-slevin`
- * `Tech blogger theme`
+ * `Haxor blog`
+ * `A theme for blogs and personal sites`
  * @demo demo/index.html
  * @element haxor-slevin
  */

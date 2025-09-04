@@ -13,7 +13,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button
 import "@haxtheweb/scroll-button/scroll-button.js";
 import { autorun, toJS } from "mobx";
 /**
- * `terrible-themes`
+ * `Terrible 90s - hockey player theme`
  * `themes inspired by creations by btopro from his youth. legitimate, terrible websites.`
  *
  * @microcopy - language worth noting:

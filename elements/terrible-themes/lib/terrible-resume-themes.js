@@ -15,7 +15,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/blocks/site-children-block.
 import "@haxtheweb/scroll-button/scroll-button.js";
 import { autorun, toJS } from "mobx";
 /**
- * `terrible-themes`
+ * `Terrible 90s - resume theme`
  * `themes inspired by creations by btopro from his youth. legitimate, terrible websites.`
  *
  * @microcopy - language worth noting:

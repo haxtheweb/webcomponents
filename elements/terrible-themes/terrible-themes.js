@@ -13,7 +13,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-top-menu.js
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-footer.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button.js";
 /**
- * `terrible-themes`
+ * `Terrible 90s - Room 407 theme`
  * `themes inspired by creations by btopro from his youth. legitimate, terrible websites.`
  *
  * @microcopy - language worth noting:

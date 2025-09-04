@@ -13,9 +13,8 @@ import "@haxtheweb/scroll-button/scroll-button.js";
 import { JourneySidebarThemeStyles } from "./journey-sidebar-theme-styles.js"; // custom styles for this theme
 
 /**
- * `JourneySidebarTheme`
+ * `Journey Sidebar theme`
  * `JourneySidebarTheme based on HAXCMS theming ecosystem`
- * `This theme is an example of extending an existing theme component`
  *
  * @microcopy - language worth noting:
  *  - HAXcms - A headless content management system

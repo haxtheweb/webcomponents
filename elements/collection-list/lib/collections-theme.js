@@ -26,7 +26,7 @@ import "./collections-theme-banner.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
- * `collections-theme`
+ * `Collections Theme`
  * `A theme for presenting collections of material`
  *
  * @microcopy - language worth noting:
