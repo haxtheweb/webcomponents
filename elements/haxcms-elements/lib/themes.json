@@ -2,26 +2,32 @@
   "app-hax-theme": {
     "element": "app-hax-theme",
     "path": "@haxtheweb/app-hax/lib/app-hax-theme.js",
-    "name": "Application level HAX theme",
+    "name": "8-bit Overworld theme",
     "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "bootstrap-theme": {
     "element": "bootstrap-theme",
     "path": "@haxtheweb/bootstrap-theme/bootstrap-theme.js",
     "name": "Bootstrap Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "clean-one": {
     "element": "clean-one",
     "path": "@haxtheweb/clean-one/clean-one.js",
     "name": "Clean One",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+  },
+  "clean-one.test": {
+    "element": "clean-one.test",
+    "path": "@haxtheweb/clean-one/clean-one.test.js",
+    "name": "Clean One.test",
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "clean-portfolio-theme": {
     "element": "clean-portfolio-theme",
     "path": "@haxtheweb/clean-portfolio-theme/clean-portfolio-theme.js",
     "name": "Clean Portfolio Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
   },
   "clean-two": {
     "element": "clean-two",
@@ -29,17 +35,23 @@
     "name": "Clean Two",
     "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
+  "clean-two.test": {
+    "element": "clean-two.test",
+    "path": "@haxtheweb/clean-two/clean-two.test.js",
+    "name": "Clean Two.test",
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+  },
   "collections-theme": {
     "element": "collections-theme",
     "path": "@haxtheweb/collection-list/lib/collections-theme.js",
     "name": "Collections Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "ddd-brochure-theme": {
     "element": "ddd-brochure-theme",
     "path": "@haxtheweb/d-d-d/lib/ddd-brochure-theme.js",
     "name": "Brochure Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "glossy-portfolio-theme": {
     "element": "glossy-portfolio-theme",
@@ -57,13 +69,13 @@
     "element": "journey-sidebar-theme",
     "path": "@haxtheweb/journey-theme/lib/journey-sidebar-theme.js",
     "name": "Journey Sidebar theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "journey-theme": {
     "element": "journey-theme",
     "path": "@haxtheweb/journey-theme/journey-theme.js",
     "name": "Journey Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "journey-topbar-theme": {
     "element": "journey-topbar-theme",
@@ -75,7 +87,7 @@
     "element": "learn-two-theme",
     "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
     "name": "Learn theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "outline-player": {
     "element": "outline-player",
@@ -87,7 +99,7 @@
     "element": "polaris-flex-theme",
     "path": "@haxtheweb/polaris-theme/lib/polaris-flex-theme.js",
     "name": "Polaris Flex Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "polaris-invent-theme": {
     "element": "polaris-invent-theme",
@@ -99,13 +111,19 @@
     "element": "polaris-theme",
     "path": "@haxtheweb/polaris-theme/polaris-theme.js",
     "name": "Polaris Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "simple-blog": {
     "element": "simple-blog",
     "path": "@haxtheweb/simple-blog/simple-blog.js",
     "name": "Simple Blog",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+  },
+  "site-random-content": {
+    "element": "site-random-content",
+    "path": "@haxtheweb/haxcms-elements/lib/site-random-content.js",
+    "name": "Site Random Content",
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "terrible-best-themes": {
     "element": "terrible-best-themes",
@@ -117,7 +135,7 @@
     "element": "terrible-outlet-themes",
     "path": "@haxtheweb/terrible-themes/lib/terrible-outlet-themes.js",
     "name": "Terrible 90s - blog theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
   },
   "terrible-productionz-themes": {
     "element": "terrible-productionz-themes",
@@ -135,12 +153,12 @@
     "element": "terrible-themes",
     "path": "@haxtheweb/terrible-themes/terrible-themes.js",
     "name": "Terrible 90s - Room 407 theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "training-theme": {
     "element": "training-theme",
     "path": "@haxtheweb/training-theme/training-theme.js",
     "name": "Training Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   }
 }

@@ -36,10 +36,9 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
     this.editMode = false;
     
     // Initialize translations
-    this.t.randomContent = "Random Content";
     this.t.noContent = "No content available to display";
     this.t.refresh = "Refresh content";
-    this.t.loading = "Loading random content...";
+    this.t.loading = "Loading content...";
     
     this.__disposer = this.__disposer ? this.__disposer : [];
     
@@ -395,22 +394,68 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
         if (this.editMode) {
           return false;
         }
-      }
+      },
+      setupActiveElementForm: "haxsetupActiveElementForm",
     };
   }
+
+    /**
+   * Allow for dynamic setting of the parent field if we have the store around
+   * with values to do so
+   */
+  haxsetupActiveElementForm(props) {
+    if (globalThis.HAXCMS) {
+      const itemManifest =
+        globalThis.HAXCMS.requestAvailability().store.getManifestItems(true);
+      // default to null parent as the whole site
+      var items = [
+        {
+          text: `-- ${this.t.noParent} --`,
+          value: null,
+        },
+      ];
+      itemManifest.forEach((el) => {
+        if (el.id != this.itemId) {
+          // calculate -- depth so it looks like a tree
+          let itemBuilder = el;
+          // walk back through parent tree
+          let distance = "- ";
+          while (itemBuilder && itemBuilder.parent != null) {
+            itemBuilder = itemManifest.find((i) => i.id == itemBuilder.parent);
+            // double check structure is sound
+            if (itemBuilder) {
+              distance = "--" + distance;
+            }
+          }
+          items.push({
+            text: distance + el.title,
+            value: el.id,
+          });
+        }
+      });
+      // apply same logic of the items in the active site to
+      // parent and related items
+      props.settings.configure.forEach((attr, index) => {
+        if (attr.property === "parent") {
+          props.settings.configure[index].inputMethod = "select";
+          props.settings.configure[index].itemsList = items;
+        }
+      });
+    }
+  }
+  
 
   render() {
     return html`
       <div class="random-content-container">
         <div class="header">
-          <h3 class="title">${this.t.randomContent}</h3>
           <simple-icon-button-lite
             icon="icons:refresh"
             @click="${this.refreshContent}"
             title="${this.t.refresh}"
             class="refresh-btn"
             ?disabled="${this.editMode}"
-          ></simple-icon-button-lite>
+          >Refresh content</simple-icon-button-lite>
         </div>
         
         ${this.loading ? html`
@@ -438,6 +483,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
       </div>
     `;
   }
+  
 
   /**
    * HAX properties integration
@@ -466,7 +512,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
             description: "How many random pages to display",
             inputMethod: "number",
             min: 1,
-            max: 10,
+            max: 5,
             step: 1,
             required: false,
           },
