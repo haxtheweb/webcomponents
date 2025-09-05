@@ -134,7 +134,7 @@ class HAXCMSBackendNodeJS extends LitElement {
     if (viewOnlyMode) {
       return;
     }
-    
+
     // attempt to dynamically import the hax cms site editor
     // which will appear to be injecting into the page
     // but because of this approach it should be non-blocking

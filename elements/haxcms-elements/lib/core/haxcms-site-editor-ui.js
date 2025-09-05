@@ -2411,15 +2411,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         context: ">",
         program: async (input, values) => {
           let results = [];
-          
+
           // Load themes dynamically from generated themes.json
           try {
-            const themesResponse = await fetch(new URL("../themes.json", import.meta.url).href);
+            const themesResponse = await fetch(
+              new URL("../themes.json", import.meta.url).href,
+            );
             const themesData = await themesResponse.json();
-            
+
             Object.keys(themesData).forEach((elementName) => {
               const theme = themesData[elementName];
-              if (input == "" || elementName.includes(input) || theme.name.toLowerCase().includes(input.toLowerCase())) {
+              if (
+                input == "" ||
+                elementName.includes(input) ||
+                theme.name.toLowerCase().includes(input.toLowerCase())
+              ) {
                 results.push({
                   title: theme.name,
                   icon: "image:style",
@@ -2436,7 +2442,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               }
             });
           } catch (error) {
-            console.warn("Failed to load themes.json, falling back to basic theme:", error);
+            console.warn(
+              "Failed to load themes.json, falling back to basic theme:",
+              error,
+            );
             // Fallback to a basic theme if themes.json fails to load
             if (input == "" || "clean-one".includes(input)) {
               results.push({
@@ -2454,7 +2463,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               });
             }
           }
-          
+
           return results;
         },
       },
@@ -2480,7 +2489,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/mode/view-only",
       context: ["CMS"],
       more: html`<span
-        >Enable view only mode to hide all editing tools and experience the site as a visitor would see it</span
+        >Enable view only mode to hide all editing tools and experience the site
+        as a visitor would see it</span
       >`,
       voice: "view only mode",
       value: {
@@ -2570,10 +2580,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   enableViewOnlyMode() {
     // Set ViewOnlyMode in UserContext as a session variable
     UserScaffoldInstance.writeMemory("ViewOnlyMode", true, "long");
-    
+
     // Show toast notification with exit button
     store.showViewOnlyModeToast();
-    
+
     // Refresh the page to apply view only mode
     setTimeout(() => {
       globalThis.location.reload();

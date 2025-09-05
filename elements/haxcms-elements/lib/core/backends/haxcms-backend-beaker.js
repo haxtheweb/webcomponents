@@ -392,7 +392,7 @@ class HAXCMSBackendBeaker extends LitElement {
     // test that we have a url (we'll call it jwt for now) and that we own the site
     if (this.jwt != null && typeof this.jwt == "string" && info.isOwner) {
       var appstore = JSON.parse(await beaker.read("appstore.json"));
-      
+
       // Check if we're in view-only mode - if so, don't import editor
       const viewOnlyMode = UserScaffoldInstance.readMemory("ViewOnlyMode");
       if (!viewOnlyMode) {
@@ -400,8 +400,8 @@ class HAXCMSBackendBeaker extends LitElement {
         // which will appear to be injecting into the page
         // but because of this approach it should be non-blocking
         try {
-        // prettier-ignore
-        import(
+          // prettier-ignore
+          import(
           "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js"
         ).then(
           (e) => {

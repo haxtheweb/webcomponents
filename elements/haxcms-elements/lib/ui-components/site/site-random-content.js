@@ -14,7 +14,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 /**
  * `site-random-content`
  * `Display random content from pages within the HAXcms site`
- * 
+ *
  * @demo demo/index.html
  * @element site-random-content
  */
@@ -27,25 +27,27 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
     super();
     this.windowControllers = new AbortController();
     this.HAXCMSI18NMixinBase = "../../../";
-    
+
     // Set default values
-    this.pages = 1;
-    this.parent = null;
-    this.randomContent = [];
+    this.page = null;
+    this.randomElement = null;
+    this.allElements = [];
+    this.currentElementIndex = 0;
     this.loading = false;
     this.editMode = false;
-    
+
     // Initialize translations
     this.t.noContent = "No content available to display";
-    this.t.refresh = "Refresh content";
+    this.t.noPage = "No page selected";
+    this.t.shuffle = "Shuffle content";
     this.t.loading = "Loading content...";
-    
+
     this.__disposer = this.__disposer ? this.__disposer : [];
-    
+
     // React to manifest changes
     autorun((reaction) => {
-      if (store.manifest) {
-        this.selectRandomPageContent();
+      if (store.manifest && this.page) {
+        this.loadPageElements();
       }
       this.__disposer.push(reaction);
     });
@@ -65,7 +67,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
           display: block;
           margin: var(--ddd-spacing-4) 0;
         }
-        
+
         .random-content-container {
           border: var(--ddd-border-xs) var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-sm);
@@ -73,10 +75,10 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
           background: var(--ddd-theme-default-white);
           position: relative;
         }
-        
+
         /* Edit mode overlay */
         :host([edit-mode]) .random-content-container::after {
-          content: '';
+          content: "";
           position: absolute;
           top: 0;
           left: 0;
@@ -87,21 +89,22 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
           pointer-events: none;
           z-index: 1;
         }
-        
+
         :host([edit-mode]) .random-content-container {
           opacity: 0.7;
           pointer-events: none;
         }
-        
+
         .header {
           display: flex;
           justify-content: space-between;
           align-items: center;
           margin-bottom: var(--ddd-spacing-3);
           padding-bottom: var(--ddd-spacing-2);
-          border-bottom: var(--ddd-border-xs) var(--ddd-theme-default-limestoneLight);
+          border-bottom: var(--ddd-border-xs)
+            var(--ddd-theme-default-limestoneLight);
         }
-        
+
         .title {
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-s);
@@ -109,59 +112,60 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
           color: var(--ddd-theme-default-coalyGray);
           margin: 0;
         }
-        
-        .refresh-btn {
+
+        .shuffle-btn {
           --simple-icon-button-border-radius: var(--ddd-radius-xs);
         }
-        
-        .content-item {
-          margin-bottom: var(--ddd-spacing-4);
-          padding-bottom: var(--ddd-spacing-4);
-          border-bottom: var(--ddd-border-xs) var(--ddd-theme-default-limestoneLight);
-        }
-        
-        .content-item:last-child {
-          margin-bottom: 0;
-          padding-bottom: 0;
-          border-bottom: none;
-        }
-        
-        .item-title {
-          font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-ms);
-          font-weight: var(--ddd-font-weight-medium);
-          margin: 0 0 var(--ddd-spacing-2) 0;
-          color: var(--ddd-theme-default-coalyGray);
-        }
-        
-        .item-title a {
-          color: var(--ddd-theme-default-link);
-          text-decoration: none;
-        }
-        
-        .item-title a:hover {
-          text-decoration: underline;
-        }
-        
-        .item-content {
+
+        .random-element {
           color: var(--ddd-theme-default-coalyGray);
           line-height: var(--ddd-lh-150);
           font-size: var(--ddd-font-size-s);
         }
-        
+
+        /* Style common elements within the random content */
+        .random-element h1,
+        .random-element h2,
+        .random-element h3,
+        .random-element h4,
+        .random-element h5,
+        .random-element h6 {
+          margin: 0 0 var(--ddd-spacing-3) 0;
+          color: var(--ddd-theme-default-coalyGray);
+        }
+
+        .random-element p {
+          margin: 0 0 var(--ddd-spacing-3) 0;
+        }
+
+        .random-element blockquote {
+          margin: var(--ddd-spacing-3) 0;
+          padding: var(--ddd-spacing-3);
+          border-left: var(--ddd-border-sm)
+            var(--ddd-theme-default-potentialMidnight);
+          background-color: var(--ddd-theme-default-limestoneMaxLight);
+          font-style: italic;
+        }
+
+        .random-element ul,
+        .random-element ol {
+          margin: 0 0 var(--ddd-spacing-3) 0;
+          padding-left: var(--ddd-spacing-5);
+        }
+
         .no-content {
           text-align: center;
           color: var(--ddd-theme-default-coalyGray);
           font-style: italic;
           padding: var(--ddd-spacing-6);
         }
-        
+
         .loading {
           text-align: center;
           color: var(--ddd-theme-default-coalyGray);
           padding: var(--ddd-spacing-4);
         }
-        
+
         :host([hidden]) {
           display: none;
         }
@@ -173,24 +177,29 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
     return {
       ...super.properties,
       /**
-       * Number of random pages to display
+       * Page ID to load content from
        */
-      pages: {
-        type: Number,
-        reflect: true,
-      },
-      /**
-       * Parent page ID to filter descendants from
-       */
-      parent: {
+      page: {
         type: String,
         reflect: true,
       },
       /**
-       * Array of random content to display
+       * Current random element to display
        */
-      randomContent: {
+      randomElement: {
+        type: Object,
+      },
+      /**
+       * All available elements from the page
+       */
+      allElements: {
         type: Array,
+      },
+      /**
+       * Current element index
+       */
+      currentElementIndex: {
+        type: Number,
       },
       /**
        * Loading state
@@ -211,144 +220,162 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
   }
 
   /**
-   * Get all descendant pages of a given parent
+   * Get the specified page from the manifest
    */
-  getDescendants(parentId, items = null) {
-    if (!items) {
-      items = store.routerManifest?.items || [];
+  getPageById(pageId) {
+    if (!store.routerManifest || !store.routerManifest.items || !pageId) {
+      return null;
     }
-    
-    const descendants = [];
-    const directChildren = items.filter(item => item.parent === parentId);
-    
-    directChildren.forEach(child => {
-      descendants.push(child);
-      // Recursively get descendants of this child
-      descendants.push(...this.getDescendants(child.id, items));
-    });
-    
-    return descendants;
+
+    return store.routerManifest.items.find((item) => item.id === pageId);
   }
 
   /**
-   * Get eligible pages for random selection
+   * Extract top-level HTML elements from content
    */
-  getEligiblePages() {
-    if (!store.routerManifest || !store.routerManifest.items) {
+  extractTopLevelElements(htmlContent) {
+    if (!htmlContent) {
       return [];
     }
 
-    let eligiblePages = [];
-    const currentPageId = store.activeId;
+    // Create a temporary div to parse HTML
+    const tempDiv = globalThis.document.createElement("div");
+    tempDiv.innerHTML = htmlContent;
 
-    if (this.parent) {
-      // Get descendants of the specified parent
-      eligiblePages = this.getDescendants(this.parent);
-    } else {
-      // Get all pages from the site
-      eligiblePages = [...store.routerManifest.items];
-    }
+    // Get all direct children that are meaningful content elements
+    const topLevelElements = [];
+    const allowedTags = [
+      "p",
+      "div",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "blockquote",
+      "ul",
+      "ol",
+      "pre",
+      "section",
+      "article",
+      "aside",
+      "header",
+      "main",
+      "figure",
+    ];
 
-    // Filter out the current page to avoid infinite loops
-    eligiblePages = eligiblePages.filter(item => {
-      // Exclude current page
-      if (item.id === currentPageId) {
-        return false;
+    Array.from(tempDiv.children).forEach((element) => {
+      // Skip empty elements or elements with only whitespace
+      if (element.textContent.trim().length === 0) {
+        return;
       }
-      
-      // Exclude unpublished pages
-      if (item.metadata && item.metadata.published === false) {
-        return false;
+
+      // Skip script, style, and other non-content elements
+      if (
+        ["script", "style", "meta", "link", "page-break"].includes(
+          element.tagName.toLowerCase(),
+        )
+      ) {
+        return;
       }
-      
-      // Exclude internal routes
-      if (!item.slug || item._internalRoute || item.slug.startsWith('x/')) {
-        return false;
+
+      // Include allowed content elements or any element with substantial text content
+      if (
+        allowedTags.includes(element.tagName.toLowerCase()) ||
+        element.textContent.trim().length > 10
+      ) {
+        topLevelElements.push({
+          html: element.outerHTML,
+          text: element.textContent.trim(),
+          tag: element.tagName.toLowerCase(),
+        });
       }
-      
-      return true;
     });
 
-    return eligiblePages;
+    return topLevelElements;
   }
 
   /**
-   * Clean HTML content by removing scripts, styles, and page-break elements
+   * Load elements from the specified page
    */
-  cleanHtmlContent(htmlContent) {
-    if (!htmlContent) {
-      return '';
-    }
-    
-    // Create a temporary div to parse HTML
-    const tempDiv = globalThis.document.createElement('div');
-    tempDiv.innerHTML = htmlContent;
-    
-    // Remove page-break elements
-    const pageBreaks = tempDiv.querySelectorAll('page-break');
-    pageBreaks.forEach(el => el.remove());
-    
-    // Remove script and style elements
-    const scripts = tempDiv.querySelectorAll('script, style');
-    scripts.forEach(el => el.remove());
-    
-    // Return cleaned HTML
-    return tempDiv.innerHTML;
-  }
-
-  /**
-   * Select random page content and display it
-   */
-  async selectRandomPageContent() {
-    if (!store.routerManifest) {
+  async loadPageElements() {
+    if (!this.page || !store.routerManifest) {
+      this.allElements = [];
+      this.randomElement = null;
       return;
     }
 
     this.loading = true;
-    const eligiblePages = this.getEligiblePages();
-    
-    if (eligiblePages.length === 0) {
-      this.randomContent = [];
+    const pageData = this.getPageById(this.page);
+
+    if (!pageData) {
+      console.warn("Page not found:", this.page);
+      this.allElements = [];
+      this.randomElement = null;
       this.loading = false;
       return;
     }
 
-    // Select random pages
-    const selectedPages = [];
-    const pagesToSelect = Math.min(this.pages, eligiblePages.length);
-    const shuffled = [...eligiblePages].sort(() => 0.5 - Math.random());
-    
-    for (let i = 0; i < pagesToSelect; i++) {
-      const page = shuffled[i];
-      
-      try {
-        // Load content using the store's loadItemContent method
-        const htmlContent = await store.loadItemContent(page.id);
-        const cleanContent = this.cleanHtmlContent(htmlContent);
-        
-        selectedPages.push({
-          ...page,
-          content: cleanContent || page.description || '',
-        });
-      } catch (error) {
-        console.warn('Failed to load content for page:', page.id, error);
-        // Fallback to description
-        selectedPages.push({
-          ...page,
-          content: page.description || '',
-        });
+    try {
+      // Load content using the store's loadItemContent method
+      const htmlContent = await store.loadItemContent(this.page);
+      const elements = this.extractTopLevelElements(htmlContent);
+
+      this.allElements = elements;
+
+      if (elements.length > 0) {
+        // Select a random element
+        this.selectRandomElement();
+      } else {
+        this.randomElement = null;
       }
+    } catch (error) {
+      console.warn("Failed to load content for page:", this.page, error);
+      this.allElements = [];
+      this.randomElement = null;
     }
-    
-    this.randomContent = selectedPages;
+
     this.loading = false;
   }
 
   /**
-   * Handle refresh button click
+   * Select a random element from available elements
    */
-  refreshContent() {
-    this.selectRandomPageContent();
+  selectRandomElement() {
+    if (this.allElements.length === 0) {
+      this.randomElement = null;
+      this.currentElementIndex = 0;
+      return;
+    }
+
+    // Get a random index
+    this.currentElementIndex = Math.floor(
+      Math.random() * this.allElements.length,
+    );
+    this.randomElement = this.allElements[this.currentElementIndex];
+  }
+
+  /**
+   * Handle shuffle button click to get a different random element
+   */
+  shuffleContent() {
+    if (this.allElements.length <= 1) {
+      // No point shuffling if there's 0 or 1 elements
+      return;
+    }
+
+    // Get a different random element (not the current one)
+    let newIndex;
+    do {
+      newIndex = Math.floor(Math.random() * this.allElements.length);
+    } while (
+      newIndex === this.currentElementIndex &&
+      this.allElements.length > 1
+    );
+
+    this.currentElementIndex = newIndex;
+    this.randomElement = this.allElements[this.currentElementIndex];
   }
 
   /**
@@ -356,9 +383,9 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
    */
   updated(changedProperties) {
     super.updated(changedProperties);
-    
-    if (changedProperties.has('pages') || changedProperties.has('parent')) {
-      this.selectRandomPageContent();
+
+    if (changedProperties.has("page")) {
+      this.loadPageElements();
     }
   }
 
@@ -367,7 +394,9 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
    */
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
-    this.selectRandomPageContent();
+    if (this.page) {
+      this.loadPageElements();
+    }
   }
 
   /**
@@ -399,18 +428,18 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
     };
   }
 
-    /**
-   * Allow for dynamic setting of the parent field if we have the store around
+  /**
+   * Allow for dynamic setting of the page field if we have the store around
    * with values to do so
    */
   haxsetupActiveElementForm(props) {
     if (globalThis.HAXCMS) {
       const itemManifest =
         globalThis.HAXCMS.requestAvailability().store.getManifestItems(true);
-      // default to null parent as the whole site
+      // default option for no page selected
       var items = [
         {
-          text: `-- ${this.t.noParent} --`,
+          text: `-- ${this.t.noPage} --`,
           value: null,
         },
       ];
@@ -433,57 +462,51 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
           });
         }
       });
-      // apply same logic of the items in the active site to
-      // parent and related items
+      // apply same logic of the items in the active site to page selection
       props.settings.configure.forEach((attr, index) => {
-        if (attr.property === "parent") {
+        if (attr.property === "page") {
           props.settings.configure[index].inputMethod = "select";
           props.settings.configure[index].itemsList = items;
         }
       });
     }
   }
-  
 
   render() {
     return html`
       <div class="random-content-container">
         <div class="header">
           <simple-icon-button-lite
-            icon="icons:refresh"
-            @click="${this.refreshContent}"
-            title="${this.t.refresh}"
-            class="refresh-btn"
-            ?disabled="${this.editMode}"
-          >Refresh content</simple-icon-button-lite>
+            icon="icons:shuffle"
+            @click="${this.shuffleContent}"
+            title="${this.t.shuffle}"
+            class="shuffle-btn"
+            ?disabled="${this.editMode || this.allElements.length <= 1}"
+            >${this.t.shuffle}</simple-icon-button-lite
+          >
         </div>
-        
-        ${this.loading ? html`
-          <div class="loading">${this.t.loading}</div>
-        ` : nothing}
-        
-        ${!this.loading && this.randomContent.length === 0 ? html`
-          <div class="no-content">${this.t.noContent}</div>
-        ` : nothing}
-        
-        ${!this.loading && this.randomContent.length > 0 ? html`
-          <div class="content-list">
-            ${this.randomContent.map(item => html`
-              <div class="content-item">
-                <h4 class="item-title">
-                  <a href="${item.slug}" title="${item.title}" ?disabled="${this.editMode}">${item.title}</a>
-                </h4>
-                ${item.content ? html`
-                  <div class="item-content">${unsafeHTML(item.content)}</div>
-                ` : nothing}
+
+        ${this.loading
+          ? html` <div class="loading">${this.t.loading}</div> `
+          : nothing}
+        ${!this.loading && !this.page
+          ? html` <div class="no-content">${this.t.noPage}</div> `
+          : nothing}
+        ${!this.loading &&
+        this.page &&
+        (!this.randomElement || this.allElements.length === 0)
+          ? html` <div class="no-content">${this.t.noContent}</div> `
+          : nothing}
+        ${!this.loading && this.randomElement
+          ? html`
+              <div class="random-element">
+                ${unsafeHTML(this.randomElement.html)}
               </div>
-            `)}
-          </div>
-        ` : nothing}
+            `
+          : nothing}
       </div>
     `;
   }
-  
 
   /**
    * HAX properties integration
@@ -494,48 +517,38 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
       canPosition: false,
       canEditSource: false,
       gizmo: {
-        title: "Random Content",
-        description: "Display random content from other pages in the site",
+        title: "Random Page Content",
+        description: "Display a random top-level element from a selected page",
         icon: "icons:shuffle",
         color: "purple",
-        tags: ["Site", "Content", "Random"],
+        tags: ["Site", "Content", "Random", "Page"],
         handles: [],
         meta: {
-          author: "HAXcms"
-        }
+          author: "HAXcms",
+        },
       },
       settings: {
         configure: [
           {
-            property: "pages",
-            title: "Number of pages",
-            description: "How many random pages to display",
-            inputMethod: "number",
-            min: 1,
-            max: 5,
-            step: 1,
-            required: false,
+            property: "page",
+            title: "Page",
+            description:
+              "Select the page to draw random content from. The element will randomly display one of the top-level HTML elements from this page.",
+            inputMethod: "select",
+            required: true,
           },
-          {
-            property: "parent", 
-            title: "Parent page",
-            description: "Limit random content to descendants of this page (leave blank for site-wide)",
-            inputMethod: "textfield",
-            required: false,
-          }
         ],
-        advanced: []
+        advanced: [],
       },
       demoSchema: [
         {
           tag: this.tag,
           properties: {
-            pages: 2,
-            parent: null
+            page: null,
           },
-          content: ""
-        }
-      ]
+          content: "",
+        },
+      ],
     };
   }
 }

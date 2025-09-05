@@ -409,7 +409,7 @@ class HAXCMSBackendUserfs extends LitElement {
     ).then((response) => {
       return response.json();
     });
-    
+
     // Check if we're in view-only mode - if so, don't import editor
     const viewOnlyMode = UserScaffoldInstance.readMemory("ViewOnlyMode");
     if (!viewOnlyMode) {
@@ -417,8 +417,8 @@ class HAXCMSBackendUserfs extends LitElement {
       // which will appear to be injecting into the page
       // but because of this approach it should be non-blocking
       try {
-      // prettier-ignore
-      import(
+        // prettier-ignore
+        import(
         "@haxtheweb/haxcms-elements/lib/core/haxcms-site-editor.js"
       ).then(
         (e) => {

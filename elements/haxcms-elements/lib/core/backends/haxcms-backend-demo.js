@@ -103,7 +103,7 @@ class HAXCMSBackendDemo extends LitElement {
           this.jwt = globalThis.appSettings.jwt;
         }
       }
-      
+
       // Check if we're in view-only mode - if so, don't import editor
       const viewOnlyMode = UserScaffoldInstance.readMemory("ViewOnlyMode");
       if (!viewOnlyMode) {

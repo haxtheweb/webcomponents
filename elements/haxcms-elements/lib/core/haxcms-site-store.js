@@ -460,7 +460,7 @@ class Store {
     if (this.viewOnlyMode) {
       return null;
     }
-    
+
     if (!this.cmsSiteEditor.instance) {
       this.cmsSiteEditor.instance =
         globalThis.document.createElement("haxcms-site-editor");
@@ -861,7 +861,7 @@ class Store {
     return { prev: null, next: null };
   }
 
-    // show view only mode toast with exit option
+  // show view only mode toast with exit option
   showViewOnlyModeToast() {
     // Create exit button
     const exitButton = globalThis.document.createElement("button");
@@ -887,7 +887,7 @@ class Store {
       {
         hat: "coffee",
         slot: exitButton,
-      }
+      },
     );
   }
 
@@ -900,7 +900,7 @@ class Store {
     if (this.viewOnlyMode) {
       return false;
     }
-    
+
     // account for keypair storage issue since its a string bin
     if (this.jwt && this.jwt != "null") {
       return true;
@@ -1121,7 +1121,7 @@ class Store {
       }
     }
   }
-  
+
   /**
    * Load content for a specific item by ID
    * @param {string} itemId - The ID of the item to load content for
@@ -1130,26 +1130,27 @@ class Store {
   async loadItemContent(itemId) {
     const item = this.findItem(itemId);
     if (!item || !item.location) {
-      return '';
+      return "";
     }
-    
+
     try {
       // Get outlineLocation from site builder if available
-      let outlineLocation = '';
+      let outlineLocation = "";
       if (HAXcmsStore.storePieces && HAXcmsStore.storePieces.siteBuilder) {
-        outlineLocation = HAXcmsStore.storePieces.siteBuilder.outlineLocation || '';
+        outlineLocation =
+          HAXcmsStore.storePieces.siteBuilder.outlineLocation || "";
       }
-      
+
       const url = `${outlineLocation}${item.location}`;
       const response = await fetch(url);
       if (response.ok) {
         return await response.text();
       }
     } catch (error) {
-      console.warn('Failed to load content for item:', itemId, error);
+      console.warn("Failed to load content for item:", itemId, error);
     }
-    
-    return '';
+
+    return "";
   }
   /**
    * Spider children based on criteria and return what we found
@@ -1371,7 +1372,7 @@ class HAXCMSSiteStore extends HTMLElement {
       setTimeout(() => {
         if (store.viewOnlyMode) {
           store.showViewOnlyModeToast();
-        }        
+        }
       }, 1000);
     });
     autorun(() => {

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Random Content - Test Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    
+    .demo-section {
+      background: white;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    h1, h2 {
+      color: #333;
+    }
+    
+    .info {
+      background: #e3f2fd;
+      padding: 15px;
+      border-left: 4px solid #2196f3;
+      margin: 15px 0;
+    }
+    
+    .test-content {
+      border: 2px dashed #ccc;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    
+    .example-content p {
+      margin: 10px 0;
+      padding: 10px;
+      background: #f9f9f9;
+      border-left: 3px solid #4caf50;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎲 Site Random Content Element Test</h1>
+  
+  <div class="info">
+    <strong>Updated Functionality:</strong>
+    <ul>
+      <li><strong>Page-based:</strong> Select a specific page as the content source</li>
+      <li><strong>Random Elements:</strong> Displays one random top-level HTML element from the selected page</li>
+      <li><strong>Shuffle Button:</strong> Click to get a different random element from the same page</li>
+      <li><strong>Use Case:</strong> Perfect for "quote of the day" or random tips from a content page</li>
+    </ul>
+  </div>
+
+  <div class="demo-section">
+    <h2>📝 Example Content Page Structure</h2>
+    <p>For best results, create a page with multiple top-level elements like this:</p>
+    
+    <div class="example-content">
+      <p>"Success is not final, failure is not fatal: it is the courage to continue that counts."</p>
+      <p>"The way to get started is to quit talking and begin doing."</p>
+      <p>"Innovation distinguishes between a leader and a follower."</p>
+      <p>"Life is what happens to you while you're busy making other plans."</p>
+      <p>"The future belongs to those who believe in the beauty of their dreams."</p>
+    </div>
+    
+    <p><em>Each paragraph above would be treated as a separate element that could be randomly selected.</em></p>
+  </div>
+
+  <div class="demo-section">
+    <h2>🧪 Live Demo</h2>
+    <p>The element below will show "No page selected" until configured:</p>
+    
+    <div class="test-content">
+      <site-random-content></site-random-content>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <h2>⚙️ Configuration</h2>
+    <p>To configure this element:</p>
+    <ol>
+      <li>Right-click on the element in edit mode</li>
+      <li>Select "Configure" or use the HAX interface</li>
+      <li>Choose a page from the dropdown menu</li>
+      <li>The element will automatically load and display a random element from that page</li>
+      <li>Use the shuffle button (🔀) to cycle through different random elements</li>
+    </ol>
+  </div>
+
+  <div class="demo-section">
+    <h2>🎯 Perfect Use Cases</h2>
+    <ul>
+      <li><strong>Quote of the Day:</strong> Create a page with multiple inspirational quotes</li>
+      <li><strong>Daily Tips:</strong> Have a page with various tips or advice</li>
+      <li><strong>Random Facts:</strong> Store interesting facts and display them randomly</li>
+      <li><strong>Featured Content:</strong> Rotate through different featured items</li>
+      <li><strong>Testimonials:</strong> Show random customer testimonials</li>
+    </ul>
+  </div>
+
+  <div class="demo-section">
+    <h2>🔧 Technical Details</h2>
+    <ul>
+      <li><strong>Supported Elements:</strong> p, div, h1-h6, blockquote, ul, ol, pre, section, article, aside, header, main, figure</li>
+      <li><strong>Content Filtering:</strong> Automatically skips empty elements, scripts, and styles</li>
+      <li><strong>Minimum Content:</strong> Elements must have at least 10 characters of text content</li>
+      <li><strong>Clean Output:</strong> Preserves original HTML structure and formatting</li>
+    </ul>
+  </div>
+
+  <script type="module">
+    // Import the element
+    import '../lib/ui-components/site/site-random-content.js';
+    
+    // Wait for element to be ready
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('Site Random Content element loaded and ready!');
+      
+      const element = document.querySelector('site-random-content');
+      if (element) {
+        console.log('Element found:', element);
+        
+        // Log any property changes for debugging
+        element.addEventListener('property-changed', (e) => {
+          console.log('Property changed:', e.detail);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

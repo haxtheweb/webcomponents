@@ -24,7 +24,7 @@ export class SiteRandomRoute extends HAXCMSI18NMixin(DDD) {
     this.t.random = "Random Page";
     this.t.navigating = "Taking you to a random page...";
     this.t.noPages = "No published pages found";
-    
+
     // Perform the random selection and redirection immediately
     this.performRandomRedirect();
   }
@@ -46,14 +46,14 @@ export class SiteRandomRoute extends HAXCMSI18NMixin(DDD) {
         return false;
       }
       // Don't include internal routes or pages without proper slugs
-      if (!item.slug || item._internalRoute || item.slug.startsWith('x/')) {
+      if (!item.slug || item._internalRoute || item.slug.startsWith("x/")) {
         return false;
       }
       return true;
     });
 
     if (publishedPages.length === 0) {
-      console.warn('No published pages found for random selection');
+      console.warn("No published pages found for random selection");
       return null;
     }
 
@@ -67,18 +67,18 @@ export class SiteRandomRoute extends HAXCMSI18NMixin(DDD) {
    */
   performRandomRedirect() {
     const randomPage = this.getRandomPage();
-    
+
     if (!randomPage) {
       // No published pages found, stay on the random route
       return;
     }
-    
+
     // Navigate to the random page using history API
     // Use pushState to allow back button to work properly
-    globalThis.history.pushState({}, '', randomPage.slug);
-    
+    globalThis.history.pushState({}, "", randomPage.slug);
+
     // Trigger a popstate event to notify the router
-    globalThis.dispatchEvent(new PopStateEvent('popstate'));
+    globalThis.dispatchEvent(new PopStateEvent("popstate"));
   }
 
   /**
@@ -98,8 +98,7 @@ export class SiteRandomRoute extends HAXCMSI18NMixin(DDD) {
       <div role="status" aria-live="polite">
         ${!randomPage
           ? html`<p>${this.t.noPages}</p>`
-          : html`<p>${this.t.navigating}</p>`
-        }
+          : html`<p>${this.t.navigating}</p>`}
       </div>
     `;
   }
