@@ -121,13 +121,58 @@ const HAXCMSTheme = function (SuperClass) {
       const location = newValue;
       const name = location.route.name;
       if (name == "home") {
-        // if we are on the homepage then load the first item in the manifest
-        // and set it active
-        const firstItem = store.routerManifest.items.find(
-          (i) => typeof i.id !== "undefined",
-        );
-        if (firstItem) {
-          store.activeId = firstItem.id;
+        // if we are on the homepage then load the configured home page or first item
+        let homeItem = null;
+        
+        // Check if there's a configured homePageId in the manifest
+        const manifest = store.manifest;
+        if (
+          manifest &&
+          manifest.metadata &&
+          manifest.metadata.site &&
+          manifest.metadata.site.homePageId &&
+          manifest.metadata.site.homePageId !== ""
+        ) {
+          // Find the page with the configured home page ID
+          homeItem = store.routerManifest.items.find(
+            (item) => item.id === manifest.metadata.site.homePageId,
+          );
+          
+          // Verify the home page exists and is valid
+          if (
+            homeItem &&
+            homeItem.slug &&
+            !homeItem._internalRoute &&
+            !homeItem.slug.startsWith("x/")
+          ) {
+            // Verify page is published (if user is not logged in)
+            if (
+              homeItem.metadata &&
+              homeItem.metadata.published === false &&
+              !store.isLoggedIn
+            ) {
+              console.warn(
+                "Configured home page is not published, falling back to first page"
+              );
+              homeItem = null;
+            }
+          } else {
+            console.warn(
+              "Configured home page ID does not exist in manifest, falling back to first page"
+            );
+            homeItem = null;
+          }
+        }
+        
+        // Fall back to first item if no home page configured or found
+        if (!homeItem) {
+          homeItem = store.routerManifest.items.find(
+            (i) => typeof i.id !== "undefined",
+          );
+        }
+        
+        if (homeItem) {
+          store.activeId = homeItem.id;
         }
       }
     }

@@ -42,6 +42,14 @@
                 "inputMethod": "haxupload",
                 "required": false,
                 "noVoiceRecord": true
+              },
+              {
+                "property": "manifest-metadata-site-homePageId",
+                "title": "Home page",
+                "description": "Select a page for the home page of the site",
+                "inputMethod": "select",
+                "required": false,
+                "icon": "icons:home"
               }
             ]
           },
@@ -208,6 +216,7 @@
         "site": {
           "manifest-title": "hax.camp",
           "manifest-description": "HAXcampd",
+          "manifest-metadata-site-homePageId": null,
           "manifest-metadata-site-domain": "https://hax.camp",
           "manifest-metadata-site-logo": "files/overflow.png"
         },

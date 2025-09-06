@@ -212,12 +212,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
   }
   fieldDataLoaded() {
     const itemManifest = store.getManifestItems(true);
-    var items = [
-      {
-        text: ``,
-        value: null,
-      },
-    ];
+    var items = [];
     itemManifest.forEach((el) => {
       if (el.id != this.itemId) {
         // calculate -- depth so it looks like a tree
@@ -250,6 +245,28 @@ class HAXCMSSiteDashboard extends SimpleColors {
             item4.properties[0].itemsList = items;
           }
         });
+
+      // Handle homepage field - find the homepage field in site properties
+      const siteProperties = fields
+        .find((item) => item.property === "manifest")
+        .properties.find((item2) => item2.property === "site");
+      
+      if (siteProperties && siteProperties.properties) {
+        const homepageField = siteProperties.properties.find(
+          (item) => item.property === "manifest-metadata-site-homePageId",
+        );
+        if (homepageField) {
+          // Convert itemsList format to options format for select field
+          const options = {
+            "" : "-- default to first page --",
+          };
+          items.forEach((item) => {
+            options[item.value] = item.text;
+          });
+          homepageField.options = options;
+        }
+      }
+
       setTimeout(() => {
         this.shadowRoot.querySelector("#siteform").fields = [...fields];
         requestAnimationFrame(() => {

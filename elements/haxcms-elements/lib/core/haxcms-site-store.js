@@ -87,6 +87,7 @@ class Store {
       views: {},
       tags: {},
       random: {},
+      home: {},
     };
     this.evaluatebadDevice();
     this.location = null;
@@ -121,6 +122,7 @@ class Store {
       views: "Content views",
       tags: "Content tags",
       random: "Random page",
+      home: "Home page",
       pageNotFound: "Page not found",
     };
     this.activeId = null;
@@ -1330,11 +1332,59 @@ class HAXCMSSiteStore extends HTMLElement {
           // we need other stuff to work with this.
           store.activeId = "404";
         } else {
-          const firstItem = store.manifest.items.find(
-            (i) => typeof i.id !== "undefined",
-          );
-          if (firstItem) {
-            store.activeId = firstItem.id;
+          // Check if we're on home route and should use configured home page
+          const routeName = store.location.route.name;
+          let homeItem = null;
+          
+          if (routeName === "home") {
+            // Check if there's a configured homePageId in the manifest
+            const manifest = store.manifest;
+            if (
+              manifest &&
+              manifest.metadata &&
+              manifest.metadata.site &&
+              manifest.metadata.site.homePageId &&
+              manifest.metadata.site.homePageId !== ""
+            ) {
+              // Find the page with the configured home page ID
+              homeItem = store.manifest.items.find(
+                (item) => item.id === manifest.metadata.site.homePageId,
+              );
+              
+              // Verify the home page exists and is valid
+              if (
+                homeItem &&
+                !homeItem._internalRoute
+              ) {
+                // Verify page is published (if user is not logged in)
+                if (
+                  homeItem.metadata &&
+                  homeItem.metadata.published === false &&
+                  !store.isLoggedIn
+                ) {
+                  console.warn(
+                    "Configured home page is not published, falling back to first page"
+                  );
+                  homeItem = null;
+                }
+              } else {
+                console.warn(
+                  "Configured home page ID does not exist in manifest, falling back to first page"
+                );
+                homeItem = null;
+              }
+            }
+          }
+          
+          // Fall back to first item if no home page configured or found
+          if (!homeItem) {
+            homeItem = store.manifest.items.find(
+              (i) => typeof i.id !== "undefined",
+            );
+          }
+          
+          if (homeItem) {
+            store.activeId = homeItem.id;
           }
         }
       }

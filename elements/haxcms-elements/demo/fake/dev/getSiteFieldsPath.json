@@ -34,6 +34,14 @@
                 "inputMethod": "textfield",
                 "required": false,
                 "icon": "editor:short-text"
+              },
+              {
+                "property": "manifest.metadata.site.homePageId",
+                "title": "Home page",
+                "description": "Select a page for the home page of the site",
+                "inputMethod": "select",
+                "required": false,
+                "icon": "icons:home"
               }
             ]
           },
@@ -314,6 +322,7 @@
         "site": {
           "manifest.title": "btopro",
           "manifest.description": "Crazy, abrasive, caring, dreaming the future into existence.",
+          "manifest.metadata.site.homePageId": null,
           "manifest.metadata.site.domain": "https://btopro.com"
         },
         "author": {
