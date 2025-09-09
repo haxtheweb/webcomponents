@@ -33,9 +33,9 @@
       "tags": ""
     },
     "theme": {
-      "element": "clean-two",
-      "path": "@haxtheweb/glossy-portfolio-theme/glossy-portfolio-theme.js",
-      "name": "Polaris - Invent",
+      "element": "spacebook-theme",
+      "path": "@haxtheweb/spacebook-theme/spacebook-theme.js",
+      "name": "Spacebook",
       "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg",
       "variables": {
         "image": "",
