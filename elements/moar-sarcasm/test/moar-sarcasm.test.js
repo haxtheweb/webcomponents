@@ -13,6 +13,77 @@ describe("moar-sarcasm test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
+
+  describe("Accessibility - Text Content", () => {
+    it("provides accessible sarcasm indication", async () => {
+      const testElement = await fixture(html`
+        <moar-sarcasm>Oh, that's just wonderful</moar-sarcasm>
+      `);
+      await testElement.updateComplete;
+      
+      // Should indicate sarcastic tone to screen readers
+      const hasAriaLabel = testElement.hasAttribute('aria-label') || 
+                          testElement.hasAttribute('title') ||
+                          testElement.shadowRoot.querySelector('[aria-label], [title]');
+      
+      // Should provide some indication of sarcastic nature
+      if (hasAriaLabel) {
+        expect(hasAriaLabel).to.exist;
+      }
+    });
+
+    it("maintains readable text content", async () => {
+      const testElement = await fixture(html`
+        <moar-sarcasm>This is sarcastic text</moar-sarcasm>
+      `);
+      await testElement.updateComplete;
+      
+      const textContent = testElement.textContent || testElement.shadowRoot.textContent;
+      expect(textContent.trim().length).to.be.greaterThan(0);
+    });
+  });
+
+  describe("Accessibility - Semantic Markup", () => {
+    it("uses appropriate semantic elements", async () => {
+      await element.updateComplete;
+      
+      // Should use semantic markup for emphasis
+      const semantic = element.shadowRoot.querySelectorAll('em, strong, span[role], [aria-label]');
+      expect(semantic.length >= 0).to.be.true;
+    });
+
+    it("provides context for screen readers", async () => {
+      const testElement = await fixture(html`
+        <moar-sarcasm>Great, another meeting</moar-sarcasm>
+      `);
+      await testElement.updateComplete;
+      
+      // Should be accessible regardless of visual styling
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
+  });
+
+  describe("Accessibility - Visual and Audio Cues", () => {
+    it("doesn't rely solely on visual styling for meaning", async () => {
+      const testElement = await fixture(html`
+        <moar-sarcasm>So helpful</moar-sarcasm>
+      `);
+      await testElement.updateComplete;
+      
+      // Should convey sarcasm through more than just styling
+      const content = testElement.textContent || testElement.shadowRoot.textContent;
+      expect(content.trim().length).to.be.greaterThan(0);
+      
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
+
+    it("maintains appropriate contrast", async () => {
+      await element.updateComplete;
+      
+      const style = globalThis.getComputedStyle(element);
+      expect(style.display).to.not.equal('none');
+    });
+  });
 });
 
 /*

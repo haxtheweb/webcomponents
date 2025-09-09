@@ -1,5 +1,5 @@
 import { fixture, expect } from "@open-wc/testing";
-import { 
+import {
   badJSEventAttributes,
   removeBadJSEventAttributes,
   copyToClipboard,
@@ -17,47 +17,46 @@ import {
   isElementInViewport,
   getRange,
   internalGetShadowSelection,
-  ReplaceWithPolyfill
+  ReplaceWithPolyfill,
 } from "../utils.js";
 
 describe("Utils test", () => {
-
   // Security and sanitization function tests
   describe("Security Functions", () => {
     it("exports badJSEventAttributes array with dangerous event handlers", async () => {
-      expect(badJSEventAttributes).to.be.an('array');
+      expect(badJSEventAttributes).to.be.an("array");
       expect(badJSEventAttributes.length).to.be.greaterThan(50);
-      expect(badJSEventAttributes).to.include('onclick');
-      expect(badJSEventAttributes).to.include('onload');
-      expect(badJSEventAttributes).to.include('onerror');
-      expect(badJSEventAttributes).to.include('onmouseover');
+      expect(badJSEventAttributes).to.include("onclick");
+      expect(badJSEventAttributes).to.include("onload");
+      expect(badJSEventAttributes).to.include("onerror");
+      expect(badJSEventAttributes).to.include("onmouseover");
     });
 
     it("removeBadJSEventAttributes removes dangerous event handlers from element", async () => {
-      const div = document.createElement('div');
-      div.setAttribute('onclick', 'alert("xss")');
-      div.setAttribute('onload', 'maliciousCode()');
-      div.setAttribute('onerror', 'steal()');
-      div.setAttribute('data-safe', 'keep-this');
-      
+      const div = document.createElement("div");
+      div.setAttribute("onclick", 'alert("xss")');
+      div.setAttribute("onload", "maliciousCode()");
+      div.setAttribute("onerror", "steal()");
+      div.setAttribute("data-safe", "keep-this");
+
       const cleaned = removeBadJSEventAttributes(div);
-      
-      expect(cleaned.hasAttribute('onclick')).to.be.false;
-      expect(cleaned.hasAttribute('onload')).to.be.false;
-      expect(cleaned.hasAttribute('onerror')).to.be.false;
-      expect(cleaned.hasAttribute('data-safe')).to.be.true;
+
+      expect(cleaned.hasAttribute("onclick")).to.be.false;
+      expect(cleaned.hasAttribute("onload")).to.be.false;
+      expect(cleaned.hasAttribute("onerror")).to.be.false;
+      expect(cleaned.hasAttribute("data-safe")).to.be.true;
     });
 
     it("removeBadJSEventAttributes removes dangerous handlers from nested elements", async () => {
-      const div = document.createElement('div');
-      const span = document.createElement('span');
-      span.setAttribute('onclick', 'alert("nested xss")');
+      const div = document.createElement("div");
+      const span = document.createElement("span");
+      span.setAttribute("onclick", 'alert("nested xss")');
       div.appendChild(span);
-      
+
       removeBadJSEventAttributes(div);
-      
-      const nestedSpan = div.querySelector('span');
-      expect(nestedSpan.hasAttribute('onclick')).to.be.false;
+
+      const nestedSpan = div.querySelector("span");
+      expect(nestedSpan.hasAttribute("onclick")).to.be.false;
     });
 
     it("removeBadJSEventAttributes handles null/undefined elements gracefully", async () => {
@@ -67,10 +66,10 @@ describe("Utils test", () => {
     });
 
     it("removeBadJSEventAttributes handles elements without attributes", async () => {
-      const div = document.createElement('div');
-      
+      const div = document.createElement("div");
+
       const result = removeBadJSEventAttributes(div);
-      
+
       expect(result).to.equal(div);
       expect(() => removeBadJSEventAttributes(div)).to.not.throw;
     });
@@ -81,13 +80,13 @@ describe("Utils test", () => {
     it("b64toBlob converts base64 to Blob correctly", async () => {
       const base64Data = "SGVsbG8gV29ybGQ="; // "Hello World" in base64
       const contentType = "text/plain";
-      
+
       const blob = b64toBlob(base64Data, contentType);
-      
+
       expect(blob).to.be.instanceOf(Blob);
       expect(blob.type).to.equal(contentType);
       expect(blob.size).to.be.greaterThan(0);
-      
+
       // Verify content
       const text = await blob.text();
       expect(text).to.equal("Hello World");
@@ -95,35 +94,35 @@ describe("Utils test", () => {
 
     it("b64toBlob handles empty base64 data", async () => {
       const blob = b64toBlob("", "text/plain");
-      
+
       expect(blob).to.be.instanceOf(Blob);
       expect(blob.size).to.equal(0);
     });
 
     it("b64toBlob uses default parameters", async () => {
       const base64Data = "SGVsbG8="; // "Hello"
-      
+
       const blob = b64toBlob(base64Data);
-      
+
       expect(blob).to.be.instanceOf(Blob);
       expect(blob.type).to.equal("");
     });
 
     it("b64toBlob handles custom slice size", async () => {
       const base64Data = "SGVsbG8gV29ybGQgVGVzdA=="; // "Hello World Test"
-      
+
       const blob = b64toBlob(base64Data, "text/plain", 4);
-      
+
       expect(blob).to.be.instanceOf(Blob);
       expect(blob.type).to.equal("text/plain");
     });
 
     it("CSVtoArray parses simple CSV correctly", async () => {
       const csv = "name,age,city\nJohn,30,New York\nJane,25,Boston";
-      
+
       const result = CSVtoArray(csv);
-      
-      expect(result).to.be.an('array');
+
+      expect(result).to.be.an("array");
       expect(result).to.have.length(3);
       expect(result[0]).to.deep.equal(["name", "age", "city"]);
       expect(result[1]).to.deep.equal(["John", "30", "New York"]);
@@ -131,10 +130,11 @@ describe("Utils test", () => {
     });
 
     it("CSVtoArray handles CSV with quoted values", async () => {
-      const csv = 'name,description\n"John Doe","A person with, comma"\n"Jane Smith","Another ""quoted"" person"';
-      
+      const csv =
+        'name,description\n"John Doe","A person with, comma"\n"Jane Smith","Another ""quoted"" person"';
+
       const result = CSVtoArray(csv);
-      
+
       expect(result[1][0]).to.equal("John Doe");
       expect(result[1][1]).to.equal("A person with, comma");
       expect(result[2][1]).to.equal('Another "quoted" person');
@@ -142,17 +142,17 @@ describe("Utils test", () => {
 
     it("CSVtoArray handles empty CSV", async () => {
       const result = CSVtoArray("");
-      
-      expect(result).to.be.an('array');
+
+      expect(result).to.be.an("array");
       expect(result).to.have.length(1);
       expect(result[0]).to.deep.equal([""]);
     });
 
     it("CSVtoArray handles CSV with carriage returns", async () => {
       const csv = "a,b\r\nc,d\r\n";
-      
+
       const result = CSVtoArray(csv);
-      
+
       expect(result).to.have.length(3);
       expect(result[0]).to.deep.equal(["a", "b"]);
       expect(result[1]).to.deep.equal(["c", "d"]);
@@ -160,9 +160,9 @@ describe("Utils test", () => {
 
     it("utf2Html converts UTF-8 characters to HTML entities", async () => {
       const input = "café & naïve";
-      
+
       const result = utf2Html(input);
-      
+
       expect(result).to.include("caf&#233;");
       expect(result).to.include("&amp;");
       expect(result).to.include("na&#239;ve");
@@ -170,9 +170,9 @@ describe("Utils test", () => {
 
     it("htmlEntities converts HTML special characters", async () => {
       const input = '<script>alert("xss")</script> & "quotes"';
-      
+
       const result = htmlEntities(input);
-      
+
       expect(result).to.include("&lt;script&gt;");
       expect(result).to.include("&lt;/script&gt;");
       expect(result).to.include("&amp;");
@@ -190,35 +190,35 @@ describe("Utils test", () => {
   describe("Video Source Cleaning", () => {
     it("cleanVideoSource handles YouTube URLs", async () => {
       const youtubeUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-      
+
       const result = cleanVideoSource(youtubeUrl);
-      
+
       expect(result).to.include("youtube");
       expect(result).to.include("dQw4w9WgXcQ");
     });
 
     it("cleanVideoSource handles Vimeo URLs", async () => {
       const vimeoUrl = "https://vimeo.com/123456789";
-      
+
       const result = cleanVideoSource(vimeoUrl);
-      
+
       expect(result).to.include("vimeo");
     });
 
     it("cleanVideoSource removes query parameters", async () => {
       const urlWithParams = "https://example.com/video.mp4?autoplay=1&mute=1";
-      
+
       const result = cleanVideoSource(urlWithParams);
-      
+
       expect(result).to.not.include("autoplay");
       expect(result).to.not.include("mute");
     });
 
     it("cleanVideoSource handles URLs without query parameters", async () => {
       const cleanUrl = "https://example.com/video.mp4";
-      
+
       const result = cleanVideoSource(cleanUrl);
-      
+
       expect(result).to.equal(cleanUrl);
     });
   });
@@ -240,13 +240,13 @@ describe("Utils test", () => {
 
     it("copyToClipboard copies text and shows toast on success", async () => {
       const mockClipboard = {
-        writeText: async (text) => Promise.resolve()
+        writeText: async (text) => Promise.resolve(),
       };
       globalThis.navigator = { clipboard: mockClipboard };
 
       let toastEvent = null;
       globalThis.dispatchEvent = (event) => {
-        if (event.type === 'simple-toast-show') {
+        if (event.type === "simple-toast-show") {
           toastEvent = event;
         }
       };
@@ -261,13 +261,14 @@ describe("Utils test", () => {
 
     it("copyToClipboard handles clipboard API failures", async () => {
       const mockClipboard = {
-        writeText: async (text) => Promise.reject(new Error("Permission denied"))
+        writeText: async (text) =>
+          Promise.reject(new Error("Permission denied")),
       };
       globalThis.navigator = { clipboard: mockClipboard };
 
       let toastEvent = null;
       globalThis.dispatchEvent = (event) => {
-        if (event.type === 'simple-toast-show') {
+        if (event.type === "simple-toast-show") {
           toastEvent = event;
         }
       };
@@ -280,13 +281,13 @@ describe("Utils test", () => {
 
     it("copyToClipboard uses custom message", async () => {
       const mockClipboard = {
-        writeText: async (text) => Promise.resolve()
+        writeText: async (text) => Promise.resolve(),
       };
       globalThis.navigator = { clipboard: mockClipboard };
 
       let toastEvent = null;
       globalThis.dispatchEvent = (event) => {
-        if (event.type === 'simple-toast-show') {
+        if (event.type === "simple-toast-show") {
           toastEvent = event;
         }
       };
@@ -299,7 +300,7 @@ describe("Utils test", () => {
 
     it("copyToClipboard uses HAXCMSToast when available", async () => {
       const mockClipboard = {
-        writeText: async (text) => Promise.resolve()
+        writeText: async (text) => Promise.resolve(),
       };
       globalThis.navigator = { clipboard: mockClipboard };
       globalThis.HAXCMSToast = true;
@@ -327,9 +328,9 @@ describe("Utils test", () => {
     it("localStorageSet stores value correctly", async () => {
       const key = "testKey";
       const value = { data: "test", number: 42 };
-      
+
       localStorageSet(key, value);
-      
+
       const stored = JSON.parse(globalThis.localStorage.getItem(key));
       expect(stored).to.deep.equal(value);
     });
@@ -338,35 +339,35 @@ describe("Utils test", () => {
       const key = "testKey";
       const value = { data: "test" };
       globalThis.localStorage.setItem(key, JSON.stringify(value));
-      
+
       const retrieved = localStorageGet(key);
-      
+
       expect(retrieved).to.deep.equal(value);
     });
 
     it("localStorageGet returns default value when key doesn't exist", async () => {
       const defaultValue = "default";
-      
+
       const result = localStorageGet("nonexistentKey", defaultValue);
-      
+
       expect(result).to.equal(defaultValue);
     });
 
     it("localStorageGet handles JSON parse errors", async () => {
       const key = "corruptedKey";
       globalThis.localStorage.setItem(key, "invalid json {");
-      
+
       const result = localStorageGet(key, "default");
-      
+
       expect(result).to.equal("default");
     });
 
     it("localStorageDelete removes stored value", async () => {
       const key = "testKey";
       globalThis.localStorage.setItem(key, "test value");
-      
+
       localStorageDelete(key);
-      
+
       expect(globalThis.localStorage.getItem(key)).to.be.null;
     });
   });
@@ -395,53 +396,59 @@ describe("Utils test", () => {
   // DOM utility tests
   describe("DOM Utilities", () => {
     it("lightChildrenToShadowRootSelector finds elements in light DOM", async () => {
-      const container = document.createElement('div');
-      const child = document.createElement('p');
-      child.className = 'test-class';
-      child.textContent = 'Test content';
+      const container = document.createElement("div");
+      const child = document.createElement("p");
+      child.className = "test-class";
+      child.textContent = "Test content";
       container.appendChild(child);
-      
-      const result = lightChildrenToShadowRootSelector(container, '.test-class');
-      
+
+      const result = lightChildrenToShadowRootSelector(
+        container,
+        ".test-class",
+      );
+
       expect(result).to.exist;
-      expect(result.textContent).to.equal('Test content');
+      expect(result.textContent).to.equal("Test content");
     });
 
     it("lightChildrenToShadowRootSelector returns null when no match", async () => {
-      const container = document.createElement('div');
-      
-      const result = lightChildrenToShadowRootSelector(container, '.nonexistent');
-      
+      const container = document.createElement("div");
+
+      const result = lightChildrenToShadowRootSelector(
+        container,
+        ".nonexistent",
+      );
+
       expect(result).to.be.null;
     });
 
     it("normalizeEventPath handles events with path", async () => {
       const event = {
-        path: [document.createElement('div'), document.body]
+        path: [document.createElement("div"), document.body],
       };
-      
+
       const result = normalizeEventPath(event);
-      
+
       expect(result).to.equal(event.path);
     });
 
     it("normalizeEventPath handles events with composedPath", async () => {
-      const path = [document.createElement('div'), document.body];
+      const path = [document.createElement("div"), document.body];
       const event = {
-        composedPath: () => path
+        composedPath: () => path,
       };
-      
+
       const result = normalizeEventPath(event);
-      
+
       expect(result).to.equal(path);
     });
 
     it("normalizeEventPath handles events without path info", async () => {
-      const target = document.createElement('div');
+      const target = document.createElement("div");
       const event = { target };
-      
+
       const result = normalizeEventPath(event);
-      
+
       expect(result).to.deep.equal([target]);
     });
   });
@@ -449,50 +456,56 @@ describe("Utils test", () => {
   // Viewport detection tests
   describe("Viewport Functions", () => {
     it("isElementInViewport detects elements in viewport", async () => {
-      const element = document.createElement('div');
+      const element = document.createElement("div");
       // Mock getBoundingClientRect
       element.getBoundingClientRect = () => ({
         top: 100,
         left: 100,
         bottom: 200,
-        right: 200
+        right: 200,
       });
-      
+
       // Mock window dimensions
-      Object.defineProperty(window, 'innerHeight', { value: 800, configurable: true });
-      Object.defineProperty(window, 'innerWidth', { value: 1200, configurable: true });
-      
+      Object.defineProperty(window, "innerHeight", {
+        value: 800,
+        configurable: true,
+      });
+      Object.defineProperty(window, "innerWidth", {
+        value: 1200,
+        configurable: true,
+      });
+
       const result = isElementInViewport(element);
-      
+
       expect(result).to.be.true;
     });
 
     it("isElementInViewport detects elements outside viewport", async () => {
-      const element = document.createElement('div');
+      const element = document.createElement("div");
       element.getBoundingClientRect = () => ({
         top: -100,
         left: -100,
         bottom: -50,
-        right: -50
+        right: -50,
       });
-      
+
       const result = isElementInViewport(element);
-      
+
       expect(result).to.be.false;
     });
 
     it("isElementInViewport handles threshold parameter", async () => {
-      const element = document.createElement('div');
+      const element = document.createElement("div");
       element.getBoundingClientRect = () => ({
         top: 10,
         left: 10,
         bottom: 50,
-        right: 50
+        right: 50,
       });
-      
+
       const result = isElementInViewport(element, 0.5);
-      
-      expect(result).to.be.a('boolean');
+
+      expect(result).to.be.a("boolean");
     });
   });
 
@@ -502,32 +515,32 @@ describe("Utils test", () => {
       // Create a simple text node for testing
       const textNode = document.createTextNode("Test selection text");
       document.body.appendChild(textNode);
-      
+
       // Create a range
       const range = document.createRange();
       range.selectNode(textNode);
-      
+
       // Mock selection
       const mockSelection = {
         rangeCount: 1,
-        getRangeAt: (index) => range
+        getRangeAt: (index) => range,
       };
-      
+
       const result = getRange({ getSelection: () => mockSelection });
-      
+
       expect(result).to.equal(range);
-      
+
       // Cleanup
       document.body.removeChild(textNode);
     });
 
     it("getRange handles no selection", async () => {
       const mockSelection = {
-        rangeCount: 0
+        rangeCount: 0,
       };
-      
+
       const result = getRange({ getSelection: () => mockSelection });
-      
+
       expect(result).to.be.false;
     });
 
@@ -535,12 +548,12 @@ describe("Utils test", () => {
       const mockRoot = {
         getSelection: () => ({
           rangeCount: 1,
-          getRangeAt: (index) => document.createRange()
-        })
+          getRangeAt: (index) => document.createRange(),
+        }),
       };
-      
+
       const result = internalGetShadowSelection(mockRoot);
-      
+
       expect(result).to.exist;
     });
   });
@@ -552,22 +565,22 @@ describe("Utils test", () => {
       const mockElement = {
         parentNode: {
           insertBefore: (newNode, refNode) => {},
-          removeChild: (node) => {}
-        }
+          removeChild: (node) => {},
+        },
       };
-      
+
       // Apply polyfill
       ReplaceWithPolyfill();
-      
+
       // Check that Element.prototype.replaceWith exists
-      expect(Element.prototype.replaceWith).to.be.a('function');
+      expect(Element.prototype.replaceWith).to.be.a("function");
     });
 
     it("ReplaceWithPolyfill doesn't override existing replaceWith", async () => {
       const originalReplaceWith = Element.prototype.replaceWith;
-      
+
       ReplaceWithPolyfill();
-      
+
       expect(Element.prototype.replaceWith).to.equal(originalReplaceWith);
     });
   });
@@ -600,14 +613,14 @@ describe("Utils test", () => {
       // Test a workflow that uses multiple utilities
       const csvData = "name,age\nJohn,30\nJane,25";
       const parsedData = CSVtoArray(csvData);
-      
+
       // Store in localStorage
       localStorageSet("csvData", parsedData);
-      
+
       // Retrieve and verify
       const retrieved = localStorageGet("csvData");
       expect(retrieved).to.deep.equal(parsedData);
-      
+
       // Clean up
       localStorageDelete("csvData");
       expect(localStorageGet("csvData")).to.equal("");
@@ -619,18 +632,19 @@ describe("Utils test", () => {
       for (let i = 0; i < 100; i++) {
         largeCsv += `${i},"Name ${i}","Description for item ${i}"\n`;
       }
-      
+
       const start = performance.now();
       const result = CSVtoArray(largeCsv);
       const end = performance.now();
-      
+
       expect(result).to.have.length(101); // Header + 100 rows
       expect(end - start).to.be.lessThan(1000); // Should complete within 1 second
     });
 
     it("maintains data integrity through conversions", async () => {
-      const originalData = "Hello, World! This is a test with special chars: <>&\"'";
-      
+      const originalData =
+        "Hello, World! This is a test with special chars: <>&\"'";
+
       // HTML entities conversion
       const htmlEncoded = htmlEntities(originalData);
       expect(htmlEncoded).to.not.equal(originalData);
@@ -641,15 +655,16 @@ describe("Utils test", () => {
     });
 
     it("handles security scenarios correctly", async () => {
-      const maliciousElement = document.createElement('div');
-      maliciousElement.innerHTML = '<img src="x" onerror="alert(\'xss\')" onclick="steal()">';
-      
+      const maliciousElement = document.createElement("div");
+      maliciousElement.innerHTML =
+        '<img src="x" onerror="alert(\'xss\')" onclick="steal()">';
+
       const cleaned = removeBadJSEventAttributes(maliciousElement);
-      
-      expect(cleaned.innerHTML).to.not.include('onerror=');
-      expect(cleaned.innerHTML).to.not.include('onclick=');
-      expect(cleaned.querySelector('img')).to.exist; // Image should still be there
-      expect(cleaned.querySelector('img').hasAttribute('onerror')).to.be.false;
+
+      expect(cleaned.innerHTML).to.not.include("onerror=");
+      expect(cleaned.innerHTML).to.not.include("onclick=");
+      expect(cleaned.querySelector("img")).to.exist; // Image should still be there
+      expect(cleaned.querySelector("img").hasAttribute("onerror")).to.be.false;
     });
   });
 
@@ -657,20 +672,20 @@ describe("Utils test", () => {
   describe("Performance Tests", () => {
     it("handles repeated localStorage operations efficiently", async () => {
       const start = performance.now();
-      
+
       for (let i = 0; i < 100; i++) {
         localStorageSet(`key${i}`, { value: i, data: `test${i}` });
       }
-      
+
       for (let i = 0; i < 100; i++) {
         const value = localStorageGet(`key${i}`);
         expect(value.value).to.equal(i);
       }
-      
+
       for (let i = 0; i < 100; i++) {
         localStorageDelete(`key${i}`);
       }
-      
+
       const end = performance.now();
       expect(end - start).to.be.lessThan(1000); // Should complete within 1 second
     });
@@ -679,11 +694,11 @@ describe("Utils test", () => {
       // Create a larger base64 string
       const largeText = "Large test content ".repeat(1000);
       const base64Data = btoa(largeText);
-      
+
       const start = performance.now();
       const blob = b64toBlob(base64Data, "text/plain");
       const end = performance.now();
-      
+
       expect(blob.size).to.be.greaterThan(10000);
       expect(end - start).to.be.lessThan(1000);
     });

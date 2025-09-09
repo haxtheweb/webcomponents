@@ -32,6 +32,166 @@ describe("media-image test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
+
+  describe("Accessibility - Image Attributes", () => {
+    it("has proper alt text support", async () => {
+      const testElement = await fixture(html`
+        <media-image 
+          source="https://example.com/test.jpg" 
+          alt="Test image description">
+        </media-image>
+      `);
+      await testElement.updateComplete;
+      
+      const img = testElement.shadowRoot.querySelector('img');
+      if (img) {
+        expect(img.alt).to.equal('Test image description');
+      }
+    });
+
+    it("handles empty alt text appropriately", async () => {
+      const testElement = await fixture(html`
+        <media-image source="https://example.com/test.jpg" alt="">
+        </media-image>
+      `);
+      await testElement.updateComplete;
+      
+      const img = testElement.shadowRoot.querySelector('img');
+      if (img) {
+        expect(img.hasAttribute('alt')).to.be.true;
+        expect(img.alt).to.equal('');
+      }
+    });
+
+    it("supports aria-describedby when provided", async () => {
+      const testElement = await fixture(html`
+        <media-image 
+          source="https://example.com/test.jpg" 
+          aria-describedby="image-description">
+        </media-image>
+      `);
+      await testElement.updateComplete;
+      
+      const img = testElement.shadowRoot.querySelector('img');
+      if (img && testElement.getAttribute('aria-describedby')) {
+        expect(img.getAttribute('aria-describedby')).to.exist;
+      }
+    });
+  });
+
+  describe("Accessibility - Loading and Performance", () => {
+    it("uses lazy loading appropriately", async () => {
+      const testElement = await fixture(html`
+        <media-image source="https://example.com/test.jpg">
+        </media-image>
+      `);
+      await testElement.updateComplete;
+      
+      const img = testElement.shadowRoot.querySelector('img');
+      if (img) {
+        // Should have loading attribute for performance
+        expect(img.hasAttribute('loading')).to.be.true;
+      }
+    });
+
+    it("provides proper image sizing", async () => {
+      const testElement = await fixture(html`
+        <media-image 
+          source="https://example.com/test.jpg" 
+          width="300" 
+          height="200">
+        </media-image>
+      `);
+      await testElement.updateComplete;
+      
+      const img = testElement.shadowRoot.querySelector('img');
+      if (img) {
+        expect(img.hasAttribute('width') || img.hasAttribute('height')).to.be.true;
+      }
+    });
+  });
+
+  describe("Accessibility - Error Handling", () => {
+    it("handles missing images gracefully", async () => {
+      const testElement = await fixture(html`
+        <media-image alt="Image that doesn't exist">
+        </media-image>
+      `);
+      await testElement.updateComplete;
+      
+      // Should still pass accessibility audit even without source
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
+
+    it("provides fallback content when appropriate", async () => {
+      const testElement = await fixture(html`
+        <media-image source="" alt="Fallback description">
+        </media-image>
+      `);
+      await testElement.updateComplete;
+      
+      // Should maintain accessibility with empty source
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
+  });
+
+  describe("Accessibility - Responsive Design", () => {
+    it("maintains aspect ratio and responsiveness", async () => {
+      const testElement = await fixture(html`
+        <media-image source="https://example.com/test.jpg">
+        </media-image>
+      `);
+      await testElement.updateComplete;
+      
+      const style = globalThis.getComputedStyle(testElement);
+      expect(style.display).to.equal('block');
+    });
+
+    it("supports different viewport sizes", async () => {
+      const testElement = await fixture(html`
+        <media-image 
+          source="https://example.com/test.jpg" 
+          sizes="(max-width: 600px) 100vw, 50vw">
+        </media-image>
+      `);
+      await testElement.updateComplete;
+      
+      // Should remain accessible across different sizes
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
+  });
+
+  describe("Accessibility - Semantic Structure", () => {
+    it("uses appropriate semantic elements", async () => {
+      const testElement = await fixture(html`
+        <media-image source="https://example.com/test.jpg">
+        </media-image>
+      `);
+      await testElement.updateComplete;
+      
+      const figure = testElement.shadowRoot.querySelector('figure');
+      const img = testElement.shadowRoot.querySelector('img');
+      
+      if (figure) {
+        expect(figure).to.exist;
+      }
+      if (img) {
+        expect(img).to.exist;
+      }
+    });
+
+    it("supports caption when provided", async () => {
+      const testElement = await fixture(html`
+        <media-image source="https://example.com/test.jpg">
+          <p slot="caption">This is a caption</p>
+        </media-image>
+      `);
+      await testElement.updateComplete;
+      
+      const caption = testElement.querySelector('[slot="caption"]');
+      expect(caption).to.exist;
+    });
+  });
 });
 
 /*

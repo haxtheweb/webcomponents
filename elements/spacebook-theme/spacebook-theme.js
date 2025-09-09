@@ -12,6 +12,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button
 import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-breadcrumb.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/site/site-search.js";
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-modal.js";
+import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXCMSThemeParts.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
@@ -21,7 +22,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
  * @demo index.html
  * @element spacebook-theme
  */
-export class SpacebookTheme extends DDDSuper(HAXCMSLitElementTheme) {
+export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTheme)) {
 
   static get tag() {
     return "spacebook-theme";
@@ -83,8 +84,10 @@ export class SpacebookTheme extends DDDSuper(HAXCMSLitElementTheme) {
           --spacebook-theme-text-gray-700: #374151;
           --spacebook-theme-text-gray-800: #1f2937;
           --spacebook-theme-text-gray-900: #111827;
+          --spacebook-theme-text-gray-300: #d1d5db;
           --spacebook-theme-border-gray-100: #f3f4f6;
           --spacebook-theme-border-gray-200: #e5e7eb;
+          --spacebook-theme-border-gray-700: #4b5563;
           --spacebook-theme-border-gray-800: #1f2937;
         }
         
@@ -102,7 +105,7 @@ export class SpacebookTheme extends DDDSuper(HAXCMSLitElementTheme) {
         }
         
         @media (prefers-color-scheme: dark) {
-          body {
+          body:not(.light-mode) {
             background-color: var(--spacebook-theme-bg-gray-900);
             color: var(--spacebook-theme-text-gray-400);
           }
@@ -280,6 +283,10 @@ export class SpacebookTheme extends DDDSuper(HAXCMSLitElementTheme) {
       
       .dark-mode-toggle:hover {
         color: var(--spacebook-theme-text-gray-600);
+      }
+      
+      :host([dark-mode]) .dark-mode-toggle {
+        color: var(--spacebook-theme-text-gray-400);
       }
       
       :host([dark-mode]) .dark-mode-toggle:hover {
@@ -521,6 +528,14 @@ export class SpacebookTheme extends DDDSuper(HAXCMSLitElementTheme) {
         color: var(--spacebook-theme-text-gray-900);
       }
       
+      :host([dark-mode]) .nav-link {
+        color: var(--spacebook-theme-text-gray-400);
+      }
+      
+      :host([dark-mode]) .nav-link:hover {
+        color: var(--spacebook-theme-text-gray-300);
+      }
+      
       .nav-icon {
         display: inline;
         margin-left: 0.25rem;
@@ -553,12 +568,9 @@ export class SpacebookTheme extends DDDSuper(HAXCMSLitElementTheme) {
   }
   
   toggleDarkMode() {
-    // Since HAXCMSLitElementTheme handles dark mode, we'll dispatch an event
-    // The base theme will handle the actual dark mode switching
-    this.dispatchEvent(new CustomEvent('haxcms-theme-toggle-dark-mode', {
-      bubbles: true,
-      composed: true
-    }));
+    // Toggle the HAXcms store dark mode state
+    // The HAXCMSThemeParts mixin will automatically sync this with the theme
+    store.darkMode = !store.darkMode;
   }
   
   // Lit render the HTML

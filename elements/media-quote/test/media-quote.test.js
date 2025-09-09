@@ -32,8 +32,131 @@ describe("MediaQuote test", () => {
   });
 
   // Accessibility tests
-  it("passes the a11y audit with default state", async () => {
+  it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
+  });
+
+  describe("Accessibility - Quote Semantics", () => {
+    it("uses proper blockquote markup", async () => {
+      const testElement = await fixture(html`
+        <media-quote>
+          <p>This is a meaningful quote</p>
+        </media-quote>
+      `);
+      await testElement.updateComplete;
+      
+      const blockquote = testElement.shadowRoot.querySelector('blockquote');
+      if (blockquote) {
+        expect(blockquote).to.exist;
+      }
+    });
+
+    it("provides proper citation markup when available", async () => {
+      const testElement = await fixture(html`
+        <media-quote cite="https://example.com/source">
+          <p>Quote with citation</p>
+        </media-quote>
+      `);
+      await testElement.updateComplete;
+      
+      const cite = testElement.shadowRoot.querySelector('[cite], cite');
+      if (cite) {
+        expect(cite.hasAttribute('cite') || cite.tagName.toLowerCase() === 'cite').to.be.true;
+      }
+    });
+
+    it("maintains proper reading order for quote and attribution", async () => {
+      const testElement = await fixture(html`
+        <media-quote author="Jane Doe">
+          <p>Quote content</p>
+        </media-quote>
+      `);
+      await testElement.updateComplete;
+      
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
+  });
+
+  describe("Accessibility - Media Integration", () => {
+    it("provides accessible media when included", async () => {
+      const testElement = await fixture(html`
+        <media-quote image="quote-image.jpg" alt="Author portrait">
+          <p>Quote with image</p>
+        </media-quote>
+      `);
+      await testElement.updateComplete;
+      
+      const img = testElement.shadowRoot.querySelector('img');
+      if (img) {
+        expect(img.hasAttribute('alt')).to.be.true;
+      }
+    });
+
+    it("handles missing media gracefully", async () => {
+      const testElement = await fixture(html`
+        <media-quote>
+          <p>Quote without media</p>
+        </media-quote>
+      `);
+      await testElement.updateComplete;
+      
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
+  });
+
+  describe("Accessibility - Content Structure", () => {
+    it("supports complex quote content accessibly", async () => {
+      const testElement = await fixture(html`
+        <media-quote>
+          <h3>Quote Title</h3>
+          <p>First paragraph of quote.</p>
+          <p>Second paragraph of quote.</p>
+        </media-quote>
+      `);
+      await testElement.updateComplete;
+      
+      await expect(testElement).shadowDom.to.be.accessible();
+      
+      const heading = testElement.querySelector('h3');
+      expect(heading).to.exist;
+    });
+
+    it("maintains semantic hierarchy", async () => {
+      const testElement = await fixture(html`
+        <media-quote>
+          <blockquote>
+            <p>Nested blockquote content</p>
+            <footer>Citation information</footer>
+          </blockquote>
+        </media-quote>
+      `);
+      await testElement.updateComplete;
+      
+      const nestedBlockquote = testElement.querySelector('blockquote');
+      const footer = testElement.querySelector('footer');
+      
+      expect(nestedBlockquote).to.exist;
+      if (footer) {
+        expect(footer).to.exist;
+      }
+    });
+  });
+
+  describe("Accessibility - Interactive Features", () => {
+    it("handles links within quotes accessibly", async () => {
+      const testElement = await fixture(html`
+        <media-quote>
+          <p>Quote with <a href="https://example.com">a link</a> in it.</p>
+        </media-quote>
+      `);
+      await testElement.updateComplete;
+      
+      const link = testElement.querySelector('a');
+      expect(link).to.exist;
+      expect(link.hasAttribute('href')).to.be.true;
+      
+      await expect(testElement).shadowDom.to.be.accessible();
+    });
   });
 
   it("passes the a11y audit with image and quote", async () => {

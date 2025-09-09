@@ -27,6 +27,135 @@ describe("multiple-choice test", () => {
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
   });
+
+  describe("Accessibility - Focus Management", () => {
+    it("has proper focus management with delegatesFocus", async () => {
+      // Check that the element uses delegatesFocus
+      expect(element.shadowRootOptions.delegatesFocus).to.be.true;
+    });
+
+    it("focuses properly on feedback when answer is checked", async () => {
+      element.checkAnswer();
+      await element.updateComplete;
+      const feedback = element.shadowRoot.querySelector('#feedback');
+      expect(globalThis.document.activeElement).to.equal(feedback);
+    });
+
+    it("can navigate through options using keyboard", async () => {
+      const firstField = element.shadowRoot.querySelector('simple-fields-field');
+      expect(firstField).to.exist;
+      expect(firstField.hasAttribute('tabindex') || firstField.tabIndex >= 0).to.be.true;
+    });
+  });
+
+  describe("Accessibility - ARIA Attributes", () => {
+    it("has proper semantic structure with fieldset for options", async () => {
+      const fieldset = element.shadowRoot.querySelector('fieldset.options');
+      expect(fieldset).to.exist;
+    });
+
+    it("has proper question heading structure", async () => {
+      const question = element.shadowRoot.querySelector('h3');
+      expect(question).to.exist;
+      expect(question.textContent).to.include('Which are ducks');
+    });
+
+    it("has proper ARIA roles and properties on form elements", async () => {
+      const fields = element.shadowRoot.querySelectorAll('simple-fields-field');
+      fields.forEach(field => {
+        expect(field.hasAttribute('property')).to.be.true;
+        expect(field.getAttribute('property')).to.equal('oer:answer');
+      });
+    });
+
+    it("uses proper input types for single vs multiple options", async () => {
+      // Test multiple choice (checkbox)
+      let fields = element.shadowRoot.querySelectorAll('simple-fields-field');
+      fields.forEach(field => {
+        expect(field.getAttribute('type')).to.equal('checkbox');
+      });
+
+      // Test single option (radio)
+      element.singleOption = true;
+      await element.updateComplete;
+      fields = element.shadowRoot.querySelectorAll('simple-fields-field');
+      fields.forEach(field => {
+        expect(field.getAttribute('type')).to.equal('radio');
+      });
+    });
+
+    it("properly disables options when showing answer", async () => {
+      element.showAnswer = true;
+      await element.updateComplete;
+      const fields = element.shadowRoot.querySelectorAll('simple-fields-field');
+      fields.forEach(field => {
+        expect(field.hasAttribute('disabled')).to.be.true;
+      });
+    });
+  });
+
+  describe("Accessibility - Labels and Descriptions", () => {
+    it("has descriptive labels for all interactive elements", async () => {
+      const fields = element.shadowRoot.querySelectorAll('simple-fields-field');
+      fields.forEach(field => {
+        const label = field.getAttribute('label');
+        expect(label).to.not.be.empty;
+      });
+    });
+
+    it("provides meaningful button labels", async () => {
+      const checkButton = element.shadowRoot.querySelector('simple-toolbar-button');
+      expect(checkButton).to.exist;
+      expect(checkButton.textContent.trim()).to.not.be.empty;
+    });
+
+    it("has proper metadata for assessment", async () => {
+      const meta = element.shadowRoot.querySelector('meta[property="oer:assessing"]');
+      expect(meta).to.exist;
+      expect(element.hasAttribute('typeof')).to.be.true;
+      expect(element.getAttribute('typeof')).to.equal('oer:Assessment');
+    });
+  });
+
+  describe("Accessibility - Visual Feedback", () => {
+    it("provides visual indicators for correct/incorrect answers", async () => {
+      element.showAnswer = true;
+      // Simulate some user guesses
+      element.displayedAnswers[0].userGuess = true; // correct answer
+      element.displayedAnswers[4].userGuess = true; // incorrect answer
+      await element.updateComplete;
+      
+      const fields = element.shadowRoot.querySelectorAll('simple-fields-field');
+      let hasCorrectClass = false;
+      let hasIncorrectClass = false;
+      
+      fields.forEach(field => {
+        if (field.classList.contains('correct')) {
+          hasCorrectClass = true;
+        }
+        if (field.classList.contains('incorrect')) {
+          hasIncorrectClass = true;
+        }
+      });
+      
+      expect(hasCorrectClass).to.be.true;
+      expect(hasIncorrectClass).to.be.true;
+    });
+  });
+
+  describe("Accessibility - Keyboard Navigation", () => {
+    it("supports keyboard activation of options", async () => {
+      const field = element.shadowRoot.querySelector('simple-fields-field');
+      const initialValue = field.value;
+      
+      // Simulate keydown event
+      const event = new KeyboardEvent('keydown', { key: ' ', bubbles: true });
+      field.dispatchEvent(event);
+      
+      // The field should be interactive via keyboard
+      expect(field.hasAttribute('name')).to.be.true;
+    });
+  });
 });
 
 /*
