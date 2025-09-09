@@ -33,9 +33,9 @@
       "tags": ""
     },
     "theme": {
-      "element": "spacebook-theme",
-      "path": "@haxtheweb/spacebook-theme/spacebook-theme.js",
-      "name": "Spacebook",
+      "element": "haxma-theme",
+      "path": "@haxtheweb/haxma-theme/haxma-theme.js",
+      "name": "HAXma",
       "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg",
       "variables": {
         "image": "",

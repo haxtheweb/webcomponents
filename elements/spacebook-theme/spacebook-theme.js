@@ -39,7 +39,6 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
     this.nextPageTitle = '';
     this.prevPageTitle = '';
     this.homeLink = '';
-    this.__disposer = this.__disposer || [];
     
     // Set up reactivity to HAXcms store
     autorun((reaction) => {
@@ -59,7 +58,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
     });
     
     autorun((reaction) => {
-      this._items = toJS(store.manifest?.items || []);
+      this._items = toJS(store.manifest && store.manifest.items ? store.manifest.items : []);
       this.__disposer.push(reaction);
     });
   }
@@ -825,7 +824,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
                 <div class="main-article">
                   <!-- Page metadata (edit button, timestamp) -->
                   <div class="page-meta">
-                    ${activeItem?.metadata?.updated ? html`
+                    ${activeItem && activeItem.metadata && activeItem.metadata.updated ? html`
                       <div class="page-meta-item">
                         Updated <time datetime="${new Date(activeItem.metadata.updated * 1000).toISOString()}">
                           ${new Date(activeItem.metadata.updated * 1000).toLocaleDateString()}

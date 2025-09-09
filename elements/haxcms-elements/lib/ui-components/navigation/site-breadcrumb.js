@@ -85,7 +85,7 @@ class SiteBreadcrumb extends HAXCMSI18NMixin(DDD) {
           padding-left: 0;
         }
         ol.breadcrumb li:last-child a {
-          color: var(--site-breadcrumb-last-color, black);
+          color: var(--site-breadcrumb-last-color, light-dark(black, white));
           pointer-events: none;
         }
 
