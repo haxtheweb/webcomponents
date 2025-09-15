@@ -94,7 +94,12 @@ cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@polym
 cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/elmsln* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/
 cp -R ~/Documents/git/elmsln/ELMSLN-JS-FILES-FINAL/build/es6/node_modules/@lrnwebcomponents/lrn* ~/elmsln/core/dslmcode/cores/haxcms-1/build/es6/node_modules/@haxtheweb/
 
-## STEP 3 NODEJS IS BOILERPLATE AND CORECONFIG FOR PHP VERSION
+## STEP 3 SYNC THEMES.JSON FROM WEBCOMPONENTS TO BOTH PLATFORMS
+# Copy themes.json from webcomponents monorepo to both HAXcms platforms
+cp ~/haxtheweb/webcomponents/elements/haxcms-elements/lib/themes.json ~/haxtheweb/haxcms-nodejs/src/coreConfig/themes.json
+cp ~/haxtheweb/webcomponents/elements/haxcms-elements/lib/themes.json ~/haxtheweb/haxcms-php/system/coreConfig/themes.json
+
+## STEP 4 NODEJS IS BOILERPLATE AND CORECONFIG FOR PHP VERSION
 rm -rf ~/haxtheweb/haxcms-php/system/boilerplate
 cp -R ~/haxtheweb/haxcms-nodejs/src/boilerplate ~/haxtheweb/haxcms-php/system/boilerplate
 rm -rf ~/haxtheweb/haxcms-php/system/coreConfig

@@ -137,6 +137,11 @@ function shouldSkipTheme(elementName, filePath) {
     return true;
   }
   
+  // Exclude test files - any file with '.test' in the name
+  if (filePath.includes('.test') || elementName.includes('.test')) {
+    return true;
+  }
+  
   return false;
 }
 
@@ -152,10 +157,11 @@ async function discoverThemes() {
     // Find all JavaScript files in elements directory
     const files = await glob('./elements/**/*.js', { 
       ignore: [
-        '**/demo/**',
-        '**/test/**', 
-        '**/node_modules/**',
-        '**/lib/**/*.haxProperties.json'
+        './elements/**/demo/**',
+        './elements/**/test/**', 
+        './elements/**/node_modules/**',
+        './elements/**/lib/**/*.haxProperties.json',
+        './elements/**/*.test.js'
       ]
     });
     
@@ -214,7 +220,25 @@ async function discoverThemes() {
     fs.writeFileSync(outputPath, JSON.stringify(sortedThemes, null, 2));
     
     console.log(`📄 Theme registry written to: ${outputPath}`);
-    console.log('🎉 Theme discovery completed successfully!');
+    
+    // Sync themes.json to both HAXcms platforms using relative paths
+    try {
+      const nodejsPath = '../haxcms-nodejs/src/coreConfig/themes.json';
+      const phpPath = '../haxcms-php/system/coreConfig/themes.json';
+      
+      // Copy to Node.js platform
+      fs.writeFileSync(nodejsPath, JSON.stringify(sortedThemes, null, 2));
+      console.log(`🔄 Synced themes.json to HAXcms Node.js: ${nodejsPath}`);
+      
+      // Copy to PHP platform
+      fs.writeFileSync(phpPath, JSON.stringify(sortedThemes, null, 2));
+      console.log(`🔄 Synced themes.json to HAXcms PHP: ${phpPath}`);
+      
+    } catch (syncError) {
+      console.warn(`⚠️  Warning: Could not sync themes.json to platforms: ${syncError.message}`);
+    }
+    
+    console.log('🎉 Theme discovery and platform sync completed successfully!');
     
     return themes;
     
