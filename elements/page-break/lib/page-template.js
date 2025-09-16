@@ -38,16 +38,15 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
           border-color: var(--ddd-theme-default-coalyGray);
         }
 
-        :host([use-as-default]) {
+        :host([enforce-styles]) {
           border-color: var(--ddd-theme-default-skyBlue);
         }
 
-        :host([use-as-default]:hover) {
+        :host([enforce-styles]:hover) {
           border-color: var(--ddd-theme-default-navy);
         }
 
-        :host([use-as-default])::before {
-          content: "Default Template";
+        .template-label {
           position: absolute;
           top: calc(-1 * var(--ddd-spacing-2));
           left: var(--ddd-spacing-2);
@@ -60,28 +59,7 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
           z-index: 10;
         }
 
-        .template-id {
-          position: absolute;
-          top: calc(-1 * var(--ddd-spacing-2));
-          left: var(--ddd-spacing-2);
-          background-color: var(--ddd-theme-default-limestoneGray);
-          color: var(--ddd-theme-default-coalyGray);
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-          font-size: var(--ddd-font-size-xs);
-          font-family: var(--ddd-font-secondary);
-          border-radius: var(--ddd-radius-xs);
-          z-index: 10;
-          transition: background-color 0.2s ease-in-out;
-        }
 
-        :host(:hover) .template-id {
-          background-color: var(--ddd-theme-default-coalyGray);
-          color: var(--ddd-theme-default-white);
-        }
-
-        :host([use-as-default]) .template-id {
-          left: calc(var(--ddd-spacing-2) + 120px + var(--ddd-spacing-2));
-        }
 
         .template-header {
           margin-bottom: var(--ddd-spacing-4);
@@ -113,10 +91,10 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
       /**
        * Whether this is the default template
        */
-      useAsDefault: {
+      enforceStyles: {
         type: Boolean,
         reflect: true,
-        attribute: "use-as-default",
+        attribute: "enforce-styles",
       },
       /**
        * Name of the template for identification
@@ -130,7 +108,7 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
 
   constructor() {
     super();
-    this.useAsDefault = false;
+    this.enforceStyles = false;
     this.name = "";
     
     // Initialize translations
@@ -151,18 +129,11 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
 
   render() {
     return html`
-      ${this.schemaResourceID ? html`
-        <div class="template-id">
-          ${this.schemaResourceID}
-        </div>
-      ` : ""}
-      
       ${this.name ? html`
-        <div class="template-header">
-          <h4 class="template-name">${this.name}</h4>
+        <div class="template-label">
+          ${this.name}
         </div>
       ` : ""}
-      
       <div class="template-content">
         <slot></slot>
       </div>
@@ -174,9 +145,11 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
    */
   static get haxProperties() {
     return {
+      type: "grid",
       canScale: false,
       canPosition: false,
       canEditSource: true,
+      contentEditable: true,
       gizmo: {
         title: "Page Template",
         description: "A template component for defining reusable page layouts and styling",
@@ -195,8 +168,15 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
           {
             property: "name",
             title: "Template Name",
-            description: "A descriptive name for this template",
+            description: "Name you will see in the editor",
             inputMethod: "textfield",
+            required: false,
+          },
+          {
+            property: "enforceStyles",
+            title: "Enforce Template Styles",
+            description: "Apply this template to any matching tag, ignoring the local styles",
+            inputMethod: "boolean",
             required: false,
           }
         ],
@@ -204,8 +184,8 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
           {
             slot: "",
             title: "Template Content", 
-            description: "The content that defines this template",
-            inputMethod: "code-editor",
+            description: "The elements and content that define this template section",
+            inputMethod: "textarea",
             required: false,
           },
         ],
@@ -215,9 +195,9 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
           tag: "page-template",
           properties: {
             name: "Example Template",
-            useAsDefault: false,
+            enforceStyles: false,
           },
-          content: "<h2>Template Heading</h2><p>This is example template content that demonstrates the styling and layout.</p>",
+          content: "<h2>Template Heading</h2><p>Add your content elements inside this template. This acts as a container that can hold any HAX elements.</p>",
         },
       ],
     };

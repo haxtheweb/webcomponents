@@ -1268,6 +1268,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       themeSettings: "Theme settings",
       seoSettings: "SEO settings",
       authorSettings: "Author settings",
+      styleGuide: "Style Guide",
       close: "Close",
       settings: "Settings",
       edit: "Edit",
@@ -1528,7 +1529,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         >
           <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
           <simple-toolbar-button
-            hidden
+            ?hidden="${!this.pageAllowed}"
             class="top-bar-button"
             id="editbutton"
             icon="${this.__editIcon}"
@@ -1586,7 +1587,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             id="addmenubutton"
             class="top-bar-button"
             ?hidden="${this.editMode}"
-            ?disabled="${this.editMode}"
+            ?disabled="${this.editMode || !this.pageAllowed || this.onInternalRoute}"
             icon="hax:add-page"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
             label="${this.t.add}.."
@@ -1636,7 +1637,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           
           <simple-toolbar-button
             ?hidden="${this.editMode}"
-            ?disabled="${this.editMode}"
+            ?disabled="${this.editMode || !this.pageAllowed || this.onInternalRoute}"
             tabindex="${this.editMode ? "-1" : "0"}"
             id="deletebutton"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -1785,6 +1786,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               show-text-label
               voice-command="insights"
             ></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+              <simple-toolbar-button
+                ?hidden="${this.editMode}"
+                ?disabled="${this.editMode}"
+                tabindex="${this.editMode ? "-1" : "0"}"
+                id="styleguidebutton"
+                @click="${this._styleGuideButtonTap}"
+                icon-position="left"
+                icon="lrn:palette"
+                part="styleguidebtn"
+                show-text-label
+                label="${this.t.styleGuide}"
+              ></simple-toolbar-button>
             </simple-toolbar-menu-item>
 
             <simple-toolbar-menu-item>
@@ -2281,6 +2296,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/action/share",
     });
     SuperDaemonInstance.defineOption({
+      title: this.t.styleGuide,
+      icon: "lrn:palette",
+      tags: ["CMS", "theme", "style guide", "design"],
+      value: {
+        target: this,
+        method: "_styleGuideButtonTap",
+      },
+      context: ["logged-in", "CMS"],
+      eventName: "super-daemon-element-method",
+      path: "CMS/theme/style-guide",
+    });
+    SuperDaemonInstance.defineOption({
       title: this.t.newJourney,
       icon: "add",
       tags: ["CMS", "create", "new site"],
@@ -2763,6 +2790,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       icon: {
         type: String,
       },
+      /**
+       * Whether we're currently on an internal route
+       */
+      onInternalRoute: {
+        type: Boolean,
+      },
     };
   }
   connectedCallback() {
@@ -2795,10 +2828,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const activeItem = toJS(store.activeItem);
       // update buttons to match since we got a state response
       this.updateAvailableButtons();
-      if (activeItem && activeItem.id && !activeItem._internalRoute) {
+      if (activeItem && activeItem.id) {
         this.activeTitle = activeItem.title;
-        store.pageAllowed = true;
+        this.onInternalRoute = activeItem._internalRoute || false;
+        // Use the store method to determine if editing is allowed
+        store.pageAllowed = store.currentRouteSupportsHaxEditor();
       } else {
+        this.onInternalRoute = false;
         store.pageAllowed = false;
       }
       this.__disposer.push(reaction);
@@ -2866,6 +2902,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     globalThis.dispatchEvent(evt);
+  }
+  /**
+   * Navigate to style guide route
+   */
+  _styleGuideButtonTap(e) {
+    store.playSound("click");
+    globalThis.location.href = "x/theme/style-guide";
   }
   async _cancelButtonTap(e) {
     const body = await HAXStore.activeHaxBody.haxToContent();

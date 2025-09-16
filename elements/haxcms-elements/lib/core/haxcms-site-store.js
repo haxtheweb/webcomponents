@@ -92,6 +92,7 @@ class Store {
         callback: () => {
           console.log("Navigating to theme/style-guide");
         },
+        useHaxEditor: true,
       },
     };
     this.evaluatebadDevice();
@@ -1195,23 +1196,23 @@ class Store {
    * @returns {string} - The default HTML content for the style guide
    */
   getDefaultStyleGuideContent() {
-    return `<page-template name="Default H1" use-as-default="use-as-default" data-haxsg-id="header-1a2b03c4-5d6e-7f8g-9h0i-jk1l2m3n4o5p">
+    return `<page-template name="Default H1" enforce-styles="enforce-styles" data-haxsg-id="header-1a2b03c4-5d6e-7f8g-9h0i-jk1l2m3n4o5p">
   <h1 data-primary="21" data-font-size="xl" data-font-family="navigation" data-font-weight="bold" data-padding="s" data-margin="l" data-text-align="center" data-design-treatment="horz-full">Heading 1 Example</h1>
 </page-template>
 
-<page-template name="Default H2" use-as-default="use-as-default" data-haxsg-id="header-8a1e05f0-1ab1-8c5e-f81f-ef2cafc290fa">
+<page-template name="Default H2" enforce-styles="enforce-styles" data-haxsg-id="header-8a1e05f0-1ab1-8c5e-f81f-ef2cafc290fa">
   <h2 data-primary="11" data-font-size="l" data-font-family="navigation" data-font-weight="light" data-padding="s" data-margin="m" data-text-align="center" data-design-treatment="horz-full">Heading 2</h2>
 </page-template>
 
-<page-template name="Default H3" use-as-default="use-as-default" data-haxsg-id="header-3b4c05d6-7e8f-9g0h-1i2j-kl3m4n5o6p7q">
+<page-template name="Default H3" enforce-styles="enforce-styles" data-haxsg-id="header-3b4c05d6-7e8f-9g0h-1i2j-kl3m4n5o6p7q">
   <h3 data-primary="21" data-font-size="m" data-font-family="navigation" data-font-weight="normal" data-padding="xs" data-margin="s" data-text-align="left" data-design-treatment="bg">Heading 3 Example</h3>
 </page-template>
 
-<page-template name="Default H4" use-as-default="use-as-default" data-haxsg-id="header-dsfdfs-7e8f-9g0h-1i2j-kl3m4n5o6p7q">
+<page-template name="Default H4" enforce-styles="enforce-styles" data-haxsg-id="header-dsfdfs-7e8f-9g0h-1i2j-kl3m4n5o6p7q">
   <h4 data-primary="21" data-font-size="m" data-font-family="navigation" data-font-weight="normal" data-padding="xs" data-margin="s" data-text-align="left" data-design-treatment="bg">Heading 4 Example</h4>
 </page-template>
 
-<page-template name="Default List" use-as-default="use-as-default" data-haxsg-id="list-4c5d06e7-8f9g-0h1i-2j3k-lm4n5o6p7q8r">
+<page-template name="Default List" enforce-styles="enforce-styles" data-haxsg-id="list-4c5d06e7-8f9g-0h1i-2j3k-lm4n5o6p7q8r">
   <ul data-padding="s" data-margin="m" data-primary="14">
     <li>First item</li>
     <li>Second item</li>
@@ -1219,7 +1220,7 @@ class Store {
   </ul>
 </page-template>
 
-<page-template name="Default Ordered List" use-as-default="use-as-default" data-haxsg-id="orderedlist-5d6e07f8-9g0h-1i2j-3k4l-mn5o6p7q8r9s">
+<page-template name="Default Ordered List" enforce-styles="enforce-styles" data-haxsg-id="orderedlist-5d6e07f8-9g0h-1i2j-3k4l-mn5o6p7q8r9s">
   <ol data-margin="m">
     <li>First step</li>
     <li>Second step</li>
@@ -1227,11 +1228,11 @@ class Store {
   </ol>
 </page-template>
 
-<page-template name="Default Video" use-as-default="use-as-default" data-haxsg-id="video-6e7f08g9-0h1i-2j3k-4l5m-no6p7q8r9s0t">
+<page-template name="Default Video" enforce-styles="enforce-styles" data-haxsg-id="video-6e7f08g9-0h1i-2j3k-4l5m-no6p7q8r9s0t">
   <video-player source="https://www.youtube.com/watch?v=dQw4w9WgXcQ" caption="Example video player" data-primary="21" data-padding="m" data-margin="l" data-design-treatment="card"></video-player>
 </page-template>
 
-<page-template name="Default Quote" use-as-default="use-as-default" data-haxsg-id="quote-7f8g09h0-1i2j-3k4l-5m6n-op7q8r9s0t1u">
+<page-template name="Default Quote" enforce-styles="enforce-styles" data-haxsg-id="quote-7f8g09h0-1i2j-3k4l-5m6n-op7q8r9s0t1u">
   <block-quote cite="Author Name" citation="Quote Source" data-primary="21" data-font-size="m" data-font-family="primary" data-font-weight="light" data-padding="l" data-margin="m" data-text-align="left" data-design-treatment="card">
     This is an example block quote that demonstrates how quoted content appears in your theme.
   </block-quote>
@@ -1296,6 +1297,19 @@ class Store {
       this.currentRouterLocation.params[0]
     ) {
       return this.currentRouterLocation.params[0].replace("x/", ""); // we always sub the x/ out bc it's assumed reserved
+    }
+    return false;
+  }
+  // check if the current route supports HAX editing
+  currentRouteSupportsHaxEditor() {
+    // If we have an activeItem and it's not an internal route, it supports editing
+    if (this.activeItem && this.activeItem.id && !this.activeItem._internalRoute) {
+      return true;
+    }
+    // If we're on an internal route, check if it has useHaxEditor set to true
+    const internalRoute = this.getInternalRoute();
+    if (internalRoute && this.internalRoutes[internalRoute]) {
+      return this.internalRoutes[internalRoute].useHaxEditor === true;
     }
     return false;
   }
