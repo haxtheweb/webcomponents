@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Tạo meme từ hình ảnh"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Nguồn",
+        "description": "URL nguồn của phần tử bạn đang trích dẫn"
+      },
+      {
+        "title": "Văn bản trên",
+        "description": "Văn bản phía trên của meme"
+      },
+      {
+        "title": "Văn bản dưới",
+        "description": "Văn bản phía dưới của meme"
+      },
+      {
+        "title": "Văn bản thay thế",
+        "description": "Văn bản mô tả hình ảnh cho người dùng khiếm thị"
+      }
+    ],
+    "advanced": [
+      {
+        "description": "Danh sách ID được phân tách bằng dấu cách cho các phần tử mô tả hình ảnh"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Mèo đang truy đuổi một đồ chơi nhỏ",
+        "topText": "Tôi mang đến cho bạn",
+        "bottomText": "cái chết"
+      }
+    }
+  ]
+}

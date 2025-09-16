@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Mim",
+    "description": "Bir resimden mim oluşturun"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Kaynak",
+        "description": "Alıntıladığınız öğenin kaynak URL'si"
+      },
+      {
+        "title": "Üst metin",
+        "description": "Mimin üst metni"
+      },
+      {
+        "title": "Alt metin",
+        "description": "Mimin alt metni"
+      },
+      {
+        "title": "Alternatif metin",
+        "description": "Görme engelli kullanıcılar için resmi açıklayan metin"
+      }
+    ],
+    "advanced": [
+      {
+        "description": "Resmi açıklayan öğeler için boşlukla ayrılmış ID listesi"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Küçük bir oyuncağı takip eden kedi",
+        "topText": "Size getirdim",
+        "bottomText": "ölüm"
+      }
+    }
+  ]
+}

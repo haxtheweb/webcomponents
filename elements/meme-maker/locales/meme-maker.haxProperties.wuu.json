@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "模因",
+    "description": "用图片做模因"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "来源",
+        "description": "侬引用个元素个源URL"
+      },
+      {
+        "title": "顶头文字",
+        "description": "模因个顶头文字"
+      },
+      {
+        "title": "下头文字",
+        "description": "模因个下头文字"
+      },
+      {
+        "title": "替代文字",
+        "description": "帮盲人用户描述图片个文字"
+      }
+    ],
+    "advanced": [
+      {
+        "description": "用空格分隔个ID列表，用来描述图片个元素"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "猫咪勒追小玩具",
+        "topText": "我帮侬带来仔",
+        "bottomText": "死亡"
+      }
+    }
+  ]
+}

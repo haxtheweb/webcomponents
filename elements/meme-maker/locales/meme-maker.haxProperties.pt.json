@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Criar um meme a partir de uma imagem"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fonte",
+        "description": "A URL de origem do elemento que você está citando"
+      },
+      {
+        "title": "Texto superior",
+        "description": "Texto superior do meme"
+      },
+      {
+        "title": "Texto inferior",
+        "description": "Texto inferior do meme"
+      },
+      {
+        "title": "Texto alternativo",
+        "description": "Texto para descrever a imagem para usuários com deficiência visual"
+      }
+    ],
+    "advanced": [
+      {
+        "description": "Lista de IDs separados por espaços para elementos que descrevem a imagem"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Gato perseguindo um brinquedo pequeno",
+        "topText": "Eu trago para você",
+        "bottomText": "a morte"
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Membuat meme dari gambar"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sumber",
+        "description": "URL sumber elemen yang Anda kutip"
+      },
+      {
+        "title": "Teks atas",
+        "description": "Teks atas meme"
+      },
+      {
+        "title": "Teks bawah",
+        "description": "Teks bawah meme"
+      },
+      {
+        "title": "Teks alternatif",
+        "description": "Teks untuk mendeskripsikan gambar kepada pengguna tunanetra"
+      }
+    ],
+    "advanced": [
+      {
+        "description": "Daftar ID yang dipisahkan spasi untuk elemen yang mendeskripsikan gambar"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kucing menguntit mainan kecil",
+        "topText": "Aku membawakan kamu",
+        "bottomText": "kematian"
+      }
+    }
+  ]
+}
