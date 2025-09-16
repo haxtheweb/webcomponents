@@ -504,10 +504,10 @@ class BootstrapTheme extends HAXCMSThemeParts(
     return html`
       <link rel="stylesheet" href="${this._bootstrapPath}" />
       <div class="site ">
-        <div class="menu-outline">
+        <div class="menu-outline" role="navigation" aria-label="Site navigation">
           <div class="site-title" part="site-title">
             ${this.__siteImage
-              ? html`<img class="site-img" src=${this.__siteImage} />`
+              ? html`<img class="site-img" src="${this.__siteImage}" alt="${this.__siteTitle} site logo" />`
               : ``}
             <h4>${this.__siteTitle}</h4>
           </div>
@@ -546,18 +546,22 @@ class BootstrapTheme extends HAXCMSThemeParts(
               </div>
               <article class="shadow main-content container card mb-3">
                 <div class="normal main-section">
-                  <section class="p-2">
+                  <section class="p-2" aria-live="polite">
                     <site-search
                       hide-input
                       search="${this.searchTerm}"
-                      ?hidden="${this.searchTerm != "" ? false : true}"
+                      ?aria-hidden="${this.searchTerm === '' ? 'true' : 'false'}"
+                      style="${this.searchTerm === '' ? 'display: none;' : ''}"
                       @search-item-selected=${this.searchItemSelected}
+                      role="search"
+                      aria-label="Search results"
                     ></site-search>
                   </section>
                   <section
                     class="p-2"
                     id="contentcontainer"
-                    ?hidden="${this.searchTerm != "" ? true : false}"
+                    ?aria-hidden="${this.searchTerm !== '' ? 'true' : 'false'}"
+                    style="${this.searchTerm !== '' ? 'display: none;' : ''}"
                   >
                     <div id="slot">
                       <slot id="main-content"></slot>

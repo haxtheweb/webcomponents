@@ -169,20 +169,22 @@ class BootstrapFooter extends LitElement {
   render() {
     return html`
       <link rel="stylesheet" href="${this._bootstrapPath}" />
-      <div class="container">
-        <a class="backward" href="${this._backwardItem.slug}">
-          <button class="btn btn-outline-primary">
-            <simple-icon-lite icon="av:fast-rewind"></simple-icon-lite>
-            ${this._backwardItem.title}
-          </button>
-        </a>
-        <a class="forward" href="${this._forwardItem.slug}">
-          <button class="btn btn-outline-primary forward">
-            ${this._forwardItem.title}
-            <simple-icon-lite icon="av:fast-forward"></simple-icon-lite>
-          </button>
-        </a>
-      </div>
+      <nav class="container" role="navigation" aria-label="Page navigation">
+        ${this._backwardItem && this._backwardItem.slug ? html`
+          <a class="btn btn-outline-primary backward" href="${this._backwardItem.slug}" 
+             role="button" aria-label="Go to previous page: ${this._backwardItem.title}">
+            <simple-icon-lite icon="av:fast-rewind" aria-hidden="true"></simple-icon-lite>
+            <span>${this._backwardItem.title}</span>
+          </a>
+        ` : ''}
+        ${this._forwardItem && this._forwardItem.slug ? html`
+          <a class="btn btn-outline-primary forward" href="${this._forwardItem.slug}" 
+             role="button" aria-label="Go to next page: ${this._forwardItem.title}">
+            <span>${this._forwardItem.title}</span>
+            <simple-icon-lite icon="av:fast-forward" aria-hidden="true"></simple-icon-lite>
+          </a>
+        ` : ''}
+      </nav>
     `;
   }
 
