@@ -1,0 +1,187 @@
+{
+  "_meta": {
+    "generated": "2025-09-16T20:28:21.723Z",
+    "elementsScanned": 218,
+    "elementsWithTranslations": 27,
+    "translationFilesFound": 81,
+    "languagesSupported": [
+      "ar",
+      "bn",
+      "de",
+      "es",
+      "fr",
+      "haxProperties",
+      "he",
+      "hi",
+      "id",
+      "it",
+      "ja",
+      "ko",
+      "mr",
+      "pnb",
+      "pt",
+      "ru",
+      "ta",
+      "te",
+      "tr",
+      "ur",
+      "vi",
+      "wuu",
+      "zh",
+      "zh_CN"
+    ]
+  },
+  "manifest": {
+    "a11y-gif-player": [
+      "es"
+    ],
+    "clean-one": [
+      "de",
+      "es",
+      "fr",
+      "ja"
+    ],
+    "code-sample": [
+      "es"
+    ],
+    "ddd-card": [
+      "es"
+    ],
+    "example-hax-element.ar": [
+      "haxProperties"
+    ],
+    "example-hax-element": [
+      "ar",
+      "es",
+      "hi",
+      "zh"
+    ],
+    "example-hax-element.es": [
+      "haxProperties"
+    ],
+    "example-hax-element.hi": [
+      "haxProperties"
+    ],
+    "example-hax-element.zh": [
+      "haxProperties"
+    ],
+    "example-haxcms-theme.ar": [
+      "haxProperties"
+    ],
+    "example-haxcms-theme": [
+      "ar",
+      "es",
+      "hi",
+      "zh"
+    ],
+    "example-haxcms-theme.es": [
+      "haxProperties"
+    ],
+    "example-haxcms-theme.hi": [
+      "haxProperties"
+    ],
+    "example-haxcms-theme.zh": [
+      "haxProperties"
+    ],
+    "flash-card-answer-box": [
+      "es",
+      "fr",
+      "ja"
+    ],
+    "grade-book": [
+      "de",
+      "es",
+      "fr"
+    ],
+    "hax": [
+      "es"
+    ],
+    "haxcms": [
+      "es"
+    ],
+    "image-compare-slider": [
+      "es"
+    ],
+    "journey-theme": [
+      "ar",
+      "es",
+      "hi",
+      "zh"
+    ],
+    "map-menu": [
+      "es"
+    ],
+    "meme-maker.haxProperties": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "id",
+      "ja",
+      "ko",
+      "mr",
+      "pnb",
+      "pt",
+      "ru",
+      "ta",
+      "te",
+      "tr",
+      "ur",
+      "vi",
+      "wuu",
+      "zh"
+    ],
+    "page-break": [
+      "es"
+    ],
+    "post-card": [
+      "de",
+      "es",
+      "fr",
+      "it",
+      "ja",
+      "zh_CN"
+    ],
+    "scroll-button": [
+      "es"
+    ],
+    "self-check": [
+      "es",
+      "he",
+      "ja"
+    ],
+    "simple-fields": [
+      "es"
+    ],
+    "simple-login": [
+      "es"
+    ],
+    "sorting-question": [
+      "es",
+      "he",
+      "ja"
+    ],
+    "stop-note": [
+      "es"
+    ],
+    "twitter-embed.haxProperties": [
+      "es"
+    ],
+    "user-action.haxProperties": [
+      "es"
+    ],
+    "video-player": [
+      "es"
+    ],
+    "wikipedia-query.haxProperties": [
+      "es",
+      "fr"
+    ],
+    "word-count": [
+      "es",
+      "fr",
+      "ja"
+    ]
+  }
+}
