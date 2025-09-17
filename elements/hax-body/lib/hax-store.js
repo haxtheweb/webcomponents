@@ -895,6 +895,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           this.appendChild(stax);
         }
       }
+      
       this.dispatchEvent(
         new CustomEvent("hax-store-app-store-loaded", {
           bubbles: true,
@@ -905,6 +906,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       );
       // now process the dynamic imports
       await this._handleDynamicImports(items, this.haxAutoloader);
+      
+      // detect and register page-template elements from style guide as stax if available
+      // Try again here in case HAXcms wasn't ready during initial store setup
+      await this._detectStyleGuideTemplates();
+      
       this.appStoreLoaded = true;
     }
   }
@@ -1201,6 +1207,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
+      
+      // load style guide templates early if available
+      this._detectStyleGuideTemplates();
     }
   }
   _handleConfirmCancel(e) {
@@ -2284,6 +2293,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.validTagList = this.__validTags();
     this.validGridTagList = this.__validGridTags();
     this.validGizmoTypes = this.__validGizmoTypes();
+    this.styleGuideSchema = {};
     // test for sandboxed env
     let test = globalThis.document.createElement("webview");
     this._isSandboxed = typeof test.reload === "function";
@@ -3287,13 +3297,31 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       .flat();
   }
   /**
+   * Check if style guide has schema overrides for a tag
+   */
+  _getStyleGuideSchemaOverride(tag) {
+    if (this.styleGuideSchema && this.styleGuideSchema[tag]) {
+      return this.styleGuideSchema[tag];
+    }
+    return null;
+  }
+  
+  /**
    * get the schema from a tag
    */
   haxSchemaFromTag(tag) {
     if (tag && tag.toLowerCase) {
       tag = tag.toLowerCase();
       if (this.elementList && this.elementList[tag]) {
-        return this.elementList[tag];
+        let schema = {...this.elementList[tag]};
+        
+        // Check for style guide overrides
+        const styleGuideOverride = this._getStyleGuideSchemaOverride(tag);
+        if (styleGuideOverride && styleGuideOverride.demoSchema) {
+          schema.demoSchema = styleGuideOverride.demoSchema;
+        }
+        
+        return schema;
       }
     }
     return {};
@@ -3554,7 +3582,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // test that this is valid HTML before we dig into it as elements
     // and that it actually has children prior to parsing for children
     if (fragment.children) {
-      const validTags = this.validTagList;
+      // page template is a valid tag in this context
+      const validTags = [...this.validTagList, 'page-template'];
       const children = fragment.children;
       // loop over the new nodes
       for (let i = 0; i < children.length; i++) {
@@ -3569,6 +3598,113 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     return elements;
   }
+  
+  /**
+   * Check if style guide content is available and detect page-template elements
+   * This is called during app store loading to register any available templates
+   */
+  async _detectStyleGuideTemplates() {
+    try {
+      // Check if we have access to HAXcms store for style guide content
+      if (typeof globalThis.HAXCMS !== 'undefined' && globalThis.HAXCMS && globalThis.HAXCMS.instance) {
+        const styleGuideContent = await globalThis.HAXCMS.instance.store.loadStyleGuideContent();
+        if (styleGuideContent) {
+          await this.detectAndRegisterPageTemplateStax(styleGuideContent);
+        }
+      }
+    } catch (error) {
+      // Style guide may not be available in all contexts, which is fine
+    }
+  }
+  
+  /**
+   * Detect page-template elements from style guide content and register them as stax or demoSchema
+   * Multi-child templates become stax, single-child templates replace demoSchema for that element
+   * Uses the same HAX schema conversion approach as the style guide system
+   * @param {string} styleGuideContent - The HTML content of the style guide
+   */
+  async detectAndRegisterPageTemplateStax(styleGuideContent) {
+    if (!styleGuideContent) {
+      return;
+    }
+    
+    try {
+      // Convert style guide content to HAXSchema elements using existing method
+      const styleGuideElements = await this.htmlToHaxElements(styleGuideContent);
+      
+      for (const styleElement of styleGuideElements) {
+        // Look for page-template elements
+        if (styleElement && styleElement.tag === 'page-template') {
+          // Get template name from properties (not attributes)
+          const templateName = styleElement.properties && styleElement.properties.name;
+          
+          if (templateName && styleElement.content) {
+            // Convert the content inside page-template to HAX elements
+            const templateContentElements = await this.htmlToHaxElements(styleElement.content);
+            
+            if (templateContentElements && templateContentElements.length > 0) {
+              if (templateContentElements.length === 1 && !styleElement.properties['show-as-template']) {
+                // Single child: replace demoSchema for this element type
+                await this._updateElementDemoSchema(templateContentElements[0]);
+              } else {
+                // Multiple children: register as stax template
+                const staxData = {
+                  details: {
+                    title: templateName,
+                    image: "",
+                    author: "Style Guide",
+                    description: `Template: ${templateName}`,
+                    status: "available",
+                    rating: "0",
+                    tags: ["template", "style-guide"]
+                  },
+                  stax: templateContentElements // Use the HAX elements directly (excludes page-template wrapper)
+                };
+                
+                // Create and register the stax element
+                let stax = globalThis.document.createElement("hax-stax");
+                stax.data = staxData;
+                this.appendChild(stax);
+              }
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.warn("Error detecting page-template elements:", error);
+    }
+  }
+  
+  /**
+   * Update the demoSchema for an element based on page-template content
+   * @param {Object} haxElement - HAX element schema from page-template content
+   */
+  async _updateElementDemoSchema(haxElement) {
+    if (!haxElement || !haxElement.tag) {
+      return;
+    }
+    
+    try {
+      const tagName = haxElement.tag;
+      
+      // Create new demoSchema entry based on the page-template content
+      const newDemoSchema = {
+        tag: tagName,
+        properties: haxElement.properties || {},
+        content: haxElement.content || ""
+      };
+      
+      // Store in styleGuideSchema for later lookup
+      if (!this.styleGuideSchema[tagName]) {
+        this.styleGuideSchema[tagName] = {};
+      }
+      this.styleGuideSchema[tagName].demoSchema = [newDemoSchema];
+      
+    } catch (error) {
+      console.warn("Error updating element demoSchema:", error);
+    }
+  }
+  
   /**
    * Convert a node to the correct content object for saving.
    * This DOES NOT acccept a HAXElement which is similar

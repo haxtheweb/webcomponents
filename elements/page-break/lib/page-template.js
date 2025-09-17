@@ -96,6 +96,11 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
         reflect: true,
         attribute: "enforce-styles",
       },
+      showAsTemplate: {
+        type: Boolean,
+        reflect: true,
+        attribute: "show-as-template",
+      },
       /**
        * Name of the template for identification
        */
@@ -110,7 +115,8 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
     super();
     this.enforceStyles = false;
     this.name = "";
-    
+    this.showAsTemplate = false;
+
     // Initialize translations
     this.t = {
       pageTemplate: "Page Template",
@@ -178,7 +184,14 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
             description: "Apply this template to any matching tag, ignoring the local styles",
             inputMethod: "boolean",
             required: false,
-          }
+          },
+          {
+            property: "showAsTemplate",
+            title: "Show as Template",
+            description: "Make this template available in the template picker",
+            inputMethod: "boolean",
+            required: false,
+          },
         ],
         advanced: [
           {

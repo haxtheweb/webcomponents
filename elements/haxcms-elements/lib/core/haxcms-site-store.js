@@ -1228,14 +1228,21 @@ class Store {
   </ol>
 </page-template>
 
-<page-template name="Default Video" enforce-styles="enforce-styles" data-haxsg-id="video-6e7f08g9-0h1i-2j3k-4l5m-no6p7q8r9s0t">
-  <video-player source="https://www.youtube.com/watch?v=dQw4w9WgXcQ" caption="Example video player" data-primary="21" data-padding="m" data-margin="l" data-design-treatment="card"></video-player>
+<page-template name="PARAGRAPH" enforce-styles="enforce-styles" data-haxsg-id="orderedlist-5d6e07f8-9g0h-1i2j-3k4l-mn5o6p7q8r9s">
+  <p>THIS IS A P TAG !!!</p>
 </page-template>
 
-<page-template name="Default Quote" enforce-styles="enforce-styles" data-haxsg-id="quote-7f8g09h0-1i2j-3k4l-5m6n-op7q8r9s0t1u">
-  <block-quote cite="Author Name" citation="Quote Source" data-primary="21" data-font-size="m" data-font-family="primary" data-font-weight="light" data-padding="l" data-margin="m" data-text-align="left" data-design-treatment="card">
-    This is an example block quote that demonstrates how quoted content appears in your theme.
-  </block-quote>
+<page-template name="Default Video" data-haxsg-id="video-6e7f08g9-0h1i-2j3k-4l5m-no6p7q8r9s0t">
+  <video-player data-width="50" source="https://www.youtube.com/watch?v=dQw4w9WgXcQ" caption="Example video player" accent-color="blue" data-padding="m" data-margin="l"></video-player>
+</page-template>
+
+<page-template name="Class video" show-as-template="show-as-template" data-haxsg-id="quote-7f8g09h0-1i2j-3k4l-5m6n-op7q8r9s0t1u">
+<grid-plate item-margin="16" item-padding="16" layout="1-1" disable-responsive="">
+  <h3 id="header-a11e7d5c-b0ec-0b3a-eda2-30bca4e4c2b0" slot="col-1">Colun 1</h3>
+  <p slot="col-1">This is a video template!</p>
+  <h3 id="header-91905f70-f8a0-5df3-716d-8dcf1f9ab26c" slot="col-2">Video maaaan</h3>
+  <video-player source="https://www.youtube.com/watch?v=LrS7dqokTLE" data-width="75" data-margin="center" slot="col-2" accent-color="grey" crossorigin="anonymous" sticky-corner="none" resource="#3ef518fe-5254-a689-ab9c-580675b16d99" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " element-visible="" lang="en" source-type="youtube" sources="[]" source-data="[{&quot;src&quot;:&quot;https://www.youtube.com/embed/LrS7dqokTLE&quot;,&quot;type&quot;:&quot;&quot;}]" tracks="[]"></video-player>
+</grid-plate>
 </page-template>`;
   }
 

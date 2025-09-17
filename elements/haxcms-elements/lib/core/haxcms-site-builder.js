@@ -231,10 +231,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             }
           }
         }
-      }
-
-      console.log(styleGuideMap);
-      
+      }      
       // 4. Apply style guide properties to matching content elements
       const processedElements = haxElements.map(element => {
         if (element && element.tag && styleGuideMap.has(element.tag)) {
