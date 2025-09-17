@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Mem",
+    "description": "Stwórz mem z obrazu"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Źródło",
+        "description": "Źródłowy adres URL elementu, który jest cytowany"
+      },
+      {
+        "title": "Tekst górny",
+        "description": "Górny tekst mema"
+      },
+      {
+        "title": "Tekst dolny",
+        "description": "Dolny tekst mema"
+      },
+      {
+        "title": "Tekst alternatywny",
+        "description": "Tekst opisujący obraz dla użytkowników niedowidzących"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kot tropią małą zabawkę",
+        "topText": "Przynoszę ci",
+        "bottomText": "śmierć"
+      }
+    }
+  ]
+}

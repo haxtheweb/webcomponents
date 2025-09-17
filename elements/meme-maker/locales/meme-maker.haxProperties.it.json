@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Crea un meme da un'immagine"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Fonte",
+        "description": "L'URL di origine dell'elemento che viene citato"
+      },
+      {
+        "title": "Testo superiore",
+        "description": "Testo superiore del meme"
+      },
+      {
+        "title": "Testo inferiore",
+        "description": "Testo inferiore del meme"
+      },
+      {
+        "title": "Testo alternativo",
+        "description": "Testo per descrivere l'immagine agli utenti non vedenti"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Gatto che insegue un piccolo giocattolo",
+        "topText": "Ti porto",
+        "bottomText": "la morte"
+      }
+    }
+  ]
+}

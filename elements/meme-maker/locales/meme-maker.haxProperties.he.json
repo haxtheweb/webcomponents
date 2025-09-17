@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "מם",
+    "description": "צור מם מתמונה"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "מקור",
+        "description": "כתובת URL של המקור עבור האלמנט המצוטט"
+      },
+      {
+        "title": "טקסט עליון",
+        "description": "הטקסט העליון של המם"
+      },
+      {
+        "title": "טקסט תחתון",
+        "description": "הטקסט התחתון של המם"
+      },
+      {
+        "title": "טקסט חלופי",
+        "description": "טקסט לתיאור התמונה עבור משתמשים לקויי ראייה"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "חתול רודף אחרי צעצוע קטן",
+        "topText": "אני מביא לך",
+        "bottomText": "את המוות"
+      }
+    }
+  ]
+}

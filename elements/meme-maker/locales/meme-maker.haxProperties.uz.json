@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Mem",
+    "description": "Rasmdan mem yarating"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Manba",
+        "description": "Iqtibos keltiruvchi element uchun manba URL"
+      },
+      {
+        "title": "Yuqoridagi matn",
+        "description": "Memning yuqoridagi matni"
+      },
+      {
+        "title": "Pastdagi matn",
+        "description": "Memning pastdagi matni"
+      },
+      {
+        "title": "Muqobil matn",
+        "description": "Ko'rmayotgan foydalanuvchilar uchun rasmni tasvirlash uchun matn"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kichik o'yinchoqni ta'qib qilayotgan mushuk",
+        "topText": "Men sizga olib kelaman",
+        "bottomText": "o'lim"
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Gumawa ng meme mula sa isang larawan"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Pinagmulan",
+        "description": "Ang source URL para sa elemento na sinipi"
+      },
+      {
+        "title": "Tekstong nasa itaas",
+        "description": "Tekstong nasa itaas ng meme"
+      },
+      {
+        "title": "Tekstong nasa ibaba",
+        "description": "Tekstong nasa ibaba ng meme"
+      },
+      {
+        "title": "Alternatibong teksto",
+        "description": "Teksto para ilarawan ang larawan sa mga user na hindi nakakakita"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Pusang sumusunod sa isang maliit na laruan",
+        "topText": "Dala ko sa iyo",
+        "bottomText": "ang kamatayan"
+      }
+    }
+  ]
+}

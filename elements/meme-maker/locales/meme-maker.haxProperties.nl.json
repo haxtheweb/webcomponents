@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Maak een meme van een afbeelding"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Bron",
+        "description": "De bron-URL voor het element dat wordt geciteerd"
+      },
+      {
+        "title": "Bovenste tekst",
+        "description": "Bovenste tekst van de meme"
+      },
+      {
+        "title": "Onderste tekst",
+        "description": "Onderste tekst van de meme"
+      },
+      {
+        "title": "Alternatieve tekst",
+        "description": "Tekst om de afbeelding te beschrijven voor slechtziende gebruikers"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Kat die een klein speeltje achtervolgt",
+        "topText": "Ik breng je",
+        "bottomText": "de dood"
+      }
+    }
+  ]
+}

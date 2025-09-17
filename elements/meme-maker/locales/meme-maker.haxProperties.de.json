@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Meme",
+    "description": "Erstelle ein Meme aus einem Bild"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Quelle",
+        "description": "Die Quell-URL für das Element, das zitiert wird"
+      },
+      {
+        "title": "Oberer Text",
+        "description": "Oberer Text des Memes"
+      },
+      {
+        "title": "Unterer Text",
+        "description": "Unterer Text des Memes"
+      },
+      {
+        "title": "Alternativer Text",
+        "description": "Text zur Beschreibung des Bildes für sehbehinderte Benutzer"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Katze, die ein kleines Spielzeug verfolgt",
+        "topText": "Ich bringe dir",
+        "bottomText": "den Tod"
+      }
+    }
+  ]
+}

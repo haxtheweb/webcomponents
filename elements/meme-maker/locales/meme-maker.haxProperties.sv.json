@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Mem",
+    "description": "Skapa ett mem från en bild"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Källa",
+        "description": "Käll-URL för elementet som citeras"
+      },
+      {
+        "title": "Övre text",
+        "description": "Övre texten i memet"
+      },
+      {
+        "title": "Nedre text",
+        "description": "Nedre texten i memet"
+      },
+      {
+        "title": "Alternativ text",
+        "description": "Text för att beskriva bilden för synskadade användare"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Katt som förföljer en liten leksak",
+        "topText": "Jag ger dig",
+        "bottomText": "döden"
+      }
+    }
+  ]
+}

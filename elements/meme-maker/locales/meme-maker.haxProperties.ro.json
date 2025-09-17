@@ -1,0 +1,36 @@
+{
+  "gizmo": {
+    "title": "Memă",
+    "description": "Creează o memă dintr-o imagine"
+  },
+  "settings": {
+    "configure": [
+      {
+        "title": "Sursă",
+        "description": "URL-ul sursă pentru elementul care este citat"
+      },
+      {
+        "title": "Text de sus",
+        "description": "Textul de sus al memei"
+      },
+      {
+        "title": "Text de jos",
+        "description": "Textul de jos al memei"
+      },
+      {
+        "title": "Text alternativ",
+        "description": "Text pentru a descrie imaginea utilizatorilor nevăzători"
+      }
+    ],
+    "advanced": []
+  },
+  "demoSchema": [
+    {
+      "properties": {
+        "alt": "Pisică urmărind o mică jucărie",
+        "topText": "Îți aduc",
+        "bottomText": "moartea"
+      }
+    }
+  ]
+}
