@@ -32,7 +32,6 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
       localesPath:
         new URL("../locales/flash-card-answer-box.es.json", import.meta.url)
           .href + "/../",
-      locales: ["es", "fr", "ja"],
     });
   }
 

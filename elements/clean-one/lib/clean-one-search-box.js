@@ -50,7 +50,6 @@ export class CleanOneSearchBox extends I18NMixin(LitElement) {
       namespace: "clean-one",
       localesPath:
         new URL("../locales/clean-one.es.json", import.meta.url).href + "/../",
-      locales: ["es", "fr", "de", "ja"],
     });
   }
   focus() {

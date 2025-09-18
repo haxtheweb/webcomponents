@@ -450,7 +450,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
-      locales: ["es"],
+      
     });
     // so we can prepopulate the parent options menu
     autorun(() => {

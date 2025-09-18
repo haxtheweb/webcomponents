@@ -50,7 +50,6 @@ class A11yGifPlayer extends I18NMixin(
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
-      locales: ["es"],
     });
   }
   /**

@@ -45,7 +45,7 @@ export class PageBreak extends IntersectionObserverMixin(
       context: this,
       localesPath:
         new URL("./locales/page-break.es.json", import.meta.url).href + "/../",
-      locales: ["es"],
+      
     });
     this.description = null;
     this.hideInMenu = false;
@@ -384,12 +384,28 @@ export class PageBreak extends IntersectionObserverMixin(
         }
         :host([data-hax-ray]) {
           display: block;
-          margin: 0 0 var(--ddd-spacing-1) 0;
-          opacity: 0.2;
-          background-color: light-dark(black, white);
+          margin: var(--ddd-spacing-4) 0;
+          padding: var(--ddd-spacing-4);
+          border: 2px dotted var(--ddd-theme-default-limestoneGray);
+          border-radius: var(--ddd-radius-xs);
+          background-color: var(--ddd-theme-default-limestoneMaxLight);
+          position: relative;
+          opacity: 0.9;
           transition:
-            opacity 0.3s ease-in-out,
-            visibility 0.3s ease-in-out;
+            opacity 0.2s ease-in-out,
+            border-color 0.2s ease-in-out,
+            background-color 0.2s ease-in-out;
+        }
+        :host([data-hax-ray]:hover) {
+          opacity: 1;
+          border-color: var(--ddd-theme-default-coalyGray);
+          background-color: var(--ddd-theme-default-white);
+        }
+        :host([data-hax-active]) {
+          opacity: 1;
+          border-color: var(--ddd-theme-default-skyBlue);
+          background-color: var(--ddd-theme-default-white);
+          box-shadow: var(--ddd-boxShadow-sm);
         }
         :host([data-hax-ray]) .mid,
         :host([data-hax-ray]) .text {
@@ -398,37 +414,45 @@ export class PageBreak extends IntersectionObserverMixin(
         .mid {
           display: none;
           border: none;
-          border-top: var(--ddd-border-md);
-          border-color: var(--ddd-primary-0);
+          border-top: 2px solid var(--ddd-theme-default-skyBlue);
           overflow: visible;
-          margin: var(--ddd-spacing-1) 0 0 0;
+          margin: var(--ddd-spacing-2) 0;
           padding: 0;
           height: 0;
         }
-        :host([data-hax-ray]:hover) {
-          opacity: 1;
-        }
-        :host([data-hax-active]) {
-          opacity: 1;
-        }
         .text {
           display: none;
-          font-weight: bold;
-          color: light-dark(black, white);
-          background-color: light-dark(white, black);
+          font-weight: var(--ddd-font-weight-medium);
+          color: var(--ddd-theme-default-coalyGray);
+          background-color: var(--ddd-theme-default-skyBlue);
           font-size: var(--ddd-font-size-4xs);
-          margin: 0 auto;
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          border-radius: var(--ddd-radius-xs);
+          position: absolute;
+          top: calc(-1 * var(--ddd-spacing-2));
+          left: var(--ddd-spacing-2);
+          z-index: 10;
+          color: var(--ddd-theme-default-white);
+          box-shadow: var(--ddd-boxShadow-sm);
         }
         simple-icon-lite {
           margin-right: var(--ddd-spacing-2);
         }
         simple-icon-button-lite {
-          float: right;
-          color: light-dark(black, white);
-          --simple-icon-width: var(--ddd-icon-sm);
-          --simple-icon-height: var(--ddd-icon-sm);
-          margin-top: -28px;
-          margin-right: -46px;
+          position: absolute;
+          top: var(--ddd-spacing-1);
+          right: var(--ddd-spacing-1);
+          color: var(--ddd-theme-default-coalyGray);
+          --simple-icon-width: var(--ddd-icon-xs);
+          --simple-icon-height: var(--ddd-icon-xs);
+          background-color: var(--ddd-theme-default-white);
+          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-1);
+          box-shadow: var(--ddd-boxShadow-sm);
+        }
+        simple-icon-button-lite:hover {
+          color: var(--ddd-theme-default-skyBlue);
+          background-color: var(--ddd-theme-default-limestoneMaxLight);
         }
       `,
     ];

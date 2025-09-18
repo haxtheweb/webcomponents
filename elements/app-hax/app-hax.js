@@ -2,7 +2,6 @@ import { css, html, unsafeCSS } from "lit";
 import { toJS, autorun } from "mobx";
 import { localStorageSet, localStorageGet } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { store } from "./lib/v1/AppHaxStore.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { AppHaxAPI } from "./lib/v1/AppHaxBackendAPI.js";
@@ -14,6 +13,7 @@ import "./lib/v1/AppHaxRouter.js";
 import "./lib/v1/app-hax-label.js";
 import "./lib/v1/app-hax-top-bar.js";
 import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
+import { DDD } from "@haxtheweb/d-d-d";
 
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
@@ -34,7 +34,7 @@ function soundToggle() {
   store.appEl.playSound("click");
 }
 
-export class AppHax extends I18NMixin(SimpleTourFinder(DDD(SimpleColors))) {
+export class AppHax extends I18NMixin(SimpleTourFinder(DDD)) {
   static get tag() {
     return "app-hax";
   }
@@ -209,6 +209,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       menu: "Menu",
       showMore: "More",
     };
+    // Register localization for app-hax
+    this.registerLocalization({
+      context: this,
+      namespace: "app-hax",
+      basePath: import.meta.url + "/../",
+    });
     if (
       typeof globalThis.speechSynthesis !== "undefined" &&
       (globalThis.SpeechRecognition ||
@@ -632,6 +638,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   static get properties() {
     return {
       ...super.properties,
+      t: { type: Object },
       unlockComingSoon: { type: Boolean },
       unlockTerrible: { type: Boolean },
       courses: { type: Array },
@@ -1379,7 +1386,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         tabindex="-1"
       >
         <app-hax-site-button
-          label="&gt; Start a new journey"
+          label="&gt; ${this.t.startNewJourney}"
         ></app-hax-site-button>
       </a>
       <rpg-character

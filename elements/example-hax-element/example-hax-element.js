@@ -31,7 +31,6 @@ export class ExampleHaxElement extends DDDSuper(I18NMixin(LitElement)) {
       localesPath:
         new URL("./locales/example-hax-element.ar.json", import.meta.url).href +
         "/../",
-      locales: ["ar", "es", "hi", "zh"],
     });
   }
 

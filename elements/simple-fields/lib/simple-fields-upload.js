@@ -209,7 +209,7 @@ class SimpleFieldsUpload extends I18NMixin(
       localesPath:
         new URL("../locales/simple-fields.es.json", import.meta.url).href +
         "/../",
-      locales: ["es"],
+      
     });
     this.hideInput = false;
     this.itemsList = [];

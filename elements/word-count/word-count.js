@@ -65,7 +65,6 @@ class WordCount extends I18NMixin(LitElement) {
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
-      locales: ["es", "fr", "ja"],
     });
   }
   connectedCallback() {

@@ -90,7 +90,6 @@ class Store {
       home: {},
       "theme/style-guide": {
         callback: () => {
-          console.log("Navigating to theme/style-guide");
         },
         useHaxEditor: true,
       },
@@ -1196,47 +1195,44 @@ class Store {
    * @returns {string} - The default HTML content for the style guide
    */
   getDefaultStyleGuideContent() {
-    return `<page-template name="Default H1" enforce-styles="enforce-styles" data-haxsg-id="header-1a2b03c4-5d6e-7f8g-9h0i-jk1l2m3n4o5p">
-  <h1 data-primary="21" data-font-size="xl" data-font-family="navigation" data-font-weight="bold" data-padding="s" data-margin="l" data-text-align="center" data-design-treatment="horz-full">Heading 1 Example</h1>
+    return `<page-template name="Default H1" schema="block" enforce-styles="enforce-styles" data-haxsg-id="header-1a2b03c4-5d6e-7f8g-9h0i-jk1l2m3n4o5p">
+  <h1  data-primary="21" data-font-size="xl" data-font-family="navigation" data-font-weight="bold" data-padding="s" data-margin="l" data-text-align="center" data-design-treatment="horz-full">Heading 1 Example</h1>
 </page-template>
 
-<page-template name="Default H2" enforce-styles="enforce-styles" data-haxsg-id="header-8a1e05f0-1ab1-8c5e-f81f-ef2cafc290fa">
+<page-template name="Default H2" schema="block" enforce-styles="enforce-styles" data-haxsg-id="header-8a1e05f0-1ab1-8c5e-f81f-ef2cafc290fa">
   <h2 data-primary="11" data-font-size="l" data-font-family="navigation" data-font-weight="light" data-padding="s" data-margin="m" data-text-align="center" data-design-treatment="horz-full">Heading 2</h2>
 </page-template>
 
-<page-template name="Default H3" enforce-styles="enforce-styles" data-haxsg-id="header-3b4c05d6-7e8f-9g0h-1i2j-kl3m4n5o6p7q">
+<page-template name="Default H3" schema="block" enforce-styles="enforce-styles" data-haxsg-id="header-3b4c05d6-7e8f-9g0h-1i2j-kl3m4n5o6p7q">
   <h3 data-primary="21" data-font-size="m" data-font-family="navigation" data-font-weight="normal" data-padding="xs" data-margin="s" data-text-align="left" data-design-treatment="bg">Heading 3 Example</h3>
 </page-template>
 
-<page-template name="Default H4" enforce-styles="enforce-styles" data-haxsg-id="header-dsfdfs-7e8f-9g0h-1i2j-kl3m4n5o6p7q">
+<page-template name="Default H4" schema="block" enforce-styles="enforce-styles" data-haxsg-id="header-dsfdfs-7e8f-9g0h-1i2j-kl3m4n5o6p7q">
   <h4 data-primary="21" data-font-size="m" data-font-family="navigation" data-font-weight="normal" data-padding="xs" data-margin="s" data-text-align="left" data-design-treatment="bg">Heading 4 Example</h4>
 </page-template>
 
-<page-template name="Default List" enforce-styles="enforce-styles" data-haxsg-id="list-4c5d06e7-8f9g-0h1i-2j3k-lm4n5o6p7q8r">
+<page-template name="Default List" schema="block" enforce-styles="enforce-styles" data-haxsg-id="list-4c5d06e7-8f9g-0h1i-2j3k-lm4n5o6p7q8r">
   <ul data-padding="s" data-margin="m" data-primary="14">
     <li>First item</li>
     <li>Second item</li>
     <li>Third item</li>
   </ul>
 </page-template>
-
-<page-template name="Default Ordered List" enforce-styles="enforce-styles" data-haxsg-id="orderedlist-5d6e07f8-9g0h-1i2j-3k4l-mn5o6p7q8r9s">
+<page-template name="Default Ordered List" schema="block" enforce-styles="enforce-styles" data-haxsg-id="orderedlist-5d6e07f8-9g0h-1i2j-3k4l-mn5o6p7q8r9s">
   <ol data-margin="m">
     <li>First step</li>
     <li>Second step</li>
     <li>Third step</li>
   </ol>
 </page-template>
-
-<page-template name="PARAGRAPH" enforce-styles="enforce-styles" data-haxsg-id="orderedlist-5d6e07f8-9g0h-1i2j-3k4l-mn5o6p7q8r9s">
-  <p>THIS IS A P TAG !!!</p>
+<page-template name="bill p" schema="page" enforce-styles="" data-haxsg-id="p-fgdfgdgdgd-9g0h-1i2j-3k4l-mn5o6p7q8r9s">
+  <p data-accent="3" data-primary="5" data-font-weight="medium" data-font-family="navigation" data-font-size="l" data-border-radius="md" data-border="lg">THIS IS A P TAG !!!</p>
+  <p data-accent="3" data-primary="5" data-font-weight="medium" data-font-family="navigation" data-font-size="l" data-border-radius="md" data-border="lg">THIS IS A P TAG !!!</p>
 </page-template>
-
-<page-template name="Default Video" data-haxsg-id="video-6e7f08g9-0h1i-2j3k-4l5m-no6p7q8r9s0t">
+<page-template name="Default Video" schema="area" data-haxsg-id="video-6e7f08g9-0h1i-2j3k-4l5m-no6p7q8r9s0t">
   <video-player data-width="50" source="https://www.youtube.com/watch?v=dQw4w9WgXcQ" caption="Example video player" accent-color="blue" data-padding="m" data-margin="l"></video-player>
 </page-template>
-
-<page-template name="Class video" show-as-template="show-as-template" data-haxsg-id="quote-7f8g09h0-1i2j-3k4l-5m6n-op7q8r9s0t1u">
+<page-template name="Class video" schema="page" data-haxsg-id="quote-7f8g09h0-1i2j-3k4l-5m6n-op7q8r9s0t1u">
 <grid-plate item-margin="16" item-padding="16" layout="1-1" disable-responsive="">
   <h3 id="header-a11e7d5c-b0ec-0b3a-eda2-30bca4e4c2b0" slot="col-1">Colun 1</h3>
   <p slot="col-1">This is a video template!</p>

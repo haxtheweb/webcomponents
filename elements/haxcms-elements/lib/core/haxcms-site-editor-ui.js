@@ -1249,16 +1249,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       add: "Add",
       editSettings: "Edit settings",
       source: "Source",
-      viewSource: "View source",
+      viewSource: "Source",
       confirmHtmlSourceExit:
         "HTML Source changes will not be saved without pressing the `Update HTML` button, Save without HTML code editor changes?",
-      findMedia: "Find media",
+      findMedia: "Media",
       undo: "Undo",
       redo: "Redo",
       media: "Media",
       outline: "Outline",
       blocks: "Blocks",
-      addBlock: "Add block",
+      addBlock: "Blocks",
       addPage: "Add page",
       addChildPage: "Add child page",
       clonePage: "Clone page",
@@ -1272,7 +1272,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       close: "Close",
       settings: "Settings",
       edit: "Edit",
-      configureBlock: "Configure block",
+      configureBlock: "Configure",
       configure: "Configure",
       save: "Save",
       newJourney: "New Journey",
@@ -2640,22 +2640,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           } else {
             this.__editText = this.t.edit;
           }
-          this.t.configureBlock = "Configure";
-          this.t.addBlock = "Block";
-          this.t.findMedia = "Media";
-          this.t.pageOutline = "Outline";
-          this.t.viewSource = "Source";
         } else {
           if (this.editMode) {
             this.__editText = this.t.save;
           } else {
             this.__editText = this.t.edit;
           }
-          this.t.configureBlock = "Configure block";
-          this.t.addBlock = "Add block";
-          this.t.findMedia = "Find media";
-          this.t.pageOutline = "Page outline";
-          this.t.viewSource = "View source";
         }
       }
       if (propName == "editMode") {
@@ -2697,6 +2687,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   static get properties() {
     return {
       ...super.properties,
+      t: {
+        type: Object,
+      },
       userName: {
         type: String,
         attribute: "user-name",

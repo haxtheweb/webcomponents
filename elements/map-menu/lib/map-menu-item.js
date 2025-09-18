@@ -213,7 +213,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
       namespace: "map-menu",
       localesPath:
         new URL("../locales/map-menu.es.json", import.meta.url).href + "/../",
-      locales: ["es"],
+      
     });
     setTimeout(() => {
       this.addEventListener("focusin", this.__active.bind(this));

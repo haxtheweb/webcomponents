@@ -1,0 +1,10 @@
+{
+  "newPage": "หน้าใหม่",
+  "pageBreak": "ตัวแบ่งหน้า",
+  "selectToEditPageDetails": "เลือกเพื่อแก้ไขรายละเอียดหน้า",
+  "pageDetails": "รายละเอียดหน้า",
+  "clickToUnlock": "คลิกเพื่อปลดล็อก",
+  "noParent": "ไม่มีหน้าแม่",
+  "toggleLock": "สลับการล็อก",
+  "togglePublished": "สลับการเผยแพร่"
+}

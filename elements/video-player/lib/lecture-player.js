@@ -4,6 +4,7 @@ import {
   DDDDataAttributes,
   DDDPulseEffect,
 } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/video-player/video-player.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
@@ -12,7 +13,7 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
 import "@haxtheweb/simple-cta/simple-cta.js";
 
-class LecturePlayer extends DDDSuper(LitElement) {
+class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
   static get styles() {
     return [
       super.styles,
@@ -42,6 +43,19 @@ class LecturePlayer extends DDDSuper(LitElement) {
     this.videoPlayer = this.querySelector("video-player").outerHTML;
     this.videoInterval = null;
     this.activeIndex = null;
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      missingTitle: "Missing Title",
+      closeLecturePlayer: "Close Lecture Player",
+      openLecturePlayer: "Open Lecture Player",
+    };
+    this.registerLocalization({
+      context: this,
+      localesPath:
+        new URL("../locales/video-player.es.json", import.meta.url).href +
+        "/../",
+    });
     console.log(globalThis.location.hash);
     if (globalThis.location.hash) {
       var id = globalThis.location.hash.split("--")[0];
@@ -296,7 +310,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
       valueBtn.classList.add("valueBtn");
       valueBtn.textContent = slideAnchor
         ? slideAnchor.getAttribute("data-lecture-heading")
-        : "Missing Title";
+        : this.t.missingTitle;
       valueBtn.addEventListener("click", () => {
         this.activeIndex = key;
       });
@@ -369,7 +383,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
       .setAttribute("disabled", "true");
     let endBtnDiv = globalThis.document.createElement("div");
     endBtnDiv.setAttribute("data-primary", "11");
-    endBtnDiv.innerHTML = `<simple-cta class="endBtn" data-pulse data-primary="11">Close Lecture Player</simple-cta>`;
+    endBtnDiv.innerHTML = `<simple-cta class="endBtn" data-pulse data-primary="11">${this.t.closeLecturePlayer}</simple-cta>`;
     endBtnDiv.classList.add("endBtnContainer");
     globalThis.document.querySelector(".jumbotron").appendChild(endBtnDiv);
     globalThis.document
@@ -642,7 +656,7 @@ class LecturePlayer extends DDDSuper(LitElement) {
 
   render() {
     return html`
-      <simple-cta id="lectureActivation">Open Lecture Player</simple-cta>
+      <simple-cta id="lectureActivation">${this.t.openLecturePlayer}</simple-cta>
       ${!this.open ? html`<slot></slot>` : html``}
     `;
   }

@@ -327,7 +327,6 @@ const great = "example";</template>`,
       context: this,
       localesPath:
         new URL("./locales/code-sample.es.json", import.meta.url).href + "/../",
-      locales: ["es"],
     });
   }
   /**

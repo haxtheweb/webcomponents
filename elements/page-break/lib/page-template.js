@@ -6,6 +6,7 @@ import { html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { generateResourceID } from "@haxtheweb/utils/utils.js";
 
 /**
  * `page-template`
@@ -96,15 +97,18 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
         reflect: true,
         attribute: "enforce-styles",
       },
-      showAsTemplate: {
-        type: Boolean,
-        reflect: true,
-        attribute: "show-as-template",
-      },
       /**
        * Name of the template for identification
        */
       name: {
+        type: String,
+        reflect: true,
+      },
+      /**
+       * Schema type defining how this template should be used
+       * Options: 'block', 'area', 'page'
+       */
+      schema: {
         type: String,
         reflect: true,
       },
@@ -115,7 +119,7 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
     super();
     this.enforceStyles = false;
     this.name = "";
-    this.showAsTemplate = false;
+    this.schema = "area";
 
     // Initialize translations
     this.t = {
@@ -129,8 +133,24 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
       context: this,
       localesPath: 
         new URL("../../locales/page-break.es.json", import.meta.url).href + "/../",
-      locales: ["es"],
+      
     });
+  }
+
+  /**
+   * Ensure template has a unique ID when connected to DOM
+   */
+  connectedCallback() {
+    super.connectedCallback();
+    
+    // Auto-generate data-haxsg-id if it doesn't exist
+    if (!this.getAttribute('data-haxsg-id')) {
+      const templateType = this.schema || 'area';
+      const prefix = templateType === 'page' ? 'page' : 
+                     templateType === 'block' ? 'block' : 'template';
+      const uniqueId = `${prefix}-${generateResourceID('').substring(1)}`; // Remove the '#' prefix
+      this.setAttribute('data-haxsg-id', uniqueId);
+    }
   }
 
   render() {
@@ -179,16 +199,21 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
             required: false,
           },
           {
+            property: "schema",
+            title: "Template Type",
+            description: "How this template should be categorized and used",
+            inputMethod: "select",
+            options: {
+              "block": "Block - Replaces element defaults",
+              "area": "Area - Shows in Templates section",
+              "page": "Page - Shows in Pages section"
+            },
+            required: true,
+          },
+          {
             property: "enforceStyles",
             title: "Enforce Template Styles",
             description: "Apply this template to any matching tag, ignoring the local styles",
-            inputMethod: "boolean",
-            required: false,
-          },
-          {
-            property: "showAsTemplate",
-            title: "Show as Template",
-            description: "Make this template available in the template picker",
             inputMethod: "boolean",
             required: false,
           },
@@ -208,6 +233,7 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
           tag: "page-template",
           properties: {
             name: "Example Template",
+            schema: "area",
             enforceStyles: false,
           },
           content: "<h2>Template Heading</h2><p>Add your content elements inside this template. This acts as a container that can hold any HAX elements.</p>",

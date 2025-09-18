@@ -47,7 +47,6 @@ class ImageCompareSlider extends I18NMixin(
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
-      locales: ["es"],
     });
   }
   render() {

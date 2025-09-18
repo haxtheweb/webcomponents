@@ -50,24 +50,14 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
       english: "English",
       spanish: "Spanish",
     };
-    this.udpateSchema();
+    this.updateSchema();
     this.registerLocalization({
       context: this,
       namespace: "hax",
-      updateCallback: "udpateSchema",
-    });
-    autorun(() => {
-      this.globalPreferences = toJS(HAXStore.globalPreferences);
-      if (
-        this.globalPreferences.haxLang &&
-        I18NManagerStore.lang != this.globalPreferences.haxLang
-      ) {
-        I18NManagerStore.lang = this.globalPreferences.haxLang || "en";
-        this.udpateSchema();
-      }
+      updateCallback: "updateSchema",
     });
   }
-  udpateSchema() {
+  updateSchema() {
     // JSON schema object needs delayed to ensure page repaints the form
     let lang = I18NManagerStore.lang;
     if (lang.indexOf("-")) {
@@ -87,22 +77,9 @@ class HaxPreferencesDialog extends I18NMixin(LitElement) {
         },
         value: "hax",
       },
-      {
-        property: "haxLang",
-        title: this.t.language,
-        description:
-          "Toggle between supported languages for internationalization",
-        inputMethod: "radio",
-        options: {
-          en: this.t.english,
-          es: this.t.spanish,
-        },
-        value: lang,
-      },
     ];
     this.schemaValues = {
       haxUiTheme: "hax",
-      haxLang: lang,
     };
     if (this.shadowRoot && this.shadowRoot.querySelector("#settingsform")) {
       this.reloadPreferencesForm();

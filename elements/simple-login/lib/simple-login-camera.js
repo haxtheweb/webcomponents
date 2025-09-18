@@ -31,7 +31,7 @@ class SimpleLoginCamera extends HTMLElement {
             new URL("../locales/simple-login.es.json", import.meta.url).href +
             "/../",
           updateCallback: "render",
-          locales: ["es"],
+          
         },
       }),
     );

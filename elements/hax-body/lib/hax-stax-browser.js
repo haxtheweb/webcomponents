@@ -55,12 +55,35 @@ class HaxStaxBrowser extends LitElement {
     super();
     this.staxList = [];
     this.label = "Templates";
+    this.templateType = "area"; // 'area', 'page', or 'all'
   }
+  get filteredStaxList() {
+    if (this.templateType === "all") {
+      return this.staxList;
+    }
+    
+    return this.staxList.filter((stax) => {
+      // Check if stax has templateType metadata
+      const staxTemplateType = stax.details && stax.details.templateType;
+      
+      // If no templateType is defined, default to 'area'
+      const effectiveTemplateType = staxTemplateType || "area";
+      
+      return effectiveTemplateType === this.templateType;
+    });
+  }
+
   render() {
+    const filteredItems = this.filteredStaxList;
+    // Don't render anything if there are no items to show
+    if (filteredItems.length === 0) {
+      return html``;
+    }
+    
     return html`
       <a11y-collapse heading="${this.label}" heading-button>
         <simple-button-grid columns="2" rows="1" always-expanded>
-          ${this.staxList.map(
+          ${filteredItems.map(
             (stax) => html`
               <hax-tray-button
                 icon-position="top"
@@ -90,6 +113,10 @@ class HaxStaxBrowser extends LitElement {
         type: Array,
       },
       label: { type: String },
+      /**
+       * Type of templates to filter by: 'area', 'page', or 'all'
+       */
+      templateType: { type: String, attribute: "template-type" },
     };
   }
 }

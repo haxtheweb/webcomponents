@@ -212,7 +212,6 @@ class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
         detail: {
           namespace: `wikipedia-query.haxProperties`,
           localesPath: new URL(`./locales`, import.meta.url).href,
-          locales: ["es", "fr"],
         },
       }),
     );

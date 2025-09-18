@@ -122,7 +122,6 @@ class GradeBookLite extends UIRenderPieces(
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
-      locales: ["es", "fr", "de"],
     });
     // notice that a category on the active grading area responded that it changed
     this.addEventListener(

@@ -25,7 +25,6 @@ export class DddCard extends I18NMixin(DDDSuper(LitElement)) {
       localesPath:
         new URL(`../locales/${this.tag}.es.json`, import.meta.url).href +
         "/../",
-      locales: ["es"],
     });
   }
 

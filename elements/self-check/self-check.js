@@ -50,7 +50,6 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
-      locales: ["he", "ja", "es"],
     });
   }
   static get styles() {

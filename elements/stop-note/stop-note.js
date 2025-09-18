@@ -236,7 +236,7 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
-      locales: ["es"],
+      
     });
   }
   static get properties() {

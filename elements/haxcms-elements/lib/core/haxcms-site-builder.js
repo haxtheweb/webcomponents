@@ -499,6 +499,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   static get properties() {
     return {
       ...super.properties,
+      t: {
+        type: Object,
+      },
       activeItemLocation: {
         type: String,
         attribute: "active-item-location",
@@ -658,7 +661,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
         "../../locales/haxcms.es.json",
         import.meta.url,
       ).href.replace("/haxcms.es.json", "/"),
-      locales: ["es"],
+      // Remove locales array to rely on manifest-based detection
     });
     this._timeStamp = Math.floor(Date.now() / 1000);
     this.disableFeatures = "";

@@ -40,8 +40,6 @@ import "@haxtheweb/hax-iconset/lib/hax-iconset-manifest.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 import "./hax-app.js";
 
-const FALLBACK_LANG = "en";
-
 function sessionStorageGet(name) {
   try {
     return sessionStorage.getItem(name);
@@ -1019,7 +1017,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       this.storageData = storageData;
       this._storageDataChanged(this.storageData);
       // only translate if we are ready, and editing, and have a language other than default
-      if (newValue.haxLang && HAXStore.editMode) {
+      if (HAXStore.editMode) {
         clearTimeout(this._debounceLang);
         // debounce helps prevent flooding based on this variable being updated
         // we also don't need to instantly update language as it's an aggressive action
@@ -4293,7 +4291,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // if we have a map, rewrite the matching properties within the objects
     if (
       !translationMap &&
-      this.globalPreferences.haxLang == FALLBACK_LANG &&
       globalThis.customElements.get(tag) &&
       globalThis.customElements.get(tag).haxProperties
     ) {

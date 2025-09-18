@@ -968,9 +968,16 @@ class HaxTray extends I18NMixin(
         ?hidden="${hidden}"
       ></hax-gizmo-browser>
       <hax-stax-browser
+        id="pagesbrowser"
+        ?hidden="${hidden}"
+        label="${this.t.pages || "Pages"}"
+        template-type="page"
+      ></hax-stax-browser>
+      <hax-stax-browser
         id="staxbrowser"
         ?hidden="${hidden}"
         label="${this.t.templates}"
+        template-type="area"
       ></hax-stax-browser>
       <hax-app-search ?hidden="${hidden}" id="haxappsearch"></hax-app-search>
     </div>`;
@@ -986,9 +993,9 @@ class HaxTray extends I18NMixin(
     this.shadowRoot
       .querySelector("#gizmobrowser")
       .resetList(toJS(HAXStore.gizmoList));
-    this.shadowRoot.querySelector("#staxbrowser").staxList = [
-      ...toJS(HAXStore.staxList),
-    ];
+    const staxList = toJS(HAXStore.staxList);
+    this.shadowRoot.querySelector("#staxbrowser").staxList = [...staxList];
+    this.shadowRoot.querySelector("#pagesbrowser").staxList = [...staxList];
   }
   /**
    * Process event for simple content inserts.

@@ -43,9 +43,8 @@ export class SortingQuestion extends QuestionElement {
     this.registerLocalization({
       context: this,
       localesPath:
-        new URL("../locales/sorting-question.es.json", import.meta.url).href +
+        new URL("locales/sorting-question.es.json", import.meta.url).href +
         "/../",
-      locales: ["he", "ja", "es"],
     });
   }
 

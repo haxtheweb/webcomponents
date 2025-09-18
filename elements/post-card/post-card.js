@@ -54,7 +54,6 @@ export class PostCard extends LitElement {
             new URL("./locales/post-card.es.json", import.meta.url).href +
             "/../",
           updateCallback: "render",
-          locales: ["es", "de", "fr", "it", "ja", "zh_CN"],
         },
       }),
     );
