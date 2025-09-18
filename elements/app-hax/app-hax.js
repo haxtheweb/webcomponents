@@ -34,7 +34,7 @@ function soundToggle() {
   store.appEl.playSound("click");
 }
 
-export class AppHax extends I18NMixin(SimpleTourFinder(SimpleColors)) {
+export class AppHax extends I18NMixin(SimpleTourFinder(DDD(SimpleColors))) {
   static get tag() {
     return "app-hax";
   }

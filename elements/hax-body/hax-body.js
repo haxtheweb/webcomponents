@@ -1708,6 +1708,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     content = content.replace(/\sdata-hax-active="(\s|.)*?"/gim, "");
     content = content.replace(/ class=""/gim, "");
     content = content.replace(/ contenteditable="(\s|.)*?"/gim, "");
+    content = content.replace(/\st="(\s|.)*?"/gim, "");
     // spacing niceness for output readability
     content = content.replace(/&nbsp;/gm, " ");
     // remove HAX specific classes / scoping classes

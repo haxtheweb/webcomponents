@@ -996,6 +996,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       clearTimeout(this.__readyToProcessAppStoreData);
       this._loadAppStoreData(this.__appStoreData);
     }
+    // also try force loading if we don't have app store data but do have appStore config
+    else if (
+      newValue &&
+      !this.appStoreLoaded &&
+      this.appStore &&
+      this.appStore.url &&
+      this.haxAutoloader
+    ) {
+      this.forceAppStoreLoad();
+    }
   }
   async _globalPreferencesChanged(newValue) {
     // regardless of what it is, reflect it globally but only after setup
@@ -2038,7 +2048,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       context: this,
       namespace: "hax",
       basePath: import.meta.url + "/../../",
-      locales: ["es"],
+      // Remove locales array to rely on manifest-based detection
     });
     this.appSearch = null;
     this.method = "GET";
@@ -3542,9 +3552,32 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
    */
   _haxStoreRegisterStax(e) {
     if (e.detail) {
-      e.detail.index = this.staxList.length;
-      this.staxList = [...this.staxList, e.detail];
+      const newStax = e.detail;
+      
+      // Check for duplicates based on data-haxsg-id if available
+      const newHaxsgId = newStax.details && newStax.details.haxsgId;
+      if (newHaxsgId) {
+        const existingStax = this.staxList.find(stax => 
+          stax.details && stax.details.haxsgId === newHaxsgId
+        );
+        
+        // If duplicate found, don't add it
+        if (existingStax) {
+          // Remove the element after processing to clean up
+          if (
+            typeof e.target.parentElement !== typeof undefined &&
+            e.target.parentElement.tagName === "HAX-STORE"
+          ) {
+            e.target.parentElement.removeChild(e.target);
+          }
+          return;
+        }
+      }
+      
+      newStax.index = this.staxList.length;
+      this.staxList = [...this.staxList, newStax];
       this.write("staxList", this.staxList, this);
+      
       // we don't care about this after it's launched
       if (
         typeof e.target.parentElement !== typeof undefined &&
@@ -3618,6 +3651,21 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
   
   /**
+   * Force app store loading if it hasn't loaded yet
+   * This can be called from external contexts like the style guide route
+   */
+  async forceAppStoreLoad() {
+    // Only force load if not already loaded and we have the necessary pieces
+    if (!this.appStoreLoaded && this.ready && this.__appStoreData && this.haxAutoloader) {
+      await this._loadAppStoreData(this.__appStoreData);
+    }
+    // Also try to trigger from appStore property if set
+    else if (!this.appStoreLoaded && this.appStore && this.appStore.url && this.haxAutoloader) {
+      this.loadAppStoreFromRemote();
+    }
+  }
+  
+  /**
    * Detect page-template elements from style guide content and register them as stax or demoSchema
    * Multi-child templates become stax, single-child templates replace demoSchema for that element
    * Uses the same HAX schema conversion approach as the style guide system
@@ -3635,19 +3683,23 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       for (const styleElement of styleGuideElements) {
         // Look for page-template elements
         if (styleElement && styleElement.tag === 'page-template') {
-          // Get template name from properties (not attributes)
+          // Get template name, schema, and haxsg-id from properties
           const templateName = styleElement.properties && styleElement.properties.name;
+          const templateSchema = styleElement.properties && styleElement.properties.schema || 'area';
+          const haxsgId = styleElement.properties && styleElement.properties['data-haxsg-id'];
           
           if (templateName && styleElement.content) {
             // Convert the content inside page-template to HAX elements
             const templateContentElements = await this.htmlToHaxElements(styleElement.content);
             
             if (templateContentElements && templateContentElements.length > 0) {
-              if (templateContentElements.length === 1 && !styleElement.properties['show-as-template']) {
-                // Single child: replace demoSchema for this element type
-                await this._updateElementDemoSchema(templateContentElements[0]);
-              } else {
-                // Multiple children: register as stax template
+              if (templateSchema === 'block') {
+                // Block templates: replace demoSchema for the specific element type
+                if (templateContentElements.length === 1) {
+                  await this._updateElementDemoSchema(templateContentElements[0]);
+                }
+              } else if (templateSchema === 'area' || templateSchema === 'page') {
+                // Area or Page templates: register as stax template
                 const staxData = {
                   details: {
                     title: templateName,
@@ -3656,7 +3708,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                     description: `Template: ${templateName}`,
                     status: "available",
                     rating: "0",
-                    tags: ["template", "style-guide"]
+                    tags: ["template", "style-guide", templateSchema],
+                    templateType: templateSchema, // Add templateType for filtering
+                    haxsgId: haxsgId // Store the haxsg-id for deduplication
                   },
                   stax: templateContentElements // Use the HAX elements directly (excludes page-template wrapper)
                 };
@@ -3747,6 +3801,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       "contenteditable",
       "draggable",
       "role",
+      "t",
     ];
     // remove any attributes that are not allowed
     for (let i = 0; i < badAttributes.length; i++) {
@@ -3902,6 +3957,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     delete propvals.draggable;
     delete propvals.contenteditable;
     delete propvals.role;
+    delete propvals.t;
     delete propvals["data-hax-ray"];
     delete propvals["data-hax-layout"];
     delete propvals["data-hax-grid"];
@@ -4006,6 +4062,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     content = content.replace(/ class=""/gim, "");
     content = content.replace(/ style=""/gim, "");
     content = content.replace(/ contenteditable="(\s|.)*?"/gim, "");
+    content = content.replace(/ t="(\s|.)*?"/gim, "");
     // wipe pure style spans which can pop up on copy paste if we didn't catch it
     // also ensure that we then remove purely visual chars laying around
     // this also helps clean up when we did a normal contenteditable paste

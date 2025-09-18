@@ -1372,6 +1372,7 @@ function stripMSWord(input) {
   output = output.replace(/ class=""/gim, "");
   output = output.replace(/ class="hax-active"/gim, "");
   output = output.replace(/ contenteditable="(\s|.)*?"/gim, "");
+  output = output.replace(/ t="(\s|.)*?"/gim, "");
   // wow do I hate contenteditable and the dom....
   // bold and italic are treated as if they are block elements in a paste scenario
   // 8. check for empty bad tags
