@@ -1284,11 +1284,23 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
     window.addEventListener('haxcms-ready', function(e) {
       // give the web components a second to build
       setTimeout(function() {
-        document.querySelector('#loading').classList.add('loaded');
+        var loadingEl = document.querySelector('#loading');
+        if (loadingEl) {
+          loadingEl.classList.add('loaded');
+        }
         setTimeout(function() {
-          document.querySelector('#loading').parentNode.removeChild(document.querySelector('#loading'));
-          document.querySelector('#loadingstyles').parentNode.removeChild(document.querySelector('#loadingstyles'));
-          document.querySelector('#loadingscript').parentNode.removeChild(document.querySelector('#loadingscript'));
+          var loadingEl = document.querySelector('#loading');
+          if (loadingEl && loadingEl.parentNode) {
+            loadingEl.parentNode.removeChild(loadingEl);
+          }
+          var loadingStylesEl = document.querySelector('#loadingstyles');
+          if (loadingStylesEl && loadingStylesEl.parentNode) {
+            loadingStylesEl.parentNode.removeChild(loadingStylesEl);
+          }
+          var loadingScriptEl = document.querySelector('#loadingscript');
+          if (loadingScriptEl && loadingScriptEl.parentNode) {
+            loadingScriptEl.parentNode.removeChild(loadingScriptEl);
+          }
         }, 600);
       }, 300);
     });

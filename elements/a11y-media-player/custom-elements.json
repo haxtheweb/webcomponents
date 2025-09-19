@@ -19,6 +19,32 @@
               "readonly": true
             },
             {
+              "kind": "method",
+              "name": "_getTranslation",
+              "parameters": [
+                {
+                  "name": "key",
+                  "description": "The translation key to access",
+                  "type": {
+                    "text": "string"
+                  }
+                },
+                {
+                  "name": "fallback",
+                  "description": "The fallback string to use if translation is not available",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Helper method to safely access translation strings",
+              "return": {
+                "type": {
+                  "text": "string"
+                }
+              }
+            },
+            {
               "kind": "field",
               "name": "anchor",
               "description": "gets anchors from page and uses their timecodes",
@@ -161,17 +187,6 @@
               "kind": "field",
               "name": "loadedTracks",
               "description": "HTML `audio` or `video` tag where textTracks, if any, can be found",
-              "readonly": true,
-              "return": {
-                "type": {
-                  "text": "object"
-                }
-              }
-            },
-            {
-              "kind": "field",
-              "name": "localizationDefaults",
-              "description": "object that contains default localization",
               "readonly": true,
               "return": {
                 "type": {
@@ -346,12 +361,12 @@
             },
             {
               "kind": "field",
-              "name": "t",
+              "name": "initialTimecode",
               "description": "gets initial timecode parameter",
               "readonly": true,
               "return": {
                 "type": {
-                  "text": "array"
+                  "text": "number"
                 }
               }
             },
@@ -1024,34 +1039,6 @@
               }
             },
             {
-              "kind": "method",
-              "name": "_getLocal",
-              "parameters": [
-                {
-                  "name": "localization"
-                },
-                {
-                  "name": "key"
-                },
-                {
-                  "name": "subkey"
-                },
-                {
-                  "description": "subkey to search for",
-                  "name": "the",
-                  "type": {
-                    "text": "string"
-                  }
-                }
-              ],
-              "description": "gets the localization by compaing the localization set to the defaults",
-              "return": {
-                "type": {
-                  "text": "string"
-                }
-              }
-            },
-            {
               "kind": "field",
               "name": "__playerReady",
               "privacy": "public",
@@ -1264,14 +1251,11 @@
             },
             {
               "kind": "field",
-              "name": "localization",
-              "privacy": "public",
+              "name": "t",
               "type": {
                 "text": "object"
               },
-              "description": "custom localization settings",
-              "default": "{}",
-              "attribute": "localization"
+              "default": "{ ...this.t, audioLabel: \"Audio\", audioNotSupported: \"HTML5 video is not supported.\", autoScrollLabel: \"Scroll Transcript\", captionsLabel: \"Closed Captions\", captionsOff: \"Off\", downloadLabel: \"Download Transcript\", forwardLabel: \"Forward\", fullscreenLabel: \"Fullscreen\", copyLinkLabel: \"Copy Media Link\", closeLinkLabel: \"Close\", loadingLabel: \"Loading...\", loopLabel: \"Loop Playback\", muteLabel: \"Mute\", nextResultLabel: \"Next\", pauseLabel: \"Pause\", playLabel: \"Play\", prevResultLabel: \"Previous\", printLabel: \"Print Transcript\", restartLabel: \"Restart\", rewindLabel: \"Backward\", searchLabel: \"Search the transcript.\", seekSliderLabel: \"Seek Slider\", settingsLabel: \"Settings\", speedLabel: \"Speed %\", transcriptLabel: \"Transcript\", transcriptLoading: \"Loading the transcript(s)...\", transcriptOff: \"Off\", transcriptSkip: \"Skip to the transcript.\", unmuteLabel: \"Unmute\", videoLabel: \"Video\", videoNotSupported: \"HTML5 video is not supported.\", volumeLabel: \"Volume\", youTubeLoadingLabel: \"Loading...\", youTubeStartLoading: \"Press play.\", youTubeTranscriptLabel: \"Transcript will load once media plays.\", }"
             },
             {
               "kind": "field",
@@ -1595,6 +1579,16 @@
               },
               "description": "The height of the media player.",
               "attribute": "height"
+            },
+            {
+              "kind": "field",
+              "name": "localization",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "description": "custom localization settings",
+              "attribute": "localization"
             },
             {
               "kind": "field",
@@ -1949,7 +1943,6 @@
                 "text": "object"
               },
               "description": "custom localization settings",
-              "default": "{}",
               "fieldName": "localization"
             },
             {
@@ -2211,6 +2204,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "FullscreenBehaviors",
               "package": "@haxtheweb/fullscreen-behaviors/fullscreen-behaviors.js"

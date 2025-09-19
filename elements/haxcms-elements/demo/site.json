@@ -45,6 +45,7 @@
         "cssVariable": "--simple-colors-default-theme--7",
         "icon": "hax:hax2022"
       },
+      "styleGuide": "theme/style-guide.html",
       "regions": {
         "header": ["item-15525242-f6e9-4201-bbb1-cdd8f29176f6"],
         "footerPrimary": ["item-3af50499-d450-4068-b2d2-5893283d0e27"],

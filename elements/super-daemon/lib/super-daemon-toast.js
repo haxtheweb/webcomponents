@@ -4,6 +4,7 @@ import "@haxtheweb/future-terminal-text/future-terminal-text.js";
 import "@haxtheweb/simple-icon/lib/simple-icons";
 import "@haxtheweb/simple-icon/simple-icon";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 const SpeechBubbleL = new URL("./images/SpeechBubbleL.svg", import.meta.url)
   .href;
@@ -13,13 +14,21 @@ const SpeechBubbleMiddle = new URL(
 ).href;
 const SpeechBubbleR = new URL("./images/SpeechBubbleR.svg", import.meta.url)
   .href;
-export class SuperDaemonToast extends SimpleToastEl {
+export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
   static get tag() {
     return "super-daemon-toast";
   }
 
   constructor() {
     super();
+    this.t = {
+      saved: "Saved",
+    };
+    this.registerLocalization({
+      context: this,
+      namespace: "super-daemon",
+      basePath: import.meta.url,
+    });
     this.awaitingMerlinInput = false;
     this.windowControllers = new AbortController();
     this.text = "Saved";
@@ -290,7 +299,7 @@ export class SuperDaemonToast extends SimpleToastEl {
     this.hat = e.detail.hat ? e.detail.hat : "coffee";
     this.merlin = e.detail.merlin ? e.detail.merlin : false;
     this.walking = e.detail.walking ? e.detail.walking : false;
-    this.text = e.detail.text ? e.detail.text : "Saved";
+    this.text = e.detail.text ? e.detail.text : this.t.saved;
     this.future = e.detail.future ? e.detail.future : false;
     this.classStyle = e.detail.classStyle ? e.detail.classStyle : "";
     this.eventCallback = e.detail.eventCallback ? e.detail.eventCallback : null;

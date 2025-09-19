@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { FullscreenBehaviors } from "@haxtheweb/fullscreen-behaviors/fullscreen-behaviors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
 import "@haxtheweb/responsive-utility/responsive-utility.js";
 import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
@@ -104,7 +105,7 @@ import "./lib/a11y-media-youtube.js";
   * @demo ./demo/audio.html audio demo
   * @demo ./demo/youtube.html YouTube demo
   */
-class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
+class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
   //styles function
   static get styles() {
     return [
@@ -937,11 +938,13 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
             <a11y-media-play-button
               id="playbutton"
               action="${this.__playing ? "pause" : "play"}"
-              label="${this._getLocal(
-                this.localization,
-                this.__playing ? "pause" : "play",
-                "label",
-              )}"
+              label="${this.__playing
+                ? this.t && this.t.pauseLabel
+                  ? this.t.pauseLabel
+                  : "Pause"
+                : this.t && this.t.playLabel
+                  ? this.t.playLabel
+                  : "Play"}"
               @button-click="${this.togglePlay}"
               ?audio-only="${this.audioOnly}"
               ?disabled="${this.audioNoThumb}"
@@ -988,9 +991,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
                 `}
           </div>
         </div>
-        <div id="progresslabel" class="sr-only">
-          ${this._getLocal(this.localization, "seekSlider", "label")}
-        </div>
+        <div id="progresslabel" class="sr-only">${this.t.seekSliderLabel}</div>
         <simple-range-input
           id="slider"
           class="screen-only"
@@ -1009,24 +1010,16 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
             <a11y-media-button
               accent-color="${this.accentColor}"
               ?dark="${this.dark}"
-              icon="${this._getLocal(
-                this.localization,
-                this.__playing ? "pause" : "play",
-                "icon",
-              )}"
-              label="${this._getLocal(
-                this.localization,
-                this.__playing ? "pause" : "play",
-                "label",
-              )}"
+              icon="${this.__playing ? "av:pause" : "av:play-arrow"}"
+              label="${this.__playing ? this.t.pauseLabel : this.t.playLabel}"
               @click="${this.togglePlay}"
             ></a11y-media-button>
             <a11y-media-button
               accent-color="${this.accentColor}"
               ?dark="${this.dark}"
               class="hide-flex hide-full-xs"
-              icon="${this._getLocal(this.localization, "rewind", "icon")}"
-              label="${this._getLocal(this.localization, "rewind", "label")}"
+              icon="av:fast-rewind"
+              label="${this.t.rewindLabel}"
               ?disabled="${this.disableSeek || this.currentTime <= 0}"
               ?hidden="${this.disableSeek}"
               @click="${(e) => {
@@ -1037,8 +1030,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
               accent-color="${this.accentColor}"
               ?dark="${this.dark}"
               class="hide-flex hide-full-xs"
-              icon="${this._getLocal(this.localization, "forward", "icon")}"
-              label="${this._getLocal(this.localization, "forward", "label")}"
+              icon="av:fast-forward"
+              label="${this.t.forwardLabel}"
               ?disabled="${this.disableSeek ||
               this.currentTime >= this.duration}"
               ?hidden="${this.disableSeek}"
@@ -1050,8 +1043,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
               accent-color="${this.accentColor}"
               ?dark="${this.dark}"
               class="hide-flex"
-              icon="${this._getLocal(this.localization, "restart", "icon")}"
-              label="${this._getLocal(this.localization, "restart", "label")}"
+              icon="av:replay"
+              label="${this.t.restartLabel}"
               ?disabled="${this.disableSeek}"
               ?hidden="${this.responsiveSize === "xs" ||
               this.responsiveSize === "sm" ||
@@ -1067,16 +1060,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
                 accent-color="${this.accentColor}"
                 ?dark="${this.dark}"
                 id="mute"
-                icon="${this._getLocal(
-                  this.localization,
-                  this.muted ? "unmute" : "mute",
-                  "icon",
-                )}"
-                label="${this._getLocal(
-                  this.localization,
-                  this.muted ? "unmute" : "mute",
-                  "label",
-                )}"
+                icon="${this.muted ? "av:volume-off" : "av:volume-up"}"
+                label="${this.muted ? this.t.unmuteLabel : this.t.muteLabel}"
                 @click="${(e) => {
                   this.toggleMute();
                 }}"
@@ -1086,7 +1071,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
                 accent-color="${this.accentColor}"
                 ?dark="${this.dark}"
                 aria-labelledby="volume-slider-label"
-                label="${this._getLocal(this.localization, "volume", "label")}"
+                label="${this.t.volumeLabel}"
                 min="0"
                 max="100"
                 pin
@@ -1107,8 +1092,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
             <a11y-media-button
               accent-color="${this.accentColor}"
               ?dark="${this.dark}"
-              icon="${this._getLocal(this.localization, "captions", "icon")}"
-              label="${this._getLocal(this.localization, "captions", "label")}"
+              icon="av:closed-caption"
+              label="${this.t.captionsLabel}"
               ?disabled="${!this.hasCaptions}"
               ?hidden="${!this.hasCaptions}"
               ?toggle="${this.captionsTrackKey > -1}"
@@ -1120,12 +1105,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
               ?dark="${this.dark}"
               class="hide-full-xs"
               controls="transcript"
-              icon="${this._getLocal(this.localization, "transcript", "icon")}"
-              label="${this._getLocal(
-                this.localization,
-                "transcript",
-                "label",
-              )}"
+              icon="description"
+              label="${this.t.transcriptLabel}"
               ?disabled="${!this.hasCaptions || this.learningMode}"
               ?hidden="${!this.hasCaptions ||
               this.standAlone ||
@@ -1139,8 +1120,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
               accent-color="${this.accentColor}"
               ?dark="${this.dark}"
               class="hide-full-sm"
-              icon="${this._getLocal(this.localization, "copyLink", "icon")}"
-              label="${this._getLocal(this.localization, "copyLink", "label")}"
+              icon="link"
+              label="${this.t.copyLinkLabel}"
               ?disabled="${!this.linkable || this.learningMode}"
               ?hidden="${!this.linkable || this.learningMode}"
               @click="${this._handleCopyLink}"
@@ -1148,12 +1129,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
             <a11y-media-button
               accent-color="${this.accentColor}"
               ?dark="${this.dark}"
-              icon="${this._getLocal(this.localization, "fullscreen", "icon")}"
-              label="${this._getLocal(
-                this.localization,
-                "fullscreen",
-                "label",
-              )}"
+              icon="fullscreen"
+              label="${this.t.fullscreenLabel}"
               ?hidden="${this.audioNoThumb || !this.fullscreenButton}"
               ?toggle="${this.fullscreen}"
               @click="${(e) => this.toggleFullscreen()}"
@@ -1165,8 +1142,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
               id="settings-button"
               class="hide-sticky"
               controls="settings"
-              icon="${this._getLocal(this.localization, "settings", "icon")}"
-              label="${this._getLocal(this.localization, "settings", "label")}"
+              icon="settings"
+              label="${this.t.settingsLabel}"
               @click="${(e) => this.toggleSettings()}"
             ></a11y-media-button>
             ${this.isYoutube
@@ -1192,9 +1169,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
             ?hidden="${!this.__settingsOpen}"
           >
             <div class="setting" ?hidden="${!this.hasCaptions}">
-              <div class="setting-text">
-                ${this._getLocal(this.localization, "captions", "label")}
-              </div>
+              <div class="setting-text">${this.t.captionsLabel}</div>
               <simple-fields-field
                 id="cc_tracks"
                 class="setting-control"
@@ -1211,9 +1186,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
               class="setting"
               ?hidden="${!this.hasCaptions || this.learningMode}"
             >
-              <div class="setting-text">
-                ${this._getLocal(this.localization, "transcript", "label")}
-              </div>
+              <div class="setting-text">${this.t.transcriptLabel}</div>
               <simple-fields-field
                 id="transcript_tracks"
                 class="setting-control"
@@ -1231,14 +1204,14 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
               ?hidden="${!this.hasCaptions || this.learningMode}"
             >
               <div id="print-label" class="setting-text">
-                ${this._getLocal(this.localization, "print", "label")}
+                ${this.t.printLabel}
               </div>
               <a11y-media-button
                 accent-color="${this.accentColor}"
                 ?dark="${this.dark}"
                 aria-labelledby="print-label"
                 class="setting-control"
-                icon="${this._getLocal(this.localization, "print", "icon")}"
+                icon="print"
                 ?disabled="${this.noPrinting || this.learningMode}"
                 ?hidden="${this.noPrinting || this.learningMode}"
                 @click="${this.print}"
@@ -1250,14 +1223,14 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
               ?hidden="${!this.hasCaptions || this.learningMode}"
             >
               <div id="download-label" class="setting-text">
-                ${this._getLocal(this.localization, "download", "label")}
+                ${this.t.downloadLabel}
               </div>
               <a11y-media-button
                 accent-color="${this.accentColor}"
                 ?dark="${this.dark}"
                 aria-labelledby="download-label"
                 class="setting-control"
-                icon="${this._getLocal(this.localization, "download", "icon")}"
+                icon="download"
                 ?disabled="${this.noPrinting || this.learningMode}"
                 ?hidden="${this.noPrinting || this.learningMode}"
                 @click="${this.download}"
@@ -1266,7 +1239,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
             </div>
             <div class="setting">
               <div id="loop-label" class="setting-text">
-                ${this._getLocal(this.localization, "loop", "label")}
+                ${this.t.loopLabel}
               </div>
               <simple-fields-field
                 type="checkbox"
@@ -1280,7 +1253,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
             </div>
             <div class="setting">
               <div id="speed-label" class="setting-text">
-                ${this._getLocal(this.localization, "speed", "label")}
+                ${this.t.speedLabel}
               </div>
               <simple-range-input
                 id="speed"
@@ -1323,36 +1296,12 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
               <simple-search
                 id="simplesearch"
                 controls="transcript"
-                next-button-icon="${this._getLocal(
-                  this.localization,
-                  "nextResult",
-                  "icon",
-                )}"
-                next-button-label="${this._getLocal(
-                  this.localization,
-                  "nextResult",
-                  "label",
-                )}"
-                prev-button-icon="${this._getLocal(
-                  this.localization,
-                  "prevResult",
-                  "icon",
-                )}"
-                prev-button-label="${this._getLocal(
-                  this.localization,
-                  "prevResult",
-                  "label",
-                )}"
-                search-input-icon="${this._getLocal(
-                  this.localization,
-                  "search",
-                  "icon",
-                )}"
-                search-input-label="${this._getLocal(
-                  this.localization,
-                  "search",
-                  "label",
-                )}"
+                next-button-icon="keyboard-arrow-down"
+                next-button-label="${this.t.nextResultLabel}"
+                prev-button-icon="keyboard-arrow-up"
+                prev-button-label="${this.t.prevResultLabel}"
+                search-input-icon="search"
+                search-input-label="${this.t.searchLabel}"
                 selector=".searchable"
                 ?disabled="${this.disableSearch}"
                 ?hidden="${this.disableSearch}"
@@ -1365,16 +1314,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
                 ?dark="${this.dark}"
                 id="scroll"
                 controls="transcript"
-                icon="${this._getLocal(
-                  this.localization,
-                  "autoScroll",
-                  "icon",
-                )}"
-                label="${this._getLocal(
-                  this.localization,
-                  "autoScroll",
-                  "label",
-                )}"
+                icon="swap-vert"
+                label="${this.t.autoScrollLabel}"
                 ?toggle="${!this.disableScroll}"
                 @click="${(e) => (this.disableScroll = !this.disableScroll)}"
               >
@@ -1390,12 +1331,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
                 ?dark="${this.dark}"
                 id="download"
                 controls="transcript"
-                icon="${this._getLocal(this.localization, "download", "icon")}"
-                label="${this._getLocal(
-                  this.localization,
-                  "download",
-                  "label",
-                )}"
+                icon="download"
+                label="${this.t.downloadLabel}"
                 @click="${this.download}"
               >
               </a11y-media-button>
@@ -1404,8 +1341,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
                 ?dark="${this.dark}"
                 id="print"
                 controls="transcript"
-                icon="${this._getLocal(this.localization, "print", "icon")}"
-                label="${this._getLocal(this.localization, "print", "label")}"
+                icon="print"
+                label="${this.t.printLabel}"
                 @click="${this.print}"
               >
               </a11y-media-button>
@@ -1413,7 +1350,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
           </div>
           <div id="transcript" aria-live="polite">
             <a id="transcript-desc" class="sr-only" href="#bottom">
-              ${this._getLocal(this.localization, "transcript", "skip")}
+              ${this.t.transcriptSkip}
             </a>
             ${this.transcriptCues.length > 0
               ? html`
@@ -1848,6 +1785,16 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
     return "a11y-media-player";
   }
 
+  /**
+   * Helper method to safely access translation strings
+   * @param {string} key - The translation key to access
+   * @param {string} fallback - The fallback string to use if translation is not available
+   * @returns {string} The translated string or fallback
+   */
+  _getTranslation(key, fallback) {
+    return this.t && this.t[key] ? this.t[key] : fallback;
+  }
+
   constructor() {
     super();
     globalThis.ResponsiveUtility.requestAvailability();
@@ -1871,7 +1818,50 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
     this.lang = "en";
     this.learningMode = false;
     this.linkable = false;
-    this.localization = {};
+    // Set up translation system
+    this.t = this.t || {};
+    this.t = {
+      ...this.t,
+      audioLabel: "Audio",
+      audioNotSupported: "HTML5 video is not supported.",
+      autoScrollLabel: "Scroll Transcript",
+      captionsLabel: "Closed Captions",
+      captionsOff: "Off",
+      downloadLabel: "Download Transcript",
+      forwardLabel: "Forward",
+      fullscreenLabel: "Fullscreen",
+      copyLinkLabel: "Copy Media Link",
+      closeLinkLabel: "Close",
+      loadingLabel: "Loading...",
+      loopLabel: "Loop Playback",
+      muteLabel: "Mute",
+      nextResultLabel: "Next",
+      pauseLabel: "Pause",
+      playLabel: "Play",
+      prevResultLabel: "Previous",
+      printLabel: "Print Transcript",
+      restartLabel: "Restart",
+      rewindLabel: "Backward",
+      searchLabel: "Search the transcript.",
+      seekSliderLabel: "Seek Slider",
+      settingsLabel: "Settings",
+      speedLabel: "Speed %",
+      transcriptLabel: "Transcript",
+      transcriptLoading: "Loading the transcript(s)...",
+      transcriptOff: "Off",
+      transcriptSkip: "Skip to the transcript.",
+      unmuteLabel: "Unmute",
+      videoLabel: "Video",
+      videoNotSupported: "HTML5 video is not supported.",
+      volumeLabel: "Volume",
+      youTubeLoadingLabel: "Loading...",
+      youTubeStartLoading: "Press play.",
+      youTubeTranscriptLabel: "Transcript will load once media plays.",
+    };
+    this.registerLocalization({
+      context: this,
+      basePath: import.meta.url,
+    });
     this.loop = false;
     this.mediaTitle = "";
     this.mediaLang = "en";
@@ -1988,7 +1978,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
    */
   get captionsPicker() {
     let options = {};
-    options[-1] = this._getLocal(this.localization, "captions", "off");
+    options[-1] = this.t.captionsOff;
     Object.keys(
       this.loadedTracks && this.loadedTracks.textTracks
         ? this.loadedTracks.textTracks
@@ -2095,127 +2085,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
   }
 
   /**
-   * object that contains default localization
-   *
-   * @readonly
-   * @returns {object} default localization object
-   */
-  get localizationDefaults() {
-    return {
-      audio: {
-        label: "Audio",
-        notSupported: "HTML5 video is not supported.",
-      },
-      autoScroll: {
-        label: "Scroll Transcript",
-        icon: "swap-vert",
-      },
-      captions: {
-        label: "Closed Captions",
-        icon: "av:closed-caption",
-        off: "Off",
-      },
-      download: {
-        label: "Download Transcript",
-        icon: "file-download",
-      },
-      forward: {
-        label: "Forward",
-        icon: "av:fast-forward",
-      },
-      fullscreen: {
-        label: "Fullscreen",
-        icon: "fullscreen",
-      },
-      copyLink: {
-        label: "Copy Media Link",
-        icon: "link",
-      },
-      closeLink: {
-        label: "Close",
-        icon: "close",
-      },
-      loading: {
-        label: "Loading...",
-      },
-      loop: {
-        label: "Loop Playback",
-      },
-      mute: {
-        label: "Mute",
-        icon: "av:volume-up",
-      },
-      nextResult: {
-        label: "Next",
-        icon: "arrow-forward",
-      },
-      pause: {
-        label: "Pause",
-        icon: "av:pause",
-      },
-      play: {
-        label: "Play",
-        icon: "av:play-arrow",
-      },
-      prevResult: {
-        label: "Previous",
-        icon: "arrow-back",
-      },
-      print: {
-        label: "Print Transcript",
-        icon: "print",
-      },
-      restart: {
-        label: "Restart",
-        icon: "av:replay",
-      },
-      rewind: {
-        label: "Backward",
-        icon: "av:fast-rewind",
-      },
-      search: {
-        label: "Search the transcript.",
-        icon: "search",
-      },
-      seekSlider: {
-        label: "Seek Slider",
-      },
-      settings: {
-        label: "Settings",
-        icon: "settings",
-      },
-      speed: {
-        label: "Speed %",
-      },
-      transcript: {
-        label: "Transcript",
-        icon: "description",
-        loading: "Loading the transcript(s)...",
-        off: "Off",
-        skip: "Skip to the transcript.",
-      },
-      unmute: {
-        label: "Unmute",
-        icon: "av:volume-off",
-      },
-      video: {
-        label: "Video",
-        notSupported: "HTML5 video is not supported.",
-      },
-      volume: {
-        label: "Volume",
-      },
-      youTubeLoading: {
-        label: "Loading...",
-        startLoading: "Press play.",
-      },
-      youTubeTranscript: {
-        label: "Transcript will load once media plays.",
-      },
-    };
-  }
-
-  /**
    * media used for playback
    * @readonly
    */
@@ -2229,7 +2098,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
    * @returns {string} the media caption
    */
   get mediaCaption() {
-    let audioLabel = this._getLocal(this.localization, "audio", "label"),
+    let audioLabel = this._getTranslation("audioLabel", "Audio"),
       hasMediaTitle =
         this.mediaTitle !== undefined &&
         this.mediaTitle !== null &&
@@ -2343,8 +2212,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
    * @returns {string} the media caption when the page is printed
    */
   get printCaption() {
-    let audioLabel = this._getLocal(this.localization, "audio", "label"),
-      videoLabel = this._getLocal(this.localization, "video", "label"),
+    let audioLabel = this._getTranslation("audioLabel", "Audio"),
+      videoLabel = this._getTranslation("videoLabel", "Video"),
       hasMediaTitle =
         this.mediaTitle !== undefined &&
         this.mediaTitle !== null &&
@@ -2413,10 +2282,10 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
           )}
         `
       : !this.isYoutube
-        ? this._getLocal(this.localization, "loading", "label")
+        ? this._getTranslation("loadingLabel", "Loading...")
         : this.__playing
-          ? this._getLocal(this.localization, "youTubeLoading", "label")
-          : this._getLocal(this.localization, "youTubeLoading", "startLoading");
+          ? this._getTranslation("youTubeLoadingLabel", "Loading...")
+          : this._getTranslation("youTubeStartLoading", "Press play.");
   }
 
   /**
@@ -2430,9 +2299,9 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
   /**
    * gets initial timecode parameter
    * @readonly
-   * @returns {array} array of cues
+   * @returns {number} timecode in seconds
    */
-  get t() {
+  get initialTimecode() {
     let t = this._getSeconds(
       this.anchor.params.t || this.anchor.params.start || `0s`,
     );
@@ -2458,7 +2327,7 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
    */
   get transcriptPicker() {
     let options = {};
-    options[-1] = this._getLocal(this.localization, "transcript", "off");
+    options[-1] = this._getTranslation("transcriptOff", "Off");
     Object.keys(
       this.loadedTracks && this.loadedTracks.textTracks
         ? this.loadedTracks.textTracks
@@ -2660,12 +2529,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
     let a = globalThis.document.createElement("a"),
       title =
         this.mediaTitle && this.mediaTitle.trim() != ""
-          ? `${this.mediaTitle} (${this._getLocal(
-              this.localization,
-              "transcript",
-              "label",
-            )})`
-          : this._getLocal(this.localization, "transcript", "label"),
+          ? `${this.mediaTitle} (${this.t.transcriptLabel})`
+          : this.t.transcriptLabel,
       filename = title.replace(/[^\w\d]/g, ""),
       cues = this.transcriptTrack.cues,
       data = Object.keys(cues)
@@ -2715,12 +2580,8 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
     let cues = this.transcriptTrack.cues,
       title =
         this.mediaTitle && this.mediaTitle.trim() != ""
-          ? `${this.mediaTitle} (${this._getLocal(
-              this.localization,
-              "transcript",
-              "label",
-            )})`
-          : this._getLocal(this.localization, "transcript", "label"),
+          ? `${this.mediaTitle} (${this.t.transcriptLabel})`
+          : this.t.transcriptLabel,
       print = globalThis.open(
         "",
         "",
@@ -3619,32 +3480,6 @@ class A11yMediaPlayer extends FullscreenBehaviors(DDD) {
       mm = units.length > 1 ? parseInt(units[units.length - 2]) : 0,
       ss = units.length > 0 ? parseFloat(units[units.length - 1]) : 0;
     return hh * 3600 + mm * 60 + ss;
-  }
-
-  /**
-   * gets the localization by compaing the localization set to the defaults
-   *
-   * @param {object} the localization object
-   * @param {string} the key to search for
-   * @param {string} the subkey to search for
-   * @returns {string} the default value for [key][subkey], unless localization[key][subkey] exists
-   */
-  _getLocal(localization, key, subkey) {
-    let local = "";
-    if (
-      localization !== undefined &&
-      localization[key] !== undefined &&
-      localization[key][subkey] !== undefined
-    ) {
-      local = localization[key][subkey];
-    } else if (
-      this.localizationDefaults !== undefined &&
-      this.localizationDefaults[key] !== undefined &&
-      this.localizationDefaults[key][subkey] !== undefined
-    ) {
-      local = this.localizationDefaults[key][subkey];
-    }
-    return local;
   }
 }
 globalThis.customElements.define(A11yMediaPlayer.tag, A11yMediaPlayer);

@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "generated": "2025-09-18T18:11:42.790Z",
+    "generated": "2025-09-18T20:48:50.925Z",
     "elementsScanned": 219,
-    "elementsWithTranslations": 28,
-    "translationFilesFound": 600,
+    "elementsWithTranslations": 30,
+    "translationFilesFound": 649,
     "languagesSupported": [
       "af",
       "am",
@@ -115,6 +115,21 @@
   "manifest": {
     "a11y-gif-player": [
       "es"
+    ],
+    "a11y-media-player": [
+      "bg",
+      "da",
+      "en",
+      "es",
+      "et",
+      "ga",
+      "hr",
+      "is",
+      "lt",
+      "lv",
+      "mk",
+      "mt",
+      "sr"
     ],
     "app-hax": [
       "af",
@@ -665,6 +680,44 @@
     ],
     "stop-note": [
       "es"
+    ],
+    "super-daemon": [
+      "af",
+      "am",
+      "ar",
+      "az",
+      "be",
+      "bn",
+      "cs",
+      "de",
+      "el",
+      "en",
+      "es",
+      "eu",
+      "fi",
+      "fr",
+      "he",
+      "hi",
+      "hy",
+      "id",
+      "it",
+      "ja",
+      "ko",
+      "ms",
+      "nl",
+      "no",
+      "pl",
+      "pt",
+      "ro",
+      "ru",
+      "sq",
+      "sv",
+      "th",
+      "tr",
+      "uk",
+      "ur",
+      "vi",
+      "zh"
     ],
     "twitter-embed.haxProperties": [
       "es"

@@ -172,6 +172,8 @@ class HAXCMSBackendNodeJS extends LitElement {
               globalThis.appSettings.deleteNodePath;
             store.cmsSiteEditor.instance.getUserDataPath =
               globalThis.appSettings.getUserDataPath;
+            store.cmsSiteEditor.instance.saveStyleGuidePath =
+              globalThis.appSettings.saveStyleGuidePath;
             store.cmsSiteEditor.instance.appStore = globalThis.appSettings.appStore;
           }
         },

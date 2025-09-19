@@ -9,6 +9,7 @@ import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import "./lib/super-daemon-ui.js";
 import { SuperDaemonToastInstance } from "./lib/super-daemon-toast.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `super-daemon`
@@ -16,7 +17,7 @@ import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
  * @demo demo/index.html
  * @element super-daemon
  */
-class SuperDaemon extends SimpleColors {
+class SuperDaemon extends I18NMixin(SimpleColors) {
   static get properties() {
     return {
       ...super.properties,
@@ -56,18 +57,14 @@ class SuperDaemon extends SimpleColors {
     }
     // add Santa program
     SuperDaemonInstance.defineOption({
-      title: "Toggle Santa Mode",
+      title: this.t.toggleSantaMode,
       textCharacter: "🎅",
       tags: ["Developer", "big-tech", "santa", "all-seeing-eye"],
       eventName: "super-daemon-element-method",
       path: ">settings/hohoho",
       voice: "(toggle) santa (mode)",
       context: [">"],
-      more: html`<span
-        >He sees you when your sleeping, he knows when your awake, and with this
-        command active he is always listening for input ready to respond. He's..
-        Santa Merlin. Ho..Ho...Ho.</span
-      >`,
+      more: html`<span>${this.t.santaModeDescription}</span>`,
       value: {
         target: this,
         method: "toggleSantaMode",
@@ -80,6 +77,34 @@ class SuperDaemon extends SimpleColors {
    */
   constructor() {
     super();
+    this.t = {
+      toggleSantaMode: "Toggle Santa Mode",
+      santaModeDescription:
+        "He sees you when your sleeping, he knows when your awake, and with this command active he is always listening for input ready to respond. He's.. Santa Merlin. Ho..Ho...Ho.",
+      santaModeActivated: "Santa mode activated: Watch what you say",
+      santaModeDeactivated:
+        "Santa mode deactivated: Have a nice day believing you are not being watched",
+      disableSantaModeToStop: "Please disable Santa mode to stop listening",
+      imHere: "I'm here",
+      yes: "Yes?",
+      what: "What?",
+      whatCanIDo: "What can I do for you?",
+      whatDoYouNeed: "What do you need?",
+      howCanIHelp: "How can I help?",
+      thanksForStopping: "thanks for stopping by",
+      seeYa: "See ya",
+      seeYouSoon: "See you soon",
+      tillWeMeetAgain: "Till we meet again",
+      howMayIHelp: "How may I help you?",
+      listening: "Listening..",
+      programModeActivated: "program mode activated",
+      developerModeActivated: "developer mode activated",
+    };
+    this.registerLocalization({
+      context: this,
+      namespace: "super-daemon",
+      basePath: import.meta.url,
+    });
     this.toastInstance = SuperDaemonToastInstance;
     // used when in mini mode to know what to point to and how to focus after the fact
     this.activeSelection = null;
@@ -848,14 +873,13 @@ class SuperDaemon extends SimpleColors {
   toggleSantaMode(e) {
     this.santaMode = !this.santaMode;
     setTimeout(() => {
-      let say = "Santa mode activated: Watch what you say";
+      let say = this.t.santaModeActivated;
       if (!this.santaMode) {
-        say =
-          "Santa mode deactivated: Have a nice day believing you are not being watched";
+        say = this.t.santaModeDeactivated;
       }
       this.hal.speak(say, this.santaMode).then((e) => {
         this.setListeningStatus(this.santaMode);
-        this.hal.setToast("Listening..");
+        this.hal.setToast(this.t.listening);
       });
     }, 0);
   }
@@ -873,12 +897,12 @@ class SuperDaemon extends SimpleColors {
     this.hal
       .speak(
         this.randomResponse([
-          "I'm here",
-          "Yes?",
-          "What?",
-          "What can I do for you?",
-          "What do you need?",
-          "How can I help?",
+          this.t.imHere,
+          this.t.yes,
+          this.t.what,
+          this.t.whatCanIDo,
+          this.t.whatDoYouNeed,
+          this.t.howCanIHelp,
         ]),
         this.santaMode,
       )
@@ -891,10 +915,7 @@ class SuperDaemon extends SimpleColors {
   }
   stopMerlin(e) {
     if (this.santaMode) {
-      this.hal.speak(
-        "Please disable Santa mode to stop listening",
-        this.santaMode,
-      );
+      this.hal.speak(this.t.disableSantaModeToStop, this.santaMode);
     }
     this.setListeningStatus(false);
   }
@@ -903,10 +924,10 @@ class SuperDaemon extends SimpleColors {
       this.hal
         .speak(
           this.randomResponse([
-            "thanks for stopping by",
-            "See ya",
-            "See you soon",
-            "Till we meet again",
+            this.t.thanksForStopping,
+            this.t.seeYa,
+            this.t.seeYouSoon,
+            this.t.tillWeMeetAgain,
           ]),
           this.santaMode,
         )
@@ -959,11 +980,13 @@ class SuperDaemon extends SimpleColors {
     };
 
     this.voiceCommands["(run) program"] = (response) => {
-      this.commandContextChanged({ detail: { value: "/", label: "program" } });
+      this.commandContextChanged({
+        detail: { value: "/", label: this.t.programModeActivated },
+      });
     };
     this.voiceCommands["developer (mode)"] = (response) => {
       this.commandContextChanged({
-        detail: { value: ">", label: "developer" },
+        detail: { value: ">", label: this.t.developerModeActivated },
       });
     };
     // LAST priority bc it matches ANYTHING, no idea why I need to wait this tho..

@@ -36,8 +36,17 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       voiceSearch: "Voice search",
       filterCommands: "Filter commands",
       commands: "Commands",
+      howMayIHelp: "How may I help you?",
+      slashCommandsActive: "Slash commands active",
+      developerConsoleActive: "Developer console active",
     };
-    this.possibleActions = [];
+    this.registerLocalization({
+      context: this,
+      namespace: "super-daemon",
+      basePath: import.meta.url,
+    });
+    // Initialize with fallback values to prevent undefined during initial render
+    this.possibleActions = ["🔮 Insert blocks", "🕵 Find media 📺"];
   }
   static get properties() {
     return {
@@ -72,7 +81,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       } else {
         // start talking which listeners in super-daemon will activate
         // after the text is spoken to avoid polluting input
-        sdi.hal.speak("How may I help you?", sdi.santaMode).then((e) => {
+        sdi.hal.speak(this.t.howMayIHelp, sdi.santaMode).then((e) => {
           sdi.playSound();
           sdi.listeningForInput = true;
         });
@@ -185,7 +194,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         @focus="${this.fieldFocus}"
         @blur="${this.fieldFocusLoss}"
         .value="${this.value}"
-        label="${this.t.filterCommands}"
+        label="${this.t.filterCommands || "Filter commands"}"
         type="text"
         auto-validate=""
         autofocus
@@ -197,8 +206,8 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
             @click="${this.voiceSearchClick}"
             icon="${this.listeningForInput ? "hax:loading" : "settings-voice"}"
             ?dark="${this.dark}"
-            title="${this.t.voiceSearch}"
-            label="${this.t.voiceSearch}"
+            title="${this.t.voiceSearch || "Voice search"}"
+            label="${this.t.voiceSearch || "Voice search"}"
           ></simple-icon-button-lite>`
         : ``}`;
   }
@@ -226,8 +235,9 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    // Set initial placeholder - will be updated when translations load
     this.shadowRoot.querySelector("#inputfilter").placeholder =
-      this.suggestPossibleAction();
+      this.suggestPossibleAction() || "Type to search...";
   }
 
   updated(changedProperties) {
@@ -242,26 +252,9 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         }),
       );
     }
-    if (changedProperties.has("wand")) {
-      if (!this.wand) {
-        this.possibleActions = ["🔮 Insert blocks", "🕵 Find media 📺"];
-      } else {
-        const sdi = globalThis.SuperDaemonManager.requestAvailability();
-        // open, then present slightly different options for engagement
-        if (sdi.opened) {
-          this.possibleActions = [
-            "🧑 Submit your ideas💡",
-            "📁 Drop files here 📄",
-            "🕵 Type what you want to do",
-          ];
-        } else {
-          this.possibleActions = [
-            `🧙‍♂️ ${sdi.key1} + ${sdi.key2} opens Merlin`,
-            "🔮 Click to do anything!",
-            "📁 Drop files here 📄",
-          ];
-        }
-      }
+    // Update possible actions when wand state changes OR when translations load
+    if (changedProperties.has("wand") || changedProperties.has("t")) {
+      this._updatePossibleActions();
     }
     if (changedProperties.has("droppableType") && this.shadowRoot) {
       this.shadowRoot.querySelector("#inputfilter").placeholder =
@@ -269,6 +262,11 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     }
     if (changedProperties.has("droppable") && !this.droppable) {
       this.dragover = false;
+    }
+    // Update placeholder when translations load
+    if (changedProperties.has("t") && this.shadowRoot) {
+      this.shadowRoot.querySelector("#inputfilter").placeholder =
+        this.suggestPossibleAction();
     }
     if (
       changedProperties.has("value") &&
@@ -302,6 +300,40 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           },
         }),
       );
+    }
+  }
+
+  _updatePossibleActions() {
+    // Only update if translations are available
+    if (!this.t.insertBlocks) return;
+
+    if (!this.wand) {
+      this.possibleActions = [
+        `🔮 ${this.t.insertBlocks}`,
+        `🕵 ${this.t.findMedia} 📺`,
+      ];
+    } else {
+      const sdi = globalThis.SuperDaemonManager.requestAvailability();
+      // open, then present slightly different options for engagement
+      if (sdi.opened) {
+        this.possibleActions = [
+          `🧑 ${this.t.submitIdeas}💡`,
+          `📁 ${this.t.dropFilesHere} 📄`,
+          `🕵 ${this.t.typeWhatYouWant}`,
+        ];
+      } else {
+        this.possibleActions = [
+          `🧙‍♂️ ${sdi.key1} + ${sdi.key2} ${this.t.opensMemoryPalace}`,
+          `🔮 ${this.t.clickToDoAnything}`,
+          `📁 ${this.t.dropFilesHere} 📄`,
+        ];
+      }
+    }
+
+    // Update placeholder after updating possible actions
+    if (this.shadowRoot) {
+      this.shadowRoot.querySelector("#inputfilter").placeholder =
+        this.suggestPossibleAction();
     }
   }
 
@@ -501,9 +533,9 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
   getActiveTitle(context) {
     switch (context) {
       case "/":
-        return this.t.slashCommandsActive;
+        return this.t.slashCommandsActive || "Slash commands active";
       case ">":
-        return this.t.developerConsoleActive;
+        return this.t.developerConsoleActive || "Developer console active";
     }
     return "";
   }

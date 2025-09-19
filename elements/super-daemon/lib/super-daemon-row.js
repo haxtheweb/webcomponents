@@ -3,10 +3,20 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-fields/lib/simple-tag.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
-export class SuperDaemonRow extends SimpleColors {
+export class SuperDaemonRow extends I18NMixin(SimpleColors) {
   constructor() {
     super();
+    this.t = {
+      moreDetails: "More details",
+      details: "Details",
+    };
+    this.registerLocalization({
+      context: this,
+      namespace: "super-daemon",
+      basePath: import.meta.url,
+    });
     this.title = null;
     this.path = null;
     this.icon = null;
@@ -304,7 +314,7 @@ export class SuperDaemonRow extends SimpleColors {
               class="more"
               ?dark="${this.dark}"
               accent-color="${this.accentColor}"
-              label="More details"
+              label="${this.t.moreDetails || "More details"}"
               icon="more-vert"
               aria-controls="details"
               @click="${this.toggleDetailsClick}"
@@ -318,7 +328,7 @@ export class SuperDaemonRow extends SimpleColors {
             ?open="${this.showDetails}"
             @toggle="${this.openChanged}"
           >
-            <summary>Details</summary>
+            <summary>${this.t.details || "Details"}</summary>
             <div>
               <slot></slot>
             </div>

@@ -364,6 +364,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ toggleSantaMode: \"Toggle Santa Mode\", santaModeDescription: \"He sees you when your sleeping, he knows when your awake, and with this command active he is always listening for input ready to respond. He's.. Santa Merlin. Ho..Ho...Ho.\", santaModeActivated: \"Santa mode activated: Watch what you say\", santaModeDeactivated: \"Santa mode deactivated: Have a nice day believing you are not being watched\", disableSantaModeToStop: \"Please disable Santa mode to stop listening\", imHere: \"I'm here\", yes: \"Yes?\", what: \"What?\", whatCanIDo: \"What can I do for you?\", whatDoYouNeed: \"What do you need?\", howCanIHelp: \"How can I help?\", thanksForStopping: \"thanks for stopping by\", seeYa: \"See ya\", seeYouSoon: \"See you soon\", tillWeMeetAgain: \"Till we meet again\", howMayIHelp: \"How may I help you?\", listening: \"Listening..\", programModeActivated: \"program mode activated\", developerModeActivated: \"developer mode activated\", }"
+            },
+            {
+              "kind": "field",
               "name": "toastInstance",
               "default": "SuperDaemonToastInstance"
             },
@@ -858,6 +866,12 @@
               "fieldName": "listeningForInput"
             }
           ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
           "superclass": {
             "name": "SimpleColors",
             "package": "@haxtheweb/simple-colors/simple-colors.js"
@@ -990,6 +1004,14 @@
                   "name": "e"
                 }
               ]
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ moreDetails: \"More details\", details: \"Details\", }"
             },
             {
               "kind": "field",
@@ -1237,6 +1259,12 @@
               "fieldName": "active"
             }
           ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
           "superclass": {
             "name": "SimpleColors",
             "package": "@haxtheweb/simple-colors/simple-colors.js"
@@ -1326,6 +1354,10 @@
                   "text": "*"
                 }
               }
+            },
+            {
+              "kind": "method",
+              "name": "_updatePossibleActions"
             },
             {
               "kind": "method",
@@ -1531,7 +1563,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, voiceSearch: \"Voice search\", filterCommands: \"Filter commands\", commands: \"Commands\", }"
+              "default": "{ ...this.t, voiceSearch: \"Voice search\", filterCommands: \"Filter commands\", commands: \"Commands\", howMayIHelp: \"How may I help you?\", slashCommandsActive: \"Slash commands active\", developerConsoleActive: \"Developer console active\", }"
             },
             {
               "kind": "field",
@@ -1540,7 +1572,7 @@
               "type": {
                 "text": "array"
               },
-              "default": "[]",
+              "default": "[\"🔮 Insert blocks\", \"🕵 Find media 📺\"]",
               "attribute": "possibleActions"
             },
             {
@@ -1623,7 +1655,7 @@
               "type": {
                 "text": "array"
               },
-              "default": "[]",
+              "default": "[\"🔮 Insert blocks\", \"🕵 Find media 📺\"]",
               "fieldName": "possibleActions"
             },
             {
@@ -1777,6 +1809,14 @@
             {
               "kind": "method",
               "name": "hide"
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ saved: \"Saved\", }"
             },
             {
               "kind": "field",
@@ -2026,6 +2066,12 @@
               "fieldName": "eventCallback"
             }
           ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            }
+          ],
           "superclass": {
             "name": "SimpleToastEl",
             "package": "@haxtheweb/simple-toast/lib/simple-toast-el.js"
@@ -2243,7 +2289,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, noResultsForThisTerm: this._defaultTextEmpty, voiceSearch: \"Voice search\", results: \"Results\", loadingResults: \"Loading results\", }"
+              "default": "{ ...this.t, noResultsForThisTerm: this._defaultTextEmpty, voiceSearch: \"Voice search\", results: \"Results\", loadingResults: \"Loading results\", insertBlocks: \"Insert blocks\", findMedia: \"Find media\", submitIdeas: \"Submit your ideas\", dropFilesHere: \"Drop files here\", typeWhatYouWant: \"Type what you want to do\", opensMemoryPalace: \"opens Merlin\", clickToDoAnything: \"Click to do anything!\", }"
             },
             {
               "kind": "field",

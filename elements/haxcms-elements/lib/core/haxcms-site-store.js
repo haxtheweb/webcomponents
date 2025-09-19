@@ -443,6 +443,8 @@ class Store {
     }
     manifest.items = newItems;
     this.manifest = manifest;
+    // Clear style guide cache when manifest changes
+    this.clearStyleGuideCache();
     target.dispatchEvent(
       new CustomEvent("json-outline-schema-changed", {
         bubbles: true,
@@ -1162,10 +1164,31 @@ class Store {
   }
 
   /**
-   * Load style guide content from theme/style-guide.html
+   * Load style guide content from theme/style-guide.html or custom URL
    * @returns {Promise<string>} - The HTML content of the style guide
    */
   async loadStyleGuideContent() {
+    // Create a cache key based on the current site and styleGuide URL
+    const siteId = this.manifest && this.manifest.id ? this.manifest.id : 'default';
+    const styleGuideUrlFromManifest = this.manifest && 
+                                      this.manifest.metadata && 
+                                      this.manifest.metadata.theme && 
+                                      this.manifest.metadata.theme.styleGuide 
+                                      ? this.manifest.metadata.theme.styleGuide 
+                                      : 'default';
+    const cacheKey = `${siteId}-${styleGuideUrlFromManifest}`;
+    
+    // Check if we have cached content for this site/URL combination
+    if (!this._styleGuideCache) {
+      this._styleGuideCache = new Map();
+    }
+    
+    if (this._styleGuideCache.has(cacheKey)) {
+      // Return cached content immediately
+      return this._styleGuideCache.get(cacheKey);
+    }
+
+    // If not cached, fetch and cache the result
     try {
       // Get outlineLocation from site builder if available
       let outlineLocation = "";
@@ -1174,19 +1197,60 @@ class Store {
           HAXcmsStore.storePieces.siteBuilder.outlineLocation || "";
       }
 
-      const url = `${outlineLocation}theme/style-guide.html`;
-      const response = await fetch(url);
+      // Check if there's a custom styleGuide URL in the manifest
+      let styleGuideUrl = "theme/style-guide.html"; // default
+      if (this.manifest && 
+          this.manifest.metadata && 
+          this.manifest.metadata.theme && 
+          this.manifest.metadata.theme.styleGuide) {
+        styleGuideUrl = this.manifest.metadata.theme.styleGuide;
+        // If it's a full URL (http/https), use it directly, otherwise prepend outlineLocation
+        if (!styleGuideUrl.startsWith('http://') && !styleGuideUrl.startsWith('https://')) {
+          styleGuideUrl = `${outlineLocation}${styleGuideUrl}`;
+        }
+      } else {
+        styleGuideUrl = `${outlineLocation}${styleGuideUrl}`;
+      }
+
+      const response = await fetch(styleGuideUrl);
+      let content;
+      
       if (response.ok) {
-        return await response.text();
+        // Validate that the response is HTML content
+        const contentType = response.headers.get('content-type');
+        if (contentType && (contentType.includes('text/html') || contentType.includes('text/plain'))) {
+          content = await response.text();
+        } else {
+          console.warn(`Style guide URL returned non-HTML content type: ${contentType}`);
+          content = this.getDefaultStyleGuideContent();
+        }
       } else if (response.status === 404) {
         // File doesn't exist, return default content
-        return this.getDefaultStyleGuideContent();
+        content = this.getDefaultStyleGuideContent();
       } else {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
+      
+      // Cache the result
+      this._styleGuideCache.set(cacheKey, content);
+      return content;
+      
     } catch (error) {
       console.warn("Failed to load style guide content:", error);
-      return this.getDefaultStyleGuideContent();
+      const defaultContent = this.getDefaultStyleGuideContent();
+      // Cache the default content as well to prevent repeated failures
+      this._styleGuideCache.set(cacheKey, defaultContent);
+      return defaultContent;
+    }
+  }
+
+  /**
+   * Clear the style guide cache
+   * Call this when the manifest changes or when the styleGuide URL is updated
+   */
+  clearStyleGuideCache() {
+    if (this._styleGuideCache) {
+      this._styleGuideCache.clear();
     }
   }
 

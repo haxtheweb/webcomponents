@@ -1271,7 +1271,10 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
       document.body.appendChild(s);
       // give the web components a second to build
       setTimeout(function() {
-        document.querySelector('#loading').classList.add('loaded');
+        var loadingEl = document.querySelector('#loading');
+        if (loadingEl) {
+          loadingEl.classList.add('loaded');
+        }
         setTimeout(function() {
           if (window.HAXCMS.requestAvailability().store.getManifest()) {
             var gaid = window.HAXCMS.requestAvailability().store.getManifest().metadata.site.settings.gaID || null;
@@ -1280,9 +1283,18 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
               s.src = `https://www.googletagmanager.com/gtag/js?id=${gaid}`;
             }
           }
-          document.querySelector('#loading').parentNode.removeChild(document.querySelector('#loading'));
-          document.querySelector('#loadingstyles').parentNode.removeChild(document.querySelector('#loadingstyles'));
-          document.querySelector('#loadingscript').parentNode.removeChild(document.querySelector('#loadingscript'));
+          var loadingEl = document.querySelector('#loading');
+          if (loadingEl && loadingEl.parentNode) {
+            loadingEl.parentNode.removeChild(loadingEl);
+          }
+          var loadingStylesEl = document.querySelector('#loadingstyles');
+          if (loadingStylesEl && loadingStylesEl.parentNode) {
+            loadingStylesEl.parentNode.removeChild(loadingStylesEl);
+          }
+          var loadingScriptEl = document.querySelector('#loadingscript');
+          if (loadingScriptEl && loadingScriptEl.parentNode) {
+            loadingScriptEl.parentNode.removeChild(loadingScriptEl);
+          }
         }, 600);
       }, 100);
     });
@@ -1327,6 +1339,7 @@ window.IntersectionObserverEntry = IntersectionObserverEntry;
       "getSiteFieldsPath": "dist\/dev\/getSiteFieldsPath.json",
       "deleteNodePath": "dist\/dev\/saveNode.json",
       "saveNodePath": "dist\/dev\/saveNode.json",
+      "saveStyleGuidePath": "dist\/dev\/saveStyleGuidePath.json",
       "getUserDataPath": "dist\/dev\/userData.json",
       "login": "dist\/dev\/login.json",
       "refreshUrl": "dist\/dev\/refreshUrl.json",

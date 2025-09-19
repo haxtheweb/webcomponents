@@ -61,7 +61,27 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
     
     // Translations
     this.t.editStyleGuide = "Edit your theme's style guide using the HAX editor";
-    this.loadStyleGuideContent();
+  }
+
+  /**
+   * Get the cached style guide content from the store
+   */
+  getCachedStyleGuideContent() {
+    const siteId = store.manifest && store.manifest.id ? store.manifest.id : 'default';
+    const styleGuideUrlFromManifest = store.manifest && 
+                                      store.manifest.metadata && 
+                                      store.manifest.metadata.theme && 
+                                      store.manifest.metadata.theme.styleGuide 
+                                      ? store.manifest.metadata.theme.styleGuide 
+                                      : 'default';
+    const cacheKey = `${siteId}-${styleGuideUrlFromManifest}`;
+    
+    // Check if content is cached
+    if (store._styleGuideCache && store._styleGuideCache.has(cacheKey)) {
+      return store._styleGuideCache.get(cacheKey);
+    }
+    
+    return null;
   }
 
   /**
@@ -69,7 +89,9 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
    */
   async loadStyleGuideContent() {
     try {
+      // Always get content from store (cached or fresh)
       const content = await store.loadStyleGuideContent();
+      
       this.styleGuideContent = content;
       // Update the store's activeItemContent so HAX can work with it
       store.activeItemContent = content;
@@ -132,19 +154,23 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
 
   connectedCallback() {
     super.connectedCallback();
-    // Load content when connected if not already loaded
-    if (!this.styleGuideContent) {
-      this.loadStyleGuideContent();
-    } else {
-      // If content is already loaded, render it
-      this.renderStyleGuideContent();
-    }
+    
+    // Load content (will use cache if available)
+    this.loadStyleGuideContent();
+    
     // Listen for HAX store ready events to integrate with editor
     globalThis.addEventListener('hax-store-ready', this._handleHaxStoreReady.bind(this));
+    
+    // Find the site builder element and listen for HAX save events on it
+    const siteBuilder = globalThis.document.querySelector('haxcms-site-builder');
+    if (siteBuilder) {
+      siteBuilder.addEventListener('hax-save-node', this._handleHaxSaveNode.bind(this), { signal: this.windowControllers.signal });
+    }
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
+    this.windowControllers.abort();
     globalThis.removeEventListener('hax-store-ready', this._handleHaxStoreReady.bind(this));
   }
 
@@ -167,6 +193,62 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
       if (this.styleGuideContent && haxStore.activeHaxBody) {
         haxStore.activeHaxBody.importContent(this.styleGuideContent);
       }
+    }
+  }
+
+  /**
+   * Handle HAX save node event - intercept and route to style guide endpoint
+   */
+  async _handleHaxSaveNode(e) {
+    // Prevent the default save behavior and stop propagation
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    
+    try {
+      // Get the current HAX content
+      let content = '';
+      if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability()) {
+        let haxStore = globalThis.HaxStore.requestAvailability();
+        if (haxStore.activeHaxBody) {
+          content = haxStore.activeHaxBody.haxToContent();
+        }
+      }
+      
+      // Only proceed if we have content to save
+      if (!content) {
+        console.warn('No content to save from HAX editor');
+        return;
+      }
+      
+      // Update the local content
+      this.styleGuideContent = content;
+      store.activeItemContent = content;
+      
+      // Save using the site editor instance if available
+      if (store.cmsSiteEditor && store.cmsSiteEditor.instance && store.cmsSiteEditor.instance.saveStyleGuide) {
+        store.cmsSiteEditor.instance.saveStyleGuide(content);
+      } else {
+        console.warn('No site editor instance available or saveStyleGuide method not found');
+        // Dispatch an error event
+        globalThis.dispatchEvent(new CustomEvent('hax-save-error', {
+          bubbles: true,
+          detail: {
+            message: 'Style guide save not available - no backend configured'
+          }
+        }));
+      }
+      
+    } catch (error) {
+      console.error('Error saving style guide:', error);
+      
+      // Dispatch an error event
+      globalThis.dispatchEvent(new CustomEvent('hax-save-error', {
+        bubbles: true,
+        detail: {
+          message: 'Failed to save style guide: ' + error.message
+        }
+      }));
     }
   }
 

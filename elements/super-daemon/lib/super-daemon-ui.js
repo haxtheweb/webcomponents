@@ -23,7 +23,19 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       voiceSearch: "Voice search",
       results: "Results",
       loadingResults: "Loading results",
+      insertBlocks: "Insert blocks",
+      findMedia: "Find media",
+      submitIdeas: "Submit your ideas",
+      dropFilesHere: "Drop files here",
+      typeWhatYouWant: "Type what you want to do",
+      opensMemoryPalace: "opens Merlin",
+      clickToDoAnything: "Click to do anything!",
     };
+    this.registerLocalization({
+      context: this,
+      namespace: "super-daemon",
+      basePath: import.meta.url,
+    });
     this.opened = false;
     this.items = [];
     this.mini = false;
@@ -551,11 +563,13 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         @super-daemon-row-selected="${this.itemSelected}"
       >
         ${this.loading
-          ? html`<div class="loading">${this.t.loadingResults}..</div>`
+          ? html`<div class="loading">
+              ${this.t.loadingResults || "Loading results"}..
+            </div>`
           : html`
               ${!this.filtered.length || this.filtered.length === 0
                 ? html`<div class="no-results">
-                    ${this.t.noResultsForThisTerm}
+                    ${this.t.noResultsForThisTerm || "No results for this term"}
                     <div class="slotted"><slot></slot></div>
                   </div> `
                 : html`
@@ -582,7 +596,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
                   `}
             `}
         <div class="results-stats">
-          ${this.filtered.length} / ${this.items.length} ${this.t.results}
+          ${this.filtered.length} / ${this.items.length}
+          ${this.t.results || "Results"}
         </div>
       </div>
       <div id="bottom"></div>

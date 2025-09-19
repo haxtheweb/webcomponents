@@ -160,6 +160,17 @@ class HAXCMSSiteEditor extends LitElement {
         @response="${this._handleUserDataResponse}"
         @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        id="styleguideajax"
+        .url="${this.saveStyleGuidePath}"
+        .method="${this.method}"
+        content-type="application/json"
+        handle-as="json"
+        @response="${this._handleStyleGuideResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
+      ></iron-ajax>
       <h-a-x
         id="hax"
         element-align="left"
@@ -239,6 +250,14 @@ class HAXCMSSiteEditor extends LitElement {
       },
 
       /**
+       * end point for saving style guide
+       */
+      saveStyleGuidePath: {
+        type: String,
+        attribute: "save-style-guide-path",
+      },
+
+      /**
        * appStore object from backend
        */
       appStore: {
@@ -315,6 +334,48 @@ class HAXCMSSiteEditor extends LitElement {
         }),
       );
     }
+  }
+
+  /**
+   * Handle style guide save response
+   */
+  _handleStyleGuideResponse(e) {
+    if (e.detail.response) {
+      store.toast("Style guide saved successfully! Reloading page...", 4000);
+      store.playSound("coin");
+      // Clear style guide cache to ensure fresh content on next load
+      store.clearStyleGuideCache();
+      // Dispatch success event
+      globalThis.dispatchEvent(new CustomEvent('hax-save-success', {
+        bubbles: true,
+        detail: {
+          message: 'Style guide saved successfully'
+        }
+      }));
+      // Reload the page after a short delay to ensure user sees the success message
+      // This is standard practice for configuration-level changes like manifest saves
+      setTimeout(() => {
+        globalThis.location.reload();
+      }, 1000);
+    }
+  }
+
+  /**
+   * Save style guide content (path is hardcoded on backend for security)
+   */
+  saveStyleGuide(content) {
+    if (!this.saveStyleGuidePath) {
+      console.warn('No saveStyleGuidePath configured');
+      return;
+    }
+    
+    const body = {
+      content: content,
+      siteId: store.manifest && store.manifest.id ? store.manifest.id : null
+    };
+    
+    this.shadowRoot.querySelector('#styleguideajax').body = body;
+    this.shadowRoot.querySelector('#styleguideajax').generateRequest();
   }
 
   /**

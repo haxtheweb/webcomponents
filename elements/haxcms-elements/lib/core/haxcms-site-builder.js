@@ -118,10 +118,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    * Get available style guide templates for a given tag name
    * Returns array of template options with id and name for HAX configure forms
    */
-  async getStyleGuideTemplates(tagName) {
+  async getStyleGuideTemplates(tagName, preloadedContent = null) {
     try {
-      // Load style guide content from the store
-      const styleGuideContent = await store.loadStyleGuideContent();
+      // Use preloaded content if provided, otherwise load from store
+      const styleGuideContent = preloadedContent || await store.loadStyleGuideContent();
       if (!styleGuideContent) {
         return [];
       }
@@ -166,10 +166,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    * Apply style guide schema merging to HAX elements
    * Loads style guide content and merges properties into content elements
    */
-  async applyStyleGuide(haxElements) {
+  async applyStyleGuide(haxElements, preloadedContent = null) {
     try {
-      // 1. Load style guide content from the store
-      const styleGuideContent = await store.loadStyleGuideContent();
+      // 1. Use preloaded content if provided, otherwise load from store
+      const styleGuideContent = preloadedContent || await store.loadStyleGuideContent();
       if (!styleGuideContent) {
         return haxElements;
       }
