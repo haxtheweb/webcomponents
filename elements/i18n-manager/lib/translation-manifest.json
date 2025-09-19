@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "generated": "2025-09-19T02:44:19.379Z",
-    "elementsScanned": 219,
-    "elementsWithTranslations": 30,
-    "translationFilesFound": 660,
+    "generated": "2025-09-19T19:01:36.255Z",
+    "elementsScanned": 220,
+    "elementsWithTranslations": 31,
+    "translationFilesFound": 679,
     "languagesSupported": [
       "af",
       "am",
@@ -247,6 +247,45 @@
       "zh",
       "zh_CN",
       "zu"
+    ],
+    "author-card.ar": [
+      "haxProperties"
+    ],
+    "author-card": [
+      "ar",
+      "bn",
+      "en",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "author-card.bn": [
+      "haxProperties"
+    ],
+    "author-card.es": [
+      "haxProperties"
+    ],
+    "author-card.fr": [
+      "haxProperties"
+    ],
+    "author-card.hi": [
+      "haxProperties"
+    ],
+    "author-card.ja": [
+      "haxProperties"
+    ],
+    "author-card.pt": [
+      "haxProperties"
+    ],
+    "author-card.ru": [
+      "haxProperties"
+    ],
+    "author-card.zh": [
+      "haxProperties"
     ],
     "clean-one": [
       "de",

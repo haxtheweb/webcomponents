@@ -199,7 +199,7 @@ describe("MtzFileDownloadBehaviors mixin test", () => {
       href: '',
       download: '',
       target: '',
-      click: () {}
+      click: () => {}
     };
     
     globalThis.document.createElement = () => mockLink;
@@ -220,7 +220,7 @@ describe("MtzFileDownloadBehaviors mixin test", () => {
       href: '',
       download: '',
       target: '',
-      click: () {}
+      click: () => {}
     };
     
     globalThis.document.createElement = () => mockLink;
