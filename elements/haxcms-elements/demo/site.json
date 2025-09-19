@@ -4683,11 +4683,32 @@
       }
     },
     {
+      "id": "item-author-card-test",
+      "indent": 0,
+      "location": "pages/item-author-card-test/index.html",
+      "slug": "author-card-test",
+      "order": 6,
+      "parent": null,
+      "title": "Author Card Test",
+      "description": "Test page for the author-card component with various configurations",
+      "metadata": {
+        "locked": "",
+        "created": "1737298576",
+        "images": [],
+        "videos": [],
+        "updated": 1737298576,
+        "published": "1",
+        "hideInMenu": "",
+        "readtime": "2",
+        "status": ""
+      }
+    },
+    {
       "id": "item-861b84da-33c7-49e8-bf25-7aa8d9206d3b",
       "indent": 0,
       "location": "pages/item-861b84da-33c7-49e8-bf25-7aa8d9206d3b/index.html",
       "slug": "site-things",
-      "order": 6,
+      "order": 7,
       "parent": null,
       "title": "Site things",
       "description": "no one has access to these things",

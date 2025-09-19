@@ -883,6 +883,86 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
   }
 
+  // Generate a slug from title text
+  generateSlugFromTitle(title) {
+    return title
+      .toLowerCase()
+      .split(" ")
+      .join("-")
+      .replace(/[^0-9\-\/a-z]/gi, "");
+  }
+
+  // Create page with title - method called by Merlin programs
+  async createPageWithTitle(title, type) {
+    let order = null;
+    let parent = null;
+    const item = toJS(store.activeItem);
+    
+    if (item) {
+      if (type === "sibling") {
+        parent = item.parent;
+        order = parseInt(item.order) + 1;
+      } else if (type === "child") {
+        parent = item.id;
+        // see if we have a last child of the current item
+        let item2 = toJS(await store.getLastChildItem(item.id));
+        order = 0;
+        if (item2.order) {
+          order = parseInt(item2.order) + 1;
+        }
+      } else if (type === "duplicate") {
+        parent = item.parent;
+        order = parseInt(item.order) + 1;
+      }
+    }
+    
+    // Generate initial slug from title
+    const baseSlug = this.generateSlugFromTitle(title);
+    // Get unique slug name to avoid conflicts
+    const uniqueSlug = store.getUniqueSlugName(baseSlug);
+    
+    const payload = {
+      node: {
+        title: title,
+        location: uniqueSlug,
+      },
+      order: order,
+      parent: parent,
+    };
+    
+    // For duplicate, add the duplicate flag
+    if (type === "duplicate" && item) {
+      payload.node.duplicate = item.id;
+    }
+    
+    // Create the page
+    this.dispatchEvent(
+      new CustomEvent("haxcms-create-node", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          originalTarget: this,
+          values: payload,
+        },
+      })
+    );
+    
+    // Provide user feedback
+    let message = `Page "${title}" created successfully!`;
+    if (type === "child") {
+      message = `Child page "${title}" created successfully!`;
+    } else if (type === "duplicate") {
+      message = `Page "${title}" duplicated successfully!`;
+    }
+    
+    store.playSound("success");
+    HAXStore.toast(message);
+    
+    // Close the daemon after successful creation
+    SuperDaemonInstance.close();
+  }
+
   constructor() {
     super();
     this.__winEvents = {
@@ -938,6 +1018,151 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         >`;
     };
     SuperDaemonInstance.appendContext("CMS");
+    // Enhanced page creation programs with title prompts
+    SuperDaemonInstance.defineOption({
+      title: "Add New Page",
+      icon: "hax:add-page",
+      tags: ["page", "create", "sibling", "CMS"],
+      eventName: "super-daemon-run-program",
+      path: "CMS/action/create/page-with-title",
+      value: {
+        name: "Add New Page",
+        machineName: "add-page-with-title",
+        program: async (input, values) => {
+          // If no input provided, show a prompt item
+          if (!input || input.trim() === "") {
+            return [
+              {
+                title: "📝 Name this page",
+                icon: "hax:add-page",
+                tags: ["prompt"],
+                value: {
+                  mode: "input",
+                  placeholder: "Enter page title and press Enter..."
+                },
+                eventName: "super-daemon-input-prompt",
+                path: "CMS/action/create/page-with-title/input",
+              },
+            ];
+          }
+          
+          // If we have input, show an actionable "Create" item that can be selected
+          const title = input.trim();
+          return [
+            {
+              title: `✅ Create page "${title}"✅`,
+              icon: "hax:add-page",
+              tags: ["create", "execute"],
+              value: {
+                target: this,
+                method: "createPageWithTitle",
+                args: [title, "sibling"]
+              },
+              eventName: "super-daemon-element-method",
+              path: "CMS/action/create/page-execute",
+            },
+          ];
+        },
+      },
+    });
+
+    SuperDaemonInstance.defineOption({
+      title: "Add Child Page",
+      icon: "hax:add-child-page",
+      tags: ["page", "create", "child", "CMS"],
+      eventName: "super-daemon-run-program",
+      path: "CMS/action/create/child-with-title",
+      value: {
+        name: "Add Child Page",
+        machineName: "add-child-page-with-title",
+        program: async (input, values) => {
+          // If no input provided, show a prompt item
+          if (!input || input.trim() === "") {
+            return [
+              {
+                title: "📝 Name this child page",
+                icon: "hax:add-child-page",
+                tags: ["prompt"],
+                value: {
+                  mode: "input",
+                  placeholder: "Enter child page title and press Enter..."
+                },
+                eventName: "super-daemon-input-prompt",
+                path: "CMS/action/create/child-with-title/input",
+              },
+            ];
+          }
+          
+          // If we have input, show an actionable "Create" item that can be selected
+          const title = input.trim();
+          return [
+            {
+              title: `✅ Create child page "${title}"✅`,
+              icon: "hax:add-child-page",
+              tags: ["create", "execute"],
+              value: {
+                target: this,
+                method: "createPageWithTitle",
+                args: [title, "child"]
+              },
+              eventName: "super-daemon-element-method",
+              path: "CMS/action/create/child-execute",
+            },
+          ];
+        },
+      },
+    });
+
+    SuperDaemonInstance.defineOption({
+      title: "Duplicate Page",
+      icon: "hax:duplicate",
+      tags: ["page", "duplicate", "copy", "CMS"],
+      eventName: "super-daemon-run-program",
+      path: "CMS/action/create/duplicate-with-title",
+      value: {
+        name: "Duplicate Page",
+        machineName: "duplicate-page-with-title",
+        program: async (input, values) => {
+          const currentItem = toJS(store.activeItem);
+          const suggestedTitle = currentItem ? currentItem.title + " Copy" : "Page Copy";
+          
+          // If no input provided, show a prompt item
+          if (!input || input.trim() === "") {
+            return [
+              {
+                title: `📝 Name this duplicate of ${currentItem ? currentItem.title : "page"}`,
+                icon: "hax:duplicate",
+                tags: ["prompt"],
+                value: {
+                  mode: "input",
+                  placeholder: `Enter duplicated page title (${suggestedTitle}) and press Enter...`
+                },
+                eventName: "super-daemon-input-prompt",
+                path: "CMS/action/create/duplicate-with-title/input",
+              },
+            ];
+          }
+          
+          // If we have input, show an actionable "Create" item that can be selected
+          const title = input.trim();
+          return [
+            {
+              title: `✅ Duplicate page "${title}"✅`,
+              icon: "hax:duplicate",
+              tags: ["duplicate", "execute"],
+              value: {
+                target: this,
+                method: "createPageWithTitle",
+                args: [title, "duplicate"]
+              },
+              eventName: "super-daemon-element-method",
+              path: "CMS/action/create/duplicate-execute",
+            },
+          ];
+        },
+      },
+    });
+
     SuperDaemonInstance.defineOption({
       title: "Magic File Wand",
       icon: "hax:hax2022",

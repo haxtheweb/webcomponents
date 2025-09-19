@@ -442,3 +442,12 @@ gulp.task("theme-discovery", async () => {
     console.error('❌ Theme discovery failed:', error.message);
   }
 });
+
+gulp.task("hax-elements-discovery", async () => {
+  try {
+    execSync('node scripts/hax-elements-discovery.js', { stdio: 'inherit' });
+    console.log('✅ HAX elements discovery completed successfully');
+  } catch (error) {
+    console.error('❌ HAX elements discovery failed:', error.message);
+  }
+});

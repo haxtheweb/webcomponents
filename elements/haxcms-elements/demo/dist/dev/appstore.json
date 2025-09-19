@@ -660,6 +660,7 @@
     "video-player": "@haxtheweb/video-player/video-player.js",
     "a11y-collapse": "@haxtheweb/a11y-collapse/a11y-collapse.js",
     "accent-card": "@haxtheweb/accent-card/accent-card.js",
+    "author-card": "@haxtheweb/author-card/author-card.js",
     "a11y-gif-player": "@haxtheweb/a11y-gif-player/a11y-gif-player.js",
     "code-sample": "@haxtheweb/code-sample/code-sample.js",
     "ebook-button": "@haxtheweb/course-design/lib/ebook-button.js",

@@ -165,6 +165,12 @@
         "title": "Page theme",
         "description": "Change the theme JUST on this page. Know why you are doing this!",
         "inputMethod": "textfield"
+      },
+      {
+        "property": "author",
+        "title": "Author",
+        "description": "Username of the last person to modify this page",
+        "inputMethod": "textfield"
       }
     ]
   },

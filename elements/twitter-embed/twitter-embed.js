@@ -92,7 +92,7 @@ class TwitterEmbed extends LitElement {
           namespace: `twitter-embed.haxProperties`,
           localesPath:
             new URL(
-              "/locales/twitter-embed.haxProperties.es.json",
+              "./locales/twitter-embed.haxProperties.es.json",
               import.meta.url,
             ).href + "/../",
           

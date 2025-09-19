@@ -1,0 +1,120 @@
+{
+  "api": "1",
+  "canScale": false,
+  "canEditSource": false,
+  "type": "element",
+  "designSystem": {
+    "accent": false,
+    "primary": true,
+    "card": true,
+    "text": true,
+    "designTreatment": true
+  },
+  "gizmo": {
+    "title": "Author Card",
+    "description": "Display author information with photo, bio, and social links",
+    "icon": "social:person",
+    "color": "blue",
+    "tags": [
+      "Content",
+      "Author",
+      "Bio",
+      "Social",
+      "Profile",
+      "Card"
+    ],
+    "handles": [
+      {
+        "type": "image",
+        "source": "image",
+        "title": "name",
+        "caption": "title"
+      }
+    ],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "name",
+        "title": "Author Name",
+        "description": "Full name of the author",
+        "inputMethod": "textfield",
+        "icon": "social:person"
+      },
+      {
+        "property": "image",
+        "title": "Profile Image",
+        "description": "Author profile photo",
+        "inputMethod": "haxupload",
+        "noVoiceRecord": true,
+        "icon": "editor:insert-photo"
+      },
+      {
+        "property": "title",
+        "title": "Job Title",
+        "description": "Author's position or role",
+        "inputMethod": "textfield",
+        "icon": "icons:work"
+      },
+      {
+        "property": "description",
+        "title": "Bio",
+        "description": "Short author biography",
+        "inputMethod": "textarea",
+        "icon": "editor:short-text"
+      },
+      {
+        "property": "profileUrl",
+        "title": "Profile URL",
+        "description": "Link to author's profile page",
+        "inputMethod": "url",
+        "icon": "icons:link"
+      },
+      {
+        "property": "socialLink", 
+        "title": "Social Link",
+        "description": "Link to social media profile",
+        "inputMethod": "url",
+        "icon": "communication:chat"
+      },
+      {
+        "property": "socialHandle",
+        "title": "Social Handle",
+        "description": "Social media handle (e.g., @username)",
+        "inputMethod": "textfield",
+        "icon": "communication:alternate-email"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "dark",
+        "title": "Dark Theme",
+        "description": "Use dark theme styling",
+        "inputMethod": "boolean",
+        "icon": "invert-colors"
+      }
+    ]
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": []
+  },
+  "demoSchema": [
+    {
+      "tag": "author-card",
+      "properties": {
+        "name": "btopro",
+        "title": "Developer & Educator",
+        "description": "btopro is a developer and educator working on HAX and web components.",
+        "image": "https://github.com/btopro.png",
+        "profileUrl": "/u/btopro",
+        "socialLink": "https://x.com/btopro",
+        "socialHandle": "@btopro"
+      },
+      "content": ""
+    }
+  ]
+}

@@ -32,6 +32,7 @@ export class PageBreak extends IntersectionObserverMixin(
     this.accentColor = null;
     this.entityType = "page";
     this.status = "";
+    this.author = null;
     this.t = {
       newPage: "New page",
       pageBreak: "Page break",
@@ -45,7 +46,6 @@ export class PageBreak extends IntersectionObserverMixin(
       context: this,
       localesPath:
         new URL("./locales/page-break.es.json", import.meta.url).href + "/../",
-      
     });
     this.description = null;
     this.hideInMenu = false;
@@ -110,6 +110,7 @@ export class PageBreak extends IntersectionObserverMixin(
       breakType: { type: String, attribute: "break-type" },
       status: { type: String },
       pageType: { type: String, attribute: "page-type" },
+      author: { type: String },
       _haxState: { type: Boolean },
     };
   }
@@ -218,11 +219,46 @@ export class PageBreak extends IntersectionObserverMixin(
       subtree: true,
     });
   }
+  /**
+   * Helper method to get current user from available stores
+   */
+  getCurrentUser() {
+    // Check HAXcms store for user data first
+    if (
+      globalThis.HAXCMS &&
+      globalThis.HAXCMS.requestAvailability().store.userData &&
+      globalThis.HAXCMS.requestAvailability().store.userData.userName
+    ) {
+      return globalThis.HAXCMS.requestAvailability().store.userData.userName;
+    }
+    // Fallback to app-hax store if available
+    else if (
+      globalThis.store &&
+      globalThis.store.user &&
+      globalThis.store.user.name
+    ) {
+      return globalThis.store.user.name;
+    }
+    return null;
+  }
   updated(changedProperties) {
     if (super.updated) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
+      // Auto-update author when content-related properties change
+      // This indicates the page has been modified
+      if (
+        ["title", "description", "tags", "published", "locked"].includes(
+          propName,
+        ) &&
+        oldValue !== undefined
+      ) {
+        const currentUser = this.getCurrentUser();
+        if (currentUser && currentUser !== this.author) {
+          this.author = currentUser;
+        }
+      }
       // @todo noderefs will have a nested object
       // we need to build a non-nested object for the schema
       // which we use to build a string based `thing,stuff,whatever` value
@@ -634,6 +670,19 @@ export class PageBreak extends IntersectionObserverMixin(
           });
           props.settings.developer[index].inputMethod = "select";
           props.settings.developer[index].itemsList = themes;
+        }
+      });
+      // Auto-populate author with current user if available
+      props.settings.developer.forEach((attr, index) => {
+        if (attr.property === "author") {
+          const currentUser = this.getCurrentUser();
+
+          // Set the current user as the default value if we found one and author is empty
+          if (currentUser && !this.author) {
+            this.author = currentUser;
+            // Update the props to show the current value
+            props.settings.developer[index].value = currentUser;
+          }
         }
       });
     }

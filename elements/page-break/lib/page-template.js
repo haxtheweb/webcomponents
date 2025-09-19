@@ -11,7 +11,7 @@ import { generateResourceID } from "@haxtheweb/utils/utils.js";
 /**
  * `page-template`
  * `Template component for style guide functionality`
- * 
+ *
  * @demo demo/index.html
  * @element page-template
  */
@@ -59,8 +59,6 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
           border-radius: var(--ddd-radius-xs);
           z-index: 10;
         }
-
-
 
         .template-header {
           margin-bottom: var(--ddd-spacing-4);
@@ -128,12 +126,12 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
       defaultTemplate: "Default Template",
       namedTemplate: "Named Template",
     };
-    
+
     this.registerLocalization({
       context: this,
-      localesPath: 
-        new URL("../../locales/page-break.es.json", import.meta.url).href + "/../",
-      
+      localesPath:
+        new URL("../../locales/page-break.es.json", import.meta.url).href +
+        "/../",
     });
   }
 
@@ -142,24 +140,24 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
    */
   connectedCallback() {
     super.connectedCallback();
-    
+
     // Auto-generate data-haxsg-id if it doesn't exist
-    if (!this.getAttribute('data-haxsg-id')) {
-      const templateType = this.schema || 'area';
-      const prefix = templateType === 'page' ? 'page' : 
-                     templateType === 'block' ? 'block' : 'template';
-      const uniqueId = `${prefix}-${generateResourceID('').substring(1)}`; // Remove the '#' prefix
-      this.setAttribute('data-haxsg-id', uniqueId);
+    if (!this.getAttribute("data-haxsg-id")) {
+      const templateType = this.schema || "area";
+      const prefix =
+        templateType === "page"
+          ? "page"
+          : templateType === "block"
+            ? "block"
+            : "template";
+      const uniqueId = `${prefix}-${generateResourceID("").substring(1)}`; // Remove the '#' prefix
+      this.setAttribute("data-haxsg-id", uniqueId);
     }
   }
 
   render() {
     return html`
-      ${this.name ? html`
-        <div class="template-label">
-          ${this.name}
-        </div>
-      ` : ""}
+      ${this.name ? html` <div class="template-label">${this.name}</div> ` : ""}
       <div class="template-content">
         <slot></slot>
       </div>
@@ -178,7 +176,8 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
       contentEditable: true,
       gizmo: {
         title: "Page Template",
-        description: "A template component for defining reusable page layouts and styling",
+        description:
+          "A template component for defining reusable page layouts and styling",
         icon: "hax:templates",
         color: "blue",
         groups: ["Other"],
@@ -202,16 +201,17 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
             description: "How this template should be categorized and used",
             inputMethod: "select",
             options: {
-              "block": "Block - Replaces element defaults",
-              "area": "Area - Shows in Templates section",
-              "page": "Page - Shows in Pages section"
+              block: "Block - Replaces element defaults",
+              area: "Area - Shows in Templates section",
+              page: "Page - Shows in Pages section",
             },
             required: true,
           },
           {
             property: "enforceStyles",
             title: "Enforce Template Styles",
-            description: "Apply this template to any matching tag, ignoring the local styles",
+            description:
+              "Apply this template to any matching tag, ignoring the local styles",
             inputMethod: "boolean",
             required: false,
           },
@@ -219,8 +219,9 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
         advanced: [
           {
             slot: "",
-            title: "Template Content", 
-            description: "The elements and content that define this template section",
+            title: "Template Content",
+            description:
+              "The elements and content that define this template section",
             inputMethod: "textarea",
             required: false,
           },
@@ -234,7 +235,8 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
             schema: "area",
             enforceStyles: false,
           },
-          content: "<h2>Template Heading</h2><p>Add your content elements inside this template. This acts as a container that can hold any HAX elements.</p>",
+          content:
+            "<h2>Template Heading</h2><p>Add your content elements inside this template. This acts as a container that can hold any HAX elements.</p>",
         },
       ],
     };

@@ -27,6 +27,11 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "getCurrentUser",
+              "description": "Helper method to get current user from available stores"
+            },
+            {
               "kind": "field",
               "name": "haxProperties",
               "static": true,
@@ -184,6 +189,16 @@
               },
               "default": "\"\"",
               "attribute": "status"
+            },
+            {
+              "kind": "field",
+              "name": "author",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "author"
             },
             {
               "kind": "field",
@@ -574,6 +589,14 @@
               },
               "default": "null",
               "fieldName": "pageType"
+            },
+            {
+              "name": "author",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "author"
             },
             {
               "name": "_haxState",
@@ -1020,6 +1043,138 @@
           "declaration": {
             "name": "PageBreakOutline",
             "module": "lib/page-break-outline.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "lib/page-template.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`page-template`\n`Template component for style guide functionality`",
+          "name": "PageTemplate",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "Implements haxProperties to define HAX editor integration",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "enforceStyles",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether this is the default template",
+              "default": "false",
+              "attribute": "enforce-styles",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "name",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name of the template for identification",
+              "default": "\"\"",
+              "attribute": "name",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "schema",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Schema type defining how this template should be used\nOptions: 'block', 'area', 'page'",
+              "default": "\"area\"",
+              "attribute": "schema",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ pageTemplate: \"Page Template\", templateId: \"Template ID\", defaultTemplate: \"Default Template\", namedTemplate: \"Named Template\", }"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "enforce-styles",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Whether this is the default template",
+              "default": "false",
+              "fieldName": "enforceStyles"
+            },
+            {
+              "name": "name",
+              "type": {
+                "text": "string"
+              },
+              "description": "Name of the template for identification",
+              "default": "\"\"",
+              "fieldName": "name"
+            },
+            {
+              "name": "schema",
+              "type": {
+                "text": "string"
+              },
+              "description": "Schema type defining how this template should be used\nOptions: 'block', 'area', 'page'",
+              "default": "\"area\"",
+              "fieldName": "schema"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
+            {
+              "name": "SchemaBehaviors",
+              "package": "@haxtheweb/schema-behaviors/schema-behaviors.js"
+            }
+          ],
+          "superclass": {
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
+          },
+          "tagName": "page-template",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "PageTemplate",
+          "declaration": {
+            "name": "PageTemplate",
+            "module": "lib/page-template.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "PageTemplate",
+            "module": "lib/page-template.js"
           }
         }
       ]
