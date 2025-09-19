@@ -32,11 +32,6 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
           margin: 0 auto;
         }
 
-        .style-guide-header {
-          margin-bottom: var(--ddd-spacing-6);
-          text-align: center;
-        }
-
         .style-guide-content {
           min-height: 400px;
           padding: var(--ddd-spacing-4);
@@ -60,7 +55,6 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
     this.styleGuideContent = "";
     
     // Translations
-    this.t.editStyleGuide = "Edit your theme's style guide using the HAX editor";
   }
 
   /**
@@ -255,9 +249,6 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
   render() {
     return html`
       <div class="style-guide-container">
-        <header class="style-guide-header">
-          <p>${this.t.editStyleGuide}</p>
-        </header>
         <div class="style-guide-content">
           <slot></slot>
         </div>

@@ -181,12 +181,10 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
         description: "A template component for defining reusable page layouts and styling",
         icon: "hax:templates",
         color: "blue",
-        groups: ["Layout", "Templates"],
+        groups: ["Other"],
         handles: [],
         meta: {
           author: "HAXTheWeb",
-          inlineOnly: false,
-          hiddenFromSearch: false,
         },
       },
       settings: {

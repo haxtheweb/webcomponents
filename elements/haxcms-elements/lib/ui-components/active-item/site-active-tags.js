@@ -142,13 +142,15 @@ class SiteActiveTags extends LitElement {
                 }
               });
             });
-            this._inProgressPageBreak.observe(
-              haxStore.activeHaxBody.querySelector("page-break"),
-              {
-                attributeFilter: ["tags"],
-                attributes: true,
-              },
-            );
+            if (haxStore.activeHaxBody.querySelector("page-break")) {
+              this._inProgressPageBreak.observe(
+                haxStore.activeHaxBody.querySelector("page-break"),
+                {
+                  attributeFilter: ["tags"],
+                  attributes: true,
+                },
+              );
+            }
           }, 0);
         } else {
           this.noFallback = false;

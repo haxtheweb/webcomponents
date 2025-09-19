@@ -130,13 +130,15 @@ class SiteActiveTitle extends LitElement {
                 }
               });
             });
-            this._inProgressPageBreak.observe(
-              haxStore.activeHaxBody.querySelector("page-break"),
-              {
-                attributeFilter: ["title", "page-type", "icon"],
-                attributes: true,
-              },
-            );
+            if (haxStore.activeHaxBody.querySelector("page-break")) {
+              this._inProgressPageBreak.observe(
+                haxStore.activeHaxBody.querySelector("page-break"),
+                {
+                  attributeFilter: ["title", "page-type", "icon"],
+                  attributes: true,
+                },
+              );
+            }
           }, 0);
         } else {
           this.noFallback = false;
