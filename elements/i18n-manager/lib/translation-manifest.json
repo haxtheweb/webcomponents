@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "generated": "2025-09-18T20:48:50.925Z",
+    "generated": "2025-09-19T02:44:19.379Z",
     "elementsScanned": 219,
     "elementsWithTranslations": 30,
-    "translationFilesFound": 649,
+    "translationFilesFound": 660,
     "languagesSupported": [
       "af",
       "am",
@@ -118,18 +118,29 @@
     ],
     "a11y-media-player": [
       "bg",
+      "cy",
       "da",
       "en",
       "es",
       "et",
+      "fa",
       "ga",
+      "ha",
       "hr",
       "is",
+      "ka",
+      "km",
       "lt",
       "lv",
       "mk",
       "mt",
-      "sr"
+      "my",
+      "sk",
+      "sr",
+      "sw",
+      "ta",
+      "te",
+      "yo"
     ],
     "app-hax": [
       "af",

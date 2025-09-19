@@ -1164,8 +1164,14 @@ class Store {
   }
 
   /**
-   * Load style guide content from theme/style-guide.html or custom URL
-   * @returns {Promise<string>} - The HTML content of the style guide
+   * Load style guide content from theme/style-guide.html with caching
+   * 
+   * This method handles the common issue in HAXcms PHP where htaccess rewrites
+   * cause missing style-guide.html files to return the site's index.html instead
+   * of a proper 404. We validate the returned content contains page-template tags
+   * to ensure we're working with actual style guide content.
+   * 
+   * @returns {Promise<string>} The HTML content of the style guide or default content
    */
   async loadStyleGuideContent() {
     // Create a cache key based on the current site and styleGuide URL
@@ -1219,7 +1225,18 @@ class Store {
         // Validate that the response is HTML content
         const contentType = response.headers.get('content-type');
         if (contentType && (contentType.includes('text/html') || contentType.includes('text/plain'))) {
-          content = await response.text();
+          const responseText = await response.text();
+          
+          // Validate that this is actually a style guide by checking for page-template tags
+          // This prevents htaccess redirects from serving the site index when style-guide.html is missing
+          if (responseText && this.isValidStyleGuideContent(responseText)) {
+            content = responseText;
+          } else {
+            console.warn('Style guide URL returned HTML without valid page-template tags - likely htaccess redirect to index. Treating as missing style guide.');
+            content = this.getDefaultStyleGuideContent();
+            // Don't cache the invalid content - let it try again next time in case the issue is resolved
+            return content;
+          }
         } else {
           console.warn(`Style guide URL returned non-HTML content type: ${contentType}`);
           content = this.getDefaultStyleGuideContent();
@@ -1255,6 +1272,42 @@ class Store {
   }
 
   /**
+   * Validate that content is actually a style guide by checking for page-template tags
+   * 
+   * This prevents htaccess redirects from serving the site index when style-guide.html is missing.
+   * In HAXcms PHP, when a file like 'style-guide.html' doesn't exist, the htaccess rewrite rules
+   * often redirect to the site's root index file instead of returning a proper 404. This causes
+   * the site's index.html to be processed as if it were the style guide, leading to theme
+   * element issues and broken styling.
+   * 
+   * @param {string} content - The content to validate
+   * @returns {boolean} - True if content contains valid page-template elements and doesn't appear to be site index
+   */
+  isValidStyleGuideContent(content) {
+    if (!content || typeof content !== 'string') {
+      return false;
+    }
+    
+    // Check for page-template tags (case insensitive)
+    const hasPageTemplate = /<page-template[\s\S]*?>/i.test(content);
+    
+    // Additional validation: ensure it's not just a site index by checking for typical HAXcms site elements
+    // If it contains these, it's likely the site index being served instead of style-guide.html
+    const siteIndexIndicators = [
+      /<haxcms-site-builder/i,
+      /<site-menu/i,
+      /<json-outline-schema/i,
+      /manifest\.json/i,
+      /site\.json/i
+    ];
+    
+    const appearsToBeSiteIndex = siteIndexIndicators.some(regex => regex.test(content));
+    
+    // Valid style guide should have page-template tags and NOT appear to be the site index
+    return hasPageTemplate && !appearsToBeSiteIndex;
+  }
+
+  /**
    * Get default style guide content template
    * @returns {string} - The default HTML content for the style guide
    */
@@ -1265,44 +1318,6 @@ class Store {
 
 <page-template name="Default H2" schema="block" enforce-styles="enforce-styles" data-haxsg-id="header-8a1e05f0-1ab1-8c5e-f81f-ef2cafc290fa">
   <h2 data-primary="11" data-font-size="l" data-font-family="navigation" data-font-weight="light" data-padding="s" data-margin="m" data-text-align="center" data-design-treatment="horz-full">Heading 2</h2>
-</page-template>
-
-<page-template name="Default H3" schema="block" enforce-styles="enforce-styles" data-haxsg-id="header-3b4c05d6-7e8f-9g0h-1i2j-kl3m4n5o6p7q">
-  <h3 data-primary="21" data-font-size="m" data-font-family="navigation" data-font-weight="normal" data-padding="xs" data-margin="s" data-text-align="left" data-design-treatment="bg">Heading 3 Example</h3>
-</page-template>
-
-<page-template name="Default H4" schema="block" enforce-styles="enforce-styles" data-haxsg-id="header-dsfdfs-7e8f-9g0h-1i2j-kl3m4n5o6p7q">
-  <h4 data-primary="21" data-font-size="m" data-font-family="navigation" data-font-weight="normal" data-padding="xs" data-margin="s" data-text-align="left" data-design-treatment="bg">Heading 4 Example</h4>
-</page-template>
-
-<page-template name="Default List" schema="block" enforce-styles="enforce-styles" data-haxsg-id="list-4c5d06e7-8f9g-0h1i-2j3k-lm4n5o6p7q8r">
-  <ul data-padding="s" data-margin="m" data-primary="14">
-    <li>First item</li>
-    <li>Second item</li>
-    <li>Third item</li>
-  </ul>
-</page-template>
-<page-template name="Default Ordered List" schema="block" enforce-styles="enforce-styles" data-haxsg-id="orderedlist-5d6e07f8-9g0h-1i2j-3k4l-mn5o6p7q8r9s">
-  <ol data-margin="m">
-    <li>First step</li>
-    <li>Second step</li>
-    <li>Third step</li>
-  </ol>
-</page-template>
-<page-template name="bill p" schema="page" enforce-styles="" data-haxsg-id="p-fgdfgdgdgd-9g0h-1i2j-3k4l-mn5o6p7q8r9s">
-  <p data-accent="3" data-primary="5" data-font-weight="medium" data-font-family="navigation" data-font-size="l" data-border-radius="md" data-border="lg">THIS IS A P TAG !!!</p>
-  <p data-accent="3" data-primary="5" data-font-weight="medium" data-font-family="navigation" data-font-size="l" data-border-radius="md" data-border="lg">THIS IS A P TAG !!!</p>
-</page-template>
-<page-template name="Default Video" schema="area" data-haxsg-id="video-6e7f08g9-0h1i-2j3k-4l5m-no6p7q8r9s0t">
-  <video-player data-width="50" source="https://www.youtube.com/watch?v=dQw4w9WgXcQ" caption="Example video player" accent-color="blue" data-padding="m" data-margin="l"></video-player>
-</page-template>
-<page-template name="Class video" schema="page" data-haxsg-id="quote-7f8g09h0-1i2j-3k4l-5m6n-op7q8r9s0t1u">
-<grid-plate item-margin="16" item-padding="16" layout="1-1" disable-responsive="">
-  <h3 id="header-a11e7d5c-b0ec-0b3a-eda2-30bca4e4c2b0" slot="col-1">Colun 1</h3>
-  <p slot="col-1">This is a video template!</p>
-  <h3 id="header-91905f70-f8a0-5df3-716d-8dcf1f9ab26c" slot="col-2">Video maaaan</h3>
-  <video-player source="https://www.youtube.com/watch?v=LrS7dqokTLE" data-width="75" data-margin="center" slot="col-2" accent-color="grey" crossorigin="anonymous" sticky-corner="none" resource="#3ef518fe-5254-a689-ab9c-580675b16d99" prefix="oer:http://oerschema.org/ schema:http://schema.org/ dc:http://purl.org/dc/terms/ foaf:http://xmlns.com/foaf/0.1/ cc:http://creativecommons.org/ns# bib:http://bib.schema.org " element-visible="" lang="en" source-type="youtube" sources="[]" source-data="[{&quot;src&quot;:&quot;https://www.youtube.com/embed/LrS7dqokTLE&quot;,&quot;type&quot;:&quot;&quot;}]" tracks="[]"></video-player>
-</grid-plate>
 </page-template>`;
   }
 

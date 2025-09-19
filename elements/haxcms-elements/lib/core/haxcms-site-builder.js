@@ -586,10 +586,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       },
     };
   }
-  _themeNameChanged(newValue) {
+  _themeNameChanged(newValue, oldValue) {
     if (newValue) {
       // drop old theme element if there is one
-      if (store.themeElement) {
+      if (store.themeElement && newValue != oldValue && store.themeElement.tagName.toLowerCase() != newValue) {
         store.themeElement.remove();
       }
       // wipe out what we got
@@ -828,7 +828,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             this.disableFeatures = disableFeatures;
           }
         }
-        if (this.themeData && this.themeData.element !== this.themeName) {
+        if (this.themeData && this.themeData.element !== this.themeName && this.themeData.element != null) {
           this.themeName = this.themeData.element;
         }
         this.__disposer.push(reaction);

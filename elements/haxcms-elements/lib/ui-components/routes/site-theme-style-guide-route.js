@@ -154,12 +154,6 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
     
     // Listen for HAX store ready events to integrate with editor
     globalThis.addEventListener('hax-store-ready', this._handleHaxStoreReady.bind(this));
-    
-    // Find the site builder element and listen for HAX save events on it
-    const siteBuilder = globalThis.document.querySelector('haxcms-site-builder');
-    if (siteBuilder) {
-      siteBuilder.addEventListener('hax-save-node', this._handleHaxSaveNode.bind(this), { signal: this.windowControllers.signal });
-    }
   }
 
   disconnectedCallback() {
@@ -190,61 +184,6 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
     }
   }
 
-  /**
-   * Handle HAX save node event - intercept and route to style guide endpoint
-   */
-  async _handleHaxSaveNode(e) {
-    // Prevent the default save behavior and stop propagation
-    e.preventDefault();
-    e.stopPropagation();
-    e.stopImmediatePropagation();
-    
-    try {
-      // Get the current HAX content
-      let content = '';
-      if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability()) {
-        let haxStore = globalThis.HaxStore.requestAvailability();
-        if (haxStore.activeHaxBody) {
-          content = haxStore.activeHaxBody.haxToContent();
-        }
-      }
-      
-      // Only proceed if we have content to save
-      if (!content) {
-        console.warn('No content to save from HAX editor');
-        return;
-      }
-      
-      // Update the local content
-      this.styleGuideContent = content;
-      store.activeItemContent = content;
-      
-      // Save using the site editor instance if available
-      if (store.cmsSiteEditor && store.cmsSiteEditor.instance && store.cmsSiteEditor.instance.saveStyleGuide) {
-        store.cmsSiteEditor.instance.saveStyleGuide(content);
-      } else {
-        console.warn('No site editor instance available or saveStyleGuide method not found');
-        // Dispatch an error event
-        globalThis.dispatchEvent(new CustomEvent('hax-save-error', {
-          bubbles: true,
-          detail: {
-            message: 'Style guide save not available - no backend configured'
-          }
-        }));
-      }
-      
-    } catch (error) {
-      console.error('Error saving style guide:', error);
-      
-      // Dispatch an error event
-      globalThis.dispatchEvent(new CustomEvent('hax-save-error', {
-        bubbles: true,
-        detail: {
-          message: 'Failed to save style guide: ' + error.message
-        }
-      }));
-    }
-  }
 
   render() {
     return html`
