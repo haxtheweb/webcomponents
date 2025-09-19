@@ -314,6 +314,16 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           --haxcms-site-transition: 0.3s all ease-in-out;
         }
 
+        :host([edit-mode]) {
+          /* react to the screen shifting left to right on edit mode w/ tray direction */
+          margin: var(
+            --hax-tray-element-align-margin,
+            0 0 0
+              calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width))
+          );
+          transition: margin 0.6s ease-in-out;
+        }
+
         :host([site-theme="earth"]) {
           --haxcms-site-theme-color-1: var(--ddd-primary-17);
           --haxcms-site-theme-color-2: var(--ddd-primary-18);
