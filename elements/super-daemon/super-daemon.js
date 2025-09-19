@@ -184,6 +184,12 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     globalThis.addEventListener("super-daemon-close", this.close.bind(this), {
       signal: this.windowControllers.signal,
     });
+
+    globalThis.addEventListener(
+      "super-daemon-program-enter",
+      this.handleProgramEnter.bind(this),
+      { signal: this.windowControllers.signal },
+    );
   }
   disconnectedCallback() {
     this.windowControllers.abort();
@@ -303,6 +309,26 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           view: window,
         }),
       );
+    }
+  }
+
+  // handle Enter key press in programs when no filtered results
+  handleProgramEnter(e) {
+    if (e.detail && e.detail.programName && e.detail.input) {
+      const programName = e.detail.programName;
+      const input = e.detail.input;
+
+      // Special handling for the create-page program
+      if (programName === "create-page") {
+        // Find the site editor UI to call createPageWithTitle
+        const siteEditorUI = globalThis.document.querySelector(
+          "haxcms-site-editor-ui",
+        );
+        if (siteEditorUI && siteEditorUI.createPageWithTitle) {
+          // Create page as sibling by default when Enter is pressed
+          siteEditorUI.createPageWithTitle(input, "sibling");
+        }
+      }
     }
   }
   // take in via event

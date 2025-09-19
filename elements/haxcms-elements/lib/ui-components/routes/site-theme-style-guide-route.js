@@ -36,7 +36,7 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
           min-height: 400px;
           padding: var(--ddd-spacing-4);
         }
-        
+
         .style-guide-editor {
           min-height: 400px;
           border: 1px solid var(--ddd-theme-default-limestoneGray);
@@ -53,7 +53,7 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
     this.windowControllers = new AbortController();
     this.HAXCMSI18NMixinBase = "../../../";
     this.styleGuideContent = "";
-    
+
     // Translations
   }
 
@@ -61,20 +61,22 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
    * Get the cached style guide content from the store
    */
   getCachedStyleGuideContent() {
-    const siteId = store.manifest && store.manifest.id ? store.manifest.id : 'default';
-    const styleGuideUrlFromManifest = store.manifest && 
-                                      store.manifest.metadata && 
-                                      store.manifest.metadata.theme && 
-                                      store.manifest.metadata.theme.styleGuide 
-                                      ? store.manifest.metadata.theme.styleGuide 
-                                      : 'default';
+    const siteId =
+      store.manifest && store.manifest.id ? store.manifest.id : "default";
+    const styleGuideUrlFromManifest =
+      store.manifest &&
+      store.manifest.metadata &&
+      store.manifest.metadata.theme &&
+      store.manifest.metadata.theme.styleGuide
+        ? store.manifest.metadata.theme.styleGuide
+        : "default";
     const cacheKey = `${siteId}-${styleGuideUrlFromManifest}`;
-    
+
     // Check if content is cached
     if (store._styleGuideCache && store._styleGuideCache.has(cacheKey)) {
       return store._styleGuideCache.get(cacheKey);
     }
-    
+
     return null;
   }
 
@@ -85,7 +87,7 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
     try {
       // Always get content from store (cached or fresh)
       const content = await store.loadStyleGuideContent();
-      
+
       this.styleGuideContent = content;
       // Update the store's activeItemContent so HAX can work with it
       store.activeItemContent = content;
@@ -111,7 +113,7 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
   renderStyleGuideContent() {
     if (this.styleGuideContent && this.shadowRoot) {
       // Create a temporary div to parse the HTML
-      const tempDiv = globalThis.document.createElement('div');
+      const tempDiv = globalThis.document.createElement("div");
       tempDiv.innerHTML = this.styleGuideContent;
       // Clear existing light DOM content first
       while (this.firstChild) {
@@ -141,25 +143,31 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
   updated(changedProperties) {
     super.updated && super.updated(changedProperties);
     // If styleGuideContent changed, re-render it
-    if (changedProperties.has('styleGuideContent') && this.styleGuideContent) {
+    if (changedProperties.has("styleGuideContent") && this.styleGuideContent) {
       this.renderStyleGuideContent();
     }
   }
 
   connectedCallback() {
     super.connectedCallback();
-    
+
     // Load content (will use cache if available)
     this.loadStyleGuideContent();
-    
+
     // Listen for HAX store ready events to integrate with editor
-    globalThis.addEventListener('hax-store-ready', this._handleHaxStoreReady.bind(this));
+    globalThis.addEventListener(
+      "hax-store-ready",
+      this._handleHaxStoreReady.bind(this),
+    );
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
     this.windowControllers.abort();
-    globalThis.removeEventListener('hax-store-ready', this._handleHaxStoreReady.bind(this));
+    globalThis.removeEventListener(
+      "hax-store-ready",
+      this._handleHaxStoreReady.bind(this),
+    );
   }
 
   /**
@@ -168,22 +176,21 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
   _handleHaxStoreReady(e) {
     if (globalThis.HaxStore && globalThis.HaxStore.requestAvailability()) {
       let haxStore = globalThis.HaxStore.requestAvailability();
-      
+
       // Register page-template element for HAX editor if not already registered
-      if (typeof haxStore.elementList['page-template'] === 'undefined') {
+      if (typeof haxStore.elementList["page-template"] === "undefined") {
         // Create page-template element to trigger HAX registration
-        let el = globalThis.document.createElement('page-template');
+        let el = globalThis.document.createElement("page-template");
         // Ensure the element gets added to the autoloader to register its HAX properties
         haxStore.haxAutoloader.appendChild(el);
       }
-      
+
       // When HAX is ready and we have content, import it
       if (this.styleGuideContent && haxStore.activeHaxBody) {
         haxStore.activeHaxBody.importContent(this.styleGuideContent);
       }
     }
   }
-
 
   render() {
     return html`
@@ -205,4 +212,7 @@ export class SiteThemeStyleGuideRoute extends HAXCMSI18NMixin(DDD) {
   }
 }
 
-globalThis.customElements.define(SiteThemeStyleGuideRoute.tag, SiteThemeStyleGuideRoute);
+globalThis.customElements.define(
+  SiteThemeStyleGuideRoute.tag,
+  SiteThemeStyleGuideRoute,
+);

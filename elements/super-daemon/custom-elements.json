@@ -87,6 +87,15 @@
             },
             {
               "kind": "method",
+              "name": "handleProgramEnter",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "defineOptionEvent",
               "parameters": [
                 {
@@ -2440,6 +2449,12 @@
             },
             {
               "name": "like-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "super-daemon-program-enter",
               "type": {
                 "text": "CustomEvent"
               }

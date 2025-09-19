@@ -238,7 +238,6 @@ class HAXCMSSiteEditor extends LitElement {
         attribute: "save-outline-path",
       },
 
-
       /**
        * appStore object from backend
        */
@@ -317,8 +316,6 @@ class HAXCMSSiteEditor extends LitElement {
       );
     }
   }
-
-
 
   /**
    * Handle the last error rolling in

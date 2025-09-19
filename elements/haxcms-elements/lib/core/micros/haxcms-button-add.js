@@ -47,6 +47,7 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
       autoEdit: { type: Boolean, attribute: "auto-edit" },
       actionId: { type: String, attribute: "action-id" },
       type: { type: String },
+      merlin: { type: Boolean, reflect: true },
     };
   }
 
@@ -101,6 +102,24 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
 
   async HAXCMSButtonClick() {
     store.playSound("click");
+
+    // If merlin flag is set, invoke the unified page creation program in mini-Merlin mode
+    if (this.merlin) {
+      const SuperDaemonInstance =
+        globalThis.SuperDaemonManager.requestAvailability();
+
+      // Use waveWand for proper mini-Merlin invocation like drag/drop does
+      SuperDaemonInstance.waveWand([
+        "", // no initial search term
+        "/", // program context
+        {}, // no initial values
+        "create-page", // unified program machine name
+        "Create Page", // program display name
+        "", // no initial search
+      ]);
+      return;
+    }
+    // Original button behavior when merlin flag is not set
     let order = null;
     let title = this.t.newPage;
     let parent = null;

@@ -123,7 +123,7 @@ const HAXCMSTheme = function (SuperClass) {
       if (name == "home") {
         // if we are on the homepage then load the configured home page or first item
         let homeItem = null;
-        
+
         // Check if there's a configured homePageId in the manifest
         const manifest = store.manifest;
         if (
@@ -137,7 +137,7 @@ const HAXCMSTheme = function (SuperClass) {
           homeItem = store.routerManifest.items.find(
             (item) => item.id === manifest.metadata.site.homePageId,
           );
-          
+
           // Verify the home page exists and is valid
           if (
             homeItem &&
@@ -152,25 +152,25 @@ const HAXCMSTheme = function (SuperClass) {
               !store.isLoggedIn
             ) {
               console.warn(
-                "Configured home page is not published, falling back to first page"
+                "Configured home page is not published, falling back to first page",
               );
               homeItem = null;
             }
           } else {
             console.warn(
-              "Configured home page ID does not exist in manifest, falling back to first page"
+              "Configured home page ID does not exist in manifest, falling back to first page",
             );
             homeItem = null;
           }
         }
-        
+
         // Fall back to first item if no home page configured or found
         if (!homeItem) {
           homeItem = store.routerManifest.items.find(
             (i) => typeof i.id !== "undefined",
           );
         }
-        
+
         if (homeItem) {
           store.activeId = homeItem.id;
         }

@@ -89,8 +89,7 @@ class Store {
       random: {},
       home: {},
       "theme/style-guide": {
-        callback: () => {
-        },
+        callback: () => {},
         useHaxEditor: true,
       },
     };
@@ -1165,30 +1164,32 @@ class Store {
 
   /**
    * Load style guide content from theme/style-guide.html with caching
-   * 
+   *
    * This method handles the common issue in HAXcms PHP where htaccess rewrites
    * cause missing style-guide.html files to return the site's index.html instead
    * of a proper 404. We validate the returned content contains page-template tags
    * to ensure we're working with actual style guide content.
-   * 
+   *
    * @returns {Promise<string>} The HTML content of the style guide or default content
    */
   async loadStyleGuideContent() {
     // Create a cache key based on the current site and styleGuide URL
-    const siteId = this.manifest && this.manifest.id ? this.manifest.id : 'default';
-    const styleGuideUrlFromManifest = this.manifest && 
-                                      this.manifest.metadata && 
-                                      this.manifest.metadata.theme && 
-                                      this.manifest.metadata.theme.styleGuide 
-                                      ? this.manifest.metadata.theme.styleGuide 
-                                      : 'default';
+    const siteId =
+      this.manifest && this.manifest.id ? this.manifest.id : "default";
+    const styleGuideUrlFromManifest =
+      this.manifest &&
+      this.manifest.metadata &&
+      this.manifest.metadata.theme &&
+      this.manifest.metadata.theme.styleGuide
+        ? this.manifest.metadata.theme.styleGuide
+        : "default";
     const cacheKey = `${siteId}-${styleGuideUrlFromManifest}`;
-    
+
     // Check if we have cached content for this site/URL combination
     if (!this._styleGuideCache) {
       this._styleGuideCache = new Map();
     }
-    
+
     if (this._styleGuideCache.has(cacheKey)) {
       // Return cached content immediately
       return this._styleGuideCache.get(cacheKey);
@@ -1205,13 +1206,18 @@ class Store {
 
       // Check if there's a custom styleGuide URL in the manifest
       let styleGuideUrl = "theme/style-guide.html"; // default
-      if (this.manifest && 
-          this.manifest.metadata && 
-          this.manifest.metadata.theme && 
-          this.manifest.metadata.theme.styleGuide) {
+      if (
+        this.manifest &&
+        this.manifest.metadata &&
+        this.manifest.metadata.theme &&
+        this.manifest.metadata.theme.styleGuide
+      ) {
         styleGuideUrl = this.manifest.metadata.theme.styleGuide;
         // If it's a full URL (http/https), use it directly, otherwise prepend outlineLocation
-        if (!styleGuideUrl.startsWith('http://') && !styleGuideUrl.startsWith('https://')) {
+        if (
+          !styleGuideUrl.startsWith("http://") &&
+          !styleGuideUrl.startsWith("https://")
+        ) {
           styleGuideUrl = `${outlineLocation}${styleGuideUrl}`;
         }
       } else {
@@ -1220,25 +1226,33 @@ class Store {
 
       const response = await fetch(styleGuideUrl);
       let content;
-      
+
       if (response.ok) {
         // Validate that the response is HTML content
-        const contentType = response.headers.get('content-type');
-        if (contentType && (contentType.includes('text/html') || contentType.includes('text/plain'))) {
+        const contentType = response.headers.get("content-type");
+        if (
+          contentType &&
+          (contentType.includes("text/html") ||
+            contentType.includes("text/plain"))
+        ) {
           const responseText = await response.text();
-          
+
           // Validate that this is actually a style guide by checking for page-template tags
           // This prevents htaccess redirects from serving the site index when style-guide.html is missing
           if (responseText && this.isValidStyleGuideContent(responseText)) {
             content = responseText;
           } else {
-            console.warn('Style guide URL returned HTML without valid page-template tags - likely htaccess redirect to index. Treating as missing style guide.');
+            console.warn(
+              "Style guide URL returned HTML without valid page-template tags - likely htaccess redirect to index. Treating as missing style guide.",
+            );
             content = this.getDefaultStyleGuideContent();
             // Don't cache the invalid content - let it try again next time in case the issue is resolved
             return content;
           }
         } else {
-          console.warn(`Style guide URL returned non-HTML content type: ${contentType}`);
+          console.warn(
+            `Style guide URL returned non-HTML content type: ${contentType}`,
+          );
           content = this.getDefaultStyleGuideContent();
         }
       } else if (response.status === 404) {
@@ -1247,11 +1261,10 @@ class Store {
       } else {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
-      
+
       // Cache the result
       this._styleGuideCache.set(cacheKey, content);
       return content;
-      
     } catch (error) {
       console.warn("Failed to load style guide content:", error);
       const defaultContent = this.getDefaultStyleGuideContent();
@@ -1273,24 +1286,24 @@ class Store {
 
   /**
    * Validate that content is actually a style guide by checking for page-template tags
-   * 
+   *
    * This prevents htaccess redirects from serving the site index when style-guide.html is missing.
    * In HAXcms PHP, when a file like 'style-guide.html' doesn't exist, the htaccess rewrite rules
    * often redirect to the site's root index file instead of returning a proper 404. This causes
    * the site's index.html to be processed as if it were the style guide, leading to theme
    * element issues and broken styling.
-   * 
+   *
    * @param {string} content - The content to validate
    * @returns {boolean} - True if content contains valid page-template elements and doesn't appear to be site index
    */
   isValidStyleGuideContent(content) {
-    if (!content || typeof content !== 'string') {
+    if (!content || typeof content !== "string") {
       return false;
     }
-    
+
     // Check for page-template tags (case insensitive)
     const hasPageTemplate = /<page-template[\s\S]*?>/i.test(content);
-    
+
     // Additional validation: ensure it's not just a site index by checking for typical HAXcms site elements
     // If it contains these, it's likely the site index being served instead of style-guide.html
     const siteIndexIndicators = [
@@ -1298,11 +1311,13 @@ class Store {
       /<site-menu/i,
       /<json-outline-schema/i,
       /manifest\.json/i,
-      /site\.json/i
+      /site\.json/i,
     ];
-    
-    const appearsToBeSiteIndex = siteIndexIndicators.some(regex => regex.test(content));
-    
+
+    const appearsToBeSiteIndex = siteIndexIndicators.some((regex) =>
+      regex.test(content),
+    );
+
     // Valid style guide should have page-template tags and NOT appear to be the site index
     return hasPageTemplate && !appearsToBeSiteIndex;
   }
@@ -1385,7 +1400,11 @@ class Store {
   // check if the current route supports HAX editing
   currentRouteSupportsHaxEditor() {
     // If we have an activeItem and it's not an internal route, it supports editing
-    if (this.activeItem && this.activeItem.id && !this.activeItem._internalRoute) {
+    if (
+      this.activeItem &&
+      this.activeItem.id &&
+      !this.activeItem._internalRoute
+    ) {
       return true;
     }
     // If we're on an internal route, check if it has useHaxEditor set to true
@@ -1515,7 +1534,7 @@ class HAXCMSSiteStore extends HTMLElement {
           // Check if we're on home route and should use configured home page
           const routeName = store.location.route.name;
           let homeItem = null;
-          
+
           if (routeName === "home") {
             // Check if there's a configured homePageId in the manifest
             const manifest = store.manifest;
@@ -1530,12 +1549,9 @@ class HAXCMSSiteStore extends HTMLElement {
               homeItem = store.manifest.items.find(
                 (item) => item.id === manifest.metadata.site.homePageId,
               );
-              
+
               // Verify the home page exists and is valid
-              if (
-                homeItem &&
-                !homeItem._internalRoute
-              ) {
+              if (homeItem && !homeItem._internalRoute) {
                 // Verify page is published (if user is not logged in)
                 if (
                   homeItem.metadata &&
@@ -1543,26 +1559,26 @@ class HAXCMSSiteStore extends HTMLElement {
                   !store.isLoggedIn
                 ) {
                   console.warn(
-                    "Configured home page is not published, falling back to first page"
+                    "Configured home page is not published, falling back to first page",
                   );
                   homeItem = null;
                 }
               } else {
                 console.warn(
-                  "Configured home page ID does not exist in manifest, falling back to first page"
+                  "Configured home page ID does not exist in manifest, falling back to first page",
                 );
                 homeItem = null;
               }
             }
           }
-          
+
           // Fall back to first item if no home page configured or found
           if (!homeItem) {
             homeItem = store.manifest.items.find(
               (i) => typeof i.id !== "undefined",
             );
           }
-          
+
           if (homeItem) {
             store.activeId = homeItem.id;
           }

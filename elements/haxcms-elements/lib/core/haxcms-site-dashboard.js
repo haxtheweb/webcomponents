@@ -250,7 +250,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
       const siteProperties = fields
         .find((item) => item.property === "manifest")
         .properties.find((item2) => item2.property === "site");
-      
+
       if (siteProperties && siteProperties.properties) {
         const homepageField = siteProperties.properties.find(
           (item) => item.property === "manifest-metadata-site-homePageId",
@@ -258,7 +258,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
         if (homepageField) {
           // Convert itemsList format to options format for select field
           const options = {
-            "" : "-- default to first page --",
+            "": "-- default to first page --",
           };
           items.forEach((item) => {
             options[item.value] = item.text;

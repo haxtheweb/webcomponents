@@ -520,7 +520,7 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
         description: "Display a random top-level element from a selected page",
         icon: "icons:shuffle",
         color: "purple",
-        tags: ["Site", "Content", "Random", "Page"],
+        tags: ["Other"],
         handles: [],
         meta: {
           author: "HAXcms",

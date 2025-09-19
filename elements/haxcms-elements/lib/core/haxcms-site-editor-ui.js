@@ -897,7 +897,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     let order = null;
     let parent = null;
     const item = toJS(store.activeItem);
-    
+
     if (item) {
       if (type === "sibling") {
         parent = item.parent;
@@ -915,12 +915,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         order = parseInt(item.order) + 1;
       }
     }
-    
+
     // Generate initial slug from title
     const baseSlug = this.generateSlugFromTitle(title);
     // Get unique slug name to avoid conflicts
     const uniqueSlug = store.getUniqueSlugName(baseSlug);
-    
+
     const payload = {
       node: {
         title: title,
@@ -929,12 +929,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       order: order,
       parent: parent,
     };
-    
+
     // For duplicate, add the duplicate flag
     if (type === "duplicate" && item) {
       payload.node.duplicate = item.id;
     }
-    
+
     // Create the page
     this.dispatchEvent(
       new CustomEvent("haxcms-create-node", {
@@ -945,9 +945,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           originalTarget: this,
           values: payload,
         },
-      })
+      }),
     );
-    
+
     // Provide user feedback
     let message = `Page "${title}" created successfully!`;
     if (type === "child") {
@@ -955,10 +955,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     } else if (type === "duplicate") {
       message = `Page "${title}" duplicated successfully!`;
     }
-    
+
     store.playSound("success");
     HAXStore.toast(message);
-    
+
     // Close the daemon after successful creation
     SuperDaemonInstance.close();
   }
@@ -1018,145 +1018,107 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         >`;
     };
     SuperDaemonInstance.appendContext("CMS");
-    // Enhanced page creation programs with title prompts
+    // Unified page creation program
     SuperDaemonInstance.defineOption({
-      title: "Add New Page",
+      title: "Create Page",
       icon: "hax:add-page",
-      tags: ["page", "create", "sibling", "CMS"],
+      tags: ["page", "create", "CMS"],
       eventName: "super-daemon-run-program",
-      path: "CMS/action/create/page-with-title",
+      path: "CMS/action/create/page",
       value: {
-        name: "Add New Page",
-        machineName: "add-page-with-title",
+        name: "create-page",
+        machineName: "create-page",
         program: async (input, values) => {
-          // If no input provided, show a prompt item
-          if (!input || input.trim() === "") {
-            return [
-              {
-                title: "📝 Name this page",
-                icon: "hax:add-page",
-                tags: ["prompt"],
-                value: {
-                  mode: "input",
-                  placeholder: "Enter page title and press Enter..."
-                },
-                eventName: "super-daemon-input-prompt",
-                path: "CMS/action/create/page-with-title/input",
-              },
-            ];
-          }
-          
-          // If we have input, show an actionable "Create" item that can be selected
-          const title = input.trim();
-          return [
-            {
-              title: `✅ Create page "${title}"✅`,
-              icon: "hax:add-page",
-              tags: ["create", "execute"],
-              value: {
-                target: this,
-                method: "createPageWithTitle",
-                args: [title, "sibling"]
-              },
-              eventName: "super-daemon-element-method",
-              path: "CMS/action/create/page-execute",
-            },
-          ];
-        },
-      },
-    });
-
-    SuperDaemonInstance.defineOption({
-      title: "Add Child Page",
-      icon: "hax:add-child-page",
-      tags: ["page", "create", "child", "CMS"],
-      eventName: "super-daemon-run-program",
-      path: "CMS/action/create/child-with-title",
-      value: {
-        name: "Add Child Page",
-        machineName: "add-child-page-with-title",
-        program: async (input, values) => {
-          // If no input provided, show a prompt item
-          if (!input || input.trim() === "") {
-            return [
-              {
-                title: "📝 Name this child page",
-                icon: "hax:add-child-page",
-                tags: ["prompt"],
-                value: {
-                  mode: "input",
-                  placeholder: "Enter child page title and press Enter..."
-                },
-                eventName: "super-daemon-input-prompt",
-                path: "CMS/action/create/child-with-title/input",
-              },
-            ];
-          }
-          
-          // If we have input, show an actionable "Create" item that can be selected
-          const title = input.trim();
-          return [
-            {
-              title: `✅ Create child page "${title}"✅`,
-              icon: "hax:add-child-page",
-              tags: ["create", "execute"],
-              value: {
-                target: this,
-                method: "createPageWithTitle",
-                args: [title, "child"]
-              },
-              eventName: "super-daemon-element-method",
-              path: "CMS/action/create/child-execute",
-            },
-          ];
-        },
-      },
-    });
-
-    SuperDaemonInstance.defineOption({
-      title: "Duplicate Page",
-      icon: "hax:duplicate",
-      tags: ["page", "duplicate", "copy", "CMS"],
-      eventName: "super-daemon-run-program",
-      path: "CMS/action/create/duplicate-with-title",
-      value: {
-        name: "Duplicate Page",
-        machineName: "duplicate-page-with-title",
-        program: async (input, values) => {
+          // Get reference to site editor UI regardless of how program was accessed
+          const siteEditorUI =
+            globalThis.document.querySelector("haxcms-site-editor-ui") || this;
           const currentItem = toJS(store.activeItem);
-          const suggestedTitle = currentItem ? currentItem.title + " Copy" : "Page Copy";
-          
-          // If no input provided, show a prompt item
+
+          // If no input provided, show the page creation options
           if (!input || input.trim() === "") {
             return [
               {
-                title: `📝 Name this duplicate of ${currentItem ? currentItem.title : "page"}`,
-                icon: "hax:duplicate",
-                tags: ["prompt"],
+                title: "📄 New page (sibling)",
+                icon: "hax:add-page",
+                tags: ["page", "sibling", "new"],
                 value: {
-                  mode: "input",
-                  placeholder: `Enter duplicated page title (${suggestedTitle}) and press Enter...`
+                  target: siteEditorUI,
+                  method: "createPageWithTitle",
+                  args: ["New page", "sibling"],
                 },
-                eventName: "super-daemon-input-prompt",
-                path: "CMS/action/create/duplicate-with-title/input",
+                eventName: "super-daemon-element-method",
+                path: "CMS/action/create/page/sibling",
+              },
+              {
+                title: "👶 New child page",
+                icon: "hax:add-child-page",
+                tags: ["page", "child", "new"],
+                value: {
+                  target: siteEditorUI,
+                  method: "createPageWithTitle",
+                  args: ["New child page", "child"],
+                },
+                eventName: "super-daemon-element-method",
+                path: "CMS/action/create/page/child",
+              },
+              {
+                title: `📋 Duplicate "${currentItem ? currentItem.title : "current page"}" `,
+                icon: "hax:duplicate",
+                tags: ["page", "duplicate", "copy"],
+                value: {
+                  target: siteEditorUI,
+                  method: "createPageWithTitle",
+                  args: [
+                    currentItem ? currentItem.title + " Copy" : "Page Copy",
+                    "duplicate",
+                  ],
+                },
+                eventName: "super-daemon-element-method",
+                path: "CMS/action/create/page/duplicate",
               },
             ];
           }
-          
-          // If we have input, show an actionable "Create" item that can be selected
+
           const title = input.trim();
+
+          // While typing, show creation options with the typed title
+          // These can be clicked, but Enter key will default to sibling creation
           return [
             {
-              title: `✅ Duplicate page "${title}"✅`,
-              icon: "hax:duplicate",
-              tags: ["duplicate", "execute"],
+              title: `📄 Create page "${title}" `,
+              icon: "hax:add-page",
+              tags: ["page", "sibling", "create"],
               value: {
-                target: this,
+                target: siteEditorUI,
                 method: "createPageWithTitle",
-                args: [title, "duplicate"]
+                args: [title, "sibling"],
               },
               eventName: "super-daemon-element-method",
-              path: "CMS/action/create/duplicate-execute",
+              path: "CMS/action/create/page/sibling",
+            },
+            {
+              title: `👶 Create child page "${title}" `,
+              icon: "hax:add-child-page",
+              tags: ["page", "child", "create"],
+              value: {
+                target: siteEditorUI,
+                method: "createPageWithTitle",
+                args: [title, "child"],
+              },
+              eventName: "super-daemon-element-method",
+              path: "CMS/action/create/page/child",
+            },
+            {
+              title: `📋 Duplicate with title "${title}" `,
+              icon: "hax:duplicate",
+              tags: ["page", "duplicate", "create"],
+              value: {
+                target: siteEditorUI,
+                method: "createPageWithTitle",
+                args: [title, "duplicate"],
+              },
+              eventName: "super-daemon-element-method",
+              path: "CMS/action/create/page/duplicate",
             },
           ];
         },
@@ -1765,7 +1727,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             data-primary="4"
             voice-command="edit (this) page"
           ></simple-toolbar-button>
-           <simple-toolbar-button
+          <simple-toolbar-button
             icon="icons:undo"
             class="top-bar-button"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -1808,61 +1770,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             voice-command="cancel (editing)"
           ></simple-toolbar-button>
 
-          <simple-toolbar-menu
-            id="addmenubutton"
+          <haxcms-button-add
+            id="addpagebutton"
             class="top-bar-button"
             ?hidden="${this.editMode}"
-            ?disabled="${this.editMode || !this.pageAllowed || this.onInternalRoute}"
+            ?disabled="${this.editMode ||
+            !this.pageAllowed ||
+            this.onInternalRoute}"
             icon="hax:add-page"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
-            label="${this.t.add}.."
+            label="${this.t.addPage}"
             tabindex="${this.editMode ? "-1" : "0"}"
-            @dblclick="${this._addPageClick}"
+            merlin
             show-text-label
-          >
-            <simple-toolbar-menu-item>
-              <haxcms-button-add
-                role="menuitem"
-                hidden
-                ?disabled="${this.editMode}"
-                id="addbutton"
-                show-text-label
-                data-super-daemon-label="${this.t.addPage}"
-                data-super-daemon-icon="hax:add-page"
-                data-super-daemon-path="CMS/action/create/page"
-              >
-              </haxcms-button-add>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item>
-              <haxcms-button-add
-                role="menuitem"
-                hidden
-                ?disabled="${this.editMode}"
-                id="addbuttonchild"
-                type="child"
-                show-text-label
-                data-super-daemon-path="CMS/action/create/child"
-                data-super-daemon-label="${this.t.addChildPage}"
-                data-super-daemon-icon="hax:add-child-page"
-              ></haxcms-button-add>
-            </simple-toolbar-menu-item>
-              <haxcms-button-add
-                role="menuitem"
-                hidden
-                ?disabled="${this.editMode}"
-                type="duplicate"
-                id="duplicatebutton"
-                show-text-label
-                data-super-daemon-path="CMS/action/create/duplicate"
-                data-super-daemon-label="${this.t.clonePage}"
-                data-super-daemon-icon="hax:duplicate"
-              ></haxcms-button-add>
-            </simple-toolbar-menu-item>
-          </simple-toolbar-menu>
-          
+          ></haxcms-button-add>
+
           <simple-toolbar-button
             ?hidden="${this.editMode}"
-            ?disabled="${this.editMode || !this.pageAllowed || this.onInternalRoute}"
+            ?disabled="${this.editMode ||
+            !this.pageAllowed ||
+            this.onInternalRoute}"
             tabindex="${this.editMode ? "-1" : "0"}"
             id="deletebutton"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -1882,12 +1809,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             id="content-edit"
             label="${this.t.configureBlock}"
             ?hidden="${!this.editMode}"
-            ?disabled="${
-              !this.activeTagName ||
-              this.activeTagName == "" ||
-              !this.activeNode ||
-              !this.activeNode.tagName
-            }"
+            ?disabled="${!this.activeTagName ||
+            this.activeTagName == "" ||
+            !this.activeNode ||
+            !this.activeNode.tagName}"
             voice-command="(modify)(configure)(edit) selected"
             controls="tray-detail"
             tooltip="${this.t.configure} ${this.activeTagName}"
@@ -1927,8 +1852,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           >
           </simple-toolbar-button>
           <simple-toolbar-button
-           ?hidden="${!this.editMode}"
-           ?disabled="${!this.editMode}"
+            ?hidden="${!this.editMode}"
+            ?disabled="${!this.editMode}"
             data-event="content-map"
             icon="hax:newspaper"
             id="content-map"
@@ -1971,46 +1896,46 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           >
             <simple-toolbar-menu-item>
               <simple-toolbar-button
-              ?hidden="${this.editMode}"
-              ?disabled="${this.editMode}"
-              tabindex="${this.editMode ? "-1" : "0"}"
-              id="outlinebutton"
-              @click="${this._outlineButtonTap}"
-              icon-position="left"
-              icon="hax:site-map"
-              part="outlinebtn"
-              show-text-label
-              label="${this.t.outlineDesigner}"
-            ></simple-toolbar-button>
+                ?hidden="${this.editMode}"
+                ?disabled="${this.editMode}"
+                tabindex="${this.editMode ? "-1" : "0"}"
+                id="outlinebutton"
+                @click="${this._outlineButtonTap}"
+                icon-position="left"
+                icon="hax:site-map"
+                part="outlinebtn"
+                show-text-label
+                label="${this.t.outlineDesigner}"
+              ></simple-toolbar-button>
             </simple-toolbar-menu-item>
             <simple-toolbar-menu-item>
-            <simple-toolbar-button
-              ?hidden="${this.editMode}"
-              ?disabled="${this.editMode}"
-              tabindex="${this.editMode ? "-1" : "0"}"
-              id="sharebutton"
-              @click="${this._shareButtonTap}"
-              icon="social:share"
-              part="sharebtn"
-              show-text-label
-              icon-position="left"
-              label="${this.t.shareSite}"
-            ></simple-toolbar-button>
+              <simple-toolbar-button
+                ?hidden="${this.editMode}"
+                ?disabled="${this.editMode}"
+                tabindex="${this.editMode ? "-1" : "0"}"
+                id="sharebutton"
+                @click="${this._shareButtonTap}"
+                icon="social:share"
+                part="sharebtn"
+                show-text-label
+                icon-position="left"
+                label="${this.t.shareSite}"
+              ></simple-toolbar-button>
             </simple-toolbar-menu-item>
             <simple-toolbar-menu-item>
-            <simple-toolbar-button
-              ?hidden="${this.editMode}"
-              ?disabled="${this.editMode}"
-              tabindex="${this.editMode ? "-1" : "0"}"
-              id="insightsbutton"
-              icon="hax:clipboard-pulse"
-              part="insightsbtn"
-              icon-position="left"
-              @click="${this._insightsButtonTap}"
-              label="${this.t.insights}"
-              show-text-label
-              voice-command="insights"
-            ></simple-toolbar-button>
+              <simple-toolbar-button
+                ?hidden="${this.editMode}"
+                ?disabled="${this.editMode}"
+                tabindex="${this.editMode ? "-1" : "0"}"
+                id="insightsbutton"
+                icon="hax:clipboard-pulse"
+                part="insightsbtn"
+                icon-position="left"
+                @click="${this._insightsButtonTap}"
+                label="${this.t.insights}"
+                show-text-label
+                voice-command="insights"
+              ></simple-toolbar-button>
             </simple-toolbar-menu-item>
             <simple-toolbar-menu-item>
               <simple-toolbar-button
@@ -2051,11 +1976,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             class="merlin top-bar-button"
             id="merlin"
             @click="${this.haxButtonOp}"
-            data-event="${
-              this.responsiveSize === "xs"
-                ? "super-daemon-modal"
-                : "super-daemon"
-            }"
+            data-event="${this.responsiveSize === "xs"
+              ? "super-daemon-modal"
+              : "super-daemon"}"
             show-text-label
           ></simple-toolbar-button>
           <super-daemon-search
@@ -2069,11 +1992,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             id="search"
             voice-search
             class="merlin"
-            data-event="${
-              this.responsiveSize === "xs"
-                ? "super-daemon-modal"
-                : "super-daemon"
-            }"
+            data-event="${this.responsiveSize === "xs"
+              ? "super-daemon-modal"
+              : "super-daemon"}"
             ?hidden="${["xs"].includes(this.responsiveSize)}"
             mini
             wand
@@ -2083,8 +2004,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           </super-daemon-search>
         </simple-toolbar>
 
-        <app-hax-user-menu slot="right" id="user-menu" part="app-hax-user-menu"
-        ?is-open="${this.userMenuOpen}">
+        <app-hax-user-menu
+          slot="right"
+          id="user-menu"
+          part="app-hax-user-menu"
+          ?is-open="${this.userMenuOpen}"
+        >
           <button
             class="topbar-character"
             slot="menuButton"
@@ -2122,9 +2047,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           label="${this.t.accountInfo}"
         ></app-hax-user-menu-button> -->
           <slot slot="main-menu" name="haxcms-site-editor-ui-main-menu"></slot>
-          <a class="mysiteslink" href="${
-            this.backLink
-          }" slot="main-menu" part="mysiteslink" tabindex="-1">
+          <a
+            class="mysiteslink"
+            href="${this.backLink}"
+            slot="main-menu"
+            part="mysiteslink"
+            tabindex="-1"
+          >
             <app-hax-user-menu-button
               icon="hax:hax2022"
               label="${this.t.mySites}"
@@ -2279,22 +2208,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
   }
 
-  _addPageClick(e) {
-    // ensure they see thes operations
-    if (
-      !this.editMode &&
-      this.shadowRoot.querySelector(
-        "simple-toolbar-menu-item haxcms-button-add:not([hidden])",
-      )
-    ) {
-      this.shadowRoot
-        .querySelector(
-          "simple-toolbar-menu-item haxcms-button-add:not([hidden])",
-        )
-        .HAXCMSButtonClick();
-    }
-  }
-
   /**
    * update buttons since these are triggered by a mix of
    * differnet backend types we can't leverage the store
@@ -2319,15 +2232,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           },
           {
             varPath: "createNodePath",
-            selector: "#addbutton",
-          },
-          {
-            varPath: "createNodePath",
-            selector: "#addbuttonchild",
-          },
-          {
-            varPath: "createNodePath",
-            selector: "#duplicatebutton",
+            selector: "#addpagebutton",
           },
         ];
         // see which features should be enabled

@@ -456,6 +456,25 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           });
           break;
       }
+    } else if (
+      e.key === "Enter" &&
+      this.programName &&
+      this.programSearch.trim() !== ""
+    ) {
+      // Handle Enter key for programs when no filtered results are available
+      // This enables direct program execution on Enter press
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-program-enter", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: {
+            programName: this.programName,
+            input: this.programSearch.trim(),
+          },
+        }),
+      );
+      e.preventDefault();
     }
     // account for global override keys
     switch (e.key) {

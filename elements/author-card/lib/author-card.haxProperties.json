@@ -4,11 +4,11 @@
   "canEditSource": false,
   "type": "element",
   "designSystem": {
-    "accent": false,
+    "accent": true,
     "primary": true,
-    "card": true,
-    "text": true,
-    "designTreatment": true
+    "card": false,
+    "text": false,
+    "designTreatment": false
   },
   "gizmo": {
     "title": "Author Card",
@@ -16,12 +16,7 @@
     "icon": "social:person",
     "color": "blue",
     "tags": [
-      "Content",
-      "Author",
-      "Bio",
-      "Social",
-      "Profile",
-      "Card"
+      "Other"
     ],
     "handles": [
       {
@@ -88,15 +83,7 @@
         "icon": "communication:alternate-email"
       }
     ],
-    "advanced": [
-      {
-        "property": "dark",
-        "title": "Dark Theme",
-        "description": "Use dark theme styling",
-        "inputMethod": "boolean",
-        "icon": "invert-colors"
-      }
-    ]
+    "advanced": []
   },
   "saveOptions": {
     "wipeSlot": false,

@@ -28,6 +28,9 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
     this.socialLink = "";
     this.socialHandle = "";
     this.dark = false;
+    // Set default accent and primary values
+    this.accentColor = "blue";
+    this.primaryColor = "blue";
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -55,6 +58,8 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
       socialLink: { type: String, attribute: "social-link" },
       socialHandle: { type: String, attribute: "social-handle" },
       dark: { type: Boolean },
+      accentColor: { type: String, attribute: "accent-color", reflect: true },
+      primaryColor: { type: String, attribute: "primary-color", reflect: true },
     };
   }
 
@@ -68,16 +73,35 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
         font-family: var(--ddd-font-primary);
         container-type: inline-size;
         
-        /* Theme variables */
-        --author-card-background: var(--ddd-theme-default-white);
-        --author-card-color: var(--ddd-theme-default-coalyGray);
+        /* Theme variables with light-dark support */
+        --author-card-background: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray));
+        --author-card-color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
+        --author-card-border: light-dark(var(--ddd-theme-default-limestoneGray), var(--ddd-theme-default-slateGray));
+        --author-card-job-title-color: light-dark(var(--ddd-theme-default-slateGray), var(--ddd-theme-default-slateLight));
+        --author-card-link-color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-linkLight));
+        --author-card-link-hover-color: light-dark(var(--ddd-theme-default-linkHover), var(--ddd-theme-default-linkHoverLight));
         --author-card-border-radius: var(--ddd-radius-sm);
         --author-card-image-size: 64px;
       }
 
+      /* Override for explicit dark mode */
       :host([dark]) {
         --author-card-background: var(--ddd-theme-default-coalyGray);
         --author-card-color: var(--ddd-theme-default-white);
+        --author-card-border: var(--ddd-theme-default-slateGray);
+        --author-card-job-title-color: var(--ddd-theme-default-slateLight);
+        --author-card-link-color: var(--ddd-theme-default-linkLight);
+        --author-card-link-hover-color: var(--ddd-theme-default-linkHoverLight);
+      }
+
+      /* Primary color for main border */
+      :host([data-primary]) {
+        --author-card-border: var(--ddd-theme-primary);
+      }
+      
+      /* Accent color variations */
+      :host([data-accent]) {
+        --author-card-accent-border: var(--ddd-theme-accent);
       }
 
       .author {
@@ -85,7 +109,14 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
         color: var(--author-card-color);
         border-radius: var(--author-card-border-radius);
         border: var(--ddd-border-xs);
+        border-color: var(--author-card-border);
         padding: var(--ddd-spacing-4);
+      }
+
+      /* Accent color styling */
+      :host([data-accent]) .author {
+        border-left: var(--ddd-border-lg);
+        border-left-color: var(--ddd-theme-accent);
       }
 
       .inner {
@@ -120,12 +151,8 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
 
       .job-title {
         font-size: var(--ddd-font-size-sm);
-        color: var(--ddd-theme-default-slateGray);
+        color: var(--author-card-job-title-color);
         margin: 0 0 var(--ddd-spacing-2);
-      }
-
-      :host([dark]) .job-title {
-        color: var(--ddd-theme-default-slateLight);
       }
 
       .bio {
@@ -134,29 +161,22 @@ export class AuthorCard extends DDDSuper(I18NMixin(LitElement)) {
         margin: 0 0 var(--ddd-spacing-2);
       }
 
-      .link {
+      a.link {
         display: inline-flex;
         align-items: center;
         font-size: var(--ddd-font-size-sm);
         text-decoration: none;
-        color: var(--ddd-theme-default-link);
+        color: var(--author-card-link-color);
         transition: color 0.2s ease;
+        background-color: transparent;
       }
 
-      .link:hover,
-      .link:focus {
-        color: var(--ddd-theme-default-linkHover);
+      a.link:hover,
+      a.link:focus {
+        color: var(--author-card-link-hover-color);
         text-decoration: underline;
       }
-
-      :host([dark]) .link {
-        color: var(--ddd-theme-default-linkLight);
-      }
-
-      :host([dark]) .link:hover,
-      :host([dark]) .link:focus {
-        color: var(--ddd-theme-default-linkHoverLight);
-      }
+      
 
       .profile-link {
         color: inherit;
