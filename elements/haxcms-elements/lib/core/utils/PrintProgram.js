@@ -127,6 +127,10 @@ export class PrintHelper {
   static openPrintView() {
     globalThis.open(globalThis.location.href + "?format=print-page", "_blank");
   }
+
+  static openJSONView() {
+    globalThis.open(globalThis.location.href + "?format=json", "_blank");
+  }
 }
 
 export const createPrintProgram = (i18nMixin) => {
@@ -143,6 +147,7 @@ export const createPrintProgram = (i18nMixin) => {
       printCurrent: "Print current page only",
       downloadPdf: "Download PDF",
       printView: "Open print-friendly view",
+      jsonView: "View page data (JSON)",
       printingPleaseWait: "Printing, please wait..",
     };
 
@@ -221,6 +226,21 @@ export const createPrintProgram = (i18nMixin) => {
       eventName: "super-daemon-element-method",
       path: "CMS/action/print/view",
       more: "Open a clean, print-optimized view in new window",
+    });
+
+    // Option 6: JSON data view
+    results.push({
+      title: t.jsonView,
+      icon: "code",
+      tags: ["json", "data", "view", "code", "debug"],
+      value: {
+        target: PrintHelper,
+        method: "openJSONView",
+        args: [],
+      },
+      eventName: "super-daemon-element-method",
+      path: "CMS/action/view/json",
+      more: "View the current page's activeItem data as JSON in a code sample",
     });
 
     return results;

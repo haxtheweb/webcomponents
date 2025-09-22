@@ -854,6 +854,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
               case "print-page":
                 this.themeData.element = "haxcms-print-theme";
                 break;
+              case "json":
+                // dynamically import the JSON theme
+                import("./themes/haxcms-json-theme.js");
+                this.themeData.element = "haxcms-json-theme";
+                break;
             }
           }
           const disableFeatures = urlParams.get("disable-features");
