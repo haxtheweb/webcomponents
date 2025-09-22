@@ -211,7 +211,9 @@ export class MfHtmlExample extends LitElement {
     if (this.shadowRoot.querySelector("#epub")) {
       this.shadowRoot.querySelector("#epub").addEventListener("click", () => {
         const params = {
-          url: this.shadowRoot.querySelector("#haxcmsurl").value,
+          site: this.shadowRoot.querySelector("#haxcmsurl").value,
+          type: "link",
+          ancestor: this.shadowRoot.querySelector("#haxcmsparentid").value || null,
           __method: "GET",
         };
         MicroFrontendRegistry.call(

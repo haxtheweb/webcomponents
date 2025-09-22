@@ -88,6 +88,7 @@ class Store {
       tags: {},
       random: {},
       home: {},
+      print: {},
       "theme/style-guide": {
         callback: () => {},
         useHaxEditor: true,
@@ -127,6 +128,7 @@ class Store {
       tags: "Content tags",
       random: "Random page",
       home: "Home page",
+      print: "Print page",
       "theme/style-guide": "Theme Style Guide",
       pageNotFound: "Page not found",
     };

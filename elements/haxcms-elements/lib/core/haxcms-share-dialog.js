@@ -67,7 +67,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(DDDSuper(LitElement)) {
           box-shadow: 0 0 0 3px var(--d-d-d-color-primary-alpha-20);
         }
 
-        #link {
+        #link,
+        #print-mode {
           min-width: 600px;
           overflow: auto;
         }
@@ -97,6 +98,17 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(DDDSuper(LitElement)) {
             value="${this.link}"
             readonly
             title="Click to select all"
+          />
+        </div>
+
+        <div class="field-group">
+          <label for="print-mode">Print Mode</label>
+          <input
+            type="text"
+            id="print-mode"
+            value="${this.printModeLink}"
+            readonly
+            title="Print mode link - Click to select all"
           />
         </div>
 
@@ -133,6 +145,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(DDDSuper(LitElement)) {
     // Use current URL as the share link
     this.link = globalThis.location.href;
 
+    // Generate print mode link
+    this.printModeLink = this.generatePrintModeLink();
+
     // Generate the embed code
     var shareCode = `<template>
       <iframe
@@ -150,6 +165,29 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(DDDSuper(LitElement)) {
       codeElement._updateContent();
     }
   }
+
+  // generate print mode link
+  generatePrintModeLink() {
+    const currentUrl = new URL(globalThis.location.href);
+    const baseUrl = `${currentUrl.protocol}//${currentUrl.host}${currentUrl.pathname.split("/").slice(0, -1).join("/")}`;
+
+    // Extract page slug from current URL path
+    const pathParts = currentUrl.pathname.split("/");
+    const currentPageSlug =
+      pathParts[pathParts.length - 1] || pathParts[pathParts.length - 2];
+
+    // If we have a valid page slug, add it to the print URL
+    if (
+      currentPageSlug &&
+      currentPageSlug !== "" &&
+      !currentPageSlug.startsWith("x/")
+    ) {
+      return `${baseUrl}/x/print?page=${encodeURIComponent(currentPageSlug)}`;
+    } else {
+      // Fallback to print without specific page (will use site's default)
+      return `${baseUrl}/x/print`;
+    }
+  }
   firstUpdated(changedProperties) {
     super.firstUpdated(changedProperties);
     this.calculateShareCode();
@@ -160,11 +198,15 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(DDDSuper(LitElement)) {
       link: {
         type: String,
       },
+      printModeLink: {
+        type: String,
+      },
     };
   }
   constructor() {
     super();
     this.link = globalThis.location.href;
+    this.printModeLink = this.generatePrintModeLink();
   }
 }
 globalThis.customElements.define(HAXCMSShareDialog.tag, HAXCMSShareDialog);

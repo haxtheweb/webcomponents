@@ -2712,6 +2712,74 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
+
+    // Print Options Program
+    SuperDaemonInstance.defineOption({
+      title: "Print Options",
+      icon: "icons:print",
+      tags: ["CMS", "print", "page", "site", "pdf"],
+      eventName: "super-daemon-run-program",
+      path: "CMS/action/print",
+      context: ["CMS"],
+      voice: "print (options)",
+      value: {
+        name: "Print Options",
+        machineName: "print-options",
+        program: async (input, values) => {
+          // Import the print program dynamically
+          const { createPrintProgram } = await import(
+            "./utils/PrintProgram.js"
+          );
+          const printProgram = createPrintProgram(this);
+          return await printProgram(input, values);
+        },
+      },
+    });
+
+    // Export Page Program
+    SuperDaemonInstance.defineOption({
+      title: "Export page",
+      icon: "icons:file-download",
+      tags: ["CMS", "export", "page"],
+      eventName: "super-daemon-run-program",
+      path: "CMS/export/page",
+      context: ["CMS", "HAX"],
+      voice: "export page",
+      value: {
+        name: "Export page",
+        machineName: "export-page",
+        program: async (input, values) => {
+          const { createExportPageProgram } = await import(
+            "./utils/ExportPageProgram.js"
+          );
+          const exportPageProgram = createExportPageProgram(this);
+          return await exportPageProgram(input, values);
+        },
+      },
+    });
+
+    // Export Site Program
+    SuperDaemonInstance.defineOption({
+      title: "Export site",
+      icon: "icons:file-download",
+      tags: ["CMS", "export", "site"],
+      eventName: "super-daemon-run-program",
+      path: "CMS/export/site",
+      context: ["CMS"],
+      voice: "export site",
+      value: {
+        name: "Export site",
+        machineName: "export-site",
+        program: async (input, values) => {
+          const { createExportSiteProgram } = await import(
+            "./utils/ExportSiteProgram.js"
+          );
+          const exportSiteProgram = createExportSiteProgram(this);
+          return await exportSiteProgram(input, values);
+        },
+      },
+    });
+
     this.updateAvailableButtons();
     // load user data
     this.dispatchEvent(
@@ -2749,6 +2817,90 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
   goToLocation(location) {
     globalThis.location = location;
+  }
+
+  // Export methods from ExportPageProgram
+  async exportPageAs(format) {
+    const { exportPageAs } = await import("./utils/ExportPageProgram.js");
+    return exportPageAs.call(this, format);
+  }
+
+  async _exportPageAsHTML(content, title) {
+    const { _exportPageAsHTML } = await import("./utils/ExportPageProgram.js");
+    return _exportPageAsHTML.call(this, content, title);
+  }
+
+  async _exportPageAsMarkdown(content, title) {
+    const { _exportPageAsMarkdown } = await import("./utils/ExportPageProgram.js");
+    return _exportPageAsMarkdown.call(this, content, title);
+  }
+
+  async _exportPageAsDOCX(content, title) {
+    const { _exportPageAsDOCX } = await import("./utils/ExportPageProgram.js");
+    return _exportPageAsDOCX.call(this, content, title);
+  }
+
+  async _exportPageAsPDF(content, title) {
+    const { _exportPageAsPDF } = await import("./utils/ExportPageProgram.js");
+    return _exportPageAsPDF.call(this, content, title);
+  }
+
+  async _exportPageAsHAXSchema() {
+    const { _exportPageAsHAXSchema } = await import("./utils/ExportPageProgram.js");
+    return _exportPageAsHAXSchema.call(this);
+  }
+
+  // Export methods from ExportSiteProgram
+  async exportSiteAs(format) {
+    const { exportSiteAs } = await import("./utils/ExportSiteProgram.js");
+    return exportSiteAs.call(this, format);
+  }
+
+  async _exportSiteAsHTML(manifest, title, baseUrl) {
+    const { _exportSiteAsHTML } = await import("./utils/ExportSiteProgram.js");
+    return _exportSiteAsHTML.call(this, manifest, title, baseUrl);
+  }
+
+  async _exportSiteAsMarkdown(manifest, title, baseUrl) {
+    const { _exportSiteAsMarkdown } = await import("./utils/ExportSiteProgram.js");
+    return _exportSiteAsMarkdown.call(this, manifest, title, baseUrl);
+  }
+
+  async _exportSiteAsDOCX(manifest, title, baseUrl) {
+    const { _exportSiteAsDOCX } = await import("./utils/ExportSiteProgram.js");
+    return _exportSiteAsDOCX.call(this, manifest, title, baseUrl);
+  }
+
+  async _exportSiteAsPDF(manifest, title, baseUrl) {
+    const { _exportSiteAsPDF } = await import("./utils/ExportSiteProgram.js");
+    return _exportSiteAsPDF.call(this, manifest, title, baseUrl);
+  }
+
+  async _exportSiteAsEPUB(manifest, title, baseUrl) {
+    const { _exportSiteAsEPUB } = await import("./utils/ExportSiteProgram.js");
+    return _exportSiteAsEPUB.call(this, manifest, title, baseUrl);
+  }
+
+  async _downloadSiteArchive() {
+    const { _downloadSiteArchive } = await import("./utils/ExportSiteProgram.js");
+    return _downloadSiteArchive.call(this);
+  }
+
+  // Utility methods from both export programs
+  _downloadFile(content, filename, mimeType = "text/plain") {
+    const blob = new Blob([content], { type: mimeType });
+    this._downloadBlob(blob, filename);
+  }
+
+  _downloadBlob(blob, filename) {
+    const link = globalThis.document.createElement("a");
+    link.href = globalThis.URL.createObjectURL(blob);
+    link.download = filename;
+    link.target = "_blank";
+    globalThis.document.body.appendChild(link);
+    link.click();
+    globalThis.document.body.removeChild(link);
+    globalThis.URL.revokeObjectURL(link.href);
   }
 
   updated(changedProperties) {
