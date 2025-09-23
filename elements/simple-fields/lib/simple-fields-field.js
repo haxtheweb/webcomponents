@@ -97,10 +97,47 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
               transparent
             );
           }
-          input::placeholder {
-            font-weight: var(--simple-fields-placeholder-font-weight, inherit);
-            opacity: var(--simple-fields-placeholder-opacity, 0.5);
-            color: var(--simple-fields-placeholder-color, black);
+          input::placeholder,
+          textarea::placeholder {
+            font-weight: var(
+              --simple-fields-placeholder-font-weight,
+              var(--ddd-font-weight-light, 300)
+            );
+            font-style: var(--simple-fields-placeholder-font-style, italic);
+            opacity: var(--simple-fields-placeholder-opacity, 0.65);
+            color: var(
+              --simple-fields-placeholder-color,
+              var(--ddd-theme-default-limestoneGray, #a2aaad)
+            );
+            transition: var(
+              --simple-fields-placeholder-transition,
+              opacity 0.2s ease-in-out,
+              color 0.2s ease-in-out
+            );
+            font-size: var(--simple-fields-placeholder-font-size, inherit);
+            letter-spacing: var(--ddd-ls-16-sm, 0.08px);
+          }
+          /* Enhanced visual state when input has focus but no value */
+          input:focus::placeholder,
+          textarea:focus::placeholder {
+            opacity: var(--simple-fields-placeholder-focus-opacity, 0.8);
+            color: var(
+              --simple-fields-placeholder-focus-color,
+              var(--simple-fields-accent-color, var(--ddd-primary-1, #1e407c))
+            );
+          }
+          /* Better contrast when field has value vs placeholder */
+          input:not(:placeholder-shown),
+          textarea:not(:placeholder-shown) {
+            font-weight: var(
+              --simple-fields-font-weight,
+              var(--ddd-font-weight-regular, 400)
+            );
+            font-style: normal;
+            color: var(
+              --simple-fields-color,
+              var(--ddd-theme-default-coalyGray, #262626)
+            );
           }
           select.field {
             width: calc(100% - 26px);
@@ -911,6 +948,7 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
           id="${this.id}"
           @input="${this._handleFieldChange}"
           name="${this.id}"
+          .placeholder="${this.placeholder || ""}"
           ?readonly="${this.readonly}"
           ?required="${this.required}"
           rows="1"
