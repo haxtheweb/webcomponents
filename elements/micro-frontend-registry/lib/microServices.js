@@ -120,6 +120,18 @@ export function enableCoreServices() {
       type: "link for processing as link otherwise unused",
     },
   });
+
+  // jsonToYaml
+  MicroFrontendRegistry.add({
+    endpoint: "/api/services/media/format/jsonToYaml",
+    name: "@core/jsonToYaml",
+    title: "JSON to YAML",
+    description: "Convert JSON object or string to YAML format",
+    params: {
+      json: "JSON object or JSON string to be converted",
+      type: "link for processing as link otherwise unused",
+    },
+  });
   // crypto
   MicroFrontendRegistry.add({
     endpoint: "/api/services/security/aes256",

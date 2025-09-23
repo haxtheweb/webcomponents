@@ -7,6 +7,7 @@ import { HAXCMSPrintTheme } from "./haxcms-print-theme.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { toJS } from "mobx";
 import "@haxtheweb/code-sample/code-sample.js";
+import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 
 // a JSON display theme that extends HAXCMSPrintTheme for minimal UI but displays activeItem data as JSON
 class HAXCMSJSONTheme extends HAXCMSPrintTheme {
@@ -15,6 +16,9 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
       ...super.properties,
       activeItemData: { type: Object },
       showChildren: { type: Boolean },
+      viewMode: { type: String }, // 'json' or 'yaml'
+      yamlData: { type: String },
+      loading: { type: Boolean },
     };
   }
 
@@ -22,6 +26,9 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
     super();
     this.activeItemData = null;
     this.showChildren = false;
+    this.viewMode = 'json';
+    this.yamlData = '';
+    this.loading = false;
   }
 
   render() {
@@ -35,14 +42,24 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
     }
     
     const jsonData = JSON.stringify(displayData, null, 2);
+    const currentData = this.viewMode === 'yaml' ? this.yamlData : jsonData;
+    const currentType = this.viewMode === 'yaml' ? 'yaml' : 'json';
     
     return html`
       <header>
         <simple-icon-button-lite
+          @click="${this.toggleViewMode}"
+          id="formatbtn"
+          icon="${this.viewMode === 'yaml' ? 'code-json' : 'editor:format-textdirection-r-to-l'}"
+          title="Switch to ${this.viewMode === 'yaml' ? 'JSON' : 'YAML'} view"
+        >
+          ${this.viewMode === 'yaml' ? 'JSON' : 'YAML'}
+        </simple-icon-button-lite>
+        <simple-icon-button-lite
           @click="${this.copyToClipboard}"
           id="copybtn"
           icon="content-copy"
-          title="Copy JSON to clipboard"
+          title="Copy ${this.viewMode.toUpperCase()} to clipboard"
         ></simple-icon-button-lite>
         <simple-icon-button-lite
           @click="${this.goBack}"
@@ -54,8 +71,8 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
       <main>
         <article>
           <section>
-            <h2>Active Item Data (JSON)</h2>
-            <p>This is the JSON representation of the current page's activeItem data:</p>
+            <h2>Active Item Data (${this.viewMode.toUpperCase()})</h2>
+            <p>This is the ${this.viewMode.toUpperCase()} representation of the current page's activeItem data:</p>
             ${hasChildren ? html`
               <div class="controls">
                 <simple-icon-button-lite
@@ -68,13 +85,17 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
                 </simple-icon-button-lite>
               </div>
             ` : ''}
-            <code-sample 
-              type="json" 
-              copy-clipboard-button 
-              .value="${jsonData}"
-            >
-              <pre><code>${jsonData}</code></pre>
-            </code-sample>
+            ${this.loading ? html`
+              <div class="loading">Converting to YAML...</div>
+            ` : html`
+              <code-sample 
+                type="${currentType}" 
+                copy-clipboard-button 
+                .value="${currentData}"
+              >
+                <pre><code>${currentData}</code></pre>
+              </code-sample>
+            `}
           </section>
         </article>
       </main>
@@ -87,18 +108,31 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
   async copyToClipboard(e) {
     if (this.activeItemData && globalThis.navigator && globalThis.navigator.clipboard) {
       try {
-        await globalThis.navigator.clipboard.writeText(JSON.stringify(this.activeItemData, null, 2));
+        let dataToCopy;
+        if (this.viewMode === 'yaml') {
+          dataToCopy = this.yamlData;
+        } else {
+          // Create display data with/without children based on toggle
+          let displayData = { ...this.activeItemData };
+          const hasChildren = displayData.children && displayData.children.length > 0;
+          if (!this.showChildren && hasChildren) {
+            delete displayData.children;
+          }
+          dataToCopy = JSON.stringify(displayData, null, 2);
+        }
+        
+        await globalThis.navigator.clipboard.writeText(dataToCopy);
         if (globalThis.SimpleToast && globalThis.SimpleToast.requestAvailability) {
           const toast = globalThis.SimpleToast.requestAvailability();
-          toast.showSimpleToast("JSON data copied to clipboard!");
+          toast.showSimpleToast(`${this.viewMode.toUpperCase()} data copied to clipboard!`);
         } else {
-          console.log("JSON data copied to clipboard!");
+          console.log(`${this.viewMode.toUpperCase()} data copied to clipboard!`);
         }
       } catch (err) {
-        console.error("Failed to copy JSON data: ", err);
+        console.error(`Failed to copy ${this.viewMode.toUpperCase()} data: `, err);
         if (globalThis.SimpleToast && globalThis.SimpleToast.requestAvailability) {
           const toast = globalThis.SimpleToast.requestAvailability();
-          toast.showSimpleToast("Failed to copy JSON data", 3000, { hat: "error" });
+          toast.showSimpleToast(`Failed to copy ${this.viewMode.toUpperCase()} data`, 3000, { hat: "error" });
         }
       }
     }
@@ -111,8 +145,60 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
     globalThis.location.href = url.toString();
   }
 
-  toggleChildren(e) {
+  async toggleChildren(e) {
     this.showChildren = !this.showChildren;
+    // If we're in YAML mode, regenerate YAML data with new children setting
+    if (this.viewMode === 'yaml') {
+      await this.convertToYAML();
+    }
+  }
+
+  async toggleViewMode(e) {
+    if (this.viewMode === 'json') {
+      // Switch to YAML
+      this.viewMode = 'yaml';
+      if (!this.yamlData) {
+        await this.convertToYAML();
+      }
+    } else {
+      // Switch to JSON
+      this.viewMode = 'json';
+    }
+  }
+
+  async convertToYAML() {
+    if (!this.activeItemData) return;
+    
+    this.loading = true;
+    try {
+      // Create display data with/without children based on toggle
+      let displayData = { ...this.activeItemData };
+      const hasChildren = displayData.children && displayData.children.length > 0;
+      if (!this.showChildren && hasChildren) {
+        delete displayData.children;
+      }
+      
+      // Use MicroFrontendRegistry to call our JSON to YAML endpoint
+      const result = await MicroFrontendRegistry.call('@core/jsonToYaml', {
+        json: displayData
+      });
+      
+      if (result && result.data) {
+        this.yamlData = result.data;
+      } else {
+        throw new Error('No data returned from YAML conversion');
+      }
+    } catch (error) {
+      console.error('Failed to convert to YAML:', error);
+      if (globalThis.SimpleToast && globalThis.SimpleToast.requestAvailability) {
+        const toast = globalThis.SimpleToast.requestAvailability();
+        toast.showSimpleToast('Failed to convert to YAML', 3000, { hat: 'error' });
+      }
+      // Fall back to JSON view on error
+      this.viewMode = 'json';
+    } finally {
+      this.loading = false;
+    }
   }
 
   firstUpdated(changedProperties) {
@@ -126,6 +212,8 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
     // Set up store observer for active item changes
     this.storeDisposer = store.observe("activeItem", (change) => {
       this.activeItemData = toJS(change.newValue);
+      // Clear YAML data when activeItem changes so it gets regenerated
+      this.yamlData = '';
       this.requestUpdate();
     });
 
@@ -187,7 +275,8 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
         
         #copybtn,
         #backbtn,
-        #togglebtn {
+        #togglebtn,
+        #formatbtn {
           color: var(--text-color);
           width: 44px;
           height: 44px;
@@ -199,11 +288,13 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
         
         #copybtn:hover,
         #backbtn:hover,
-        #togglebtn:hover {
+        #togglebtn:hover,
+        #formatbtn:hover {
           background: var(--hover-bg-color);
         }
         
-        #togglebtn {
+        #togglebtn,
+        #formatbtn {
           width: auto;
           padding: 0 12px;
           display: flex;
@@ -243,6 +334,17 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           border: 1px solid var(--border-color);
           border-radius: var(--ddd-radius-xs, 4px);
           display: block;
+          margin: 16px 0;
+        }
+        
+        .loading {
+          padding: 20px;
+          text-align: center;
+          font-style: italic;
+          color: var(--secondary-text-color);
+          border: 1px solid var(--border-color);
+          border-radius: var(--ddd-radius-xs, 4px);
+          background: var(--code-bg-color);
           margin: 16px 0;
         }
         
