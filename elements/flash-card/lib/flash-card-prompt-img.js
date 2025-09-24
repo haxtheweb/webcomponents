@@ -2,12 +2,12 @@
 import { html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
 // EXPORT (so make available to other documents that reference this file) a class, that extends LitElement
 
 // which has the magic life-cycles and developer experience below added
-export class FlashCardPromptImg extends SimpleColors {
+export class FlashCardPromptImg extends DDD {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
     return "flash-card-image-prompt";
@@ -27,14 +27,22 @@ export class FlashCardPromptImg extends SimpleColors {
         margin: 25px auto auto;
         height: 200px;
         width: 275px;
-        border: 5px solid white;
+        border: 5px solid
+          light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
         border-radius: 19px;
-        box-shadow: 0 0 10px black;
+        box-shadow: 0 0 10px
+          light-dark(rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.3));
       }
 
       .backgroundbox {
         display: flex;
-        background-color: var(--simple-colors-default-theme-accent-4);
+        background-color: light-dark(
+          var(--ddd-theme-default-accent),
+          var(--ddd-theme-default-accent8)
+        );
         border-radius: 19px 19px 0 0;
         height: 265px;
         width: 320px;
@@ -56,11 +64,25 @@ export class FlashCardPromptImg extends SimpleColors {
       simple-icon-lite {
         --simple-icon-height: 100px;
         --simple-icon-width: 100px;
-        color: white;
+        color: var(--ddd-theme-default-white);
         transform: translate(-50%, -190%);
         top: 50%;
         left: 50%;
         z-index: 100;
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+        animation: iconPop 0.3s ease-out;
+      }
+
+      @keyframes iconPop {
+        0% {
+          transform: translate(-50%, -190%) scale(0);
+        }
+        80% {
+          transform: translate(-50%, -190%) scale(1.1);
+        }
+        100% {
+          transform: translate(-50%, -190%) scale(1);
+        }
       }
 
       :host([status="pending"]) .overlay::before {
@@ -70,14 +92,47 @@ export class FlashCardPromptImg extends SimpleColors {
 
       :host([status="correct"]) .overlay::before {
         display: flex;
-        background: green;
-        filter: opacity(0.65);
+        background: var(--ddd-theme-default-opportunityGreen);
+        filter: opacity(0.75);
+        animation: correctOverlay 0.6s ease-in-out;
       }
 
       :host([status="incorrect"]) .overlay::before {
         display: flex;
-        background: red;
-        filter: opacity(0.65);
+        background: var(--ddd-theme-default-wonderPurple);
+        filter: opacity(0.75);
+        animation: incorrectOverlay 0.4s ease-in-out;
+      }
+
+      /* Feedback animations */
+      @keyframes correctOverlay {
+        0% {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.05);
+        }
+        100% {
+          opacity: 0.75;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes incorrectOverlay {
+        0% {
+          opacity: 0;
+        }
+        25% {
+          opacity: 1;
+        }
+        75% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0.75;
+        }
       }
     `;
   }

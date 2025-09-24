@@ -105,12 +105,38 @@ function generateNpmPath(filePath, elementName) {
 }
 
 /**
- * Check if file contains HAXCMSLitElementTheme extension
+ * Check if file contains direct HAXCMSLitElementTheme extension
  */
-function isHAXcmsTheme(content) {
+function isDirectHAXcmsTheme(content) {
   return content.includes('HAXCMSLitElementTheme') || 
          content.includes('extends DDDSuper(HAXCMSLitElementTheme)') ||
          content.includes('extends HAXCMSLitElementTheme');
+}
+
+/**
+ * Extract the class name that this theme extends
+ */
+function getExtendedClassName(content) {
+  // Look for 'extends ClassName' pattern
+  const extendMatch = content.match(/class\s+\w+\s+extends\s+([\w()]+)/);
+  if (extendMatch) {
+    // Handle patterns like DDDSuper(HAXCMSLitElementTheme) by extracting the base class
+    const extendedClass = extendMatch[1];
+    if (extendedClass.includes('(') && extendedClass.includes(')')) {
+      const innerMatch = extendedClass.match(/\(([^)]+)\)/);
+      return innerMatch ? innerMatch[1] : extendedClass;
+    }
+    return extendedClass;
+  }
+  return null;
+}
+
+/**
+ * Check if file extends a known theme class
+ */
+function extendsThemeClass(content, knownThemeClasses) {
+  const extendedClass = getExtendedClassName(content);
+  return extendedClass && knownThemeClasses.has(extendedClass);
 }
 
 /**
@@ -146,12 +172,14 @@ function shouldSkipTheme(elementName, filePath) {
 }
 
 /**
- * Main theme discovery function
+ * Main theme discovery function with multi-pass inheritance detection
  */
 async function discoverThemes() {
   console.log('🔍 Discovering HAXcms themes...');
   
   const themes = {};
+  const knownThemeClasses = new Set(['HAXCMSLitElementTheme']);
+  const fileContentMap = new Map();
   
   try {
     // Find all JavaScript files in elements directory
@@ -167,12 +195,16 @@ async function discoverThemes() {
     
     console.log(`📁 Scanning ${files.length} JavaScript files...`);
     
+    // First pass: Load all file contents and find direct HAXcms themes
+    console.log('🔄 Pass 1: Finding direct HAXcms themes...');
+    
     for (const file of files) {
       try {
         const content = fs.readFileSync(file, 'utf8');
+        fileContentMap.set(file, content);
         
-        // Check if this file contains a HAXcms theme
-        if (isHAXcmsTheme(content)) {
+        // Check if this file contains a direct HAXcms theme
+        if (isDirectHAXcmsTheme(content)) {
           const elementName = extractThemeName(content, file);
           
           // Skip excluded themes
@@ -192,10 +224,65 @@ async function discoverThemes() {
             thumbnail: thumbnail
           };
           
-          console.log(`✅ Found theme: ${elementName} (${displayName})`);
+          // Extract the class name from the content for inheritance tracking
+          const classMatch = content.match(/class\s+(\w+)\s+extends/);
+          if (classMatch) {
+            knownThemeClasses.add(classMatch[1]);
+          }
+          
+          console.log(`✅ Found direct theme: ${elementName} (${displayName})`);
         }
       } catch (error) {
         console.warn(`⚠️  Error processing file ${file}: ${error.message}`);
+      }
+    }
+    
+    // Multi-pass inheritance detection: keep looking for themes that extend discovered themes
+    let passNumber = 2;
+    let foundNewThemes = true;
+    
+    while (foundNewThemes) {
+      foundNewThemes = false;
+      console.log(`🔄 Pass ${passNumber}: Finding themes that inherit from discovered themes...`);
+      
+      for (const [file, content] of fileContentMap) {
+        const elementName = extractThemeName(content, file);
+        
+        // Skip if we already found this theme or it should be excluded
+        if (themes[elementName] || shouldSkipTheme(elementName, file)) {
+          continue;
+        }
+        
+        // Check if this theme extends any known theme classes
+        if (extendsThemeClass(content, knownThemeClasses)) {
+          const displayName = extractDisplayName(content, elementName);
+          const thumbnail = getRandomThumbnail();
+          const npmPath = generateNpmPath(file, elementName);
+          
+          themes[elementName] = {
+            element: elementName,
+            path: npmPath,
+            name: displayName,
+            thumbnail: thumbnail
+          };
+          
+          // Extract the class name for future inheritance tracking
+          const classMatch = content.match(/class\s+(\w+)\s+extends/);
+          if (classMatch) {
+            knownThemeClasses.add(classMatch[1]);
+          }
+          
+          console.log(`✅ Found inherited theme: ${elementName} (${displayName})`);
+          foundNewThemes = true;
+        }
+      }
+      
+      passNumber++;
+      
+      // Safety check to prevent infinite loops
+      if (passNumber > 10) {
+        console.warn('⚠️  Stopped inheritance detection after 10 passes to prevent infinite loops');
+        break;
       }
     }
     

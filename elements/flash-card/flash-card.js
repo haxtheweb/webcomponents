@@ -1,9 +1,11 @@
 import { html, css } from "lit";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import "@haxtheweb/simple-toast/simple-toast.js";
 import "./lib/flash-card-answer-box.js";
 import "./lib/flash-card-prompt-img.js";
 
-export class FlashCard extends SimpleColors {
+export class FlashCard extends DDD {
   static get tag() {
     return "flash-card";
   }
@@ -34,18 +36,91 @@ export class FlashCard extends SimpleColors {
         :host {
           display: block;
           box-sizing: content-box !important;
-          border: 1px solid var(--simple-colors-default-theme-accent-6);
+          border: var(--ddd-border-md);
+          border-radius: var(--ddd-radius-sm);
+          box-shadow: var(--ddd-boxShadow-sm);
           min-width: 320px;
           min-height: 155px;
-          border-radius: 20px;
-          padding: 20px;
-          width: 5em;
-          background-color: var(--simple-colors-default-theme-accent-2);
-          box-shadow: 0 0 5px var(--simple-colors-default-theme-accent-7);
-          margin: 10px;
+          padding: var(--ddd-spacing-4);
+          margin: var(--ddd-spacing-4);
+          transition: all 0.3s ease-in-out;
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
         }
+        :host(:focus),
+        :host(:focus-within),
+        :host(:hover) {
+          border-color: var(--ddd-theme-primary);
+        }
+
+        /* Status-based styling for correct/incorrect feedback */
+        :host([status="correct"]) {
+          outline: 3px solid var(--ddd-theme-default-opportunityGreen);
+          outline-offset: -3px;
+          animation: correctPulse 0.6s ease-in-out;
+        }
+
+        :host([status="incorrect"]) {
+          outline: 3px dotted var(--ddd-theme-default-wonderPurple);
+          outline-offset: -3px;
+          animation: incorrectShake 0.4s ease-in-out;
+        }
+
+        /* Animations for feedback */
+        @keyframes correctPulse {
+          0%,
+          100% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.02);
+          }
+        }
+
+        @keyframes incorrectShake {
+          0%,
+          100% {
+            transform: translateX(0);
+          }
+          25% {
+            transform: translateX(-5px);
+          }
+          75% {
+            transform: translateX(5px);
+          }
+        }
+
         p {
-          color: var(--simple-colors-default-theme-accent-10);
+          color: light-dark(
+            var(--ddd-theme-primary),
+            var(--ddd-theme-default-linkLight)
+          );
+          font-family: var(--ddd-font-navigation);
+        }
+
+        confetti-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          transition: all 0.3s ease-in-out;
+        }
+
+        flash-card-image-prompt {
+          align-self: center;
+          margin-bottom: var(--ddd-spacing-4);
+        }
+
+        flash-card-answer-box {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
       `,
     ];
@@ -53,17 +128,71 @@ export class FlashCard extends SimpleColors {
 
   statusChanged(e) {
     this.status = e.detail;
+    this.provideFeedback();
+  }
+
+  // Provide visual and audio feedback similar to QuestionElement
+  provideFeedback() {
+    let toastColor, toastIcon, toastText;
+    let toastShowEventName = "simple-toast-show";
+
     if (this.status === "correct") {
-      import("@haxtheweb/multiple-choice/lib/confetti-container.js").then(
-        (module) => {
-          setTimeout(() => {
-            this.shadowRoot
-              .querySelector("#confetti")
-              .setAttribute("popped", "");
-          }, 0);
-        },
+      toastColor = "green";
+      toastIcon = "icons:thumb-up";
+      toastText = "Correct!";
+      this.makeItRain();
+      this.playSound("success");
+    } else if (this.status === "incorrect") {
+      toastColor = "red";
+      toastIcon = "icons:thumb-down";
+      toastText = "Try again!";
+      this.playSound("error");
+    }
+
+    if (this.status === "correct" || this.status === "incorrect") {
+      // Create toast notification
+      let si = globalThis.document.createElement("simple-icon-lite");
+      si.icon = toastIcon;
+      si.style.marginLeft = "16px";
+      si.style.setProperty("--simple-icon-height", "24px");
+      si.style.setProperty("--simple-icon-width", "24px");
+
+      globalThis.dispatchEvent(
+        new CustomEvent(toastShowEventName, {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            text: toastText,
+            accentColor: toastColor,
+            duration: 3000,
+            slot: si,
+          },
+        }),
       );
     }
+  }
+
+  // Import and trigger confetti animation
+  makeItRain() {
+    import("@haxtheweb/multiple-choice/lib/confetti-container.js").then(
+      (module) => {
+        setTimeout(() => {
+          this.shadowRoot.querySelector("#confetti").setAttribute("popped", "");
+        }, 0);
+      },
+    );
+  }
+
+  // Fire event about wanting to play a sound
+  playSound(sound) {
+    globalThis.dispatchEvent(
+      new CustomEvent("playaudio", {
+        detail: {
+          sound: sound,
+        },
+      }),
+    );
   }
 
   // HTML - specific to Lit

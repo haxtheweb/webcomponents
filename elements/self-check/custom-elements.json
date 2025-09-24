@@ -102,10 +102,14 @@
             {
               "kind": "field",
               "name": "accentColor",
+              "privacy": "public",
               "type": {
                 "text": "string"
               },
-              "default": "\"blue\""
+              "description": "Theme color for header background.",
+              "default": "\"primary\"",
+              "attribute": "accent-color",
+              "reflects": true
             },
             {
               "kind": "field",
@@ -216,6 +220,15 @@
               "description": "Property for toggling \"checkbtn\".",
               "default": "false",
               "fieldName": "correct"
+            },
+            {
+              "name": "accent-color",
+              "type": {
+                "text": "string"
+              },
+              "description": "Theme color for header background.",
+              "default": "\"primary\"",
+              "fieldName": "accentColor"
             }
           ],
           "mixins": [

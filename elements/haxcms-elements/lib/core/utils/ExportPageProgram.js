@@ -14,45 +14,48 @@ import { b64toBlob } from "@haxtheweb/utils/utils.js";
 export function createExportPageProgram(context) {
   return async (input, values) => {
     let results = [];
-    
+
     // Define available export formats
     const exportFormats = [
       {
         title: "Export as HTML",
         icon: "hax:file-html",
         format: "html",
-        description: "Download current page as HTML file"
+        description: "Download current page as HTML file",
       },
       {
         title: "Export as Markdown",
-        icon: "hax:format-textblock", 
+        icon: "hax:format-textblock",
         format: "markdown",
-        description: "Download current page as Markdown (.md) file"
+        description: "Download current page as Markdown (.md) file",
       },
       {
         title: "Export as DOCX",
         icon: "hax:file-docx",
-        format: "docx", 
-        description: "Download current page as Word document"
+        format: "docx",
+        description: "Download current page as Word document",
       },
       {
         title: "Export as PDF",
         icon: "lrn:pdf",
         format: "pdf",
-        description: "Download current page as PDF file"
+        description: "Download current page as PDF file",
       },
       {
         title: "Export as HAXSchema",
         icon: "hax:code-json",
         format: "haxschema",
-        description: "Copy HAXSchema JSON to clipboard"
-      }
+        description: "Copy HAXSchema JSON to clipboard",
+      },
     ];
 
     // Filter results based on input
-    exportFormats.forEach(format => {
-      if (input === "" || format.title.toLowerCase().includes(input.toLowerCase()) || 
-          format.format.includes(input.toLowerCase())) {
+    exportFormats.forEach((format) => {
+      if (
+        input === "" ||
+        format.title.toLowerCase().includes(input.toLowerCase()) ||
+        format.format.includes(input.toLowerCase())
+      ) {
         results.push({
           title: format.title,
           icon: format.icon,
@@ -61,11 +64,11 @@ export function createExportPageProgram(context) {
           value: {
             target: context,
             method: "exportPageAs",
-            args: [format.format]
+            args: [format.format],
           },
           eventName: "super-daemon-element-method",
           path: `CMS/export/page/${format.format}`,
-          context: ["CMS", "HAX"]
+          context: ["CMS", "HAX"],
         });
       }
     });
@@ -90,25 +93,29 @@ export async function exportPageAs(format) {
       case "html":
         await this._exportPageAsHTML(pageContent, pageTitle);
         break;
-      
+
       case "markdown":
         await this._exportPageAsMarkdown(pageContent, pageTitle);
         break;
-      
+
       case "docx":
         await this._exportPageAsDOCX(pageContent, pageTitle);
         break;
-      
+
       case "pdf":
         await this._exportPageAsPDF(pageContent, pageTitle);
         break;
-      
+
       case "haxschema":
         await this._exportPageAsHAXSchema();
         break;
-      
+
       default:
-        HAXStore.toast(`Export format "${format}" not supported`, 3000, "fit-bottom");
+        HAXStore.toast(
+          `Export format "${format}" not supported`,
+          3000,
+          "fit-bottom",
+        );
     }
   } catch (error) {
     console.error("Export error:", error);
@@ -142,12 +149,16 @@ export async function _exportPageAsHTML(content, title) {
 export async function _exportPageAsMarkdown(content, title) {
   try {
     const response = await MicroFrontendRegistry.call("@core/htmlToMd", {
-      html: content
+      html: content,
     });
-    
+
     if (response.status === 200 && response.data) {
       this._downloadFile(response.data, `${title}.md`, "text/markdown");
-      HAXStore.toast("Markdown file downloaded successfully", 3000, "fit-bottom");
+      HAXStore.toast(
+        "Markdown file downloaded successfully",
+        3000,
+        "fit-bottom",
+      );
     } else {
       throw new Error("Failed to convert to Markdown");
     }
@@ -160,11 +171,14 @@ export async function _exportPageAsMarkdown(content, title) {
 export async function _exportPageAsDOCX(content, title) {
   try {
     const response = await MicroFrontendRegistry.call("@core/htmlToDocx", {
-      html: content
+      html: content,
     });
-    
+
     if (response.status === 200 && response.data) {
-      const blob = b64toBlob(response.data, "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+      const blob = b64toBlob(
+        response.data,
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      );
       this._downloadBlob(blob, `${title}.docx`);
       HAXStore.toast("DOCX file downloaded successfully", 3000, "fit-bottom");
     } else {
@@ -179,13 +193,15 @@ export async function _exportPageAsDOCX(content, title) {
 export async function _exportPageAsPDF(content, title) {
   try {
     // Get base URL for PDF generation
-    const baseUrl = globalThis.document.querySelector("base")?.href || globalThis.location.origin;
-    
+    const baseUrl =
+      globalThis.document.querySelector("base")?.href ||
+      globalThis.location.origin;
+
     const response = await MicroFrontendRegistry.call("@core/htmlToPdf", {
       base: baseUrl,
-      html: content
+      html: content,
     });
-    
+
     if (response.status === 200 && response.data) {
       const blob = b64toBlob(response.data, "application/pdf");
       this._downloadBlob(blob, `${title}.pdf`);
@@ -205,9 +221,9 @@ export async function _exportPageAsHAXSchema() {
     const body = await HAXStore.activeHaxBody.haxToContent();
     const elements = await HAXStore.htmlToHaxElements(body);
     elements.shift(); // Remove the first element as done in hax-view-source
-    
+
     const haxSchema = JSON.stringify(elements, null, 2);
-    
+
     // Copy to clipboard
     await navigator.clipboard.writeText(haxSchema);
     HAXStore.toast("HAXSchema copied to clipboard", 3000, "fit-bottom");

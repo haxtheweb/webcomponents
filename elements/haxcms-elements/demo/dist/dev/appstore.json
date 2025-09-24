@@ -681,6 +681,7 @@
     "md-block": "@haxtheweb/md-block/md-block.js",
     "page-break": "@haxtheweb/page-break/page-break.js",
     "rpg-character": "@haxtheweb/rpg-character/rpg-character.js",
-    "site-random-content": "@haxtheweb/haxcms-elements/lib/ui-components/site/site-random-content.js"
+    "site-random-content": "@haxtheweb/haxcms-elements/lib/ui-components/site/site-random-content.js",
+    "flash-card": "@haxtheweb/flash-card/flash-card.js"
   }
 }

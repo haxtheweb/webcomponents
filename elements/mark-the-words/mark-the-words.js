@@ -297,7 +297,7 @@ export class MarkTheWords extends QuestionElement {
                   : nothing}
                 ${this.querySelector &&
                 this.querySelector('[slot="feedbackIncorrect"]')
-                  ? html`<slot name="feedbackIncorrect"></slot>`
+                  ? html`<slot name="feedbackIncorrect" property="oer:incorrectFeedback"></slot>`
                   : ``}`
             : ``}
           ${this.showAnswer &&
@@ -306,7 +306,7 @@ export class MarkTheWords extends QuestionElement {
             ? html` <p class="feedback">${this.correctText}</p>
                 ${this.querySelector &&
                 this.querySelector('[slot="feedbackCorrect"]')
-                  ? html`<slot name="feedbackCorrect"></slot>`
+                  ? html`<slot name="feedbackCorrect" property="oer:correctFeedback"></slot>`
                   : ``}`
             : ``}
           ${this.querySelector &&

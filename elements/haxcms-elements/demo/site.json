@@ -33,10 +33,10 @@
       "tags": ""
     },
     "theme": {
-      "element": "haxma-theme",
-      "path": "@haxtheweb/haxma-theme/haxma-theme.js",
-      "name": "HAXma",
-      "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg",
+      "element": "polaris-flex-sidebar",
+      "path": "@haxtheweb/polaris-theme/lib/polaris-flex-sidebar.js",
+      "name": "Polaris Flex Sidebar",
+      "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg",
       "variables": {
         "image": "",
         "imageAlt": "",

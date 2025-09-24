@@ -124,10 +124,10 @@ export class SitePrintRoute extends HAXCMSI18NMixin(DDD) {
         return;
       }
     }
-    
+
     // Construct the URL with format=print-page parameter
     const printUrl = `${targetPage.slug}?format=print-page`;
-    
+
     // Redirect to the print version
     globalThis.location.href = printUrl;
   }
@@ -148,7 +148,9 @@ export class SitePrintRoute extends HAXCMSI18NMixin(DDD) {
           <p>${this.errorMessage}</p>
           <p>You can try:</p>
           <ul>
-            <li>Going back to a specific page and using the print function there</li>
+            <li>
+              Going back to a specific page and using the print function there
+            </li>
             <li>Using the format: <code>x/print?page=your-page-slug</code></li>
             <li>Checking that the page exists and is published</li>
           </ul>

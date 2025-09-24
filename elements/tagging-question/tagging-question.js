@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { QuestionElement } from "@haxtheweb/multiple-choice/lib/QuestionElement.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 
@@ -65,7 +66,7 @@ class TaggingQuestion extends QuestionElement {
           border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-sm);
           box-sizing: border-box;
-          background-color: (var(--ddd-theme-default-coalyGray));
+          background-color: var(--ddd-theme-default-coalyGray);
         }
 
         #possible-container {
@@ -95,12 +96,12 @@ class TaggingQuestion extends QuestionElement {
         :host([drag-enter-answer][dragging]) #user-choice-container {
           border-style: dashed;
           border-color: black;
-          background-color: (var(--ddd-theme-default-coalyGray));
+          background-color: var(--ddd-theme-default-coalyGray);
         }
         :host([drag-enter][dragging]) #possible-container {
           border-color: black;
           border-style: dashed;
-          background-color: (var(--ddd-theme-default-coalyGray));
+          background-color: var(--ddd-theme-default-coalyGray);
         }
 
         .tag-option {
@@ -194,14 +195,14 @@ class TaggingQuestion extends QuestionElement {
             ? html` <p class="feedback">${this.incorrectText}</p>
                 ${this.querySelector &&
                 this.querySelector('[slot="feedbackIncorrect"]')
-                  ? html`<slot name="feedbackIncorrect"></slot>`
+                  ? html`<slot name="feedbackIncorrect" property="oer:incorrectFeedback"></slot>`
                   : ``}`
             : ``}
           ${this.showAnswer && this.isCorrect()
             ? html` <p class="feedback">${this.correctText}</p>
                 ${this.querySelector &&
                 this.querySelector('[slot="feedbackCorrect"]')
-                  ? html`<slot name="feedbackCorrect"></slot>`
+                  ? html`<slot name="feedbackCorrect" property="oer:correctFeedback"></slot>`
                   : ``}`
             : ``}
           ${this.showAnswer
@@ -230,8 +231,7 @@ class TaggingQuestion extends QuestionElement {
         `,
       )}
       </dl>
-    </div>
-  `
+    `
             : ""}
           ${this.querySelector &&
           this.querySelector('[slot="hint"]') &&

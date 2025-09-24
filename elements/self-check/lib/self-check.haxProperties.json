@@ -63,15 +63,17 @@
       },
       {
         "property": "accentColor",
-        "title": "Accent Color",
-        "description": "The accent color of the self-check",
-        "inputMethod": "colorpicker"
-      },
-      {
-        "property": "dark",
-        "title": "Dark Theme",
-        "description": "Enable Dark Theme",
-        "inputMethod": "boolean"
+        "title": "Theme Color",
+        "description": "Choose a theme color from the design system",
+        "inputMethod": "select",
+        "options": {
+          "primary": "Primary",
+          "accent": "Accent",
+          "success": "Success",
+          "warning": "Warning",
+          "error": "Error",
+          "info": "Info"
+        }
       }
     ],
     "advanced": [
@@ -97,7 +99,7 @@
     {
       "tag": "self-check",
       "properties": {
-        "accentColor": "light-blue",
+        "accentColor": "primary",
         "title": "Sharks Self Check",
         "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/White_shark.jpg/480px-White_shark.jpg",
         "alt": "Great White Shark"

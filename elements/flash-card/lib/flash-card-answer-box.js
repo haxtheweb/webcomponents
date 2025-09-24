@@ -139,13 +139,18 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         width: 300px;
         height: 45px;
-        border-radius: 20px;
-        border: solid 1px var(--simple-colors-default-theme-accent-5);
-        background-color: white;
+        border-radius: var(--ddd-radius-md);
+        border: var(--ddd-border-sm);
+        border-color: var(--simple-colors-default-theme-accent-5);
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-coalyGray)
+        );
         padding: 0;
+        margin: var(--ddd-spacing-4) auto;
       }
       .answer-section:focus-within {
         border-color: var(--simple-colors-default-theme-accent-6);
@@ -153,47 +158,107 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
       }
       input {
         border: none;
-        padding: 10px;
-        font-size: 14px;
+        padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+        font-size: var(--ddd-font-size-s);
+        font-family: var(--ddd-font-navigation);
         height: 25px;
-        border-radius: 19px 0 0 19px;
+        border-radius: var(--ddd-radius-md) 0 0 var(--ddd-radius-md);
         margin: 0;
         width: 11em;
-        background-color: white;
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-coalyGray)
+        );
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
       }
       input:focus {
         outline: none;
       }
       button#check {
-        background-color: var(--simple-colors-default-theme-accent-10);
-        color: var(--ddd-theme-default-white);
-        font-size: 14px;
+        background-color: var(
+          --ddd-theme-primary,
+          var(--ddd-theme-default-link)
+        );
+        color: var(--lowContrast-override, var(--ddd-theme-bgContrast, white));
+        font-size: var(--ddd-font-size-s);
+        font-family: var(--ddd-font-navigation);
         margin: none;
-        padding: 0px;
-        border-radius: 0 19px 19px 0;
-        border: none;
+        padding: var(--ddd-spacing-2);
+        border-radius: 0 var(--ddd-radius-md) var(--ddd-radius-md) 0;
+        border: var(--ddd-border-sm);
         overflow: hidden;
         width: 50em;
         height: 45px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      /* Status-based button background colors */
+      :host([status="correct"]) button#check {
+        background-color: var(--ddd-theme-default-opportunityGreen);
+        color: var(--ddd-theme-default-white);
+      }
+
+      :host([status="incorrect"]) button#check {
+        background-color: var(--ddd-theme-default-wonderPurple);
+        color: var(--ddd-theme-default-white);
+      }
+
+      button#check:hover,
+      button#check:focus,
+      button#check:focus-within,
+      button#check:active {
+        cursor: pointer;
+        box-shadow: var(--ddd-boxShadow-sm);
+        border-color: black;
+        opacity: 0.9;
       }
       .retry simple-icon-button-lite {
-        color: red;
-        --simple-icon-button-border-radius: none;
-        --simple-icon-button-padding: 4px;
+        color: light-dark(
+          var(--ddd-theme-default-wonderPurple),
+          var(--ddd-theme-default-linkLight)
+        );
+        background-color: light-dark(
+          var(--ddd-theme-default-white),
+          var(--ddd-theme-default-coalyGray)
+        );
+        border: var(--ddd-border-sm);
+        --simple-icon-button-border-radius: var(--ddd-radius-xs);
+        --simple-icon-button-padding: var(--ddd-spacing-2);
+        font-size: var(--ddd-font-size-xs);
+        font-family: var(--ddd-font-navigation);
+        transition: all 0.3s ease-in-out;
+      }
+      .retry simple-icon-button-lite:hover,
+      .retry simple-icon-button-lite:focus {
+        box-shadow: var(--ddd-boxShadow-sm);
+        border-color: light-dark(
+          var(--ddd-theme-default-wonderPurple),
+          var(--ddd-theme-default-linkLight)
+        );
+        background-color: light-dark(
+          var(--ddd-theme-default-accent1),
+          var(--ddd-theme-default-accent8)
+        );
       }
       button:hover {
         opacity: 0.8;
       }
       button:disabled {
-        opacity: 0.5;
-        background-color: #dddddd;
-        color: black;
+        opacity: 0.7;
+        background-color: light-dark(
+          var(--ddd-theme-default-limestoneLight),
+          var(--ddd-theme-default-slateGray)
+        );
+        color: light-dark(black, white);
       }
       p {
-        font-family: Helvetica;
-        color: var(--simple-colors-default-theme-accent-12);
+        font-family: var(--ddd-font-navigation);
+        color: var(--ddd-theme-primary);
         font-weight: normal;
-        font-size: 20px;
+        font-size: var(--ddd-font-size-ms);
         text-align: center;
       }
       :host([side-to-show="front"]) slot[name="back"] {
@@ -208,25 +273,34 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
       }
 
       :host([status="correct"]) #status-message {
-        color: green;
+        background-color: var(--ddd-theme-default-opportunityGreen);
+        color: var(--ddd-theme-default-white);
+        border-radius: var(--ddd-radius-xs);
+        padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
       }
 
       :host([status="correct"]) #status-icon {
-        color: green;
+        color: var(--ddd-theme-default-white);
       }
 
       :host([status="incorrect"]) #status-message {
-        color: red;
+        background-color: var(--ddd-theme-default-wonderPurple);
+        color: var(--ddd-theme-default-white);
+        border-radius: var(--ddd-radius-xs);
+        padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
       }
 
       :host([status="incorrect"]) #status-icon {
-        color: red;
+        color: var(--ddd-theme-default-white);
       }
 
       simple-icon-lite {
         --simple-icon-width: 35px;
         --simple-icon-height: 35px;
-        color: var(--simple-colors-default-theme-accent-10);
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
       }
 
       .sr-only {
@@ -241,16 +315,23 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
       .retry {
         display: none;
         width: 100%;
-        justify-content: flex-end;
-        padding-top: 10px;
+        justify-content: center;
+        padding-top: var(--ddd-spacing-4);
+        margin: var(--ddd-spacing-2) 0;
       }
 
       #status-message {
         font-size: 16px;
-        margin-right: 15px;
         display: flex;
         align-items: center;
-        font-family: Helvetica;
+        justify-content: center;
+        width: 100%;
+        font-family: var(--ddd-font-navigation);
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
+        gap: var(--ddd-spacing-2);
       }
 
       #status-icon {
@@ -260,6 +341,10 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
 
       .answer-message {
         font-size: 10pt;
+        color: light-dark(
+          var(--ddd-theme-default-coalyGray),
+          var(--ddd-theme-default-white)
+        );
       }
     `;
   }
@@ -278,11 +363,18 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
             </p>`
           : ``}
       </div>
+      <!-- ARIA live region for status announcements -->
+      <div aria-live="polite" aria-atomic="true" class="sr-only">
+        ${this.status !== 'pending' ? this.message : ''}
+      </div>
       <div class="answer-section">
+        <label for="answer" class="sr-only">${this.t.yourAnswer}</label>
         <input
           id="answer"
           type="text"
           .placeholder="${this.t.yourAnswer}"
+          aria-describedby="status-message"
+          aria-invalid="${this.status === 'incorrect'}"
           @input="${this.inputChanged}"
           @keypress="${(e) =>
             e.key === "Enter" ? this.checkUserAnswer() : ""}"
@@ -300,6 +392,7 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
               ><simple-icon-lite
                 id="status-icon"
                 icon="${this.icon}"
+                aria-hidden="true"
               ></simple-icon-lite
               >${this.message}</span
             >`}

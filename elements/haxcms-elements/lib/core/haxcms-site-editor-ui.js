@@ -91,6 +91,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         #editbutton {
           visibility: hidden;
           opacity: 0;
+          color: var(--simple-colors-default-theme-light-blue-11);
         }
 
         #deletebutton {
@@ -112,6 +113,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
 
         haxcms-button-add {
+          color: var(--simple-colors-default-theme-light-green-11);
           background-color: var(--simple-colors-default-theme-grey-1);
         }
 
@@ -146,24 +148,28 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         #cancelbutton:focus {
           background-color: var(--simple-colors-default-theme-red-1);
         }
-        simple-toolbar-menu:hover,
-        simple-toolbar-menu:active,
-        simple-toolbar-menu:focus,
-        simple-toolbar-button:hover,
-        simple-toolbar-button:active,
-        simple-toolbar-button:focus,
         haxcms-button-add:hover,
         haxcms-button-add:active,
         haxcms-button-add:focus {
+          background-color: var(--simple-colors-default-theme-light-green-1);
+        }
+        #editbutton:hover,
+        #editbutton:active,
+        #editbutton:focus {
+          background-color: var(--simple-colors-default-theme-light-blue-1);
+        }
+        simple-toolbar-menu:hover,
+        simple-toolbar-menu:active,
+        simple-toolbar-menu:focus,
+        simple-toolbar-button:not(#editbutton):hover,
+        simple-toolbar-button:not(#editbutton):active,
+        simple-toolbar-button:not(#editbutton):focus {
           background-color: var(--hax-ui-background-color-accent);
           color: var(--hax-ui-color);
         }
         simple-toolbar-button:hover,
         simple-toolbar-button:active,
-        simple-toolbar-button:focus,
-        haxcms-button-add:hover,
-        haxcms-button-add:active,
-        haxcms-button-add:focus {
+        simple-toolbar-button:focus {
           --simple-toolbar-border-color: black;
         }
         :host(:hover),
@@ -895,35 +901,43 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   // Get available page templates from style guide
   async getPageTemplates() {
     try {
-      const siteBuilder = globalThis.document.querySelector("haxcms-site-builder");
+      const siteBuilder = globalThis.document.querySelector(
+        "haxcms-site-builder",
+      );
       if (!siteBuilder) {
-        console.warn('getPageTemplates: No haxcms-site-builder found');
+        console.warn("getPageTemplates: No haxcms-site-builder found");
         return [];
       }
-      
+
       // Load style guide content
       const styleGuideContent = await store.loadStyleGuideContent();
       if (!styleGuideContent) {
-        console.warn('getPageTemplates: No style guide content found');
+        console.warn("getPageTemplates: No style guide content found");
         return [];
       }
 
       // Convert style guide content to HAXSchema elements
-      const styleGuideElements = await siteBuilder.htmlToHaxElements(styleGuideContent);
+      const styleGuideElements =
+        await siteBuilder.htmlToHaxElements(styleGuideContent);
       const templates = [];
 
       for (const styleElement of styleGuideElements) {
         // Look for page-template elements with schema="page"
         if (styleElement && styleElement.tag === "page-template") {
-          const schema = styleElement.properties && styleElement.properties.schema;
-          const templateName = styleElement.properties && styleElement.properties.name;
-          const templateId = styleElement.properties && (styleElement.properties["data-haxsg-id"] || styleElement.properties.id);
-          
+          const schema =
+            styleElement.properties && styleElement.properties.schema;
+          const templateName =
+            styleElement.properties && styleElement.properties.name;
+          const templateId =
+            styleElement.properties &&
+            (styleElement.properties["data-haxsg-id"] ||
+              styleElement.properties.id);
+
           if (schema === "page" && templateName && styleElement.content) {
             const template = {
               id: templateId || `template-${templates.length}`,
               name: templateName,
-              content: styleElement.content
+              content: styleElement.content,
             };
             templates.push(template);
           }
@@ -1089,18 +1103,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
           // If no input provided, show instructions to type a page title
           if (!input || input.trim() === "") {
-            return [{
-              title: "Type a page title to see creation options",
-              icon: "hax:keyboard",
-              tags: ["instruction"],
-              value: { disabled: true },
-              eventName: "disabled",
-              path: "Type page title",
-            }];
+            return [
+              {
+                title: "Type a page title to see creation options",
+                icon: "hax:keyboard",
+                tags: ["instruction"],
+                value: { disabled: true },
+                eventName: "disabled",
+                path: "Type page title",
+              },
+            ];
           }
 
           const title = input.trim();
-          
+
           try {
             // Get available page templates
             const pageTemplates = await siteEditorUI.getPageTemplates();
@@ -1156,20 +1172,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
             return results;
           } catch (error) {
-            console.error('Error in create-page program:', error);
-            return [{
-              title: `Error: ${error.message}`,
-              icon: "icons:error",
-              tags: ["error"],
-              value: { disabled: true },
-              eventName: "disabled",
-              path: "Error occurred",
-            }];
+            console.error("Error in create-page program:", error);
+            return [
+              {
+                title: `Error: ${error.message}`,
+                icon: "icons:error",
+                tags: ["error"],
+                value: { disabled: true },
+                eventName: "disabled",
+                path: "Error occurred",
+              },
+            ];
           }
         },
       },
     });
-
 
     SuperDaemonInstance.defineOption({
       title: "Magic File Wand",
@@ -2877,7 +2894,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   async _exportPageAsMarkdown(content, title) {
-    const { _exportPageAsMarkdown } = await import("./utils/ExportPageProgram.js");
+    const { _exportPageAsMarkdown } = await import(
+      "./utils/ExportPageProgram.js"
+    );
     return _exportPageAsMarkdown.call(this, content, title);
   }
 
@@ -2892,7 +2911,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   async _exportPageAsHAXSchema() {
-    const { _exportPageAsHAXSchema } = await import("./utils/ExportPageProgram.js");
+    const { _exportPageAsHAXSchema } = await import(
+      "./utils/ExportPageProgram.js"
+    );
     return _exportPageAsHAXSchema.call(this);
   }
 
@@ -2908,7 +2929,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   async _exportSiteAsMarkdown(manifest, title, baseUrl) {
-    const { _exportSiteAsMarkdown } = await import("./utils/ExportSiteProgram.js");
+    const { _exportSiteAsMarkdown } = await import(
+      "./utils/ExportSiteProgram.js"
+    );
     return _exportSiteAsMarkdown.call(this, manifest, title, baseUrl);
   }
 
@@ -2928,7 +2951,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   async _downloadSiteArchive() {
-    const { _downloadSiteArchive } = await import("./utils/ExportSiteProgram.js");
+    const { _downloadSiteArchive } = await import(
+      "./utils/ExportSiteProgram.js"
+    );
     return _downloadSiteArchive.call(this);
   }
 

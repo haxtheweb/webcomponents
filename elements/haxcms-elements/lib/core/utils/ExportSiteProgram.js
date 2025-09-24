@@ -2,7 +2,7 @@
  * Export Site Program for Merlin
  * Allows users to export the entire site in multiple formats:
  * - HTML (entire site)
- * - Markdown (entire site) 
+ * - Markdown (entire site)
  * - DOCX (entire site)
  * - PDF
  * - EPUB
@@ -17,51 +17,54 @@ import { b64toBlob } from "@haxtheweb/utils/utils.js";
 export function createExportSiteProgram(context) {
   return async (input, values) => {
     let results = [];
-    
+
     // Define available export formats
     const exportFormats = [
       {
         title: "Export site as HTML",
         icon: "hax:file-html",
         format: "html",
-        description: "Download entire site as consolidated HTML"
+        description: "Download entire site as consolidated HTML",
       },
       {
         title: "Export site as Markdown",
-        icon: "hax:format-textblock", 
+        icon: "hax:format-textblock",
         format: "markdown",
-        description: "Download entire site as Markdown files"
+        description: "Download entire site as Markdown files",
       },
       {
         title: "Export site as DOCX",
         icon: "hax:file-docx",
-        format: "docx", 
-        description: "Download entire site as Word document"
+        format: "docx",
+        description: "Download entire site as Word document",
       },
       {
         title: "Export site as PDF",
         icon: "lrn:pdf",
         format: "pdf",
-        description: "Download entire site as PDF"
+        description: "Download entire site as PDF",
       },
       {
         title: "Export site as EPUB",
         icon: "hax:file-ebook",
         format: "epub",
-        description: "Download site as EPUB book"
+        description: "Download site as EPUB book",
       },
       {
         title: "Download site archive",
         icon: "icons:archive",
         format: "zip",
-        description: "Download complete site as ZIP file"
-      }
+        description: "Download complete site as ZIP file",
+      },
     ];
 
     // Filter results based on input
-    exportFormats.forEach(format => {
-      if (input === "" || format.title.toLowerCase().includes(input.toLowerCase()) || 
-          format.format.includes(input.toLowerCase())) {
+    exportFormats.forEach((format) => {
+      if (
+        input === "" ||
+        format.title.toLowerCase().includes(input.toLowerCase()) ||
+        format.format.includes(input.toLowerCase())
+      ) {
         results.push({
           title: format.title,
           icon: format.icon,
@@ -70,11 +73,11 @@ export function createExportSiteProgram(context) {
           value: {
             target: context,
             method: "exportSiteAs",
-            args: [format.format]
+            args: [format.format],
           },
           eventName: "super-daemon-element-method",
           path: `CMS/export/site/${format.format}`,
-          context: ["CMS"]
+          context: ["CMS"],
         });
       }
     });
@@ -88,40 +91,50 @@ export async function exportSiteAs(format) {
   try {
     const manifest = toJS(store.manifest);
     if (!manifest || !manifest.metadata) {
-      HAXStore.toast("Site manifest not available for export", 3000, "fit-bottom");
+      HAXStore.toast(
+        "Site manifest not available for export",
+        3000,
+        "fit-bottom",
+      );
       return;
     }
 
     const siteTitle = manifest.title || "site";
-    const baseUrl = globalThis.document.querySelector("base")?.href || globalThis.location.origin;
+    const baseUrl =
+      globalThis.document.querySelector("base")?.href ||
+      globalThis.location.origin;
 
     switch (format) {
       case "html":
         await this._exportSiteAsHTML(manifest, siteTitle, baseUrl);
         break;
-      
+
       case "markdown":
         await this._exportSiteAsMarkdown(manifest, siteTitle, baseUrl);
         break;
-      
+
       case "docx":
         await this._exportSiteAsDOCX(manifest, siteTitle, baseUrl);
         break;
-      
+
       case "pdf":
         await this._exportSiteAsPDF(manifest, siteTitle, baseUrl);
         break;
-      
+
       case "epub":
         await this._exportSiteAsEPUB(manifest, siteTitle, baseUrl);
         break;
-      
+
       case "zip":
         await this._downloadSiteArchive();
         break;
-      
+
       default:
-        HAXStore.toast(`Export format "${format}" not supported`, 3000, "fit-bottom");
+        HAXStore.toast(
+          `Export format "${format}" not supported`,
+          3000,
+          "fit-bottom",
+        );
     }
   } catch (error) {
     console.error("Site export error:", error);
@@ -148,7 +161,7 @@ export async function _exportSiteAsHTML(manifest, title, baseUrl) {
       link: baseUrl,
       magic: globalThis.__appCDN || "https://cdn.hax.cloud/cdn/",
       base: baseUrl,
-      format: "json"
+      format: "json",
     });
 
     if (response.status === 200 && response.data) {
@@ -159,40 +172,58 @@ export async function _exportSiteAsHTML(manifest, title, baseUrl) {
     }
   } catch (error) {
     console.error("Site HTML export error:", error);
-    HAXStore.toast("Site HTML export service not available", 3000, "fit-bottom");
+    HAXStore.toast(
+      "Site HTML export service not available",
+      3000,
+      "fit-bottom",
+    );
   }
 }
 
 export async function _exportSiteAsMarkdown(manifest, title, baseUrl) {
   try {
     // First get site as HTML, then convert to Markdown
-    const htmlResponse = await MicroFrontendRegistry.call("@haxcms/siteToHtml", {
-      type: "site",
-      site: {
-        file: baseUrl + "/site.json",
-        id: manifest.id,
-        title: manifest.title,
-        author: manifest.author,
-        description: manifest.description,
-        license: manifest.license,
-        metadata: manifest.metadata,
-        items: manifest.items,
+    const htmlResponse = await MicroFrontendRegistry.call(
+      "@haxcms/siteToHtml",
+      {
+        type: "site",
+        site: {
+          file: baseUrl + "/site.json",
+          id: manifest.id,
+          title: manifest.title,
+          author: manifest.author,
+          description: manifest.description,
+          license: manifest.license,
+          metadata: manifest.metadata,
+          items: manifest.items,
+        },
+        ancestor: null, // null means whole site
+        link: baseUrl,
+        magic: globalThis.__appCDN || "https://cdn.hax.cloud/cdn/",
+        base: baseUrl,
+        format: "json",
       },
-      ancestor: null, // null means whole site
-      link: baseUrl,
-      magic: globalThis.__appCDN || "https://cdn.hax.cloud/cdn/",
-      base: baseUrl,
-      format: "json"
-    });
-    
+    );
+
     if (htmlResponse.status === 200 && htmlResponse.data) {
-      const markdownResponse = await MicroFrontendRegistry.call("@core/htmlToMd", {
-        html: htmlResponse.data
-      });
-      
+      const markdownResponse = await MicroFrontendRegistry.call(
+        "@core/htmlToMd",
+        {
+          html: htmlResponse.data,
+        },
+      );
+
       if (markdownResponse.status === 200 && markdownResponse.data) {
-        this._downloadFile(markdownResponse.data, `${title}.md`, "text/markdown");
-        HAXStore.toast("Site Markdown downloaded successfully", 3000, "fit-bottom");
+        this._downloadFile(
+          markdownResponse.data,
+          `${title}.md`,
+          "text/markdown",
+        );
+        HAXStore.toast(
+          "Site Markdown downloaded successfully",
+          3000,
+          "fit-bottom",
+        );
       } else {
         throw new Error("Failed to convert site HTML to Markdown");
       }
@@ -201,39 +232,52 @@ export async function _exportSiteAsMarkdown(manifest, title, baseUrl) {
     }
   } catch (error) {
     console.error("Site Markdown export error:", error);
-    HAXStore.toast("Site Markdown export service not available", 3000, "fit-bottom");
+    HAXStore.toast(
+      "Site Markdown export service not available",
+      3000,
+      "fit-bottom",
+    );
   }
 }
 
 export async function _exportSiteAsDOCX(manifest, title, baseUrl) {
   try {
     // First get site as HTML, then convert to DOCX
-    const htmlResponse = await MicroFrontendRegistry.call("@haxcms/siteToHtml", {
-      type: "site",
-      site: {
-        file: baseUrl + "/site.json",
-        id: manifest.id,
-        title: manifest.title,
-        author: manifest.author,
-        description: manifest.description,
-        license: manifest.license,
-        metadata: manifest.metadata,
-        items: manifest.items,
+    const htmlResponse = await MicroFrontendRegistry.call(
+      "@haxcms/siteToHtml",
+      {
+        type: "site",
+        site: {
+          file: baseUrl + "/site.json",
+          id: manifest.id,
+          title: manifest.title,
+          author: manifest.author,
+          description: manifest.description,
+          license: manifest.license,
+          metadata: manifest.metadata,
+          items: manifest.items,
+        },
+        ancestor: null, // null means whole site
+        link: baseUrl,
+        magic: globalThis.__appCDN || "https://cdn.hax.cloud/cdn/",
+        base: baseUrl,
+        format: "json",
       },
-      ancestor: null, // null means whole site
-      link: baseUrl,
-      magic: globalThis.__appCDN || "https://cdn.hax.cloud/cdn/",
-      base: baseUrl,
-      format: "json"
-    });
-    
+    );
+
     if (htmlResponse.status === 200 && htmlResponse.data) {
-      const docxResponse = await MicroFrontendRegistry.call("@core/htmlToDocx", {
-        html: htmlResponse.data
-      });
-      
+      const docxResponse = await MicroFrontendRegistry.call(
+        "@core/htmlToDocx",
+        {
+          html: htmlResponse.data,
+        },
+      );
+
       if (docxResponse.status === 200 && docxResponse.data) {
-        const blob = b64toBlob(docxResponse.data, "application/vnd.openxmlformats-officedocument.wordprocessingml.document");
+        const blob = b64toBlob(
+          docxResponse.data,
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        );
         this._downloadBlob(blob, `${title}.docx`);
         HAXStore.toast("Site DOCX downloaded successfully", 3000, "fit-bottom");
       } else {
@@ -244,38 +288,45 @@ export async function _exportSiteAsDOCX(manifest, title, baseUrl) {
     }
   } catch (error) {
     console.error("Site DOCX export error:", error);
-    HAXStore.toast("Site DOCX export service not available", 3000, "fit-bottom");
+    HAXStore.toast(
+      "Site DOCX export service not available",
+      3000,
+      "fit-bottom",
+    );
   }
 }
 
 export async function _exportSiteAsPDF(manifest, title, baseUrl) {
   try {
     // Get site HTML first, then convert to PDF
-    const htmlResponse = await MicroFrontendRegistry.call("@haxcms/siteToHtml", {
-      type: "site",
-      site: {
-        file: baseUrl + "/site.json",
-        id: manifest.id,
-        title: manifest.title,
-        author: manifest.author,
-        description: manifest.description,
-        license: manifest.license,
-        metadata: manifest.metadata,
-        items: manifest.items,
+    const htmlResponse = await MicroFrontendRegistry.call(
+      "@haxcms/siteToHtml",
+      {
+        type: "site",
+        site: {
+          file: baseUrl + "/site.json",
+          id: manifest.id,
+          title: manifest.title,
+          author: manifest.author,
+          description: manifest.description,
+          license: manifest.license,
+          metadata: manifest.metadata,
+          items: manifest.items,
+        },
+        ancestor: null, // null means whole site
+        link: baseUrl,
+        magic: globalThis.__appCDN || "https://cdn.hax.cloud/cdn/",
+        base: baseUrl,
+        format: "json",
       },
-      ancestor: null, // null means whole site
-      link: baseUrl,
-      magic: globalThis.__appCDN || "https://cdn.hax.cloud/cdn/",
-      base: baseUrl,
-      format: "json"
-    });
-    
+    );
+
     if (htmlResponse.status === 200 && htmlResponse.data) {
       const pdfResponse = await MicroFrontendRegistry.call("@core/htmlToPdf", {
         base: baseUrl,
-        html: htmlResponse.data
+        html: htmlResponse.data,
       });
-      
+
       if (pdfResponse.status === 200 && pdfResponse.data) {
         const blob = b64toBlob(pdfResponse.data, "application/pdf");
         this._downloadBlob(blob, `${title}.pdf`);
@@ -297,9 +348,9 @@ export async function _exportSiteAsEPUB(manifest, title, baseUrl) {
     const response = await MicroFrontendRegistry.call("@haxcms/siteToEpub", {
       type: "link",
       site: `${baseUrl}/site.json`,
-      ancestor: null // null means whole site
+      ancestor: null, // null means whole site
     });
-    
+
     if (response.status === 200 && response.data) {
       // Response data should be the EPUB binary data
       const blob = new Blob([response.data], { type: "application/epub+zip" });
@@ -310,7 +361,11 @@ export async function _exportSiteAsEPUB(manifest, title, baseUrl) {
     }
   } catch (error) {
     console.error("Site EPUB export error:", error);
-    HAXStore.toast("Site EPUB export service not available", 3000, "fit-bottom");
+    HAXStore.toast(
+      "Site EPUB export service not available",
+      3000,
+      "fit-bottom",
+    );
   }
 }
 
@@ -327,7 +382,7 @@ export async function _downloadSiteArchive() {
       globalThis.document.body.appendChild(link);
       link.click();
       globalThis.document.body.removeChild(link);
-      
+
       HAXStore.toast("Site archive download initiated", 3000, "fit-bottom");
     } else {
       throw new Error("Site download not available");

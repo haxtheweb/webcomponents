@@ -26,8 +26,8 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
     super();
     this.activeItemData = null;
     this.showChildren = false;
-    this.viewMode = 'json';
-    this.yamlData = '';
+    this.viewMode = "json";
+    this.yamlData = "";
     this.loading = false;
   }
 
@@ -35,25 +35,27 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
     // Create a version without children for compact display
     let displayData = this.activeItemData ? { ...this.activeItemData } : {};
     const hasChildren = displayData.children && displayData.children.length > 0;
-    
+
     if (!this.showChildren && hasChildren) {
       displayData = { ...displayData };
       delete displayData.children;
     }
-    
+
     const jsonData = JSON.stringify(displayData, null, 2);
-    const currentData = this.viewMode === 'yaml' ? this.yamlData : jsonData;
-    const currentType = this.viewMode === 'yaml' ? 'yaml' : 'json';
-    
+    const currentData = this.viewMode === "yaml" ? this.yamlData : jsonData;
+    const currentType = this.viewMode === "yaml" ? "yaml" : "json";
+
     return html`
       <header>
         <simple-icon-button-lite
           @click="${this.toggleViewMode}"
           id="formatbtn"
-          icon="${this.viewMode === 'yaml' ? 'code-json' : 'editor:format-textdirection-r-to-l'}"
-          title="Switch to ${this.viewMode === 'yaml' ? 'JSON' : 'YAML'} view"
+          icon="${this.viewMode === "yaml"
+            ? "code-json"
+            : "editor:format-textdirection-r-to-l"}"
+          title="Switch to ${this.viewMode === "yaml" ? "JSON" : "YAML"} view"
         >
-          ${this.viewMode === 'yaml' ? 'JSON' : 'YAML'}
+          ${this.viewMode === "yaml" ? "JSON" : "YAML"}
         </simple-icon-button-lite>
         <simple-icon-button-lite
           @click="${this.copyToClipboard}"
@@ -72,30 +74,39 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
         <article>
           <section>
             <h2>Active Item Data (${this.viewMode.toUpperCase()})</h2>
-            <p>This is the ${this.viewMode.toUpperCase()} representation of the current page's activeItem data:</p>
-            ${hasChildren ? html`
-              <div class="controls">
-                <simple-icon-button-lite
-                  @click="${this.toggleChildren}"
-                  id="togglebtn"
-                  icon="${this.showChildren ? 'expand-less' : 'expand-more'}"
-                  title="${this.showChildren ? 'Hide children' : 'Show children'}"
-                >
-                  ${this.showChildren ? 'Hide children' : 'Show children'}
-                </simple-icon-button-lite>
-              </div>
-            ` : ''}
-            ${this.loading ? html`
-              <div class="loading">Converting to YAML...</div>
-            ` : html`
-              <code-sample 
-                type="${currentType}" 
-                copy-clipboard-button 
-                .value="${currentData}"
-              >
-                <pre><code>${currentData}</code></pre>
-              </code-sample>
-            `}
+            <p>
+              This is the ${this.viewMode.toUpperCase()} representation of the
+              current page's activeItem data:
+            </p>
+            ${hasChildren
+              ? html`
+                  <div class="controls">
+                    <simple-icon-button-lite
+                      @click="${this.toggleChildren}"
+                      id="togglebtn"
+                      icon="${this.showChildren
+                        ? "expand-less"
+                        : "expand-more"}"
+                      title="${this.showChildren
+                        ? "Hide children"
+                        : "Show children"}"
+                    >
+                      ${this.showChildren ? "Hide children" : "Show children"}
+                    </simple-icon-button-lite>
+                  </div>
+                `
+              : ""}
+            ${this.loading
+              ? html` <div class="loading">Converting to YAML...</div> `
+              : html`
+                  <code-sample
+                    type="${currentType}"
+                    copy-clipboard-button
+                    .value="${currentData}"
+                  >
+                    <pre><code>${currentData}</code></pre>
+                  </code-sample>
+                `}
           </section>
         </article>
       </main>
@@ -106,33 +117,55 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
   }
 
   async copyToClipboard(e) {
-    if (this.activeItemData && globalThis.navigator && globalThis.navigator.clipboard) {
+    if (
+      this.activeItemData &&
+      globalThis.navigator &&
+      globalThis.navigator.clipboard
+    ) {
       try {
         let dataToCopy;
-        if (this.viewMode === 'yaml') {
+        if (this.viewMode === "yaml") {
           dataToCopy = this.yamlData;
         } else {
           // Create display data with/without children based on toggle
           let displayData = { ...this.activeItemData };
-          const hasChildren = displayData.children && displayData.children.length > 0;
+          const hasChildren =
+            displayData.children && displayData.children.length > 0;
           if (!this.showChildren && hasChildren) {
             delete displayData.children;
           }
           dataToCopy = JSON.stringify(displayData, null, 2);
         }
-        
+
         await globalThis.navigator.clipboard.writeText(dataToCopy);
-        if (globalThis.SimpleToast && globalThis.SimpleToast.requestAvailability) {
+        if (
+          globalThis.SimpleToast &&
+          globalThis.SimpleToast.requestAvailability
+        ) {
           const toast = globalThis.SimpleToast.requestAvailability();
-          toast.showSimpleToast(`${this.viewMode.toUpperCase()} data copied to clipboard!`);
+          toast.showSimpleToast(
+            `${this.viewMode.toUpperCase()} data copied to clipboard!`,
+          );
         } else {
-          console.log(`${this.viewMode.toUpperCase()} data copied to clipboard!`);
+          console.log(
+            `${this.viewMode.toUpperCase()} data copied to clipboard!`,
+          );
         }
       } catch (err) {
-        console.error(`Failed to copy ${this.viewMode.toUpperCase()} data: `, err);
-        if (globalThis.SimpleToast && globalThis.SimpleToast.requestAvailability) {
+        console.error(
+          `Failed to copy ${this.viewMode.toUpperCase()} data: `,
+          err,
+        );
+        if (
+          globalThis.SimpleToast &&
+          globalThis.SimpleToast.requestAvailability
+        ) {
           const toast = globalThis.SimpleToast.requestAvailability();
-          toast.showSimpleToast(`Failed to copy ${this.viewMode.toUpperCase()} data`, 3000, { hat: "error" });
+          toast.showSimpleToast(
+            `Failed to copy ${this.viewMode.toUpperCase()} data`,
+            3000,
+            { hat: "error" },
+          );
         }
       }
     }
@@ -148,54 +181,60 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
   async toggleChildren(e) {
     this.showChildren = !this.showChildren;
     // If we're in YAML mode, regenerate YAML data with new children setting
-    if (this.viewMode === 'yaml') {
+    if (this.viewMode === "yaml") {
       await this.convertToYAML();
     }
   }
 
   async toggleViewMode(e) {
-    if (this.viewMode === 'json') {
+    if (this.viewMode === "json") {
       // Switch to YAML
-      this.viewMode = 'yaml';
+      this.viewMode = "yaml";
       if (!this.yamlData) {
         await this.convertToYAML();
       }
     } else {
       // Switch to JSON
-      this.viewMode = 'json';
+      this.viewMode = "json";
     }
   }
 
   async convertToYAML() {
     if (!this.activeItemData) return;
-    
+
     this.loading = true;
     try {
       // Create display data with/without children based on toggle
       let displayData = { ...this.activeItemData };
-      const hasChildren = displayData.children && displayData.children.length > 0;
+      const hasChildren =
+        displayData.children && displayData.children.length > 0;
       if (!this.showChildren && hasChildren) {
         delete displayData.children;
       }
-      
+
       // Use MicroFrontendRegistry to call our JSON to YAML endpoint
-      const result = await MicroFrontendRegistry.call('@core/jsonToYaml', {
-        json: displayData
+      const result = await MicroFrontendRegistry.call("@core/jsonToYaml", {
+        json: displayData,
       });
-      
+
       if (result && result.data) {
         this.yamlData = result.data;
       } else {
-        throw new Error('No data returned from YAML conversion');
+        throw new Error("No data returned from YAML conversion");
       }
     } catch (error) {
-      console.error('Failed to convert to YAML:', error);
-      if (globalThis.SimpleToast && globalThis.SimpleToast.requestAvailability) {
+      console.error("Failed to convert to YAML:", error);
+      if (
+        globalThis.SimpleToast &&
+        globalThis.SimpleToast.requestAvailability
+      ) {
         const toast = globalThis.SimpleToast.requestAvailability();
-        toast.showSimpleToast('Failed to convert to YAML', 3000, { hat: 'error' });
+        toast.showSimpleToast("Failed to convert to YAML", 3000, {
+          hat: "error",
+        });
       }
       // Fall back to JSON view on error
-      this.viewMode = 'json';
+      this.viewMode = "json";
     } finally {
       this.loading = false;
     }
@@ -205,15 +244,15 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    
+
     // Get the activeItem data from store
     this.activeItemData = toJS(store.activeItem);
-    
+
     // Set up store observer for active item changes
     this.storeDisposer = store.observe("activeItem", (change) => {
       this.activeItemData = toJS(change.newValue);
       // Clear YAML data when activeItem changes so it gets regenerated
-      this.yamlData = '';
+      this.yamlData = "";
       this.requestUpdate();
     });
 
@@ -244,18 +283,21 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           --hover-bg-color: var(--ddd-theme-default-limestoneLight, #f0f0f0);
           --code-bg-color: var(--ddd-theme-default-limestoneLight, #f8f8f8);
         }
-        
+
         @media (prefers-color-scheme: dark) {
           :host {
             --text-color: var(--ddd-theme-default-white, #fff);
             --bg-color: var(--ddd-theme-default-coalyGray, #222);
-            --secondary-text-color: var(--ddd-theme-default-limestoneLight, #ccc);
+            --secondary-text-color: var(
+              --ddd-theme-default-limestoneLight,
+              #ccc
+            );
             --border-color: var(--ddd-theme-default-slateGray, #555);
             --hover-bg-color: var(--ddd-theme-default-slateGray, #333);
             --code-bg-color: var(--ddd-theme-default-coalyGray, #1a1a1a);
           }
         }
-        
+
         header {
           display: flex;
           justify-content: flex-end;
@@ -272,7 +314,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           border-top: none;
           border-right: none;
         }
-        
+
         #copybtn,
         #backbtn,
         #togglebtn,
@@ -285,14 +327,14 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           background: var(--bg-color);
           transition: all 0.2s ease;
         }
-        
+
         #copybtn:hover,
         #backbtn:hover,
         #togglebtn:hover,
         #formatbtn:hover {
           background: var(--hover-bg-color);
         }
-        
+
         #togglebtn,
         #formatbtn {
           width: auto;
@@ -302,32 +344,32 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           gap: 4px;
           font-size: 14px;
         }
-        
+
         main {
           padding-top: 70px;
           background: var(--bg-color);
           color: var(--text-color);
           min-height: 100vh;
         }
-        
+
         .controls {
           margin: var(--ddd-spacing-4, 16px) 0;
           display: flex;
           justify-content: flex-start;
         }
-        
+
         h2 {
           color: var(--text-color);
           font-family: var(--ddd-font-navigation, sans-serif);
           margin-bottom: var(--ddd-spacing-4, 16px);
         }
-        
+
         p {
           color: var(--secondary-text-color);
           font-family: var(--ddd-font-primary, sans-serif);
           margin-bottom: var(--ddd-spacing-4, 16px);
         }
-        
+
         code-sample {
           --code-sample-background: var(--code-bg-color);
           --code-sample-color: var(--text-color);
@@ -336,7 +378,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           display: block;
           margin: 16px 0;
         }
-        
+
         .loading {
           padding: 20px;
           text-align: center;
@@ -347,7 +389,7 @@ class HAXCMSJSONTheme extends HAXCMSPrintTheme {
           background: var(--code-bg-color);
           margin: 16px 0;
         }
-        
+
         footer {
           background: var(--bg-color);
           color: var(--text-color);

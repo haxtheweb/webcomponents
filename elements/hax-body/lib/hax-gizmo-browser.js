@@ -149,7 +149,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
               part="filter"
             ></simple-fields-field>
           </div>
-          </a11y-collapse>
 
           <a11y-collapse
             id="popular"
@@ -193,48 +192,50 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                   </simple-popover-selection>`,
               )}
             </simple-button-grid>
-                    <a11y-collapse
+          </a11y-collapse>
+
+          <a11y-collapse
             id="recent"
             heading="${this.t.recent}"
             heading-button
             expanded
           >
-          <simple-button-grid columns="5" always-expanded part="grid">
-            ${this.recentGizmoList.map(
-              (gizmo, i) =>
-                html` <simple-popover-selection
-                  data-index="${i}"
-                  @opened-changed="${this._hoverForPreviewChange}"
-                  event="hover"
-                >
-                  <hax-tray-button
-                    small
-                    show-text-label
-                    voice-command="insert ${gizmo.title}"
-                    draggable="true"
-                    @dragstart="${this._dragStart}"
-                    index="${i}"
-                    is-current-item
-                    label="${gizmo.title}"
-                    event-name="insert-tag"
-                    event-data="${gizmo.tag}"
-                    data-demo-schema="true"
-                    icon-position="top"
-                    icon="${gizmo.icon}"
-                    part="grid-button"
-                    slot="button"
-                  ></hax-tray-button>
-                  ${this.activePreview === i.toString()
-                    ? html`
-                        <hax-element-demo
-                          render-tag="${gizmo.tag}"
-                          slot="options"
-                        ></hax-element-demo>
-                      `
-                    : ``}
-                </simple-popover-selection>`,
-            )}
-          </simple-button-grid>
+            <simple-button-grid columns="5" always-expanded part="grid">
+              ${this.recentGizmoList.map(
+                (gizmo, i) =>
+                  html` <simple-popover-selection
+                    data-index="${i}"
+                    @opened-changed="${this._hoverForPreviewChange}"
+                    event="hover"
+                  >
+                    <hax-tray-button
+                      small
+                      show-text-label
+                      voice-command="insert ${gizmo.title}"
+                      draggable="true"
+                      @dragstart="${this._dragStart}"
+                      index="${i}"
+                      is-current-item
+                      label="${gizmo.title}"
+                      event-name="insert-tag"
+                      event-data="${gizmo.tag}"
+                      data-demo-schema="true"
+                      icon-position="top"
+                      icon="${gizmo.icon}"
+                      part="grid-button"
+                      slot="button"
+                    ></hax-tray-button>
+                    ${this.activePreview === i.toString()
+                      ? html`
+                          <hax-element-demo
+                            render-tag="${gizmo.tag}"
+                            slot="options"
+                          ></hax-element-demo>
+                        `
+                      : ``}
+                  </simple-popover-selection>`,
+              )}
+            </simple-button-grid>
           </a11y-collapse>
           ${this.categories.map(
             (tag) =>

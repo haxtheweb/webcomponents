@@ -27,6 +27,23 @@
               ]
             },
             {
+              "kind": "method",
+              "name": "provideFeedback"
+            },
+            {
+              "kind": "method",
+              "name": "makeItRain"
+            },
+            {
+              "kind": "method",
+              "name": "playSound",
+              "parameters": [
+                {
+                  "name": "sound"
+                }
+              ]
+            },
+            {
               "kind": "field",
               "name": "haxProperties",
               "static": true,
@@ -107,8 +124,8 @@
             }
           ],
           "superclass": {
-            "name": "SimpleColors",
-            "package": "@haxtheweb/simple-colors/simple-colors.js"
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
           }
         }
       ],
@@ -459,8 +476,8 @@
             }
           ],
           "superclass": {
-            "name": "SimpleColors",
-            "package": "@haxtheweb/simple-colors/simple-colors.js"
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
           }
         }
       ],

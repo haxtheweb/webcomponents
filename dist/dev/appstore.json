@@ -1148,6 +1148,6 @@
         "html-block": "@haxtheweb/html-block/html-block.js",
         "user-action": "@haxtheweb/user-action/user-action.js",
         "date-card": "@haxtheweb/date-card/date-card.js",
-        "service-card": "@haxtheweb/service-card/service-card.js"
+        "flash-card": "@haxtheweb/flash-card/flash-card.js"
     }
 }

@@ -2,9 +2,9 @@ import { LitElement, html, css, svg } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { lazyImageLoader } from "@haxtheweb/lazy-image-helpers/lazy-image-helpers.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
  * `self-check`
@@ -39,7 +39,7 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
     this.alt = "";
     this.image = "";
     this.question = "";
-    this.accentColor = "blue";
+    this.accentColor = "primary";
     this.title = "Self-Check";
     this.fullWidthImage = false;
     this.t = {
@@ -59,6 +59,11 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         :host {
           display: block;
           margin: var(--ddd-spacing-4) 0;
+          transition: all 0.3s ease-in-out;
+        }
+
+        :host([correct]) {
+          animation: answerReveal 0.5s ease-in-out;
         }
         :host([hidden]),
         *[hidden] {
@@ -69,12 +74,19 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           overflow: hidden;
           container-type: inline-size;
           container-name: card;
-          border: var(--ddd-border-xs);
+          border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-lg);
           box-shadow: var(--ddd-boxShadow-sm);
+          transition: all 0.3s ease-in-out;
         }
 
-        simple-icon-button {
+        :host([correct]) div.card {
+          border-color: var(--ddd-theme-default-opportunityGreen);
+          box-shadow: 0 0 8px
+            rgba(var(--ddd-theme-default-opportunityGreen-rgb), 0.3);
+        }
+
+        simple-icon-button-lite {
           display: flex;
           --simple-icon-width: var(--ddd-icon-sm);
           --simple-icon-height: var(--ddd-icon-sm);
@@ -82,11 +94,29 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           width: var(--ddd-icon-xl);
           margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
           padding: var(--ddd-spacing-1);
+          transition: all 0.3s ease-in-out;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+        }
+
+        simple-icon-button-lite:hover,
+        simple-icon-button-lite:focus {
+          box-shadow: var(--ddd-boxShadow-sm);
+          transform: scale(1.05);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-radius: var(--ddd-radius-sm);
         }
 
         .check_button {
           display: flex;
           justify-content: flex-end;
+          align-items: flex-start;
+          margin-top: var(--ddd-spacing-1);
         }
         :host([link]) .close_button {
           display: flex;
@@ -98,17 +128,14 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           justify-content: flex-end;
         }
 
-        simple-icon#questionmark {
+        simple-icon-lite#questionmark {
           --simple-icon-width: var(--ddd-icon-lg);
           --simple-icon-height: var(--ddd-icon-lg);
           margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-3);
           padding: var(--ddd-spacing-2);
           color: var(
             --ddd-component-self-check-title-color,
-            var(
-              --ddd-theme-font-color,
-              var(--simple-colors-default-theme-accent-1, #000)
-            )
+            light-dark(var(--ddd-theme-bgContrast, black), var(--ddd-theme-bgContrast, var(--ddd-theme-default-white)))
           );
         }
 
@@ -120,20 +147,14 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           font-weight: var(--ddd-font-weight-medium);
           color: var(
             --ddd-component-self-check-title-color,
-            var(
-              --ddd-theme-font-color,
-              var(--simple-colors-default-theme-accent-1, #000)
-            )
+            light-dark(var(--ddd-theme-bgContrast, black), var(--ddd-theme-bgContrast, var(--ddd-theme-default-white)))
           );
         }
 
         #header_wrap {
           background-color: var(
             --ddd-component-self-check-title-background,
-            var(
-              --ddd-theme-accent,
-              var(--simple-colors-default-theme-accent-8, #fff)
-            )
+            var(--ddd-theme-primary)
           );
           display: flex;
           align-items: center;
@@ -141,14 +162,55 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           padding: 0 var(--ddd-spacing-3);
         }
 
+        :host([accent-color="accent"]) #header_wrap {
+          background-color: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-accent)
+          );
+        }
+
+        :host([accent-color="success"]) #header_wrap {
+          background-color: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-default-success)
+          );
+        }
+
+        :host([accent-color="warning"]) #header_wrap {
+          background-color: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-default-warning)
+          );
+        }
+
+        :host([accent-color="error"]) #header_wrap {
+          background-color: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-default-error)
+          );
+        }
+
+        :host([accent-color="info"]) #header_wrap {
+          background-color: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-default-info)
+          );
+        }
+
         #question_wrap {
           color: var(
             --ddd-component-self-check-question-text,
-            var(--ddd-theme-default-coalyGray)
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
+            )
           );
           background-color: var(
             --ddd-component-self-check-question-background,
-            var(--ddd-theme-default-white)
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-coalyGray)
+            )
           );
           position: relative;
         }
@@ -160,6 +222,8 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           line-height: var(--ddd-lh-120);
           padding: var(--ddd-spacing-5) var(--ddd-spacing-3)
             var(--ddd-spacing-5) var(--ddd-spacing-6);
+          min-height: calc(var(--ddd-spacing-20) + var(--ddd-spacing-4));
+          align-items: start;
         }
 
         :host([correct]) .question {
@@ -169,16 +233,26 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         #answer_wrap {
           visibility: hidden;
           opacity: 0;
-          color: var(--ddd-component-self-check-answer-text, #000);
+          color: var(
+            --ddd-component-self-check-answer-text,
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-white)
+            )
+          );
           background-color: var(
             --ddd-component-self-check-answer-background,
-            var(--ddd-theme-default-successLight)
+            light-dark(
+              var(--ddd-theme-default-successLight),
+              var(--ddd-theme-default-success)
+            )
           );
           width: 100%;
           top: 0;
           left: calc(100%);
           transition: all 0.3s ease-in-out;
           position: absolute;
+          border-left: 4px solid var(--ddd-theme-default-opportunityGreen);
         }
 
         :host([correct]) #answer_wrap {
@@ -186,6 +260,31 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           opacity: 1;
           position: relative;
           left: 0;
+          animation: slideInAnswer 0.4s ease-out;
+        }
+
+        /* Animations for smooth answer reveal */
+        @keyframes answerReveal {
+          0% {
+            transform: scale(1);
+          }
+          50% {
+            transform: scale(1.01);
+          }
+          100% {
+            transform: scale(1);
+          }
+        }
+
+        @keyframes slideInAnswer {
+          0% {
+            opacity: 0;
+            transform: translateX(20px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateX(0);
+          }
         }
 
         .answer {
@@ -214,14 +313,46 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           border-bottom: var(--ddd-spacing-6) solid
             var(
               --ddd-component-self-check-title-background,
-              var(
-                --ddd-theme-accent,
-                var(--simple-colors-default-theme-accent-8, #fff)
-              )
+              var(--ddd-theme-primary)
             );
           position: relative;
           top: calc(var(--ddd-spacing-5) * -1);
           left: var(--ddd-spacing-9);
+        }
+
+        :host([accent-color="accent"]) .triangle {
+          border-bottom-color: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-accent)
+          );
+        }
+
+        :host([accent-color="success"]) .triangle {
+          border-bottom-color: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-default-success)
+          );
+        }
+
+        :host([accent-color="warning"]) .triangle {
+          border-bottom-color: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-default-warning)
+          );
+        }
+
+        :host([accent-color="error"]) .triangle {
+          border-bottom-color: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-default-error)
+          );
+        }
+
+        :host([accent-color="info"]) .triangle {
+          border-bottom-color: var(
+            --ddd-component-self-check-title-background,
+            var(--ddd-theme-default-info)
+          );
         }
 
         .more_info {
@@ -245,20 +376,13 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         ::slotted(p:last-child) {
           margin-top: 0;
         }
-
+        #header_wrap {
+          margin: calc(var(--ddd-spacing-1) * -1) 0 0;
+        }
         .r-circle {
           border-radius: var(--ddd-radius-circle);
         }
-
-        @container card (width < 585px) {
-          #header_wrap {
-            margin: calc(var(--ddd-spacing-9) * -1) 0 0;
-          }
-        }
-        @container card (width > 790px) {
-          #header_wrap {
-            margin: calc(var(--ddd-spacing-8) * -1) 0 0;
-          }
+        @container card (width > 600px) {
           .image-wrap {
             max-height: 600px;
           }
@@ -282,13 +406,13 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
         </div>
         <div class="triangle"></div>
         <div id="header_wrap">
-          <simple-icon
+          <simple-icon-lite
             class="r-circle"
             id="questionmark"
             icon="icons:help"
             ?dark="${!this.dark}"
             contrast="4"
-          ></simple-icon>
+          ></simple-icon-lite>
           <div class="heading" id="title">
             <slot name="heading">${this.title}</slot>
           </div>
@@ -300,14 +424,14 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           >
             <slot name="question"></slot>
             <div class="check_button">
-              <simple-icon-button
+              <simple-icon-button-lite
                 controls="answer_wrap"
                 label="${this.t.revealAnswer}"
                 id="checkBtn"
                 class="check-btn"
                 icon="image:remove-red-eye"
                 @click="${this.openAnswer}"
-              ></simple-icon-button>
+              ></simple-icon-button-lite>
               <simple-tooltip aria-hidden="true" for="checkBtn" position="left">
                 ${this.t.revealAnswer}
               </simple-tooltip>
@@ -323,13 +447,13 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
                 <slot></slot>
               </user-action>
               <div class="close_button">
-                <simple-icon-button
+                <simple-icon-button-lite
                   label="${this.t.close}"
                   id="closeBtn"
                   icon="icons:close"
                   @click="${this.openAnswer}"
                 >
-                </simple-icon-button>
+                </simple-icon-button-lite>
                 <simple-tooltip
                   aria-hidden="true"
                   for="closeBtn"
@@ -419,6 +543,14 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
        */
       correct: {
         type: Boolean,
+        reflect: true,
+      },
+      /**
+       * Theme color for header background.
+       */
+      accentColor: {
+        type: String,
+        attribute: "accent-color",
         reflect: true,
       },
     };

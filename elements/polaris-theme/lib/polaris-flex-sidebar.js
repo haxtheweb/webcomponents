@@ -43,13 +43,14 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
           --site-children-block-border-bottom: var(--ddd-theme-default-pughBlue)
             var(--ddd-border-size-xs) solid;
           --site-children-block-li-padding: var(--ddd-spacing-2) 0;
-          --site-children-block-link-hover-color: var(--ddd-theme-default-link);
-          --site-children-block-active-border-left: var(
-              --ddd-theme-default-link
-            )
+          --site-children-block-link-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          --site-children-block-link-hover-color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-skyBlue));
+          --site-children-block-link-active-bg: light-dark(rgba(0, 30, 68, 0.1), rgba(255, 255, 255, 0.1));
+          --site-children-block-active-border-left: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-skyBlue))
             var(--ddd-border-size-md) solid;
-          --site-children-block-link-active-color: var(
-            --ddd-theme-default-link
+          --site-children-block-link-active-color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-skyBlue)
           );
           font-family: var(--ddd-font-navigation);
           --site-children-block-font-size: var(--ddd-font-size-4xs);
@@ -57,6 +58,12 @@ class PolarisFlexSidebar extends PolarisFlexTheme {
           --site-children-block-parent-font-weight: var(
             --ddd-font-weight-medium
           );
+        }
+
+        site-breadcrumb {
+          --site-breadcrumb-color: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-skyBlue));
+          --site-breadcrumb-color-hover: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-skyBlue));
+          --site-breadcrumb-decoration-color-hover: light-dark(var(--ddd-theme-default-link), var(--ddd-theme-default-skyBlue));
         }
 
         :host([responsive-size="xl"]) {
