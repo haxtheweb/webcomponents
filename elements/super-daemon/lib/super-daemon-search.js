@@ -188,6 +188,10 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         : ``}
       <simple-fields-field
         id="inputfilter"
+        role="combobox"
+        aria-expanded="false"
+        aria-autocomplete="list" 
+        aria-haspopup="listbox"
         ?disabled="${this.disabled}"
         @value-changed="${this.inputfilterChanged}"
         @keydown="${this._inputKeydown}"

@@ -74,9 +74,30 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           border-radius: 4px;
           background-color: var(
             --super-daemon-row-hover,
-            rgba(0, 100, 200, 0.1)
+            var(--simple-colors-default-theme-accent-3, rgba(0, 100, 200, 0.15))
           );
-          outline: 1px solid black;
+          outline: 2px solid var(
+            --super-daemon-row-outline,
+            var(--simple-colors-default-theme-accent-8, #0066cc)
+          );
+          color: var(
+            --simple-colors-default-theme-accent-12,
+            var(--simple-colors-default-theme-grey-1, black)
+          );
+        }
+        :host([active][dark]) {
+          background-color: var(
+            --super-daemon-row-hover-dark,
+            var(--simple-colors-dark-theme-accent-4, rgba(100, 150, 255, 0.25))
+          );
+          outline-color: var(
+            --super-daemon-row-outline-dark,
+            var(--simple-colors-dark-theme-accent-6, #6699ff)
+          );
+          color: var(
+            --simple-colors-dark-theme-accent-1,
+            var(--simple-colors-dark-theme-grey-12, white)
+          );
         }
         :host([mini]) {
           margin: 0;
@@ -273,7 +294,10 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
   render() {
     return html`
       <button
+        role="option"
         part="button"
+        tabindex="-1"
+        aria-selected="false"
         @click="${this.clickEvent}"
         @keydown="${this.keyEvent}"
         @mouseover="${this._focusIn}"

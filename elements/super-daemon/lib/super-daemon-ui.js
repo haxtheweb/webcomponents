@@ -53,6 +53,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this.activeType = null;
     this.where = "index";
     this.icon = "hardware:keyboard-return";
+    // Accessibility properties for ARIA management
+    this._selectedIndex = -1;
+    this._activeDescendant = '';
     // user scaffolding wired up to superDaemon
     autorun(() => {
       const usAction = toJS(UserScaffoldInstance.action);
@@ -107,6 +110,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       commandContext: { type: String, attribute: "command-context" },
       opened: { type: Boolean, reflect: true },
       focused: { type: Boolean, reflect: true },
+      // Accessibility properties for ARIA management
+      _selectedIndex: { type: Number, state: true },
+      _activeDescendant: { type: String, state: true },
     };
   }
 
@@ -284,6 +290,10 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         if (this.filtered.length > 0) {
           this.loading = false;
         }
+        // Announce results count for screen readers and reset selection
+        this._announceResults();
+        this._updateActiveDescendant(-1); // Reset selection
+        
         const sdi = globalThis.SuperDaemonManager.requestAvailability();
         if (sdi.santaMode || this.listeningForInput) {
           clearTimeout(this._selectTimeout);
@@ -348,6 +358,58 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this.selectInput();
     // reset to top of results
     this.shadowRoot.querySelector(".results").scrollTo(0, 0);
+  }
+
+  /**
+   * Update aria-activedescendant and manage selection state for accessibility
+   * @param {number} index - The index of the selected item (-1 for none)
+   */
+  _updateActiveDescendant(index) {
+    this._selectedIndex = index;
+    this._activeDescendant = index >= 0 ? `option-${index}` : '';
+    
+    // Trigger re-render to update aria-selected attributes in the template
+    this.requestUpdate();
+    
+    // Use requestAnimationFrame to ensure DOM is updated before setting active state
+    requestAnimationFrame(() => {
+      // Update active property on all options after re-render
+      this.shadowRoot.querySelectorAll('super-daemon-row').forEach((row, i) => {
+        const isSelected = i === index;
+        row.active = isSelected; // This controls the visual highlighting
+      });
+
+      // Scroll the selected item into view
+      if (index >= 0 && this.shadowRoot.querySelector('lit-virtualizer')) {
+        this.shadowRoot.querySelector('lit-virtualizer').scrollToIndex(index, 'center');
+      }
+    });
+  }
+
+  /**
+   * Announce results count to screen readers
+   */
+  _announceResults() {
+    const count = this.filtered.length;
+    const message = `${count} ${count === 1 ? 'result' : 'results'} available`;
+    
+    // Create a live region announcement
+    const announcement = globalThis.document.createElement('div');
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.setAttribute('aria-atomic', 'true');
+    announcement.style.position = 'absolute';
+    announcement.style.left = '-10000px';
+    announcement.style.width = '1px';
+    announcement.style.height = '1px';
+    announcement.style.overflow = 'hidden';
+    announcement.textContent = message;
+    
+    globalThis.document.body.appendChild(announcement);
+    setTimeout(() => {
+      if (announcement.parentNode) {
+        globalThis.document.body.removeChild(announcement);
+      }
+    }, 1000);
   }
   // reset search values because we selected something
   itemSelected(e) {
@@ -435,28 +497,37 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     if (this.filtered.length > 0) {
       switch (e.key) {
         case "Enter":
-          this.shadowRoot.querySelector("super-daemon-row").selected();
+          e.preventDefault();
+          if (this._selectedIndex >= 0) {
+            // Select the currently highlighted item
+            this.shadowRoot.querySelectorAll('super-daemon-row')[this._selectedIndex].selected();
+          } else {
+            // No selection, select first item
+            this.shadowRoot.querySelector("super-daemon-row").selected();
+          }
           break;
         case "ArrowUp":
-          this.shadowRoot
-            .querySelector("lit-virtualizer")
-            .scrollToIndex(this.filtered.length - 1, "center");
-          requestAnimationFrame(() => {
-            this.shadowRoot
-              .querySelector("super-daemon-row:last-of-type")
-              .focus();
-          });
+          e.preventDefault();
+          const prevIndex = this._selectedIndex <= 0 ? this.filtered.length - 1 : this._selectedIndex - 1;
+          this._updateActiveDescendant(prevIndex);
           break;
         case "ArrowDown":
-          this.shadowRoot
-            .querySelector("lit-virtualizer")
-            .scrollToIndex(0, "center");
-          requestAnimationFrame(() => {
-            this.shadowRoot.querySelector("super-daemon-row").focus();
-          });
+          e.preventDefault();
+          const nextIndex = this._selectedIndex >= this.filtered.length - 1 ? 0 : this._selectedIndex + 1;
+          this._updateActiveDescendant(nextIndex);
+          break;
+        case "Escape":
+          e.preventDefault();
+          this._updateActiveDescendant(-1);
+          this.dispatchEvent(new CustomEvent('super-daemon-close', {
+            bubbles: true,
+            composed: true,
+            cancelable: true
+          }));
           break;
       }
-    } else if (
+    }
+    else if (
       e.key === "Enter" &&
       this.programName &&
       this.programSearch.trim() !== ""
@@ -553,6 +624,12 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   render() {
     return html`
       <super-daemon-search
+        role="combobox"
+        aria-expanded="${this.filtered.length > 0 ? 'true' : 'false'}"
+        aria-haspopup="listbox" 
+        aria-autocomplete="list"
+        aria-controls="results-listbox"
+        aria-activedescendant="${this._activeDescendant || ''}"
         @keydown="${this._inputKeydown}"
         @focused-changed="${this.focusedChanged}"
         @value-changed="${this.inputfilterChanged}"
@@ -593,10 +670,17 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
                   </div> `
                 : html`
                     <lit-virtualizer
+                      role="listbox"
+                      id="results-listbox" 
+                      aria-label="${this.t.results || 'Results'}"
                       scroller
                       .items=${this.filtered}
                       .renderItem=${(item, i) =>
                         html`<super-daemon-row
+                          role="option"
+                          id="option-${i}"
+                          tabindex="-1"
+                          aria-selected="${this._selectedIndex === i}"
                           data-row-index="${i}"
                           .value="${item.value}"
                           icon="${item.icon}"
