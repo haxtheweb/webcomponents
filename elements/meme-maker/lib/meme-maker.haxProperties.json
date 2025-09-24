@@ -7,7 +7,7 @@
     "description": "Make a meme out of an image",
     "icon": "hax:meme",
     "color": "orange",
-    "tags": ["Images", "media", "funny", "meme", "image"],
+    "tags": ["Media", "funny", "meme", "image"],
     "handles": [
       {
         "type": "image",

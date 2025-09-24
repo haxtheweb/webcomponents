@@ -82,7 +82,7 @@ class HaxStaxBrowser extends LitElement {
     
     return html`
       <a11y-collapse heading="${this.label}" heading-button>
-        <simple-button-grid columns="2" rows="1" always-expanded>
+        <simple-button-grid columns="4" rows="1" always-expanded>
           ${filteredItems.map(
             (stax) => html`
               <hax-tray-button

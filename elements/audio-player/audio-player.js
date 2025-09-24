@@ -37,7 +37,7 @@ class AudioPlayer extends VideoPlayer {
           "This can present video in a highly accessible manner regardless of source.",
         icon: "av:music-video",
         color: "green",
-        tags: ["Audio / Video", "Media", "listen", "mp3"],
+        tags: ["Media", "Media", "listen", "mp3"],
         handles: [
           {
             type: "audio",

@@ -187,7 +187,7 @@ class VideoPlayer extends IntersectionObserverMixin(
         icon: "av:play-circle-filled",
         color: "red",
         tags: [
-          "Audio / Video",
+          "Media",
           "Media",
           "youtube",
           "watch",
@@ -607,7 +607,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       embeddedMedia: "embedded media",
       gizmoTitle: "Video",
       gizmoDescription: "This can present video in a highly accessible manner regardless of source.",
-      tagAudioVideo: "Audio / Video",
+      tagAudioVideo: "Media",
       tagMedia: "Media",
       sourceTitle: "Source",
       sourceDescription: "The URL for this media.",

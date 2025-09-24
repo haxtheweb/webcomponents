@@ -148,7 +148,7 @@ class ParallaxImage extends SchemaBehaviors(LitElement) {
         description: "Image scroll by",
         icon: "av:play-circle-filled",
         color: "grey",
-        tags: ["Images", "Media", "style"],
+        tags: ["Media", "style"],
         handles: [
           {
             type: "image",

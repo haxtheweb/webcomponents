@@ -280,7 +280,7 @@ class PlaceHolder extends SimpleColors {
         icon: "hax:placeholder-image",
         color: "grey",
         tags: [
-          "Authoring",
+          "Writing",
           "development",
           "authoring",
           "media",

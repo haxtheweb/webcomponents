@@ -2205,7 +2205,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       h2: {
         title: "Heading",
         icon: "hax:h2",
-        tags: ["Text", "h2", "html", "text", "heading", "header"],
+        tags: ["Writing", "h2", "html", "text", "heading", "header"],
       },
       h3: {
         title: "Heading",
@@ -2566,7 +2566,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         description: "A basic img tag",
         icon: "image:image",
         color: "blue-grey",
-        tags: ["Images", "media", "img", "html"],
+        tags: ["Media", "media", "img", "html"],
         handles: [],
         meta: {
           author: "W3C",
@@ -2634,7 +2634,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         description: "A basic figure tag",
         icon: "hax:figure",
         color: "blue-grey",
-        tags: ["Images", "media", "figure", "html"],
+        tags: ["Media", "media", "figure", "html"],
         requiresChildren: "figcaption",
         handles: [],
         meta: {
@@ -2665,7 +2665,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         description: "Used inside of a figure tag",
         icon: "image:image",
         color: "blue-grey",
-        tags: ["Images", "media", "caption", "figure", "html"],
+        tags: ["Media", "media", "caption", "figure", "html"],
         handles: [],
         requiresParent: "figure",
         meta: {
@@ -2900,7 +2900,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         description: "A basic text area",
         icon: "hax:paragraph",
         color: "blue-grey",
-        tags: ["Text", "p", "paragraph", "text", "html"],
+        tags: ["Writing", "p", "paragraph", "text", "html"],
         handles: [
           {
             type: "content",
@@ -3053,7 +3053,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             title: this.__primsBuilder[tag].title,
             icon: this.__primsBuilder[tag].icon,
             tags: this.__primsBuilder[tag].tags || [
-              "Text",
+              "Writing",
               tag,
               "html",
               "text",

@@ -273,7 +273,7 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         icon: "icons:copyright",
         color: "grey",
         tags: [
-          "Authoring",
+          "Writing",
           "content",
           "copyright",
           "license",

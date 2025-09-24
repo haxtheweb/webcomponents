@@ -963,10 +963,6 @@ class HaxTray extends I18NMixin(
     let hidden = this.trayDetail !== "content-add";
     return html`<div class="block-add-wrapper">
       <hax-tray-upload ?hidden="${hidden}" show-sources></hax-tray-upload>
-      <hax-gizmo-browser
-        id="gizmobrowser"
-        ?hidden="${hidden}"
-      ></hax-gizmo-browser>
       <hax-stax-browser
         id="pagesbrowser"
         ?hidden="${hidden}"
@@ -979,6 +975,10 @@ class HaxTray extends I18NMixin(
         label="${this.t.templates}"
         template-type="area"
       ></hax-stax-browser>
+      <hax-gizmo-browser
+        id="gizmobrowser"
+        ?hidden="${hidden}"
+      ></hax-gizmo-browser>
       <hax-app-search ?hidden="${hidden}" id="haxappsearch"></hax-app-search>
     </div>`;
   }

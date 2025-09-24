@@ -87,9 +87,11 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     this.value = "";
     this.where = "index";
     this.recentGizmoList = [];
+    this.popularGizmoList = [];
     this.t = {
       filterContentTypes: "Filter Content Types",
       recent: "Recent",
+      popular: "Popular",
     };
     this.registerLocalization({
       context: this,
@@ -125,6 +127,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       categories: { type: Array },
       hidden: { type: Boolean, reflect: true },
       recentGizmoList: { type: Array },
+      popularGizmoList: { type: Array },
       activePreview: { type: Number },
     };
   }
@@ -146,17 +149,19 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
               part="filter"
             ></simple-fields-field>
           </div>
+          </a11y-collapse>
+
           <a11y-collapse
-            id="recent"
-            heading="${this.t.recent}"
+            id="popular"
+            heading="${this.t.popular}"
             heading-button
             expanded
           >
             <simple-button-grid columns="5" always-expanded part="grid">
-              ${this.recentGizmoList.map(
+              ${this.popularGizmoList.map(
                 (gizmo, i) =>
                   html` <simple-popover-selection
-                    data-index="${i}"
+                    data-index="popular-${i}"
                     @opened-changed="${this._hoverForPreviewChange}"
                     event="hover"
                   >
@@ -166,7 +171,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                       voice-command="insert ${gizmo.title}"
                       draggable="true"
                       @dragstart="${this._dragStart}"
-                      index="${i}"
+                      index="popular-${i}"
                       is-current-item
                       label="${gizmo.title}"
                       event-name="insert-tag"
@@ -177,7 +182,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                       part="grid-button"
                       slot="button"
                     ></hax-tray-button>
-                    ${this.activePreview === parseInt(i)
+                    ${this.activePreview === `popular-${i}`
                       ? html`
                           <hax-element-demo
                             render-tag="${gizmo.tag}"
@@ -188,6 +193,48 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                   </simple-popover-selection>`,
               )}
             </simple-button-grid>
+                    <a11y-collapse
+            id="recent"
+            heading="${this.t.recent}"
+            heading-button
+            expanded
+          >
+          <simple-button-grid columns="5" always-expanded part="grid">
+            ${this.recentGizmoList.map(
+              (gizmo, i) =>
+                html` <simple-popover-selection
+                  data-index="${i}"
+                  @opened-changed="${this._hoverForPreviewChange}"
+                  event="hover"
+                >
+                  <hax-tray-button
+                    small
+                    show-text-label
+                    voice-command="insert ${gizmo.title}"
+                    draggable="true"
+                    @dragstart="${this._dragStart}"
+                    index="${i}"
+                    is-current-item
+                    label="${gizmo.title}"
+                    event-name="insert-tag"
+                    event-data="${gizmo.tag}"
+                    data-demo-schema="true"
+                    icon-position="top"
+                    icon="${gizmo.icon}"
+                    part="grid-button"
+                    slot="button"
+                  ></hax-tray-button>
+                  ${this.activePreview === i.toString()
+                    ? html`
+                        <hax-element-demo
+                          render-tag="${gizmo.tag}"
+                          slot="options"
+                        ></hax-element-demo>
+                      `
+                    : ``}
+                </simple-popover-selection>`,
+            )}
+          </simple-button-grid>
           </a11y-collapse>
           ${this.categories.map(
             (tag) =>
@@ -195,7 +242,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                 heading="${this.ucfirst(tag)}"
                 heading-button
               >
-                <simple-button-grid columns="3" always-expanded part="grid">
+                <simple-button-grid columns="4" always-expanded part="grid">
                   ${this.filtered.map(
                     (gizmo, i) =>
                       html`${gizmo && gizmo.tags && gizmo.tags.includes(tag)
@@ -220,7 +267,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                               part="grid-button"
                               slot="button"
                             ></hax-tray-button>
-                            ${this.activePreview === parseInt(i)
+                            ${this.activePreview === i.toString()
                               ? html`
                                   <hax-element-demo
                                     render-tag="${gizmo.tag}"
@@ -243,7 +290,8 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     const popover = e.detail;
     // this is open
     if (popover.opened) {
-      this.activePreview = parseInt(popover.dataset.index);
+      // Handle both numeric indices and string indices (for popular category)
+      this.activePreview = popover.dataset.index;
       // @notice
       // timing hack because the act of opening the element triggers a light dom rebuild
       // in which the element is not yet visible, so we need to wait a tick
@@ -289,7 +337,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
   }
   collapseAll() {
     this.shadowRoot
-      .querySelectorAll("a11y-collapse:not(#recent)")
+      .querySelectorAll("a11y-collapse:not(#recent):not(#popular)")
       .forEach((item) => {
         item.expanded = false;
       });
@@ -319,8 +367,35 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         }
       }
     });
-    tags.sort();
-    return tags;
+    
+    // Create custom ordering with logical priority
+    // Writing first, then alphabetical, then Other at the end
+    const otherCategory = 'Other';
+    
+    // Separate Writing, Other, and regular categories
+    const regularTags = [];
+    let hasWriting = false;
+    let hasOther = false;
+    
+    tags.forEach(tag => {
+      if (tag === 'Writing') {
+        hasWriting = true;
+      } else if (tag === otherCategory) {
+        hasOther = true;
+      } else {
+        regularTags.push(tag);
+      }
+    });
+    
+    // Sort regular categories alphabetically
+    regularTags.sort();
+    
+    // Combine in final order: Writing first, then alphabetical, then Other
+    const orderedTags = [];
+    if (hasWriting) orderedTags.push('Writing');
+    orderedTags.push(...regularTags);
+    if (hasOther) orderedTags.push(otherCategory);
+    return orderedTags;
   }
 
   firstUpdated(changedProperties) {
@@ -332,6 +407,43 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         this.resetList(toJS(HAXStore.gizmoList));
       }
     });
+    // Initialize popular blocks list
+    this._initializePopularBlocks();
+  }
+  
+  /**
+   * Initialize the list of popular blocks with the top 9 most used elements
+   */
+  _initializePopularBlocks() {
+    // Define the most popular HAX blocks based on usage patterns
+    const popularTags = [
+      'p',
+      'h2', 
+      'video-player',
+      'media-image', 
+      'grid-plate',
+      'place-holder',
+      'learning-component',
+      'code-sample',
+      'a11y-figure',
+      'self-check',
+      'stop-note'
+    ];
+    
+    // Wait for HAXStore to be ready and get gizmo list
+    if (HAXStore.gizmoList && HAXStore.gizmoList.length > 0) {
+      const popularGizmos = [];
+      popularTags.forEach(tag => {
+        const gizmo = HAXStore.gizmoList.find(g => g && g.tag === tag);
+        if (gizmo) {
+          popularGizmos.push(gizmo);
+        }
+      });
+      this.popularGizmoList = popularGizmos;
+    } else {
+      // If HAXStore isn't ready yet, try again shortly
+      setTimeout(() => this._initializePopularBlocks(), 100);
+    }
   }
   /**
    * Reset this browser.
@@ -362,6 +474,8 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         }
       });
       this.items = [...items];
+      // Update popular blocks when gizmo list changes
+      this._initializePopularBlocks();
     }
   }
 }

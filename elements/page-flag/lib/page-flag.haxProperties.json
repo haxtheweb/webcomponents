@@ -8,7 +8,7 @@
     "description": "An editorial note for authors to work on the page",
     "icon": "lrn:quiz",
     "color": "grey",
-    "tags": ["Authoring", "workflow", "edit", "note", "flag", "page"]
+    "tags": ["Other", "workflow", "edit", "note", "flag", "page"]
   },
   "settings": {
     "configure": [

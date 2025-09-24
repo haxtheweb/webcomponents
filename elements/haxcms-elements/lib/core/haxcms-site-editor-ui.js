@@ -892,8 +892,53 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       .replace(/[^0-9\-\/a-z]/gi, "");
   }
 
+  // Get available page templates from style guide
+  async getPageTemplates() {
+    try {
+      const siteBuilder = globalThis.document.querySelector("haxcms-site-builder");
+      if (!siteBuilder) {
+        console.warn('getPageTemplates: No haxcms-site-builder found');
+        return [];
+      }
+      
+      // Load style guide content
+      const styleGuideContent = await store.loadStyleGuideContent();
+      if (!styleGuideContent) {
+        console.warn('getPageTemplates: No style guide content found');
+        return [];
+      }
+
+      // Convert style guide content to HAXSchema elements
+      const styleGuideElements = await siteBuilder.htmlToHaxElements(styleGuideContent);
+      const templates = [];
+
+      for (const styleElement of styleGuideElements) {
+        // Look for page-template elements with schema="page"
+        if (styleElement && styleElement.tag === "page-template") {
+          const schema = styleElement.properties && styleElement.properties.schema;
+          const templateName = styleElement.properties && styleElement.properties.name;
+          const templateId = styleElement.properties && (styleElement.properties["data-haxsg-id"] || styleElement.properties.id);
+          
+          if (schema === "page" && templateName && styleElement.content) {
+            const template = {
+              id: templateId || `template-${templates.length}`,
+              name: templateName,
+              content: styleElement.content
+            };
+            templates.push(template);
+          }
+        }
+      }
+
+      return templates;
+    } catch (error) {
+      console.warn("Failed to get page templates:", error);
+      return [];
+    }
+  }
+
   // Create page with title - method called by Merlin programs
-  async createPageWithTitle(title, type) {
+  async createPageWithTitle(title, type, templateContent = null) {
     let order = null;
     let parent = null;
     const item = toJS(store.activeItem);
@@ -935,6 +980,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       payload.node.duplicate = item.id;
     }
 
+    // If template content is provided, add it to the payload
+    if (templateContent) {
+      payload.node.contents = templateContent;
+    }
+
     // Create the page
     this.dispatchEvent(
       new CustomEvent("haxcms-create-node", {
@@ -954,6 +1004,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       message = `Child page "${title}" created successfully!`;
     } else if (type === "duplicate") {
       message = `Page "${title}" duplicated successfully!`;
+    }
+    if (templateContent) {
+      message += " Template applied.";
     }
 
     store.playSound("success");
@@ -1020,11 +1073,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.appendContext("CMS");
     // Unified page creation program
     SuperDaemonInstance.defineOption({
-      title: "Create Page",
+      title: "Add Page",
       icon: "hax:add-page",
-      tags: ["page", "create", "CMS"],
+      tags: ["page", "add", "create", "new", "CMS"],
       eventName: "super-daemon-run-program",
-      path: "CMS/action/create/page",
+      path: "CMS/action/add/page",
       value: {
         name: "create-page",
         machineName: "create-page",
@@ -1034,96 +1087,89 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             globalThis.document.querySelector("haxcms-site-editor-ui") || this;
           const currentItem = toJS(store.activeItem);
 
-          // If no input provided, show the page creation options
+          // If no input provided, show instructions to type a page title
           if (!input || input.trim() === "") {
-            return [
-              {
-                title: "📄 New page (sibling)",
-                icon: "hax:add-page",
-                tags: ["page", "sibling", "new"],
-                value: {
-                  target: siteEditorUI,
-                  method: "createPageWithTitle",
-                  args: ["New page", "sibling"],
-                },
-                eventName: "super-daemon-element-method",
-                path: "CMS/action/create/page/sibling",
-              },
-              {
-                title: "👶 New child page",
-                icon: "hax:add-child-page",
-                tags: ["page", "child", "new"],
-                value: {
-                  target: siteEditorUI,
-                  method: "createPageWithTitle",
-                  args: ["New child page", "child"],
-                },
-                eventName: "super-daemon-element-method",
-                path: "CMS/action/create/page/child",
-              },
-              {
-                title: `📋 Duplicate "${currentItem ? currentItem.title : "current page"}" `,
-                icon: "hax:duplicate",
-                tags: ["page", "duplicate", "copy"],
-                value: {
-                  target: siteEditorUI,
-                  method: "createPageWithTitle",
-                  args: [
-                    currentItem ? currentItem.title + " Copy" : "Page Copy",
-                    "duplicate",
-                  ],
-                },
-                eventName: "super-daemon-element-method",
-                path: "CMS/action/create/page/duplicate",
-              },
-            ];
+            return [{
+              title: "Type a page title to see creation options",
+              icon: "hax:keyboard",
+              tags: ["instruction"],
+              value: { disabled: true },
+              eventName: "disabled",
+              path: "Type page title",
+            }];
           }
 
           const title = input.trim();
+          
+          try {
+            // Get available page templates
+            const pageTemplates = await siteEditorUI.getPageTemplates();
+            const results = [];
 
-          // While typing, show creation options with the typed title
-          // These can be clicked, but Enter key will default to sibling creation
-          return [
-            {
-              title: `📄 Create page "${title}" `,
+            // Add blank page option first
+            results.push({
+              title: `📄 Create blank page "${title}" `,
               icon: "hax:add-page",
-              tags: ["page", "sibling", "create"],
+              tags: ["page", "blank", "create"],
               value: {
                 target: siteEditorUI,
                 method: "createPageWithTitle",
                 args: [title, "sibling"],
               },
               eventName: "super-daemon-element-method",
-              path: "CMS/action/create/page/sibling",
-            },
-            {
-              title: `👶 Create child page "${title}" `,
-              icon: "hax:add-child-page",
-              tags: ["page", "child", "create"],
-              value: {
-                target: siteEditorUI,
-                method: "createPageWithTitle",
-                args: [title, "child"],
-              },
-              eventName: "super-daemon-element-method",
-              path: "CMS/action/create/page/child",
-            },
-            {
-              title: `📋 Duplicate with title "${title}" `,
-              icon: "hax:duplicate",
-              tags: ["page", "duplicate", "create"],
-              value: {
-                target: siteEditorUI,
-                method: "createPageWithTitle",
-                args: [title, "duplicate"],
-              },
-              eventName: "super-daemon-element-method",
-              path: "CMS/action/create/page/duplicate",
-            },
-          ];
+              path: "CMS/action/create/page/blank",
+            });
+
+            // Add duplicate current page option
+            if (currentItem) {
+              results.push({
+                title: `📋 Create "${title}" by duplicating "${currentItem.title}" `,
+                icon: "hax:duplicate",
+                tags: ["page", "duplicate", "create"],
+                value: {
+                  target: siteEditorUI,
+                  method: "createPageWithTitle",
+                  args: [title, "duplicate"],
+                },
+                eventName: "super-daemon-element-method",
+                path: "CMS/action/create/page/duplicate",
+              });
+            }
+
+            // Add template options if templates are available
+            if (pageTemplates && pageTemplates.length > 0) {
+              pageTemplates.forEach((template, index) => {
+                results.push({
+                  title: `🎨 Create "${title}" using "${template.name}" template`,
+                  icon: "hax:templates",
+                  tags: ["template", "page", "create"],
+                  value: {
+                    target: siteEditorUI,
+                    method: "createPageWithTitle",
+                    args: [title, "sibling", template.content],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: `CMS/action/create/page/template/${template.id}`,
+                });
+              });
+            }
+
+            return results;
+          } catch (error) {
+            console.error('Error in create-page program:', error);
+            return [{
+              title: `Error: ${error.message}`,
+              icon: "icons:error",
+              tags: ["error"],
+              value: { disabled: true },
+              eventName: "disabled",
+              path: "Error occurred",
+            }];
+          }
         },
       },
     });
+
 
     SuperDaemonInstance.defineOption({
       title: "Magic File Wand",

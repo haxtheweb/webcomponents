@@ -9,7 +9,7 @@
     "description": "Wrapper on the spotify player embed option",
     "icon": "hax:spotify",
     "color": "green",
-    "tags": ["Audio / Video", "music", "spotify"],
+    "tags": ["Media", "music", "spotify"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"

@@ -1,29 +1,205 @@
-<page-template name="Demo H1" schema="block" enforce-styles="enforce-styles" data-haxsg-id="header-demo-h1">
-  <h1 data-primary="22" data-font-size="xxl" data-font-family="primary" data-font-weight="bold" data-padding="l" data-margin="xl" data-text-align="center" data-design-treatment="bg">Demo Heading 1 for HAXcellence</h1>
+<page-template name="Music Video Player" schema="block" enforce-styles="enforce-styles" data-haxsg-id="music-video-player">
+  <video-player 
+    source="https://www.youtube.com/watch?v=VIDEOID" 
+    accent-color="grey" 
+    crossorigin="anonymous" 
+    sticky-corner="none" 
+    element-visible 
+    source-type="youtube" 
+    lang="en" 
+    sources="[]" 
+    data-text-align="center"
+    media-title="Music Video Title"
+    thumbnail-src=""
+    track=""
+    hide-transcript>
+  </video-player>
 </page-template>
 
-<page-template name="Demo H2" schema="block" enforce-styles="enforce-styles" data-haxsg-id="header-demo-h2">
-  <h2 data-primary="16" data-font-size="xl" data-font-family="primary" data-font-weight="medium" data-padding="m" data-margin="l" data-text-align="left" data-design-treatment="horz-full">Demo Heading 2 for HAXcellence</h2>
+<page-template name="Spotify Track Embed" schema="block" enforce-styles="enforce-styles" data-haxsg-id="spotify-embed">
+  <spotify-embed 
+    source="https://open.spotify.com/track/TRACKID" 
+    size="compact" 
+    type="track" 
+    playlistid="TRACKID">
+  </spotify-embed>
 </page-template>
 
-<page-template name="Demo H3" schema="block" enforce-styles="enforce-styles" data-haxsg-id="header-demo-h3">
-  <h3 data-primary="20" data-font-size="l" data-font-family="navigation" data-font-weight="normal" data-padding="s" data-margin="m" data-text-align="left" data-design-treatment="bg">Demo Heading 3 for HAXcellence</h3>
+<page-template name="Album Cover Image" schema="block" enforce-styles="enforce-styles" data-haxsg-id="album-cover-image">
+  <media-image 
+    source="files/album-cover.jpg" 
+    card 
+    accent-color="grey" 
+    size="wide" 
+    offset="none" 
+    alt="Album cover for [Artist Name - Album Title]" 
+    caption="Album cover image with source attribution"
+    modal-title="Album cover for [Artist Name - Album Title]" 
+    _has-caption>
+  </media-image>
 </page-template>
 
-<page-template name="Demo Paragraph" schema="block" enforce-styles="enforce-styles" data-haxsg-id="p-demo">
-  <p data-primary="9" data-font-size="m" data-font-family="body" data-font-weight="normal" data-padding="xs" data-margin="s" data-text-align="justify">This is a demo paragraph style with HAXcellence branding and design treatments for consistent content styling throughout the site.</p>
+<page-template name="Historical Image" schema="block" enforce-styles="enforce-styles" data-haxsg-id="historical-image">
+  <media-image 
+    source="files/historical-image.jpg" 
+    card 
+    accent-color="grey" 
+    size="wide" 
+    offset="none" 
+    alt="Historical photograph description" 
+    caption="Historical image with source and date attribution"
+    modal-title="Historical photograph description" 
+    _has-caption>
+  </media-image>
 </page-template>
 
-<page-template name="Demo List" schema="block" enforce-styles="enforce-styles" data-haxsg-id="list-demo">
+<page-template name="Course Reading Download" schema="block" enforce-styles="enforce-styles" data-haxsg-id="reading-download">
+  <worksheet-download 
+    title="Download Reading Title" 
+    link="files/reading.pdf">
+  </worksheet-download>
+</page-template>
+
+<page-template name="Important Note" schema="block" enforce-styles="enforce-styles" data-haxsg-id="important-note">
+  <stop-note 
+    title="Important Note" 
+    accent-color="grey" 
+    icon="stopnoteicons:warning-icon" 
+    status="warning" 
+    message="Important course information">
+    <p slot="message">Important course information goes here</p>
+  </stop-note>
+</page-template>
+
+<page-template name="Expandable Content" schema="block" enforce-styles="enforce-styles" data-haxsg-id="expandable-content">
+  <a11y-collapse 
+    heading="Additional Information" 
+    heading-button 
+    accent-color="grey" 
+    icon="icons:expand-more" 
+    tooltip="expand" 
+    label="expand" 
+    data-design-treatment="bg" 
+    data-primary="5">
+    <p>Expandable content for detailed information, lyrics, or supplementary material.</p>
+  </a11y-collapse>
+</page-template>
+
+<page-template name="Song Analysis Layout" schema="area" enforce-styles="enforce-styles" data-haxsg-id="song-analysis-layout">
+  <grid-plate item-margin="8" item-padding="8" layout="1-1" disable-responsive style="--grid-plate-item-padding: 8px; --grid-plate-item-margin: 8px;">
+    <div slot="col-1">
+      <p data-font-size="s" data-font-weight="medium" data-text-align="center" data-margin="center" data-padding="xs">
+        <b>Artist Name – "Song Title" (Country, Year)</b>
+      </p>
+      <spotify-embed source="https://open.spotify.com/track/TRACKID" size="compact" playlistid="TRACKID" type="track"></spotify-embed>
+    </div>
+    <p slot="col-2" data-margin="xs" data-padding="xs">
+      Analysis of the song's significance, musical characteristics, and cultural impact within the context of punk history and development.
+    </p>
+  </grid-plate>
+</page-template>
+
+<page-template name="Lyrics Comparison" schema="area" enforce-styles="enforce-styles" data-haxsg-id="lyrics-comparison">
+  <grid-plate item-margin="4" item-padding="4" layout="1-1" disable-responsive style="--grid-plate-item-padding: 4px; --grid-plate-item-margin: 4px;">
+    <a11y-collapse heading="Lyrics (Original Language)" heading-button accent-color="grey" icon="icons:expand-more" tooltip="expand" label="expand" data-design-treatment="bg" data-primary="5" slot="col-1">
+      <p data-font-size="3xs">Original language lyrics here</p>
+    </a11y-collapse>
+    <a11y-collapse heading="Lyrics (English Translation)" heading-button accent-color="grey" icon="icons:expand-more" tooltip="expand" label="expand" data-design-treatment="bg" data-primary="5" slot="col-2">
+      <p data-font-size="3xs">English translation of lyrics here</p>
+    </a11y-collapse>
+  </grid-plate>
+</page-template>
+
+<page-template name="Image with Context" schema="area" enforce-styles="enforce-styles" data-haxsg-id="image-with-context">
+  <grid-plate item-margin="16" item-padding="16" layout="1-1" disable-responsive>
+    <p slot="col-1">Contextual text that introduces or explains the significance of the accompanying image, providing historical or cultural background.</p>
+    <media-image source="files/contextual-image.jpg" card slot="col-2" accent-color="grey" size="wide" offset="none" alt="Descriptive alt text" caption="Image caption with proper source attribution" modal-title="Image caption with proper source attribution" _has-caption></media-image>
+  </grid-plate>
+</page-template>
+
+<page-template name="Historical Context Section" schema="area" enforce-styles="enforce-styles" data-haxsg-id="historical-context">
+  <grid-plate item-margin="16" item-padding="16" layout="1-1" disable-responsive>
+    <div slot="col-1">
+      <h2 data-primary="16" data-font-size="xl" data-font-family="primary" data-font-weight="medium" data-padding="m" data-margin="l" data-text-align="left" data-design-treatment="horz-full">Historical Context Title</h2>
+      <p data-primary="9" data-font-size="m" data-font-family="body" data-font-weight="normal" data-padding="xs" data-margin="s" data-text-align="justify">Historical background information that explains the significance of events that influenced music development and cultural movements.</p>
+    </div>
+    <media-image source="files/historical-context-image.jpg" card slot="col-2" accent-color="grey" size="wide" offset="none" alt="Historical image description" caption="Historical image with source and date attribution" modal-title="Historical image with source and date attribution" _has-caption></media-image>
+  </grid-plate>
+</page-template>
+
+<page-template name="Lesson Introduction Page" schema="page" data-haxsg-id="page-lesson-intro">
+  <grid-plate item-margin="16" item-padding="16" layout="1-1" disable-responsive>
+    <div slot="col-1">
+      <p data-primary="9" data-font-size="l" data-font-family="body" data-font-weight="normal" data-padding="m" data-margin="l">Welcome to <i>Lesson Title: Lesson Subtitle</i>, where we explore the key themes and musical developments of this era. This lesson will examine the cultural, social, and musical factors that shaped this important period in music history.</p>
+    </div>
+    <media-image source="files/lesson-hero-image.jpg" card slot="col-2" accent-color="grey" size="wide" offset="none" alt="Relevant image for lesson theme" caption="Image caption with source" modal-title="Image caption with source" _has-caption></media-image>
+  </grid-plate>
+
+  <h2 data-primary="16" data-font-size="xl" data-font-family="primary" data-font-weight="medium" data-padding="m" data-margin="l" data-text-align="left" data-design-treatment="horz-full">Learning Objectives</h2>
+  <p data-primary="9" data-font-size="m" data-font-family="body" data-font-weight="normal" data-padding="xs" data-margin="s" data-text-align="justify">By the end of this lesson, you should be able to:</p>
   <ul data-padding="m" data-margin="l" data-primary="18" data-design-treatment="bg">
-    <li>Demo list item with HAXcellence styling</li>
-    <li>Consistent spacing and design treatment</li>
-    <li>Perfect for content organization</li>
+    <li>Identify key musical characteristics of the genre/movement</li>
+    <li>Analyze the cultural and social factors that influenced the music</li>
+    <li>Recognize important artists and their contributions to the movement</li>
   </ul>
+
+  <h2 data-primary="16" data-font-size="xl" data-font-family="primary" data-font-weight="medium" data-padding="m" data-margin="l" data-text-align="left" data-design-treatment="horz-full">Historical Context</h2>
+  <p data-primary="9" data-font-size="m" data-font-family="body" data-font-weight="normal" data-padding="xs" data-margin="s" data-text-align="justify">Background information that sets the stage for understanding the musical and cultural developments covered in this lesson.</p>
 </page-template>
 
-<page-template name="Demo Quote" schema="block" enforce-styles="enforce-styles" data-haxsg-id="quote-demo">
-  <blockquote data-primary="14" data-font-size="l" data-font-family="body" data-font-weight="light" data-padding="l" data-margin="xl" data-text-align="center" data-design-treatment="bg" data-border-radius="md">
-    "HAX is a radically simple way to create, share, and remix web content without needing to understand web code."
-  </blockquote>
+<page-template name="Musical Analysis Page" schema="page" data-haxsg-id="page-musical-analysis">
+  <p data-primary="9" data-font-size="l" data-font-family="body" data-font-weight="normal" data-padding="m" data-margin="l" data-text-align="center">This page examines key songs and artists that exemplify the themes and musical developments of this genre/movement. As you listen, consider how each track embodies the relevant musical and cultural characteristics.</p>
+
+  <grid-plate item-margin="8" item-padding="8" layout="1-1" disable-responsive style="--grid-plate-item-padding: 8px; --grid-plate-item-margin: 8px;">
+    <div slot="col-1">
+      <p data-font-size="s" data-font-weight="medium" data-text-align="center" data-margin="center" data-padding="xs">
+        <b>Artist Name – "Song Title" (Country/Location, Year)</b>
+      </p>
+      <spotify-embed source="https://open.spotify.com/track/TRACKID" size="compact" playlistid="TRACKID" type="track"></spotify-embed>
+    </div>
+    <p slot="col-2" data-margin="xs" data-padding="xs">
+      Analysis of the song's significance, musical characteristics, and cultural impact. Discussion of how this piece represents the broader themes of the movement.
+    </p>
+  </grid-plate>
+
+  <grid-plate item-margin="4" item-padding="4" layout="1-1" disable-responsive style="--grid-plate-item-padding: 4px; --grid-plate-item-margin: 4px;">
+    <a11y-collapse heading="Lyrics (Original)" heading-button accent-color="grey" icon="icons:expand-more" tooltip="expand" label="expand" data-design-treatment="bg" data-primary="5" slot="col-1">
+      <p data-font-size="3xs">Original lyrics in source language</p>
+    </a11y-collapse>
+    <a11y-collapse heading="Lyrics (English)" heading-button accent-color="grey" icon="icons:expand-more" tooltip="expand" label="expand" data-design-treatment="bg" data-primary="5" slot="col-2">
+      <p data-font-size="3xs">English translation of lyrics</p>
+    </a11y-collapse>
+  </grid-plate>
+
+  <h2 data-primary="16" data-font-size="xl" data-font-family="primary" data-font-weight="medium" data-padding="m" data-margin="l" data-text-align="left" data-design-treatment="horz-full">Cultural Impact</h2>
+  <p data-primary="9" data-font-size="m" data-font-family="body" data-font-weight="normal" data-padding="xs" data-margin="s" data-text-align="justify">Discussion of how these songs influenced the broader movement and their lasting legacy in music history.</p>
+</page-template>
+
+<page-template name="Reading and Media Resources Page" schema="page" data-haxsg-id="page-reading-media">
+  <h2 data-primary="1" data-design-treatment="bg" data-instructional-action="content" data-font-size="xl" data-font-family="primary" data-font-weight="medium" data-padding="m" data-margin="l" data-text-align="center">Reading</h2>
+  
+  <h2 data-primary="20" data-font-size="l" data-font-family="navigation" data-font-weight="normal" data-padding="s" data-margin="m" data-text-align="left" data-design-treatment="bg">Reading 1</h2>
+  <p data-accent="2" data-border-radius="xs" data-border="sm" data-padding="xs" data-margin="s">
+    Author, A. A. (Year). "Chapter Title" in <em>Book Title</em>. Publisher. (pp. xx-xx).
+  </p>
+  <worksheet-download title="Download Chapter Title, Book Title" link="files/reading1.pdf"></worksheet-download>
+
+  <h2 data-primary="20" data-font-size="l" data-font-family="navigation" data-font-weight="normal" data-padding="s" data-margin="m" data-text-align="left" data-design-treatment="bg">Reading 2</h2>
+  <p data-accent="2" data-border-radius="xs" data-border="sm" data-padding="xs" data-margin="s">
+    Author, B. B. (Year). "Chapter Title" in <em>Book Title</em>. Publisher. (pp. xx-xx).
+  </p>
+  <worksheet-download title="Download Chapter Title, Book Title" link="files/reading2.pdf"></worksheet-download>
+
+  <h2 data-design-treatment="bg" data-primary="22" data-instructional-action="activity" data-font-size="xl" data-font-family="primary" data-font-weight="medium" data-padding="m" data-margin="l" data-text-align="center">Video</h2>
+
+  <h2 data-primary="20" data-font-size="l" data-font-family="navigation" data-font-weight="normal" data-padding="s" data-margin="m" data-text-align="left" data-design-treatment="bg">Video 1</h2>
+  <h4 data-font-size="m" data-font-weight="medium" data-margin="xs">Video Title</h4>
+  <p data-font-weight="bold" data-margin="xs"><b>Duration: X minutes</b></p>
+  <p data-primary="9" data-font-size="m" data-font-family="body" data-font-weight="normal" data-padding="xs" data-margin="s" data-text-align="justify">Description of the video content and its relevance to the lesson themes.</p>
+  <video-player source="https://www.youtube.com/watch?v=VIDEOID" accent-color="grey" crossorigin="anonymous" sticky-corner="none" element-visible source-type="youtube" lang="en" sources="[]" media-title="Video Title" data-text-align="center"></video-player>
+
+  <h2 data-primary="20" data-font-size="l" data-font-family="navigation" data-font-weight="normal" data-padding="s" data-margin="m" data-text-align="left" data-design-treatment="bg">Video 2</h2>
+  <h4 data-font-size="m" data-font-weight="medium" data-margin="xs">Artist Name - "Song Title"</h4>
+  <p data-primary="9" data-font-size="m" data-font-family="body" data-font-weight="normal" data-padding="xs" data-margin="s" data-text-align="justify">Context about the performance, historical significance, or analysis of the musical piece.</p>
+  <video-player source="https://www.youtube.com/watch?v=VIDEOID" accent-color="grey" crossorigin="anonymous" sticky-corner="none" element-visible source-type="youtube" lang="en" sources="[]" media-title="Artist Name - Song Title" data-text-align="center"></video-player>
 </page-template>

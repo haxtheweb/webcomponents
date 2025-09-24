@@ -242,7 +242,7 @@ describe("audio-player test", () => {
       expect(haxProps.gizmo.description).to.contain("accessible");
       expect(haxProps.gizmo.icon).to.equal("av:music-video");
       expect(haxProps.gizmo.color).to.equal("green");
-      expect(haxProps.gizmo.tags).to.include("Audio / Video");
+      expect(haxProps.gizmo.tags).to.include("Media");
       expect(haxProps.gizmo.tags).to.include("mp3");
     });
 

@@ -392,7 +392,7 @@ class MediaImage extends DDD {
         icon: "editor:insert-photo",
         color: "indigo",
         tags: [
-          "Images",
+          "Media",
           "media",
           "core",
           "figure",
