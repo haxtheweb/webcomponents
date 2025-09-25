@@ -2843,6 +2843,93 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
 
+    // Core site navigation programs - available regardless of theme
+    SuperDaemonInstance.defineOption({
+      title: "Go to page in this site",
+      icon: "link",
+      tags: ["Site", "navigation"],
+      eventName: "super-daemon-run-program",
+      context: ["CMS"],
+      path: "/site/navigation",
+      value: {
+        name: "Go to page",
+        context: ["CMS"],
+        program: async (input, values) => {
+          let results = [];
+          const manifest = toJS(store.routerManifest) || toJS(store.manifest);
+          if (manifest && manifest.items && manifest.items.length > 0) {
+            manifest.items.forEach(async (item) => {
+              if (
+                item.title.toLowerCase().includes(input.toLowerCase()) ||
+                input === ""
+              ) {
+                results.push({
+                  title: item.title,
+                  icon: "link",
+                  tags: ["CMS", "page"],
+                  value: {
+                    target: globalThis.location,
+                    method: "assign",
+                    args: [item.slug],
+                  },
+                  context: ["CMS"],
+                  eventName: "super-daemon-element-method",
+                  path: "site/navigation/page",
+                });
+              }
+            });
+          }
+          return results;
+        },
+      },
+    });
+
+    // Core site page linking program - available in HAX editor for linking to pages
+    SuperDaemonInstance.defineOption({
+      title: "Link to site page",
+      icon: "hax:file-link-outline",
+      tags: ["Search", "pages", "links"],
+      eventName: "super-daemon-run-program",
+      path: "/sources/site-pages",
+      context: ["HAX", "/"],
+      priority: -1,
+      value: {
+        name: "Search pages",
+        context: ["HAX", "/"],
+        program: async (input, values) => {
+          let results = [];
+          const manifest = toJS(store.routerManifest) || toJS(store.manifest);
+          if (manifest && manifest.items && manifest.items.length > 0) {
+            manifest.items.forEach(async (item) => {
+              if (
+                item.title.toLowerCase().includes(input.toLowerCase()) ||
+                input === ""
+              ) {
+                results.push({
+                  title: item.title,
+                  icon: "link",
+                  tags: ["CMS", "page"],
+                  value: {
+                    value: "a",
+                    eventName: "insert-tag",
+                    properties: {
+                      href: item.slug,
+                      "data-uuid": item.id,
+                    },
+                    content: item.title,
+                  },
+                  context: ["HAX", "/", "/sources/site-pages"],
+                  eventName: "hax-super-daemon-insert-tag",
+                  path: "/sources/site-pages",
+                });
+              }
+            });
+          }
+          return results;
+        },
+      },
+    });
+
     this.updateAvailableButtons();
     // load user data
     this.dispatchEvent(
