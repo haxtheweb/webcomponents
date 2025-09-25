@@ -944,30 +944,46 @@ export const DDDVariables = css`
       --ddd-theme-header-border-treatment-lg
     );
 
-    /* shadows */
-    --ddd-boxShadow-0: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-    --ddd-boxShadow-sm: rgba(0, 3, 33, 0.063) 0px 4px 8px 0px;
-    --ddd-boxShadow-md: rgba(0, 3, 33, 0.063) 0px 8px 16px 0px;
-    --ddd-boxShadow-lg: rgba(0, 3, 33, 0.063) 0px 12px 24px 0px;
-    --ddd-boxShadow-xl: rgba(0, 3, 33, 0.063) 0px 16px 32px 0px;
+    /* ===========================================
+       BOX SHADOWS
+       Elevation system for depth and hierarchy
+       Usage: box-shadow: var(--ddd-boxShadow-md);
+       =========================================== */
+    --ddd-boxShadow-0: 0px 0px 0px 0px rgba(0, 0, 0, 0);           /* No shadow */
+    --ddd-boxShadow-sm: rgba(0, 3, 33, 0.063) 0px 4px 8px 0px;     /* Subtle elevation */
+    --ddd-boxShadow-md: rgba(0, 3, 33, 0.063) 0px 8px 16px 0px;    /* Standard elevation */
+    --ddd-boxShadow-lg: rgba(0, 3, 33, 0.063) 0px 12px 24px 0px;   /* High elevation */
+    --ddd-boxShadow-xl: rgba(0, 3, 33, 0.063) 0px 16px 32px 0px;   /* Maximum elevation */
 
-    /* breakpoints */
-    --ddd-breakpoint-sm: 360px;
-    --ddd-breakpoint-md: 768px;
-    --ddd-breakpoint-lg: 1080px;
-    --ddd-breakpoint-xl: 1440px;
+    /* ===========================================
+       BREAKPOINTS
+       Responsive design breakpoints
+       Usage: @media (min-width: var(--ddd-breakpoint-md)) { ... }
+       =========================================== */
+    --ddd-breakpoint-sm: 360px;   /* Small devices (phones) */
+    --ddd-breakpoint-md: 768px;   /* Medium devices (tablets) */
+    --ddd-breakpoint-lg: 1080px;  /* Large devices (laptops) */
+    --ddd-breakpoint-xl: 1440px;  /* Extra large devices (desktops) */
 
-    /* Radius */
-    --ddd-radius-0: 0px;
-    --ddd-radius-xs: 4px;
-    --ddd-radius-sm: 8px;
-    --ddd-radius-md: 12px;
-    --ddd-radius-lg: 16px;
-    --ddd-radius-xl: 20px;
-    --ddd-radius-rounded: 100px;
-    --ddd-radius-circle: 100%;
+    /* ===========================================
+       BORDER RADIUS
+       Corner rounding for consistent shape language
+       Usage: border-radius: var(--ddd-radius-md);
+       =========================================== */
+    --ddd-radius-0: 0px;          /* Sharp corners */
+    --ddd-radius-xs: 4px;         /* Subtle rounding */
+    --ddd-radius-sm: 8px;         /* Small rounding */
+    --ddd-radius-md: 12px;        /* Medium rounding */
+    --ddd-radius-lg: 16px;        /* Large rounding */
+    --ddd-radius-xl: 20px;        /* Extra large rounding */
+    --ddd-radius-rounded: 100px;  /* Pill shape */
+    --ddd-radius-circle: 100%;    /* Perfect circle */
 
-    /* Gradients */
+    /* ===========================================
+       GRADIENTS
+       Pre-defined gradient patterns for consistent theming
+       Usage: background: var(--ddd-theme-default-gradient-navBar);
+       =========================================== */
     --ddd-theme-default-gradient-navBar: linear-gradient(
       90deg,
       rgb(0, 30, 68) 0%,
@@ -1014,16 +1030,63 @@ export const DDDVariables = css`
       rgba(0, 3, 33, 0) 100%
     );
 
-    --ddd-icon-3xs: 20px;
-    --ddd-icon-xxs: 24px;
-    --ddd-icon-xs: 32px;
-    --ddd-icon-sm: 40px;
-    --ddd-icon-md: 48px;
-    --ddd-icon-lg: 56px;
-    --ddd-icon-xl: 64px;
-    --ddd-icon-2xl: 72px;
-    --ddd-icon-3xl: 84px;
-    --ddd-icon-4xl: 96px;
+    /* ===========================================
+       ICON SIZING
+       Standard icon dimensions for consistent UI
+       Usage: width: var(--ddd-icon-md); height: var(--ddd-icon-md);
+       =========================================== */
+    --ddd-icon-3xs: 20px;    /* Tiny icons (badges, indicators) */
+    --ddd-icon-xxs: 24px;    /* Small inline icons */
+    --ddd-icon-xs: 32px;     /* Default inline icons */
+    --ddd-icon-sm: 40px;     /* Button icons */
+    --ddd-icon-md: 48px;     /* Navigation icons */
+    --ddd-icon-lg: 56px;     /* Header icons */
+    --ddd-icon-xl: 64px;     /* Feature icons */
+    --ddd-icon-2xl: 72px;    /* Hero icons */
+    --ddd-icon-3xl: 84px;    /* Large decorative icons */
+    --ddd-icon-4xl: 96px;    /* Massive hero icons */
+
+    /* ===========================================
+       Z-INDEX SCALE
+       Layering system for proper element stacking
+       Usage: z-index: var(--ddd-z-modal);
+       =========================================== */
+    --ddd-z-base: 0;         /* Base layer */
+    --ddd-z-dropdown: 100;   /* Dropdown menus */
+    --ddd-z-sticky: 200;     /* Sticky positioned elements */
+    --ddd-z-overlay: 300;    /* Background overlays */
+    --ddd-z-modal: 10000;    /* Modal dialogs and critical UI */
+    --ddd-z-tooltip: 500;    /* Tooltips and popovers */
+
+    /* ===========================================
+       OPACITY SCALE
+       Standardized transparency values (base 4)
+       Usage: opacity: var(--ddd-opacity-60);
+       =========================================== */
+    --ddd-opacity-0: 0;      /* Fully transparent */
+    --ddd-opacity-20: 0.2;   /* Very light */
+    --ddd-opacity-40: 0.4;   /* Light */
+    --ddd-opacity-60: 0.6;   /* Medium */
+    --ddd-opacity-80: 0.8;   /* Strong */
+    --ddd-opacity-100: 1;    /* Fully opaque */
+
+    /* ===========================================
+       ANIMATION TIMING
+       Standard animation and transition durations
+       Usage: transition: all var(--ddd-duration-normal) var(--ddd-timing-ease);
+       =========================================== */
+    --ddd-duration-fast: 150ms;    /* Quick interactions (2x speed) */
+    --ddd-duration-normal: 300ms;  /* Standard transitions */
+    --ddd-duration-slow: 600ms;    /* Slow transitions (1/2 speed) */
+    --ddd-timing-ease: cubic-bezier(0.4, 0, 0.2, 1); /* Material design easing */
+
+    /* ===========================================
+       FOCUS SYSTEM
+       Standardized focus indicators for accessibility
+       Usage: outline: var(--ddd-focus-ring); outline-offset: var(--ddd-focus-offset);
+       =========================================== */
+    --ddd-focus-ring: 2px solid var(--ddd-theme-default-link); /* Focus ring style */
+    --ddd-focus-offset: 2px;  /* Focus ring offset distance */
 
     --simple-modal-content-container-color: light-dark(
       var(--ddd-primary-4),
