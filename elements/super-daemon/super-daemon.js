@@ -207,9 +207,23 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     if (!target) {
       target = this.wandTarget;
     }
-    this.mini = true;
-    this.wand = true;
-    this.activeNode = target;
+    
+    // Check if we're on mobile and if this is a page creation program
+    const isMobile = globalThis.matchMedia && globalThis.matchMedia("(max-width: 768px)").matches;
+    const isPageCreation = params && params.length > 0 && 
+      (params[0] === "create-page" || (params[3] && params[3] === "create-page"));
+    
+    // On mobile, use full popup mode for page creation instead of mini mode
+    if (isMobile && isPageCreation) {
+      this.mini = false;
+      this.wand = false;
+      this.activeNode = null;
+    } else {
+      this.mini = true;
+      this.wand = true;
+      this.activeNode = target;
+    }
+    
     this.runProgram(...params);
     if (sound) {
       this.playSound(sound);
@@ -474,7 +488,10 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           display: block;
         }
         web-dialog {
-          --dialog-border-radius: var(--simple-modal-border-radius, 2px);
+          --dialog-border-radius: var(
+            --simple-modal-border-radius,
+            var(--ddd-radius-xs)
+          );
           z-index: var(--simple-modal-z-index, 10000) !important;
           padding: 0;
           color: var(--simple-colors-default-theme-grey-12, black);
@@ -514,40 +531,61 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         }
         #cancel {
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: var(--ddd-spacing-0);
+          top: var(--ddd-spacing-0);
           z-index: 100000000;
           display: block;
           margin: 0;
-          --simple-icon-width: 24px;
-          --simple-icon-height: 24px;
+          --simple-icon-width: var(--ddd-icon-xxs);
+          --simple-icon-height: var(--ddd-icon-xxs);
         }
         :host([wand]) absolute-position-behavior {
-          top: 24px !important;
+          top: var(--ddd-spacing-6) !important;
           right: 0;
           position: fixed !important;
           display: table;
+          /* Expand to available width when in wand mode at top */
+          left: var(--ddd-spacing-6);
+          width: calc(100vw - var(--ddd-spacing-12));
+          max-width: calc(100vw - 200px); /* Leave space for user menu */
         }
         absolute-position-behavior {
           z-index: var(--simple-modal-z-index, 10000);
-          min-width: 280px;
-          width: 280px;
+          min-width: var(--super-daemon-width, 300px);
+          width: var(--super-daemon-width, 300px);
           color: var(--simple-colors-default-theme-grey-12, black);
         }
         absolute-position-behavior super-daemon-ui[mini][wand] {
           margin: -18px 0 0 0;
-          padding: 0px;
+          padding: 0;
+          width: 30vw; /* Use full expanded width in wand mode */
         }
         absolute-position-behavior super-daemon-ui {
-          width: 280px;
-          margin: -64px 0 0 -8px;
-          padding: 4px 0 0 0;
+          width: var(--super-daemon-width, 300px);
+          margin: calc(-1 * var(--ddd-spacing-16)) 0 0
+            calc(-1 * var(--ddd-spacing-2));
+          padding: var(--ddd-spacing-1) 0 0 0;
           color: var(--simple-colors-default-theme-grey-12, black);
           background-color: var(--simple-colors-default-theme-grey-1, white);
         }
         super-daemon-ui {
           color: var(--simple-colors-default-theme-grey-12, black);
           background-color: var(--simple-colors-default-theme-grey-1, white);
+        }
+        
+        /* Responsive adjustments for wand mode expansion */
+        @media screen and (max-width: 1200px) {
+          :host([wand]) absolute-position-behavior {
+            max-width: calc(100vw - 150px); /* Less space for user menu on smaller screens */
+          }
+        }
+        
+        @media screen and (max-width: 768px) {
+          :host([wand]) absolute-position-behavior {
+            max-width: calc(100vw - 60px); /* Even less space on mobile */
+            left: var(--ddd-spacing-2);
+            width: calc(100vw - var(--ddd-spacing-4));
+          }
         }
       `,
     ];

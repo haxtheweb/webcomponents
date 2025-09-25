@@ -65,21 +65,22 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
       css`
         :host {
           display: block;
-          margin: 8px 16px;
+          margin: var(--ddd-spacing-2) var(--ddd-spacing-4);
           color: var(--simple-colors-default-theme-accent-12, black);
           background-color: var(--simple-colors-default-theme-accent-1, white);
         }
         :host([active]) {
           cursor: pointer;
-          border-radius: 4px;
+          border-radius: var(--ddd-radius-xs);
           background-color: var(
             --super-daemon-row-hover,
             var(--simple-colors-default-theme-accent-3, rgba(0, 100, 200, 0.15))
           );
-          outline: 2px solid var(
-            --super-daemon-row-outline,
-            var(--simple-colors-default-theme-accent-8, #0066cc)
-          );
+          outline: var(--ddd-border-sm) solid
+            var(
+              --super-daemon-row-outline,
+              var(--simple-colors-default-theme-accent-8, #0066cc)
+            );
           color: var(
             --simple-colors-default-theme-accent-12,
             var(--simple-colors-default-theme-grey-1, black)
@@ -106,7 +107,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         }
         button {
           display: flex;
-          padding: 8px;
+          padding: var(--ddd-spacing-2);
           width: 100%;
           border-radius: 0;
           color: var(--simple-colors-default-theme-accent-12, black);
@@ -117,7 +118,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           background-color: transparent;
         }
         :host([mini]) button {
-          padding: 4px;
+          padding: var(--ddd-spacing-1);
           justify-content: flex-start;
           align-items: center;
         }
@@ -132,12 +133,12 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         }
         .result-image {
           display: inline-flex;
-          height: 64px;
+          height: var(--ddd-spacing-16);
           width: 100px;
         }
         .result-textCharacter {
           display: inline-flex;
-          max-height: 64px;
+          max-height: var(--ddd-spacing-16);
           max-width: 100px;
           font-size: 42px;
         }
@@ -147,22 +148,22 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           width: 20px;
         }
         :host([mini]) .result-image {
-          height: 32px;
+          height: var(--ddd-spacing-8);
           width: 50px;
         }
         .label-wrap {
-          margin-left: 16px;
+          margin-left: var(--ddd-spacing-4);
           min-width: 70%;
           overflow: hidden;
           text-align: left;
         }
         :host([mini]) .label-wrap {
           width: 100%;
-          margin-left: 12px;
+          margin-left: var(--ddd-spacing-3);
         }
         .tags {
-          line-height: 32px;
-          height: 64px;
+          line-height: var(--ddd-spacing-8);
+          height: var(--ddd-spacing-16);
           text-align: left;
           overflow: hidden;
         }
@@ -170,13 +171,13 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           display: none;
         }
         .label-wrap .action {
-          font-size: var(--super-daemon-row-label, 32px);
+          font-size: var(--super-daemon-row-label, 24px);
           font-weight: bold;
           max-width: 90%;
           word-break: break-all;
           overflow: hidden;
-          line-height: var(--super-daemon-row-label, 32px);
-          height: var(--super-daemon-row-label, 32px);
+          line-height: var(--super-daemon-row-label, 24px);
+          height: var(--super-daemon-row-label, 24px);
         }
         :host([mini]) .label-wrap .action {
           max-width: unset;
@@ -184,7 +185,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         .label-wrap .path {
           font-size: var(--super-daemon-row-path, 20px);
           font-style: italic;
-          margin-top: 6px;
+          margin-top: var(--ddd-spacing-1, 6px);
           overflow-wrap: break-word;
           word-break: break-all;
           overflow: hidden;
@@ -196,10 +197,10 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           max-width: unset;
         }
         .more {
-          --simple-icon-width: 40px;
-          --simple-icon-height: 40px;
-          width: 40px;
-          height: 40px;
+          --simple-icon-width: var(--ddd-icon-sm);
+          --simple-icon-height: var(--ddd-icon-sm);
+          width: var(--ddd-icon-sm);
+          height: var(--ddd-icon-sm);
           display: block;
         }
         summary {
@@ -217,9 +218,10 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         }
 
         details[open] {
-          padding: 0 16px 16px 16px;
+          padding: 0 var(--ddd-spacing-4) var(--ddd-spacing-4)
+            var(--ddd-spacing-4);
           animation: details-show 100ms ease-in-out;
-          line-height: 16px;
+          line-height: var(--ddd-spacing-4);
           font-size: 12px;
         }
       `,

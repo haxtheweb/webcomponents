@@ -2146,6 +2146,25 @@
             },
             {
               "kind": "method",
+              "name": "_updateActiveDescendant",
+              "parameters": [
+                {
+                  "name": "index",
+                  "description": "The index of the selected item (-1 for none)",
+                  "type": {
+                    "text": "number"
+                  }
+                }
+              ],
+              "description": "Update aria-activedescendant and manage selection state for accessibility"
+            },
+            {
+              "kind": "method",
+              "name": "_announceResults",
+              "description": "Announce results count to screen readers"
+            },
+            {
+              "kind": "method",
               "name": "itemSelected",
               "parameters": [
                 {
@@ -2438,6 +2457,26 @@
               },
               "default": "\"hardware:keyboard-return\"",
               "attribute": "icon"
+            },
+            {
+              "kind": "field",
+              "name": "_selectedIndex",
+              "privacy": "public",
+              "type": {
+                "text": "number"
+              },
+              "default": "-1",
+              "attribute": "_selectedIndex"
+            },
+            {
+              "kind": "field",
+              "name": "_activeDescendant",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "attribute": "_activeDescendant"
             }
           ],
           "events": [
@@ -2449,6 +2488,12 @@
             },
             {
               "name": "like-changed",
+              "type": {
+                "text": "CustomEvent"
+              }
+            },
+            {
+              "name": "super-daemon-close",
               "type": {
                 "text": "CustomEvent"
               }
@@ -2578,6 +2623,22 @@
               },
               "default": "false",
               "fieldName": "focused"
+            },
+            {
+              "name": "_selectedIndex",
+              "type": {
+                "text": "number"
+              },
+              "default": "-1",
+              "fieldName": "_selectedIndex"
+            },
+            {
+              "name": "_activeDescendant",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"\"",
+              "fieldName": "_activeDescendant"
             }
           ],
           "mixins": [

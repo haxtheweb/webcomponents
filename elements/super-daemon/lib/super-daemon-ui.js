@@ -55,7 +55,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this.icon = "hardware:keyboard-return";
     // Accessibility properties for ARIA management
     this._selectedIndex = -1;
-    this._activeDescendant = '';
+    this._activeDescendant = "";
     // user scaffolding wired up to superDaemon
     autorun(() => {
       const usAction = toJS(UserScaffoldInstance.action);
@@ -129,11 +129,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         }
         super-daemon-search {
           display: flex;
-          margin: 16px;
+          margin: var(--ddd-spacing-4);
         }
         :host([wand]) super-daemon-search {
-          margin: -24px 0 0 0;
-          height: 48px;
+          margin: calc(-1 * var(--ddd-spacing-6)) 0 0 0;
+          height: var(--ddd-spacing-12);
         }
         .voice {
           --simple-icon-height: 50px;
@@ -143,8 +143,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           transition: color 0.6s ease-in-out;
         }
         :host([mini]) .voice {
-          --simple-icon-height: 24px;
-          --simple-icon-width: 24px;
+          --simple-icon-height: var(--ddd-icon-xxs);
+          --simple-icon-width: var(--ddd-icon-xxs);
         }
         .voice:hover,
         .voice:focus {
@@ -160,19 +160,19 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           --simple-icon-width: 30px;
         }
         :host([mini]) .search .user-context-icon {
-          --simple-icon-height: 24px;
-          --simple-icon-width: 24px;
-          margin-top: 0px;
+          --simple-icon-height: var(--ddd-icon-xxs);
+          --simple-icon-width: var(--ddd-icon-xxs);
+          margin-top: 0;
         }
         .loading {
           font-size: 12px;
           font-style: italic;
-          margin: 16px;
+          margin: var(--ddd-spacing-4);
         }
         .results-stats {
           font-size: 12px;
           color: var(--simple-colors-default-theme-grey-10, black);
-          padding: 8px;
+          padding: var(--ddd-spacing-2);
           float: right;
         }
         :host([focused][wand]) .results {
@@ -180,7 +180,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         }
         .results {
           width: 100%;
-          padding: 16px 0px;
+          padding: var(--ddd-spacing-4) 0;
         }
         :host([mini]) .results lit-virtualizer {
           max-height: unset;
@@ -191,7 +191,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           width: 100%;
           display: block;
           height: 50vh;
-          border: 2px solid var(--simple-colors-default-theme-grey-10, black);
+          border: var(--ddd-border-sm) solid
+            var(--simple-colors-default-theme-grey-10, black);
         }
         .results super-daemon-row {
           scroll-snap-align: start;
@@ -199,15 +200,15 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           width: -webkit-fill-available;
         }
         .no-results {
-          font-size: 32px;
+          font-size: var(--ddd-spacing-8);
           font-weight: bold;
           word-break: break-all;
           overflow: hidden;
-          line-height: 32px;
-          margin: 32px;
-          border: 1px solid transparent;
+          line-height: var(--ddd-spacing-8);
+          margin: var(--ddd-spacing-8);
+          border: var(--ddd-border-xs) solid transparent;
           box-shadow: none;
-          outline: 0px;
+          outline: 0;
         }
         .slotted {
           display: block;
@@ -221,7 +222,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           cursor: pointer;
         }
         :host([mini]) .no-results {
-          margin: 16px;
+          margin: var(--ddd-spacing-4);
         }
 
         @media screen and (max-width: 800px) {
@@ -230,7 +231,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             --simple-icon-width: 30px;
           }
           super-daemon-search {
-            margin: 8px;
+            margin: var(--ddd-spacing-2);
           }
           .results-stats {
             display: none;
@@ -240,19 +241,19 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           }
           super-daemon-row {
             --super-daemon-row-icon: 30px;
-            margin: 4px;
+            margin: var(--ddd-spacing-1);
           }
 
           super-daemon-row::part(label-wrap) {
             min-width: 70%;
           }
           super-daemon-row::part(button) {
-            padding: 4px;
+            padding: var(--ddd-spacing-1);
           }
           super-daemon-row::part(action) {
-            font-size: 24px;
-            line-height: 24px;
-            height: 24px;
+            font-size: var(--ddd-icon-xxs);
+            line-height: var(--ddd-icon-xxs);
+            height: var(--ddd-icon-xxs);
             max-width: unset;
           }
           super-daemon-row::part(tags) {
@@ -267,9 +268,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           background-color: var(--simple-colors-default-theme-grey-1, white);
         }
         :host([mini]) super-daemon-row {
-          --super-daemon-row-icon: 24px;
-          border-radius: 0px;
-          margin: 4px;
+          --super-daemon-row-icon: var(--ddd-icon-xxs);
+          border-radius: 0;
+          margin: var(--ddd-spacing-1);
         }
         :host([mini]) .results-stats {
           display: none;
@@ -293,7 +294,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         // Announce results count for screen readers and reset selection
         this._announceResults();
         this._updateActiveDescendant(-1); // Reset selection
-        
+
         const sdi = globalThis.SuperDaemonManager.requestAvailability();
         if (sdi.santaMode || this.listeningForInput) {
           clearTimeout(this._selectTimeout);
@@ -366,22 +367,24 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
    */
   _updateActiveDescendant(index) {
     this._selectedIndex = index;
-    this._activeDescendant = index >= 0 ? `option-${index}` : '';
-    
+    this._activeDescendant = index >= 0 ? `option-${index}` : "";
+
     // Trigger re-render to update aria-selected attributes in the template
     this.requestUpdate();
-    
+
     // Use requestAnimationFrame to ensure DOM is updated before setting active state
     requestAnimationFrame(() => {
       // Update active property on all options after re-render
-      this.shadowRoot.querySelectorAll('super-daemon-row').forEach((row, i) => {
+      this.shadowRoot.querySelectorAll("super-daemon-row").forEach((row, i) => {
         const isSelected = i === index;
         row.active = isSelected; // This controls the visual highlighting
       });
 
       // Scroll the selected item into view
-      if (index >= 0 && this.shadowRoot.querySelector('lit-virtualizer')) {
-        this.shadowRoot.querySelector('lit-virtualizer').scrollToIndex(index, 'center');
+      if (index >= 0 && this.shadowRoot.querySelector("lit-virtualizer")) {
+        this.shadowRoot
+          .querySelector("lit-virtualizer")
+          .scrollToIndex(index, "center");
       }
     });
   }
@@ -391,19 +394,19 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
    */
   _announceResults() {
     const count = this.filtered.length;
-    const message = `${count} ${count === 1 ? 'result' : 'results'} available`;
-    
+    const message = `${count} ${count === 1 ? "result" : "results"} available`;
+
     // Create a live region announcement
-    const announcement = globalThis.document.createElement('div');
-    announcement.setAttribute('aria-live', 'polite');
-    announcement.setAttribute('aria-atomic', 'true');
-    announcement.style.position = 'absolute';
-    announcement.style.left = '-10000px';
-    announcement.style.width = '1px';
-    announcement.style.height = '1px';
-    announcement.style.overflow = 'hidden';
+    const announcement = globalThis.document.createElement("div");
+    announcement.setAttribute("aria-live", "polite");
+    announcement.setAttribute("aria-atomic", "true");
+    announcement.style.position = "absolute";
+    announcement.style.left = "-10000px";
+    announcement.style.width = "1px";
+    announcement.style.height = "1px";
+    announcement.style.overflow = "hidden";
     announcement.textContent = message;
-    
+
     globalThis.document.body.appendChild(announcement);
     setTimeout(() => {
       if (announcement.parentNode) {
@@ -500,7 +503,9 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           e.preventDefault();
           if (this._selectedIndex >= 0) {
             // Select the currently highlighted item
-            this.shadowRoot.querySelectorAll('super-daemon-row')[this._selectedIndex].selected();
+            this.shadowRoot
+              .querySelectorAll("super-daemon-row")
+              [this._selectedIndex].selected();
           } else {
             // No selection, select first item
             this.shadowRoot.querySelector("super-daemon-row").selected();
@@ -508,26 +513,33 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           break;
         case "ArrowUp":
           e.preventDefault();
-          const prevIndex = this._selectedIndex <= 0 ? this.filtered.length - 1 : this._selectedIndex - 1;
+          const prevIndex =
+            this._selectedIndex <= 0
+              ? this.filtered.length - 1
+              : this._selectedIndex - 1;
           this._updateActiveDescendant(prevIndex);
           break;
         case "ArrowDown":
           e.preventDefault();
-          const nextIndex = this._selectedIndex >= this.filtered.length - 1 ? 0 : this._selectedIndex + 1;
+          const nextIndex =
+            this._selectedIndex >= this.filtered.length - 1
+              ? 0
+              : this._selectedIndex + 1;
           this._updateActiveDescendant(nextIndex);
           break;
         case "Escape":
           e.preventDefault();
           this._updateActiveDescendant(-1);
-          this.dispatchEvent(new CustomEvent('super-daemon-close', {
-            bubbles: true,
-            composed: true,
-            cancelable: true
-          }));
+          this.dispatchEvent(
+            new CustomEvent("super-daemon-close", {
+              bubbles: true,
+              composed: true,
+              cancelable: true,
+            }),
+          );
           break;
       }
-    }
-    else if (
+    } else if (
       e.key === "Enter" &&
       this.programName &&
       this.programSearch.trim() !== ""
@@ -625,11 +637,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     return html`
       <super-daemon-search
         role="combobox"
-        aria-expanded="${this.filtered.length > 0 ? 'true' : 'false'}"
-        aria-haspopup="listbox" 
+        aria-expanded="${this.filtered.length > 0 ? "true" : "false"}"
+        aria-haspopup="listbox"
         aria-autocomplete="list"
         aria-controls="results-listbox"
-        aria-activedescendant="${this._activeDescendant || ''}"
+        aria-activedescendant="${this._activeDescendant || ""}"
         @keydown="${this._inputKeydown}"
         @focused-changed="${this.focusedChanged}"
         @value-changed="${this.inputfilterChanged}"
@@ -671,8 +683,8 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
                 : html`
                     <lit-virtualizer
                       role="listbox"
-                      id="results-listbox" 
-                      aria-label="${this.t.results || 'Results'}"
+                      id="results-listbox"
+                      aria-label="${this.t.results || "Results"}"
                       scroller
                       .items=${this.filtered}
                       .renderItem=${(item, i) =>

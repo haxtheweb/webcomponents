@@ -1124,7 +1124,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
             // Add blank page option first
             results.push({
-              title: `📄 Create blank page "${title}" `,
+              title: `Create "${title}" `,
               icon: "hax:add-page",
               tags: ["page", "blank", "create"],
               value: {
@@ -1139,7 +1139,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             // Add duplicate current page option
             if (currentItem) {
               results.push({
-                title: `📋 Create "${title}" by duplicating "${currentItem.title}" `,
+                title: `Duplicate as "${title}"`,
                 icon: "hax:duplicate",
                 tags: ["page", "duplicate", "create"],
                 value: {
@@ -1156,7 +1156,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             if (pageTemplates && pageTemplates.length > 0) {
               pageTemplates.forEach((template, index) => {
                 results.push({
-                  title: `🎨 Create "${title}" using "${template.name}" template`,
+                  title: `Create "${title}" with "${template.name}"`,
                   icon: "hax:templates",
                   tags: ["template", "page", "create"],
                   value: {

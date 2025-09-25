@@ -190,7 +190,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         id="inputfilter"
         role="combobox"
         aria-expanded="false"
-        aria-autocomplete="list" 
+        aria-autocomplete="list"
         aria-haspopup="listbox"
         ?disabled="${this.disabled}"
         @value-changed="${this.inputfilterChanged}"
@@ -375,8 +375,8 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           margin: 0;
         }
         :host([droppable]) {
-          outline-offset: -4px;
-          outline: 4px solid rgba(255, 0, 255, 0.1);
+          outline-offset: calc(-1 * var(--ddd-spacing-1));
+          outline: var(--ddd-border-lg) solid rgba(255, 0, 255, 0.1);
         }
         :host([droppable]),
         :host([droppable]) .voice,
@@ -387,7 +387,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           background-color: rgba(255, 0, 255, 0.05);
         }
         :host([droppable][dragover]) {
-          outline: 4px dashed rgba(255, 0, 255, 0.2);
+          outline: var(--ddd-border-lg) dashed rgba(255, 0, 255, 0.2);
         }
         :host([droppable][dragover]),
         :host([droppable][dragover]) .voice,
@@ -408,11 +408,11 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           --simple-icon-button-border-radius: 0;
           color: var(--simple-colors-default-theme-grey-10, grey);
           transition: color 0.6s ease-in-out;
-          margin: 0 16px 0 4px;
+          margin: 0 var(--ddd-spacing-4) 0 var(--ddd-spacing-1);
         }
         :host([mini]) .voice {
-          --simple-icon-height: 24px;
-          --simple-icon-width: 24px;
+          --simple-icon-height: var(--ddd-icon-xxs);
+          --simple-icon-width: var(--ddd-icon-xxs);
         }
         .voice:hover,
         .voice:focus {
@@ -428,10 +428,10 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           --simple-icon-width: 30px;
         }
         :host([mini]) .user-context-icon {
-          --simple-icon-height: 32px;
-          --simple-icon-width: 32px;
-          margin-top: 8px;
-          margin-left: 6px;
+          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--ddd-icon-xs);
+          margin-top: var(--ddd-spacing-2);
+          margin-left: var(--ddd-spacing-1);
         }
         .program {
           display: inline-flex;
@@ -443,33 +443,33 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           word-wrap: break-word;
           text-overflow: clip;
           overflow: hidden;
-          line-height: 16px;
-          height: 16px;
-          padding: 2px 4px;
-          margin: 16px 0 0 -2px;
+          line-height: var(--ddd-spacing-4);
+          height: var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-1);
+          margin: var(--ddd-spacing-4) 0 0 calc(-1 * var(--ddd-spacing-1));
           font-size: 10px;
           width: 100%;
           max-width: 100px;
         }
         :host([mini]) .program {
-          line-height: 24px;
+          line-height: var(--ddd-icon-xxs);
           font-size: 12px;
-          max-width: 8px;
-          height: 24px;
-          margin: 0px;
-          padding: 0px 4px 0px 2px;
+          max-width: var(--ddd-spacing-2);
+          height: var(--ddd-icon-xxs);
+          margin: 0;
+          padding: 0 var(--ddd-spacing-1) 0 var(--ddd-spacing-1);
           font-weight: bold;
           font-style: italic;
         }
         simple-fields-field {
-          line-height: 40px;
-          padding: 8px;
+          line-height: var(--ddd-spacing-10);
+          padding: var(--ddd-spacing-2);
           color: var(--simple-colors-default-theme-grey-12, black);
           background-color: var(--simple-colors-default-theme-grey-1, white);
           line-height: normal;
           font-family: inherit;
           width: var(--super-daemon-search-width, 240px);
-          margin: 4px 0 0 0;
+          margin: var(--ddd-spacing-1) 0 0 0;
           min-width: 100px;
           --simple-fields-background-color: transparent;
           --simple-fields-placeholder-opacity: 0.4;
@@ -481,8 +481,9 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         simple-tag:hover,
         simple-tag:focus {
           cursor: pointer;
-          outline: 1px solid var(--simple-colors-default-theme-grey-10, black);
-          outline-offset: 4px;
+          outline: var(--ddd-border-xs) solid
+            var(--simple-colors-default-theme-grey-10, black);
+          outline-offset: var(--ddd-spacing-1);
         }
         :host([mini]) simple-fields-field::part(option-input) {
           font-size: 12px;
@@ -492,7 +493,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           font-size: 14px;
         }
         simple-fields-field::part(option-input) {
-          padding: 0px 2px;
+          padding: 0 var(--ddd-spacing-1);
           font-size: 24px;
         }
         simple-fields-field::part(label) {
@@ -509,14 +510,14 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
             --simple-icon-width: 30px;
           }
           .search {
-            margin: 8px;
+            margin: var(--ddd-spacing-2);
           }
           simple-fields-field::part(option-input) {
             font-size: 14px;
-            line-height: 20px;
+            line-height: var(--ddd-spacing-5);
           }
           simple-fields-field {
-            line-height: 20px;
+            line-height: var(--ddd-spacing-5);
             width: var(--super-daemon-search-width, 100px);
           }
           .search .icon {
