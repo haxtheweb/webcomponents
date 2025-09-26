@@ -688,25 +688,25 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
                       scroller
                       .items=${this.filtered}
                       .renderItem=${(item, i) =>
-                        html`<super-daemon-row
+                        item ? html`<super-daemon-row
                           role="option"
                           id="option-${i}"
                           tabindex="-1"
                           aria-selected="${this._selectedIndex === i}"
                           data-row-index="${i}"
-                          .value="${item.value}"
+                          .value="${item.value || {}}"
                           icon="${item.icon}"
                           image="${item.image}"
                           ?dark="${this.dark}"
                           text-character="${item.textCharacter}"
                           title="${item.title}"
-                          .tags="${item.tags}"
+                          .tags="${item.tags || []}"
                           event-name="${item.eventName}"
                           path="${item.path}"
                           ?more="${item.more && (!this.mini || this.wand)}"
                           ?mini="${this.mini}"
                           >${item.more ? item.more : nothing}</super-daemon-row
-                        >`}
+                        >` : nothing}
                     ></lit-virtualizer>
                   `}
             `}

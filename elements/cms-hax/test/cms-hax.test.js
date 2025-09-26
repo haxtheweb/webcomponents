@@ -6,7 +6,7 @@ import "../cms-hax.js";
 // Basic functionality and accessibility tests
 describe("cms-hax basic functionality", () => {
   let element;
-  
+
   beforeEach(async () => {
     // Use a simpler fixture for basic tests to avoid complex setup
     element = await fixture(html`<cms-hax></cms-hax>`);
@@ -33,12 +33,12 @@ describe("cms-hax basic functionality", () => {
   });
 
   it("renders iron-ajax and h-a-x elements", () => {
-    const ironAjax = element.shadowRoot.querySelector('iron-ajax');
-    const hax = element.shadowRoot.querySelector('h-a-x');
-    
+    const ironAjax = element.shadowRoot.querySelector("iron-ajax");
+    const hax = element.shadowRoot.querySelector("h-a-x");
+
     expect(ironAjax).to.exist;
     expect(hax).to.exist;
-    expect(ironAjax.id).to.equal('pageupdateajax');
+    expect(ironAjax.id).to.equal("pageupdateajax");
   });
 });
 
@@ -62,17 +62,13 @@ describe("cms-hax accessibility tests", () => {
         </template>
       </cms-hax>
     `);
-    
+
     await expect(el).to.be.accessible();
   });
 
   it("maintains accessibility with complex HAX store configuration", async () => {
     const el = await fixture(html`
-      <cms-hax
-        element-align="right"
-        hide-panel-ops
-        open-default
-      >
+      <cms-hax element-align="right" hide-panel-ops open-default>
         <template>
           <article>
             <h2>Article Title</h2>
@@ -81,21 +77,21 @@ describe("cms-hax accessibility tests", () => {
         </template>
       </cms-hax>
     `);
-    
+
     await expect(el).to.be.accessible();
   });
 
   it("has proper ARIA and semantic structure", async () => {
     const el = await fixture(html`<cms-hax></cms-hax>`);
-    const ironAjax = el.shadowRoot.querySelector('iron-ajax');
-    const hax = el.shadowRoot.querySelector('h-a-x');
-    
+    const ironAjax = el.shadowRoot.querySelector("iron-ajax");
+    const hax = el.shadowRoot.querySelector("h-a-x");
+
     expect(ironAjax).to.exist;
     expect(hax).to.exist;
-    
+
     // Check that the iron-ajax has proper attributes for accessibility
-    expect(ironAjax.getAttribute('handle-as')).to.equal('json');
-    expect(ironAjax.getAttribute('content-type')).to.equal('application/json');
+    expect(ironAjax.getAttribute("handle-as")).to.equal("json");
+    expect(ironAjax.getAttribute("content-type")).to.equal("application/json");
   });
 });
 
@@ -112,7 +108,7 @@ describe("cms-hax property validation", () => {
         redirect-on-save
       ></cms-hax>
     `);
-    
+
     expect(el.ready).to.be.true;
     expect(el.openDefault).to.be.true;
     expect(el.hidePanelOps).to.be.true;
@@ -133,36 +129,36 @@ describe("cms-hax property validation", () => {
         app-store-connection='{"url": "store.json"}'
       ></cms-hax>
     `);
-    
-    expect(el.elementAlign).to.equal('right');
-    expect(el.endPoint).to.equal('/api/save');
-    expect(el.method).to.equal('POST');
-    expect(el.offsetMargin).to.equal('10px');
-    expect(el.bodyValue).to.equal('<p>Initial content</p>');
-    expect(el.redirectLocation).to.equal('/success');
+
+    expect(el.elementAlign).to.equal("right");
+    expect(el.endPoint).to.equal("/api/save");
+    expect(el.method).to.equal("POST");
+    expect(el.offsetMargin).to.equal("10px");
+    expect(el.bodyValue).to.equal("<p>Initial content</p>");
+    expect(el.redirectLocation).to.equal("/success");
     expect(el.appStoreConnection).to.equal('{"url": "store.json"}');
   });
 
   it("accepts valid array properties", async () => {
     const el = await fixture(html`<cms-hax></cms-hax>`);
-    
-    el.allowedTags = ['p', 'h1', 'h2', 'div'];
+
+    el.allowedTags = ["p", "h1", "h2", "div"];
     expect(Array.isArray(el.allowedTags)).to.be.true;
-    expect(el.allowedTags).to.deep.equal(['p', 'h1', 'h2', 'div']);
+    expect(el.allowedTags).to.deep.equal(["p", "h1", "h2", "div"]);
   });
 
   it("updates properties reactively", async () => {
     const el = await fixture(html`<cms-hax></cms-hax>`);
-    
-    el.elementAlign = 'center';
-    el.method = 'PATCH';
+
+    el.elementAlign = "center";
+    el.method = "PATCH";
     el.syncBody = true;
     el.hideMessage = true;
-    
+
     await el.updateComplete;
-    
-    expect(el.elementAlign).to.equal('center');
-    expect(el.method).to.equal('PATCH');
+
+    expect(el.elementAlign).to.equal("center");
+    expect(el.method).to.equal("PATCH");
     expect(el.syncBody).to.be.true;
     expect(el.hideMessage).to.be.true;
   });
@@ -178,13 +174,13 @@ describe("cms-hax property validation", () => {
         end-point="/api/delete"
       ></cms-hax>
     `);
-    
+
     expect(el.openDefault).to.be.true;
     expect(el.hidePanelOps).to.be.true;
     expect(el.syncBody).to.be.true;
-    expect(el.elementAlign).to.equal('right');
-    expect(el.method).to.equal('DELETE');
-    expect(el.endPoint).to.equal('/api/delete');
+    expect(el.elementAlign).to.equal("right");
+    expect(el.method).to.equal("DELETE");
+    expect(el.endPoint).to.equal("/api/delete");
   });
 });
 
@@ -198,10 +194,10 @@ describe("cms-hax template usage", () => {
         </template>
       </cms-hax>
     `);
-    
-    const template = el.querySelector('template');
+
+    const template = el.querySelector("template");
     expect(template).to.exist;
-    expect(template.innerHTML).to.include('<p>Template content</p>');
+    expect(template.innerHTML).to.include("<p>Template content</p>");
   });
 
   it("handles complex template content with multiple elements", async () => {
@@ -219,14 +215,14 @@ describe("cms-hax template usage", () => {
         </template>
       </cms-hax>
     `);
-    
-    const template = el.querySelector('template');
+
+    const template = el.querySelector("template");
     expect(template).to.exist;
-    expect(template.innerHTML).to.include('<h1>Main Title</h1>');
-    expect(template.innerHTML).to.include('<h2>Subtitle</h2>');
-    expect(template.innerHTML).to.include('<p>Paragraph content</p>');
-    expect(template.innerHTML).to.include('<ul>');
-    expect(template.innerHTML).to.include('<blockquote>');
+    expect(template.innerHTML).to.include("<h1>Main Title</h1>");
+    expect(template.innerHTML).to.include("<h2>Subtitle</h2>");
+    expect(template.innerHTML).to.include("<p>Paragraph content</p>");
+    expect(template.innerHTML).to.include("<ul>");
+    expect(template.innerHTML).to.include("<blockquote>");
   });
 
   it("handles template with HAX-compatible elements", async () => {
@@ -243,12 +239,12 @@ describe("cms-hax template usage", () => {
         </template>
       </cms-hax>
     `);
-    
-    const template = el.querySelector('template');
+
+    const template = el.querySelector("template");
     expect(template).to.exist;
-    expect(template.innerHTML).to.include('video-player');
-    expect(template.innerHTML).to.include('image-gallery');
-    expect(template.innerHTML).to.include('simple-card');
+    expect(template.innerHTML).to.include("video-player");
+    expect(template.innerHTML).to.include("image-gallery");
+    expect(template.innerHTML).to.include("simple-card");
   });
 
   it("maintains template accessibility", async () => {
@@ -270,7 +266,7 @@ describe("cms-hax template usage", () => {
         </template>
       </cms-hax>
     `);
-    
+
     await expect(el).to.be.accessible();
   });
 });
@@ -279,27 +275,22 @@ describe("cms-hax template usage", () => {
 describe("cms-hax HAX Store integration", () => {
   it("configures iron-ajax with correct properties", async () => {
     const el = await fixture(html`
-      <cms-hax
-        end-point="/api/save-content"
-        method="POST"
-      ></cms-hax>
+      <cms-hax end-point="/api/save-content" method="POST"></cms-hax>
     `);
-    
-    const ironAjax = el.shadowRoot.querySelector('#pageupdateajax');
-    expect(ironAjax.getAttribute('url')).to.equal('/api/save-content');
-    expect(ironAjax.getAttribute('method')).to.equal('POST');
-    expect(ironAjax.getAttribute('content-type')).to.equal('application/json');
-    expect(ironAjax.getAttribute('handle-as')).to.equal('json');
+
+    const ironAjax = el.shadowRoot.querySelector("#pageupdateajax");
+    expect(ironAjax.getAttribute("url")).to.equal("/api/save-content");
+    expect(ironAjax.getAttribute("method")).to.equal("POST");
+    expect(ironAjax.getAttribute("content-type")).to.equal("application/json");
+    expect(ironAjax.getAttribute("handle-as")).to.equal("json");
   });
 
   it("passes app store configuration to h-a-x", async () => {
     const el = await fixture(html`
-      <cms-hax
-        app-store-connection='{"url": "test-store.json"}'
-      ></cms-hax>
+      <cms-hax app-store-connection='{"url": "test-store.json"}'></cms-hax>
     `);
-    
-    const hax = el.shadowRoot.querySelector('h-a-x');
+
+    const hax = el.shadowRoot.querySelector("h-a-x");
     expect(hax).to.exist;
     // The app-store attribute should be processed
     expect(el.appStoreConnection).to.equal('{"url": "test-store.json"}');
@@ -307,82 +298,80 @@ describe("cms-hax HAX Store integration", () => {
 
   it("handles HTML entity decoding in app store connection", async () => {
     const el = await fixture(html`<cms-hax></cms-hax>`);
-    
+
     // Test the decodeHTMLEntities method
-    const testString = '&lt;p&gt;Test &amp; content&quot;&lt;/p&gt;';
+    const testString = "&lt;p&gt;Test &amp; content&quot;&lt;/p&gt;";
     const decoded = el.decodeHTMLEntities(testString);
     expect(decoded).to.equal('<p>Test & content"</p>');
   });
 
   it("computes redirect on save correctly", async () => {
     const el = await fixture(html`<cms-hax></cms-hax>`);
-    
+
     // Test redirect computation
     expect(el._computeRedirectOnSave(undefined)).to.be.false;
     expect(el._computeRedirectOnSave(null)).to.be.false;
-    expect(el._computeRedirectOnSave('/redirect-url')).to.be.true;
+    expect(el._computeRedirectOnSave("/redirect-url")).to.be.true;
   });
 });
 
 // Event handling tests
 describe("cms-hax event handling", () => {
   it("handles save events", async () => {
-    const el = await fixture(html`
-      <cms-hax
-        end-point="/api/save"
-      ></cms-hax>
-    `);
-    
+    const el = await fixture(html` <cms-hax end-point="/api/save"></cms-hax> `);
+
     // Mock HAXStore for testing
     let saveEventFired = false;
     el._saveFired = () => {
       saveEventFired = true;
     };
-    
-    el._saveFired({ detail: { value: '<p>Test content</p>' } });
+
+    el._saveFired({ detail: { value: "<p>Test content</p>" } });
     expect(saveEventFired).to.be.true;
   });
 
   it("handles cancel events", async () => {
     const el = await fixture(html`<cms-hax></cms-hax>`);
-    
+
     let cancelEventFired = false;
     el._cancelFired = () => {
       cancelEventFired = true;
     };
-    
+
     el._cancelFired({});
     expect(cancelEventFired).to.be.true;
   });
 
   it("handles update response events", async () => {
     const el = await fixture(html`<cms-hax></cms-hax>`);
-    
+
     let responseHandled = false;
     el._handleUpdateResponse = () => {
       responseHandled = true;
     };
-    
+
     el._handleUpdateResponse({});
     expect(responseHandled).to.be.true;
   });
 
   it("dispatches custom events correctly", async () => {
     const el = await fixture(html`<cms-hax></cms-hax>`);
-    
+
     let customEventFired = false;
-    el.addEventListener('cms-hax-saved', () => {
+    el.addEventListener("cms-hax-saved", () => {
       customEventFired = true;
     });
-    
+
     // Simulate the response handling that triggers the custom event
-    el.dispatchEvent(new CustomEvent('cms-hax-saved', {
-      bubbles: true,
-      cancelable: true,
-      composed: true,
-      detail: true
-    }));
-    
+    el.dispatchEvent(
+      new CustomEvent("cms-hax-saved", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: true,
+      }),
+    );
+
     expect(customEventFired).to.be.true;
   });
 });
@@ -390,20 +379,20 @@ describe("cms-hax event handling", () => {
 // Responsive design and viewport tests
 describe("cms-hax responsive design", () => {
   beforeEach(async () => {
-    await setViewport({width: 375, height: 750});
+    await setViewport({ width: 375, height: 750 });
   });
 
   afterEach(async () => {
-    await setViewport({width: 1024, height: 768});
+    await setViewport({ width: 1024, height: 768 });
   });
 
   it("adapts to mobile viewport", async () => {
     const el = await fixture(html`<cms-hax></cms-hax>`);
     expect(el).to.exist;
-    
+
     await el.updateComplete;
     const computedStyle = getComputedStyle(el);
-    expect(computedStyle.display).to.not.equal('none');
+    expect(computedStyle.display).to.not.equal("none");
   });
 
   it("maintains accessibility on mobile", async () => {
@@ -414,21 +403,21 @@ describe("cms-hax responsive design", () => {
 
 describe("cms-hax desktop responsiveness", () => {
   beforeEach(async () => {
-    await setViewport({width: 1200, height: 800});
+    await setViewport({ width: 1200, height: 800 });
   });
 
   afterEach(async () => {
-    await setViewport({width: 1024, height: 768});
+    await setViewport({ width: 1024, height: 768 });
   });
 
   it("adapts to desktop viewport", async () => {
     const el = await fixture(html`<cms-hax></cms-hax>`);
     expect(el).to.exist;
-    
+
     await el.updateComplete;
     const computedStyle = getComputedStyle(el);
-    expect(computedStyle.display).to.equal('block');
-    expect(computedStyle.fontSize).to.equal('16px');
+    expect(computedStyle.display).to.equal("block");
+    expect(computedStyle.fontSize).to.equal("16px");
   });
 });
 
@@ -452,36 +441,45 @@ describe("cms-hax CMS integration", () => {
         </template>
       </cms-hax>
     `);
-    
-    expect(el.elementAlign).to.equal('left');
-    expect(el.endPoint).to.equal('/cms/hax-save/123');
-    expect(el.method).to.equal('PUT');
+
+    expect(el.elementAlign).to.equal("left");
+    expect(el.endPoint).to.equal("/cms/hax-save/123");
+    expect(el.method).to.equal("PUT");
     expect(el.hidePanelOps).to.be.true;
-    expect(el.offsetMargin).to.equal('20px');
-    expect(el.redirectLocation).to.equal('/cms/node/123');
+    expect(el.offsetMargin).to.equal("20px");
+    expect(el.redirectLocation).to.equal("/cms/node/123");
   });
 
   it("handles allowed tags configuration", async () => {
     const el = await fixture(html`<cms-hax></cms-hax>`);
-    
-    el.allowedTags = ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'blockquote'];
-    
+
+    el.allowedTags = [
+      "p",
+      "h1",
+      "h2",
+      "h3",
+      "h4",
+      "h5",
+      "h6",
+      "ul",
+      "ol",
+      "li",
+      "blockquote",
+    ];
+
     expect(Array.isArray(el.allowedTags)).to.be.true;
-    expect(el.allowedTags).to.include('p');
-    expect(el.allowedTags).to.include('h1');
-    expect(el.allowedTags).to.include('blockquote');
+    expect(el.allowedTags).to.include("p");
+    expect(el.allowedTags).to.include("h1");
+    expect(el.allowedTags).to.include("blockquote");
   });
 
   it("handles sync body functionality", async () => {
     const el = await fixture(html`
-      <cms-hax
-        sync-body
-        body-value="<p>Initial sync content</p>"
-      ></cms-hax>
+      <cms-hax sync-body body-value="<p>Initial sync content</p>"></cms-hax>
     `);
-    
+
     expect(el.syncBody).to.be.true;
-    expect(el.bodyValue).to.equal('<p>Initial sync content</p>');
+    expect(el.bodyValue).to.equal("<p>Initial sync content</p>");
   });
 });
 
@@ -489,42 +487,40 @@ describe("cms-hax CMS integration", () => {
 describe("cms-hax error handling", () => {
   it("handles missing template gracefully", async () => {
     const el = await fixture(html`<cms-hax></cms-hax>`);
-    
+
     expect(el).to.exist;
     await expect(el).to.be.accessible();
   });
 
   it("handles invalid app store connection gracefully", async () => {
     const el = await fixture(html`
-      <cms-hax
-        app-store-connection="invalid-json"
-      ></cms-hax>
+      <cms-hax app-store-connection="invalid-json"></cms-hax>
     `);
-    
-    expect(el.appStoreConnection).to.equal('invalid-json');
+
+    expect(el.appStoreConnection).to.equal("invalid-json");
     expect(el).to.exist;
   });
 
   it("handles missing end point gracefully", async () => {
     const el = await fixture(html`<cms-hax></cms-hax>`);
-    
+
     expect(el.endPoint).to.be.null;
     expect(el).to.exist;
   });
 
   it("handles rapid property changes", async () => {
     const el = await fixture(html`<cms-hax></cms-hax>`);
-    
+
     // Rapidly change multiple properties
-    for(let i = 0; i < 10; i++) {
-      el.elementAlign = i % 2 === 0 ? 'left' : 'right';
-      el.method = i % 2 === 0 ? 'PUT' : 'POST';
+    for (let i = 0; i < 10; i++) {
+      el.elementAlign = i % 2 === 0 ? "left" : "right";
+      el.method = i % 2 === 0 ? "PUT" : "POST";
       el.syncBody = i % 2 === 0;
     }
-    
+
     await el.updateComplete;
-    expect(el.elementAlign).to.equal('left');
-    expect(el.method).to.equal('POST');
+    expect(el.elementAlign).to.equal("left");
+    expect(el.method).to.equal("POST");
     expect(el.syncBody).to.be.false;
   });
 
@@ -537,10 +533,10 @@ describe("cms-hax error handling", () => {
         </template>
       </cms-hax>
     `);
-    
-    const template = el.querySelector('template');
+
+    const template = el.querySelector("template");
     expect(template).to.exist;
-    expect(template.innerHTML).to.include('&lt;script&gt;');
-    expect(template.innerHTML).to.include('&amp;');
+    expect(template.innerHTML).to.include("&lt;script&gt;");
+    expect(template.innerHTML).to.include("&amp;");
   });
 });

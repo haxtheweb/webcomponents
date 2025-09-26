@@ -299,6 +299,13 @@ class HAXCMSSiteEditor extends LitElement {
         store.toast(`Created ${node.title}!`, 4000, {
           hat: "random",
         });
+
+        // Auto-enter edit mode if this page was created by a Merlin program
+        if (this._merlinCreated) {
+          store.editMode = true;
+          // Clear the flag
+          this._merlinCreated = false;
+        }
       }, 900);
     }
   }
@@ -625,6 +632,8 @@ class HAXCMSSiteEditor extends LitElement {
       };
       // store who sent this in-case of multiple instances
       this._originalTarget = e.detail.originalTarget;
+      // Store if this was created by a Merlin program for auto-edit enhancement
+      this._merlinCreated = reqBody.merlinCreated || false;
       // docxImport use the routine from app-hax
       if (reqBody.docximport) {
         await import(
@@ -927,6 +936,38 @@ class HAXCMSSiteEditor extends LitElement {
           detail: true,
         }),
       );
+      
+      // Restore active element position after DOM update for "keep editing" mode
+      if (this._restoreKeepEditMode && this._restoreActiveIndex !== null) {
+        setTimeout(() => {
+          try {
+            if (HAXStore.activeHaxBody && HAXStore.activeHaxBody.children) {
+              const bodyChildren = Array.from(HAXStore.activeHaxBody.children);
+              // Check if the stored index is still valid
+              if (this._restoreActiveIndex >= 0 && this._restoreActiveIndex < bodyChildren.length) {
+                const elementToRestore = bodyChildren[this._restoreActiveIndex];
+                if (elementToRestore) {
+                  // Simply set the active node - focus and scroll logic will kick in automatically
+                  HAXStore.activeNode = elementToRestore;
+                }
+              } else if (bodyChildren.length > 0) {
+                // Fallback: if index is invalid, activate the last available element
+                const fallbackIndex = Math.min(this._restoreActiveIndex, bodyChildren.length - 1);
+                const fallbackElement = bodyChildren[fallbackIndex];
+                if (fallbackElement) {
+                  HAXStore.activeNode = fallbackElement;
+                }
+              }
+            }
+          } catch (error) {
+            console.warn("Failed to restore active element position after save:", error);
+          }
+          // Clean up the restoration flags
+          this._restoreActiveIndex = null;
+          this._restoreKeepEditMode = false;
+        }, 100); // Small delay to ensure DOM is fully updated
+      }
+      
       // force an update in the store to reprocess what is "active"
       // otherwise the page data that was just saved won't be reflected until hitting a different
       // page, causing a temporary state error if going to edit again
@@ -975,6 +1016,19 @@ class HAXCMSSiteEditor extends LitElement {
   async saveNode(e) {
     // send the request
     if (this.saveNodePath) {
+      // Capture active element index before save for "keep editing" mode
+      let activeElementIndex = null;
+      if (e.detail && e.detail.keepEditMode && HAXStore.activeHaxBody && HAXStore.activeNode) {
+        const bodyChildren = Array.from(HAXStore.activeHaxBody.children);
+        activeElementIndex = bodyChildren.indexOf(HAXStore.activeNode);
+        // Store this for restoration after save
+        this._restoreActiveIndex = activeElementIndex;
+        this._restoreKeepEditMode = true;
+      } else {
+        this._restoreActiveIndex = null;
+        this._restoreKeepEditMode = false;
+      }
+      
       let body = await HAXStore.activeHaxBody.haxToContent();
       this.querySelector("#nodeupdateajax").body = {
         jwt: this.jwt,

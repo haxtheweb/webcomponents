@@ -399,7 +399,8 @@ class CmsHax extends LitElement {
     // generate sanitized content
     if (this.endPoint) {
       HAXStore.skipExitTrap = true;
-      if (HAXStore.editMode) {
+      // Only exit edit mode if keepEditMode is not explicitly set to true
+      if (HAXStore.editMode && !e.detail.keepEditMode) {
         HAXStore.editMode = false;
       }
       this.shadowRoot.querySelector("#pageupdateajax").body = e.detail.value;

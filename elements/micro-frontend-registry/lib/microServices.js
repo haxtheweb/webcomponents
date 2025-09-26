@@ -132,6 +132,19 @@ export function enableCoreServices() {
       type: "link for processing as link otherwise unused",
     },
   });
+
+  // xlsxToCsv
+  MicroFrontendRegistry.add({
+    endpoint: "/api/services/media/format/xlsxToCsv",
+    name: "@core/xlsxToCsv",
+    title: "Excel to CSV",
+    description: "Convert .xls/.xlsx spreadsheet to CSV string",
+    params: {
+      body: "FormData containing the Excel file (field name arbitrary)",
+      sheet: "Optional sheet name to convert",
+      headers: "Include headers in CSV (default true)",
+    },
+  });
   // yamlToJson
   MicroFrontendRegistry.add({
     endpoint: "/api/services/media/format/yamlToJson",

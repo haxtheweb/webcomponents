@@ -94,20 +94,34 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           color: var(--simple-colors-default-theme-light-blue-11);
         }
 
+        #saveandeditbutton {
+          visibility: hidden;
+          opacity: 0;
+          color: var(--simple-colors-default-theme-light-blue-11);
+        }
+
         #deletebutton {
           visibility: hidden;
           opacity: 0;
         }
 
         :host([page-allowed]) #editbutton,
+        :host([page-allowed]) #saveandeditbutton,
         :host([page-allowed]) #editdetails,
         :host([page-allowed]) #deletebutton {
           visibility: visible;
           opacity: 1;
         }
+        /* Ensure edit and save buttons are visible when in edit mode */
+        :host([edit-mode]) #editbutton,
+        :host([edit-mode]) #saveandeditbutton {
+          visibility: visible;
+          opacity: 1;
+        }
         #addmenubutton,
         #addmenubutton haxcms-button-add,
-        #editbutton[icon="icons:save"] {
+        #editbutton[icon="icons:save"],
+        #saveandeditbutton {
           color: var(--simple-colors-default-theme-green-11);
           background-color: var(--simple-colors-default-theme-grey-1);
         }
@@ -155,15 +169,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         #editbutton:hover,
         #editbutton:active,
-        #editbutton:focus {
+        #editbutton:focus,
+        #saveandeditbutton:hover,
+        #saveandeditbutton:active,
+        #saveandeditbutton:focus {
           background-color: var(--simple-colors-default-theme-light-blue-1);
         }
         simple-toolbar-menu:hover,
         simple-toolbar-menu:active,
         simple-toolbar-menu:focus,
-        simple-toolbar-button:not(#editbutton):hover,
-        simple-toolbar-button:not(#editbutton):active,
-        simple-toolbar-button:not(#editbutton):focus {
+        simple-toolbar-button:not(#editbutton):not(#saveandeditbutton):hover,
+        simple-toolbar-button:not(#editbutton):not(#saveandeditbutton):active,
+        simple-toolbar-button:not(#editbutton):not(#saveandeditbutton):focus {
           background-color: var(--hax-ui-background-color-accent);
           color: var(--hax-ui-color);
         }
@@ -468,6 +485,233 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
   }
 
+  // Process URL directly from Merlin search input
+  processUrlFromInput(input) {
+    const url = input.trim();
+    if (this.isValidUrl(url)) {
+      // wand hands off for next part now that we've got a URL entered
+      SuperDaemonInstance.waveWand(
+        [
+          "",
+          "/",
+          {
+            operation: "url-selected",
+            url: url,
+            data: url,
+          },
+          "hax-link-agent",
+          "Link Agent",
+        ],
+        this.shadowRoot.querySelector("#merlin"),
+        "coin2",
+      );
+    } else {
+      store.toast("Invalid URL provided", 3000, { hat: "construction" });
+    }
+  }
+
+  // URL validation helper
+  isValidUrl(string) {
+    try {
+      new URL(string);
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  // URL type detection helper
+  detectUrlType(url) {
+    try {
+      const urlObj = new URL(url);
+      const hostname = urlObj.hostname.toLowerCase();
+      const pathname = urlObj.pathname.toLowerCase();
+      const search = urlObj.search.toLowerCase();
+
+      // YouTube detection
+      if (
+        hostname.includes("youtube.com") ||
+        hostname.includes("youtu.be") ||
+        hostname.includes("m.youtube.com")
+      ) {
+        return "youtube";
+      }
+
+      // Image detection (by extension)
+      if (pathname.match(/\.(jpg|jpeg|png|gif|webp|svg|bmp)$/i)) {
+        return "image";
+      }
+
+      // Video detection (by extension)
+      if (pathname.match(/\.(mp4|webm|ogg|mov|avi|wmv|flv)$/i)) {
+        return "video";
+      }
+
+      // PDF detection
+      if (pathname.match(/\.pdf$/i) || search.includes(".pdf")) {
+        return "pdf";
+      }
+
+      // Audio detection
+      if (pathname.match(/\.(mp3|wav|ogg|flac|aac|m4a)$/i)) {
+        return "audio";
+      }
+
+      return "generic";
+    } catch (error) {
+      return "generic";
+    }
+  }
+
+  // URL processing method similar to processFileContentsBasedOnUserDesire
+  async processUrlContentsBasedOnUserDesire(values, mode) {
+    const url = values.url;
+    this.setProcessingVisual();
+
+    // Ensure we're in edit mode
+    if (store.editMode === false) {
+      store.editMode = true;
+    }
+
+    setTimeout(() => {
+      let elementToInsert = null;
+
+      switch (mode) {
+        case "embed-youtube":
+          // Extract YouTube video ID
+          const videoId = this.extractYouTubeId(url);
+          if (videoId) {
+            elementToInsert = HAXStore.activeHaxBody.haxInsert(
+              "video-player",
+              "",
+              {
+                source: `https://www.youtube.com/watch?v=${videoId}`,
+                "source-type": "youtube",
+              },
+            );
+          }
+          break;
+
+        case "insert-image":
+          elementToInsert = HAXStore.activeHaxBody.haxInsert("img", "", {
+            src: url,
+            alt: "Image from URL",
+            loading: "lazy",
+          });
+          break;
+
+        case "embed-pdf":
+          elementToInsert = HAXStore.activeHaxBody.haxInsert("iframe", "", {
+            src: url,
+            width: "100%",
+            height: "500px",
+            frameborder: "0",
+          });
+          break;
+
+        case "embed-video":
+          elementToInsert = HAXStore.activeHaxBody.haxInsert("video", "", {
+            src: url,
+            controls: true,
+            width: "100%",
+          });
+          break;
+
+        case "insert-rich-link":
+          // Try to create a rich link with preview
+          elementToInsert = HAXStore.activeHaxBody.haxInsert("a", url, {
+            href: url,
+            target: "_blank",
+            rel: "noopener",
+          });
+          break;
+
+        case "hax-default":
+          // Use HAX's original insertLogicFromValues method for automatic detection
+          const haxValues = {
+            source: url,
+            title: values.title || url,
+          };
+          if (
+            HAXStore.insertLogicFromValues(haxValues, HAXStore, false, true)
+          ) {
+            return;
+          }
+          // Fallback to simple link if HAX logic doesn't handle it
+          elementToInsert = HAXStore.activeHaxBody.haxInsert("a", url, {
+            href: url,
+            target: "_blank",
+            rel: "noopener",
+          });
+          break;
+
+        case "apply-to-selected-text":
+          // Apply URL as link to currently selected text
+          const selection = globalThis.getSelection();
+          if (selection && !selection.isCollapsed) {
+            const range = selection.getRangeAt(0);
+            const selectedText = selection.toString().trim();
+
+            if (selectedText && range) {
+              const linkElement = globalThis.document.createElement("a");
+              linkElement.setAttribute("href", url);
+              linkElement.setAttribute("target", "_blank");
+              linkElement.setAttribute("rel", "noopener noreferrer");
+              linkElement.textContent = selectedText;
+
+              range.deleteContents();
+              range.insertNode(linkElement);
+
+              // Position cursor after the link
+              setTimeout(() => {
+                range.setStartAfter(linkElement);
+                range.setEndAfter(linkElement);
+                selection.removeAllRanges();
+                selection.addRange(range);
+              }, 0);
+
+              store.toast("Link applied to selected text!", 3000, {
+                hat: "construction",
+                walking: true,
+              });
+              return;
+            }
+          }
+          // Fallback to simple link if no selection
+          elementToInsert = HAXStore.activeHaxBody.haxInsert("a", url, {
+            href: url,
+            target: "_blank",
+            rel: "noopener",
+          });
+          break;
+
+        case "insert-simple-link":
+        default:
+          elementToInsert = HAXStore.activeHaxBody.haxInsert("a", url, {
+            href: url,
+            target: "_blank",
+            rel: "noopener",
+          });
+          break;
+      }
+
+      if (elementToInsert) {
+        store.toast("URL processed successfully!", 3000, {
+          hat: "construction",
+          walking: true,
+        });
+      }
+    }, 300);
+  }
+
+  // Helper to extract YouTube video ID from various YouTube URL formats
+  extractYouTubeId(url) {
+    const regExp =
+      /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return match && match[2].length === 11 ? match[2] : null;
+  }
+
   // processing visualization
   setProcessingVisual() {
     let loadingIcon = globalThis.document.createElement("simple-icon-lite");
@@ -481,6 +725,108 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       walking: true,
       slot: loadingIcon,
     });
+  }
+
+  // Convert CSV text to an HTML table element
+  csvToHtmlTable(csvText) {
+    try {
+      const table = globalThis.document.createElement('table');
+      const tbody = globalThis.document.createElement('tbody');
+      table.appendChild(tbody);
+
+      // Simple CSV parser that handles quoted fields with commas
+      const rows = [];
+      let i = 0;
+      let field = '';
+      let row = [];
+      let inQuotes = false;
+
+      const pushField = () => {
+        // Unwrap quotes and unescape double quotes
+        let val = field;
+        if (val.length > 0 && val[0] === '"' && val[val.length - 1] === '"') {
+          val = val.substring(1, val.length - 1).replace(/""/g, '"');
+        }
+        row.push(val);
+        field = '';
+      };
+
+      while (i < csvText.length) {
+        const char = csvText[i];
+        if (inQuotes) {
+          if (char === '"') {
+            if (csvText[i + 1] === '"') {
+              field += '"';
+              i += 2;
+              continue;
+            } else {
+              inQuotes = false;
+              i++;
+              continue;
+            }
+          } else {
+            field += char;
+            i++;
+            continue;
+          }
+        } else {
+          if (char === '"') {
+            inQuotes = true;
+            i++;
+            continue;
+          }
+          if (char === ',') {
+            pushField();
+            i++;
+            continue;
+          }
+          if (char === '\n' || char === '\r') {
+            // handle CRLF and LF
+            if (char === '\r' && csvText[i + 1] === '\n') {
+              i += 2;
+            } else {
+              i++;
+            }
+            pushField();
+            rows.push(row);
+            row = [];
+            continue;
+          }
+          field += char;
+          i++;
+        }
+      }
+      // push last field/row
+      pushField();
+      if (row.length > 0) {
+        rows.push(row);
+      }
+
+      // build table body
+      rows.forEach((cols, idx) => {
+        if (cols.length === 1 && cols[0].trim() === '') return;
+        const tr = globalThis.document.createElement('tr');
+        cols.forEach((col) => {
+          const cell = idx === 0 ? globalThis.document.createElement('th') : globalThis.document.createElement('td');
+          // escape
+          const span = globalThis.document.createElement('span');
+          span.textContent = col;
+          cell.appendChild(span);
+          tr.appendChild(cell);
+        });
+        tbody.appendChild(tr);
+      });
+
+      // basic styling hooks; DDD can style table generically
+      table.setAttribute('border', '1');
+      table.style.width = '100%';
+      table.style.borderCollapse = 'collapse';
+
+      return table;
+    } catch (e) {
+      console.warn('CSV to table conversion failed:', e);
+      return null;
+    }
   }
 
   // upload file and do what the user asked contextually
@@ -559,6 +905,65 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               }),
             );
           }, 300);
+        }
+        break;
+      case "insert-table":
+      case "insert-csv":
+        // Handle Excel file conversion to CSV and table
+        let excelDataToPost = new FormData();
+        excelDataToPost.append("upload", values.data); // Excel file
+        
+        if (store.editMode === false) {
+          store.editMode = true;
+        }
+        
+        try {
+          const excelResponse = await MicroFrontendRegistry.call(
+            "@core/xlsxToCsv",
+            excelDataToPost,
+          );
+          
+          if (excelResponse.status === 200) {
+            const csvData = excelResponse.data.contents;
+            
+            setTimeout(() => {
+              if (mode === "insert-table") {
+                // Convert CSV to HTML table
+                const tableElement = this.csvToHtmlTable(csvData);
+                if (tableElement) {
+                  HAXStore.activeHaxBody.haxInsert(
+                    "table",
+                    tableElement.innerHTML,
+                    {},
+                  );
+                  store.toast("Excel converted to table successfully!", 3000, {
+                    hat: "construction",
+                    walking: true,
+                  });
+                }
+              } else {
+                // Insert as formatted CSV text
+                const preElement = HAXStore.activeHaxBody.haxInsert(
+                  "pre",
+                  csvData,
+                  {},
+                );
+                store.toast("Excel converted to CSV text!", 3000, {
+                  hat: "construction",
+                  walking: true,
+                });
+              }
+            }, 300);
+          } else {
+            store.toast(`Error converting Excel file: ${excelResponse.data.error || 'Unknown error'}`, 4000, {
+              hat: "construction",
+            });
+          }
+        } catch (error) {
+          console.error('Excel conversion error:', error);
+          store.toast(`Error processing Excel file: ${error.message}`, 4000, {
+            hat: "construction",
+          });
         }
         break;
       case "insert-html":
@@ -987,6 +1392,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
       order: order,
       parent: parent,
+      // Mark this as created by a Merlin program for auto-edit enhancement
+      merlinCreated: true,
     };
 
     // For duplicate, add the duplicate flag
@@ -1328,6 +1735,35 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   eventName: "super-daemon-element-method",
                   path: "PDF embedded in a frame element",
                 });
+                break;
+              case "xlsx":
+              case "xls":
+              case "ods":
+                results.push({
+                  title: `Insert ${values.type} as table`,
+                  icon: "editor:border-all",
+                  tags: ["agent"],
+                  value: {
+                    target: this,
+                    method: "processFileContentsBasedOnUserDesire",
+                    args: [values, "insert-table"],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: "Spreadsheet converted to HTML table",
+                });
+                results.push({
+                  title: `Insert ${values.type} as CSV text`,
+                  icon: "hax:code",
+                  tags: ["agent"],
+                  value: {
+                    target: this,
+                    method: "processFileContentsBasedOnUserDesire",
+                    args: [values, "insert-csv"],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: "Spreadsheet converted to CSV text",
+                });
+                break;
               default:
                 // go run the hax hooks to see if any web components supply
                 // a way of handling material that is of that file type
@@ -1436,6 +1872,195 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
+
+    // Add Magic Link Wand program
+    SuperDaemonInstance.defineOption({
+      title: "Magic Link Wand",
+      icon: "editor:insert-link",
+      priority: -9999,
+      tags: ["Agent", "help", "merlin", "url", "link"],
+      eventName: "super-daemon-run-program",
+      path: "HAX/link-agent",
+      value: {
+        name: "Link Agent",
+        machineName: "hax-link-agent",
+        program: async (input, values) => {
+          const usAction = toJS(UserScaffoldInstance.action);
+          const usMemory = toJS(UserScaffoldInstance.memory);
+          const usData = toJS(UserScaffoldInstance.data);
+          let results = [];
+
+          // URL selected/entered, so we are processing it
+          if (values.operation === "url-selected") {
+            const url = values.url;
+            const urlType = this.detectUrlType(url);
+
+            switch (urlType) {
+              case "youtube":
+                results.push({
+                  title: `Embed YouTube Video`,
+                  icon: "av:play-circle-filled",
+                  tags: ["agent", "video"],
+                  value: {
+                    target: this,
+                    method: "processUrlContentsBasedOnUserDesire",
+                    args: [values, "embed-youtube"],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: "YouTube video embedded in page",
+                });
+                break;
+
+              case "image":
+                results.push({
+                  title: `Insert Image from URL`,
+                  icon: "editor:insert-photo",
+                  tags: ["agent", "image"],
+                  value: {
+                    target: this,
+                    method: "processUrlContentsBasedOnUserDesire",
+                    args: [values, "insert-image"],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: "Image from URL embedded in page",
+                });
+                break;
+
+              case "pdf":
+                results.push({
+                  title: `Embed PDF Document`,
+                  icon: "hax:file-pdf",
+                  tags: ["agent", "document"],
+                  value: {
+                    target: this,
+                    method: "processUrlContentsBasedOnUserDesire",
+                    args: [values, "embed-pdf"],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: "PDF document embedded in page",
+                });
+                break;
+
+              case "video":
+                results.push({
+                  title: `Embed Video`,
+                  icon: "av:videocam",
+                  tags: ["agent", "video"],
+                  value: {
+                    target: this,
+                    method: "processUrlContentsBasedOnUserDesire",
+                    args: [values, "embed-video"],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: "Video embedded in page",
+                });
+                break;
+
+              default:
+                // Generic URL handling
+                results.push({
+                  title: `Insert as Rich Link`,
+                  icon: "editor:insert-link",
+                  tags: ["agent", "link"],
+                  value: {
+                    target: this,
+                    method: "processUrlContentsBasedOnUserDesire",
+                    args: [values, "insert-rich-link"],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: "Rich link with preview inserted",
+                });
+                break;
+            }
+
+            // Always provide option to insert as simple link
+            results.push({
+              title: `Insert as Simple Link`,
+              icon: "editor:insert-link",
+              tags: ["agent", "link"],
+              value: {
+                target: this,
+                method: "processUrlContentsBasedOnUserDesire",
+                args: [values, "insert-simple-link"],
+              },
+              eventName: "super-daemon-element-method",
+              path: "Simple hyperlink inserted",
+            });
+
+            // Add HAX default processing option for compatibility with existing behavior
+            results.push({
+              title: `Use HAX Default Processing`,
+              icon: "hax:hax2022",
+              tags: ["agent", "hax", "auto"],
+              value: {
+                target: this,
+                method: "processUrlContentsBasedOnUserDesire",
+                args: [values, "hax-default"],
+              },
+              eventName: "super-daemon-element-method",
+              path: "HAX automatically detects best element type",
+            });
+
+            // Add option to apply link to selected text if there's a selection
+            const sel = globalThis.getSelection && globalThis.getSelection();
+            if (sel && !sel.isCollapsed && sel.toString().trim()) {
+              results.push({
+                title: `Apply Link to Selected Text: "${sel.toString().trim().substring(0, 30)}${sel.toString().trim().length > 30 ? "..." : ""}"`,
+                icon: "editor:format-color-text",
+                tags: ["agent", "link", "selection"],
+                value: {
+                  target: this,
+                  method: "processUrlContentsBasedOnUserDesire",
+                  args: [values, "apply-to-selected-text"],
+                },
+                eventName: "super-daemon-element-method",
+                path: "URL applied as link to selected text",
+              });
+            }
+          } else if (usAction.type === "paste" && values.type === "paste") {
+            // Handle paste detection
+            const pastedText = usData.text;
+            if (this.isValidUrl(pastedText)) {
+              // wand hands off for next part now that we've got a URL detected
+              SuperDaemonInstance.waveWand(
+                [
+                  "",
+                  "/",
+                  {
+                    operation: "url-selected",
+                    url: pastedText.trim(),
+                    data: pastedText,
+                  },
+                  "hax-link-agent",
+                  "Link Agent",
+                ],
+                this.shadowRoot.querySelector("#merlin"),
+                "coin2",
+              );
+            }
+          } else {
+            // Check if user entered a URL in the search input
+            if (input && this.isValidUrl(input.trim())) {
+              // Process the URL directly from input
+              this.processUrlFromInput(input);
+              return [];
+            }
+            // Default actions when we have no context - just show instructions
+            results = [
+              {
+                title: "Paste URL in search box above and press Enter",
+                icon: "editor:insert-link",
+                tags: ["agent", "link", "instruction"],
+                value: {},
+                eventName: "super-daemon-noop",
+                path: "Enter any URL to see processing options",
+              },
+            ];
+          }
+          return results;
+        },
+      },
+    });
     if (HAXStore.ready) {
       // elements that are in HAXcms that are injected regardless of what editor says
       // because the CMS controls certain internal connectors
@@ -1525,6 +2150,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       configureBlock: "Configure",
       configure: "Configure",
       save: "Save",
+      saveAndEdit: "Save & Edit",
       newJourney: "New Journey",
       accountInfo: "Account Info",
       outlineDesigner: "Outline designer",
@@ -1789,6 +2415,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             show-text-label
             data-primary="4"
             voice-command="edit (this) page"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            ?hidden="${!this.editMode}"
+            class="top-bar-button"
+            id="saveandeditbutton"
+            icon="hax:page-edit"
+            icon-position="${this.getIconPosition(this.responsiveSize)}"
+            @click="${this._saveAndEditButtonTap}"
+            label="${this.t.saveAndEdit}"
+            show-text-label
+            data-primary="4"
+            voice-command="save and edit page"
           ></simple-toolbar-button>
           <simple-toolbar-button
             icon="icons:undo"
@@ -3301,6 +3939,34 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }),
       );
     }
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {},
+      }),
+    );
+  }
+  /**
+   * Save and edit button tap - saves but keeps edit mode active
+   */
+  _saveAndEditButtonTap(e) {
+    if (this.editMode && HAXStore.haxTray.trayDetail === "view-source") {
+      if (!globalThis.confirm(this.t.confirmHtmlSourceExit)) {
+        return false;
+      }
+    }
+    store.playSound("click");
+    // Save the content but keep edit mode active
+    this.dispatchEvent(
+      new CustomEvent("haxcms-save-node", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: { ...store.activeItem, keepEditMode: true },
+      }),
+    );
+    // Hide any modals that might be open
     globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,

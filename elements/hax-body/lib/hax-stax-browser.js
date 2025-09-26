@@ -61,14 +61,14 @@ class HaxStaxBrowser extends LitElement {
     if (this.templateType === "all") {
       return this.staxList;
     }
-    
+
     return this.staxList.filter((stax) => {
       // Check if stax has templateType metadata
       const staxTemplateType = stax.details && stax.details.templateType;
-      
+
       // If no templateType is defined, default to 'area'
       const effectiveTemplateType = staxTemplateType || "area";
-      
+
       return effectiveTemplateType === this.templateType;
     });
   }
@@ -79,7 +79,7 @@ class HaxStaxBrowser extends LitElement {
     if (filteredItems.length === 0) {
       return html``;
     }
-    
+
     return html`
       <a11y-collapse heading="${this.label}" heading-button>
         <simple-button-grid columns="4" rows="1" always-expanded>

@@ -3425,6 +3425,11 @@
             },
             {
               "kind": "method",
+              "name": "_initializePopularBlocks",
+              "description": "Initialize the list of popular blocks with the top 9 most used elements"
+            },
+            {
+              "kind": "method",
               "name": "resetList",
               "parameters": [
                 {
@@ -3505,11 +3510,21 @@
             },
             {
               "kind": "field",
+              "name": "popularGizmoList",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "popularGizmoList"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ filterContentTypes: \"Filter Content Types\", recent: \"Recent\", }"
+              "default": "{ filterContentTypes: \"Filter Content Types\", recent: \"Recent\", popular: \"Popular\", }"
             },
             {
               "kind": "field",
@@ -3545,6 +3560,14 @@
               },
               "default": "[]",
               "fieldName": "recentGizmoList"
+            },
+            {
+              "name": "popularGizmoList",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "popularGizmoList"
             },
             {
               "name": "activePreview",
@@ -4800,7 +4823,7 @@
           "members": [
             {
               "kind": "method",
-              "name": "udpateSchema"
+              "name": "updateSchema"
             },
             {
               "kind": "method",
@@ -4949,6 +4972,11 @@
           "members": [
             {
               "kind": "field",
+              "name": "filteredStaxList",
+              "readonly": true
+            },
+            {
+              "kind": "field",
               "name": "tag",
               "static": true,
               "readonly": true
@@ -4973,6 +5001,17 @@
               },
               "default": "\"Templates\"",
               "attribute": "label"
+            },
+            {
+              "kind": "field",
+              "name": "templateType",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "description": "Type of templates to filter by: 'area', 'page', or 'all'",
+              "default": "\"area\"",
+              "attribute": "template-type"
             }
           ],
           "attributes": [
@@ -4992,6 +5031,15 @@
               },
               "default": "\"Templates\"",
               "fieldName": "label"
+            },
+            {
+              "name": "template-type",
+              "type": {
+                "text": "string"
+              },
+              "description": "Type of templates to filter by: 'area', 'page', or 'all'",
+              "default": "\"area\"",
+              "fieldName": "templateType"
             }
           ],
           "superclass": {
@@ -5723,6 +5771,16 @@
             },
             {
               "kind": "method",
+              "name": "_getStyleGuideSchemaOverride",
+              "parameters": [
+                {
+                  "name": "tag"
+                }
+              ],
+              "description": "Check if style guide has schema overrides for a tag"
+            },
+            {
+              "kind": "method",
               "name": "haxSchemaFromTag",
               "parameters": [
                 {
@@ -5813,6 +5871,44 @@
                 }
               ],
               "description": "Convert HTML into HAX Elements; if its valid HTML"
+            },
+            {
+              "kind": "method",
+              "name": "_detectStyleGuideTemplates",
+              "description": "Check if style guide content is available and detect page-template elements\nThis is called during app store loading to register any available templates"
+            },
+            {
+              "kind": "method",
+              "name": "forceAppStoreLoad",
+              "description": "Force app store loading if it hasn't loaded yet\nThis can be called from external contexts like the style guide route"
+            },
+            {
+              "kind": "method",
+              "name": "detectAndRegisterPageTemplateStax",
+              "parameters": [
+                {
+                  "name": "styleGuideContent",
+                  "description": "The HTML content of the style guide",
+                  "type": {
+                    "text": "string"
+                  }
+                }
+              ],
+              "description": "Detect page-template elements from style guide content and register them as stax or demoSchema\nMulti-child templates become stax, single-child templates replace demoSchema for that element\nUses the same HAX schema conversion approach as the style guide system"
+            },
+            {
+              "kind": "method",
+              "name": "_updateElementDemoSchema",
+              "parameters": [
+                {
+                  "name": "haxElement",
+                  "description": "HAX element schema from page-template content",
+                  "type": {
+                    "text": "Object"
+                  }
+                }
+              ],
+              "description": "Update the demoSchema for an element based on page-template content"
             },
             {
               "kind": "method",
@@ -6261,7 +6357,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ caption: { title: \"Caption\", icon: \"av:call-to-action\", }, video: { title: \"Video\", icon: \"av:play-circle-filled\", }, audio: { title: \"Audio\", icon: \"image:music-note\", }, section: { title: \"Section\", icon: \"image:crop-landscape\", }, dl: { title: \"Data list\", icon: \"editor:format-list-bulleted\", }, dt: { title: \"Data term\", icon: \"editor:format-list-bulleted\", }, dd: { title: \"Data definition\", icon: \"editor:format-list-bulleted\", }, ol: { title: \"Numbered list\", icon: \"editor:format-list-numbered\", }, ul: { title: \"Bulleted list\", icon: \"editor:format-list-bulleted\", }, li: { title: \"List item\", icon: \"editor:format-list-bulleted\", }, h1: { title: \"Heading\", icon: \"hax:h1\", }, h2: { title: \"Heading\", icon: \"hax:h2\", tags: [\"Text\", \"h2\", \"html\", \"text\", \"heading\", \"header\"], }, h3: { title: \"Heading\", icon: \"hax:h3\", }, h4: { title: \"Heading\", icon: \"hax:h4\", }, h5: { title: \"Heading\", icon: \"hax:h5\", }, h6: { title: \"Heading\", icon: \"hax:h6\", }, strike: { title: \"Cross out\", icon: \"editor:format-strikethrough\", }, u: { title: \"Underline\", icon: \"editor:format-underlined\", }, sub: { title: \"Subscript\", icon: \"mdextra:subscript\", }, sup: { title: \"Superscript\", icon: \"mdextra:superscript\", }, div: { title: \"DIV\", icon: \"image:crop-landscape\", }, span: { title: \"SPAN\", icon: \"editor:short-text\", handles: [ { type: \"inline\", text: \"text\", }, ], }, i: { title: \"Italic\", icon: \"editor:format-italic\", }, em: { title: \"Emphasis\", icon: \"editor:format-italic\", }, strong: { title: \"Bold\", icon: \"editor:format-bold\", }, b: { title: \"Bold\", icon: \"editor:format-bold\", }, blockquote: { title: \"Block quote\", icon: \"editor:format-quote\", }, code: { title: \"Code\", icon: \"icons:code\", }, pre: { title: \"Preformatted\", icon: \"icons:code\", }, time: { title: \"Time\", icon: \"icons:code\", }, cite: { title: \"Citation\", icon: \"icons:code\", }, embed: { title: \"Embedded object\", icon: \"icons:fullscreen\", }, picture: { title: \"Picture\", icon: \"image:image\", }, }"
+              "default": "{ caption: { title: \"Caption\", icon: \"av:call-to-action\", }, video: { title: \"Video\", icon: \"av:play-circle-filled\", }, audio: { title: \"Audio\", icon: \"image:music-note\", }, section: { title: \"Section\", icon: \"image:crop-landscape\", }, dl: { title: \"Data list\", icon: \"editor:format-list-bulleted\", }, dt: { title: \"Data term\", icon: \"editor:format-list-bulleted\", }, dd: { title: \"Data definition\", icon: \"editor:format-list-bulleted\", }, ol: { title: \"Numbered list\", icon: \"editor:format-list-numbered\", }, ul: { title: \"Bulleted list\", icon: \"editor:format-list-bulleted\", }, li: { title: \"List item\", icon: \"editor:format-list-bulleted\", }, h1: { title: \"Heading\", icon: \"hax:h1\", }, h2: { title: \"Heading\", icon: \"hax:h2\", tags: [\"Writing\", \"h2\", \"html\", \"text\", \"heading\", \"header\"], }, h3: { title: \"Heading\", icon: \"hax:h3\", }, h4: { title: \"Heading\", icon: \"hax:h4\", }, h5: { title: \"Heading\", icon: \"hax:h5\", }, h6: { title: \"Heading\", icon: \"hax:h6\", }, strike: { title: \"Cross out\", icon: \"editor:format-strikethrough\", }, u: { title: \"Underline\", icon: \"editor:format-underlined\", }, sub: { title: \"Subscript\", icon: \"mdextra:subscript\", }, sup: { title: \"Superscript\", icon: \"mdextra:superscript\", }, div: { title: \"DIV\", icon: \"image:crop-landscape\", }, span: { title: \"SPAN\", icon: \"editor:short-text\", handles: [ { type: \"inline\", text: \"text\", }, ], }, i: { title: \"Italic\", icon: \"editor:format-italic\", }, em: { title: \"Emphasis\", icon: \"editor:format-italic\", }, strong: { title: \"Bold\", icon: \"editor:format-bold\", }, b: { title: \"Bold\", icon: \"editor:format-bold\", }, blockquote: { title: \"Block quote\", icon: \"editor:format-quote\", }, code: { title: \"Code\", icon: \"icons:code\", }, pre: { title: \"Preformatted\", icon: \"icons:code\", }, time: { title: \"Time\", icon: \"icons:code\", }, cite: { title: \"Citation\", icon: \"icons:code\", }, embed: { title: \"Embedded object\", icon: \"icons:fullscreen\", }, picture: { title: \"Picture\", icon: \"image:image\", }, }"
             },
             {
               "kind": "field",
@@ -6292,6 +6388,14 @@
               },
               "description": "Gizmo types which can be used to bridge apps to gizmos.",
               "attribute": "validGizmoTypes"
+            },
+            {
+              "kind": "field",
+              "name": "styleGuideSchema",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}"
             },
             {
               "kind": "field",
@@ -9371,6 +9475,16 @@
               "description": "Toggle the drawer when the button is clicked."
             },
             {
+              "kind": "method",
+              "name": "_clickSaveAndEditButton",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Save and continue editing - save content but stay in edit mode"
+            },
+            {
               "kind": "field",
               "name": "tourController",
               "default": "new AbortController()"
@@ -9451,7 +9565,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ structure: \"Outline\", htmlSource: \"HTML Source\", structureTip: \"View Page Structure\", edit: \"Edit\", save: \"Save\", move: \"Move\", close: \"Close\", move: \"Move\", menuAlignment: \"Menu Alignment\", menuLeft: \"Move\", menuRight: \"Move\", menuPosition: \"Menu position\", changeSideVisually: \"Change which side of the screen the menu is affixed to visually.\", expand: \"Expand\", collapse: \"Collapse\", menuSize: \"Menu size\", menuSizeDescription: \"Expand or collapse the menu visually.\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", settings: \"Settings\", source: \"Source\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", blocks: \"Blocks\", cancel: \"Cancel\", cancelWithoutSaving: \"Cancel without saving\", configure: \"Configure\", advanced: \"Advanced\", developer: \"Developer\", alignment: \"Alignment\", left: \"Left\", center: \"Center\", right: \"Right\", search: \"Search\", templates: \"Templates\", width: \"Width\", }"
+              "default": "{ structure: \"Outline\", htmlSource: \"HTML Source\", structureTip: \"View Page Structure\", edit: \"Edit\", save: \"Save\", saveAndEdit: \"Save and edit\", move: \"Move\", close: \"Close\", move: \"Move\", menuAlignment: \"Menu Alignment\", menuLeft: \"Move\", menuRight: \"Move\", menuPosition: \"Menu position\", changeSideVisually: \"Change which side of the screen the menu is affixed to visually.\", expand: \"Expand\", collapse: \"Collapse\", menuSize: \"Menu size\", menuSizeDescription: \"Expand or collapse the menu visually.\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", settings: \"Settings\", source: \"Source\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", blocks: \"Blocks\", cancel: \"Cancel\", cancelWithoutSaving: \"Cancel without saving\", configure: \"Configure\", advanced: \"Advanced\", developer: \"Developer\", alignment: \"Alignment\", left: \"Left\", center: \"Center\", right: \"Right\", search: \"Search\", templates: \"Templates\", width: \"Width\", }"
             },
             {
               "kind": "field",

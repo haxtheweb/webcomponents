@@ -368,18 +368,18 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         }
       }
     });
-    
+
     // Create custom ordering with logical priority
     // Writing first, then alphabetical, then Other at the end
-    const otherCategory = 'Other';
-    
+    const otherCategory = "Other";
+
     // Separate Writing, Other, and regular categories
     const regularTags = [];
     let hasWriting = false;
     let hasOther = false;
-    
-    tags.forEach(tag => {
-      if (tag === 'Writing') {
+
+    tags.forEach((tag) => {
+      if (tag === "Writing") {
         hasWriting = true;
       } else if (tag === otherCategory) {
         hasOther = true;
@@ -387,13 +387,13 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         regularTags.push(tag);
       }
     });
-    
+
     // Sort regular categories alphabetically
     regularTags.sort();
-    
+
     // Combine in final order: Writing first, then alphabetical, then Other
     const orderedTags = [];
-    if (hasWriting) orderedTags.push('Writing');
+    if (hasWriting) orderedTags.push("Writing");
     orderedTags.push(...regularTags);
     if (hasOther) orderedTags.push(otherCategory);
     return orderedTags;
@@ -411,31 +411,31 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     // Initialize popular blocks list
     this._initializePopularBlocks();
   }
-  
+
   /**
    * Initialize the list of popular blocks with the top 9 most used elements
    */
   _initializePopularBlocks() {
     // Define the most popular HAX blocks based on usage patterns
     const popularTags = [
-      'p',
-      'h2', 
-      'video-player',
-      'media-image', 
-      'grid-plate',
-      'place-holder',
-      'learning-component',
-      'code-sample',
-      'a11y-figure',
-      'self-check',
-      'stop-note'
+      "p",
+      "h2",
+      "video-player",
+      "media-image",
+      "grid-plate",
+      "place-holder",
+      "learning-component",
+      "code-sample",
+      "a11y-figure",
+      "self-check",
+      "stop-note",
     ];
-    
+
     // Wait for HAXStore to be ready and get gizmo list
     if (HAXStore.gizmoList && HAXStore.gizmoList.length > 0) {
       const popularGizmos = [];
-      popularTags.forEach(tag => {
-        const gizmo = HAXStore.gizmoList.find(g => g && g.tag === tag);
+      popularTags.forEach((tag) => {
+        const gizmo = HAXStore.gizmoList.find((g) => g && g.tag === tag);
         if (gizmo) {
           popularGizmos.push(gizmo);
         }

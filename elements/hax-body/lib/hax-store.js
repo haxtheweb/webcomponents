@@ -893,7 +893,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           this.appendChild(stax);
         }
       }
-      
+
       this.dispatchEvent(
         new CustomEvent("hax-store-app-store-loaded", {
           bubbles: true,
@@ -904,11 +904,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       );
       // now process the dynamic imports
       await this._handleDynamicImports(items, this.haxAutoloader);
-      
+
       // detect and register page-template elements from style guide as stax if available
       // Try again here in case HAXcms wasn't ready during initial store setup
       await this._detectStyleGuideTemplates();
-      
+
       this.appStoreLoaded = true;
     }
   }
@@ -1215,7 +1215,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
       // register built in primitive definitions
       this._buildPrimitiveDefinitions();
-      
+
       // load style guide templates early if available
       this._detectStyleGuideTemplates();
     }
@@ -1495,21 +1495,102 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // as we allow normal contenteditable to handle the paste
       // we only worry about HTML structures
       if (haxElements.length === 0 && validURL(pasteContent)) {
+        // Check if there's selected text - if so, apply URL as link to selected text
+        let range = this.getRange();
+        let sel = this.getSelection();
+        let selectedText = sel && !sel.isCollapsed ? sel.toString().trim() : "";
+
+        if (selectedText && range) {
+          // User has text selected and is pasting a URL - create a link
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+
+          let linkElement = globalThis.document.createElement("a");
+          linkElement.setAttribute("href", pasteContent.trim());
+          linkElement.setAttribute("target", "_blank");
+          linkElement.setAttribute("rel", "noopener noreferrer");
+          linkElement.textContent = selectedText;
+
+          range.deleteContents();
+          range.insertNode(linkElement);
+
+          // Position cursor after the link
+          setTimeout(() => {
+            range.setStartAfter(linkElement);
+            range.setEndAfter(linkElement);
+            sel.removeAllRanges();
+            sel.addRange(range);
+          }, 0);
+
+          return false;
+        }
+
         // ONLY use this logic if we're on an empty container
         if (this.activeNode.innerText.trim() != "") {
           inlinePaste = true;
         }
-        // test for a URL since we didn't have HTML / elements of some kind
-        // if it's a URL we might be able to automatically convert it into it's own element
+
+        // Instead of immediately processing, trigger Magic Link Wand for user choice
+        if (!inlinePaste) {
+          // Stop the paste and trigger Magic Link Wand
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+
+          // Trigger Magic Link Wand with the pasted URL
+          if (globalThis.SuperDaemonInstance) {
+            // Set the UserScaffold to indicate this is a paste action
+            import("@haxtheweb/user-scaffold/user-scaffold.js").then(() => {
+              globalThis.UserScaffoldInstance.action = {
+                type: "paste",
+                architype: "input",
+              };
+              globalThis.UserScaffoldInstance.data = {
+                raw: pasteContent,
+                text: pasteContent,
+                value: pasteContent,
+                architype: "url",
+              };
+
+              // Wave the Magic Link Wand
+              globalThis.SuperDaemonInstance.waveWand(
+                [
+                  "",
+                  "/",
+                  {
+                    operation: "url-selected",
+                    url: pasteContent.trim(),
+                    data: pasteContent,
+                    context: "paste",
+                  },
+                  "hax-link-agent",
+                  "Link Agent",
+                ],
+                this.activeHaxBody,
+                "coin2",
+              );
+            });
+          } else {
+            // Fallback to original logic if SuperDaemon not available
+            let values = {
+              source: pasteContent,
+              title: pasteContent,
+            };
+            if (!this.insertLogicFromValues(values, this, false, true)) {
+              return false;
+            }
+          }
+          return false;
+        }
+
+        // For inline pastes, continue with original logic
         let values = {
           source: pasteContent,
           title: pasteContent,
         };
         // if we DID get a match, block default values
-        if (
-          !inlinePaste &&
-          !this.insertLogicFromValues(values, this, false, true)
-        ) {
+        if (!this.insertLogicFromValues(values, this, false, true)) {
           // prevents the text being inserted previously so that the insertLogic does it
           // for us. false only is returned if we didn't do anthing in this function
           return false;
@@ -1535,21 +1616,91 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         haxElements[0].tag === "a" &&
         haxElements[0].properties.href
       ) {
+        // Check if there's selected text - if so, apply URL as link to selected text
+        let range = this.getRange();
+        let sel = this.getSelection();
+        let selectedText = sel && !sel.isCollapsed ? sel.toString().trim() : "";
+
+        if (selectedText && range) {
+          // User has text selected and is pasting a URL - create a link
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+
+          let linkElement = globalThis.document.createElement("a");
+          linkElement.setAttribute("href", haxElements[0].properties.href);
+          linkElement.setAttribute("target", "_blank");
+          linkElement.setAttribute("rel", "noopener noreferrer");
+          linkElement.textContent = selectedText;
+
+          range.deleteContents();
+          range.insertNode(linkElement);
+
+          // Position cursor after the link
+          setTimeout(() => {
+            range.setStartAfter(linkElement);
+            range.setEndAfter(linkElement);
+            sel.removeAllRanges();
+            sel.addRange(range);
+          }, 0);
+
+          return false;
+        }
+
         // ONLY use this logic if we're on an empty container
         if (this.activeNode.innerText.trim() != "") {
           newContent = haxElements[0].properties.href;
           inlinePaste = true;
         } else {
-          // test for a URL since we didn't have HTML / elements of some kind
-          // if it's a URL we might be able to automatically convert it into it's own element
-          let values = {
-            source: haxElements[0].properties.href,
-            title: haxElements[0].content,
-          };
-          // if we DID get a match, block default values
-          if (!this.insertLogicFromValues(values, this)) {
-            return false;
+          // Instead of immediately processing, trigger Magic Link Wand for user choice
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+
+          // Trigger Magic Link Wand with the pasted URL from anchor tag
+          if (globalThis.SuperDaemonInstance) {
+            import("@haxtheweb/user-scaffold/user-scaffold.js").then(() => {
+              globalThis.UserScaffoldInstance.action = {
+                type: "paste",
+                architype: "input",
+              };
+              globalThis.UserScaffoldInstance.data = {
+                raw: haxElements[0].properties.href,
+                text: haxElements[0].properties.href,
+                value: haxElements[0].properties.href,
+                architype: "url",
+              };
+
+              // Wave the Magic Link Wand
+              globalThis.SuperDaemonInstance.waveWand(
+                [
+                  "",
+                  "/",
+                  {
+                    operation: "url-selected",
+                    url: haxElements[0].properties.href,
+                    data: haxElements[0].properties.href,
+                    title: haxElements[0].content,
+                    context: "paste",
+                  },
+                  "hax-link-agent",
+                  "Link Agent",
+                ],
+                this.activeHaxBody,
+                "coin2",
+              );
+            });
+          } else {
+            // Fallback to original logic if SuperDaemon not available
+            let values = {
+              source: haxElements[0].properties.href,
+              title: haxElements[0].content,
+            };
+            if (!this.insertLogicFromValues(values, this)) {
+              return false;
+            }
           }
+          return false;
         }
       }
       // account for broken pastes in resolution, just let browser handle it
@@ -3313,7 +3464,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     return null;
   }
-  
+
   /**
    * get the schema from a tag
    */
@@ -3321,14 +3472,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (tag && tag.toLowerCase) {
       tag = tag.toLowerCase();
       if (this.elementList && this.elementList[tag]) {
-        let schema = {...this.elementList[tag]};
-        
+        let schema = { ...this.elementList[tag] };
+
         // Check for style guide overrides
         const styleGuideOverride = this._getStyleGuideSchemaOverride(tag);
         if (styleGuideOverride && styleGuideOverride.demoSchema) {
           schema.demoSchema = styleGuideOverride.demoSchema;
         }
-        
+
         return schema;
       }
     }
@@ -3551,14 +3702,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   _haxStoreRegisterStax(e) {
     if (e.detail) {
       const newStax = e.detail;
-      
+
       // Check for duplicates based on data-haxsg-id if available
       const newHaxsgId = newStax.details && newStax.details.haxsgId;
       if (newHaxsgId) {
-        const existingStax = this.staxList.find(stax => 
-          stax.details && stax.details.haxsgId === newHaxsgId
+        const existingStax = this.staxList.find(
+          (stax) => stax.details && stax.details.haxsgId === newHaxsgId,
         );
-        
+
         // If duplicate found, don't add it
         if (existingStax) {
           // Remove the element after processing to clean up
@@ -3571,11 +3722,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           return;
         }
       }
-      
+
       newStax.index = this.staxList.length;
       this.staxList = [...this.staxList, newStax];
       this.write("staxList", this.staxList, this);
-      
+
       // we don't care about this after it's launched
       if (
         typeof e.target.parentElement !== typeof undefined &&
@@ -3614,7 +3765,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     // and that it actually has children prior to parsing for children
     if (fragment.children) {
       // page template is a valid tag in this context
-      const validTags = [...this.validTagList, 'page-template'];
+      const validTags = [...this.validTagList, "page-template"];
       const children = fragment.children;
       // loop over the new nodes
       for (let i = 0; i < children.length; i++) {
@@ -3629,7 +3780,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     return elements;
   }
-  
+
   /**
    * Check if style guide content is available and detect page-template elements
    * This is called during app store loading to register any available templates
@@ -3637,8 +3788,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   async _detectStyleGuideTemplates() {
     try {
       // Check if we have access to HAXcms store for style guide content
-      if (typeof globalThis.HAXCMS !== 'undefined' && globalThis.HAXCMS && globalThis.HAXCMS.instance) {
-        const styleGuideContent = await globalThis.HAXCMS.instance.store.loadStyleGuideContent();
+      if (
+        typeof globalThis.HAXCMS !== "undefined" &&
+        globalThis.HAXCMS &&
+        globalThis.HAXCMS.instance
+      ) {
+        const styleGuideContent =
+          await globalThis.HAXCMS.instance.store.loadStyleGuideContent();
         if (styleGuideContent) {
           await this.detectAndRegisterPageTemplateStax(styleGuideContent);
         }
@@ -3647,22 +3803,32 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       // Style guide may not be available in all contexts, which is fine
     }
   }
-  
+
   /**
    * Force app store loading if it hasn't loaded yet
    * This can be called from external contexts like the style guide route
    */
   async forceAppStoreLoad() {
     // Only force load if not already loaded and we have the necessary pieces
-    if (!this.appStoreLoaded && this.ready && this.__appStoreData && this.haxAutoloader) {
+    if (
+      !this.appStoreLoaded &&
+      this.ready &&
+      this.__appStoreData &&
+      this.haxAutoloader
+    ) {
       await this._loadAppStoreData(this.__appStoreData);
     }
     // Also try to trigger from appStore property if set
-    else if (!this.appStoreLoaded && this.appStore && this.appStore.url && this.haxAutoloader) {
+    else if (
+      !this.appStoreLoaded &&
+      this.appStore &&
+      this.appStore.url &&
+      this.haxAutoloader
+    ) {
       this.loadAppStoreFromRemote();
     }
   }
-  
+
   /**
    * Detect page-template elements from style guide content and register them as stax or demoSchema
    * Multi-child templates become stax, single-child templates replace demoSchema for that element
@@ -3673,30 +3839,42 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (!styleGuideContent) {
       return;
     }
-    
+
     try {
       // Convert style guide content to HAXSchema elements using existing method
-      const styleGuideElements = await this.htmlToHaxElements(styleGuideContent);
-      
+      const styleGuideElements =
+        await this.htmlToHaxElements(styleGuideContent);
+
       for (const styleElement of styleGuideElements) {
         // Look for page-template elements
-        if (styleElement && styleElement.tag === 'page-template') {
+        if (styleElement && styleElement.tag === "page-template") {
           // Get template name, schema, and haxsg-id from properties
-          const templateName = styleElement.properties && styleElement.properties.name;
-          const templateSchema = styleElement.properties && styleElement.properties.schema || 'area';
-          const haxsgId = styleElement.properties && styleElement.properties['data-haxsg-id'];
-          
+          const templateName =
+            styleElement.properties && styleElement.properties.name;
+          const templateSchema =
+            (styleElement.properties && styleElement.properties.schema) ||
+            "area";
+          const haxsgId =
+            styleElement.properties && styleElement.properties["data-haxsg-id"];
+
           if (templateName && styleElement.content) {
             // Convert the content inside page-template to HAX elements
-            const templateContentElements = await this.htmlToHaxElements(styleElement.content);
-            
+            const templateContentElements = await this.htmlToHaxElements(
+              styleElement.content,
+            );
+
             if (templateContentElements && templateContentElements.length > 0) {
-              if (templateSchema === 'block') {
+              if (templateSchema === "block") {
                 // Block templates: replace demoSchema for the specific element type
                 if (templateContentElements.length === 1) {
-                  await this._updateElementDemoSchema(templateContentElements[0]);
+                  await this._updateElementDemoSchema(
+                    templateContentElements[0],
+                  );
                 }
-              } else if (templateSchema === 'area' || templateSchema === 'page') {
+              } else if (
+                templateSchema === "area" ||
+                templateSchema === "page"
+              ) {
                 // Area or Page templates: register as stax template
                 const staxData = {
                   details: {
@@ -3708,11 +3886,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                     rating: "0",
                     tags: ["template", "style-guide", templateSchema],
                     templateType: templateSchema, // Add templateType for filtering
-                    haxsgId: haxsgId // Store the haxsg-id for deduplication
+                    haxsgId: haxsgId, // Store the haxsg-id for deduplication
                   },
-                  stax: templateContentElements // Use the HAX elements directly (excludes page-template wrapper)
+                  stax: templateContentElements, // Use the HAX elements directly (excludes page-template wrapper)
                 };
-                
+
                 // Create and register the stax element
                 let stax = globalThis.document.createElement("hax-stax");
                 stax.data = staxData;
@@ -3726,7 +3904,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       console.warn("Error detecting page-template elements:", error);
     }
   }
-  
+
   /**
    * Update the demoSchema for an element based on page-template content
    * @param {Object} haxElement - HAX element schema from page-template content
@@ -3735,28 +3913,27 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (!haxElement || !haxElement.tag) {
       return;
     }
-    
+
     try {
       const tagName = haxElement.tag;
-      
+
       // Create new demoSchema entry based on the page-template content
       const newDemoSchema = {
         tag: tagName,
         properties: haxElement.properties || {},
-        content: haxElement.content || ""
+        content: haxElement.content || "",
       };
-      
+
       // Store in styleGuideSchema for later lookup
       if (!this.styleGuideSchema[tagName]) {
         this.styleGuideSchema[tagName] = {};
       }
       this.styleGuideSchema[tagName].demoSchema = [newDemoSchema];
-      
     } catch (error) {
       console.warn("Error updating element demoSchema:", error);
     }
   }
-  
+
   /**
    * Convert a node to the correct content object for saving.
    * This DOES NOT acccept a HAXElement which is similar

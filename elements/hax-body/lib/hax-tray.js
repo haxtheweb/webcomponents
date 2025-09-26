@@ -75,6 +75,7 @@ class HaxTray extends I18NMixin(
       structureTip: "View Page Structure",
       edit: "Edit",
       save: "Save",
+      saveAndEdit: "Save and edit",
       move: "Move",
       close: "Close",
       move: "Move",
@@ -733,6 +734,19 @@ class HaxTray extends I18NMixin(
             show-text-label
             show-tooltip
             align-horizontal="${this.collapsed ? "left" : "center"}"
+          ></hax-tray-button>
+          <hax-tray-button
+            @click="${this._clickSaveAndEditButton}"
+            icon="hax:page-edit"
+            icon-position="left"
+            id="haxsaveandeditbutton"
+            label="${this.t.saveAndEdit}"
+            event-name="save-and-edit"
+            voice-command="save and edit page"
+            show-text-label
+            show-tooltip
+            align-horizontal="${this.collapsed ? "left" : "center"}"
+            ?hidden="${!this.editMode}"
           ></hax-tray-button>
           <hax-tray-button
             icon="cancel"
@@ -2008,6 +2022,25 @@ class HaxTray extends I18NMixin(
         detail: {},
       }),
     );
+  }
+
+  /**
+   * Save and continue editing - save content but stay in edit mode
+   */
+  _clickSaveAndEditButton(e) {
+    // Don't change edit mode - keep it as true
+    this.dispatchEvent(
+      new CustomEvent("hax-save", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          ...e.detail,
+          keepEditMode: true,
+        },
+      }),
+    );
+    // Don't hide the modal - keep editing interface open
   }
 }
 

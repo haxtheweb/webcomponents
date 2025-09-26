@@ -131,6 +131,7 @@ class HAX extends HTMLElement {
         cancelable: true,
         detail: {
           value: body,
+          keepEditMode: (e.detail && e.detail.keepEditMode) || false,
         },
       }),
     );

@@ -3,7 +3,7 @@
     "element": "app-hax-theme",
     "path": "@haxtheweb/app-hax/lib/app-hax-theme.js",
     "name": "8-bit Overworld theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "bootstrap-theme": {
     "element": "bootstrap-theme",
@@ -27,7 +27,7 @@
     "element": "clean-two",
     "path": "@haxtheweb/clean-two/clean-two.js",
     "name": "Clean Two",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "collections-theme": {
     "element": "collections-theme",
@@ -39,43 +39,43 @@
     "element": "ddd-brochure-theme",
     "path": "@haxtheweb/d-d-d/lib/ddd-brochure-theme.js",
     "name": "Brochure Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "glossy-portfolio-theme": {
     "element": "glossy-portfolio-theme",
     "path": "@haxtheweb/glossy-portfolio-theme/glossy-portfolio-theme.js",
     "name": "Glossy Portfolio Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "haxcms-blank-theme": {
     "element": "haxcms-blank-theme",
     "path": "@haxtheweb/haxcms-elements/lib/haxcms-blank-theme.js",
     "name": "Haxcms Blank Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "haxcms-json-theme": {
     "element": "haxcms-json-theme",
     "path": "@haxtheweb/haxcms-elements/lib/haxcms-json-theme.js",
     "name": "Haxcms Json Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "haxcms-print-theme": {
     "element": "haxcms-print-theme",
     "path": "@haxtheweb/haxcms-elements/lib/haxcms-print-theme.js",
     "name": "Haxcms Print Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "haxma-theme": {
     "element": "haxma-theme",
     "path": "@haxtheweb/haxma-theme/haxma-theme.js",
     "name": "HAXma doc theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "haxor-slevin": {
     "element": "haxor-slevin",
     "path": "@haxtheweb/haxor-slevin/haxor-slevin.js",
     "name": "Haxor Slevin",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "journey-sidebar-theme": {
     "element": "journey-sidebar-theme",
@@ -93,7 +93,7 @@
     "element": "journey-topbar-theme",
     "path": "@haxtheweb/journey-theme/lib/journey-topbar-theme.js",
     "name": "Journey Topbar Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "learn-two-theme": {
     "element": "learn-two-theme",
@@ -111,13 +111,13 @@
     "element": "polaris-flex-sidebar",
     "path": "@haxtheweb/polaris-theme/lib/polaris-flex-sidebar.js",
     "name": "Polaris Flex Sidebar",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
   },
   "polaris-flex-theme": {
     "element": "polaris-flex-theme",
     "path": "@haxtheweb/polaris-theme/lib/polaris-flex-theme.js",
     "name": "Polaris Flex Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "polaris-invent-theme": {
     "element": "polaris-invent-theme",
@@ -129,7 +129,7 @@
     "element": "polaris-theme",
     "path": "@haxtheweb/polaris-theme/polaris-theme.js",
     "name": "Polaris Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "simple-blog": {
     "element": "simple-blog",
@@ -153,13 +153,13 @@
     "element": "terrible-outlet-themes",
     "path": "@haxtheweb/terrible-themes/lib/terrible-outlet-themes.js",
     "name": "Terrible 90s - blog theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
   },
   "terrible-productionz-themes": {
     "element": "terrible-productionz-themes",
     "path": "@haxtheweb/terrible-themes/lib/terrible-productionz-themes.js",
     "name": "Terrible 90s - productionz theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "terrible-resume-themes": {
     "element": "terrible-resume-themes",
@@ -171,7 +171,7 @@
     "element": "terrible-themes",
     "path": "@haxtheweb/terrible-themes/terrible-themes.js",
     "name": "Terrible 90s - Room 407 theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "training-theme": {
     "element": "training-theme",
