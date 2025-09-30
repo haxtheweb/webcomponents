@@ -9069,6 +9069,18 @@
             },
             {
               "kind": "field",
+              "name": "noScreenRecord",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "inheritedFrom": {
+                "name": "HaxUploadField",
+                "module": "lib/hax-upload-field.js"
+              }
+            },
+            {
+              "kind": "field",
               "name": "__winEvents",
               "type": {
                 "text": "object"
@@ -10409,6 +10421,14 @@
                 "text": "string"
               },
               "default": "\"on\""
+            },
+            {
+              "kind": "field",
+              "name": "noScreenRecord",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
             },
             {
               "kind": "field",

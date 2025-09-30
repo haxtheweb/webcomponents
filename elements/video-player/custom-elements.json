@@ -527,7 +527,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, embeddedMedia: \"embedded media\", }"
+              "default": "{ ...this.t, embeddedMedia: \"embedded media\", gizmoTitle: \"Video\", gizmoDescription: \"This can present video in a highly accessible manner regardless of source.\", tagAudioVideo: \"Media\", tagMedia: \"Media\", sourceTitle: \"Source\", sourceDescription: \"The URL for this media.\", titleTitle: \"Title\", titleDescription: \"Simple title for under video\", thumbnailTitle: \"Thumbnail image\", thumbnailDescription: \"The URL for a thumbnail/poster image.\", closedCaptionsTitle: \"Closed captions\", closedCaptionsDescription: \"The URL for the captions file.\", startTimeTitle: \"Start time\", startTimeDescription: \"Start video at a specific time (seconds)\", endTimeTitle: \"End time\", endTimeDescription: \"End video at a specific time (seconds), requires a start time.\", learningModeTitle: \"Enable learning mode\", learningModeDescription: \"Disables fast forward and rewind.\", hideYoutubeLinkTitle: \"Remove open on YouTube button\", hideYoutubeLinkDescription: \"Removes the button for opening the video on YouTube.\", linkableTitle: \"Include a share link?\", linkableDescription: \"Provides a link to share the video.\", hideTimestampsTitle: \"Hide timestamps\", hideTimestampsDescription: \"Hide the time stamps on the transcript.\", hideTranscriptTitle: \"Hide Transcript\", hideTranscriptDescription: \"Hide transcript by default.\", crossoriginTitle: \"Crossorigin\", crossoriginDescription: \"Indicates whether to use CORS.\", allowBackgroundPlayTitle: \"Allow background playback\", allowBackgroundPlayDescription: \"Videos pause / play automatically when tab loses focus; this enables video to play without tab having focus\", darkTranscriptTitle: \"Dark theme for transcript\", darkTranscriptDescription: \"Enable dark theme for the transcript.\", disableInteractiveTitle: \"Disable Interactive\", disableInteractiveDescription: \"Disable interactive mode that makes transcript clickable.\", languageTitle: \"Language\", languageDescription: \"Language of the media.\", accentColorTitle: \"Accent color\", accentColorDescription: \"(deprecated) Select the accent color for the player.\", copyTimecodeLabel: \"Copy current timecode\", englishLabel: \"English\", }"
             },
             {
               "kind": "field",
@@ -1130,6 +1130,14 @@
             },
             {
               "kind": "field",
+              "name": "t",
+              "type": {
+                "text": "object"
+              },
+              "default": "{ ...this.t, missingTitle: \"Missing Title\", closeLecturePlayer: \"Close Lecture Player\", openLecturePlayer: \"Open Lecture Player\", }"
+            },
+            {
+              "kind": "field",
               "name": "source",
               "privacy": "public",
               "type": {
@@ -1182,6 +1190,10 @@
             }
           ],
           "mixins": [
+            {
+              "name": "I18NMixin",
+              "package": "@haxtheweb/i18n-manager/lib/I18NMixin.js"
+            },
             {
               "name": "DDDSuper",
               "package": "@haxtheweb/d-d-d/d-d-d.js"

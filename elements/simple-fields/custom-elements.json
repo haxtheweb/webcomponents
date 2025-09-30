@@ -17193,6 +17193,19 @@
             },
             {
               "kind": "method",
+              "name": "_handleScreenOption",
+              "parameters": [
+                {
+                  "name": "e",
+                  "type": {
+                    "text": "event"
+                  }
+                }
+              ],
+              "description": "display screen recorder"
+            },
+            {
+              "kind": "method",
               "name": "_handleCancel",
               "parameters": [
                 {
@@ -17272,6 +17285,16 @@
             },
             {
               "kind": "method",
+              "name": "__newScreenRecordingShowedUp",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "We got a new screen recording"
+            },
+            {
+              "kind": "method",
               "name": "_takeSelfie",
               "parameters": [
                 {
@@ -17283,6 +17306,15 @@
             {
               "kind": "method",
               "name": "_voiceRecorder",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "_screenRecorder",
               "parameters": [
                 {
                   "name": "e"
@@ -17316,7 +17348,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, dropMediaHereOr: \"drop media here or\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", cancel: \"Cancel\", uploadMedia: \"Upload media\", }"
+              "default": "{ ...this.t, dropMediaHereOr: \"drop media here or\", upload: \"Upload\", takePhoto: \"Take photo\", recordAudio: \"Record audio\", recordScreen: \"Record screen\", cancel: \"Cancel\", uploadMedia: \"Upload media\", }"
             },
             {
               "kind": "field",
@@ -17370,6 +17402,17 @@
               "description": "No Voice Recording",
               "default": "false",
               "attribute": "no-voice-record"
+            },
+            {
+              "kind": "field",
+              "name": "noScreenRecord",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "No Screen Recording - defaults to true (disabled) for most components",
+              "default": "true",
+              "attribute": "no-screen-record"
             },
             {
               "kind": "field",
@@ -17689,6 +17732,15 @@
               "description": "No Voice Recording",
               "default": "false",
               "fieldName": "noVoiceRecord"
+            },
+            {
+              "name": "no-screen-record",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "No Screen Recording - defaults to true (disabled) for most components",
+              "default": "true",
+              "fieldName": "noScreenRecord"
             },
             {
               "name": "responsive-size",

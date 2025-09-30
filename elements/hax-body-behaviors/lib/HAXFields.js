@@ -166,6 +166,12 @@ export const HaxSchematizer = {
         format: "week",
       },
     },
+    screenRecorder: {
+      defaultSettings: {
+        type: "string",
+        format: "fileupload",
+      },
+    },
   },
 };
 
@@ -522,6 +528,21 @@ export const HaxElementizer = {
             attributes: {
               autofocus: true,
               type: "file",
+            },
+            properties: {
+              accepts: "accepts",
+            },
+          },
+        },
+        screenrecorder: {
+          defaultSettings: {
+            import: "@haxtheweb/hax-body/lib/hax-upload-field.js",
+            element: "hax-upload-field",
+            noWrap: true,
+            attributes: {
+              autofocus: true,
+              "show-sources": true,
+              "screen-recorder": true,
             },
             properties: {
               accepts: "accepts",

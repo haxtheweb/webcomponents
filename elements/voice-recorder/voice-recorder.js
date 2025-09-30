@@ -18,7 +18,17 @@ class VoiceRecorder extends LitElement {
     return [
       css`
         :host {
-          display: inline-flex;
+          display: block;
+          font-family: var(--ddd-font-navigation, sans-serif);
+        }
+        simple-icon-button-lite {
+          font-size: var(--ddd-font-size-3xs, 11px);
+          padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+          margin: var(--ddd-spacing-1, 4px);
+          border-radius: var(--ddd-radius-sm, 4px);
+          background-color: var(--ddd-theme-default-keystoneYellow, #ffd100);
+          color: var(--ddd-theme-default-coalyGray, #444);
+          border: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray, #ccc);
         }
       `,
     ];

@@ -16,6 +16,8 @@ class HaxTrayUpload extends HaxUploadField {
   constructor() {
     super();
     this.hideInput = true;
+    // Enable screen recording for the tray upload
+    this.noScreenRecord = false;
     this.__winEvents = this.__winEvents || {};
     this.__winEvents = {
       ...this.__winEvents,

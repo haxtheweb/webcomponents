@@ -15,13 +15,19 @@
     <style is="custom-style" include="demo-pages-shared-styles"></style>
     <style>
       .vmsg-button {
-        border: 1px solid #ccc;
-        border-radius: 0;
-        padding: 4px;
-        margin: 0 4px;
+        border: var(--ddd-border-sm, 1px solid #ccc);
+        border-radius: var(--ddd-radius-sm, 4px);
+        padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+        margin: 0 var(--ddd-spacing-1, 4px);
+        font-family: var(--ddd-font-navigation, sans-serif);
+        font-size: var(--ddd-font-size-3xs, 11px);
+        background-color: var(--ddd-theme-default-keystoneYellow, #ffd100);
+        color: var(--ddd-theme-default-coalyGray, #444);
       }
       .vmsg-timer {
-        padding: 4px;
+        padding: var(--ddd-spacing-1, 4px);
+        font-family: var(--ddd-font-navigation, sans-serif);
+        font-size: var(--ddd-font-size-3xs, 11px);
       }
     </style>
   </head>

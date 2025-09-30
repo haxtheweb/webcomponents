@@ -52,14 +52,14 @@ class SimpleCameraSnap extends HTMLElement {
         justify-content: space-between;
         flex-direction: column;
         /* style simple-login-camera according to simple-login-snap styles */
-        --simple-login-camera-background: var(--simple-camera-snap-color, #36bed4);
-        --simple-login-camera-error: var(--simple-camera-snap-error, red);
-        --simple-login-avatar-color: var(--simple-camera-snap-color, #36bed4);
-        --simple-login-camera-size: var(--simple-camera-snap-height, calc(var(--simple-camera-snap-width, unset) * 16/9));
+        --simple-login-camera-background: var(--simple-camera-snap-color, var(--ddd-theme-default-coalyGray, #36bed4));
+        --simple-login-camera-error: var(--simple-camera-snap-error, var(--ddd-theme-default-error, red));
+        --simple-login-avatar-color: var(--simple-camera-snap-color, var(--ddd-theme-default-coalyGray, #36bed4));
+        --simple-login-camera-size: var(--simple-camera-snap-height, calc(var(--simple-camera-snap-width, 150px) * 16/9));
 
         /* style simple-login-avatar according to simple-login-snap styles */
-        --simple-login-avatar-background: var(--simple-camera-snap-background, white);
-        --simple-login-avatar-border-radius: var(--simple-camera-snap-border-radius,100%);
+        --simple-login-avatar-background: var(--simple-camera-snap-background, var(--ddd-theme-default-white, white));
+        --simple-login-avatar-border-radius: var(--simple-camera-snap-border-radius, var(--ddd-radius-rounded, 100%));
       }
       :host([hidden]) {
         display: none !important;
@@ -73,10 +73,22 @@ class SimpleCameraSnap extends HTMLElement {
         overflow: hidden;
       }
       #snap {
-        color: var(--simple-camera-snap-color, #36bed4);
-        background-color: var(--simple-camera-snap-background, white);
-        border-radius: var(--simple-camera-snap-button-border-radius);
-        opacity: var(--simple-camera-snap-button-opacity);
+        color: white;
+        background-color: var(--ddd-theme-default-error, #d32f2f);
+        border-radius: var(--simple-camera-snap-button-border-radius, var(--ddd-radius-sm, 4px));
+        opacity: var(--simple-camera-snap-button-opacity, 1);
+        border: none;
+        padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+        margin: var(--ddd-spacing-1, 4px);
+        font-family: var(--ddd-font-navigation, sans-serif);
+        font-size: var(--ddd-font-size-4xs, 10px);
+        cursor: pointer;
+        min-width: 60px;
+        text-align: center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s ease;
       }
       .has-snap {
         z-index: 3;
@@ -90,9 +102,10 @@ class SimpleCameraSnap extends HTMLElement {
         display: flex;
         width: 100%;
         justify-content: space-around;
-        position: var(--simple-camera-snap-button-container-position);
-        bottom: var(--simple-camera-snap-button-container-bottom);
-        z-index: var(--simple-camera-snap-button-container-z-index);
+        position: var(--simple-camera-snap-button-container-position, relative);
+        bottom: var(--simple-camera-snap-button-container-bottom, var(--ddd-spacing-1, 4px));
+        z-index: var(--simple-camera-snap-button-container-z-index, 5);
+        margin-top: var(--ddd-spacing-1, 4px);
       }
     </style>
     <simple-login-avatar part="avatar">
@@ -100,7 +113,9 @@ class SimpleCameraSnap extends HTMLElement {
       <simple-login-camera id="camera" autoplay part="camera"></simple-login-camera>
     </simple-login-avatar>
     <div class="buttons">
-      <simple-icon-button-lite id="snap" icon="image:camera-alt" part="snap-button"></simple-icon-button-lite>
+      <simple-icon-button-lite id="snap" icon="image:camera-alt" part="snap-button">
+        ${this.t.takePhoto}
+      </simple-icon-button-lite>
       <simple-tooltip for="snap" part="snap-tooltip">${this.t.takePhoto}</simple-tooltip>
       <slot></slot>
     </div>

@@ -365,6 +365,14 @@ export class Form {
     const renderArea = (this.renderArea =
       globalThis.document.createElement("div"));
     renderArea.className = "vmsg-popup";
+    renderArea.style.cssText = `
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: var(--ddd-font-navigation, sans-serif);
+    `;
     renderArea.addEventListener("click", (e) => e.stopPropagation());
 
     const progress = globalThis.document.createElement("div");
@@ -388,23 +396,54 @@ export class Form {
     this.drawInit();
     this.clearAll();
 
+    const timer = (this.timer = globalThis.document.createElement("div"));
+    timer.className = "vmsg-timer";
+    timer.style.cssText = `
+      padding: var(--ddd-spacing-1, 4px);
+      font-family: var(--ddd-font-navigation, sans-serif);
+      font-size: var(--ddd-font-size-3xs, 11px);
+      min-width: 40px;
+      text-align: center;
+    `;
+    this.drawTime(0);
+    this.target.querySelector(".vmsg-popup").appendChild(timer);
+
+
     const recordRow = globalThis.document.createElement("div");
     recordRow.className = "vmsg-record-row";
+    recordRow.style.cssText = `
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--ddd-spacing-1, 4px);
+      margin: var(--ddd-spacing-1, 4px) 0;
+    `;
     this.renderArea.appendChild(recordRow);
 
     const audio = (this.audio = new Audio());
-
-    const timer = (this.timer = globalThis.document.createElement("div"));
-    timer.className = "vmsg-timer";
-    this.drawTime(0);
-    recordRow.appendChild(timer);
 
     const recordBtn = (this.recordBtn = globalThis.document.createElement(
       "simple-icon-button-lite",
     ));
     recordBtn.className = "vmsg-button vmsg-record-button";
     recordBtn.icon = this.hasRecording ? "refresh" : "av:fiber-smart-record";
-    recordBtn.textContent = this.hasRecording ? "Rerecord" : "Record";
+    recordBtn.innerHTML = `${this.hasRecording ? "Rerecord" : "Record"}`;
+    recordBtn.style.cssText = `
+      border: none;
+      border-radius: var(--ddd-radius-sm, 4px);
+      padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+      margin: var(--ddd-spacing-1, 4px);
+      font-family: var(--ddd-font-navigation, sans-serif);
+      font-size: var(--ddd-font-size-4xs, 10px);
+      background-color: var(--ddd-theme-default-error, #d32f2f);
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+    `;
     recordBtn.addEventListener("click", () => this.startRecording());
     recordRow.appendChild(recordBtn);
 
@@ -414,7 +453,23 @@ export class Form {
     stopBtn.className = "vmsg-button vmsg-stop-button";
     stopBtn.style.display = "none";
     stopBtn.icon = "av:stop";
-    stopBtn.textContent = "Stop";
+    stopBtn.innerHTML = `Stop`;
+    stopBtn.style.cssText += `
+      border: none;
+      border-radius: var(--ddd-radius-sm, 4px);
+      padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+      margin: var(--ddd-spacing-1, 4px);
+      font-family: var(--ddd-font-navigation, sans-serif);
+      font-size: var(--ddd-font-size-4xs, 10px);
+      background-color: var(--ddd-theme-default-error, #d32f2f);
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+    `;
     stopBtn.addEventListener("click", () => this.stopRecording());
     recordRow.appendChild(stopBtn);
 
@@ -424,7 +479,23 @@ export class Form {
     previewBtn.className = "vmsg-button vmsg-record-button";
     previewBtn.style.display = "none";
     previewBtn.icon = !this.playing ? "av:play-arrow" : "av:pause";
-    previewBtn.textContent = !this.playing ? "Preview" : "Pause";
+    previewBtn.innerHTML = `${!this.playing ? "Preview" : "Pause"}`;
+    previewBtn.style.cssText += `
+      border: none;
+      border-radius: var(--ddd-radius-sm, 4px);
+      padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+      margin: var(--ddd-spacing-1, 4px);
+      font-family: var(--ddd-font-navigation, sans-serif);
+      font-size: var(--ddd-font-size-4xs, 10px);
+      background-color: var(--ddd-theme-default-keystoneYellow, #ffd100);
+      color: var(--ddd-theme-default-coalyGray, #444);
+      cursor: pointer;
+      text-align: center;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+    `;
     previewBtn.addEventListener("click", () => {
       this.playing = !this.playing;
       if (audio.paused) {
@@ -436,7 +507,7 @@ export class Form {
         audio.pause();
       }
       previewBtn.icon = !this.playing ? "av:play-arrow" : "av:pause";
-      previewBtn.textContent = !this.playing ? "Preview" : "Pause";
+      previewBtn.innerHTML = `${!this.playing ? "Preview" : "Pause"}`;
     });
     recordRow.appendChild(previewBtn);
 
@@ -445,46 +516,26 @@ export class Form {
     ));
     saveBtn.className = "vmsg-button vmsg-save-button";
     saveBtn.icon = "icons:save";
-    saveBtn.textContent = "Save";
-    saveBtn.style.display = "none";
+    saveBtn.innerHTML = `Save`;
+    saveBtn.style.cssText = `
+      border: none;
+      border-radius: var(--ddd-radius-sm, 4px);
+      padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+      margin: var(--ddd-spacing-1, 4px);
+      font-family: var(--ddd-font-navigation, sans-serif);
+      font-size: var(--ddd-font-size-4xs, 10px);
+      background-color: var(--ddd-theme-default-success, #4caf50);
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      display: none;
+      align-items: center;
+      height: 40px;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+    `;
     saveBtn.addEventListener("click", () => this.close(this.recorder.blob));
     recordRow.appendChild(saveBtn);
-
-    /*const gainWrapper = globalThis.document.createElement("div");
-    gainWrapper.className = "vmsg-slider-wrapper vmsg-gain-slider-wrapper";
-    const gainSlider = globalThis.document.createElement("input");
-    gainSlider.className = "vmsg-slider vmsg-gain-slider";
-    gainSlider.setAttribute("type", "range");
-    gainSlider.min = 0;
-    gainSlider.max = 2;
-    gainSlider.step = 0.2;
-    gainSlider.value = 1;
-    gainSlider.onchange = () => {
-      const gain = +gainSlider.value;
-      this.recorder.gainNode.gain.value = gain;
-    };
-    gainWrapper.appendChild(gainSlider);
-    this.renderArea.appendChild(gainWrapper);
-
-    const pitchWrapper = globalThis.document.createElement("div");
-    pitchWrapper.className = "vmsg-slider-wrapper vmsg-pitch-slider-wrapper";
-    const pitchSlider = globalThis.document.createElement("input");
-    pitchSlider.className = "vmsg-slider vmsg-pitch-slider";
-    pitchSlider.setAttribute("type", "range");
-    pitchSlider.min = -1;
-    pitchSlider.max = 1;
-    pitchSlider.step = 0.2;
-    pitchSlider.value = this.recorder.pitch;
-    pitchSlider.onchange = () => {
-      const pitch = +pitchSlider.value;
-      this.recorder.pitchFX.setPitchOffset(pitch);
-      this.recorder.gainNode.disconnect();
-      this.recorder.gainNode.connect(
-        pitch === 0 ? this.recorder.encNode : this.recorder.pitchFX.input
-      );
-    };
-    pitchWrapper.appendChild(pitchSlider);
-    this.renderArea.appendChild(pitchWrapper);*/
     // trigger an event on our target instance that says we are ready
     this.target.dispatchEvent(
       new CustomEvent("vmsg-ready", {
@@ -526,7 +577,7 @@ export class Form {
     this.recordBtn.icon = this.hasRecording
       ? "refresh"
       : "av:fiber-smart-record";
-    this.recordBtn.textContent = this.hasRecording ? "Rerecord" : "Record";
+    this.recordBtn.innerHTML = `${this.hasRecording ? "Rerecord" : "Record"}`;
     this.stopBtn.style.display = "none";
     this.previewBtn.style.display = "";
     this.stopBtn.disabled = false;

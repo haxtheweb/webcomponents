@@ -226,6 +226,7 @@ class VideoPlayer extends IntersectionObserverMixin(
             inputMethod: "haxupload",
             noCamera: true,
             noVoiceRecord: true,
+            noScreenRecord: false,
             validationType: "url",
           },
           {
@@ -606,7 +607,8 @@ class VideoPlayer extends IntersectionObserverMixin(
       ...this.t,
       embeddedMedia: "embedded media",
       gizmoTitle: "Video",
-      gizmoDescription: "This can present video in a highly accessible manner regardless of source.",
+      gizmoDescription:
+        "This can present video in a highly accessible manner regardless of source.",
       tagAudioVideo: "Media",
       tagMedia: "Media",
       sourceTitle: "Source",
@@ -620,11 +622,13 @@ class VideoPlayer extends IntersectionObserverMixin(
       startTimeTitle: "Start time",
       startTimeDescription: "Start video at a specific time (seconds)",
       endTimeTitle: "End time",
-      endTimeDescription: "End video at a specific time (seconds), requires a start time.",
+      endTimeDescription:
+        "End video at a specific time (seconds), requires a start time.",
       learningModeTitle: "Enable learning mode",
       learningModeDescription: "Disables fast forward and rewind.",
       hideYoutubeLinkTitle: "Remove open on YouTube button",
-      hideYoutubeLinkDescription: "Removes the button for opening the video on YouTube.",
+      hideYoutubeLinkDescription:
+        "Removes the button for opening the video on YouTube.",
       linkableTitle: "Include a share link?",
       linkableDescription: "Provides a link to share the video.",
       hideTimestampsTitle: "Hide timestamps",
@@ -634,15 +638,18 @@ class VideoPlayer extends IntersectionObserverMixin(
       crossoriginTitle: "Crossorigin",
       crossoriginDescription: "Indicates whether to use CORS.",
       allowBackgroundPlayTitle: "Allow background playback",
-      allowBackgroundPlayDescription: "Videos pause / play automatically when tab loses focus; this enables video to play without tab having focus",
+      allowBackgroundPlayDescription:
+        "Videos pause / play automatically when tab loses focus; this enables video to play without tab having focus",
       darkTranscriptTitle: "Dark theme for transcript",
       darkTranscriptDescription: "Enable dark theme for the transcript.",
       disableInteractiveTitle: "Disable Interactive",
-      disableInteractiveDescription: "Disable interactive mode that makes transcript clickable.",
+      disableInteractiveDescription:
+        "Disable interactive mode that makes transcript clickable.",
       languageTitle: "Language",
       languageDescription: "Language of the media.",
       accentColorTitle: "Accent color",
-      accentColorDescription: "(deprecated) Select the accent color for the player.",
+      accentColorDescription:
+        "(deprecated) Select the accent color for the player.",
       copyTimecodeLabel: "Copy current timecode",
       englishLabel: "English",
     };
@@ -651,7 +658,6 @@ class VideoPlayer extends IntersectionObserverMixin(
       localesPath:
         new URL("./locales/video-player.es.json", import.meta.url).href +
         "/../",
-      
     });
   }
   /**

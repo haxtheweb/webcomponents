@@ -13,6 +13,8 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     super();
     this.showSources = true;
     this.autocomplete = "on";
+    // Enable screen recording for hax upload field
+    this.noScreenRecord = false;
     this.__winEvents = {
       "hax-app-picker-selection": "_haxAppPickerSelection", //TODO
     };

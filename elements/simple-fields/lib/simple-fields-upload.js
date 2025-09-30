@@ -37,24 +37,24 @@ class SimpleFieldsUpload extends I18NMixin(
           pointer-events: all;
           overflow: visible;
           --simple-login-camera-aspect: 1.777777777777;
-          --simple-camera-snap-color: var(--simple-fields-color, currentColor);
+          --simple-camera-snap-color: var(--ddd-theme-default-coalyGray, currentColor);
           --simple-camera-snap-background: var(
-            --simple-fields-background-color,
-            unset
+            --ddd-theme-default-white,
+            white
           );
-          --simple-camera-snap-border-radius: 2px;
-          --lumo-font-family: var(--simple-fields-font-family, sans-serif);
-          --lumo-error-color: var(--simple-fields-error-color, #b40000);
-          --lumo-primary-font-color: var(--simple-fields-color, currentColor);
-          --lumo-base-color: var(--simple-fields-background-color, transparent);
+          --simple-camera-snap-border-radius: var(--ddd-radius-sm);
+          --lumo-font-family: var(--ddd-font-navigation, sans-serif);
+          --lumo-error-color: var(--ddd-theme-default-error, #b40000);
+          --lumo-primary-font-color: var(--ddd-theme-default-coalyGray, currentColor);
+          --lumo-base-color: var(--ddd-theme-default-white, white);
         }
         :host([responsive-size="xs"]),
         div[part="description"] {
-          font-size: 10px;
-          --simple-fields-font-size: 10px;
-          --simple-fields-button-font-size: 11px;
-          --simple-fields-legend-font-size: 11px;
-          --simple-fields-detail-font-size: 10px;
+          font-size: var(--ddd-font-size-4xs, 10px);
+          --simple-fields-font-size: var(--ddd-font-size-4xs, 10px);
+          --simple-fields-button-font-size: var(--ddd-font-size-3xs, 11px);
+          --simple-fields-legend-font-size: var(--ddd-font-size-3xs, 11px);
+          --simple-fields-detail-font-size: var(--ddd-font-size-4xs, 10px);
         }
         fieldset {
           padding: 0px;
@@ -67,14 +67,15 @@ class SimpleFieldsUpload extends I18NMixin(
           justify-content: center;
           flex-wrap: wrap;
           width: 100%;
+          padding: var(--ddd-spacing-2, 8px);
         }
         #upload {
-          border-radius: var(--simple-fields-border-radius, 2px);
-          border: 1px dashed var(--simple-fields-border-color-light, #ccc);
+          border-radius: var(--ddd-radius-sm, 2px);
+          border: var(--ddd-border-sm) dashed var(--ddd-theme-default-limestoneGray, #ccc);
         }
         #url {
           flex: 1 1 100%;
-          margin: var(--simple-fields-margin-small, 8px) 0;
+          margin: var(--ddd-spacing-2, 8px) 0;
           background-color: transparent;
         }
         #upload-options {
@@ -86,34 +87,40 @@ class SimpleFieldsUpload extends I18NMixin(
         simple-fields-url-combo[always-expanded]::part(listbox) {
           background-color: transparent;
         }
+        
         simple-toolbar-button {
-          font-family: var(--simple-fields-font-family, sans-serif);
-          color: var(--simple-fields-color, currentColor);
-          margin: calc(0.5 * var(--simple-fields-margin-small, 8px))
-            calc(0.25 * var(--simple-fields-margin-small, 8px));
+          display: inline-flex;
+          font-family: var(--ddd-font-navigation, sans-serif);
+          font-size: var(--ddd-font-size-4xs, 10px);
+          color: var(--ddd-theme-default-coalyGray, black);
+          margin: var(--ddd-spacing-1, 4px);
+          padding: var(--ddd-spacing-1, 4px);
+          border: none;
+          border-radius: var(--ddd-radius-sm, 4px);
+          text-align: center;
+          --simple-icon-width: 24px;
+          --simple-icon-height: 24px;
         }
         simple-toolbar-button[part="cancel-media"] {
           position: absolute;
           right: 0;
           top: 0;
           z-index: 2;
-          --simple-fields-button-padding-sm: 0;
-          background-color: var(--simple-fields-background-color, white);
+          padding: var(--ddd-spacing-1, 4px);
           opacity: 0.7;
         }
         span[part="drop-area-text"] {
-          font-family: var(--simple-fields-button-font-family, sans-serif);
-          font-size: var(--simple-fields-button-font-size, 10px);
+          font-family: var(--ddd-font-navigation, sans-serif);
+          font-size: var(--ddd-font-size-3xs, 11px);
           white-space: nowrap;
-          margin: calc(0.5 * var(--simple-fields-margin-small, 8px))
-            calc(0.25 * var(--simple-fields-margin-small, 8px));
+          margin: var(--ddd-spacing-1, 4px);
         }
         vaadin-upload {
-          padding: var(--simple-fields-margin-small, 8px);
+          padding: var(--ddd-spacing-2, 8px);
           position: relative;
           overflow: visible;
           border: none !important;
-          --lumo-font-size-s: 10px;
+          --lumo-font-size-s: var(--ddd-font-size-4xs, 10px);
         }
         vaadin-upload::part(file-list) {
           max-height: 140px;
@@ -143,27 +150,45 @@ class SimpleFieldsUpload extends I18NMixin(
         vaadin-upload::part(drop-label-icon) {
           display: none;
         }
-        vaadin-upload-file {
+        vaadin-upload {
           --disabled-text-color: #var(--simple-fields-border-color, #999);
+          --lumo-contrast-60pct: currentColor;
+          --lumo-contrast-90pct: currentColor;
         }
         simple-camera-snap {
-          --simple-camera-snap-button-container-bottom: 2px;
+          --simple-camera-snap-button-container-bottom: var(--ddd-spacing-1, 4px);
           --simple-camera-snap-button-container-z-index: 5;
-          --simple-camera-snap-button-border-radius: 100%;
-          --simple-camera-snap-button-opacity: 0.7;
-          max-width: 250px;
+          --simple-camera-snap-button-border-radius: var(--ddd-radius-rounded, 100%);
+          --simple-camera-snap-button-opacity: 0.8;
+          max-width: 200px;
           margin: 0 auto;
         }
 
         /** voice stuff which is in lite dom below */
         .vmsg-button {
-          border: 1px solid #ccc;
-          border-radius: 0;
-          padding: 4px;
-          margin: 0 4px;
+          border: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray, #ccc);
+          border-radius: var(--ddd-radius-sm, 4px);
+          padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+          margin: 0 var(--ddd-spacing-1, 4px);
+          font-family: var(--ddd-font-navigation, sans-serif);
+          font-size: var(--ddd-font-size-4xs, 10px);
+          min-width: 60px;
+          text-align: center;
+          cursor: pointer;
+        }
+        .vmsg-button.vmsg-record-button,
+        .vmsg-button.vmsg-stop-button {
+          background-color: var(--ddd-theme-default-error, #d32f2f);
+          color: white;
+        }
+        .vmsg-button.vmsg-save-button {
+          background-color: var(--ddd-theme-default-success, #4caf50);
+          color: white;
         }
         .vmsg-timer {
-          padding: 4px;
+          padding: var(--ddd-spacing-1, 4px);
+          font-family: var(--ddd-font-navigation, sans-serif);
+          font-size: var(--ddd-font-size-3xs, 11px);
         }
         #add-hidden {
           display: none;
@@ -200,6 +225,7 @@ class SimpleFieldsUpload extends I18NMixin(
       upload: "Upload",
       takePhoto: "Take photo",
       recordAudio: "Record audio",
+      recordScreen: "Record screen",
       cancel: "Cancel",
       uploadMedia: "Upload media",
     };
@@ -217,6 +243,8 @@ class SimpleFieldsUpload extends I18NMixin(
     // @todo leave this off until we can do more testing
     // the wiring is all there but the UI pattern is not
     this.noVoiceRecord = false;
+    // Screen recording defaults to disabled, only enabled on specific components
+    this.noScreenRecord = true;
     this.responsiveSize = "sm";
   }
   render() {
@@ -264,6 +292,19 @@ class SimpleFieldsUpload extends I18NMixin(
         ?hidden="${!navigator.mediaDevices || this.noVoiceRecord}"
       >
       </simple-toolbar-button>
+      <simple-toolbar-button
+        icon="hardware:desktop-windows"
+        ?disabled="${this.disabled}"
+        label="${this.t.recordScreen}.."
+        ?show-text-label="${this.responsiveSize.indexOf("s") < 0}"
+        @mousedown="${(e) => e.preventDefault()}"
+        @focus="${(e) => e.preventDefault()}"
+        @click="${this._handleScreenOption}"
+        controls="fieldset"
+        part="record-screen"
+        ?hidden="${!navigator.mediaDevices || this.noScreenRecord}"
+      >
+      </simple-toolbar-button>
     `;
   }
 
@@ -299,6 +340,7 @@ class SimpleFieldsUpload extends I18NMixin(
             part="browse-area"
             ?hidden="${this.option == "selfie" ||
             this.option == "audio" ||
+            this.option == "screenrecord" ||
             this.hideInput}"
           >
             <simple-fields-url-combo
@@ -325,7 +367,9 @@ class SimpleFieldsUpload extends I18NMixin(
           </div>
           <div id="upload">
             <span part="drop-area-text">${this.t.dropMediaHereOr}</span>
-            ${this.sources}
+            <div class="sources" part="sources">
+              ${this.sources}
+            </div>
           </div>
           <simple-toolbar-button
             id="cancel"
@@ -338,7 +382,9 @@ class SimpleFieldsUpload extends I18NMixin(
             controls="fieldset"
             slot="drop-label"
             part="cancel-media"
-            ?hidden="${this.option !== "selfie" && this.option !== "audio"}"
+            ?hidden="${this.option !== "selfie" &&
+            this.option !== "audio" &&
+            this.option !== "screenrecord"}"
           >
           </simple-toolbar-button>
           <div
@@ -351,6 +397,11 @@ class SimpleFieldsUpload extends I18NMixin(
             id="voicerecorder"
             ?hidden="${this.option !== "audio"}"
             part="voice-preview"
+          ></div>
+          <div
+            id="screenrecorder"
+            ?hidden="${this.option !== "screenrecord"}"
+            part="screen-preview"
           ></div>
           ${this.desc}
         </vaadin-upload>
@@ -378,6 +429,17 @@ class SimpleFieldsUpload extends I18NMixin(
     e.preventDefault();
     this.option = "audio";
     this._voiceRecorder(e);
+  }
+  /**
+   * display screen recorder
+   *
+   * @param {event} e
+   * @memberof SimpleFieldsUpload
+   */
+  _handleScreenOption(e) {
+    e.preventDefault();
+    this.option = "screenrecord";
+    this._screenRecorder(e);
   }
   /**
    * cancel camera and audio / display upload options
@@ -477,6 +539,13 @@ class SimpleFieldsUpload extends I18NMixin(
         type: Boolean,
         attribute: "no-voice-record",
       },
+      /**
+       * No Screen Recording - defaults to true (disabled) for most components
+       */
+      noScreenRecord: {
+        type: Boolean,
+        attribute: "no-screen-record",
+      },
       responsiveSize: {
         type: String,
         attribute: "responsive-size",
@@ -499,6 +568,11 @@ class SimpleFieldsUpload extends I18NMixin(
         return this.shadowRoot.querySelector("#cancel");
       } else if (
         this.option == "audio" &&
+        this.shadowRoot.querySelector("#cancel")
+      ) {
+        return this.shadowRoot.querySelector("#cancel");
+      } else if (
+        this.option == "screenrecord" &&
         this.shadowRoot.querySelector("#cancel")
       ) {
         return this.shadowRoot.querySelector("#cancel");
@@ -596,6 +670,20 @@ class SimpleFieldsUpload extends I18NMixin(
     }, 0);
   }
   /**
+   * We got a new screen recording
+   */
+  __newScreenRecordingShowedUp(e) {
+    let file = new File(
+      [e.detail.blob],
+      "screen-recording-" + e.timeStamp + ".webm",
+    );
+    this.shadowRoot.querySelector("#fileupload")._addFile(file);
+    this.screenRecorder.remove();
+    setTimeout(() => {
+      this.screenRecorder = null;
+    }, 0);
+  }
+  /**
    * Invoke the camera to set itself up
    */
   _takeSelfie(e) {
@@ -621,6 +709,21 @@ class SimpleFieldsUpload extends I18NMixin(
         );
         this.voice.recording = true;
         this.shadowRoot.querySelector("#voicerecorder").appendChild(this.voice);
+      });
+    }
+  }
+  _screenRecorder(e) {
+    if (!this.screenRecorder) {
+      import("@haxtheweb/screen-recorder/screen-recorder.js").then(() => {
+        this.screenRecorder =
+          globalThis.document.createElement("screen-recorder");
+        this.screenRecorder.addEventListener(
+          "screen-recorder-blob",
+          this.__newScreenRecordingShowedUp.bind(this),
+        );
+        this.shadowRoot
+          .querySelector("#screenrecorder")
+          .appendChild(this.screenRecorder);
       });
     }
   }

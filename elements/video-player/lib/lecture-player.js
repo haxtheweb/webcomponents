@@ -656,7 +656,9 @@ class LecturePlayer extends I18NMixin(DDDSuper(LitElement)) {
 
   render() {
     return html`
-      <simple-cta id="lectureActivation">${this.t.openLecturePlayer}</simple-cta>
+      <simple-cta id="lectureActivation"
+        >${this.t.openLecturePlayer}</simple-cta
+      >
       ${!this.open ? html`<slot></slot>` : html``}
     `;
   }
