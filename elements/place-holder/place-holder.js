@@ -46,6 +46,7 @@ class PlaceHolder extends DDD {
           font-size: var(--ddd-font-size-l);
           font-weight: var(--ddd-font-weight-medium);
           margin-bottom: var(--ddd-spacing-2);
+          color: var(--ddd-theme-default-coalyGray);
         }
         .directions {
           line-height: var(--ddd-lh-120);
