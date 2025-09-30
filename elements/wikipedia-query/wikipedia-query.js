@@ -1,4 +1,5 @@
-import { LitElement, html, css } from "lit";
+import { html, css } from "lit";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 /**
  * `wikipedia-query`
@@ -6,31 +7,45 @@ import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/I
  * @demo demo/index.html
  * @element wikipedia-query
  */
-class WikipediaQuery extends IntersectionObserverMixin(LitElement) {
+class WikipediaQuery extends IntersectionObserverMixin(DDD) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      super.styles,
       css`
         :host {
           display: block;
-          --wikipedia-query-body-height: 160px;
-          --wikipedia-query-background-color: #f8f8f8;
+          --wikipedia-query-body-height: var(--ddd-spacing-32);
+          --wikipedia-query-background-color: var(--ddd-theme-default-limestoneMaxLight);
         }
         :host [hidden] {
           display: none;
         }
+        h3 {
+          color: var(--ddd-theme-primary);
+          font-size: var(--ddd-font-size-l);
+          font-weight: var(--ddd-font-weight-medium);
+          margin: 0 0 var(--ddd-spacing-2) 0;
+        }
         #result {
           height: var(--wikipedia-query-body-height);
-          overflow: scroll;
-          border: 1px grey solid;
-          padding: 8px 16px;
+          overflow: auto;
+          border: var(--ddd-border-sm);
+          border-color: var(--ddd-theme-default-limestoneGray);
+          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          background-color: var(--ddd-theme-default-white);
+          line-height: var(--ddd-lh-150);
+          font-size: var(--ddd-font-size-s);
         }
         citation-element {
           background-color: var(--wikipedia-query-background-color);
-          padding: 16px 8px;
-          font-size: 12px;
+          padding: var(--ddd-spacing-4) var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-xs);
+          border-radius: var(--ddd-radius-xs);
+          margin-top: var(--ddd-spacing-2);
         }
       `,
     ];

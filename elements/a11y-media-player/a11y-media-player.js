@@ -874,7 +874,13 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
           }
 
           .media-caption {
-            color: var(--a11y-media-caption-color, var(--a11y-media-bg-color));
+            color: var(
+              --a11y-media-caption-color,
+              light-dark(
+                var(--simple-colors-default-theme-grey-12),
+                var(--simple-colors-default-theme-grey-1)
+              )
+            );
             background-color: var(--a11y-media-accent-color);
           }
 

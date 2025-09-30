@@ -1,4 +1,4 @@
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { html, css } from "lit";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -12,7 +12,7 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
  * @microcopy - the mental model for this element
  * - placeholder is a grey block on the page which can respond to drag and drop
  */
-class PlaceHolder extends SimpleColors {
+class PlaceHolder extends DDD {
   /**
    * LitElement render styles
    */
@@ -26,31 +26,32 @@ class PlaceHolder extends SimpleColors {
           transition: 0.3s all linear;
         }
         :host([drag-over]) {
-          border: var(--place-holder-drag-over-border, 4px dashed #2196f3);
+          border: var(--place-holder-drag-over-border, var(--ddd-border-lg) dashed var(--ddd-theme-default-info));
         }
         .wrapper {
           text-align: center;
-          padding: 16px;
-          color: var(--simple-colors-default-theme-accent-12, #222222);
-          background-color: var(
-            --simple-colors-default-theme-accent-1,
-            #eeeeee
-          );
+          padding: var(--ddd-spacing-4);
+          color: var(--ddd-theme-primary);
+          background-color: var(--ddd-theme-default-limestoneMaxLight);
+          border-radius: var(--ddd-radius-xs);
         }
         simple-icon {
-          margin: 0 auto;
+          margin: 0 auto var(--ddd-spacing-2) auto;
           --simple-icon-width: 50%;
           --simple-icon-height: 50%;
           display: block;
         }
         .text {
-          line-height: 24px;
-          font-size: 24px;
+          line-height: var(--ddd-lh-120);
+          font-size: var(--ddd-font-size-l);
+          font-weight: var(--ddd-font-weight-medium);
+          margin-bottom: var(--ddd-spacing-2);
         }
         .directions {
-          line-height: 16px;
-          font-size: 16px;
+          line-height: var(--ddd-lh-120);
+          font-size: var(--ddd-font-size-s);
           font-style: italic;
+          color: var(--ddd-theme-default-coalyGray);
         }
       `,
     ];
@@ -62,9 +63,7 @@ class PlaceHolder extends SimpleColors {
     return html`
       <div class="wrapper">
         <simple-icon
-          ?dark="${this.dark}"
           icon="${this.iconFromType}"
-          accent-color="${this.accentColor}"
         ></simple-icon>
         <div class="text">${this.calcText}</div>
         <div class="directions">${this.directions}</div>
@@ -124,9 +123,6 @@ class PlaceHolder extends SimpleColors {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (["type"].includes(propName)) {
-        this.accentColor = this._getColorFromType(this.type);
-      }
       if (["type", "dragOver"].includes(propName)) {
         this.iconFromType = this._getIconFromType(this.type, this.dragOver);
       }
@@ -161,29 +157,6 @@ class PlaceHolder extends SimpleColors {
     } else {
       return text;
     }
-  }
-  /**
-   * Generate an color based on the media type selected
-   */
-  _getColorFromType(type) {
-    switch (type) {
-      case "document":
-        return "green";
-        break;
-      case "audio":
-        return "purple";
-        break;
-      case "video":
-        return "red";
-        break;
-      case "image":
-        return "orange";
-        break;
-      case "math":
-        return "light-blue";
-        break;
-    }
-    return "indigo";
   }
   /**
    * Generate an icon based on the media type selected

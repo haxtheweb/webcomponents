@@ -145,10 +145,10 @@ class SimpleModal extends LitElement {
             var(--ddd-spacing-2) var(--ddd-spacing-4) var(--ddd-spacing-4)
           );
           margin: 0;
-          color: var(--simple-modal-content-container-color, #222);
+          color: var(--simple-modal-content-container-color, var(--ddd-theme-primary));
           background-color: var(
             --simple-modal-content-container-background,
-            #fff
+            var(--ddd-theme-default-white)
           );
         }
 

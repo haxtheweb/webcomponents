@@ -15,8 +15,8 @@ class SimpleToastEl extends DDD {
           position: fixed;
           min-width: 100px;
           text-align: center;
-          color: var(--simple-colors-default-theme-accent-1, white);
-          background-color: var(--simple-colors-default-theme-accent-12, black);
+          color: var(--ddd-theme-primary, var(--ddd-theme-default-white));
+          background-color: var(--ddd-theme-default-coalyGray);
           border-radius: var(--simple-toast-border-radius, 2px);
           border: var(--simple-toast-border, none);
           font-size: var(--simple-toast-font-size, 1em);

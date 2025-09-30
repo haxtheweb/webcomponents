@@ -41,6 +41,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
+    "@haxtheweb/d-d-d": "^11.0.5",
     "@haxtheweb/hax-iconset": "^11.0.0",
     "@haxtheweb/simple-blog-card": "9.0.1",
     "@haxtheweb/simple-colors": "^11.0.5",

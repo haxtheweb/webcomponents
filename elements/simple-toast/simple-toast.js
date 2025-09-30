@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "./lib/simple-toast-el.js";
 // register globally so we can make sure there is only one
 globalThis.SimpleToast = globalThis.SimpleToast || {};
@@ -26,7 +26,7 @@ globalThis.SimpleToast.requestAvailability = () => {
  * @demo demo/index.html
  * @element simple-toast
  */
-class SimpleToast extends SimpleColors {
+class SimpleToast extends DDD {
   //styles function
   static get styles() {
     return [
@@ -41,29 +41,40 @@ class SimpleToast extends SimpleColors {
         }
 
         simple-toast-el {
-          box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+          box-shadow: var(--ddd-boxShadow-sm);
           width: var(--simple-toast-width, auto);
           color: var(
             --simple-toast-color,
-            var(--simple-colors-default-theme-accent-1, white)
+            var(--ddd-theme-primary, var(--ddd-theme-default-white))
           );
           background-color: var(
             --simple-toast-bg,
-            var(--simple-colors-default-theme-accent-12, black)
+            var(--ddd-theme-default-coalyGray)
           );
           top: var(--simple-toast-top);
-          margin: var(--simple-toast-margin, 8px);
-          padding: var(--simple-toast-padding, 16px);
-          left: var(--simple-toast-left, 36px);
-          bottom: var(--simple-toast-bottom, 36px);
+          margin: var(--simple-toast-margin, var(--ddd-spacing-2));
+          padding: var(--simple-toast-padding, var(--ddd-spacing-4));
+          left: var(--simple-toast-left, var(--ddd-spacing-9));
+          bottom: var(--simple-toast-bottom, var(--ddd-spacing-9));
           right: var(--simple-toast-right);
           border: var(--simple-toast-border);
           z-index: var(--simple-toast-z-index, 1000);
-          font-size: var(--simple-toast-font-size);
+          font-size: var(--simple-toast-font-size, var(--ddd-font-size-s));
         }
 
         button {
-          margin-left: 8px;
+          margin-left: var(--ddd-spacing-2);
+          color: inherit;
+          background: transparent;
+          border: var(--ddd-border-xs);
+          border-color: currentColor;
+          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          cursor: pointer;
+          font-size: var(--ddd-font-size-xs);
+        }
+        button:hover {
+          background: rgba(255, 255, 255, 0.1);
         }
       `,
     ];
@@ -73,8 +84,6 @@ class SimpleToast extends SimpleColors {
   render() {
     return html` <simple-toast-el
       id="toast"
-      accent-color="${this.accentColor}"
-      ?dark="${this.dark}"
       text="${this.text}"
       duration="${this.duration}"
       ?opened="${this.opened}"
@@ -196,8 +205,6 @@ class SimpleToast extends SimpleColors {
     this.classStyle = "";
     this.closeText = "Close";
     this.duration = 3000;
-    this.accentColor = "grey";
-    this.dark = false;
     this.eventCallback = null;
     this.closeButton = true;
     while (this.firstChild !== null) {
@@ -231,12 +238,6 @@ class SimpleToast extends SimpleColors {
     }
     if (e.detail.slot) {
       this.appendChild(e.detail.slot);
-    }
-    if (e.detail.accentColor) {
-      this.accentColor = e.detail.accentColor;
-    }
-    if (e.detail.dark) {
-      this.dark = e.detail.dark;
     }
     this.show();
   }

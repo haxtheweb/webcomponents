@@ -165,14 +165,14 @@ class HaxorSlevin extends HAXCMSThemeParts(
           text-decoration: underline;
         }
         .header-wrapper {
-          padding: 12px 24px;
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-6);
           display: flex;
           margin: 0 auto;
           z-index: 100;
-          color: var(--simple-colors-default-theme-accent-1);
+          color: var(--ddd-theme-default-white);
           justify-content: center;
-          box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.15);
-          background-color: var(--simple-colors-default-theme-accent-10);
+          box-shadow: var(--ddd-boxShadow-md);
+          background-color: var(--ddd-theme-default-coalyGray);
         }
         .header-wrapper div {
           display: inline-flex;
@@ -188,7 +188,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
           color: var(--simple-colors-default-theme-accent-1);
           min-width: 100px;
           text-transform: unset;
-          margin: 0px 16px;
+          margin: 0px var(--ddd-spacing-4);
         }
 
         .social-float {
