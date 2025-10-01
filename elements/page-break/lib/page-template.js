@@ -33,6 +33,7 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
           background-color: transparent;
           position: relative;
           transition: border-color 0.2s ease-in-out;
+          min-height: 100px;
         }
 
         :host(:hover) {
@@ -45,6 +46,19 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
 
         :host([enforce-styles]:hover) {
           border-color: var(--ddd-theme-default-navy);
+        }
+
+        :host([data-hax-ray]) .template-content ::slotted(*.hax-hovered)::before {
+          content: " ";
+          width: calc(100% + 32px);
+          display: block;
+          position: relative;
+          margin: -28px -16px 12px;
+          z-index: 2;
+          height: 12px;
+          border: none !important;
+          transition: 0.3s all ease-in-out;
+          background-color: var(--hax-body-target-background-color) !important;
         }
 
         .template-label {
