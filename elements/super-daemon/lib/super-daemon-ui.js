@@ -45,6 +45,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this.programSearch = "";
     this.commandContext = "*";
     this.programName = null;
+    this.programPlaceholder = null;
     this.shadowRootOptions = {
       ...SimpleColors.shadowRootOptions,
       delegatesFocus: true,
@@ -107,6 +108,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       loading: { type: Boolean, reflect: true },
       programSearch: { type: String, attribute: "program-search" },
       programName: { type: String, attribute: "program-name" },
+      programPlaceholder: { type: String, attribute: "program-placeholder" },
       commandContext: { type: String, attribute: "command-context" },
       opened: { type: Boolean, reflect: true },
       focused: { type: Boolean, reflect: true },
@@ -188,6 +190,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         }
         .results lit-virtualizer {
           max-height: 50vh;
+          min-height: 264px !important;
           width: 100%;
           display: block;
           height: 50vh;
@@ -200,7 +203,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           width: -webkit-fill-available;
         }
         .no-results {
-          font-size: var(--ddd-spacing-8);
+          font-size: var(--ddd-font-size-3xs);
           font-weight: bold;
           word-break: break-all;
           overflow: hidden;
@@ -274,6 +277,42 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         }
         :host([mini]) .results-stats {
           display: none;
+        }
+        .mini-results-counter {
+          font-size: 11px;
+          color: var(
+            --ddd-theme-default-keystoneYellow,
+            var(--simple-colors-default-theme-grey-8, #666)
+          );
+          padding: var(--ddd-spacing-1);
+          text-align: center;
+          border-top: 1px solid
+            var(
+              --ddd-theme-default-limestoneGray,
+              var(--simple-colors-default-theme-grey-4, #ddd)
+            );
+          background: var(
+            --ddd-theme-default-coalyGray,
+            var(--simple-colors-default-theme-grey-2, #f8f8f8)
+          );
+          display: none;
+        }
+        :host([mini]) .mini-results-counter {
+          display: block;
+        }
+        :host([dark][mini]) .mini-results-counter {
+          color: var(
+            --ddd-theme-default-coalyGray,
+            var(--simple-colors-default-theme-grey-4, #ccc)
+          );
+          border-top-color: var(
+            --ddd-theme-default-coalyGray,
+            var(--simple-colors-default-theme-grey-8, #444)
+          );
+          background: var(
+            --ddd-theme-default-slateMaxLight,
+            var(--simple-colors-default-theme-grey-10, #222)
+          );
         }
         :host([mini]) .results {
           padding: 0;
@@ -659,6 +698,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         ?wand="${this.wand}"
         ?loading="${this.loading}"
         program-search="${this.programSearch}"
+        program-placeholder="${this.programPlaceholder || ""}"
         ?listening-for-input="${this.listeningForInput}"
         command-context="${this.commandContext}"
         droppable-type="${this.activeType}"
@@ -688,25 +728,29 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
                       scroller
                       .items=${this.filtered}
                       .renderItem=${(item, i) =>
-                        item ? html`<super-daemon-row
-                          role="option"
-                          id="option-${i}"
-                          tabindex="-1"
-                          aria-selected="${this._selectedIndex === i}"
-                          data-row-index="${i}"
-                          .value="${item.value || {}}"
-                          icon="${item.icon}"
-                          image="${item.image}"
-                          ?dark="${this.dark}"
-                          text-character="${item.textCharacter}"
-                          title="${item.title}"
-                          .tags="${item.tags || []}"
-                          event-name="${item.eventName}"
-                          path="${item.path}"
-                          ?more="${item.more && (!this.mini || this.wand)}"
-                          ?mini="${this.mini}"
-                          >${item.more ? item.more : nothing}</super-daemon-row
-                        >` : nothing}
+                        item
+                          ? html`<super-daemon-row
+                              role="option"
+                              id="option-${i}"
+                              tabindex="-1"
+                              aria-selected="${this._selectedIndex === i}"
+                              data-row-index="${i}"
+                              .value="${item.value || {}}"
+                              icon="${item.icon}"
+                              image="${item.image}"
+                              ?dark="${this.dark}"
+                              text-character="${item.textCharacter}"
+                              title="${item.title}"
+                              .tags="${item.tags || []}"
+                              event-name="${item.eventName}"
+                              path="${item.path}"
+                              ?more="${item.more && (!this.mini || this.wand)}"
+                              ?mini="${this.mini}"
+                              >${item.more
+                                ? item.more
+                                : nothing}</super-daemon-row
+                            >`
+                          : nothing}
                     ></lit-virtualizer>
                   `}
             `}
@@ -714,6 +758,11 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           ${this.filtered.length} / ${this.items.length}
           ${this.t.results || "Results"}
         </div>
+        ${this.mini && this.filtered.length > 1
+          ? html`<div class="mini-results-counter">
+              ${this.filtered.length} results
+            </div>`
+          : nothing}
       </div>
       <div id="bottom"></div>
     `;

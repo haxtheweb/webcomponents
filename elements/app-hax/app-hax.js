@@ -329,7 +329,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     SuperDaemonInstance.defineOption({
       title: "Join our Community",
       icon: "hax:discord",
-      priority: -100,
+      priority: -50,
       tags: ["community", "discord", "chat", "help"],
       value: {
         target: this,

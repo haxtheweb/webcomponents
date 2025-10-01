@@ -30,6 +30,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       items: { type: Array },
       programResults: { type: Array },
       programName: { type: String },
+      programPlaceholder: { type: String },
       allItems: { type: Array },
       context: { type: Array },
       commandContext: { type: String },
@@ -136,6 +137,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.allItems = [];
     this.programResults = [];
     this.programName = null;
+    this.programPlaceholder = null;
     this.commandContext = "*";
     const isSafari = globalThis.safari !== undefined;
     if (isSafari) {
@@ -207,12 +209,17 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     if (!target) {
       target = this.wandTarget;
     }
-    
+
     // Check if we're on mobile and if this is a page creation program
-    const isMobile = globalThis.matchMedia && globalThis.matchMedia("(max-width: 768px)").matches;
-    const isPageCreation = params && params.length > 0 && 
-      (params[0] === "create-page" || (params[3] && params[3] === "create-page"));
-    
+    const isMobile =
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(max-width: 768px)").matches;
+    const isPageCreation =
+      params &&
+      params.length > 0 &&
+      (params[0] === "create-page" ||
+        (params[3] && params[3] === "create-page"));
+
     // On mobile, use full popup mode for page creation instead of mini mode
     if (isMobile && isPageCreation) {
       this.mini = false;
@@ -223,7 +230,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       this.wand = true;
       this.activeNode = target;
     }
-    
+
     this.runProgram(...params);
     if (sound) {
       this.playSound(sound);
@@ -239,6 +246,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     program = null,
     name = null,
     search = "",
+    placeholder = null,
   ) {
     this.commandContext = context;
     // resolve program as string based name vs function passed in
@@ -251,6 +259,10 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       });
       if (itemMatch) {
         this._programToRun = itemMatch.value.program;
+        // Extract placeholder from the program definition if not explicitly provided
+        if (!placeholder && itemMatch.value.placeholder) {
+          placeholder = itemMatch.value.placeholder;
+        }
       } else {
         console.error("Incorrect program called", program);
       }
@@ -283,6 +295,12 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       this.programResults = [];
     }
     this.programName = name;
+    this.programPlaceholder = placeholder;
+
+    // Reset placeholder when no program is active
+    if (!this._programToRun && !name) {
+      this.programPlaceholder = null;
+    }
   }
   // run "program"
   runProgramEvent(e) {
@@ -297,6 +315,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         data.program,
         data.name,
         "",
+        data.placeholder,
       );
     } else {
       this.runProgram("", "/");
@@ -572,14 +591,16 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           color: var(--simple-colors-default-theme-grey-12, black);
           background-color: var(--simple-colors-default-theme-grey-1, white);
         }
-        
+
         /* Responsive adjustments for wand mode expansion */
         @media screen and (max-width: 1200px) {
           :host([wand]) absolute-position-behavior {
-            max-width: calc(100vw - 150px); /* Less space for user menu on smaller screens */
+            max-width: calc(
+              100vw - 150px
+            ); /* Less space for user menu on smaller screens */
           }
         }
-        
+
         @media screen and (max-width: 768px) {
           :host([wand]) absolute-position-behavior {
             max-width: calc(100vw - 60px); /* Even less space on mobile */
@@ -873,6 +894,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
               .items="${this.itemsForDisplay(this.items, this.programResults)}"
               command-context="${this.commandContext}"
               program-name="${this.programName}"
+              program-placeholder="${this.programPlaceholder || ""}"
               program-search="${this.programSearch}"
               @value-changed="${this.inputfilterChanged}"
               @super-daemon-close="${this.close}"
@@ -909,6 +931,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
               .items="${this.itemsForDisplay(this.items, this.programResults)}"
               command-context="${this.commandContext}"
               program-name="${this.programName}"
+              program-placeholder="${this.programPlaceholder || ""}"
               program-search="${this.programSearch}"
               @value-changed="${this.inputfilterChanged}"
               @super-daemon-close="${this.close}"

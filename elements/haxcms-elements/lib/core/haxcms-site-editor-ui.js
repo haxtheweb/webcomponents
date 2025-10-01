@@ -730,14 +730,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   // Convert CSV text to an HTML table element
   csvToHtmlTable(csvText) {
     try {
-      const table = globalThis.document.createElement('table');
-      const tbody = globalThis.document.createElement('tbody');
+      const table = globalThis.document.createElement("table");
+      const tbody = globalThis.document.createElement("tbody");
       table.appendChild(tbody);
 
       // Simple CSV parser that handles quoted fields with commas
       const rows = [];
       let i = 0;
-      let field = '';
+      let field = "";
       let row = [];
       let inQuotes = false;
 
@@ -748,7 +748,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           val = val.substring(1, val.length - 1).replace(/""/g, '"');
         }
         row.push(val);
-        field = '';
+        field = "";
       };
 
       while (i < csvText.length) {
@@ -775,14 +775,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             i++;
             continue;
           }
-          if (char === ',') {
+          if (char === ",") {
             pushField();
             i++;
             continue;
           }
-          if (char === '\n' || char === '\r') {
+          if (char === "\n" || char === "\r") {
             // handle CRLF and LF
-            if (char === '\r' && csvText[i + 1] === '\n') {
+            if (char === "\r" && csvText[i + 1] === "\n") {
               i += 2;
             } else {
               i++;
@@ -804,12 +804,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
       // build table body
       rows.forEach((cols, idx) => {
-        if (cols.length === 1 && cols[0].trim() === '') return;
-        const tr = globalThis.document.createElement('tr');
+        if (cols.length === 1 && cols[0].trim() === "") return;
+        const tr = globalThis.document.createElement("tr");
         cols.forEach((col) => {
-          const cell = idx === 0 ? globalThis.document.createElement('th') : globalThis.document.createElement('td');
+          const cell =
+            idx === 0
+              ? globalThis.document.createElement("th")
+              : globalThis.document.createElement("td");
           // escape
-          const span = globalThis.document.createElement('span');
+          const span = globalThis.document.createElement("span");
           span.textContent = col;
           cell.appendChild(span);
           tr.appendChild(cell);
@@ -818,13 +821,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       });
 
       // basic styling hooks; DDD can style table generically
-      table.setAttribute('border', '1');
-      table.style.width = '100%';
-      table.style.borderCollapse = 'collapse';
+      table.setAttribute("border", "1");
+      table.style.width = "100%";
+      table.style.borderCollapse = "collapse";
 
       return table;
     } catch (e) {
-      console.warn('CSV to table conversion failed:', e);
+      console.warn("CSV to table conversion failed:", e);
       return null;
     }
   }
@@ -912,20 +915,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         // Handle Excel file conversion to CSV and table
         let excelDataToPost = new FormData();
         excelDataToPost.append("upload", values.data); // Excel file
-        
+
         if (store.editMode === false) {
           store.editMode = true;
         }
-        
+
         try {
           const excelResponse = await MicroFrontendRegistry.call(
             "@core/xlsxToCsv",
             excelDataToPost,
           );
-          
+
           if (excelResponse.status === 200) {
             const csvData = excelResponse.data.contents;
-            
+
             setTimeout(() => {
               if (mode === "insert-table") {
                 // Convert CSV to HTML table
@@ -955,12 +958,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               }
             }, 300);
           } else {
-            store.toast(`Error converting Excel file: ${excelResponse.data.error || 'Unknown error'}`, 4000, {
-              hat: "construction",
-            });
+            store.toast(
+              `Error converting Excel file: ${excelResponse.data.error || "Unknown error"}`,
+              4000,
+              {
+                hat: "construction",
+              },
+            );
           }
         } catch (error) {
-          console.error('Excel conversion error:', error);
+          console.error("Excel conversion error:", error);
           store.toast(`Error processing Excel file: ${error.message}`, 4000, {
             hat: "construction",
           });
@@ -1496,28 +1503,42 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.defineOption({
       title: "Add Page",
       icon: "hax:add-page",
+      priority: -2000,
       tags: ["page", "add", "create", "new", "CMS"],
       eventName: "super-daemon-run-program",
       path: "CMS/action/add/page",
       value: {
         name: "create-page",
         machineName: "create-page",
+        placeholder: "Page title",
         program: async (input, values) => {
           // Get reference to site editor UI regardless of how program was accessed
           const siteEditorUI =
             globalThis.document.querySelector("haxcms-site-editor-ui") || this;
           const currentItem = toJS(store.activeItem);
 
-          // If no input provided, show instructions to type a page title
+          // If no input provided, show default page creation option to match prior UX
           if (!input || input.trim() === "") {
             return [
               {
-                title: "Type a page title to see creation options",
-                icon: "hax:keyboard",
+                title: "Create New Page",
+                icon: "hax:add-page",
+                tags: ["page", "blank", "create"],
+                value: {
+                  target: siteEditorUI,
+                  method: "createPageWithTitle",
+                  args: ["New Page", "sibling"],
+                },
+                eventName: "super-daemon-element-method",
+                path: "CMS/action/create/page/blank",
+              },
+              {
+                title: "Enter a page title above to see more creation options",
+                icon: "editor:mode-edit",
                 tags: ["instruction"],
                 value: { disabled: true },
                 eventName: "disabled",
-                path: "Type page title",
+                path: "Enter page title in the input field",
               },
             ];
           }
@@ -3017,6 +3038,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.defineOption({
       title: this.t.edit,
       icon: "hax:page-edit",
+      priority: -1500,
       tags: ["CMS", "edit", "page", "operation", "command"],
       value: {
         target: this,

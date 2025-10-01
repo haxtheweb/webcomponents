@@ -55,6 +55,10 @@
                 {
                   "name": "search",
                   "default": "\"\""
+                },
+                {
+                  "name": "placeholder",
+                  "default": "null"
                 }
               ]
             },
@@ -640,6 +644,16 @@
             },
             {
               "kind": "field",
+              "name": "programPlaceholder",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "programPlaceholder"
+            },
+            {
+              "kind": "field",
               "name": "commandContext",
               "privacy": "public",
               "type": {
@@ -762,6 +776,14 @@
               },
               "default": "null",
               "fieldName": "programName"
+            },
+            {
+              "name": "programPlaceholder",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "programPlaceholder"
             },
             {
               "name": "allItems",
@@ -1370,6 +1392,11 @@
             },
             {
               "kind": "method",
+              "name": "_updatePlaceholder",
+              "description": "Update the placeholder text based on current state"
+            },
+            {
+              "kind": "method",
               "name": "fieldFocusLoss",
               "parameters": [
                 {
@@ -1461,6 +1488,16 @@
                 "text": "string"
               },
               "default": "\"\""
+            },
+            {
+              "kind": "field",
+              "name": "programPlaceholder",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "program-placeholder"
             },
             {
               "kind": "field",
@@ -1729,6 +1766,14 @@
                 "text": "string"
               },
               "fieldName": "programName"
+            },
+            {
+              "name": "program-placeholder",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "programPlaceholder"
             },
             {
               "name": "command-context",
@@ -2414,6 +2459,16 @@
             },
             {
               "kind": "field",
+              "name": "programPlaceholder",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "program-placeholder"
+            },
+            {
+              "kind": "field",
               "name": "shadowRootOptions",
               "type": {
                 "text": "object"
@@ -2599,6 +2654,14 @@
               },
               "default": "null",
               "fieldName": "programName"
+            },
+            {
+              "name": "program-placeholder",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "programPlaceholder"
             },
             {
               "name": "command-context",

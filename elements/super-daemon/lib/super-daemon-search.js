@@ -20,6 +20,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     this.iconAccent = "purple";
     this.voiceSearch = false;
     this.programSearch = "";
+    this.programPlaceholder = null;
     this.mini = false;
     this.wand = false;
     this.loading = false;
@@ -67,6 +68,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       mini: { type: Boolean, reflect: true },
       wand: { type: Boolean, reflect: true },
       programName: { type: String, attribute: "program-name" },
+      programPlaceholder: { type: String, attribute: "program-placeholder" },
       commandContext: { type: String, attribute: "command-context" },
       focused: { type: Boolean, reflect: true },
     };
@@ -239,11 +241,9 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
-    // Set initial placeholder - will be updated when translations load
-    this.shadowRoot.querySelector("#inputfilter").placeholder =
-      this.suggestPossibleAction() || "Type to search...";
+    // Set initial placeholder - will be updated when translations load or program changes
+    this._updatePlaceholder();
   }
-
   updated(changedProperties) {
     super.updated(changedProperties);
     if (changedProperties.has("focused")) {
@@ -261,16 +261,18 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       this._updatePossibleActions();
     }
     if (changedProperties.has("droppableType") && this.shadowRoot) {
-      this.shadowRoot.querySelector("#inputfilter").placeholder =
-        this.suggestPossibleAction(this.droppableType);
+      this._updatePlaceholder();
     }
     if (changedProperties.has("droppable") && !this.droppable) {
       this.dragover = false;
     }
-    // Update placeholder when translations load
-    if (changedProperties.has("t") && this.shadowRoot) {
-      this.shadowRoot.querySelector("#inputfilter").placeholder =
-        this.suggestPossibleAction();
+    // Update placeholder when translations load or program placeholder changes
+    if (
+      (changedProperties.has("t") ||
+        changedProperties.has("programPlaceholder")) &&
+      this.shadowRoot
+    ) {
+      this._updatePlaceholder();
     }
     if (
       changedProperties.has("value") &&
@@ -335,9 +337,30 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     }
 
     // Update placeholder after updating possible actions
-    if (this.shadowRoot) {
-      this.shadowRoot.querySelector("#inputfilter").placeholder =
-        this.suggestPossibleAction();
+    this._updatePlaceholder();
+  }
+
+  /**
+   * Update the placeholder text based on current state
+   */
+  _updatePlaceholder() {
+    if (!this.shadowRoot) return;
+
+    const inputField = this.shadowRoot.querySelector("#inputfilter");
+    if (!inputField) return;
+
+    // Use program-specific placeholder if available
+    if (this.programPlaceholder && this.programPlaceholder.trim() !== "") {
+      inputField.placeholder = this.programPlaceholder;
+    }
+    // Use droppable type suggestion if in droppable state
+    else if (this.droppableType) {
+      inputField.placeholder = this.suggestPossibleAction(this.droppableType);
+    }
+    // Use default suggestions
+    else {
+      inputField.placeholder =
+        this.suggestPossibleAction() || "Type to search...";
     }
   }
 
