@@ -1226,18 +1226,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             </button>
             <a
               slot="main-menu"
-              href="createSite-step-1"
-              @click="${this.startJourney}"
-              tabindex="-1"
-            >
-              <app-hax-user-menu-button
-                icon="add"
-                label="${this.t.newJourney}"
-                part="newjourneybtn"
-              ></app-hax-user-menu-button>
-            </a>
-            <a
-              slot="main-menu"
               title="${this.t.listMySites}"
               href="home"
               tabindex="-1"
@@ -1266,54 +1254,17 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         <confetti-container id="confetti">
           <div class="label">
             <app-hax-label>
-              ${this.appMode === "home" || this.appMode === "search"
-                ? html`
-                    <h1>HAX Site Dashboard</h1>
-                    <div slot="subtitle">Let's build something awesome!</div>
-                  `
-                : ``}
+              <h1>HAX Site Dashboard</h1>
+              <div slot="subtitle">Let's build something awesome!</div>
             </app-hax-label>
           </div>
-
-          <section class="content">${this.appBody(this.appMode)}</section>
+          <section class="content">
+            <div class="start-journey">
+              <app-hax-use-case-filter></app-hax-use-case-filter>
+            </div>
+          </section>
         </confetti-container>
       </main>`;
-  }
-
-  appBody(routine) {
-    let template = html``;
-    switch (routine) {
-      case "home":
-      case "search":
-        template = this.templateHome();
-        break;
-      case "create":
-        template = this.templateCreate();
-        break;
-      case "404":
-      default:
-        template = this.template404();
-        break;
-    }
-    return template;
-  }
-
-  //EDIT HERE
-  templateHome() {
-    return html`
-      <div class="start-journey">
-        <app-hax-use-case-filter></app-hax-use-case-filter>
-      </div>
-    `;
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  templateCreate() {
-    return html`<app-hax-steps
-      @promise-progress-finished="${this.siteReadyToGo}"
-      ?unlock-coming-soon="${this.unlockComingSoon}"
-      ?unlock-terrible="${this.unlockTerrible}"
-    ></app-hax-steps>`;
   }
 
   siteReadyToGo(e) {
@@ -1327,46 +1278,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (e.detail) {
       store.siteReady = true;
     }
-  }
-
-  template404() {
-    return html` <div class="four04">
-      <a
-        href="createSite-step-1"
-        class="start-journey"
-        @click="${this.startJourney}"
-        tabindex="-1"
-      >
-        <app-hax-site-button
-          label="&gt; Start a new journey"
-        ></app-hax-site-button>
-      </a>
-      <rpg-character
-        class="four04-character"
-        fire
-        walking
-        width="200"
-        id="char404"
-        height="200"
-        seed="${this.userName}"
-      ></rpg-character>
-      <simple-tooltip for="char404" position="left">This</simple-tooltip>
-      <simple-tooltip for="char404" position="right">fine</simple-tooltip>
-      <simple-tooltip for="char404" position="bottom">is</simple-tooltip>
-    </div>`;
-  }
-
-  // ensure internal data is unset for store
-  startJourney() {
-    this.userMenuOpen = false;
-    store.createSiteSteps = false;
-    store.siteReady = false;
-    store.site.structure = null;
-    store.site.type = null;
-    store.site.theme = null;
-    store.site.name = null;
-    store.appMode = "create";
-    store.appEl.playSound("click2");
   }
 }
 customElements.define(AppHax.tag, AppHax);
