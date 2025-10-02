@@ -358,6 +358,25 @@ export class AppHaxSearchResults extends SimpleColors {
           #results::after {
             min-width: 240px;
           }
+          /* Mobile: Show only 1 item, hide arrows */
+          .scroll-left,
+          .scroll-right {
+            display: none;
+          }
+
+          .carousel-container {
+            padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-4, 16px);
+            justify-content: center;
+          }
+
+          #results {
+            /* Single item takes full width on mobile */
+            gap: 0;
+            scroll-snap-type: x mandatory;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+          }
         }
         span[slot="band"] {
           height: var(--ddd-spacing-12, 48px);
@@ -459,10 +478,9 @@ export class AppHaxSearchResults extends SimpleColors {
                   </li>`,
               )
             : html`<div id="noResult">
-                No results for
-                ${this.searchTerm !== ""
+                No results${this.searchTerm !== ""
                   ? html`<strong>"${this.searchTerm}"</strong>`
-                  : "your account, try starting a new journey!"}.
+                  : ", Create a new site!"}
               </div>`}
         </ul>
         <simple-tooltip for="scroll-right-btn" position="top"
