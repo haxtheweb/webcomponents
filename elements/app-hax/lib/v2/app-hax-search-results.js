@@ -198,20 +198,42 @@ export class AppHaxSearchResults extends SimpleColors {
           border-color: var(--ddd-theme-default-white, white);
         }
 
-        .scroll-left:hover,
-        .scroll-right:hover {
+        .scroll-left:hover:not(:disabled),
+        .scroll-right:hover:not(:disabled) {
           background: var(--ddd-theme-default-keystoneYellow, #ffd100);
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
           transform: translateY(-2px);
           box-shadow: var(--ddd-boxShadow-md);
         }
 
-        :host([dark]) .scroll-left:hover,
-        :host([dark]) .scroll-right:hover,
-        body.dark-mode .scroll-left:hover,
-        body.dark-mode .scroll-right:hover {
+        .scroll-left:disabled,
+        .scroll-right:disabled {
+          opacity: 0.3;
+          cursor: not-allowed;
+          background: var(--ddd-theme-default-limestoneGray, #a2aaad);
+          color: var(--ddd-theme-default-slateGray, #666);
+          border-color: var(--ddd-theme-default-limestoneGray, #a2aaad);
+          transform: none;
+          box-shadow: none;
+        }
+
+        :host([dark]) .scroll-left:hover:not(:disabled),
+        :host([dark]) .scroll-right:hover:not(:disabled),
+        body.dark-mode .scroll-left:hover:not(:disabled),
+        body.dark-mode .scroll-right:hover:not(:disabled) {
           background: var(--ddd-theme-default-nittanyNavy, #001e44);
           color: var(--ddd-theme-default-white, white);
+        }
+
+        :host([dark]) .scroll-left:disabled,
+        :host([dark]) .scroll-right:disabled,
+        body.dark-mode .scroll-left:disabled,
+        body.dark-mode .scroll-right:disabled {
+          opacity: 0.3;
+          cursor: not-allowed;
+          background: var(--ddd-theme-default-coalyGray, #444);
+          color: var(--ddd-theme-default-slateGray, #666);
+          border-color: var(--ddd-theme-default-coalyGray, #444);
         }
 
         #results {
@@ -432,6 +454,7 @@ export class AppHaxSearchResults extends SimpleColors {
           id="scroll-left-btn"
           class="scroll-left"
           @click="${this.scrollLeft}"
+          ?disabled="${this.currentIndex <= 1 || this.totalItems <= 1}"
         >
           ◀
         </button>
@@ -490,6 +513,7 @@ export class AppHaxSearchResults extends SimpleColors {
           id="scroll-right-btn"
           class="scroll-right"
           @click="${this.scrollRight}"
+          ?disabled="${this.currentIndex >= this.totalItems || this.totalItems <= 1}"
         >
           ▶
         </button>
@@ -498,12 +522,18 @@ export class AppHaxSearchResults extends SimpleColors {
   }
 
   scrollLeft() {
+    // Don't scroll if at the beginning or only one item
+    if (this.currentIndex <= 1 || this.totalItems <= 1) return;
+    
     this.shadowRoot
       .querySelector("#results")
       .scrollBy({ left: -800, behavior: "smooth" });
   }
 
   scrollRight() {
+    // Don't scroll if at the end or only one item
+    if (this.currentIndex >= this.totalItems || this.totalItems <= 1) return;
+    
     this.shadowRoot
       .querySelector("#results")
       .scrollBy({ left: 800, behavior: "smooth" });

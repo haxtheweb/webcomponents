@@ -34,11 +34,18 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.allFilters = new Set();
     this.dark = false;
 
-    // Listen to store changes for dark mode
+    // Listen to store changes for dark mode and manifest updates
     if (typeof store !== "undefined") {
       import("mobx").then(({ autorun, toJS }) => {
         autorun(() => {
           this.dark = toJS(store.darkMode);
+        });
+        // Watch for manifest changes and update site results
+        autorun(() => {
+          const manifest = toJS(store.manifest);
+          if (manifest && manifest.items && manifest.items.length > 0) {
+            this.updateSiteResults();
+          }
         });
       });
     }
@@ -824,57 +831,55 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.loading = true;
     this.errorMessage = "";
 
-    const sitesUrl = new URL("../../demo/sites.json", import.meta.url).href;
+    try {
+      // Use store.manifest data instead of demo JSON
+      const sitesData = store.manifest;
+      
+      if (!sitesData || !sitesData.items) {
+        throw new Error("No manifest data available");
+      }
 
-    fetch(sitesUrl)
-      .then((response) => {
-        if (!response.ok) throw new Error(`Failed Sites (${response.status})`);
-        return response.json();
-      })
-      .then((sitesData) => {
-        const siteItems = Array.isArray(sitesData.data.items)
-          ? sitesData.data.items.map((item) => {
-              let categorySource = item.metadata.site.category;
-              let tags = [];
-              if (Array.isArray(categorySource)) {
-                tags = categorySource.filter(
-                  (c) => typeof c === "string" && c.trim() !== "",
-                );
-              } else if (
-                typeof categorySource === "string" &&
-                categorySource.trim() !== ""
-              ) {
-                tags = [categorySource.trim()];
-              }
-              if (tags.length === 0) tags = ["Empty"];
-              tags.forEach((tag) => this.allFilters.add(tag)); // Add to global Set
-              return {
-                dataType: "site",
-                useCaseTag: tags,
-                originalData: item,
-                ...item, // this spreads every prop into this area that way it can be filtered correctly
-              };
-            })
-          : [];
-        this.returningSites = [...siteItems];
-        this.filters = Array.from(this.allFilters).sort(); // Set AFTER all items
-        this.filteredSites = [...siteItems];
+      const siteItems = Array.isArray(sitesData.items)
+        ? sitesData.items.map((item) => {
+            let categorySource = item.metadata && item.metadata.site ? item.metadata.site.category : null;
+            let tags = [];
+            if (Array.isArray(categorySource)) {
+              tags = categorySource.filter(
+                (c) => typeof c === "string" && c.trim() !== "",
+              );
+            } else if (
+              typeof categorySource === "string" &&
+              categorySource.trim() !== ""
+            ) {
+              tags = [categorySource.trim()];
+            }
+            if (tags.length === 0) tags = ["Empty"];
+            tags.forEach((tag) => this.allFilters.add(tag)); // Add to global Set
+            return {
+              dataType: "site",
+              useCaseTag: tags,
+              originalData: item,
+              ...item, // this spreads every prop into this area that way it can be filtered correctly
+            };
+          })
+        : [];
+      this.returningSites = [...siteItems];
+      this.filters = Array.from(this.allFilters).sort(); // Set AFTER all items
+      this.filteredSites = [...siteItems];
 
-        if (siteItems.length === 0 && !this.errorMessage) {
-          this.errorMessage = "No Sites Found";
-        }
+      if (siteItems.length === 0 && !this.errorMessage) {
+        this.errorMessage = "No Sites Found";
+      }
 
-        this.requestUpdate();
-      })
-      .catch((error) => {
-        this.errorMessage = `Failed to load data: ${error.message}`;
-        this.returningSites = [];
-        this.filteredSites = [];
-        this.filters = [];
-      })
-      .finally(() => {
-        this.loading = false;
-      });
+      this.requestUpdate();
+      this.loading = false;
+    } catch (error) {
+      this.errorMessage = `Failed to load data: ${error.message}`;
+      this.returningSites = [];
+      this.filteredSites = [];
+      this.filters = [];
+      this.loading = false;
+    }
   }
 
   toggleDisplay(index, event) {

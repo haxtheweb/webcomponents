@@ -394,10 +394,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
    * Handle cancel button click
    */
   _handleCancel() {
-    // Play error sound for cancel
-    if (store.appEl && store.appEl.playSound) {
-      store.appEl.playSound("error");
-    }
+    // Removed sound effects for modal close/cancel as requested
     this._closeModal();
   }
 

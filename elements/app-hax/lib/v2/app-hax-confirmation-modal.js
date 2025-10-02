@@ -192,10 +192,7 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
       modal.opened = false;
     }
 
-    // Play error sound for cancel
-    if (store.appEl && store.appEl.playSound) {
-      store.appEl.playSound("error");
-    }
+    // Removed sound effects for modal close/cancel as requested
 
     if (this.cancelAction && typeof this.cancelAction === "function") {
       this.cancelAction();
@@ -216,10 +213,7 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
     // simple-modal sends close event, we need to sync our state
     this.open = false;
 
-    // Play error sound for cancel/close
-    if (store.appEl && store.appEl.playSound) {
-      store.appEl.playSound("error");
-    }
+    // Removed sound effects for modal close/cancel as requested
 
     if (this.cancelAction && typeof this.cancelAction === "function") {
       this.cancelAction();

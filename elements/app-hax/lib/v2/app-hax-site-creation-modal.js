@@ -292,6 +292,14 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           display: flex;
           flex-direction: column;
           align-items: center;
+          text-align: center;
+        }
+
+        .success-hat-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: var(--ddd-spacing-2, 8px) 0;
         }
 
         .success-icon {
@@ -301,16 +309,17 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
         }
 
         .success-title {
-          font-size: var(--ddd-font-size-l, 24px);
-          font-weight: var(--ddd-font-weight-bold, 700);
+          font-size: var(--ddd-font-size-s, 16px);
+          font-weight: var(--ddd-font-weight-medium, 500);
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          margin: 0 0 var(--ddd-spacing-2, 8px) 0;
+          margin: var(--ddd-spacing-2, 8px) 0 var(--ddd-spacing-1, 4px) 0;
         }
 
         .success-subtitle {
-          font-size: var(--ddd-font-size-s, 16px);
+          font-size: var(--ddd-font-size-xs, 12px);
           color: var(--ddd-theme-default-coalyGray, #444);
-          margin: 0 0 var(--ddd-spacing-4, 16px) 0;
+          margin: 0 0 var(--ddd-spacing-2, 8px) 0;
+          line-height: var(--ddd-lh-140, 1.4);
         }
 
         .button-group {
@@ -514,10 +523,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     // Consider it cancelled if we're in step 1 OR if we're in step 3 (success) and user chooses to stay
     const wasCancelled = this.currentStep === 1 || this.currentStep === 3;
 
-    // Play error sound for cancel/close operations
-    if (wasCancelled && store.appEl && store.appEl.playSound) {
-      store.appEl.playSound("error");
-    }
+    // Removed sound effects for modal close/cancel as requested
 
     // Restore body scrolling
     document.body.style.overflow = "";
@@ -556,10 +562,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     // Consider it cancelled if we're in step 1 OR if we're in step 3 (success) and user closes/stays
     const wasCancelled = this.currentStep === 1 || this.currentStep === 3;
 
-    // Play error sound for cancel/close operations
-    if (wasCancelled && store.appEl && store.appEl.playSound) {
-      store.appEl.playSound("error");
-    }
+    // Removed sound effects for modal close/cancel as requested
 
     // Restore body scrolling
     document.body.style.overflow = "";
@@ -709,6 +712,17 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       // Success!
       this.currentStep = 3;
       this.isCreating = false;
+      this.creationProgress = this.max || 100; // Ensure 100% completion
+      
+      // Update hat progress to show 100% completion
+      const hatProgress = this.shadowRoot.querySelector(
+        "app-hax-simple-hat-progress",
+      );
+      if (hatProgress) {
+        hatProgress.progress = this.creationProgress;
+        hatProgress.requestUpdate();
+      }
+      
       this.showConfetti = true;
       this.generateConfetti();
 
@@ -724,7 +738,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
 
   triggerMainPageConfetti() {
     // Find the main page confetti container and trigger confetti
-    const mainConfettiContainer = document.querySelector("#confetti");
+    const mainConfettiContainer = store.appEl?.shadowRoot?.querySelector("#confetti");
     if (mainConfettiContainer) {
       // Import and trigger confetti on main page
       import("@haxtheweb/multiple-choice/lib/confetti-container.js").then(
@@ -854,10 +868,12 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
   renderSuccessStep() {
     return html`
       <div class="success-content">
-        <simple-icon-lite
-          class="success-icon"
-          icon="icons:check-circle"
-        ></simple-icon-lite>
+        <div class="success-hat-container">
+          <app-hax-simple-hat-progress
+            .progress="${this.creationProgress || 100}"
+            .max="100"
+          ></app-hax-simple-hat-progress>
+        </div>
         <h2 class="success-title">Site Created Successfully!</h2>
         <p class="success-subtitle">
           Your new site "${this.siteName}" is ready to use.

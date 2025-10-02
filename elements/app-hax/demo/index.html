@@ -205,8 +205,6 @@
           }
         </style>
         <div id="demobtns">
-          <button id="nosites">Test new user</button>
-          <button id="test404">Test 404</button>
           <button id="resetbtn">reset app</button>
         </div>
         <script>
@@ -225,17 +223,8 @@
           dqs("#loading").remove();
         });
           function dqs(sel) { return document.querySelector(sel)}
-          dqs("#nosites").addEventListener("click", (e) => {
-            // reset to clear internal state
-            dqs("app-hax").reset(false);
-            // fake injection of a new site listing location
-            window.AppHax.requestAvailability().store.appSettings.getSitesList = 'sitesEmpty.json';
-          });
-          dqs("#test404").addEventListener("click", (e) => {
-            window.location = "nothin9383832";
-          });
           dqs("#resetbtn").addEventListener("click", (e) => {
-            dqs("app-hax").reset();
+            dqs("app-hax").reset(true);
           });
         </script>
       </div>

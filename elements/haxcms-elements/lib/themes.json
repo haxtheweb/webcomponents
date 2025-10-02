@@ -3,31 +3,31 @@
     "element": "app-hax-theme",
     "path": "@haxtheweb/app-hax/lib/app-hax-theme.js",
     "name": "8-bit Overworld theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
   },
   "bootstrap-theme": {
     "element": "bootstrap-theme",
     "path": "@haxtheweb/bootstrap-theme/bootstrap-theme.js",
     "name": "Bootstrap Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "clean-one": {
     "element": "clean-one",
     "path": "@haxtheweb/clean-one/clean-one.js",
     "name": "Clean One",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "clean-portfolio-theme": {
     "element": "clean-portfolio-theme",
     "path": "@haxtheweb/clean-portfolio-theme/clean-portfolio-theme.js",
     "name": "Clean Portfolio Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
   },
   "clean-two": {
     "element": "clean-two",
     "path": "@haxtheweb/clean-two/clean-two.js",
     "name": "Clean Two",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
   },
   "collections-theme": {
     "element": "collections-theme",
@@ -51,13 +51,13 @@
     "element": "haxcms-blank-theme",
     "path": "@haxtheweb/haxcms-elements/lib/haxcms-blank-theme.js",
     "name": "Haxcms Blank Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "haxcms-json-theme": {
     "element": "haxcms-json-theme",
     "path": "@haxtheweb/haxcms-elements/lib/haxcms-json-theme.js",
     "name": "Haxcms Json Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "haxcms-print-theme": {
     "element": "haxcms-print-theme",
@@ -69,7 +69,7 @@
     "element": "haxma-theme",
     "path": "@haxtheweb/haxma-theme/haxma-theme.js",
     "name": "HAXma doc theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "haxor-slevin": {
     "element": "haxor-slevin",
@@ -81,13 +81,13 @@
     "element": "journey-sidebar-theme",
     "path": "@haxtheweb/journey-theme/lib/journey-sidebar-theme.js",
     "name": "Journey Sidebar theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
   },
   "journey-theme": {
     "element": "journey-theme",
     "path": "@haxtheweb/journey-theme/journey-theme.js",
     "name": "Journey Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "journey-topbar-theme": {
     "element": "journey-topbar-theme",
@@ -99,37 +99,37 @@
     "element": "learn-two-theme",
     "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
     "name": "Learn theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "outline-player": {
     "element": "outline-player",
     "path": "@haxtheweb/outline-player/outline-player.js",
     "name": "Outline Player",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "polaris-flex-sidebar": {
     "element": "polaris-flex-sidebar",
     "path": "@haxtheweb/polaris-theme/lib/polaris-flex-sidebar.js",
     "name": "Polaris Flex Sidebar",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
   },
   "polaris-flex-theme": {
     "element": "polaris-flex-theme",
     "path": "@haxtheweb/polaris-theme/lib/polaris-flex-theme.js",
     "name": "Polaris Flex Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "polaris-invent-theme": {
     "element": "polaris-invent-theme",
     "path": "@haxtheweb/polaris-theme/lib/polaris-invent-theme.js",
     "name": "Polaris Invent Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
   },
   "polaris-theme": {
     "element": "polaris-theme",
     "path": "@haxtheweb/polaris-theme/polaris-theme.js",
     "name": "Polaris Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "simple-blog": {
     "element": "simple-blog",
@@ -141,31 +141,31 @@
     "element": "spacebook-theme",
     "path": "@haxtheweb/spacebook-theme/spacebook-theme.js",
     "name": "Space Book theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "terrible-best-themes": {
     "element": "terrible-best-themes",
     "path": "@haxtheweb/terrible-themes/lib/terrible-best-themes.js",
     "name": "Terrible 90s - hockey player theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "terrible-outlet-themes": {
     "element": "terrible-outlet-themes",
     "path": "@haxtheweb/terrible-themes/lib/terrible-outlet-themes.js",
     "name": "Terrible 90s - blog theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
   },
   "terrible-productionz-themes": {
     "element": "terrible-productionz-themes",
     "path": "@haxtheweb/terrible-themes/lib/terrible-productionz-themes.js",
     "name": "Terrible 90s - productionz theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   },
   "terrible-resume-themes": {
     "element": "terrible-resume-themes",
     "path": "@haxtheweb/terrible-themes/lib/terrible-resume-themes.js",
     "name": "Terrible 90s - resume theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
   },
   "terrible-themes": {
     "element": "terrible-themes",
@@ -177,6 +177,6 @@
     "element": "training-theme",
     "path": "@haxtheweb/training-theme/training-theme.js",
     "name": "Training Theme",
-    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/BlueStyle.svg"
+    "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/PartyStyle.svg"
   }
 }
