@@ -437,6 +437,9 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
    * Close the modal
    */
   _closeModal() {
+    // Restore body scrolling
+    document.body.style.overflow = "";
+
     globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
@@ -474,6 +477,9 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
     this.username = "";
     this.error = "";
     this.loading = false;
+
+    // Prevent body scrolling when modal is connected/opened
+    document.body.style.overflow = "hidden";
   }
 }
 

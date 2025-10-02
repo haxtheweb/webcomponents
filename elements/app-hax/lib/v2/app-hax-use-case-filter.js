@@ -222,10 +222,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           border-color: var(--ddd-theme-default-slateGray, #666);
           padding: var(--ddd-spacing-6, 24px);
           margin-top: 0;
-          margin-left: var(--ddd-spacing-6, 24px);
           margin-bottom: 0;
-          width: 100%;
-          max-width: 320px;
           box-sizing: border-box;
           font-family: var(--ddd-font-primary, sans-serif);
           transition: box-shadow 0.2s ease;

@@ -214,20 +214,46 @@ export class AppHaxUseCase extends LitElement {
           padding: 0px 12px;
         }
         @media (max-width: 768px) {
+          :host {
+            margin: var(--ddd-spacing-1, 4px);
+            min-height: 200px;
+            width: 100%;
+            max-width: none;
+          }
+          .image img {
+            width: 100%;
+            max-width: none;
+          }
+          .cardContent {
+            padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px)
+              var(--ddd-spacing-4, 16px);
+          }
+          .titleBar {
+            padding: 0px var(--ddd-spacing-3, 12px);
+          }
           .cardBottom {
-            gap: var(--ddd-spacing-1, 4px);
-            padding: 0px var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px)
-              var(--ddd-spacing-2, 8px);
+            gap: var(--ddd-spacing-2, 8px);
+            padding: 0px var(--ddd-spacing-3, 12px) var(--ddd-spacing-4, 16px)
+              var(--ddd-spacing-3, 12px);
           }
           .cardBottom button,
           .cardBottom a {
-            font-size: var(--ddd-font-size-4xs, 10px);
-            padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
-            min-height: var(--ddd-spacing-6, 24px);
+            font-size: var(--ddd-font-size-3xs, 12px);
+            padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
+            min-height: var(--ddd-spacing-8, 32px);
             margin: 0;
           }
+          h3 {
+            font-size: var(--ddd-font-size-s, 16px) !important;
+            margin: var(--ddd-spacing-2, 8px) 0;
+          }
+          p {
+            font-size: var(--ddd-font-size-xs, 14px);
+            line-height: 1.4;
+          }
         }
-        @media (max-width: 1440px) {
+
+        @media (min-width: 769px) {
           :host,
           .image img {
             display: flex;

@@ -103,7 +103,10 @@ class SimpleModal extends LitElement {
           );
           height: var(--simple-modal-titlebar-height, unset);
           line-height: var(--simple-modal-titlebar-line-height, unset);
-          color: var(--simple-modal-titlebar-color,var(--ddd-theme-default-nittanyNavy));
+          color: var(
+            --simple-modal-titlebar-color,
+            var(--ddd-theme-default-nittanyNavy)
+          );
           font-size: var(--ddd-theme-h3-font-size);
         }
 
@@ -122,7 +125,10 @@ class SimpleModal extends LitElement {
           min-width: unset;
           text-transform: none;
           background-color: transparent;
-          color: var(--simple-modal-titlebar-color, var(--ddd-theme-default-nittanyNavy));
+          color: var(
+            --simple-modal-titlebar-color,
+            var(--ddd-theme-default-nittanyNavy)
+          );
           --simple-icon-width: var(--ddd-icon-sm);
           --simple-icon-height: var(--ddd-icon-sm);
         }
@@ -145,7 +151,10 @@ class SimpleModal extends LitElement {
             var(--ddd-spacing-2) var(--ddd-spacing-4) var(--ddd-spacing-4)
           );
           margin: 0;
-          color: var(--simple-modal-content-container-color, var(--ddd-theme-primary));
+          color: var(
+            --simple-modal-content-container-color,
+            var(--ddd-theme-primary)
+          );
           background-color: var(
             --simple-modal-content-container-background,
             var(--ddd-theme-default-white)
@@ -477,6 +486,10 @@ class SimpleModal extends LitElement {
    * Close the modal and do some clean up
    */
   close() {
+    // Restore body scrolling
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+
     this.opened = false;
     if (globalThis.ShadyCSS && !globalThis.ShadyCSS.nativeShadow) {
       this.shadowRoot
@@ -519,6 +532,9 @@ class SimpleModal extends LitElement {
   // Observer opened for changes
   _openedChanged(newValue) {
     if (typeof newValue !== typeof undefined && !newValue) {
+      // Restore body scrolling when modal closes
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
       // wipe the slot of our modal
       this.title = "";
       while (this.firstChild !== null) {
@@ -539,6 +555,8 @@ class SimpleModal extends LitElement {
       });
       this.dispatchEvent(evt);
     } else if (newValue) {
+      // Prevent body scrolling when modal opens
+      document.body.style.overflow = "hidden";
       // p dialog backport; a nice, simple solution for close buttons
       let dismiss = this.querySelectorAll("[dialog-dismiss]");
       dismiss.forEach((el) => {

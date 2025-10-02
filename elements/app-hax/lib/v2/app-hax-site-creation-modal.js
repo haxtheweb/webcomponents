@@ -485,6 +485,9 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.creationCancelled = false;
     this.siteUrl = "";
 
+    // Prevent body scrolling while modal is open
+    document.body.style.overflow = "hidden";
+
     // Wait for the component to update before setting modal state
     this.updateComplete.then(() => {
       const modal = this.shadowRoot?.querySelector("web-dialog");
@@ -515,6 +518,10 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     if (wasCancelled && store.appEl && store.appEl.playSound) {
       store.appEl.playSound("error");
     }
+
+    // Restore body scrolling
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
 
     this.open = false;
     const modal = this.shadowRoot?.querySelector("web-dialog");
@@ -553,6 +560,10 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     if (wasCancelled && store.appEl && store.appEl.playSound) {
       store.appEl.playSound("error");
     }
+
+    // Restore body scrolling
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
 
     this.open = false;
     this.currentStep = 1;
@@ -734,6 +745,9 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     if (this.siteUrl) {
       globalThis.open(this.siteUrl, "_blank");
     }
+    // Restore body scrolling before closing
+    document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
     this.closeModal();
   }
 

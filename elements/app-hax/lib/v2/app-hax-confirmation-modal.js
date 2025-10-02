@@ -172,6 +172,9 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
   }
 
   openModal() {
+    // Prevent body scrolling while modal is open
+    document.body.style.overflow = "hidden";
+
     this.open = true;
     const modal = this.shadowRoot.querySelector("simple-modal");
     if (modal) {
@@ -180,6 +183,9 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
   }
 
   closeModal() {
+    // Restore body scrolling
+    document.body.style.overflow = "";
+
     this.open = false;
     const modal = this.shadowRoot.querySelector("simple-modal");
     if (modal) {
@@ -204,6 +210,9 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
   }
 
   handleModalClosed(e) {
+    // Restore body scrolling
+    document.body.style.overflow = "";
+
     // simple-modal sends close event, we need to sync our state
     this.open = false;
 
@@ -225,6 +234,9 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
   }
 
   confirmModal() {
+    // Restore body scrolling
+    document.body.style.overflow = "";
+
     this.open = false;
     const modal = this.shadowRoot.querySelector("simple-modal");
     if (modal) {
