@@ -18,6 +18,7 @@ import "./lib/v2/app-hax-use-case.js";
 import "./lib/v2/app-hax-use-case-filter.js";
 import "./lib/v2/app-hax-search-results.js";
 import "./lib/v2/app-hax-scroll-button.js";
+import "./lib/v2/app-hax-user-access-modal.js";
 
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
@@ -212,6 +213,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       logOut: "Log out",
       menu: "Menu",
       showMore: "More",
+      userAccess: "User Access",
     };
     if (
       typeof globalThis.speechSynthesis !== "undefined" &&
@@ -653,11 +655,27 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
 
   // eslint-disable-next-line class-methods-use-this
-  reset(reload = false) {
+  reset(reload = false, logout = false) {
     // localStorage possible to be blocked by permission of system
     try {
       globalThis.localStorage.removeItem("app-hax-step");
       globalThis.localStorage.removeItem("app-hax-site");
+
+      // If logout is requested, clear JWT and trigger logout
+      if (logout) {
+        globalThis.localStorage.removeItem("jwt");
+        store.jwt = null;
+        // Trigger logout event to clear user session
+        globalThis.dispatchEvent(
+          new CustomEvent("jwt-login-logout", {
+            composed: true,
+            bubbles: true,
+            cancelable: false,
+            detail: true,
+          }),
+        );
+      }
+
       if (reload) {
         // should always be a base tag for a SPA but just checking
         if (document.querySelector("base")) {
@@ -735,18 +753,26 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               cancelable: true,
               composed: true,
               detail: {
-                title: "< login >",
+                title: "Login to HAX",
                 elements: { content: p },
                 modal: true,
                 styles: {
-                  "--simple-modal-titlebar-background": "transparent",
-                  "--simple-modal-titlebar-color": "black",
-                  "--simple-modal-width": "40vw",
+                  "--simple-modal-titlebar-background":
+                    "var(--ddd-theme-default-nittanyNavy, #001e44)",
+                  "--simple-modal-titlebar-color":
+                    "var(--ddd-theme-default-white, white)",
+                  "--simple-modal-width": "90vw",
+                  "--simple-modal-max-width": "var(--ddd-spacing-32, 480px)",
                   "--simple-modal-min-width": "300px",
-                  "--simple-modal-z-index": "100000000",
-                  "--simple-modal-height": "62vh",
-                  "--simple-modal-min-height": "400px",
+                  "--simple-modal-z-index": "1000",
+                  "--simple-modal-height": "auto",
+                  "--simple-modal-min-height": "300px",
+                  "--simple-modal-max-height": "80vh",
                   "--simple-modal-titlebar-height": "64px",
+                  "--simple-modal-border-radius": "var(--ddd-radius-md, 8px)",
+                  "--simple-modal-background":
+                    "var(--ddd-theme-default-white, white)",
+                  "--simple-modal-box-shadow": "var(--ddd-boxShadow-xl)",
                 },
               },
             }),
@@ -768,7 +794,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           display: inline-flex;
         }
         #wt {
-          border: solid 1px var(--simple-colors-default-theme-accent-12, var(--accent-color));
+          border: solid 1px
+            var(--simple-colors-default-theme-accent-12, var(--accent-color));
         }
         simple-toolbar-button {
           min-width: 48px;
@@ -845,7 +872,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         }
         .start-journey {
           display: flex;
-          padding-top: 20px;
           justify-content: center;
         }
         app-hax-site-button {
@@ -864,23 +890,15 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             --simple-tooltip-font-size: 10px;
           }
         }
-        .label {
-          display: inline-flex;
-          text-align: flex-start;
-          align-items: center;
-        }
         app-hax-label {
           animation: 0.8s ease-in-out 0s scrollin;
           -webkit-animation: 0.8s ease-in-out 0s scrollin;
           display: flex;
           align-self: flex-start;
-          overflow: hidden;
-          margin-left: 24px;
-          margin-right: 24px;
         }
         app-hax-label h1 {
           font-weight: normal;
-          font-size: 4vw;
+          font-size: var(--ddd-font-size-xxl, 48px);
           margin: 0;
           padding: 0;
         }
@@ -917,7 +935,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           display: inline-flex;
         }
         main {
-          padding-top: 80px;
+          padding-top: var(--ddd-spacing-14);
+          max-width: 100%;
+          margin: 0 auto;
+          box-sizing: border-box;
         }
         @media (max-width: 900px) {
           .characterbtn-name {
@@ -981,9 +1002,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         @media (max-width: 640px) {
           .content {
             margin-top: 4px;
-          }
-          .start-journey {
-            padding-top: 0;
           }
 
           app-hax-site-button {
@@ -1247,6 +1265,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         <confetti-container id="confetti">
           <div class="label">
             <app-hax-label>
+              ${this.appMode === "home" || this.appMode === "search"
+                ? html`
+                    <h1>HAX Site Dashboard</h1>
+                    <div slot="subtitle">Let's build something awesome!</div>
+                  `
+                : ``}
               ${this.activeItem && !this.siteReady
                 ? html`
                     <h1>${this.activeItem.label}</h1>
@@ -1270,7 +1294,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 : ``}
             </app-hax-label>
           </div>
-          
+
           <section class="content">${this.appBody(this.appMode)}</section>
         </confetti-container>
       </main>`;
@@ -1293,15 +1317,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     return template;
   }
-  
+
   //EDIT HERE
   templateHome() {
     return html`
-    <div class="start-journey">
-      <app-hax-use-case-filter></app-hax-use-case-filter>
+      <div class="start-journey">
+        <app-hax-use-case-filter></app-hax-use-case-filter>
       </div>
-      
-      `;
+    `;
   }
 
   // eslint-disable-next-line class-methods-use-this

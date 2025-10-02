@@ -16,13 +16,12 @@
       "icon": "hax:hax2022",
       "demo-url": "https://playground.hax.cloud/site.html?recipe=",
       "attributes": [
-        { "icon": "icons:favorite", "tooltip": "Mark as Favorite" },
-        { "icon": "icons:language", "tooltip": "Translatable"},
-        { "icon": "icons:thumb-up", "tooltip": "Popular"},
-        { "icon": "icons:accessibility", "tooltip": "Accessible"}
+        { "icon": "icons:language", "tooltip": "Translatable" },
+        { "icon": "icons:thumb-up", "tooltip": "Popular" },
+        { "icon": "icons:accessibility", "tooltip": "Accessible" }
       ]
-     },
-     {
+    },
+    {
       "uuid": "b12c82ef-1545-4697-9c76-90f1aa6f352c",
       "title": "Course",
       "category": ["Course"],
@@ -37,12 +36,11 @@
       "icon": "hax:hax2022",
       "demo-url": "https://playground.hax.cloud/site.html?recipe=",
       "attributes": [
-        { "icon": "icons:favorite", "tooltip": "Mark as Favorite" },
-        { "icon": "icons:language", "tooltip": "Translatable"},
-        { "icon": "icons:thumb-up", "tooltip": "Popular"}
+        { "icon": "icons:language", "tooltip": "Translatable" },
+        { "icon": "icons:thumb-up", "tooltip": "Popular" }
       ]
-     },
-     {
+    },
+    {
       "uuid": "1b4132dd-c557-4576-89c7-f89446feda4a",
       "title": "Blog",
       "category": ["Blog"],
@@ -57,12 +55,11 @@
       "icon": "hax:hax2022",
       "demo-url": "https://playground.hax.cloud/site.html?recipe=",
       "attributes": [
-        { "icon": "icons:favorite", "tooltip": "Mark as Favorite" },
-        { "icon": "icons:language", "tooltip": "Translatable"},
-        { "icon": "icons:thumb-up", "tooltip": "Popular"}
+        { "icon": "icons:language", "tooltip": "Translatable" },
+        { "icon": "icons:thumb-up", "tooltip": "Popular" }
       ]
-     },
-     {
+    },
+    {
       "uuid": "1b4132dd-c557-4576-89c7-f89446feda4a",
       "title": "Brochure",
       "category": ["Brochure"],
@@ -77,9 +74,9 @@
       "icon": "hax:hax2022",
       "demo-url": "https://playground.hax.cloud/site.html?recipe=",
       "attributes": [
-        { "icon": "icons:favorite", "tooltip": "Mark as Favorite" },
         { "icon": "icons:language", "tooltip": "Translatable" },
         { "icon": "icons:thumb-up", "tooltip": "Popular" }
       ]
-     }]
+    }
+  ]
 }

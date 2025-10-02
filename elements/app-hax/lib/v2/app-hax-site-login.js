@@ -1,10 +1,10 @@
-import { html, css } from "lit";
+import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
 import { store } from "./AppHaxStore.js";
-export class AppHaxSiteLogin extends SimpleColors {
+export class AppHaxSiteLogin extends DDDSuper(LitElement) {
   // a convention I enjoy so you can change the tag name in 1 place
   static get tag() {
     return "app-hax-site-login";
@@ -57,70 +57,158 @@ export class AppHaxSiteLogin extends SimpleColors {
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          padding: var(--ddd-spacing-6, 24px);
+          text-align: center;
+          font-family: var(--ddd-font-primary, sans-serif);
+          background: var(--ddd-theme-default-white, white);
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
         }
+
+        rpg-character {
+          display: block;
+          margin: 0 0 var(--ddd-spacing-4, 16px) 0;
+          width: 120px;
+          height: 120px;
+        }
+
+        #errorText {
+          color: var(--ddd-theme-default-original87Pink, #e4007c);
+          font-size: var(--ddd-font-size-xs, 14px);
+          margin: var(--ddd-spacing-2, 8px) 0;
+          min-height: var(--ddd-spacing-5, 20px);
+          font-weight: var(--ddd-font-weight-medium, 500);
+        }
+
         #inputcontainer {
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
-        }
-        a {
-          color: red;
+          width: 100%;
+          max-width: var(--ddd-spacing-30, 400px);
+          gap: var(--ddd-spacing-4, 16px);
         }
 
-        // This does not work
-        #errorText > p {
-          visibility: hidden;
-          background-color: lightblue;
-          color: red;
-          font-weight: bold;
+        .form-group {
+          width: 100%;
+          position: relative;
         }
-        rpg-character {
-          display: block;
-          margin: 0px;
+
+        input {
+          width: 100%;
+          padding: var(--ddd-spacing-3, 12px);
+          border: var(--ddd-border-sm, 2px solid)
+            var(--ddd-theme-default-slateGray, #666);
+          border-radius: var(--ddd-radius-sm, 4px);
+          font-size: var(--ddd-font-size-s, 16px);
+          font-family: var(--ddd-font-primary, sans-serif);
+          box-sizing: border-box;
+          transition: border-color 0.2s ease;
+          background: var(--ddd-theme-default-white, white);
         }
+
+        input:focus {
+          outline: none;
+          border-color: var(--ddd-theme-default-nittanyNavy, #001e44);
+        }
+
+        input::placeholder {
+          color: var(--ddd-theme-default-slateGray, #666);
+          text-transform: capitalize;
+        }
+
+        button {
+          padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-4, 16px);
+          border-radius: var(--ddd-radius-sm, 4px);
+          font-size: var(--ddd-font-size-s, 16px);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          font-family: var(--ddd-font-primary, sans-serif);
+          cursor: pointer;
+          transition: all 0.2s ease;
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--ddd-spacing-2, 8px);
+          width: 100%;
+          min-height: var(--ddd-spacing-10, 40px);
+          background: var(--ddd-theme-default-nittanyNavy, #001e44);
+          color: var(--ddd-theme-default-white, white);
+        }
+
+        button:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        button:hover:not(:disabled) {
+          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          transform: translateY(-1px);
+          box-shadow: var(--ddd-boxShadow-md);
+        }
+
+        .notyou {
+          padding: var(--ddd-spacing-2, 8px);
+          font-size: var(--ddd-font-size-s, 16px);
+          color: var(--ddd-theme-default-coalyGray, #444);
+        }
+
+        .notyou a {
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          text-decoration: underline;
+          cursor: pointer;
+          font-weight: var(--ddd-font-weight-medium, 500);
+        }
+
+        .notyou a:hover {
+          color: var(--ddd-theme-default-keystoneYellow, #ffd100);
+        }
+
+        .visibility-icon {
+          position: absolute;
+          right: var(--ddd-spacing-3, 12px);
+          top: 50%;
+          transform: translateY(-50%);
+          background: transparent;
+          border: none;
+          color: var(--ddd-theme-default-slateGray, #666);
+          cursor: pointer;
+          padding: var(--ddd-spacing-1, 4px);
+          border-radius: var(--ddd-radius-xs, 2px);
+          transition: color 0.2s ease;
+          --simple-icon-width: var(--ddd-icon-xs, 16px);
+          --simple-icon-height: var(--ddd-icon-xs, 16px);
+        }
+
+        .visibility-icon:hover {
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+        }
+
         .external {
           text-align: center;
+          width: 100%;
+          margin-top: var(--ddd-spacing-4, 16px);
         }
-        input {
-          font-family: "Press Start 2P", sans-serif;
-          font-size: 28px;
-          padding: 8px;
-          border: 4px solid black;
-          border-radius: 8px;
-          width: 75%;
-        }
-        button {
-          font-family: "Press Start 2P", sans-serif;
-          font-size: 30px;
-          padding: 8px;
-          border: 4px solid black;
-          border-radius: 8px;
-          min-width: 50%;
-          margin: 16px;
-        }
-        button:focus,
-        button:hover {
-          background-color: var(--simple-colors-default-theme-green-8);
-          color: var(--simple-colors-default-theme-grey-1);
-          outline: 2px solid var(--simple-colors-default-theme-grey-1);
-          cursor: pointer;
-        }
-        .notyou {
-          padding: 8px;
-        }
-        .visibility-icon {
-          color: var(--simple-colors-default-theme-grey-12);
-          background-color: var(--simple-colors-default-theme-grey-3);
-          border: 2px solid var(--simple-colors-default-theme-grey-12);
-          position: relative;
-          margin-top: -44px;
-          margin-bottom: 20px;
-          margin-left: 70%;
-          z-index: 1;
-          padding: 2px;
-          --simple-icon-width: 26px;
-          --simple-icon-height: 26px;
+
+        @media (max-width: 600px) {
+          :host {
+            padding: var(--ddd-spacing-4, 16px);
+          }
+
+          rpg-character {
+            width: 80px;
+            height: 80px;
+          }
+
+          #inputcontainer {
+            max-width: 100%;
+          }
+
+          button {
+            font-size: var(--ddd-font-size-xs, 14px);
+            padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
+          }
         }
       `,
     ];
@@ -236,36 +324,44 @@ export class AppHaxSiteLogin extends SimpleColors {
       <p id="errorText">${this.errorMSG}</p>
       <div id="inputcontainer">
         ${this.hidePassword
-          ? html`<input
-                id="username"
-                type="text"
-                placeholder="user name"
-                aria-label="user name"
-                @input="${this.nameChange}"
-              />
+          ? html` <div class="form-group">
+                <input
+                  id="username"
+                  type="text"
+                  placeholder="Enter your username"
+                  aria-label="Username"
+                  @input="${this.nameChange}"
+                />
+              </div>
               <button
                 ?disabled="${!this.username}"
                 @click=${this.checkUsername}
               >
-                Next &gt;
+                <simple-icon-lite icon="icons:arrow-forward"></simple-icon-lite>
+                Next
               </button>`
-          : html`<div class="notyou">
-                Hey ${this.username}! <a @click=${this.reset}>not you?</a>
+          : html` <div class="notyou">
+                Welcome back, ${this.username}!
+                <a @click=${this.reset}>Not you?</a>
               </div>
-              <input
-                id="password"
-                type="password"
-                placeholder="password"
-                @input="${this.passChange}"
-              />
-              <simple-icon-button-lite
-                icon="lrn:view-off"
-                tabindex="-1"
-                title="Toggle password display"
-                @click="${this.toggleViewPass}"
-                class="visibility-icon"
-              ></simple-icon-button-lite>
+              <div class="form-group">
+                <input
+                  id="password"
+                  type="password"
+                  placeholder="Enter your password"
+                  aria-label="Password"
+                  @input="${this.passChange}"
+                />
+                <simple-icon-button-lite
+                  icon="lrn:view-off"
+                  tabindex="-1"
+                  title="Toggle password display"
+                  @click="${this.toggleViewPass}"
+                  class="visibility-icon"
+                ></simple-icon-button-lite>
+              </div>
               <button ?disabled="${!this.hasPass}" @click=${this.checkPassword}>
+                <simple-icon-lite icon="icons:login"></simple-icon-lite>
                 Login
               </button>`}
         <div class="external">

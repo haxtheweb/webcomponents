@@ -18,12 +18,12 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
  */
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
-  * `Learn theme`
-  * @element learn-two-theme
-  * `Learn2 theme for HAXcms`
-  *
-  * @demo demo/index.html
-  */
+ * `Learn theme`
+ * @element learn-two-theme
+ * `Learn2 theme for HAXcms`
+ *
+ * @demo demo/index.html
+ */
 class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
   //styles function
   static get styles() {

@@ -3,7 +3,7 @@ import "../disqus-embed.js";
 
 describe("DisqusEmbed test", () => {
   let element;
-  
+
   beforeEach(async () => {
     element = await fixture(html`<disqus-embed></disqus-embed>`);
     await element.updateComplete;
@@ -47,44 +47,60 @@ describe("DisqusEmbed test", () => {
   });
 
   it("renders loading text in slot", async () => {
-    expect(element.shadowRoot.textContent.trim()).to.include("Loading comments..");
+    expect(element.shadowRoot.textContent.trim()).to.include(
+      "Loading comments..",
+    );
   });
 
   it("updates loading text when property changes", async () => {
     element.loadingText = "Custom loading message";
     await element.updateComplete;
-    
-    expect(element.shadowRoot.textContent.trim()).to.include("Custom loading message");
+
+    expect(element.shadowRoot.textContent.trim()).to.include(
+      "Custom loading message",
+    );
   });
 
   // Property validation tests
   it("sets loadingText with kebab-case attribute", async () => {
-    const testElement = await fixture(html`<disqus-embed loading-text="Custom loading"></disqus-embed>`);
+    const testElement = await fixture(
+      html`<disqus-embed loading-text="Custom loading"></disqus-embed>`,
+    );
     expect(testElement.loadingText).to.equal("Custom loading");
   });
 
   it("sets pageURL with kebab-case attribute", async () => {
-    const testElement = await fixture(html`<disqus-embed page-url="https://example.com/page"></disqus-embed>`);
+    const testElement = await fixture(
+      html`<disqus-embed page-url="https://example.com/page"></disqus-embed>`,
+    );
     expect(testElement.pageURL).to.equal("https://example.com/page");
   });
 
   it("sets pageIdentifier with kebab-case attribute", async () => {
-    const testElement = await fixture(html`<disqus-embed page-identifier="unique-123"></disqus-embed>`);
+    const testElement = await fixture(
+      html`<disqus-embed page-identifier="unique-123"></disqus-embed>`,
+    );
     expect(testElement.pageIdentifier).to.equal("unique-123");
   });
 
   it("sets pageTitle with kebab-case attribute", async () => {
-    const testElement = await fixture(html`<disqus-embed page-title="My Article Title"></disqus-embed>`);
+    const testElement = await fixture(
+      html`<disqus-embed page-title="My Article Title"></disqus-embed>`,
+    );
     expect(testElement.pageTitle).to.equal("My Article Title");
   });
 
   it("sets shortName with kebab-case attribute", async () => {
-    const testElement = await fixture(html`<disqus-embed short-name="my-site"></disqus-embed>`);
+    const testElement = await fixture(
+      html`<disqus-embed short-name="my-site"></disqus-embed>`,
+    );
     expect(testElement.shortName).to.equal("my-site");
   });
 
   it("sets lang property correctly", async () => {
-    const testElement = await fixture(html`<disqus-embed lang="fr"></disqus-embed>`);
+    const testElement = await fixture(
+      html`<disqus-embed lang="fr"></disqus-embed>`,
+    );
     expect(testElement.lang).to.equal("fr");
   });
 
@@ -95,9 +111,9 @@ describe("DisqusEmbed test", () => {
     element.pageIdentifier = "test-id";
     element.pageTitle = "Test Title";
     element.lang = "es";
-    
+
     await element.updateComplete;
-    
+
     expect(element.loadingText).to.equal("New loading text");
     expect(element.pageURL).to.equal("https://example.com");
     expect(element.pageIdentifier).to.equal("test-id");
@@ -107,7 +123,7 @@ describe("DisqusEmbed test", () => {
 
   // Slot content tests
   it("displays default loading text in slot", async () => {
-    const slot = element.shadowRoot.querySelector('slot');
+    const slot = element.shadowRoot.querySelector("slot");
     expect(slot).to.exist;
     expect(slot.textContent).to.equal("Loading comments..");
   });
@@ -118,36 +134,37 @@ describe("DisqusEmbed test", () => {
         <div class="custom-loader">Custom loading content</div>
       </disqus-embed>
     `);
-    
-    const slottedContent = customElement.querySelector('.custom-loader');
+
+    const slottedContent = customElement.querySelector(".custom-loader");
     expect(slottedContent).to.exist;
-    expect(slottedContent.textContent).to.equal('Custom loading content');
+    expect(slottedContent.textContent).to.equal("Custom loading content");
   });
 
   // Styling tests
   it("has default styling applied", async () => {
     const styles = getComputedStyle(element);
-    expect(styles.display).to.equal('block');
+    expect(styles.display).to.equal("block");
     // Additional style checks would need to be done with actual rendered element
   });
 
   // DisqusInstance integration tests (mocked)
   it("calls DisqusInstance.createEmbedScript when shortName is set", async () => {
     // Mock DisqusInstance
-    const originalCreateEmbedScript = globalThis.DisqusInstance?.createEmbedScript;
+    const originalCreateEmbedScript =
+      globalThis.DisqusInstance?.createEmbedScript;
     let createEmbedScriptCalled = false;
-    
+
     if (globalThis.DisqusInstance) {
       globalThis.DisqusInstance.createEmbedScript = (target, shortName) => {
         createEmbedScriptCalled = true;
         expect(target).to.equal(element);
-        expect(shortName).to.equal('my-disqus-site');
+        expect(shortName).to.equal("my-disqus-site");
       };
     }
-    
-    element.shortName = 'my-disqus-site';
+
+    element.shortName = "my-disqus-site";
     await element.updateComplete;
-    
+
     if (globalThis.DisqusInstance) {
       expect(createEmbedScriptCalled).to.be.true;
       // Restore original function
@@ -161,26 +178,26 @@ describe("DisqusEmbed test", () => {
   it("sets up timeout on property changes", async () => {
     // Mock global DISQUS
     globalThis.DISQUS = {
-      reset: () => {}
+      reset: () => {},
     };
-    
+
     element.pageURL = "https://example.com";
     await element.updateComplete;
-    
+
     expect(element._timeout).to.exist;
-    
+
     // Clean up
     delete globalThis.DISQUS;
   });
 
   it("handles connectedCallback properly", async () => {
     // Test that connectedCallback sets up timeout
-    const disconnectedElement = document.createElement('disqus-embed');
+    const disconnectedElement = document.createElement("disqus-embed");
     document.body.appendChild(disconnectedElement);
-    
+
     // Should have timeout after connection
     expect(disconnectedElement._timeout).to.exist;
-    
+
     // Clean up
     document.body.removeChild(disconnectedElement);
   });
@@ -191,9 +208,9 @@ describe("DisqusEmbed test", () => {
     element.pageIdentifier = null;
     element.pageTitle = null;
     element.shortName = null;
-    
+
     await element.updateComplete;
-    
+
     expect(element.pageURL).to.be.null;
     expect(element.pageIdentifier).to.be.null;
     expect(element.pageTitle).to.be.null;
@@ -207,9 +224,9 @@ describe("DisqusEmbed test", () => {
     element.pageTitle = "";
     element.shortName = "";
     element.lang = "";
-    
+
     await element.updateComplete;
-    
+
     expect(element.loadingText).to.equal("");
     expect(element.pageURL).to.equal("");
     expect(element.pageIdentifier).to.equal("");
@@ -223,13 +240,17 @@ describe("DisqusEmbed test", () => {
     element.pageTitle = "Article with 'quotes' & <special> chars";
     element.pageIdentifier = "id-with-unicode-café-naïve";
     element.pageURL = "https://example.com/path?query=value&test=1";
-    
+
     await element.updateComplete;
-    
+
     expect(element.loadingText).to.equal("Loading comments... 🔄");
-    expect(element.pageTitle).to.equal("Article with 'quotes' & <special> chars");
+    expect(element.pageTitle).to.equal(
+      "Article with 'quotes' & <special> chars",
+    );
     expect(element.pageIdentifier).to.equal("id-with-unicode-café-naïve");
-    expect(element.pageURL).to.equal("https://example.com/path?query=value&test=1");
+    expect(element.pageURL).to.equal(
+      "https://example.com/path?query=value&test=1",
+    );
   });
 
   it("handles rapid property changes", async () => {
@@ -239,14 +260,14 @@ describe("DisqusEmbed test", () => {
       { pageURL: "https://example.com/1" },
       { pageURL: "https://example.com/2" },
       { lang: "fr" },
-      { lang: "es" }
+      { lang: "es" },
     ];
-    
+
     for (const change of changes) {
       Object.assign(element, change);
       await element.updateComplete;
     }
-    
+
     expect(element.loadingText).to.equal("Loading 2");
     expect(element.pageURL).to.equal("https://example.com/2");
     expect(element.lang).to.equal("es");
@@ -254,8 +275,8 @@ describe("DisqusEmbed test", () => {
 
   // Language support tests
   it("supports various language codes", async () => {
-    const languages = ['en', 'fr', 'es', 'de', 'it', 'ja', 'ko', 'zh-cn'];
-    
+    const languages = ["en", "fr", "es", "de", "it", "ja", "ko", "zh-cn"];
+
     for (const lang of languages) {
       element.lang = lang;
       await element.updateComplete;
@@ -270,9 +291,9 @@ describe("DisqusEmbed test", () => {
       "https://example.com/path",
       "https://example.com/path?query=value",
       "https://example.com/path#hash",
-      "http://localhost:3000/test"
+      "http://localhost:3000/test",
     ];
-    
+
     for (const url of validUrls) {
       element.pageURL = url;
       await element.updateComplete;
@@ -282,18 +303,18 @@ describe("DisqusEmbed test", () => {
 
   // Configuration tests
   it("maintains global disqus_config function", () => {
-    expect(globalThis.disqus_config).to.be.a('function');
+    expect(globalThis.disqus_config).to.be.a("function");
   });
 
   it("has DisqusInstance available globally", () => {
     expect(globalThis.DisqusSingleton).to.exist;
-    expect(globalThis.DisqusSingleton.requestAvailability).to.be.a('function');
+    expect(globalThis.DisqusSingleton.requestAvailability).to.be.a("function");
   });
 });
 
 describe("DisqusBroker test", () => {
   let broker;
-  
+
   beforeEach(() => {
     // Create broker instance for testing
     broker = globalThis.DisqusSingleton.requestAvailability();
@@ -308,7 +329,7 @@ describe("DisqusBroker test", () => {
 
   it("creates DisqusBroker instance", () => {
     expect(broker).to.exist;
-    expect(broker.tagName.toLowerCase()).to.equal('disqus-broker');
+    expect(broker.tagName.toLowerCase()).to.equal("disqus-broker");
   });
 
   it("has correct default properties", () => {
@@ -317,33 +338,33 @@ describe("DisqusBroker test", () => {
 
   it("sets disqus_thread id on firstUpdated", async () => {
     await broker.updateComplete;
-    expect(broker.getAttribute('id')).to.equal('disqus_thread');
+    expect(broker.getAttribute("id")).to.equal("disqus_thread");
   });
 
   it("handles API callbacks", () => {
     // Mock console.log to verify it's called
     const originalLog = console.log;
     let logCalled = false;
-    let logMessage = '';
-    
+    let logMessage = "";
+
     console.log = (message) => {
       logCalled = true;
       logMessage = message;
     };
-    
-    broker.apiCallback('onNewComment');
+
+    broker.apiCallback("onNewComment");
     expect(logCalled).to.be.true;
-    expect(logMessage).to.equal('onNewComment');
-    
+    expect(logMessage).to.equal("onNewComment");
+
     // Restore original console.log
     console.log = originalLog;
   });
 
   it("creates embed script with correct attributes", () => {
     const mockTarget = { appendChild: () => {} };
-    broker.createEmbedScript(mockTarget, 'test-site');
-    
+    broker.createEmbedScript(mockTarget, "test-site");
+
     expect(broker.renderTarget).to.equal(mockTarget);
-    expect(broker.innerHTML).to.equal('');
+    expect(broker.innerHTML).to.equal("");
   });
 });

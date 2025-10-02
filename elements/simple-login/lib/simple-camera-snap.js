@@ -21,7 +21,6 @@ class SimpleCameraSnap extends HTMLElement {
             new URL("../locales/simple-login.es.json", import.meta.url).href +
             "/../",
           updateCallback: "render",
-          
         },
       }),
     );

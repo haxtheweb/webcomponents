@@ -5,6 +5,9 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import { toJS } from "mobx";
+import { store } from "./AppHaxStore.js";
+import "./app-hax-user-access-modal.js";
 
 const DropDownBorder = new URL(
   "../assets/images/DropDownBorder.svg",
@@ -25,7 +28,7 @@ export class AppHaxSiteBars extends SimpleColors {
     this.inprogress = false;
     this.textInfo = {};
     this.siteId = "";
-    this.description = '';
+    this.description = "";
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
@@ -37,31 +40,198 @@ export class AppHaxSiteBars extends SimpleColors {
       textInfo: { type: Object },
       siteId: { type: String, reflect: true, attribute: "site-id" },
       title: { type: String },
-        description: { type: String },
+      description: { type: String },
+      siteUrl: { type: String, attribute: "site-url" },
     };
   }
 
   // updated fires every time a property defined above changes
   // this allows you to react to variables changing and use javascript to perform logic
-  updated(changedProperties) {
-  }
+  updated(changedProperties) {}
 
   toggleOptionsMenu() {
     this.showOptions = !this.showOptions;
   }
+
+  handleKeydown(e, callback) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      callback.call(this);
+    }
+  }
   copySite() {
-    console.log("Copy clicked");
-    // implement logic
+    this.showOptions = false;
+    this.siteOperation("copySite", "Copy", "icons:content-copy");
   }
-  
+
   downloadSite() {
-    console.log("Download clicked");
-    // implement logic
+    this.showOptions = false;
+    this.siteOperation("downloadSite", "Download", "file-download");
   }
-  
+
   archiveSite() {
-    console.log("Archive clicked");
-    // implement logic
+    this.showOptions = false;
+    this.siteOperation("archiveSite", "Archive", "icons:archive");
+  }
+
+  openUserAccess() {
+    console.log("User Access clicked");
+    // Close the options menu first
+    this.showOptions = false;
+
+    // Create and show the user access modal
+    const modal = document.createElement("app-hax-user-access-modal");
+
+    // Set the site title for context
+    if (this.title) {
+      modal.siteTitle = this.title;
+    }
+
+    // Show the modal using the simple-modal system
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      cancelable: true,
+      detail: {
+        title: "User Access",
+        elements: { content: modal },
+        invokedBy: this,
+        styles: {
+          "--simple-modal-width": "500px",
+          "--simple-modal-height": "auto",
+          "--simple-modal-max-height": "80vh",
+        },
+      },
+    });
+
+    this.dispatchEvent(evt);
+  }
+
+  // Site operation handler similar to the site details component
+  siteOperation(op, opName, icon) {
+    if (store.appEl && store.appEl.playSound) {
+      store.appEl.playSound("click");
+    }
+
+    store.activeSiteOp = op;
+    store.activeSiteId = this.siteId;
+
+    import("@haxtheweb/simple-modal/simple-modal.js").then(() => {
+      setTimeout(() => {
+        // Find the site data from the store
+        const site = toJS(
+          store.manifest.items.filter((item) => item.id === this.siteId).pop(),
+        );
+
+        if (!site) {
+          console.error("Site not found for ID:", this.siteId);
+          return;
+        }
+
+        const div = globalThis.document.createElement("div");
+        div.appendChild(
+          globalThis.document.createTextNode(
+            `Are you sure you want to ${op.replace("Site", "")} ${
+              site.metadata.site.name
+            }?`,
+          ),
+        );
+
+        const bcontainer = globalThis.document.createElement("div");
+        const b = globalThis.document.createElement("button");
+        b.innerText = "Confirm";
+        b.classList.add("hax-modal-btn");
+        b.addEventListener("click", this.confirmOperation.bind(this));
+        bcontainer.appendChild(b);
+
+        const b2 = globalThis.document.createElement("button");
+        b2.innerText = "Cancel";
+        b2.classList.add("hax-modal-btn");
+        b2.classList.add("cancel");
+        b2.addEventListener("click", this.cancelOperation.bind(this));
+        bcontainer.appendChild(b2);
+
+        this.dispatchEvent(
+          new CustomEvent("simple-modal-show", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              title: `${opName} ${site.metadata.site.name}?`,
+              elements: { content: div, buttons: bcontainer },
+              invokedBy: this,
+              styles: {
+                "--simple-modal-titlebar-background": "orange",
+                "--simple-modal-titlebar-color": "black",
+                "--simple-modal-width": "30vw",
+                "--simple-modal-min-width": "300px",
+                "--simple-modal-z-index": "100000000",
+                "--simple-modal-height": "20vh",
+                "--simple-modal-min-height": "300px",
+                "--simple-modal-titlebar-height": "80px",
+              },
+            },
+          }),
+        );
+      }, 0);
+    });
+  }
+
+  cancelOperation() {
+    store.activeSiteOp = "";
+    store.activeSiteId = null;
+    globalThis.dispatchEvent(new CustomEvent("simple-modal-hide"));
+    if (store.appEl && store.appEl.playSound) {
+      store.appEl.playSound("error");
+    }
+  }
+
+  async confirmOperation() {
+    const op = toJS(store.activeSiteOp);
+    const site = toJS(store.activeSite);
+
+    if (!site) {
+      console.error("No active site found for operation:", op);
+      return;
+    }
+
+    // Make the API call to perform the operation
+    await store.AppHaxAPI.makeCall(
+      op,
+      {
+        site: {
+          name: site.metadata.site.name,
+          id: site.id,
+        },
+      },
+      true,
+      () => {
+        const activeOp = toJS(store.activeSiteOp);
+        // Download is special - it opens a download link
+        if (activeOp === "downloadSite") {
+          globalThis.open(
+            store.AppHaxAPI.lastResponse.downloadSite.data.link,
+            "_blank",
+          );
+        } else {
+          // For copy and archive, refresh the site listing
+          store.refreshSiteListing();
+        }
+      },
+    );
+
+    globalThis.dispatchEvent(new CustomEvent("simple-modal-hide"));
+
+    if (store.appEl && store.appEl.playSound) {
+      store.appEl.playSound("success");
+    }
+
+    store.toast(
+      `${site.metadata.site.name} ${op.replace("Site", "")} successful!`,
+      3000,
+      {
+        hat: "random",
+      },
+    );
   }
 
   // CSS - specific to Lit
@@ -72,7 +242,7 @@ export class AppHaxSiteBars extends SimpleColors {
         :host {
           text-align: left;
           max-width: 240px;
-          
+
           font-family: var(--ddd-font-primary);
           color: var(--ddd-theme-default-nittanyNavy);
           background-color: white;
@@ -108,20 +278,104 @@ export class AppHaxSiteBars extends SimpleColors {
 
         .options-menu {
           position: absolute;
-          top: -110px;
+          top: -125px;
           right: 0;
-          background: var(--haxcms-color-ui-white, #fff);
-          border: 1px solid var(--haxcms-color-ui-1, #ccc);
-          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-          border-radius: 8px;
-          padding: 8px 8px 6px 10px;
+          background: var(--ddd-theme-default-white, white);
+          border: var(--ddd-border-xs, 1px solid)
+            var(--ddd-theme-default-slateGray, #666);
+          box-shadow: var(--ddd-boxShadow-lg);
+          border-radius: var(--ddd-radius-md, 8px);
+          padding: var(--ddd-spacing-2, 8px);
           display: flex;
           flex-direction: column;
+          gap: var(--ddd-spacing-1, 4px);
           z-index: 1000;
-          overflow:visible;
+          overflow: visible;
+          min-width: 140px;
         }
-        .options-menu simple-icon-button-lite {
-          margin: 4px 0;
+        :host([dark]) .options-menu,
+        body.dark-mode .options-menu {
+          background: var(--ddd-theme-default-coalyGray, #333);
+          color: var(--ddd-theme-default-white, white);
+          border-color: var(--ddd-theme-default-slateGray, #666);
+        }
+        .close-menu-btn {
+          position: absolute;
+          top: var(--ddd-spacing-1, 4px);
+          right: var(--ddd-spacing-1, 4px);
+          background: transparent;
+          border: none;
+          color: var(--ddd-theme-default-slateGray, #666);
+          cursor: pointer;
+          font-size: var(--ddd-font-size-s, 16px);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          padding: var(--ddd-spacing-1, 4px);
+          border-radius: var(--ddd-radius-xs, 2px);
+          line-height: 1;
+          min-height: auto;
+          box-shadow: none;
+          width: var(--ddd-spacing-5, 20px);
+          height: var(--ddd-spacing-5, 20px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s ease;
+        }
+        :host([dark]) .close-menu-btn,
+        body.dark-mode .close-menu-btn {
+          color: var(--ddd-theme-default-white, white);
+        }
+        .close-menu-btn:hover,
+        .close-menu-btn:focus {
+          background: var(--ddd-theme-default-slateGray, #666);
+          color: var(--ddd-theme-default-white, white);
+          transform: none;
+          box-shadow: none;
+          outline: var(--ddd-border-xs, 1px solid)
+            var(--ddd-theme-default-keystoneYellow, #ffd100);
+        }
+        :host([dark]) .close-menu-btn:hover,
+        :host([dark]) .close-menu-btn:focus,
+        body.dark-mode .close-menu-btn:hover,
+        body.dark-mode .close-menu-btn:focus {
+          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          outline-color: var(--ddd-theme-default-white, white);
+        }
+        .menu-item {
+          display: flex;
+          align-items: center;
+          padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+          border-radius: var(--ddd-radius-xs, 2px);
+          cursor: pointer;
+          font-size: var(--ddd-font-size-3xs, 11px);
+          font-family: var(--ddd-font-primary, sans-serif);
+          transition: all 0.2s ease;
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          text-decoration: none;
+          min-height: var(--ddd-spacing-5, 20px);
+        }
+        :host([dark]) .menu-item,
+        body.dark-mode .menu-item {
+          color: var(--ddd-theme-default-white, white);
+        }
+        .menu-item:hover,
+        .menu-item:focus {
+          background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          outline: var(--ddd-border-xs, 1px solid)
+            var(--ddd-theme-default-keystoneYellow, #ffd100);
+        }
+        :host([dark]) .menu-item:hover,
+        :host([dark]) .menu-item:focus,
+        body.dark-mode .menu-item:hover,
+        body.dark-mode .menu-item:focus {
+          background: var(--ddd-theme-default-slateGray, #555);
+          color: var(--ddd-theme-default-white, white);
+        }
+        .menu-item simple-icon-button-lite {
+          margin-right: var(--ddd-spacing-1, 4px);
+          flex-shrink: 0;
         }
 
         .titleBar {
@@ -144,29 +398,37 @@ export class AppHaxSiteBars extends SimpleColors {
         }
         button {
           display: flex;
-          background-color: #005fa9;
-          color: white;
-          border: 0px;
-          border-radius: 4px;
-          font-family: var(--ddd-font-primary);
-          font-size: 12px;
-          font-weight: 20px;
-          padding: 12px 16px 12px 24px;
-          height: 16px;
+          background: var(--ddd-theme-default-nittanyNavy, #001e44);
+          color: var(--ddd-theme-default-white, white);
+          border: var(--ddd-border-sm, 2px solid) transparent;
+          border-radius: var(--ddd-radius-md, 8px);
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(--ddd-font-size-xs, 14px);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-4, 16px);
+          min-height: var(--ddd-spacing-9, 36px);
           align-items: center;
           justify-content: center;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          box-shadow: var(--ddd-boxShadow-sm);
         }
         button:hover {
-          background-color: var(--ddd-theme-default-nittanyNavy);
+          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          transform: translateY(-1px);
+          box-shadow: var(--ddd-boxShadow-md);
         }
         .cardBottom {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
-        .cardBottom button{
-        flex: 1;
-        margin-top: 8px;
+        .cardBottom button {
+          flex: 1;
+          margin-top: var(--ddd-spacing-2, 8px);
+          margin-left: var(--ddd-spacing-2, 8px);
+          margin-right: var(--ddd-spacing-2, 8px);
         }
         ::slotted(a[slot="heading"]),
         ::slotted(span[slot="subHeading"]),
@@ -186,14 +448,20 @@ export class AppHaxSiteBars extends SimpleColors {
     return html`
       <div id="mainCard">
         <div class="imageLink">
-          <img src="https://image.freepik.com/free-vector/programming-website-landing-page_23-2148452312.jpg">
+          <img
+            src="https://image.freepik.com/free-vector/programming-website-landing-page_23-2148452312.jpg"
+          />
         </div>
-        
+
         <div class="cardContent">
           <div class="titleBar">
             <slot name="heading"></slot>
             <div class="settings-button">
-              <simple-tooltip for="settingsIcon" position="top" animation-delay="0">
+              <simple-tooltip
+                for="settingsIcon"
+                position="top"
+                animation-delay="0"
+              >
                 Options
               </simple-tooltip>
               <simple-icon-button-lite
@@ -205,34 +473,81 @@ export class AppHaxSiteBars extends SimpleColors {
 
               ${this.showOptions
                 ? html`
-                  <div class="options-menu">
-                    <span @click="${this.copySite}">
-                      <simple-icon-button-lite icon="content-copy" title="Copy"></simple-icon-button-lite>
-                      Copy
-                    </span>
-                    <span @click="${this.downloadSite}">
-                      <simple-icon-button-lite icon="file-download" title="Download"></simple-icon-button-lite>
-                      Download
-                    </span>
-                    <span @click="${this.archiveSite}">
-                      <simple-icon-button-lite icon="archive" title="Archive"></simple-icon-button-lite>
-                      Archive
-                    </span>
-                  </div>
-                `
-                : ''}
+                    <div class="options-menu">
+                      <button
+                        class="close-menu-btn"
+                        @click="${this.toggleOptionsMenu}"
+                        aria-label="Close menu"
+                      >
+                        ×
+                      </button>
+                      <div
+                        class="menu-item"
+                        @click="${this.copySite}"
+                        @keydown="${(e) =>
+                          this.handleKeydown(e, this.copySite)}"
+                        tabindex="0"
+                      >
+                        <simple-icon-button-lite
+                          icon="content-copy"
+                          title="Copy"
+                          >Copy</simple-icon-button-lite
+                        >
+                      </div>
+                      <div
+                        class="menu-item"
+                        @click="${this.downloadSite}"
+                        @keydown="${(e) =>
+                          this.handleKeydown(e, this.downloadSite)}"
+                        tabindex="0"
+                      >
+                        <simple-icon-button-lite
+                          icon="file-download"
+                          title="Download"
+                          >Download</simple-icon-button-lite
+                        >
+                      </div>
+                      <div
+                        class="menu-item"
+                        @click="${this.archiveSite}"
+                        @keydown="${(e) =>
+                          this.handleKeydown(e, this.archiveSite)}"
+                        tabindex="0"
+                      >
+                        <simple-icon-button-lite icon="archive" title="Archive"
+                          >Archive</simple-icon-button-lite
+                        >
+                      </div>
+                      <div
+                        class="menu-item"
+                        @click="${this.openUserAccess}"
+                        @keydown="${(e) =>
+                          this.handleKeydown(e, this.openUserAccess)}"
+                        tabindex="0"
+                      >
+                        <simple-icon-button-lite
+                          icon="account-circle"
+                          title="User Access"
+                          >User Access</simple-icon-button-lite
+                        >
+                      </div>
+                    </div>
+                  `
+                : ""}
             </div>
           </div>
-          
+
           <slot name="pre"></slot>
-          
-          <div class="cardBottom"> 
-            <button class="open" @click=${() => window.open(this.siteUrl, "_blank")}>
+
+          <div class="cardBottom">
+            <button
+              class="open"
+              @click=${() => window.open(this.siteUrl, "_blank")}
+            >
               Open
             </button>
           </div>
         </div>
-        
       </div>
     `;
   }

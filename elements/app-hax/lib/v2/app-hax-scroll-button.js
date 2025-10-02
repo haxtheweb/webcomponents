@@ -3,42 +3,40 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 
 export class AppHaxScrollButton extends LitElement {
-
   static get tag() {
     return "app-hax-scroll-button";
   }
 
   constructor() {
     super();
-    this.label = '';
-    this.targetId = '';
+    this.label = "";
+    this.targetId = "";
     this.isDarkMode = document.body.classList.contains("dark-mode");
   }
 
   static get properties() {
     return {
-        label: { type: String },
-        targetId: { type: String },
-        isDarkMode: {type: Boolean, reflect: true},
+      label: { type: String },
+      targetId: { type: String },
+      isDarkMode: { type: Boolean, reflect: true },
     };
   }
 
   scrollToTarget() {
     if (this.targetId) {
       let targetElement = null;
-      let appHax = this.closest('app-hax') || document.querySelector('app-hax');
-      
+      let appHax = this.closest("app-hax") || document.querySelector("app-hax");
+
       if (appHax) {
-        
-        let useCaseFilter = appHax.shadowRoot 
-        ? appHax.shadowRoot.querySelector('app-hax-use-case-filter') 
-        : appHax.querySelector('app-hax-use-case-filter');
+        let useCaseFilter = appHax.shadowRoot
+          ? appHax.shadowRoot.querySelector("app-hax-use-case-filter")
+          : appHax.querySelector("app-hax-use-case-filter");
         if (useCaseFilter) {
-          targetElement = useCaseFilter.shadowRoot 
-          ? useCaseFilter.shadowRoot.getElementById(this.targetId)
-          : useCaseFilter.querySelector(`#${this.targetId}`);
+          targetElement = useCaseFilter.shadowRoot
+            ? useCaseFilter.shadowRoot.getElementById(this.targetId)
+            : useCaseFilter.querySelector(`#${this.targetId}`);
         }
-      } 
+      }
       if (!targetElement) {
         targetElement = document.getElementById(this.targetId);
       }
@@ -46,7 +44,9 @@ export class AppHaxScrollButton extends LitElement {
         console.log(`Scrolling to:`, targetElement);
         targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
       } else {
-        console.warn(`Element with id '${this.targetId}' not found inside app-hax-use-case-filter.`);
+        console.warn(
+          `Element with id '${this.targetId}' not found inside app-hax-use-case-filter.`,
+        );
       }
     }
   }
@@ -55,7 +55,10 @@ export class AppHaxScrollButton extends LitElement {
     this._darkModeObserver = new MutationObserver(() => {
       this.isDarkMode = document.body.classList.contains("dark-mode");
     });
-    this._darkModeObserver.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    this._darkModeObserver.observe(document.body, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
   }
 
   disconnectedCallback() {
@@ -64,7 +67,6 @@ export class AppHaxScrollButton extends LitElement {
       this._darkModeObserver.disconnect();
     }
   }
-
 
   static get styles() {
     return [
@@ -96,11 +98,10 @@ export class AppHaxScrollButton extends LitElement {
 
   render() {
     return html`
-    <div @click="${this.scrollToTarget}" tabindex="0" role="button">
-      <h5>${this.label}</h5>  
-  </div>
+      <div @click="${this.scrollToTarget}" tabindex="0" role="button">
+        <h5>${this.label}</h5>
+      </div>
     `;
   }
-
 }
 customElements.define(AppHaxScrollButton.tag, AppHaxScrollButton);

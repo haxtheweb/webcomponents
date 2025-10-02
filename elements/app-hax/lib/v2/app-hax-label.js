@@ -9,8 +9,8 @@ export class AppHaxLabel extends LitElement {
 
   constructor() {
     super();
-    this.title = "Welcome";
-    this.subtitle = "Start your journey now!";
+    this.title = "HAX site list";
+    this.subtitle = "Let's build something awesome!";
   }
 
   static get properties() {
@@ -24,9 +24,16 @@ export class AppHaxLabel extends LitElement {
   static get styles() {
     return css`
       :host {
-        font-family: "Press Start 2P", sans-serif;
+        font-family: var(--ddd-font-primary, "Press Start 2P", sans-serif);
         text-align: flex-start;
-        width: 500px;
+        width: 100%;
+        max-width: 800px;
+      }
+
+      .topBar {
+        display: flex;
+        align-items: baseline;
+        gap: var(--ddd-spacing-4, 8px);
       }
 
       .title {
@@ -37,25 +44,38 @@ export class AppHaxLabel extends LitElement {
           var(--background-color)
         );
         font-weight: normal;
-        font-size: 3.5vw;
+        font-size: var(--ddd-font-size-l, 1.8vw);
         display: inline-flex;
-        align-items: flex-start;
+        align-items: baseline;
+        min-width: fit-content;
       }
 
       .subtitle {
         color: var(--app-hax-accent-color, var(--accent-color));
         font-weight: normal;
-        margin-top: 12px;
-        font-size: 20px;
+        font-size: var(--ddd-font-size-s, 16px);
+        font-family: var(--ddd-font-secondary, sans-serif);
+        margin: 0;
+        flex: 1;
+        min-width: fit-content;
       }
+
       @media (max-width: 700px) {
+        .topBar {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: var(--ddd-spacing-1, 4px);
+        }
         .subtitle {
-          font-size: 12px;
+          font-size: var(--ddd-font-size-xs, 12px);
+        }
+        .title {
+          font-size: var(--ddd-font-size-s, 2vw);
         }
       }
 
       .bracket {
-        font-size: 8vw;
+        font-size: var(--ddd-font-size-xl, 3vw);
         font-weight: normal;
         vertical-align: middle;
         -webkit-text-stroke: 0px;
@@ -64,13 +84,14 @@ export class AppHaxLabel extends LitElement {
           var(--accent-color)
         );
       }
+
       @media (max-height: 500px) {
         .title {
           -webkit-text-stroke: unset;
           -webkit-text-fill-color: unset;
         }
         .bracket {
-          font-size: 4vw;
+          font-size: var(--ddd-font-size-l, 2vw);
           margin: 0;
           padding: 0;
         }
@@ -82,8 +103,8 @@ export class AppHaxLabel extends LitElement {
     return html`
       <div class="topBar">
         <div class="title" part="title">
-          <span class="bracket"></span><slot>${this.title}</slot
-          ><span class="bracket"></span>
+          <span class="bracket">&#60;</span><slot>${this.title}</slot
+          ><span class="bracket">&#62;</span>
         </div>
         <div class="subtitle" part="subtitle">
           <slot name="subtitle">${this.subtitle}</slot>

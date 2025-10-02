@@ -3,27 +3,22 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 
 export class AppHaxFilterTag extends LitElement {
-
   static get tag() {
     return "app-hax-filter-tag";
   }
 
   constructor() {
     super();
-    this.label = '';
-    
+    this.label = "";
   }
 
   static get properties() {
     return {
-        label: { type: String },
-       
+      label: { type: String },
     };
   }
 
-  updated(changedProperties) {
-    
-  }
+  updated(changedProperties) {}
 
   static get styles() {
     return [
@@ -35,7 +30,10 @@ export class AppHaxFilterTag extends LitElement {
           padding-left: 8px;
           padding-right: 8px;
           height: 32px;
-          background-color: var(--simple-colors-default-theme-light-blue-12, var(--accent-color));
+          background-color: var(
+            --simple-colors-default-theme-light-blue-12,
+            var(--accent-color)
+          );
           border-radius: 8px;
           font-size: 16px;
           align-items: center;
@@ -56,19 +54,22 @@ export class AppHaxFilterTag extends LitElement {
   }
 
   removeTag() {
-    this.dispatchEvent(new CustomEvent("remove-tag", { detail: this.label, bubbles: true, composed: true }));
+    this.dispatchEvent(
+      new CustomEvent("remove-tag", {
+        detail: this.label,
+        bubbles: true,
+        composed: true,
+      }),
+    );
   }
 
   render() {
     return html`
-    <div>
-      <h4>${this.label}</h4>
-      <span class="remove" @click="${this.removeTag}">✖</span>
-      
-    </div>
-      
+      <div>
+        <h4>${this.label}</h4>
+        <span class="remove" @click="${this.removeTag}">✖</span>
+      </div>
     `;
   }
-
 }
 customElements.define(AppHaxFilterTag.tag, AppHaxFilterTag);

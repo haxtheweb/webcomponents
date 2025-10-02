@@ -41,8 +41,14 @@ class MediaImage extends DDD {
           border-color: var(--ddd-theme-default-limestoneLight);
           padding: var(--ddd-spacing-5);
           background-color: light-dark(
-            var(--ddd-component-media-image-card-color, var(--ddd-theme-default-white)),
-            var(--ddd-component-media-image-card-color-dark, var(--ddd-theme-default-coalyGray))
+            var(
+              --ddd-component-media-image-card-color,
+              var(--ddd-theme-default-white)
+            ),
+            var(
+              --ddd-component-media-image-card-color-dark,
+              var(--ddd-theme-default-coalyGray)
+            )
           );
         }
 

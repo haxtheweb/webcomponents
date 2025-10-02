@@ -6,13 +6,12 @@ import "../code-sample.js";
 // Basic functionality and accessibility tests
 describe("code-sample basic functionality", () => {
   let element;
-  
+
   beforeEach(async () => {
     element = await fixture(html`
       <code-sample type="javascript">
         <template preserve-content="preserve-content">
-const hello = "world";
-console.log(hello);
+          const hello = "world"; console.log(hello);
         </template>
       </code-sample>
     `);
@@ -29,7 +28,7 @@ console.log(hello);
 
   it("has correct default properties", async () => {
     const el = await fixture(html`<code-sample></code-sample>`);
-    
+
     expect(el.editMode).to.be.false;
     expect(el._haxstate).to.be.false;
     expect(el.copyClipboardButton).to.be.false;
@@ -40,11 +39,11 @@ console.log(hello);
   });
 
   it("renders required DOM elements", () => {
-    const codeContainer = element.shadowRoot.querySelector('#code-container');
-    const codeElement = element.shadowRoot.querySelector('#code');
-    const demoElement = element.shadowRoot.querySelector('#demo');
-    const themeElement = element.shadowRoot.querySelector('#theme');
-    
+    const codeContainer = element.shadowRoot.querySelector("#code-container");
+    const codeElement = element.shadowRoot.querySelector("#code");
+    const demoElement = element.shadowRoot.querySelector("#demo");
+    const themeElement = element.shadowRoot.querySelector("#theme");
+
     expect(codeContainer).to.exist;
     expect(codeElement).to.exist;
     expect(demoElement).to.exist;
@@ -69,13 +68,11 @@ describe("code-sample accessibility tests", () => {
     const el = await fixture(html`
       <code-sample copy-clipboard-button>
         <template preserve-content="preserve-content">
-          function example() {
-            return "Hello World";
-          }
+          function example() { return "Hello World"; }
         </template>
       </code-sample>
     `);
-    
+
     await expect(el).to.be.accessible();
   });
 
@@ -87,13 +84,13 @@ describe("code-sample accessibility tests", () => {
         </template>
       </code-sample>
     `);
-    
-    const pre = el.shadowRoot.querySelector('pre');
-    const code = el.shadowRoot.querySelector('code');
-    
+
+    const pre = el.shadowRoot.querySelector("pre");
+    const code = el.shadowRoot.querySelector("code");
+
     expect(pre).to.exist;
     expect(code).to.exist;
-    expect(code.tagName).to.equal('CODE');
+    expect(code.tagName).to.equal("CODE");
   });
 
   it("copy button has proper accessibility attributes", async () => {
@@ -104,24 +101,22 @@ describe("code-sample accessibility tests", () => {
         </template>
       </code-sample>
     `);
-    
-    const copyButton = el.shadowRoot.querySelector('#copyButton');
+
+    const copyButton = el.shadowRoot.querySelector("#copyButton");
     expect(copyButton).to.exist;
-    expect(copyButton.getAttribute('title')).to.exist;
-    expect(copyButton.getAttribute('type')).to.equal('button');
+    expect(copyButton.getAttribute("title")).to.exist;
+    expect(copyButton.getAttribute("type")).to.equal("button");
   });
 
   it("maintains accessibility with line highlighting", async () => {
     const el = await fixture(html`
       <code-sample highlight-start="1" highlight-end="2">
         <template preserve-content="preserve-content">
-const line1 = "first";
-const line2 = "second";
-const line3 = "third";
+          const line1 = "first"; const line2 = "second"; const line3 = "third";
         </template>
       </code-sample>
     `);
-    
+
     await expect(el).to.be.accessible();
   });
 });
@@ -130,23 +125,20 @@ const line3 = "third";
 describe("code-sample property validation", () => {
   it("accepts valid boolean properties", async () => {
     const el = await fixture(html`
-      <code-sample
-        edit-mode
-        copy-clipboard-button
-      >
+      <code-sample edit-mode copy-clipboard-button>
         <template preserve-content="preserve-content">
           const test = true;
         </template>
       </code-sample>
     `);
-    
+
     expect(el.editMode).to.be.true;
     expect(el.copyClipboardButton).to.be.true;
   });
 
   it("accepts valid type values", async () => {
-    const types = ['javascript', 'html', 'css', 'xml', 'json', 'yaml', 'php'];
-    
+    const types = ["javascript", "html", "css", "xml", "json", "yaml", "php"];
+
     for (const type of types) {
       const el = await fixture(html`
         <code-sample type="${type}">
@@ -155,9 +147,9 @@ describe("code-sample property validation", () => {
           </template>
         </code-sample>
       `);
-      
+
       expect(el.type).to.equal(type);
-      expect(typeof el.type).to.equal('string');
+      expect(typeof el.type).to.equal("string");
     }
   });
 
@@ -165,19 +157,15 @@ describe("code-sample property validation", () => {
     const el = await fixture(html`
       <code-sample highlight-start="2" highlight-end="4">
         <template preserve-content="preserve-content">
-line 1
-line 2
-line 3
-line 4
-line 5
+          line 1 line 2 line 3 line 4 line 5
         </template>
       </code-sample>
     `);
-    
+
     expect(el.highlightStart).to.equal(2);
     expect(el.highlightEnd).to.equal(4);
-    expect(typeof el.highlightStart).to.equal('number');
-    expect(typeof el.highlightEnd).to.equal('number');
+    expect(typeof el.highlightStart).to.equal("number");
+    expect(typeof el.highlightEnd).to.equal("number");
   });
 
   it("updates properties reactively", async () => {
@@ -188,15 +176,15 @@ line 5
         </template>
       </code-sample>
     `);
-    
-    el.type = 'javascript';
+
+    el.type = "javascript";
     el.copyClipboardButton = true;
     el.highlightStart = 1;
     el.highlightEnd = 2;
-    
+
     await el.updateComplete;
-    
-    expect(el.type).to.equal('javascript');
+
+    expect(el.type).to.equal("javascript");
     expect(el.copyClipboardButton).to.be.true;
     expect(el.highlightStart).to.equal(1);
     expect(el.highlightEnd).to.equal(2);
@@ -204,9 +192,9 @@ line 5
 
   it("validates theme object property", async () => {
     const el = await fixture(html`<code-sample></code-sample>`);
-    
+
     expect(el.theme).to.exist;
-    expect(typeof el.theme).to.equal('object');
+    expect(typeof el.theme).to.equal("object");
   });
 });
 
@@ -216,37 +204,36 @@ describe("code-sample template usage and highlighting", () => {
     const el = await fixture(html`
       <code-sample type="javascript">
         <template preserve-content="preserve-content">
-const message = "Hello, World!";
-console.log(message);
+          const message = "Hello, World!"; console.log(message);
         </template>
       </code-sample>
     `);
-    
-    const template = el.querySelector('template');
+
+    const template = el.querySelector("template");
     expect(template).to.exist;
-    expect(template.innerHTML).to.include('Hello, World!');
+    expect(template.innerHTML).to.include("Hello, World!");
   });
 
   it("handles different programming languages", async () => {
     const languages = [
-      { type: 'javascript', code: 'const test = () => true;' },
-      { type: 'html', code: '<div class="test">Hello</div>' },
-      { type: 'css', code: '.test { color: red; }' },
-      { type: 'json', code: '{"key": "value"}' },
-      { type: 'xml', code: '<root><child>content</child></root>' }
+      { type: "javascript", code: "const test = () => true;" },
+      { type: "html", code: '<div class="test">Hello</div>' },
+      { type: "css", code: ".test { color: red; }" },
+      { type: "json", code: '{"key": "value"}' },
+      { type: "xml", code: "<root><child>content</child></root>" },
     ];
-    
+
     for (const lang of languages) {
       const el = await fixture(html`
         <code-sample type="${lang.type}">
           <template preserve-content="preserve-content">
-${lang.code}
+            ${lang.code}
           </template>
         </code-sample>
       `);
-      
+
       expect(el.type).to.equal(lang.type);
-      const template = el.querySelector('template');
+      const template = el.querySelector("template");
       expect(template.innerHTML).to.include(lang.code);
     }
   });
@@ -259,35 +246,35 @@ ${lang.code}
 
 const result = fibonacci(10);
 console.log(result);`;
-    
+
     const el = await fixture(html`
       <code-sample type="javascript">
         <template preserve-content="preserve-content">
-${complexCode}
+          ${complexCode}
         </template>
       </code-sample>
     `);
-    
-    const template = el.querySelector('template');
-    expect(template.innerHTML).to.include('fibonacci');
-    expect(template.innerHTML).to.include('console.log');
+
+    const template = el.querySelector("template");
+    expect(template.innerHTML).to.include("fibonacci");
+    expect(template.innerHTML).to.include("console.log");
   });
 
   it("preserves special characters in code", async () => {
     const codeWithSpecialChars = `const html = "<div class='test'>Hello & welcome!</div>";
 const regex = /\d+/g;`;
-    
+
     const el = await fixture(html`
       <code-sample type="javascript">
         <template preserve-content="preserve-content">
-${codeWithSpecialChars}
+          ${codeWithSpecialChars}
         </template>
       </code-sample>
     `);
-    
-    const template = el.querySelector('template');
-    expect(template.innerHTML).to.include('&');
-    expect(template.innerHTML).to.include('class=');
+
+    const template = el.querySelector("template");
+    expect(template.innerHTML).to.include("&");
+    expect(template.innerHTML).to.include("class=");
   });
 
   it("handles empty template gracefully", async () => {
@@ -296,7 +283,7 @@ ${codeWithSpecialChars}
         <template preserve-content="preserve-content"></template>
       </code-sample>
     `);
-    
+
     expect(el).to.exist;
     await expect(el).to.be.accessible();
   });
@@ -312,10 +299,10 @@ describe("code-sample copy functionality", () => {
         </template>
       </code-sample>
     `);
-    
-    const copyButton = el.shadowRoot.querySelector('#copyButton');
+
+    const copyButton = el.shadowRoot.querySelector("#copyButton");
     expect(copyButton).to.exist;
-    expect(copyButton.hasAttribute('hidden')).to.be.false;
+    expect(copyButton.hasAttribute("hidden")).to.be.false;
   });
 
   it("hides copy button when disabled", async () => {
@@ -326,10 +313,10 @@ describe("code-sample copy functionality", () => {
         </template>
       </code-sample>
     `);
-    
-    const copyButton = el.shadowRoot.querySelector('#copyButton');
+
+    const copyButton = el.shadowRoot.querySelector("#copyButton");
     expect(copyButton).to.exist;
-    expect(copyButton.hasAttribute('hidden')).to.be.true;
+    expect(copyButton.hasAttribute("hidden")).to.be.true;
   });
 
   it("copy button has correct text content", async () => {
@@ -340,9 +327,9 @@ describe("code-sample copy functionality", () => {
         </template>
       </code-sample>
     `);
-    
-    const copyButton = el.shadowRoot.querySelector('#copyButton');
-    expect(copyButton.textContent.trim()).to.equal('Copy');
+
+    const copyButton = el.shadowRoot.querySelector("#copyButton");
+    expect(copyButton.textContent.trim()).to.equal("Copy");
   });
 
   it("has working _textAreaWithClonedContent method", async () => {
@@ -353,11 +340,11 @@ describe("code-sample copy functionality", () => {
         </template>
       </code-sample>
     `);
-    
+
     const textarea = el._textAreaWithClonedContent();
     expect(textarea).to.exist;
-    expect(textarea.tagName).to.equal('TEXTAREA');
-    expect(textarea.value).to.include('clone me');
+    expect(textarea.tagName).to.equal("TEXTAREA");
+    expect(textarea.value).to.include("clone me");
     textarea.remove(); // Clean up
   });
 });
@@ -368,17 +355,14 @@ describe("code-sample line highlighting", () => {
     const el = await fixture(html`
       <code-sample highlight-start="2" highlight-end="3">
         <template preserve-content="preserve-content">
-line 1
-line 2
-line 3
-line 4
+          line 1 line 2 line 3 line 4
         </template>
       </code-sample>
     `);
-    
+
     // Wait for highlighting to be applied
-    await new Promise(resolve => setTimeout(resolve, 200));
-    
+    await new Promise((resolve) => setTimeout(resolve, 200));
+
     expect(el.highlightStart).to.equal(2);
     expect(el.highlightEnd).to.equal(3);
   });
@@ -387,11 +371,11 @@ line 4
     const el = await fixture(html`
       <code-sample highlight-start="1" highlight-end="1">
         <template preserve-content="preserve-content">
-const singleLine = true;
+          const singleLine = true;
         </template>
       </code-sample>
     `);
-    
+
     expect(el.highlightStart).to.equal(1);
     expect(el.highlightEnd).to.equal(1);
   });
@@ -400,15 +384,13 @@ const singleLine = true;
     const el = await fixture(html`
       <code-sample>
         <template preserve-content="preserve-content">
-line 1
-line 2
-line 3
+          line 1 line 2 line 3
         </template>
       </code-sample>
     `);
-    
-    expect(typeof el.highlightLines).to.equal('function');
-    
+
+    expect(typeof el.highlightLines).to.equal("function");
+
     // Method should execute without errors
     el.highlightLines(1, 2);
   });
@@ -419,74 +401,74 @@ describe("code-sample HAX integration", () => {
   it("has proper haxProperties configuration", async () => {
     const el = await fixture(html`<code-sample></code-sample>`);
     const haxProps = el.constructor.haxProperties;
-    
+
     expect(haxProps).to.exist;
-    expect(haxProps.type).to.equal('element');
+    expect(haxProps.type).to.equal("element");
     expect(haxProps.canScale).to.be.false;
     expect(haxProps.canEditSource).to.be.false;
-    expect(haxProps.gizmo.title).to.equal('Code sample');
-    expect(haxProps.gizmo.icon).to.equal('icons:code');
+    expect(haxProps.gizmo.title).to.equal("Code sample");
+    expect(haxProps.gizmo.icon).to.equal("icons:code");
   });
 
   it("has proper settings configuration", async () => {
     const el = await fixture(html`<code-sample></code-sample>`);
     const haxProps = el.constructor.haxProperties;
     const settings = haxProps.settings.configure;
-    
-    expect(settings).to.be.an('array');
+
+    expect(settings).to.be.an("array");
     expect(settings.length).to.be.greaterThan(0);
-    
-    const typeConfig = settings.find(s => s.property === 'type');
+
+    const typeConfig = settings.find((s) => s.property === "type");
     expect(typeConfig).to.exist;
-    expect(typeConfig.inputMethod).to.equal('select');
-    expect(typeConfig.options).to.have.property('javascript');
+    expect(typeConfig.inputMethod).to.equal("select");
+    expect(typeConfig.options).to.have.property("javascript");
   });
 
   it("has demo schema configuration", async () => {
     const el = await fixture(html`<code-sample></code-sample>`);
     const haxProps = el.constructor.haxProperties;
     const demoSchema = haxProps.demoSchema;
-    
-    expect(demoSchema).to.be.an('array');
+
+    expect(demoSchema).to.be.an("array");
     expect(demoSchema.length).to.be.greaterThan(0);
-    
+
     const demo = demoSchema[0];
-    expect(demo.tag).to.equal('code-sample');
-    expect(demo.content).to.include('template');
-    expect(demo.properties.type).to.equal('javascript');
+    expect(demo.tag).to.equal("code-sample");
+    expect(demo.content).to.include("template");
+    expect(demo.properties.type).to.equal("javascript");
   });
 
   it("implements haxHooks correctly", async () => {
     const el = await fixture(html`<code-sample></code-sample>`);
     const hooks = el.haxHooks();
-    
-    expect(hooks).to.have.property('gizmoRegistration');
-    expect(hooks).to.have.property('inlineContextMenu');
-    expect(hooks).to.have.property('activeElementChanged');
-    expect(hooks).to.have.property('editModeChanged');
+
+    expect(hooks).to.have.property("gizmoRegistration");
+    expect(hooks).to.have.property("inlineContextMenu");
+    expect(hooks).to.have.property("activeElementChanged");
+    expect(hooks).to.have.property("editModeChanged");
   });
 
   it("provides example code for different languages", async () => {
     const el = await fixture(html`<code-sample></code-sample>`);
-    
-    const jsExample = el.getExample('javascript');
-    const htmlExample = el.getExample('html');
-    const cssExample = el.getExample('css');
-    
-    expect(jsExample).to.include('const');
-    expect(htmlExample).to.include('<');
-    expect(cssExample).to.include('{');
+
+    const jsExample = el.getExample("javascript");
+    const htmlExample = el.getExample("html");
+    const cssExample = el.getExample("css");
+
+    expect(jsExample).to.include("const");
+    expect(htmlExample).to.include("<");
+    expect(cssExample).to.include("{");
   });
 });
 
 // Responsive design tests
 describe("code-sample responsive design", () => {
   beforeEach(async () => {
-    await setViewport({width: 375, height: 750});
+    await setViewport({ width: 375, height: 750 });
   });
 
   afterEach(async () => {
-    await setViewport({width: 1024, height: 768});
+    await setViewport({ width: 1024, height: 768 });
   });
 
   it("adapts to mobile viewport", async () => {
@@ -497,12 +479,12 @@ describe("code-sample responsive design", () => {
         </template>
       </code-sample>
     `);
-    
+
     expect(el).to.exist;
     await el.updateComplete;
-    
+
     const computedStyle = getComputedStyle(el);
-    expect(computedStyle.display).to.equal('block');
+    expect(computedStyle.display).to.equal("block");
   });
 
   it("maintains accessibility on mobile", async () => {
@@ -513,18 +495,18 @@ describe("code-sample responsive design", () => {
         </template>
       </code-sample>
     `);
-    
+
     await expect(el).to.be.accessible();
   });
 });
 
 describe("code-sample desktop responsiveness", () => {
   beforeEach(async () => {
-    await setViewport({width: 1200, height: 800});
+    await setViewport({ width: 1200, height: 800 });
   });
 
   afterEach(async () => {
-    await setViewport({width: 1024, height: 768});
+    await setViewport({ width: 1024, height: 768 });
   });
 
   it("adapts to desktop viewport", async () => {
@@ -535,12 +517,12 @@ describe("code-sample desktop responsiveness", () => {
         </template>
       </code-sample>
     `);
-    
+
     expect(el).to.exist;
     await el.updateComplete;
-    
+
     const computedStyle = getComputedStyle(el);
-    expect(computedStyle.display).to.equal('block');
+    expect(computedStyle.display).to.equal("block");
   });
 });
 
@@ -548,22 +530,20 @@ describe("code-sample desktop responsiveness", () => {
 describe("code-sample error handling", () => {
   it("handles missing template gracefully", async () => {
     const el = await fixture(html`<code-sample></code-sample>`);
-    
+
     expect(el).to.exist;
     // Element should auto-generate a template if none exists
-    expect(el.innerHTML).to.include('template');
+    expect(el.innerHTML).to.include("template");
   });
 
   it("handles invalid type gracefully", async () => {
     const el = await fixture(html`
       <code-sample type="invalid-language">
-        <template preserve-content="preserve-content">
-          some code
-        </template>
+        <template preserve-content="preserve-content"> some code </template>
       </code-sample>
     `);
-    
-    expect(el.type).to.equal('invalid-language');
+
+    expect(el.type).to.equal("invalid-language");
     expect(el).to.exist;
   });
 
@@ -575,16 +555,16 @@ describe("code-sample error handling", () => {
         </template>
       </code-sample>
     `);
-    
+
     // Rapidly change properties
-    for(let i = 0; i < 10; i++) {
-      el.type = i % 2 === 0 ? 'javascript' : 'html';
+    for (let i = 0; i < 10; i++) {
+      el.type = i % 2 === 0 ? "javascript" : "html";
       el.copyClipboardButton = i % 2 === 0;
       el.highlightStart = i + 1;
     }
-    
+
     await el.updateComplete;
-    expect(el.type).to.equal('javascript');
+    expect(el.type).to.equal("javascript");
     expect(el.copyClipboardButton).to.be.false;
     expect(el.highlightStart).to.equal(10);
   });
@@ -592,18 +572,18 @@ describe("code-sample error handling", () => {
   it("handles special characters in code content", async () => {
     const specialContent = `const html = "<div>&nbsp;\"test\"</div>";
 const regex = /[<>&"']/g;`;
-    
+
     const el = await fixture(html`
       <code-sample type="javascript">
         <template preserve-content="preserve-content">
-${specialContent}
+          ${specialContent}
         </template>
       </code-sample>
     `);
-    
+
     expect(el).to.exist;
-    const template = el.querySelector('template');
-    expect(template.innerHTML).to.include('&');
+    const template = el.querySelector("template");
+    expect(template.innerHTML).to.include("&");
   });
 
   it("handles empty highlight range", async () => {
@@ -614,7 +594,7 @@ ${specialContent}
         </template>
       </code-sample>
     `);
-    
+
     expect(el.highlightStart).to.equal(0);
     expect(el.highlightEnd).to.equal(0);
     expect(el).to.exist;
@@ -628,13 +608,13 @@ ${specialContent}
         </template>
       </code-sample>
     `);
-    
+
     el.editMode = true;
     await el.updateComplete;
-    
+
     el.editMode = false;
     await el.updateComplete;
-    
+
     expect(el.editMode).to.be.false;
   });
 });

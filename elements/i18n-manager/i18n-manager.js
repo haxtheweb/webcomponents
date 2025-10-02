@@ -113,7 +113,10 @@ class I18NManager extends LitElement {
           this.dir = nextDir;
         }
       });
-      const opts = { attributes: true, attributeFilter: ["lang", "xml:lang", "dir", "xml:dir"] };
+      const opts = {
+        attributes: true,
+        attributeFilter: ["lang", "xml:lang", "dir", "xml:dir"],
+      };
       if (globalThis.document && globalThis.document.documentElement) {
         this._docObserver.observe(globalThis.document.documentElement, opts);
       }
@@ -219,7 +222,7 @@ class I18NManager extends LitElement {
     ) {
       detail = this.detailNormalize(detail);
       this.elements.push(detail);
-      
+
       // store in this.locales for quick "do we support this" look up
       if (detail && detail.locales) {
         detail.locales.forEach(this.locales.add, this.locales);
@@ -231,7 +234,9 @@ class I18NManager extends LitElement {
         this.lang &&
         this.__ready &&
         ((detail.locales && detail.locales.includes(this.lang)) ||
-         (!detail.locales && this.lang !== 'en' && !this.lang.startsWith('en-')))
+          (!detail.locales &&
+            this.lang !== "en" &&
+            !this.lang.startsWith("en-")))
       ) {
         // prevent flooding w/ lots of translatable elements
         clearTimeout(this._debounce);
@@ -248,22 +253,27 @@ class I18NManager extends LitElement {
     if (this.manifestLoaded || this.manifestLoading) {
       return this.translationManifest;
     }
-    
+
     this.manifestLoading = true;
     try {
-      const manifestUrl = new URL('./lib/translation-manifest.json', import.meta.url).href;
+      const manifestUrl = new URL(
+        "./lib/translation-manifest.json",
+        import.meta.url,
+      ).href;
       const response = await fetch(manifestUrl);
       if (response.ok) {
         const data = await response.json();
         this.translationManifest = data.manifest || {};
         this.manifestLoaded = true;
       } else {
-        console.warn('Translation manifest not found, falling back to component locales');
+        console.warn(
+          "Translation manifest not found, falling back to component locales",
+        );
         this.translationManifest = {};
         this.manifestLoaded = true;
       }
     } catch (e) {
-      console.warn('Failed to load translation manifest:', e.message);
+      console.warn("Failed to load translation manifest:", e.message);
       this.translationManifest = {};
       this.manifestLoaded = true;
     } finally {
@@ -280,14 +290,17 @@ class I18NManager extends LitElement {
       // If manifest isn't loaded but we need it, return false to let component locales handle it
       return false;
     }
-    return this.translationManifest[namespace] && this.translationManifest[namespace].includes(language);
+    return (
+      this.translationManifest[namespace] &&
+      this.translationManifest[namespace].includes(language)
+    );
   }
   /**
    * Determine if we need to load the manifest for this language
    */
   needsManifest(language) {
     // Only load manifest for non-English languages
-    return language && language !== 'en' && !language.startsWith('en-');
+    return language && language !== "en" && !language.startsWith("en-");
   }
   /**
    * Convention we use
@@ -306,33 +319,38 @@ class I18NManager extends LitElement {
     // Use the first match for namespace info, multiple elements can share the same namespace
     if (nsMatch && nsMatch.length >= 1) {
       const el = nsMatch[0];
-      
+
       // Load manifest if needed (only for non-English)
       if (this.needsManifest(lang) && !this.manifestLoaded) {
         await this.loadTranslationManifest();
       }
-      
+
       // Check manifest first to avoid unnecessary requests
       const supportsExact = this.hasTranslation(ns, lang);
       const supportsBase = this.hasTranslation(ns, langPieces[0]);
-      
+
       // Fallback to component locales if manifest not loaded or doesn't contain info
       const componentSupportsExact = el.locales && el.locales.includes(lang);
-      const componentSupportsBase = el.locales && el.locales.includes(langPieces[0]);
-      
+      const componentSupportsBase =
+        el.locales && el.locales.includes(langPieces[0]);
+
       // If we have manifest data, use it; otherwise fallback to component data
-      const shouldLoadExact = supportsExact || (!this.manifestLoaded && componentSupportsExact);
-      const shouldLoadBase = supportsBase || (!this.manifestLoaded && componentSupportsBase);
-      
+      const shouldLoadExact =
+        supportsExact || (!this.manifestLoaded && componentSupportsExact);
+      const shouldLoadBase =
+        supportsBase || (!this.manifestLoaded && componentSupportsBase);
+
       // For manifest-based elements (no locales), try to load if manifest is loaded and supports it
       // or if manifest isn't loaded yet, attempt to load anyway (will 404 if not available)
       const isManifestBased = !el.locales;
-      const shouldAttemptManifestLoad = isManifestBased && (supportsExact || supportsBase || !this.manifestLoaded);
-      
+      const shouldAttemptManifestLoad =
+        isManifestBased &&
+        (supportsExact || supportsBase || !this.manifestLoaded);
+
       if (!shouldLoadExact && !shouldLoadBase && !shouldAttemptManifestLoad) {
         return {};
       }
-      
+
       var fetchTarget = "";
       if (shouldLoadExact || (isManifestBased && supportsExact)) {
         fetchTarget = `${el.localesPath}/${el.namespace}.${lang}.json`;
@@ -342,11 +360,11 @@ class I18NManager extends LitElement {
         // For manifest-based elements, try exact match first when manifest not loaded yet
         fetchTarget = `${el.localesPath}/${el.namespace}.${lang}.json`;
       }
-      
+
       if (fetchTarget == "") {
         return {};
       }
-      
+
       // see if we had this previous to avoid another request
       if (!this.fetchTargets[fetchTarget]) {
         this.fetchTargets[fetchTarget] = await fetch(fetchTarget).then(
@@ -365,7 +383,7 @@ class I18NManager extends LitElement {
   async updateLanguage(lang) {
     if (lang) {
       const langPieces = lang.split("-");
-      
+
       // Load manifest if needed (only for non-English)
       if (this.needsManifest(lang) && !this.manifestLoaded) {
         await this.loadTranslationManifest();
@@ -377,17 +395,26 @@ class I18NManager extends LitElement {
           const supportsExact = this.hasTranslation(el.namespace, lang);
           const supportsBase = this.hasTranslation(el.namespace, langPieces[0]);
           // Fallback to component locales if not in manifest
-          const componentSupportsExact = el.locales && el.locales.includes(lang);
-          const componentSupportsBase = el.locales && el.locales.includes(langPieces[0]);
-          
+          const componentSupportsExact =
+            el.locales && el.locales.includes(lang);
+          const componentSupportsBase =
+            el.locales && el.locales.includes(langPieces[0]);
+
           // For elements without locales, include them if:
           // 1. The manifest is loaded and supports the language, OR
           // 2. The manifest isn't loaded yet but the language needs manifest (let's try to load it)
-          const manifestBasedSupport = !el.locales && 
+          const manifestBasedSupport =
+            !el.locales &&
             ((this.manifestLoaded && (supportsExact || supportsBase)) ||
-             (!this.manifestLoaded && this.needsManifest(lang)));
-            
-          return supportsExact || supportsBase || componentSupportsExact || componentSupportsBase || manifestBasedSupport;
+              (!this.manifestLoaded && this.needsManifest(lang)));
+
+          return (
+            supportsExact ||
+            supportsBase ||
+            componentSupportsExact ||
+            componentSupportsBase ||
+            manifestBasedSupport
+          );
         } catch (e) {
           console.error("i18n registration incorrect in:", el, e);
         }
@@ -396,15 +423,24 @@ class I18NManager extends LitElement {
         try {
           const supportsExact = this.hasTranslation(el.namespace, lang);
           const supportsBase = this.hasTranslation(el.namespace, langPieces[0]);
-          const componentSupportsExact = el.locales && el.locales.includes(lang);
-          const componentSupportsBase = el.locales && el.locales.includes(langPieces[0]);
-          
+          const componentSupportsExact =
+            el.locales && el.locales.includes(lang);
+          const componentSupportsBase =
+            el.locales && el.locales.includes(langPieces[0]);
+
           // For elements without locales, check if they're supported by manifest
-          const manifestBasedSupport = !el.locales && 
+          const manifestBasedSupport =
+            !el.locales &&
             ((this.manifestLoaded && (supportsExact || supportsBase)) ||
-             (!this.manifestLoaded && this.needsManifest(lang)));
-            
-          return !supportsExact && !supportsBase && !componentSupportsExact && !componentSupportsBase && !manifestBasedSupport;
+              (!this.manifestLoaded && this.needsManifest(lang)));
+
+          return (
+            !supportsExact &&
+            !supportsBase &&
+            !componentSupportsExact &&
+            !componentSupportsBase &&
+            !manifestBasedSupport
+          );
         } catch (e) {
           return true; // Fallback on error
         }
@@ -433,12 +469,21 @@ class I18NManager extends LitElement {
         const supportsExact = this.hasTranslation(el.namespace, lang);
         const supportsBase = this.hasTranslation(el.namespace, langPieces[0]);
         const componentSupportsExact = el.locales && el.locales.includes(lang);
-        const componentSupportsBase = el.locales && el.locales.includes(langPieces[0]);
+        const componentSupportsBase =
+          el.locales && el.locales.includes(langPieces[0]);
         const isManifestBased = !el.locales;
-        
-        if (supportsExact || componentSupportsExact || (isManifestBased && supportsExact)) {
+
+        if (
+          supportsExact ||
+          componentSupportsExact ||
+          (isManifestBased && supportsExact)
+        ) {
           fetchTarget = `${el.localesPath}/${el.namespace}.${lang}.json`;
-        } else if (supportsBase || componentSupportsBase || (isManifestBased && supportsBase)) {
+        } else if (
+          supportsBase ||
+          componentSupportsBase ||
+          (isManifestBased && supportsBase)
+        ) {
           fetchTarget = `${el.localesPath}/${el.namespace}.${langPieces[0]}.json`;
         } else if (isManifestBased && !this.manifestLoaded) {
           // For manifest-based elements, try exact match first when manifest not loaded yet

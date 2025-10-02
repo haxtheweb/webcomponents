@@ -34,7 +34,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this.registerLocalization({
       context: this,
       namespace: "super-daemon",
-      basePath: import.meta.url,
+      basePath: import.meta.url + "/../../",
     });
     this.opened = false;
     this.items = [];

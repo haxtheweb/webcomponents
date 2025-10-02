@@ -1,6 +1,8 @@
 // dependencies / things imported
 import { html, css } from "lit";
 import "@haxtheweb/simple-datetime/simple-datetime.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { toJS } from "mobx";
 import { store } from "./AppHaxStore.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
@@ -105,7 +107,10 @@ export class AppHaxSiteDetails extends SimpleColors {
         simple-icon-button-lite:active,
         simple-icon-button-lite:hover,
         simple-icon-button-lite:focus {
-          background-color: var(--simple-colors-default-theme-light-blue-8, #cde8ff);
+          background-color: var(
+            --simple-colors-default-theme-light-blue-8,
+            #cde8ff
+          );
           outline: 2px solid var(--simple-colors-default-theme-light-blue-1);
           outline-offset: 1px;
         }

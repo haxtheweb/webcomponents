@@ -27,7 +27,7 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
     this.registerLocalization({
       context: this,
       namespace: "super-daemon",
-      basePath: import.meta.url,
+      basePath: import.meta.url + "/../../",
     });
     this.awaitingMerlinInput = false;
     this.windowControllers = new AbortController();

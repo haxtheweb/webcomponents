@@ -3,7 +3,7 @@ import "../discord-embed.js";
 
 describe("DiscordEmbed test", () => {
   let element;
-  
+
   beforeEach(async () => {
     element = await fixture(html`<discord-embed></discord-embed>`);
     await element.updateComplete;
@@ -35,10 +35,10 @@ describe("DiscordEmbed test", () => {
   it("shows appropriate error message for invalid source", async () => {
     element.source = "https://invalid-url.com";
     await element.updateComplete;
-    
-    const errorMessage = element.shadowRoot.querySelector('div');
+
+    const errorMessage = element.shadowRoot.querySelector("div");
     expect(errorMessage).to.exist;
-    expect(errorMessage.textContent).to.equal('Invalid Discord share link');
+    expect(errorMessage.textContent).to.equal("Invalid Discord share link");
   });
 
   // Property validation tests
@@ -46,18 +46,18 @@ describe("DiscordEmbed test", () => {
     const testSource = "https://e.widgetbot.io/channels/123456789/987654321";
     element.source = testSource;
     await element.updateComplete;
-    
-    expect(element.getAttribute('source')).to.equal(testSource);
+
+    expect(element.getAttribute("source")).to.equal(testSource);
   });
 
   it("updates height property and reflects to iframe", async () => {
     element.source = "https://e.widgetbot.io/channels/123456789/987654321";
     element.height = "400";
     await element.updateComplete;
-    
-    const iframe = element.shadowRoot.querySelector('iframe');
+
+    const iframe = element.shadowRoot.querySelector("iframe");
     if (iframe) {
-      expect(iframe.getAttribute('height')).to.equal('400');
+      expect(iframe.getAttribute("height")).to.equal("400");
     }
   });
 
@@ -65,10 +65,10 @@ describe("DiscordEmbed test", () => {
     element.source = "https://e.widgetbot.io/channels/123456789/987654321";
     element.width = "800px";
     await element.updateComplete;
-    
-    const iframe = element.shadowRoot.querySelector('iframe');
+
+    const iframe = element.shadowRoot.querySelector("iframe");
     if (iframe) {
-      expect(iframe.getAttribute('width')).to.equal('800px');
+      expect(iframe.getAttribute("width")).to.equal("800px");
     }
   });
 
@@ -76,22 +76,27 @@ describe("DiscordEmbed test", () => {
   it("transforms discord.com URLs to widgetbot.io URLs", async () => {
     element.source = "https://discord.com/channels/123456789/987654321";
     await element.updateComplete;
-    
-    expect(element.source).to.equal("https://e.widgetbot.io/channels/123456789/987654321");
+
+    expect(element.source).to.equal(
+      "https://e.widgetbot.io/channels/123456789/987654321",
+    );
   });
 
   it("transforms discordapp.com URLs to widgetbot.io URLs", async () => {
     element.source = "https://discordapp.com/channels/123456789/987654321";
     await element.updateComplete;
-    
-    expect(element.source).to.equal("https://e.widgetbot.io/channels/123456789/987654321");
+
+    expect(element.source).to.equal(
+      "https://e.widgetbot.io/channels/123456789/987654321",
+    );
   });
 
   it("leaves widgetbot.io URLs unchanged", async () => {
-    const originalSource = "https://e.widgetbot.io/channels/123456789/987654321";
+    const originalSource =
+      "https://e.widgetbot.io/channels/123456789/987654321";
     element.source = originalSource;
     await element.updateComplete;
-    
+
     expect(element.source).to.equal(originalSource);
   });
 
@@ -99,35 +104,35 @@ describe("DiscordEmbed test", () => {
   it("renders iframe-loader with iframe when source is valid", async () => {
     element.source = "https://e.widgetbot.io/channels/123456789/987654321";
     await element.updateComplete;
-    
-    const iframeLoader = element.shadowRoot.querySelector('iframe-loader');
+
+    const iframeLoader = element.shadowRoot.querySelector("iframe-loader");
     expect(iframeLoader).to.exist;
-    
-    const iframe = element.shadowRoot.querySelector('iframe');
+
+    const iframe = element.shadowRoot.querySelector("iframe");
     expect(iframe).to.exist;
-    expect(iframe.getAttribute('src')).to.equal(element.source);
+    expect(iframe.getAttribute("src")).to.equal(element.source);
   });
 
   it("does not render iframe when source is invalid", async () => {
     element.source = "https://invalid-site.com/path";
     await element.updateComplete;
-    
-    const iframe = element.shadowRoot.querySelector('iframe');
+
+    const iframe = element.shadowRoot.querySelector("iframe");
     expect(iframe).to.not.exist;
-    
-    const errorDiv = element.shadowRoot.querySelector('div');
+
+    const errorDiv = element.shadowRoot.querySelector("div");
     expect(errorDiv).to.exist;
-    expect(errorDiv.textContent).to.equal('Invalid Discord share link');
+    expect(errorDiv.textContent).to.equal("Invalid Discord share link");
   });
 
   it("does not render anything when source is empty", async () => {
     expect(element.source).to.equal("");
     await element.updateComplete;
-    
-    const iframe = element.shadowRoot.querySelector('iframe');
+
+    const iframe = element.shadowRoot.querySelector("iframe");
     expect(iframe).to.not.exist;
-    
-    const errorDiv = element.shadowRoot.querySelector('div');
+
+    const errorDiv = element.shadowRoot.querySelector("div");
     expect(errorDiv).to.not.exist;
   });
 
@@ -135,16 +140,16 @@ describe("DiscordEmbed test", () => {
   it("validates discord.com URLs as valid", async () => {
     element.source = "https://discord.com/channels/123456789/987654321";
     await element.updateComplete;
-    
-    const iframe = element.shadowRoot.querySelector('iframe');
+
+    const iframe = element.shadowRoot.querySelector("iframe");
     expect(iframe).to.exist;
   });
 
   it("validates e.widgetbot.io URLs as valid", async () => {
     element.source = "https://e.widgetbot.io/channels/123456789/987654321";
     await element.updateComplete;
-    
-    const iframe = element.shadowRoot.querySelector('iframe');
+
+    const iframe = element.shadowRoot.querySelector("iframe");
     expect(iframe).to.exist;
   });
 
@@ -154,26 +159,26 @@ describe("DiscordEmbed test", () => {
       "https://twitter.com/status/123",
       "https://example.com",
       "https://github.com/repo",
-      "ftp://file-server.com"
+      "ftp://file-server.com",
     ];
-    
+
     for (const source of invalidSources) {
       element.source = source;
       await element.updateComplete;
-      
-      const iframe = element.shadowRoot.querySelector('iframe');
+
+      const iframe = element.shadowRoot.querySelector("iframe");
       expect(iframe).to.not.exist;
-      
-      const errorDiv = element.shadowRoot.querySelector('div');
+
+      const errorDiv = element.shadowRoot.querySelector("div");
       expect(errorDiv).to.exist;
-      expect(errorDiv.textContent).to.equal('Invalid Discord share link');
+      expect(errorDiv.textContent).to.equal("Invalid Discord share link");
     }
   });
 
   // HAX integration tests
   it("has proper HAX properties configuration", async () => {
     expect(element.constructor.haxProperties).to.exist;
-    expect(element.constructor.haxProperties).to.include('haxProperties.json');
+    expect(element.constructor.haxProperties).to.include("haxProperties.json");
   });
 
   // Responsive design tests
@@ -181,10 +186,10 @@ describe("DiscordEmbed test", () => {
     element.source = "https://e.widgetbot.io/channels/123456789/987654321";
     element.width = "50%";
     await element.updateComplete;
-    
-    const iframe = element.shadowRoot.querySelector('iframe');
+
+    const iframe = element.shadowRoot.querySelector("iframe");
     if (iframe) {
-      expect(iframe.getAttribute('width')).to.equal('50%');
+      expect(iframe.getAttribute("width")).to.equal("50%");
     }
   });
 
@@ -193,11 +198,11 @@ describe("DiscordEmbed test", () => {
     element.width = "800px";
     element.height = "600px";
     await element.updateComplete;
-    
-    const iframe = element.shadowRoot.querySelector('iframe');
+
+    const iframe = element.shadowRoot.querySelector("iframe");
     if (iframe) {
-      expect(iframe.getAttribute('width')).to.equal('800px');
-      expect(iframe.getAttribute('height')).to.equal('600px');
+      expect(iframe.getAttribute("width")).to.equal("800px");
+      expect(iframe.getAttribute("height")).to.equal("600px");
     }
   });
 
@@ -208,17 +213,17 @@ describe("DiscordEmbed test", () => {
       "https://discord.com/", // incomplete path
       "https://discord.com/channels", // no channel IDs
       "https://discord.com/channels/", // trailing slash only
-      "https://discord.com/channels/not-numbers/123"
+      "https://discord.com/channels/not-numbers/123",
     ];
-    
+
     for (const url of malformedUrls) {
       element.source = url;
       await element.updateComplete;
-      
+
       // Should either transform correctly or show error
-      const iframe = element.shadowRoot.querySelector('iframe');
-      const errorDiv = element.shadowRoot.querySelector('div');
-      
+      const iframe = element.shadowRoot.querySelector("iframe");
+      const errorDiv = element.shadowRoot.querySelector("div");
+
       // At least one should exist
       expect(iframe || errorDiv).to.exist;
     }
@@ -229,22 +234,23 @@ describe("DiscordEmbed test", () => {
       "https://discord.com/channels/111/222",
       "https://e.widgetbot.io/channels/333/444",
       "https://invalid-url.com",
-      "https://discordapp.com/channels/555/666"
+      "https://discordapp.com/channels/555/666",
     ];
-    
+
     for (const source of sources) {
       element.source = source;
       await element.updateComplete;
     }
-    
+
     // Should end up with the transformed version of the last Discord URL
     expect(element.source).to.equal("https://e.widgetbot.io/channels/555/666");
   });
 
   it("handles special characters in URLs", async () => {
-    element.source = "https://discord.com/channels/123456789/987654321?query=test&param=value";
+    element.source =
+      "https://discord.com/channels/123456789/987654321?query=test&param=value";
     await element.updateComplete;
-    
+
     expect(element.source).to.include("e.widgetbot.io");
     expect(element.source).to.include("query=test&param=value");
   });
@@ -255,41 +261,46 @@ describe("DiscordEmbed test", () => {
     element.width = 600;
     element.source = "https://e.widgetbot.io/channels/123/456";
     await element.updateComplete;
-    
-    const iframe = element.shadowRoot.querySelector('iframe');
+
+    const iframe = element.shadowRoot.querySelector("iframe");
     if (iframe) {
-      expect(iframe.getAttribute('height')).to.equal('300');
-      expect(iframe.getAttribute('width')).to.equal('600');
+      expect(iframe.getAttribute("height")).to.equal("300");
+      expect(iframe.getAttribute("width")).to.equal("600");
     }
   });
 
   it("maintains iframe-loader structure for accessibility", async () => {
     element.source = "https://e.widgetbot.io/channels/123456789/987654321";
     await element.updateComplete;
-    
-    const iframeLoader = element.shadowRoot.querySelector('iframe-loader');
+
+    const iframeLoader = element.shadowRoot.querySelector("iframe-loader");
     expect(iframeLoader).to.exist;
-    
-    const iframe = iframeLoader.querySelector('iframe');
+
+    const iframe = iframeLoader.querySelector("iframe");
     expect(iframe).to.exist;
-    expect(iframe.parentElement.tagName.toLowerCase()).to.equal('iframe-loader');
+    expect(iframe.parentElement.tagName.toLowerCase()).to.equal(
+      "iframe-loader",
+    );
   });
 
   // Integration tests with various Discord URL formats
   it("handles thread URLs correctly", async () => {
-    element.source = "https://discord.com/channels/123456789/987654321/111222333";
+    element.source =
+      "https://discord.com/channels/123456789/987654321/111222333";
     await element.updateComplete;
-    
-    expect(element.source).to.equal("https://e.widgetbot.io/channels/123456789/987654321/111222333");
-    
-    const iframe = element.shadowRoot.querySelector('iframe');
+
+    expect(element.source).to.equal(
+      "https://e.widgetbot.io/channels/123456789/987654321/111222333",
+    );
+
+    const iframe = element.shadowRoot.querySelector("iframe");
     expect(iframe).to.exist;
   });
 
   it("preserves URL fragments and query parameters", async () => {
     element.source = "https://discord.com/channels/123/456?test=1#message-789";
     await element.updateComplete;
-    
+
     expect(element.source).to.include("e.widgetbot.io");
     expect(element.source).to.include("?test=1#message-789");
   });
@@ -299,13 +310,13 @@ describe("DiscordEmbed test", () => {
     const originalSource = "https://discord.com/channels/123/456";
     element.source = originalSource;
     await element.updateComplete;
-    
+
     const transformedSource = element.source;
-    
+
     // Set to same value - should not trigger another transformation
     element.source = transformedSource;
     await element.updateComplete;
-    
+
     expect(element.source).to.equal(transformedSource);
   });
 });

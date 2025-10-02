@@ -45,16 +45,6 @@
             },
             {
               "kind": "method",
-              "name": "_getColorFromType",
-              "parameters": [
-                {
-                  "name": "type"
-                }
-              ],
-              "description": "Generate an color based on the media type selected"
-            },
-            {
-              "kind": "method",
               "name": "_getIconFromType",
               "parameters": [
                 {
@@ -202,8 +192,8 @@
             }
           ],
           "superclass": {
-            "name": "SimpleColors",
-            "package": "@haxtheweb/simple-colors/simple-colors.js"
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
           },
           "tagName": "place-holder",
           "customElement": true

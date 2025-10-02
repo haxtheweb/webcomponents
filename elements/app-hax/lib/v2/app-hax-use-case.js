@@ -4,17 +4,16 @@ import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { store } from "./AppHaxStore.js";
 
 export class AppHaxUseCase extends LitElement {
-
   static get tag() {
     return "app-hax-use-case";
   }
 
   constructor() {
     super();
-    this.title = '';
-    this.description = '';
-    this.source = '';
-    this.demoLink = '';
+    this.title = "";
+    this.description = "";
+    this.source = "";
+    this.demoLink = "";
     this.iconImage = [];
     this.isSelected = false;
     this.showContinue = false;
@@ -22,19 +21,17 @@ export class AppHaxUseCase extends LitElement {
 
   static get properties() {
     return {
-        title: { type: String },
-        description: { type: String },
-        source: { type: String },
-        demoLink: { type: String },
-        iconImage: { type: Array },
-        isSelected: { type: Boolean , reflect: true},
-        showContinue: { type: Boolean }
+      title: { type: String },
+      description: { type: String },
+      source: { type: String },
+      demoLink: { type: String },
+      iconImage: { type: Array },
+      isSelected: { type: Boolean, reflect: true },
+      showContinue: { type: Boolean },
     };
   }
 
-  updated(changedProperties) {
-    
-  }
+  updated(changedProperties) {}
 
   static get styles() {
     return [
@@ -43,24 +40,24 @@ export class AppHaxUseCase extends LitElement {
           display: flex;
           flex-direction: column;
           text-align: left;
-          max-width: 240px;
-          margin:12px;
+          max-width: 200px;
+          margin: 8px;
           font-family: var(--ddd-font-primary);
           color: var(--ddd-theme-default-nittanyNavy);
           background-color: white;
-          min-height: 270px;
+          min-height: 240px;
           box-shadow: 2px 2px 12px #1c1c1c;
-          border-radius: 8px;
+          border-radius: 4px;
         }
         .cardContent {
-          padding: 12px 16px 20px;
+          padding: 8px 12px 16px;
         }
         .image img {
-          width: 240px;
-          height: 142px;
-          border-top-right-radius: 8px;
-          border-top-left-radius: 8px;
-          border-bottom: solid var(--ddd-theme-default-nittanyNavy) 12px;
+          width: 200px;
+          height: 120px;
+          border-top-right-radius: 4px;
+          border-top-left-radius: 4px;
+          border-bottom: solid var(--ddd-theme-default-nittanyNavy) 8px;
           overflow: clip;
           justify-self: center;
         }
@@ -70,23 +67,23 @@ export class AppHaxUseCase extends LitElement {
         }
         .icons {
           position: absolute;
-          bottom: 18px;
-          left: 10px;
+          bottom: 14px;
+          left: 8px;
           display: flex;
-          gap: 6px;
+          gap: 4px;
           z-index: 10;
         }
         .icon-wrapper {
           position: relative;
-          width: 32px;
-          height: 32px;
-          flex-shrink: 0; 
+          width: 24px;
+          height: 24px;
+          flex-shrink: 0;
           display: flex;
           align-items: center;
           justify-content: center;
         }
         .icon-wrapper::before {
-          content: '';
+          content: "";
           position: absolute;
           width: 100%;
           height: 100%;
@@ -137,52 +134,79 @@ export class AppHaxUseCase extends LitElement {
           width: 20px;
           height: 20px;
         }
-        h3, p {
-          margin: 2px;
+        h3 {
+          font-size: var(--ddd-font-size-4xs);
         }
         p {
-          font-size: 12px;
+          font-size: var(--ddd-font-size-4xs);
+          padding: 0;
+          margin: 0;
         }
         a:link {
-          color: var(--ddd-theme-defaut-skyBlue);
-          text-decoration: none;
-          font-family: var(--ddd-font-primary);
-          font-size: 16px;
-        }
-        button {
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          text-decoration: underline;
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(--ddd-font-size-3xs, 11px);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          transition: color 0.2s ease;
           display: flex;
-          background-color: #005fa9;
-          color: white;
-          border: 0px;
-          border-radius: 4px;
-          font-family: var(--ddd-font-primary);
-          font-size: 12px;
-          font-weight: 20px;
-          padding: 12px 16px 12px 24px;
-          margin: 0px 4px 0px 4px;
-          height: 16px;
           align-items: center;
           justify-content: center;
         }
+
+        a:visited {
+          color: var(--ddd-theme-default-slateGray, #666);
+        }
+
+        a:hover,
+        a:focus {
+          color: var(--ddd-theme-default-keystoneYellow, #ffd100);
+          text-decoration: none;
+        }
+        button {
+          display: flex;
+          background: var(--ddd-theme-default-nittanyNavy, #001e44);
+          color: var(--ddd-theme-default-white, white);
+          border: var(--ddd-border-xs, 1px solid) transparent;
+          border-radius: var(--ddd-radius-sm, 4px);
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(--ddd-font-size-3xs, 11px);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
+          margin: 0px var(--ddd-spacing-1, 4px);
+          min-height: var(--ddd-spacing-7, 28px);
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          box-shadow: var(--ddd-boxShadow-sm);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
         button:hover {
-          background-color: var(--ddd-theme-default-nittanyNavy);
+          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          transform: translateY(-1px);
+          box-shadow: var(--ddd-boxShadow-md);
         }
         .cardBottom {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          margin-top: 8px;
-          padding: 0px 16px 20px 16px;
+          margin-top: 6px;
+          padding: 0px 12px 16px 12px;
+          gap: 4px;
         }
 
-        .cardBottom button, .cardBottom a {
+        .cardBottom button,
+        .cardBottom a {
           flex: 1;
-          margin: 0 4px;
+          margin: 0 2px;
+          min-width: 0;
+          font-size: var(--ddd-font-size-3xs, 11px);
         }
-        .cardBottom a:visited {
-          color: var(--simple-colors-default-theme-light-blue-9);
-        }
-        
+
         :host([isSelected]) button.select {
           background-color: var(--ddd-theme-default-nittanyNavy);
         }
@@ -190,10 +214,25 @@ export class AppHaxUseCase extends LitElement {
           display: inline-flex;
           flex-direction: column;
           text-align: left;
-          padding: 0px 16px;
+          padding: 0px 12px;
+        }
+        @media (max-width: 768px) {
+          .cardBottom {
+            gap: var(--ddd-spacing-1, 4px);
+            padding: 0px var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px)
+              var(--ddd-spacing-2, 8px);
+          }
+          .cardBottom button,
+          .cardBottom a {
+            font-size: var(--ddd-font-size-4xs, 10px);
+            padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+            min-height: var(--ddd-spacing-6, 24px);
+            margin: 0;
+          }
         }
         @media (max-width: 1440px) {
-          :host, .image img {
+          :host,
+          .image img {
             display: flex;
             width: 250px;
             max-width: 20vw;
@@ -209,63 +248,91 @@ export class AppHaxUseCase extends LitElement {
   toggleDisplay() {
     this.isSelected = !this.isSelected;
     this.showContinue = this.isSelected;
-    this.dispatchEvent(new CustomEvent('toggle-display', { 
-      detail: { isSelected: this.isSelected },
-      bubbles: true,
-      composed: true
-   }));
+
+    this.dispatchEvent(
+      new CustomEvent("toggle-display", {
+        detail: { isSelected: this.isSelected },
+        bubbles: true,
+        composed: true,
+      }),
+    );
+
+    // If selected, immediately trigger the continue action to open modal
+    if (this.isSelected) {
+      setTimeout(() => {
+        this.continueAction();
+      }, 100); // Small delay to allow state to update
+    }
   }
 
   continueAction() {
-    if (confirm("Are you sure?")) {
-      this.dispatchEvent(new CustomEvent('continue-action'));
+    this.dispatchEvent(
+      new CustomEvent("continue-action", {
+        detail: {
+          title: this.title,
+          description: this.description,
+          source: this.source,
+          template: this.title, // Using title as template identifier
+        },
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
+  openDemo() {
+    if (this.demoLink) {
+      globalThis.open(this.demoLink, "_blank");
     }
-    
   }
 
   render() {
     return html`
-    <div class="card">
-      <div class="image">
-        <a id="demo" href="${this.demoLink}" target="_blank"></a>
-        <img src="${this.source}" alt="${this.title}">
-        <div class="icons">
-          ${this.iconImage.map(
-            (icon) => html`
-              <div class="icon-wrapper">
-                <simple-icon-lite icon="${icon.icon}"></simple-icon-lite>
-              </div>
-            `
-          )}
-          <div class="tooltip-container">
+      <div class="card">
+        <div class="image">
+          <img src="${this.source}" alt="${this.title}" />
+          <div class="icons">
             ${this.iconImage.map(
               (icon) => html`
-                <div class="tooltip-row">
-                  <simple-icon-lite class="tooltip-icon" icon="${icon.icon}"></simple-icon-lite>
-                  <div class="tooltip">${icon.tooltip}</div>
+                <div class="icon-wrapper">
+                  <simple-icon-lite icon="${icon.icon}"></simple-icon-lite>
                 </div>
-              `
+              `,
             )}
+            <div class="tooltip-container">
+              ${this.iconImage.map(
+                (icon) => html`
+                  <div class="tooltip-row">
+                    <simple-icon-lite
+                      class="tooltip-icon"
+                      icon="${icon.icon}"
+                    ></simple-icon-lite>
+                    <div class="tooltip">${icon.tooltip}</div>
+                  </div>
+                `,
+              )}
+            </div>
           </div>
         </div>
-      </div>
         <div class="titleBar">
-          <h3 style="font-size: 20px;">${this.title}</h3>
+          <h3 style="font-size: 14px;">${this.title}</h3>
           <p>${this.description}</p>
         </div>
-        <div class="cardBottom"> 
-          <button class="select ${this.isSelected ? 'selected' : ''}" @click=${this.toggleDisplay}>
-            ${this.isSelected ? 'Selected' : 'Select'}
+        <div class="cardBottom">
+          <button
+            class="select ${this.isSelected ? "selected" : ""}"
+            @click=${this.toggleDisplay}
+          >
+            ${this.isSelected ? "Selected" : "Select"}
           </button>
-          ${this.isSelected 
-            ? html`<button class="continue" @click=${this.continueAction}>Continue?</button>`
-            : html`<a id="demo" href="${this.demoLink}" target="_blank">Demo -> </a>`
-          }
+          ${!this.isSelected
+            ? html`<button class="demo" @click=${() => this.openDemo()}>
+                Demo
+              </button>`
+            : ""}
         </div>
-        
       </div>
     `;
   }
-
 }
 customElements.define(AppHaxUseCase.tag, AppHaxUseCase);

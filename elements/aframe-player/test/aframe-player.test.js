@@ -5,7 +5,7 @@ describe("aframe-player test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
-      <aframe-player 
+      <aframe-player
         source="https://example.com/model.gltf"
         sky-color="#87CEEB"
         width="800px"
@@ -27,9 +27,7 @@ describe("aframe-player test", () => {
     let testElement;
 
     beforeEach(async () => {
-      testElement = await fixture(html`
-        <aframe-player></aframe-player>
-      `);
+      testElement = await fixture(html` <aframe-player></aframe-player> `);
       await testElement.updateComplete;
     });
 
@@ -173,7 +171,7 @@ describe("aframe-player test", () => {
         testElement.y = "2.0";
         testElement.z = "-1.0";
         await testElement.updateComplete;
-        
+
         expect(testElement.x).to.equal("1.5");
         expect(testElement.y).to.equal("2.0");
         expect(testElement.z).to.equal("-1.0");
@@ -193,7 +191,7 @@ describe("aframe-player test", () => {
         testElement.y = "2";
         testElement.z = "3";
         await testElement.updateComplete;
-        
+
         expect(testElement.position).to.deep.equal({ x: "1", y: "2", z: "3" });
         await expect(testElement).to.be.accessible();
       });
@@ -202,15 +200,15 @@ describe("aframe-player test", () => {
         testElement.x = "5";
         await testElement.updateComplete;
         expect(testElement.position.x).to.equal("5");
-        
+
         testElement.y = "10";
         await testElement.updateComplete;
         expect(testElement.position.y).to.equal("10");
-        
+
         testElement.z = "-5";
         await testElement.updateComplete;
         expect(testElement.position.z).to.equal("-5");
-        
+
         await expect(testElement).to.be.accessible();
       });
     });
@@ -229,20 +227,20 @@ describe("aframe-player test", () => {
   describe("A-Frame scene rendering", () => {
     it("should render a-scene element with correct attributes", async () => {
       const testElement = await fixture(html`
-        <aframe-player 
-          width="800px" 
+        <aframe-player
+          width="800px"
           height="600px"
           sky-color="#87CEEB"
         ></aframe-player>
       `);
       await testElement.updateComplete;
-      
-      const scene = testElement.querySelector('a-scene');
+
+      const scene = testElement.querySelector("a-scene");
       expect(scene).to.exist;
-      expect(scene.getAttribute('embedded')).to.equal('');
-      expect(scene.style.width).to.equal('800px');
-      expect(scene.style.height).to.equal('600px');
-      
+      expect(scene.getAttribute("embedded")).to.equal("");
+      expect(scene.style.width).to.equal("800px");
+      expect(scene.style.height).to.equal("600px");
+
       await expect(testElement).to.be.accessible();
     });
 
@@ -251,11 +249,11 @@ describe("aframe-player test", () => {
         <aframe-player sky-color="#FF6B6B"></aframe-player>
       `);
       await testElement.updateComplete;
-      
-      const sky = testElement.querySelector('a-sky');
+
+      const sky = testElement.querySelector("a-sky");
       expect(sky).to.exist;
-      expect(sky.getAttribute('color')).to.equal('#FF6B6B');
-      
+      expect(sky.getAttribute("color")).to.equal("#FF6B6B");
+
       await expect(testElement).to.be.accessible();
     });
 
@@ -264,18 +262,18 @@ describe("aframe-player test", () => {
         <aframe-player ar></aframe-player>
       `);
       await arElement.updateComplete;
-      
-      const arScene = arElement.querySelector('a-scene');
-      expect(arScene.hasAttribute('arjs')).to.be.true;
-      
+
+      const arScene = arElement.querySelector("a-scene");
+      expect(arScene.hasAttribute("arjs")).to.be.true;
+
       const nonArElement = await fixture(html`
         <aframe-player></aframe-player>
       `);
       await nonArElement.updateComplete;
-      
-      const nonArScene = nonArElement.querySelector('a-scene');
-      expect(nonArScene.hasAttribute('arjs')).to.be.false;
-      
+
+      const nonArScene = nonArElement.querySelector("a-scene");
+      expect(nonArScene.hasAttribute("arjs")).to.be.false;
+
       await expect(arElement).to.be.accessible();
       await expect(nonArElement).to.be.accessible();
     });
@@ -285,11 +283,11 @@ describe("aframe-player test", () => {
         <aframe-player ar></aframe-player>
       `);
       await testElement.updateComplete;
-      
-      const markerCamera = testElement.querySelector('a-marker-camera');
+
+      const markerCamera = testElement.querySelector("a-marker-camera");
       expect(markerCamera).to.exist;
-      expect(markerCamera.getAttribute('preset')).to.equal('hiro');
-      
+      expect(markerCamera.getAttribute("preset")).to.equal("hiro");
+
       await expect(testElement).to.be.accessible();
     });
   });
@@ -297,7 +295,7 @@ describe("aframe-player test", () => {
   describe("Accessibility scenarios with different configurations", () => {
     it("should remain accessible in AR mode", async () => {
       const testElement = await fixture(html`
-        <aframe-player 
+        <aframe-player
           ar
           source="https://example.com/ar-model.gltf"
           x="0"
@@ -342,10 +340,16 @@ describe("aframe-player test", () => {
         <aframe-player x="1" y="2" z="3"></aframe-player>
       `);
       await testElement.updateComplete;
-      
-      const position = testElement._computePosition("1", "2", "3", "640px", "480px");
+
+      const position = testElement._computePosition(
+        "1",
+        "2",
+        "3",
+        "640px",
+        "480px",
+      );
       expect(position).to.deep.equal({ x: "1", y: "2", z: "3" });
-      
+
       await expect(testElement).to.be.accessible();
     });
 
@@ -354,12 +358,12 @@ describe("aframe-player test", () => {
         <aframe-player></aframe-player>
       `);
       await testElement.updateComplete;
-      
+
       testElement.x = "10";
       testElement.y = "20";
       testElement.z = "30";
       await testElement.updateComplete;
-      
+
       expect(testElement.position).to.deep.equal({ x: "10", y: "20", z: "30" });
       await expect(testElement).to.be.accessible();
     });
@@ -396,26 +400,32 @@ describe("aframe-player test", () => {
         <aframe-player x="999999" y="-999999" z="0.0001"></aframe-player>
       `);
       await testElement.updateComplete;
-      
-      expect(testElement.position).to.deep.equal({ 
-        x: "999999", 
-        y: "-999999", 
-        z: "0.0001" 
+
+      expect(testElement.position).to.deep.equal({
+        x: "999999",
+        y: "-999999",
+        z: "0.0001",
       });
       await expect(testElement).to.be.accessible();
     });
 
     it("should handle unusual dimension values", async () => {
       const unusualValues = [
-        "0px", "10000px", "1vh", "1vw", "1em", "1rem", "50%"
+        "0px",
+        "10000px",
+        "1vh",
+        "1vw",
+        "1em",
+        "1rem",
+        "50%",
       ];
-      
+
       for (const value of unusualValues) {
         const testElement = await fixture(html`
           <aframe-player width="${value}" height="${value}"></aframe-player>
         `);
         await testElement.updateComplete;
-        
+
         expect(testElement.width).to.equal(value);
         expect(testElement.height).to.equal(value);
         await expect(testElement).to.be.accessible();
@@ -424,20 +434,26 @@ describe("aframe-player test", () => {
 
     it("should handle edge case property values", async () => {
       const testElement = await fixture(html`<aframe-player></aframe-player>`);
-      
+
       const edgeCaseValues = [
         "   \t\n   ", // whitespace
-        "0", "000", "-0", "+0", // various zero representations
-        "1e6", "1e-6", // scientific notation
-        "NaN", "Infinity", "-Infinity" // special numeric values
+        "0",
+        "000",
+        "-0",
+        "+0", // various zero representations
+        "1e6",
+        "1e-6", // scientific notation
+        "NaN",
+        "Infinity",
+        "-Infinity", // special numeric values
       ];
-      
+
       for (const value of edgeCaseValues) {
         testElement.x = value;
         testElement.y = value;
         testElement.z = value;
         await testElement.updateComplete;
-        
+
         expect(testElement.x).to.equal(value);
         expect(testElement.y).to.equal(value);
         expect(testElement.z).to.equal(value);
@@ -466,24 +482,26 @@ describe("aframe-player test", () => {
     it("should have proper HAX settings configuration", () => {
       const haxProps = element.constructor.haxProperties;
       const configItems = haxProps.settings.configure;
-      
+
       // Verify source property is required
-      const sourceProp = configItems.find(item => item.property === "source");
+      const sourceProp = configItems.find((item) => item.property === "source");
       expect(sourceProp).to.exist;
       expect(sourceProp.required).to.be.true;
       expect(sourceProp.inputMethod).to.equal("textfield");
-      
+
       // Verify coordinate properties are required
-      const xProp = configItems.find(item => item.property === "x");
-      const yProp = configItems.find(item => item.property === "y");
-      const zProp = configItems.find(item => item.property === "z");
-      
+      const xProp = configItems.find((item) => item.property === "x");
+      const yProp = configItems.find((item) => item.property === "y");
+      const zProp = configItems.find((item) => item.property === "z");
+
       expect(xProp.required).to.be.true;
       expect(yProp.required).to.be.true;
       expect(zProp.required).to.be.true;
-      
+
       // Verify skyColor has colorpicker input method
-      const skyColorProp = configItems.find(item => item.property === "skyColor");
+      const skyColorProp = configItems.find(
+        (item) => item.property === "skyColor",
+      );
       expect(skyColorProp).to.exist;
       expect(skyColorProp.inputMethod).to.equal("colorpicker");
     });
@@ -491,8 +509,8 @@ describe("aframe-player test", () => {
     it("should handle 3D file types correctly", () => {
       const haxProps = element.constructor.haxProperties;
       const handles = haxProps.gizmo.handles;
-      
-      const fileHandle = handles.find(handle => handle.type === "3d");
+
+      const fileHandle = handles.find((handle) => handle.type === "3d");
       expect(fileHandle).to.exist;
       expect(fileHandle.source).to.equal("source");
     });
@@ -507,28 +525,30 @@ describe("aframe-player test", () => {
       const styles = element.constructor.styles;
       expect(styles).to.exist;
       expect(styles.length).to.be.greaterThan(0);
-      
+
       const styleString = styles[0].cssText || styles[0].toString();
-      expect(styleString).to.include(':host');
-      expect(styleString).to.include('display: block');
-      expect(styleString).to.include('position: relative');
+      expect(styleString).to.include(":host");
+      expect(styleString).to.include("display: block");
+      expect(styleString).to.include("position: relative");
     });
   });
 
   describe("Lifecycle and cleanup", () => {
     it("should set up window controllers in constructor", () => {
-      const testElement = new (element.constructor)();
+      const testElement = new element.constructor();
       expect(testElement.windowControllers).to.exist;
-      expect(testElement.windowControllers.constructor.name).to.equal("AbortController");
+      expect(testElement.windowControllers.constructor.name).to.equal(
+        "AbortController",
+      );
     });
 
     it("should clean up window controllers on disconnect", () => {
-      const testElement = new (element.constructor)();
-      const abortSpy = testElement.windowControllers.abort = () => {};
-      
+      const testElement = new element.constructor();
+      const abortSpy = (testElement.windowControllers.abort = () => {});
+
       // Simulate disconnection
       testElement.disconnectedCallback();
-      
+
       // Verify abort was called (basic check)
       expect(testElement.windowControllers).to.exist;
     });

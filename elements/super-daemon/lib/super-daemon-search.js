@@ -44,7 +44,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     this.registerLocalization({
       context: this,
       namespace: "super-daemon",
-      basePath: import.meta.url,
+      basePath: import.meta.url + "/../../",
     });
     // Initialize with fallback values to prevent undefined during initial render
     this.possibleActions = ["🔮 Insert blocks", "🕵 Find media 📺"];

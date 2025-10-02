@@ -697,7 +697,7 @@ export class AppHaxSteps extends SimpleColors {
         }
         #grid-container {
           display: grid;
-          grid-template-columns: 200px 200px 200px;
+          grid-template-columns: 160px 160px 160px;
           background: transparent;
         }
         .carousel-with-snapping-track {
@@ -864,7 +864,7 @@ export class AppHaxSteps extends SimpleColors {
             font-size: 20px;
           }
           #grid-container {
-            grid-template-columns: 150px 150px 150px;
+            grid-template-columns: 120px 120px 120px;
           }
         }
         @media (max-height: 600px) {

@@ -15,7 +15,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
     this.registerLocalization({
       context: this,
       namespace: "super-daemon",
-      basePath: import.meta.url,
+      basePath: import.meta.url + "/../../",
     });
     this.title = null;
     this.path = null;

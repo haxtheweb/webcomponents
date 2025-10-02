@@ -233,7 +233,6 @@ class MapMenuHeader extends I18NMixin(LitElement) {
       namespace: "map-menu",
       localesPath:
         new URL("../locales/map-menu.es.json", import.meta.url).href + "/../",
-      
     });
     setTimeout(() => {
       this.addEventListener("click", this.__tap.bind(this));
