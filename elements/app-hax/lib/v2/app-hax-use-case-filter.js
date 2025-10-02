@@ -137,6 +137,8 @@ export class AppHaxUseCaseFilter extends LitElement {
           flex-direction: row;
           flex-wrap: nowrap;
           scroll-behavior: smooth;
+          overflow: hidden;
+          height: 300px;
         }
         :host(:not([show-filter])) app-hax-search-results {
           width: 100%;

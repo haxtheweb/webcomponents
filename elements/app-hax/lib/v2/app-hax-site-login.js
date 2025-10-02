@@ -84,8 +84,6 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-          width: 100%;
-          max-width: var(--ddd-spacing-30, 400px);
           gap: var(--ddd-spacing-4, 16px);
         }
 
@@ -104,7 +102,8 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
           font-family: var(--ddd-font-primary, sans-serif);
           box-sizing: border-box;
           transition: border-color 0.2s ease;
-          background: var(--ddd-theme-default-white, white);
+          background-color: var(--ddd-theme-default-limestoneMaxLight, #f5f5f5);
+          color: var(--ddd-theme-default-coalyGray, #444);
         }
 
         input:focus {
@@ -199,10 +198,6 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
           rpg-character {
             width: 80px;
             height: 80px;
-          }
-
-          #inputcontainer {
-            max-width: 100%;
           }
 
           button {
