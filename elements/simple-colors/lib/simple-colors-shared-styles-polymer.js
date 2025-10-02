@@ -162,6 +162,19 @@ const css = html`
       --simple-colors-default-theme-teal-11: #98ffd7;
       --simple-colors-default-theme-teal-12: #d9fff0;
 
+      /*--simple-colors-default-theme-seafoam-1: #031514;
+      --simple-colors-default-theme-seafoam-2: #052322;
+      --simple-colors-default-theme-seafoam-3: #0A3432;
+      --simple-colors-default-theme-seafoam-4: #0E4543;
+      --simple-colors-default-theme-seafoam-5: #125553;
+      --simple-colors-default-theme-seafoam-6: #0C8780;
+      --simple-colors-default-theme-seafoam-7: #00938B;
+      --simple-colors-default-theme-seafoam-8: #0FAEA6;
+      --simple-colors-default-theme-seafoam-9: #30D2C9;
+      --simple-colors-default-theme-seafoam-10: #e1ffeb;
+      --simple-colors-default-theme-seafoam-11: #40BBB5;
+      --simple-colors-default-theme-seafoam-12: #e1ffeb;*/
+
       --simple-colors-default-theme-green-1: #001d0c;
       --simple-colors-default-theme-green-2: #002a11;
       --simple-colors-default-theme-green-3: #003d18;
@@ -739,6 +752,52 @@ const css = html`
       --simple-colors-default-theme-accent-11: #98ffd7;
       --simple-colors-default-theme-accent-12: #d9fff0;
     }
+
+    /*:host([accent-color="seafoam"]),
+    :host[accent-color="seafoam"] {
+      --simple-colors-default-theme-accent-1: #001d0c;
+      --simple-colors-default-theme-accent-2: #40BBB5;
+      --simple-colors-default-theme-accent-3: #0E4543;
+      --simple-colors-default-theme-accent-4: #30D2C9;
+      --simple-colors-default-theme-accent-5: #0FAEA6;
+      --simple-colors-default-theme-accent-6: #00938B;
+      --simple-colors-default-theme-accent-7: #0C8780;
+      --simple-colors-default-theme-accent-8: #125553;
+      --simple-colors-default-theme-accent-9: #0E4543;
+      --simple-colors-default-theme-accent-10: #0A3432;
+      --simple-colors-default-theme-accent-11: #052322;
+      --simple-colors-default-theme-accent-12: #031514;
+      --simple-colors-fixed-theme-accent-1: #001d0c;
+      --simple-colors-fixed-theme-accent-2: #40BBB5;
+      --simple-colors-fixed-theme-accent-3: #0E4543;
+      --simple-colors-fixed-theme-accent-4: #30D2C9;
+      --simple-colors-fixed-theme-accent-5: #0FAEA6;
+      --simple-colors-fixed-theme-accent-6: #00938B;
+      --simple-colors-fixed-theme-accent-7: #0C8780;
+      --simple-colors-fixed-theme-accent-8: #125553;
+      --simple-colors-fixed-theme-accent-9: #0E4543;
+      --simple-colors-fixed-theme-accent-10: #0A3432;
+      --simple-colors-fixed-theme-accent-11: #052322;
+      --simple-colors-fixed-theme-accent-12: #031514;
+    }
+
+    :host([dark][accent-color="seafoam"]),
+    :host([dark]) [accent-color="seafoam"],
+    :host([accent-color="seafoam"]) [dark],
+    :host [dark][accent-color="seafoam"] {
+      --simple-colors-default-theme-accent-1: #031514;
+      --simple-colors-default-theme-accent-2: #052322;
+      --simple-colors-default-theme-accent-3: #0A3432;
+      --simple-colors-default-theme-accent-4: #0E4543;
+      --simple-colors-default-theme-accent-5: #125553;
+      --simple-colors-default-theme-accent-6: #0C8780;
+      --simple-colors-default-theme-accent-7: #00938B;
+      --simple-colors-default-theme-accent-8: #0FAEA6;
+      --simple-colors-default-theme-accent-9: #30D2C9;
+      --simple-colors-default-theme-accent-10: #79ffa7;
+      --simple-colors-default-theme-accent-11: #40BBB5;
+      --simple-colors-default-theme-accent-12: #e1ffeb;
+    }*/
 
     :host([accent-color="green"]),
     :host [accent-color="green"] {
