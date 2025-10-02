@@ -40,7 +40,6 @@ export class AppHaxUseCase extends LitElement {
           display: flex;
           flex-direction: column;
           text-align: left;
-          max-width: 200px;
           margin: 8px;
           font-family: var(--ddd-font-primary);
           color: var(--ddd-theme-default-nittanyNavy);
@@ -53,8 +52,6 @@ export class AppHaxUseCase extends LitElement {
           padding: 8px 12px 16px;
         }
         .image img {
-          width: 200px;
-          height: 120px;
           border-top-right-radius: 4px;
           border-top-left-radius: 4px;
           border-bottom: solid var(--ddd-theme-default-nittanyNavy) 8px;

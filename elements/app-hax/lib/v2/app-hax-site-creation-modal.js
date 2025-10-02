@@ -511,6 +511,11 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     // Consider it cancelled if we're in step 1 OR if we're in step 3 (success) and user chooses to stay
     const wasCancelled = this.currentStep === 1 || this.currentStep === 3;
 
+    // Play error sound for cancel/close operations
+    if (wasCancelled && store.appEl && store.appEl.playSound) {
+      store.appEl.playSound("error");
+    }
+
     this.open = false;
     const modal = this.shadowRoot?.querySelector("web-dialog");
     if (modal) {
@@ -543,6 +548,12 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
 
     // Consider it cancelled if we're in step 1 OR if we're in step 3 (success) and user closes/stays
     const wasCancelled = this.currentStep === 1 || this.currentStep === 3;
+
+    // Play error sound for cancel/close operations
+    if (wasCancelled && store.appEl && store.appEl.playSound) {
+      store.appEl.playSound("error");
+    }
+
     this.open = false;
     this.currentStep = 1;
     this.siteName = "";

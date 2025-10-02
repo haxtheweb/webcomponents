@@ -54,7 +54,6 @@ export class AppHaxSiteButton extends SimpleColors {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        font-family: "Press Start 2P", sans-serif;
         width: fit-content;
         margin: 20px 0;
       }

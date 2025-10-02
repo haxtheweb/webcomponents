@@ -3,6 +3,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { store } from "./AppHaxStore.js";
 
 export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
   static get tag() {
@@ -37,9 +38,11 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
       super.styles,
       css`
         :host {
-          --simple-modal-z-index: 1000;
+          --simple-modal-z-index: 10000;
           --simple-modal-width: var(--ddd-spacing-32, 480px);
           --simple-modal-max-width: 90vw;
+          --simple-modal-max-height: 80vh;
+          --simple-modal-border-radius: var(--ddd-radius-md, 8px);
           --simple-modal-titlebar-background: var(
             --ddd-theme-default-nittanyNavy,
             #001e44
@@ -50,6 +53,8 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
             --ddd-theme-default-white,
             white
           );
+          --simple-modal-background: var(--ddd-theme-default-white, white);
+          --simple-modal-box-shadow: var(--ddd-boxShadow-xl);
           --simple-modal-buttons-padding: 0;
           font-family: var(--ddd-font-primary, sans-serif);
         }
@@ -59,6 +64,16 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
             --ddd-theme-default-original87Pink,
             #e4007c
           );
+        }
+
+        simple-modal {
+          font-family: var(--ddd-font-primary, sans-serif) !important;
+        }
+
+        simple-modal::part(title) {
+          font-family: var(--ddd-font-primary, sans-serif) !important;
+          font-size: var(--ddd-font-size-m, 18px) !important;
+          font-weight: var(--ddd-font-weight-bold, 700) !important;
         }
 
         .modal-content {
@@ -170,6 +185,12 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
     if (modal) {
       modal.opened = false;
     }
+
+    // Play error sound for cancel
+    if (store.appEl && store.appEl.playSound) {
+      store.appEl.playSound("error");
+    }
+
     if (this.cancelAction && typeof this.cancelAction === "function") {
       this.cancelAction();
     }
@@ -185,6 +206,12 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
   handleModalClosed(e) {
     // simple-modal sends close event, we need to sync our state
     this.open = false;
+
+    // Play error sound for cancel/close
+    if (store.appEl && store.appEl.playSound) {
+      store.appEl.playSound("error");
+    }
+
     if (this.cancelAction && typeof this.cancelAction === "function") {
       this.cancelAction();
     }
@@ -203,6 +230,12 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
     if (modal) {
       modal.opened = false;
     }
+
+    // Play success sound for confirm
+    if (store.appEl && store.appEl.playSound) {
+      store.appEl.playSound("success");
+    }
+
     if (this.confirmAction && typeof this.confirmAction === "function") {
       this.confirmAction();
     }

@@ -80,31 +80,48 @@ export class AppHaxSiteBars extends SimpleColors {
     // Close the options menu first
     this.showOptions = false;
 
-    // Create and show the user access modal
-    const modal = document.createElement("app-hax-user-access-modal");
+    // Import simple-modal and then show the user access modal
+    import("@haxtheweb/simple-modal/simple-modal.js").then(() => {
+      // Create and show the user access modal
+      const modal = document.createElement("app-hax-user-access-modal");
 
-    // Set the site title for context
-    if (this.title) {
-      modal.siteTitle = this.title;
-    }
+      // Set the site title for context
+      if (this.title) {
+        modal.siteTitle = this.title;
+      }
 
-    // Show the modal using the simple-modal system
-    const evt = new CustomEvent("simple-modal-show", {
-      bubbles: true,
-      cancelable: true,
-      detail: {
-        title: "User Access",
-        elements: { content: modal },
-        invokedBy: this,
-        styles: {
-          "--simple-modal-width": "500px",
-          "--simple-modal-height": "auto",
-          "--simple-modal-max-height": "80vh",
+      // Show the modal using the simple-modal system
+      const evt = new CustomEvent("simple-modal-show", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          title: "User Access",
+          elements: { content: modal },
+          invokedBy: this,
+          styles: {
+            "--simple-modal-titlebar-background":
+              "var(--ddd-theme-default-nittanyNavy, #001e44)",
+            "--simple-modal-titlebar-color":
+              "var(--ddd-theme-default-white, white)",
+            "--simple-modal-width": "90vw",
+            "--simple-modal-max-width": "var(--ddd-spacing-32, 480px)",
+            "--simple-modal-min-width": "300px",
+            "--simple-modal-z-index": "1000",
+            "--simple-modal-height": "auto",
+            "--simple-modal-min-height": "300px",
+            "--simple-modal-max-height": "80vh",
+            "--simple-modal-titlebar-height": "64px",
+            "--simple-modal-border-radius": "var(--ddd-radius-md, 8px)",
+            "--simple-modal-background":
+              "var(--ddd-theme-default-white, white)",
+            "--simple-modal-box-shadow": "var(--ddd-boxShadow-xl)",
+          },
         },
-      },
-    });
+      });
 
-    this.dispatchEvent(evt);
+      this.dispatchEvent(evt);
+    });
   }
 
   // Site operation handler using new confirmation modal
@@ -156,7 +173,12 @@ export class AppHaxSiteBars extends SimpleColors {
   cancelOperation() {
     store.activeSiteOp = "";
     store.activeSiteId = null;
-    globalThis.dispatchEvent(new CustomEvent("simple-modal-hide"));
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        composed: true,
+      }),
+    );
     if (store.appEl && store.appEl.playSound) {
       store.appEl.playSound("error");
     }
@@ -196,7 +218,12 @@ export class AppHaxSiteBars extends SimpleColors {
       },
     );
 
-    globalThis.dispatchEvent(new CustomEvent("simple-modal-hide"));
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        composed: true,
+      }),
+    );
 
     if (store.appEl && store.appEl.playSound) {
       store.appEl.playSound("success");

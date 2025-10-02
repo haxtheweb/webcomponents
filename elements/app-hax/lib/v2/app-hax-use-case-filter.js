@@ -103,9 +103,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         .rightSection {
           flex: 1;
-          min-width: 800px;
-          width: 100%;
-          max-width: calc(100vw - 420px);
+          width: calc(100vw - 420px);
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
@@ -365,8 +363,17 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
 
         @media (max-width: 780px) {
-          :host .filter {
-            display: none;
+          .contentSection {
+            display: block;
+          }
+          .leftSection {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: var(--ddd-spacing-4, 16px);
+            position: relative;
+          }
+          .rightSection {
+            width: 100%;
           }
           :host([show-filter]) .filter {
             display: flex;
@@ -376,11 +383,31 @@ export class AppHaxUseCaseFilter extends LitElement {
           :host .collapseFilter {
             display: flex;
           }
+          h4,
+          .returnTo h4,
+          .startNew h4 {
+            font-size: var(--ddd-font-size-m, 20px);
+          }
+          .template-results {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--ddd-spacing-3, 12px);
+          }
         }
 
         @media (max-width: 600px) {
-          :host .filter {
-            display: none;
+          .contentSection {
+            display: block;
+            margin: 0 var(--ddd-spacing-2, 8px);
+            padding-right: var(--ddd-spacing-2, 8px);
+          }
+          .leftSection {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: var(--ddd-spacing-3, 12px);
+            position: relative;
+          }
+          .rightSection {
+            width: 100%;
           }
           :host([show-filter]) .filter {
             display: flex;
@@ -389,6 +416,35 @@ export class AppHaxUseCaseFilter extends LitElement {
           }
           :host .collapseFilter {
             display: flex;
+          }
+          h4,
+          .returnTo h4,
+          .startNew h4 {
+            font-size: var(--ddd-font-size-s, 18px);
+          }
+          .template-results {
+            grid-template-columns: 1fr;
+            gap: var(--ddd-spacing-2, 8px);
+          }
+        }
+
+        @media (max-width: 480px) {
+          .contentSection {
+            margin: 0 var(--ddd-spacing-1, 4px);
+            padding-right: var(--ddd-spacing-1, 4px);
+          }
+          h4,
+          .returnTo h4,
+          .startNew h4 {
+            font-size: var(--ddd-font-size-s, 16px);
+            margin: 0 0 var(--ddd-spacing-3, 12px) 0;
+          }
+          .template-results {
+            grid-template-columns: 1fr;
+            gap: var(--ddd-spacing-2, 8px);
+          }
+          #returnToSection app-hax-search-results {
+            min-width: 100%;
           }
         }
       `,

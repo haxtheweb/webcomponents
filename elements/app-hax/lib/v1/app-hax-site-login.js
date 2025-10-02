@@ -202,6 +202,7 @@ export class AppHaxSiteLogin extends SimpleColors {
       this.dispatchEvent(
         new CustomEvent("simple-modal-hide", {
           bubbles: true,
+          composed: true,
           cancelable: true,
           detail: {},
         }),

@@ -1272,27 +1272,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                     <div slot="subtitle">Let's build something awesome!</div>
                   `
                 : ``}
-              ${this.activeItem && !this.siteReady
-                ? html`
-                    <h1>${this.activeItem.label}</h1>
-                    <div slot="subtitle">
-                      ${this.activeItem && this.activeItem.statement
-                        ? this.activeItem.statement.replace(
-                            ":structure",
-                            toJS(store.site.structure),
-                          )
-                        : ""}
-                    </div>
-                  `
-                : ``}
-              ${this.activeItem && this.siteReady
-                ? html`
-                    <h1>${toJS(store.site.name)}</h1>
-                    <div slot="subtitle">
-                      Is all ready, are you ready to build?
-                    </div>
-                  `
-                : ``}
             </app-hax-label>
           </div>
 

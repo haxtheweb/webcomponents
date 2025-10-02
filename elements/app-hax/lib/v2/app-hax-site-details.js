@@ -263,7 +263,12 @@ export class AppHaxSiteDetails extends SimpleColors {
   cancelOperation() {
     store.activeSiteOp = "";
     store.activeSiteId = null;
-    globalThis.dispatchEvent(new CustomEvent("simple-modal-hide"));
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        composed: true,
+      }),
+    );
     store.appEl.playSound("error");
   }
 
@@ -294,7 +299,12 @@ export class AppHaxSiteDetails extends SimpleColors {
         }
       },
     );
-    globalThis.dispatchEvent(new CustomEvent("simple-modal-hide"));
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        composed: true,
+      }),
+    );
     store.appEl.playSound("success");
     store.toast(
       `${site.metadata.site.name} ${op.replace("Site", "")} successful!`,

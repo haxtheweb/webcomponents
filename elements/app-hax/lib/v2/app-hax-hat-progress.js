@@ -172,7 +172,6 @@ export class AppHaxHatProgress extends SimpleColors {
 
         .count {
           color: var(--simple-colors-default-theme-grey-1, white);
-          font-family: "Press Start 2P", sans-serif;
           width: 350px;
           text-align: center;
           position: relative;
@@ -182,7 +181,6 @@ export class AppHaxHatProgress extends SimpleColors {
           margin-left: 30px;
         }
         .game {
-          font-family: "Press Start 2P", sans-serif;
           font-size: 28px;
           font-weight: bold;
           text-align: center;

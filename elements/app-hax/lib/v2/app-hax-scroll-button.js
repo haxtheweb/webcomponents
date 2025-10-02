@@ -73,7 +73,6 @@ export class AppHaxScrollButton extends LitElement {
       css`
         :host {
           display: flex;
-          font-family: "Press Start 2P";
           background-image: url("/elements/app-hax/lib/assets/images/scroll-button-LM.png");
           background-size: cover;
           background-position: center;

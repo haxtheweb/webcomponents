@@ -157,7 +157,6 @@ export class AppHaxButton extends LitElement {
           display: block;
           --background-color: transparent;
           --background-color-active: white;
-          font-family: "Press Start 2P", sans-serif;
         }
         :host([coming-soon]) .haxButton {
           pointer-events: none;

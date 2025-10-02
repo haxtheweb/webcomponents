@@ -116,11 +116,6 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
           background-color: var(--ddd-theme-default-limestoneLight);
         }
 
-        rpg-character {
-          width: 120px;
-          height: auto;
-        }
-
         .input-container {
           width: 100%;
           display: flex;
@@ -284,7 +279,6 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
                   seed="${this.username}"
                   height="120"
                   width="96"
-                  demo
                 ></rpg-character>
               `
             : html`
@@ -372,6 +366,10 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
       const response = await this._addUserAccess(this.username.trim());
 
       if (response.ok) {
+        // Play success sound
+        if (store.appEl && store.appEl.playSound) {
+          store.appEl.playSound("success");
+        }
         // Success - show toast and close modal
         this._showSuccessToast();
         this._closeModal();
@@ -396,6 +394,10 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
    * Handle cancel button click
    */
   _handleCancel() {
+    // Play error sound for cancel
+    if (store.appEl && store.appEl.playSound) {
+      store.appEl.playSound("error");
+    }
     this._closeModal();
   }
 
@@ -438,6 +440,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
     globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
+        composed: true,
         cancelable: true,
         detail: {},
       }),

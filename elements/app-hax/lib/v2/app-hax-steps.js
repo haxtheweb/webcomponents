@@ -798,7 +798,6 @@ export class AppHaxSteps extends SimpleColors {
         }
 
         .theme-button div {
-          font-family: "Press Start 2P", sans-serif;
           font-size: 14px;
           margin-top: 12px;
         }
@@ -811,7 +810,6 @@ export class AppHaxSteps extends SimpleColors {
           cursor: pointer;
         }
         #sitename {
-          font-family: "Press Start 2P", sans-serif;
           font-size: 32px;
           padding: 8px;
           width: 40vw;
