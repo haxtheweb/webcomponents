@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { html, css } from "lit";
-import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -17,7 +17,7 @@ import { store } from "./AppHaxStore.js";
  * @demo demo/index.html
  * @element app-hax-user-access-modal
  */
-class AppHaxUserAccessModal extends I18NMixin(DDDSuper) {
+class AppHaxUserAccessModal extends I18NMixin(DDD) {
   /**
    * Convention we use
    */

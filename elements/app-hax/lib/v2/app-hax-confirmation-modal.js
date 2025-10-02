@@ -1,0 +1,241 @@
+import { LitElement, html, css } from "lit";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/simple-modal/simple-modal.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+
+export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
+  static get tag() {
+    return "app-hax-confirmation-modal";
+  }
+
+  constructor() {
+    super();
+    this.open = false;
+    this.title = "";
+    this.message = "";
+    this.confirmText = "Confirm";
+    this.cancelText = "Cancel";
+    this.confirmAction = null;
+    this.cancelAction = null;
+    this.dangerous = false; // For destructive actions like delete/archive
+  }
+
+  static get properties() {
+    return {
+      open: { type: Boolean, reflect: true },
+      title: { type: String },
+      message: { type: String },
+      confirmText: { type: String },
+      cancelText: { type: String },
+      dangerous: { type: Boolean },
+    };
+  }
+
+  static get styles() {
+    return [
+      super.styles,
+      css`
+        :host {
+          --simple-modal-z-index: 1000;
+          --simple-modal-width: var(--ddd-spacing-32, 480px);
+          --simple-modal-max-width: 90vw;
+          --simple-modal-titlebar-background: var(
+            --ddd-theme-default-nittanyNavy,
+            #001e44
+          );
+          --simple-modal-titlebar-color: var(--ddd-theme-default-white, white);
+          --simple-modal-content-padding: var(--ddd-spacing-6, 24px);
+          --simple-modal-content-container-background: var(
+            --ddd-theme-default-white,
+            white
+          );
+          --simple-modal-buttons-padding: 0;
+          font-family: var(--ddd-font-primary, sans-serif);
+        }
+
+        :host([dangerous]) {
+          --simple-modal-titlebar-background: var(
+            --ddd-theme-default-original87Pink,
+            #e4007c
+          );
+        }
+
+        .modal-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          min-height: var(--ddd-spacing-16, 120px);
+        }
+
+        .message {
+          font-size: var(--ddd-font-size-s, 16px);
+          color: var(--ddd-theme-default-coalyGray, #444);
+          margin: 0 0 var(--ddd-spacing-6, 24px) 0;
+          line-height: var(--ddd-lh-140, 1.4);
+        }
+
+        .button-group {
+          display: flex;
+          gap: var(--ddd-spacing-3, 12px);
+          justify-content: center;
+          width: 100%;
+        }
+
+        .button {
+          padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-4, 16px);
+          border-radius: var(--ddd-radius-sm, 4px);
+          font-size: var(--ddd-font-size-xs, 14px);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          font-family: var(--ddd-font-primary, sans-serif);
+          cursor: pointer;
+          transition: all 0.2s ease;
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: var(--ddd-spacing-2, 8px);
+          min-width: var(--ddd-spacing-20, 80px);
+        }
+
+        .button:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        .button-confirm {
+          background: var(--ddd-theme-default-nittanyNavy, #001e44) !important;
+          color: var(--ddd-theme-default-white, white) !important;
+        }
+
+        .button-confirm:hover:not(:disabled) {
+          background: var(
+            --ddd-theme-default-keystoneYellow,
+            #ffd100
+          ) !important;
+          color: var(--ddd-theme-default-nittanyNavy, #001e44) !important;
+        }
+
+        :host([dangerous]) .button-confirm {
+          background: var(
+            --ddd-theme-default-original87Pink,
+            #e4007c
+          ) !important;
+        }
+
+        :host([dangerous]) .button-confirm:hover:not(:disabled) {
+          background: var(
+            --ddd-theme-default-original87Pink-dark,
+            #c4006c
+          ) !important;
+        }
+
+        .button-cancel {
+          background: transparent !important;
+          border: var(--ddd-border-sm, 2px solid)
+            var(--ddd-theme-default-nittanyNavy, #001e44) !important;
+        }
+
+        .button-cancel:hover:not(:disabled) {
+          background: var(--ddd-theme-default-nittanyNavy, #001e44) !important;
+        }
+
+        @media (max-width: 600px) {
+          .button-group {
+            flex-direction: column;
+            gap: var(--ddd-spacing-2, 8px);
+          }
+
+          .button {
+            width: 100%;
+            min-height: var(--ddd-spacing-10, 40px);
+          }
+        }
+      `,
+    ];
+  }
+
+  openModal() {
+    this.open = true;
+    const modal = this.shadowRoot.querySelector("simple-modal");
+    if (modal) {
+      modal.opened = true;
+    }
+  }
+
+  closeModal() {
+    this.open = false;
+    const modal = this.shadowRoot.querySelector("simple-modal");
+    if (modal) {
+      modal.opened = false;
+    }
+    if (this.cancelAction && typeof this.cancelAction === "function") {
+      this.cancelAction();
+    }
+    // Dispatch close event for cleanup
+    this.dispatchEvent(
+      new CustomEvent("close", {
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
+  handleModalClosed(e) {
+    // simple-modal sends close event, we need to sync our state
+    this.open = false;
+    if (this.cancelAction && typeof this.cancelAction === "function") {
+      this.cancelAction();
+    }
+    // Dispatch close event for cleanup
+    this.dispatchEvent(
+      new CustomEvent("close", {
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
+  confirmModal() {
+    this.open = false;
+    const modal = this.shadowRoot.querySelector("simple-modal");
+    if (modal) {
+      modal.opened = false;
+    }
+    if (this.confirmAction && typeof this.confirmAction === "function") {
+      this.confirmAction();
+    }
+    // Dispatch close event for cleanup
+    this.dispatchEvent(
+      new CustomEvent("close", {
+        bubbles: true,
+        composed: true,
+      }),
+    );
+  }
+
+  render() {
+    return html`
+      <simple-modal
+        .opened="${this.open}"
+        title="${this.title}"
+        @simple-modal-closed="${this.handleModalClosed}"
+      >
+        <div class="modal-content" slot="content">
+          <p class="message">${this.message}</p>
+        </div>
+        <div class="button-group" slot="buttons">
+          <button class="button button-cancel" @click="${this.closeModal}">
+            ${this.cancelText}
+          </button>
+          <button class="button button-confirm" @click="${this.confirmModal}">
+            ${this.confirmText}
+          </button>
+        </div>
+      </simple-modal>
+    `;
+  }
+}
+
+customElements.define(AppHaxConfirmationModal.tag, AppHaxConfirmationModal);

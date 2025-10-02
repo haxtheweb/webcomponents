@@ -1,5 +1,6 @@
 import { LitElement, html, css } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import "web-dialog/index.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/promise-progress/promise-progress.js";
@@ -56,41 +57,27 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       super.styles,
       css`
         :host {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 100vw;
-          height: 100vh;
-          background: rgba(0, 0, 0, 0.6);
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          font-family: var(--ddd-font-primary, sans-serif);
+        }
+
+        web-dialog {
+          --dialog-width: var(--ddd-spacing-32, 480px);
+          --dialog-max-width: 90vw;
+          --dialog-max-height: 80vh;
+          --dialog-border-radius: var(--ddd-radius-md, 8px);
           z-index: 1000;
-          opacity: 0;
-          pointer-events: none;
-          transition: opacity 0.3s ease;
         }
 
-        :host([open]) {
-          opacity: 1;
-          pointer-events: all;
+        web-dialog::part(backdrop) {
+          background: rgba(0, 0, 0, 0.6);
         }
 
-        .modal {
+        web-dialog::part(dialog) {
           background: var(--ddd-theme-default-white, white);
           border-radius: var(--ddd-radius-md, 8px);
           box-shadow: var(--ddd-boxShadow-xl);
-          max-width: var(--ddd-spacing-32, 480px);
-          width: 90vw;
-          max-height: 80vh;
+          padding: 0;
           overflow: hidden;
-          position: relative;
-          transform: scale(0.9);
-          transition: transform 0.3s ease;
-        }
-
-        :host([open]) .modal {
-          transform: scale(1);
         }
 
         .modal-header {
@@ -125,12 +112,13 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
         }
 
         .modal-content {
-          padding: var(--ddd-spacing-6, 24px);
           min-height: var(--ddd-spacing-20, 200px);
           display: flex;
           flex-direction: column;
           align-items: center;
           text-align: center;
+          position: relative;
+          padding: var(--ddd-spacing-6, 24px);
         }
 
         .step-indicator {
@@ -197,14 +185,17 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           width: 100%;
           padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-3, 12px)
             var(--ddd-spacing-3, 12px) var(--ddd-spacing-8, 32px);
-          border: var(--ddd-border-xs, 1px solid)
+          border: var(--ddd-border-sm, 2px solid)
             var(--ddd-theme-default-slateGray, #666);
+          border-style: solid;
+          border-width: var(--ddd-border-sm, 2px);
           border-radius: var(--ddd-radius-sm, 4px);
+          border-color: var(--ddd-theme-default-slateGray, #666);
           font-size: var(--ddd-font-size-s, 16px);
           font-family: var(--ddd-font-primary, sans-serif);
           box-sizing: border-box;
           transition: all 0.2s ease;
-          background: var(--ddd-theme-default-white, white);
+          background-color: var(--ddd-theme-default-limestoneMaxLight, #f5f5f5);
           color: var(--ddd-theme-default-coalyGray, #222);
           min-height: var(--ddd-spacing-8, 32px);
         }
@@ -220,16 +211,18 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           --simple-icon-width: var(--ddd-icon-3xs, 20px);
           --simple-icon-height: var(--ddd-icon-3xs, 20px);
         }
-
         .form-input:focus {
           outline: none;
-          border: var(--ddd-border-md, 2px solid);
-          border-color: var(--ddd-theme-default-keystoneYellow, #ffd100);
-          background: var(--ddd-theme-default-white, white);
+          border: var(--ddd-border-md, 2px solid)
+            var(--ddd-theme-default-keystoneYellow, #ffd100);
         }
 
         .form-input:invalid {
           border-color: var(--ddd-theme-default-original87Pink, #e4007c);
+        }
+
+        .form-input:required:valid {
+          border-color: var(--ddd-theme-default-futureLime, #99cc33);
         }
 
         .error-message {
@@ -353,9 +346,13 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           color: var(--ddd-theme-default-white, white);
         }
 
-        .button-primary:hover:not(:disabled) {
+        .button-primary:hover:not(:disabled),
+        .button-primary:focus:not(:disabled) {
           background: var(--ddd-theme-default-keystoneYellow, #ffd100);
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          outline: var(--ddd-border-sm, 2px solid)
+            var(--ddd-theme-default-keystoneYellow, #ffd100);
+          outline-offset: var(--ddd-spacing-1, 2px);
         }
 
         .button-secondary {
@@ -365,9 +362,13 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
             var(--ddd-theme-default-nittanyNavy, #001e44);
         }
 
-        .button-secondary:hover:not(:disabled) {
+        .button-secondary:hover:not(:disabled),
+        .button-secondary:focus:not(:disabled) {
           background: var(--ddd-theme-default-nittanyNavy, #001e44);
           color: var(--ddd-theme-default-white, white);
+          outline: var(--ddd-border-sm, 2px solid)
+            var(--ddd-theme-default-nittanyNavy, #001e44);
+          outline-offset: var(--ddd-spacing-1, 2px);
         }
 
         .button-success {
@@ -375,8 +376,12 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           color: var(--ddd-theme-default-white, white);
         }
 
-        .button-success:hover:not(:disabled) {
+        .button-success:hover:not(:disabled),
+        .button-success:focus:not(:disabled) {
           background: var(--ddd-theme-default-original87Pink, #e4007c);
+          outline: var(--ddd-border-sm, 2px solid)
+            var(--ddd-theme-default-original87Pink, #e4007c);
+          outline-offset: var(--ddd-spacing-1, 2px);
         }
 
         .confetti {
@@ -424,10 +429,9 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
         }
 
         @media (max-width: 600px) {
-          .modal {
-            width: 95vw;
-            margin: var(--ddd-spacing-2, 8px);
-            max-height: 90vh;
+          web-dialog {
+            --dialog-width: 95vw;
+            --dialog-max-height: 90vh;
           }
 
           .modal-content {
@@ -480,13 +484,22 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.creationProgress = 0;
     this.creationCancelled = false;
     this.siteUrl = "";
-    // Focus the input after the modal opens
-    setTimeout(() => {
-      const input = this.shadowRoot.querySelector(".form-input");
-      if (input) {
-        input.focus();
+
+    // Wait for the component to update before setting modal state
+    this.updateComplete.then(() => {
+      const modal = this.shadowRoot?.querySelector("web-dialog");
+      if (modal) {
+        modal.open = true;
       }
-    }, 100);
+
+      // Focus the input after the modal opens
+      setTimeout(() => {
+        const input = this.shadowRoot?.querySelector(".form-input");
+        if (input) {
+          input.focus();
+        }
+      }, 100);
+    });
   }
 
   closeModal() {
@@ -495,8 +508,41 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       this.creationCancelled = true;
     }
 
-    const wasCancelled = this.currentStep === 1; // Only step 1 is considered a cancellation
+    // Consider it cancelled if we're in step 1 OR if we're in step 3 (success) and user chooses to stay
+    const wasCancelled = this.currentStep === 1 || this.currentStep === 3;
 
+    this.open = false;
+    const modal = this.shadowRoot?.querySelector("web-dialog");
+    if (modal) {
+      modal.open = false;
+    }
+
+    this.currentStep = 1;
+    this.siteName = "";
+    this.errorMessage = "";
+    this.showConfetti = false;
+    this.isCreating = false;
+    this.creationProgress = 0;
+    this.creationCancelled = false;
+    this.siteUrl = "";
+
+    this.dispatchEvent(
+      new CustomEvent("modal-closed", {
+        bubbles: true,
+        composed: true,
+        detail: { cancelled: wasCancelled },
+      }),
+    );
+  }
+
+  handleModalClosed(e) {
+    // web-dialog sends close event, we need to sync our state
+    if (this.isCreating) {
+      this.creationCancelled = true;
+    }
+
+    // Consider it cancelled if we're in step 1 OR if we're in step 3 (success) and user closes/stays
+    const wasCancelled = this.currentStep === 1 || this.currentStep === 3;
     this.open = false;
     this.currentStep = 1;
     this.siteName = "";
@@ -517,9 +563,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
   }
 
   handleKeyDown(e) {
-    if (e.key === "Escape") {
-      this.closeModal();
-    } else if (e.key === "Enter" && this.currentStep === 1) {
+    if (e.key === "Enter" && this.currentStep === 1) {
       this.createSite();
     }
   }
@@ -637,7 +681,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
         const siteSlug = this.siteName
           .toLowerCase()
           .replace(/[^a-z0-9]+/g, "-");
-        this.siteUrl = `https://haxtheweb.org/sites/${siteSlug}`;
+        this.siteUrl = siteSlug;
       }
 
       // Success!
@@ -685,7 +729,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
   renderStepIndicator() {
     return html`
       <div class="step-indicator">
-        ${[1, 2, 3].map(
+        ${[1, 2].map(
           (step) => html`
             <div
               class="step-dot ${this.currentStep > step
@@ -728,11 +772,12 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           ? html` <div class="error-message">${this.errorMessage}</div> `
           : ""}
       </div>
+    `;
+  }
 
+  renderNamingButtons() {
+    return html`
       <div class="button-group">
-        <button class="button button-secondary" @click="${this.closeModal}">
-          Cancel
-        </button>
         <button
           class="button button-primary"
           @click="${this.createSite}"
@@ -740,6 +785,9 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
         >
           <simple-icon-lite icon="icons:add-circle"></simple-icon-lite>
           Create Site
+        </button>
+        <button class="button button-secondary" @click="${this.closeModal}">
+          Cancel
         </button>
       </div>
     `;
@@ -789,26 +837,32 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
         <p class="success-subtitle">
           Your new site "${this.siteName}" is ready to use.
         </p>
+      </div>
+    `;
+  }
 
-        <div class="button-group">
-          <button class="button button-secondary" @click="${this.closeModal}">
-            <simple-icon-lite icon="icons:home"></simple-icon-lite>
-            Stay Here
-          </button>
-          <button class="button button-success" @click="${this.goToSite}">
-            <simple-icon-lite icon="icons:launch"></simple-icon-lite>
-            Go to Site
-          </button>
-        </div>
+  renderSuccessButtons() {
+    return html`
+      <div class="button-group">
+        <button class="button button-secondary" @click="${this.closeModal}">
+          <simple-icon-lite icon="icons:home"></simple-icon-lite>
+          Stay Here
+        </button>
+        <button class="button button-success" @click="${this.goToSite}">
+          <simple-icon-lite icon="icons:launch"></simple-icon-lite>
+          Go to Site
+        </button>
       </div>
     `;
   }
 
   render() {
     return html`
-      <div class="modal" @click="${(e) => e.stopPropagation()}">
-        ${this.showConfetti ? html`<div class="confetti"></div>` : ""}
-
+      <web-dialog
+        .open="${this.open}"
+        center
+        @close="${this.handleModalClosed}"
+      >
         <div class="modal-header">
           <h2 class="modal-title">
             ${this.currentStep === 1
@@ -821,31 +875,28 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
             class="close-button"
             @click="${this.closeModal}"
             ?disabled="${this.isCreating}"
+            aria-label="Close modal"
           >
             <simple-icon-lite icon="icons:close"></simple-icon-lite>
           </button>
         </div>
 
         <div class="modal-content">
+          ${this.showConfetti ? html`<div class="confetti"></div>` : ""}
           ${this.renderStepIndicator()}
           ${this.currentStep === 1
             ? this.renderNamingStep()
             : this.currentStep === 2
               ? this.renderCreatingStep()
               : this.renderSuccessStep()}
+          ${this.currentStep === 1
+            ? this.renderNamingButtons()
+            : this.currentStep === 3
+              ? this.renderSuccessButtons()
+              : html``}
         </div>
-      </div>
+      </web-dialog>
     `;
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
-    document.addEventListener("keydown", this.handleKeyDown.bind(this));
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    document.removeEventListener("keydown", this.handleKeyDown.bind(this));
   }
 }
 

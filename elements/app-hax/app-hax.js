@@ -18,7 +18,6 @@ import "./lib/v2/app-hax-use-case.js";
 import "./lib/v2/app-hax-use-case-filter.js";
 import "./lib/v2/app-hax-search-results.js";
 import "./lib/v2/app-hax-scroll-button.js";
-import "./lib/v2/app-hax-user-access-modal.js";
 
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
@@ -891,14 +890,16 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           }
         }
         app-hax-label {
-          animation: 0.8s ease-in-out 0s scrollin;
-          -webkit-animation: 0.8s ease-in-out 0s scrollin;
+          animation: 0.6s ease-in-out 0s scrollin;
+          -webkit-animation: 0.6s ease-in-out 0s scrollin;
           display: flex;
           align-self: flex-start;
+          margin: var(--ddd-spacing-4) auto;
+          font-family: "Press Start 2P", sans-serif;
         }
         app-hax-label h1 {
           font-weight: normal;
-          font-size: var(--ddd-font-size-xxl, 48px);
+          font-size: var(--ddd-font-size-m);
           margin: 0;
           padding: 0;
         }

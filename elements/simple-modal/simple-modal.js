@@ -103,7 +103,7 @@ class SimpleModal extends LitElement {
           );
           height: var(--simple-modal-titlebar-height, unset);
           line-height: var(--simple-modal-titlebar-line-height, unset);
-          color: var(--ddd-theme-default-nittanyNavy);
+          color: var(--simple-modal-titlebar-color,var(--ddd-theme-default-nittanyNavy));
           font-size: var(--ddd-theme-h3-font-size);
         }
 
@@ -122,7 +122,7 @@ class SimpleModal extends LitElement {
           min-width: unset;
           text-transform: none;
           background-color: transparent;
-          color: var(--ddd-theme-default-nittanyNavy);
+          color: var(--simple-modal-titlebar-color, var(--ddd-theme-default-nittanyNavy));
           --simple-icon-width: var(--ddd-icon-sm);
           --simple-icon-height: var(--ddd-icon-sm);
         }

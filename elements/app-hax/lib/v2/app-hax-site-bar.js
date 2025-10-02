@@ -8,6 +8,7 @@ import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { toJS } from "mobx";
 import { store } from "./AppHaxStore.js";
 import "./app-hax-user-access-modal.js";
+import "./app-hax-confirmation-modal.js";
 
 const DropDownBorder = new URL(
   "../assets/images/DropDownBorder.svg",
@@ -106,7 +107,7 @@ export class AppHaxSiteBars extends SimpleColors {
     this.dispatchEvent(evt);
   }
 
-  // Site operation handler similar to the site details component
+  // Site operation handler using new confirmation modal
   siteOperation(op, opName, icon) {
     if (store.appEl && store.appEl.playSound) {
       store.appEl.playSound("click");
@@ -115,65 +116,41 @@ export class AppHaxSiteBars extends SimpleColors {
     store.activeSiteOp = op;
     store.activeSiteId = this.siteId;
 
-    import("@haxtheweb/simple-modal/simple-modal.js").then(() => {
-      setTimeout(() => {
-        // Find the site data from the store
-        const site = toJS(
-          store.manifest.items.filter((item) => item.id === this.siteId).pop(),
-        );
+    // Find the site data from the store
+    const site = toJS(
+      store.manifest.items.filter((item) => item.id === this.siteId).pop(),
+    );
 
-        if (!site) {
-          console.error("Site not found for ID:", this.siteId);
-          return;
-        }
+    if (!site) {
+      console.error("Site not found for ID:", this.siteId);
+      return;
+    }
 
-        const div = globalThis.document.createElement("div");
-        div.appendChild(
-          globalThis.document.createTextNode(
-            `Are you sure you want to ${op.replace("Site", "")} ${
-              site.metadata.site.name
-            }?`,
-          ),
-        );
+    // Create and configure the confirmation modal
+    const modal = document.createElement("app-hax-confirmation-modal");
+    modal.title = `${opName} ${site.metadata.site.name}?`;
+    modal.message = `Are you sure you want to ${op.replace("Site", "")} ${site.metadata.site.name}?`;
+    modal.confirmText = "Confirm";
+    modal.cancelText = "Cancel";
 
-        const bcontainer = globalThis.document.createElement("div");
-        const b = globalThis.document.createElement("button");
-        b.innerText = "Confirm";
-        b.classList.add("hax-modal-btn");
-        b.addEventListener("click", this.confirmOperation.bind(this));
-        bcontainer.appendChild(b);
+    // Mark archive operations as dangerous for red styling
+    modal.dangerous = op === "archiveSite";
 
-        const b2 = globalThis.document.createElement("button");
-        b2.innerText = "Cancel";
-        b2.classList.add("hax-modal-btn");
-        b2.classList.add("cancel");
-        b2.addEventListener("click", this.cancelOperation.bind(this));
-        bcontainer.appendChild(b2);
+    modal.confirmAction = this.confirmOperation.bind(this);
+    modal.cancelAction = this.cancelOperation.bind(this);
 
-        this.dispatchEvent(
-          new CustomEvent("simple-modal-show", {
-            bubbles: true,
-            cancelable: true,
-            composed: true,
-            detail: {
-              title: `${opName} ${site.metadata.site.name}?`,
-              elements: { content: div, buttons: bcontainer },
-              invokedBy: this,
-              styles: {
-                "--simple-modal-titlebar-background": "orange",
-                "--simple-modal-titlebar-color": "black",
-                "--simple-modal-width": "30vw",
-                "--simple-modal-min-width": "300px",
-                "--simple-modal-z-index": "100000000",
-                "--simple-modal-height": "20vh",
-                "--simple-modal-min-height": "300px",
-                "--simple-modal-titlebar-height": "80px",
-              },
-            },
-          }),
-        );
-      }, 0);
-    });
+    // Add modal to document and show it
+    document.body.appendChild(modal);
+    modal.openModal();
+
+    // Clean up modal when it closes
+    modal.addEventListener(
+      "close",
+      () => {
+        document.body.removeChild(modal);
+      },
+      { once: true },
+    );
   }
 
   cancelOperation() {

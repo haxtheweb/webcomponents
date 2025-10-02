@@ -75,7 +75,7 @@ export class AppHaxLabel extends LitElement {
       }
 
       .bracket {
-        font-size: var(--ddd-font-size-xl, 3vw);
+        font-size: var(--ddd-font-size-m);
         font-weight: normal;
         vertical-align: middle;
         -webkit-text-stroke: 0px;
@@ -91,7 +91,7 @@ export class AppHaxLabel extends LitElement {
           -webkit-text-fill-color: unset;
         }
         .bracket {
-          font-size: var(--ddd-font-size-l, 2vw);
+          font-size: var(--ddd-font-size-m);
           margin: 0;
           padding: 0;
         }

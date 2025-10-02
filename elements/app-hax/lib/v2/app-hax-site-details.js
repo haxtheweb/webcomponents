@@ -6,6 +6,7 @@ import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import { toJS } from "mobx";
 import { store } from "./AppHaxStore.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import "./app-hax-confirmation-modal.js";
 
 // wrapper to simplify the slug if it has additional values on it
 function makeSlug(url) {
@@ -209,73 +210,54 @@ export class AppHaxSiteDetails extends SimpleColors {
     if (target.tagName === "DIV") {
       target = target.parentNode;
     }
-    const div = globalThis.document.createElement("div");
     const op = target.getAttribute("data-site-operation");
     const opName = target.getAttribute("data-site-operation-name");
     const siteID = target.getAttribute("data-site");
     store.activeSiteOp = op;
     store.activeSiteId = siteID;
-    import("@haxtheweb/simple-modal/simple-modal.js").then(() => {
-      setTimeout(() => {
-        const site = toJS(
-          store.manifest.items.filter((item) => item.id === siteID).pop(),
+
+    const site = toJS(
+      store.manifest.items.filter((item) => item.id === siteID).pop(),
+    );
+
+    // gitlist opens in a new window
+    if (op === "gitList") {
+      // php library is basis for this button, rare instance
+      if (globalThis.HAXCMSContext === "php") {
+        // open link in new window
+        globalThis.open(
+          `gitlist/${site.metadata.site.name}`,
+          "_blank",
+          "noopener noreferrer",
         );
-        div.appendChild(
-          globalThis.document.createTextNode(
-            `Are you sure you want to ${op.replace("Site", "")} ${
-              site.metadata.site.name
-            }?`,
-          ),
-        );
-        // gitlist opens in a new window
-        if (op === "gitList") {
-          // php library is basis for this button, rare instance
-          if (globalThis.HAXCMSContext === "php") {
-            // open link in new window
-            globalThis.open(
-              `gitlist/${site.metadata.site.name}`,
-              "_blank",
-              "noopener noreferrer",
-            );
-          }
-        } else {
-          const bcontainer = globalThis.document.createElement("div");
-          const b = globalThis.document.createElement("button");
-          b.innerText = "Confirm";
-          b.classList.add("hax-modal-btn");
-          b.addEventListener("click", this.confirmOperation.bind(this));
-          bcontainer.appendChild(b);
-          const b2 = globalThis.document.createElement("button");
-          b2.innerText = "Cancel";
-          b2.classList.add("hax-modal-btn");
-          b2.classList.add("cancel");
-          b2.addEventListener("click", this.cancelOperation.bind(this));
-          bcontainer.appendChild(b2);
-          this.dispatchEvent(
-            new CustomEvent("simple-modal-show", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
-              detail: {
-                title: `${opName} ${site.metadata.site.name}?`,
-                elements: { content: div, buttons: bcontainer },
-                invokedBy: target,
-                styles: {
-                  "--simple-modal-titlebar-background": "orange",
-                  "--simple-modal-titlebar-color": "black",
-                  "--simple-modal-width": "30vw",
-                  "--simple-modal-min-width": "300px",
-                  "--simple-modal-z-index": "100000000",
-                  "--simple-modal-height": "20vh",
-                  "--simple-modal-min-height": "300px",
-                  "--simple-modal-titlebar-height": "80px",
-                },
-              },
-            }),
-          );
-        }
-      }, 0);
-    });
+      }
+    } else {
+      // Create and configure the confirmation modal
+      const modal = document.createElement("app-hax-confirmation-modal");
+      modal.title = `${opName} ${site.metadata.site.name}?`;
+      modal.message = `Are you sure you want to ${op.replace("Site", "")} ${site.metadata.site.name}?`;
+      modal.confirmText = "Confirm";
+      modal.cancelText = "Cancel";
+
+      // Mark archive operations as dangerous for red styling
+      modal.dangerous = op === "archiveSite";
+
+      modal.confirmAction = this.confirmOperation.bind(this);
+      modal.cancelAction = this.cancelOperation.bind(this);
+
+      // Add modal to document and show it
+      document.body.appendChild(modal);
+      modal.openModal();
+
+      // Clean up modal when it closes
+      modal.addEventListener(
+        "close",
+        () => {
+          document.body.removeChild(modal);
+        },
+        { once: true },
+      );
+    }
   }
 
   cancelOperation() {
