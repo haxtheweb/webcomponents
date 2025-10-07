@@ -127,6 +127,7 @@ class MediaImage extends DDD {
     this.disableZoom = false;
     this.modalTitle = "";
     this.source = "";
+    this.thumbnail = "";
     this.citation = "";
     this.caption = "";
     this.figureLabelTitle = "";
@@ -152,6 +153,10 @@ class MediaImage extends DDD {
       }
       // if we have a link, we disable zoom automatically
       if (propName === "link" && this.link) {
+        this.disableZoom = true;
+      }
+      // if we only have thumbnail and no source, disable zoom to avoid blurry modal
+      if ((propName === "thumbnail" || propName === "source") && this.thumbnail && !this.source) {
         this.disableZoom = true;
       }
       if (["figureLabelTitle", "figureLabelDescription"].includes(propName)) {
@@ -185,7 +190,8 @@ class MediaImage extends DDD {
             ><media-image-image
               ?round="${this.round}"
               resource="${this.schemaResourceID}-image"
-              source="${this.source}"
+              source="${this.thumbnail || this.source}"
+              full-source="${this.source}"
               modal-title="${this.modalTitle}"
               alt="${this.alt}"
               tabindex="${!this.disableZoom ? "0" : "-1"}"
@@ -195,7 +201,8 @@ class MediaImage extends DDD {
         : html`<media-image-image
             ?round="${this.round}"
             resource="${this.schemaResourceID}-image"
-            source="${this.source}"
+            source="${this.thumbnail || this.source}"
+            full-source="${this.source}"
             modal-title="${this.modalTitle}"
             alt="${this.alt}"
             tabindex="${!this.disableZoom ? "0" : "-1"}"
@@ -285,6 +292,12 @@ class MediaImage extends DDD {
        * Image source.
        */
       source: {
+        type: String,
+      },
+      /**
+       * Thumbnail image source. If provided, shows thumbnail but opens full source in modal.
+       */
+      thumbnail: {
         type: String,
       },
       /**
@@ -506,6 +519,13 @@ class MediaImage extends DDD {
         ],
         advanced: [
           {
+            property: "thumbnail",
+            title: "Thumbnail image",
+            description: "Thumbnail image source. Shows thumbnail but opens full source in modal.",
+            inputMethod: "haxupload",
+            required: false,
+          },
+          {
             property: "round",
             title: "Round image",
             description: "Crops the image appearance to be circle in shape.",
@@ -594,6 +614,7 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
   constructor() {
     super();
     this.round = false;
+    this.fullSource = "";
     if (globalThis.document) {
       this.modalContent = globalThis.document.createElement("image-inspector");
       this.modalContent.noLeft = true;
@@ -622,9 +643,9 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
-      // ensure pop up matches source url
-      if (propName == "source") {
-        this.modalContent.src = this[propName];
+      // ensure pop up matches full source url or falls back to source
+      if (propName == "fullSource" || propName == "source") {
+        this.modalContent.src = this.fullSource || this.source;
       }
     });
   }
@@ -632,6 +653,10 @@ class MediaImageImage extends SimpleModalHandler(DDD) {
     return {
       source: {
         type: String,
+      },
+      fullSource: {
+        type: String,
+        attribute: "full-source",
       },
       alt: {
         type: String,

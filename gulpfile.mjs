@@ -301,7 +301,7 @@ gulp.task(
     return gulp.src([
       './build/es6/**/*.js'
     ]).pipe(terser({
-        ecma: 2018,
+        ecma: 2022,
         keep_fnames: true,
         mangle: true,
         module: true,
