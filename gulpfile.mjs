@@ -438,6 +438,13 @@ gulp.task("theme-discovery", async () => {
   try {
     execSync('node scripts/theme-discovery.js', { stdio: 'inherit' });
     console.log('✅ Theme discovery completed successfully');
+    console.log('');
+    console.log('📷 Theme Screenshots:');
+    console.log('   To generate/update theme screenshots run:');
+    console.log('   🔄 yarn run theme-screenshots');
+    console.log('   ⚠️  Note: This takes 3-4 minutes to complete and is not needed often.');
+    console.log('   ℹ️  Screenshots are only needed when themes are added/modified.');
+    console.log('');
   } catch (error) {
     console.error('❌ Theme discovery failed:', error.message);
   }
@@ -449,5 +456,14 @@ gulp.task("hax-elements-discovery", async () => {
     console.log('✅ HAX elements discovery completed successfully');
   } catch (error) {
     console.error('❌ HAX elements discovery failed:', error.message);
+  }
+});
+
+gulp.task("theme-screenshots", async () => {
+  try {
+    execSync('node elements/haxcms-elements/automation/puppeteer-theme-automation.js', { stdio: 'inherit' });
+    console.log('✅ Theme screenshots generated successfully');
+  } catch (error) {
+    console.error('❌ Theme screenshot generation failed:', error.message);
   }
 });

@@ -56,6 +56,7 @@
     "terser": "gulp terser --gulpfile=gulpfile.mjs",
     "wc-autoloader": "gulp wc-autoloader --gulpfile=gulpfile.mjs",
     "theme-discovery": "gulp theme-discovery --gulpfile=gulpfile.mjs",
+    "theme-screenshots": "gulp theme-screenshots --gulpfile=gulpfile.mjs",
     "hax-elements-discovery": "gulp hax-elements-discovery --gulpfile=gulpfile.mjs",
     "translation-manifest": "node scripts/generate-translation-manifest.js",
     "version-match": "gulp version-match --gulpfile=gulpfile.mjs",

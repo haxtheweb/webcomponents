@@ -1,0 +1,20 @@
+nohup: ignoring input
+yarn run v1.22.22
+$ yarn run dev
+$ concurrently --kill-others "yarn run watch" "yarn run serve"
+[1] $ cd demo && web-dev-server -c ../../../web-dev-server.haxcms.config.cjs
+[0] $ gulp dev --gulpfile=gulpfile.cjs
+[1] Web Dev Server started...
+[1] 
+[1]   Root dir: /home/bto108a/Documents/git/haxtheweb/webcomponents
+[1]   Local:    http://localhost:8000/
+[0] [11:49:46] Using gulpfile ~/Documents/git/haxtheweb/webcomponents/elements/app-hax/gulpfile.cjs
+[1]   Network:  http://104.39.21.11:8000/
+[1] 
+[0] [11:49:46] Starting 'dev'...
+[0] [11:49:46] Starting 'analyze'...
+[0] [11:49:47] Finished 'analyze' after 509 ms
+[0] [11:49:47] Starting 'watch'...
+[0] yarn run watch exited with code SIGHUP
+--> Sending SIGTERM to other processes..
+[1] yarn run serve exited with code SIGHUP
