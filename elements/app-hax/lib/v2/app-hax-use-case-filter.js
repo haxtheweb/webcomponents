@@ -107,6 +107,8 @@ export class AppHaxUseCaseFilter extends LitElement {
           padding-top: 0;
           box-sizing: border-box;
           position: sticky;
+          top: var(--ddd-spacing-2, 8px);
+          align-self: flex-start;
         }
         .rightSection {
           flex: 1;
@@ -250,7 +252,9 @@ export class AppHaxUseCaseFilter extends LitElement {
           flex-direction: column;
           gap: var(--ddd-spacing-3, 12px);
           margin-top: 0;
-          width: 100%;
+          border: none;
+          padding: 0;
+          margin: 0;
         }
         .filter-btn {
           display: flex;
@@ -367,6 +371,19 @@ export class AppHaxUseCaseFilter extends LitElement {
         .collapseFilter {
           display: none;
         }
+        
+        /* Visually hidden content for screen readers */
+        .visually-hidden {
+          position: absolute !important;
+          width: 1px !important;
+          height: 1px !important;
+          padding: 0 !important;
+          margin: -1px !important;
+          overflow: hidden !important;
+          clip: rect(0, 0, 0, 0) !important;
+          white-space: nowrap !important;
+          border: 0 !important;
+        }
 
         @media (max-width: 780px) {
           .contentSection {
@@ -467,17 +484,27 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.showFilter = !this.showFilter;
   }
 
+  handleFilterKeydown(e, filter) {
+    // Handle keyboard interaction for filter labels (Space and Enter)
+    if (e.key === ' ' || e.key === 'Enter') {
+      e.preventDefault();
+      this.toggleFilterByButton(filter);
+    }
+  }
+
   render() {
     return html`
       <div class="contentSection">
         <div class="leftSection">
-          <div class="filter">
+          <div class="filter" role="search" aria-label="Filter and search site templates">
             <!-- Search bar -->
             <div class="upper-filter">
+              <label for="searchField" class="visually-hidden">Search Sites & Templates</label>
               <slot>
                 <simple-icon-lite
                   class="search-icon"
                   icon="icons:search"
+                  aria-hidden="true"
                 ></simple-icon-lite>
               </slot>
               <input
@@ -486,10 +513,16 @@ export class AppHaxUseCaseFilter extends LitElement {
                 @keydown="${this.testKeydown}"
                 type="text"
                 placeholder="Search Sites & Templates"
+                aria-label="Search Sites & Templates"
+                aria-describedby="search-help"
               />
+              <div id="search-help" class="visually-hidden">
+                Type to search for site templates and existing sites. Press Escape to clear.
+              </div>
             </div>
             <!-- Filter Buttons -->
-            <div class="filterButtons">
+            <fieldset class="filterButtons">
+              <legend class="visually-hidden">Filter templates by category</legend>
               ${this.filters.map(
                 (filter, i) => html`
                   <input
@@ -498,6 +531,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                     class="filter-checkbox"
                     .checked=${this.activeFilters.includes(filter)}
                     @change=${() => this.toggleFilterByButton(filter)}
+                    aria-describedby="filter-${i}-description"
                   />
                   <label
                     for="filter-${i}"
@@ -505,50 +539,89 @@ export class AppHaxUseCaseFilter extends LitElement {
                       ? "active"
                       : ""}"
                     aria-pressed=${this.activeFilters.includes(filter)}
+                    role="button"
+                    tabindex="0"
+                    @keydown=${(e) => this.handleFilterKeydown(e, filter)}
                   >
-                    <span class="icon">
+                    <span class="icon" aria-hidden="true">
                       <simple-icon-lite
                         icon="${this.iconForFilter(filter)}"
                       ></simple-icon-lite>
                     </span>
                     ${filter}
                   </label>
+                  <div id="filter-${i}-description" class="visually-hidden">
+                    Filter to show only ${filter} templates
+                  </div>
                 `,
               )}
-            </div>
-            <button class="reset-button" @click="${this.resetFilters}">
-              Reset
+            </fieldset>
+            <button 
+              class="reset-button" 
+              @click="${this.resetFilters}"
+              aria-describedby="reset-help"
+            >
+              Reset Filters
             </button>
+            <div id="reset-help" class="visually-hidden">
+              Clear all active filters and search terms
+            </div>
           </div>
         </div>
         <!-- Content Section -->
         <div class="rightSection">
           <!-- Returning Sites -->
-          <div id="returnToSection" class="returnTo">
-            <h4>Return to...</h4>
-            <app-hax-search-results
-              .displayItems=${this.filteredSites}
-              .searchTerm=${this.searchTerm}
-              ?dark="${this.dark}"
+          <section 
+            id="returnToSection" 
+            class="returnTo"
+            aria-labelledby="return-to-heading"
+          >
+            <h4 id="return-to-heading">Return to...</h4>
+            <div 
+              role="region" 
+              aria-label="Previously created sites"
+              aria-live="polite"
             >
-            </app-hax-search-results>
-          </div>
+              <app-hax-search-results
+                .displayItems=${this.filteredSites}
+                .searchTerm=${this.searchTerm}
+                ?dark="${this.dark}"
+              >
+              </app-hax-search-results>
+            </div>
+          </section>
 
           <!-- Templates -->
-          <div id="startJourneySection" class="startNew">
-            <h4>Create New Site</h4>
-            <div class="template-results">
+          <section 
+            id="startJourneySection" 
+            class="startNew"
+            aria-labelledby="create-site-heading"
+          >
+            <h4 id="create-site-heading">Create New Site</h4>
+            <div 
+              class="template-results"
+              role="grid"
+              aria-label="Available site templates"
+              aria-live="polite"
+              aria-describedby="template-count"
+            >
+              <div id="template-count" class="visually-hidden">
+                ${this.filteredItems.length} templates available
+              </div>
               ${this.filteredItems.length > 0
                 ? this.filteredItems.map(
                     (item, index) => html`
-                      <div>
-                        <a
-                          href="${item.demoLink}"
-                          target="_blank"
-                          class="${index === this.activeUseCase
-                            ? "active-card"
-                            : ""}"
-                        ></a>
+                      <div role="gridcell" aria-rowindex="${index + 1}" aria-colindex="1">
+                        ${item.demoLink !== '#' ? html`
+                          <a
+                            href="${item.demoLink}"
+                            target="_blank"
+                            aria-label="View demo of ${item.useCaseTitle}"
+                            class="demo-link ${index === this.activeUseCase
+                              ? "active-card"
+                              : ""}"
+                          ></a>
+                        ` : ''}
                         <app-hax-use-case
                           .source=${item.useCaseImage || ""}
                           .title=${item.useCaseTitle || ""}
@@ -558,15 +631,17 @@ export class AppHaxUseCaseFilter extends LitElement {
                           .isSelected=${item.isSelected || false}
                           .showContinue=${item.showContinue || false}
                           ?dark="${this.dark}"
+                          aria-label="Template: ${item.useCaseTitle}"
+                          tabindex="0"
                           @toggle-display=${(e) => this.toggleDisplay(index, e)}
                           @continue-action=${() => this.continueAction(index)}
                         ></app-hax-use-case>
                       </div>
                     `,
                   )
-                : html`<p>No templates match the filters specified.</p>`}
+                : html`<p role="status" aria-live="polite">No templates match the current filters. Try adjusting your search or clearing filters.</p>`}
             </div>
-          </div>
+          </section>
         </div>
       </div>
 
@@ -588,6 +663,8 @@ export class AppHaxUseCaseFilter extends LitElement {
         return "hax:lesson";
       case "portfolio":
         return "icons:perm-identity";
+      case "blank":
+        return "icons:palette";
       default:
         return "icons:label";
     }
@@ -643,11 +720,11 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.searchTerm = searchTerm;
     store.searchTerm = searchTerm; // Update store with search term
 
-    // Filter templates (recipes)
+    // Filter templates (recipes and blank themes)
     this.filteredItems = [
       ...this.items.filter(
         (item) =>
-          item.dataType === "recipe" &&
+          (item.dataType === "recipe" || item.dataType === "blank") &&
           (item.useCaseTitle.toLowerCase().includes(searchTerm) ||
             (item.useCaseTag &&
               item.useCaseTag.some((tag) =>
@@ -689,10 +766,10 @@ export class AppHaxUseCaseFilter extends LitElement {
   applyFilters() {
     const lowerCaseQuery = this.searchTerm.toLowerCase();
 
-    // Filter recipes (from this.items)
+    // Filter recipes and blank themes (from this.items)
     this.filteredItems = [
       ...this.items.filter((item) => {
-        if (item.dataType !== "recipe") return false;
+        if (item.dataType !== "recipe" && item.dataType !== "blank") return false;
         const matchesSearch =
           lowerCaseQuery === "" ||
           item.useCaseTitle.toLowerCase().includes(lowerCaseQuery) ||
@@ -746,9 +823,9 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.searchTerm = "";
     store.searchTerm = "";
     this.activeFilters = [];
-    // Show all templates and all sites
+    // Show all templates (recipes and blank themes) and all sites
     this.filteredItems = [
-      ...this.items.filter((item) => item.dataType === "recipe"),
+      ...this.items.filter((item) => item.dataType === "recipe" || item.dataType === "blank"),
     ];
     this.filteredSites = [...this.returningSites];
 
@@ -766,14 +843,22 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.errorMessage = "";
 
     const recipesUrl = new URL("./app-hax-recipes.json", import.meta.url).href;
+    // Use base path aware themes.json loading
+    const themesUrl = `/elements/haxcms-elements/lib/themes.json`;
 
-    fetch(recipesUrl)
-      .then((response) => {
-        if (!response.ok)
-          throw new Error(`Failed Recipes (${response.status})`);
+    // Load both recipes and themes data concurrently
+    Promise.all([
+      fetch(recipesUrl).then(response => {
+        if (!response.ok) throw new Error(`Failed Recipes (${response.status})`);
+        return response.json();
+      }),
+      fetch(themesUrl).then(response => {
+        if (!response.ok) throw new Error(`Failed Themes (${response.status})`);
         return response.json();
       })
-      .then((recipesData) => {
+    ])
+      .then(([recipesData, themesData]) => {
+        // Process recipes data
         const recipeItems = Array.isArray(recipesData.item)
           ? recipesData.item.map((item) => {
               let tags = [];
@@ -796,11 +881,16 @@ export class AppHaxUseCaseFilter extends LitElement {
                     tooltip: attr.tooltip || "",
                   }))
                 : [];
-
+              let thumbnailPath = item.image || "";
+              if (thumbnailPath && thumbnailPath.startsWith('@haxtheweb/')) {
+                // Convert bare import style path to resolved path
+                const basePath = globalThis.WCGlobalBasePath || '/node_modules/';
+                thumbnailPath = basePath + thumbnailPath;
+              }
               return {
                 dataType: "recipe",
                 useCaseTitle: item.title || "Untitled Template",
-                useCaseImage: item.image || "",
+                useCaseImage: thumbnailPath || "",
                 useCaseDescription: item.description || "",
                 useCaseIcon: icons,
                 useCaseTag: tags,
@@ -810,11 +900,55 @@ export class AppHaxUseCaseFilter extends LitElement {
             })
           : [];
 
-        this.items = recipeItems;
+        // Process themes data into blank use cases (filter out hidden themes)
+        const themeItems = Object.values(themesData || {})
+          .filter((theme) => !theme.hidden) // Exclude hidden system/debug themes
+          .map((theme) => {
+          let tags = [];
+          if (Array.isArray(theme.category)) {
+            tags = theme.category.filter(
+              (c) => typeof c === "string" && c.trim() !== "",
+            );
+          } else if (
+            typeof theme.category === "string" &&
+            theme.category.trim() !== ""
+          ) {
+            tags = [theme.category.trim()];
+          }
+          if (tags.length === 0) tags = ["Blank"];
+          tags.forEach((tag) => this.allFilters.add(tag)); // Add to global Set
+
+          // Simple icon array for blank themes
+          const icons = [
+            { "icon": "icons:palette", "tooltip": "Customizable" }
+          ];
+
+          // Resolve thumbnail path using basePath or WCGlobalBasePath
+          let thumbnailPath = theme.thumbnail || "";
+          if (thumbnailPath && thumbnailPath.startsWith('@haxtheweb/')) {
+            // Convert bare import style path to resolved path
+            const basePath = globalThis.WCGlobalBasePath || '/node_modules/';
+            thumbnailPath = basePath + thumbnailPath;
+          }
+
+          return {
+            dataType: "blank",
+            useCaseTitle: theme.name || "Untitled Theme",
+            useCaseImage: thumbnailPath || "",
+            useCaseDescription: theme.description || "Start with a blank site using this theme",
+            useCaseIcon: icons,
+            useCaseTag: tags,
+            demoLink: "#", // Blank themes don't have demos
+            originalData: theme,
+          };
+        });
+
+        // Combine recipe and theme items
+        this.items = [...recipeItems, ...themeItems];
         this.filters = Array.from(this.allFilters).sort(); // Set AFTER all items
 
         if (this.items.length === 0 && !this.errorMessage) {
-          this.errorMessage = "No Recipes Found";
+          this.errorMessage = "No Templates Found";
         }
 
         this.resetFilters();

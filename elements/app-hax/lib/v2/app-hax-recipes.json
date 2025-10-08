@@ -7,14 +7,14 @@
       "category": ["Portfolio"],
       "recipe": "recipes/portfolio/portfolio.recipe",
       "theme": {
-        "element": "clean-portfolio",
-        "path": "@haxtheweb/clean-portfolio/clean-portfolio.js"
+        "element": "clean-portfolio-theme",
+        "path": "@haxtheweb/clean-portfolio-theme/clean-portfolio-theme.js"
       },
       "author": "haxtheweb",
-      "image": "/elements/app-hax/lib/assets/screenshots/clean-one.jpg",
+      "image": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
       "description": "Art gallery, blog posts, any collection of work and self presentation",
       "icon": "hax:hax2022",
-      "demo-url": "https://playground.hax.cloud/site.html?recipe=",
+      "demo-url": "https://playground.hax.cloud/site.html?theme=clean-portfolio",
       "attributes": [
         { "icon": "icons:language", "tooltip": "Translatable" },
         { "icon": "icons:thumb-up", "tooltip": "Popular" },
@@ -27,14 +27,14 @@
       "category": ["Course"],
       "recipe": "recipes/course/course.recipe",
       "theme": {
-        "element": "clean-course",
-        "path": "@haxtheweb/clean-course/clean-course.js"
+        "element": "clean-one",
+        "path": "@haxtheweb/clean-one/clean-one.js"
       },
       "author": "haxtheweb",
-      "image": "/elements/app-hax/lib/assets/screenshots/clean-one.jpg",
+      "image": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
       "description": "Art gallery, blog posts, any collection of work and self presentation",
       "icon": "hax:hax2022",
-      "demo-url": "https://playground.hax.cloud/site.html?recipe=",
+      "demo-url": "https://playground.hax.cloud/site.html?theme=clean-one",
       "attributes": [
         { "icon": "icons:language", "tooltip": "Translatable" },
         { "icon": "icons:thumb-up", "tooltip": "Popular" }
@@ -46,14 +46,14 @@
       "category": ["Blog"],
       "recipe": "recipes/blog/blog.recipe",
       "theme": {
-        "element": "clean-blog",
-        "path": "@haxtheweb/clean-blog/clean-blog.js"
+        "element": "clean-two",
+        "path": "@haxtheweb/clean-two/clean-two.js"
       },
       "author": "haxtheweb",
-      "image": "/elements/app-hax/lib/assets/screenshots/clean-one.jpg",
+      "image": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-two-thumb.jpg",
       "description": "Art gallery, blog posts, any collection of work and self presentation",
       "icon": "hax:hax2022",
-      "demo-url": "https://playground.hax.cloud/site.html?recipe=",
+      "demo-url": "https://playground.hax.cloud/site.html?theme=clean-two",
       "attributes": [
         { "icon": "icons:language", "tooltip": "Translatable" },
         { "icon": "icons:thumb-up", "tooltip": "Popular" }
@@ -61,18 +61,18 @@
     },
     {
       "uuid": "1b4132dd-c557-4576-89c7-f89446feda4a",
-      "title": "Brochure",
+      "title": "Glossy Portfolio",
       "category": ["Brochure"],
       "recipe": "recipes/brochure/brochure.recipe",
       "theme": {
-        "element": "clean-blog",
-        "path": "@haxtheweb/clean-brochure/clean-brochure.js"
+        "element": "glossy-portfolio-theme",
+        "path": "@haxtheweb/glossy-portfolio-theme/glossy-portfolio-theme.js"
       },
       "author": "haxtheweb",
-      "image": "/elements/app-hax/lib/assets/screenshots/clean-one.jpg",
+      "image": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-glossy-portfolio-theme-thumb.jpg",
       "description": "Art gallery, blog posts, any collection of work and self presentation",
       "icon": "hax:hax2022",
-      "demo-url": "https://playground.hax.cloud/site.html?recipe=",
+      "demo-url": "https://playground.hax.cloud/site.html?theme=glossy-portfolio-theme",
       "attributes": [
         { "icon": "icons:language", "tooltip": "Translatable" },
         { "icon": "icons:thumb-up", "tooltip": "Popular" }

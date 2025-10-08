@@ -145,7 +145,7 @@ function updateThemesWithScreenshots() {
   const updatedThemes = { ...themes };
   
   for (const [themeKey, themeData] of Object.entries(updatedThemes)) {
-    const screenshotFileName = `${themeData.element}.png`;
+    const screenshotFileName = `${themeData.element}.jpg`;
     const screenshotPath = join(SCREENSHOTS_DIR, screenshotFileName);
     const relativePath = relative(THEMES_JSON_DIR, screenshotPath);
     

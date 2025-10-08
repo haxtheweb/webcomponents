@@ -46,7 +46,7 @@ function updateThemesWithScreenshots() {
   
   for (const [themeKey, themeData] of Object.entries(updatedThemes)) {
     // Create screenshot filename based on theme element name
-    const screenshotFileName = `${themeData.element}.png`;
+    const screenshotFileName = `${themeData.element}.jpg`;
     const screenshotPath = join(SCREENSHOTS_DIR, screenshotFileName);
     
     // Update thumbnail path to point to screenshot (relative to themes.json)
@@ -97,7 +97,7 @@ export const themeScreenshotConfig = {
       "3. For each theme:",
       "   a. puppeteer_evaluate: globalThis.HAXCMS.setTheme('theme-element-name')",
       "   b. Wait 3 seconds for theme to load", 
-      "   c. puppeteer_screenshot with name 'theme-element-name.png'",
+      "   c. puppeteer_screenshot with name 'theme-element-name.jpg'",
       "4. Run updateThemesWithScreenshots() to update themes.json"
     ]
   }
@@ -110,7 +110,7 @@ function generateAutomationCommands() {
   const commands = [];
   
   for (const [themeKey, themeData] of Object.entries(themes)) {
-    const screenshotName = `${themeData.element}.png`;
+    const screenshotName = `${themeData.element}.jpg`;
     const screenshotPath = join(SCREENSHOTS_DIR, screenshotName);
     
     commands.push({

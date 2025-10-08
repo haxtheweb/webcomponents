@@ -44,7 +44,6 @@ export class AppHaxUseCase extends LitElement {
           font-family: var(--ddd-font-primary);
           color: var(--ddd-theme-default-nittanyNavy);
           background-color: white;
-          min-height: 240px;
           box-shadow: 2px 2px 12px #1c1c1c;
           border-radius: 4px;
         }
@@ -211,7 +210,19 @@ export class AppHaxUseCase extends LitElement {
           display: inline-flex;
           flex-direction: column;
           text-align: left;
-          padding: 0px 12px;
+          padding: 0px var(--ddd-spacing-3, 12px);
+        }
+        .titleBar h3 {
+          margin: 0;
+          font-size: var(--ddd-font-size-4xs, 14px);
+          height: var(--ddd-spacing-6, 24px);
+          overflow: hidden;
+        }
+        .titleBar p {
+          font-size: var(--ddd-font-size-4xs, 12px);
+          line-height: 1.4;
+          height: var(--ddd-spacing-12, 48px);
+          overflow: hidden;
         }
         @media (max-width: 768px) {
           :host {
@@ -338,7 +349,7 @@ export class AppHaxUseCase extends LitElement {
           </div>
         </div>
         <div class="titleBar">
-          <h3 style="font-size: 14px;">${this.title}</h3>
+          <h3>${this.title}</h3>
           <p>${this.description}</p>
         </div>
         <div class="cardBottom">

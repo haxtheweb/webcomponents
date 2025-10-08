@@ -84,7 +84,7 @@ popularThemes.forEach((themeKey, index) => {
   console.log(`${index + 1}. ${themeData.name}`);
   console.log(`   Element: ${themeData.element}`);
   console.log(`   Switch: globalThis.HAXCMS.setTheme('${themeData.element}')`);
-  console.log(`   Screenshot: ${themeData.element}.png`);
+  console.log(`   Screenshot: ${themeData.element}.jpg`);
   console.log('');
 });
 
@@ -93,7 +93,7 @@ popularThemes.forEach((themeKey, index) => {
  */
 console.log('\n=== FILE SAVING INSTRUCTIONS ===\n');
 console.log('When saving screenshot files:');
-console.log('1. Save each screenshot as: {theme-element-name}.png');
+console.log('1. Save each screenshot as: {theme-element-name}.jpg');
 console.log(`2. Save to directory: ${SCREENSHOTS_DIR}`);
 console.log('3. The themes.json is already updated with correct paths');
 console.log('4. Screenshots will be relative to themes.json location');
@@ -133,7 +133,7 @@ export const automationWorkflow = {
     key,
     element: data.element,
     name: data.name,
-    screenshotPath: `theme-screenshots/${data.element}.png`
+    screenshotPath: `theme-screenshots/${data.element}.jpg`
   }))
 };
 
