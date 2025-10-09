@@ -89,10 +89,7 @@ export class AppHaxSearchResults extends SimpleColors {
         :host {
           display: block;
           width: 100%;
-          min-width: calc(
-            3 * 264px + 2 * var(--ddd-spacing-6, 24px) + 2 *
-              var(--ddd-spacing-12, 56px)
-          );
+          overflow: visible;
         }
 
         .carousel-container {
@@ -100,7 +97,7 @@ export class AppHaxSearchResults extends SimpleColors {
           align-items: center;
           justify-content: flex-start;
           gap: var(--ddd-spacing-2, 8px);
-          width: 100%;
+          width: 65vw;
           max-height: 280px;
           position: relative;
           background: var(--ddd-theme-default-white, white);
@@ -110,6 +107,7 @@ export class AppHaxSearchResults extends SimpleColors {
           box-shadow: var(--ddd-boxShadow-sm);
           padding: var(--ddd-spacing-2, 8px);
           transition: box-shadow 0.2s ease;
+          overflow: visible;
         }
         :host([dark]) .carousel-container,
         body.dark-mode .carousel-container {
@@ -121,13 +119,14 @@ export class AppHaxSearchResults extends SimpleColors {
           box-shadow: var(--ddd-boxShadow-md);
         }
         .pager-container {
-          display: block;
+          display: flex;
+          flex-direction: column;
           justify-content: center;
           align-items: center;
           gap: var(--ddd-spacing-2, 8px);
-          margin-top: var(--ddd-spacing-2, 8px);
+          margin-right: var(--ddd-spacing-4, 16px);
           padding: var(--ddd-spacing-1, 4px);
-          width: 100%;
+          flex-shrink: 0;
           scrollbar-width: none;
           -ms-overflow-style: none;
         }
@@ -186,7 +185,7 @@ export class AppHaxSearchResults extends SimpleColors {
           position: relative;
         }
         .scroll-right {
-          margin-right: 56px;
+          margin-right: 0;
         }
 
         :host([dark]) .scroll-left,
@@ -427,25 +426,6 @@ export class AppHaxSearchResults extends SimpleColors {
     this.totalItems = this.displayItems.length;
 
     return html`
-      ${this.totalItems > 1
-        ? html`
-            <div class="pager-container">
-              ${Array.from(
-                { length: this.totalItems },
-                (_, index) => html`
-                  <button
-                    class="pager-dot ${this.currentIndex === index + 1
-                      ? "active"
-                      : ""}"
-                    @click="${() => this.goToPage(index + 1)}"
-                    aria-label="Go to page ${index + 1}"
-                    tabindex="0"
-                  ></button>
-                `,
-              )}
-            </div>
-          `
-        : ""}
       <div class="carousel-container">
         <simple-tooltip for="scroll-left-btn" position="top"
           >Previous</simple-tooltip
@@ -517,6 +497,25 @@ export class AppHaxSearchResults extends SimpleColors {
         >
           ▶
         </button>
+        ${this.totalItems > 1
+          ? html`
+              <div class="pager-container">
+                ${Array.from(
+                  { length: this.totalItems },
+                  (_, index) => html`
+                    <button
+                      class="pager-dot ${this.currentIndex === index + 1
+                        ? "active"
+                        : ""}"
+                      @click="${() => this.goToPage(index + 1)}"
+                      aria-label="Go to page ${index + 1}"
+                      tabindex="0"
+                    ></button>
+                  `,
+                )}
+              </div>
+            `
+          : ""}
       </div>
     `;
   }

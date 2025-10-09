@@ -86,10 +86,10 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: flex;
           align-items: flex-start;
           justify-content: flex-start;
-          gap: var(--ddd-spacing-4, 16px);
+          gap: var(--ddd-spacing-6, 24px);
           width: 100%;
-          margin: 0 var(--ddd-spacing-4, 16px);
-          padding-right: var(--ddd-spacing-4, 16px);
+          margin: 0;
+          padding: 0 var(--ddd-spacing-6, 24px);
           box-sizing: border-box;
         }
         .leftSection,
@@ -106,16 +106,15 @@ export class AppHaxUseCaseFilter extends LitElement {
           margin-right: var(--ddd-spacing-1, 4px);
           padding-top: 0;
           box-sizing: border-box;
-          position: sticky;
-          top: var(--ddd-spacing-2, 8px);
           align-self: flex-start;
         }
         .rightSection {
           flex: 1;
-          width: calc(100vw - 420px);
+          min-width: 0;
           box-sizing: border-box;
           display: flex;
           flex-direction: column;
+          overflow: visible;
         }
         .template-results {
           display: grid;
@@ -123,23 +122,15 @@ export class AppHaxUseCaseFilter extends LitElement {
           width: 100%;
           min-height: 330px;
           box-sizing: border-box;
-          gap: var(--ddd-spacing-2, 8px);
+          gap: var(--ddd-spacing-4, 16px);
         }
         #returnToSection {
           width: 100%;
         }
         #returnToSection app-hax-search-results {
-          display: flex;
-          gap: var(--ddd-spacing-6, 24px);
-          min-width: calc(3 * 264px + 2 * var(--ddd-spacing-6, 24px));
-          min-height: 120px;
+          width: 100%;
+          min-height: 280px;
           box-sizing: border-box;
-          justify-content: flex-start;
-          align-items: stretch;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          scroll-behavior: smooth;
-          overflow: hidden;
           height: 300px;
         }
         :host(:not([show-filter])) app-hax-search-results {
@@ -156,7 +147,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         .startNew,
         .returnTo {
-          padding-top: var(--ddd-spacing-2, 8px);
+          padding-top: var(--ddd-spacing-4, 16px);
           position: relative;
           display: flex;
           flex-direction: column;
@@ -164,6 +155,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           align-items: flex-start;
           margin-left: 0;
           margin-right: 0;
+          margin-bottom: var(--ddd-spacing-6, 24px);
         }
         .upper-filter {
           margin-bottom: var(--ddd-spacing-4, 16px);
@@ -221,7 +213,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           color: var(--ddd-theme-default-white, white);
         }
         .filter {
-          position: sticky;
+          position: relative;
           top: 0;
           display: flex;
           flex-direction: column;
@@ -296,13 +288,20 @@ export class AppHaxUseCaseFilter extends LitElement {
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
           border-color: var(--ddd-theme-default-white, white);
         }
-        .filter-btn:hover {
+        .filter-btn:hover,
+        .filter-btn:focus {
           background: var(--ddd-theme-default-slateGray, #666);
           color: var(--ddd-theme-default-white, white);
           transform: translateY(-1px);
         }
+        .filter-btn:focus {
+          outline: var(--ddd-border-md, 2px solid) var(--ddd-theme-default-keystoneYellow, #ffd100);
+          outline-offset: var(--ddd-spacing-1, 2px);
+        }
         :host([dark]) .filter-btn:hover,
-        body.dark-mode .filter-btn:hover {
+        :host([dark]) .filter-btn:focus,
+        body.dark-mode .filter-btn:hover,
+        body.dark-mode .filter-btn:focus {
           background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
         }
@@ -356,16 +355,23 @@ export class AppHaxUseCaseFilter extends LitElement {
           transition: all 0.2s ease;
           min-height: var(--ddd-spacing-7, 28px);
         }
-        .reset-button:hover {
+        .reset-button:hover,
+        .reset-button:focus {
           background: var(--ddd-theme-default-beaver70, #c85c2c);
           transform: translateY(-1px);
+        }
+        .reset-button:focus {
+          outline: var(--ddd-border-md, 2px solid) var(--ddd-theme-default-keystoneYellow, #ffd100);
+          outline-offset: var(--ddd-spacing-1, 2px);
         }
         :host([dark]) .reset-button,
         body.dark-mode .reset-button {
           background: var(--ddd-theme-default-beaver70, #c85c2c);
         }
         :host([dark]) .reset-button:hover,
-        body.dark-mode .reset-button:hover {
+        :host([dark]) .reset-button:focus,
+        body.dark-mode .reset-button:hover,
+        body.dark-mode .reset-button:focus {
           background: var(--ddd-theme-default-original87Pink, #e4007c);
         }
         .collapseFilter {
@@ -470,6 +476,10 @@ export class AppHaxUseCaseFilter extends LitElement {
             min-width: 100%;
           }
         }
+        .no-results {
+          font-size: var(--ddd-font-size-s, 16px);
+          color: light-dark(var(--ddd-theme-default-coalyGray, #222), var(--ddd-theme-default-white, white));
+        }
       `,
     ];
   }
@@ -499,7 +509,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           <div class="filter" role="search" aria-label="Filter and search site templates">
             <!-- Search bar -->
             <div class="upper-filter">
-              <label for="searchField" class="visually-hidden">Search Sites & Templates</label>
+              <label for="searchField" class="visually-hidden">Filter Sites</label>
               <slot>
                 <simple-icon-lite
                   class="search-icon"
@@ -512,8 +522,8 @@ export class AppHaxUseCaseFilter extends LitElement {
                 @input="${this.handleSearch}"
                 @keydown="${this.testKeydown}"
                 type="text"
-                placeholder="Search Sites & Templates"
-                aria-label="Search Sites & Templates"
+                placeholder="Filter Sites"
+                aria-label="Filter Sites"
                 aria-describedby="search-help"
               />
               <div id="search-help" class="visually-hidden">
@@ -632,14 +642,13 @@ export class AppHaxUseCaseFilter extends LitElement {
                           .showContinue=${item.showContinue || false}
                           ?dark="${this.dark}"
                           aria-label="Template: ${item.useCaseTitle}"
-                          tabindex="0"
                           @toggle-display=${(e) => this.toggleDisplay(index, e)}
                           @continue-action=${() => this.continueAction(index)}
                         ></app-hax-use-case>
                       </div>
                     `,
                   )
-                : html`<p role="status" aria-live="polite">No templates match the current filters. Try adjusting your search or clearing filters.</p>`}
+                : html`<p role="status" class="no-results" aria-live="polite">No templates match the current filters. Try adjusting your search or clearing filters.</p>`}
             </div>
           </section>
         </div>
@@ -664,7 +673,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       case "portfolio":
         return "icons:perm-identity";
       case "blank":
-        return "icons:palette";
+        return "icons:web";
       default:
         return "icons:label";
     }

@@ -116,7 +116,6 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           display: flex;
           flex-direction: column;
           align-items: center;
-          text-align: center;
           position: relative;
           padding: var(--ddd-spacing-6, 24px);
         }
@@ -146,11 +145,36 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
         }
 
         .template-info {
+          display: flex;
+          gap: var(--ddd-spacing-4, 16px);
           margin-bottom: var(--ddd-spacing-4, 16px);
           padding: var(--ddd-spacing-3, 12px);
           background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
           border-radius: var(--ddd-radius-sm, 4px);
           width: 100%;
+          align-items: flex-start;
+        }
+        
+        .template-image {
+          flex-shrink: 0;
+          width: 120px;
+          height: 80px;
+          border-radius: var(--ddd-radius-sm, 4px);
+          overflow: hidden;
+          border: var(--ddd-border-xs, 1px solid) var(--ddd-theme-default-slateGray, #666);
+        }
+        
+        .template-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+        
+        .template-details {
+          flex: 1;
+          min-width: 0;
+          text-align: left;
         }
 
         .template-title {
@@ -786,13 +810,22 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
   renderNamingStep() {
     return html`
       <div class="template-info">
-        <h3 class="template-title">${this.title}</h3>
-        <p class="template-description">${this.description}</p>
+        ${this.source
+          ? html`
+              <div class="template-image">
+                <img src="${this.source}" alt="${this.title} preview" />
+              </div>
+            `
+          : ""}
+        <div class="template-details">
+          <h3 class="template-title">${this.title}</h3>
+          <p class="template-description">${this.description}</p>
+        </div>
       </div>
 
       <div class="form-group">
         <label class="form-label" for="siteName">Site Name</label>
-        <simple-icon-lite class="form-icon" icon="icons:web"></simple-icon-lite>
+        <simple-icon-lite class="form-icon" icon="icons:create"></simple-icon-lite>
         <input
           id="siteName"
           class="form-input"

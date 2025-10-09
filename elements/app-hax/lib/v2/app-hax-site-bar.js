@@ -30,6 +30,13 @@ export class AppHaxSiteBars extends SimpleColors {
     this.textInfo = {};
     this.siteId = "";
     this.description = "";
+    this._boundKeydownHandler = this._handleMenuKeydown.bind(this);
+  }
+
+  // Clean up event listeners when component is removed
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    document.removeEventListener('keydown', this._boundKeydownHandler);
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
@@ -48,16 +55,123 @@ export class AppHaxSiteBars extends SimpleColors {
 
   // updated fires every time a property defined above changes
   // this allows you to react to variables changing and use javascript to perform logic
-  updated(changedProperties) {}
+  updated(changedProperties) {
+    if (changedProperties.has('showOptions')) {
+      if (this.showOptions) {
+        // Menu opened - add keyboard listener and focus first menu item
+        document.addEventListener('keydown', this._boundKeydownHandler);
+        this._focusFirstMenuItem();
+      } else {
+        // Menu closed - remove keyboard listener
+        document.removeEventListener('keydown', this._boundKeydownHandler);
+      }
+    }
+  }
 
   toggleOptionsMenu() {
+    const wasOpen = this.showOptions;
     this.showOptions = !this.showOptions;
+    
+    // If we're closing the menu, return focus to the settings button
+    if (wasOpen && !this.showOptions) {
+      this._returnFocusToSettingsButton();
+    }
+  }
+
+  closeOptionsMenu() {
+    this.showOptions = false;
+    this._returnFocusToSettingsButton();
   }
 
   handleKeydown(e, callback) {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       callback.call(this);
+    }
+  }
+
+  // Accessibility helper methods
+  _focusFirstMenuItem() {
+    // Use setTimeout to ensure the DOM has updated
+    setTimeout(() => {
+      // Focus the close button first as it appears first in the DOM
+      const closeButton = this.shadowRoot.querySelector('.close-menu-btn');
+      if (closeButton) {
+        closeButton.focus();
+      } else {
+        // Fallback to first menu item if close button not found
+        const firstMenuItem = this.shadowRoot.querySelector('.menu-item');
+        if (firstMenuItem) {
+          firstMenuItem.focus();
+        }
+      }
+    }, 0);
+  }
+
+  _returnFocusToSettingsButton() {
+    setTimeout(() => {
+      const settingsButton = this.shadowRoot.querySelector('#settingsIcon');
+      if (settingsButton) {
+        settingsButton.focus();
+      }
+    }, 0);
+  }
+
+  _handleMenuKeydown(e) {
+    if (!this.showOptions) return;
+
+    // Get all focusable elements in the menu in DOM order
+    const menuItems = Array.from(this.shadowRoot.querySelectorAll('.close-menu-btn, .menu-item'));
+
+    switch (e.key) {
+      case 'Escape':
+        e.preventDefault();
+        this.closeOptionsMenu();
+        break;
+      case 'ArrowDown':
+      case 'ArrowUp':
+        // Only handle arrow keys if focus is within our menu
+        const arrowCurrentIndex = menuItems.indexOf(e.target);
+        if (arrowCurrentIndex !== -1) {
+          e.preventDefault();
+          if (e.key === 'ArrowDown') {
+            const nextIndex = arrowCurrentIndex < menuItems.length - 1 ? arrowCurrentIndex + 1 : 0;
+            menuItems[nextIndex].focus();
+          } else {
+            const prevIndex = arrowCurrentIndex > 0 ? arrowCurrentIndex - 1 : menuItems.length - 1;
+            menuItems[prevIndex].focus();
+          }
+        }
+        break;
+      case 'Tab':
+        e.preventDefault();
+        // Find which menu item is currently focused
+        let currentFocusedIndex = -1;
+        for (let i = 0; i < menuItems.length; i++) {
+          if (menuItems[i] === document.activeElement || 
+              menuItems[i] === this.shadowRoot.activeElement) {
+            currentFocusedIndex = i;
+            break;
+          }
+        }
+        
+        // If no menu item is focused, start with the first one
+        if (currentFocusedIndex === -1) {
+          menuItems[0].focus();
+          break;
+        }
+        
+        // Trap focus within the menu - tab forward or backward through all items
+        if (e.shiftKey) {
+          // Shift+Tab - go to previous item, or wrap to last
+          const prevTabIndex = currentFocusedIndex > 0 ? currentFocusedIndex - 1 : menuItems.length - 1;
+          menuItems[prevTabIndex].focus();
+        } else {
+          // Tab - go to next item, or wrap to first
+          const nextTabIndex = currentFocusedIndex < menuItems.length - 1 ? currentFocusedIndex + 1 : 0;
+          menuItems[nextTabIndex].focus();
+        }
+        break;
     }
   }
   copySite() {
@@ -245,14 +359,14 @@ export class AppHaxSiteBars extends SimpleColors {
       css`
         :host {
           text-align: left;
-          max-width: 240px;
-
+          width: 264px;
+          max-width: 264px;
           font-family: var(--ddd-font-primary);
           color: var(--ddd-theme-default-nittanyNavy);
           background-color: white;
-          min-height: 220px;
-          box-shadow: 2px 2px 10px #1c1c1c;
-          border-radius: 8px;
+          min-height: 260px;
+          box-shadow: 2px 2px 12px #1c1c1c;
+          border-radius: 4px;
         }
         #mainCard {
           display: flex;
@@ -262,17 +376,19 @@ export class AppHaxSiteBars extends SimpleColors {
           padding: 12px 16px 20px;
         }
         .imageLink img {
-          width: 220px;
+          width: 100%;
           height: 125px;
+          object-fit: cover;
           border-top-right-radius: 8px;
           border-top-left-radius: 8px;
-          border-bottom: solid var(--ddd-theme-default-nittanyNavy) 12px;
+          border-bottom: solid var(--ddd-theme-default-nittanyNavy) 8px;
           overflow: clip;
           justify-self: center;
         }
         .imageLink {
           position: relative;
-          display: inline-block;
+          display: block;
+          width: 100%;
         }
         .settings-button {
           position: relative;
@@ -358,6 +474,11 @@ export class AppHaxSiteBars extends SimpleColors {
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
           text-decoration: none;
           min-height: var(--ddd-spacing-5, 20px);
+          background: transparent;
+          border: none;
+          width: 100%;
+          text-align: left;
+          gap: var(--ddd-spacing-1, 4px);
         }
         :host([dark]) .menu-item,
         body.dark-mode .menu-item {
@@ -377,45 +498,53 @@ export class AppHaxSiteBars extends SimpleColors {
           background: var(--ddd-theme-default-slateGray, #555);
           color: var(--ddd-theme-default-white, white);
         }
-        .menu-item simple-icon-button-lite {
-          margin-right: var(--ddd-spacing-1, 4px);
+        .menu-item simple-icon-lite {
           flex-shrink: 0;
+          width: var(--ddd-icon-3xs, 16px);
+          height: var(--ddd-icon-3xs, 16px);
         }
 
         .titleBar {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          font-size: 20px;
+          font-size: var(--ddd-font-size-xs, 14px);
           color: var(--ddd-theme-default-nittanyNavy);
         }
         p {
-          font-size: 12px;
-          padding: 8px 8px 6px 10px;
+          font-size: var(--ddd-font-size-4xs, 12px);
+          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-2, 8px) var(--ddd-spacing-1, 6px) var(--ddd-spacing-2, 10px);
+          margin: 0;
+          line-height: 1.4;
         }
         ::slotted([slot="heading"]) {
-          font-size: 20px;
-          font-weight: bold;
+          font-size: var(--ddd-font-size-xs, 14px);
+          font-weight: var(--ddd-font-weight-bold, 700);
           color: var(--ddd-theme-default-nittanyNavy);
           text-decoration: none;
           display: block;
+          margin: 0;
+          line-height: 1.2;
         }
         button {
           display: flex;
           background: var(--ddd-theme-default-nittanyNavy, #001e44);
           color: var(--ddd-theme-default-white, white);
-          border: var(--ddd-border-sm, 2px solid) transparent;
-          border-radius: var(--ddd-radius-md, 8px);
+          border: var(--ddd-border-xs, 1px solid) transparent;
+          border-radius: var(--ddd-radius-sm, 4px);
           font-family: var(--ddd-font-primary, sans-serif);
-          font-size: var(--ddd-font-size-xs, 14px);
+          font-size: var(--ddd-font-size-3xs, 11px);
           font-weight: var(--ddd-font-weight-medium, 500);
-          padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-4, 16px);
-          min-height: var(--ddd-spacing-9, 36px);
+          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
+          min-height: var(--ddd-spacing-7, 28px);
           align-items: center;
           justify-content: center;
           cursor: pointer;
           transition: all 0.2s ease;
           box-shadow: var(--ddd-boxShadow-sm);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
         button:hover {
           background: var(--ddd-theme-default-keystoneYellow, #ffd100);
@@ -427,12 +556,14 @@ export class AppHaxSiteBars extends SimpleColors {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          margin-top: 6px;
+          padding: 0px 12px 16px 12px;
+          gap: 4px;
         }
         .cardBottom button {
           flex: 1;
-          margin-top: var(--ddd-spacing-2, 8px);
-          margin-left: var(--ddd-spacing-2, 8px);
-          margin-right: var(--ddd-spacing-2, 8px);
+          margin: 0 2px;
+          min-width: 0;
         }
         ::slotted(a[slot="heading"]),
         ::slotted(span[slot="subHeading"]),
@@ -473,11 +604,18 @@ export class AppHaxSiteBars extends SimpleColors {
                 icon="hax:settings"
                 @click="${this.toggleOptionsMenu}"
                 aria-label="Open options"
+                aria-expanded="${this.showOptions}"
+                aria-haspopup="menu"
               ></simple-icon-button-lite>
 
               ${this.showOptions
                 ? html`
-                    <div class="options-menu">
+                    <div
+                      id="options-menu-${this.siteId}"
+                      class="options-menu"
+                      role="menu"
+                      aria-labelledby="settingsIcon"
+                    >
                       <button
                         class="close-menu-btn"
                         @click="${this.toggleOptionsMenu}"
@@ -485,56 +623,42 @@ export class AppHaxSiteBars extends SimpleColors {
                       >
                         ×
                       </button>
-                      <div
+                      <button
                         class="menu-item"
                         @click="${this.copySite}"
-                        @keydown="${(e) =>
-                          this.handleKeydown(e, this.copySite)}"
-                        tabindex="0"
+                        role="menuitem"
+                        aria-label="Copy site"
                       >
-                        <simple-icon-button-lite
-                          icon="content-copy"
-                          title="Copy"
-                          >Copy</simple-icon-button-lite
-                        >
-                      </div>
-                      <div
+                        <simple-icon-lite icon="content-copy"></simple-icon-lite>
+                        Copy
+                      </button>
+                      <button
                         class="menu-item"
                         @click="${this.downloadSite}"
-                        @keydown="${(e) =>
-                          this.handleKeydown(e, this.downloadSite)}"
-                        tabindex="0"
+                        role="menuitem"
+                        aria-label="Download site"
                       >
-                        <simple-icon-button-lite
-                          icon="file-download"
-                          title="Download"
-                          >Download</simple-icon-button-lite
-                        >
-                      </div>
-                      <div
+                        <simple-icon-lite icon="file-download"></simple-icon-lite>
+                        Download
+                      </button>
+                      <button
                         class="menu-item"
                         @click="${this.archiveSite}"
-                        @keydown="${(e) =>
-                          this.handleKeydown(e, this.archiveSite)}"
-                        tabindex="0"
+                        role="menuitem"
+                        aria-label="Archive site"
                       >
-                        <simple-icon-button-lite icon="archive" title="Archive"
-                          >Archive</simple-icon-button-lite
-                        >
-                      </div>
-                      <div
+                        <simple-icon-lite icon="archive"></simple-icon-lite>
+                        Archive
+                      </button>
+                      <button
                         class="menu-item"
                         @click="${this.openUserAccess}"
-                        @keydown="${(e) =>
-                          this.handleKeydown(e, this.openUserAccess)}"
-                        tabindex="0"
+                        role="menuitem"
+                        aria-label="Manage user access"
                       >
-                        <simple-icon-button-lite
-                          icon="account-circle"
-                          title="User Access"
-                          >User Access</simple-icon-button-lite
-                        >
-                      </div>
+                        <simple-icon-lite icon="account-circle"></simple-icon-lite>
+                        User Access
+                      </button>
                     </div>
                   `
                 : ""}
