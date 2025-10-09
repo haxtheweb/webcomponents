@@ -178,7 +178,7 @@ export class AppHaxSearchResults extends SimpleColors {
           display: flex;
           align-items: center;
           justify-content: center;
-          font-size: var(--ddd-font-size-l, 20px);
+          font-size: var(--ddd-font-size-s, 20px);
           transition: all 0.2s ease;
           flex-shrink: 0;
           z-index: 10;
@@ -310,13 +310,6 @@ export class AppHaxSearchResults extends SimpleColors {
           justify-content: center;
         }
 
-        /* Ensure minimum 3 items are always displayed with empty space if needed */
-        #results::after {
-          content: "";
-          flex: 1 0 auto;
-          min-width: 264px;
-          height: 260px;
-        }
         app-hax-site-bar {
           margin: 0 var(--ddd-spacing-3, 12px);
           width: 100%;
@@ -531,7 +524,7 @@ export class AppHaxSearchResults extends SimpleColors {
 
   scrollRight() {
     // Don't scroll if at the end or only one item
-    if (this.currentIndex >= this.totalItems || this.totalItems <= 1) return;
+    if (this.currentIndex >= this.totalItems-1 || this.totalItems <= 1) return;
     
     this.shadowRoot
       .querySelector("#results")
