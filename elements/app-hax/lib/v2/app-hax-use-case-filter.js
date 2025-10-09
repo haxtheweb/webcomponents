@@ -86,10 +86,10 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: flex;
           align-items: flex-start;
           justify-content: flex-start;
-          gap: var(--ddd-spacing-6, 24px);
+          gap: var(--ddd-spacing-12, 48px);
           width: 100%;
           margin: 0;
-          padding: 0 var(--ddd-spacing-6, 24px);
+          padding: 0;
           box-sizing: border-box;
         }
         .leftSection,
@@ -99,9 +99,9 @@ export class AppHaxUseCaseFilter extends LitElement {
           flex: 1 1 0;
         }
         .leftSection {
-          width: 340px;
-          min-width: 260px;
-          max-width: 380px;
+          width: 240px;
+          min-width: 200px;
+          max-width: 260px;
           margin-left: 0;
           margin-right: var(--ddd-spacing-1, 4px);
           padding-top: 0;
@@ -118,11 +118,11 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         .template-results {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
           width: 100%;
           min-height: 330px;
           box-sizing: border-box;
-          gap: var(--ddd-spacing-4, 16px);
+          gap: var(--ddd-spacing-2, 16px);
         }
         #returnToSection {
           width: 100%;
@@ -147,15 +147,12 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         .startNew,
         .returnTo {
-          padding-top: var(--ddd-spacing-4, 16px);
           position: relative;
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
           align-items: flex-start;
-          margin-left: 0;
-          margin-right: 0;
-          margin-bottom: var(--ddd-spacing-6, 24px);
+          margin: 0;
         }
         .upper-filter {
           margin-bottom: var(--ddd-spacing-4, 16px);
@@ -295,7 +292,8 @@ export class AppHaxUseCaseFilter extends LitElement {
           transform: translateY(-1px);
         }
         .filter-btn:focus {
-          outline: var(--ddd-border-md, 2px solid) var(--ddd-theme-default-keystoneYellow, #ffd100);
+          outline: var(--ddd-border-md, 2px solid)
+            var(--ddd-theme-default-keystoneYellow, #ffd100);
           outline-offset: var(--ddd-spacing-1, 2px);
         }
         :host([dark]) .filter-btn:hover,
@@ -361,7 +359,8 @@ export class AppHaxUseCaseFilter extends LitElement {
           transform: translateY(-1px);
         }
         .reset-button:focus {
-          outline: var(--ddd-border-md, 2px solid) var(--ddd-theme-default-keystoneYellow, #ffd100);
+          outline: var(--ddd-border-md, 2px solid)
+            var(--ddd-theme-default-keystoneYellow, #ffd100);
           outline-offset: var(--ddd-spacing-1, 2px);
         }
         :host([dark]) .reset-button,
@@ -377,7 +376,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         .collapseFilter {
           display: none;
         }
-        
+
         /* Visually hidden content for screen readers */
         .visually-hidden {
           position: absolute !important;
@@ -478,7 +477,10 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         .no-results {
           font-size: var(--ddd-font-size-s, 16px);
-          color: light-dark(var(--ddd-theme-default-coalyGray, #222), var(--ddd-theme-default-white, white));
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray, #222),
+            var(--ddd-theme-default-white, white)
+          );
         }
       `,
     ];
@@ -496,7 +498,7 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   handleFilterKeydown(e, filter) {
     // Handle keyboard interaction for filter labels (Space and Enter)
-    if (e.key === ' ' || e.key === 'Enter') {
+    if (e.key === " " || e.key === "Enter") {
       e.preventDefault();
       this.toggleFilterByButton(filter);
     }
@@ -506,10 +508,16 @@ export class AppHaxUseCaseFilter extends LitElement {
     return html`
       <div class="contentSection">
         <div class="leftSection">
-          <div class="filter" role="search" aria-label="Filter and search site templates">
+          <div
+            class="filter"
+            role="search"
+            aria-label="Filter and search site templates"
+          >
             <!-- Search bar -->
             <div class="upper-filter">
-              <label for="searchField" class="visually-hidden">Filter Sites</label>
+              <label for="searchField" class="visually-hidden"
+                >Filter Sites</label
+              >
               <slot>
                 <simple-icon-lite
                   class="search-icon"
@@ -527,12 +535,15 @@ export class AppHaxUseCaseFilter extends LitElement {
                 aria-describedby="search-help"
               />
               <div id="search-help" class="visually-hidden">
-                Type to search for site templates and existing sites. Press Escape to clear.
+                Type to search for site templates and existing sites. Press
+                Escape to clear.
               </div>
             </div>
             <!-- Filter Buttons -->
             <fieldset class="filterButtons">
-              <legend class="visually-hidden">Filter templates by category</legend>
+              <legend class="visually-hidden">
+                Filter templates by category
+              </legend>
               ${this.filters.map(
                 (filter, i) => html`
                   <input
@@ -566,8 +577,8 @@ export class AppHaxUseCaseFilter extends LitElement {
                 `,
               )}
             </fieldset>
-            <button 
-              class="reset-button" 
+            <button
+              class="reset-button"
               @click="${this.resetFilters}"
               aria-describedby="reset-help"
             >
@@ -581,14 +592,14 @@ export class AppHaxUseCaseFilter extends LitElement {
         <!-- Content Section -->
         <div class="rightSection">
           <!-- Returning Sites -->
-          <section 
-            id="returnToSection" 
+          <section
+            id="returnToSection"
             class="returnTo"
             aria-labelledby="return-to-heading"
           >
             <h4 id="return-to-heading">Return to...</h4>
-            <div 
-              role="region" 
+            <div
+              role="region"
               aria-label="Previously created sites"
               aria-live="polite"
             >
@@ -602,13 +613,13 @@ export class AppHaxUseCaseFilter extends LitElement {
           </section>
 
           <!-- Templates -->
-          <section 
-            id="startJourneySection" 
+          <section
+            id="startJourneySection"
             class="startNew"
             aria-labelledby="create-site-heading"
           >
             <h4 id="create-site-heading">Create New Site</h4>
-            <div 
+            <div
               class="template-results"
               role="grid"
               aria-label="Available site templates"
@@ -621,17 +632,11 @@ export class AppHaxUseCaseFilter extends LitElement {
               ${this.filteredItems.length > 0
                 ? this.filteredItems.map(
                     (item, index) => html`
-                      <div role="gridcell" aria-rowindex="${index + 1}" aria-colindex="1">
-                        ${item.demoLink !== '#' ? html`
-                          <a
-                            href="${item.demoLink}"
-                            target="_blank"
-                            aria-label="View demo of ${item.useCaseTitle}"
-                            class="demo-link ${index === this.activeUseCase
-                              ? "active-card"
-                              : ""}"
-                          ></a>
-                        ` : ''}
+                      <div
+                        role="gridcell"
+                        aria-rowindex="${index + 1}"
+                        aria-colindex="1"
+                      >
                         <app-hax-use-case
                           .source=${item.useCaseImage || ""}
                           .title=${item.useCaseTitle || ""}
@@ -648,7 +653,10 @@ export class AppHaxUseCaseFilter extends LitElement {
                       </div>
                     `,
                   )
-                : html`<p role="status" class="no-results" aria-live="polite">No templates match the current filters. Try adjusting your search or clearing filters.</p>`}
+                : html`<p role="status" class="no-results" aria-live="polite">
+                    No templates match the current filters. Try adjusting your
+                    search or clearing filters.
+                  </p>`}
             </div>
           </section>
         </div>
@@ -673,7 +681,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       case "portfolio":
         return "icons:perm-identity";
       case "blank":
-        return "icons:web";
+        return "hax:bricks";
       default:
         return "icons:label";
     }
@@ -778,7 +786,8 @@ export class AppHaxUseCaseFilter extends LitElement {
     // Filter recipes and blank themes (from this.items)
     this.filteredItems = [
       ...this.items.filter((item) => {
-        if (item.dataType !== "recipe" && item.dataType !== "blank") return false;
+        if (item.dataType !== "recipe" && item.dataType !== "blank")
+          return false;
         const matchesSearch =
           lowerCaseQuery === "" ||
           item.useCaseTitle.toLowerCase().includes(lowerCaseQuery) ||
@@ -834,7 +843,9 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.activeFilters = [];
     // Show all templates (recipes and blank themes) and all sites
     this.filteredItems = [
-      ...this.items.filter((item) => item.dataType === "recipe" || item.dataType === "blank"),
+      ...this.items.filter(
+        (item) => item.dataType === "recipe" || item.dataType === "blank",
+      ),
     ];
     this.filteredSites = [...this.returningSites];
 
@@ -857,14 +868,15 @@ export class AppHaxUseCaseFilter extends LitElement {
 
     // Load both recipes and themes data concurrently
     Promise.all([
-      fetch(recipesUrl).then(response => {
-        if (!response.ok) throw new Error(`Failed Recipes (${response.status})`);
+      fetch(recipesUrl).then((response) => {
+        if (!response.ok)
+          throw new Error(`Failed Recipes (${response.status})`);
         return response.json();
       }),
-      fetch(themesUrl).then(response => {
+      fetch(themesUrl).then((response) => {
         if (!response.ok) throw new Error(`Failed Themes (${response.status})`);
         return response.json();
-      })
+      }),
     ])
       .then(([recipesData, themesData]) => {
         // Process recipes data
@@ -891,9 +903,10 @@ export class AppHaxUseCaseFilter extends LitElement {
                   }))
                 : [];
               let thumbnailPath = item.image || "";
-              if (thumbnailPath && thumbnailPath.startsWith('@haxtheweb/')) {
+              if (thumbnailPath && thumbnailPath.startsWith("@haxtheweb/")) {
                 // Convert bare import style path to resolved path
-                const basePath = globalThis.WCGlobalBasePath || '/node_modules/';
+                const basePath =
+                  globalThis.WCGlobalBasePath || "/node_modules/";
                 thumbnailPath = basePath + thumbnailPath;
               }
               return {
@@ -913,44 +926,43 @@ export class AppHaxUseCaseFilter extends LitElement {
         const themeItems = Object.values(themesData || {})
           .filter((theme) => !theme.hidden) // Exclude hidden system/debug themes
           .map((theme) => {
-          let tags = [];
-          if (Array.isArray(theme.category)) {
-            tags = theme.category.filter(
-              (c) => typeof c === "string" && c.trim() !== "",
-            );
-          } else if (
-            typeof theme.category === "string" &&
-            theme.category.trim() !== ""
-          ) {
-            tags = [theme.category.trim()];
-          }
-          if (tags.length === 0) tags = ["Blank"];
-          tags.forEach((tag) => this.allFilters.add(tag)); // Add to global Set
+            let tags = [];
+            if (Array.isArray(theme.category)) {
+              tags = theme.category.filter(
+                (c) => typeof c === "string" && c.trim() !== "",
+              );
+            } else if (
+              typeof theme.category === "string" &&
+              theme.category.trim() !== ""
+            ) {
+              tags = [theme.category.trim()];
+            }
+            if (tags.length === 0) tags = ["Blank"];
+            tags.forEach((tag) => this.allFilters.add(tag)); // Add to global Set
 
-          // Simple icon array for blank themes
-          const icons = [
-            { "icon": "icons:palette", "tooltip": "Customizable" }
-          ];
+            // Simple icon array for blank themes
+            const icons = [{ icon: "icons:palette", tooltip: "Customizable" }];
 
-          // Resolve thumbnail path using basePath or WCGlobalBasePath
-          let thumbnailPath = theme.thumbnail || "";
-          if (thumbnailPath && thumbnailPath.startsWith('@haxtheweb/')) {
-            // Convert bare import style path to resolved path
-            const basePath = globalThis.WCGlobalBasePath || '/node_modules/';
-            thumbnailPath = basePath + thumbnailPath;
-          }
+            // Resolve thumbnail path using basePath or WCGlobalBasePath
+            let thumbnailPath = theme.thumbnail || "";
+            if (thumbnailPath && thumbnailPath.startsWith("@haxtheweb/")) {
+              // Convert bare import style path to resolved path
+              const basePath = globalThis.WCGlobalBasePath || "/node_modules/";
+              thumbnailPath = basePath + thumbnailPath;
+            }
 
-          return {
-            dataType: "blank",
-            useCaseTitle: theme.name || "Untitled Theme",
-            useCaseImage: thumbnailPath || "",
-            useCaseDescription: theme.description || "Start with a blank site using this theme",
-            useCaseIcon: icons,
-            useCaseTag: tags,
-            demoLink: "#", // Blank themes don't have demos
-            originalData: theme,
-          };
-        });
+            return {
+              dataType: "blank",
+              useCaseTitle: theme.name || "Untitled Theme",
+              useCaseImage: thumbnailPath || "",
+              useCaseDescription:
+                theme.description || "Start with a blank site using this theme",
+              useCaseIcon: icons,
+              useCaseTag: tags,
+              demoLink: "#", // Blank themes don't have demos
+              originalData: theme,
+            };
+          });
 
         // Combine recipe and theme items
         this.items = [...recipeItems, ...themeItems];
@@ -979,14 +991,17 @@ export class AppHaxUseCaseFilter extends LitElement {
     try {
       // Use store.manifest data instead of demo JSON
       const sitesData = store.manifest;
-      
+
       if (!sitesData || !sitesData.items) {
         throw new Error("No manifest data available");
       }
 
       const siteItems = Array.isArray(sitesData.items)
         ? sitesData.items.map((item) => {
-            let categorySource = item.metadata && item.metadata.site ? item.metadata.site.category : null;
+            let categorySource =
+              item.metadata && item.metadata.site
+                ? item.metadata.site.category
+                : null;
             let tags = [];
             if (Array.isArray(categorySource)) {
               tags = categorySource.filter(

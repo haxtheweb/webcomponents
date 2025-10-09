@@ -40,19 +40,47 @@ export class AppHaxUseCase extends LitElement {
           display: flex;
           flex-direction: column;
           text-align: left;
-          margin: 8px;
+          margin: 4px;
           font-family: var(--ddd-font-primary);
-          color: var(--ddd-theme-default-nittanyNavy);
-          background-color: white;
-          box-shadow: 2px 2px 12px #1c1c1c;
-          border-radius: 4px;
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+          background-color: light-dark(
+            white,
+            var(--ddd-theme-default-coalyGray, #222)
+          );
+          border: var(--ddd-border-sm);
+          border-color: light-dark(
+              var(--ddd-theme-default-slateGray, #c4c4c4),
+              var(--ddd-theme-default-slateGray, #666)
+            );
+          box-shadow: light-dark(
+            0px 1px 3px rgba(0, 0, 0, 0.1),
+            0px 1px 3px rgba(0, 0, 0, 0.2)
+          );
+          border-radius: var(--ddd-radius-sm, 4px);
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        :host(:hover),
+        :host(:focus-within) {
+          transform: translateY(-2px) scale(1.02);
+          border-color: light-dark(
+            var(--ddd-theme-default-keystoneYellow, #ffd100),
+            var(--ddd-theme-default-keystoneYellow, #ffd100)
+          );
+          box-shadow: light-dark(
+            4px 8px 24px rgba(28, 28, 28, 0.15),
+            4px 8px 24px rgba(0, 0, 0, 0.5)
+          );
         }
         .cardContent {
           padding: 8px 12px 16px;
         }
         .image img {
-          border-top-right-radius: 4px;
-          border-top-left-radius: 4px;
+          border-top-right-radius: 6px;
+          border-top-left-radius: 6px;
           border-bottom: solid var(--ddd-theme-default-nittanyNavy) 8px;
           overflow: clip;
           justify-self: center;
@@ -180,6 +208,7 @@ export class AppHaxUseCase extends LitElement {
           overflow: hidden;
           text-overflow: ellipsis;
         }
+        button:focus,
         button:hover {
           background: var(--ddd-theme-default-keystoneYellow, #ffd100);
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
@@ -268,8 +297,7 @@ export class AppHaxUseCase extends LitElement {
           :host,
           .image img {
             display: flex;
-            width: 250px;
-            max-width: 20vw;
+            width: 220px;
           }
           :host .collapseFilter {
             display: flex;

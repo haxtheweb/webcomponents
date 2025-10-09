@@ -100,7 +100,6 @@ export class AppHaxSearchResults extends SimpleColors {
           width: 65vw;
           max-height: 280px;
           position: relative;
-          background: var(--ddd-theme-default-white, white);
           border-radius: var(--ddd-radius-md, 8px);
           border: var(--ddd-border-xs, 1px solid)
             var(--ddd-theme-default-limestoneLight, #e4e5e7);
@@ -111,7 +110,6 @@ export class AppHaxSearchResults extends SimpleColors {
         }
         :host([dark]) .carousel-container,
         body.dark-mode .carousel-container {
-          background: var(--ddd-theme-default-coalyGray, #222);
           border-color: var(--ddd-theme-default-slateGray, #666);
           color: var(--ddd-theme-default-white, white);
         }
@@ -301,8 +299,8 @@ export class AppHaxSearchResults extends SimpleColors {
         li {
           flex: 0 0 auto;
           scroll-snap-align: center;
-          width: 264px;
-          min-width: 264px;
+          width: 220px;
+          min-width: 220px;
           height: 260px;
           display: flex;
           flex-direction: column;
@@ -474,7 +472,8 @@ export class AppHaxSearchResults extends SimpleColors {
                   </li>`,
               )
             : html`<div id="noResult">
-                No results${this.searchTerm !== ""
+                No
+                results${this.searchTerm !== ""
                   ? html`<strong>"${this.searchTerm}"</strong>`
                   : ", Create a new site!"}
               </div>`}
@@ -486,7 +485,8 @@ export class AppHaxSearchResults extends SimpleColors {
           id="scroll-right-btn"
           class="scroll-right"
           @click="${this.scrollRight}"
-          ?disabled="${this.currentIndex >= this.totalItems || this.totalItems <= 1}"
+          ?disabled="${this.currentIndex >= this.totalItems ||
+          this.totalItems <= 1}"
         >
           ▶
         </button>
@@ -516,19 +516,21 @@ export class AppHaxSearchResults extends SimpleColors {
   scrollLeft() {
     // Don't scroll if at the beginning or only one item
     if (this.currentIndex <= 1 || this.totalItems <= 1) return;
-    
+
+    const itemWidth = 264 + 24; // item width + gap
     this.shadowRoot
       .querySelector("#results")
-      .scrollBy({ left: -800, behavior: "smooth" });
+      .scrollBy({ left: -itemWidth, behavior: "smooth" });
   }
 
   scrollRight() {
     // Don't scroll if at the end or only one item
-    if (this.currentIndex >= this.totalItems-1 || this.totalItems <= 1) return;
-    
+    if (this.currentIndex >= this.totalItems || this.totalItems <= 1) return;
+
+    const itemWidth = 264 + 24; // item width + gap
     this.shadowRoot
       .querySelector("#results")
-      .scrollBy({ left: 800, behavior: "smooth" });
+      .scrollBy({ left: itemWidth, behavior: "smooth" });
   }
 
   handlePointerStart(e) {
@@ -584,13 +586,25 @@ export class AppHaxSearchResults extends SimpleColors {
 
     const resultsEl = e.target;
     const scrollLeft = resultsEl.scrollLeft;
+    const scrollWidth = resultsEl.scrollWidth;
+    const clientWidth = resultsEl.clientWidth;
     const itemWidth = 264 + 24; // item width + gap
 
-    // Calculate current index based on scroll position
-    this.currentIndex = Math.min(
-      Math.max(1, Math.round(scrollLeft / itemWidth) + 1),
-      this.totalItems,
-    );
+    // Check if we're near the end (within 50px of the end)
+    const isNearEnd = scrollLeft + clientWidth >= scrollWidth - 50;
+
+    if (isNearEnd) {
+      // If we're near the end, set to last item
+      this.currentIndex = this.totalItems;
+    } else {
+      // Calculate current index based on scroll position
+      // Use a threshold-based approach: if more than half of an item is visible, consider it active
+      const rawIndex = scrollLeft / itemWidth;
+      this.currentIndex = Math.min(
+        Math.max(1, Math.floor(rawIndex) + 1),
+        this.totalItems,
+      );
+    }
   }
 
   goToPage(pageNumber) {

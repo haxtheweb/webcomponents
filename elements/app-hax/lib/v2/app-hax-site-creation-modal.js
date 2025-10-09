@@ -154,23 +154,24 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           width: 100%;
           align-items: flex-start;
         }
-        
+
         .template-image {
           flex-shrink: 0;
           width: 120px;
           height: 80px;
           border-radius: var(--ddd-radius-sm, 4px);
           overflow: hidden;
-          border: var(--ddd-border-xs, 1px solid) var(--ddd-theme-default-slateGray, #666);
+          border: var(--ddd-border-xs, 1px solid)
+            var(--ddd-theme-default-slateGray, #666);
         }
-        
+
         .template-image img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           display: block;
         }
-        
+
         .template-details {
           flex: 1;
           min-width: 0;
@@ -227,7 +228,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
         .form-icon {
           position: absolute;
           left: var(--ddd-spacing-2, 8px);
-          bottom: var(--ddd-spacing-2, 8px);
+          bottom: var(--ddd-spacing-4, 8px);
           font-size: var(--ddd-font-size-xs, 14px);
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
           pointer-events: none;
@@ -737,7 +738,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       this.currentStep = 3;
       this.isCreating = false;
       this.creationProgress = this.max || 100; // Ensure 100% completion
-      
+
       // Update hat progress to show 100% completion
       const hatProgress = this.shadowRoot.querySelector(
         "app-hax-simple-hat-progress",
@@ -746,7 +747,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
         hatProgress.progress = this.creationProgress;
         hatProgress.requestUpdate();
       }
-      
+
       this.showConfetti = true;
       this.generateConfetti();
 
@@ -762,7 +763,8 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
 
   triggerMainPageConfetti() {
     // Find the main page confetti container and trigger confetti
-    const mainConfettiContainer = store.appEl?.shadowRoot?.querySelector("#confetti");
+    const mainConfettiContainer =
+      store.appEl?.shadowRoot?.querySelector("#confetti");
     if (mainConfettiContainer) {
       // Import and trigger confetti on main page
       import("@haxtheweb/multiple-choice/lib/confetti-container.js").then(
@@ -825,7 +827,10 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
 
       <div class="form-group">
         <label class="form-label" for="siteName">Site Name</label>
-        <simple-icon-lite class="form-icon" icon="icons:create"></simple-icon-lite>
+        <simple-icon-lite
+          class="form-icon"
+          icon="icons:create"
+        ></simple-icon-lite>
         <input
           id="siteName"
           class="form-input"

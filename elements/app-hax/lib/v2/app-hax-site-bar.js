@@ -36,7 +36,7 @@ export class AppHaxSiteBars extends SimpleColors {
   // Clean up event listeners when component is removed
   disconnectedCallback() {
     super.disconnectedCallback();
-    document.removeEventListener('keydown', this._boundKeydownHandler);
+    document.removeEventListener("keydown", this._boundKeydownHandler);
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
@@ -56,14 +56,14 @@ export class AppHaxSiteBars extends SimpleColors {
   // updated fires every time a property defined above changes
   // this allows you to react to variables changing and use javascript to perform logic
   updated(changedProperties) {
-    if (changedProperties.has('showOptions')) {
+    if (changedProperties.has("showOptions")) {
       if (this.showOptions) {
         // Menu opened - add keyboard listener and focus first menu item
-        document.addEventListener('keydown', this._boundKeydownHandler);
+        document.addEventListener("keydown", this._boundKeydownHandler);
         this._focusFirstMenuItem();
       } else {
         // Menu closed - remove keyboard listener
-        document.removeEventListener('keydown', this._boundKeydownHandler);
+        document.removeEventListener("keydown", this._boundKeydownHandler);
       }
     }
   }
@@ -71,7 +71,7 @@ export class AppHaxSiteBars extends SimpleColors {
   toggleOptionsMenu() {
     const wasOpen = this.showOptions;
     this.showOptions = !this.showOptions;
-    
+
     // If we're closing the menu, return focus to the settings button
     if (wasOpen && !this.showOptions) {
       this._returnFocusToSettingsButton();
@@ -95,12 +95,12 @@ export class AppHaxSiteBars extends SimpleColors {
     // Use setTimeout to ensure the DOM has updated
     setTimeout(() => {
       // Focus the close button first as it appears first in the DOM
-      const closeButton = this.shadowRoot.querySelector('.close-menu-btn');
+      const closeButton = this.shadowRoot.querySelector(".close-menu-btn");
       if (closeButton) {
         closeButton.focus();
       } else {
         // Fallback to first menu item if close button not found
-        const firstMenuItem = this.shadowRoot.querySelector('.menu-item');
+        const firstMenuItem = this.shadowRoot.querySelector(".menu-item");
         if (firstMenuItem) {
           firstMenuItem.focus();
         }
@@ -110,7 +110,7 @@ export class AppHaxSiteBars extends SimpleColors {
 
   _returnFocusToSettingsButton() {
     setTimeout(() => {
-      const settingsButton = this.shadowRoot.querySelector('#settingsIcon');
+      const settingsButton = this.shadowRoot.querySelector("#settingsIcon");
       if (settingsButton) {
         settingsButton.focus();
       }
@@ -121,54 +121,70 @@ export class AppHaxSiteBars extends SimpleColors {
     if (!this.showOptions) return;
 
     // Get all focusable elements in the menu in DOM order
-    const menuItems = Array.from(this.shadowRoot.querySelectorAll('.close-menu-btn, .menu-item'));
+    const menuItems = Array.from(
+      this.shadowRoot.querySelectorAll(".close-menu-btn, .menu-item"),
+    );
 
     switch (e.key) {
-      case 'Escape':
+      case "Escape":
         e.preventDefault();
         this.closeOptionsMenu();
         break;
-      case 'ArrowDown':
-      case 'ArrowUp':
+      case "ArrowDown":
+      case "ArrowUp":
         // Only handle arrow keys if focus is within our menu
         const arrowCurrentIndex = menuItems.indexOf(e.target);
         if (arrowCurrentIndex !== -1) {
           e.preventDefault();
-          if (e.key === 'ArrowDown') {
-            const nextIndex = arrowCurrentIndex < menuItems.length - 1 ? arrowCurrentIndex + 1 : 0;
+          if (e.key === "ArrowDown") {
+            const nextIndex =
+              arrowCurrentIndex < menuItems.length - 1
+                ? arrowCurrentIndex + 1
+                : 0;
             menuItems[nextIndex].focus();
           } else {
-            const prevIndex = arrowCurrentIndex > 0 ? arrowCurrentIndex - 1 : menuItems.length - 1;
+            const prevIndex =
+              arrowCurrentIndex > 0
+                ? arrowCurrentIndex - 1
+                : menuItems.length - 1;
             menuItems[prevIndex].focus();
           }
         }
         break;
-      case 'Tab':
+      case "Tab":
         e.preventDefault();
         // Find which menu item is currently focused
         let currentFocusedIndex = -1;
         for (let i = 0; i < menuItems.length; i++) {
-          if (menuItems[i] === document.activeElement || 
-              menuItems[i] === this.shadowRoot.activeElement) {
+          if (
+            menuItems[i] === document.activeElement ||
+            menuItems[i] === this.shadowRoot.activeElement
+          ) {
             currentFocusedIndex = i;
             break;
           }
         }
-        
+
         // If no menu item is focused, start with the first one
         if (currentFocusedIndex === -1) {
           menuItems[0].focus();
           break;
         }
-        
+
         // Trap focus within the menu - tab forward or backward through all items
         if (e.shiftKey) {
           // Shift+Tab - go to previous item, or wrap to last
-          const prevTabIndex = currentFocusedIndex > 0 ? currentFocusedIndex - 1 : menuItems.length - 1;
+          const prevTabIndex =
+            currentFocusedIndex > 0
+              ? currentFocusedIndex - 1
+              : menuItems.length - 1;
           menuItems[prevTabIndex].focus();
         } else {
           // Tab - go to next item, or wrap to first
-          const nextTabIndex = currentFocusedIndex < menuItems.length - 1 ? currentFocusedIndex + 1 : 0;
+          const nextTabIndex =
+            currentFocusedIndex < menuItems.length - 1
+              ? currentFocusedIndex + 1
+              : 0;
           menuItems[nextTabIndex].focus();
         }
         break;
@@ -362,11 +378,38 @@ export class AppHaxSiteBars extends SimpleColors {
           width: 264px;
           max-width: 264px;
           font-family: var(--ddd-font-primary);
-          color: var(--ddd-theme-default-nittanyNavy);
-          background-color: white;
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+          background-color: light-dark(
+            white,
+            var(--ddd-theme-default-coalyGray, #222)
+          );
+          border: var(--ddd-border-sm);
+          border-color: light-dark(
+              var(--ddd-theme-default-slateGray, #c4c4c4),
+              var(--ddd-theme-default-slateGray, #666)
+            );
           min-height: 260px;
-          box-shadow: 2px 2px 12px #1c1c1c;
-          border-radius: 4px;
+          box-shadow: light-dark(
+            2px 2px 12px #1c1c1c,
+            2px 2px 12px rgba(0, 0, 0, 0.3)
+          );
+          border-radius: var(--ddd-radius-sm, 4px);
+          transition: all 0.2s ease;
+        }
+        :host(:hover),
+        :host(:focus-within) {
+          transform: translateY(-2px);
+          border-color: light-dark(
+            var(--ddd-theme-default-keystoneYellow, #ffd100),
+            var(--ddd-theme-default-keystoneYellow, #ffd100)
+          );
+          box-shadow: light-dark(
+            4px 8px 24px rgba(28, 28, 28, 0.15),
+            4px 8px 24px rgba(0, 0, 0, 0.5)
+          );
         }
         #mainCard {
           display: flex;
@@ -509,18 +552,25 @@ export class AppHaxSiteBars extends SimpleColors {
           justify-content: space-between;
           align-items: center;
           font-size: var(--ddd-font-size-xs, 14px);
-          color: var(--ddd-theme-default-nittanyNavy);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
         }
         p {
           font-size: var(--ddd-font-size-4xs, 12px);
-          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-2, 8px) var(--ddd-spacing-1, 6px) var(--ddd-spacing-2, 10px);
+          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-2, 8px)
+            var(--ddd-spacing-1, 6px) var(--ddd-spacing-2, 10px);
           margin: 0;
           line-height: 1.4;
         }
         ::slotted([slot="heading"]) {
           font-size: var(--ddd-font-size-xs, 14px);
           font-weight: var(--ddd-font-weight-bold, 700);
-          color: var(--ddd-theme-default-nittanyNavy);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
           text-decoration: none;
           display: block;
           margin: 0;
@@ -629,7 +679,9 @@ export class AppHaxSiteBars extends SimpleColors {
                         role="menuitem"
                         aria-label="Copy site"
                       >
-                        <simple-icon-lite icon="content-copy"></simple-icon-lite>
+                        <simple-icon-lite
+                          icon="content-copy"
+                        ></simple-icon-lite>
                         Copy
                       </button>
                       <button
@@ -638,7 +690,9 @@ export class AppHaxSiteBars extends SimpleColors {
                         role="menuitem"
                         aria-label="Download site"
                       >
-                        <simple-icon-lite icon="file-download"></simple-icon-lite>
+                        <simple-icon-lite
+                          icon="file-download"
+                        ></simple-icon-lite>
                         Download
                       </button>
                       <button
@@ -656,7 +710,9 @@ export class AppHaxSiteBars extends SimpleColors {
                         role="menuitem"
                         aria-label="Manage user access"
                       >
-                        <simple-icon-lite icon="account-circle"></simple-icon-lite>
+                        <simple-icon-lite
+                          icon="account-circle"
+                        ></simple-icon-lite>
                         User Access
                       </button>
                     </div>

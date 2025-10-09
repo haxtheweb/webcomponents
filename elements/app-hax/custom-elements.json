@@ -128,37 +128,12 @@
             },
             {
               "kind": "method",
-              "name": "appBody",
-              "parameters": [
-                {
-                  "name": "routine"
-                }
-              ]
-            },
-            {
-              "kind": "method",
-              "name": "templateHome"
-            },
-            {
-              "kind": "method",
-              "name": "templateCreate"
-            },
-            {
-              "kind": "method",
               "name": "siteReadyToGo",
               "parameters": [
                 {
                   "name": "e"
                 }
               ]
-            },
-            {
-              "kind": "method",
-              "name": "template404"
-            },
-            {
-              "kind": "method",
-              "name": "startJourney"
             },
             {
               "kind": "field",
