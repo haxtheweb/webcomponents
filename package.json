@@ -33,6 +33,7 @@
     "lerna": "lerna",
     "devhax": "yarn run haxsite",
     "haxsite": "cd elements/haxcms-elements && yarn start",
+    "apphax": "cd elements/app-hax && yarn start",
     "preinstall": "bash scripts/preinstall.sh",
     "postinstall": "bash scripts/postinstall.sh && ./node_modules/.bin/patch-package",
     "init": "lerna init",
