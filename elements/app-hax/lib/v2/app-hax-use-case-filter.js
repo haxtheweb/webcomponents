@@ -864,10 +864,10 @@ export class AppHaxUseCaseFilter extends LitElement {
 
     const recipesUrl = new URL("./app-hax-recipes.json", import.meta.url).href;
     // Use base path aware themes.json loading
-    const themesUrl = `/elements/haxcms-elements/lib/themes.json`;
+    const themesUrl = new URL("../../../haxcms-elements/lib/themes.json", import.meta.url).href
 
     // Load both recipes and themes data concurrently
-    Promise.all([
+    Promise.allSettled([
       fetch(recipesUrl).then((response) => {
         if (!response.ok)
           throw new Error(`Failed Recipes (${response.status})`);
@@ -880,8 +880,8 @@ export class AppHaxUseCaseFilter extends LitElement {
     ])
       .then(([recipesData, themesData]) => {
         // Process recipes data
-        const recipeItems = Array.isArray(recipesData.item)
-          ? recipesData.item.map((item) => {
+        const recipeItems = Array.isArray(recipesData.value.item)
+          ? recipesData.value.item.map((item) => {
               let tags = [];
               if (Array.isArray(item.category)) {
                 tags = item.category.filter(
@@ -923,7 +923,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           : [];
 
         // Process themes data into blank use cases (filter out hidden themes)
-        const themeItems = Object.values(themesData || {})
+        const themeItems = Object.values(themesData.value || {})
           .filter((theme) => !theme.hidden) // Exclude hidden system/debug themes
           .map((theme) => {
             let tags = [];
@@ -963,7 +963,6 @@ export class AppHaxUseCaseFilter extends LitElement {
               originalData: theme,
             };
           });
-
         // Combine recipe and theme items
         this.items = [...recipeItems, ...themeItems];
         this.filters = Array.from(this.allFilters).sort(); // Set AFTER all items
