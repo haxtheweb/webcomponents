@@ -864,7 +864,10 @@ export class AppHaxUseCaseFilter extends LitElement {
 
     const recipesUrl = new URL("./app-hax-recipes.json", import.meta.url).href;
     // Use base path aware themes.json loading
-    const themesUrl = new URL("../../../haxcms-elements/lib/themes.json", import.meta.url).href
+    const themesUrl = new URL(
+      "../../../haxcms-elements/lib/themes.json",
+      import.meta.url,
+    ).href;
 
     // Load both recipes and themes data concurrently
     Promise.allSettled([
@@ -941,7 +944,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             tags.forEach((tag) => this.allFilters.add(tag)); // Add to global Set
 
             // Simple icon array for blank themes
-            const icons = [{ icon: "icons:palette", tooltip: "Customizable" }];
+            const icons = [{ icon: "icons:build", tooltip: "Customizable" }];
 
             // Resolve thumbnail path using basePath or WCGlobalBasePath
             let thumbnailPath = theme.thumbnail || "";

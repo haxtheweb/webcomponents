@@ -52,9 +52,9 @@ export class AppHaxUseCase extends LitElement {
           );
           border: var(--ddd-border-sm);
           border-color: light-dark(
-              var(--ddd-theme-default-slateGray, #c4c4c4),
-              var(--ddd-theme-default-slateGray, #666)
-            );
+            var(--ddd-theme-default-slateGray, #c4c4c4),
+            var(--ddd-theme-default-slateGray, #666)
+          );
           box-shadow: light-dark(
             0px 1px 3px rgba(0, 0, 0, 0.1),
             0px 1px 3px rgba(0, 0, 0, 0.2)
@@ -186,6 +186,11 @@ export class AppHaxUseCase extends LitElement {
         a:focus {
           color: var(--ddd-theme-default-keystoneYellow, #ffd100);
           text-decoration: none;
+        }
+        simple-icon-lite {
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          --simple-icon-width: var(--ddd-icon-4xs, 20px);
+          --simple-icon-height: var(--ddd-icon-4xs, 20px);
         }
         button {
           display: flex;

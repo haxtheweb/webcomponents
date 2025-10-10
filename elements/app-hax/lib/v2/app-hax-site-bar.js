@@ -50,6 +50,7 @@ export class AppHaxSiteBars extends SimpleColors {
       title: { type: String },
       description: { type: String },
       siteUrl: { type: String, attribute: "site-url" },
+      image: { type: String },
     };
   }
 
@@ -388,9 +389,9 @@ export class AppHaxSiteBars extends SimpleColors {
           );
           border: var(--ddd-border-sm);
           border-color: light-dark(
-              var(--ddd-theme-default-slateGray, #c4c4c4),
-              var(--ddd-theme-default-slateGray, #666)
-            );
+            var(--ddd-theme-default-slateGray, #c4c4c4),
+            var(--ddd-theme-default-slateGray, #666)
+          );
           min-height: 260px;
           box-shadow: light-dark(
             2px 2px 12px #1c1c1c,
@@ -463,6 +464,7 @@ export class AppHaxSiteBars extends SimpleColors {
           border-color: var(--ddd-theme-default-slateGray, #666);
         }
         .close-menu-btn {
+          z-index: 10;
           position: absolute;
           top: var(--ddd-spacing-1, 4px);
           right: var(--ddd-spacing-1, 4px);
@@ -588,7 +590,7 @@ export class AppHaxSiteBars extends SimpleColors {
           padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
           min-height: var(--ddd-spacing-7, 28px);
           align-items: center;
-          justify-content: center;
+          justify-content: start;
           cursor: pointer;
           transition: all 0.2s ease;
           box-shadow: var(--ddd-boxShadow-sm);
@@ -632,11 +634,17 @@ export class AppHaxSiteBars extends SimpleColors {
   render() {
     return html`
       <div id="mainCard">
-        <div class="imageLink">
-          <img
-            src="https://image.freepik.com/free-vector/programming-website-landing-page_23-2148452312.jpg"
-          />
-        </div>
+        ${this.image
+          ? html`
+              <div class="imageLink">
+                <img
+                  src="${this.image}"
+                  alt="Screenshot of ${this.title || "site"} theme"
+                  loading="lazy"
+                />
+              </div>
+            `
+          : ""}
 
         <div class="cardContent">
           <div class="titleBar">

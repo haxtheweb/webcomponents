@@ -37,6 +37,8 @@ export class AppHaxSearchResults extends SimpleColors {
       if (manifest && manifest.items) {
         this.searchItems = manifest.items;
         this.displayItems = [...this.searchItems];
+        // Ensure themes data is loaded for thumbnails
+        store.loadThemesData();
       }
     });
   }
@@ -449,6 +451,7 @@ export class AppHaxSearchResults extends SimpleColors {
                       ?dark="${this.dark}"
                       site-id="${item.id}"
                       .siteUrl="${item.slug}"
+                      .image="${this.getThemeImage(item)}"
                       accent-color="${varGet(
                         item,
                         "metadata.theme.variables.cssVariable",
@@ -618,6 +621,20 @@ export class AppHaxSearchResults extends SimpleColors {
     });
 
     this.currentIndex = pageNumber;
+  }
+
+  getThemeImage(item) {
+    const themeElement = varGet(item, "metadata.theme.element", "");
+    if (themeElement && store.themesData && store.themesData[themeElement]) {
+      let thumbnailPath = store.themesData[themeElement].thumbnail || "";
+      if (thumbnailPath && thumbnailPath.startsWith("@haxtheweb/")) {
+        // Convert bare import style path to resolved path
+        const basePath = globalThis.WCGlobalBasePath || "/node_modules/";
+        thumbnailPath = basePath + thumbnailPath;
+      }
+      return thumbnailPath;
+    }
+    return "";
   }
 
   getItemDetails(item) {

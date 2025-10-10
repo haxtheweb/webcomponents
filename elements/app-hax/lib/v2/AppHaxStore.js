@@ -156,6 +156,7 @@ class Store {
     this.siteReady = false;
     this.manifest = {};
     this.searchTerm = "";
+    this.themesData = {};
     this.user = {
       name: "",
     };
@@ -189,6 +190,7 @@ class Store {
       user: observable, // user object like name after login
       // user preferences
       searchTerm: observable, // current search term for filtering own list of sites
+      themesData: observable, // themes.json data for theme thumbnails
       darkMode: observable, // dark mode pref
       soundStatus: observable, // toggle sounds on and off
       activeItem: computed, // active item is route
@@ -294,6 +296,24 @@ class Store {
         return routeItem;
       } else {
         return this.location.route;
+      }
+    }
+  }
+
+  // load themes data for theme thumbnails
+  async loadThemesData() {
+    if (Object.keys(this.themesData).length === 0) {
+      try {
+        const themesUrl = new URL(
+          "../../../haxcms-elements/lib/themes.json",
+          import.meta.url,
+        ).href;
+        const response = await fetch(themesUrl);
+        if (response.ok) {
+          this.themesData = await response.json();
+        }
+      } catch (error) {
+        console.warn("Failed to load themes data:", error);
       }
     }
   }
