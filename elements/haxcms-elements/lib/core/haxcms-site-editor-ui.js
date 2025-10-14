@@ -14,9 +14,9 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { HAXCMSThemeParts } from "./utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
-import "@haxtheweb/app-hax/lib/v1/app-hax-top-bar.js";
-import "@haxtheweb/app-hax/lib/v1/app-hax-user-menu.js";
-import "@haxtheweb/app-hax/lib/v1/app-hax-user-menu-button.js";
+import "@haxtheweb/app-hax/lib/v2/app-hax-top-bar.js";
+import "@haxtheweb/app-hax/lib/v2/app-hax-user-menu.js";
+import "@haxtheweb/app-hax/lib/v2/app-hax-user-menu-button.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import "@haxtheweb/super-daemon/lib/super-daemon-search.js";
@@ -2736,16 +2736,22 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             class="topbar-character"
             slot="menuButton"
             @click="${this.toggleMenu}"
+            aria-label="User menu for ${this.userName}"
+            aria-expanded="${this.userMenuOpen}"
+            aria-haspopup="menu"
           >
             <rpg-character
               seed="${this.userName}"
               width="68"
               height="68"
               part="rpgcharacter"
-              aria-label="${this.t.menu}"
+              role="img"
+              alt="Avatar for ${this.userName}"
               hat="${this.rpgHat}"
             ></rpg-character>
-            <span class="characterbtn-name">${this.userName}</span>
+            <span class="characterbtn-name" aria-hidden="true"
+              >${this.userName}</span
+            >
             <slot name="haxcms-site-editor-ui-topbar-character-button"></slot>
           </button>
           <div slot="pre-menu" class="ops-panel">
@@ -2754,11 +2760,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               elevation="1"
               class="soundToggle"
               @click="${this.soundToggle}"
+              aria-label="Toggle sound effects ${this.soundIcon &&
+              this.soundIcon.indexOf("Full") !== -1
+                ? "off"
+                : "on"}"
+              aria-pressed="${this.soundIcon &&
+              this.soundIcon.indexOf("Full") !== -1}"
             >
               <simple-icon-lite
                 src="${this.soundIcon}"
                 loading="lazy"
                 decoding="async"
+                aria-hidden="true"
               ></simple-icon-lite>
             </wired-button>
             <haxcms-darkmode-toggle></haxcms-darkmode-toggle>
@@ -3275,6 +3288,112 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     // change theme program
+    // Welcome to HAX program - shows 5 most common operations for new users
+    SuperDaemonInstance.defineOption({
+      title: "Welcome to HAX",
+      icon: "hax:hax2022",
+      tags: [
+        "welcome",
+        "tutorial",
+        "getting started",
+        "onboarding",
+        "help",
+        "guide",
+      ],
+      eventName: "super-daemon-run-program",
+      path: "CMS/welcome",
+      context: ["CMS", "logged-in"],
+      priority: 2000, // Low priority to appear at bottom
+      value: {
+        name: "Welcome to HAX",
+        machineName: "welcome",
+        context: "CMS",
+        program: async (input, values) => {
+          // Four most common operations for new users (removed create-page)
+          return [
+            {
+              title: "Create a new page",
+              icon: "hax:add-page",
+              tags: ["welcome", "common", "operation"],
+              value: {
+                target: this,
+                method: "executeWelcomeAction",
+                args: ["create-page"],
+              },
+              eventName: "super-daemon-element-method",
+              context: ["CMS"],
+              path: "CMS/welcome/create-page",
+            },
+            {
+              title: "Edit this page",
+              icon: "hax:page-edit",
+              tags: ["welcome", "common", "operation"],
+              value: {
+                target: this,
+                method: "executeWelcomeAction",
+                args: ["edit-page"],
+              },
+              eventName: "super-daemon-element-method",
+              context: ["CMS"],
+              path: "CMS/welcome/edit-page",
+            },
+            {
+              title: "Upload a file",
+              icon: "file-upload",
+              tags: ["welcome", "common", "operation"],
+              value: {
+                target: this,
+                method: "executeWelcomeAction",
+                args: ["upload-file"],
+              },
+              eventName: "super-daemon-element-method",
+              context: ["CMS"],
+              path: "CMS/welcome/upload-file",
+            },
+            {
+              title: "Use outline designer",
+              icon: "hax:site-map",
+              tags: ["welcome", "common", "operation"],
+              value: {
+                target: this,
+                method: "executeWelcomeAction",
+                args: ["outline-designer"],
+              },
+              eventName: "super-daemon-element-method",
+              context: ["CMS"],
+              path: "CMS/welcome/outline-designer",
+            },
+            {
+              title: "Change site settings",
+              icon: "hax:site-settings",
+              tags: ["welcome", "common", "operation"],
+              value: {
+                target: this,
+                method: "executeWelcomeAction",
+                args: ["site-settings"],
+              },
+              eventName: "super-daemon-element-method",
+              context: ["CMS"],
+              path: "CMS/welcome/site-settings",
+            },
+            {
+              title: "Don't show this welcome again",
+              icon: "icons:visibility-off",
+              tags: ["welcome", "dismiss", "settings"],
+              value: {
+                target: this,
+                method: "dismissWelcomeProgram",
+                args: [],
+              },
+              eventName: "super-daemon-element-method",
+              context: ["CMS"],
+              path: "CMS/welcome/dismiss",
+            },
+          ];
+        },
+      },
+    });
+
     SuperDaemonInstance.defineOption({
       title: "Change theme temporarily",
       icon: "image:style",
@@ -3600,6 +3719,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         detail: true,
       }),
     );
+
+    // Auto-trigger welcome program for first-time users
+    this.checkAndTriggerWelcomeProgram();
   }
   // enable lab experiments
   enableLabExperiments() {
@@ -3609,6 +3731,119 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     import(
       "@haxtheweb/haxcms-elements/lib/ui-components/magic/site-ai-chat.js"
     );
+  }
+
+  // Check if user should see welcome program and trigger it
+  checkAndTriggerWelcomeProgram() {
+    // Only trigger if user is logged in and hasn't seen the welcome before
+    if (
+      store.isLoggedIn &&
+      !UserScaffoldInstance.readMemory("hasSeenHaxWelcome")
+    ) {
+      // Wait for the store and UI to be fully ready
+      const triggerWelcome = () => {
+        if (
+          store.appReady &&
+          this.shadowRoot &&
+          this.shadowRoot.querySelector("#merlin")
+        ) {
+          // Auto-trigger the welcome program using waveWand for mini mode
+          SuperDaemonInstance.waveWand(
+            [
+              "", // empty search to show all results
+              "CMS", // context
+              { operation: "welcome" }, // values
+              "welcome", // program machine name
+              "Welcome to HAX", // display name
+            ],
+            this.shadowRoot.querySelector("#merlin"), // target for mini mode
+            "magic", // sound
+          );
+
+          // Show a toast to let the user know Merlin is here to help
+          store.toast(
+            "👋 Welcome to HAX! Merlin is here to help you get started with the 5 most common operations.",
+            8000,
+            {
+              hat: "wizard",
+            },
+          );
+        } else {
+          // Retry after a short delay if not ready yet
+          setTimeout(triggerWelcome, 500);
+        }
+      };
+
+      // Give some time for everything to initialize
+      setTimeout(triggerWelcome, 2000);
+    }
+  }
+
+  // Method to dismiss the welcome program permanently
+  dismissWelcomeProgram() {
+    // Mark that the user has seen and dismissed the welcome program
+    UserScaffoldInstance.writeMemory("hasSeenHaxWelcome", true, "long");
+
+    // Close Merlin
+    SuperDaemonInstance.close();
+
+    // Show confirmation toast
+    store.toast(
+      "Welcome program dismissed. You can always access Merlin by pressing Alt+Shift or clicking the search bar.",
+      5000,
+      {
+        hat: "check",
+      },
+    );
+  }
+
+  // Method to execute welcome program actions
+  executeWelcomeAction(actionType) {
+
+    // Execute the appropriate action based on type
+    switch (actionType) {
+      case "create-page":
+        // Trigger the add page button
+        SuperDaemonInstance.close();
+        setTimeout(() => {
+          this.shadowRoot.querySelector("#addpagebutton").HAXCMSButtonClick();
+        }, 100);
+      break;
+      case "edit-page":
+        // Trigger the edit page button
+        this._editButtonTap();
+        break;
+
+      case "upload-file":
+        // Use waveWand to trigger the file upload program
+        SuperDaemonInstance.waveWand(
+          [
+            "", // empty search to show all file options
+            "/", // context for file operations
+            { operation: "file-upload" },
+            "hax-agent",
+            "File Agent",
+          ],
+          this.shadowRoot.querySelector("#merlin"),
+          "coin2",
+        );
+        break;
+
+      case "outline-designer":
+        // Trigger the outline designer
+        this._outlineButtonTap();
+        break;
+
+      case "site-settings":
+        // Trigger the site settings
+        this._manifestButtonTap({
+          target: this.shadowRoot.querySelector("#manifestbtn"),
+        });
+        break;
+
+      default:
+        console.warn("Unknown welcome action type:", actionType);
+    }
   }
 
   // enable view only mode
@@ -4185,7 +4420,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   _addButtonTap() {
     store.playSound("click");
     setTimeout(() => {
-      globalThis.location = this.backLink + "createSite-step-1";
+      globalThis.location = this.backLink;
     }, 100);
   }
   /**

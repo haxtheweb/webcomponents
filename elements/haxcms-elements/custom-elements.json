@@ -4,9 +4,91 @@
   "modules": [
     {
       "kind": "javascript-module",
+      "path": "full-theme-automation.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
       "path": "haxcms-elements.js",
       "declarations": [],
       "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "theme-screenshot-automation.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "Instructions for MCP Puppeteer automation\n\nThis script provides the data and instructions needed to automate\ntheme screenshots using the MCP Puppeteer tools in the AI agent.",
+          "name": "ThemeScreenshotAutomation",
+          "members": [
+            {
+              "kind": "method",
+              "name": "getThemesList",
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "getThemeConfig",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "themeKey"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "getAllThemes",
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "getScreenshotConfig",
+              "static": true
+            },
+            {
+              "kind": "method",
+              "name": "generateThemeSwitchCode",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "themeElement"
+                }
+              ],
+              "description": "Generate the JavaScript code to execute in the browser for each theme"
+            },
+            {
+              "kind": "method",
+              "name": "updateThemeScreenshot",
+              "static": true,
+              "parameters": [
+                {
+                  "name": "themeKey"
+                }
+              ],
+              "description": "Update themes.json with new screenshot timestamp"
+            },
+            {
+              "kind": "method",
+              "name": "getAutomationInstructions",
+              "static": true,
+              "description": "Generate automation instructions for the AI agent"
+            }
+          ]
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "name": "ThemeScreenshotAutomation",
+            "module": "theme-screenshot-automation.js"
+          }
+        }
+      ]
     }
   ]
 }

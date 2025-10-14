@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
  * `awesome-explosion`
  * `An awesome, explosion.`
@@ -11,55 +12,108 @@ import { LitElement, html, css } from "lit";
  * @demo demo/index.html
  * @element awesome-explosion
  */
-class AwesomeExplosion extends LitElement {
+class AwesomeExplosion extends DDDSuper(LitElement) {
   /**
    * LitElement constructable styles enhancement
    */
   static get styles() {
     return [
+      super.styles,
       css`
         :host {
           display: inline-block;
+          cursor: pointer;
+          transition: transform var(--ddd-duration-fast) var(--ddd-timing-ease);
         }
-        :host([size="tiny"]) #image {
-          width: 80px;
-          height: 80px;
+        :host(:hover) {
+          transform: scale(1.05);
         }
-        :host([size="small"]) #image {
-          width: 160px;
-          height: 160px;
-        }
-        :host([size="medium"]) #image {
-          width: 240px;
-          height: 240px;
-        }
-        :host([size="large"]) #image {
-          width: 320px;
-          height: 320px;
-        }
-        :host([size="epic"]) #image {
-          width: 720px;
-          height: 720px;
+        :host(:focus-visible) {
+          outline: var(--ddd-focus-ring);
+          outline-offset: var(--ddd-focus-offset);
         }
 
+        /* DDD-based sizing using icon variables */
+        :host([size="tiny"]) #image {
+          width: var(--ddd-icon-sm);
+          height: var(--ddd-icon-sm);
+        }
+        :host([size="small"]) #image {
+          width: var(--ddd-icon-lg);
+          height: var(--ddd-icon-lg);
+        }
+        :host([size="medium"]) #image {
+          width: var(--ddd-icon-xl);
+          height: var(--ddd-icon-xl);
+        }
+        :host([size="large"]) #image {
+          width: var(--ddd-icon-2xl);
+          height: var(--ddd-icon-2xl);
+        }
+        :host([size="epic"]) #image {
+          width: var(--ddd-icon-4xl);
+          height: var(--ddd-icon-4xl);
+        }
+
+        /* DDD-based color theming with dark mode support */
         :host([color="red"]) #image {
-          filter: sepia() saturate(10000%) hue-rotate(30deg);
+          filter: sepia() saturate(10000%) hue-rotate(30deg) brightness(0.9);
         }
         :host([color="purple"]) #image {
-          filter: sepia() saturate(10000%) hue-rotate(290deg);
+          filter: sepia() saturate(10000%) hue-rotate(290deg) brightness(0.9);
         }
         :host([color="blue"]) #image {
-          filter: sepia() saturate(10000%) hue-rotate(210deg);
+          filter: sepia() saturate(10000%) hue-rotate(210deg) brightness(0.9);
         }
         :host([color="orange"]) #image {
-          filter: sepia() saturate(10000%) hue-rotate(320deg);
+          filter: sepia() saturate(10000%) hue-rotate(320deg) brightness(0.9);
         }
         :host([color="yellow"]) #image {
-          filter: sepia() saturate(10000%) hue-rotate(70deg);
+          filter: sepia() saturate(10000%) hue-rotate(70deg) brightness(0.9);
         }
+
+        /* Dark mode adjustments */
+        @media (prefers-color-scheme: dark) {
+          :host([color]) #image {
+            filter-brightness: 1.2;
+          }
+        }
+
+        /* Respect reduced motion preference */
+        @media (prefers-reduced-motion: reduce) {
+          :host {
+            transition: none;
+          }
+          :host(:hover) {
+            transform: none;
+          }
+          #image {
+            animation: none !important;
+          }
+        }
+
         #image {
-          width: 240px;
-          height: 240px;
+          width: var(--ddd-icon-xl);
+          height: var(--ddd-icon-xl);
+          border-radius: var(--ddd-radius-sm);
+          transition: filter var(--ddd-duration-fast) var(--ddd-timing-ease);
+        }
+
+        /* Accessibility improvements */
+        :host([disabled]) {
+          pointer-events: none;
+          opacity: var(--ddd-opacity-40);
+        }
+
+        .visually-hidden {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          border: 0;
         }
       `,
     ];
@@ -75,10 +129,25 @@ class AwesomeExplosion extends LitElement {
     this.size = "medium";
     this.color = "";
     this.resetSound = false;
+    this.soundEnabled = true;
+    this.disabled = false;
+    this.tabIndex = 0;
+
+    // Check for user preferences
+    this._checkUserPreferences();
+
     setTimeout(() => {
-      this.addEventListener("click", this._setPlaySound.bind(this));
-      this.addEventListener("mouseover", this._setPlaySound.bind(this));
-      this.addEventListener("mouseout", this._setStopSound.bind(this));
+      this.addEventListener("click", this._handleClick.bind(this));
+      this.addEventListener("keydown", this._handleKeydown.bind(this));
+
+      // Only add hover listeners if sound is enabled and motion is not reduced
+      if (
+        this.soundEnabled &&
+        !globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) {
+        this.addEventListener("mouseover", this._handleMouseOver.bind(this));
+        this.addEventListener("mouseout", this._handleMouseOut.bind(this));
+      }
     }, 0);
   }
   render() {
@@ -88,13 +157,29 @@ class AwesomeExplosion extends LitElement {
         src="${this.image}"
         id="image"
         class="image-tag"
-        alt=""
+        alt="${this._getAltText()}"
+        role="button"
+        aria-pressed="${this.playing ? "true" : "false"}"
+        aria-label="${this._getAriaLabel()}"
       />
+      <span class="visually-hidden">
+        ${this.soundEnabled
+          ? "Click or hover to play explosion sound"
+          : "Visual explosion effect (sound disabled)"}
+      </span>
     `;
   }
 
   static get tag() {
     return "awesome-explosion";
+  }
+
+  /**
+   * HAXSchema for proper integration with the HAX editor
+   */
+  static get haxProperties() {
+    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
+      .href;
   }
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
@@ -107,6 +192,7 @@ class AwesomeExplosion extends LitElement {
   }
   static get properties() {
     return {
+      ...super.properties,
       /**
        * State is for setting:
        * Possible values: play, pause, stop
@@ -155,7 +241,7 @@ class AwesomeExplosion extends LitElement {
       },
       /**
        * This is to change the color of the element. Possible values are:
-       * red, blue, orange, yellow
+       * red, blue, orange, yellow, purple
        */
       color: {
         type: String,
@@ -168,6 +254,21 @@ class AwesomeExplosion extends LitElement {
         type: Boolean,
         reflect: true,
         attribute: "reset-sound",
+      },
+      /**
+       * Enable/disable sound effects globally
+       */
+      soundEnabled: {
+        type: Boolean,
+        reflect: true,
+        attribute: "sound-enabled",
+      },
+      /**
+       * Disable the entire component
+       */
+      disabled: {
+        type: Boolean,
+        reflect: true,
       },
     };
   }
@@ -248,6 +349,93 @@ class AwesomeExplosion extends LitElement {
   }
 
   /**
+   * Handle click events with accessibility considerations
+   */
+  _handleClick(e) {
+    if (this.disabled) return;
+
+    if (this.state === "play") {
+      this.state = "stop";
+    } else {
+      this.state = "play";
+    }
+  }
+
+  /**
+   * Handle keyboard interactions
+   */
+  _handleKeydown(e) {
+    if (this.disabled) return;
+
+    // Space or Enter key
+    if (e.key === " " || e.key === "Enter") {
+      e.preventDefault();
+      this._handleClick(e);
+    }
+  }
+
+  /**
+   * Handle mouse over with reduced motion consideration
+   */
+  _handleMouseOver(e) {
+    if (this.disabled || !this.soundEnabled) return;
+
+    // Only play on hover if not reduced motion
+    if (!globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      this.state = "play";
+    }
+  }
+
+  /**
+   * Handle mouse out
+   */
+  _handleMouseOut(e) {
+    if (this.disabled) return;
+    this.state = "pause";
+  }
+
+  /**
+   * Check user preferences for accessibility
+   */
+  _checkUserPreferences() {
+    // Check for reduced motion preference
+    const prefersReducedMotion = globalThis.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    // Check for user sound preference (could be stored in localStorage)
+    const userSoundPref = globalThis.localStorage?.getItem(
+      "awesome-explosion-sound-enabled",
+    );
+    if (userSoundPref !== null) {
+      this.soundEnabled = userSoundPref === "true";
+    }
+
+    // Disable sound on hover if reduced motion is preferred
+    if (prefersReducedMotion) {
+      this.soundEnabled = false;
+    }
+  }
+
+  /**
+   * Get appropriate alt text for the image
+   */
+  _getAltText() {
+    const colorText = this.color ? ` ${this.color}` : "";
+    const sizeText = this.size !== "medium" ? ` ${this.size}` : "";
+    return `${sizeText}${colorText} explosion animation`;
+  }
+
+  /**
+   * Get appropriate ARIA label
+   */
+  _getAriaLabel() {
+    const stateText = this.playing ? "playing" : "stopped";
+    const soundText = this.soundEnabled ? " with sound" : " (muted)";
+    return `Explosion animation ${stateText}${soundText}. Click to toggle.`;
+  }
+
+  /**
    * Set the state to play from an event.
    */
   _setPlaySound(e) {
@@ -255,20 +443,34 @@ class AwesomeExplosion extends LitElement {
   }
 
   /**
-   * Set the state to play from an event.
+   * Set the state to stop from an event.
    */
   _setStopSound(e) {
     this.state = "pause";
   }
 
   /**
-   * Play the sound effect.
+   * Play the sound effect with accessibility considerations.
    */
   _playSound() {
+    if (!this.soundEnabled || this.disabled) return;
+
+    // Respect reduced motion preference
+    if (globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     if (typeof globalThis.audio === typeof undefined) {
       globalThis.audio = new Audio(this.sound);
+      // Set volume to a reasonable level
+      globalThis.audio.volume = 0.2;
     }
-    globalThis.audio.play();
+
+    // Catch and handle audio play errors gracefully
+    globalThis.audio.play().catch((error) => {
+      console.warn("Audio playback failed:", error);
+      // Could dispatch an event here to notify parent components
+    });
   }
 }
 globalThis.customElements.define(AwesomeExplosion.tag, AwesomeExplosion);

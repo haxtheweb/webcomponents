@@ -104,7 +104,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         this.audio = new Audio(
           new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href,
         );
-        this.audio.volume = 0.3;
+        this.audio.volume = 0.2;
         this.audio.onended = (event) => {
           resolve();
         };
@@ -951,6 +951,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         }
         app-hax-user-menu {
           z-index: 1003;
+          position: inherit;
         }
         .logout::part(menu-button) {
           background-image: url("${unsafeCSS(logoutBtn)}");
@@ -1177,12 +1178,15 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             data-simple-tour-stop
             data-stop-title="data-label"
             data-label="Sound"
+            aria-label="Toggle sound effects ${this.soundIcon.includes('FullVolume') ? 'off' : 'on'}"
+            aria-pressed="${this.soundIcon.includes('FullVolume')}"
           >
             <span class="wired-button-label">Toggle sound effects</span>
             <simple-icon-lite
               src="${this.soundIcon}"
               loading="lazy"
               decoding="async"
+              alt="${this.soundIcon.includes('FullVolume') ? 'Sound enabled' : 'Sound disabled'}"
             >
             </simple-icon-lite>
             <div slot="tour" data-stop-content>
@@ -1215,14 +1219,19 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               slot="menuButton"
               id="tbchar"
               title="System menu"
+              aria-label="User menu for ${this.userName}"
+              aria-expanded="${this.userMenuOpen}"
+              aria-haspopup="menu"
             >
               <rpg-character
                 seed="${this.userName}"
                 width="68"
                 height="68"
                 hat="${this.userMenuOpen ? "edit" : "none"}"
+                alt="Avatar for ${this.userName}"
+                role="img"
               ></rpg-character>
-              <span class="characterbtn-name">${this.userName}</span>
+              <span class="characterbtn-name" aria-hidden="true">${this.userName}</span>
             </button>
             <a
               slot="main-menu"
@@ -1253,8 +1262,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       <main @click="${this.closeMenu}">
         <confetti-container id="confetti">
           <div class="label">
-            <app-hax-label>
-              <h1>HAX Site Dashboard</h1>
+            <app-hax-label heading-level="1">
+              HAX Site Dashboard
               <div slot="subtitle">Let's build something awesome!</div>
             </app-hax-label>
           </div>

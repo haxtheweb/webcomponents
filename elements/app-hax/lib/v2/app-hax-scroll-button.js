@@ -12,6 +12,7 @@ export class AppHaxScrollButton extends LitElement {
     this.label = "";
     this.targetId = "";
     this.isDarkMode = document.body.classList.contains("dark-mode");
+    this.addEventListener('keydown', this._handleKeydown.bind(this));
   }
 
   static get properties() {
@@ -41,8 +42,9 @@ export class AppHaxScrollButton extends LitElement {
         targetElement = document.getElementById(this.targetId);
       }
       if (targetElement) {
-        console.log(`Scrolling to:`, targetElement);
         targetElement.scrollIntoView({ behavior: "smooth", block: "start" });
+        // Announce to screen readers
+        this._announceNavigation();
       } else {
         console.warn(
           `Element with id '${this.targetId}' not found inside app-hax-use-case-filter.`,
@@ -90,6 +92,37 @@ export class AppHaxScrollButton extends LitElement {
         div {
           display: flex;
           align-items: center;
+          cursor: pointer;
+        }
+        
+        div:hover,
+        div:focus {
+          outline: 2px solid var(--ddd-theme-default-keystoneYellow, #ffd100);
+          outline-offset: 2px;
+        }
+        
+        /* Screen reader only text */
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+        
+        /* Live region for announcements */
+        .live-region {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
         }
       `,
     ];
@@ -97,10 +130,49 @@ export class AppHaxScrollButton extends LitElement {
 
   render() {
     return html`
-      <div @click="${this.scrollToTarget}" tabindex="0" role="button">
-        <h5>${this.label}</h5>
+      <div 
+        @click="${this.scrollToTarget}" 
+        tabindex="0" 
+        role="button"
+        aria-label="${this.label} - Navigate to section"
+        aria-describedby="scroll-desc"
+      >
+        <h5 aria-hidden="true">${this.label}</h5>
+        <div id="scroll-desc" class="sr-only">
+          Click to scroll to the ${this.label} section
+        </div>
       </div>
+      <div 
+        class="live-region" 
+        aria-live="polite" 
+        aria-atomic="true" 
+        id="scroll-announcement"
+      ></div>
     `;
+  }
+  
+  /**
+   * Handle keyboard navigation
+   */
+  _handleKeydown(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      this.scrollToTarget();
+    }
+  }
+  
+  /**
+   * Announce navigation to screen readers
+   */
+  _announceNavigation() {
+    const announcement = this.shadowRoot.querySelector('#scroll-announcement');
+    if (announcement) {
+      announcement.textContent = `Navigated to ${this.label} section`;
+      // Clear announcement after delay
+      setTimeout(() => {
+        announcement.textContent = '';
+      }, 1000);
+    }
   }
 }
 customElements.define(AppHaxScrollButton.tag, AppHaxScrollButton);

@@ -403,13 +403,26 @@ export class AppHaxSearchResults extends SimpleColors {
           color: var(--ddd-theme-default-limestoneGray, #f5f5f5);
         }
 
-        #noResult {
+          #noResult {
           font-family: var(--ddd-font-primary, sans-serif);
           font-size: var(--ddd-font-size-s, 16px);
           color: var(--ddd-theme-default-coalyGray, #444);
           text-align: center;
           padding: var(--ddd-spacing-6, 24px);
           margin: var(--ddd-spacing-4, 16px);
+        }
+
+        /* Screen reader only text */
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
         }
       `,
     ];
@@ -419,7 +432,12 @@ export class AppHaxSearchResults extends SimpleColors {
     this.totalItems = this.displayItems.length;
 
     return html`
-      <div class="carousel-container">
+      <div 
+        class="carousel-container" 
+        role="region" 
+        aria-label="Site results carousel"
+        aria-live="polite"
+      >
         <simple-tooltip for="scroll-left-btn" position="top"
           >Previous</simple-tooltip
         >
@@ -428,8 +446,11 @@ export class AppHaxSearchResults extends SimpleColors {
           class="scroll-left"
           @click="${this.scrollLeft}"
           ?disabled="${this.currentIndex <= 1 || this.totalItems <= 1}"
+          aria-label="Previous sites"
+          aria-describedby="scroll-left-desc"
         >
           ◀
+          <span id="scroll-left-desc" class="sr-only">View previous sites in the carousel</span>
         </button>
         <ul
           id="results"
@@ -490,8 +511,11 @@ export class AppHaxSearchResults extends SimpleColors {
           @click="${this.scrollRight}"
           ?disabled="${this.currentIndex >= this.totalItems ||
           this.totalItems <= 1}"
+          aria-label="Next sites"
+          aria-describedby="scroll-right-desc"
         >
           ▶
+          <span id="scroll-right-desc" class="sr-only">View next sites in the carousel</span>
         </button>
         ${this.totalItems > 1
           ? html`
@@ -505,6 +529,7 @@ export class AppHaxSearchResults extends SimpleColors {
                         : ""}"
                       @click="${() => this.goToPage(index + 1)}"
                       aria-label="Go to page ${index + 1}"
+                      aria-current="${this.currentIndex === index + 1 ? "page" : "false"}"
                       tabindex="0"
                     ></button>
                   `,

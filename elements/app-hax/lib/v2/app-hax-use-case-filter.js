@@ -137,9 +137,9 @@ export class AppHaxUseCaseFilter extends LitElement {
           width: 100%;
         }
 
-        h4,
-        .returnTo h4,
-        .startNew h4 {
+        h2,
+        .returnTo h2,
+        .startNew h2 {
           font-family: var(--ddd-font-primary, sans-serif);
           font-size: var(--ddd-font-size-l, 24px);
           color: var(--app-hax-accent-color, var(--accent-color));
@@ -597,7 +597,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             class="returnTo"
             aria-labelledby="return-to-heading"
           >
-            <h4 id="return-to-heading">Return to...</h4>
+            <h2 id="return-to-heading">Return to...</h2>
             <div
               role="region"
               aria-label="Previously created sites"
@@ -618,7 +618,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             class="startNew"
             aria-labelledby="create-site-heading"
           >
-            <h4 id="create-site-heading">Create New Site</h4>
+            <h2 id="create-site-heading">Create New Site</h2>
             <div
               class="template-results"
               role="grid"

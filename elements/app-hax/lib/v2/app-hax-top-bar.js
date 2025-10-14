@@ -113,14 +113,19 @@ export class AppHaxTopBar extends LitElement {
 
   render() {
     return html`
-      <div class="topBar" part="top-bar">
-        <div class="left" part="left">
+      <div 
+        class="topBar" 
+        part="top-bar" 
+        role="banner"
+        aria-label="Application header"
+      >
+        <div class="left" part="left" aria-label="Navigation and home">
           <slot name="left"></slot>
         </div>
-        <div class="center" part="center">
+        <div class="center" part="center" aria-label="Main actions">
           <slot name="center"></slot>
         </div>
-        <div class="right" part="right">
+        <div class="right" part="right" aria-label="User controls">
           <slot name="right"></slot>
         </div>
       </div>

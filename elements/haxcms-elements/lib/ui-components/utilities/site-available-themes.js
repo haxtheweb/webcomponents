@@ -1,12 +1,12 @@
 /**
  * Copyright 2025 The HAX team
- * 
+ *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *     http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,7 +23,7 @@ import "@haxtheweb/simple-icon/simple-icon.js";
  * Site Available Themes
  * Displays available HAXcms themes in a gallery or table format for documentation purposes
  * Includes dynamic theme switching capabilities for live preview
- * 
+ *
  * @element site-available-themes
  */
 export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
@@ -41,10 +41,14 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
     this.columns = 3;
     this.currentTheme = "";
     this.t = this.t || {};
-    
+
     this.registerLocalization({
       context: this,
-      localesPath: new URL("../../../../../../locales/site-available-themes/", import.meta.url).href + "/",
+      localesPath:
+        new URL(
+          "../../../../../../locales/site-available-themes/",
+          import.meta.url,
+        ).href + "/",
       locales: ["en"],
     });
   }
@@ -58,7 +62,7 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
       viewMode: { type: String, attribute: "view-mode" },
       showDetails: { type: Boolean, attribute: "show-details" },
       columns: { type: Number },
-      currentTheme: { type: String, attribute: "current-theme" }
+      currentTheme: { type: String, attribute: "current-theme" },
     };
   }
 
@@ -73,7 +77,8 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
           --theme-gallery-border: var(--ddd-border-sm);
         }
 
-        .loading, .error {
+        .loading,
+        .error {
           text-align: center;
           padding: var(--ddd-spacing-8);
           color: var(--ddd-theme-default-coalyGray);
@@ -141,7 +146,9 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
           border-radius: var(--theme-gallery-border-radius);
           overflow: hidden;
           background: var(--ddd-theme-default-white);
-          transition: transform 0.2s ease, box-shadow 0.2s ease;
+          transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
           position: relative;
         }
 
@@ -272,7 +279,7 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
           .gallery-grid {
             grid-template-columns: repeat(2, 1fr);
           }
-          
+
           .gallery-header {
             flex-direction: column;
             gap: var(--ddd-spacing-2);
@@ -294,7 +301,7 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
             grid-template-columns: 1fr;
           }
         }
-      `
+      `,
     ];
   }
 
@@ -319,7 +326,7 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
       // Load themes.json using relative path from component location
       const themesUrl = new URL("../../themes.json", import.meta.url);
       const response = await fetch(themesUrl);
-      
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -330,8 +337,11 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
       this.themes = Object.entries(themesData).map(([key, theme]) => ({
         key,
         ...theme,
-        thumbnailPath: theme.thumbnail || `theme-screenshots/theme-${theme.element}-thumb.jpg`,
-        fullImagePath: theme.screenshot || `theme-screenshots/theme-${theme.element}.jpg`
+        thumbnailPath:
+          theme.thumbnail ||
+          `theme-screenshots/theme-${theme.element}-thumb.jpg`,
+        fullImagePath:
+          theme.screenshot || `theme-screenshots/theme-${theme.element}.jpg`,
       }));
 
       this.loading = false;
@@ -344,8 +354,12 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
 
   detectCurrentTheme() {
     // Try to detect the current theme from HAXCMS if available
-    if (globalThis.HAXCMS && globalThis.HAXCMS.instance?.store?.manifest?.metadata?.theme?.element) {
-      this.currentTheme = globalThis.HAXCMS.instance.store.manifest.metadata.theme.element;
+    if (
+      globalThis.HAXCMS &&
+      globalThis.HAXCMS.instance?.store?.manifest?.metadata?.theme?.element
+    ) {
+      this.currentTheme =
+        globalThis.HAXCMS.instance.store.manifest.metadata.theme.element;
     }
   }
 
@@ -354,20 +368,22 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
       try {
         await globalThis.HAXCMS.setTheme(themeElement);
         this.currentTheme = themeElement;
-        
+
         // Fire a custom event to notify other components
-        this.dispatchEvent(new CustomEvent('theme-changed', {
-          bubbles: true,
-          composed: true,
-          detail: { themeElement }
-        }));
-        
+        this.dispatchEvent(
+          new CustomEvent("theme-changed", {
+            bubbles: true,
+            composed: true,
+            detail: { themeElement },
+          }),
+        );
+
         console.log(`Theme switched to: ${themeElement}`);
       } catch (error) {
-        console.error('Failed to switch theme:', error);
+        console.error("Failed to switch theme:", error);
       }
     } else {
-      console.warn('HAXCMS theme switching not available');
+      console.warn("HAXCMS theme switching not available");
     }
   }
 
@@ -378,39 +394,53 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
   renderGalleryView() {
     return html`
       <div class="gallery-grid">
-        ${this.themes.map(theme => html`
-          <div class="theme-card ${theme.element === this.currentTheme ? 'current' : ''}">
-            ${theme.element === this.currentTheme ? html`
-              <div class="current-badge">Current</div>
-            ` : ''}
-            <div class="theme-thumbnail">
-              <media-image
-                source="${theme.fullImagePath}"
-                thumbnail="${theme.thumbnailPath}"
-                alt="${theme.name}"
-                accent-color="grey"
-                size="wide"
-              ></media-image>
-            </div>
-            ${this.showDetails ? html`
-              <div class="theme-info">
-                <h3 class="theme-name">${theme.name}</h3>
-                ${theme.description ? html`
-                  <p class="theme-description">${theme.description}</p>
-                ` : ''}
-                <div class="theme-element">&lt;${theme.element}&gt;</div>
-                <button 
-                  class="preview-button"
-                  ?disabled="${theme.element === this.currentTheme}"
-                  @click="${() => this.switchTheme(theme.element)}"
-                >
-                  <simple-icon icon="visibility"></simple-icon>
-                  ${theme.element === this.currentTheme ? 'Current Theme' : 'Preview Theme'}
-                </button>
+        ${this.themes.map(
+          (theme) => html`
+            <div
+              class="theme-card ${theme.element === this.currentTheme
+                ? "current"
+                : ""}"
+            >
+              ${theme.element === this.currentTheme
+                ? html` <div class="current-badge">Current</div> `
+                : ""}
+              <div class="theme-thumbnail">
+                <media-image
+                  source="${theme.fullImagePath}"
+                  thumbnail="${theme.thumbnailPath}"
+                  alt="${theme.name}"
+                  accent-color="grey"
+                  size="wide"
+                ></media-image>
               </div>
-            ` : ''}
-          </div>
-        `)}
+              ${this.showDetails
+                ? html`
+                    <div class="theme-info">
+                      <h3 class="theme-name">${theme.name}</h3>
+                      ${theme.description
+                        ? html`
+                            <p class="theme-description">
+                              ${theme.description}
+                            </p>
+                          `
+                        : ""}
+                      <div class="theme-element">&lt;${theme.element}&gt;</div>
+                      <button
+                        class="preview-button"
+                        ?disabled="${theme.element === this.currentTheme}"
+                        @click="${() => this.switchTheme(theme.element)}"
+                      >
+                        <simple-icon icon="visibility"></simple-icon>
+                        ${theme.element === this.currentTheme
+                          ? "Current Theme"
+                          : "Preview Theme"}
+                      </button>
+                    </div>
+                  `
+                : ""}
+            </div>
+          `,
+        )}
       </div>
     `;
   }
@@ -423,44 +453,60 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
             <th>Preview</th>
             <th>Name</th>
             <th>Element</th>
-            ${this.showDetails ? html`<th>Description</th>` : ''}
+            ${this.showDetails ? html`<th>Description</th>` : ""}
             <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          ${this.themes.map(theme => html`
-            <tr class="${theme.element === this.currentTheme ? 'current' : ''}">
-              <td>
-                <div class="table-thumbnail">
-                  <media-image
-                    source="${theme.fullImagePath}"
-                    thumbnail="${theme.thumbnailPath}"
-                    alt="${theme.name}"
-                    accent-color="grey"
-                    size="wide"
-                  ></media-image>
-                </div>
-              </td>
-              <td>
-                <div class="table-name">${theme.name}</div>
-                ${theme.element === this.currentTheme ? html`
-                  <div style="color: var(--ddd-theme-default-skyBlue); font-size: var(--ddd-font-size-3xs);">Current</div>
-                ` : ''}
-              </td>
-              <td><div class="table-element">&lt;${theme.element}&gt;</div></td>
-              ${this.showDetails ? html`<td>${theme.description || ''}</td>` : ''}
-              <td>
-                <button 
-                  class="preview-button"
-                  ?disabled="${theme.element === this.currentTheme}"
-                  @click="${() => this.switchTheme(theme.element)}"
-                >
-                  <simple-icon icon="visibility"></simple-icon>
-                  ${theme.element === this.currentTheme ? 'Current' : 'Preview'}
-                </button>
-              </td>
-            </tr>
-          `)}
+          ${this.themes.map(
+            (theme) => html`
+              <tr
+                class="${theme.element === this.currentTheme ? "current" : ""}"
+              >
+                <td>
+                  <div class="table-thumbnail">
+                    <media-image
+                      source="${theme.fullImagePath}"
+                      thumbnail="${theme.thumbnailPath}"
+                      alt="${theme.name}"
+                      accent-color="grey"
+                      size="wide"
+                    ></media-image>
+                  </div>
+                </td>
+                <td>
+                  <div class="table-name">${theme.name}</div>
+                  ${theme.element === this.currentTheme
+                    ? html`
+                        <div
+                          style="color: var(--ddd-theme-default-skyBlue); font-size: var(--ddd-font-size-3xs);"
+                        >
+                          Current
+                        </div>
+                      `
+                    : ""}
+                </td>
+                <td>
+                  <div class="table-element">&lt;${theme.element}&gt;</div>
+                </td>
+                ${this.showDetails
+                  ? html`<td>${theme.description || ""}</td>`
+                  : ""}
+                <td>
+                  <button
+                    class="preview-button"
+                    ?disabled="${theme.element === this.currentTheme}"
+                    @click="${() => this.switchTheme(theme.element)}"
+                  >
+                    <simple-icon icon="visibility"></simple-icon>
+                    ${theme.element === this.currentTheme
+                      ? "Current"
+                      : "Preview"}
+                  </button>
+                </td>
+              </tr>
+            `,
+          )}
         </tbody>
       </table>
     `;
@@ -482,16 +528,16 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
           <div class="theme-count">${this.themes.length} themes available</div>
         </div>
         <div class="view-toggle">
-          <button 
-            class="toggle-button ${this.viewMode === 'gallery' ? 'active' : ''}"
-            @click="${() => this.setViewMode('gallery')}"
+          <button
+            class="toggle-button ${this.viewMode === "gallery" ? "active" : ""}"
+            @click="${() => this.setViewMode("gallery")}"
           >
             <simple-icon icon="view-module"></simple-icon>
             Gallery
           </button>
-          <button 
-            class="toggle-button ${this.viewMode === 'table' ? 'active' : ''}"
-            @click="${() => this.setViewMode('table')}"
+          <button
+            class="toggle-button ${this.viewMode === "table" ? "active" : ""}"
+            @click="${() => this.setViewMode("table")}"
           >
             <simple-icon icon="view-list"></simple-icon>
             Table
@@ -499,7 +545,9 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
         </div>
       </div>
 
-      ${this.viewMode === 'gallery' ? this.renderGalleryView() : this.renderTableView()}
+      ${this.viewMode === "gallery"
+        ? this.renderGalleryView()
+        : this.renderTableView()}
     `;
   }
 
@@ -514,7 +562,8 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
       contentEditable: false,
       gizmo: {
         title: "Available Themes",
-        description: "Display available HAXcms themes with live preview switching",
+        description:
+          "Display available HAXcms themes with live preview switching",
         icon: "image:collections",
         color: "purple",
         tags: ["Theme", "Gallery", "HAXcms", "Developer", "Documentation"],
@@ -522,7 +571,7 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
         meta: {
           author: "HAXTheWeb team",
           owner: "The Pennsylvania State University",
-        }
+        },
       },
       settings: {
         configure: [
@@ -533,14 +582,14 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
             inputMethod: "select",
             options: {
               gallery: "Gallery",
-              table: "Table"
-            }
+              table: "Table",
+            },
           },
           {
             property: "showDetails",
             title: "Show Details",
             description: "Show theme descriptions and additional information",
-            inputMethod: "boolean"
+            inputMethod: "boolean",
           },
           {
             property: "columns",
@@ -548,9 +597,9 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
             description: "Number of columns in gallery view",
             inputMethod: "number",
             min: 1,
-            max: 6
-          }
-        ]
+            max: 6,
+          },
+        ],
       },
       demoSchema: [
         {
@@ -558,11 +607,11 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
           properties: {
             viewMode: "gallery",
             showDetails: true,
-            columns: 3
+            columns: 3,
           },
-          content: ""
-        }
-      ]
+          content: "",
+        },
+      ],
     };
   }
 }

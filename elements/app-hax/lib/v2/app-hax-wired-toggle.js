@@ -1,5 +1,5 @@
 import { autorun, toJS } from "mobx";
-import { html } from "lit";
+import { html, css } from "lit";
 import { store } from "./AppHaxStore.js";
 import { WiredDarkmodeToggle } from "../wired-darkmode-toggle/wired-darkmode-toggle.js";
 import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
@@ -52,9 +52,29 @@ export class AppHAXWiredToggle extends SimpleTourFinder(WiredDarkmodeToggle) {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "checked" && oldValue !== undefined) {
-        store.darkMode = this[propName];
+      store.darkMode = this[propName];
       }
     });
+  }
+
+  static get styles() {
+    return [
+      super.styles,
+      css`
+        /* Screen reader only text */
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
+      `
+    ];
   }
   render() {
     return html`
@@ -62,10 +82,14 @@ export class AppHAXWiredToggle extends SimpleTourFinder(WiredDarkmodeToggle) {
         data-simple-tour-stop
         data-stop-title="data-label"
         data-label="${this.label}"
+        aria-describedby="dark-mode-desc"
       >
         ${super.render()}
+        <div id="dark-mode-desc" class="sr-only">
+          Toggle between light and dark mode themes
+        </div>
         <div data-stop-content style="display:none;">
-          You can toggle your user interface between "light" and "dark" for you
+          You can toggle your user interface between "light" and "dark" for your
           viewing enjoyment.
         </div>
       </div>

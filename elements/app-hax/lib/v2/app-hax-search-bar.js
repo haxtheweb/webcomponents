@@ -48,6 +48,16 @@ export class AppHaxSearchBar extends LitElement {
           position: relative;
           display: inline-block;
         }
+        
+        [role="search"] {
+          position: relative;
+          display: inline-block;
+        }
+        
+        .search-input-container {
+          position: relative;
+          display: inline-block;
+        }
         input {
           opacity: 1;
           width: 750px;
@@ -120,17 +130,28 @@ export class AppHaxSearchBar extends LitElement {
 
   render() {
     return html`
-      <slot>
-        <simple-icon class="search-icon" icon="icons:search"></simple-icon>
-      </slot>
-      <input
-        id="searchField"
-        @click="${this.toggleSearch}"
-        @input="${this.search}"
-        @keydown="${this.testKeydown}"
-        type="text"
-        placeholder="Search Existing Sites"
-      />
+      <div role="search" aria-label="Site search">
+        <div class="search-input-container">
+          <simple-icon 
+            class="search-icon" 
+            icon="icons:search"
+            aria-hidden="true"
+            id="search-icon"
+          ></simple-icon>
+          <input
+            id="searchField"
+            @click="${this.toggleSearch}"
+            @input="${this.search}"
+            @keydown="${this.testKeydown}"
+            type="text"
+            placeholder="Search Existing Sites"
+            aria-label="Search existing sites"
+            aria-describedby="search-icon"
+            role="searchbox"
+          />
+        </div>
+        <slot></slot>
+      </div>
     `;
   }
 

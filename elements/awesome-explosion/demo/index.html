@@ -10,21 +10,90 @@
       import "@haxtheweb/utils/lib/demo-snippet.js";
       import '../awesome-explosion.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    <style>
+      .accessibility-notes {
+        margin-top: 2rem;
+        padding: 1rem;
+        background: var(--ddd-accent-1, #f5f5f5);
+        border-radius: var(--ddd-radius-md, 8px);
+        border-left: 4px solid var(--ddd-theme-default-keystoneYellow, #ffd100);
+      }
+      
+      .accessibility-notes h4 {
+        margin-top: 0;
+        color: var(--ddd-theme-default-coalyGray, #262626);
+      }
+      
+      .accessibility-notes ul {
+        margin: 0.5rem 0;
+      }
+      
+      .accessibility-notes li {
+        margin-bottom: 0.25rem;
+      }
+      
+      .accessibility-notes code {
+        background: var(--ddd-accent-2, #e8e8e8);
+        padding: 0.125rem 0.25rem;
+        border-radius: var(--ddd-radius-xs, 4px);
+        font-family: 'Courier New', monospace;
+      }
+    </style>
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>A bunch of awesome-explosion tags</h3>
+      <h3>Awesome Explosion - DDD Design System & Accessibility Enhanced</h3>
+      
       <demo-snippet>
         <template>
-          <awesome-explosion id="blowup" size="tiny"
-            color="red"></awesome-explosion>
+          <h4>Standard sizes using DDD icon variables:</h4>
+          <awesome-explosion size="tiny" color="red"></awesome-explosion>
           <awesome-explosion size="small" color="purple"></awesome-explosion>
           <awesome-explosion size="medium" color="blue"></awesome-explosion>
           <awesome-explosion size="large" color="yellow"></awesome-explosion>
-          <awesome-explosion image="https://media.giphy.com/media/nDSlfqf0gn5g4/giphy.gif" sound="../assets/273320__clagnut__fireworks.mp3" color="orange"></awesome-explosion>
+          <awesome-explosion size="epic" color="orange"></awesome-explosion>
         </template>
       </demo-snippet>
+      
+      <demo-snippet>
+        <template>
+          <h4>Accessibility features:</h4>
+          <p>Sound enabled (hover or click):</p>
+          <awesome-explosion size="medium" color="blue" sound-enabled></awesome-explosion>
+          
+          <p>Sound disabled for reduced-motion users:</p>
+          <awesome-explosion size="medium" color="green" sound-enabled="false"></awesome-explosion>
+          
+          <p>Disabled state:</p>
+          <awesome-explosion size="medium" color="red" disabled></awesome-explosion>
+        </template>
+      </demo-snippet>
+      
+      <demo-snippet>
+        <template>
+          <h4>Custom media examples:</h4>
+          <awesome-explosion 
+            size="large" 
+            color="orange"
+            image="https://media.giphy.com/media/nDSlfqf0gn5g4/giphy.gif" 
+            sound="../assets/273320__clagnut__fireworks.mp3"
+            sound-enabled>
+          </awesome-explosion>
+        </template>
+      </demo-snippet>
+      
+      <div class="accessibility-notes">
+        <h4>Accessibility Notes:</h4>
+        <ul>
+          <li>✅ Uses DDD design system variables for consistent sizing</li>
+          <li>✅ Respects <code>prefers-reduced-motion</code> settings</li>
+          <li>✅ Keyboard accessible (Tab + Enter/Space)</li>
+          <li>✅ Screen reader friendly with proper ARIA labels</li>
+          <li>✅ Sound can be controlled globally via attributes</li>
+          <li>✅ Dark mode compatible with DDD theming</li>
+          <li>✅ Focus indicators follow DDD focus system</li>
+        </ul>
+      </div>
     </div>
   </body>
 </html>

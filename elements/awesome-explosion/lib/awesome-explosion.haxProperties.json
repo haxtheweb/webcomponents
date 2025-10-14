@@ -1,0 +1,116 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "canScale": false,
+  "canPosition": true,
+  "canEditSource": false,
+  "gizmo": {
+    "title": "Awesome Explosion",
+    "description": "An interactive explosion animation with optional sound effects",
+    "icon": "av:fiber-manual-record",
+    "color": "orange",
+    "tags": ["Silly", "Animation", "Interactive", "Sound", "Effect"],
+    "handles": [],
+    "meta": {
+      "author": "HAX The Web",
+      "inlineOnly": false,
+      "requiresChildren": false
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "size",
+        "title": "Size",
+        "description": "Control the size of the explosion",
+        "inputMethod": "select",
+        "options": {
+          "tiny": "Tiny",
+          "small": "Small",
+          "medium": "Medium",
+          "large": "Large",
+          "epic": "Epic"
+        }
+      },
+      {
+        "property": "color",
+        "title": "Color",
+        "description": "Color theme for the explosion",
+        "inputMethod": "select",
+        "options": {
+          "": "Default",
+          "red": "Red",
+          "blue": "Blue",
+          "purple": "Purple",
+          "orange": "Orange",
+          "yellow": "Yellow"
+        }
+      },
+      {
+        "property": "soundEnabled",
+        "title": "Sound Effects",
+        "description": "Enable or disable sound effects",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "resetSound",
+        "title": "Reset Sound",
+        "description": "Reset sound to beginning each time",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "image",
+        "title": "Custom Image",
+        "description": "Optional custom explosion image URL",
+        "inputMethod": "haxupload",
+        "validationType": "url"
+      },
+      {
+        "property": "sound",
+        "title": "Custom Sound",
+        "description": "Optional custom sound effect URL",
+        "inputMethod": "haxupload",
+        "validationType": "url"
+      }
+    ],
+    "advanced": [
+      {
+        "property": "disabled",
+        "title": "Disabled",
+        "description": "Disable all interactions",
+        "inputMethod": "boolean"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "awesome-explosion",
+      "properties": {
+        "size": "medium",
+        "color": "orange"
+      },
+      "content": "",
+      "description": "A medium orange explosion"
+    },
+    {
+      "tag": "awesome-explosion",
+      "properties": {
+        "size": "large",
+        "color": "blue",
+        "soundEnabled": false
+      },
+      "content": "",
+      "description": "A large blue explosion without sound"
+    },
+    {
+      "tag": "awesome-explosion",
+      "properties": {
+        "size": "epic",
+        "color": "red"
+      },
+      "content": "",
+      "description": "An epic red explosion with sound"
+    }
+  ]
+}

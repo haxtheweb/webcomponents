@@ -724,7 +724,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       this.audio = new Audio(
         new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href,
       );
-      this.audio.volume = 0.3;
+      this.audio.volume = 0.2;
       this.audio.onended = (event) => {
         resolve();
       };

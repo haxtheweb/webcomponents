@@ -11,12 +11,14 @@ export class AppHaxLabel extends LitElement {
     super();
     this.title = "HAX site list";
     this.subtitle = "Let's build something awesome!";
+    this.headingLevel = 1;
   }
 
   static get properties() {
     return {
       title: { type: String },
       subtitle: { type: String },
+      headingLevel: { type: Number, attribute: 'heading-level' },
     };
   }
 
@@ -100,16 +102,23 @@ export class AppHaxLabel extends LitElement {
   }
 
   render() {
+    const HeadingTag = `h${Math.min(Math.max(this.headingLevel, 1), 6)}`;
+    
     return html`
-      <div class="topBar">
-        <div class="title" part="title">
-          <span class="bracket">&#60;</span><slot>${this.title}</slot
-          ><span class="bracket">&#62;</span>
-        </div>
-        <div class="subtitle" part="subtitle">
+      <header class="topBar" role="banner" aria-labelledby="main-heading">
+        <${HeadingTag} 
+          id="main-heading"
+          class="title" 
+          part="title"
+        >
+          <span class="bracket" aria-hidden="true">&#60;</span>
+          <slot>${this.title}</slot>
+          <span class="bracket" aria-hidden="true">&#62;</span>
+        </${HeadingTag}>
+        <div class="subtitle" part="subtitle" role="doc-subtitle">
           <slot name="subtitle">${this.subtitle}</slot>
         </div>
-      </div>
+      </header>
     `;
   }
 }

@@ -128,16 +128,19 @@ export class AppHaxSiteButton extends SimpleColors {
         ?disabled=${this.disabled || this.comingSoon}
         class="haxButton"
         @click="${this._handleClick}"
+        aria-pressed="${this.active}"
+        aria-label="${this.label}${this.comingSoon ? ' (coming soon)' : ''}"
       >
         <div class="contents">
-          <span class="label"> ${this.label} </span>
+          <span class="label" aria-hidden="true"> ${this.label} </span>
           ${this.comingSoon
             ? html`<img
                 src="${postIt}"
                 loading="lazy"
                 decoding="async"
                 fetchpriority="low"
-                alt="Feature coming soon"
+                alt=""
+                role="presentation"
                 class="coming-soon"
               />`
             : ``}

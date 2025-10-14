@@ -240,6 +240,19 @@ export class AppHaxButton extends LitElement {
             width: 100px;
           }
         }
+
+        /* Screen reader only text */
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
       `,
     ];
   }
@@ -250,9 +263,12 @@ export class AppHaxButton extends LitElement {
         elevation=${this.elevation}
         ?disabled=${this.disabled || this.comingSoon}
         class="haxButton"
+        aria-pressed="${this.active}"
+        aria-describedby="${this.type ? `${this.type.replace(/\s+/g, '-').toLowerCase()}-desc` : ''}"
+        aria-label="${this.type} option${this.comingSoon ? ' (coming soon)' : ''}${this.beta ? ' (beta)' : ''}"
       >
         <div id="container">
-          <simple-icon-lite icon=${this.icon}> </simple-icon-lite>
+          <simple-icon-lite icon=${this.icon} aria-hidden="true"> </simple-icon-lite>
           <div class="type">${this.type}</div>
         </div>
         ${this.comingSoon
@@ -261,7 +277,8 @@ export class AppHaxButton extends LitElement {
               loading="lazy"
               decoding="async"
               fetchpriority="low"
-              alt="Feature coming soon"
+              alt=""
+              role="presentation"
               class="coming-soon"
             />`
           : ``}
@@ -271,11 +288,20 @@ export class AppHaxButton extends LitElement {
               loading="lazy"
               decoding="async"
               fetchpriority="low"
-              alt="Feature in beta"
+              alt=""
+              role="presentation"
               class="beta"
             />`
           : ``}
       </wired-button>
+      ${this.type ? html`
+        <div 
+          id="${this.type.replace(/\s+/g, '-').toLowerCase()}-desc" 
+          class="sr-only"
+        >
+          ${this.type} content type option
+        </div>
+      ` : ''}
     `;
   }
 }
