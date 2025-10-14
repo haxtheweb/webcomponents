@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`polaris-theme`\n`A 2nd polaris theme`",
+          "description": "`Polaris Theme`\n`A HAXcms inspired by an old wordpress theme",
           "name": "PolarisTheme",
           "members": [
             {
@@ -372,6 +372,23 @@
               }
             },
             {
+              "kind": "method",
+              "name": "_editModeChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "Handle edit mode changes and force menu to close to prevent clipping",
+              "inheritedFrom": {
+                "name": "PolarisFlexTheme",
+                "module": "lib/polaris-flex-theme.js"
+              }
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
@@ -690,7 +707,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`polaris-flex-theme`\n`Polaris theme based on modern flex design system`",
+          "description": "`Polaris Flex Theme`\n`Polaris theme based on modern flex design system`",
           "name": "PolarisFlexTheme",
           "members": [
             {
@@ -732,6 +749,19 @@
                   "name": "e"
                 }
               ]
+            },
+            {
+              "kind": "method",
+              "name": "_editModeChanged",
+              "parameters": [
+                {
+                  "name": "newValue"
+                },
+                {
+                  "name": "oldValue"
+                }
+              ],
+              "description": "Handle edit mode changes and force menu to close to prevent clipping"
             },
             {
               "kind": "method",
@@ -954,7 +984,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`polaris-invent-theme`\n`A 2nd polaris theme`",
+          "description": "`Polaris Invent Theme`\n`A 2nd polaris theme customized for Invent PSU`",
           "name": "PolarisInventTheme",
           "members": [
             {

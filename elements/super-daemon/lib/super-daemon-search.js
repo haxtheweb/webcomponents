@@ -560,6 +560,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
 
   getActiveTitle(context) {
     switch (context) {
+      case "CMS":
       case "/":
         return this.t.slashCommandsActive || "Slash commands active";
       case ">":
@@ -570,6 +571,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
 
   getActiveIcon(context) {
     switch (context) {
+      case "CMS":
       case "/":
         return "hax:wand";
       case ">":

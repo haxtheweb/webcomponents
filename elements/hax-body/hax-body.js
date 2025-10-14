@@ -1252,9 +1252,22 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   keyboardShortCutProcess(guess) {
     // see if our map matches
     if (HAXStore.keyboardShortcuts[guess.replace(" ", "")]) {
-      let el = haxElementToNode(
-        HAXStore.keyboardShortcuts[guess.replace(" ", "")],
-      );
+      let shortcut = HAXStore.keyboardShortcuts[guess.replace(" ", "")];
+      
+      // Apply style guide defaults for elements created via keyboard shortcuts
+      const styleGuideOverride = HAXStore._getStyleGuideSchemaOverride(shortcut.tag);
+      if (styleGuideOverride && styleGuideOverride.demoSchema && styleGuideOverride.demoSchema[0]) {
+        const demo = styleGuideOverride.demoSchema[0];
+        if (demo.properties) {
+          // Merge style guide properties with shortcut properties
+          shortcut = {
+            ...shortcut,
+            properties: { ...demo.properties, ...(shortcut.properties || {}) }
+          };
+        }
+      }
+      
+      let el = haxElementToNode(shortcut);
       this.haxReplaceNode(this.activeNode, el);
       this.__focusLogic(el);
       // breaks should jump just PAST the break
@@ -2119,7 +2132,22 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   haxChangeTagName(node, tagName, maintainContent = true) {
     // Create a replacement tag of the desired type
     var replacement = globalThis.document.createElement(tagName);
+    
+    // Apply style guide defaults for heading and other elements during block conversion
+    const styleGuideOverride = HAXStore._getStyleGuideSchemaOverride(tagName);
+    if (styleGuideOverride && styleGuideOverride.demoSchema && styleGuideOverride.demoSchema[0]) {
+      const demo = styleGuideOverride.demoSchema[0];
+      if (demo.properties) {
+        // Apply style guide properties first
+        for (let prop in demo.properties) {
+          const attributeName = prop.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`);
+          replacement.setAttribute(attributeName, demo.properties[prop]);
+        }
+      }
+    }
+    
     // Grab all of the original's attributes, and pass them to the replacement
+    // These will override style guide defaults if they exist
     for (var i = 0, l = node.attributes.length; i < l; ++i) {
       let nodeName = node.attributes.item(i).nodeName;
       let value = node.attributes.item(i).value;

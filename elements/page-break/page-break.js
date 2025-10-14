@@ -33,6 +33,8 @@ export class PageBreak extends IntersectionObserverMixin(
     this.entityType = "page";
     this.status = "";
     this.author = null;
+    this.linkUrl = null;
+    this.linkTarget = "_self";
     this.t = {
       newPage: "New page",
       pageBreak: "Page break",
@@ -41,6 +43,9 @@ export class PageBreak extends IntersectionObserverMixin(
       noParent: "No parent",
       toggleLock: "Toggle lock",
       togglePublished: "Toggle published",
+      linkMessage: "Users will be redirected to:",
+      linkOpensInNewWindow: "Opens in new window",
+      linkOpensInSameWindow: "Opens in same window",
     };
     this.registerLocalization({
       context: this,
@@ -111,6 +116,8 @@ export class PageBreak extends IntersectionObserverMixin(
       status: { type: String },
       pageType: { type: String, attribute: "page-type" },
       author: { type: String },
+      linkUrl: { type: String, attribute: "link-url" },
+      linkTarget: { type: String, attribute: "link-target" },
       _haxState: { type: Boolean },
     };
   }
@@ -456,6 +463,60 @@ export class PageBreak extends IntersectionObserverMixin(
           padding: 0;
           height: 0;
         }
+        .link-info {
+          display: none;
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-coalyGray)
+          );
+          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-3);
+          margin-top: var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-xs);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        :host([data-hax-ray]) .link-info {
+          display: block;
+        }
+        .link-url {
+          font-family: monospace;
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          border-radius: var(--ddd-radius-xs);
+          border: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-theme-default-slateGray)
+            );
+          display: inline-block;
+          margin: var(--ddd-spacing-1) 0;
+          word-break: break-all;
+          text-decoration: none;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          transition: all 0.2s ease;
+        }
+        .link-url:hover {
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-slateMaxLight)
+          );
+          color: var(--ddd-theme-default-skyBlue);
+          border-color: var(--ddd-theme-default-skyBlue);
+        }
         .text {
           display: none;
           font-weight: var(--ddd-font-weight-medium);
@@ -521,6 +582,26 @@ export class PageBreak extends IntersectionObserverMixin(
         <simple-icon-lite icon="${this.iconType}"></simple-icon-lite>${this.t
           .selectToEditPageDetails}
       </div>
+      ${this.linkUrl
+        ? html`<div class="link-info">
+            <div>
+              <strong>${this.t.linkMessage}</strong>
+            </div>
+            <a
+              class="link-url"
+              href="${this.linkUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ${this.linkUrl}
+            </a>
+            <div>
+              ${this.linkTarget === "_blank"
+                ? this.t.linkOpensInNewWindow
+                : this.t.linkOpensInSameWindow}
+            </div>
+          </div>`
+        : ``}
       ${this.locked
         ? html`<simple-icon-button-lite
             @click="${this.haxClickLockInPage}"

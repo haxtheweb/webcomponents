@@ -978,6 +978,19 @@ class PolarisFlexTheme extends LTIResizingMixin(
   }
 
   /**
+   * Handle edit mode changes and force menu to close to prevent clipping
+   */
+  _editModeChanged(newValue, oldValue) {
+    if (super._editModeChanged) {
+      super._editModeChanged(newValue, oldValue);
+    }
+    // Force close the mobile menu when entering edit mode to prevent clipping
+    if (newValue === true && this.menuOpen) {
+      this.__HAXCMSMobileMenuToggle();
+    }
+  }
+
+  /**
    * Delay importing site-search until we click to open it directly
    */
   siteModalClick(e) {

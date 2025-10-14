@@ -48,7 +48,9 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
           border-color: var(--ddd-theme-default-navy);
         }
 
-        :host([data-hax-ray]) .template-content ::slotted(*.hax-hovered)::before {
+        :host([data-hax-ray])
+          .template-content
+          ::slotted(*.hax-hovered)::before {
           content: " ";
           width: calc(100% + 32px);
           display: block;

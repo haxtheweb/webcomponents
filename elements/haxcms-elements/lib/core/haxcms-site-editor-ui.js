@@ -3762,7 +3762,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
           // Show a toast to let the user know Merlin is here to help
           store.toast(
-            "👋 Welcome to HAX! Merlin is here to help you get started with the 5 most common operations.",
+            "👋 Welcome to HAX! Merlin is here to help you get started",
             8000,
             {
               hat: "wizard",
@@ -3799,7 +3799,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
   // Method to execute welcome program actions
   executeWelcomeAction(actionType) {
-
     // Execute the appropriate action based on type
     switch (actionType) {
       case "create-page":
@@ -3808,7 +3807,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         setTimeout(() => {
           this.shadowRoot.querySelector("#addpagebutton").HAXCMSButtonClick();
         }, 100);
-      break;
+        break;
       case "edit-page":
         // Trigger the edit page button
         this._editButtonTap();

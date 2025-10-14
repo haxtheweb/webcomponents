@@ -16,6 +16,8 @@ import {
   htmlEntities,
   localStorageGet,
   localStorageSet,
+  detectMarkdown,
+  markdownToHTML,
 } from "@haxtheweb/utils/utils.js";
 import {
   observable,
@@ -1368,9 +1370,36 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       pasteContent = pasteContent.replace(/<div/g, "<p");
       pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
       originalContent = pasteContent;
+      
+      // Check for markdown FIRST (before any other processing)
+      // Get the plain text content for markdown detection
+      let textContent = "";
+      if (e.clipboardData || e.originalEvent.clipboardData) {
+        textContent = (e.originalEvent || e).clipboardData.getData("text/plain") || "";
+      } else if (globalThis.clipboardData) {
+        textContent = globalThis.clipboardData.getData("Text") || "";
+      }
+      
+      // If we detect markdown, prevent default and convert immediately
+      if (textContent && textContent.length > 0 && textContent.length < 100000 && detectMarkdown(textContent)) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        
+        try {
+          const markdownHTML = await markdownToHTML(textContent);
+          if (markdownHTML && markdownHTML !== textContent) {
+            pasteContent = markdownHTML;
+            originalContent = pasteContent;
+          }
+        } catch (error) {
+          console.warn('Failed to convert markdown to HTML:', error);
+          // Continue with original content if markdown conversion fails
+        }
+      }
+      // Performance-aware paste handling: check quick binary/blob tests
       // look for base64 like copy and paste of an image from clipboard
-
-      if (this.isBase64(originalContent)) {
+      else if (this.isBase64(originalContent)) {
         // stop normal paste
         e.preventDefault();
         e.stopPropagation();
@@ -1419,8 +1448,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           return false;
         });
       }
-      // we have a "file" paste
-      else if (e.clipboardData.files.length > 0) {
+      // we have a "file" paste  
+      else if (e.clipboardData && e.clipboardData.files && e.clipboardData.files.length > 0) {
         // stop normal paste
         e.preventDefault();
         e.stopPropagation();
@@ -1452,20 +1481,65 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           }),
         );
       }
+      
       // detect word garbage
       let inlinePaste = false;
       // the string to import as sanitized by hax
       let newContent = "";
       // verify this is HTML prior to treating it as such
       // HTML pasting to ensure it's clean is very slow
+      // Clean paste content FIRST before any processing
+      pasteContent = stripMSWord(pasteContent);
+      
       let fragment = globalThis.document.createElement("div");
       fragment.innerHTML = pasteContent;
       let haxElements = [];
+      
+      // Check if we're pasting into the middle of an existing text element (inline paste)
+      let range = this.getRange();
+      let isInlinePaste = false;
+      if (range && this.activeNode && this.isTextElement(this.activeNode)) {
+        // If cursor is not at the beginning/end of the element, it's an inline paste
+        let selection = this.getSelection();
+        if (selection && !selection.isCollapsed) {
+          // User has selected text - inline paste
+          isInlinePaste = true;
+        } else if (range.startOffset > 0 && range.startOffset < this.activeNode.textContent.length) {
+          // Cursor is in the middle - inline paste
+          isInlinePaste = true;
+        }
+      }
+      
+      // Check if we have mixed content (text + inline elements) without proper block wrapper
+      // This needs to happen AFTER stripMSWord to work with cleaned content
+      let hasTextNodes = Array.from(fragment.childNodes).some(node => 
+        node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== ""
+      );
+      let hasInlineElements = Array.from(fragment.children).some(child => 
+        ["strong", "em", "b", "i", "a", "span", "code", "mark", "sup", "sub"].includes(child.tagName.toLowerCase())
+      );
+      let hasBlockElements = Array.from(fragment.children).some(child => 
+        this.__validGridTags().includes(child.tagName.toLowerCase())
+      );
+      
+      // If we have mixed content without proper block wrapper, wrap it
+      // For inline paste, handle mixed content specially to preserve all text
+      if ((hasTextNodes || hasInlineElements) && !hasBlockElements && fragment.children.length > 0) {
+        if (isInlinePaste) {
+          // For inline paste, skip HAX element processing and handle directly as HTML
+          newContent = pasteContent;
+          inlinePaste = true;
+          // Skip the rest of the processing and go straight to inline paste handler
+        } else {
+          pasteContent = `<p>${pasteContent}</p>`;
+          fragment.innerHTML = pasteContent; // Update fragment with wrapped content
+        }
+      }
+      
       // test that this is valid HTML before we dig into it as elements
       // and that it actually has children prior to parsing for children
-      if (fragment.children) {
-        // NOW we can safely handle paste from word cases
-        pasteContent = stripMSWord(pasteContent);
+      // Skip this processing if we already handled inline mixed content above
+      if (fragment.children && !(inlinePaste && newContent)) {
         // we force h2 to be highest document level on pasted content
         pasteContent = pasteContent.replace(/<h1>/g, "<h2>");
         pasteContent = pasteContent.replace(/<\/h1>/g, "</h2>");
@@ -1608,7 +1682,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // account for incredibly basic pastes of single groups of characters
       else if (haxElements.length === 1 && haxElements[0].tag === "p") {
         newContent = pasteContent;
-        inlinePaste = true;
+        inlinePaste = isInlinePaste; // Use our early detection instead of always true
       }
       // account for incredibly basic pastes of single groups of characters
       else if (
@@ -1758,10 +1832,47 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             let txt;
             // we got here via an inline paste trap for a URL or other inline content
             if (!validURL(pasteContent)) {
-              // if there ARE HTML children under here, we need to resolve it as HTML
-              if (newNodes.children && newNodes.children.length > 0) {
+              // For mixed content (text + inline elements), insert all nodes in reverse order
+              if (newNodes.childNodes && newNodes.childNodes.length > 1) {
+                // Clone the nodes array since we'll be modifying it
+                let nodesToInsert = Array.from(newNodes.childNodes);
+                let lastInsertedNode = null;
+                // Insert all nodes in reverse order (last to first)
+                for (let i = nodesToInsert.length - 1; i >= 0; i--) {
+                  let nodeToInsert = nodesToInsert[i].cloneNode(true);
+                  range.insertNode(nodeToInsert);
+                  // Keep track of the first node we insert (which will be the last in document order)
+                  if (i === nodesToInsert.length - 1) {
+                    lastInsertedNode = nodeToInsert;
+                  }
+                }
+                // Position cursor at the end of the last inserted node
+                setTimeout(() => {
+                  if (lastInsertedNode) {
+                    // If it's a text node, position at the end of the text
+                    if (lastInsertedNode.nodeType === Node.TEXT_NODE) {
+                      this._positionCursorInNode(lastInsertedNode, lastInsertedNode.textContent.length);
+                    } else {
+                      // If it's an element, position after it
+                      let newRange = this.getRange();
+                      if (newRange) {
+                        newRange.setStartAfter(lastInsertedNode);
+                        newRange.setEndAfter(lastInsertedNode);
+                        let sel = this.getSelection();
+                        if (sel) {
+                          sel.removeAllRanges();
+                          sel.addRange(newRange);
+                        }
+                      }
+                    }
+                  }
+                }, 0);
+                // Don't insert anything else, we're done
+                return;
+              } else if (newNodes.children && newNodes.children.length > 0) {
                 while (newNodes.childNodes.length > 1) {
-                  range.insertNode(Array.from(newNodes.childNodes).pop());
+                  let nodeToInsert = Array.from(newNodes.childNodes).pop();
+                  range.insertNode(nodeToInsert);
                 }
                 // this should append the HTML elements / textnodes correctly
                 txt = Array.from(newNodes.childNodes).pop();
@@ -1778,8 +1889,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               txt.setAttribute("target", "_blank");
               txt.innerText = pasteContent;
             }
-            range.deleteContents();
-            range.insertNode(txt);
+            // Only insert txt if it exists (not for mixed content case)
+            if (txt) {
+              range.deleteContents();
+              range.insertNode(txt);
+            }
             setTimeout(() => {
               this._positionCursorInNode(txt, txt.length);
             }, 0);
@@ -1865,11 +1979,29 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               siblingEl = activeEl;
             }
             setTimeout(() => {
-              if (activeEl && activeEl.childNodes && activeEl.childNodes[0]) {
-                this._positionCursorInNode(
-                  activeEl.childNodes[0],
-                  activeEl.childNodes[0].length,
-                );
+              if (activeEl && activeEl.childNodes && activeEl.childNodes.length > 0) {
+                // Position cursor at the end of the last child node to ensure it's at the end of content
+                let lastChild = activeEl.childNodes[activeEl.childNodes.length - 1];
+                if (lastChild.nodeType === Node.TEXT_NODE) {
+                  // If last child is a text node, position at end of text
+                  this._positionCursorInNode(lastChild, lastChild.textContent.length);
+                } else {
+                  // If last child is an element, try to find the deepest last text node
+                  let deepestTextNode = this._findDeepestLastTextNode(lastChild);
+                  if (deepestTextNode) {
+                    this._positionCursorInNode(deepestTextNode, deepestTextNode.textContent.length);
+                  } else {
+                    // Fallback to positioning after the element
+                    let range = this.getRange();
+                    let sel = this.getSelection();
+                    if (range && sel) {
+                      range.setStartAfter(lastChild);
+                      range.setEndAfter(lastChild);
+                      sel.removeAllRanges();
+                      sel.addRange(range);
+                    }
+                  }
+                }
                 activeEl = null;
                 siblingEl = null;
               }
@@ -1881,6 +2013,32 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
     }
   }
+  /**
+   * Helper method to find the deepest last text node within an element
+   * Used for proper cursor positioning at the end of content
+   */
+  _findDeepestLastTextNode(element) {
+    if (!element || !element.childNodes) {
+      return null;
+    }
+    
+    // Work backwards through child nodes to find the last text node or element with text
+    for (let i = element.childNodes.length - 1; i >= 0; i--) {
+      let node = element.childNodes[i];
+      if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+        return node;
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        // Recursively search in the element
+        let deeperTextNode = this._findDeepestLastTextNode(node);
+        if (deeperTextNode) {
+          return deeperTextNode;
+        }
+      }
+    }
+    
+    return null;
+  }
+  
   // HTML primatives which are valid grid plate elements
   __validGridTags() {
     return [
@@ -3227,7 +3385,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               ].includes(tag)
                 ? true
                 : false,
-              hidden: ["h2", "ul"].includes(tag) ? false : true,
+              hidden: ["h1", "h2", "h3", "h4", "ul"].includes(tag) ? false : true,
               outlineDesigner: ["h2", "ul"].includes(tag) ? true : false, // Oh no you didn't..
             },
           },
@@ -3338,6 +3496,18 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       // support for properties to be set automatically optionally
       if (typeof details.properties !== typeof undefined) {
         properties = details.properties;
+      }
+      
+      // Apply style guide defaults for elements inserted via Super Daemon or other insert methods
+      // Check if this is coming from a context where we want to apply style guide defaults
+      const styleGuideOverride = this._getStyleGuideSchemaOverride(details.tag);
+      if (styleGuideOverride && styleGuideOverride.demoSchema && styleGuideOverride.demoSchema[0]) {
+        const demo = styleGuideOverride.demoSchema[0];
+        if (demo.properties) {
+          // Merge style guide properties with existing properties
+          // Existing properties take precedence over style guide defaults
+          properties = { ...demo.properties, ...properties };
+        }
       }
       // support / clean up properties / attributes that have innerHTML / innerText
       // these are reserved words but required for certain bindings

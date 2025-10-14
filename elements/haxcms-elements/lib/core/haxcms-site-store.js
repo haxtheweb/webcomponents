@@ -1528,6 +1528,37 @@ class HAXCMSSiteStore extends HTMLElement {
           return true;
         });
         if (found) {
+          // Check if this page has a link URL configured and user is not logged in
+          // Only perform redirect check if the app and backend are fully ready to avoid timing issues
+          if (
+            store.appReady &&
+            store.cmsSiteEditorBackend.instance &&
+            found.metadata &&
+            found.metadata.linkUrl &&
+            !store.isLoggedIn
+          ) {
+            // Additional delay to ensure JWT authentication check is complete
+            setTimeout(() => {
+              // Double-check authentication state after backend has had time to initialize
+              if (!store.isLoggedIn) {
+                // Handle link redirect for non-authenticated users
+                const linkTarget = found.metadata.linkTarget || "_self";
+                if (linkTarget === "_blank") {
+                  globalThis.open(
+                    found.metadata.linkUrl,
+                    "_blank",
+                    "noopener,noreferrer",
+                  );
+                } else {
+                  globalThis.location.href = found.metadata.linkUrl;
+                }
+              } else {
+                // User is authenticated, proceed normally
+                store.activeId = id;
+              }
+            }, 100);
+            return; // Don't set activeId immediately, wait for timeout
+          }
           store.activeId = id;
         } else if (store.getInternalRoute()) {
           // we need other stuff to work with this.

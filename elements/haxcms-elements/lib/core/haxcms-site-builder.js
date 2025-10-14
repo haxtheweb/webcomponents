@@ -964,8 +964,23 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       ${activeItem.metadata.icon ? `icon="${activeItem.metadata.icon}"` : ``}
       ${activeItem.metadata.accentColor ? `accent-color="${activeItem.metadata.accentColor}"` : ``}
       ${activeItem.metadata.theme && activeItem.metadata.theme.key ? `developer-theme="${activeItem.metadata.theme.key}"` : ``}
+      ${activeItem.metadata.linkUrl ? `link-url="${activeItem.metadata.linkUrl}"` : ``}
+      ${activeItem.metadata.linkTarget ? `link-target="${activeItem.metadata.linkTarget}"` : ``}
       ${activeItem.metadata.locked ? 'locked="locked"' : ""}
       ${activeItem.metadata.published === false ? "" : 'published="published"'} ></page-break>${htmlcontent}`;
+
+      // If this page has a link URL configured and the user is not logged in,
+      // append simple redirect messaging for a better user experience
+      if (activeItem.metadata.linkUrl) {
+        const linkTarget = activeItem.metadata.linkTarget || "_self";
+        const redirectMessage = `
+          <p><a href="${activeItem.metadata.linkUrl}" target="${linkTarget}" rel="noopener noreferrer">${activeItem.metadata.linkUrl}</a></p>
+          <p><small>If the redirect doesn't work, please click the link above.</small></p>
+        `;
+
+        // Append the redirect message to the content
+        htmlcontent = htmlcontent + redirectMessage;
+      }
 
       // Convert HTML to HAXSchema for processing
       try {

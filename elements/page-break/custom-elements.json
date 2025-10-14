@@ -202,11 +202,31 @@
             },
             {
               "kind": "field",
+              "name": "linkUrl",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "link-url"
+            },
+            {
+              "kind": "field",
+              "name": "linkTarget",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"_self\"",
+              "attribute": "link-target"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ newPage: \"New page\", pageBreak: \"Page break\", selectToEditPageDetails: \"Select to edit Page details\", clickToUnlock: \"Click to unlock\", noParent: \"No parent\", toggleLock: \"Toggle lock\", togglePublished: \"Toggle published\", }"
+              "default": "{ newPage: \"New page\", pageBreak: \"Page break\", selectToEditPageDetails: \"Select to edit Page details\", clickToUnlock: \"Click to unlock\", noParent: \"No parent\", toggleLock: \"Toggle lock\", togglePublished: \"Toggle published\", linkMessage: \"Users will be redirected to:\", linkOpensInNewWindow: \"Opens in new window\", linkOpensInSameWindow: \"Opens in same window\", }"
             },
             {
               "kind": "field",
@@ -597,6 +617,22 @@
               },
               "default": "null",
               "fieldName": "author"
+            },
+            {
+              "name": "link-url",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "linkUrl"
+            },
+            {
+              "name": "link-target",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"_self\"",
+              "fieldName": "linkTarget"
             },
             {
               "name": "_haxState",
