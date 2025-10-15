@@ -4208,6 +4208,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     if (typeof tmpProps !== typeof undefined) {
       for (let j in tmpProps) {
+        // skip innerHTML and innerText as they should be handled as content, not attributes
+        if (j === "innerHTML" || j === "innerText") {
+          continue;
+        }
         var nodeName = camelToDash(j);
         var value = null;
         // prefer local value over properties object if possible

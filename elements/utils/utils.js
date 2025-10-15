@@ -1086,6 +1086,10 @@ function haxElementToNode(haxSchema) {
 
   // support for properties if they exist
   for (var property in properties) {
+    // skip innerHTML and innerText as they should be handled as content, not attributes
+    if (property === "innerHTML" || property === "innerText") {
+      continue;
+    }
     let attributeName = camelToDash(property);
     // as we handle our VDOM through here regularly, make sure the bad JSEventAttributes
     // don't get set as attributes on the node, ever.
