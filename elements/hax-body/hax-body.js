@@ -2257,6 +2257,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // Create a replacement tag of the desired type
     var replacement = globalThis.document.createElement(tagName);
     
+    // Store slot attribute early to ensure it's preserved
+    const originalSlot = node.getAttribute("slot");
+    
     // Apply style guide defaults for heading and other elements during block conversion
     const styleGuideOverride = HAXStore._getStyleGuideSchemaOverride(tagName);
     if (styleGuideOverride && styleGuideOverride.demoSchema && styleGuideOverride.demoSchema[0]) {
@@ -2282,6 +2285,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         console.warn(e);
       }
     }
+    
+    // Ensure slot attribute is explicitly preserved for grid plate elements
+    if (originalSlot && HAXStore.isGridPlateElement(node.parentElement)) {
+      replacement.setAttribute("slot", originalSlot);
+    }
     // Persist contents
     // account for empty list and ordered list items
     if (maintainContent) {
@@ -2303,6 +2311,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             .replace(/<br\/>/g, "</li>\n<li>")
             .replace(/<br>/g, "</li>\n<li>") +
           "</li>";
+      }
+      // when converting to list, ensure slot is on the list, not the items
+      if (originalSlot) {
+        replacement.setAttribute("slot", originalSlot);
+        // remove slot from any child LI elements
+        setTimeout(() => {
+          Array.from(replacement.children).forEach(child => {
+            if (child.tagName === "LI" && child.getAttribute("slot")) {
+              child.removeAttribute("slot");
+            }
+          });
+        }, 0);
       }
     } else if (
       node.tagName.toLowerCase() == "ul" ||
@@ -3229,6 +3249,26 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     unwrap(node);
                     continue;
                   }
+                  // UL or OL nested inside P tag - unwrap P and transfer attributes
+                  if (
+                    node.tagName === "P" &&
+                    node.children.length > 0 &&
+                    ["UL", "OL"].includes(node.children[0].tagName)
+                  ) {
+                    let listElement = node.children[0];
+                    // transfer slot and other data attributes from P to UL/OL
+                    if (node.getAttribute("slot") && !listElement.getAttribute("slot")) {
+                      listElement.setAttribute("slot", node.getAttribute("slot"));
+                    }
+                    // transfer other data attributes
+                    Array.from(node.attributes).forEach(attr => {
+                      if (attr.name.startsWith("data-") && !listElement.getAttribute(attr.name)) {
+                        listElement.setAttribute(attr.name, attr.value);
+                      }
+                    });
+                    unwrap(node);
+                    continue;
+                  }
                   // some browsers can accidentally cause this in certain situations
                   if (
                     node.tagName === "P" &&
@@ -3299,6 +3339,31 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     node.getAttribute("id") == null
                   ) {
                     node.setAttribute("id", generateResourceID("header-"));
+                  }
+                  // manage slot attributes on lists and list items
+                  if (node.tagName === "LI" && node.parentElement && ["UL", "OL"].includes(node.parentElement.tagName)) {
+                    // remove slot attribute from LI if it exists
+                    if (node.getAttribute("slot")) {
+                      let slotValue = node.getAttribute("slot");
+                      node.removeAttribute("slot");
+                      // ensure parent UL/OL has the slot attribute if it doesn't already
+                      if (!node.parentElement.getAttribute("slot")) {
+                        node.parentElement.setAttribute("slot", slotValue);
+                      }
+                    }
+                  }
+                  // ensure UL/OL has slot attribute if any of its LI children had one
+                  if (["UL", "OL"].includes(node.tagName)) {
+                    let childSlot = null;
+                    Array.from(node.children).forEach(child => {
+                      if (child.tagName === "LI" && child.getAttribute("slot")) {
+                        if (!childSlot) childSlot = child.getAttribute("slot");
+                        child.removeAttribute("slot");
+                      }
+                    });
+                    if (childSlot && !node.getAttribute("slot")) {
+                      node.setAttribute("slot", childSlot);
+                    }
                   }
                   // set new nodes to be the active one
                   // only if we didn't just do a grid plate move
@@ -3962,6 +4027,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             this._validElementTest(target) &&
             target !== local
           ) {
+            // Special handling to prevent nested lists:
+            // If dropping a UL/OL onto a LI, redirect to drop after the parent UL/OL
+            if (
+              ["UL", "OL"].includes(target.tagName) &&
+              local.tagName === "LI" &&
+              local.parentElement &&
+              ["UL", "OL"].includes(local.parentElement.tagName)
+            ) {
+              // Redirect drop target to the parent list instead of the LI
+              local = local.parentElement;
+            }
+            
             // incase this came from a grid plate, drop the slot so it works
             try {
               if (
