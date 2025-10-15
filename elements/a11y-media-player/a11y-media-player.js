@@ -424,20 +424,90 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
         }
 
         #cc-custom:not([hidden]) {
-          font-size: 20px;
-          transition: font-size 0.25s;
+          font-size: var(--ddd-font-size-xxs, 20px);
+          transition: font-size 0.3s;
           display: flex;
+          position: absolute;
+          z-index: 1;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          justify-content: center;
         }
 
         #cc-text {
-          align-self: flex-end;
+          pointer-events: none;
+        }
+
+        /* Caption position variants */
+        :host([caption-position="top"]) #cc-custom {
+          align-items: flex-start;
+        }
+        
+        :host([caption-position="middle"]) #cc-custom {
+          align-items: center;
+        }
+        
+        :host([caption-position="bottom"]) #cc-custom,
+        #cc-custom {
+          align-items: flex-end;
+        }
+
+        /* Caption size variants using DDD font sizes - md (medium) = xxs (20px default) */
+        :host([caption-size="xs"]) #cc-custom {
+          font-size: var(--ddd-font-size-4xs, 16px);
+        }
+        
+        :host([caption-size="sm"]) #cc-custom {
+          font-size: var(--ddd-font-size-3xs, 18px);
+        }
+        
+        :host([caption-size="md"]) #cc-custom {
+          font-size: var(--ddd-font-size-xxs, 20px);
+        }
+        
+        :host([caption-size="lg"]) #cc-custom {
+          font-size: var(--ddd-font-size-xs, 22px);
+        }
+        
+        :host([caption-size="xl"]) #cc-custom {
+          font-size: var(--ddd-font-size-s, 24px);
+        }
+        
+        :host([caption-size="xxl"]) #cc-custom {
+          font-size: var(--ddd-font-size-ms, 28px);
+        }
+        
+        :host([caption-size="3xl"]) #cc-custom {
+          font-size: var(--ddd-font-size-m, 32px);
+        }
+
+        #cc-text {
           font-family: sans-serif;
           color: white;
-          margin: 4px 10px;
-          padding: 0.15em 4px;
-          background-color: black;
-          background-color: rgba(0, 0, 0, 0.8);
+          margin: var(--ddd-spacing-2, 8px);
+          padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+          background-color: rgba(0, 0, 0, 0.9);
           transition: all 0.5s;
+          border-radius: var(--ddd-radius-xs, 2px);
+          display: inline-block;
+          max-width: calc(100% - var(--ddd-spacing-4, 16px));
+          text-align: center;
+          word-wrap: break-word;
+          box-sizing: border-box;
+        }
+
+        /* Override #cc-text positioning for different caption positions */
+        :host([caption-position="top"]) #cc-text {
+          align-self: flex-start;
+        }
+        
+        :host([caption-position="middle"]) #cc-text {
+          align-self: center;
+        }
+        
+        :host([caption-position="bottom"]) #cc-text {
+          align-self: flex-end;
         }
 
         #player-and-controls[audio-no-thumb] #cc-text {
@@ -481,6 +551,7 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
           max-height: 200px;
           overflow-y: scroll;
           overflow-x: hidden;
+          z-index: 1000;
         }
 
         absolute-position-behavior::-webkit-scrollbar-track {
@@ -846,27 +917,6 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
             display: none;
           }
 
-          :host([responsive-size="xl"]) #cc-custom {
-            font-size: 16px;
-          }
-
-          :host([responsive-size="lg"]) #cc-custom,
-          :host([flex-layout][responsive-size="xl"]) #cc-custom {
-            font-size: 14px;
-          }
-
-          :host([responsive-size="md"]) #cc-custom,
-          :host([flex-layout][responsive-size="lg"]) #cc-custom {
-            font-size: 12px;
-          }
-
-          :host([responsive-size="xs"]) #cc-custom,
-          :host([width]) #cc-custom,
-          :host([flex-layout][responsive-size="md"]) #cc-custom,
-          :host([flex-layout][responsive-size="sm"]) #cc-custom {
-            font-size: 10px;
-          }
-
           :host([sticky-mode]) #cc-custom,
           :host([flex-layout][width]) #cc-custom,
           :host([flex-layout][responsive-size="xs"]) #cc-custom {
@@ -982,7 +1032,11 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
             !this.showCustomCaptions
               ? html``
               : html`
-                  <div id="cc-custom" aria-live="polite" class="screen-only">
+                  <div 
+                    id="cc-custom" 
+                    aria-live="polite" 
+                    class="screen-only"
+                  >
                     <div id="cc-text">
                       ${!this.captionCues
                         ? ``
@@ -1184,6 +1238,34 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
                 ?hidden="${!this.hasCaptions}"
                 ?disabled="${!this.hasCaptions}"
                 @value-changed="${this.selectCaptionByKeyEvent}"
+                type="select"
+              >
+              </simple-fields-field>
+            </div>
+            <div class="setting" ?hidden="${!this.hasCaptions || !this.showCustomCaptions}">
+              <div class="setting-text">${this.t.captionSizeLabel}</div>
+              <simple-fields-field
+                id="caption_size"
+                class="setting-control"
+                value="${this.captionSize}"
+                .itemsList="${this.captionSizeOptions}"
+                ?hidden="${!this.hasCaptions || !this.showCustomCaptions}"
+                ?disabled="${!this.hasCaptions || !this.showCustomCaptions}"
+                @value-changed="${this._handleCaptionSizeChanged}"
+                type="select"
+              >
+              </simple-fields-field>
+            </div>
+            <div class="setting" ?hidden="${!this.hasCaptions || !this.showCustomCaptions}">
+              <div class="setting-text">${this.t.captionPositionLabel}</div>
+              <simple-fields-field
+                id="caption_position"
+                class="setting-control"
+                value="${this.captionPosition}"
+                .itemsList="${this.captionPositionOptions}"
+                ?hidden="${!this.hasCaptions || !this.showCustomCaptions}"
+                ?disabled="${!this.hasCaptions || !this.showCustomCaptions}"
+                @value-changed="${this._handleCaptionPositionChanged}"
                 type="select"
               >
               </simple-fields-field>
@@ -1780,6 +1862,22 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
       __transcriptOption: {
         type: Number,
       },
+      /**
+       * caption font size using DDD design system sizes
+       */
+      captionSize: {
+        attribute: "caption-size",
+        type: String,
+        reflect: true,
+      },
+      /**
+       * caption vertical position (top, middle, bottom)
+       */
+      captionPosition: {
+        attribute: "caption-position",
+        type: String,
+        reflect: true,
+      },
     };
   }
 
@@ -1863,6 +1961,8 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
       youTubeLoadingLabel: "Loading...",
       youTubeStartLoading: "Press play.",
       youTubeTranscriptLabel: "Transcript will load once media plays.",
+      captionSizeLabel: "Caption Size",
+      captionPositionLabel: "Caption Position",
     };
     this.registerLocalization({
       context: this,
@@ -1895,6 +1995,8 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
     this.__playing = false;
     this.__settingsOpen = false;
     this.__transcriptOption = -1;
+    this.captionSize = "md";
+    this.captionPosition = "bottom";
     this.querySelectorAll("video,audio").forEach((html5) => {
       html5.addEventListener("loadedmetadata", (e) => {
         this.__preloadedDuration = html5.duration;
@@ -2382,6 +2484,36 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
       : false;
   }
 
+  /**
+   * gets caption size options for picker
+   * @readonly
+   * @returns {array} itemsList for caption size picker
+   */
+  get captionSizeOptions() {
+    return [
+      { value: "xs", text: "Extra Small (16px)" },
+      { value: "sm", text: "Small (18px)" }, 
+      { value: "md", text: "Medium (20px)" },
+      { value: "lg", text: "Large (22px)" },
+      { value: "xl", text: "Extra Large (24px)" },
+      { value: "xxl", text: "2X Large (28px)" },
+      { value: "3xl", text: "3X Large (32px)" },
+    ];
+  }
+
+  /**
+   * gets caption position options for picker
+   * @readonly
+   * @returns {array} itemsList for caption position picker
+   */
+  get captionPositionOptions() {
+    return [
+      { value: "top", text: "Top" },
+      { value: "middle", text: "Middle" },
+      { value: "bottom", text: "Bottom" },
+    ];
+  }
+
   _setAttribute(attr, val) {
     if (!val) {
       this.removeAttribute(attr);
@@ -2525,6 +2657,22 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
         detail: this,
       }),
     );
+  }
+
+  /**
+   * handles caption size change
+   * @param {Event} e the change event
+   */
+  _handleCaptionSizeChanged(e) {
+    this.captionSize = e.detail.value;
+  }
+
+  /**
+   * handles caption position change
+   * @param {Event} e the change event
+   */
+  _handleCaptionPositionChanged(e) {
+    this.captionPosition = e.detail.value;
   }
 
   /**
