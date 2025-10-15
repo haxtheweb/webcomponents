@@ -234,6 +234,87 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           content: "";
         }
 
+        /* Definition list specific styles for empty states */
+        :host([edit-mode]) #bodycontainer ::slotted(dl[contenteditable]) {
+          min-height: var(--ddd-spacing-8, 32px);
+          line-height: var(--ddd-lh-150, 150%);
+          display: block;
+          position: relative;
+        }
+        
+        :host([edit-mode]) #bodycontainer ::slotted(dt[contenteditable]) {
+          min-height: var(--ddd-spacing-6, 24px);
+          line-height: var(--ddd-lh-150, 150%);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          display: block;
+          position: relative;
+          padding: var(--ddd-spacing-1, 4px) 0;
+        }
+        
+        :host([edit-mode]) #bodycontainer ::slotted(dd[contenteditable]) {
+          min-height: var(--ddd-spacing-6, 24px);
+          line-height: var(--ddd-lh-150, 150%);
+          margin-left: var(--ddd-spacing-5, 20px);
+          display: block;
+          position: relative;
+          padding: var(--ddd-spacing-1, 4px) 0;
+        }
+        
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(dt[contenteditable][data-hax-ray]:empty:not([data-instructional-action]))::before {
+          content: "Definition term...";
+          opacity: 0.4;
+          font-style: italic;
+          font-weight: var(--ddd-font-weight-regular, 400);
+          min-height: inherit;
+        }
+        
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(dd[contenteditable][data-hax-ray]:empty:not([data-instructional-action]))::before {
+          content: "Definition description...";
+          opacity: 0.4;
+          font-style: italic;
+          min-height: inherit;
+        }
+        
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(dl[contenteditable][data-hax-ray]:empty:not([data-instructional-action]))::before {
+          content: "Definition list - add terms and definitions";
+          opacity: 0.4;
+          font-style: italic;
+          min-height: inherit;
+        }
+        
+        /* Hover states for empty definition list elements */
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(dt[contenteditable][data-hax-ray]:hover:empty:not([data-instructional-action]))::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(dd[contenteditable][data-hax-ray]:hover:empty:not([data-instructional-action]))::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(dl[contenteditable][data-hax-ray]:hover:empty:not([data-instructional-action]))::before {
+          opacity: 0.6;
+          cursor: text;
+        }
+        
+        /* Focus states - hide placeholder when focused */
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(dt[contenteditable][data-hax-ray]:empty:focus:not([data-instructional-action]))::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(dd[contenteditable][data-hax-ray]:empty:focus:not([data-instructional-action]))::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(dl[contenteditable][data-hax-ray]:empty:focus:not([data-instructional-action]))::before {
+          content: "";
+        }
+
         :host([edit-mode]) #bodycontainer ::slotted([data-hax-active]),
         :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered) {
           outline-offset: 8px;
@@ -1063,6 +1144,49 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               if (this.activeNode) {
                 this.__slot = this.activeNode.getAttribute("slot");
               }
+              
+              // Handle definition list (DL/DT/DD) keyboard behavior
+              if (this.activeNode && this.activeNode.tagName === "DT") {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                // Check if there's already a DD following this DT
+                let nextSibling = this.activeNode.nextElementSibling;
+                if (nextSibling && nextSibling.tagName === "DD") {
+                  // Jump to the existing DD
+                  HAXStore.activeNode = nextSibling;
+                  nextSibling.focus();
+                } else {
+                  // Create a new DD element after the DT
+                  let dd = globalThis.document.createElement("dd");
+                  dd.innerHTML = "&nbsp;\n";
+                  this.activeNode.parentNode.insertBefore(dd, this.activeNode.nextSibling);
+                  HAXStore.activeNode = dd;
+                  dd.focus();
+                  // Position cursor at start of DD
+                  HAXStore._positionCursorInNode(dd, 0);
+                }
+              } else if (this.activeNode && this.activeNode.tagName === "DD") {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                // Create a new DT + DD pair after the current DD
+                let dt = globalThis.document.createElement("dt");
+                let dd = globalThis.document.createElement("dd");
+                dt.innerHTML = "&nbsp;\n";
+                dd.innerHTML = "&nbsp;\n";
+
+                // Insert DT and DD after the current DD
+                this.activeNode.parentNode.insertBefore(dt, this.activeNode.nextSibling);
+                this.activeNode.parentNode.insertBefore(dd, dt.nextSibling);
+                
+                // Make the new DT active
+                HAXStore.activeNode = dt;
+                dt.focus();
+                // Position cursor at start of DT
+                HAXStore._positionCursorInNode(dt, 0);
+              }
+              
               if (
                 this.activeNode &&
                 this.activeNode.tagName === "P" &&
@@ -1071,7 +1195,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 )
               ) {
                 // ensure the "whitespace character" has been replaced w/ a normal space
-                const guess = this.activeNode.textContent.replaceAll(/ /g, " ");
+                const guess = this.activeNode.textContent.replaceAll(/ /g, " ");
                 // ensures that the user has done a matching action and a " " spacebar to ensure they
                 // are ready to commit the action
                 this.keyboardShortCutProcess(guess);
@@ -3096,6 +3220,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     unwrap(node);
                     continue;
                   }
+                  // definition list items that aren't in a definition list
+                  if (
+                    (node.tagName === "DT" || node.tagName === "DD") &&
+                    node.parentElement &&
+                    node.parentElement.tagName !== "DL"
+                  ) {
+                    unwrap(node);
+                    continue;
+                  }
                   // some browsers can accidentally cause this in certain situations
                   if (
                     node.tagName === "P" &&
@@ -3177,6 +3310,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     mutFind = true;
                     if (node.tagName === "LI" && node.parentNode) {
                       HAXStore.activeNode = node.parentNode;
+                    } else if ((node.tagName === "DT" || node.tagName === "DD") && node.parentNode) {
+                      HAXStore.activeNode = node;
                     } else if (node.tagName === "BR") {
                       const tmp = HAXStore.getSelection();
                       HAXStore._tmpSelection = tmp;

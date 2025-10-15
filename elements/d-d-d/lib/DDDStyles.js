@@ -1630,14 +1630,22 @@ export const DDDReset = css`
     padding: var(--ddd-spacing-6);
     margin: 0;
     border: var(--ddd-border-sm);
+    display: block;
+    min-height: inherit;
   }
   dt {
     font-weight: var(--ddd-font-weight-bold);
     font-size: var(--ddd-theme-h6-font-size);
+    display: block;
+    min-height: inherit;
+    padding: var(--ddd-spacing-1);
   }
   dd {
     margin-bottom: var(--ddd-spacing-4);
     margin-inline-start: var(--ddd-spacing-8);
+    display: block;
+    min-height: inherit;
+    padding: var(--ddd-spacing-1);
   }
 
   p[data-accent],
