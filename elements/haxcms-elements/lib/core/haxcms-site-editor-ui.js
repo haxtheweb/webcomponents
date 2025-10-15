@@ -1452,7 +1452,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "hax-drop-focus-event": "_expandSettingsPanel",
       "jwt-logged-in": "_jwtLoggedIn",
       "super-daemon-close": "sdCloseEvent",
+      "super-daemon-konami-code": "_konamiCodeActivated",
     };
+    this.konamiCodeActivated = false; // Track if cheat codes are unlocked
     this.rpgHat = "none";
     this.darkMode = false;
     this.__editText = "Edit";
@@ -4526,6 +4528,46 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         detail: newValue,
       }),
     );
+  }
+
+  /**
+   * Handle Konami Code activation - dynamically load cheat codes
+   */
+  async _konamiCodeActivated(e) {
+    if (!this.konamiCodeActivated) {
+      this.konamiCodeActivated = true;
+      
+      try {
+        // Dynamically import the cheat codes module for performance
+        const cheatModule = await import('./haxcms-cheat-codes.js');
+        
+        // Add all cheat code methods to this instance
+        cheatModule.addCheatCodeMethods(this, SuperDaemonInstance);
+        
+        // Define all cheat code programs in Merlin
+        cheatModule.defineCheatCodes(this, SuperDaemonInstance);
+        
+        // Show notification that cheat codes are now available
+        HAXStore.toast('🎮 Cheat codes unlocked! Check Merlin for new programs.');
+        
+        // Close Merlin first to reset state, then reopen after delay
+        SuperDaemonInstance.close();
+        
+        setTimeout(() => {
+          SuperDaemonInstance.mini = true;
+          SuperDaemonInstance.wand = true;
+          SuperDaemonInstance.activeNode = this.shadowRoot.querySelector('#merlin');
+          SuperDaemonInstance.open();
+          // Force refresh of items to include new cheat codes
+          SuperDaemonInstance.items = SuperDaemonInstance.filterItems(SuperDaemonInstance.allItems, SuperDaemonInstance.context);
+          SuperDaemonInstance.runProgram('', '*');
+        }, 100);
+        
+      } catch (error) {
+        console.error('🎮 Failed to load cheat codes:', error);
+        HAXStore.toast('🎮 Failed to unlock cheat codes');
+      }
+    }
   }
 }
 globalThis.customElements.define(HAXCMSSiteEditorUI.tag, HAXCMSSiteEditorUI);

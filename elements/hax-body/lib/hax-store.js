@@ -240,6 +240,27 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       typeName = "link";
     }
     let haxElements = this.guessGizmo(type, values, false, preferExclusive);
+    
+    // Special case: check if we're dropping an image onto another image element
+    if (type === "image" && this.activePlaceHolder && this._isImageElement(this.activePlaceHolder)) {
+      // Add gallery option to existing image options
+      let galleryOption = this.haxElementPrototype({
+        tag: "play-list",
+        gizmo: {
+          title: "Image Gallery",
+          description: "Create an image gallery with both images",
+          icon: "av:playlist-add",
+          color: "blue",
+        },
+      }, {
+        // The gallery will be created with both images
+        _isGalleryCreation: true,
+        _originalImageElement: this.activePlaceHolder,
+        _newImageSource: values.source
+      }, "");
+      haxElements.push(galleryOption);
+    }
+    
     // see if we got anything
     if (haxElements.length > 0) {
       // if we ONLY have 1 thing or we say "make it a link if multiple"
@@ -302,6 +323,94 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       );
     }
   }
+  /**
+   * Check if an element is an image element by tag name or schema metadata
+   */
+  _isImageElement(element) {
+    if (!element || !element.tagName) {
+      return false;
+    }
+    
+    const tagName = element.tagName.toLowerCase();
+    
+    // Check for direct image element tag names
+    const directImageElements = ['media-image', 'img', 'image', 'a11y-figure', 'full-width-image', 'parallax-image'];
+    if (directImageElements.includes(tagName)) {
+      return true;
+    }
+    
+    // Check schema metadata for image tag
+    const schema = this.haxSchemaFromTag(tagName);
+    if (schema && schema.gizmo && schema.gizmo.tags) {
+      // Check if the element's gizmo tags include 'image'
+      return schema.gizmo.tags.some(tag => 
+        typeof tag === 'string' && tag.toLowerCase() === 'image'
+      );
+    }
+    
+    return false;
+  }
+
+  /**
+   * Create an image gallery by wrapping the original image and adding the new image
+   */
+  _createImageGallery(originalImageElement, newImageSource) {
+    // Create the play-list element
+    const playList = globalThis.document.createElement('play-list');
+    
+    // Set gallery-friendly defaults using properties
+    playList.pagination = true;
+    playList.navigation = true;
+    playList.loop = true;
+    
+    // Copy any slot attribute from the original image
+    if (originalImageElement.getAttribute('slot')) {
+      playList.setAttribute('slot', originalImageElement.getAttribute('slot'));
+    }
+    
+    // Clone the original image element
+    const originalImageClone = originalImageElement.cloneNode(true);
+    
+    // Create the new image element
+    let newImage;
+    if (originalImageElement.tagName.toLowerCase() === 'media-image') {
+      // If original is media-image, create matching element
+      newImage = globalThis.document.createElement('media-image');
+      newImage.source = newImageSource;
+      newImage.alt = 'Image from gallery';
+      
+      // Copy relevant properties from original for consistency
+      ['card', 'box', 'round', 'size', 'offset'].forEach(prop => {
+        if (originalImageElement[prop] !== undefined && originalImageElement[prop] !== null) {
+          newImage[prop] = originalImageElement[prop];
+        }
+      });
+    } else {
+      // For other image types, create a media-image
+      newImage = globalThis.document.createElement('media-image');
+      newImage.source = newImageSource;
+      newImage.alt = 'Image from gallery';
+    }
+    
+    // Add both images to the play-list
+    playList.appendChild(originalImageClone);
+    playList.appendChild(newImage);
+    
+    // Replace the original image with the play-list
+    if (this.activeHaxBody && originalImageElement.parentNode) {
+      this.activeHaxBody.haxReplaceNode(originalImageElement, playList);
+    }
+    
+    // Clean up
+    this.activePlaceHolder = null;
+    
+    // Set the new play-list as active
+    this.activeNode = playList;
+    
+    // Show success message
+    this.toast('Image gallery created successfully!');
+  }
+
   /**
    * Convert a data mime type to gizmo type for rendering
    */
@@ -3509,6 +3618,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           properties = { ...demo.properties, ...properties };
         }
       }
+      // Special handling for gallery creation
+      if (properties._isGalleryCreation && properties._originalImageElement && properties._newImageSource) {
+        this._createImageGallery(properties._originalImageElement, properties._newImageSource);
+        return;
+      }
+      
       // support / clean up properties / attributes that have innerHTML / innerText
       // these are reserved words but required for certain bindings
       if (properties.innerHTML) {
