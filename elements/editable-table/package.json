@@ -57,7 +57,6 @@
     "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/deduping-fix": "^11.0.0",
     "@open-wc/testing": "4.0.0",
-    "@haxtheweb/utils": "^11.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2",
     "wct-browser-legacy": "1.0.2"
