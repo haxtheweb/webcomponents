@@ -4,7 +4,6 @@
  */
 import { LitElement } from "lit";
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
-import "@haxtheweb/super-daemon/lib/super-daemon-toast.js";
 
 /**
  * `hal-9000`

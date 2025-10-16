@@ -1,7 +1,7 @@
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { css, LitElement } from "lit";
 
-export class SiteAiChat extends (DDDSuper(LitElement)) {
+export class SiteAiChat extends DDDSuper(LitElement) {
   static get tag() {
     return "site-ai-chat";
   }

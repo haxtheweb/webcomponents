@@ -9,7 +9,7 @@ import "@haxtheweb/accent-card/accent-card.js";
 import "@haxtheweb/retro-card/retro-card.js";
 import "@haxtheweb/simple-img/simple-img.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
-import "@haxtheweb/lesson-overview/lib/lesson-highlight.js";
+import "../ui-components/lesson-overview/lib/lesson-highlight.js";
 import "@github/time-elements/dist/relative-time-element.js";
 import "@haxtheweb/iframe-loader/lib/loading-indicator.js";
 import { learningComponentTypes } from "@haxtheweb/d-d-d/lib/DDDStyles.js";

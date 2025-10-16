@@ -42,8 +42,6 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/es-global-bridge": "^11.0.0",
-    "@haxtheweb/simple-toast": "^11.0.5",
-    "@haxtheweb/super-daemon": "^11.0.5",
     "lit": "3.3.1"
   },
   "devDependencies": {

@@ -44,7 +44,6 @@
     "@haxtheweb/editable-table": "^11.0.5",
     "@haxtheweb/file-system-broker": "^11.0.0",
     "@haxtheweb/grid-plate": "^11.0.5",
-    "@haxtheweb/hal-9000": "^11.0.5",
     "@haxtheweb/hax-body-behaviors": "^11.0.5",
     "@haxtheweb/hax-iconset": "^11.0.0",
     "@haxtheweb/hexagon-loader": "^11.0.5",

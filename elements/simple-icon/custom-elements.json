@@ -224,8 +224,8 @@
             }
           ],
           "superclass": {
-            "name": "DDD",
-            "package": "@haxtheweb/d-d-d"
+            "name": "SimpleColors",
+            "package": "@haxtheweb/simple-colors/simple-colors.js"
           },
           "tagName": "simple-icon",
           "customElement": true
