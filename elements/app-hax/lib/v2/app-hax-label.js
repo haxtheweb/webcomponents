@@ -100,14 +100,9 @@ export class AppHaxLabel extends LitElement {
   }
 
   render() {
-
     return html`
       <header class="topBar" role="banner" aria-labelledby="main-heading">
-        <h1
-          id="main-heading"
-          class="title" 
-          part="title"
-        >
+        <h1 id="main-heading" class="title" part="title">
           <span class="bracket" aria-hidden="true">&#60;</span>
           <slot>${this.title}</slot>
           <span class="bracket" aria-hidden="true">&#62;</span>
