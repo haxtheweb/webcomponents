@@ -1,6 +1,5 @@
 // dependencies / things imported
 import { LitElement, html, css } from "lit";
-import "./app-hax-wired-toggle.js";
 
 // top bar of the UI
 export class AppHaxTopBar extends LitElement {

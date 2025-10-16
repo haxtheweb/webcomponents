@@ -12,7 +12,7 @@ import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import "./lib/v2/AppHaxRouter.js";
 import "./lib/v2/app-hax-label.js";
-import "./lib/v2/app-hax-top-bar.js";
+import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-top-bar.js";
 import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
 import "./lib/v2/app-hax-use-case.js";
 import "./lib/v2/app-hax-use-case-filter.js";

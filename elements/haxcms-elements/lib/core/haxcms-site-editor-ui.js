@@ -14,9 +14,9 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { HAXCMSThemeParts } from "./utils/HAXCMSThemeParts.js";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
-import "@haxtheweb/app-hax/lib/v2/app-hax-top-bar.js";
-import "@haxtheweb/app-hax/lib/v2/app-hax-user-menu.js";
-import "@haxtheweb/app-hax/lib/v2/app-hax-user-menu-button.js";
+import "./ui/app-hax-top-bar.js";
+import "./ui/app-hax-user-menu.js";
+import "./ui/app-hax-user-menu-button.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import "@haxtheweb/super-daemon/lib/super-daemon-search.js";
@@ -33,17 +33,12 @@ import "@haxtheweb/page-flag/page-flag.js";
 import "wired-elements/lib/wired-button.js";
 
 const ButtonBGLight = new URL(
-  "../../../app-hax/lib/assets/images/ButtonBGLM.svg",
+  "../assets/images/ButtonBGLM.svg",
   import.meta.url,
 ).href;
-const ButtonBGDark = new URL(
-  "../../../app-hax/lib/assets/images/ButtonBGDM.svg",
-  import.meta.url,
-).href;
-const LogOut = new URL(
-  "../../../app-hax/lib/assets/images/Logout.svg",
-  import.meta.url,
-).href;
+const ButtonBGDark = new URL("../assets/images/ButtonBGDM.svg", import.meta.url)
+  .href;
+const LogOut = new URL("../assets/images/Logout.svg", import.meta.url).href;
 /**
  * `haxcms-site-editor-ui`
  * `haxcms editor element buttons that you see`

@@ -44,7 +44,6 @@
     "@github/time-elements": "3.1.4",
     "@haxtheweb/absolute-position-behavior": "^11.0.0",
     "@haxtheweb/anchor-behaviors": "^11.0.0",
-    "@haxtheweb/app-hax": "^11.0.5",
     "@haxtheweb/beaker-broker": "^11.0.5",
     "@haxtheweb/chat-agent": "^11.0.5",
     "@haxtheweb/citation-element": "^11.0.5",

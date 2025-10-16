@@ -1,6 +1,6 @@
 import { autorun, toJS } from "mobx";
 import { store } from "./AppHaxStore.js";
-import { RPGCharacterToast } from "../rpg-character-toast/rpg-character-toast.js";
+import { RPGCharacterToast } from "@haxtheweb/haxcms-elements/lib/core/ui/rpg-character-toast/rpg-character-toast.js";
 
 export class AppHaxToast extends RPGCharacterToast {
   static get tag() {
