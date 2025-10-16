@@ -55,7 +55,9 @@ describe("MatchingQuestion test", () => {
       await element.updateComplete;
 
       // Should support proper focus management
-      expect(element.shadowRootOptions && element.shadowRootOptions.delegatesFocus).to.be.true;
+      expect(
+        element.shadowRootOptions && element.shadowRootOptions.delegatesFocus,
+      ).to.be.true;
     });
 
     it("provides clear instructions for screen readers", async () => {

@@ -1,0 +1,298 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "matching-question.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`matching-question`\n`Match concepts question type`",
+          "name": "MatchingQuestion",
+          "members": [
+            {
+              "kind": "field",
+              "name": "tag",
+              "static": true,
+              "description": "Convention we use",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "processInput",
+              "parameters": [
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "inputs"
+                },
+                {
+                  "name": "priorData"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "cleanAnswerData",
+              "parameters": [
+                {
+                  "name": "answers"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "cleanAnswerDataBeforeSend",
+              "parameters": [
+                {
+                  "name": "answer"
+                },
+                {
+                  "name": "index"
+                },
+                {
+                  "name": "answers"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "resetAnswer"
+            },
+            {
+              "kind": "method",
+              "name": "isCorrect"
+            },
+            {
+              "kind": "method",
+              "name": "renderInteraction"
+            },
+            {
+              "kind": "method",
+              "name": "renderOption",
+              "parameters": [
+                {
+                  "name": "tagOption"
+                },
+                {
+                  "name": "container"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleDrag",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleDragEnd",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "dragTargetOver",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "dragTargetLeave",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleDrop",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "renderDirections"
+            },
+            {
+              "kind": "method",
+              "name": "focusActive",
+              "parameters": [
+                {
+                  "name": "tagOption"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "handleTagClick",
+              "parameters": [
+                {
+                  "name": "tagOption"
+                }
+              ]
+            },
+            {
+              "kind": "method",
+              "name": "selectTargetChange",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "haxProperties integration via file reference",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "guessDataValue",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"matchAnswers\""
+            },
+            {
+              "kind": "field",
+              "name": "__activeOption",
+              "privacy": "public",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "attribute": "__activeOption"
+            },
+            {
+              "kind": "field",
+              "name": "dragEnter",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "drag-enter",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "dragging",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "dragging",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "matchAnswers",
+              "privacy": "public",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "attribute": "matchAnswers"
+            },
+            {
+              "kind": "field",
+              "name": "matchTarget",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "match-target",
+              "reflects": true
+            }
+          ],
+          "attributes": [
+            {
+              "name": "dragging",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "dragging"
+            },
+            {
+              "name": "drag-enter",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "dragEnter"
+            },
+            {
+              "name": "match-target",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "fieldName": "matchTarget"
+            },
+            {
+              "name": "matchAnswers",
+              "type": {
+                "text": "array"
+              },
+              "default": "[]",
+              "fieldName": "matchAnswers"
+            },
+            {
+              "name": "__activeOption",
+              "type": {
+                "text": "object"
+              },
+              "default": "{}",
+              "fieldName": "__activeOption"
+            }
+          ],
+          "superclass": {
+            "name": "QuestionElement",
+            "package": "@haxtheweb/multiple-choice/lib/QuestionElement.js"
+          },
+          "tagName": "matching-question",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "custom-element-definition",
+          "declaration": {
+            "name": "MatchingQuestion",
+            "module": "matching-question.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "MatchingQuestion",
+          "declaration": {
+            "name": "MatchingQuestion",
+            "module": "matching-question.js"
+          }
+        }
+      ]
+    }
+  ]
+}
