@@ -403,7 +403,7 @@ export class AppHaxSearchResults extends SimpleColors {
           color: var(--ddd-theme-default-limestoneGray, #f5f5f5);
         }
 
-          #noResult {
+        #noResult {
           font-family: var(--ddd-font-primary, sans-serif);
           font-size: var(--ddd-font-size-s, 16px);
           color: var(--ddd-theme-default-coalyGray, #444);
@@ -432,9 +432,9 @@ export class AppHaxSearchResults extends SimpleColors {
     this.totalItems = this.displayItems.length;
 
     return html`
-      <div 
-        class="carousel-container" 
-        role="region" 
+      <div
+        class="carousel-container"
+        role="region"
         aria-label="Site results carousel"
         aria-live="polite"
       >
@@ -450,7 +450,9 @@ export class AppHaxSearchResults extends SimpleColors {
           aria-describedby="scroll-left-desc"
         >
           ◀
-          <span id="scroll-left-desc" class="sr-only">View previous sites in the carousel</span>
+          <span id="scroll-left-desc" class="sr-only"
+            >View previous sites in the carousel</span
+          >
         </button>
         <ul
           id="results"
@@ -515,7 +517,9 @@ export class AppHaxSearchResults extends SimpleColors {
           aria-describedby="scroll-right-desc"
         >
           ▶
-          <span id="scroll-right-desc" class="sr-only">View next sites in the carousel</span>
+          <span id="scroll-right-desc" class="sr-only"
+            >View next sites in the carousel</span
+          >
         </button>
         ${this.totalItems > 1
           ? html`
@@ -529,7 +533,9 @@ export class AppHaxSearchResults extends SimpleColors {
                         : ""}"
                       @click="${() => this.goToPage(index + 1)}"
                       aria-label="Go to page ${index + 1}"
-                      aria-current="${this.currentIndex === index + 1 ? "page" : "false"}"
+                      aria-current="${this.currentIndex === index + 1
+                        ? "page"
+                        : "false"}"
                       tabindex="0"
                     ></button>
                   `,

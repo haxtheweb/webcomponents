@@ -121,7 +121,7 @@ const RadioBehaviors = function (SuperClass) {
       item =
         typeof item === "string" && item.trim().length > 0
           ? this._getItemById(item)
-          : typeof item === "integer"
+          : typeof item === "number"
             ? this._getItemByIndex(item)
             : item;
 

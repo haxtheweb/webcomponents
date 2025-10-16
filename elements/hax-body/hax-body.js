@@ -241,7 +241,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           display: block;
           position: relative;
         }
-        
+
         :host([edit-mode]) #bodycontainer ::slotted(dt[contenteditable]) {
           min-height: var(--ddd-spacing-6, 24px);
           line-height: var(--ddd-lh-150, 150%);
@@ -250,7 +250,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           position: relative;
           padding: var(--ddd-spacing-1, 4px) 0;
         }
-        
+
         :host([edit-mode]) #bodycontainer ::slotted(dd[contenteditable]) {
           min-height: var(--ddd-spacing-6, 24px);
           line-height: var(--ddd-lh-150, 150%);
@@ -259,59 +259,95 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           position: relative;
           padding: var(--ddd-spacing-1, 4px) 0;
         }
-        
+
         :host([edit-mode])
           #bodycontainer
-          ::slotted(dt[contenteditable][data-hax-ray]:empty:not([data-instructional-action]))::before {
+          ::slotted(
+            dt[contenteditable][data-hax-ray]:empty:not(
+                [data-instructional-action]
+              )
+          )::before {
           content: "Definition term...";
           opacity: 0.4;
           font-style: italic;
           font-weight: var(--ddd-font-weight-regular, 400);
           min-height: inherit;
         }
-        
+
         :host([edit-mode])
           #bodycontainer
-          ::slotted(dd[contenteditable][data-hax-ray]:empty:not([data-instructional-action]))::before {
+          ::slotted(
+            dd[contenteditable][data-hax-ray]:empty:not(
+                [data-instructional-action]
+              )
+          )::before {
           content: "Definition description...";
           opacity: 0.4;
           font-style: italic;
           min-height: inherit;
         }
-        
+
         :host([edit-mode])
           #bodycontainer
-          ::slotted(dl[contenteditable][data-hax-ray]:empty:not([data-instructional-action]))::before {
+          ::slotted(
+            dl[contenteditable][data-hax-ray]:empty:not(
+                [data-instructional-action]
+              )
+          )::before {
           content: "Definition list - add terms and definitions";
           opacity: 0.4;
           font-style: italic;
           min-height: inherit;
         }
-        
+
         /* Hover states for empty definition list elements */
         :host([edit-mode])
           #bodycontainer
-          ::slotted(dt[contenteditable][data-hax-ray]:hover:empty:not([data-instructional-action]))::before,
+          ::slotted(
+            dt[contenteditable][data-hax-ray]:hover:empty:not(
+                [data-instructional-action]
+              )
+          )::before,
         :host([edit-mode])
           #bodycontainer
-          ::slotted(dd[contenteditable][data-hax-ray]:hover:empty:not([data-instructional-action]))::before,
+          ::slotted(
+            dd[contenteditable][data-hax-ray]:hover:empty:not(
+                [data-instructional-action]
+              )
+          )::before,
         :host([edit-mode])
           #bodycontainer
-          ::slotted(dl[contenteditable][data-hax-ray]:hover:empty:not([data-instructional-action]))::before {
+          ::slotted(
+            dl[contenteditable][data-hax-ray]:hover:empty:not(
+                [data-instructional-action]
+              )
+          )::before {
           opacity: 0.6;
           cursor: text;
         }
-        
+
         /* Focus states - hide placeholder when focused */
         :host([edit-mode])
           #bodycontainer
-          ::slotted(dt[contenteditable][data-hax-ray]:empty:focus:not([data-instructional-action]))::before,
+          ::slotted(
+            dt[contenteditable][data-hax-ray]:empty:focus:not(
+                [data-instructional-action]
+              )
+          )::before,
         :host([edit-mode])
           #bodycontainer
-          ::slotted(dd[contenteditable][data-hax-ray]:empty:focus:not([data-instructional-action]))::before,
+          ::slotted(
+            dd[contenteditable][data-hax-ray]:empty:focus:not(
+                [data-instructional-action]
+              )
+          )::before,
         :host([edit-mode])
           #bodycontainer
-          ::slotted(dl[contenteditable][data-hax-ray]:empty:focus:not([data-instructional-action]))::before {
+          ::slotted(
+            dl[contenteditable][data-hax-ray]:empty:focus:not(
+                [data-instructional-action]
+              )
+          )::before {
           content: "";
         }
 
@@ -1144,7 +1180,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               if (this.activeNode) {
                 this.__slot = this.activeNode.getAttribute("slot");
               }
-              
+
               // Handle definition list (DL/DT/DD) keyboard behavior
               if (this.activeNode && this.activeNode.tagName === "DT") {
                 e.preventDefault();
@@ -1160,7 +1196,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   // Create a new DD element after the DT
                   let dd = globalThis.document.createElement("dd");
                   dd.innerHTML = "&nbsp;\n";
-                  this.activeNode.parentNode.insertBefore(dd, this.activeNode.nextSibling);
+                  this.activeNode.parentNode.insertBefore(
+                    dd,
+                    this.activeNode.nextSibling,
+                  );
                   HAXStore.activeNode = dd;
                   dd.focus();
                   // Position cursor at start of DD
@@ -1177,16 +1216,19 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 dd.innerHTML = "&nbsp;\n";
 
                 // Insert DT and DD after the current DD
-                this.activeNode.parentNode.insertBefore(dt, this.activeNode.nextSibling);
+                this.activeNode.parentNode.insertBefore(
+                  dt,
+                  this.activeNode.nextSibling,
+                );
                 this.activeNode.parentNode.insertBefore(dd, dt.nextSibling);
-                
+
                 // Make the new DT active
                 HAXStore.activeNode = dt;
                 dt.focus();
                 // Position cursor at start of DT
                 HAXStore._positionCursorInNode(dt, 0);
               }
-              
+
               if (
                 this.activeNode &&
                 this.activeNode.tagName === "P" &&
@@ -1377,20 +1419,26 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // see if our map matches
     if (HAXStore.keyboardShortcuts[guess.replace(" ", "")]) {
       let shortcut = HAXStore.keyboardShortcuts[guess.replace(" ", "")];
-      
+
       // Apply style guide defaults for elements created via keyboard shortcuts
-      const styleGuideOverride = HAXStore._getStyleGuideSchemaOverride(shortcut.tag);
-      if (styleGuideOverride && styleGuideOverride.demoSchema && styleGuideOverride.demoSchema[0]) {
+      const styleGuideOverride = HAXStore._getStyleGuideSchemaOverride(
+        shortcut.tag,
+      );
+      if (
+        styleGuideOverride &&
+        styleGuideOverride.demoSchema &&
+        styleGuideOverride.demoSchema[0]
+      ) {
         const demo = styleGuideOverride.demoSchema[0];
         if (demo.properties) {
           // Merge style guide properties with shortcut properties
           shortcut = {
             ...shortcut,
-            properties: { ...demo.properties, ...(shortcut.properties || {}) }
+            properties: { ...demo.properties, ...(shortcut.properties || {}) },
           };
         }
       }
-      
+
       let el = haxElementToNode(shortcut);
       this.haxReplaceNode(this.activeNode, el);
       this.__focusLogic(el);
@@ -2256,23 +2304,30 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   haxChangeTagName(node, tagName, maintainContent = true) {
     // Create a replacement tag of the desired type
     var replacement = globalThis.document.createElement(tagName);
-    
+
     // Store slot attribute early to ensure it's preserved
     const originalSlot = node.getAttribute("slot");
-    
+
     // Apply style guide defaults for heading and other elements during block conversion
     const styleGuideOverride = HAXStore._getStyleGuideSchemaOverride(tagName);
-    if (styleGuideOverride && styleGuideOverride.demoSchema && styleGuideOverride.demoSchema[0]) {
+    if (
+      styleGuideOverride &&
+      styleGuideOverride.demoSchema &&
+      styleGuideOverride.demoSchema[0]
+    ) {
       const demo = styleGuideOverride.demoSchema[0];
       if (demo.properties) {
         // Apply style guide properties first
         for (let prop in demo.properties) {
-          const attributeName = prop.replace(/([A-Z])/g, (g) => `-${g[0].toLowerCase()}`);
+          const attributeName = prop.replace(
+            /([A-Z])/g,
+            (g) => `-${g[0].toLowerCase()}`,
+          );
           replacement.setAttribute(attributeName, demo.properties[prop]);
         }
       }
     }
-    
+
     // Grab all of the original's attributes, and pass them to the replacement
     // These will override style guide defaults if they exist
     for (var i = 0, l = node.attributes.length; i < l; ++i) {
@@ -2285,7 +2340,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         console.warn(e);
       }
     }
-    
+
     // Ensure slot attribute is explicitly preserved for grid plate elements
     if (originalSlot && HAXStore.isGridPlateElement(node.parentElement)) {
       replacement.setAttribute("slot", originalSlot);
@@ -2317,7 +2372,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         replacement.setAttribute("slot", originalSlot);
         // remove slot from any child LI elements
         setTimeout(() => {
-          Array.from(replacement.children).forEach(child => {
+          Array.from(replacement.children).forEach((child) => {
             if (child.tagName === "LI" && child.getAttribute("slot")) {
               child.removeAttribute("slot");
             }
@@ -3257,12 +3312,21 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   ) {
                     let listElement = node.children[0];
                     // transfer slot and other data attributes from P to UL/OL
-                    if (node.getAttribute("slot") && !listElement.getAttribute("slot")) {
-                      listElement.setAttribute("slot", node.getAttribute("slot"));
+                    if (
+                      node.getAttribute("slot") &&
+                      !listElement.getAttribute("slot")
+                    ) {
+                      listElement.setAttribute(
+                        "slot",
+                        node.getAttribute("slot"),
+                      );
                     }
                     // transfer other data attributes
-                    Array.from(node.attributes).forEach(attr => {
-                      if (attr.name.startsWith("data-") && !listElement.getAttribute(attr.name)) {
+                    Array.from(node.attributes).forEach((attr) => {
+                      if (
+                        attr.name.startsWith("data-") &&
+                        !listElement.getAttribute(attr.name)
+                      ) {
                         listElement.setAttribute(attr.name, attr.value);
                       }
                     });
@@ -3341,7 +3405,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     node.setAttribute("id", generateResourceID("header-"));
                   }
                   // manage slot attributes on lists and list items
-                  if (node.tagName === "LI" && node.parentElement && ["UL", "OL"].includes(node.parentElement.tagName)) {
+                  if (
+                    node.tagName === "LI" &&
+                    node.parentElement &&
+                    ["UL", "OL"].includes(node.parentElement.tagName)
+                  ) {
                     // remove slot attribute from LI if it exists
                     if (node.getAttribute("slot")) {
                       let slotValue = node.getAttribute("slot");
@@ -3355,8 +3423,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   // ensure UL/OL has slot attribute if any of its LI children had one
                   if (["UL", "OL"].includes(node.tagName)) {
                     let childSlot = null;
-                    Array.from(node.children).forEach(child => {
-                      if (child.tagName === "LI" && child.getAttribute("slot")) {
+                    Array.from(node.children).forEach((child) => {
+                      if (
+                        child.tagName === "LI" &&
+                        child.getAttribute("slot")
+                      ) {
                         if (!childSlot) childSlot = child.getAttribute("slot");
                         child.removeAttribute("slot");
                       }
@@ -3375,7 +3446,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     mutFind = true;
                     if (node.tagName === "LI" && node.parentNode) {
                       HAXStore.activeNode = node.parentNode;
-                    } else if ((node.tagName === "DT" || node.tagName === "DD") && node.parentNode) {
+                    } else if (
+                      (node.tagName === "DT" || node.tagName === "DD") &&
+                      node.parentNode
+                    ) {
                       HAXStore.activeNode = node;
                     } else if (node.tagName === "BR") {
                       const tmp = HAXStore.getSelection();
@@ -4038,7 +4112,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               // Redirect drop target to the parent list instead of the LI
               local = local.parentElement;
             }
-            
+
             // incase this came from a grid plate, drop the slot so it works
             try {
               if (

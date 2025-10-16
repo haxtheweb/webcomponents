@@ -240,27 +240,35 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       typeName = "link";
     }
     let haxElements = this.guessGizmo(type, values, false, preferExclusive);
-    
+
     // Special case: check if we're dropping an image onto another image element
-    if (type === "image" && this.activePlaceHolder && this._isImageElement(this.activePlaceHolder)) {
+    if (
+      type === "image" &&
+      this.activePlaceHolder &&
+      this._isImageElement(this.activePlaceHolder)
+    ) {
       // Add gallery option to existing image options
-      let galleryOption = this.haxElementPrototype({
-        tag: "play-list",
-        gizmo: {
-          title: "Image Gallery",
-          description: "Create an image gallery with both images",
-          icon: "av:playlist-add",
-          color: "blue",
+      let galleryOption = this.haxElementPrototype(
+        {
+          tag: "play-list",
+          gizmo: {
+            title: "Image Gallery",
+            description: "Create an image gallery with both images",
+            icon: "av:playlist-add",
+            color: "blue",
+          },
         },
-      }, {
-        // The gallery will be created with both images
-        _isGalleryCreation: true,
-        _originalImageElement: this.activePlaceHolder,
-        _newImageSource: values.source
-      }, "");
+        {
+          // The gallery will be created with both images
+          _isGalleryCreation: true,
+          _originalImageElement: this.activePlaceHolder,
+          _newImageSource: values.source,
+        },
+        "",
+      );
       haxElements.push(galleryOption);
     }
-    
+
     // see if we got anything
     if (haxElements.length > 0) {
       // if we ONLY have 1 thing or we say "make it a link if multiple"
@@ -330,24 +338,31 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (!element || !element.tagName) {
       return false;
     }
-    
+
     const tagName = element.tagName.toLowerCase();
-    
+
     // Check for direct image element tag names
-    const directImageElements = ['media-image', 'img', 'image', 'a11y-figure', 'full-width-image', 'parallax-image'];
+    const directImageElements = [
+      "media-image",
+      "img",
+      "image",
+      "a11y-figure",
+      "full-width-image",
+      "parallax-image",
+    ];
     if (directImageElements.includes(tagName)) {
       return true;
     }
-    
+
     // Check schema metadata for image tag
     const schema = this.haxSchemaFromTag(tagName);
     if (schema && schema.gizmo && schema.gizmo.tags) {
       // Check if the element's gizmo tags include 'image'
-      return schema.gizmo.tags.some(tag => 
-        typeof tag === 'string' && tag.toLowerCase() === 'image'
+      return schema.gizmo.tags.some(
+        (tag) => typeof tag === "string" && tag.toLowerCase() === "image",
       );
     }
-    
+
     return false;
   }
 
@@ -356,59 +371,62 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   _createImageGallery(originalImageElement, newImageSource) {
     // Create the play-list element
-    const playList = globalThis.document.createElement('play-list');
-    
+    const playList = globalThis.document.createElement("play-list");
+
     // Set gallery-friendly defaults using properties
     playList.pagination = true;
     playList.navigation = true;
     playList.loop = true;
-    
+
     // Copy any slot attribute from the original image
-    if (originalImageElement.getAttribute('slot')) {
-      playList.setAttribute('slot', originalImageElement.getAttribute('slot'));
+    if (originalImageElement.getAttribute("slot")) {
+      playList.setAttribute("slot", originalImageElement.getAttribute("slot"));
     }
-    
+
     // Clone the original image element
     const originalImageClone = originalImageElement.cloneNode(true);
-    
+
     // Create the new image element
     let newImage;
-    if (originalImageElement.tagName.toLowerCase() === 'media-image') {
+    if (originalImageElement.tagName.toLowerCase() === "media-image") {
       // If original is media-image, create matching element
-      newImage = globalThis.document.createElement('media-image');
+      newImage = globalThis.document.createElement("media-image");
       newImage.source = newImageSource;
-      newImage.alt = 'Image from gallery';
-      
+      newImage.alt = "Image from gallery";
+
       // Copy relevant properties from original for consistency
-      ['card', 'box', 'round', 'size', 'offset'].forEach(prop => {
-        if (originalImageElement[prop] !== undefined && originalImageElement[prop] !== null) {
+      ["card", "box", "round", "size", "offset"].forEach((prop) => {
+        if (
+          originalImageElement[prop] !== undefined &&
+          originalImageElement[prop] !== null
+        ) {
           newImage[prop] = originalImageElement[prop];
         }
       });
     } else {
       // For other image types, create a media-image
-      newImage = globalThis.document.createElement('media-image');
+      newImage = globalThis.document.createElement("media-image");
       newImage.source = newImageSource;
-      newImage.alt = 'Image from gallery';
+      newImage.alt = "Image from gallery";
     }
-    
+
     // Add both images to the play-list
     playList.appendChild(originalImageClone);
     playList.appendChild(newImage);
-    
+
     // Replace the original image with the play-list
     if (this.activeHaxBody && originalImageElement.parentNode) {
       this.activeHaxBody.haxReplaceNode(originalImageElement, playList);
     }
-    
+
     // Clean up
     this.activePlaceHolder = null;
-    
+
     // Set the new play-list as active
     this.activeNode = playList;
-    
+
     // Show success message
-    this.toast('Image gallery created successfully!');
+    this.toast("Image gallery created successfully!");
   }
 
   /**
@@ -1479,22 +1497,28 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       pasteContent = pasteContent.replace(/<div/g, "<p");
       pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
       originalContent = pasteContent;
-      
+
       // Check for markdown FIRST (before any other processing)
       // Get the plain text content for markdown detection
       let textContent = "";
       if (e.clipboardData || e.originalEvent.clipboardData) {
-        textContent = (e.originalEvent || e).clipboardData.getData("text/plain") || "";
+        textContent =
+          (e.originalEvent || e).clipboardData.getData("text/plain") || "";
       } else if (globalThis.clipboardData) {
         textContent = globalThis.clipboardData.getData("Text") || "";
       }
-      
+
       // If we detect markdown, prevent default and convert immediately
-      if (textContent && textContent.length > 0 && textContent.length < 100000 && detectMarkdown(textContent)) {
+      if (
+        textContent &&
+        textContent.length > 0 &&
+        textContent.length < 100000 &&
+        detectMarkdown(textContent)
+      ) {
         e.preventDefault();
         e.stopPropagation();
         e.stopImmediatePropagation();
-        
+
         try {
           const markdownHTML = await markdownToHTML(textContent);
           if (markdownHTML && markdownHTML !== textContent) {
@@ -1502,7 +1526,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             originalContent = pasteContent;
           }
         } catch (error) {
-          console.warn('Failed to convert markdown to HTML:', error);
+          console.warn("Failed to convert markdown to HTML:", error);
           // Continue with original content if markdown conversion fails
         }
       }
@@ -1557,8 +1581,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           return false;
         });
       }
-      // we have a "file" paste  
-      else if (e.clipboardData && e.clipboardData.files && e.clipboardData.files.length > 0) {
+      // we have a "file" paste
+      else if (
+        e.clipboardData &&
+        e.clipboardData.files &&
+        e.clipboardData.files.length > 0
+      ) {
         // stop normal paste
         e.preventDefault();
         e.stopPropagation();
@@ -1590,7 +1618,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           }),
         );
       }
-      
+
       // detect word garbage
       let inlinePaste = false;
       // the string to import as sanitized by hax
@@ -1599,11 +1627,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // HTML pasting to ensure it's clean is very slow
       // Clean paste content FIRST before any processing
       pasteContent = stripMSWord(pasteContent);
-      
+
       let fragment = globalThis.document.createElement("div");
       fragment.innerHTML = pasteContent;
       let haxElements = [];
-      
+
       // Check if we're pasting into the middle of an existing text element (inline paste)
       let range = this.getRange();
       let isInlinePaste = false;
@@ -1613,27 +1641,46 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         if (selection && !selection.isCollapsed) {
           // User has selected text - inline paste
           isInlinePaste = true;
-        } else if (range.startOffset > 0 && range.startOffset < this.activeNode.textContent.length) {
+        } else if (
+          range.startOffset > 0 &&
+          range.startOffset < this.activeNode.textContent.length
+        ) {
           // Cursor is in the middle - inline paste
           isInlinePaste = true;
         }
       }
-      
+
       // Check if we have mixed content (text + inline elements) without proper block wrapper
       // This needs to happen AFTER stripMSWord to work with cleaned content
-      let hasTextNodes = Array.from(fragment.childNodes).some(node => 
-        node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== ""
+      let hasTextNodes = Array.from(fragment.childNodes).some(
+        (node) =>
+          node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== "",
       );
-      let hasInlineElements = Array.from(fragment.children).some(child => 
-        ["strong", "em", "b", "i", "a", "span", "code", "mark", "sup", "sub"].includes(child.tagName.toLowerCase())
+      let hasInlineElements = Array.from(fragment.children).some((child) =>
+        [
+          "strong",
+          "em",
+          "b",
+          "i",
+          "a",
+          "span",
+          "code",
+          "mark",
+          "sup",
+          "sub",
+        ].includes(child.tagName.toLowerCase()),
       );
-      let hasBlockElements = Array.from(fragment.children).some(child => 
-        this.__validGridTags().includes(child.tagName.toLowerCase())
+      let hasBlockElements = Array.from(fragment.children).some((child) =>
+        this.__validGridTags().includes(child.tagName.toLowerCase()),
       );
-      
+
       // If we have mixed content without proper block wrapper, wrap it
       // For inline paste, handle mixed content specially to preserve all text
-      if ((hasTextNodes || hasInlineElements) && !hasBlockElements && fragment.children.length > 0) {
+      if (
+        (hasTextNodes || hasInlineElements) &&
+        !hasBlockElements &&
+        fragment.children.length > 0
+      ) {
         if (isInlinePaste) {
           // For inline paste, skip HAX element processing and handle directly as HTML
           newContent = pasteContent;
@@ -1644,7 +1691,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           fragment.innerHTML = pasteContent; // Update fragment with wrapped content
         }
       }
-      
+
       // test that this is valid HTML before we dig into it as elements
       // and that it actually has children prior to parsing for children
       // Skip this processing if we already handled inline mixed content above
@@ -1960,7 +2007,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
                   if (lastInsertedNode) {
                     // If it's a text node, position at the end of the text
                     if (lastInsertedNode.nodeType === Node.TEXT_NODE) {
-                      this._positionCursorInNode(lastInsertedNode, lastInsertedNode.textContent.length);
+                      this._positionCursorInNode(
+                        lastInsertedNode,
+                        lastInsertedNode.textContent.length,
+                      );
                     } else {
                       // If it's an element, position after it
                       let newRange = this.getRange();
@@ -2088,17 +2138,29 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               siblingEl = activeEl;
             }
             setTimeout(() => {
-              if (activeEl && activeEl.childNodes && activeEl.childNodes.length > 0) {
+              if (
+                activeEl &&
+                activeEl.childNodes &&
+                activeEl.childNodes.length > 0
+              ) {
                 // Position cursor at the end of the last child node to ensure it's at the end of content
-                let lastChild = activeEl.childNodes[activeEl.childNodes.length - 1];
+                let lastChild =
+                  activeEl.childNodes[activeEl.childNodes.length - 1];
                 if (lastChild.nodeType === Node.TEXT_NODE) {
                   // If last child is a text node, position at end of text
-                  this._positionCursorInNode(lastChild, lastChild.textContent.length);
+                  this._positionCursorInNode(
+                    lastChild,
+                    lastChild.textContent.length,
+                  );
                 } else {
                   // If last child is an element, try to find the deepest last text node
-                  let deepestTextNode = this._findDeepestLastTextNode(lastChild);
+                  let deepestTextNode =
+                    this._findDeepestLastTextNode(lastChild);
                   if (deepestTextNode) {
-                    this._positionCursorInNode(deepestTextNode, deepestTextNode.textContent.length);
+                    this._positionCursorInNode(
+                      deepestTextNode,
+                      deepestTextNode.textContent.length,
+                    );
                   } else {
                     // Fallback to positioning after the element
                     let range = this.getRange();
@@ -2130,7 +2192,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (!element || !element.childNodes) {
       return null;
     }
-    
+
     // Work backwards through child nodes to find the last text node or element with text
     for (let i = element.childNodes.length - 1; i >= 0; i--) {
       let node = element.childNodes[i];
@@ -2144,10 +2206,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         }
       }
     }
-    
+
     return null;
   }
-  
+
   // HTML primatives which are valid grid plate elements
   __validGridTags() {
     return [
@@ -3494,7 +3556,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               ].includes(tag)
                 ? true
                 : false,
-              hidden: ["h1", "h2", "h3", "h4", "ul"].includes(tag) ? false : true,
+              hidden: ["h1", "h2", "h3", "h4", "ul"].includes(tag)
+                ? false
+                : true,
               outlineDesigner: ["h2", "ul"].includes(tag) ? true : false, // Oh no you didn't..
             },
           },
@@ -3606,11 +3670,15 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       if (typeof details.properties !== typeof undefined) {
         properties = details.properties;
       }
-      
+
       // Apply style guide defaults for elements inserted via Super Daemon or other insert methods
       // Check if this is coming from a context where we want to apply style guide defaults
       const styleGuideOverride = this._getStyleGuideSchemaOverride(details.tag);
-      if (styleGuideOverride && styleGuideOverride.demoSchema && styleGuideOverride.demoSchema[0]) {
+      if (
+        styleGuideOverride &&
+        styleGuideOverride.demoSchema &&
+        styleGuideOverride.demoSchema[0]
+      ) {
         const demo = styleGuideOverride.demoSchema[0];
         if (demo.properties) {
           // Merge style guide properties with existing properties
@@ -3619,11 +3687,18 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         }
       }
       // Special handling for gallery creation
-      if (properties._isGalleryCreation && properties._originalImageElement && properties._newImageSource) {
-        this._createImageGallery(properties._originalImageElement, properties._newImageSource);
+      if (
+        properties._isGalleryCreation &&
+        properties._originalImageElement &&
+        properties._newImageSource
+      ) {
+        this._createImageGallery(
+          properties._originalImageElement,
+          properties._newImageSource,
+        );
         return;
       }
-      
+
       // support / clean up properties / attributes that have innerHTML / innerText
       // these are reserved words but required for certain bindings
       if (properties.innerHTML) {

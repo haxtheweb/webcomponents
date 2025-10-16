@@ -702,7 +702,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`collections-theme`\n`A theme for presenting collections of material`",
+          "description": "`Collections Theme`\n`A theme for presenting collections of material`",
           "name": "CollectionsTheme",
           "members": [
             {

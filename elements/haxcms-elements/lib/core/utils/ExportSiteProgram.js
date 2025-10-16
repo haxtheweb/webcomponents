@@ -100,9 +100,9 @@ export async function exportSiteAs(format) {
     }
 
     const siteTitle = manifest.title || "site";
+    const baseElement = globalThis.document.querySelector("base");
     const baseUrl =
-      globalThis.document.querySelector("base")?.href ||
-      globalThis.location.origin;
+      (baseElement && baseElement.href) || globalThis.location.origin;
 
     switch (format) {
       case "html":

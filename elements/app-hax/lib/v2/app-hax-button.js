@@ -264,11 +264,16 @@ export class AppHaxButton extends LitElement {
         ?disabled=${this.disabled || this.comingSoon}
         class="haxButton"
         aria-pressed="${this.active}"
-        aria-describedby="${this.type ? `${this.type.replace(/\s+/g, '-').toLowerCase()}-desc` : ''}"
-        aria-label="${this.type} option${this.comingSoon ? ' (coming soon)' : ''}${this.beta ? ' (beta)' : ''}"
+        aria-describedby="${this.type
+          ? `${this.type.replace(/\s+/g, "-").toLowerCase()}-desc`
+          : ""}"
+        aria-label="${this.type} option${this.comingSoon
+          ? " (coming soon)"
+          : ""}${this.beta ? " (beta)" : ""}"
       >
         <div id="container">
-          <simple-icon-lite icon=${this.icon} aria-hidden="true"> </simple-icon-lite>
+          <simple-icon-lite icon=${this.icon} aria-hidden="true">
+          </simple-icon-lite>
           <div class="type">${this.type}</div>
         </div>
         ${this.comingSoon
@@ -294,14 +299,16 @@ export class AppHaxButton extends LitElement {
             />`
           : ``}
       </wired-button>
-      ${this.type ? html`
-        <div 
-          id="${this.type.replace(/\s+/g, '-').toLowerCase()}-desc" 
-          class="sr-only"
-        >
-          ${this.type} content type option
-        </div>
-      ` : ''}
+      ${this.type
+        ? html`
+            <div
+              id="${this.type.replace(/\s+/g, "-").toLowerCase()}-desc"
+              class="sr-only"
+            >
+              ${this.type} content type option
+            </div>
+          `
+        : ""}
     `;
   }
 }

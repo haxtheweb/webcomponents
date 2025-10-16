@@ -107,7 +107,8 @@ describe("MtzFileDownloadBehaviors mixin test", () => {
     };
 
     // Mock URL.createObjectURL
-    const originalCreateObjectURL = globalThis.URL?.createObjectURL;
+    const originalCreateObjectURL =
+      globalThis.URL && globalThis.URL.createObjectURL;
     globalThis.URL = globalThis.URL || {};
     globalThis.URL.createObjectURL = () => "blob:mock-url";
 

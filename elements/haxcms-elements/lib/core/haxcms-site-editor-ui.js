@@ -1151,10 +1151,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                             "--simple-modal-z-index": "100000000",
                             "--simple-modal-height": "90vh",
                             "--simple-modal-min-height": "400px",
-                            "--simple-modal-titlebar-height": "64px",
-                            "--simple-modal-titlebar-color": "black",
                             "--simple-modal-titlebar-height": "80px",
-                            "--simple-modal-titlebar-background": "orange",
                           },
                         },
                       }),
@@ -4536,36 +4533,41 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   async _konamiCodeActivated(e) {
     if (!this.konamiCodeActivated) {
       this.konamiCodeActivated = true;
-      
+
       try {
         // Dynamically import the cheat codes module for performance
-        const cheatModule = await import('./haxcms-cheat-codes.js');
-        
+        const cheatModule = await import("./haxcms-cheat-codes.js");
+
         // Add all cheat code methods to this instance
         cheatModule.addCheatCodeMethods(this, SuperDaemonInstance);
-        
+
         // Define all cheat code programs in Merlin
         cheatModule.defineCheatCodes(this, SuperDaemonInstance);
-        
+
         // Show notification that cheat codes are now available
-        HAXStore.toast('🎮 Cheat codes unlocked! Check Merlin for new programs.');
-        
+        HAXStore.toast(
+          "🎮 Cheat codes unlocked! Check Merlin for new programs.",
+        );
+
         // Close Merlin first to reset state, then reopen after delay
         SuperDaemonInstance.close();
-        
+
         setTimeout(() => {
           SuperDaemonInstance.mini = true;
           SuperDaemonInstance.wand = true;
-          SuperDaemonInstance.activeNode = this.shadowRoot.querySelector('#merlin');
+          SuperDaemonInstance.activeNode =
+            this.shadowRoot.querySelector("#merlin");
           SuperDaemonInstance.open();
           // Force refresh of items to include new cheat codes
-          SuperDaemonInstance.items = SuperDaemonInstance.filterItems(SuperDaemonInstance.allItems, SuperDaemonInstance.context);
-          SuperDaemonInstance.runProgram('', '*');
+          SuperDaemonInstance.items = SuperDaemonInstance.filterItems(
+            SuperDaemonInstance.allItems,
+            SuperDaemonInstance.context,
+          );
+          SuperDaemonInstance.runProgram("", "*");
         }, 100);
-        
       } catch (error) {
-        console.error('🎮 Failed to load cheat codes:', error);
-        HAXStore.toast('🎮 Failed to unlock cheat codes');
+        console.error("🎮 Failed to load cheat codes:", error);
+        HAXStore.toast("🎮 Failed to unlock cheat codes");
       }
     }
   }

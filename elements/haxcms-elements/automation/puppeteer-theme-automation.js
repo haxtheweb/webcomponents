@@ -284,7 +284,7 @@ async function setupNonEditingView(page) {
  */
 async function captureThemeScreenshot(page, themeElement) {
   const themeConfig = themesConfig[themeElement];
-  const themeName = themeConfig?.name || "Unknown";
+  const themeName = (themeConfig && themeConfig.name) || "Unknown";
 
   console.log(`\n📸 Processing theme: ${themeElement}`);
   console.log(`    Theme name: ${themeName}`);

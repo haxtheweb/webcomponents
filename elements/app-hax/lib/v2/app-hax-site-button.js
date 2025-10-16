@@ -129,7 +129,7 @@ export class AppHaxSiteButton extends SimpleColors {
         class="haxButton"
         @click="${this._handleClick}"
         aria-pressed="${this.active}"
-        aria-label="${this.label}${this.comingSoon ? ' (coming soon)' : ''}"
+        aria-label="${this.label}${this.comingSoon ? " (coming soon)" : ""}"
       >
         <div class="contents">
           <span class="label" aria-hidden="true"> ${this.label} </span>

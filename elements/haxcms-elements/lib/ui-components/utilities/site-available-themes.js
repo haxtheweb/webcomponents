@@ -356,7 +356,12 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
     // Try to detect the current theme from HAXCMS if available
     if (
       globalThis.HAXCMS &&
-      globalThis.HAXCMS.instance?.store?.manifest?.metadata?.theme?.element
+      globalThis.HAXCMS.instance &&
+      globalThis.HAXCMS.instance.store &&
+      globalThis.HAXCMS.instance.store.manifest &&
+      globalThis.HAXCMS.instance.store.manifest.metadata &&
+      globalThis.HAXCMS.instance.store.manifest.metadata.theme &&
+      globalThis.HAXCMS.instance.store.manifest.metadata.theme.element
     ) {
       this.currentTheme =
         globalThis.HAXCMS.instance.store.manifest.metadata.theme.element;

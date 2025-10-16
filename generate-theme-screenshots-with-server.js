@@ -192,7 +192,7 @@ function generateMCPCommands() {
     type: 'wait_for_haxcms',
     description: 'Wait for HAXCMS to load completely',
     command: `puppeteer_evaluate({
-  "script": "new Promise(resolve => { const wait = () => { if (globalThis.HAXCMS && globalThis.HAXCMS.setTheme) { console.log('HAXCMS ready!'); resolve({ready: true, currentTheme: globalThis.HAXCMS.instance?.store?.manifest?.metadata?.theme?.element}); } else { console.log('Still waiting...'); setTimeout(wait, 2000); } }; wait(); })"
+  "script": "new Promise(resolve => { const wait = () => { if (globalThis.HAXCMS && globalThis.HAXCMS.setTheme) { console.log('HAXCMS ready!'); const currentTheme = globalThis.HAXCMS.instance && globalThis.HAXCMS.instance.store && globalThis.HAXCMS.instance.store.manifest && globalThis.HAXCMS.instance.store.manifest.metadata && globalThis.HAXCMS.instance.store.manifest.metadata.theme && globalThis.HAXCMS.instance.store.manifest.metadata.theme.element; resolve({ready: true, currentTheme: currentTheme}); } else { console.log('Still waiting...'); setTimeout(wait, 2000); } }; wait(); })"
 })`
   });
   

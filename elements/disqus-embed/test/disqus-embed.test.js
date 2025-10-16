@@ -151,7 +151,7 @@ describe("DisqusEmbed test", () => {
   it("calls DisqusInstance.createEmbedScript when shortName is set", async () => {
     // Mock DisqusInstance
     const originalCreateEmbedScript =
-      globalThis.DisqusInstance?.createEmbedScript;
+      globalThis.DisqusInstance && globalThis.DisqusInstance.createEmbedScript;
     let createEmbedScriptCalled = false;
 
     if (globalThis.DisqusInstance) {

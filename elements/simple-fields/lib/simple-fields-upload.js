@@ -37,7 +37,10 @@ class SimpleFieldsUpload extends I18NMixin(
           pointer-events: all;
           overflow: visible;
           --simple-login-camera-aspect: 1.777777777777;
-          --simple-camera-snap-color: var(--ddd-theme-default-coalyGray, currentColor);
+          --simple-camera-snap-color: var(
+            --ddd-theme-default-coalyGray,
+            currentColor
+          );
           --simple-camera-snap-background: var(
             --ddd-theme-default-white,
             white
@@ -45,7 +48,10 @@ class SimpleFieldsUpload extends I18NMixin(
           --simple-camera-snap-border-radius: var(--ddd-radius-sm);
           --lumo-font-family: var(--ddd-font-navigation, sans-serif);
           --lumo-error-color: var(--ddd-theme-default-error, #b40000);
-          --lumo-primary-font-color: var(--ddd-theme-default-coalyGray, currentColor);
+          --lumo-primary-font-color: var(
+            --ddd-theme-default-coalyGray,
+            currentColor
+          );
           --lumo-base-color: var(--ddd-theme-default-white, white);
         }
         :host([responsive-size="xs"]),
@@ -71,7 +77,8 @@ class SimpleFieldsUpload extends I18NMixin(
         }
         #upload {
           border-radius: var(--ddd-radius-sm, 2px);
-          border: var(--ddd-border-sm) dashed var(--ddd-theme-default-limestoneGray, #ccc);
+          border: var(--ddd-border-sm) dashed
+            var(--ddd-theme-default-limestoneGray, #ccc);
         }
         #url {
           flex: 1 1 100%;
@@ -87,7 +94,7 @@ class SimpleFieldsUpload extends I18NMixin(
         simple-fields-url-combo[always-expanded]::part(listbox) {
           background-color: transparent;
         }
-        
+
         simple-toolbar-button {
           display: inline-flex;
           font-family: var(--ddd-font-navigation, sans-serif);
@@ -156,9 +163,15 @@ class SimpleFieldsUpload extends I18NMixin(
           --lumo-contrast-90pct: currentColor;
         }
         simple-camera-snap {
-          --simple-camera-snap-button-container-bottom: var(--ddd-spacing-1, 4px);
+          --simple-camera-snap-button-container-bottom: var(
+            --ddd-spacing-1,
+            4px
+          );
           --simple-camera-snap-button-container-z-index: 5;
-          --simple-camera-snap-button-border-radius: var(--ddd-radius-rounded, 100%);
+          --simple-camera-snap-button-border-radius: var(
+            --ddd-radius-rounded,
+            100%
+          );
           --simple-camera-snap-button-opacity: 0.8;
           max-width: 200px;
           margin: 0 auto;
@@ -166,7 +179,8 @@ class SimpleFieldsUpload extends I18NMixin(
 
         /** voice stuff which is in lite dom below */
         .vmsg-button {
-          border: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray, #ccc);
+          border: var(--ddd-border-sm) solid
+            var(--ddd-theme-default-limestoneGray, #ccc);
           border-radius: var(--ddd-radius-sm, 4px);
           padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
           margin: 0 var(--ddd-spacing-1, 4px);
@@ -367,9 +381,7 @@ class SimpleFieldsUpload extends I18NMixin(
           </div>
           <div id="upload">
             <span part="drop-area-text">${this.t.dropMediaHereOr}</span>
-            <div class="sources" part="sources">
-              ${this.sources}
-            </div>
+            <div class="sources" part="sources">${this.sources}</div>
           </div>
           <simple-toolbar-button
             id="cancel"

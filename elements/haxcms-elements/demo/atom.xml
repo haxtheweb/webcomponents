@@ -675,9 +675,6 @@ conditions='{"metadata.tag": "funny"}'
 &gt;
 &lt; /site-query&gt;
 
-<iron-list id="list" items="[[__items]]" grid="" mutable-data="">
-  <slot></slot>
-</iron-list></template>
 </code-sample>
 <h3 class="hax-active">Spoken Example</h3>
 <p>"Give me all of the </p>
@@ -717,10 +714,7 @@ or know how to use javascript in order to bind the results to visual output</li>
         <template>
         <div class="spacing">
             <a data-id$="[[item.id]]" class="link" tabindex="-1" href$="[[item.location]]">
-            <paper-button noink="[[noink]]">
-                <div class$="indent indent-[[item.indent]]"></div>
-                [[item.title]]
-            </paper-button>
+
             </a>
         </div>
         </template>
@@ -746,16 +740,7 @@ that are 2 to 4 levels deep.</span>
 <code-sample copy-clipboard-button="copy-clipboard-button" style="width: 100%;">  <template preserve-content="preserve-content"><site-render-query class="cardlist" grid="">
         <template>
           <div style="padding:8px;">
-            <paper-card heading="[[item.title]]" image="[[item.metadata.image]]" elevation="1" animated-shadow="false">
-              <div class="card-content">
-                <div>description: [[item.description]]</div>
-                <div>location: [[item.location]]</div>
-                <div>changed: [[item.metadata.updated]]</div>
-              </div>
-              <div class="card-actions">
-                <a tabindex="-1" href$="[[item.location]]"><paper-button data-id$="[[item.id]]">Set as active</paper-button></a>
-              </div>
-            </paper-card>
+
           </div>
         </template>
       </site-render-query></template>

@@ -192,7 +192,10 @@ export class LinkPreviewCard extends DDDSuper(LitElement) {
       }
       this.link = data.data["og:url"] || data.data["url"] || link;
       this.themeColor =
-        data.data?.["theme-color"]?.trim() || this.getThemeColor(link);
+        (data.data &&
+          data.data["theme-color"] &&
+          data.data["theme-color"].trim()) ||
+        this.getThemeColor(link);
     } catch (error) {
       console.error("Error fetching data:", error);
       this.title = "No preview available";

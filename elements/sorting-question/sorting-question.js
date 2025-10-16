@@ -348,14 +348,20 @@ export class SortingQuestion extends QuestionElement {
                 </p>
                 ${this.querySelector &&
                 this.querySelector('[slot="feedbackIncorrect"]')
-                  ? html`<slot name="feedbackIncorrect" property="oer:incorrectFeedback"></slot>`
+                  ? html`<slot
+                      name="feedbackIncorrect"
+                      property="oer:incorrectFeedback"
+                    ></slot>`
                   : ``}`
             : ``}
           ${this.showAnswer && this.numberCorrect === this.answers.length
             ? html` <p class="feedback">${this.correctText}</p>
                 ${this.querySelector &&
                 this.querySelector('[slot="feedbackCorrect"]')
-                  ? html`<slot name="feedbackCorrect" property="oer:correctFeedback"></slot>`
+                  ? html`<slot
+                      name="feedbackCorrect"
+                      property="oer:correctFeedback"
+                    ></slot>`
                   : ``}`
             : ``}
           ${this.querySelector &&

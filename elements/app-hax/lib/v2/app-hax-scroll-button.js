@@ -12,7 +12,7 @@ export class AppHaxScrollButton extends LitElement {
     this.label = "";
     this.targetId = "";
     this.isDarkMode = document.body.classList.contains("dark-mode");
-    this.addEventListener('keydown', this._handleKeydown.bind(this));
+    this.addEventListener("keydown", this._handleKeydown.bind(this));
   }
 
   static get properties() {
@@ -94,13 +94,13 @@ export class AppHaxScrollButton extends LitElement {
           align-items: center;
           cursor: pointer;
         }
-        
+
         div:hover,
         div:focus {
           outline: 2px solid var(--ddd-theme-default-keystoneYellow, #ffd100);
           outline-offset: 2px;
         }
-        
+
         /* Screen reader only text */
         .sr-only {
           position: absolute;
@@ -113,7 +113,7 @@ export class AppHaxScrollButton extends LitElement {
           white-space: nowrap;
           border: 0;
         }
-        
+
         /* Live region for announcements */
         .live-region {
           position: absolute;
@@ -130,9 +130,9 @@ export class AppHaxScrollButton extends LitElement {
 
   render() {
     return html`
-      <div 
-        @click="${this.scrollToTarget}" 
-        tabindex="0" 
+      <div
+        @click="${this.scrollToTarget}"
+        tabindex="0"
         role="button"
         aria-label="${this.label} - Navigate to section"
         aria-describedby="scroll-desc"
@@ -142,35 +142,35 @@ export class AppHaxScrollButton extends LitElement {
           Click to scroll to the ${this.label} section
         </div>
       </div>
-      <div 
-        class="live-region" 
-        aria-live="polite" 
-        aria-atomic="true" 
+      <div
+        class="live-region"
+        aria-live="polite"
+        aria-atomic="true"
         id="scroll-announcement"
       ></div>
     `;
   }
-  
+
   /**
    * Handle keyboard navigation
    */
   _handleKeydown(e) {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       this.scrollToTarget();
     }
   }
-  
+
   /**
    * Announce navigation to screen readers
    */
   _announceNavigation() {
-    const announcement = this.shadowRoot.querySelector('#scroll-announcement');
+    const announcement = this.shadowRoot.querySelector("#scroll-announcement");
     if (announcement) {
       announcement.textContent = `Navigated to ${this.label} section`;
       // Clear announcement after delay
       setTimeout(() => {
-        announcement.textContent = '';
+        announcement.textContent = "";
       }, 1000);
     }
   }

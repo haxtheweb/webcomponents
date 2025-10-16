@@ -404,9 +404,9 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
     ).matches;
 
     // Check for user sound preference (could be stored in localStorage)
-    const userSoundPref = globalThis.localStorage?.getItem(
-      "awesome-explosion-sound-enabled",
-    );
+    const userSoundPref =
+      globalThis.localStorage &&
+      globalThis.localStorage.getItem("awesome-explosion-sound-enabled");
     if (userSoundPref !== null) {
       this.soundEnabled = userSoundPref === "true";
     }

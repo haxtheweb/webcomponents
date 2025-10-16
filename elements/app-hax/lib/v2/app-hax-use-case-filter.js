@@ -810,7 +810,11 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.filteredSites = [
       ...this.returningSites.filter((item) => {
         if (item.dataType !== "site") return false;
-        const siteCategory = item.originalData.metadata?.site?.category || [];
+        const siteCategory =
+          (item.originalData.metadata &&
+            item.originalData.metadata.site &&
+            item.originalData.metadata.site.category) ||
+          [];
         const matchesSearch =
           lowerCaseQuery === "" ||
           (item.originalData.category &&

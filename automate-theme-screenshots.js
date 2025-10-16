@@ -43,7 +43,7 @@ console.log('1. Navigate to demo site:');
 console.log(`   puppeteer_navigate({"allowDangerous":true, "launchOptions":{"args":["--no-sandbox", "--disable-setuid-sandbox"], "headless":true}, "url":"http://localhost:8080"})`);
 
 console.log('\n2. Wait for HAXCMS to load (run this first):');
-console.log(`   puppeteer_evaluate({"script":"new Promise(resolve => { const wait = () => { if (globalThis.HAXCMS && globalThis.HAXCMS.setTheme) { console.log('HAXCMS ready!'); resolve({ready: true, currentTheme: globalThis.HAXCMS.instance?.store?.manifest?.metadata?.theme?.element}); } else { console.log('Still waiting...'); setTimeout(wait, 2000); } }; wait(); })"})`);
+console.log(`   puppeteer_evaluate({"script":"new Promise(resolve => { const wait = () => { if (globalThis.HAXCMS && globalThis.HAXCMS.setTheme) { console.log('HAXCMS ready!'); const currentTheme = globalThis.HAXCMS.instance && globalThis.HAXCMS.instance.store && globalThis.HAXCMS.instance.store.manifest && globalThis.HAXCMS.instance.store.manifest.metadata && globalThis.HAXCMS.instance.store.manifest.metadata.theme && globalThis.HAXCMS.instance.store.manifest.metadata.theme.element; resolve({ready: true, currentTheme: currentTheme}); } else { console.log('Still waiting...'); setTimeout(wait, 2000); } }; wait(); })"})`);
 
 console.log('\n3. Theme switching and screenshot commands:');
 console.log('   For each theme, run these 3 commands in sequence:\n');

@@ -178,7 +178,7 @@ type: {                                       //For properties in "this.schema",
         setValueProperty: "value"             //Optional: element's property that sets its value, e.g. "value" or "checked" (default is same as valueProperty)
         valueChangedProperty: "value-changed" //Optional: event element fires when value property changes, e.g. "value-changed" or "click"
         valueSlot: ""                         //Optional: element's slot that's used to set its value, e.g. ""
-        description: ""                       //Optional: element that contains description, e.g. "p", "span", "paper-tooltip", etc.
+        description: ""                       //Optional: element that contains description, e.g. "p", "span", etc.
         child: {                              //Optional: child elements to be appended
           element: "a11y-tab"                 //Optional: type of child element, eg. "paper-input", "select", "simple-fields-array", etc.
           attributes: {                       //Optional: sets child element's attributes based on this.schemaConversion

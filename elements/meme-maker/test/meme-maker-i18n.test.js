@@ -234,23 +234,24 @@ describe("meme-maker internationalization tests", () => {
           }
 
           // Check settings translations
-          const configFields = translationData.settings?.configure;
+          const configFields =
+            translationData.settings && translationData.settings.configure;
           if (configFields && Array.isArray(configFields)) {
             // Source field
             if (expected.settings.imageUrl) {
-              expect(configFields[0]?.title).to.equal(
+              expect(configFields[0] && configFields[0].title).to.equal(
                 expected.settings.imageUrl,
               );
             }
             // Top text field
             if (expected.settings.topText) {
-              expect(configFields[1]?.title).to.equal(
+              expect(configFields[1] && configFields[1].title).to.equal(
                 expected.settings.topText,
               );
             }
             // Bottom text field
             if (expected.settings.bottomText) {
-              expect(configFields[2]?.title).to.equal(
+              expect(configFields[2] && configFields[2].title).to.equal(
                 expected.settings.bottomText,
               );
             }
@@ -261,7 +262,8 @@ describe("meme-maker internationalization tests", () => {
           if (
             demoSchema &&
             Array.isArray(demoSchema) &&
-            demoSchema[0]?.properties
+            demoSchema[0] &&
+            demoSchema[0].properties
           ) {
             const props = demoSchema[0].properties;
             if (expected.demo.alt) {

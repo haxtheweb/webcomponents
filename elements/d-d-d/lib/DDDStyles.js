@@ -143,7 +143,6 @@ if (globalThis && globalThis.addEventListener) {
               attribute: "data-accent",
               title: "Accent color",
               description: "Offset items visually for aesthetic purposes",
-              inputMethod: "select",
               inputMethod: "radio",
               itemsList: [...HAXOptionSampleFactory("accent")],
             });
@@ -200,7 +199,6 @@ if (globalThis && globalThis.addEventListener) {
             fontProps.push({
               attribute: "data-font-family",
               title: "Font family",
-              inputMethod: "select",
               inputMethod: "radio",
               itemsList: [...HAXOptionSampleFactory("font-family")],
             });
@@ -209,7 +207,6 @@ if (globalThis && globalThis.addEventListener) {
               attribute: "data-font-weight",
               title: "Font weight",
               description: "Ensure it is only for aesthetic purposes",
-              inputMethod: "select",
               inputMethod: "radio",
               itemsList: [...HAXOptionSampleFactory("font-weight")],
             });
@@ -218,7 +215,6 @@ if (globalThis && globalThis.addEventListener) {
               attribute: "data-font-size",
               title: "Font size",
               description: "Ensure sizing is only for aesthetic purposes",
-              inputMethod: "select",
               inputMethod: "radio",
               itemsList: [...HAXOptionSampleFactory("font-size")],
             });
@@ -230,7 +226,6 @@ if (globalThis && globalThis.addEventListener) {
                 attribute: "data-border-radius",
                 title: "Border radius",
                 description: "Border radius to apply",
-                inputMethod: "select",
                 inputMethod: "radio",
                 itemsList: [...HAXOptionSampleFactory("border-radius")],
               },
@@ -238,7 +233,6 @@ if (globalThis && globalThis.addEventListener) {
                 attribute: "data-border",
                 title: "Border",
                 description: "Thickness of the border",
-                inputMethod: "select",
                 inputMethod: "radio",
                 itemsList: [...HAXOptionSampleFactory("border")],
               },
@@ -246,7 +240,6 @@ if (globalThis && globalThis.addEventListener) {
                 attribute: "data-box-shadow",
                 title: "Box shadow",
                 description: "Subtly raises off the page",
-                inputMethod: "select",
                 inputMethod: "radio",
                 itemsList: [...HAXOptionSampleFactory("box-shadow")],
               },

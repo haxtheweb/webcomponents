@@ -1,4 +1,4 @@
-import { marked } from "./marked.js";
+import { markdownToHTML } from "@haxtheweb/utils/utils.js";
 
 export class WCMarkdown extends HTMLElement {
   static get observedAttributes() {
@@ -50,14 +50,14 @@ export class WCMarkdown extends HTMLElement {
     } else {
       if (this.textContent) {
         this.__value = this.textContent;
-        this.setValue();
+        await this.setValue();
       }
     }
   }
 
   async setSrc(src) {
     this.__value = await this.fetchSrc(src);
-    this.setValue();
+    await this.setValue();
   }
 
   async fetchSrc(src) {
@@ -65,10 +65,10 @@ export class WCMarkdown extends HTMLElement {
     return response.text();
   }
 
-  setValue() {
+  async setValue() {
     let contents = this.__value;
     contents = WCMarkdown.prepare(contents);
-    contents = WCMarkdown.toHtml(contents);
+    contents = await WCMarkdown.toHtml(contents);
     this.innerHTML = contents;
   }
 
@@ -82,8 +82,8 @@ export class WCMarkdown extends HTMLElement {
       .join("\n");
   }
 
-  static toHtml(markdown) {
-    return marked(markdown);
+  static async toHtml(markdown) {
+    return await markdownToHTML(markdown);
   }
   /**
    * De-dents the code by getting the padding from the first line,

@@ -18,7 +18,7 @@ export class AppHaxLabel extends LitElement {
     return {
       title: { type: String },
       subtitle: { type: String },
-      headingLevel: { type: Number, attribute: 'heading-level' },
+      headingLevel: { type: Number, attribute: "heading-level" },
     };
   }
 
@@ -103,7 +103,7 @@ export class AppHaxLabel extends LitElement {
 
   render() {
     const HeadingTag = `h${Math.min(Math.max(this.headingLevel, 1), 6)}`;
-    
+
     return html`
       <header class="topBar" role="banner" aria-labelledby="main-heading">
         <${HeadingTag} 

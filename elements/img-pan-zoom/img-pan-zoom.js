@@ -540,7 +540,6 @@ class ImgPanZoom extends LitElement {
           showRotationControl: this.showRotationControl,
           minZoomImageRatio: this.minZoomImageRatio,
           maxZoomPixelRatio: this.maxZoomPixelRatio,
-          showNavigationControl: this.showNavigationControl,
           navigatorAutoFade: this.navigatorAutoFade,
           navigatorPosition: this.navigatorPosition,
           navigatorLeft: this.navigatorLeft,

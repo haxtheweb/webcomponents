@@ -13,12 +13,6 @@
           "members": [
             {
               "kind": "field",
-              "name": "template",
-              "static": true,
-              "readonly": true
-            },
-            {
-              "kind": "field",
               "name": "tag",
               "static": true,
               "readonly": true
@@ -38,19 +32,22 @@
               "name": "file",
               "privacy": "public",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "The location of the PDF file.",
-              "attribute": "file"
+              "default": "undefined",
+              "attribute": "file",
+              "reflects": true
             },
             {
               "kind": "field",
               "name": "notSupportedMessage",
               "privacy": "public",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "The message when browser doesn't support pdf object",
+              "default": "\"It appears your Web browser is not configured to display PDF files. No worries, just\"",
               "attribute": "notSupportedMessage"
             },
             {
@@ -58,9 +55,10 @@
               "name": "notSupportedLinkMessage",
               "privacy": "public",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "The PDF link message when browser doesn't support pdf object",
+              "default": "\"click here to download the PDF file.\"",
               "attribute": "notSupportedLinkMessage"
             },
             {
@@ -68,9 +66,10 @@
               "name": "height",
               "privacy": "public",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "The height of the PDF viewer.",
+              "default": "\"400px\"",
               "attribute": "height"
             },
             {
@@ -78,9 +77,10 @@
               "name": "width",
               "privacy": "public",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "The width of the PDF viewer.",
+              "default": "\"100%\"",
               "attribute": "width"
             },
             {
@@ -88,9 +88,10 @@
               "name": "card",
               "privacy": "public",
               "type": {
-                "text": "Boolean"
+                "text": "boolean"
               },
               "description": "PDF viewer as a card with download button.",
+              "default": "false",
               "attribute": "card"
             },
             {
@@ -98,9 +99,10 @@
               "name": "downloadLabel",
               "privacy": "public",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "Download button label.",
+              "default": "\"Download\"",
               "attribute": "downloadLabel"
             },
             {
@@ -108,9 +110,10 @@
               "name": "elevation",
               "privacy": "public",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "The z-depth of the card, from 0-5.",
+              "default": "\"1\"",
               "attribute": "elevation"
             }
           ],
@@ -118,72 +121,81 @@
             {
               "name": "file",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "The location of the PDF file.",
+              "default": "undefined",
               "fieldName": "file"
             },
             {
               "name": "notSupportedMessage",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "The message when browser doesn't support pdf object",
+              "default": "\"It appears your Web browser is not configured to display PDF files. No worries, just\"",
               "fieldName": "notSupportedMessage"
             },
             {
               "name": "notSupportedLinkMessage",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "The PDF link message when browser doesn't support pdf object",
+              "default": "\"click here to download the PDF file.\"",
               "fieldName": "notSupportedLinkMessage"
             },
             {
               "name": "height",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "The height of the PDF viewer.",
+              "default": "\"400px\"",
               "fieldName": "height"
             },
             {
               "name": "width",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "The width of the PDF viewer.",
+              "default": "\"100%\"",
               "fieldName": "width"
             },
             {
               "name": "card",
               "type": {
-                "text": "Boolean"
+                "text": "boolean"
               },
               "description": "PDF viewer as a card with download button.",
+              "default": "false",
               "fieldName": "card"
             },
             {
               "name": "downloadLabel",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "Download button label.",
+              "default": "\"Download\"",
               "fieldName": "downloadLabel"
             },
             {
               "name": "elevation",
               "type": {
-                "text": "String"
+                "text": "string"
               },
               "description": "The z-depth of the card, from 0-5.",
+              "default": "\"1\"",
               "fieldName": "elevation"
             }
           ],
           "superclass": {
-            "name": "PolymerElement",
-            "package": "@polymer/polymer/polymer-element.js"
-          }
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "customElement": true
         }
       ],
       "exports": [

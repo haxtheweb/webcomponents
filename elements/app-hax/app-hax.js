@@ -1178,15 +1178,21 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             data-simple-tour-stop
             data-stop-title="data-label"
             data-label="Sound"
-            aria-label="Toggle sound effects ${this.soundIcon.includes('FullVolume') ? 'off' : 'on'}"
-            aria-pressed="${this.soundIcon.includes('FullVolume')}"
+            aria-label="Toggle sound effects ${this.soundIcon.includes(
+              "FullVolume",
+            )
+              ? "off"
+              : "on"}"
+            aria-pressed="${this.soundIcon.includes("FullVolume")}"
           >
             <span class="wired-button-label">Toggle sound effects</span>
             <simple-icon-lite
               src="${this.soundIcon}"
               loading="lazy"
               decoding="async"
-              alt="${this.soundIcon.includes('FullVolume') ? 'Sound enabled' : 'Sound disabled'}"
+              alt="${this.soundIcon.includes("FullVolume")
+                ? "Sound enabled"
+                : "Sound disabled"}"
             >
             </simple-icon-lite>
             <div slot="tour" data-stop-content>
@@ -1231,7 +1237,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 alt="Avatar for ${this.userName}"
                 role="img"
               ></rpg-character>
-              <span class="characterbtn-name" aria-hidden="true">${this.userName}</span>
+              <span class="characterbtn-name" aria-hidden="true"
+                >${this.userName}</span
+              >
             </button>
             <a
               slot="main-menu"

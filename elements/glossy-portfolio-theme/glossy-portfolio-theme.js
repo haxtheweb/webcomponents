@@ -313,7 +313,7 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
   
   render() {
     
-    const activeTitle = this.activeItem?.title || "Default Title"; // Use optional chaining and a fallback value
+    const activeTitle = (this.activeItem && this.activeItem.title) || "Default Title"; // Use explicit null check and a fallback value
     return html`
     <!-- temporary margin-top  -->
     <glossy-portfolio-header></glossy-portfolio-header>

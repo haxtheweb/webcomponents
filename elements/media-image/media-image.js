@@ -156,7 +156,11 @@ class MediaImage extends DDD {
         this.disableZoom = true;
       }
       // if we only have thumbnail and no source, disable zoom to avoid blurry modal
-      if ((propName === "thumbnail" || propName === "source") && this.thumbnail && !this.source) {
+      if (
+        (propName === "thumbnail" || propName === "source") &&
+        this.thumbnail &&
+        !this.source
+      ) {
         this.disableZoom = true;
       }
       if (["figureLabelTitle", "figureLabelDescription"].includes(propName)) {
@@ -521,7 +525,8 @@ class MediaImage extends DDD {
           {
             property: "thumbnail",
             title: "Thumbnail image",
-            description: "Thumbnail image source. Shows thumbnail but opens full source in modal.",
+            description:
+              "Thumbnail image source. Shows thumbnail but opens full source in modal.",
             inputMethod: "haxupload",
             required: false,
           },

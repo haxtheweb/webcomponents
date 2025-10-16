@@ -524,14 +524,16 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
 
     // Wait for the component to update before setting modal state
     this.updateComplete.then(() => {
-      const modal = this.shadowRoot?.querySelector("web-dialog");
+      const modal =
+        this.shadowRoot && this.shadowRoot.querySelector("web-dialog");
       if (modal) {
         modal.open = true;
       }
 
       // Focus the input after the modal opens
       setTimeout(() => {
-        const input = this.shadowRoot?.querySelector(".form-input");
+        const input =
+          this.shadowRoot && this.shadowRoot.querySelector(".form-input");
         if (input) {
           input.focus();
         }
@@ -555,7 +557,8 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     document.documentElement.style.overflow = "";
 
     this.open = false;
-    const modal = this.shadowRoot?.querySelector("web-dialog");
+    const modal =
+      this.shadowRoot && this.shadowRoot.querySelector("web-dialog");
     if (modal) {
       modal.open = false;
     }
@@ -764,7 +767,9 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
   triggerMainPageConfetti() {
     // Find the main page confetti container and trigger confetti
     const mainConfettiContainer =
-      store.appEl?.shadowRoot?.querySelector("#confetti");
+      store.appEl &&
+      store.appEl.shadowRoot &&
+      store.appEl.shadowRoot.querySelector("#confetti");
     if (mainConfettiContainer) {
       // Import and trigger confetti on main page
       import("@haxtheweb/multiple-choice/lib/confetti-container.js").then(

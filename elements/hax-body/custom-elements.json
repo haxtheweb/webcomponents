@@ -5177,6 +5177,29 @@
             },
             {
               "kind": "method",
+              "name": "_isImageElement",
+              "parameters": [
+                {
+                  "name": "element"
+                }
+              ],
+              "description": "Check if an element is an image element by tag name or schema metadata"
+            },
+            {
+              "kind": "method",
+              "name": "_createImageGallery",
+              "parameters": [
+                {
+                  "name": "originalImageElement"
+                },
+                {
+                  "name": "newImageSource"
+                }
+              ],
+              "description": "Create an image gallery by wrapping the original image and adding the new image"
+            },
+            {
+              "kind": "method",
               "name": "mimeTypeToGizmoType",
               "parameters": [
                 {
@@ -5604,6 +5627,16 @@
                 }
               ],
               "description": "Intercept paste event and clean it up before inserting the contents"
+            },
+            {
+              "kind": "method",
+              "name": "_findDeepestLastTextNode",
+              "parameters": [
+                {
+                  "name": "element"
+                }
+              ],
+              "description": "Helper method to find the deepest last text node within an element\nUsed for proper cursor positioning at the end of content"
             },
             {
               "kind": "method",
@@ -9577,7 +9610,7 @@
               "type": {
                 "text": "object"
               },
-              "default": "{ structure: \"Outline\", htmlSource: \"HTML Source\", structureTip: \"View Page Structure\", edit: \"Edit\", save: \"Save\", saveAndEdit: \"Save and edit\", move: \"Move\", close: \"Close\", move: \"Move\", menuAlignment: \"Menu Alignment\", menuLeft: \"Move\", menuRight: \"Move\", menuPosition: \"Menu position\", changeSideVisually: \"Change which side of the screen the menu is affixed to visually.\", expand: \"Expand\", collapse: \"Collapse\", menuSize: \"Menu size\", menuSizeDescription: \"Expand or collapse the menu visually.\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", settings: \"Settings\", source: \"Source\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", blocks: \"Blocks\", cancel: \"Cancel\", cancelWithoutSaving: \"Cancel without saving\", configure: \"Configure\", advanced: \"Advanced\", developer: \"Developer\", alignment: \"Alignment\", left: \"Left\", center: \"Center\", right: \"Right\", search: \"Search\", templates: \"Templates\", width: \"Width\", }"
+              "default": "{ structure: \"Outline\", htmlSource: \"HTML Source\", structureTip: \"View Page Structure\", edit: \"Edit\", save: \"Save\", saveAndEdit: \"Save and edit\", move: \"Move\", close: \"Close\", menuAlignment: \"Menu Alignment\", menuLeft: \"Move\", menuRight: \"Move\", menuPosition: \"Menu position\", changeSideVisually: \"Change which side of the screen the menu is affixed to visually.\", expand: \"Expand\", collapse: \"Collapse\", menuSize: \"Menu size\", menuSizeDescription: \"Expand or collapse the menu visually.\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", settings: \"Settings\", source: \"Source\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", blocks: \"Blocks\", cancel: \"Cancel\", cancelWithoutSaving: \"Cancel without saving\", configure: \"Configure\", advanced: \"Advanced\", developer: \"Developer\", alignment: \"Alignment\", left: \"Left\", center: \"Center\", right: \"Right\", search: \"Search\", templates: \"Templates\", width: \"Width\", }"
             },
             {
               "kind": "field",

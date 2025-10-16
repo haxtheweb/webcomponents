@@ -52,7 +52,7 @@ export class AppHAXWiredToggle extends SimpleTourFinder(WiredDarkmodeToggle) {
     }
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "checked" && oldValue !== undefined) {
-      store.darkMode = this[propName];
+        store.darkMode = this[propName];
       }
     });
   }
@@ -73,7 +73,7 @@ export class AppHAXWiredToggle extends SimpleTourFinder(WiredDarkmodeToggle) {
           white-space: nowrap;
           border: 0;
         }
-      `
+      `,
     ];
   }
   render() {

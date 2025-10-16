@@ -9,8 +9,6 @@ import { html, css, unsafeCSS } from "lit";
 // need to highjack in order to alter the scale so we can fit our icon
 // for states
 const sun = new URL("./images/sunIcon.png", import.meta.url).href;
-const lightModeCircle = new URL("./images/lightModeIcon.png", import.meta.url)
-  .href;
 const moon = new URL("./images/moonIcon.png", import.meta.url).href;
 
 export class WiredDarkmodeToggle extends WiredToggle {

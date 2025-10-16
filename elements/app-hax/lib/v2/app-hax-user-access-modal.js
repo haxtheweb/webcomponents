@@ -402,21 +402,36 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
    * Add user access via HAXiam API
    */
   async _addUserAccess(username) {
-    // This calls the HAXiam API endpoint implemented via hooks system in HAXcms-php
-    const endpoint = `${globalThis.location.origin}/api/haxiam/addUserAccess`;
+    // Get the site name from the store - this should be the directory name
+    let siteName = null;
+    if (store.activeSite && store.activeSite.name) {
+      siteName = store.activeSite.name;
+    } else if (
+      store.activeSite &&
+      store.activeSite.metadata &&
+      store.activeSite.metadata.site &&
+      store.activeSite.metadata.site.name
+    ) {
+      siteName = store.activeSite.metadata.site.name;
+    }
 
-    return fetch(endpoint, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${globalThis.jwt || store.jwt || ""}`,
-      },
-      body: JSON.stringify({
-        username: username,
-        siteId: store.activeSite?.id || null,
-        sitePath: store.activeSite?.location || null,
-      }),
+    if (!siteName) {
+      throw new Error("Unable to determine site name");
+    }
+
+    // Use the secure AppHaxAPI.makeCall method with proper token validation
+    const response = await store.AppHaxAPI.makeCall("haxiamAddUserAccess", {
+      userName: username,
+      siteName: siteName,
     });
+
+    // Convert to fetch-like response object for compatibility with existing error handling
+    return {
+      ok: !response.__failed,
+      status: response.__failed ? response.__failed.status : 200,
+      statusText: response.__failed ? response.__failed.message : "OK",
+      data: response,
+    };
   }
 
   /**
@@ -453,7 +468,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
   firstUpdated() {
     super.firstUpdated();
     // Set site title from store if available
-    if (store.activeSite?.title) {
+    if (store.activeSite && store.activeSite.title) {
       this.siteTitle = store.activeSite.title;
     }
 

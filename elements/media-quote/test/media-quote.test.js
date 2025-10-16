@@ -3,7 +3,7 @@ import "../media-quote.js";
 
 describe("MediaQuote test", () => {
   let element;
-  
+
   beforeEach(async () => {
     element = await fixture(html`<media-quote></media-quote>`);
     await element.updateComplete;
@@ -44,8 +44,8 @@ describe("MediaQuote test", () => {
         </media-quote>
       `);
       await testElement.updateComplete;
-      
-      const blockquote = testElement.shadowRoot.querySelector('blockquote');
+
+      const blockquote = testElement.shadowRoot.querySelector("blockquote");
       if (blockquote) {
         expect(blockquote).to.exist;
       }
@@ -58,10 +58,12 @@ describe("MediaQuote test", () => {
         </media-quote>
       `);
       await testElement.updateComplete;
-      
-      const cite = testElement.shadowRoot.querySelector('[cite], cite');
+
+      const cite = testElement.shadowRoot.querySelector("[cite], cite");
       if (cite) {
-        expect(cite.hasAttribute('cite') || cite.tagName.toLowerCase() === 'cite').to.be.true;
+        expect(
+          cite.hasAttribute("cite") || cite.tagName.toLowerCase() === "cite",
+        ).to.be.true;
       }
     });
 
@@ -72,7 +74,7 @@ describe("MediaQuote test", () => {
         </media-quote>
       `);
       await testElement.updateComplete;
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });
@@ -85,10 +87,10 @@ describe("MediaQuote test", () => {
         </media-quote>
       `);
       await testElement.updateComplete;
-      
-      const img = testElement.shadowRoot.querySelector('img');
+
+      const img = testElement.shadowRoot.querySelector("img");
       if (img) {
-        expect(img.hasAttribute('alt')).to.be.true;
+        expect(img.hasAttribute("alt")).to.be.true;
       }
     });
 
@@ -99,7 +101,7 @@ describe("MediaQuote test", () => {
         </media-quote>
       `);
       await testElement.updateComplete;
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });
@@ -114,10 +116,10 @@ describe("MediaQuote test", () => {
         </media-quote>
       `);
       await testElement.updateComplete;
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
-      
-      const heading = testElement.querySelector('h3');
+
+      const heading = testElement.querySelector("h3");
       expect(heading).to.exist;
     });
 
@@ -131,10 +133,10 @@ describe("MediaQuote test", () => {
         </media-quote>
       `);
       await testElement.updateComplete;
-      
-      const nestedBlockquote = testElement.querySelector('blockquote');
-      const footer = testElement.querySelector('footer');
-      
+
+      const nestedBlockquote = testElement.querySelector("blockquote");
+      const footer = testElement.querySelector("footer");
+
       expect(nestedBlockquote).to.exist;
       if (footer) {
         expect(footer).to.exist;
@@ -150,11 +152,11 @@ describe("MediaQuote test", () => {
         </media-quote>
       `);
       await testElement.updateComplete;
-      
-      const link = testElement.querySelector('a');
+
+      const link = testElement.querySelector("a");
       expect(link).to.exist;
-      expect(link.hasAttribute('href')).to.be.true;
-      
+      expect(link.hasAttribute("href")).to.be.true;
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });
@@ -182,38 +184,38 @@ describe("MediaQuote test", () => {
   it("reflects hasFilter property to filter attribute", async () => {
     element.hasFilter = true;
     await element.updateComplete;
-    
-    expect(element.hasAttribute('filter')).to.be.true;
-    
+
+    expect(element.hasAttribute("filter")).to.be.true;
+
     element.hasFilter = false;
     await element.updateComplete;
-    
-    expect(element.hasAttribute('filter')).to.be.false;
+
+    expect(element.hasAttribute("filter")).to.be.false;
   });
 
   it("reflects authorDetail property to author-detail attribute", async () => {
     const testDetail = "Professional Photographer";
     element.authorDetail = testDetail;
     await element.updateComplete;
-    
-    expect(element.getAttribute('author-detail')).to.equal(testDetail);
+
+    expect(element.getAttribute("author-detail")).to.equal(testDetail);
   });
 
   it("updates properties when attributes change", async () => {
-    element.setAttribute('src', 'test.jpg');
-    element.setAttribute('alt', 'Test Alt');
-    element.setAttribute('quote', 'Test Quote');
-    element.setAttribute('author', 'Test Author');
-    element.setAttribute('author-detail', 'Test Detail');
-    element.setAttribute('caption', 'Test Caption');
+    element.setAttribute("src", "test.jpg");
+    element.setAttribute("alt", "Test Alt");
+    element.setAttribute("quote", "Test Quote");
+    element.setAttribute("author", "Test Author");
+    element.setAttribute("author-detail", "Test Detail");
+    element.setAttribute("caption", "Test Caption");
     await element.updateComplete;
-    
-    expect(element.src).to.equal('test.jpg');
-    expect(element.alt).to.equal('Test Alt');
-    expect(element.quote).to.equal('Test Quote');
-    expect(element.author).to.equal('Test Author');
-    expect(element.authorDetail).to.equal('Test Detail');
-    expect(element.caption).to.equal('Test Caption');
+
+    expect(element.src).to.equal("test.jpg");
+    expect(element.alt).to.equal("Test Alt");
+    expect(element.quote).to.equal("Test Quote");
+    expect(element.author).to.equal("Test Author");
+    expect(element.authorDetail).to.equal("Test Detail");
+    expect(element.caption).to.equal("Test Caption");
   });
 
   // Image and media functionality tests
@@ -221,8 +223,8 @@ describe("MediaQuote test", () => {
     element.src = "https://example.com/test-image.jpg";
     element.alt = "A test image";
     await element.updateComplete;
-    
-    const img = element.shadowRoot.querySelector('img');
+
+    const img = element.shadowRoot.querySelector("img");
     expect(img).to.exist;
     expect(img.src).to.equal("https://example.com/test-image.jpg");
     expect(img.alt).to.equal("A test image");
@@ -232,8 +234,8 @@ describe("MediaQuote test", () => {
     element.src = "";
     element.alt = "No image";
     await element.updateComplete;
-    
-    const img = element.shadowRoot.querySelector('img');
+
+    const img = element.shadowRoot.querySelector("img");
     expect(img).to.exist;
     expect(img.src).to.equal("");
     expect(img.alt).to.equal("No image");
@@ -242,14 +244,14 @@ describe("MediaQuote test", () => {
   it("updates image when src changes", async () => {
     element.src = "image1.jpg";
     await element.updateComplete;
-    
-    let img = element.shadowRoot.querySelector('img');
+
+    let img = element.shadowRoot.querySelector("img");
     expect(img.src).to.include("image1.jpg");
-    
+
     element.src = "image2.jpg";
     await element.updateComplete;
-    
-    img = element.shadowRoot.querySelector('img');
+
+    img = element.shadowRoot.querySelector("img");
     expect(img.src).to.include("image2.jpg");
   });
 
@@ -257,7 +259,7 @@ describe("MediaQuote test", () => {
   it("renders quote content correctly", async () => {
     element.quote = "This is a test quote";
     await element.updateComplete;
-    
+
     const quoteSlot = element.shadowRoot.querySelector('slot[name="quote"]');
     expect(quoteSlot).to.exist;
     expect(quoteSlot.textContent).to.include("This is a test quote");
@@ -266,13 +268,13 @@ describe("MediaQuote test", () => {
   it("renders quote in correct overlay structure", async () => {
     element.quote = "Overlay quote";
     await element.updateComplete;
-    
-    const textOverlay = element.shadowRoot.querySelector('.text-overlay');
+
+    const textOverlay = element.shadowRoot.querySelector(".text-overlay");
     expect(textOverlay).to.exist;
-    
-    const content = element.shadowRoot.querySelector('.content');
+
+    const content = element.shadowRoot.querySelector(".content");
     expect(content).to.exist;
-    
+
     const quoteSlot = content.querySelector('slot[name="quote"]');
     expect(quoteSlot).to.exist;
   });
@@ -281,7 +283,7 @@ describe("MediaQuote test", () => {
   it("renders author information when provided", async () => {
     element.author = "Jane Doe";
     await element.updateComplete;
-    
+
     const authorSlot = element.shadowRoot.querySelector('slot[name="author"]');
     expect(authorSlot).to.exist;
     expect(authorSlot.textContent).to.include("Jane Doe");
@@ -291,8 +293,10 @@ describe("MediaQuote test", () => {
     element.author = "John Smith";
     element.authorDetail = "Professional Writer";
     await element.updateComplete;
-    
-    const authorDetailSlot = element.shadowRoot.querySelector('slot[name="author-detail"]');
+
+    const authorDetailSlot = element.shadowRoot.querySelector(
+      'slot[name="author-detail"]',
+    );
     expect(authorDetailSlot).to.exist;
     expect(authorDetailSlot.textContent).to.include("Professional Writer");
   });
@@ -300,8 +304,8 @@ describe("MediaQuote test", () => {
   it("does not render author detail without author", async () => {
     element.authorDetail = "Some Detail";
     await element.updateComplete;
-    
-    const citation = element.shadowRoot.querySelector('.citation');
+
+    const citation = element.shadowRoot.querySelector(".citation");
     expect(citation).to.not.exist;
   });
 
@@ -309,13 +313,13 @@ describe("MediaQuote test", () => {
     element.author = "Test Author";
     element.authorDetail = "Test Detail";
     await element.updateComplete;
-    
-    const citation = element.shadowRoot.querySelector('.citation');
+
+    const citation = element.shadowRoot.querySelector(".citation");
     expect(citation).to.exist;
-    
-    const author = citation.querySelector('.author');
-    const authorDetail = citation.querySelector('.author-detail');
-    
+
+    const author = citation.querySelector(".author");
+    const authorDetail = citation.querySelector(".author-detail");
+
     expect(author).to.exist;
     expect(authorDetail).to.exist;
   });
@@ -324,8 +328,10 @@ describe("MediaQuote test", () => {
   it("renders caption when provided", async () => {
     element.caption = "This is a test caption";
     await element.updateComplete;
-    
-    const captionSlot = element.shadowRoot.querySelector('slot[name="caption"]');
+
+    const captionSlot = element.shadowRoot.querySelector(
+      'slot[name="caption"]',
+    );
     expect(captionSlot).to.exist;
     expect(captionSlot.textContent).to.include("This is a test caption");
   });
@@ -333,23 +339,23 @@ describe("MediaQuote test", () => {
   it("wraps caption in details/summary structure", async () => {
     element.caption = "Detailed caption";
     await element.updateComplete;
-    
-    const details = element.shadowRoot.querySelector('details');
+
+    const details = element.shadowRoot.querySelector("details");
     expect(details).to.exist;
-    
-    const summary = details.querySelector('summary');
+
+    const summary = details.querySelector("summary");
     expect(summary).to.exist;
-    expect(summary.textContent).to.equal('Show Caption');
-    
-    const figcaption = details.querySelector('figcaption');
+    expect(summary.textContent).to.equal("Show Caption");
+
+    const figcaption = details.querySelector("figcaption");
     expect(figcaption).to.exist;
   });
 
   it("does not render caption section when caption is empty", async () => {
     element.caption = "";
     await element.updateComplete;
-    
-    const captionDiv = element.shadowRoot.querySelector('.caption');
+
+    const captionDiv = element.shadowRoot.querySelector(".caption");
     expect(captionDiv).to.not.exist;
   });
 
@@ -364,7 +370,7 @@ describe("MediaQuote test", () => {
       </media-quote>
     `);
     await elementWithSlots.updateComplete;
-    
+
     // Note: The hasAuthor, hasAuthorDetail, hasCaption are set in constructor
     // These tests verify the constructor logic works
     expect(elementWithSlots.hasAuthor).to.be.true;
@@ -373,9 +379,11 @@ describe("MediaQuote test", () => {
   });
 
   it("handles missing slot content correctly", async () => {
-    const elementWithoutSlots = await fixture(html`<media-quote></media-quote>`);
+    const elementWithoutSlots = await fixture(
+      html`<media-quote></media-quote>`,
+    );
     await elementWithoutSlots.updateComplete;
-    
+
     expect(elementWithoutSlots.hasAuthor).to.be.false;
     expect(elementWithoutSlots.hasAuthorDetail).to.be.false;
     expect(elementWithoutSlots.hasCaption).to.be.false;
@@ -384,28 +392,30 @@ describe("MediaQuote test", () => {
   // Rendering structure tests
   it("renders main container structure", async () => {
     await element.updateComplete;
-    
-    const container = element.shadowRoot.querySelector('.media-quote-container');
+
+    const container = element.shadowRoot.querySelector(
+      ".media-quote-container",
+    );
     expect(container).to.exist;
-    
-    const figure = container.querySelector('figure');
+
+    const figure = container.querySelector("figure");
     expect(figure).to.exist;
-    
-    const topContent = figure.querySelector('.top-content');
+
+    const topContent = figure.querySelector(".top-content");
     expect(topContent).to.exist;
   });
 
   it("renders text overlay structure", async () => {
     element.quote = "Test quote";
     await element.updateComplete;
-    
-    const textOverlay = element.shadowRoot.querySelector('.text-overlay');
+
+    const textOverlay = element.shadowRoot.querySelector(".text-overlay");
     expect(textOverlay).to.exist;
-    
-    const quoteP = textOverlay.querySelector('.quote');
+
+    const quoteP = textOverlay.querySelector(".quote");
     expect(quoteP).to.exist;
-    
-    const content = quoteP.querySelector('.content');
+
+    const content = quoteP.querySelector(".content");
     expect(content).to.exist;
   });
 
@@ -415,14 +425,14 @@ describe("MediaQuote test", () => {
     element.author = "Test Author";
     element.caption = "Test caption";
     await element.updateComplete;
-    
-    expect(element.shadowRoot.querySelector('.media-quote-container')).to.exist;
-    expect(element.shadowRoot.querySelector('.top-content')).to.exist;
-    expect(element.shadowRoot.querySelector('.text-overlay')).to.exist;
-    expect(element.shadowRoot.querySelector('.content')).to.exist;
-    expect(element.shadowRoot.querySelector('.citation')).to.exist;
-    expect(element.shadowRoot.querySelector('.author')).to.exist;
-    expect(element.shadowRoot.querySelector('.caption')).to.exist;
+
+    expect(element.shadowRoot.querySelector(".media-quote-container")).to.exist;
+    expect(element.shadowRoot.querySelector(".top-content")).to.exist;
+    expect(element.shadowRoot.querySelector(".text-overlay")).to.exist;
+    expect(element.shadowRoot.querySelector(".content")).to.exist;
+    expect(element.shadowRoot.querySelector(".citation")).to.exist;
+    expect(element.shadowRoot.querySelector(".author")).to.exist;
+    expect(element.shadowRoot.querySelector(".caption")).to.exist;
   });
 
   // Slot content rendering tests
@@ -433,7 +443,7 @@ describe("MediaQuote test", () => {
       </media-quote>
     `);
     await elementWithQuote.updateComplete;
-    
+
     const slottedContent = elementWithQuote.querySelector('[slot="quote"]');
     expect(slottedContent).to.exist;
     expect(slottedContent.textContent).to.equal("Slotted quote content");
@@ -446,7 +456,7 @@ describe("MediaQuote test", () => {
       </media-quote>
     `);
     await elementWithAuthor.updateComplete;
-    
+
     const slottedAuthor = elementWithAuthor.querySelector('[slot="author"]');
     expect(slottedAuthor).to.exist;
     expect(slottedAuthor.textContent).to.equal("Slotted Author");
@@ -459,7 +469,7 @@ describe("MediaQuote test", () => {
       </media-quote>
     `);
     await elementWithCaption.updateComplete;
-    
+
     const slottedCaption = elementWithCaption.querySelector('[slot="caption"]');
     expect(slottedCaption).to.exist;
     expect(slottedCaption.textContent).to.equal("Slotted caption content");
@@ -468,27 +478,27 @@ describe("MediaQuote test", () => {
   // Design system integration tests
   it("includes DDD styles", async () => {
     const styles = MediaQuote.styles;
-    expect(styles).to.be.an('array');
+    expect(styles).to.be.an("array");
     expect(styles.length).to.be.greaterThan(1); // Should include super.styles + own styles
   });
 
   it("uses DDD CSS variables", async () => {
     // Check that the element can access DDD properties
-    expect(element).to.have.property('accentColor'); // Inherited from DDD
+    expect(element).to.have.property("accentColor"); // Inherited from DDD
   });
 
   it("renders with proper responsive design classes", async () => {
     await element.updateComplete;
-    
+
     // Check that container-type is set for container queries
     const styles = getComputedStyle(element);
-    expect(element.shadowRoot.querySelector('.media-quote-container')).to.exist;
+    expect(element.shadowRoot.querySelector(".media-quote-container")).to.exist;
   });
 
-  // HAX integration tests  
+  // HAX integration tests
   it("has proper HAX properties configuration", async () => {
     expect(element.constructor.haxProperties).to.exist;
-    expect(element.constructor.haxProperties).to.include('haxProperties.json');
+    expect(element.constructor.haxProperties).to.include("haxProperties.json");
   });
 
   it("supports HAX demoSchema configuration", async () => {
@@ -499,8 +509,8 @@ describe("MediaQuote test", () => {
   it("handles filter attribute correctly", async () => {
     element.hasFilter = true;
     await element.updateComplete;
-    
-    expect(element.hasAttribute('filter')).to.be.true;
+
+    expect(element.hasAttribute("filter")).to.be.true;
     expect(element.hasFilter).to.be.true;
   });
 
@@ -513,24 +523,28 @@ describe("MediaQuote test", () => {
     element.authorDetail = "";
     element.caption = "";
     await element.updateComplete;
-    
+
     expect(() => element.render()).to.not.throw;
-    
-    const img = element.shadowRoot.querySelector('img');
+
+    const img = element.shadowRoot.querySelector("img");
     expect(img.src).to.equal("");
     expect(img.alt).to.equal("");
   });
 
   it("handles long text content", async () => {
-    element.quote = "This is a very long quote that should wrap properly and not break the layout even when it contains multiple sentences and extends beyond normal length.";
-    element.author = "Author with Very Long Name That Should Also Handle Gracefully";
-    element.authorDetail = "Professional Title That Is Also Quite Long And Should Not Break The Layout";
-    element.caption = "This is an extremely long caption that describes the image in great detail and provides comprehensive information about what is shown.";
+    element.quote =
+      "This is a very long quote that should wrap properly and not break the layout even when it contains multiple sentences and extends beyond normal length.";
+    element.author =
+      "Author with Very Long Name That Should Also Handle Gracefully";
+    element.authorDetail =
+      "Professional Title That Is Also Quite Long And Should Not Break The Layout";
+    element.caption =
+      "This is an extremely long caption that describes the image in great detail and provides comprehensive information about what is shown.";
     await element.updateComplete;
-    
+
     expect(() => element.render()).to.not.throw;
-    
-    const textOverlay = element.shadowRoot.querySelector('.text-overlay');
+
+    const textOverlay = element.shadowRoot.querySelector(".text-overlay");
     expect(textOverlay).to.exist;
   });
 
@@ -539,11 +553,13 @@ describe("MediaQuote test", () => {
     element.author = "Author's Name with apostrophe";
     element.alt = 'Alt text with "quotes" and & symbols';
     await element.updateComplete;
-    
+
     const quoteSlot = element.shadowRoot.querySelector('slot[name="quote"]');
-    expect(quoteSlot.textContent).to.include('Quote with "special" characters & symbols < > /');
-    
-    const img = element.shadowRoot.querySelector('img');
+    expect(quoteSlot.textContent).to.include(
+      'Quote with "special" characters & symbols < > /',
+    );
+
+    const img = element.shadowRoot.querySelector("img");
     expect(img.alt).to.equal('Alt text with "quotes" and & symbols');
   });
 
@@ -552,17 +568,17 @@ describe("MediaQuote test", () => {
     element.src = "image1.jpg";
     element.quote = "Quote 1";
     await element.updateComplete;
-    
-    let img = element.shadowRoot.querySelector('img');
+
+    let img = element.shadowRoot.querySelector("img");
     expect(img.src).to.include("image1.jpg");
-    
+
     element.src = "image2.jpg";
     element.quote = "Quote 2";
     await element.updateComplete;
-    
-    img = element.shadowRoot.querySelector('img');
+
+    img = element.shadowRoot.querySelector("img");
     expect(img.src).to.include("image2.jpg");
-    
+
     const quoteSlot = element.shadowRoot.querySelector('slot[name="quote"]');
     expect(quoteSlot.textContent).to.include("Quote 2");
   });
@@ -570,26 +586,30 @@ describe("MediaQuote test", () => {
   it("maintains structure integrity across updates", async () => {
     element.src = "test1.jpg";
     await element.updateComplete;
-    
-    const initialContainer = element.shadowRoot.querySelector('.media-quote-container');
+
+    const initialContainer = element.shadowRoot.querySelector(
+      ".media-quote-container",
+    );
     expect(initialContainer).to.exist;
-    
+
     element.src = "test2.jpg";
     element.quote = "New quote";
     element.author = "New author";
     await element.updateComplete;
-    
-    const updatedContainer = element.shadowRoot.querySelector('.media-quote-container');
+
+    const updatedContainer = element.shadowRoot.querySelector(
+      ".media-quote-container",
+    );
     expect(updatedContainer).to.exist;
-    expect(element.shadowRoot.querySelector('figure')).to.exist;
-    expect(element.shadowRoot.querySelector('img')).to.exist;
+    expect(element.shadowRoot.querySelector("figure")).to.exist;
+    expect(element.shadowRoot.querySelector("img")).to.exist;
   });
 
   // Complex interaction tests
   it("handles mixed property and slot content correctly", async () => {
     const mixedElement = await fixture(html`
-      <media-quote 
-        src="test.jpg" 
+      <media-quote
+        src="test.jpg"
         alt="Test image"
         author="Property Author"
         caption="Property Caption"
@@ -599,14 +619,16 @@ describe("MediaQuote test", () => {
       </media-quote>
     `);
     await mixedElement.updateComplete;
-    
-    const img = mixedElement.shadowRoot.querySelector('img');
+
+    const img = mixedElement.shadowRoot.querySelector("img");
     expect(img.src).to.include("test.jpg");
     expect(img.alt).to.equal("Test image");
-    
+
     const slottedQuote = mixedElement.querySelector('[slot="quote"]');
-    expect(slottedQuote.textContent).to.equal("Slotted quote overrides property");
-    
+    expect(slottedQuote.textContent).to.equal(
+      "Slotted quote overrides property",
+    );
+
     const slottedDetail = mixedElement.querySelector('[slot="author-detail"]');
     expect(slottedDetail.textContent).to.equal("Slotted author detail");
   });
@@ -618,34 +640,36 @@ describe("MediaQuote test", () => {
         src="https://cdn2.thecatapi.com/images/9j5.jpg"
         alt="A cat stalking a small toy"
       >
-        <span slot='quote'>A cute cat stalking a toy</span>
-        <span slot='author'>John Doe</span>
-        <span slot='author-detail'>Professional Cat Photographer</span>
-        <span slot='caption'>This cat is stalking a Totoro toy. How cute!</span>
+        <span slot="quote">A cute cat stalking a toy</span>
+        <span slot="author">John Doe</span>
+        <span slot="author-detail">Professional Cat Photographer</span>
+        <span slot="caption">This cat is stalking a Totoro toy. How cute!</span>
       </media-quote>
     `);
     await demoElement.updateComplete;
-    
+
     // Should render all components correctly
-    const img = demoElement.shadowRoot.querySelector('img');
+    const img = demoElement.shadowRoot.querySelector("img");
     expect(img.src).to.include("9j5.jpg");
     expect(img.alt).to.equal("A cat stalking a small toy");
-    
+
     const slottedQuote = demoElement.querySelector('[slot="quote"]');
     expect(slottedQuote.textContent).to.equal("A cute cat stalking a toy");
-    
+
     const slottedAuthor = demoElement.querySelector('[slot="author"]');
     expect(slottedAuthor.textContent).to.equal("John Doe");
-    
+
     const slottedDetail = demoElement.querySelector('[slot="author-detail"]');
     expect(slottedDetail.textContent).to.equal("Professional Cat Photographer");
-    
+
     const slottedCaption = demoElement.querySelector('[slot="caption"]');
-    expect(slottedCaption.textContent).to.equal("This cat is stalking a Totoro toy. How cute!");
-    
+    expect(slottedCaption.textContent).to.equal(
+      "This cat is stalking a Totoro toy. How cute!",
+    );
+
     // Should show citation and caption sections
-    expect(demoElement.shadowRoot.querySelector('.citation')).to.exist;
-    expect(demoElement.shadowRoot.querySelector('.caption')).to.exist;
+    expect(demoElement.shadowRoot.querySelector(".citation")).to.exist;
+    expect(demoElement.shadowRoot.querySelector(".caption")).to.exist;
   });
 
   // Accessibility edge cases
@@ -653,8 +677,8 @@ describe("MediaQuote test", () => {
     element.src = "test-image.jpg";
     element.alt = ""; // Empty alt text
     await element.updateComplete;
-    
-    const img = element.shadowRoot.querySelector('img');
+
+    const img = element.shadowRoot.querySelector("img");
     expect(img.alt).to.equal("");
     // Should still pass basic accessibility (though not best practice)
   });
@@ -663,20 +687,24 @@ describe("MediaQuote test", () => {
     element.quote = "Test quote";
     element.author = "Test author";
     await element.updateComplete;
-    
+
     // Verify no inappropriate heading elements are used
-    const headings = element.shadowRoot.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    const headings = element.shadowRoot.querySelectorAll(
+      "h1, h2, h3, h4, h5, h6",
+    );
     expect(headings).to.have.length(0); // Should use proper semantic elements
   });
 
   // CSS and styling integration
   it("applies proper container styling", async () => {
     await element.updateComplete;
-    
-    const container = element.shadowRoot.querySelector('.media-quote-container');
+
+    const container = element.shadowRoot.querySelector(
+      ".media-quote-container",
+    );
     expect(container).to.exist;
-    
+
     // Verify key CSS properties are applied through classes
-    expect(container.classList.contains('media-quote-container')).to.be.true;
+    expect(container.classList.contains("media-quote-container")).to.be.true;
   });
 });

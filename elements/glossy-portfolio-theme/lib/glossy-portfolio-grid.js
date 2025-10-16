@@ -44,7 +44,7 @@ export class GlossyPortfolioGrid extends DDDSuper(I18NMixin(LitElement)) {
 
         if (children && children.length > 0) { //display children if available
           this.data = [...children];
-          this.title = this.activeItem?.title || ""; // Use optional chaining and a fallback value       
+          this.title = (this.activeItem && this.activeItem.title) || ""; // Use explicit null check and a fallback value
         
         } else if(this.activeItem.metadata.relatedItems) { //display related items if available
 

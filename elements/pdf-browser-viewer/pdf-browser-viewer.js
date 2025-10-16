@@ -1,5 +1,4 @@
-import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
-import "@polymer/polymer/lib/elements/dom-if.js";
+import { html, css, LitElement } from "lit";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 /**
@@ -49,55 +48,59 @@ Card example:
 
 * @demo demo/index.html
 */
-class PdfBrowserViewer extends PolymerElement {
-  static get template() {
-    return html`
-      <style>
-        :host {
-          display: none;
-        }
-        :host([file]) {
-          display: inherit;
-        }
-        div.card {
-          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
-        }
-      </style>
+class PdfBrowserViewer extends LitElement {
+  static get styles() {
+    return css`
+      :host {
+        display: none;
+      }
+      :host([file]) {
+        display: inherit;
+      }
+      div.card {
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
+      }
+    `;
+  }
 
-      <template is="dom-if" if="[[card]]">
-        <div heading="[[heading]]" elevation="[[elevation]]">
-          <div class="card-content">
+  render() {
+    return html`
+      ${this.card
+        ? html`
+            <div heading="${this.heading}" elevation="${this.elevation}">
+              <div class="card-content">
+                <object
+                  data="${this.file}"
+                  type="application/pdf"
+                  width="${this.width}"
+                  height="${this.height}"
+                >
+                  <p>
+                    ${this.notSupportedMessage}
+                    <a href="${this.file}">${this.notSupportedLinkMessage}</a>
+                  </p>
+                </object>
+              </div>
+              <div class="card-actions">
+                <button @click="${this._download}">
+                  ${this.downloadLabel}
+                </button>
+              </div>
+            </div>
+          `
+        : html`
             <object
-              data="[[file]]"
+              data="${this.file}"
               type="application/pdf"
-              width="[[width]]"
-              height="[[height]]"
+              width="${this.width}"
+              height="${this.height}"
             >
               <p>
-                {{notSupportedMessage}}
-                <a href="[[file]]">{{notSupportedLinkMessage}}</a>
+                ${this.notSupportedMessage}
+                <a href="${this.file}">${this.notSupportedLinkMessage}</a>
               </p>
             </object>
-          </div>
-          <div class="card-actions">
-            <button on-click="_download">[[downloadLabel]]</button>
-          </div>
-        </div>
-      </template>
-
-      <template is="dom-if" if="[[!card]]">
-        <object
-          data="[[file]]"
-          type="application/pdf"
-          width="[[width]]"
-          height="[[height]]"
-        >
-          <p>
-            {{notSupportedMessage}}
-            <a href="[[file]]">{{notSupportedLinkMessage}}</a>
-          </p>
-        </object>
-      </template>
+          `}
     `;
   }
 
@@ -109,79 +112,67 @@ class PdfBrowserViewer extends PolymerElement {
     return {
       /**
        * The location of the PDF file.
-       *
-       * @type String
        */
       file: {
         type: String,
-        value: undefined,
-        reflectToAttribute: true,
+        reflect: true,
       },
       /**
        * The message when browser doesn't support pdf object
-       *
-       * @type String
        */
       notSupportedMessage: {
         type: String,
-        value:
-          "It appears your Web browser is not configured to display PDF files. No worries, just",
       },
       /**
        * The PDF link message when browser doesn't support pdf object
-       *
-       * @type String
        */
       notSupportedLinkMessage: {
         type: String,
-        value: "click here to download the PDF file.",
       },
       /**
        * The height of the PDF viewer.
-       *
-       * @type String
        */
       height: {
         type: String,
-        value: "400px",
       },
       /**
        * The width of the PDF viewer.
-       *
-       * @type String
        */
       width: {
         type: String,
-        value: "100%",
       },
       /**
        * PDF viewer as a card with download button.
-       *
-       * @type Boolean
        */
       card: {
         type: Boolean,
-        value: false,
       },
       /**
        * Download button label.
-       *
-       * @type String
        */
       downloadLabel: {
         type: String,
-        value: "Download",
       },
       /**
        * The z-depth of the card, from 0-5.
-       *
-       * @type String
        */
       elevation: {
         type: String,
-        value: "1",
       },
     };
+  }
+
+  constructor() {
+    super();
+    this.file = undefined;
+    this.notSupportedMessage =
+      "It appears your Web browser is not configured to display PDF files. No worries, just";
+    this.notSupportedLinkMessage = "click here to download the PDF file.";
+    this.height = "400px";
+    this.width = "100%";
+    this.card = false;
+    this.downloadLabel = "Download";
+    this.elevation = "1";
   }
   /**
    * Clear PDF container

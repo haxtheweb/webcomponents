@@ -170,20 +170,38 @@ class BootstrapFooter extends LitElement {
     return html`
       <link rel="stylesheet" href="${this._bootstrapPath}" />
       <nav class="container" role="navigation" aria-label="Page navigation">
-        ${this._backwardItem && this._backwardItem.slug ? html`
-          <a class="btn btn-outline-primary backward" href="${this._backwardItem.slug}" 
-             role="button" aria-label="Go to previous page: ${this._backwardItem.title}">
-            <simple-icon-lite icon="av:fast-rewind" aria-hidden="true"></simple-icon-lite>
-            <span>${this._backwardItem.title}</span>
-          </a>
-        ` : ''}
-        ${this._forwardItem && this._forwardItem.slug ? html`
-          <a class="btn btn-outline-primary forward" href="${this._forwardItem.slug}" 
-             role="button" aria-label="Go to next page: ${this._forwardItem.title}">
-            <span>${this._forwardItem.title}</span>
-            <simple-icon-lite icon="av:fast-forward" aria-hidden="true"></simple-icon-lite>
-          </a>
-        ` : ''}
+        ${this._backwardItem && this._backwardItem.slug
+          ? html`
+              <a
+                class="btn btn-outline-primary backward"
+                href="${this._backwardItem.slug}"
+                role="button"
+                aria-label="Go to previous page: ${this._backwardItem.title}"
+              >
+                <simple-icon-lite
+                  icon="av:fast-rewind"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+                <span>${this._backwardItem.title}</span>
+              </a>
+            `
+          : ""}
+        ${this._forwardItem && this._forwardItem.slug
+          ? html`
+              <a
+                class="btn btn-outline-primary forward"
+                href="${this._forwardItem.slug}"
+                role="button"
+                aria-label="Go to next page: ${this._forwardItem.title}"
+              >
+                <span>${this._forwardItem.title}</span>
+                <simple-icon-lite
+                  icon="av:fast-forward"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </a>
+            `
+          : ""}
       </nav>
     `;
   }

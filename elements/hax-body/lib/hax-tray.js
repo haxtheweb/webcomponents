@@ -78,7 +78,6 @@ class HaxTray extends I18NMixin(
       saveAndEdit: "Save and edit",
       move: "Move",
       close: "Close",
-      move: "Move",
       menuAlignment: "Menu Alignment",
       menuLeft: "Move",
       menuRight: "Move",

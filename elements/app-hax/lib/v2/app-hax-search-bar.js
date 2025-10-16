@@ -48,12 +48,12 @@ export class AppHaxSearchBar extends LitElement {
           position: relative;
           display: inline-block;
         }
-        
+
         [role="search"] {
           position: relative;
           display: inline-block;
         }
-        
+
         .search-input-container {
           position: relative;
           display: inline-block;
@@ -132,8 +132,8 @@ export class AppHaxSearchBar extends LitElement {
     return html`
       <div role="search" aria-label="Site search">
         <div class="search-input-container">
-          <simple-icon 
-            class="search-icon" 
+          <simple-icon
+            class="search-icon"
             icon="icons:search"
             aria-hidden="true"
             id="search-icon"

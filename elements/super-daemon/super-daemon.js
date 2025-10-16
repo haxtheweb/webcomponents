@@ -103,9 +103,16 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     };
     // Konami Code detection
     this.konamiSequence = [
-      'ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown',
-      'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight',
-      'KeyB', 'KeyA'
+      "ArrowUp",
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowLeft",
+      "ArrowRight",
+      "KeyB",
+      "KeyA",
     ];
     this.konamiProgress = [];
     this.konamiTimeout = null;
@@ -479,7 +486,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   keyHandler(e) {
     // Check for Konami Code sequence first (global detection)
     this.checkKonamiCode(e);
-    
+
     // modifier required to activate
     if (this.allowedCallback()) {
       // open and close events
@@ -743,7 +750,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       this.konamiTimeout = null;
     }
   }
-  
+
   /**
    * Check for Konami Code sequence
    * @param {KeyboardEvent} e - The keyboard event
@@ -753,21 +760,21 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     if (this.konamiTimeout) {
       clearTimeout(this.konamiTimeout);
     }
-    
+
     // Get the key code for the current key
     let keyCode = e.code || e.key;
     // Handle legacy key names for arrow keys
-    if (e.key === 'ArrowUp') keyCode = 'ArrowUp';
-    else if (e.key === 'ArrowDown') keyCode = 'ArrowDown';
-    else if (e.key === 'ArrowLeft') keyCode = 'ArrowLeft';
-    else if (e.key === 'ArrowRight') keyCode = 'ArrowRight';
-    else if (e.key === 'b' || e.key === 'B') keyCode = 'KeyB';
-    else if (e.key === 'a' || e.key === 'A') keyCode = 'KeyA';
-    
+    if (e.key === "ArrowUp") keyCode = "ArrowUp";
+    else if (e.key === "ArrowDown") keyCode = "ArrowDown";
+    else if (e.key === "ArrowLeft") keyCode = "ArrowLeft";
+    else if (e.key === "ArrowRight") keyCode = "ArrowRight";
+    else if (e.key === "b" || e.key === "B") keyCode = "KeyB";
+    else if (e.key === "a" || e.key === "A") keyCode = "KeyA";
+
     // Check if this key matches the next expected key in sequence
     if (keyCode === this.konamiSequence[this.konamiProgress.length]) {
       this.konamiProgress.push(keyCode);
-      
+
       // Check if sequence is complete
       if (this.konamiProgress.length === this.konamiSequence.length) {
         this.konamiCodeEntered();
@@ -782,66 +789,72 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         this.konamiProgress.push(keyCode);
       }
     }
-    
+
     // Set timeout to reset sequence after 3 seconds of inactivity
     this.konamiTimeout = setTimeout(() => {
       this.konamiProgress = [];
     }, 3000);
   }
-  
+
   /**
    * Handle successful Konami Code entry
    */
   async konamiCodeEntered() {
     // Clear the input if merlin is open to remove 'ba' characters
-    if (this.opened && this.shadowRoot.querySelector('super-daemon-ui')) {
-      this.value = '';
-      const ui = this.shadowRoot.querySelector('super-daemon-ui');
+    if (this.opened && this.shadowRoot.querySelector("super-daemon-ui")) {
+      this.value = "";
+      const ui = this.shadowRoot.querySelector("super-daemon-ui");
       if (ui) {
-        ui.like = '';
-        ui.programSearch = '';
-        const search = ui.shadowRoot.querySelector('super-daemon-search');
+        ui.like = "";
+        ui.programSearch = "";
+        const search = ui.shadowRoot.querySelector("super-daemon-search");
         if (search) {
-          search.value = '';
-          const inputField = search.shadowRoot.querySelector('#inputfilter');
+          search.value = "";
+          const inputField = search.shadowRoot.querySelector("#inputfilter");
           if (inputField) {
-            inputField.value = '';
+            inputField.value = "";
           }
         }
       }
     }
-    
+
     // Play coin sound 3 times, then success sound
-    await this.playSound('coin2');
-    await this.playSound('coin2');
-    await this.playSound('coin2');
-    await this.playSound('success');
-    
+    await this.playSound("coin2");
+    await this.playSound("coin2");
+    await this.playSound("coin2");
+    await this.playSound("success");
+
     // Dispatch event to let HAXcms know Konami Code was entered
     globalThis.dispatchEvent(
-      new CustomEvent('super-daemon-konami-code', {
+      new CustomEvent("super-daemon-konami-code", {
         bubbles: true,
         composed: true,
         cancelable: true,
         detail: {
           timestamp: Date.now(),
-          source: 'super-daemon'
-        }
-      })
+          source: "super-daemon",
+        },
+      }),
     );
   }
-  
+
   playSound(sound = "coin2") {
     return new Promise((resolve) => {
       let playSound = ["coin2", "success"].includes(sound) ? sound : "coin2";
       // Use app-hax sounds path for success sound, local path for coin
       let soundPath;
       if (sound === "success") {
-        soundPath = new URL(`../app-hax/lib/assets/sounds/${playSound}.mp3`, import.meta.url).href;
+        soundPath = new URL(
+          `../app-hax/lib/assets/sounds/${playSound}.mp3`,
+          import.meta.url,
+        ).href;
       } else {
-        soundPath = new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href;
+        soundPath = new URL(
+          `./lib/assets/sounds/${playSound}.mp3`,
+          import.meta.url,
+        ).href;
       }
-      
+
       this.audio = new Audio(soundPath);
       this.audio.volume = 0.2;
       this.audio.onended = (event) => {

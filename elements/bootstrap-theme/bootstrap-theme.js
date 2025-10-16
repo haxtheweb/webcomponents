@@ -504,10 +504,18 @@ class BootstrapTheme extends HAXCMSThemeParts(
     return html`
       <link rel="stylesheet" href="${this._bootstrapPath}" />
       <div class="site ">
-        <div class="menu-outline" role="navigation" aria-label="Site navigation">
+        <div
+          class="menu-outline"
+          role="navigation"
+          aria-label="Site navigation"
+        >
           <div class="site-title" part="site-title">
             ${this.__siteImage
-              ? html`<img class="site-img" src="${this.__siteImage}" alt="${this.__siteTitle} site logo" />`
+              ? html`<img
+                  class="site-img"
+                  src="${this.__siteImage}"
+                  alt="${this.__siteTitle} site logo"
+                />`
               : ``}
             <h4>${this.__siteTitle}</h4>
           </div>
@@ -550,8 +558,10 @@ class BootstrapTheme extends HAXCMSThemeParts(
                     <site-search
                       hide-input
                       search="${this.searchTerm}"
-                      ?aria-hidden="${this.searchTerm === '' ? 'true' : 'false'}"
-                      style="${this.searchTerm === '' ? 'display: none;' : ''}"
+                      ?aria-hidden="${this.searchTerm === ""
+                        ? "true"
+                        : "false"}"
+                      style="${this.searchTerm === "" ? "display: none;" : ""}"
                       @search-item-selected=${this.searchItemSelected}
                       role="search"
                       aria-label="Search results"
@@ -560,8 +570,8 @@ class BootstrapTheme extends HAXCMSThemeParts(
                   <section
                     class="p-2"
                     id="contentcontainer"
-                    ?aria-hidden="${this.searchTerm !== '' ? 'true' : 'false'}"
-                    style="${this.searchTerm !== '' ? 'display: none;' : ''}"
+                    ?aria-hidden="${this.searchTerm !== "" ? "true" : "false"}"
+                    style="${this.searchTerm !== "" ? "display: none;" : ""}"
                   >
                     <div id="slot">
                       <slot id="main-content"></slot>

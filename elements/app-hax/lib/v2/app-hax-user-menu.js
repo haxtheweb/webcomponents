@@ -16,7 +16,7 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
     super();
     this.isOpen = false;
     this.icon = "account-circle";
-    this.addEventListener('keydown', this._handleKeydown.bind(this));
+    this.addEventListener("keydown", this._handleKeydown.bind(this));
   }
 
   static get properties() {
@@ -136,7 +136,8 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
         /* Keyboard focus indicators */
         .user-menu ::slotted(*:focus),
         .user-menu ::slotted(*[tabindex="0"]:focus) {
-          outline: var(--ddd-border-sm, 2px solid) var(--ddd-theme-default-keystoneYellow, #ffd100);
+          outline: var(--ddd-border-sm, 2px solid)
+            var(--ddd-theme-default-keystoneYellow, #ffd100);
           outline-offset: -2px;
         }
       `,
@@ -146,22 +147,22 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
   render() {
     return html`
       <div class="entireComponent">
-        <div 
-          class="menuToggle" 
+        <div
+          class="menuToggle"
           part="menuToggle"
           aria-expanded="${this.isOpen}"
           aria-haspopup="menu"
           aria-controls="user-menu-dropdown"
         >
           <slot name="menuButton"
-            ><simple-icon-lite 
+            ><simple-icon-lite
               icon="${this.icon}"
               aria-hidden="true"
             ></simple-icon-lite
           ></slot>
         </div>
 
-        <div 
+        <div
           id="user-menu-dropdown"
           class="user-menu ${this.isOpen ? "open" : ""}"
           role="menu"
@@ -185,10 +186,10 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
    * Handle keyboard navigation for menu toggle
    */
   _handleMenuToggleKeydown(e) {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
       this._toggleMenu();
-    } else if (e.key === 'Escape' && this.isOpen) {
+    } else if (e.key === "Escape" && this.isOpen) {
       e.preventDefault();
       this._closeMenu();
     }
@@ -204,24 +205,24 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
     const currentIndex = this._getCurrentMenuItemIndex(menuItems);
 
     switch (e.key) {
-      case 'Escape':
+      case "Escape":
         e.preventDefault();
         this._closeMenu();
         this._focusToggle();
         break;
-      case 'ArrowDown':
+      case "ArrowDown":
         e.preventDefault();
         this._focusNextItem(menuItems, currentIndex);
         break;
-      case 'ArrowUp':
+      case "ArrowUp":
         e.preventDefault();
         this._focusPreviousItem(menuItems, currentIndex);
         break;
-      case 'Home':
+      case "Home":
         e.preventDefault();
         this._focusFirstItem(menuItems);
         break;
-      case 'End':
+      case "End":
         e.preventDefault();
         this._focusLastItem(menuItems);
         break;
@@ -255,7 +256,7 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
    * Focus the menu toggle button
    */
   _focusToggle() {
-    const toggle = this.shadowRoot.querySelector('.menuToggle');
+    const toggle = this.shadowRoot.querySelector(".menuToggle");
     if (toggle) {
       toggle.focus();
     }
@@ -265,22 +266,23 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
    * Get all focusable menu items
    */
   _getMenuItems() {
-    const menu = this.shadowRoot.querySelector('.user-menu');
+    const menu = this.shadowRoot.querySelector(".user-menu");
     if (!menu) return [];
-    
-    const items = menu.querySelectorAll('slot');
+
+    const items = menu.querySelectorAll("slot");
     const menuItems = [];
-    
-    items.forEach(slot => {
+
+    items.forEach((slot) => {
       const assignedElements = slot.assignedElements();
-      assignedElements.forEach(el => {
+      assignedElements.forEach((el) => {
         // Find focusable elements within slotted content
-        const focusable = el.matches('a, button, [tabindex="0"]') ? [el] : 
-          el.querySelectorAll('a, button, [tabindex="0"]');
+        const focusable = el.matches('a, button, [tabindex="0"]')
+          ? [el]
+          : el.querySelectorAll('a, button, [tabindex="0"]');
         menuItems.push(...focusable);
       });
     });
-    
+
     return menuItems;
   }
 
@@ -288,7 +290,8 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
    * Get current focused menu item index
    */
   _getCurrentMenuItemIndex(menuItems) {
-    const activeElement = this.shadowRoot.activeElement || document.activeElement;
+    const activeElement =
+      this.shadowRoot.activeElement || document.activeElement;
     return menuItems.indexOf(activeElement);
   }
 
@@ -296,30 +299,40 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
    * Focus next menu item
    */
   _focusNextItem(menuItems, currentIndex) {
-    const nextIndex = currentIndex < menuItems.length - 1 ? currentIndex + 1 : 0;
-    menuItems[nextIndex]?.focus();
+    const nextIndex =
+      currentIndex < menuItems.length - 1 ? currentIndex + 1 : 0;
+    if (menuItems[nextIndex]) {
+      menuItems[nextIndex].focus();
+    }
   }
 
   /**
    * Focus previous menu item
    */
   _focusPreviousItem(menuItems, currentIndex) {
-    const prevIndex = currentIndex > 0 ? currentIndex - 1 : menuItems.length - 1;
-    menuItems[prevIndex]?.focus();
+    const prevIndex =
+      currentIndex > 0 ? currentIndex - 1 : menuItems.length - 1;
+    if (menuItems[prevIndex]) {
+      menuItems[prevIndex].focus();
+    }
   }
 
   /**
    * Focus first menu item
    */
   _focusFirstItem(menuItems) {
-    menuItems[0]?.focus();
+    if (menuItems[0]) {
+      menuItems[0].focus();
+    }
   }
 
   /**
    * Focus last menu item
    */
   _focusLastItem(menuItems) {
-    menuItems[menuItems.length - 1]?.focus();
+    if (menuItems[menuItems.length - 1]) {
+      menuItems[menuItems.length - 1].focus();
+    }
   }
 }
 customElements.define(AppHaxUserMenu.tag, AppHaxUserMenu);

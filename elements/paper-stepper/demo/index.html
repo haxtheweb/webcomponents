@@ -7,13 +7,13 @@
     
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script type="module">
-      import "@haxtheweb/utils/lib/demo-snippet.js";
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
 	  import '../paper-stepper.js';
 	  import '../lib/paper-step.js';
 	  import '../lib/paper-icon-stepper.js';
 	  import '../lib/paper-icon-step.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    
   </head>
   <body>
     mplate is="dom-bind">
@@ -28,16 +28,8 @@
 					<paper-step></paper-step>
 				</paper-stepper>
 	
-				<iron-pages selected="[[selected]]">
-					<div>Step 1</div>
-					<div>Step 2</div>
-					<div>Step 3</div>
-					<div>Step 4</div>
-				</iron-pages>
-	
 				<br>
 	
-				<paper-checkbox checked="{{noButtons}}">No buttons</paper-checkbox>
 			</template>
 		</div>
 	
@@ -70,9 +62,9 @@
 				<paper-icon-step icon="image:brightness-1"></paper-icon-step>
 				<paper-icon-step icon="image:brightness-1"></paper-icon-step>
 			</paper-icon-stepper>
-			<paper-button raised on-tap="prev">prev</paper-button>
-			<paper-button raised on-tap="next">next</paper-button>
-			<paper-button raised on-tap="clear">clear</paper-button>
+			<button raised on-tap="prev">prev</button>
+			<button raised on-tap="next">next</button>
+			<button raised on-tap="clear">clear</button>
 		</div>
 	</template>
 	

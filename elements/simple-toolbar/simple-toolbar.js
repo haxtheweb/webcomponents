@@ -178,7 +178,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         },
         /**
          * Optional space-separated list of keyboard shortcuts for editor
-         * to fire this button, see iron-a11y-keys for more info.
+         * to fire this button
          */
         moreShortcuts: {
           name: "moreShortcuts",
@@ -187,7 +187,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         },
         /**
          * Optional space-sperated list of keyboard shortcuts for editor
-         * to fire this button, see iron-a11y-keys for more info.
+         * to fire this button
          */
         shortcutKeys: {
           name: "shortcutKeys",

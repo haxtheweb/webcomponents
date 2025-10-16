@@ -121,7 +121,7 @@ class BootstrapBreadcrumb extends LitElement {
         :host([color-theme="2"]) a:hover {
           color: var(--bootstrap-theme-palenight-color);
         }
-        
+
         .visually-hidden {
           position: absolute !important;
           width: 1px !important;
@@ -199,31 +199,39 @@ class BootstrapBreadcrumb extends LitElement {
               data-bs-placement="top"
               title="${this.homeItem.title}"
             >
-              <a href="${this.homeItem.slug}" aria-label="Navigate to home page">
-                <simple-icon-lite accent-color="blue" icon="home" aria-hidden="true">
+              <a
+                href="${this.homeItem.slug}"
+                aria-label="Navigate to home page"
+              >
+                <simple-icon-lite
+                  accent-color="blue"
+                  icon="home"
+                  aria-hidden="true"
+                >
                 </simple-icon-lite>
                 <span class="visually-hidden">Home</span>
               </a>
             </li>
-            ${this.items.map(
-              (item, index) => {
-                const isLast = index === this.items.length - 1;
-                return html`
-                  <li
-                    class="breadcrumb-item ${isLast ? 'active' : ''}"
-                    data-bs-toggle="tooltip"
-                    data-bs-placement="top"
-                    title="${item.title}"
-                    ${isLast ? 'aria-current="page"' : ''}
-                  >
-                    ${isLast 
-                      ? html`<span>${item.title}</span>`
-                      : html`<a href="${item.slug}" aria-label="Navigate to ${item.title}">${item.title}</a>`
-                    }
-                  </li>
-                `;
-              }
-            )}
+            ${this.items.map((item, index) => {
+              const isLast = index === this.items.length - 1;
+              return html`
+                <li
+                  class="breadcrumb-item ${isLast ? "active" : ""}"
+                  data-bs-toggle="tooltip"
+                  data-bs-placement="top"
+                  title="${item.title}"
+                  ${isLast ? 'aria-current="page"' : ""}
+                >
+                  ${isLast
+                    ? html`<span>${item.title}</span>`
+                    : html`<a
+                        href="${item.slug}"
+                        aria-label="Navigate to ${item.title}"
+                        >${item.title}</a
+                      >`}
+                </li>
+              `;
+            })}
           </ol>
         </nav>
       </div>
