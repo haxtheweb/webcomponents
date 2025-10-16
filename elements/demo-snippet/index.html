@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Snippet Examples</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #1e407c;
+    }
+    demo-snippet {
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Demo Snippet Examples</h1>
+  <p>The <code>demo-snippet</code> element shows live code examples with syntax highlighting.</p>
+
+  <h2>Basic HTML Form</h2>
+  <demo-snippet>
+    <template>
+      <form style="background: #f5f5f5; padding: 20px; border-radius: 8px;">
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name">
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="your@email.com">
+        <br><br>
+        <button type="submit">Submit</button>
+      </form>
+    </template>
+  </demo-snippet>
+
+  <h2>Interactive Button with CSS</h2>
+  <demo-snippet>
+    <template>
+      <style>
+        .fancy-btn {
+          background: linear-gradient(45deg, #1e407c, #96bee6);
+          border: none;
+          color: white;
+          padding: 12px 24px;
+          border-radius: 6px;
+          cursor: pointer;
+          font-size: 16px;
+          transition: transform 0.2s;
+        }
+        .fancy-btn:hover {
+          transform: translateY(-2px);
+        }
+      </style>
+      <button class="fancy-btn" onclick="alert('Hello from demo-snippet!')">Click Me!</button>
+    </template>
+  </demo-snippet>
+
+  <h2>HTML List with Styling</h2>
+  <demo-snippet>
+    <template>
+      <ul style="background: #e8f4fd; padding: 15px; border-left: 4px solid #1e407c;">
+        <li>First item</li>
+        <li>Second item</li>
+        <li>Third item</li>
+      </ul>
+    </template>
+  </demo-snippet>
+
+  <script type="module" src="./demo-snippet.js"></script>
+</body>
+</html>
