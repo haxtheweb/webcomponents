@@ -40,7 +40,6 @@
     "@haxtheweb/absolute-position-behavior": "^11.0.0",
     "@haxtheweb/accent-card": "^11.0.5",
     "@haxtheweb/code-editor": "^11.0.5",
-    "@haxtheweb/course-design": "^11.0.5",
     "@haxtheweb/dl-behavior": "^11.0.5",
     "@haxtheweb/editable-table": "^11.0.5",
     "@haxtheweb/file-system-broker": "^11.0.0",

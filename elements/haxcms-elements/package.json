@@ -51,7 +51,6 @@
     "@haxtheweb/clean-one": "^11.0.5",
     "@haxtheweb/clean-two": "^11.0.5",
     "@haxtheweb/collection-list": "^11.0.5",
-    "@haxtheweb/course-design": "^11.0.5",
     "@haxtheweb/dynamic-import-registry": "^11.0.0",
     "@haxtheweb/editable-outline": "9.0.1",
     "@haxtheweb/editable-table": "^11.0.5",
