@@ -2,14 +2,16 @@
 
 ## User Access Management Endpoint
 
-### Endpoint: POST /api/haxiam/addUserAccess
+### Endpoint: POST /haxiamAddUserAccess
 
 This endpoint allows users to grant access to their HAXiam sites by creating symlinks between user directories when the target username exists.
+
+**Availability**: This endpoint is only available when HAXiam mode is enabled (`config->iam = true`). The endpoint will not be present in `appSettings` if HAXiam is not enabled.
 
 ### Request
 
 **Method:** POST  
-**URL:** `/api/haxiam/addUserAccess`
+**URL:** `/haxiamAddUserAccess`
 
 **Headers:**
 - `Content-Type: application/json`
@@ -18,9 +20,8 @@ This endpoint allows users to grant access to their HAXiam sites by creating sym
 **Request Body:**
 ```json
 {
-  "username": "string",     // Required: Username to grant access to
-  "siteId": "string",       // Optional: Site identifier
-  "sitePath": "string"      // Optional: Path to the site directory
+  "userName": "string",     // Required: Username to grant access to
+  "siteName": "string"      // Required: Site name/directory name
 }
 ```
 
@@ -51,8 +52,17 @@ This endpoint allows users to grant access to their HAXiam sites by creating sym
 ```json
 {
   "status": "error", 
-  "message": "Username is required",
+  "message": "userName is required",
   "error_code": "INVALID_INPUT"
+}
+```
+
+**400 Bad Request - HAXiam Not Enabled**
+```json
+{
+  "status": "error",
+  "message": "HAXIAM mode is not enabled",
+  "error_code": "HAXIAM_DISABLED"
 }
 ```
 
@@ -92,21 +102,21 @@ This endpoint allows users to grant access to their HAXiam sites by creating sym
 
 ### Frontend Integration
 
-The frontend modal (`app-hax-user-access-modal.js`) calls this endpoint when a user submits the access form:
+The frontend conditionally shows the "User Access" menu option only when the `haxiamAddUserAccess` endpoint is present in `appSettings` (indicating HAXiam is enabled).
+
+The modal (`app-hax-user-access-modal.js`) calls this endpoint via the secure AppHaxAPI system:
 
 ```javascript
-const response = await fetch('/api/haxiam/addUserAccess', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${jwt_token}`
-  },
-  body: JSON.stringify({
-    username: inputUsername,
-    siteId: activeSite?.id,
-    sitePath: activeSite?.location
-  })
+const response = await store.AppHaxAPI.makeCall("haxiamAddUserAccess", {
+  userName: inputUsername,
+  siteName: siteName
 });
+```
+
+**Menu Visibility Logic**: The "User Access" button in the site options menu is conditionally rendered:
+```javascript
+${store.appSettings && store.appSettings.haxiamAddUserAccess ? 
+  html`<button>User Access</button>` : ""}
 ```
 
 ### Toast Notifications

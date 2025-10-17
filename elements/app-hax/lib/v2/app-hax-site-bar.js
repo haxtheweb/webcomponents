@@ -712,17 +712,21 @@ export class AppHaxSiteBars extends SimpleColors {
                         <simple-icon-lite icon="archive"></simple-icon-lite>
                         Archive
                       </button>
-                      <button
-                        class="menu-item"
-                        @click="${this.openUserAccess}"
-                        role="menuitem"
-                        aria-label="Manage user access"
-                      >
-                        <simple-icon-lite
-                          icon="account-circle"
-                        ></simple-icon-lite>
-                        User Access
-                      </button>
+                      ${store.appSettings && store.appSettings.haxiamAddUserAccess
+                        ? html`
+                            <button
+                              class="menu-item"
+                              @click="${this.openUserAccess}"
+                              role="menuitem"
+                              aria-label="Manage user access"
+                            >
+                              <simple-icon-lite
+                                icon="account-circle"
+                              ></simple-icon-lite>
+                              User Access
+                            </button>
+                          `
+                        : ""}
                     </div>
                   `
                 : ""}
