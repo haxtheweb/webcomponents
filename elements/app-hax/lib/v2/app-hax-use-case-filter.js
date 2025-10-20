@@ -698,7 +698,7 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   firstUpdated() {
     super.firstUpdated();
-    this.updateRecipeResults();
+    this.updateSkeletonResults();
     this.updateSiteResults();
   }
 
@@ -737,11 +737,11 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.searchTerm = searchTerm;
     store.searchTerm = searchTerm; // Update store with search term
 
-    // Filter templates (recipes and blank themes)
+    // Filter templates (skeletons and blank themes)
     this.filteredItems = [
       ...this.items.filter(
         (item) =>
-          (item.dataType === "recipe" || item.dataType === "blank") &&
+          (item.dataType === "skeleton" || item.dataType === "blank") &&
           (item.useCaseTitle.toLowerCase().includes(searchTerm) ||
             (item.useCaseTag &&
               item.useCaseTag.some((tag) =>
@@ -783,10 +783,10 @@ export class AppHaxUseCaseFilter extends LitElement {
   applyFilters() {
     const lowerCaseQuery = this.searchTerm.toLowerCase();
 
-    // Filter recipes and blank themes (from this.items)
+    // Filter skeletons and blank themes (from this.items)
     this.filteredItems = [
       ...this.items.filter((item) => {
-        if (item.dataType !== "recipe" && item.dataType !== "blank")
+        if (item.dataType !== "skeleton" && item.dataType !== "blank")
           return false;
         const matchesSearch =
           lowerCaseQuery === "" ||
@@ -845,10 +845,10 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.searchTerm = "";
     store.searchTerm = "";
     this.activeFilters = [];
-    // Show all templates (recipes and blank themes) and all sites
+    // Show all templates (skeletons and blank themes) and all sites
     this.filteredItems = [
       ...this.items.filter(
-        (item) => item.dataType === "recipe" || item.dataType === "blank",
+        (item) => item.dataType === "skeleton" || item.dataType === "blank",
       ),
     ];
     this.filteredSites = [...this.returningSites];
@@ -862,22 +862,22 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.requestUpdate();
   }
 
-  updateRecipeResults() {
+  updateSkeletonResults() {
     this.loading = true;
     this.errorMessage = "";
 
-    const recipesUrl = new URL("./app-hax-recipes.json", import.meta.url).href;
+    const skeletonsUrl = new URL("./app-hax-skeletons.json", import.meta.url).href;
     // Use base path aware themes.json loading
     const themesUrl = new URL(
       "../../../haxcms-elements/lib/themes.json",
       import.meta.url,
     ).href;
 
-    // Load both recipes and themes data concurrently
+    // Load both skeletons and themes data concurrently
     Promise.allSettled([
-      fetch(recipesUrl).then((response) => {
+      fetch(skeletonsUrl).then((response) => {
         if (!response.ok)
-          throw new Error(`Failed Recipes (${response.status})`);
+          throw new Error(`Failed Skeletons (${response.status})`);
         return response.json();
       }),
       fetch(themesUrl).then((response) => {
@@ -885,10 +885,10 @@ export class AppHaxUseCaseFilter extends LitElement {
         return response.json();
       }),
     ])
-      .then(([recipesData, themesData]) => {
-        // Process recipes data
-        const recipeItems = Array.isArray(recipesData.value.item)
-          ? recipesData.value.item.map((item) => {
+      .then(([skeletonsData, themesData]) => {
+        // Process skeletons data
+        const skeletonItems = Array.isArray(skeletonsData.value.item)
+          ? skeletonsData.value.item.map((item) => {
               let tags = [];
               if (Array.isArray(item.category)) {
                 tags = item.category.filter(
@@ -911,19 +911,22 @@ export class AppHaxUseCaseFilter extends LitElement {
                 : [];
               let thumbnailPath = item.image || "";
               if (thumbnailPath && thumbnailPath.startsWith("@haxtheweb/")) {
-                // Convert bare import style path to resolved path
-                const basePath =
-                  globalThis.WCGlobalBasePath || "/node_modules/";
-                thumbnailPath = basePath + thumbnailPath;
+                // Navigate from current file to simulate node_modules structure and resolve path
+                // Current file: elements/app-hax/lib/v2/app-hax-use-case-filter.js
+                // Need to go up to webcomponents root, then navigate to the package
+                // In node_modules: @haxtheweb/package-name becomes ../../../@haxtheweb/package-name
+                const packagePath = "../../../../" + thumbnailPath;
+                thumbnailPath = new URL(packagePath, import.meta.url).href;
               }
               return {
-                dataType: "recipe",
+                dataType: "skeleton",
                 useCaseTitle: item.title || "Untitled Template",
                 useCaseImage: thumbnailPath || "",
                 useCaseDescription: item.description || "",
                 useCaseIcon: icons,
                 useCaseTag: tags,
                 demoLink: item["demo-url"] || "#",
+                skeletonUrl: item["skeleton-url"] || "",
                 originalData: item,
               };
             })
@@ -950,12 +953,15 @@ export class AppHaxUseCaseFilter extends LitElement {
             // Simple icon array for blank themes
             const icons = [{ icon: "icons:build", tooltip: "Customizable" }];
 
-            // Resolve thumbnail path using basePath or WCGlobalBasePath
+            // Resolve thumbnail path using import.meta.url navigation
             let thumbnailPath = theme.thumbnail || "";
             if (thumbnailPath && thumbnailPath.startsWith("@haxtheweb/")) {
-              // Convert bare import style path to resolved path
-              const basePath = globalThis.WCGlobalBasePath || "/node_modules/";
-              thumbnailPath = basePath + thumbnailPath;
+              // Navigate from current file to simulate node_modules structure and resolve path
+              // Current file: elements/app-hax/lib/v2/app-hax-use-case-filter.js
+              // Need to go up to webcomponents root, then navigate to the package
+              // In node_modules: @haxtheweb/package-name becomes ../../../@haxtheweb/package-name
+              const packagePath = "../../../../" + thumbnailPath;
+              thumbnailPath = new URL(packagePath, import.meta.url).href;
             }
 
             return {
@@ -970,8 +976,8 @@ export class AppHaxUseCaseFilter extends LitElement {
               originalData: theme,
             };
           });
-        // Combine recipe and theme items
-        this.items = [...recipeItems, ...themeItems];
+        // Combine skeleton and theme items
+        this.items = [...skeletonItems, ...themeItems];
         this.filters = Array.from(this.allFilters).sort(); // Set AFTER all items
 
         if (this.items.length === 0 && !this.errorMessage) {
@@ -1070,7 +1076,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.requestUpdate();
   }
 
-  continueAction(index) {
+  async continueAction(index) {
     const selectedTemplate = this.filteredItems[index];
     const modal = this.shadowRoot.querySelector("#siteCreationModal");
 
@@ -1080,6 +1086,30 @@ export class AppHaxUseCaseFilter extends LitElement {
       modal.description = selectedTemplate.useCaseDescription;
       modal.source = selectedTemplate.useCaseImage;
       modal.template = selectedTemplate.useCaseTitle;
+      
+      // Handle skeleton templates by loading the skeleton file
+      if (selectedTemplate.dataType === "skeleton" && selectedTemplate.skeletonUrl) {
+        try {
+          const skeletonUrl = new URL(selectedTemplate.skeletonUrl, import.meta.url).href;
+          const response = await fetch(skeletonUrl);
+          if (response.ok) {
+            const skeletonData = await response.json();
+            // Store skeleton data for use in site creation
+            modal.skeletonData = skeletonData;
+            modal.themeElement = (skeletonData.site && skeletonData.site.theme) || "clean-one";
+          } else {
+            console.warn(`Failed to load skeleton from ${skeletonUrl}`);
+            modal.themeElement = "clean-one"; // fallback
+          }
+        } catch (error) {
+          console.warn(`Error loading skeleton:`, error);
+          modal.themeElement = "clean-one"; // fallback
+        }
+      } else if (selectedTemplate.dataType === "blank" && selectedTemplate.originalData.element) {
+        modal.themeElement = selectedTemplate.originalData.element;
+      } else {
+        modal.themeElement = "clean-one"; // fallback
+      }
 
       // Open the modal
       modal.openModal();

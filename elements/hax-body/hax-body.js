@@ -4022,52 +4022,71 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           e.preventDefault();
           e.stopPropagation();
           e.stopImmediatePropagation();
-          // inject a placeholder P tag which we will then immediately replace
-          let tmp = globalThis.document.createElement("p");
-          if (
-            e.target.closest("[data-hax-layout]") &&
-            e.target.parentNode != e.target.closest("[data-hax-layout]")
-          ) {
+          
+          // Check if we're dropping onto an image element for potential gallery creation
+          let imageTarget = null;
+          if (e.target.closest("[data-hax-layout]") &&
+              e.target.parentNode != e.target.closest("[data-hax-layout]")) {
             local = e.target.closest("[data-hax-layout]");
+            // Check if the layout element or its content is an image
+            if (HAXStore._isImageElement(local)) {
+              imageTarget = local;
+            }
           } else if (e.target.closest("[contenteditable],img")) {
             local = e.target.closest("[contenteditable],img");
+            // Check if we're dropping onto an image
+            if (HAXStore._isImageElement(local)) {
+              imageTarget = local;
+            }
           }
-          if (
-            (local &&
-              ((local.tagName && local.tagName !== "HAX-BODY") ||
-                !local.getAttribute("data-hax-layout"))) ||
-            this.__isLayout(eventPath[0])
-          ) {
-            if (local.getAttribute("slot")) {
-              tmp.setAttribute("slot", local.getAttribute("slot"));
-            } else if (eventPath[0].classList.contains("column")) {
-              tmp.setAttribute(
-                "slot",
-                eventPath[0].getAttribute("id").replace("col", "col-"),
-              );
-            } else {
-              tmp.removeAttribute("slot");
-            }
-            local.parentNode.insertBefore(tmp, local);
+          
+          // If dropping onto an image, use it as the placeholder for gallery creation
+          let tmp;
+          if (imageTarget) {
+            tmp = imageTarget;
           } else {
-            if (eventPath[0].classList.contains("column")) {
-              tmp.setAttribute(
-                "slot",
-                eventPath[0].getAttribute("id").replace("col", "col-"),
-              );
-            }
-            // account for drop target of main body yet still having a slot attr
-            else if (
-              local &&
-              local.tagName === "HAX-BODY" &&
-              tmp.getAttribute("slot")
+            // inject a placeholder P tag which we will then immediately replace
+            tmp = globalThis.document.createElement("p");
+          }
+          // Only do placement logic if tmp is a new placeholder, not an existing element
+          if (!imageTarget) {
+            if (
+              (local &&
+                ((local.tagName && local.tagName !== "HAX-BODY") ||
+                  !local.getAttribute("data-hax-layout"))) ||
+              this.__isLayout(eventPath[0])
             ) {
-              tmp.removeAttribute("slot");
-            }
-            if (local) {
-              local.appendChild(tmp);
+              if (local.getAttribute("slot")) {
+                tmp.setAttribute("slot", local.getAttribute("slot"));
+              } else if (eventPath[0].classList.contains("column")) {
+                tmp.setAttribute(
+                  "slot",
+                  eventPath[0].getAttribute("id").replace("col", "col-"),
+                );
+              } else {
+                tmp.removeAttribute("slot");
+              }
+              local.parentNode.insertBefore(tmp, local);
             } else {
-              this.appendChild(tmp);
+              if (eventPath[0].classList.contains("column")) {
+                tmp.setAttribute(
+                  "slot",
+                  eventPath[0].getAttribute("id").replace("col", "col-"),
+                );
+              }
+              // account for drop target of main body yet still having a slot attr
+              else if (
+                local &&
+                local.tagName === "HAX-BODY" &&
+                tmp.getAttribute("slot")
+              ) {
+                tmp.removeAttribute("slot");
+              }
+              if (local) {
+                local.appendChild(tmp);
+              } else {
+                this.appendChild(tmp);
+              }
             }
           }
           // this placeholder will be immediately replaced

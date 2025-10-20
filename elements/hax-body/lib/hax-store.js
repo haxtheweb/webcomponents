@@ -240,33 +240,27 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       typeName = "link";
     }
     let haxElements = this.guessGizmo(type, values, false, preferExclusive);
+    
+    // Auto-handle image drop scenarios without showing picker
+    if (type === "image" && this.activePlaceHolder) {
+      // Check if dropping on an image - auto-create gallery
+      if (this._isImageElement(this.activePlaceHolder)) {
+        this._createImageGallery(this.activePlaceHolder, values.source);
+        return true;
+      }
 
-    // Special case: check if we're dropping an image onto another image element
-    if (
-      type === "image" &&
-      this.activePlaceHolder &&
-      this._isImageElement(this.activePlaceHolder)
-    ) {
-      // Add gallery option to existing image options
-      let galleryOption = this.haxElementPrototype(
-        {
-          tag: "play-list",
-          gizmo: {
-            title: "Image Gallery",
-            description: "Create an image gallery with both images",
-            icon: "av:playlist-add",
-            color: "blue",
-          },
-        },
-        {
-          // The gallery will be created with both images
-          _isGalleryCreation: true,
-          _originalImageElement: this.activePlaceHolder,
-          _newImageSource: values.source,
-        },
-        "",
-      );
-      haxElements.push(galleryOption);
+      // Check if dropping into or onto a play-list - auto-add to that gallery
+      let targetPlayList = null;
+      // Prefer checking from the placeholder (where the drop occurred)
+      targetPlayList = this._nearestContainerTag(this.activePlaceHolder, "play-list");
+      // Fallback: check from the active node (drop target container)
+      if (!targetPlayList && this.activeNode) {
+        targetPlayList = this._nearestContainerTag(this.activeNode, "play-list");
+      }
+      if (targetPlayList) {
+        this._addImageToPlayList(targetPlayList, values.source);
+        return true;
+      }
     }
 
     // see if we got anything
@@ -332,6 +326,27 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     }
   }
   /**
+   * Find the nearest ancestor element matching tag name from a starting node
+   */
+  _nearestContainerTag(node, tagName) {
+    let current = node;
+    const match = (el) => el && el.tagName && el.tagName.toLowerCase() === tagName;
+    // If node supports closest (Elements), use it first for performance
+    try {
+      if (current && typeof current.closest === "function") {
+        const found = current.closest(tagName);
+        if (found) return found;
+      }
+    } catch (e) {}
+    // Fallback manual traversal (covers non-Elements or when closest not available)
+    while (current) {
+      if (match(current)) return current;
+      current = current.parentNode;
+    }
+    return null;
+  }
+
+  /**
    * Check if an element is an image element by tag name or schema metadata
    */
   _isImageElement(element) {
@@ -371,62 +386,135 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
    */
   _createImageGallery(originalImageElement, newImageSource) {
     // Create the play-list element
-    const playList = globalThis.document.createElement("play-list");
-
+    const playList = globalThis.document.createElement('play-list');
+    
     // Set gallery-friendly defaults using properties
     playList.pagination = true;
     playList.navigation = true;
     playList.loop = true;
-
+    
     // Copy any slot attribute from the original image
-    if (originalImageElement.getAttribute("slot")) {
-      playList.setAttribute("slot", originalImageElement.getAttribute("slot"));
+    if (originalImageElement.getAttribute('slot')) {
+      playList.setAttribute('slot', originalImageElement.getAttribute('slot'));
     }
-
+    
     // Clone the original image element
     const originalImageClone = originalImageElement.cloneNode(true);
-
+    
     // Create the new image element
     let newImage;
-    if (originalImageElement.tagName.toLowerCase() === "media-image") {
+    if (originalImageElement.tagName.toLowerCase() === 'media-image') {
       // If original is media-image, create matching element
-      newImage = globalThis.document.createElement("media-image");
+      newImage = globalThis.document.createElement('media-image');
       newImage.source = newImageSource;
-      newImage.alt = "Image from gallery";
-
+      newImage.alt = 'Image from gallery';
+      
       // Copy relevant properties from original for consistency
-      ["card", "box", "round", "size", "offset"].forEach((prop) => {
-        if (
-          originalImageElement[prop] !== undefined &&
-          originalImageElement[prop] !== null
-        ) {
+      ['card', 'box', 'round', 'size', 'offset'].forEach(prop => {
+        if (originalImageElement[prop] !== undefined && originalImageElement[prop] !== null) {
           newImage[prop] = originalImageElement[prop];
         }
       });
     } else {
       // For other image types, create a media-image
-      newImage = globalThis.document.createElement("media-image");
+      newImage = globalThis.document.createElement('media-image');
       newImage.source = newImageSource;
-      newImage.alt = "Image from gallery";
+      newImage.alt = 'Image from gallery';
     }
-
+    
     // Add both images to the play-list
     playList.appendChild(originalImageClone);
     playList.appendChild(newImage);
-
+    
     // Replace the original image with the play-list
     if (this.activeHaxBody && originalImageElement.parentNode) {
       this.activeHaxBody.haxReplaceNode(originalImageElement, playList);
     }
-
+    
     // Clean up
     this.activePlaceHolder = null;
-
+    
     // Set the new play-list as active
     this.activeNode = playList;
-
+    
     // Show success message
-    this.toast("Image gallery created successfully!");
+    this.toast('Image gallery created successfully!');
+  }
+
+  /**
+   * Add an image to an existing play-list
+   */
+  _addImageToPlayList(playListElement, imageSource) {
+    // Create the new image element
+    const newImage = globalThis.document.createElement('media-image');
+    newImage.source = imageSource;
+    newImage.alt = 'Added to gallery';
+    
+    // Check if there are existing images in the play-list to copy properties from
+    const existingImages = playListElement.querySelectorAll('media-image');
+    if (existingImages.length > 0) {
+      const firstImage = existingImages[0];
+      // Copy relevant properties from first image for consistency
+      ['card', 'box', 'round', 'size', 'offset'].forEach(prop => {
+        if (firstImage[prop] !== undefined && firstImage[prop] !== null) {
+          newImage[prop] = firstImage[prop];
+        }
+      });
+    }
+    
+    // Add the new image to the play-list
+    playListElement.appendChild(newImage);
+    
+    // If a temporary placeholder node was created for drop positioning, remove it
+    try {
+      if (
+        this.activePlaceHolder &&
+        this.activePlaceHolder.parentNode &&
+        this.activePlaceHolder !== playListElement
+      ) {
+        this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
+      }
+    } catch (e) {}
+    
+    // Clean up
+    this.activePlaceHolder = null;
+    
+    // Set the play-list as active
+    this.activeNode = playListElement;
+    
+    // Show success message
+    this.toast('Image added to gallery successfully!');
+  }
+
+  /**
+   * Create a single image gallery from Magic File Wand
+   */
+  _createSingleImageGallery(imageSource) {
+    // Create the play-list element
+    const playList = globalThis.document.createElement('play-list');
+    
+    // Set gallery-friendly defaults using properties
+    playList.pagination = true;
+    playList.navigation = true;
+    playList.loop = true;
+    
+    // Create the image element
+    const image = globalThis.document.createElement('media-image');
+    image.source = imageSource;
+    image.alt = 'Gallery image';
+    
+    // Add the image to the play-list
+    playList.appendChild(image);
+    
+    // Insert the play-list using normal insertion logic
+    this.activeHaxBody.haxInsert('play-list', playList.innerHTML, {
+      pagination: true,
+      navigation: true,
+      loop: true,
+    });
+    
+    // Show success message
+    this.toast('Image gallery created! Add more images by editing the gallery.');
   }
 
   /**
@@ -3696,6 +3784,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           properties._originalImageElement,
           properties._newImageSource,
         );
+        return;
+      }
+      
+      // Handle single image gallery creation (Magic File Wand)
+      if (properties._isSingleImageGallery && properties._imageSource) {
+        this._createSingleImageGallery(properties._imageSource);
         return;
       }
 

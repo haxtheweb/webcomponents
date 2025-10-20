@@ -3932,6 +3932,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     return _downloadSiteArchive.call(this);
   }
 
+  async _exportSiteAsSkeleton(manifest, title, baseUrl) {
+    const { _exportSiteAsSkeleton } = await import(
+      "./utils/ExportSiteProgram.js"
+    );
+    return _exportSiteAsSkeleton.call(this, manifest, title, baseUrl);
+  }
+
   // Utility methods from both export programs
   _downloadFile(content, filename, mimeType = "text/plain") {
     const blob = new Blob([content], { type: mimeType });

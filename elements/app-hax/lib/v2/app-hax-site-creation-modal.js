@@ -20,6 +20,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.description = "";
     this.source = "";
     this.template = "";
+    this.themeElement = "";
     this.siteName = "";
     this.currentStep = 1; // 1: naming, 2: creating, 3: success
     this.isCreating = false;
@@ -39,6 +40,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       description: { type: String },
       source: { type: String },
       template: { type: String },
+      themeElement: { type: String },
       siteName: { type: String },
       currentStep: { type: Number },
       isCreating: { type: Boolean },
@@ -571,6 +573,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.creationProgress = 0;
     this.creationCancelled = false;
     this.siteUrl = "";
+    this.themeElement = "";
 
     this.dispatchEvent(
       new CustomEvent("modal-closed", {
@@ -605,6 +608,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.creationProgress = 0;
     this.creationCancelled = false;
     this.siteUrl = "";
+    this.themeElement = "";
 
     this.dispatchEvent(
       new CustomEvent("modal-closed", {
@@ -651,9 +655,9 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
 
     // Set up the site data in store for the API call
     store.site.name = this.siteName;
-    store.site.structure = this.template || "website"; // Use template or default
+    store.site.structure = this.themeElement || "website"; // Use theme element (machine name)
     store.site.type = "own";
-    store.site.theme = "polaris-flex-theme"; // Default theme
+    store.site.theme = this.themeElement || "polaris-flex-theme"; // Use selected theme
 
     this.currentStep = 2;
     this.isCreating = true;
