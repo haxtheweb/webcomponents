@@ -45,12 +45,13 @@ export class SiteSkeletonGenerator {
         created: new Date().toISOString(),
         type: 'skeleton',
         sourceUrl: globalThis.location.href,
-        // Add skeleton-specific metadata for backend processing
+        // Fields used by app-hax v2 presentation layer
         useCaseTitle: this.getSiteMetaName(manifest),
         useCaseDescription: this.getSiteDescription(manifest),
-        useCaseImage: '', // Can be set when loading from filesystem
-        category: this.extractSiteCategories(manifest),
-        tags: this.extractSiteTags(manifest)
+        useCaseImage: '', // optional preview image; can be set later
+        category: this.extractSiteCategories(manifest) || [],
+        tags: this.extractSiteTags(manifest) || [],
+        attributes: [] // optional icon badges [{icon, tooltip}]
       },
       
       // Direct mapping to createSite API format

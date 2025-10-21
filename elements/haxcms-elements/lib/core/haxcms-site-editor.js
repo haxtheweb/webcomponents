@@ -152,6 +152,17 @@ class HAXCMSSiteEditor extends LitElement {
       <iron-ajax
         reject-with-request
         .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        id="nodedetailsajax"
+        .url="${this.saveNodeDetailsPath}"
+        .method="${this.method}"
+        content-type="application/json"
+        handle-as="json"
+        @response="${this._handleNodeDetailsResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="getuserdata"
         url="${this.getUserDataPath}"
         method="${this.method}"
@@ -221,6 +232,14 @@ class HAXCMSSiteEditor extends LitElement {
       saveManifestPath: {
         type: String,
         attribute: "save-manifest-path",
+      },
+
+      /**
+       * end point for saving node details (singular operations)
+       */
+      saveNodeDetailsPath: {
+        type: String,
+        attribute: "save-node-details-path",
       },
 
       appendTarget: {
@@ -547,6 +566,14 @@ class HAXCMSSiteEditor extends LitElement {
     globalThis.addEventListener(
       "haxcms-create-node",
       this.createNode.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
+
+    globalThis.addEventListener(
+      "haxcms-save-node-details",
+      this.saveNodeDetails.bind(this),
       {
         signal: this.windowControllers.signal,
       },
@@ -1016,6 +1043,20 @@ class HAXCMSSiteEditor extends LitElement {
     }, 300);
   }
 
+  _handleNodeDetailsResponse(e) {
+    setTimeout(() => {
+      store.playSound("coin");
+      this.dispatchEvent(
+        new CustomEvent("haxcms-trigger-update", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: true,
+        }),
+      );
+      store.toast(`Operation completed!`, 3000, { hat: "construction" });
+    }, 300);
+  }
   /**
    * Save node event
    */
@@ -1062,8 +1103,8 @@ class HAXCMSSiteEditor extends LitElement {
 
   saveNodeDetails(e) {
     // send the request
-    if (this.saveNodePath) {
-      this.querySelector("#nodeupdateajax").body = {
+    if (this.saveNodeDetailsPath) {
+      this.querySelector("#nodedetailsajax").body = {
         jwt: this.jwt,
         site: {
           name: this.manifest.metadata.site.name,
@@ -1074,7 +1115,7 @@ class HAXCMSSiteEditor extends LitElement {
         },
       };
       this.setProcessingVisual();
-      this.querySelector("#nodeupdateajax").generateRequest();
+      this.querySelector("#nodedetailsajax").generateRequest();
     }
   }
   /**

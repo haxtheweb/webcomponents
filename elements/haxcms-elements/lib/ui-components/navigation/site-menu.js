@@ -133,13 +133,8 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         @map-menu-operation-selected="${this.mapMenuOperationSelected}"
       ></map-menu>
       ${this.editControls
-        ? html` <div class="ops">
-            <haxcms-button-add
-              class="op"
-              type="sibling"
-              label="Add page"
-              action-id="null"
-            ></haxcms-button-add>
+          ? html` <div class="ops">
+            <haxcms-page-operations class="op" action-id="null"></haxcms-page-operations>
           </div>`
         : ``}
     `;
@@ -174,7 +169,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         this.editControls = toJS(store.isLoggedIn);
         // dynamic import if we are logged in
         if (this.editControls) {
-          import("../../core/micros/haxcms-button-add.js");
+          import("../../core/micros/haxcms-page-operations.js");
         }
       }
     });

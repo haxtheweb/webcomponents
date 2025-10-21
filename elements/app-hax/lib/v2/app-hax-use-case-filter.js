@@ -866,29 +866,41 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.loading = true;
     this.errorMessage = "";
 
-    const skeletonsUrl = new URL("./app-hax-skeletons.json", import.meta.url).href;
-    // Use base path aware themes.json loading
-    const themesUrl = new URL(
-      "../../../haxcms-elements/lib/themes.json",
-      import.meta.url,
-    ).href;
+    // Require configured endpoint
+    if (!store.appSettings || !store.appSettings.skeletonsList) {
+      this.errorMessage = "Skeletons endpoint not configured";
+      this.loading = false;
+      return;
+    }
 
-    // Load both skeletons and themes data concurrently
-    Promise.allSettled([
-      fetch(skeletonsUrl).then((response) => {
-        if (!response.ok)
-          throw new Error(`Failed Skeletons (${response.status})`);
-        return response.json();
-      }),
-      fetch(themesUrl).then((response) => {
+    // Build promises: backend call for skeletons, appSettings themes or fallback fetch
+    const skeletonsPromise = store.AppHaxAPI && store.AppHaxAPI.makeCall
+      ? store.AppHaxAPI.makeCall("skeletonsList")
+      : Promise.reject(new Error("API not available"));
+
+    // Prefer themes from appSettings (injected by backend); fallback to static file
+    let themesPromise;
+    if (store.appSettings && store.appSettings.themes) {
+      themesPromise = Promise.resolve(store.appSettings.themes);
+    } else {
+      const themesUrl = new URL(
+        "../../../haxcms-elements/lib/themes.json",
+        import.meta.url,
+      ).href;
+      themesPromise = fetch(themesUrl).then((response) => {
         if (!response.ok) throw new Error(`Failed Themes (${response.status})`);
         return response.json();
-      }),
-    ])
+      });
+    }
+
+    Promise.allSettled([skeletonsPromise, themesPromise])
       .then(([skeletonsData, themesData]) => {
-        // Process skeletons data
-        const skeletonItems = Array.isArray(skeletonsData.value.item)
-          ? skeletonsData.value.item.map((item) => {
+        // Process skeletons data (expects { status, data: [] })
+        const skeletonArray = (skeletonsData.value && skeletonsData.value.data && Array.isArray(skeletonsData.value.data))
+          ? skeletonsData.value.data
+          : [];
+        const skeletonItems = skeletonArray
+          .map((item) => {
               let tags = [];
               if (Array.isArray(item.category)) {
                 tags = item.category.filter(
@@ -930,10 +942,11 @@ export class AppHaxUseCaseFilter extends LitElement {
                 originalData: item,
               };
             })
-          : [];
+          || [];
 
         // Process themes data into blank use cases (filter out hidden themes)
-        const themeItems = Object.values(themesData.value || {})
+        const themeSource = themesData.value || {};
+        const themeItems = Object.values(themeSource)
           .filter((theme) => !theme.hidden) // Exclude hidden system/debug themes
           .map((theme) => {
             let tags = [];

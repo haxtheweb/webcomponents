@@ -1,46 +1,38 @@
 {
-  "item": [
+  "status": 200,
+  "data": [
     {
       "title": "Course Site Template",
       "description": "A structured template for online courses with lessons and modules",
       "image": "@haxtheweb/haxcms-elements/lib/assets/images/course-template.svg",
       "category": ["course", "education"],
       "attributes": [
-        {
-          "icon": "hax:lesson",
-          "tooltip": "Educational Content"
-        }
+        { "icon": "hax:lesson", "tooltip": "Educational Content" }
       ],
       "demo-url": "https://oer.hax.psu.edu/bto108/sites/edtechjoker-course-skelton",
-      "skeleton-url": "./skeletons/course-template.json"
+      "skeleton-url": "#"
     },
     {
-      "title": "Portfolio Site Template", 
+      "title": "Portfolio Site Template",
       "description": "A clean template for showcasing work and projects",
       "image": "@haxtheweb/haxcms-elements/lib/assets/images/portfolio-template.svg",
       "category": ["portfolio", "showcase"],
       "attributes": [
-        {
-          "icon": "icons:perm-identity",
-          "tooltip": "Personal Portfolio"
-        }
+        { "icon": "icons:perm-identity", "tooltip": "Personal Portfolio" }
       ],
       "demo-url": "#",
-      "skeleton-url": "./skeletons/portfolio-template.json"
+      "skeleton-url": "#"
     },
     {
       "title": "Blog Site Template",
       "description": "A template for creating blog sites with posts and categories",
-      "image": "@haxtheweb/haxcms-elements/lib/assets/images/blog-template.svg", 
+      "image": "@haxtheweb/haxcms-elements/lib/assets/images/blog-template.svg",
       "category": ["blog", "writing"],
       "attributes": [
-        {
-          "icon": "lrn:write",
-          "tooltip": "Blog Content"
-        }
+        { "icon": "lrn:write", "tooltip": "Blog Content" }
       ],
       "demo-url": "#",
-      "skeleton-url": "./skeletons/blog-template.json"
+      "skeleton-url": "#"
     },
     {
       "title": "Documentation Site",
@@ -48,13 +40,10 @@
       "image": "@haxtheweb/haxcms-elements/lib/assets/images/docs-template.svg",
       "category": ["documentation", "reference"],
       "attributes": [
-        {
-          "icon": "icons:description",
-          "tooltip": "Documentation"
-        }
+        { "icon": "icons:description", "tooltip": "Documentation" }
       ],
       "demo-url": "#",
-      "skeleton-url": "./skeletons/documentation-template.json"
+      "skeleton-url": "#"
     }
   ]
 }

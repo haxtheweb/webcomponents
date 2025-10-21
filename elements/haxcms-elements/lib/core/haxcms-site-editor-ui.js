@@ -27,6 +27,7 @@ import "@haxtheweb/simple-modal/simple-modal.js";
 import "./haxcms-site-insights.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-form.js";
 import "./micros/haxcms-button-add.js";
+import "./micros/haxcms-page-operations.js";
 import "./haxcms-darkmode-toggle.js";
 import "../ui-components/site/site-remote-content.js";
 import "@haxtheweb/page-flag/page-flag.js";
@@ -129,6 +130,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         simple-toolbar-menu-item a {
           color: var(--simple-colors-default-theme-grey-12);
           text-decoration: none;
+        }
+        simple-toolbar-menu-item simple-toolbar-button {
+          --simple-toolbar-button-min-width: 100%;
         }
 
         #deletebutton,

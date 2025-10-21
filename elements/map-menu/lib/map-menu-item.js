@@ -179,12 +179,7 @@ class MapMenuItem extends I18NMixin(LitElement) {
       </a>
       ${this.editControls && this.active
         ? html` <div class="ops">
-            <haxcms-button-add
-              class="op"
-              type="child"
-              label="Add child page"
-              action-id="${this.id}"
-            ></haxcms-button-add>
+          <haxcms-page-operations class="op" action-id="${this.id}"></haxcms-page-operations>
           </div>`
         : ``}`;
   }
