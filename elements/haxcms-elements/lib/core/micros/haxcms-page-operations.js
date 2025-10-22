@@ -1,7 +1,7 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { store } from "../haxcms-site-store.js";
-import { toJS } from "mobx";
+import { toJS, autorun } from "mobx";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
@@ -75,11 +75,28 @@ export class HAXCMSPageOperations extends DDD {
   static get properties() {
     return {
       actionId: { type: String, attribute: "action-id" },
+      platformAllowsOutline: { type: Boolean },
+      platformAllowsDelete: { type: Boolean },
+      platformAllowsAddPage: { type: Boolean },
     };
   }
   constructor() {
     super();
     this.actionId = null;
+    this.platformAllowsOutline = true;
+    this.platformAllowsDelete = true;
+    this.platformAllowsAddPage = true;
+    
+    // Watch for platform configuration changes
+    autorun(() => {
+      const manifest = toJS(store.manifest);
+      const platformConfig = manifest && manifest.metadata && manifest.metadata.platform;
+      
+      // Check each capability - defaults to true if not specified
+      this.platformAllowsOutline = !platformConfig || platformConfig.outlineDesigner !== false;
+      this.platformAllowsDelete = !platformConfig || platformConfig.delete !== false;
+      this.platformAllowsAddPage = !platformConfig || platformConfig.addPage !== false;
+    });
   }
 
   _toggleDialog() {
@@ -101,6 +118,11 @@ export class HAXCMSPageOperations extends DDD {
   }
 
   render() {
+    // Hide entire menu if outline designer is disabled
+    if (!this.platformAllowsOutline) {
+      return html``;
+    }
+    
     return html`
       <simple-icon-button-lite
         class="ops"
@@ -122,18 +144,20 @@ export class HAXCMSPageOperations extends DDD {
             autofocus
           ></simple-toolbar-button>
         </simple-toolbar-menu-item>
-        <simple-toolbar-menu-item>
-          <haxcms-button-add
-            id="addpagebutton"
-            class="top-bar-button"
-            icon="hax:add-page"
-            icon-position="left"
-            label="Add page"
-            merlin
-            @click="${this._closeDialog}"
-            show-text-label
-          ></haxcms-button-add>
-        </simple-toolbar-menu-item>
+        ${this.platformAllowsAddPage ? html`
+          <simple-toolbar-menu-item>
+            <haxcms-button-add
+              id="addpagebutton"
+              class="top-bar-button"
+              icon="hax:add-page"
+              icon-position="left"
+              label="Add page"
+              merlin
+              @click="${this._closeDialog}"
+              show-text-label
+            ></haxcms-button-add>
+          </simple-toolbar-menu-item>
+        ` : ''}
         <simple-toolbar-menu-item>
           <simple-toolbar-button
             icon="icons:arrow-upward"
@@ -176,14 +200,26 @@ export class HAXCMSPageOperations extends DDD {
         </simple-toolbar-menu-item>
         <simple-toolbar-menu-item>
           <simple-toolbar-button
-            icon="icons:delete"
+            icon="icons:open-with"
             icon-position="left"
             align-horizontal="left"
             show-text-label
-            label="Delete"
-            @click=${this._deletePage}
+            label="Move to.."
+            @click=${this._movePageProgram}
           ></simple-toolbar-button>
         </simple-toolbar-menu-item>
+        ${this.platformAllowsDelete ? html`
+          <simple-toolbar-menu-item>
+            <simple-toolbar-button
+              icon="icons:delete"
+              icon-position="left"
+              align-horizontal="left"
+              show-text-label
+              label="Delete"
+              @click=${this._deletePage}
+            ></simple-toolbar-button>
+          </simple-toolbar-menu-item>
+        ` : ''}
       </dialog>
     `;
   }
@@ -226,6 +262,25 @@ export class HAXCMSPageOperations extends DDD {
   _deletePage() {
     this._closeDialog();
     const deleteButton = globalThis.document.querySelector('haxcms-site-editor-ui')._deleteButtonTap();
+  }
+
+  async _movePageProgram() {
+    this._closeDialog();
+    const item = await this._contextItem();
+    if (!item || !item.id) {
+      return;
+    }
+    const SuperDaemonInstance = globalThis.SuperDaemonManager.requestAvailability();
+    store.playSound("click");
+    // Use waveWand for proper mini-Merlin invocation
+    SuperDaemonInstance.waveWand([
+      "", // no initial search term
+      "/", // program context
+      { pageId: item.id }, // pass the page ID to move
+      "move-page", // program machine name
+      "Move Page", // program display name
+      "", // no initial search
+    ]);
   }
 
   _closeDialog() {

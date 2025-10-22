@@ -119,6 +119,11 @@ export class PageBreak extends IntersectionObserverMixin(
       linkUrl: { type: String, attribute: "link-url" },
       linkTarget: { type: String, attribute: "link-target" },
       _haxState: { type: Boolean },
+      /**
+       * Platform-controlled visibility - when true, page-break won't show in editor
+       * even when data-hax-ray is set
+       */
+      platformHidden: { type: Boolean, attribute: "platform-hidden", reflect: true },
     };
   }
   connectedCallback() {
@@ -424,6 +429,12 @@ export class PageBreak extends IntersectionObserverMixin(
         :host {
           display: block;
           opacity: 0;
+        }
+        /* Platform configuration can force page-break to always be hidden */
+        :host([platform-hidden]) {
+          display: none !important;
+          opacity: 0 !important;
+          pointer-events: none;
         }
         :host([data-hax-ray]) {
           display: block;

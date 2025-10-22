@@ -156,6 +156,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.programName = null;
     this.programPlaceholder = null;
     this.commandContext = "*";
+    this._programDebounceTimeout = null;
     const isSafari = globalThis.safari !== undefined;
     if (isSafari) {
       this.key1 = "Meta";
@@ -213,6 +214,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   disconnectedCallback() {
     this.windowControllers.abort();
     this.windowControllers2.abort();
+    // Clear any pending program execution timeouts
+    clearTimeout(this._programDebounceTimeout);
     super.disconnectedCallback();
   }
   // waving the magic wand is a common feedback loop combination
@@ -1294,12 +1297,16 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     // update this value as far as what's being typed no matter what it is
     this.value = e.detail.value;
     if (this.programName && this._programToRun) {
-      this.loading = true;
-      this.programResults = await this._programToRun(
-        e.detail.value,
-        this._programValues,
-      );
-      this.loading = false;
+      // Debounce program execution to prevent flickering on rapid input
+      clearTimeout(this._programDebounceTimeout);
+      this._programDebounceTimeout = setTimeout(async () => {
+        this.loading = true;
+        this.programResults = await this._programToRun(
+          e.detail.value,
+          this._programValues,
+        );
+        this.loading = false;
+      }, 150); // 150ms debounce delay
     } else {
       this.programResults = [];
       // we moved back out of a context, reset complete

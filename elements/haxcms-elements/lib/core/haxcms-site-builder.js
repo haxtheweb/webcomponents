@@ -945,6 +945,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   async _activeItemContentChanged(newValue, activeItem) {
     var htmlcontent = newValue;
     if (htmlcontent !== null && activeItem && activeItem.metadata) {
+      // Check if page-break should be hidden by platform configuration
+      const platformConfig = this.manifest && this.manifest.metadata && this.manifest.metadata.platform;
+      const pageBreakHidden = platformConfig && platformConfig.pageBreak === false;
+      
       // force a page break w/ the relevant details in code
       // this allows the UI to be modified
       // required fields followed by optional fields if defined
@@ -966,7 +970,8 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       ${activeItem.metadata.theme && activeItem.metadata.theme.key ? `developer-theme="${activeItem.metadata.theme.key}"` : ``}
       ${activeItem.metadata.linkUrl ? `link-url="${activeItem.metadata.linkUrl}"` : ``}
       ${activeItem.metadata.linkTarget ? `link-target="${activeItem.metadata.linkTarget}"` : ``}
-      ${activeItem.metadata.locked ? 'locked="locked"' : ""}
+      ${activeItem.metadata.locked ? 'locked="locked"' : ``}
+      ${pageBreakHidden ? 'platform-hidden="platform-hidden"' : ``}
       ${activeItem.metadata.published === false ? "" : 'published="published"'} ></page-break>${htmlcontent}`;
 
       // If this page has a link URL configured and the user is not logged in,

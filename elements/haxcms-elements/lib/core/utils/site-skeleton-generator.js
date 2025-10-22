@@ -129,7 +129,8 @@ export class SiteSkeletonGenerator {
         settings: this.cleanSiteSettings(siteData.settings || {})
       },
       licensing: metadata.licensing || {},
-      node: metadata.node || {}
+      node: metadata.node || {},
+      platform: metadata.platform || {}
     };
   }
 

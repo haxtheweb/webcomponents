@@ -414,9 +414,13 @@ class Store {
       if (!item.metadata.hasOwnProperty("locked")) {
         array[index].metadata.locked = false;
       }
-      // we default locked to false if not set
+      // we default status to "" if not set
       if (!item.metadata.hasOwnProperty("status")) {
         array[index].metadata.status = "";
+      }
+      // normalize parent to null if empty string or undefined
+      if (array[index].parent === "" || array[index].parent === undefined) {
+        array[index].parent = null;
       }
     });
     var site = new JsonOutlineSchema();

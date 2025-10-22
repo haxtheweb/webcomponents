@@ -27,7 +27,6 @@ import "@haxtheweb/simple-modal/simple-modal.js";
 import "./haxcms-site-insights.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-form.js";
 import "./micros/haxcms-button-add.js";
-import "./micros/haxcms-page-operations.js";
 import "./haxcms-darkmode-toggle.js";
 import "../ui-components/site/site-remote-content.js";
 import "@haxtheweb/page-flag/page-flag.js";
@@ -1440,6 +1439,65 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.close();
   }
 
+  // Move page under a new parent - method called by Move Page Merlin program
+  async movePageUnderParent(pageId, newParentId) {
+    if (!pageId) {
+      store.toast("Error: No page to move", 3000, { fire: true });
+      return;
+    }
+
+    // Get the page being moved
+    const pageToMove = await store.findItem(pageId);
+    if (!pageToMove) {
+      store.toast("Error: Page not found", 3000, { fire: true });
+      return;
+    }
+
+    // Determine the new order (make it the last child of the new parent)
+    let newOrder = 0;
+    if (newParentId) {
+      const lastChild = toJS(await store.getLastChildItem(newParentId));
+      if (lastChild && (lastChild.order || lastChild.order === 0)) {
+        newOrder = parseInt(lastChild.order) + 1;
+      }
+    } else {
+      // Moving to root - find last root item
+      const lastChild = toJS(await store.getLastChildItem(null));
+      if (lastChild && (lastChild.order || lastChild.order === 0)) {
+        newOrder = parseInt(lastChild.order) + 1;
+      }
+    }
+
+    // Dispatch the save node details event with setParent operation
+    // Match the structure used by other operations (moveUp, moveDown, indent, outdent)
+    store.playSound("click");
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-save-node-details", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          id: pageId,
+          operation: "setParent",
+          parent: newParentId,
+          order: newOrder,
+        },
+      }),
+    );
+
+    // Provide user feedback
+    const parentTitle = newParentId 
+      ? (await store.findItem(newParentId)).title 
+      : "Root Level";
+    store.toast(`Page moved under "${parentTitle}"`, 3000, {
+      hat: "construction",
+      walking: true,
+    });
+
+    // Close the daemon
+    SuperDaemonInstance.close();
+  }
+
   constructor() {
     super();
     this.__winEvents = {
@@ -1610,6 +1668,139 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               },
             ];
           }
+        },
+      },
+    });
+
+    // Move Page program
+    SuperDaemonInstance.defineOption({
+      title: "Move Page",
+      icon: "icons:open-with",
+      priority: 0,
+      tags: ["page", "move", "relocate", "parent", "CMS"],
+      eventName: "super-daemon-run-program",
+      path: "CMS/action/move/page",
+      value: {
+        name: "move-page",
+        machineName: "move-page",
+        placeholder: "Type to filter pages",
+        program: async (input, values) => {
+          const pageId = values.pageId;
+          if (!pageId) {
+            return [
+              {
+                title: "Error: No page selected to move",
+                icon: "icons:error",
+                tags: ["error"],
+                value: { disabled: true },
+                eventName: "disabled",
+                path: "Error occurred",
+              },
+            ];
+          }
+
+          // Get the page being moved
+          const pageToMove = await store.findItem(pageId);
+          if (!pageToMove) {
+            return [
+              {
+                title: "Error: Page not found",
+                icon: "icons:error",
+                tags: ["error"],
+                value: { disabled: true },
+                eventName: "disabled",
+                path: "Error occurred",
+              },
+            ];
+          }
+
+          // Get all pages in the site
+          const itemManifest = store.getManifestItems(true);
+          const results = [];
+
+          // Filter search input
+          const searchTerm = input ? input.toLowerCase().trim() : "";
+
+          // Add option to move to root level
+          if (!searchTerm || "root".includes(searchTerm) || "top level".includes(searchTerm)) {
+            results.push({
+              title: "Move to Root Level",
+              icon: "hax:site-map",
+              tags: ["root", "top", "level"],
+              value: {
+                target: globalThis.document.querySelector("haxcms-site-editor-ui"),
+                method: "movePageUnderParent",
+                args: [pageId, null],
+              },
+              eventName: "super-daemon-element-method",
+              path: "CMS/action/move/page/root",
+            });
+          }
+
+          // Filter and display pages as potential parents
+          itemManifest.forEach((item) => {
+            // Don't allow moving under itself or its children
+            if (item.id === pageId) {
+              return;
+            }
+
+            // Check if this item is a child of the page being moved
+            let isChild = false;
+            let checkItem = item;
+            while (checkItem && checkItem.parent) {
+              if (checkItem.parent === pageId) {
+                isChild = true;
+                break;
+              }
+              checkItem = itemManifest.find(i => i.id === checkItem.parent);
+            }
+            if (isChild) {
+              return;
+            }
+
+            // Apply search filter
+            if (searchTerm && !item.title.toLowerCase().includes(searchTerm)) {
+              return;
+            }
+
+            // Calculate indentation to show hierarchy
+            let itemBuilder = item;
+            let distance = "";
+            while (itemBuilder && itemBuilder.parent != null) {
+              itemBuilder = itemManifest.find(i => i.id === itemBuilder.parent);
+              if (itemBuilder) {
+                distance = "--" + distance;
+              }
+            }
+
+            results.push({
+              title: `${distance}${distance ? " " : ""}Move under "${item.title}"`,
+              icon: "hax:add-child-page",
+              tags: ["move", "parent"],
+              value: {
+                target: globalThis.document.querySelector("haxcms-site-editor-ui"),
+                method: "movePageUnderParent",
+                args: [pageId, item.id],
+              },
+              eventName: "super-daemon-element-method",
+              path: `CMS/action/move/page/${item.id}`,
+            });
+          });
+
+          if (results.length === 0) {
+            return [
+              {
+                title: "No matching pages found",
+                icon: "icons:search",
+                tags: ["empty"],
+                value: { disabled: true },
+                eventName: "disabled",
+                path: "No results",
+              },
+            ];
+          }
+
+          return results;
         },
       },
     });
@@ -2385,6 +2576,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
   }
 
+  /**
+   * Check if a platform capability is allowed
+   * Defaults to true if not explicitly set to false in platformConfig
+   * @param {string} capability - Capability name (e.g., 'delete', 'addPage', 'outlineDesigner')
+   * @returns {boolean} Whether the capability is allowed
+   */
+  platformAllows(capability) {
+    if (!this.platformConfig || typeof this.platformConfig !== 'object') {
+      return true; // No restrictions if no platform config
+    }
+    // If the capability is not defined, default to true (allowed)
+    // If it is defined, use its value
+    return this.platformConfig[capability] !== false;
+  }
+
   closeMenu() {
     this.userMenuOpen = false;
   }
@@ -2493,10 +2699,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           <haxcms-button-add
             id="addpagebutton"
             class="top-bar-button"
-            ?hidden="${this.editMode}"
+            ?hidden="${this.editMode || !this.platformAllows('addPage')}"
             ?disabled="${this.editMode ||
-            !this.pageAllowed ||
-            this.onInternalRoute}"
+            !this.pageAllowed}"
             icon="hax:add-page"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
             label="${this.t.addPage}"
@@ -2506,7 +2711,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           ></haxcms-button-add>
 
           <simple-toolbar-button
-            ?hidden="${this.editMode}"
+            ?hidden="${this.editMode || !this.platformAllows('delete')}"
             ?disabled="${this.editMode ||
             !this.pageAllowed ||
             this.onInternalRoute}"
@@ -2614,7 +2819,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             label="${this.t.siteActions}"
             tabindex="${this.editMode ? "-1" : "0"}"
           >
-            <simple-toolbar-menu-item>
+            <simple-toolbar-menu-item ?hidden="${!this.platformAllows('outlineDesigner')}">
               <simple-toolbar-button
                 ?hidden="${this.editMode}"
                 ?disabled="${this.editMode}"
@@ -2642,7 +2847,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 label="${this.t.shareSite}"
               ></simple-toolbar-button>
             </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item>
+            <simple-toolbar-menu-item ?hidden="${!this.platformAllows('insights')}">
               <simple-toolbar-button
                 ?hidden="${this.editMode}"
                 ?disabled="${this.editMode}"
@@ -2657,7 +2862,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 voice-command="insights"
               ></simple-toolbar-button>
             </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item>
+            <simple-toolbar-menu-item ?hidden="${!this.platformAllows('styleGuide')}">
               <simple-toolbar-button
                 ?hidden="${this.editMode}"
                 ?disabled="${this.editMode}"
@@ -2672,7 +2877,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               ></simple-toolbar-button>
             </simple-toolbar-menu-item>
 
-            <simple-toolbar-menu-item>
+            <simple-toolbar-menu-item ?hidden="${!this.platformAllows('manifest')}">
               <simple-toolbar-button
                 @click="${this._manifestButtonTap}"
                 icon-position="left"
@@ -4128,6 +4333,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       onInternalRoute: {
         type: Boolean,
       },
+      /**
+       * Platform configuration from manifest.metadata.platform
+       * Controls additional restrictions on site editing capabilities
+       */
+      platformConfig: {
+        type: Object,
+      },
     };
   }
   connectedCallback() {
@@ -4150,6 +4362,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     autorun((reaction) => {
       this.manifest = toJS(store.manifest);
       this.icon = "hax:site-settings";
+      // Extract platform configuration from manifest metadata
+      if (this.manifest && this.manifest.metadata && this.manifest.metadata.platform) {
+        this.platformConfig = toJS(this.manifest.metadata.platform);
+      } else {
+        // Default to empty object if no platform config exists
+        this.platformConfig = {};
+      }
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
