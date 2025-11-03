@@ -379,6 +379,16 @@
             },
             {
               "kind": "method",
+              "name": "_createDragPreview",
+              "parameters": [
+                {
+                  "name": "target"
+                }
+              ],
+              "description": "Create custom drag preview element"
+            },
+            {
+              "kind": "method",
               "name": "_mouseDownDrag",
               "parameters": [
                 {
@@ -665,6 +675,22 @@
               },
               "default": "\"\"",
               "attribute": "liveRegionText"
+            },
+            {
+              "kind": "field",
+              "name": "_dropZone",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "_dragPreviewElement",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
             },
             {
               "kind": "field",

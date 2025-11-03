@@ -420,6 +420,90 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           height: 1px;
           overflow: hidden;
         }
+        /* Drop zone indicators for drag and drop */
+        .drop-indicator {
+          height: 3px;
+          background: var(--ddd-accent-4);
+          margin: 2px 0;
+          border-radius: 2px;
+          position: relative;
+          z-index: 100;
+        }
+        .drop-indicator::before {
+          content: "";
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          background: var(--ddd-accent-4);
+          border-radius: 50%;
+          position: absolute;
+          left: 0;
+          top: -2.5px;
+        }
+        .drop-target-child {
+          outline: 2px dashed var(--ddd-accent-4) !important;
+          outline-offset: 2px;
+          background: light-dark(
+            rgba(135, 206, 235, 0.15),
+            rgba(135, 206, 235, 0.1)
+          ) !important;
+        }
+        /* Drag preview styles */
+        .drag-preview {
+          position: absolute;
+          top: -1000px;
+          left: -1000px;
+          padding: 8px 12px;
+          background: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
+          border: 2px solid light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          border-radius: var(--ddd-radius-sm);
+          font-weight: var(--ddd-font-weight-bold);
+          box-shadow: var(--ddd-boxShadow-lg);
+          z-index: 10000;
+          pointer-events: none;
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+        }
+        /* Stacked effect for items with children */
+        .drag-preview.has-children {
+          position: relative;
+        }
+        .drag-preview.has-children::before,
+        .drag-preview.has-children::after {
+          content: "";
+          position: absolute;
+          left: 3px;
+          right: -3px;
+          height: 100%;
+          background: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
+          border: 2px solid light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          border-radius: var(--ddd-radius-sm);
+          z-index: -1;
+        }
+        .drag-preview.has-children::before {
+          top: -3px;
+          opacity: 0.7;
+        }
+        .drag-preview.has-children::after {
+          top: -6px;
+          opacity: 0.4;
+        }
+        .drag-preview-children {
+          opacity: 0.7;
+          font-size: 12px;
+          font-weight: var(--ddd-font-weight-regular);
+        }
+        /* Push-aside animation for drop target */
+        .item.drop-above-target {
+          margin-top: 48px;
+          transition: margin-top 0.2s ease-out;
+        }
+        .item.drop-below-target {
+          margin-bottom: 48px;
+          transition: margin-bottom 0.2s ease-out;
+        }
+        }
       `,
     ];
   }
@@ -439,6 +523,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     this.activePreview = null;
     this.activePreviewIndex = -1;
     this.liveRegionText = "";
+    this._dropZone = null;
+    this._dragPreviewElement = null;
     this.t = {
       selectTarget: "Select target",
       importContentUnderThisPage: "Import content under this page",
@@ -1620,6 +1706,64 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       }
     }, delay);
   }
+
+  /**
+   * Create custom drag preview element
+   */
+  _createDragPreview(target) {
+    const itemId = target.getAttribute("data-item-id");
+    const item = this.items.find((i) => i.id === itemId);
+
+    if (!item) return null;
+
+    const preview = globalThis.document.createElement("div");
+    preview.className = "drag-preview";
+
+    // Count all descendants recursively
+    const totalDescendants = this._countAllDescendants(itemId);
+
+    // Add stacked class if has children
+    if (totalDescendants > 0) {
+      preview.classList.add("has-children");
+    }
+
+    // Create icon
+    const icon = globalThis.document.createElement("simple-icon-lite");
+    icon.setAttribute("icon", "hax:arrow-all");
+
+    // Create title span
+    const title = globalThis.document.createElement("span");
+    title.textContent =
+      item.title.length > 40 ? item.title.substring(0, 40) + "..." : item.title;
+
+    preview.appendChild(icon);
+    preview.appendChild(title);
+
+    // Add descendant count if applicable
+    if (totalDescendants > 0) {
+      const childCountSpan = globalThis.document.createElement("span");
+      childCountSpan.className = "drag-preview-children";
+      childCountSpan.textContent = `(+${totalDescendants} page${totalDescendants !== 1 ? "s" : ""})`;
+      preview.appendChild(childCountSpan);
+    }
+
+    return preview;
+  }
+
+  /**
+   * Recursively count all descendants of an item
+   */
+  _countAllDescendants(itemId) {
+    const directChildren = this.items.filter((i) => i.parent === itemId);
+    let count = directChildren.length;
+
+    // Recursively add counts for each child's descendants
+    directChildren.forEach((child) => {
+      count += this._countAllDescendants(child.id);
+    });
+
+    return count;
+  }
   _mouseDownDrag(e) {
     // force collapse kids on move
     let itemId = e.target
@@ -1638,29 +1782,128 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
    * Enter an element, meaning we've over it while dragging
    */
   _dragEnter(e) {
-    if (this._targetDrop !== e.target.closest("[data-item-id]")) {
-      e.preventDefault();
-      e.target
-        .closest("[data-item-id]")
-        .classList.add("outline-designer-hovered");
-      this._targetDrop = e.target.closest("[data-item-id]");
+    const target = e.target.closest("[data-item-id]");
+    if (!target || !this._targetDrag) return;
+
+    // Don't allow dropping on itself
+    if (target === this._targetDrag) return;
+
+    e.preventDefault();
+
+    // Calculate drop zone based on cursor position
+    const rect = target.getBoundingClientRect();
+    const y = e.clientY - rect.top;
+    const height = rect.height;
+
+    // Top 30% = above, middle 40% = child, bottom 30% = below
+    let dropZone = "child";
+    if (y < height * 0.3) {
+      dropZone = "above";
+    } else if (y > height * 0.7) {
+      dropZone = "below";
+    }
+
+    // Only update if target or zone changed
+    if (this._targetDrop !== target || this._dropZone !== dropZone) {
+      // Clean up previous indicators
+      this.shadowRoot
+        .querySelectorAll(".drop-indicator")
+        .forEach((el) => el.remove());
+      this.shadowRoot.querySelectorAll(".drop-target-child").forEach((el) => {
+        el.classList.remove("drop-target-child");
+      });
+      this.shadowRoot
+        .querySelectorAll(".outline-designer-hovered")
+        .forEach((el) => {
+          el.classList.remove("outline-designer-hovered");
+        });
+      // Clean up push-aside classes
+      this.shadowRoot.querySelectorAll(".drop-above-target").forEach((el) => {
+        el.classList.remove("drop-above-target");
+      });
+      this.shadowRoot.querySelectorAll(".drop-below-target").forEach((el) => {
+        el.classList.remove("drop-below-target");
+      });
+
+      // Add new indicator based on drop zone
+      if (dropZone === "above") {
+        const indicator = globalThis.document.createElement("div");
+        indicator.className = "drop-indicator drop-above";
+        target.insertAdjacentElement("beforebegin", indicator);
+        // Add push-aside animation to target
+        target.classList.add("drop-above-target");
+      } else if (dropZone === "below") {
+        const indicator = globalThis.document.createElement("div");
+        indicator.className = "drop-indicator drop-below";
+        target.insertAdjacentElement("afterend", indicator);
+        // Add push-aside animation to target
+        target.classList.add("drop-below-target");
+      } else {
+        // child - show dashed outline
+        target.classList.add("drop-target-child");
+      }
+
+      this._targetDrop = target;
+      this._dropZone = dropZone;
+
+      // Announce to screen readers
+      const targetItem = this.items.find(
+        (item) => item.id === target.getAttribute("data-item-id"),
+      );
+      if (targetItem) {
+        const dragItem = this.items.find(
+          (item) => item.id === this._targetDrag.getAttribute("data-item-id"),
+        );
+        let announcement = "";
+        if (dropZone === "above") {
+          announcement = `Drop above ${targetItem.title}`;
+        } else if (dropZone === "below") {
+          announcement = `Drop below ${targetItem.title}`;
+        } else {
+          announcement = `Drop as child of ${targetItem.title}`;
+        }
+        this.announceAction(announcement);
+      }
     }
   }
   /**
    * Leaving an element while dragging.
    */
   _dragLeave(e) {
-    if (this._targetDrop !== e.target.closest("[data-item-id]")) {
-      e.target
-        .closest("[data-item-id]")
-        .classList.remove("outline-designer-hovered");
-    }
+    // Cleanup is now handled in _dragEnter for better accuracy
+    // This prevents flickering when moving between child elements
   }
   /**
    * When we end dragging this is the same as a drop event; ensure we remove the mover class.
    */
   _dragEnd(e) {
-    if (this._targetDrag && this._targetDrop) {
+    // Clean up drag preview
+    if (this._dragPreviewElement) {
+      this._dragPreviewElement.remove();
+      this._dragPreviewElement = null;
+    }
+
+    // Clean up drop indicators
+    this.shadowRoot
+      .querySelectorAll(".drop-indicator")
+      .forEach((el) => el.remove());
+    this.shadowRoot.querySelectorAll(".drop-target-child").forEach((el) => {
+      el.classList.remove("drop-target-child");
+    });
+    this.shadowRoot
+      .querySelectorAll(".outline-designer-hovered")
+      .forEach((el) => {
+        el.classList.remove("outline-designer-hovered");
+      });
+    // Clean up push-aside classes
+    this.shadowRoot.querySelectorAll(".drop-above-target").forEach((el) => {
+      el.classList.remove("drop-above-target");
+    });
+    this.shadowRoot.querySelectorAll(".drop-below-target").forEach((el) => {
+      el.classList.remove("drop-below-target");
+    });
+
+    if (this._targetDrag && this._targetDrop && this._dropZone) {
       let here = null;
       let from = null;
       for (let index = 0; index < this.items.length; index++) {
@@ -1676,24 +1919,41 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         if (!this.items[from].new) {
           this.items[from].modified = true;
         }
-        this.items[from].order = this.items[here].order;
-        // if 1st in a hierarchy we have to go ahead of it
-        if (this.items[from].order === 0) {
-          this.items[from].order = -1;
+
+        // Apply drop based on zone
+        switch (this._dropZone) {
+          case "above":
+            this.items[from].order = this.items[here].order - 0.5;
+            this.items[from].parent = this.items[here].parent;
+            this.items[from].indent = this.items[here].indent;
+            break;
+          case "below":
+            this.items[from].order = this.items[here].order + 0.5;
+            this.items[from].parent = this.items[here].parent;
+            this.items[from].indent = this.items[here].indent;
+            break;
+          case "child":
+            this.items[from].parent = this.items[here].id;
+            this.items[from].order = 0;
+            this.items[from].indent = this.items[here].indent + 1;
+            break;
         }
-        this.items[from].indent = this.items[here].indent;
-        this.items[from].parent = this.items[here].parent;
+
         if (this.hasChildren(this.items[from].id)) {
           this.items[from].collapsed = false;
         }
+
+        // Scroll moved item into view after a delay if it's outside viewport
+        this.scrollIntoViewIfNeeded(this.items[from].id);
       }
-      this._targetDrag = null;
-      this._targetDrop = null;
       this.setAttribute("stop-animation", "true");
       this.__syncUIAndDataModel();
-      // Scroll moved item into view after a delay if it's outside viewport
-      this.scrollIntoViewIfNeeded(this.items[from].id);
     }
+
+    // Reset drag state
+    this._targetDrag = null;
+    this._targetDrop = null;
+    this._dropZone = null;
   }
   /**
    * Drag start so we know what target to set
@@ -1703,12 +1963,22 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       let target = e.target.closest("[data-item-id]");
       this._targetDrop = null;
       this._targetDrag = target;
-      this._mouseDownDrag(e);
-      if (e.dataTransfer) {
-        e.dataTransfer.effectAllowed = "move";
-        e.dataTransfer.dropEffect = "move";
-        e.dataTransfer.setDragImage(target, 24, 16);
+
+      // Create custom drag preview
+      const dragPreview = this._createDragPreview(target);
+      if (dragPreview) {
+        globalThis.document.body.appendChild(dragPreview);
+        this._dragPreviewElement = dragPreview;
+
+        if (e.dataTransfer) {
+          e.dataTransfer.effectAllowed = "move";
+          e.dataTransfer.dropEffect = "move";
+          // Use custom preview as drag image
+          e.dataTransfer.setDragImage(dragPreview, 20, 20);
+        }
       }
+
+      this._mouseDownDrag(e);
       e.stopPropagation();
       e.stopImmediatePropagation();
     }
