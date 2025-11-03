@@ -1898,6 +1898,10 @@ export const DDDReset = css`
     display: block;
     padding-top: var(--ddd-spacing-2);
   }
+  /** hack for compatibility with .haxcms-copyable */
+  .haxcms-copyable[data-design-treatment^="horz"]::after {
+    float: none;
+  }
 
   [data-instructional-action][data-design-treatment^="horz"]::after {
     content: "";

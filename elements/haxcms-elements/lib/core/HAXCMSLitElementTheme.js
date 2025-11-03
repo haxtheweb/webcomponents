@@ -93,6 +93,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
           background-image: url("${unsafeCSS(
             SimpleIconsetStore.getIcon("icons:link"),
           )}");
+          background-repeat: no-repeat;
           float: right;
           height: 36px;
           width: 36px;
