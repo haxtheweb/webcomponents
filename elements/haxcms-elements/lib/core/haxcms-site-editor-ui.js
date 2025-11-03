@@ -1,12 +1,11 @@
 import { html, css, unsafeCSS } from "lit";
 import { store } from "./haxcms-site-store.js";
-import { HaxStore, HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
+import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { autorun, toJS } from "mobx";
 import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
 import {
   localStorageSet,
   winEventsElement,
-  mimeTypeToName,
   validURL,
 } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
@@ -32,12 +31,6 @@ import "../ui-components/site/site-remote-content.js";
 import "@haxtheweb/page-flag/page-flag.js";
 import "wired-elements/lib/wired-button.js";
 
-const ButtonBGLight = new URL(
-  "../assets/images/ButtonBGLM.svg",
-  import.meta.url,
-).href;
-const ButtonBGDark = new URL("../assets/images/ButtonBGDM.svg", import.meta.url)
-  .href;
 const LogOut = new URL("../assets/images/Logout.svg", import.meta.url).href;
 /**
  * `haxcms-site-editor-ui`
@@ -1508,6 +1501,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "super-daemon-close": "sdCloseEvent",
       "super-daemon-konami-code": "_konamiCodeActivated",
     };
+    enableServices(["core", "haxcms"]);
     this.konamiCodeActivated = false; // Track if cheat codes are unlocked
     this.rpgHat = "none";
     this.darkMode = false;
@@ -2366,6 +2360,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       outlineDesigner: "Outline designer",
       pageOutline: "Page outline",
       more: "More",
+      pageActions: "Page actions",
       siteActions: "Site actions",
       insights: "Insights dashboard (beta)",
       merlin: "Merlin",
@@ -2696,35 +2691,46 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             voice-command="cancel (editing)"
           ></simple-toolbar-button>
 
-          <haxcms-button-add
-            id="addpagebutton"
-            class="top-bar-button"
-            ?hidden="${this.editMode || !this.platformAllows('addPage')}"
-            ?disabled="${this.editMode ||
-            !this.pageAllowed}"
-            icon="hax:add-page"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            label="${this.t.addPage}"
-            tabindex="${this.editMode ? "-1" : "0"}"
-            merlin
+          <simple-toolbar-menu
             show-text-label
-          ></haxcms-button-add>
-
-          <simple-toolbar-button
-            ?hidden="${this.editMode || !this.platformAllows('delete')}"
-            ?disabled="${this.editMode ||
-            !this.pageAllowed ||
-            this.onInternalRoute}"
-            tabindex="${this.editMode ? "-1" : "0"}"
-            id="deletebutton"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            icon="icons:delete"
+            ?hidden="${this.editMode}"
+            ?disabled="${this.editMode}"
+            icon="hax:page-edit"
+            part="pageactionsbtn"
             class="top-bar-button"
-            @click="${this._deleteButtonTap}"
-            label="${this.t.delete}"
-            show-text-label
-            voice-command="delete page"
-          ></simple-toolbar-button>
+            icon-position="${this.getIconPosition(this.responsiveSize)}"
+            label="${this.t.pageActions}"
+            tabindex="${this.editMode ? "-1" : "0"}"
+          >
+            <simple-toolbar-menu-item ?hidden="${!this.platformAllows('addPage')}">
+              <haxcms-button-add
+                id="addpagebutton"
+                ?disabled="${this.editMode ||
+                !this.pageAllowed}"
+                icon="hax:add-page"
+                icon-position="left"
+                label="${this.t.addPage}"
+                tabindex="${this.editMode ? "-1" : "0"}"
+                merlin
+                show-text-label
+              ></haxcms-button-add>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item ?hidden="${!this.platformAllows('delete')}">
+              <simple-toolbar-button
+                ?disabled="${this.editMode ||
+                !this.pageAllowed ||
+                this.onInternalRoute}"
+                tabindex="${this.editMode ? "-1" : "0"}"
+                id="deletebutton"
+                icon-position="left"
+                icon="icons:delete"
+                @click="${this._deleteButtonTap}"
+                label="${this.t.delete}"
+                show-text-label
+                voice-command="delete page"
+              ></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+          </simple-toolbar-menu>
 
           <simple-toolbar-button
             data-event="content-edit"
@@ -2967,8 +2973,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               this.soundIcon.indexOf("Full") !== -1
                 ? "off"
                 : "on"}"
-              aria-pressed="${this.soundIcon &&
-              this.soundIcon.indexOf("Full") !== -1}"
+              aria-pressed="${(this.soundIcon &&
+              this.soundIcon.indexOf("Full") !== -1) ? "true" : "false"}"
             >
               <simple-icon-lite
                 src="${this.soundIcon}"
