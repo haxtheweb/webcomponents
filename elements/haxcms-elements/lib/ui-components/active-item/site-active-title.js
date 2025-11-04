@@ -9,6 +9,7 @@ import {
 } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `site-active-title`
@@ -16,7 +17,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
  *
  * @demo demo/index.html
  */
-class SiteActiveTitle extends LitElement {
+class SiteActiveTitle extends I18NMixin(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -32,6 +33,7 @@ class SiteActiveTitle extends LitElement {
         site-active-title {
           display: block;
           text-align: start;
+          position: relative;
         }
         site-active-title[edit-mode]:hover {
           cursor: pointer;
@@ -39,23 +41,36 @@ class SiteActiveTitle extends LitElement {
           transition: 0.2s outline-width ease-in-out;
           outline-offset: 8px;
         }
+        site-active-title h1 {
+          margin: 0;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
         h1 .site-active-title-icon {
           --simple-icon-height: 32px;
           --simple-icon-width: 32px;
-          margin-right: 8px;
-          vertical-align: middle;
+          flex-shrink: 0;
+        }
+        site-active-title .title-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          flex: 1;
         }
       </style>
       <h1>
-        ${this.icon
-          ? html`
-              <simple-icon-lite
-                class="site-active-title-icon"
-                icon="${this.icon}"
-              ></simple-icon-lite>
-            `
-          : ``}
-        ${this.__title}
+        <div class="title-wrapper">
+          ${this.icon
+            ? html`
+                <simple-icon-lite
+                  class="site-active-title-icon"
+                  icon="${this.icon}"
+                ></simple-icon-lite>
+              `
+            : ``}
+          ${this.__title}
+        </div>
       </h1>
     `;
   }
@@ -167,6 +182,9 @@ class SiteActiveTitle extends LitElement {
         reflect: true,
         attribute: "edit-mode",
       },
+      t: {
+        type: Object,
+      },
     };
   }
   /**
@@ -202,6 +220,10 @@ class SiteActiveTitle extends LitElement {
     this.__title = "";
     this.icon = null;
     this.__disposer = [];
+    this.registerLocalization({
+      context: this,
+      basePath: import.meta.url,
+    });
     autorun((reaction) => {
       this.editMode = toJS(store.editMode);
       this.__disposer.push(reaction);

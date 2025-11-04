@@ -469,31 +469,41 @@ class HAXCMSSiteEditor extends LitElement {
    */
   _filterAppStoreByPlatform(appStore) {
     // Check if platform restrictions exist
-    const platformConfig = this.manifest && this.manifest.metadata && this.manifest.metadata.platform;
+    const platformConfig =
+      this.manifest &&
+      this.manifest.metadata &&
+      this.manifest.metadata.platform;
     const allowedBlocks = platformConfig && platformConfig.blocks;
-    
+
     // If no platform blocks restriction, return original appStore
-    if (!allowedBlocks || !Array.isArray(allowedBlocks) || allowedBlocks.length === 0) {
+    if (
+      !allowedBlocks ||
+      !Array.isArray(allowedBlocks) ||
+      allowedBlocks.length === 0
+    ) {
       return appStore;
     }
-    
+
     // Create a filtered copy of appStore
     const filteredAppStore = JSON.parse(JSON.stringify(appStore));
-    
+
     // Filter the autoloader to only include allowed blocks
-    if (filteredAppStore.autoloader && typeof filteredAppStore.autoloader === 'object') {
+    if (
+      filteredAppStore.autoloader &&
+      typeof filteredAppStore.autoloader === "object"
+    ) {
       const filteredAutoloader = {};
-      
+
       // Only include tags that are in the allowed blocks list
-      Object.keys(filteredAppStore.autoloader).forEach(tagName => {
+      Object.keys(filteredAppStore.autoloader).forEach((tagName) => {
         if (allowedBlocks.includes(tagName)) {
           filteredAutoloader[tagName] = filteredAppStore.autoloader[tagName];
         }
       });
-      
+
       filteredAppStore.autoloader = filteredAutoloader;
     }
-    
+
     return filteredAppStore;
   }
 
@@ -688,12 +698,17 @@ class HAXCMSSiteEditor extends LitElement {
 
   async createNode(e) {
     // Check platform configuration before allowing page creation
-    const platformConfig = this.manifest && this.manifest.metadata && this.manifest.metadata.platform;
+    const platformConfig =
+      this.manifest &&
+      this.manifest.metadata &&
+      this.manifest.metadata.platform;
     if (platformConfig && platformConfig.addPage === false) {
-      store.toast("Adding pages is disabled for this site", 3000, { fire: true });
+      store.toast("Adding pages is disabled for this site", 3000, {
+        fire: true,
+      });
       return;
     }
-    
+
     if (e.detail.values) {
       var reqBody = e.detail.values;
       // ensure site name and jwt are set in request
@@ -884,12 +899,15 @@ class HAXCMSSiteEditor extends LitElement {
 
   deleteNode(e) {
     // Check platform configuration before allowing delete
-    const platformConfig = this.manifest && this.manifest.metadata && this.manifest.metadata.platform;
+    const platformConfig =
+      this.manifest &&
+      this.manifest.metadata &&
+      this.manifest.metadata.platform;
     if (platformConfig && platformConfig.delete === false) {
       store.toast("Delete is disabled for this site", 3000, { fire: true });
       return;
     }
-    
+
     this.querySelector("#deleteajax").body = {
       jwt: this.jwt,
       site: {
@@ -1154,12 +1172,17 @@ class HAXCMSSiteEditor extends LitElement {
 
   saveNodeDetails(e) {
     // Check platform configuration before allowing outline operations
-    const platformConfig = this.manifest && this.manifest.metadata && this.manifest.metadata.platform;
+    const platformConfig =
+      this.manifest &&
+      this.manifest.metadata &&
+      this.manifest.metadata.platform;
     if (platformConfig && platformConfig.outlineDesigner === false) {
-      store.toast("Outline operations are disabled for this site", 3000, { fire: true });
+      store.toast("Outline operations are disabled for this site", 3000, {
+        fire: true,
+      });
       return;
     }
-    
+
     // send the request
     if (this.saveNodeDetailsPath) {
       this.querySelector("#nodedetailsajax").body = {

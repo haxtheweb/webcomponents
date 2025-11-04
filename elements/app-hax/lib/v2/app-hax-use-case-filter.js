@@ -17,6 +17,7 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   constructor() {
     super();
+    this.windowControllers = new AbortController();
     this.searchTerm = "";
     this.disabled = false;
     this.showSearch = false;
@@ -33,6 +34,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.returningSites = [];
     this.allFilters = new Set();
     this.dark = false;
+    this.isLoggedIn = false;
 
     // Listen to store changes for dark mode and manifest updates
     if (typeof store !== "undefined") {
@@ -70,6 +72,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       returningSites: { type: Array },
       allFilters: { attribute: false },
       dark: { type: Boolean, reflect: true },
+      isLoggedIn: { type: Boolean },
     };
   }
 
@@ -696,10 +699,37 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.requestUpdate();
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    globalThis.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this), {
+      signal: this.windowControllers.signal,
+    });
+  }
+
+  disconnectedCallback() {
+    this.windowControllers.abort();
+    super.disconnectedCallback();
+  }
+
+  _jwtLoggedIn(e) {
+    // When login status changes to true, refresh skeleton list
+    if (e.detail === true) {
+      this.isLoggedIn = true;
+      this.updateSkeletonResults();
+      this.updateSiteResults();
+    } else if (e.detail === false) {
+      this.isLoggedIn = false;
+    }
+  }
+
   firstUpdated() {
     super.firstUpdated();
-    this.updateSkeletonResults();
-    this.updateSiteResults();
+    // Only fetch if already logged in on first load
+    // Otherwise wait for jwt-logged-in event
+    if (this.isLoggedIn) {
+      this.updateSkeletonResults();
+      this.updateSiteResults();
+    }
   }
 
   updated(changedProperties) {
@@ -874,9 +904,10 @@ export class AppHaxUseCaseFilter extends LitElement {
     }
 
     // Build promises: backend call for skeletons, appSettings themes or fallback fetch
-    const skeletonsPromise = store.AppHaxAPI && store.AppHaxAPI.makeCall
-      ? store.AppHaxAPI.makeCall("skeletonsList")
-      : Promise.reject(new Error("API not available"));
+    const skeletonsPromise =
+      store.AppHaxAPI && store.AppHaxAPI.makeCall
+        ? store.AppHaxAPI.makeCall("skeletonsList")
+        : Promise.reject(new Error("API not available"));
 
     // Prefer themes from appSettings (injected by backend); fallback to static file
     let themesPromise;
@@ -896,53 +927,55 @@ export class AppHaxUseCaseFilter extends LitElement {
     Promise.allSettled([skeletonsPromise, themesPromise])
       .then(([skeletonsData, themesData]) => {
         // Process skeletons data (expects { status, data: [] })
-        const skeletonArray = (skeletonsData.value && skeletonsData.value.data && Array.isArray(skeletonsData.value.data))
-          ? skeletonsData.value.data
-          : [];
-        const skeletonItems = skeletonArray
-          .map((item) => {
-              let tags = [];
-              if (Array.isArray(item.category)) {
-                tags = item.category.filter(
-                  (c) => typeof c === "string" && c.trim() !== "",
-                );
-              } else if (
-                typeof item.category === "string" &&
-                item.category.trim() !== ""
-              ) {
-                tags = [item.category.trim()];
-              }
-              if (tags.length === 0) tags = ["Empty"];
-              tags.forEach((tag) => this.allFilters.add(tag)); // Add to global Set
+        const skeletonArray =
+          skeletonsData.value &&
+          skeletonsData.value.data &&
+          Array.isArray(skeletonsData.value.data)
+            ? skeletonsData.value.data
+            : [];
+        const skeletonItems =
+          skeletonArray.map((item) => {
+            let tags = [];
+            if (Array.isArray(item.category)) {
+              tags = item.category.filter(
+                (c) => typeof c === "string" && c.trim() !== "",
+              );
+            } else if (
+              typeof item.category === "string" &&
+              item.category.trim() !== ""
+            ) {
+              tags = [item.category.trim()];
+            }
+            if (tags.length === 0) tags = ["Empty"];
+            tags.forEach((tag) => this.allFilters.add(tag)); // Add to global Set
 
-              const icons = Array.isArray(item.attributes)
-                ? item.attributes.map((attr) => ({
-                    icon: attr.icon || "",
-                    tooltip: attr.tooltip || "",
-                  }))
-                : [];
-              let thumbnailPath = item.image || "";
-              if (thumbnailPath && thumbnailPath.startsWith("@haxtheweb/")) {
-                // Navigate from current file to simulate node_modules structure and resolve path
-                // Current file: elements/app-hax/lib/v2/app-hax-use-case-filter.js
-                // Need to go up to webcomponents root, then navigate to the package
-                // In node_modules: @haxtheweb/package-name becomes ../../../@haxtheweb/package-name
-                const packagePath = "../../../../" + thumbnailPath;
-                thumbnailPath = new URL(packagePath, import.meta.url).href;
-              }
-              return {
-                dataType: "skeleton",
-                useCaseTitle: item.title || "Untitled Template",
-                useCaseImage: thumbnailPath || "",
-                useCaseDescription: item.description || "",
-                useCaseIcon: icons,
-                useCaseTag: tags,
-                demoLink: item["demo-url"] || "#",
-                skeletonUrl: item["skeleton-url"] || "",
-                originalData: item,
-              };
-            })
-          || [];
+            const icons = Array.isArray(item.attributes)
+              ? item.attributes.map((attr) => ({
+                  icon: attr.icon || "",
+                  tooltip: attr.tooltip || "",
+                }))
+              : [];
+            let thumbnailPath = item.image || "";
+            if (thumbnailPath && thumbnailPath.startsWith("@haxtheweb/")) {
+              // Navigate from current file to simulate node_modules structure and resolve path
+              // Current file: elements/app-hax/lib/v2/app-hax-use-case-filter.js
+              // Need to go up to webcomponents root, then navigate to the package
+              // In node_modules: @haxtheweb/package-name becomes ../../../@haxtheweb/package-name
+              const packagePath = "../../../../" + thumbnailPath;
+              thumbnailPath = new URL(packagePath, import.meta.url).href;
+            }
+            return {
+              dataType: "skeleton",
+              useCaseTitle: item.title || "Untitled Template",
+              useCaseImage: thumbnailPath || "",
+              useCaseDescription: item.description || "",
+              useCaseIcon: icons,
+              useCaseTag: tags,
+              demoLink: item["demo-url"] || "#",
+              skeletonUrl: item["skeleton-url"] || "",
+              originalData: item,
+            };
+          }) || [];
 
         // Process themes data into blank use cases (filter out hidden themes)
         const themeSource = themesData.value || {};
@@ -1099,17 +1132,24 @@ export class AppHaxUseCaseFilter extends LitElement {
       modal.description = selectedTemplate.useCaseDescription;
       modal.source = selectedTemplate.useCaseImage;
       modal.template = selectedTemplate.useCaseTitle;
-      
+
       // Handle skeleton templates by loading the skeleton file
-      if (selectedTemplate.dataType === "skeleton" && selectedTemplate.skeletonUrl) {
+      if (
+        selectedTemplate.dataType === "skeleton" &&
+        selectedTemplate.skeletonUrl
+      ) {
         try {
-          const skeletonUrl = new URL(selectedTemplate.skeletonUrl, import.meta.url).href;
+          const skeletonUrl = new URL(
+            selectedTemplate.skeletonUrl,
+            import.meta.url,
+          ).href;
           const response = await fetch(skeletonUrl);
           if (response.ok) {
             const skeletonData = await response.json();
             // Store skeleton data for use in site creation
             modal.skeletonData = skeletonData;
-            modal.themeElement = (skeletonData.site && skeletonData.site.theme) || "clean-one";
+            modal.themeElement =
+              (skeletonData.site && skeletonData.site.theme) || "clean-one";
           } else {
             console.warn(`Failed to load skeleton from ${skeletonUrl}`);
             modal.themeElement = "clean-one"; // fallback
@@ -1118,7 +1158,10 @@ export class AppHaxUseCaseFilter extends LitElement {
           console.warn(`Error loading skeleton:`, error);
           modal.themeElement = "clean-one"; // fallback
         }
-      } else if (selectedTemplate.dataType === "blank" && selectedTemplate.originalData.element) {
+      } else if (
+        selectedTemplate.dataType === "blank" &&
+        selectedTemplate.originalData.element
+      ) {
         modal.themeElement = selectedTemplate.originalData.element;
       } else {
         modal.themeElement = "clean-one"; // fallback

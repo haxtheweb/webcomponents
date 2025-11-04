@@ -15,11 +15,14 @@ export class SkeletonUuidManager {
    */
   generateUuid() {
     // Simple UUID v4 generation without crypto dependency
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-      const r = Math.random() * 16 | 0;
-      const v = c === 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    });
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
+      /[xy]/g,
+      function (c) {
+        const r = (Math.random() * 16) | 0;
+        const v = c === "x" ? r : (r & 0x3) | 0x8;
+        return v.toString(16);
+      },
+    );
   }
 
   /**
@@ -49,19 +52,19 @@ export class SkeletonUuidManager {
    */
   createRelationshipMap(items) {
     const relationships = {};
-    
-    items.forEach(item => {
+
+    items.forEach((item) => {
       const itemUuid = this.getUuidForItem(item.id);
       relationships[itemUuid] = {
         originalId: item.id,
         uuid: itemUuid,
         parentUuid: item.parent ? this.getUuidForItem(item.parent) : null,
-        children: []
+        children: [],
       };
     });
 
     // Build children arrays
-    Object.values(relationships).forEach(item => {
+    Object.values(relationships).forEach((item) => {
       if (item.parentUuid && relationships[item.parentUuid]) {
         relationships[item.parentUuid].children.push(item.uuid);
       }
@@ -80,7 +83,7 @@ export class SkeletonUuidManager {
     const oldToNewMap = new Map();
 
     // Create new UUIDs for all items
-    skeleton.structure.forEach(item => {
+    skeleton.structure.forEach((item) => {
       if (item.uuid) {
         const newUuid = newManager.generateUuid();
         oldToNewMap.set(item.uuid, newUuid);
@@ -88,13 +91,13 @@ export class SkeletonUuidManager {
     });
 
     // Rewrite structure with new UUIDs
-    const newStructure = skeleton.structure.map(item => {
+    const newStructure = skeleton.structure.map((item) => {
       const newItem = { ...item };
-      
+
       if (item.uuid) {
         newItem.uuid = oldToNewMap.get(item.uuid);
       }
-      
+
       if (item.parentUuid && oldToNewMap.has(item.parentUuid)) {
         newItem.parentUuid = oldToNewMap.get(item.parentUuid);
       }
@@ -108,8 +111,8 @@ export class SkeletonUuidManager {
       meta: {
         ...skeleton.meta,
         created: new Date().toISOString(),
-        sourceUuids: 'rewritten'
-      }
+        sourceUuids: "rewritten",
+      },
     };
   }
 

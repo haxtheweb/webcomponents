@@ -1,12 +1,13 @@
 import { html, css } from "lit";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "../haxcms-site-store.js";
 import { toJS, autorun } from "mobx";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
 
-export class HAXCMSPageOperations extends DDD {
+export class HAXCMSPageOperations extends I18NMixin(DDD) {
   static get tag() {
     return "haxcms-page-operations";
   }
@@ -21,63 +22,52 @@ export class HAXCMSPageOperations extends DDD {
         simple-icon-button-lite.ops {
           --simple-icon-button-border-width: 1px;
           --simple-icon-button-border-color: var(--ddd-border-1, #e0e0e0);
-          --simple-icon-height: var(--ddd-icon-xxs, 14px);
-          --simple-icon-width: var(--ddd-icon-xxs, 14px);
+          --simple-icon-height: var(--ddd-icon-4xs, 14px);
+          --simple-icon-width: var(--ddd-icon-4xs, 14px);
           padding: var(--ddd-spacing-1) var(--ddd-spacing-1);
           background-color: var(--ddd-theme-background, #ffffff);
           color: var(--ddd-theme-text, #222);
           position: relative;
-          top: -2px;
         }
-        dialog {
-          position: fixed;
-          background: light-dark(
-            var(--simple-toolbar-button-bg, white),
-            var(--simple-toolbar-button-bg, #222)
+        simple-context-menu {
+          --simple-context-menu-background: var(
+            --simple-toolbar-button-bg,
+            white
           );
-          border: var(--ddd-border-sm);
-          border-color: light-dark(
-            var(--simple-toolbar-button-border-color, var(--simple-toolbar-border-color, #e0e0e0)),
-            var(--simple-toolbar-button-border-color, var(--simple-toolbar-border-color, #444))
+          --simple-context-menu-background-dark: var(
+            --simple-toolbar-button-bg,
+            #222
           );
-          color: light-dark(
-            var(--simple-toolbar-button-color, #222),
-            var(--simple-toolbar-button-color, #e0e0e0)
+          --simple-context-menu-border-color: var(
+            --simple-toolbar-button-border-color,
+            var(--simple-toolbar-border-color, #e0e0e0)
           );
-          min-width: 180px;
-          padding: 0;
-          margin: 0;
-          max-height: 80vh;
-          overflow: auto;
-          box-shadow: var(--simple-toolbar-menu-list-box-shadow, light-dark(
-            0 2px 8px rgba(0,0,0,0.15),
-            0 2px 8px rgba(0,0,0,0.5)
-          ));
+          --simple-context-menu-border-color-dark: var(
+            --simple-toolbar-button-border-color,
+            var(--simple-toolbar-border-color, #444)
+          );
+          --simple-context-menu-shadow: var(
+            --simple-toolbar-menu-list-box-shadow,
+            0 2px 8px rgba(0, 0, 0, 0.15)
+          );
+          --simple-context-menu-min-width: 180px;
         }
-        dialog::backdrop {
-          background: transparent;
-        }
-        simple-toolbar-menu-item {
-          display: block;
-        }
-        .menu-header {
-          padding: var(--ddd-spacing-3) var(--ddd-spacing-3) var(--ddd-spacing-2);
-          font-weight: var(--ddd-font-weight-bold);
-          font-size: var(--ddd-font-size-xs);
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          border-bottom: var(--ddd-border-sm);
-          margin-bottom: var(--ddd-spacing-1);
+        simple-toolbar-button {
+          --simple-toolbar-button-border-radius: 0;
+          --simple-toolbar-button-hover-border-color: transparent;
+          cursor: pointer;
         }
       `,
     ];
   }
   static get properties() {
     return {
+      ...super.properties,
       actionId: { type: String, attribute: "action-id" },
       platformAllowsOutline: { type: Boolean },
       platformAllowsDelete: { type: Boolean },
       platformAllowsAddPage: { type: Boolean },
+      isLocked: { type: Boolean },
     };
   }
   constructor() {
@@ -86,34 +76,55 @@ export class HAXCMSPageOperations extends DDD {
     this.platformAllowsOutline = true;
     this.platformAllowsDelete = true;
     this.platformAllowsAddPage = true;
-    
+    this.isLocked = false;
+    this.t = {
+      pageActions: "Page Actions",
+      editPage: "Edit page",
+      addPage: "Add page",
+      moveUp: "Move up",
+      moveDown: "Move down",
+      indent: "Indent",
+      outdent: "Outdent",
+      moveTo: "Move to..",
+      delete: "Delete",
+      unlock: "Unlock",
+      lock: "Lock",
+    };
+    this.registerLocalization({
+      context: this,
+      basePath: import.meta.url,
+    });
+
     // Watch for platform configuration changes
     autorun(() => {
       const manifest = toJS(store.manifest);
-      const platformConfig = manifest && manifest.metadata && manifest.metadata.platform;
-      
+      const platformConfig =
+        manifest && manifest.metadata && manifest.metadata.platform;
+
       // Check each capability - defaults to true if not specified
-      this.platformAllowsOutline = !platformConfig || platformConfig.outlineDesigner !== false;
-      this.platformAllowsDelete = !platformConfig || platformConfig.delete !== false;
-      this.platformAllowsAddPage = !platformConfig || platformConfig.addPage !== false;
+      this.platformAllowsOutline =
+        !platformConfig || platformConfig.outlineDesigner !== false;
+      this.platformAllowsDelete =
+        !platformConfig || platformConfig.delete !== false;
+      this.platformAllowsAddPage =
+        !platformConfig || platformConfig.addPage !== false;
+    });
+
+    // Watch for active item lock state
+    autorun(() => {
+      const activeItem = toJS(store.activeItem);
+      this.isLocked =
+        activeItem && activeItem.metadata && activeItem.metadata.locked
+          ? true
+          : false;
     });
   }
 
   _toggleDialog() {
-    const dialog = this.shadowRoot.querySelector("#menu");
-    if (!dialog) return;
-    
-    if (dialog.open) {
-      dialog.close();
-    } else {
-      const button = this.shadowRoot.querySelector('.ops');
-      dialog.showModal();
-      // Position dialog near the button
-      if (button) {
-        const rect = button.getBoundingClientRect();
-        dialog.style.top = `${rect.bottom + 4}px`;
-        dialog.style.left = `${rect.left}px`;
-      }
+    const menu = this.shadowRoot.querySelector("simple-context-menu");
+    const button = this.shadowRoot.querySelector(".ops");
+    if (menu && button) {
+      menu.toggle(button);
     }
   }
 
@@ -122,105 +133,107 @@ export class HAXCMSPageOperations extends DDD {
     if (!this.platformAllowsOutline) {
       return html``;
     }
-    
+
     return html`
       <simple-icon-button-lite
         class="ops"
-        icon="icons:more-vert"
-        label="Page actions"
-        title="Page actions"
+        icon="icons:create"
+        label="${this.t.pageActions}"
+        title="${this.t.pageActions}"
         @click="${this._toggleDialog}"
       ></simple-icon-button-lite>
-      <dialog id="menu" role="menu" @click=${this._handleBackdropClick}>
-        <div class="menu-header">Page Actions</div>
-        <simple-toolbar-menu-item>
-          <simple-toolbar-button
-            icon="icons:create"
-            icon-position="left"
-            align-horizontal="left"
-            show-text-label
-            label="Edit"
-            @click=${this._editPage}
-            autofocus
-          ></simple-toolbar-button>
-        </simple-toolbar-menu-item>
-        ${this.platformAllowsAddPage ? html`
-          <simple-toolbar-menu-item>
-            <haxcms-button-add
-              id="addpagebutton"
-              class="top-bar-button"
-              icon="hax:add-page"
-              icon-position="left"
-              label="Add page"
-              merlin
-              @click="${this._closeDialog}"
-              show-text-label
-            ></haxcms-button-add>
-          </simple-toolbar-menu-item>
-        ` : ''}
-        <simple-toolbar-menu-item>
-          <simple-toolbar-button
-            icon="icons:arrow-upward"
-            icon-position="left"
-            align-horizontal="left"
-            show-text-label
-            label="Move up"
-            @click=${() => this._op("moveUp")}
-          ></simple-toolbar-button>
-        </simple-toolbar-menu-item>
-        <simple-toolbar-menu-item>
-          <simple-toolbar-button
-            icon="icons:arrow-downward"
-            icon-position="left"
-            align-horizontal="left"
-            show-text-label
-            label="Move down"
-            @click=${() => this._op("moveDown")}
-          ></simple-toolbar-button>
-        </simple-toolbar-menu-item>
-        <simple-toolbar-menu-item>
-          <simple-toolbar-button
-            icon="editor:format-indent-increase"
-            icon-position="left"
-            align-horizontal="left"
-            show-text-label
-            label="Indent"
-            @click=${() => this._op("indent")}
-          ></simple-toolbar-button>
-        </simple-toolbar-menu-item>
-        <simple-toolbar-menu-item>
-          <simple-toolbar-button
-            icon="editor:format-indent-decrease"
-            icon-position="left"
-            align-horizontal="left"
-            show-text-label
-            label="Outdent"
-            @click=${() => this._op("outdent")}
-          ></simple-toolbar-button>
-        </simple-toolbar-menu-item>
-        <simple-toolbar-menu-item>
-          <simple-toolbar-button
-            icon="icons:open-with"
-            icon-position="left"
-            align-horizontal="left"
-            show-text-label
-            label="Move to.."
-            @click=${this._movePageProgram}
-          ></simple-toolbar-button>
-        </simple-toolbar-menu-item>
-        ${this.platformAllowsDelete ? html`
-          <simple-toolbar-menu-item>
-            <simple-toolbar-button
-              icon="icons:delete"
-              icon-position="left"
-              align-horizontal="left"
-              show-text-label
-              label="Delete"
-              @click=${this._deletePage}
-            ></simple-toolbar-button>
-          </simple-toolbar-menu-item>
-        ` : ''}
-      </dialog>
+      <simple-context-menu title="${this.t.pageActions}">
+        <simple-toolbar-button
+          icon="hax:page-edit"
+          icon-position="left"
+          align-horizontal="left"
+          show-text-label
+          label="${this.t.editPage}"
+          ?disabled="${this.isLocked}"
+          @click=${this._editPage}
+          autofocus
+        ></simple-toolbar-button>
+        ${this.platformAllowsAddPage
+          ? html`
+              <haxcms-button-add
+                id="addpagebutton"
+                class="top-bar-button"
+                icon="hax:add-page"
+                icon-position="left"
+                label="${this.t.addPage}"
+                merlin
+                @click="${this._closeDialog}"
+                show-text-label
+              ></haxcms-button-add>
+            `
+          : ""}
+        <simple-toolbar-button
+          icon="icons:arrow-upward"
+          icon-position="left"
+          align-horizontal="left"
+          show-text-label
+          label="${this.t.moveUp}"
+          ?disabled="${this.isLocked}"
+          @click=${() => this._op("moveUp")}
+        ></simple-toolbar-button>
+        <simple-toolbar-button
+          icon="icons:arrow-downward"
+          icon-position="left"
+          align-horizontal="left"
+          show-text-label
+          label="${this.t.moveDown}"
+          ?disabled="${this.isLocked}"
+          @click=${() => this._op("moveDown")}
+        ></simple-toolbar-button>
+        <simple-toolbar-button
+          icon="editor:format-indent-increase"
+          icon-position="left"
+          align-horizontal="left"
+          show-text-label
+          label="${this.t.indent}"
+          ?disabled="${this.isLocked}"
+          @click=${() => this._op("indent")}
+        ></simple-toolbar-button>
+        <simple-toolbar-button
+          icon="editor:format-indent-decrease"
+          icon-position="left"
+          align-horizontal="left"
+          show-text-label
+          label="${this.t.outdent}"
+          ?disabled="${this.isLocked}"
+          @click=${() => this._op("outdent")}
+        ></simple-toolbar-button>
+        <simple-toolbar-button
+          icon="icons:open-with"
+          icon-position="left"
+          align-horizontal="left"
+          show-text-label
+          label="${this.t.moveTo}"
+          ?disabled="${this.isLocked}"
+          @click=${this._movePageProgram}
+        ></simple-toolbar-button>
+        ${this.platformAllowsDelete
+          ? html`
+              <simple-toolbar-button
+                icon="icons:delete"
+                icon-position="left"
+                align-horizontal="left"
+                show-text-label
+                label="${this.t.delete}"
+                ?disabled="${this.isLocked}"
+                @click=${this._deletePage}
+              ></simple-toolbar-button>
+            `
+          : ""}
+        <simple-toolbar-button
+          icon="${this.isLocked ? "icons:lock" : "icons:lock-open"}"
+          icon-position="left"
+          align-horizontal="left"
+          show-text-label
+          label="${this.isLocked ? this.t.unlock : this.t.lock}"
+          @click=${this._toggleLock}
+        ></simple-toolbar-button>
+      </simple-context-menu>
     `;
   }
   _contextItem() {
@@ -256,12 +269,12 @@ export class HAXCMSPageOperations extends DDD {
   }
   _editPage() {
     this._closeDialog();
-    const editButton = globalThis.document.querySelector('haxcms-site-editor-ui')._editButtonTap();
+    store.cmsSiteEditor.haxCmsSiteEditorUIElement._editButtonTap();
   }
 
   _deletePage() {
     this._closeDialog();
-    const deleteButton = globalThis.document.querySelector('haxcms-site-editor-ui')._deleteButtonTap();
+    store.cmsSiteEditor.haxCmsSiteEditorUIElement._deleteButtonTap();
   }
 
   async _movePageProgram() {
@@ -270,7 +283,8 @@ export class HAXCMSPageOperations extends DDD {
     if (!item || !item.id) {
       return;
     }
-    const SuperDaemonInstance = globalThis.SuperDaemonManager.requestAvailability();
+    const SuperDaemonInstance =
+      globalThis.SuperDaemonManager.requestAvailability();
     store.playSound("click");
     // Use waveWand for proper mini-Merlin invocation
     SuperDaemonInstance.waveWand([
@@ -284,25 +298,32 @@ export class HAXCMSPageOperations extends DDD {
   }
 
   _closeDialog() {
-    const dialog = this.shadowRoot && this.shadowRoot.querySelector("#menu");
-    if (dialog && dialog.open) {
-      dialog.close();
+    const menu =
+      this.shadowRoot && this.shadowRoot.querySelector("simple-context-menu");
+    if (menu) {
+      menu.close();
     }
   }
-  
-  _handleBackdropClick(e) {
-    const dialog = e.target;
-    if (e.target.nodeName === 'DIALOG') {
-      const rect = dialog.getBoundingClientRect();
-      if (
-        e.clientX < rect.left ||
-        e.clientX > rect.right ||
-        e.clientY < rect.top ||
-        e.clientY > rect.bottom
-      ) {
-        dialog.close();
-      }
+
+  async _toggleLock() {
+    this._closeDialog();
+    const item = await this._contextItem();
+    if (!item || !item.id) {
+      return;
     }
+    store.playSound("click");
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-save-node-details", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          id: item.id,
+          operation: "setLocked",
+          locked: !this.isLocked,
+        },
+      }),
+    );
   }
 }
 

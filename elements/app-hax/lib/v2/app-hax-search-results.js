@@ -427,9 +427,31 @@ export class AppHaxSearchResults extends SimpleColors {
       `,
     ];
   }
+  // Calculate which dot indicators to display (max 10)
+  getVisibleDotRange() {
+    const maxDots = 10;
+    if (this.totalItems <= maxDots) {
+      // Show all dots if we have 10 or fewer items
+      return { start: 1, end: this.totalItems };
+    }
+
+    // Calculate the range to keep current index centered when possible
+    const halfRange = Math.floor(maxDots / 2);
+    let start = Math.max(1, this.currentIndex - halfRange);
+    let end = Math.min(this.totalItems, start + maxDots - 1);
+
+    // Adjust start if we're near the end
+    if (end === this.totalItems) {
+      start = Math.max(1, end - maxDots + 1);
+    }
+
+    return { start, end };
+  }
+
   render() {
     // Update total items count
     this.totalItems = this.displayItems.length;
+    const dotRange = this.getVisibleDotRange();
 
     return html`
       <div
@@ -525,20 +547,24 @@ export class AppHaxSearchResults extends SimpleColors {
           ? html`
               <div class="pager-container">
                 ${Array.from(
-                  { length: this.totalItems },
-                  (_, index) => html`
-                    <button
-                      class="pager-dot ${this.currentIndex === index + 1
-                        ? "active"
-                        : ""}"
-                      @click="${() => this.goToPage(index + 1)}"
-                      aria-label="Go to page ${index + 1}"
-                      aria-current="${this.currentIndex === index + 1
-                        ? "page"
-                        : "false"}"
-                      tabindex="0"
-                    ></button>
-                  `,
+                  { length: dotRange.end - dotRange.start + 1 },
+                  (_, index) => {
+                    const pageNumber = dotRange.start + index;
+                    return html`
+                      <button
+                        class="pager-dot ${this.currentIndex === pageNumber
+                          ? "active"
+                          : ""}"
+                        @click="${() => this.goToPage(pageNumber)}"
+                        aria-label="Go to page ${pageNumber} of ${this
+                          .totalItems}"
+                        aria-current="${this.currentIndex === pageNumber
+                          ? "page"
+                          : "false"}"
+                        tabindex="0"
+                      ></button>
+                    `;
+                  },
                 )}
               </div>
             `

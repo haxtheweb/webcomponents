@@ -712,7 +712,8 @@ export class AppHaxSiteBars extends SimpleColors {
                         <simple-icon-lite icon="archive"></simple-icon-lite>
                         Archive
                       </button>
-                      ${store.appSettings && store.appSettings.haxiamAddUserAccess
+                      ${store.appSettings &&
+                      store.appSettings.haxiamAddUserAccess
                         ? html`
                             <button
                               class="menu-item"

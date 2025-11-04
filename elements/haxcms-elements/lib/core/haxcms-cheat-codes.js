@@ -102,7 +102,6 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     },
   });
 
-
   // TIMETRAVEL - Sepia effect to entire page
   SuperDaemonInstance.defineOption({
     title: "TIMETRAVEL",
@@ -346,7 +345,19 @@ export function defineCheatCodes(editorInstance, SuperDaemonInstance) {
     title: "CHICKENBUTT",
     icon: "pets",
     textCharacter: "🐔",
-    tags: ["cheat", "chicken", "butt", "freeze", "ray", "rawr", "kids", "game", "I love you", "to the moon and back", "childrens book"],
+    tags: [
+      "cheat",
+      "chicken",
+      "butt",
+      "freeze",
+      "ray",
+      "rawr",
+      "kids",
+      "game",
+      "I love you",
+      "to the moon and back",
+      "childrens book",
+    ],
     context: ["*", "CMS", "HAX"],
     priority: -980,
     eventName: "super-daemon-element-method",
@@ -517,7 +528,6 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     SuperDaemonInstance.merlinSpeak("Ho ho ho! Have you been naughty or nice?");
     SuperDaemonInstance.close();
   };
-
 
   /**
    * Execute TIMETRAVEL cheat - Add sepia effect to entire page
@@ -1355,18 +1365,18 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       "I can dance and sing along to music!",
       "Warning: May develop separation anxiety if left alone!",
       "Batteries not included. Requires 4 AA batteries.",
-      "Ages 6 and up. Not suitable for children under 3."
+      "Ages 6 and up. Not suitable for children under 3.",
     ];
 
     const furbyColors = [
-      '#ff69b4', // Hot pink
-      '#ff1493', // Deep pink
-      '#9370db', // Medium purple
-      '#00ced1', // Dark turquoise
-      '#32cd32', // Lime green
-      '#ffd700', // Gold
-      '#ff4500', // Orange red
-      '#8a2be2'  // Blue violet
+      "#ff69b4", // Hot pink
+      "#ff1493", // Deep pink
+      "#9370db", // Medium purple
+      "#00ced1", // Dark turquoise
+      "#32cd32", // Lime green
+      "#ffd700", // Gold
+      "#ff4500", // Orange red
+      "#8a2be2", // Blue violet
     ];
 
     let popupCount = 0;
@@ -1376,40 +1386,43 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     // Function to create a single Furby popup
     const createFurbyPopup = () => {
       if (!furbyAttackActive) return;
-      
+
       popupCount++;
-      
+
       // Play Furby spawn sound when each one appears
-      const audioContext = new (globalThis.AudioContext || globalThis.webkitAudioContext)();
+      const audioContext = new (globalThis.AudioContext ||
+        globalThis.webkitAudioContext)();
       const oscillator = audioContext.createOscillator();
       const gainNode = audioContext.createGain();
-      
+
       oscillator.connect(gainNode);
       gainNode.connect(audioContext.destination);
-      
+
       // Furby-like frequency with some randomness
       oscillator.frequency.setValueAtTime(
         350 + Math.random() * 300,
-        audioContext.currentTime
+        audioContext.currentTime,
       );
-      oscillator.type = 'square';
-      
+      oscillator.type = "square";
+
       gainNode.gain.setValueAtTime(0.08, audioContext.currentTime);
       gainNode.gain.exponentialRampToValueAtTime(
         0.01,
-        audioContext.currentTime + 0.4
+        audioContext.currentTime + 0.4,
       );
-      
+
       oscillator.start(audioContext.currentTime);
       oscillator.stop(audioContext.currentTime + 0.4);
-      
-      const popup = globalThis.document.createElement('div');
-      popup.className = 'furby-popup';
+
+      const popup = globalThis.document.createElement("div");
+      popup.className = "furby-popup";
       popup.id = `furby-popup-${popupCount}`;
-      
-      const randomColor = furbyColors[Math.floor(Math.random() * furbyColors.length)];
-      const randomCardText = furbyCardTexts[Math.floor(Math.random() * furbyCardTexts.length)];
-      
+
+      const randomColor =
+        furbyColors[Math.floor(Math.random() * furbyColors.length)];
+      const randomCardText =
+        furbyCardTexts[Math.floor(Math.random() * furbyCardTexts.length)];
+
       popup.style.cssText = `
         position: fixed;
         width: 320px;
@@ -1431,16 +1444,16 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         cursor: move;
         user-select: none;
       `;
-      
+
       // Random position on screen
       const maxX = globalThis.innerWidth - 320;
       const maxY = globalThis.innerHeight - 240;
       const randomX = Math.max(0, Math.random() * maxX);
       const randomY = Math.max(0, Math.random() * maxY);
-      
+
       popup.style.left = `${randomX}px`;
       popup.style.top = `${randomY}px`;
-      
+
       // Furby trading card content
       popup.innerHTML = `
         <div style="font-size: 50px; margin-bottom: 8px;">👾</div>
@@ -1457,11 +1470,11 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           font-size: 11px;
         ">Close Trading Card</button>
       `;
-      
+
       // Add bounce animation CSS if not exists
-      if (!globalThis.document.getElementById('furby-animation')) {
-        const style = globalThis.document.createElement('style');
-        style.id = 'furby-animation';
+      if (!globalThis.document.getElementById("furby-animation")) {
+        const style = globalThis.document.createElement("style");
+        style.id = "furby-animation";
         style.textContent = `
           @keyframes furby-bounce {
             0% {
@@ -1491,54 +1504,57 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         `;
         globalThis.document.head.appendChild(style);
       }
-      
+
       globalThis.document.body.appendChild(popup);
       popupWindows.push(popup);
-      
+
       // Make popup draggable
       let isDragging = false;
       let dragOffsetX = 0;
       let dragOffsetY = 0;
-      
-      popup.addEventListener('mousedown', (e) => {
-        if (e.target.tagName !== 'BUTTON') {
+
+      popup.addEventListener("mousedown", (e) => {
+        if (e.target.tagName !== "BUTTON") {
           isDragging = true;
           dragOffsetX = e.clientX - popup.offsetLeft;
           dragOffsetY = e.clientY - popup.offsetTop;
-          popup.style.cursor = 'grabbing';
+          popup.style.cursor = "grabbing";
         }
       });
-      
-      globalThis.document.addEventListener('mousemove', (e) => {
+
+      globalThis.document.addEventListener("mousemove", (e) => {
         if (isDragging) {
           popup.style.left = `${e.clientX - dragOffsetX}px`;
           popup.style.top = `${e.clientY - dragOffsetY}px`;
         }
       });
-      
-      globalThis.document.addEventListener('mouseup', () => {
+
+      globalThis.document.addEventListener("mouseup", () => {
         isDragging = false;
-        popup.style.cursor = 'move';
+        popup.style.cursor = "move";
       });
-      
+
       // Add wiggle effect randomly
-      const wiggleInterval = setInterval(() => {
-        if (popup.parentNode && furbyAttackActive) {
-          popup.style.animation = 'furby-wiggle 0.5s ease-in-out';
-          setTimeout(() => {
-            if (popup.parentNode) {
-              popup.style.animation = '';
-            }
-          }, 500);
-        } else {
-          clearInterval(wiggleInterval);
-        }
-      }, Math.random() * 4000 + 2000); // Random between 2-6 seconds
-      
+      const wiggleInterval = setInterval(
+        () => {
+          if (popup.parentNode && furbyAttackActive) {
+            popup.style.animation = "furby-wiggle 0.5s ease-in-out";
+            setTimeout(() => {
+              if (popup.parentNode) {
+                popup.style.animation = "";
+              }
+            }, 500);
+          } else {
+            clearInterval(wiggleInterval);
+          }
+        },
+        Math.random() * 4000 + 2000,
+      ); // Random between 2-6 seconds
+
       // Close button functionality - spawn two more when closed!
       const closeBtn = popup.querySelector(`#close-furby-${popupCount}`);
-      closeBtn.addEventListener('click', () => {
-        popup.style.animation = 'furby-bounce 0.5s ease-in reverse';
+      closeBtn.addEventListener("click", () => {
+        popup.style.animation = "furby-bounce 0.5s ease-in reverse";
         setTimeout(() => {
           if (popup.parentNode) {
             popup.remove();
@@ -1549,7 +1565,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           }
         }, 500);
         clearInterval(wiggleInterval);
-        
+
         // Spawn two new Furbies when one is closed (hydra effect!)
         if (furbyAttackActive) {
           setTimeout(() => {
@@ -1561,35 +1577,38 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         }
       });
     };
-    
+
     // Create initial Furby (sound will be played by createFurbyPopup)
     createFurbyPopup();
-    
+
     // Remove ALL Furbies after 20 seconds
     setTimeout(() => {
       furbyAttackActive = false;
-      
+
       // Remove all existing Furby popups
-      const allFurbyPopups = globalThis.document.querySelectorAll('.furby-popup');
+      const allFurbyPopups =
+        globalThis.document.querySelectorAll(".furby-popup");
       allFurbyPopups.forEach((popup) => {
-        popup.style.animation = 'furby-bounce 0.5s ease-in reverse';
+        popup.style.animation = "furby-bounce 0.5s ease-in reverse";
         setTimeout(() => {
           if (popup.parentNode) {
             popup.remove();
           }
         }, 500);
       });
-      
+
       // Clear the popupWindows array
       popupWindows.length = 0;
-      
-      HAXStore.toast('👾 Furby attack ended! They returned to the digital realm!');
+
+      HAXStore.toast(
+        "👾 Furby attack ended! They returned to the digital realm!",
+      );
     }, 20000);
-    
-    HAXStore.toast('👾 FURBY TRADING CARD ATTACK! Close one, two more appear!');
-    store.playSound('success');
+
+    HAXStore.toast("👾 FURBY TRADING CARD ATTACK! Close one, two more appear!");
+    store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      'Me-dah-loo-loo! Each Furby carries ancient trading card wisdom!'
+      "Me-dah-loo-loo! Each Furby carries ancient trading card wisdom!",
     );
     SuperDaemonInstance.close();
   };
@@ -1599,8 +1618,8 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
    */
   editorInstance._executeCheatWindows95 = function () {
     // Create the Windows 95 desktop overlay
-    const win95Desktop = globalThis.document.createElement('div');
-    win95Desktop.id = 'windows95-desktop';
+    const win95Desktop = globalThis.document.createElement("div");
+    win95Desktop.id = "windows95-desktop";
     win95Desktop.style.cssText = `
       position: fixed;
       top: 0;
@@ -1620,7 +1639,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     `;
 
     // Create the taskbar
-    const taskbar = globalThis.document.createElement('div');
+    const taskbar = globalThis.document.createElement("div");
     taskbar.style.cssText = `
       position: absolute;
       bottom: 0;
@@ -1636,7 +1655,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     `;
 
     // Create Start button
-    const startButton = globalThis.document.createElement('button');
+    const startButton = globalThis.document.createElement("button");
     startButton.innerHTML = `
       <span style="display: flex; align-items: center; gap: 4px;">
         🪟 <strong>Start</strong>
@@ -1654,9 +1673,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     `;
 
     // Create system tray area
-    const systemTray = globalThis.document.createElement('div');
+    const systemTray = globalThis.document.createElement("div");
     systemTray.innerHTML = `
-      <span style="font-size: 11px; color: #000;">3:${String(new Date().getMinutes()).padStart(2, '0')} PM</span>
+      <span style="font-size: 11px; color: #000;">3:${String(new Date().getMinutes()).padStart(2, "0")} PM</span>
     `;
     systemTray.style.cssText = `
       margin-left: auto;
@@ -1674,15 +1693,15 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     // Create desktop icons
     const desktopIcons = [
-      { name: 'My Computer', icon: '🖥️', x: 20, y: 20 },
-      { name: 'Recycle Bin', icon: '🗑️', x: 20, y: 100 },
-      { name: 'My Documents', icon: '📁', x: 20, y: 180 },
-      { name: 'Solitaire', icon: '🃏', x: 20, y: 260 },
-      { name: 'Paint', icon: '🎨', x: 20, y: 340 }
+      { name: "My Computer", icon: "🖥️", x: 20, y: 20 },
+      { name: "Recycle Bin", icon: "🗑️", x: 20, y: 100 },
+      { name: "My Documents", icon: "📁", x: 20, y: 180 },
+      { name: "Solitaire", icon: "🃏", x: 20, y: 260 },
+      { name: "Paint", icon: "🎨", x: 20, y: 340 },
     ];
 
-    desktopIcons.forEach(iconData => {
-      const icon = globalThis.document.createElement('div');
+    desktopIcons.forEach((iconData) => {
+      const icon = globalThis.document.createElement("div");
       icon.style.cssText = `
         position: absolute;
         left: ${iconData.x}px;
@@ -1701,33 +1720,33 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         padding: 4px;
         user-select: none;
       `;
-      
+
       icon.innerHTML = `
         <div style="font-size: 32px; margin-bottom: 4px;">${iconData.icon}</div>
         <div>${iconData.name}</div>
       `;
-      
+
       // Add click handler for Solitaire
-      if (iconData.name === 'Solitaire') {
-        icon.addEventListener('dblclick', () => {
+      if (iconData.name === "Solitaire") {
+        icon.addEventListener("dblclick", () => {
           createSolitaireWindow();
         });
       }
-      
+
       // Add click handler for Paint
-      if (iconData.name === 'Paint') {
-        icon.addEventListener('dblclick', () => {
+      if (iconData.name === "Paint") {
+        icon.addEventListener("dblclick", () => {
           createPaintWindow();
         });
       }
-      
+
       win95Desktop.appendChild(icon);
     });
 
     // Function to create Solitaire window
     function createSolitaireWindow() {
-      const solitaireWin = createWindow('Solitaire', 400, 300, 200, 150);
-      solitaireWin.querySelector('.window-content').innerHTML = `
+      const solitaireWin = createWindow("Solitaire", 400, 300, 200, 150);
+      solitaireWin.querySelector(".window-content").innerHTML = `
         <div style="padding: 20px; text-align: center;">
           <div style="font-size: 60px; margin-bottom: 16px;">🃏</div>
           <p>Windows Solitaire</p>
@@ -1742,8 +1761,8 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     // Function to create Paint window
     function createPaintWindow() {
-      const paintWin = createWindow('Paint', 480, 360, 150, 100);
-      paintWin.querySelector('.window-content').innerHTML = `
+      const paintWin = createWindow("Paint", 480, 360, 150, 100);
+      paintWin.querySelector(".window-content").innerHTML = `
         <div style="height: 100%; display: flex; flex-direction: column;">
           <div style="background: #f0f0f0; border-bottom: 1px solid #808080; padding: 4px;">
             <div style="display: inline-block; margin: 2px; padding: 4px 8px; background: #e0e0e0; border: 1px outset #c0c0c0; font-size: 11px;">🖌️ Brush</div>
@@ -1759,8 +1778,8 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     // Generic window creation function
     function createWindow(title, width, height, x, y) {
-      const window = globalThis.document.createElement('div');
-      window.className = 'win95-window';
+      const window = globalThis.document.createElement("div");
+      window.className = "win95-window";
       window.style.cssText = `
         position: absolute;
         left: ${x}px;
@@ -1772,7 +1791,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         z-index: 10001;
       `;
 
-      const titleBar = globalThis.document.createElement('div');
+      const titleBar = globalThis.document.createElement("div");
       titleBar.style.cssText = `
         height: 20px;
         background: linear-gradient(to right, #0000ff 0%, #8080ff 100%);
@@ -1798,8 +1817,8 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         ">×</button>
       `;
 
-      const content = globalThis.document.createElement('div');
-      content.className = 'window-content';
+      const content = globalThis.document.createElement("div");
+      content.className = "window-content";
       content.style.cssText = `
         height: calc(100% - 20px);
         background: #c0c0c0;
@@ -1815,27 +1834,27 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       let dragOffsetX = 0;
       let dragOffsetY = 0;
 
-      titleBar.addEventListener('mousedown', (e) => {
-        if (e.target.classList.contains('close-btn')) return;
+      titleBar.addEventListener("mousedown", (e) => {
+        if (e.target.classList.contains("close-btn")) return;
         isDragging = true;
         dragOffsetX = e.clientX - window.offsetLeft;
         dragOffsetY = e.clientY - window.offsetTop;
-        window.style.zIndex = '10002';
+        window.style.zIndex = "10002";
       });
 
-      globalThis.document.addEventListener('mousemove', (e) => {
+      globalThis.document.addEventListener("mousemove", (e) => {
         if (isDragging) {
           window.style.left = `${e.clientX - dragOffsetX}px`;
           window.style.top = `${e.clientY - dragOffsetY}px`;
         }
       });
 
-      globalThis.document.addEventListener('mouseup', () => {
+      globalThis.document.addEventListener("mouseup", () => {
         isDragging = false;
       });
 
       // Close button functionality
-      titleBar.querySelector('.close-btn').addEventListener('click', () => {
+      titleBar.querySelector(".close-btn").addEventListener("click", () => {
         window.remove();
       });
 
@@ -1844,7 +1863,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     // Add Start menu functionality
     let startMenuOpen = false;
-    const startMenu = globalThis.document.createElement('div');
+    const startMenu = globalThis.document.createElement("div");
     startMenu.style.cssText = `
       position: absolute;
       bottom: 40px;
@@ -1857,19 +1876,19 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     `;
 
     const startMenuItems = [
-      { name: 'Programs', icon: '📁' },
-      { name: 'Documents', icon: '📄' },
-      { name: 'Settings', icon: '⚙️' },
-      { name: 'Find', icon: '🔍' },
-      { name: 'Help', icon: '❓' },
-      { name: 'Run...', icon: '▶️' },
+      { name: "Programs", icon: "📁" },
+      { name: "Documents", icon: "📄" },
+      { name: "Settings", icon: "⚙️" },
+      { name: "Find", icon: "🔍" },
+      { name: "Help", icon: "❓" },
+      { name: "Run...", icon: "▶️" },
       null, // separator
-      { name: 'Shut Down...', icon: '🔌' }
+      { name: "Shut Down...", icon: "🔌" },
     ];
 
-    startMenuItems.forEach(item => {
+    startMenuItems.forEach((item) => {
       if (item === null) {
-        const separator = globalThis.document.createElement('div');
+        const separator = globalThis.document.createElement("div");
         separator.style.cssText = `
           height: 1px;
           background: #808080;
@@ -1877,7 +1896,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         `;
         startMenu.appendChild(separator);
       } else {
-        const menuItem = globalThis.document.createElement('div');
+        const menuItem = globalThis.document.createElement("div");
         menuItem.innerHTML = `${item.icon} ${item.name}`;
         menuItem.style.cssText = `
           padding: 4px 8px;
@@ -1887,18 +1906,18 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           align-items: center;
           gap: 8px;
         `;
-        menuItem.addEventListener('mouseenter', () => {
-          menuItem.style.background = '#0000ff';
-          menuItem.style.color = 'white';
+        menuItem.addEventListener("mouseenter", () => {
+          menuItem.style.background = "#0000ff";
+          menuItem.style.color = "white";
         });
-        menuItem.addEventListener('mouseleave', () => {
-          menuItem.style.background = '';
-          menuItem.style.color = '';
+        menuItem.addEventListener("mouseleave", () => {
+          menuItem.style.background = "";
+          menuItem.style.color = "";
         });
-        
-        if (item.name === 'Shut Down...') {
-          menuItem.addEventListener('click', () => {
-            win95Desktop.style.animation = 'fadeOut 1s ease-out forwards';
+
+        if (item.name === "Shut Down...") {
+          menuItem.addEventListener("click", () => {
+            win95Desktop.style.animation = "fadeOut 1s ease-out forwards";
             setTimeout(() => {
               if (win95Desktop.parentNode) {
                 win95Desktop.remove();
@@ -1906,33 +1925,35 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             }, 1000);
           });
         }
-        
+
         startMenu.appendChild(menuItem);
       }
     });
 
     win95Desktop.appendChild(startMenu);
 
-    startButton.addEventListener('click', (e) => {
+    startButton.addEventListener("click", (e) => {
       e.stopPropagation();
       startMenuOpen = !startMenuOpen;
-      startMenu.style.display = startMenuOpen ? 'block' : 'none';
-      startButton.style.border = startMenuOpen ? '2px inset #c0c0c0' : '2px outset #c0c0c0';
+      startMenu.style.display = startMenuOpen ? "block" : "none";
+      startButton.style.border = startMenuOpen
+        ? "2px inset #c0c0c0"
+        : "2px outset #c0c0c0";
     });
 
     // Close start menu when clicking elsewhere
-    win95Desktop.addEventListener('click', () => {
+    win95Desktop.addEventListener("click", () => {
       if (startMenuOpen) {
         startMenuOpen = false;
-        startMenu.style.display = 'none';
-        startButton.style.border = '2px outset #c0c0c0';
+        startMenu.style.display = "none";
+        startButton.style.border = "2px outset #c0c0c0";
       }
     });
 
     // Add CSS animation for shutdown
-    if (!globalThis.document.getElementById('win95-animation')) {
-      const style = globalThis.document.createElement('style');
-      style.id = 'win95-animation';
+    if (!globalThis.document.getElementById("win95-animation")) {
+      const style = globalThis.document.createElement("style");
+      style.id = "win95-animation";
       style.textContent = `
         @keyframes fadeOut {
           0% {
@@ -1949,45 +1970,49 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     globalThis.document.body.appendChild(win95Desktop);
 
     // Play Windows 95 startup sound (web audio)
-    const audioContext = new (globalThis.AudioContext || globalThis.webkitAudioContext)();
-    
+    const audioContext = new (globalThis.AudioContext ||
+      globalThis.webkitAudioContext)();
+
     // Create the classic Windows startup chord progression
     const playStartupSound = () => {
       const chords = [
-        [261.63, 329.63, 392.00], // C major
-        [293.66, 369.99, 440.00], // D minor  
-        [329.63, 415.30, 493.88], // E minor
-        [261.63, 329.63, 392.00, 523.25] // C major octave
+        [261.63, 329.63, 392.0], // C major
+        [293.66, 369.99, 440.0], // D minor
+        [329.63, 415.3, 493.88], // E minor
+        [261.63, 329.63, 392.0, 523.25], // C major octave
       ];
-      
+
       chords.forEach((chord, index) => {
         setTimeout(() => {
-          chord.forEach(freq => {
+          chord.forEach((freq) => {
             const oscillator = audioContext.createOscillator();
             const gainNode = audioContext.createGain();
-            
+
             oscillator.connect(gainNode);
             gainNode.connect(audioContext.destination);
-            
+
             oscillator.frequency.setValueAtTime(freq, audioContext.currentTime);
-            oscillator.type = 'sine';
-            
+            oscillator.type = "sine";
+
             gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1.5);
-            
+            gainNode.gain.exponentialRampToValueAtTime(
+              0.01,
+              audioContext.currentTime + 1.5,
+            );
+
             oscillator.start(audioContext.currentTime);
             oscillator.stop(audioContext.currentTime + 1.5);
           });
         }, index * 300);
       });
     };
-    
+
     playStartupSound();
 
-    HAXStore.toast('💻 WINDOWS 95 ACTIVATED! Welcome to the future!');
-    store.playSound('success');
+    HAXStore.toast("💻 WINDOWS 95 ACTIVATED! Welcome to the future!");
+    store.playSound("success");
     SuperDaemonInstance.merlinSpeak(
-      'Welcome to Windows 95! The operating system of tomorrow, today!'
+      "Welcome to Windows 95! The operating system of tomorrow, today!",
     );
     SuperDaemonInstance.close();
   };
@@ -2000,47 +2025,59 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     if (globalThis.eternalDarknessActive) {
       // Disable all effects
       globalThis.eternalDarknessActive = false;
-      
+
       // Remove all eternal darkness elements
-      const sanityMeter = globalThis.document.querySelector('#sanity-meter');
+      const sanityMeter = globalThis.document.querySelector("#sanity-meter");
       if (sanityMeter) sanityMeter.remove();
-      
-      const errorModal = globalThis.document.querySelector('.eternal-darkness-error');
+
+      const errorModal = globalThis.document.querySelector(
+        ".eternal-darkness-error",
+      );
       if (errorModal) errorModal.remove();
-      
-      const volumeModal = globalThis.document.querySelector('.eternal-darkness-volume');
+
+      const volumeModal = globalThis.document.querySelector(
+        ".eternal-darkness-volume",
+      );
       if (volumeModal) volumeModal.remove();
-      
-      const overlay = globalThis.document.querySelector('.eternal-darkness-overlay');
+
+      const overlay = globalThis.document.querySelector(
+        ".eternal-darkness-overlay",
+      );
       if (overlay) overlay.remove();
-      
+
       // Restore body scale and cursor
       const body = globalThis.document.body;
-      body.style.transform = '';
-      body.style.transformOrigin = '';
-      body.style.cursor = '';
-      body.style.transition = '';
-      
+      body.style.transform = "";
+      body.style.transformOrigin = "";
+      body.style.cursor = "";
+      body.style.transition = "";
+
       // Clear all intervals and event listeners
       if (globalThis.eternalDarknessCleanup) {
-        globalThis.eternalDarknessCleanup.forEach(cleanup => cleanup());
+        globalThis.eternalDarknessCleanup.forEach((cleanup) => cleanup());
         globalThis.eternalDarknessCleanup = [];
       }
-      
+
       // Clear mouse event listeners
       if (globalThis.eternalDarknessMouseHandler) {
-        globalThis.document.removeEventListener('mousemove', globalThis.eternalDarknessMouseHandler);
+        globalThis.document.removeEventListener(
+          "mousemove",
+          globalThis.eternalDarknessMouseHandler,
+        );
         globalThis.eternalDarknessMouseHandler = null;
       }
-      
+
       // Clear sanity mouse handler
       if (globalThis.eternalDarknessSanityHandler) {
-        globalThis.document.removeEventListener('mousemove', globalThis.eternalDarknessSanityHandler);
+        globalThis.document.removeEventListener(
+          "mousemove",
+          globalThis.eternalDarknessSanityHandler,
+        );
         globalThis.eternalDarknessSanityHandler = null;
       }
-      
+
       // Flash white to indicate deactivation
-      const flash = globalThis.document.createElement('div');
+      const flash = globalThis.document.createElement("div");
       flash.style.cssText = `
         position: fixed;
         top: 0;
@@ -2053,36 +2090,36 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         animation: eternal-flash 0.5s ease-out;
       `;
       globalThis.document.body.appendChild(flash);
-      
+
       setTimeout(() => {
         flash.remove();
       }, 500);
-      
-      HAXStore.toast('🌙 ETERNAL DARKNESS DISABLED - Sanity restored!');
-      SuperDaemonInstance.merlinSpeak('The nightmare ends... for now.');
+
+      HAXStore.toast("🌙 ETERNAL DARKNESS DISABLED - Sanity restored!");
+      SuperDaemonInstance.merlinSpeak("The nightmare ends... for now.");
       SuperDaemonInstance.close();
       return;
     }
-    
+
     // Activate eternal darkness
     globalThis.eternalDarknessActive = true;
     globalThis.eternalDarknessCleanup = globalThis.eternalDarknessCleanup || [];
-    
+
     const sanityEffects = [
-      'contentDisappear',
-      'fakeError', 
-      'volumeMeter',
-      'cursorGlitch',
-      'buttonSwap',
-      'textScramble',
-      'mouseScaleDown',
-      'mouseScaleUp',
-      'zombieInvasion'
+      "contentDisappear",
+      "fakeError",
+      "volumeMeter",
+      "cursorGlitch",
+      "buttonSwap",
+      "textScramble",
+      "mouseScaleDown",
+      "mouseScaleUp",
+      "zombieInvasion",
     ];
-    
+
     // Create persistent sanity meter
-    const sanityMeter = globalThis.document.createElement('div');
-    sanityMeter.id = 'sanity-meter';
+    const sanityMeter = globalThis.document.createElement("div");
+    sanityMeter.id = "sanity-meter";
     sanityMeter.style.cssText = `
       position: fixed;
       top: 20px;
@@ -2101,8 +2138,8 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       color: white;
       font-size: 12px;
     `;
-    
-    const sanityBar = globalThis.document.createElement('div');
+
+    const sanityBar = globalThis.document.createElement("div");
     sanityBar.style.cssText = `
       position: absolute;
       left: 0;
@@ -2112,112 +2149,124 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       background: linear-gradient(90deg, #ff0000, #ff6600, #ffff00, #00ff00);
       transition: width 0.3s ease;
     `;
-    
-    const sanityText = globalThis.document.createElement('div');
-    sanityText.textContent = 'SANITY';
+
+    const sanityText = globalThis.document.createElement("div");
+    sanityText.textContent = "SANITY";
     sanityText.style.cssText = `
       position: relative;
       z-index: 1;
       font-weight: bold;
       text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
     `;
-    
+
     sanityMeter.appendChild(sanityBar);
     sanityMeter.appendChild(sanityText);
     globalThis.document.body.appendChild(sanityMeter);
-    
+
     // Mouse-reactive sanity system
     let currentSanityLevel = 100;
     let effectInProgress = false;
-    
+
     const sanityMouseHandler = (e) => {
       if (!globalThis.eternalDarknessActive) return;
-      
+
       // Calculate distance from center of screen
       const centerX = globalThis.innerWidth / 2;
       const centerY = globalThis.innerHeight / 2;
       const distance = Math.sqrt(
-        Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2)
+        Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2),
       );
       const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
-      
+
       // Calculate sanity based on distance from center (closer = more sanity)
       const distanceRatio = Math.min(1, distance / maxDistance);
-      const targetSanity = Math.max(10, 100 - (distanceRatio * 90)); // Range: 10-100%
-      
+      const targetSanity = Math.max(10, 100 - distanceRatio * 90); // Range: 10-100%
+
       // Gradually adjust sanity toward target
       if (currentSanityLevel < targetSanity) {
         currentSanityLevel = Math.min(targetSanity, currentSanityLevel + 1);
       } else if (currentSanityLevel > targetSanity) {
         currentSanityLevel = Math.max(targetSanity, currentSanityLevel - 1);
       }
-      
+
       // Update sanity bar
-      const currentSanityBar = globalThis.document.querySelector('#sanity-meter div');
+      const currentSanityBar =
+        globalThis.document.querySelector("#sanity-meter div");
       if (currentSanityBar) {
-        currentSanityBar.style.width = currentSanityLevel + '%';
-        
+        currentSanityBar.style.width = currentSanityLevel + "%";
+
         // Change color based on sanity level
         if (currentSanityLevel < 30) {
-          currentSanityBar.style.background = '#ff0000'; // Red when low
+          currentSanityBar.style.background = "#ff0000"; // Red when low
         } else if (currentSanityLevel < 60) {
-          currentSanityBar.style.background = 'linear-gradient(90deg, #ff0000, #ff6600, #ffff00)'; // Red to yellow
+          currentSanityBar.style.background =
+            "linear-gradient(90deg, #ff0000, #ff6600, #ffff00)"; // Red to yellow
         } else {
-          currentSanityBar.style.background = 'linear-gradient(90deg, #ff0000, #ff6600, #ffff00, #00ff00)'; // Full spectrum
+          currentSanityBar.style.background =
+            "linear-gradient(90deg, #ff0000, #ff6600, #ffff00, #00ff00)"; // Full spectrum
         }
       }
-      
+
       // Trigger effect if sanity drops below 30% and no effect in progress
       if (currentSanityLevel < 30 && !effectInProgress) {
         effectInProgress = true;
-        const randomEffect = sanityEffects[Math.floor(Math.random() * sanityEffects.length)];
+        const randomEffect =
+          sanityEffects[Math.floor(Math.random() * sanityEffects.length)];
         executeSanityEffect(randomEffect);
-        
+
         // Reset effect flag after effect completes (5 seconds + 3 second recovery)
         setTimeout(() => {
           effectInProgress = false;
         }, 8000);
       }
     };
-    
+
     // Set up mouse tracking
-    globalThis.document.addEventListener('mousemove', sanityMouseHandler);
+    globalThis.document.addEventListener("mousemove", sanityMouseHandler);
     globalThis.eternalDarknessSanityHandler = sanityMouseHandler;
     globalThis.eternalDarknessCleanup.push(() => {
-      globalThis.document.removeEventListener('mousemove', sanityMouseHandler);
+      globalThis.document.removeEventListener("mousemove", sanityMouseHandler);
       globalThis.eternalDarknessSanityHandler = null;
     });
-    
+
     function executeSanityEffect(effect) {
       let effectCleanup = null;
-      
+
       switch (effect) {
-        case 'contentDisappear':
-          const editButtons = globalThis.document.querySelectorAll('[data-hax-ray="editButton"], button[aria-label*="edit"], .edit-btn');
+        case "contentDisappear":
+          const editButtons = globalThis.document.querySelectorAll(
+            '[data-hax-ray="editButton"], button[aria-label*="edit"], .edit-btn',
+          );
           const originalContent = [];
-          
+
           editButtons.forEach((btn, index) => {
             const clickHandler = () => {
-              const pageContent = globalThis.document.querySelector('page-contents, haxcms-site-body, [data-hax-ray="body"], main');
+              const pageContent = globalThis.document.querySelector(
+                'page-contents, haxcms-site-body, [data-hax-ray="body"], main',
+              );
               if (pageContent) {
                 originalContent[index] = pageContent.innerHTML;
-                pageContent.innerHTML = '<div style="padding: 100px; text-align: center; color: #666; font-style: italic; font-size: 24px;">The content has vanished into the void...</div>';
+                pageContent.innerHTML =
+                  '<div style="padding: 100px; text-align: center; color: #666; font-style: italic; font-size: 24px;">The content has vanished into the void...</div>';
               }
             };
-            btn.addEventListener('click', clickHandler, { once: true });
+            btn.addEventListener("click", clickHandler, { once: true });
           });
-          
+
           effectCleanup = () => {
-            const pageContent = globalThis.document.querySelector('page-contents, haxcms-site-body, [data-hax-ray="body"], main');
+            const pageContent = globalThis.document.querySelector(
+              'page-contents, haxcms-site-body, [data-hax-ray="body"], main',
+            );
             if (pageContent && originalContent.length > 0) {
-              pageContent.innerHTML = originalContent[0] || pageContent.innerHTML;
+              pageContent.innerHTML =
+                originalContent[0] || pageContent.innerHTML;
             }
           };
           break;
-          
-        case 'fakeError':
-          const errorModal = globalThis.document.createElement('div');
-          errorModal.className = 'eternal-darkness-error';
+
+        case "fakeError":
+          const errorModal = globalThis.document.createElement("div");
+          errorModal.className = "eternal-darkness-error";
           errorModal.style.cssText = `
             position: fixed;
             top: 50%;
@@ -2231,7 +2280,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             box-shadow: 4px 4px 8px rgba(0,0,0,0.5);
             min-width: 300px;
           `;
-          
+
           errorModal.innerHTML = `
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
               <div style="font-size: 24px;">⚠️</div>
@@ -2243,22 +2292,22 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
               <button style="padding: 4px 12px; background: #e0e0e0; border: 1px outset #c0c0c0;">Cancel</button>
             </div>
           `;
-          
-          errorModal.querySelectorAll('button').forEach(btn => {
-            btn.addEventListener('click', () => {
+
+          errorModal.querySelectorAll("button").forEach((btn) => {
+            btn.addEventListener("click", () => {
               errorModal.remove();
             });
           });
-          
+
           globalThis.document.body.appendChild(errorModal);
           effectCleanup = () => {
             if (errorModal.parentNode) errorModal.remove();
           };
           break;
-          
-        case 'volumeMeter':
-          const volumeModal = globalThis.document.createElement('div');
-          volumeModal.className = 'eternal-darkness-volume';
+
+        case "volumeMeter":
+          const volumeModal = globalThis.document.createElement("div");
+          volumeModal.className = "eternal-darkness-volume";
           volumeModal.style.cssText = `
             position: fixed;
             top: 30%;
@@ -2273,7 +2322,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             font-family: 'Courier New', monospace;
             text-align: center;
           `;
-          
+
           volumeModal.innerHTML = `
             <div style="font-size: 18px; margin-bottom: 10px;">🔊 VOLUME CORRUPTED</div>
             <div style="width: 250px; height: 25px; background: #330000; border: 1px solid #ff0000; position: relative; margin: 15px auto;">
@@ -2282,42 +2331,56 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             <div style="margin-top: 15px; font-size: 12px; color: #ff6666;">Unknown entity is manipulating audio levels</div>
             <div style="margin-top: 10px; font-size: 10px; opacity: 0.7;">This cannot be happening...</div>
           `;
-          
+
           globalThis.document.body.appendChild(volumeModal);
-          
-          const volumeBar = volumeModal.querySelector('#fake-volume-bar');
+
+          const volumeBar = volumeModal.querySelector("#fake-volume-bar");
           const volumeInterval = setInterval(() => {
             const volumeLevel = Math.floor(Math.random() * 100);
-            volumeBar.style.width = volumeLevel + '%';
+            volumeBar.style.width = volumeLevel + "%";
           }, 150);
-          
+
           effectCleanup = () => {
             clearInterval(volumeInterval);
             if (volumeModal.parentNode) volumeModal.remove();
           };
-          globalThis.eternalDarknessCleanup.push(() => clearInterval(volumeInterval));
+          globalThis.eternalDarknessCleanup.push(() =>
+            clearInterval(volumeInterval),
+          );
           break;
-          
-        case 'cursorGlitch':
+
+        case "cursorGlitch":
           const originalCursor = globalThis.document.body.style.cursor;
-          const cursors = ['wait', 'not-allowed', 'crosshair', 'move', 'text', 'progress', 'grab', 'pointer'];
+          const cursors = [
+            "wait",
+            "not-allowed",
+            "crosshair",
+            "move",
+            "text",
+            "progress",
+            "grab",
+            "pointer",
+          ];
           let cursorIndex = 0;
-          
+
           const cursorInterval = setInterval(() => {
-            globalThis.document.body.style.cursor = cursors[cursorIndex % cursors.length];
+            globalThis.document.body.style.cursor =
+              cursors[cursorIndex % cursors.length];
             cursorIndex++;
           }, 200);
-          
+
           effectCleanup = () => {
             clearInterval(cursorInterval);
             globalThis.document.body.style.cursor = originalCursor;
           };
-          globalThis.eternalDarknessCleanup.push(() => clearInterval(cursorInterval));
+          globalThis.eternalDarknessCleanup.push(() =>
+            clearInterval(cursorInterval),
+          );
           break;
-          
-        case 'zombieInvasion':
-          const invasionContainer = globalThis.document.createElement('div');
-          invasionContainer.className = 'eternal-darkness-invasion';
+
+        case "zombieInvasion":
+          const invasionContainer = globalThis.document.createElement("div");
+          invasionContainer.className = "eternal-darkness-invasion";
           invasionContainer.style.cssText = `
             position: fixed;
             top: 0;
@@ -2328,12 +2391,12 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             z-index: 10004;
             overflow: hidden;
           `;
-          
+
           // Create multiple zombies that grow over time
           const zombies = [];
           for (let i = 0; i < 20; i++) {
-            const zombie = globalThis.document.createElement('div');
-            zombie.textContent = '🧟‍♂️';
+            const zombie = globalThis.document.createElement("div");
+            zombie.textContent = "🧟‍♂️";
             zombie.style.cssText = `
               position: absolute;
               left: ${Math.random() * 100}%;
@@ -2345,22 +2408,22 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             invasionContainer.appendChild(zombie);
             zombies.push(zombie);
           }
-          
+
           // Create giant boss creatures
           const bosses = [
-            { emoji: '🦂', name: 'scorpion' },
-            { emoji: '🦑', name: 'squid' },
-            { emoji: '🧙‍♂️', name: 'wizard' },
-            { emoji: '💀', name: 'skeleton' }
+            { emoji: "🦂", name: "scorpion" },
+            { emoji: "🦑", name: "squid" },
+            { emoji: "🧙‍♂️", name: "wizard" },
+            { emoji: "💀", name: "skeleton" },
           ];
-          
+
           bosses.forEach((boss, index) => {
-            const bossElement = globalThis.document.createElement('div');
+            const bossElement = globalThis.document.createElement("div");
             bossElement.textContent = boss.emoji;
             bossElement.className = `boss-${boss.name}`;
             bossElement.style.cssText = `
               position: absolute;
-              left: ${(index * 25) + 10}%;
+              left: ${index * 25 + 10}%;
               top: ${Math.random() * 50 + 20}%;
               font-size: 60px;
               transition: font-size 1s ease-out, transform 0.3s ease-in-out;
@@ -2369,11 +2432,11 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             `;
             invasionContainer.appendChild(bossElement);
           });
-          
+
           // Add invasion animation CSS
-          if (!globalThis.document.getElementById('invasion-animation')) {
-            const style = globalThis.document.createElement('style');
-            style.id = 'invasion-animation';
+          if (!globalThis.document.getElementById("invasion-animation")) {
+            const style = globalThis.document.createElement("style");
+            style.id = "invasion-animation";
             style.textContent = `
               @keyframes zombie-float {
                 0% {
@@ -2396,61 +2459,65 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             `;
             globalThis.document.head.appendChild(style);
           }
-          
+
           globalThis.document.body.appendChild(invasionContainer);
-          
+
           // Grow zombies over time
           let growthStage = 0;
           const growthInterval = setInterval(() => {
             growthStage++;
-            zombies.forEach(zombie => {
-              const newSize = 20 + (growthStage * 8);
-              zombie.style.fontSize = newSize + 'px';
-              
+            zombies.forEach((zombie) => {
+              const newSize = 20 + growthStage * 8;
+              zombie.style.fontSize = newSize + "px";
+
               // Add more intense effects as they grow
               if (growthStage > 5) {
-                zombie.style.filter = 'hue-rotate(120deg) saturate(1.5)';
+                zombie.style.filter = "hue-rotate(120deg) saturate(1.5)";
               }
               if (growthStage > 8) {
-                zombie.style.textShadow = '0 0 10px #ff0000';
+                zombie.style.textShadow = "0 0 10px #ff0000";
               }
             });
-            
+
             // Grow bosses too
-            const bossElements = invasionContainer.querySelectorAll('[class^="boss-"]');
-            bossElements.forEach(boss => {
-              const newSize = 60 + (growthStage * 10);
-              boss.style.fontSize = newSize + 'px';
-              
+            const bossElements =
+              invasionContainer.querySelectorAll('[class^="boss-"]');
+            bossElements.forEach((boss) => {
+              const newSize = 60 + growthStage * 10;
+              boss.style.fontSize = newSize + "px";
+
               if (growthStage > 6) {
-                boss.style.filter = 'drop-shadow(0 0 30px rgba(255, 0, 0, 1)) hue-rotate(30deg)';
+                boss.style.filter =
+                  "drop-shadow(0 0 30px rgba(255, 0, 0, 1)) hue-rotate(30deg)";
               }
             });
-            
+
             // Stop growing after 12 stages
             if (growthStage >= 12) {
               clearInterval(growthInterval);
             }
           }, 400);
-          
+
           effectCleanup = () => {
             clearInterval(growthInterval);
             if (invasionContainer.parentNode) invasionContainer.remove();
           };
-          globalThis.eternalDarknessCleanup.push(() => clearInterval(growthInterval));
+          globalThis.eternalDarknessCleanup.push(() =>
+            clearInterval(growthInterval),
+          );
           break;
-          
-        case 'buttonSwap':
-          const buttons = globalThis.document.querySelectorAll('button');
+
+        case "buttonSwap":
+          const buttons = globalThis.document.querySelectorAll("button");
           const originalButtonTexts = [];
-          
+
           buttons.forEach((btn, index) => {
             if (btn.textContent.trim()) {
               originalButtonTexts[index] = btn.textContent;
-              btn.textContent = btn.textContent.split('').reverse().join('');
+              btn.textContent = btn.textContent.split("").reverse().join("");
             }
           });
-          
+
           effectCleanup = () => {
             buttons.forEach((btn, index) => {
               if (originalButtonTexts[index]) {
@@ -2459,21 +2526,30 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             });
           };
           break;
-          
-        case 'textScramble':
-          const textElements = globalThis.document.querySelectorAll('p, h1, h2, h3, h4, h5, h6, span, div');
+
+        case "textScramble":
+          const textElements = globalThis.document.querySelectorAll(
+            "p, h1, h2, h3, h4, h5, h6, span, div",
+          );
           const originalElementTexts = [];
-          
+
           textElements.forEach((elem, index) => {
-            if (elem.textContent.trim() && elem.children.length === 0 && elem.textContent.length < 100) {
+            if (
+              elem.textContent.trim() &&
+              elem.children.length === 0 &&
+              elem.textContent.length < 100
+            ) {
               originalElementTexts[index] = elem.textContent;
-              const scrambled = elem.textContent.split('').map(() => 
-                String.fromCharCode(33 + Math.floor(Math.random() * 94))
-              ).join('');
+              const scrambled = elem.textContent
+                .split("")
+                .map(() =>
+                  String.fromCharCode(33 + Math.floor(Math.random() * 94)),
+                )
+                .join("");
               elem.textContent = scrambled;
             }
           });
-          
+
           effectCleanup = () => {
             textElements.forEach((elem, index) => {
               if (originalElementTexts[index]) {
@@ -2482,77 +2558,92 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
             });
           };
           break;
-          
-        case 'mouseScaleDown':
+
+        case "mouseScaleDown":
           const body = globalThis.document.body;
-          body.style.transformOrigin = 'center center';
-          body.style.transition = 'transform 0.1s ease-out';
-          
+          body.style.transformOrigin = "center center";
+          body.style.transition = "transform 0.1s ease-out";
+
           const mouseDownHandler = (e) => {
             const centerX = globalThis.innerWidth / 2;
             const centerY = globalThis.innerHeight / 2;
             const distance = Math.sqrt(
-              Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2)
+              Math.pow(e.clientX - centerX, 2) +
+                Math.pow(e.clientY - centerY, 2),
             );
-            const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
-            const scaleFactor = Math.max(0.3, 1 - (distance / maxDistance) * 0.7);
-            
+            const maxDistance = Math.sqrt(
+              centerX * centerX + centerY * centerY,
+            );
+            const scaleFactor = Math.max(
+              0.3,
+              1 - (distance / maxDistance) * 0.7,
+            );
+
             body.style.transform = `scale(${scaleFactor})`;
           };
-          
-          globalThis.document.addEventListener('mousemove', mouseDownHandler);
+
+          globalThis.document.addEventListener("mousemove", mouseDownHandler);
           globalThis.eternalDarknessMouseHandler = mouseDownHandler;
-          
+
           effectCleanup = () => {
-            globalThis.document.removeEventListener('mousemove', mouseDownHandler);
-            body.style.transform = '';
-            body.style.transformOrigin = '';
-            body.style.transition = '';
+            globalThis.document.removeEventListener(
+              "mousemove",
+              mouseDownHandler,
+            );
+            body.style.transform = "";
+            body.style.transformOrigin = "";
+            body.style.transition = "";
           };
           break;
-          
-        case 'mouseScaleUp':
+
+        case "mouseScaleUp":
           const bodyUp = globalThis.document.body;
-          bodyUp.style.transformOrigin = 'center center';
-          bodyUp.style.transition = 'transform 0.1s ease-out';
-          
+          bodyUp.style.transformOrigin = "center center";
+          bodyUp.style.transition = "transform 0.1s ease-out";
+
           const mouseUpHandler = (e) => {
             const centerX = globalThis.innerWidth / 2;
             const centerY = globalThis.innerHeight / 2;
             const distance = Math.sqrt(
-              Math.pow(e.clientX - centerX, 2) + Math.pow(e.clientY - centerY, 2)
+              Math.pow(e.clientX - centerX, 2) +
+                Math.pow(e.clientY - centerY, 2),
             );
-            const maxDistance = Math.sqrt(centerX * centerX + centerY * centerY);
+            const maxDistance = Math.sqrt(
+              centerX * centerX + centerY * centerY,
+            );
             const scaleFactor = Math.min(3, 1 + (distance / maxDistance) * 2);
-            
+
             bodyUp.style.transform = `scale(${scaleFactor})`;
           };
-          
-          globalThis.document.addEventListener('mousemove', mouseUpHandler);
+
+          globalThis.document.addEventListener("mousemove", mouseUpHandler);
           globalThis.eternalDarknessMouseHandler = mouseUpHandler;
-          
+
           effectCleanup = () => {
-            globalThis.document.removeEventListener('mousemove', mouseUpHandler);
-            bodyUp.style.transform = '';
-            bodyUp.style.transformOrigin = '';
-            bodyUp.style.transition = '';
+            globalThis.document.removeEventListener(
+              "mousemove",
+              mouseUpHandler,
+            );
+            bodyUp.style.transform = "";
+            bodyUp.style.transformOrigin = "";
+            bodyUp.style.transition = "";
           };
           break;
       }
-      
+
       // Store cleanup function
       if (effectCleanup) {
         globalThis.eternalDarknessCleanup.push(effectCleanup);
       }
-      
+
       // After 5 seconds, show restoration sequence but keep effects going
       setTimeout(() => {
         if (!globalThis.eternalDarknessActive) return;
-        
+
         // Don't restore sanity meter automatically - let mouse position control it
-        
+
         // Screen flash effect
-        const flash = globalThis.document.createElement('div');
+        const flash = globalThis.document.createElement("div");
         flash.style.cssText = `
           position: fixed;
           top: 0;
@@ -2564,11 +2655,11 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           pointer-events: none;
           animation: eternal-flash 0.8s ease-out;
         `;
-        
+
         // Add flash animation CSS
-        if (!globalThis.document.getElementById('eternal-darkness-animation')) {
-          const style = globalThis.document.createElement('style');
-          style.id = 'eternal-darkness-animation';
+        if (!globalThis.document.getElementById("eternal-darkness-animation")) {
+          const style = globalThis.document.createElement("style");
+          style.id = "eternal-darkness-animation";
           style.textContent = `
             @keyframes eternal-flash {
               0% { opacity: 0; }
@@ -2580,27 +2671,26 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           `;
           globalThis.document.head.appendChild(style);
         }
-        
+
         globalThis.document.body.appendChild(flash);
-        
+
         // Remove flash after animation
         setTimeout(() => {
           if (flash.parentNode) flash.remove();
         }, 800);
-        
+
         // Play the signature voice line
-        SuperDaemonInstance.merlinSpeak('This. Can\'t. Be. Happening.');
-        
+        SuperDaemonInstance.merlinSpeak("This. Can't. Be. Happening.");
+
         // Cleanup current effect but keep the system active
         if (effectCleanup) {
           effectCleanup();
         }
-        
       }, 5000);
     }
-    
-    HAXStore.toast('🌙 ETERNAL DARKNESS - Your sanity slips away...');
-    store.playSound('success');
+
+    HAXStore.toast("🌙 ETERNAL DARKNESS - Your sanity slips away...");
+    store.playSound("success");
     SuperDaemonInstance.close();
   };
 
@@ -2609,8 +2699,8 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
    */
   editorInstance._executeCheatYTMND = function () {
     // Create YTMND overlay
-    const ytmndOverlay = globalThis.document.createElement('div');
-    ytmndOverlay.id = 'ytmnd-overlay';
+    const ytmndOverlay = globalThis.document.createElement("div");
+    ytmndOverlay.id = "ytmnd-overlay";
     ytmndOverlay.style.cssText = `
       position: fixed;
       top: 0;
@@ -2626,7 +2716,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     `;
 
     // Create spinning image container
-    const imageContainer = globalThis.document.createElement('div');
+    const imageContainer = globalThis.document.createElement("div");
     imageContainer.style.cssText = `
       width: 300px;
       height: 300px;
@@ -2636,10 +2726,10 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       justify-content: center;
       font-size: 200px;
     `;
-    imageContainer.innerHTML = '😎'; // Cool face emoji
+    imageContainer.innerHTML = "😎"; // Cool face emoji
 
     // Create impact text overlay
-    const textOverlay = globalThis.document.createElement('div');
+    const textOverlay = globalThis.document.createElement("div");
     textOverlay.innerHTML = "YOU'RE THE MAN NOW DOG!";
     textOverlay.style.cssText = `
       position: absolute;
@@ -2656,7 +2746,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     `;
 
     // Create bottom text
-    const bottomText = globalThis.document.createElement('div');
+    const bottomText = globalThis.document.createElement("div");
     bottomText.innerHTML = "NEDM CAT HAS CLASS";
     bottomText.style.cssText = `
       position: absolute;
@@ -2677,9 +2767,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     ytmndOverlay.appendChild(bottomText);
 
     // Add YTMND animations
-    if (!globalThis.document.getElementById('ytmnd-animations')) {
-      const style = globalThis.document.createElement('style');
-      style.id = 'ytmnd-animations';
+    if (!globalThis.document.getElementById("ytmnd-animations")) {
+      const style = globalThis.document.createElement("style");
+      style.id = "ytmnd-animations";
       style.textContent = `
         @keyframes ytmnd-spin {
           0% { transform: rotate(0deg) scale(1); }
@@ -2705,7 +2795,8 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     globalThis.document.body.appendChild(ytmndOverlay);
 
     // Play repeating audio loop
-    const audioContext = new (globalThis.AudioContext || globalThis.webkitAudioContext)();
+    const audioContext = new (globalThis.AudioContext ||
+      globalThis.webkitAudioContext)();
     let audioInterval = setInterval(() => {
       // Play YTMND-style beeping melody
       const notes = [440, 554, 659, 440]; // A, C#, E, A
@@ -2713,16 +2804,19 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         setTimeout(() => {
           const oscillator = audioContext.createOscillator();
           const gainNode = audioContext.createGain();
-          
+
           oscillator.connect(gainNode);
           gainNode.connect(audioContext.destination);
-          
+
           oscillator.frequency.setValueAtTime(freq, audioContext.currentTime);
-          oscillator.type = 'square';
-          
+          oscillator.type = "square";
+
           gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-          gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
-          
+          gainNode.gain.exponentialRampToValueAtTime(
+            0.01,
+            audioContext.currentTime + 0.3,
+          );
+
           oscillator.start(audioContext.currentTime);
           oscillator.stop(audioContext.currentTime + 0.3);
         }, index * 200);
@@ -2738,14 +2832,16 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     }, 15000);
 
     // Click to close
-    ytmndOverlay.addEventListener('click', () => {
+    ytmndOverlay.addEventListener("click", () => {
       clearInterval(audioInterval);
       ytmndOverlay.remove();
     });
 
-    HAXStore.toast('🎵 YTMND ACTIVATED! You\'re the man now, dog!');
-    store.playSound('success');
-    SuperDaemonInstance.merlinSpeak('You\'re the man now, dog! Welcome to the golden age of internet memes!');
+    HAXStore.toast("🎵 YTMND ACTIVATED! You're the man now, dog!");
+    store.playSound("success");
+    SuperDaemonInstance.merlinSpeak(
+      "You're the man now, dog! Welcome to the golden age of internet memes!",
+    );
     SuperDaemonInstance.close();
   };
 
@@ -2754,8 +2850,8 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
    */
   editorInstance._executeCheatGeocities = function () {
     // Create Geocities overlay
-    const geocitiesOverlay = globalThis.document.createElement('div');
-    geocitiesOverlay.id = 'geocities-overlay';
+    const geocitiesOverlay = globalThis.document.createElement("div");
+    geocitiesOverlay.id = "geocities-overlay";
     geocitiesOverlay.style.cssText = `
       position: fixed;
       top: 0;
@@ -2825,9 +2921,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     `;
 
     // Add Geocities animations
-    if (!globalThis.document.getElementById('geocities-animations')) {
-      const style = globalThis.document.createElement('style');
-      style.id = 'geocities-animations';
+    if (!globalThis.document.getElementById("geocities-animations")) {
+      const style = globalThis.document.createElement("style");
+      style.id = "geocities-animations";
       style.textContent = `
         @keyframes geocities-rainbow {
           0% { background-position: 0% 50%; }
@@ -2857,30 +2953,37 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     globalThis.document.body.appendChild(geocitiesOverlay);
 
     // Play MIDI-style background music
-    const audioContext = new (globalThis.AudioContext || globalThis.webkitAudioContext)();
+    const audioContext = new (globalThis.AudioContext ||
+      globalThis.webkitAudioContext)();
     const playMIDIStyle = () => {
       const melody = [261, 294, 329, 349, 392, 440, 493, 523]; // C major scale
       let noteIndex = 0;
-      
+
       const playNote = () => {
         const oscillator = audioContext.createOscillator();
         const gainNode = audioContext.createGain();
-        
+
         oscillator.connect(gainNode);
         gainNode.connect(audioContext.destination);
-        
-        oscillator.frequency.setValueAtTime(melody[noteIndex], audioContext.currentTime);
-        oscillator.type = 'square';
-        
+
+        oscillator.frequency.setValueAtTime(
+          melody[noteIndex],
+          audioContext.currentTime,
+        );
+        oscillator.type = "square";
+
         gainNode.gain.setValueAtTime(0.05, audioContext.currentTime);
-        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-        
+        gainNode.gain.exponentialRampToValueAtTime(
+          0.01,
+          audioContext.currentTime + 0.5,
+        );
+
         oscillator.start(audioContext.currentTime);
         oscillator.stop(audioContext.currentTime + 0.5);
-        
+
         noteIndex = (noteIndex + 1) % melody.length;
       };
-      
+
       return setInterval(playNote, 600);
     };
 
@@ -2895,14 +2998,16 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     }, 20000);
 
     // Click to close
-    geocitiesOverlay.addEventListener('click', () => {
+    geocitiesOverlay.addEventListener("click", () => {
       clearInterval(musicInterval);
       geocitiesOverlay.remove();
     });
 
-    HAXStore.toast('🌈 GEOCITIES ACTIVATED! Welcome to 1999!');
-    store.playSound('success');
-    SuperDaemonInstance.merlinSpeak('Welcome to the information superhighway! Don\'t forget to sign the guestbook!');
+    HAXStore.toast("🌈 GEOCITIES ACTIVATED! Welcome to 1999!");
+    store.playSound("success");
+    SuperDaemonInstance.merlinSpeak(
+      "Welcome to the information superhighway! Don't forget to sign the guestbook!",
+    );
     SuperDaemonInstance.close();
   };
 
@@ -2911,8 +3016,8 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
    */
   editorInstance._executeCheatClippy = function () {
     // Create Clippy character
-    const clippy = globalThis.document.createElement('div');
-    clippy.id = 'clippy-assistant';
+    const clippy = globalThis.document.createElement("div");
+    clippy.id = "clippy-assistant";
     clippy.style.cssText = `
       position: fixed;
       bottom: 100px;
@@ -2975,7 +3080,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       "I see you're using a modern web browser. Fancy!",
       "Would you like me to search for 'How to disable Clippy'?",
       "It appears you're annoyed by me. That's normal!",
-      "I'm here to help whether you want it or not!"
+      "I'm here to help whether you want it or not!",
     ];
 
     const showSpeechBubble = (message) => {
@@ -2984,7 +3089,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         speechBubble.remove();
       }
 
-      speechBubble = globalThis.document.createElement('div');
+      speechBubble = globalThis.document.createElement("div");
       speechBubble.style.cssText = `
         position: fixed;
         bottom: 200px;
@@ -3041,7 +3146,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       globalThis.document.body.appendChild(speechBubble);
 
       // Close button for speech bubble
-      speechBubble.querySelector('button').addEventListener('click', () => {
+      speechBubble.querySelector("button").addEventListener("click", () => {
         speechBubble.remove();
         speechBubble = null;
       });
@@ -3056,9 +3161,9 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     };
 
     // Add Clippy animations
-    if (!globalThis.document.getElementById('clippy-animations')) {
-      const style = globalThis.document.createElement('style');
-      style.id = 'clippy-animations';
+    if (!globalThis.document.getElementById("clippy-animations")) {
+      const style = globalThis.document.createElement("style");
+      style.id = "clippy-animations";
       style.textContent = `
         @keyframes clippy-bounce {
           0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -3092,43 +3197,50 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     // Random helpful suggestions
     const suggestionInterval = setInterval(() => {
-      const randomPhrase = clippyPhrases[Math.floor(Math.random() * clippyPhrases.length)];
+      const randomPhrase =
+        clippyPhrases[Math.floor(Math.random() * clippyPhrases.length)];
       showSpeechBubble(randomPhrase);
     }, 8000);
 
     // Click interactions
     let clickCount = 0;
-    clippy.addEventListener('click', () => {
+    clippy.addEventListener("click", () => {
       clickCount++;
       const clickResponses = [
         "Thanks for clicking me! I love attention!",
         "I'm here to help! What can I do for you?",
         "Did you know I have feelings? Well, I don't, but still...",
         "Stop poking me! I'm trying to be helpful!",
-        "I'm not just a pretty paperclip, you know!"
+        "I'm not just a pretty paperclip, you know!",
       ];
       showSpeechBubble(clickResponses[clickCount % clickResponses.length]);
     });
 
     // Page interaction responses
     let pageClickHandler = (e) => {
-      if (e.target !== clippy && !e.target.closest('#clippy-assistant') && Math.random() < 0.3) {
+      if (
+        e.target !== clippy &&
+        !e.target.closest("#clippy-assistant") &&
+        Math.random() < 0.3
+      ) {
         const contextResponses = [
           "I see you clicked on that. Need help with clicking?",
           "Interesting choice! I would have clicked something else.",
           "That's not where I would click, but you do you!",
-          "I notice you're interacting with the page. Fascinating!"
+          "I notice you're interacting with the page. Fascinating!",
         ];
-        showSpeechBubble(contextResponses[Math.floor(Math.random() * contextResponses.length)]);
+        showSpeechBubble(
+          contextResponses[Math.floor(Math.random() * contextResponses.length)],
+        );
       }
     };
 
-    globalThis.document.addEventListener('click', pageClickHandler);
+    globalThis.document.addEventListener("click", pageClickHandler);
 
     // Auto remove after 30 seconds
     setTimeout(() => {
       clearInterval(suggestionInterval);
-      globalThis.document.removeEventListener('click', pageClickHandler);
+      globalThis.document.removeEventListener("click", pageClickHandler);
       if (clippy.parentNode) {
         clippy.remove();
       }
@@ -3138,10 +3250,12 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     }, 30000);
 
     // Double-click to dismiss
-    clippy.addEventListener('dblclick', () => {
+    clippy.addEventListener("dblclick", () => {
       clearInterval(suggestionInterval);
-      globalThis.document.removeEventListener('click', pageClickHandler);
-      showSpeechBubble("Fine, I'll go away! But I'll be back when you least expect it!");
+      globalThis.document.removeEventListener("click", pageClickHandler);
+      showSpeechBubble(
+        "Fine, I'll go away! But I'll be back when you least expect it!",
+      );
       setTimeout(() => {
         if (clippy.parentNode) {
           clippy.remove();
@@ -3152,9 +3266,11 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
       }, 2000);
     });
 
-    HAXStore.toast('📎 CLIPPY ACTIVATED! I\'m here to help!');
-    store.playSound('success');
-    SuperDaemonInstance.merlinSpeak('It looks like you\'re trying to activate an assistant. I can help with that!');
+    HAXStore.toast("📎 CLIPPY ACTIVATED! I'm here to help!");
+    store.playSound("success");
+    SuperDaemonInstance.merlinSpeak(
+      "It looks like you're trying to activate an assistant. I can help with that!",
+    );
     SuperDaemonInstance.close();
   };
 
@@ -3163,8 +3279,8 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
    */
   editorInstance._executeCheatChickenButt = function () {
     // Create game overlay
-    const gameOverlay = globalThis.document.createElement('div');
-    gameOverlay.id = 'chickenbutt-game';
+    const gameOverlay = globalThis.document.createElement("div");
+    gameOverlay.id = "chickenbutt-game";
     gameOverlay.style.cssText = `
       position: fixed;
       top: 0;
@@ -3181,12 +3297,12 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
     let foundItems = {
       chicken: false,
       waterGun: false,
-      monster: false
+      monster: false,
     };
     let totalFound = 0;
 
     // Create status display
-    const statusDisplay = globalThis.document.createElement('div');
+    const statusDisplay = globalThis.document.createElement("div");
     statusDisplay.style.cssText = `
       position: fixed;
       top: 20px;
@@ -3215,93 +3331,136 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     // Special target emojis (higher z-index)
     const specialEmojis = [
-      { emoji: '🐔', id: 'chicken', name: 'Chicken' },
-      { emoji: '🔫', id: 'waterGun', name: 'Freeze Ray' }, 
-      { emoji: '🦖', id: 'monster', name: 'Rawr Monster' }
+      { emoji: "🐔", id: "chicken", name: "Chicken" },
+      { emoji: "🔫", id: "waterGun", name: "Freeze Ray" },
+      { emoji: "🦖", id: "monster", name: "Rawr Monster" },
     ];
 
     // Background emojis for visual clutter
     const backgroundEmojis = [
-      '🌳', '🌲', '🌴', '🌿', '🍀', // Trees and plants
-      '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚', '🕛', '⏰', '⏱️', '⏲️', // Clocks
-      '🔥', '🎇', '✨', '🌟', '💫', '🔆', // Fire and sparkles
-      '🧱', '🟧', '🟨', '🟩', '🟦', '🟪', '🟫', '⬜', '⬛', '🔳', '🔲' // Lego-like blocks
+      "🌳",
+      "🌲",
+      "🌴",
+      "🌿",
+      "🍀", // Trees and plants
+      "🕐",
+      "🕑",
+      "🕒",
+      "🕓",
+      "🕔",
+      "🕕",
+      "🕖",
+      "🕗",
+      "🕘",
+      "🕙",
+      "🕚",
+      "🕛",
+      "⏰",
+      "⏱️",
+      "⏲️", // Clocks
+      "🔥",
+      "🎇",
+      "✨",
+      "🌟",
+      "💫",
+      "🔆", // Fire and sparkles
+      "🧱",
+      "🟧",
+      "🟨",
+      "🟩",
+      "🟦",
+      "🟪",
+      "🟫",
+      "⬜",
+      "⬛",
+      "🔳",
+      "🔲", // Lego-like blocks
     ];
 
     // Function to create a random emoji element
     const createRandomEmoji = (emoji, isSpecial = false) => {
-      const element = globalThis.document.createElement('div');
+      const element = globalThis.document.createElement("div");
       const fontSize = Math.floor(Math.random() * 35) + 20; // 20px to 54px
       const x = Math.random() * (globalThis.innerWidth - fontSize);
       const y = Math.random() * (globalThis.innerHeight - fontSize);
-      
+
       element.style.cssText = `
         position: absolute;
         left: ${x}px;
         top: ${y}px;
         font-size: ${fontSize}px;
         z-index: ${isSpecial ? 10002 : 10001};
-        cursor: ${isSpecial ? 'pointer' : 'default'};
+        cursor: ${isSpecial ? "pointer" : "default"};
         user-select: none;
         transition: transform 0.2s ease;
       `;
-      
+
       element.innerHTML = emoji;
-      
+
       if (isSpecial) {
-        element.addEventListener('mouseenter', () => {
-          element.style.transform = 'scale(1.2)';
+        element.addEventListener("mouseenter", () => {
+          element.style.transform = "scale(1.2)";
         });
-        element.addEventListener('mouseleave', () => {
-          element.style.transform = 'scale(1)';
+        element.addEventListener("mouseleave", () => {
+          element.style.transform = "scale(1)";
         });
       }
-      
+
       return element;
     };
 
     // Create hundreds of background emojis
     for (let i = 0; i < 300; i++) {
-      const randomEmoji = backgroundEmojis[Math.floor(Math.random() * backgroundEmojis.length)];
+      const randomEmoji =
+        backgroundEmojis[Math.floor(Math.random() * backgroundEmojis.length)];
       const emojiElement = createRandomEmoji(randomEmoji, false);
       gameOverlay.appendChild(emojiElement);
     }
 
     // Create and place the three special emojis
-    specialEmojis.forEach(special => {
+    specialEmojis.forEach((special) => {
       const specialElement = createRandomEmoji(special.emoji, true);
       specialElement.id = `target-${special.id}`;
-      
-      specialElement.addEventListener('click', () => {
+
+      specialElement.addEventListener("click", () => {
         if (!foundItems[special.id]) {
           foundItems[special.id] = true;
           totalFound++;
-          
+
           // Update status display
-          const statusElement = globalThis.document.getElementById(`${special.id === 'waterGun' ? 'gun' : special.id}-status`);
-          statusElement.style.color = '#00AA00';
-          statusElement.style.textDecoration = 'line-through';
-          
+          const statusElement = globalThis.document.getElementById(
+            `${special.id === "waterGun" ? "gun" : special.id}-status`,
+          );
+          statusElement.style.color = "#00AA00";
+          statusElement.style.textDecoration = "line-through";
+
           // Celebration animation
-          specialElement.style.animation = 'chickenbutt-found 1s ease-out';
-          
+          specialElement.style.animation = "chickenbutt-found 1s ease-out";
+
           // Success sound
-          const audioContext = new (globalThis.AudioContext || globalThis.webkitAudioContext)();
+          const audioContext = new (globalThis.AudioContext ||
+            globalThis.webkitAudioContext)();
           const oscillator = audioContext.createOscillator();
           const gainNode = audioContext.createGain();
-          
+
           oscillator.connect(gainNode);
           gainNode.connect(audioContext.destination);
-          
-          oscillator.frequency.setValueAtTime(523 + (totalFound * 100), audioContext.currentTime); // C5 + higher each time
-          oscillator.type = 'sine';
-          
+
+          oscillator.frequency.setValueAtTime(
+            523 + totalFound * 100,
+            audioContext.currentTime,
+          ); // C5 + higher each time
+          oscillator.type = "sine";
+
           gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
-          gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-          
+          gainNode.gain.exponentialRampToValueAtTime(
+            0.01,
+            audioContext.currentTime + 0.5,
+          );
+
           oscillator.start(audioContext.currentTime);
           oscillator.stop(audioContext.currentTime + 0.5);
-          
+
           // Check if all items found
           if (totalFound === 3) {
             setTimeout(() => {
@@ -3310,13 +3469,13 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           }
         }
       });
-      
+
       gameOverlay.appendChild(specialElement);
     });
 
     // Victory screen function
     const showVictoryScreen = () => {
-      const victoryOverlay = globalThis.document.createElement('div');
+      const victoryOverlay = globalThis.document.createElement("div");
       victoryOverlay.style.cssText = `
         position: fixed;
         top: 0;
@@ -3333,7 +3492,7 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
         flex-direction: column;
         font-family: 'Comic Sans MS', cursive, sans-serif;
       `;
-      
+
       victoryOverlay.innerHTML = `
         <div style="
           text-align: center;
@@ -3348,42 +3507,46 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
           <div style="font-size: 18px; margin-top: 30px; opacity: 0.8;">Click anywhere to close</div>
         </div>
       `;
-      
+
       // Victory celebration sound
-      const audioContext = new (globalThis.AudioContext || globalThis.webkitAudioContext)();
+      const audioContext = new (globalThis.AudioContext ||
+        globalThis.webkitAudioContext)();
       const victoryMelody = [523, 659, 784, 1047]; // C, E, G, C octave
-      
+
       victoryMelody.forEach((freq, index) => {
         setTimeout(() => {
           const oscillator = audioContext.createOscillator();
           const gainNode = audioContext.createGain();
-          
+
           oscillator.connect(gainNode);
           gainNode.connect(audioContext.destination);
-          
+
           oscillator.frequency.setValueAtTime(freq, audioContext.currentTime);
-          oscillator.type = 'sine';
-          
+          oscillator.type = "sine";
+
           gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
-          gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.8);
-          
+          gainNode.gain.exponentialRampToValueAtTime(
+            0.01,
+            audioContext.currentTime + 0.8,
+          );
+
           oscillator.start(audioContext.currentTime);
           oscillator.stop(audioContext.currentTime + 0.8);
         }, index * 300);
       });
-      
+
       gameOverlay.appendChild(victoryOverlay);
-      
+
       // Click to close everything
-      victoryOverlay.addEventListener('click', () => {
+      victoryOverlay.addEventListener("click", () => {
         gameOverlay.remove();
       });
     };
 
     // Add animations CSS
-    if (!globalThis.document.getElementById('chickenbutt-animations')) {
-      const style = globalThis.document.createElement('style');
-      style.id = 'chickenbutt-animations';
+    if (!globalThis.document.getElementById("chickenbutt-animations")) {
+      const style = globalThis.document.createElement("style");
+      style.id = "chickenbutt-animations";
       style.textContent = `
         @keyframes chickenbutt-found {
           0% { transform: scale(1) rotate(0deg); }
@@ -3405,9 +3568,13 @@ export function addCheatCodeMethods(editorInstance, SuperDaemonInstance) {
 
     globalThis.document.body.appendChild(gameOverlay);
 
-    HAXStore.toast('🐔 CHICKEN BUTT FREEZE RAY RAWR! Find the three special items!');
-    store.playSound('success');
-    SuperDaemonInstance.merlinSpeak('I love you to the moon and back! Can you find the chicken, freeze ray, and rawr monster?');
+    HAXStore.toast(
+      "🐔 CHICKEN BUTT FREEZE RAY RAWR! Find the three special items!",
+    );
+    store.playSound("success");
+    SuperDaemonInstance.merlinSpeak(
+      "I love you to the moon and back! Can you find the chicken, freeze ray, and rawr monster?",
+    );
     SuperDaemonInstance.close();
   };
 

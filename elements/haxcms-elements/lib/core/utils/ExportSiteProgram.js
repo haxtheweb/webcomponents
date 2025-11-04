@@ -60,7 +60,8 @@ export function createExportSiteProgram(context) {
         title: "Export site skeleton",
         icon: "icons:description",
         format: "skeleton",
-        description: "Export as reusable site template for creating similar sites",
+        description:
+          "Export as reusable site template for creating similar sites",
       },
     ];
 
@@ -423,24 +424,26 @@ export function _downloadBlob(blob, filename) {
 export async function _exportSiteAsSkeleton(manifest, title, baseUrl) {
   try {
     HAXStore.toast("Generating site skeleton...", 3000, "fit-bottom");
-    
+
     // Dynamically import the skeleton generator
-    const { SiteSkeletonGenerator } = await import("./site-skeleton-generator.js");
-    
+    const { SiteSkeletonGenerator } = await import(
+      "./site-skeleton-generator.js"
+    );
+
     // Generate the skeleton
     const skeleton = await SiteSkeletonGenerator.generateFromCurrentSite();
-    
+
     // Download the skeleton file
     const content = JSON.stringify(skeleton, null, 2);
-    const filename = `${skeleton.meta.name.replace(/[^a-z0-9]/gi, '-').toLowerCase()}-skeleton.json`;
+    const filename = `${skeleton.meta.name.replace(/[^a-z0-9]/gi, "-").toLowerCase()}-skeleton.json`;
     this._downloadFile(content, filename, "application/json");
-    
+
     HAXStore.toast(
       `Site skeleton exported successfully! Pages: ${skeleton.structure.length}, Files: ${skeleton.files.length}`,
       5000,
-      "fit-bottom"
+      "fit-bottom",
     );
-    
+
     // Log useful information about the skeleton
     console.log("Skeleton generated:", {
       name: skeleton.meta.name,
@@ -448,9 +451,12 @@ export async function _exportSiteAsSkeleton(manifest, title, baseUrl) {
       files: skeleton.files.length,
       theme: skeleton.theme.element,
     });
-    
   } catch (error) {
     console.error("Skeleton export failed:", error);
-    HAXStore.toast(`Skeleton export failed: ${error.message}`, 5000, "fit-bottom");
+    HAXStore.toast(
+      `Skeleton export failed: ${error.message}`,
+      5000,
+      "fit-bottom",
+    );
   }
 }

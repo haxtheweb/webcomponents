@@ -28,9 +28,7 @@
       "description": "A template for creating blog sites with posts and categories",
       "image": "@haxtheweb/haxcms-elements/lib/assets/images/blog-template.svg",
       "category": ["blog", "writing"],
-      "attributes": [
-        { "icon": "lrn:write", "tooltip": "Blog Content" }
-      ],
+      "attributes": [{ "icon": "lrn:write", "tooltip": "Blog Content" }],
       "demo-url": "#",
       "skeleton-url": "#"
     },

@@ -830,6 +830,43 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.setProcessingVisual();
     switch (mode) {
       // upload and possibly link/embed the item
+      case "set-page-media":
+        // Upload file first, then set as page media
+        this.dispatchEvent(
+          new CustomEvent("hax-file-upload", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              file: values.data,
+              placeHolderElement: null,
+              operationType: "upload-only",
+              callback: (fileData) => {
+                // After upload completes, set as page media
+                const item = toJS(store.activeItem);
+                if (item && item.id && fileData && fileData.file) {
+                  globalThis.dispatchEvent(
+                    new CustomEvent("haxcms-save-node-details", {
+                      bubbles: true,
+                      composed: true,
+                      cancelable: true,
+                      detail: {
+                        id: item.id,
+                        operation: "setMedia",
+                        media: fileData.file,
+                      },
+                    }),
+                  );
+                  store.toast("Page media updated successfully!", 3000, {
+                    hat: "construction",
+                    walking: true,
+                  });
+                }
+              },
+            },
+          }),
+        );
+        break;
       case "upload":
       case "link":
       case "insert-file":
@@ -1479,8 +1516,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
 
     // Provide user feedback
-    const parentTitle = newParentId 
-      ? (await store.findItem(newParentId)).title 
+    const parentTitle = newParentId
+      ? (await store.findItem(newParentId)).title
       : "Root Level";
     store.toast(`Page moved under "${parentTitle}"`, 3000, {
       hat: "construction",
@@ -1716,13 +1753,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           const searchTerm = input ? input.toLowerCase().trim() : "";
 
           // Add option to move to root level
-          if (!searchTerm || "root".includes(searchTerm) || "top level".includes(searchTerm)) {
+          if (
+            !searchTerm ||
+            "root".includes(searchTerm) ||
+            "top level".includes(searchTerm)
+          ) {
             results.push({
               title: "Move to Root Level",
               icon: "hax:site-map",
               tags: ["root", "top", "level"],
               value: {
-                target: globalThis.document.querySelector("haxcms-site-editor-ui"),
+                target: globalThis.document.querySelector(
+                  "haxcms-site-editor-ui",
+                ),
                 method: "movePageUnderParent",
                 args: [pageId, null],
               },
@@ -1746,7 +1789,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 isChild = true;
                 break;
               }
-              checkItem = itemManifest.find(i => i.id === checkItem.parent);
+              checkItem = itemManifest.find((i) => i.id === checkItem.parent);
             }
             if (isChild) {
               return;
@@ -1761,7 +1804,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             let itemBuilder = item;
             let distance = "";
             while (itemBuilder && itemBuilder.parent != null) {
-              itemBuilder = itemManifest.find(i => i.id === itemBuilder.parent);
+              itemBuilder = itemManifest.find(
+                (i) => i.id === itemBuilder.parent,
+              );
               if (itemBuilder) {
                 distance = "--" + distance;
               }
@@ -1772,7 +1817,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon: "hax:add-child-page",
               tags: ["move", "parent"],
               value: {
-                target: globalThis.document.querySelector("haxcms-site-editor-ui"),
+                target: globalThis.document.querySelector(
+                  "haxcms-site-editor-ui",
+                ),
                 method: "movePageUnderParent",
                 args: [pageId, item.id],
               },
@@ -1894,6 +1941,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   },
                   eventName: "super-daemon-element-method",
                   path: "Image embedded in page",
+                });
+                results.push({
+                  title: `Set as the media for the active page`,
+                  icon: "image:photo-library",
+                  tags: ["agent"],
+                  value: {
+                    target: this,
+                    method: "processFileContentsBasedOnUserDesire",
+                    args: [values, "set-page-media", "image"],
+                  },
+                  eventName: "super-daemon-element-method",
+                  path: "Image set as page media",
                 });
                 break;
               case "mp4":
@@ -2362,7 +2421,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       more: "More",
       pageActions: "Page actions",
       siteActions: "Site actions",
-      insights: "Insights dashboard (beta)",
+      insights: "Insights dashboard",
       merlin: "Merlin",
       summonMerlin: "Summon Merlin",
       logOut: "Log out",
@@ -2578,7 +2637,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    * @returns {boolean} Whether the capability is allowed
    */
   platformAllows(capability) {
-    if (!this.platformConfig || typeof this.platformConfig !== 'object') {
+    if (!this.platformConfig || typeof this.platformConfig !== "object") {
       return true; // No restrictions if no platform config
     }
     // If the capability is not defined, default to true (allowed)
@@ -2702,20 +2761,68 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             label="${this.t.pageActions}"
             tabindex="${this.editMode ? "-1" : "0"}"
           >
-            <simple-toolbar-menu-item ?hidden="${!this.platformAllows('addPage')}">
+            <simple-toolbar-menu-item>
+              <simple-toolbar-button
+                ?disabled="${this.editMode || !this.pageAllowed}"
+                tabindex="${this.editMode ? "-1" : "0"}"
+                icon-position="left"
+                align-horizontal="left"
+                icon="editor:format-quote"
+                @click="${this._editDescriptionPrompt}"
+                label="Edit description"
+                show-text-label
+              ></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+              <simple-toolbar-button
+                ?disabled="${this.editMode || !this.pageAllowed}"
+                tabindex="${this.editMode ? "-1" : "0"}"
+                icon-position="left"
+                align-horizontal="left"
+                icon="editor:insert-link"
+                @click="${this._editSlugPrompt}"
+                label="Edit slug"
+                show-text-label
+              ></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+              <simple-toolbar-button
+                ?disabled="${this.editMode || !this.pageAllowed}"
+                tabindex="${this.editMode ? "-1" : "0"}"
+                icon-position="left"
+                align-horizontal="left"
+                icon="${this.activeItem &&
+                this.activeItem.metadata &&
+                this.activeItem.metadata.published !== false
+                  ? "icons:visibility"
+                  : "icons:visibility-off"}"
+                @click="${this._togglePublishedStatus}"
+                label="${this.activeItem &&
+                this.activeItem.metadata &&
+                this.activeItem.metadata.published !== false
+                  ? "Unpublish"
+                  : "Publish"}"
+                show-text-label
+              ></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item
+              ?hidden="${!this.platformAllows("addPage")}"
+            >
               <haxcms-button-add
                 id="addpagebutton"
-                ?disabled="${this.editMode ||
-                !this.pageAllowed}"
+                ?disabled="${this.editMode || !this.pageAllowed}"
                 icon="hax:add-page"
                 icon-position="left"
+                align-horizontal="left"
                 label="${this.t.addPage}"
                 tabindex="${this.editMode ? "-1" : "0"}"
                 merlin
                 show-text-label
               ></haxcms-button-add>
             </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item ?hidden="${!this.platformAllows('delete')}">
+            <simple-toolbar-menu-item
+              ?hidden="${!this.platformAllows("delete")}"
+            >
               <simple-toolbar-button
                 ?disabled="${this.editMode ||
                 !this.pageAllowed ||
@@ -2723,11 +2830,32 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 tabindex="${this.editMode ? "-1" : "0"}"
                 id="deletebutton"
                 icon-position="left"
+                align-horizontal="left"
                 icon="icons:delete"
                 @click="${this._deleteButtonTap}"
                 label="${this.t.delete}"
                 show-text-label
                 voice-command="delete page"
+              ></simple-toolbar-button>
+            </simple-toolbar-menu-item>
+            <simple-toolbar-menu-item>
+              <simple-toolbar-button
+                ?disabled="${this.editMode || this.onInternalRoute}"
+                tabindex="${this.editMode ? "-1" : "0"}"
+                icon-position="left"
+                align-horizontal="left"
+                icon="${this.activeItem &&
+                this.activeItem.metadata &&
+                this.activeItem.metadata.locked
+                  ? "icons:lock"
+                  : "icons:lock-open"}"
+                @click="${this._toggleLockStatus}"
+                label="${this.activeItem &&
+                this.activeItem.metadata &&
+                this.activeItem.metadata.locked
+                  ? "Unlock page"
+                  : "Lock page"}"
+                show-text-label
               ></simple-toolbar-button>
             </simple-toolbar-menu-item>
           </simple-toolbar-menu>
@@ -2825,7 +2953,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             label="${this.t.siteActions}"
             tabindex="${this.editMode ? "-1" : "0"}"
           >
-            <simple-toolbar-menu-item ?hidden="${!this.platformAllows('outlineDesigner')}">
+            <simple-toolbar-menu-item
+              ?hidden="${!this.platformAllows("outlineDesigner")}"
+            >
               <simple-toolbar-button
                 ?hidden="${this.editMode}"
                 ?disabled="${this.editMode}"
@@ -2853,7 +2983,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 label="${this.t.shareSite}"
               ></simple-toolbar-button>
             </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item ?hidden="${!this.platformAllows('insights')}">
+            <simple-toolbar-menu-item
+              ?hidden="${!this.platformAllows("insights")}"
+            >
               <simple-toolbar-button
                 ?hidden="${this.editMode}"
                 ?disabled="${this.editMode}"
@@ -2868,7 +3000,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 voice-command="insights"
               ></simple-toolbar-button>
             </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item ?hidden="${!this.platformAllows('styleGuide')}">
+            <simple-toolbar-menu-item
+              ?hidden="${!this.platformAllows("styleGuide")}"
+            >
               <simple-toolbar-button
                 ?hidden="${this.editMode}"
                 ?disabled="${this.editMode}"
@@ -2883,7 +3017,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               ></simple-toolbar-button>
             </simple-toolbar-menu-item>
 
-            <simple-toolbar-menu-item ?hidden="${!this.platformAllows('manifest')}">
+            <simple-toolbar-menu-item
+              ?hidden="${!this.platformAllows("manifest")}"
+            >
               <simple-toolbar-button
                 @click="${this._manifestButtonTap}"
                 icon-position="left"
@@ -2973,8 +3109,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               this.soundIcon.indexOf("Full") !== -1
                 ? "off"
                 : "on"}"
-              aria-pressed="${(this.soundIcon &&
-              this.soundIcon.indexOf("Full") !== -1) ? "true" : "false"}"
+              aria-pressed="${this.soundIcon &&
+              this.soundIcon.indexOf("Full") !== -1
+                ? "true"
+                : "false"}"
             >
               <simple-icon-lite
                 src="${this.soundIcon}"
@@ -3831,6 +3969,98 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
 
+    // Edit Title Program
+    SuperDaemonInstance.defineOption({
+      title: "Edit title",
+      icon: "editor:title",
+      tags: ["CMS", "edit", "title", "metadata"],
+      eventName: "super-daemon-run-program",
+      path: "CMS/edit/title",
+      context: ["CMS"],
+      voice: "edit title",
+      value: {
+        name: "Edit title",
+        machineName: "edit-title",
+        placeholder: "Enter new title",
+        program: async (input, values) => {
+          const { createEditTitleProgram } = await import(
+            "./utils/EditTitleProgram.js"
+          );
+          const editTitleProgram = createEditTitleProgram(this);
+          return await editTitleProgram(input, values);
+        },
+      },
+    });
+
+    // Edit Description Program
+    SuperDaemonInstance.defineOption({
+      title: "Edit description",
+      icon: "editor:format-quote",
+      tags: ["CMS", "edit", "description", "metadata"],
+      eventName: "super-daemon-run-program",
+      path: "CMS/edit/description",
+      context: ["CMS"],
+      voice: "edit description",
+      value: {
+        name: "Edit description",
+        machineName: "edit-description",
+        placeholder: "Enter new description",
+        program: async (input, values) => {
+          const { createEditDescriptionProgram } = await import(
+            "./utils/EditDescriptionProgram.js"
+          );
+          const editDescriptionProgram = createEditDescriptionProgram(this);
+          return await editDescriptionProgram(input, values);
+        },
+      },
+    });
+
+    // Edit Slug Program
+    SuperDaemonInstance.defineOption({
+      title: "Edit slug",
+      icon: "editor:insert-link",
+      tags: ["CMS", "edit", "slug", "url", "metadata"],
+      eventName: "super-daemon-run-program",
+      path: "CMS/edit/slug",
+      context: ["CMS"],
+      voice: "edit slug",
+      value: {
+        name: "Edit slug",
+        machineName: "edit-slug",
+        placeholder: "Enter new slug (URL path)",
+        program: async (input, values) => {
+          const { createEditSlugProgram } = await import(
+            "./utils/EditSlugProgram.js"
+          );
+          const editSlugProgram = createEditSlugProgram(this);
+          return await editSlugProgram(input, values);
+        },
+      },
+    });
+
+    // Edit Tags Program
+    SuperDaemonInstance.defineOption({
+      title: "Edit tags",
+      icon: "icons:label",
+      tags: ["CMS", "edit", "tags", "metadata"],
+      eventName: "super-daemon-run-program",
+      path: "CMS/edit/tags",
+      context: ["CMS"],
+      voice: "edit tags",
+      value: {
+        name: "Edit tags",
+        machineName: "edit-tags",
+        placeholder: "Enter tags separated by commas",
+        program: async (input, values) => {
+          const { createEditTagsProgram } = await import(
+            "./utils/EditTagsProgram.js"
+          );
+          const editTagsProgram = createEditTagsProgram(this);
+          return await editTagsProgram(input, values);
+        },
+      },
+    });
+
     // Core site navigation programs - available regardless of theme
     SuperDaemonInstance.defineOption({
       title: "Go to page in this site",
@@ -4327,6 +4557,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         type: String,
         attribute: "active-title",
       },
+      activeItem: {
+        type: Object,
+      },
       manifest: {
         type: Object,
       },
@@ -4369,7 +4602,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this.manifest = toJS(store.manifest);
       this.icon = "hax:site-settings";
       // Extract platform configuration from manifest metadata
-      if (this.manifest && this.manifest.metadata && this.manifest.metadata.platform) {
+      if (
+        this.manifest &&
+        this.manifest.metadata &&
+        this.manifest.metadata.platform
+      ) {
         this.platformConfig = toJS(this.manifest.metadata.platform);
       } else {
         // Default to empty object if no platform config exists
@@ -4383,13 +4620,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     autorun((reaction) => {
       const activeItem = toJS(store.activeItem);
+      this.activeItem = activeItem;
       // update buttons to match since we got a state response
       this.updateAvailableButtons();
       if (activeItem && activeItem.id) {
         this.activeTitle = activeItem.title;
         this.onInternalRoute = activeItem._internalRoute || false;
         // Use the store method to determine if editing is allowed
-        store.pageAllowed = store.currentRouteSupportsHaxEditor();
+        // Also check if page is locked - locked pages are not allowed for editing
+        const supportsEditor = store.currentRouteSupportsHaxEditor();
+        const isLocked = activeItem.metadata && activeItem.metadata.locked;
+        store.pageAllowed = supportsEditor && !isLocked;
       } else {
         this.onInternalRoute = false;
         store.pageAllowed = false;
@@ -4407,6 +4648,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    * toggle state on button tap
    */
   _editButtonTap(e) {
+    // Check if the active page is locked
+    const activeItem = toJS(store.activeItem);
+    if (
+      activeItem &&
+      activeItem.metadata &&
+      activeItem.metadata.locked &&
+      !this.editMode
+    ) {
+      store.toast(
+        "This page is locked. Click the lock button to unlock it before editing.",
+        3000,
+        { hat: "error" },
+      );
+      store.playSound("error");
+      return false;
+    }
+
     if (this.editMode && HAXStore.haxTray.trayDetail === "view-source") {
       if (!globalThis.confirm(this.t.confirmHtmlSourceExit)) {
         return false;
@@ -4581,6 +4839,159 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     this.dispatchEvent(evt);
+  }
+  /**
+   * Edit title via Merlin program
+   */
+  _editTitlePrompt(e) {
+    const activeItem = toJS(store.activeItem);
+    if (!activeItem || !activeItem.id) {
+      return;
+    }
+    const currentTitle = activeItem.title || "";
+    const SuperDaemonInstance =
+      globalThis.SuperDaemonManager.requestAvailability();
+    store.playSound("click");
+    SuperDaemonInstance.waveWand([
+      currentTitle,
+      "/",
+      {},
+      "edit-title",
+      "Edit title",
+      "",
+    ]);
+  }
+  /**
+   * Edit description via Merlin program
+   */
+  _editDescriptionPrompt(e) {
+    const activeItem = toJS(store.activeItem);
+    if (!activeItem || !activeItem.id) {
+      return;
+    }
+    const currentDescription = activeItem.description || "";
+    const SuperDaemonInstance =
+      globalThis.SuperDaemonManager.requestAvailability();
+    store.playSound("click");
+    SuperDaemonInstance.waveWand([
+      currentDescription,
+      "/",
+      {},
+      "edit-description",
+      "Edit description",
+      "",
+    ]);
+  }
+  /**
+   * Toggle lock status
+   */
+  _toggleLockStatus(e) {
+    const activeItem = toJS(store.activeItem);
+    if (!activeItem || !activeItem.id) return;
+
+    const isLocked = activeItem.metadata && activeItem.metadata.locked;
+    store.playSound("click");
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-save-node-details", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          id: activeItem.id,
+          operation: "setLocked",
+          locked: !isLocked,
+        },
+      }),
+    );
+  }
+  /**
+   * Edit slug via Merlin program
+   */
+  _editSlugPrompt(e) {
+    const activeItem = toJS(store.activeItem);
+    if (!activeItem || !activeItem.id) {
+      return;
+    }
+    const currentSlug = activeItem.slug || "";
+    const SuperDaemonInstance =
+      globalThis.SuperDaemonManager.requestAvailability();
+    store.playSound("click");
+    SuperDaemonInstance.waveWand([
+      currentSlug,
+      "/",
+      {},
+      "edit-slug",
+      "Edit slug",
+      "",
+    ]);
+  }
+  /**
+   * Move page program from menu
+   */
+  _movePageProgramFromMenu(e) {
+    const item = toJS(store.activeItem);
+    if (!item || !item.id) {
+      return;
+    }
+    const SuperDaemonInstance =
+      globalThis.SuperDaemonManager.requestAvailability();
+    store.playSound("click");
+    SuperDaemonInstance.waveWand([
+      "",
+      "/",
+      { pageId: item.id },
+      "move-page",
+      "Move Page",
+      "",
+    ]);
+  }
+  /**
+   * Toggle locked status
+   */
+  _toggleLockedStatus(e) {
+    const item = toJS(store.activeItem);
+    if (!item || !item.id) {
+      return;
+    }
+    const currentStatus = item.metadata && item.metadata.locked ? true : false;
+    const newStatus = !currentStatus;
+    store.playSound("click");
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-save-node-details", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          id: item.id,
+          operation: "setLocked",
+          locked: newStatus,
+        },
+      }),
+    );
+  }
+  /**
+   * Toggle published status
+   */
+  _togglePublishedStatus(e) {
+    const item = toJS(store.activeItem);
+    if (!item || !item.id) {
+      return;
+    }
+    const currentStatus = item.metadata && item.metadata.published !== false;
+    const newStatus = !currentStatus;
+    store.playSound("click");
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-save-node-details", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          id: item.id,
+          operation: "setPublished",
+          published: newStatus,
+        },
+      }),
+    );
   }
   /**
    * toggle share button

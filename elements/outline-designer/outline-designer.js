@@ -13,8 +13,10 @@ import { JsonOutlineSchema } from "@haxtheweb/json-outline-schema/json-outline-s
 import "@haxtheweb/simple-popover/simple-popover.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { encapScript, haxElementToNode } from "@haxtheweb/utils/utils.js";
 /**
  * `outline-designer`
@@ -29,6 +31,15 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         :host {
           display: block;
           font-family: var(--ddd-font-navigation);
+          --outline-designer-zoom: 1;
+        }
+        :host(.zoom-out-1) { --outline-designer-zoom: 0.85; }
+        :host(.zoom-out-2) { --outline-designer-zoom: 0.7; }
+        :host(.zoom-out-3) { --outline-designer-zoom: 0.55; }
+        .item {
+          transform: scale(var(--outline-designer-zoom));
+          transform-origin: left center;
+          margin-bottom: calc(var(--ddd-spacing-1) * var(--outline-designer-zoom));
         }
         simple-icon-button[hidden] {
           visibility: hidden !important;
@@ -196,7 +207,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           pointer-events: none;
           z-index: -1;
         }
-        li simple-icon-button:hover {
+        li simple-icon-button-lite:hover {
           background-color: light-dark(
             var(--ddd-theme-default-limestoneMaxLight),
             var(--ddd-primary-5)
@@ -313,6 +324,71 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           outline: var(--ddd-border-sm);
           outline-color: light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
           outline-offset: -2px;
+          box-shadow: var(--ddd-boxShadow-sm);
+        }
+        .item.active-page {
+          background-color: light-dark(
+            var(--ddd-accent-5),
+            var(--ddd-primary-6)
+          );
+          outline: 2px solid light-dark(var(--ddd-primary-2), var(--ddd-accent-4));
+          outline-offset: -2px;
+          box-shadow: var(--ddd-boxShadow-md);
+        }
+        .item.selected-page {
+          background-color: light-dark(
+            var(--ddd-accent-4),
+            var(--ddd-primary-7)
+          );
+          outline: 2px solid light-dark(var(--ddd-primary-3), var(--ddd-accent-3));
+          outline-offset: -2px;
+        }
+        .item[data-dragging="true"] {
+          box-shadow: var(--ddd-boxShadow-lg);
+          opacity: 0.8;
+          transform: scale(1.02);
+          z-index: 1000;
+        }
+        .item[data-dragging="true"] {
+          box-shadow: var(--ddd-boxShadow-lg);
+          opacity: 0.8;
+          transform: scale(1.02);
+          z-index: 1000;
+        }
+        /* Menu button styling */
+        .actions-menu {
+          margin-left: var(--ddd-spacing-2);
+        }
+        .actions-menu::part(button) {
+          padding: var(--ddd-spacing-1);
+          border-radius: var(--ddd-radius-xs);
+          border: var(--ddd-border-xs);
+          background: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+        }
+        .actions-menu::part(button):hover {
+          background: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-primary-5)
+          );
+        }
+        .actions-menu simple-toolbar-button {
+          text-align: left;
+          justify-content: flex-start;
+          padding-left: var(--ddd-spacing-2);
+          padding-right: var(--ddd-spacing-4);
+        }
+
+        simple-icon-button-lite {
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+        }
+        
+        simple-context-menu {
+          text-align: left;
+        }
+        simple-context-menu::part(content) {
+          text-align: left;
+          align-items: flex-start;
         }
         .item:hover .label,
         .item:focus .label,
@@ -351,66 +427,87 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         }
         .indent-0 {
           padding-left: 0;
+          position: relative;
         }
         .indent-1 {
-          padding-left: 16px;
+          padding-left: calc(16px * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-2 {
-          padding-left: calc(16px * 2);
+          padding-left: calc(16px * 2 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-3 {
-          padding-left: calc(16px * 3);
+          padding-left: calc(16px * 3 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-4 {
-          padding-left: calc(16px * 4);
+          padding-left: calc(16px * 4 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-5 {
-          padding-left: calc(16px * 5);
+          padding-left: calc(16px * 5 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-6 {
-          padding-left: calc(16px * 6);
+          padding-left: calc(16px * 6 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-7 {
-          padding-left: calc(16px * 7);
+          padding-left: calc(16px * 7 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-8 {
-          padding-left: calc(16px * 8);
+          padding-left: calc(16px * 8 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-9 {
-          padding-left: calc(16px * 9);
+          padding-left: calc(16px * 9 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-10 {
-          padding-left: calc(16px * 10);
+          padding-left: calc(16px * 10 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-11 {
-          padding-left: calc(16px * 11);
+          padding-left: calc(16px * 11 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-12 {
-          padding-left: calc(16px * 12);
+          padding-left: calc(16px * 12 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-13 {
-          padding-left: calc(16px * 13);
+          padding-left: calc(16px * 13 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-14 {
-          padding-left: calc(16px * 14);
+          padding-left: calc(16px * 14 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-15 {
-          padding-left: calc(16px * 15);
+          padding-left: calc(16px * 15 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-16 {
-          padding-left: calc(16px * 16);
+          padding-left: calc(16px * 16 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-17 {
-          padding-left: calc(16px * 17);
+          padding-left: calc(16px * 17 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-18 {
-          padding-left: calc(16px * 18);
+          padding-left: calc(16px * 18 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-19 {
-          padding-left: calc(16px * 19);
+          padding-left: calc(16px * 19 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-20 {
-          padding-left: calc(16px * 20);
+          padding-left: calc(16px * 20 * var(--outline-designer-zoom));
+          position: relative;
         }
         .sr-only {
           position: absolute;
@@ -420,25 +517,33 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           height: 1px;
           overflow: hidden;
         }
-        /* Drop zone indicators for drag and drop */
+        /* Drop zone indicators for drag and drop - kanban style */
         .drop-indicator {
-          height: 3px;
-          background: var(--ddd-accent-4);
-          margin: 2px 0;
-          border-radius: 2px;
+          height: calc(42px * var(--outline-designer-zoom, 1));
+          background: light-dark(
+            rgba(33, 150, 243, 0.08),
+            rgba(33, 150, 243, 0.12)
+          );
+          border: 2px dashed var(--ddd-accent-4);
+          border-radius: var(--ddd-radius-sm);
+          margin: var(--ddd-spacing-1) 0;
           position: relative;
           z-index: 100;
+          opacity: 0;
+          transform: scaleY(0);
+          transform-origin: top;
+          transition: all 0.15s ease-out;
         }
-        .drop-indicator::before {
-          content: "";
-          display: inline-block;
-          width: 8px;
-          height: 8px;
-          background: var(--ddd-accent-4);
-          border-radius: 50%;
-          position: absolute;
-          left: 0;
-          top: -2.5px;
+        .drop-indicator.show {
+          opacity: 1;
+          transform: scaleY(1);
+        }
+        .drop-indicator.indent-visual {
+          border-left: 4px solid var(--ddd-accent-3);
+          background: light-dark(
+            rgba(33, 150, 243, 0.15),
+            rgba(33, 150, 243, 0.2)
+          );
         }
         .drop-target-child {
           outline: 2px dashed var(--ddd-accent-4) !important;
@@ -503,7 +608,6 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           margin-bottom: 48px;
           transition: margin-bottom 0.2s ease-out;
         }
-        }
       `,
     ];
   }
@@ -525,6 +629,9 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     this.liveRegionText = "";
     this._dropZone = null;
     this._dragPreviewElement = null;
+    this.activePage = null;
+    this.selectedPages = [];
+    this.zoomLevel = 1;
     this.t = {
       selectTarget: "Select target",
       importContentUnderThisPage: "Import content under this page",
@@ -532,6 +639,19 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       thisPage: "this page",
       newPage: "New page",
       copyOf: "Copy of",
+      pageActions: "Page Actions",
+      editTitle: "Edit title",
+      lock: "Lock",
+      unlock: "Unlock",
+      moveUp: "Move up",
+      moveDown: "Move down",
+      makeChild: "Make child",
+      moveToParentLevel: "Move to parent level",
+      addPage: "Add page",
+      duplicate: "Duplicate",
+      delete: "Delete",
+      restore: "Restore",
+      goToPage: "Go to page",
     };
     this.registerLocalization({
       context: this,
@@ -651,6 +771,15 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           class="control"
           >Expand all</simple-icon-button-lite
         >
+        ${this.selectedPages.length > 0
+          ? html`<simple-icon-button-lite
+              icon="delete"
+              @click="${this.deleteSelected}"
+              class="control"
+              >Delete Selected
+              (${this.selectedPages.length})</simple-icon-button-lite
+            >`
+          : ``}
         ${this.hasDeletedItems()
           ? html`<simple-icon-button-lite
               icon="delete"
@@ -661,6 +790,20 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
                 : "Show Deleted"}</simple-icon-button-lite
             >`
           : ``}
+        <simple-icon-button-lite
+          icon="zoom-in"
+          @click="${this.zoomIn}"
+          class="control"
+          ?disabled="${this.zoomLevel >= 1}"
+          >Zoom In</simple-icon-button-lite
+        >
+        <simple-icon-button-lite
+          icon="zoom-out"
+          @click="${this.zoomOut}"
+          class="control"
+          ?disabled="${this.zoomLevel <= -3}"
+          >Zoom Out</simple-icon-button-lite
+        >
       </div>
       <ul
         id="list"
@@ -677,12 +820,12 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         ${this.liveRegionText}
       </div>
       <simple-popover auto for="list" hidden>
-        <simple-icon-button
+        <simple-icon-button-lite
           @click="${this.resetPopOver}"
           title="Close"
           icon="cancel"
           class="close-btn"
-        ></simple-icon-button>
+        ></simple-icon-button-lite>
         ${this.renderActiveContentItem(
           this.activePreview,
           this.activePreviewIndex,
@@ -729,6 +872,125 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       .getAttribute("data-item-id");
   }
 
+  handleItemClick(e) {
+    const target = e.target.closest("[data-item-id]");
+    if (!target) return;
+
+    const itemId = target.getAttribute("data-item-id");
+
+    if (e.ctrlKey || e.metaKey) {
+      this.togglePageSelection(itemId);
+    } else if (e.shiftKey && this.activePage) {
+      this.selectPageRange(this.activePage, itemId);
+    } else {
+      if (
+        !e.target.closest("simple-toolbar-button") &&
+        !e.target.closest("simple-icon-button-lite") &&
+        !e.target.closest(".label-edit")
+      ) {
+        this.activePage = itemId;
+        this.requestUpdate();
+      }
+    }
+  }
+
+  togglePageSelection(itemId) {
+    const index = this.selectedPages.indexOf(itemId);
+    if (index > -1) {
+      this.selectedPages.splice(index, 1);
+    } else {
+      this.selectedPages.push(itemId);
+    }
+    this.activePage = itemId;
+    this.requestUpdate();
+  }
+
+  selectPageRange(startId, endId) {
+    const startIndex = this.items.findIndex((item) => item.id === startId);
+    const endIndex = this.items.findIndex((item) => item.id === endId);
+
+    if (startIndex === -1 || endIndex === -1) return;
+
+    const minIndex = Math.min(startIndex, endIndex);
+    const maxIndex = Math.max(startIndex, endIndex);
+
+    this.selectedPages = [];
+    for (let i = minIndex; i <= maxIndex; i++) {
+      if (this.getItemParentsCollapsed(this.items[i]) === "") {
+        this.selectedPages.push(this.items[i].id);
+      }
+    }
+    this.requestUpdate();
+  }
+
+  deleteSelected() {
+    this.selectedPages.forEach((pageId) => {
+      const index = this.items.findIndex((item) => item.id === pageId);
+      if (index !== -1 && !this.isLocked(index)) {
+        this.items[index].delete = true;
+        if (this.hasChildren(this.items[index].id)) {
+          this.recurseAction(this.items[index].id, "delete", true);
+        }
+      }
+    });
+    this.selectedPages = [];
+    this.__syncUIAndDataModel();
+  }
+
+  zoomIn() {
+    if (this.zoomLevel < 1) {
+      this.zoomLevel++;
+      this.updateZoomClass();
+    }
+  }
+
+  zoomOut() {
+    if (this.zoomLevel > -3) {
+      this.zoomLevel--;
+      this.updateZoomClass();
+    }
+  }
+
+  updateZoomClass() {
+    this.classList.remove("zoom-out-1", "zoom-out-2", "zoom-out-3");
+    if (this.zoomLevel === 0) {
+      this.classList.add("zoom-out-1");
+    } else if (this.zoomLevel === -1) {
+      this.classList.add("zoom-out-2");
+    } else if (this.zoomLevel <= -2) {
+      this.classList.add("zoom-out-3");
+    }
+    this.requestUpdate();
+  }
+
+  _toggleActionsMenu(e, index) {
+    e.stopPropagation();
+    const button = e.target;
+    const listItem = button.closest("li");
+    const menu = listItem.querySelector(".actions-menu");
+    if (menu) {
+      menu.toggle(button);
+    }
+  }
+
+  _handleMenuAction(e, index, action) {
+    e.stopPropagation();
+    const button = e.target;
+    const listItem = button.closest("li");
+    const menu = listItem.querySelector(".actions-menu");
+    if (menu) menu.close();
+
+    if (action === "edit-title" && index !== false) {
+      // Trigger edit mode for the title
+      const labelElement = listItem.querySelector(".label.shown");
+      if (labelElement && !this.isLocked(index)) {
+        this.editTitle({ target: labelElement });
+      }
+    } else if (action && index !== false) {
+      this.itemOp(index, action);
+    }
+  }
+
   renderItem(item, index) {
     return html`
       <li
@@ -752,11 +1014,15 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         @dragenter="${this._dragEnter}"
         @dragleave="${this._dragLeave}"
         @mouseenter="${this.setActiveItemForActions}"
+        @click="${this.handleItemClick}"
         class="item indent-${item.indent < 20
           ? item.indent
           : 20} ${item.modified
           ? "modified"
-          : ""} ${this.getItemParentsCollapsed(item)}"
+          : ""} ${this.getItemParentsCollapsed(item)} ${this.activePage ===
+        item.id
+          ? "active-page"
+          : ""} ${this.selectedPages.includes(item.id) ? "selected-page" : ""}"
         data-item-id="${item.id}"
         @focusin="${this.setActiveItemForActions}"
         data-parents="${this.getItemParents(item)}"
@@ -764,21 +1030,30 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         ?data-about-to-delete="${item.delete}"
         ?hidden="${this.hideDelete && item.delete}"
       >
-        <simple-icon-button
+        <simple-toolbar-button
+          class="actions-menu-button"
+          icon="icons:more-vert"
+          label="${this.t.pageActions}"
+          @click="${(e) => this._toggleActionsMenu(e, index)}"
+        ></simple-toolbar-button>
+        <simple-icon-button-lite
           ?disabled="${this.isLocked(index)}"
           class="collapse-btn"
           icon="${this.isCollapsed(item.id)
             ? `hardware:keyboard-arrow-right`
             : `hardware:keyboard-arrow-down`}"
           @click="${this.collapseExpand}"
-        ></simple-icon-button>
-        <simple-icon-button
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
           ?disabled="${this.isLocked(index)}"
           @dragstart="${this._dragStart}"
           @dragend="${this._dragEnd}"
+          @drag="${this._onDrag}"
           draggable="${!this.isLocked(index)}"
-          icon="hax:arrow-all"
-        ></simple-icon-button>
+          icon="icons:reorder"
+          class="drag-handle"
+          title="Drag to reorder"
+        ></simple-icon-button-lite>
         <simple-icon-button-lite
           ?disabled="${this.isLocked(index)}"
           ?hidden="${this.hideContentOps ||
@@ -814,82 +1089,82 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           @keypress="${this.monitorTitle}"
           @keydown="${this.monitorEsc}"
         ></span>
-        <div class="operations">
-          ${this.activeItemForActions === item.id
-            ? html`
-                <div class="btn-contrast">
-                  <simple-icon-button
-                    part="lockbtn"
-                    class="operation lock"
-                    icon="${this.isLocked(index)
-                      ? "icons:lock"
-                      : "icons:lock-open"}"
-                    @click="${(e) => this.itemOp(index, "lock")}"
-                    title="Lock / Unlock"
-                  ></simple-icon-button>
-                  <simple-icon-button
-                    class="operation"
-                    icon="hax:outline-designer-outdent"
-                    @click="${(e) => this.itemOp(index, "out")}"
-                    title="Move next to parent"
-                    ?disabled="${this.isLocked(index)}"
-                  ></simple-icon-button>
-                  <simple-icon-button
-                    class="operation"
-                    icon="hax:keyboard-arrow-up"
-                    @click="${(e) => this.itemOp(index, "up")}"
-                    title="Move up"
-                    ?disabled="${this.isLocked(index)}"
-                  ></simple-icon-button>
-                  <simple-icon-button
-                    class="operation"
-                    icon="hax:keyboard-arrow-down"
-                    @click="${(e) => this.itemOp(index, "down")}"
-                    title="Move down"
-                    ?disabled="${this.isLocked(index)}"
-                  ></simple-icon-button>
-                  <simple-icon-button
-                    class="operation"
-                    icon="hax:outline-designer-indent"
-                    @click="${(e) => this.itemOp(index, "in")}"
-                    title="Make child"
-                    ?disabled="${this.isLocked(index)}"
-                  ></simple-icon-button>
-                </div>
-                <simple-icon-button
-                  class="operation add"
-                  icon="add"
-                  accent-color="green"
-                  @click="${(e) => this.itemOp(index, "add")}"
-                  title="Add"
-                  ?disabled="${this.isLocked(index)}"
-                ></simple-icon-button>
-                <simple-icon-button
-                  class="operation"
-                  icon="content-copy"
-                  accent-color="green"
-                  @click="${(e) => this.itemOp(index, "duplicate")}"
-                  title="Duplicate"
-                  ?disabled="${this.isLocked(index)}"
-                ></simple-icon-button>
-                <simple-icon-button
-                  class="operation del"
-                  icon="${!item.delete ? "delete" : "hax:delete-restore"}"
-                  accent-color="red"
-                  @click="${(e) => this.itemOp(index, "delete")}"
-                  title="${!item.delete ? "Delete" : "Restore"}"
-                  ?disabled="${this.isLocked(index)}"
-                ></simple-icon-button>
-                <simple-icon-button
-                  class="operation goto"
-                  icon="open-in-browser"
-                  accent-color="blue"
-                  @click="${(e) => this.itemOp(index, "goto")}"
-                  title="Go to page"
-                ></simple-icon-button>
-              `
-            : ``}
-        </div>
+        <simple-context-menu
+          class="actions-menu"
+          data-item-index="${index}"
+          title="${this.t.pageActions}"
+        >
+          <simple-toolbar-button
+            value="edit-title"
+            ?disabled="${this.isLocked(index)}"
+            icon="editor:mode-edit"
+            label="${this.t.editTitle}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "edit-title")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="lock"
+            icon="${this.isLocked(index) ? "icons:lock" : "icons:lock-open"}"
+            label="${this.isLocked(index) ? this.t.unlock : this.t.lock}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "lock")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="add"
+            ?disabled="${this.isLocked(index)}"
+            icon="add"
+            label="${this.t.addPage}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "add")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="up"
+            ?disabled="${this.isLocked(index)}"
+            icon="hax:keyboard-arrow-up"
+            label="${this.t.moveUp}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "up")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="down"
+            ?disabled="${this.isLocked(index)}"
+            icon="hax:keyboard-arrow-down"
+            label="${this.t.moveDown}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "down")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="in"
+            ?disabled="${this.isLocked(index)}"
+            icon="hax:outline-designer-indent"
+            label="${this.t.makeChild}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "in")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="out"
+            ?disabled="${this.isLocked(index)}"
+            icon="hax:outline-designer-outdent"
+            label="${this.t.moveToParentLevel}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "out")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="duplicate"
+            ?disabled="${this.isLocked(index)}"
+            icon="content-copy"
+            label="${this.t.duplicate}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "duplicate")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="goto"
+            icon="open-in-browser"
+            label="${this.t.goToPage}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "goto")}"
+          ></simple-toolbar-button>
+        </simple-context-menu>
       </li>
       ${!this.hideContentOps && item.showContent
         ? this.renderItemContents(item)
@@ -1047,52 +1322,52 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           `
         : html`<span class="label shown">${label}</span>`}
       <div class="content-operations">
-        <simple-icon-button
+        <simple-icon-button-lite
           class="content-operation"
           icon="hax:outline-designer-outdent"
           @click="${(e) => this.modifyContentAction(e, item, "in")}"
           title="Increase heading"
           ?disabled="${tagName === "h1" || item.metadata.locked}"
           ?hidden="${part !== "heading"}"
-        ></simple-icon-button>
-        <simple-icon-button
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
           icon="hax:keyboard-arrow-up"
           @click="${(e) => this.modifyContentAction(e, item, "up")}"
           title="Move up"
           ?disabled="${item.metadata.locked}"
           class="content-operation"
-        ></simple-icon-button>
-        <simple-icon-button
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
           icon="hax:keyboard-arrow-down"
           @click="${(e) => this.modifyContentAction(e, item, "down")}"
           title="Move down"
           ?disabled="${item.metadata.locked}"
           class="content-operation"
-        ></simple-icon-button>
-        <simple-icon-button
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
           class="content-operation"
           icon="hax:outline-designer-indent"
           @click="${(e) => this.modifyContentAction(e, item, "out")}"
           title="Decrease Heading"
           ?disabled="${tagName === "h6" || item.metadata.locked}"
           ?hidden="${part !== "heading"}"
-        ></simple-icon-button>
-        <simple-icon-button
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
           class="content-operation"
           icon="editor:format-page-break"
           @click="${(e) => this.pageBreakHere(e, item)}"
           title="Promote to page"
           ?disabled="${item.metadata.locked}"
           ?hidden="${part !== "heading"}"
-        ></simple-icon-button>
-        <simple-icon-button
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
           icon="delete"
           @click="${(e) => this.modifyContentAction(e, item, "delete")}"
           class="content-operation del"
           title="Delete"
           ?disabled="${item.metadata.locked}"
           accent-color="red"
-        ></simple-icon-button>
+        ></simple-icon-button-lite>
       </div>
     </li>`;
   }
@@ -1729,7 +2004,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
 
     // Create icon
     const icon = globalThis.document.createElement("simple-icon-lite");
-    icon.setAttribute("icon", "hax:arrow-all");
+    icon.setAttribute("icon", "icons:reorder");
 
     // Create title span
     const title = globalThis.document.createElement("span");
@@ -1764,6 +2039,24 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
 
     return count;
   }
+  _onDrag(e) {
+    // Continuously update drag position for better feedback
+    if (this._targetDrag && e.clientX && e.clientY) {
+      // Trigger dragenter to update drop indicators
+      const elementAtPoint = globalThis.document.elementFromPoint(
+        e.clientX,
+        e.clientY,
+      );
+      if (elementAtPoint) {
+        const target = elementAtPoint.closest("[data-item-id]");
+        if (target && target !== this._lastDragTarget) {
+          this._lastDragTarget = target;
+          this._dragEnter(e);
+        }
+      }
+    }
+  }
+
   _mouseDownDrag(e) {
     // force collapse kids on move
     let itemId = e.target
@@ -1793,14 +2086,23 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     // Calculate drop zone based on cursor position
     const rect = target.getBoundingClientRect();
     const y = e.clientY - rect.top;
+    const x = e.clientX - rect.left;
     const height = rect.height;
+    const width = rect.width;
 
-    // Top 30% = above, middle 40% = child, bottom 30% = below
+    // Determine if indenting based on horizontal position
+    // More than 40px from left = potential indent/child drop
+    const indentThreshold = 40;
+    const isIndentZone = x > indentThreshold;
+
+    // Top 30% = above, middle 40% = child (or indent), bottom 30% = below
     let dropZone = "child";
-    if (y < height * 0.3) {
+    if (y < height * 0.3 && !isIndentZone) {
       dropZone = "above";
-    } else if (y > height * 0.7) {
+    } else if (y > height * 0.7 && !isIndentZone) {
       dropZone = "below";
+    } else if (isIndentZone) {
+      dropZone = "child";
     }
 
     // Only update if target or zone changed
@@ -1825,22 +2127,31 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         el.classList.remove("drop-below-target");
       });
 
-      // Add new indicator based on drop zone
+      // Add new indicator based on drop zone with animation
       if (dropZone === "above") {
         const indicator = globalThis.document.createElement("div");
         indicator.className = "drop-indicator drop-above";
         target.insertAdjacentElement("beforebegin", indicator);
+        // Show with animation immediately
+        setTimeout(() => indicator.classList.add("show"), 10);
         // Add push-aside animation to target
         target.classList.add("drop-above-target");
       } else if (dropZone === "below") {
         const indicator = globalThis.document.createElement("div");
         indicator.className = "drop-indicator drop-below";
         target.insertAdjacentElement("afterend", indicator);
+        // Show with animation immediately
+        setTimeout(() => indicator.classList.add("show"), 10);
         // Add push-aside animation to target
         target.classList.add("drop-below-target");
       } else {
-        // child - show dashed outline
+        // child - show dashed outline with indent visual
         target.classList.add("drop-target-child");
+        const indicator = globalThis.document.createElement("div");
+        indicator.className = "drop-indicator indent-visual";
+        indicator.style.marginLeft = "40px";
+        target.insertAdjacentElement("afterend", indicator);
+        setTimeout(() => indicator.classList.add("show"), 10);
       }
 
       this._targetDrop = target;
@@ -1877,6 +2188,11 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
    * When we end dragging this is the same as a drop event; ensure we remove the mover class.
    */
   _dragEnd(e) {
+    // Remove dragging state
+    if (this._targetDrag) {
+      this._targetDrag.removeAttribute("data-dragging");
+    }
+
     // Clean up drag preview
     if (this._dragPreviewElement) {
       this._dragPreviewElement.remove();
@@ -1964,6 +2280,9 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       this._targetDrop = null;
       this._targetDrag = target;
 
+      // Add dragging state for styling
+      target.setAttribute("data-dragging", "true");
+
       // Create custom drag preview
       const dragPreview = this._createDragPreview(target);
       if (dragPreview) {
@@ -2003,6 +2322,9 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       },
       fidelity: { type: String },
       liveRegionText: { type: String },
+      activePage: { type: String },
+      selectedPages: { type: Array },
+      zoomLevel: { type: Number },
     };
   }
 
