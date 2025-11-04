@@ -377,6 +377,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           justify-content: flex-start;
           padding-left: var(--ddd-spacing-2);
           padding-right: var(--ddd-spacing-4);
+          --simple-toolbar-button-justify: flex-start;
         }
 
         simple-icon-button-lite {
