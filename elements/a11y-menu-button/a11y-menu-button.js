@@ -702,12 +702,19 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
         case this.keyCode.SPACE:
         case this.keyCode.RETURN:
         case this.keyCode.DOWN:
-          this.focusOn(this.firstItem);
+          if (this.expanded) {
+            this.focusOn(this.firstItem);
+          } else {
+            this.focusOn(this.firstItem);
+          }
           flag = true;
           break;
 
         case this.keyCode.UP:
           if (this.popupMenu) {
+            this.focusOn(this.lastItem);
+            flag = true;
+          } else if (this.expanded) {
             this.focusOn(this.lastItem);
             flag = true;
           }
@@ -729,9 +736,11 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     _handleClick(event) {
-      // resolve touch vs pointer input
-      if (event.pointerType === "touch") {
-      } else {
+      let path = normalizeEventPath(event) || [],
+        target = path[0];
+      // only toggle when clicking the button itself, not child menu items
+      if (target.id === "menubutton" || target.closest("#menubutton")) {
+        // toggle menu for both touch and pointer input
         if (this.expanded) {
           this.close(true);
         } else {

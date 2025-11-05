@@ -47,7 +47,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       basePath: import.meta.url + "/../../",
     });
     // Initialize with fallback values to prevent undefined during initial render
-    this.possibleActions = ["🔮 Insert blocks", "🕵 Find media 📺"];
+    this.possibleActions = ["🪄 Do anything..", "🔍 Type to search..."];
   }
   static get properties() {
     return {

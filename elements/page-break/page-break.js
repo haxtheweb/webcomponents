@@ -9,6 +9,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/haxcms-elements/lib/core/micros/haxcms-button-add.js";
 import { pageBreakManager } from "./lib/page-break-manager.js";
 import { DDDExtra } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -41,7 +42,6 @@ export class PageBreak extends IntersectionObserverMixin(
       newPage: "New page",
       pageBreak: "Page break",
       selectToEditPageDetails: "Select to edit Page details",
-      clickToUnlock: "Click to unlock",
       noParent: "No parent",
       toggleLock: "Toggle lock",
       togglePublished: "Toggle published",
@@ -594,25 +594,6 @@ export class PageBreak extends IntersectionObserverMixin(
           color: var(--ddd-theme-default-white);
           box-shadow: var(--ddd-boxShadow-sm);
         }
-        simple-icon-lite {
-          margin-right: var(--ddd-spacing-3);
-        }
-        simple-icon-button-lite {
-          position: absolute;
-          top: var(--ddd-spacing-1);
-          right: var(--ddd-spacing-1);
-          color: var(--ddd-theme-default-coalyGray);
-          --simple-icon-width: var(--ddd-icon-xs);
-          --simple-icon-height: var(--ddd-icon-xs);
-          background-color: var(--ddd-theme-default-white);
-          border-radius: var(--ddd-radius-xs);
-          padding: var(--ddd-spacing-1);
-          box-shadow: var(--ddd-boxShadow-sm);
-        }
-        simple-icon-button-lite:hover {
-          color: var(--ddd-theme-default-skyBlue);
-          background-color: var(--ddd-theme-default-limestoneMaxLight);
-        }
         simple-toolbar-button.menu-button,
         simple-toolbar-button.save-button,
         simple-toolbar-button.save-edit-button,
@@ -660,6 +641,20 @@ export class PageBreak extends IntersectionObserverMixin(
         simple-toolbar-button.menu-item simple-icon-lite {
           --simple-icon-height: 16px;
           --simple-icon-width: 16px;
+        }
+        simple-toolbar-button.menu-item-delete {
+          --simple-toolbar-button-justify: flex-start;
+          --simple-toolbar-button-hover-border-color: transparent;
+          cursor: pointer;
+          --simple-icon-height: 16px;
+          --simple-icon-width: 16px;
+          border-top: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
+          margin-top: var(--ddd-spacing-2);
+          padding-top: var(--ddd-spacing-2);
+        }
+        simple-toolbar-button.menu-item-delete:hover {
+          color: var(--ddd-theme-default-error);
+          background-color: var(--ddd-theme-default-errorLight);
         }
       `,
     ];
@@ -712,13 +707,6 @@ export class PageBreak extends IntersectionObserverMixin(
             </div>
           </div>`
         : ``}
-      ${this.locked
-        ? html`<simple-icon-button-lite
-            @click="${this.haxClickLockInPage}"
-            icon="icons:lock"
-            title="${this.t.clickToUnlock}"
-          ></simple-icon-button-lite>`
-        : ``}
       ${this.isLoggedIn && !this._haxState
         ? html`
             <simple-toolbar-button
@@ -734,6 +722,8 @@ export class PageBreak extends IntersectionObserverMixin(
                 label="${this.t.editPage}"
                 show-text-label
                 @click="${this._editPage}"
+                ?disabled="${this.locked}"
+                autofocus
               ></simple-toolbar-button>
               <simple-toolbar-button
                 class="menu-item"
@@ -741,6 +731,7 @@ export class PageBreak extends IntersectionObserverMixin(
                 label="${this.t.modifyPageTitle}"
                 show-text-label
                 @click="${this._editTitle}"
+                ?disabled="${this.locked}"
               ></simple-toolbar-button>
               <simple-toolbar-button
                 class="menu-item"
@@ -748,6 +739,7 @@ export class PageBreak extends IntersectionObserverMixin(
                 label="${this.t.modifyPageIcon}"
                 show-text-label
                 @click="${this._editIcon}"
+                ?disabled="${this.locked}"
               ></simple-toolbar-button>
               <simple-toolbar-button
                 class="menu-item"
@@ -755,6 +747,7 @@ export class PageBreak extends IntersectionObserverMixin(
                 label="${this.t.editMedia}"
                 show-text-label
                 @click="${this._editMedia}"
+                ?disabled="${this.locked}"
               ></simple-toolbar-button>
               <simple-toolbar-button
                 class="menu-item"
@@ -762,13 +755,7 @@ export class PageBreak extends IntersectionObserverMixin(
                 label="${this.t.editTags}"
                 show-text-label
                 @click="${this._editTags}"
-              ></simple-toolbar-button>
-              <simple-toolbar-button
-                class="menu-item"
-                icon="${this.locked ? "icons:lock" : "icons:lock-open"}"
-                label="${this.locked ? this.t.unlock : this.t.lock}"
-                show-text-label
-                @click="${this._toggleLocked}"
+                ?disabled="${this.locked}"
               ></simple-toolbar-button>
               <simple-toolbar-button
                 class="menu-item"
@@ -778,6 +765,22 @@ export class PageBreak extends IntersectionObserverMixin(
                 label="${this.published ? this.t.unpublish : this.t.publish}"
                 show-text-label
                 @click="${this._togglePublished}"
+                ?disabled="${this.locked}"
+              ></simple-toolbar-button>
+              <simple-toolbar-button
+                class="menu-item"
+                icon="${this.locked ? "icons:lock" : "icons:lock-open"}"
+                label="${this.locked ? this.t.unlock : this.t.lock}"
+                show-text-label
+                @click="${this._toggleLocked}"
+              ></simple-toolbar-button>
+              <simple-toolbar-button
+                class="menu-item-delete"
+                icon="icons:delete"
+                label="${this.t.delete || 'Delete'}"
+                show-text-label
+                @click="${this._deletePage}"
+                ?disabled="${this.locked}"
               ></simple-toolbar-button>
             </simple-context-menu>
           `
@@ -1150,6 +1153,27 @@ export class PageBreak extends IntersectionObserverMixin(
 
   async _savePage(e) {
     store.cmsSiteEditor.haxCmsSiteEditorUIElement._editButtonTap();
+  }
+
+  _addPage(e) {
+    const menu = this.shadowRoot.querySelector("#menu");
+    if (menu) menu.close();
+    // Trigger the merlin mini interface for adding a page
+    // This is handled by haxcms-button-add internally
+  }
+
+  _deletePage(e) {
+    // Don't allow delete if locked
+    if (this.locked) {
+      const menu = this.shadowRoot.querySelector("#menu");
+      if (menu) menu.close();
+      store.toast("This page is locked. Unlock it first to delete.", 3000, { hat: "error" });
+      store.playSound("error");
+      return;
+    }
+    const menu = this.shadowRoot.querySelector("#menu");
+    if (menu) menu.close();
+    store.cmsSiteEditor.haxCmsSiteEditorUIElement._deleteButtonTap();
   }
 
   /**

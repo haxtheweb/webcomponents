@@ -57,6 +57,15 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           --simple-toolbar-button-hover-border-color: transparent;
           cursor: pointer;
         }
+        simple-toolbar-button.delete-button {
+          border-top: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
+          margin-top: var(--ddd-spacing-2);
+          padding-top: var(--ddd-spacing-2);
+        }
+        simple-toolbar-button.delete-button:hover {
+          color: var(--ddd-theme-default-error);
+          background-color: var(--ddd-theme-default-errorLight);
+        }
       `,
     ];
   }
@@ -78,14 +87,15 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
     this.platformAllowsAddPage = true;
     this.isLocked = false;
     this.t = {
-      pageActions: "Page Actions",
+      pageActions: "Outline actions",
       editPage: "Edit page",
-      addPage: "Add page",
+      addPage: "Add child page",
       moveUp: "Move up",
       moveDown: "Move down",
       indent: "Indent",
       outdent: "Outdent",
       moveTo: "Move to..",
+      siteOutline: "Site Outline",
       delete: "Delete",
       unlock: "Unlock",
       lock: "Lock",
@@ -143,16 +153,6 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
         @click="${this._toggleDialog}"
       ></simple-icon-button-lite>
       <simple-context-menu title="${this.t.pageActions}">
-        <simple-toolbar-button
-          icon="hax:page-edit"
-          icon-position="left"
-          align-horizontal="left"
-          show-text-label
-          label="${this.t.editPage}"
-          ?disabled="${this.isLocked}"
-          @click=${this._editPage}
-          autofocus
-        ></simple-toolbar-button>
         ${this.platformAllowsAddPage
           ? html`
               <haxcms-button-add
@@ -164,6 +164,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
                 merlin
                 @click="${this._closeDialog}"
                 show-text-label
+                autofocus
               ></haxcms-button-add>
             `
           : ""}
@@ -186,7 +187,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           @click=${() => this._op("moveDown")}
         ></simple-toolbar-button>
         <simple-toolbar-button
-          icon="editor:format-indent-increase"
+          icon="hax:outline-designer-indent"
           icon-position="left"
           align-horizontal="left"
           show-text-label
@@ -195,7 +196,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           @click=${() => this._op("indent")}
         ></simple-toolbar-button>
         <simple-toolbar-button
-          icon="editor:format-indent-decrease"
+          icon="hax:outline-designer-outdent"
           icon-position="left"
           align-horizontal="left"
           show-text-label
@@ -212,9 +213,30 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           ?disabled="${this.isLocked}"
           @click=${this._movePageProgram}
         ></simple-toolbar-button>
+        <simple-toolbar-button
+          icon="hax:site-map"
+          icon-position="left"
+          align-horizontal="left"
+          show-text-label
+          label="${this.t.siteOutline}"
+          @click=${this._openSiteOutline}
+        ></simple-toolbar-button>
+        ${this.isLocked
+          ? html`
+              <simple-toolbar-button
+                icon="icons:lock"
+                icon-position="left"
+                align-horizontal="left"
+                show-text-label
+                label="${this.t.unlock}"
+                @click=${this._toggleLock}
+              ></simple-toolbar-button>
+            `
+          : html``}
         ${this.platformAllowsDelete
           ? html`
               <simple-toolbar-button
+                class="delete-button"
                 icon="icons:delete"
                 icon-position="left"
                 align-horizontal="left"
@@ -225,14 +247,6 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
               ></simple-toolbar-button>
             `
           : ""}
-        <simple-toolbar-button
-          icon="${this.isLocked ? "icons:lock" : "icons:lock-open"}"
-          icon-position="left"
-          align-horizontal="left"
-          show-text-label
-          label="${this.isLocked ? this.t.unlock : this.t.lock}"
-          @click=${this._toggleLock}
-        ></simple-toolbar-button>
       </simple-context-menu>
     `;
   }
@@ -324,6 +338,11 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
         },
       }),
     );
+  }
+
+  _openSiteOutline() {
+    this._closeDialog();
+    store.cmsSiteEditor.haxCmsSiteEditorUIElement._outlineButtonTap();
   }
 }
 

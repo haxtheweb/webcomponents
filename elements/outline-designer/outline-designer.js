@@ -378,6 +378,17 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           padding-left: var(--ddd-spacing-2);
           padding-right: var(--ddd-spacing-4);
           --simple-toolbar-button-justify: flex-start;
+          --simple-icon-height: 16px;
+          --simple-icon-width: 16px;
+        }
+        .actions-menu simple-toolbar-button.delete-button {
+          border-top: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
+          margin-top: var(--ddd-spacing-2);
+          padding-top: var(--ddd-spacing-2);
+        }
+        .actions-menu simple-toolbar-button.delete-button:hover {
+          color: var(--ddd-theme-default-error);
+          background-color: var(--ddd-theme-default-errorLight);
         }
 
         simple-icon-button-lite {
@@ -1096,32 +1107,9 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           title="${this.t.pageActions}"
         >
           <simple-toolbar-button
-            value="edit-title"
-            ?disabled="${this.isLocked(index)}"
-            icon="editor:mode-edit"
-            label="${this.t.editTitle}"
-            show-text-label
-            @click="${(e) => this._handleMenuAction(e, index, "edit-title")}"
-          ></simple-toolbar-button>
-          <simple-toolbar-button
-            value="lock"
-            icon="${this.isLocked(index) ? "icons:lock" : "icons:lock-open"}"
-            label="${this.isLocked(index) ? this.t.unlock : this.t.lock}"
-            show-text-label
-            @click="${(e) => this._handleMenuAction(e, index, "lock")}"
-          ></simple-toolbar-button>
-          <simple-toolbar-button
-            value="add"
-            ?disabled="${this.isLocked(index)}"
-            icon="add"
-            label="${this.t.addPage}"
-            show-text-label
-            @click="${(e) => this._handleMenuAction(e, index, "add")}"
-          ></simple-toolbar-button>
-          <simple-toolbar-button
             value="up"
             ?disabled="${this.isLocked(index)}"
-            icon="hax:keyboard-arrow-up"
+            icon="icons:arrow-upward"
             label="${this.t.moveUp}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "up")}"
@@ -1129,7 +1117,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           <simple-toolbar-button
             value="down"
             ?disabled="${this.isLocked(index)}"
-            icon="hax:keyboard-arrow-down"
+            icon="icons:arrow-downward"
             label="${this.t.moveDown}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "down")}"
@@ -1138,7 +1126,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             value="in"
             ?disabled="${this.isLocked(index)}"
             icon="hax:outline-designer-indent"
-            label="${this.t.makeChild}"
+            label="Indent"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "in")}"
           ></simple-toolbar-button>
@@ -1146,9 +1134,26 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             value="out"
             ?disabled="${this.isLocked(index)}"
             icon="hax:outline-designer-outdent"
-            label="${this.t.moveToParentLevel}"
+            label="Outdent"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "out")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="edit-title"
+            ?disabled="${this.isLocked(index)}"
+            icon="editor:mode-edit"
+            label="${this.t.editTitle}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "edit-title")}"
+            autofocus
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="add"
+            ?disabled="${this.isLocked(index)}"
+            icon="hax:add-page"
+            label="${this.t.addPage}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "add")}"
           ></simple-toolbar-button>
           <simple-toolbar-button
             value="duplicate"
@@ -1164,6 +1169,22 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             label="${this.t.goToPage}"
             show-text-label
             @click="${(e) => this._handleMenuAction(e, index, "goto")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="lock"
+            icon="${this.isLocked(index) ? "icons:lock" : "icons:lock-open"}"
+            label="${this.isLocked(index) ? this.t.unlock : this.t.lock}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "lock")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            class="delete-button"
+            value="delete"
+            ?disabled="${this.isLocked(index)}"
+            icon="icons:delete"
+            label="Delete"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "delete")}"
           ></simple-toolbar-button>
         </simple-context-menu>
       </li>

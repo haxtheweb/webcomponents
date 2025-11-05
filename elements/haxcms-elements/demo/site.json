@@ -75,7 +75,7 @@
         "created": "1683137556",
         "updated": 1736889443,
         "published": "1",
-        "locked": "",
+        "locked": true,
         "readtime": "2",
         "contentDetails": {
           "headings": "0",

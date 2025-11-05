@@ -247,13 +247,52 @@ class VideoPlayer extends IntersectionObserverMixin(
         ],
         advanced: [
           {
-            property: "track",
-            title: "Closed captions",
-            description: "The URL for the captions file.",
-            inputMethod: "haxupload",
-            noCamera: true,
-            noVoiceRecord: true,
-            validationType: "url",
+            property: "tracks",
+            title: "Text tracks",
+            description:
+              "Closed captions, subtitles, descriptions, and other text tracks for the video.",
+            inputMethod: "array",
+            itemLabel: "label",
+            properties: [
+              {
+                property: "src",
+                title: "Track file",
+                description: "The URL for the track file (WebVTT format).",
+                inputMethod: "haxupload",
+                noCamera: true,
+                noVoiceRecord: true,
+                validationType: "url",
+              },
+              {
+                property: "label",
+                title: "Label",
+                description:
+                  "Label for the track (e.g., 'English', 'Spanish', 'Audio Description').",
+                inputMethod: "textfield",
+                validationType: "text",
+              },
+              {
+                property: "srclang",
+                title: "Language code",
+                description:
+                  "Two-letter language code (e.g., 'en', 'es', 'fr').",
+                inputMethod: "textfield",
+                validationType: "text",
+              },
+              {
+                property: "kind",
+                title: "Track type",
+                description: "The type of text track.",
+                inputMethod: "select",
+                options: {
+                  subtitles: "Subtitles",
+                  captions: "Captions",
+                  descriptions: "Descriptions",
+                  chapters: "Chapters",
+                  metadata: "Metadata",
+                },
+              },
+            ],
           },
           {
             property: "startTime",
@@ -515,6 +554,10 @@ class VideoPlayer extends IntersectionObserverMixin(
        */
       tracks: {
         type: Array,
+        reflect: true,
+        hasChanged(newVal, oldVal) {
+          return JSON.stringify(newVal) !== JSON.stringify(oldVal);
+        },
       },
       /**
        * Source of optional thumbnail image
@@ -617,8 +660,24 @@ class VideoPlayer extends IntersectionObserverMixin(
       titleDescription: "Simple title for under video",
       thumbnailTitle: "Thumbnail image",
       thumbnailDescription: "The URL for a thumbnail/poster image.",
-      closedCaptionsTitle: "Closed captions",
-      closedCaptionsDescription: "The URL for the captions file.",
+      textTracksTitle: "Text tracks",
+      textTracksDescription:
+        "Closed captions, subtitles, descriptions, and other text tracks for the video.",
+      trackFileTitle: "Track file",
+      trackFileDescription: "The URL for the track file (WebVTT format).",
+      trackLabelTitle: "Label",
+      trackLabelDescription:
+        "Label for the track (e.g., 'English', 'Spanish', 'Audio Description').",
+      trackLanguageCodeTitle: "Language code",
+      trackLanguageCodeDescription:
+        "Two-letter language code (e.g., 'en', 'es', 'fr').",
+      trackTypeTitle: "Track type",
+      trackTypeDescription: "The type of text track.",
+      trackTypeSubtitles: "Subtitles",
+      trackTypeCaptions: "Captions",
+      trackTypeDescriptions: "Descriptions",
+      trackTypeChapters: "Chapters",
+      trackTypeMetadata: "Metadata",
       startTimeTitle: "Start time",
       startTimeDescription: "Start video at a specific time (seconds)",
       endTimeTitle: "End time",

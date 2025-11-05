@@ -202,7 +202,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       startNewJourney: "Start new journey",
       newJourney: "New Journey",
       accountInfo: "Account Info",
-      outlineDesigner: "Outline designer",
+      outlineDesigner: "Site Outline",
       pageOutline: "Page outline",
       more: "More",
       siteActions: "Site actions",

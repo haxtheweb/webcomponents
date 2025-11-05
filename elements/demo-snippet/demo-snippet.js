@@ -228,7 +228,6 @@ class DemoSnippet extends DDDSuper(LitElement) {
     const newTemplate = document.createElement("template");
     newTemplate.setAttribute("preserve-content", "preserve-content");
     newTemplate.innerHTML = this._markdown;
-    console.log(newTemplate);
 
     // Insert the template into the code-sample element
     codeDisplay.appendChild(newTemplate);

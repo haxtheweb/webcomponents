@@ -79,24 +79,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         #editbutton {
           visibility: hidden;
           opacity: 0;
-          color: var(--simple-colors-default-theme-light-blue-11);
         }
 
         #saveandeditbutton {
-          visibility: hidden;
-          opacity: 0;
-          color: var(--simple-colors-default-theme-light-blue-11);
-        }
-
-        #deletebutton {
           visibility: hidden;
           opacity: 0;
         }
 
         :host([page-allowed]) #editbutton,
         :host([page-allowed]) #saveandeditbutton,
-        :host([page-allowed]) #editdetails,
-        :host([page-allowed]) #deletebutton {
+        :host([page-allowed]) #editdetails{
           visibility: visible;
           opacity: 1;
         }
@@ -106,16 +98,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           visibility: visible;
           opacity: 1;
         }
-        #addmenubutton,
-        #addmenubutton haxcms-button-add,
-        #editbutton[icon="icons:save"],
-        #saveandeditbutton {
-          color: var(--simple-colors-default-theme-green-11);
-          background-color: var(--simple-colors-default-theme-grey-1);
-        }
-
         haxcms-button-add {
-          color: var(--simple-colors-default-theme-light-green-11);
+          color: inherit;
           background-color: var(--simple-colors-default-theme-grey-1);
         }
 
@@ -127,7 +111,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           --simple-toolbar-button-min-width: 100%;
         }
 
-        #deletebutton,
         #cancelbutton {
           color: var(--simple-colors-default-theme-red-11);
         }
@@ -145,33 +128,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           background-color: var(--simple-colors-default-theme-purple-1);
           color: light-darK(black, white);
         }
-        #deletebutton:hover,
-        #deletebutton:active,
-        #deletebutton:focus,
+
         #cancelbutton:hover,
         #cancelbutton:active,
         #cancelbutton:focus {
           background-color: var(--simple-colors-default-theme-red-1);
         }
-        haxcms-button-add:hover,
-        haxcms-button-add:active,
-        haxcms-button-add:focus {
-          background-color: var(--simple-colors-default-theme-light-green-1);
-        }
-        #editbutton:hover,
-        #editbutton:active,
-        #editbutton:focus,
-        #saveandeditbutton:hover,
-        #saveandeditbutton:active,
-        #saveandeditbutton:focus {
-          background-color: var(--simple-colors-default-theme-light-blue-1);
-        }
         simple-toolbar-menu:hover,
         simple-toolbar-menu:active,
         simple-toolbar-menu:focus,
-        simple-toolbar-button:not(#editbutton):not(#saveandeditbutton):hover,
-        simple-toolbar-button:not(#editbutton):not(#saveandeditbutton):active,
-        simple-toolbar-button:not(#editbutton):not(#saveandeditbutton):focus {
+        simple-toolbar-button:not(.merlin):hover,
+        simple-toolbar-button:not(.merlin):active,
+        simple-toolbar-button:not(.merlin):focus,
+        haxcms-button-add:hover,
+        haxcms-button-add:active,
+        haxcms-button-add:focus {
           background-color: var(--hax-ui-background-color-accent);
           color: var(--hax-ui-color);
         }
@@ -351,6 +322,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           margin: 0;
           --simple-toolbar-border-color: #dddddddd;
         }
+        simple-toolbar-menu-item.menu-item-delete simple-toolbar-button {
+          border-top: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
+          margin-top: var(--ddd-spacing-1);
+          padding-top: var(--ddd-spacing-2);
+        }
+        simple-toolbar-menu-item.menu-item-delete simple-toolbar-button:hover {
+          color: var(--ddd-theme-default-error);
+          background-color: var(--ddd-theme-default-errorLight);
+        }
 
         @media screen and (max-width: 800px) {
           :host([edit-mode]) {
@@ -394,7 +374,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             right: 0;
             top: 10px;
           }
-          :host([edit-mode]) #deletebutton,
           :host([edit-mode]) #addmenubutton,
           :host([edit-mode]) #editdetails {
             display: none;
@@ -2416,7 +2395,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       saveAndEdit: "Save & Edit",
       newJourney: "New Journey",
       accountInfo: "Account Info",
-      outlineDesigner: "Outline designer",
+      outlineDesigner: "Site Outline",
       pageOutline: "Page outline",
       more: "More",
       pageActions: "Page actions",
@@ -2685,6 +2664,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
           <simple-toolbar-button
             ?hidden="${!this.pageAllowed}"
+            ?disabled="${this.activeItem && this.activeItem.metadata && this.activeItem.metadata.locked && !this.editMode}"
             class="top-bar-button"
             id="editbutton"
             icon="${this.__editIcon}"
@@ -2706,6 +2686,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             show-text-label
             data-primary="4"
             voice-command="save and edit page"
+          ></simple-toolbar-button>
+          <haxcms-button-add
+            ?hidden="${this.editMode || !this.platformAllows("addPage")}"
+            id="addpagebutton"
+            class="top-bar-button"
+            icon="hax:add-page"
+            icon-position="${this.getIconPosition(this.responsiveSize)}"
+            label="${this.t.addPage}"
+            show-text-label
+            merlin
+          ></haxcms-button-add>
+          <simple-toolbar-button
+            ?hidden="${this.editMode || !this.platformAllows("outlineDesigner")}"
+            id="outlinebutton"
+            class="top-bar-button"
+            icon="hax:site-map"
+            icon-position="${this.getIconPosition(this.responsiveSize)}"
+            label="Outline"
+            show-text-label
+            @click="${this._outlineButtonTap}"
           ></simple-toolbar-button>
           <simple-toolbar-button
             icon="icons:undo"
@@ -2749,116 +2749,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             label="${this.t.cancel}"
             voice-command="cancel (editing)"
           ></simple-toolbar-button>
-
-          <simple-toolbar-menu
-            show-text-label
-            ?hidden="${this.editMode}"
-            ?disabled="${this.editMode}"
-            icon="hax:page-edit"
-            part="pageactionsbtn"
-            class="top-bar-button"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            label="${this.t.pageActions}"
-            tabindex="${this.editMode ? "-1" : "0"}"
-          >
-            <simple-toolbar-menu-item>
-              <simple-toolbar-button
-                ?disabled="${this.editMode || !this.pageAllowed}"
-                tabindex="${this.editMode ? "-1" : "0"}"
-                icon-position="left"
-                align-horizontal="left"
-                icon="editor:format-quote"
-                @click="${this._editDescriptionPrompt}"
-                label="Edit description"
-                show-text-label
-              ></simple-toolbar-button>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item>
-              <simple-toolbar-button
-                ?disabled="${this.editMode || !this.pageAllowed}"
-                tabindex="${this.editMode ? "-1" : "0"}"
-                icon-position="left"
-                align-horizontal="left"
-                icon="editor:insert-link"
-                @click="${this._editSlugPrompt}"
-                label="Edit slug"
-                show-text-label
-              ></simple-toolbar-button>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item>
-              <simple-toolbar-button
-                ?disabled="${this.editMode || !this.pageAllowed}"
-                tabindex="${this.editMode ? "-1" : "0"}"
-                icon-position="left"
-                align-horizontal="left"
-                icon="${this.activeItem &&
-                this.activeItem.metadata &&
-                this.activeItem.metadata.published !== false
-                  ? "icons:visibility"
-                  : "icons:visibility-off"}"
-                @click="${this._togglePublishedStatus}"
-                label="${this.activeItem &&
-                this.activeItem.metadata &&
-                this.activeItem.metadata.published !== false
-                  ? "Unpublish"
-                  : "Publish"}"
-                show-text-label
-              ></simple-toolbar-button>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item
-              ?hidden="${!this.platformAllows("addPage")}"
-            >
-              <haxcms-button-add
-                id="addpagebutton"
-                ?disabled="${this.editMode || !this.pageAllowed}"
-                icon="hax:add-page"
-                icon-position="left"
-                align-horizontal="left"
-                label="${this.t.addPage}"
-                tabindex="${this.editMode ? "-1" : "0"}"
-                merlin
-                show-text-label
-              ></haxcms-button-add>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item
-              ?hidden="${!this.platformAllows("delete")}"
-            >
-              <simple-toolbar-button
-                ?disabled="${this.editMode ||
-                !this.pageAllowed ||
-                this.onInternalRoute}"
-                tabindex="${this.editMode ? "-1" : "0"}"
-                id="deletebutton"
-                icon-position="left"
-                align-horizontal="left"
-                icon="icons:delete"
-                @click="${this._deleteButtonTap}"
-                label="${this.t.delete}"
-                show-text-label
-                voice-command="delete page"
-              ></simple-toolbar-button>
-            </simple-toolbar-menu-item>
-            <simple-toolbar-menu-item>
-              <simple-toolbar-button
-                ?disabled="${this.editMode || this.onInternalRoute}"
-                tabindex="${this.editMode ? "-1" : "0"}"
-                icon-position="left"
-                align-horizontal="left"
-                icon="${this.activeItem &&
-                this.activeItem.metadata &&
-                this.activeItem.metadata.locked
-                  ? "icons:lock"
-                  : "icons:lock-open"}"
-                @click="${this._toggleLockStatus}"
-                label="${this.activeItem &&
-                this.activeItem.metadata &&
-                this.activeItem.metadata.locked
-                  ? "Unlock page"
-                  : "Lock page"}"
-                show-text-label
-              ></simple-toolbar-button>
-            </simple-toolbar-menu-item>
-          </simple-toolbar-menu>
 
           <simple-toolbar-button
             data-event="content-edit"
@@ -2953,22 +2843,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             label="${this.t.siteActions}"
             tabindex="${this.editMode ? "-1" : "0"}"
           >
-            <simple-toolbar-menu-item
-              ?hidden="${!this.platformAllows("outlineDesigner")}"
-            >
-              <simple-toolbar-button
-                ?hidden="${this.editMode}"
-                ?disabled="${this.editMode}"
-                tabindex="${this.editMode ? "-1" : "0"}"
-                id="outlinebutton"
-                @click="${this._outlineButtonTap}"
-                icon-position="left"
-                icon="hax:site-map"
-                part="outlinebtn"
-                show-text-label
-                label="${this.t.outlineDesigner}"
-              ></simple-toolbar-button>
-            </simple-toolbar-menu-item>
             <simple-toolbar-menu-item>
               <simple-toolbar-button
                 ?hidden="${this.editMode}"
@@ -3304,10 +3178,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           this.backText = globalThis.appSettings.backText;
         }
         let ary = [
-          {
-            varPath: "deleteNodePath",
-            selector: "#deletebutton",
-          },
           {
             varPath: "saveNodePath",
             selector: "#editbutton",
@@ -3659,19 +3529,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           // Four most common operations for new users (removed create-page)
           return [
             {
-              title: "Create a new page",
-              icon: "hax:add-page",
-              tags: ["welcome", "common", "operation"],
-              value: {
-                target: this,
-                method: "executeWelcomeAction",
-                args: ["create-page"],
-              },
-              eventName: "super-daemon-element-method",
-              context: ["CMS"],
-              path: "CMS/welcome/create-page",
-            },
-            {
               title: "Edit this page",
               icon: "hax:page-edit",
               tags: ["welcome", "common", "operation"],
@@ -3683,6 +3540,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               eventName: "super-daemon-element-method",
               context: ["CMS"],
               path: "CMS/welcome/edit-page",
+            },
+            {
+              title: "Create a new page",
+              icon: "hax:add-page",
+              tags: ["welcome", "common", "operation"],
+              value: {
+                target: this,
+                method: "executeWelcomeAction",
+                args: ["create-page"],
+              },
+              eventName: "super-daemon-element-method",
+              context: ["CMS"],
+              path: "CMS/welcome/create-page",
             },
             {
               title: "Upload a file",
@@ -3698,7 +3568,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               path: "CMS/welcome/upload-file",
             },
             {
-              title: "Use outline designer",
+              title: "Edit site outline",
               icon: "hax:site-map",
               tags: ["welcome", "common", "operation"],
               value: {
@@ -4268,7 +4138,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         break;
 
       case "outline-designer":
-        // Trigger the outline designer
+        // Trigger the Site Outline
         this._outlineButtonTap();
         break;
 
@@ -4627,10 +4497,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this.activeTitle = activeItem.title;
         this.onInternalRoute = activeItem._internalRoute || false;
         // Use the store method to determine if editing is allowed
-        // Also check if page is locked - locked pages are not allowed for editing
         const supportsEditor = store.currentRouteSupportsHaxEditor();
-        const isLocked = activeItem.metadata && activeItem.metadata.locked;
-        store.pageAllowed = supportsEditor && !isLocked;
+        // Show the button if editor is supported, regardless of lock status
+        store.pageAllowed = supportsEditor;
       } else {
         this.onInternalRoute = false;
         store.pageAllowed = false;
@@ -4818,7 +4687,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           "--simple-modal-titlebar-height": "80px",
         },
         elements: { content: c, buttons: b },
-        invokedBy: this.shadowRoot.querySelector("#deletebutton"),
+        invokedBy: this,
         clone: false,
         modal: true,
       },
@@ -4888,7 +4757,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   _toggleLockStatus(e) {
     const activeItem = toJS(store.activeItem);
     if (!activeItem || !activeItem.id) return;
-
+    
     const isLocked = activeItem.metadata && activeItem.metadata.locked;
     store.playSound("click");
     globalThis.dispatchEvent(
@@ -4905,7 +4774,28 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
   }
   /**
-   * Edit slug via Merlin program
+   * Duplicate page prompt
+   */
+  _duplicatePagePrompt(e) {
+    const activeItem = toJS(store.activeItem);
+    if (!activeItem || !activeItem.id) return;
+    
+    const newTitle = globalThis.prompt("Enter title for duplicated page:", `${activeItem.title} (copy)`);
+    if (newTitle && newTitle.trim() !== "") {
+      store.playSound("click");
+      const SuperDaemonInstance = globalThis.SuperDaemonManager.requestAvailability();
+      // Use the create-page program with duplicate option
+      SuperDaemonInstance.waveWand([
+        newTitle,
+        "/",
+        {},
+        "create-page",
+        "Add Page",
+      ]);
+    }
+  }
+  /**
+   * Edit slug prompt
    */
   _editSlugPrompt(e) {
     const activeItem = toJS(store.activeItem);
