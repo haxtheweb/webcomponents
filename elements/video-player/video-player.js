@@ -238,8 +238,8 @@ class VideoPlayer extends IntersectionObserverMixin(
           },
           {
             property: "thumbnailSrc",
-            title: "Thumbnail image",
-            description: "The URL for a thumbnail/poster image.",
+            title: "Poster image",
+            description: "The image URL for the poster image.",
             inputMethod: "haxupload",
             noVoiceRecord: true,
             validationType: "url",
