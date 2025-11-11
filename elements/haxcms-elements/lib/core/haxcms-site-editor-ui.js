@@ -1576,7 +1576,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         name: "create-page",
         machineName: "create-page",
-        placeholder: "Page title",
+        placeholder: "Type page title to create page",
         program: async (input, values) => {
           // Get reference to site editor UI regardless of how program was accessed
           const siteEditorUI =
@@ -1596,15 +1596,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   args: ["New Page", "sibling"],
                 },
                 eventName: "super-daemon-element-method",
-                path: "CMS/action/create/page/blank",
-              },
-              {
-                title: "Enter a page title above to see more creation options",
-                icon: "editor:mode-edit",
-                tags: ["instruction"],
-                value: { disabled: true },
-                eventName: "disabled",
-                path: "Enter page title in the input field",
+                path: "CMS/action/create/page",
               },
             ];
           }
@@ -1618,7 +1610,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
             // Add blank page option first
             results.push({
-              title: `Create "${title}" `,
+              title: `Create ${title}`,
               icon: "hax:add-page",
               tags: ["page", "blank", "create"],
               value: {
@@ -1630,27 +1622,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               path: "CMS/action/create/page/blank",
             });
 
-            // Add duplicate current page option
-            if (currentItem) {
-              results.push({
-                title: `Duplicate as "${title}"`,
-                icon: "hax:duplicate",
-                tags: ["page", "duplicate", "create"],
-                value: {
-                  target: siteEditorUI,
-                  method: "createPageWithTitle",
-                  args: [title, "duplicate"],
-                },
-                eventName: "super-daemon-element-method",
-                path: "CMS/action/create/page/duplicate",
-              });
-            }
-
             // Add template options if templates are available
             if (pageTemplates && pageTemplates.length > 0) {
               pageTemplates.forEach((template, index) => {
                 results.push({
-                  title: `Create "${title}" with "${template.name}"`,
+                  title: `Create ${template.name} named ${title}`,
                   icon: "hax:templates",
                   tags: ["template", "page", "create"],
                   value: {
@@ -1661,6 +1637,22 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   eventName: "super-daemon-element-method",
                   path: `CMS/action/create/page/template/${template.id}`,
                 });
+              });
+            }
+
+            // Add duplicate current page option
+            if (currentItem) {
+              results.push({
+                title: `Duplicate as ${title}`,
+                icon: "hax:duplicate",
+                tags: ["page", "duplicate", "create"],
+                value: {
+                  target: siteEditorUI,
+                  method: "createPageWithTitle",
+                  args: [title, "duplicate"],
+                },
+                eventName: "super-daemon-element-method",
+                path: "CMS/action/create/page/duplicate",
               });
             }
 
@@ -2396,7 +2388,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       newJourney: "New Journey",
       accountInfo: "Account Info",
       outlineDesigner: "Site Outline",
-      pageOutline: "Page outline",
+      pageOutline: "Structure",
       more: "More",
       pageActions: "Page actions",
       siteActions: "Site actions",
@@ -3115,9 +3107,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         break;
       case "media-program":
         store.playSound("click");
-        SuperDaemonInstance.runProgram("sources");
-        SuperDaemonInstance.open();
-        HAXStore.haxTray.collapsed = false;
+        SuperDaemonInstance.waveWand(
+          ["sources", "/"],
+          this.shadowRoot.querySelector("#merlin"),
+          null,
+        );
         break;
       case "content-edit":
       case "content-map":

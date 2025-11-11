@@ -76,22 +76,42 @@ class HaxMap extends I18NMixin(SimpleColors) {
           display: inline-flex;
           opacity: 0;
           visibility: hidden;
-          --simple-icon-width: 14px;
-          --simple-icon-height: 14px;
-          height: 38px;
-          margin: 0 4px;
+          --simple-icon-width: var(--ddd-icon-4xs, 16px);
+          --simple-icon-height: var(--ddd-icon-4xs, 16px);
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          margin: 0 2px;
+          padding: 4px;
           color: var(--ddd-theme-default-coalyGray);
-          background-color: var(--simple-colors-default-theme-grey-1, white);
+          background-color: var(--simple-colors-default-theme-grey-3, #e0e0e0);
+          border: 1px solid var(--simple-colors-default-theme-grey-5, #999);
+          transition: all 0.2s ease-in-out;
         }
-        li simple-icon-button:hover {
-          background-color: var(--simple-colors-default-theme-grey-2, white);
+        li simple-icon-button-lite:hover,
+        li simple-icon-button-lite:focus {
+          background-color: var(--simple-colors-default-theme-grey-4, #bdbdbd);
+          border-color: var(--simple-colors-default-theme-grey-7, #666);
+          opacity: 1;
         }
         li simple-icon-button.del {
           margin-left: 16px;
         }
-        li:hover simple-icon-button-lite {
+        li:hover simple-icon-button-lite,
+        li:focus-within simple-icon-button-lite {
           visibility: visible;
           opacity: 1;
+        }
+        :host([dark]) li simple-icon-button-lite {
+          color: var(--ddd-theme-default-white);
+          background-color: var(--simple-colors-default-theme-grey-7, #616161);
+          border-color: var(--simple-colors-default-theme-grey-9, #424242);
+        }
+        :host([dark]) li simple-icon-button-lite:hover,
+        :host([dark]) li simple-icon-button-lite:focus {
+          background-color: var(--simple-colors-default-theme-grey-8, #424242);
+          border-color: var(--simple-colors-default-theme-grey-10, #212121);
+          color: var(--ddd-theme-default-white);
         }
         hax-toolbar-item[data-active-item]::part(button) {
           color: var(--hax-ui-color);
@@ -140,6 +160,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
   constructor() {
     super();
     this.elementList = [];
+    this.dark = false;
     this.t = {
       contentStatistics: "Content Statistics",
       words: "Words",
@@ -160,6 +181,11 @@ class HaxMap extends I18NMixin(SimpleColors) {
           this.requestUpdate();
         }, 0);
       }
+    });
+    autorun(() => {
+      const globalPreferences = toJS(HAXStore.globalPreferences);
+      const haxUiTheme = (globalPreferences || {}).haxUiTheme || "hax";
+      this.dark = haxUiTheme === "haxdark";
     });
   }
   async updateHAXMap(e) {
@@ -479,6 +505,10 @@ class HaxMap extends I18NMixin(SimpleColors) {
         type: Boolean,
       },
       hidden: {
+        type: Boolean,
+        reflect: true,
+      },
+      dark: {
         type: Boolean,
         reflect: true,
       },

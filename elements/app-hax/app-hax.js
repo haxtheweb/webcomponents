@@ -167,6 +167,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     super();
     this.unlockComingSoon = false;
     this.unlockTerrible = false;
+    this.__loginModalOpen = false;
     this.t = this.t || {};
 
     this.t = {
@@ -203,7 +204,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       newJourney: "New Journey",
       accountInfo: "Account Info",
       outlineDesigner: "Site Outline",
-      pageOutline: "Page outline",
+      pageOutline: "Structure",
       more: "More",
       siteActions: "Site actions",
       insights: "Insights dashboard",
@@ -728,14 +729,24 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   _jwtLoggedIn(e) {
     if (e.detail === false && this.__logoutUserAction) {
       this.__logoutUserAction = false;
+      // reset login modal flag on logout so user can log in again
+      this.__loginModalOpen = false;
       setTimeout(() => {
         this.reset(true);
       }, 100);
     }
+    // Note: we do NOT reset __loginModalOpen on successful login
+    // The flag stays true to prevent the autorun from triggering login() again
+    // It only resets on logout when we actually want to show the login modal again
   }
 
   // eslint-disable-next-line class-methods-use-this
   login() {
+    // prevent multiple login modals from being created
+    if (this.__loginModalOpen) {
+      return;
+    }
+    this.__loginModalOpen = true;
     import("./lib/v2/app-hax-site-login.js").then(() => {
       const p = globalThis.document.createElement("app-hax-site-login");
       if (this.querySelector('[slot="externalproviders"]')) {

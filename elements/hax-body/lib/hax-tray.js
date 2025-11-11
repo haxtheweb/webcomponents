@@ -70,7 +70,7 @@ class HaxTray extends I18NMixin(
     this.dark = false;
     this.__moveX = 0;
     this.t = {
-      structure: "Outline",
+      structure: "Structure",
       htmlSource: "HTML Source",
       structureTip: "View Page Structure",
       edit: "Edit",

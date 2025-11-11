@@ -341,7 +341,8 @@ class JwtLogin extends LitElement {
   isDifferentDomain(urlToCheck) {
     try {
       const currentUrl = new URL(globalThis.location.href);
-      const targetUrl = new URL(urlToCheck);
+      // Handle both absolute and relative URLs by providing base URL
+      const targetUrl = new URL(urlToCheck, globalThis.location.href);
 
       return currentUrl.hostname !== targetUrl.hostname;
     } catch (error) {
