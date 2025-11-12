@@ -82,6 +82,25 @@ class HAXCMSKeyboardShortcuts {
   }
 
   /**
+   * Normalize key to handle special cases like numbers with shift
+   * @param {KeyboardEvent} e - The keyboard event
+   * @returns {String} - Normalized key string
+   */
+  _normalizeKey(e) {
+    // For digit keys, use e.code to get consistent 'Digit1', 'Digit2', etc.
+    // This handles Shift+1 = '!' becoming just '1'
+    if (e.code && e.code.startsWith('Digit')) {
+      return e.code.replace('Digit', '');
+    }
+    // For numpad, also normalize
+    if (e.code && e.code.startsWith('Numpad')) {
+      return e.code.replace('Numpad', '');
+    }
+    // Otherwise use e.key
+    return e.key;
+  }
+
+  /**
    * Handle keydown events
    */
   _handleKeydown(e) {
@@ -100,9 +119,12 @@ class HAXCMSKeyboardShortcuts {
 
     if (isInput && !inHaxEditor) return;
 
+    // Normalize the key (handles Shift+number keys)
+    const normalizedKey = this._normalizeKey(e);
+
     // Generate key for current key combination
     const shortcutKey = this._generateKey(
-      e.key,
+      normalizedKey,
       e.ctrlKey,
       e.shiftKey,
       e.altKey,
