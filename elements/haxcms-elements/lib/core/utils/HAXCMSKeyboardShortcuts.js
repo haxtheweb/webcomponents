@@ -1,0 +1,168 @@
+/**
+ * Copyright 2025 The Pennsylvania State University
+ * @license Apache-2.0, see License.md for full text.
+ */
+import { store } from "../haxcms-site-store.js";
+
+/**
+ * HAXCMSKeyboardShortcuts
+ * Centralized keyboard shortcut management for HAXcms
+ * Coordinates with Super Daemon shortcuts to avoid conflicts
+ *
+ * Super Daemon uses: Alt+Shift (Linux/Windows) or Meta+Shift (macOS)
+ * HAXcms uses: Ctrl+Shift+[Key] for content operations
+ */
+class HAXCMSKeyboardShortcuts {
+  constructor() {
+    this.shortcuts = new Map();
+    this.enabled = true;
+    this._boundHandler = this._handleKeydown.bind(this);
+  }
+
+  /**
+   * Register a keyboard shortcut
+   * @param {Object} options - Shortcut configuration
+   * @param {String} options.key - Key to press (e.g., 'S', 'E')
+   * @param {Boolean} options.ctrl - Require Ctrl key
+   * @param {Boolean} options.shift - Require Shift key
+   * @param {Boolean} options.alt - Require Alt key
+   * @param {Boolean} options.meta - Require Meta key
+   * @param {Function} options.callback - Function to call when shortcut is triggered
+   * @param {Function} options.condition - Optional function that returns true if shortcut should be active
+   * @param {String} options.description - Human-readable description
+   * @param {String} options.context - Context where shortcut is active (e.g., 'edit', 'view', 'global')
+   */
+  register(options) {
+    const {
+      key,
+      ctrl = false,
+      shift = false,
+      alt = false,
+      meta = false,
+      callback,
+      condition = () => true,
+      description = "",
+      context = "global",
+    } = options;
+
+    const shortcutKey = this._generateKey(key, ctrl, shift, alt, meta);
+
+    this.shortcuts.set(shortcutKey, {
+      key,
+      ctrl,
+      shift,
+      alt,
+      meta,
+      callback,
+      condition,
+      description,
+      context,
+    });
+  }
+
+  /**
+   * Unregister a keyboard shortcut
+   */
+  unregister(key, ctrl = false, shift = false, alt = false, meta = false) {
+    const shortcutKey = this._generateKey(key, ctrl, shift, alt, meta);
+    this.shortcuts.delete(shortcutKey);
+  }
+
+  /**
+   * Generate a unique key for the shortcut map
+   */
+  _generateKey(key, ctrl, shift, alt, meta) {
+    const parts = [];
+    if (ctrl) parts.push("Ctrl");
+    if (alt) parts.push("Alt");
+    if (shift) parts.push("Shift");
+    if (meta) parts.push("Meta");
+    parts.push(key.toUpperCase());
+    return parts.join("+");
+  }
+
+  /**
+   * Handle keydown events
+   */
+  _handleKeydown(e) {
+    if (!this.enabled) return;
+
+    // Don't intercept if user is typing in an input field (unless in HAX edit mode)
+    const activeElement = globalThis.document.activeElement;
+    const isInput =
+      activeElement &&
+      (activeElement.tagName === "INPUT" ||
+        activeElement.tagName === "TEXTAREA" ||
+        activeElement.isContentEditable);
+
+    // Allow shortcuts in HAX editor even when in content editable areas
+    const inHaxEditor = activeElement && activeElement.closest("hax-body");
+
+    if (isInput && !inHaxEditor) return;
+
+    // Generate key for current key combination
+    const shortcutKey = this._generateKey(
+      e.key,
+      e.ctrlKey,
+      e.shiftKey,
+      e.altKey,
+      e.metaKey,
+    );
+
+    const shortcut = this.shortcuts.get(shortcutKey);
+
+    if (shortcut && shortcut.condition()) {
+      e.preventDefault();
+      shortcut.callback(e);
+    }
+  }
+
+  /**
+   * Start listening for keyboard shortcuts
+   */
+  enable() {
+    this.enabled = true;
+    globalThis.document.addEventListener("keydown", this._boundHandler);
+  }
+
+  /**
+   * Stop listening for keyboard shortcuts
+   */
+  disable() {
+    this.enabled = false;
+    globalThis.document.removeEventListener("keydown", this._boundHandler);
+  }
+
+  /**
+   * Get all registered shortcuts
+   */
+  getShortcuts() {
+    return Array.from(this.shortcuts.entries()).map(([key, shortcut]) => ({
+      key,
+      ...shortcut,
+    }));
+  }
+
+  /**
+   * Get shortcuts for a specific context
+   */
+  getShortcutsByContext(context) {
+    return this.getShortcuts().filter(
+      (s) => s.context === context || s.context === "global",
+    );
+  }
+}
+
+// Create singleton instance
+globalThis.HAXCMSKeyboardShortcutsManager =
+  globalThis.HAXCMSKeyboardShortcutsManager || {};
+globalThis.HAXCMSKeyboardShortcutsManager.requestAvailability = () => {
+  if (!globalThis.HAXCMSKeyboardShortcutsManager.instance) {
+    globalThis.HAXCMSKeyboardShortcutsManager.instance =
+      new HAXCMSKeyboardShortcuts();
+  }
+  return globalThis.HAXCMSKeyboardShortcutsManager.instance;
+};
+
+export const HAXCMSKeyboardShortcutsInstance =
+  globalThis.HAXCMSKeyboardShortcutsManager.requestAvailability();

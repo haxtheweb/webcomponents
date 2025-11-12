@@ -341,6 +341,15 @@
             },
             {
               "kind": "method",
+              "name": "_handleDragHandleKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ]
+            },
+            {
+              "kind": "method",
               "name": "handleLabelKeydown",
               "parameters": [
                 {
@@ -816,6 +825,16 @@
             },
             {
               "kind": "field",
+              "name": "_dragHandleActive",
+              "privacy": "public",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "attribute": "_dragHandleActive"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
@@ -951,6 +970,14 @@
               },
               "default": "1",
               "fieldName": "zoomLevel"
+            },
+            {
+              "name": "_dragHandleActive",
+              "type": {
+                "text": "null"
+              },
+              "default": "null",
+              "fieldName": "_dragHandleActive"
             }
           ],
           "mixins": [

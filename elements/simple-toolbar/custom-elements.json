@@ -6818,6 +6818,12 @@
               "name": "menuItem",
               "description": "gets item with role=\"menuitem\"",
               "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "focusableElement",
+              "description": "gets focusable element within menuitem",
+              "readonly": true
             }
           ],
           "mixins": [

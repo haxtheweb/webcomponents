@@ -5,9 +5,7 @@
     "name": "8-bit Overworld theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-app-hax-theme-thumb.jpg",
     "description": "Start with a blank site using the 8-bit Overworld theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -17,9 +15,7 @@
     "name": "Bootstrap Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-bootstrap-theme-thumb.jpg",
     "description": "Start with a blank site using the Bootstrap Theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -29,9 +25,7 @@
     "name": "Clean One",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
     "description": "Start with a blank site using the Clean One",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -41,9 +35,7 @@
     "name": "Clean Portfolio Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
     "description": "Start with a blank site using the Clean Portfolio Theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -53,9 +45,7 @@
     "name": "Clean Two",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-clean-two-thumb.jpg",
     "description": "Start with a blank site using the Clean Two",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -65,9 +55,7 @@
     "name": "Collections Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-collections-theme-thumb.jpg",
     "description": "Start with a blank site using the Collections Theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -77,9 +65,7 @@
     "name": "Brochure Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-ddd-brochure-theme-thumb.jpg",
     "description": "Start with a blank site using the Brochure Theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -89,9 +75,7 @@
     "name": "Glossy Portfolio Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-glossy-portfolio-theme-thumb.jpg",
     "description": "Start with a blank site using the Glossy Portfolio Theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -101,9 +85,7 @@
     "name": "Haxcms Blank Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxcms-blank-theme-thumb.jpg",
     "description": "Start with a blank site using the Haxcms Blank Theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": true,
     "terrible": false
   },
@@ -113,9 +95,7 @@
     "name": "Haxcms Json Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxcms-json-theme-thumb.jpg",
     "description": "Start with a blank site using the Haxcms Json Theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": true,
     "terrible": false
   },
@@ -125,9 +105,7 @@
     "name": "Haxcms Print Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxcms-print-theme-thumb.jpg",
     "description": "Start with a blank site using the Haxcms Print Theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": true,
     "terrible": false
   },
@@ -137,9 +115,7 @@
     "name": "HAXma doc theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxma-theme-thumb.jpg",
     "description": "Start with a blank site using the HAXma doc theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -149,9 +125,7 @@
     "name": "Haxor Slevin",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxor-slevin-thumb.jpg",
     "description": "Start with a blank site using the Haxor Slevin",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -161,9 +135,7 @@
     "name": "Journey Sidebar theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-journey-sidebar-theme-thumb.jpg",
     "description": "Start with a blank site using the Journey Sidebar theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -173,9 +145,7 @@
     "name": "Journey Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-journey-theme-thumb.jpg",
     "description": "Start with a blank site using the Journey Theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -185,9 +155,7 @@
     "name": "Journey Topbar Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-journey-topbar-theme-thumb.jpg",
     "description": "Start with a blank site using the Journey Topbar Theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -197,9 +165,7 @@
     "name": "Learn theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-learn-two-theme-thumb.jpg",
     "description": "Start with a blank site using the Learn theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -209,9 +175,7 @@
     "name": "Outline Player",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-outline-player-thumb.jpg",
     "description": "Start with a blank site using the Outline Player",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -221,9 +185,7 @@
     "name": "Polaris Flex Sidebar",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-sidebar-thumb.jpg",
     "description": "Start with a blank site using the Polaris Flex Sidebar",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -233,9 +195,7 @@
     "name": "Polaris Flex Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-theme-thumb.jpg",
     "description": "Start with a blank site using the Polaris Flex Theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -245,9 +205,7 @@
     "name": "Polaris Invent Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-invent-theme-thumb.jpg",
     "description": "Start with a blank site using the Polaris Invent Theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -257,9 +215,7 @@
     "name": "Polaris Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-theme-thumb.jpg",
     "description": "Start with a blank site using the Polaris Theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -269,9 +225,7 @@
     "name": "Simple Blog",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-simple-blog-thumb.jpg",
     "description": "Start with a blank site using the Simple Blog",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -281,9 +235,7 @@
     "name": "Space Book theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-spacebook-theme-thumb.jpg",
     "description": "Start with a blank site using the Space Book theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   },
@@ -293,9 +245,7 @@
     "name": "Terrible 90s - hockey player theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-terrible-best-themes-thumb.jpg",
     "description": "Start with a blank site using the Terrible 90s - hockey player theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": true
   },
@@ -305,9 +255,7 @@
     "name": "Terrible 90s - blog theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-terrible-outlet-themes-thumb.jpg",
     "description": "Start with a blank site using the Terrible 90s - blog theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": true
   },
@@ -317,9 +265,7 @@
     "name": "Terrible 90s - productionz theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-terrible-productionz-themes-thumb.jpg",
     "description": "Start with a blank site using the Terrible 90s - productionz theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": true
   },
@@ -329,9 +275,7 @@
     "name": "Terrible 90s - resume theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-terrible-resume-themes-thumb.jpg",
     "description": "Start with a blank site using the Terrible 90s - resume theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": true
   },
@@ -341,9 +285,7 @@
     "name": "Terrible 90s - Room 407 theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-terrible-themes-thumb.jpg",
     "description": "Start with a blank site using the Terrible 90s - Room 407 theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": true
   },
@@ -353,9 +295,7 @@
     "name": "Training Theme",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-training-theme-thumb.jpg",
     "description": "Start with a blank site using the Training Theme",
-    "category": [
-      "Blank"
-    ],
+    "category": ["Blank"],
     "hidden": false,
     "terrible": false
   }

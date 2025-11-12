@@ -33,13 +33,21 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           font-family: var(--ddd-font-navigation);
           --outline-designer-zoom: 1;
         }
-        :host(.zoom-out-1) { --outline-designer-zoom: 0.85; }
-        :host(.zoom-out-2) { --outline-designer-zoom: 0.7; }
-        :host(.zoom-out-3) { --outline-designer-zoom: 0.55; }
+        :host(.zoom-out-1) {
+          --outline-designer-zoom: 0.85;
+        }
+        :host(.zoom-out-2) {
+          --outline-designer-zoom: 0.7;
+        }
+        :host(.zoom-out-3) {
+          --outline-designer-zoom: 0.55;
+        }
         .item {
           transform: scale(var(--outline-designer-zoom));
           transform-origin: left center;
-          margin-bottom: calc(var(--ddd-spacing-1) * var(--outline-designer-zoom));
+          margin-bottom: calc(
+            var(--ddd-spacing-1) * var(--outline-designer-zoom)
+          );
         }
         simple-icon-button[hidden] {
           visibility: hidden !important;
@@ -331,7 +339,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             var(--ddd-accent-5),
             var(--ddd-primary-6)
           );
-          outline: 2px solid light-dark(var(--ddd-primary-2), var(--ddd-accent-4));
+          outline: 2px solid
+            light-dark(var(--ddd-primary-2), var(--ddd-accent-4));
           outline-offset: -2px;
           box-shadow: var(--ddd-boxShadow-md);
         }
@@ -340,7 +349,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             var(--ddd-accent-4),
             var(--ddd-primary-7)
           );
-          outline: 2px solid light-dark(var(--ddd-primary-3), var(--ddd-accent-3));
+          outline: 2px solid
+            light-dark(var(--ddd-primary-3), var(--ddd-accent-3));
           outline-offset: -2px;
         }
         .item[data-dragging="true"] {
@@ -382,7 +392,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           --simple-icon-width: 16px;
         }
         .actions-menu simple-toolbar-button.delete-button {
-          border-top: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
+          border-top: var(--ddd-border-sm) solid
+            var(--ddd-theme-default-limestoneGray);
           margin-top: var(--ddd-spacing-2);
           padding-top: var(--ddd-spacing-2);
         }
@@ -394,7 +405,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         simple-icon-button-lite {
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
-        
+
         simple-context-menu {
           text-align: left;
         }
@@ -572,7 +583,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           left: -1000px;
           padding: 8px 12px;
           background: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
-          border: 2px solid light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          border: 2px solid
+            light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           border-radius: var(--ddd-radius-sm);
           font-weight: var(--ddd-font-weight-bold);
           box-shadow: var(--ddd-boxShadow-lg);
@@ -594,7 +606,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           right: -3px;
           height: 100%;
           background: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
-          border: 2px solid light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          border: 2px solid
+            light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
           border-radius: var(--ddd-radius-sm);
           z-index: -1;
         }
@@ -610,6 +623,15 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           opacity: 0.7;
           font-size: 12px;
           font-weight: var(--ddd-font-weight-regular);
+        }
+        .drag-handle-active {
+          outline: 2px solid
+            light-dark(var(--ddd-accent-4), var(--ddd-accent-3));
+          outline-offset: 2px;
+          background-color: light-dark(
+            var(--ddd-accent-5),
+            var(--ddd-primary-6)
+          );
         }
         /* Push-aside animation for drop target */
         .item.drop-above-target {
@@ -644,6 +666,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     this.activePage = null;
     this.selectedPages = [];
     this.zoomLevel = 1;
+    this._dragHandleActive = null;
     this.t = {
       selectTarget: "Select target",
       importContentUnderThisPage: "Import content under this page",
@@ -1061,10 +1084,14 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           @dragstart="${this._dragStart}"
           @dragend="${this._dragEnd}"
           @drag="${this._onDrag}"
+          @keydown="${this._handleDragHandleKeydown}"
           draggable="${!this.isLocked(index)}"
           icon="icons:reorder"
-          class="drag-handle"
-          title="Drag to reorder"
+          class="drag-handle ${this._dragHandleActive === item.id
+            ? "drag-handle-active"
+            : ""}"
+          title="Drag to reorder or press Enter to activate keyboard controls"
+          data-drag-handle-id="${item.id}"
         ></simple-icon-button-lite>
         <simple-icon-button-lite
           ?disabled="${this.isLocked(index)}"
@@ -1760,6 +1787,80 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     }, 0);
   }
 
+  // Handle keyboard navigation for drag handle
+  _handleDragHandleKeydown(e) {
+    const dragHandle = e.target;
+    const itemId = dragHandle.getAttribute("data-drag-handle-id");
+    const itemIndex = this.items.findIndex((item) => item.id === itemId);
+
+    if (itemIndex === -1 || this.isLocked(itemIndex)) return;
+
+    // Enter key activates/deactivates keyboard drag mode
+    if (e.key === "Enter") {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (this._dragHandleActive === itemId) {
+        // Deactivate
+        this._dragHandleActive = null;
+        this.announceAction("Keyboard controls deactivated");
+      } else {
+        // Activate
+        this._dragHandleActive = itemId;
+        this.announceAction(
+          "Keyboard controls activated. Use arrow keys to move, Enter or Escape to deactivate",
+        );
+      }
+      this.requestUpdate();
+      return;
+    }
+
+    // Escape key deactivates keyboard drag mode
+    if (e.key === "Escape" && this._dragHandleActive === itemId) {
+      e.preventDefault();
+      e.stopPropagation();
+      this._dragHandleActive = null;
+      this.announceAction("Keyboard controls deactivated");
+      this.requestUpdate();
+      return;
+    }
+
+    // Only process arrow keys if this handle is active
+    if (this._dragHandleActive !== itemId) return;
+
+    let action = null;
+    switch (e.key) {
+      case "ArrowUp":
+        e.preventDefault();
+        e.stopPropagation();
+        action = "up";
+        this.announceAction("Moving item up");
+        break;
+      case "ArrowDown":
+        e.preventDefault();
+        e.stopPropagation();
+        action = "down";
+        this.announceAction("Moving item down");
+        break;
+      case "ArrowLeft":
+        e.preventDefault();
+        e.stopPropagation();
+        action = "in";
+        this.announceAction("Indenting item");
+        break;
+      case "ArrowRight":
+        e.preventDefault();
+        e.stopPropagation();
+        action = "out";
+        this.announceAction("Outdenting item");
+        break;
+    }
+
+    if (action) {
+      this.itemOp(itemIndex, action);
+    }
+  }
+
   // Handle Enter key on label to activate editing mode
   handleLabelKeydown(e) {
     // Only handle Enter key and prevent if disabled
@@ -2347,6 +2448,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       activePage: { type: String },
       selectedPages: { type: Array },
       zoomLevel: { type: Number },
+      _dragHandleActive: { type: String },
     };
   }
 

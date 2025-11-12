@@ -39,6 +39,7 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
             --simple-icon-width: 18px;
             position: absolute;
             left: 2px;
+            color: var(--simple-toolbar-button-color, currentColor);
           }
         `,
       ];
@@ -115,9 +116,12 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
           aria-controls="menu"
           ?disabled="${this.disabled}"
           aria-expanded="${this.expanded ? "true" : "false"}"
+          @click="${this._handleClick}"
+          @keydown="${this._handleKeydown}"
+          @focus="${this._handleFocus}"
           @blur="${this._handleBlur}"
           part="button"
-          tabindex="${this.isCurrentItem ? 1 : -1}"
+          tabindex="0"
         >
           ${this.buttonInnerTemplate}
           <simple-icon-lite
@@ -200,6 +204,17 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
         SimpleToolbarButtonBehaviors._handleFocus(event);
       if (A11yMenuButtonBehaviors._handleFocus)
         A11yMenuButtonBehaviors._handleFocus(event);
+      // Open menu when menu button receives focus (for keyboard users)
+      let path = normalizeEventPath(event) || [],
+        target = path[0];
+      // Check if this is the menu button getting focus, not a menu item
+      if (
+        (target.id === "menubutton" || target.closest("#menubutton")) &&
+        !this.noOpenOnHover &&
+        !this.expanded
+      ) {
+        this.open();
+      }
     }
 
     /**
@@ -213,7 +228,24 @@ const SimpleToolbarMenuBehaviors = function (SuperClass) {
         SimpleToolbarButtonBehaviors._handleBlur(event);
       if (A11yMenuButtonBehaviors._handleBlur)
         A11yMenuButtonBehaviors._handleBlur(event);
-      if (!this.isCurrentItem) setTimeout(this.close(), 300);
+      // Use relatedTarget to check if focus is staying within the menu
+      const relatedTarget = event.relatedTarget;
+      if (relatedTarget) {
+        const isStayingInMenu =
+          this.contains(relatedTarget) ||
+          this.menuItems.some(
+            (item) =>
+              item === relatedTarget ||
+              item.contains(relatedTarget) ||
+              (item.focusableElement &&
+                (item.focusableElement === relatedTarget ||
+                  item.focusableElement.contains(relatedTarget))),
+          );
+        if (isStayingInMenu) {
+          return;
+        }
+      }
+      if (!this.isCurrentItem) setTimeout(() => this.close(), 300);
     }
 
     /**

@@ -58,7 +58,8 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           cursor: pointer;
         }
         simple-toolbar-button.delete-button {
-          border-top: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
+          border-top: var(--ddd-border-sm) solid
+            var(--ddd-theme-default-limestoneGray);
           margin-top: var(--ddd-spacing-2);
           padding-top: var(--ddd-spacing-2);
         }

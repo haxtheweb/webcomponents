@@ -638,8 +638,25 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
         }
 
         if (event.keyCode === this.keyCode.TAB) {
-          this.focus();
-          this.close(true);
+          // Shift+Tab: check which menu item currently has focus
+          let currentIndex = this.menuItems.findIndex(
+            (item) =>
+              item === target ||
+              item.contains(target) ||
+              (item.focusableElement &&
+                (item.focusableElement === target ||
+                  item.focusableElement.contains(target))),
+          );
+          if (currentIndex <= 0) {
+            // On first item or not found - exit menu
+            this.focus();
+            this.close(true);
+            // Don't prevent default - let browser handle tab
+          } else {
+            // Move to previous menu item
+            this.focusOn(this.menuItems[currentIndex - 1]);
+            flag = true;
+          }
         }
       } else {
         switch (event.keyCode) {
@@ -672,8 +689,27 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             break;
 
           case this.keyCode.TAB:
-            this.focus();
-            this.close(true);
+            // Tab: check which menu item currently has focus
+            let currentIndex = this.menuItems.findIndex(
+              (item) =>
+                item === target ||
+                item.contains(target) ||
+                (item.focusableElement &&
+                  (item.focusableElement === target ||
+                    item.focusableElement.contains(target))),
+            );
+            if (
+              currentIndex === -1 ||
+              currentIndex >= this.menuItems.length - 1
+            ) {
+              // On last item or not found - exit menu
+              this.close(true);
+              // Don't prevent default - let browser handle tab
+            } else {
+              // Move to next menu item
+              this.focusOn(this.menuItems[currentIndex + 1]);
+              flag = true;
+            }
             break;
 
           default:
@@ -701,20 +737,29 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       switch (event.keyCode) {
         case this.keyCode.SPACE:
         case this.keyCode.RETURN:
-        case this.keyCode.DOWN:
+          // Toggle menu on Enter/Space
           if (this.expanded) {
-            this.focusOn(this.firstItem);
+            this.close(true);
           } else {
             this.focusOn(this.firstItem);
           }
           flag = true;
           break;
 
+        case this.keyCode.DOWN:
+          // Down arrow opens menu and focuses first item
+          if (!this.expanded) {
+            this.focusOn(this.firstItem);
+            flag = true;
+          }
+          break;
+
         case this.keyCode.UP:
-          if (this.popupMenu) {
+          // Up arrow opens menu and focuses last item
+          if (this.popupMenu && !this.expanded) {
             this.focusOn(this.lastItem);
             flag = true;
-          } else if (this.expanded) {
+          } else if (!this.expanded) {
             this.focusOn(this.lastItem);
             flag = true;
           }
@@ -744,7 +789,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
         if (this.expanded) {
           this.close(true);
         } else {
-          this.focusOn(this.firstItem);
+          this.open();
         }
       }
     }
@@ -766,6 +811,22 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      */
     _handleBlur(event) {
       this.focused = false;
+      // Check if focus is moving to another part of the menu
+      const relatedTarget = event.relatedTarget;
+      if (relatedTarget) {
+        // Don't close if focus is moving to a menu item or staying within menu
+        const isMovingToMenuItem = this.menuItems.some(
+          (item) =>
+            item === relatedTarget ||
+            item.contains(relatedTarget) ||
+            (item.focusableElement &&
+              (item.focusableElement === relatedTarget ||
+                item.focusableElement.contains(relatedTarget))),
+        );
+        if (isMovingToMenuItem) {
+          return;
+        }
+      }
     }
     /**
      * handles menu mouseover
@@ -786,7 +847,7 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      */
     _handleMouseout(event) {
       this.hovered = false;
-      setTimeout(this.close(), 300);
+      setTimeout(() => this.close(), 300);
     }
   };
 };

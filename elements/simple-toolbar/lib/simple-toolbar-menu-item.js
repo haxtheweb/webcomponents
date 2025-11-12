@@ -45,6 +45,15 @@ class SimpleToolbarMenuItem extends A11yMenuButtonItemBehaviors(LitElement) {
   get menuItem() {
     return this.querySelector("[role=menuitem]") || super.menuItem;
   }
+  /**
+   * gets focusable element within menuitem
+   *
+   * @readonly
+   */
+  get focusableElement() {
+    let item = this.menuItem;
+    return item && item.focusableElement ? item.focusableElement : item;
+  }
 }
 globalThis.customElements.define(
   SimpleToolbarMenuItem.tag,
