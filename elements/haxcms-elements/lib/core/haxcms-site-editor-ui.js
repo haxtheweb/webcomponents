@@ -118,7 +118,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           color: white; /* Ensure text is visible on blue background */
         }
 
-
         #cancelbutton {
           background-color: var(--ddd-theme-default-discoveryCoral);
           color: white; /* Ensure text is visible on blue background */
@@ -2742,7 +2741,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             class="top-bar-button"
             align-horizontal="center"
             icon="hax:add-page"
-            label="${this.t.addPage} • Ctrl⇧N"
+            label="${this.t.addPage} • Ctrl⇧["
             merlin
           ></haxcms-button-add>
           <simple-toolbar-button
@@ -4059,6 +4058,83 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
 
+    // Keyboard shortcuts program - displays all shortcuts and executes them on click
+    SuperDaemonInstance.defineOption({
+      title: "Keyboard shortcuts",
+      icon: "hardware:keyboard",
+      tags: ["help", "shortcuts", "keyboard", "reference"],
+      eventName: "super-daemon-run-program",
+      path: "CMS/help/keyboard-shortcuts",
+      context: ["CMS"],
+      value: {
+        name: "Keyboard shortcuts",
+        context: ["CMS"],
+        program: async (input) => {
+          const shortcuts =
+            HAXCMSKeyboardShortcutsInstance.getShortcutsForDisplay();
+          const results = [];
+
+          shortcuts.forEach((shortcut) => {
+            // Filter by search input
+            if (
+              input === "" ||
+              shortcut.description
+                .toLowerCase()
+                .includes(input.toLowerCase()) ||
+              shortcut.label.toLowerCase().includes(input.toLowerCase())
+            ) {
+              results.push({
+                title: `${shortcut.description} • ${shortcut.label}`,
+                icon: "hardware:keyboard",
+                tags: ["shortcut", "keyboard", shortcut.context],
+                value: {
+                  shortcutKey: shortcut.key,
+                },
+                context: ["CMS"],
+                eventName: "execute-keyboard-shortcut",
+                path: "CMS/help/keyboard-shortcuts",
+              });
+            }
+          });
+
+          return results;
+        },
+      },
+    });
+
+    // Listen for keyboard shortcut execution from Merlin
+    this.addEventListener("execute-keyboard-shortcut", (e) => {
+      const shortcutKey = e.detail.value.shortcutKey;
+      // Parse the shortcut key to get individual components
+      const parts = shortcutKey.split("+");
+      const key = parts[parts.length - 1];
+      const ctrl = parts.includes("Ctrl");
+      const shift = parts.includes("Shift");
+      const alt = parts.includes("Alt");
+      const meta = parts.includes("Meta");
+
+      // Get the shortcut and execute its callback
+      const shortcut = HAXCMSKeyboardShortcutsInstance.getShortcut(
+        key,
+        ctrl,
+        shift,
+        alt,
+        meta,
+      );
+      if (shortcut && shortcut.callback) {
+        // Create a synthetic keyboard event
+        const syntheticEvent = new KeyboardEvent("keydown", {
+          key: key,
+          ctrlKey: ctrl,
+          shiftKey: shift,
+          altKey: alt,
+          metaKey: meta,
+          bubbles: true,
+        });
+        shortcut.callback(syntheticEvent);
+      }
+    });
+
     this.updateAvailableButtons();
     // load user data
     this.dispatchEvent(
@@ -4606,9 +4682,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "edit",
     });
 
-    // Ctrl+Shift+/ - Cancel editing
+    // Ctrl+Shift+/ - Cancel editing (register as / not ?)
     HAXCMSKeyboardShortcutsInstance.register({
-      key: "?",
+      key: "/",
       ctrl: true,
       shift: true,
       callback: (e) => {
@@ -4655,9 +4731,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "view",
     });
 
-    // Ctrl+Shift+N - Create new page
+    // Ctrl+Shift+[ - Create new page (changed from N to avoid Chrome new window conflict)
     HAXCMSKeyboardShortcutsInstance.register({
-      key: "N",
+      key: "[",
       ctrl: true,
       shift: true,
       callback: (e) => {
@@ -4786,7 +4862,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             HAXStore.haxTray.collapsed = true;
           } else {
             HAXStore.haxTray.trayDetail = "view-source";
-            HAXStore.haxTray.shadowRoot.querySelector("#view-source").openSource();
+            HAXStore.haxTray.shadowRoot
+              .querySelector("#view-source")
+              .openSource();
             HAXStore.haxTray.collapsed = false;
           }
         }

@@ -89,12 +89,30 @@ class HAXCMSKeyboardShortcuts {
   _normalizeKey(e) {
     // For digit keys, use e.code to get consistent 'Digit1', 'Digit2', etc.
     // This handles Shift+1 = '!' becoming just '1'
-    if (e.code && e.code.startsWith('Digit')) {
-      return e.code.replace('Digit', '');
+    if (e.code && e.code.startsWith("Digit")) {
+      return e.code.replace("Digit", "");
     }
     // For numpad, also normalize
-    if (e.code && e.code.startsWith('Numpad')) {
-      return e.code.replace('Numpad', '');
+    if (e.code && e.code.startsWith("Numpad")) {
+      return e.code.replace("Numpad", "");
+    }
+    // Map e.code to base keys for symbols that change with Shift
+    // This handles cases like: [ becomes {, / becomes ?, etc.
+    const codeToKeyMap = {
+      BracketLeft: "[",
+      BracketRight: "]",
+      Slash: "/",
+      Backslash: "\\",
+      Semicolon: ";",
+      Quote: "'",
+      Comma: ",",
+      Period: ".",
+      Minus: "-",
+      Equal: "=",
+      Backquote: "`",
+    };
+    if (e.code && codeToKeyMap[e.code]) {
+      return codeToKeyMap[e.code];
     }
     // Otherwise use e.key
     return e.key;
@@ -172,6 +190,96 @@ class HAXCMSKeyboardShortcuts {
     return this.getShortcuts().filter(
       (s) => s.context === context || s.context === "global",
     );
+  }
+
+  /**
+   * Generate a human-readable label for a keyboard shortcut
+   * @param {Object} options - Shortcut configuration
+   * @param {String} options.key - Key to press
+   * @param {Boolean} options.ctrl - Ctrl key required
+   * @param {Boolean} options.shift - Shift key required
+   * @param {Boolean} options.alt - Alt key required
+   * @param {Boolean} options.meta - Meta key required
+   * @returns {String} - Formatted label (e.g., "Ctrl⇧P")
+   */
+  static generateLabel(options) {
+    const {
+      key,
+      ctrl = false,
+      shift = false,
+      alt = false,
+      meta = false,
+    } = options;
+    const parts = [];
+    if (ctrl) parts.push("Ctrl");
+    if (alt) parts.push("Alt");
+    if (meta) parts.push("Meta");
+    if (shift) parts.push("⇧");
+    parts.push(key.toUpperCase());
+    return parts.join("");
+  }
+
+  /**
+   * Get a shortcut by its key combination
+   * @param {String} key - Key to press
+   * @param {Boolean} ctrl - Ctrl key required
+   * @param {Boolean} shift - Shift key required
+   * @param {Boolean} alt - Alt key required
+   * @param {Boolean} meta - Meta key required
+   * @returns {Object|null} - Shortcut object or null if not found
+   */
+  getShortcut(key, ctrl = false, shift = false, alt = false, meta = false) {
+    const shortcutKey = this._generateKey(key, ctrl, shift, alt, meta);
+    const shortcut = this.shortcuts.get(shortcutKey);
+    return shortcut ? { key: shortcutKey, ...shortcut } : null;
+  }
+
+  /**
+   * Get the label for a specific shortcut
+   * @param {String} key - Key to press
+   * @param {Boolean} ctrl - Ctrl key required
+   * @param {Boolean} shift - Shift key required
+   * @param {Boolean} alt - Alt key required
+   * @param {Boolean} meta - Meta key required
+   * @returns {String|null} - Formatted label or null if not found
+   */
+  getShortcutLabel(
+    key,
+    ctrl = false,
+    shift = false,
+    alt = false,
+    meta = false,
+  ) {
+    const shortcut = this.getShortcut(key, ctrl, shift, alt, meta);
+    if (shortcut) {
+      return HAXCMSKeyboardShortcuts.generateLabel({
+        key: shortcut.key,
+        ctrl: shortcut.ctrl,
+        shift: shortcut.shift,
+        alt: shortcut.alt,
+        meta: shortcut.meta,
+      });
+    }
+    return null;
+  }
+
+  /**
+   * Get all shortcuts formatted for display (e.g., in Merlin)
+   * @returns {Array} Array of shortcut objects with formatted labels
+   */
+  getShortcutsForDisplay() {
+    return this.getShortcuts().map((shortcut) => ({
+      label: HAXCMSKeyboardShortcuts.generateLabel({
+        key: shortcut.key,
+        ctrl: shortcut.ctrl,
+        shift: shortcut.shift,
+        alt: shortcut.alt,
+        meta: shortcut.meta,
+      }),
+      description: shortcut.description,
+      context: shortcut.context,
+      key: shortcut.key,
+    }));
   }
 }
 

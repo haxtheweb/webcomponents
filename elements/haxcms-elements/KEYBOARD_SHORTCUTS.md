@@ -29,7 +29,7 @@ The keyboard shortcut system is implemented in:
 |----------|--------|---------|-------------|
 | `Ctrl+Shift+M` | Site Settings | View Mode | Open site settings/manifest dialog |
 | `Ctrl+Shift+O` | Outline Designer | View Mode | Open outline/site structure dialog |
-| `Ctrl+Shift+N` | New Page | View Mode | Create a new page |
+| `Ctrl+Shift+[` | New Page | View Mode | Create a new page (changed from N to avoid Chrome conflict) |
 
 ### Edit Mode Operations
 
@@ -62,6 +62,45 @@ HAXcms keyboard shortcuts are designed to work alongside Super Daemon:
 - **HAXcms**: `Ctrl+Shift+[Key]`
 
 These don't conflict because they use different modifier key combinations.
+
+## Programmatic Access
+
+### Getting Shortcut Labels
+
+The keyboard shortcut system provides methods to programmatically access shortcut information:
+
+```javascript
+import { HAXCMSKeyboardShortcutsInstance } from './lib/core/utils/HAXCMSKeyboardShortcuts.js';
+
+// Get all shortcuts formatted for display (e.g., in Merlin)
+const shortcuts = HAXCMSKeyboardShortcutsInstance.getShortcutsForDisplay();
+// Returns: [{ label: 'Ctrl⇧[', description: 'Create new page', context: 'view', key: 'Ctrl+Shift+[' }, ...]
+
+// Get all shortcuts with full details
+const allShortcuts = HAXCMSKeyboardShortcutsInstance.getShortcuts();
+
+// Get shortcuts for a specific context
+const editShortcuts = HAXCMSKeyboardShortcutsInstance.getShortcutsByContext('edit');
+
+// Generate a label for a shortcut
+import { HAXCMSKeyboardShortcuts } from './lib/core/utils/HAXCMSKeyboardShortcuts.js';
+const label = HAXCMSKeyboardShortcuts.generateLabel({ key: '[', ctrl: true, shift: true });
+// Returns: 'Ctrl⇧['
+```
+
+### Displaying Shortcuts in Merlin
+
+To create a Merlin program that shows all keyboard shortcuts:
+
+```javascript
+const shortcuts = HAXCMSKeyboardShortcutsInstance.getShortcutsForDisplay();
+// Display shortcuts grouped by context
+const byContext = shortcuts.reduce((acc, s) => {
+  acc[s.context] = acc[s.context] || [];
+  acc[s.context].push(s);
+  return acc;
+}, {});
+```
 
 ## Implementation Details
 
