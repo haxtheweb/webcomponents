@@ -48,7 +48,7 @@ export class HAXCMSButton extends HAXCMSThemeParts(
   renderButton(label, tooltip) {
     return html`
       <simple-icon-button
-        .part="${this.editMode ? `edit-mode-active` : ``}"
+        .part="simple-icon-button ${this.editMode ? `edit-mode-active` : ``}"
         tabindex="${this.editMode ? "-1" : ""}"
         id="button"
         label="${label}"

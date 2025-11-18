@@ -489,9 +489,9 @@ export class PageBreak extends IntersectionObserverMixin(
         }
         :host([data-hax-ray]) {
           display: block;
-          margin: var(--ddd-spacing-4) 0;
+          margin: var(--ddd-spacing-1) 0 var(--ddd-spacing-20) 0;
           padding: var(--ddd-spacing-4);
-          border: 2px dotted var(--ddd-theme-default-limestoneGray);
+          border: 2px solid var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-xs);
           background-color: var(--ddd-theme-default-limestoneMaxLight);
           position: relative;
@@ -503,7 +503,6 @@ export class PageBreak extends IntersectionObserverMixin(
         }
         :host([data-hax-ray]:hover) {
           opacity: 1;
-          border-color: var(--ddd-theme-default-coalyGray);
           background-color: var(--ddd-theme-default-white);
         }
         :host([data-hax-active]) {
@@ -512,18 +511,8 @@ export class PageBreak extends IntersectionObserverMixin(
           background-color: var(--ddd-theme-default-white);
           box-shadow: var(--ddd-boxShadow-sm);
         }
-        :host([data-hax-ray]) .mid,
         :host([data-hax-ray]) .text {
           display: block;
-        }
-        .mid {
-          display: none;
-          border: none;
-          border-top: 2px solid var(--ddd-theme-default-skyBlue);
-          overflow: visible;
-          margin: var(--ddd-spacing-2) 0;
-          padding: 0;
-          height: 0;
         }
         .link-info {
           display: none;
@@ -585,55 +574,64 @@ export class PageBreak extends IntersectionObserverMixin(
           color: var(--ddd-theme-default-coalyGray);
           background-color: var(--ddd-theme-default-skyBlue);
           font-size: var(--ddd-font-size-4xs);
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-4);
           position: absolute;
-          top: calc(-1 * var(--ddd-spacing-2));
-          left: var(--ddd-spacing-2);
+          top: 0;
+          left: 0;
           z-index: 10;
           color: var(--ddd-theme-default-white);
-          box-shadow: var(--ddd-boxShadow-sm);
+          height: 24px;
+          line-height: 24px;
         }
         simple-toolbar-button.menu-button,
         simple-toolbar-button.save-button,
         simple-toolbar-button.save-edit-button,
         simple-toolbar-button.cancel-button {
           position: absolute;
-          top: 0px;
+          top: 0;
           right: 0;
-          --simple-toolbar-button-height: 12px;
-          --simple-toolbar-button-width: 12px;
+          --simple-toolbar-button-height: 20px;
+          --simple-toolbar-button-width: 20px;
           padding: var(--ddd-spacing-1);
           border: var(--ddd-border-xs);
+          box-shadow: var(--ddd-boxShadow-sm);
+          --simple-toolbar-button-hover-border-color: transparent;
+        }
+        simple-toolbar-button.menu-button {
+          top: -8px;
+          border: var(--ddd-border-xs);
           border-radius: var(--ddd-radius-circle);
+          box-shadow: var(--ddd-boxShadow-sm);
+          --simple-toolbar-button-height: 12px;
+          --simple-toolbar-button-width: 12px;
+          color: var(--ddd-theme-default-white);
+          background-color: var(--ddd-theme-default-skyBlue);
         }
         simple-toolbar-button.save-edit-button {
-          right: 36px;
+          right: 32px;
         }
 
         simple-toolbar-button.save-button {
-          right: 72px;
+          right: 64px;
         }
 
         simple-toolbar-button.save-button,
         simple-toolbar-button.save-edit-button,
         simple-toolbar-button.cancel-button {
-          --simple-toolbar-button-height: 16px;
-          --simple-toolbar-button-width: 16px;
+          --simple-toolbar-button-height: 20px;
+          --simple-toolbar-button-width: 20px;
           background-color: var(--ddd-theme-default-skyBlue);
           color: var(--ddd-theme-default-white);
+          border-color: var(--ddd-theme-default-limestoneGray);
+          border-width: 1px;
         }
-        simple-toolbar-button.save-button:hover,
-        simple-toolbar-button.save-edit-button:hover {
-          background-color: var(--ddd-theme-default-opportunityGreen);
-        }
+
         simple-toolbar-button.cancel-button {
-          background-color: var(--ddd-theme-default-error);
+          background-color: var(--ddd-theme-default-discoveryCoral);
         }
 
         simple-toolbar-button.menu-item {
           --simple-toolbar-button-justify: flex-start;
-          --simple-toolbar-button-hover-border-color: transparent;
           cursor: pointer;
           --simple-icon-height: 16px;
           --simple-icon-width: 16px;
@@ -651,10 +649,6 @@ export class PageBreak extends IntersectionObserverMixin(
           border-top: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
           margin-top: var(--ddd-spacing-2);
           padding-top: var(--ddd-spacing-2);
-        }
-        simple-toolbar-button.menu-item-delete:hover {
-          color: var(--ddd-theme-default-error);
-          background-color: var(--ddd-theme-default-errorLight);
         }
       `,
     ];
@@ -678,11 +672,7 @@ export class PageBreak extends IntersectionObserverMixin(
   }
   render() {
     return html`
-      <style></style>
-      <a .href="${this.slug}" .name="#${this.itemId}" class="sr-only"
-        >${this.title}</a
-      >
-      <hr class="mid" />
+      <a .href="${this.slug}" .name="#${this.itemId}" class="sr-only">${this.title}</a>
       <div class="text">
         <simple-icon-lite icon="${this.iconType}"></simple-icon-lite>${this.t
           .selectToEditPageDetails}

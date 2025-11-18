@@ -254,16 +254,13 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
             padding: var(--ddd-spacing-1);
           }
           super-daemon-row::part(action) {
-            font-size: var(--ddd-icon-xxs);
-            line-height: var(--ddd-icon-xxs);
-            height: var(--ddd-icon-xxs);
             max-width: unset;
           }
           super-daemon-row::part(tags) {
             display: none;
           }
           super-daemon-row::part(path) {
-            font-size: 12px;
+            font-size: 10px;
           }
         }
         :host([mini]) {

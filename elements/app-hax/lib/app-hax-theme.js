@@ -589,7 +589,6 @@ class AppHaxTheme extends HAXCMSRememberRoute(
         body {
           margin: 0;
           padding: 0;
-          font-family: "Press Start 2P", sans-serif;
           overflow-x: hidden;
           background-image: url("${unsafeCSS(LMGridBox)}");
           background-repeat: repeat;
@@ -646,7 +645,6 @@ class AppHaxTheme extends HAXCMSRememberRoute(
         }
 
         #loading {
-          font-family: "Press Start 2P", sans-serif;
           text-align: center;
           margin-top: 100px;
         }
@@ -760,7 +758,6 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           background-color: green;
           border: 4px solid black;
           border-radius: 8px;
-          font-family: "Press Start 2P", sans-serif;
         }
         simple-modal button.hax-modal-btn.cancel {
           background-color: red;

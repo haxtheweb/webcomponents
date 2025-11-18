@@ -201,7 +201,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       this.toggles = false;
       this.radio = false;
       this.shortcutKeys = "";
-      this.isCurrentItem = true;
+      this.isCurrentItem = false;
     }
     /**
      * gets button element

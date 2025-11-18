@@ -171,7 +171,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                       draggable="true"
                       @dragstart="${this._dragStart}"
                       index="popular-${i}"
-                      is-current-item
                       label="${gizmo.title}"
                       event-name="insert-tag"
                       event-data="${gizmo.tag}"
@@ -215,7 +214,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                       draggable="true"
                       @dragstart="${this._dragStart}"
                       index="${i}"
-                      is-current-item
                       label="${gizmo.title}"
                       event-name="insert-tag"
                       event-data="${gizmo.tag}"
@@ -254,7 +252,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                           >
                             <hax-tray-button
                               show-text-label
-                              is-current-item
                               voice-command="insert ${gizmo.title}"
                               draggable="true"
                               @dragstart="${this._dragStart}"

@@ -137,7 +137,7 @@ class SimpleFieldsUpload extends I18NMixin(
         vaadin-upload[dragover] {
           border-color: var(
             --simple-fields-secondary-accent-color,
-            var(--simple-colors-default-theme-accent-3, #77e2ff)
+            var(--ddd-theme-default-skyBlue,#009dc7)
           );
         }
         vaadin-upload::part(drop-label) {

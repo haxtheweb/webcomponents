@@ -142,6 +142,9 @@ class MapMenuItem extends I18NMixin(LitElement) {
         .ops .op {
           --simple-icon-height: 16px;
           --simple-icon-width: 16px;
+          --haxcms-page-operations-ops-icon-size: 12px;
+          --haxcms-page-operations-ops-height: 16px;
+          --haxcms-page-operations-ops-width: 16px;
           margin: 4px;
           color: var(--map-menu-item-a-active-color, black);
         }

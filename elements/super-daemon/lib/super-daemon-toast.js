@@ -110,7 +110,6 @@ export class SuperDaemonToast extends I18NMixin(SimpleToastEl) {
           border: var(--simple-toast-border);
           z-index: var(--simple-toast-z-index, 100000000);
           font-size: var(--simple-toast-font-size, 18px);
-          font-family: "Press Start 2P", sans-serif;
           font-weight: bold;
           text-align: center;
           vertical-align: middle;

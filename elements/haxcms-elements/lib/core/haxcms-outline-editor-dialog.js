@@ -54,27 +54,28 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           text-transform: unset;
         }
         button.hax-modal-btn {
-          font-size: 30px;
-          padding: 8px;
-          margin: 4px 8px;
+          font-size: var(--ddd-font-size-s);
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
+          margin: var(--ddd-spacing-2);
           color: white;
-          background-color: green;
-          border: 4px solid black;
-          border-radius: 8px;
-          font-family: sans-serif;
+          background-color: var(--ddd-theme-default-skyBlue);
+          border: 2px solid var(--ddd-theme-default-navy);
+          border-radius: var(--ddd-radius-sm);
+          font-family: var(--ddd-font-navigation);
+          cursor: pointer;
+          transition: background-color 0.3s ease;
         }
         button.hax-modal-btn.cancel {
-          background-color: red;
+          background-color: var(--ddd-theme-default-original87Pink);
         }
         button.hax-modal-btn:hover,
         button.hax-modal-btn:focus {
-          outline: 2px solid black;
-          cursor: pointer;
-          background-color: darkgreen;
+          outline: 2px solid var(--ddd-theme-default-keystoneYellow);
+          background-color: var(--ddd-theme-default-nittanyNavy);
         }
         button.hax-modal-btn.cancel:hover,
         button.hax-modal-btn.cancel:focus {
-          background-color: darkred;
+          background-color: var(--ddd-theme-default-error);
         }
       `,
     ];

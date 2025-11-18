@@ -812,7 +812,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           margin: 0;
           --simple-toolbar-border-color: #dddddddd;
           height: 48px;
-          --simple-toolbar-button-disabled-border-color: transparent;
           --simple-toolbar-button-disabled-opacity: 0.3;
           --simple-toolbar-button-padding: 3px 6px;
           --simple-toolbar-border-radius: 0;
@@ -850,7 +849,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         }
         .characterbtn-name {
           color: var(--simple-colors-default-theme-grey-12);
-          font-family: "Press Start 2P", sans-serif;
           margin-left: 8px;
           font-size: 12px;
           vertical-align: bottom;
@@ -906,7 +904,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           display: flex;
           align-self: flex-start;
           margin: var(--ddd-spacing-4) auto;
-          font-family: "Press Start 2P", sans-serif;
         }
         app-hax-label h1 {
           font-weight: normal;
@@ -975,7 +972,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           padding: 10px;
         }
         app-hax-user-menu app-hax-user-menu-button::part(menu-button) {
-          font-family: "Press Start 2P", sans-serif;
           font-size: 12px;
         }
         #helpbtn {

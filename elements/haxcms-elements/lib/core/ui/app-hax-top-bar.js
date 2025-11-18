@@ -28,7 +28,7 @@ export class AppHaxTopBar extends LitElement {
       :host {
         --bg-color: var(--app-hax-background-color);
         --accent-color: var(--app-hax-accent-color);
-        --top-bar-height: 48px;
+        --top-bar-height: 46px;
         display: block;
         height: var(--top-bar-height);
       }
@@ -52,14 +52,10 @@ export class AppHaxTopBar extends LitElement {
         height: var(--top-bar-height);
         text-align: center;
         vertical-align: middle;
-        border-bottom: 3px solid var(--app-hax-accent-color);
+        border-bottom: 2px solid var(--app-hax-accent-color);
         display: grid;
         grid-template-columns: 32.5% 35% 32.5%;
         transition: border-bottom 0.6s ease-in-out;
-      }
-
-      :host([edit-mode]) .topBar {
-        border-bottom: 6px solid black;
       }
 
       /* .topBar > div {

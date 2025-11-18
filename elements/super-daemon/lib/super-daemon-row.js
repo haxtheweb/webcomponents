@@ -197,10 +197,10 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           max-width: unset;
         }
         .more {
-          --simple-icon-width: var(--ddd-icon-sm);
-          --simple-icon-height: var(--ddd-icon-sm);
-          width: var(--ddd-icon-sm);
-          height: var(--ddd-icon-sm);
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
+          width: var(--ddd-icon-4xs);
+          height: var(--ddd-icon-4xs);
           display: block;
         }
         summary {

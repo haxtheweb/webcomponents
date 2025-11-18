@@ -91,7 +91,6 @@ export class AppHaxSearchBar extends LitElement {
           margin: 0;
           --simple-toolbar-border-color: #dddddddd;
           height: 48px;
-          --simple-toolbar-button-disabled-border-color: transparent;
           --simple-toolbar-button-disabled-opacity: 0.3;
           --simple-toolbar-button-padding: 3px 6px;
           --simple-toolbar-border-radius: 0;

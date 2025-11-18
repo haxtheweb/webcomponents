@@ -24,7 +24,7 @@ export class AppHaxLabel extends LitElement {
   static get styles() {
     return css`
       :host {
-        font-family: var(--ddd-font-primary, "Press Start 2P", sans-serif);
+        font-family: var(--ddd-font-primary);
         text-align: flex-start;
         width: 100%;
         max-width: 800px;

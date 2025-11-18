@@ -22,12 +22,16 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
         simple-icon-button-lite.ops {
           --simple-icon-button-border-width: 1px;
           --simple-icon-button-border-color: var(--ddd-border-1, #e0e0e0);
-          --simple-icon-height: var(--ddd-icon-4xs, 14px);
-          --simple-icon-width: var(--ddd-icon-4xs, 14px);
+          --simple-icon-height: var(--haxcms-page-operations-ops-icon-size, var(--ddd-icon-4xs, 14px));
+          --simple-icon-width: var(--haxcms-page-operations-ops-icon-size, var(--ddd-icon-4xs, 14px));
           padding: var(--ddd-spacing-1) var(--ddd-spacing-1);
-          background-color: var(--ddd-theme-background, #ffffff);
-          color: var(--ddd-theme-text, #222);
+          color: var(--ddd-theme-default-white);
+          background-color: var(--ddd-theme-default-skyBlue);
+          border: var(--ddd-border-xs);
+          box-shadow: var(--ddd-boxShadow-sm);
           position: relative;
+          height: var(--haxcms-page-operations-ops-height, 24px);
+          width: var(--haxcms-page-operations-ops-width, 24px);
         }
         simple-context-menu {
           --simple-context-menu-background: var(
@@ -87,8 +91,8 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
     this.platformAllowsDelete = true;
     this.platformAllowsAddPage = true;
     this.isLocked = false;
-    this.t = {
-      pageActions: "Outline actions",
+    this.t = {...super.t,
+      outlineActions: "Outline actions",
       editPage: "Edit page",
       addPage: "Add child page",
       moveUp: "Move up",
@@ -149,11 +153,11 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
       <simple-icon-button-lite
         class="ops"
         icon="icons:create"
-        label="${this.t.pageActions}"
-        title="${this.t.pageActions}"
+        label="${this.t.outlineActions}"
+        title="${this.t.outlineActions}"
         @click="${this._toggleDialog}"
       ></simple-icon-button-lite>
-      <simple-context-menu title="${this.t.pageActions}">
+      <simple-context-menu title="${this.t.outlineActions}">
         ${this.platformAllowsAddPage
           ? html`
               <haxcms-button-add
