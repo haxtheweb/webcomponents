@@ -325,7 +325,11 @@ class JwtLogin extends LitElement {
     // reset jwt which will do all the events / local storage work
     this.jwt = null;
     // only attempt logout call if we have a valid logoutUrl
-    if (this.logoutUrl && this.logoutUrl !== "" && this.logoutUrl !== "undefined") {
+    if (
+      this.logoutUrl &&
+      this.logoutUrl !== "" &&
+      this.logoutUrl !== "undefined"
+    ) {
       if (this.isDifferentDomain(this.logoutUrl)) {
         globalThis.location.href = this.logoutUrl;
       } else {

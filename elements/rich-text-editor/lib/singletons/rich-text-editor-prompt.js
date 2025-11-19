@@ -28,6 +28,9 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
           max-width: 300px;
           --simple-popover-padding: 0px;
           --simple-popover-max-height: auto;
+          --simple-popover-color: light-dark(#222, #e4e5e7);
+          --simple-popover-background-color: light-dark(#ffffff, #262626);
+          --simple-popover-border-color: light-dark(#bbb, #444);
           z-index: 2;
         }
         #prompt[hidden] {
@@ -76,7 +79,7 @@ class RichTextEditorPrompt extends RichTextEditorRangeBehaviors(LitElement) {
           display: flex;
           align-items: center;
           justify-content: flex-end;
-          background-color: var(--rich-text-editor-button-bg);
+          background-color: light-dark(var(--rich-text-editor-button-bg, #ffffff), #262626);
         }
         .confirm-or-cancel {
           min-width: 40px;

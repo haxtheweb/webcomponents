@@ -40,7 +40,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           );
           --simple-context-menu-background-dark: var(
             --simple-toolbar-button-bg,
-            #222
+            #000000
           );
           --simple-context-menu-border-color: var(
             --simple-toolbar-button-border-color,

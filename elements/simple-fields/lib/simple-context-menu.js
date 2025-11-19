@@ -29,7 +29,7 @@ class SimpleContextMenu extends DDD {
           position: absolute;
           background: light-dark(
             var(--simple-context-menu-background, white),
-            var(--simple-context-menu-background-dark, #222)
+            var(--simple-context-menu-background-dark, #000000)
           );
           border: var(--ddd-border-sm);
           border-color: light-dark(

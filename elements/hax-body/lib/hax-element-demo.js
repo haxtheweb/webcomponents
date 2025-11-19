@@ -2,6 +2,7 @@ import { LitElement, html, css } from "lit";
 import { HAXStore } from "./hax-store.js";
 import { haxElementToNode } from "@haxtheweb/utils/utils.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
+import "@haxtheweb/simple-icon/simple-icon.js";
 export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
   static get tag() {
     return "hax-element-demo";
@@ -10,35 +11,112 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
     super();
     this.renderTag = null;
     this.activePickerSchema = -1;
+    this.gizmoTitle = '';
+    this.gizmoDescription = '';
+    this.gizmoIcon = '';
   }
   static get properties() {
     return {
       ...super.properties,
       renderTag: { type: String, attribute: "render-tag" },
       activePickerSchema: { type: Number, attribute: "active-picker-schema" },
+      gizmoTitle: { type: String, attribute: "gizmo-title" },
+      gizmoDescription: { type: String, attribute: "gizmo-description" },
+      gizmoIcon: { type: String, attribute: "gizmo-icon" },
     };
   }
   static get styles() {
     return [
       css`
         :host {
-          display: block;
+          display: flex;
+          flex-direction: column;
           overflow: hidden;
-          height: 150px;
-          width: 150px;
+          width: 300px;
+          background-color: light-dark(
+            var(--simple-colors-default-theme-accent-1, #fff),
+            var(--simple-colors-default-theme-accent-12, #222)
+          );
         }
-        div ::slotted(*) {
+        .preview-wrap {
+          height: 200px;
+          width: 300px;
+          overflow: hidden;
+          background-color: light-dark(
+            var(--simple-colors-default-theme-accent-1, #fff),
+            var(--simple-colors-default-theme-accent-11, #333)
+          );
+        }
+        .preview-wrap ::slotted(*) {
           transform: scale(0.4) translate(-75%, -75%);
           width: 500px;
           max-height: 300px;
+        }
+        .info {
+          padding: var(--ddd-spacing-2);
+          border-top: var(--ddd-border-xs);
+          background-color: light-dark(
+            var(--simple-colors-default-theme-accent-1, #fff),
+            var(--simple-colors-default-theme-accent-12, #222)
+          );
+          max-height: var(--ddd-spacing-16);
+          overflow: hidden;
+        }
+        .title {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          font-weight: var(--ddd-font-weight-bold);
+          font-size: var(--ddd-font-size-4xs);
+          margin-bottom: var(--ddd-spacing-1);
+          color: light-dark(
+            var(--simple-colors-default-theme-accent-12, #000),
+            var(--simple-colors-default-theme-accent-1, #fff)
+          );
+        }
+        .title simple-icon {
+          --simple-icon-height: var(--ddd-spacing-4);
+          --simple-icon-width: var(--ddd-spacing-4);
+          flex-shrink: 0;
+        }
+        .description {
+          font-size: var(--ddd-font-size-4xs);
+          line-height: var(--ddd-lh-140);
+          color: light-dark(
+            var(--simple-colors-default-theme-accent-11, #222),
+            var(--simple-colors-default-theme-accent-2, #ddd)
+          );
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 4;
+          -webkit-box-orient: vertical;
         }
       `,
     ];
   }
   render() {
-    return html` <div class="wrap">
-      <slot></slot>
-    </div>`;
+    // Truncate description to 200 characters
+    const truncatedDescription = this.gizmoDescription && this.gizmoDescription.length > 200
+      ? this.gizmoDescription.substring(0, 200) + '...'
+      : this.gizmoDescription;
+    
+    return html`
+      <div class="preview-wrap">
+        <slot></slot>
+      </div>
+      ${this.gizmoTitle || truncatedDescription ? html`
+        <div class="info">
+          ${this.gizmoTitle ? html`
+            <div class="title">
+              ${this.gizmoIcon ? html`<simple-icon icon="${this.gizmoIcon}"></simple-icon>` : ''}
+              <span>${this.gizmoTitle}</span>
+            </div>
+          ` : ''}
+          ${truncatedDescription ? html`<div class="description">${truncatedDescription}</div>` : ''}
+        </div>
+      ` : ''}
+    `;
   }
   updated(changedProperties) {
     if (super.updated) {

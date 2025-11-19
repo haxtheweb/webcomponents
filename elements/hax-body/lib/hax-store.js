@@ -3639,6 +3639,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 "sub",
                 "sup",
                 "span",
+                "code",
                 "time",
                 "cite",
               ].includes(tag)

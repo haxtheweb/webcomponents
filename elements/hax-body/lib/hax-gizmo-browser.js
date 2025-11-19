@@ -184,6 +184,9 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                       ? html`
                           <hax-element-demo
                             render-tag="${gizmo.tag}"
+                            gizmo-title="${gizmo.title}"
+                            gizmo-description="${gizmo.description || ''}"
+                            gizmo-icon="${gizmo.icon}"
                             slot="options"
                           ></hax-element-demo>
                         `
@@ -227,6 +230,9 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                       ? html`
                           <hax-element-demo
                             render-tag="${gizmo.tag}"
+                            gizmo-title="${gizmo.title}"
+                            gizmo-description="${gizmo.description || ''}"
+                            gizmo-icon="${gizmo.icon}"
                             slot="options"
                           ></hax-element-demo>
                         `
@@ -269,6 +275,9 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                               ? html`
                                   <hax-element-demo
                                     render-tag="${gizmo.tag}"
+                                    gizmo-title="${gizmo.title}"
+                                    gizmo-description="${gizmo.description || ''}"
+                                    gizmo-icon="${gizmo.icon}"
                                     slot="options"
                                   ></hax-element-demo>
                                 `

@@ -2930,7 +2930,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         // where we have a valid element yet the parent is a paragraph
         if (
           containerNode.parentNode.tagName === "P" &&
-          containerNode.parentNode.getAttribute("slot") == ""
+          containerNode.parentNode.getAttribute("slot") == "" &&
+          containerNode.tagName !== "B" &&
+          containerNode.tagName !== "I" &&
+          containerNode.tagName !== "STRONG" &&
+          containerNode.tagName !== "EM" &&
+          containerNode.tagName !== "U" &&
+          containerNode.tagName !== "SUB" &&
+          containerNode.tagName !== "SUP" &&
+          containerNode.tagName !== "CODE"
         ) {
           activeNode = containerNode;
           stopProp = true;
@@ -2946,7 +2954,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               containerNode.tagName !== "B" &&
               containerNode.tagName !== "I" &&
               containerNode.tagName !== "STRONG" &&
-              containerNode.tagName !== "EM"
+              containerNode.tagName !== "EM" &&
+              containerNode.tagName !== "U" &&
+              containerNode.tagName !== "SUB" &&
+              containerNode.tagName !== "SUP" &&
+              containerNode.tagName !== "CODE"
             ) {
               activeNode = containerNode;
             }
@@ -3607,7 +3619,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * test for inline tags
    */
   _HTMLInlineTextDecorationTest(node) {
-    return ["span", "b", "strong", "i", "em", "u", "strike"].includes(
+    return ["span", "b", "strong", "i", "em", "u", "strike", "sub", "sup", "code"].includes(
       node.tagName.toLowerCase(),
     );
   }
