@@ -600,7 +600,6 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         absolute-position-behavior super-daemon-ui[mini][wand] {
           margin: -18px 0 0 0;
           padding: 0;
-          width: 30vw; /* Use full expanded width in wand mode */
         }
         absolute-position-behavior super-daemon-ui {
           width: var(--super-daemon-width, 300px);

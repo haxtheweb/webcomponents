@@ -3,6 +3,7 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { HAXCMSButton } from "../utils/HAXCMSButton.js";
 import { SimpleToolbarButtonBehaviors } from "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { toJS } from "mobx";
+import { css } from "lit";
 export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
   HAXCMSButton,
 ) {
@@ -38,6 +39,9 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
       ...this.simpleButtonCoreStyles,
       ...this.simpleButtonLayoutStyles,
       ...this.simpleButtonThemeStyles,
+      css`:host {
+        --simple-toolbar-border-radius: 0;
+      }`
     ];
   }
 

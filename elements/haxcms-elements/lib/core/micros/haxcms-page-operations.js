@@ -67,9 +67,10 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           margin-top: var(--ddd-spacing-2);
           padding-top: var(--ddd-spacing-2);
         }
+        simple-toolbar-button.delete-button:focus,
         simple-toolbar-button.delete-button:hover {
-          color: var(--ddd-theme-default-error);
-          background-color: var(--ddd-theme-default-errorLight);
+          color: black;
+          background-color: var(--ddd-theme-default-discoveryCoral);
         }
       `,
     ];

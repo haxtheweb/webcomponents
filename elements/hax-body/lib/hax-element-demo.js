@@ -2,7 +2,7 @@ import { LitElement, html, css } from "lit";
 import { HAXStore } from "./hax-store.js";
 import { haxElementToNode } from "@haxtheweb/utils/utils.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
-import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
   static get tag() {
     return "hax-element-demo";
@@ -42,15 +42,14 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
           height: 200px;
           width: 300px;
           overflow: hidden;
-          background-color: light-dark(
-            var(--simple-colors-default-theme-accent-1, #fff),
-            var(--simple-colors-default-theme-accent-11, #333)
-          );
+          padding: var(--ddd-spacing-2);
         }
         .preview-wrap ::slotted(*) {
-          transform: scale(0.4) translate(-75%, -75%);
-          width: 500px;
+          transform: scale(0.5);
+          transform-origin: top left;
+          width: 575px;
           max-height: 300px;
+          pointer-events: none;
         }
         .info {
           padding: var(--ddd-spacing-2);
@@ -109,7 +108,7 @@ export class HaxElementDemo extends IntersectionObserverMixin(LitElement) {
         <div class="info">
           ${this.gizmoTitle ? html`
             <div class="title">
-              ${this.gizmoIcon ? html`<simple-icon icon="${this.gizmoIcon}"></simple-icon>` : ''}
+              ${this.gizmoIcon ? html`<simple-icon-lite icon="${this.gizmoIcon}"></simple-icon-lite>` : ''}
               <span>${this.gizmoTitle}</span>
             </div>
           ` : ''}

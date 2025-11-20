@@ -268,6 +268,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           --simple-toolbar-button-padding: 3px 6px;
           --simple-toolbar-border-radius: 0;
         }
+        .toolbar-buttons haxcms-button-add {
+          background-color: var(--ddd-theme-default-skyBlue);
+          color: white;
+        }
         .toolbar-buttons simple-toolbar-menu {
           --a11y-menu-button-bg-color: light-dark(
             var(--ddd-theme-default-white),

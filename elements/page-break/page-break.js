@@ -650,6 +650,11 @@ export class PageBreak extends IntersectionObserverMixin(
           margin-top: var(--ddd-spacing-2);
           padding-top: var(--ddd-spacing-2);
         }
+        simple-toolbar-button.menu-item-delete:focus,
+        simple-toolbar-button.menu-item-delete:hover {
+          color: black;
+          background-color: var(--ddd-theme-default-discoveryCoral);
+        }
       `,
     ];
   }

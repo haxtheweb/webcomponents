@@ -23,6 +23,7 @@ class SimpleContextMenu extends DDD {
       css`
         :host {
           display: inline-block;
+          --simple-toolbar-border-radius: 0;
         }
 
         dialog {

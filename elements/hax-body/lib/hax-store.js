@@ -2874,7 +2874,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     let test = globalThis.document.createElement("webview");
     this._isSandboxed = typeof test.reload === "function";
     globalThis.document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
-    this.revisionHistoryLink = null;
     // mobx
     makeObservable(this, {
       daemonKeyCombo: observable,
@@ -2885,7 +2884,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       activeGizmo: computed,
       activeNodeIndex: computed,
       editMode: observable,
-      revisionHistoryLink: observable,
       elementAlign: observable,
       trayStatus: observable,
       trayDetail: observable,
