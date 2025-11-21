@@ -25,8 +25,6 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           display: block;
           height: 70vh;
           overflow: auto;
-          padding-bottom: 40px;
-          padding-top: 16px;
           min-width: 70vw;
           font-family: var(--ddd-font-navigation);
         }

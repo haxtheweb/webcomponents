@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated": "2025-11-18T21:02:06.540Z",
+    "generated": "2025-11-20T21:22:03.748Z",
     "elementsScanned": 219,
     "elementsWithTranslations": 33,
     "translationFilesFound": 715,
@@ -113,7 +113,9 @@
     ]
   },
   "manifest": {
-    "a11y-gif-player": ["es"],
+    "a11y-gif-player": [
+      "es"
+    ],
     "a11y-media-player": [
       "bg",
       "cy",
@@ -246,41 +248,141 @@
       "zh_CN",
       "zu"
     ],
-    "author-card.ar": ["haxProperties"],
-    "author-card": ["ar", "bn", "en", "es", "fr", "hi", "ja", "pt", "ru", "zh"],
-    "author-card.bn": ["haxProperties"],
-    "author-card.es": ["haxProperties"],
-    "author-card.fr": ["haxProperties"],
-    "author-card.hi": ["haxProperties"],
-    "author-card.ja": ["haxProperties"],
-    "author-card.pt": ["haxProperties"],
-    "author-card.ru": ["haxProperties"],
-    "author-card.zh": ["haxProperties"],
-    "clean-one": ["de", "es", "fr", "ja"],
-    "code-sample": ["es"],
-    "ddd-card": ["es"],
-    "demo-snippet.ar": ["haxProperties"],
-    "demo-snippet": ["ar", "bn", "es", "fr", "hi", "ja", "pt", "ru", "zh"],
-    "demo-snippet.bn": ["haxProperties"],
-    "demo-snippet.es": ["haxProperties"],
-    "demo-snippet.fr": ["haxProperties"],
-    "demo-snippet.hi": ["haxProperties"],
-    "demo-snippet.ja": ["haxProperties"],
-    "demo-snippet.pt": ["haxProperties"],
-    "demo-snippet.ru": ["haxProperties"],
-    "demo-snippet.zh": ["haxProperties"],
-    "example-hax-element.ar": ["haxProperties"],
-    "example-hax-element": ["ar", "es", "hi", "zh"],
-    "example-hax-element.es": ["haxProperties"],
-    "example-hax-element.hi": ["haxProperties"],
-    "example-hax-element.zh": ["haxProperties"],
-    "example-haxcms-theme.ar": ["haxProperties"],
-    "example-haxcms-theme": ["ar", "es", "hi", "zh"],
-    "example-haxcms-theme.es": ["haxProperties"],
-    "example-haxcms-theme.hi": ["haxProperties"],
-    "example-haxcms-theme.zh": ["haxProperties"],
-    "flash-card-answer-box": ["es", "fr", "ja"],
-    "grade-book": ["de", "es", "fr"],
+    "author-card.ar": [
+      "haxProperties"
+    ],
+    "author-card": [
+      "ar",
+      "bn",
+      "en",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "author-card.bn": [
+      "haxProperties"
+    ],
+    "author-card.es": [
+      "haxProperties"
+    ],
+    "author-card.fr": [
+      "haxProperties"
+    ],
+    "author-card.hi": [
+      "haxProperties"
+    ],
+    "author-card.ja": [
+      "haxProperties"
+    ],
+    "author-card.pt": [
+      "haxProperties"
+    ],
+    "author-card.ru": [
+      "haxProperties"
+    ],
+    "author-card.zh": [
+      "haxProperties"
+    ],
+    "clean-one": [
+      "de",
+      "es",
+      "fr",
+      "ja"
+    ],
+    "code-sample": [
+      "es"
+    ],
+    "ddd-card": [
+      "es"
+    ],
+    "demo-snippet.ar": [
+      "haxProperties"
+    ],
+    "demo-snippet": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "demo-snippet.bn": [
+      "haxProperties"
+    ],
+    "demo-snippet.es": [
+      "haxProperties"
+    ],
+    "demo-snippet.fr": [
+      "haxProperties"
+    ],
+    "demo-snippet.hi": [
+      "haxProperties"
+    ],
+    "demo-snippet.ja": [
+      "haxProperties"
+    ],
+    "demo-snippet.pt": [
+      "haxProperties"
+    ],
+    "demo-snippet.ru": [
+      "haxProperties"
+    ],
+    "demo-snippet.zh": [
+      "haxProperties"
+    ],
+    "example-hax-element.ar": [
+      "haxProperties"
+    ],
+    "example-hax-element": [
+      "ar",
+      "es",
+      "hi",
+      "zh"
+    ],
+    "example-hax-element.es": [
+      "haxProperties"
+    ],
+    "example-hax-element.hi": [
+      "haxProperties"
+    ],
+    "example-hax-element.zh": [
+      "haxProperties"
+    ],
+    "example-haxcms-theme.ar": [
+      "haxProperties"
+    ],
+    "example-haxcms-theme": [
+      "ar",
+      "es",
+      "hi",
+      "zh"
+    ],
+    "example-haxcms-theme.es": [
+      "haxProperties"
+    ],
+    "example-haxcms-theme.hi": [
+      "haxProperties"
+    ],
+    "example-haxcms-theme.zh": [
+      "haxProperties"
+    ],
+    "flash-card-answer-box": [
+      "es",
+      "fr",
+      "ja"
+    ],
+    "grade-book": [
+      "de",
+      "es",
+      "fr"
+    ],
     "hax": [
       "af",
       "am",
@@ -486,9 +588,18 @@
       "zh",
       "zu"
     ],
-    "image-compare-slider": ["es"],
-    "journey-theme": ["ar", "es", "hi", "zh"],
-    "map-menu": ["es"],
+    "image-compare-slider": [
+      "es"
+    ],
+    "journey-theme": [
+      "ar",
+      "es",
+      "hi",
+      "zh"
+    ],
+    "map-menu": [
+      "es"
+    ],
     "meme-maker.haxProperties": [
       "ar",
       "bn",
@@ -628,23 +739,74 @@
       "zh",
       "zu"
     ],
-    "post-card": ["de", "es", "fr", "it", "ja", "zh_CN"],
-    "screen-recorder.ar": ["haxProperties"],
-    "screen-recorder": ["ar", "bn", "es", "fr", "hi", "ja", "pt", "ru", "zh"],
-    "screen-recorder.bn": ["haxProperties"],
-    "screen-recorder.es": ["haxProperties"],
-    "screen-recorder.fr": ["haxProperties"],
-    "screen-recorder.hi": ["haxProperties"],
-    "screen-recorder.ja": ["haxProperties"],
-    "screen-recorder.pt": ["haxProperties"],
-    "screen-recorder.ru": ["haxProperties"],
-    "screen-recorder.zh": ["haxProperties"],
-    "scroll-button": ["es"],
-    "self-check": ["es", "he", "ja"],
-    "simple-fields": ["es"],
-    "simple-login": ["es"],
-    "sorting-question": ["es", "he", "ja"],
-    "stop-note": ["es"],
+    "post-card": [
+      "de",
+      "es",
+      "fr",
+      "it",
+      "ja",
+      "zh_CN"
+    ],
+    "screen-recorder.ar": [
+      "haxProperties"
+    ],
+    "screen-recorder": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "screen-recorder.bn": [
+      "haxProperties"
+    ],
+    "screen-recorder.es": [
+      "haxProperties"
+    ],
+    "screen-recorder.fr": [
+      "haxProperties"
+    ],
+    "screen-recorder.hi": [
+      "haxProperties"
+    ],
+    "screen-recorder.ja": [
+      "haxProperties"
+    ],
+    "screen-recorder.pt": [
+      "haxProperties"
+    ],
+    "screen-recorder.ru": [
+      "haxProperties"
+    ],
+    "screen-recorder.zh": [
+      "haxProperties"
+    ],
+    "scroll-button": [
+      "es"
+    ],
+    "self-check": [
+      "es",
+      "he",
+      "ja"
+    ],
+    "simple-fields": [
+      "es"
+    ],
+    "simple-login": [
+      "es"
+    ],
+    "sorting-question": [
+      "es",
+      "he",
+      "ja"
+    ],
+    "stop-note": [
+      "es"
+    ],
     "super-daemon": [
       "af",
       "am",
@@ -683,8 +845,12 @@
       "vi",
       "zh"
     ],
-    "twitter-embed.haxProperties": ["es"],
-    "user-action.haxProperties": ["es"],
+    "twitter-embed.haxProperties": [
+      "es"
+    ],
+    "user-action.haxProperties": [
+      "es"
+    ],
     "video-player": [
       "af",
       "am",
@@ -789,7 +955,14 @@
       "zh",
       "zu"
     ],
-    "wikipedia-query.haxProperties": ["es", "fr"],
-    "word-count": ["es", "fr", "ja"]
+    "wikipedia-query.haxProperties": [
+      "es",
+      "fr"
+    ],
+    "word-count": [
+      "es",
+      "fr",
+      "ja"
+    ]
   }
 }

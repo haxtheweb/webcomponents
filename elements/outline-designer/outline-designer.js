@@ -73,23 +73,29 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             var(--ddd-primary-5)
           );
         }
-        .controls .control {
-          border: var(--ddd-border-xs);
-          border-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          border-radius: var(--ddd-radius-xs);
-          padding: var(--ddd-spacing-1);
+        .controls simple-toolbar-button.control {
+          --simple-toolbar-button-border-width: 1px;
+          --simple-toolbar-border-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
+          --simple-toolbar-border-radius: var(--ddd-radius-xs);
+          --simple-toolbar-button-padding: var(--ddd-spacing-1);
           background-color: light-dark(
             var(--ddd-accent-6),
             var(--ddd-primary-3)
           );
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
-        .controls .control:hover {
+        .controls simple-toolbar-button.control:hover {
           background-color: light-dark(
             var(--ddd-theme-default-limestoneMaxLight),
             var(--ddd-primary-5)
           );
-          border-color: light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
+          --simple-toolbar-border-color: light-dark(
+            var(--ddd-primary-1),
+            var(--ddd-accent-5)
+          );
         }
         simple-popover {
           --simple-popover-max-height: 300px;
@@ -788,57 +794,56 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
               >
             `
           : ``}
-        <simple-icon-button-lite
+        <simple-toolbar-button
           class="control"
           icon="add"
           @click="${this.addItemToTop}"
-          >Add page</simple-icon-button-lite
-        >
-        <simple-icon-button-lite
+          label="Add page"
+        ></simple-toolbar-button>
+        <simple-toolbar-button
           icon="hardware:keyboard-arrow-right"
           @click="${this.collapseAll}"
           class="control"
-          >Collapse all</simple-icon-button-lite
-        >
-        <simple-icon-button-lite
+          label="Collapse all"
+        ></simple-toolbar-button>
+        <simple-toolbar-button
           icon="hardware:keyboard-arrow-down"
           @click="${this.expandAll}"
           class="control"
-          >Expand all</simple-icon-button-lite
-        >
+          label="Expand all"
+        ></simple-toolbar-button>
         ${this.selectedPages.length > 0
-          ? html`<simple-icon-button-lite
+          ? html`<simple-toolbar-button
               icon="delete"
               @click="${this.deleteSelected}"
               class="control"
-              >Delete Selected
-              (${this.selectedPages.length})</simple-icon-button-lite
-            >`
+              label="Delete Selected (${this.selectedPages.length})"
+            ></simple-toolbar-button>`
           : ``}
         ${this.hasDeletedItems()
-          ? html`<simple-icon-button-lite
+          ? html`<simple-toolbar-button
               icon="delete"
               @click="${this.toggleDelete}"
               class="control"
-              >${!this.hideDelete
+              label="${!this.hideDelete
                 ? "Hide Deleted"
-                : "Show Deleted"}</simple-icon-button-lite
-            >`
+                : "Show Deleted"}"
+            ></simple-toolbar-button>`
           : ``}
-        <simple-icon-button-lite
+        <simple-toolbar-button
           icon="zoom-in"
           @click="${this.zoomIn}"
           class="control"
           ?disabled="${this.zoomLevel >= 1}"
-          >Zoom In</simple-icon-button-lite
-        >
-        <simple-icon-button-lite
+          label="Zoom In"
+        ></simple-toolbar-button>
+        <simple-toolbar-button
           icon="zoom-out"
           @click="${this.zoomOut}"
           class="control"
           ?disabled="${this.zoomLevel <= -3}"
-          >Zoom Out</simple-icon-button-lite
-        >
+          label="Zoom Out"
+        ></simple-toolbar-button>
       </div>
       <ul
         id="list"

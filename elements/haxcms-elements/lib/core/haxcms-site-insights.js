@@ -9,6 +9,7 @@ import "@haxtheweb/accent-card/accent-card.js";
 import "@haxtheweb/retro-card/retro-card.js";
 import "@haxtheweb/simple-img/simple-img.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "../ui-components/lesson-overview/lib/lesson-highlight.js";
 import "@github/time-elements/dist/relative-time-element.js";
 import "@haxtheweb/iframe-loader/lib/loading-indicator.js";
@@ -32,26 +33,74 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     return [
       css`
         :host {
-          display: block;
-          overflow: auto;
-          height: 85vh;
-          padding: 16px;
+          display: flex;
+          flex-direction: column;
+          overflow: hidden;
         }
         :host([hide-results*="link-status-false"]) .link-status-false,
         :host([hide-results*="link-status-true"]) .link-status-true {
           display: none;
         }
         .selector-wrapper {
-          margin-bottom: 32px;
-          font-size: 24px;
-          line-height: 24px;
+          margin-bottom: var(--ddd-spacing-6);
+          font-size: var(--ddd-font-size-m);
+          line-height: var(--ddd-lh-120);
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-3);
+          flex-wrap: wrap;
         }
-        .selector-wrapper select,
-        .selector-wrapper button {
-          font-size: 20px;
-          line-height: 24px;
-          margin: 0 8px;
-          padding: 4px;
+        .selector-wrapper label {
+          font-weight: var(--ddd-font-weight-bold);
+          font-family: var(--ddd-font-navigation);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .selector-wrapper select {
+          font-size: var(--ddd-font-size-s);
+          line-height: var(--ddd-lh-120);
+          padding: var(--ddd-spacing-2);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-primary-5)
+          );
+          border-radius: var(--ddd-radius-xs);
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-primary-3)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          font-family: var(--ddd-font-navigation);
+        }
+        .selector-wrapper simple-toolbar-button {
+          --simple-toolbar-button-border-width: 1px;
+          --simple-toolbar-border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-primary-5)
+          );
+          --simple-toolbar-border-radius: var(--ddd-radius-xs);
+          --simple-toolbar-button-padding: var(--ddd-spacing-2);
+          background-color: light-dark(
+            var(--ddd-theme-default-skyBlue),
+            var(--ddd-primary-4)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-white)
+          );
+          font-family: var(--ddd-font-navigation);
+        }
+        .selector-wrapper simple-toolbar-button:hover {
+          background-color: light-dark(
+            var(--ddd-theme-default-original87Pink),
+            var(--ddd-primary-5)
+          );
         }
         ul {
           list-style: none;
@@ -59,38 +108,88 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           padding: 0;
         }
         a11y-tabs {
-          --a11y-tabs-horizontal-background: white;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          --a11y-tabs-horizontal-background: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-primary-3)
+          );
+        }
+        a11y-tabs::part(tabs-container) {
+          flex-shrink: 0;
+        }
+        a11y-tabs::part(content-container) {
+          flex: 1;
+          overflow: auto;
+          min-height: 0;
         }
         a11y-tabs::part(tab) {
-          font-size: 24px;
+          font-size: var(--ddd-font-size-m);
+          font-family: var(--ddd-font-navigation);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-slateGray)
+          );
+          border-bottom: 3px solid transparent;
+          transition: all 0.3s ease-in-out;
+        }
+        a11y-tabs::part(tab):hover {
+          color: light-dark(
+            var(--ddd-theme-default-original87Pink),
+            var(--ddd-theme-default-skyBlue)
+          );
         }
         a11y-tabs[active-tab="insights"]::part(tab-insights) {
-          color: var(--simple-colors-default-theme-purple-8);
+          color: light-dark(
+            var(--ddd-theme-default-futureLime),
+            var(--ddd-theme-default-futureLime)
+          );
+          border-bottom-color: var(--ddd-theme-default-futureLime);
         }
         a11y-tabs[active-tab="linkchecker"]::part(tab-linkchecker) {
-          color: var(--simple-colors-default-theme-orange-8);
+          color: light-dark(
+            var(--ddd-theme-default-opportunityGreen),
+            var(--ddd-theme-default-opportunityGreen)
+          );
+          border-bottom-color: var(--ddd-theme-default-opportunityGreen);
         }
         a11y-tabs[active-tab="mediabrowser"]::part(tab-mediabrowser) {
-          color: var(--simple-colors-default-theme-red-8);
+          color: light-dark(
+            var(--ddd-theme-default-original87Pink),
+            var(--ddd-theme-default-original87Pink)
+          );
+          border-bottom-color: var(--ddd-theme-default-original87Pink);
         }
         a11y-tabs[active-tab="contentbrowser"]::part(tab-contentbrowser) {
-          color: var(--simple-colors-default-theme-blue-8);
+          color: light-dark(
+            var(--ddd-theme-default-skyBlue),
+            var(--ddd-theme-default-skyBlue)
+          );
+          border-bottom-color: var(--ddd-theme-default-skyBlue);
+        }
+        a11y-tab {
+          display: block;
+        }
+        .insights,
+        .tab-content-wrapper {
+          padding: var(--ddd-spacing-4);
+          max-height: 100%;
+          overflow-y: auto;
         }
         a11y-tab#insights loading-indicator {
-          --loading-indicator-color: var(
-            --simple-colors-default-theme-purple-8
-          );
+          --loading-indicator-color: var(--ddd-theme-default-futureLime);
         }
         a11y-tab#linkchecker loading-indicator {
           --loading-indicator-color: var(
-            --simple-colors-default-theme-orange-8
+            --ddd-theme-default-opportunityGreen
           );
         }
         a11y-tab#mediabrowser loading-indicator {
-          --loading-indicator-color: var(--simple-colors-default-theme-red-8);
+          --loading-indicator-color: var(--ddd-theme-default-original87Pink);
         }
         a11y-tab#contentbrowser loading-indicator {
-          --loading-indicator-color: var(--simple-colors-default-theme-blue-8);
+          --loading-indicator-color: var(--ddd-theme-default-skyBlue);
         }
         simple-fields-field[type="checkbox"],
         simple-fields-field[type="select"] {
@@ -144,6 +243,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         }
         .insights {
           column-count: 3;
+          padding: var(--ddd-spacing-4);
         }
         .insights .recently-updated-items {
           font-size: 16px;
@@ -176,7 +276,11 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           width: 275px;
         }
         .mediabrowser-wrapper {
-          overflow: hidden;
+          padding: var(--ddd-spacing-4);
+        }
+        .content-list,
+        .media-list {
+          padding: var(--ddd-spacing-4);
         }
       `,
     ];
@@ -587,7 +691,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         id="tabs"
         full-width
         @a11y-tabs-active-changed="${this.activeChanged}"
-        sticky
       >
         <a11y-tab
           id="insights"
@@ -1291,9 +1394,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       });
     });
     return html`<div class="selector-wrapper">
-      <label style="font-weight:bold;" for="selector"
-        >${this.t.pageToProvideInsightsAbout}</label
-      >:<select id="selector">
+      <label for="selector">${this.t.pageToProvideInsightsAbout}:</label>
+      <select id="selector">
         ${items.map(
           (item) => html`
             <option
@@ -1305,13 +1407,12 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           `,
         )}
       </select>
-      <button
+      <simple-toolbar-button
         @click="${this.refreshData}"
         icon="refresh"
         ?disabled="${this.loading}"
-      >
-        ${this.t.updateInsights}
-      </button>
+        label="${this.t.updateInsights}"
+      ></simple-toolbar-button>
     </div>`;
   }
 }

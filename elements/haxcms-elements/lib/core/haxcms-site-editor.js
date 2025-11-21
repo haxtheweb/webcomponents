@@ -825,7 +825,7 @@ class HAXCMSSiteEditor extends LitElement {
                     modal: true,
                     styles: {
                       "--simple-modal-titlebar-background": "transparent",
-                      "--simple-modal-titlebar-color": "black",
+                      "--simple-modal-titlebar-color": "light-dark(black, white)",
                       "--simple-modal-width": "90vw",
                       "--simple-modal-min-width": "300px",
                       "--simple-modal-z-index": "100000000",

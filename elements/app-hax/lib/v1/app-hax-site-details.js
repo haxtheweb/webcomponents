@@ -254,7 +254,7 @@ export class AppHaxSiteDetails extends SimpleColors {
                 invokedBy: target,
                 styles: {
                   "--simple-modal-titlebar-background": "orange",
-                  "--simple-modal-titlebar-color": "black",
+                  "--simple-modal-titlebar-color": "light-dark(black, white)",
                   "--simple-modal-width": "30vw",
                   "--simple-modal-min-width": "300px",
                   "--simple-modal-z-index": "100000000",

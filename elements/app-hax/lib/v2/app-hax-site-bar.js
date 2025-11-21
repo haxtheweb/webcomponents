@@ -233,8 +233,7 @@ export class AppHaxSiteBars extends SimpleColors {
           styles: {
             "--simple-modal-titlebar-background":
               "var(--ddd-theme-default-nittanyNavy, #001e44)",
-            "--simple-modal-titlebar-color":
-              "var(--ddd-theme-default-white, white)",
+            "--simple-modal-titlebar-color": "light-dark(black, white)",
             "--simple-modal-width": "90vw",
             "--simple-modal-max-width": "var(--ddd-spacing-32, 480px)",
             "--simple-modal-min-width": "300px",
@@ -242,7 +241,7 @@ export class AppHaxSiteBars extends SimpleColors {
             "--simple-modal-height": "auto",
             "--simple-modal-min-height": "300px",
             "--simple-modal-max-height": "80vh",
-            "--simple-modal-titlebar-height": "64px",
+            "--simple-modal-titlebar-height": "80px",
             "--simple-modal-border-radius": "var(--ddd-radius-md, 8px)",
             "--simple-modal-background":
               "var(--ddd-theme-default-white, white)",

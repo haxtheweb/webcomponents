@@ -81,7 +81,7 @@ simple-modal::part(title) {
   margin: 0;
   text-align: center;
   font-size: var(--ddd-font-size-s);
-  color: var(--ddd-theme-default-infoLight);
+  color: white;
   font-family: var(--ddd-font-navigation, sans-serif);
   padding: 4px;
 }
