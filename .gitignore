@@ -16,6 +16,7 @@ yarn-error.log
 yarn.lock
 test/index.html
 component-gallery.html
+elements/video-player/demo/samples/ad/
 elements/haxcms-elements/demo/files/
 elements/grade-book/demo/psu/
 elements/elmsln-apps/lib/lrnapp-studio-instructor/demo/*
