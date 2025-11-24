@@ -127,8 +127,8 @@ class DemoSnippet extends DDDSuper(LitElement) {
     this._observer = null;
   }
 
-  connectedCallback() {
-    super.connectedCallback();
+  firstUpdated() {
+    super.firstUpdated();
     // Set up slot change observer after first render
     this.updateComplete.then(() => {
       this._updateMarkdown();
