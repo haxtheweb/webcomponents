@@ -90,7 +90,18 @@ class VideoPlayer extends IntersectionObserverMixin(
 
   // render function
   render() {
-    return html` ${this.elementVisible
+    return html`
+      ${this.audioDescriptionSource && this.audioDescriptionEnabled
+        ? html`
+            <audio
+              id="audio-description"
+              .src="${this.audioDescriptionSource}"
+              crossorigin="${this.crossorigin || "anonymous"}"
+              style="display: none;"
+            ></audio>
+          `
+        : ``}
+      ${this.elementVisible
       ? html`${!this.isA11yMedia
           ? html` <div
                 class="responsive-video-container"
@@ -149,6 +160,7 @@ class VideoPlayer extends IntersectionObserverMixin(
                 @play="${this.playEvent}"
                 @restart="${this.restartEvent}"
                 @pause="${this.pauseEvent}"
+                @audio-description-toggle="${this._handleAudioDescriptionToggle}"
                 lang="${this.lang || "en"}"
                 ?learning-mode="${this.learningMode}"
                 ?linkable="${this.linkable}"
@@ -163,6 +175,8 @@ class VideoPlayer extends IntersectionObserverMixin(
                 .width="${this.width}"
                 .height="${this.height}"
                 youtube-id="${this.youtubeId}"
+                audio-description-source="${this.audioDescriptionSource}"
+                ?audio-description-enabled="${this.audioDescriptionEnabled}"
               >
               </a11y-media-player
               ><slot hidden></slot>`}`
@@ -336,6 +350,17 @@ class VideoPlayer extends IntersectionObserverMixin(
             title: "Hide Transcript",
             description: "Hide transcript by default.",
             inputMethod: "boolean",
+          },
+          {
+            property: "audioDescriptionSource",
+            title: "Audio Description Track",
+            description:
+              "URL to an audio description track (MP3 file) that provides narration of visual elements.",
+            inputMethod: "haxupload",
+            noCamera: true,
+            noVoiceRecord: true,
+            noScreenRecord: true,
+            validationType: "url",
           },
         ],
         developer: [
@@ -602,6 +627,22 @@ class VideoPlayer extends IntersectionObserverMixin(
         type: Number,
         attribute: "end-time",
       },
+      /**
+       * URL to audio description track (MP3 file)
+       */
+      audioDescriptionSource: {
+        type: String,
+        attribute: "audio-description-source",
+        reflect: true,
+      },
+      /**
+       * Whether audio description is currently enabled
+       */
+      audioDescriptionEnabled: {
+        type: Boolean,
+        attribute: "audio-description-enabled",
+        reflect: true,
+      },
     };
   }
   /**
@@ -641,6 +682,8 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.stickyCorner = "none";
     this.tracks = [];
     this.source = "";
+    this.audioDescriptionSource = "";
+    this.audioDescriptionEnabled = false;
     this.observer.observe(this, {
       childList: true,
       subtree: false,
@@ -711,6 +754,10 @@ class VideoPlayer extends IntersectionObserverMixin(
         "(deprecated) Select the accent color for the player.",
       copyTimecodeLabel: "Copy current timecode",
       englishLabel: "English",
+      audioDescriptionLabel: "Audio Description",
+      audioDescriptionTitle: "Audio Description Track",
+      audioDescriptionDescription:
+        "URL to an audio description track (MP3 file) that provides narration of visual elements.",
     };
     this.registerLocalization({
       context: this,
@@ -726,6 +773,10 @@ class VideoPlayer extends IntersectionObserverMixin(
     if (this.__setVisChange) {
       this.__setVisChange = false;
       this.windowControllers.abort();
+    }
+    if (this.__adVolumeHandler) {
+      globalThis.removeEventListener("volume-changed", this.__adVolumeHandler);
+      this.__adVolumeHandler = null;
     }
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
     super.disconnectedCallback();
@@ -1126,6 +1177,49 @@ class VideoPlayer extends IntersectionObserverMixin(
           }
         }
       }
+      
+      // Setup audio description sync when enabled changes
+      if (propName === "audioDescriptionEnabled" && this.audioDescriptionSource) {
+        if (this.audioDescriptionEnabled) {
+          // Wait for next render cycle to ensure audio element exists
+          setTimeout(() => {
+            this._setupAudioDescriptionSync();
+            // If video is currently playing, start audio too
+            const audioElement = this.shadowRoot
+              ? this.shadowRoot.querySelector("#audio-description")
+              : null;
+            if (audioElement && this.playing) {
+              audioElement.currentTime = this.currentTime;
+              audioElement.play();
+            }
+          }, 0);
+        } else {
+          // Stop audio and cleanup
+          const audioElement = this.shadowRoot
+            ? this.shadowRoot.querySelector("#audio-description")
+            : null;
+          if (audioElement) {
+            audioElement.pause();
+          }
+          
+          // Restore video audio
+          const mediaPlayer = this.shadowRoot
+            ? this.shadowRoot.querySelector("a11y-media-player")
+            : null;
+          if (mediaPlayer && mediaPlayer.media) {
+            mediaPlayer.media.muted = false;
+            if (mediaPlayer.volume !== undefined) {
+              mediaPlayer.media.volume = mediaPlayer.volume / 100;
+            }
+          }
+          
+          // Clean up volume listener
+          if (this.__adVolumeHandler) {
+            globalThis.removeEventListener("volume-changed", this.__adVolumeHandler);
+            this.__adVolumeHandler = null;
+          }
+        }
+      }
     });
   }
 
@@ -1169,6 +1263,11 @@ class VideoPlayer extends IntersectionObserverMixin(
       this.sourceType = globalThis.MediaBehaviors.Video.getVideoType(
         this.sourceData[0].src,
       );
+    }
+
+    // setup audio description if source is present
+    if (this.audioDescriptionSource) {
+      this._loadAudioDescriptionPreference();
     }
   }
   /**
@@ -1266,6 +1365,130 @@ class VideoPlayer extends IntersectionObserverMixin(
         this.__forcePaused = false;
       }
     }, 500);
+  }
+
+  /**
+   * Load audio description preference from localStorage
+   */
+  _loadAudioDescriptionPreference() {
+    if (this.source && this.audioDescriptionSource) {
+      const key = `video-player-ad-${this.source}`;
+      const stored = globalThis.localStorage.getItem(key);
+      if (stored !== null) {
+        this.audioDescriptionEnabled = stored === "true";
+      }
+    }
+  }
+
+  /**
+   * Save audio description preference to localStorage
+   */
+  _saveAudioDescriptionPreference() {
+    if (this.source && this.audioDescriptionSource) {
+      const key = `video-player-ad-${this.source}`;
+      globalThis.localStorage.setItem(
+        key,
+        this.audioDescriptionEnabled.toString(),
+      );
+    }
+  }
+
+  /**
+   * Setup audio description sync with video playback
+   */
+  _setupAudioDescriptionSync() {
+    if (!this.shadowRoot) return;
+
+    const mediaPlayer = this.shadowRoot.querySelector("a11y-media-player");
+    const audioElement = this.shadowRoot.querySelector("#audio-description");
+
+    if (!mediaPlayer || !audioElement) return;
+
+    // Set default volume for audio description (match current player volume)
+    if (mediaPlayer.volume !== undefined) {
+      audioElement.volume = mediaPlayer.volume / 100;
+    } else {
+      audioElement.volume = 1.0;
+    }
+
+    // Mute the video audio when audio description is active
+    if (mediaPlayer.media) {
+      mediaPlayer.media.volume = 0;
+      mediaPlayer.media.muted = true;
+    }
+
+    // Store event handler references for cleanup
+    this.__adPlayHandler = () => {
+      if (this.audioDescriptionEnabled && audioElement) {
+        audioElement.currentTime = this.currentTime;
+        audioElement.play().catch(() => {});
+      }
+    };
+
+    this.__adPauseHandler = () => {
+      if (audioElement) {
+        audioElement.pause();
+      }
+    };
+
+    this.__adRestartHandler = () => {
+      if (audioElement) {
+        audioElement.currentTime = 0;
+        if (this.playing) {
+          audioElement.play().catch(() => {});
+        }
+      }
+    };
+
+    // Listen for play events
+    mediaPlayer.addEventListener("play", this.__adPlayHandler);
+
+    // Listen for pause events
+    mediaPlayer.addEventListener("pause", this.__adPauseHandler);
+
+    // Listen for restart events
+    mediaPlayer.addEventListener("restart", this.__adRestartHandler);
+
+    // Listen for volume changes and sync to audio description
+    this.__adVolumeHandler = (e) => {
+      if (this.audioDescriptionEnabled && audioElement && e.detail && e.detail.volume !== undefined) {
+        // When audio description is active, sync volume to audio track
+        audioElement.volume = e.detail.volume / 100;
+      }
+    };
+    globalThis.addEventListener("volume-changed", this.__adVolumeHandler);
+  }
+
+  /**
+   * Toggle audio description on/off
+   */
+  toggleAudioDescription() {
+    this.audioDescriptionEnabled = !this.audioDescriptionEnabled;
+    this._saveAudioDescriptionPreference();
+
+    const audioElement = this.shadowRoot
+      ? this.shadowRoot.querySelector("#audio-description")
+      : null;
+
+    if (audioElement) {
+      if (this.audioDescriptionEnabled) {
+        // Sync to current time and play if video is playing
+        audioElement.currentTime = this.currentTime;
+        if (this.playing) {
+          audioElement.play();
+        }
+      } else {
+        audioElement.pause();
+      }
+    }
+  }
+
+  /**
+   * Handle audio description toggle from settings checkbox
+   */
+  _handleAudioDescriptionToggle(e) {
+    this.audioDescriptionEnabled = e.detail.audioDescriptionEnabled;
+    this._saveAudioDescriptionPreference();
   }
 }
 globalThis.customElements.define(VideoPlayer.tag, VideoPlayer);

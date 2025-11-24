@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>Video Player: Audio Description Demo</title>
+    
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+
+    <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import '../video-player.js';
+    </script>
+    
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .info {
+        background: #f0f0f0;
+        padding: 15px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+      .info h3 {
+        margin-top: 0;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 10px 0;
+        cursor: pointer;
+        font-size: 16px;
+        background: #0066cc;
+        color: white;
+        border: none;
+        border-radius: 4px;
+      }
+      button:hover {
+        background: #0052a3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h1>Video Player: Audio Description Demo</h1>
+      
+      <div class="info">
+        <h3>About Audio Descriptions</h3>
+        <p>
+          Audio descriptions provide narration of important visual elements for users who are blind or have low vision.
+          This demo shows how to add an MP3 audio description track that syncs with video playback.
+        </p>
+        <p>
+          <strong>Features:</strong>
+        </p>
+        <ul>
+          <li>Synchronized playback with video</li>
+          <li>Automatic drift correction (resyncs if audio/video drift exceeds 200ms)</li>
+          <li>Toggle on/off with preference saved to localStorage</li>
+          <li>Independent volume control</li>
+          <li><strong>Settings menu checkbox</strong> - Toggle appears in player settings when audio description is available</li>
+        </ul>
+        <p>
+          <strong>How to use:</strong> Click the settings (gear) icon in the video player controls to access the audio description toggle.
+        </p>
+      </div>
+
+      <h2>Video with Audio Description Track</h2>
+      <demo-snippet>
+        <template>
+          <video-player 
+            id="ad-player"
+            accent-color="blue"
+            source="./samples/ad/ad.mp4"
+            audio-description-source="./samples/ad/ad.mp3"
+            media-title="Sample Video with Audio Description">
+          </video-player>
+          
+          <button id="toggle-btn-1">
+            Toggle Audio Description
+          </button>
+          
+          <p id="ad-status"></p>
+          
+          <script>
+            const player = document.getElementById('ad-player');
+            const status = document.getElementById('ad-status');
+            const toggleBtn = document.getElementById('toggle-btn-1');
+            
+            function updateStatus() {
+              status.textContent = 'Audio Description: ' + 
+                (player.audioDescriptionEnabled ? 'ON' : 'OFF') + 
+                ' (preference saved to localStorage)';
+            }
+            
+            toggleBtn.addEventListener('click', () => {
+              player.toggleAudioDescription();
+            });
+            
+            player.addEventListener('audio-description-enabled-changed', updateStatus);
+            setTimeout(updateStatus, 100);
+          </script>
+        </template>
+      </demo-snippet>
+
+      <div class="info">
+        <h3>Implementation Notes</h3>
+        <ul>
+          <li><strong>Property:</strong> <code>audio-description-source</code> accepts a URL to an MP3 file</li>
+          <li><strong>Property:</strong> <code>audio-description-enabled</code> controls the toggle state</li>
+          <li><strong>Method:</strong> <code>toggleAudioDescription()</code> programmatically toggles the feature</li>
+          <li><strong>LocalStorage Key:</strong> Preference is saved as <code>video-player-ad-{source}</code></li>
+          <li><strong>Default:</strong> Audio description is OFF by default, even when a track is provided</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

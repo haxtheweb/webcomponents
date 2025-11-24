@@ -1257,6 +1257,20 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
               >
               </simple-fields-field>
             </div>
+            <div class="setting" ?hidden="${!this.audioDescriptionSource}">
+              <div id="audio-description-label" class="setting-text">
+                ${this.t.audioDescriptionLabel}
+              </div>
+              <simple-fields-field
+                type="checkbox"
+                id="audio-description"
+                class="setting-control"
+                aria-labelledby="audio-description-label"
+                @value-changed="${this._toggleAudioDescription}"
+                ?value="${this.audioDescriptionEnabled}"
+              >
+              </simple-fields-field>
+            </div>
             <div class="setting">
               <div id="speed-label" class="setting-text">
                 ${this.t.speedLabel}
@@ -1780,6 +1794,22 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
       __transcriptOption: {
         type: Number,
       },
+      /**
+       * URL to audio description track (MP3 file)
+       */
+      audioDescriptionSource: {
+        type: String,
+        attribute: "audio-description-source",
+        reflect: true,
+      },
+      /**
+       * Whether audio description is currently enabled
+       */
+      audioDescriptionEnabled: {
+        type: Boolean,
+        attribute: "audio-description-enabled",
+        reflect: true,
+      },
     };
   }
 
@@ -1863,12 +1893,15 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
       youTubeLoadingLabel: "Loading...",
       youTubeStartLoading: "Press play.",
       youTubeTranscriptLabel: "Transcript will load once media plays.",
+      audioDescriptionLabel: "Audio Description",
     };
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
     });
     this.loop = false;
+    this.audioDescriptionSource = "";
+    this.audioDescriptionEnabled = false;
     this.mediaTitle = "";
     this.mediaLang = "en";
     this.muted = false;
@@ -3108,6 +3141,29 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
         detail: this,
       }),
     );
+  }
+
+  /**
+   * Handle audio description toggle from settings checkbox
+   */
+  _toggleAudioDescription(e) {
+    if (e.detail && e.detail.value !== undefined) {
+      this.audioDescriptionEnabled = e.detail.value;
+      /**
+       * Fires when audio description is toggled
+       * @event audio-description-toggle
+       */
+      this.dispatchEvent(
+        new CustomEvent("audio-description-toggle", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            audioDescriptionEnabled: this.audioDescriptionEnabled,
+          },
+        }),
+      );
+    }
   }
 
   /**
