@@ -211,6 +211,9 @@ export class AppHaxSiteBars extends SimpleColors {
     // Close the options menu first
     this.showOptions = false;
 
+    // Set the active site ID so the modal can access store.activeSite
+    store.activeSiteId = this.siteId;
+
     // Import simple-modal and then show the user access modal
     import("@haxtheweb/simple-modal/simple-modal.js").then(() => {
       // Create and show the user access modal

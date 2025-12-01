@@ -685,9 +685,12 @@ export class AppHaxSearchResults extends SimpleColors {
     if (themeElement && store.themesData && store.themesData[themeElement]) {
       let thumbnailPath = store.themesData[themeElement].thumbnail || "";
       if (thumbnailPath && thumbnailPath.startsWith("@haxtheweb/")) {
-        // Convert bare import style path to resolved path
-        const basePath = globalThis.WCGlobalBasePath || "/node_modules/";
-        thumbnailPath = basePath + thumbnailPath;
+        // Navigate from current file to simulate node_modules structure and resolve path
+        // Current file: elements/app-hax/lib/v2/app-hax-search-results.js
+        // Need to go up to webcomponents root, then navigate to the package
+        // In node_modules: @haxtheweb/package-name becomes ../../../../@haxtheweb/package-name
+        const packagePath = "../../../../" + thumbnailPath;
+        thumbnailPath = new URL(packagePath, import.meta.url).href;
       }
       return thumbnailPath;
     }
