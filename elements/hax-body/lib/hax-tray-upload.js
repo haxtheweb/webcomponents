@@ -97,6 +97,8 @@ class HaxTrayUpload extends HaxUploadField {
     // the only things possible for seeing these
     HAXStore.activePlaceHolder = e.detail.placeHolderElement;
     HAXStore.activePlaceHolderOperationType = e.detail.operationType;
+    // store the callback if provided
+    HAXStore.activePlaceHolderCallback = e.detail.callback;
     // ! I can't believe this actually works. This takes the event
     // ! that was a drop event else where on the page and then repoints
     // ! it to simulate the drop event using the same event structure that

@@ -293,11 +293,16 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     // used to force a search prepopulation
     if (like != null) {
       this.like = like;
+      // If we're setting 'like' and programSearch is empty, use 'like' as the initial programSearch
+      // This ensures the program executes with the pre-filled value on first run
+      if (!this.programSearch && like) {
+        this.programSearch = like;
+      }
     }
     // ensure we have a program as this could be used for resetting program state
     if (this._programToRun) {
       setTimeout(() => {
-        this.shadowRoot.querySelector("super-daemon-ui").setupProgram();
+        this.shadowRoot.querySelector("super-daemon-ui").setupProgram(this.programSearch);
         setTimeout(async () => {
           try {
             this.loading = true;

@@ -157,11 +157,19 @@
             },
             {
               "kind": "field",
+              "name": "__loginModalOpen",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
               "name": "t",
               "type": {
                 "text": "object"
               },
-              "default": "{ ...this.t, selectPage: \"Select page\", backToSiteList: \"Back to site list\", listMySites: \"List my sites\", cancel: \"Cancel\", editDetails: \"Page details\", add: \"Add\", editSettings: \"Edit settings\", source: \"Source\", viewSource: \"View source\", findMedia: \"Find media\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", outline: \"Outline\", blocks: \"Blocks\", addBlock: \"Add block\", addPage: \"Add page\", addChildPage: \"Add child page\", clonePage: \"Clone page\", delete: \"Delete page\", siteSettings: \"Site settings\", close: \"Close\", settings: \"Settings\", edit: \"Edit\", configureBlock: \"Configure block\", configure: \"Configure\", save: \"Save\", home: \"Home\", startNewJourney: \"Start new journey\", newJourney: \"New Journey\", accountInfo: \"Account Info\", outlineDesigner: \"Outline designer\", pageOutline: \"Page outline\", more: \"More\", siteActions: \"Site actions\", insights: \"Insights dashboard\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", logOut: \"Log out\", menu: \"Menu\", showMore: \"More\", userAccess: \"User Access\", }"
+              "default": "{ ...this.t, selectPage: \"Select page\", backToSiteList: \"Back to site list\", listMySites: \"List my sites\", cancel: \"Cancel\", editDetails: \"Page details\", add: \"Add\", editSettings: \"Edit settings\", source: \"Source\", viewSource: \"View source\", findMedia: \"Find media\", undo: \"Undo\", redo: \"Redo\", media: \"Media\", outline: \"Outline\", blocks: \"Blocks\", addBlock: \"Add block\", addPage: \"Add page\", addChildPage: \"Add child page\", clonePage: \"Clone page\", delete: \"Delete page\", siteSettings: \"Site settings\", close: \"Close\", settings: \"Settings\", edit: \"Edit\", configureBlock: \"Configure block\", configure: \"Configure\", save: \"Save\", home: \"Home\", startNewJourney: \"Start new journey\", newJourney: \"New Journey\", accountInfo: \"Account Info\", outlineDesigner: \"Site Outline\", pageOutline: \"Structure\", more: \"More\", siteActions: \"Site actions\", insights: \"Insights dashboard\", merlin: \"Merlin\", summonMerlin: \"Summon Merlin\", logOut: \"Log out\", menu: \"Menu\", showMore: \"More\", userAccess: \"User Access\", }"
             },
             {
               "kind": "field",

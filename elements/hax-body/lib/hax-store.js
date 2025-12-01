@@ -2679,6 +2679,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.haxBodies = [];
     this.activePlaceHolder = null;
     this.activePlaceHolderOperationType = null;
+    this.activePlaceHolderCallback = null;
     this.sessionObject = {};
     this.editMode = false;
     this.skipExitTrap = false;

@@ -185,6 +185,17 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         this.shadowRoot.querySelector("#url").value = item.url;
         //TODO need a way to get suggestedResources from HAXStore and then add uploaded resource
         //this.suggestedResources['item.url'] = ''; or this.suggestedResources['item.url'] = { name, icon, type, preview };
+        
+        // Execute callback if provided (e.g., for set-page-media operation)
+        if (HAXStore.activePlaceHolderCallback && typeof HAXStore.activePlaceHolderCallback === 'function') {
+          HAXStore.activePlaceHolderCallback({
+            file: item.url,
+            item: item,
+            response: response
+          });
+          // Clear callback after execution
+          HAXStore.activePlaceHolderCallback = null;
+        }
       } catch (e) {
         console.warn("Error parsing response", e);
       }

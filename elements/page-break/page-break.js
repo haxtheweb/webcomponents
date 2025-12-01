@@ -830,7 +830,7 @@ export class PageBreak extends IntersectionObserverMixin(
   }
 
   _cancelEdit(e) {
-    store.cmsSiteEditor.haxCmsSiteEditorUIElement._cancelButtonTap();
+    store.cmsSiteEditor.haxCmsSiteEditorUIElement._cancelButtonTap(e);
   }
 
   async _editTitle(e) {
@@ -860,70 +860,17 @@ export class PageBreak extends IntersectionObserverMixin(
       globalThis.SuperDaemonManager.requestAvailability();
     store.playSound("click");
 
-    // Store the current title for use in the program closure
-    // Prioritize item.title from store, then fall back to page-break's title property
+    // Get the current title
     const currentTitle = item.title || this.title || "";
 
-    // Define the edit-title program in SuperDaemon
-    SuperDaemonInstance.defineOption({
-      title: "Edit Title",
-      icon: "editor:mode-edit",
-      priority: -10000,
-      tags: ["edit", "title", "page"],
-      eventName: "super-daemon-run-program",
-      path: "CMS/edit/title",
-      value: {
-        name: "edit-title",
-        machineName: "edit-title",
-        placeholder: "Enter new title",
-        program: async (input) => {
-          if (!input || input.trim() === "") {
-            return [
-              {
-                title: "Enter a new title above",
-                icon: "editor:mode-edit",
-                tags: ["instruction"],
-                value: { disabled: true },
-                eventName: "disabled",
-                path: "Enter title",
-              },
-            ];
-          }
-          return [
-            {
-              title: `Change title to "${input}"`,
-              icon: "icons:check",
-              tags: ["confirm"],
-              value: {
-                target: globalThis,
-                method: "dispatchEvent",
-                args: [
-                  new CustomEvent("haxcms-save-node-details", {
-                    bubbles: true,
-                    composed: true,
-                    cancelable: true,
-                    detail: {
-                      id: item.id,
-                      operation: "setTitle",
-                      title: input,
-                    },
-                  }),
-                ],
-              },
-              eventName: "super-daemon-element-method",
-              path: "CMS/edit/title/confirm",
-            },
-          ];
-        },
-      },
-    });
-
+    // Invoke the core edit-title program
+    // The program will pull current title from store and show it as default option
     SuperDaemonInstance.waveWand([
-      currentTitle,
+      currentTitle,  // Pre-fill input with current title
       "/",
       {},
       "edit-title",
-      "Edit Title",
+      "Edit title",
     ]);
   }
 

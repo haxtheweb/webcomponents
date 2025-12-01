@@ -389,8 +389,10 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
     this.shadowRoot.querySelector("super-daemon-search").selectInput();
   }
 
-  setupProgram() {
-    this.programSearch = "";
+  setupProgram(initialProgramSearch = "") {
+    // Set programSearch from the passed parameter if provided
+    // This avoids timing issues with property propagation from parent to child
+    this.programSearch = initialProgramSearch;
     this.focusInput();
     this.selectInput();
     // reset to top of results

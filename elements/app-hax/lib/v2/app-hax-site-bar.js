@@ -5,6 +5,8 @@ import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
 import { toJS } from "mobx";
 import { store } from "./AppHaxStore.js";
 import "./app-hax-user-access-modal.js";
@@ -30,13 +32,6 @@ export class AppHaxSiteBars extends SimpleColors {
     this.textInfo = {};
     this.siteId = "";
     this.description = "";
-    this._boundKeydownHandler = this._handleMenuKeydown.bind(this);
-  }
-
-  // Clean up event listeners when component is removed
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    document.removeEventListener("keydown", this._boundKeydownHandler);
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
@@ -48,40 +43,26 @@ export class AppHaxSiteBars extends SimpleColors {
       textInfo: { type: Object },
       siteId: { type: String, reflect: true, attribute: "site-id" },
       title: { type: String },
+      slug: { type: String },
       description: { type: String },
       siteUrl: { type: String, attribute: "site-url" },
       image: { type: String },
     };
   }
 
-  // updated fires every time a property defined above changes
-  // this allows you to react to variables changing and use javascript to perform logic
-  updated(changedProperties) {
-    if (changedProperties.has("showOptions")) {
-      if (this.showOptions) {
-        // Menu opened - add keyboard listener and focus first menu item
-        document.addEventListener("keydown", this._boundKeydownHandler);
-        this._focusFirstMenuItem();
-      } else {
-        // Menu closed - remove keyboard listener
-        document.removeEventListener("keydown", this._boundKeydownHandler);
-      }
-    }
-  }
-
   toggleOptionsMenu() {
-    const wasOpen = this.showOptions;
-    this.showOptions = !this.showOptions;
-
-    // If we're closing the menu, return focus to the settings button
-    if (wasOpen && !this.showOptions) {
-      this._returnFocusToSettingsButton();
+    const menu = this.shadowRoot.querySelector("simple-context-menu");
+    const button = this.shadowRoot.querySelector("#settingsIcon");
+    if (menu && button) {
+      menu.toggle(button);
     }
   }
 
   closeOptionsMenu() {
-    this.showOptions = false;
-    this._returnFocusToSettingsButton();
+    const menu = this.shadowRoot.querySelector("simple-context-menu");
+    if (menu) {
+      menu.close();
+    }
   }
 
   handleKeydown(e, callback) {
@@ -91,125 +72,32 @@ export class AppHaxSiteBars extends SimpleColors {
     }
   }
 
-  // Accessibility helper methods
-  _focusFirstMenuItem() {
-    // Use setTimeout to ensure the DOM has updated
-    setTimeout(() => {
-      // Focus the close button first as it appears first in the DOM
-      const closeButton = this.shadowRoot.querySelector(".close-menu-btn");
-      if (closeButton) {
-        closeButton.focus();
-      } else {
-        // Fallback to first menu item if close button not found
-        const firstMenuItem = this.shadowRoot.querySelector(".menu-item");
-        if (firstMenuItem) {
-          firstMenuItem.focus();
-        }
-      }
-    }, 0);
-  }
-
-  _returnFocusToSettingsButton() {
-    setTimeout(() => {
-      const settingsButton = this.shadowRoot.querySelector("#settingsIcon");
-      if (settingsButton) {
-        settingsButton.focus();
-      }
-    }, 0);
-  }
-
-  _handleMenuKeydown(e) {
-    if (!this.showOptions) return;
-
-    // Get all focusable elements in the menu in DOM order
-    const menuItems = Array.from(
-      this.shadowRoot.querySelectorAll(".close-menu-btn, .menu-item"),
-    );
-
-    switch (e.key) {
-      case "Escape":
-        e.preventDefault();
-        this.closeOptionsMenu();
-        break;
-      case "ArrowDown":
-      case "ArrowUp":
-        // Only handle arrow keys if focus is within our menu
-        const arrowCurrentIndex = menuItems.indexOf(e.target);
-        if (arrowCurrentIndex !== -1) {
-          e.preventDefault();
-          if (e.key === "ArrowDown") {
-            const nextIndex =
-              arrowCurrentIndex < menuItems.length - 1
-                ? arrowCurrentIndex + 1
-                : 0;
-            menuItems[nextIndex].focus();
-          } else {
-            const prevIndex =
-              arrowCurrentIndex > 0
-                ? arrowCurrentIndex - 1
-                : menuItems.length - 1;
-            menuItems[prevIndex].focus();
-          }
-        }
-        break;
-      case "Tab":
-        e.preventDefault();
-        // Find which menu item is currently focused
-        let currentFocusedIndex = -1;
-        for (let i = 0; i < menuItems.length; i++) {
-          if (
-            menuItems[i] === document.activeElement ||
-            menuItems[i] === this.shadowRoot.activeElement
-          ) {
-            currentFocusedIndex = i;
-            break;
-          }
-        }
-
-        // If no menu item is focused, start with the first one
-        if (currentFocusedIndex === -1) {
-          menuItems[0].focus();
-          break;
-        }
-
-        // Trap focus within the menu - tab forward or backward through all items
-        if (e.shiftKey) {
-          // Shift+Tab - go to previous item, or wrap to last
-          const prevTabIndex =
-            currentFocusedIndex > 0
-              ? currentFocusedIndex - 1
-              : menuItems.length - 1;
-          menuItems[prevTabIndex].focus();
-        } else {
-          // Tab - go to next item, or wrap to first
-          const nextTabIndex =
-            currentFocusedIndex < menuItems.length - 1
-              ? currentFocusedIndex + 1
-              : 0;
-          menuItems[nextTabIndex].focus();
-        }
-        break;
-    }
+  // Extract site machine name from full path
+  getSiteMachineName() {
+    if (!this.slug) return "";
+    // Extract just the last part of the path (machine name)
+    const parts = this.slug.split("/").filter((part) => part.length > 0);
+    return parts.length > 0 ? parts[parts.length - 1] : this.slug;
   }
   copySite() {
-    this.showOptions = false;
+    this.closeOptionsMenu();
     this.siteOperation("copySite", "Copy", "icons:content-copy");
   }
 
   downloadSite() {
-    this.showOptions = false;
+    this.closeOptionsMenu();
     this.siteOperation("downloadSite", "Download", "file-download");
   }
 
   archiveSite() {
-    this.showOptions = false;
+    this.closeOptionsMenu();
     this.siteOperation("archiveSite", "Archive", "icons:archive");
   }
 
   openUserAccess() {
     console.log("User Access clicked");
     // Close the options menu first
-    this.showOptions = false;
+    this.closeOptionsMenu();
 
     // Set the active site ID so the modal can access store.activeSite
     store.activeSiteId = this.siteId;
@@ -401,6 +289,7 @@ export class AppHaxSiteBars extends SimpleColors {
           );
           border-radius: var(--ddd-radius-sm, 4px);
           transition: all 0.2s ease;
+          overflow: visible;
         }
         :host(:hover),
         :host(:focus-within) {
@@ -417,9 +306,11 @@ export class AppHaxSiteBars extends SimpleColors {
         #mainCard {
           display: flex;
           flex-direction: column;
+          overflow: visible;
         }
         .cardContent {
           padding: 12px 16px 20px;
+          overflow: visible;
         }
         .imageLink img {
           width: 100%;
@@ -440,115 +331,35 @@ export class AppHaxSiteBars extends SimpleColors {
           position: relative;
           display: inline-block;
           align-self: center;
-        }
-
-        .options-menu {
-          position: absolute;
-          top: -125px;
-          right: 0;
-          background: var(--ddd-theme-default-white, white);
-          border: var(--ddd-border-xs, 1px solid)
-            var(--ddd-theme-default-slateGray, #666);
-          box-shadow: var(--ddd-boxShadow-lg);
-          border-radius: var(--ddd-radius-md, 8px);
-          padding: var(--ddd-spacing-2, 8px);
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-1, 4px);
-          z-index: 1000;
           overflow: visible;
-          min-width: 140px;
         }
-        :host([dark]) .options-menu,
-        body.dark-mode .options-menu {
-          background: var(--ddd-theme-default-coalyGray, #333);
-          color: var(--ddd-theme-default-white, white);
-          border-color: var(--ddd-theme-default-slateGray, #666);
+        simple-context-menu {
+          --simple-context-menu-background: var(
+            --simple-toolbar-button-bg,
+            white
+          );
+          --simple-context-menu-background-dark: var(
+            --simple-toolbar-button-bg,
+            #000000
+          );
+          --simple-context-menu-border-color: var(
+            --simple-toolbar-button-border-color,
+            var(--simple-toolbar-border-color, #e0e0e0)
+          );
+          --simple-context-menu-border-color-dark: var(
+            --simple-toolbar-button-border-color,
+            var(--simple-toolbar-border-color, #444)
+          );
+          --simple-context-menu-shadow: var(
+            --simple-toolbar-menu-list-box-shadow,
+            0 2px 8px rgba(0, 0, 0, 0.15)
+          );
+          --simple-context-menu-min-width: 180px;
         }
-        .close-menu-btn {
-          z-index: 10;
-          position: absolute;
-          top: var(--ddd-spacing-1, 4px);
-          right: var(--ddd-spacing-1, 4px);
-          background: transparent;
-          border: none;
-          color: var(--ddd-theme-default-slateGray, #666);
+        simple-toolbar-button {
+          --simple-toolbar-button-border-radius: 0;
+          --simple-toolbar-button-hover-border-color: transparent;
           cursor: pointer;
-          font-size: var(--ddd-font-size-s, 16px);
-          font-weight: var(--ddd-font-weight-bold, 700);
-          padding: var(--ddd-spacing-1, 4px);
-          border-radius: var(--ddd-radius-xs, 2px);
-          line-height: 1;
-          min-height: auto;
-          box-shadow: none;
-          width: var(--ddd-spacing-5, 20px);
-          height: var(--ddd-spacing-5, 20px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.2s ease;
-        }
-        :host([dark]) .close-menu-btn,
-        body.dark-mode .close-menu-btn {
-          color: var(--ddd-theme-default-white, white);
-        }
-        .close-menu-btn:hover,
-        .close-menu-btn:focus {
-          background: var(--ddd-theme-default-slateGray, #666);
-          color: var(--ddd-theme-default-white, white);
-          transform: none;
-          box-shadow: none;
-          outline: var(--ddd-border-xs, 1px solid)
-            var(--ddd-theme-default-keystoneYellow, #ffd100);
-        }
-        :host([dark]) .close-menu-btn:hover,
-        :host([dark]) .close-menu-btn:focus,
-        body.dark-mode .close-menu-btn:hover,
-        body.dark-mode .close-menu-btn:focus {
-          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          outline-color: var(--ddd-theme-default-white, white);
-        }
-        .menu-item {
-          display: flex;
-          align-items: center;
-          padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
-          border-radius: var(--ddd-radius-xs, 2px);
-          cursor: pointer;
-          font-size: var(--ddd-font-size-3xs, 11px);
-          font-family: var(--ddd-font-primary, sans-serif);
-          transition: all 0.2s ease;
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          text-decoration: none;
-          min-height: var(--ddd-spacing-5, 20px);
-          background: transparent;
-          border: none;
-          width: 100%;
-          text-align: left;
-          gap: var(--ddd-spacing-1, 4px);
-        }
-        :host([dark]) .menu-item,
-        body.dark-mode .menu-item {
-          color: var(--ddd-theme-default-white, white);
-        }
-        .menu-item:hover,
-        .menu-item:focus {
-          background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          outline: var(--ddd-border-xs, 1px solid)
-            var(--ddd-theme-default-keystoneYellow, #ffd100);
-        }
-        :host([dark]) .menu-item:hover,
-        :host([dark]) .menu-item:focus,
-        body.dark-mode .menu-item:hover,
-        body.dark-mode .menu-item:focus {
-          background: var(--ddd-theme-default-slateGray, #555);
-          color: var(--ddd-theme-default-white, white);
-        }
-        .menu-item simple-icon-lite {
-          flex-shrink: 0;
-          width: var(--ddd-icon-3xs, 16px);
-          height: var(--ddd-icon-3xs, 16px);
         }
 
         .titleBar {
@@ -560,6 +371,8 @@ export class AppHaxSiteBars extends SimpleColors {
             var(--ddd-theme-default-nittanyNavy),
             var(--ddd-theme-default-white)
           );
+          overflow: visible;
+          position: relative;
         }
         p {
           font-size: var(--ddd-font-size-4xs, 12px);
@@ -579,6 +392,17 @@ export class AppHaxSiteBars extends SimpleColors {
           display: block;
           margin: 0;
           line-height: 1.2;
+        }
+        .site-slug {
+          font-size: var(--ddd-font-size-4xs, 10px);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray, #666),
+            var(--ddd-theme-default-limestoneGray, #aaa)
+          );
+          font-family: var(--ddd-font-navigation, monospace);
+          margin: var(--ddd-spacing-1, 4px) 0 0 0;
+          display: block;
+          line-height: 1;
         }
         button {
           display: flex;
@@ -650,101 +474,81 @@ export class AppHaxSiteBars extends SimpleColors {
 
         <div class="cardContent">
           <div class="titleBar">
-            <slot name="heading"></slot>
+            <div>
+              <slot name="heading"></slot>
+              ${this.slug
+                ? html`<div class="site-slug">
+                    ${this.getSiteMachineName()}
+                  </div>`
+                : ""}
+            </div>
             <div class="settings-button">
-              <simple-tooltip
-                for="settingsIcon"
-                position="top"
-                animation-delay="0"
-              >
-                Options
-              </simple-tooltip>
               <simple-icon-button-lite
                 id="settingsIcon"
                 icon="hax:settings"
                 @click="${this.toggleOptionsMenu}"
                 aria-label="Open options"
-                aria-expanded="${this.showOptions}"
                 aria-haspopup="menu"
               ></simple-icon-button-lite>
-
-              ${this.showOptions
-                ? html`
-                    <div
-                      id="options-menu-${this.siteId}"
-                      class="options-menu"
-                      role="menu"
-                      aria-labelledby="settingsIcon"
-                    >
-                      <button
-                        class="close-menu-btn"
-                        @click="${this.toggleOptionsMenu}"
-                        aria-label="Close menu"
-                      >
-                        ×
-                      </button>
-                      <button
-                        class="menu-item"
-                        @click="${this.copySite}"
-                        role="menuitem"
-                        aria-label="Copy site"
-                      >
-                        <simple-icon-lite
-                          icon="content-copy"
-                        ></simple-icon-lite>
-                        Copy
-                      </button>
-                      <button
-                        class="menu-item"
-                        @click="${this.downloadSite}"
-                        role="menuitem"
-                        aria-label="Download site"
-                      >
-                        <simple-icon-lite
-                          icon="file-download"
-                        ></simple-icon-lite>
-                        Download
-                      </button>
-                      <button
-                        class="menu-item"
-                        @click="${this.archiveSite}"
-                        role="menuitem"
-                        aria-label="Archive site"
-                      >
-                        <simple-icon-lite icon="archive"></simple-icon-lite>
-                        Archive
-                      </button>
-                      ${store.appSettings &&
-                      store.appSettings.haxiamAddUserAccess
-                        ? html`
-                            <button
-                              class="menu-item"
-                              @click="${this.openUserAccess}"
-                              role="menuitem"
-                              aria-label="Manage user access"
-                            >
-                              <simple-icon-lite
-                                icon="account-circle"
-                              ></simple-icon-lite>
-                              User Access
-                            </button>
-                          `
-                        : ""}
-                    </div>
-                  `
-                : ""}
+              <simple-tooltip
+                for="settingsIcon"
+                position="left"
+                animation-delay="0"
+              >
+                Options
+              </simple-tooltip>
+              <simple-context-menu title="Options">
+                <simple-toolbar-button
+                  icon="content-copy"
+                  icon-position="left"
+                  align-horizontal="left"
+                  show-text-label
+                  label="Copy"
+                  @click=${this.copySite}
+                ></simple-toolbar-button>
+                <simple-toolbar-button
+                  icon="file-download"
+                  icon-position="left"
+                  align-horizontal="left"
+                  show-text-label
+                  label="Download"
+                  @click=${this.downloadSite}
+                ></simple-toolbar-button>
+                <simple-toolbar-button
+                  icon="archive"
+                  icon-position="left"
+                  align-horizontal="left"
+                  show-text-label
+                  label="Archive"
+                  @click=${this.archiveSite}
+                ></simple-toolbar-button>
+                ${store.appSettings && store.appSettings.haxiamAddUserAccess
+                  ? html`
+                      <simple-toolbar-button
+                        icon="account-circle"
+                        icon-position="left"
+                        align-horizontal="left"
+                        show-text-label
+                        label="User Access"
+                        @click=${this.openUserAccess}
+                      ></simple-toolbar-button>
+                    `
+                  : ""}
+              </simple-context-menu>
             </div>
           </div>
 
           <slot name="pre"></slot>
 
           <div class="cardBottom">
-            <button
-              class="open"
-              @click=${() => window.open(this.siteUrl, "_blank")}
+            <a
+              href="${this.siteUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="flex: 1; text-decoration: none;"
             >
-              Open
-            </button>
+              <button class="open" style="width: 100%;">Open</button>
+            </a>
           </div>
         </div>
       </div>

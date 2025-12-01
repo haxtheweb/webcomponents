@@ -5053,12 +5053,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       globalThis.SuperDaemonManager.requestAvailability();
     store.playSound("click");
     SuperDaemonInstance.waveWand([
-      currentTitle,
+      currentTitle,  // Pre-fill input with current title
       "/",
       {},
       "edit-title",
       "Edit title",
-      "",
     ]);
   }
   /**

@@ -496,6 +496,7 @@ export class AppHaxSearchResults extends SimpleColors {
                       ?dark="${this.dark}"
                       site-id="${item.id}"
                       .siteUrl="${item.slug}"
+                      .slug="${item.slug}"
                       .image="${this.getThemeImage(item)}"
                       accent-color="${varGet(
                         item,

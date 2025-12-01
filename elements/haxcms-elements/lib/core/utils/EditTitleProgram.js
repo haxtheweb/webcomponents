@@ -11,7 +11,7 @@ import { toJS } from "mobx";
  * @returns {Function} The program function that returns title editing options
  */
 export const createEditTitleProgram = (context) => {
-  return async (input) => {
+  return async (input, values) => {
     const results = [];
     const activeItem = toJS(store.activeItem);
 
@@ -28,32 +28,62 @@ export const createEditTitleProgram = (context) => {
       ];
     }
 
-    // Save button first - most common action
-    if (input && input.trim() !== "") {
-      results.push({
-        title: `Save title: ${input}`,
-        icon: "icons:check",
-        tags: ["confirm", "save"],
-        value: {
-          target: globalThis,
-          method: "dispatchEvent",
-          args: [
-            new CustomEvent("haxcms-save-node-details", {
-              bubbles: true,
-              composed: true,
-              cancelable: true,
-              detail: {
-                id: activeItem.id,
-                operation: "setTitle",
-                title: input,
-              },
-            }),
-          ],
-        },
-        eventName: "super-daemon-element-method",
-        path: "CMS/edit/title/confirm",
-      });
+    const currentTitle = activeItem.title || "";
+
+    // If no input provided, show option with current title
+    if (!input || input.trim() === "") {
+      if (currentTitle) {
+        results.push({
+          title: `Save title: ${currentTitle}`,
+          icon: "icons:check",
+          tags: ["confirm", "save"],
+          value: {
+            target: globalThis,
+            method: "dispatchEvent",
+            args: [
+              new CustomEvent("haxcms-save-node-details", {
+                bubbles: true,
+                composed: true,
+                cancelable: true,
+                detail: {
+                  id: activeItem.id,
+                  operation: "setTitle",
+                  title: currentTitle,
+                },
+              }),
+            ],
+          },
+          eventName: "super-daemon-element-method",
+          path: "CMS/edit/title/confirm",
+        });
+      }
+      return results;
     }
+
+    // User has typed something - show save option with their input
+    results.push({
+      title: `Save title: ${input}`,
+      icon: "icons:check",
+      tags: ["confirm", "save"],
+      value: {
+        target: globalThis,
+        method: "dispatchEvent",
+        args: [
+          new CustomEvent("haxcms-save-node-details", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: {
+              id: activeItem.id,
+              operation: "setTitle",
+              title: input,
+            },
+          }),
+        ],
+      },
+      eventName: "super-daemon-element-method",
+      path: "CMS/edit/title/confirm",
+    });
 
     return results;
   };
