@@ -205,7 +205,10 @@ class SimpleCta extends DDDPulseEffectSuper(
     return {
       type: "element",
       canScale: true,
-
+      designSystem: {
+        primary: true,
+        accent: true,
+      },
       canEditSource: true,
       gizmo: {
         title: "Call to action",
@@ -241,13 +244,6 @@ class SimpleCta extends DDDPulseEffectSuper(
             noVoiceRecord: true,
             noCamera: true,
             required: true,
-          },
-          {
-            property: "accentColor",
-            title: "Accent Color",
-            description: "An optional accent color.",
-            inputMethod: "colorpicker",
-            icon: "editor:format-color-fill",
           },
           {
             property: "hideIcon",

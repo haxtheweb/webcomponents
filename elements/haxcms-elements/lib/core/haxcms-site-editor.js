@@ -49,6 +49,11 @@ class HAXCMSSiteEditor extends LitElement {
       this.manifest = toJS(store.manifest);
       this.__disposer.push(reaction);
     });
+    // Sync activeItem directly from store via MobX for proper state management
+    autorun((reaction) => {
+      this.activeItem = toJS(store.activeItem);
+      this.__disposer.push(reaction);
+    });
   }
   // render function
   render() {
@@ -554,11 +559,9 @@ class HAXCMSSiteEditor extends LitElement {
       { signal: this.windowControllers.signal },
     );
 
-    globalThis.addEventListener(
-      "json-outline-schema-active-item-changed",
-      this._newActiveItem.bind(this),
-      { signal: this.windowControllers.signal },
-    );
+    // Note: activeItem is now synced via MobX autorun in constructor
+    // The json-outline-schema-active-item-changed event is still fired by the store
+    // for backward compatibility with external consumers
 
     globalThis.addEventListener(
       "json-outline-schema-active-body-changed",
@@ -956,13 +959,6 @@ class HAXCMSSiteEditor extends LitElement {
         "&nodeId=" +
         this.activeItem.id;
     }
-  }
-  /**
-   * update the internal active item
-   */
-
-  _newActiveItem(e) {
-    this.activeItem = e.detail;
   }
   /**
    * active item changed

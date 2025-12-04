@@ -383,14 +383,9 @@ class HAXCMSThemeWiring {
     if (newValue && typeof newValue.id !== typeof undefined) {
       // dispatch to the store
       store.activeId = newValue.id;
-      // dispatch to everything else caring
-      const evt = new CustomEvent("json-outline-schema-active-item-changed", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: newValue,
-      });
-      this.dispatchEvent(evt);
+      // Note: json-outline-schema-active-item-changed is automatically dispatched
+      // by the store's autorun when activeId changes, so we don't dispatch it here
+      // to avoid duplicate events
       // update title as a simple nicity
       if (typeof newValue.title !== typeof undefined) {
         globalThis.document.title =

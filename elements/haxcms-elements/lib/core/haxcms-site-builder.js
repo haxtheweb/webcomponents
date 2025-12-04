@@ -956,13 +956,20 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       // force a page break w/ the relevant details in code
       // this allows the UI to be modified
       // required fields followed by optional fields if defined
+      // Note: We use textarea to decode any existing entities, then let the browser encode them properly
+      const decodeEntities = (str) => {
+        if (!str) return str;
+        const textarea = globalThis.document.createElement('textarea');
+        textarea.innerHTML = str;
+        return textarea.value;
+      };
       htmlcontent = `<page-break
       break-type="site"
-      title="${activeItem.title}"
+      title="${decodeEntities(activeItem.title)}"
       parent="${activeItem.parent}"
       item-id="${activeItem.id}"
       slug="${activeItem.slug}"
-      description="${activeItem.description}"
+      description="${decodeEntities(activeItem.description)}"
       order="${activeItem.order}"
       ${activeItem.metadata.pageType ? `page-type="${activeItem.metadata.pageType}"` : ``}
       ${activeItem.metadata.tags ? `tags="${activeItem.metadata.tags}"` : ``}

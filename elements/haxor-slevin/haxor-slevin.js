@@ -729,13 +729,8 @@ class HaxorSlevin extends HAXCMSThemeParts(
       top: 0,
       left: 0,
     });
-    const evt = new CustomEvent("json-outline-schema-active-item-changed", {
-      bubbles: true,
-      cancelable: true,
-      composed: true,
-      detail: {},
-    });
-    this.dispatchEvent(evt);
+    // Note: json-outline-schema-active-item-changed is automatically dispatched
+    // by the store's autorun when activeId changes via the router/popstate flow
     this.selectedPage = 0;
   }
 }

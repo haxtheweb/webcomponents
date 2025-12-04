@@ -42,6 +42,22 @@ export class AppHaxUseCaseFilter extends LitElement {
         autorun(() => {
           this.dark = toJS(store.darkMode);
         });
+        // Watch for appReady AND login state to trigger skeleton loading
+        let hasLoaded = false;
+        autorun(() => {
+          const appReady = toJS(store.appReady);
+          const loggedIn = toJS(store.isLoggedIn);
+          
+          this.isLoggedIn = loggedIn;
+          
+          // Trigger skeleton/theme loading when both app is ready and user is logged in
+          // Only load once per session
+          if (appReady && loggedIn && !hasLoaded) {
+            hasLoaded = true;
+            this.updateSkeletonResults();
+            this.updateSiteResults();
+          }
+        });
         // Watch for manifest changes and update site results
         autorun(() => {
           const manifest = toJS(store.manifest);
@@ -724,12 +740,7 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   firstUpdated() {
     super.firstUpdated();
-    // Only fetch if already logged in on first load
-    // Otherwise wait for jwt-logged-in event
-    if (this.isLoggedIn) {
-      this.updateSkeletonResults();
-      this.updateSiteResults();
-    }
+    // Skeleton and site results are loaded via autorun watching appReady + isLoggedIn
   }
 
   updated(changedProperties) {

@@ -9,6 +9,7 @@ import { HAXStore } from "./hax-store.js";
 import { HaxContextBehaviors } from "./hax-context-behaviors.js";
 import "./hax-text-editor-paste-button.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "./buttons/hax-text-editor-alignment-picker.js";
 
 /**
  * `hax-text-editor-toolbar`
@@ -167,6 +168,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       blockquoteButton: "Blockquote",
       indentButton: "Indent",
       outdentButton: "Outdent",
+      alignmentPicker: "Text alignment",
       textEditorToolbarTour:
         "Change how the text is structured and visualized in the page.",
     };
@@ -518,6 +520,17 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     };
   }
   /**
+   * default config for alignment picker
+   *
+   * @readonly
+   */
+  get alignmentPicker() {
+    return {
+      label: this.t.alignmentPicker,
+      type: 'hax-text-editor-alignment-picker',
+    };
+  }
+  /**
    * default config for a view source button
    *
    * @readonly
@@ -543,6 +556,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return [
       this.basicInlineButtonGroup,
       this.linkButtonGroup,
+      this.alignmentPicker,
       this.listIndentButtonGroup,
       this.scriptButtonGroup,
       this.haxSymbolInsertButtonGroup,

@@ -262,6 +262,11 @@ export class PageBreak extends IntersectionObserverMixin(
       this.remoteHeadingobserver.disconnect();
     }
     this.target = newTarget;
+    // Validate that target is a valid DOM Node before observing
+    if (!this.target || !(this.target instanceof Node)) {
+      console.warn('page-break: setupTargetData called with invalid target', this.target);
+      return;
+    }
     // add a backdoor for hax to have a hook into this
     this._haxSibling = this;
     // @todo need to add some kind of "if this gets deleted let me know"

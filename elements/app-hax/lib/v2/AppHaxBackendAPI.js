@@ -51,11 +51,11 @@ export class AppHaxBackendAPI extends LitElement {
   render() {
     return html`<jwt-login
       jwt="${this.jwt}"
-      url="${this.appSettings.login}"
+      url="${this.basePath}${this.appSettings.login}"
       method="${this.method}"
-      refresh-url="${this.appSettings.refreshUrl}"
+      refresh-url="${this.basePath}${this.appSettings.refreshUrl}"
       redirect-url="${this.appSettings.redirectUrl}"
-      logout-url="${this.appSettings.logout}"
+      logout-url="${this.basePath}${this.appSettings.logout}"
       id="jwt"
       @jwt-changed="${this.jwtChanged}"
       @jwt-login-login-failed="${this.jwtFailed}"
@@ -81,6 +81,12 @@ export class AppHaxBackendAPI extends LitElement {
           name: userData.data.userName,
         };
         this.__loopBlock = false;
+      } else {
+        // getUserData failed - JWT is invalid/expired
+        // Clear it and let the logout handler trigger login modal
+        this.__loopBlock = false;
+        this.jwt = null;
+        store.jwt = null;
       }
     }
   }
