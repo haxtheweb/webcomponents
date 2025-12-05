@@ -1130,7 +1130,19 @@ class HAXCMSSiteEditor extends LitElement {
         this._restoreKeepEditMode = false;
       }
 
+      // CRITICAL FIX: Force page-break element to use store activeItem values
+      // before serialization to prevent & -> &amp; encoding issues
+      const pageBreakEl = HAXStore.activeHaxBody.querySelector('page-break');
+      if (pageBreakEl && this.activeItem) {
+        // Directly set the JavaScript properties from the source of truth (store)
+        // This ensures we're not using the already-encoded attribute values
+        pageBreakEl.title = this.activeItem.title || '';
+        pageBreakEl.description = this.activeItem.description || '';
+      }
+      
       let body = await HAXStore.activeHaxBody.haxToContent();
+      const schema = await HAXStore.htmlToHaxElements(body);
+      
       this.querySelector("#nodeupdateajax").body = {
         jwt: this.jwt,
         site: {
@@ -1139,7 +1151,7 @@ class HAXCMSSiteEditor extends LitElement {
         node: {
           id: this.activeItem.id,
           body: body,
-          schema: await HAXStore.htmlToHaxElements(body),
+          schema: schema,
         },
       };
       this.setProcessingVisual();

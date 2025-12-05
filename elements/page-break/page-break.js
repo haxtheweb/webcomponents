@@ -506,6 +506,10 @@ export class PageBreak extends IntersectionObserverMixin(
             border-color 0.2s ease-in-out,
             background-color 0.2s ease-in-out;
         }
+        /* Increase bottom margin when link URL is present to prevent clipping */
+        :host([data-hax-ray][link-url]) {
+          margin-bottom: var(--ddd-spacing-24);
+        }
         :host([data-hax-ray]:hover) {
           opacity: 1;
           background-color: var(--ddd-theme-default-white);
