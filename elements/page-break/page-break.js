@@ -869,13 +869,10 @@ export class PageBreak extends IntersectionObserverMixin(
       globalThis.SuperDaemonManager.requestAvailability();
     store.playSound("click");
 
-    // Get the current title
-    const currentTitle = item.title || this.title || "";
-
-    // Invoke the core edit-title program
-    // The program will pull current title from store and show it as default option
+    // Trigger the edit-title program
+    // The program will automatically show the current title from the store
     SuperDaemonInstance.waveWand([
-      currentTitle,  // Pre-fill input with current title
+      "",  // Empty input - let program show current title
       "/",
       {},
       "edit-title",
