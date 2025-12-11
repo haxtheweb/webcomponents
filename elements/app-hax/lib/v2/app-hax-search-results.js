@@ -506,7 +506,15 @@ export class AppHaxSearchResults extends SimpleColors {
                         .replace("--simple-colors-default-theme-", "")
                         .replace("-7", "")}"
                     >
-                      <span slot="heading">${item.title}</span>
+                      <a
+                        slot="heading"
+                        href="${item.slug}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="${item.title}"
+                      >
+                        ${item.title}
+                      </a>
                       <span slot="subHeading">${item.author}</span>
                       <app-hax-site-details
                         slot="band"

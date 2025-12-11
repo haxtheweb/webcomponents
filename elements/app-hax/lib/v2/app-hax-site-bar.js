@@ -326,6 +326,8 @@ export class AppHaxSiteBars extends SimpleColors {
           position: relative;
           display: block;
           width: 100%;
+          text-decoration: none;
+          cursor: pointer;
         }
         .settings-button {
           position: relative;
@@ -374,6 +376,11 @@ export class AppHaxSiteBars extends SimpleColors {
           overflow: visible;
           position: relative;
         }
+        .titleBar > div:first-child {
+          flex: 1;
+          min-width: 0;
+          overflow: hidden;
+        }
         p {
           font-size: var(--ddd-font-size-4xs, 12px);
           padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-2, 8px)
@@ -392,6 +399,14 @@ export class AppHaxSiteBars extends SimpleColors {
           display: block;
           margin: 0;
           line-height: 1.2;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          max-width: 100%;
+          cursor: pointer;
+        }
+        ::slotted([slot="heading"]:hover) {
+          text-decoration: underline;
         }
         .site-slug {
           font-size: var(--ddd-font-size-4xs, 10px);
@@ -462,13 +477,19 @@ export class AppHaxSiteBars extends SimpleColors {
       <div id="mainCard">
         ${this.image
           ? html`
-              <div class="imageLink">
+              <a
+                class="imageLink"
+                href="${this.siteUrl}"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open ${this.title || "site"}"
+              >
                 <img
                   src="${this.image}"
                   alt="Screenshot of ${this.title || "site"} theme"
                   loading="lazy"
                 />
-              </div>
+              </a>
             `
           : ""}
 

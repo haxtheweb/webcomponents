@@ -28,33 +28,7 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
 
   constructor() {
     super();
-    this.alignments = [
-      {
-        label: 'Default',
-        value: '',
-        icon: 'editor:format-align-left',
-      },
-      {
-        label: 'Left',
-        value: 'left',
-        icon: 'editor:format-align-left',
-      },
-      {
-        label: 'Center',
-        value: 'center',
-        icon: 'editor:format-align-center',
-      },
-      {
-        label: 'Right',
-        value: 'right',
-        icon: 'editor:format-align-right',
-      },
-      {
-        label: 'Justify',
-        value: 'justify',
-        icon: 'editor:format-align-justify',
-      },
-    ];
+    this._isRTL = false;
     this.allowNull = true;
     this.hideNullOption = false;
     this.icon = 'editor:format-align-left';
@@ -63,6 +37,7 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
     this.tagsList = 'p,h1,h2,h3,h4,h5,h6,div,blockquote,pre,ul,ol,dl,table,section,article,aside,header,footer,nav,figure,figcaption';
     this.titleAsHtml = false;
     this.value = '';
+    this._updateAlignments();
   }
 
   get labelVisibleClass() {
@@ -80,6 +55,12 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
       alignments: {
         type: Array,
       },
+      /**
+       * Is the current context RTL (right-to-left)
+       */
+      _isRTL: {
+        type: Boolean,
+      },
     };
   }
 
@@ -88,9 +69,13 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
     changedProperties.forEach((oldValue, propName) => {
       if (propName === 'alignments') this._setOptions();
       if (propName === 'range') {
+        this._detectRTL();
         this._setRangeValue();
         // Disable picker if no valid block element is selected
         this.disabled = !this.rangeOrMatchingAncestor();
+      }
+      if (propName === '_isRTL' && this._isRTL !== oldValue) {
+        this._updateAlignments();
       }
     });
   }
@@ -118,6 +103,71 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
     }
 
     this.value = alignment || '';
+  }
+
+  /**
+   * Updates alignment options based on text direction
+   * RTL: shows Right (default), Center, Left
+   * LTR: shows Left (default), Center, Right
+   */
+  _updateAlignments() {
+    if (this._isRTL) {
+      this.alignments = [
+        {
+          label: 'Right',
+          value: '',
+          icon: 'editor:format-align-right',
+        },
+        {
+          label: 'Center',
+          value: 'center',
+          icon: 'editor:format-align-center',
+        },
+        {
+          label: 'Left',
+          value: 'left',
+          icon: 'editor:format-align-left',
+        },
+      ];
+      this.icon = 'editor:format-align-right';
+    } else {
+      this.alignments = [
+        {
+          label: 'Left',
+          value: '',
+          icon: 'editor:format-align-left',
+        },
+        {
+          label: 'Center',
+          value: 'center',
+          icon: 'editor:format-align-center',
+        },
+        {
+          label: 'Right',
+          value: 'right',
+          icon: 'editor:format-align-right',
+        },
+      ];
+      this.icon = 'editor:format-align-left';
+    }
+    this._setOptions();
+  }
+
+  /**
+   * Detects if the current context is RTL
+   */
+  _detectRTL() {
+    if (!this.range) {
+      this._isRTL = false;
+      return;
+    }
+    let ancestor = this.rangeOrMatchingAncestor();
+    if (ancestor) {
+      const dir = globalThis.getComputedStyle(ancestor).direction;
+      this._isRTL = dir === 'rtl';
+    } else {
+      this._isRTL = false;
+    }
   }
 
   /**

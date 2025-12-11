@@ -185,12 +185,9 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
       if (this.autoEdit) {
         // force hax tray to open
         HAXStore.haxTray.collapsed = false;
-        // @todo this implies a timing issue on response and the wiping of material
-        // see https://github.com/haxtheweb/issues/issues/938
-        setTimeout(() => {
-          // force into edit mode
-          store.editMode = true;
-        }, 250);
+        // hax-body's ContentStateManager now handles timing internally
+        // no delay needed - edit mode will wait for content stability
+        store.editMode = true;
       }
     }
   }

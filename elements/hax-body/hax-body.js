@@ -54,6 +54,84 @@ const maxStep = 25;
 const edgeSize = 200;
 
 /**
+ * ContentStateManager - Centralized state coordination for content operations
+ * Replaces timing hacks with explicit state signaling and promise-based waiting
+ */
+class ContentStateManager {
+  constructor() {
+    this.states = {
+      importing: false,
+      mutationsSuspended: false,
+      editModeTransitioning: false,
+      activeNodeChanging: false,
+      inserting: false,
+    };
+    this.listeners = new Map();
+  }
+
+  setState(key, value) {
+    if (this.states.hasOwnProperty(key)) {
+      this.states[key] = value;
+      if (!value) {
+        this.notifyListeners(key);
+      }
+    }
+  }
+
+  getState(key) {
+    return this.states[key] || false;
+  }
+
+  isContentBusy() {
+    return this.states.importing || 
+           this.states.mutationsSuspended || 
+           this.states.editModeTransitioning ||
+           this.states.inserting;
+  }
+
+  waitFor(key) {
+    return new Promise((resolve) => {
+      if (!this.states[key]) {
+        resolve();
+      } else {
+        if (!this.listeners.has(key)) {
+          this.listeners.set(key, []);
+        }
+        this.listeners.get(key).push(resolve);
+      }
+    });
+  }
+
+  async waitForStable() {
+    const promises = [];
+    for (let key in this.states) {
+      if (this.states[key]) {
+        promises.push(this.waitFor(key));
+      }
+    }
+    if (promises.length > 0) {
+      await Promise.all(promises);
+    }
+  }
+
+  notifyListeners(key) {
+    if (this.listeners.has(key)) {
+      const callbacks = this.listeners.get(key);
+      callbacks.forEach(resolve => resolve());
+      this.listeners.delete(key);
+    }
+  }
+
+  reset() {
+    for (let key in this.states) {
+      if (this.states[key]) {
+        this.setState(key, false);
+      }
+    }
+  }
+}
+
+/**
  * `hax-body`
  * Manager of the body area that can be modified
  * 
@@ -519,6 +597,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   constructor() {
     super();
+    // Initialize content state manager for coordinating DOM operations
+    this._contentState = new ContentStateManager();
     // lock to ensure we don't flood events on hitting the up / down arrows
     // as we use a mutation observer to manage draggable bindings
     this._useristyping = false;
@@ -999,11 +1079,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         // microtask delay to allow store to establish child nodes appropriately
         setTimeout(async () => {
           this.__ignoreActive = true;
+          this._contentState.setState('editModeTransitioning', true);
           await this._editModeChanged(this[propName], oldValue);
-          // ensure we don't process all mutations happening in tee-up
-          setTimeout(() => {
-            this.__ignoreActive = false;
-          }, 100);
+          // Wait for content to be stable before clearing ignore flag
+          await this._contentState.waitForStable();
+          // Additional frame to ensure rendering completes after all states clear
+          await new Promise(resolve => requestAnimationFrame(resolve));
+          this.__ignoreActive = false;
+          this._contentState.setState('editModeTransitioning', false);
         }, 0);
       }
       if (propName == "_useristyping" && this[propName]) {
@@ -1701,6 +1784,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     active = this.activeNode,
     child = false,
   ) {
+    // Signal that we're inserting content
+    this._contentState.setState('inserting', true);
+    
     // verify this tag is a valid one
     // create a new element fragment w/ content in it
     // if this is a custom-element it won't expand though
@@ -1813,11 +1899,35 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.appendChild(newNode);
     }
     this.contextMenus.text.hasSelectedText = false;
-    setTimeout(() => {
-      this.__focusLogic(newNode);
-      // wait so that the DOM can have the node to then attach to
-      this.scrollHere(newNode);
-    }, 0);
+    
+    // Wait for custom element to upgrade if applicable, then focus/scroll
+    const tagName = newNode.tagName.toLowerCase();
+    if (tagName.includes('-')) {
+      // Custom element - wait for it to be defined and upgraded
+      customElements.whenDefined(tagName).then(() => {
+        // Additional frame to ensure render completes
+        requestAnimationFrame(() => {
+          this.__focusLogic(newNode);
+          this.scrollHere(newNode);
+          this._contentState.setState('inserting', false);
+        });
+      }).catch(() => {
+        // Element not registered, proceed anyway
+        requestAnimationFrame(() => {
+          this.__focusLogic(newNode);
+          this.scrollHere(newNode);
+          this._contentState.setState('inserting', false);
+        });
+      });
+    } else {
+      // Standard HTML element - use RAF as before
+      requestAnimationFrame(() => {
+        this.__focusLogic(newNode);
+        this.scrollHere(newNode);
+        this._contentState.setState('inserting', false);
+      });
+    }
+    
     return newNode;
   }
   /**
@@ -2125,14 +2235,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         if (!!move) node.setAttribute("slot", move);
       }
     }
-    // unfortunately the insertBefore APIs will trigger our DOM correction MutationObserver
-    // of a node deletion. This causes the active node to lose focus, against user expectation
-    // this short delay helps improve continuity here
-    setTimeout(() => {
+    // Signal that we're manipulating active node to prevent MutationObserver interference
+    this._contentState.setState('activeNodeChanging', true);
+    
+    // Use requestAnimationFrame to wait for DOM to settle after insertBefore
+    requestAnimationFrame(() => {
       HAXStore.activeNode = node;
       this.scrollHere(node);
       this.__focusLogic(node);
-    }, 100);
+      this._contentState.setState('activeNodeChanging', false);
+    });
     return true;
   }
   /**
@@ -2449,6 +2561,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * internal whitelist.
    */
   importContent(html, clear = true) {
+    // Signal that content import is starting
+    this._contentState.setState('importing', true);
+    
     // kill the slot of the active body, all of it
     if (clear) {
       wipeSlot(this, "*");
@@ -2490,6 +2605,17 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           fragment.removeChild(fragment.firstChild);
         }
       }
+      
+      // Wait for DOM to stabilize before signaling completion
+      requestAnimationFrame(() => {
+        this._contentState.setState('importing', false);
+        // Dispatch event for external listeners (optional)
+        this.dispatchEvent(new CustomEvent('hax-body-content-ready', {
+          bubbles: true,
+          composed: true,
+          detail: { body: this }
+        }));
+      });
     }, 0);
   }
   /**
@@ -3207,8 +3333,39 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         passive: true,
         signal: this.windowControllers.signal,
       });
-      // mutation observer that ensures state of hax applied correctly
-      this._observer = new MutationObserver((mutations) => {
+      // Connect MutationObserver when content is stable
+      this._connectMutationObserverWhenReady();
+    } else {
+      // should resolve ALL events at the same time
+      this.windowControllers.abort();
+      if (this._observer) {
+        this._observer.disconnect();
+      }
+    }
+  }
+
+  /**
+   * Connect MutationObserver only when content is stable
+   * This prevents spurious DOM corrections during content import
+   */
+  async _connectMutationObserverWhenReady() {
+    // Wait for any importing or other content operations to complete
+    await this._contentState.waitForStable();
+    this._connectMutationObserver();
+  }
+
+  /**
+   * Create and connect the MutationObserver
+   * Split out so it can be called after content stabilizes
+   */
+  _connectMutationObserver() {
+    // Don't create if already exists and is connected
+    if (this._observer) {
+      return;
+    }
+    
+    // mutation observer that ensures state of hax applied correctly
+    this._observer = new MutationObserver((mutations) => {
         var mutFind = false;
         if (
           !this.__ignoreActive &&
@@ -3217,7 +3374,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           !this.__fakeEndCap &&
           this.ready &&
           this.editMode &&
-          this.shadowRoot
+          this.shadowRoot &&
+          !this._contentState.isContentBusy()
         ) {
           mutations.forEach((mutation) => {
             // move toolbar when active Node is deleted
@@ -3563,15 +3721,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         HAXStore.haxTray.updateMap();
       });
-      this._observer.observe(this, {
-        childList: true,
-        subtree: true,
-      });
-    } else {
-      // should resolve ALL events at the same time
-      this.windowControllers.abort();
-      this._observer.disconnect();
-    }
+    // Actually connect the observer
+    this._observer.observe(this, {
+      childList: true,
+      subtree: true,
+    });
   }
   /**
    * Test if this is a HAX element or not

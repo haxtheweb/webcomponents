@@ -95,12 +95,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
               var(--simple-toolbar-group-border-color, transparent)
             );
           }
-          ::slotted(.group:not(:last-child)) {
-            border-right-width: var(
-              --simple-toolbar-group-border-width,
-              var(--simple-toolbar-border-width, 1px)
-            );
-          }
           ::slotted(*:hover),
           ::slotted(*:focus-wthin) {
             z-index: var(--simple-toolbar-focus-z-index, 100);

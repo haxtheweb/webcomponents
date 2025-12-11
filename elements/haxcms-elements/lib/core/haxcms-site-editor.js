@@ -1012,7 +1012,8 @@ class HAXCMSSiteEditor extends LitElement {
 
       // Restore active element position after DOM update for "keep editing" mode
       if (this._restoreKeepEditMode && this._restoreActiveIndex !== null) {
-        setTimeout(() => {
+        // Wait for hax-body content-ready event instead of arbitrary timeout
+        const restoreActiveNode = () => {
           try {
             if (HAXStore.activeHaxBody && HAXStore.activeHaxBody.children) {
               const bodyChildren = Array.from(HAXStore.activeHaxBody.children);
@@ -1047,7 +1048,13 @@ class HAXCMSSiteEditor extends LitElement {
           // Clean up the restoration flags
           this._restoreActiveIndex = null;
           this._restoreKeepEditMode = false;
-        }, 100); // Small delay to ensure DOM is fully updated
+          HAXStore.activeHaxBody.removeEventListener('hax-body-content-ready', restoreActiveNode);
+        };
+        
+        // Listen for content-ready event from hax-body
+        if (HAXStore.activeHaxBody) {
+          HAXStore.activeHaxBody.addEventListener('hax-body-content-ready', restoreActiveNode, { once: true });
+        }
       }
 
       // force an update in the store to reprocess what is "active"
