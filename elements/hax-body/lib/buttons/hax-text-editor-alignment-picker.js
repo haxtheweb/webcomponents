@@ -32,11 +32,13 @@ class HaxTextEditorAlignmentPicker extends RichTextEditorPickerBehaviors(
     this.allowNull = true;
     this.hideNullOption = false;
     this.icon = 'editor:format-align-left';
-    this.label = 'Text alignment';
+    this.label = '';
     // Block-level elements that can be aligned
     this.tagsList = 'p,h1,h2,h3,h4,h5,h6,div,blockquote,pre,ul,ol,dl,table,section,article,aside,header,footer,nav,figure,figcaption';
     this.titleAsHtml = false;
     this.value = '';
+    // Disable tooltip to prevent overlap with dropdown menu
+    this.showTooltip = false;
     this._updateAlignments();
   }
 

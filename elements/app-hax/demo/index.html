@@ -227,18 +227,17 @@
           });
         </script>
       </div>
-      <script type="module">
-        import '../app-hax.js';
-      </script>
       <script>
         // this is how haxcms / haxiam operates w/ injecting the base settings
         // think of it like localStorage but the backend is injecting at run time
         // so that we can deploy this at different domains more headlessly
+        // IMPORTANT: This must be defined BEFORE the module import so the store can access it
         const blueStyle = '../lib/assets/images/BlueStyle.svg';
         const greyStyle = '../lib/assets/images/GreyStyle.svg'; 
         const partyStyle = '../lib/assets/images/PartyStyle.svg';
         window.appSettings = {
           "token": "thingsandstuff",
+          "jwt": "supDudeImmaJwat",
           "demo": true,
           "getSitesList": 'sites.json',
           "createSite": 'createSite.json',
@@ -363,6 +362,9 @@
           },
           "reloadOnError": true
       };
+        </script>
+        <script type="module">
+          import '../app-hax.js';
         </script>
           </body>
 </html>

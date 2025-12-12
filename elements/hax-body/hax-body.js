@@ -2380,6 +2380,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       tmp.setAttribute("slot", "col-2");
       grid.appendChild(tmp);
       node.parentNode.insertBefore(grid, node);
+      
+      // Wait for grid-plate to upgrade, then apply editable state
+      await this.__applyNodeEditableStateWhenReady(grid, this.editMode);
+      
       setTimeout(() => {
         node.remove();
       }, 0);
@@ -2561,6 +2565,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * internal whitelist.
    */
   importContent(html, clear = true) {
+    // Prevent concurrent imports that could cause double content
+    if (this._contentState.getState('importing')) {
+      console.warn('Import already in progress, skipping duplicate call');
+      return;
+    }
+    
     // Signal that content import is starting
     this._contentState.setState('importing', true);
     
@@ -2607,8 +2617,26 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       }
       
       // Wait for DOM to stabilize before signaling completion
-      requestAnimationFrame(() => {
+      requestAnimationFrame(async () => {
         this._contentState.setState('importing', false);
+        
+        // If already in edit mode, reapply edit state to new content
+        // This handles save-and-edit case where editMode stays true
+        if (this.editMode) {
+          this._applyContentEditable(true);
+          
+          // Run editModeChanged hooks on new children
+          let children = this.shadowRoot.querySelector("#body").localName === "slot"
+            ? this.shadowRoot.querySelector("#body").assignedNodes({ flatten: true })
+            : [];
+          if (children.length === 0) {
+            children = this.shadowRoot.querySelector("#body").children;
+          }
+          for (var i = 0; i < children.length; i++) {
+            await HAXStore.runHook(children[i], "editModeChanged", [true]);
+          }
+        }
+        
         // Dispatch event for external listeners (optional)
         this.dispatchEvent(new CustomEvent('hax-body-content-ready', {
           bubbles: true,
@@ -3547,7 +3575,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   ) {
                     this.__applyNodeEditableState(node, !this.editMode);
                   }
-                  this.__applyNodeEditableState(node, this.editMode);
+                  // Use async wrapper to wait for custom elements to upgrade
+                  this.__applyNodeEditableStateWhenReady(node, this.editMode);
                   // now test for this being a grid plate element which implies
                   // we need to ensure this is applied deep into its children
                   if (HAXStore.isGridPlateElement(node)) {
@@ -3706,10 +3735,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               mutation.addedNodes.forEach((node) => {
                 // valid element to apply state to
                 if (this._validElementTest(node, true)) {
-                  // make it editable / drag/drop capable
-                  setTimeout(() => {
-                    this.__applyNodeEditableState(node, this.editMode);
-                  }, 0);
+                  // make it editable / drag/drop capable, waiting for custom element upgrade
+                  this.__applyNodeEditableStateWhenReady(node, this.editMode);
                 }
               });
             }
@@ -3793,7 +3820,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * Walk everything we find and either enable or disable editable state.
    */
-  _applyContentEditable(
+  async _applyContentEditable(
     status,
     target = this.shadowRoot.querySelector("#body"),
   ) {
@@ -3809,6 +3836,19 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     for (var i = 0; i < children.length; i++) {
       // sanity check for being a valid element / not a "hax" element
       if (this._validElementTest(children[i], true)) {
+        // For custom elements (like grid-plate), wait for them to upgrade
+        // before applying drag/drop state that depends on shadowRoot
+        const tagName = children[i].tagName.toLowerCase();
+        if (tagName.includes('-')) {
+          try {
+            await customElements.whenDefined(tagName);
+            // Extra frame to ensure shadowRoot is ready
+            await new Promise(resolve => requestAnimationFrame(resolve));
+          } catch (e) {
+            // Element not registered, proceed anyway
+          }
+        }
+        
         // correctly add or remove listeners
         if (
           !status ||
@@ -4038,6 +4078,24 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       HAXStore.haxSchemaFromTag(el.tagName) &&
       HAXStore.haxSchemaFromTag(el.tagName).type === "grid"
     );
+  }
+  /**
+   * Apply node editable state after ensuring custom element is upgraded
+   * Wrapper that handles async custom element upgrade before applying state
+   */
+  async __applyNodeEditableStateWhenReady(node, status = true) {
+    // For custom elements, wait for them to be defined and upgraded
+    const tagName = node.tagName.toLowerCase();
+    if (tagName.includes('-')) {
+      try {
+        await customElements.whenDefined(tagName);
+        // Extra frame to ensure shadowRoot is initialized
+        await new Promise(resolve => requestAnimationFrame(resolve));
+      } catch (e) {
+        // Element not registered, proceed anyway
+      }
+    }
+    this.__applyNodeEditableState(node, status);
   }
   /**
    * Apply the node editable state correctly so we can do drag and drop / editing uniformly

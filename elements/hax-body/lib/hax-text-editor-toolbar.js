@@ -498,11 +498,29 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   }
   /**
    * default config for a blockquote button
+   * Note: Blockquote is available in the format dropdown, not as a toolbar button
    *
    * @readonly
    */
   get blockquoteButton() {
     return {};
+  }
+  /**
+   * Override parent's listIndentButtonGroup to exclude blockquote button
+   * since blockquote is in the format dropdown
+   *
+   * @readonly
+   */
+  get listIndentButtonGroup() {
+    return {
+      type: "button-group",
+      subtype: "list-indent-button-group",
+      buttons: [
+        this.listButtonGroup,
+        this.indentButton,
+        this.outdentButton,
+      ],
+    };
   }
   /**
    * default config for an indent button
@@ -533,7 +551,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    */
   get alignmentPicker() {
     return {
-      label: this.t.alignmentPicker,
+      label: '',
       type: 'hax-text-editor-alignment-picker',
     };
   }
@@ -633,8 +651,10 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       changedProperties.forEach((oldValue, propName) => {
         if (propName === "parentSchema" || propName === "target")
           this.updateBlocks();
-        if (propName === "activeNode" && this.activeNode !== oldValue)
+        if (propName === "activeNode" && this.activeNode !== oldValue) {
           this.setTarget(this.activeNode);
+          this._updateContextualVisibility();
+        }
         if (propName === "t" && this.t !== oldValue)
           this.updateToolbarElements();
         if (propName === "range") {
@@ -792,10 +812,23 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   }
 
   /**
-   * Checks if current range is inside a list element
+   * Checks if current range or activeNode is inside a list element
    * @returns {boolean}
    */
   _isInList() {
+    // First check activeNode (the currently selected item in HAX)
+    // This ensures buttons stay visible even when focus shifts (e.g., clicking alignment)
+    if (this.activeNode) {
+      let node = this.activeNode;
+      while (node && node !== this.target) {
+        if (node.tagName && (node.tagName === 'UL' || node.tagName === 'OL' || node.tagName === 'LI')) {
+          return true;
+        }
+        node = node.parentNode;
+      }
+    }
+    
+    // Fallback to checking range if activeNode doesn't indicate a list
     if (!this.range) return false;
     let node = this.range.commonAncestorContainer;
     if (node.nodeType === Node.TEXT_NODE) {
@@ -814,12 +847,18 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    * Updates visibility of contextual buttons based on selection and cursor position
    */
   _updateContextualVisibility() {
+    // Check if any picker is currently expanded (dropdown open)
+    // If so, preserve the current button state to avoid flickering
+    const alignmentPicker = this.querySelector('hax-text-editor-alignment-picker');
+    const isPickerExpanded = alignmentPicker && alignmentPicker.expanded;
+    
     this.__inList = this._isInList();
     this.__hasSelection = this.range && !this.range.collapsed;
 
     // Show/hide indent/outdent buttons based on whether we're in a list
+    // Don't update visibility if a picker is expanded to prevent buttons from disappearing
     const listIndentGroup = this.querySelector('.list-indent-button-group');
-    if (listIndentGroup) {
+    if (listIndentGroup && !isPickerExpanded) {
       const indentButton = listIndentGroup.querySelector('[command="indent"]');
       const outdentButton = listIndentGroup.querySelector('[command="outdent"]');
       if (indentButton) {

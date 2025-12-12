@@ -47,9 +47,9 @@ export class AppHaxUseCaseFilter extends LitElement {
         autorun(() => {
           const appReady = toJS(store.appReady);
           const loggedIn = toJS(store.isLoggedIn);
-          
+
           this.isLoggedIn = loggedIn;
-          
+
           // Trigger skeleton/theme loading when both app is ready and user is logged in
           // Only load once per session
           if (appReady && loggedIn && !hasLoaded) {
@@ -409,6 +409,36 @@ export class AppHaxUseCaseFilter extends LitElement {
           border: 0 !important;
         }
 
+        /* Loading and fallback messages */
+        .loading-message,
+        .no-results {
+          grid-column: 1 / -1;
+          text-align: center;
+          padding: var(--ddd-spacing-8, 32px);
+          font-size: var(--ddd-font-size-s, 16px);
+          color: var(--ddd-theme-default-slateGray, #666);
+          font-family: var(--ddd-font-primary, sans-serif);
+        }
+        :host([dark]) .loading-message,
+        :host([dark]) .no-results,
+        body.dark-mode .loading-message,
+        body.dark-mode .no-results {
+          color: var(--ddd-theme-default-limestoneGray, #ccc);
+        }
+        .fallback-message {
+          grid-column: 1 / -1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: var(--ddd-spacing-4, 16px);
+        }
+        .fallback-message .no-results {
+          padding: var(--ddd-spacing-4, 16px) 0;
+        }
+        .fallback-message app-hax-use-case {
+          max-width: 300px;
+        }
+
         @media (max-width: 780px) {
           .contentSection {
             display: block;
@@ -672,10 +702,37 @@ export class AppHaxUseCaseFilter extends LitElement {
                       </div>
                     `,
                   )
-                : html`<p role="status" class="no-results" aria-live="polite">
-                    No templates match the current filters. Try adjusting your
-                    search or clearing filters.
-                  </p>`}
+                : this.loading
+                  ? html`<p
+                      role="status"
+                      class="loading-message"
+                      aria-live="polite"
+                    >
+                      Loading templates...
+                    </p>`
+                  : html`
+                      <div class="fallback-message">
+                        <p role="status" class="no-results" aria-live="polite">
+                          ${this.errorMessage ||
+                          "No templates available. You can still create a blank site."}
+                        </p>
+                        <app-hax-use-case
+                          .source=""
+                          .title="Blank Site"
+                          .description="Create a blank site using the clean-one theme"
+                          .demoLink="#"
+                          .iconImage=${[
+                            { icon: "icons:build", tooltip: "Blank site" },
+                          ]}
+                          .isSelected=${this.selectedCardIndex === -1}
+                          .showContinue=${this.selectedCardIndex === -1}
+                          ?dark="${this.dark}"
+                          aria-label="Template: Blank Site"
+                          @toggle-display=${(e) => this.toggleDisplay(-1, e)}
+                          @continue-action=${() => this.continueAction(-1)}
+                        ></app-hax-use-case>
+                      </div>
+                    `}
             </div>
           </section>
         </div>
@@ -922,17 +979,41 @@ export class AppHaxUseCaseFilter extends LitElement {
 
     // Prefer themes from appSettings (injected by backend); fallback to static file
     let themesPromise;
-    if (store.appSettings && store.appSettings.themes) {
+    if (
+      store.appSettings &&
+      store.appSettings.themes &&
+      Object.keys(store.appSettings.themes).length > 0
+    ) {
+      // Use themes from appSettings if available and not empty
       themesPromise = Promise.resolve(store.appSettings.themes);
     } else {
+      // Fallback to loading themes.json from static file
       const themesUrl = new URL(
         "../../../haxcms-elements/lib/themes.json",
         import.meta.url,
       ).href;
-      themesPromise = fetch(themesUrl).then((response) => {
-        if (!response.ok) throw new Error(`Failed Themes (${response.status})`);
-        return response.json();
-      });
+      themesPromise = fetch(themesUrl)
+        .then((response) => {
+          if (!response.ok)
+            throw new Error(`Failed Themes (${response.status})`);
+          return response.json();
+        })
+        .catch((error) => {
+          console.warn(
+            "Failed to load themes.json, using minimal fallback:",
+            error,
+          );
+          // Return minimal fallback with just clean-one theme
+          return {
+            "clean-one": {
+              element: "clean-one",
+              name: "Clean One",
+              description: "A clean, simple theme",
+              category: ["Blank"],
+              hidden: false,
+            },
+          };
+        });
     }
 
     Promise.allSettled([skeletonsPromise, themesPromise])
@@ -1115,9 +1196,14 @@ export class AppHaxUseCaseFilter extends LitElement {
     const isSelected = event.detail.isSelected;
 
     if (this.selectedCardIndex !== null && this.selectedCardIndex !== index) {
-      // Deselect the previously selected card
-      this.filteredItems[this.selectedCardIndex].isSelected = false;
-      this.filteredItems[this.selectedCardIndex].showContinue = false;
+      // Deselect the previously selected card (only if it's not the fallback)
+      if (
+        this.selectedCardIndex !== -1 &&
+        this.filteredItems[this.selectedCardIndex]
+      ) {
+        this.filteredItems[this.selectedCardIndex].isSelected = false;
+        this.filteredItems[this.selectedCardIndex].showContinue = false;
+      }
     }
 
     if (isSelected) {
@@ -1128,16 +1214,36 @@ export class AppHaxUseCaseFilter extends LitElement {
       this.selectedCardIndex = null;
     }
 
-    this.filteredItems[index].isSelected = isSelected;
-    this.filteredItems[index].showContinue = isSelected;
+    // Update the item state only if it exists (not fallback)
+    if (index !== -1 && this.filteredItems[index]) {
+      this.filteredItems[index].isSelected = isSelected;
+      this.filteredItems[index].showContinue = isSelected;
+    }
     this.requestUpdate();
   }
 
   async continueAction(index) {
-    const selectedTemplate = this.filteredItems[index];
     const modal = this.shadowRoot.querySelector("#siteCreationModal");
 
-    if (modal && selectedTemplate) {
+    if (modal) {
+      // Handle fallback case when index is -1 (blank site with clean-one)
+      if (index === -1) {
+        modal.title = "Blank Site";
+        modal.description = "Create a blank site using the clean-one theme";
+        modal.source = "";
+        modal.template = "Blank Site";
+        modal.themeElement = "clean-one";
+        modal.skeletonData = null;
+        modal.openModal();
+        return;
+      }
+
+      const selectedTemplate = this.filteredItems[index];
+      if (!selectedTemplate) {
+        console.warn("No template found at index:", index);
+        return;
+      }
+
       // Set the template details in the modal
       modal.title = selectedTemplate.useCaseTitle;
       modal.description = selectedTemplate.useCaseDescription;

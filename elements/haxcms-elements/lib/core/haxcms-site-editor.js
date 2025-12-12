@@ -1012,8 +1012,13 @@ class HAXCMSSiteEditor extends LitElement {
 
       // Restore active element position after DOM update for "keep editing" mode
       if (this._restoreKeepEditMode && this._restoreActiveIndex !== null) {
+        // Clean up any existing listener to prevent duplicates
+        if (this._contentReadyHandler) {
+          HAXStore.activeHaxBody.removeEventListener('hax-body-content-ready', this._contentReadyHandler);
+        }
+        
         // Wait for hax-body content-ready event instead of arbitrary timeout
-        const restoreActiveNode = () => {
+        this._contentReadyHandler = () => {
           try {
             if (HAXStore.activeHaxBody && HAXStore.activeHaxBody.children) {
               const bodyChildren = Array.from(HAXStore.activeHaxBody.children);
@@ -1039,6 +1044,21 @@ class HAXCMSSiteEditor extends LitElement {
                 }
               }
             }
+            
+            // Force UI component to re-render to update button visibility
+            // editMode stayed true, so autorun won't fire - need manual update
+            // Use RAF to ensure DOM is settled before requesting update
+            requestAnimationFrame(() => {
+              const uiElement = globalThis.document.querySelector('haxcms-site-editor-ui');
+              if (uiElement) {
+                // Force observable to fire by toggling and restoring
+                const currentMode = store.editMode;
+                store.editMode = false;
+                requestAnimationFrame(() => {
+                  store.editMode = currentMode;
+                });
+              }
+            });
           } catch (error) {
             console.warn(
               "Failed to restore active element position after save:",
@@ -1048,12 +1068,12 @@ class HAXCMSSiteEditor extends LitElement {
           // Clean up the restoration flags
           this._restoreActiveIndex = null;
           this._restoreKeepEditMode = false;
-          HAXStore.activeHaxBody.removeEventListener('hax-body-content-ready', restoreActiveNode);
+          this._contentReadyHandler = null;
         };
         
         // Listen for content-ready event from hax-body
         if (HAXStore.activeHaxBody) {
-          HAXStore.activeHaxBody.addEventListener('hax-body-content-ready', restoreActiveNode, { once: true });
+          HAXStore.activeHaxBody.addEventListener('hax-body-content-ready', this._contentReadyHandler, { once: true });
         }
       }
 

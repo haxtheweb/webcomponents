@@ -106,6 +106,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           align-items: stretch;
           justify-content: flex-start;
         }
+
         .group {
           display: flex;
           align-items: stretch;
