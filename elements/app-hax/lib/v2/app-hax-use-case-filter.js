@@ -1071,9 +1071,9 @@ export class AppHaxUseCaseFilter extends LitElement {
 
         // Process themes data into blank use cases (filter out hidden themes)
         const themeSource = themesData.value || {};
-        const themeItems = Object.values(themeSource)
-          .filter((theme) => !theme.hidden) // Exclude hidden system/debug themes
-          .map((theme) => {
+        const themeItems = Object.entries(themeSource)
+          .filter(([, theme]) => !theme.hidden) // Exclude hidden system/debug themes
+          .map(([themeMachineName, theme]) => {
             let tags = [];
             if (Array.isArray(theme.category)) {
               tags = theme.category.filter(
@@ -1110,7 +1110,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                 theme.description || "Start with a blank site using this theme",
               useCaseIcon: icons,
               useCaseTag: tags,
-              demoLink: "#", // Blank themes don't have demos
+              demoLink: `https://playground.hax.cloud/site.html?theme=${themeMachineName}`,
               originalData: theme,
             };
           });
