@@ -3223,42 +3223,50 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (typeof oldValue !== typeof undefined) {
       this._applyContentEditable(newValue);
       if (newValue) {
+        // If content is currently being imported and there are no children yet,
+        // avoid injecting a placeholder paragraph. importContent will append
+        // the real DOM and (if in edit mode) re-apply edit state to children.
+        const importing =
+          this._contentState && this._contentState.getState("importing");
+
         // minor timeout here to see if we have children or not. the slight delay helps w/
         // timing in scenarios where this is inside of other systems which are setting default
         // attributes and what not
-        if (
-          this.children &&
-          this.children[0] &&
-          this.children[0].focus &&
-          this.children[0].tagName
-        ) {
-          // special support for page break to NOT focus it initially if we have another child
+        if (!importing) {
           if (
-            this.children[0].tagName === "PAGE-BREAK" &&
-            this.children[1] &&
-            this.children[1].focus
+            this.children &&
+            this.children[0] &&
+            this.children[0].focus &&
+            this.children[0].tagName
           ) {
-            this.__focusLogic(this.children[1]);
-          }
-          // implies we don't have another child to focus and the one we do is a page break
-          // this would leave UX at an empty page so inject a p like the blank state
-          else if (this.children[0].tagName === "PAGE-BREAK") {
-            this.haxInsert("p", "", {});
+            // special support for page break to NOT focus it initially if we have another child
+            if (
+              this.children[0].tagName === "PAGE-BREAK" &&
+              this.children[1] &&
+              this.children[1].focus
+            ) {
+              this.__focusLogic(this.children[1]);
+            }
+            // implies we don't have another child to focus and the one we do is a page break
+            // this would leave UX at an empty page so inject a p like the blank state
+            else if (this.children[0].tagName === "PAGE-BREAK") {
+              this.haxInsert("p", "", {});
+            } else {
+              this.__focusLogic(this.children[0]);
+            }
           } else {
-            this.__focusLogic(this.children[0]);
-          }
-        } else {
-          this.haxInsert("p", "", {});
-          try {
-            var range = globalThis.document.createRange();
-            var sel = HAXStore.getSelection();
-            range.setStart(this.activeNode, 0);
-            range.collapse(true);
-            sel.removeAllRanges();
-            sel.addRange(range);
-            this.activeNode.focus();
-          } catch (e) {
-            console.warn(e);
+            this.haxInsert("p", "", {});
+            try {
+              var range = globalThis.document.createRange();
+              var sel = HAXStore.getSelection();
+              range.setStart(this.activeNode, 0);
+              range.collapse(true);
+              sel.removeAllRanges();
+              sel.addRange(range);
+              this.activeNode.focus();
+            } catch (e) {
+              console.warn(e);
+            }
           }
         }
         this._haxContextOperation({

@@ -1423,6 +1423,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
   // Create page with title - method called by Merlin programs
   async createPageWithTitle(title, type, templateContent = null) {
+    // When invoked from the create-page Merlin program, always prefer the
+    // live Merlin input value so rapid typing + Enter uses the latest text.
+    const SuperDaemonInstance =
+      globalThis.SuperDaemonManager &&
+      globalThis.SuperDaemonManager.requestAvailability();
+    if (
+      SuperDaemonInstance &&
+      SuperDaemonInstance.programName === "create-page" &&
+      SuperDaemonInstance.value &&
+      SuperDaemonInstance.value.trim() !== ""
+    ) {
+      title = SuperDaemonInstance.value.trim();
+    }
+
     let order = null;
     let parent = null;
     const item = toJS(store.activeItem);

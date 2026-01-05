@@ -31,6 +31,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.creationCancelled = false;
     this.promises = [];
     this.max = 100;
+    this.skeletonData = null;
   }
 
   static get properties() {
@@ -51,6 +52,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       creationCancelled: { type: Boolean },
       promises: { type: Array },
       max: { type: Number },
+      skeletonData: { type: Object },
     };
   }
 
@@ -655,8 +657,24 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
 
     // Set up the site data in store for the API call
     store.site.name = this.siteName;
-    store.site.structure = this.themeElement || "website"; // Use theme element (machine name)
-    store.site.type = "own";
+    
+    // If skeleton data exists, use its build configuration
+    if (this.skeletonData && this.skeletonData.build) {
+      store.site.structure = this.skeletonData.build.structure || "from-skeleton";
+      store.site.type = this.skeletonData.build.type || "skeleton";
+      // Pass skeleton items and files to store for API formatting
+      if (this.skeletonData.build.items) {
+        store.items = this.skeletonData.build.items;
+      }
+      if (this.skeletonData.build.files) {
+        store.itemFiles = this.skeletonData.build.files;
+      }
+    } else {
+      store.site.structure = this.themeElement || "website";
+      store.site.type = "own";
+      store.items = null;
+      store.itemFiles = null;
+    }
     store.site.theme = this.themeElement || "polaris-flex-theme"; // Use selected theme
 
     this.currentStep = 2;

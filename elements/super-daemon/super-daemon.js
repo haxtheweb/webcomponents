@@ -374,7 +374,15 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   handleProgramEnter(e) {
     if (e.detail && e.detail.programName && e.detail.input) {
       const programName = e.detail.programName;
-      const input = e.detail.input;
+      let input = e.detail.input;
+
+      // Prefer the live Merlin input value at the moment Enter is pressed
+      const SuperDaemonInstance =
+        globalThis.SuperDaemonManager &&
+        globalThis.SuperDaemonManager.requestAvailability();
+      if (SuperDaemonInstance && SuperDaemonInstance.value) {
+        input = SuperDaemonInstance.value;
+      }
 
       // Special handling for the create-page program
       if (programName === "create-page") {
