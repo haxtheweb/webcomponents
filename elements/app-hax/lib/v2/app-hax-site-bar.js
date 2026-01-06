@@ -95,7 +95,6 @@ export class AppHaxSiteBars extends SimpleColors {
   }
 
   openUserAccess() {
-    console.log("User Access clicked");
     // Close the options menu first
     this.closeOptionsMenu();
 

@@ -1157,16 +1157,9 @@ class HAXCMSSiteEditor extends LitElement {
         this._restoreKeepEditMode = false;
       }
 
-      // CRITICAL FIX: Force page-break element to use store activeItem values
-      // before serialization to prevent & -> &amp; encoding issues
-      const pageBreakEl = HAXStore.activeHaxBody.querySelector('page-break');
-      if (pageBreakEl && this.activeItem) {
-        // Directly set the JavaScript properties from the source of truth (store)
-        // This ensures we're not using the already-encoded attribute values
-        pageBreakEl.title = this.activeItem.title || '';
-        pageBreakEl.description = this.activeItem.description || '';
-      }
-      
+      // Serialize current DOM content (including page-break) as-is. Entity
+      // normalization for attributes like title/description is handled on
+      // the backend so we do not clobber freshly edited values here.
       let body = await HAXStore.activeHaxBody.haxToContent();
       const schema = await HAXStore.htmlToHaxElements(body);
       

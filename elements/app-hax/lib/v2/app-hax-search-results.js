@@ -26,6 +26,7 @@ export class AppHaxSearchResults extends SimpleColors {
     this.isDragging = false;
     this.currentIndex = 1;
     this.totalItems = 0;
+    this.sortOption = "az";
     autorun(() => {
       this.searchTerm = toJS(store.searchTerm);
     });
@@ -58,30 +59,8 @@ export class AppHaxSearchResults extends SimpleColors {
       isDragging: { type: Boolean },
       currentIndex: { type: Number },
       totalItems: { type: Number },
+      sortOption: { type: String, attribute: "sort-option" },
     };
-  }
-
-  updated(changedProperties) {
-    if (super.updated) {
-      super.updated(changedProperties);
-    }
-    changedProperties.forEach((oldValue, propName) => {
-      if (propName === "searchTerm") {
-        this.displayItems = this.searchItems.filter((word) => {
-          if (
-            word.title.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            word.description
-              .toLowerCase()
-              .includes(this.searchTerm.toLowerCase()) ||
-            word.author.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            word.slug.toLowerCase().includes(this.searchTerm.toLowerCase())
-          ) {
-            return true;
-          }
-          return false;
-        });
-      }
-    });
   }
 
   static get styles() {
@@ -448,9 +427,66 @@ export class AppHaxSearchResults extends SimpleColors {
     return { start, end };
   }
 
+  // Return items sorted according to the current sortOption
+  getSortedItems() {
+    const items = Array.isArray(this.displayItems)
+      ? [...this.displayItems]
+      : [];
+    const sortOption = this.sortOption || "az";
+
+    const getTitle = (item) => {
+      return (item.title || "").toString().toLowerCase();
+    };
+
+    const getDate = (item, field) => {
+      const value = Number(
+        varGet(
+          item,
+          `metadata.site.${field}`,
+          varGet(item, "metadata.site.created", 0),
+        ),
+      );
+      return Number.isNaN(value) ? 0 : value;
+    };
+
+    const getThemeName = (item) => {
+      const themeElement = varGet(item, "metadata.theme.element", "");
+      if (
+        themeElement &&
+        store.themesData &&
+        store.themesData[themeElement] &&
+        store.themesData[themeElement].name
+      ) {
+        return store.themesData[themeElement].name
+          .toString()
+          .toLowerCase();
+      }
+      return themeElement.toString().toLowerCase();
+    };
+
+    items.sort((a, b) => {
+      switch (sortOption) {
+        case "za":
+          return getTitle(b).localeCompare(getTitle(a));
+        case "newest":
+          return getDate(b, "updated") - getDate(a, "updated");
+        case "oldest":
+          return getDate(a, "updated") - getDate(b, "updated");
+        case "theme":
+          return getThemeName(a).localeCompare(getThemeName(b));
+        case "az":
+        default:
+          return getTitle(a).localeCompare(getTitle(b));
+      }
+    });
+
+    return items;
+  }
+
   render() {
-    // Update total items count
-    this.totalItems = this.displayItems.length;
+    // Update total items count based on sorted items
+    const itemsToRender = this.getSortedItems();
+    this.totalItems = itemsToRender.length;
     const dotRange = this.getVisibleDotRange();
 
     return html`
@@ -487,9 +523,8 @@ export class AppHaxSearchResults extends SimpleColors {
           @touchend="${this.handlePointerEnd}"
           @mouseleave="${this.handlePointerEnd}"
           @scroll="${this.handleScroll}"
-        >
-          ${this.displayItems.length > 0
-            ? this.displayItems.map(
+>\n          ${itemsToRender.length > 0
+            ? itemsToRender.map(
                 (item) =>
                   html` <li>
                     <app-hax-site-bar

@@ -576,6 +576,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.creationCancelled = false;
     this.siteUrl = "";
     this.themeElement = "";
+    this.skeletonData = null;
 
     this.dispatchEvent(
       new CustomEvent("modal-closed", {
@@ -611,6 +612,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.creationCancelled = false;
     this.siteUrl = "";
     this.themeElement = "";
+    this.skeletonData = null;
 
     this.dispatchEvent(
       new CustomEvent("modal-closed", {
@@ -657,10 +659,10 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
 
     // Set up the site data in store for the API call
     store.site.name = this.siteName;
-    
     // If skeleton data exists, use its build configuration
     if (this.skeletonData && this.skeletonData.build) {
-      store.site.structure = this.skeletonData.build.structure || "from-skeleton";
+      store.site.structure =
+        this.skeletonData.build.structure || "from-skeleton";
       store.site.type = this.skeletonData.build.type || "skeleton";
       // Pass skeleton items and files to store for API formatting
       if (this.skeletonData.build.items) {

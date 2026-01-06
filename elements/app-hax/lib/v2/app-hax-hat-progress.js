@@ -67,6 +67,28 @@ export class AppHaxHatProgress extends SimpleColors {
             }
 
             const createResponse = store.AppHaxAPI.lastResponse.createSite.data;
+            // ensure the dashboard site list reflects the newly created site
+            // trigger the standard reactive refresh flag
+            if (store && store.refreshSiteListing) {
+              store.refreshSiteListing();
+            }
+            // also force a fresh getSitesList call with a cache-busting timestamp
+            // and slight delay so the backend has time to finish any async writes
+            if (store && store.AppHaxAPI && store.AppHaxAPI.makeCall) {
+              setTimeout(async () => {
+                try {
+                  const results = await store.AppHaxAPI.makeCall(
+                    "getSitesList",
+                    { _t: Date.now() },
+                  );
+                  if (results && results.data) {
+                    store.manifest = results.data;
+                  }
+                } catch (e) {
+                  // non-fatal; worst case the user can manually refresh
+                }
+              }, 500);
+            }
             const text = globalThis.document.createElement("button");
             this.shadowRoot.querySelector("#value").textContent = this.max;
             text.textContent = "Let's go!";

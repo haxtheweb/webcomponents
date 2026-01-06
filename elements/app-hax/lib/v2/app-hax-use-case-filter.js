@@ -35,6 +35,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.allFilters = new Set();
     this.dark = false;
     this.isLoggedIn = false;
+    this.sortOption = "az";
 
     // Listen to store changes for dark mode and manifest updates
     if (typeof store !== "undefined") {
@@ -89,6 +90,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       allFilters: { attribute: false },
       dark: { type: Boolean, reflect: true },
       isLoggedIn: { type: Boolean },
+      sortOption: { type: String, attribute: "sort-option" },
     };
   }
 
@@ -353,6 +355,45 @@ export class AppHaxUseCaseFilter extends LitElement {
         input[type="checkbox"] {
           display: none;
         }
+        .sort-control {
+          margin-top: var(--ddd-spacing-2, 8px);
+          margin-bottom: var(--ddd-spacing-3, 12px);
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-1, 4px);
+        }
+        .sort-label {
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(--ddd-font-size-3xs, 11px);
+          color: var(--ddd-theme-default-coalyGray, #222);
+        }
+        :host([dark]) .sort-label,
+        body.dark-mode .sort-label {
+          color: var(--ddd-theme-default-limestoneGray, #f5f5f5);
+        }
+        .sort-select {
+          width: 100%;
+          padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+          font-size: var(--ddd-font-size-3xs, 11px);
+          border-radius: var(--ddd-radius-sm, 4px);
+          border: var(--ddd-border-xs, 1px solid)
+            var(--ddd-theme-default-slateGray, #666);
+          background: var(--ddd-theme-default-white, white);
+          color: var(--ddd-theme-default-coalyGray, #222);
+          font-family: var(--ddd-font-primary, sans-serif);
+          box-sizing: border-box;
+        }
+        :host([dark]) .sort-select,
+        body.dark-mode .sort-select {
+          background: var(--ddd-theme-default-coalyGray, #333);
+          color: var(--ddd-theme-default-white, white);
+          border-color: var(--ddd-theme-default-slateGray, #666);
+        }
+        .sort-select:focus {
+          outline: var(--ddd-border-md, 2px solid)
+            var(--ddd-theme-default-keystoneYellow, #ffd100);
+          outline-offset: var(--ddd-spacing-1, 2px);
+        }
         .reset-button {
           margin-top: var(--ddd-spacing-1, 4px);
           background: var(--ddd-theme-default-original87Pink, #e4007c);
@@ -588,6 +629,43 @@ export class AppHaxUseCaseFilter extends LitElement {
                 Escape to clear.
               </div>
             </div>
+            <!-- Sort options for returning sites -->
+            <div class="sort-control">
+              <label id="site-sort-label" class="sort-label" for="siteSort">
+                Sort sites
+              </label>
+              <select
+                id="siteSort"
+                class="sort-select"
+                @change=${this.handleSortChange}
+                aria-labelledby="site-sort-label"
+              >
+                <option value="az" ?selected=${this.sortOption === "az"}>
+                  Title A–Z
+                </option>
+                <option value="za" ?selected=${this.sortOption === "za"}>
+                  Title Z–A
+                </option>
+                <option
+                  value="newest"
+                  ?selected=${this.sortOption === "newest"}
+                >
+                  Newest first
+                </option>
+                <option
+                  value="oldest"
+                  ?selected=${this.sortOption === "oldest"}
+                >
+                  Oldest first
+                </option>
+                <option
+                  value="theme"
+                  ?selected=${this.sortOption === "theme"}
+                >
+                  Theme name
+                </option>
+              </select>
+            </div>
             <!-- Filter Buttons -->
             <fieldset class="filterButtons">
               <legend class="visually-hidden">
@@ -655,6 +733,7 @@ export class AppHaxUseCaseFilter extends LitElement {
               <app-hax-search-results
                 .displayItems=${this.filteredSites}
                 .searchTerm=${this.searchTerm}
+                .sortOption=${this.sortOption}
                 ?dark="${this.dark}"
               >
               </app-hax-search-results>
@@ -833,35 +912,15 @@ export class AppHaxUseCaseFilter extends LitElement {
   handleSearch(event) {
     const searchTerm = event.target.value.toLowerCase();
     this.searchTerm = searchTerm;
-    store.searchTerm = searchTerm; // Update store with search term
+    // keep store in sync for other consumers like app-hax-search-results UI
+    store.searchTerm = searchTerm;
+    // delegate actual filtering to applyFilters so search + filters stay in sync
+    this.applyFilters();
+  }
 
-    // Filter templates (skeletons and blank themes)
-    this.filteredItems = [
-      ...this.items.filter(
-        (item) =>
-          (item.dataType === "skeleton" || item.dataType === "blank") &&
-          (item.useCaseTitle.toLowerCase().includes(searchTerm) ||
-            (item.useCaseTag &&
-              item.useCaseTag.some((tag) =>
-                tag.toLowerCase().includes(searchTerm),
-              ))),
-      ),
-    ];
-
-    // Filter returning sites
-    this.filteredSites = [
-      ...this.items.filter(
-        (item) =>
-          item.dataType === "site" &&
-          ((item.originalData.title &&
-            item.originalData.title.toLowerCase().includes(searchTerm)) ||
-            (item.useCaseTag &&
-              item.useCaseTag.some((tag) =>
-                tag.toLowerCase().includes(searchTerm),
-              ))),
-      ),
-    ];
-
+  handleSortChange(e) {
+    const value = e && e.target && e.target.value ? e.target.value : "az";
+    this.sortOption = value;
     this.requestUpdate();
   }
 
@@ -907,26 +966,47 @@ export class AppHaxUseCaseFilter extends LitElement {
     // Filter sites (from this.returningSites)
     this.filteredSites = [
       ...this.returningSites.filter((item) => {
-        if (item.dataType !== "site") return false;
-        const siteCategory =
-          (item.originalData.metadata &&
-            item.originalData.metadata.site &&
-            item.originalData.metadata.site.category) ||
-          [];
+        if (item.dataType !== "site") {
+          return false;
+        }
+        const original = item.originalData || {};
+        const metadata = original.metadata || {};
+        const siteMeta = metadata.site || {};
+        const siteCategory = siteMeta.category || [];
+        const title = (original.title || "").toLowerCase();
+        const description = (original.description || "").toLowerCase();
+        const author = (original.author || "").toLowerCase();
+        const slug = (original.slug || "").toLowerCase();
+        const tags = item.useCaseTag || [];
+
         const matchesSearch =
           lowerCaseQuery === "" ||
-          (item.originalData.category &&
-            item.originalData.category &&
-            item.originalData.category.includes(lowerCaseQuery)) ||
-          (item.useCaseTag &&
-            item.useCaseTag.some((tag) =>
-              tag.toLowerCase().includes(lowerCaseQuery),
+          title.indexOf(lowerCaseQuery) !== -1 ||
+          description.indexOf(lowerCaseQuery) !== -1 ||
+          author.indexOf(lowerCaseQuery) !== -1 ||
+          slug.indexOf(lowerCaseQuery) !== -1 ||
+          tags.some((tag) => tag.toLowerCase().indexOf(lowerCaseQuery) !== -1) ||
+          (typeof siteCategory === "string" &&
+            siteCategory.toLowerCase().indexOf(lowerCaseQuery) !== -1) ||
+          (Array.isArray(siteCategory) &&
+            siteCategory.some(
+              (cat) =>
+                typeof cat === "string" &&
+                cat.toLowerCase().indexOf(lowerCaseQuery) !== -1,
             ));
+
         const matchesFilters =
           this.activeFilters.length === 0 ||
           this.activeFilters.some((filter) => {
-            return siteCategory.includes(filter);
+            if (typeof siteCategory === "string") {
+              return siteCategory === filter;
+            }
+            if (Array.isArray(siteCategory)) {
+              return siteCategory.indexOf(filter) !== -1;
+            }
+            return false;
           });
+
         return matchesSearch && matchesFilters;
       }),
     ];
@@ -1233,7 +1313,40 @@ export class AppHaxUseCaseFilter extends LitElement {
         modal.source = "";
         modal.template = "Blank Site";
         modal.themeElement = "clean-one";
-        modal.skeletonData = null;
+        // Generate skeleton data for fallback blank site with Home page
+        modal.skeletonData = {
+          meta: {
+            name: "clean-one",
+            type: "skeleton",
+          },
+          site: {
+            name: "clean-one",
+            theme: "clean-one",
+          },
+          build: {
+            type: "skeleton",
+            structure: "from-skeleton",
+            items: [
+              {
+                id: "item-home-clean-one",
+                title: "Home",
+                slug: "home",
+                order: 0,
+                parent: null,
+                indent: 0,
+                content:
+                  "<p>Edit this page to get started on your HAX site!</p>",
+                metadata: {
+                  published: true,
+                  hideInMenu: false,
+                  tags: [],
+                },
+              },
+            ],
+            files: [],
+          },
+          theme: {},
+        };
         modal.openModal();
         return;
       }
@@ -1264,9 +1377,10 @@ export class AppHaxUseCaseFilter extends LitElement {
           if (response.ok) {
             const skeletonData = await response.json();
             // Store skeleton data for use in site creation
-            modal.skeletonData = skeletonData;
+            modal.skeletonData = skeletonData.data || skeletonData;
             modal.themeElement =
-              (skeletonData.site && skeletonData.site.theme) || "clean-one";
+              (modal.skeletonData.site && modal.skeletonData.site.theme) ||
+              "clean-one";
           } else {
             console.warn(`Failed to load skeleton from ${skeletonUrl}`);
             modal.themeElement = "clean-one"; // fallback
@@ -1279,7 +1393,41 @@ export class AppHaxUseCaseFilter extends LitElement {
         selectedTemplate.dataType === "blank" &&
         selectedTemplate.originalData.element
       ) {
+        // Generate skeleton data for blank themes with a Home page
         modal.themeElement = selectedTemplate.originalData.element;
+        modal.skeletonData = {
+          meta: {
+            name: selectedTemplate.originalData.element,
+            type: "skeleton",
+          },
+          site: {
+            name: selectedTemplate.originalData.element,
+            theme: selectedTemplate.originalData.element,
+          },
+          build: {
+            type: "skeleton",
+            structure: "from-skeleton",
+            items: [
+              {
+                id: `item-home-${selectedTemplate.originalData.element}`,
+                title: "Home",
+                slug: "home",
+                order: 0,
+                parent: null,
+                indent: 0,
+                content:
+                  "<p>Edit this page to get started on your HAX site!</p>",
+                metadata: {
+                  published: true,
+                  hideInMenu: false,
+                  tags: [],
+                },
+              },
+            ],
+            files: [],
+          },
+          theme: {},
+        };
       } else {
         modal.themeElement = "clean-one"; // fallback
       }
@@ -1303,7 +1451,6 @@ export class AppHaxUseCaseFilter extends LitElement {
         this.requestUpdate();
       }
     }
-    console.log("Site creation modal closed", event.detail);
   }
 }
 customElements.define("app-hax-use-case-filter", AppHaxUseCaseFilter);

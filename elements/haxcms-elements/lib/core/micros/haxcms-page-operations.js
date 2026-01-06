@@ -83,6 +83,8 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
       platformAllowsDelete: { type: Boolean },
       platformAllowsAddPage: { type: Boolean },
       isLocked: { type: Boolean },
+      // Track global edit mode so we can disable page creation while editing
+      editMode: { type: Boolean },
     };
   }
   constructor() {
@@ -92,7 +94,9 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
     this.platformAllowsDelete = true;
     this.platformAllowsAddPage = true;
     this.isLocked = false;
-    this.t = {...super.t,
+    this.editMode = false;
+    this.t = {
+      ...super.t,
       outlineActions: "Outline actions",
       editPage: "Edit page",
       addPage: "Add child page",
@@ -134,6 +138,12 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           ? true
           : false;
     });
+
+    // Keep local editMode in sync with global store state so we can
+    // hide page creation controls while actively editing content
+    autorun(() => {
+      this.editMode = toJS(store.editMode);
+    });
   }
 
   _toggleDialog() {
@@ -159,7 +169,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
         @click="${this._toggleDialog}"
       ></simple-icon-button-lite>
       <simple-context-menu title="${this.t.outlineActions}">
-        ${this.platformAllowsAddPage
+        ${this.platformAllowsAddPage && !this.editMode
           ? html`
               <haxcms-button-add
                 id="addpagebutton"

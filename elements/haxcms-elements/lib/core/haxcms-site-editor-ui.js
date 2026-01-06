@@ -70,6 +70,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         :host *[hidden] {
           display: none;
         }
+        /* Ensure Add Page button is never visible while actively editing */
+        :host([edit-mode]) #addpagebutton {
+          display: none;
+        }
         simple-tooltip:not(:defined) {
           display: none !important;
         }
@@ -4154,7 +4158,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             "👋 Welcome to HAX! Merlin is here to help you get started",
             8000,
             {
-              hat: "wizard",
+              hat: "knight",
             },
           );
         } else {
@@ -4181,7 +4185,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "Welcome program dismissed. You can always access Merlin by pressing Alt+Shift or clicking the search bar.",
       5000,
       {
-        hat: "check",
+        hat: "good",
       },
     );
   }
