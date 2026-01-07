@@ -40,13 +40,6 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
           border-color: var(--ddd-theme-default-coalyGray);
         }
 
-        :host([enforce-styles]) {
-          border-color: var(--ddd-theme-default-skyBlue);
-        }
-
-        :host([enforce-styles]:hover) {
-          border-color: var(--ddd-theme-default-navy);
-        }
 
         :host([data-hax-ray])
           .template-content
@@ -104,14 +97,6 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
     return {
       ...super.properties,
       /**
-       * Whether this is the default template
-       */
-      enforceStyles: {
-        type: Boolean,
-        reflect: true,
-        attribute: "enforce-styles",
-      },
-      /**
        * Name of the template for identification
        */
       name: {
@@ -131,7 +116,6 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
 
   constructor() {
     super();
-    this.enforceStyles = false;
     this.name = "";
     this.schema = "area";
 
@@ -223,14 +207,6 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
             },
             required: true,
           },
-          {
-            property: "enforceStyles",
-            title: "Enforce Template Styles",
-            description:
-              "Apply this template to any matching tag, ignoring the local styles",
-            inputMethod: "boolean",
-            required: false,
-          },
         ],
         advanced: [
           {
@@ -249,7 +225,6 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
           properties: {
             name: "Example Template",
             schema: "area",
-            enforceStyles: false,
           },
           content:
             "<h2>Template Heading</h2><p>Add your content elements inside this template. This acts as a container that can hold any HAX elements.</p>",

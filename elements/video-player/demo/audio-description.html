@@ -89,19 +89,24 @@
             const player = document.getElementById('ad-player');
             const status = document.getElementById('ad-status');
             const toggleBtn = document.getElementById('toggle-btn-1');
-            
+
             function updateStatus() {
-              status.textContent = 'Audio Description: ' + 
-                (player.audioDescriptionEnabled ? 'ON' : 'OFF') + 
+              if (!status || !player) return;
+              status.textContent =
+                'Audio Description: ' +
+                (player.audioDescriptionEnabled ? 'ON' : 'OFF') +
                 ' (preference saved to localStorage)';
             }
-            
-            toggleBtn.addEventListener('click', () => {
-              player.toggleAudioDescription();
-            });
-            
-            player.addEventListener('audio-description-enabled-changed', updateStatus);
-            setTimeout(updateStatus, 100);
+
+            if (toggleBtn && player) {
+              toggleBtn.addEventListener('click', () => {
+                player.toggleAudioDescription();
+                updateStatus();
+              });
+
+              // Initial status after the component has had a moment to upgrade
+              setTimeout(updateStatus, 100);
+            }
           </script>
         </template>
       </demo-snippet>

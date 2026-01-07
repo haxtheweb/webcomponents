@@ -778,6 +778,10 @@ class VideoPlayer extends IntersectionObserverMixin(
       globalThis.removeEventListener("volume-changed", this.__adVolumeHandler);
       this.__adVolumeHandler = null;
     }
+    if (this.__adRateHandler) {
+      globalThis.removeEventListener("playback-rate-changed", this.__adRateHandler);
+      this.__adRateHandler = null;
+    }
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
     super.disconnectedCallback();
   }
@@ -1218,6 +1222,12 @@ class VideoPlayer extends IntersectionObserverMixin(
             globalThis.removeEventListener("volume-changed", this.__adVolumeHandler);
             this.__adVolumeHandler = null;
           }
+
+          // Clean up playback-rate listener
+          if (this.__adRateHandler) {
+            globalThis.removeEventListener("playback-rate-changed", this.__adRateHandler);
+            this.__adRateHandler = null;
+          }
         }
       }
     });
@@ -1386,10 +1396,9 @@ class VideoPlayer extends IntersectionObserverMixin(
   _saveAudioDescriptionPreference() {
     if (this.source && this.audioDescriptionSource) {
       const key = `video-player-ad-${this.source}`;
-      globalThis.localStorage.setItem(
-        key,
-        this.audioDescriptionEnabled.toString(),
-      );
+      // Coerce to a boolean so we never call toString on null/undefined
+      const enabled = !!this.audioDescriptionEnabled;
+      globalThis.localStorage.setItem(key, enabled.toString());
     }
   }
 
@@ -1404,6 +1413,20 @@ class VideoPlayer extends IntersectionObserverMixin(
 
     if (!mediaPlayer || !audioElement) return;
 
+    // Remove any existing handlers so we don't double-bind when toggling
+    if (this.__adPlayHandler) {
+      mediaPlayer.removeEventListener("play", this.__adPlayHandler);
+    }
+    if (this.__adPauseHandler) {
+      mediaPlayer.removeEventListener("pause", this.__adPauseHandler);
+    }
+    if (this.__adRestartHandler) {
+      mediaPlayer.removeEventListener("restart", this.__adRestartHandler);
+    }
+    if (this.__adSeekHandler) {
+      mediaPlayer.removeEventListener("seek", this.__adSeekHandler);
+    }
+
     // Set default volume for audio description (match current player volume)
     if (mediaPlayer.volume !== undefined) {
       audioElement.volume = mediaPlayer.volume / 100;
@@ -1411,15 +1434,29 @@ class VideoPlayer extends IntersectionObserverMixin(
       audioElement.volume = 1.0;
     }
 
-    // Mute the video audio when audio description is active
+    // Set initial playback rate for audio description to match media
+    if (mediaPlayer.media && mediaPlayer.media.playbackRate) {
+      audioElement.playbackRate = mediaPlayer.media.playbackRate;
+    } else {
+      audioElement.playbackRate = 1.0;
+    }
+
+    // Mute the video audio when audio description is active. We only
+    // toggle the muted flag so that the underlying volume state stays
+    // consistent with the player's volume slider. The audio description
+    // track gets its own volume based on the player's volume.
     if (mediaPlayer.media) {
-      mediaPlayer.media.volume = 0;
       mediaPlayer.media.muted = true;
     }
 
     // Store event handler references for cleanup
     this.__adPlayHandler = () => {
       if (this.audioDescriptionEnabled && audioElement) {
+        // Re‑assert mute on the primary media in case something else
+        // changed it while audio description is active.
+        if (mediaPlayer.media) {
+          mediaPlayer.media.muted = true;
+        }
         audioElement.currentTime = this.currentTime;
         audioElement.play().catch(() => {});
       }
@@ -1440,23 +1477,53 @@ class VideoPlayer extends IntersectionObserverMixin(
       }
     };
 
-    // Listen for play events
+    // Keep audio description in sync when the user seeks
+    this.__adSeekHandler = () => {
+      if (this.audioDescriptionEnabled && audioElement) {
+        // Ensure the primary media stays muted after seek operations so
+        // we don't leak the original audio under the description track.
+        if (mediaPlayer.media) {
+          mediaPlayer.media.muted = true;
+        }
+        audioElement.currentTime = this.currentTime;
+        if (this.playing) {
+          audioElement.play().catch(() => {});
+        }
+      }
+    };
+
+    // Listen for play, pause, restart, and seek events
     mediaPlayer.addEventListener("play", this.__adPlayHandler);
-
-    // Listen for pause events
     mediaPlayer.addEventListener("pause", this.__adPauseHandler);
-
-    // Listen for restart events
     mediaPlayer.addEventListener("restart", this.__adRestartHandler);
+    mediaPlayer.addEventListener("seek", this.__adSeekHandler);
 
     // Listen for volume changes and sync to audio description
     this.__adVolumeHandler = (e) => {
-      if (this.audioDescriptionEnabled && audioElement && e.detail && e.detail.volume !== undefined) {
+      if (
+        this.audioDescriptionEnabled &&
+        audioElement &&
+        e.detail &&
+        e.detail.volume !== undefined
+      ) {
         // When audio description is active, sync volume to audio track
         audioElement.volume = e.detail.volume / 100;
       }
     };
     globalThis.addEventListener("volume-changed", this.__adVolumeHandler);
+
+    // Listen for playback-rate changes and sync speed to audio description
+    this.__adRateHandler = (e) => {
+      // e.detail is the a11y-media-player instance
+      const player = e && e.detail ? e.detail : null;
+      const rate = player && player.media && player.media.playbackRate
+        ? player.media.playbackRate
+        : 1;
+      if (this.audioDescriptionEnabled && audioElement) {
+        audioElement.playbackRate = rate;
+      }
+    };
+    globalThis.addEventListener("playback-rate-changed", this.__adRateHandler);
   }
 
   /**

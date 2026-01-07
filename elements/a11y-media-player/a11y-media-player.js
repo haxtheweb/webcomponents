@@ -1928,6 +1928,11 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
     this.__playing = false;
     this.__settingsOpen = false;
     this.__transcriptOption = -1;
+    // global listeners for settings menu ESC and click-away behavior
+    this._settingsKeydownHandler = this._onSettingsKeydown.bind(this);
+    this._settingsClickHandler = this._onSettingsDocumentClick.bind(this);
+    globalThis.addEventListener("keydown", this._settingsKeydownHandler, true);
+    globalThis.addEventListener("click", this._settingsClickHandler, true);
     this.querySelectorAll("video,audio").forEach((html5) => {
       html5.addEventListener("loadedmetadata", (e) => {
         this.__preloadedDuration = html5.duration;
@@ -2812,22 +2817,43 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
    * @param {float} the time, in seconds, to seek
    */
   seek(time = 0) {
-    if (this.mediaSeekable) {
-      this.media.seek(Math.max(0, Math.min(time, this.duration)));
-      this._handleTimeUpdate();
-      /**
-       * Fires when media seeks
-       * @event seek
-       */
-      this.dispatchEvent(
-        new CustomEvent("seek", {
-          bubbles: true,
-          composed: true,
-          cancelable: false,
-          detail: this,
-        }),
-      );
+    if (!this.media) return;
+
+    // Clamp the requested time to a sane range when duration is known.
+    const hasDuration = typeof this.duration === "number" && !isNaN(this.duration);
+    const safeTime = hasDuration
+      ? Math.max(0, Math.min(time, this.duration))
+      : Math.max(0, time || 0);
+
+    if (isNaN(safeTime)) return;
+
+    if (this.mediaSeekable && typeof this.media.seek === "function") {
+      // Normal path when the browser reports a seekable range
+      this.media.seek(safeTime);
+    } else {
+      // Fallback for environments (often local/dev) where seekable is empty:
+      // attempt to move the playback head directly so the UI doesn't feel broken.
+      try {
+        this.media.currentTime = safeTime;
+      } catch (e) {
+        // Some environments may still refuse manual seeking; in that case just bail.
+        return;
+      }
     }
+
+    this._handleTimeUpdate();
+    /**
+     * Fires when media seeks
+     * @event seek
+     */
+    this.dispatchEvent(
+      new CustomEvent("seek", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: this,
+      }),
+    );
   }
 
   /**
@@ -3528,6 +3554,47 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
       b(val, 3600, "") + b(val % 3600, 60, "00:") + a(Math.round(val % 60))
     );
   }
+
+  /**
+   * Handle ESC key to close settings when open
+   */
+  _onSettingsKeydown(event) {
+    if (!this.__settingsOpen) return;
+    var key = event.key || event.code || "";
+    if (key === "Escape" || key === "Esc" || event.keyCode === 27) {
+      this.toggleSettings(false);
+      event.stopPropagation();
+      event.preventDefault();
+    }
+  }
+
+  /**
+   * Handle click-away to close settings when user clicks outside
+   */
+  _onSettingsDocumentClick(event) {
+    if (!this.__settingsOpen) return;
+    var path = event.composedPath
+      ? event.composedPath()
+      : normalizeEventPath(event) || [];
+    var settingsEl = this.shadowRoot
+      ? this.shadowRoot.querySelector("#settings")
+      : null;
+    var settingsButton = this.shadowRoot
+      ? this.shadowRoot.querySelector("#settings-button")
+      : null;
+    var isInside = false;
+    for (var i = 0; i < path.length; i++) {
+      var node = path[i];
+      if (node === this || node === settingsEl || node === settingsButton) {
+        isInside = true;
+        break;
+      }
+    }
+    if (!isInside) {
+      this.toggleSettings(false);
+    }
+  }
+
   /**
    * returns time in seconds of a string, such as 00:00:00.0, 0h0m0.0s, or 0hh0mm0.0ss
    * @param {string} time
@@ -3542,6 +3609,26 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
       mm = units.length > 1 ? parseInt(units[units.length - 2]) : 0,
       ss = units.length > 0 ? parseFloat(units[units.length - 1]) : 0;
     return hh * 3600 + mm * 60 + ss;
+  }
+
+  disconnectedCallback() {
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
+    if (this._settingsKeydownHandler) {
+      globalThis.removeEventListener(
+        "keydown",
+        this._settingsKeydownHandler,
+        true,
+      );
+    }
+    if (this._settingsClickHandler) {
+      globalThis.removeEventListener(
+        "click",
+        this._settingsClickHandler,
+        true,
+      );
+    }
   }
 }
 globalThis.customElements.define(A11yMediaPlayer.tag, A11yMediaPlayer);

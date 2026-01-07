@@ -234,6 +234,12 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       this.menuItems = [];
       this.keepOpenOnClick = false;
       this.noOpenOnHover = false;
+      // track click-away listener so we can close the menu when
+      // the user clicks anywhere outside of this component
+      this._boundDocumentClick = this._onDocumentClick.bind(this);
+      // use capture so we still see events even if inner controls
+      // stopPropagation on the bubble phase
+      this._docListenerAdded = false;
       [...this.children]
         .filter((n) => n.slot === "menuitem")
         .forEach((item) => this.addItem(item));
@@ -336,6 +342,15 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
     close(force = false) {
       if (force || (!this.focused && !this.hovered)) {
         this.expanded = false;
+        // remove global click listener when menu closes
+        if (this._docListenerAdded) {
+          globalThis.removeEventListener(
+            "click",
+            this._boundDocumentClick,
+            true,
+          );
+          this._docListenerAdded = false;
+        }
         /**
          * Fires when menu is closed
          * @event close
@@ -357,6 +372,12 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      */
     open() {
       this.expanded = true;
+      // add global click listener so clicking anywhere outside
+      // the menu will close it
+      if (!this._docListenerAdded) {
+        globalThis.addEventListener("click", this._boundDocumentClick, true);
+        this._docListenerAdded = true;
+      }
       /**
        * Fires when menu is opened
        * @event close
@@ -503,6 +524,25 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       return !this.menuItems || index < 0 || this.menuItems.length <= index
         ? undefined
         : this.menuItems[index];
+    }
+    /**
+     * Handles click events on the document to implement click-away
+     * behavior for closing the menu when the user clicks outside.
+     *
+     * @param {Event} event
+     */
+    _onDocumentClick(event) {
+      // Prefer the native composedPath when available so we see
+      // through shadow DOM; fall back to normalizeEventPath otherwise.
+      const path = event.composedPath
+        ? event.composedPath()
+        : normalizeEventPath(event) || [];
+      const isInside = path.indexOf(this) !== -1;
+      // If the click happened completely outside this menu button
+      // while the menu is open, close it.
+      if (!isInside && this.expanded) {
+        this.close(true);
+      }
     }
     /**
      * menuitem event listeners and their handlers
@@ -735,6 +775,13 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       var flag = false;
 
       switch (event.keyCode) {
+        case this.keyCode.ESC:
+          if (this.expanded) {
+            this.close(true);
+            flag = true;
+          }
+          break;
+
         case this.keyCode.SPACE:
         case this.keyCode.RETURN:
           // Toggle menu on Enter/Space
@@ -848,6 +895,19 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
     _handleMouseout(event) {
       this.hovered = false;
       setTimeout(() => this.close(), 300);
+    }
+    disconnectedCallback() {
+      if (super.disconnectedCallback) {
+        super.disconnectedCallback();
+      }
+      if (this._docListenerAdded) {
+        globalThis.removeEventListener(
+          "click",
+          this._boundDocumentClick,
+          true,
+        );
+        this._docListenerAdded = false;
+      }
     }
   };
 };

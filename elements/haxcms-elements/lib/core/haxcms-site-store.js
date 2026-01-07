@@ -1333,13 +1333,10 @@ class Store {
    * @returns {string} - The default HTML content for the style guide
    */
   getDefaultStyleGuideContent() {
-    return `<page-template name="Default H1" schema="block" enforce-styles="enforce-styles" data-haxsg-id="header-1a2b03c4-5d6e-7f8g-9h0i-jk1l2m3n4o5p">
-  <h1  data-primary="21" data-font-size="xl" data-font-family="navigation" data-font-weight="bold" data-padding="s" data-margin="l" data-text-align="center" data-design-treatment="horz-full">Heading 1 Example</h1>
-</page-template>
-
-<page-template name="Default H2" schema="block" enforce-styles="enforce-styles" data-haxsg-id="header-8a1e05f0-1ab1-8c5e-f81f-ef2cafc290fa">
-  <h2 data-primary="11" data-font-size="l" data-font-family="navigation" data-font-weight="light" data-padding="s" data-margin="m" data-text-align="center" data-design-treatment="horz-full">Heading 2</h2>
-</page-template>`;
+    // Default style guide content is intentionally empty.
+    // Themes that want style-guide-driven behavior should
+    // provide their own theme/style-guide.html file.
+    return "";
   }
 
   /**
