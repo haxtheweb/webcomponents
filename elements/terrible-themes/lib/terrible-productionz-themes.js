@@ -171,6 +171,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                     .href}/../HEADER.jpg"
                   border="0"
                   align="absbottom"
+                  alt=""
                 />
               </td>
             </tr>
@@ -195,7 +196,8 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                         border="0"
                         width="88"
                         height="31"
-                        vspace="3" /></a
+                        vspace="3"
+                        alt="Acid Scorpio website" /></a
                     ><br />
                   </div>
                 </font>

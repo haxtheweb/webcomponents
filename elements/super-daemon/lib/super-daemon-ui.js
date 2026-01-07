@@ -518,19 +518,17 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
       e.target && typeof e.target.value === "string" ? e.target.value : "";
 
     if (this.programName) {
-      // In program mode we still need `like` to track the live input value
-      // so SimpleFilterMixin can correctly filter `programResults`.
-      // `programSearch` is used for program-specific behaviors (like
-      // Enter handling), while `like` drives list filtering.
+      // don't set like if we're in a program; the active program is
+      // responsible for filtering its own results based on input, and
+      // SimpleFilterMixin should see all programResults unfiltered.
       this.programSearch = value;
-      this.like = value;
     } else {
       this.like = value;
     }
 
     // Bubble a normalized value-changed event so the top-level super-daemon
     // instance always has the live input text (used for create-page titles
-    // and other programs like edit-tags that depend on the raw input).
+    // and other programs that depend on the raw input).
     this.dispatchEvent(
       new CustomEvent("value-changed", {
         bubbles: true,

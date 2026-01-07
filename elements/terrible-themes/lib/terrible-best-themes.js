@@ -38,11 +38,23 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
       this.activeManifestIndex = toJS(store.activeManifestIndex);
       this.__disposer.push(reaction);
     });
-    globalThis.document.body.style.backgroundColor = "#e6fbff";
   }
-  /**
-   * LitElement style callback
-   */
+
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      css`
+        body {
+          background-color: #e6fbff;
+        }
+        body.dark-mode {
+          background-color: #020613;
+          color: #f5f5f5;
+        }
+      `,
+    ];
+  }
+
   static get styles() {
     // support for using in other classes
     let styles = [];
@@ -55,6 +67,9 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
         :host {
           display: block;
         }
+        :host([dark-mode]) {
+          color: #f5f5f5;
+        }
         table {
           padding: 25px 10vw;
         }
@@ -63,6 +78,12 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
           --site-menu-item-active-item-color: white;
           --map-menu-item-a-active-color: navy;
           --map-menu-item-a-active-background-color: white;
+        }
+        :host([dark-mode]) site-menu {
+          --site-menu-active-color: #9bbcff;
+          --site-menu-item-active-item-color: #020613;
+          --map-menu-item-a-active-color: #020613;
+          --map-menu-item-a-active-background-color: #9bbcff;
         }
         scroll-button {
           position: fixed;
@@ -75,6 +96,13 @@ class TerribleBestThemes extends HAXCMSRememberRoute(
           --scroll-button-background-color: white;
           --scroll-button-tooltip-background-color: white;
           --scroll-button-tooltip-color: navy;
+        }
+        :host([dark-mode]) scroll-button {
+          color: #9bbcff;
+          --scroll-button-color: #9bbcff;
+          --scroll-button-background-color: #020613;
+          --scroll-button-tooltip-background-color: #020613;
+          --scroll-button-tooltip-color: #9bbcff;
         }
       `,
     ];

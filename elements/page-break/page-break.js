@@ -1024,6 +1024,10 @@ export class PageBreak extends IntersectionObserverMixin(
     if (!item || !item.id) return;
 
     const SuperDaemonInstance = globalThis.SuperDaemonManager.requestAvailability();
+    // Ensure Merlin / SuperDaemon is in a clean state before launching the
+    // edit-tags program. In practice this helps avoid any lingering program
+    // context from a previous run interfering with subsequent tag edits.
+    SuperDaemonInstance.close();
     store.playSound("click");
 
     const currentTags = (item.metadata && item.metadata.tags) || "";

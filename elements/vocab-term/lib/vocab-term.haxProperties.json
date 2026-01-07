@@ -20,7 +20,28 @@
     }
   },
   "settings": {
-    "inline": [],
+    "inline": [
+      {
+        "property": "innerHTML",
+        "title": "Term",
+        "description": "Text selected in the editor for this vocabulary term.",
+        "inputMethod": "textfield",
+        "disabled": true
+      },
+      {
+        "property": "information",
+        "title": "Definition",
+        "description": "The definitition to display when the term is clicked.",
+        "inputMethod": "textarea",
+        "required": true
+      },
+      {
+        "property": "popoverMode",
+        "title": "Popover",
+        "description": "Display the definition in a popover instead of inline.",
+        "inputMethod": "boolean"
+      }
+    ],
     "configure": [
       {
         "property": "term",
@@ -48,9 +69,26 @@
       {
         "property": "links",
         "title": "Links",
-        "description": "List of links for supplamental use. 1 per line with a , in between title and URL",
-        "inputMethod": "code-editor",
-        "required": false
+        "description": "List of supplemental links associated with this term.",
+        "inputMethod": "array",
+        "itemLabel": "title",
+        "hideReorder": false,
+        "expanded": false,
+        "hideDuplicate": true,
+        "properties": [
+          {
+            "property": "title",
+            "title": "Link title",
+            "inputMethod": "textfield",
+            "required": true
+          },
+          {
+            "property": "href",
+            "title": "URL",
+            "inputMethod": "textfield",
+            "required": true
+          }
+        ]
       }
     ]
   },
@@ -60,7 +98,6 @@
       "properties": {
         "term": "HAX Camp",
         "information": "An event dedicated to spreading web components knowledge person to person.",
-        "links": "Website,https://hax.camp/",
         "popoverMode": true
       },
       "content": ""
