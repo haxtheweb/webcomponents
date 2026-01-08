@@ -789,29 +789,43 @@ export class AppHaxUseCaseFilter extends LitElement {
                     >
                       Loading templates...
                     </p>`
-                  : html`
-                      <div class="fallback-message">
-                        <p role="status" class="no-results" aria-live="polite">
-                          ${this.errorMessage ||
-                          "No templates available. You can still create a blank site."}
-                        </p>
-                        <app-hax-use-case
-                          .source=""
-                          .title="Blank Site"
-                          .description="Create a blank site using the clean-one theme"
-                          .demoLink="#"
-                          .iconImage=${[
-                            { icon: "icons:build", tooltip: "Blank site" },
-                          ]}
-                          .isSelected=${this.selectedCardIndex === -1}
-                          .showContinue=${this.selectedCardIndex === -1}
-                          ?dark="${this.dark}"
-                          aria-label="Template: Blank Site"
-                          @toggle-display=${(e) => this.toggleDisplay(-1, e)}
-                          @continue-action=${() => this.continueAction(-1)}
-                        ></app-hax-use-case>
-                      </div>
-                    `}
+                  : this.items && this.items.length > 0
+                    ? html`<p
+                        role="status"
+                        class="no-results"
+                        aria-live="polite"
+                      >
+                        No templates match your current filters. Reset filters to
+                        see more options.
+                      </p>`
+                    : html`
+                        <div class="fallback-message">
+                          <p
+                            role="status"
+                            class="no-results"
+                            aria-live="polite"
+                          >
+                            ${this.errorMessage ||
+                            "No templates available. You can still create a blank site."}
+                          </p>
+                          <app-hax-use-case
+                            .source=""
+                            .title="Blank Site"
+                            .description="Create a blank site using the clean-one theme"
+                            .demoLink="#"
+                            .iconImage=${[
+                              { icon: "icons:build", tooltip: "Blank site" },
+                            ]}
+                            .isSelected=${this.selectedCardIndex === -1}
+                            .showContinue=${this.selectedCardIndex === -1}
+                            ?dark="${this.dark}"
+                            aria-label="Template: Blank Site"
+                            @toggle-display=${(e) =>
+                              this.toggleDisplay(-1, e)}
+                            @continue-action=${() => this.continueAction(-1)}
+                          ></app-hax-use-case>
+                        </div>
+                      `}
             </div>
           </section>
         </div>
@@ -972,7 +986,14 @@ export class AppHaxUseCaseFilter extends LitElement {
         const original = item.originalData || {};
         const metadata = original.metadata || {};
         const siteMeta = metadata.site || {};
-        const siteCategory = siteMeta.category || [];
+        // Prefer explicit site category metadata, but fall back to the
+        // useCaseTag list (which may be populated from build data) so that
+        // newly created sites still filter correctly by type.
+        let siteCategory =
+          typeof siteMeta.category !== "undefined" &&
+          siteMeta.category !== null
+            ? siteMeta.category
+            : item.useCaseTag || [];
         const title = (original.title || "").toLowerCase();
         const description = (original.description || "").toLowerCase();
         const author = (original.author || "").toLowerCase();
@@ -1243,7 +1264,35 @@ export class AppHaxUseCaseFilter extends LitElement {
             ) {
               tags = [categorySource.trim()];
             }
-            if (tags.length === 0) tags = ["Empty"];
+
+            // Incorporate build data (e.g., course, website) into tags when
+            // available so new sites filter correctly by type
+            let buildType = null;
+            if (item.build && item.build.type) {
+              buildType = item.build.type;
+            } else if (
+              item.metadata &&
+              item.metadata.build &&
+              item.metadata.build.type
+            ) {
+              buildType = item.metadata.build.type;
+            }
+            if (typeof buildType === "string" && buildType.trim() !== "") {
+              tags.push(buildType.trim());
+            }
+
+            // Normalize, dedupe, and provide a sensible default. If no
+            // category info exists, assume the site is a generic Website so
+            // that the Website filter still shows these sites.
+            tags = [
+              ...new Set(
+                tags.filter(
+                  (c) => typeof c === "string" && c.trim() !== "",
+                ),
+              ),
+            ];
+            if (tags.length === 0) tags = ["Website"];
+
             tags.forEach((tag) => this.allFilters.add(tag)); // Add to global Set
             return {
               dataType: "site",
