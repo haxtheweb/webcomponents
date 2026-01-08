@@ -355,7 +355,7 @@ export class AppHaxUseCase extends LitElement {
 
   render() {
     return html`
-      <div class="card">
+      <div class="card" @click="${this.toggleDisplay}">
         <div class="image">
           <img src="${this.source}" alt="${this.title}" />
           <div class="icons">
@@ -388,15 +388,16 @@ export class AppHaxUseCase extends LitElement {
         <div class="cardBottom">
           <button
             class="select ${this.isSelected ? "selected" : ""}"
-            @click=${this.toggleDisplay}
           >
             ${this.isSelected ? "Selected" : "Select"}
           </button>
+          <!-- https://github.com/haxtheweb/issues/issues/2527
           ${!this.isSelected
             ? html`<button class="demo" @click=${() => this.openDemo()}>
                 Demo
               </button>`
             : ""}
+            -->
         </div>
       </div>
     `;
