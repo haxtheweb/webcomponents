@@ -1347,6 +1347,8 @@ export class AppHaxUseCaseFilter extends LitElement {
           },
           theme: {},
         };
+        // Use the template title as the default site name for the blank site
+        modal.siteName = modal.title;
         modal.openModal();
         return;
       }
@@ -1431,6 +1433,10 @@ export class AppHaxUseCaseFilter extends LitElement {
       } else {
         modal.themeElement = "clean-one"; // fallback
       }
+
+      // Prepopulate the site name from the selected template's title
+      modal.siteName =
+        selectedTemplate.useCaseTitle || modal.title || "New site";
 
       // Open the modal
       modal.openModal();

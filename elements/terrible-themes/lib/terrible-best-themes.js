@@ -20,6 +20,8 @@ import { autorun, toJS } from "mobx";
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
+ * @haxcms-theme-category Fun, Website
+ * @haxcms-theme-internal false
  * @demo demo/index.html
  * @element terrible-themes
  */

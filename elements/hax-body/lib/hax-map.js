@@ -428,6 +428,17 @@ class HaxMap extends I18NMixin(SimpleColors) {
         switch (action) {
           case "lock":
             node.setAttribute("data-hax-lock", "data-hax-lock");
+            this.dispatchEvent(
+              new CustomEvent("hax-toggle-active-node-lock", {
+                bubbles: true,
+                composed: true,
+                cancelable: true,
+                detail: {
+                  lock: true,
+                  node: node,
+                },
+              }),
+            );
             break;
           case "delete":
             HAXStore.activeHaxBody.haxDeleteNode(node);
@@ -448,6 +459,17 @@ class HaxMap extends I18NMixin(SimpleColors) {
         }
       } else if (action === "lock") {
         node.removeAttribute("data-hax-lock");
+        this.dispatchEvent(
+          new CustomEvent("hax-toggle-active-node-lock", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: {
+              lock: false,
+              node: node,
+            },
+          }),
+        );
       }
       setTimeout(() => {
         this.requestUpdate();

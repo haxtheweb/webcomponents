@@ -20,6 +20,8 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
+ * @haxcms-theme-category Fun, Website
+ * @haxcms-theme-internal false
  * @demo demo/index.html
  * @element terrible-themes
  */

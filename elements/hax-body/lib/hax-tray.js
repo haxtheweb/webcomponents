@@ -63,6 +63,7 @@ class HaxTray extends I18NMixin(
       "can-redo-changed": "_redoChanged",
       "can-undo-changed": "_undoChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
+      "hax-toggle-active-node-lock": "_handleActiveNodeLock",
     };
     this.trayIcon = "settings";
     this.resizeDrag = false;
@@ -123,6 +124,7 @@ class HaxTray extends I18NMixin(
       },
     };
     this.collapsed = true;
+    this.locked = false;
     this.activeSchema = [
       {
         property: "settings",
@@ -192,6 +194,37 @@ class HaxTray extends I18NMixin(
   }
   _undoChanged(e) {
     this.canUndo = e.detail.value;
+  }
+  _handleActiveNodeLock(e) {
+    if (!e.detail || !e.detail.node) {
+      return;
+    }
+    // Only react when this tray's active node is the one being locked/unlocked
+    if (this.activeNode !== e.detail.node) {
+      return;
+    }
+    const wasLocked = this.locked;
+    this.locked = !!e.detail.lock;
+    // If nothing actually changed, do nothing to avoid extra refreshes
+    if (wasLocked === this.locked) {
+      return;
+    }
+    // Toggle enabled/disabled state of existing fields immediately
+    if (this.shadowRoot && this.shadowRoot.querySelector("#settingsform")) {
+      try {
+        this.__lockAllSettings(this.locked);
+      } catch (err) {
+        // settings form may not be initialized yet; fail silently
+      }
+    }
+    // Trigger a single rebuild of the active node form so schema and
+    // values are in sync with the new lock state. Because we guard on
+    // wasLocked !== this.locked, this only runs once per toggle and
+    // won't create a value-changed feedback loop.
+    if (HAXStore && typeof HAXStore.refreshActiveNodeForm === "function") {
+      HAXStore.refreshActiveNodeForm();
+    }
+    this.requestUpdate();
   }
   /**
    * LitElement render styles
@@ -932,6 +965,8 @@ class HaxTray extends I18NMixin(
       ></hax-tray-button> `;
   }
   get trayDetailTemplate() {
+    const title = this.trayLabel || `${this.activeTagName}`;
+    const lockPrefix = this.locked ? "🔒 " : "";
     return html` <div
       id="tray-detail"
       aria-live="polite"
@@ -945,7 +980,7 @@ class HaxTray extends I18NMixin(
           icon="${this.trayIcon}"
         ></simple-icon-lite>
         <div class="tray-detail-titlebar-label">
-          ${this.trayLabel || `${this.activeTagName}`}
+          ${title ? `${lockPrefix}${title}` : ""}
         </div>
         <div class="tray-detail-titlebar-actions">${this.menuButtons}</div>
       </h4>
@@ -1259,6 +1294,9 @@ class HaxTray extends I18NMixin(
       activeGizmo: {
         type: Object,
       },
+      locked: {
+        type: Boolean,
+      },
       /**
        * State of the panel
        */
@@ -1388,6 +1426,7 @@ class HaxTray extends I18NMixin(
   async _setupForm() {
     this.loading = true;
     let activeNode = this.activeNode;
+    this.locked = this._isNodeLocked(activeNode);
     this._initial = true;
     this.activeValue = {
       settings: {
@@ -1620,14 +1659,15 @@ class HaxTray extends I18NMixin(
                 !prop.slot &&
                 (!prop.attribute || prop.attribute != "slot"),
             );
+        const isLocked = this.locked;
         this.activeSchema[0].properties.push({
           property: propName,
           title: propTitle,
           properties: filteredProps.length > 0 ? filteredProps : undefined,
-          disabled: filteredProps.length < 1,
+          disabled: isLocked || filteredProps.length < 1,
           // we only auto expand (and hence auto focus) active nodes if they are NOT text based
           // grid plates are the exception to the rule here
-          expanded: propName === "configure",
+          expanded: !isLocked && propName === "configure",
           accordion: true,
         });
       };
@@ -1646,6 +1686,11 @@ class HaxTray extends I18NMixin(
       this.shadowRoot.querySelector("#settingsform").value = {};
       this.shadowRoot.querySelector("#settingsform").fields = this.activeSchema;
       this.shadowRoot.querySelector("#settingsform").value = this.activeValue;
+      if (this.locked) {
+        setTimeout(() => {
+          this.__lockAllSettings(true);
+        }, 0);
+      }
       this.loading = false;
     }
   }
@@ -1659,6 +1704,22 @@ class HaxTray extends I18NMixin(
     return Object.keys(obj).map(function (key) {
       return obj[key];
     });
+  }
+  _isNodeLocked(node) {
+    if (!node || !node.getAttribute) {
+      return false;
+    }
+    if (node.getAttribute("data-hax-lock") != null) {
+      return true;
+    }
+    if (
+      node.parentNode &&
+      node.parentNode.getAttribute &&
+      node.parentNode.getAttribute("data-hax-lock") != null
+    ) {
+      return true;
+    }
+    return false;
   }
   /**
    * update hax map
@@ -1776,6 +1837,7 @@ class HaxTray extends I18NMixin(
               }
               // prefix is a special attribute and must be handled this way
               else if (prop === "data-hax-lock") {
+                this.locked = !!settings[key][prop];
                 // broadcast that we just LOCKED it
                 this.dispatchEvent(
                   new CustomEvent("hax-toggle-active-node-lock", {
@@ -1783,13 +1845,14 @@ class HaxTray extends I18NMixin(
                     composed: true,
                     cancelable: true,
                     detail: {
-                      lock: settings[key][prop],
+                      lock: this.locked,
                       node: this.activeNode,
                     },
                   }),
                 );
                 // also lock all fields except us
-                this.__lockAllSettings(settings[key][prop]);
+                this.__lockAllSettings(this.locked);
+                this.requestUpdate();
               }
               // innerText is another special case since it cheats on slot content
               // that is only a text node (like a link)
@@ -1928,6 +1991,7 @@ class HaxTray extends I18NMixin(
               }
             } else {
               if (prop === "data-hax-lock") {
+                this.locked = false;
                 // broadcast that we just UNLOCKED it
                 this.dispatchEvent(
                   new CustomEvent("hax-toggle-active-node-lock", {
@@ -1935,12 +1999,13 @@ class HaxTray extends I18NMixin(
                     composed: true,
                     cancelable: true,
                     detail: {
-                      lock: false,
+                      lock: this.locked,
                       node: this.activeNode,
                     },
                   }),
                 );
                 this.__lockAllSettings(false);
+                this.requestUpdate();
               }
               this.activeNode.removeAttribute(camelCaseToDash(prop));
             }

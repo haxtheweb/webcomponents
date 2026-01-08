@@ -272,6 +272,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           --simple-toolbar-button-padding: 3px 6px;
           --simple-toolbar-border-radius: 0;
         }
+        /* Visually indicate which HAX content tab is active (config / blocks / map / source) */
+        .toolbar-buttons simple-toolbar-button[active] {
+          --simple-icon-color: var(--ddd-theme-default-skyBlue);
+        }
         .toolbar-buttons haxcms-button-add {
           background-color: var(--ddd-theme-default-skyBlue);
           color: white;
@@ -2828,8 +2832,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             voice-command="(modify)(configure)(edit) selected"
             controls="tray-detail"
             tooltip="${this.t.configure} ${this.activeTagName}"
-            toggles
-            ?toggled="${this.trayDetail === "content-edit"}"
+            ?active="${this.trayDetail === "content-edit"}"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
           >
           </simple-toolbar-button>
@@ -2842,8 +2845,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             class="top-bar-button"
             label="${this.t.addBlock} • Ctrl⇧2"
             voice-command="select blocks (menu)"
-            toggles
-            ?toggled="${this.trayDetail === "content-add"}"
+            ?active="${this.trayDetail === "content-add"}"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
             @click="${this.haxButtonOp}"
           >
@@ -2857,9 +2859,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             class="top-bar-button"
             label="${this.t.pageOutline} • Ctrl⇧3"
             voice-command="select content outline (menu)"
-            toggles
             @click="${this.haxButtonOp}"
-            ?toggled="${this.trayDetail === "content-map"}"
+            ?active="${this.trayDetail === "content-map"}"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
           >
           </simple-toolbar-button>
@@ -2875,6 +2876,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             icon-position="${this.getIconPosition(this.responsiveSize)}"
             ?hidden="${!this.editMode}"
             ?disabled="${!this.editMode}"
+            ?active="${this.trayDetail === "view-source"}"
           >
           </simple-toolbar-button>
 
@@ -4508,6 +4510,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         type: Object,
       },
       /**
+       * Current active tray detail (content-edit, content-add, content-map, view-source)
+       * mirrored from HAXStore.haxTray.trayDetail so the top bar can expose state
+       */
+      trayDetail: {
+        type: String,
+        attribute: "tray-detail",
+        reflect: true,
+      },
+      /**
        * Whether we're currently on an internal route
        */
       onInternalRoute: {
@@ -4529,6 +4540,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this._registerKeyboardShortcuts();
     HAXCMSKeyboardShortcutsInstance.enable();
 
+    // Mirror HAX tray detail into this element so we can expose and style active state.
+    // IMPORTANT: use the observable HAXStore.trayDetail, not haxTray.trayDetail,
+    // so MobX actually tracks and updates this value.
+    autorun((reaction) => {
+      this.trayDetail = toJS(HAXStore.trayDetail);
+      this.__disposer.push(reaction);
+    });
+
     autorun((reaction) => {
       if (store.userData) {
         this.userName = toJS(store.userData.userName);
@@ -4539,8 +4558,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
-      this.editMode = toJS(store.editMode);
+      const previousEditMode = this.editMode;
+      const newEditMode = toJS(store.editMode);
+      this.editMode = newEditMode;
       UserScaffoldInstance.writeMemory("editMode", this.editMode);
+      // When we first enter edit mode and there is an active node selected,
+      // prefer the Configure tab over Blocks as the default tray panel.
+      if (
+        !previousEditMode &&
+        newEditMode &&
+        HAXStore.activeNode &&
+        HAXStore.activeNode.tagName
+      ) {
+        HAXStore.trayDetail = "content-edit";
+        if (HAXStore.haxTray) {
+          HAXStore.haxTray.trayDetail = "content-edit";
+          HAXStore.haxTray.collapsed = false;
+        }
+      }
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {

@@ -515,7 +515,8 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
   openModal() {
     this.open = true;
     this.currentStep = 1;
-    this.siteName = "";
+    // Preserve any prepopulated siteName from the caller; default to empty string
+    this.siteName = this.siteName || "";
     this.errorMessage = "";
     this.showConfetti = false;
     this.isCreating = false;
@@ -540,6 +541,10 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           this.shadowRoot && this.shadowRoot.querySelector(".form-input");
         if (input) {
           input.focus();
+          // Select the full value so it's easy to overwrite via keyboard
+          if (typeof input.select === "function") {
+            input.select();
+          }
         }
       }, 100);
     });
@@ -777,6 +782,16 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
 
       this.showConfetti = true;
       this.generateConfetti();
+
+      // After success UI renders, move focus to the primary action (Go to Site)
+      this.updateComplete.then(() => {
+        const goToSiteButton =
+          this.shadowRoot &&
+          this.shadowRoot.querySelector(".button.button-success");
+        if (goToSiteButton) {
+          goToSiteButton.focus();
+        }
+      });
 
       // Trigger confetti on main page
       this.triggerMainPageConfetti();

@@ -449,18 +449,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock]:hover) {
           opacity: 0.9;
         }
-        :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock])::after {
-          width: 28px;
-          height: 28px;
-          content: "";
-          display: flex;
-          float: right;
-          z-index: 1;
-          position: relative;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-color: #fffafa;
-        }
         :host([edit-mode])
           #bodycontainer
           ::slotted(*:not([data-hax-layout]):hover) {
@@ -609,7 +597,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.editMode = false;
     this.haxMover = false;
     this.activeNode = null;
-    this.__lockIconPath = SimpleIconsetStore.getIcon("icons:lock");
     this.part = "hax-body";
     this.t = {
       addContent: "Add Content",
@@ -1000,23 +987,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       },
     };
   }
-  HAXBODYStyleSheetContent() {
-    let styles = [];
-    styles.push(css`
-      :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock])::after {
-        background-image: url("${unsafeCSS(this.__lockIconPath)}");
-      }
-    `);
-    return styles;
-  }
   /**
    * LitElement life cycle - ready
    */
   firstUpdated(changedProperties) {
-    render(
-      this.HAXBODYStyleSheetContent(),
-      this.shadowRoot.querySelector("#hax-body-style-element"),
-    );
     this.dispatchEvent(
       new CustomEvent("hax-register-body", {
         bubbles: true,
@@ -1115,6 +1089,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.contextMenus.plate.canMoveElement = false;
       e.detail.node.removeAttribute("contenteditable");
       this.removeAttribute("contenteditable");
+    }
+    // if this is the currently active node, immediately restore or
+    // update the context menus so text operations reflect the new state
+    if (e.detail.node === this.activeNode) {
+      this.positionContextMenus(this.activeNode);
+      this._keepContextVisible();
     }
     this.requestUpdate();
   }
