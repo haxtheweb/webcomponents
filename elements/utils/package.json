@@ -49,5 +49,5 @@
     "rimraf": "^5.0.7",
     "rollup-plugin-esbuild": "6.2.1"
   },
-  "gitHead": "73a678e1d035b003097fd50b7b23c0d9c30f9b26"
+  "gitHead": "205ca9f1c3abd2c09938118965e60a15d90a58bb"
 }
