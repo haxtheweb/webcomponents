@@ -1420,11 +1420,17 @@ export class AppHaxUseCaseFilter extends LitElement {
         selectedTemplate.skeletonUrl
       ) {
         try {
-          const skeletonUrl = new URL(
-            selectedTemplate.skeletonUrl,
-            import.meta.url,
-          ).href;
-          const response = await fetch(skeletonUrl);
+          const rawUrl = selectedTemplate.skeletonUrl || "";
+          // Enforce root-relative URL so requests stay on current origin
+          // and cannot be pointed at arbitrary external hosts.
+          if (!rawUrl.startsWith("/")) {
+            console.warn(
+              "Refusing to load skeleton from non-root-relative URL:",
+              rawUrl,
+            );
+            return;
+          }
+          const response = await fetch(rawUrl);
           if (response.ok) {
             const skeletonData = await response.json();
             // Store skeleton data for use in site creation
@@ -1433,11 +1439,11 @@ export class AppHaxUseCaseFilter extends LitElement {
               (modal.skeletonData.site && modal.skeletonData.site.theme) ||
               "clean-one";
           } else {
-            console.warn(`Failed to load skeleton from ${skeletonUrl}`);
+            console.warn(`Failed to load skeleton from ${rawUrl}`);
             modal.themeElement = "clean-one"; // fallback
           }
         } catch (error) {
-          console.warn(`Error loading skeleton:`, error);
+          console.warn("Error loading skeleton:", error);
           modal.themeElement = "clean-one"; // fallback
         }
       } else if (
