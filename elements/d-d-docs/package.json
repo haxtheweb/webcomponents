@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/d-d-docs",
-  "version": "11.0.5",
+  "version": "25.0.0",
   "description": "Webcomponent d-d-docs following hax / open-wc recommendations",
   "license": "Apache-2.0",
   "author": {
@@ -29,19 +29,19 @@
     "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
   },
   "dependencies": {
-    "@haxtheweb/accent-card": "^11.0.5",
-    "@haxtheweb/course-design": "^11.0.5",
-    "@haxtheweb/d-d-d": "^11.0.5",
-    "@haxtheweb/deduping-fix": "^11.0.0",
-    "@haxtheweb/figure-label": "^11.0.5",
-    "@haxtheweb/haxcms-elements": "^11.0.5",
-    "@haxtheweb/media-image": "^11.0.5",
-    "@haxtheweb/page-section": "^11.0.5",
-    "@haxtheweb/self-check": "^11.0.5",
-    "@haxtheweb/simple-cta": "^11.0.0",
-    "@haxtheweb/simple-modal": "^11.0.5",
-    "@haxtheweb/stop-note": "^11.0.5",
-    "@haxtheweb/video-player": "^11.0.5",
+    "@haxtheweb/accent-card": "^25.0.0",
+    "@haxtheweb/course-design": "^25.0.0",
+    "@haxtheweb/d-d-d": "^25.0.0",
+    "@haxtheweb/deduping-fix": "^25.0.0",
+    "@haxtheweb/figure-label": "^25.0.0",
+    "@haxtheweb/haxcms-elements": "^25.0.0",
+    "@haxtheweb/media-image": "^25.0.0",
+    "@haxtheweb/page-section": "^25.0.0",
+    "@haxtheweb/self-check": "^25.0.0",
+    "@haxtheweb/simple-cta": "^25.0.0",
+    "@haxtheweb/simple-modal": "^25.0.0",
+    "@haxtheweb/stop-note": "^25.0.0",
+    "@haxtheweb/video-player": "^25.0.0",
     "lit": "3.3.1"
   },
   "devDependencies": {

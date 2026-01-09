@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "11.0.5",
+  "version": "25.0.0",
   "description": "design, develop, destroy the competition",
   "repository": {
     "type": "git",
@@ -44,9 +44,9 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/hax-iconset": "^11.0.0",
-    "@haxtheweb/simple-colors": "^11.0.5",
-    "@haxtheweb/simple-icon": "^11.0.5",
+    "@haxtheweb/hax-iconset": "^25.0.0",
+    "@haxtheweb/simple-colors": "^25.0.0",
+    "@haxtheweb/simple-icon": "^25.0.0",
     "lit": "3.3.1"
   },
   "devDependencies": {

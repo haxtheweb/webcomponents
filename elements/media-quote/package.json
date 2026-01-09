@@ -6,7 +6,7 @@
     "elementName": "media-quote",
     "generator-wcfactory-version": "0.14.0"
   },
-  "version": "11.0.5",
+  "version": "25.0.0",
   "description": "A quote focused around a piece of media with citation",
   "repository": {
     "type": "git",
@@ -28,11 +28,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^11.0.5",
+    "@haxtheweb/d-d-d": "^25.0.0",
     "lit": "3.3.1"
   },
   "devDependencies": {
-    "@haxtheweb/deduping-fix": "^11.0.0",
+    "@haxtheweb/deduping-fix": "^25.0.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2",

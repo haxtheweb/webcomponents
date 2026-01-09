@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "11.0.5",
+  "version": "25.0.0",
   "description": "Rendering Chartist",
   "repository": {
     "type": "git",
@@ -41,8 +41,8 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/es-global-bridge": "^11.0.0",
-    "@haxtheweb/utils": "^11.0.0",
+    "@haxtheweb/es-global-bridge": "^25.0.0",
+    "@haxtheweb/utils": "^25.0.0",
     "@polymer/iron-ajax": "3.0.1",
     "chartist": "^0.11.0",
     "chartist-plugin-accessibility": "0.0.5",
@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/deduping-fix": "^11.0.0",
+    "@haxtheweb/deduping-fix": "^25.0.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2",

@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "11.0.5",
+  "version": "25.0.0",
   "description": "listing and display elements for collections of items",
   "repository": {
     "type": "git",
@@ -43,16 +43,16 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/responsive-utility": "^11.0.5",
-    "@haxtheweb/simple-colors": "^11.0.5",
-    "@haxtheweb/simple-fields": "^11.0.0",
-    "@haxtheweb/simple-icon": "^11.0.5",
+    "@haxtheweb/responsive-utility": "^25.0.0",
+    "@haxtheweb/simple-colors": "^25.0.0",
+    "@haxtheweb/simple-fields": "^25.0.0",
+    "@haxtheweb/simple-icon": "^25.0.0",
     "lit": "3.3.1",
     "mobx": "6.13.7"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/deduping-fix": "^11.0.0",
+    "@haxtheweb/deduping-fix": "^25.0.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2",

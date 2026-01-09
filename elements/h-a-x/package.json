@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "11.0.5",
+  "version": "25.0.0",
   "description": "Single tag to transform authoring",
   "repository": {
     "type": "git",
@@ -41,12 +41,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/hax-body": "^11.0.5"
+    "@haxtheweb/hax-body": "^25.0.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/deduping-fix": "^11.0.0",
-    "@haxtheweb/editable-table": "^11.0.5",
+    "@haxtheweb/deduping-fix": "^25.0.0",
+    "@haxtheweb/editable-table": "^25.0.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2",

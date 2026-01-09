@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "11.0.5",
+  "version": "25.0.0",
   "description": "HAX as a bookmarklet script",
   "repository": {
     "type": "git",
@@ -41,13 +41,13 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/cms-hax": "^11.0.5",
-    "@haxtheweb/hax-body-behaviors": "^11.0.5",
+    "@haxtheweb/cms-hax": "^25.0.0",
+    "@haxtheweb/hax-body-behaviors": "^25.0.0",
     "@polymer/polymer": "3.5.2"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/deduping-fix": "^11.0.0",
+    "@haxtheweb/deduping-fix": "^25.0.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2",

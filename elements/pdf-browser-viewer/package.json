@@ -16,7 +16,7 @@
     },
     "sharedStyles": []
   },
-  "version": "11.0.0",
+  "version": "25.0.0",
   "description": "Start of pdf-browser-viewer",
   "repository": {
     "type": "git",
@@ -41,12 +41,12 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/simple-icon": "^11.0.5",
+    "@haxtheweb/simple-icon": "^25.0.0",
     "lit": "3.3.1"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/deduping-fix": "^11.0.0",
+    "@haxtheweb/deduping-fix": "^25.0.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2",

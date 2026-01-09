@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/example-haxcms-theme",
-  "version": "11.0.5",
+  "version": "25.0.0",
   "description": "Webcomponent example-haxcms-theme following hax / open-wc recommendations",
   "license": "Apache-2.0",
   "author": {
@@ -28,7 +28,7 @@
     "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
   },
   "dependencies": {
-    "@haxtheweb/haxcms-elements": "^11.0.5",
+    "@haxtheweb/haxcms-elements": "^25.0.0",
     "lit": "3.3.1"
   },
   "devDependencies": {

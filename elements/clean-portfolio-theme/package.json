@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/clean-portfolio-theme",
-  "version": "11.0.5",
+  "version": "25.0.0",
   "description": "Webcomponent clean-portfolio-theme following hax / open-wc recommendations",
   "license": "Apache-2.0",
   "author": {
@@ -28,8 +28,8 @@
     "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
   },
   "dependencies": {
-    "@haxtheweb/d-d-d": "^11.0.5",
-    "@haxtheweb/i18n-manager": "^11.0.0",
+    "@haxtheweb/d-d-d": "^25.0.0",
+    "@haxtheweb/i18n-manager": "^25.0.0",
     "lit": "3.3.1"
   },
   "devDependencies": {

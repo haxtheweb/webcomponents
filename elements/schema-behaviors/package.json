@@ -12,7 +12,7 @@
     },
     "sharedStyles": []
   },
-  "version": "11.0.5",
+  "version": "25.0.0",
   "description": "Apply schema helper behaviors to existing Polymer (Legacy) based elements",
   "repository": {
     "type": "git",
@@ -37,11 +37,11 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/utils": "^11.0.0"
+    "@haxtheweb/utils": "^25.0.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/deduping-fix": "^11.0.0",
+    "@haxtheweb/deduping-fix": "^25.0.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2",

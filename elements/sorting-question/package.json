@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "11.0.5",
+  "version": "25.0.0",
   "description": "sorting questions to be in the right order when they are randomized.",
   "repository": {
     "type": "git",
@@ -44,17 +44,17 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^11.0.5",
-    "@haxtheweb/grid-plate": "^11.0.5",
-    "@haxtheweb/multiple-choice": "^11.0.5",
-    "@haxtheweb/simple-icon": "^11.0.5",
-    "@haxtheweb/simple-toast": "^11.0.5",
-    "@haxtheweb/simple-toolbar": "^11.0.5",
+    "@haxtheweb/d-d-d": "^25.0.0",
+    "@haxtheweb/grid-plate": "^25.0.0",
+    "@haxtheweb/multiple-choice": "^25.0.0",
+    "@haxtheweb/simple-icon": "^25.0.0",
+    "@haxtheweb/simple-toast": "^25.0.0",
+    "@haxtheweb/simple-toolbar": "^25.0.0",
     "lit": "3.3.1"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/deduping-fix": "^11.0.0",
+    "@haxtheweb/deduping-fix": "^25.0.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
     "concurrently": "9.1.2",
