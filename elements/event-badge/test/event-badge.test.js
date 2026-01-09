@@ -51,7 +51,9 @@ describe("event-badge test", () => {
     });
 
     it("should have default image", () => {
-      expect(element.image).to.equal("https://avatars1.githubusercontent.com/u/329735?s=400&v=4");
+      expect(element.image).to.equal(
+        "https://avatars1.githubusercontent.com/u/329735?s=400&v=4",
+      );
     });
 
     it("should have default tvcolor", () => {
@@ -84,10 +86,12 @@ describe("event-badge test", () => {
       element.title = "New Title";
       await element.updateComplete;
       expect(element.title).to.equal("New Title");
-      
+
       // Check if the title is rendered in the SVG
-      const titleText = element.shadowRoot.querySelector('[xmlns="http://www.w3.org/1999/xhtml"]');
-      expect(titleText?.textContent).to.include("New Title");
+      const titleText = element.shadowRoot.querySelector(
+        '[xmlns="http://www.w3.org/1999/xhtml"]',
+      );
+      expect(titleText && titleText.textContent).to.include("New Title");
     });
 
     it("should update name property", async () => {
@@ -113,9 +117,9 @@ describe("event-badge test", () => {
       element.image = newImage;
       await element.updateComplete;
       expect(element.image).to.equal(newImage);
-      
+
       // Check if image is used in SVG
-      const imageElement = element.shadowRoot.querySelector('image[href]');
+      const imageElement = element.shadowRoot.querySelector("image[href]");
       expect(imageElement).to.exist;
     });
 
@@ -143,25 +147,25 @@ describe("event-badge test", () => {
     it("should apply sepia filter when sepia is true", async () => {
       element.sepia = true;
       await element.updateComplete;
-      
+
       expect(element.sepia).to.be.true;
-      expect(element.hasAttribute('sepia')).to.be.true;
-      
+      expect(element.hasAttribute("sepia")).to.be.true;
+
       // Check CSS filter application
       const styles = getComputedStyle(element);
-      expect(styles.filter).to.include('sepia');
+      expect(styles.filter).to.include("sepia");
     });
 
     it("should apply grayscale filter when blackwhite is true", async () => {
       element.blackwhite = true;
       await element.updateComplete;
-      
+
       expect(element.blackwhite).to.be.true;
-      expect(element.hasAttribute('blackwhite')).to.be.true;
-      
+      expect(element.hasAttribute("blackwhite")).to.be.true;
+
       // Check CSS filter application
       const styles = getComputedStyle(element);
-      expect(styles.filter).to.include('grayscale');
+      expect(styles.filter).to.include("grayscale");
     });
 
     it("should remove sepia filter when sepia is false", async () => {
@@ -169,9 +173,9 @@ describe("event-badge test", () => {
       await element.updateComplete;
       element.sepia = false;
       await element.updateComplete;
-      
+
       expect(element.sepia).to.be.false;
-      expect(element.hasAttribute('sepia')).to.be.false;
+      expect(element.hasAttribute("sepia")).to.be.false;
     });
 
     it("should remove blackwhite filter when blackwhite is false", async () => {
@@ -179,9 +183,9 @@ describe("event-badge test", () => {
       await element.updateComplete;
       element.blackwhite = false;
       await element.updateComplete;
-      
+
       expect(element.blackwhite).to.be.false;
-      expect(element.hasAttribute('blackwhite')).to.be.false;
+      expect(element.hasAttribute("blackwhite")).to.be.false;
     });
   });
 
@@ -189,46 +193,46 @@ describe("event-badge test", () => {
     it("should reflect sepia property to attribute", async () => {
       element.sepia = true;
       await element.updateComplete;
-      expect(element.hasAttribute('sepia')).to.be.true;
-      
+      expect(element.hasAttribute("sepia")).to.be.true;
+
       element.sepia = false;
       await element.updateComplete;
-      expect(element.hasAttribute('sepia')).to.be.false;
+      expect(element.hasAttribute("sepia")).to.be.false;
     });
 
     it("should reflect blackwhite property to attribute", async () => {
       element.blackwhite = true;
       await element.updateComplete;
-      expect(element.hasAttribute('blackwhite')).to.be.true;
-      
+      expect(element.hasAttribute("blackwhite")).to.be.true;
+
       element.blackwhite = false;
       await element.updateComplete;
-      expect(element.hasAttribute('blackwhite')).to.be.false;
+      expect(element.hasAttribute("blackwhite")).to.be.false;
     });
   });
 
   describe("SVG Rendering", () => {
     it("should render SVG with correct dimensions", () => {
-      const svg = element.shadowRoot.querySelector('svg');
+      const svg = element.shadowRoot.querySelector("svg");
       expect(svg).to.exist;
-      expect(svg.getAttribute('width')).to.equal('300');
-      expect(svg.getAttribute('height')).to.equal('400');
-      expect(svg.getAttribute('viewBox')).to.equal('0 0 1150 1500');
+      expect(svg.getAttribute("width")).to.equal("300");
+      expect(svg.getAttribute("height")).to.equal("400");
+      expect(svg.getAttribute("viewBox")).to.equal("0 0 1150 1500");
     });
 
     it("should have proper SVG structure", () => {
-      const svg = element.shadowRoot.querySelector('svg');
+      const svg = element.shadowRoot.querySelector("svg");
       expect(svg).to.exist;
-      
+
       // Check for defs with filters
-      const defs = svg.querySelector('defs');
+      const defs = svg.querySelector("defs");
       expect(defs).to.exist;
-      
+
       // Check for specific filters
-      const dropshadow = defs.querySelector('#dropshadow');
+      const dropshadow = defs.querySelector("#dropshadow");
       expect(dropshadow).to.exist;
-      
-      const noise = defs.querySelector('#noise');
+
+      const noise = defs.querySelector("#noise");
       expect(noise).to.exist;
     });
 
@@ -236,15 +240,15 @@ describe("event-badge test", () => {
       const testImage = "https://test.example.com/image.jpg";
       element.image = testImage;
       await element.updateComplete;
-      
-      const imageElement = element.shadowRoot.querySelector('image');
+
+      const imageElement = element.shadowRoot.querySelector("image");
       expect(imageElement).to.exist;
     });
 
     it("should use CSS variables for colors", () => {
-      const svg = element.shadowRoot.querySelector('svg');
+      const svg = element.shadowRoot.querySelector("svg");
       expect(svg).to.exist;
-      
+
       // Check if color variables are used in SVG paths
       const colorElements = svg.querySelectorAll('[fill*="var("]');
       expect(colorElements.length).to.be.greaterThan(0);
@@ -253,7 +257,7 @@ describe("event-badge test", () => {
 
   describe("Color System Integration", () => {
     it("should extend SimpleColors", () => {
-      expect(element.constructor.name).to.equal('EventBadge');
+      expect(element.constructor.name).to.equal("EventBadge");
       expect(element.accentColor).to.exist;
     });
 
@@ -262,7 +266,7 @@ describe("event-badge test", () => {
       element.tvcolor = "green";
       element.knobcolor = "yellow";
       await element.updateComplete;
-      
+
       expect(element.accentColor).to.equal("red");
       expect(element.tvcolor).to.equal("green");
       expect(element.knobcolor).to.equal("yellow");
@@ -280,9 +284,9 @@ describe("event-badge test", () => {
       element.tvcolor = "blue";
       element.knobcolor = "red";
       element.sepia = true;
-      
+
       await element.updateComplete;
-      
+
       expect(element.title).to.equal("Conference Speaker");
       expect(element.name).to.equal("Jane Smith");
       expect(element.position).to.equal("Lead Developer");
@@ -301,7 +305,7 @@ describe("event-badge test", () => {
     it("should include title in rendered content", async () => {
       element.title = "Test Event";
       await element.updateComplete;
-      
+
       // The title is embedded in the SVG template literal directly
       const svgContent = element.shadowRoot.innerHTML;
       expect(svgContent).to.include("Test Event");
@@ -314,14 +318,14 @@ describe("event-badge test", () => {
       element.name = "User Name";
       element.sepia = true;
       await element.updateComplete;
-      
+
       await expect(element).shadowDom.to.be.accessible();
     });
 
     it("should be accessible with blackwhite filter", async () => {
       element.blackwhite = true;
       await element.updateComplete;
-      
+
       await expect(element).shadowDom.to.be.accessible();
     });
 
@@ -329,7 +333,7 @@ describe("event-badge test", () => {
       element.tvcolor = "purple";
       element.knobcolor = "orange";
       await element.updateComplete;
-      
+
       await expect(element).shadowDom.to.be.accessible();
     });
   });
@@ -337,16 +341,26 @@ describe("event-badge test", () => {
   describe("Performance and Updates", () => {
     it("should handle rapid property changes", async () => {
       const changes = [
-        () => { element.title = "Title 1"; },
-        () => { element.name = "Name 1"; },
-        () => { element.position = "Position 1"; },
-        () => { element.tvcolor = "red"; },
-        () => { element.sepia = true; }
+        () => {
+          element.title = "Title 1";
+        },
+        () => {
+          element.name = "Name 1";
+        },
+        () => {
+          element.position = "Position 1";
+        },
+        () => {
+          element.tvcolor = "red";
+        },
+        () => {
+          element.sepia = true;
+        },
       ];
-      
-      changes.forEach(change => change());
+
+      changes.forEach((change) => change());
       await element.updateComplete;
-      
+
       expect(element.title).to.equal("Title 1");
       expect(element.name).to.equal("Name 1");
       expect(element.position).to.equal("Position 1");
@@ -358,7 +372,7 @@ describe("event-badge test", () => {
       element.logo = null;
       element.image = null;
       await element.updateComplete;
-      
+
       expect(element.logo).to.be.null;
       expect(element.image).to.be.null;
     });
@@ -366,11 +380,13 @@ describe("event-badge test", () => {
 
   describe("Style and CSS Integration", () => {
     it("should have proper CSS custom properties support", () => {
-      const svg = element.shadowRoot.querySelector('svg');
+      const svg = element.shadowRoot.querySelector("svg");
       expect(svg).to.exist;
-      
+
       // Check for CSS variable usage in fill attributes
-      const fillElements = svg.querySelectorAll('[fill*="--simple-colors-default-theme"]');
+      const fillElements = svg.querySelectorAll(
+        '[fill*="--simple-colors-default-theme"]',
+      );
       expect(fillElements.length).to.be.greaterThan(0);
     });
 
@@ -387,7 +403,7 @@ describe("event-badge test", () => {
       element.position = "";
       element.organization = "";
       await element.updateComplete;
-      
+
       expect(element.title).to.equal("");
       expect(element.name).to.equal("");
       expect(element.position).to.equal("");
@@ -395,10 +411,10 @@ describe("event-badge test", () => {
     });
 
     it("should handle special characters in properties", async () => {
-      element.title = "Title with & < > \" characters";
+      element.title = 'Title with & < > " characters';
       element.name = "Name with émojis 🎉";
       await element.updateComplete;
-      
+
       expect(element.title).to.include("&");
       expect(element.name).to.include("🎉");
     });
@@ -407,7 +423,7 @@ describe("event-badge test", () => {
       element.image = "invalid-url";
       element.logo = "also-invalid";
       await element.updateComplete;
-      
+
       expect(element.image).to.equal("invalid-url");
       expect(element.logo).to.equal("also-invalid");
     });
@@ -416,10 +432,10 @@ describe("event-badge test", () => {
   describe("Integration Tests", () => {
     it("should work with different instantiation methods", async () => {
       // Test direct instantiation
-      const directElement = document.createElement('event-badge');
+      const directElement = document.createElement("event-badge");
       directElement.title = "Direct Title";
       expect(directElement.title).to.equal("Direct Title");
-      
+
       // Test fixture instantiation with properties
       const configuredElement = await fixture(html`
         <event-badge
@@ -428,25 +444,25 @@ describe("event-badge test", () => {
           sepia
         ></event-badge>
       `);
-      
+
       expect(configuredElement.title).to.equal("Configured Title");
       expect(configuredElement.name).to.equal("Configured Name");
       expect(configuredElement.sepia).to.be.true;
     });
 
     it("should handle dynamic DOM insertion", async () => {
-      const container = document.createElement('div');
-      const dynamicElement = document.createElement('event-badge');
+      const container = document.createElement("div");
+      const dynamicElement = document.createElement("event-badge");
       dynamicElement.title = "Dynamic Badge";
-      
+
       container.appendChild(dynamicElement);
       document.body.appendChild(container);
-      
+
       await dynamicElement.updateComplete;
-      
+
       expect(dynamicElement.title).to.equal("Dynamic Badge");
       expect(dynamicElement.shadowRoot).to.exist;
-      
+
       // Cleanup
       document.body.removeChild(container);
     });

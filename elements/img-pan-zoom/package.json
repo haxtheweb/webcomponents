@@ -2,7 +2,7 @@
   "name": "@haxtheweb/img-pan-zoom",
   "wcfactory": {
     "className": "ImgPanZoom",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "img-pan-zoom",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,
@@ -43,17 +43,13 @@
   "dependencies": {
     "@haxtheweb/es-global-bridge": "^11.0.0",
     "@haxtheweb/hexagon-loader": "^11.0.5",
-    "@polymer/paper-spinner": "3.0.2",
-    "@polymer/polymer": "3.5.2"
+    "lit": "3.3.1"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/deduping-fix": "^11.0.0",
     "@open-wc/testing": "4.0.0",
-    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
-    "@haxtheweb/utils": "^11.0.0",
     "@web/dev-server": "0.4.6",
-    "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "9.1.2",
     "wct-browser-legacy": "1.0.2"
   },

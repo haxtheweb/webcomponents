@@ -3,6 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 import "@haxtheweb/simple-fields/lib/simple-tags.js";
@@ -13,7 +14,7 @@ import "@haxtheweb/simple-fields/lib/simple-tags.js";
  *
  * @demo demo/index.html
  */
-class SiteActiveTags extends LitElement {
+class SiteActiveTags extends I18NMixin(LitElement) {
   /**
    * Store the tag name to make it easier to obtain directly.
    */
@@ -26,6 +27,11 @@ class SiteActiveTags extends LitElement {
       css`
         :host {
           display: block;
+        }
+        .tag-container {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
         }
         a {
           text-decoration: none;
@@ -40,23 +46,25 @@ class SiteActiveTags extends LitElement {
    * LitElement
    */
   render() {
-    return html`<div class="tag-wrap"></div>${
-      this.tags && this.tags != "" && this.tags.split
-        ? this.tags.split(",").map(
-            (tag) =>
-              html` <a
-                @click="${this.testEditMode}"
-                href="x/tags?tag=${tag.trim()}"
-              >
-                <simple-tag
-                  ?auto-accent-color="${this.autoAccentColor}"
-                  value="${tag.trim()}"
-                  accent-color="${this.accentColor}"
-                ></simple-tag>
-              </a>`,
-          )
-        : ``
-    }</div>`;
+    return html`
+      <div class="tag-wrap">
+        ${this.tags && this.tags != "" && this.tags.split
+          ? this.tags.split(",").map(
+              (tag) =>
+                html` <a
+                  @click="${this.testEditMode}"
+                  href="x/tags?tag=${tag.trim()}"
+                >
+                  <simple-tag
+                    ?auto-accent-color="${this.autoAccentColor}"
+                    value="${tag.trim()}"
+                    accent-color="${this.accentColor}"
+                  ></simple-tag>
+                </a>`,
+            )
+          : ``}
+      </div>
+    `;
   }
 
   testEditMode(e) {
@@ -98,6 +106,10 @@ class SiteActiveTags extends LitElement {
     this.accentColor = null;
     this.tags = null;
     this.__disposer = [];
+    this.registerLocalization({
+      context: this,
+      basePath: import.meta.url,
+    });
     autorun((reaction) => {
       this.tags = toJS(store.activeTags);
       this.__disposer.push(reaction);

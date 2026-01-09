@@ -9,10 +9,10 @@
 
     <script type="module">
       
-      import "@haxtheweb/utils/lib/demo-snippet.js";
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
       import '../video-player.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    
     <style>
       .max-600 {
         max-width: 600px;
@@ -128,6 +128,21 @@
       <demo-snippet>
         <template>
           <video-player id="video" accent-color="lime" dark source="./samples/bueller.mp3" tracks='[{ "src": "./samples/bueller.vtt", "kind": "subtitles", "srclang": "en", "label": "English" }]'></video-player>
+        </template>
+      </demo-snippet>
+
+      <h2>video-player with multiple track types (subtitles, captions, descriptions)</h2>
+      <demo-snippet>
+        <template>
+          <video-player 
+            accent-color="blue" 
+            source="https://iandevlin.github.io/mdn/video-player-with-captions/video/sintel-short.mp4"
+            tracks='[
+              { "src": "./samples/sintel-en.vtt", "kind": "captions", "srclang": "en", "label": "English Captions" },
+              { "src": "./samples/sintel-es.vtt", "kind": "subtitles", "srclang": "es", "label": "Spanish Subtitles" },
+              { "src": "./samples/sintel-de.vtt", "kind": "subtitles", "srclang": "de", "label": "German Subtitles" }
+            ]'>
+          </video-player>
         </template>
       </demo-snippet>
     </div>

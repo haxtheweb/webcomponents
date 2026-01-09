@@ -9,75 +9,173 @@
 
     <script>window.WCGlobalBasePath = "/node_modules/";</script>
     <script type="module">
-      
       import '../lunr-search.js';
+      import '@haxtheweb/simple-icon/lib/simple-icon-lite.js';
+      import '@haxtheweb/d-d-d/d-d-d.js';
     </script>
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic lunr-search demo</h3>
       <p>This illustrates some data binding <a href="lunrSearchIndex.json">leveraging this as a data set</a>.</p>
-        <dom-bind>
-          <template>
-            <style is="custom-style" include="demo-pages-shared-styles">
-              .example-result {
-                background-color: #EEEEEE;
-                color: #222222;
-                border: 1px solid black;
-                padding: 16px;
-              }
-            
-              .example-result:hover {
-                background-color: #DDDDDD;
-                color: black;
-              }
-            
-              .example-result h4 {
-                font-size: 30px;
-                margin: 0;
-              }
-            
-              .example-result h5 {
-                font-size: 18px;
-                font-color: #666666;
-                margin: 0;
-              }
-            
-              #input {
-                flex-grow: 2;
-                margin-right: 4px;
-                --paper-input-container-input-color: var(--simple-search-input-text-color,
-                  #000);
-                --paper-input-container-shared-input-style_-_color: var(--simple-search-input-text-color,
-                  #000);
-                --paper-input-container-focus-color: var(--simple-search-input-line-color,
-                  #000);
-                --paper-input-container-color: var(--simple-search-input-placeholder-color,
-                  #222);
-                color: var(--simple-search-input-placeholder-color, #222);
-              }
-            </style>
-          <paper-input id="input" always-float-label label="Search" value="{{__search}}">
-            <simple-icon icon="search" slot="prefix"></simple-icon>
-          </paper-input>
-          <template is="dom-if" if="[[__search]]">
-            Found [[__results.length]] results.
-          </template>
-          <lunr-search
-          data-source="lunrSearchIndex.json"
-          search="[[__search]]"
-          results="{{__results}}"></lunr-search>
-          <iron-list items="[[__results]]">
-            <template>
-              <div class="example-result">
-                <h4>[[item.title]]</h4>
-                <h5>[[item.location]]</h5>
-                <div>[[item.description]]..</div>
-              </div>
-            </template>
-          </iron-list>
-          </template>
-        </dom-bind>
+      <lunr-search-demo></lunr-search-demo>
     </div>
+
+    <script type="module">
+      import { LitElement, html, css } from 'lit';
+      import '../lunr-search.js';
+      import '@haxtheweb/simple-icon/lib/simple-icon-lite.js';
+      import '@haxtheweb/d-d-d/d-d-d.js';
+
+      class LunrSearchDemo extends LitElement {
+        static get styles() {
+          return css`
+            :host {
+              display: block;
+            }
+
+            .search-container {
+              display: flex;
+              align-items: center;
+              gap: var(--ddd-spacing-2);
+              margin: var(--ddd-spacing-4) 0;
+            }
+
+            .search-input {
+              flex: 1;
+              padding: var(--ddd-spacing-3);
+              border: 2px solid var(--ddd-theme-default-limestoneLight);
+              border-radius: var(--ddd-radius-xs);
+              font-size: var(--ddd-font-size-s);
+              color: var(--ddd-theme-default-coalyGray);
+              background: white;
+            }
+
+            .search-input:focus {
+              outline: none;
+              border-color: var(--ddd-theme-default-keystoneYellow);
+            }
+
+            .search-icon {
+              color: var(--ddd-theme-default-beaver70);
+            }
+
+            .results-count {
+              margin: var(--ddd-spacing-3) 0;
+              color: var(--ddd-theme-default-coalyGray);
+              font-size: var(--ddd-font-size-xs);
+            }
+
+            .results-list {
+              display: flex;
+              flex-direction: column;
+              gap: var(--ddd-spacing-3);
+            }
+
+            .example-result {
+              background-color: var(--ddd-theme-default-limestoneMaxLight);
+              color: var(--ddd-theme-default-coalyGray);
+              border: 1px solid var(--ddd-theme-default-limestoneLight);
+              padding: var(--ddd-spacing-4);
+              border-radius: var(--ddd-radius-xs);
+              transition: background-color 0.2s ease;
+            }
+
+            .example-result:hover {
+              background-color: var(--ddd-theme-default-limestoneLight);
+              cursor: pointer;
+            }
+
+            .example-result h4 {
+              font-size: var(--ddd-font-size-l);
+              font-weight: var(--ddd-font-weight-bold);
+              margin: 0 0 var(--ddd-spacing-2) 0;
+              color: var(--ddd-theme-default-coalyGray);
+            }
+
+            .example-result h5 {
+              font-size: var(--ddd-font-size-s);
+              font-weight: var(--ddd-font-weight-regular);
+              color: var(--ddd-theme-default-beaver70);
+              margin: 0 0 var(--ddd-spacing-2) 0;
+            }
+
+            .example-result div {
+              font-size: var(--ddd-font-size-xs);
+              line-height: 1.4;
+            }
+          `;
+        }
+
+        static get properties() {
+          return {
+            search: { type: String },
+            results: { type: Array }
+          };
+        }
+
+        constructor() {
+          super();
+          this.search = '';
+          this.results = [];
+        }
+
+        render() {
+          return html`
+            <div class="search-container">
+              <simple-icon-lite
+                class="search-icon"
+                icon="search"
+                @click="${this._focusInput}"
+              ></simple-icon-lite>
+              <input
+                class="search-input"
+                type="text"
+                placeholder="Search..."
+                .value="${this.search}"
+                @input="${this._onSearchInput}"
+              />
+            </div>
+            ${this.search ? html`
+              <div class="results-count">
+                Found ${this.results?.length || 0} results.
+              </div>
+            ` : ''}
+            <lunr-search
+              data-source="lunrSearchIndex.json"
+              .search="${this.search}"
+              @results-changed="${this._onResultsChanged}"
+            ></lunr-search>
+            <div class="results-list">
+              ${this.results?.map(item => html`
+                <div class="example-result">
+                  <h4>${item.title}</h4>
+                  <h5>${item.location}</h5>
+                  <div>${item.description}..</div>
+                </div>
+              `) || ''}
+            </div>
+          `;
+        }
+
+        _onSearchInput(e) {
+          this.search = e.target.value;
+        }
+
+        _onResultsChanged(e) {
+          this.results = e.detail.value || [];
+        }
+
+        _focusInput() {
+          this.shadowRoot.querySelector('.search-input').focus();
+        }
+
+        static get tag() {
+          return 'lunr-search-demo';
+        }
+      }
+
+      customElements.define(LunrSearchDemo.tag, LunrSearchDemo);
+    </script>
   </body>
 </html>

@@ -22,6 +22,8 @@ import { autorun, toJS } from "mobx";
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
+ * @haxcms-theme-category Fun, Website
+ * @haxcms-theme-internal false
  * @demo demo/index.html
  * @element terrible-themes
  */
@@ -39,11 +41,23 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
       this.activeManifestIndex = toJS(store.activeManifestIndex);
       this.__disposer.push(reaction);
     });
-    globalThis.document.body.style.backgroundColor = "#e6fbff";
   }
-  /**
-   * LitElement style callback
-   */
+
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      css`
+        body {
+          background-color: #e6fbff;
+        }
+        body.dark-mode {
+          background-color: #020613;
+          color: #f5f5f5;
+        }
+      `,
+    ];
+  }
+
   static get styles() {
     // support for using in other classes
     let styles = [];
@@ -55,6 +69,9 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
       css`
         :host {
           display: block;
+        }
+        :host([dark-mode]) {
+          color: #f5f5f5;
         }
         a {
           color: blue;
@@ -72,6 +89,12 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
           color: red;
           text-decoration: none;
         }
+        :host([dark-mode]) a {
+          color: #9bbcff;
+        }
+        :host([dark-mode]) a:hover {
+          color: #ffcc66;
+        }
         a.menu {
           color: black;
           text-decoration: none;
@@ -88,12 +111,21 @@ class TerribleResumeThemes extends HAXCMSRememberRoute(
         }
         site-top-menu {
           font-size: 18px;
-          --site-top-menu-bg: lightblue;
+          --site-top-menu-bg: #005a9e;
           --site-top-menu-link-color: #ffffff;
           --site-top-menu-indicator-color: #ffffff;
           --site-top-menu-link-active-color: var(
             --haxcms-basic-theme-accent-color
           );
+        }
+        :host([dark-mode]) site-top-menu {
+          --site-top-menu-bg: #111827;
+          --site-top-menu-link-color: #ffffff;
+          --site-top-menu-indicator-color: #ffcc66;
+        }
+        :host([dark-mode]) table[bgcolor],
+        :host([dark-mode]) td[bgcolor] {
+          background-color: #111827;
         }
         site-top-menu::part(button) {
           font-size: 18px;

@@ -50,13 +50,11 @@ createSWC({
   // HTML contents, el is the element itself and html is the processing function
   html: (el, html) => {
     return html`
-      <paper-card raised>
-        <simple-button
-          id="stuff"
-          color-value="${el.color}"
-          title="${el.title}"
-        ></simple-button>
-      </paper-card>
+      <simple-button
+        id="stuff"
+        color-value="${el.color}"
+        title="${el.title}"
+      ></simple-button>
     `;
   },
   // CSS styles, el is the element itself and css is the processing function

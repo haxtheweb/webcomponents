@@ -34,7 +34,7 @@ describe("a11y-tabs test", () => {
     describe("Boolean properties", () => {
       it("should handle fullWidth property", async () => {
         expect(testElement.fullWidth).to.equal(false);
-        
+
         testElement.fullWidth = true;
         await testElement.updateComplete;
         expect(testElement.fullWidth).to.equal(true);
@@ -44,7 +44,7 @@ describe("a11y-tabs test", () => {
 
       it("should handle disabled property", async () => {
         expect(testElement.disabled).to.equal(false);
-        
+
         testElement.disabled = true;
         await testElement.updateComplete;
         expect(testElement.disabled).to.equal(true);
@@ -54,7 +54,7 @@ describe("a11y-tabs test", () => {
 
       it("should handle hidden property", async () => {
         expect(testElement.hidden).to.equal(false);
-        
+
         testElement.hidden = true;
         await testElement.updateComplete;
         expect(testElement.hidden).to.equal(true);
@@ -64,7 +64,7 @@ describe("a11y-tabs test", () => {
 
       it("should handle sticky property", async () => {
         expect(testElement.sticky).to.be.undefined;
-        
+
         testElement.sticky = true;
         await testElement.updateComplete;
         expect(testElement.sticky).to.equal(true);
@@ -74,7 +74,7 @@ describe("a11y-tabs test", () => {
 
       it("should handle disableResponsive property", async () => {
         expect(testElement.disableResponsive).to.equal(false);
-        
+
         testElement.disableResponsive = true;
         await testElement.updateComplete;
         expect(testElement.disableResponsive).to.equal(true);
@@ -127,18 +127,24 @@ describe("a11y-tabs test", () => {
 
   describe("Tab functionality", () => {
     let tabsElement;
-    
+
     beforeEach(async () => {
       tabsElement = await fixture(html`
         <a11y-tabs id="test-tabs">
-          <a11y-tab id="tab-1" label="First Tab" icon="home">Content of first tab</a11y-tab>
-          <a11y-tab id="tab-2" label="Second Tab" icon="info">Content of second tab</a11y-tab>
-          <a11y-tab id="tab-3" label="Third Tab" disabled>Content of third tab</a11y-tab>
+          <a11y-tab id="tab-1" label="First Tab" icon="home"
+            >Content of first tab</a11y-tab
+          >
+          <a11y-tab id="tab-2" label="Second Tab" icon="info"
+            >Content of second tab</a11y-tab
+          >
+          <a11y-tab id="tab-3" label="Third Tab" disabled
+            >Content of third tab</a11y-tab
+          >
         </a11y-tabs>
       `);
       await tabsElement.updateComplete;
       // Wait for tab registration
-      await new Promise(resolve => setTimeout(resolve, 100));
+      await new Promise((resolve) => setTimeout(resolve, 100));
     });
 
     it("should register tabs correctly", async () => {
@@ -151,18 +157,18 @@ describe("a11y-tabs test", () => {
       tabsElement.activeTab = "tab-2";
       await tabsElement.updateComplete;
       expect(tabsElement.activeTab).to.equal("tab-2");
-      
+
       await expect(tabsElement).shadowDom.to.be.accessible();
     });
 
     it("should handle tab selection via selectTab method", async () => {
       // Test selectTab method if it exists
-      if (typeof tabsElement.selectTab === 'function') {
+      if (typeof tabsElement.selectTab === "function") {
         tabsElement.selectTab("tab-1");
         await tabsElement.updateComplete;
         expect(tabsElement.activeTab).to.equal("tab-1");
       }
-      
+
       await expect(tabsElement).shadowDom.to.be.accessible();
     });
   });
@@ -176,29 +182,33 @@ describe("a11y-tabs test", () => {
         </a11y-tabs>
       `);
       await testElement.updateComplete;
-      
+
       expect(testElement.layoutBreakpoint).to.equal(800);
-      
+
       // Test vertical property computation
-      expect(testElement.vertical).to.be.a('boolean');
-      
+      expect(testElement.vertical).to.be.a("boolean");
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
     it("should handle icon-only mode based on breakpoint", async () => {
       const testElement = await fixture(html`
         <a11y-tabs icon-breakpoint="600">
-          <a11y-tab id="icon-tab-1" label="Tab 1" icon="home">Content 1</a11y-tab>
-          <a11y-tab id="icon-tab-2" label="Tab 2" icon="info">Content 2</a11y-tab>
+          <a11y-tab id="icon-tab-1" label="Tab 1" icon="home"
+            >Content 1</a11y-tab
+          >
+          <a11y-tab id="icon-tab-2" label="Tab 2" icon="info"
+            >Content 2</a11y-tab
+          >
         </a11y-tabs>
       `);
       await testElement.updateComplete;
-      
+
       expect(testElement.iconBreakpoint).to.equal(600);
-      
+
       // Test iconsOnly property computation
-      expect(testElement.iconsOnly).to.be.a('boolean');
-      
+      expect(testElement.iconsOnly).to.be.a("boolean");
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });
@@ -212,14 +222,14 @@ describe("a11y-tabs test", () => {
         </a11y-tabs>
       `);
       await testElement.updateComplete;
-      await new Promise(resolve => setTimeout(resolve, 100));
-      
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
       // Check for tablist ARIA attributes
-      const tablist = testElement.shadowRoot.querySelector('#tabs');
+      const tablist = testElement.shadowRoot.querySelector("#tabs");
       if (tablist) {
-        expect(tablist.getAttribute('role')).to.equal('tablist');
+        expect(tablist.getAttribute("role")).to.equal("tablist");
       }
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
@@ -232,29 +242,33 @@ describe("a11y-tabs test", () => {
         </a11y-tabs>
       `);
       await testElement.updateComplete;
-      await new Promise(resolve => setTimeout(resolve, 100));
-      
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
       // Test keyboard navigation methods if they exist
-      if (typeof testElement.focusNext === 'function') {
+      if (typeof testElement.focusNext === "function") {
         testElement.focusNext();
         await testElement.updateComplete;
       }
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
     it("should handle disabled tabs appropriately", async () => {
       const testElement = await fixture(html`
         <a11y-tabs>
-          <a11y-tab id="disabled-tab-1" label="Active Tab">Active content</a11y-tab>
-          <a11y-tab id="disabled-tab-2" label="Disabled Tab" disabled>Disabled content</a11y-tab>
+          <a11y-tab id="disabled-tab-1" label="Active Tab"
+            >Active content</a11y-tab
+          >
+          <a11y-tab id="disabled-tab-2" label="Disabled Tab" disabled
+            >Disabled content</a11y-tab
+          >
         </a11y-tabs>
       `);
       await testElement.updateComplete;
-      
-      const disabledTab = testElement.querySelector('#disabled-tab-2');
+
+      const disabledTab = testElement.querySelector("#disabled-tab-2");
       expect(disabledTab.disabled).to.be.true;
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });
@@ -268,10 +282,10 @@ describe("a11y-tabs test", () => {
         </a11y-tabs>
       `);
       await testElement.updateComplete;
-      
+
       expect(testElement.fullWidth).to.be.true;
-      expect(testElement.hasAttribute('full-width')).to.be.true;
-      
+      expect(testElement.hasAttribute("full-width")).to.be.true;
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
@@ -283,51 +297,54 @@ describe("a11y-tabs test", () => {
         </a11y-tabs>
       `);
       await testElement.updateComplete;
-      
+
       expect(testElement.sticky).to.be.true;
-      expect(testElement.hasAttribute('sticky')).to.be.true;
-      
+      expect(testElement.hasAttribute("sticky")).to.be.true;
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });
 
   describe("Edge cases and error handling", () => {
     it("should handle tabs with no content", async () => {
-      const testElement = await fixture(html`
-        <a11y-tabs>
-        </a11y-tabs>
-      `);
+      const testElement = await fixture(html` <a11y-tabs> </a11y-tabs> `);
       await testElement.updateComplete;
-      
-      expect(testElement.tabs).to.be.an('array');
+
+      expect(testElement.tabs).to.be.an("array");
       expect(testElement.tabs.length).to.equal(0);
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
     it("should handle tabs with unusual property values", async () => {
       const testElement = await fixture(html`
         <a11y-tabs>
-          <a11y-tab label="   \t\n   ">Whitespace label</a11y-tab>
+          <a11y-tab
+            label="   	
+   "
+            >Whitespace label</a11y-tab
+          >
           <a11y-tab label="🎯 tab with emoji 🎯">Emoji label</a11y-tab>
-          <a11y-tab label="Very long tab label that might cause display issues">Long label content</a11y-tab>
+          <a11y-tab label="Very long tab label that might cause display issues"
+            >Long label content</a11y-tab
+          >
         </a11y-tabs>
       `);
-      
+
       const unusualValues = [
         "<script>alert('test')</script>", // potentially dangerous content
         "Multi\nline\nlabel", // multiline
-        "Label with 'quotes' and \"double quotes\" and special chars: !@#$%^&*()"
+        "Label with 'quotes' and \"double quotes\" and special chars: !@#$%^&*()",
       ];
-      
+
       for (const value of unusualValues) {
         testElement.ariaLabel = value;
         await testElement.updateComplete;
-        
+
         expect(testElement.ariaLabel).to.equal(value);
-        
+
         // Most values should maintain accessibility (skip dangerous content)
-        if (!value.includes('<script>')) {
+        if (!value.includes("<script>")) {
           await expect(testElement).shadowDom.to.be.accessible();
         }
       }
@@ -335,7 +352,7 @@ describe("a11y-tabs test", () => {
 
     it("should handle extreme breakpoint values", async () => {
       const extremeValues = [-1, 0, 99999];
-      
+
       for (const value of extremeValues) {
         const testElement = await fixture(html`
           <a11y-tabs layout-breakpoint="${value}">
@@ -343,7 +360,7 @@ describe("a11y-tabs test", () => {
           </a11y-tabs>
         `);
         await testElement.updateComplete;
-        
+
         expect(testElement.layoutBreakpoint).to.equal(value);
         await expect(testElement).shadowDom.to.be.accessible();
       }
@@ -354,44 +371,48 @@ describe("a11y-tabs test", () => {
     it("should handle dynamic tab addition and removal", async () => {
       const testElement = await fixture(html`
         <a11y-tabs id="dynamic-tabs">
-          <a11y-tab id="dynamic-tab-1" label="Initial Tab">Initial content</a11y-tab>
+          <a11y-tab id="dynamic-tab-1" label="Initial Tab"
+            >Initial content</a11y-tab
+          >
         </a11y-tabs>
       `);
       await testElement.updateComplete;
-      await new Promise(resolve => setTimeout(resolve, 100));
-      
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
       // Initial state
       expect(testElement.tabs.length).to.be.greaterThanOrEqual(1);
-      
+
       // Add a new tab
-      const newTab = globalThis.document.createElement('a11y-tab');
-      newTab.id = 'dynamic-tab-2';
-      newTab.label = 'Added Tab';
-      newTab.textContent = 'Added content';
+      const newTab = globalThis.document.createElement("a11y-tab");
+      newTab.id = "dynamic-tab-2";
+      newTab.label = "Added Tab";
+      newTab.textContent = "Added content";
       testElement.appendChild(newTab);
-      
+
       // Wait for mutation observer
-      await new Promise(resolve => setTimeout(resolve, 100));
+      await new Promise((resolve) => setTimeout(resolve, 100));
       await testElement.updateComplete;
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
     it("should handle tab updates correctly", async () => {
       const testElement = await fixture(html`
         <a11y-tabs>
-          <a11y-tab id="update-tab-1" label="Original Label">Original content</a11y-tab>
+          <a11y-tab id="update-tab-1" label="Original Label"
+            >Original content</a11y-tab
+          >
         </a11y-tabs>
       `);
       await testElement.updateComplete;
-      await new Promise(resolve => setTimeout(resolve, 100));
-      
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
       // Test updateTabs method
-      if (typeof testElement.updateTabs === 'function') {
+      if (typeof testElement.updateTabs === "function") {
         testElement.updateTabs();
         await testElement.updateComplete;
       }
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });
@@ -404,9 +425,9 @@ describe("a11y-tabs test", () => {
         </a11y-tabs>
       `);
       await testElement.updateComplete;
-      
+
       // Test vertical property
-      expect(testElement.vertical).to.be.a('boolean');
+      expect(testElement.vertical).to.be.a("boolean");
     });
 
     it("should compute iconsOnly property correctly", async () => {
@@ -416,9 +437,9 @@ describe("a11y-tabs test", () => {
         </a11y-tabs>
       `);
       await testElement.updateComplete;
-      
+
       // Test iconsOnly property
-      expect(testElement.iconsOnly).to.be.a('boolean');
+      expect(testElement.iconsOnly).to.be.a("boolean");
     });
   });
 });

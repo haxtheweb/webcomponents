@@ -47,33 +47,36 @@ describe("a11y-carousel test", () => {
         </a11y-carousel>
       `);
       await testElement.updateComplete;
-      
+
       // Test above slot
-      const aboveSlot = testElement.shadowRoot.querySelector('slot[name="above"]');
+      const aboveSlot =
+        testElement.shadowRoot.querySelector('slot[name="above"]');
       expect(aboveSlot).to.exist;
       const aboveNodes = aboveSlot.assignedNodes({ flatten: true });
       expect(aboveNodes.length).to.be.greaterThan(0);
       expect(aboveNodes[0].textContent).to.include("Above content");
-      
+
       // Test img slot
       const imgSlot = testElement.shadowRoot.querySelector('slot[name="img"]');
       expect(imgSlot).to.exist;
       const imgNodes = imgSlot.assignedNodes({ flatten: true });
       expect(imgNodes.length).to.be.greaterThan(0);
-      
+
       // Test default slot
-      const defaultSlot = testElement.shadowRoot.querySelector('slot:not([name])');
+      const defaultSlot =
+        testElement.shadowRoot.querySelector("slot:not([name])");
       expect(defaultSlot).to.exist;
       const defaultNodes = defaultSlot.assignedNodes({ flatten: true });
       expect(defaultNodes.length).to.be.greaterThan(0);
-      
+
       // Test below slot
-      const belowSlot = testElement.shadowRoot.querySelector('slot[name="below"]');
+      const belowSlot =
+        testElement.shadowRoot.querySelector('slot[name="below"]');
       expect(belowSlot).to.exist;
       const belowNodes = belowSlot.assignedNodes({ flatten: true });
       expect(belowNodes.length).to.be.greaterThan(0);
       expect(belowNodes[0].textContent).to.include("Below content");
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
@@ -87,10 +90,10 @@ describe("a11y-carousel test", () => {
         </a11y-carousel>
       `);
       await testElement.updateComplete;
-      
-      const slots = testElement.shadowRoot.querySelectorAll('slot');
+
+      const slots = testElement.shadowRoot.querySelectorAll("slot");
       expect(slots.length).to.be.greaterThan(0);
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });
@@ -350,7 +353,7 @@ describe("a11y-carousel test", () => {
 
   describe("Navigation functionality and RadioBehaviors integration", () => {
     let navElement;
-    
+
     beforeEach(async () => {
       navElement = await fixture(html`
         <a11y-carousel>
@@ -379,7 +382,7 @@ describe("a11y-carousel test", () => {
       expect(navElement.next).to.exist;
       expect(navElement.itemData).to.exist;
       expect(navElement.itemData.length).to.equal(3);
-      
+
       await expect(navElement).shadowDom.to.be.accessible();
     });
 
@@ -388,30 +391,30 @@ describe("a11y-carousel test", () => {
       const lastId = navElement.last;
       const prevId = navElement.prev;
       const nextId = navElement.next;
-      
-      expect(firstId).to.equal('nav-fig-1');
-      expect(lastId).to.equal('nav-fig-3');
-      expect(prevId).to.equal('nav-fig-3'); // wraps to last when on first
-      expect(nextId).to.equal('nav-fig-2'); // next item
-      
+
+      expect(firstId).to.equal("nav-fig-1");
+      expect(lastId).to.equal("nav-fig-3");
+      expect(prevId).to.equal("nav-fig-3"); // wraps to last when on first
+      expect(nextId).to.equal("nav-fig-2"); // next item
+
       await expect(navElement).shadowDom.to.be.accessible();
     });
 
     it("should handle selection changes and maintain accessibility", async () => {
       // Test initial selection
       expect(navElement.selection).to.exist;
-      
+
       // Simulate selection change
-      const changeEvent = new CustomEvent('select-carousel-item', {
-        detail: { value: 'nav-fig-2' }
+      const changeEvent = new CustomEvent("select-carousel-item", {
+        detail: { value: "nav-fig-2" },
       });
       navElement.dispatchEvent(changeEvent);
       await navElement.updateComplete;
-      
+
       // Check that navigation IDs update accordingly
-      expect(navElement.prev).to.equal('nav-fig-1');
-      expect(navElement.next).to.equal('nav-fig-3');
-      
+      expect(navElement.prev).to.equal("nav-fig-1");
+      expect(navElement.next).to.equal("nav-fig-3");
+
       await expect(navElement).shadowDom.to.be.accessible();
     });
 
@@ -420,11 +423,13 @@ describe("a11y-carousel test", () => {
       navElement.noButtons = false;
       navElement.noPrevNext = false;
       await navElement.updateComplete;
-      
+
       // Check that navigation buttons exist in shadow DOM
-      const buttons = navElement.shadowRoot.querySelectorAll('a11y-carousel-button');
+      const buttons = navElement.shadowRoot.querySelectorAll(
+        "a11y-carousel-button",
+      );
       expect(buttons.length).to.be.greaterThan(0);
-      
+
       await expect(navElement).shadowDom.to.be.accessible();
     });
   });
@@ -444,11 +449,13 @@ describe("a11y-carousel test", () => {
         </a11y-carousel>
       `);
       await testElement.updateComplete;
-      
+
       // Check that background image CSS property is set
-      const bgImageValue = testElement.style.getPropertyValue('--a11y-carousel-background-image');
+      const bgImageValue = testElement.style.getPropertyValue(
+        "--a11y-carousel-background-image",
+      );
       expect(bgImageValue).to.exist;
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
@@ -461,10 +468,10 @@ describe("a11y-carousel test", () => {
         </a11y-carousel>
       `);
       await testElement.updateComplete;
-      
+
       // Should not throw error even without images
       expect(testElement._getImage()).to.be.undefined;
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });
@@ -550,19 +557,19 @@ describe("a11y-carousel test", () => {
         </a11y-carousel>
       `);
       await testElement.updateComplete;
-      
+
       let eventFired = false;
-      testElement.addEventListener('select-carousel-item', () => {
+      testElement.addEventListener("select-carousel-item", () => {
         eventFired = true;
       });
-      
+
       // Trigger selection change
-      const event = new CustomEvent('select-carousel-item', {
-        detail: { value: 'event-fig-2' }
+      const event = new CustomEvent("select-carousel-item", {
+        detail: { value: "event-fig-2" },
       });
       testElement.dispatchEvent(event);
       await testElement.updateComplete;
-      
+
       expect(eventFired).to.equal(true);
       await expect(testElement).shadowDom.to.be.accessible();
     });
@@ -577,11 +584,11 @@ describe("a11y-carousel test", () => {
         </a11y-carousel>
       `);
       await testElement.updateComplete;
-      
+
       // Element should be properly initialized
       expect(testElement.itemData).to.exist;
       expect(testElement.itemData.length).to.be.greaterThan(0);
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });
@@ -596,7 +603,7 @@ describe("a11y-carousel test", () => {
           </figure>
         </a11y-carousel>
       `);
-      
+
       const unusualValues = [
         "   \t\n   ", // whitespace
         "<script>alert('test')</script>", // potentially dangerous content
@@ -604,19 +611,19 @@ describe("a11y-carousel test", () => {
         "🎠 carousel navigation 🎠", // emoji
         "Very long navigation label that might cause display issues or layout problems with the carousel interface",
         "Multi\nline\nlabel", // multiline
-        "Label with 'quotes' and \"double quotes\" and special chars: !@#$%^&*()"
+        "Label with 'quotes' and \"double quotes\" and special chars: !@#$%^&*()",
       ];
-      
+
       for (const value of unusualValues) {
         testElement.nextLabel = value;
         testElement.prevLabel = value;
         await testElement.updateComplete;
-        
+
         expect(testElement.nextLabel).to.equal(value);
         expect(testElement.prevLabel).to.equal(value);
-        
+
         // Most of these should maintain accessibility
-        if (!value.includes('<script>') && value.trim() !== '') {
+        if (!value.includes("<script>") && value.trim() !== "") {
           await expect(testElement).shadowDom.to.be.accessible();
         }
       }
@@ -632,13 +639,13 @@ describe("a11y-carousel test", () => {
         </a11y-carousel>
       `);
       await testElement.updateComplete;
-      
+
       expect(testElement.itemData.length).to.equal(1);
-      expect(testElement.first).to.equal('single-fig');
-      expect(testElement.last).to.equal('single-fig');
-      expect(testElement.prev).to.equal('single-fig');
-      expect(testElement.next).to.equal('single-fig');
-      
+      expect(testElement.first).to.equal("single-fig");
+      expect(testElement.last).to.equal("single-fig");
+      expect(testElement.prev).to.equal("single-fig");
+      expect(testElement.next).to.equal("single-fig");
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
@@ -649,12 +656,12 @@ describe("a11y-carousel test", () => {
         </a11y-carousel>
       `);
       await testElement.updateComplete;
-      
+
       expect(testElement.itemData).to.exist;
       expect(testElement.itemData.length).to.equal(0);
       expect(testElement.first).to.be.undefined;
       expect(testElement.last).to.be.undefined;
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });

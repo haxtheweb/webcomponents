@@ -64,60 +64,38 @@ class HAXCMSSiteDashboard extends SimpleColors {
           display: flex;
         }
         button.hax-modal-btn {
-          font-size: 30px;
-          padding: 8px;
-          margin: 4px;
+          font-size: var(--ddd-font-size-s);
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
+          margin: var(--ddd-spacing-2);
           color: white;
-          background-color: green;
-          border: 4px solid black;
-          border-radius: 8px;
-          font-family: sans-serif;
+          background-color: var(--ddd-theme-default-skyBlue);
+          border: 2px solid var(--ddd-theme-default-navy);
+          border-radius: var(--ddd-radius-sm);
+          font-family: var(--ddd-font-navigation);
+          cursor: pointer;
+          transition: background-color 0.3s ease;
         }
         button.hax-modal-btn.cancel {
-          background-color: red;
+          background-color: var(--ddd-theme-default-original87Pink);
         }
         button.hax-modal-btn:hover,
         button.hax-modal-btn:focus {
-          outline: 2px solid black;
-          cursor: pointer;
-          background-color: darkgreen;
+          outline: 2px solid var(--ddd-theme-default-keystoneYellow);
+          background-color: var(--ddd-theme-default-nittanyNavy);
         }
         button.hax-modal-btn.cancel:hover,
         button.hax-modal-btn.cancel:focus {
-          background-color: darkred;
-        }
-        .title {
-          color: black;
-          font-size: 24px;
-          margin: 0 0 0 16px;
-          padding: 0;
-          display: inline-flex;
+          background-color: var(--ddd-theme-default-error);
         }
         @media screen and (max-width: 600px) {
-          .title {
-            font-size: 14px;
-            margin: 0;
-          }
-          .toptext {
-            font-size: 11px;
-          }
           button.hax-modal-btn {
-            font-size: 14px;
+            font-size: var(--ddd-font-size-xs);
+            padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           }
         }
         button {
           background-color: white;
           color: black;
-        }
-        .title-wrapper {
-          padding: 0 16px;
-        }
-        .toptext {
-          padding: 0;
-          margin: 0;
-          font-size: 12px;
-          font-style: italic;
-          display: inline-flex;
         }
         .fields-wrapper {
           height: auto;
@@ -140,9 +118,6 @@ class HAXCMSSiteDashboard extends SimpleColors {
   // render function
   render() {
     return html`
-      <div class="title-wrapper">
-        <h2 class="title">${this.siteTitle} settings</h2>
-      </div>
       <div class="fields-wrapper">
         <simple-fields-form
           id="siteform"

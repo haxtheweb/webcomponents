@@ -135,7 +135,10 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           padding: var(--ddd-spacing-2);
           color: var(
             --ddd-component-self-check-title-color,
-            light-dark(var(--ddd-theme-bgContrast, black), var(--ddd-theme-bgContrast, var(--ddd-theme-default-white)))
+            light-dark(
+              var(--ddd-theme-bgContrast, black),
+              var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))
+            )
           );
         }
 
@@ -147,7 +150,10 @@ class SelfCheck extends I18NMixin(lazyImageLoader(SchemaBehaviors(DDD))) {
           font-weight: var(--ddd-font-weight-medium);
           color: var(
             --ddd-component-self-check-title-color,
-            light-dark(var(--ddd-theme-bgContrast, black), var(--ddd-theme-bgContrast, var(--ddd-theme-default-white)))
+            light-dark(
+              var(--ddd-theme-bgContrast, black),
+              var(--ddd-theme-bgContrast, var(--ddd-theme-default-white))
+            )
           );
         }
 

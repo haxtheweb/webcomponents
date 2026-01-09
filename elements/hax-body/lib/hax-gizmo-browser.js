@@ -171,7 +171,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                       draggable="true"
                       @dragstart="${this._dragStart}"
                       index="popular-${i}"
-                      is-current-item
                       label="${gizmo.title}"
                       event-name="insert-tag"
                       event-data="${gizmo.tag}"
@@ -185,6 +184,9 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                       ? html`
                           <hax-element-demo
                             render-tag="${gizmo.tag}"
+                            gizmo-title="${gizmo.title}"
+                            gizmo-description="${gizmo.description || ''}"
+                            gizmo-icon="${gizmo.icon}"
                             slot="options"
                           ></hax-element-demo>
                         `
@@ -215,7 +217,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                       draggable="true"
                       @dragstart="${this._dragStart}"
                       index="${i}"
-                      is-current-item
                       label="${gizmo.title}"
                       event-name="insert-tag"
                       event-data="${gizmo.tag}"
@@ -229,6 +230,9 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                       ? html`
                           <hax-element-demo
                             render-tag="${gizmo.tag}"
+                            gizmo-title="${gizmo.title}"
+                            gizmo-description="${gizmo.description || ''}"
+                            gizmo-icon="${gizmo.icon}"
                             slot="options"
                           ></hax-element-demo>
                         `
@@ -254,7 +258,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                           >
                             <hax-tray-button
                               show-text-label
-                              is-current-item
                               voice-command="insert ${gizmo.title}"
                               draggable="true"
                               @dragstart="${this._dragStart}"
@@ -272,6 +275,9 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                               ? html`
                                   <hax-element-demo
                                     render-tag="${gizmo.tag}"
+                                    gizmo-title="${gizmo.title}"
+                                    gizmo-description="${gizmo.description || ''}"
+                                    gizmo-icon="${gizmo.icon}"
                                     slot="options"
                                   ></hax-element-demo>
                                 `

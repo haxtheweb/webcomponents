@@ -23,9 +23,9 @@ describe("collection-list basic functionality", () => {
   });
 
   it("renders wrapper element with proper structure", () => {
-    const wrapper = element.shadowRoot.querySelector('.wrapper');
-    const slot = element.shadowRoot.querySelector('slot');
-    
+    const wrapper = element.shadowRoot.querySelector(".wrapper");
+    const slot = element.shadowRoot.querySelector("slot");
+
     expect(wrapper).to.exist;
     expect(slot).to.exist;
     expect(wrapper.contains(slot)).to.be.true;
@@ -47,7 +47,7 @@ describe("collection-list accessibility tests", () => {
         <div>Item 3</div>
       </collection-list>
     `);
-    
+
     await expect(el).to.be.accessible();
   });
 
@@ -64,20 +64,20 @@ describe("collection-list accessibility tests", () => {
         </article>
       </collection-list>
     `);
-    
+
     await expect(el).to.be.accessible();
   });
 
   it("maintains accessibility across different responsive sizes", async () => {
-    const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
-    
+    const sizes = ["xs", "sm", "md", "lg", "xl"];
+
     for (const size of sizes) {
       const el = await fixture(html`
         <collection-list responsive-size="${size}">
           <div>Item</div>
         </collection-list>
       `);
-      
+
       await expect(el).to.be.accessible();
     }
   });
@@ -86,48 +86,48 @@ describe("collection-list accessibility tests", () => {
 // Property validation tests
 describe("collection-list property validation", () => {
   it("accepts valid responsive size values", async () => {
-    const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
-    
+    const sizes = ["xs", "sm", "md", "lg", "xl"];
+
     for (const size of sizes) {
       const el = await fixture(html`
         <collection-list responsive-size="${size}"></collection-list>
       `);
-      
+
       expect(el.responsiveSize).to.equal(size);
-      expect(typeof el.responsiveSize).to.equal('string');
+      expect(typeof el.responsiveSize).to.equal("string");
     }
   });
 
   it("updates responsiveSize property reactively", async () => {
     const el = await fixture(html`<collection-list></collection-list>`);
-    
-    expect(el.responsiveSize).to.equal('lg');
-    
-    el.responsiveSize = 'sm';
+
+    expect(el.responsiveSize).to.equal("lg");
+
+    el.responsiveSize = "sm";
     await el.updateComplete;
-    
-    expect(el.responsiveSize).to.equal('sm');
+
+    expect(el.responsiveSize).to.equal("sm");
   });
 
   it("reflects responsiveSize attribute", async () => {
     const el = await fixture(html`
       <collection-list responsive-size="xs"></collection-list>
     `);
-    
-    expect(el.getAttribute('responsive-size')).to.equal('xs');
-    
-    el.responsiveSize = 'xl';
+
+    expect(el.getAttribute("responsive-size")).to.equal("xs");
+
+    el.responsiveSize = "xl";
     await el.updateComplete;
-    
-    expect(el.getAttribute('responsive-size')).to.equal('xl');
+
+    expect(el.getAttribute("responsive-size")).to.equal("xl");
   });
 
   it("handles invalid responsive size values gracefully", async () => {
     const el = await fixture(html`
       <collection-list responsive-size="invalid"></collection-list>
     `);
-    
-    expect(el.responsiveSize).to.equal('invalid');
+
+    expect(el.responsiveSize).to.equal("invalid");
     expect(el).to.exist;
   });
 });
@@ -141,13 +141,15 @@ describe("collection-list slot usage", () => {
         <div class="test-item">Test Item 2</div>
       </collection-list>
     `);
-    
-    const slot = el.shadowRoot.querySelector('slot');
-    const slottedElements = slot.assignedNodes({flatten: true}).filter(node => node.nodeType === Node.ELEMENT_NODE);
-    
+
+    const slot = el.shadowRoot.querySelector("slot");
+    const slottedElements = slot
+      .assignedNodes({ flatten: true })
+      .filter((node) => node.nodeType === Node.ELEMENT_NODE);
+
     expect(slottedElements.length).to.equal(2);
-    expect(slottedElements[0].textContent).to.include('Test Item 1');
-    expect(slottedElements[1].textContent).to.include('Test Item 2');
+    expect(slottedElements[0].textContent).to.include("Test Item 1");
+    expect(slottedElements[1].textContent).to.include("Test Item 2");
   });
 
   it("handles multiple types of slotted content", async () => {
@@ -160,16 +162,18 @@ describe("collection-list slot usage", () => {
         <section>Section content</section>
       </collection-list>
     `);
-    
-    const slot = el.shadowRoot.querySelector('slot');
-    const slottedElements = slot.assignedNodes({flatten: true}).filter(node => node.nodeType === Node.ELEMENT_NODE);
-    
+
+    const slot = el.shadowRoot.querySelector("slot");
+    const slottedElements = slot
+      .assignedNodes({ flatten: true })
+      .filter((node) => node.nodeType === Node.ELEMENT_NODE);
+
     expect(slottedElements.length).to.equal(5);
-    expect(slottedElements[0].tagName).to.equal('H2');
-    expect(slottedElements[1].tagName).to.equal('P');
-    expect(slottedElements[2].tagName).to.equal('DIV');
-    expect(slottedElements[3].tagName).to.equal('ARTICLE');
-    expect(slottedElements[4].tagName).to.equal('SECTION');
+    expect(slottedElements[0].tagName).to.equal("H2");
+    expect(slottedElements[1].tagName).to.equal("P");
+    expect(slottedElements[2].tagName).to.equal("DIV");
+    expect(slottedElements[3].tagName).to.equal("ARTICLE");
+    expect(slottedElements[4].tagName).to.equal("SECTION");
   });
 
   it("handles complex nested slotted content", async () => {
@@ -187,23 +191,27 @@ describe("collection-list slot usage", () => {
         </div>
       </collection-list>
     `);
-    
-    const slot = el.shadowRoot.querySelector('slot');
-    const slottedElements = slot.assignedNodes({flatten: true}).filter(node => node.nodeType === Node.ELEMENT_NODE);
-    
+
+    const slot = el.shadowRoot.querySelector("slot");
+    const slottedElements = slot
+      .assignedNodes({ flatten: true })
+      .filter((node) => node.nodeType === Node.ELEMENT_NODE);
+
     expect(slottedElements.length).to.equal(2);
-    expect(slottedElements[0].querySelector('h3')).to.exist;
-    expect(slottedElements[0].querySelector('button')).to.exist;
-    expect(slottedElements[1].querySelector('a')).to.exist;
+    expect(slottedElements[0].querySelector("h3")).to.exist;
+    expect(slottedElements[0].querySelector("button")).to.exist;
+    expect(slottedElements[1].querySelector("a")).to.exist;
   });
 
   it("handles empty slot gracefully", async () => {
     const el = await fixture(html`<collection-list></collection-list>`);
-    
-    const slot = el.shadowRoot.querySelector('slot');
+
+    const slot = el.shadowRoot.querySelector("slot");
     expect(slot).to.exist;
-    
-    const slottedElements = slot.assignedNodes({flatten: true}).filter(node => node.nodeType === Node.ELEMENT_NODE);
+
+    const slottedElements = slot
+      .assignedNodes({ flatten: true })
+      .filter((node) => node.nodeType === Node.ELEMENT_NODE);
     expect(slottedElements.length).to.equal(0);
   });
 });
@@ -218,19 +226,19 @@ describe("collection-list responsive grid behavior", () => {
         <div>Item 3</div>
       </collection-list>
     `);
-    
-    const wrapper = el.shadowRoot.querySelector('.wrapper');
+
+    const wrapper = el.shadowRoot.querySelector(".wrapper");
     const computedStyle = getComputedStyle(wrapper);
-    
-    expect(computedStyle.display).to.equal('grid');
-    expect(wrapper.style.getPropertyValue('--cssIdealSize')).to.exist;
+
+    expect(computedStyle.display).to.equal("grid");
+    expect(wrapper.style.getPropertyValue("--cssIdealSize")).to.exist;
   });
 
   it("has proper container query support", async () => {
     const el = await fixture(html`<collection-list></collection-list>`);
-    
+
     const hostStyle = getComputedStyle(el);
-    expect(hostStyle.containerType).to.equal('inline-size');
+    expect(hostStyle.containerType).to.equal("inline-size");
   });
 
   it("applies grid template columns based on container size", async () => {
@@ -239,30 +247,30 @@ describe("collection-list responsive grid behavior", () => {
         <div>Item</div>
       </collection-list>
     `);
-    
-    const wrapper = el.shadowRoot.querySelector('.wrapper');
+
+    const wrapper = el.shadowRoot.querySelector(".wrapper");
     expect(wrapper).to.exist;
-    
+
     // Test that CSS includes container queries for different breakpoints
     const styles = el.constructor.styles;
     const cssText = styles[1].cssText;
-    
-    expect(cssText).to.include('@container');
-    expect(cssText).to.include('360px');
-    expect(cssText).to.include('768px');
-    expect(cssText).to.include('1080px');
-    expect(cssText).to.include('1440px');
+
+    expect(cssText).to.include("@container");
+    expect(cssText).to.include("360px");
+    expect(cssText).to.include("768px");
+    expect(cssText).to.include("1080px");
+    expect(cssText).to.include("1440px");
   });
 });
 
 // Mobile responsiveness tests
 describe("collection-list mobile responsiveness", () => {
   beforeEach(async () => {
-    await setViewport({width: 375, height: 750});
+    await setViewport({ width: 375, height: 750 });
   });
 
   afterEach(async () => {
-    await setViewport({width: 1024, height: 768});
+    await setViewport({ width: 1024, height: 768 });
   });
 
   it("adapts to mobile viewport", async () => {
@@ -272,12 +280,12 @@ describe("collection-list mobile responsiveness", () => {
         <div>Mobile Item 2</div>
       </collection-list>
     `);
-    
+
     expect(el).to.exist;
     await el.updateComplete;
-    
+
     const computedStyle = getComputedStyle(el);
-    expect(computedStyle.display).to.equal('block');
+    expect(computedStyle.display).to.equal("block");
   });
 
   it("maintains accessibility on mobile", async () => {
@@ -289,7 +297,7 @@ describe("collection-list mobile responsiveness", () => {
         </article>
       </collection-list>
     `);
-    
+
     await expect(el).to.be.accessible();
   });
 });
@@ -297,11 +305,11 @@ describe("collection-list mobile responsiveness", () => {
 // Desktop responsiveness tests
 describe("collection-list desktop responsiveness", () => {
   beforeEach(async () => {
-    await setViewport({width: 1200, height: 800});
+    await setViewport({ width: 1200, height: 800 });
   });
 
   afterEach(async () => {
-    await setViewport({width: 1024, height: 768});
+    await setViewport({ width: 1024, height: 768 });
   });
 
   it("adapts to desktop viewport", async () => {
@@ -312,26 +320,29 @@ describe("collection-list desktop responsiveness", () => {
         <div>Desktop Item 3</div>
       </collection-list>
     `);
-    
+
     expect(el).to.exist;
     await el.updateComplete;
-    
+
     const computedStyle = getComputedStyle(el);
-    expect(computedStyle.display).to.equal('block');
+    expect(computedStyle.display).to.equal("block");
   });
 
   it("handles large collections on desktop", async () => {
-    const items = Array.from({length: 12}, (_, i) => `<div>Item ${i + 1}</div>`).join('');
-    
+    const items = Array.from(
+      { length: 12 },
+      (_, i) => `<div>Item ${i + 1}</div>`,
+    ).join("");
+
     const el = await fixture(html`
-      <collection-list responsive-size="xl">
-        ${html([items])}
-      </collection-list>
+      <collection-list responsive-size="xl"> ${html([items])} </collection-list>
     `);
-    
+
     expect(el).to.exist;
-    const slot = el.shadowRoot.querySelector('slot');
-    const slottedElements = slot.assignedNodes({flatten: true}).filter(node => node.nodeType === Node.ELEMENT_NODE);
+    const slot = el.shadowRoot.querySelector("slot");
+    const slottedElements = slot
+      .assignedNodes({ flatten: true })
+      .filter((node) => node.nodeType === Node.ELEMENT_NODE);
     expect(slottedElements.length).to.be.greaterThan(10);
   });
 });
@@ -340,18 +351,18 @@ describe("collection-list desktop responsiveness", () => {
 describe("collection-list DDD integration", () => {
   it("extends DDD properly", async () => {
     const el = await fixture(html`<collection-list></collection-list>`);
-    
+
     // Check that it has DDD functionality
     expect(el.responsiveSize).to.exist;
-    expect(typeof el.responsiveSize).to.equal('string');
+    expect(typeof el.responsiveSize).to.equal("string");
   });
 
   it("uses DDD design system tokens in CSS", async () => {
     const el = await fixture(html`<collection-list></collection-list>`);
-    
+
     // Check that the styles include DDD patterns
     const styles = el.constructor.styles;
-    expect(styles).to.be.an('array');
+    expect(styles).to.be.an("array");
     expect(styles.length).to.be.greaterThan(1); // Should have super.styles + own styles
   });
 });
@@ -361,15 +372,15 @@ describe("collection-list HAX integration", () => {
   it("has haxProperties configuration", async () => {
     const el = await fixture(html`<collection-list></collection-list>`);
     const haxProps = el.constructor.haxProperties;
-    
+
     expect(haxProps).to.exist;
-    expect(typeof haxProps).to.equal('string');
-    expect(haxProps).to.include('.haxProperties.json');
+    expect(typeof haxProps).to.equal("string");
+    expect(haxProps).to.include(".haxProperties.json");
   });
 
   it("has correct tag name", async () => {
     const el = await fixture(html`<collection-list></collection-list>`);
-    expect(el.constructor.tag).to.equal('collection-list');
+    expect(el.constructor.tag).to.equal("collection-list");
   });
 });
 
@@ -377,48 +388,52 @@ describe("collection-list HAX integration", () => {
 describe("collection-list error handling", () => {
   it("handles rapid property changes", async () => {
     const el = await fixture(html`<collection-list></collection-list>`);
-    
-    const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
-    
+
+    const sizes = ["xs", "sm", "md", "lg", "xl"];
+
     // Rapidly change responsive size
-    for(let i = 0; i < 20; i++) {
+    for (let i = 0; i < 20; i++) {
       el.responsiveSize = sizes[i % sizes.length];
     }
-    
+
     await el.updateComplete;
-    expect(el.responsiveSize).to.equal('xl'); // Last value
+    expect(el.responsiveSize).to.equal("xl"); // Last value
   });
 
   it("handles mixed content types in slots", async () => {
     const el = await fixture(html`
       <collection-list>
         <div>Text content</div>
-        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Test">
+        <img
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+          alt="Test"
+        />
         <video width="100" height="50" muted>
-          <source src="data:video/mp4;base64," type="video/mp4">
+          <source src="data:video/mp4;base64," type="video/mp4" />
         </video>
         <audio controls>
-          <source src="data:audio/mpeg;base64," type="audio/mpeg">
+          <source src="data:audio/mpeg;base64," type="audio/mpeg" />
         </audio>
         Text node
       </collection-list>
     `);
-    
+
     expect(el).to.exist;
     await expect(el).to.be.accessible();
   });
 
   it("handles extremely large number of items", async () => {
-    const manyItems = Array.from({length: 100}, (_, i) => `<div>Item ${i}</div>`).join('');
-    
+    const manyItems = Array.from(
+      { length: 100 },
+      (_, i) => `<div>Item ${i}</div>`,
+    ).join("");
+
     const el = await fixture(html`
-      <collection-list>
-        ${html([manyItems])}
-      </collection-list>
+      <collection-list> ${html([manyItems])} </collection-list>
     `);
-    
+
     expect(el).to.exist;
-    const wrapper = el.shadowRoot.querySelector('.wrapper');
+    const wrapper = el.shadowRoot.querySelector(".wrapper");
     expect(wrapper).to.exist;
   });
 
@@ -428,29 +443,33 @@ describe("collection-list error handling", () => {
         <div>Initial Item</div>
       </collection-list>
     `);
-    
+
     // Add more content dynamically
-    const newItem = document.createElement('div');
-    newItem.textContent = 'Dynamic Item';
+    const newItem = document.createElement("div");
+    newItem.textContent = "Dynamic Item";
     el.appendChild(newItem);
-    
+
     await el.updateComplete;
-    
-    const slot = el.shadowRoot.querySelector('slot');
-    const slottedElements = slot.assignedNodes({flatten: true}).filter(node => node.nodeType === Node.ELEMENT_NODE);
+
+    const slot = el.shadowRoot.querySelector("slot");
+    const slottedElements = slot
+      .assignedNodes({ flatten: true })
+      .filter((node) => node.nodeType === Node.ELEMENT_NODE);
     expect(slottedElements.length).to.equal(2);
   });
 
   it("handles responsive size changes at runtime", async () => {
-    const el = await fixture(html`<collection-list responsive-size="xs"></collection-list>`);
-    
-    expect(el.responsiveSize).to.equal('xs');
-    expect(el.getAttribute('responsive-size')).to.equal('xs');
-    
-    el.setAttribute('responsive-size', 'xl');
+    const el = await fixture(
+      html`<collection-list responsive-size="xs"></collection-list>`,
+    );
+
+    expect(el.responsiveSize).to.equal("xs");
+    expect(el.getAttribute("responsive-size")).to.equal("xs");
+
+    el.setAttribute("responsive-size", "xl");
     await el.updateComplete;
-    
-    expect(el.responsiveSize).to.equal('xl');
-    expect(el.getAttribute('responsive-size')).to.equal('xl');
+
+    expect(el.responsiveSize).to.equal("xl");
+    expect(el.getAttribute("responsive-size")).to.equal("xl");
   });
 });

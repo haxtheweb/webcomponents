@@ -2,7 +2,7 @@
   "name": "@haxtheweb/pdf-browser-viewer",
   "wcfactory": {
     "className": "PdfBrowserViewer",
-    "customElementClass": "PolymerElement",
+    "customElementClass": "LitElement",
     "elementName": "pdf-browser-viewer",
     "generator-wcfactory-version": "0.3.2",
     "useHAX": true,
@@ -42,17 +42,13 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@haxtheweb/simple-icon": "^11.0.5",
-    "@polymer/paper-card": "^3.0.0",
-    "@polymer/polymer": "3.5.2"
+    "lit": "3.3.1"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/deduping-fix": "^11.0.0",
     "@open-wc/testing": "4.0.0",
-    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
-    "@haxtheweb/utils": "^11.0.0",
     "@web/dev-server": "0.4.6",
-    "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "9.1.2",
     "wct-browser-legacy": "1.0.2"
   },

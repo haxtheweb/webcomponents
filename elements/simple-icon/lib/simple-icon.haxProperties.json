@@ -13,7 +13,8 @@
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team",
-      "inlineOnly": true
+      "inlineOnly": true,
+      "selectionRequired": false
     }
   },
   "settings": {

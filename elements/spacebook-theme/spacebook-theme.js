@@ -113,13 +113,13 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         
         body.dark-mode {
           background-color: var(--spacebook-theme-bg-gray-900);
-          color: var(--spacebook-theme-text-gray-400);
+          color: var(--spacebook-theme-text-gray-300);
         }
         
         @media (prefers-color-scheme: dark) {
           body:not(.light-mode) {
             background-color: var(--spacebook-theme-bg-gray-900);
-            color: var(--spacebook-theme-text-gray-400);
+            color: var(--spacebook-theme-text-gray-300);
           }
         }
       `,
@@ -210,8 +210,8 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         color: var(--spacebook-theme-text-gray-800);
       }
       
-      :host([dark-mode]) .site-title-link {
-        color: var(--spacebook-theme-text-gray-500);
+:host([dark-mode]) .site-title-link {
+        color: var(--spacebook-theme-text-gray-300);
       }
       
       .site-title {
@@ -234,7 +234,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
       }
       
       :host([dark-mode]) .site-subtitle {
-        color: var(--spacebook-theme-text-gray-600);
+        color: var(--spacebook-theme-text-gray-300);
       }
       
       /* Header controls group */
@@ -284,6 +284,14 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
       
       .mobile-menu-btn:hover {
         color: var(--spacebook-theme-text-gray-600);
+      }
+      
+      :host([dark-mode]) .mobile-menu-btn {
+        color: var(--spacebook-theme-text-gray-300);
+      }
+      
+      :host([dark-mode]) .mobile-menu-btn:hover {
+        color: var(--spacebook-theme-text-gray-300);
       }
       
       /* Dark mode toggle */
@@ -572,6 +580,14 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
       
       .page-meta-item:hover {
         background-color: var(--spacebook-theme-bg-gray-200);
+      }
+      
+      :host([dark-mode]) .page-meta-item {
+        color: var(--spacebook-theme-text-gray-300);
+      }
+      
+      :host([dark-mode]) .page-meta-item:hover {
+        background-color: var(--spacebook-theme-bg-gray-800);
       }
       
       .page-meta-item a {

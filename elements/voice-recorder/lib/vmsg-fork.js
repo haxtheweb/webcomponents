@@ -408,7 +408,6 @@ export class Form {
     this.drawTime(0);
     this.target.querySelector(".vmsg-popup").appendChild(timer);
 
-
     const recordRow = globalThis.document.createElement("div");
     recordRow.className = "vmsg-record-row";
     recordRow.style.cssText = `

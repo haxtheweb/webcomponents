@@ -5,23 +5,29 @@ describe("absolute-position-behavior test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
-      <div id="container" style="position: relative; width: 400px; height: 300px;">
-        <div id="target" style="position: absolute; top: 50px; left: 100px; width: 50px; height: 50px; background: blue;">Target</div>
-        <absolute-position-behavior 
-          for="target"
-          position="bottom"
-          auto
+      <div
+        id="container"
+        style="position: relative; width: 400px; height: 300px;"
+      >
+        <div
+          id="target"
+          style="position: absolute; top: 50px; left: 100px; width: 50px; height: 50px; background: blue;"
         >
+          Target
+        </div>
+        <absolute-position-behavior for="target" position="bottom" auto>
           <div>Positioned content</div>
         </absolute-position-behavior>
       </div>
     `);
-    element = element.querySelector('absolute-position-behavior');
+    element = element.querySelector("absolute-position-behavior");
   });
 
   it("basic setup", async () => {
     expect(element).to.exist;
-    expect(element.tagName.toLowerCase()).to.equal("absolute-position-behavior");
+    expect(element.tagName.toLowerCase()).to.equal(
+      "absolute-position-behavior",
+    );
   });
 
   it("passes the a11y audit", async () => {
@@ -30,7 +36,7 @@ describe("absolute-position-behavior test", () => {
 
   describe("Slot functionality", () => {
     it("should have default slot with correct content", () => {
-      const slot = element.shadowRoot.querySelector('slot');
+      const slot = element.shadowRoot.querySelector("slot");
       expect(slot).to.exist;
       const assignedNodes = slot.assignedNodes({ flatten: true });
       expect(assignedNodes.length).to.be.greaterThan(0);
@@ -225,7 +231,7 @@ describe("absolute-position-behavior test", () => {
     describe("position property", () => {
       it("should accept valid position values and maintain accessibility", async () => {
         const validPositions = ["top", "bottom", "left", "right"];
-        
+
         for (const pos of validPositions) {
           testElement.position = pos;
           await testElement.updateComplete;
@@ -254,7 +260,7 @@ describe("absolute-position-behavior test", () => {
     describe("positionAlign property", () => {
       it("should accept valid alignment values and maintain accessibility", async () => {
         const validAligns = ["start", "end", "center"];
-        
+
         for (const align of validAligns) {
           testElement.positionAlign = align;
           await testElement.updateComplete;
@@ -288,9 +294,9 @@ describe("absolute-position-behavior test", () => {
 
     describe("target property", () => {
       it("should accept element object values and maintain accessibility", async () => {
-        const targetDiv = globalThis.document.createElement('div');
-        targetDiv.id = 'test-target';
-        
+        const targetDiv = globalThis.document.createElement("div");
+        targetDiv.id = "test-target";
+
         testElement.target = targetDiv;
         await testElement.updateComplete;
         expect(testElement.target).to.equal(targetDiv);
@@ -309,7 +315,7 @@ describe("absolute-position-behavior test", () => {
 
     describe("__positions property (internal)", () => {
       it("should handle object values and maintain accessibility", async () => {
-        const positions = { top: '10px', left: '20px' };
+        const positions = { top: "10px", left: "20px" };
         testElement.__positions = positions;
         await testElement.updateComplete;
         expect(testElement.__positions).to.deep.equal(positions);
@@ -392,12 +398,20 @@ describe("absolute-position-behavior test", () => {
   describe("Positioning functionality and accessibility", () => {
     it("should maintain accessibility with different positioning configurations", async () => {
       const positions = ["top", "bottom", "left", "right"];
-      
+
       for (const pos of positions) {
         const container = await fixture(html`
-          <div id="container-${pos}" style="position: relative; width: 400px; height: 300px;">
-            <div id="target-${pos}" style="position: absolute; top: 100px; left: 150px; width: 50px; height: 50px; background: red;">Target</div>
-            <absolute-position-behavior 
+          <div
+            id="container-${pos}"
+            style="position: relative; width: 400px; height: 300px;"
+          >
+            <div
+              id="target-${pos}"
+              style="position: absolute; top: 100px; left: 150px; width: 50px; height: 50px; background: red;"
+            >
+              Target
+            </div>
+            <absolute-position-behavior
               for="target-${pos}"
               position="${pos}"
               auto
@@ -407,8 +421,10 @@ describe("absolute-position-behavior test", () => {
             </absolute-position-behavior>
           </div>
         `);
-        
-        const positionedElement = container.querySelector('absolute-position-behavior');
+
+        const positionedElement = container.querySelector(
+          "absolute-position-behavior",
+        );
         await positionedElement.updateComplete;
         await expect(positionedElement).shadowDom.to.be.accessible();
       }
@@ -417,8 +433,13 @@ describe("absolute-position-behavior test", () => {
     it("should remain accessible with sticky positioning", async () => {
       const testElement = await fixture(html`
         <div style="position: relative; width: 400px; height: 300px;">
-          <div id="sticky-target" style="position: absolute; top: 50px; left: 50px; width: 100px; height: 50px; background: green;">Sticky Target</div>
-          <absolute-position-behavior 
+          <div
+            id="sticky-target"
+            style="position: absolute; top: 50px; left: 50px; width: 100px; height: 50px; background: green;"
+          >
+            Sticky Target
+          </div>
+          <absolute-position-behavior
             for="sticky-target"
             position="bottom"
             sticky
@@ -428,17 +449,26 @@ describe("absolute-position-behavior test", () => {
           </absolute-position-behavior>
         </div>
       `);
-      
-      const positionedElement = testElement.querySelector('absolute-position-behavior');
+
+      const positionedElement = testElement.querySelector(
+        "absolute-position-behavior",
+      );
       await positionedElement.updateComplete;
       await expect(positionedElement).shadowDom.to.be.accessible();
     });
 
     it("should maintain accessibility with fit-to-visible-bounds enabled", async () => {
       const testElement = await fixture(html`
-        <div style="position: relative; width: 200px; height: 150px; overflow: hidden;">
-          <div id="bounded-target" style="position: absolute; top: 120px; left: 180px; width: 50px; height: 30px; background: purple;">Edge Target</div>
-          <absolute-position-behavior 
+        <div
+          style="position: relative; width: 200px; height: 150px; overflow: hidden;"
+        >
+          <div
+            id="bounded-target"
+            style="position: absolute; top: 120px; left: 180px; width: 50px; height: 30px; background: purple;"
+          >
+            Edge Target
+          </div>
+          <absolute-position-behavior
             for="bounded-target"
             position="bottom"
             fit-to-visible-bounds
@@ -448,20 +478,27 @@ describe("absolute-position-behavior test", () => {
           </absolute-position-behavior>
         </div>
       `);
-      
-      const positionedElement = testElement.querySelector('absolute-position-behavior');
+
+      const positionedElement = testElement.querySelector(
+        "absolute-position-behavior",
+      );
       await positionedElement.updateComplete;
       await expect(positionedElement).shadowDom.to.be.accessible();
     });
 
     it("should handle positioning with offset values", async () => {
       const offsets = [0, 10, -5, 25];
-      
+
       for (const offset of offsets) {
         const testElement = await fixture(html`
           <div style="position: relative; width: 300px; height: 200px;">
-            <div id="offset-target-${offset}" style="position: absolute; top: 50px; left: 50px; width: 60px; height: 40px; background: orange;">Offset Target</div>
-            <absolute-position-behavior 
+            <div
+              id="offset-target-${offset}"
+              style="position: absolute; top: 50px; left: 50px; width: 60px; height: 40px; background: orange;"
+            >
+              Offset Target
+            </div>
+            <absolute-position-behavior
               for="offset-target-${offset}"
               position="bottom"
               offset="${offset}"
@@ -471,8 +508,10 @@ describe("absolute-position-behavior test", () => {
             </absolute-position-behavior>
           </div>
         `);
-        
-        const positionedElement = testElement.querySelector('absolute-position-behavior');
+
+        const positionedElement = testElement.querySelector(
+          "absolute-position-behavior",
+        );
         await positionedElement.updateComplete;
         await expect(positionedElement).shadowDom.to.be.accessible();
       }
@@ -483,27 +522,31 @@ describe("absolute-position-behavior test", () => {
     it("should handle auto positioning lifecycle", async () => {
       const testElement = await fixture(html`
         <div style="position: relative; width: 300px; height: 200px;">
-          <div id="auto-target" style="position: absolute; top: 70px; left: 70px; width: 40px; height: 40px; background: cyan;">Auto Target</div>
-          <absolute-position-behavior 
-            for="auto-target"
-            position="top"
+          <div
+            id="auto-target"
+            style="position: absolute; top: 70px; left: 70px; width: 40px; height: 40px; background: cyan;"
           >
+            Auto Target
+          </div>
+          <absolute-position-behavior for="auto-target" position="top">
             <div>Auto positioning test</div>
           </absolute-position-behavior>
         </div>
       `);
-      
-      const positionedElement = testElement.querySelector('absolute-position-behavior');
-      
+
+      const positionedElement = testElement.querySelector(
+        "absolute-position-behavior",
+      );
+
       // Initially auto should be false
       expect(positionedElement.auto).to.be.false;
       await expect(positionedElement).shadowDom.to.be.accessible();
-      
+
       // Enable auto positioning
       positionedElement.auto = true;
       await positionedElement.updateComplete;
       await expect(positionedElement).shadowDom.to.be.accessible();
-      
+
       // Disable auto positioning
       positionedElement.auto = false;
       await positionedElement.updateComplete;
@@ -513,28 +556,32 @@ describe("absolute-position-behavior test", () => {
     it("should handle manual positioning methods", async () => {
       const testElement = await fixture(html`
         <div style="position: relative; width: 300px; height: 200px;">
-          <div id="manual-target" style="position: absolute; top: 80px; left: 80px; width: 50px; height: 30px; background: magenta;">Manual Target</div>
-          <absolute-position-behavior 
-            for="manual-target"
-            position="left"
+          <div
+            id="manual-target"
+            style="position: absolute; top: 80px; left: 80px; width: 50px; height: 30px; background: magenta;"
           >
+            Manual Target
+          </div>
+          <absolute-position-behavior for="manual-target" position="left">
             <div>Manual positioning test</div>
           </absolute-position-behavior>
         </div>
       `);
-      
-      const positionedElement = testElement.querySelector('absolute-position-behavior');
-      
+
+      const positionedElement = testElement.querySelector(
+        "absolute-position-behavior",
+      );
+
       // Test manual setPosition
       positionedElement.setPosition();
       await positionedElement.updateComplete;
       await expect(positionedElement).shadowDom.to.be.accessible();
-      
+
       // Test updatePosition
       positionedElement.updatePosition();
       await positionedElement.updateComplete;
       await expect(positionedElement).shadowDom.to.be.accessible();
-      
+
       // Test unsetPosition
       positionedElement.unsetPosition();
       await positionedElement.updateComplete;
@@ -545,7 +592,7 @@ describe("absolute-position-behavior test", () => {
   describe("Edge cases and error handling", () => {
     it("should remain accessible when target element doesn't exist", async () => {
       const testElement = await fixture(html`
-        <absolute-position-behavior 
+        <absolute-position-behavior
           for="nonexistent-target"
           position="bottom"
           auto
@@ -553,7 +600,7 @@ describe("absolute-position-behavior test", () => {
           <div>Content for missing target</div>
         </absolute-position-behavior>
       `);
-      
+
       await testElement.updateComplete;
       await expect(testElement).shadowDom.to.be.accessible();
     });
@@ -564,7 +611,7 @@ describe("absolute-position-behavior test", () => {
           <div>Hidden content</div>
         </absolute-position-behavior>
       `);
-      
+
       await testElement.updateComplete;
       // Element is hidden, so accessibility testing isn't meaningful
       expect(testElement.hidden).to.be.true;
@@ -576,7 +623,7 @@ describe("absolute-position-behavior test", () => {
           <div>Test content</div>
         </absolute-position-behavior>
       `);
-      
+
       const unusualValues = [
         "   \t\n   ", // whitespace
         "<script>alert('test')</script>", // potentially dangerous content
@@ -584,14 +631,14 @@ describe("absolute-position-behavior test", () => {
         "🗺 positioned content 🗺", // emoji
         "Very long positioning identifier that might cause issues with layout or positioning calculations",
         "Multi\nline\ntext", // multiline
-        "Text with 'quotes' and \"double quotes\" and special chars: !@#$%^&*()"
+        "Text with 'quotes' and \"double quotes\" and special chars: !@#$%^&*()",
       ];
-      
+
       for (const value of unusualValues) {
         testElement.for = value;
         testElement.position = value;
         await testElement.updateComplete;
-        
+
         expect(testElement.for).to.equal(value);
         expect(testElement.position).to.equal(value);
         await expect(testElement).shadowDom.to.be.accessible();
@@ -604,13 +651,13 @@ describe("absolute-position-behavior test", () => {
           <div>Extreme offset test</div>
         </absolute-position-behavior>
       `);
-      
+
       const extremeOffsets = [-1000, 0, 1000, 99999, -99999];
-      
+
       for (const offset of extremeOffsets) {
         testElement.offset = offset;
         await testElement.updateComplete;
-        
+
         expect(testElement.offset).to.equal(offset);
         await expect(testElement).shadowDom.to.be.accessible();
       }
@@ -621,13 +668,18 @@ describe("absolute-position-behavior test", () => {
     it("should maintain accessibility with different position-align combinations", async () => {
       const positions = ["top", "bottom", "left", "right"];
       const alignments = ["start", "end", "center"];
-      
+
       for (const pos of positions) {
         for (const align of alignments) {
           const testElement = await fixture(html`
             <div style="position: relative; width: 400px; height: 300px;">
-              <div id="align-target-${pos}-${align}" style="position: absolute; top: 100px; left: 150px; width: 80px; height: 60px; background: teal;">Align Target</div>
-              <absolute-position-behavior 
+              <div
+                id="align-target-${pos}-${align}"
+                style="position: absolute; top: 100px; left: 150px; width: 80px; height: 60px; background: teal;"
+              >
+                Align Target
+              </div>
+              <absolute-position-behavior
                 for="align-target-${pos}-${align}"
                 position="${pos}"
                 position-align="${align}"
@@ -637,8 +689,10 @@ describe("absolute-position-behavior test", () => {
               </absolute-position-behavior>
             </div>
           `);
-          
-          const positionedElement = testElement.querySelector('absolute-position-behavior');
+
+          const positionedElement = testElement.querySelector(
+            "absolute-position-behavior",
+          );
           await positionedElement.updateComplete;
           await expect(positionedElement).shadowDom.to.be.accessible();
         }
@@ -650,8 +704,13 @@ describe("absolute-position-behavior test", () => {
     it("should maintain accessibility during state manager interactions", async () => {
       const testElement = await fixture(html`
         <div style="position: relative; width: 350px; height: 250px;">
-          <div id="manager-target" style="position: absolute; top: 60px; left: 60px; width: 70px; height: 50px; background: lime;">Manager Target</div>
-          <absolute-position-behavior 
+          <div
+            id="manager-target"
+            style="position: absolute; top: 60px; left: 60px; width: 70px; height: 50px; background: lime;"
+          >
+            Manager Target
+          </div>
+          <absolute-position-behavior
             for="manager-target"
             position="right"
             allow-overlap
@@ -662,13 +721,15 @@ describe("absolute-position-behavior test", () => {
           </absolute-position-behavior>
         </div>
       `);
-      
-      const positionedElement = testElement.querySelector('absolute-position-behavior');
+
+      const positionedElement = testElement.querySelector(
+        "absolute-position-behavior",
+      );
       await positionedElement.updateComplete;
-      
+
       // Test that the element integrates with AbsolutePositionStateManager
       expect(globalThis.AbsolutePositionStateManager).to.exist;
-      
+
       await expect(positionedElement).shadowDom.to.be.accessible();
     });
   });
@@ -678,14 +739,11 @@ describe("absolute-position-behavior test", () => {
       // This tests that the behavior class can be used as a mixin
       // The accessibility should be maintained regardless of usage pattern
       const testElement = await fixture(html`
-        <absolute-position-behavior 
-          position="bottom"
-          justify
-        >
+        <absolute-position-behavior position="bottom" justify>
           <div>Mixin usage test</div>
         </absolute-position-behavior>
       `);
-      
+
       await testElement.updateComplete;
       await expect(testElement).shadowDom.to.be.accessible();
     });

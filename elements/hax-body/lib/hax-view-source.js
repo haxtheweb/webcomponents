@@ -1,6 +1,5 @@
 import { LitElement, html, css } from "lit";
-import { MtzFileDownloadBehaviors } from "@haxtheweb/dl-behavior/dl-behavior.js";
-import { stripMSWord, formatHTML, b64toBlob } from "@haxtheweb/utils/utils.js";
+import { stripMSWord, formatHTML } from "@haxtheweb/utils/utils.js";
 import { HAXStore } from "./hax-store.js";
 import "./hax-toolbar.js";
 import { HaxComponentStyles } from "./hax-ui-styles.js";
@@ -16,7 +15,7 @@ import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-
  * @element hax-eview-source
  * `Export dialog with all export options and settings provided.`
  */
-class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
+class HaxViewSource extends I18NMixin(LitElement) {
   static get styles() {
     return [
       ...HaxComponentStyles,
@@ -47,9 +46,10 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
           height: calc(100vh - 200px);
         }
         .updatecontent {
-          background-color: var(--ddd-theme-default-coalygray);
-          color: var(--ddd-theme-default-opportunityGreen);
+          --hax-ui-color: white;
+          --hax-ui-background-color: var(--ddd-theme-default-skyBlue);
         }
+        
         hax-toolbar {
           flex: 0 0 auto;
           background-color: var(--hax-ui-background-color);
@@ -83,7 +83,6 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
               label="${this.t.updateHTML}"
               icon="icons:check"
               @click="${this.updateBodyFromHTML}"
-              show-text-label
               icon-position="top"
               class="updatecontent"
             >
@@ -92,17 +91,15 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
               @click="${this.scrubContent}"
               icon="editor:format-clear"
               label="${this.t.cleanFormatting}"
-              show-text-label
               icon-position="top"
             >
             </hax-tray-button>
             ${MicroFrontendRegistry.has("@core/prettyHtml")
               ? html`
                   <hax-tray-button
-                    label="${this.t.PrettifyHtml}"
+                    label="${this.t.prettifyHtml}"
                     icon="hax:format-textblock"
                     @click="${this.prettifyContent}"
-                    show-text-label
                     icon-position="top"
                   >
                   </hax-tray-button>
@@ -110,101 +107,11 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
               : html``}
             <hax-tray-button
               @click="${this.selectBody}"
-              icon="hax:html-code"
+              icon="icons:content-copy"
               label="${this.t.copyHTML}"
-              show-text-label
               icon-position="top"
             >
             </hax-tray-button>
-            ${HAXStore.revisionHistoryLink
-              ? html` <hax-tray-button
-                  @click="${this.revisionHistoryClick}"
-                  icon="hax:git"
-                  label="${this.t.revisionHistory}"
-                  show-text-label
-                  icon-position="top"
-                >
-                </hax-tray-button>`
-              : ``}
-
-            <simple-toolbar-menu
-              icon="icons:file-download"
-              icon-position="top"
-              label="${this.t.downloadContent}"
-              @dblclick="${this.download}"
-              show-text-label
-            >
-              <simple-toolbar-menu-item>
-                <hax-tray-button
-                  icon="hax:file-html"
-                  icon-position="top"
-                  label="${this.t.downloadHTML}"
-                  @click="${this.download}"
-                  show-text-label
-                >
-                </hax-tray-button>
-              </simple-toolbar-menu-item>
-              <simple-toolbar-menu-item>
-                ${MicroFrontendRegistry.has("@core/htmlToDocx")
-                  ? html`
-                      <hax-tray-button
-                        label="${this.t.downloadDOCX}"
-                        icon="hax:file-docx"
-                        @click="${this.downloadDOCXviaMicro}"
-                        show-text-label
-                        icon-position="top"
-                      >
-                      </hax-tray-button>
-                    `
-                  : html`
-                      <hax-tray-button
-                        label="${this.t.downloadDOCX}"
-                        icon="hax:file-docx"
-                        @click="${this.downloadDOCX}"
-                        show-text-label
-                        icon-position="top"
-                      >
-                      </hax-tray-button>
-                    `}
-              </simple-toolbar-menu-item>
-              ${MicroFrontendRegistry.has("@core/htmlToMd")
-                ? html`
-                    <simple-toolbar-menu-item>
-                      <hax-tray-button
-                        label="${this.t.downloadMD}"
-                        icon="hax:format-textblock"
-                        @click="${this.downloadMDviaMicro}"
-                        show-text-label
-                        icon-position="top"
-                      >
-                      </hax-tray-button>
-                    </simple-toolbar-menu-item>
-                  `
-                : html``}
-              ${MicroFrontendRegistry.has("@core/htmlToPdf")
-                ? html`
-                    <simple-toolbar-menu-item>
-                      <hax-tray-button
-                        label="${this.t.downloadPDF}"
-                        icon="lrn:pdf"
-                        @click="${this.downloadPDFviaMicro}"
-                        show-text-label
-                        icon-position="top"
-                      >
-                      </hax-tray-button>
-                    </simple-toolbar-menu-item>
-                  `
-                : html``}
-              <simple-toolbar-menu-item>
-                <hax-tray-button
-                  @click="${this.htmlToHaxElements}"
-                  label="${this.t.haxSchema}"
-                  icon="hax:code-json"
-                  show-text-label
-                  icon-position="top"
-                ></hax-tray-button>
-              </simple-toolbar-menu-item>
-            </simple-toolbar-menu>
           </hax-toolbar>
           <div id="wrapper">
             <div id="spacer"></div>
@@ -230,123 +137,6 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
   refreshHTMLEditor(e) {
     this.updateEditor();
   }
-  /**
-   * Download file.
-   */
-  async download(e) {
-    const data = await this.contentToFile(false);
-    this.downloadFromData(data, "html", "my-new-code");
-    HAXStore.toast(this.t.fileDownloaded);
-    this.close();
-  }
-
-  /**
-   * Download DOCX.
-   */
-  async downloadDOCX(e) {
-    import("@haxtheweb/file-system-broker/lib/docx-file-system-broker.js").then(
-      async (e) => {
-        let body = await HAXStore.activeHaxBody.haxToContent();
-        globalThis.DOCXFileSystemBroker.requestAvailability().HTMLToDOCX(
-          body,
-          globalThis.document.title,
-        );
-        HAXStore.toast(this.t.fileDownloaded);
-        this.close();
-      },
-    );
-  }
-
-  /**
-   * Download DOCX, via microservice
-   */
-  async downloadDOCXviaMicro(e) {
-    let haxBodyHtml = await HAXStore.activeHaxBody.haxToContent();
-    const response = await MicroFrontendRegistry.call("@core/htmlToDocx", {
-      html: haxBodyHtml,
-    });
-    if (response.status == 200) {
-      const link = globalThis.document.createElement("a");
-      // click link to download file
-      // @todo this downloads but claims to be corrupt.
-      link.href = globalThis.URL.createObjectURL(
-        b64toBlob(
-          `${response.data}`,
-          "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-        ),
-      );
-      link.download = "PageContents.docx";
-      link.target = "_blank";
-      this.appendChild(link);
-      link.click();
-      this.removeChild(link);
-      HAXStore.toast(this.t.fileDownloaded);
-      this.close();
-    }
-  }
-  /**
-   * Download MD, via microservice
-   */
-  async downloadMDviaMicro(e) {
-    let haxBodyHtml = await HAXStore.activeHaxBody.haxToContent();
-    const response = await MicroFrontendRegistry.call("@core/htmlToMd", {
-      html: haxBodyHtml,
-    });
-    if (response.status == 200 && response.data) {
-      const link = globalThis.document.createElement("a");
-      // click link to download file
-      link.href = globalThis.URL.createObjectURL(
-        b64toBlob(btoa(response.data), "text/markdown"),
-      );
-      link.download = "PageContents.md";
-      link.target = "_blank";
-      this.appendChild(link);
-      link.click();
-      this.removeChild(link);
-      HAXStore.toast(this.t.fileDownloaded);
-      this.close();
-    }
-  }
-  /**
-   * Download PDF, via microservice
-   */
-  async downloadPDFviaMicro(e) {
-    let htmlContent = await HAXStore.activeHaxBody.haxToContent();
-    // base helps w/ calculating URLs in content
-    var base = "";
-    if (globalThis.document.querySelector("base")) {
-      base = globalThis.document.querySelector("base").href;
-    }
-    const response = await MicroFrontendRegistry.call("@core/htmlToPdf", {
-      base: base,
-      html: htmlContent,
-    });
-    if (response.status == 200 && response.data) {
-      const link = globalThis.document.createElement("a");
-      // click link to download file
-      // @todo this downloads but claims to be corrupt.
-      link.href = globalThis.URL.createObjectURL(
-        b64toBlob(response.data, "application/pdf"),
-      );
-      link.download = "PageContents.pdf";
-      link.target = "_blank";
-      this.appendChild(link);
-      link.click();
-      this.removeChild(link);
-      HAXStore.toast(this.t.fileDownloaded);
-      this.close();
-    }
-  }
-  /**
-   * Download file.
-   */
-  async downloadfull(e) {
-    const data = await this.contentToFile(true);
-    this.downloadFromData(data, "html", "my-new-webpage");
-    HAXStore.toast(this.t.fileDownloaded);
-    this.close();
-  }
-
   /**
    * Import content into body area.
    */
@@ -427,12 +217,6 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
       }, 1000);
     }
   }
-
-  revisionHistoryClick() {
-    if (HAXStore.revisionHistoryLink) {
-      globalThis.open(HAXStore.revisionHistoryLink, "_blank");
-    }
-  }
   /**
    * selectBody
    */
@@ -446,27 +230,6 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     hiddenarea.setAttribute("hidden", "hidden");
     HAXStore.toast(this.t.copiedToClipboard);
     //this.close();
-  }
-
-  /**
-   * HTML to HAX Elements
-   */
-  async htmlToHaxElements(e) {
-    let body = await HAXStore.activeHaxBody.haxToContent();
-    let elements = await HAXStore.htmlToHaxElements(body);
-    elements.shift();
-    var str = JSON.stringify(elements, null, 2);
-    let val = this.shadowRoot.querySelector("#textarea").value;
-    let hiddenarea = this.shadowRoot.querySelector("#hiddentextarea");
-    hiddenarea.removeAttribute("hidden");
-    hiddenarea.value = str;
-    hiddenarea.focus();
-    hiddenarea.select();
-    globalThis.document.execCommand("copy");
-    hiddenarea.value = val;
-    hiddenarea.setAttribute("hidden", "hidden");
-    HAXStore.toast(this.t.copiedToClipboard);
-    this.close();
   }
 
   close() {
@@ -547,13 +310,7 @@ class HaxViewSource extends I18NMixin(MtzFileDownloadBehaviors(LitElement)) {
     this.t = {
       updateHTML: "Update HTML",
       copyHTML: "Copy HTML",
-      downloadContent: "Download content",
-      downloadHTML: "Download HTML",
-      fileDownloaded: "File downloaded",
-      downloadDOCX: "Download DOCX",
-      downloadMD: "Download Markdown",
-      downloadPDF: "Download PDF",
-      PrettifyHtml: "Prettify HTML",
+      prettifyHtml: "Prettify HTML",
       cleanFormatting: "Clean Formatting",
       haxSchema: "HAXSchema",
       revisionHistory: "Revision history",

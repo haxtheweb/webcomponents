@@ -73,7 +73,7 @@
     "@haxtheweb/wc-autoload": "^11.0.0",
     "@lit-labs/motion": "^1.0.7",
     "@vaadin/router": "^1.7.5",
-    "lit": "3.3.0",
+    "lit": "3.3.1",
     "mobx": "6.13.7",
     "roughjs": "4.4.5",
     "scrollable-component": "^1.2.0",
@@ -82,10 +82,7 @@
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
     "@open-wc/testing": "4.0.0",
-    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
-    "@haxtheweb/utils": "^11.0.0",
     "@web/dev-server": "0.4.6",
-    "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "9.1.2",
     "wct-browser-legacy": "1.0.2"
   },

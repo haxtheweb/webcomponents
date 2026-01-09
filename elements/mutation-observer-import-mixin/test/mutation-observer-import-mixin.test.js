@@ -19,31 +19,33 @@ describe("mutation-observer-import-mixin test", () => {
   describe("Accessibility - Mixin Behavior", () => {
     it("doesn't negatively impact accessibility of host element", async () => {
       await element.updateComplete;
-      
+
       // Mixin should not interfere with accessibility
       await expect(element).shadowDom.to.be.accessible();
     });
 
     it("maintains accessibility during DOM mutations", async () => {
       await element.updateComplete;
-      
+
       // Should remain accessible even when observing mutations
       const style = globalThis.getComputedStyle(element);
-      expect(style.display).to.not.equal('none');
+      expect(style.display).to.not.equal("none");
     });
   });
 
   describe("Accessibility - Observer Functionality", () => {
     it("preserves semantic structure during observations", async () => {
       await element.updateComplete;
-      
+
       // Should not disrupt semantic DOM structure
-      expect(element.tagName.toLowerCase()).to.equal('mutation-observer-import-mixin');
+      expect(element.tagName.toLowerCase()).to.equal(
+        "mutation-observer-import-mixin",
+      );
     });
 
     it("handles dynamic content changes accessibly", async () => {
       await element.updateComplete;
-      
+
       // Dynamic changes should maintain accessibility
       await expect(element).shadowDom.to.be.accessible();
     });

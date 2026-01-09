@@ -3,7 +3,7 @@ import "../editable-table.js";
 
 describe("EditableTable test", () => {
   let element;
-  
+
   beforeEach(async () => {
     element = await fixture(
       html`<editable-table
@@ -18,7 +18,9 @@ describe("EditableTable test", () => {
       >
         <table>
           <caption>
-            Is it a <em>sandwich</em>? Food classification chart.
+            Is it a
+            <em>sandwich</em
+            >? Food classification chart.
           </caption>
           <thead>
             <tr>
@@ -49,7 +51,7 @@ describe("EditableTable test", () => {
             </tr>
           </tbody>
         </table>
-      </editable-table>`
+      </editable-table>`,
     );
     await element.updateComplete;
   });
@@ -74,11 +76,11 @@ describe("EditableTable test", () => {
   // Mode switching tests
   it("toggles between display and edit modes", async () => {
     expect(element.editMode).to.be.false;
-    
+
     element.toggleEditMode();
     await element.updateComplete;
     expect(element.editMode).to.be.true;
-    
+
     element.toggleEditMode();
     await element.updateComplete;
     expect(element.editMode).to.be.false;
@@ -88,7 +90,7 @@ describe("EditableTable test", () => {
     element.toggleEditMode(true);
     await element.updateComplete;
     expect(element.editMode).to.be.true;
-    
+
     element.toggleEditMode(false);
     await element.updateComplete;
     expect(element.editMode).to.be.false;
@@ -97,39 +99,49 @@ describe("EditableTable test", () => {
   it("reflects edit-mode attribute", async () => {
     element.editMode = true;
     await element.updateComplete;
-    expect(element.hasAttribute('edit-mode')).to.be.true;
-    
+    expect(element.hasAttribute("edit-mode")).to.be.true;
+
     element.editMode = false;
     await element.updateComplete;
-    expect(element.hasAttribute('edit-mode')).to.be.false;
+    expect(element.hasAttribute("edit-mode")).to.be.false;
   });
 
   // Component rendering tests
   it("renders display component when not in edit mode", () => {
-    const displayComponent = element.shadowRoot.querySelector('editable-table-display');
-    const editComponent = element.shadowRoot.querySelector('editable-table-edit');
-    
+    const displayComponent = element.shadowRoot.querySelector(
+      "editable-table-display",
+    );
+    const editComponent = element.shadowRoot.querySelector(
+      "editable-table-edit",
+    );
+
     expect(displayComponent).to.exist;
     expect(editComponent).to.exist;
-    expect(displayComponent.hasAttribute('hidden')).to.be.false;
-    expect(editComponent.hasAttribute('hidden')).to.be.true;
+    expect(displayComponent.hasAttribute("hidden")).to.be.false;
+    expect(editComponent.hasAttribute("hidden")).to.be.true;
   });
 
   it("renders edit component when in edit mode", async () => {
     element.editMode = true;
     await element.updateComplete;
-    
-    const displayComponent = element.shadowRoot.querySelector('editable-table-display');
-    const editComponent = element.shadowRoot.querySelector('editable-table-edit');
-    
-    expect(displayComponent.hasAttribute('hidden')).to.be.true;
-    expect(editComponent.hasAttribute('hidden')).to.be.false;
+
+    const displayComponent = element.shadowRoot.querySelector(
+      "editable-table-display",
+    );
+    const editComponent = element.shadowRoot.querySelector(
+      "editable-table-edit",
+    );
+
+    expect(displayComponent.hasAttribute("hidden")).to.be.true;
+    expect(editComponent.hasAttribute("hidden")).to.be.false;
   });
 
   // Property binding tests
   it("passes properties to display component", () => {
-    const displayComponent = element.shadowRoot.querySelector('editable-table-display');
-    
+    const displayComponent = element.shadowRoot.querySelector(
+      "editable-table-display",
+    );
+
     expect(displayComponent.bordered).to.equal(element.bordered);
     expect(displayComponent.condensed).to.equal(element.condensed);
     expect(displayComponent.filter).to.equal(element.filter);
@@ -140,8 +152,10 @@ describe("EditableTable test", () => {
   });
 
   it("passes properties to edit component", () => {
-    const editComponent = element.shadowRoot.querySelector('editable-table-edit');
-    
+    const editComponent = element.shadowRoot.querySelector(
+      "editable-table-edit",
+    );
+
     expect(editComponent.bordered).to.equal(element.bordered);
     expect(editComponent.condensed).to.equal(element.condensed);
     expect(editComponent.filter).to.equal(element.filter);
@@ -153,27 +167,29 @@ describe("EditableTable test", () => {
 
   // Slot content tests
   it("renders slotted table content", () => {
-    const table = element.querySelector('table');
-    const caption = element.querySelector('caption');
-    const thead = element.querySelector('thead');
-    const tbody = element.querySelector('tbody');
-    
+    const table = element.querySelector("table");
+    const caption = element.querySelector("caption");
+    const thead = element.querySelector("thead");
+    const tbody = element.querySelector("tbody");
+
     expect(table).to.exist;
     expect(caption).to.exist;
     expect(thead).to.exist;
     expect(tbody).to.exist;
-    
-    expect(caption.textContent).to.include('sandwich');
-    expect(thead.querySelectorAll('th').length).to.equal(4);
-    expect(tbody.querySelectorAll('tr').length).to.equal(3);
+
+    expect(caption.textContent).to.include("sandwich");
+    expect(thead.querySelectorAll("th").length).to.equal(4);
+    expect(tbody.querySelectorAll("tr").length).to.equal(3);
   });
 
   // Focus management tests
   it("focuses display component when not in edit mode", (done) => {
     element.focus();
-    
+
     setTimeout(() => {
-      const displayComponent = element.shadowRoot.querySelector('editable-table-display');
+      const displayComponent = element.shadowRoot.querySelector(
+        "editable-table-display",
+      );
       expect(document.activeElement).to.equal(displayComponent);
       done();
     }, 10);
@@ -182,11 +198,13 @@ describe("EditableTable test", () => {
   it("focuses edit component when in edit mode", async (done) => {
     element.editMode = true;
     await element.updateComplete;
-    
+
     element.focus();
-    
+
     setTimeout(() => {
-      const editComponent = element.shadowRoot.querySelector('editable-table-edit');
+      const editComponent = element.shadowRoot.querySelector(
+        "editable-table-edit",
+      );
       expect(document.activeElement).to.equal(editComponent);
       done();
     }, 10);
@@ -194,63 +212,71 @@ describe("EditableTable test", () => {
 
   // Event handling tests
   it("handles sync events from edit component", async () => {
-    const editComponent = element.shadowRoot.querySelector('editable-table-edit');
-    
-    const syncEvent = new CustomEvent('change', {
-      detail: 'testProperty'
+    const editComponent = element.shadowRoot.querySelector(
+      "editable-table-edit",
+    );
+
+    const syncEvent = new CustomEvent("change", {
+      detail: "testProperty",
     });
-    
+
     // Mock the editor property
-    editComponent.testProperty = 'testValue';
-    
+    editComponent.testProperty = "testValue";
+
     editComponent.dispatchEvent(syncEvent);
     await element.updateComplete;
-    
+
     // The sync method should have been called
-    expect(element.testProperty).to.equal('testValue');
+    expect(element.testProperty).to.equal("testValue");
   });
 
   it("dispatches toggle-edit-mode event", (done) => {
-    element.addEventListener('toggle-edit-mode', (e) => {
+    element.addEventListener("toggle-edit-mode", (e) => {
       expect(e.detail).to.equal(element);
       expect(e.bubbles).to.be.true;
       expect(e.cancelable).to.be.true;
       expect(e.composed).to.be.true;
       done();
     });
-    
+
     element.toggleEditMode();
   });
 
   // Getter tests
   it("provides display component getter", () => {
     expect(element.display).to.exist;
-    expect(element.display.tagName.toLowerCase()).to.equal('editable-table-display');
+    expect(element.display.tagName.toLowerCase()).to.equal(
+      "editable-table-display",
+    );
   });
 
   it("provides editor component getter", () => {
     expect(element.editor).to.exist;
-    expect(element.editor.tagName.toLowerCase()).to.equal('editable-table-edit');
+    expect(element.editor.tagName.toLowerCase()).to.equal(
+      "editable-table-edit",
+    );
   });
 
   // HAX integration tests
   it("has proper HAX properties configuration", () => {
     expect(element.constructor.haxProperties).to.exist;
-    expect(element.constructor.haxProperties).to.include('haxProperties.json');
+    expect(element.constructor.haxProperties).to.include("haxProperties.json");
   });
 
   it("provides HAX hooks", () => {
     const hooks = element.haxHooks();
     expect(hooks).to.exist;
-    expect(hooks.preProcessNodeToContent).to.equal('haxpreProcessNodeToContent');
-    expect(hooks.activeElementChanged).to.equal('haxactiveElementChanged');
+    expect(hooks.preProcessNodeToContent).to.equal(
+      "haxpreProcessNodeToContent",
+    );
+    expect(hooks.activeElementChanged).to.equal("haxactiveElementChanged");
   });
 
   it("handles HAX active element changes", async () => {
     const result = await element.haxactiveElementChanged(element, true);
     expect(element.editMode).to.be.true;
     expect(result).to.equal(element);
-    
+
     await element.haxactiveElementChanged(element, false);
     expect(element.editMode).to.be.false;
   });
@@ -267,18 +293,18 @@ describe("EditableTable test", () => {
   });
 
   it("maintains table accessibility structure", () => {
-    const table = element.querySelector('table');
-    const caption = element.querySelector('caption');
-    const headers = element.querySelectorAll('th[scope]');
-    
+    const table = element.querySelector("table");
+    const caption = element.querySelector("caption");
+    const headers = element.querySelectorAll("th[scope]");
+
     expect(table).to.exist;
     expect(caption).to.exist;
     expect(headers.length).to.be.greaterThan(0);
-    
+
     // Check scope attributes
     const rowHeaders = element.querySelectorAll('th[scope="row"]');
     const colHeaders = element.querySelectorAll('th[scope="col"]');
-    
+
     expect(rowHeaders.length).to.be.greaterThan(0);
     expect(colHeaders.length).to.be.greaterThan(0);
   });
@@ -304,16 +330,16 @@ describe("EditableTable test", () => {
       footer: true,
       rowHeader: true,
       numericStyles: true,
-      disabled: true
+      disabled: true,
     };
-    
-    Object.keys(flags).forEach(flag => {
+
+    Object.keys(flags).forEach((flag) => {
       element[flag] = flags[flag];
     });
-    
+
     await element.updateComplete;
-    
-    Object.keys(flags).forEach(flag => {
+
+    Object.keys(flags).forEach((flag) => {
       expect(element[flag]).to.equal(flags[flag]);
     });
   });
@@ -322,7 +348,7 @@ describe("EditableTable test", () => {
   it("handles empty table gracefully", async () => {
     const emptyElement = await fixture(html`<editable-table></editable-table>`);
     await emptyElement.updateComplete;
-    
+
     expect(emptyElement).to.exist;
     expect(emptyElement.display).to.exist;
     expect(emptyElement.editor).to.exist;
@@ -330,8 +356,8 @@ describe("EditableTable test", () => {
 
   it("handles missing shadow root gracefully", () => {
     // Create element without rendering
-    const testElement = document.createElement('editable-table');
-    
+    const testElement = document.createElement("editable-table");
+
     // These should return undefined without throwing
     expect(testElement.display).to.be.undefined;
     expect(testElement.editor).to.be.undefined;
@@ -350,31 +376,33 @@ describe("EditableTable test", () => {
   });
 
   it("handles cell change events", async () => {
-    const editComponent = element.shadowRoot.querySelector('editable-table-edit');
-    
-    const cellChangeEvent = new CustomEvent('cell-changed', {
+    const editComponent = element.shadowRoot.querySelector(
+      "editable-table-edit",
+    );
+
+    const cellChangeEvent = new CustomEvent("cell-changed", {
       detail: {
         row: 0,
         col: 0,
-        value: 'New Value'
-      }
+        value: "New Value",
+      },
     });
-    
+
     editComponent.dispatchEvent(cellChangeEvent);
     await element.updateComplete;
-    
+
     // Should handle the event without throwing
   });
 
   // Performance tests
   it("efficiently toggles between modes", async () => {
     const startTime = performance.now();
-    
+
     for (let i = 0; i < 10; i++) {
       element.toggleEditMode();
       await element.updateComplete;
     }
-    
+
     const endTime = performance.now();
     expect(endTime - startTime).to.be.lessThan(100); // Should be fast
   });
@@ -384,7 +412,9 @@ describe("EditableTable test", () => {
     const complexElement = await fixture(html`
       <editable-table>
         <table>
-          <caption>Complex table structure</caption>
+          <caption>
+            Complex table structure
+          </caption>
           <thead>
             <tr>
               <th scope="col">Header 1</th>
@@ -410,14 +440,14 @@ describe("EditableTable test", () => {
         </table>
       </editable-table>
     `);
-    
+
     await complexElement.updateComplete;
-    
-    const table = complexElement.querySelector('table');
-    expect(table.querySelector('thead')).to.exist;
-    expect(table.querySelector('tbody')).to.exist;
-    expect(table.querySelector('tfoot')).to.exist;
-    
+
+    const table = complexElement.querySelector("table");
+    expect(table.querySelector("thead")).to.exist;
+    expect(table.querySelector("tbody")).to.exist;
+    expect(table.querySelector("tfoot")).to.exist;
+
     await expect(complexElement).shadowDom.to.be.accessible();
   });
 });

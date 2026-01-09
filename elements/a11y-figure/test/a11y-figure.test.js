@@ -5,13 +5,15 @@ describe("a11y-figure test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
-      <a11y-figure 
-        img-src="https://placehold.co/400x300" 
+      <a11y-figure
+        img-src="https://placehold.co/400x300"
         img-alt="Placeholder image"
       >
         <p slot="figcaption">Figure caption text</p>
         <div slot="summary">Image description</div>
-        <div slot="details">Detailed image description with more information about the image.</div>
+        <div slot="details">
+          Detailed image description with more information about the image.
+        </div>
       </a11y-figure>
     `);
   });
@@ -41,7 +43,7 @@ describe("a11y-figure test", () => {
 
     it("should have summary slot", () => {
       // The summary slot is nested within the a11y-details component
-      const a11yDetails = element.shadowRoot.querySelector('a11y-details');
+      const a11yDetails = element.shadowRoot.querySelector("a11y-details");
       expect(a11yDetails).to.exist;
       // We can't directly test the slot content due to shadow DOM encapsulation,
       // but we can ensure our component passes it correctly
@@ -53,11 +55,13 @@ describe("a11y-figure test", () => {
     it("should have details slot", () => {
       const slotContainer = element.querySelector('[slot="details"]');
       expect(slotContainer).to.exist;
-      expect(slotContainer.textContent).to.contain("Detailed image description");
+      expect(slotContainer.textContent).to.contain(
+        "Detailed image description",
+      );
     });
 
     it("should have default hidden slot", () => {
-      const defaultSlot = element.shadowRoot.querySelector('slot[hidden]');
+      const defaultSlot = element.shadowRoot.querySelector("slot[hidden]");
       expect(defaultSlot).to.exist;
     });
   });
@@ -81,9 +85,12 @@ describe("a11y-figure test", () => {
         expect(testElement.imgSrc).to.equal("https://placehold.co/400x300");
         await expect(testElement).shadowDom.to.be.accessible();
 
-        testElement.imgSrc = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+        testElement.imgSrc =
+          "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
         await testElement.updateComplete;
-        expect(testElement.imgSrc).to.equal("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+        expect(testElement.imgSrc).to.equal(
+          "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+        );
         await expect(testElement).shadowDom.to.be.accessible();
 
         testElement.imgSrc = "";
@@ -131,9 +138,12 @@ describe("a11y-figure test", () => {
         expect(testElement.imgAlt).to.equal("");
         await expect(testElement).shadowDom.to.be.accessible();
 
-        testElement.imgAlt = "Long descriptive alt text for a complex image that provides context for screen reader users";
+        testElement.imgAlt =
+          "Long descriptive alt text for a complex image that provides context for screen reader users";
         await testElement.updateComplete;
-        expect(testElement.imgAlt).to.equal("Long descriptive alt text for a complex image that provides context for screen reader users");
+        expect(testElement.imgAlt).to.equal(
+          "Long descriptive alt text for a complex image that provides context for screen reader users",
+        );
         await expect(testElement).shadowDom.to.be.accessible();
       });
 
@@ -163,28 +173,28 @@ describe("a11y-figure test", () => {
       it("should be set correctly when details or summary slots are used", async () => {
         // No summary or details initially
         expect(testElement.__hasDetail).to.be.false;
-        
+
         // Add a summary element
-        const summaryElem = document.createElement('div');
-        summaryElem.setAttribute('slot', 'summary');
-        summaryElem.textContent = 'Test Summary';
+        const summaryElem = document.createElement("div");
+        summaryElem.setAttribute("slot", "summary");
+        summaryElem.textContent = "Test Summary";
         testElement.appendChild(summaryElem);
         await testElement.updateComplete;
-        
+
         // Test that __hasDetail is now true
         expect(testElement.__hasDetail).to.be.true;
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         // Remove the summary element
         testElement.removeChild(summaryElem);
-        
+
         // Add a details element
-        const detailsElem = document.createElement('div');
-        detailsElem.setAttribute('slot', 'details');
-        detailsElem.textContent = 'Test Details';
+        const detailsElem = document.createElement("div");
+        detailsElem.setAttribute("slot", "details");
+        detailsElem.textContent = "Test Details";
         testElement.appendChild(detailsElem);
         await testElement.updateComplete;
-        
+
         // Test that __hasDetail remains true
         expect(testElement.__hasDetail).to.be.true;
         await expect(testElement).shadowDom.to.be.accessible();
@@ -244,7 +254,10 @@ describe("a11y-figure test", () => {
   describe("Accessibility scenarios with different property combinations", () => {
     it("should remain accessible with image and alt text", async () => {
       const testElement = await fixture(html`
-        <a11y-figure img-src="https://placehold.co/200x100" img-alt="Placeholder image">
+        <a11y-figure
+          img-src="https://placehold.co/200x100"
+          img-alt="Placeholder image"
+        >
           <p slot="figcaption">Simple figure</p>
         </a11y-figure>
       `);
@@ -271,7 +284,10 @@ describe("a11y-figure test", () => {
 
     it("should remain accessible with only image and no details", async () => {
       const testElement = await fixture(html`
-        <a11y-figure img-src="https://placehold.co/200x100" img-alt="Placeholder image">
+        <a11y-figure
+          img-src="https://placehold.co/200x100"
+          img-alt="Placeholder image"
+        >
           <p slot="figcaption">Figure without details</p>
         </a11y-figure>
       `);
@@ -282,7 +298,11 @@ describe("a11y-figure test", () => {
     it("should remain accessible with slotted image instead of src", async () => {
       const testElement = await fixture(html`
         <a11y-figure>
-          <img slot="image" src="https://placehold.co/200x100" alt="Slotted placeholder" />
+          <img
+            slot="image"
+            src="https://placehold.co/200x100"
+            alt="Slotted placeholder"
+          />
           <p slot="figcaption">Figure with slotted image</p>
         </a11y-figure>
       `);
@@ -319,13 +339,14 @@ describe("a11y-figure test", () => {
       `);
       await testElement.updateComplete;
       await expect(testElement).shadowDom.to.be.accessible();
-      
+
       // This is a bit limited since we can't directly access the nested a11y-details component
       // due to shadow DOM encapsulation, but we're testing the setup is accessible
-      const nestedA11yDetails = testElement.shadowRoot.querySelector('a11y-details');
+      const nestedA11yDetails =
+        testElement.shadowRoot.querySelector("a11y-details");
       expect(nestedA11yDetails).to.exist;
-      expect(nestedA11yDetails.getAttribute('open-text')).to.equal('Show');
-      expect(nestedA11yDetails.getAttribute('close-text')).to.equal('Hide');
+      expect(nestedA11yDetails.getAttribute("open-text")).to.equal("Show");
+      expect(nestedA11yDetails.getAttribute("close-text")).to.equal("Hide");
     });
   });
 
@@ -342,7 +363,10 @@ describe("a11y-figure test", () => {
 
     it("should remain accessible with empty figcaption", async () => {
       const testElement = await fixture(html`
-        <a11y-figure img-src="https://placehold.co/200x100" img-alt="Placeholder image">
+        <a11y-figure
+          img-src="https://placehold.co/200x100"
+          img-alt="Placeholder image"
+        >
           <p slot="figcaption"></p>
         </a11y-figure>
       `);
@@ -352,7 +376,10 @@ describe("a11y-figure test", () => {
 
     it("should remain accessible with no figcaption", async () => {
       const testElement = await fixture(html`
-        <a11y-figure img-src="https://placehold.co/200x100" img-alt="Placeholder image">
+        <a11y-figure
+          img-src="https://placehold.co/200x100"
+          img-alt="Placeholder image"
+        >
         </a11y-figure>
       `);
       await testElement.updateComplete;
@@ -381,14 +408,14 @@ describe("a11y-figure test", () => {
     it("should handle HAX image upload integration", () => {
       const haxProps = element.constructor.haxProperties;
       const configItems = haxProps.settings.configure;
-      
+
       // Verify imgSrc property has haxupload input method
-      const imgSrcProp = configItems.find(item => item.property === "imgSrc");
+      const imgSrcProp = configItems.find((item) => item.property === "imgSrc");
       expect(imgSrcProp).to.exist;
       expect(imgSrcProp.inputMethod).to.equal("haxupload");
-      
+
       // Verify imgAlt property exists and is required
-      const imgAltProp = configItems.find(item => item.property === "imgAlt");
+      const imgAltProp = configItems.find((item) => item.property === "imgAlt");
       expect(imgAltProp).to.exist;
       expect(imgAltProp.required).to.be.true;
     });
@@ -396,7 +423,7 @@ describe("a11y-figure test", () => {
     it("should maintain accessibility with HAX demo schema", async () => {
       const demoSchema = element.constructor.haxProperties.demoSchema[0];
       const haxTestElement = await fixture(html`
-        <a11y-figure 
+        <a11y-figure
           img-src="${demoSchema.properties.imgSrc}"
           img-alt="${demoSchema.properties.imgAlt}"
           open-text="${demoSchema.properties.openText}"

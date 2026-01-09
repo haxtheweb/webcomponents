@@ -622,7 +622,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button",
               "default": "{}",
               "attribute": "shortcut-keys"
             },
@@ -677,7 +677,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button",
               "attribute": "more-shortcuts"
             }
           ],
@@ -745,7 +745,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button",
               "fieldName": "moreShortcuts"
             },
             {
@@ -753,7 +753,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button",
               "default": "{}",
               "fieldName": "shortcutKeys"
             },
@@ -905,7 +905,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button",
               "fieldName": "moreShortcuts",
               "inheritedFrom": {
                 "name": "SimpleToolbarBehaviors",
@@ -917,7 +917,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button",
               "default": "{}",
               "fieldName": "shortcutKeys",
               "inheritedFrom": {
@@ -1827,7 +1827,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button",
               "default": "{}",
               "attribute": "shortcut-keys",
               "inheritedFrom": {
@@ -1902,7 +1902,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button",
               "attribute": "more-shortcuts",
               "inheritedFrom": {
                 "name": "SimpleToolbarBehaviors",
@@ -2837,7 +2837,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button",
               "default": "{}",
               "attribute": "shortcut-keys",
               "inheritedFrom": {
@@ -2912,7 +2912,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button",
               "attribute": "more-shortcuts",
               "inheritedFrom": {
                 "name": "SimpleToolbarBehaviors",
@@ -3021,7 +3021,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button",
               "fieldName": "moreShortcuts",
               "inheritedFrom": {
                 "name": "SimpleToolbarBehaviors",
@@ -3033,7 +3033,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button",
               "default": "{}",
               "fieldName": "shortcutKeys",
               "inheritedFrom": {
@@ -3260,7 +3260,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button",
               "fieldName": "moreShortcuts",
               "inheritedFrom": {
                 "name": "SimpleToolbarBehaviors",
@@ -3272,7 +3272,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button",
               "default": "{}",
               "fieldName": "shortcutKeys",
               "inheritedFrom": {
@@ -4244,7 +4244,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-sperated list of keyboard shortcuts for editor\nto fire this button",
               "default": "{}",
               "attribute": "shortcut-keys",
               "inheritedFrom": {
@@ -4319,7 +4319,7 @@
               "type": {
                 "text": "object"
               },
-              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button, see iron-a11y-keys for more info.",
+              "description": "Optional space-separated list of keyboard shortcuts for editor\nto fire this button",
               "attribute": "more-shortcuts",
               "inheritedFrom": {
                 "name": "SimpleToolbarBehaviors",
@@ -6817,6 +6817,12 @@
               "kind": "field",
               "name": "menuItem",
               "description": "gets item with role=\"menuitem\"",
+              "readonly": true
+            },
+            {
+              "kind": "field",
+              "name": "focusableElement",
+              "description": "gets focusable element within menuitem",
               "readonly": true
             }
           ],

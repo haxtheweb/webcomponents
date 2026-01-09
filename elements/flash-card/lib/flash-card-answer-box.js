@@ -365,7 +365,7 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
       </div>
       <!-- ARIA live region for status announcements -->
       <div aria-live="polite" aria-atomic="true" class="sr-only">
-        ${this.status !== 'pending' ? this.message : ''}
+        ${this.status !== "pending" ? this.message : ""}
       </div>
       <div class="answer-section">
         <label for="answer" class="sr-only">${this.t.yourAnswer}</label>
@@ -374,7 +374,7 @@ export class FlashCardAnswerBox extends I18NMixin(DDD) {
           type="text"
           .placeholder="${this.t.yourAnswer}"
           aria-describedby="status-message"
-          aria-invalid="${this.status === 'incorrect'}"
+          aria-invalid="${this.status === "incorrect"}"
           @input="${this.inputChanged}"
           @keypress="${(e) =>
             e.key === "Enter" ? this.checkUserAnswer() : ""}"

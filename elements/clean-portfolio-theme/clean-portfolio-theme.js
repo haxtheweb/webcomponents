@@ -120,10 +120,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         );
 
         if (parent) {
-          const category = active.metadata.tags?.split(",").map(tag => tag.trim())?.[0] || null;
+          const activeTags = active.metadata.tags && active.metadata.tags.split(",").map(tag => tag.trim());
+          const category = (activeTags && activeTags[0]) || null;
           const siblings = store.manifest.items
             .filter((item) => {
-              const itemCategory = item.metadata?.tags?.split(",").map(tag => tag.trim())?.[0] || null;
+              const itemTags = item.metadata && item.metadata.tags && item.metadata.tags.split(",").map(tag => tag.trim());
+              const itemCategory = (itemTags && itemTags[0]) || null;
               return (
                 item.parent === active.parent &&
                 itemCategory === category

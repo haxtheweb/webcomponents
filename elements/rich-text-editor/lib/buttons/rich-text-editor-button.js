@@ -276,14 +276,6 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       super.connectedCallback();
     }
     /**
-     * Called every time the element is inserted into the DOM. Useful for
-     * running setup code, such as fetching resources or rendering.
-     * Generally, you should try to delay work until this time.
-     */
-    connectedCallback() {
-      super.connectedCallback();
-    }
-    /**
      * life cycle, element is detatched
      */
     disconnectedCallback() {

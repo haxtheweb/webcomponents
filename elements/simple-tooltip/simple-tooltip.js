@@ -6,7 +6,7 @@ import { LitElement, html, css } from "lit";
 
 /**
   * `simple-tooltip`
-  * `a simple tooltip forked from paper-tooltip with the same api minus apply removal`
+  * `a simple tooltip forked with the same api minus apply removal`
      ### Styling
      The following custom properties and mixins are available for styling:
  

@@ -90,10 +90,13 @@ class SimplePopoverSelection extends LitElement {
         }
       }, 0);
     }
+    // Use left-right orientation so popover appears on opposite side of menu
+    // If tray is on left, popover appears on right, and vice versa
     globalThis.SimplePopoverManager.requestAvailability().setPopover(
       this,
       this.querySelector('[slot="button"]'),
       state,
+      "lr",
     );
   }
   /**

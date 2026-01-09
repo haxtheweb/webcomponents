@@ -48,6 +48,8 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
       insertItemAboveOrBelow: "Insert item above or below",
       insertItemBelow: "Insert item below",
       selectLayout: "Select Layout Element",
+      lockContent: "Lock content",
+      unlockContent: "Unlock content",
     };
     this.registerLocalization({
       context: this,
@@ -106,6 +108,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           align-items: stretch;
           justify-content: flex-start;
         }
+
         .group {
           display: flex;
           align-items: stretch;
@@ -475,6 +478,17 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             toggles
             ?toggled="${this.viewSource}"
           ></hax-context-item>
+          <hax-context-item
+            action
+            icon="${this.isLocked ? "icons:lock" : "icons:lock-open"}"
+            label="${this.isLocked
+              ? this.t.unlockContent
+              : this.t.lockContent}"
+            ?disabled="${this.viewSource}"
+            @click="${this._toggleActiveNodeLock}"
+            toggles
+            ?toggled="${this.isLocked}"
+          ></hax-context-item>
           <slot name="more"></slot>
         </div>
       </hax-toolbar>
@@ -545,6 +559,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "onScreen" && this.onScreen) {
         this._resetCEMenu();
+      }
+      if (propName === "activeNode") {
+        this.isLocked = this._isNodeLocked(this.activeNode);
       }
       if (propName === "activeNode" || propName === "activeEditingElement") {
         this.activeSchema = HAXStore.activeSchema();
@@ -644,6 +661,50 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
     // @see haxHook inlineContextMenu
     await HAXStore.runHook(this.activeNode, "inlineContextMenu", [this]);
   }
+  _isNodeLocked(node) {
+    if (!node || !node.getAttribute) {
+      return false;
+    }
+    if (node.getAttribute("data-hax-lock") != null) {
+      return true;
+    }
+    if (
+      node.parentNode &&
+      node.parentNode.getAttribute &&
+      node.parentNode.getAttribute("data-hax-lock") != null
+    ) {
+      return true;
+    }
+    return false;
+  }
+  _toggleActiveNodeLock(e) {
+    if (!this.activeNode || !this.activeNode.getAttribute) {
+      return;
+    }
+    e.preventDefault();
+    e.stopPropagation();
+    const node = this.activeNode;
+    let locked = node.getAttribute("data-hax-lock") != null;
+    if (locked) {
+      node.removeAttribute("data-hax-lock");
+      locked = false;
+    } else {
+      node.setAttribute("data-hax-lock", "data-hax-lock");
+      locked = true;
+    }
+    this.isLocked = locked;
+    this.dispatchEvent(
+      new CustomEvent("hax-toggle-active-node-lock", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          lock: locked,
+          node: node,
+        },
+      }),
+    );
+  }
   /**
    * LitElement / popular convention
    */
@@ -692,6 +753,9 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
         reflect: true,
       },
       sourceView: {
+        type: Boolean,
+      },
+      isLocked: {
         type: Boolean,
       },
     };

@@ -27,7 +27,6 @@ class ScrollButton extends LitElement {
             new URL("./locales/scroll-button.es.json", import.meta.url).href +
             "/../",
           updateCallback: "render",
-          
         },
       }),
     );

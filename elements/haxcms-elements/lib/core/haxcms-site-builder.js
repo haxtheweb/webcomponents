@@ -171,130 +171,6 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   }
 
   /**
-   * Apply style guide schema merging to HAX elements
-   * Loads style guide content and merges properties into content elements
-   */
-  async applyStyleGuide(haxElements, preloadedContent = null) {
-    try {
-      // 1. Use preloaded content if provided, otherwise load from store
-      const styleGuideContent =
-        preloadedContent || (await store.loadStyleGuideContent());
-      if (!styleGuideContent) {
-        return haxElements;
-      }
-
-      // 2. Convert style guide content to HAXSchema elements
-      const styleGuideElements =
-        await this.htmlToHaxElements(styleGuideContent);
-
-      // 3. Create a mapping of tag names to design attributes from page-template elements
-      const styleGuideMap = new Map();
-
-      // Define which attributes are design-based and should be applied
-      // This includes all DDD data attributes and SimpleColors accent-color
-      const designAttributes = new Set([
-        // DDD primary design attributes
-        "data-primary",
-        "data-accent",
-        // DDD font attributes
-        "data-font-family",
-        "data-font-weight",
-        "data-font-size",
-        // DDD spacing attributes
-        "data-padding",
-        "data-margin",
-        "data-text-align",
-        "data-float-position",
-        // DDD design treatment attributes
-        "data-design-treatment",
-        "data-instructional-action",
-        // DDD border attributes
-        "data-border",
-        "data-border-radius",
-        // DDD shadow attributes
-        "data-box-shadow",
-        // DDD width attributes
-        "data-width",
-        // SimpleColors accent-color (historical)
-        "accent-color",
-      ]);
-
-      for (const styleElement of styleGuideElements) {
-        // Look for page-template elements
-        if (styleElement && styleElement.tag === "page-template") {
-          // Check if this template should be used as default
-          const enforceStyles =
-            styleElement.properties &&
-            styleElement.properties["enforce-styles"];
-          if (enforceStyles && styleElement.content) {
-            // Get the actual content element inside the page-template
-            const templateContentElement = await this.htmlToHaxElements(
-              styleElement.content,
-            );
-            if (
-              templateContentElement &&
-              templateContentElement.length > 0 &&
-              templateContentElement[0].tag
-            ) {
-              const tagName = templateContentElement[0].tag;
-              // Extract only design-related properties
-              const designProperties = {};
-              if (templateContentElement[0].properties) {
-                for (const [key, value] of Object.entries(
-                  templateContentElement[0].properties,
-                )) {
-                  if (designAttributes.has(key)) {
-                    designProperties[key] = value;
-                  }
-                }
-              }
-
-              // Only store if we have design properties to apply
-              if (Object.keys(designProperties).length > 0) {
-                styleGuideMap.set(tagName, {
-                  properties: designProperties,
-                });
-              }
-            }
-          }
-        }
-      }
-      // 4. Apply style guide properties to matching content elements
-      const processedElements = haxElements.map((element) => {
-        if (element && element.tag && styleGuideMap.has(element.tag)) {
-          const styleGuide = styleGuideMap.get(element.tag);
-
-          // Only apply design attributes that are not already set on the element
-          // This preserves existing content properties and functional attributes
-          const currentProperties = element.properties || {};
-          const enhancedProperties = { ...currentProperties };
-
-          // Add design attributes from style guide only if not already present
-          for (const [key, value] of Object.entries(styleGuide.properties)) {
-            if (!(key in currentProperties)) {
-              enhancedProperties[key] = value;
-            }
-          }
-
-          return {
-            ...element,
-            properties: enhancedProperties,
-          };
-        }
-
-        return element;
-      });
-
-      return processedElements;
-    } catch (error) {
-      console.warn(
-        "Style guide processing failed, returning original elements:",
-        error,
-      );
-      return haxElements;
-    }
-  }
-  /**
    * Simple "two way" data binding from the element below via events
    */
   _updateManifest(data) {
@@ -945,6 +821,14 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   async _activeItemContentChanged(newValue, activeItem) {
     var htmlcontent = newValue;
     if (htmlcontent !== null && activeItem && activeItem.metadata) {
+      // Check if page-break should be hidden by platform configuration
+      const platformConfig =
+        this.manifest &&
+        this.manifest.metadata &&
+        this.manifest.metadata.platform;
+      const pageBreakHidden =
+        platformConfig && platformConfig.pageBreak === false;
+
       // force a page break w/ the relevant details in code
       // this allows the UI to be modified
       // required fields followed by optional fields if defined
@@ -964,30 +848,27 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       ${activeItem.metadata.icon ? `icon="${activeItem.metadata.icon}"` : ``}
       ${activeItem.metadata.accentColor ? `accent-color="${activeItem.metadata.accentColor}"` : ``}
       ${activeItem.metadata.theme && activeItem.metadata.theme.key ? `developer-theme="${activeItem.metadata.theme.key}"` : ``}
-      ${activeItem.metadata.locked ? 'locked="locked"' : ""}
+      ${activeItem.metadata.linkUrl ? `link-url="${activeItem.metadata.linkUrl}"` : ``}
+      ${activeItem.metadata.linkTarget ? `link-target="${activeItem.metadata.linkTarget}"` : ``}
+      ${activeItem.metadata.locked ? 'locked="locked"' : ``}
+      ${pageBreakHidden ? 'platform-hidden="platform-hidden"' : ``}
       ${activeItem.metadata.published === false ? "" : 'published="published"'} ></page-break>${htmlcontent}`;
 
-      // Convert HTML to HAXSchema for processing
-      try {
-        // Convert the content to HAXSchema elements
-        const contentHaxElements = await this.htmlToHaxElements(htmlcontent);
-        // Apply style guide merging - placeholder for future implementation
-        const processedHaxElements =
-          await this.applyStyleGuide(contentHaxElements);
-        // Convert back to HTML
-        let processedHtml = "";
-        for (let element of processedHaxElements) {
-          const elementNode = haxElementToNode(element);
-          processedHtml += elementNode.outerHTML;
-        }
-        htmlcontent = processedHtml;
-      } catch (error) {
-        console.warn(
-          "HAXSchema processing failed, using original content:",
-          error,
-        );
-        // Continue with original htmlcontent if processing fails
+      // If this page has a link URL configured and the user is not logged in,
+      // append simple redirect messaging for a better user experience
+      if (activeItem.metadata.linkUrl) {
+        const linkTarget = activeItem.metadata.linkTarget || "_self";
+        const redirectMessage = `
+          <p><a href="${activeItem.metadata.linkUrl}" target="${linkTarget}" rel="noopener noreferrer">${activeItem.metadata.linkUrl}</a></p>
+          <p><small>If the redirect doesn't work, please click the link above.</small></p>
+        `;
+
+        // Append the redirect message to the content
+        htmlcontent = htmlcontent + redirectMessage;
       }
+
+      // Previously, style-guide-driven defaults were applied here.
+      // That behavior has been removed so page content renders as-is.
 
       htmlcontent = encapScript(htmlcontent);
       wipeSlot(store.themeElement, "*");

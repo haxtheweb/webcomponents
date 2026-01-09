@@ -1,6 +1,9 @@
 /**
  * Copyright 2025 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
+ *
+ * @haxcms-theme-category Website
+ * @haxcms-theme-internal true
  */
 import { html, css } from "lit";
 import { HAXCMSPrintTheme } from "./haxcms-print-theme.js";

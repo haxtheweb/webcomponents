@@ -95,12 +95,6 @@ const SimpleToolbarBehaviors = function (SuperClass) {
               var(--simple-toolbar-group-border-color, transparent)
             );
           }
-          ::slotted(.group:not(:last-child)) {
-            border-right-width: var(
-              --simple-toolbar-group-border-width,
-              var(--simple-toolbar-border-width, 1px)
-            );
-          }
           ::slotted(*:hover),
           ::slotted(*:focus-wthin) {
             z-index: var(--simple-toolbar-focus-z-index, 100);
@@ -178,7 +172,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         },
         /**
          * Optional space-separated list of keyboard shortcuts for editor
-         * to fire this button, see iron-a11y-keys for more info.
+         * to fire this button
          */
         moreShortcuts: {
           name: "moreShortcuts",
@@ -187,7 +181,7 @@ const SimpleToolbarBehaviors = function (SuperClass) {
         },
         /**
          * Optional space-sperated list of keyboard shortcuts for editor
-         * to fire this button, see iron-a11y-keys for more info.
+         * to fire this button
          */
         shortcutKeys: {
           name: "shortcutKeys",
@@ -662,65 +656,113 @@ const SimpleToolbarBehaviors = function (SuperClass) {
       let finished = false;
       let key = this._shortcutKeysMatch(e);
       if (key) return;
-      let c;
+
+      // Allow simple-toolbar-menu to handle DOWN/SPACE/ENTER to expand its menu
+      if (
+        this.currentItem &&
+        this.currentItem.tagName === "SIMPLE-TOOLBAR-MENU"
+      ) {
+        if (
+          [this.keyCode.DOWN, this.keyCode.SPACE, this.keyCode.ENTER].includes(
+            e.keyCode,
+          )
+        ) {
+          // Let the menu handle these keys to expand
+          return;
+        }
+      }
+
+      let c, startIndex;
       switch (e.keyCode) {
         case this.keyCode.RIGHT:
+          startIndex = this.getItemIndex();
           c = this.nextItem || this.firstItem;
-          while (c && c.disabled) {
-            this.currentItem = c;
+          // Keep searching for next non-hidden, non-disabled item
+          while (c && (c.disabled || c.hidden)) {
+            this.setCurrentItem(c);
             c = this.nextItem || this.firstItem;
+            // Prevent infinite loop - if we've wrapped around
+            if (this.getItemIndex() === startIndex) {
+              c = null;
+              break;
+            }
           }
-          this.focusOn(this.nextItem || this.firstItem);
+          if (c) this.focusOn(c);
           finished = true;
           break;
 
         case this.keyCode.LEFT:
+          startIndex = this.getItemIndex();
           c = this.previousItem || this.lastItem;
-          while (c && c.disabled) {
-            this.currentItem = c;
+          while (c && (c.disabled || c.hidden)) {
+            this.setCurrentItem(c);
             c = this.previousItem || this.lastItem;
+            if (this.getItemIndex() === startIndex) {
+              c = null;
+              break;
+            }
           }
-          this.focusOn(this.previousItem || this.lastItem);
+          if (c) this.focusOn(c);
           finished = true;
           break;
 
         case this.keyCode.HOME:
           c = this.firstItem;
-          while (c && c.disabled) {
-            this.currentItem = c;
-            c = this.firstItem;
+          startIndex = this.getItemIndex(c);
+          while (c && (c.disabled || c.hidden)) {
+            this.setCurrentItem(c);
+            c = this.nextItem || this.firstItem;
+            if (this.getItemIndex() === startIndex) {
+              c = null;
+              break;
+            }
           }
-          this.focusOn(this.firstItem);
+          if (c) this.focusOn(c);
           finished = true;
           break;
 
         case this.keyCode.END:
           c = this.lastItem;
-          while (c && c.disabled) {
-            this.currentItem = c;
-            c = this.lastItem;
+          startIndex = this.getItemIndex(c);
+          while (c && (c.disabled || c.hidden)) {
+            this.setCurrentItem(c);
+            c = this.previousItem || this.lastItem;
+            if (this.getItemIndex() === startIndex) {
+              c = null;
+              break;
+            }
           }
-          this.focusOn(this.lastItem);
+          if (c) this.focusOn(c);
           finished = true;
           break;
 
         case this.keyCode.UP:
+          startIndex = this.getItemIndex();
           c = this.previousItem || this.lastItem;
-          while (c && c.disabled) {
-            this.currentItem = c;
+          while (c && (c.disabled || c.hidden)) {
+            this.setCurrentItem(c);
             c = this.previousItem || this.lastItem;
+            if (this.getItemIndex() === startIndex) {
+              c = null;
+              break;
+            }
           }
-          this.focusOn(this.previousItem || this.lastItem);
+          if (c) this.focusOn(c);
           finished = true;
           break;
 
         case this.keyCode.DOWN:
+          startIndex = this.getItemIndex();
           c = this.nextItem || this.firstItem;
-          while (c && c.disabled) {
-            this.currentItem = c;
+          while (c && (c.disabled || c.hidden)) {
+            this.setCurrentItem(c);
             c = this.nextItem || this.firstItem;
+            if (this.getItemIndex() === startIndex) {
+              c = null;
+              break;
+            }
           }
-          this.focusOn(this.nextItem || this.firstItem);
+          if (c) this.focusOn(c);
           finished = true;
           break;
 

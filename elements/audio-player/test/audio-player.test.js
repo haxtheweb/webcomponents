@@ -30,12 +30,14 @@ describe("audio-player test", () => {
 
     it("should extend VideoPlayer", () => {
       expect(element.constructor.name).to.equal("AudioPlayer");
-      expect(element).to.be.instanceOf(globalThis.customElements.get('video-player') || Object);
+      expect(element).to.be.instanceOf(
+        globalThis.customElements.get("video-player") || Object,
+      );
     });
 
     it("should always return audioOnly as true", () => {
       expect(element.audioOnly).to.equal(true);
-      
+
       // Test that it's always true regardless of attempts to change it
       element.audioOnly = false;
       expect(element.audioOnly).to.equal(true);
@@ -46,9 +48,7 @@ describe("audio-player test", () => {
     let testElement;
 
     beforeEach(async () => {
-      testElement = await fixture(html`
-        <audio-player></audio-player>
-      `);
+      testElement = await fixture(html` <audio-player></audio-player> `);
       await testElement.updateComplete;
     });
 
@@ -84,19 +84,29 @@ describe("audio-player test", () => {
       it("should handle thumbnailSrc property", async () => {
         testElement.thumbnailSrc = "https://example.com/thumbnail.jpg";
         await testElement.updateComplete;
-        expect(testElement.thumbnailSrc).to.equal("https://example.com/thumbnail.jpg");
+        expect(testElement.thumbnailSrc).to.equal(
+          "https://example.com/thumbnail.jpg",
+        );
         await expect(testElement).shadowDom.to.be.accessible();
       });
 
       it("should handle boolean properties", async () => {
         const booleanProps = [
-          'learningMode', 'hideYoutubeLink', 'linkable',
-          'allowBackgroundPlay', 'darkTranscript', 'disableInteractive',
-          'hideTimestamps', 'hideTranscript'
+          "learningMode",
+          "hideYoutubeLink",
+          "linkable",
+          "allowBackgroundPlay",
+          "darkTranscript",
+          "disableInteractive",
+          "hideTimestamps",
+          "hideTranscript",
         ];
 
         for (const prop of booleanProps) {
-          if (testElement.hasOwnProperty(prop) || prop in testElement.constructor.properties) {
+          if (
+            testElement.hasOwnProperty(prop) ||
+            prop in testElement.constructor.properties
+          ) {
             testElement[prop] = true;
             await testElement.updateComplete;
             expect(testElement[prop]).to.equal(true);
@@ -111,8 +121,8 @@ describe("audio-player test", () => {
       });
 
       it("should handle crossorigin property", async () => {
-        const crossOriginValues = ['', 'anonymous', 'use-credentials'];
-        
+        const crossOriginValues = ["", "anonymous", "use-credentials"];
+
         for (const value of crossOriginValues) {
           testElement.crossorigin = value;
           await testElement.updateComplete;
@@ -136,39 +146,39 @@ describe("audio-player test", () => {
         <audio-player source="https://example.com/audio.mp3"></audio-player>
       `);
       await testElement.updateComplete;
-      
+
       expect(testElement.audioOnly).to.be.true;
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
     it("should handle audio sources correctly", async () => {
       const testElement = await fixture(html`
-        <audio-player 
+        <audio-player
           source="https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3"
           media-title="Audio Test"
         ></audio-player>
       `);
       await testElement.updateComplete;
-      
-      expect(testElement.source).to.include('.mp3');
-      expect(testElement.mediaTitle).to.equal('Audio Test');
+
+      expect(testElement.source).to.include(".mp3");
+      expect(testElement.mediaTitle).to.equal("Audio Test");
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
     it("should support different audio formats", async () => {
       const audioFormats = [
-        'https://example.com/audio.mp3',
-        'https://example.com/audio.wav',
-        'https://example.com/audio.ogg',
-        'https://example.com/audio.m4a'
+        "https://example.com/audio.mp3",
+        "https://example.com/audio.wav",
+        "https://example.com/audio.ogg",
+        "https://example.com/audio.m4a",
       ];
-      
+
       for (const format of audioFormats) {
         const testElement = await fixture(html`
           <audio-player source="${format}"></audio-player>
         `);
         await testElement.updateComplete;
-        
+
         expect(testElement.source).to.equal(format);
         expect(testElement.audioOnly).to.be.true;
         await expect(testElement).shadowDom.to.be.accessible();
@@ -249,8 +259,8 @@ describe("audio-player test", () => {
     it("should handle audio file types correctly", () => {
       const haxProps = element.constructor.haxProperties;
       const handles = haxProps.gizmo.handles;
-      
-      const audioHandle = handles.find(handle => handle.type === "audio");
+
+      const audioHandle = handles.find((handle) => handle.type === "audio");
       expect(audioHandle).to.exist;
       expect(audioHandle.type_exclusive).to.be.true;
       expect(audioHandle.source).to.equal("source");
@@ -259,26 +269,30 @@ describe("audio-player test", () => {
     it("should have proper HAX settings configuration", () => {
       const haxProps = element.constructor.haxProperties;
       const configItems = haxProps.settings.configure;
-      
+
       // Verify source property configuration
-      const sourceProp = configItems.find(item => item.property === "source");
+      const sourceProp = configItems.find((item) => item.property === "source");
       expect(sourceProp).to.exist;
       expect(sourceProp.inputMethod).to.equal("haxupload");
       expect(sourceProp.noCamera).to.be.true;
       expect(sourceProp.validationType).to.equal("url");
-      
+
       // Verify mediaTitle property
-      const titleProp = configItems.find(item => item.property === "mediaTitle");
+      const titleProp = configItems.find(
+        (item) => item.property === "mediaTitle",
+      );
       expect(titleProp).to.exist;
       expect(titleProp.inputMethod).to.equal("textfield");
-      
+
       // Verify accentColor property
-      const colorProp = configItems.find(item => item.property === "accentColor");
+      const colorProp = configItems.find(
+        (item) => item.property === "accentColor",
+      );
       expect(colorProp).to.exist;
       expect(colorProp.inputMethod).to.equal("colorpicker");
-      
+
       // Verify track property for captions
-      const trackProp = configItems.find(item => item.property === "track");
+      const trackProp = configItems.find((item) => item.property === "track");
       expect(trackProp).to.exist;
       expect(trackProp.noVoiceRecord).to.be.true;
     });
@@ -286,7 +300,7 @@ describe("audio-player test", () => {
     it("should maintain accessibility with HAX demo schema", async () => {
       const demoSchema = element.constructor.haxProperties.demoSchema[0];
       const haxTestElement = await fixture(html`
-        <audio-player 
+        <audio-player
           source="${demoSchema.properties.source}"
           media-title="${demoSchema.properties.mediaTitle}"
           crossorigin="${demoSchema.properties.crossorigin}"
@@ -309,7 +323,7 @@ describe("audio-player test", () => {
 
     it("should remain accessible with invalid source URL", async () => {
       const testElement = await fixture(html`
-        <audio-player 
+        <audio-player
           source="invalid-url"
           media-title="Invalid Source"
         ></audio-player>
@@ -328,7 +342,7 @@ describe("audio-player test", () => {
 
     it("should handle malformed caption files", async () => {
       const testElement = await fixture(html`
-        <audio-player 
+        <audio-player
           source="https://example.com/audio.mp3"
           track="invalid-caption-url"
           media-title="Malformed Captions"
@@ -340,20 +354,20 @@ describe("audio-player test", () => {
 
     it("should handle unusual property values", async () => {
       const testElement = await fixture(html`<audio-player></audio-player>`);
-      
+
       const edgeCaseValues = [
         "   \t\n   ", // whitespace
         "🎵 audio with emoji 🎶", // emoji
         "Very long audio title that might cause layout issues or other display problems",
         "Multi\nline\ntitle", // multiline
-        "Title with 'quotes' and \"double quotes\" and special chars: !@#$%^&*()"
+        "Title with 'quotes' and \"double quotes\" and special chars: !@#$%^&*()",
       ];
-      
+
       for (const value of edgeCaseValues) {
         testElement.mediaTitle = value;
         testElement.source = value;
         await testElement.updateComplete;
-        
+
         expect(testElement.mediaTitle).to.equal(value);
         expect(testElement.source).to.equal(value);
         await expect(testElement).shadowDom.to.be.accessible();
@@ -366,15 +380,15 @@ describe("audio-player test", () => {
       const testElement = await fixture(html`
         <audio-player source="https://example.com/audio.mp3"></audio-player>
       `);
-      
+
       // Test during initialization
       expect(testElement.audioOnly).to.be.true;
-      
+
       // Test after update
       testElement.source = "https://example.com/another-audio.mp3";
       await testElement.updateComplete;
       expect(testElement.audioOnly).to.be.true;
-      
+
       // Test after property changes
       testElement.mediaTitle = "New Title";
       testElement.accentColor = "purple";
@@ -384,13 +398,13 @@ describe("audio-player test", () => {
 
     it("should handle background playback settings", async () => {
       const testElement = await fixture(html`
-        <audio-player 
+        <audio-player
           source="https://example.com/audio.mp3"
           allow-background-play
         ></audio-player>
       `);
       await testElement.updateComplete;
-      
+
       expect(testElement.allowBackgroundPlay).to.be.true;
       expect(testElement.audioOnly).to.be.true;
       await expect(testElement).shadowDom.to.be.accessible();
@@ -398,14 +412,14 @@ describe("audio-player test", () => {
 
     it("should support learning mode restrictions", async () => {
       const testElement = await fixture(html`
-        <audio-player 
+        <audio-player
           source="https://example.com/audio.mp3"
           learning-mode
           media-title="Learning Audio"
         ></audio-player>
       `);
       await testElement.updateComplete;
-      
+
       expect(testElement.learningMode).to.be.true;
       expect(testElement.audioOnly).to.be.true;
       await expect(testElement).shadowDom.to.be.accessible();
@@ -414,22 +428,22 @@ describe("audio-player test", () => {
 
   describe("Constructor and inheritance behavior", () => {
     it("should call super() in constructor", () => {
-      const testElement = new (element.constructor)();
+      const testElement = new element.constructor();
       expect(testElement).to.be.instanceOf(element.constructor);
     });
 
     it("should maintain audioOnly getter behavior", () => {
-      const testElement = new (element.constructor)();
-      
+      const testElement = new element.constructor();
+
       // Test getter behavior
       expect(testElement.audioOnly).to.be.true;
-      
+
       // Attempt to override (should still return true)
-      Object.defineProperty(testElement, 'audioOnly', {
+      Object.defineProperty(testElement, "audioOnly", {
         value: false,
-        writable: true
+        writable: true,
       });
-      
+
       // Getter should still return true
       expect(testElement.audioOnly).to.be.true;
     });
@@ -437,18 +451,25 @@ describe("audio-player test", () => {
 
   describe("Customization and theming", () => {
     it("should support custom accent colors", async () => {
-      const colors = ['red', 'blue', 'green', '#FF5733', 'rgb(255, 87, 51)', 'hsl(9, 100%, 60%)'];
-      
+      const colors = [
+        "red",
+        "blue",
+        "green",
+        "#FF5733",
+        "rgb(255, 87, 51)",
+        "hsl(9, 100%, 60%)",
+      ];
+
       for (const color of colors) {
         const testElement = await fixture(html`
-          <audio-player 
+          <audio-player
             source="https://example.com/audio.mp3"
             accent-color="${color}"
             media-title="Colored Audio"
           ></audio-player>
         `);
         await testElement.updateComplete;
-        
+
         expect(testElement.accentColor).to.equal(color);
         await expect(testElement).shadowDom.to.be.accessible();
       }
@@ -456,7 +477,7 @@ describe("audio-player test", () => {
 
     it("should support transcript customization", async () => {
       const testElement = await fixture(html`
-        <audio-player 
+        <audio-player
           source="https://example.com/audio.mp3"
           track="https://example.com/transcript.vtt"
           dark-transcript
@@ -466,7 +487,7 @@ describe("audio-player test", () => {
         ></audio-player>
       `);
       await testElement.updateComplete;
-      
+
       expect(testElement.darkTranscript).to.be.true;
       expect(testElement.hideTimestamps).to.be.true;
       expect(testElement.disableInteractive).to.be.true;

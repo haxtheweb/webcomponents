@@ -2,18 +2,22 @@ import { css, html, unsafeCSS } from "lit";
 import { toJS, autorun } from "mobx";
 import { localStorageSet, localStorageGet } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
-import { store } from "./lib/v1/AppHaxStore.js";
+import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { store } from "./lib/v2/AppHaxStore.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import { AppHaxAPI } from "./lib/v1/AppHaxBackendAPI.js";
+import { AppHaxAPI } from "./lib/v2/AppHaxBackendAPI.js";
 import { SimpleTourManager } from "@haxtheweb/simple-popover/lib/simple-tour.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
-import "./lib/v1/AppHaxRouter.js";
-import "./lib/v1/app-hax-label.js";
-import "./lib/v1/app-hax-top-bar.js";
+import "./lib/v2/AppHaxRouter.js";
+import "./lib/v2/app-hax-label.js";
+import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-top-bar.js";
 import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
-import { DDD } from "@haxtheweb/d-d-d";
+import "./lib/v2/app-hax-use-case.js";
+import "./lib/v2/app-hax-use-case-filter.js";
+import "./lib/v2/app-hax-search-results.js";
+import "./lib/v2/app-hax-scroll-button.js";
 
 const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
   .href;
@@ -34,7 +38,7 @@ function soundToggle() {
   store.appEl.playSound("click");
 }
 
-export class AppHax extends I18NMixin(SimpleTourFinder(DDD)) {
+export class AppHax extends I18NMixin(SimpleTourFinder(SimpleColors)) {
   static get tag() {
     return "app-hax";
   }
@@ -100,7 +104,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         this.audio = new Audio(
           new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href,
         );
-        this.audio.volume = 0.3;
+        this.audio.volume = 0.2;
         this.audio.onended = (event) => {
           resolve();
         };
@@ -163,6 +167,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     super();
     this.unlockComingSoon = false;
     this.unlockTerrible = false;
+    this.__loginModalOpen = false;
     this.t = this.t || {};
 
     this.t = {
@@ -198,8 +203,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       startNewJourney: "Start new journey",
       newJourney: "New Journey",
       accountInfo: "Account Info",
-      outlineDesigner: "Outline designer",
-      pageOutline: "Page outline",
+      outlineDesigner: "Site Outline",
+      pageOutline: "Structure",
       more: "More",
       siteActions: "Site actions",
       insights: "Insights dashboard",
@@ -208,13 +213,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       logOut: "Log out",
       menu: "Menu",
       showMore: "More",
+      userAccess: "User Access",
     };
-    // Register localization for app-hax
-    this.registerLocalization({
-      context: this,
-      namespace: "app-hax",
-      basePath: import.meta.url + "/../",
-    });
     if (
       typeof globalThis.speechSynthesis !== "undefined" &&
       (globalThis.SpeechRecognition ||
@@ -329,7 +329,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     SuperDaemonInstance.defineOption({
       title: "Join our Community",
       icon: "hax:discord",
-      priority: -50,
+      priority: -100,
       tags: ["community", "discord", "chat", "help"],
       value: {
         target: this,
@@ -478,7 +478,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       const badDevice = toJS(store.badDevice);
       if (badDevice === false) {
         import("@haxtheweb/rpg-character/rpg-character.js");
-        import("./lib/random-word/random-word.js");
       } else if (badDevice === true) {
         globalThis.document.body.classList.add("bad-device");
       }
@@ -638,7 +637,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   static get properties() {
     return {
       ...super.properties,
-      t: { type: Object },
       unlockComingSoon: { type: Boolean },
       unlockTerrible: { type: Boolean },
       courses: { type: Array },
@@ -657,11 +655,27 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
 
   // eslint-disable-next-line class-methods-use-this
-  reset(reload = false) {
+  reset(reload = false, logout = false) {
     // localStorage possible to be blocked by permission of system
     try {
       globalThis.localStorage.removeItem("app-hax-step");
       globalThis.localStorage.removeItem("app-hax-site");
+
+      // If logout is requested, clear JWT and trigger logout
+      if (logout) {
+        globalThis.localStorage.removeItem("jwt");
+        store.jwt = null;
+        // Trigger logout event to clear user session
+        globalThis.dispatchEvent(
+          new CustomEvent("jwt-login-logout", {
+            composed: true,
+            bubbles: true,
+            cancelable: false,
+            detail: true,
+          }),
+        );
+      }
+
       if (reload) {
         // should always be a base tag for a SPA but just checking
         if (document.querySelector("base")) {
@@ -715,15 +729,25 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   _jwtLoggedIn(e) {
     if (e.detail === false && this.__logoutUserAction) {
       this.__logoutUserAction = false;
+      // reset login modal flag on logout so user can log in again
+      this.__loginModalOpen = false;
       setTimeout(() => {
         this.reset(true);
       }, 100);
     }
+    // Note: we do NOT reset __loginModalOpen on successful login
+    // The flag stays true to prevent the autorun from triggering login() again
+    // It only resets on logout when we actually want to show the login modal again
   }
 
   // eslint-disable-next-line class-methods-use-this
   login() {
-    import("./lib/v1/app-hax-site-login.js").then(() => {
+    // prevent multiple login modals from being created
+    if (this.__loginModalOpen) {
+      return;
+    }
+    this.__loginModalOpen = true;
+    import("./lib/v2/app-hax-site-login.js").then(() => {
       const p = globalThis.document.createElement("app-hax-site-login");
       if (this.querySelector('[slot="externalproviders"]')) {
         const cloneSlot = this.querySelector(
@@ -739,18 +763,26 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               cancelable: true,
               composed: true,
               detail: {
-                title: "< login >",
+                title: "Login to HAX",
                 elements: { content: p },
                 modal: true,
                 styles: {
-                  "--simple-modal-titlebar-background": "transparent",
-                  "--simple-modal-titlebar-color": "black",
-                  "--simple-modal-width": "40vw",
+                  "--simple-modal-titlebar-background":
+                    "var(--ddd-theme-default-nittanyNavy, #001e44)",
+                  "--simple-modal-titlebar-color":
+                    "var(--ddd-theme-default-white, white)",
+                  "--simple-modal-width": "90vw",
+                  "--simple-modal-max-width": "var(--ddd-spacing-32, 480px)",
                   "--simple-modal-min-width": "300px",
-                  "--simple-modal-z-index": "100000000",
-                  "--simple-modal-height": "62vh",
-                  "--simple-modal-min-height": "400px",
-                  "--simple-modal-titlebar-height": "64px",
+                  "--simple-modal-z-index": "1000",
+                  "--simple-modal-height": "auto",
+                  "--simple-modal-min-height": "300px",
+                  "--simple-modal-max-height": "80vh",
+                  "--simple-modal-titlebar-height": "80px",
+                  "--simple-modal-border-radius": "var(--ddd-radius-md, 8px)",
+                  "--simple-modal-background":
+                    "var(--ddd-theme-default-white, white)",
+                  "--simple-modal-box-shadow": "var(--ddd-boxShadow-xl)",
                 },
               },
             }),
@@ -766,28 +798,20 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       css`
         :host {
           display: block;
-          --app-hax-accent-color: light-dark(black, white);
-          --app-hax-background-color: light-dark(white, black);
           --app-hax-background-color-active: var(--app-hax-accent-color);
-          --simple-toast-z-index: 10000000;
-          --simple-toast-color: light-dark(black, white);
-          --simple-toast-bg: light-dark(white, black);
-          --simple-toast-font-size: 16px;
-          --simple-toast-margin: 0;
-          --simple-toast-left: 0;
-          --simple-toast-bottom: 0;
-          --simple-toast-right: 0;
-          --simple-toast-height: 80px;
         }
         #home {
           display: inline-flex;
+        }
+        #wt {
+          border: solid 1px
+            var(--simple-colors-default-theme-accent-12, var(--accent-color));
         }
         simple-toolbar-button {
           min-width: 48px;
           margin: 0;
           --simple-toolbar-border-color: #dddddddd;
           height: 48px;
-          --simple-toolbar-button-disabled-border-color: transparent;
           --simple-toolbar-button-disabled-opacity: 0.3;
           --simple-toolbar-button-padding: 3px 6px;
           --simple-toolbar-border-radius: 0;
@@ -825,7 +849,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         }
         .characterbtn-name {
           color: var(--simple-colors-default-theme-grey-12);
-          font-family: "Press Start 2P", sans-serif;
           margin-left: 8px;
           font-size: 12px;
           vertical-align: bottom;
@@ -857,7 +880,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         }
         .start-journey {
           display: flex;
-          padding-top: 20px;
           justify-content: center;
         }
         app-hax-site-button {
@@ -876,18 +898,16 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             --simple-tooltip-font-size: 10px;
           }
         }
-        .label {
-          text-align: center;
-        }
         app-hax-label {
-          animation: 0.8s ease-in-out 0s scrollin;
-          -webkit-animation: 0.8s ease-in-out 0s scrollin;
-          display: block;
-          overflow: hidden;
+          animation: 0.6s ease-in-out 0s scrollin;
+          -webkit-animation: 0.6s ease-in-out 0s scrollin;
+          display: flex;
+          align-self: flex-start;
+          margin: var(--ddd-spacing-4) auto;
         }
         app-hax-label h1 {
           font-weight: normal;
-          font-size: 4vw;
+          font-size: var(--ddd-font-size-m);
           margin: 0;
           padding: 0;
         }
@@ -924,7 +944,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           display: inline-flex;
         }
         main {
-          padding-top: 80px;
+          padding-top: var(--ddd-spacing-14);
+          max-width: 100%;
+          margin: 0 auto;
+          box-sizing: border-box;
         }
         @media (max-width: 900px) {
           .characterbtn-name {
@@ -936,6 +959,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         }
         app-hax-user-menu {
           z-index: 1003;
+          position: inherit;
         }
         .logout::part(menu-button) {
           background-image: url("${unsafeCSS(logoutBtn)}");
@@ -948,31 +972,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           padding: 10px;
         }
         app-hax-user-menu app-hax-user-menu-button::part(menu-button) {
-          font-family: "Press Start 2P", sans-serif;
           font-size: 12px;
-        }
-
-        random-word:not(:defined) {
-          display: none;
-        }
-        random-word {
-          transform: rotate(25deg);
-          position: absolute;
-          right: 10px;
-          top: 120px;
-          padding: 12px;
-          font-size: 12px;
-          border: 4px solid var(--simple-colors-default-theme-grey-12);
-          background-color: var(--simple-colors-default-theme-yellow-5);
-          color: var(--simple-colors-default-theme-grey-12);
-          width: 100px;
-          word-wrap: break-word;
-          text-align: center;
-          cursor: pointer;
-          user-select: none;
-          opacity: 1;
-          visibility: visible;
-          transition: all 0.3s ease-in-out;
         }
         #helpbtn {
           --simple-icon-height: 50px;
@@ -1009,15 +1009,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           }
         }
         @media (max-width: 640px) {
-          random-word {
-            display: none;
-          }
           .content {
             margin-top: 4px;
           }
-          .start-journey {
-            padding-top: 0;
-          }
+
           app-hax-site-button {
             --app-hax-site-button-font-size: 12px;
           }
@@ -1066,15 +1061,15 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (store.AppHaxAPI && this.basePath) {
       store.AppHaxAPI.basePath = this.basePath;
     }
-    import("./lib/v1/app-hax-steps.js");
-    import("./lib/v1/app-hax-site-button.js");
+    import("./lib/v2/app-hax-steps.js");
+    import("./lib/v2/app-hax-site-button.js");
     import("wired-elements/lib/wired-button.js");
-    import("./lib/v1/app-hax-toast.js");
-    import("./lib/v1/app-hax-wired-toggle.js");
-    import("./lib/v1/app-hax-search-bar.js");
-    import("./lib/v1/app-hax-search-results.js");
-    import("./lib/v1/app-hax-user-menu.js");
-    import("./lib/v1/app-hax-user-menu-button.js");
+    import("./lib/v2/app-hax-toast.js");
+    import("./lib/v2/app-hax-wired-toggle.js");
+    import("./lib/v2/app-hax-search-bar.js");
+    import("./lib/v2/app-hax-search-results.js");
+    import("./lib/v2/app-hax-user-menu.js");
+    import("./lib/v2/app-hax-user-menu-button.js");
     this.dispatchEvent(
       new CustomEvent("app-hax-loaded", {
         composed: true,
@@ -1181,10 +1176,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             data-event="super-daemon"
             show-text-label
           ></simple-toolbar-button>
-          <app-hax-search-bar
-            slot="center"
-            ?disabled="${this.isNewUser}"
-          ></app-hax-search-bar>
           <wired-button
             elevation="1"
             slot="right"
@@ -1194,12 +1185,21 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             data-simple-tour-stop
             data-stop-title="data-label"
             data-label="Sound"
+            aria-label="Toggle sound effects ${this.soundIcon.includes(
+              "FullVolume",
+            )
+              ? "off"
+              : "on"}"
+            aria-pressed="${this.soundIcon.includes("FullVolume")}"
           >
             <span class="wired-button-label">Toggle sound effects</span>
             <simple-icon-lite
               src="${this.soundIcon}"
               loading="lazy"
               decoding="async"
+              alt="${this.soundIcon.includes("FullVolume")
+                ? "Sound enabled"
+                : "Sound disabled"}"
             >
             </simple-icon-lite>
             <div slot="tour" data-stop-content>
@@ -1232,27 +1232,22 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               slot="menuButton"
               id="tbchar"
               title="System menu"
+              aria-label="User menu for ${this.userName}"
+              aria-expanded="${this.userMenuOpen}"
+              aria-haspopup="menu"
             >
               <rpg-character
                 seed="${this.userName}"
                 width="68"
                 height="68"
                 hat="${this.userMenuOpen ? "edit" : "none"}"
+                alt="Avatar for ${this.userName}"
+                role="img"
               ></rpg-character>
-              <span class="characterbtn-name">${this.userName}</span>
+              <span class="characterbtn-name" aria-hidden="true"
+                >${this.userName}</span
+              >
             </button>
-            <a
-              slot="main-menu"
-              href="createSite-step-1"
-              @click="${this.startJourney}"
-              tabindex="-1"
-            >
-              <app-hax-user-menu-button
-                icon="add"
-                label="${this.t.newJourney}"
-                part="newjourneybtn"
-              ></app-hax-user-menu-button>
-            </a>
             <a
               slot="main-menu"
               title="${this.t.listMySites}"
@@ -1282,86 +1277,18 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       <main @click="${this.closeMenu}">
         <confetti-container id="confetti">
           <div class="label">
-            <app-hax-label>
-              ${this.activeItem && !this.siteReady
-                ? html`
-                    <h1>${this.activeItem.label}</h1>
-                    <div slot="subtitle">
-                      ${this.activeItem && this.activeItem.statement
-                        ? this.activeItem.statement.replace(
-                            ":structure",
-                            toJS(store.site.structure),
-                          )
-                        : ""}
-                    </div>
-                  `
-                : ``}
-              ${this.activeItem && this.siteReady
-                ? html`
-                    <h1>${toJS(store.site.name)}</h1>
-                    <div slot="subtitle">
-                      Is all ready, are you ready to build?
-                    </div>
-                  `
-                : ``}
+            <app-hax-label heading-level="1">
+              HAX Site Dashboard
+              <div slot="subtitle">Let's build something awesome!</div>
             </app-hax-label>
           </div>
-          <random-word
-            key="${this.isNewUser ? `new` : `return`}"
-            .phrases="${this.phrases}"
-            @click="${this.getNewWord}"
-          ></random-word>
-          <section class="content">${this.appBody(this.appMode)}</section>
+          <section class="content">
+            <div class="start-journey">
+              <app-hax-use-case-filter></app-hax-use-case-filter>
+            </div>
+          </section>
         </confetti-container>
       </main>`;
-  }
-
-  getNewWord() {
-    this.shadowRoot.querySelector("random-word").getNewWord();
-    store.appEl.playSound("click");
-  }
-
-  appBody(routine) {
-    let template = html``;
-    switch (routine) {
-      case "home":
-      case "search":
-        template = this.templateHome();
-        break;
-      case "create":
-        template = this.templateCreate();
-        break;
-      case "404":
-      default:
-        template = this.template404();
-        break;
-    }
-    return template;
-  }
-
-  templateHome() {
-    return html`<div class="start-journey">
-        <a
-          href="createSite-step-1"
-          @click="${this.startJourney}"
-          tabindex="-1"
-          title="${this.t.startNewJourney}"
-        >
-          <app-hax-site-button
-            label="&gt; ${this.t.startNewJourney}"
-          ></app-hax-site-button>
-        </a>
-      </div>
-      <app-hax-search-results></app-hax-search-results>`;
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  templateCreate() {
-    return html`<app-hax-steps
-      @promise-progress-finished="${this.siteReadyToGo}"
-      ?unlock-coming-soon="${this.unlockComingSoon}"
-      ?unlock-terrible="${this.unlockTerrible}"
-    ></app-hax-steps>`;
   }
 
   siteReadyToGo(e) {
@@ -1376,48 +1303,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       store.siteReady = true;
     }
   }
-
-  template404() {
-    return html` <div class="four04">
-      <a
-        href="createSite-step-1"
-        class="start-journey"
-        @click="${this.startJourney}"
-        tabindex="-1"
-      >
-        <app-hax-site-button
-          label="&gt; ${this.t.startNewJourney}"
-        ></app-hax-site-button>
-      </a>
-      <rpg-character
-        class="four04-character"
-        fire
-        walking
-        width="200"
-        id="char404"
-        height="200"
-        seed="${this.userName}"
-      ></rpg-character>
-      <simple-tooltip for="char404" position="left">This</simple-tooltip>
-      <simple-tooltip for="char404" position="right">fine</simple-tooltip>
-      <simple-tooltip for="char404" position="bottom">is</simple-tooltip>
-    </div>`;
-  }
-
-  // ensure internal data is unset for store
-  startJourney() {
-    this.userMenuOpen = false;
-    store.createSiteSteps = false;
-    store.siteReady = false;
-    store.site.structure = null;
-    store.site.type = null;
-    store.site.theme = null;
-    store.site.name = null;
-    store.appMode = "create";
-    store.appEl.playSound("click2");
-  }
 }
-globalThis.customElements.define(AppHax.tag, AppHax);
+customElements.define(AppHax.tag, AppHax);
 
 globalThis.AppHax = globalThis.AppHax || {};
 

@@ -40,12 +40,10 @@
     "@haxtheweb/absolute-position-behavior": "^11.0.0",
     "@haxtheweb/accent-card": "^11.0.5",
     "@haxtheweb/code-editor": "^11.0.5",
-    "@haxtheweb/course-design": "^11.0.5",
     "@haxtheweb/dl-behavior": "^11.0.5",
     "@haxtheweb/editable-table": "^11.0.5",
     "@haxtheweb/file-system-broker": "^11.0.0",
     "@haxtheweb/grid-plate": "^11.0.5",
-    "@haxtheweb/hal-9000": "^11.0.5",
     "@haxtheweb/hax-body-behaviors": "^11.0.5",
     "@haxtheweb/hax-iconset": "^11.0.0",
     "@haxtheweb/hexagon-loader": "^11.0.5",
@@ -70,7 +68,7 @@
     "@haxtheweb/user-scaffold": "^11.0.0",
     "@haxtheweb/utils": "^11.0.0",
     "@vaadin/vaadin-upload": "^4.4.1",
-    "lit": "3.3.0",
+    "lit": "3.3.1",
     "mobx": "6.13.7"
   },
   "devDependencies": {
@@ -97,10 +95,7 @@
     "@haxtheweb/video-player": "^11.0.5",
     "@haxtheweb/wikipedia-query": "^11.0.5",
     "@open-wc/testing": "4.0.0",
-    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
-    "@haxtheweb/utils": "^11.0.0",
     "@web/dev-server": "0.4.6",
-    "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "9.1.2",
     "wct-browser-legacy": "1.0.2"
   },

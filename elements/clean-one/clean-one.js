@@ -28,6 +28,8 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
+ * @haxcms-theme-category Course
+ * @haxcms-theme-internal false
  * @demo demo/index.html
  * @element clean-one
  */

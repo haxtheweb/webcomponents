@@ -13,8 +13,10 @@ import { JsonOutlineSchema } from "@haxtheweb/json-outline-schema/json-outline-s
 import "@haxtheweb/simple-popover/simple-popover.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-fields/lib/simple-fields-field.js";
+import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
+import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { encapScript, haxElementToNode } from "@haxtheweb/utils/utils.js";
 /**
  * `outline-designer`
@@ -29,6 +31,23 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         :host {
           display: block;
           font-family: var(--ddd-font-navigation);
+          --outline-designer-zoom: 1;
+        }
+        :host(.zoom-out-1) {
+          --outline-designer-zoom: 0.85;
+        }
+        :host(.zoom-out-2) {
+          --outline-designer-zoom: 0.7;
+        }
+        :host(.zoom-out-3) {
+          --outline-designer-zoom: 0.55;
+        }
+        .item {
+          transform: scale(var(--outline-designer-zoom));
+          transform-origin: left center;
+          margin-bottom: calc(
+            var(--ddd-spacing-1) * var(--outline-designer-zoom)
+          );
         }
         simple-icon-button[hidden] {
           visibility: hidden !important;
@@ -54,23 +73,29 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             var(--ddd-primary-5)
           );
         }
-        .controls .control {
-          border: var(--ddd-border-xs);
-          border-color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          border-radius: var(--ddd-radius-xs);
-          padding: var(--ddd-spacing-1);
+        .controls simple-toolbar-button.control {
+          --simple-toolbar-button-border-width: 1px;
+          --simple-toolbar-border-color: light-dark(
+            var(--ddd-primary-4),
+            var(--ddd-accent-6)
+          );
+          --simple-toolbar-border-radius: var(--ddd-radius-xs);
+          --simple-toolbar-button-padding: var(--ddd-spacing-1);
           background-color: light-dark(
             var(--ddd-accent-6),
             var(--ddd-primary-3)
           );
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
-        .controls .control:hover {
+        .controls simple-toolbar-button.control:hover {
           background-color: light-dark(
             var(--ddd-theme-default-limestoneMaxLight),
             var(--ddd-primary-5)
           );
-          border-color: light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
+          --simple-toolbar-border-color: light-dark(
+            var(--ddd-primary-1),
+            var(--ddd-accent-5)
+          );
         }
         simple-popover {
           --simple-popover-max-height: 300px;
@@ -196,7 +221,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           pointer-events: none;
           z-index: -1;
         }
-        li simple-icon-button:hover {
+        li simple-icon-button-lite:hover {
           background-color: light-dark(
             var(--ddd-theme-default-limestoneMaxLight),
             var(--ddd-primary-5)
@@ -313,6 +338,86 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           outline: var(--ddd-border-sm);
           outline-color: light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
           outline-offset: -2px;
+          box-shadow: var(--ddd-boxShadow-sm);
+        }
+        .item.active-page {
+          background-color: light-dark(
+            var(--ddd-accent-5),
+            var(--ddd-primary-6)
+          );
+          outline: 2px solid
+            light-dark(var(--ddd-primary-2), var(--ddd-accent-4));
+          outline-offset: -2px;
+          box-shadow: var(--ddd-boxShadow-md);
+        }
+        .item.selected-page {
+          background-color: light-dark(
+            var(--ddd-accent-4),
+            var(--ddd-primary-7)
+          );
+          outline: 2px solid
+            light-dark(var(--ddd-primary-3), var(--ddd-accent-3));
+          outline-offset: -2px;
+        }
+        .item[data-dragging="true"] {
+          box-shadow: var(--ddd-boxShadow-lg);
+          opacity: 0.8;
+          transform: scale(1.02);
+          z-index: 1000;
+        }
+        .item[data-dragging="true"] {
+          box-shadow: var(--ddd-boxShadow-lg);
+          opacity: 0.8;
+          transform: scale(1.02);
+          z-index: 1000;
+        }
+        /* Menu button styling */
+        .actions-menu {
+          margin-left: var(--ddd-spacing-2);
+        }
+        .actions-menu::part(button) {
+          padding: var(--ddd-spacing-1);
+          border-radius: var(--ddd-radius-xs);
+          border: var(--ddd-border-xs);
+          background: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+        }
+        .actions-menu::part(button):hover {
+          background: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-primary-5)
+          );
+        }
+        .actions-menu simple-toolbar-button {
+          text-align: left;
+          justify-content: flex-start;
+          padding-left: var(--ddd-spacing-2);
+          padding-right: var(--ddd-spacing-4);
+          --simple-toolbar-button-justify: flex-start;
+          --simple-icon-height: 16px;
+          --simple-icon-width: 16px;
+        }
+        .actions-menu simple-toolbar-button.delete-button {
+          border-top: var(--ddd-border-sm) solid
+            var(--ddd-theme-default-limestoneGray);
+          margin-top: var(--ddd-spacing-2);
+          padding-top: var(--ddd-spacing-2);
+        }
+        .actions-menu simple-toolbar-button.delete-button:hover {
+          color: var(--ddd-theme-default-error);
+          background-color: var(--ddd-theme-default-errorLight);
+        }
+
+        simple-icon-button-lite {
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+        }
+
+        simple-context-menu {
+          text-align: left;
+        }
+        simple-context-menu::part(content) {
+          text-align: left;
+          align-items: flex-start;
         }
         .item:hover .label,
         .item:focus .label,
@@ -351,66 +456,87 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         }
         .indent-0 {
           padding-left: 0;
+          position: relative;
         }
         .indent-1 {
-          padding-left: 16px;
+          padding-left: calc(16px * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-2 {
-          padding-left: calc(16px * 2);
+          padding-left: calc(16px * 2 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-3 {
-          padding-left: calc(16px * 3);
+          padding-left: calc(16px * 3 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-4 {
-          padding-left: calc(16px * 4);
+          padding-left: calc(16px * 4 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-5 {
-          padding-left: calc(16px * 5);
+          padding-left: calc(16px * 5 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-6 {
-          padding-left: calc(16px * 6);
+          padding-left: calc(16px * 6 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-7 {
-          padding-left: calc(16px * 7);
+          padding-left: calc(16px * 7 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-8 {
-          padding-left: calc(16px * 8);
+          padding-left: calc(16px * 8 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-9 {
-          padding-left: calc(16px * 9);
+          padding-left: calc(16px * 9 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-10 {
-          padding-left: calc(16px * 10);
+          padding-left: calc(16px * 10 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-11 {
-          padding-left: calc(16px * 11);
+          padding-left: calc(16px * 11 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-12 {
-          padding-left: calc(16px * 12);
+          padding-left: calc(16px * 12 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-13 {
-          padding-left: calc(16px * 13);
+          padding-left: calc(16px * 13 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-14 {
-          padding-left: calc(16px * 14);
+          padding-left: calc(16px * 14 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-15 {
-          padding-left: calc(16px * 15);
+          padding-left: calc(16px * 15 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-16 {
-          padding-left: calc(16px * 16);
+          padding-left: calc(16px * 16 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-17 {
-          padding-left: calc(16px * 17);
+          padding-left: calc(16px * 17 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-18 {
-          padding-left: calc(16px * 18);
+          padding-left: calc(16px * 18 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-19 {
-          padding-left: calc(16px * 19);
+          padding-left: calc(16px * 19 * var(--outline-designer-zoom));
+          position: relative;
         }
         .indent-20 {
-          padding-left: calc(16px * 20);
+          padding-left: calc(16px * 20 * var(--outline-designer-zoom));
+          position: relative;
         }
         .sr-only {
           position: absolute;
@@ -419,6 +545,108 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           width: 1px;
           height: 1px;
           overflow: hidden;
+        }
+        /* Drop zone indicators for drag and drop - kanban style */
+        .drop-indicator {
+          height: calc(42px * var(--outline-designer-zoom, 1));
+          background: light-dark(
+            rgba(33, 150, 243, 0.08),
+            rgba(33, 150, 243, 0.12)
+          );
+          border: 2px dashed var(--ddd-accent-4);
+          border-radius: var(--ddd-radius-sm);
+          margin: var(--ddd-spacing-1) 0;
+          position: relative;
+          z-index: 100;
+          opacity: 0;
+          transform: scaleY(0);
+          transform-origin: top;
+          transition: all 0.15s ease-out;
+        }
+        .drop-indicator.show {
+          opacity: 1;
+          transform: scaleY(1);
+        }
+        .drop-indicator.indent-visual {
+          border-left: 4px solid var(--ddd-accent-3);
+          background: light-dark(
+            rgba(33, 150, 243, 0.15),
+            rgba(33, 150, 243, 0.2)
+          );
+        }
+        .drop-target-child {
+          outline: 2px dashed var(--ddd-accent-4) !important;
+          outline-offset: 2px;
+          background: light-dark(
+            rgba(135, 206, 235, 0.15),
+            rgba(135, 206, 235, 0.1)
+          ) !important;
+        }
+        /* Drag preview styles */
+        .drag-preview {
+          position: absolute;
+          top: -1000px;
+          left: -1000px;
+          padding: 8px 12px;
+          background: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
+          border: 2px solid
+            light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          border-radius: var(--ddd-radius-sm);
+          font-weight: var(--ddd-font-weight-bold);
+          box-shadow: var(--ddd-boxShadow-lg);
+          z-index: 10000;
+          pointer-events: none;
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+        }
+        /* Stacked effect for items with children */
+        .drag-preview.has-children {
+          position: relative;
+        }
+        .drag-preview.has-children::before,
+        .drag-preview.has-children::after {
+          content: "";
+          position: absolute;
+          left: 3px;
+          right: -3px;
+          height: 100%;
+          background: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
+          border: 2px solid
+            light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          border-radius: var(--ddd-radius-sm);
+          z-index: -1;
+        }
+        .drag-preview.has-children::before {
+          top: -3px;
+          opacity: 0.7;
+        }
+        .drag-preview.has-children::after {
+          top: -6px;
+          opacity: 0.4;
+        }
+        .drag-preview-children {
+          opacity: 0.7;
+          font-size: 12px;
+          font-weight: var(--ddd-font-weight-regular);
+        }
+        .drag-handle-active {
+          outline: 2px solid
+            light-dark(var(--ddd-accent-4), var(--ddd-accent-3));
+          outline-offset: 2px;
+          background-color: light-dark(
+            var(--ddd-accent-5),
+            var(--ddd-primary-6)
+          );
+        }
+        /* Push-aside animation for drop target */
+        .item.drop-above-target {
+          margin-top: 48px;
+          transition: margin-top 0.2s ease-out;
+        }
+        .item.drop-below-target {
+          margin-bottom: 48px;
+          transition: margin-bottom 0.2s ease-out;
         }
       `,
     ];
@@ -439,6 +667,12 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     this.activePreview = null;
     this.activePreviewIndex = -1;
     this.liveRegionText = "";
+    this._dropZone = null;
+    this._dragPreviewElement = null;
+    this.activePage = null;
+    this.selectedPages = [];
+    this.zoomLevel = 1;
+    this._dragHandleActive = null;
     this.t = {
       selectTarget: "Select target",
       importContentUnderThisPage: "Import content under this page",
@@ -446,11 +680,23 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       thisPage: "this page",
       newPage: "New page",
       copyOf: "Copy of",
+      pageActions: "Page Actions",
+      editTitle: "Edit title",
+      lock: "Lock",
+      unlock: "Unlock",
+      moveUp: "Move up",
+      moveDown: "Move down",
+      makeChild: "Make child",
+      moveToParentLevel: "Move to parent level",
+      addPage: "Add page",
+      duplicate: "Duplicate",
+      delete: "Delete",
+      restore: "Restore",
+      goToPage: "Go to page",
     };
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
-      
     });
     // so we can prepopulate the parent options menu
     autorun(() => {
@@ -548,34 +794,56 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
               >
             `
           : ``}
-        <simple-icon-button-lite
+        <simple-toolbar-button
           class="control"
           icon="add"
           @click="${this.addItemToTop}"
-          >Add page</simple-icon-button-lite
-        >
-        <simple-icon-button-lite
+          label="Add page"
+        ></simple-toolbar-button>
+        <simple-toolbar-button
           icon="hardware:keyboard-arrow-right"
           @click="${this.collapseAll}"
           class="control"
-          >Collapse all</simple-icon-button-lite
-        >
-        <simple-icon-button-lite
+          label="Collapse all"
+        ></simple-toolbar-button>
+        <simple-toolbar-button
           icon="hardware:keyboard-arrow-down"
           @click="${this.expandAll}"
           class="control"
-          >Expand all</simple-icon-button-lite
-        >
+          label="Expand all"
+        ></simple-toolbar-button>
+        ${this.selectedPages.length > 0
+          ? html`<simple-toolbar-button
+              icon="delete"
+              @click="${this.deleteSelected}"
+              class="control"
+              label="Delete Selected (${this.selectedPages.length})"
+            ></simple-toolbar-button>`
+          : ``}
         ${this.hasDeletedItems()
-          ? html`<simple-icon-button-lite
+          ? html`<simple-toolbar-button
               icon="delete"
               @click="${this.toggleDelete}"
               class="control"
-              >${!this.hideDelete
+              label="${!this.hideDelete
                 ? "Hide Deleted"
-                : "Show Deleted"}</simple-icon-button-lite
-            >`
+                : "Show Deleted"}"
+            ></simple-toolbar-button>`
           : ``}
+        <simple-toolbar-button
+          icon="zoom-in"
+          @click="${this.zoomIn}"
+          class="control"
+          ?disabled="${this.zoomLevel >= 1}"
+          label="Zoom In"
+        ></simple-toolbar-button>
+        <simple-toolbar-button
+          icon="zoom-out"
+          @click="${this.zoomOut}"
+          class="control"
+          ?disabled="${this.zoomLevel <= -3}"
+          label="Zoom Out"
+        ></simple-toolbar-button>
       </div>
       <ul
         id="list"
@@ -592,12 +860,12 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         ${this.liveRegionText}
       </div>
       <simple-popover auto for="list" hidden>
-        <simple-icon-button
+        <simple-icon-button-lite
           @click="${this.resetPopOver}"
           title="Close"
           icon="cancel"
           class="close-btn"
-        ></simple-icon-button>
+        ></simple-icon-button-lite>
         ${this.renderActiveContentItem(
           this.activePreview,
           this.activePreviewIndex,
@@ -644,6 +912,125 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       .getAttribute("data-item-id");
   }
 
+  handleItemClick(e) {
+    const target = e.target.closest("[data-item-id]");
+    if (!target) return;
+
+    const itemId = target.getAttribute("data-item-id");
+
+    if (e.ctrlKey || e.metaKey) {
+      this.togglePageSelection(itemId);
+    } else if (e.shiftKey && this.activePage) {
+      this.selectPageRange(this.activePage, itemId);
+    } else {
+      if (
+        !e.target.closest("simple-toolbar-button") &&
+        !e.target.closest("simple-icon-button-lite") &&
+        !e.target.closest(".label-edit")
+      ) {
+        this.activePage = itemId;
+        this.requestUpdate();
+      }
+    }
+  }
+
+  togglePageSelection(itemId) {
+    const index = this.selectedPages.indexOf(itemId);
+    if (index > -1) {
+      this.selectedPages.splice(index, 1);
+    } else {
+      this.selectedPages.push(itemId);
+    }
+    this.activePage = itemId;
+    this.requestUpdate();
+  }
+
+  selectPageRange(startId, endId) {
+    const startIndex = this.items.findIndex((item) => item.id === startId);
+    const endIndex = this.items.findIndex((item) => item.id === endId);
+
+    if (startIndex === -1 || endIndex === -1) return;
+
+    const minIndex = Math.min(startIndex, endIndex);
+    const maxIndex = Math.max(startIndex, endIndex);
+
+    this.selectedPages = [];
+    for (let i = minIndex; i <= maxIndex; i++) {
+      if (this.getItemParentsCollapsed(this.items[i]) === "") {
+        this.selectedPages.push(this.items[i].id);
+      }
+    }
+    this.requestUpdate();
+  }
+
+  deleteSelected() {
+    this.selectedPages.forEach((pageId) => {
+      const index = this.items.findIndex((item) => item.id === pageId);
+      if (index !== -1 && !this.isLocked(index)) {
+        this.items[index].delete = true;
+        if (this.hasChildren(this.items[index].id)) {
+          this.recurseAction(this.items[index].id, "delete", true);
+        }
+      }
+    });
+    this.selectedPages = [];
+    this.__syncUIAndDataModel();
+  }
+
+  zoomIn() {
+    if (this.zoomLevel < 1) {
+      this.zoomLevel++;
+      this.updateZoomClass();
+    }
+  }
+
+  zoomOut() {
+    if (this.zoomLevel > -3) {
+      this.zoomLevel--;
+      this.updateZoomClass();
+    }
+  }
+
+  updateZoomClass() {
+    this.classList.remove("zoom-out-1", "zoom-out-2", "zoom-out-3");
+    if (this.zoomLevel === 0) {
+      this.classList.add("zoom-out-1");
+    } else if (this.zoomLevel === -1) {
+      this.classList.add("zoom-out-2");
+    } else if (this.zoomLevel <= -2) {
+      this.classList.add("zoom-out-3");
+    }
+    this.requestUpdate();
+  }
+
+  _toggleActionsMenu(e, index) {
+    e.stopPropagation();
+    const button = e.target;
+    const listItem = button.closest("li");
+    const menu = listItem.querySelector(".actions-menu");
+    if (menu) {
+      menu.toggle(button);
+    }
+  }
+
+  _handleMenuAction(e, index, action) {
+    e.stopPropagation();
+    const button = e.target;
+    const listItem = button.closest("li");
+    const menu = listItem.querySelector(".actions-menu");
+    if (menu) menu.close();
+
+    if (action === "edit-title" && index !== false) {
+      // Trigger edit mode for the title
+      const labelElement = listItem.querySelector(".label.shown");
+      if (labelElement && !this.isLocked(index)) {
+        this.editTitle({ target: labelElement });
+      }
+    } else if (action && index !== false) {
+      this.itemOp(index, action);
+    }
+  }
+
   renderItem(item, index) {
     return html`
       <li
@@ -667,11 +1054,15 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         @dragenter="${this._dragEnter}"
         @dragleave="${this._dragLeave}"
         @mouseenter="${this.setActiveItemForActions}"
+        @click="${this.handleItemClick}"
         class="item indent-${item.indent < 20
           ? item.indent
           : 20} ${item.modified
           ? "modified"
-          : ""} ${this.getItemParentsCollapsed(item)}"
+          : ""} ${this.getItemParentsCollapsed(item)} ${this.activePage ===
+        item.id
+          ? "active-page"
+          : ""} ${this.selectedPages.includes(item.id) ? "selected-page" : ""}"
         data-item-id="${item.id}"
         @focusin="${this.setActiveItemForActions}"
         data-parents="${this.getItemParents(item)}"
@@ -679,21 +1070,34 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         ?data-about-to-delete="${item.delete}"
         ?hidden="${this.hideDelete && item.delete}"
       >
-        <simple-icon-button
+        <simple-toolbar-button
+          class="actions-menu-button"
+          icon="icons:more-vert"
+          label="${this.t.pageActions}"
+          @click="${(e) => this._toggleActionsMenu(e, index)}"
+        ></simple-toolbar-button>
+        <simple-icon-button-lite
           ?disabled="${this.isLocked(index)}"
           class="collapse-btn"
           icon="${this.isCollapsed(item.id)
             ? `hardware:keyboard-arrow-right`
             : `hardware:keyboard-arrow-down`}"
           @click="${this.collapseExpand}"
-        ></simple-icon-button>
-        <simple-icon-button
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
           ?disabled="${this.isLocked(index)}"
           @dragstart="${this._dragStart}"
           @dragend="${this._dragEnd}"
+          @drag="${this._onDrag}"
+          @keydown="${this._handleDragHandleKeydown}"
           draggable="${!this.isLocked(index)}"
-          icon="hax:arrow-all"
-        ></simple-icon-button>
+          icon="icons:reorder"
+          class="drag-handle ${this._dragHandleActive === item.id
+            ? "drag-handle-active"
+            : ""}"
+          title="Drag to reorder or press Enter to activate keyboard controls"
+          data-drag-handle-id="${item.id}"
+        ></simple-icon-button-lite>
         <simple-icon-button-lite
           ?disabled="${this.isLocked(index)}"
           ?hidden="${this.hideContentOps ||
@@ -729,82 +1133,92 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           @keypress="${this.monitorTitle}"
           @keydown="${this.monitorEsc}"
         ></span>
-        <div class="operations">
-          ${this.activeItemForActions === item.id
-            ? html`
-                <div class="btn-contrast">
-                  <simple-icon-button
-                    part="lockbtn"
-                    class="operation lock"
-                    icon="${this.isLocked(index)
-                      ? "icons:lock"
-                      : "icons:lock-open"}"
-                    @click="${(e) => this.itemOp(index, "lock")}"
-                    title="Lock / Unlock"
-                  ></simple-icon-button>
-                  <simple-icon-button
-                    class="operation"
-                    icon="hax:outline-designer-outdent"
-                    @click="${(e) => this.itemOp(index, "out")}"
-                    title="Move next to parent"
-                    ?disabled="${this.isLocked(index)}"
-                  ></simple-icon-button>
-                  <simple-icon-button
-                    class="operation"
-                    icon="hax:keyboard-arrow-up"
-                    @click="${(e) => this.itemOp(index, "up")}"
-                    title="Move up"
-                    ?disabled="${this.isLocked(index)}"
-                  ></simple-icon-button>
-                  <simple-icon-button
-                    class="operation"
-                    icon="hax:keyboard-arrow-down"
-                    @click="${(e) => this.itemOp(index, "down")}"
-                    title="Move down"
-                    ?disabled="${this.isLocked(index)}"
-                  ></simple-icon-button>
-                  <simple-icon-button
-                    class="operation"
-                    icon="hax:outline-designer-indent"
-                    @click="${(e) => this.itemOp(index, "in")}"
-                    title="Make child"
-                    ?disabled="${this.isLocked(index)}"
-                  ></simple-icon-button>
-                </div>
-                <simple-icon-button
-                  class="operation add"
-                  icon="add"
-                  accent-color="green"
-                  @click="${(e) => this.itemOp(index, "add")}"
-                  title="Add"
-                  ?disabled="${this.isLocked(index)}"
-                ></simple-icon-button>
-                <simple-icon-button
-                  class="operation"
-                  icon="content-copy"
-                  accent-color="green"
-                  @click="${(e) => this.itemOp(index, "duplicate")}"
-                  title="Duplicate"
-                  ?disabled="${this.isLocked(index)}"
-                ></simple-icon-button>
-                <simple-icon-button
-                  class="operation del"
-                  icon="${!item.delete ? "delete" : "hax:delete-restore"}"
-                  accent-color="red"
-                  @click="${(e) => this.itemOp(index, "delete")}"
-                  title="${!item.delete ? "Delete" : "Restore"}"
-                  ?disabled="${this.isLocked(index)}"
-                ></simple-icon-button>
-                <simple-icon-button
-                  class="operation goto"
-                  icon="open-in-browser"
-                  accent-color="blue"
-                  @click="${(e) => this.itemOp(index, "goto")}"
-                  title="Go to page"
-                ></simple-icon-button>
-              `
-            : ``}
-        </div>
+        <simple-context-menu
+          class="actions-menu"
+          data-item-index="${index}"
+          title="${this.t.pageActions}"
+        >
+          <simple-toolbar-button
+            value="up"
+            ?disabled="${this.isLocked(index)}"
+            icon="icons:arrow-upward"
+            label="${this.t.moveUp}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "up")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="down"
+            ?disabled="${this.isLocked(index)}"
+            icon="icons:arrow-downward"
+            label="${this.t.moveDown}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "down")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="in"
+            ?disabled="${this.isLocked(index)}"
+            icon="hax:outline-designer-indent"
+            label="Indent"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "in")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="out"
+            ?disabled="${this.isLocked(index)}"
+            icon="hax:outline-designer-outdent"
+            label="Outdent"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "out")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="edit-title"
+            ?disabled="${this.isLocked(index)}"
+            icon="editor:mode-edit"
+            label="${this.t.editTitle}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "edit-title")}"
+            autofocus
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="add"
+            ?disabled="${this.isLocked(index)}"
+            icon="hax:add-page"
+            label="${this.t.addPage}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "add")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="duplicate"
+            ?disabled="${this.isLocked(index)}"
+            icon="content-copy"
+            label="${this.t.duplicate}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "duplicate")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="goto"
+            icon="open-in-browser"
+            label="${this.t.goToPage}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "goto")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            value="lock"
+            icon="${this.isLocked(index) ? "icons:lock" : "icons:lock-open"}"
+            label="${this.isLocked(index) ? this.t.unlock : this.t.lock}"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "lock")}"
+          ></simple-toolbar-button>
+          <simple-toolbar-button
+            class="delete-button"
+            value="delete"
+            ?disabled="${this.isLocked(index)}"
+            icon="icons:delete"
+            label="Delete"
+            show-text-label
+            @click="${(e) => this._handleMenuAction(e, index, "delete")}"
+          ></simple-toolbar-button>
+        </simple-context-menu>
       </li>
       ${!this.hideContentOps && item.showContent
         ? this.renderItemContents(item)
@@ -962,52 +1376,52 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           `
         : html`<span class="label shown">${label}</span>`}
       <div class="content-operations">
-        <simple-icon-button
+        <simple-icon-button-lite
           class="content-operation"
           icon="hax:outline-designer-outdent"
           @click="${(e) => this.modifyContentAction(e, item, "in")}"
           title="Increase heading"
           ?disabled="${tagName === "h1" || item.metadata.locked}"
           ?hidden="${part !== "heading"}"
-        ></simple-icon-button>
-        <simple-icon-button
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
           icon="hax:keyboard-arrow-up"
           @click="${(e) => this.modifyContentAction(e, item, "up")}"
           title="Move up"
           ?disabled="${item.metadata.locked}"
           class="content-operation"
-        ></simple-icon-button>
-        <simple-icon-button
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
           icon="hax:keyboard-arrow-down"
           @click="${(e) => this.modifyContentAction(e, item, "down")}"
           title="Move down"
           ?disabled="${item.metadata.locked}"
           class="content-operation"
-        ></simple-icon-button>
-        <simple-icon-button
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
           class="content-operation"
           icon="hax:outline-designer-indent"
           @click="${(e) => this.modifyContentAction(e, item, "out")}"
           title="Decrease Heading"
           ?disabled="${tagName === "h6" || item.metadata.locked}"
           ?hidden="${part !== "heading"}"
-        ></simple-icon-button>
-        <simple-icon-button
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
           class="content-operation"
           icon="editor:format-page-break"
           @click="${(e) => this.pageBreakHere(e, item)}"
           title="Promote to page"
           ?disabled="${item.metadata.locked}"
           ?hidden="${part !== "heading"}"
-        ></simple-icon-button>
-        <simple-icon-button
+        ></simple-icon-button-lite>
+        <simple-icon-button-lite
           icon="delete"
           @click="${(e) => this.modifyContentAction(e, item, "delete")}"
           class="content-operation del"
           title="Delete"
           ?disabled="${item.metadata.locked}"
           accent-color="red"
-        ></simple-icon-button>
+        ></simple-icon-button-lite>
       </div>
     </li>`;
   }
@@ -1378,6 +1792,80 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     }, 0);
   }
 
+  // Handle keyboard navigation for drag handle
+  _handleDragHandleKeydown(e) {
+    const dragHandle = e.target;
+    const itemId = dragHandle.getAttribute("data-drag-handle-id");
+    const itemIndex = this.items.findIndex((item) => item.id === itemId);
+
+    if (itemIndex === -1 || this.isLocked(itemIndex)) return;
+
+    // Enter key activates/deactivates keyboard drag mode
+    if (e.key === "Enter") {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (this._dragHandleActive === itemId) {
+        // Deactivate
+        this._dragHandleActive = null;
+        this.announceAction("Keyboard controls deactivated");
+      } else {
+        // Activate
+        this._dragHandleActive = itemId;
+        this.announceAction(
+          "Keyboard controls activated. Use arrow keys to move, Enter or Escape to deactivate",
+        );
+      }
+      this.requestUpdate();
+      return;
+    }
+
+    // Escape key deactivates keyboard drag mode
+    if (e.key === "Escape" && this._dragHandleActive === itemId) {
+      e.preventDefault();
+      e.stopPropagation();
+      this._dragHandleActive = null;
+      this.announceAction("Keyboard controls deactivated");
+      this.requestUpdate();
+      return;
+    }
+
+    // Only process arrow keys if this handle is active
+    if (this._dragHandleActive !== itemId) return;
+
+    let action = null;
+    switch (e.key) {
+      case "ArrowUp":
+        e.preventDefault();
+        e.stopPropagation();
+        action = "up";
+        this.announceAction("Moving item up");
+        break;
+      case "ArrowDown":
+        e.preventDefault();
+        e.stopPropagation();
+        action = "down";
+        this.announceAction("Moving item down");
+        break;
+      case "ArrowLeft":
+        e.preventDefault();
+        e.stopPropagation();
+        action = "in";
+        this.announceAction("Indenting item");
+        break;
+      case "ArrowRight":
+        e.preventDefault();
+        e.stopPropagation();
+        action = "out";
+        this.announceAction("Outdenting item");
+        break;
+    }
+
+    if (action) {
+      this.itemOp(itemIndex, action);
+    }
+  }
+
   // Handle Enter key on label to activate editing mode
   handleLabelKeydown(e) {
     // Only handle Enter key and prevent if disabled
@@ -1621,6 +2109,82 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       }
     }, delay);
   }
+
+  /**
+   * Create custom drag preview element
+   */
+  _createDragPreview(target) {
+    const itemId = target.getAttribute("data-item-id");
+    const item = this.items.find((i) => i.id === itemId);
+
+    if (!item) return null;
+
+    const preview = globalThis.document.createElement("div");
+    preview.className = "drag-preview";
+
+    // Count all descendants recursively
+    const totalDescendants = this._countAllDescendants(itemId);
+
+    // Add stacked class if has children
+    if (totalDescendants > 0) {
+      preview.classList.add("has-children");
+    }
+
+    // Create icon
+    const icon = globalThis.document.createElement("simple-icon-lite");
+    icon.setAttribute("icon", "icons:reorder");
+
+    // Create title span
+    const title = globalThis.document.createElement("span");
+    title.textContent =
+      item.title.length > 40 ? item.title.substring(0, 40) + "..." : item.title;
+
+    preview.appendChild(icon);
+    preview.appendChild(title);
+
+    // Add descendant count if applicable
+    if (totalDescendants > 0) {
+      const childCountSpan = globalThis.document.createElement("span");
+      childCountSpan.className = "drag-preview-children";
+      childCountSpan.textContent = `(+${totalDescendants} page${totalDescendants !== 1 ? "s" : ""})`;
+      preview.appendChild(childCountSpan);
+    }
+
+    return preview;
+  }
+
+  /**
+   * Recursively count all descendants of an item
+   */
+  _countAllDescendants(itemId) {
+    const directChildren = this.items.filter((i) => i.parent === itemId);
+    let count = directChildren.length;
+
+    // Recursively add counts for each child's descendants
+    directChildren.forEach((child) => {
+      count += this._countAllDescendants(child.id);
+    });
+
+    return count;
+  }
+  _onDrag(e) {
+    // Continuously update drag position for better feedback
+    if (this._targetDrag && e.clientX && e.clientY) {
+      // Trigger dragenter to update drop indicators
+      const elementAtPoint = globalThis.document.elementFromPoint(
+        e.clientX,
+        e.clientY,
+      );
+      if (elementAtPoint) {
+        const target = elementAtPoint.closest("[data-item-id]");
+        if (target && target !== this._lastDragTarget) {
+          this._lastDragTarget = target;
+          this._dragEnter(e);
+        }
+      }
+    }
+  }
+
   _mouseDownDrag(e) {
     // force collapse kids on move
     let itemId = e.target
@@ -1639,29 +2203,151 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
    * Enter an element, meaning we've over it while dragging
    */
   _dragEnter(e) {
-    if (this._targetDrop !== e.target.closest("[data-item-id]")) {
-      e.preventDefault();
-      e.target
-        .closest("[data-item-id]")
-        .classList.add("outline-designer-hovered");
-      this._targetDrop = e.target.closest("[data-item-id]");
+    const target = e.target.closest("[data-item-id]");
+    if (!target || !this._targetDrag) return;
+
+    // Don't allow dropping on itself
+    if (target === this._targetDrag) return;
+
+    e.preventDefault();
+
+    // Calculate drop zone based on cursor position
+    const rect = target.getBoundingClientRect();
+    const y = e.clientY - rect.top;
+    const x = e.clientX - rect.left;
+    const height = rect.height;
+    const width = rect.width;
+
+    // Determine if indenting based on horizontal position
+    // More than 40px from left = potential indent/child drop
+    const indentThreshold = 40;
+    const isIndentZone = x > indentThreshold;
+
+    // Top 30% = above, middle 40% = child (or indent), bottom 30% = below
+    let dropZone = "child";
+    if (y < height * 0.3 && !isIndentZone) {
+      dropZone = "above";
+    } else if (y > height * 0.7 && !isIndentZone) {
+      dropZone = "below";
+    } else if (isIndentZone) {
+      dropZone = "child";
+    }
+
+    // Only update if target or zone changed
+    if (this._targetDrop !== target || this._dropZone !== dropZone) {
+      // Clean up previous indicators
+      this.shadowRoot
+        .querySelectorAll(".drop-indicator")
+        .forEach((el) => el.remove());
+      this.shadowRoot.querySelectorAll(".drop-target-child").forEach((el) => {
+        el.classList.remove("drop-target-child");
+      });
+      this.shadowRoot
+        .querySelectorAll(".outline-designer-hovered")
+        .forEach((el) => {
+          el.classList.remove("outline-designer-hovered");
+        });
+      // Clean up push-aside classes
+      this.shadowRoot.querySelectorAll(".drop-above-target").forEach((el) => {
+        el.classList.remove("drop-above-target");
+      });
+      this.shadowRoot.querySelectorAll(".drop-below-target").forEach((el) => {
+        el.classList.remove("drop-below-target");
+      });
+
+      // Add new indicator based on drop zone with animation
+      if (dropZone === "above") {
+        const indicator = globalThis.document.createElement("div");
+        indicator.className = "drop-indicator drop-above";
+        target.insertAdjacentElement("beforebegin", indicator);
+        // Show with animation immediately
+        setTimeout(() => indicator.classList.add("show"), 10);
+        // Add push-aside animation to target
+        target.classList.add("drop-above-target");
+      } else if (dropZone === "below") {
+        const indicator = globalThis.document.createElement("div");
+        indicator.className = "drop-indicator drop-below";
+        target.insertAdjacentElement("afterend", indicator);
+        // Show with animation immediately
+        setTimeout(() => indicator.classList.add("show"), 10);
+        // Add push-aside animation to target
+        target.classList.add("drop-below-target");
+      } else {
+        // child - show dashed outline with indent visual
+        target.classList.add("drop-target-child");
+        const indicator = globalThis.document.createElement("div");
+        indicator.className = "drop-indicator indent-visual";
+        indicator.style.marginLeft = "40px";
+        target.insertAdjacentElement("afterend", indicator);
+        setTimeout(() => indicator.classList.add("show"), 10);
+      }
+
+      this._targetDrop = target;
+      this._dropZone = dropZone;
+
+      // Announce to screen readers
+      const targetItem = this.items.find(
+        (item) => item.id === target.getAttribute("data-item-id"),
+      );
+      if (targetItem) {
+        const dragItem = this.items.find(
+          (item) => item.id === this._targetDrag.getAttribute("data-item-id"),
+        );
+        let announcement = "";
+        if (dropZone === "above") {
+          announcement = `Drop above ${targetItem.title}`;
+        } else if (dropZone === "below") {
+          announcement = `Drop below ${targetItem.title}`;
+        } else {
+          announcement = `Drop as child of ${targetItem.title}`;
+        }
+        this.announceAction(announcement);
+      }
     }
   }
   /**
    * Leaving an element while dragging.
    */
   _dragLeave(e) {
-    if (this._targetDrop !== e.target.closest("[data-item-id]")) {
-      e.target
-        .closest("[data-item-id]")
-        .classList.remove("outline-designer-hovered");
-    }
+    // Cleanup is now handled in _dragEnter for better accuracy
+    // This prevents flickering when moving between child elements
   }
   /**
    * When we end dragging this is the same as a drop event; ensure we remove the mover class.
    */
   _dragEnd(e) {
-    if (this._targetDrag && this._targetDrop) {
+    // Remove dragging state
+    if (this._targetDrag) {
+      this._targetDrag.removeAttribute("data-dragging");
+    }
+
+    // Clean up drag preview
+    if (this._dragPreviewElement) {
+      this._dragPreviewElement.remove();
+      this._dragPreviewElement = null;
+    }
+
+    // Clean up drop indicators
+    this.shadowRoot
+      .querySelectorAll(".drop-indicator")
+      .forEach((el) => el.remove());
+    this.shadowRoot.querySelectorAll(".drop-target-child").forEach((el) => {
+      el.classList.remove("drop-target-child");
+    });
+    this.shadowRoot
+      .querySelectorAll(".outline-designer-hovered")
+      .forEach((el) => {
+        el.classList.remove("outline-designer-hovered");
+      });
+    // Clean up push-aside classes
+    this.shadowRoot.querySelectorAll(".drop-above-target").forEach((el) => {
+      el.classList.remove("drop-above-target");
+    });
+    this.shadowRoot.querySelectorAll(".drop-below-target").forEach((el) => {
+      el.classList.remove("drop-below-target");
+    });
+
+    if (this._targetDrag && this._targetDrop && this._dropZone) {
       let here = null;
       let from = null;
       for (let index = 0; index < this.items.length; index++) {
@@ -1677,24 +2363,41 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         if (!this.items[from].new) {
           this.items[from].modified = true;
         }
-        this.items[from].order = this.items[here].order;
-        // if 1st in a hierarchy we have to go ahead of it
-        if (this.items[from].order === 0) {
-          this.items[from].order = -1;
+
+        // Apply drop based on zone
+        switch (this._dropZone) {
+          case "above":
+            this.items[from].order = this.items[here].order - 0.5;
+            this.items[from].parent = this.items[here].parent;
+            this.items[from].indent = this.items[here].indent;
+            break;
+          case "below":
+            this.items[from].order = this.items[here].order + 0.5;
+            this.items[from].parent = this.items[here].parent;
+            this.items[from].indent = this.items[here].indent;
+            break;
+          case "child":
+            this.items[from].parent = this.items[here].id;
+            this.items[from].order = 0;
+            this.items[from].indent = this.items[here].indent + 1;
+            break;
         }
-        this.items[from].indent = this.items[here].indent;
-        this.items[from].parent = this.items[here].parent;
+
         if (this.hasChildren(this.items[from].id)) {
           this.items[from].collapsed = false;
         }
+
+        // Scroll moved item into view after a delay if it's outside viewport
+        this.scrollIntoViewIfNeeded(this.items[from].id);
       }
-      this._targetDrag = null;
-      this._targetDrop = null;
       this.setAttribute("stop-animation", "true");
       this.__syncUIAndDataModel();
-      // Scroll moved item into view after a delay if it's outside viewport
-      this.scrollIntoViewIfNeeded(this.items[from].id);
     }
+
+    // Reset drag state
+    this._targetDrag = null;
+    this._targetDrop = null;
+    this._dropZone = null;
   }
   /**
    * Drag start so we know what target to set
@@ -1704,12 +2407,25 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       let target = e.target.closest("[data-item-id]");
       this._targetDrop = null;
       this._targetDrag = target;
-      this._mouseDownDrag(e);
-      if (e.dataTransfer) {
-        e.dataTransfer.effectAllowed = "move";
-        e.dataTransfer.dropEffect = "move";
-        e.dataTransfer.setDragImage(target, 24, 16);
+
+      // Add dragging state for styling
+      target.setAttribute("data-dragging", "true");
+
+      // Create custom drag preview
+      const dragPreview = this._createDragPreview(target);
+      if (dragPreview) {
+        globalThis.document.body.appendChild(dragPreview);
+        this._dragPreviewElement = dragPreview;
+
+        if (e.dataTransfer) {
+          e.dataTransfer.effectAllowed = "move";
+          e.dataTransfer.dropEffect = "move";
+          // Use custom preview as drag image
+          e.dataTransfer.setDragImage(dragPreview, 20, 20);
+        }
       }
+
+      this._mouseDownDrag(e);
       e.stopPropagation();
       e.stopImmediatePropagation();
     }
@@ -1734,6 +2450,10 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       },
       fidelity: { type: String },
       liveRegionText: { type: String },
+      activePage: { type: String },
+      selectedPages: { type: Array },
+      zoomLevel: { type: Number },
+      _dragHandleActive: { type: String },
     };
   }
 

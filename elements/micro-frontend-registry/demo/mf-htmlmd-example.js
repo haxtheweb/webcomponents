@@ -213,7 +213,8 @@ export class MfHtmlExample extends LitElement {
         const params = {
           site: this.shadowRoot.querySelector("#haxcmsurl").value,
           type: "link",
-          ancestor: this.shadowRoot.querySelector("#haxcmsparentid").value || null,
+          ancestor:
+            this.shadowRoot.querySelector("#haxcmsparentid").value || null,
           __method: "GET",
         };
         MicroFrontendRegistry.call(

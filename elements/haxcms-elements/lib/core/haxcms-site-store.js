@@ -303,7 +303,7 @@ class Store {
                 import.meta.url,
               ).href,
             );
-            this.audio.volume = 0.3;
+            this.audio.volume = 0.2;
             this.audio.play();
             break;
           default:
@@ -313,7 +313,7 @@ class Store {
                 import.meta.url,
               ).href,
             );
-            this.audio.volume = 0.3;
+            this.audio.volume = 0.2;
             this.audio.play();
             console.warn(`${sound} is not a valid sound file yet`);
             break;
@@ -414,9 +414,13 @@ class Store {
       if (!item.metadata.hasOwnProperty("locked")) {
         array[index].metadata.locked = false;
       }
-      // we default locked to false if not set
+      // we default status to "" if not set
       if (!item.metadata.hasOwnProperty("status")) {
         array[index].metadata.status = "";
+      }
+      // normalize parent to null if empty string or undefined
+      if (array[index].parent === "" || array[index].parent === undefined) {
+        array[index].parent = null;
       }
     });
     var site = new JsonOutlineSchema();
@@ -1329,13 +1333,10 @@ class Store {
    * @returns {string} - The default HTML content for the style guide
    */
   getDefaultStyleGuideContent() {
-    return `<page-template name="Default H1" schema="block" enforce-styles="enforce-styles" data-haxsg-id="header-1a2b03c4-5d6e-7f8g-9h0i-jk1l2m3n4o5p">
-  <h1  data-primary="21" data-font-size="xl" data-font-family="navigation" data-font-weight="bold" data-padding="s" data-margin="l" data-text-align="center" data-design-treatment="horz-full">Heading 1 Example</h1>
-</page-template>
-
-<page-template name="Default H2" schema="block" enforce-styles="enforce-styles" data-haxsg-id="header-8a1e05f0-1ab1-8c5e-f81f-ef2cafc290fa">
-  <h2 data-primary="11" data-font-size="l" data-font-family="navigation" data-font-weight="light" data-padding="s" data-margin="m" data-text-align="center" data-design-treatment="horz-full">Heading 2</h2>
-</page-template>`;
+    // Default style guide content is intentionally empty.
+    // Themes that want style-guide-driven behavior should
+    // provide their own theme/style-guide.html file.
+    return "";
   }
 
   /**
@@ -1528,6 +1529,37 @@ class HAXCMSSiteStore extends HTMLElement {
           return true;
         });
         if (found) {
+          // Check if this page has a link URL configured and user is not logged in
+          // Only perform redirect check if the app and backend are fully ready to avoid timing issues
+          if (
+            store.appReady &&
+            store.cmsSiteEditorBackend.instance &&
+            found.metadata &&
+            found.metadata.linkUrl &&
+            !store.isLoggedIn
+          ) {
+            // Additional delay to ensure JWT authentication check is complete
+            setTimeout(() => {
+              // Double-check authentication state after backend has had time to initialize
+              if (!store.isLoggedIn) {
+                // Handle link redirect for non-authenticated users
+                const linkTarget = found.metadata.linkTarget || "_self";
+                if (linkTarget === "_blank") {
+                  globalThis.open(
+                    found.metadata.linkUrl,
+                    "_blank",
+                    "noopener,noreferrer",
+                  );
+                } else {
+                  globalThis.location.href = found.metadata.linkUrl;
+                }
+              } else {
+                // User is authenticated, proceed normally
+                store.activeId = id;
+              }
+            }, 100);
+            return; // Don't set activeId immediately, wait for timeout
+          }
           store.activeId = id;
         } else if (store.getInternalRoute()) {
           // we need other stuff to work with this.

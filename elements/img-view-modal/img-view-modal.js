@@ -46,7 +46,6 @@ class ImgViewModal extends LitElement {
         --simple-modal-height: var(--img-view-modal-height, 90vh);
         --simple-modal-titlebar-height: 40px;
         --simple-modal-titlebar-line-height: 40px;
-        --simple-modal-titlebar-height: 40px;
         --simple-modal-titlebar-padding: 0px 5px 0px 15px;
         --simple-modal-titlebar-background: var(
           --img-view-modal-backgroundColor,

@@ -16,46 +16,39 @@ describe("md-block test", () => {
     it("renders accessible HTML from markdown", async () => {
       const testElement = await fixture(html`
         <md-block>
-          # Heading
-          This is a paragraph with [a link](https://example.com).
-          
-          - List item 1
-          - List item 2
+          # Heading This is a paragraph with [a link](https://example.com). -
+          List item 1 - List item 2
         </md-block>
       `);
       await testElement.updateComplete;
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
-      
+
       // Check for proper heading structure
-      const heading = testElement.shadowRoot.querySelector('h1');
+      const heading = testElement.shadowRoot.querySelector("h1");
       expect(heading).to.exist;
-      
+
       // Check for accessible list structure
-      const list = testElement.shadowRoot.querySelector('ul');
+      const list = testElement.shadowRoot.querySelector("ul");
       expect(list).to.exist;
-      
+
       // Check for accessible link
-      const link = testElement.shadowRoot.querySelector('a');
+      const link = testElement.shadowRoot.querySelector("a");
       if (link) {
-        expect(link.hasAttribute('href')).to.be.true;
+        expect(link.hasAttribute("href")).to.be.true;
       }
     });
 
     it("maintains proper heading hierarchy", async () => {
       const testElement = await fixture(html`
-        <md-block>
-          # Main Heading
-          ## Subheading
-          ### Sub-subheading
-        </md-block>
+        <md-block> # Main Heading ## Subheading ### Sub-subheading </md-block>
       `);
       await testElement.updateComplete;
-      
-      const h1 = testElement.shadowRoot.querySelector('h1');
-      const h2 = testElement.shadowRoot.querySelector('h2');
-      const h3 = testElement.shadowRoot.querySelector('h3');
-      
+
+      const h1 = testElement.shadowRoot.querySelector("h1");
+      const h2 = testElement.shadowRoot.querySelector("h2");
+      const h3 = testElement.shadowRoot.querySelector("h3");
+
       expect(h1).to.exist;
       expect(h2).to.exist;
       expect(h3).to.exist;
@@ -64,18 +57,16 @@ describe("md-block test", () => {
     it("handles code blocks with proper markup", async () => {
       const testElement = await fixture(html`
         <md-block>
-          \`\`\`javascript
-          console.log('Hello, world!');
-          \`\`\`
+          \`\`\`javascript console.log('Hello, world!'); \`\`\`
         </md-block>
       `);
       await testElement.updateComplete;
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
-      
-      const code = testElement.shadowRoot.querySelector('code');
-      const pre = testElement.shadowRoot.querySelector('pre');
-      
+
+      const code = testElement.shadowRoot.querySelector("code");
+      const pre = testElement.shadowRoot.querySelector("pre");
+
       if (code || pre) {
         expect(code || pre).to.exist;
       }
@@ -90,23 +81,21 @@ describe("md-block test", () => {
         </md-block>
       `);
       await testElement.updateComplete;
-      
-      const img = testElement.shadowRoot.querySelector('img');
+
+      const img = testElement.shadowRoot.querySelector("img");
       if (img) {
-        expect(img.hasAttribute('alt')).to.be.true;
-        expect(img.alt).to.equal('Alt text');
-        expect(img.hasAttribute('title')).to.be.true;
+        expect(img.hasAttribute("alt")).to.be.true;
+        expect(img.alt).to.equal("Alt text");
+        expect(img.hasAttribute("title")).to.be.true;
       }
     });
 
     it("handles missing alt text appropriately", async () => {
       const testElement = await fixture(html`
-        <md-block>
-          ![](https://example.com/image.jpg)
-        </md-block>
+        <md-block> ![](https://example.com/image.jpg) </md-block>
       `);
       await testElement.updateComplete;
-      
+
       // Should still pass accessibility with empty alt
       await expect(testElement).shadowDom.to.be.accessible();
     });
@@ -116,24 +105,22 @@ describe("md-block test", () => {
     it("renders accessible tables from markdown", async () => {
       const testElement = await fixture(html`
         <md-block>
-          | Header 1 | Header 2 |
-          | -------- | -------- |
-          | Cell 1   | Cell 2   |
+          | Header 1 | Header 2 | | -------- | -------- | | Cell 1 | Cell 2 |
         </md-block>
       `);
       await testElement.updateComplete;
-      
-      const table = testElement.shadowRoot.querySelector('table');
+
+      const table = testElement.shadowRoot.querySelector("table");
       if (table) {
-        const thead = table.querySelector('thead');
-        const tbody = table.querySelector('tbody');
-        const th = table.querySelector('th');
-        
+        const thead = table.querySelector("thead");
+        const tbody = table.querySelector("tbody");
+        const th = table.querySelector("th");
+
         expect(table).to.exist;
         if (thead) expect(thead).to.exist;
         if (tbody) expect(tbody).to.exist;
         if (th) expect(th).to.exist;
-        
+
         await expect(testElement).shadowDom.to.be.accessible();
       }
     });
@@ -143,28 +130,25 @@ describe("md-block test", () => {
     it("renders accessible links with proper attributes", async () => {
       const testElement = await fixture(html`
         <md-block>
-          [Internal link](#section)
-          [External link](https://example.com)
+          [Internal link](#section) [External link](https://example.com)
         </md-block>
       `);
       await testElement.updateComplete;
-      
-      const links = testElement.shadowRoot.querySelectorAll('a');
-      links.forEach(link => {
-        expect(link.hasAttribute('href')).to.be.true;
+
+      const links = testElement.shadowRoot.querySelectorAll("a");
+      links.forEach((link) => {
+        expect(link.hasAttribute("href")).to.be.true;
         expect(link.textContent.trim().length).to.be.greaterThan(0);
       });
     });
 
     it("supports focus management for interactive elements", async () => {
       const testElement = await fixture(html`
-        <md-block>
-          [Focusable link](https://example.com)
-        </md-block>
+        <md-block> [Focusable link](https://example.com) </md-block>
       `);
       await testElement.updateComplete;
-      
-      const link = testElement.shadowRoot.querySelector('a');
+
+      const link = testElement.shadowRoot.querySelector("a");
       if (link) {
         expect(link.tabIndex >= 0).to.be.true;
       }

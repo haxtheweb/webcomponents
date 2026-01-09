@@ -1109,8 +1109,8 @@
         }
     ],
     "autoloader": {
-        "lesson-overview": "@haxtheweb/lesson-overview/lesson-overview.js",
-        "lesson-highlight": "@haxtheweb/lesson-overview/lib/lesson-highlight.js",
+        "lesson-overview": "@haxtheweb/haxcms-elements/lib/ui-components/lesson-overview/lesson-overview.js",
+        "lesson-highlight": "@haxtheweb/haxcms-elements/lib/ui-components/lesson-overview/lib/lesson-highlight.js",
         "rpg-character": "@haxtheweb/rpg-character/rpg-character.js",
         "page-break": "@haxtheweb/page-break/page-break.js",
         "a11y-figure": "@haxtheweb/a11y-figure/a11y-figure.js",

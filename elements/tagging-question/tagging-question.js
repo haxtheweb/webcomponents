@@ -195,43 +195,65 @@ class TaggingQuestion extends QuestionElement {
             ? html` <p class="feedback">${this.incorrectText}</p>
                 ${this.querySelector &&
                 this.querySelector('[slot="feedbackIncorrect"]')
-                  ? html`<slot name="feedbackIncorrect" property="oer:incorrectFeedback"></slot>`
+                  ? html`<slot
+                      name="feedbackIncorrect"
+                      property="oer:incorrectFeedback"
+                    ></slot>`
                   : ``}`
             : ``}
           ${this.showAnswer && this.isCorrect()
             ? html` <p class="feedback">${this.correctText}</p>
                 ${this.querySelector &&
                 this.querySelector('[slot="feedbackCorrect"]')
-                  ? html`<slot name="feedbackCorrect" property="oer:correctFeedback"></slot>`
+                  ? html`<slot
+                      name="feedbackCorrect"
+                      property="oer:correctFeedback"
+                    ></slot>`
                   : ``}`
             : ``}
           ${this.showAnswer
             ? html`
-      <p class="feedback">${this.selectedAnswers.filter((answer) => answer.correct).length} out of ${this.answers.filter((answer) => answer.correct).length} correct${this.selectedAnswers.length > this.answers.filter((answer) => answer.correct).length && this.selectedAnswers.length > this.selectedAnswers.filter((answer) => answer.correct).length ? html`, <strong>but too many options present!</strong>` : "."}</p>
-      <h4>Answers selected</h4>
-      <dl>
-      ${this.selectedAnswers.map(
-        (answer) => html`
-          <dt class="${answer.correct ? "correct" : "incorrect"}">
-            ${answer.label}
-          </dt>
-          <dd>${answer.selectedFeedback}</dd>
-        `,
-      )}
-      </dl>
-      <h4>Answers not selected</h4>
-      <p>Incorrectness implies it should have been selected. Correctness implies it was correctly <strong>not</strong> selected</p>
-      <dl>
-      ${this.displayedAnswers.map(
-        (answer) => html`
-          <dt class="${!answer.correct ? "correct" : "incorrect"}">
-            ${answer.label}
-          </dt>
-          <dd>${answer.unselectedFeedback}</dd>
-        `,
-      )}
-      </dl>
-    `
+                <p class="feedback">
+                  ${this.selectedAnswers.filter((answer) => answer.correct)
+                    .length}
+                  out of
+                  ${this.answers.filter((answer) => answer.correct).length}
+                  correct${this.selectedAnswers.length >
+                    this.answers.filter((answer) => answer.correct).length &&
+                  this.selectedAnswers.length >
+                    this.selectedAnswers.filter((answer) => answer.correct)
+                      .length
+                    ? html`, <strong>but too many options present!</strong>`
+                    : "."}
+                </p>
+                <h4>Answers selected</h4>
+                <dl>
+                  ${this.selectedAnswers.map(
+                    (answer) => html`
+                      <dt class="${answer.correct ? "correct" : "incorrect"}">
+                        ${answer.label}
+                      </dt>
+                      <dd>${answer.selectedFeedback}</dd>
+                    `,
+                  )}
+                </dl>
+                <h4>Answers not selected</h4>
+                <p>
+                  Incorrectness implies it should have been selected.
+                  Correctness implies it was correctly
+                  <strong>not</strong> selected
+                </p>
+                <dl>
+                  ${this.displayedAnswers.map(
+                    (answer) => html`
+                      <dt class="${!answer.correct ? "correct" : "incorrect"}">
+                        ${answer.label}
+                      </dt>
+                      <dd>${answer.unselectedFeedback}</dd>
+                    `,
+                  )}
+                </dl>
+              `
             : ""}
           ${this.querySelector &&
           this.querySelector('[slot="hint"]') &&

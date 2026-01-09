@@ -9,8 +9,11 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/haxcms-elements/lib/core/micros/haxcms-button-add.js";
 import { pageBreakManager } from "./lib/page-break-manager.js";
 import { DDDExtra } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
+import { autorun, toJS } from "mobx";
 
 /**
  * `page-break`
@@ -33,14 +36,31 @@ export class PageBreak extends IntersectionObserverMixin(
     this.entityType = "page";
     this.status = "";
     this.author = null;
+    this.linkUrl = null;
+    this.linkTarget = "_self";
     this.t = {
       newPage: "New page",
       pageBreak: "Page break",
       selectToEditPageDetails: "Select to edit Page details",
-      clickToUnlock: "Click to unlock",
       noParent: "No parent",
       toggleLock: "Toggle lock",
       togglePublished: "Toggle published",
+      linkMessage: "Users will be redirected to:",
+      linkOpensInNewWindow: "Opens in new window",
+      linkOpensInSameWindow: "Opens in same window",
+      pageActions: "Page Actions",
+      editPage: "Edit page",
+      modifyPageTitle: "Modify page title",
+      modifyPageIcon: "Modify page icon",
+      editMedia: "Edit Media",
+      editTags: "Edit tags",
+      lock: "Lock",
+      unlock: "Unlock",
+      publish: "Publish",
+      unpublish: "Unpublish",
+      savePage: "Save page",
+      saveAndEdit: "Save & Edit",
+      cancel: "Cancel",
     };
     this.registerLocalization({
       context: this,
@@ -76,6 +96,14 @@ export class PageBreak extends IntersectionObserverMixin(
     this.iconType = "editor:format-page-break";
     // default break type for the vast majority of situations
     this.breakType = "node";
+    this.isLoggedIn = false;
+    this._editingUILoaded = false;
+    this.__disposer = [];
+    // Set up HAXcms store observer for login status
+    autorun((reaction) => {
+      this.isLoggedIn = toJS(store.isLoggedIn);
+      this.__disposer.push(reaction);
+    });
   }
 
   static get properties() {
@@ -111,8 +139,30 @@ export class PageBreak extends IntersectionObserverMixin(
       status: { type: String },
       pageType: { type: String, attribute: "page-type" },
       author: { type: String },
+      linkUrl: { type: String, attribute: "link-url" },
+      linkTarget: { type: String, attribute: "link-target" },
       _haxState: { type: Boolean },
+      /**
+       * Platform-controlled visibility - when true, page-break won't show in editor
+       * even when data-hax-ray is set
+       */
+      platformHidden: {
+        type: Boolean,
+        attribute: "platform-hidden",
+        reflect: true,
+      },
+      isLoggedIn: { type: Boolean, reflect: true, attribute: "is-logged-in" },
     };
+  }
+  async _ensureEditingUI() {
+    if (!this._editingUILoaded) {
+      await Promise.all([
+        import("@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js"),
+        import("@haxtheweb/simple-fields/lib/simple-context-menu.js"),
+      ]);
+      this._editingUILoaded = true;
+      this.requestUpdate();
+    }
   }
   connectedCallback() {
     super.connectedCallback();
@@ -200,6 +250,10 @@ export class PageBreak extends IntersectionObserverMixin(
       }),
     );
     this.remoteHeadingobserver.disconnect();
+    // Clean up store observers
+    for (var i in this.__disposer) {
+      this.__disposer[i].dispose();
+    }
     super.disconnectedCallback();
   }
   // setup the target data
@@ -208,6 +262,11 @@ export class PageBreak extends IntersectionObserverMixin(
       this.remoteHeadingobserver.disconnect();
     }
     this.target = newTarget;
+    // Validate that target is a valid DOM Node before observing
+    if (!this.target || !(this.target instanceof Node)) {
+      console.warn('page-break: setupTargetData called with invalid target', this.target);
+      return;
+    }
     // add a backdoor for hax to have a hook into this
     this._haxSibling = this;
     // @todo need to add some kind of "if this gets deleted let me know"
@@ -246,6 +305,14 @@ export class PageBreak extends IntersectionObserverMixin(
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
+      // Load editing UI when user logs in
+      if (
+        propName === "isLoggedIn" &&
+        this.isLoggedIn &&
+        !this._editingUILoaded
+      ) {
+        this._ensureEditingUI();
+      }
       // Auto-update author when content-related properties change
       // This indicates the page has been modified
       if (
@@ -416,13 +483,20 @@ export class PageBreak extends IntersectionObserverMixin(
       css`
         :host {
           display: block;
-          opacity: 0;
+          position: relative;
+          height: 0;
+        }
+        /* Platform configuration can force page-break to always be hidden */
+        :host([platform-hidden]) {
+          display: none !important;
+          opacity: 0 !important;
+          pointer-events: none;
         }
         :host([data-hax-ray]) {
           display: block;
-          margin: var(--ddd-spacing-4) 0;
+          margin: var(--ddd-spacing-1) 0 var(--ddd-spacing-20) 0;
           padding: var(--ddd-spacing-4);
-          border: 2px dotted var(--ddd-theme-default-limestoneGray);
+          border: 2px solid var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-xs);
           background-color: var(--ddd-theme-default-limestoneMaxLight);
           position: relative;
@@ -432,9 +506,12 @@ export class PageBreak extends IntersectionObserverMixin(
             border-color 0.2s ease-in-out,
             background-color 0.2s ease-in-out;
         }
+        /* Increase bottom margin when link URL is present to prevent clipping */
+        :host([data-hax-ray][link-url]) {
+          margin-bottom: var(--ddd-spacing-24);
+        }
         :host([data-hax-ray]:hover) {
           opacity: 1;
-          border-color: var(--ddd-theme-default-coalyGray);
           background-color: var(--ddd-theme-default-white);
         }
         :host([data-hax-active]) {
@@ -443,18 +520,62 @@ export class PageBreak extends IntersectionObserverMixin(
           background-color: var(--ddd-theme-default-white);
           box-shadow: var(--ddd-boxShadow-sm);
         }
-        :host([data-hax-ray]) .mid,
         :host([data-hax-ray]) .text {
           display: block;
         }
-        .mid {
+        .link-info {
           display: none;
-          border: none;
-          border-top: 2px solid var(--ddd-theme-default-skyBlue);
-          overflow: visible;
-          margin: var(--ddd-spacing-2) 0;
-          padding: 0;
-          height: 0;
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-slateGray)
+          );
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-coalyGray)
+          );
+          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-3);
+          margin-top: var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-xs);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        :host([data-hax-ray]) .link-info {
+          display: block;
+        }
+        .link-url {
+          font-family: monospace;
+          background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          border-radius: var(--ddd-radius-xs);
+          border: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-theme-default-slateGray)
+            );
+          display: inline-block;
+          margin: var(--ddd-spacing-1) 0;
+          word-break: break-all;
+          text-decoration: none;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          transition: all 0.2s ease;
+        }
+        .link-url:hover {
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-slateMaxLight)
+          );
+          color: var(--ddd-theme-default-skyBlue);
+          border-color: var(--ddd-theme-default-skyBlue);
         }
         .text {
           display: none;
@@ -462,33 +583,86 @@ export class PageBreak extends IntersectionObserverMixin(
           color: var(--ddd-theme-default-coalyGray);
           background-color: var(--ddd-theme-default-skyBlue);
           font-size: var(--ddd-font-size-4xs);
-          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
-          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-4);
           position: absolute;
-          top: calc(-1 * var(--ddd-spacing-2));
-          left: var(--ddd-spacing-2);
+          top: 0;
+          left: 0;
           z-index: 10;
           color: var(--ddd-theme-default-white);
-          box-shadow: var(--ddd-boxShadow-sm);
+          height: 24px;
+          line-height: 24px;
         }
-        simple-icon-lite {
-          margin-right: var(--ddd-spacing-2);
-        }
-        simple-icon-button-lite {
+        simple-toolbar-button.menu-button,
+        simple-toolbar-button.save-button,
+        simple-toolbar-button.save-edit-button,
+        simple-toolbar-button.cancel-button {
           position: absolute;
-          top: var(--ddd-spacing-1);
-          right: var(--ddd-spacing-1);
-          color: var(--ddd-theme-default-coalyGray);
-          --simple-icon-width: var(--ddd-icon-xs);
-          --simple-icon-height: var(--ddd-icon-xs);
-          background-color: var(--ddd-theme-default-white);
-          border-radius: var(--ddd-radius-xs);
+          top: 0;
+          right: 0;
+          --simple-toolbar-button-height: 20px;
+          --simple-toolbar-button-width: 20px;
           padding: var(--ddd-spacing-1);
+          border: var(--ddd-border-xs);
           box-shadow: var(--ddd-boxShadow-sm);
+          --simple-toolbar-button-hover-border-color: transparent;
         }
-        simple-icon-button-lite:hover {
-          color: var(--ddd-theme-default-skyBlue);
-          background-color: var(--ddd-theme-default-limestoneMaxLight);
+        simple-toolbar-button.menu-button {
+          top: -8px;
+          border: var(--ddd-border-xs);
+          border-radius: var(--ddd-radius-circle);
+          box-shadow: var(--ddd-boxShadow-sm);
+          --simple-toolbar-button-height: 12px;
+          --simple-toolbar-button-width: 12px;
+          color: var(--ddd-theme-default-white);
+          background-color: var(--ddd-theme-default-skyBlue);
+        }
+        simple-toolbar-button.save-edit-button {
+          right: 32px;
+        }
+
+        simple-toolbar-button.save-button {
+          right: 64px;
+        }
+
+        simple-toolbar-button.save-button,
+        simple-toolbar-button.save-edit-button,
+        simple-toolbar-button.cancel-button {
+          --simple-toolbar-button-height: 20px;
+          --simple-toolbar-button-width: 20px;
+          background-color: var(--ddd-theme-default-skyBlue);
+          color: var(--ddd-theme-default-white);
+          border-color: var(--ddd-theme-default-limestoneGray);
+          border-width: 1px;
+        }
+
+        simple-toolbar-button.cancel-button {
+          background-color: var(--ddd-theme-default-discoveryCoral);
+        }
+
+        simple-toolbar-button.menu-item {
+          --simple-toolbar-button-justify: flex-start;
+          cursor: pointer;
+          --simple-icon-height: 16px;
+          --simple-icon-width: 16px;
+        }
+        simple-toolbar-button.menu-item simple-icon-lite {
+          --simple-icon-height: 16px;
+          --simple-icon-width: 16px;
+        }
+        simple-toolbar-button.menu-item-delete {
+          --simple-toolbar-button-justify: flex-start;
+          --simple-toolbar-button-hover-border-color: transparent;
+          cursor: pointer;
+          --simple-icon-height: 16px;
+          --simple-icon-width: 16px;
+          border-top: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
+          margin-top: var(--ddd-spacing-2);
+          padding-top: var(--ddd-spacing-2);
+        }
+        simple-toolbar-button.menu-item-delete:focus,
+        simple-toolbar-button.menu-item-delete:hover {
+          color: black;
+          background-color: var(--ddd-theme-default-discoveryCoral);
         }
       `,
     ];
@@ -512,24 +686,448 @@ export class PageBreak extends IntersectionObserverMixin(
   }
   render() {
     return html`
-      <style></style>
-      <a .href="${this.slug}" .name="#${this.itemId}" class="sr-only"
-        >${this.title}</a
-      >
-      <hr class="mid" />
+      <a .href="${this.slug}" .name="#${this.itemId}" class="sr-only">${this.title}</a>
       <div class="text">
         <simple-icon-lite icon="${this.iconType}"></simple-icon-lite>${this.t
           .selectToEditPageDetails}
       </div>
-      ${this.locked
-        ? html`<simple-icon-button-lite
-            @click="${this.haxClickLockInPage}"
-            icon="icons:lock"
-            title="${this.t.clickToUnlock}"
-          ></simple-icon-button-lite>`
+      ${this.linkUrl
+        ? html`<div class="link-info">
+            <div>
+              <strong>${this.t.linkMessage}</strong>
+            </div>
+            <a
+              class="link-url"
+              href="${this.linkUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ${this.linkUrl}
+            </a>
+            <div>
+              ${this.linkTarget === "_blank"
+                ? this.t.linkOpensInNewWindow
+                : this.t.linkOpensInSameWindow}
+            </div>
+          </div>`
+        : ``}
+      ${this.isLoggedIn && !this._haxState
+        ? html`
+            <simple-toolbar-button
+              class="menu-button"
+              icon="icons:create"
+              label="${this.t.pageActions}"
+              @click="${this._toggleMenu}"
+            ></simple-toolbar-button>
+            <simple-context-menu id="menu" title="${this.t.pageActions}">
+              <simple-toolbar-button
+                class="menu-item"
+                icon="hax:page-edit"
+                label="${this.t.editPage}"
+                show-text-label
+                @click="${this._editPage}"
+                ?disabled="${this.locked}"
+                autofocus
+              ></simple-toolbar-button>
+              <simple-toolbar-button
+                class="menu-item"
+                icon="editor:title"
+                label="${this.t.modifyPageTitle}"
+                show-text-label
+                @click="${this._editTitle}"
+                ?disabled="${this.locked}"
+              ></simple-toolbar-button>
+              <simple-toolbar-button
+                class="menu-item"
+                icon="hax:hax2022"
+                label="${this.t.modifyPageIcon}"
+                show-text-label
+                @click="${this._editIcon}"
+                ?disabled="${this.locked}"
+              ></simple-toolbar-button>
+              <simple-toolbar-button
+                class="menu-item"
+                icon="image:photo-library"
+                label="${this.t.editMedia}"
+                show-text-label
+                @click="${this._editMedia}"
+                ?disabled="${this.locked}"
+              ></simple-toolbar-button>
+              <simple-toolbar-button
+                class="menu-item"
+                icon="icons:label"
+                label="${this.t.editTags}"
+                show-text-label
+                @click="${this._editTags}"
+                ?disabled="${this.locked}"
+              ></simple-toolbar-button>
+              <simple-toolbar-button
+                class="menu-item"
+                icon="${this.published
+                  ? "icons:visibility-off"
+                  : "icons:visibility"}"
+                label="${this.published ? this.t.unpublish : this.t.publish}"
+                show-text-label
+                @click="${this._togglePublished}"
+                ?disabled="${this.locked}"
+              ></simple-toolbar-button>
+              <simple-toolbar-button
+                class="menu-item"
+                icon="${this.locked ? "icons:lock" : "icons:lock-open"}"
+                label="${this.locked ? this.t.unlock : this.t.lock}"
+                show-text-label
+                @click="${this._toggleLocked}"
+              ></simple-toolbar-button>
+              <simple-toolbar-button
+                class="menu-item-delete"
+                icon="icons:delete"
+                label="${this.t.delete || 'Delete'}"
+                show-text-label
+                @click="${this._deletePage}"
+                ?disabled="${this.locked}"
+              ></simple-toolbar-button>
+            </simple-context-menu>
+          `
+        : ``}
+      ${this.isLoggedIn && this._haxState
+        ? html`
+            <simple-toolbar-button
+              class="save-button"
+              icon="icons:save"
+              label="${this.t.savePage}"
+              @click="${this._savePage}"
+            ></simple-toolbar-button>
+            <simple-toolbar-button
+              class="save-edit-button"
+              icon="hax:page-edit"
+              label="${this.t.saveAndEdit}"
+              @click="${this._saveAndEdit}"
+            ></simple-toolbar-button>
+            <simple-toolbar-button
+              class="cancel-button"
+              icon="icons:cancel"
+              label="${this.t.cancel}"
+              @click="${this._cancelEdit}"
+            ></simple-toolbar-button>
+          `
         : ``}
     `;
   }
+  _toggleMenu(e) {
+    e.stopPropagation();
+    const menu = this.shadowRoot.querySelector("#menu");
+    if (!menu) return;
+    menu.toggle(e.target);
+  }
+
+  _editPage(e) {
+    // Don't allow edit if locked
+    if (this.locked) {
+      const menu = this.shadowRoot.querySelector("#menu");
+      if (menu) menu.close();
+      store.toast("This page is locked. Unlock it first to edit.", 3000, { hat: "error" });
+      store.playSound("error");
+      return;
+    }
+    const menu = this.shadowRoot.querySelector("#menu");
+    if (menu) menu.close();
+    store.cmsSiteEditor.haxCmsSiteEditorUIElement._editButtonTap();
+  }
+
+  _saveAndEdit(e) {
+    store.cmsSiteEditor.haxCmsSiteEditorUIElement._saveAndEditButtonTap();
+  }
+
+  _cancelEdit(e) {
+    store.cmsSiteEditor.haxCmsSiteEditorUIElement._cancelButtonTap(e);
+  }
+
+  async _editTitle(e) {
+    // Don't allow edit if locked
+    if (this.locked) {
+      const menu = this.shadowRoot.querySelector("#menu");
+      if (menu) menu.close();
+      store.toast("This page is locked. Unlock it first to edit.", 3000, { hat: "error" });
+      store.playSound("error");
+      return;
+    }
+    const menu = this.shadowRoot.querySelector("#menu");
+    if (menu) menu.close();
+
+    const item = toJS(store.activeItem);
+    if (!item || !item.id) {
+      console.warn("page-break _editTitle: No active item found");
+      return;
+    }
+
+    if (!globalThis.SuperDaemonManager) {
+      console.error("page-break _editTitle: SuperDaemonManager not available");
+      return;
+    }
+
+    const SuperDaemonInstance =
+      globalThis.SuperDaemonManager.requestAvailability();
+    store.playSound("click");
+
+    // Trigger the edit-title program
+    // The program will automatically show the current title from the store
+    SuperDaemonInstance.waveWand([
+      "",  // Empty input - let program show current title
+      "/",
+      {},
+      "edit-title",
+      "Edit title",
+    ]);
+  }
+
+  async _editIcon(e) {
+    // Don't allow edit if locked
+    if (this.locked) {
+      const menu = this.shadowRoot.querySelector("#menu");
+      if (menu) menu.close();
+      store.toast("This page is locked. Unlock it first to edit.", 3000, { hat: "error" });
+      store.playSound("error");
+      return;
+    }
+    const menu = this.shadowRoot.querySelector("#menu");
+    if (menu) menu.close();
+
+    const { SimpleIconsetStore } = await import("@haxtheweb/simple-icon/lib/simple-iconset.js");
+    const item = toJS(store.activeItem);
+    if (!item || !item.id) return;
+
+    const SuperDaemonInstance =
+      globalThis.SuperDaemonManager.requestAvailability();
+    store.playSound("click");
+
+    const allIcons =
+      SimpleIconsetStore && SimpleIconsetStore.iconlist
+        ? [...SimpleIconsetStore.iconlist].sort()
+        : [];
+
+    SuperDaemonInstance.defineOption({
+      title: "Edit Icon",
+      icon: "icons:image",
+      priority: -10000,
+      tags: ["edit", "icon"],
+      eventName: "super-daemon-run-program",
+      path: "CMS/edit/icon",
+      value: {
+        name: "edit-icon",
+        machineName: "edit-icon",
+        placeholder: "Type to search icons by name",
+        program: async (input) => {
+          const searchTerm = input ? input.toLowerCase() : "";
+          const results = [];
+
+          const filteredIcons = searchTerm
+            ? allIcons.filter((icon) => icon.toLowerCase().includes(searchTerm))
+            : allIcons.slice(0, 50);
+
+          filteredIcons.forEach((icon) => {
+            const friendlyName = icon
+              .replace(/^.*:/, "")
+              .replace(/-/g, " ")
+              .replace(/\b\w/g, (l) => l.toUpperCase());
+
+            results.push({
+              title: `${friendlyName} (${icon})`,
+              icon: icon,
+              tags: ["icon"],
+              value: {
+                target: globalThis,
+                method: "dispatchEvent",
+                args: [
+                  new CustomEvent("haxcms-save-node-details", {
+                    bubbles: true,
+                    composed: true,
+                    cancelable: true,
+                    detail: {
+                      id: item.id,
+                      operation: "setIcon",
+                      icon: icon,
+                    },
+                  }),
+                ],
+              },
+              eventName: "super-daemon-element-method",
+              path: `CMS/edit/icon/${icon}`,
+            });
+          });
+
+          if (results.length === 0) {
+            return [
+              {
+                title: searchTerm
+                  ? `No icons found for "${searchTerm}"`
+                  : "No icons available",
+                icon: "icons:search",
+                tags: ["empty"],
+                value: { disabled: true },
+                eventName: "disabled",
+                path: "No results",
+              },
+            ];
+          }
+
+          if (!searchTerm && allIcons.length > 50) {
+            results.push({
+              title: `Showing 50 of ${allIcons.length} icons - type to search`,
+              icon: "icons:info",
+              tags: ["hint"],
+              value: { disabled: true },
+              eventName: "disabled",
+              path: "Hint",
+            });
+          }
+
+          return results;
+        },
+      },
+    });
+
+    SuperDaemonInstance.waveWand(["", "/", {}, "edit-icon", "Edit Icon"]);
+  }
+
+  async _editMedia(e) {
+    // Don't allow edit if locked
+    if (this.locked) {
+      const menu = this.shadowRoot.querySelector("#menu");
+      if (menu) menu.close();
+      store.toast("This page is locked. Unlock it first to edit.", 3000, { hat: "error" });
+      store.playSound("error");
+      return;
+    }
+    const menu = this.shadowRoot.querySelector("#menu");
+    if (menu) menu.close();
+
+    const SuperDaemonInstance =
+      globalThis.SuperDaemonManager.requestAvailability();
+    store.playSound("click");
+
+    SuperDaemonInstance.waveWand(["", "/", {}, "hax-agent", "Agent"]);
+  }
+
+  async _editTags(e) {
+    // Don't allow edit if locked
+    if (this.locked) {
+      const menu = this.shadowRoot.querySelector("#menu");
+      if (menu) menu.close();
+      store.toast("This page is locked. Unlock it first to edit.", 3000, { hat: "error" });
+      store.playSound("error");
+      return;
+    }
+    const menu = this.shadowRoot.querySelector("#menu");
+    if (menu) menu.close();
+
+    const item = toJS(store.activeItem);
+    if (!item || !item.id) return;
+
+    const SuperDaemonInstance = globalThis.SuperDaemonManager.requestAvailability();
+    // Ensure Merlin / SuperDaemon is in a clean state before launching the
+    // edit-tags program. In practice this helps avoid any lingering program
+    // context from a previous run interfering with subsequent tag edits.
+    SuperDaemonInstance.close();
+    store.playSound("click");
+
+    const currentTags = (item.metadata && item.metadata.tags) || "";
+    this._originalTags = currentTags;
+
+    // Use the globally defined edit-tags program
+    SuperDaemonInstance.waveWand([
+      currentTags,
+      "/",
+      {},
+      "edit-tags",
+      "Edit tags",
+    ]);
+
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        this.tags = this._originalTags;
+        globalThis.removeEventListener("keydown", handleEscape);
+      }
+    };
+    globalThis.addEventListener("keydown", handleEscape, { once: true });
+  }
+
+  async _toggleLocked(e) {
+    const menu = this.shadowRoot.querySelector("#menu");
+    if (menu) menu.close();
+
+    const item = toJS(store.activeItem);
+    if (!item || !item.id) return;
+
+    store.playSound("click");
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-save-node-details", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          id: item.id,
+          operation: "setLocked",
+          locked: !this.locked,
+        },
+      }),
+    );
+  }
+
+  async _togglePublished(e) {
+    // Don't allow toggling published if locked
+    if (this.locked) {
+      const menu = this.shadowRoot.querySelector("#menu");
+      if (menu) menu.close();
+      store.toast("This page is locked. Unlock it first to change publish status.", 3000, { hat: "error" });
+      store.playSound("error");
+      return;
+    }
+    const menu = this.shadowRoot.querySelector("#menu");
+    if (menu) menu.close();
+
+    const item = toJS(store.activeItem);
+    if (!item || !item.id) return;
+
+    store.playSound("click");
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-save-node-details", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          id: item.id,
+          operation: "setPublished",
+          published: !this.published,
+        },
+      }),
+    );
+  }
+
+  async _savePage(e) {
+    store.cmsSiteEditor.haxCmsSiteEditorUIElement._editButtonTap();
+  }
+
+  _addPage(e) {
+    const menu = this.shadowRoot.querySelector("#menu");
+    if (menu) menu.close();
+    // Trigger the merlin mini interface for adding a page
+    // This is handled by haxcms-button-add internally
+  }
+
+  _deletePage(e) {
+    // Don't allow delete if locked
+    if (this.locked) {
+      const menu = this.shadowRoot.querySelector("#menu");
+      if (menu) menu.close();
+      store.toast("This page is locked. Unlock it first to delete.", 3000, { hat: "error" });
+      store.playSound("error");
+      return;
+    }
+    const menu = this.shadowRoot.querySelector("#menu");
+    if (menu) menu.close();
+    store.cmsSiteEditor.haxCmsSiteEditorUIElement._deleteButtonTap();
+  }
+
   /**
    * haxProperties integration via file reference
    */

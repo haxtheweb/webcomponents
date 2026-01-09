@@ -8,7 +8,7 @@
       "declarations": [
         {
           "kind": "class",
-          "description": "`clean-two`\n`A 2nd clean theme`",
+          "description": "`Clean two`",
           "name": "CleanTwo",
           "members": [
             {

@@ -56,6 +56,13 @@ export function createExportSiteProgram(context) {
         format: "zip",
         description: "Download complete site as ZIP file",
       },
+      {
+        title: "Export site skeleton",
+        icon: "icons:description",
+        format: "skeleton",
+        description:
+          "Export as reusable site template for creating similar sites",
+      },
     ];
 
     // Filter results based on input
@@ -100,9 +107,9 @@ export async function exportSiteAs(format) {
     }
 
     const siteTitle = manifest.title || "site";
+    const baseElement = globalThis.document.querySelector("base");
     const baseUrl =
-      globalThis.document.querySelector("base")?.href ||
-      globalThis.location.origin;
+      (baseElement && baseElement.href) || globalThis.location.origin;
 
     switch (format) {
       case "html":
@@ -127,6 +134,10 @@ export async function exportSiteAs(format) {
 
       case "zip":
         await this._downloadSiteArchive();
+        break;
+
+      case "skeleton":
+        await this._exportSiteAsSkeleton(manifest, siteTitle, baseUrl);
         break;
 
       default:
@@ -407,4 +418,45 @@ export function _downloadBlob(blob, filename) {
   link.click();
   globalThis.document.body.removeChild(link);
   globalThis.URL.revokeObjectURL(link.href);
+}
+
+// Export site as skeleton template
+export async function _exportSiteAsSkeleton(manifest, title, baseUrl) {
+  try {
+    HAXStore.toast("Generating site skeleton...", 3000, "fit-bottom");
+
+    // Dynamically import the skeleton generator
+    const { SiteSkeletonGenerator } = await import(
+      "./site-skeleton-generator.js"
+    );
+
+    // Generate the skeleton
+    const skeleton = await SiteSkeletonGenerator.generateFromCurrentSite();
+
+    // Download the skeleton file
+    const content = JSON.stringify(skeleton, null, 2);
+    const filename = `${skeleton.meta.name.replace(/[^a-z0-9]/gi, "-").toLowerCase()}-skeleton.json`;
+    this._downloadFile(content, filename, "application/json");
+
+    HAXStore.toast(
+      `Site skeleton exported successfully! Pages: ${skeleton.structure.length}, Files: ${skeleton.files.length}`,
+      5000,
+      "fit-bottom",
+    );
+
+    // Log useful information about the skeleton
+    console.log("Skeleton generated:", {
+      name: skeleton.meta.name,
+      pages: skeleton.structure.length,
+      files: skeleton.files.length,
+      theme: skeleton.theme.element,
+    });
+  } catch (error) {
+    console.error("Skeleton export failed:", error);
+    HAXStore.toast(
+      `Skeleton export failed: ${error.message}`,
+      5000,
+      "fit-bottom",
+    );
+  }
 }

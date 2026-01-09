@@ -395,7 +395,11 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
   static get properties() {
     return {
       ...super.properties,
-
+      showTooltip: {
+        type: Boolean,
+        reflect: true,
+        attribute: "show-tooltip",
+      },
       ariaLabel: {
         type: String,
         reflect: true,
@@ -509,6 +513,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
     this.fullWidth = false;
     this.disableResponsive = false;
     this.disabled = false;
+    this.showTooltip = false;
     this.hidden = false;
     this.__tabs = [];
     this.__tabFocus = 0;
@@ -761,7 +766,7 @@ class A11yTabs extends ResponsiveUtilityBehaviors(LitElement) {
         ${this._tabIcon(tab, "flagIcon")} ${this._tabLabel(tab)}
         ${this._tabFlag(tab)} ${this._tabIcon(tab, "icon")}
       </button>
-      ${this._tabTooltip(tab)}
+      ${this.showTooltip ? this._tabTooltip(tab) : ""}
     `;
   }
 

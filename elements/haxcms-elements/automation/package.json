@@ -1,0 +1,21 @@
+{
+  "name": "hax-theme-screenshot-automation",
+  "version": "1.0.0",
+  "description": "Automated screenshot generation for HAX themes",
+  "type": "module",
+  "main": "puppeteer-theme-automation.js",
+  "scripts": {
+    "start": "node puppeteer-theme-automation.js",
+    "debug": "node puppeteer-theme-automation.js --debug",
+    "status": "node check-status.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0",
+    "sharp": "^0.32.6"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "HAX Team",
+  "license": "MIT"
+}

@@ -370,12 +370,12 @@
     <div class="sidebar">
       <div class="sidebar-header">
         <h1>Web Components Gallery</h1>
-        <div class="stats">200 Components Available</div>
+        <div class="stats">198 Components Available</div>
         
         <!-- Filter buttons -->
         <div class="filter-buttons">
           <button class="filter-btn active" data-filter="all" title="Show all components">
-            🔍 All (200)
+            🔍 All (198)
           </button>
           <button class="filter-btn" data-filter="hax" title="Show only HAX-capable components">
             🧱 HAX (46)
@@ -615,7 +615,7 @@
   {
     "name": "absolute-position-behavior",
     "packageName": "@haxtheweb/absolute-position-behavior",
-    "description": "Abstracting the positioning behavior from paper-tooltip to be resusable in other elements",
+    "description": "Abstracting the positioning behavior to be resusable in other elements",
     "version": "11.0.0",
     "demoPath": "elements/absolute-position-behavior/demo/index.html",
     "importPath": "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js",
@@ -715,7 +715,36 @@
     "version": "11.0.5",
     "demoPath": "elements/awesome-explosion/demo/index.html",
     "importPath": "@haxtheweb/awesome-explosion/awesome-explosion.js",
-    "haxDemoSchema": null,
+    "haxDemoSchema": [
+      {
+        "tag": "awesome-explosion",
+        "properties": {
+          "size": "medium",
+          "color": "orange"
+        },
+        "content": "",
+        "description": "A medium orange explosion"
+      },
+      {
+        "tag": "awesome-explosion",
+        "properties": {
+          "size": "large",
+          "color": "blue",
+          "soundEnabled": false
+        },
+        "content": "",
+        "description": "A large blue explosion without sound"
+      },
+      {
+        "tag": "awesome-explosion",
+        "properties": {
+          "size": "epic",
+          "color": "red"
+        },
+        "content": "",
+        "description": "An epic red explosion with sound"
+      }
+    ],
     "additionalDemos": []
   },
   {
@@ -1703,22 +1732,6 @@
     "additionalDemos": []
   },
   {
-    "name": "lesson-overview",
-    "packageName": "@haxtheweb/lesson-overview",
-    "description": "Clean presentation of what to expect in an upcoming lesson of instruction",
-    "version": "11.0.5",
-    "demoPath": "elements/lesson-overview/demo/index.html",
-    "importPath": "@haxtheweb/lesson-overview/lesson-overview.js",
-    "haxDemoSchema": [
-      {
-        "tag": "lesson-overview",
-        "content": "<lesson-highlight smart=\"objectives\"></lesson-highlight><lesson-highlight smart=\"pages\"></lesson-highlight>      <lesson-highlight smart=\"readTime\"></lesson-highlight>      <lesson-highlight smart=\"selfChecks\"></lesson-highlight><lesson-highlight smart=\"video\"></lesson-highlight>",
-        "properties": {}
-      }
-    ],
-    "additionalDemos": []
-  },
-  {
     "name": "license-element",
     "packageName": "@haxtheweb/license-element",
     "description": "Semantically accurate license for a work",
@@ -2582,16 +2595,6 @@
     "additionalDemos": []
   },
   {
-    "name": "secure-request",
-    "packageName": "@haxtheweb/secure-request",
-    "description": "Automated conversion of secure-request/",
-    "version": "11.0.5",
-    "demoPath": "elements/secure-request/demo/index.html",
-    "importPath": "@haxtheweb/secure-request/secure-request.js",
-    "haxDemoSchema": null,
-    "additionalDemos": []
-  },
-  {
     "name": "self-check",
     "packageName": "@haxtheweb/self-check",
     "description": "Automated conversion of self-check/",
@@ -2964,7 +2967,7 @@
   {
     "name": "simple-tooltip",
     "packageName": "@haxtheweb/simple-tooltip",
-    "description": "a simple tooltip forked from paper-tooltip with the same api",
+    "description": "a simple tooltip forked with the same api",
     "version": "11.0.0",
     "demoPath": "elements/simple-tooltip/demo/index.html",
     "importPath": "@haxtheweb/simple-tooltip/simple-tooltip.js",

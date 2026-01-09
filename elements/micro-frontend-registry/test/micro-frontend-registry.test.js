@@ -20,33 +20,33 @@ describe("elementName test", () => {
   describe("Accessibility - Registry Functionality", () => {
     it("maintains accessibility during dynamic loading", async () => {
       await element.updateComplete;
-      
+
       // Should remain accessible during registry operations
       await expect(element).shadowDom.to.be.accessible();
     });
 
     it("doesn't interfere with loaded component accessibility", async () => {
       await element.updateComplete;
-      
+
       // Should not negatively impact accessibility of registered components
       const style = globalThis.getComputedStyle(element);
-      expect(style.display).to.not.equal('none');
+      expect(style.display).to.not.equal("none");
     });
   });
 
   describe("Accessibility - Loading States", () => {
     it("provides accessible loading feedback if visible", async () => {
       await element.updateComplete;
-      
+
       // If the registry shows loading states, they should be accessible
       await expect(element).shadowDom.to.be.accessible();
     });
 
     it("handles errors accessibly", async () => {
       await element.updateComplete;
-      
+
       // Error states should be accessible to screen readers
-      expect(element.tagName.toLowerCase()).to.equal('micro-frontend-registry');
+      expect(element.tagName.toLowerCase()).to.equal("micro-frontend-registry");
     });
   });
 });

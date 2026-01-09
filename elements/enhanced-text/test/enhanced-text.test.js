@@ -3,7 +3,7 @@ import "../enhanced-text.js";
 
 describe("EnhancedText test", () => {
   let element;
-  
+
   beforeEach(async () => {
     element = await fixture(html`
       <enhanced-text>
@@ -39,9 +39,9 @@ describe("EnhancedText test", () => {
     element.auto = true;
     element.haxcmsMarkAll = true;
     element.loading = true;
-    
+
     await element.updateComplete;
-    
+
     expect(element.vide).to.be.true;
     expect(element.wikipedia).to.be.true;
     expect(element.haxcmsGlossary).to.be.true;
@@ -75,18 +75,18 @@ describe("EnhancedText test", () => {
     element.wikipedia = true;
     element.loading = true;
     element.auto = true;
-    
+
     await element.updateComplete;
-    
-    expect(element.hasAttribute('vide')).to.be.true;
-    expect(element.hasAttribute('wikipedia')).to.be.true;
-    expect(element.hasAttribute('loading')).to.be.true;
-    expect(element.hasAttribute('auto')).to.be.true;
+
+    expect(element.hasAttribute("vide")).to.be.true;
+    expect(element.hasAttribute("wikipedia")).to.be.true;
+    expect(element.hasAttribute("loading")).to.be.true;
+    expect(element.hasAttribute("auto")).to.be.true;
   });
 
   it("uses kebab-case attributes for compound properties", async () => {
     const testElement = await fixture(html`
-      <enhanced-text 
+      <enhanced-text
         fixation-point="8"
         haxcms-glossary
         haxcms-site-location="https://example.com"
@@ -95,7 +95,7 @@ describe("EnhancedText test", () => {
         Test content
       </enhanced-text>
     `);
-    
+
     expect(testElement.fixationPoint).to.equal(8);
     expect(testElement.haxcmsGlossary).to.be.true;
     expect(testElement.haxcmsSiteLocation).to.equal("https://example.com");
@@ -104,9 +104,9 @@ describe("EnhancedText test", () => {
 
   // Rendering tests
   it("renders loading indicator and slot", async () => {
-    const loadingDiv = element.shadowRoot.querySelector('.loading');
-    const slot = element.shadowRoot.querySelector('slot');
-    
+    const loadingDiv = element.shadowRoot.querySelector(".loading");
+    const slot = element.shadowRoot.querySelector("slot");
+
     expect(loadingDiv).to.exist;
     expect(slot).to.exist;
   });
@@ -114,26 +114,28 @@ describe("EnhancedText test", () => {
   it("shows loading state with CSS class", async () => {
     element.loading = true;
     await element.updateComplete;
-    
-    expect(element.hasAttribute('loading')).to.be.true;
+
+    expect(element.hasAttribute("loading")).to.be.true;
   });
 
   // Text processing tests
   it("processes text nodes correctly", async () => {
     const testData = {
       status: true,
-      data: [{
-        term: "sample",
-        definition: "A representative part or single item"
-      }]
+      data: [
+        {
+          term: "sample",
+          definition: "A representative part or single item",
+        },
+      ],
     };
-    
+
     // Mock vocab-term import
     const originalImport = global.import || (() => Promise.resolve());
     global.import = () => Promise.resolve();
-    
+
     element.applyTermFromList(testData);
-    
+
     // Restore original import
     if (originalImport) {
       global.import = originalImport;
@@ -143,21 +145,21 @@ describe("EnhancedText test", () => {
   it("handles enhanced text response correctly", () => {
     const mockData = {
       status: true,
-      data: '<p>Enhanced <bold>text</bold> content</p>'
+      data: "<p>Enhanced <bold>text</bold> content</p>",
     };
-    
+
     element.enahncedTextResponse(mockData);
-    
-    expect(element.innerHTML).to.include('Enhanced');
-    expect(element.innerHTML).to.include('bold');
+
+    expect(element.innerHTML).to.include("Enhanced");
+    expect(element.innerHTML).to.include("bold");
   });
 
   it("handles invalid response data gracefully", () => {
     const invalidData = { status: false };
     const originalHTML = element.innerHTML;
-    
+
     element.enahncedTextResponse(invalidData);
-    
+
     // HTML should remain unchanged
     expect(element.innerHTML).to.equal(originalHTML);
   });
@@ -165,11 +167,9 @@ describe("EnhancedText test", () => {
   // Auto enhancement tests
   it("automatically enhances when auto is true", async () => {
     const autoElement = await fixture(html`
-      <enhanced-text auto>
-        Auto enhancement test text
-      </enhanced-text>
+      <enhanced-text auto> Auto enhancement test text </enhanced-text>
     `);
-    
+
     expect(autoElement.auto).to.be.true;
     // firstUpdated should have been called
   });
@@ -177,10 +177,10 @@ describe("EnhancedText test", () => {
   // HAX integration tests
   it("has proper HAX properties configuration", () => {
     const haxProps = element.constructor.haxProperties;
-    
+
     expect(haxProps).to.exist;
     expect(haxProps.gizmo).to.exist;
-    expect(haxProps.gizmo.title).to.equal('Enhanced text');
+    expect(haxProps.gizmo.title).to.equal("Enhanced text");
     expect(haxProps.setttings).to.exist; // Note: typo in original code
   });
 
@@ -197,45 +197,46 @@ describe("EnhancedText test", () => {
         </div>
       </enhanced-text>
     `);
-    
+
     await expect(enhancedElement).shadowDom.to.be.accessible();
   });
 
   // Loading state tests
   it("manages loading state correctly", async () => {
     expect(element.loading).to.be.false;
-    
+
     element.loading = true;
     await element.updateComplete;
-    
+
     expect(element.loading).to.be.true;
-    expect(element.hasAttribute('loading')).to.be.true;
+    expect(element.hasAttribute("loading")).to.be.true;
   });
 
   // Error handling and edge cases
   it("handles empty content gracefully", async () => {
     const emptyElement = await fixture(html`<enhanced-text></enhanced-text>`);
     await emptyElement.updateComplete;
-    
-    expect(emptyElement.innerHTML.trim()).to.equal('');
+
+    expect(emptyElement.innerHTML.trim()).to.equal("");
   });
 
   it("handles special characters in content", async () => {
     const specialElement = await fixture(html`
       <enhanced-text>
-        Content with special characters: äöü, émojis 🚀, and symbols &amp; &lt;&gt;
+        Content with special characters: äöü, émojis 🚀, and symbols &amp;
+        &lt;&gt;
       </enhanced-text>
     `);
-    
+
     await specialElement.updateComplete;
-    expect(specialElement.textContent).to.include('äöü');
-    expect(specialElement.textContent).to.include('🚀');
+    expect(specialElement.textContent).to.include("äöü");
+    expect(specialElement.textContent).to.include("🚀");
   });
 
   // Configuration validation tests
   it("validates fixation point range", async () => {
     const testValues = [1, 4, 8, 12];
-    
+
     for (const value of testValues) {
       element.fixationPoint = value;
       await element.updateComplete;
@@ -248,9 +249,9 @@ describe("EnhancedText test", () => {
       "https://example.com",
       "https://example.com/site",
       "http://localhost:3000",
-      "relative/path"
+      "relative/path",
     ];
-    
+
     for (const url of urls) {
       element.haxcmsSiteLocation = url;
       await element.updateComplete;
@@ -269,9 +270,9 @@ describe("EnhancedText test", () => {
     element.haxcmsGlossary = true;
     element.wikipedia = true;
     element.haxcmsSiteLocation = "https://example.com";
-    
+
     await element.updateComplete;
-    
+
     // All enhancement options should be set
     expect(element.vide).to.be.true;
     expect(element.haxcmsGlossary).to.be.true;
@@ -282,15 +283,15 @@ describe("EnhancedText test", () => {
   it("has loading animation styles", () => {
     const styles = element.constructor.styles;
     expect(styles).to.exist;
-    
+
     const styleText = styles.toString();
-    expect(styleText).to.include('load5');
-    expect(styleText).to.include('animation');
+    expect(styleText).to.include("load5");
+    expect(styleText).to.include("animation");
   });
 
   it("supports CSS custom properties", () => {
     const styles = element.constructor.styles;
     const styleText = styles.toString();
-    expect(styleText).to.include('--enhanced-text-color');
+    expect(styleText).to.include("--enhanced-text-color");
   });
 });

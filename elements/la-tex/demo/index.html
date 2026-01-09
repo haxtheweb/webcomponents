@@ -4,21 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
     <title>LaTex: la-tex Demo</title>
-    <script src="../../../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
     <script src="../../../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
     <script type="module">
       
-      import "@haxtheweb/utils/lib/demo-snippet.js";
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
       import '../la-tex.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic la-tex demo</h3>
-      <demo-snippet>
-        <template>
           <la-tex>
             <pre>
               \begin{pspicture}(-13,-5)(13,10)
@@ -55,9 +52,7 @@
             \psline(6.25,0)(6.75,0)
             \psline(6.5,0.5)(6.5,-0.5)
             \end{pspicture}
-                      </la-tex>
-        </template>
-      </demo-snippet>
+          </la-tex>
     </div>
   </body>
 </html>

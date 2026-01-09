@@ -234,6 +234,12 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       this.menuItems = [];
       this.keepOpenOnClick = false;
       this.noOpenOnHover = false;
+      // track click-away listener so we can close the menu when
+      // the user clicks anywhere outside of this component
+      this._boundDocumentClick = this._onDocumentClick.bind(this);
+      // use capture so we still see events even if inner controls
+      // stopPropagation on the bubble phase
+      this._docListenerAdded = false;
       [...this.children]
         .filter((n) => n.slot === "menuitem")
         .forEach((item) => this.addItem(item));
@@ -336,6 +342,15 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
     close(force = false) {
       if (force || (!this.focused && !this.hovered)) {
         this.expanded = false;
+        // remove global click listener when menu closes
+        if (this._docListenerAdded) {
+          globalThis.removeEventListener(
+            "click",
+            this._boundDocumentClick,
+            true,
+          );
+          this._docListenerAdded = false;
+        }
         /**
          * Fires when menu is closed
          * @event close
@@ -357,6 +372,12 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      */
     open() {
       this.expanded = true;
+      // add global click listener so clicking anywhere outside
+      // the menu will close it
+      if (!this._docListenerAdded) {
+        globalThis.addEventListener("click", this._boundDocumentClick, true);
+        this._docListenerAdded = true;
+      }
       /**
        * Fires when menu is opened
        * @event close
@@ -505,6 +526,25 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
         : this.menuItems[index];
     }
     /**
+     * Handles click events on the document to implement click-away
+     * behavior for closing the menu when the user clicks outside.
+     *
+     * @param {Event} event
+     */
+    _onDocumentClick(event) {
+      // Prefer the native composedPath when available so we see
+      // through shadow DOM; fall back to normalizeEventPath otherwise.
+      const path = event.composedPath
+        ? event.composedPath()
+        : normalizeEventPath(event) || [];
+      const isInside = path.indexOf(this) !== -1;
+      // If the click happened completely outside this menu button
+      // while the menu is open, close it.
+      if (!isInside && this.expanded) {
+        this.close(true);
+      }
+    }
+    /**
      * menuitem event listeners and their handlers
      *
      * @readonly {object}
@@ -638,8 +678,25 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
         }
 
         if (event.keyCode === this.keyCode.TAB) {
-          this.focus();
-          this.close(true);
+          // Shift+Tab: check which menu item currently has focus
+          let currentIndex = this.menuItems.findIndex(
+            (item) =>
+              item === target ||
+              item.contains(target) ||
+              (item.focusableElement &&
+                (item.focusableElement === target ||
+                  item.focusableElement.contains(target))),
+          );
+          if (currentIndex <= 0) {
+            // On first item or not found - exit menu
+            this.focus();
+            this.close(true);
+            // Don't prevent default - let browser handle tab
+          } else {
+            // Move to previous menu item
+            this.focusOn(this.menuItems[currentIndex - 1]);
+            flag = true;
+          }
         }
       } else {
         switch (event.keyCode) {
@@ -672,8 +729,27 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
             break;
 
           case this.keyCode.TAB:
-            this.focus();
-            this.close(true);
+            // Tab: check which menu item currently has focus
+            let currentIndex = this.menuItems.findIndex(
+              (item) =>
+                item === target ||
+                item.contains(target) ||
+                (item.focusableElement &&
+                  (item.focusableElement === target ||
+                    item.focusableElement.contains(target))),
+            );
+            if (
+              currentIndex === -1 ||
+              currentIndex >= this.menuItems.length - 1
+            ) {
+              // On last item or not found - exit menu
+              this.close(true);
+              // Don't prevent default - let browser handle tab
+            } else {
+              // Move to next menu item
+              this.focusOn(this.menuItems[currentIndex + 1]);
+              flag = true;
+            }
             break;
 
           default:
@@ -699,15 +775,38 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
       var flag = false;
 
       switch (event.keyCode) {
+        case this.keyCode.ESC:
+          if (this.expanded) {
+            this.close(true);
+            flag = true;
+          }
+          break;
+
         case this.keyCode.SPACE:
         case this.keyCode.RETURN:
-        case this.keyCode.DOWN:
-          this.focusOn(this.firstItem);
+          // Toggle menu on Enter/Space
+          if (this.expanded) {
+            this.close(true);
+          } else {
+            this.focusOn(this.firstItem);
+          }
           flag = true;
           break;
 
+        case this.keyCode.DOWN:
+          // Down arrow opens menu and focuses first item
+          if (!this.expanded) {
+            this.focusOn(this.firstItem);
+            flag = true;
+          }
+          break;
+
         case this.keyCode.UP:
-          if (this.popupMenu) {
+          // Up arrow opens menu and focuses last item
+          if (this.popupMenu && !this.expanded) {
+            this.focusOn(this.lastItem);
+            flag = true;
+          } else if (!this.expanded) {
             this.focusOn(this.lastItem);
             flag = true;
           }
@@ -729,13 +828,15 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      * @memberof A11yMenuButton
      */
     _handleClick(event) {
-      // resolve touch vs pointer input
-      if (event.pointerType === "touch") {
-      } else {
+      let path = normalizeEventPath(event) || [],
+        target = path[0];
+      // only toggle when clicking the button itself, not child menu items
+      if (target.id === "menubutton" || target.closest("#menubutton")) {
+        // toggle menu for both touch and pointer input
         if (this.expanded) {
           this.close(true);
         } else {
-          this.focusOn(this.firstItem);
+          this.open();
         }
       }
     }
@@ -757,6 +858,22 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      */
     _handleBlur(event) {
       this.focused = false;
+      // Check if focus is moving to another part of the menu
+      const relatedTarget = event.relatedTarget;
+      if (relatedTarget) {
+        // Don't close if focus is moving to a menu item or staying within menu
+        const isMovingToMenuItem = this.menuItems.some(
+          (item) =>
+            item === relatedTarget ||
+            item.contains(relatedTarget) ||
+            (item.focusableElement &&
+              (item.focusableElement === relatedTarget ||
+                item.focusableElement.contains(relatedTarget))),
+        );
+        if (isMovingToMenuItem) {
+          return;
+        }
+      }
     }
     /**
      * handles menu mouseover
@@ -777,7 +894,20 @@ const A11yMenuButtonBehaviors = function (SuperClass) {
      */
     _handleMouseout(event) {
       this.hovered = false;
-      setTimeout(this.close(), 300);
+      setTimeout(() => this.close(), 300);
+    }
+    disconnectedCallback() {
+      if (super.disconnectedCallback) {
+        super.disconnectedCallback();
+      }
+      if (this._docListenerAdded) {
+        globalThis.removeEventListener(
+          "click",
+          this._boundDocumentClick,
+          true,
+        );
+        this._docListenerAdded = false;
+      }
     }
   };
 };

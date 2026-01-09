@@ -149,9 +149,9 @@ export class WebContainerDocPlayer extends DDDSuper(LitElement) {
               "name": "${this.element} doc example",
               "type": "module",
               "dependencies": {
-                "@haxtheweb/utils": "^10.0.0",
-                "@haxtheweb/code-sample": "^10.0.2",
-                "@haxtheweb/code-editor": "^10.0.2",
+                "@haxtheweb/demo-snippet": "^11.0.0",
+                "@haxtheweb/code-sample": "^11.0.0",
+                "@haxtheweb/code-editor": "^11.0.0",
                 "wc-dox": "^1.1.0",
                 "${this.project}": "${this.version}"
               },

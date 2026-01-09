@@ -5,7 +5,6 @@
 import { svg, css } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { SimpleIconBehaviors } from "./lib/simple-icon-lite.js";
-import { DDD } from "@haxtheweb/d-d-d";
 /**
  * `simple-icon`
  * `Render an SVG based icon`
@@ -22,7 +21,7 @@ import { DDD } from "@haxtheweb/d-d-d";
  * @demo demo/iconset.html Iconset Demo
  * @element simple-icon
  */
-class SimpleIcon extends SimpleIconBehaviors(DDD) {
+class SimpleIcon extends SimpleIconBehaviors(SimpleColors) {
   /**
    * This is a convention, not the standard
    */

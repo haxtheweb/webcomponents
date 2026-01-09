@@ -44,10 +44,10 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     this.registerLocalization({
       context: this,
       namespace: "super-daemon",
-      basePath: import.meta.url,
+      basePath: import.meta.url + "/../../",
     });
     // Initialize with fallback values to prevent undefined during initial render
-    this.possibleActions = ["🔮 Insert blocks", "🕵 Find media 📺"];
+    this.possibleActions = ["🪄 Do anything..", "🔍 Type to search..."];
   }
   static get properties() {
     return {
@@ -560,6 +560,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
 
   getActiveTitle(context) {
     switch (context) {
+      case "CMS":
       case "/":
         return this.t.slashCommandsActive || "Slash commands active";
       case ">":
@@ -570,6 +571,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
 
   getActiveIcon(context) {
     switch (context) {
+      case "CMS":
       case "/":
         return "hax:wand";
       case ">":

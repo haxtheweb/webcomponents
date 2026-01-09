@@ -4,10 +4,6 @@ import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js"
 import { varExists } from "@haxtheweb/utils/utils.js";
 import { autorun, toJS } from "mobx";
 /**
- * @deprecatedApply - required for @apply / invoking @apply css var convention
- */
-import "@polymer/polymer/lib/elements/custom-style.js";
-/**
  * `simple-blog-footer`
  * @element simple-blog-footer
  * `Footer to blog posts`
@@ -141,6 +137,11 @@ class SimpleBlogFooter extends SimpleColors {
           color: black;
           display: inline-flex;
         }
+        button,
+        site-menu-button:not([disabled]) {
+          --site-menu-button-button-height: 44px;
+          --site-menu-button-button-width: 100%;
+        }
       `,
     ];
   }
@@ -155,17 +156,6 @@ class SimpleBlogFooter extends SimpleColors {
    */
   render() {
     return html`
-      <custom-style>
-        <style>
-          button,
-          site-menu-button:not([disabled]) {
-            --site-menu-button-button: {
-              height: 44px;
-              width: 100%;
-            };
-          }
-        </style>
-      </custom-style>
       <div class="background-closer-image-wrap">
         <div
           class="background-closer-image"

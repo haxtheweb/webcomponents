@@ -20,6 +20,8 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
+ * @haxcms-theme-category Fun, Website
+ * @haxcms-theme-internal false
  * @demo demo/index.html
  * @element terrible-themes
  */
@@ -68,6 +70,21 @@ class TerribleThemes extends HAXCMSRememberRoute(
           --simple-tooltip-border-radius: 0;
         }
 
+        :host([dark-mode]) {
+          background: #111111;
+          color: #f5f7f9;
+        }
+
+        :host([dark-mode]) table {
+          background-color: #111111;
+          color: inherit;
+        }
+
+        :host([dark-mode]) tr[bgcolor],
+        :host([dark-mode]) td[bgcolor] {
+          background-color: transparent;
+        }
+
         site-active-title {
           display: block;
           padding: 0;
@@ -110,6 +127,12 @@ class TerribleThemes extends HAXCMSRememberRoute(
           -ms-grid-column-align: stretch;
           -webkit-box-direction: normal;
         }
+        :host([dark-mode]) site-menu-button {
+          color: #f5f7f9;
+          border-color: #333333;
+          background-color: #1a1a1a;
+          box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.6);
+        }
         site-menu-button div.wrapper {
           flex: 1;
           margin: 0;
@@ -130,6 +153,9 @@ class TerribleThemes extends HAXCMSRememberRoute(
         }
         simple-datetime {
           color: #444444;
+        }
+        :host([dark-mode]) simple-datetime {
+          color: #cccccc;
         }
         site-menu-button div .bottom {
           font-size: 16px;
@@ -201,6 +227,12 @@ class TerribleThemes extends HAXCMSRememberRoute(
           color: #4444ff;
           text-decoration: underline;
         }
+        :host([dark-mode]) a {
+          color: #9bbcff;
+        }
+        :host([dark-mode]) a:hover {
+          color: #ff8ad4;
+        }
         /*Log out link at top right*/
         a.loginState:visited {
           color: #0000ff;
@@ -227,8 +259,19 @@ class TerribleThemes extends HAXCMSRememberRoute(
             --haxcms-basic-theme-accent-color
           );
         }
+        :host([dark-mode]) site-top-menu {
+          --site-top-menu-bg: #222233;
+          --site-top-menu-link-color: #ffffff;
+          --site-top-menu-indicator-color: #ff8ad4;
+        }
         site-top-menu::part(button) {
           font-size: 18px;
+          background-color: pink;
+          color: #000000;
+        }
+        :host([dark-mode]) site-top-menu::part(button) {
+          background-color: #222233;
+          color: #ffffff;
         }
       `,
     ];
@@ -239,6 +282,7 @@ class TerribleThemes extends HAXCMSRememberRoute(
   render() {
     return html`
       <table
+        role="presentation"
         border="4"
         cellspacing="0"
         cellpadding="0"
@@ -329,10 +373,10 @@ class TerribleThemes extends HAXCMSRememberRoute(
                                   <tr>
                                     <td id="contentcontainer">
                                       <site-active-title></site-active-title>
-                                      <section id="slot">
+                                      <section id="slot" role="main" aria-label="Page content">
                                         <slot></slot>
                                       </section>
-                                      <aside>
+                                      <aside aria-label="Page navigation">
                                         <site-menu-button
                                           hide-label
                                           type="prev"

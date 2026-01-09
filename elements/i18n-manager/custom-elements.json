@@ -68,6 +68,34 @@
               "description": "Register a localization with the manager"
             },
             {
+              "kind": "method",
+              "name": "loadTranslationManifest",
+              "description": "Lazy load the translation manifest only when needed (non-English language)"
+            },
+            {
+              "kind": "method",
+              "name": "hasTranslation",
+              "parameters": [
+                {
+                  "name": "namespace"
+                },
+                {
+                  "name": "language"
+                }
+              ],
+              "description": "Check if a namespace supports a specific language\nReturns false if manifest is not loaded and language needs manifest"
+            },
+            {
+              "kind": "method",
+              "name": "needsManifest",
+              "parameters": [
+                {
+                  "name": "language"
+                }
+              ],
+              "description": "Determine if we need to load the manifest for this language"
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
@@ -131,6 +159,30 @@
               "kind": "field",
               "name": "locales",
               "default": "new Set([])"
+            },
+            {
+              "kind": "field",
+              "name": "translationManifest",
+              "type": {
+                "text": "null"
+              },
+              "default": "null"
+            },
+            {
+              "kind": "field",
+              "name": "manifestLoaded",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "kind": "field",
+              "name": "manifestLoading",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false"
             }
           ],
           "events": [

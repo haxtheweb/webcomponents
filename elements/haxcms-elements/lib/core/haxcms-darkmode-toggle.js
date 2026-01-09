@@ -1,6 +1,6 @@
 import { autorun, toJS } from "mobx";
 import { store } from "./haxcms-site-store.js";
-import { WiredDarkmodeToggle } from "@haxtheweb/app-hax/lib/wired-darkmode-toggle/wired-darkmode-toggle.js";
+import { WiredDarkmodeToggle } from "./ui/wired-darkmode-toggle/wired-darkmode-toggle.js";
 
 export class HAXCMSDarkmodeToggle extends WiredDarkmodeToggle {
   constructor() {

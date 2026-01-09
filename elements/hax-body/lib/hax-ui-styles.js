@@ -42,7 +42,7 @@ export const HaxUiColors = [
       --hax-ui-background-color-secondary: #e8e8e8;
       --hax-ui-background-color-faded: #b0b8bb;
 
-      --hax-ui-color-accent: #009dc7;
+      --hax-ui-color-accent: var(--ddd-theme-default-skyBlue,#009dc7);
       --hax-ui-color-accent-secondary: #007999;
       --hax-ui-background-color-accent: #e5f6fd;
 
@@ -62,7 +62,6 @@ export const HaxUiColors = [
       --hax-ui-background-color-secondary: #111;
       --hax-ui-background-color-faded: #222;
 
-      --hax-ui-color-accent: #77e2ff;
       --hax-ui-color-accent-secondary: #00c9ff;
       --hax-ui-background-color-accent: #000;
 
@@ -83,7 +82,6 @@ export const HaxUiColors = [
         --hax-ui-background-color-secondary: #111;
         --hax-ui-background-color-faded: #222;
 
-        --hax-ui-color-accent: #77e2ff;
         --hax-ui-color-accent-secondary: #00c9ff;
         --hax-ui-background-color-accent: #000;
 

@@ -90,7 +90,18 @@ class VideoPlayer extends IntersectionObserverMixin(
 
   // render function
   render() {
-    return html` ${this.elementVisible
+    return html`
+      ${this.audioDescriptionSource && this.audioDescriptionEnabled
+        ? html`
+            <audio
+              id="audio-description"
+              .src="${this.audioDescriptionSource}"
+              crossorigin="${this.crossorigin || "anonymous"}"
+              style="display: none;"
+            ></audio>
+          `
+        : ``}
+      ${this.elementVisible
       ? html`${!this.isA11yMedia
           ? html` <div
                 class="responsive-video-container"
@@ -149,6 +160,7 @@ class VideoPlayer extends IntersectionObserverMixin(
                 @play="${this.playEvent}"
                 @restart="${this.restartEvent}"
                 @pause="${this.pauseEvent}"
+                @audio-description-toggle="${this._handleAudioDescriptionToggle}"
                 lang="${this.lang || "en"}"
                 ?learning-mode="${this.learningMode}"
                 ?linkable="${this.linkable}"
@@ -163,6 +175,8 @@ class VideoPlayer extends IntersectionObserverMixin(
                 .width="${this.width}"
                 .height="${this.height}"
                 youtube-id="${this.youtubeId}"
+                audio-description-source="${this.audioDescriptionSource}"
+                ?audio-description-enabled="${this.audioDescriptionEnabled}"
               >
               </a11y-media-player
               ><slot hidden></slot>`}`
@@ -238,8 +252,8 @@ class VideoPlayer extends IntersectionObserverMixin(
           },
           {
             property: "thumbnailSrc",
-            title: "Thumbnail image",
-            description: "The URL for a thumbnail/poster image.",
+            title: "Poster image",
+            description: "The image URL for the poster image.",
             inputMethod: "haxupload",
             noVoiceRecord: true,
             validationType: "url",
@@ -247,13 +261,52 @@ class VideoPlayer extends IntersectionObserverMixin(
         ],
         advanced: [
           {
-            property: "track",
-            title: "Closed captions",
-            description: "The URL for the captions file.",
-            inputMethod: "haxupload",
-            noCamera: true,
-            noVoiceRecord: true,
-            validationType: "url",
+            property: "tracks",
+            title: "Text tracks",
+            description:
+              "Closed captions, subtitles, descriptions, and other text tracks for the video.",
+            inputMethod: "array",
+            itemLabel: "label",
+            properties: [
+              {
+                property: "src",
+                title: "Track file",
+                description: "The URL for the track file (WebVTT format).",
+                inputMethod: "haxupload",
+                noCamera: true,
+                noVoiceRecord: true,
+                validationType: "url",
+              },
+              {
+                property: "label",
+                title: "Label",
+                description:
+                  "Label for the track (e.g., 'English', 'Spanish', 'Audio Description').",
+                inputMethod: "textfield",
+                validationType: "text",
+              },
+              {
+                property: "srclang",
+                title: "Language code",
+                description:
+                  "Two-letter language code (e.g., 'en', 'es', 'fr').",
+                inputMethod: "textfield",
+                validationType: "text",
+              },
+              {
+                property: "kind",
+                title: "Track type",
+                description: "The type of text track.",
+                inputMethod: "select",
+                options: {
+                  subtitles: "Subtitles",
+                  captions: "Captions",
+                  descriptions: "Descriptions",
+                  chapters: "Chapters",
+                  metadata: "Metadata",
+                },
+              },
+            ],
           },
           {
             property: "startTime",
@@ -297,6 +350,17 @@ class VideoPlayer extends IntersectionObserverMixin(
             title: "Hide Transcript",
             description: "Hide transcript by default.",
             inputMethod: "boolean",
+          },
+          {
+            property: "audioDescriptionSource",
+            title: "Audio Description Track",
+            description:
+              "URL to an audio description track (MP3 file) that provides narration of visual elements.",
+            inputMethod: "haxupload",
+            noCamera: true,
+            noVoiceRecord: true,
+            noScreenRecord: true,
+            validationType: "url",
           },
         ],
         developer: [
@@ -515,6 +579,10 @@ class VideoPlayer extends IntersectionObserverMixin(
        */
       tracks: {
         type: Array,
+        reflect: true,
+        hasChanged(newVal, oldVal) {
+          return JSON.stringify(newVal) !== JSON.stringify(oldVal);
+        },
       },
       /**
        * Source of optional thumbnail image
@@ -559,6 +627,22 @@ class VideoPlayer extends IntersectionObserverMixin(
         type: Number,
         attribute: "end-time",
       },
+      /**
+       * URL to audio description track (MP3 file)
+       */
+      audioDescriptionSource: {
+        type: String,
+        attribute: "audio-description-source",
+        reflect: true,
+      },
+      /**
+       * Whether audio description is currently enabled
+       */
+      audioDescriptionEnabled: {
+        type: Boolean,
+        attribute: "audio-description-enabled",
+        reflect: true,
+      },
     };
   }
   /**
@@ -598,6 +682,8 @@ class VideoPlayer extends IntersectionObserverMixin(
     this.stickyCorner = "none";
     this.tracks = [];
     this.source = "";
+    this.audioDescriptionSource = "";
+    this.audioDescriptionEnabled = false;
     this.observer.observe(this, {
       childList: true,
       subtree: false,
@@ -617,8 +703,24 @@ class VideoPlayer extends IntersectionObserverMixin(
       titleDescription: "Simple title for under video",
       thumbnailTitle: "Thumbnail image",
       thumbnailDescription: "The URL for a thumbnail/poster image.",
-      closedCaptionsTitle: "Closed captions",
-      closedCaptionsDescription: "The URL for the captions file.",
+      textTracksTitle: "Text tracks",
+      textTracksDescription:
+        "Closed captions, subtitles, descriptions, and other text tracks for the video.",
+      trackFileTitle: "Track file",
+      trackFileDescription: "The URL for the track file (WebVTT format).",
+      trackLabelTitle: "Label",
+      trackLabelDescription:
+        "Label for the track (e.g., 'English', 'Spanish', 'Audio Description').",
+      trackLanguageCodeTitle: "Language code",
+      trackLanguageCodeDescription:
+        "Two-letter language code (e.g., 'en', 'es', 'fr').",
+      trackTypeTitle: "Track type",
+      trackTypeDescription: "The type of text track.",
+      trackTypeSubtitles: "Subtitles",
+      trackTypeCaptions: "Captions",
+      trackTypeDescriptions: "Descriptions",
+      trackTypeChapters: "Chapters",
+      trackTypeMetadata: "Metadata",
       startTimeTitle: "Start time",
       startTimeDescription: "Start video at a specific time (seconds)",
       endTimeTitle: "End time",
@@ -652,6 +754,10 @@ class VideoPlayer extends IntersectionObserverMixin(
         "(deprecated) Select the accent color for the player.",
       copyTimecodeLabel: "Copy current timecode",
       englishLabel: "English",
+      audioDescriptionLabel: "Audio Description",
+      audioDescriptionTitle: "Audio Description Track",
+      audioDescriptionDescription:
+        "URL to an audio description track (MP3 file) that provides narration of visual elements.",
     };
     this.registerLocalization({
       context: this,
@@ -667,6 +773,14 @@ class VideoPlayer extends IntersectionObserverMixin(
     if (this.__setVisChange) {
       this.__setVisChange = false;
       this.windowControllers.abort();
+    }
+    if (this.__adVolumeHandler) {
+      globalThis.removeEventListener("volume-changed", this.__adVolumeHandler);
+      this.__adVolumeHandler = null;
+    }
+    if (this.__adRateHandler) {
+      globalThis.removeEventListener("playback-rate-changed", this.__adRateHandler);
+      this.__adRateHandler = null;
     }
     if (this.observer && this.observer.disconnect) this.observer.disconnect();
     super.disconnectedCallback();
@@ -1067,6 +1181,55 @@ class VideoPlayer extends IntersectionObserverMixin(
           }
         }
       }
+      
+      // Setup audio description sync when enabled changes
+      if (propName === "audioDescriptionEnabled" && this.audioDescriptionSource) {
+        if (this.audioDescriptionEnabled) {
+          // Wait for next render cycle to ensure audio element exists
+          setTimeout(() => {
+            this._setupAudioDescriptionSync();
+            // If video is currently playing, start audio too
+            const audioElement = this.shadowRoot
+              ? this.shadowRoot.querySelector("#audio-description")
+              : null;
+            if (audioElement && this.playing) {
+              audioElement.currentTime = this.currentTime;
+              audioElement.play();
+            }
+          }, 0);
+        } else {
+          // Stop audio and cleanup
+          const audioElement = this.shadowRoot
+            ? this.shadowRoot.querySelector("#audio-description")
+            : null;
+          if (audioElement) {
+            audioElement.pause();
+          }
+          
+          // Restore video audio
+          const mediaPlayer = this.shadowRoot
+            ? this.shadowRoot.querySelector("a11y-media-player")
+            : null;
+          if (mediaPlayer && mediaPlayer.media) {
+            mediaPlayer.media.muted = false;
+            if (mediaPlayer.volume !== undefined) {
+              mediaPlayer.media.volume = mediaPlayer.volume / 100;
+            }
+          }
+          
+          // Clean up volume listener
+          if (this.__adVolumeHandler) {
+            globalThis.removeEventListener("volume-changed", this.__adVolumeHandler);
+            this.__adVolumeHandler = null;
+          }
+
+          // Clean up playback-rate listener
+          if (this.__adRateHandler) {
+            globalThis.removeEventListener("playback-rate-changed", this.__adRateHandler);
+            this.__adRateHandler = null;
+          }
+        }
+      }
     });
   }
 
@@ -1110,6 +1273,11 @@ class VideoPlayer extends IntersectionObserverMixin(
       this.sourceType = globalThis.MediaBehaviors.Video.getVideoType(
         this.sourceData[0].src,
       );
+    }
+
+    // setup audio description if source is present
+    if (this.audioDescriptionSource) {
+      this._loadAudioDescriptionPreference();
     }
   }
   /**
@@ -1207,6 +1375,187 @@ class VideoPlayer extends IntersectionObserverMixin(
         this.__forcePaused = false;
       }
     }, 500);
+  }
+
+  /**
+   * Load audio description preference from localStorage
+   */
+  _loadAudioDescriptionPreference() {
+    if (this.source && this.audioDescriptionSource) {
+      const key = `video-player-ad-${this.source}`;
+      const stored = globalThis.localStorage.getItem(key);
+      if (stored !== null) {
+        this.audioDescriptionEnabled = stored === "true";
+      }
+    }
+  }
+
+  /**
+   * Save audio description preference to localStorage
+   */
+  _saveAudioDescriptionPreference() {
+    if (this.source && this.audioDescriptionSource) {
+      const key = `video-player-ad-${this.source}`;
+      // Coerce to a boolean so we never call toString on null/undefined
+      const enabled = !!this.audioDescriptionEnabled;
+      globalThis.localStorage.setItem(key, enabled.toString());
+    }
+  }
+
+  /**
+   * Setup audio description sync with video playback
+   */
+  _setupAudioDescriptionSync() {
+    if (!this.shadowRoot) return;
+
+    const mediaPlayer = this.shadowRoot.querySelector("a11y-media-player");
+    const audioElement = this.shadowRoot.querySelector("#audio-description");
+
+    if (!mediaPlayer || !audioElement) return;
+
+    // Remove any existing handlers so we don't double-bind when toggling
+    if (this.__adPlayHandler) {
+      mediaPlayer.removeEventListener("play", this.__adPlayHandler);
+    }
+    if (this.__adPauseHandler) {
+      mediaPlayer.removeEventListener("pause", this.__adPauseHandler);
+    }
+    if (this.__adRestartHandler) {
+      mediaPlayer.removeEventListener("restart", this.__adRestartHandler);
+    }
+    if (this.__adSeekHandler) {
+      mediaPlayer.removeEventListener("seek", this.__adSeekHandler);
+    }
+
+    // Set default volume for audio description (match current player volume)
+    if (mediaPlayer.volume !== undefined) {
+      audioElement.volume = mediaPlayer.volume / 100;
+    } else {
+      audioElement.volume = 1.0;
+    }
+
+    // Set initial playback rate for audio description to match media
+    if (mediaPlayer.media && mediaPlayer.media.playbackRate) {
+      audioElement.playbackRate = mediaPlayer.media.playbackRate;
+    } else {
+      audioElement.playbackRate = 1.0;
+    }
+
+    // Mute the video audio when audio description is active. We only
+    // toggle the muted flag so that the underlying volume state stays
+    // consistent with the player's volume slider. The audio description
+    // track gets its own volume based on the player's volume.
+    if (mediaPlayer.media) {
+      mediaPlayer.media.muted = true;
+    }
+
+    // Store event handler references for cleanup
+    this.__adPlayHandler = () => {
+      if (this.audioDescriptionEnabled && audioElement) {
+        // Re‑assert mute on the primary media in case something else
+        // changed it while audio description is active.
+        if (mediaPlayer.media) {
+          mediaPlayer.media.muted = true;
+        }
+        audioElement.currentTime = this.currentTime;
+        audioElement.play().catch(() => {});
+      }
+    };
+
+    this.__adPauseHandler = () => {
+      if (audioElement) {
+        audioElement.pause();
+      }
+    };
+
+    this.__adRestartHandler = () => {
+      if (audioElement) {
+        audioElement.currentTime = 0;
+        if (this.playing) {
+          audioElement.play().catch(() => {});
+        }
+      }
+    };
+
+    // Keep audio description in sync when the user seeks
+    this.__adSeekHandler = () => {
+      if (this.audioDescriptionEnabled && audioElement) {
+        // Ensure the primary media stays muted after seek operations so
+        // we don't leak the original audio under the description track.
+        if (mediaPlayer.media) {
+          mediaPlayer.media.muted = true;
+        }
+        audioElement.currentTime = this.currentTime;
+        if (this.playing) {
+          audioElement.play().catch(() => {});
+        }
+      }
+    };
+
+    // Listen for play, pause, restart, and seek events
+    mediaPlayer.addEventListener("play", this.__adPlayHandler);
+    mediaPlayer.addEventListener("pause", this.__adPauseHandler);
+    mediaPlayer.addEventListener("restart", this.__adRestartHandler);
+    mediaPlayer.addEventListener("seek", this.__adSeekHandler);
+
+    // Listen for volume changes and sync to audio description
+    this.__adVolumeHandler = (e) => {
+      if (
+        this.audioDescriptionEnabled &&
+        audioElement &&
+        e.detail &&
+        e.detail.volume !== undefined
+      ) {
+        // When audio description is active, sync volume to audio track
+        audioElement.volume = e.detail.volume / 100;
+      }
+    };
+    globalThis.addEventListener("volume-changed", this.__adVolumeHandler);
+
+    // Listen for playback-rate changes and sync speed to audio description
+    this.__adRateHandler = (e) => {
+      // e.detail is the a11y-media-player instance
+      const player = e && e.detail ? e.detail : null;
+      const rate = player && player.media && player.media.playbackRate
+        ? player.media.playbackRate
+        : 1;
+      if (this.audioDescriptionEnabled && audioElement) {
+        audioElement.playbackRate = rate;
+      }
+    };
+    globalThis.addEventListener("playback-rate-changed", this.__adRateHandler);
+  }
+
+  /**
+   * Toggle audio description on/off
+   */
+  toggleAudioDescription() {
+    this.audioDescriptionEnabled = !this.audioDescriptionEnabled;
+    this._saveAudioDescriptionPreference();
+
+    const audioElement = this.shadowRoot
+      ? this.shadowRoot.querySelector("#audio-description")
+      : null;
+
+    if (audioElement) {
+      if (this.audioDescriptionEnabled) {
+        // Sync to current time and play if video is playing
+        audioElement.currentTime = this.currentTime;
+        if (this.playing) {
+          audioElement.play();
+        }
+      } else {
+        audioElement.pause();
+      }
+    }
+  }
+
+  /**
+   * Handle audio description toggle from settings checkbox
+   */
+  _handleAudioDescriptionToggle(e) {
+    this.audioDescriptionEnabled = e.detail.audioDescriptionEnabled;
+    this._saveAudioDescriptionPreference();
   }
 }
 globalThis.customElements.define(VideoPlayer.tag, VideoPlayer);

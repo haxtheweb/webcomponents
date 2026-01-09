@@ -37,6 +37,20 @@ class HaxToolbarMenu extends SimpleToolbarMenuBehaviors(LitElement) {
           --simple-toolbar-button-justify: flex-start;
           --simple-toolbar-button-label-white-space: nowrap;
         }
+        /* Position dropdown arrow on the right side instead of left */
+        #dropdownicon {
+          left: auto;
+          right: 2px;
+          pointer-events: none;
+        }
+        #menubutton {
+          padding-right: 20px;
+          padding-left: 2px;
+        }
+        #menubutton:hover {
+          background-color: var(--hax-ui-background-color-secondary);
+          color: var(--hax-ui-color);
+        }
       `,
     ];
   }

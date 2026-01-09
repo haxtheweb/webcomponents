@@ -193,9 +193,9 @@ export async function _exportPageAsDOCX(content, title) {
 export async function _exportPageAsPDF(content, title) {
   try {
     // Get base URL for PDF generation
+    const baseElement = globalThis.document.querySelector("base");
     const baseUrl =
-      globalThis.document.querySelector("base")?.href ||
-      globalThis.location.origin;
+      (baseElement && baseElement.href) || globalThis.location.origin;
 
     const response = await MicroFrontendRegistry.call("@core/htmlToPdf", {
       base: baseUrl,

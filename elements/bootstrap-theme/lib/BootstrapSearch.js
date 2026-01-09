@@ -56,7 +56,9 @@ class BootstrapSearch extends LitElement {
     return html`
       <link rel="stylesheet" href="${this._bootstrapPath}" />
       <form class="d-flex" role="search" @submit=${this.handleSubmit}>
-        <label for="bootstrap-search-input" class="visually-hidden">Search site content</label>
+        <label for="bootstrap-search-input" class="visually-hidden"
+          >Search site content</label
+        >
         <input
           id="bootstrap-search-input"
           class="form-control mr-2"
@@ -91,14 +93,14 @@ class BootstrapSearch extends LitElement {
   }
 
   handleKeydown(evt) {
-    if (evt.key === 'Escape') {
-      evt.target.value = '';
-      this.searchText = '';
+    if (evt.key === "Escape") {
+      evt.target.value = "";
+      this.searchText = "";
       this.dispatchEvent(
         new CustomEvent("search-changed", {
           bubbles: true,
           composed: true,
-          detail: { searchText: '' },
+          detail: { searchText: "" },
         }),
       );
     }

@@ -19,6 +19,8 @@ import { autorun, toJS } from "mobx";
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
+ * @haxcms-theme-category Fun, Website
+ * @haxcms-theme-internal false
  * @demo demo/index.html
  * @element terrible-themes
  */
@@ -171,6 +173,7 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                     .href}/../HEADER.jpg"
                   border="0"
                   align="absbottom"
+                  alt=""
                 />
               </td>
             </tr>
@@ -195,7 +198,8 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
                         border="0"
                         width="88"
                         height="31"
-                        vspace="3" /></a
+                        vspace="3"
+                        alt="Acid Scorpio website" /></a
                     ><br />
                   </div>
                 </font>

@@ -31,15 +31,18 @@ class OutlinePlayer extends LTIResizingMixin(
       super.styles,
       css`
         :host {
-          color: black;
+          color: light-dark(black, var(--ddd-accent-6));
           display: block;
           position: relative;
           overflow: hidden;
           --outline-player-min-height: 100vh;
           --app-drawer-width: 300px;
-          --outline-player-dark: #222222;
+          --outline-player-dark: #111111;
           --outline-player-light: #f8f8f8;
-          background-color: var(--outline-player-light);
+          background-color: light-dark(
+            var(--outline-player-light),
+            var(--outline-player-dark)
+          );
         }
 
         simple-icon-button-lite:not(:defined),
@@ -117,6 +120,13 @@ class OutlinePlayer extends LTIResizingMixin(
           padding: 0 16px 16px 16px;
           flex: none;
           transition: 0.5s opacity ease-in-out;
+          background-color: light-dark(
+            #ffffff,
+            var(--ddd-primary-4)
+          );
+          color: inherit;
+          border-radius: 4px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
         }
         #contentcontainer h-a-x {
           margin: 0;
@@ -142,7 +152,7 @@ class OutlinePlayer extends LTIResizingMixin(
         app-drawer {
           box-shadow: 0 0 6px -3px var(--outline-player-dark);
           overflow: hidden;
-          --app-drawer-scrim-background: rgba(80, 80, 80, 0.8);
+          --app-drawer-scrim-background: rgba(0, 0, 0, 0.7);
           z-index: 1000000;
         }
         .nav-btns {
@@ -157,6 +167,7 @@ class OutlinePlayer extends LTIResizingMixin(
           width: 32px;
           margin: 0 16px;
           padding: 0;
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
         }
         site-menu {
           height: calc(100vh - 50px);
@@ -227,6 +238,32 @@ class OutlinePlayer extends LTIResizingMixin(
   /**
    * HTMLElement
    */
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      css`
+        body.dark-mode outline-player {
+          background-color: var(--outline-player-dark);
+          color: var(--ddd-accent-6);
+        }
+        body.dark-mode outline-player #contentcontainer {
+          background-color: var(--ddd-primary-4);
+          color: var(--ddd-accent-6);
+        }
+        body.dark-mode outline-player .nav-btns site-menu-button,
+        body.dark-mode outline-player .nav-btns site-print-button,
+        body.dark-mode outline-player .nav-btns site-modal,
+        body.dark-mode outline-player .nav-btns simple-icon-button-lite {
+          color: var(--ddd-accent-6);
+        }
+        body.dark-mode outline-player site-breadcrumb {
+          --site-breadcrumb-color: var(--ddd-theme-default-linkLight);
+          --site-breadcrumb-last-color: var(--ddd-accent-6);
+        }
+      `,
+    ];
+  }
+
   constructor() {
     super();
     this.__disposer = [];

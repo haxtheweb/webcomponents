@@ -140,7 +140,6 @@ class UserAction extends HTMLElement {
               "./locales/user-action.haxProperties.es.json",
               import.meta.url,
             ).href + "/../",
-          
         },
       }),
     );

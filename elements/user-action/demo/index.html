@@ -9,10 +9,10 @@
 
     <script type="module">
       
-      import "@haxtheweb/utils/lib/demo-snippet.js";
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
       import '../user-action.js';
     </script>
-    <style is="custom-style" include="demo-pages-shared-styles"></style>
+    
     <script>
       window.addEventListener('user-engagement',(e) => {
         console.log(e.detail);
@@ -25,18 +25,18 @@
       <demo-snippet>
         <template>
           <user-action track="click" every>
-            <paper-button>This is user-action</paper-button>
+            <button>This is user-action</button>
           </user-action>
           <user-action track="keypress" every>
-            <paper-button>This is user-action</paper-button>
+            <button>This is user-action</button>
           </user-action>
           <div style="height:1000px"></div>
           <user-action track="visibility" every>
-            <paper-button>This is user-action</paper-button>
+            <button>This is user-action</button>
           </user-action>
           <div style="height:1000px"></div>
           <user-action track="visibility">
-            <paper-button>This is user-action</paper-button>
+            <button>This is user-action</button>
           </user-action>
         </template>
       </demo-snippet>

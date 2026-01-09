@@ -1,6 +1,9 @@
 /**
  * Copyright 2021 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
+ *
+ * @haxcms-theme-category Website
+ * @haxcms-theme-internal true
  */
 import { html, css } from "lit";
 import { CleanTwo } from "@haxtheweb/clean-two/clean-two.js";

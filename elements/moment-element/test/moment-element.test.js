@@ -20,10 +20,10 @@ describe("moment-element test", () => {
         <moment-element datetime="2020-01-01T12:00:00Z"></moment-element>
       `);
       await testElement.updateComplete;
-      
-      const time = testElement.shadowRoot.querySelector('time');
+
+      const time = testElement.shadowRoot.querySelector("time");
       if (time) {
-        expect(time.hasAttribute('datetime')).to.be.true;
+        expect(time.hasAttribute("datetime")).to.be.true;
       }
     });
 
@@ -33,7 +33,7 @@ describe("moment-element test", () => {
         <moment-element datetime="${now}"></moment-element>
       `);
       await testElement.updateComplete;
-      
+
       // Should render text content that is meaningful
       const text = testElement.shadowRoot.textContent.trim();
       expect(text.length).to.be.greaterThan(0);
@@ -43,10 +43,13 @@ describe("moment-element test", () => {
   describe("Accessibility - Attributes and Localization", () => {
     it("supports locale changes for accessible formatting", async () => {
       const testElement = await fixture(html`
-        <moment-element datetime="2020-01-01T12:00:00Z" locale="fr"></moment-element>
+        <moment-element
+          datetime="2020-01-01T12:00:00Z"
+          locale="fr"
+        ></moment-element>
       `);
       await testElement.updateComplete;
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
@@ -55,7 +58,7 @@ describe("moment-element test", () => {
         <moment-element datetime="invalid-date"></moment-element>
       `);
       await testElement.updateComplete;
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });

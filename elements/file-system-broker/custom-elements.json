@@ -12,11 +12,74 @@
           "name": "FileSystemBroker",
           "members": [
             {
+              "kind": "method",
+              "name": "isFileSystemAccessSupported",
+              "description": "Check if File System Access API is available",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "isMobileDevice",
+              "description": "Check if device is likely mobile based on user agent and touch capability",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
               "kind": "field",
               "name": "tag",
               "static": true,
               "description": "This is a convention, not the standard",
               "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "loadFileFallback",
+              "parameters": [
+                {
+                  "name": "type",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "multiple",
+                  "default": "false",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                }
+              ],
+              "description": "Fallback file selection using HTML input element for mobile devices",
+              "return": {
+                "type": {
+                  "text": "Promise<File>"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "typeToAcceptString",
+              "parameters": [
+                {
+                  "name": "type",
+                  "type": {
+                    "text": "String"
+                  }
+                }
+              ],
+              "description": "Convert type to accept string for HTML input element",
+              "return": {
+                "type": {
+                  "text": "String"
+                }
+              }
             },
             {
               "kind": "method",
@@ -298,6 +361,85 @@
                 "text": "string"
               },
               "default": "\"mammoth/\""
+            },
+            {
+              "kind": "method",
+              "name": "isFileSystemAccessSupported",
+              "description": "Check if File System Access API is available",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "isMobileDevice",
+              "description": "Check if device is likely mobile based on user agent and touch capability",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "loadFileFallback",
+              "parameters": [
+                {
+                  "name": "type",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "multiple",
+                  "default": "false",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                }
+              ],
+              "description": "Fallback file selection using HTML input element for mobile devices",
+              "return": {
+                "type": {
+                  "text": "Promise<File>"
+                }
+              },
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "typeToAcceptString",
+              "parameters": [
+                {
+                  "name": "type",
+                  "type": {
+                    "text": "String"
+                  }
+                }
+              ],
+              "description": "Convert type to accept string for HTML input element",
+              "return": {
+                "type": {
+                  "text": "String"
+                }
+              },
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
             },
             {
               "kind": "method",
@@ -722,6 +864,85 @@
                 "text": "object"
               },
               "default": "{ msg: \"xlsx\", worker: this.libPath + \"xlsxworker.js\", }"
+            },
+            {
+              "kind": "method",
+              "name": "isFileSystemAccessSupported",
+              "description": "Check if File System Access API is available",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "isMobileDevice",
+              "description": "Check if device is likely mobile based on user agent and touch capability",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              },
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "loadFileFallback",
+              "parameters": [
+                {
+                  "name": "type",
+                  "type": {
+                    "text": "String"
+                  }
+                },
+                {
+                  "name": "multiple",
+                  "default": "false",
+                  "type": {
+                    "text": "Boolean"
+                  }
+                }
+              ],
+              "description": "Fallback file selection using HTML input element for mobile devices",
+              "return": {
+                "type": {
+                  "text": "Promise<File>"
+                }
+              },
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
+            },
+            {
+              "kind": "method",
+              "name": "typeToAcceptString",
+              "parameters": [
+                {
+                  "name": "type",
+                  "type": {
+                    "text": "String"
+                  }
+                }
+              ],
+              "description": "Convert type to accept string for HTML input element",
+              "return": {
+                "type": {
+                  "text": "String"
+                }
+              },
+              "inheritedFrom": {
+                "name": "FileSystemBroker",
+                "module": "file-system-broker.js"
+              }
             },
             {
               "kind": "method",

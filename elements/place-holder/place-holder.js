@@ -26,7 +26,10 @@ class PlaceHolder extends DDD {
           transition: 0.3s all linear;
         }
         :host([drag-over]) {
-          border: var(--place-holder-drag-over-border, var(--ddd-border-lg) dashed var(--ddd-theme-default-info));
+          border: var(
+            --place-holder-drag-over-border,
+            var(--ddd-border-lg) dashed var(--ddd-theme-default-info)
+          );
         }
         .wrapper {
           text-align: center;
@@ -63,9 +66,7 @@ class PlaceHolder extends DDD {
   render() {
     return html`
       <div class="wrapper">
-        <simple-icon
-          icon="${this.iconFromType}"
-        ></simple-icon>
+        <simple-icon icon="${this.iconFromType}"></simple-icon>
         <div class="text">${this.calcText}</div>
         <div class="directions">${this.directions}</div>
       </div>

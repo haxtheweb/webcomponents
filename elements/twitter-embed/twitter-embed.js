@@ -95,7 +95,6 @@ class TwitterEmbed extends LitElement {
               "./locales/twitter-embed.haxProperties.es.json",
               import.meta.url,
             ).href + "/../",
-          
         },
       }),
     );
