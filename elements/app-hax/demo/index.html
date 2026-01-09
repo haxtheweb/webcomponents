@@ -10,12 +10,12 @@
     <link rel="icon" href="../lib/assets/images/HAXLogo.svg" type="image/png">
     <meta name="Description" content="Put your description here." />
     <script>
-      window.process = window.process || {
+      globalThis.process = globalThis.process || {
         env: {
           NODE_ENV: "production"
         }
       };
-      window.WCGlobalBasePath = "/node_modules/";
+      globalThis.WCGlobalBasePath = "/node_modules/";
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -207,21 +207,21 @@
           <button id="resetbtn">reset app</button>
         </div>
         <script>
-          window.HAXCMSContext="nodejs";
+          globalThis.HAXCMSContext="nodejs";
           // reduce FOUC for dark mode so it starts in dark rapidly if selected
-          if (window.localStorage && window.localStorage.getItem('app-hax-darkMode')) {
-            if (window.localStorage.getItem('app-hax-darkMode') == 'true') {
-              document.body.classList.add('dark-mode');
+          if (globalThis.localStorage && globalThis.localStorage.getItem('app-hax-darkMode')) {
+            if (globalThis.localStorage.getItem('app-hax-darkMode') == 'true') {
+              globalThis.document.body.classList.add('dark-mode');
             }
             else {
-              document.body.classList.remove('dark-mode');
+              globalThis.document.body.classList.remove('dark-mode');
             }
           }
           // remove loading text
-        window.addEventListener('app-hax-loaded',(e) => {
+        globalThis.addEventListener('app-hax-loaded',(e) => {
           dqs("#loading").remove();
         });
-          function dqs(sel) { return document.querySelector(sel)}
+          function dqs(sel) { return globalThis.document.querySelector(sel)}
           dqs("#resetbtn").addEventListener("click", (e) => {
             dqs("app-hax").reset(true);
           });
@@ -232,112 +232,109 @@
         // think of it like localStorage but the backend is injecting at run time
         // so that we can deploy this at different domains more headlessly
         // IMPORTANT: This must be defined BEFORE the module import so the store can access it
-        const blueStyle = '../lib/assets/images/BlueStyle.svg';
-        const greyStyle = '../lib/assets/images/GreyStyle.svg'; 
-        const partyStyle = '../lib/assets/images/PartyStyle.svg';
-        window.appSettings = {
+        globalThis.appSettings = {
           "token": "thingsandstuff",
           "jwt": "supDudeImmaJwat",
           "demo": true,
           "getSitesList": 'sites.json',
           "createSite": 'createSite.json',
-          "skeletonsList": '/elements/app-hax/demo/skeletons.json',
+          "skeletonsList": 'skeletons.json',
           "getUserDataPath": "getUserData.json",
-          "login": '/elements/app-hax/demo/login.json',
-          "refreshUrl": "/elements/app-hax/demo/refreshAccessToken",
-          "logout": "/elements/app-hax/demo/logout.json",
-          "connectionSettings": "/bto108/system/api/connectionSettings",
+          "login": 'login.json',
+          "refreshUrl": "login.json",
+          "logout": "logout.json",
+          "connectionSettings": "connectionSettings.json",
           "redirectUrl": "/",
           "themes": {
               "clean-one": {
                   "element": "clean-one",
                   "path": "@haxtheweb/clean-one/clean-one.js",
                   "name": "Course theme",
-                  "thumbnail": partyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg", 
               },
               "clean-two": {
                   "element": "clean-two",
                   "path": "@haxtheweb/clean-two/clean-two.js",
                   "name": "Course theme 2",
-                  "thumbnail": greyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-two-thumb.jpg", 
               },
               "clean-portfolio-theme": {
                 "element": "clean-portfolio-theme",
                 "path": "@haxtheweb/clean-portfolio-theme/clean-portfolio-theme.js",
                 "name": "Clean Portfolio theme",
-                "thumbnail": greyStyle, 
+                "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg", 
               },
               "journey-theme": {
                 "element": "journey-theme",
                 "path": "@haxtheweb/journey-theme/journey-theme.js",
                 "name": "Journey theme",
-                "thumbnail": partyStyle, 
+                "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-journey-theme-thumb.jpg", 
               },
               "learn-two-theme": {
                   "element": "learn-two-theme",
                   "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
                   "name": "Course theme 3",
-                  "thumbnail": blueStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-learn-two-theme-thumb.jpg", 
               },
               "bootstrap-theme": {
                   "element": "bootstrap-theme",
                   "path": "@haxtheweb/bootstrap-theme/bootstrap-theme.js",
                   "name": "Bootstrap theme",
-                  "thumbnail": partyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-bootstrap-theme-thumb.jpg", 
               },
               "haxor-slevin": {
                   "element": "haxor-slevin",
                   "path": "@haxtheweb/haxor-slevin/haxor-slevin.js",
                   "name": "Blog theme",
-                  "thumbnail": blueStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-haxor-slevin-thumb.jpg", 
               },
               "outline-player": {
                   "element": "outline-player",
                   "path": "@haxtheweb/outline-player/outline-player.js",
                   "name": "Documentation theme",
-                  "thumbnail": blueStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-outline-player-thumb.jpg", 
               },
               "terrible-themes": {
                   "element": "terrible-themes",
                   "path": "@haxtheweb/terrible-themes/terrible-themes.js",
                   "name": "Terrible apartment site",
-                  "thumbnail": partyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-terrible-themes-thumb.jpg", 
               },
               "terrible-productionz-themes": {
                   "element": "terrible-productionz-themes",
                   "path": "@haxtheweb/terrible-themes/lib/terrible-productionz-themes.js",
                   "name": "Terrible productionz site",
-                  "thumbnail": blueStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-terrible-productionz-themes-thumb.jpg", 
               },
               "terrible-resume-themes": {
                   "element": "terrible-resume-themes",
                   "path": "@haxtheweb/terrible-themes/lib/terrible-resume-themes.js",
                   "name": "Terrible resume",
-                  "thumbnail": partyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-terrible-resume-themes-thumb.jpg", 
               },
               "terrible-best-themes": {
                   "element": "terrible-best-themes",
                   "path": "@haxtheweb/terrible-themes/lib/terrible-best-themes.js",
                   "name": "Terrible best hockey",
-                  "thumbnail": blueStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-terrible-best-themes-thumb.jpg", 
               },
               "terrible-outlet-themes": {
                   "element": "terrible-outlet-themes",
                   "path": "@haxtheweb/terrible-themes/lib/terrible-outlet-themes.js",
                   "name": "Terrible blog",
-                  "thumbnail": partyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-terrible-outlet-themes-thumb.jpg", 
               },
               "polaris-theme": {
                   "element": "polaris-theme",
                   "path": "@haxtheweb/polaris-theme/polaris-theme.js",
                   "name": "Polaris",
-                  "thumbnail": partyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-polaris-theme-thumb.jpg", 
               },
               "polaris-flex-theme": {
                   "element": "polaris-flex-theme",
                   "path": "@haxtheweb/polaris-theme/lib/polaris-flex-theme.js",
                   "name": "Polaris - Flex",
-                  "thumbnail": partyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-theme-thumb.jpg", 
               }
           },
           "saveNodePath": "/bto108/system/api/saveNode",

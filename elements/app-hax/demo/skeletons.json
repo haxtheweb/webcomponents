@@ -4,7 +4,7 @@
     {
       "title": "Course Site Template",
       "description": "A structured template for online courses with lessons and modules",
-      "image": "@haxtheweb/haxcms-elements/lib/assets/images/course-template.svg",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
       "category": ["course", "education"],
       "attributes": [
         { "icon": "hax:lesson", "tooltip": "Educational Content" }
@@ -15,7 +15,7 @@
     {
       "title": "Portfolio Site Template",
       "description": "A clean template for showcasing work and projects",
-      "image": "@haxtheweb/haxcms-elements/lib/assets/images/portfolio-template.svg",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
       "category": ["portfolio", "showcase"],
       "attributes": [
         { "icon": "icons:perm-identity", "tooltip": "Personal Portfolio" }
@@ -26,7 +26,7 @@
     {
       "title": "Blog Site Template",
       "description": "A template for creating blog sites with posts and categories",
-      "image": "@haxtheweb/haxcms-elements/lib/assets/images/blog-template.svg",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-haxma-theme-thumb.jpg",
       "category": ["blog", "writing"],
       "attributes": [{ "icon": "lrn:write", "tooltip": "Blog Content" }],
       "demo-url": "#",
@@ -35,7 +35,7 @@
     {
       "title": "Documentation Site",
       "description": "Template for creating documentation and knowledge bases",
-      "image": "@haxtheweb/haxcms-elements/lib/assets/images/docs-template.svg",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-app-hax-theme-thumb.jpg",
       "category": ["documentation", "reference"],
       "attributes": [
         { "icon": "icons:description", "tooltip": "Documentation" }
