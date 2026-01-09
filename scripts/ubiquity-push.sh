@@ -4,11 +4,11 @@
 
 ## STEP 0 publish all current assets
 cd ~/haxtheweb/webcomponents
-lerna run build --concurrency=1
+#lerna run build --concurrency=1
 git add -A
 git commit -m "ubiquity publish"
 # start in webcomponents w/ the biggy that needs human intervention
-lerna publish --concurrency=1
+#lerna publish --concurrency=1
 
 ## STEP 1 RUN BUILD ROUTINE FOR ALL WEBCOMPONENTS
 # run new build routine in webcomponents
