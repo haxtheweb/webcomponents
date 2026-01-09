@@ -1236,7 +1236,7 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
                 ?dark="${this.dark}"
                 aria-labelledby="download-label"
                 class="setting-control"
-                icon="download"
+                icon="file-download"
                 ?disabled="${this.noPrinting || this.learningMode}"
                 ?hidden="${this.noPrinting || this.learningMode}"
                 @click="${this.download}"
