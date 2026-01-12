@@ -135,7 +135,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
           Save
         </button>
         <button class="hax-modal-btn cancel" @click="${this._cancel}">
-          cancel
+          Cancel
         </button>
       </div>
     `;
