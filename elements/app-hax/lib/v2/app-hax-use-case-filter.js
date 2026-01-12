@@ -324,6 +324,21 @@ export class AppHaxUseCaseFilter extends LitElement {
           background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
         }
+
+        .filter-btn.active:hover,
+        .filter-btn.active:focus {
+            background: var(--ddd-theme-default-keystoneYellow, #ffd100);
+            color: var(--ddd-theme-default-nittanyNavy, #001e44);
+        }
+
+        :host([dark]) .filter-btn.active:hover,
+        :host([dark]) .filter-btn.active:focus,
+        body.dark-mode .filter-btn.active:hover,
+        body.dark-mode .filter-btn.active:focus {
+          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+        }
+
         .filter-btn .icon {
           font-size: var(--ddd-font-size-3xs, 12px);
           color: inherit;
