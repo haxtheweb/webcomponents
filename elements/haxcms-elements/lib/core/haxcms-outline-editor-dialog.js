@@ -112,7 +112,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     this.t = {
       ...this.t,
       save: "Save",
-      cancel: "cancel",
+      cancel: "Cancel",
     };
   }
   static get properties() {
