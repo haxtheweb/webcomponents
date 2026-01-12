@@ -1529,4 +1529,4 @@ export class AppHaxUseCaseFilter extends LitElement {
     }
   }
 }
-customElements.define("app-hax-use-case-filter", AppHaxUseCaseFilter);
+customElements.define("app-hax-use-case-filter", AppHaxUseCaseFilter); 
