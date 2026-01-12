@@ -23,9 +23,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           path-to-signatures: 'signatures/version1/cla.json'
-          path-to-document: 'https://github.com/haxtheweb/webcomponents/blob/main/CLA.md'
+          path-to-document: 'https://github.com/haxtheweb/webcomponents/blob/master/CLA.md'
           # branch should not be protected
-          branch: 'main'
+          branch: 'master'
           allowlist: 'btopro,*[bot]'
           # the followings are the optional inputs - If the optional inputs are not given, then default values will be taken
           remote-organization-name: ''
