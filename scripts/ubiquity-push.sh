@@ -168,6 +168,7 @@ git add -A
 git commit -m "ubiquity publish"
 ./node_modules/.bin/commit-and-tag-version --release-as $version
 git push --follow-tags origin main
+npm publish
 
 cd ~/haxtheweb/desktop/
 git pull origin master

@@ -610,9 +610,6 @@ class AppHaxTheme extends HAXCMSRememberRoute(
           --simple-tooltip-border-radius: 0;
           --simple-tooltip-font-size: 14px;
         }
-        body.app-hax-create {
-          overflow: hidden;
-        }
         body.dark-mode {
           background-color: black;
           background-image: url("${unsafeCSS(DMGridBox)}");
