@@ -3185,61 +3185,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
   }
 
-  /**
-   * update buttons since these are triggered by a mix of
-   * differnet backend types we can't leverage the store
-   * since a CMS needs to just hardcode these at run time
-   * for some environments
-   */
-  updateAvailableButtons() {
-    if (this.shadowRoot) {
-      setTimeout(() => {
-        // backText
-        if (globalThis.appSettings && globalThis.appSettings.backText) {
-          this.backText = globalThis.appSettings.backText;
-        }
-        let ary = [
-          {
-            varPath: "saveNodePath",
-            selector: "#editbutton",
-          },
-          {
-            varPath: "createNodePath",
-            selector: "#addpagebutton",
-          },
-        ];
-        // see which features should be enabled
-        ary.forEach((pair) => {
-          if (
-            globalThis.appSettings &&
-            globalThis.appSettings[pair.varPath] &&
-            globalThis.appSettings[pair.varPath] != null &&
-            globalThis.appSettings[pair.varPath] != "" &&
-            globalThis.appSettings[pair.varPath] != "null"
-          ) {
-            if (pair.dep) {
-              if (
-                globalThis.appSettings[pair.dep] != null &&
-                globalThis.appSettings[pair.dep] != "" &&
-                globalThis.appSettings[pair.dep] != "null"
-              ) {
-                this.shadowRoot
-                  .querySelector(pair.selector)
-                  .removeAttribute("hidden");
-              } else {
-                // a dependency didn't meet the requirement
-              }
-            } else {
-              this.shadowRoot
-                .querySelector(pair.selector)
-                .removeAttribute("hidden");
-            }
-          }
-        });
-      }, 100);
-    }
-  }
-
   firstUpdated(changedProperties) {
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
@@ -4104,7 +4049,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }
     });
 
-    this.updateAvailableButtons();
     // load user data
     this.dispatchEvent(
       new CustomEvent("haxcms-load-user-data", {
@@ -4552,8 +4496,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       if (store.userData) {
         this.userName = toJS(store.userData.userName);
         this.userPicture = toJS(store.userData.userPicture);
-        // update buttons to match since we got a state response
-        this.updateAvailableButtons();
       }
       this.__disposer.push(reaction);
     });
@@ -4601,7 +4543,45 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const activeItem = toJS(store.activeItem);
       this.activeItem = activeItem;
       // update buttons to match since we got a state response
-      this.updateAvailableButtons();
+      setTimeout(() => {
+        if (!this.shadowRoot) return
+        /** legacy comment:
+         * update buttons since these are triggered by a mix of
+         * different backend types we can't leverage the store
+         * since a CMS needs to just hardcode these at run time
+         * for some environments
+         */
+        if (globalThis.appSettings && globalThis.appSettings.backText) {
+          this.backText = globalThis.appSettings.backText;
+        }
+        let ary = [
+          {
+            varPath: "saveNodePath",
+            selector: "#editbutton",
+          },
+          {
+            varPath: "createNodePath",
+            selector: "#addpagebutton",
+          },
+        ];
+        // see which features should be enabled
+        ary.forEach((pair) => {
+          // If the site supports skeletons (HAXcms), do not force visibility
+          if (this.platformConfig) return
+          else if (
+            globalThis.appSettings &&
+            globalThis.appSettings[pair.varPath] &&
+            globalThis.appSettings[pair.varPath] != null &&
+            globalThis.appSettings[pair.varPath] != "" &&
+            globalThis.appSettings[pair.varPath] != "null"
+          ) {
+            this.shadowRoot
+              .querySelector(pair.selector)
+              .removeAttribute("hidden");            
+          }
+        });
+      }, 100);
+
       if (activeItem && activeItem.id) {
         this.activeTitle = activeItem.title;
         this.onInternalRoute = activeItem._internalRoute || false;
