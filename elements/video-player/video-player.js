@@ -166,14 +166,14 @@ class VideoPlayer extends IntersectionObserverMixin(
                 ?linkable="${this.linkable}"
                 preload="metadata"
                 media-title="${this.mediaTitle || ""}"
-                .sources="${this.sourceProperties}"
+                .sources=${this.sourceProperties}
                 ?stand-alone="${this.standAlone}"
                 sticky-corner="${this.stickyCorner || "none"}"
                 thumbnail-src="${this.thumbnailSrc}"
-                .tracks="${this.trackProperties}"
-                .crossorigin="${this.crossorigin || "anonymous"}"
-                .width="${this.width}"
-                .height="${this.height}"
+                .tracks=${this.trackProperties}
+                .crossorigin=${this.crossorigin || "anonymous"}
+                .width=${this.width}
+                .height=${this.height}
                 youtube-id="${this.youtubeId}"
                 audio-description-source="${this.audioDescriptionSource}"
                 ?audio-description-enabled="${this.audioDescriptionEnabled}"
@@ -917,7 +917,13 @@ class VideoPlayer extends IntersectionObserverMixin(
       typeof this.tracks === "string"
         ? JSON.parse(this.tracks)
         : (this.tracks || []).slice();
-    if (this.track) temp.unshift({ src: this.track });
+    // If an explicit tracks array has been provided, prefer that over the
+    // legacy single `track` string. Only fall back to `track` when there are
+    // no track objects defined. This avoids conflicts where both are set and
+    // an old single track overrides the newer array-based configuration.
+    if ((!temp || temp.length === 0) && this.track) {
+      temp.unshift({ src: this.track });
+    }
     if (temp && temp.length > 0)
       temp.forEach((item) => {
         item.srclang = item.srclang || this.lang;
@@ -982,13 +988,22 @@ class VideoPlayer extends IntersectionObserverMixin(
       }
       slot.remove();
     });
-    if (this.track !== undefined && this.track !== null && this.track !== "")
+    // As with trackProperties, only fall back to the single `track` string
+    // when there are no explicit tracks configured. This keeps legacy
+    // content working while ensuring new array-based tracks take priority.
+    if (
+      this.track !== undefined &&
+      this.track !== null &&
+      this.track !== "" &&
+      (!temp || temp.length === 0)
+    ) {
       temp.push({
         src: this.track,
         srclang: this.lang,
         label: this.lang === "en" ? this.t.englishLabel : this.lang,
         kind: "subtitles",
       });
+    }
     return temp;
   }
 
@@ -1117,8 +1132,14 @@ class VideoPlayer extends IntersectionObserverMixin(
    * postProcesshaxNodeToContent - clean up so we don't have empty array data
    */
   haxpostProcessNodeToContent(content) {
+    // Clean up empty sources / tracks arrays regardless of whether they
+    // are followed by a comma or another attribute. This prevents
+    // serialization artifacts like sources="[]" and tracks="[]" from
+    // lingering in saved content.
     content = content.replace(' sources="[]",', "");
+    content = content.replace(' sources="[]"', "");
     content = content.replace(' tracks="[]",', "");
+    content = content.replace(' tracks="[]"', "");
     return content;
   }
   /**
