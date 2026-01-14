@@ -11,10 +11,10 @@ jobs:
       fail-fast: false
       matrix:
         platform: [ubuntu-latest]
-        node-version: [20]
+        node-version: [22]
         include:
           - platform: ubuntu-latest
-            node-version: 20
+            node-version: 22
     runs-on: ${{ matrix.platform }}
     steps:
       - name: Checkout
