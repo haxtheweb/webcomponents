@@ -34,5 +34,4 @@ jobs:
           create-file-commit-message: 'Creating file for storing CLA Signatures'
           signed-commit-message: 'CLA signed by $contributorName'
           custom-notsigned-prcomment: 'Thank you for your contribution! Before we can merge your PR, we need you to sign our Contributor License Agreement (CLA). Please comment **"I have read the CLA Document and I hereby sign the CLA"** to agree to the [CLA terms](https://github.com/haxtheweb/cla/blob/main/CLA.md).'
-          custom-pr-sign-comment: 'Thank you for signing the CLA! Your contribution will now be reviewed.'
           custom-allsigned-prcomment: 'All contributors have signed the CLA. Thank you!'
