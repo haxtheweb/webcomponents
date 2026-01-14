@@ -207,7 +207,7 @@ export class SiteSkeletonGenerator {
     // Create UUID mappings for items
     const uuidMap = new Map();
     items.forEach((item) => {
-      uuidMap.set(item.id, generateResourceID());
+      uuidMap.set(item.id, generateResourceID(''));
     });
 
     const structure = [];
@@ -488,7 +488,7 @@ export class SiteSkeletonGenerator {
     // Create new UUIDs for all items first
     skeleton.structure.forEach((item) => {
       if (item.id) {
-        oldToNewMap.set(item.id, generateResourceID());
+        oldToNewMap.set(item.id, generateResourceID(''));
       }
     });
 

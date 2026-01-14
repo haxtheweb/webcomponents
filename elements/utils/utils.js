@@ -1217,7 +1217,7 @@ function wipeSlot(element, slot = "*") {
 /**
  * Generate a uinque ID
  */
-function generateResourceID(base = "") {
+function generateResourceID(base = "#") {
   function idPart() {
     return Math.floor((1 + Math.random()) * 0x10000)
       .toString(16)
