@@ -47,7 +47,7 @@ export class SiteSkeletonGenerator {
         // Fields used by app-hax v2 presentation layer
         useCaseTitle: this.getSiteMetaName(manifest),
         useCaseDescription: this.getSiteDescription(manifest),
-        useCaseImage: "", // optional preview image; can be set later
+        useCaseImage: `@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-${themeConfig.element}-thumb.jpg` , // optional preview image; can be set later
         category: this.extractSiteCategories(manifest) || [],
         tags: this.extractSiteTags(manifest) || [],
         attributes: [], // optional icon badges [{icon, tooltip}]
