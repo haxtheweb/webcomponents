@@ -1,0 +1,47 @@
+{
+  "status": 200,
+  "data": [
+    {
+      "title": "Course Site Template",
+      "description": "A structured template for online courses with lessons and modules",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
+      "category": ["course", "education"],
+      "attributes": [
+        { "icon": "hax:lesson", "tooltip": "Educational Content" }
+      ],
+      "demo-url": "https://oer.hax.psu.edu/bto108/sites/edtechjoker-course-skelton",
+      "skeleton-url": "#"
+    },
+    {
+      "title": "Portfolio Site Template",
+      "description": "A clean template for showcasing work and projects",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
+      "category": ["portfolio", "showcase"],
+      "attributes": [
+        { "icon": "icons:perm-identity", "tooltip": "Personal Portfolio" }
+      ],
+      "demo-url": "#",
+      "skeleton-url": "#"
+    },
+    {
+      "title": "Blog Site Template",
+      "description": "A template for creating blog sites with posts and categories",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-haxma-theme-thumb.jpg",
+      "category": ["blog", "writing"],
+      "attributes": [{ "icon": "lrn:write", "tooltip": "Blog Content" }],
+      "demo-url": "#",
+      "skeleton-url": "#"
+    },
+    {
+      "title": "Documentation Site",
+      "description": "Template for creating documentation and knowledge bases",
+      "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-app-hax-theme-thumb.jpg",
+      "category": ["documentation", "reference"],
+      "attributes": [
+        { "icon": "icons:description", "tooltip": "Documentation" }
+      ],
+      "demo-url": "#",
+      "skeleton-url": "#"
+    }
+  ]
+}

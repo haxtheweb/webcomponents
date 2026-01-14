@@ -17,32 +17,32 @@ describe("media-behaviors test", () => {
   describe("Accessibility - Media Controls", () => {
     it("provides accessible media behavior patterns", async () => {
       await element.updateComplete;
-      
+
       // Should provide accessible patterns for media elements
-      expect(element.tagName.toLowerCase()).to.equal('media-behaviors');
+      expect(element.tagName.toLowerCase()).to.equal("media-behaviors");
       await expect(element).shadowDom.to.be.accessible();
     });
 
     it("supports keyboard navigation patterns", async () => {
       await element.updateComplete;
-      
+
       // Should not interfere with keyboard navigation
       const style = globalThis.getComputedStyle(element);
-      expect(style.display).to.not.equal('none');
+      expect(style.display).to.not.equal("none");
     });
   });
 
   describe("Accessibility - Behavior Patterns", () => {
     it("maintains accessibility when applied to media elements", async () => {
       await element.updateComplete;
-      
+
       // Should enhance rather than diminish accessibility
       await expect(element).shadowDom.to.be.accessible();
     });
 
     it("provides consistent interaction patterns", async () => {
       await element.updateComplete;
-      
+
       // Should provide consistent, predictable behavior
       expect(element).to.exist;
     });

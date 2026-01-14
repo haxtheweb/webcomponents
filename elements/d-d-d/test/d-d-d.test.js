@@ -20,11 +20,11 @@ describe("d-d-d basic functionality", () => {
   });
 
   it("has correct default properties", () => {
-    expect(element.isSafari).to.be.a('boolean');
+    expect(element.isSafari).to.be.a("boolean");
   });
 
   it("has correct tag name", async () => {
-    expect(element.constructor.tag).to.equal('d-d-d');
+    expect(element.constructor.tag).to.equal("d-d-d");
   });
 
   it("extends DDDSuper and SimpleColorsSuper correctly", () => {
@@ -42,11 +42,8 @@ describe("d-d-d accessibility tests", () => {
   });
 
   it("maintains accessibility with SimpleColors properties", async () => {
-    const el = await fixture(html`
-      <d-d-d accent-color="blue" dark>
-      </d-d-d>
-    `);
-    
+    const el = await fixture(html` <d-d-d accent-color="blue" dark> </d-d-d> `);
+
     await expect(el).to.be.accessible();
   });
 
@@ -59,17 +56,17 @@ describe("d-d-d accessibility tests", () => {
         </div>
       </d-d-d>
     `);
-    
+
     await expect(el).to.be.accessible();
   });
 
   it("has proper Safari detection and attribute", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
-    expect(typeof el.isSafari).to.equal('boolean');
-    
+
+    expect(typeof el.isSafari).to.equal("boolean");
+
     if (el.isSafari) {
-      expect(el.hasAttribute('is-safari')).to.be.true;
+      expect(el.hasAttribute("is-safari")).to.be.true;
     }
   });
 });
@@ -78,40 +75,37 @@ describe("d-d-d accessibility tests", () => {
 describe("d-d-d property validation", () => {
   it("handles isSafari property correctly", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
-    expect(typeof el.isSafari).to.equal('boolean');
-    expect(el.isSafari).to.be.a('boolean');
+
+    expect(typeof el.isSafari).to.equal("boolean");
+    expect(el.isSafari).to.be.a("boolean");
   });
 
   it("inherits SimpleColors properties", async () => {
-    const el = await fixture(html`
-      <d-d-d accent-color="red" dark>
-      </d-d-d>
-    `);
-    
-    expect(el.accentColor).to.equal('red');
+    const el = await fixture(html` <d-d-d accent-color="red" dark> </d-d-d> `);
+
+    expect(el.accentColor).to.equal("red");
     expect(el.dark).to.be.true;
   });
 
   it("updates properties reactively", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
-    el.accentColor = 'green';
+
+    el.accentColor = "green";
     el.dark = true;
-    
+
     await el.updateComplete;
-    
-    expect(el.accentColor).to.equal('green');
+
+    expect(el.accentColor).to.equal("green");
     expect(el.dark).to.be.true;
   });
 
   it("reflects isSafari attribute correctly", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
+
     if (el.isSafari) {
-      expect(el.getAttribute('is-safari')).to.not.be.null;
+      expect(el.getAttribute("is-safari")).to.not.be.null;
     } else {
-      expect(el.hasAttribute('is-safari')).to.be.false;
+      expect(el.hasAttribute("is-safari")).to.be.false;
     }
   });
 });
@@ -120,7 +114,7 @@ describe("d-d-d property validation", () => {
 describe("d-d-d design system integration", () => {
   it("registers DDD design system with DesignSystemManager", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
+
     // Check if DesignSystemManager is available and DDD system is registered
     expect(globalThis.DesignSystemManager).to.exist;
     expect(globalThis.DesignSystemManager.systems).to.exist;
@@ -129,35 +123,36 @@ describe("d-d-d design system integration", () => {
 
   it("has DDDSuper mixin functionality", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
+
     // Should have DDDSuper properties
     expect(el.isSafari).to.not.be.undefined;
   });
 
   it("includes DDDReset styles", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
+
     const styles = el.constructor.styles;
-    expect(styles).to.be.an('array');
+    expect(styles).to.be.an("array");
     expect(styles.length).to.be.greaterThan(0);
   });
 
   it("supports CSS feature detection for initial-letter", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
+
     // Element should exist regardless of CSS support
     expect(el).to.exist;
-    
+
     // Check for dropCap-noSupport class if initial-letter not supported
     if (!CSS.supports("initial-letter", "1")) {
-      expect(globalThis.document.body.classList.contains("dropCap-noSupport")).to.be.true;
+      expect(globalThis.document.body.classList.contains("dropCap-noSupport"))
+        .to.be.true;
     }
   });
 
   it("sets DesignSystemManager active to ddd", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
-    expect(globalThis.DesignSystemManager.active).to.equal('ddd');
+
+    expect(globalThis.DesignSystemManager.active).to.equal("ddd");
   });
 });
 
@@ -169,14 +164,14 @@ describe("DDDSuper mixin functionality", () => {
         super();
       }
     }
-    
+
     const testEl = new TestElement();
-    expect(testEl.isSafari).to.be.a('boolean');
+    expect(testEl.isSafari).to.be.a("boolean");
   });
 
   it("includes design system styles when extended", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
+
     const styles = el.constructor.styles;
     expect(styles).to.exist;
     expect(Array.isArray(styles)).to.be.true;
@@ -184,10 +179,10 @@ describe("DDDSuper mixin functionality", () => {
 
   it("properly initializes DesignSystemManager", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
+
     expect(globalThis.DesignSystemManager).to.exist;
     expect(globalThis.DesignSystemManager.systems.ddd).to.exist;
-    expect(globalThis.DesignSystemManager.systems.ddd.name).to.equal('ddd');
+    expect(globalThis.DesignSystemManager.systems.ddd.name).to.equal("ddd");
     expect(globalThis.DesignSystemManager.systems.ddd.hax).to.be.true;
   });
 });
@@ -199,16 +194,16 @@ describe("DDDPulseEffectSuper mixin functionality", () => {
       constructor() {
         super();
       }
-      
+
       static get properties() {
         return super.properties || {};
       }
     }
-    
+
     const testEl = new TestPulseElement();
     expect(testEl.dataPulse).to.be.null;
-    expect(typeof testEl.togglePulseEffect).to.equal('function');
-    expect(typeof testEl.removePulseEffect).to.equal('function');
+    expect(typeof testEl.togglePulseEffect).to.equal("function");
+    expect(typeof testEl.removePulseEffect).to.equal("function");
   });
 
   it("handles pulse effect property changes", () => {
@@ -217,13 +212,13 @@ describe("DDDPulseEffectSuper mixin functionality", () => {
         super();
       }
     }
-    
+
     const testEl = new TestPulseElement();
-    
+
     // Test pulse effect activation
-    testEl.dataPulse = 'active';
-    expect(testEl.dataPulse).to.equal('active');
-    
+    testEl.dataPulse = "active";
+    expect(testEl.dataPulse).to.equal("active");
+
     // Test pulse effect deactivation
     testEl.dataPulse = null;
     expect(testEl.dataPulse).to.be.null;
@@ -233,8 +228,16 @@ describe("DDDPulseEffectSuper mixin functionality", () => {
 // SimpleColors integration tests
 describe("d-d-d SimpleColors integration", () => {
   it("supports SimpleColors accent colors", async () => {
-    const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink'];
-    
+    const colors = [
+      "red",
+      "orange",
+      "yellow",
+      "green",
+      "blue",
+      "purple",
+      "pink",
+    ];
+
     for (const color of colors) {
       const el = await fixture(html`<d-d-d accent-color="${color}"></d-d-d>`);
       expect(el.accentColor).to.equal(color);
@@ -243,38 +246,38 @@ describe("d-d-d SimpleColors integration", () => {
 
   it("supports dark mode", async () => {
     const el = await fixture(html`<d-d-d dark></d-d-d>`);
-    
+
     expect(el.dark).to.be.true;
-    expect(el.hasAttribute('dark')).to.be.true;
+    expect(el.hasAttribute("dark")).to.be.true;
   });
 
   it("generates appropriate CSS custom properties", async () => {
     const el = await fixture(html`<d-d-d accent-color="blue"></d-d-d>`);
-    
+
     // SimpleColors should generate CSS custom properties
     const computedStyle = getComputedStyle(el);
-    expect(el.accentColor).to.equal('blue');
+    expect(el.accentColor).to.equal("blue");
   });
 });
 
 // Responsive design tests
 describe("d-d-d responsive design", () => {
   beforeEach(async () => {
-    await setViewport({width: 375, height: 750});
+    await setViewport({ width: 375, height: 750 });
   });
 
   afterEach(async () => {
-    await setViewport({width: 1024, height: 768});
+    await setViewport({ width: 1024, height: 768 });
   });
 
   it("works correctly on mobile viewport", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
+
     expect(el).to.exist;
     await el.updateComplete;
-    
+
     // Should maintain functionality on mobile
-    expect(el.isSafari).to.be.a('boolean');
+    expect(el.isSafari).to.be.a("boolean");
   });
 
   it("maintains accessibility on mobile", async () => {
@@ -285,95 +288,97 @@ describe("d-d-d responsive design", () => {
 
 describe("d-d-d desktop responsiveness", () => {
   beforeEach(async () => {
-    await setViewport({width: 1200, height: 800});
+    await setViewport({ width: 1200, height: 800 });
   });
 
   afterEach(async () => {
-    await setViewport({width: 1024, height: 768});
+    await setViewport({ width: 1024, height: 768 });
   });
 
   it("works correctly on desktop viewport", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
+
     expect(el).to.exist;
     await el.updateComplete;
-    
-    expect(el.isSafari).to.be.a('boolean');
+
+    expect(el.isSafari).to.be.a("boolean");
   });
 });
 
 // Error handling and edge cases
 describe("d-d-d error handling", () => {
   it("handles invalid accent colors gracefully", async () => {
-    const el = await fixture(html`<d-d-d accent-color="invalid-color"></d-d-d>`);
-    
-    expect(el.accentColor).to.equal('invalid-color');
+    const el = await fixture(
+      html`<d-d-d accent-color="invalid-color"></d-d-d>`,
+    );
+
+    expect(el.accentColor).to.equal("invalid-color");
     expect(el).to.exist;
   });
 
   it("handles rapid property changes", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
-    const colors = ['red', 'blue', 'green', 'purple', 'orange'];
-    
+
+    const colors = ["red", "blue", "green", "purple", "orange"];
+
     // Rapidly change properties
-    for(let i = 0; i < 10; i++) {
+    for (let i = 0; i < 10; i++) {
       el.accentColor = colors[i % colors.length];
       el.dark = i % 2 === 0;
     }
-    
+
     await el.updateComplete;
-    expect(el.accentColor).to.equal('orange');
+    expect(el.accentColor).to.equal("orange");
     expect(el.dark).to.be.false;
   });
 
   it("maintains DesignSystemManager state across multiple instances", async () => {
     const el1 = await fixture(html`<d-d-d></d-d-d>`);
     const el2 = await fixture(html`<d-d-d accent-color="red"></d-d-d>`);
-    
-    expect(globalThis.DesignSystemManager.active).to.equal('ddd');
+
+    expect(globalThis.DesignSystemManager.active).to.equal("ddd");
     expect(globalThis.DesignSystemManager.systems.ddd).to.exist;
-    
+
     // Both elements should work correctly
     expect(el1).to.exist;
     expect(el2).to.exist;
-    expect(el2.accentColor).to.equal('red');
+    expect(el2.accentColor).to.equal("red");
   });
 
   it("handles missing CSS support gracefully", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
+
     // Should not throw errors even if CSS features are unsupported
     expect(el).to.exist;
-    expect(el.isSafari).to.be.a('boolean');
+    expect(el.isSafari).to.be.a("boolean");
   });
 
   it("handles browser detection edge cases", async () => {
     const el = await fixture(html`<d-d-d></d-d-d>`);
-    
+
     // isSafari should always be a boolean, regardless of browser
-    expect(typeof el.isSafari).to.equal('boolean');
-    
+    expect(typeof el.isSafari).to.equal("boolean");
+
     // Attribute reflection should work correctly
     if (el.isSafari) {
-      expect(el.hasAttribute('is-safari')).to.be.true;
+      expect(el.hasAttribute("is-safari")).to.be.true;
     }
   });
 
   it("maintains functionality without DesignSystemManager conflicts", async () => {
     // Test multiple rapid instantiations
     const elements = [];
-    
-    for(let i = 0; i < 5; i++) {
+
+    for (let i = 0; i < 5; i++) {
       const el = await fixture(html`<d-d-d accent-color="blue"></d-d-d>`);
       elements.push(el);
     }
-    
+
     // All elements should work correctly
-    for(const el of elements) {
+    for (const el of elements) {
       expect(el).to.exist;
-      expect(el.accentColor).to.equal('blue');
-      expect(globalThis.DesignSystemManager.active).to.equal('ddd');
+      expect(el.accentColor).to.equal("blue");
+      expect(globalThis.DesignSystemManager.active).to.equal("ddd");
     }
   });
 });

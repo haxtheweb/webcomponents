@@ -206,8 +206,8 @@
             }
           ],
           "superclass": {
-            "name": "SimpleColors",
-            "package": "@haxtheweb/simple-colors/simple-colors.js"
+            "name": "DDD",
+            "package": "@haxtheweb/d-d-d/d-d-d.js"
           },
           "tagName": "simple-toast",
           "customElement": true

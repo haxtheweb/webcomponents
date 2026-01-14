@@ -18,7 +18,7 @@
       "...RichTextStyles"
     ]
   },
-  "version": "11.0.5",
+  "version": "25.0.0",
   "description": "a standalone rich text editor",
   "repository": {
     "type": "git",
@@ -43,29 +43,26 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/absolute-position-behavior": "^11.0.0",
-    "@haxtheweb/code-editor": "^11.0.5",
-    "@haxtheweb/d-d-d": "^11.0.5",
+    "@haxtheweb/absolute-position-behavior": "^25.0.0",
+    "@haxtheweb/code-editor": "^25.0.0",
+    "@haxtheweb/d-d-d": "^25.0.0",
     "@haxtheweb/md-extra-icons": "^9.0.1",
-    "@haxtheweb/micro-frontend-registry": "^11.0.0",
-    "@haxtheweb/simple-fields": "^11.0.0",
-    "@haxtheweb/simple-icon": "^11.0.5",
-    "@haxtheweb/simple-icon-picker": "^11.0.0",
-    "@haxtheweb/simple-picker": "^11.0.0",
-    "@haxtheweb/simple-popover": "^11.0.0",
-    "@haxtheweb/simple-toolbar": "^11.0.5",
-    "@haxtheweb/utils": "^11.0.0",
-    "lit": "3.3.0",
+    "@haxtheweb/micro-frontend-registry": "^25.0.0",
+    "@haxtheweb/simple-fields": "^25.0.0",
+    "@haxtheweb/simple-icon": "^25.0.0",
+    "@haxtheweb/simple-icon-picker": "^25.0.0",
+    "@haxtheweb/simple-picker": "^25.0.0",
+    "@haxtheweb/simple-popover": "^25.0.0",
+    "@haxtheweb/simple-toolbar": "^25.0.0",
+    "@haxtheweb/utils": "^25.0.0",
+    "lit": "3.3.1",
     "shadow-selection-polyfill": "^1.1.0"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/deduping-fix": "^11.0.0",
+    "@haxtheweb/deduping-fix": "^25.0.0",
     "@open-wc/testing": "4.0.0",
-    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
-    "@haxtheweb/utils": "^11.0.0",
     "@web/dev-server": "0.4.6",
-    "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "9.1.2",
     "wct-browser-legacy": "1.0.2"
   },
@@ -80,5 +77,5 @@
     "haxtheweb",
     "lit"
   ],
-  "gitHead": "73a678e1d035b003097fd50b7b23c0d9c30f9b26"
+  "gitHead": "205ca9f1c3abd2c09938118965e60a15d90a58bb"
 }

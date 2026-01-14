@@ -159,6 +159,8 @@ class HAXCMSBackendPHP extends LitElement {
               globalThis.appSettings.saveManifestPath;
             store.cmsSiteEditor.instance.saveOutlinePath =
               globalThis.appSettings.saveOutlinePath;
+            store.cmsSiteEditor.instance.saveNodeDetailsPath =
+              globalThis.appSettings.saveNodeDetailsPath || globalThis.appSettings.saveNodePath;
             store.cmsSiteEditor.instance.getSiteFieldsPath =
               globalThis.appSettings.getSiteFieldsPath;
             store.cmsSiteEditor.instance.getFormToken =

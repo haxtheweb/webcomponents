@@ -190,10 +190,13 @@ class VocabTerm extends LitElement {
    * provides click for keyboard if open property is not supported by browser
    */
   _handleClick(e) {
-    if (!this._haxstate) {
+    // When editing in HAX, block click behavior so the element can be selected
+    // and edited via the HAX UI instead of triggering the popover/details.
+    if (this._haxstate) {
       e.preventDefault();
       e.stopPropagation();
       e.stopImmediatePropagation();
+      return;
     }
     if (this.details && typeof this.detailsOpen === "undefined") {
       this.requestUpdate();
@@ -244,12 +247,20 @@ class VocabTerm extends LitElement {
       this.term = this.innerHTML;
     }
     if (this.popoverMode === false) {
+      const summaryEl = this.shadowRoot.querySelector("summary");
       this.shadowRoot
         .querySelector(`simple-modal-template`)
-        .associateEvents(this.shadowRoot.querySelector(`summary`));
-      this.shadowRoot
-        .querySelector("summary")
-        .addEventListener("focus", this.detailsFocusOut.bind(this));
+        .associateEvents(summaryEl);
+      summaryEl.addEventListener("focus", this.detailsFocusOut.bind(this));
+      // When editing in HAX, prevent clicks on the summary from opening
+      // the definition modal so the element can be edited instead.
+      summaryEl.addEventListener("click", (e) => {
+        if (this._haxstate) {
+          e.preventDefault();
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+        }
+      });
     } else {
       this.details = this.shadowRoot.querySelector(`details`);
     }

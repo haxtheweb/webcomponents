@@ -54,6 +54,84 @@ const maxStep = 25;
 const edgeSize = 200;
 
 /**
+ * ContentStateManager - Centralized state coordination for content operations
+ * Replaces timing hacks with explicit state signaling and promise-based waiting
+ */
+class ContentStateManager {
+  constructor() {
+    this.states = {
+      importing: false,
+      mutationsSuspended: false,
+      editModeTransitioning: false,
+      activeNodeChanging: false,
+      inserting: false,
+    };
+    this.listeners = new Map();
+  }
+
+  setState(key, value) {
+    if (this.states.hasOwnProperty(key)) {
+      this.states[key] = value;
+      if (!value) {
+        this.notifyListeners(key);
+      }
+    }
+  }
+
+  getState(key) {
+    return this.states[key] || false;
+  }
+
+  isContentBusy() {
+    return this.states.importing || 
+           this.states.mutationsSuspended || 
+           this.states.editModeTransitioning ||
+           this.states.inserting;
+  }
+
+  waitFor(key) {
+    return new Promise((resolve) => {
+      if (!this.states[key]) {
+        resolve();
+      } else {
+        if (!this.listeners.has(key)) {
+          this.listeners.set(key, []);
+        }
+        this.listeners.get(key).push(resolve);
+      }
+    });
+  }
+
+  async waitForStable() {
+    const promises = [];
+    for (let key in this.states) {
+      if (this.states[key]) {
+        promises.push(this.waitFor(key));
+      }
+    }
+    if (promises.length > 0) {
+      await Promise.all(promises);
+    }
+  }
+
+  notifyListeners(key) {
+    if (this.listeners.has(key)) {
+      const callbacks = this.listeners.get(key);
+      callbacks.forEach(resolve => resolve());
+      this.listeners.delete(key);
+    }
+  }
+
+  reset() {
+    for (let key in this.states) {
+      if (this.states[key]) {
+        this.setState(key, false);
+      }
+    }
+  }
+}
+
+/**
  * `hax-body`
  * Manager of the body area that can be modified
  * 
@@ -234,6 +312,123 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           content: "";
         }
 
+        /* Definition list specific styles for empty states */
+        :host([edit-mode]) #bodycontainer ::slotted(dl[contenteditable]) {
+          min-height: var(--ddd-spacing-8, 32px);
+          line-height: var(--ddd-lh-150, 150%);
+          display: block;
+          position: relative;
+        }
+
+        :host([edit-mode]) #bodycontainer ::slotted(dt[contenteditable]) {
+          min-height: var(--ddd-spacing-6, 24px);
+          line-height: var(--ddd-lh-150, 150%);
+          font-weight: var(--ddd-font-weight-bold, 700);
+          display: block;
+          position: relative;
+          padding: var(--ddd-spacing-1, 4px) 0;
+        }
+
+        :host([edit-mode]) #bodycontainer ::slotted(dd[contenteditable]) {
+          min-height: var(--ddd-spacing-6, 24px);
+          line-height: var(--ddd-lh-150, 150%);
+          margin-left: var(--ddd-spacing-5, 20px);
+          display: block;
+          position: relative;
+          padding: var(--ddd-spacing-1, 4px) 0;
+        }
+
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dt[contenteditable][data-hax-ray]:empty:not(
+                [data-instructional-action]
+              )
+          )::before {
+          content: "Definition term...";
+          opacity: 0.4;
+          font-style: italic;
+          font-weight: var(--ddd-font-weight-regular, 400);
+          min-height: inherit;
+        }
+
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dd[contenteditable][data-hax-ray]:empty:not(
+                [data-instructional-action]
+              )
+          )::before {
+          content: "Definition description...";
+          opacity: 0.4;
+          font-style: italic;
+          min-height: inherit;
+        }
+
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dl[contenteditable][data-hax-ray]:empty:not(
+                [data-instructional-action]
+              )
+          )::before {
+          content: "Definition list - add terms and definitions";
+          opacity: 0.4;
+          font-style: italic;
+          min-height: inherit;
+        }
+
+        /* Hover states for empty definition list elements */
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dt[contenteditable][data-hax-ray]:hover:empty:not(
+                [data-instructional-action]
+              )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dd[contenteditable][data-hax-ray]:hover:empty:not(
+                [data-instructional-action]
+              )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dl[contenteditable][data-hax-ray]:hover:empty:not(
+                [data-instructional-action]
+              )
+          )::before {
+          opacity: 0.6;
+          cursor: text;
+        }
+
+        /* Focus states - hide placeholder when focused */
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dt[contenteditable][data-hax-ray]:empty:focus:not(
+                [data-instructional-action]
+              )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dd[contenteditable][data-hax-ray]:empty:focus:not(
+                [data-instructional-action]
+              )
+          )::before,
+        :host([edit-mode])
+          #bodycontainer
+          ::slotted(
+            dl[contenteditable][data-hax-ray]:empty:focus:not(
+                [data-instructional-action]
+              )
+          )::before {
+          content: "";
+        }
+
         :host([edit-mode]) #bodycontainer ::slotted([data-hax-active]),
         :host([edit-mode]) #bodycontainer ::slotted(*.hax-hovered) {
           outline-offset: 8px;
@@ -253,18 +448,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock]:hover) {
           opacity: 0.9;
-        }
-        :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock])::after {
-          width: 28px;
-          height: 28px;
-          content: "";
-          display: flex;
-          float: right;
-          z-index: 1;
-          position: relative;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-color: #fffafa;
         }
         :host([edit-mode])
           #bodycontainer
@@ -402,6 +585,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    */
   constructor() {
     super();
+    // Initialize content state manager for coordinating DOM operations
+    this._contentState = new ContentStateManager();
     // lock to ensure we don't flood events on hitting the up / down arrows
     // as we use a mutation observer to manage draggable bindings
     this._useristyping = false;
@@ -412,7 +597,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.editMode = false;
     this.haxMover = false;
     this.activeNode = null;
-    this.__lockIconPath = SimpleIconsetStore.getIcon("icons:lock");
     this.part = "hax-body";
     this.t = {
       addContent: "Add Content",
@@ -803,23 +987,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       },
     };
   }
-  HAXBODYStyleSheetContent() {
-    let styles = [];
-    styles.push(css`
-      :host([edit-mode]) #bodycontainer ::slotted(*[data-hax-lock])::after {
-        background-image: url("${unsafeCSS(this.__lockIconPath)}");
-      }
-    `);
-    return styles;
-  }
   /**
    * LitElement life cycle - ready
    */
   firstUpdated(changedProperties) {
-    render(
-      this.HAXBODYStyleSheetContent(),
-      this.shadowRoot.querySelector("#hax-body-style-element"),
-    );
     this.dispatchEvent(
       new CustomEvent("hax-register-body", {
         bubbles: true,
@@ -882,11 +1053,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         // microtask delay to allow store to establish child nodes appropriately
         setTimeout(async () => {
           this.__ignoreActive = true;
+          this._contentState.setState('editModeTransitioning', true);
           await this._editModeChanged(this[propName], oldValue);
-          // ensure we don't process all mutations happening in tee-up
-          setTimeout(() => {
-            this.__ignoreActive = false;
-          }, 100);
+          // Wait for content to be stable before clearing ignore flag
+          await this._contentState.waitForStable();
+          // Additional frame to ensure rendering completes after all states clear
+          await new Promise(resolve => requestAnimationFrame(resolve));
+          this.__ignoreActive = false;
+          this._contentState.setState('editModeTransitioning', false);
         }, 0);
       }
       if (propName == "_useristyping" && this[propName]) {
@@ -915,6 +1089,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.contextMenus.plate.canMoveElement = false;
       e.detail.node.removeAttribute("contenteditable");
       this.removeAttribute("contenteditable");
+    }
+    // if this is the currently active node, immediately restore or
+    // update the context menus so text operations reflect the new state
+    if (e.detail.node === this.activeNode) {
+      this.positionContextMenus(this.activeNode);
+      this._keepContextVisible();
     }
     this.requestUpdate();
   }
@@ -1063,6 +1243,55 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               if (this.activeNode) {
                 this.__slot = this.activeNode.getAttribute("slot");
               }
+
+              // Handle definition list (DL/DT/DD) keyboard behavior
+              if (this.activeNode && this.activeNode.tagName === "DT") {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                // Check if there's already a DD following this DT
+                let nextSibling = this.activeNode.nextElementSibling;
+                if (nextSibling && nextSibling.tagName === "DD") {
+                  // Jump to the existing DD
+                  HAXStore.activeNode = nextSibling;
+                  nextSibling.focus();
+                } else {
+                  // Create a new DD element after the DT
+                  let dd = globalThis.document.createElement("dd");
+                  dd.innerHTML = "&nbsp;\n";
+                  this.activeNode.parentNode.insertBefore(
+                    dd,
+                    this.activeNode.nextSibling,
+                  );
+                  HAXStore.activeNode = dd;
+                  dd.focus();
+                  // Position cursor at start of DD
+                  HAXStore._positionCursorInNode(dd, 0);
+                }
+              } else if (this.activeNode && this.activeNode.tagName === "DD") {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                // Create a new DT + DD pair after the current DD
+                let dt = globalThis.document.createElement("dt");
+                let dd = globalThis.document.createElement("dd");
+                dt.innerHTML = "&nbsp;\n";
+                dd.innerHTML = "&nbsp;\n";
+
+                // Insert DT and DD after the current DD
+                this.activeNode.parentNode.insertBefore(
+                  dt,
+                  this.activeNode.nextSibling,
+                );
+                this.activeNode.parentNode.insertBefore(dd, dt.nextSibling);
+
+                // Make the new DT active
+                HAXStore.activeNode = dt;
+                dt.focus();
+                // Position cursor at start of DT
+                HAXStore._positionCursorInNode(dt, 0);
+              }
+
               if (
                 this.activeNode &&
                 this.activeNode.tagName === "P" &&
@@ -1071,7 +1300,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 )
               ) {
                 // ensure the "whitespace character" has been replaced w/ a normal space
-                const guess = this.activeNode.textContent.replaceAll(/ /g, " ");
+                const guess = this.activeNode.textContent.replaceAll(/ /g, " ");
                 // ensures that the user has done a matching action and a " " spacebar to ensure they
                 // are ready to commit the action
                 this.keyboardShortCutProcess(guess);
@@ -1252,9 +1481,28 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   keyboardShortCutProcess(guess) {
     // see if our map matches
     if (HAXStore.keyboardShortcuts[guess.replace(" ", "")]) {
-      let el = haxElementToNode(
-        HAXStore.keyboardShortcuts[guess.replace(" ", "")],
+      let shortcut = HAXStore.keyboardShortcuts[guess.replace(" ", "")];
+
+      // Apply style guide defaults for elements created via keyboard shortcuts
+      const styleGuideOverride = HAXStore._getStyleGuideSchemaOverride(
+        shortcut.tag,
       );
+      if (
+        styleGuideOverride &&
+        styleGuideOverride.demoSchema &&
+        styleGuideOverride.demoSchema[0]
+      ) {
+        const demo = styleGuideOverride.demoSchema[0];
+        if (demo.properties) {
+          // Merge style guide properties with shortcut properties
+          shortcut = {
+            ...shortcut,
+            properties: { ...demo.properties, ...(shortcut.properties || {}) },
+          };
+        }
+      }
+
+      let el = haxElementToNode(shortcut);
       this.haxReplaceNode(this.activeNode, el);
       this.__focusLogic(el);
       // breaks should jump just PAST the break
@@ -1516,6 +1764,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     active = this.activeNode,
     child = false,
   ) {
+    // Signal that we're inserting content
+    this._contentState.setState('inserting', true);
+    
     // verify this tag is a valid one
     // create a new element fragment w/ content in it
     // if this is a custom-element it won't expand though
@@ -1628,11 +1879,35 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.appendChild(newNode);
     }
     this.contextMenus.text.hasSelectedText = false;
-    setTimeout(() => {
-      this.__focusLogic(newNode);
-      // wait so that the DOM can have the node to then attach to
-      this.scrollHere(newNode);
-    }, 0);
+    
+    // Wait for custom element to upgrade if applicable, then focus/scroll
+    const tagName = newNode.tagName.toLowerCase();
+    if (tagName.includes('-')) {
+      // Custom element - wait for it to be defined and upgraded
+      customElements.whenDefined(tagName).then(() => {
+        // Additional frame to ensure render completes
+        requestAnimationFrame(() => {
+          this.__focusLogic(newNode);
+          this.scrollHere(newNode);
+          this._contentState.setState('inserting', false);
+        });
+      }).catch(() => {
+        // Element not registered, proceed anyway
+        requestAnimationFrame(() => {
+          this.__focusLogic(newNode);
+          this.scrollHere(newNode);
+          this._contentState.setState('inserting', false);
+        });
+      });
+    } else {
+      // Standard HTML element - use RAF as before
+      requestAnimationFrame(() => {
+        this.__focusLogic(newNode);
+        this.scrollHere(newNode);
+        this._contentState.setState('inserting', false);
+      });
+    }
+    
     return newNode;
   }
   /**
@@ -1940,14 +2215,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         if (!!move) node.setAttribute("slot", move);
       }
     }
-    // unfortunately the insertBefore APIs will trigger our DOM correction MutationObserver
-    // of a node deletion. This causes the active node to lose focus, against user expectation
-    // this short delay helps improve continuity here
-    setTimeout(() => {
+    // Signal that we're manipulating active node to prevent MutationObserver interference
+    this._contentState.setState('activeNodeChanging', true);
+    
+    // Use requestAnimationFrame to wait for DOM to settle after insertBefore
+    requestAnimationFrame(() => {
       HAXStore.activeNode = node;
       this.scrollHere(node);
       this.__focusLogic(node);
-    }, 100);
+      this._contentState.setState('activeNodeChanging', false);
+    });
     return true;
   }
   /**
@@ -2083,6 +2360,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       tmp.setAttribute("slot", "col-2");
       grid.appendChild(tmp);
       node.parentNode.insertBefore(grid, node);
+      
+      // Wait for grid-plate to upgrade, then apply editable state
+      await this.__applyNodeEditableStateWhenReady(grid, this.editMode);
+      
       setTimeout(() => {
         node.remove();
       }, 0);
@@ -2119,7 +2400,32 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   haxChangeTagName(node, tagName, maintainContent = true) {
     // Create a replacement tag of the desired type
     var replacement = globalThis.document.createElement(tagName);
+
+    // Store slot attribute early to ensure it's preserved
+    const originalSlot = node.getAttribute("slot");
+
+    // Apply style guide defaults for heading and other elements during block conversion
+    const styleGuideOverride = HAXStore._getStyleGuideSchemaOverride(tagName);
+    if (
+      styleGuideOverride &&
+      styleGuideOverride.demoSchema &&
+      styleGuideOverride.demoSchema[0]
+    ) {
+      const demo = styleGuideOverride.demoSchema[0];
+      if (demo.properties) {
+        // Apply style guide properties first
+        for (let prop in demo.properties) {
+          const attributeName = prop.replace(
+            /([A-Z])/g,
+            (g) => `-${g[0].toLowerCase()}`,
+          );
+          replacement.setAttribute(attributeName, demo.properties[prop]);
+        }
+      }
+    }
+
     // Grab all of the original's attributes, and pass them to the replacement
+    // These will override style guide defaults if they exist
     for (var i = 0, l = node.attributes.length; i < l; ++i) {
       let nodeName = node.attributes.item(i).nodeName;
       let value = node.attributes.item(i).value;
@@ -2129,6 +2435,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         console.warn(node.attributes);
         console.warn(e);
       }
+    }
+
+    // Ensure slot attribute is explicitly preserved for grid plate elements
+    if (originalSlot && HAXStore.isGridPlateElement(node.parentElement)) {
+      replacement.setAttribute("slot", originalSlot);
     }
     // Persist contents
     // account for empty list and ordered list items
@@ -2151,6 +2462,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             .replace(/<br\/>/g, "</li>\n<li>")
             .replace(/<br>/g, "</li>\n<li>") +
           "</li>";
+      }
+      // when converting to list, ensure slot is on the list, not the items
+      if (originalSlot) {
+        replacement.setAttribute("slot", originalSlot);
+        // remove slot from any child LI elements
+        setTimeout(() => {
+          Array.from(replacement.children).forEach((child) => {
+            if (child.tagName === "LI" && child.getAttribute("slot")) {
+              child.removeAttribute("slot");
+            }
+          });
+        }, 0);
       }
     } else if (
       node.tagName.toLowerCase() == "ul" ||
@@ -2222,6 +2545,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * internal whitelist.
    */
   importContent(html, clear = true) {
+    // Prevent concurrent imports that could cause double content
+    if (this._contentState.getState('importing')) {
+      console.warn('Import already in progress, skipping duplicate call');
+      return;
+    }
+    
+    // Signal that content import is starting
+    this._contentState.setState('importing', true);
+    
     // kill the slot of the active body, all of it
     if (clear) {
       wipeSlot(this, "*");
@@ -2263,6 +2595,35 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           fragment.removeChild(fragment.firstChild);
         }
       }
+      
+      // Wait for DOM to stabilize before signaling completion
+      requestAnimationFrame(async () => {
+        this._contentState.setState('importing', false);
+        
+        // If already in edit mode, reapply edit state to new content
+        // This handles save-and-edit case where editMode stays true
+        if (this.editMode) {
+          this._applyContentEditable(true);
+          
+          // Run editModeChanged hooks on new children
+          let children = this.shadowRoot.querySelector("#body").localName === "slot"
+            ? this.shadowRoot.querySelector("#body").assignedNodes({ flatten: true })
+            : [];
+          if (children.length === 0) {
+            children = this.shadowRoot.querySelector("#body").children;
+          }
+          for (var i = 0; i < children.length; i++) {
+            await HAXStore.runHook(children[i], "editModeChanged", [true]);
+          }
+        }
+        
+        // Dispatch event for external listeners (optional)
+        this.dispatchEvent(new CustomEvent('hax-body-content-ready', {
+          bubbles: true,
+          composed: true,
+          detail: { body: this }
+        }));
+      });
     }, 0);
   }
   /**
@@ -2703,7 +3064,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         // where we have a valid element yet the parent is a paragraph
         if (
           containerNode.parentNode.tagName === "P" &&
-          containerNode.parentNode.getAttribute("slot") == ""
+          containerNode.parentNode.getAttribute("slot") == "" &&
+          containerNode.tagName !== "B" &&
+          containerNode.tagName !== "I" &&
+          containerNode.tagName !== "STRONG" &&
+          containerNode.tagName !== "EM" &&
+          containerNode.tagName !== "U" &&
+          containerNode.tagName !== "SUB" &&
+          containerNode.tagName !== "SUP" &&
+          containerNode.tagName !== "CODE"
         ) {
           activeNode = containerNode;
           stopProp = true;
@@ -2719,7 +3088,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               containerNode.tagName !== "B" &&
               containerNode.tagName !== "I" &&
               containerNode.tagName !== "STRONG" &&
-              containerNode.tagName !== "EM"
+              containerNode.tagName !== "EM" &&
+              containerNode.tagName !== "U" &&
+              containerNode.tagName !== "SUB" &&
+              containerNode.tagName !== "SUP" &&
+              containerNode.tagName !== "CODE"
             ) {
               activeNode = containerNode;
             }
@@ -2830,42 +3203,50 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (typeof oldValue !== typeof undefined) {
       this._applyContentEditable(newValue);
       if (newValue) {
+        // If content is currently being imported and there are no children yet,
+        // avoid injecting a placeholder paragraph. importContent will append
+        // the real DOM and (if in edit mode) re-apply edit state to children.
+        const importing =
+          this._contentState && this._contentState.getState("importing");
+
         // minor timeout here to see if we have children or not. the slight delay helps w/
         // timing in scenarios where this is inside of other systems which are setting default
         // attributes and what not
-        if (
-          this.children &&
-          this.children[0] &&
-          this.children[0].focus &&
-          this.children[0].tagName
-        ) {
-          // special support for page break to NOT focus it initially if we have another child
+        if (!importing) {
           if (
-            this.children[0].tagName === "PAGE-BREAK" &&
-            this.children[1] &&
-            this.children[1].focus
+            this.children &&
+            this.children[0] &&
+            this.children[0].focus &&
+            this.children[0].tagName
           ) {
-            this.__focusLogic(this.children[1]);
-          }
-          // implies we don't have another child to focus and the one we do is a page break
-          // this would leave UX at an empty page so inject a p like the blank state
-          else if (this.children[0].tagName === "PAGE-BREAK") {
-            this.haxInsert("p", "", {});
+            // special support for page break to NOT focus it initially if we have another child
+            if (
+              this.children[0].tagName === "PAGE-BREAK" &&
+              this.children[1] &&
+              this.children[1].focus
+            ) {
+              this.__focusLogic(this.children[1]);
+            }
+            // implies we don't have another child to focus and the one we do is a page break
+            // this would leave UX at an empty page so inject a p like the blank state
+            else if (this.children[0].tagName === "PAGE-BREAK") {
+              this.haxInsert("p", "", {});
+            } else {
+              this.__focusLogic(this.children[0]);
+            }
           } else {
-            this.__focusLogic(this.children[0]);
-          }
-        } else {
-          this.haxInsert("p", "", {});
-          try {
-            var range = globalThis.document.createRange();
-            var sel = HAXStore.getSelection();
-            range.setStart(this.activeNode, 0);
-            range.collapse(true);
-            sel.removeAllRanges();
-            sel.addRange(range);
-            this.activeNode.focus();
-          } catch (e) {
-            console.warn(e);
+            this.haxInsert("p", "", {});
+            try {
+              var range = globalThis.document.createRange();
+              var sel = HAXStore.getSelection();
+              range.setStart(this.activeNode, 0);
+              range.collapse(true);
+              sel.removeAllRanges();
+              sel.addRange(range);
+              this.activeNode.focus();
+            } catch (e) {
+              console.warn(e);
+            }
           }
         }
         this._haxContextOperation({
@@ -2968,8 +3349,39 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         passive: true,
         signal: this.windowControllers.signal,
       });
-      // mutation observer that ensures state of hax applied correctly
-      this._observer = new MutationObserver((mutations) => {
+      // Connect MutationObserver when content is stable
+      this._connectMutationObserverWhenReady();
+    } else {
+      // should resolve ALL events at the same time
+      this.windowControllers.abort();
+      if (this._observer) {
+        this._observer.disconnect();
+      }
+    }
+  }
+
+  /**
+   * Connect MutationObserver only when content is stable
+   * This prevents spurious DOM corrections during content import
+   */
+  async _connectMutationObserverWhenReady() {
+    // Wait for any importing or other content operations to complete
+    await this._contentState.waitForStable();
+    this._connectMutationObserver();
+  }
+
+  /**
+   * Create and connect the MutationObserver
+   * Split out so it can be called after content stabilizes
+   */
+  _connectMutationObserver() {
+    // Don't create if already exists and is connected
+    if (this._observer) {
+      return;
+    }
+    
+    // mutation observer that ensures state of hax applied correctly
+    this._observer = new MutationObserver((mutations) => {
         var mutFind = false;
         if (
           !this.__ignoreActive &&
@@ -2978,7 +3390,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           !this.__fakeEndCap &&
           this.ready &&
           this.editMode &&
-          this.shadowRoot
+          this.shadowRoot &&
+          !this._contentState.isContentBusy()
         ) {
           mutations.forEach((mutation) => {
             // move toolbar when active Node is deleted
@@ -3068,6 +3481,44 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     unwrap(node);
                     continue;
                   }
+                  // definition list items that aren't in a definition list
+                  if (
+                    (node.tagName === "DT" || node.tagName === "DD") &&
+                    node.parentElement &&
+                    node.parentElement.tagName !== "DL"
+                  ) {
+                    unwrap(node);
+                    continue;
+                  }
+                  // UL or OL nested inside P tag - unwrap P and transfer attributes
+                  if (
+                    node.tagName === "P" &&
+                    node.children.length > 0 &&
+                    ["UL", "OL"].includes(node.children[0].tagName)
+                  ) {
+                    let listElement = node.children[0];
+                    // transfer slot and other data attributes from P to UL/OL
+                    if (
+                      node.getAttribute("slot") &&
+                      !listElement.getAttribute("slot")
+                    ) {
+                      listElement.setAttribute(
+                        "slot",
+                        node.getAttribute("slot"),
+                      );
+                    }
+                    // transfer other data attributes
+                    Array.from(node.attributes).forEach((attr) => {
+                      if (
+                        attr.name.startsWith("data-") &&
+                        !listElement.getAttribute(attr.name)
+                      ) {
+                        listElement.setAttribute(attr.name, attr.value);
+                      }
+                    });
+                    unwrap(node);
+                    continue;
+                  }
                   // some browsers can accidentally cause this in certain situations
                   if (
                     node.tagName === "P" &&
@@ -3112,7 +3563,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   ) {
                     this.__applyNodeEditableState(node, !this.editMode);
                   }
-                  this.__applyNodeEditableState(node, this.editMode);
+                  // Use async wrapper to wait for custom elements to upgrade
+                  this.__applyNodeEditableStateWhenReady(node, this.editMode);
                   // now test for this being a grid plate element which implies
                   // we need to ensure this is applied deep into its children
                   if (HAXStore.isGridPlateElement(node)) {
@@ -3139,6 +3591,38 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   ) {
                     node.setAttribute("id", generateResourceID("header-"));
                   }
+                  // manage slot attributes on lists and list items
+                  if (
+                    node.tagName === "LI" &&
+                    node.parentElement &&
+                    ["UL", "OL"].includes(node.parentElement.tagName)
+                  ) {
+                    // remove slot attribute from LI if it exists
+                    if (node.getAttribute("slot")) {
+                      let slotValue = node.getAttribute("slot");
+                      node.removeAttribute("slot");
+                      // ensure parent UL/OL has the slot attribute if it doesn't already
+                      if (!node.parentElement.getAttribute("slot")) {
+                        node.parentElement.setAttribute("slot", slotValue);
+                      }
+                    }
+                  }
+                  // ensure UL/OL has slot attribute if any of its LI children had one
+                  if (["UL", "OL"].includes(node.tagName)) {
+                    let childSlot = null;
+                    Array.from(node.children).forEach((child) => {
+                      if (
+                        child.tagName === "LI" &&
+                        child.getAttribute("slot")
+                      ) {
+                        if (!childSlot) childSlot = child.getAttribute("slot");
+                        child.removeAttribute("slot");
+                      }
+                    });
+                    if (childSlot && !node.getAttribute("slot")) {
+                      node.setAttribute("slot", childSlot);
+                    }
+                  }
                   // set new nodes to be the active one
                   // only if we didn't just do a grid plate move
                   // if multiple mutations, only accept the 1st one in a group
@@ -3149,6 +3633,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     mutFind = true;
                     if (node.tagName === "LI" && node.parentNode) {
                       HAXStore.activeNode = node.parentNode;
+                    } else if (
+                      (node.tagName === "DT" || node.tagName === "DD") &&
+                      node.parentNode
+                    ) {
+                      HAXStore.activeNode = node;
                     } else if (node.tagName === "BR") {
                       const tmp = HAXStore.getSelection();
                       HAXStore._tmpSelection = tmp;
@@ -3234,10 +3723,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               mutation.addedNodes.forEach((node) => {
                 // valid element to apply state to
                 if (this._validElementTest(node, true)) {
-                  // make it editable / drag/drop capable
-                  setTimeout(() => {
-                    this.__applyNodeEditableState(node, this.editMode);
-                  }, 0);
+                  // make it editable / drag/drop capable, waiting for custom element upgrade
+                  this.__applyNodeEditableStateWhenReady(node, this.editMode);
                 }
               });
             }
@@ -3249,15 +3736,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
         HAXStore.haxTray.updateMap();
       });
-      this._observer.observe(this, {
-        childList: true,
-        subtree: true,
-      });
-    } else {
-      // should resolve ALL events at the same time
-      this.windowControllers.abort();
-      this._observer.disconnect();
-    }
+    // Actually connect the observer
+    this._observer.observe(this, {
+      childList: true,
+      subtree: true,
+    });
   }
   /**
    * Test if this is a HAX element or not
@@ -3305,7 +3788,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * test for inline tags
    */
   _HTMLInlineTextDecorationTest(node) {
-    return ["span", "b", "strong", "i", "em", "u", "strike"].includes(
+    return ["span", "b", "strong", "i", "em", "u", "strike", "sub", "sup", "code"].includes(
       node.tagName.toLowerCase(),
     );
   }
@@ -3325,7 +3808,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * Walk everything we find and either enable or disable editable state.
    */
-  _applyContentEditable(
+  async _applyContentEditable(
     status,
     target = this.shadowRoot.querySelector("#body"),
   ) {
@@ -3341,6 +3824,19 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     for (var i = 0; i < children.length; i++) {
       // sanity check for being a valid element / not a "hax" element
       if (this._validElementTest(children[i], true)) {
+        // For custom elements (like grid-plate), wait for them to upgrade
+        // before applying drag/drop state that depends on shadowRoot
+        const tagName = children[i].tagName.toLowerCase();
+        if (tagName.includes('-')) {
+          try {
+            await customElements.whenDefined(tagName);
+            // Extra frame to ensure shadowRoot is ready
+            await new Promise(resolve => requestAnimationFrame(resolve));
+          } catch (e) {
+            // Element not registered, proceed anyway
+          }
+        }
+        
         // correctly add or remove listeners
         if (
           !status ||
@@ -3572,6 +4068,24 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     );
   }
   /**
+   * Apply node editable state after ensuring custom element is upgraded
+   * Wrapper that handles async custom element upgrade before applying state
+   */
+  async __applyNodeEditableStateWhenReady(node, status = true) {
+    // For custom elements, wait for them to be defined and upgraded
+    const tagName = node.tagName.toLowerCase();
+    if (tagName.includes('-')) {
+      try {
+        await customElements.whenDefined(tagName);
+        // Extra frame to ensure shadowRoot is initialized
+        await new Promise(resolve => requestAnimationFrame(resolve));
+      } catch (e) {
+        // Element not registered, proceed anyway
+      }
+    }
+    this.__applyNodeEditableState(node, status);
+  }
+  /**
    * Apply the node editable state correctly so we can do drag and drop / editing uniformly
    */
   __applyNodeEditableState(node, status = true) {
@@ -3720,52 +4234,71 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           e.preventDefault();
           e.stopPropagation();
           e.stopImmediatePropagation();
-          // inject a placeholder P tag which we will then immediately replace
-          let tmp = globalThis.document.createElement("p");
-          if (
-            e.target.closest("[data-hax-layout]") &&
-            e.target.parentNode != e.target.closest("[data-hax-layout]")
-          ) {
+          
+          // Check if we're dropping onto an image element for potential gallery creation
+          let imageTarget = null;
+          if (e.target.closest("[data-hax-layout]") &&
+              e.target.parentNode != e.target.closest("[data-hax-layout]")) {
             local = e.target.closest("[data-hax-layout]");
+            // Check if the layout element or its content is an image
+            if (HAXStore._isImageElement(local)) {
+              imageTarget = local;
+            }
           } else if (e.target.closest("[contenteditable],img")) {
             local = e.target.closest("[contenteditable],img");
+            // Check if we're dropping onto an image
+            if (HAXStore._isImageElement(local)) {
+              imageTarget = local;
+            }
           }
-          if (
-            (local &&
-              ((local.tagName && local.tagName !== "HAX-BODY") ||
-                !local.getAttribute("data-hax-layout"))) ||
-            this.__isLayout(eventPath[0])
-          ) {
-            if (local.getAttribute("slot")) {
-              tmp.setAttribute("slot", local.getAttribute("slot"));
-            } else if (eventPath[0].classList.contains("column")) {
-              tmp.setAttribute(
-                "slot",
-                eventPath[0].getAttribute("id").replace("col", "col-"),
-              );
-            } else {
-              tmp.removeAttribute("slot");
-            }
-            local.parentNode.insertBefore(tmp, local);
+          
+          // If dropping onto an image, use it as the placeholder for gallery creation
+          let tmp;
+          if (imageTarget) {
+            tmp = imageTarget;
           } else {
-            if (eventPath[0].classList.contains("column")) {
-              tmp.setAttribute(
-                "slot",
-                eventPath[0].getAttribute("id").replace("col", "col-"),
-              );
-            }
-            // account for drop target of main body yet still having a slot attr
-            else if (
-              local &&
-              local.tagName === "HAX-BODY" &&
-              tmp.getAttribute("slot")
+            // inject a placeholder P tag which we will then immediately replace
+            tmp = globalThis.document.createElement("p");
+          }
+          // Only do placement logic if tmp is a new placeholder, not an existing element
+          if (!imageTarget) {
+            if (
+              (local &&
+                ((local.tagName && local.tagName !== "HAX-BODY") ||
+                  !local.getAttribute("data-hax-layout"))) ||
+              this.__isLayout(eventPath[0])
             ) {
-              tmp.removeAttribute("slot");
-            }
-            if (local) {
-              local.appendChild(tmp);
+              if (local.getAttribute("slot")) {
+                tmp.setAttribute("slot", local.getAttribute("slot"));
+              } else if (eventPath[0].classList.contains("column")) {
+                tmp.setAttribute(
+                  "slot",
+                  eventPath[0].getAttribute("id").replace("col", "col-"),
+                );
+              } else {
+                tmp.removeAttribute("slot");
+              }
+              local.parentNode.insertBefore(tmp, local);
             } else {
-              this.appendChild(tmp);
+              if (eventPath[0].classList.contains("column")) {
+                tmp.setAttribute(
+                  "slot",
+                  eventPath[0].getAttribute("id").replace("col", "col-"),
+                );
+              }
+              // account for drop target of main body yet still having a slot attr
+              else if (
+                local &&
+                local.tagName === "HAX-BODY" &&
+                tmp.getAttribute("slot")
+              ) {
+                tmp.removeAttribute("slot");
+              }
+              if (local) {
+                local.appendChild(tmp);
+              } else {
+                this.appendChild(tmp);
+              }
             }
           }
           // this placeholder will be immediately replaced
@@ -3799,6 +4332,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             this._validElementTest(target) &&
             target !== local
           ) {
+            // Special handling to prevent nested lists:
+            // If dropping a UL/OL onto a LI, redirect to drop after the parent UL/OL
+            if (
+              ["UL", "OL"].includes(target.tagName) &&
+              local.tagName === "LI" &&
+              local.parentElement &&
+              ["UL", "OL"].includes(local.parentElement.tagName)
+            ) {
+              // Redirect drop target to the parent list instead of the LI
+              local = local.parentElement;
+            }
+
             // incase this came from a grid plate, drop the slot so it works
             try {
               if (

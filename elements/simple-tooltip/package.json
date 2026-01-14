@@ -15,8 +15,8 @@
       "hax": "src/simple-tooltip-hax.json"
     }
   },
-  "version": "11.0.0",
-  "description": "a simple tooltip forked from paper-tooltip with the same api",
+  "version": "25.0.0",
+  "description": "a simple tooltip forked with the same api",
   "repository": {
     "type": "git",
     "url": "https://github.com/haxtheweb/webcomponents.git"
@@ -40,15 +40,14 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "lit": "3.3.0"
+    "lit": "3.3.1"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/deduping-fix": "^11.0.0",
-    "@haxtheweb/simple-icon": "^11.0.5",
+    "@haxtheweb/deduping-fix": "^25.0.0",
+    "@haxtheweb/simple-icon": "^25.0.0",
     "@open-wc/testing": "4.0.0",
     "@web/dev-server": "0.4.6",
-    "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "9.1.2",
     "wct-browser-legacy": "1.0.2"
   },
@@ -63,5 +62,5 @@
     "haxtheweb",
     "lit"
   ],
-  "gitHead": "73a678e1d035b003097fd50b7b23c0d9c30f9b26"
+  "gitHead": "205ca9f1c3abd2c09938118965e60a15d90a58bb"
 }

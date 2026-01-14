@@ -145,9 +145,6 @@ class HaxTextEditorButton extends RichTextEditorPromptButtonBehaviors(
    */
   tagClickCallback(e = {}) {
     if (e.detail) this.open(e.detail);
-    let tag = this.__highlight.innerHTML;
-    this.__highlight.innerHTML = "";
-    this.__highlight.innerHTML = tag;
   }
   /**
    * updates selection based on values passed from prompt

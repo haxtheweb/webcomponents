@@ -16,7 +16,8 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     // Enable screen recording for hax upload field
     this.noScreenRecord = false;
     this.__winEvents = {
-      "hax-app-picker-selection": "_haxAppPickerSelection", //TODO
+      "hax-app-picker-selection": "_haxAppPickerSelection",
+      "jwt-token": "_jwtTokenRefreshed",
     };
     this.t = this.t || {};
     this.t = {
@@ -121,10 +122,22 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     if (typeof connection.operations.add.endPoint !== typeof undefined) {
       requestEndPoint += connection.operations.add.endPoint;
     }
+    // Store base endpoint for potential retry after JWT refresh
+    this.__baseEndpoint = requestEndPoint;
     // implementation specific tweaks to talk to things like HAXcms and other CMSs
     // that have per load token based authentication
     if (HAXStore.connectionRewrites.appendUploadEndPoint != null) {
       requestEndPoint += "?" + HAXStore.connectionRewrites.appendUploadEndPoint;
+    } else {
+      // Fallback: try to build parameters from HAXCMSStore if available
+      // This handles cases where appendUploadEndPoint wasn't set yet
+      if (globalThis.store && globalThis.store.manifest && globalThis.store.activeId) {
+        requestEndPoint += "?siteName=" + globalThis.store.manifest.metadata.site.name +
+                          "&nodeId=" + globalThis.store.activeId;
+        console.warn("HAXStore.connectionRewrites.appendUploadEndPoint was not set, using fallback from store");
+      } else {
+        console.error("Cannot determine siteName and nodeId for file upload - appendUploadEndPoint not set and store not available");
+      }
     }
     if (HAXStore.connectionRewrites.appendJwt != null) {
       requestEndPoint +=
@@ -140,10 +153,63 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
     this.shadowRoot.querySelector("#fileupload").uploadFiles();
   }
   /**
+   * Handle JWT token refresh
+   */
+  _jwtTokenRefreshed(e) {
+    // If we have a pending upload retry, execute it now
+    if (this.__pendingUploadRetry) {
+      const fileUpload = this.shadowRoot.querySelector("#fileupload");
+      if (fileUpload) {
+        // Rebuild the endpoint with the new JWT
+        let requestEndPoint = this.__pendingUploadRetry.baseEndpoint;
+        if (HAXStore.connectionRewrites.appendUploadEndPoint != null) {
+          requestEndPoint += "?" + HAXStore.connectionRewrites.appendUploadEndPoint;
+        } else {
+          // Fallback: try to build parameters from HAXCMSStore if available
+          if (globalThis.store && globalThis.store.manifest && globalThis.store.activeId) {
+            requestEndPoint += "?siteName=" + globalThis.store.manifest.metadata.site.name +
+                              "&nodeId=" + globalThis.store.activeId;
+          }
+        }
+        if (HAXStore.connectionRewrites.appendJwt != null) {
+          requestEndPoint +=
+            "&" +
+            HAXStore.connectionRewrites.appendJwt +
+            "=" +
+            localStorageGet(HAXStore.connectionRewrites.appendJwt);
+        }
+        fileUpload.target = requestEndPoint;
+        // Retry the upload
+        this.__allowUpload = true;
+        fileUpload.uploadFiles();
+      }
+      this.__pendingUploadRetry = null;
+    }
+  }
+
+  /**
    * Respond to successful file upload, now inject url into url field and
    * do a gizmo guess from there!
    */
   _fileUploadResponse(e) {
+    // Handle 403 - JWT needs refresh
+    if (e.detail.xhr.status === 403) {
+      // Store upload context for retry after token refresh
+      this.__pendingUploadRetry = {
+        baseEndpoint: this.__baseEndpoint,
+        appUsed: this.__appUsed,
+      };
+      // Trigger JWT refresh
+      globalThis.dispatchEvent(
+        new CustomEvent("jwt-login-refresh-token", {
+          composed: true,
+          bubbles: true,
+          cancelable: false,
+          detail: {},
+        }),
+      );
+      return;
+    }
     // ensure we had a positive response
     if (e.detail.xhr.status === 200) {
       try {
@@ -185,6 +251,17 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
         this.shadowRoot.querySelector("#url").value = item.url;
         //TODO need a way to get suggestedResources from HAXStore and then add uploaded resource
         //this.suggestedResources['item.url'] = ''; or this.suggestedResources['item.url'] = { name, icon, type, preview };
+        
+        // Execute callback if provided (e.g., for set-page-media operation)
+        if (HAXStore.activePlaceHolderCallback && typeof HAXStore.activePlaceHolderCallback === 'function') {
+          HAXStore.activePlaceHolderCallback({
+            file: item.url,
+            item: item,
+            response: response
+          });
+          // Clear callback after execution
+          HAXStore.activePlaceHolderCallback = null;
+        }
       } catch (e) {
         console.warn("Error parsing response", e);
       }

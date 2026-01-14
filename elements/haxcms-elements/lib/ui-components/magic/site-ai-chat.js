@@ -1,19 +1,14 @@
-import { DDDSuper, DDDPulseEffectSuper } from "@haxtheweb/d-d-d/d-d-d.js";
-import { html, css, LitElement } from "lit";
-import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import { toJS } from "mobx";
-import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
-import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-import "@haxtheweb/chat-agent/chat-agent.js";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { css, LitElement } from "lit";
 
-export class SiteAiChat extends DDDPulseEffectSuper(DDDSuper(LitElement)) {
+export class SiteAiChat extends DDDSuper(LitElement) {
   static get tag() {
     return "site-ai-chat";
   }
 
   constructor() {
     super();
+    import("@haxtheweb/chat-agent/chat-agent.js");
   }
 
   static get styles() {

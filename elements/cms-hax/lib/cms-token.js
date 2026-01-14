@@ -2,7 +2,6 @@ import { html, PolymerElement } from "@polymer/polymer/polymer-element.js";
 import { FlattenedNodesObserver } from "@polymer/polymer/lib/utils/flattened-nodes-observer.js";
 import { microTask } from "@polymer/polymer/lib/utils/async.js";
 import "@polymer/iron-ajax/iron-ajax.js";
-import "@polymer/paper-spinner/paper-spinner.js";
 import { wipeSlot } from "@haxtheweb/utils/utils.js";
 /**
 `cms-token`
@@ -33,16 +32,6 @@ class CMSToken extends PolymerElement {
           pointer-events: none;
         }
 
-        paper-spinner {
-          transition: 0.6s all ease;
-          position: absolute;
-          visibility: hidden;
-          display: none;
-          opacity: 0;
-          height: 0;
-          width: 0;
-        }
-
         #replacementcontent {
           transition: 0.6s all ease;
           visibility: visible;
@@ -53,16 +42,6 @@ class CMSToken extends PolymerElement {
 
         :host([loading]) {
           text-align: center;
-        }
-
-        :host([loading]) paper-spinner {
-          visibility: visible;
-          opacity: 1;
-          position: relative;
-          height: 80px;
-          width: 80px;
-          padding: 16px;
-          display: flex;
         }
 
         :host([loading]) #replacementcontent {
@@ -80,7 +59,6 @@ class CMSToken extends PolymerElement {
         handle-as="json"
         last-response="{{tokenData}}"
       ></iron-ajax>
-      <paper-spinner active="[[loading]]"></paper-spinner>
       <span id="replacementcontent">
         <slot></slot>
       </span>

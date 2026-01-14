@@ -3,7 +3,7 @@ import "../grid-plate.js";
 
 describe("GridPlate test", () => {
   let element;
-  
+
   beforeEach(async () => {
     element = await fixture(html`
       <grid-plate layout="1-1">
@@ -32,28 +32,31 @@ describe("GridPlate test", () => {
 
   // Layout tests
   it("applies different layout configurations", async () => {
-    const layouts = ['1', '1-1', '2-1', '1-2', '1-1-1', '1-1-1-1'];
-    
+    const layouts = ["1", "1-1", "2-1", "1-2", "1-1-1", "1-1-1-1"];
+
     for (const layout of layouts) {
       element.layout = layout;
       await element.updateComplete;
       expect(element.layout).to.equal(layout);
-      expect(element.getAttribute('layout')).to.equal(layout);
+      expect(element.getAttribute("layout")).to.equal(layout);
     }
   });
 
   it("renders correct number of columns", () => {
-    const columns = element.shadowRoot.querySelectorAll('.column');
+    const columns = element.shadowRoot.querySelectorAll(".column");
     expect(columns.length).to.equal(6); // Always renders 6, but shows based on layout
   });
 
   it("shows/hides columns based on layout", async () => {
-    element.layout = '1-1'; // 2 columns
+    element.layout = "1-1"; // 2 columns
     await element.updateComplete;
-    
-    const visibleColumns = element.shadowRoot.querySelectorAll('.column:not(.not-shown)');
-    const hiddenColumns = element.shadowRoot.querySelectorAll('.column.not-shown');
-    
+
+    const visibleColumns = element.shadowRoot.querySelectorAll(
+      ".column:not(.not-shown)",
+    );
+    const hiddenColumns =
+      element.shadowRoot.querySelectorAll(".column.not-shown");
+
     expect(visibleColumns.length).to.be.greaterThan(0);
     expect(hiddenColumns.length).to.be.greaterThan(0);
   });
@@ -62,26 +65,26 @@ describe("GridPlate test", () => {
   it("renders slotted content correctly", () => {
     const col1Content = element.querySelector('[slot="col-1"]');
     const col2Content = element.querySelector('[slot="col-2"]');
-    
+
     expect(col1Content).to.exist;
     expect(col2Content).to.exist;
-    expect(col1Content.textContent).to.equal('First column content');
-    expect(col2Content.textContent).to.equal('Second column content');
+    expect(col1Content.textContent).to.equal("First column content");
+    expect(col2Content.textContent).to.equal("Second column content");
   });
 
   // Responsive behavior tests
   it("handles responsive size changes", async () => {
-    element.responsiveSize = 'lg';
+    element.responsiveSize = "lg";
     await element.updateComplete;
-    expect(element.responsiveSize).to.equal('lg');
+    expect(element.responsiveSize).to.equal("lg");
   });
 
   it("can disable responsive behavior", async () => {
     element.disableResponsive = true;
     await element.updateComplete;
-    
+
     expect(element.disableResponsive).to.be.true;
-    expect(element.hasAttribute('disable-responsive')).to.be.true;
+    expect(element.hasAttribute("disable-responsive")).to.be.true;
   });
 
   // Margin and padding tests
@@ -89,42 +92,47 @@ describe("GridPlate test", () => {
     element.itemMargin = 20;
     element.itemPadding = 24;
     await element.updateComplete;
-    
+
     expect(element.itemMargin).to.equal(20);
     expect(element.itemPadding).to.equal(24);
   });
 
   // Layout calculation tests
   it("calculates column widths correctly", () => {
-    const widths = element._getColumnWidths('md', '1-1', element.layouts, false);
-    expect(widths).to.be.an('array');
+    const widths = element._getColumnWidths(
+      "md",
+      "1-1",
+      element.layouts,
+      false,
+    );
+    expect(widths).to.be.an("array");
     expect(widths.length).to.equal(2);
-    expect(widths[0]).to.equal('50%');
-    expect(widths[1]).to.equal('50%');
+    expect(widths[0]).to.equal("50%");
+    expect(widths[1]).to.equal("50%");
   });
 
   it("gets individual column width", () => {
-    const width = element._getColumnWidth(0, ['50%', '50%']);
-    expect(width).to.equal('width:50%');
+    const width = element._getColumnWidth(0, ["50%", "50%"]);
+    expect(width).to.equal("width:50%");
   });
 
   // HAX integration tests
   it("has proper HAX properties configuration", () => {
     const haxProps = element.constructor.haxProperties;
-    
+
     expect(haxProps).to.exist;
-    expect(haxProps.type).to.equal('grid');
-    expect(haxProps.gizmo.title).to.equal('Column layout');
-    expect(haxProps.settings.configure).to.be.an('array');
+    expect(haxProps.type).to.equal("grid");
+    expect(haxProps.gizmo.title).to.equal("Column layout");
+    expect(haxProps.settings.configure).to.be.an("array");
   });
 
   // Grid plate layout options tests
   it("has comprehensive layout options", () => {
     expect(element.layouts).to.exist;
-    expect(element.layouts['1']).to.exist;
-    expect(element.layouts['1-1']).to.exist;
-    expect(element.layouts['1-1-1']).to.exist;
-    expect(element.layouts['1-1-1-1']).to.exist;
+    expect(element.layouts["1"]).to.exist;
+    expect(element.layouts["1-1"]).to.exist;
+    expect(element.layouts["1-1-1"]).to.exist;
+    expect(element.layouts["1-1-1-1"]).to.exist;
   });
 
   // Accessibility tests
@@ -149,37 +157,42 @@ describe("GridPlate test", () => {
         </div>
       </grid-plate>
     `);
-    
+
     await expect(complexElement).shadowDom.to.be.accessible();
   });
 
   // Edge cases
   it("handles empty layout gracefully", async () => {
-    element.layout = '';
+    element.layout = "";
     await element.updateComplete;
-    
-    const widths = element._getColumnWidths('md', '', element.layouts, false);
+
+    const widths = element._getColumnWidths("md", "", element.layouts, false);
     expect(widths).to.exist;
   });
 
   it("handles invalid responsive size", () => {
-    const widths = element._getColumnWidths('invalid', '1-1', element.layouts, false);
+    const widths = element._getColumnWidths(
+      "invalid",
+      "1-1",
+      element.layouts,
+      false,
+    );
     expect(widths).to.exist;
   });
 
   // Performance tests
   it("efficiently calculates layouts", async () => {
-    const layouts = ['1', '1-1', '2-1', '1-2', '1-1-1', '1-1-1-1'];
-    const sizes = ['xs', 'sm', 'md', 'lg', 'xl'];
-    
+    const layouts = ["1", "1-1", "2-1", "1-2", "1-1-1", "1-1-1-1"];
+    const sizes = ["xs", "sm", "md", "lg", "xl"];
+
     const startTime = performance.now();
-    
+
     for (const layout of layouts) {
       for (const size of sizes) {
         element._getColumnWidths(size, layout, element.layouts, false);
       }
     }
-    
+
     const endTime = performance.now();
     expect(endTime - startTime).to.be.lessThan(50); // Should be fast
   });

@@ -41,7 +41,7 @@ describe("clean-one accessibility tests", () => {
     const el = await fixture(html` <clean-one></clean-one> `);
     const searchElement = el.shadowRoot.querySelector('[role="search"]');
     const mainElement = el.shadowRoot.querySelector('[role="main"]');
-    
+
     expect(searchElement).to.exist;
     expect(mainElement).to.exist;
     expect(mainElement.tagName).to.equal("MAIN");
@@ -49,10 +49,10 @@ describe("clean-one accessibility tests", () => {
 
   it("maintains accessible navigation structure", async () => {
     const el = await fixture(html` <clean-one></clean-one> `);
-    const nav = el.shadowRoot.querySelector('site-menu-button');
-    const header = el.shadowRoot.querySelector('header');
-    const footer = el.shadowRoot.querySelector('footer');
-    
+    const nav = el.shadowRoot.querySelector("site-menu-button");
+    const header = el.shadowRoot.querySelector("header");
+    const footer = el.shadowRoot.querySelector("footer");
+
     expect(header).to.exist;
     expect(footer).to.exist;
     expect(nav).to.exist;
@@ -60,9 +60,9 @@ describe("clean-one accessibility tests", () => {
 
   it("has proper semantic HTML structure", async () => {
     const el = await fixture(html` <clean-one></clean-one> `);
-    const article = el.shadowRoot.querySelector('article');
-    const section = el.shadowRoot.querySelector('section');
-    
+    const article = el.shadowRoot.querySelector("article");
+    const section = el.shadowRoot.querySelector("section");
+
     expect(article).to.exist;
     expect(section).to.exist;
   });
@@ -71,47 +71,49 @@ describe("clean-one accessibility tests", () => {
 // Property validation tests
 describe("clean-one property validation", () => {
   it("accepts valid searchTerm string", async () => {
-    const el = await fixture(html`<clean-one .searchTerm=${'test search'}></clean-one>`);
-    expect(el.searchTerm).to.equal('test search');
-    expect(typeof el.searchTerm).to.equal('string');
+    const el = await fixture(
+      html`<clean-one .searchTerm=${"test search"}></clean-one>`,
+    );
+    expect(el.searchTerm).to.equal("test search");
+    expect(typeof el.searchTerm).to.equal("string");
   });
 
   it("handles empty searchTerm", async () => {
-    const el = await fixture(html`<clean-one .searchTerm=${''}></clean-one>`);
-    expect(el.searchTerm).to.equal('');
+    const el = await fixture(html`<clean-one .searchTerm=${""}></clean-one>`);
+    expect(el.searchTerm).to.equal("");
   });
 
   it("updates searchTerm property reactively", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
-    el.searchTerm = 'new search';
+    el.searchTerm = "new search";
     await el.updateComplete;
-    expect(el.searchTerm).to.equal('new search');
+    expect(el.searchTerm).to.equal("new search");
   });
 
   it("validates property types correctly", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
-    
+
     // Test that searchTerm accepts strings
-    el.searchTerm = 'string value';
-    expect(typeof el.searchTerm).to.equal('string');
-    
+    el.searchTerm = "string value";
+    expect(typeof el.searchTerm).to.equal("string");
+
     // Test inherited properties exist
-    expect(el.hasOwnProperty('editMode')).to.be.true;
-    expect(el.hasOwnProperty('responsiveSize')).to.be.true;
+    expect(el.hasOwnProperty("editMode")).to.be.true;
+    expect(el.hasOwnProperty("responsiveSize")).to.be.true;
   });
 });
 
 // Slot usage and content tests
 describe("clean-one slot usage", () => {
   it("renders default slot content correctly", async () => {
-    const testContent = '<p>Test content in slot</p>';
+    const testContent = "<p>Test content in slot</p>";
     const el = await fixture(html`<clean-one>${testContent}</clean-one>`);
-    
-    const slot = el.shadowRoot.querySelector('#slot slot');
+
+    const slot = el.shadowRoot.querySelector("#slot slot");
     expect(slot).to.exist;
-    
+
     // Check that slotted content is accessible
-    const slottedElements = slot.assignedNodes({flatten: true});
+    const slottedElements = slot.assignedNodes({ flatten: true });
     expect(slottedElements.length).to.be.greaterThan(0);
   });
 
@@ -123,9 +125,11 @@ describe("clean-one slot usage", () => {
         <div>Test div</div>
       </clean-one>
     `);
-    
-    const slot = el.shadowRoot.querySelector('#slot slot');
-    const slottedElements = slot.assignedNodes({flatten: true}).filter(node => node.nodeType === Node.ELEMENT_NODE);
+
+    const slot = el.shadowRoot.querySelector("#slot slot");
+    const slottedElements = slot
+      .assignedNodes({ flatten: true })
+      .filter((node) => node.nodeType === Node.ELEMENT_NODE);
     expect(slottedElements.length).to.equal(3);
   });
 
@@ -138,7 +142,7 @@ describe("clean-one slot usage", () => {
         </article>
       </clean-one>
     `);
-    
+
     await expect(el).to.be.accessible();
   });
 });
@@ -147,56 +151,57 @@ describe("clean-one slot usage", () => {
 describe("clean-one search functionality", () => {
   it("handles search input changes", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
-    const searchBox = el.shadowRoot.querySelector('clean-one-search-box');
-    
+    const searchBox = el.shadowRoot.querySelector("clean-one-search-box");
+
     expect(searchBox).to.exist;
-    expect(el.searchTerm).to.equal('');
+    expect(el.searchTerm).to.equal("");
   });
 
   it("shows/hides search results appropriately", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
-    
+
     // Initially search should be hidden
-    const searchElement = el.shadowRoot.querySelector('site-search');
-    expect(searchElement?.hasAttribute('hidden')).to.be.true;
-    
+    const searchElement = el.shadowRoot.querySelector("site-search");
+    expect(searchElement && searchElement.hasAttribute("hidden")).to.be.true;
+
     // Set search term
-    el.searchTerm = 'test';
+    el.searchTerm = "test";
     await el.updateComplete;
-    
+
     // Search should now be visible
-    expect(searchElement?.hasAttribute('hidden')).to.be.false;
+    expect(searchElement && searchElement.hasAttribute("hidden")).to.be.false;
   });
 
   it("hides main content when searching", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
-    
-    el.searchTerm = 'test search';
+
+    el.searchTerm = "test search";
     await el.updateComplete;
-    
-    const contentContainer = el.shadowRoot.querySelector('#contentcontainer');
-    expect(contentContainer?.hasAttribute('hidden')).to.be.true;
+
+    const contentContainer = el.shadowRoot.querySelector("#contentcontainer");
+    expect(contentContainer && contentContainer.hasAttribute("hidden")).to.be
+      .true;
   });
 });
 
 // Mobile responsiveness tests
 describe("clean-one mobile responsiveness", () => {
   beforeEach(async () => {
-    await setViewport({width: 375, height: 750});
+    await setViewport({ width: 375, height: 750 });
   });
 
   afterEach(async () => {
-    await setViewport({width: 1024, height: 768});
+    await setViewport({ width: 1024, height: 768 });
   });
 
   it("adapts to mobile viewport", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
     expect(el).to.exist;
-    
+
     // Check that the element renders in mobile viewport
     await el.updateComplete;
     const computedStyle = getComputedStyle(el);
-    expect(computedStyle.display).to.not.equal('none');
+    expect(computedStyle.display).to.not.equal("none");
   });
 
   it("maintains accessibility on mobile", async () => {
@@ -208,44 +213,45 @@ describe("clean-one mobile responsiveness", () => {
 // Desktop responsiveness tests
 describe("clean-one desktop responsiveness", () => {
   beforeEach(async () => {
-    await setViewport({width: 1200, height: 800});
+    await setViewport({ width: 1200, height: 800 });
   });
 
   afterEach(async () => {
-    await setViewport({width: 1024, height: 768});
+    await setViewport({ width: 1024, height: 768 });
   });
 
   it("adapts to desktop viewport", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
     expect(el).to.exist;
-    
+
     await el.updateComplete;
     const computedStyle = getComputedStyle(el);
-    expect(computedStyle.display).to.not.equal('none');
+    expect(computedStyle.display).to.not.equal("none");
   });
 
   it("shows navigation elements on desktop", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
-    const navigation = el.shadowRoot.querySelector('.navigation');
+    const navigation = el.shadowRoot.querySelector(".navigation");
     expect(navigation).to.exist;
   });
 });
 
-// Theme integration and DDD usage tests  
+// Theme integration and DDD usage tests
 describe("clean-one DDD integration", () => {
   it("uses DDD design system tokens", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
     const styles = getComputedStyle(el);
-    
+
     // Check that DDD CSS custom properties are being used
-    const cssText = el.constructor.styles[el.constructor.styles.length - 1].cssText;
-    expect(cssText).to.include('--ddd-');
+    const cssText =
+      el.constructor.styles[el.constructor.styles.length - 1].cssText;
+    expect(cssText).to.include("--ddd-");
   });
 
   it("extends HAXCMSLitElementTheme properly", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
     expect(el.HAXCMSThemeSettings).to.exist;
-    expect(typeof el.HAXCMSThemeSettings).to.equal('object');
+    expect(typeof el.HAXCMSThemeSettings).to.equal("object");
   });
 });
 
@@ -253,21 +259,21 @@ describe("clean-one DDD integration", () => {
 describe("clean-one menu functionality", () => {
   it("handles menu open/close states", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
-    
+
     // Initially menu should be closed
-    expect(el.hasAttribute('menu-open')).to.be.false;
-    
+    expect(el.hasAttribute("menu-open")).to.be.false;
+
     // Test menu button exists
-    const menuButton = el.shadowRoot.querySelector('site-menu-button');
+    const menuButton = el.shadowRoot.querySelector("site-menu-button");
     expect(menuButton).to.exist;
   });
 
   it("renders menu structure correctly", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
-    
-    const menuOutline = el.shadowRoot.querySelector('.menu-outline');
-    const searchInput = el.shadowRoot.querySelector('#site-search-input');
-    
+
+    const menuOutline = el.shadowRoot.querySelector(".menu-outline");
+    const searchInput = el.shadowRoot.querySelector("#site-search-input");
+
     expect(menuOutline).to.exist;
     expect(searchInput).to.exist;
   });
@@ -277,7 +283,7 @@ describe("clean-one menu functionality", () => {
 describe("clean-one error handling", () => {
   it("handles missing or invalid content gracefully", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
-    
+
     // Element should still render without content
     expect(el).to.exist;
     await expect(el).to.be.accessible();
@@ -285,22 +291,22 @@ describe("clean-one error handling", () => {
 
   it("maintains functionality with special characters in search", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
-    
-    el.searchTerm = '!@#$%^&*()[]{}"\'';
+
+    el.searchTerm = "!@#$%^&*()[]{}\"'";
     await el.updateComplete;
-    
-    expect(el.searchTerm).to.equal('!@#$%^&*()[]{}"\\'');
+
+    expect(el.searchTerm).to.equal("!@#$%^&*()[]{}\"\\'");
   });
 
   it("handles rapid property changes", async () => {
     const el = await fixture(html`<clean-one></clean-one>`);
-    
+
     // Rapidly change search term
-    for(let i = 0; i < 10; i++) {
+    for (let i = 0; i < 10; i++) {
       el.searchTerm = `search ${i}`;
     }
-    
+
     await el.updateComplete;
-    expect(el.searchTerm).to.equal('search 9');
+    expect(el.searchTerm).to.equal("search 9");
   });
 });

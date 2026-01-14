@@ -955,14 +955,20 @@ export class QuestionElement extends SchemaBehaviors(
             ? html` <p class="feedback">${this.incorrectText}</p>
                 ${this.querySelector &&
                 this.querySelector('[slot="feedbackIncorrect"]')
-                  ? html`<slot name="feedbackIncorrect" property="oer:incorrectFeedback"></slot>`
+                  ? html`<slot
+                      name="feedbackIncorrect"
+                      property="oer:incorrectFeedback"
+                    ></slot>`
                   : nothing}`
             : nothing}
           ${this.showAnswer && this.isCorrect()
             ? html` <p class="feedback">${this.correctText}</p>
                 ${this.querySelector &&
                 this.querySelector('[slot="feedbackCorrect"]')
-                  ? html`<slot name="feedbackCorrect" property="oer:correctFeedback"></slot>`
+                  ? html`<slot
+                      name="feedbackCorrect"
+                      property="oer:correctFeedback"
+                    ></slot>`
                   : nothing}`
             : nothing}
           ${this.querySelector &&

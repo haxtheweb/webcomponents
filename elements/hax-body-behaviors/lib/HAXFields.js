@@ -445,16 +445,6 @@ export const HaxElementizer = {
             },
           },
         },
-        date: {
-          defaultSettings: {
-            element: "simple-fields-field",
-            noWrap: true,
-            attributes: {
-              autofocus: true,
-              type: "date",
-            },
-          },
-        },
         email: {
           defaultSettings: {
             element: "simple-fields-field",

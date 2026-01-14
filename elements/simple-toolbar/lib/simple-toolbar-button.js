@@ -201,7 +201,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
       this.toggles = false;
       this.radio = false;
       this.shortcutKeys = "";
-      this.isCurrentItem = true;
+      this.isCurrentItem = false;
     }
     /**
      * gets button element
@@ -538,7 +538,11 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
               @focus="${this._handleFocus}"
               part="button"
               role="radio"
-              tabindex="${this.isCurrentItem ? 0 : -1}"
+              tabindex="${this.role === "menuitem"
+                ? 0
+                : this.isCurrentItem
+                  ? 0
+                  : -1}"
             >
               ${this.buttonInnerTemplate}
             </button>
@@ -559,7 +563,11 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
                 @blur="${this._handleBlur}"
                 @focus="${this._handleFocus}"
                 part="button"
-                tabindex="${this.isCurrentItem ? 0 : -1}"
+                tabindex="${this.role === "menuitem"
+                  ? 0
+                  : this.isCurrentItem
+                    ? 0
+                    : -1}"
               >
                 ${this.buttonInnerTemplate}
               </button>
@@ -578,7 +586,11 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
                 @blur="${this._handleBlur}"
                 @focus="${this._handleFocus}"
                 part="button"
-                tabindex="${this.isCurrentItem ? 0 : -1}"
+                tabindex="${this.role === "menuitem"
+                  ? 0
+                  : this.isCurrentItem
+                    ? 0
+                    : -1}"
               >
                 ${this.buttonInnerTemplate}
               </button>

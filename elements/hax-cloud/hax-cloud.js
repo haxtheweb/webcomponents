@@ -123,7 +123,6 @@ class HaxCloud extends DDD {
         .dot {
           display: inline-flex;
           font-size: 64px;
-          font-family: "Press Start 2P", sans-serif;
         }
       </style>
       <main>

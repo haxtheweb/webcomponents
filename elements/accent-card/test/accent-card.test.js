@@ -5,10 +5,7 @@ describe("accent-card test", () => {
   let element;
   beforeEach(async () => {
     element = await fixture(html`
-      <accent-card 
-        image-src="https://placehold.co/400x300" 
-        accent-color="blue"
-      >
+      <accent-card image-src="https://placehold.co/400x300" accent-color="blue">
         <h3 slot="heading">Test Card Heading</h3>
         <p slot="subheading">Test card subheading</p>
         <p slot="content">This is test content for the card component.</p>
@@ -60,7 +57,9 @@ describe("accent-card test", () => {
     });
 
     it("should have image-corner slot", () => {
-      const slot = element.shadowRoot.querySelector('slot[name="image-corner"]');
+      const slot = element.shadowRoot.querySelector(
+        'slot[name="image-corner"]',
+      );
       expect(slot).to.exist;
     });
 
@@ -169,7 +168,7 @@ describe("accent-card test", () => {
     describe("imageAlign property", () => {
       it("should accept valid alignment values and maintain accessibility", async () => {
         const validValues = ["left", "center", "right", null];
-        
+
         for (const value of validValues) {
           testElement.imageAlign = value;
           await testElement.updateComplete;
@@ -207,9 +206,12 @@ describe("accent-card test", () => {
         expect(testElement.imageSrc).to.equal("");
         await expect(testElement).shadowDom.to.be.accessible();
 
-        testElement.imageSrc = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+        testElement.imageSrc =
+          "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
         await testElement.updateComplete;
-        expect(testElement.imageSrc).to.equal("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7");
+        expect(testElement.imageSrc).to.equal(
+          "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
+        );
         await expect(testElement).shadowDom.to.be.accessible();
       });
 
@@ -233,7 +235,7 @@ describe("accent-card test", () => {
     describe("imageValign property", () => {
       it("should accept valid alignment values and maintain accessibility", async () => {
         const validValues = ["top", "center", "bottom", null];
-        
+
         for (const value of validValues) {
           testElement.imageValign = value;
           await testElement.updateComplete;
@@ -309,7 +311,7 @@ describe("accent-card test", () => {
     describe("iconSize property", () => {
       it("should accept size string values and maintain accessibility", async () => {
         const validSizes = ["xs", "sm", "md", "lg", "xl"];
-        
+
         for (const size of validSizes) {
           testElement.iconSize = size;
           await testElement.updateComplete;
@@ -326,7 +328,7 @@ describe("accent-card test", () => {
     describe("imageWidth property", () => {
       it("should accept width string values and maintain accessibility", async () => {
         const validWidths = ["narrow", "wide"];
-        
+
         for (const width of validWidths) {
           testElement.imageWidth = width;
           await testElement.updateComplete;
@@ -441,10 +443,7 @@ describe("accent-card test", () => {
 
     it("should remain accessible in horizontal layout", async () => {
       const testElement = await fixture(html`
-        <accent-card 
-          horizontal
-          image-src="https://placehold.co/300x200"
-        >
+        <accent-card horizontal image-src="https://placehold.co/300x200">
           <h3 slot="heading">Horizontal Card</h3>
           <p slot="content">Card in horizontal layout</p>
         </accent-card>
@@ -455,7 +454,7 @@ describe("accent-card test", () => {
 
     it("should remain accessible with different image alignments", async () => {
       const alignments = ["left", "center", "right"];
-      
+
       for (const align of alignments) {
         const testElement = await fixture(html`
           <accent-card
@@ -473,10 +472,7 @@ describe("accent-card test", () => {
 
     it("should remain accessible with link and icon", async () => {
       const testElement = await fixture(html`
-        <accent-card
-          link="https://example.com"
-          icon-size="md"
-        >
+        <accent-card link="https://example.com" icon-size="md">
           <h3 slot="heading">Linked Card</h3>
           <p slot="content">Card with external link</p>
           <span slot="footer">Learn More</span>
@@ -488,12 +484,12 @@ describe("accent-card test", () => {
 
     it("should remain accessible with all slots populated", async () => {
       const testElement = await fixture(html`
-        <accent-card
-          image-src="https://placehold.co/400x300"
-        >
+        <accent-card image-src="https://placehold.co/400x300">
           <h3 slot="heading">Complete Card</h3>
           <p slot="subheading">With all content</p>
-          <p slot="content">This card demonstrates all available slots and features.</p>
+          <p slot="content">
+            This card demonstrates all available slots and features.
+          </p>
           <div slot="corner">Corner content</div>
           <div slot="image-corner">Image corner</div>
           <div slot="footer">Footer content</div>
@@ -522,13 +518,13 @@ describe("accent-card test", () => {
           <h3 slot="heading">Image Card</h3>
         </accent-card>
       `);
-      
+
       // Initially elementVisible should be true (IntersectionObserverMixin)
       expect(testElement.elementVisible).to.be.true;
-      
-      const imageWrapper = testElement.shadowRoot.querySelector('.image-outer');
-      expect(imageWrapper.hasAttribute('hidden')).to.be.false;
-      
+
+      const imageWrapper = testElement.shadowRoot.querySelector(".image-outer");
+      expect(imageWrapper.hasAttribute("hidden")).to.be.false;
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
@@ -538,16 +534,16 @@ describe("accent-card test", () => {
           <h3 slot="heading">No Image Card</h3>
         </accent-card>
       `);
-      
-      const imageWrapper = testElement.shadowRoot.querySelector('.image-outer');
-      expect(imageWrapper.hasAttribute('hidden')).to.be.true;
-      
+
+      const imageWrapper = testElement.shadowRoot.querySelector(".image-outer");
+      expect(imageWrapper.hasAttribute("hidden")).to.be.true;
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
     it("should maintain accessibility with different image widths", async () => {
       const widths = ["narrow", "wide"];
-      
+
       for (const width of widths) {
         const testElement = await fixture(html`
           <accent-card
@@ -574,13 +570,13 @@ describe("accent-card test", () => {
         </accent-card>
       `);
       await testElement.updateComplete;
-      
-      const link = testElement.shadowRoot.querySelector('a');
+
+      const link = testElement.shadowRoot.querySelector("a");
       expect(link).to.exist;
-      expect(link.getAttribute('href')).to.equal('https://example.com');
-      expect(link.getAttribute('target')).to.equal('_blank');
-      expect(link.getAttribute('rel')).to.equal('nofollow noopener');
-      
+      expect(link.getAttribute("href")).to.equal("https://example.com");
+      expect(link.getAttribute("target")).to.equal("_blank");
+      expect(link.getAttribute("rel")).to.equal("nofollow noopener");
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
@@ -592,10 +588,10 @@ describe("accent-card test", () => {
         </accent-card>
       `);
       await testElement.updateComplete;
-      
-      const link = testElement.shadowRoot.querySelector('a');
+
+      const link = testElement.shadowRoot.querySelector("a");
       expect(link).to.not.exist;
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });
@@ -607,13 +603,13 @@ describe("accent-card test", () => {
           <h3 slot="heading">Ready Test</h3>
         </accent-card>
       `);
-      
+
       // Initially ready should be false
       expect(testElement.ready).to.be.false;
-      
+
       // Wait for the ready state to be set (after 100ms timeout)
-      await new Promise(resolve => setTimeout(resolve, 150));
-      
+      await new Promise((resolve) => setTimeout(resolve, 150));
+
       expect(testElement.ready).to.be.true;
       await expect(testElement).shadowDom.to.be.accessible();
     });
@@ -621,9 +617,7 @@ describe("accent-card test", () => {
 
   describe("Edge cases and error handling", () => {
     it("should remain accessible with empty slots", async () => {
-      const testElement = await fixture(html`
-        <accent-card></accent-card>
-      `);
+      const testElement = await fixture(html` <accent-card></accent-card> `);
       await testElement.updateComplete;
       await expect(testElement).shadowDom.to.be.accessible();
     });
@@ -640,7 +634,7 @@ describe("accent-card test", () => {
 
     it("should handle edge case property values", async () => {
       const testElement = await fixture(html`<accent-card></accent-card>`);
-      
+
       // Test with various unusual values
       const edgeCaseValues = [
         "   \t\n   ", // whitespace
@@ -649,14 +643,14 @@ describe("accent-card test", () => {
         "🎨 creative content 🎆", // emoji
         "Very long text that might cause layout issues or other problems when displayed in the card interface",
         "Multi\nline\ntext", // multiline
-        "Text with 'quotes' and \"double quotes\" and special chars: !@#$%^&*()"
+        "Text with 'quotes' and \"double quotes\" and special chars: !@#$%^&*()",
       ];
-      
+
       for (const value of edgeCaseValues) {
         testElement.imageSrc = value;
         testElement.link = value;
         await testElement.updateComplete;
-        
+
         expect(testElement.imageSrc).to.equal(value);
         expect(testElement.link).to.equal(value);
         await expect(testElement).shadowDom.to.be.accessible();
@@ -675,9 +669,11 @@ describe("accent-card test", () => {
     it("should have proper HAX configuration for image upload", () => {
       const haxProps = element.constructor.haxProperties;
       const configItems = haxProps.settings.configure;
-      
+
       // Verify imageSrc property has haxupload input method
-      const imageSrcProp = configItems.find(item => item.property === "imageSrc");
+      const imageSrcProp = configItems.find(
+        (item) => item.property === "imageSrc",
+      );
       expect(imageSrcProp).to.exist;
       expect(imageSrcProp.inputMethod).to.equal("haxupload");
       expect(imageSrcProp.noVoiceRecord).to.be.true;
@@ -686,7 +682,7 @@ describe("accent-card test", () => {
     it("should maintain accessibility with HAX demo schema", async () => {
       const demoSchema = element.constructor.haxProperties.demoSchema[0];
       const haxTestElement = await fixture(html`
-        <accent-card 
+        <accent-card
           accent-color="${demoSchema.properties.accentColor}"
           ?accent-heading="${demoSchema.properties.accentHeading}"
           ?horizontal="${demoSchema.properties.horizontal}"
@@ -714,7 +710,7 @@ describe("accent-card test", () => {
       `);
       await testElement.updateComplete;
       await expect(testElement).shadowDom.to.be.accessible();
-      
+
       // Test with narrow container
       testElement.style.width = "300px";
       await testElement.updateComplete;

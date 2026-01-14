@@ -189,74 +189,74 @@ describe("baseline-build-hax module test", () => {
 
     it("should have required HAXStore methods", () => {
       const store = globalThis.HAXStore;
-      expect(store).to.have.property('requestAvailability');
-      expect(typeof store.requestAvailability).to.equal('function');
+      expect(store).to.have.property("requestAvailability");
+      expect(typeof store.requestAvailability).to.equal("function");
     });
   });
 
   describe("Component registry validation", () => {
     it("should have all components registered in custom elements registry", () => {
       const expectedComponents = [
-        'wysiwyg-hax',
-        'cms-hax', 
-        'hax-body',
-        'hax-tray',
-        'hax-app-picker',
-        'hax-app',
-        'hax-toolbar',
-        'a11y-gif-player',
-        'citation-element',
-        'image-compare-slider',
-        'license-element',
-        'lrn-math',
-        'lrn-table',
-        'lrn-vocab',
-        'oer-schema',
-        'media-image',
-        'meme-maker',
-        'multiple-choice',
-        'person-testimonial',
-        'place-holder',
-        'q-r',
-        'self-check',
-        'stop-note',
-        'video-player',
-        'wikipedia-query',
-        'grid-plate'
+        "wysiwyg-hax",
+        "cms-hax",
+        "hax-body",
+        "hax-tray",
+        "hax-app-picker",
+        "hax-app",
+        "hax-toolbar",
+        "a11y-gif-player",
+        "citation-element",
+        "image-compare-slider",
+        "license-element",
+        "lrn-math",
+        "lrn-table",
+        "lrn-vocab",
+        "oer-schema",
+        "media-image",
+        "meme-maker",
+        "multiple-choice",
+        "person-testimonial",
+        "place-holder",
+        "q-r",
+        "self-check",
+        "stop-note",
+        "video-player",
+        "wikipedia-query",
+        "grid-plate",
       ];
 
-      expectedComponents.forEach(tagName => {
+      expectedComponents.forEach((tagName) => {
         const constructor = globalThis.customElements.get(tagName);
         expect(constructor).to.exist;
-        expect(typeof constructor).to.equal('function');
+        expect(typeof constructor).to.equal("function");
       });
     });
 
     it("should create instances of all registered components", () => {
       const componentTagNames = [
-        'wysiwyg-hax',
-        'cms-hax',
-        'hax-body', 
-        'a11y-gif-player',
-        'citation-element',
-        'license-element',
-        'media-image',
-        'meme-maker',
-        'place-holder',
-        'q-r',
-        'self-check',
-        'stop-note',
-        'video-player',
-        'grid-plate'
+        "wysiwyg-hax",
+        "cms-hax",
+        "hax-body",
+        "a11y-gif-player",
+        "citation-element",
+        "license-element",
+        "media-image",
+        "meme-maker",
+        "place-holder",
+        "q-r",
+        "self-check",
+        "stop-note",
+        "video-player",
+        "grid-plate",
       ];
 
-      componentTagNames.forEach(tagName => {
+      componentTagNames.forEach((tagName) => {
         const element = globalThis.document.createElement(tagName);
         expect(element).to.exist;
         expect(element.tagName.toLowerCase()).to.equal(tagName);
-        
+
         // Verify it's a proper custom element
-        expect(element.constructor.name).to.not.equal('HTMLUnknownElement');
+        expect(element.constructor.name).to.not.equal("HTMLUnknownElement");
       });
     });
   });
@@ -266,21 +266,21 @@ describe("baseline-build-hax module test", () => {
       // This test verifies that the import completed successfully
       // which means all components loaded without major issues
       const startTime = performance.now();
-      
+
       // Test that we can create multiple elements quickly
       const elements = [
-        globalThis.document.createElement('hax-body'),
-        globalThis.document.createElement('media-image'),
-        globalThis.document.createElement('video-player')
+        globalThis.document.createElement("hax-body"),
+        globalThis.document.createElement("media-image"),
+        globalThis.document.createElement("video-player"),
       ];
-      
+
       const endTime = performance.now();
       const creationTime = endTime - startTime;
-      
-      elements.forEach(element => {
+
+      elements.forEach((element) => {
         expect(element).to.exist;
       });
-      
+
       // Element creation should be fast
       expect(creationTime).to.be.lessThan(100);
     });
@@ -289,24 +289,24 @@ describe("baseline-build-hax module test", () => {
   describe("HAX ecosystem integration", () => {
     it("should provide components that integrate with HAX", () => {
       // Test that components have HAX-related methods where expected
-      const haxBodyElement = globalThis.document.createElement('hax-body');
-      
+      const haxBodyElement = globalThis.document.createElement("hax-body");
+
       // HAX body should have core HAX functionality
       expect(haxBodyElement).to.exist;
-      expect(haxBodyElement.tagName.toLowerCase()).to.equal('hax-body');
+      expect(haxBodyElement.tagName.toLowerCase()).to.equal("hax-body");
     });
 
     it("should provide educational components", () => {
       // Test key educational components are available
       const educationalComponents = [
-        'multiple-choice',
-        'self-check', 
-        'lrn-math',
-        'lrn-vocab',
-        'stop-note'
+        "multiple-choice",
+        "self-check",
+        "lrn-math",
+        "lrn-vocab",
+        "stop-note",
       ];
 
-      educationalComponents.forEach(tagName => {
+      educationalComponents.forEach((tagName) => {
         const element = globalThis.document.createElement(tagName);
         expect(element).to.exist;
         expect(element.tagName.toLowerCase()).to.equal(tagName);
@@ -316,13 +316,13 @@ describe("baseline-build-hax module test", () => {
     it("should provide media components", () => {
       // Test key media components are available
       const mediaComponents = [
-        'video-player',
-        'media-image',
-        'a11y-gif-player',
-        'meme-maker'
+        "video-player",
+        "media-image",
+        "a11y-gif-player",
+        "meme-maker",
       ];
 
-      mediaComponents.forEach(tagName => {
+      mediaComponents.forEach((tagName) => {
         const element = globalThis.document.createElement(tagName);
         expect(element).to.exist;
         expect(element.tagName.toLowerCase()).to.equal(tagName);
@@ -333,41 +333,41 @@ describe("baseline-build-hax module test", () => {
   describe("Bundle completeness", () => {
     it("should include core HAX editing functionality", () => {
       const coreComponents = [
-        'hax-body',
-        'hax-tray',
-        'hax-toolbar',
-        'hax-app-picker',
-        'wysiwyg-hax',
-        'cms-hax'
+        "hax-body",
+        "hax-tray",
+        "hax-toolbar",
+        "hax-app-picker",
+        "wysiwyg-hax",
+        "cms-hax",
       ];
 
-      coreComponents.forEach(tagName => {
+      coreComponents.forEach((tagName) => {
         expect(globalThis.customElements.get(tagName)).to.exist;
       });
     });
 
     it("should include content authoring components", () => {
       const contentComponents = [
-        'citation-element',
-        'license-element',
-        'oer-schema',
-        'place-holder'
+        "citation-element",
+        "license-element",
+        "oer-schema",
+        "place-holder",
       ];
 
-      contentComponents.forEach(tagName => {
+      contentComponents.forEach((tagName) => {
         expect(globalThis.customElements.get(tagName)).to.exist;
       });
     });
 
     it("should include interactive elements", () => {
       const interactiveComponents = [
-        'multiple-choice',
-        'self-check',
-        'q-r',
-        'wikipedia-query'
+        "multiple-choice",
+        "self-check",
+        "q-r",
+        "wikipedia-query",
       ];
 
-      interactiveComponents.forEach(tagName => {
+      interactiveComponents.forEach((tagName) => {
         expect(globalThis.customElements.get(tagName)).to.exist;
       });
     });
@@ -376,10 +376,10 @@ describe("baseline-build-hax module test", () => {
   describe("Accessibility compliance", () => {
     it("should include accessibility-focused components", () => {
       const a11yComponents = [
-        'a11y-gif-player' // Specifically named for accessibility
+        "a11y-gif-player", // Specifically named for accessibility
       ];
 
-      a11yComponents.forEach(tagName => {
+      a11yComponents.forEach((tagName) => {
         const element = globalThis.document.createElement(tagName);
         expect(element).to.exist;
         expect(element.tagName.toLowerCase()).to.equal(tagName);
@@ -388,18 +388,14 @@ describe("baseline-build-hax module test", () => {
 
     it("should create accessible elements by default", () => {
       // Test that key components don't have obvious accessibility issues
-      const componentsToTest = [
-        'hax-body',
-        'media-image',
-        'stop-note'
-      ];
+      const componentsToTest = ["hax-body", "media-image", "stop-note"];
 
-      componentsToTest.forEach(tagName => {
+      componentsToTest.forEach((tagName) => {
         const element = globalThis.document.createElement(tagName);
         expect(element).to.exist;
-        
+
         // Elements should not have role="none" or other problematic defaults
-        expect(element.getAttribute('role')).to.not.equal('none');
+        expect(element.getAttribute("role")).to.not.equal("none");
       });
     });
   });
@@ -407,24 +403,20 @@ describe("baseline-build-hax module test", () => {
   describe("Educational content standards", () => {
     it("should include OER-compliant components", () => {
       const oerComponents = [
-        'oer-schema',
-        'license-element',
-        'citation-element'
+        "oer-schema",
+        "license-element",
+        "citation-element",
       ];
 
-      oerComponents.forEach(tagName => {
+      oerComponents.forEach((tagName) => {
         expect(globalThis.customElements.get(tagName)).to.exist;
       });
     });
 
     it("should include learning resource components", () => {
-      const learningComponents = [
-        'lrn-math',
-        'lrn-table', 
-        'lrn-vocab'
-      ];
+      const learningComponents = ["lrn-math", "lrn-table", "lrn-vocab"];
 
-      learningComponents.forEach(tagName => {
+      learningComponents.forEach((tagName) => {
         expect(globalThis.customElements.get(tagName)).to.exist;
       });
     });

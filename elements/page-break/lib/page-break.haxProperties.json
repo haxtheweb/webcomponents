@@ -63,6 +63,22 @@
         "title": "Tags",
         "description": "Comma separated list of tags",
         "inputMethod": "textfield"
+      },
+      {
+        "property": "linkUrl",
+        "title": "Link URL",
+        "description": "When set, users will be redirected to this URL instead of viewing page content",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "linkTarget",
+        "title": "Link Target",
+        "description": "Whether to open link in same window or new window",
+        "inputMethod": "select",
+        "options": {
+          "_self": "Same window",
+          "_blank": "New window"
+        }
       }
     ],
     "advanced": [

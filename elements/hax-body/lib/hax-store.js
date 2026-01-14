@@ -16,6 +16,8 @@ import {
   htmlEntities,
   localStorageGet,
   localStorageSet,
+  detectMarkdown,
+  markdownToHTML,
 } from "@haxtheweb/utils/utils.js";
 import {
   observable,
@@ -238,6 +240,29 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       typeName = "link";
     }
     let haxElements = this.guessGizmo(type, values, false, preferExclusive);
+    
+    // Auto-handle image drop scenarios without showing picker
+    if (type === "image" && this.activePlaceHolder) {
+      // Check if dropping on an image - auto-create gallery
+      if (this._isImageElement(this.activePlaceHolder)) {
+        this._createImageGallery(this.activePlaceHolder, values.source);
+        return true;
+      }
+
+      // Check if dropping into or onto a play-list - auto-add to that gallery
+      let targetPlayList = null;
+      // Prefer checking from the placeholder (where the drop occurred)
+      targetPlayList = this._nearestContainerTag(this.activePlaceHolder, "play-list");
+      // Fallback: check from the active node (drop target container)
+      if (!targetPlayList && this.activeNode) {
+        targetPlayList = this._nearestContainerTag(this.activeNode, "play-list");
+      }
+      if (targetPlayList) {
+        this._addImageToPlayList(targetPlayList, values.source);
+        return true;
+      }
+    }
+
     // see if we got anything
     if (haxElements.length > 0) {
       // if we ONLY have 1 thing or we say "make it a link if multiple"
@@ -300,6 +325,198 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       );
     }
   }
+  /**
+   * Find the nearest ancestor element matching tag name from a starting node
+   */
+  _nearestContainerTag(node, tagName) {
+    let current = node;
+    const match = (el) => el && el.tagName && el.tagName.toLowerCase() === tagName;
+    // If node supports closest (Elements), use it first for performance
+    try {
+      if (current && typeof current.closest === "function") {
+        const found = current.closest(tagName);
+        if (found) return found;
+      }
+    } catch (e) {}
+    // Fallback manual traversal (covers non-Elements or when closest not available)
+    while (current) {
+      if (match(current)) return current;
+      current = current.parentNode;
+    }
+    return null;
+  }
+
+  /**
+   * Check if an element is an image element by tag name or schema metadata
+   */
+  _isImageElement(element) {
+    if (!element || !element.tagName) {
+      return false;
+    }
+
+    const tagName = element.tagName.toLowerCase();
+
+    // Check for direct image element tag names
+    const directImageElements = [
+      "media-image",
+      "img",
+      "image",
+      "a11y-figure",
+      "full-width-image",
+      "parallax-image",
+    ];
+    if (directImageElements.includes(tagName)) {
+      return true;
+    }
+
+    // Check schema metadata for image tag
+    const schema = this.haxSchemaFromTag(tagName);
+    if (schema && schema.gizmo && schema.gizmo.tags) {
+      // Check if the element's gizmo tags include 'image'
+      return schema.gizmo.tags.some(
+        (tag) => typeof tag === "string" && tag.toLowerCase() === "image",
+      );
+    }
+
+    return false;
+  }
+
+  /**
+   * Create an image gallery by wrapping the original image and adding the new image
+   */
+  _createImageGallery(originalImageElement, newImageSource) {
+    // Create the play-list element
+    const playList = globalThis.document.createElement('play-list');
+    
+    // Set gallery-friendly defaults using properties
+    playList.pagination = true;
+    playList.navigation = true;
+    playList.loop = true;
+    
+    // Copy any slot attribute from the original image
+    if (originalImageElement.getAttribute('slot')) {
+      playList.setAttribute('slot', originalImageElement.getAttribute('slot'));
+    }
+    
+    // Clone the original image element
+    const originalImageClone = originalImageElement.cloneNode(true);
+    
+    // Create the new image element
+    let newImage;
+    if (originalImageElement.tagName.toLowerCase() === 'media-image') {
+      // If original is media-image, create matching element
+      newImage = globalThis.document.createElement('media-image');
+      newImage.source = newImageSource;
+      newImage.alt = 'Image from gallery';
+      
+      // Copy relevant properties from original for consistency
+      ['card', 'box', 'round', 'size', 'offset'].forEach(prop => {
+        if (originalImageElement[prop] !== undefined && originalImageElement[prop] !== null) {
+          newImage[prop] = originalImageElement[prop];
+        }
+      });
+    } else {
+      // For other image types, create a media-image
+      newImage = globalThis.document.createElement('media-image');
+      newImage.source = newImageSource;
+      newImage.alt = 'Image from gallery';
+    }
+    
+    // Add both images to the play-list
+    playList.appendChild(originalImageClone);
+    playList.appendChild(newImage);
+    
+    // Replace the original image with the play-list
+    if (this.activeHaxBody && originalImageElement.parentNode) {
+      this.activeHaxBody.haxReplaceNode(originalImageElement, playList);
+    }
+    
+    // Clean up
+    this.activePlaceHolder = null;
+    
+    // Set the new play-list as active
+    this.activeNode = playList;
+    
+    // Show success message
+    this.toast('Image gallery created successfully!');
+  }
+
+  /**
+   * Add an image to an existing play-list
+   */
+  _addImageToPlayList(playListElement, imageSource) {
+    // Create the new image element
+    const newImage = globalThis.document.createElement('media-image');
+    newImage.source = imageSource;
+    newImage.alt = 'Added to gallery';
+    
+    // Check if there are existing images in the play-list to copy properties from
+    const existingImages = playListElement.querySelectorAll('media-image');
+    if (existingImages.length > 0) {
+      const firstImage = existingImages[0];
+      // Copy relevant properties from first image for consistency
+      ['card', 'box', 'round', 'size', 'offset'].forEach(prop => {
+        if (firstImage[prop] !== undefined && firstImage[prop] !== null) {
+          newImage[prop] = firstImage[prop];
+        }
+      });
+    }
+    
+    // Add the new image to the play-list
+    playListElement.appendChild(newImage);
+    
+    // If a temporary placeholder node was created for drop positioning, remove it
+    try {
+      if (
+        this.activePlaceHolder &&
+        this.activePlaceHolder.parentNode &&
+        this.activePlaceHolder !== playListElement
+      ) {
+        this.activePlaceHolder.parentNode.removeChild(this.activePlaceHolder);
+      }
+    } catch (e) {}
+    
+    // Clean up
+    this.activePlaceHolder = null;
+    
+    // Set the play-list as active
+    this.activeNode = playListElement;
+    
+    // Show success message
+    this.toast('Image added to gallery successfully!');
+  }
+
+  /**
+   * Create a single image gallery from Magic File Wand
+   */
+  _createSingleImageGallery(imageSource) {
+    // Create the play-list element
+    const playList = globalThis.document.createElement('play-list');
+    
+    // Set gallery-friendly defaults using properties
+    playList.pagination = true;
+    playList.navigation = true;
+    playList.loop = true;
+    
+    // Create the image element
+    const image = globalThis.document.createElement('media-image');
+    image.source = imageSource;
+    image.alt = 'Gallery image';
+    
+    // Add the image to the play-list
+    playList.appendChild(image);
+    
+    // Insert the play-list using normal insertion logic
+    this.activeHaxBody.haxInsert('play-list', playList.innerHTML, {
+      pagination: true,
+      navigation: true,
+      loop: true,
+    });
+    
+    // Show success message
+    this.toast('Image gallery created! Add more images by editing the gallery.');
+  }
+
   /**
    * Convert a data mime type to gizmo type for rendering
    */
@@ -604,6 +821,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           "ol",
           "ul",
           "li",
+          "dl",
+          "dt",
+          "dd",
           "a",
           "h1",
           "h2",
@@ -1368,9 +1588,42 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       pasteContent = pasteContent.replace(/<div/g, "<p");
       pasteContent = pasteContent.replace(/<\/div>/g, "</p>");
       originalContent = pasteContent;
-      // look for base64 like copy and paste of an image from clipboard
 
-      if (this.isBase64(originalContent)) {
+      // Check for markdown FIRST (before any other processing)
+      // Get the plain text content for markdown detection
+      let textContent = "";
+      if (e.clipboardData || e.originalEvent.clipboardData) {
+        textContent =
+          (e.originalEvent || e).clipboardData.getData("text/plain") || "";
+      } else if (globalThis.clipboardData) {
+        textContent = globalThis.clipboardData.getData("Text") || "";
+      }
+
+      // If we detect markdown, prevent default and convert immediately
+      if (
+        textContent &&
+        textContent.length > 0 &&
+        textContent.length < 100000 &&
+        detectMarkdown(textContent)
+      ) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+
+        try {
+          const markdownHTML = await markdownToHTML(textContent);
+          if (markdownHTML && markdownHTML !== textContent) {
+            pasteContent = markdownHTML;
+            originalContent = pasteContent;
+          }
+        } catch (error) {
+          console.warn("Failed to convert markdown to HTML:", error);
+          // Continue with original content if markdown conversion fails
+        }
+      }
+      // Performance-aware paste handling: check quick binary/blob tests
+      // look for base64 like copy and paste of an image from clipboard
+      else if (this.isBase64(originalContent)) {
         // stop normal paste
         e.preventDefault();
         e.stopPropagation();
@@ -1420,7 +1673,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         });
       }
       // we have a "file" paste
-      else if (e.clipboardData.files.length > 0) {
+      else if (
+        e.clipboardData &&
+        e.clipboardData.files &&
+        e.clipboardData.files.length > 0
+      ) {
         // stop normal paste
         e.preventDefault();
         e.stopPropagation();
@@ -1452,20 +1709,84 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           }),
         );
       }
+
       // detect word garbage
       let inlinePaste = false;
       // the string to import as sanitized by hax
       let newContent = "";
       // verify this is HTML prior to treating it as such
       // HTML pasting to ensure it's clean is very slow
+      // Clean paste content FIRST before any processing
+      pasteContent = stripMSWord(pasteContent);
+
       let fragment = globalThis.document.createElement("div");
       fragment.innerHTML = pasteContent;
       let haxElements = [];
+
+      // Check if we're pasting into the middle of an existing text element (inline paste)
+      let range = this.getRange();
+      let isInlinePaste = false;
+      if (range && this.activeNode && this.isTextElement(this.activeNode)) {
+        // If cursor is not at the beginning/end of the element, it's an inline paste
+        let selection = this.getSelection();
+        if (selection && !selection.isCollapsed) {
+          // User has selected text - inline paste
+          isInlinePaste = true;
+        } else if (
+          range.startOffset > 0 &&
+          range.startOffset < this.activeNode.textContent.length
+        ) {
+          // Cursor is in the middle - inline paste
+          isInlinePaste = true;
+        }
+      }
+
+      // Check if we have mixed content (text + inline elements) without proper block wrapper
+      // This needs to happen AFTER stripMSWord to work with cleaned content
+      let hasTextNodes = Array.from(fragment.childNodes).some(
+        (node) =>
+          node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== "",
+      );
+      let hasInlineElements = Array.from(fragment.children).some((child) =>
+        [
+          "strong",
+          "em",
+          "b",
+          "i",
+          "a",
+          "span",
+          "code",
+          "mark",
+          "sup",
+          "sub",
+        ].includes(child.tagName.toLowerCase()),
+      );
+      let hasBlockElements = Array.from(fragment.children).some((child) =>
+        this.__validGridTags().includes(child.tagName.toLowerCase()),
+      );
+
+      // If we have mixed content without proper block wrapper, wrap it
+      // For inline paste, handle mixed content specially to preserve all text
+      if (
+        (hasTextNodes || hasInlineElements) &&
+        !hasBlockElements &&
+        fragment.children.length > 0
+      ) {
+        if (isInlinePaste) {
+          // For inline paste, skip HAX element processing and handle directly as HTML
+          newContent = pasteContent;
+          inlinePaste = true;
+          // Skip the rest of the processing and go straight to inline paste handler
+        } else {
+          pasteContent = `<p>${pasteContent}</p>`;
+          fragment.innerHTML = pasteContent; // Update fragment with wrapped content
+        }
+      }
+
       // test that this is valid HTML before we dig into it as elements
       // and that it actually has children prior to parsing for children
-      if (fragment.children) {
-        // NOW we can safely handle paste from word cases
-        pasteContent = stripMSWord(pasteContent);
+      // Skip this processing if we already handled inline mixed content above
+      if (fragment.children && !(inlinePaste && newContent)) {
         // we force h2 to be highest document level on pasted content
         pasteContent = pasteContent.replace(/<h1>/g, "<h2>");
         pasteContent = pasteContent.replace(/<\/h1>/g, "</h2>");
@@ -1608,7 +1929,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       // account for incredibly basic pastes of single groups of characters
       else if (haxElements.length === 1 && haxElements[0].tag === "p") {
         newContent = pasteContent;
-        inlinePaste = true;
+        inlinePaste = isInlinePaste; // Use our early detection instead of always true
       }
       // account for incredibly basic pastes of single groups of characters
       else if (
@@ -1758,10 +2079,50 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             let txt;
             // we got here via an inline paste trap for a URL or other inline content
             if (!validURL(pasteContent)) {
-              // if there ARE HTML children under here, we need to resolve it as HTML
-              if (newNodes.children && newNodes.children.length > 0) {
+              // For mixed content (text + inline elements), insert all nodes in reverse order
+              if (newNodes.childNodes && newNodes.childNodes.length > 1) {
+                // Clone the nodes array since we'll be modifying it
+                let nodesToInsert = Array.from(newNodes.childNodes);
+                let lastInsertedNode = null;
+                // Insert all nodes in reverse order (last to first)
+                for (let i = nodesToInsert.length - 1; i >= 0; i--) {
+                  let nodeToInsert = nodesToInsert[i].cloneNode(true);
+                  range.insertNode(nodeToInsert);
+                  // Keep track of the first node we insert (which will be the last in document order)
+                  if (i === nodesToInsert.length - 1) {
+                    lastInsertedNode = nodeToInsert;
+                  }
+                }
+                // Position cursor at the end of the last inserted node
+                setTimeout(() => {
+                  if (lastInsertedNode) {
+                    // If it's a text node, position at the end of the text
+                    if (lastInsertedNode.nodeType === Node.TEXT_NODE) {
+                      this._positionCursorInNode(
+                        lastInsertedNode,
+                        lastInsertedNode.textContent.length,
+                      );
+                    } else {
+                      // If it's an element, position after it
+                      let newRange = this.getRange();
+                      if (newRange) {
+                        newRange.setStartAfter(lastInsertedNode);
+                        newRange.setEndAfter(lastInsertedNode);
+                        let sel = this.getSelection();
+                        if (sel) {
+                          sel.removeAllRanges();
+                          sel.addRange(newRange);
+                        }
+                      }
+                    }
+                  }
+                }, 0);
+                // Don't insert anything else, we're done
+                return;
+              } else if (newNodes.children && newNodes.children.length > 0) {
                 while (newNodes.childNodes.length > 1) {
-                  range.insertNode(Array.from(newNodes.childNodes).pop());
+                  let nodeToInsert = Array.from(newNodes.childNodes).pop();
+                  range.insertNode(nodeToInsert);
                 }
                 // this should append the HTML elements / textnodes correctly
                 txt = Array.from(newNodes.childNodes).pop();
@@ -1778,8 +2139,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               txt.setAttribute("target", "_blank");
               txt.innerText = pasteContent;
             }
-            range.deleteContents();
-            range.insertNode(txt);
+            // Only insert txt if it exists (not for mixed content case)
+            if (txt) {
+              range.deleteContents();
+              range.insertNode(txt);
+            }
             setTimeout(() => {
               this._positionCursorInNode(txt, txt.length);
             }, 0);
@@ -1865,11 +2229,41 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
               siblingEl = activeEl;
             }
             setTimeout(() => {
-              if (activeEl && activeEl.childNodes && activeEl.childNodes[0]) {
-                this._positionCursorInNode(
-                  activeEl.childNodes[0],
-                  activeEl.childNodes[0].length,
-                );
+              if (
+                activeEl &&
+                activeEl.childNodes &&
+                activeEl.childNodes.length > 0
+              ) {
+                // Position cursor at the end of the last child node to ensure it's at the end of content
+                let lastChild =
+                  activeEl.childNodes[activeEl.childNodes.length - 1];
+                if (lastChild.nodeType === Node.TEXT_NODE) {
+                  // If last child is a text node, position at end of text
+                  this._positionCursorInNode(
+                    lastChild,
+                    lastChild.textContent.length,
+                  );
+                } else {
+                  // If last child is an element, try to find the deepest last text node
+                  let deepestTextNode =
+                    this._findDeepestLastTextNode(lastChild);
+                  if (deepestTextNode) {
+                    this._positionCursorInNode(
+                      deepestTextNode,
+                      deepestTextNode.textContent.length,
+                    );
+                  } else {
+                    // Fallback to positioning after the element
+                    let range = this.getRange();
+                    let sel = this.getSelection();
+                    if (range && sel) {
+                      range.setStartAfter(lastChild);
+                      range.setEndAfter(lastChild);
+                      sel.removeAllRanges();
+                      sel.addRange(range);
+                    }
+                  }
+                }
                 activeEl = null;
                 siblingEl = null;
               }
@@ -1881,6 +2275,32 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       }
     }
   }
+  /**
+   * Helper method to find the deepest last text node within an element
+   * Used for proper cursor positioning at the end of content
+   */
+  _findDeepestLastTextNode(element) {
+    if (!element || !element.childNodes) {
+      return null;
+    }
+
+    // Work backwards through child nodes to find the last text node or element with text
+    for (let i = element.childNodes.length - 1; i >= 0; i--) {
+      let node = element.childNodes[i];
+      if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+        return node;
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        // Recursively search in the element
+        let deeperTextNode = this._findDeepestLastTextNode(node);
+        if (deeperTextNode) {
+          return deeperTextNode;
+        }
+      }
+    }
+
+    return null;
+  }
+
   // HTML primatives which are valid grid plate elements
   __validGridTags() {
     return [
@@ -2262,6 +2682,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.haxBodies = [];
     this.activePlaceHolder = null;
     this.activePlaceHolderOperationType = null;
+    this.activePlaceHolderCallback = null;
     this.sessionObject = {};
     this.editMode = false;
     this.skipExitTrap = false;
@@ -2457,7 +2878,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     let test = globalThis.document.createElement("webview");
     this._isSandboxed = typeof test.reload === "function";
     globalThis.document.body.style.setProperty("--hax-ui-headings", "#d4ff77");
-    this.revisionHistoryLink = null;
     // mobx
     makeObservable(this, {
       daemonKeyCombo: observable,
@@ -2468,7 +2888,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       activeGizmo: computed,
       activeNodeIndex: computed,
       editMode: observable,
-      revisionHistoryLink: observable,
       elementAlign: observable,
       trayStatus: observable,
       trayDetail: observable,
@@ -3222,12 +3641,15 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 "sub",
                 "sup",
                 "span",
+                "code",
                 "time",
                 "cite",
               ].includes(tag)
                 ? true
                 : false,
-              hidden: ["h2", "ul"].includes(tag) ? false : true,
+              hidden: ["h1", "h2", "h3", "h4", "ul"].includes(tag)
+                ? false
+                : true,
               outlineDesigner: ["h2", "ul"].includes(tag) ? true : false, // Oh no you didn't..
             },
           },
@@ -3339,6 +3761,41 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       if (typeof details.properties !== typeof undefined) {
         properties = details.properties;
       }
+
+      // Apply style guide defaults for elements inserted via Super Daemon or other insert methods
+      // Check if this is coming from a context where we want to apply style guide defaults
+      const styleGuideOverride = this._getStyleGuideSchemaOverride(details.tag);
+      if (
+        styleGuideOverride &&
+        styleGuideOverride.demoSchema &&
+        styleGuideOverride.demoSchema[0]
+      ) {
+        const demo = styleGuideOverride.demoSchema[0];
+        if (demo.properties) {
+          // Merge style guide properties with existing properties
+          // Existing properties take precedence over style guide defaults
+          properties = { ...demo.properties, ...properties };
+        }
+      }
+      // Special handling for gallery creation
+      if (
+        properties._isGalleryCreation &&
+        properties._originalImageElement &&
+        properties._newImageSource
+      ) {
+        this._createImageGallery(
+          properties._originalImageElement,
+          properties._newImageSource,
+        );
+        return;
+      }
+      
+      // Handle single image gallery creation (Magic File Wand)
+      if (properties._isSingleImageGallery && properties._imageSource) {
+        this._createSingleImageGallery(properties._imageSource);
+        return;
+      }
+
       // support / clean up properties / attributes that have innerHTML / innerText
       // these are reserved words but required for certain bindings
       if (properties.innerHTML) {
@@ -4038,6 +4495,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
     if (typeof tmpProps !== typeof undefined) {
       for (let j in tmpProps) {
+        // skip innerHTML and innerText as they should be handled as content, not attributes
+        if (j === "innerHTML" || j === "innerText") {
+          continue;
+        }
         var nodeName = camelToDash(j);
         var value = null;
         // prefer local value over properties object if possible

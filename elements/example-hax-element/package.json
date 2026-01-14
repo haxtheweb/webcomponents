@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/example-hax-element",
-  "version": "11.0.5",
+  "version": "25.0.0",
   "description": "Webcomponent example-hax-element following hax / open-wc recommendations",
   "license": "Apache-2.0",
   "author": {
@@ -28,9 +28,9 @@
     "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
   },
   "dependencies": {
-    "@haxtheweb/d-d-d": "^11.0.5",
-    "@haxtheweb/i18n-manager": "^11.0.0",
-    "lit": "3.3.0"
+    "@haxtheweb/d-d-d": "^25.0.0",
+    "@haxtheweb/i18n-manager": "^25.0.0",
+    "lit": "3.3.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",
@@ -57,5 +57,6 @@
   "hax": {
     "cli": true
   },
-  "customElements": "custom-elements.json"
+  "customElements": "custom-elements.json",
+  "gitHead": "205ca9f1c3abd2c09938118965e60a15d90a58bb"
 }

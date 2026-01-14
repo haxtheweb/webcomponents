@@ -66,8 +66,6 @@ class CollectionsTheme extends HAXCMSOperationButtons(
       super.styles,
       css`
         :host {
-          --bg-color: #ffffff;
-          --content-bg-color: #ffffff;
           --nav-link-color: #363533;
           --icon-color: #363533;
           --header-bg-color: var(

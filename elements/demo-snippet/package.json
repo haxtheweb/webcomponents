@@ -1,0 +1,64 @@
+{
+  "name": "@haxtheweb/demo-snippet",
+  "version": "25.0.0",
+  "description": "Webcomponent demo-snippet following hax / open-wc recommendations",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "haxtheweb",
+    "url": "https://hax.psu.edu/"
+  },
+  "keywords": [
+    "webcomponents",
+    "lit",
+    "haxtheweb"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haxtheweb/webcomponents.git"
+  },
+  "type": "module",
+  "main": "demo-snippet.js",
+  "module": "demo-snippet.js",
+  "scripts": {
+    "start": "web-dev-server",
+    "build": "rimraf public && rollup -c rollup.config.js && npm run analyze",
+    "analyze": "cem analyze --litelement --exclude public",
+    "dddaudit": "hax audit",
+    "release": "npm run build && commit-and-tag-version && git push --follow-tags origin main && npm publish",
+    "test": "web-test-runner test/**/*.test.js --coverage --node-resolve",
+    "test:watch": "web-test-runner test/**/*.test.js --node-resolve --watch"
+  },
+  "dependencies": {
+    "@haxtheweb/code-sample": "^25.0.0",
+    "@haxtheweb/d-d-d": "^25.0.0",
+    "@haxtheweb/i18n-manager": "^25.0.0",
+    "lit": "3.3.1"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.4",
+    "@custom-elements-manifest/analyzer": "0.10.4",
+    "@open-wc/building-rollup": "^3.0.2",
+    "@open-wc/testing": "4.0.0",
+    "@rollup/plugin-babel": "6.0.4",
+    "@rollup/plugin-node-resolve": "16.0.1",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@web/dev-server": "0.4.6",
+    "@web/rollup-plugin-html": "^2.3.0",
+    "@web/rollup-plugin-import-meta-assets": "2.3.0",
+    "@web/test-runner": "^0.19.0",
+    "babel-plugin-template-html-minifier": "^4.1.0",
+    "babel-plugin-transform-dynamic-import": "^2.1.0",
+    "commit-and-tag-version": "12.5.1",
+    "rimraf": "^5.0.7",
+    "rollup-plugin-esbuild": "6.2.1"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "hax": {
+    "cli": true
+  },
+  "customElements": "custom-elements.json",
+  "gitHead": "205ca9f1c3abd2c09938118965e60a15d90a58bb"
+}

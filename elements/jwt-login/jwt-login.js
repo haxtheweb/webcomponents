@@ -22,7 +22,7 @@ class JwtLogin extends LitElement {
    * Handle the last error rolling in
    */
   lastErrorChanged(e) {
-    if (e && this.__context != "logout") {
+    if (e && this.__context != "logout" && this.__context != "refresh") {
       // check for JWT needing refreshed vs busted but must be 403
       console.warn(e);
       this.dispatchEvent(
@@ -324,16 +324,29 @@ class JwtLogin extends LitElement {
     this.body = {};
     // reset jwt which will do all the events / local storage work
     this.jwt = null;
-    if (this.isDifferentDomain(this.logoutUrl)) {
-      globalThis.location.href = this.logoutUrl;
-    } else {
-      this.generateRequest(this.logoutUrl);
+    // only attempt logout call if we have a valid logoutUrl
+    if (
+      this.logoutUrl &&
+      this.logoutUrl !== "" &&
+      this.logoutUrl !== "undefined"
+    ) {
+      if (this.isDifferentDomain(this.logoutUrl)) {
+        globalThis.location.href = this.logoutUrl;
+      } else {
+        this.generateRequest(this.logoutUrl);
+      }
+    } else if (this.__redirect && this.redirectUrl) {
+      // if no logout endpoint but we have redirect, go there
+      setTimeout(() => {
+        globalThis.location.href = this.redirectUrl;
+      }, 100);
     }
   }
   isDifferentDomain(urlToCheck) {
     try {
       const currentUrl = new URL(globalThis.location.href);
-      const targetUrl = new URL(urlToCheck);
+      // Handle both absolute and relative URLs by providing base URL
+      const targetUrl = new URL(urlToCheck, globalThis.location.href);
 
       return currentUrl.hostname !== targetUrl.hostname;
     } catch (error) {

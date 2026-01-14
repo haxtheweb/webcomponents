@@ -18,6 +18,13 @@
               "readonly": true
             },
             {
+              "kind": "field",
+              "name": "haxProperties",
+              "static": true,
+              "description": "HAXSchema for proper integration with the HAX editor",
+              "readonly": true
+            },
+            {
               "kind": "method",
               "name": "_calculateStopped",
               "parameters": [
@@ -63,6 +70,61 @@
             },
             {
               "kind": "method",
+              "name": "_handleClick",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Handle click events with accessibility considerations"
+            },
+            {
+              "kind": "method",
+              "name": "_handleKeydown",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Handle keyboard interactions"
+            },
+            {
+              "kind": "method",
+              "name": "_handleMouseOver",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Handle mouse over with reduced motion consideration"
+            },
+            {
+              "kind": "method",
+              "name": "_handleMouseOut",
+              "parameters": [
+                {
+                  "name": "e"
+                }
+              ],
+              "description": "Handle mouse out"
+            },
+            {
+              "kind": "method",
+              "name": "_checkUserPreferences",
+              "description": "Check user preferences for accessibility"
+            },
+            {
+              "kind": "method",
+              "name": "_getAltText",
+              "description": "Get appropriate alt text for the image"
+            },
+            {
+              "kind": "method",
+              "name": "_getAriaLabel",
+              "description": "Get appropriate ARIA label"
+            },
+            {
+              "kind": "method",
               "name": "_setPlaySound",
               "parameters": [
                 {
@@ -79,12 +141,12 @@
                   "name": "e"
                 }
               ],
-              "description": "Set the state to play from an event."
+              "description": "Set the state to stop from an event."
             },
             {
               "kind": "method",
               "name": "_playSound",
-              "description": "Play the sound effect."
+              "description": "Play the sound effect with accessibility considerations."
             },
             {
               "kind": "field",
@@ -137,7 +199,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
+              "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow, purple",
               "default": "\"\"",
               "attribute": "color",
               "reflects": true
@@ -153,6 +215,38 @@
               "default": "false",
               "attribute": "reset-sound",
               "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "soundEnabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Enable/disable sound effects globally",
+              "default": "true",
+              "attribute": "sound-enabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "disabled",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disable the entire component",
+              "default": "false",
+              "attribute": "disabled",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "tabIndex",
+              "type": {
+                "text": "number"
+              },
+              "default": "0"
             },
             {
               "kind": "field",
@@ -257,7 +351,7 @@
               "type": {
                 "text": "string"
               },
-              "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow",
+              "description": "This is to change the color of the element. Possible values are:\nred, blue, orange, yellow, purple",
               "default": "\"\"",
               "fieldName": "color"
             },
@@ -269,6 +363,30 @@
               "description": "Allow for resetting the sound effect.",
               "default": "false",
               "fieldName": "resetSound"
+            },
+            {
+              "name": "sound-enabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Enable/disable sound effects globally",
+              "default": "true",
+              "fieldName": "soundEnabled"
+            },
+            {
+              "name": "disabled",
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Disable the entire component",
+              "default": "false",
+              "fieldName": "disabled"
+            }
+          ],
+          "mixins": [
+            {
+              "name": "DDDSuper",
+              "package": "@haxtheweb/d-d-d/d-d-d.js"
             }
           ],
           "superclass": {

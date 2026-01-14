@@ -1,9 +1,9 @@
 {
   "_meta": {
-    "generated": "2025-10-01T17:03:27.741Z",
-    "elementsScanned": 221,
-    "elementsWithTranslations": 32,
-    "translationFilesFound": 697,
+    "generated": "2026-01-13T18:06:31.131Z",
+    "elementsScanned": 219,
+    "elementsWithTranslations": 33,
+    "translationFilesFound": 715,
     "languagesSupported": [
       "af",
       "am",
@@ -298,6 +298,44 @@
     ],
     "ddd-card": [
       "es"
+    ],
+    "demo-snippet.ar": [
+      "haxProperties"
+    ],
+    "demo-snippet": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "demo-snippet.bn": [
+      "haxProperties"
+    ],
+    "demo-snippet.es": [
+      "haxProperties"
+    ],
+    "demo-snippet.fr": [
+      "haxProperties"
+    ],
+    "demo-snippet.hi": [
+      "haxProperties"
+    ],
+    "demo-snippet.ja": [
+      "haxProperties"
+    ],
+    "demo-snippet.pt": [
+      "haxProperties"
+    ],
+    "demo-snippet.ru": [
+      "haxProperties"
+    ],
+    "demo-snippet.zh": [
+      "haxProperties"
     ],
     "example-hax-element.ar": [
       "haxProperties"

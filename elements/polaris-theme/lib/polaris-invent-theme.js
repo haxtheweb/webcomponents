@@ -33,6 +33,8 @@ import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIR
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
+ * @haxcms-theme-category Website
+ * @haxcms-theme-internal false
  * @demo demo/index.html
  * @element polaris-invent-theme
  */

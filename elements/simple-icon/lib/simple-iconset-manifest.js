@@ -1,12 +1,12 @@
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 
 /**
- * @const SimpleIconIconsetsManifest 
+ * @const SimpleIconIconsetsManifest
  */
 export const SimpleIconIconsetsManifest = [
   {
-    "name": "av",
-    "icons": [
+    name: "av",
+    icons: [
       "add-to-queue",
       "airplay",
       "album",
@@ -86,12 +86,12 @@ export const SimpleIconIconsetsManifest = [
       "volume-off",
       "volume-up",
       "web-asset",
-      "web"
-    ]
+      "web",
+    ],
   },
   {
-    "name": "communication",
-    "icons": [
+    name: "communication",
+    icons: [
       "business",
       "call-end",
       "call-made",
@@ -141,12 +141,12 @@ export const SimpleIconIconsetsManifest = [
       "swap-calls",
       "textsms",
       "voicemail",
-      "vpn-key"
-    ]
+      "vpn-key",
+    ],
   },
   {
-    "name": "device",
-    "icons": [
+    name: "device",
+    icons: [
       "access-alarm",
       "access-alarms",
       "access-time",
@@ -225,12 +225,12 @@ export const SimpleIconIconsetsManifest = [
       "wallpaper",
       "widgets",
       "wifi-lock",
-      "wifi-tethering"
-    ]
+      "wifi-tethering",
+    ],
   },
   {
-    "name": "editor",
-    "icons": [
+    name: "editor",
+    icons: [
       "attach-file",
       "attach-money",
       "border-all",
@@ -299,16 +299,16 @@ export const SimpleIconIconsetsManifest = [
       "vertical-align-bottom",
       "vertical-align-center",
       "vertical-align-top",
-      "wrap-text"
-    ]
+      "wrap-text",
+    ],
   },
   {
-    "name": "elmsln-custom",
-    "icons": []
+    name: "elmsln-custom",
+    icons: [],
   },
   {
-    "name": "hardware",
-    "icons": [
+    name: "hardware",
+    icons: [
       "cast-connected",
       "cast",
       "computer",
@@ -356,12 +356,12 @@ export const SimpleIconIconsetsManifest = [
       "toys",
       "tv",
       "videogame-asset",
-      "watch"
-    ]
+      "watch",
+    ],
   },
   {
-    "name": "icons",
-    "icons": [
+    name: "icons",
+    icons: [
       "3d-rotation",
       "accessibility",
       "accessible",
@@ -670,12 +670,12 @@ export const SimpleIconIconsetsManifest = [
       "work",
       "youtube-searched-for",
       "zoom-in",
-      "zoom-out"
-    ]
+      "zoom-out",
+    ],
   },
   {
-    "name": "image",
-    "icons": [
+    name: "image",
+    icons: [
       "add-a-photo",
       "add-to-photos",
       "adjust",
@@ -830,18 +830,16 @@ export const SimpleIconIconsetsManifest = [
       "wb-cloudy",
       "wb-incandescent",
       "wb-iridescent",
-      "wb-sunny"
-    ]
+      "wb-sunny",
+    ],
   },
   {
-    "name": "loading",
-    "icons": [
-      "bars"
-    ]
+    name: "loading",
+    icons: ["bars"],
   },
   {
-    "name": "maps",
-    "icons": [
+    name: "maps",
+    icons: [
       "add-location",
       "beenhere",
       "directions-bike",
@@ -909,12 +907,12 @@ export const SimpleIconIconsetsManifest = [
       "train",
       "tram",
       "transfer-within-a-station",
-      "zoom-out-map"
-    ]
+      "zoom-out-map",
+    ],
   },
   {
-    "name": "notification",
-    "icons": [
+    name: "notification",
+    icons: [
       "adb",
       "airline-seat-flat-angled",
       "airline-seat-flat",
@@ -968,12 +966,12 @@ export const SimpleIconIconsetsManifest = [
       "voice-chat",
       "vpn-lock",
       "wc",
-      "wifi"
-    ]
+      "wifi",
+    ],
   },
   {
-    "name": "places",
-    "icons": [
+    name: "places",
+    icons: [
       "ac-unit",
       "airport-shuttle",
       "all-inclusive",
@@ -992,12 +990,12 @@ export const SimpleIconIconsetsManifest = [
       "rv-hookup",
       "smoke-free",
       "smoking-rooms",
-      "spa"
-    ]
+      "spa",
+    ],
   },
   {
-    "name": "social",
-    "icons": [
+    name: "social",
+    icons: [
       "cake",
       "domain",
       "group-add",
@@ -1027,8 +1025,8 @@ export const SimpleIconIconsetsManifest = [
       "sentiment-very-dissatisfied",
       "sentiment-very-satisfied",
       "share",
-      "whatshot"
-    ]
-  }
+      "whatshot",
+    ],
+  },
 ];
 SimpleIconsetStore.registerManifest(SimpleIconIconsetsManifest);

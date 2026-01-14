@@ -47,11 +47,6 @@ class EditableTableEdit extends editBehaviors(DDD) {
       ...(super.styles || []),
       ...editableTableStyles,
       css`
-        :host {
-          --paper-listbox-background-color: var(
-            --editable-table-rowcol-bg-color
-          );
-        }
         :host([disabled]) {
           display: none;
           pointer-events: none;
@@ -270,20 +265,6 @@ class EditableTableEdit extends editBehaviors(DDD) {
         @button-toggled="${this._onTableSettingChange}"
         part="simple-toolbar-button"
         ?toggled="${this.rowHeader}"
-        toggles
-      >
-      </simple-toolbar-button>
-    `;
-  }
-  get footerButton() {
-    return html`
-      <simple-toolbar-button
-        id="footer"
-        icon="editable-table:footer"
-        label="Last row is a footer."
-        @button-toggled="${this._onTableSettingChange}"
-        part="simple-toolbar-button"
-        ?toggled="${this.footer}"
         toggles
       >
       </simple-toolbar-button>

@@ -158,6 +158,15 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
         },
       },
       settings: {
+        inline: [
+          {
+            property: "term",
+            title: "Term",
+            inputMethod: "textfield",
+            icon: "editor:title",
+            required: true,
+          },
+        ],
         configure: [
           {
             property: "term",
@@ -171,7 +180,7 @@ class LrnVocab extends SchemaBehaviors(LitElement) {
             title: "Definition",
             description:
               "The definitition to display when the term is clicked.",
-            inputMethod: "code-editor",
+            inputMethod: "textarea",
             required: true,
           },
         ],

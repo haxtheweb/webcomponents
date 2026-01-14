@@ -1,9 +1,12 @@
 import { fixture, expect, html } from "@open-wc/testing";
-import { FileSystemBroker, FileSystemBrokerSingleton } from "../file-system-broker.js";
+import {
+  FileSystemBroker,
+  FileSystemBrokerSingleton,
+} from "../file-system-broker.js";
 
 describe("FileSystemBroker test", () => {
   let element;
-  
+
   beforeEach(async () => {
     element = await fixture(html`<file-system-broker></file-system-broker>`);
     await element.updateComplete;
@@ -35,7 +38,7 @@ describe("FileSystemBroker test", () => {
     it("handles HTML type correctly", () => {
       const accept = element.typeToAccept("html");
       expect(accept).to.deep.equal({
-        "text/html": [".html", ".htm"]
+        "text/html": [".html", ".htm"],
       });
     });
 
@@ -43,12 +46,12 @@ describe("FileSystemBroker test", () => {
       const acceptXls = element.typeToAccept("xls");
       const acceptXlsx = element.typeToAccept("xlsx");
       const acceptOds = element.typeToAccept("ods");
-      
+
       const expected = {
         "text/csv": [".csv"],
-        "application/*": [".xls", ".xlsx", ".ods"]
+        "application/*": [".xls", ".xlsx", ".ods"],
       };
-      
+
       expect(acceptXls).to.deep.equal(expected);
       expect(acceptXlsx).to.deep.equal(expected);
       expect(acceptOds).to.deep.equal(expected);
@@ -57,35 +60,35 @@ describe("FileSystemBroker test", () => {
     it("handles ZIP type correctly", () => {
       const accept = element.typeToAccept("zip");
       expect(accept).to.deep.equal({
-        "application/zip": [".zip", ".gz", ".tar", ".tar.gz"]
+        "application/zip": [".zip", ".gz", ".tar", ".tar.gz"],
       });
     });
 
     it("handles CSV type correctly", () => {
       const accept = element.typeToAccept("csv");
       expect(accept).to.deep.equal({
-        "text/*": [".csv", ".txt"]
+        "text/*": [".csv", ".txt"],
       });
     });
 
     it("handles image type correctly", () => {
       const accept = element.typeToAccept("image");
       expect(accept).to.deep.equal({
-        "image/*": [".jpg", ".jpeg", ".gif", ".png"]
+        "image/*": [".jpg", ".jpeg", ".gif", ".png"],
       });
     });
 
     it("handles video type correctly", () => {
       const accept = element.typeToAccept("video");
       expect(accept).to.deep.equal({
-        "video/*": [".mp4"]
+        "video/*": [".mp4"],
       });
     });
 
     it("handles markdown type correctly", () => {
       const accept = element.typeToAccept("markdown");
       expect(accept).to.deep.equal({
-        "text/*": [".txt", ".md"]
+        "text/*": [".txt", ".md"],
       });
     });
 
@@ -109,11 +112,11 @@ describe("FileSystemBroker test", () => {
     it("handles case sensitivity correctly", () => {
       const acceptUpper = element.typeToAccept("HTML");
       const acceptLower = element.typeToAccept("html");
-      
+
       // Both should return same result since switch statement uses === comparison
       expect(acceptUpper).to.deep.equal({});
       expect(acceptLower).to.deep.equal({
-        "text/html": [".html", ".htm"]
+        "text/html": [".html", ".htm"],
       });
     });
   });
@@ -123,27 +126,27 @@ describe("FileSystemBroker test", () => {
     it("processes files and directories correctly", async () => {
       const mockFileEntry = { name: "file.txt", kind: "file" };
       const mockDirEntry = { name: "subdir", kind: "directory" };
-      
+
       const mockDirHandle = {
         [Symbol.asyncIterator]: async function* () {
           yield ["file.txt", mockFileEntry];
           yield ["subdir", mockDirEntry];
-        }
+        },
       };
-      
+
       const files = await element.__readDir(mockDirHandle, false, "root", null);
-      
-      expect(files).to.be.an('array');
+
+      expect(files).to.be.an("array");
       expect(files).to.have.lengthOf(2);
-      
-      const fileEntry = files.find(f => f.name === "file.txt");
-      const dirEntry = files.find(f => f.name === "subdir");
-      
+
+      const fileEntry = files.find((f) => f.name === "file.txt");
+      const dirEntry = files.find((f) => f.name === "subdir");
+
       expect(fileEntry).to.exist;
       expect(fileEntry.kind).to.equal("file");
       expect(fileEntry.folder).to.equal("root");
       expect(fileEntry.handle).to.equal(mockFileEntry);
-      
+
       expect(dirEntry).to.exist;
       expect(dirEntry.kind).to.equal("directory");
       expect(dirEntry.folder).to.equal("root");
@@ -154,34 +157,39 @@ describe("FileSystemBroker test", () => {
       const mockDirHandle = {
         [Symbol.asyncIterator]: async function* () {
           // No entries
-        }
+        },
       };
-      
-      const files = await element.__readDir(mockDirHandle, false, "empty", null);
-      
-      expect(files).to.be.an('array');
+
+      const files = await element.__readDir(
+        mockDirHandle,
+        false,
+        "empty",
+        null,
+      );
+
+      expect(files).to.be.an("array");
       expect(files).to.have.lengthOf(0);
     });
 
     it("includes .git directories but skips recursion when recursive=true", async () => {
       const mockGitDir = { name: ".git", kind: "directory" };
       const mockRegularFile = { name: "readme.txt", kind: "file" };
-      
+
       const mockDirHandle = {
         [Symbol.asyncIterator]: async function* () {
           yield [".git", mockGitDir];
           yield ["readme.txt", mockRegularFile];
-        }
+        },
       };
-      
+
       const files = await element.__readDir(mockDirHandle, true, "root", null);
-      
-      expect(files).to.be.an('array');
-      expect(files.some(f => f.name === ".git")).to.be.true;
-      expect(files.some(f => f.name === "readme.txt")).to.be.true;
-      
+
+      expect(files).to.be.an("array");
+      expect(files.some((f) => f.name === ".git")).to.be.true;
+      expect(files.some((f) => f.name === "readme.txt")).to.be.true;
+
       // .git should be included as a directory entry
-      const gitEntry = files.find(f => f.name === ".git");
+      const gitEntry = files.find((f) => f.name === ".git");
       expect(gitEntry.kind).to.equal("directory");
     });
   });
@@ -190,13 +198,15 @@ describe("FileSystemBroker test", () => {
   describe("Singleton pattern", () => {
     it("creates global FileSystemBroker namespace", () => {
       expect(globalThis.FileSystemBroker).to.exist;
-      expect(globalThis.FileSystemBroker.requestAvailability).to.be.a('function');
+      expect(globalThis.FileSystemBroker.requestAvailability).to.be.a(
+        "function",
+      );
     });
 
     it("requestAvailability returns the same instance", () => {
       const instance1 = globalThis.FileSystemBroker.requestAvailability();
       const instance2 = globalThis.FileSystemBroker.requestAvailability();
-      
+
       expect(instance1).to.equal(instance2);
       expect(instance1).to.be.instanceOf(FileSystemBroker);
     });
@@ -216,7 +226,7 @@ describe("FileSystemBroker test", () => {
       const instance1 = globalThis.FileSystemBroker.requestAvailability();
       const instance2 = globalThis.FileSystemBroker.requestAvailability();
       const instance3 = globalThis.FileSystemBroker.requestAvailability();
-      
+
       expect(instance1).to.equal(instance2);
       expect(instance2).to.equal(instance3);
       expect(instance1).to.equal(originalInstance);
@@ -229,7 +239,7 @@ describe("FileSystemBroker test", () => {
       element.dirHandler = { name: "test-dir" };
       element.fileHandler = { name: "test-file.txt" };
       element.files = [{ name: "file1.txt", kind: "file" }];
-      
+
       expect(element.dirHandler.name).to.equal("test-dir");
       expect(element.fileHandler.name).to.equal("test-file.txt");
       expect(element.files).to.have.lengthOf(1);
@@ -240,11 +250,11 @@ describe("FileSystemBroker test", () => {
       const testFiles = [
         { name: "file1.txt", kind: "file", folder: "root" },
         { name: "file2.js", kind: "file", folder: "root/src" },
-        { name: "docs", kind: "directory", folder: "root" }
+        { name: "docs", kind: "directory", folder: "root" },
       ];
-      
+
       element.files = testFiles;
-      
+
       expect(element.files).to.have.lengthOf(3);
       expect(element.files[0].name).to.equal("file1.txt");
       expect(element.files[1].kind).to.equal("file");
@@ -254,7 +264,7 @@ describe("FileSystemBroker test", () => {
     it("handles null/undefined handlers gracefully", () => {
       element.dirHandler = null;
       element.fileHandler = undefined;
-      
+
       expect(element.dirHandler).to.be.null;
       expect(element.fileHandler).to.be.undefined;
       // Should not throw errors
@@ -288,13 +298,13 @@ describe("FileSystemBroker test", () => {
       const originalWarn = console.warn;
       const warnCalls = [];
       console.warn = (...args) => warnCalls.push(args);
-      
+
       try {
         await element.openDir();
       } catch (e) {
         // Expected in test environment
       }
-      
+
       expect(warnCalls.length).to.be.greaterThan(0);
       console.warn = originalWarn;
     });
@@ -302,7 +312,7 @@ describe("FileSystemBroker test", () => {
     it("returns empty arrays/strings on errors", async () => {
       const result1 = await element.readFileInDir("nonexistent.txt");
       expect(result1).to.equal("");
-      
+
       const result2 = await element.writeFileInDir("test.txt", "content");
       expect(result2).to.be.false;
     });
@@ -311,11 +321,11 @@ describe("FileSystemBroker test", () => {
   // Integration tests
   describe("Integration scenarios", () => {
     it("maintains separate state for different instances", () => {
-      const element2 = document.createElement('file-system-broker');
-      
+      const element2 = document.createElement("file-system-broker");
+
       element.files = [{ name: "file1.txt" }];
       element2.files = [{ name: "file2.txt" }];
-      
+
       expect(element.files).to.have.lengthOf(1);
       expect(element2.files).to.have.lengthOf(1);
       expect(element.files[0].name).to.not.equal(element2.files[0].name);
@@ -323,10 +333,10 @@ describe("FileSystemBroker test", () => {
 
     it("works with different file type configurations", () => {
       const types = ["html", "csv", "image", "video", "zip", "markdown"];
-      
-      types.forEach(type => {
+
+      types.forEach((type) => {
         const accept = element.typeToAccept(type);
-        expect(accept).to.be.an('object');
+        expect(accept).to.be.an("object");
         expect(Object.keys(accept).length).to.be.greaterThan(0);
       });
     });
@@ -338,27 +348,35 @@ describe("FileSystemBroker test", () => {
       const largeFileArray = Array.from({ length: 1000 }, (_, i) => ({
         name: `file${i}.txt`,
         kind: "file",
-        folder: "test"
+        folder: "test",
       }));
-      
+
       const startTime = performance.now();
       element.files = largeFileArray;
       const endTime = performance.now();
-      
+
       expect(endTime - startTime).to.be.lessThan(10); // Should be very fast
       expect(element.files).to.have.lengthOf(1000);
     });
 
     it("typeToAccept method is performant", () => {
-      const types = ["html", "csv", "image", "video", "zip", "markdown", "unknown"];
-      
+      const types = [
+        "html",
+        "csv",
+        "image",
+        "video",
+        "zip",
+        "markdown",
+        "unknown",
+      ];
+
       const startTime = performance.now();
-      
+
       for (let i = 0; i < 1000; i++) {
         const type = types[i % types.length];
         element.typeToAccept(type);
       }
-      
+
       const endTime = performance.now();
       expect(endTime - startTime).to.be.lessThan(10);
     });
@@ -372,12 +390,12 @@ describe("FileSystemBroker test", () => {
   it("is accessible as a utility element", async () => {
     // Since this is primarily a utility element with no visible content,
     // it should not interfere with page accessibility
-    const container = document.createElement('div');
+    const container = document.createElement("div");
     container.appendChild(element);
     document.body.appendChild(container);
-    
+
     await expect(element).to.be.accessible();
-    
+
     document.body.removeChild(container);
   });
 
@@ -388,10 +406,10 @@ describe("FileSystemBroker test", () => {
       for (let i = 0; i < 5; i++) {
         promises.push(element.readFileInDir(`file${i}.txt`).catch(() => ""));
       }
-      
+
       const results = await Promise.all(promises);
       expect(results).to.have.lengthOf(5);
-      results.forEach(result => {
+      results.forEach((result) => {
         expect(result).to.equal("");
       });
     });
@@ -402,10 +420,10 @@ describe("FileSystemBroker test", () => {
         "file-with-dashes.txt",
         "file_with_underscores.txt",
         "file.with.dots.txt",
-        "fileWithCamelCase.txt"
+        "fileWithCamelCase.txt",
       ];
-      
-      specialNames.forEach(name => {
+
+      specialNames.forEach((name) => {
         const accept = element.typeToAccept("csv");
         expect(accept).to.exist; // Should handle without throwing
       });

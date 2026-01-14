@@ -1,6 +1,6 @@
 {
   "name": "@haxtheweb/utils",
-  "version": "11.0.0",
+  "version": "25.0.0",
   "description": "Helper functions to clean up web component data handling.",
   "repository": {
     "type": "git",
@@ -29,7 +29,7 @@
     "test": "web-test-runner \"test/**/*.test.js\" --node-resolve --config=../../web-test-runner.config.mjs --playwright --browsers chromium"
   },
   "dependencies": {
-    "lit": "3.3.0"
+    "lit": "3.3.1"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",
@@ -49,5 +49,5 @@
     "rimraf": "^5.0.7",
     "rollup-plugin-esbuild": "6.2.1"
   },
-  "gitHead": "73a678e1d035b003097fd50b7b23c0d9c30f9b26"
+  "gitHead": "205ca9f1c3abd2c09938118965e60a15d90a58bb"
 }

@@ -49,20 +49,9 @@ class HAXCMSSiteEditor extends LitElement {
       this.manifest = toJS(store.manifest);
       this.__disposer.push(reaction);
     });
+    // Sync activeItem directly from store via MobX for proper state management
     autorun((reaction) => {
       this.activeItem = toJS(store.activeItem);
-      const baseUrl = toJS(store.location.baseUrl);
-      // account for haxiam vs non-haxiam
-      if (baseUrl && this.activeItem && this.activeItem.location) {
-        const sitePathAry = baseUrl.replace("/sites", "").split("/");
-        if (sitePathAry.length === 5) {
-          HAXStore.revisionHistoryLink = `/${sitePathAry[2]}/gitlist/${sitePathAry[3]}/logpatch/master/${this.activeItem.location}`;
-        } else if (sitePathAry.length === 4) {
-          HAXStore.revisionHistoryLink = `/${sitePathAry[1]}/gitlist/${sitePathAry[2]}/logpatch/master/${this.activeItem.location}`;
-        } else if (sitePathAry.length === 3) {
-          HAXStore.revisionHistoryLink = `/gitlist/${sitePathAry[1]}/logpatch/master/${this.activeItem.location}`;
-        }
-      }
       this.__disposer.push(reaction);
     });
   }
@@ -152,6 +141,17 @@ class HAXCMSSiteEditor extends LitElement {
       <iron-ajax
         reject-with-request
         .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        id="nodedetailsajax"
+        .url="${this.saveNodeDetailsPath}"
+        .method="${this.method}"
+        content-type="application/json"
+        handle-as="json"
+        @response="${this._handleNodeDetailsResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="getuserdata"
         url="${this.getUserDataPath}"
         method="${this.method}"
@@ -221,6 +221,14 @@ class HAXCMSSiteEditor extends LitElement {
       saveManifestPath: {
         type: String,
         attribute: "save-manifest-path",
+      },
+
+      /**
+       * end point for saving node details (singular operations)
+       */
+      saveNodeDetailsPath: {
+        type: String,
+        attribute: "save-node-details-path",
       },
 
       appendTarget: {
@@ -443,12 +451,59 @@ class HAXCMSSiteEditor extends LitElement {
       );
   }
 
+  /**
+   * Filter appStore based on platform block restrictions
+   * @param {Object} appStore - The original appStore object
+   * @returns {Object} Filtered appStore with only allowed blocks in autoloader
+   */
+  _filterAppStoreByPlatform(appStore) {
+    // Check if platform restrictions exist
+    const platformConfig =
+      this.manifest &&
+      this.manifest.metadata &&
+      this.manifest.metadata.platform;
+    const allowedBlocks = platformConfig && platformConfig.blocks;
+
+    // If no platform blocks restriction, return original appStore
+    if (
+      !allowedBlocks ||
+      !Array.isArray(allowedBlocks) ||
+      allowedBlocks.length === 0
+    ) {
+      return appStore;
+    }
+
+    // Create a filtered copy of appStore
+    const filteredAppStore = JSON.parse(JSON.stringify(appStore));
+
+    // Filter the autoloader to only include allowed blocks
+    if (
+      filteredAppStore.autoloader &&
+      typeof filteredAppStore.autoloader === "object"
+    ) {
+      const filteredAutoloader = {};
+
+      // Only include tags that are in the allowed blocks list
+      Object.keys(filteredAppStore.autoloader).forEach((tagName) => {
+        if (allowedBlocks.includes(tagName)) {
+          filteredAutoloader[tagName] = filteredAppStore.autoloader[tagName];
+        }
+      });
+
+      filteredAppStore.autoloader = filteredAutoloader;
+    }
+
+    return filteredAppStore;
+  }
+
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "appStore") {
+        // Filter appStore based on platform block restrictions
+        let filteredAppStore = this._filterAppStoreByPlatform(this[propName]);
         this.querySelector("#hax").setAttribute(
           "app-store",
-          JSON.stringify(this[propName]),
+          JSON.stringify(filteredAppStore),
         );
       }
       if (propName == "activeItem") {
@@ -504,11 +559,9 @@ class HAXCMSSiteEditor extends LitElement {
       { signal: this.windowControllers.signal },
     );
 
-    globalThis.addEventListener(
-      "json-outline-schema-active-item-changed",
-      this._newActiveItem.bind(this),
-      { signal: this.windowControllers.signal },
-    );
+    // Note: activeItem is now synced via MobX autorun in constructor
+    // The json-outline-schema-active-item-changed event is still fired by the store
+    // for backward compatibility with external consumers
 
     globalThis.addEventListener(
       "json-outline-schema-active-body-changed",
@@ -547,6 +600,14 @@ class HAXCMSSiteEditor extends LitElement {
     globalThis.addEventListener(
       "haxcms-create-node",
       this.createNode.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
+
+    globalThis.addEventListener(
+      "haxcms-save-node-details",
+      this.saveNodeDetails.bind(this),
       {
         signal: this.windowControllers.signal,
       },
@@ -623,6 +684,18 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   async createNode(e) {
+    // Check platform configuration before allowing page creation
+    const platformConfig =
+      this.manifest &&
+      this.manifest.metadata &&
+      this.manifest.metadata.platform;
+    if (platformConfig && platformConfig.addPage === false) {
+      store.toast("Adding pages is disabled for this site", 3000, {
+        fire: true,
+      });
+      return;
+    }
+
     if (e.detail.values) {
       var reqBody = e.detail.values;
       // ensure site name and jwt are set in request
@@ -755,16 +828,13 @@ class HAXCMSSiteEditor extends LitElement {
                     modal: true,
                     styles: {
                       "--simple-modal-titlebar-background": "transparent",
-                      "--simple-modal-titlebar-color": "black",
+                      "--simple-modal-titlebar-color": "light-dark(black, white)",
                       "--simple-modal-width": "90vw",
                       "--simple-modal-min-width": "300px",
                       "--simple-modal-z-index": "100000000",
                       "--simple-modal-height": "90vh",
                       "--simple-modal-min-height": "400px",
-                      "--simple-modal-titlebar-height": "64px",
-                      "--simple-modal-titlebar-color": "black",
                       "--simple-modal-titlebar-height": "80px",
-                      "--simple-modal-titlebar-background": "orange",
                     },
                   },
                 }),
@@ -815,6 +885,16 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   deleteNode(e) {
+    // Check platform configuration before allowing delete
+    const platformConfig =
+      this.manifest &&
+      this.manifest.metadata &&
+      this.manifest.metadata.platform;
+    if (platformConfig && platformConfig.delete === false) {
+      store.toast("Delete is disabled for this site", 3000, { fire: true });
+      return;
+    }
+
     this.querySelector("#deleteajax").body = {
       jwt: this.jwt,
       site: {
@@ -881,13 +961,6 @@ class HAXCMSSiteEditor extends LitElement {
     }
   }
   /**
-   * update the internal active item
-   */
-
-  _newActiveItem(e) {
-    this.activeItem = e.detail;
-  }
-  /**
    * active item changed
    */
 
@@ -939,7 +1012,13 @@ class HAXCMSSiteEditor extends LitElement {
 
       // Restore active element position after DOM update for "keep editing" mode
       if (this._restoreKeepEditMode && this._restoreActiveIndex !== null) {
-        setTimeout(() => {
+        // Clean up any existing listener to prevent duplicates
+        if (this._contentReadyHandler) {
+          HAXStore.activeHaxBody.removeEventListener('hax-body-content-ready', this._contentReadyHandler);
+        }
+        
+        // Wait for hax-body content-ready event instead of arbitrary timeout
+        this._contentReadyHandler = () => {
           try {
             if (HAXStore.activeHaxBody && HAXStore.activeHaxBody.children) {
               const bodyChildren = Array.from(HAXStore.activeHaxBody.children);
@@ -965,6 +1044,21 @@ class HAXCMSSiteEditor extends LitElement {
                 }
               }
             }
+            
+            // Force UI component to re-render to update button visibility
+            // editMode stayed true, so autorun won't fire - need manual update
+            // Use RAF to ensure DOM is settled before requesting update
+            requestAnimationFrame(() => {
+              const uiElement = globalThis.document.querySelector('haxcms-site-editor-ui');
+              if (uiElement) {
+                // Force observable to fire by toggling and restoring
+                const currentMode = store.editMode;
+                store.editMode = false;
+                requestAnimationFrame(() => {
+                  store.editMode = currentMode;
+                });
+              }
+            });
           } catch (error) {
             console.warn(
               "Failed to restore active element position after save:",
@@ -974,7 +1068,13 @@ class HAXCMSSiteEditor extends LitElement {
           // Clean up the restoration flags
           this._restoreActiveIndex = null;
           this._restoreKeepEditMode = false;
-        }, 100); // Small delay to ensure DOM is fully updated
+          this._contentReadyHandler = null;
+        };
+        
+        // Listen for content-ready event from hax-body
+        if (HAXStore.activeHaxBody) {
+          HAXStore.activeHaxBody.addEventListener('hax-body-content-ready', this._contentReadyHandler, { once: true });
+        }
       }
 
       // force an update in the store to reprocess what is "active"
@@ -1019,6 +1119,20 @@ class HAXCMSSiteEditor extends LitElement {
     }, 300);
   }
 
+  _handleNodeDetailsResponse(e) {
+    setTimeout(() => {
+      store.playSound("coin");
+      this.dispatchEvent(
+        new CustomEvent("haxcms-trigger-update", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: true,
+        }),
+      );
+      store.toast(`Operation completed!`, 3000, { hat: "construction" });
+    }, 300);
+  }
   /**
    * Save node event
    */
@@ -1043,7 +1157,12 @@ class HAXCMSSiteEditor extends LitElement {
         this._restoreKeepEditMode = false;
       }
 
+      // Serialize current DOM content (including page-break) as-is. Entity
+      // normalization for attributes like title/description is handled on
+      // the backend so we do not clobber freshly edited values here.
       let body = await HAXStore.activeHaxBody.haxToContent();
+      const schema = await HAXStore.htmlToHaxElements(body);
+      
       this.querySelector("#nodeupdateajax").body = {
         jwt: this.jwt,
         site: {
@@ -1052,7 +1171,7 @@ class HAXCMSSiteEditor extends LitElement {
         node: {
           id: this.activeItem.id,
           body: body,
-          schema: await HAXStore.htmlToHaxElements(body),
+          schema: schema,
         },
       };
       this.setProcessingVisual();
@@ -1064,9 +1183,21 @@ class HAXCMSSiteEditor extends LitElement {
    */
 
   saveNodeDetails(e) {
+    // Check platform configuration before allowing outline operations
+    const platformConfig =
+      this.manifest &&
+      this.manifest.metadata &&
+      this.manifest.metadata.platform;
+    if (platformConfig && platformConfig.outlineDesigner === false) {
+      store.toast("Outline operations are disabled for this site", 3000, {
+        fire: true,
+      });
+      return;
+    }
+
     // send the request
-    if (this.saveNodePath) {
-      this.querySelector("#nodeupdateajax").body = {
+    if (this.saveNodeDetailsPath) {
+      this.querySelector("#nodedetailsajax").body = {
         jwt: this.jwt,
         site: {
           name: this.manifest.metadata.site.name,
@@ -1077,7 +1208,7 @@ class HAXCMSSiteEditor extends LitElement {
         },
       };
       this.setProcessingVisual();
-      this.querySelector("#nodeupdateajax").generateRequest();
+      this.querySelector("#nodedetailsajax").generateRequest();
     }
   }
   /**

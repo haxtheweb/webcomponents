@@ -156,7 +156,7 @@ class MemeMaker extends LitElement {
    * Supply translations for the UI elements of HAX in meme-maker
    */
   haxgizmoRegistration(store) {
-        globalThis.dispatchEvent(
+    globalThis.dispatchEvent(
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `meme-maker.haxProperties`,

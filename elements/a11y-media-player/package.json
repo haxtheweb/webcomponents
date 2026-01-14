@@ -18,7 +18,7 @@
       "...super.styles"
     ]
   },
-  "version": "11.0.5",
+  "version": "25.0.0",
   "description": "A feature rich, highly accessible video player",
   "repository": {
     "type": "git",
@@ -43,29 +43,26 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/absolute-position-behavior": "^11.0.0",
-    "@haxtheweb/anchor-behaviors": "^11.0.0",
-    "@haxtheweb/d-d-d": "^11.0.5",
-    "@haxtheweb/fullscreen-behaviors": "^11.0.5",
-    "@haxtheweb/i18n-manager": "^11.0.0",
-    "@haxtheweb/responsive-utility": "^11.0.5",
-    "@haxtheweb/simple-colors": "^11.0.5",
-    "@haxtheweb/simple-fields": "^11.0.0",
-    "@haxtheweb/simple-icon": "^11.0.5",
-    "@haxtheweb/simple-range-input": "^11.0.5",
-    "@haxtheweb/simple-search": "^11.0.0",
-    "@haxtheweb/simple-toast": "^11.0.5",
-    "@haxtheweb/simple-tooltip": "^11.0.0",
-    "@haxtheweb/utils": "^11.0.0",
-    "lit": "3.3.0"
+    "@haxtheweb/absolute-position-behavior": "^25.0.0",
+    "@haxtheweb/anchor-behaviors": "^25.0.0",
+    "@haxtheweb/d-d-d": "^25.0.0",
+    "@haxtheweb/fullscreen-behaviors": "^25.0.0",
+    "@haxtheweb/i18n-manager": "^25.0.0",
+    "@haxtheweb/responsive-utility": "^25.0.0",
+    "@haxtheweb/simple-colors": "^25.0.0",
+    "@haxtheweb/simple-fields": "^25.0.0",
+    "@haxtheweb/simple-icon": "^25.0.0",
+    "@haxtheweb/simple-range-input": "^25.0.0",
+    "@haxtheweb/simple-search": "^25.0.0",
+    "@haxtheweb/simple-toast": "^25.0.0",
+    "@haxtheweb/simple-tooltip": "^25.0.0",
+    "@haxtheweb/utils": "^25.0.0",
+    "lit": "3.3.1"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
     "@open-wc/testing": "4.0.0",
-    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
-    "@haxtheweb/utils": "^11.0.0",
     "@web/dev-server": "0.4.6",
-    "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "9.1.2",
     "wct-browser-legacy": "1.0.2"
   },
@@ -80,5 +77,5 @@
     "haxtheweb",
     "lit"
   ],
-  "gitHead": "73a678e1d035b003097fd50b7b23c0d9c30f9b26"
+  "gitHead": "205ca9f1c3abd2c09938118965e60a15d90a58bb"
 }

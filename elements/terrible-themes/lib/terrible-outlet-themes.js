@@ -21,6 +21,8 @@ import { autorun, toJS } from "mobx";
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
+ * @haxcms-theme-category Fun, Website
+ * @haxcms-theme-internal false
  * @demo demo/index.html
  * @element terrible-themes
  */
@@ -38,11 +40,23 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(
       this.activeManifestIndex = toJS(store.activeManifestIndex);
       this.__disposer.push(reaction);
     });
-    globalThis.document.body.style.backgroundColor = "#e6fbff";
   }
-  /**
-   * LitElement style callback
-   */
+
+  HAXCMSGlobalStyleSheetContent() {
+    return [
+      ...super.HAXCMSGlobalStyleSheetContent(),
+      css`
+        body {
+          background-color: #e6fbff;
+        }
+        body.dark-mode {
+          background-color: #020613;
+          color: #f5f5f5;
+        }
+      `,
+    ];
+  }
+
   static get styles() {
     // support for using in other classes
     let styles = [];
@@ -55,12 +69,22 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(
         :host {
           display: block;
         }
+        :host([dark-mode]) {
+          color: #f5f5f5;
+        }
         site-menu {
           color: blue;
           --site-menu-active-color: blue;
           --site-menu-item-active-item-color: white;
           --map-menu-item-a-active-color: black;
           --map-menu-item-a-active-background-color: lightblue;
+        }
+        :host([dark-mode]) site-menu {
+          color: #9bbcff;
+          --site-menu-active-color: #9bbcff;
+          --site-menu-item-active-item-color: #020613;
+          --map-menu-item-a-active-color: #020613;
+          --map-menu-item-a-active-background-color: #9bbcff;
         }
         site-title {
           color: black;
@@ -71,6 +95,9 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(
           --site-title-heading-text-align: center;
           --site-title-heading-text-rendering: optimizelegibility;
           --site-title-heading-font-weight: 100;
+        }
+        :host([dark-mode]) site-title {
+          color: #f5f5f5;
         }
         scroll-button {
           position: fixed;
@@ -83,6 +110,13 @@ class TerribleOutletThemes extends HAXCMSRememberRoute(
           --scroll-button-background-color: blue;
           --scroll-button-tooltip-background-color: white;
           --scroll-button-tooltip-color: black;
+        }
+        :host([dark-mode]) scroll-button {
+          color: #9bbcff;
+          --scroll-button-color: #020613;
+          --scroll-button-background-color: #9bbcff;
+          --scroll-button-tooltip-background-color: #020613;
+          --scroll-button-tooltip-color: #9bbcff;
         }
       `,
     ];

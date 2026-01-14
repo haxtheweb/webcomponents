@@ -101,6 +101,23 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       programModeActivated: "program mode activated",
       developerModeActivated: "developer mode activated",
     };
+    // Konami Code detection
+    this.konamiSequence = [
+      "ArrowUp",
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowLeft",
+      "ArrowRight",
+      "KeyB",
+      "KeyA",
+    ];
+    this.konamiProgress = [];
+    this.konamiTimeout = null;
+    // Expose reset method globally for debugging
+    this.resetKonamiCode = this.resetKonamiCode.bind(this);
     this.registerLocalization({
       context: this,
       namespace: "super-daemon",
@@ -139,6 +156,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.programName = null;
     this.programPlaceholder = null;
     this.commandContext = "*";
+    this._programDebounceTimeout = null;
     const isSafari = globalThis.safari !== undefined;
     if (isSafari) {
       this.key1 = "Meta";
@@ -196,6 +214,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   disconnectedCallback() {
     this.windowControllers.abort();
     this.windowControllers2.abort();
+    // Clear any pending program execution timeouts
+    clearTimeout(this._programDebounceTimeout);
     super.disconnectedCallback();
   }
   // waving the magic wand is a common feedback loop combination
@@ -273,11 +293,16 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     // used to force a search prepopulation
     if (like != null) {
       this.like = like;
+      // If we're setting 'like' and programSearch is empty, use 'like' as the initial programSearch
+      // This ensures the program executes with the pre-filled value on first run
+      if (!this.programSearch && like) {
+        this.programSearch = like;
+      }
     }
     // ensure we have a program as this could be used for resetting program state
     if (this._programToRun) {
       setTimeout(() => {
-        this.shadowRoot.querySelector("super-daemon-ui").setupProgram();
+        this.shadowRoot.querySelector("super-daemon-ui").setupProgram(this.programSearch);
         setTimeout(async () => {
           try {
             this.loading = true;
@@ -349,7 +374,15 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   handleProgramEnter(e) {
     if (e.detail && e.detail.programName && e.detail.input) {
       const programName = e.detail.programName;
-      const input = e.detail.input;
+      let input = e.detail.input;
+
+      // Prefer the live Merlin input value at the moment Enter is pressed
+      const SuperDaemonInstance =
+        globalThis.SuperDaemonManager &&
+        globalThis.SuperDaemonManager.requestAvailability();
+      if (SuperDaemonInstance && SuperDaemonInstance.value) {
+        input = SuperDaemonInstance.value;
+      }
 
       // Special handling for the create-page program
       if (programName === "create-page") {
@@ -467,6 +500,9 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   }
 
   keyHandler(e) {
+    // Check for Konami Code sequence first (global detection)
+    this.checkKonamiCode(e);
+
     // modifier required to activate
     if (this.allowedCallback()) {
       // open and close events
@@ -577,7 +613,6 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
         absolute-position-behavior super-daemon-ui[mini][wand] {
           margin: -18px 0 0 0;
           padding: 0;
-          width: 30vw; /* Use full expanded width in wand mode */
         }
         absolute-position-behavior super-daemon-ui {
           width: var(--super-daemon-width, 300px);
@@ -637,6 +672,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.programResults = [];
     this.programName = null;
     this.commandContext = "*";
+    // Reset Konami Code sequence when closing
+    this.resetKonamiCode();
     // important we stop listening when the UI goes away
     this.setListeningStatus(false);
     // hide the toast if it's up.. unless in santa mode..
@@ -718,13 +755,123 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       return a.priority < b.priority ? -1 : a.priority > b.priority ? 1 : 0;
     });
   }
+  /**
+   * Reset Konami Code sequence
+   */
+  resetKonamiCode() {
+    this.konamiProgress = [];
+    if (this.konamiTimeout) {
+      clearTimeout(this.konamiTimeout);
+      this.konamiTimeout = null;
+    }
+  }
+
+  /**
+   * Check for Konami Code sequence
+   * @param {KeyboardEvent} e - The keyboard event
+   */
+  checkKonamiCode(e) {
+    // Clear timeout if exists
+    if (this.konamiTimeout) {
+      clearTimeout(this.konamiTimeout);
+    }
+
+    // Get the key code for the current key
+    let keyCode = e.code || e.key;
+    // Handle legacy key names for arrow keys
+    if (e.key === "ArrowUp") keyCode = "ArrowUp";
+    else if (e.key === "ArrowDown") keyCode = "ArrowDown";
+    else if (e.key === "ArrowLeft") keyCode = "ArrowLeft";
+    else if (e.key === "ArrowRight") keyCode = "ArrowRight";
+    else if (e.key === "b" || e.key === "B") keyCode = "KeyB";
+    else if (e.key === "a" || e.key === "A") keyCode = "KeyA";
+
+    // Check if this key matches the next expected key in sequence
+    if (keyCode === this.konamiSequence[this.konamiProgress.length]) {
+      this.konamiProgress.push(keyCode);
+
+      // Check if sequence is complete
+      if (this.konamiProgress.length === this.konamiSequence.length) {
+        this.konamiCodeEntered();
+        this.konamiProgress = []; // Reset
+        return;
+      }
+    } else {
+      // Wrong key, reset sequence
+      this.konamiProgress = [];
+      // Check if this key could be the start of a new sequence
+      if (keyCode === this.konamiSequence[0]) {
+        this.konamiProgress.push(keyCode);
+      }
+    }
+
+    // Set timeout to reset sequence after 3 seconds of inactivity
+    this.konamiTimeout = setTimeout(() => {
+      this.konamiProgress = [];
+    }, 3000);
+  }
+
+  /**
+   * Handle successful Konami Code entry
+   */
+  async konamiCodeEntered() {
+    // Clear the input if merlin is open to remove 'ba' characters
+    if (this.opened && this.shadowRoot.querySelector("super-daemon-ui")) {
+      this.value = "";
+      const ui = this.shadowRoot.querySelector("super-daemon-ui");
+      if (ui) {
+        ui.like = "";
+        ui.programSearch = "";
+        const search = ui.shadowRoot.querySelector("super-daemon-search");
+        if (search) {
+          search.value = "";
+          const inputField = search.shadowRoot.querySelector("#inputfilter");
+          if (inputField) {
+            inputField.value = "";
+          }
+        }
+      }
+    }
+
+    // Play coin sound 3 times, then success sound
+    await this.playSound("coin2");
+    await this.playSound("coin2");
+    await this.playSound("coin2");
+    await this.playSound("success");
+
+    // Dispatch event to let HAXcms know Konami Code was entered
+    globalThis.dispatchEvent(
+      new CustomEvent("super-daemon-konami-code", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          timestamp: Date.now(),
+          source: "super-daemon",
+        },
+      }),
+    );
+  }
+
   playSound(sound = "coin2") {
     return new Promise((resolve) => {
-      let playSound = ["coin2"].includes(sound) ? sound : "coin2";
-      this.audio = new Audio(
-        new URL(`./lib/assets/sounds/${playSound}.mp3`, import.meta.url).href,
-      );
-      this.audio.volume = 0.3;
+      let playSound = ["coin2", "success"].includes(sound) ? sound : "coin2";
+      // Use app-hax sounds path for success sound, local path for coin
+      let soundPath;
+      if (sound === "success") {
+        soundPath = new URL(
+          `../app-hax/lib/assets/sounds/${playSound}.mp3`,
+          import.meta.url,
+        ).href;
+      } else {
+        soundPath = new URL(
+          `./lib/assets/sounds/${playSound}.mp3`,
+          import.meta.url,
+        ).href;
+      }
+
+      this.audio = new Audio(soundPath);
+      this.audio.volume = 0.2;
       this.audio.onended = (event) => {
         resolve();
       };
@@ -796,6 +943,8 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   open() {
     // filter to context
     this.opened = true;
+    // Reset Konami Code sequence when opening for fresh start
+    this.resetKonamiCode();
     this.items = this.filterItems(this.allItems, this.context);
     const wd = this.shadowRoot.querySelector("web-dialog");
     if (wd) {
@@ -1160,12 +1309,16 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     // update this value as far as what's being typed no matter what it is
     this.value = e.detail.value;
     if (this.programName && this._programToRun) {
-      this.loading = true;
-      this.programResults = await this._programToRun(
-        e.detail.value,
-        this._programValues,
-      );
-      this.loading = false;
+      // Debounce program execution to prevent flickering on rapid input
+      clearTimeout(this._programDebounceTimeout);
+      this._programDebounceTimeout = setTimeout(async () => {
+        this.loading = true;
+        this.programResults = await this._programToRun(
+          e.detail.value,
+          this._programValues,
+        );
+        this.loading = false;
+      }, 150); // 150ms debounce delay
     } else {
       this.programResults = [];
       // we moved back out of a context, reset complete

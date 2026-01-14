@@ -3,6 +3,7 @@ import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
 import { HAXCMSButton } from "../utils/HAXCMSButton.js";
 import { SimpleToolbarButtonBehaviors } from "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { toJS } from "mobx";
+import { css } from "lit";
 export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
   HAXCMSButton,
 ) {
@@ -38,6 +39,9 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
       ...this.simpleButtonCoreStyles,
       ...this.simpleButtonLayoutStyles,
       ...this.simpleButtonThemeStyles,
+      css`:host {
+        --simple-toolbar-border-radius: 0;
+      }`
     ];
   }
 
@@ -181,12 +185,9 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
       if (this.autoEdit) {
         // force hax tray to open
         HAXStore.haxTray.collapsed = false;
-        // @todo this implies a timing issue on response and the wiping of material
-        // see https://github.com/haxtheweb/issues/issues/938
-        setTimeout(() => {
-          // force into edit mode
-          store.editMode = true;
-        }, 250);
+        // hax-body's ContentStateManager now handles timing internally
+        // no delay needed - edit mode will wait for content stability
+        store.editMode = true;
       }
     }
   }

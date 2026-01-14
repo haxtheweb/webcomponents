@@ -1,4 +1,4 @@
-<page-template name="Music Video Player" schema="block" enforce-styles="enforce-styles" data-haxsg-id="music-video-player">
+<page-template name="Music Video Player" schema="block" data-haxsg-id="music-video-player">
   <video-player 
     source="https://www.youtube.com/watch?v=VIDEOID" 
     accent-color="grey" 
@@ -16,7 +16,7 @@
   </video-player>
 </page-template>
 
-<page-template name="Spotify Track Embed" schema="block" enforce-styles="enforce-styles" data-haxsg-id="spotify-embed">
+<page-template name="Spotify Track Embed" schema="block" data-haxsg-id="spotify-embed">
   <spotify-embed 
     source="https://open.spotify.com/track/TRACKID" 
     size="compact" 
@@ -25,7 +25,7 @@
   </spotify-embed>
 </page-template>
 
-<page-template name="Album Cover Image" schema="block" enforce-styles="enforce-styles" data-haxsg-id="album-cover-image">
+<page-template name="Album Cover Image" schema="block" data-haxsg-id="album-cover-image">
   <media-image 
     source="files/album-cover.jpg" 
     card 
@@ -39,7 +39,7 @@
   </media-image>
 </page-template>
 
-<page-template name="Historical Image" schema="block" enforce-styles="enforce-styles" data-haxsg-id="historical-image">
+<page-template name="Historical Image" schema="block" data-haxsg-id="historical-image">
   <media-image 
     source="files/historical-image.jpg" 
     card 
@@ -53,14 +53,14 @@
   </media-image>
 </page-template>
 
-<page-template name="Course Reading Download" schema="block" enforce-styles="enforce-styles" data-haxsg-id="reading-download">
+<page-template name="Course Reading Download" schema="block" data-haxsg-id="reading-download">
   <worksheet-download 
     title="Download Reading Title" 
     link="files/reading.pdf">
   </worksheet-download>
 </page-template>
 
-<page-template name="Important Note" schema="block" enforce-styles="enforce-styles" data-haxsg-id="important-note">
+<page-template name="Important Note" schema="block" data-haxsg-id="important-note">
   <stop-note 
     title="Important Note" 
     accent-color="grey" 
@@ -71,7 +71,7 @@
   </stop-note>
 </page-template>
 
-<page-template name="Expandable Content" schema="block" enforce-styles="enforce-styles" data-haxsg-id="expandable-content">
+<page-template name="Expandable Content" schema="block" data-haxsg-id="expandable-content">
   <a11y-collapse 
     heading="Additional Information" 
     heading-button 
@@ -85,7 +85,7 @@
   </a11y-collapse>
 </page-template>
 
-<page-template name="Song Analysis Layout" schema="area" enforce-styles="enforce-styles" data-haxsg-id="song-analysis-layout">
+<page-template name="Song Analysis Layout" schema="area" data-haxsg-id="song-analysis-layout">
   <grid-plate item-margin="8" item-padding="8" layout="1-1" disable-responsive style="--grid-plate-item-padding: 8px; --grid-plate-item-margin: 8px;">
     <div slot="col-1">
       <p data-font-size="s" data-font-weight="medium" data-text-align="center" data-margin="center" data-padding="xs">
@@ -99,7 +99,7 @@
   </grid-plate>
 </page-template>
 
-<page-template name="Lyrics Comparison" schema="area" enforce-styles="enforce-styles" data-haxsg-id="lyrics-comparison">
+<page-template name="Lyrics Comparison" schema="area" data-haxsg-id="lyrics-comparison">
   <grid-plate item-margin="4" item-padding="4" layout="1-1" disable-responsive style="--grid-plate-item-padding: 4px; --grid-plate-item-margin: 4px;">
     <a11y-collapse heading="Lyrics (Original Language)" heading-button accent-color="grey" icon="icons:expand-more" tooltip="expand" label="expand" data-design-treatment="bg" data-primary="5" slot="col-1">
       <p data-font-size="3xs">Original language lyrics here</p>
@@ -110,14 +110,14 @@
   </grid-plate>
 </page-template>
 
-<page-template name="Image with Context" schema="area" enforce-styles="enforce-styles" data-haxsg-id="image-with-context">
+<page-template name="Image with Context" schema="area" data-haxsg-id="image-with-context">
   <grid-plate item-margin="16" item-padding="16" layout="1-1" disable-responsive>
     <p slot="col-1">Contextual text that introduces or explains the significance of the accompanying image, providing historical or cultural background.</p>
     <media-image source="files/contextual-image.jpg" card slot="col-2" accent-color="grey" size="wide" offset="none" alt="Descriptive alt text" caption="Image caption with proper source attribution" modal-title="Image caption with proper source attribution" _has-caption></media-image>
   </grid-plate>
 </page-template>
 
-<page-template name="Historical Context Section" schema="area" enforce-styles="enforce-styles" data-haxsg-id="historical-context">
+<page-template name="Historical Context Section" schema="area" data-haxsg-id="historical-context">
   <grid-plate item-margin="16" item-padding="16" layout="1-1" disable-responsive>
     <div slot="col-1">
       <h2 data-primary="16" data-font-size="xl" data-font-family="primary" data-font-weight="medium" data-padding="m" data-margin="l" data-text-align="left" data-design-treatment="horz-full">Historical Context Title</h2>

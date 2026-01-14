@@ -5,7 +5,6 @@
 import { html, svg, css, LitElement } from "lit";
 import "./simple-icon-lite.js";
 import "./simple-icons.js";
-import { SimpleIconsetStore } from "./simple-iconset.js";
 import { SimpleIconIconsetsManifest } from "./simple-iconset-manifest.js";
 import { HaxIconsetManifest } from "@haxtheweb/hax-iconset/lib/hax-iconset-manifest.js";
 

@@ -18,7 +18,9 @@ class WikipediaQuery extends IntersectionObserverMixin(DDD) {
         :host {
           display: block;
           --wikipedia-query-body-height: var(--ddd-spacing-32);
-          --wikipedia-query-background-color: var(--ddd-theme-default-limestoneMaxLight);
+          --wikipedia-query-background-color: var(
+            --ddd-theme-default-limestoneMaxLight
+          );
         }
         :host [hidden] {
           display: none;
@@ -36,7 +38,7 @@ class WikipediaQuery extends IntersectionObserverMixin(DDD) {
           border-color: var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-xs);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
-          background-color: var(--ddd-theme-default-white);
+          background-color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-potentialMidnight));
           line-height: var(--ddd-lh-150);
           font-size: var(--ddd-font-size-s);
         }

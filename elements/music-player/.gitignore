@@ -1,3 +1,27 @@
-node_modules
-analysis-error.json
+## editors
+/.idea
+/.vscode
+
+## system files
+.DS_Store
+
+## npm
+/node_modules/
+/npm-debug.log
+
+## testing
+/coverage/
+
+## temp folders
+/.tmp/
+
+# build
+/_site/
+/dist/
+/out-tsc/
+/public/
+
+storybook-static
+custom-elements.json
+.vercel
 demo/examples

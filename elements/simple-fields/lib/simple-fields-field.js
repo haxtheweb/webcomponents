@@ -83,6 +83,10 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
               --simple-fields-background-color,
               transparent
             );
+            color: light-dark(
+              var(--simple-fields-color, var(--ddd-theme-default-coalyGray, #262626)),
+              var(--simple-fields-color, var(--ddd-theme-default-limestoneLight, #e4e5e7))
+            );
           }
           input[type="text"] {
             padding: 0;
@@ -95,6 +99,10 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             background-color: var(
               --simple-fields-background-color,
               transparent
+            );
+            color: light-dark(
+              var(--simple-fields-color, var(--ddd-theme-default-coalyGray, #262626)),
+              var(--simple-fields-color, var(--ddd-theme-default-limestoneLight, #e4e5e7))
             );
           }
           input::placeholder,
@@ -134,9 +142,9 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
               var(--ddd-font-weight-regular, 400)
             );
             font-style: normal;
-            color: var(
-              --simple-fields-color,
-              var(--ddd-theme-default-coalyGray, #262626)
+            color: light-dark(
+              var(--simple-fields-color, var(--ddd-theme-default-coalyGray, #262626)),
+              var(--simple-fields-color, var(--ddd-theme-default-limestoneLight, #e4e5e7))
             );
           }
           select.field {
@@ -152,6 +160,10 @@ const SimpleFieldsFieldBehaviors = function (SuperClass) {
             -moz-appearance: none;
             appearance: none;
             cursor: pointer;
+            color: light-dark(
+              var(--simple-fields-color, var(--ddd-theme-default-coalyGray, #262626)),
+              var(--simple-fields-color, var(--ddd-theme-default-limestoneLight, #e4e5e7))
+            );
           }
           :host([type="select"]) {
             cursor: pointer;

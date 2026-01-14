@@ -74,20 +74,6 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
             var(--site-menu-scrollbar-thumb-color, #999999);
           background-color: var(--site-menu-scrollbar-thumb-color, #999999);
         }
-        .ops {
-          position: absolute;
-          display: block;
-          left: 0px;
-          height: 40px;
-          bottom: -40px;
-          z-index: 2;
-          margin: 0 4px 0 0;
-        }
-        .ops .op {
-          --simple-icon-height: 16px;
-          --simple-icon-width: 16px;
-          margin: 4px;
-        }
       `,
     ];
   }
@@ -132,16 +118,6 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         @active-item="${this.mapMenuActiveChanged}"
         @map-menu-operation-selected="${this.mapMenuOperationSelected}"
       ></map-menu>
-      ${this.editControls
-        ? html` <div class="ops">
-            <haxcms-button-add
-              class="op"
-              type="sibling"
-              label="Add page"
-              action-id="null"
-            ></haxcms-button-add>
-          </div>`
-        : ``}
     `;
   }
 
@@ -174,7 +150,7 @@ class SiteMenu extends HAXCMSThemeParts(LitElement) {
         this.editControls = toJS(store.isLoggedIn);
         // dynamic import if we are logged in
         if (this.editControls) {
-          import("../../core/micros/haxcms-button-add.js");
+          import("../../core/micros/haxcms-page-operations.js");
         }
       }
     });

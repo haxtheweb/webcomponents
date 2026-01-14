@@ -1,0 +1,84 @@
+{
+  "canScale": false,
+
+  "canEditSource": true,
+  "gizmo": {
+    "title": "Lesson Highlight",
+    "description": "Quick overview of a thing",
+    "icon": "communication:business",
+    "color": "blue",
+    "tags": ["Instructional", "layout", "highlight", "summary", "overview"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    },
+    "allowedParents": ["lesson-overview"]
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "icon",
+        "title": "Icon",
+        "description": "Icon to represent concept at a high level",
+        "inputMethod": "iconpicker"
+      },
+      {
+        "slot": "title",
+        "title": "title",
+        "description": "Primary concept at a glance",
+        "inputMethod": "textfield"
+      },
+      {
+        "slot": "",
+        "title": "Subtitle",
+        "description": "Additional detail",
+        "inputMethod": "textfield"
+      },
+      {
+        "property": "disabled",
+        "title": "disabled",
+        "description": "Dark mode",
+        "inputMethod": "boolean"
+      },
+      {
+        "property": "smart",
+        "title": "Smart data",
+        "description": "Allow system context to set details dynamically",
+        "inputMethod": "select",
+        "options": {
+          "": "- none -",
+          "audio": "Audio count",
+          "images": "Images",
+          "objectives": "Learning objectives",
+          "pages": "Page count",
+          "readTime": "Read time estimate",
+          "selfChecks": "Interactive activities",
+          "video": "Video (count + duration)"
+        }
+      },
+      {
+        "property": "accentColor",
+        "title": "Accent color",
+        "description": "Accent for the icon",
+        "inputMethod": "colorpicker"
+      },
+      {
+        "property": "dark",
+        "title": "Dark",
+        "description": "Dark mode",
+        "inputMethod": "boolean"
+      }
+    ]
+  },
+  "demoSchema": [
+    {
+      "tag": "lesson-highlight",
+      "content": "<p slot=\"title\">Video</p><p>Engaging lectures to comprehend topics</p>",
+      "properties": {
+        "icon": "star",
+        "accentColor": "red",
+        "dark": false
+      }
+    }
+  ]
+}

@@ -10,12 +10,12 @@
     <link rel="icon" href="../lib/assets/images/HAXLogo.svg" type="image/png">
     <meta name="Description" content="Put your description here." />
     <script>
-      window.process = window.process || {
+      globalThis.process = globalThis.process || {
         env: {
           NODE_ENV: "production"
         }
       };
-      window.WCGlobalBasePath = "/node_modules/";
+      globalThis.WCGlobalBasePath = "/node_modules/";
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -31,10 +31,12 @@
         padding: 0;
         font-family: 'Press Start 2P', sans-serif;
         overflow-x: hidden;
-        background-image: url('../lib/assets/images/LMGridBox.svg');
-        background-repeat: repeat;
-        background-position: center center;
-        background-size: auto, 20% auto, 20% auto;
+        background-image: url('../lib/assets/images/LMBackgroundImage-min.jpg');
+        background-position: top;
+        background-size: auto;
+        background-repeat: repeat-x;  
+        background-size: auto;
+        background-attachment: fixed;
         --app-hax-accent-color: black;
         --app-hax-background-color: white;
         --simple-tooltip-background: #000000;
@@ -51,16 +53,12 @@
       }
       body.dark-mode {
         background-color: black;
-        background-image: url('../lib/assets/images/DMGridBox.svg');
+        background-image: url('../lib/assets/images/DMBackgroundImage-min.jpg');
         --app-hax-accent-color: white;
         --app-hax-background-color: black;
       }
       body.app-loaded:not(.bad-device) {
-        background-image: url('../lib/assets/images/LMGridBox.svg'), url('../lib/assets/images/DesignLightModeLeft.svg'), url('../lib/assets/images/DesignLightModeRight.svg');
-        background-repeat: repeat, repeat-y, repeat-y;
-        background-position: center center, top left, top right;
-        background-size: auto, 20% auto, 20% auto;
-        background-attachment: fixed, fixed, fixed;
+        background-image: url('../lib/assets/images/LMBackgroundImage-min.jpg');    
       }
       div[slot="externalproviders"] {
         display: none;
@@ -69,9 +67,8 @@
         display: unset;
       }
       body.app-loaded.dark-mode {
-        background-image: url('../lib/assets/images/DMGridBox.svg'), url('../lib/assets/images/DesignDarkModeLeft.svg'), url('../lib/assets/images/DesignDarkModeRight.svg');
+        background-image: url('../lib/assets/images/DMBackgroundImage-min.jpg');
       }
-
       #loading {
         font-family: 'Press Start 2P', sans-serif;
         text-align: center;
@@ -155,38 +152,6 @@
         border-right: 3px solid var(--simple-colors-default-theme-grey-1);
         border-top: 3px solid  var(--simple-colors-default-theme-grey-1);
       }
-      simple-modal::part(title) {
-        background-color: transparent;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-        font-size: 20px;
-        line-height: 20px;
-        color: black;
-      }
-      simple-modal button.hax-modal-btn {
-        font-size: 30px;
-        padding: 8px;
-        margin: 4px;
-        color: white;
-        background-color: green;
-        border: 4px solid black;
-        border-radius: 8px;
-        font-family: 'Press Start 2P', sans-serif;
-      }
-      simple-modal button.hax-modal-btn.cancel {
-        background-color: red;
-      }
-      simple-modal button.hax-modal-btn:hover,
-      simple-modal button.hax-modal-btn:focus {
-        outline: 2px solid black;
-        cursor: pointer;
-        background-color: darkgreen;
-      }
-      simple-modal button.hax-modal-btn.cancel:hover,
-      simple-modal button.hax-modal-btn.cancel:focus {
-        background-color: darkred;
-      }
     </style>
     <title>Let's HAX your web</title>
   </head>
@@ -204,169 +169,172 @@
       <div id="demo">
         <style>
           #demobtns {
-            bottom: 0;
-            left: 0;
+            bottom: var(--ddd-spacing-2, 8px);
+            left: var(--ddd-spacing-2, 8px);
             position: fixed;
+            z-index: 9999;
+            display: flex;
+            gap: var(--ddd-spacing-1, 4px);
+            background: rgba(0, 0, 0, 0.8);
+            padding: var(--ddd-spacing-2, 8px);
+            border-radius: var(--ddd-radius-md, 8px);
           }
           #demobtns button {
-            font-size: 30px;
-            border: 2px solid black;
-            margin: 2px;
-            background-color: orange;
+            font-size: var(--ddd-font-size-3xs, 10px);
+            font-family: var(--ddd-font-primary, sans-serif);
+            border: var(--ddd-border-xs, 1px solid) var(--ddd-theme-default-nittanyNavy, #001e44);
+            margin: 0;
+            padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
+            background-color: var(--ddd-theme-default-keystoneYellow, #ffd100);
             cursor: pointer;
-            color: black;
-            display: block;
+            color: var(--ddd-theme-default-nittanyNavy, #001e44);
+            border-radius: var(--ddd-radius-sm, 4px);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            min-height: var(--ddd-spacing-8, 32px);
+            font-weight: var(--ddd-font-weight-medium, 500);
           }
           #demobtns button:hover {
-            background-color: red;
+            background-color: var(--ddd-theme-default-original87Pink, #e4007c);
+            color: var(--ddd-theme-default-white, white);
+            transform: translateY(-1px);
+          }
+          body.dark-mode #demobtns {
+            background: rgba(255, 255, 255, 0.1);
           }
         </style>
         <div id="demobtns">
-          <button id="nosites">Test new user</button>
-          <button id="test404">Test 404</button>
           <button id="resetbtn">reset app</button>
         </div>
         <script>
-          window.HAXCMSContext="nodejs";
+          globalThis.HAXCMSContext="nodejs";
           // reduce FOUC for dark mode so it starts in dark rapidly if selected
-          if (window.localStorage && window.localStorage.getItem('app-hax-darkMode')) {
-            if (window.localStorage.getItem('app-hax-darkMode') == 'true') {
-              document.body.classList.add('dark-mode');
+          if (globalThis.localStorage && globalThis.localStorage.getItem('app-hax-darkMode')) {
+            if (globalThis.localStorage.getItem('app-hax-darkMode') == 'true') {
+              globalThis.document.body.classList.add('dark-mode');
             }
             else {
-              document.body.classList.remove('dark-mode');
+              globalThis.document.body.classList.remove('dark-mode');
             }
           }
           // remove loading text
-        window.addEventListener('app-hax-loaded',(e) => {
+        globalThis.addEventListener('app-hax-loaded',(e) => {
           dqs("#loading").remove();
         });
-          function dqs(sel) { return document.querySelector(sel)}
-          dqs("#nosites").addEventListener("click", (e) => {
-            // reset to clear internal state
-            dqs("app-hax").reset(false);
-            // fake injection of a new site listing location
-            window.AppHax.requestAvailability().store.appSettings.getSitesList = 'sitesEmpty.json';
-          });
-          dqs("#test404").addEventListener("click", (e) => {
-            window.location = "nothin9383832";
-          });
+          function dqs(sel) { return globalThis.document.querySelector(sel)}
           dqs("#resetbtn").addEventListener("click", (e) => {
-            dqs("app-hax").reset();
+            dqs("app-hax").reset(true);
           });
         </script>
       </div>
-      <script type="module">
-        import '../app-hax.js';
-      </script>
       <script>
         // this is how haxcms / haxiam operates w/ injecting the base settings
         // think of it like localStorage but the backend is injecting at run time
         // so that we can deploy this at different domains more headlessly
-        const blueStyle = '../lib/assets/images/BlueStyle.svg';
-        const greyStyle = '../lib/assets/images/GreyStyle.svg'; 
-        const partyStyle = '../lib/assets/images/PartyStyle.svg';
-        window.appSettings = {
+        // IMPORTANT: This must be defined BEFORE the module import so the store can access it
+        globalThis.appSettings = {
           "token": "thingsandstuff",
+          "jwt": "supDudeImmaJwat",
           "demo": true,
           "getSitesList": 'sites.json',
           "createSite": 'createSite.json',
+          "skeletonsList": 'skeletons.json',
           "getUserDataPath": "getUserData.json",
-          "login": '/elements/app-hax/demo/login.json',
-          "refreshUrl": "/elements/app-hax/demo/refreshAccessToken",
-          "logout": "/elements/app-hax/demo/logout.json",
-          "connectionSettings": "/bto108/system/api/connectionSettings",
+          "login": 'login.json',
+          "refreshUrl": "login.json",
+          "logout": "logout.json",
+          "connectionSettings": "connectionSettings.json",
           "redirectUrl": "/",
           "themes": {
               "clean-one": {
                   "element": "clean-one",
                   "path": "@haxtheweb/clean-one/clean-one.js",
                   "name": "Course theme",
-                  "thumbnail": partyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg", 
               },
               "clean-two": {
                   "element": "clean-two",
                   "path": "@haxtheweb/clean-two/clean-two.js",
                   "name": "Course theme 2",
-                  "thumbnail": greyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-two-thumb.jpg", 
               },
               "clean-portfolio-theme": {
                 "element": "clean-portfolio-theme",
                 "path": "@haxtheweb/clean-portfolio-theme/clean-portfolio-theme.js",
                 "name": "Clean Portfolio theme",
-                "thumbnail": greyStyle, 
+                "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg", 
               },
               "journey-theme": {
                 "element": "journey-theme",
                 "path": "@haxtheweb/journey-theme/journey-theme.js",
                 "name": "Journey theme",
-                "thumbnail": partyStyle, 
+                "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-journey-theme-thumb.jpg", 
               },
               "learn-two-theme": {
                   "element": "learn-two-theme",
                   "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
                   "name": "Course theme 3",
-                  "thumbnail": blueStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-learn-two-theme-thumb.jpg", 
               },
               "bootstrap-theme": {
                   "element": "bootstrap-theme",
                   "path": "@haxtheweb/bootstrap-theme/bootstrap-theme.js",
                   "name": "Bootstrap theme",
-                  "thumbnail": partyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-bootstrap-theme-thumb.jpg", 
               },
               "haxor-slevin": {
                   "element": "haxor-slevin",
                   "path": "@haxtheweb/haxor-slevin/haxor-slevin.js",
                   "name": "Blog theme",
-                  "thumbnail": blueStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-haxor-slevin-thumb.jpg", 
               },
               "outline-player": {
                   "element": "outline-player",
                   "path": "@haxtheweb/outline-player/outline-player.js",
                   "name": "Documentation theme",
-                  "thumbnail": blueStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-outline-player-thumb.jpg", 
               },
               "terrible-themes": {
                   "element": "terrible-themes",
                   "path": "@haxtheweb/terrible-themes/terrible-themes.js",
                   "name": "Terrible apartment site",
-                  "thumbnail": partyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-terrible-themes-thumb.jpg", 
               },
               "terrible-productionz-themes": {
                   "element": "terrible-productionz-themes",
                   "path": "@haxtheweb/terrible-themes/lib/terrible-productionz-themes.js",
                   "name": "Terrible productionz site",
-                  "thumbnail": blueStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-terrible-productionz-themes-thumb.jpg", 
               },
               "terrible-resume-themes": {
                   "element": "terrible-resume-themes",
                   "path": "@haxtheweb/terrible-themes/lib/terrible-resume-themes.js",
                   "name": "Terrible resume",
-                  "thumbnail": partyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-terrible-resume-themes-thumb.jpg", 
               },
               "terrible-best-themes": {
                   "element": "terrible-best-themes",
                   "path": "@haxtheweb/terrible-themes/lib/terrible-best-themes.js",
                   "name": "Terrible best hockey",
-                  "thumbnail": blueStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-terrible-best-themes-thumb.jpg", 
               },
               "terrible-outlet-themes": {
                   "element": "terrible-outlet-themes",
                   "path": "@haxtheweb/terrible-themes/lib/terrible-outlet-themes.js",
                   "name": "Terrible blog",
-                  "thumbnail": partyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-terrible-outlet-themes-thumb.jpg", 
               },
               "polaris-theme": {
                   "element": "polaris-theme",
                   "path": "@haxtheweb/polaris-theme/polaris-theme.js",
                   "name": "Polaris",
-                  "thumbnail": partyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-polaris-theme-thumb.jpg", 
               },
               "polaris-flex-theme": {
                   "element": "polaris-flex-theme",
                   "path": "@haxtheweb/polaris-theme/lib/polaris-flex-theme.js",
                   "name": "Polaris - Flex",
-                  "thumbnail": partyStyle, 
+                  "thumbnail": "/elements/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-theme-thumb.jpg", 
               }
           },
           "saveNodePath": "/bto108/system/api/saveNode",
@@ -385,11 +353,15 @@
           "downloadSitePath": "/bto108/system/api/downloadSite",
           "archiveSitePath": "/bto108/system/api/archiveSite",
           "cloneSitePath": "/bto108/system/api/cloneSite",
+          "haxiamAddUserAccess": "haxiamAddUserAccess.json",
           "appStore": {
               "url": "/bto108/system/api/generateAppStore?app-store-token=fghjhgjjghjgg5555"
           },
           "reloadOnError": true
       };
+        </script>
+        <script type="module">
+          import '../app-hax.js';
         </script>
           </body>
 </html>

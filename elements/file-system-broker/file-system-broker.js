@@ -28,7 +28,10 @@ class FileSystemBroker extends HTMLElement {
    * @returns {boolean} true if showOpenFilePicker is available
    */
   isFileSystemAccessSupported() {
-    return 'showOpenFilePicker' in globalThis && typeof globalThis.showOpenFilePicker === 'function';
+    return (
+      "showOpenFilePicker" in globalThis &&
+      typeof globalThis.showOpenFilePicker === "function"
+    );
   }
 
   /**
@@ -37,8 +40,12 @@ class FileSystemBroker extends HTMLElement {
    */
   isMobileDevice() {
     const userAgent = navigator.userAgent.toLowerCase();
-    const isMobileUA = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
-    const hasTouch = 'ontouchstart' in globalThis || navigator.maxTouchPoints > 0;
+    const isMobileUA =
+      /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
+        userAgent,
+      );
+    const hasTouch =
+      "ontouchstart" in globalThis || navigator.maxTouchPoints > 0;
     const smallScreen = globalThis.screen && globalThis.screen.width <= 768;
     return isMobileUA || (hasTouch && smallScreen);
   }
@@ -57,24 +64,24 @@ class FileSystemBroker extends HTMLElement {
   async loadFileFallback(type, multiple = false) {
     return new Promise((resolve, reject) => {
       // Create a hidden file input element
-      const input = globalThis.document.createElement('input');
-      input.type = 'file';
+      const input = globalThis.document.createElement("input");
+      input.type = "file";
       input.multiple = multiple;
-      
+
       // Set accept attribute based on file type
       const acceptTypes = this.typeToAcceptString(type);
       if (acceptTypes) {
         input.accept = acceptTypes;
       }
-      
+
       // Style the input to be invisible but still functional
-      input.style.position = 'absolute';
-      input.style.left = '-9999px';
-      input.style.opacity = '0';
-      input.style.pointerEvents = 'none';
-      
+      input.style.position = "absolute";
+      input.style.left = "-9999px";
+      input.style.opacity = "0";
+      input.style.pointerEvents = "none";
+
       // Handle file selection
-      input.addEventListener('change', (event) => {
+      input.addEventListener("change", (event) => {
         const files = event.target.files;
         if (files && files.length > 0) {
           this.fileHandler = files[0];
@@ -84,19 +91,19 @@ class FileSystemBroker extends HTMLElement {
         } else {
           // Clean up
           globalThis.document.body.removeChild(input);
-          reject(new Error('No file selected'));
+          reject(new Error("No file selected"));
         }
       });
-      
+
       // Handle cancel (ESC or clicking away)
-      input.addEventListener('cancel', () => {
+      input.addEventListener("cancel", () => {
         globalThis.document.body.removeChild(input);
-        reject(new Error('File selection cancelled'));
+        reject(new Error("File selection cancelled"));
       });
-      
+
       // Add to DOM and trigger click
       globalThis.document.body.appendChild(input);
-      
+
       // Use a timeout to ensure the element is added to DOM before clicking
       setTimeout(() => {
         input.click();

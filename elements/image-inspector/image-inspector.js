@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/img-pan-zoom/img-pan-zoom.js";
 /**
  * `image-inspector`
@@ -21,27 +21,29 @@ class ImageInspector extends LitElement {
           overflow: hidden;
         }
 
-        simple-icon-button {
+        simple-icon-button-lite {
           display: inline-flex;
-          --simple-icon-width: 36px;
-          --simple-icon-height: 36px;
-          margin: 0 4px;
-          padding: 0 4px;
-          border-radius: 0;
-          background-color: var(--image-inspector-background-color, #fdfdfd);
-          transition: 0.3s all ease-in-out;
+          --simple-icon-width: var(--ddd-icon-xs, 32px);
+          --simple-icon-height: var(--ddd-icon-xs, 32px);
+          margin: 0 var(--ddd-spacing-1, 4px);
+          padding: var(--ddd-spacing-1, 4px);
+          border-radius: var(--ddd-radius-0, 0);
+          background-color: var(--image-inspector-background-color, light-dark(var(--ddd-theme-default-white, #fdfdfd), var(--ddd-theme-default-coalyGray, #262626)));
+          color: var(--image-inspector-color, light-dark(var(--ddd-theme-default-coalyGray, #262626), var(--ddd-theme-default-white, #ffffff)));
+          transition: var(--ddd-duration-normal, 0.3s) all var(--ddd-timing-ease, ease-in-out);
+          cursor: pointer;
         }
-        simple-icon-button:hover,
-        simple-icon-button:focus,
-        simple-icon-button:active {
+        simple-icon-button-lite:hover,
+        simple-icon-button-lite:focus,
+        simple-icon-button-lite:active {
           background-color: var(
             --image-inspector-background-color-active,
-            #dddddd
+            light-dark(var(--ddd-theme-default-limestoneLight, #e4e5e7), var(--ddd-theme-default-slateGray, #314d64))
           );
         }
 
         img-pan-zoom.top-rotated {
-          top: 150px;
+          top: var(--ddd-spacing-30, 150px);
           pointer-events: none; /** disable pointer events when rotated bc of HTML canvas issue */
           height: var(--image-inspector-height-rotated, 600px);
         }
@@ -53,8 +55,8 @@ class ImageInspector extends LitElement {
           display: flex;
         }
         .internal-btn-wrap {
-          border: 2px solid black;
-          background-color: var(--image-inspector-background-color, #fdfdfd);
+          border: var(--ddd-border-md, 2px) solid var(--image-inspector-border-color, light-dark(var(--ddd-theme-default-coalyGray, #262626), var(--ddd-theme-default-white, #ffffff)));
+          background-color: var(--image-inspector-background-color, light-dark(var(--ddd-theme-default-white, #fdfdfd), var(--ddd-theme-default-coalyGray, #262626)));
         }
       `,
     ];
@@ -69,36 +71,36 @@ class ImageInspector extends LitElement {
     return html`
       <div class="wrap">
         <div class="internal-btn-wrap">
-          <simple-icon-button
+          <simple-icon-button-lite
             label="Zoom in"
             icon="zoom-in"
             @click="${this.zoomIn}"
-          ></simple-icon-button>
-          <simple-icon-button
+          ></simple-icon-button-lite>
+          <simple-icon-button-lite
             label="Zoom out"
             icon="zoom-out"
             @click="${this.zoomOut}"
-          ></simple-icon-button>
-          <simple-icon-button
+          ></simple-icon-button-lite>
+          <simple-icon-button-lite
             label="Rotate right"
             icon="image:rotate-right"
             @click="${this.rotateRight}"
-          ></simple-icon-button>
-          <simple-icon-button
+          ></simple-icon-button-lite>
+          <simple-icon-button-lite
             label="Mirror image"
             icon="image:flip"
             @click="${this.mirrorImage}"
-          ></simple-icon-button>
+          ></simple-icon-button-lite>
           <a
             href="${this.src}"
             target="_blank"
             rel="noopener noreferrer"
             tabindex="-1"
           >
-            <simple-icon-button
+            <simple-icon-button-lite
               label="Open in new window"
               icon="launch"
-            ></simple-icon-button>
+            ></simple-icon-button-lite>
           </a>
           <slot name="toolbar"></slot>
         </div>

@@ -273,6 +273,7 @@ class LrnMath extends HTMLElement {
         meta: {
           author: "HAXTheWeb core team",
           inlineOnly: true,
+          selectionRequired: false,
         },
       },
       settings: {

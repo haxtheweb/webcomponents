@@ -129,7 +129,10 @@
       "browserCapabilities": ["es2018", "modules"],
       "js": {
         "minify": false,
-        "transformImportMeta": true
+        "transformImportMeta": true,
+        "exclude": [
+          "**/node_modules/@xterm/**/*.js"
+        ]
       },
       "css": {
         "minify": false

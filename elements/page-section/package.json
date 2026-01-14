@@ -19,7 +19,7 @@
     "sharedProps": [],
     "sharedStyles": []
   },
-  "version": "11.0.5",
+  "version": "25.0.0",
   "description": "A well designed section of a page with many options for marketing purposes",
   "repository": {
     "type": "git",
@@ -43,24 +43,21 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@haxtheweb/d-d-d": "^11.0.5",
-    "@haxtheweb/simple-icon": "^11.0.5",
-    "@haxtheweb/simple-tooltip": "^11.0.0",
-    "lit": "3.3.0"
+    "@haxtheweb/d-d-d": "^25.0.0",
+    "@haxtheweb/simple-icon": "^25.0.0",
+    "@haxtheweb/simple-tooltip": "^25.0.0",
+    "lit": "3.3.1"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
-    "@haxtheweb/deduping-fix": "^11.0.0",
-    "@haxtheweb/future-terminal-text": "^11.0.5",
-    "@haxtheweb/grid-plate": "^11.0.5",
-    "@haxtheweb/rpg-character": "^11.0.5",
-    "@haxtheweb/simple-cta": "^11.0.0",
-    "@haxtheweb/video-player": "^11.0.5",
+    "@haxtheweb/deduping-fix": "^25.0.0",
+    "@haxtheweb/future-terminal-text": "^25.0.0",
+    "@haxtheweb/grid-plate": "^25.0.0",
+    "@haxtheweb/rpg-character": "^25.0.0",
+    "@haxtheweb/simple-cta": "^25.0.0",
+    "@haxtheweb/video-player": "^25.0.0",
     "@open-wc/testing": "4.0.0",
-    "@polymer/iron-component-page": "github:PolymerElements/iron-component-page",
-    "@haxtheweb/utils": "^11.0.0",
     "@web/dev-server": "0.4.6",
-    "@webcomponents/webcomponentsjs": "^2.8.0",
     "concurrently": "9.1.2",
     "gulp-babel": "8.0.0",
     "polymer-build": "3.1.4",
@@ -78,5 +75,5 @@
     "haxtheweb",
     "lit"
   ],
-  "gitHead": "73a678e1d035b003097fd50b7b23c0d9c30f9b26"
+  "gitHead": "205ca9f1c3abd2c09938118965e60a15d90a58bb"
 }

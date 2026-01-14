@@ -26,7 +26,9 @@ describe("a11y-details test", () => {
 
   describe("Slot functionality", () => {
     it("should have summary slot with correct content", () => {
-      const summarySlot = element.shadowRoot.querySelector('slot[name="summary"]');
+      const summarySlot = element.shadowRoot.querySelector(
+        'slot[name="summary"]',
+      );
       expect(summarySlot).to.exist;
       const assignedNodes = summarySlot.assignedNodes({ flatten: true });
       expect(assignedNodes.length).to.be.greaterThan(0);
@@ -34,14 +36,18 @@ describe("a11y-details test", () => {
     });
 
     it("should have details slot with correct content", () => {
-      const detailsSlot = element.shadowRoot.querySelector('slot[name="details"]');
+      const detailsSlot = element.shadowRoot.querySelector(
+        'slot[name="details"]',
+      );
       expect(detailsSlot).to.exist;
       const assignedNodes = detailsSlot.assignedNodes({ flatten: true });
       expect(assignedNodes.length).to.be.greaterThan(0);
     });
 
     it("should have default hidden slot", () => {
-      const defaultSlot = element.shadowRoot.querySelector('slot[hidden]:not([name])');
+      const defaultSlot = element.shadowRoot.querySelector(
+        "slot[hidden]:not([name])",
+      );
       expect(defaultSlot).to.exist;
     });
   });
@@ -214,10 +220,10 @@ describe("a11y-details test", () => {
           <div slot="details">Details</div>
         </a11y-details>
       `);
-      
+
       testElement.closeText = "Hide Content";
       await testElement.updateComplete;
-      expect(testElement.getAttribute('close-text')).to.equal('Hide Content');
+      expect(testElement.getAttribute("close-text")).to.equal("Hide Content");
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
@@ -228,10 +234,10 @@ describe("a11y-details test", () => {
           <div slot="details">Details</div>
         </a11y-details>
       `);
-      
+
       testElement.openText = "Show Content";
       await testElement.updateComplete;
-      expect(testElement.getAttribute('open-text')).to.equal('Show Content');
+      expect(testElement.getAttribute("open-text")).to.equal("Show Content");
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });
@@ -317,13 +323,13 @@ describe("a11y-details test", () => {
       `);
       await testElement.updateComplete;
       await expect(testElement).shadowDom.to.be.accessible();
-      
+
       // Test toggle functionality
       if (testElement.toggleOpen) {
         testElement.toggleOpen();
         await testElement.updateComplete;
         await expect(testElement).shadowDom.to.be.accessible();
-        
+
         testElement.toggleOpen();
         await testElement.updateComplete;
         await expect(testElement).shadowDom.to.be.accessible();
@@ -338,12 +344,12 @@ describe("a11y-details test", () => {
         </a11y-details>
       `);
       await testElement.updateComplete;
-      
-      const summary = testElement.shadowRoot.querySelector('summary');
+
+      const summary = testElement.shadowRoot.querySelector("summary");
       expect(summary).to.exist;
-      expect(summary.getAttribute('role')).to.equal('button');
-      expect(summary.getAttribute('tabindex')).to.equal('0');
-      
+      expect(summary.getAttribute("role")).to.equal("button");
+      expect(summary.getAttribute("tabindex")).to.equal("0");
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
 
@@ -355,14 +361,14 @@ describe("a11y-details test", () => {
         </a11y-details>
       `);
       await testElement.updateComplete;
-      
-      const summary = testElement.shadowRoot.querySelector('summary');
+
+      const summary = testElement.shadowRoot.querySelector("summary");
       expect(summary).to.exist;
-      
+
       // Test that the summary is focusable
       summary.focus();
       expect(globalThis.document.activeElement).to.equal(testElement);
-      
+
       await expect(testElement).shadowDom.to.be.accessible();
     });
   });
@@ -377,16 +383,17 @@ describe("a11y-details test", () => {
       `);
       await testElement.updateComplete;
       await expect(testElement).shadowDom.to.be.accessible();
-      
+
       // Change summary content
       const summaryElement = testElement.querySelector('[slot="summary"]');
       summaryElement.textContent = "Updated Summary";
       await testElement.updateComplete;
       await expect(testElement).shadowDom.to.be.accessible();
-      
+
       // Change details content
       const detailsElement = testElement.querySelector('[slot="details"]');
-      detailsElement.innerHTML = '<p>Updated details with <strong>formatting</strong></p>';
+      detailsElement.innerHTML =
+        "<p>Updated details with <strong>formatting</strong></p>";
       await testElement.updateComplete;
       await expect(testElement).shadowDom.to.be.accessible();
     });
@@ -399,16 +406,16 @@ describe("a11y-details test", () => {
         </a11y-details>
       `);
       await testElement.updateComplete;
-      
+
       // Update properties programmatically
       testElement.openText = "View Details";
       testElement.closeText = "Hide Details";
       await testElement.updateComplete;
-      
+
       expect(testElement.openText).to.equal("View Details");
       expect(testElement.closeText).to.equal("Hide Details");
       await expect(testElement).shadowDom.to.be.accessible();
-      
+
       // Clear properties
       testElement.openText = "";
       testElement.closeText = "";
@@ -419,9 +426,7 @@ describe("a11y-details test", () => {
 
   describe("Edge cases and error handling", () => {
     it("should remain accessible with no slotted content", async () => {
-      const testElement = await fixture(html`
-        <a11y-details></a11y-details>
-      `);
+      const testElement = await fixture(html` <a11y-details></a11y-details> `);
       await testElement.updateComplete;
       await expect(testElement).shadowDom.to.be.accessible();
     });
@@ -453,7 +458,7 @@ describe("a11y-details test", () => {
           <div slot="details">Test details</div>
         </a11y-details>
       `);
-      
+
       // Test with various unusual values
       const unusualValues = [
         "   \t\n   ", // whitespace
@@ -462,14 +467,14 @@ describe("a11y-details test", () => {
         "🚀 emoji content 🎉", // emoji
         "Very long text that might cause layout issues or accessibility problems when used as button text for the summary element",
         "Multi\nline\ntext", // multiline
-        "Text with 'quotes' and \"double quotes\" and special chars: !@#$%^&*()"
+        "Text with 'quotes' and \"double quotes\" and special chars: !@#$%^&*()",
       ];
-      
+
       for (const value of unusualValues) {
         testElement.openText = value;
         testElement.closeText = value;
         await testElement.updateComplete;
-        
+
         expect(testElement.openText).to.equal(value);
         expect(testElement.closeText).to.equal(value);
         await expect(testElement).shadowDom.to.be.accessible();
@@ -500,7 +505,7 @@ describe("a11y-details test", () => {
     it("should maintain accessibility with HAX demo schema", async () => {
       const demoSchema = element.constructor.haxProperties.demoSchema[0];
       const haxTestElement = await fixture(html`
-        <a11y-details 
+        <a11y-details
           open-text="${demoSchema.properties.openText}"
           close-text="${demoSchema.properties.closeText}"
         >
