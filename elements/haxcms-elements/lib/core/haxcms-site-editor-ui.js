@@ -32,6 +32,7 @@ import "./haxcms-darkmode-toggle.js";
 import "../ui-components/site/site-remote-content.js";
 import "@haxtheweb/page-flag/page-flag.js";
 import "wired-elements/lib/wired-button.js";
+import { HaxTrayDetail } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
 
 const LogOut = new URL("../assets/images/Logout.svg", import.meta.url).href;
 /**
@@ -3142,13 +3143,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         break;
       case "content-edit":
       case "content-map":
-      case "content-add":
+      case "content-add":   
+      //Collapse menu & clear trayDetail value if same button is clicked again
         if (HAXStore.haxTray.trayDetail == exec) {
           HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
-        } else {
-          HAXStore.haxTray.collapsed = false;
+        // Clear active state when exiting out of collapsed tray 
+        if (HAXStore.haxTray.collapsed) {
+          HAXStore.haxTray.trayDetail = 'no-active-tray'; 
         }
+      } else {
+        HAXStore.haxTray.collapsed = false;
         HAXStore.haxTray.trayDetail = exec;
+        } 
         break;
       case "undo":
         HAXStore.activeHaxBody.undo();
@@ -4510,7 +4516,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         !previousEditMode &&
         newEditMode &&
         HAXStore.activeNode &&
-        HAXStore.activeNode.tagName
+        HAXStore.activeNode.tagName 
       ) {
         HAXStore.trayDetail = "content-edit";
         if (HAXStore.haxTray) {
