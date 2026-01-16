@@ -48,6 +48,7 @@ export class AppHaxLabel extends LitElement {
         display: inline-flex;
         align-items: baseline;
         min-width: fit-content;
+        margin: var(--ddd-spacing-5, 20px);
       }
 
       .subtitle {
@@ -55,12 +56,12 @@ export class AppHaxLabel extends LitElement {
         font-weight: normal;
         font-size: var(--ddd-font-size-s, 16px);
         font-family: var(--ddd-font-secondary, sans-serif);
-        margin: 0;
+        margin: var(--ddd-spacing-5, 20px);
         flex: 1;
         min-width: fit-content;
       }
 
-      @media (max-width: 700px) {
+      @media (max-width: 875px) {
         .topBar {
           flex-direction: column;
           align-items: flex-start;

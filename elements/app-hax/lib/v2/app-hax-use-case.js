@@ -39,8 +39,9 @@ export class AppHaxUseCase extends LitElement {
         :host {
           display: flex;
           flex-direction: column;
+          width: 100%;
           text-align: left;
-          margin: 4px;
+          margin: 0;
           font-family: var(--ddd-font-primary);
           color: light-dark(
             var(--ddd-theme-default-nittanyNavy),
@@ -84,6 +85,7 @@ export class AppHaxUseCase extends LitElement {
           border-bottom: solid var(--ddd-theme-default-nittanyNavy) 8px;
           overflow: clip;
           justify-self: center;
+          width: 100%;
         }
         .image {
           position: relative;
@@ -258,7 +260,7 @@ export class AppHaxUseCase extends LitElement {
           height: var(--ddd-spacing-12, 48px);
           overflow: hidden;
         }
-        @media (max-width: 768px) {
+        @media (max-width: 780px) {
           :host {
             margin: var(--ddd-spacing-1, 4px);
             min-height: 200px;
@@ -295,17 +297,6 @@ export class AppHaxUseCase extends LitElement {
           p {
             font-size: var(--ddd-font-size-xs, 14px);
             line-height: 1.4;
-          }
-        }
-
-        @media (min-width: 769px) {
-          :host,
-          .image img {
-            display: flex;
-            width: 220px;
-          }
-          :host .collapseFilter {
-            display: flex;
           }
         }
       `,
