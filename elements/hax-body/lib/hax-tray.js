@@ -1393,6 +1393,12 @@ class HaxTray extends I18NMixin(
       if (propName == "activeGizmo" && this.trayDetail !== "view-source") {
         if (this.activeGizmo) {
           this.activeTagName = this.activeGizmo.title;
+          if (
+            !oldValue ||
+            ["content-map", "content-edit", "content-add"].includes(this.trayDetail)
+          ) {
+            this.trayDetail = "content-edit";
+        }
       }
     }
       // active node changed

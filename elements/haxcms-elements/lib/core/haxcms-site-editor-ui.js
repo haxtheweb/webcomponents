@@ -3149,7 +3149,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
         // Clear active state when exiting out of collapsed tray 
         if (HAXStore.haxTray.collapsed) {
-          HAXStore.haxTray.trayDetail = 'no-active-tray'; 
+          HAXStore.haxTray.trayDetail = 'content-edit';
         }
       } else {
         HAXStore.haxTray.collapsed = false;
