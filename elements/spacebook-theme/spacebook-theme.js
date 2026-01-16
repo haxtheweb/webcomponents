@@ -90,13 +90,13 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
           --spacebook-theme-bg-gray-200: #e5e7eb;
           --spacebook-theme-bg-gray-800: #1f2937;
           --spacebook-theme-bg-gray-900: #111827;
+          --spacebook-theme-text-gray-300: #d1d5db;
           --spacebook-theme-text-gray-400: #9ca3af;
           --spacebook-theme-text-gray-500: #6b7280;
           --spacebook-theme-text-gray-600: #4b5563;
           --spacebook-theme-text-gray-700: #374151;
           --spacebook-theme-text-gray-800: #1f2937;
           --spacebook-theme-text-gray-900: #111827;
-          --spacebook-theme-text-gray-300: #d1d5db;
           --spacebook-theme-border-gray-100: #f3f4f6;
           --spacebook-theme-border-gray-200: #e5e7eb;
           --spacebook-theme-border-gray-700: #4b5563;
@@ -158,8 +158,6 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         left: 0;
         right: 0;
         z-index: 10;
-        background-color: var(--spacebook-theme-bg-white);
-        border-bottom: 1px solid var(--spacebook-theme-border-gray-100);
         transition: all 0.2s;
       }
       
@@ -169,8 +167,8 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
       }
       
       :host([dark-mode]) .site-header {
-        background-color: var(--spacebook-theme-bg-gray-900);
-        border-bottom-color: var(--spacebook-theme-border-gray-800);
+        background-color: transparent;
+        border-bottom-color: transparent;
       }
       
       .header-nav {
@@ -244,6 +242,34 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         gap: 0.5rem;
       }
       
+      /* Header Buttons */
+
+      .header-buttons {
+        padding: 0.2em 0.6em 0.2em 0.9em;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 2rem;
+        width: 100%;
+        background-color: var(--spacebook-theme-bg-gray-50);
+        opacity: 0.8;
+        transition: all 0.2s;
+      }
+
+      .header-buttons:hover {
+        background-color: var(--spacebook-theme-bg-gray-100);
+        opacity: 1;
+        transition: all 0.2s;
+      }
+
+      :host([dark-mode]) .header-buttons {
+        background-color: var(--spacebook-theme-bg-gray-900);
+      }
+
+      :host([dark-mode]) .header-buttons:hover {
+        background-color: var(--spacebook-theme-bg-gray-800);
+      }
+
       /* Search styles */
       .search-button {
         --site-modal-button-background-color: transparent;
@@ -251,7 +277,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         --site-modal-button-border-radius: 0.375rem;
         --site-modal-button-padding: 0.5rem;
         --site-modal-button-font-size: 0.875rem;
-        --site-modal-button-color: var(--spacebook-theme-text-gray-400);
+        --site-modal-button-color: var(--spacebook-theme-text-gray-300);
       }
       
       .search-button:hover {
@@ -428,7 +454,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
       
       /* Main content area */
       .main-content {
-        padding-top: 4rem;
+        padding-top: 4em;
         min-height: 100vh;
         transition: transform 0.3s ease;
         overflow-x: hidden;
@@ -442,6 +468,11 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         
         :host([mobile-nav-open]) {
           overflow: hidden;
+        }
+
+        .sidebar-nav{
+          padding-right: 0;
+          padding-left: 0;
         }
       }
       
@@ -776,29 +807,32 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
             
             <!-- Control buttons group -->
             <div class="header-controls">
-              <!-- Search Button -->
-              <site-modal 
+            <!-- Search Button -->
+              <div class="header-buttons">
+                <site-modal 
                 title="Search" 
-                @click="${this.toggleSearch}" 
-                button-label="Search"
-                icon="search"
-                position="bottom"
-                class="search-button">
-                <site-search></site-search>
-              </site-modal>
-              
+                  @click="${this.toggleSearch}" 
+                  button-label="Search"
+                  icon="search"
+                  position="bottom"
+                  class="search-button">
+                  <site-search></site-search>
+                </site-modal>
+
               <!-- Dark Mode Toggle - Only show if system prefers light mode -->
-              ${this.showDarkModeToggle ? html`
-              <button 
-                class="dark-mode-toggle" 
-                @click="${this.toggleDarkMode}"
-                title="Toggle dark mode"
-                aria-label="Toggle dark mode">
-                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="24" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M11.67 8.658a3.661 3.661 0 0 0-.781 1.114 3.28 3.28 0 0 0-.268 1.329v1.6a1.304 1.304 0 0 1-.794 1.197 1.282 1.282 0 0 1-.509.102H7.712a1.285 1.285 0 0 1-.922-.379 1.303 1.303 0 0 1-.38-.92v-1.6c0-.479-.092-.921-.274-1.329a3.556 3.556 0 0 0-.776-1.114 4.689 4.689 0 0 1-1.006-1.437A4.187 4.187 0 0 1 4 5.5a4.432 4.432 0 0 1 .616-2.27c.197-.336.432-.64.705-.914a4.6 4.6 0 0 1 .911-.702c.338-.196.7-.348 1.084-.454a4.45 4.45 0 0 1 1.2-.16 4.476 4.476 0 0 1 2.276.614 4.475 4.475 0 0 1 1.622 1.616 4.438 4.438 0 0 1 .616 2.27c0 .617-.117 1.191-.353 1.721a4.69 4.69 0 0 1-1.006 1.437zM9.623 10.5H7.409v2.201c0 .081.028.15.09.212a.29.29 0 0 0 .213.09h1.606a.289.289 0 0 0 .213-.09.286.286 0 0 0 .09-.212V10.5z"></path>
-                </svg>
-              </button>
-              ` : ''}
+                ${this.showDarkModeToggle ? html`
+                <button 
+                  class="dark-mode-toggle" 
+                  @click="${this.toggleDarkMode}"
+                  title="Toggle dark mode"
+                  aria-label="Toggle dark mode">
+                  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="24" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.67 8.658a3.661 3.661 0 0 0-.781 1.114 3.28 3.28 0 0 0-.268 1.329v1.6a1.304 1.304 0 0 1-.794 1.197 1.282 1.282 0 0 1-.509.102H7.712a1.285 1.285 0 0 1-.922-.379 1.303 1.303 0 0 1-.38-.92v-1.6c0-.479-.092-.921-.274-1.329a3.556 3.556 0 0 0-.776-1.114 4.689 4.689 0 0 1-1.006-1.437A4.187 4.187 0 0 1 4 5.5a4.432 4.432 0 0 1 .616-2.27c.197-.336.432-.64.705-.914a4.6 4.6 0 0 1 .911-.702c.338-.196.7-.348 1.084-.454a4.45 4.45 0 0 1 1.2-.16 4.476 4.476 0 0 1 2.276.614 4.475 4.475 0 0 1 1.622 1.616 4.438 4.438 0 0 1 .616 2.27c0 .617-.117 1.191-.353 1.721a4.69 4.69 0 0 1-1.006 1.437zM9.623 10.5H7.409v2.201c0 .081.028.15.09.212a.29.29 0 0 0 .213.09h1.606a.289.289 0 0 0 .213-.09.286.286 0 0 0 .09-.212V10.5z"></path>
+                  </svg>
+                </button>
+                ` : ''}
+              </div>
+            
               
               <!-- Mobile Navigation Button -->
               <button 
@@ -897,6 +931,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
                           </site-menu-button>
                         </li>
                       </ul>
+                      
                     </div>
                   </article>
                 </div>
@@ -906,6 +941,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
           
           <!-- Footer -->
           <footer>
+          
             <slot name="footer"></slot>
           </footer>
         </main>
