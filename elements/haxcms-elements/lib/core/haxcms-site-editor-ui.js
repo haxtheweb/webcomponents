@@ -32,7 +32,7 @@ import "./haxcms-darkmode-toggle.js";
 import "../ui-components/site/site-remote-content.js";
 import "@haxtheweb/page-flag/page-flag.js";
 import "wired-elements/lib/wired-button.js";
-import { HaxTrayDetail } from "@haxtheweb/hax-body/lib/hax-ui-styles.js";
+
 
 const LogOut = new URL("../assets/images/Logout.svg", import.meta.url).href;
 /**
@@ -4516,7 +4516,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         !previousEditMode &&
         newEditMode &&
         HAXStore.activeNode &&
-        HAXStore.activeNode.tagName 
+        HAXStore.activeNode.tagName
       ) {
         HAXStore.trayDetail = "content-edit";
         if (HAXStore.haxTray) {
