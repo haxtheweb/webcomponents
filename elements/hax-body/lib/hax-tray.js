@@ -1393,7 +1393,7 @@ class HaxTray extends I18NMixin(
       if (propName == "activeGizmo" && this.trayDetail !== "view-source") {
         if (this.activeGizmo) {
           this.activeTagName = this.activeGizmo.title;
-          if (
+           if (
             !oldValue ||
             !["content-map", "content-edit", "content-add"].includes(
               this.trayDetail,
@@ -1407,9 +1407,10 @@ class HaxTray extends I18NMixin(
           // from our two content adding panes
           if (!["content-add", "content-map"].includes(this.trayDetail)) {
             this.trayDetail = "content-add";
-          }
+          
         }
       }
+    }
       // active node changed
       if (propName == "activeNode") {
         if (this.activeNode && this.activeNode.tagName) {
