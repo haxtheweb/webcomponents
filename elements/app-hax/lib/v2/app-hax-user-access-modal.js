@@ -364,8 +364,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
 
     try {
       const response = await this._addUserAccess(this.username.trim());
-
-      if (response.ok) {
+      if (response.success) {
         // Play success sound
         if (store.appEl && store.appEl.playSound) {
           store.appEl.playSound("success");
@@ -375,12 +374,9 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
         this._closeModal();
         // Reset form
         this.username = "";
-      } else if (response.status === 403) {
+      } else {
         // User not found or unauthorized
         this.error = this.t.userNotFound;
-      } else {
-        // Other error
-        this.error = `Error: ${response.status} ${response.statusText}`;
       }
     } catch (error) {
       console.error("Error adding user access:", error);
@@ -426,12 +422,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
     });
 
     // Convert to fetch-like response object for compatibility with existing error handling
-    return {
-      ok: !response.__failed,
-      status: response.__failed ? response.__failed.status : 200,
-      statusText: response.__failed ? response.__failed.message : "OK",
-      data: response,
-    };
+    return response;
   }
 
   /**
