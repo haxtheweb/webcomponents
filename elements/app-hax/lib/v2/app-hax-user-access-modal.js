@@ -364,7 +364,7 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
 
     try {
       const response = await this._addUserAccess(this.username.trim());
-      if (response.success) {
+      if (response.status == "success") {
         // Play success sound
         if (store.appEl && store.appEl.playSound) {
           store.appEl.playSound("success");
