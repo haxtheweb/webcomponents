@@ -103,6 +103,8 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: block;
           max-width: 100%;
           font-family: var(--ddd-font-primary, sans-serif);
+          padding-left: var(--ddd-spacing-5, 20px);
+          padding-right: var(--ddd-spacing-5, 20px);
         }
         .contentSection {
           display: flex;
@@ -141,10 +143,9 @@ export class AppHaxUseCaseFilter extends LitElement {
         .template-results {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: var(--ddd-spacing-5, 20px);
           width: 100%;
-          min-height: 330px;
           box-sizing: border-box;
-          gap: var(--ddd-spacing-2, 16px);
         }
         #returnToSection {
           width: 100%;
@@ -523,7 +524,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             font-size: var(--ddd-font-size-m, 20px);
           }
           .template-results {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: var(--ddd-spacing-3, 12px);
           }
         }
@@ -531,8 +532,6 @@ export class AppHaxUseCaseFilter extends LitElement {
         @media (max-width: 600px) {
           .contentSection {
             display: block;
-            margin: 0 var(--ddd-spacing-2, 8px);
-            padding-right: var(--ddd-spacing-2, 8px);
           }
           .leftSection {
             width: 100%;
@@ -563,13 +562,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
 
         @media (max-width: 480px) {
-          .contentSection {
-            margin: 0 var(--ddd-spacing-1, 4px);
-            padding-right: var(--ddd-spacing-1, 4px);
-          }
-          h4,
-          .returnTo h4,
-          .startNew h4 {
+          h4, .returnTo h4, .startNew h4 {
             font-size: var(--ddd-font-size-s, 16px);
             margin: 0 0 var(--ddd-spacing-3, 12px) 0;
           }
