@@ -269,7 +269,8 @@ export class AppHaxSiteDetails extends SimpleColors {
         composed: true,
       }),
     );
-    store.appEl.playSound("error");
+    // Error sound for cancel is now handled centrally in
+    // app-hax-confirmation-modal to avoid duplicate sounds.
   }
 
   async confirmOperation() {
@@ -321,7 +322,8 @@ export class AppHaxSiteDetails extends SimpleColors {
         composed: true,
       }),
     );
-    store.appEl.playSound("success");
+    // Success sound for confirm is now handled centrally in
+    // app-hax-confirmation-modal to avoid duplicate sounds.
     store.toast(
       `${site.metadata.site.name} ${op.replace("Site", "")} successful!`,
       3000,
