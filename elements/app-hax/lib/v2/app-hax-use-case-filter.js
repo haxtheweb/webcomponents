@@ -640,14 +640,13 @@ export class AppHaxUseCaseFilter extends LitElement {
             </div>
             <!-- Sort options for returning sites -->
             <div class="sort-control">
-              <label id="site-sort-label" class="sort-label" for="siteSort">
+              <label class="sort-label" for="siteSort">
                 Sort sites
               </label>
               <select
                 id="siteSort"
                 class="sort-select"
                 @change=${this.handleSortChange}
-                aria-labelledby="site-sort-label"
               >
                 <option
                   value="newest"
