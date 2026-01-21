@@ -4441,11 +4441,37 @@ export const DDDAnimations = css`
   }
 `;
 
+export const DDDPalletStyles = css`
+/** Default Palette */
+html, :root {
+  --ddd-palette-color-1: var(--simple-colors-default-theme-green-10);
+  --ddd-palette-color-2: var(--simple-colors-default-theme-lime-8);
+  --ddd-palette-color-3: var(--simple-colors-fixed-theme-lime-7);
+  --ddd-palette-color-4: var(--ddd-theme-default-futureLime);
+  --ddd-palette-color-5: var(--simple-colors-default-theme-lime-5);
+  --ddd-palette-color-6: var(--ddd-theme-default-inventOrange);
+  --ddd-palette-color-7: var(--simple-colors-default-theme-orange-3);
+}
+
+/** Wisdom Walk Green */
+[data-ddd-palette="wisdom-walk-green"] {
+  --ddd-palette-color-1: var(--simple-colors-default-theme-green-10);
+  --ddd-palette-color-2: var(--simple-colors-default-theme-lime-8);
+  --ddd-palette-color-3: var(--simple-colors-fixed-theme-lime-7);
+  --ddd-palette-color-4: var(--ddd-theme-default-futureLime);
+  --ddd-palette-color-5: var(--simple-colors-default-theme-lime-5);
+  --ddd-palette-color-6: var(--ddd-theme-default-inventOrange);
+  --ddd-palette-color-7: var(--simple-colors-default-theme-orange-3);
+}
+
+`;
+
 // export that has all of them for easy stamping as a single sheet
 export const DDDAllStyles = [
   DDDGlobalStyles,
   DDDVariables,
   DDDGlobalStyles,
+  DDDPalletStyles,
   ...DDDDataAttributes,
   DDDReset,
   DDDBreadcrumb,
