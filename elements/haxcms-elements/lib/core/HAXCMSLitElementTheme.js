@@ -23,11 +23,16 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     super();
     this.isSafari = globalThis.safari !== undefined;
     this.editMode = false;
+    this.trayStatus = '';
     this.isLoggedIn = false;
     this.HAXSiteCustomRenderRoutes = {};
     this.__disposer = this.__disposer ? this.__disposer : [];
     autorun((reaction) => {
       this.editMode = toJS(store.editMode);
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
+      this.trayStatus = toJS(store.trayStatus);
       this.__disposer.push(reaction);
     });
     // when this changes, query our light dom children and apply a click hanlder to copy a link to the item
@@ -168,6 +173,11 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
         type: Boolean,
         reflect: true,
         attribute: "edit-mode",
+      },
+      trayStatus: {
+        type: String,
+        reflect: true,
+        attribute: "tray-status",
       },
       /**
        * editting state for the page

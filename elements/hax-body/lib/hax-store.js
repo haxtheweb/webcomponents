@@ -2899,6 +2899,17 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       appStoreLoaded: observable,
     });
     autorun(() => {
+      const trayStatus = toJS(this.trayStatus);
+      this.dispatchEvent(
+        new CustomEvent("hax-tray-status-changed", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: trayStatus,
+        }),
+      );
+    });
+    autorun(() => {
       this._globalPreferencesChanged(toJS(this.globalPreferences));
     });
     autorun(() => {

@@ -115,6 +115,7 @@ class Store {
       .then((obj) => (this.version = obj.version));
     this.appReady = false;
     this.editMode = false;
+    this.trayStatus = "";
     this.manifest = null;
     this.pageAllowed = false;
     this.activeItemContent = "";
@@ -146,6 +147,7 @@ class Store {
       currentRouterLocation: observable.ref,
       internalRoutes: observable, // internal routes to haxcms
       editMode: observable, // global editing state
+      trayStatus: observable, // tray status (collapsed/expanded)
       jwt: observable, // json web token
       userData: observable, // user data object for logged in users
       manifest: observable, // JOS / manifest
@@ -1510,6 +1512,7 @@ class HAXCMSSiteStore extends HTMLElement {
     // source for reading in the store if different than default site.json
     this.source = "";
     globalThis.addEventListener("playaudio", this.playSoundEvent.bind(this));
+    globalThis.addEventListener("hax-tray-status-changed", this.trayStatusChanged.bind(this));
     /**
      * When location changes update activeItem
      */
@@ -1700,6 +1703,9 @@ class HAXCMSSiteStore extends HTMLElement {
           "haxcms-toast-show";
       }
     });
+  }
+  trayStatusChanged(e) {
+    this.store.trayStatus = e.detail;
   }
   // play sound on event
   playSoundEvent(e) {
