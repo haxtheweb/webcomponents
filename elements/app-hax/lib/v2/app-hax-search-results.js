@@ -26,7 +26,8 @@ export class AppHaxSearchResults extends SimpleColors {
     this.isDragging = false;
     this.currentIndex = 1;
     this.totalItems = 0;
-    this.sortOption = "az";
+    // Default carousel order: sites most recently updated first
+    this.sortOption = "newest";
     autorun(() => {
       this.searchTerm = toJS(store.searchTerm);
     });

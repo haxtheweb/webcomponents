@@ -20,6 +20,9 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
     this.confirmAction = null;
     this.cancelAction = null;
     this.dangerous = false; // For destructive actions like delete/archive
+    // Track whether this modal was confirmed so we don't fire cancel logic
+    // (and associated sounds) on confirm.
+    this._confirmed = false;
   }
 
   static get properties() {
@@ -174,6 +177,8 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
   openModal() {
     // Prevent body scrolling while modal is open
     document.body.style.overflow = "hidden";
+    // Reset confirmation state each time we open
+    this._confirmed = false;
 
     this.open = true;
     const modal = this.shadowRoot.querySelector("simple-modal");
@@ -183,27 +188,14 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
   }
 
   closeModal() {
-    // Restore body scrolling
-    document.body.style.overflow = "";
-
-    this.open = false;
+    // User explicitly clicked the cancel button.
     const modal = this.shadowRoot.querySelector("simple-modal");
     if (modal) {
       modal.opened = false;
+    } else {
+      // Fallback if for some reason modal is missing
+      this.handleModalClosed();
     }
-
-    // Removed sound effects for modal close/cancel as requested
-
-    if (this.cancelAction && typeof this.cancelAction === "function") {
-      this.cancelAction();
-    }
-    // Dispatch close event for cleanup
-    this.dispatchEvent(
-      new CustomEvent("close", {
-        bubbles: true,
-        composed: true,
-      }),
-    );
   }
 
   handleModalClosed(e) {
@@ -213,12 +205,20 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
     // simple-modal sends close event, we need to sync our state
     this.open = false;
 
-    // Removed sound effects for modal close/cancel as requested
-
-    if (this.cancelAction && typeof this.cancelAction === "function") {
-      this.cancelAction();
+    if (this._confirmed) {
+      // Confirm path already handled confirmAction and success sound
+      // in confirmModal; do not fire cancel logic.
+    } else {
+      // Treat any non-confirm close (cancel button, ESC, clicking backdrop)
+      // as a cancel, with a single error sound.
+      if (store.appEl && store.appEl.playSound) {
+        store.appEl.playSound("error");
+      }
+      if (this.cancelAction && typeof this.cancelAction === "function") {
+        this.cancelAction();
+      }
     }
-    // Dispatch close event for cleanup
+    // Dispatch close event for cleanup (listeners can do DOM cleanup)
     this.dispatchEvent(
       new CustomEvent("close", {
         bubbles: true,
@@ -228,16 +228,19 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
   }
 
   confirmModal() {
-    // Restore body scrolling
-    document.body.style.overflow = "";
+    // Mark as confirmed so handleModalClosed doesn't fire cancel logic
+    this._confirmed = true;
 
-    this.open = false;
     const modal = this.shadowRoot.querySelector("simple-modal");
     if (modal) {
+      // This will trigger simple-modal-closed -> handleModalClosed
       modal.opened = false;
+    } else {
+      // Fallback if for some reason modal is missing
+      document.body.style.overflow = "";
     }
 
-    // Play success sound for confirm
+    // Play a single success sound on confirm
     if (store.appEl && store.appEl.playSound) {
       store.appEl.playSound("success");
     }
@@ -245,13 +248,8 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
     if (this.confirmAction && typeof this.confirmAction === "function") {
       this.confirmAction();
     }
-    // Dispatch close event for cleanup
-    this.dispatchEvent(
-      new CustomEvent("close", {
-        bubbles: true,
-        composed: true,
-      }),
-    );
+    // Do NOT dispatch the "close" event here; handleModalClosed will
+    // always fire when the underlying simple-modal actually closes.
   }
 
   render() {
