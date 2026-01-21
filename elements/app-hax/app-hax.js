@@ -265,20 +265,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       path: ">developer/hax/unlockAll",
       context: [">"],
     });
-    // contribution helpers
-    SuperDaemonInstance.defineOption({
-      title: "Unlock terrible 2000s themes",
-      icon: "hax:table-multiple",
-      tags: ["Developer", "terrible", "2000", "tables"],
-      value: {
-        target: this,
-        method: "fireTerrible",
-        args: [],
-      },
-      eventName: "super-daemon-element-method",
-      path: ">developer/hax/terrible2000s",
-      context: [">"],
-    });
     SuperDaemonInstance.defineOption({
       title: "Go to site",
       icon: "hax:hax2022",
