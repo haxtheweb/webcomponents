@@ -269,7 +269,8 @@ export class AppHaxSiteDetails extends SimpleColors {
         composed: true,
       }),
     );
-    store.appEl.playSound("error");
+    // Error sound for cancel is now handled centrally in
+    // app-hax-confirmation-modal to avoid duplicate sounds.
   }
 
   async confirmOperation() {
@@ -289,11 +290,27 @@ export class AppHaxSiteDetails extends SimpleColors {
         const activeOp = toJS(store.activeSiteOp);
         // download is weird relative to the others
         if (activeOp === "downloadSite") {
-          // cheat to download a file path
-          globalThis.open(
-            store.AppHaxAPI.lastResponse.downloadSite.data.link,
-            "_blank",
-          );
+          const response = store.AppHaxAPI.lastResponse.downloadSite;
+          if (response && response.data && response.data.link) {
+            const link = response.data.link;
+            const name = response.data.name || "";
+            // Use an anchor element so this is treated as a real navigation
+            // and not blocked as a popup by the browser.
+            const a = globalThis.document.createElement("a");
+            a.href = link;
+            if (name) {
+              a.setAttribute("download", name);
+            }
+            a.style.display = "none";
+            globalThis.document.body.appendChild(a);
+            a.click();
+            globalThis.document.body.removeChild(a);
+          } else {
+            console.error(
+              "downloadSite response missing data.link:",
+              response,
+            );
+          }
         } else {
           store.refreshSiteListing();
         }
@@ -305,7 +322,8 @@ export class AppHaxSiteDetails extends SimpleColors {
         composed: true,
       }),
     );
-    store.appEl.playSound("success");
+    // Success sound for confirm is now handled centrally in
+    // app-hax-confirmation-modal to avoid duplicate sounds.
     store.toast(
       `${site.metadata.site.name} ${op.replace("Site", "")} successful!`,
       3000,

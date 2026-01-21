@@ -33,7 +33,6 @@ import "./hax-toolbar-menu.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { Undo } from "@haxtheweb/undo-manager/undo-manager.js";
-import "@haxtheweb/iframe-loader/lib/loading-indicator.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-menu-item.js";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 
@@ -170,9 +169,6 @@ class HaxTray extends I18NMixin(
     });
     autorun(() => {
       this.tourOpened = toJS(HAXStore.tourOpened);
-    });
-    autorun(() => {
-      this.loading = !toJS(HAXStore.appStoreLoaded);
     });
     autorun(() => {
       this.globalPreferences = toJS(HAXStore.globalPreferences);
@@ -372,16 +368,6 @@ class HaxTray extends I18NMixin(
           visibility: visible;
           padding: 0px var(--hax-ui-spacing-sm);
           overflow: unset;
-        }
-        loading-indicator {
-          --loading-indicator-background-color: var(
-            --simple-colors-default-theme-accent-2,
-            grey
-          );
-          --loading-indicator-color: var(
-            --simple-colors-default-theme-accent-10,
-            black
-          );
         }
         #haxMenuAlign {
           --simple-toolbar-button-width: 18px;
@@ -637,7 +623,6 @@ class HaxTray extends I18NMixin(
       <div class="wrapper ${this.trayStatus}">
         ${this.hideToolbar ? `` : html`${this.menuToolbarTemplate}`}
         <div class="detail">
-          <loading-indicator ?loading="${this.loading}"></loading-indicator>
           ${this.trayDetailTemplate}
         </div>
         <div
@@ -936,6 +921,8 @@ class HaxTray extends I18NMixin(
         label="${this.t.source}"
         event-name="view-source"
         voice-command="view (page) source"
+        toggles
+        ?toggled="${!this.collapsed && this.trayDetail === "view-source"}"
         data-simple-tour-stop
         data-stop-title="label"
         icon-position="left"
@@ -1208,10 +1195,6 @@ class HaxTray extends I18NMixin(
       traySizeIcon: {
         type: String,
       },
-      loading: {
-        type: Boolean,
-        reflect: true,
-      },
       /**
        * Form values for active node
        */
@@ -1424,7 +1407,6 @@ class HaxTray extends I18NMixin(
    * When the preview node is updated, pull schema associated with it
    */
   async _setupForm() {
-    this.loading = true;
     let activeNode = this.activeNode;
     this.locked = this._isNodeLocked(activeNode);
     this._initial = true;
@@ -1691,7 +1673,6 @@ class HaxTray extends I18NMixin(
           this.__lockAllSettings(true);
         }, 0);
       }
-      this.loading = false;
     }
   }
   /**

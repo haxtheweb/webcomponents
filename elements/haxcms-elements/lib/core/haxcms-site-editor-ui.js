@@ -3157,9 +3157,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         HAXStore.activeHaxBody.redo();
         break;
       case "view-source":
-        HAXStore.haxTray.trayDetail = exec;
         HAXStore.haxTray.shadowRoot.querySelector("#view-source").openSource();
-        HAXStore.haxTray.collapsed = false;
+        if (HAXStore.haxTray.trayDetail == exec) {
+          HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
+        } else {
+          HAXStore.haxTray.collapsed = false;
+        }
+        HAXStore.haxTray.trayDetail = exec;
         break;
     }
   }

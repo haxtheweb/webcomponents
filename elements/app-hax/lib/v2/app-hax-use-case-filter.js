@@ -35,7 +35,8 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.allFilters = new Set();
     this.dark = false;
     this.isLoggedIn = false;
-    this.sortOption = "az";
+    // Default to sorting sites by most recently updated
+    this.sortOption = "newest";
 
     // Listen to store changes for dark mode and manifest updates
     if (typeof store !== "undefined") {
@@ -102,6 +103,8 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: block;
           max-width: 100%;
           font-family: var(--ddd-font-primary, sans-serif);
+          padding-left: var(--ddd-spacing-5, 20px);
+          padding-right: var(--ddd-spacing-5, 20px);
         }
         .contentSection {
           display: flex;
@@ -140,10 +143,9 @@ export class AppHaxUseCaseFilter extends LitElement {
         .template-results {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          gap: var(--ddd-spacing-5, 20px);
           width: 100%;
-          min-height: 330px;
           box-sizing: border-box;
-          gap: var(--ddd-spacing-2, 16px);
         }
         #returnToSection {
           width: 100%;
@@ -522,7 +524,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             font-size: var(--ddd-font-size-m, 20px);
           }
           .template-results {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: var(--ddd-spacing-3, 12px);
           }
         }
@@ -530,8 +532,6 @@ export class AppHaxUseCaseFilter extends LitElement {
         @media (max-width: 600px) {
           .contentSection {
             display: block;
-            margin: 0 var(--ddd-spacing-2, 8px);
-            padding-right: var(--ddd-spacing-2, 8px);
           }
           .leftSection {
             width: 100%;
@@ -562,13 +562,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
 
         @media (max-width: 480px) {
-          .contentSection {
-            margin: 0 var(--ddd-spacing-1, 4px);
-            padding-right: var(--ddd-spacing-1, 4px);
-          }
-          h4,
-          .returnTo h4,
-          .startNew h4 {
+          h4, .returnTo h4, .startNew h4 {
             font-size: var(--ddd-font-size-s, 16px);
             margin: 0 0 var(--ddd-spacing-3, 12px) 0;
           }
@@ -646,15 +640,20 @@ export class AppHaxUseCaseFilter extends LitElement {
             </div>
             <!-- Sort options for returning sites -->
             <div class="sort-control">
-              <label id="site-sort-label" class="sort-label" for="siteSort">
+              <label class="sort-label" for="siteSort">
                 Sort sites
               </label>
               <select
                 id="siteSort"
                 class="sort-select"
                 @change=${this.handleSortChange}
-                aria-labelledby="site-sort-label"
               >
+                <option
+                  value="newest"
+                  ?selected=${this.sortOption === "newest"}
+                >
+                  Recently updated
+                </option>
                 <option value="az" ?selected=${this.sortOption === "az"}>
                   Title A–Z
                 </option>
@@ -662,16 +661,10 @@ export class AppHaxUseCaseFilter extends LitElement {
                   Title Z–A
                 </option>
                 <option
-                  value="newest"
-                  ?selected=${this.sortOption === "newest"}
-                >
-                  Newest first
-                </option>
-                <option
                   value="oldest"
                   ?selected=${this.sortOption === "oldest"}
                 >
-                  Oldest first
+                  Least recently updated
                 </option>
                 <option
                   value="theme"
@@ -948,7 +941,7 @@ export class AppHaxUseCaseFilter extends LitElement {
   }
 
   handleSortChange(e) {
-    const value = e && e.target && e.target.value ? e.target.value : "az";
+    const value = e && e.target && e.target.value ? e.target.value : "newest";
     this.sortOption = value;
     this.requestUpdate();
   }
@@ -1264,6 +1257,7 @@ export class AppHaxUseCaseFilter extends LitElement {
 
       const siteItems = Array.isArray(sitesData.items)
         ? sitesData.items.map((item) => {
+            // Start with any explicit category information at the site level
             let categorySource =
               item.metadata && item.metadata.site
                 ? item.metadata.site.category
@@ -1278,6 +1272,30 @@ export class AppHaxUseCaseFilter extends LitElement {
               categorySource.trim() !== ""
             ) {
               tags = [categorySource.trim()];
+            }
+
+            // Incorporate site tags from the manifest so that any tags the
+            // user edits there become available as filters in the dashboard.
+            let manifestTagsSource = null;
+            if (item.metadata && item.metadata.site && item.metadata.site.tags) {
+              manifestTagsSource = item.metadata.site.tags;
+            } else if (item.metadata && item.metadata.tags) {
+              manifestTagsSource = item.metadata.tags;
+            }
+
+            if (Array.isArray(manifestTagsSource)) {
+              manifestTagsSource
+                .filter((c) => typeof c === "string" && c.trim() !== "")
+                .forEach((t) => tags.push(t.trim()));
+            } else if (
+              typeof manifestTagsSource === "string" &&
+              manifestTagsSource.trim() !== ""
+            ) {
+              manifestTagsSource
+                .split(",")
+                .map((t) => t.trim())
+                .filter((t) => t !== "")
+                .forEach((t) => tags.push(t));
             }
 
             // Incorporate build data (e.g., course, website) into tags when
@@ -1297,8 +1315,8 @@ export class AppHaxUseCaseFilter extends LitElement {
             }
 
             // Normalize, dedupe, and provide a sensible default. If no
-            // category info exists, assume the site is a generic Website so
-            // that the Website filter still shows these sites.
+            // category / tag info exists, assume the site is a generic Website
+            // so that the Website filter still shows these sites.
             tags = [
               ...new Set(
                 tags.filter(
