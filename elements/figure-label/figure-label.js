@@ -48,7 +48,7 @@ class FigureLabel extends DDD {
                 --simple-colors-default-theme-accent-2,
                 var(--ddd-theme-default-limestoneLight)
               )
-            )), var(--ddd-theme-default-potential0)
+            )), black
           );
           color: light-dark(var(
             --ddd-component-figure-label-title-text,
@@ -63,7 +63,17 @@ class FigureLabel extends DDD {
           font-size: var(--ddd-font-size-4xs);
           padding: var(--ddd-spacing-3);
           font-weight: var(--ddd-font-weight-bold);
-          
+          border: var(--ddd-border-sm);
+          border-color: var(
+            --ddd-component-figure-label-title,
+            var(
+              --ddd-theme-accent,
+              var(
+                --simple-colors-default-theme-accent-2,
+                var(--ddd-theme-default-limestoneLight)
+              )
+            )
+          );
         }
 
         #description {
