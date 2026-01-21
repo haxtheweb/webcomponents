@@ -39,7 +39,32 @@ class FigureLabel extends DDD {
           display: flex;
           align-items: center;
           font-family: var(--ddd-font-primary);
-          background-color: var(
+          
+          background-color: light-dark(var(
+            --ddd-component-figure-label-title,
+            var(
+              --ddd-theme-accent,
+              var(
+                --simple-colors-default-theme-accent-2,
+                var(--ddd-theme-default-limestoneLight)
+              )
+            )), black
+          );
+          color: light-dark(var(
+            --ddd-component-figure-label-title-text,
+            var(
+              --ddd-theme-primary,
+              var(
+                --simple-colors-default-theme-accent-11,
+                var(--ddd-theme-default-potentialMidnight)
+              ))
+            ), var(--ddd-theme-default-white)
+          );
+          font-size: var(--ddd-font-size-4xs);
+          padding: var(--ddd-spacing-3);
+          font-weight: var(--ddd-font-weight-bold);
+          border: var(--ddd-border-sm);
+          border-color: var(
             --ddd-component-figure-label-title,
             var(
               --ddd-theme-accent,
@@ -49,19 +74,6 @@ class FigureLabel extends DDD {
               )
             )
           );
-          color: var(
-            --ddd-component-figure-label-title-text,
-            var(
-              --ddd-theme-primary,
-              var(
-                --simple-colors-default-theme-accent-11,
-                var(--ddd-theme-default-potentialMidnight)
-              )
-            )
-          );
-          font-size: var(--ddd-font-size-4xs);
-          padding: var(--ddd-spacing-3);
-          font-weight: var(--ddd-font-weight-bold);
         }
 
         #description {
@@ -82,18 +94,23 @@ class FigureLabel extends DDD {
           border-left: none;
           padding: var(--ddd-spacing-2);
           font-size: var(--ddd-font-size-4xs);
-          background-color: var(
+          background-color: light-dark(var(
             --ddd-component-figure-label-description-background,
-            var(--ddd-theme-default-white)
+            var(--ddd-theme-default-white)), var(--ddd-theme-default-potential0)
           );
-          color: var(
+          color: light-dark(var(
             --ddd-component-figure-label-description-text,
             var(
               --simple-colors-default-theme-accent-11,
               var(--ddd-theme-default-potentialMidnight)
-            )
+            )), var(--ddd-theme-default-white)
           );
+          
           font-weight: var(--ddd-font-weight-regular);
+        }
+        #text {
+          color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white) );
+
         }
       `,
     ];

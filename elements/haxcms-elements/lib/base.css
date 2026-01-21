@@ -280,3 +280,9 @@ haxcms-site-builder[disable-features*="left-col"] .haxcms-theme-element::part(le
   border-radius: 2em;
   transition: all .3s ease-out;
 }
+
+body.dark-mode lrndesign-sidenote {
+  --simple-colors-default-theme-accent-12: light-dark(black, white); /* text */
+  --simple-colors-default-theme-accent-1: light-dark(#c2e5f2, #0e2430);
+  color: var(--lrndesign-sidenote-label-color, inherit);
+}
