@@ -87,10 +87,7 @@ export class AppHaxUseCase extends LitElement {
           justify-self: center;
           width: 100%;
         }
-        .image {
-          position: relative;
-          display: inline-block;
-        }
+      
         .icons {
           position: absolute;
           bottom: 14px;
