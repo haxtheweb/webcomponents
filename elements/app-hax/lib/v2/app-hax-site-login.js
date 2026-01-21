@@ -314,6 +314,16 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
     e.target.icon = type === "text" ? "lrn:visible" : "lrn:view-off";
   }
 
+  handleKeyDown(e) {
+    if (e.key === "Enter") {
+      if (this.hidePassword) {
+        this.checkUsername();
+      } else {
+        this.checkPassword();
+      }
+    }
+  }
+
   render() {
     return html`
       <rpg-character seed="${this.username}"></rpg-character>
@@ -327,6 +337,7 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
                   placeholder="Enter your username"
                   aria-label="Username"
                   @input="${this.nameChange}"
+                  @keydown="${this.handleKeyDown}"
                 />
               </div>
               <button
@@ -347,6 +358,7 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
                   placeholder="Enter your password"
                   aria-label="Password"
                   @input="${this.passChange}"
+                  @keydown="${this.handleKeyDown}"
                 />
                 <simple-icon-button-lite
                   icon="lrn:view-off"

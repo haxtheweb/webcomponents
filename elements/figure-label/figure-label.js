@@ -39,13 +39,23 @@ class FigureLabel extends DDD {
           display: flex;
           align-items: center;
           font-family: var(--ddd-font-primary);
-          background-color: light-dark(var( --ddd-theme-default-white),var(--ddd-theme-default-potential0));
-          color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white) );
+          background-color: var(
+            --ddd-component-figure-label-title,
+            var(
+              --ddd-theme-accent,
+              var(
+                --simple-colors-default-theme-accent-2,
+                var(--ddd-theme-default-limestoneLight)
+              )
+            )
+          );
+          
+          color: light-dark(var(--ddd-theme-default-coalyGray),var(--ddd-theme-default-coalyGray) );
           font-size: var(--ddd-font-size-4xs);
           padding: var(--ddd-spacing-3);
           font-weight: var(--ddd-font-weight-bold);
           border: var(--ddd-border-sm);
-          border-right: none;
+          border-left: none;
         }
 
         #description {
@@ -69,6 +79,10 @@ class FigureLabel extends DDD {
           background-color: light-dark(var( --ddd-theme-default-white),var(--ddd-theme-default-potential0));
           color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white) );
           font-weight: var(--ddd-font-weight-regular);
+        }
+        #text {
+          color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white) );
+
         }
       `,
     ];
