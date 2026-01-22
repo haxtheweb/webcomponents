@@ -612,6 +612,7 @@ class HaxTray extends I18NMixin(
         : "side-panel";
     HAXStore.trayStatus = status;
     HAXStore.trayDetail = this.trayDetail;
+    !this.collapsed;
     return status;
   }
   /**

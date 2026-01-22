@@ -772,6 +772,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // block haxUIElements, except for editable-table as it's a unique tag
       // bc it's repairing that table is not natively editable
       if (!target.haxUIElement && this.__focusLogic(target)) {
+        HAXStore.haxTray.collapsed = false;
         HAXStore.haxTray.trayDetail = "content-edit";
         e.stopPropagation();
         e.stopImmediatePropagation();
