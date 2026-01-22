@@ -451,6 +451,34 @@ function generateHTML(components) {
       color: light-dark(var(--ddd-theme-default-potentialMidnight), var(--ddd-theme-default-coalyGray));
     }
     
+    .demo-selector-container {
+      display: flex;
+      align-items: center;
+      gap: var(--ddd-spacing-2);
+      margin-bottom: var(--ddd-spacing-2);
+    }
+
+    .demo-selector-label {
+      font-size: var(--ddd-font-size-4xs);
+      color: light-dark(var(--ddd-theme-default-slateGray), var(--ddd-theme-default-limestoneGray));
+      font-weight: var(--ddd-font-weight-medium);
+    }
+
+    .demo-selector {
+      padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+      border-radius: var(--ddd-radius-xs);
+      border: light-dark(var(--ddd-border-xs), 1px solid var(--ddd-theme-default-slateGray));
+      background: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray));
+      color: light-dark(var(--ddd-theme-default-coalyGray), var(--ddd-theme-default-white));
+      font-family: var(--ddd-font-primary);
+      font-size: var(--ddd-font-size-4xs);
+    }
+
+    .demo-selector:focus {
+      outline: 2px solid var(--ddd-theme-default-keystoneYellow);
+      outline-offset: 1px;
+    }
+
     .demo-actions {
       display: flex;
       gap: var(--ddd-spacing-2);
@@ -611,6 +639,11 @@ function generateHTML(components) {
             </div>
           </details>
         </div>
+
+        <div class="demo-selector-container hidden" id="demoSelectorContainer">
+          <span class="demo-selector-label">Demo:</span>
+          <select class="demo-selector" id="demoSelector" aria-label="Select demo variant"></select>
+        </div>
         
         <div class="demo-actions">
           <button class="btn btn-primary" id="newTabBtn">
@@ -660,12 +693,15 @@ function generateHTML(components) {
     const welcomeMessage = document.getElementById('welcomeMessage');
     const installationCode = document.getElementById('installationCode');
     const usageCode = document.getElementById('usageCode');
+    const demoSelectorContainer = document.getElementById('demoSelectorContainer');
+    const demoSelector = document.getElementById('demoSelector');
     const newTabBtn = document.getElementById('newTabBtn');
     const codepenBtn = document.getElementById('codepenBtn');
     const fullscreenBtn = document.getElementById('fullscreenBtn');
     const codepenForm = document.getElementById('codepenForm');
     const codepenData = document.getElementById('codepenData');
     const filterBtns = document.querySelectorAll('.filter-btn');
+    let currentDemoPath = null;
     
     // Filter components based on current filter
     function filterComponents() {
@@ -697,6 +733,51 @@ function generateHTML(components) {
       return components;
     }
     
+    // Helper to (re)build the demo selector for the current component
+    function buildDemoSelector(component) {
+      if (!demoSelectorContainer || !demoSelector) {
+        return;
+      }
+
+      // Always include the main index demo first
+      const demos = [
+        {
+          label: 'Main demo',
+          value: component.demoPath
+        }
+      ];
+
+      if (component.additionalDemos && component.additionalDemos.length > 0) {
+        for (let i = 0; i < component.additionalDemos.length; i++) {
+          const demo = component.additionalDemos[i];
+          const label = demo && demo.name ? demo.name : 'Demo ' + (i + 2);
+          demos.push({
+            label: label,
+            value: demo.path
+          });
+        }
+      }
+
+      if (demos.length <= 1) {
+        demoSelectorContainer.classList.add('hidden');
+        demoSelector.innerHTML = '';
+        return;
+      }
+
+      demoSelectorContainer.classList.remove('hidden');
+      demoSelector.innerHTML = '';
+
+      for (let i = 0; i < demos.length; i++) {
+        const option = document.createElement('option');
+        option.value = demos[i].value;
+        option.textContent = demos[i].label;
+        if (i === 0) {
+          option.selected = true;
+        }
+        demoSelector.appendChild(option);
+      }
+    }
+
     // Render component list
     function renderComponentList() {
       filteredComponents = filterComponents();
@@ -732,6 +813,7 @@ function generateHTML(components) {
     // Select and display a component
     function selectComponent(component) {
       currentComponent = component;
+      currentDemoPath = component.demoPath;
       
       // Update active state
       document.querySelectorAll('.component-item').forEach(item => {
@@ -744,13 +826,16 @@ function generateHTML(components) {
       installationCode.textContent = \`npm install \${component.packageName}\`;
       usageCode.textContent = \`import '\${component.importPath}';\`;
       
+      // Build / update demo selector
+      buildDemoSelector(component);
+
       // Show demo header and hide welcome
       demoHeader.classList.remove('hidden');
       welcomeMessage.classList.add('hidden');
       demoFrame.classList.remove('hidden');
       
-      // Load demo in iframe
-      demoFrame.src = component.demoPath;
+      // Load selected demo in iframe
+      demoFrame.src = currentDemoPath;
     }
     
     // Search functionality
@@ -780,6 +865,16 @@ function generateHTML(components) {
       }
     });
     
+    if (demoSelector) {
+      demoSelector.addEventListener('change', function () {
+        if (!currentComponent) {
+          return;
+        }
+        currentDemoPath = demoSelector.value || currentComponent.demoPath;
+        demoFrame.src = currentDemoPath;
+      });
+    }
+    
     // Filter button event listeners
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -788,8 +883,8 @@ function generateHTML(components) {
     });
     
     newTabBtn.addEventListener('click', () => {
-      if (currentComponent) {
-        globalThis.open(currentComponent.demoPath, '_blank');
+      if (currentDemoPath) {
+        globalThis.open(currentDemoPath, '_blank');
       }
     });
     
