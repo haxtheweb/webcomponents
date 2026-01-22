@@ -11,6 +11,7 @@ export const SimpleIconIconsetsManifest = [
       "airplay",
       "album",
       "art-track",
+      "audio-descriptive-track",
       "av-timer",
       "branding-watermark",
       "call-to-action",

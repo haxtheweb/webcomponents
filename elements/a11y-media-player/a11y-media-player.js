@@ -1016,6 +1016,16 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
             <a11y-media-button
               accent-color="${this.accentColor}"
               ?dark="${this.dark}"
+              icon="av:audio-descriptive-track"
+              label="${this.t.audioDescriptionLabel}"
+              ?disabled="${!this.audioDescriptionSource}"
+              ?hidden="${!this.audioDescriptionSource}"
+              ?toggle="${this.audioDescriptionEnabled}"
+              @click="${this._handleAudioDescriptionButtonClick}"
+            ></a11y-media-button>
+            <a11y-media-button
+              accent-color="${this.accentColor}"
+              ?dark="${this.dark}"
               icon="${this.__playing ? "av:pause" : "av:play-arrow"}"
               label="${this.__playing ? this.t.pauseLabel : this.t.playLabel}"
               @click="${this.togglePlay}"
@@ -1254,20 +1264,6 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
                 aria-labelledby="loop-label"
                 @value-change="${this.toggleLoop}"
                 ?value="${this.loop}"
-              >
-              </simple-fields-field>
-            </div>
-            <div class="setting" ?hidden="${!this.audioDescriptionSource}">
-              <div id="audio-description-label" class="setting-text">
-                ${this.t.audioDescriptionLabel}
-              </div>
-              <simple-fields-field
-                type="checkbox"
-                id="audio-description"
-                class="setting-control"
-                aria-labelledby="audio-description-label"
-                @value-changed="${this._toggleAudioDescription}"
-                ?value="${this.audioDescriptionEnabled}"
               >
               </simple-fields-field>
             </div>
@@ -3189,6 +3185,24 @@ class A11yMediaPlayer extends I18NMixin(FullscreenBehaviors(DDD)) {
           },
         }),
       );
+    }
+  }
+
+  /**
+   * Handle audio description toggle from main controls button
+   */
+  _handleAudioDescriptionButtonClick() {
+    const wasEnabled = this.audioDescriptionEnabled;
+    const fakeEvent = {
+      detail: {
+        value: !wasEnabled,
+      },
+    };
+    this._toggleAudioDescription(fakeEvent);
+    // If we just enabled audio description and media is not playing,
+    // start playback so the AD track actually plays.
+    if (!wasEnabled && !this.__playing) {
+      this.togglePlay();
     }
   }
 

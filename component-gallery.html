@@ -406,7 +406,7 @@
             🔍 All (198)
           </button>
           <button class="filter-btn" data-filter="hax" title="Show only HAX-capable components">
-            🧱 HAX (46)
+            🧱 HAX (83)
           </button>
           <button class="filter-btn" data-filter="hax-ecosystem" title="Show HAX ecosystem components">
             ⚡ HAX-* (6)
@@ -497,6 +497,7 @@
     "demoPath": "elements/a11y-behaviors/demo/index.html",
     "importPath": "@haxtheweb/a11y-behaviors/a11y-behaviors.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -507,6 +508,7 @@
     "demoPath": "elements/a11y-carousel/demo/index.html",
     "importPath": "@haxtheweb/a11y-carousel/a11y-carousel.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -526,6 +528,7 @@
         "content": "<p>Content goes here.</p>"
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": [
       {
         "name": "group",
@@ -541,6 +544,7 @@
     "demoPath": "elements/a11y-compare-image/demo/index.html",
     "importPath": "@haxtheweb/a11y-compare-image/a11y-compare-image.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -551,6 +555,7 @@
     "demoPath": "elements/a11y-details/demo/index.html",
     "importPath": "@haxtheweb/a11y-details/a11y-details.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -561,6 +566,7 @@
     "demoPath": "elements/a11y-figure/demo/index.html",
     "importPath": "@haxtheweb/a11y-figure/a11y-figure.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -581,6 +587,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -591,6 +598,7 @@
     "demoPath": "elements/a11y-media-player/demo/index.html",
     "importPath": "@haxtheweb/a11y-media-player/a11y-media-player.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "audio",
@@ -610,6 +618,7 @@
     "demoPath": "elements/a11y-menu-button/demo/index.html",
     "importPath": "@haxtheweb/a11y-menu-button/a11y-menu-button.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -620,6 +629,7 @@
     "demoPath": "elements/a11y-tabs/demo/index.html",
     "importPath": "@haxtheweb/a11y-tabs/a11y-tabs.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": [
       {
         "name": "breakpoints",
@@ -643,6 +653,7 @@
     "demoPath": "elements/a11y-utils/demo/index.html",
     "importPath": "@haxtheweb/a11y-utils/a11y-utils.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -653,6 +664,7 @@
     "demoPath": "elements/absolute-position-behavior/demo/index.html",
     "importPath": "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -663,6 +675,7 @@
     "demoPath": "elements/accent-card/demo/index.html",
     "importPath": "@haxtheweb/accent-card/accent-card.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": [
       {
         "name": "borders",
@@ -694,6 +707,7 @@
     "demoPath": "elements/aframe-player/demo/index.html",
     "importPath": "@haxtheweb/aframe-player/aframe-player.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -704,6 +718,7 @@
     "demoPath": "elements/air-horn/demo/index.html",
     "importPath": "@haxtheweb/air-horn/air-horn.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -714,6 +729,7 @@
     "demoPath": "elements/anchor-behaviors/demo/index.html",
     "importPath": "@haxtheweb/anchor-behaviors/anchor-behaviors.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -724,6 +740,7 @@
     "demoPath": "elements/app-hax/demo/index.html",
     "importPath": "@haxtheweb/app-hax/app-hax.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "home",
@@ -738,7 +755,18 @@
     "version": "25.0.0",
     "demoPath": "elements/audio-player/demo/index.html",
     "importPath": "@haxtheweb/audio-player/audio-player.js",
-    "haxDemoSchema": null,
+    "haxDemoSchema": [
+      {
+        "tag": "audio-player",
+        "properties": {
+          "mediaTitle": "Jonny Quest Theme",
+          "crossorigin": "anonymous",
+          "source": "https://archive.org/download/tvtunes_4710/Jonny%20Quest.mp3"
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -778,6 +806,7 @@
         "description": "An epic red explosion with sound"
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -788,6 +817,7 @@
     "demoPath": "elements/b-r/demo/index.html",
     "importPath": "@haxtheweb/b-r/b-r.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -798,6 +828,7 @@
     "demoPath": "elements/barcode-reader/demo/index.html",
     "importPath": "@haxtheweb/barcode-reader/barcode-reader.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -808,6 +839,7 @@
     "demoPath": "elements/baseline-build-hax/demo/index.html",
     "importPath": "@haxtheweb/baseline-build-hax/baseline-build-hax.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -818,6 +850,7 @@
     "demoPath": "elements/beaker-broker/demo/index.html",
     "importPath": "@haxtheweb/beaker-broker/beaker-broker.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -828,6 +861,7 @@
     "demoPath": "elements/bootstrap-theme/demo/index.html",
     "importPath": "@haxtheweb/bootstrap-theme/bootstrap-theme.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -838,6 +872,7 @@
     "demoPath": "elements/chartist-render/demo/index.html",
     "importPath": "@haxtheweb/chartist-render/chartist-render.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "csv",
@@ -853,6 +888,7 @@
     "demoPath": "elements/chat-agent/demo/index.html",
     "importPath": "@haxtheweb/chat-agent/chat-agent.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -876,6 +912,7 @@
         "content": "Check it out"
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -885,7 +922,20 @@
     "version": "25.0.0",
     "demoPath": "elements/citation-element/demo/index.html",
     "importPath": "@haxtheweb/citation-element/citation-element.js",
-    "haxDemoSchema": null,
+    "haxDemoSchema": [
+      {
+        "tag": "citation-element",
+        "properties": {
+          "creator": "Cool Joe",
+          "license": "by",
+          "title": "Te Futr Da Biz",
+          "source": "https://duckduckgo.com/",
+          "date": "03/07/2020"
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -896,6 +946,7 @@
     "demoPath": "elements/clean-one/demo/index.html",
     "importPath": "@haxtheweb/clean-one/clean-one.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -906,6 +957,7 @@
     "demoPath": "elements/clean-two/demo/index.html",
     "importPath": "@haxtheweb/clean-two/clean-two.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -916,6 +968,7 @@
     "demoPath": "elements/cms-hax/demo/index.html",
     "importPath": "@haxtheweb/cms-hax/cms-hax.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -926,6 +979,7 @@
     "demoPath": "elements/code-editor/demo/index.html",
     "importPath": "@haxtheweb/code-editor/code-editor.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "updating",
@@ -941,6 +995,7 @@
     "demoPath": "elements/code-sample/demo/index.html",
     "importPath": "@haxtheweb/code-sample/code-sample.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -957,6 +1012,7 @@
         "properties": {}
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -967,6 +1023,7 @@
     "demoPath": "elements/count-up/demo/index.html",
     "importPath": "@haxtheweb/count-up/count-up.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -977,6 +1034,7 @@
     "demoPath": "elements/course-design/demo/index.html",
     "importPath": "@haxtheweb/course-design/course-design.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -993,6 +1051,7 @@
         "properties": {}
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1003,6 +1062,7 @@
     "demoPath": "elements/csv-render/demo/index.html",
     "importPath": "@haxtheweb/csv-render/csv-render.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1013,6 +1073,7 @@
     "demoPath": "elements/d-d-d/demo/index.html",
     "importPath": "@haxtheweb/d-d-d/d-d-d.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "mini-map",
@@ -1028,6 +1089,7 @@
     "demoPath": "elements/data-viz/demo/index.html",
     "importPath": "@haxtheweb/data-viz/data-viz.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1054,6 +1116,7 @@
         "content": ""
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1070,6 +1133,7 @@
         "properties": {}
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1080,6 +1144,7 @@
     "demoPath": "elements/disqus-embed/demo/index.html",
     "importPath": "@haxtheweb/disqus-embed/disqus-embed.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1090,6 +1155,7 @@
     "demoPath": "elements/dl-behavior/demo/index.html",
     "importPath": "@haxtheweb/dl-behavior/dl-behavior.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1100,6 +1166,7 @@
     "demoPath": "elements/documentation-player/demo/index.html",
     "importPath": "@haxtheweb/documentation-player/documentation-player.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1110,6 +1177,7 @@
     "demoPath": "elements/dynamic-import-registry/demo/index.html",
     "importPath": "@haxtheweb/dynamic-import-registry/dynamic-import-registry.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1132,6 +1200,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": [
       {
         "name": "advanced",
@@ -1171,6 +1240,7 @@
     "demoPath": "elements/elmsln-loading/demo/index.html",
     "importPath": "@haxtheweb/elmsln-loading/elmsln-loading.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1181,6 +1251,7 @@
     "demoPath": "elements/enhanced-text/demo/index.html",
     "importPath": "@haxtheweb/enhanced-text/enhanced-text.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1209,6 +1280,7 @@
         "content": ""
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1219,6 +1291,7 @@
     "demoPath": "elements/figure-label/demo/index.html",
     "importPath": "@haxtheweb/figure-label/figure-label.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1229,6 +1302,7 @@
     "demoPath": "elements/file-system-broker/demo/index.html",
     "importPath": "@haxtheweb/file-system-broker/file-system-broker.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "docx",
@@ -1261,6 +1335,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1281,6 +1356,7 @@
         "content": "<p slot='front'>What is strawberry in Spanish</p><p slot='back'>fresa</p>"
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1291,6 +1367,7 @@
     "demoPath": "elements/fluid-type/demo/index.html",
     "importPath": "@haxtheweb/fluid-type/fluid-type.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1310,6 +1387,7 @@
         "content": ""
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1320,6 +1398,7 @@
     "demoPath": "elements/fullscreen-behaviors/demo/index.html",
     "importPath": "@haxtheweb/fullscreen-behaviors/fullscreen-behaviors.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1330,6 +1409,7 @@
     "demoPath": "elements/future-terminal-text/demo/index.html",
     "importPath": "@haxtheweb/future-terminal-text/future-terminal-text.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1340,6 +1420,7 @@
     "demoPath": "elements/git-corner/demo/index.html",
     "importPath": "@haxtheweb/git-corner/git-corner.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1349,7 +1430,17 @@
     "version": "25.0.0",
     "demoPath": "elements/github-preview/demo/index.html",
     "importPath": "@haxtheweb/github-preview/github-preview.js",
-    "haxDemoSchema": null,
+    "haxDemoSchema": [
+      {
+        "tag": "github-preview",
+        "properties": {
+          "org": "haxtheweb",
+          "repo": "webcomponents"
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1360,6 +1451,7 @@
     "demoPath": "elements/grade-book/demo/index.html",
     "importPath": "@haxtheweb/grade-book/grade-book.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "letter-grade-picker",
@@ -1379,6 +1471,7 @@
     "demoPath": "elements/grid-plate/demo/index.html",
     "importPath": "@haxtheweb/grid-plate/grid-plate.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1389,6 +1482,7 @@
     "demoPath": "elements/h-a-x/demo/index.html",
     "importPath": "@haxtheweb/h-a-x/h-a-x.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1405,6 +1499,7 @@
         "content": "<iframe width=\"100%\" height=\"auto\" src=\"https://media.ed.science.psu.edu/entity_iframe/node/4272\" frameborder=\"0\" class=\"entity_iframe entity_iframe_node\" id=\"entity_iframe_node_2653\" allowfullscreen=\"true\" webkitallowfullscreen=\"true\" mozallowfullscreen=\"true\" style=\"height: 576px;\"></iframe>"
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1415,6 +1510,7 @@
     "demoPath": "elements/hal-9000/demo/index.html",
     "importPath": "@haxtheweb/hal-9000/hal-9000.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1425,6 +1521,7 @@
     "demoPath": "elements/hax-body/demo/index.html",
     "importPath": "@haxtheweb/hax-body/hax-body.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "allthethings",
@@ -1452,6 +1549,7 @@
     "demoPath": "elements/hax-body-behaviors/demo/index.html",
     "importPath": "@haxtheweb/hax-body-behaviors/hax-body-behaviors.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1462,6 +1560,7 @@
     "demoPath": "elements/hax-bookmarklet/demo/index.html",
     "importPath": "@haxtheweb/hax-bookmarklet/hax-bookmarklet.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1472,6 +1571,7 @@
     "demoPath": "elements/hax-cloud/demo/index.html",
     "importPath": "@haxtheweb/hax-cloud/hax-cloud.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1482,6 +1582,7 @@
     "demoPath": "elements/hax-iconset/demo/index.html",
     "importPath": "@haxtheweb/hax-iconset/hax-iconset.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "iconset",
@@ -1505,6 +1606,7 @@
         "content": "<span slot=\"post\">the web</span>"
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": [
       {
         "name": "site",
@@ -1520,6 +1622,7 @@
     "demoPath": "elements/haxcms-elements/demo/index.html",
     "importPath": "@haxtheweb/haxcms-elements/haxcms-elements.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "404",
@@ -1551,6 +1654,7 @@
     "demoPath": "elements/haxor-slevin/demo/index.html",
     "importPath": "@haxtheweb/haxor-slevin/haxor-slevin.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1560,7 +1664,17 @@
     "version": "25.0.0",
     "demoPath": "elements/hex-picker/demo/index.html",
     "importPath": "@haxtheweb/hex-picker/hex-picker.js",
-    "haxDemoSchema": null,
+    "haxDemoSchema": [
+      {
+        "tag": "hex-picker",
+        "properties": {
+          "org": "haxtheweb",
+          "repo": "webcomponents"
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1571,6 +1685,7 @@
     "demoPath": "elements/hexagon-loader/demo/index.html",
     "importPath": "@haxtheweb/hexagon-loader/hexagon-loader.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "hexagon",
@@ -1586,6 +1701,7 @@
     "demoPath": "elements/html-block/demo/index.html",
     "importPath": "@haxtheweb/html-block/html-block.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1596,6 +1712,7 @@
     "demoPath": "elements/i18n-manager/demo/index.html",
     "importPath": "@haxtheweb/i18n-manager/i18n-manager.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1615,6 +1732,7 @@
         "content": ""
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1637,6 +1755,7 @@
         "content": ""
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1647,6 +1766,7 @@
     "demoPath": "elements/image-inspector/demo/index.html",
     "importPath": "@haxtheweb/image-inspector/image-inspector.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1657,6 +1777,7 @@
     "demoPath": "elements/img-pan-zoom/demo/index.html",
     "importPath": "@haxtheweb/img-pan-zoom/img-pan-zoom.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1667,6 +1788,7 @@
     "demoPath": "elements/img-view-modal/demo/index.html",
     "importPath": "@haxtheweb/img-view-modal/img-view-modal.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "viewer",
@@ -1691,6 +1813,7 @@
         "content": "Hear it yourself"
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1701,6 +1824,7 @@
     "demoPath": "elements/json-outline-schema/demo/index.html",
     "importPath": "@haxtheweb/json-outline-schema/json-outline-schema.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "listing",
@@ -1716,6 +1840,7 @@
     "demoPath": "elements/jwt-login/demo/index.html",
     "importPath": "@haxtheweb/jwt-login/jwt-login.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1732,6 +1857,7 @@
         "properties": {}
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1742,6 +1868,7 @@
     "demoPath": "elements/lazy-image-helpers/demo/index.html",
     "importPath": "@haxtheweb/lazy-image-helpers/lazy-image-helpers.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1752,6 +1879,7 @@
     "demoPath": "elements/lazy-import-discover/demo/index.html",
     "importPath": "@haxtheweb/lazy-import-discover/lazy-import-discover.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1762,6 +1890,7 @@
     "demoPath": "elements/learn-two-theme/demo/index.html",
     "importPath": "@haxtheweb/learn-two-theme/learn-two-theme.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1771,7 +1900,19 @@
     "version": "25.0.0",
     "demoPath": "elements/license-element/demo/index.html",
     "importPath": "@haxtheweb/license-element/license-element.js",
-    "haxDemoSchema": null,
+    "haxDemoSchema": [
+      {
+        "tag": "license-element",
+        "properties": {
+          "title": "Wonderland",
+          "creator": "Mad Hatter",
+          "source": "https://haxtheweb.org/",
+          "license": "by"
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1782,6 +1923,7 @@
     "demoPath": "elements/lorem-data/demo/index.html",
     "importPath": "@haxtheweb/lorem-data/lorem-data.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1792,6 +1934,7 @@
     "demoPath": "elements/lrn-gitgraph/demo/index.html",
     "importPath": "@haxtheweb/lrn-gitgraph/lrn-gitgraph.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1802,6 +1945,7 @@
     "demoPath": "elements/lrn-math/demo/index.html",
     "importPath": "@haxtheweb/lrn-math/lrn-math.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1822,6 +1966,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1832,6 +1977,7 @@
     "demoPath": "elements/lrn-vocab/demo/index.html",
     "importPath": "@haxtheweb/lrn-vocab/lrn-vocab.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1842,6 +1988,7 @@
     "demoPath": "elements/lrndesign-chart/demo/index.html",
     "importPath": "@haxtheweb/lrndesign-chart/lrndesign-chart.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": [
       {
         "name": "bar",
@@ -1865,6 +2012,7 @@
     "demoPath": "elements/lrndesign-imagemap/demo/index.html",
     "importPath": "@haxtheweb/lrndesign-imagemap/lrndesign-imagemap.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "process",
@@ -1880,6 +2028,7 @@
     "demoPath": "elements/lrndesign-timeline/demo/index.html",
     "importPath": "@haxtheweb/lrndesign-timeline/lrndesign-timeline.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1890,6 +2039,7 @@
     "demoPath": "elements/lrs-elements/demo/index.html",
     "importPath": "@haxtheweb/lrs-elements/lrs-elements.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1900,6 +2050,7 @@
     "demoPath": "elements/lunr-search/demo/index.html",
     "importPath": "@haxtheweb/lunr-search/lunr-search.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1910,6 +2061,7 @@
     "demoPath": "elements/map-menu/demo/index.html",
     "importPath": "@haxtheweb/map-menu/map-menu.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1929,6 +2081,7 @@
         "content": "<input correct value=\"it'll\" />"
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1948,6 +2101,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1957,7 +2111,16 @@
     "version": "25.0.0",
     "demoPath": "elements/md-block/demo/index.html",
     "importPath": "@haxtheweb/md-block/md-block.js",
-    "haxDemoSchema": null,
+    "haxDemoSchema": [
+      {
+        "tag": "md-block",
+        "properties": {
+          "markdown": "- The first bulleted item in a long list.."
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1968,6 +2131,7 @@
     "demoPath": "elements/media-behaviors/demo/index.html",
     "importPath": "@haxtheweb/media-behaviors/media-behaviors.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -1977,7 +2141,17 @@
     "version": "25.0.0",
     "demoPath": "elements/media-image/demo/index.html",
     "importPath": "@haxtheweb/media-image/media-image.js",
-    "haxDemoSchema": null,
+    "haxDemoSchema": [
+      {
+        "tag": "media-image",
+        "properties": {
+          "source": "https://dummyimage.com/300x200/000/fff",
+          "card": true,
+          "citation": "This is my citation."
+        }
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -1997,6 +2171,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2018,6 +2193,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2028,6 +2204,7 @@
     "demoPath": "elements/merit-badge/demo/index.html",
     "importPath": "@haxtheweb/merit-badge/merit-badge.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2038,6 +2215,7 @@
     "demoPath": "elements/micro-frontend-registry/demo/index.html",
     "importPath": "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2056,6 +2234,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2066,6 +2245,7 @@
     "demoPath": "elements/moment-element/demo/index.html",
     "importPath": "@haxtheweb/moment-element/moment-element.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2086,6 +2266,7 @@
         "content": "<input type=\"checkbox\" value=\"Answer 1\" correct>\n<input type=\"checkbox\" value=\"Another potential answer\">"
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2104,6 +2285,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2114,6 +2296,7 @@
     "demoPath": "elements/mutation-observer-import-mixin/demo/index.html",
     "importPath": "@haxtheweb/mutation-observer-import-mixin/mutation-observer-import-mixin.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2124,6 +2307,7 @@
     "demoPath": "elements/oer-schema/demo/index.html",
     "importPath": "@haxtheweb/oer-schema/oer-schema.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2134,6 +2318,7 @@
     "demoPath": "elements/outline-designer/demo/index.html",
     "importPath": "@haxtheweb/outline-designer/outline-designer.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2144,6 +2329,7 @@
     "demoPath": "elements/outline-player/demo/index.html",
     "importPath": "@haxtheweb/outline-player/outline-player.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2166,6 +2352,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2176,6 +2363,7 @@
     "demoPath": "elements/page-contents-menu/demo/index.html",
     "importPath": "@haxtheweb/page-contents-menu/page-contents-menu.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2195,6 +2383,7 @@
         "content": ""
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2205,6 +2394,7 @@
     "demoPath": "elements/page-scroll-position/demo/index.html",
     "importPath": "@haxtheweb/page-scroll-position/page-scroll-position.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2228,6 +2418,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2238,6 +2429,7 @@
     "demoPath": "elements/paper-input-flagged/demo/index.html",
     "importPath": "@haxtheweb/paper-input-flagged/paper-input-flagged.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2248,6 +2440,7 @@
     "demoPath": "elements/paper-stepper/demo/index.html",
     "importPath": "@haxtheweb/paper-stepper/paper-stepper.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2258,6 +2451,7 @@
     "demoPath": "elements/parallax-image/demo/index.html",
     "importPath": "@haxtheweb/parallax-image/parallax-image.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2268,6 +2462,7 @@
     "demoPath": "elements/pdf-browser-viewer/demo/index.html",
     "importPath": "@haxtheweb/pdf-browser-viewer/pdf-browser-viewer.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2290,6 +2485,7 @@
         "content": "<p>I at times, enjoy coffee. Those times, are all times.</p>"
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2299,7 +2495,16 @@
     "version": "25.0.0",
     "demoPath": "elements/place-holder/demo/index.html",
     "importPath": "@haxtheweb/place-holder/place-holder.js",
-    "haxDemoSchema": null,
+    "haxDemoSchema": [
+      {
+        "tag": "place-holder",
+        "properties": {
+          "type": "image"
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2320,6 +2525,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2330,6 +2536,7 @@
     "demoPath": "elements/polaris-theme/demo/index.html",
     "importPath": "@haxtheweb/polaris-theme/polaris-theme.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2340,6 +2547,7 @@
     "demoPath": "elements/portal-launcher/demo/index.html",
     "importPath": "@haxtheweb/portal-launcher/portal-launcher.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2362,6 +2570,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2372,6 +2581,7 @@
     "demoPath": "elements/pouch-db/demo/index.html",
     "importPath": "@haxtheweb/pouch-db/pouch-db.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2382,6 +2592,7 @@
     "demoPath": "elements/product-card/demo/index.html",
     "importPath": "@haxtheweb/product-card/product-card.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "hax",
@@ -2407,6 +2618,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2417,6 +2629,7 @@
     "demoPath": "elements/product-offering/demo/index.html",
     "importPath": "@haxtheweb/product-offering/product-offering.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2427,6 +2640,7 @@
     "demoPath": "elements/progress-donut/demo/index.html",
     "importPath": "@haxtheweb/progress-donut/progress-donut.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2437,6 +2651,7 @@
     "demoPath": "elements/promise-progress/demo/index.html",
     "importPath": "@haxtheweb/promise-progress/promise-progress.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "basic",
@@ -2456,6 +2671,7 @@
     "demoPath": "elements/q-r/demo/index.html",
     "importPath": "@haxtheweb/q-r/q-r.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2466,6 +2682,7 @@
     "demoPath": "elements/radio-behaviors/demo/index.html",
     "importPath": "@haxtheweb/radio-behaviors/radio-behaviors.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2476,6 +2693,7 @@
     "demoPath": "elements/relative-heading/demo/index.html",
     "importPath": "@haxtheweb/relative-heading/relative-heading.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": [
       {
         "name": "lite",
@@ -2499,6 +2717,7 @@
     "demoPath": "elements/responsive-grid/demo/index.html",
     "importPath": "@haxtheweb/responsive-grid/responsive-grid.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "performancetest",
@@ -2514,6 +2733,7 @@
     "demoPath": "elements/responsive-utility/demo/index.html",
     "importPath": "@haxtheweb/responsive-utility/responsive-utility.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2523,7 +2743,21 @@
     "version": "25.0.0",
     "demoPath": "elements/retro-card/demo/index.html",
     "importPath": "@haxtheweb/retro-card/retro-card.js",
-    "haxDemoSchema": null,
+    "haxDemoSchema": [
+      {
+        "tag": "video-player",
+        "properties": {
+          "title": "HAX Camp",
+          "subtitle": "btopro dreaming reality",
+          "tags": "dreams, hax, camp",
+          "accentColor": "pink",
+          "url": "https://btopro.com",
+          "media-source": "https://btopro.com/files/IMG_20190716_102855.jpg"
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2534,6 +2768,7 @@
     "demoPath": "elements/rich-text-editor/demo/index.html",
     "importPath": "@haxtheweb/rich-text-editor/rich-text-editor.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "button",
@@ -2586,6 +2821,7 @@
         "content": ""
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2605,6 +2841,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2615,6 +2852,7 @@
     "demoPath": "elements/schema-behaviors/demo/index.html",
     "importPath": "@haxtheweb/schema-behaviors/schema-behaviors.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2625,6 +2863,7 @@
     "demoPath": "elements/scroll-button/demo/index.html",
     "importPath": "@haxtheweb/scroll-button/scroll-button.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2646,6 +2885,7 @@
         "content": "<p slot=\"question\">How large can the average great white shark grow to be?</p><p>The Great White shark can grow to be 15 ft to more than 20 ft in length and weigh 2.5 tons or more.</p>"
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2656,6 +2896,7 @@
     "demoPath": "elements/shadow-style/demo/index.html",
     "importPath": "@haxtheweb/shadow-style/shadow-style.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2666,6 +2907,7 @@
     "demoPath": "elements/simple-autocomplete/demo/index.html",
     "importPath": "@haxtheweb/simple-autocomplete/simple-autocomplete.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2676,6 +2918,7 @@
     "demoPath": "elements/simple-blog/demo/index.html",
     "importPath": "@haxtheweb/simple-blog/simple-blog.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2686,6 +2929,7 @@
     "demoPath": "elements/simple-colors/demo/index.html",
     "importPath": "@haxtheweb/simple-colors/simple-colors.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "colors",
@@ -2713,6 +2957,7 @@
     "demoPath": "elements/simple-colors-shared-styles/demo/index.html",
     "importPath": "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2722,7 +2967,17 @@
     "version": "25.0.0",
     "demoPath": "elements/simple-cta/demo/index.html",
     "importPath": "@haxtheweb/simple-cta/simple-cta.js",
-    "haxDemoSchema": null,
+    "haxDemoSchema": [
+      {
+        "tag": "simple-cta",
+        "properties": {
+          "label": "Click to learn more",
+          "link": "https://haxtheweb.org/"
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2733,6 +2988,7 @@
     "demoPath": "elements/simple-datetime/demo/index.html",
     "importPath": "@haxtheweb/simple-datetime/simple-datetime.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2743,6 +2999,7 @@
     "demoPath": "elements/simple-emoji/demo/index.html",
     "importPath": "@haxtheweb/simple-emoji/simple-emoji.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2753,6 +3010,7 @@
     "demoPath": "elements/simple-fields/demo/index.html",
     "importPath": "@haxtheweb/simple-fields/simple-fields.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": [
       {
         "name": "conditional",
@@ -2804,6 +3062,7 @@
     "demoPath": "elements/simple-filter/demo/index.html",
     "importPath": "@haxtheweb/simple-filter/simple-filter.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2823,6 +3082,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": [
       {
         "name": "button-lite",
@@ -2850,6 +3110,7 @@
     "demoPath": "elements/simple-icon-picker/demo/index.html",
     "importPath": "@haxtheweb/simple-icon-picker/simple-icon-picker.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2869,6 +3130,7 @@
         "content": "<template><img src=\"https://ftw.usatoday.com/wp-content/uploads/sites/90/2017/05/spongebob.jpg?w=1000&h=600&crop=1\" /></template>"
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -2879,6 +3141,7 @@
     "demoPath": "elements/simple-login/demo/index.html",
     "importPath": "@haxtheweb/simple-login/simple-login.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2889,6 +3152,7 @@
     "demoPath": "elements/simple-modal/demo/index.html",
     "importPath": "@haxtheweb/simple-modal/simple-modal.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "css",
@@ -2912,6 +3176,7 @@
     "demoPath": "elements/simple-picker/demo/index.html",
     "importPath": "@haxtheweb/simple-picker/simple-picker.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2922,6 +3187,7 @@
     "demoPath": "elements/simple-popover/demo/index.html",
     "importPath": "@haxtheweb/simple-popover/simple-popover.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "tour",
@@ -2937,6 +3203,7 @@
     "demoPath": "elements/simple-progress/demo/index.html",
     "importPath": "@haxtheweb/simple-progress/simple-progress.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2947,6 +3214,7 @@
     "demoPath": "elements/simple-range-input/demo/index.html",
     "importPath": "@haxtheweb/simple-range-input/simple-range-input.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2957,6 +3225,7 @@
     "demoPath": "elements/simple-search/demo/index.html",
     "importPath": "@haxtheweb/simple-search/simple-search.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "selector",
@@ -2972,6 +3241,7 @@
     "demoPath": "elements/simple-toast/demo/index.html",
     "importPath": "@haxtheweb/simple-toast/simple-toast.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -2982,6 +3252,7 @@
     "demoPath": "elements/simple-toolbar/demo/index.html",
     "importPath": "@haxtheweb/simple-toolbar/simple-toolbar.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "buttons",
@@ -3005,6 +3276,7 @@
     "demoPath": "elements/simple-tooltip/demo/index.html",
     "importPath": "@haxtheweb/simple-tooltip/simple-tooltip.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -3015,6 +3287,7 @@
     "demoPath": "elements/simple-wc/demo/index.html",
     "importPath": "@haxtheweb/simple-wc/simple-wc.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -3025,6 +3298,7 @@
     "demoPath": "elements/social-share-link/demo/index.html",
     "importPath": "@haxtheweb/social-share-link/social-share-link.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -3043,6 +3317,7 @@
         "content": "<p slot=\"evidence\">Self evident, Refer back to 1st grade</p><p slot=\"hint\">Consider that numbers tend to go zero, one, two...</p><input value=\"1\" /><input value=\"2\" /><input value=\"3\" />"
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -3063,6 +3338,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -3073,6 +3349,7 @@
     "demoPath": "elements/star-rating/demo/index.html",
     "importPath": "@haxtheweb/star-rating/star-rating.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -3099,6 +3376,7 @@
         "content": "<p slot=\"message\">You can write any warning message you want here.</p>\n"
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -3109,6 +3387,7 @@
     "demoPath": "elements/super-daemon/demo/index.html",
     "importPath": "@haxtheweb/super-daemon/super-daemon.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -3128,6 +3407,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -3138,6 +3418,7 @@
     "demoPath": "elements/terrible-themes/demo/index.html",
     "importPath": "@haxtheweb/terrible-themes/terrible-themes.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -3148,6 +3429,7 @@
     "demoPath": "elements/training-theme/demo/index.html",
     "importPath": "@haxtheweb/training-theme/training-theme.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -3166,6 +3448,7 @@
         }
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -3176,6 +3459,7 @@
     "demoPath": "elements/type-writer/demo/index.html",
     "importPath": "@haxtheweb/type-writer/type-writer.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -3186,6 +3470,7 @@
     "demoPath": "elements/undo-manager/demo/index.html",
     "importPath": "@haxtheweb/undo-manager/undo-manager.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -3195,7 +3480,24 @@
     "version": "25.0.0",
     "demoPath": "elements/unity-webgl/demo/index.html",
     "importPath": "@haxtheweb/unity-webgl/unity-webgl.js",
-    "haxDemoSchema": null,
+    "haxDemoSchema": [
+      {
+        "tag": "unity-webgl",
+        "content": "",
+        "properties": {
+          "target": "/elements/unity-webgl/demo/example/build web",
+          "compression": "unityweb",
+          "streamingurl": "StreamingAssets",
+          "companyname": "DefaultCompany",
+          "productname": "test webgl",
+          "productversion": "0.1",
+          "width": "460px",
+          "height": "400px",
+          "background": "#231F20"
+        }
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -3206,6 +3508,7 @@
     "demoPath": "elements/user-action/demo/index.html",
     "importPath": "@haxtheweb/user-action/user-action.js",
     "haxDemoSchema": null,
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -3216,6 +3519,7 @@
     "demoPath": "elements/user-scaffold/demo/index.html",
     "importPath": "@haxtheweb/user-scaffold/user-scaffold.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -3226,6 +3530,7 @@
     "demoPath": "elements/utils/demo/index.html",
     "importPath": "@haxtheweb/utils/utils.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -3235,7 +3540,18 @@
     "version": "25.0.0",
     "demoPath": "elements/video-player/demo/index.html",
     "importPath": "@haxtheweb/video-player/video-player.js",
-    "haxDemoSchema": null,
+    "haxDemoSchema": [
+      {
+        "tag": "video-player",
+        "properties": {
+          "source": "https://www.youtube.com/watch?v=LrS7dqokTLE",
+          "data-width": "75",
+          "data-margin": "center"
+        },
+        "content": ""
+      }
+    ],
+    "isHaxCapable": true,
     "additionalDemos": [
       {
         "name": "audio-description",
@@ -3265,6 +3581,7 @@
         "content": ""
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -3275,6 +3592,7 @@
     "demoPath": "elements/voice-recorder/demo/index.html",
     "importPath": "@haxtheweb/voice-recorder/voice-recorder.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -3285,6 +3603,7 @@
     "demoPath": "elements/wc-autoload/demo/index.html",
     "importPath": "@haxtheweb/wc-autoload/wc-autoload.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": [
       {
         "name": "cantvas",
@@ -3325,6 +3644,7 @@
         "content": ""
       }
     ],
+    "isHaxCapable": true,
     "additionalDemos": []
   },
   {
@@ -3335,6 +3655,7 @@
     "demoPath": "elements/word-count/demo/index.html",
     "importPath": "@haxtheweb/word-count/word-count.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   },
   {
@@ -3345,6 +3666,7 @@
     "demoPath": "elements/wysiwyg-hax/demo/index.html",
     "importPath": "@haxtheweb/wysiwyg-hax/wysiwyg-hax.js",
     "haxDemoSchema": null,
+    "isHaxCapable": false,
     "additionalDemos": []
   }
 ];
@@ -3379,7 +3701,7 @@
       
       switch (currentFilter) {
         case 'hax':
-          components = COMPONENTS.filter(c => c.haxDemoSchema && Array.isArray(c.haxDemoSchema) && c.haxDemoSchema.length > 0);
+          components = COMPONENTS.filter(c => c.isHaxCapable);
           break;
         case 'hax-ecosystem':
           components = COMPONENTS.filter(c => c.name.startsWith('hax-'));
@@ -3465,8 +3787,8 @@
         item.className = 'component-item';
         item.dataset.componentName = component.name;
         
-        // Add HAX indicator if component has HAX demo schema
-        const haxIndicator = (component.haxDemoSchema && Array.isArray(component.haxDemoSchema) && component.haxDemoSchema.length > 0) 
+        // Add HAX indicator if component is HAX-capable
+        const haxIndicator = component.isHaxCapable
           ? '<span class="hax-indicator" title="HAX-capable component">🧱</span>' 
           : '';
         

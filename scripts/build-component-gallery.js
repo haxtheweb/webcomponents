@@ -44,37 +44,63 @@ function extractHaxDemoSchema(elementPath, elementName) {
 // Function to extract demoSchema from JavaScript source code
 function extractDemoSchemaFromJS(jsContent) {
   try {
-    // Look for demoSchema in static haxProperties
-    const haxPropsMatch = jsContent.match(/static\s+get\s+haxProperties\s*\(\s*\)\s*\{[\s\S]*?\}/m);
-    if (haxPropsMatch) {
-      const haxPropsContent = haxPropsMatch[0];
-      
-      // Look for demoSchema within haxProperties
-      const demoSchemaMatch = haxPropsContent.match(/demoSchema\s*:\s*\[([\s\S]*?)\]/m);
-      if (demoSchemaMatch) {
-        try {
-          // Attempt to parse the demoSchema as JSON-like structure
-          const demoSchemaStr = '[' + demoSchemaMatch[1] + ']';
-          // Clean up the JavaScript syntax to make it JSON-parseable
-          const cleanedStr = demoSchemaStr
-            .replace(/([{,])\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*:/g, '$1"$2":') // Quote property names
-            .replace(/'/g, '"') // Convert single quotes to double quotes
-            .replace(/,\s*}/g, '}') // Remove trailing commas
-            .replace(/,\s*]/g, ']'); // Remove trailing commas in arrays
-          
-          return JSON.parse(cleanedStr);
-        } catch (parseErr) {
-          // If parsing fails, return null
-          return null;
-        }
+    // Look for a demoSchema array anywhere in the file. In practice this only
+    // appears inside static haxProperties definitions.
+    const demoSchemaMatch = jsContent.match(/demoSchema\s*:\s*\[([\s\S]*?)\]/m);
+    if (demoSchemaMatch) {
+      try {
+        // Attempt to parse the demoSchema as a JSON-like structure
+        const demoSchemaStr = '[' + demoSchemaMatch[1] + ']';
+        // Clean up the JavaScript syntax to make it JSON-parseable
+        const cleanedStr = demoSchemaStr
+          .replace(/([{,])\s*([a-zA-Z_$][a-zA-Z0-9_$]*)\s*:/g, '$1"$2":') // Quote property names
+          .replace(/'/g, '"') // Convert single quotes to double quotes
+          .replace(/,\s*}/g, '}') // Remove trailing commas
+          .replace(/,\s*]/g, ']'); // Remove trailing commas in arrays
+
+        return JSON.parse(cleanedStr);
+      } catch (parseErr) {
+        // If parsing fails, return null
+        return null;
       }
     }
   } catch (err) {
     // If anything fails, return null
     return null;
   }
-  
+
   return null;
+}
+
+// Determine if an element is HAX-capable regardless of whether a demoSchema
+// could be parsed. This looks for either a dedicated haxProperties JSON file
+// or haxProperties / setHaxProperties usage in the main JS module.
+function isElementHaxCapable(elementPath, elementName, haxDemoSchema) {
+  // If we already have a demo schema, we know it is HAX-capable.
+  if (haxDemoSchema && Array.isArray(haxDemoSchema) && haxDemoSchema.length > 0) {
+    return true;
+  }
+
+  // Presence of a .haxProperties.json file implies HAX wiring exists.
+  const haxJsonPath = path.join(elementPath, 'lib', `${elementName}.haxProperties.json`);
+  if (fs.existsSync(haxJsonPath)) {
+    return true;
+  }
+
+  // Look inside the main JS file for haxProperties / setHaxProperties.
+  const jsPath = path.join(elementPath, `${elementName}.js`);
+  if (fs.existsSync(jsPath)) {
+    try {
+      const jsContent = fs.readFileSync(jsPath, 'utf8');
+      return /\bstatic\s+get\s+haxProperties\b/.test(jsContent) ||
+             /\bhaxProperties\s*\(/.test(jsContent) ||
+             /\bsetHaxProperties\s*\(/.test(jsContent);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  return false;
 }
 
 // Function to generate HTML for a component demo using HAX schema
@@ -156,6 +182,7 @@ function getComponentInfo() {
 
           // Try to extract HAX demo schema from the main component file
           const haxDemoSchema = extractHaxDemoSchema(elementPath, elementName);
+          const isHaxCapable = isElementHaxCapable(elementPath, elementName, haxDemoSchema);
 
           components.push({
             name: elementName,
@@ -165,6 +192,7 @@ function getComponentInfo() {
             demoPath: `elements/${elementName}/demo/index.html`,
             importPath,
             haxDemoSchema,
+            isHaxCapable,
             additionalDemos: demoFiles.filter(f => f !== 'index.html').map(f => ({
               name: f.replace('.html', ''),
               path: `elements/${elementName}/demo/${f}`
@@ -595,7 +623,7 @@ function generateHTML(components) {
             🔍 All (${totalComponents})
           </button>
           <button class="filter-btn" data-filter="hax" title="Show only HAX-capable components">
-            🧱 HAX (${components.filter(c => c.haxDemoSchema && Array.isArray(c.haxDemoSchema) && c.haxDemoSchema.length > 0).length})
+            🧱 HAX (${components.filter(c => c.isHaxCapable).length})
           </button>
           <button class="filter-btn" data-filter="hax-ecosystem" title="Show HAX ecosystem components">
             ⚡ HAX-* (${components.filter(c => c.name.startsWith('hax-')).length})
@@ -709,7 +737,7 @@ function generateHTML(components) {
       
       switch (currentFilter) {
         case 'hax':
-          components = COMPONENTS.filter(c => c.haxDemoSchema && Array.isArray(c.haxDemoSchema) && c.haxDemoSchema.length > 0);
+          components = COMPONENTS.filter(c => c.isHaxCapable);
           break;
         case 'hax-ecosystem':
           components = COMPONENTS.filter(c => c.name.startsWith('hax-'));
@@ -795,8 +823,8 @@ function generateHTML(components) {
         item.className = 'component-item';
         item.dataset.componentName = component.name;
         
-        // Add HAX indicator if component has HAX demo schema
-        const haxIndicator = (component.haxDemoSchema && Array.isArray(component.haxDemoSchema) && component.haxDemoSchema.length > 0) 
+        // Add HAX indicator if component is HAX-capable
+        const haxIndicator = component.isHaxCapable
           ? '<span class="hax-indicator" title="HAX-capable component">🧱</span>' 
           : '';
         
@@ -965,11 +993,11 @@ function generateHTML(components) {
 console.log('🔍 Scanning components...');
 const components = getComponentInfo();
 
-// Count components with HAX demo schemas
-const haxCapableCount = components.filter(c => c.haxDemoSchema && Array.isArray(c.haxDemoSchema) && c.haxDemoSchema.length > 0).length;
+// Count components that are HAX-capable (have haxProperties wiring)
+const haxCapableCount = components.filter(c => c.isHaxCapable).length;
 
 console.log(`✅ Found ${components.length} components with demos`);
-console.log(`🎭 ${haxCapableCount} components have HAX demo schemas`);
+console.log(`🎭 ${haxCapableCount} components are HAX-capable`);
 
 if (components.length === 0) {
   console.log('❌ No components found. Make sure you have elements with demo/index.html files.');
