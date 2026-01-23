@@ -332,11 +332,7 @@ class HaxTray extends I18NMixin(
           right: 0px;
           flex-direction: row-reverse;
         }
-        :host([edit-mode][collapsed]) .wrapper {
-          width: 0;
-          min-width: 0;
-          overflow: hidden;
-        }
+        
         :host([edit-mode]) .wrapper.full-panel {
           width: unset;
           left: 0;

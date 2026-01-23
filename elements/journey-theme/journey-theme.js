@@ -315,7 +315,6 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         }
 
         :host([edit-mode]) {
-          /* react to the screen shifting left to right on edit mode w/ tray direction */
           margin: var(
             --hax-tray-element-align-margin,
             0 0 0
@@ -325,7 +324,6 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         }
 
         :host([edit-mode][tray-status="collapsed"]) {
-          /* when tray is collapsed, remove the margin to fit the whole screen */
           margin: 0;
         }
 

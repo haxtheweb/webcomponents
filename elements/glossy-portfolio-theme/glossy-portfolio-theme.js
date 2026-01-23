@@ -138,14 +138,17 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
       }
 
       :host([edit-mode]) {
-          /* react to the screen shifting left to right on edit mode w/ tray direction */
           margin: var(
             --hax-tray-element-align-margin,
             0 0 0
               calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width))
           );
-          transition: margin 0.15s ease-in-out;
-      }
+          transition: margin 0.6s ease-in-out;
+        }
+
+        :host([edit-mode][tray-status="collapsed"]) {
+          margin: 0;
+        }
 
       :host([is-logged-in]) {
         glossy-portfolio-header {

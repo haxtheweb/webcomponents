@@ -97,8 +97,7 @@ class PolarisFlexTheme extends LTIResizingMixin(
           --video-player-disabled-color: var(--ddd-theme-default-disabled);
         }
 
-        :host([edit-mode]) {
-          /* react to the screen shifting left to right on edit mode w/ tray direction */
+      :host([edit-mode]) {
           margin: var(
             --hax-tray-element-align-margin,
             0 0 0
@@ -106,6 +105,11 @@ class PolarisFlexTheme extends LTIResizingMixin(
           );
           transition: margin 0.6s ease-in-out;
         }
+
+        :host([edit-mode][tray-status="collapsed"]) {
+          margin: 0;
+        }
+        
         :host([is-safari]) {
           background-color: var(--ddd-accent-6);
           color: black;
