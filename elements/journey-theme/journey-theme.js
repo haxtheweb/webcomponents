@@ -315,13 +315,16 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         }
 
         :host([edit-mode]) {
-          /* react to the screen shifting left to right on edit mode w/ tray direction */
           margin: var(
             --hax-tray-element-align-margin,
             0 0 0
               calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width))
           );
           transition: margin 0.6s ease-in-out;
+        }
+
+        :host([edit-mode][tray-status="collapsed"]) {
+          margin: 0;
         }
 
         :host([site-theme="earth"]) {

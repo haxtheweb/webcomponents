@@ -199,6 +199,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           opacity: 0.2;
           pointer-events: none;
         }
+       
         :host {
           display: block;
           position: relative;

@@ -141,9 +141,25 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
     return [
       super.styles,
       css`
+        :host {
+          display: block;
+          margin: 0 auto; 
+          padding: 0 var(--ddd-spacing-5); 
+          max-width: 100%;
+        }
+        
         :host([edit-mode]) {
           opacity: 1;
-          margin: 0px 350px; /** helps when editing to see spacing */
+          margin: var(
+          --hax-tray-element-align-margin,
+            0 var(--ddd-spacing-4) 0 calc(var(--hax-tray-width) - var(--hax-tray-menubar-min-width) + var(--ddd-spacing-4))
+          );
+          transition: margin 0.6s ease-in-out;
+        }
+
+        :host([edit-mode][tray-status="collapsed"]) {
+          margin: 0 auto;
+          padding: 0 var(--ddd-spacing-5);
         }
         :host([hidden]) {
           display: none;
@@ -157,22 +173,23 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
           flex-direction: row;
           justify-content: flex-end;
           width: 100%;
-          margin-right: var(--ddd-spacing-25);
-          margin-top: var(--ddd-spacing-2);
+          margin: var(--ddd-spacing-2) var(--ddd-spacing-25) 0 0;
+          padding: 0;
         }
 
         .menu .menu-item {
           display: flex;
           text-decoration: none;
           height: fit-content;
+          margin: 0; 
           transition: all 0.3s ease-in-out;
         }
 
         .menu .menu-item button {
           margin: 0 var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
           cursor: pointer;
           text-decoration: none;
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
           font-size: var(--ddd-font-size-xs);
           background-color: transparent;
           color: var(--primary-color-3);
@@ -245,10 +262,7 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
         #slot {
           min-height: 50vh;
         }
-        :host {
-          display: block;
-          margin: 0px;
-        }
+        
       `,
     ];
   }

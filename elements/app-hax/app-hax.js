@@ -1327,6 +1327,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         store.toast("You can hear me now? Good.", 2000, { hat: "random" });
       }
     });
+
     // App is ready and the user is Logged in
     autorun(async () => {
       if (
@@ -1529,6 +1530,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
   }
 }
+
+
 customElements.define(AppHax.tag, AppHax);
 
 globalThis.AppHax = globalThis.AppHax || {};
