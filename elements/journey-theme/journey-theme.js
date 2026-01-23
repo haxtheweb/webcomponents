@@ -324,6 +324,11 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           transition: margin 0.6s ease-in-out;
         }
 
+        :host([edit-mode][tray-status="collapsed"]) {
+          /* when tray is collapsed, remove the margin to fit the whole screen */
+          margin: 0;
+        }
+
         :host([site-theme="earth"]) {
           --haxcms-site-theme-color-1: var(--ddd-primary-17);
           --haxcms-site-theme-color-2: var(--ddd-primary-18);
