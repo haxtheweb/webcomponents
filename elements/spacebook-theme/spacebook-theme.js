@@ -474,6 +474,11 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
           padding-right: 0;
           padding-left: 0;
         }
+
+        .header-content{
+          justify-items: center;
+          align-items: center;
+        }
       }
       
       /* Adjust main content for logged-in users */

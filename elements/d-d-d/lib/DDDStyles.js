@@ -4441,7 +4441,7 @@ export const DDDAnimations = css`
   }
 `;
 
-export const DDDPalletStyles = css`
+export const DDDPaletteStyles = css`
 /** Default Palette */
 html, :root {
   --ddd-palette-color-1: var(--simple-colors-default-theme-green-10);
@@ -4454,7 +4454,8 @@ html, :root {
 }
 
 /** Wisdom Walk Green */
-[data-ddd-palette="wisdom-walk-green"] {
+[data-palette="wisdom-walk-green"],
+[data-palette="0"] {
   --ddd-palette-color-1: var(--simple-colors-default-theme-green-10);
   --ddd-palette-color-2: var(--simple-colors-default-theme-lime-8);
   --ddd-palette-color-3: var(--simple-colors-fixed-theme-lime-7);
@@ -4464,6 +4465,62 @@ html, :root {
   --ddd-palette-color-7: var(--simple-colors-default-theme-orange-3);
 }
 
+[data-palette="very-violent-red"],
+[data-palette="1"] {
+  --ddd-palette-color-1: var(--simple-colors-fixed-theme-red-12);
+  --ddd-palette-color-2: var(--simple-colors-fixed-theme-deep-orange-8);
+  --ddd-palette-color-3: var(--simple-colors-default-theme-deep-orange-7);
+  --ddd-palette-color-4: var(--ddd-theme-default-discoveryCoral);
+  --ddd-palette-color-5: var(--simple-colors-default-theme-red-2);
+  --ddd-palette-color-6: var(--ddd-theme-default-slateGray);
+  --ddd-palette-color-7: var(--ddd-theme-default-pughBlue);
+}
+
+[data-palette="beetles-yellow"],
+[data-palette="2"] {
+  --ddd-palette-color-1: var(--simple-colors-default-theme-orange-9);
+  --ddd-palette-color-2: var(--simple-colors-fixed-theme-orange-7);
+  --ddd-palette-color-3: var(--simple-colors-default-theme-orange-6);
+  --ddd-palette-color-4: var(--simple-colors-fixed-theme-amber-6);
+  --ddd-palette-color-5: var(--ddd-theme-default-keystoneYellow);
+  --ddd-palette-color-6: var(--ddd-theme-default-creekTeal);
+  --ddd-palette-color-7: var(--simple-colors-default-theme-cyan-1);
+}
+
+
+[data-palette="offbrand-nittany-blue"],
+[data-palette="3"] {
+  --ddd-palette-color-1: var(--ddd-theme-default-nittanyNavy);
+  --ddd-palette-color-2: var(--simple-colors-fixed-theme-light-blue-10);
+  --ddd-palette-color-3: var(--simple-colors-fixed-theme-light-blue-8);
+  --ddd-palette-color-4: var(--simple-colors-default-theme-light-blue-6);
+  --ddd-palette-color-5: var(--simple-colors-default-theme-cyan-2);
+  --ddd-palette-color-6: var(--ddd-theme-default-keystoneYellow);
+  --ddd-palette-color-7: var(--simple-colors-default-theme-orange-7);
+}
+
+[data-palette="boring-blue-gray"],
+[data-palette="4"] {
+  --ddd-palette-color-1: var(--ddd-theme-default-coalyGray);
+  --ddd-palette-color-2: var(--simple-colors-default-theme-blue-grey-9);
+  --ddd-palette-color-3: var(--simple-colors-fixed-theme-blue-grey-8);
+  --ddd-palette-color-4: var(--simple-colors-default-theme-blue-grey-6);
+  --ddd-palette-color-5: var(--simple-colors-fixed-theme-blue-grey-4);
+  --ddd-palette-color-6: var(--ddd-theme-default-slateGray);
+  --ddd-palette-color-7: var(--simple-colors-default-theme-blue-grey-2);
+}
+
+[data-palette="monotone"],
+[data-palette="5"] {
+--ddd-palette-color-1: var(--ddd-theme-default-coalyGray);
+--ddd-palette-color-2: var(--simple-colors-default-theme-grey-9);
+--ddd-palette-color-3: var(--simple-colors-default-theme-grey-7);
+--ddd-palette-color-4: var(--simple-colors-default-theme-grey-5);
+--ddd-palette-color-5: var(--simple-colors-default-theme-grey-3);
+--ddd-palette-color-6: var(--simple-colors-default-theme-amber-6);
+--ddd-palette-color-7: var(--simple-colors-default-theme-grey-11);
+}
+
 `;
 
 // export that has all of them for easy stamping as a single sheet
@@ -4471,7 +4528,7 @@ export const DDDAllStyles = [
   DDDGlobalStyles,
   DDDVariables,
   DDDGlobalStyles,
-  DDDPalletStyles,
+  DDDPaletteStyles,
   ...DDDDataAttributes,
   DDDReset,
   DDDBreadcrumb,

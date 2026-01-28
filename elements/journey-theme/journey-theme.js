@@ -44,8 +44,8 @@ class JourneyTheme extends HAXCMSLitElementTheme {
   // set defaults or tie into the store
   constructor() {
     super();
-    this.siteTheme = UserScaffoldInstance.readMemory("HAXCMSSiteTheme") || "";
-    this.dataPrimary = 2;
+
+    this.dataPalette = UserScaffoldInstance.readMemory("HAXCMSSitePalette") || "";
     this._items = [];
     this.location = null;
     this.activeItem = {};
@@ -117,33 +117,10 @@ class JourneyTheme extends HAXCMSLitElementTheme {
 
   updated(changedProperties) {
     super.updated(changedProperties);
-    if (changedProperties.has("siteTheme")) {
-      switch (this.siteTheme) {
-        case "earth":
-          this.dataPrimary = 1;
-          break;
-        case "water":
-          this.dataPrimary = 11;
-          break;
-        case "fire":
-          this.dataPrimary = 23;
-          break;
-        case "sand":
-          this.dataPrimary = 2;
-          break;
-        case "rose":
-          this.dataPrimary = 47;
-          break;
-        case "violet":
-          this.dataPrimary = 2;
-          break;
-        default:
-          this.dataPrimary = 1;
-          break;
-      }
+    if (changedProperties.has("dataPalette")) {
       UserScaffoldInstance.writeMemory(
-        "HAXCMSSiteTheme",
-        this.siteTheme,
+        "HAXCMSSitePalette",
+        this.dataPalette,
         "long",
       );
     }
@@ -157,8 +134,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
       ancestorItem: { type: Object },
       location: { type: Object },
       basePath: { type: String },
-      dataPrimary: { type: String, reflect: true, attribute: "data-primary" },
-      siteTheme: { type: String, reflect: true, attribute: "site-theme" },
+      dataPalette: { type: Number, reflect: true, attribute: "data-palette" },
       licenseName: { type: String },
       licenseLink: { type: String },
       licenseImage: { type: String },
@@ -233,7 +209,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           height: 100vh;
           content: "";
           transition: var(--haxcms-site-transition);
-          border-left: 8px dashed var(--haxcms-site-theme-color-2);
+          border-left: 8px dashed var(--ddd-palette-2);
           position: fixed;
           top: 0;
           bottom: 0;
@@ -255,7 +231,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         site-tags-route::part(child-page-link-img) {
           width: var(--ddd-spacing-20);
           height: var(--ddd-spacing-20);
-          border: 4px solid var(--haxcms-site-theme-color-2);
+          border: 4px solid var(--ddd-palette-2);
           transition: var(--haxcms-site-transition);
         }
         site-tags-route::part(child-page-link-img):hover,
@@ -309,9 +285,12 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           display: block;
           padding: var(--ddd-spacing-0);
           margin: var(--ddd-spacing-0);
-          --haxcms-site-theme-color-1: var(--ddd-primary-2);
-          --haxcms-site-theme-color-2: var(--ddd-primary-8);
+          /* --haxcms-site-theme-color-1: var(--ddd-primary-2);
+          --haxcms-site-theme-color-2: var(--ddd-primary-8); */
           --haxcms-site-transition: 0.3s all ease-in-out;
+
+          --ddd-palette-1: var(--ddd-palette-color-1, default);
+          --ddd-palette-2: var(--ddd-palette-color-6, default);
         }
 
         :host([edit-mode]) {
@@ -327,41 +306,13 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           margin: 0;
         }
 
-        :host([site-theme="earth"]) {
-          --haxcms-site-theme-color-1: var(--ddd-primary-17);
-          --haxcms-site-theme-color-2: var(--ddd-primary-18);
-        }
-
-        :host([site-theme="water"]) {
-          --haxcms-site-theme-color-1: var(--ddd-primary-7);
-          --haxcms-site-theme-color-2: var(--ddd-primary-1);
-        }
-
-        :host([site-theme="fire"]) {
-          --haxcms-site-theme-color-1: var(--ddd-primary-11);
-          --haxcms-site-theme-color-2: var(--ddd-primary-12);
-        }
-
-        :host([site-theme="sand"]) {
-          --haxcms-site-theme-color-1: var(--ddd-primary-15);
-          --haxcms-site-theme-color-2: var(--ddd-primary-23);
-        }
-        :host([site-theme="rose"]) {
-          --haxcms-site-theme-color-1: var(--ddd-primary-12);
-          --haxcms-site-theme-color-2: var(--ddd-primary-11);
-        }
-        :host([site-theme="violet"]) {
-          --haxcms-site-theme-color-1: var(--ddd-primary-13);
-          --haxcms-site-theme-color-2: var(--ddd-primary-14);
-        }
-
         header {
           display: flex;
           text-align: center;
           justify-content: center;
           align-items: center;
           color: var(--haxcms-site-theme-low-tone);
-          background-color: var(--haxcms-site-theme-color-1);
+          background-color: var(--ddd-palette-1);
           height: 50vh;
           overflow: hidden;
           padding: var(--ddd-spacing-10);
@@ -370,21 +321,21 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         }
         .theme-picker {
           z-index: 1;
-          color: var(--haxcms-site-theme-color-2);
-          background-color: var(--haxcms-site-theme-color-1);
+          color: var(--ddd-palette-2);
+          background-color: var(--ddd-palette-1);
           padding: var(--ddd-spacing-1);
           --simple-icon-width: var(--ddd-spacing-8);
           --simple-icon-height: var(--ddd-spacing-8);
         }
         header .theme-picker {
           position: absolute;
-          color: var(--haxcms-site-theme-color-1);
-          background-color: var(--haxcms-site-theme-color-2);
+          color: var(--ddd-palette-1);
+          background-color: var(--ddd-palette-2);
           right: var(--ddd-spacing-2);
           top: var(--ddd-spacing-2);
         }
         .lower-header-box {
-          background-color: var(--haxcms-site-theme-color-2);
+          background-color: var(--ddd-palette-2);
           transition: var(--haxcms-site-transition);
           height: var(--ddd-spacing-12);
           padding: var(--ddd-spacing-6);
@@ -424,7 +375,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           border-radius: 50%;
           width: 15vw;
           height: 15vw;
-          border: 4px solid var(--haxcms-site-theme-color-2);
+          border: 4px solid var(--ddd-palette-2);
         }
         .author-image:hover,
         .author-image:focus-within {
@@ -434,7 +385,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         footer .author-image {
           width: 5vw;
           height: 5vw;
-          border: 4px solid var(--haxcms-site-theme-color-1);
+          border: 4px solid var(--ddd-palette-1);
         }
         header h1 {
           font-size: var(--ddd-font-size-4xl);
@@ -482,13 +433,13 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           );
         }
         scroll-button {
-          --scroll-button-color: var(--haxcms-site-theme-color-2);
-          --scroll-button-background-color: var(--haxcms-site-theme-color-1);
+          --scroll-button-color: var(--ddd-palette-2);
+          --scroll-button-background-color: var(--ddd-palette-1);
           --simple-icon-width: var(--ddd-spacing-8);
           --simple-icon-height: var(--ddd-spacing-8);
         }
         .article-link-icon.top {
-          color: var(--haxcms-site-theme-color-1);
+          color: var(--ddd-palette-1);
           margin: 0 var(--ddd-spacing-3);
           padding-left: 4px;
         }
@@ -515,7 +466,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           display: none;
         }
         .article-link-icon.top simple-icon-button-lite::part(button) {
-          background-color: var(--haxcms-site-theme-color-2);
+          background-color: var(--ddd-palette-2);
           transition: var(--haxcms-site-transition);
         }
         .home .article-link-icon.top simple-icon-button-lite::part(button) {
@@ -532,7 +483,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         }
 
         simple-icon-button-lite.article {
-          color: var(--haxcms-site-theme-color-1);
+          color: var(--ddd-palette-1);
         }
         simple-icon-button-lite::part(button) {
           height: auto;
@@ -588,7 +539,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         .child-page-link img {
           width: var(--ddd-spacing-20);
           height: var(--ddd-spacing-20);
-          border: 4px solid var(--haxcms-site-theme-color-2);
+          border: 4px solid var(--ddd-palette-2);
           transition: var(--haxcms-site-transition);
         }
         .child-page-link img:hover,
@@ -606,7 +557,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         }
         .article-wrap simple-cta {
           margin-top: var(--ddd-spacing-4);
-          --component-background-color: var(--haxcms-site-theme-color-2);
+          --component-background-color: var(--ddd-palette-2);
           --component-color: var(
             --lowContrast-override,
             var(--haxcms-site-theme-low-tone)
@@ -618,7 +569,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
             --lowContrast-override,
             var(--haxcms-site-theme-low-tone)
           );
-          --component-background-color: var(--haxcms-site-theme-color-1);
+          --component-background-color: var(--ddd-palette-1);
         }
         main {
           padding: var(--ddd-spacing-10);
@@ -626,7 +577,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         footer {
           display: block;
           padding: var(--ddd-spacing-10);
-          background-color: var(--haxcms-site-theme-color-2);
+          background-color: var(--ddd-palette-2);
           color: var(--haxcms-site-theme-low-tone);
           min-height: var(--ddd-spacing-5);
           transition: var(--haxcms-site-transition);
@@ -662,20 +613,20 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           min-height: 20px;
           --site-breadcrumb-color: var(--color);
           --site-breadcrumb-last-color: var(--color);
-          --site-breadcrumb-separator-color: var(--haxcms-site-theme-color-2);
+          --site-breadcrumb-separator-color: var(--ddd-palette-2);
           --site-breadcrumb-margin: 0 0 var(--ddd-spacing-1) 2px;
-          --site-breadcrumb-separator-color: var(--haxcms-site-theme-color-1);
-          --site-breadcrumb-color-hover: var(--haxcms-site-theme-color-1);
+          --site-breadcrumb-separator-color: var(--ddd-palette-1);
+          --site-breadcrumb-color-hover: var(--ddd-palette-1);
           --site-breadcrumb-decoration-color-hover: var(
-            --haxcms-site-theme-color-2
+            --ddd-palette-2
           );
         }
         :host([site-theme=""]) site-breadcrumb {
-          --site-breadcrumb-color-hover: var(--haxcms-site-theme-color-2);
+          --site-breadcrumb-color-hover: var(--ddd-palette-2);
           --site-breadcrumb-decoration-color-hover: var(
-            --haxcms-site-theme-color-1
+            --ddd-palette-1
           );
-          --site-breadcrumb-separator-color: var(--haxcms-site-theme-color-2);
+          --site-breadcrumb-separator-color: var(--ddd-palette-2);
         }
         site-active-title h1 {
           font-size: var(--ddd-font-size-4xl);
@@ -721,7 +672,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           article {
             padding: var(--ddd-spacing-5);
             font-size: var(--ddd-font-size-3xs);
-            border-bottom: 4px dashed var(--haxcms-site-theme-color-2);
+            border-bottom: 4px dashed var(--ddd-palette-2);
           }
           site-active-title h1 {
             font-size: var(--ddd-font-size-xl);
@@ -794,37 +745,15 @@ class JourneyTheme extends HAXCMSLitElementTheme {
     super.disconnectedCallback();
   }
 
-  toggleSiteTheme(e) {
-    switch (this.siteTheme) {
-      // make this the captain planet powers
-      case "earth":
-        this.siteTheme = "water";
-        break;
-      case "water":
-        this.siteTheme = "fire";
-        break;
-      case "fire":
-        this.siteTheme = "sand";
-        break;
-      case "sand":
-        this.siteTheme = "rose";
-        break;
-      case "rose":
-        this.siteTheme = "violet";
-        break;
-      case "violet":
-        this.siteTheme = "";
-        break;
-      default:
-        this.siteTheme = "earth";
-        break;
-    }
+  togglePalette(e) {
+    this.dataPalette++;
+    if (this.dataPalette > 5) this.dataPalette = 0;
   }
 
   render() {
     return html`
     <header>
-      <simple-icon-button-lite icon="image:style" label="Change theme" title="Change theme" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
+      <simple-icon-button-lite icon="image:style" label="Change theme" title="Change theme" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
       <div class="author">
         <a href="${this.basePath}">${
           this.manifest.metadata.author.image
@@ -1025,7 +954,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
               : ``
           }
           </div>
-          <simple-icon-button-lite label="Change theme" title="Change theme" icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
+          <simple-icon-button-lite label="Change theme" title="Change theme" icon="image:style" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
           <scroll-button></scroll-button>
         </div>
         </div>
