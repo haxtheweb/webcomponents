@@ -844,7 +844,7 @@ class DDDocs extends DDD {
   renderPalettes() {
     return html`
       <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
-        Available palettes from DDD
+        Available palettes in DDD
       </h2>
       <div class="my-5" data-palette="0">
         <h5>[data-palette="wisdom-walk-green"] or [data-palette="0"] (default)</h5>
@@ -1037,7 +1037,7 @@ class DDDocs extends DDD {
         ></div>
       </div>
       <div class="my-5" data-palette="5">
-        <h5>[data-palette="monotone"] or [data-palette="5"] (default)</h5>
+        <h5>[data-palette="monotone"] or [data-palette="5"]</h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
