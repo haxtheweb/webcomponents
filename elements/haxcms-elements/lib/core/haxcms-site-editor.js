@@ -842,7 +842,7 @@ class HAXCMSSiteEditor extends LitElement {
 
   deleteNode(e) {
     // Check platform configuration before allowing delete
-    if (!store.platformAllows("delete")) {
+    if (!store.platformAllows("deletePage")) {
       store.toast("Delete is disabled for this site", 3000, { fire: true });
       return;
     }

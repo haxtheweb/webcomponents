@@ -1082,6 +1082,7 @@ class Store {
       // We need a list of expected capabilities to efficiently auto-resolve feature vs. block
       platformConfigObj.__supportedFeatures = new Set([
         "addPage",
+        "deletePage",
         "styleGuide",
         "outlineDesigner",
         "outlineDesigner",
