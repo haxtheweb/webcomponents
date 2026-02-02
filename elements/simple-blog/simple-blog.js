@@ -174,10 +174,34 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
     // bc of async rendering and this being in a shadow of a shadow
     // we need to pause to ensure its painted
     setTimeout(() => {
-      this.contentContainer = this.shadowRoot
-        .querySelector("simple-blog-post")
-        .shadowRoot.querySelector("#contentcontainer");
+      this._setContentContainer();
     }, 0);
+  }
+  // ensure contentContainer is wired up to the inner simple-blog-post
+  // when it is available in the DOM
+  _setContentContainer() {
+    if (this.shadowRoot) {
+      const post = this.shadowRoot.querySelector("simple-blog-post");
+      if (post && post.shadowRoot) {
+        this.contentContainer = post.shadowRoot.querySelector(
+          "#contentcontainer",
+        );
+      }
+    }
+  }
+  // react to selectedPage changes so that when we navigate from the
+  // listing view to an individual post we wire up the editor target
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "selectedPage" && this.selectedPage === 1) {
+        setTimeout(() => {
+          this._setContentContainer();
+        }, 0);
+      }
+    });
   }
   /**
    * attached life cycle
