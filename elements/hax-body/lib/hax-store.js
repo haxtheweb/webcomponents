@@ -1576,21 +1576,89 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     // @todo this will help with keeping styling and slot in some situation
     // there's still something odd w/ ul/ol in grids that will need explored.
     if (e.detail.command && e.detail.command === "formatBlock") {
-      let dataset = { ...this.activeNode.dataset };
-      let slot = this.activeNode.slot;
-      // the delay allows HAX to switch the element and insert where it used to be
-      // after which point we can quickly set these prims that get lost otherwise
-      // as this is handled by the browser to do the text editing transform
-      // as opposed to HAX directly like web components get :)
+      // If we don't have an active node, there's nothing to preserve
+      if (!this.activeNode) {
+        return;
+      }
+      const originalNode = this.activeNode;
+      const dataset = { ...originalNode.dataset };
+      const slot = originalNode.slot;
+      // Preserve selected non-HAX attributes (styling, ids, and non-hax data-*).
+      const preservedAttributes = {};
+      if (originalNode.attributes) {
+        Array.from(originalNode.attributes).forEach((attr) => {
+          const name = attr.name;
+          const value = attr.value;
+          // Skip HAX internals; focus on authoring-relevant styling/state
+          if (
+            name === "class" ||
+            name === "style" ||
+            name === "id" ||
+            (name.indexOf("data-") === 0 && name.indexOf("data-hax") !== 0)
+          ) {
+            preservedAttributes[name] = value;
+          }
+        });
+      }
+      // the delay allows HAX / the browser to switch the element and insert
+      // where it used to be, after which point we can quickly set the
+      // primitives that get lost otherwise, as this is handled by the
+      // browser to do the text editing transform as opposed to HAX
+      // directly like web components get :)
       setTimeout(() => {
+        const newNode = this.activeNode;
+        if (!newNode) {
+          return;
+        }
+        // Restore data-* values that are not HAX internals
         for (var i in dataset) {
           if (!i.startsWith("hax")) {
-            this.activeNode.dataset[i] = dataset[i];
+            newNode.dataset[i] = dataset[i];
           }
         }
         // if it had a slot, ensure we maintain that
         if (slot) {
-          this.activeNode.setAttribute("slot", slot);
+          newNode.setAttribute("slot", slot);
+        }
+        // Re-apply preserved attributes (class, style, id, non-hax data-*)
+        Object.keys(preservedAttributes).forEach((name) => {
+          const value = preservedAttributes[name];
+          if (name === "class") {
+            const existing = (newNode.getAttribute("class") || "")
+              .split(/\s+/)
+              .filter((c) => c);
+            const incoming = value.split(/\s+/).filter((c) => c);
+            const merged = existing.slice(0);
+            incoming.forEach((cls) => {
+              if (merged.indexOf(cls) === -1) {
+                merged.push(cls);
+              }
+            });
+            if (merged.length > 0) {
+              newNode.setAttribute("class", merged.join(" "));
+            } else {
+              newNode.removeAttribute("class");
+            }
+          } else {
+            newNode.setAttribute(name, value);
+          }
+        });
+        // Ensure the newly formatted block is still a live HAX text element:
+        // make it editable, re-apply drag/drop + data-hax-ray, and ensure
+        // focus / activeNode state are in sync with the new block.
+        if (this.editMode && this.isTextElement(newNode)) {
+          newNode.setAttribute("contenteditable", true);
+          if (this.activeHaxBody) {
+            // Apply full editable / drag-drop state, waiting for any
+            // custom element upgrade if needed.
+            this.activeHaxBody.__applyNodeEditableStateWhenReady(
+              newNode,
+              true,
+            );
+            // Re-run HAX focus logic so context menus and activeNode
+            // tracking are aligned with the converted block.
+            this.activeHaxBody.__focusLogic(newNode);
+          }
         }
       }, 0);
     }

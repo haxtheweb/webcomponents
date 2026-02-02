@@ -10,6 +10,7 @@ import { HaxContextBehaviors } from "./hax-context-behaviors.js";
 import "./hax-text-editor-paste-button.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "./buttons/hax-text-editor-alignment-picker.js";
+import "./buttons/hax-text-editor-heading-picker.js";
 
 /**
  * `hax-text-editor-toolbar`
@@ -237,6 +238,10 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       ...super.formatButton,
       label: this.t.formatButton,
       blocks: this.formatBlocks,
+      // Use HAX-specific heading picker so we can convert
+      // blocks via haxChangeTagName instead of relying on
+      // execCommand('formatBlock'), which drops HAX wiring.
+      type: "hax-text-editor-heading-picker",
     };
   }
 

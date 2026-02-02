@@ -1765,7 +1765,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     active = this.activeNode,
     child = false,
   ) {
-    // Signal that we're inserting content
+    // Signal that we're inserting content so the MutationObserver
+    // doesn't try to re-process this node while we're actively
+    // managing focus / state for it.
     this._contentState.setState('inserting', true);
     
     // verify this tag is a valid one
@@ -1880,6 +1882,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this.appendChild(newNode);
     }
     this.contextMenus.text.hasSelectedText = false;
+
+    // Immediately ensure the new node has the correct editable /
+    // drag-and-drop state applied, even while the MutationObserver
+    // is ignoring mutations flagged as "inserting".
+    this.__applyNodeEditableStateWhenReady(newNode, this.editMode);
     
     // Wait for custom element to upgrade if applicable, then focus/scroll
     const tagName = newNode.tagName.toLowerCase();
@@ -2491,16 +2498,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // Switch!
     try {
       node.replaceWith(replacement);
+
       if (maintainContent) {
-        // focus on the thing switched to
+        // Ensure the new element immediately has the correct
+        // editable / drag-and-drop state, then route focus
+        // through the normal HAX focus logic so activeNode and
+        // context menus stay in sync.
+        this.__applyNodeEditableStateWhenReady(replacement, this.editMode);
         setTimeout(() => {
-          let children = replacement.children;
-          // see if there's a child element and focus that instead if there is
-          if (children[0] && children.tagName) {
-            children[0].focus();
-          } else {
-            replacement.focus();
-          }
+          this.__focusLogic(replacement);
         }, 10);
       }
     } catch (e) {
@@ -2665,18 +2671,32 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     switch (detail.eventName) {
       case "insert-above-active":
         if (this.activeNode && this.activeNode.previousElementSibling) {
+          // Insert a paragraph between the previous sibling and the
+          // current active node. haxInsert will handle editable state
+          // and focusing the new paragraph.
           this.haxInsert("p", "", {}, this.activeNode.previousElementSibling);
         } else if (this.activeNode) {
-          // would imply top of document
-          let p = globalThis.document.createElement("p");
+          // Active node is the first child in the body (or in a slot).
+          // Manually inject a new paragraph before it and make sure it
+          // is editable and focused.
+          const p = globalThis.document.createElement("p");
           // account for slot being set in this edge case of being
           // the 1st child inserted into an element that is NOT parent body
           if (this.activeNode.getAttribute("slot")) {
             p.setAttribute("slot", this.activeNode.getAttribute("slot"));
           }
           this.activeNode.parentNode.insertBefore(p, this.activeNode);
+          this.__applyNodeEditableStateWhenReady(p, this.editMode);
+          this.__focusLogic(p);
+          this.scrollHere(p);
         } else {
+          // No active node yet; create a new paragraph at the end of
+          // the body and focus it so the user can start typing.
+          const p = globalThis.document.createElement("p");
           this.appendChild(p);
+          this.__applyNodeEditableStateWhenReady(p, this.editMode);
+          this.__focusLogic(p);
+          this.scrollHere(p);
         }
         break;
       case "insert-below-active":
