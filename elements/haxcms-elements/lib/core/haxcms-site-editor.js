@@ -54,6 +54,10 @@ class HAXCMSSiteEditor extends LitElement {
       this.activeItem = toJS(store.activeItem);
       this.__disposer.push(reaction);
     });
+    autorun((reaction) => {
+      HAXStore.platformConfig = toJS(store.platformConfig);
+      this.__disposer.push(reaction);
+    });
   }
   // render function
   render() {
@@ -451,59 +455,15 @@ class HAXCMSSiteEditor extends LitElement {
       );
   }
 
-  /**
-   * Filter appStore based on platform block restrictions
-   * @param {Object} appStore - The original appStore object
-   * @returns {Object} Filtered appStore with only allowed blocks in autoloader
-   */
-  _filterAppStoreByPlatform(appStore) {
-    // Check if platform restrictions exist
-    const platformConfig =
-      this.manifest &&
-      this.manifest.metadata &&
-      this.manifest.metadata.platform;
-    const allowedBlocks = platformConfig && platformConfig.blocks;
-
-    // If no platform blocks restriction, return original appStore
-    if (
-      !allowedBlocks ||
-      !Array.isArray(allowedBlocks) ||
-      allowedBlocks.length === 0
-    ) {
-      return appStore;
-    }
-
-    // Create a filtered copy of appStore
-    const filteredAppStore = JSON.parse(JSON.stringify(appStore));
-
-    // Filter the autoloader to only include allowed blocks
-    if (
-      filteredAppStore.autoloader &&
-      typeof filteredAppStore.autoloader === "object"
-    ) {
-      const filteredAutoloader = {};
-
-      // Only include tags that are in the allowed blocks list
-      Object.keys(filteredAppStore.autoloader).forEach((tagName) => {
-        if (allowedBlocks.includes(tagName)) {
-          filteredAutoloader[tagName] = filteredAppStore.autoloader[tagName];
-        }
-      });
-
-      filteredAppStore.autoloader = filteredAutoloader;
-    }
-
-    return filteredAppStore;
-  }
-
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName == "appStore") {
-        // Filter appStore based on platform block restrictions
-        let filteredAppStore = this._filterAppStoreByPlatform(this[propName]);
+        // Passes the location of appstore.json in HAXcms
+        const appStoreUrl = JSON.parse(JSON.stringify(this[propName]));
+
         this.querySelector("#hax").setAttribute(
           "app-store",
-          JSON.stringify(filteredAppStore),
+          JSON.stringify(appStoreUrl),
         );
       }
       if (propName == "activeItem") {
@@ -685,11 +645,7 @@ class HAXCMSSiteEditor extends LitElement {
 
   async createNode(e) {
     // Check platform configuration before allowing page creation
-    const platformConfig =
-      this.manifest &&
-      this.manifest.metadata &&
-      this.manifest.metadata.platform;
-    if (platformConfig && platformConfig.addPage === false) {
+    if (!store.platformAllows("addPage")) {
       store.toast("Adding pages is disabled for this site", 3000, {
         fire: true,
       });
@@ -886,11 +842,7 @@ class HAXCMSSiteEditor extends LitElement {
 
   deleteNode(e) {
     // Check platform configuration before allowing delete
-    const platformConfig =
-      this.manifest &&
-      this.manifest.metadata &&
-      this.manifest.metadata.platform;
-    if (platformConfig && platformConfig.delete === false) {
+    if (!store.platformAllows("delete")) {
       store.toast("Delete is disabled for this site", 3000, { fire: true });
       return;
     }
@@ -1184,11 +1136,7 @@ class HAXCMSSiteEditor extends LitElement {
 
   saveNodeDetails(e) {
     // Check platform configuration before allowing outline operations
-    const platformConfig =
-      this.manifest &&
-      this.manifest.metadata &&
-      this.manifest.metadata.platform;
-    if (platformConfig && platformConfig.outlineDesigner === false) {
+    if (!store.platformAllows("outlineDesigner")) {
       store.toast("Outline operations are disabled for this site", 3000, {
         fire: true,
       });

@@ -675,6 +675,9 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       storageData: {
         type: Object,
       },
+      platformConfig: {
+        type: Object,
+      },
       /**
        * Hax tray
        */
@@ -1099,6 +1102,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       if (typeof appDataResponse.apps !== typeof undefined) {
         var apps = appDataResponse.apps;
         for (let i = 0; i < apps.length; i++) {
+          // Hide online searches in novice mode
+          if(this.isPlatformAudience("novice") || !this.platformAllows("onlineSearch")){
+            if(!Object.hasOwn(apps[i].connection.operations, "add")) continue;
+          }
+
           let app = globalThis.document.createElement("hax-app");
           app.data = apps[i];
           this.appendChild(app);
@@ -1334,8 +1342,55 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         if (response.ok) return response.json();
       })
       .then((json) => {
+        // Create a filtered copy of appStore
+        if (json.autoloader && typeof json.autoloader === "object") {
+          const filteredAutoloader = {};
+          // Only include tags that are in the allowed blocks list
+          Object.keys(json.autoloader).forEach((tagName) => {
+            if (this.platformAllows(tagName)) {
+              filteredAutoloader[tagName] = json.autoloader[tagName];
+            }
+          });
+          json.autoloader = filteredAutoloader;
+        };
         this.__appStoreData = json;
       });
+  }
+  /**
+   * Check if a platform capability is allowed
+   * Defaults to true if platformConfig is not explicitly defined
+   * @param {string} capability - Feature or Block name (e.g., 'delete', 'addPage', 'h4', 'inline-audio')
+   * @returns {boolean} Whether the capability is allowed
+   */
+  platformAllows(capability) {
+    if (!this.platformConfig || typeof this.platformConfig !== "object") {
+      return true; // No restrictions if no platform config
+    }
+
+    // If the capability is in the list of accepted features, evaluate as feature
+    // If not defined, default to true (allowed), if it is defined, use its value
+    if(this.platformConfig.__supportedFeatures.has(capability)){
+      return this.platformConfig.features[capability] !== false;
+    } 
+
+    // Only filter blocks in expert mode if explicitly declared, otherwise default to true (all blocks)
+    if(this.platformConfig.audience === "expert"){
+      return this.platformConfig.allowedBlocks.size > 0 ? this.platformConfig.allowedBlocks.has(capability) : true;
+    }
+
+    // If the capability is not a feature and we're not in expert mode, evaluate as block  
+    return this.platformConfig.allowedBlocks.has(capability);
+  }
+  /**
+   * Evaluates whether to enable a feature based on the current audience in platformConfig
+   * @param {string} expectedAudience - Audience name to compare against (e.g., 'novice', 'advanced', 'expert')
+   * @returns {boolean} Whether the parameter matches the current audience
+   */
+  isPlatformAudience(expectedAudience){
+    if (!this.platformConfig || typeof this.platformConfig !== "object") {
+      return "expert" === expectedAudience; // Default to expert mode if there's no platformConfig
+    }
+    return this.platformConfig.audience === expectedAudience;
   }
   /**
    * ready life cycle
@@ -2699,6 +2754,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.gizmoList = [];
     this.recentGizmoList =
       UserScaffoldInstance.readMemory("recentGizmoList") || [];
+    this.platformConfig = {};
     this.haxAutoloader = null;
     this.activeHaxBody = null;
     this.haxTray = null;
@@ -3507,101 +3563,112 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       ],
     };
     this.setHaxProperties(p, "p");
-    // table tag which has a custom editing interface
-    let table = {
-      type: "element",
-      editingElement: {
-        tag: "editable-table",
-        import: "@haxtheweb/editable-table/editable-table.js",
-        callback: this.setupEditableTable.bind(this),
-      },
-      canScale: true,
-      canEditSource: false,
-      gizmo: {
-        title: "Table",
-        description: "A table for displaying data",
-        icon: "image:grid-on",
-        color: "blue-grey",
-        tags: [
-          "Instructional",
-          "table",
-          "data",
-          "html",
-          "grid",
-          "matrix",
-          "spreadsheet",
-          "csv",
-          "excel",
-        ],
-        meta: {
-          hidden: true,
-          author: "W3C",
+    if(this.platformAllows("table")){
+      // table tag which has a custom editing interface
+      let table = {
+        type: "element",
+        editingElement: {
+          tag: "editable-table",
+          import: "@haxtheweb/editable-table/editable-table.js",
+          callback: this.setupEditableTable.bind(this),
         },
-      },
-      settings: {
-        configure: [],
-        advanced: [],
-      },
-    };
-    this.setHaxProperties(table, "table");
-    // kinda silly but need the definitions for editable-table as well
-    let eTable = globalThis.document.createElement("editable-table");
-    this.haxAutoloader.appendChild(eTable);
-    // iframe needs a wrapper or you can't select them because of the spec
-    let iframe = {
-      type: "element",
-      editingElement: {
-        tag: "iframe-loader",
-        import: "@haxtheweb/iframe-loader/iframe-loader.js",
-        callback: this.setupIframeLoader.bind(this),
-      },
-      canScale: false,
-      designSystem: {
-        card: true,
-        primary: true,
-      },
-      canEditSource: false,
-      gizmo: {
-        title: "iFrame",
-        description: "A basic way to frame external web content",
-        icon: "hax:iframe",
-        color: "blue-grey",
-        tags: [
-          "Resource",
-          "iframe",
-          "content",
-          "url",
-          "link",
-          "embed",
-          "https",
-          "html",
-          "address",
-        ],
-        handles: [],
-        meta: {
-          author: "W3C",
-          hidden: true,
-        },
-      },
-      settings: {
-        configure: [
-          {
-            attribute: "src",
-            title: "Source",
-            description: "The URL for this resource.",
-            inputMethod: "textfield",
-            icon: "link",
-            required: true,
-            validationType: "url",
+        canScale: true,
+        canEditSource: false,
+        gizmo: {
+          title: "Table",
+          description: "A table for displaying data",
+          icon: "image:grid-on",
+          color: "blue-grey",
+          tags: [
+            "Instructional",
+            "table",
+            "data",
+            "html",
+            "grid",
+            "matrix",
+            "spreadsheet",
+            "csv",
+            "excel",
+          ],
+          meta: {
+            hidden: true,
+            author: "W3C",
           },
-        ],
-      },
-    };
-    this.setHaxProperties(iframe, "iframe");
-    // gets the definition in by force as if iframes don't exist
-    let iframeLoader = globalThis.document.createElement("iframe-loader");
-    this.haxAutoloader.appendChild(iframeLoader);
+        },
+        settings: {
+          configure: [],
+          advanced: [],
+        },
+      };
+      this.setHaxProperties(table, "table");
+      // kinda silly but need the definitions for editable-table as well
+      let eTable = globalThis.document.createElement("editable-table");
+      this.haxAutoloader.appendChild(eTable);
+    }
+    
+    if(this.platformAllows("iframe")){
+      // iframe needs a wrapper or you can't select them because of the spec
+      let iframe = {
+        type: "element",
+        editingElement: {
+          tag: "iframe-loader",
+          import: "@haxtheweb/iframe-loader/iframe-loader.js",
+          callback: this.setupIframeLoader.bind(this),
+        },
+        canScale: false,
+        designSystem: {
+          card: true,
+          primary: true,
+        },
+        canEditSource: false,
+        gizmo: {
+          title: "iFrame",
+          description: "A basic way to frame external web content",
+          icon: "hax:iframe",
+          color: "blue-grey",
+          tags: [
+            "Resource",
+            "iframe",
+            "content",
+            "url",
+            "link",
+            "embed",
+            "https",
+            "html",
+            "address",
+          ],
+          handles: [],
+          meta: {
+            author: "W3C",
+            hidden: true,
+          },
+        },
+        settings: {
+          configure: [
+            {
+              attribute: "src",
+              title: "Source",
+              description: "The URL for this resource.",
+              inputMethod: "textfield",
+              icon: "link",
+              required: true,
+              validationType: "url",
+            },
+          ],
+        },
+      };
+      this.setHaxProperties(iframe, "iframe");
+      // gets the definition in by force as if iframes don't exist
+      let iframeLoader = globalThis.document.createElement("iframe-loader");
+      this.haxAutoloader.appendChild(iframeLoader);
+    }
+
     for (let tag in this.__primsBuilder) {
+      // If platform restrictions are in-place, default to limited tags
+      if(!this.platformAllows(tag) && !["h1", "h2", "ul", "ol"].includes(tag)){
+        continue;
+      }
+
       let primContentDemo = "";
       if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
         primContentDemo = "Heading";

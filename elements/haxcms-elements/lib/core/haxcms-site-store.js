@@ -179,6 +179,7 @@ class Store {
       appReady: observable, // system is ready via firstUpdated of haxcms-site-builder
       badDevice: observable, // if we have a low performance device
       pageAllowed: observable, // if the page operations are allowed to be viewed
+      platformConfig: computed
     });
   }
 
@@ -1063,6 +1064,76 @@ class Store {
       return toJS(this.manifest);
     }
     return this.manifest;
+  }
+  /**
+   * Return the platform block from the manifest + some sanitization
+   */
+  get platformConfig(){
+    if(this.manifest && this.manifest.metadata
+        && this.manifest.metadata.platform){
+      const platformConfigObj = {};
+      // If audience is not defined, default to expert mode
+      platformConfigObj.audience = this.manifest.metadata.platform.audience || "expert";
+      platformConfigObj.features = this.manifest.metadata.platform.features || {};
+      // If allowedBlocks is not defined, create an empty Set to minimize type errors
+      // Otherwise convert the allowedBlocks array to a Set
+      platformConfigObj.allowedBlocks = this.manifest.metadata.platform.allowedBlocks ? 
+        new Set(this.manifest.metadata.platform.allowedBlocks) : new Set();
+      // We need a list of expected capabilities to efficiently auto-resolve feature vs. block
+      platformConfigObj.__supportedFeatures = new Set([
+        "addPage",
+        "styleGuide",
+        "outlineDesigner",
+        "outlineDesigner",
+        "insights",
+        "manifest",
+        "addBlock",
+        "contentMap",
+        "viewSource",
+        "onlineSearch"
+      ]);
+
+      return platformConfigObj;
+    }
+    // If platform is not defined in site.json, return null
+    return null
+  }
+
+  /**
+   * Check if a platform capability is allowed
+   * Defaults to true if platformConfig is not explicitly defined
+   * @param {string} capability - Capability name (e.g., 'delete', 'addPage', 'outlineDesigner')
+   * @returns {boolean} Whether the capability is allowed
+   */
+  platformAllows(capability) {
+    if (!this.platformConfig || typeof this.platformConfig !== "object") {
+      return true; // No restrictions if no platform config
+    }
+    
+    // If the capability is in the list of accepted features, evaluate as feature
+    // If not defined, default to true (allowed), if it is defined, use its value
+    if(this.platformConfig.__supportedFeatures.has(capability)){
+      return this.platformConfig.features[capability] !== false;
+    } 
+
+    // Only filter blocks in expert mode if explicitly declared, otherwise default to true (all blocks)
+    if(this.platformConfig.audience === "expert"){
+      return this.platformConfig.allowedBlocks.size > 0 ? this.platformConfig.allowedBlocks.has(capability) : true;
+    }
+
+    // If the capability is not a feature and we're not in expert mode, evaluate as block  
+    return this.platformConfig.allowedBlocks.has(capability);
+  }
+  /**
+   * Evaluates whether to enable a feature based on the current audience in platformConfig
+   * @param {string} expectedAudience - Audience name to compare against (e.g., 'novice', 'advanced', 'expert')
+   * @returns {boolean} Whether the parameter matches the current audience
+   */
+  isPlatformAudience(expectedAudience){
+    if (!this.platformConfig || typeof this.platformConfig !== "object") {
+      return "expert" === expectedAudience; // Default to expert mode if there's no platformConfig
+    }
+    return this.platformConfig.audience === expectedAudience;
   }
 
   /**

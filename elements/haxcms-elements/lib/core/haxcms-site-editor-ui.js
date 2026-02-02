@@ -1603,6 +1603,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.__disposer = this.__disposer || [];
     this.t = this.t || {};
     this._configureWasFocused = false; // Track toggle state for Ctrl+Shift+1
+
+    // default sub-contexts under CMS mode, before platform filtering
+    this.cmsContexts = [
+      "addPage",
+      "styleGuide",
+      "outlineDesigner",
+      "insights",
+      "manifest"
+    ];
+
     // allow commands to go through at any time
     // hax-store default is only when editor is open to avoid conflicts w/ other UX
     SuperDaemonInstance.allowedCallback = () => {
@@ -1650,6 +1660,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       tags: ["page", "add", "create", "new", "CMS"],
       eventName: "super-daemon-run-program",
       path: "CMS/action/add/page",
+      context: "addPage",
       value: {
         name: "create-page",
         machineName: "create-page",
@@ -2375,20 +2386,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     if (HAXStore.ready) {
-      // elements that are in HAXcms that are injected regardless of what editor says
-      // because the CMS controls certain internal connectors
-      [
-        "site-remote-content",
-        "citation-element",
-        "page-flag",
-        "site-collection-list",
-        "collection-list",
-        "collection-item",
-      ].map((name) => {
-        let el = globalThis.document.createElement(name);
-        HAXStore.haxAutoloader.appendChild(el);
-      });
-
       // links need to be given support for internal linkage updates on the form
       if (!HAXStore.primativeHooks.a) {
         HAXStore.primativeHooks.a = {};
@@ -2674,21 +2671,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
   }
 
-  /**
-   * Check if a platform capability is allowed
-   * Defaults to true if not explicitly set to false in platformConfig
-   * @param {string} capability - Capability name (e.g., 'delete', 'addPage', 'outlineDesigner')
-   * @returns {boolean} Whether the capability is allowed
-   */
-  platformAllows(capability) {
-    if (!this.platformConfig || typeof this.platformConfig !== "object") {
-      return true; // No restrictions if no platform config
-    }
-    // If the capability is not defined, default to true (allowed)
-    // If it is defined, use its value
-    return this.platformConfig[capability] !== false;
-  }
-
   closeMenu() {
     this.userMenuOpen = false;
   }
@@ -2759,7 +2741,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             voice-command="save and edit page"
           ></simple-toolbar-button>
           <haxcms-button-add
-            ?hidden="${this.editMode || !this.platformAllows("addPage")}"
+            ?hidden="${this.editMode || !store.platformAllows("addPage")}"
             id="addpagebutton"
             class="top-bar-button"
             align-horizontal="center"
@@ -2769,7 +2751,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           ></haxcms-button-add>
           <simple-toolbar-button
             ?hidden="${this.editMode ||
-            !this.platformAllows("outlineDesigner")}"
+            !store.platformAllows("outlineDesigner")}"
             id="outlinebutton"
             class="top-bar-button"
             icon="hax:site-map"
@@ -2837,7 +2819,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           >
           </simple-toolbar-button>
           <simple-toolbar-button
-            ?hidden="${!this.editMode}"
+            ?hidden="${!this.editMode || !store.platformAllows("addBlock")}"
             ?disabled="${!this.editMode}"
             data-event="content-add"
             icon="hax:add-brick"
@@ -2851,7 +2833,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           >
           </simple-toolbar-button>
           <simple-toolbar-button
-            ?hidden="${!this.editMode}"
+            ?hidden="${!this.editMode || !store.platformAllows("contentMap")}"
             ?disabled="${!this.editMode}"
             data-event="content-map"
             icon="hax:newspaper"
@@ -2874,7 +2856,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             @click="${this.haxButtonOp}"
             voice-command="view (page) source"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
-            ?hidden="${!this.editMode}"
+            ?hidden="${!this.editMode || !store.platformAllows("viewSource")}"
             ?disabled="${!this.editMode}"
             ?active="${this.trayDetail === "view-source"}"
           >
@@ -2894,7 +2876,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           </simple-toolbar-button>
 
           <simple-toolbar-button
-            ?hidden="${this.editMode || !this.platformAllows("styleGuide")}"
+            ?hidden="${this.editMode || !store.platformAllows("styleGuide")}"
             ?disabled="${this.editMode}"
             id="styleguidebutton"
             @click="${this._styleGuideButtonTap}"
@@ -2906,7 +2888,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           ></simple-toolbar-button>
 
           <simple-toolbar-button
-            ?hidden="${this.editMode || !this.platformAllows("insights")}"
+            ?hidden="${this.editMode || !store.platformAllows("insights")}"
             ?disabled="${this.editMode}"
             id="insightsbutton"
             icon="hax:clipboard-pulse"
@@ -2926,7 +2908,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             class="top-bar-button"
             id="manifestbtn"
             ?disabled="${this.editMode}"
-            ?hidden="${this.editMode || !this.platformAllows("manifest")}"
+            ?hidden="${this.editMode || !store.platformAllows("manifest")}"
             label="${this.t.siteSettings} • Ctrl⇧5"
           ></simple-toolbar-button>
           <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
@@ -3236,7 +3218,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         target: this,
         method: "_insightsButtonTap",
       },
-      context: "CMS",
+      context: "insights",
       eventName: "super-daemon-element-method",
       path: "CMS/site/insights",
     });
@@ -3271,7 +3253,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         method: "_manifestButtonTap",
         args: [{ target: this.shadowRoot.querySelector("#manifestbtn") }],
       },
-      context: "CMS",
+      context: "manifest",
       eventName: "super-daemon-element-method",
       path: "CMS/action/site/settings",
     });
@@ -3293,7 +3275,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         method: "_manifestButtonTap",
         args: [{ target: this.shadowRoot.querySelector("#manifestbtn") }],
       },
-      context: "CMS",
+      context: "manifest",
       eventName: "super-daemon-element-method",
       path: "CMS/action/site/settings/theme",
     });
@@ -3316,7 +3298,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         method: "_manifestButtonTap",
         args: [{ target: this.shadowRoot.querySelector("#manifestbtn") }],
       },
-      context: "CMS",
+      context: "manifest",
       eventName: "super-daemon-element-method",
       path: "CMS/action/site/settings/seo",
     });
@@ -3337,7 +3319,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         method: "_manifestButtonTap",
         args: [{ target: this.shadowRoot.querySelector("#manifestbtn") }],
       },
-      context: "CMS",
+      context: "manifest",
       eventName: "super-daemon-element-method",
       path: "CMS/action/site/settings/author",
     });
@@ -3349,7 +3331,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         target: this,
         method: "_styleGuideButtonTap",
       },
-      context: ["logged-in", "CMS"],
+      context: "styleGuide",
       eventName: "super-daemon-element-method",
       path: "CMS/theme/style-guide",
     });
@@ -3416,7 +3398,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         target: this.shadowRoot.querySelector("#outlinebutton"),
       },
-      context: ["CMS"],
+      context: "outlineDesigner",
       eventName: "super-daemon-element-click",
       path: "CMS/action/outline",
     });
@@ -3467,8 +3449,87 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
-    // change theme program
     // Welcome to HAX program - shows 5 most common operations for new users
+    const welcomeOps = [
+            {
+              title: "Edit this page",
+              icon: "hax:page-edit",
+              tags: ["welcome", "common", "operation"],
+              value: {
+                target: this,
+                method: "executeWelcomeAction",
+                args: ["edit-page"],
+              },
+              eventName: "super-daemon-element-method",
+              context: "CMS",
+              path: "CMS/welcome/edit-page",
+            },
+            {
+              title: "Create a new page",
+              icon: "hax:add-page",
+              tags: ["welcome", "common", "operation"],
+              value: {
+                target: this,
+                method: "executeWelcomeAction",
+                args: ["create-page"],
+              },
+              eventName: "super-daemon-element-method",
+              context: "addPage",
+              path: "CMS/welcome/create-page",
+            },
+            {
+              title: "Upload a file",
+              icon: "file-upload",
+              tags: ["welcome", "common", "operation"],
+              value: {
+                target: this,
+                method: "executeWelcomeAction",
+                args: ["upload-file"],
+              },
+              eventName: "super-daemon-element-method",
+              context: "CMS",
+              path: "CMS/welcome/upload-file",
+            },
+            {
+              title: "Edit site outline",
+              icon: "hax:site-map",
+              tags: ["welcome", "common", "operation"],
+              value: {
+                target: this,
+                method: "executeWelcomeAction",
+                args: ["outline-designer"],
+              },
+              eventName: "super-daemon-element-method",
+              context: "outlineDesigner",
+              path: "CMS/welcome/outline-designer",
+            },
+            {
+              title: "Change site settings",
+              icon: "hax:site-settings",
+              tags: ["welcome", "common", "operation"],
+              value: {
+                target: this,
+                method: "executeWelcomeAction",
+                args: ["site-settings"],
+              },
+              eventName: "super-daemon-element-method",
+              context: "manifest",
+              path: "CMS/welcome/site-settings",
+            },
+            {
+              title: "Don't show this welcome again",
+              icon: "icons:visibility-off",
+              tags: ["welcome", "dismiss", "settings"],
+              value: {
+                target: this,
+                method: "dismissWelcomeProgram",
+                args: [],
+              },
+              eventName: "super-daemon-element-method",
+              context: "CMS",
+              path: "CMS/welcome/dismiss",
+            },
+          ];
     SuperDaemonInstance.defineOption({
       title: "Welcome to HAX",
       icon: "hax:hax2022",
@@ -3489,91 +3550,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         machineName: "welcome",
         context: "CMS",
         program: async (input, values) => {
-          // Four most common operations for new users (removed create-page)
-          return [
-            {
-              title: "Edit this page",
-              icon: "hax:page-edit",
-              tags: ["welcome", "common", "operation"],
-              value: {
-                target: this,
-                method: "executeWelcomeAction",
-                args: ["edit-page"],
-              },
-              eventName: "super-daemon-element-method",
-              context: ["CMS"],
-              path: "CMS/welcome/edit-page",
-            },
-            {
-              title: "Create a new page",
-              icon: "hax:add-page",
-              tags: ["welcome", "common", "operation"],
-              value: {
-                target: this,
-                method: "executeWelcomeAction",
-                args: ["create-page"],
-              },
-              eventName: "super-daemon-element-method",
-              context: ["CMS"],
-              path: "CMS/welcome/create-page",
-            },
-            {
-              title: "Upload a file",
-              icon: "file-upload",
-              tags: ["welcome", "common", "operation"],
-              value: {
-                target: this,
-                method: "executeWelcomeAction",
-                args: ["upload-file"],
-              },
-              eventName: "super-daemon-element-method",
-              context: ["CMS"],
-              path: "CMS/welcome/upload-file",
-            },
-            {
-              title: "Edit site outline",
-              icon: "hax:site-map",
-              tags: ["welcome", "common", "operation"],
-              value: {
-                target: this,
-                method: "executeWelcomeAction",
-                args: ["outline-designer"],
-              },
-              eventName: "super-daemon-element-method",
-              context: ["CMS"],
-              path: "CMS/welcome/outline-designer",
-            },
-            {
-              title: "Change site settings",
-              icon: "hax:site-settings",
-              tags: ["welcome", "common", "operation"],
-              value: {
-                target: this,
-                method: "executeWelcomeAction",
-                args: ["site-settings"],
-              },
-              eventName: "super-daemon-element-method",
-              context: ["CMS"],
-              path: "CMS/welcome/site-settings",
-            },
-            {
-              title: "Don't show this welcome again",
-              icon: "icons:visibility-off",
-              tags: ["welcome", "dismiss", "settings"],
-              value: {
-                target: this,
-                method: "dismissWelcomeProgram",
-                args: [],
-              },
-              eventName: "super-daemon-element-method",
-              context: ["CMS"],
-              path: "CMS/welcome/dismiss",
-            },
-          ];
+          // Five most common operations for new users
+          return welcomeOps.filter(item => item.context==="CMS" || store.platformAllows(item.context));
         },
       },
     });
-
+    // change theme program
     SuperDaemonInstance.defineOption({
       title: "Change theme temporarily",
       icon: "image:style",
@@ -4024,6 +4006,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
+
+    // Keeps a list of disabled platform features, preventing them from re-enabling during menu switches
+    if(store.platformConfig && store.platformConfig.features){
+      Object.keys(store.platformConfig.features).forEach((key) => {
+        // If an option isn't supported, add it to the array so we don't re-enable it
+        if(this.cmsContexts.includes(key) && !store.platformAllows(key)){
+          this.cmsContexts = this.cmsContexts.filter(item => item !== key);
+          SuperDaemonInstance.removeContext(key);
+        }
+      })
+    };
 
     // Listen for keyboard shortcut execution from Merlin
     this.addEventListener("execute-keyboard-shortcut", (e) => {
@@ -4478,11 +4471,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         type: Boolean,
       },
       /**
-       * Platform configuration from manifest.metadata.platform
-       * Controls additional restrictions on site editing capabilities
+       * Fine-grained default contexts under the generic CMS context (used with platformConfig)
        */
-      platformConfig: {
-        type: Object,
+      cmsContexts: {
+        type: Array,
       },
     };
   }
@@ -4530,21 +4522,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
-      this.manifest = toJS(store.manifest);
-      // Extract platform configuration from manifest metadata
-      if (
-        this.manifest &&
-        this.manifest.metadata &&
-        this.manifest.metadata.platform
-      ) {
-        this.platformConfig = toJS(this.manifest.metadata.platform);
-      } else {
-        // Default to empty object if no platform config exists
-        this.platformConfig = {};
-      }
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
       this.pageAllowed = toJS(store.pageAllowed);
       this.__disposer.push(reaction);
     });
@@ -4576,7 +4553,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         // see which features should be enabled
         ary.forEach((pair) => {
           // If the site supports skeletons (HAXcms), do not force visibility
-          if (this.platformConfig) return
+          if (store.platformConfig) return
           else if (
             globalThis.appSettings &&
             globalThis.appSettings[pair.varPath] &&
@@ -4743,7 +4720,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
         } else {
           // Non-edit mode: Add page
-          if (this.platformAllows("addPage")) {
+          if (store.platformAllows("addPage")) {
             const addButton = this.shadowRoot.querySelector("#addpagebutton");
             if (addButton) {
               addButton.HAXCMSButtonClick();
@@ -4774,7 +4751,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
         } else {
           // Non-edit mode: Site outline
-          if (this.platformAllows("outlineDesigner")) {
+          if (store.platformAllows("outlineDesigner")) {
             this._outlineButtonTap(e);
           }
         }
@@ -4802,7 +4779,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
         } else {
           // Non-edit mode: Style guide
-          if (this.platformAllows("styleGuide")) {
+          if (store.platformAllows("styleGuide")) {
             this._styleGuideButtonTap(e);
           }
         }
@@ -4833,7 +4810,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
         } else {
           // Non-edit mode: Insights dashboard
-          if (this.platformAllows("insights")) {
+          if (store.platformAllows("insights")) {
             this._insightsButtonTap(e);
           }
         }
@@ -4858,7 +4835,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           );
         } else {
           // Non-edit mode: Site settings
-          if (this.platformAllows("manifest")) {
+          if (store.platformAllows("manifest")) {
             this._manifestButtonTap(e);
           }
         }
@@ -5361,9 +5338,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this.__editIcon = "icons:save";
       SuperDaemonInstance.appendContext("HAX");
       SuperDaemonInstance.removeContext("CMS");
+      // remove fine-grained CMS contexts that platformConfig doesn't disable
+      this.cmsContexts.forEach(item => SuperDaemonInstance.removeContext(item));
     } else {
       this.__editIcon = "icons:create";
       SuperDaemonInstance.appendContext("CMS");
+      // Add fine-grained CMS contexts that platformConfig doesn't disable
+      this.cmsContexts.forEach(item => SuperDaemonInstance.appendContext(item));
       SuperDaemonInstance.removeContext("HAX");
     }
     this._updateEditButtonLabel();
