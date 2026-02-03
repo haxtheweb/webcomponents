@@ -1612,6 +1612,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "insights",
       "manifest"
     ];
+    // track if site editor is using the initial version of platformConfig
+    this.__initialPlatformConfig = true;
 
     // allow commands to go through at any time
     // hax-store default is only when editor is open to avoid conflicts w/ other UX
@@ -2750,8 +2752,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             merlin
           ></haxcms-button-add>
           <simple-toolbar-button
-            ?hidden="${this.editMode ||
-            !store.platformAllows("outlineDesigner")}"
+            ?hidden="${this.editMode || store.isPlatformAudience("novice") 
+              || !store.platformAllows("outlineDesigner")}"
             id="outlinebutton"
             class="top-bar-button"
             icon="hax:site-map"
@@ -2833,7 +2835,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           >
           </simple-toolbar-button>
           <simple-toolbar-button
-            ?hidden="${!this.editMode || !store.platformAllows("contentMap")}"
+            ?hidden="${!this.editMode || store.isPlatformAudience("novice") 
+              || !store.platformAllows("contentMap")}"
             ?disabled="${!this.editMode}"
             data-event="content-map"
             icon="hax:newspaper"
@@ -2856,7 +2859,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             @click="${this.haxButtonOp}"
             voice-command="view (page) source"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
-            ?hidden="${!this.editMode || !store.platformAllows("viewSource")}"
+            ?hidden="${!this.editMode || store.isPlatformAudience("novice") 
+              || !store.platformAllows("viewSource")}"
             ?disabled="${!this.editMode}"
             ?active="${this.trayDetail === "view-source"}"
           >
@@ -2888,7 +2892,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           ></simple-toolbar-button>
 
           <simple-toolbar-button
-            ?hidden="${this.editMode || !store.platformAllows("insights")}"
+            ?hidden="${this.editMode || store.isPlatformAudience("novice") 
+              || !store.platformAllows("insights")}"
             ?disabled="${this.editMode}"
             id="insightsbutton"
             icon="hax:clipboard-pulse"
@@ -3629,6 +3634,57 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
+    // change platform audience, only load if the site supports platformConfigs
+    if(store.platformConfig){
+      SuperDaemonInstance.defineOption({
+        title: "Change audience temporarily",
+        icon: "lrn:people",
+        tags: ["Developer", "skeleton"],
+        eventName: "super-daemon-run-program",
+        path: ">settings/platformAudience",
+        context: [">"],
+        more: html`<span
+          >Change platform audience just for the current browsing session</span
+        >`,
+        voice: "change audience (temporarily)",
+        value: {
+          name: "Change platform audience",
+          context: ">",
+          program: async (input, values) => {
+            let results = [];
+            // Load in the supported audiences in platformConfig
+            const audienceOptions = {
+              novice: "lrn:book",
+              expert: "lrn:teacher"
+            };
+
+            Object.keys(audienceOptions).forEach((key) => {
+              if (
+                input == "" ||
+                key.includes(input.toLowerCase())
+              ) {
+                results.push({
+                  title: key,
+                  icon: audienceOptions[key],
+                  tags: ["skeleton"],
+                  value: {
+                    target: globalThis.HAXCMS,
+                    method: "setPlatformAudience",
+                    args: [key],
+                  },
+                  eventName: "super-daemon-element-method",
+                  context: [">", ">settings/platformAudience/" + key],
+                  path: ">settings/theme/" + key,
+                });
+              }
+            });          
+            
+            return results;
+          }
+        }
+      });
+    };
+
     SuperDaemonInstance.defineOption({
       title: "HAX Labs",
       icon: "hax:hax2022",
@@ -4490,6 +4546,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     // so MobX actually tracks and updates this value.
     autorun((reaction) => {
       this.trayDetail = toJS(HAXStore.trayDetail);
+      this.__disposer.push(reaction);
+    });
+
+    // detect changes in platformConfig for internal testing with Merlin
+    autorun((reaction) => {
+      if(store.platformConfig) {
+        // Don't redundantly reload the page on first boot
+        if(!this.__initialPlatformConfig){
+          this.requestUpdate();
+        } else {
+          this.__initialPlatformConfig = false;
+        }
+      };
       this.__disposer.push(reaction);
     });
 
