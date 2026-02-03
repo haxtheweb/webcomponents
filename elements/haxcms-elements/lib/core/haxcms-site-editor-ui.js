@@ -3635,55 +3635,53 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     // change platform audience, only load if the site supports platformConfigs
-    if(store.platformConfig){
-      SuperDaemonInstance.defineOption({
-        title: "Change audience temporarily",
-        icon: "lrn:people",
-        tags: ["Developer", "skeleton"],
-        eventName: "super-daemon-run-program",
-        path: ">settings/platformAudience",
-        context: [">"],
-        more: html`<span
-          >Change platform audience just for the current browsing session</span
-        >`,
-        voice: "change audience (temporarily)",
-        value: {
-          name: "Change platform audience",
-          context: ">",
-          program: async (input, values) => {
-            let results = [];
-            // Load in the supported audiences in platformConfig
-            const audienceOptions = {
-              novice: "lrn:book",
-              expert: "lrn:teacher"
-            };
+    SuperDaemonInstance.defineOption({
+      title: "Change audience temporarily",
+      icon: "lrn:people",
+      tags: ["Developer", "skeleton"],
+      eventName: "super-daemon-run-program",
+      path: ">settings/platformAudience",
+      context: [">"],
+      more: html`<span
+        >Change platform audience just for the current browsing session</span
+      >`,
+      voice: "change audience (temporarily)",
+      value: {
+        name: "Change platform audience",
+        context: ">",
+        program: async (input, values) => {
+          let results = [];
+          // Load in the supported audiences in platformConfig
+          const audienceOptions = {
+            novice: "lrn:book",
+            expert: "lrn:teacher"
+          };
 
-            Object.keys(audienceOptions).forEach((key) => {
-              if (
-                input == "" ||
-                key.includes(input.toLowerCase())
-              ) {
-                results.push({
-                  title: key,
-                  icon: audienceOptions[key],
-                  tags: ["skeleton"],
-                  value: {
-                    target: globalThis.HAXCMS,
-                    method: "setPlatformAudience",
-                    args: [key],
-                  },
-                  eventName: "super-daemon-element-method",
-                  context: [">", ">settings/platformAudience/" + key],
-                  path: ">settings/theme/" + key,
-                });
-              }
-            });          
-            
-            return results;
-          }
+          Object.keys(audienceOptions).forEach((key) => {
+            if (
+              input == "" ||
+              key.includes(input.toLowerCase())
+            ) {
+              results.push({
+                title: key,
+                icon: audienceOptions[key],
+                tags: ["skeleton"],
+                value: {
+                  target: globalThis.HAXCMS,
+                  method: "setPlatformAudience",
+                  args: [key],
+                },
+                eventName: "super-daemon-element-method",
+                context: [">", ">settings/platformAudience/" + key],
+                path: ">settings/theme/" + key,
+              });
+            }
+          });          
+          
+          return results;
         }
-      });
-    };
+      }
+    });
 
     SuperDaemonInstance.defineOption({
       title: "HAX Labs",
