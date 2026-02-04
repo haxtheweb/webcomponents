@@ -509,15 +509,20 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           outline-offset: var(--ddd-spacing-1);
         }
         :host([mini]) simple-fields-field::part(option-input) {
-          font-size: 12px;
+          font-size: 16px;
           --simple-fields-text-align: left;
         }
         :host([mini][wand]) simple-fields-field::part(option-input) {
-          font-size: 14px;
+          font-size: 16px;
+          font-family: "Arial", sans-serif;
         }
         simple-fields-field::part(option-input) {
           padding: 0 var(--ddd-spacing-1);
-          font-size: 24px;
+          font-size: 16px;
+        }
+        :host([mini][wand]) simple-fields-field {
+          --simple-fields-placeholder-focus-opacity: 1;
+          --simple-fields-placeholder-focus-color: light-dark(black, white);
         }
         simple-fields-field::part(label) {
           opacity: 0;
