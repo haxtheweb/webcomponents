@@ -25,10 +25,11 @@ class SimpleBlogListing extends SimpleColors {
           -webkit-box-sizing: border-box;
           -moz-box-sizing: border-box;
           box-sizing: border-box;
+          padding: var(--ddd-spacing-8) var(--ddd-spacing-10);
         }
         @media only screen and (max-width: 800px) {
           .listing {
-            padding: 0 32px;
+            padding: var(--ddd-spacing-6) var(--ddd-spacing-6);
           }
         }
         simple-blog-overview:not(:defined) {
@@ -36,7 +37,7 @@ class SimpleBlogListing extends SimpleColors {
         }
         simple-blog-overview {
           width: 100%;
-          border: 1px solid #f2f2f0;
+          border: 1px solid light-dark(#f2f2f0, var(--ddd-primary-4, #333));
         }
       `,
     ];

@@ -26,6 +26,8 @@ class SimpleBlogFooter extends SimpleColors {
           overflow: hidden;
           opacity: 1;
           transition: 0.2s opacity linear;
+          font-family: var(--ddd-font-body);
+          color: light-dark(white, var(--ddd-accent-6, #f5f5f5));
         }
         :host([edit-mode]) {
           pointer-events: none;
@@ -69,33 +71,33 @@ class SimpleBlogFooter extends SimpleColors {
           position: relative;
           z-index: 99;
           max-width: 640px;
-          padding: 32px 0;
+          padding: var(--ddd-spacing-8) 0;
           text-align: center;
           margin: 0 auto;
         }
         .blog-title {
           margin: 0;
-          padding: 0 0 10px;
-          font-size: 50px;
+          padding: 0 0 var(--ddd-spacing-3);
+          font-size: var(--ddd-font-size-xl);
           text-align: center;
-          font-weight: 700;
-          letter-spacing: -2px;
+          font-weight: var(--ddd-font-weight-bold);
+          letter-spacing: -0.08em;
           outline: 0;
-          line-height: 50px;
+          line-height: 1.1;
           word-break: break-word;
-          color: white;
+          color: light-dark(white, var(--ddd-accent-6, #f5f5f5));
           text-shadow:
             0 1px 16px rgba(0, 0, 0, 0.5),
             0 0 1px rgba(0, 0, 0, 0.5);
         }
         .blog-description {
-          margin: 0 0 50px;
-          padding: 0 32px;
-          font-size: 18px;
+          margin: 0 0 var(--ddd-spacing-8);
+          padding: 0 var(--ddd-spacing-8);
+          font-size: var(--ddd-font-size-xs);
           line-height: 1.5;
-          color: white;
+          color: light-dark(white, var(--ddd-accent-6, #e0e0e0));
           text-align: center;
-          font-weight: 400;
+          font-weight: var(--ddd-font-weight-regular);
           text-shadow:
             0 1px 16px rgba(0, 0, 0, 0.5),
             0 0 1px rgba(0, 0, 0, 0.5);
@@ -104,19 +106,18 @@ class SimpleBlogFooter extends SimpleColors {
         site-menu-button:not([disabled]) {
           display: block;
           text-align: center;
-          letter-spacing: -0.32px;
-          font-size: 15px;
-          font-weight: 400;
-          font-style: normal;
           text-decoration: none;
           cursor: pointer;
           height: 44px;
-          background-color: var(--haxcms-color, red);
-          color: black;
+          background-color: light-dark(
+            var(--haxcms-color, red),
+            var(--ddd-primary-4, #222)
+          );
+          color: light-dark(black, var(--ddd-accent-6, #f5f5f5));
           box-sizing: border-box;
-          border-radius: none;
+          border-radius: var(--ddd-radius-md);
           line-height: 44px;
-          margin: 16px 0;
+          margin: var(--ddd-spacing-4) 0;
           padding: 0;
         }
         button:focus,
@@ -129,12 +130,12 @@ class SimpleBlogFooter extends SimpleColors {
           outline-offset: 8px;
         }
         simple-datetime {
-          letter-spacing: -0.32px;
-          font-weight: 300;
+          letter-spacing: -0.02em;
+          font-weight: var(--ddd-font-weight-light);
           font-style: normal;
-          font-size: 16px;
+          font-size: var(--ddd-font-size-xs);
           line-height: 1.3;
-          color: black;
+          color: light-dark(black, var(--ddd-accent-6, #f5f5f5));
           display: inline-flex;
         }
         button,

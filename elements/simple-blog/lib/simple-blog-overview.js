@@ -24,47 +24,56 @@ class SimpleBlogOverview extends SimpleColors {
           text-transform: none;
         }
         div.card {
-          box-shadow: 0 5px 5px rgba(0, 0, 0, 0.7);
+          box-shadow: var(--ddd-boxShadow-sm, 0 2px 6px rgba(0, 0, 0, 0.15));
           padding: 32px 16px;
           margin: 0;
           min-width: unset;
           width: 100%;
-          background-color: transparent;
+          background-color: light-dark(#ffffff, var(--ddd-primary-4, #222));
+          border-radius: var(--ddd-radius-md, 4px);
+          transition:
+            box-shadow 0.2s ease-in-out,
+            transform 0.2s ease-in-out;
         }
         .post-title {
-          letter-spacing: -0.32px;
-          font-weight: 700;
+          letter-spacing: -0.04em;
+          font-weight: var(--ddd-font-weight-bold);
           font-style: normal;
           display: block;
-          font-size: 28px;
-          line-height: 1.1;
-          margin: 0;
+          font-size: var(--ddd-font-size-md);
+          line-height: 1.2;
+          margin: 0 0 var(--ddd-spacing-2);
+          font-family: var(--ddd-font-primary);
         }
         .post-title a {
           text-decoration: none;
-          color: #333332;
+          color: light-dark(#333332, var(--ddd-accent-6, #f5f5f5));
         }
         .post-excerpt,
         simple-datetime {
-          letter-spacing: -0.32px;
-          font-weight: 300;
+          letter-spacing: -0.02em;
+          font-weight: var(--ddd-font-weight-light);
           font-style: normal;
-          font-size: 16px;
-          line-height: 1.3;
-          color: var(--simple-colors-default-theme-grey-10);
+          font-size: var(--ddd-font-size-xs);
+          line-height: 1.4;
+          color: light-dark(
+            var(--simple-colors-default-theme-grey-10),
+            var(--ddd-accent-6, #e0e0e0)
+          );
+          font-family: var(--ddd-font-body);
         }
         .post-excerpt p {
           text-transform: none;
         }
-        :host([elevation="2"]) .post-excerpt,
-        :host([elevation="2"]) simple-datetime {
-          color: var(--simple-colors-default-theme-grey-12);
-          box-shadow: 0 10px 10px rgba(0, 0, 0, 0.7);
+        :host([elevation="2"]) div.card {
+          box-shadow: var(--ddd-boxShadow-md, 0 8px 20px rgba(0, 0, 0, 0.25));
+          transform: translateY(-2px);
         }
         .post-meta {
-          font-size: 14px;
-          color: #b3b3b1;
-          line-height: 30px;
+          font-size: var(--ddd-font-size-2xs);
+          color: light-dark(#b3b3b1, var(--ddd-accent-6, #cccccc));
+          line-height: 1.6;
+          margin-top: var(--ddd-spacing-2);
         }
         a,
         a:visited,

@@ -43,17 +43,17 @@ class SimpleBlogPost extends SimpleColors {
         }
         section {
           width: 100%;
-          font-family: Linux Libertine;
-          color: #333;
+          font-family: var(--ddd-font-body);
+          color: light-dark(#333, var(--ddd-accent-6, #f5f5f5));
         }
         section ::slotted(*) {
-          font-weight: 400;
+          font-weight: var(--ddd-font-weight-regular);
           font-style: normal;
-          font-size: 22px;
-          line-height: 30px;
+          font-size: var(--ddd-font-size-xs);
+          line-height: 1.5;
           margin: 0;
-          padding-bottom: 30px;
-          color: #333;
+          padding-bottom: var(--ddd-spacing-6);
+          color: light-dark(#333, var(--ddd-accent-6, #f5f5f5));
           -webkit-hyphens: auto;
           -moz-hyphens: auto;
           hyphens: auto;
@@ -79,13 +79,7 @@ class SimpleBlogPost extends SimpleColors {
           z-index: 1;
         }
         .post-meta {
-          font-family:
-            Open Sans,
-            MundoSans,
-            "Helvetica Neue",
-            Arial,
-            Helvetica,
-            sans-serif;
+          font-family: var(--ddd-font-primary);
         }
         :host([has-image]) .post-meta {
           position: absolute;
@@ -126,24 +120,24 @@ class SimpleBlogPost extends SimpleColors {
       <custom-style>
         <style>
           site-active-title {
-            font-weight: 700;
+            font-weight: var(--ddd-font-weight-bold);
             font-style: normal;
             letter-spacing: -0.04em;
-            font-size: 50px;
+            font-size: var(--ddd-font-size-xl);
             line-height: 1.1;
-            color: black;
+            color: light-dark(black, var(--ddd-accent-6, #f5f5f5));
           }
           :host([has-image]) site-active-title {
-            font-weight: 700;
+            font-weight: var(--ddd-font-weight-bold);
             font-style: normal;
             letter-spacing: -0.04em;
-            font-size: 50px;
+            font-size: var(--ddd-font-size-xl);
             line-height: 1.1;
-            margin-bottom: 16px;
+            margin-bottom: var(--ddd-spacing-4);
             text-shadow:
               0 1px 16px rgba(0, 0, 0, 0.5),
               0 0 1px rgba(0, 0, 0, 0.5);
-            color: white;
+            color: light-dark(white, var(--ddd-accent-6, #f5f5f5));
           }
         </style>
       </custom-style>

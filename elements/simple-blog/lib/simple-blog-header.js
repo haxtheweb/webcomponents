@@ -18,6 +18,11 @@ class SimpleBlogHeader extends SimpleColors {
       css`
         :host {
           display: block;
+          font-family: var(--ddd-font-primary);
+          color: light-dark(
+            var(--ddd-theme-default-text, #333),
+            var(--ddd-accent-6, #f5f5f5)
+          );
         }
         .teaserimage {
           height: 450px;
@@ -46,49 +51,59 @@ class SimpleBlogHeader extends SimpleColors {
           opacity: 1;
         }
         .blog-logo {
-          width: 120px;
-          height: 120px;
+          width: 96px;
+          height: 96px;
           position: absolute;
-          margin-top: -60px;
+          margin-top: -48px;
           right: 50%;
-          margin-right: -60px;
+          margin-right: -48px;
           background-size: cover;
           border-radius: 50%;
           z-index: 99;
           text-indent: -9999px;
-          border: 3px solid #fff;
-          background-color: #fff;
+          border: 3px solid light-dark(white, var(--ddd-accent-6, #f5f5f5));
+          background-color: light-dark(white, #111);
           -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
           -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
           box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+          /* force logo icon color to be visible on both light and dark backgrounds */
+          --simple-icon-color: light-dark(#111111, #f5f5f5);
         }
         .site-title {
           margin: 0;
-          padding: 84px 16px 8px;
-          font-size: 50px;
+          padding: var(--ddd-spacing-10) var(--ddd-spacing-4)
+            var(--ddd-spacing-2);
+          font-size: var(--ddd-font-size-xl);
           text-align: center;
-          font-weight: 700;
-          letter-spacing: -2px;
+          font-weight: var(--ddd-font-weight-bold);
+          letter-spacing: -0.08em;
           outline: 0;
-          line-height: 50px;
+          line-height: 1.1;
           word-break: break-word;
-          color: #333;
+          color: light-dark(
+            var(--ddd-theme-default-text, #333),
+            var(--ddd-accent-6, #f5f5f5)
+          );
         }
         .blog-description {
-          margin: 0 0 20px;
-          padding: 0 32px;
-          font-size: 18px;
+          margin: 0 0 var(--ddd-spacing-6);
+          padding: 0 var(--ddd-spacing-8);
+          font-size: var(--ddd-font-size-xs);
           line-height: 1.5;
-          color: #666;
+          color: light-dark(
+            var(--ddd-theme-default-muted, #666),
+            var(--ddd-accent-6, #e0e0e0)
+          );
           text-align: center;
-          font-weight: 400;
+          font-weight: var(--ddd-font-weight-regular);
         }
         .custom-links {
-          margin: 0 auto 36px;
+          margin: 0 auto var(--ddd-spacing-8);
           text-align: center;
-          color: #ccc;
+          color: light-dark(#808080, var(--ddd-accent-6, #e0e0e0));
           display: flex;
           justify-content: center;
+          gap: var(--ddd-spacing-2);
         }
         site-rss-button {
           margin: 0 4px;

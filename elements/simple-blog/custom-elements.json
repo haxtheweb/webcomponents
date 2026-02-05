@@ -20,6 +20,10 @@
             },
             {
               "kind": "method",
+              "name": "_setContentContainer"
+            },
+            {
+              "kind": "method",
               "name": "_locationChanged",
               "parameters": [
                 {

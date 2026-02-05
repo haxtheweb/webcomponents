@@ -24,23 +24,26 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
     return [
       super.styles,
       css`
-        html,
-        body {
-          background-color: #fafafa;
-        }
         :host {
           display: block;
-          font-family: "Roboto", "Noto", sans-serif;
-          -webkit-font-smoothing: antialiased;
-          font-size: 14px;
-          background-color: #fafafa;
-          font-family:
+          color-scheme: light dark;
+          --ddd-theme-body-font-size: var(--ddd-font-size-xxs);
+          font-size: var(--ddd-theme-body-font-size, 14px);
+          font-family: var(
+            --ddd-font-body,
             "Open Sans",
             "MundoSans",
-            helvetica neue,
+            "Helvetica Neue",
             Arial,
             Helvetica,
-            sans-serif;
+            sans-serif
+          );
+          overflow-x: hidden;
+          background-color: light-dark(
+            var(--ddd-accent-6, #fafafa),
+            var(--ddd-primary-4, #121212)
+          );
+          color: light-dark(#222, var(--ddd-accent-6, #f5f5f5));
           margin: 0;
           padding: 0;
           text-rendering: optimizeLegibility;
@@ -60,22 +63,27 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
           height: 40px;
           margin: 8px;
           z-index: 1000;
-          color: black;
-          background-color: rgba(250, 250, 250, 0.5);
+          color: light-dark(black, var(--ddd-accent-6, #f5f5f5));
+          background-color: light-dark(
+            rgba(250, 250, 250, 0.7),
+            rgba(10, 10, 10, 0.7)
+          );
           opacity: 0.5;
           border-radius: 50%;
           transition: all 0.6s linear;
+          /* ensure the back icon contrasts with its circular background */
+          --simple-icon-color: light-dark(#000000, #ffffff);
         }
         #backbutton:focus,
         #backbutton:hover {
           opacity: 1;
-          color: white;
+          color: light-dark(white, var(--ddd-accent-6, #f5f5f5));
           background-color: var(--haxcms-color, black);
         }
         main,
         main section {
           width: 100vw;
-          height: 100vh;
+          min-height: 100vh;
         }
         simple-blog-post {
           transition: all 0.6s ease-in-out;
@@ -88,6 +96,9 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
         :host([selected-page="1"]) simple-blog-post {
           visibility: visible;
           opacity: 1;
+        }
+        :host([is-logged-in]) #backbutton {
+          margin-top: 56px;
         }
         a,
         a:active,
@@ -183,9 +194,8 @@ class SimpleBlog extends SimpleColorsSuper(DDDSuper(HAXCMSLitElementTheme)) {
     if (this.shadowRoot) {
       const post = this.shadowRoot.querySelector("simple-blog-post");
       if (post && post.shadowRoot) {
-        this.contentContainer = post.shadowRoot.querySelector(
-          "#contentcontainer",
-        );
+        this.contentContainer =
+          post.shadowRoot.querySelector("#contentcontainer");
       }
     }
   }
