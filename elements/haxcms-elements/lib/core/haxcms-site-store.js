@@ -1068,18 +1068,17 @@ class Store {
   /**
    * Return the platform block from the manifest + some sanitization
    */
-  get platformConfig(){
-    if(this.manifest && this.manifest.metadata
-        && this.manifest.metadata.platform){
+  get platformConfig() {
+    if (
+      this.manifest &&
+      this.manifest.metadata &&
+      this.manifest.metadata.platform
+    ) {
+      const raw = this.manifest.metadata.platform;
       const platformConfigObj = {};
-      // If audience is not defined, default to expert mode
-      platformConfigObj.audience = this.manifest.metadata.platform.audience || "expert";
-      platformConfigObj.features = this.manifest.metadata.platform.features || {};
-      // If allowedBlocks is not defined, create an empty Set to minimize type errors
-      // Otherwise convert the allowedBlocks array to a Set
-      platformConfigObj.allowedBlocks = this.manifest.metadata.platform.allowedBlocks ? 
-        new Set(this.manifest.metadata.platform.allowedBlocks) : new Set();
+
       // We need a list of expected capabilities to efficiently auto-resolve feature vs. block
+      // NOTE: keep this list in sync with hax-body's platformAllows usage.
       platformConfigObj.__supportedFeatures = new Set([
         "addPage",
         "deletePage",
@@ -1090,13 +1089,40 @@ class Store {
         "addBlock",
         "contentMap",
         "viewSource",
-        "onlineSearch"
+        "onlineSearch",
+        "pageBreak",
       ]);
+
+      // If audience is not defined, default to expert mode
+      platformConfigObj.audience = raw.audience || "expert";
+
+      // Features may be declared as raw.features (new-style), or as booleans on raw (legacy)
+      platformConfigObj.features =
+        raw.features && typeof raw.features === "object" ? { ...raw.features } : {};
+
+      // Legacy support: if the raw object has known feature keys directly, absorb them
+      platformConfigObj.__supportedFeatures.forEach((key) => {
+        if (typeof raw[key] === "boolean") {
+          platformConfigObj.features[key] = raw[key];
+        }
+      });
+      // Legacy support: delete -> deletePage mapping
+      if (typeof raw.delete === "boolean" && typeof platformConfigObj.features.deletePage !== "boolean") {
+        platformConfigObj.features.deletePage = raw.delete;
+      }
+
+      // allowedBlocks: prefer new-style allowedBlocks, fallback to legacy blocks
+      const blocksAry = Array.isArray(raw.allowedBlocks)
+        ? raw.allowedBlocks
+        : Array.isArray(raw.blocks)
+          ? raw.blocks
+          : null;
+      platformConfigObj.allowedBlocks = blocksAry ? new Set(blocksAry) : new Set();
 
       return platformConfigObj;
     }
     // If platform is not defined in site.json, return null
-    return null
+    return null;
   }
 
   /**

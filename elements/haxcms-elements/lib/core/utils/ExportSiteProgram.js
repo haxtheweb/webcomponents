@@ -423,36 +423,38 @@ export function _downloadBlob(blob, filename) {
 // Export site as skeleton template
 export async function _exportSiteAsSkeleton(manifest, title, baseUrl) {
   try {
-    HAXStore.toast("Generating site skeleton...", 3000, "fit-bottom");
+    // Load the modal UI on demand
+    await import("../ui/haxcms-site-platform-ui.js");
 
-    // Dynamically import the skeleton generator
-    const { SiteSkeletonGenerator } = await import(
-      "./site-skeleton-generator.js"
+    const el = globalThis.document.createElement("haxcms-site-platform-ui");
+
+    // Present a modal similar to outline-designer workflows
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-modal-show", {
+        bubbles: true,
+        cancelable: true,
+        composed: true,
+        detail: {
+          title: "Export site skeleton",
+          elements: {
+            content: el,
+          },
+          modal: true,
+          styles: {
+            "--simple-modal-titlebar-background": "transparent",
+            "--simple-modal-titlebar-color": "light-dark(black, white)",
+            "--simple-modal-width": "90vw",
+            "--simple-modal-min-width": "300px",
+            "--simple-modal-z-index": "100000000",
+            "--simple-modal-height": "90vh",
+            "--simple-modal-min-height": "400px",
+            "--simple-modal-titlebar-height": "80px",
+          },
+        },
+      }),
     );
-
-    // Generate the skeleton
-    const skeleton = await SiteSkeletonGenerator.generateFromCurrentSite();
-
-    // Download the skeleton file
-    const content = JSON.stringify(skeleton, null, 2);
-    const filename = `${skeleton.meta.name.replace(/[^a-z0-9]/gi, "-").toLowerCase()}-skeleton.json`;
-    this._downloadFile(content, filename, "application/json");
-
-    HAXStore.toast(
-      `Site skeleton exported successfully! Pages: ${skeleton.structure.length}, Files: ${skeleton.files.length}`,
-      5000,
-      "fit-bottom",
-    );
-
-    // Log useful information about the skeleton
-    console.log("Skeleton generated:", {
-      name: skeleton.meta.name,
-      pages: skeleton.structure.length,
-      files: skeleton.files.length,
-      theme: skeleton.theme.element,
-    });
   } catch (error) {
-    console.error("Skeleton export failed:", error);
+    console.error("Skeleton export modal failed:", error);
     HAXStore.toast(
       `Skeleton export failed: ${error.message}`,
       5000,
