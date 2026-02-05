@@ -6,6 +6,21 @@ import { store } from '@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js'
 import { HAXCMSI18NMixin } from '../utils/HAXCMSI18NMixin.js'
 import '@haxtheweb/simple-icon/lib/simple-icon-button-lite.js'
 
+// Required HTML primitives that must exist for baseline text authoring.
+// These are always enabled in the UI and are NOT written to platformConfig.allowedBlocks.
+const REQUIRED_TEXT_PRIMITIVES = [
+  'h1',
+  'h2',
+  'h3',
+  'p',
+  'strong',
+  'em',
+  'ul',
+  'ol',
+  'strike',
+]
+const REQUIRED_TEXT_PRIMITIVES_SET = new Set(REQUIRED_TEXT_PRIMITIVES)
+
 const DEFAULT_SUPPORTED_FEATURES = [
   'addPage',
   'deletePage',
@@ -122,6 +137,8 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       editorFeatures: 'Editor features',
       blocks: 'Allowed blocks',
       filterBlocks: 'Filter blocks',
+      requiredTextNote:
+        'Some text tags are required and always enabled (shown disabled).',
       selectAll: 'Select all',
       deselectAll: 'Deselect all',
       download: 'Download skeleton',
@@ -166,6 +183,12 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         h2 {
           margin: 0 0 var(--ddd-spacing-4) 0;
           font-size: var(--ddd-font-size-m);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+
+        h4 {
+          margin: 0;
+          font-size: var(--ddd-font-size-xs);
           font-weight: var(--ddd-font-weight-bold);
         }
 
@@ -277,6 +300,30 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           );
         }
 
+        .block-category {
+          padding: var(--ddd-spacing-3) 0;
+          border-top: var(--ddd-border-xs);
+        }
+
+        .block-category:first-of-type {
+          border-top: 0;
+          padding-top: 0;
+        }
+
+        .block-category-title {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--ddd-spacing-3);
+          margin-bottom: var(--ddd-spacing-2);
+        }
+
+        .block-category-note {
+          margin: 0 0 var(--ddd-spacing-3) 0;
+          font-size: var(--ddd-font-size-3xs);
+          opacity: 0.9;
+        }
+
         .blocks-meta {
           display: flex;
           align-items: center;
@@ -383,7 +430,14 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     const editorFeatures = FEATURE_DEFS.filter((f) => f.group === 'Editor')
 
     const blocks = this._filteredBlocks()
-    const selectedCount = this.allowedBlocks ? this.allowedBlocks.size : 0
+    const grouped = this._groupBlocksByCategory(blocks)
+
+    const toggleableTotal = this.blocks
+      ? this.blocks.filter((b) => !b.locked).length
+      : 0
+    const toggleableSelected = this.blocks
+      ? this.blocks.filter((b) => !b.locked && this.allowedBlocks.has(b.tag)).length
+      : 0
 
     return html`
       <h2>${this.t.title}</h2>
@@ -483,13 +537,41 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           </div>
 
           <div class="note">
-            ${selectedCount} selected / ${this.blocks.length} available
+            ${toggleableSelected} selected / ${toggleableTotal} available
+            ${REQUIRED_TEXT_PRIMITIVES.length
+              ? html`<span> • ${this.t.requiredTextNote}</span>`
+              : ''}
           </div>
 
           <div class="blocks-list">
-            <fieldset class="check-grid">
-              ${blocks.map((b) => this._renderBlockCheckbox(b))}
-            </fieldset>
+            ${grouped.map(
+              (group) => html`
+                <div class="block-category" data-category="${group.category}">
+                  <div class="block-category-title">
+                    <h4>${group.category}</h4>
+                    <div class="controls">
+                      <simple-icon-button-lite
+                        icon="icons:select-all"
+                        label="${this.t.selectAll}"
+                        title="${this.t.selectAll}"
+                        data-category="${group.category}"
+                        @click="${this._selectAllBlocksInCategory}"
+                      ></simple-icon-button-lite>
+                      <simple-icon-button-lite
+                        icon="icons:select-all"
+                        label="${this.t.deselectAll}"
+                        title="${this.t.deselectAll}"
+                        data-category="${group.category}"
+                        @click="${this._deselectAllBlocksInCategory}"
+                      ></simple-icon-button-lite>
+                    </div>
+                  </div>
+                  <fieldset class="check-grid">
+                    ${group.blocks.map((b) => this._renderBlockCheckbox(b))}
+                  </fieldset>
+                </div>
+              `,
+            )}
           </div>
         </div>
       </div>
@@ -522,13 +604,16 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
 
   _renderBlockCheckbox(blockDef) {
     const checked =
-      this.allowedBlocks && this.allowedBlocks.has(blockDef.tag) ? true : false
+      blockDef.locked || (this.allowedBlocks && this.allowedBlocks.has(blockDef.tag))
+        ? true
+        : false
     return html`
       <label class="check">
         <input
           type="checkbox"
           data-tag="${blockDef.tag}"
           .checked=${checked}
+          ?disabled=${blockDef.locked}
           @change=${this._blockChanged}
         />
         <span>${blockDef.title}</span>
@@ -625,13 +710,42 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         return
       }
       let title = tag
-      if (def.gizmo && def.gizmo.title) {
-        title = def.gizmo.title
+      let category = 'Other'
+      let tags = []
+      const locked = REQUIRED_TEXT_PRIMITIVES_SET.has(tag)
+      if (def.gizmo && typeof def.gizmo === 'object') {
+        if (def.gizmo.title) {
+          title = def.gizmo.title
+        }
+        if (Array.isArray(def.gizmo.tags) && def.gizmo.tags.length > 0) {
+          tags = def.gizmo.tags
+          category = def.gizmo.tags[0] || category
+        }
       }
-      blocks.push({ tag, title })
+      // Ensure required text primitives show up in Writing group even if missing tags
+      if (locked && category === 'Other') {
+        category = 'Writing'
+      }
+      blocks.push({ tag, title, category, tags, locked })
     })
 
+    // Keep stable grouping order aligned with HAX block panel: Writing first, Other last
     blocks.sort((a, b) => {
+      const catA = a.category || 'Other'
+      const catB = b.category || 'Other'
+      const c = this._compareCategories(catA, catB)
+      if (c !== 0) return c
+
+      // Locked text primitives should appear first (in the requested order)
+      if (a.locked && b.locked) {
+        return (
+          REQUIRED_TEXT_PRIMITIVES.indexOf(a.tag) -
+          REQUIRED_TEXT_PRIMITIVES.indexOf(b.tag)
+        )
+      }
+      if (a.locked) return -1
+      if (b.locked) return 1
+
       if (a.title < b.title) return -1
       if (a.title > b.title) return 1
       return 0
@@ -664,11 +778,29 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     if (filter === '') {
       return this.blocks
     }
-    return this.blocks.filter((b) => {
+
+    // Always keep required primitives visible (even if filter doesn't match)
+    const locked = this.blocks.filter((b) => b.locked)
+    const matches = this.blocks.filter((b) => {
       const tag = b.tag.toLowerCase()
       const title = (b.title || '').toLowerCase()
       return tag.includes(filter) || title.includes(filter)
     })
+
+    const seen = new Set()
+    const res = []
+    locked.forEach((b) => {
+      seen.add(b.tag)
+      res.push(b)
+    })
+    matches.forEach((b) => {
+      if (!seen.has(b.tag)) {
+        seen.add(b.tag)
+        res.push(b)
+      }
+    })
+
+    return res
   }
 
   _audienceChanged(e) {
@@ -689,6 +821,12 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
   _blockChanged(e) {
     const tag = e && e.target ? e.target.getAttribute('data-tag') : null
     if (!tag) return
+
+    // Required primitives are locked on; ignore toggles.
+    if (REQUIRED_TEXT_PRIMITIVES_SET.has(tag)) {
+      return
+    }
+
     const checked = e.target.checked
     const next = new Set(this.allowedBlocks)
     if (checked) {
@@ -740,7 +878,81 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
   }
 
   _deselectAllBlocks() {
-    this.allowedBlocks = new Set()
+    const next = new Set()
+    this.blocks.forEach((b) => {
+      if (b.locked) {
+        next.add(b.tag)
+      }
+    })
+    this.allowedBlocks = next
+  }
+
+  _selectAllBlocksInCategory(e) {
+    const category = e && e.currentTarget ? e.currentTarget.dataset.category : null
+    if (!category) return
+
+    const next = new Set(this.allowedBlocks)
+    this.blocks.forEach((b) => {
+      if (b.category === category && !b.locked) {
+        next.add(b.tag)
+      }
+    })
+    this.allowedBlocks = next
+  }
+
+  _deselectAllBlocksInCategory(e) {
+    const category = e && e.currentTarget ? e.currentTarget.dataset.category : null
+    if (!category) return
+
+    const next = new Set(this.allowedBlocks)
+    this.blocks.forEach((b) => {
+      if (b.category === category && !b.locked) {
+        next.delete(b.tag)
+      }
+    })
+    this.allowedBlocks = next
+  }
+
+  _compareCategories(a, b) {
+    const catA = a || 'Other'
+    const catB = b || 'Other'
+
+    // Writing / Text first, Other last, then alphabetical
+    const first = ['Writing', 'Text']
+    const last = ['Other']
+
+    if (first.includes(catA) && !first.includes(catB)) return -1
+    if (!first.includes(catA) && first.includes(catB)) return 1
+
+    if (last.includes(catA) && !last.includes(catB)) return 1
+    if (!last.includes(catA) && last.includes(catB)) return -1
+
+    if (first.includes(catA) && first.includes(catB)) {
+      return first.indexOf(catA) - first.indexOf(catB)
+    }
+
+    if (catA < catB) return -1
+    if (catA > catB) return 1
+    return 0
+  }
+
+  _groupBlocksByCategory(blocks) {
+    const groupMap = {}
+    ;(blocks || []).forEach((b) => {
+      const cat = b.category || 'Other'
+      if (!groupMap[cat]) {
+        groupMap[cat] = []
+      }
+      groupMap[cat].push(b)
+    })
+
+    const cats = Object.keys(groupMap)
+    cats.sort((a, b) => this._compareCategories(a, b))
+
+    return cats.map((category) => ({
+      category,
+      blocks: groupMap[category],
+    }))
   }
 
   _platformConfigForExport() {
@@ -749,10 +961,14 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       features[key] = this.features && this.features[key] !== false
     })
 
+    const allowedBlocks = Array.from(this.allowedBlocks || []).filter(
+      (tag) => !REQUIRED_TEXT_PRIMITIVES_SET.has(tag),
+    )
+
     return {
       audience: this.audience || 'expert',
       features,
-      allowedBlocks: Array.from(this.allowedBlocks || []).sort(),
+      allowedBlocks: allowedBlocks.sort(),
     }
   }
 
