@@ -203,7 +203,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       return { type: "rich-text-editor-underline" };
     }
     /**
-     * default config for a remove format button
+     * default config for a strikethrough button
      *
      * @readonly
      */
@@ -227,6 +227,36 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         label: "Erase Format",
         type: "rich-text-editor-button",
       };
+    }
+    /**
+     * default config for a heading 1 button
+     *
+     * @readonly
+     */
+    get h1Button(){
+      return {
+        command: "formatBlock",
+        commandVal: "h1",
+        icon: "hax:h1",
+        label: "Header 1",
+        toggles: true,
+        type: "rich-text-editor-button"
+      }
+    }
+    /**
+     * default config for a heading 2 button
+     *
+     * @readonly
+     */
+    get h2Button(){
+      return {
+        command: "formatBlock",
+        commandVal: "h2",
+        icon: "hax:h2",
+        label: "Header 2",
+        toggles: true,
+        type: "rich-text-editor-button"
+      }
     }
     /**
      * default config for a remove format button

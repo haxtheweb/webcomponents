@@ -157,7 +157,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   }
   render() {
     return html`
-      <hax-toolbar always-expanded>
+      <hax-toolbar always-expanded ?hidden=${HAXStore.isPlatformAudience("novice")}>
         <div class="group">
           <hax-toolbar-menu
             ?disabled="${
