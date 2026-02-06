@@ -11,6 +11,7 @@ import "./hax-text-editor-paste-button.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "./buttons/hax-text-editor-alignment-picker.js";
 import "./buttons/hax-text-editor-heading-picker.js";
+import "./buttons/hax-text-editor-tag-toggle.js"
 
 /**
  * `hax-text-editor-toolbar`
@@ -50,6 +51,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
           );
           --rich-text-editor-button-disabled-bg: var(--hax-ui-background-color);
           --rich-text-editor-button-disabled-border-color: transparent;
+          width: fit-content;
         }
         #morebutton {
           align-self: flex-end;
@@ -151,6 +153,8 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       blockH5: "Heading 5",
       blockH6: "Heading 6",
       blockPre: "Preformatted",
+      h1Button: "Header 1",
+      h2Button: "Header 2",
       italicButton: "Italic",
       boldButton: "Bold",
       underlineButton: "Underline",
@@ -258,6 +262,30 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     ];
   }
   /**
+   * default config for a heading 1 button
+   *
+   * @readonly
+   */
+  get h1Button(){
+    return {
+      ...super.h1Button,
+      label: this.t.h1Button,
+      type: "hax-text-editor-tag-toggle"
+    };
+  }
+  /**
+   * default config for a heading 2 button
+   *
+   * @readonly
+   */
+  get h2Button(){
+    return {
+      ...super.h2Button,
+      label: this.t.h2Button,
+      type: "hax-text-editor-tag-toggle"
+    }
+  }
+  /**
    * default config for a bold button
    *
    * @readonly
@@ -354,16 +382,26 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    * @readonly
    */
   get advancedInlineButtonGroup() {
+    let buttons = [
+      this.strikethroughButton,
+      this.markButton,
+      this.abbrButton,
+      this.codeButton,
+      this.underlineButton
+    ]
+
+    if(HAXStore.isPlatformAudience("novice")){
+      buttons = [
+        this.linkButton,
+        this.unlinkButton,
+        this.strikethroughButton
+      ];
+    };
+
     return {
       type: "button-group",
       subtype: "advanced-inline-button-group",
-      buttons: [
-        this.strikethroughButton,
-        this.markButton,
-        this.abbrButton,
-        this.codeButton,
-        this.underlineButton,
-      ],
+      buttons: buttons,
     };
   }
   /**
@@ -487,7 +525,9 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   get orderedListButton() {
     return {
       ...super.orderedListButton,
+      command: "ol",
       label: this.t.orderedListButton,
+      type: "hax-text-editor-tag-toggle"
     };
   }
   /**
@@ -498,7 +538,9 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   get unorderedListButton() {
     return {
       ...super.unorderedListButton,
+      command: "ul",
       label: this.t.unorderedListButton,
+      type: "hax-text-editor-tag-toggle"
     };
   }
   /**
@@ -508,7 +550,11 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
    * @readonly
    */
   get blockquoteButton() {
-    return {};
+    return {
+      ...super.blockquoteButton,
+      label: "Blockquote",
+      type: "hax-text-editor-tag-toggle"
+    };
   }
   /**
    * Override parent's listIndentButtonGroup to exclude blockquote button
@@ -574,7 +620,11 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {
       type: "button-group",
       subtype: "hax-symbol-insert-button-group",
-      buttons: [this.symbolButton, this.emojiButton, this.iconButton],
+      buttons: [
+        this.symbolButton,
+        this.emojiButton,
+        this.iconButton
+      ],
     };
   }
 
@@ -587,21 +637,34 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
 
   // Button group for basic formatting: bold, italic, superscript, subscript, remove formatting
   get basicFormattingGroup() {
+    // Default to expert mode if no platformConfig
+    let buttons = [
+      this.boldButton,
+      this.italicButton,
+      this.subscriptButton,
+      this.superscriptButton,
+      this.removeFormatButton
+    ];
+
+    if(HAXStore.isPlatformAudience("novice")){
+      buttons = [ 
+        this.h1Button,
+        this.h2Button,
+        this.blockquoteButton,
+        this.boldButton,
+        this.italicButton
+      ];
+    }
+
     return {
       type: "button-group",
       subtype: "basic-formatting-group",
-      buttons: [
-        this.boldButton,
-        this.italicButton,
-        this.subscriptButton,
-        this.superscriptButton,
-        this.removeFormatButton,
-      ],
+      buttons: buttons,
     };
   }
 
   get defaultConfig() {
-    return [
+    let buttonGroups = [
       this.formatButton,
       this.listIndentButtonGroup,
       this.alignmentPicker,
@@ -609,7 +672,17 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       this.linkButtonGroup,
       this.haxSymbolInsertButtonGroup,
       this.advancedInlineButtonGroup,
-    ];
+    ]
+
+    if(HAXStore.isPlatformAudience("novice")){
+      buttonGroups = [
+        this.listIndentButtonGroup,
+        this.basicFormattingGroup,
+        this.advancedInlineButtonGroup
+      ];
+    }
+
+    return buttonGroups
   }
 
   get filteredBlocks() {
