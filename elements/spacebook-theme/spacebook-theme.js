@@ -542,12 +542,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
           padding: 0 4rem;
         }
       }
-      
-      .content-inner {
-        display: flex;
-        justify-content: space-between;
-      }
-      
+            
       .main-article {
         display: flex;
         flex-direction: column;
