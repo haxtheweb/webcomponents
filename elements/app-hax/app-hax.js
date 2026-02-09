@@ -1391,17 +1391,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           <simple-tooltip for="hlogo" position="right" slot="left"
             >${this.t.home}</simple-tooltip
           >
-          <simple-toolbar-button
-            icon="hax:wizard-hat"
-            label="${this.t.merlin}"
-            voice-command="${this.t.merlin}"
-            icon-position="left"
-            id="merlin"
-            @click="${this.openMerlin}"
-            slot="center"
-            data-event="super-daemon"
-            show-text-label
-          ></simple-toolbar-button>
+          <div slot="center">HAXcms Site Dashboard</div>
           <wired-button
             elevation="1"
             slot="right"
@@ -1502,12 +1492,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       </header>
       <main @click="${this.closeMenu}">
         <confetti-container id="confetti">
-          <div class="label">
-            <app-hax-label heading-level="1">
-              HAX Site Dashboard
-              <div slot="subtitle">Let's build something awesome!</div>
-            </app-hax-label>
-          </div>
           <section class="content">
             <div class="start-journey">
               <app-hax-use-case-filter></app-hax-use-case-filter>

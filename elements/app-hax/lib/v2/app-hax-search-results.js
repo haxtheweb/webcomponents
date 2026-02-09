@@ -79,7 +79,7 @@ export class AppHaxSearchResults extends SimpleColors {
           align-items: center;
           justify-content: flex-start;
           gap: var(--ddd-spacing-2, 8px);
-          width: 65vw;
+          width: 100vw;
           max-height: 280px;
           position: relative;
           border-radius: var(--ddd-radius-md, 8px);

@@ -101,6 +101,7 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
           --spacebook-theme-border-gray-200: #e5e7eb;
           --spacebook-theme-border-gray-700: #4b5563;
           --spacebook-theme-border-gray-800: #1f2937;
+          --page-break-menu-button-right: auto;
         }
         
         body {
