@@ -259,15 +259,6 @@ export class AppHaxUseCaseFilter extends LitElement {
         .filter:hover {
           box-shadow: var(--ddd-boxShadow-xl);
         }
-        .filterButtons {
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-3, 12px);
-          margin-top: 0;
-          border: none;
-          padding: 0;
-          margin: 0;
-        }
         .filter-btn {
           display: flex;
           align-items: center;
@@ -674,51 +665,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                 </option>
               </select>
             </div>
-            <!-- Filter Buttons -->
-            <fieldset class="filterButtons">
-              <legend class="visually-hidden">
-                Filter templates by category
-              </legend>
-              ${this.filters.map(
-                (filter, i) => html`
-                  <input
-                    type="checkbox"
-                    id="filter-${i}"
-                    class="filter-checkbox"
-                    .checked=${this.activeFilters.includes(filter)}
-                    @change=${() => this.toggleFilterByButton(filter)}
-                    aria-describedby="filter-${i}-description"
-                  />
-                  <label
-                    for="filter-${i}"
-                    class="filter-btn ${this.activeFilters.includes(filter)
-                      ? "active"
-                      : ""}"
-                    aria-pressed=${this.activeFilters.includes(filter)}
-                    role="button"
-                    tabindex="0"
-                    @keydown=${(e) => this.handleFilterKeydown(e, filter)}
-                  >
-                    <span class="icon" aria-hidden="true">
-                      <simple-icon-lite
-                        icon="${this.iconForFilter(filter)}"
-                      ></simple-icon-lite>
-                    </span>
-                    ${filter}
-                  </label>
-                  <div id="filter-${i}-description" class="visually-hidden">
-                    Filter to show only ${filter} templates
-                  </div>
-                `,
-              )}
-            </fieldset>
-            <button
-              class="reset-button"
-              @click="${this.resetFilters}"
-              aria-describedby="reset-help"
-            >
-              Reset Filters
-            </button>
+
             <div id="reset-help" class="visually-hidden">
               Clear all active filters and search terms
             </div>
