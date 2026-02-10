@@ -9,15 +9,12 @@ import { AppHaxAPI } from "./lib/v2/AppHaxBackendAPI.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "./lib/v2/AppHaxRouter.js";
-import "./lib/v2/app-hax-label.js";
 import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-top-bar.js";
 import "./lib/v2/app-hax-use-case.js";
 import "./lib/v2/app-hax-use-case-filter.js";
 import "./lib/v2/app-hax-search-results.js";
 import "./lib/v2/app-hax-scroll-button.js";
 
-const logoutBtn = new URL("./lib/assets/images/Logout.svg", import.meta.url)
-  .href;
 // toggle store darkmode
 function darkToggle(e) {
   if (e.matches) {

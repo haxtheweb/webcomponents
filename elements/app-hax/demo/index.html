@@ -31,7 +31,6 @@
         padding: 0;
         font-family: 'Press Start 2P', sans-serif;
         overflow-x: hidden;
-        background-image: url('../lib/assets/images/LMBackgroundImage-min.jpg');
         background-position: top;
         background-size: auto;
         background-repeat: repeat-x;  
@@ -53,21 +52,14 @@
       }
       body.dark-mode {
         background-color: black;
-        background-image: url('../lib/assets/images/DMBackgroundImage-min.jpg');
         --app-hax-accent-color: white;
         --app-hax-background-color: black;
-      }
-      body.app-loaded:not(.bad-device) {
-        background-image: url('../lib/assets/images/LMBackgroundImage-min.jpg');    
       }
       div[slot="externalproviders"] {
         display: none;
       }
       body.app-loaded div[slot="externalproviders"] {
         display: unset;
-      }
-      body.app-loaded.dark-mode {
-        background-image: url('../lib/assets/images/DMBackgroundImage-min.jpg');
       }
       #loading {
         font-family: 'Press Start 2P', sans-serif;

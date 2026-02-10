@@ -1,6 +1,7 @@
 /* eslint-disable no-return-assign */
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { store } from "./AppHaxStore.js";
 
 export class AppHaxUseCase extends LitElement {
@@ -79,6 +80,11 @@ export class AppHaxUseCase extends LitElement {
         .cardContent {
           padding: 8px 12px 16px;
         }
+
+        .image {
+          position: relative;
+        }
+
         .image img {
           border-top-right-radius: 6px;
           border-top-left-radius: 6px;
@@ -86,6 +92,31 @@ export class AppHaxUseCase extends LitElement {
           overflow: clip;
           justify-self: center;
           width: 100%;
+          display: block;
+        }
+
+        .image-placeholder {
+          border-top-right-radius: 6px;
+          border-top-left-radius: 6px;
+          border-bottom: solid var(--ddd-theme-default-nittanyNavy) 8px;
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight, #f5f5f5),
+            var(--ddd-theme-default-coalyGray, #333)
+          );
+          width: 100%;
+          height: 160px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .image-placeholder simple-icon-lite {
+          --simple-icon-height: var(--ddd-icon-xl, 64px);
+          --simple-icon-width: var(--ddd-icon-xl, 64px);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray, #666),
+            var(--ddd-theme-default-limestoneGray, #a2aaad)
+          );
         }
       
         .icons {
@@ -342,10 +373,26 @@ export class AppHaxUseCase extends LitElement {
   }
 
   render() {
+    const hasSource =
+      this.source &&
+      typeof this.source === "string" &&
+      this.source.trim() !== "";
+
+    const primaryIcon =
+      Array.isArray(this.iconImage) &&
+      this.iconImage[0] &&
+      this.iconImage[0].icon
+        ? this.iconImage[0].icon
+        : "icons:cloud-download";
+
     return html`
       <div class="card" @click="${this.toggleDisplay}">
         <div class="image">
-          <img src="${this.source}" alt="${this.title}" />
+          ${hasSource
+            ? html`<img src="${this.source}" alt="${this.title}" />`
+            : html`<div class="image-placeholder" aria-hidden="true">
+                <simple-icon-lite icon="${primaryIcon}"></simple-icon-lite>
+              </div>`}
           <div class="icons">
             ${this.iconImage.map(
               (icon) => html`
