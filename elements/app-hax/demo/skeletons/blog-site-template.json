@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "name": "blog-site-template",
+    "type": "skeleton",
+    "version": "1.0.0"
+  },
+  "site": {
+    "name": "Blog",
+    "description": "A template for creating blog sites with posts and categories",
+    "theme": "haxor-slevin"
+  },
+  "build": {
+    "type": "skeleton",
+    "structure": "from-skeleton",
+    "items": [
+      {
+        "id": "item-home-blog",
+        "title": "Home",
+        "slug": "home",
+        "order": 0,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2>Latest posts</h2><p>This is your blog landing page.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["blog"]
+        }
+      },
+      {
+        "id": "item-post-1-blog",
+        "title": "First post",
+        "slug": "first-post",
+        "order": 1,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2>First post</h2><p>Write your first blog post here.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["blog"]
+        }
+      }
+    ],
+    "files": []
+  },
+  "theme": {}
+}

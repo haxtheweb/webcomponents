@@ -1,0 +1,48 @@
+{
+  "meta": {
+    "name": "documentation-site-template",
+    "type": "skeleton",
+    "version": "1.0.0"
+  },
+  "site": {
+    "name": "Documentation",
+    "description": "Template for creating documentation and knowledge bases",
+    "theme": "outline-player"
+  },
+  "build": {
+    "type": "skeleton",
+    "structure": "from-skeleton",
+    "items": [
+      {
+        "id": "item-home-docs",
+        "title": "Home",
+        "slug": "home",
+        "order": 0,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2>Docs Home</h2><p>Start your documentation here.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["documentation"]
+        }
+      },
+      {
+        "id": "item-getting-started-docs",
+        "title": "Getting started",
+        "slug": "getting-started",
+        "order": 1,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2>Getting started</h2><p>Explain the basics and initial setup.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["documentation"]
+        }
+      }
+    ],
+    "files": []
+  },
+  "theme": {}
+}
