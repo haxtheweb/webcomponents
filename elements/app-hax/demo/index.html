@@ -167,45 +167,6 @@
         <a href="https://www.psu.edu" slot="app-header-pre"><img src="https://iam.hax.psu.edu/assets/psu.png" style="height:48px;display:inline-flex;vertical-align:top;" alt="Pennsylvania State University" /></a>
       </app-hax>
       <div id="demo">
-        <style>
-          #demobtns {
-            bottom: var(--ddd-spacing-2, 8px);
-            left: var(--ddd-spacing-2, 8px);
-            position: fixed;
-            z-index: 9999;
-            display: flex;
-            gap: var(--ddd-spacing-1, 4px);
-            background: rgba(0, 0, 0, 0.8);
-            padding: var(--ddd-spacing-2, 8px);
-            border-radius: var(--ddd-radius-md, 8px);
-          }
-          #demobtns button {
-            font-size: var(--ddd-font-size-3xs, 10px);
-            font-family: var(--ddd-font-primary, sans-serif);
-            border: var(--ddd-border-xs, 1px solid) var(--ddd-theme-default-nittanyNavy, #001e44);
-            margin: 0;
-            padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
-            background-color: var(--ddd-theme-default-keystoneYellow, #ffd100);
-            cursor: pointer;
-            color: var(--ddd-theme-default-nittanyNavy, #001e44);
-            border-radius: var(--ddd-radius-sm, 4px);
-            transition: all 0.2s ease;
-            white-space: nowrap;
-            min-height: var(--ddd-spacing-8, 32px);
-            font-weight: var(--ddd-font-weight-medium, 500);
-          }
-          #demobtns button:hover {
-            background-color: var(--ddd-theme-default-original87Pink, #e4007c);
-            color: var(--ddd-theme-default-white, white);
-            transform: translateY(-1px);
-          }
-          body.dark-mode #demobtns {
-            background: rgba(255, 255, 255, 0.1);
-          }
-        </style>
-        <div id="demobtns">
-          <button id="resetbtn">reset app</button>
-        </div>
         <script>
           globalThis.HAXCMSContext="nodejs";
           // reduce FOUC for dark mode so it starts in dark rapidly if selected
@@ -222,9 +183,6 @@
           dqs("#loading").remove();
         });
           function dqs(sel) { return globalThis.document.querySelector(sel)}
-          dqs("#resetbtn").addEventListener("click", (e) => {
-            dqs("app-hax").reset(true, true);
-          });
         </script>
       </div>
       <script>

@@ -2,18 +2,15 @@ import { css, html, unsafeCSS } from "lit";
 import { toJS, autorun } from "mobx";
 import { localStorageSet, localStorageGet } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
-import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { store } from "./lib/v2/AppHaxStore.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { AppHaxAPI } from "./lib/v2/AppHaxBackendAPI.js";
-import { SimpleTourManager } from "@haxtheweb/simple-popover/lib/simple-tour.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import "@haxtheweb/simple-colors-shared-styles/simple-colors-shared-styles.js";
 import "./lib/v2/AppHaxRouter.js";
 import "./lib/v2/app-hax-label.js";
 import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-top-bar.js";
-import { SimpleTourFinder } from "@haxtheweb/simple-popover/lib/SimpleTourFinder.js";
 import "./lib/v2/app-hax-use-case.js";
 import "./lib/v2/app-hax-use-case-filter.js";
 import "./lib/v2/app-hax-search-results.js";
@@ -38,7 +35,7 @@ function soundToggle() {
   store.appEl.playSound("click");
 }
 
-export class AppHax extends I18NMixin(SimpleTourFinder(SimpleColors)) {
+export class AppHax extends I18NMixin(DDD) {
   static get tag() {
     return "app-hax";
   }
@@ -237,22 +234,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
     // contribution helpers
     SuperDaemonInstance.defineOption({
-      title: "Tour of top menu buttons",
-      icon: "help",
-      tags: ["Help", "ui", "tour"],
-      priority: -1000,
-      value: {
-        target: this,
-        method: "helpClick",
-        args: [],
-      },
-      eventName: "super-daemon-element-method",
-      path: "HAX/app/tour",
-      context: ["*"],
-    });
-
-    // contribution helpers
-    SuperDaemonInstance.defineOption({
       title: "Unlock hidden features",
       icon: "hax:hax2022",
       tags: ["Developer", "features", "hidden"],
@@ -400,56 +381,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       path: "HAX/community/contribute",
     });
     this.windowControllers = new AbortController();
-    this.__tour = SimpleTourManager;
-    this.__tour.registerNewTour({
-      key: "hax",
-      name: "HAX top menu",
-      style: `
-      simple-popover-manager::part(simple-popover) {
-        max-width: 250px;
-        font-family: sans-serif;
-      }
-      simple-popover-manager button {
-        font-family: sans-serif;
-        font-size: 12px;
-        margin: 0px 2px;
-        color: var(--simple-colors-default-theme-grey-12);
-      }
-      simple-popover-manager p {
-        font-family: sans-serif;
-        padding: 0;
-        margin: 0;
-        width: 250px;
-        font-size: 10px;
-        line-height: 20px;
-      }
-      simple-popover-manager h1 {
-        font-family: sans-serif;
-        margin: 0;
-        font-size: 12px;
-        width: 250px;
-        padding: 0;
-      }
-      simple-popover-manager::part(simple-popover-body),
-      simple-popover-manager::part(simple-popover-heading) {
-        color: black;
-        background-color: white;
-        font-family: sans-serif;
-      }
-      body.dark-mode simple-popover-manager::part(simple-popover-body),
-      body.dark-mode simple-popover-manager::part(simple-popover-heading) {
-        color: white;
-        background-color: black;
-        font-family: sans-serif;
-      }
-      body.dark-mode simple-popover-manager simple-icon-button-lite {
-        color: white;
-        background-color: black;
-        font-family: sans-serif;
-      }
-      `,
-    });
-    this.tourName = "hax";
     // manage title when activeItem changes
     autorun(() => {
       const item = toJS(store.activeItem);
@@ -944,15 +875,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         .filter:hover {
           box-shadow: var(--ddd-boxShadow-xl);
         }
-        .filterButtons {
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-3, 12px);
-          margin-top: 0;
-          border: none;
-          padding: 0;
-          margin: 0;
-        }
         .filter-btn {
           display: flex;
           align-items: center;
@@ -1254,11 +1176,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       `,
     ];
   }
-  helpClick() {
-    // start the tour
-    store.appEl.playSound("coin2");
-    this.__tour.startTour("hax");
-  }
 
   updated(changedProperties) {
     if (super.updated) {
@@ -1379,38 +1296,19 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
               tabindex="0"
               class="haxLogo"
               title="${this.t.home}"
-              data-simple-tour-stop
-              data-stop-title="data-label"
-              data-label="${this.t.home}"
             >
-              <div data-stop-content slot="tour" style="display:none;">
-                You can come back to this home screen whenever you click this!
-              </div>
             </simple-icon-lite>
           </a>
           <simple-tooltip for="hlogo" position="right" slot="left"
             >${this.t.home}</simple-tooltip
           >
-          <simple-toolbar-button
-            icon="hax:wizard-hat"
-            label="${this.t.merlin}"
-            voice-command="${this.t.merlin}"
-            icon-position="left"
-            id="merlin"
-            @click="${this.openMerlin}"
-            slot="center"
-            data-event="super-daemon"
-            show-text-label
-          ></simple-toolbar-button>
+          <div slot="center">HAXcms Site Dashboard</div>
           <wired-button
             elevation="1"
             slot="right"
             class="soundToggle"
             id="soundtb"
             @click="${soundToggle}"
-            data-simple-tour-stop
-            data-stop-title="data-label"
-            data-label="Sound"
             aria-label="Toggle sound effects ${this.soundIcon.includes(
               "FullVolume",
             )
@@ -1428,10 +1326,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 : "Sound disabled"}"
             >
             </simple-icon-lite>
-            <div slot="tour" data-stop-content>
-              Not a fan of the (awesome) sound effects? You can mute them if you
-              prefer.
-            </div>
           </wired-button>
           <simple-tooltip for="soundtb" position="bottom" slot="right"
             >Toggle sound</simple-tooltip
@@ -1444,14 +1338,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             slot="right"
             id="user-menu"
             ?is-open="${this.userMenuOpen}"
-            data-simple-tour-stop
-            data-stop-title="data-label"
-            data-label="Menu"
           >
-            <div slot="tour" data-stop-content>
-              You want to log out and be someone else? Create a new site? Click
-              your character. Your character is unique to you!
-            </div>
             <button
               @click="${this.toggleMenu}"
               class="topbar-character"
@@ -1502,12 +1389,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       </header>
       <main @click="${this.closeMenu}">
         <confetti-container id="confetti">
-          <div class="label">
-            <app-hax-label heading-level="1">
-              HAX Site Dashboard
-              <div slot="subtitle">Let's build something awesome!</div>
-            </app-hax-label>
-          </div>
           <section class="content">
             <div class="start-journey">
               <app-hax-use-case-filter></app-hax-use-case-filter>
