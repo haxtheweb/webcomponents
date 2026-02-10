@@ -468,6 +468,11 @@ export class AppHaxSearchResults extends SimpleColors {
                       .siteUrl="${item.slug}"
                       .slug="${item.slug}"
                       .image="${this.getThemeImage(item)}"
+                      lastUpdatedTime="${varGet(
+                        item,
+                        "metadata.site.updated",
+                        0,
+                      )}"
                       accent-color="${varGet(
                         item,
                         "metadata.theme.variables.cssVariable",

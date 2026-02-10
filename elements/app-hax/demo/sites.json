@@ -403,7 +403,7 @@
             "path": "@haxtheweb/clean-one/clean-one.js",
             "name": "Course theme",
             "variables": {
-              "image": "",
+              "image": "haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
               "hexCode": "#aeff00",
               "cssVariable": "--simple-colors-default-theme-light-blue-7",
               "icon": "av:closed-caption"
