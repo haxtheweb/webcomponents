@@ -2406,6 +2406,13 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Convert an element from one tag to another.
    */
   haxChangeTagName(node, tagName, maintainContent = true) {
+    // If the command is indent or outdent, check the list type of the active node
+    let command;
+    if(tagName == "indent" || tagName == "outdent"){
+      command = tagName;
+      tagName = node.tagName;
+    }
+
     // Create a replacement tag of the desired type
     var replacement = globalThis.document.createElement(tagName);
 
@@ -2449,72 +2456,99 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     if (originalSlot && HAXStore.isGridPlateElement(node.parentElement)) {
       replacement.setAttribute("slot", originalSlot);
     }
-    // Persist contents
-    // account for empty list and ordered list items
-    if (maintainContent) {
-      replacement.innerHTML = node.innerHTML.trim();
-    }
-    if (tagName == "ul" || tagName == "ol") {
-      if (replacement.innerHTML == "<br />") {
-        replacement.innerHTML = "<li><br /></li>";
-      } else if (
-        !(
+
+    const rng = HAXStore.getRange();
+    const currentNode = rng.commonAncestorContainer.parentNode;
+    switch(command){
+      case "indent":
+        wrap(currentNode, replacement)
+        return replacement;
+      case "outdent":
+        // validate tag name exists in case of broken DOM
+        let bodyNode = rng.commonAncestorContainer.parentNode
+        while(bodyNode && typeof bodyNode.tagName !== "undefined" 
+          && bodyNode.tagName !== "HAX-BODY"){
+          if(bodyNode.parentNode && typeof bodyNode.parentNode.tagName !== "undefined" 
+            && bodyNode.parentNode.tagName === "HAX-BODY") break;
+          
+          bodyNode = bodyNode.parentNode;
+        }
+
+        // If hax-body isn't the next parent
+        if(currentNode.parentNode && currentNode.parentNode !== bodyNode){
+          unwrap(currentNode.parentNode)
+          return currentNode.parentNode;
+        } else {
+          return this.haxChangeTagName(node, "p", true)
+        }
+      default:
+        // Persist contents
+        // account for empty list and ordered list items
+        if (maintainContent) {
+          replacement.innerHTML = node.innerHTML.trim();
+        }
+        if (tagName == "ul" || tagName == "ol") {
+          if (replacement.innerHTML == "<br />") {
+            replacement.innerHTML = "<li><br /></li>";
+          } else if (
+            !(
+              node.tagName.toLowerCase() == "ul" ||
+              node.tagName.toLowerCase() == "ol"
+            )
+          ) {
+            replacement.innerHTML =
+              "<li>" +
+              node.innerHTML
+                .trim()
+                .replace(/<br\/>/g, "</li>\n<li>")
+                .replace(/<br>/g, "</li>\n<li>") +
+              "</li>";
+          }
+          // when converting to list, ensure slot is on the list, not the items
+          if (originalSlot) {
+            replacement.setAttribute("slot", originalSlot);
+            // remove slot from any child LI elements
+            setTimeout(() => {
+              Array.from(replacement.children).forEach((child) => {
+                if (child.tagName === "LI" && child.getAttribute("slot")) {
+                  child.removeAttribute("slot");
+                }
+              });
+            }, 0);
+          }
+        } else if (
           node.tagName.toLowerCase() == "ul" ||
           node.tagName.toLowerCase() == "ol"
-        )
-      ) {
-        replacement.innerHTML =
-          "<li>" +
-          node.innerHTML
-            .trim()
-            .replace(/<br\/>/g, "</li>\n<li>")
-            .replace(/<br>/g, "</li>\n<li>") +
-          "</li>";
-      }
-      // when converting to list, ensure slot is on the list, not the items
-      if (originalSlot) {
-        replacement.setAttribute("slot", originalSlot);
-        // remove slot from any child LI elements
-        setTimeout(() => {
-          Array.from(replacement.children).forEach((child) => {
-            if (child.tagName === "LI" && child.getAttribute("slot")) {
-              child.removeAttribute("slot");
-            }
-          });
-        }, 0);
-      }
-    } else if (
-      node.tagName.toLowerCase() == "ul" ||
-      node.tagName.toLowerCase() == "ol"
-    ) {
-      // if we're coming from ul or ol strip out the li tags
-      replacement.innerHTML = replacement.innerHTML
-        .replace(/<ul>/g, "")
-        .replace(/<\/ul>/g, "")
-        .replace(/<li><\/li>/g, "")
-        .replace(/<li>/g, "")
-        .replace(/<\/li>/g, "<br/>");
-    }
-    // Switch!
-    try {
-      node.replaceWith(replacement);
+        ) {
+          // if we're coming from ul or ol strip out the li tags
+          replacement.innerHTML = replacement.innerHTML
+            .replace(/<ul>/g, "")
+            .replace(/<\/ul>/g, "")
+            .replace(/<li><\/li>/g, "")
+            .replace(/<li>/g, "")
+            .replace(/<\/li>/g, "<br/>");
+        }
+        // Switch!
+        try {
+          node.replaceWith(replacement);
 
-      if (maintainContent) {
-        // Ensure the new element immediately has the correct
-        // editable / drag-and-drop state, then route focus
-        // through the normal HAX focus logic so activeNode and
-        // context menus stay in sync.
-        this.__applyNodeEditableStateWhenReady(replacement, this.editMode);
-        setTimeout(() => {
-          this.__focusLogic(replacement);
-        }, 10);
-      }
-    } catch (e) {
-      console.warn(e);
-      console.warn(replacement);
-      console.warn(node);
+          if (maintainContent) {
+            // Ensure the new element immediately has the correct
+            // editable / drag-and-drop state, then route focus
+            // through the normal HAX focus logic so activeNode and
+            // context menus stay in sync.
+            this.__applyNodeEditableStateWhenReady(replacement, this.editMode);
+            setTimeout(() => {
+              this.__focusLogic(replacement);
+            }, 10);
+          }
+        } catch (e) {
+          console.warn(e);
+          console.warn(replacement);
+          console.warn(node);
+        }
+        return replacement;
     }
-    return replacement;
   }
   /**
    * Delete the node passed in
@@ -4941,14 +4975,16 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           if (this.polyfillSafe) {
             this.__tabTrap = true;
             this.__indentTrap = true;
-            globalThis.document.execCommand("indent");
+            const replacement = this.haxChangeTagName(this.activeNode, "indent", true);
+            HAXStore.activeNode = replacement;
+            HAXStore._positionCursorInNode(replacement, 0)
           }
         } else {
           while (!focus) {
             // do nothing
             if (node.nextSibling == null) {
               focus = true;
-            } else if (node.nextSibling.focus === "function") {
+            } else if (typeof node.nextSibling.focus === "function") {
               node.nextSibling.focus();
               focus = true;
             } else {
@@ -4982,7 +5018,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           if (this.polyfillSafe) {
             this.__tabTrap = true;
             this.__indentTrap = true;
-            globalThis.document.execCommand("outdent");
+            const replacement = this.haxChangeTagName(this.activeNode, "outdent", true);
+            HAXStore.activeNode = replacement;
+            HAXStore._positionCursorInNode(replacement, 0)
           }
         } else {
           if (node != null) {

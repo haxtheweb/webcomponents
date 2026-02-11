@@ -582,6 +582,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {
       ...super.indentButton,
       label: this.t.indentButton,
+      type: "hax-text-editor-tag-toggle"
     };
   }
   /**
@@ -593,6 +594,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {
       ...super.outdentButton,
       label: this.t.outdentButton,
+      type: "hax-text-editor-tag-toggle"
     };
   }
   /**

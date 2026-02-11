@@ -10,11 +10,10 @@ class HaxTextEditorTagToggle extends RichTextEditorButtonBehaviors(LitElement) {
   sendCommand(e) {
     // Desired block tag from the toggle (ol, ul, h1, h2, blockquote)
     let newTag = this.operationCommand || this.command;
-    console.log(this.commandVal)
     if(this.command && this.commandVal){
-      newTag = this.commandVal
+      newTag = this.commandVal;
     } else if (this.operationCommand && this.operationCommandVal){
-      newTag = this.operationCommandVal
+      newTag = this.operationCommandVal;
     }
 
     // If we don't have a target tag, bail early
@@ -61,6 +60,7 @@ class HaxTextEditorTagToggle extends RichTextEditorButtonBehaviors(LitElement) {
       if (replacement && replacement.tagName) {
         HAXStore.activeNode = replacement;
       }
+      return;
     }
 
     // Use HAX's style-guide-aware tag change logic. This will:
