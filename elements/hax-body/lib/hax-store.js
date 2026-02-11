@@ -3507,7 +3507,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         icon: "icons:link",
         color: "blue-grey",
         tags: [
-          "Resource",
+          "Writing",
           "link",
           "a",
           "url",
