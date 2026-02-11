@@ -32,6 +32,7 @@ export class AppHaxSiteBars extends SimpleColors {
     this.textInfo = {};
     this.siteId = "";
     this.description = "";
+    this.lastUpdatedTime = 0;
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
@@ -47,12 +48,13 @@ export class AppHaxSiteBars extends SimpleColors {
       description: { type: String },
       siteUrl: { type: String, attribute: "site-url" },
       image: { type: String },
+      lastUpdatedTime: { type: Number, attribute: "last-updated-time"}
     };
   }
 
   toggleOptionsMenu() {
     const menu = this.shadowRoot.querySelector("simple-context-menu");
-    const button = this.shadowRoot.querySelector("#settingsIcon");
+    const button = this.shadowRoot.querySelector("#moreOptions");
     if (menu && button) {
       menu.toggle(button);
     }
@@ -283,199 +285,101 @@ export class AppHaxSiteBars extends SimpleColors {
           width: 264px;
           max-width: 264px;
           font-family: var(--ddd-font-primary);
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-white)
-          );
           background-color: light-dark(
             white,
-            var(--ddd-theme-default-coalyGray, #222)
+            var(--ddd-theme-default-roarMaxlight)
           );
           border: var(--ddd-border-sm);
-          border-color: light-dark(
-            var(--ddd-theme-default-slateGray, #c4c4c4),
-            var(--ddd-theme-default-slateGray, #666)
-          );
+          border-radius: var(--ddd-radius-sm, 4px);
           min-height: 260px;
           box-shadow: light-dark(
             2px 2px 12px #1c1c1c,
             2px 2px 12px rgba(0, 0, 0, 0.3)
           );
-          border-radius: var(--ddd-radius-sm, 4px);
           transition: all 0.2s ease;
-          overflow: visible;
         }
+
         :host(:hover),
         :host(:focus-within) {
           transform: translateY(-2px);
-          border-color: light-dark(
-            var(--ddd-theme-default-keystoneYellow, #ffd100),
-            var(--ddd-theme-default-keystoneYellow, #ffd100)
-          );
+          border-color: var(--ddd-theme-default-accent);
           box-shadow: light-dark(
             4px 8px 24px rgba(28, 28, 28, 0.15),
             4px 8px 24px rgba(0, 0, 0, 0.5)
           );
         }
+
         #mainCard {
           display: flex;
           flex-direction: column;
-          overflow: visible;
         }
+
         .cardContent {
-          padding: 12px 16px 20px;
-          overflow: visible;
+          padding: var(--ddd-spacing-2);
         }
-        .imageLink img {
+
+        .cardImage {
           width: 100%;
-          height: 125px;
+          height: 180px;
           object-fit: cover;
-          border-top-right-radius: 8px;
           border-top-left-radius: 8px;
-          border-bottom: solid var(--ddd-theme-default-nittanyNavy) 8px;
-          overflow: clip;
-          justify-self: center;
-        }
-        .imageLink {
-          position: relative;
-          display: block;
-          width: 100%;
-          text-decoration: none;
-          cursor: pointer;
-        }
-        .settings-button {
-          position: relative;
-          display: inline-block;
-          align-self: center;
-          overflow: visible;
-        }
-        simple-context-menu {
-          --simple-context-menu-background: var(
-            --simple-toolbar-button-bg,
-            white
-          );
-          --simple-context-menu-background-dark: var(
-            --simple-toolbar-button-bg,
-            #000000
-          );
-          --simple-context-menu-border-color: var(
-            --simple-toolbar-button-border-color,
-            var(--simple-toolbar-border-color, #e0e0e0)
-          );
-          --simple-context-menu-border-color-dark: var(
-            --simple-toolbar-button-border-color,
-            var(--simple-toolbar-border-color, #444)
-          );
-          --simple-context-menu-shadow: var(
-            --simple-toolbar-menu-list-box-shadow,
-            0 2px 8px rgba(0, 0, 0, 0.15)
-          );
-          --simple-context-menu-min-width: 180px;
-        }
-        simple-toolbar-button {
-          --simple-toolbar-button-border-radius: 0;
-          --simple-toolbar-button-hover-border-color: transparent;
-          cursor: pointer;
+          border-top-right-radius: 8px;
+          border-bottom: 1px solid var(--ddd-theme-default-limestoneGray);
+          background-color: var(--ddd-theme-default-skyLight);
         }
 
         .titleBar {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          font-size: var(--ddd-font-size-xs, 14px);
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-white)
-          );
-          overflow: visible;
           position: relative;
+          overflow: visible;
+          margin-bottom: 8px;
         }
-        .titleBar > div:first-child {
-          flex: 1;
-          min-width: 0;
-          overflow: hidden;
+
+        .more-options {
+          display: flex;
+          align-items: center;
         }
-        p {
-          font-size: var(--ddd-font-size-4xs, 12px);
-          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-2, 8px)
-            var(--ddd-spacing-1, 6px) var(--ddd-spacing-2, 10px);
-          margin: 0;
-          line-height: 1.4;
+
+        .more-options simple-icon-button-lite {
+          --simple-icon-color: var(--ddd-theme-default-nittanyNavy);
         }
+
+        .more-options simple-icon-button-lite:hover,
+        .more-options simple-icon-button-lite:focus,
+        .more-options simple-icon-button-lite::part(button):hover,
+        .more-options simple-icon-button-lite::part(button):focus {
+          color: var(--ddd-theme-default-accent);
+          --simple-icon-color: var(--ddd-theme-default-accent);
+        }
+
         ::slotted([slot="heading"]) {
-          font-size: var(--ddd-font-size-xs, 14px);
+          font-size: 24px;
           font-weight: var(--ddd-font-weight-bold, 700);
-          color: light-dark(
-            var(--ddd-theme-default-nittanyNavy),
-            var(--ddd-theme-default-white)
-          );
-          text-decoration: none;
-          display: block;
-          margin: 0;
-          line-height: 1.2;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          max-width: 100%;
-          cursor: pointer;
-        }
-        ::slotted([slot="heading"]:hover) {
-          text-decoration: underline;
-        }
-        .site-slug {
-          font-size: var(--ddd-font-size-4xs, 10px);
-          color: light-dark(
-            var(--ddd-theme-default-slateGray, #666),
-            var(--ddd-theme-default-limestoneGray, #aaa)
-          );
-          font-family: var(--ddd-font-navigation, monospace);
-          margin: var(--ddd-spacing-1, 4px) 0 0 0;
-          display: block;
-          line-height: 1;
-        }
-        button {
-          display: flex;
-          background: var(--ddd-theme-default-nittanyNavy, #001e44);
-          color: var(--ddd-theme-default-white, white);
-          border: var(--ddd-border-xs, 1px solid) transparent;
-          border-radius: var(--ddd-radius-sm, 4px);
-          font-family: var(--ddd-font-primary, sans-serif);
-          font-size: var(--ddd-font-size-3xs, 11px);
-          font-weight: var(--ddd-font-weight-medium, 500);
-          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
-          min-height: var(--ddd-spacing-7, 28px);
-          align-items: center;
-          justify-content: start;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          box-shadow: var(--ddd-boxShadow-sm);
+          color: var(--ddd-theme-default-nittanyNavy);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+          cursor: pointer;
         }
-        button:hover {
-          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          transform: translateY(-1px);
-          box-shadow: var(--ddd-boxShadow-md);
+
+        ::slotted(a[slot="heading"]) {
+            text-decoration: none;
         }
-        .cardBottom {
+
+        .date {
           display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-top: 6px;
-          padding: 0px 12px 16px 12px;
-          gap: 4px;
+          gap: var(--ddd-spacing-1, 4px);
+          margin-top: var(--ddd-spacing-2, 8px);
+          font-size: var(--ddd-font-size-xxs, 12px);
+          color: var(--ddd-theme-default-limestoneGray);
+          font-weight: var(--ddd-font-weight-bold, 500);
+          font-size: 20px;
         }
-        .cardBottom button {
-          flex: 1;
-          margin: 0 2px;
-          min-width: 0;
-        }
-        ::slotted(a[slot="heading"]),
-        ::slotted(span[slot="subHeading"]),
-        ::slotted(div[slot="pre"]) {
-          display: block;
+
+        .date simple-icon {
+          --simple-icon-color: var(--ddd-theme-default-limestoneGray);
         }
       `,
     ];
@@ -489,6 +393,7 @@ export class AppHaxSiteBars extends SimpleColors {
   render() {
     return html`
       <div id="mainCard">
+        <div class="cardImage">
         ${this.image
           ? html`
               <a
@@ -507,31 +412,24 @@ export class AppHaxSiteBars extends SimpleColors {
             `
           : ""}
 
+        </div>
         <div class="cardContent">
           <div class="titleBar">
-            <div>
-              <slot name="heading"></slot>
-              ${this.slug
-                ? html`<div class="site-slug">
-                    ${this.getSiteMachineName()}
-                  </div>`
-                : ""}
-            </div>
-            <div class="settings-button">
+            <slot name="heading"></slot>
+
+            <div class="more-options">
               <simple-icon-button-lite
-                id="settingsIcon"
-                icon="hax:settings"
+                id="moreOptions"
+                icon="lrn:more-vert"
                 @click="${this.toggleOptionsMenu}"
                 aria-label="Open options"
                 aria-haspopup="menu"
               ></simple-icon-button-lite>
-              <simple-tooltip
-                for="settingsIcon"
-                position="left"
-                animation-delay="0"
-              >
+
+              <simple-tooltip for="moreOptions" position="left">
                 Options
               </simple-tooltip>
+
               <simple-context-menu title="Options">
                 <simple-toolbar-button
                   icon="content-copy"
@@ -573,17 +471,13 @@ export class AppHaxSiteBars extends SimpleColors {
             </div>
           </div>
 
-          <slot name="pre"></slot>
-
-          <div class="cardBottom">
-            <a
-              href="${this.siteUrl}"
-              target="_blank"
-              rel="noopener noreferrer"
-              style="flex: 1; text-decoration: none;"
-            >
-              <button class="open" style="width: 100%;">Open</button>
-            </a>
+          <div class="date">
+            <simple-icon icon="hax:calendar"></simple-icon>
+            <simple-datetime
+                format="m/j/y"
+                .timestamp="${this.lastUpdatedTime}"
+                unix
+            ></simple-datetime>
           </div>
         </div>
       </div>

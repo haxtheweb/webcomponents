@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "name": "course-site-template",
+    "type": "skeleton",
+    "version": "1.0.0"
+  },
+  "site": {
+    "name": "Course Site",
+    "description": "A structured template for online courses with lessons and modules",
+    "theme": "clean-one"
+  },
+  "build": {
+    "type": "skeleton",
+    "structure": "from-skeleton",
+    "items": [
+      {
+        "id": "item-home-course",
+        "title": "Home",
+        "slug": "home",
+        "order": 0,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2>Welcome</h2><p>Edit this page to get started on your course site.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["course"]
+        }
+      },
+      {
+        "id": "item-syllabus-course",
+        "title": "Syllabus",
+        "slug": "syllabus",
+        "order": 1,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2>Syllabus</h2><p>Add course expectations, policies, and schedule here.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["course"]
+        }
+      },
+      {
+        "id": "item-module-1-course",
+        "title": "Module 1",
+        "slug": "module-1",
+        "order": 2,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2>Module 1</h2><p>Start building your first module here.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["course"]
+        }
+      }
+    ],
+    "files": []
+  },
+  "theme": {}
+}

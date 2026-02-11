@@ -10,7 +10,7 @@
         { "icon": "hax:lesson", "tooltip": "Educational Content" }
       ],
       "demo-url": "https://oer.hax.psu.edu/bto108/sites/edtechjoker-course-skelton",
-      "skeleton-url": "#"
+      "skeleton-url": "skeletons/course-site-template.json"
     },
     {
       "title": "Portfolio Site Template",
@@ -21,7 +21,7 @@
         { "icon": "icons:perm-identity", "tooltip": "Personal Portfolio" }
       ],
       "demo-url": "#",
-      "skeleton-url": "#"
+      "skeleton-url": "skeletons/portfolio-site-template.json"
     },
     {
       "title": "Blog Site Template",
@@ -30,7 +30,7 @@
       "category": ["blog", "writing"],
       "attributes": [{ "icon": "lrn:write", "tooltip": "Blog Content" }],
       "demo-url": "#",
-      "skeleton-url": "#"
+      "skeleton-url": "skeletons/blog-site-template.json"
     },
     {
       "title": "Documentation Site",
@@ -41,7 +41,7 @@
         { "icon": "icons:description", "tooltip": "Documentation" }
       ],
       "demo-url": "#",
-      "skeleton-url": "#"
+      "skeleton-url": "skeletons/documentation-site-template.json"
     }
   ]
 }

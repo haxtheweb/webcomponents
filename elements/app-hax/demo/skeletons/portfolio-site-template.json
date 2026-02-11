@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "name": "portfolio-site-template",
+    "type": "skeleton",
+    "version": "1.0.0"
+  },
+  "site": {
+    "name": "Portfolio",
+    "description": "A clean template for showcasing work and projects",
+    "theme": "clean-portfolio-theme"
+  },
+  "build": {
+    "type": "skeleton",
+    "structure": "from-skeleton",
+    "items": [
+      {
+        "id": "item-home-portfolio",
+        "title": "Home",
+        "slug": "home",
+        "order": 0,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2>Hi, I'm…</h2><p>Use this space to introduce yourself.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["portfolio"]
+        }
+      },
+      {
+        "id": "item-projects-portfolio",
+        "title": "Projects",
+        "slug": "projects",
+        "order": 1,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2>Projects</h2><p>Add a few highlight projects here.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["portfolio"]
+        }
+      },
+      {
+        "id": "item-contact-portfolio",
+        "title": "Contact",
+        "slug": "contact",
+        "order": 2,
+        "parent": null,
+        "indent": 0,
+        "content": "<h2>Contact</h2><p>Add contact info or a call-to-action.</p>",
+        "metadata": {
+          "published": true,
+          "hideInMenu": false,
+          "tags": ["portfolio"]
+        }
+      }
+    ],
+    "files": []
+  },
+  "theme": {}
+}

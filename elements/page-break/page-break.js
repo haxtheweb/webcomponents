@@ -608,6 +608,7 @@ export class PageBreak extends IntersectionObserverMixin(
         }
         simple-toolbar-button.menu-button {
           top: -8px;
+          right: var(--page-break-menu-button-right, 0);
           border: var(--ddd-border-xs);
           border-radius: var(--ddd-radius-circle);
           box-shadow: var(--ddd-boxShadow-sm);

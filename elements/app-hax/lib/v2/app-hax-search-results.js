@@ -78,25 +78,14 @@ export class AppHaxSearchResults extends SimpleColors {
           display: flex;
           align-items: center;
           justify-content: flex-start;
-          gap: var(--ddd-spacing-2, 8px);
-          width: 65vw;
+          width: 96vw;
           max-height: 280px;
           position: relative;
           border-radius: var(--ddd-radius-md, 8px);
           border: var(--ddd-border-xs, 1px solid)
             var(--ddd-theme-default-limestoneLight, #e4e5e7);
           box-shadow: var(--ddd-boxShadow-sm);
-          padding: var(--ddd-spacing-2, 8px);
-          transition: box-shadow 0.2s ease;
           overflow: visible;
-        }
-        :host([dark]) .carousel-container,
-        body.dark-mode .carousel-container {
-          border-color: var(--ddd-theme-default-slateGray, #666);
-          color: var(--ddd-theme-default-white, white);
-        }
-        .carousel-container:hover {
-          box-shadow: var(--ddd-boxShadow-md);
         }
         .pager-container {
           display: flex;
@@ -114,47 +103,18 @@ export class AppHaxSearchResults extends SimpleColors {
         .pager-container::-webkit-scrollbar {
           display: none;
         }
-        .pager-dot {
-          width: var(--ddd-spacing-3, 12px);
-          height: var(--ddd-spacing-3, 12px);
-          border-radius: var(--ddd-radius-circle, 50%);
-          background: var(--ddd-theme-default-limestoneGray, #a2aaad);
-          border: var(--ddd-border-xs, 1px solid) transparent;
-          cursor: pointer;
-          transition: all 0.2s ease;
-          outline: none;
-        }
-        .pager-dot:hover,
-        .pager-dot:focus {
-          transform: scale(1.2);
-          outline: var(--ddd-border-xs, 1px solid)
-            var(--ddd-theme-default-keystoneYellow, #ffd100);
-        }
-        .pager-dot.active {
-          background: var(--ddd-theme-default-nittanyNavy, #001e44);
-          border-color: var(--ddd-theme-default-keystoneYellow, #ffd100);
-          transform: scale(1.1);
-        }
-        :host([dark]) .pager-dot,
-        body.dark-mode .pager-dot {
-          background: var(--ddd-theme-default-slateGray, #666);
-        }
-        :host([dark]) .pager-dot.active,
-        body.dark-mode .pager-dot.active {
-          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
-          border-color: var(--ddd-theme-default-white, white);
-        }
+
         .scroll-left,
         .scroll-right {
           background: var(--ddd-theme-default-nittanyNavy, #001e44);
           color: var(--ddd-theme-default-white, white);
           border: var(--ddd-border-sm, 2px solid)
-            var(--ddd-theme-default-keystoneYellow, #ffd100);
+            white;
           border-radius: var(--ddd-radius-sm, 4px);
           padding: var(--ddd-spacing-4, 16px);
           cursor: pointer;
-          height: 240px;
-          min-width: var(--ddd-spacing-12, 56px);
+          height: var(--ddd-spacing-12);
+          width: var(--ddd-spacing-12);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -358,11 +318,6 @@ export class AppHaxSearchResults extends SimpleColors {
             display: none;
           }
 
-          .carousel-container {
-            padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-4, 16px);
-            justify-content: center;
-          }
-
           #results {
             /* Single item takes full width on mobile */
             gap: 0;
@@ -406,26 +361,6 @@ export class AppHaxSearchResults extends SimpleColors {
         }
       `,
     ];
-  }
-  // Calculate which dot indicators to display (max 10)
-  getVisibleDotRange() {
-    const maxDots = 10;
-    if (this.totalItems <= maxDots) {
-      // Show all dots if we have 10 or fewer items
-      return { start: 1, end: this.totalItems };
-    }
-
-    // Calculate the range to keep current index centered when possible
-    const halfRange = Math.floor(maxDots / 2);
-    let start = Math.max(1, this.currentIndex - halfRange);
-    let end = Math.min(this.totalItems, start + maxDots - 1);
-
-    // Adjust start if we're near the end
-    if (end === this.totalItems) {
-      start = Math.max(1, end - maxDots + 1);
-    }
-
-    return { start, end };
   }
 
   // Return items sorted according to the current sortOption
@@ -488,7 +423,6 @@ export class AppHaxSearchResults extends SimpleColors {
     // Update total items count based on sorted items
     const itemsToRender = this.getSortedItems();
     this.totalItems = itemsToRender.length;
-    const dotRange = this.getVisibleDotRange();
 
     return html`
       <div
@@ -534,6 +468,11 @@ export class AppHaxSearchResults extends SimpleColors {
                       .siteUrl="${item.slug}"
                       .slug="${item.slug}"
                       .image="${this.getThemeImage(item)}"
+                      lastUpdatedTime="${varGet(
+                        item,
+                        "metadata.site.updated",
+                        0,
+                      )}"
                       accent-color="${varGet(
                         item,
                         "metadata.theme.variables.cssVariable",
@@ -588,32 +527,6 @@ export class AppHaxSearchResults extends SimpleColors {
             >View next sites in the carousel</span
           >
         </button>
-        ${this.totalItems > 1
-          ? html`
-              <div class="pager-container">
-                ${Array.from(
-                  { length: dotRange.end - dotRange.start + 1 },
-                  (_, index) => {
-                    const pageNumber = dotRange.start + index;
-                    return html`
-                      <button
-                        class="pager-dot ${this.currentIndex === pageNumber
-                          ? "active"
-                          : ""}"
-                        @click="${() => this.goToPage(pageNumber)}"
-                        aria-label="Go to page ${pageNumber} of ${this
-                          .totalItems}"
-                        aria-current="${this.currentIndex === pageNumber
-                          ? "page"
-                          : "false"}"
-                        tabindex="0"
-                      ></button>
-                    `;
-                  },
-                )}
-              </div>
-            `
-          : ""}
       </div>
     `;
   }

@@ -3,6 +3,7 @@ import { LitElement, html, css } from "lit";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import { store } from "./AppHaxStore.js";
 import "./app-hax-use-case.js";
 import "./app-hax-search-results.js";
@@ -107,39 +108,140 @@ export class AppHaxUseCaseFilter extends LitElement {
           padding-right: var(--ddd-spacing-5, 20px);
         }
         .contentSection {
-          display: flex;
-          align-items: flex-start;
-          justify-content: flex-start;
-          gap: var(--ddd-spacing-12, 48px);
           width: 100%;
           margin: 0;
           padding: 0;
           box-sizing: border-box;
         }
-        .leftSection,
-        .rightSection {
+
+        .quick-create {
+          margin-left: calc(0px - var(--ddd-spacing-5, 20px));
+          margin-right: calc(0px - var(--ddd-spacing-5, 20px));
+          padding: var(--ddd-spacing-5, 20px) var(--ddd-spacing-5, 20px)
+            var(--ddd-spacing-4, 16px);
+          background: var(--ddd-theme-default-nittanyNavy, #001e44);
+          color: var(--ddd-theme-default-white, white);
+        }
+
+        :host([dark]) .quick-create,
+        body.dark-mode .quick-create {
+          background: var(--ddd-theme-default-coalyGray, #222);
+          color: var(--ddd-theme-default-white, white);
+        }
+
+        .quick-create h2 {
+          color: inherit;
+          margin: 0 0 var(--ddd-spacing-4, 16px) 0;
+        }
+
+        .quick-create-grid {
+          display: flex;
+          gap: var(--ddd-spacing-4, 16px);
+          overflow-x: auto;
+          overflow-y: hidden;
+          padding-bottom: var(--ddd-spacing-2, 8px);
+          scrollbar-width: thin;
+          scroll-snap-type: x mandatory;
+        }
+
+        .quick-tile {
+          appearance: none;
+          border: var(--ddd-border-sm, 2px solid);
+          border-color: var(--ddd-theme-default-white, white);
+          border-radius: var(--ddd-radius-md, 8px);
+          background: var(--ddd-theme-default-white, white);
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          width: 180px;
+          min-width: 180px;
+          padding: 0;
+          cursor: pointer;
+          overflow: hidden;
           display: flex;
           flex-direction: column;
-          flex: 1 1 0;
+          scroll-snap-align: start;
+          box-shadow: var(--ddd-boxShadow-md);
+          transition: transform 0.2s ease, box-shadow 0.2s ease,
+            border-color 0.2s ease;
         }
-        .leftSection {
-          width: 240px;
-          min-width: 200px;
-          max-width: 260px;
-          margin-left: 0;
-          margin-right: var(--ddd-spacing-1, 4px);
-          padding-top: 0;
-          box-sizing: border-box;
-          align-self: flex-start;
+
+        .quick-tile:hover,
+        .quick-tile:focus-visible {
+          transform: translateY(-2px);
+          box-shadow: var(--ddd-boxShadow-lg);
+          border-color: var(--ddd-theme-default-keystoneYellow, #ffd100);
+          outline: none;
         }
-        .rightSection {
-          flex: 1;
-          min-width: 0;
-          box-sizing: border-box;
+
+        :host([dark]) .quick-tile,
+        body.dark-mode .quick-tile {
+          background: var(--ddd-theme-default-coalyGray, #333);
+          color: var(--ddd-theme-default-white, white);
+          border-color: var(--ddd-theme-default-limestoneGray, #a2aaad);
+        }
+
+        .quick-thumb {
+          width: 100%;
+          height: 170px;
+          background: var(--ddd-theme-default-limestoneMaxLight, #f5f5f5);
           display: flex;
-          flex-direction: column;
-          overflow: visible;
+          align-items: center;
+          justify-content: center;
         }
+
+        :host([dark]) .quick-thumb,
+        body.dark-mode .quick-thumb {
+          background: var(--ddd-theme-default-coalyGray, #444);
+        }
+
+        .quick-thumb img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .quick-thumb simple-icon-lite {
+          --simple-icon-height: var(--ddd-icon-3xl, 72px);
+          --simple-icon-width: var(--ddd-icon-3xl, 72px);
+          color: var(--ddd-theme-default-slateGray, #666);
+        }
+
+        :host([dark]) .quick-thumb simple-icon-lite,
+        body.dark-mode .quick-thumb simple-icon-lite {
+          color: var(--ddd-theme-default-limestoneGray, #a2aaad);
+        }
+
+        .quick-label {
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(--ddd-font-size-xs, 14px);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          padding: var(--ddd-spacing-3, 12px);
+          text-align: center;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .template-group {
+          width: 100%;
+          box-sizing: border-box;
+        }
+
+        .template-group + .template-group {
+          margin-top: var(--ddd-spacing-6, 24px);
+        }
+
+        .template-group-heading {
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-size: var(--ddd-font-size-m, 20px);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          color: var(--app-hax-accent-color, var(--accent-color));
+          margin: 0 0 var(--ddd-spacing-4, 16px) 0;
+          text-decoration: underline;
+          text-decoration-thickness: var(--ddd-border-size-xs, 1px);
+          text-underline-offset: var(--ddd-spacing-1, 4px);
+        }
+
         .template-results {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -147,6 +249,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           width: 100%;
           box-sizing: border-box;
         }
+
         #returnToSection {
           width: 100%;
         }
@@ -233,41 +336,14 @@ export class AppHaxUseCaseFilter extends LitElement {
           color: var(--ddd-theme-default-white, white);
         }
         .filter {
-          position: relative;
-          top: 0;
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-5, 20px);
-          background: var(--ddd-theme-default-white, white);
-          border-radius: var(--ddd-radius-lg, 12px);
-          box-shadow: var(--ddd-boxShadow-lg);
-          border: var(--ddd-border-xs, 1px solid);
+          border-bottom: var(--ddd-border-xs, 1px solid);
           border-color: var(--ddd-theme-default-slateGray, #666);
-          padding: var(--ddd-spacing-6, 24px);
-          margin-top: 0;
-          margin-bottom: 0;
+          margin-top: var(--ddd-spacing-4, 16px);
           box-sizing: border-box;
           font-family: var(--ddd-font-primary, sans-serif);
           transition: box-shadow 0.2s ease;
         }
-        :host([dark]) .filter,
-        body.dark-mode .filter {
-          background: var(--ddd-theme-default-coalyGray, #222);
-          border-color: var(--ddd-theme-default-slateGray, #666);
-          color: var(--ddd-theme-default-white, white);
-        }
-        .filter:hover {
-          box-shadow: var(--ddd-boxShadow-xl);
-        }
-        .filterButtons {
-          display: flex;
-          flex-direction: column;
-          gap: var(--ddd-spacing-3, 12px);
-          margin-top: 0;
-          border: none;
-          padding: 0;
-          margin: 0;
-        }
+
         .filter-btn {
           display: flex;
           align-items: center;
@@ -501,15 +577,6 @@ export class AppHaxUseCaseFilter extends LitElement {
           .contentSection {
             display: block;
           }
-          .leftSection {
-            width: 100%;
-            max-width: 100%;
-            margin-bottom: var(--ddd-spacing-4, 16px);
-            position: relative;
-          }
-          .rightSection {
-            width: 100%;
-          }
           :host([show-filter]) .filter {
             display: flex;
             width: 250px;
@@ -532,20 +599,6 @@ export class AppHaxUseCaseFilter extends LitElement {
         @media (max-width: 600px) {
           .contentSection {
             display: block;
-          }
-          .leftSection {
-            width: 100%;
-            max-width: 100%;
-            margin-bottom: var(--ddd-spacing-3, 12px);
-            position: relative;
-          }
-          .rightSection {
-            width: 100%;
-          }
-          :host([show-filter]) .filter {
-            display: flex;
-            width: 200px;
-            max-width: 20vw;
           }
           :host .collapseFilter {
             display: flex;
@@ -603,10 +656,131 @@ export class AppHaxUseCaseFilter extends LitElement {
     }
   }
 
+  scrollToGroup(headingId, dataTypeToFocus) {
+    const heading =
+      this.shadowRoot && headingId
+        ? this.shadowRoot.querySelector("#" + headingId)
+        : null;
+    if (heading) {
+      heading.scrollIntoView({ behavior: "smooth", block: "start" });
+      setTimeout(() => {
+        this.focusFirstOption(dataTypeToFocus);
+      }, 350);
+    }
+  }
+
+  focusFirstOption(dataType) {
+    if (!dataType || !Array.isArray(this.filteredItems)) {
+      return;
+    }
+    const index = this.filteredItems.findIndex(
+      (item) => item && item.dataType === dataType,
+    );
+    if (index === -1) {
+      return;
+    }
+
+    const el =
+      this.shadowRoot &&
+      this.shadowRoot.querySelector(
+        `app-hax-use-case[data-item-index="${index}"]`,
+      );
+
+    if (el && el.shadowRoot) {
+      const btn = el.shadowRoot.querySelector("button.select");
+      if (btn) {
+        btn.focus();
+        return;
+      }
+    }
+
+    // Fallback focus
+    if (el && typeof el.focus === "function") {
+      el.focus();
+    }
+  }
+
   render() {
+    const skeletons = Array.isArray(this.items)
+      ? this.items.filter((i) => i && i.dataType === "skeleton")
+      : [];
+    const quickSkeletons = skeletons.slice(0, 3);
+
     return html`
       <div class="contentSection">
-        <div class="leftSection">
+        <section class="quick-create" aria-labelledby="quick-create-heading">
+          <h2 id="quick-create-heading">Create New Site...</h2>
+          <div
+            class="quick-create-grid"
+            role="list"
+            aria-label="Quick create options"
+          >
+            ${quickSkeletons.map(
+              (item) => html`
+                <button
+                  class="quick-tile"
+                  type="button"
+                  role="listitem"
+                  @click=${() => this.openTemplateModal(item)}
+                  aria-label="Create from template: ${item.useCaseTitle}"
+                >
+                  <span class="quick-thumb">
+                    ${item.useCaseImage
+                      ? html`<img src="${item.useCaseImage}" alt="" />`
+                      : html`<simple-icon-lite
+                          icon="icons:description"
+                        ></simple-icon-lite>`}
+                  </span>
+                  <span class="quick-label">${item.useCaseTitle}</span>
+                </button>
+              `,
+            )}
+
+            <button
+              class="quick-tile"
+              type="button"
+              role="listitem"
+              @click=${() =>
+                this.scrollToGroup("from-template-heading", "skeleton")}
+              aria-label="More templates"
+            >
+              <span class="quick-thumb">
+                <simple-icon-lite icon="icons:add"></simple-icon-lite>
+              </span>
+              <span class="quick-label">More Templates</span>
+            </button>
+
+            <button
+              class="quick-tile"
+              type="button"
+              role="listitem"
+              @click=${() =>
+                this.scrollToGroup("from-scratch-heading", "blank")}
+              aria-label="From scratch"
+            >
+              <span class="quick-thumb">
+                <simple-icon-lite icon="icons:note-add"></simple-icon-lite>
+              </span>
+              <span class="quick-label">From Scratch</span>
+            </button>
+
+            <button
+              class="quick-tile"
+              type="button"
+              role="listitem"
+              @click=${() =>
+                this.scrollToGroup("from-existing-heading", "import")}
+              aria-label="Import"
+            >
+              <span class="quick-thumb">
+                <simple-icon-lite icon="icons:file-upload"></simple-icon-lite>
+              </span>
+              <span class="quick-label">Import</span>
+            </button>
+          </div>
+        </section>
+
+        <div>
           <div
             class="filter"
             role="search"
@@ -674,58 +848,14 @@ export class AppHaxUseCaseFilter extends LitElement {
                 </option>
               </select>
             </div>
-            <!-- Filter Buttons -->
-            <fieldset class="filterButtons">
-              <legend class="visually-hidden">
-                Filter templates by category
-              </legend>
-              ${this.filters.map(
-                (filter, i) => html`
-                  <input
-                    type="checkbox"
-                    id="filter-${i}"
-                    class="filter-checkbox"
-                    .checked=${this.activeFilters.includes(filter)}
-                    @change=${() => this.toggleFilterByButton(filter)}
-                    aria-describedby="filter-${i}-description"
-                  />
-                  <label
-                    for="filter-${i}"
-                    class="filter-btn ${this.activeFilters.includes(filter)
-                      ? "active"
-                      : ""}"
-                    aria-pressed=${this.activeFilters.includes(filter)}
-                    role="button"
-                    tabindex="0"
-                    @keydown=${(e) => this.handleFilterKeydown(e, filter)}
-                  >
-                    <span class="icon" aria-hidden="true">
-                      <simple-icon-lite
-                        icon="${this.iconForFilter(filter)}"
-                      ></simple-icon-lite>
-                    </span>
-                    ${filter}
-                  </label>
-                  <div id="filter-${i}-description" class="visually-hidden">
-                    Filter to show only ${filter} templates
-                  </div>
-                `,
-              )}
-            </fieldset>
-            <button
-              class="reset-button"
-              @click="${this.resetFilters}"
-              aria-describedby="reset-help"
-            >
-              Reset Filters
-            </button>
+
             <div id="reset-help" class="visually-hidden">
               Clear all active filters and search terms
             </div>
           </div>
         </div>
         <!-- Content Section -->
-        <div class="rightSection">
+        <div>
           <!-- Returning Sites -->
           <section
             id="returnToSection"
@@ -755,86 +885,193 @@ export class AppHaxUseCaseFilter extends LitElement {
             aria-labelledby="create-site-heading"
           >
             <h2 id="create-site-heading">Create New Site</h2>
-            <div
-              class="template-results"
-              role="grid"
-              aria-label="Available site templates"
-              aria-live="polite"
-              aria-describedby="template-count"
-            >
-              <div id="template-count" class="visually-hidden">
-                ${this.filteredItems.length} templates available
-              </div>
-              ${this.filteredItems.length > 0
-                ? this.filteredItems.map(
-                    (item, index) => html`
-                      <div
-                        role="gridcell"
-                        aria-rowindex="${index + 1}"
-                        aria-colindex="1"
-                      >
-                        <app-hax-use-case
-                          .source=${item.useCaseImage || ""}
-                          .title=${item.useCaseTitle || ""}
-                          .description=${item.useCaseDescription || ""}
-                          .demoLink=${item.demoLink || ""}
-                          .iconImage=${item.useCaseIcon || []}
-                          .isSelected=${item.isSelected || false}
-                          .showContinue=${item.showContinue || false}
-                          ?dark="${this.dark}"
-                          aria-label="Template: ${item.useCaseTitle}"
-                          @toggle-display=${(e) => this.toggleDisplay(index, e)}
-                          @continue-action=${() => this.continueAction(index)}
-                        ></app-hax-use-case>
-                      </div>
-                    `,
-                  )
-                : this.loading
-                  ? html`<p
-                      role="status"
-                      class="loading-message"
+            <div id="template-count" class="visually-hidden">
+              ${this.filteredItems.length} options available
+            </div>
+
+            ${this.filteredItems.length > 0
+              ? (() => {
+                  const skeletonEntries = [];
+                  const blankEntries = [];
+                  const importEntries = [];
+                  this.filteredItems.forEach((item, index) => {
+                    if (item && item.dataType === "skeleton") {
+                      skeletonEntries.push({ item, index });
+                    }
+                    if (item && item.dataType === "blank") {
+                      blankEntries.push({ item, index });
+                    }
+                    if (item && item.dataType === "import") {
+                      importEntries.push({ item, index });
+                    }
+                  });
+
+                  const renderEntries = (entries, typeLabel) => {
+                    return entries.map(
+                      (entry, gridIndex) => html`
+                        <div
+                          role="gridcell"
+                          aria-rowindex="${gridIndex + 1}"
+                          aria-colindex="1"
+                        >
+                          <app-hax-use-case
+                            data-item-index="${entry.index}"
+                            data-data-type="${entry.item.dataType}"
+                            .source=${entry.item.useCaseImage || ""}
+                            .title=${entry.item.useCaseTitle || ""}
+                            .description=${entry.item.useCaseDescription || ""}
+                            .demoLink=${entry.item.demoLink || ""}
+                            .iconImage=${entry.item.useCaseIcon || []}
+                            .isSelected=${entry.item.isSelected || false}
+                            .showContinue=${entry.item.showContinue || false}
+                            ?dark="${this.dark}"
+                            aria-label="${typeLabel}: ${entry.item.useCaseTitle}"
+                            @toggle-display=${(e) =>
+                              this.toggleDisplay(entry.index, e)}
+                            @continue-action=${() =>
+                              this.continueAction(entry.index)}
+                          ></app-hax-use-case>
+                        </div>
+                      `,
+                    )
+                  };
+
+                  return html`
+                    <div
+                      class="template-group"
+                      role="region"
+                      aria-labelledby="from-template-heading"
                       aria-live="polite"
                     >
-                      Loading templates...
-                    </p>`
-                  : this.items && this.items.length > 0
-                    ? html`<p
-                        role="status"
-                        class="no-results"
-                        aria-live="polite"
+                      <h3
+                        id="from-template-heading"
+                        class="template-group-heading"
                       >
-                        No templates match your current filters. Reset filters to
-                        see more options.
-                      </p>`
-                    : html`
-                        <div class="fallback-message">
-                          <p
+                        From Template
+                      </h3>
+                      ${skeletonEntries.length > 0
+                        ? html`<div
+                            class="template-results"
+                            role="grid"
+                            aria-label="Template-based starters"
+                            aria-describedby="template-count"
+                          >
+                            ${renderEntries(skeletonEntries, "Template")}
+                          </div>`
+                        : html`<p
                             role="status"
                             class="no-results"
                             aria-live="polite"
                           >
-                            ${this.errorMessage ||
-                            "No templates available. You can still create a blank site."}
-                          </p>
-                          <app-hax-use-case
-                            .source=""
-                            .title="Blank Site"
-                            .description="Create a blank site using the clean-one theme"
-                            .demoLink="#"
-                            .iconImage=${[
-                              { icon: "icons:build", tooltip: "Blank site" },
-                            ]}
-                            .isSelected=${this.selectedCardIndex === -1}
-                            .showContinue=${this.selectedCardIndex === -1}
-                            ?dark="${this.dark}"
-                            aria-label="Template: Blank Site"
-                            @toggle-display=${(e) =>
-                              this.toggleDisplay(-1, e)}
-                            @continue-action=${() => this.continueAction(-1)}
-                          ></app-hax-use-case>
-                        </div>
-                      `}
-            </div>
+                            No templates match your current filters.
+                          </p>`}
+                    </div>
+
+                    <div
+                      class="template-group"
+                      role="region"
+                      aria-labelledby="from-scratch-heading"
+                      aria-live="polite"
+                    >
+                      <h3
+                        id="from-scratch-heading"
+                        class="template-group-heading"
+                      >
+                        From Scratch Using Theme
+                      </h3>
+                      ${blankEntries.length > 0
+                        ? html`<div
+                            class="template-results"
+                            role="grid"
+                            aria-label="Theme-based starters"
+                            aria-describedby="template-count"
+                          >
+                            ${renderEntries(blankEntries, "Theme")}
+                          </div>`
+                        : html`<p
+                            role="status"
+                            class="no-results"
+                            aria-live="polite"
+                          >
+                            No themes match your current filters.
+                          </p>`}
+                    </div>
+
+                    <div
+                      class="template-group"
+                      role="region"
+                      aria-labelledby="from-existing-heading"
+                      aria-live="polite"
+                    >
+                      <h3
+                        id="from-existing-heading"
+                        class="template-group-heading"
+                      >
+                        From Existing Site
+                      </h3>
+                      ${importEntries.length > 0
+                        ? html`<div
+                            class="template-results"
+                            role="grid"
+                            aria-label="Import options"
+                            aria-describedby="template-count"
+                          >
+                            ${renderEntries(importEntries, "Import")}
+                          </div>`
+                        : html`<p
+                            role="status"
+                            class="no-results"
+                            aria-live="polite"
+                          >
+                            No import options match your current filters.
+                          </p>`}
+                    </div>
+                  `
+                })()
+              : this.loading
+                ? html`<p
+                    role="status"
+                    class="loading-message"
+                    aria-live="polite"
+                  >
+                    Loading templates...
+                  </p>`
+                : this.items && this.items.length > 0
+                  ? html`<p
+                      role="status"
+                      class="no-results"
+                      aria-live="polite"
+                    >
+                      No templates match your current filters. Reset filters to
+                      see more options.
+                    </p>`
+                  : html`
+                      <div class="fallback-message">
+                        <p
+                          role="status"
+                          class="no-results"
+                          aria-live="polite"
+                        >
+                          ${this.errorMessage ||
+                          "No templates available. You can still create a blank site."}
+                        </p>
+                        <app-hax-use-case
+                          .source=""
+                          .title="Blank Site"
+                          .description="Create a blank site using the clean-one theme"
+                          .demoLink="#"
+                          .iconImage=${[
+                            { icon: "icons:build", tooltip: "Blank site" },
+                          ]}
+                          .isSelected=${this.selectedCardIndex === -1}
+                          .showContinue=${this.selectedCardIndex === -1}
+                          ?dark="${this.dark}"
+                          aria-label="Template: Blank Site"
+                          @toggle-display=${(e) => this.toggleDisplay(-1, e)}
+                          @continue-action=${() => this.continueAction(-1)}
+                        ></app-hax-use-case>
+                      </div>
+                    `}
           </section>
         </div>
       </div>
@@ -845,6 +1082,97 @@ export class AppHaxUseCaseFilter extends LitElement {
         @modal-closed=${this.handleModalClosed}
       ></app-hax-site-creation-modal>
     `;
+  }
+
+  getImportItems() {
+    // These are local-only actions (no fetch) that kick off import/migration flows.
+    // They are added into the same `items` array so search + filtering still works.
+    return [
+      {
+        dataType: "import",
+        importKind: "file",
+        importType: "docx",
+        callback: "@haxcms/docxToSite",
+        fileType: "docx",
+        useCaseTitle: "Word Doc",
+        useCaseImage: "",
+        useCaseDescription: "Import a .docx outline into a new HAX site",
+        useCaseIcon: [{ icon: "hax:file-docx", tooltip: "DOCX import" }],
+        useCaseTag: ["Import", "Docx"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
+        importKind: "url",
+        importType: "gitbook",
+        callback: "@haxcms/gitbookToSite",
+        prompt: "URL for the GitBook git repo",
+        param: "md",
+        useCaseTitle: "GitBook",
+        useCaseImage: "",
+        useCaseDescription: "Import a GitBook repo into a new HAX site",
+        useCaseIcon: [
+          { icon: "mdi-social:github-circle", tooltip: "Git-based import" },
+        ],
+        useCaseTag: ["Import", "Git"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
+        importKind: "url",
+        importType: "haxcms",
+        callback: "@haxcms/haxcmsToSite",
+        prompt: "URL for the HAXcms site",
+        param: "repoUrl",
+        useCaseTitle: "HAXcms",
+        useCaseImage: "",
+        useCaseDescription: "Import content from an existing HAXcms site",
+        useCaseIcon: [{ icon: "hax:hax2022", tooltip: "HAXcms import" }],
+        useCaseTag: ["Import", "HAXcms"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
+        importKind: "url",
+        importType: "notion",
+        callback: "@haxcms/notionToSite",
+        prompt: "URL for the Notion git repo",
+        param: "repoUrl",
+        useCaseTitle: "Notion",
+        useCaseImage: "",
+        useCaseDescription: "Import a Notion-exported git repo",
+        useCaseIcon: [{ icon: "book", tooltip: "Notion import" }],
+        useCaseTag: ["Import", "Notion"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
+        importKind: "url",
+        importType: "html",
+        callback: "@haxcms/htmlToSite",
+        prompt: "URL for the HTML content",
+        param: "repoUrl",
+        useCaseTitle: "HTML",
+        useCaseImage: "",
+        useCaseDescription: "Import a remote HTML site into HAX",
+        useCaseIcon: [{ icon: "icons:code", tooltip: "HTML import" }],
+        useCaseTag: ["Import", "HTML"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
+        importKind: "file",
+        importType: "pressbooks",
+        callback: "@haxcms/pressbooksToSite",
+        fileType: "html",
+        useCaseTitle: "Pressbooks",
+        useCaseImage: "",
+        useCaseDescription: "Import a Pressbooks export (HTML) into HAX",
+        useCaseIcon: [{ icon: "hax:wordpress", tooltip: "Pressbooks import" }],
+        useCaseTag: ["Import", "Pressbooks"],
+        demoLink: "#",
+      },
+    ];
   }
 
   iconForFilter(filter) {
@@ -859,6 +1187,8 @@ export class AppHaxUseCaseFilter extends LitElement {
         return "icons:perm-identity";
       case "blank":
         return "hax:bricks";
+      case "import":
+        return "icons:cloud-download";
       default:
         return "icons:label";
     }
@@ -965,7 +1295,11 @@ export class AppHaxUseCaseFilter extends LitElement {
     // Filter skeletons and blank themes (from this.items)
     this.filteredItems = [
       ...this.items.filter((item) => {
-        if (item.dataType !== "skeleton" && item.dataType !== "blank")
+        if (
+          item.dataType !== "skeleton" &&
+          item.dataType !== "blank" &&
+          item.dataType !== "import"
+        )
           return false;
         const matchesSearch =
           lowerCaseQuery === "" ||
@@ -1052,10 +1386,13 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.searchTerm = "";
     store.searchTerm = "";
     this.activeFilters = [];
-    // Show all templates (skeletons and blank themes) and all sites
+    // Show all options (templates, themes, and imports) and all sites
     this.filteredItems = [
       ...this.items.filter(
-        (item) => item.dataType === "skeleton" || item.dataType === "blank",
+        (item) =>
+          item.dataType === "skeleton" ||
+          item.dataType === "blank" ||
+          item.dataType === "import",
       ),
     ];
     this.filteredSites = [...this.returningSites];
@@ -1223,8 +1560,17 @@ export class AppHaxUseCaseFilter extends LitElement {
               originalData: theme,
             };
           });
-        // Combine skeleton and theme items
-        this.items = [...skeletonItems, ...themeItems];
+        // Add import options (local definitions)
+        const importItems = this.getImportItems();
+        // Ensure their tags are included in the global filter list
+        importItems.forEach((item) => {
+          if (item && Array.isArray(item.useCaseTag)) {
+            item.useCaseTag.forEach((tag) => this.allFilters.add(tag));
+          }
+        });
+
+        // Combine skeleton, theme, and import items
+        this.items = [...skeletonItems, ...themeItems, ...importItems];
         this.filters = Array.from(this.allFilters).sort(); // Set AFTER all items
 
         if (this.items.length === 0 && !this.errorMessage) {
@@ -1386,148 +1732,328 @@ export class AppHaxUseCaseFilter extends LitElement {
 
   async continueAction(index) {
     const modal = this.shadowRoot.querySelector("#siteCreationModal");
+    if (!modal) {
+      return;
+    }
 
-    if (modal) {
-      // Handle fallback case when index is -1 (blank site with clean-one)
-      if (index === -1) {
-        modal.title = "Blank Site";
-        modal.description = "Create a blank site using the clean-one theme";
-        modal.source = "";
-        modal.template = "Blank Site";
-        modal.themeElement = "clean-one";
-        // Generate skeleton data for fallback blank site with Home page
-        modal.skeletonData = {
-          meta: {
-            name: "clean-one",
-            type: "skeleton",
-          },
-          site: {
-            name: "clean-one",
-            theme: "clean-one",
-          },
-          build: {
-            type: "skeleton",
-            structure: "from-skeleton",
-            items: [
-              {
-                id: "item-home-clean-one",
-                title: "Home",
-                slug: "home",
-                order: 0,
-                parent: null,
-                indent: 0,
-                content:
-                  "<p>Edit this page to get started on your HAX site!</p>",
-                metadata: {
-                  published: true,
-                  hideInMenu: false,
-                  tags: [],
-                },
+    // Handle fallback case when index is -1 (blank site with clean-one)
+    if (index === -1) {
+      modal.title = "Blank Site";
+      modal.description = "Create a blank site using the clean-one theme";
+      modal.source = "";
+      modal.template = "Blank Site";
+      modal.themeElement = "clean-one";
+      // Generate skeleton data for fallback blank site with Home page
+      modal.skeletonData = {
+        meta: {
+          name: "clean-one",
+          type: "skeleton",
+        },
+        site: {
+          name: "clean-one",
+          theme: "clean-one",
+        },
+        build: {
+          type: "skeleton",
+          structure: "from-skeleton",
+          items: [
+            {
+              id: "item-home-clean-one",
+              title: "Home",
+              slug: "home",
+              order: 0,
+              parent: null,
+              indent: 0,
+              content: "<p>Edit this page to get started on your HAX site!</p>",
+              metadata: {
+                published: true,
+                hideInMenu: false,
+                tags: [],
               },
-            ],
-            files: [],
-          },
-          theme: {},
-        };
-        // Use the template title as the default site name for the blank site
-        modal.siteName = modal.title;
-        modal.openModal();
-        return;
-      }
-
-      const selectedTemplate = this.filteredItems[index];
-      if (!selectedTemplate) {
-        console.warn("No template found at index:", index);
-        return;
-      }
-
-      // Set the template details in the modal
-      modal.title = selectedTemplate.useCaseTitle;
-      modal.description = selectedTemplate.useCaseDescription;
-      modal.source = selectedTemplate.useCaseImage;
-      modal.template = selectedTemplate.useCaseTitle;
-
-      // Handle skeleton templates by loading the skeleton file
-      if (
-        selectedTemplate.dataType === "skeleton" &&
-        selectedTemplate.skeletonUrl
-      ) {
-        try {
-          const rawUrl = selectedTemplate.skeletonUrl || "";
-          // Enforce root-relative URL so requests stay on current origin
-          // and cannot be pointed at arbitrary external hosts.
-          if (!rawUrl.startsWith("/")) {
-            console.warn(
-              "Refusing to load skeleton from non-root-relative URL:",
-              rawUrl,
-            );
-            return;
-          }
-          const response = await fetch(rawUrl);
-          if (response.ok) {
-            const skeletonData = await response.json();
-            // Store skeleton data for use in site creation
-            modal.skeletonData = skeletonData.data || skeletonData;
-            modal.themeElement =
-              (modal.skeletonData.site && modal.skeletonData.site.theme) ||
-              "clean-one";
-          } else {
-            console.warn(`Failed to load skeleton from ${rawUrl}`);
-            modal.themeElement = "clean-one"; // fallback
-          }
-        } catch (error) {
-          console.warn("Error loading skeleton:", error);
-          modal.themeElement = "clean-one"; // fallback
-        }
-      } else if (
-        selectedTemplate.dataType === "blank" &&
-        selectedTemplate.originalData.element
-      ) {
-        // Generate skeleton data for blank themes with a Home page
-        modal.themeElement = selectedTemplate.originalData.element;
-        modal.skeletonData = {
-          meta: {
-            name: selectedTemplate.originalData.element,
-            type: "skeleton",
-          },
-          site: {
-            name: selectedTemplate.originalData.element,
-            theme: selectedTemplate.originalData.element,
-          },
-          build: {
-            type: "skeleton",
-            structure: "from-skeleton",
-            items: [
-              {
-                id: `item-home-${selectedTemplate.originalData.element}`,
-                title: "Home",
-                slug: "home",
-                order: 0,
-                parent: null,
-                indent: 0,
-                content:
-                  "<p>Edit this page to get started on your HAX site!</p>",
-                metadata: {
-                  published: true,
-                  hideInMenu: false,
-                  tags: [],
-                },
-              },
-            ],
-            files: [],
-          },
-          theme: {},
-        };
-      } else {
-        modal.themeElement = "clean-one"; // fallback
-      }
-
-      // Prepopulate the site name from the selected template's title
-      modal.siteName =
-        selectedTemplate.useCaseTitle || modal.title || "New site";
-
-      // Open the modal
+            },
+          ],
+          files: [],
+        },
+        theme: {},
+      };
+      // Use the template title as the default site name for the blank site
+      modal.siteName = modal.title;
       modal.openModal();
+      return;
+    }
+
+    const selectedTemplate =
+      Array.isArray(this.filteredItems) && typeof index === "number"
+        ? this.filteredItems[index]
+        : null;
+
+    if (!selectedTemplate) {
+      console.warn("No template found at index:", index);
+      return;
+    }
+
+    await this.openTemplateModal(selectedTemplate);
+  }
+
+  _resolveSameOriginPath(rawUrl) {
+    if (!rawUrl || typeof rawUrl !== "string") {
+      return "";
+    }
+    const url = rawUrl.trim();
+    if (url === "" || url === "#") {
+      return "";
+    }
+    // Disallow scheme and scheme-relative URLs
+    if (url.indexOf("://") !== -1 || url.indexOf("//") === 0) {
+      return "";
+    }
+    // Root-relative is already safe
+    if (url.indexOf("/") === 0) {
+      return url;
+    }
+    // Resolve other relative URLs to a same-origin absolute path
+    try {
+      const resolved = new URL(url, globalThis.location.href);
+      if (resolved.origin !== globalThis.location.origin) {
+        return "";
+      }
+      return `${resolved.pathname}${resolved.search}${resolved.hash}`;
+    } catch (e) {
+      return "";
+    }
+  }
+
+  async openTemplateModal(selectedTemplate) {
+    const modal = this.shadowRoot.querySelector("#siteCreationModal");
+    if (!modal || !selectedTemplate) {
+      return;
+    }
+
+    // Set the template details in the modal
+    modal.title = selectedTemplate.useCaseTitle;
+    modal.description = selectedTemplate.useCaseDescription;
+    modal.source = selectedTemplate.useCaseImage;
+    modal.template = selectedTemplate.useCaseTitle;
+
+    // Import options (existing sites / migrations)
+    if (selectedTemplate.dataType === "import") {
+      modal.themeElement = "clean-one";
+      await this.processImportTemplate(selectedTemplate, modal);
+      return;
+    }
+
+    // Handle skeleton templates by loading the skeleton file
+    if (selectedTemplate.dataType === "skeleton" && !selectedTemplate.skeletonUrl) {
+      if (store && store.appEl && store.appEl.playSound) {
+        store.appEl.playSound("error");
+      }
+      if (store && store.toast) {
+        store.toast("This template isn't configured yet (missing skeleton URL).", 4000);
+      }
+      return;
+    }
+
+    if (selectedTemplate.dataType === "skeleton" && selectedTemplate.skeletonUrl) {
+      try {
+        const rawUrl = selectedTemplate.skeletonUrl || "";
+        const safeUrl = this._resolveSameOriginPath(rawUrl);
+
+        // Ensure skeleton URLs stay on this origin; allow relative paths in demos
+        // but do not allow absolute external hosts.
+        if (!safeUrl) {
+          if (store && store.appEl && store.appEl.playSound) {
+            store.appEl.playSound("error");
+          }
+          if (store && store.toast) {
+            store.toast(
+              "This template isn't configured yet (invalid skeleton URL).",
+              4000,
+            );
+          }
+          console.warn("Refusing to load skeleton from URL:", rawUrl);
+          return;
+        }
+
+        const response = await fetch(safeUrl);
+        if (response.ok) {
+          const skeletonData = await response.json();
+          // Store skeleton data for use in site creation
+          modal.skeletonData = skeletonData.data || skeletonData;
+          modal.themeElement =
+            (modal.skeletonData.site && modal.skeletonData.site.theme) ||
+            "clean-one";
+        } else {
+          if (store && store.appEl && store.appEl.playSound) {
+            store.appEl.playSound("error");
+          }
+          if (store && store.toast) {
+            store.toast("Failed to load template skeleton.", 4000);
+          }
+          console.warn(`Failed to load skeleton from ${safeUrl}`);
+          modal.themeElement = "clean-one"; // fallback
+          return;
+        }
+      } catch (error) {
+        if (store && store.appEl && store.appEl.playSound) {
+          store.appEl.playSound("error");
+        }
+        if (store && store.toast) {
+          store.toast("Failed to load template skeleton.", 4000);
+        }
+        console.warn("Error loading skeleton:", error);
+        modal.themeElement = "clean-one"; // fallback
+        return;
+      }
+    } else if (
+      selectedTemplate.dataType === "blank" &&
+      selectedTemplate.originalData &&
+      selectedTemplate.originalData.element
+    ) {
+      // Generate skeleton data for blank themes with a Home page
+      modal.themeElement = selectedTemplate.originalData.element;
+      modal.skeletonData = {
+        meta: {
+          name: selectedTemplate.originalData.element,
+          type: "skeleton",
+        },
+        site: {
+          name: selectedTemplate.originalData.element,
+          theme: selectedTemplate.originalData.element,
+        },
+        build: {
+          type: "skeleton",
+          structure: "from-skeleton",
+          items: [
+            {
+              id: `item-home-${selectedTemplate.originalData.element}`,
+              title: "Home",
+              slug: "home",
+              order: 0,
+              parent: null,
+              indent: 0,
+              content: "<p>Edit this page to get started on your HAX site!</p>",
+              metadata: {
+                published: true,
+                hideInMenu: false,
+                tags: [],
+              },
+            },
+          ],
+          files: [],
+        },
+        theme: {},
+      };
+    } else {
+      modal.themeElement = "clean-one"; // fallback
+    }
+
+    // Prepopulate the site name from the selected template's title
+    modal.siteName = selectedTemplate.useCaseTitle || modal.title || "New site";
+
+    // Open the modal
+    modal.openModal();
+  }
+
+  _normalizeImportedName(rawName) {
+    if (!rawName || typeof rawName !== "string") {
+      return "Imported site";
+    }
+    // Remove file extension (if present), normalize separators, and trim.
+    let name = rawName.replace(/\.[^/.]+$/, "");
+    name = name.replace(/[_-]+/g, " ");
+    name = name.replace(/\s+/g, " ").trim();
+    return name || "Imported site";
+  }
+
+  async processImportTemplate(selectedTemplate, modal) {
+    try {
+      const [{ MicroFrontendRegistry }, { enableServices }] = await Promise.all([
+        import(
+          "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js"
+        ),
+        import("@haxtheweb/micro-frontend-registry/lib/microServices.js"),
+      ]);
+
+      enableServices(["haxcms"]);
+
+      let response = null;
+      if (selectedTemplate.importKind === "file") {
+        const fileType = selectedTemplate.fileType || "docx";
+        // Ensure the file broker is available
+        await import("@haxtheweb/file-system-broker/lib/docx-file-system-broker.js");
+        const broker = globalThis.FileSystemBroker.requestAvailability();
+        const file = await broker.loadFile(fileType);
+        if (!file) {
+          return;
+        }
+
+        const formData = new FormData();
+        formData.append("method", "site");
+        formData.append("type", "import");
+        formData.append("upload", file);
+
+        response = await MicroFrontendRegistry.call(selectedTemplate.callback, formData);
+      } else if (selectedTemplate.importKind === "url") {
+        const promptText = selectedTemplate.prompt || "Enter a URL";
+        const promptUrl = globalThis.prompt(promptText);
+        if (!promptUrl) {
+          return;
+        }
+        const params = {};
+        params[selectedTemplate.param || "repoUrl"] = promptUrl;
+        response = await MicroFrontendRegistry.call(selectedTemplate.callback, params);
+      }
+
+      if (
+        response &&
+        response.status == 200 &&
+        response.data &&
+        response.data.contents != "" &&
+        Array.isArray(response.data.items)
+      ) {
+        const items = response.data.items;
+        const files = response.data.files ? response.data.files : [];
+        const importedName = this._normalizeImportedName(
+          response.data.filename || selectedTemplate.useCaseTitle,
+        );
+
+        modal.themeElement = modal.themeElement || "clean-one";
+        modal.skeletonData = {
+          meta: {
+            name: selectedTemplate.importType,
+            type: "import",
+          },
+          build: {
+            type: selectedTemplate.importType,
+            structure: "import",
+            items: items,
+            files: files,
+          },
+          site: {
+            name: importedName,
+            theme: modal.themeElement,
+          },
+          theme: {},
+        };
+        modal.siteName = importedName;
+        modal.openModal();
+      } else {
+        if (store && store.appEl && store.appEl.playSound) {
+          store.appEl.playSound("error");
+        }
+        if (store && store.toast) {
+          store.toast("Import did not return a valid structure", 3000);
+        }
+        console.warn("Import did not return a valid structure:", response);
+      }
+    } catch (error) {
+      if (store && store.appEl && store.appEl.playSound) {
+        store.appEl.playSound("error");
+      }
+      if (store && store.toast) {
+        store.toast("Import failed", 3000);
+      }
+      console.warn("Import error:", error);
     }
   }
 

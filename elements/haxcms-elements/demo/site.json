@@ -33,7 +33,7 @@
       "tags": ""
     },
     "theme": {
-      "element": "simple-blog",
+      "element": "spacebook-theme",
       "path": "@haxtheweb/clean-one/clean-one.js",
       "name": "Clean One",
       "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg",
@@ -54,6 +54,9 @@
     },
     "node": {
       "fields": {}
+    },
+    "platform": {
+      "audience": "novice"
     },
     "build": {
       "version": "6.0.1",
