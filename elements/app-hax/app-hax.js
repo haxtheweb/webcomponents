@@ -754,7 +754,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         }
         .template-results {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          grid-template-columns: repeat(6, minmax(220px, 1fr));
           width: 100%;
           min-height: 330px;
           box-sizing: border-box;

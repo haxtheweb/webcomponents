@@ -107,6 +107,12 @@ export class AppHaxUseCaseFilter extends LitElement {
           padding-left: var(--ddd-spacing-5, 20px);
           padding-right: var(--ddd-spacing-5, 20px);
         }
+        :host([dark]) {
+          --accent-color: var(--ddd-theme-default-white, white);
+        }
+        :host([light]) {
+          --accent-color: var(--ddd-theme-default-nittanyNavy, #001e44);
+        }
         .contentSection {
           width: 100%;
           margin: 0;
@@ -119,14 +125,18 @@ export class AppHaxUseCaseFilter extends LitElement {
           margin-right: calc(0px - var(--ddd-spacing-5, 20px));
           padding: var(--ddd-spacing-5, 20px) var(--ddd-spacing-5, 20px)
             var(--ddd-spacing-4, 16px);
-          background: var(--ddd-theme-default-nittanyNavy, #001e44);
-          color: var(--ddd-theme-default-white, white);
         }
 
         :host([dark]) .quick-create,
         body.dark-mode .quick-create {
-          background: var(--ddd-theme-default-coalyGray, #222);
+          background: var(--ddd-theme-default-nittanyNavy, #001e44);
           color: var(--ddd-theme-default-white, white);
+        }
+
+        :host([light]) .quick-create,
+        body.dark-mode .quick-create {
+          background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
         }
 
         .quick-create h2 {
@@ -136,6 +146,7 @@ export class AppHaxUseCaseFilter extends LitElement {
 
         .quick-create-grid {
           display: flex;
+          justify-content: center;
           gap: var(--ddd-spacing-4, 16px);
           overflow-x: auto;
           overflow-y: hidden;
@@ -146,11 +157,6 @@ export class AppHaxUseCaseFilter extends LitElement {
 
         .quick-tile {
           appearance: none;
-          border: var(--ddd-border-sm, 2px solid);
-          border-color: var(--ddd-theme-default-white, white);
-          border-radius: var(--ddd-radius-md, 8px);
-          background: var(--ddd-theme-default-white, white);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
           width: 180px;
           min-width: 180px;
           padding: 0;
@@ -174,7 +180,6 @@ export class AppHaxUseCaseFilter extends LitElement {
 
         :host([dark]) .quick-tile,
         body.dark-mode .quick-tile {
-          background: var(--ddd-theme-default-coalyGray, #333);
           color: var(--ddd-theme-default-white, white);
           border-color: var(--ddd-theme-default-limestoneGray, #a2aaad);
         }
@@ -188,11 +193,6 @@ export class AppHaxUseCaseFilter extends LitElement {
           justify-content: center;
         }
 
-        :host([dark]) .quick-thumb,
-        body.dark-mode .quick-thumb {
-          background: var(--ddd-theme-default-coalyGray, #444);
-        }
-
         .quick-thumb img {
           width: 100%;
           height: 100%;
@@ -203,23 +203,18 @@ export class AppHaxUseCaseFilter extends LitElement {
         .quick-thumb simple-icon-lite {
           --simple-icon-height: var(--ddd-icon-3xl, 72px);
           --simple-icon-width: var(--ddd-icon-3xl, 72px);
-          color: var(--ddd-theme-default-slateGray, #666);
-        }
-
-        :host([dark]) .quick-thumb simple-icon-lite,
-        body.dark-mode .quick-thumb simple-icon-lite {
-          color: var(--ddd-theme-default-limestoneGray, #a2aaad);
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
         }
 
         .quick-label {
           font-family: var(--ddd-font-primary, sans-serif);
-          font-size: var(--ddd-font-size-xs, 14px);
-          font-weight: var(--ddd-font-weight-medium, 500);
+          font-size: 14px;
           padding: var(--ddd-spacing-3, 12px);
-          text-align: center;
+          text-align: left;
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
+
         }
 
         .template-group {
@@ -233,9 +228,7 @@ export class AppHaxUseCaseFilter extends LitElement {
 
         .template-group-heading {
           font-family: var(--ddd-font-primary, sans-serif);
-          font-size: var(--ddd-font-size-m, 20px);
-          font-weight: var(--ddd-font-weight-medium, 500);
-          color: var(--app-hax-accent-color, var(--accent-color));
+          color: var(--accent-color);
           margin: 0 0 var(--ddd-spacing-4, 16px) 0;
           text-decoration: underline;
           text-decoration-thickness: var(--ddd-border-size-xs, 1px);
@@ -245,7 +238,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         .template-results {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-          gap: var(--ddd-spacing-5, 20px);
+          gap: var(--ddd-spacing-1, 4px);
           width: 100%;
           box-sizing: border-box;
         }
@@ -263,12 +256,12 @@ export class AppHaxUseCaseFilter extends LitElement {
           width: 100%;
         }
 
-        h2,
-        .returnTo h2,
+        h2
+        .returnTo h2
         .startNew h2 {
           font-family: var(--ddd-font-primary, sans-serif);
           font-size: var(--ddd-font-size-l, 24px);
-          color: var(--app-hax-accent-color, var(--accent-color));
+          color: var(--accent-color);
           margin: 0 0 var(--ddd-spacing-4, 16px) 0;
         }
         .startNew,
