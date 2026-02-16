@@ -13,6 +13,7 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDVariables } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import { DDDAllStyles } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 
@@ -47,8 +48,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   constructor() {
     super();
-    this.siteTheme = UserScaffoldInstance.readMemory("HAXCMSSiteTheme") || "";
-    this.dataPrimary = 2;
+    this.dataPalette = UserScaffoldInstance.readMemory("HAXCMSSitePalette") || "";
+
     this.selectedTag = "";
     this.activeLayout = "text"; // text, media, listing
     // mobile menu
@@ -271,35 +272,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
     updated(changedProperties) {
     super.updated(changedProperties);
-    if (changedProperties.has("siteTheme")) {
-      switch (this.siteTheme) {
-        case "earth":
-          this.dataPrimary = 1;
-        break;
-        case "water":
-          this.dataPrimary = 11;
-        break;
-        case "fire":
-          this.dataPrimary = 23;
-        break;
-        case "sand":
-          this.dataPrimary = 35;
-        break;
-        case "rose":
-          this.dataPrimary = 47;
-        break;
-        case "violet":
-          this.dataPrimary = 2;
-        break;
-        default:
-          this.dataPrimary = 1;
-        break;
-      }
+    if (changedProperties.has("dataPalette")) {
       UserScaffoldInstance.writeMemory(
-          "HAXCMSSiteTheme",
-          this.siteTheme,
-          "long",
-        );
+        "HAXCMSSitePalette",
+        this.dataPalette,
+        "long",
+      );
     }
   }
 
@@ -344,6 +322,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
   static get properties() {
     return {
       ...super.properties,
+      dataPalette: { type: Number, reflect: true, attribute: "data-palette" },
       activeItem: { type: Object },
       activeParent: { type: Object },
       ancestorItem: { type: Object },
@@ -367,41 +346,35 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       licenseName: { type: String },
       licenseLink: { type: String },
       licenseImage: { type: String },
-      dataPrimary: { type: String, attribute: "data-primary", reflect: true },
-      siteTheme: { type: String, reflect: true, attribute: 'site-theme' }
     };
   }
 
   HAXCMSGlobalStyleSheetContent() {
       return [
         ...super.HAXCMSGlobalStyleSheetContent(),
+        DDDAllStyles,
         css`
         :root, html, body {
-            /* site color variables */
-            --portfolio-black: #000000;
-            --portfolio-white: #ffffff;
-            --portfolio-lighterGrey: #bfbfbf;
-            --portfolio-lightGrey: #8a8a8a;
-            --portfolio-grey: #424242;
-            --portfolio-darkGrey: #333;
-            --portfolio-textHeader: #efefef;
-            --portfolio-textHeaderHover: #b7b7b7;
-            --portfolio-menuItemUnderline: #ff0000;
-            --portfolio-cardTag: #6D4C41;
-            --portfolio-cardTagLight: #c2a399;
-            --portfolio-linkLight: #1F26FF;
-            --portfolio-linkDark: #a2a5ff;
-            --portfolio-bgLight: #f7f7f7;
-            --portfolio-bgDark: #262626;
+          --ddd-palette-light: #FFFFFF;
+          --ddd-palette-dark: #000000;
 
-            --portfolio-lightDark-blackWhite: light-dark(var(--portfolio-black), var(--portfolio-white));
-            --portfolio-lightDark-bg: light-dark(var(--portfolio-bgLight), var(--portfolio-bgDark));
-            --portfolio-lightDark-footer: light-dark(var(--portfolio-black), var(--portfolio-darkGrey));
-            --portfolio-lightDark-cardTag: light-dark(var(--portfolio-cardTag), var(--portfolio-cardTagLight));
-            --portfolio-lightDark-cardImg: light-dark(var(--portfolio-lighterGrey), var(--portfolio-darkGrey));
-            --portfolio-lightDark-link: light-dark(var(--portfolio-linkLight), var(--portfolio-linkDark));
+          --ddd-palette-1: var(--ddd-palette-color-1, default);
+          --ddd-palette-2: var(--ddd-palette-color-2, default);
+          --ddd-palette-3: var(--ddd-palette-color-3, default);
+          --ddd-palette-4: var(--ddd-palette-color-4, default);
+          --ddd-palette-5: var(--ddd-palette-color-5, default);
+          --ddd-palette-6: var(--ddd-palette-color-6, default);
+          --ddd-palette-7: var(--ddd-palette-color-7, default);
 
-            --portfolio-accentHighlight: var(--portfolio-lightDark-blackWhite);
+          --ddd-lightDark-background: light-dark(var(--ddd-palette-light), var(--ddd-palette-dark));
+          --ddd-lightDark-text: light-dark(var(--ddd-palette-dark), var(--ddd-palette-light));
+          --ddd-lightDark-1: light-dark(var(--ddd-palette-1), var(--ddd-palette-5));
+          --ddd-lightDark-2: light-dark(var(--ddd-palette-2), var(--ddd-palette-2));
+          --ddd-lightDark-3: light-dark(var(--ddd-palette-3), var(--ddd-palette-3));
+          --ddd-lightDark-4: light-dark(var(--ddd-palette-4), var(--ddd-palette-2));
+          --ddd-lightDark-5: light-dark(var(--ddd-palette-5), var(--ddd-palette-1));
+          --ddd-lightDark-6: light-dark(var(--ddd-palette-6), var(--ddd-palette-6));
+          --ddd-lightDark-7: light-dark(var(--ddd-palette-7), var(--ddd-palette-7));
 
             /* site font variables */
             --portfolio-font-body: "Source Code Pro", system-ui, Monaco, Consolas, "Lucida Console", monospace;
@@ -409,36 +382,27 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
             --portfolio-fontsize-responsive: clamp(16px, 2vw, 22px);
 
-            background-color: var(--portfolio-lightDark-bg);
             font-family: var(--portfolio-font-body);
             font-size: var(--portfolio-fontsize-responsive);
             color-scheme: light dark;
             scroll-behavior: smooth;
-            /* theme colors */
-            --portfolio-earth-accentLight: #689f38;
-            --portfolio-earth-accentDark: #33691e;
-            --portfolio-water-accentLight: #2a95cf;
-            --portfolio-water-accentDark: #1e53a2;
-            --portfolio-fire-accentLight: #F49B99;
-            --portfolio-fire-accentDark: #8e2424;
-            --portfolio-sand-accentLight: #f57c00;
-            --portfolio-sand-accentDark: #6d4c41;
-            --portfolio-rose-accentLight: #e770ad;
-            --portfolio-rose-accentDark:  #6a1b4d;
-            --portfolio-violet-accentLight: #a392d0;
-            --portfolio-violet-accentDark:  #392b6a;
+        }
+        
+
+        clean-portfolio-theme a,
+        clean-portfolio-theme a:any-link,
+        clean-portfolio-theme a:webkit-any-link {
+          color: red !important;
+        } // currently not functional/is not overriding DDDstyles 
+            
+        site-tags-route::part(simple-tag) {
+          border-color: var(--ddd-palette-light);
         }
 
-        body.dark-mode {
-          color-scheme: only dark;
-        }
-        site-tags-route::part(simple-tag) {
-          border-color: var(--portfolio-darkGrey);
-        }
         site-tags-route::part(simple-tag):hover,
         site-tags-route::part(simple-tag):focus {
-          color: var(--portfolio-lightGrey);
-          border-color: var(--portfolio-lightGrey);
+          color: var(--ddd-lightDark-1);
+          border-color: var(--ddd-palette-light);
           font-family: var(--portfolio-font-header);
         }
 
@@ -450,7 +414,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           grid-template-columns: repeat(4, 1fr);
         }
         
-
         site-tags-route::part(listing-card) {
           width: 188px;
           margin-bottom: 48px;
@@ -459,7 +422,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         }
 
         site-tags-route::part(listing-cardimg) {
-          background-color: var(--portfolio-lightDark-cardImg);
+          background-color: var(--ddd-palette-light);
           border-radius: 6px;
           margin-bottom: 12px;
           height: 120px;
@@ -475,9 +438,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         }
 
         site-tags-route::part(listing-cardtitle) {
-          color: var(--portfolio-lightDark-blackWhite);
           text-decoration: underline;
-          text-decoration-color: var(--portfolio-lightDark-bg);
           text-decoration-thickness: 4px !important;
           text-underline-offset: 8px;
           font-family: var(--portfolio-font-header);
@@ -490,8 +451,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         }
 
         site-tags-route::part(listing-cardtag) {
-          color: var(--portfolio-lightDark-cardTag);
-          font-family: var(--portfolio-font-body);
+          font-family: var(--portfolio-font-body); 
           font-size: clamp(10px, 2vw, 16px);
           font-weight: 400;
           transition: .3s;
@@ -499,7 +459,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       site-tags-route::part(listing-cardtitle):hover,
       site-tags-route::part(listing-cardtitle):focus {
-        text-decoration-color: var(--portfolio-accentHighlight);
+        text-decoration-color: var(--ddd-lightDark-1);
       }
 
       site-tags-route::part(listing-cardimg):hover,
@@ -512,22 +472,74 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   // Lit scoped styles
   static get styles() {
-    return [super.styles,
+    return [
+      DDDAllStyles,
+      super.styles,
     css`
       /* Semantic elements */
+
       :host {
+         --ddd-palette-light: #FFFFFF;
+        --ddd-palette-dark: var(--ddd-theme-default-coalyGray);
+
+          --ddd-palette-1: var(--ddd-palette-color-1, default);
+          --ddd-palette-2: var(--ddd-palette-color-2, default);
+          --ddd-palette-3: var(--ddd-palette-color-3, default);
+          --ddd-palette-4: var(--ddd-palette-color-4, default);
+          --ddd-palette-5: var(--ddd-palette-color-5, default);
+          --ddd-palette-6: var(--ddd-palette-color-6, default);
+          --ddd-palette-7: var(--ddd-palette-color-7, default);
+
+          --ddd-lightDark-background: light-dark(var(--ddd-palette-light), var(--ddd-palette-dark));
+          --ddd-lightDark-text: light-dark(var(--ddd-palette-dark), var(--ddd-palette-light));
+          --ddd-lightDark-1: light-dark(var(--ddd-palette-1), var(--ddd-palette-5));
+          --ddd-lightDark-2: light-dark(var(--ddd-palette-2), var(--ddd-palette-4));
+          --ddd-lightDark-3: light-dark(var(--ddd-palette-3), var(--ddd-palette-3));
+          --ddd-lightDark-4: light-dark(var(--ddd-palette-4), var(--ddd-palette-2));
+          --ddd-lightDark-5: light-dark(var(--ddd-palette-5), var(--ddd-palette-1));
+          --ddd-lightDark-6: light-dark(var(--ddd-palette-6), var(--ddd-palette-6));
+          --ddd-lightDark-7: light-dark(var(--ddd-palette-7), var(--ddd-palette-7));
+
         display: block;
-        background-color: var(--portfolio-lightDark-bg);
+        background-color: var(--ddd-lightDark-background);
         transition: background-color .3s ease-in-out;
       }
 
+      /* Palette variables */
+
+      :host([data-palette="6"]) header{
+        background-color: var(--ddd-palette-4);
+      }
+
+      :host([data-palette="6"])  button,
+      :host([data-palette="6"]) .pagination a{
+        background-color: var(--ddd-palette-3); 
+      }
+
+      :host([data-palette="6"]) .listing-cardtitle{
+        text-decoration-color: var(--ddd-palette-4);
+        color: var(--ddd-lightDark-4);
+      }
+
+      :host([data-palette="6"]) .breadcrumb-parent {
+        color: var(--ddd-lightDark-4);
+      }
+
+      :host([data-palette="6"]) #site-title:hover {
+        color: var(--ddd-lightDark-3);
+      }
+/* 
+      ::slotted(a) {
+        color: var(--ddd-lightDark-7) !important;
+      }
+ */
       html, body {
         height: 100%;
-        background-color: var(--portfolio-lightDark-bg);
+        background-color: var(--ddd-lightDark-background);
       }
 
       header {
-        background-color: var(--portfolio-darkGrey);
+        background-color: var(--ddd-palette-2);
         transition: all 0.2s ease-in-out;
         padding: 22px;
       }
@@ -551,12 +563,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       a {
-        color: var(--portfolio-lightDark-link);
+        color: var(--ddd-lightDark-5);
         transition: color .3s;
       }
 
       h1, h2, h3, h4, h5, h6 {
-        color: var(--portfolio-lightDark-blackWhite);
+        color: var(--ddd-lightDark-text);
         line-height: 1.2;
         font-weight: 700;
         margin-bottom: 0.75rem;
@@ -564,14 +576,14 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
       
       p {
-        color: var(--portfolio-lightDark-blackWhite);
+        color: var(--ddd-lightDark-text);
         font-size: var(--portfolio-fontsize-responsive);
         line-height: 1.5;
         margin-bottom: 1.3em;
       }
 
       ul {
-        color: var(--portfolio-lightDark-blackWhite);
+        color: var(--ddd-lightDark-text);
         list-style-type: disc;
       }
 
@@ -580,15 +592,15 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       li::marker {
-        color: var(--portfolio-lightDark-blackWhite) !important;
+        color: var(--ddd-lightDark-3) !important;
       }
 
       footer {
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        background-color: var(--portfolio-darkGrey);
-        color: var(--portfolio-white);
+        background-color: var(--ddd-lightDark-1);
+        color: var(--ddd-lightDark-5);
         font-family: var(--portfolio-font-body);
         font-size: clamp(11px, 2vw, 15px);
         padding: 40px 5vw;
@@ -597,14 +609,14 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .footer-link {
-        color: white !important;
+        color: var(--ddd-lightDark-1) !important;
         transition: color .3s;
       }
 
       .page-counter {
         font-family: var(--portfolio-font-body);
         font-size: 0.9rem;
-        color: var(--portfolio-lightDark-blackWhite);
+        color: var(--ddd-lightDark-1);
         margin: 0 0 1rem;
       }
 
@@ -615,7 +627,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       /* Site header elements */
       #site-title {
         padding: 0.5rem;
-        color: var(--portfolio-textHeader);
+        color: var(--ddd-palette-light);
         font-family: var(--portfolio-font-header);
         font-weight: bold;
         font-size: var(--portfolio-fontsize-responsive);
@@ -627,7 +639,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       #site-title:hover,
       #site-title:focus {
-        color: var(--portfolio-textHeaderHover);
+        color: var(--ddd-lightDark-5);
       }
 
       header a.menu-item {
@@ -636,7 +648,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         margin: 10px;
         padding: 0 5px;
         white-space: nowrap;
-        color: var(--portfolio-textHeader);
+        color: var(--ddd-palette-light);
         font-family: var(--portfolio-font-header);
         font-size: var(--portfolio-fontsize-responsive);
         font-weight: 450;
@@ -652,7 +664,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         left: 50%;
         width: 0;
         height: clamp(0.1em, 5vw, 0.2em);
-        background-color: var(--portfolio-menuItemUnderline);
+        background-color: var(--ddd-palette-5);
         transform: translateX(-50%);
         transition: all 0.2s ease-in-out;
       }
@@ -660,7 +672,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       .menu-item:hover,
       .menu-item:focus,
       .menu-item.active {
-        color: var(--portfolio-textHeaderHover);
+        color: var(--ddd-palette-5);
       }
 
       .menu-item:hover:after,
@@ -680,10 +692,10 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       header button {
           display: inline-block;
           color: #fff;
-          background-color: var(--portfolio-lightGrey);
+          background-color: var(--ddd-palette-1);
           border: 0;
-          width: 45px;
-          height: 50px;
+          width: 4em;
+          height: 4em;
           cursor: pointer;
           margin-left: 10px;
           transition: all 0.2s ease-in-out;
@@ -744,7 +756,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         gap: 0;
         border-radius: 4px;
         box-shadow: 0 2px 4px 0 rgba(#000, 0.16), 0 2px 10px 0 rgba(#000, 0.12);
-        background-color: var(--portfolio-lightGrey);
+        background-color: var(--ddd-palette-4);
         z-index: 5;
         transition: .3s;
       }
@@ -756,13 +768,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         right: 12px;
         border-style: solid;
         border-width: 0 10px 10px;
-        border-color: var(--portfolio-lightGrey) transparent;
+        border-color: var(--ddd-lightDark-4) transparent;
         transition: .3s;
       }
 
       .hidden-links li {
         display: block;
-        border-bottom: 1px solid var(--portfolio-white);
+        border-bottom: 1px solid var(--ddd-lightDark-background);
         padding: 10px;
       }
 
@@ -771,7 +783,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .hidden-links a {
-        color: var(--portfolio-white);
+        color: var(--ddd-palette-1);
         font-size: 16px;
         font-weight: 400;
         font-family: var(--portfolio-font-header);
@@ -783,7 +795,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       .hidden-links a:hover,
       .hidden-links a:focus,
       .hidden-links a.active {
-        color: var(--portfolio-grey);
+        color: var(--ddd-palette-light);
       }
 
       .hidden {
@@ -820,12 +832,10 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       .theme-picker {
         --simple-icon-width: 24px;
         --simple-icon-height: 24px;
-        padding: 0;
-        border: solid 3px var(--portfolio-lightGrey);
-        border-radius: 50%;
-        background-color: var(--portfolio-white);
+        padding: 8px;
+        background-color: var(--ddd-lightDark-3);
         z-index: 4;
-        color: var(--portfolio-darkGrey);
+        color: var(--ddd-lightDark-1);
         transition: color .3s, border .3s;
       }
 
@@ -842,8 +852,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         list-style-type: none;
         margin: 0 0 20px 0;
         padding: 0;
-        border-top: 3px solid var(--portfolio-lightDark-blackWhite);
-        border-bottom: 1px solid var(--portfolio-lightDark-blackWhite);
+        border-top: 3px solid var(--ddd-palette-light);
+        border-bottom: 1px solid var(--ddd-palette-light);
       }
 
       .tag-list li {
@@ -853,7 +863,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .tag-list li a {
-        color: var(--portfolio-lightDark-blackWhite);
+        color: var(--ddd-palette-light);
         font-weight: 400;
         font-size: clamp(20px, 3vw, 27.5px);
         text-transform: uppercase;
@@ -869,16 +879,16 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         max-width: 1236px;
         align-items: center;
         gap: 10px;
-        color: var(--portfolio-lightDark-blackWhite);
+        color: var(--ddd-lightDark-3);
         font-family: var(--portfolio-font-header);
         font-size: clamp(14px, 2vw, 18px);
         view-transition-name: location;
       }
 
       .breadcrumb a {
-        color: var(--portfolio-lightDark-blackWhite);
+        color: var(--ddd-lightDark-3);
         text-decoration: none;
-        border-bottom: 2px solid var(--portfolio-lightDark-bg);
+        border-bottom: 2px solid var(--ddd-lightDark-4);
         font-weight: 450;
         transition: .3s ease-in-out;
         overflow: hidden;
@@ -888,19 +898,19 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .breadcrumb-arrow {
-        color: var(--portfolio-accentHighlight);
+        color: var(--ddd-lightDark-4);
         transition: color .3s ease-in-out;
         padding-bottom: 4px;
       }
 
       .breadcrumb-parent {
-        color: var(--portfolio-lightDark-blackWhite);
+        color: var(--ddd-lightDark-1);
         transition: color .3s ease-in-out;
         padding-bottom: 4px;
       }
 
       .breadcrumb-split {
-        color: var(--portfolio-accentHighlight);
+        color: var(--ddd-lightDark-3);
         transition: color .3s ease-in-out;
         padding-bottom: 4px;
       }
@@ -915,8 +925,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .breadcrumb a:hover,
-      .breadcrumb a:focus{
-        border-bottom: 2px solid var(--portfolio-accentHighlight);
+      .breadcrumb a:focus {
+        border-bottom: 2px solid var(--ddd-lightDark-1);
       }
       
       /* Layouts */
@@ -962,13 +972,13 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         font-family: var(--portfolio-font-body);
         font-size: var(--portfolio-fontsize-responsive);
         text-transform: uppercase;
-        border-top: 6px solid var(--portfolio-lightDark-blackWhite);
+        border-top: 6px solid var(--ddd-lightDark-4);
         min-height: 36px;
         transition: color .3s;
       }
 
       .listing-category a {
-        color: var(--portfolio-lightDark-blackWhite);
+        color: var(--ddd-lightDark-3);
       }
 
       .listing-grid {
@@ -987,7 +997,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .listing-cardimg {
-        background-color: var(--portfolio-lightDark-cardImg);
+        background-color: var(--ddd-lightDark-1);
         border-radius: 6px;
         margin-bottom: 12px;
         height: 120px;
@@ -1003,9 +1013,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .listing-cardtitle {
-        color: var(--portfolio-lightDark-blackWhite);
+        color: var(--ddd-lightDark-2);
         text-decoration: underline;
-        text-decoration-color: var(--portfolio-lightDark-bg);
+        text-decoration-color: var(--ddd-lightDark-5);
         text-decoration-thickness: 4px !important;
         text-underline-offset: 8px;
         font-family: var(--portfolio-font-header);
@@ -1018,7 +1028,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .listing-cardtag {
-        color: var(--portfolio-lightDark-cardTag);
+        color: var(--ddd-palette-light);
         font-family: var(--portfolio-font-body);
         font-size: clamp(10px, 2vw, 16px);
         font-weight: 400;
@@ -1027,7 +1037,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       .listing-card:hover .listing-cardtitle,
       .listing-card:focus .listing-cardtitle{
-        text-decoration-color: var(--portfolio-accentHighlight);
+        text-decoration-color: var(--ddd-lightDark-3);
       }
 
       .listing-card:hover .listing-cardimg,
@@ -1054,10 +1064,9 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         width: 400px;
         height: clamp(48px, 8vw, 96px);
         border-radius: 8px;
-        color: var(--portfolio-white);
-        background-color: var(--portfolio-lightGrey);
+        background-color: var(--ddd-lightDark-2);
         text-decoration: underline;
-        text-decoration-color: var(--portfolio-lightGrey);
+        text-decoration-color: var(--ddd-lightDark-1);
         text-decoration-thickness: 4px;
         text-underline-offset: 8px;
         line-height: 1.8;
@@ -1067,18 +1076,19 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
       .pagination-text {
         display: -webkit-box;
+        color: var(--ddd-palette-light);
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         text-overflow: ellipsis;
       }
       .pagination a simple-icon-lite {
-        --simple-icon-color: var(--portfolio-white);
+        color: var(--ddd-palette-light);
         --simple-icon-width: clamp(24px, 4vw, 40px);
         --simple-icon-height: clamp(24px, 4vw, 40px);
       }
       .pagination a:hover,
       .pagination a:focus {
-        text-decoration-color: var(--portfolio-darkGrey);
+        text-decoration-color: var(--ddd-lightDark-3);
         box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 10px 0px;
       }
       .pagination a.prev {
@@ -1140,79 +1150,6 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         site-active-title h1 {
           font-size: clamp(56px, 12vw, 64px);
         }
-      }
-
-      /* Theme colors */
-      :host([site-theme="earth"]) {
-        --portfolio-menuItemUnderline:var(--portfolio-earth-accentLight);
-        --portfolio-lightGrey: var(--portfolio-earth-accentLight);
-        --portfolio-accentHighlight: var(--portfolio-earth-accentLight);
-        --portfolio-darkGrey: var(--portfolio-earth-accentDark);
-        --portfolio-lightDark-link: light-dark(var(--portfolio-earth-accentDark), var(--portfolio-earth-accentLight));
-        --portfolio-lightDark-cardTag: light-dark(
-          var(--portfolio-earth-accentDark),
-          var(--portfolio-earth-accentLight)
-        );
-      }
-
-      :host([site-theme="water"]) {
-        --portfolio-menuItemUnderline:var(--portfolio-water-accentLight);
-        --portfolio-lightGrey: var(--portfolio-water-accentLight);
-        --portfolio-accentHighlight: var(--portfolio-water-accentLight);
-        --portfolio-darkGrey: var(--portfolio-water-accentDark);
-        --portfolio-lightDark-link: light-dark(var(--portfolio-water-accentDark), var(--portfolio-water-accentLight));
-        --portfolio-lightDark-cardTag: light-dark(
-          var(--portfolio-water-accentDark),
-          var(--portfolio-water-accentLight)
-        );
-      }
-
-      :host([site-theme="fire"]) {
-        --portfolio-menuItemUnderline:var(--portfolio-fire-accentLight);
-        --portfolio-lightGrey: var(--portfolio-fire-accentLight);
-        --portfolio-accentHighlight: var(--portfolio-fire-accentLight);
-        --portfolio-darkGrey: var(--portfolio-fire-accentDark);
-        --portfolio-lightDark-link: light-dark(var(--portfolio-fire-accentDark), var(--portfolio-fire-accentLight));
-        --portfolio-lightDark-cardTag: light-dark(
-          var(--portfolio-fire-accentDark),
-          var(--portfolio-fire-accentLight)
-        );
-      }
-
-      :host([site-theme="sand"]) {
-        --portfolio-menuItemUnderline:var(--portfolio-sand-accentLight);
-        --portfolio-lightGrey: var(--portfolio-sand-accentLight);
-        --portfolio-accentHighlight: var(--portfolio-sand-accentLight);
-        --portfolio-darkGrey: var(--portfolio-sand-accentDark);
-        --portfolio-lightDark-link: light-dark(var(--portfolio-sand-accentDark), var(--portfolio-sand-accentLight));
-        --portfolio-lightDark-cardTag: light-dark(
-          var(--portfolio-sand-accentDark),
-          var(--portfolio-sand-accentLight)
-        );
-      }
-
-      :host([site-theme="rose"]) {
-        --portfolio-menuItemUnderline:var(--portfolio-rose-accentLight);
-        --portfolio-lightGrey: var(--portfolio-rose-accentLight);
-        --portfolio-accentHighlight: var(--portfolio-rose-accentLight);
-        --portfolio-darkGrey: var(--portfolio-rose-accentDark);
-        --portfolio-lightDark-link: light-dark(var(--portfolio-rose-accentDark), var(--portfolio-rose-accentLight));
-        --portfolio-lightDark-cardTag: light-dark(
-          var(--portfolio-rose-accentDark),
-          var(--portfolio-rose-accentLight)
-        );
-      }
-
-      :host([site-theme="violet"]) {
-        --portfolio-menuItemUnderline:var(--portfolio-violet-accentLight);
-        --portfolio-lightGrey: var(--portfolio-violet-accentLight);
-        --portfolio-accentHighlight: var(--portfolio-violet-accentLight);
-        --portfolio-darkGrey: var(--portfolio-violet-accentDark);
-        --portfolio-lightDark-link: light-dark(var(--portfolio-violet-accentDark), var(--portfolio-violet-accentLight));
-        --portfolio-lightDark-cardTag: light-dark(
-          var(--portfolio-violet-accentDark),
-          var(--portfolio-violet-accentLight)
-        );
       }
     `];
   }
@@ -1343,32 +1280,12 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     }
   }
 
-  // site theme footer button
-  toggleSiteTheme(e) {
-    switch (this.siteTheme) {
-      case "earth":
-        this.siteTheme = "water";
-      break;
-      case "water":
-        this.siteTheme = "fire";
-      break;
-      case "fire":
-        this.siteTheme = "sand";
-      break;
-      case "sand":
-        this.siteTheme = "rose";
-      break;
-      case "rose":
-        this.siteTheme = "violet";
-      break;
-      case "violet":
-        this.siteTheme = "";
-      break;
-      default:
-        this.siteTheme = "earth";
-      break;
-    }
+  togglePalette(e) {
+    this.dataPalette++;
+    if (this.dataPalette > 6) this.dataPalette = 0;
+    
   }
+
 
   // Lit render the HTML
   render() {
@@ -1419,7 +1336,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         </div>
         ${this.menuOverflow.length == 0
             ? html`
-              <simple-icon-button-lite title="Change theme" label="Change theme" icon="image:style" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
+              <simple-icon-button-lite title="Change theme" label="Change theme" icon="image:style" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
             ` : ''}
       </header>
       
@@ -1543,7 +1460,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
                 </a>
               ` : ``}
         </div>
-        <simple-icon-button-lite icon="image:style" title="Change theme" label="Change theme" class="theme-picker" @click="${this.toggleSiteTheme}"></simple-icon-button-lite>
+        <simple-icon-button-lite icon="image:style" title="Change theme" label="Change theme" class="theme-picker" @click="${this.togglePalette}"></simple-icon-button-lite>
         <scroll-button @click="${(e) => e.currentTarget.blur()}"></scroll-button>
       </footer>
     `;

@@ -4495,8 +4495,8 @@ html, :root {
   --ddd-palette-color-3: var(--simple-colors-fixed-theme-light-blue-8);
   --ddd-palette-color-4: var(--simple-colors-default-theme-light-blue-6);
   --ddd-palette-color-5: var(--simple-colors-default-theme-cyan-2);
-  --ddd-palette-color-6: var(--ddd-theme-default-keystoneYellow);
-  --ddd-palette-color-7: var(--simple-colors-default-theme-orange-7);
+  --ddd-palette-color-6: var(--simple-colors-default-theme-orange-7);
+  --ddd-palette-color-7: var(--ddd-theme-default-keystoneYellow);
 }
 
 [data-palette="boring-blue-gray"],
@@ -4517,8 +4517,31 @@ html, :root {
 --ddd-palette-color-3: var(--simple-colors-default-theme-grey-7);
 --ddd-palette-color-4: var(--simple-colors-default-theme-grey-5);
 --ddd-palette-color-5: var(--simple-colors-default-theme-grey-3);
---ddd-palette-color-6: var(--simple-colors-default-theme-amber-6);
---ddd-palette-color-7: var(--simple-colors-default-theme-grey-11);
+--ddd-palette-color-6: var(--simple-colors-default-theme-grey-11);
+--ddd-palette-color-7: var(--simple-colors-default-theme-amber-6);
+}
+
+[data-palette="salmon-season"],
+[data-palette="6"] {
+--ddd-palette-color-1: var(--simple-colors-default-theme-pink-2);
+--ddd-palette-color-2: var(--simple-colors-default-theme-pink-4);
+--ddd-palette-color-3: var(--ddd-theme-default-original87Pink);
+--ddd-palette-color-4: var(--ddd-theme-default-discoveryCoral);
+--ddd-palette-color-5: var(--simple-colors-default-theme-red-10);
+--ddd-palette-color-6: var(--simple-colors-default-theme-lime-9);
+--ddd-palette-color-7: var(--simple-colors-default-theme-lime-5);
+}
+
+/* This palette doesn't follow the same design pattern as the others */
+[data-palette="tweedle-dee"],
+[data-palette="7"] {
+--ddd-palette-color-1: var(--ddd-theme-default-slateMaxLight);
+--ddd-palette-color-2: var(--simple-colors-default-theme-blue-grey-12);
+--ddd-palette-color-3: var(--simple-colors-default-theme-blue-grey-11);
+--ddd-palette-color-4: var(--ddd-theme-default-pughBlue);
+--ddd-palette-color-5: var(--ddd-theme-default-skyBlue);
+--ddd-palette-color-6: var(--simple-colors-default-theme-blue-grey-2);
+--ddd-palette-color-7: var(--simple-colors-default-theme-cyan-12); 
 }
 
 `;
