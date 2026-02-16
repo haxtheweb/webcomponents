@@ -155,66 +155,13 @@ export class AppHaxUseCaseFilter extends LitElement {
           scroll-snap-type: x mandatory;
         }
 
-        .quick-tile {
-          appearance: none;
-          width: 180px;
-          min-width: 180px;
-          padding: 0;
-          cursor: pointer;
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
+        .quick-create-grid > div {
+          flex: 0 0 auto;
           scroll-snap-align: start;
-          box-shadow: var(--ddd-boxShadow-md);
-          transition: transform 0.2s ease, box-shadow 0.2s ease,
-            border-color 0.2s ease;
         }
 
-        .quick-tile:hover,
-        .quick-tile:focus-visible {
-          transform: translateY(-2px);
-          box-shadow: var(--ddd-boxShadow-lg);
-          border-color: var(--ddd-theme-default-keystoneYellow, #ffd100);
-          outline: none;
-        }
-
-        :host([dark]) .quick-tile,
-        body.dark-mode .quick-tile {
-          color: var(--ddd-theme-default-white, white);
-          border-color: var(--ddd-theme-default-limestoneGray, #a2aaad);
-        }
-
-        .quick-thumb {
-          width: 100%;
-          height: 170px;
-          background: var(--ddd-theme-default-limestoneMaxLight, #f5f5f5);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .quick-thumb img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-        }
-
-        .quick-thumb simple-icon-lite {
-          --simple-icon-height: var(--ddd-icon-3xl, 72px);
-          --simple-icon-width: var(--ddd-icon-3xl, 72px);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-        }
-
-        .quick-label {
-          font-family: var(--ddd-font-primary, sans-serif);
-          font-size: 14px;
-          padding: var(--ddd-spacing-3, 12px);
-          text-align: left;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
-
+        .quick-create-grid app-hax-use-case {
+          flex: 0 0 auto;
         }
 
         .template-group {
@@ -709,66 +656,67 @@ export class AppHaxUseCaseFilter extends LitElement {
           >
             ${quickSkeletons.map(
               (item) => html`
-                <button
-                  class="quick-tile"
-                  type="button"
-                  role="listitem"
-                  @click=${() => this.openTemplateModal(item)}
-                  aria-label="Create from template: ${item.useCaseTitle}"
-                >
-                  <span class="quick-thumb">
-                    ${item.useCaseImage
-                      ? html`<img src="${item.useCaseImage}" alt="" />`
-                      : html`<simple-icon-lite
-                          icon="icons:description"
-                        ></simple-icon-lite>`}
-                  </span>
-                  <span class="quick-label">${item.useCaseTitle}</span>
-                </button>
+                <div role="listitem">
+                  <app-hax-use-case
+                    .source=${item.useCaseImage || ""}
+                    .title=${item.useCaseTitle || ""}
+                    .description=${item.useCaseDescription || ""}
+                    .demoLink=${item.demoLink || ""}
+                    .iconImage=${item.useCaseIcon || []}
+                    ?dark="${this.dark}"
+                    aria-label="Create from template: ${item.useCaseTitle}"
+                    @click=${() => this.openTemplateModal(item)}
+                  ></app-hax-use-case>
+                </div>
               `,
             )}
 
-            <button
-              class="quick-tile"
-              type="button"
-              role="listitem"
-              @click=${() =>
-                this.scrollToGroup("from-template-heading", "skeleton")}
-              aria-label="More templates"
-            >
-              <span class="quick-thumb">
-                <simple-icon-lite icon="icons:add"></simple-icon-lite>
-              </span>
-              <span class="quick-label">More Templates</span>
-            </button>
+            <div role="listitem">
+              <app-hax-use-case
+                .source=${""}
+                .title=${"More Templates"}
+                .description=${"Browse all template starters"}
+                .demoLink=${""}
+                .iconImage=${[
+                  { icon: "icons:add", tooltip: "Browse templates" },
+                ]}
+                ?dark="${this.dark}"
+                aria-label="More templates"
+                @click=${() =>
+                  this.scrollToGroup("from-template-heading", "skeleton")}
+              ></app-hax-use-case>
+            </div>
 
-            <button
-              class="quick-tile"
-              type="button"
-              role="listitem"
-              @click=${() =>
-                this.scrollToGroup("from-scratch-heading", "blank")}
-              aria-label="From scratch"
-            >
-              <span class="quick-thumb">
-                <simple-icon-lite icon="icons:note-add"></simple-icon-lite>
-              </span>
-              <span class="quick-label">From Scratch</span>
-            </button>
+            <div role="listitem">
+              <app-hax-use-case
+                .source=${""}
+                .title=${"From Scratch"}
+                .description=${"Start from a blank site using a theme"}
+                .demoLink=${""}
+                .iconImage=${[
+                  { icon: "icons:note-add", tooltip: "Start from scratch" },
+                ]}
+                ?dark="${this.dark}"
+                aria-label="From scratch"
+                @click=${() => this.scrollToGroup("from-scratch-heading", "blank")}
+              ></app-hax-use-case>
+            </div>
 
-            <button
-              class="quick-tile"
-              type="button"
-              role="listitem"
-              @click=${() =>
-                this.scrollToGroup("from-existing-heading", "import")}
-              aria-label="Import"
-            >
-              <span class="quick-thumb">
-                <simple-icon-lite icon="icons:file-upload"></simple-icon-lite>
-              </span>
-              <span class="quick-label">Import</span>
-            </button>
+            <div role="listitem">
+              <app-hax-use-case
+                .source=${""}
+                .title=${"Import"}
+                .description=${"Import content from an existing source"}
+                .demoLink=${""}
+                .iconImage=${[
+                  { icon: "icons:file-upload", tooltip: "Import" },
+                ]}
+                ?dark="${this.dark}"
+                aria-label="Import"
+                @click=${() =>
+                  this.scrollToGroup("from-existing-heading", "import")}
+              ></app-hax-use-case>
+            </div>
           </div>
         </section>
 
