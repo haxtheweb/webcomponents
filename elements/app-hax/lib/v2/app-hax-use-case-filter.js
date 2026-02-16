@@ -184,7 +184,7 @@ export class AppHaxUseCaseFilter extends LitElement {
 
         .template-results {
           display: grid;
-          grid-template-columns: repeat(6, 1fr);
+          grid-template-columns: repeat(auto-fit, minmax(200px, 0fr));
           padding: 0 var(--ddd-spacing-5, 20px);
           box-sizing: border-box;
         }
@@ -529,10 +529,6 @@ export class AppHaxUseCaseFilter extends LitElement {
           .startNew h4 {
             font-size: var(--ddd-font-size-m, 20px);
           }
-          .template-results {
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--ddd-spacing-3, 12px);
-          }
         }
 
         @media (max-width: 600px) {
@@ -547,20 +543,12 @@ export class AppHaxUseCaseFilter extends LitElement {
           .startNew h4 {
             font-size: var(--ddd-font-size-s, 18px);
           }
-          .template-results {
-            grid-template-columns: 1fr;
-            gap: var(--ddd-spacing-2, 8px);
-          }
         }
 
         @media (max-width: 480px) {
           h4, .returnTo h4, .startNew h4 {
             font-size: var(--ddd-font-size-s, 16px);
             margin: 0 0 var(--ddd-spacing-3, 12px) 0;
-          }
-          .template-results {
-            grid-template-columns: 1fr;
-            gap: var(--ddd-spacing-2, 8px);
           }
           #returnToSection app-hax-search-results {
             min-width: 100%;

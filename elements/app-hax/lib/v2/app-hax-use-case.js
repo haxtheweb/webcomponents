@@ -32,14 +32,13 @@ export class AppHaxUseCase extends LitElement {
     };
   }
 
-  updated(changedProperties) {}
-
   static get styles() {
   return [
     css`
       :host {
         display: flex;
         flex-direction: column;
+        align-items: center;
         margin: 0;
         text-align: left;
         font-family: var(--ddd-font-primary);

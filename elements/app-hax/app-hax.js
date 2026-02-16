@@ -754,7 +754,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         }
         .template-results {
           display: grid;
-          grid-template-columns: repeat(6, minmax(220px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(200px, 0fr));
           width: 100%;
           min-height: 330px;
           box-sizing: border-box;
@@ -1129,10 +1129,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           h4, .returnTo h4, .startNew h4 {
             font-size: var(--ddd-font-size-m, 20px);
           }
-          .template-results {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--ddd-spacing-3, 12px);
-          }
+
         }
 
         /* 600px - 481px*/
@@ -1145,10 +1142,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           }
           h4, .returnTo h4, .startNew h4 {
             font-size: var(--ddd-font-size-s, 18px);
-          }
-          .template-results {
-            grid-template-columns: 1fr;
-            gap: var(--ddd-spacing-2, 8px);
           }
         }
 
