@@ -223,7 +223,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
 
         .template-group + .template-group {
-          margin-top: var(--ddd-spacing-6, 24px);
+          margin-top: var(--ddd-spacing-3, 12px);
         }
 
         .template-group-heading {
@@ -237,9 +237,8 @@ export class AppHaxUseCaseFilter extends LitElement {
 
         .template-results {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-          gap: var(--ddd-spacing-1, 4px);
-          width: 100%;
+          grid-template-columns: repeat(6, 1fr);
+          padding: 0 var(--ddd-spacing-5, 20px);
           box-sizing: border-box;
         }
 
