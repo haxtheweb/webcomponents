@@ -650,6 +650,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                     .title=${item.useCaseTitle || ""}
                     .description=${item.useCaseDescription || ""}
                     .demoLink=${item.demoLink || ""}
+                    .iconImage=${item.useCaseIcon || []}
                     ?dark="${this.dark}"
                     aria-label="Create from template: ${item.useCaseTitle}"
                     @click=${() => this.openTemplateModal(item)}
@@ -663,6 +664,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                 .source=${""}
                 .title=${"More Templates"}
                 .description=${"Browse all template starters"}
+                .iconImage=${[]}
                 ?dark="${this.dark}"
                 aria-label="More templates"
                 @click=${() =>
@@ -675,6 +677,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                 .source=${""}
                 .title=${"From Scratch"}
                 .description=${"Start from a blank site using a theme"}
+                .iconImage=${[]}
                 ?dark="${this.dark}"
                 aria-label="From scratch"
                 @click=${() => this.scrollToGroup("from-scratch-heading", "blank")}
@@ -686,6 +689,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                 .source=${""}
                 .title=${"Import"}
                 .description=${"Import content from an existing source"}
+                .iconImage=${[]}
                 ?dark="${this.dark}"
                 aria-label="Import"
                 @click=${() =>
@@ -836,6 +840,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                             .title=${entry.item.useCaseTitle || ""}
                             .description=${entry.item.useCaseDescription || ""}
                             .demoLink=${entry.item.demoLink || ""}
+                            .iconImage=${entry.item.useCaseIcon || []}
                             .isSelected=${entry.item.isSelected || false}
                             .showContinue=${entry.item.showContinue || false}
                             ?dark="${this.dark}"
@@ -973,6 +978,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                           .source=""
                           .title="Blank Site"
                           .description="Create a blank site using the clean-one theme"
+                          .iconImage=${[]}
                           .isSelected=${this.selectedCardIndex === -1}
                           .showContinue=${this.selectedCardIndex === -1}
                           ?dark="${this.dark}"

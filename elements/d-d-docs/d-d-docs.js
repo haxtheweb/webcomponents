@@ -1078,7 +1078,7 @@ class DDDocs extends DDD {
 
 
       <div class="my-5" data-palette="6">
-        <h5>[data-palette="offbrand-nittany-blue"] or [data-palette="3"]</h5>
+        <h5>[data-palette="salmon-season"] or [data-palette="6"]</h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
