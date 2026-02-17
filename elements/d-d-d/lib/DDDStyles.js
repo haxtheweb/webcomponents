@@ -617,6 +617,7 @@ export const DDDVariables = css`
     --ddd-theme-default-navy65: rgba(0, 30, 68, 0.65);
     --ddd-theme-default-navy70: rgba(0, 30, 68, 0.7);
     --ddd-theme-default-navy80: rgba(0, 30, 68, 0.8);
+    --ddd-theme-default-black: #000000;
     --ddd-theme-default-potentialMidnight: #000321;
     --ddd-theme-default-potential0: rgba(0, 3, 33, 0);
     --ddd-theme-default-potential50: rgba(0, 3, 33, 0.5);
@@ -4451,6 +4452,7 @@ html, :root {
   --ddd-palette-color-5: var(--simple-colors-default-theme-lime-5);
   --ddd-palette-color-6: var(--ddd-theme-default-inventOrange);
   --ddd-palette-color-7: var(--simple-colors-default-theme-orange-3);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 }
 
 /** Wisdom Walk Green */
@@ -4463,8 +4465,10 @@ html, :root {
   --ddd-palette-color-5: var(--simple-colors-default-theme-lime-5);
   --ddd-palette-color-6: var(--ddd-theme-default-inventOrange);
   --ddd-palette-color-7: var(--simple-colors-default-theme-orange-3);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 }
 
+/** Very Violent Red */
 [data-palette="very-violent-red"],
 [data-palette="1"] {
   --ddd-palette-color-1: var(--simple-colors-fixed-theme-red-12);
@@ -4474,8 +4478,11 @@ html, :root {
   --ddd-palette-color-5: var(--simple-colors-default-theme-red-2);
   --ddd-palette-color-6: var(--ddd-theme-default-slateGray);
   --ddd-palette-color-7: var(--ddd-theme-default-pughBlue);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+  --ddd-palette-video-player-caption-color
 }
 
+/** Beetles Yellow */
 [data-palette="beetles-yellow"],
 [data-palette="2"] {
   --ddd-palette-color-1: var(--simple-colors-default-theme-orange-9);
@@ -4485,9 +4492,10 @@ html, :root {
   --ddd-palette-color-5: var(--ddd-theme-default-keystoneYellow);
   --ddd-palette-color-6: var(--ddd-theme-default-creekTeal);
   --ddd-palette-color-7: var(--simple-colors-default-theme-cyan-1);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 }
 
-
+/** Offbrand Nittany Blue */
 [data-palette="offbrand-nittany-blue"],
 [data-palette="3"] {
   --ddd-palette-color-1: var(--ddd-theme-default-nittanyNavy);
@@ -4497,8 +4505,10 @@ html, :root {
   --ddd-palette-color-5: var(--simple-colors-default-theme-cyan-2);
   --ddd-palette-color-6: var(--simple-colors-default-theme-orange-7);
   --ddd-palette-color-7: var(--ddd-theme-default-keystoneYellow);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 }
 
+/** Boring Blue Gray */
 [data-palette="boring-blue-gray"],
 [data-palette="4"] {
   --ddd-palette-color-1: var(--ddd-theme-default-coalyGray);
@@ -4508,8 +4518,10 @@ html, :root {
   --ddd-palette-color-5: var(--simple-colors-fixed-theme-blue-grey-4);
   --ddd-palette-color-6: var(--ddd-theme-default-slateGray);
   --ddd-palette-color-7: var(--simple-colors-default-theme-blue-grey-2);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 }
 
+/** Monotone Gray */
 [data-palette="monotone"],
 [data-palette="5"] {
 --ddd-palette-color-1: var(--ddd-theme-default-coalyGray);
@@ -4519,8 +4531,10 @@ html, :root {
 --ddd-palette-color-5: var(--simple-colors-default-theme-grey-3);
 --ddd-palette-color-6: var(--simple-colors-default-theme-grey-11);
 --ddd-palette-color-7: var(--simple-colors-default-theme-amber-6);
+--ddd-palette-video-player-color: var(--ddd-theme-default-black);
 }
 
+/** Salmon Season */
 [data-palette="salmon-season"],
 [data-palette="6"] {
 --ddd-palette-color-1: var(--simple-colors-default-theme-pink-2);
@@ -4530,6 +4544,8 @@ html, :root {
 --ddd-palette-color-5: var(--simple-colors-default-theme-red-10);
 --ddd-palette-color-6: var(--simple-colors-default-theme-lime-9);
 --ddd-palette-color-7: var(--simple-colors-default-theme-lime-5);
+--ddd-palette-video-player-color: var(--ddd-theme-default-black);
+--ddd-palette-video-player-caption-color: var(--ddd-theme-default-black);
 }
 
 /* This palette doesn't follow the same design pattern as the others */
@@ -4541,9 +4557,23 @@ html, :root {
 --ddd-palette-color-4: var(--ddd-theme-default-pughBlue);
 --ddd-palette-color-5: var(--ddd-theme-default-skyBlue);
 --ddd-palette-color-6: var(--simple-colors-default-theme-blue-grey-2);
---ddd-palette-color-7: var(--simple-colors-default-theme-cyan-12); 
+--ddd-palette-color-7: var(--simple-colors-default-theme-cyan-12);
+--ddd-palette-video-player-color: var(--ddd-theme-default-white);
 }
 
+/* Polaris Invent */
+[data-palette="polaris-invent"],
+[data-palette="8"] {
+  /* Derived from colors in polaris-invent-theme */
+  --ddd-palette-color-1: var(--ddd-theme-default-limestoneLight);
+  --ddd-palette-color-2: var(--ddd-theme-default-coalyGray);
+  --ddd-palette-color-3: var(--ddd-theme-default-nittanyNavy);
+  --ddd-palette-color-4: var(--ddd-theme-default-beaver80);
+  --ddd-palette-color-5: var(--ddd-theme-default-beaverBlue);
+  --ddd-palette-color-6: var(--ddd-theme-default-skyBlue);
+  --ddd-palette-color-7: var(--ddd-theme-default-inventOrange);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-white);
+}
 `;
 
 // export that has all of them for easy stamping as a single sheet
