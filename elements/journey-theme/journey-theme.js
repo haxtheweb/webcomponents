@@ -285,8 +285,6 @@ class JourneyTheme extends HAXCMSLitElementTheme {
           display: block;
           padding: var(--ddd-spacing-0);
           margin: var(--ddd-spacing-0);
-          /* --haxcms-site-theme-color-1: var(--ddd-primary-2);
-          --haxcms-site-theme-color-2: var(--ddd-primary-8); */
           --haxcms-site-transition: 0.3s all ease-in-out;
 
           --ddd-palette-1: var(--ddd-palette-color-1, default);
@@ -747,7 +745,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
 
   togglePalette(e) {
     this.dataPalette++;
-    if (this.dataPalette > 5) this.dataPalette = 0;
+    if (this.dataPalette > 8) this.dataPalette = 0;
   }
 
   render() {
