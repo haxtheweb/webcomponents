@@ -168,11 +168,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           width: 100%;
           box-sizing: border-box;
         }
-
-        .template-group + .template-group {
-          margin-top: var(--ddd-spacing-3, 12px);
-        }
-
+        
         .template-group-heading {
           font-family: var(--ddd-font-primary, sans-serif);
           color: var(--accent-color);
@@ -194,9 +190,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         #returnToSection app-hax-search-results {
           width: 100%;
-          min-height: 280px;
           box-sizing: border-box;
-          height: 300px;
         }
         :host(:not([show-filter])) app-hax-search-results {
           width: 100%;
