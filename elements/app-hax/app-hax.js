@@ -715,8 +715,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           display: block;
           max-width: 100%;
           font-family: var(--ddd-font-primary, sans-serif);
-          padding-left: var(--ddd-spacing-5, 20px);
-          padding-right: var(--ddd-spacing-5, 20px);
         }
         .contentSection {
           display: flex;
@@ -726,9 +724,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           width: 100%;
           margin: 0;
           margin-top: var(--ddd-spacing-5, 20px);
-          padding: 0;
           box-sizing: border-box;
         }
+
         .leftSection,
         .rightSection {
           display: flex;
@@ -762,6 +760,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         }
         #returnToSection {
           width: 100%;
+          padding-left: var(--ddd-spacing-5, 20px);
+          padding-right: var(--ddd-spacing-5, 20px);
         }
         #returnToSection app-hax-search-results {
           width: 100%;
@@ -791,6 +791,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           margin: 0;
         }
         .upper-filter {
+          padding-left: var(--ddd-spacing-5, 20px);
+          padding-right: var(--ddd-spacing-5, 20px);
           margin-bottom: var(--ddd-spacing-4, 16px);
           position: relative;
           display: inline-block;
