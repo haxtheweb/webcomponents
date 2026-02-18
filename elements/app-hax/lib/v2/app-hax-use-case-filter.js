@@ -36,6 +36,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.allFilters = new Set();
     this.dark = false;
     this.isLoggedIn = false;
+    this.sortMenuOpen = false;
     // Default to sorting sites by most recently updated
     this.sortOption = "newest";
 
@@ -93,19 +94,21 @@ export class AppHaxUseCaseFilter extends LitElement {
       dark: { type: Boolean, reflect: true },
       isLoggedIn: { type: Boolean },
       sortOption: { type: String, attribute: "sort-option" },
+      sortMenuOpen: { type: Boolean },
     };
   }
 
   static get styles() {
     return [
       css`
+        :root {
+          --page-column-width: 800px;
+        }
         :host {
           overflow: hidden;
           display: block;
           max-width: 100%;
           font-family: var(--ddd-font-primary, sans-serif);
-          padding-left: var(--ddd-spacing-5, 20px);
-          padding-right: var(--ddd-spacing-5, 20px);
         }
         :host([dark]) {
           --accent-color: var(--ddd-theme-default-white, white);
@@ -121,22 +124,16 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
 
         .quick-create {
-          margin-left: calc(0px - var(--ddd-spacing-5, 20px));
-          margin-right: calc(0px - var(--ddd-spacing-5, 20px));
           padding: var(--ddd-spacing-5, 20px) var(--ddd-spacing-5, 20px)
             var(--ddd-spacing-4, 16px);
+          background-color: var(--ddd-theme-default-limestoneLight);
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
         }
 
         :host([dark]) .quick-create,
         body.dark-mode .quick-create {
-          background: var(--ddd-theme-default-nittanyNavy, #001e44);
-          color: var(--ddd-theme-default-white, white);
-        }
-
-        :host([light]) .quick-create,
-        body.dark-mode .quick-create {
-          background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          background-color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          color: var(--accent-color);
         }
 
         .quick-create h2 {
@@ -172,7 +169,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         .template-group-heading {
           font-family: var(--ddd-font-primary, sans-serif);
           color: var(--accent-color);
-          margin: 0 0 var(--ddd-spacing-4, 16px) 0;
+          margin: 0 0 var(--ddd-spacing-4, 16px) var(--ddd-spacing-7, 28px);
           text-decoration: underline;
           text-decoration-thickness: var(--ddd-border-size-xs, 1px);
           text-underline-offset: var(--ddd-spacing-1, 4px);
@@ -186,21 +183,40 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
 
         #returnToSection {
-          width: 100%;
+          padding-left: var(--ddd-spacing-6, 24px);
+          padding-right: var(--ddd-spacing-6, 24px);
+          
         }
         #returnToSection app-hax-search-results {
-          width: 100%;
+          
           box-sizing: border-box;
         }
+
+        #startJourneySection {
+           padding-left: var(--ddd-spacing-6, 24px);
+          padding-right: var(--ddd-spacing-6, 24px);
+        }
+
+        .decorative-line {
+          border-bottom: 4px solid var(--ddd-theme-default-skyBlue);
+          box-sizing: border-box;
+          width: 100%;
+          margin: 0 0 var(--ddd-spacing-3, 12px) 0;
+        }
+
+        #from-template-heading {
+          margin-top: var(--ddd-spacing-5, 20px);
+        }
+
         :host(:not([show-filter])) app-hax-search-results {
           width: 100%;
         }
 
-        h2
-        .returnTo h2
+        h2,
+        .returnTo h2,
         .startNew h2 {
           font-family: var(--ddd-font-primary, sans-serif);
-          font-size: var(--ddd-font-size-l, 24px);
+          font-size: var(--ddd-font-size-m);
           color: var(--accent-color);
           margin: 0 0 var(--ddd-spacing-4, 16px) 0;
         }
@@ -210,30 +226,30 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
-          align-items: flex-start;
-          margin: 0;
+          align-items: stretch;
         }
         .upper-filter {
-          margin-bottom: var(--ddd-spacing-4, 16px);
           position: relative;
           display: inline-block;
-          width: 100%;
+          flex: 1;
+          min-width: 200px;
+          width: 60%;
         }
         input[type="text"] {
           width: 100%;
-          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-2, 8px)
-            var(--ddd-spacing-2, 8px) var(--ddd-spacing-8, 32px);
+          padding: var(--ddd-spacing-3, 12px) var(--ddd-spacing-3, 12px)
+            var(--ddd-spacing-3, 12px) var(--ddd-spacing-3, 12px);
           font-size: var(--ddd-font-size-xs, 12px);
-          border-radius: var(--ddd-radius-sm, 4px);
-          border: var(--ddd-border-xs, 1px solid);
-          border-color: var(--ddd-theme-default-slateGray, #666);
-          background: var(--ddd-theme-default-white, white);
+          border-radius: 12px;
+          border: var(--ddd-border-s, 2px solid);
+          border-color: var(--ddd-theme-default-limestoneGray);
+          background: var(--ddd-theme-default-limestoneLight);
           color: var(--ddd-theme-default-coalyGray, #222);
           transition: all 0.2s ease;
           box-sizing: border-box;
           font-family: var(--ddd-font-primary, sans-serif);
           margin: 0;
-          min-height: var(--ddd-spacing-8, 32px);
+          min-height: var(--ddd-spacing-12, 48px);
         }
         :host([dark]) input[type="text"],
         body.dark-mode input[type="text"] {
@@ -243,141 +259,50 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
         input[type="text"]:focus {
           border: var(--ddd-border-md, 2px solid);
-          border-color: var(--ddd-theme-default-keystoneYellow, #ffd100);
-          background: var(--ddd-theme-default-white, white);
+          border-color: var(--ddd-theme-default-accent);
           outline: none;
         }
         :host([dark]) input[type="text"]:focus,
         body.dark-mode input[type="text"]:focus {
           background: var(--ddd-theme-default-coalyGray, #333);
-          border-color: var(--ddd-theme-default-keystoneYellow, #ffd100);
+          border-color: var(--ddd-theme-default-accent);
         }
         .search-icon {
           position: absolute;
-          left: var(--ddd-spacing-2, 8px);
+          right: var(--ddd-spacing-3, 12px);
           top: 50%;
           transform: translateY(-50%);
           font-size: var(--ddd-font-size-xs, 14px);
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
           pointer-events: none;
           z-index: 1;
-          --simple-icon-width: var(--ddd-icon-3xs, 20px);
-          --simple-icon-height: var(--ddd-icon-3xs, 20px);
+          --simple-icon-width: 25px;
+          --simple-icon-height: 25px;
         }
         :host([dark]) .search-icon,
         body.dark-mode .search-icon {
           color: var(--ddd-theme-default-white, white);
         }
         .filter {
-          border-bottom: var(--ddd-border-xs, 1px solid);
-          border-color: var(--ddd-theme-default-slateGray, #666);
-          margin-top: var(--ddd-spacing-4, 16px);
+          margin: var(--ddd-spacing-4, 16px) auto;
+          width: 100%;
+          max-width: 700px;
           box-sizing: border-box;
           font-family: var(--ddd-font-primary, sans-serif);
           transition: box-shadow 0.2s ease;
-        }
-
-        .filter-btn {
+          padding-left: var(--ddd-spacing-5, 20px);
+          padding-right: var(--ddd-spacing-5, 20px);
           display: flex;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-3, 12px);
           align-items: center;
-          justify-content: flex-start;
-          gap: var(--ddd-spacing-1, 4px);
-          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
-          border-radius: var(--ddd-radius-sm, 4px);
-          border: var(--ddd-border-xs, 1px solid) transparent;
-          background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          font-size: var(--ddd-font-size-3xs, 11px);
-          font-family: var(--ddd-font-primary, sans-serif);
-          font-weight: var(--ddd-font-weight-medium, 500);
-          cursor: pointer;
-          box-shadow: var(--ddd-boxShadow-sm);
-          transition: all 0.2s ease;
-          outline: none;
-          min-height: var(--ddd-spacing-7, 28px);
-          text-align: left;
-        }
-        :host([dark]) .filter-btn,
-        body.dark-mode .filter-btn {
-          background: var(--ddd-theme-default-slateGray, #444);
-          color: var(--ddd-theme-default-white, white);
-        }
-        .filter-btn.active,
-        .filter-btn:active {
-          background: var(--ddd-theme-default-nittanyNavy, #001e44);
-          color: var(--ddd-theme-default-white, white);
-          border-color: var(--ddd-theme-default-keystoneYellow, #ffd100);
-          box-shadow: var(--ddd-boxShadow-md);
-        }
-        :host([dark]) .filter-btn.active,
-        :host([dark]) .filter-btn:active,
-        body.dark-mode .filter-btn.active,
-        body.dark-mode .filter-btn:active {
-          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          border-color: var(--ddd-theme-default-white, white);
-        }
-        .filter-btn:hover,
-        .filter-btn:focus {
-          background: var(--ddd-theme-default-slateGray, #666);
-          color: var(--ddd-theme-default-white, white);
-          transform: translateY(-1px);
-        }
-        .filter-btn:focus {
-          outline: var(--ddd-border-md, 2px solid)
-            var(--ddd-theme-default-keystoneYellow, #ffd100);
-          outline-offset: var(--ddd-spacing-1, 2px);
-        }
-        :host([dark]) .filter-btn:hover,
-        :host([dark]) .filter-btn:focus,
-        body.dark-mode .filter-btn:hover,
-        body.dark-mode .filter-btn:focus {
-          background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
         }
 
-        .filter-btn.active:hover,
-        .filter-btn.active:focus {
-            background: var(--ddd-theme-default-keystoneYellow, #ffd100);
-            color: var(--ddd-theme-default-nittanyNavy, #001e44);
-        }
-
-        :host([dark]) .filter-btn.active:hover,
-        :host([dark]) .filter-btn.active:focus,
-        body.dark-mode .filter-btn.active:hover,
-        body.dark-mode .filter-btn.active:focus {
-          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-        }
-
-        .filter-btn .icon {
-          font-size: var(--ddd-font-size-3xs, 12px);
-          color: inherit;
+        .contentSection > div:has(.filter) {
           display: flex;
-          align-items: center;
-          flex-shrink: 0;
-          width: var(--ddd-icon-3xs, 20px);
-          height: var(--ddd-icon-3xs, 20px);
+          justify-content: center;
         }
-        .filter-btn .icon simple-icon-lite {
-          color: inherit;
-          --simple-icon-width: var(--ddd-icon-3xs, 20px);
-          --simple-icon-height: var(--ddd-icon-3xs, 20px);
-        }
-        .filter-btn.active .icon,
-        .filter-btn.active .icon simple-icon-lite {
-          color: inherit;
-        }
-        :host([dark]) .filter-btn.active .icon,
-        :host([dark]) .filter-btn.active .icon simple-icon-lite,
-        body.dark-mode .filter-btn.active .icon,
-        body.dark-mode .filter-btn.active .icon simple-icon-lite {
-          color: inherit;
-        }
-        .filter-btn:hover .icon simple-icon-lite,
-        .filter-btn:focus .icon simple-icon-lite {
-          color: inherit;
-        }
+      
         input[type="checkbox"] {
           display: none;
         }
@@ -385,17 +310,79 @@ export class AppHaxUseCaseFilter extends LitElement {
           margin-top: var(--ddd-spacing-2, 8px);
           margin-bottom: var(--ddd-spacing-3, 12px);
           display: flex;
-          flex-direction: column;
+          align-items: center;
           gap: var(--ddd-spacing-1, 4px);
+          position: relative;
         }
-        .sort-label {
+        .sort-button {
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          background: transparent;
+          border: none;
+          box-shadow: none;
+          padding: var(--ddd-spacing-2, 8px);
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.2s ease;
+          outline: none;
+          min-height: var(--ddd-spacing-7, 28px);
+          min-width: var(--ddd-spacing-7, 28px);
+          --simple-icon-width: 40px;
+          --simple-icon-height: 40px;
+        }
+
+        :host([dark]) .sort-button, body.dark-mode .sort-button {
+          color: var(--ddd-theme-default-white, white);
+        }
+
+        :host([dark]) .sort-button:hover, body.dark-mode .sort-button:hover {
+          color: var(--ddd-theme-default-limestoneGray);
+        }
+
+        .sort-button:hover, body.dark-mode .sort-button:hover{
+          color: var(--ddd-theme-default-accent);
+        }
+        
+        .sort-menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          margin-top: var(--ddd-spacing-1, 4px);
+          background: var(--ddd-theme-default-limestoneLight);
+          border: var(--ddd-border-xs, 1px solid) var(--ddd-theme-default-limestoneLight);
+          border-radius: var(--ddd-radius-sm, 4px);
+          box-shadow: var(--ddd-boxShadow-md);
+          min-width: 200px;
+          z-index: 1000;
+        }
+        .sort-menu-item {
+          display: block;
+          width: 100%;
+          padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
+          background: none;
+          border: none;
+          text-align: left;
+          cursor: pointer;
           font-family: var(--ddd-font-primary, sans-serif);
           font-size: var(--ddd-font-size-3xs, 11px);
           color: var(--ddd-theme-default-coalyGray, #222);
+          transition: all 0.2s ease;
         }
-        :host([dark]) .sort-label,
-        body.dark-mode .sort-label {
-          color: var(--ddd-theme-default-limestoneGray, #f5f5f5);
+        .sort-menu-item:hover {
+          background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
+        }
+        .sort-menu-item:focus {
+          outline: var(--ddd-border-md, 2px solid) var(--ddd-theme-default-keystoneYellow, #ffd100);
+          outline-offset: -2px;
+        }
+        :host([dark]) .sort-menu-item,
+        body.dark-mode .sort-menu-item {
+          color: var(--ddd-theme-default-black);
+        }
+        :host([dark]) .sort-menu-item:hover,
+        body.dark-mode .sort-menu-item:hover {
+          background: var(--ddd-theme-default-limestoneGray);
         }
         .sort-select {
           width: 100%;
@@ -658,7 +645,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                 .source=${""}
                 .title=${"More Templates"}
                 .description=${"Browse all template starters"}
-                .iconImage=${[]}
+                .iconImage=${[{ icon: "icons:add", tooltip: "More templates" }]}
                 ?dark="${this.dark}"
                 aria-label="More templates"
                 @click=${() =>
@@ -671,7 +658,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                 .source=${""}
                 .title=${"From Scratch"}
                 .description=${"Start from a blank site using a theme"}
-                .iconImage=${[]}
+                .iconImage=${[{ icon: "editor:insert-drive-file", tooltip: "From scratch" }]}
                 ?dark="${this.dark}"
                 aria-label="From scratch"
                 @click=${() => this.scrollToGroup("from-scratch-heading", "blank")}
@@ -683,7 +670,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                 .source=${""}
                 .title=${"Import"}
                 .description=${"Import content from an existing source"}
-                .iconImage=${[]}
+                .iconImage=${[{ icon: "icons:cloud-download", tooltip: "Import content" }]}
                 ?dark="${this.dark}"
                 aria-label="Import"
                 @click=${() =>
@@ -702,7 +689,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             <!-- Search bar -->
             <div class="upper-filter">
               <label for="searchField" class="visually-hidden"
-                >Filter Sites</label
+                >Search</label
               >
               <slot>
                 <simple-icon-lite
@@ -716,8 +703,8 @@ export class AppHaxUseCaseFilter extends LitElement {
                 @input="${this.handleSearch}"
                 @keydown="${this.testKeydown}"
                 type="text"
-                placeholder="Filter Sites"
-                aria-label="Filter Sites"
+                placeholder="Search"
+                aria-label="Search"
                 aria-describedby="search-help"
               />
               <div id="search-help" class="visually-hidden">
@@ -727,39 +714,59 @@ export class AppHaxUseCaseFilter extends LitElement {
             </div>
             <!-- Sort options for returning sites -->
             <div class="sort-control">
-              <label class="sort-label" for="siteSort">
-                Sort sites
-              </label>
-              <select
-                id="siteSort"
-                class="sort-select"
-                @change=${this.handleSortChange}
+              <button
+                class="sort-button"
+                @click=${(e) => {e.stopPropagation();
+                  this.sortMenuOpen = !this.sortMenuOpen;
+                }}
+                aria-label="Sort options"
+                aria-expanded=${this.sortMenuOpen}
+                aria-has-popup="menu"
               >
-                <option
-                  value="newest"
-                  ?selected=${this.sortOption === "newest"}
-                >
-                  Recently updated
-                </option>
-                <option value="az" ?selected=${this.sortOption === "az"}>
-                  Title A–Z
-                </option>
-                <option value="za" ?selected=${this.sortOption === "za"}>
-                  Title Z–A
-                </option>
-                <option
-                  value="oldest"
-                  ?selected=${this.sortOption === "oldest"}
-                >
-                  Least recently updated
-                </option>
-                <option
-                  value="theme"
-                  ?selected=${this.sortOption === "theme"}
-                >
-                  Theme name
-                </option>
-              </select>
+                <simple-icon-lite 
+                  icon="av:sort-by-alpha"
+                  aria-hidden="true"
+                ></simple-icon-lite>
+              </button>
+              ${this.sortMenuOpen ? html`
+                <div class="sort-menu" role="menu">
+                  <button 
+                    role="menuitem" 
+                    class="sort-menu-item" 
+                    @click=${() => this.handleSortChange("newest")}
+                  >
+                    Recently updated
+                  </button>
+                  <button 
+                    role="menuitem" 
+                    class="sort-menu-item" 
+                    @click=${() => this.handleSortChange("az")}
+                  >
+                    Title A–Z
+                  </button>
+                  <button 
+                    role="menuitem" 
+                    class="sort-menu-item" 
+                    @click=${() => this.handleSortChange("za")}
+                  >
+                    Title Z–A
+                  </button>
+                  <button 
+                    role="menuitem" 
+                    class="sort-menu-item" 
+                    @click=${() => this.handleSortChange("oldest")}
+                  >
+                    Least recently updated
+                  </button>
+                  <button 
+                    role="menuitem" 
+                    class="sort-menu-item" 
+                    @click=${() => this.handleSortChange("theme")}
+                  >
+                    Theme name
+                  </button>
+                </div>
+              ` : ""}
             </div>
 
             <div id="reset-help" class="visually-hidden">
@@ -776,6 +783,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             aria-labelledby="return-to-heading"
           >
             <h2 id="return-to-heading">Return to...</h2>
+            <div class="decorative-line"></div>
             <div
               role="region"
               aria-label="Previously created sites"
@@ -798,6 +806,7 @@ export class AppHaxUseCaseFilter extends LitElement {
             aria-labelledby="create-site-heading"
           >
             <h2 id="create-site-heading">Create New Site</h2>
+            <div class="decorative-line"></div>
             <div id="template-count" class="visually-hidden">
               ${this.filteredItems.length} options available
             </div>
@@ -1113,17 +1122,36 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.requestUpdate();
   }
 
+  _handleOutsideSortClick(e) {
+    if (!this.sortMenuOpen) return;
+
+    const sortControl = this.shadowRoot.querySelector(".sort-control");
+    if (!sortControl) return;
+
+    if (!sortControl.contains(e.target)) {
+      this.sortMenuOpen = false;
+      this.requestUpdate();
+    }
+  }
+
   connectedCallback() {
     super.connectedCallback();
+
     globalThis.addEventListener("jwt-logged-in", this._jwtLoggedIn.bind(this), {
       signal: this.windowControllers.signal,
     });
+
+    this._boundOutsideSortClick = this._handleOutsideSortClick.bind(this);
+    document.addEventListener("click", this._boundOutsideSortClick);
   }
 
+
   disconnectedCallback() {
+    document.removeEventListener("click", this._boundOutsideSortClick);
     this.windowControllers.abort();
     super.disconnectedCallback();
   }
+
 
   _jwtLoggedIn(e) {
     // When login status changes to true, refresh skeleton list
@@ -1180,9 +1208,10 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.applyFilters();
   }
 
-  handleSortChange(e) {
-    const value = e && e.target && e.target.value ? e.target.value : "newest";
-    this.sortOption = value;
+  handleSortChange(value) {
+    const sortValue = typeof value === "string" ? value : (value && value.target && value.target.value ? value.target.value : "newest");
+    this.sortOption = sortValue;
+    this.sortMenuOpen = false;
     this.requestUpdate();
   }
 
