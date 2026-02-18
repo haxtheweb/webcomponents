@@ -150,7 +150,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
             ></simple-fields-field>
           </div>
 
-          <a11y-collapse
+          ${HAXStore.platformAllows("popularGizmos") ? html`<a11y-collapse
             id="popular"
             heading="${this.t.popular}"
             heading-button
@@ -194,9 +194,9 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                   </simple-popover-selection>`,
               )}
             </simple-button-grid>
-          </a11y-collapse>
+          </a11y-collapse>` : html``}
 
-          <a11y-collapse
+          ${HAXStore.platformAllows("recentGizmos") ? html`<a11y-collapse
             id="recent"
             heading="${this.t.recent}"
             heading-button
@@ -240,7 +240,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                   </simple-popover-selection>`,
               )}
             </simple-button-grid>
-          </a11y-collapse>
+          </a11y-collapse>` : html``}
           ${this.categories.map(
             (tag) =>
               html` <a11y-collapse
@@ -466,6 +466,10 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           gizmo.meta &&
           (gizmo.meta.inlineOnly || gizmo.meta.hidden || gizmo.requiresParent)
         ) {
+          return false;
+        }
+        // remove references restricted by a defined platformConfig
+        else if(gizmo.platformRestricted){
           return false;
         }
         return true;

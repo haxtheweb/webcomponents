@@ -1091,6 +1091,11 @@ class Store {
         "viewSource",
         "onlineSearch",
         "pageBreak",
+        "uploadFiles",
+        "pageTemplates",
+        "blockTemplates",
+        "popularGizmos",
+        "recentGizmos"
       ]);
 
       // If audience is not defined, default to expert mode

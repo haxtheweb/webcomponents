@@ -1102,8 +1102,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       if (typeof appDataResponse.apps !== typeof undefined) {
         var apps = appDataResponse.apps;
         for (let i = 0; i < apps.length; i++) {
-          // Hide online searches in novice mode
-          if(this.isPlatformAudience("novice") || !this.platformAllows("onlineSearch")){
+          if(!this.platformAllows("onlineSearch")){
             if(!Object.hasOwn(apps[i].connection.operations, "add")) continue;
           }
 
@@ -1342,17 +1341,6 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         if (response.ok) return response.json();
       })
       .then((json) => {
-        // Create a filtered copy of appStore
-        if (json.autoloader && typeof json.autoloader === "object") {
-          const filteredAutoloader = {};
-          // Only include tags that are in the allowed blocks list
-          Object.keys(json.autoloader).forEach((tagName) => {
-            if (this.platformAllows(tagName)) {
-              filteredAutoloader[tagName] = json.autoloader[tagName];
-            }
-          });
-          json.autoloader = filteredAutoloader;
-        };
         this.__appStoreData = json;
       });
   }
@@ -2823,6 +2811,23 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     this.recentGizmoList =
       UserScaffoldInstance.readMemory("recentGizmoList") || [];
     this.platformConfig = {};
+    // Keep a master list of required blocks for the baseline HAX experience
+    // NOTE: these can't be disabled by the user's skeleton
+    this.requiredPrimitives = new Set([
+        "webview",
+        "h1", 
+        "h2", 
+        "ul", 
+        "ol",
+        "li",
+        "p",
+        "a",
+        "mark",
+        "abbr",
+        "img",
+        "figure",
+        "figcaption"
+      ]);
     this.haxAutoloader = null;
     this.activeHaxBody = null;
     this.haxTray = null;
@@ -3732,11 +3737,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     }
 
     for (let tag in this.__primsBuilder) {
-      // If platform restrictions are in-place, default to limited tags
-      if(!this.platformAllows(tag) && !["h1", "h2", "ul", "ol"].includes(tag)){
-        continue;
-      }
-
       let primContentDemo = "";
       if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
         primContentDemo = "Heading";
@@ -4981,6 +4981,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         let gizmo = detail.properties.gizmo;
         if (gizmo) {
           gizmo.tag = detail.tag;
+
+          // validate whether platformConfig allows the block
+          if(!this.platformAllows(gizmo.tag) && !this.requiredPrimitives.has(gizmo.tag)){
+            gizmo.platformRestricted = true;
+          } else {
+            gizmo.platformRestricted = false;
+          }
 
           let gizmos = this.gizmoList;
           gizmos.push(gizmo);

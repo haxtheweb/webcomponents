@@ -999,19 +999,19 @@ class HaxTray extends I18NMixin(
   get contentAddTemplate() {
     let hidden = this.trayDetail !== "content-add";
     return html`<div class="block-add-wrapper">
-      <hax-tray-upload ?hidden="${hidden}" show-sources></hax-tray-upload>
-      <hax-stax-browser
+      <hax-tray-upload ?hidden="${hidden || !HAXStore.platformAllows("uploadFiles")}" show-sources></hax-tray-upload>
+      ${HAXStore.platformAllows("pageTemplates") ? html`<hax-stax-browser
         id="pagesbrowser"
         ?hidden="${hidden}"
         label="${this.t.pages || "Pages"}"
         template-type="page"
-      ></hax-stax-browser>
-      <hax-stax-browser
+      ></hax-stax-browser>` : ''}
+      ${HAXStore.platformAllows("blockTemplates") ? html`<hax-stax-browser
         id="staxbrowser"
         ?hidden="${hidden}"
         label="${this.t.templates}"
         template-type="area"
-      ></hax-stax-browser>
+      ></hax-stax-browser>` : ''}
       <hax-gizmo-browser
         id="gizmobrowser"
         ?hidden="${hidden}"
@@ -1031,8 +1031,12 @@ class HaxTray extends I18NMixin(
       .querySelector("#gizmobrowser")
       .resetList(toJS(HAXStore.gizmoList));
     const staxList = toJS(HAXStore.staxList);
-    this.shadowRoot.querySelector("#staxbrowser").staxList = [...staxList];
-    this.shadowRoot.querySelector("#pagesbrowser").staxList = [...staxList];
+    if(HAXStore.platformAllows("blockTemplates")){
+      this.shadowRoot.querySelector("#staxbrowser").staxList = [...staxList];
+    }
+    if(HAXStore.platformAllows("pageTemplates")){
+      this.shadowRoot.querySelector("#pagesbrowser").staxList = [...staxList];
+    }
   }
   /**
    * Process event for simple content inserts.
@@ -1644,11 +1648,14 @@ class HaxTray extends I18NMixin(
                 (!prop.attribute || prop.attribute != "slot"),
             );
         const isLocked = this.locked;
+        // If the menu is advanced or developer, check the current platform audience. Else default to visible.
+        const isExpertSetting = (propName === "advanced" || propName === "developer") ? !HAXStore.isPlatformAudience("expert") : false;
         this.activeSchema[0].properties.push({
           property: propName,
           title: propTitle,
           properties: filteredProps.length > 0 ? filteredProps : undefined,
           disabled: isLocked || filteredProps.length < 1,
+          hidden: isExpertSetting,
           // we only auto expand (and hence auto focus) active nodes if they are NOT text based
           // grid plates are the exception to the rule here
           expanded: !isLocked && propName === "configure",
