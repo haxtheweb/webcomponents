@@ -658,10 +658,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                 .source=${""}
                 .title=${"More Templates"}
                 .description=${"Browse all template starters"}
-                .demoLink=${""}
-                .iconImage=${[
-                  { icon: "icons:add", tooltip: "Browse templates" },
-                ]}
+                .iconImage=${[]}
                 ?dark="${this.dark}"
                 aria-label="More templates"
                 @click=${() =>
@@ -674,10 +671,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                 .source=${""}
                 .title=${"From Scratch"}
                 .description=${"Start from a blank site using a theme"}
-                .demoLink=${""}
-                .iconImage=${[
-                  { icon: "icons:note-add", tooltip: "Start from scratch" },
-                ]}
+                .iconImage=${[]}
                 ?dark="${this.dark}"
                 aria-label="From scratch"
                 @click=${() => this.scrollToGroup("from-scratch-heading", "blank")}
@@ -689,10 +683,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                 .source=${""}
                 .title=${"Import"}
                 .description=${"Import content from an existing source"}
-                .demoLink=${""}
-                .iconImage=${[
-                  { icon: "icons:file-upload", tooltip: "Import" },
-                ]}
+                .iconImage=${[]}
                 ?dark="${this.dark}"
                 aria-label="Import"
                 @click=${() =>
@@ -981,10 +972,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                           .source=""
                           .title="Blank Site"
                           .description="Create a blank site using the clean-one theme"
-                          .demoLink="#"
-                          .iconImage=${[
-                            { icon: "icons:build", tooltip: "Blank site" },
-                          ]}
+                          .iconImage=${[]}
                           .isSelected=${this.selectedCardIndex === -1}
                           .showContinue=${this.selectedCardIndex === -1}
                           ?dark="${this.dark}"

@@ -387,6 +387,11 @@ export class AppHaxSiteBars extends SimpleColors {
         .date simple-icon {
           --simple-icon-color: var(--ddd-theme-default-limestoneGray);
         }
+
+        .imageLink {
+          display: block;
+          overflow: hidden;
+        }
       `,
     ];
   }
