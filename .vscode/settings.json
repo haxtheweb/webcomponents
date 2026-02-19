@@ -6,21 +6,5 @@
     "vscode-html-custom-data.json",
     "custom-elements.json"
   ],
-  "workbench.colorCustomizations": {
-    "activityBarBadge.background": "#06b9a5",
-    "activityBarBadge.foreground": "#15202b",
-    "commandCenter.activeBackground": "#00a17d",
-    "commandCenter.background": "#00a17d",
-    "commandCenter.border": "#15202b99",
-    "sash.hoverBorder": "#06b9a5",
-    "statusBar.background": "#ab2101",
-    "statusBar.foreground": "#ffffff",
-    "statusBarItem.hoverBackground": "#930d0d",
-    "statusBarItem.remoteForeground": "#2b2615",
-    "statusBarItem.remoteBackground": "#06b9a5",
-    "titleBar.activeBackground": "#ab2101",
-    "titleBar.activeForeground": "#ffffff",
-    "titleBar.inactiveBackground": "#930d0d",
-    "titleBar.inactiveForeground": "#dadada"
-  }
+  "workbench.colorCustomizations": {}
 }
