@@ -290,7 +290,6 @@ export class AppHaxSiteBars extends SimpleColors {
             var(--ddd-theme-default-roarMaxlight)
           );
           border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-sm, 4px);
           min-height: 260px;
           box-shadow: light-dark(
             2px 2px 12px #1c1c1c,
@@ -302,9 +301,10 @@ export class AppHaxSiteBars extends SimpleColors {
         }
 
         :host(:hover),
+        :host(:focus),
         :host(:focus-within) {
           border: var(--ddd-border-md);
-          border-color: var(--ddd-theme-default-accent);
+          border-color:var(--ddd-theme-default-beaverBlue, #0078d4);
           box-shadow: light-dark(
             4px 8px 24px rgba(28, 28, 28, 0.15),
             4px 8px 24px rgba(0, 0, 0, 0.5)
@@ -325,7 +325,6 @@ export class AppHaxSiteBars extends SimpleColors {
 
         .cardImage {
           width: 100%;
-          height: 180px;
           object-fit: cover;
           border-top-left-radius: 8px;
           border-top-right-radius: 8px;
@@ -388,9 +387,17 @@ export class AppHaxSiteBars extends SimpleColors {
           --simple-icon-color: var(--ddd-theme-default-limestoneGray);
         }
 
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
         .imageLink {
           display: block;
           overflow: hidden;
+          height: 180px;
         }
       `,
     ];
@@ -412,6 +419,7 @@ export class AppHaxSiteBars extends SimpleColors {
                 href="${this.siteUrl}"
                 target="_blank"
                 rel="noopener noreferrer"
+                tabindex="-1"
                 aria-label="Open ${this.title || "site"}"
               >
                 <img

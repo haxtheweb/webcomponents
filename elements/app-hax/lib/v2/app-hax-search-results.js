@@ -477,6 +477,7 @@ export class AppHaxSearchResults extends SimpleColors {
                         slot="heading"
                         href="${item.slug}"
                         target="_blank"
+                        tabindex="-1"
                         rel="noopener noreferrer"
                         title="${item.title}"
                       >

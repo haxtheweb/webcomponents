@@ -59,7 +59,7 @@ export class AppHaxUseCase extends LitElement {
           4px 8px 24px rgba(28, 28, 28, 0.15),
           4px 8px 24px rgba(0, 0, 0, 0.5)
         );
-        border-color:var(--ddd-theme-default-primary, #0078d4);
+        border-color:var(--ddd-theme-default-beaverBlue, #0078d4);
         outline: none;
       }
 
