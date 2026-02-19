@@ -79,12 +79,10 @@ export class AppHaxSearchResults extends SimpleColors {
           align-items: center;
           justify-content: flex-start;
           gap: var(--ddd-spacing-6, 24px);
-          width: 90vw;
-          max-width: 1200px;
+          width: 100%;
+          max-width: 1350px;
           margin: 0 auto;
-          max-height: 280px;
           position: relative;
-          overflow: visible;
         }
         .pager-container {
           display: flex;
@@ -175,8 +173,7 @@ export class AppHaxSearchResults extends SimpleColors {
           overflow-x: auto;
           scroll-snap-type: x mandatory;
           gap: var(--ddd-spacing-6, 24px);
-          padding-bottom: var(--ddd-spacing-6, 24px);
-          padding-top: var(--ddd-spacing-6, 24px);
+            padding: var(--ddd-spacing-2, 8px) 0 0 var(--ddd-spacing-2, 8px);
           flex: 1;
           min-width: 0;
           cursor: grab;
@@ -235,14 +232,15 @@ export class AppHaxSearchResults extends SimpleColors {
         li {
           flex: 0 0 auto;
           scroll-snap-align: center;
-          width: 220px;
-          min-width: 220px;
-          height: 260px;
+          width: 180px;
+          min-width: 180px;
+          height: 300px;
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center;
+          justify-content: flex-start; 
         }
+
 
         app-hax-site-bar {
           margin: 0 var(--ddd-spacing-3, 12px);
@@ -262,7 +260,7 @@ export class AppHaxSearchResults extends SimpleColors {
         @media (max-width: 1200px) {
           :host {
             min-width: calc(
-              2 * 264px + var(--ddd-spacing-6, 24px) + 2 *
+              2 * 180px + var(--ddd-spacing-6, 24px) + 2 *
                 var(--ddd-spacing-12, 56px)
             );
           }
@@ -270,7 +268,7 @@ export class AppHaxSearchResults extends SimpleColors {
 
         @media (max-width: 800px) {
           :host {
-            min-width: calc(264px + 2 * var(--ddd-spacing-12, 56px));
+            min-width: calc(180px + 2 * var(--ddd-spacing-12, 56px));
           }
 
           app-hax-site-bar {
@@ -299,8 +297,8 @@ export class AppHaxSearchResults extends SimpleColors {
           }
 
           li {
-            width: 240px;
-            min-width: 240px;
+            width: 180px;
+            min-width: 180px;
           }
 
           /* Mobile: Show only 1 item, hide arrows */
@@ -316,6 +314,9 @@ export class AppHaxSearchResults extends SimpleColors {
             overflow-x: auto;
             scrollbar-width: none;
             -ms-overflow-style: none;
+          }
+          #results::-webkit-scrollbar {
+            display: none;               
           }
         }
         span[slot="band"] {
@@ -539,7 +540,7 @@ export class AppHaxSearchResults extends SimpleColors {
     const el = this.shadowRoot.querySelector("#results");
     if (!el || this.totalItems <= 1) return;
 
-    const itemWidth = 264 + 24;
+    const itemWidth = 180 + 24;
 
     // If we're close to the start, snap fully to 0
     if (el.scrollLeft <= itemWidth) {
@@ -554,7 +555,7 @@ export class AppHaxSearchResults extends SimpleColors {
     const el = this.shadowRoot.querySelector("#results");
     if (!el || this.totalItems <= 1) return;
 
-    const itemWidth = 264 + 24;
+    const itemWidth = 180 + 24;
     el.scrollBy({ left: itemWidth, behavior: "smooth" });
   }
 
@@ -614,7 +615,7 @@ export class AppHaxSearchResults extends SimpleColors {
     const scrollLeft = resultsEl.scrollLeft;
     const scrollWidth = resultsEl.scrollWidth;
     const clientWidth = resultsEl.clientWidth;
-    const itemWidth = 264 + 24; // item width + gap
+    const itemWidth = 180 + 24; // item width + gap
 
     // Check if we're near the end (within 50px of the end)
     const isNearEnd = scrollLeft + clientWidth >= scrollWidth - 50;
@@ -636,7 +637,7 @@ export class AppHaxSearchResults extends SimpleColors {
 
   goToPage(pageNumber) {
     const resultsEl = this.shadowRoot.querySelector("#results");
-    const itemWidth = 264 + 24; // item width + gap
+    const itemWidth = 180 + 24; // item width + gap
     const targetScrollLeft = (pageNumber - 1) * itemWidth;
 
     resultsEl.scrollTo({

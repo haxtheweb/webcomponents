@@ -46,10 +46,7 @@ export class AppHaxUseCase extends LitElement {
           var(--ddd-theme-default-nittanyNavy),
           var(--ddd-theme-default-white)
         );
-        background-color: light-dark(
-          white,
-          black
-        );
+       
         cursor: pointer;
         transition: all 0.2s ease;
       }
@@ -70,7 +67,7 @@ export class AppHaxUseCase extends LitElement {
         display: flex;
         flex-direction: column;
         padding: 4px;
-        height: 330px;
+        height: 300px;
         width: 180px;
       }
 

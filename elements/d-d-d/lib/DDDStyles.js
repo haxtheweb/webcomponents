@@ -617,6 +617,7 @@ export const DDDVariables = css`
     --ddd-theme-default-navy65: rgba(0, 30, 68, 0.65);
     --ddd-theme-default-navy70: rgba(0, 30, 68, 0.7);
     --ddd-theme-default-navy80: rgba(0, 30, 68, 0.8);
+    --ddd-theme-default-black: #000000;
     --ddd-theme-default-potentialMidnight: #000321;
     --ddd-theme-default-potential0: rgba(0, 3, 33, 0);
     --ddd-theme-default-potential50: rgba(0, 3, 33, 0.5);
@@ -4470,107 +4471,137 @@ export const DDDAnimations = css`
 `;
 
 export const DDDPaletteStyles = css`
-  /** Default Palette */
-  html,
-  :root {
-    --ddd-palette-color-1: var(--simple-colors-default-theme-green-10);
-    --ddd-palette-color-2: var(--simple-colors-default-theme-lime-8);
-    --ddd-palette-color-3: var(--simple-colors-fixed-theme-lime-7);
-    --ddd-palette-color-4: var(--ddd-theme-default-futureLime);
-    --ddd-palette-color-5: var(--simple-colors-default-theme-lime-5);
-    --ddd-palette-color-6: var(--ddd-theme-default-inventOrange);
-    --ddd-palette-color-7: var(--simple-colors-default-theme-orange-3);
-  }
+/** Default Palette */
+html, :root {
+  --ddd-palette-color-1: var(--simple-colors-default-theme-green-10);
+  --ddd-palette-color-2: var(--simple-colors-default-theme-lime-8);
+  --ddd-palette-color-3: var(--simple-colors-fixed-theme-lime-7);
+  --ddd-palette-color-4: var(--ddd-theme-default-futureLime);
+  --ddd-palette-color-5: var(--simple-colors-default-theme-lime-5);
+  --ddd-palette-color-6: var(--ddd-theme-default-inventOrange);
+  --ddd-palette-color-7: var(--simple-colors-default-theme-orange-3);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+}
 
-  /** Wisdom Walk Green */
-  [data-palette="wisdom-walk-green"],
-  [data-palette="0"] {
-    --ddd-palette-color-1: var(--simple-colors-default-theme-green-10);
-    --ddd-palette-color-2: var(--simple-colors-default-theme-lime-8);
-    --ddd-palette-color-3: var(--simple-colors-fixed-theme-lime-7);
-    --ddd-palette-color-4: var(--ddd-theme-default-futureLime);
-    --ddd-palette-color-5: var(--simple-colors-default-theme-lime-5);
-    --ddd-palette-color-6: var(--ddd-theme-default-inventOrange);
-    --ddd-palette-color-7: var(--simple-colors-default-theme-orange-3);
-  }
+/** Wisdom Walk Green */
+[data-palette="wisdom-walk-green"],
+[data-palette="0"] {
+  --ddd-palette-color-1: var(--simple-colors-default-theme-green-10);
+  --ddd-palette-color-2: var(--simple-colors-default-theme-lime-8);
+  --ddd-palette-color-3: var(--simple-colors-fixed-theme-lime-7);
+  --ddd-palette-color-4: var(--ddd-theme-default-futureLime);
+  --ddd-palette-color-5: var(--simple-colors-default-theme-lime-5);
+  --ddd-palette-color-6: var(--ddd-theme-default-inventOrange);
+  --ddd-palette-color-7: var(--simple-colors-default-theme-orange-3);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+}
 
-  [data-palette="very-violent-red"],
-  [data-palette="1"] {
-    --ddd-palette-color-1: var(--simple-colors-fixed-theme-red-12);
-    --ddd-palette-color-2: var(--simple-colors-fixed-theme-deep-orange-8);
-    --ddd-palette-color-3: var(--simple-colors-default-theme-deep-orange-7);
-    --ddd-palette-color-4: var(--ddd-theme-default-discoveryCoral);
-    --ddd-palette-color-5: var(--simple-colors-default-theme-red-2);
-    --ddd-palette-color-6: var(--ddd-theme-default-slateGray);
-    --ddd-palette-color-7: var(--ddd-theme-default-pughBlue);
-  }
+/** Very Violent Red */
+[data-palette="very-violent-red"],
+[data-palette="1"] {
+  --ddd-palette-color-1: var(--simple-colors-fixed-theme-red-12);
+  --ddd-palette-color-2: var(--simple-colors-fixed-theme-deep-orange-8);
+  --ddd-palette-color-3: var(--simple-colors-default-theme-deep-orange-7);
+  --ddd-palette-color-4: var(--ddd-theme-default-discoveryCoral);
+  --ddd-palette-color-5: var(--simple-colors-default-theme-red-2);
+  --ddd-palette-color-6: var(--ddd-theme-default-slateGray);
+  --ddd-palette-color-7: var(--ddd-theme-default-pughBlue);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+  --ddd-palette-video-player-caption-color
+}
 
-  [data-palette="beetles-yellow"],
-  [data-palette="2"] {
-    --ddd-palette-color-1: var(--simple-colors-default-theme-orange-9);
-    --ddd-palette-color-2: var(--simple-colors-fixed-theme-orange-7);
-    --ddd-palette-color-3: var(--simple-colors-default-theme-orange-6);
-    --ddd-palette-color-4: var(--simple-colors-fixed-theme-amber-6);
-    --ddd-palette-color-5: var(--ddd-theme-default-keystoneYellow);
-    --ddd-palette-color-6: var(--ddd-theme-default-creekTeal);
-    --ddd-palette-color-7: var(--simple-colors-default-theme-cyan-1);
-  }
+/** Beetles Yellow */
+[data-palette="beetles-yellow"],
+[data-palette="2"] {
+  --ddd-palette-color-1: var(--simple-colors-default-theme-orange-9);
+  --ddd-palette-color-2: var(--simple-colors-fixed-theme-orange-7);
+  --ddd-palette-color-3: var(--simple-colors-default-theme-orange-6);
+  --ddd-palette-color-4: var(--simple-colors-fixed-theme-amber-6);
+  --ddd-palette-color-5: var(--ddd-theme-default-keystoneYellow);
+  --ddd-palette-color-6: var(--ddd-theme-default-creekTeal);
+  --ddd-palette-color-7: var(--simple-colors-default-theme-cyan-1);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+}
 
-  [data-palette="offbrand-nittany-blue"],
-  [data-palette="3"] {
-    --ddd-palette-color-1: var(--ddd-theme-default-nittanyNavy);
-    --ddd-palette-color-2: var(--simple-colors-fixed-theme-light-blue-10);
-    --ddd-palette-color-3: var(--simple-colors-fixed-theme-light-blue-8);
-    --ddd-palette-color-4: var(--simple-colors-default-theme-light-blue-6);
-    --ddd-palette-color-5: var(--simple-colors-default-theme-cyan-2);
-    --ddd-palette-color-6: var(--simple-colors-default-theme-orange-7);
-    --ddd-palette-color-7: var(--ddd-theme-default-keystoneYellow);
-  }
+/** Offbrand Nittany Blue */
+[data-palette="offbrand-nittany-blue"],
+[data-palette="3"] {
+  --ddd-palette-color-1: var(--ddd-theme-default-nittanyNavy);
+  --ddd-palette-color-2: var(--simple-colors-fixed-theme-light-blue-10);
+  --ddd-palette-color-3: var(--simple-colors-fixed-theme-light-blue-8);
+  --ddd-palette-color-4: var(--simple-colors-default-theme-light-blue-6);
+  --ddd-palette-color-5: var(--simple-colors-default-theme-cyan-2);
+  --ddd-palette-color-6: var(--simple-colors-default-theme-orange-7);
+  --ddd-palette-color-7: var(--ddd-theme-default-keystoneYellow);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+}
 
-  [data-palette="boring-blue-gray"],
-  [data-palette="4"] {
-    --ddd-palette-color-1: var(--ddd-theme-default-coalyGray);
-    --ddd-palette-color-2: var(--simple-colors-default-theme-blue-grey-9);
-    --ddd-palette-color-3: var(--simple-colors-fixed-theme-blue-grey-8);
-    --ddd-palette-color-4: var(--simple-colors-default-theme-blue-grey-6);
-    --ddd-palette-color-5: var(--simple-colors-fixed-theme-blue-grey-4);
-    --ddd-palette-color-6: var(--ddd-theme-default-slateGray);
-    --ddd-palette-color-7: var(--simple-colors-default-theme-blue-grey-2);
-  }
+/** Boring Blue Gray */
+[data-palette="boring-blue-gray"],
+[data-palette="4"] {
+  --ddd-palette-color-1: var(--ddd-theme-default-coalyGray);
+  --ddd-palette-color-2: var(--simple-colors-default-theme-blue-grey-9);
+  --ddd-palette-color-3: var(--simple-colors-fixed-theme-blue-grey-8);
+  --ddd-palette-color-4: var(--simple-colors-default-theme-blue-grey-6);
+  --ddd-palette-color-5: var(--simple-colors-fixed-theme-blue-grey-4);
+  --ddd-palette-color-6: var(--ddd-theme-default-slateGray);
+  --ddd-palette-color-7: var(--simple-colors-default-theme-blue-grey-2);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+}
 
-  [data-palette="monotone"],
-  [data-palette="5"] {
-    --ddd-palette-color-1: var(--ddd-theme-default-coalyGray);
-    --ddd-palette-color-2: var(--simple-colors-default-theme-grey-9);
-    --ddd-palette-color-3: var(--simple-colors-default-theme-grey-7);
-    --ddd-palette-color-4: var(--simple-colors-default-theme-grey-5);
-    --ddd-palette-color-5: var(--simple-colors-default-theme-grey-3);
-    --ddd-palette-color-6: var(--simple-colors-default-theme-grey-11);
-    --ddd-palette-color-7: var(--simple-colors-default-theme-amber-6);
-  }
+/** Monotone Gray */
+[data-palette="monotone"],
+[data-palette="5"] {
+--ddd-palette-color-1: var(--ddd-theme-default-coalyGray);
+--ddd-palette-color-2: var(--simple-colors-default-theme-grey-9);
+--ddd-palette-color-3: var(--simple-colors-default-theme-grey-7);
+--ddd-palette-color-4: var(--simple-colors-default-theme-grey-5);
+--ddd-palette-color-5: var(--simple-colors-default-theme-grey-3);
+--ddd-palette-color-6: var(--simple-colors-default-theme-grey-11);
+--ddd-palette-color-7: var(--simple-colors-default-theme-amber-6);
+--ddd-palette-video-player-color: var(--ddd-theme-default-black);
+}
 
-  [data-palette="salmon-season"],
-  [data-palette="6"] {
-    --ddd-palette-color-1: var(--simple-colors-default-theme-pink-2);
-    --ddd-palette-color-2: var(--simple-colors-default-theme-pink-4);
-    --ddd-palette-color-3: var(--ddd-theme-default-original87Pink);
-    --ddd-palette-color-4: var(--ddd-theme-default-discoveryCoral);
-    --ddd-palette-color-5: var(--simple-colors-default-theme-red-10);
-    --ddd-palette-color-6: var(--simple-colors-default-theme-lime-9);
-    --ddd-palette-color-7: var(--simple-colors-default-theme-lime-5);
-  }
+/** Salmon Season */
+[data-palette="salmon-season"],
+[data-palette="6"] {
+--ddd-palette-color-1: var(--simple-colors-default-theme-pink-2);
+--ddd-palette-color-2: var(--simple-colors-default-theme-pink-4);
+--ddd-palette-color-3: var(--ddd-theme-default-original87Pink);
+--ddd-palette-color-4: var(--ddd-theme-default-discoveryCoral);
+--ddd-palette-color-5: var(--simple-colors-default-theme-red-10);
+--ddd-palette-color-6: var(--simple-colors-default-theme-lime-9);
+--ddd-palette-color-7: var(--simple-colors-default-theme-lime-5);
+--ddd-palette-video-player-color: var(--ddd-theme-default-black);
+--ddd-palette-video-player-caption-color: var(--ddd-theme-default-black);
+}
 
-  /* This palette doesn't follow the same design pattern as the others */
-  [data-palette="tweedle-dee"],
-  [data-palette="7"] {
-    --ddd-palette-color-1: var(--ddd-theme-default-slateMaxLight);
-    --ddd-palette-color-2: var(--simple-colors-default-theme-blue-grey-12);
-    --ddd-palette-color-3: var(--simple-colors-default-theme-blue-grey-11);
-    --ddd-palette-color-4: var(--ddd-theme-default-pughBlue);
-    --ddd-palette-color-5: var(--ddd-theme-default-skyBlue);
-    --ddd-palette-color-6: var(--simple-colors-default-theme-blue-grey-2);
-    --ddd-palette-color-7: var(--simple-colors-default-theme-cyan-12);
-  }
+/* This palette doesn't follow the same design pattern as the others */
+[data-palette="tweedle-dee"],
+[data-palette="7"] {
+--ddd-palette-color-1: var(--ddd-theme-default-slateMaxLight);
+--ddd-palette-color-2: var(--simple-colors-default-theme-blue-grey-12);
+--ddd-palette-color-3: var(--simple-colors-default-theme-blue-grey-11);
+--ddd-palette-color-4: var(--ddd-theme-default-pughBlue);
+--ddd-palette-color-5: var(--ddd-theme-default-skyBlue);
+--ddd-palette-color-6: var(--simple-colors-default-theme-blue-grey-2);
+--ddd-palette-color-7: var(--simple-colors-default-theme-cyan-12);
+--ddd-palette-video-player-color: var(--ddd-theme-default-white);
+}
+
+/* Polaris Invent */
+[data-palette="polaris-invent"],
+[data-palette="8"] {
+  /* Derived from colors in polaris-invent-theme */
+  --ddd-palette-color-1: var(--ddd-theme-default-limestoneLight);
+  --ddd-palette-color-2: var(--ddd-theme-default-coalyGray);
+  --ddd-palette-color-3: var(--ddd-theme-default-nittanyNavy);
+  --ddd-palette-color-4: var(--ddd-theme-default-beaver80);
+  --ddd-palette-color-5: var(--ddd-theme-default-beaverBlue);
+  --ddd-palette-color-6: var(--ddd-theme-default-skyBlue);
+  --ddd-palette-color-7: var(--ddd-theme-default-inventOrange);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-white);
+}
 `;
 
 // export that has all of them for easy stamping as a single sheet

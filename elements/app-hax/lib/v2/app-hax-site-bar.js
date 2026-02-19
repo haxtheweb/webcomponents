@@ -282,8 +282,8 @@ export class AppHaxSiteBars extends SimpleColors {
       css`
         :host {
           text-align: left;
-          width: 264px;
-          max-width: 264px;
+          width: 180px;
+          max-width: 180px;
           font-family: var(--ddd-font-primary);
           background-color: light-dark(
             white,
@@ -360,7 +360,7 @@ export class AppHaxSiteBars extends SimpleColors {
         }
 
         ::slotted([slot="heading"]) {
-          font-size: 24px;
+          font-size: 20px;
           font-weight: var(--ddd-font-weight-bold, 700);
           color: var(--ddd-theme-default-nittanyNavy);
           white-space: nowrap;
@@ -377,10 +377,11 @@ export class AppHaxSiteBars extends SimpleColors {
           display: flex;
           gap: var(--ddd-spacing-1, 4px);
           margin-top: var(--ddd-spacing-2, 8px);
-          font-size: var(--ddd-font-size-xxs, 12px);
+          font-size: 16px;
           color: var(--ddd-theme-default-limestoneGray);
           font-weight: var(--ddd-font-weight-bold, 500);
-          font-size: 20px;
+          align-items: center;
+          line-height: 1;
         }
 
         .date simple-icon {
