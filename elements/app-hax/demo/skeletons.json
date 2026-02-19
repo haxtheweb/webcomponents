@@ -2,7 +2,7 @@
   "status": 200,
   "data": [
     {
-      "title": "Course Site Template",
+      "title": "Course",
       "description": "A structured template for online courses with lessons and modules",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
       "category": ["course", "education"],
@@ -13,7 +13,7 @@
       "skeleton-url": "skeletons/course-site-template.json"
     },
     {
-      "title": "Portfolio Site Template",
+      "title": "Portfolio",
       "description": "A clean template for showcasing work and projects",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
       "category": ["portfolio", "showcase"],
@@ -24,7 +24,7 @@
       "skeleton-url": "skeletons/portfolio-site-template.json"
     },
     {
-      "title": "Blog Site Template",
+      "title": "Blog",
       "description": "A template for creating blog sites with posts and categories",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-haxma-theme-thumb.jpg",
       "category": ["blog", "writing"],
@@ -33,7 +33,7 @@
       "skeleton-url": "skeletons/blog-site-template.json"
     },
     {
-      "title": "Documentation Site",
+      "title": "Documentation",
       "description": "Template for creating documentation and knowledge bases",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-app-hax-theme-thumb.jpg",
       "category": ["documentation", "reference"],

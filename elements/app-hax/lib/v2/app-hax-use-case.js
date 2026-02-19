@@ -46,32 +46,38 @@ export class AppHaxUseCase extends LitElement {
           var(--ddd-theme-default-nittanyNavy),
           var(--ddd-theme-default-white)
         );
-       
         cursor: pointer;
         transition: all 0.2s ease;
       }
 
       .card:hover .image,
+      .card:focus .image,
       .card:focus-within .image {
         transform: translateY(-2px) scale(1.02);
         border: var(--ddd-border-lg);
-        border-color: var(--ddd-theme-default-accent, #0078d4);
         box-shadow: light-dark(
           4px 8px 24px rgba(28, 28, 28, 0.15),
           4px 8px 24px rgba(0, 0, 0, 0.5)
         );
+        border-color:var(--ddd-theme-default-primary, #0078d4);
+        outline: none;
       }
 
       /* Layout Containers */
       .card {
+        outline: none;
         display: flex;
         flex-direction: column;
         padding: 4px;
         height: 300px;
         width: 180px;
+        background-color: transparent;
+        border: none;
+        text-align: left;
       }
 
       .image {
+        transition: transform 0.2s ease-in-out;
         height: 240px; 
         flex-shrink: 0;
         position: relative;
@@ -308,40 +314,18 @@ export class AppHaxUseCase extends LitElement {
         : "icons:cloud-download";
 
     return html`
-      <div class="card" @click="${this.toggleDisplay}">
+      <button class="card" @click="${this.toggleDisplay}">
         <div class="image">
           ${hasSource
             ? html`<img src="${this.source}" alt="${this.title}" />`
             : html`<div class="image-placeholder" aria-hidden="true">
                 <simple-icon-lite icon="${primaryIcon}"></simple-icon-lite>
               </div>`}
-          <div class="icons">
-            ${this.iconImage.map(
-              (icon) => html`
-                <div class="icon-wrapper">
-                  <simple-icon-lite icon="${icon.icon}"></simple-icon-lite>
-                </div>
-              `,
-            )}
-            <div class="tooltip-container">
-              ${this.iconImage.map(
-                (icon) => html`
-                  <div class="tooltip-row">
-                    <simple-icon-lite
-                      class="tooltip-icon"
-                      icon="${icon.icon}"
-                    ></simple-icon-lite>
-                    <div class="tooltip">${icon.tooltip}</div>
-                  </div>
-                `,
-              )}
-            </div>
-          </div>
         </div>
         <div class="title">
           <h3>${this.title}</h3>
         </div>
-      </div>
+      </button>
     `;
   }
 }
