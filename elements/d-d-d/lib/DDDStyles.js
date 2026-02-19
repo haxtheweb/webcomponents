@@ -1,7 +1,7 @@
-import { css, html, unsafeCSS } from "lit";
-import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
-import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
+import { css, html, unsafeCSS } from "lit";
 
 /**
  * @note Gut all design settings in HAX core. this allows for design systems to hook in
@@ -944,10 +944,10 @@ export const DDDVariables = css`
        Usage: box-shadow: var(--ddd-boxShadow-md);
        =========================================== */
     --ddd-boxShadow-0: 0px 0px 0px 0px rgba(0, 0, 0, 0); /* No shadow */
-    --ddd-boxShadow-sm: rgba(0, 3, 33, 0.063) 0px 4px 8px 0px; /* Subtle elevation */
-    --ddd-boxShadow-md: rgba(0, 3, 33, 0.063) 0px 8px 16px 0px; /* Standard elevation */
-    --ddd-boxShadow-lg: rgba(0, 3, 33, 0.063) 0px 12px 24px 0px; /* High elevation */
-    --ddd-boxShadow-xl: rgba(0, 3, 33, 0.063) 0px 16px 32px 0px; /* Maximum elevation */
+    --ddd-boxShadow-sm: rgba(0, 3, 33, 0.1) 0px 4px 8px 0px; /* Subtle elevation */
+    --ddd-boxShadow-md: rgba(0, 3, 33, 0.15) 0px 8px 16px 0px; /* Standard elevation */
+    --ddd-boxShadow-lg: rgba(0, 3, 33, 0.2) 0px 12px 24px 0px; /* High elevation */
+    --ddd-boxShadow-xl: rgba(0, 3, 33, 0.25) 0px 16px 32px 0px; /* Maximum elevation */
 
     /* ===========================================
        BREAKPOINTS
@@ -1193,9 +1193,11 @@ export const DDDDataAttributes = [
       text-align: justify;
     }
 
-    /* primary color */
     [data-primary] {
       --ddd-theme-primary: var(--ddd-primary-0);
+      --ddd-theme-bgContrast: "";
+    }
+    [data-primary=""] {
       --lowContrast-override: black;
     }
     [data-primary="0"] {
@@ -1745,6 +1747,28 @@ export const DDDReset = css`
     cursor: pointer;
   }
 
+  thead[data-primary] tr th {
+    background-color: var(--ddd-theme-primary);
+    color: var(--lowContrast-override, var(--ddd-theme-bgContrast, inherit));
+    border-color: inherit;
+  }
+
+  table[data-primary] tbody > tr:nth-child(odd),
+  table[data-primary] > tr:nth-child(odd) {
+    background-color: var(--ddd-theme-primary);
+    color: var(--ddd-theme-bgContrast, var(--lowContrast-override, inherit));
+  }
+
+  thead,
+  tbody,
+  tfoot,
+  tr,
+  td,
+  th {
+    padding: inherit;
+    border-color: inherit !important;
+  }
+
   thead,
   tbody,
   tfoot,
@@ -1753,6 +1777,10 @@ export const DDDReset = css`
   th {
     font-size: var(--ddd-theme-body-font-size);
     font-family: var(--ddd-font-primary);
+    border: 1px solid;
+  }
+  table {
+    border-collapse: collapse;
   }
   ul,
   ol {
