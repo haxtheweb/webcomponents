@@ -1748,20 +1748,14 @@ export const DDDReset = css`
 
   thead[data-primary] tr th {
     background-color: var(--ddd-theme-primary);
-    color: var(
-      --ddd-theme-primaryContrast,
-      var(--ddd-theme-bgContrast, var(--lowContrast-override, inherit))
-    );
+    color: var(--lowContrast-override, var(--ddd-theme-bgContrast, inherit));
     border-color: inherit;
   }
 
   table[data-primary] tbody > tr:nth-child(odd),
   table[data-primary] > tr:nth-child(odd) {
     background-color: var(--ddd-theme-primary);
-    color: var(
-      --ddd-theme-primaryContrast,
-      var(--ddd-theme-bgContrast, var(--lowContrast-override, inherit))
-    );
+    color: var(--ddd-theme-bgContrast, var(--lowContrast-override, inherit));
   }
 
   thead,
