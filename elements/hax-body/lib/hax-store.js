@@ -1102,7 +1102,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       if (typeof appDataResponse.apps !== typeof undefined) {
         var apps = appDataResponse.apps;
         for (let i = 0; i < apps.length; i++) {
-          if(!this.platformAllows("onlineSearch")){
+          if(!this.platformAllows("onlineMedia")){
             if(!Object.hasOwn(apps[i].connection.operations, "add")) continue;
           }
 
@@ -2646,7 +2646,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/join",
-      context: ["logged-in", "CMS", "HAX"],
+      context: "community",
     });
     SuperDaemonInstance.defineOption({
       title: "User Tutorials",
@@ -2660,7 +2660,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/tutorials",
-      context: ["logged-in", "CMS", "HAX"],
+      context: "community",
     });
     SuperDaemonInstance.defineOption({
       title: "User Documentation",
@@ -2673,7 +2673,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/documentation",
-      context: ["logged-in", "CMS", "HAX"],
+      context: "community",
     });
     SuperDaemonInstance.defineOption({
       title: "HAX Teaching Excellence",
@@ -2686,7 +2686,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/pedagogy",
-      context: ["logged-in", "CMS", "HAX"],
+      context: "community",
     });
     SuperDaemonInstance.defineOption({
       title: "Bug / issue",
@@ -2699,7 +2699,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
-      context: ["logged-in", "CMS", "HAX"],
+      context: "community",
     });
     SuperDaemonInstance.defineOption({
       title: "Idea / Feature request",
@@ -2717,7 +2717,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
         method: "_haxStoreContribute",
         args: ["feature", "POP,enhancement"],
       },
-      context: ["logged-in", "CMS", "HAX"],
+      context: "community",
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
     });
@@ -4995,19 +4995,21 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           this.write("gizmoList", gizmos, this);
           // only add in support for commands we'd expect to see
           if (!gizmo.meta || (!gizmo.meta.inlineOnly && !gizmo.meta.hidden)) {
-            SuperDaemonInstance.defineOption({
-              title: gizmo.title,
-              icon: gizmo.icon,
-              tags: gizmo.tags || [],
-              value: {
-                value: gizmo.tag,
-                eventName: "insert-tag",
-                demoSchema: true,
-              },
-              context: ["HAX"],
-              eventName: "hax-super-daemon-insert-tag",
-              path: "HAX/insert/block/" + gizmo.tag,
-            });
+            if(this.platformAllows("addBlock") && !gizmo.platformRestricted){
+              SuperDaemonInstance.defineOption({
+                title: gizmo.title,
+                icon: gizmo.icon,
+                tags: gizmo.tags || [],
+                value: {
+                  value: gizmo.tag,
+                  eventName: "insert-tag",
+                  demoSchema: true,
+                },
+                context: "HAX",
+                eventName: "hax-super-daemon-insert-tag",
+                path: "HAX/insert/block/" + gizmo.tag,
+              })
+            };
           }
         }
         this.elementList[detail.tag] = detail.properties;

@@ -1604,14 +1604,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.t = this.t || {};
     this._configureWasFocused = false; // Track toggle state for Ctrl+Shift+1
 
-    // default sub-contexts under CMS mode, before platform filtering
-    this.cmsContexts = [
-      "addPage",
-      "styleGuide",
-      "outlineDesigner",
-      "insights",
-      "manifest"
-    ];
+    // default sub-contexts for Merlin before platform filtering
+    this.platformContexts = {
+      cms: [
+        "addPage",
+        "styleGuide",
+        "outlineDesigner",
+        "insights",
+        "manifest",
+      ],
+      global: [
+        "uploadMedia",
+        "community",
+      ]
+    }
     // track if site editor is using the initial version of platformConfig
     this.__initialPlatformConfig = true;
 
@@ -1916,6 +1922,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       tags: ["Agent", "help", "merlin"],
       eventName: "super-daemon-run-program",
       path: "HAX/agent",
+      context: "uploadMedia",
       value: {
         name: "Agent",
         machineName: "hax-agent",
@@ -2732,7 +2739,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             voice-command="edit (this) page"
           ></simple-toolbar-button>
           <simple-toolbar-button
-            ?hidden="${!this.editMode}"
+            ?hidden="${!this.editMode || !store.platformAllows("saveAndEdit")}"
             class="top-bar-button"
             id="saveandeditbutton"
             icon="hax:page-edit"
@@ -2752,8 +2759,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             merlin
           ></haxcms-button-add>
           <simple-toolbar-button
-            ?hidden="${this.editMode || store.isPlatformAudience("novice") 
-              || !store.platformAllows("outlineDesigner")}"
+            ?hidden="${this.editMode || !store.platformAllows("outlineDesigner")}"
             id="outlinebutton"
             class="top-bar-button"
             icon="hax:site-map"
@@ -2835,8 +2841,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           >
           </simple-toolbar-button>
           <simple-toolbar-button
-            ?hidden="${!this.editMode || store.isPlatformAudience("novice") 
-              || !store.platformAllows("contentMap")}"
+            ?hidden="${!this.editMode || !store.platformAllows("contentMap")}"
             ?disabled="${!this.editMode}"
             data-event="content-map"
             icon="hax:newspaper"
@@ -2859,8 +2864,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             @click="${this.haxButtonOp}"
             voice-command="view (page) source"
             icon-position="${this.getIconPosition(this.responsiveSize)}"
-            ?hidden="${!this.editMode || store.isPlatformAudience("novice") 
-              || !store.platformAllows("viewSource")}"
+            ?hidden="${!this.editMode || !store.platformAllows("viewSource")}"
             ?disabled="${!this.editMode}"
             ?active="${this.trayDetail === "view-source"}"
           >
@@ -2892,8 +2896,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           ></simple-toolbar-button>
 
           <simple-toolbar-button
-            ?hidden="${this.editMode || store.isPlatformAudience("novice") 
-              || !store.platformAllows("insights")}"
+            ?hidden="${this.editMode || !store.platformAllows("insights")}"
             ?disabled="${this.editMode}"
             id="insightsbutton"
             icon="hax:clipboard-pulse"
@@ -4064,12 +4067,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     // Keeps a list of disabled platform features, preventing them from re-enabling during menu switches
     if(store.platformConfig && store.platformConfig.features){
       Object.keys(store.platformConfig.features).forEach((key) => {
+        if(store.platformAllows(key)) return;
         // If an option isn't supported, add it to the array so we don't re-enable it
-        if(this.cmsContexts.includes(key) && !store.platformAllows(key)){
-          this.cmsContexts = this.cmsContexts.filter(item => item !== key);
-          SuperDaemonInstance.removeContext(key);
-        }
-      })
+        Object.keys(this.platformContexts).forEach((type) => {
+          console.log('hey')
+          if(this.platformContexts[type].includes(key)) {
+            console.log(this.platformContexts[type])
+            this.platformContexts[type] = this.platformContexts[type].filter(item => item !== key)
+            SuperDaemonInstance.removeContext(key)
+          }
+        })
+      });
     };
 
     // Listen for keyboard shortcut execution from Merlin
@@ -4525,9 +4533,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         type: Boolean,
       },
       /**
-       * Fine-grained default contexts under the generic CMS context (used with platformConfig)
+       * Fine-grained default contexts under Merlin (used with platformConfig)
        */
-      cmsContexts: {
+      platformContexts: {
         type: Array,
       },
     };
@@ -5406,12 +5414,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       SuperDaemonInstance.appendContext("HAX");
       SuperDaemonInstance.removeContext("CMS");
       // remove fine-grained CMS contexts that platformConfig doesn't disable
-      this.cmsContexts.forEach(item => SuperDaemonInstance.removeContext(item));
+      this.platformContexts.cms.forEach(item => SuperDaemonInstance.removeContext(item));
     } else {
       this.__editIcon = "icons:create";
       SuperDaemonInstance.appendContext("CMS");
       // Add fine-grained CMS contexts that platformConfig doesn't disable
-      this.cmsContexts.forEach(item => SuperDaemonInstance.appendContext(item));
+      this.platformContexts.cms.forEach(item => SuperDaemonInstance.appendContext(item));
       SuperDaemonInstance.removeContext("HAX");
     }
     this._updateEditButtonLabel();

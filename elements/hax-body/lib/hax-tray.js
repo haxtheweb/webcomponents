@@ -999,7 +999,7 @@ class HaxTray extends I18NMixin(
   get contentAddTemplate() {
     let hidden = this.trayDetail !== "content-add";
     return html`<div class="block-add-wrapper">
-      <hax-tray-upload ?hidden="${hidden || !HAXStore.platformAllows("uploadFiles")}" show-sources></hax-tray-upload>
+      <hax-tray-upload ?hidden="${hidden || !HAXStore.platformAllows("uploadMedia")}" show-sources></hax-tray-upload>
       ${HAXStore.platformAllows("pageTemplates") ? html`<hax-stax-browser
         id="pagesbrowser"
         ?hidden="${hidden}"
@@ -1749,8 +1749,27 @@ class HaxTray extends I18NMixin(
         !this.activeNode ||
         !this.activeNode.tagName)
     ) {
-      this.trayIcon = "hax:add-brick";
-      this.trayDetail = "content-add";
+      if(!HAXStore.platformAllows("addBlock")){
+        try {
+          // if adding blocks is disabled, try to find a valid activeNode 
+          // and stay in the edit menu
+          const activeHaxBody = HAXStore && HAXStore.activeHaxBody
+          HAXStore.activeNode = Array.from(activeHaxBody.children).find(child => {
+            const tag = child.tagName.toLowerCase();
+            return (
+              HAXStore.platformAllows(tag) ||
+              HAXStore.requiredPrimitives.has(tag)
+            );
+          });
+          this.collapsed = false;
+        } catch(err){
+          // collapse as a fallback if there are no valid nodes
+          this.collapsed = true;
+        }
+      } else {
+        this.trayIcon = "hax:add-brick";
+        this.trayDetail = "content-add";
+      }
     } else if (!newValue || newValue == "") {
       this.trayDetail = "content-edit";
       this.trayIcon = "settings";

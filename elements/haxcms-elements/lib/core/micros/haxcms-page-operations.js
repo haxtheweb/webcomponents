@@ -79,9 +79,6 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
     return {
       ...super.properties,
       actionId: { type: String, attribute: "action-id" },
-      platformAllowsOutline: { type: Boolean },
-      platformAllowsDelete: { type: Boolean },
-      platformAllowsAddPage: { type: Boolean },
       isLocked: { type: Boolean },
       // Track global edit mode so we can disable page creation while editing
       editMode: { type: Boolean },
@@ -90,9 +87,6 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
   constructor() {
     super();
     this.actionId = null;
-    this.platformAllowsOutline = true;
-    this.platformAllowsDelete = true;
-    this.platformAllowsAddPage = true;
     this.isLocked = false;
     this.editMode = false;
     this.t = {
@@ -113,21 +107,6 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
     this.registerLocalization({
       context: this,
       basePath: import.meta.url,
-    });
-
-    // Watch for platform configuration changes
-    autorun(() => {
-      const manifest = toJS(store.manifest);
-      const platformConfig =
-        manifest && manifest.metadata && manifest.metadata.platform;
-
-      // Check each capability - defaults to true if not specified
-      this.platformAllowsOutline =
-        !platformConfig || platformConfig.outlineDesigner !== false;
-      this.platformAllowsDelete =
-        !platformConfig || platformConfig.delete !== false;
-      this.platformAllowsAddPage =
-        !platformConfig || platformConfig.addPage !== false;
     });
 
     // Watch for active item lock state
@@ -156,7 +135,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
 
   render() {
     // Hide entire menu if outline designer is disabled
-    if (!this.platformAllowsOutline) {
+    if (!store.platformAllows("outlineDesigner")) {
       return html``;
     }
 
@@ -169,7 +148,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
         @click="${this._toggleDialog}"
       ></simple-icon-button-lite>
       <simple-context-menu title="${this.t.outlineActions}">
-        ${this.platformAllowsAddPage && !this.editMode
+        ${store.platformAllows("addPage") && !this.editMode
           ? html`
               <haxcms-button-add
                 id="addpagebutton"
@@ -249,7 +228,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
               ></simple-toolbar-button>
             `
           : html``}
-        ${this.platformAllowsDelete
+        ${store.platformAllows("deletePage")
           ? html`
               <simple-toolbar-button
                 class="delete-button"
