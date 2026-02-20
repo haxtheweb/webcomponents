@@ -285,10 +285,7 @@ export class AppHaxSiteBars extends SimpleColors {
           width: 180px;
           max-width: 180px;
           font-family: var(--ddd-font-primary);
-          background-color: light-dark(
-            white,
-            var(--ddd-theme-default-roarMaxlight)
-          );
+          background-color: white;
           border: var(--ddd-border-sm);
           min-height: 260px;
           box-shadow: light-dark(
@@ -359,32 +356,30 @@ export class AppHaxSiteBars extends SimpleColors {
         }
 
         ::slotted([slot="heading"]) {
-          font-size: 20px;
+          font-size: var(--ddd-font-size-xxs);
           font-weight: var(--ddd-font-weight-bold, 700);
           color: var(--ddd-theme-default-nittanyNavy);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          cursor: pointer;
         }
 
         ::slotted(a[slot="heading"]) {
-            text-decoration: none;
+          text-decoration: none;
         }
 
         .date {
           display: flex;
           gap: var(--ddd-spacing-1, 4px);
           margin-top: var(--ddd-spacing-2, 8px);
-          font-size: 16px;
-          color: var(--ddd-theme-default-limestoneGray);
-          font-weight: var(--ddd-font-weight-bold, 500);
+          font-size: var(--ddd-font-size-4xs);
+          color: var(--ddd-theme-default-nittanyNavy);
           align-items: center;
           line-height: 1;
         }
 
         .date simple-icon {
-          --simple-icon-color: var(--ddd-theme-default-limestoneGray);
+          --simple-icon-color: var(--ddd-theme-default-nittanyNavy);
         }
 
         img {
@@ -491,8 +486,9 @@ export class AppHaxSiteBars extends SimpleColors {
           </div>
 
           <div class="date">
-            <simple-icon icon="hax:calendar"></simple-icon>
+            <simple-icon icon="hax:calendar" title="Last updated"></simple-icon>
             <simple-datetime
+                title="Last updated"
                 format="m/j/y"
                 .timestamp="${this.lastUpdatedTime}"
                 unix

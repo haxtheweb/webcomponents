@@ -460,7 +460,7 @@ export class AppHaxSearchResults extends SimpleColors {
                       .siteUrl="${item.slug}"
                       .slug="${item.slug}"
                       .image="${this.getThemeImage(item)}"
-                      lastUpdatedTime="${varGet(
+                      last-updated-time="${varGet(
                         item,
                         "metadata.site.updated",
                         0,
