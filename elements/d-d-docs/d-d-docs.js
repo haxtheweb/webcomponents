@@ -2,22 +2,25 @@
  * Copyright 2024
  * @license , see License.md for full fs.
  */
-import { html, css } from "lit";
-import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { DDDAllStyles, ApplicationAttributeData } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
-import "@haxtheweb/page-section/page-section.js";
-import "@haxtheweb/simple-cta/simple-cta.js";
-import "@haxtheweb/video-player/video-player.js";
-import "@haxtheweb/figure-label/figure-label.js";
-import "@haxtheweb/stop-note/stop-note.js";
-import "@haxtheweb/course-design/lib/learning-component.js";
-import "@haxtheweb/course-design/lib/block-quote.js";
-import "@haxtheweb/self-check/self-check.js";
-import "@haxtheweb/media-image/media-image.js";
 import "@haxtheweb/accent-card/accent-card.js";
+import "@haxtheweb/course-design/lib/block-quote.js";
+import "@haxtheweb/course-design/lib/learning-component.js";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import "@haxtheweb/d-d-d/lib/ddd-card.js";
-import "@haxtheweb/d-d-d/lib/ddd-steps-list.js";
 import "@haxtheweb/d-d-d/lib/ddd-steps-list-item.js";
+import "@haxtheweb/d-d-d/lib/ddd-steps-list.js";
+import {
+  ApplicationAttributeData,
+  DDDAllStyles,
+} from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import "@haxtheweb/figure-label/figure-label.js";
+import "@haxtheweb/media-image/media-image.js";
+import "@haxtheweb/page-section/page-section.js";
+import "@haxtheweb/self-check/self-check.js";
+import "@haxtheweb/simple-cta/simple-cta.js";
+import "@haxtheweb/stop-note/stop-note.js";
+import "@haxtheweb/video-player/video-player.js";
+import { css, html } from "lit";
 
 /**
  * `d-d-docs`
@@ -146,31 +149,6 @@ class DDDocs extends DDD {
         }
         .grid-2-narrow p {
           margin: auto 0;
-        }
-
-        tr th {
-          background-color: var(--ddd-theme-default-pughBlue);
-          padding: 10px 50px;
-          border-top: none;
-        }
-        tr td {
-          padding: 10px 50px;
-          background-color: var(--ddd-theme-default-skyMaxlight);
-          border-left: 1px solid var(--ddd-theme-default-limestoneLight);
-          border-top: 1px solid var(--ddd-theme-default-limestoneLight);
-        }
-        tr:nth-child(odd) {
-          background-color: var(--ddd-theme-default-skyMaxLight);
-        }
-        table {
-          border-collapse: collapse;
-          border-radius: 0px;
-          overflow: hidden;
-          border: 1px solid var(--ddd-theme-default-limestoneLight);
-        }
-        td:first-child,
-        th:first-child {
-          border-left: none;
         }
 
         simple-cta + simple-cta {
@@ -384,21 +362,21 @@ class DDDocs extends DDD {
             css variable: <span class="fw-3">--ddd-border-xs</span>
           </p>
         </div>
-        <div class="p-10 b-xs bs-sm">
+        <div class="p-10 b-sm bs-sm">
           <p class="bb-sm mb-5"></p>
           <p>Class: <span class="fw-3">b-sm</span></p>
           <p class="mb-5">
             css variable: <span class="fw-3">--ddd-border-sm</span>
           </p>
         </div>
-        <div class="p-10 b-xs bs-sm">
+        <div class="p-10 b-md bs-sm">
           <p class="bb-md mb-5"></p>
           <p>Class: <span class="fw-3">b-md</span></p>
           <p class="mb-5">
             css variable: <span class="fw-3">--ddd-border-md</span>
           </p>
         </div>
-        <div class="p-10 b-xs bs-sm">
+        <div class="p-10 b-lg bs-sm">
           <p class="bb-lg mb-5"></p>
           <p>Class: <span class="fw-3">b-lg</span></p>
           <p class="mb-5">
@@ -412,8 +390,8 @@ class DDDocs extends DDD {
   renderBreakpoints() {
     return html`
       <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">Available Breakpoints</h2>
-      <table class="my-15 mx-5">
-        <thead>
+      <table class="my-15 mx-5 p-5" data-primary="1">
+        <thead data-primary="2">
           <tr>
             <th>Breakpoint</th>
             <th>Size</th>
@@ -843,11 +821,11 @@ class DDDocs extends DDD {
 
   renderPalettes() {
     return html`
-      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">
-        Available palettes in DDD
-      </h2>
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">Available palettes in DDD</h2>
       <div class="my-5" data-palette="0">
-        <h5>[data-palette="wisdom-walk-green"] or [data-palette="0"] (default)</h5>
+        <h5>
+          [data-palette="wisdom-walk-green"] or [data-palette="0"] (default)
+        </h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -884,6 +862,7 @@ class DDDocs extends DDD {
           title="--ddd-palette-color-7"
         ></div>
       </div>
+
       <div class="my-5" data-palette="1">
         <h5>[data-palette="very-violent-red"] or [data-palette="1"]</h5>
         <div
@@ -1038,6 +1017,123 @@ class DDDocs extends DDD {
       </div>
       <div class="my-5" data-palette="5">
         <h5>[data-palette="monotone"] or [data-palette="5"]</h5>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-1); display: inline-block;"
+          title="--ddd-palette-color-1"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-2); display: inline-block;"
+          title="--ddd-palette-color-2"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-3); display: inline-block;"
+          title="--ddd-palette-color-3"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-4); display: inline-block;"
+          title="--ddd-palette-color-4"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-5); display: inline-block;"
+          title="--ddd-palette-color-5"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-6); display: inline-block;"
+          title="--ddd-palette-color-6"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-7); display: inline-block;"
+          title="--ddd-palette-color-7"
+        ></div>
+      </div>
+
+      <div class="my-5" data-palette="6">
+        <h5>[data-palette="salmon-season"] or [data-palette="6"]</h5>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-1); display: inline-block;"
+          title="--ddd-palette-color-1"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-2); display: inline-block;"
+          title="--ddd-palette-color-2"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-3); display: inline-block;"
+          title="--ddd-palette-color-3"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-4); display: inline-block;"
+          title="--ddd-palette-color-4"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-5); display: inline-block;"
+          title="--ddd-palette-color-5"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-6); display: inline-block;"
+          title="--ddd-palette-color-6"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-7); display: inline-block;"
+          title="--ddd-palette-color-7"
+        ></div>
+      </div>
+
+      <div class="my-5" data-palette="7">
+        <h5>[data-palette="tweedle-dee"] or [data-palette="7"]</h5>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-1); display: inline-block;"
+          title="--ddd-palette-color-1"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-2); display: inline-block;"
+          title="--ddd-palette-color-2"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-3); display: inline-block;"
+          title="--ddd-palette-color-3"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-4); display: inline-block;"
+          title="--ddd-palette-color-4"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-5); display: inline-block;"
+          title="--ddd-palette-color-5"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-6); display: inline-block;"
+          title="--ddd-palette-color-6"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-7); display: inline-block;"
+          title="--ddd-palette-color-7"
+        ></div>
+      </div>
+
+      <div class="my-5" data-palette="8">
+        <h5>[data-palette="polaris-invent"] or [data-palette="8"]</h5>
         <div
           class="m-5 p-5 b-xs squareButton"
           style="background-color: var(--ddd-palette-color-1); display: inline-block;"
@@ -1461,59 +1557,65 @@ class DDDocs extends DDD {
           >
           <span class="fw-3">900 (fw-3) [--ddd-font-weight-black]</span>
         </p>
+        <p class="mb-10">
+          Font sizes:
+          <span class="fw-3"
+            >16 (fs-4xs) to 72 (fs-4xl) [--ddd-font-size-VALUE]</span
+          >
+        </p>
       </div>
       <div
         class="b-xs grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10"
       >
-        <p>16</p>
+        <p>16 <strong class="fs-4xs">4xs</strong></p>
         <h3 class="fs-4xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>18</p>
+        <p>18 <strong class="fs-4xs">3xs</strong></p>
         <h3 class="fs-3xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>20</p>
+        <p>20 <strong class="fs-4xs">xxs</strong></p>
         <h3 class="fs-xxs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>24</p>
+        <p>24 <strong class="fs-4xs">xs</strong></p>
         <h3 class="fs-xs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>28</p>
+        <p>28 <strong class="fs-4xs">s</strong></p>
         <h3 class="fs-s m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>32</p>
+        <p>32 <strong class="fs-4xs">ms</strong></p>
         <h3 class="fs-ms m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>36</p>
+        <p>36 <strong class="fs-4xs">m</strong></p>
         <h3 class="fs-m m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>40</p>
+        <p>40 <strong class="fs-4xs">ml</strong></p>
         <h3 class="fs-ml m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>44</p>
+        <p>44 <strong class="fs-4xs">l</strong></p>
         <h3 class="fs-l m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>48</p>
+        <p>48 <strong class="fs-4xs">xl</strong></p>
         <h3 class="fs-xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>56</p>
+        <p>56 <strong class="fs-4xs">xxl</strong></p>
         <h3 class="fs-xxl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>64</p>
+        <p>64 <strong class="fs-4xs">3xl</strong></p>
         <h3 class="fs-3xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>72</p>
+        <p>72 <strong class="fs-4xs">4xl</strong></p>
         <h3 class="fs-4xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
@@ -1533,55 +1635,55 @@ class DDDocs extends DDD {
       <div
         class="b-xs grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10"
       >
-        <p>16</p>
+        <p>16 <strong class="fs-4xs">4xs</strong></p>
         <h3 class="ddd-font-secondary fs-4xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>18</p>
+        <p>18 <strong class="fs-4xs">3xs</strong></p>
         <h3 class="ddd-font-secondary fs-3xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>20</p>
+        <p>20 <strong class="fs-4xs">xxs</strong></p>
         <h3 class="ddd-font-secondary fs-xxs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>24</p>
+        <p>24 <strong class="fs-4xs">xs</strong></p>
         <h3 class="ddd-font-secondary fs-xs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>28</p>
+        <p>28 <strong class="fs-4xs">s</strong></p>
         <h3 class="ddd-font-secondary fs-s m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>32</p>
+        <p>32 <strong class="fs-4xs">ms</strong></p>
         <h3 class="ddd-font-secondary fs-ms m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>36</p>
+        <p>36 <strong class="fs-4xs">m</strong></p>
         <h3 class="ddd-font-secondary fs-m m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>40</p>
+        <p>40 <strong class="fs-4xs">ml</strong></p>
         <h3 class="ddd-font-secondary fs-ml m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>44</p>
+        <p>44 <strong class="fs-4xs">l</strong></p>
         <h3 class="ddd-font-secondary fs-l m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>48</p>
+        <p>48 <strong class="fs-4xs">xl</strong></p>
         <h3 class="ddd-font-secondary fs-xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>56</p>
+        <p>56 <strong class="fs-4xs">xxl</strong></p>
         <h3 class="ddd-font-secondary fs-xxl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>64</p>
+        <p>64 <strong class="fs-4xs">3xl</strong></p>
         <h3 class="ddd-font-secondary fs-3xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>72</p>
+        <p>72 <strong class="fs-4xs">4xl</strong></p>
         <h3 class="ddd-font-secondary fs-4xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
@@ -1603,55 +1705,55 @@ class DDDocs extends DDD {
       <div
         class="b-1 grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10"
       >
-        <p>16</p>
+        <p>16 <strong class="fs-4xs">4xs</strong></p>
         <h3 class="ddd-font-navigation fs-4xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>18</p>
+        <p>18 <strong class="fs-4xs">3xs</strong></p>
         <h3 class="ddd-font-navigation fs-3xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>20</p>
+        <p>20 <strong class="fs-4xs">xxs</strong></p>
         <h3 class="ddd-font-navigation fs-xxs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>24</p>
+        <p>24 <strong class="fs-4xs">xs</strong></p>
         <h3 class="ddd-font-navigation fs-xs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>28</p>
+        <p>28 <strong class="fs-4xs">s</strong></p>
         <h3 class="ddd-font-navigation fs-s m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>32</p>
+        <p>32 <strong class="fs-4xs">ms</strong></p>
         <h3 class="ddd-font-navigation fs-ms m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>36</p>
+        <p>36 <strong class="fs-4xs">m</strong></p>
         <h3 class="ddd-font-navigation fs-m m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>40</p>
+        <p>40 <strong class="fs-4xs">ml</strong></p>
         <h3 class="ddd-font-navigation fs-ml m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>44</p>
+        <p>44 <strong class="fs-4xs">l</strong></p>
         <h3 class="ddd-font-navigation fs-l m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>48</p>
+        <p>48 <strong class="fs-4xs">xl</strong></p>
         <h3 class="ddd-font-navigation fs-xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>56</p>
+        <p>56 <strong class="fs-4xs">xxl</strong></p>
         <h3 class="ddd-font-navigation fs-xxl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>64</p>
+        <p>64 <strong class="fs-4xs">3xl</strong></p>
         <h3 class="ddd-font-navigation fs-3xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>72</p>
+        <p>72 <strong class="fs-4xs">4xl</strong></p>
         <h3 class="ddd-font-navigation fs-4xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
@@ -1659,8 +1761,8 @@ class DDDocs extends DDD {
       <div class="mx-5">
         <h2 class="mt-0 mb-5 pb-5 ">Letter Spacing</h2>
         <h6>CSS Variable is same as class name, with '--ddd-' prefix</h6>
-        <table class="my-10">
-          <thead>
+        <table class="my-10 p-5" data-primary="2">
+          <thead data-primary="0">
             <th>Class</th>
             <th>Value</th>
             <th>Example</th>
@@ -1925,112 +2027,111 @@ class DDDocs extends DDD {
   }
 
   renderCards() {
-    return html`
-    <h3>ddd-card</h3>
-          <ddd-card
-            src="https://images.ctfassets.net/ni9rh5nu0d99/1paFaX2Dc7iHh9Z6K7mIim/1427b9970ff21dd9c8a770067638efc1/abington-02.jpg?fm=webp&w=1080&q=75"
-            title="Abington"
-            href="https://www.psu.edu/academics/campuses/abington"
-          >
-            <p>
-              Close to Philadelphia, Penn State Abington's suburban campus offers
-              bachelor's degrees, athletics, and a diverse student community.
-            </p>
-          </ddd-card>
-          <ddd-card
-            src="https://images.ctfassets.net/ni9rh5nu0d99/6oBUNrVTNPJaoE9ahnVX2E/2c655bdcf28befdf81d5a24248a9dca5/altoona-01.jpg?fm=webp&w=1080&q=75"
-            title="Altoona"
-            href="https://www.psu.edu/academics/campuses/altoona"
-            data-primary="10"
-          >
-            <p>
-              In central Pennsylvania close to University Park, Penn State Altoona
-              offers the appeal of a small college with the prestige of a major
-              research university.
-            </p>
-          </ddd-card>
-          <ddd-card
-            src="https://images.ctfassets.net/ni9rh5nu0d99/C6YPZMqHyRaPeRrVTun8k/1ca61866afa1b3d903944a38ea34cecc/beaver-01.jpg?fm=webp&w=1080&q=75"
-            title="Beaver"
-            href="https://www.psu.edu/academics/campuses/beaver"
-            data-primary="20"
-          >
-            <p>
-              Situated on one hundred acres, Penn State Beaver offers several
-              bachelor's degrees, on-campus housing, and varsity sports, all within
-              easy reach of Pittsburgh.
-            </p>
-          </ddd-card>
-          <ddd-card
-            title="Behrend"
-            href="https://www.psu.edu/academics/campuses/behrend"
-            label="LETS DO THIS!"
-            no-arrow
-          >
-            <p>
-              Located in northwestern Pennsylvania, Penn State Behrend offers
-              undergraduate and graduate degrees, research experiences, on-campus
-              living, and athletics.
-            </p>
-          </ddd-card>
-          <ddd-card
-            src="https://images.ctfassets.net/ni9rh5nu0d99/3WXgadpl3oKX50MmPHGV6m/a91103dc9e4bbe123e29fd25b81e3402/berks-02.jpg?fm=webp&w=1080&q=75"
-            title="Berks"
-          >
-            <p>
-              Penn State Berks offers bachelor's degrees and four associate
-              programs with small classes, internships, undergraduate research
-              opportunities, and residential campus life.
-            </p>
-          </ddd-card>
-          <ddd-card
-            src="https://images.ctfassets.net/ni9rh5nu0d99/2p1eWsDl9umbeRKa02UEsQ/bba80b11dd34aecab19db215eaa8bb59/brandywine-01.jpg?fm=webp&w=1080&q=75"
-            title="Brandywine"
-            href="https://www.psu.edu/academics/campuses/brandywine"
-          >
-            <p>
-              Penn State Brandywine is all about the highest quality in teaching,
-              research, scholarship, and service to the campus, students, and the
-              Delaware County community.
-            </p>
-          </ddd-card>
-          <ddd-card
-            src="https://images.ctfassets.net/ni9rh5nu0d99/3rzA2HLc3Sy7uePX63LmYU/55d57acd326e0476cf70b5d7011e23b0/carlisle-01.jpg?fm=webp&w=1080&q=75"
-            title="Carlisle"
-            href="https://www.psu.edu/academics/campuses/carlisle"
-          >
-            <p>
-              Dickinson Law, located in Carlisle, offers study in various types of
-              law and across disciplines.
-            </p>
-          </ddd-card>
-          <ddd-card
-            src="https://images.ctfassets.net/ni9rh5nu0d99/eR6sYQ8zjwro8K2PxH20N/b495fd6e0f8f501631793c176c017859/dubois-01.jpg?fm=webp&w=1080&q=75"
-            title="Dubois"
-            href="https://www.psu.edu/academics/campuses/dubois"
-          >
-            <p>
-              Penn State DuBois prepares leaders through cutting-edge technology,
-              faculty expertise, and dedication to excellence in a small-town
-              setting in north-central Pennsylvania.
-            </p>
-          </ddd-card>`;
+    return html` <h3>ddd-card</h3>
+      <ddd-card
+        src="https://images.ctfassets.net/ni9rh5nu0d99/1paFaX2Dc7iHh9Z6K7mIim/1427b9970ff21dd9c8a770067638efc1/abington-02.jpg?fm=webp&w=1080&q=75"
+        title="Abington"
+        href="https://www.psu.edu/academics/campuses/abington"
+      >
+        <p>
+          Close to Philadelphia, Penn State Abington's suburban campus offers
+          bachelor's degrees, athletics, and a diverse student community.
+        </p>
+      </ddd-card>
+      <ddd-card
+        src="https://images.ctfassets.net/ni9rh5nu0d99/6oBUNrVTNPJaoE9ahnVX2E/2c655bdcf28befdf81d5a24248a9dca5/altoona-01.jpg?fm=webp&w=1080&q=75"
+        title="Altoona"
+        href="https://www.psu.edu/academics/campuses/altoona"
+        data-primary="10"
+      >
+        <p>
+          In central Pennsylvania close to University Park, Penn State Altoona
+          offers the appeal of a small college with the prestige of a major
+          research university.
+        </p>
+      </ddd-card>
+      <ddd-card
+        src="https://images.ctfassets.net/ni9rh5nu0d99/C6YPZMqHyRaPeRrVTun8k/1ca61866afa1b3d903944a38ea34cecc/beaver-01.jpg?fm=webp&w=1080&q=75"
+        title="Beaver"
+        href="https://www.psu.edu/academics/campuses/beaver"
+        data-primary="20"
+      >
+        <p>
+          Situated on one hundred acres, Penn State Beaver offers several
+          bachelor's degrees, on-campus housing, and varsity sports, all within
+          easy reach of Pittsburgh.
+        </p>
+      </ddd-card>
+      <ddd-card
+        title="Behrend"
+        href="https://www.psu.edu/academics/campuses/behrend"
+        label="LETS DO THIS!"
+        no-arrow
+      >
+        <p>
+          Located in northwestern Pennsylvania, Penn State Behrend offers
+          undergraduate and graduate degrees, research experiences, on-campus
+          living, and athletics.
+        </p>
+      </ddd-card>
+      <ddd-card
+        src="https://images.ctfassets.net/ni9rh5nu0d99/3WXgadpl3oKX50MmPHGV6m/a91103dc9e4bbe123e29fd25b81e3402/berks-02.jpg?fm=webp&w=1080&q=75"
+        title="Berks"
+      >
+        <p>
+          Penn State Berks offers bachelor's degrees and four associate programs
+          with small classes, internships, undergraduate research opportunities,
+          and residential campus life.
+        </p>
+      </ddd-card>
+      <ddd-card
+        src="https://images.ctfassets.net/ni9rh5nu0d99/2p1eWsDl9umbeRKa02UEsQ/bba80b11dd34aecab19db215eaa8bb59/brandywine-01.jpg?fm=webp&w=1080&q=75"
+        title="Brandywine"
+        href="https://www.psu.edu/academics/campuses/brandywine"
+      >
+        <p>
+          Penn State Brandywine is all about the highest quality in teaching,
+          research, scholarship, and service to the campus, students, and the
+          Delaware County community.
+        </p>
+      </ddd-card>
+      <ddd-card
+        src="https://images.ctfassets.net/ni9rh5nu0d99/3rzA2HLc3Sy7uePX63LmYU/55d57acd326e0476cf70b5d7011e23b0/carlisle-01.jpg?fm=webp&w=1080&q=75"
+        title="Carlisle"
+        href="https://www.psu.edu/academics/campuses/carlisle"
+      >
+        <p>
+          Dickinson Law, located in Carlisle, offers study in various types of
+          law and across disciplines.
+        </p>
+      </ddd-card>
+      <ddd-card
+        src="https://images.ctfassets.net/ni9rh5nu0d99/eR6sYQ8zjwro8K2PxH20N/b495fd6e0f8f501631793c176c017859/dubois-01.jpg?fm=webp&w=1080&q=75"
+        title="Dubois"
+        href="https://www.psu.edu/academics/campuses/dubois"
+      >
+        <p>
+          Penn State DuBois prepares leaders through cutting-edge technology,
+          faculty expertise, and dedication to excellence in a small-town
+          setting in north-central Pennsylvania.
+        </p>
+      </ddd-card>`;
   }
 
   renderStepsList() {
     return html`
-    <h3>ddd-steps-list</h3>
-    <ddd-steps-list>
-      <ddd-steps-list-item title="Register for classes">
-        <p>This is the first awesome step so that you are ready for class!</p>
-      </ddd-steps-list-item>
-      <ddd-steps-list-item title="Pay for class">
-        <p></p>
-      </ddd-steps-list-item>
-      <ddd-steps-list-item title="Go to class">
-        <p>You really need to go to class in order to learn everything</p>
-      </ddd-steps-list-item>
-    </ddd-steps-list>
+      <h3>ddd-steps-list</h3>
+      <ddd-steps-list>
+        <ddd-steps-list-item title="Register for classes">
+          <p>This is the first awesome step so that you are ready for class!</p>
+        </ddd-steps-list-item>
+        <ddd-steps-list-item title="Pay for class">
+          <p></p>
+        </ddd-steps-list-item>
+        <ddd-steps-list-item title="Go to class">
+          <p>You really need to go to class in order to learn everything</p>
+        </ddd-steps-list-item>
+      </ddd-steps-list>
     `;
   }
 

@@ -78,14 +78,11 @@ export class AppHaxSearchResults extends SimpleColors {
           display: flex;
           align-items: center;
           justify-content: flex-start;
-          width: 96vw;
-          max-height: 280px;
+          gap: var(--ddd-spacing-6, 24px);
+          width: 100%;
+          max-width: 1350px;
+          margin: 0 auto;
           position: relative;
-          border-radius: var(--ddd-radius-md, 8px);
-          border: var(--ddd-border-xs, 1px solid)
-            var(--ddd-theme-default-limestoneLight, #e4e5e7);
-          box-shadow: var(--ddd-boxShadow-sm);
-          overflow: visible;
         }
         .pager-container {
           display: flex;
@@ -110,7 +107,7 @@ export class AppHaxSearchResults extends SimpleColors {
           color: var(--ddd-theme-default-white, white);
           border: var(--ddd-border-sm, 2px solid)
             white;
-          border-radius: var(--ddd-radius-sm, 4px);
+          border-radius: var(--ddd-radius-circle);
           padding: var(--ddd-spacing-4, 16px);
           cursor: pointer;
           height: var(--ddd-spacing-12);
@@ -124,22 +121,18 @@ export class AppHaxSearchResults extends SimpleColors {
           z-index: 10;
           position: relative;
         }
-        .scroll-right {
-          margin-right: 0;
-        }
 
         :host([dark]) .scroll-left,
         :host([dark]) .scroll-right,
         body.dark-mode .scroll-left,
         body.dark-mode .scroll-right {
-          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
+          background: var(--ddd-theme-default-accent);
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          border-color: var(--ddd-theme-default-white, white);
         }
 
         .scroll-left:hover:not(:disabled),
         .scroll-right:hover:not(:disabled) {
-          background: var(--ddd-theme-default-keystoneYellow, #ffd100);
+          background: var(--ddd-theme-default-accent);
           color: var(--ddd-theme-default-nittanyNavy, #001e44);
           transform: translateY(-2px);
           box-shadow: var(--ddd-boxShadow-md);
@@ -160,8 +153,8 @@ export class AppHaxSearchResults extends SimpleColors {
         :host([dark]) .scroll-right:hover:not(:disabled),
         body.dark-mode .scroll-left:hover:not(:disabled),
         body.dark-mode .scroll-right:hover:not(:disabled) {
-          background: var(--ddd-theme-default-nittanyNavy, #001e44);
-          color: var(--ddd-theme-default-white, white);
+          background: var(--ddd-theme-default-white, white);
+          color: var(--ddd-theme-default-nittanyNavy, #001e44);
         }
 
         :host([dark]) .scroll-left:disabled,
@@ -170,19 +163,17 @@ export class AppHaxSearchResults extends SimpleColors {
         body.dark-mode .scroll-right:disabled {
           opacity: 0.3;
           cursor: not-allowed;
-          background: var(--ddd-theme-default-coalyGray, #444);
-          color: var(--ddd-theme-default-slateGray, #666);
-          border-color: var(--ddd-theme-default-coalyGray, #444);
+          background: var(--ddd-theme-default-limestoneGray, #a2aaad);
+          color: var(--ddd-theme-default-coalyGray, #444);
         }
-
+        
         #results {
           display: flex;
           flex-wrap: nowrap;
           overflow-x: auto;
-          overflow-y: hidden;
           scroll-snap-type: x mandatory;
           gap: var(--ddd-spacing-6, 24px);
-          padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
+            padding: var(--ddd-spacing-2, 8px) 0 0 var(--ddd-spacing-2, 8px);
           flex: 1;
           min-width: 0;
           cursor: grab;
@@ -241,14 +232,15 @@ export class AppHaxSearchResults extends SimpleColors {
         li {
           flex: 0 0 auto;
           scroll-snap-align: center;
-          width: 220px;
-          min-width: 220px;
-          height: 260px;
+          width: 180px;
+          min-width: 180px;
+          height: 300px;
           display: flex;
           flex-direction: column;
           align-items: center;
-          justify-content: center;
+          justify-content: flex-start; 
         }
+
 
         app-hax-site-bar {
           margin: 0 var(--ddd-spacing-3, 12px);
@@ -268,7 +260,7 @@ export class AppHaxSearchResults extends SimpleColors {
         @media (max-width: 1200px) {
           :host {
             min-width: calc(
-              2 * 264px + var(--ddd-spacing-6, 24px) + 2 *
+              2 * 180px + var(--ddd-spacing-6, 24px) + 2 *
                 var(--ddd-spacing-12, 56px)
             );
           }
@@ -276,7 +268,7 @@ export class AppHaxSearchResults extends SimpleColors {
 
         @media (max-width: 800px) {
           :host {
-            min-width: calc(264px + 2 * var(--ddd-spacing-12, 56px));
+            min-width: calc(180px + 2 * var(--ddd-spacing-12, 56px));
           }
 
           app-hax-site-bar {
@@ -305,13 +297,10 @@ export class AppHaxSearchResults extends SimpleColors {
           }
 
           li {
-            width: 240px;
-            min-width: 240px;
+            width: 180px;
+            min-width: 180px;
           }
 
-          #results::after {
-            min-width: 240px;
-          }
           /* Mobile: Show only 1 item, hide arrows */
           .scroll-left,
           .scroll-right {
@@ -325,6 +314,9 @@ export class AppHaxSearchResults extends SimpleColors {
             overflow-x: auto;
             scrollbar-width: none;
             -ms-overflow-style: none;
+          }
+          #results::-webkit-scrollbar {
+            display: none;               
           }
         }
         span[slot="band"] {
@@ -438,7 +430,7 @@ export class AppHaxSearchResults extends SimpleColors {
           id="scroll-left-btn"
           class="scroll-left"
           @click="${this.scrollLeft}"
-          ?disabled="${this.currentIndex <= 1 || this.totalItems <= 1}"
+          ?disabled="${this.isAtStart || this.totalItems <= 1}"
           aria-label="Previous sites"
           aria-describedby="scroll-left-desc"
         >
@@ -468,7 +460,7 @@ export class AppHaxSearchResults extends SimpleColors {
                       .siteUrl="${item.slug}"
                       .slug="${item.slug}"
                       .image="${this.getThemeImage(item)}"
-                      lastUpdatedTime="${varGet(
+                      last-updated-time="${varGet(
                         item,
                         "metadata.site.updated",
                         0,
@@ -485,6 +477,7 @@ export class AppHaxSearchResults extends SimpleColors {
                         slot="heading"
                         href="${item.slug}"
                         target="_blank"
+                        tabindex="-1"
                         rel="noopener noreferrer"
                         title="${item.title}"
                       >
@@ -517,7 +510,7 @@ export class AppHaxSearchResults extends SimpleColors {
           id="scroll-right-btn"
           class="scroll-right"
           @click="${this.scrollRight}"
-          ?disabled="${this.currentIndex >= this.totalItems ||
+          ?disabled="${this.isAtEnd || this.totalItems <= 1}"
           this.totalItems <= 1}"
           aria-label="Next sites"
           aria-describedby="scroll-right-desc"
@@ -531,25 +524,42 @@ export class AppHaxSearchResults extends SimpleColors {
     `;
   }
 
-  scrollLeft() {
-    // Don't scroll if at the beginning or only one item
-    if (this.currentIndex <= 1 || this.totalItems <= 1) return;
-
-    const itemWidth = 264 + 24; // item width + gap
-    this.shadowRoot
-      .querySelector("#results")
-      .scrollBy({ left: -itemWidth, behavior: "smooth" });
+  get isAtStart() {
+    const el = this.shadowRoot?.querySelector("#results");
+    return !el || el.scrollLeft <= 2; // tolerance for sub-pixel scroll
   }
+
+  get isAtEnd() {
+    const el = this.shadowRoot?.querySelector("#results");
+    return (
+      !el ||
+      el.scrollLeft + el.clientWidth >= el.scrollWidth - 2
+    );
+  }
+
+  scrollLeft() {
+    const el = this.shadowRoot.querySelector("#results");
+    if (!el || this.totalItems <= 1) return;
+
+    const itemWidth = 180 + 24;
+
+    // If we're close to the start, snap fully to 0
+    if (el.scrollLeft <= itemWidth) {
+      el.scrollTo({ left: 0, behavior: "smooth" });
+    } else {
+      el.scrollBy({ left: -itemWidth, behavior: "smooth" });
+    }
+  }
+
 
   scrollRight() {
-    // Don't scroll if at the end or only one item
-    if (this.currentIndex >= this.totalItems || this.totalItems <= 1) return;
+    const el = this.shadowRoot.querySelector("#results");
+    if (!el || this.totalItems <= 1) return;
 
-    const itemWidth = 264 + 24; // item width + gap
-    this.shadowRoot
-      .querySelector("#results")
-      .scrollBy({ left: itemWidth, behavior: "smooth" });
+    const itemWidth = 180 + 24;
+    el.scrollBy({ left: itemWidth, behavior: "smooth" });
   }
+
 
   handlePointerStart(e) {
     const resultsEl = this.shadowRoot.querySelector("#results");
@@ -606,7 +616,7 @@ export class AppHaxSearchResults extends SimpleColors {
     const scrollLeft = resultsEl.scrollLeft;
     const scrollWidth = resultsEl.scrollWidth;
     const clientWidth = resultsEl.clientWidth;
-    const itemWidth = 264 + 24; // item width + gap
+    const itemWidth = 180 + 24; // item width + gap
 
     // Check if we're near the end (within 50px of the end)
     const isNearEnd = scrollLeft + clientWidth >= scrollWidth - 50;
@@ -623,11 +633,12 @@ export class AppHaxSearchResults extends SimpleColors {
         this.totalItems,
       );
     }
+    this.requestUpdate();
   }
 
   goToPage(pageNumber) {
     const resultsEl = this.shadowRoot.querySelector("#results");
-    const itemWidth = 264 + 24; // item width + gap
+    const itemWidth = 180 + 24; // item width + gap
     const targetScrollLeft = (pageNumber - 1) * itemWidth;
 
     resultsEl.scrollTo({

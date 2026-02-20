@@ -715,8 +715,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           display: block;
           max-width: 100%;
           font-family: var(--ddd-font-primary, sans-serif);
-          padding-left: var(--ddd-spacing-5, 20px);
-          padding-right: var(--ddd-spacing-5, 20px);
         }
         .contentSection {
           display: flex;
@@ -726,9 +724,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           width: 100%;
           margin: 0;
           margin-top: var(--ddd-spacing-5, 20px);
-          padding: 0;
           box-sizing: border-box;
         }
+
         .leftSection,
         .rightSection {
           display: flex;
@@ -754,7 +752,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         }
         .template-results {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(200px, 0fr));
           width: 100%;
           min-height: 330px;
           box-sizing: border-box;
@@ -762,6 +760,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         }
         #returnToSection {
           width: 100%;
+          padding-left: var(--ddd-spacing-5, 20px);
+          padding-right: var(--ddd-spacing-5, 20px);
         }
         #returnToSection app-hax-search-results {
           width: 100%;
@@ -791,6 +791,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           margin: 0;
         }
         .upper-filter {
+          padding-left: var(--ddd-spacing-5, 20px);
+          padding-right: var(--ddd-spacing-5, 20px);
           margin-bottom: var(--ddd-spacing-4, 16px);
           position: relative;
           display: inline-block;
@@ -1129,10 +1131,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           h4, .returnTo h4, .startNew h4 {
             font-size: var(--ddd-font-size-m, 20px);
           }
-          .template-results {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--ddd-spacing-3, 12px);
-          }
+
         }
 
         /* 600px - 481px*/
@@ -1145,10 +1144,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           }
           h4, .returnTo h4, .startNew h4 {
             font-size: var(--ddd-font-size-s, 18px);
-          }
-          .template-results {
-            grid-template-columns: 1fr;
-            gap: var(--ddd-spacing-2, 8px);
           }
         }
 

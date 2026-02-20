@@ -282,31 +282,33 @@ export class AppHaxSiteBars extends SimpleColors {
       css`
         :host {
           text-align: left;
-          width: 264px;
-          max-width: 264px;
+          width: 180px;
+          max-width: 180px;
           font-family: var(--ddd-font-primary);
-          background-color: light-dark(
-            white,
-            var(--ddd-theme-default-roarMaxlight)
-          );
+          background-color: white;
           border: var(--ddd-border-sm);
-          border-radius: var(--ddd-radius-sm, 4px);
           min-height: 260px;
           box-shadow: light-dark(
             2px 2px 12px #1c1c1c,
             2px 2px 12px rgba(0, 0, 0, 0.3)
           );
-          transition: all 0.2s ease;
+          transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+          overflow: visible;
+          
         }
 
         :host(:hover),
+        :host(:focus),
         :host(:focus-within) {
-          transform: translateY(-2px);
-          border-color: var(--ddd-theme-default-accent);
+          border: var(--ddd-border-md);
+          border-color:var(--ddd-theme-default-beaverBlue, #0078d4);
           box-shadow: light-dark(
             4px 8px 24px rgba(28, 28, 28, 0.15),
             4px 8px 24px rgba(0, 0, 0, 0.5)
           );
+          transform: scale(1.03);
+          transform-origin: center top;
+          z-index: 2;
         }
 
         #mainCard {
@@ -320,7 +322,6 @@ export class AppHaxSiteBars extends SimpleColors {
 
         .cardImage {
           width: 100%;
-          height: 180px;
           object-fit: cover;
           border-top-left-radius: 8px;
           border-top-right-radius: 8px;
@@ -355,31 +356,43 @@ export class AppHaxSiteBars extends SimpleColors {
         }
 
         ::slotted([slot="heading"]) {
-          font-size: 24px;
+          font-size: var(--ddd-font-size-xxs);
           font-weight: var(--ddd-font-weight-bold, 700);
           color: var(--ddd-theme-default-nittanyNavy);
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          cursor: pointer;
         }
 
         ::slotted(a[slot="heading"]) {
-            text-decoration: none;
+          text-decoration: none;
         }
 
         .date {
           display: flex;
           gap: var(--ddd-spacing-1, 4px);
           margin-top: var(--ddd-spacing-2, 8px);
-          font-size: var(--ddd-font-size-xxs, 12px);
-          color: var(--ddd-theme-default-limestoneGray);
-          font-weight: var(--ddd-font-weight-bold, 500);
-          font-size: 20px;
+          font-size: var(--ddd-font-size-4xs);
+          color: var(--ddd-theme-default-nittanyNavy);
+          align-items: center;
+          line-height: 1;
         }
 
         .date simple-icon {
-          --simple-icon-color: var(--ddd-theme-default-limestoneGray);
+          --simple-icon-color: var(--ddd-theme-default-nittanyNavy);
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .imageLink {
+          display: block;
+          overflow: hidden;
+          height: 180px;
         }
       `,
     ];
@@ -401,6 +414,7 @@ export class AppHaxSiteBars extends SimpleColors {
                 href="${this.siteUrl}"
                 target="_blank"
                 rel="noopener noreferrer"
+                tabindex="-1"
                 aria-label="Open ${this.title || "site"}"
               >
                 <img
@@ -472,8 +486,9 @@ export class AppHaxSiteBars extends SimpleColors {
           </div>
 
           <div class="date">
-            <simple-icon icon="hax:calendar"></simple-icon>
+            <simple-icon icon="hax:calendar" title="Last updated"></simple-icon>
             <simple-datetime
+                title="Last updated"
                 format="m/j/y"
                 .timestamp="${this.lastUpdatedTime}"
                 unix

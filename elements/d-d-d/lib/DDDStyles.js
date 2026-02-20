@@ -1,7 +1,7 @@
-import { css, html, unsafeCSS } from "lit";
-import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
-import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
+import { css, html, unsafeCSS } from "lit";
 
 /**
  * @note Gut all design settings in HAX core. this allows for design systems to hook in
@@ -617,6 +617,7 @@ export const DDDVariables = css`
     --ddd-theme-default-navy65: rgba(0, 30, 68, 0.65);
     --ddd-theme-default-navy70: rgba(0, 30, 68, 0.7);
     --ddd-theme-default-navy80: rgba(0, 30, 68, 0.8);
+    --ddd-theme-default-black: #000000;
     --ddd-theme-default-potentialMidnight: #000321;
     --ddd-theme-default-potential0: rgba(0, 3, 33, 0);
     --ddd-theme-default-potential50: rgba(0, 3, 33, 0.5);
@@ -943,10 +944,10 @@ export const DDDVariables = css`
        Usage: box-shadow: var(--ddd-boxShadow-md);
        =========================================== */
     --ddd-boxShadow-0: 0px 0px 0px 0px rgba(0, 0, 0, 0); /* No shadow */
-    --ddd-boxShadow-sm: rgba(0, 3, 33, 0.063) 0px 4px 8px 0px; /* Subtle elevation */
-    --ddd-boxShadow-md: rgba(0, 3, 33, 0.063) 0px 8px 16px 0px; /* Standard elevation */
-    --ddd-boxShadow-lg: rgba(0, 3, 33, 0.063) 0px 12px 24px 0px; /* High elevation */
-    --ddd-boxShadow-xl: rgba(0, 3, 33, 0.063) 0px 16px 32px 0px; /* Maximum elevation */
+    --ddd-boxShadow-sm: rgba(0, 3, 33, 0.1) 0px 4px 8px 0px; /* Subtle elevation */
+    --ddd-boxShadow-md: rgba(0, 3, 33, 0.15) 0px 8px 16px 0px; /* Standard elevation */
+    --ddd-boxShadow-lg: rgba(0, 3, 33, 0.2) 0px 12px 24px 0px; /* High elevation */
+    --ddd-boxShadow-xl: rgba(0, 3, 33, 0.25) 0px 16px 32px 0px; /* Maximum elevation */
 
     /* ===========================================
        BREAKPOINTS
@@ -1192,9 +1193,11 @@ export const DDDDataAttributes = [
       text-align: justify;
     }
 
-    /* primary color */
     [data-primary] {
       --ddd-theme-primary: var(--ddd-primary-0);
+      --ddd-theme-bgContrast: "";
+    }
+    [data-primary=""] {
       --lowContrast-override: black;
     }
     [data-primary="0"] {
@@ -1744,6 +1747,28 @@ export const DDDReset = css`
     cursor: pointer;
   }
 
+  thead[data-primary] tr th {
+    background-color: var(--ddd-theme-primary);
+    color: var(--lowContrast-override, var(--ddd-theme-bgContrast, inherit));
+    border-color: inherit;
+  }
+
+  table[data-primary] tbody > tr:nth-child(odd),
+  table[data-primary] > tr:nth-child(odd) {
+    background-color: var(--ddd-theme-primary);
+    color: var(--ddd-theme-bgContrast, var(--lowContrast-override, inherit));
+  }
+
+  thead,
+  tbody,
+  tfoot,
+  tr,
+  td,
+  th {
+    padding: inherit;
+    border-color: inherit !important;
+  }
+
   thead,
   tbody,
   tfoot,
@@ -1752,6 +1777,10 @@ export const DDDReset = css`
   th {
     font-size: var(--ddd-theme-body-font-size);
     font-family: var(--ddd-font-primary);
+    border: 1px solid;
+  }
+  table {
+    border-collapse: collapse;
   }
   ul,
   ol {
@@ -4451,6 +4480,7 @@ html, :root {
   --ddd-palette-color-5: var(--simple-colors-default-theme-lime-5);
   --ddd-palette-color-6: var(--ddd-theme-default-inventOrange);
   --ddd-palette-color-7: var(--simple-colors-default-theme-orange-3);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 }
 
 /** Wisdom Walk Green */
@@ -4463,8 +4493,10 @@ html, :root {
   --ddd-palette-color-5: var(--simple-colors-default-theme-lime-5);
   --ddd-palette-color-6: var(--ddd-theme-default-inventOrange);
   --ddd-palette-color-7: var(--simple-colors-default-theme-orange-3);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 }
 
+/** Very Violent Red */
 [data-palette="very-violent-red"],
 [data-palette="1"] {
   --ddd-palette-color-1: var(--simple-colors-fixed-theme-red-12);
@@ -4474,8 +4506,11 @@ html, :root {
   --ddd-palette-color-5: var(--simple-colors-default-theme-red-2);
   --ddd-palette-color-6: var(--ddd-theme-default-slateGray);
   --ddd-palette-color-7: var(--ddd-theme-default-pughBlue);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+  --ddd-palette-video-player-caption-color
 }
 
+/** Beetles Yellow */
 [data-palette="beetles-yellow"],
 [data-palette="2"] {
   --ddd-palette-color-1: var(--simple-colors-default-theme-orange-9);
@@ -4485,9 +4520,10 @@ html, :root {
   --ddd-palette-color-5: var(--ddd-theme-default-keystoneYellow);
   --ddd-palette-color-6: var(--ddd-theme-default-creekTeal);
   --ddd-palette-color-7: var(--simple-colors-default-theme-cyan-1);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 }
 
-
+/** Offbrand Nittany Blue */
 [data-palette="offbrand-nittany-blue"],
 [data-palette="3"] {
   --ddd-palette-color-1: var(--ddd-theme-default-nittanyNavy);
@@ -4495,10 +4531,12 @@ html, :root {
   --ddd-palette-color-3: var(--simple-colors-fixed-theme-light-blue-8);
   --ddd-palette-color-4: var(--simple-colors-default-theme-light-blue-6);
   --ddd-palette-color-5: var(--simple-colors-default-theme-cyan-2);
-  --ddd-palette-color-6: var(--ddd-theme-default-keystoneYellow);
-  --ddd-palette-color-7: var(--simple-colors-default-theme-orange-7);
+  --ddd-palette-color-6: var(--simple-colors-default-theme-orange-7);
+  --ddd-palette-color-7: var(--ddd-theme-default-keystoneYellow);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 }
 
+/** Boring Blue Gray */
 [data-palette="boring-blue-gray"],
 [data-palette="4"] {
   --ddd-palette-color-1: var(--ddd-theme-default-coalyGray);
@@ -4508,8 +4546,10 @@ html, :root {
   --ddd-palette-color-5: var(--simple-colors-fixed-theme-blue-grey-4);
   --ddd-palette-color-6: var(--ddd-theme-default-slateGray);
   --ddd-palette-color-7: var(--simple-colors-default-theme-blue-grey-2);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 }
 
+/** Monotone Gray */
 [data-palette="monotone"],
 [data-palette="5"] {
 --ddd-palette-color-1: var(--ddd-theme-default-coalyGray);
@@ -4517,10 +4557,51 @@ html, :root {
 --ddd-palette-color-3: var(--simple-colors-default-theme-grey-7);
 --ddd-palette-color-4: var(--simple-colors-default-theme-grey-5);
 --ddd-palette-color-5: var(--simple-colors-default-theme-grey-3);
---ddd-palette-color-6: var(--simple-colors-default-theme-amber-6);
---ddd-palette-color-7: var(--simple-colors-default-theme-grey-11);
+--ddd-palette-color-6: var(--simple-colors-default-theme-grey-11);
+--ddd-palette-color-7: var(--simple-colors-default-theme-amber-6);
+--ddd-palette-video-player-color: var(--ddd-theme-default-black);
 }
 
+/** Salmon Season */
+[data-palette="salmon-season"],
+[data-palette="6"] {
+--ddd-palette-color-1: var(--simple-colors-default-theme-pink-2);
+--ddd-palette-color-2: var(--simple-colors-default-theme-pink-4);
+--ddd-palette-color-3: var(--ddd-theme-default-original87Pink);
+--ddd-palette-color-4: var(--ddd-theme-default-discoveryCoral);
+--ddd-palette-color-5: var(--simple-colors-default-theme-red-10);
+--ddd-palette-color-6: var(--simple-colors-default-theme-lime-9);
+--ddd-palette-color-7: var(--simple-colors-default-theme-lime-5);
+--ddd-palette-video-player-color: var(--ddd-theme-default-black);
+--ddd-palette-video-player-caption-color: var(--ddd-theme-default-black);
+}
+
+/* This palette doesn't follow the same design pattern as the others */
+[data-palette="tweedle-dee"],
+[data-palette="7"] {
+--ddd-palette-color-1: var(--ddd-theme-default-slateMaxLight);
+--ddd-palette-color-2: var(--simple-colors-default-theme-blue-grey-12);
+--ddd-palette-color-3: var(--simple-colors-default-theme-blue-grey-11);
+--ddd-palette-color-4: var(--ddd-theme-default-pughBlue);
+--ddd-palette-color-5: var(--ddd-theme-default-skyBlue);
+--ddd-palette-color-6: var(--simple-colors-default-theme-blue-grey-2);
+--ddd-palette-color-7: var(--simple-colors-default-theme-cyan-12);
+--ddd-palette-video-player-color: var(--ddd-theme-default-white);
+}
+
+/* Polaris Invent */
+[data-palette="polaris-invent"],
+[data-palette="8"] {
+  /* Derived from colors in polaris-invent-theme */
+  --ddd-palette-color-1: var(--ddd-theme-default-limestoneLight);
+  --ddd-palette-color-2: var(--ddd-theme-default-coalyGray);
+  --ddd-palette-color-3: var(--ddd-theme-default-nittanyNavy);
+  --ddd-palette-color-4: var(--ddd-theme-default-beaver80);
+  --ddd-palette-color-5: var(--ddd-theme-default-beaverBlue);
+  --ddd-palette-color-6: var(--ddd-theme-default-skyBlue);
+  --ddd-palette-color-7: var(--ddd-theme-default-inventOrange);
+  --ddd-palette-video-player-color: var(--ddd-theme-default-white);
+}
 `;
 
 // export that has all of them for easy stamping as a single sheet
