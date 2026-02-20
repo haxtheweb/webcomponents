@@ -5,19 +5,16 @@ import { HAXStore } from '@haxtheweb/hax-body/lib/hax-store.js'
 import { store } from '@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js'
 import { HAXCMSI18NMixin } from '../utils/HAXCMSI18NMixin.js'
 import '@haxtheweb/simple-icon/lib/simple-icon-button-lite.js'
-
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import '@haxtheweb/hax-body/lib/hax-text-editor-toolbar.js'
 // Required HTML primitives that must exist for baseline text authoring.
 // These are always enabled in the UI and are NOT written to platformConfig.allowedBlocks.
 const REQUIRED_TEXT_PRIMITIVES = [
   'h1',
   'h2',
-  'h3',
   'p',
-  'strong',
-  'em',
   'ul',
   'ol',
-  'strike',
 ]
 const REQUIRED_TEXT_PRIMITIVES_SET = new Set(REQUIRED_TEXT_PRIMITIVES)
 
@@ -39,56 +36,67 @@ const FEATURE_DEFS = [
   {
     key: 'addPage',
     label: 'Add pages',
+    icon: 'hax:add-page',
     group: 'CMS',
   },
   {
     key: 'deletePage',
     label: 'Delete pages',
+    icon: 'icons:delete',
     group: 'CMS',
   },
   {
     key: 'outlineDesigner',
     label: 'Outline designer',
+    icon: 'hax:site-map',
     group: 'CMS',
   },
   {
     key: 'styleGuide',
     label: 'Style guide',
+    icon: 'lrn:palette',
     group: 'CMS',
   },
   {
     key: 'insights',
     label: 'Insights',
+    icon: 'hax:clipboard-pulse',
     group: 'CMS',
   },
   {
     key: 'manifest',
     label: 'Site settings',
+    icon: 'hax:home-edit',
     group: 'CMS',
   },
   {
     key: 'pageBreak',
-    label: 'Page break UI',
+    label: 'Edit Page Details',
+    icon: 'hax:page-edit',
     group: 'CMS',
   },
   {
     key: 'addBlock',
     label: 'Add blocks',
+    icon: 'hax:add-brick',
     group: 'Editor',
   },
   {
     key: 'contentMap',
     label: 'Page structure (content map)',
+    icon: 'hax:newspaper',
     group: 'Editor',
   },
   {
     key: 'viewSource',
     label: 'View source',
+    icon: 'hax:html-code',
     group: 'Editor',
   },
   {
     key: 'onlineSearch',
     label: 'Online search',
+    icon: 'hax:add-page',
     group: 'Editor',
   },
 ]
@@ -111,18 +119,27 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       blockFilter: { type: String, attribute: 'block-filter' },
       busy: { type: Boolean, reflect: true },
       pageCount: { type: Number, attribute: 'page-count' },
+      platformConfig: { type: Object },
+      gizmoList: { type: Object }
     }
   }
 
   constructor() {
     super()
     this.audience = 'expert'
-    this.features = this._defaultFeatures()
+    this.audienceList = [
+      { value: 'novice', label: 'Novice' },
+      { value: 'expert', label: 'Expert' },
+    ];
+    this.featureList = DEFAULT_SUPPORTED_FEATURES;
+    this.features = {};
     this.allowedBlocks = new Set()
     this.blocks = []
     this.blockFilter = ''
     this.busy = false
     this.pageCount = 0
+    this.platformConfig = {};
+    this.gizmoList = {};
 
     this.__disposer = []
     this.__blocksInitialized = false
@@ -193,8 +210,8 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         }
 
         .row {
-          display: grid;
-          grid-template-columns: 1fr;
+          display: flex;
+          flex-direction: column;
           gap: var(--ddd-spacing-6);
         }
 
@@ -278,9 +295,15 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         }
 
         .audience {
-          display: grid;
+          display: flex;
+          flex-direction: column;
           gap: var(--ddd-spacing-2);
-          max-width: 420px;
+        }
+
+        .audience-content {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
         }
 
         .audience label {
@@ -375,6 +398,27 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           font-size: var(--ddd-font-size-xs);
           opacity: 0.9;
         }
+
+        /*.editor-features {
+          background-color: lightblue;
+          border-left: 2px darkblue solid;
+          padding-left: 4px;
+        } */
+
+        details {
+          min-width: 100%;
+          box-sizing: border-box;
+        }
+
+        summary .section-title {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+
+        /* .toolbar-img {
+          float: right;
+        } */
       `,
     ]
   }
@@ -391,22 +435,37 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     })
 
     autorun((reaction) => {
-      this._initFromManifestPlatform()
+      const platformConfig = toJS(store.platformConfig)
+      // this.audience = platformConfig && platformConfig.audience
+      // this.features = platformConfig && platformConfig.features
       this.__disposer.push(reaction)
     })
 
-    this.__haxRegisterPropertiesHandler = () => {
-      this._refreshBlocksList()
-    }
-    globalThis.addEventListener(
-      'hax-register-properties',
-      this.__haxRegisterPropertiesHandler,
-    )
+    autorun((reaction) => {
+      const currentGizmos = toJS(HAXStore.gizmoList)
+      this.gizmoList = currentGizmos.filter(item => 
+        !(item.meta && (item.meta.inlineOnly || item.meta.hidden || item.meta.requiresParent))
+      );
+      this.__disposer.push(reaction)
+    })
 
-    // Delay initial block list until HAXStore has had a chance to register
-    setTimeout(() => {
-      this._refreshBlocksList()
-    }, 0)
+    // autorun((reaction) => {
+    //   this._initFromManifestPlatform()
+    //   this.__disposer.push(reaction)
+    // })
+
+    // this.__haxRegisterPropertiesHandler = () => {
+    //   this._refreshBlocksList()
+    // }
+    // globalThis.addEventListener(
+    //   'hax-register-properties',
+    //   this.__haxRegisterPropertiesHandler,
+    // )
+
+    // // Delay initial block list until HAXStore has had a chance to register
+    // setTimeout(() => {
+    //   this._refreshBlocksList()
+    // }, 0)
   }
 
   disconnectedCallback() {
@@ -416,12 +475,12 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         d.dispose()
       }
     }
-    if (this.__haxRegisterPropertiesHandler) {
-      globalThis.removeEventListener(
-        'hax-register-properties',
-        this.__haxRegisterPropertiesHandler,
-      )
-    }
+    // if (this.__haxRegisterPropertiesHandler) {
+    //   globalThis.removeEventListener(
+    //     'hax-register-properties',
+    //     this.__haxRegisterPropertiesHandler,
+    //   )
+    // }
     super.disconnectedCallback()
   }
 
@@ -429,22 +488,22 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     const cmsFeatures = FEATURE_DEFS.filter((f) => f.group === 'CMS')
     const editorFeatures = FEATURE_DEFS.filter((f) => f.group === 'Editor')
 
-    const blocks = this._filteredBlocks()
-    const grouped = this._groupBlocksByCategory(blocks)
-
-    const toggleableTotal = this.blocks
-      ? this.blocks.filter((b) => !b.locked).length
+    const toggleableTotal = this.gizmoList
+      ? this.gizmoList.filter((b) => !b.gizmoList).length
       : 0
-    const toggleableSelected = this.blocks
-      ? this.blocks.filter((b) => !b.locked && this.allowedBlocks.has(b.tag)).length
+    const toggleableSelected = this.gizmoList
+      ? this.gizmoList.filter((b) => !b.locked && this.allowedBlocks.has(b.tag)).length
       : 0
 
+    let toolbarImgPath = new URL(`./assets/${this.audience.toLowerCase()}.png`, import.meta.url).href
     return html`
       <h2>${this.t.title}</h2>
 
       <div class="row">
         <div class="section">
-          <div class="audience">
+          <!-- <div class="audience"> -->
+            <div class="audience-content">
+            <div class="audience-selector">
             <label for="audience">${this.t.experienceLevel}</label>
             <select id="audience" @change="${this._audienceChanged}">
               ${this._audienceOptions().map(
@@ -455,14 +514,17 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
                 </option>`,
               )}
             </select>
+            </div>
+            <img class="toolbar-img" src=${toolbarImgPath}>
+            </div>
             ${this.pageCount > 20
               ? html`<div class="note">${this.t.largeSiteWarning}</div>`
               : ''}
-          </div>
-        </div>
+          <!-- </div> -->
+            </div>
 
-        <div class="section">
-          <div class="section-title">
+        <details class="section">
+          <summary class="section-title">
             <h3>${this.t.cmsFeatures}</h3>
             <div class="controls">
               <simple-icon-button-lite
@@ -478,15 +540,15 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
                 @click="${this._deselectAllCmsFeatures}"
               ></simple-icon-button-lite>
             </div>
-          </div>
+          </summary>
           <fieldset class="check-grid">
             ${cmsFeatures.map((f) => this._renderFeatureCheckbox(f))}
           </fieldset>
-        </div>
+        </details>
 
-        <div class="section">
-          <div class="section-title">
-            <h3>${this.t.editorFeatures}</h3>
+        <details class="section">
+          <summary class="section-title">
+            <simple-icon-lite icon="hax:add-page"></simple-icon-lite> <h3>${this.t.editorFeatures}</h3>
             <div class="controls">
               <simple-icon-button-lite
                 icon="icons:select-all"
@@ -501,14 +563,14 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
                 @click="${this._deselectAllEditorFeatures}"
               ></simple-icon-button-lite>
             </div>
-          </div>
+            </summary>
           <fieldset class="check-grid">
             ${editorFeatures.map((f) => this._renderFeatureCheckbox(f))}
           </fieldset>
-        </div>
+            </details>
 
-        <div class="section">
-          <div class="section-title">
+        <details class="section">
+          <summary class="section-title">
             <h3>${this.t.blocks}</h3>
             <div class="controls">
               <simple-icon-button-lite
@@ -524,7 +586,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
                 @click="${this._deselectAllBlocks}"
               ></simple-icon-button-lite>
             </div>
-          </div>
+            </summary>
 
           <div class="blocks-meta">
             <label for="blockFilter">${this.t.filterBlocks}</label>
@@ -544,36 +606,34 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           </div>
 
           <div class="blocks-list">
-            ${grouped.map(
+            ${this._groupBlocksByCategory(this.gizmoList).map(
               (group) => html`
-                <div class="block-category" data-category="${group.category}">
-                  <div class="block-category-title">
+                <details class="block-category">
+                  <summary class="block-category-title">
                     <h4>${group.category}</h4>
                     <div class="controls">
                       <simple-icon-button-lite
                         icon="icons:select-all"
                         label="${this.t.selectAll}"
                         title="${this.t.selectAll}"
-                        data-category="${group.category}"
                         @click="${this._selectAllBlocksInCategory}"
                       ></simple-icon-button-lite>
                       <simple-icon-button-lite
                         icon="icons:select-all"
                         label="${this.t.deselectAll}"
                         title="${this.t.deselectAll}"
-                        data-category="${group.category}"
                         @click="${this._deselectAllBlocksInCategory}"
                       ></simple-icon-button-lite>
                     </div>
-                  </div>
+            </summary>
                   <fieldset class="check-grid">
-                    ${group.blocks.map((b) => this._renderBlockCheckbox(b))}
+                    ${group.blocks.map((item) => this._renderBlockCheckbox(item))}
                   </fieldset>
-                </div>
+                </details>
               `,
             )}
           </div>
-        </div>
+          </details>
       </div>
 
       <div class="actions">
@@ -588,35 +648,33 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
   }
 
   _renderFeatureCheckbox(featureDef) {
-    const checked = this.features && this.features[featureDef.key] !== false
+    const checked = store.platformAllows(featureDef.key)
     return html`
-      <label class="check">
+      <label class="check editor-features">
         <input
           type="checkbox"
           data-key="${featureDef.key}"
           .checked=${checked}
           @change=${this._featureChanged}
-        />
+        /> <simple-icon-lite icon=${featureDef.icon}></simple-icon-lite>
         <span>${featureDef.label}</span>
       </label>
     `
   }
 
-  _renderBlockCheckbox(blockDef) {
-    const checked =
-      blockDef.locked || (this.allowedBlocks && this.allowedBlocks.has(blockDef.tag))
-        ? true
-        : false
+  _renderBlockCheckbox(item) {
+    const isDisabled = HAXStore.requiredPrimitives.has(item.tag) ? true : false;
     return html`
       <label class="check">
         <input
           type="checkbox"
-          data-tag="${blockDef.tag}"
-          .checked=${checked}
-          ?disabled=${blockDef.locked}
+          data-tag="${item.tag}"
+          .checked=${!item.platformRestricted}
+          ?disabled=${isDisabled}
           @change=${this._blockChanged}
         />
-        <span>${blockDef.title}</span>
+        <simple-icon-lite icon="${item.icon}"></simple-icon-lite>
+        <span>${item.title}</span>
       </label>
     `
   }
@@ -638,12 +696,6 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
   }
 
   _initFromManifestPlatform() {
-    const manifest = store.manifest
-    const platform =
-      manifest && manifest.metadata && manifest.metadata.platform
-        ? manifest.metadata.platform
-        : null
-
     // Don’t clobber user changes once blocks have initialized
     if (this.__initializedFromManifest) {
       return
@@ -651,31 +703,8 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
 
     // Always default to "expert" when nothing is declared
     let audience = 'expert'
-    if (platform && platform.audience) {
-      audience = platform.audience
-    }
-
-    const nextFeatures = this._defaultFeatures()
-
-    // New-style platform.features
-    if (platform && platform.features && typeof platform.features === 'object') {
-      Object.keys(platform.features).forEach((key) => {
-        if (typeof platform.features[key] === 'boolean') {
-          nextFeatures[key] = platform.features[key]
-        }
-      })
-    } else if (platform && typeof platform === 'object') {
-      // Legacy: direct flags on platform object
-      DEFAULT_SUPPORTED_FEATURES.forEach((key) => {
-        if (typeof platform[key] === 'boolean') {
-          nextFeatures[key] = platform[key]
-        }
-      })
-      // Legacy delete -> deletePage mapping
-      if (typeof platform.delete === 'boolean') {
-        nextFeatures.deletePage = platform.delete
-      }
-      // Legacy blocks list might exist but we map below
+    if (this.platformConfig && this.platformConfig.audience) {
+      audience = platformConfig.audience
     }
 
     // Allowed blocks – support both allowedBlocks and legacy blocks
@@ -692,41 +721,41 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       presetBlocks && Array.isArray(presetBlocks)
         ? new Set(presetBlocks)
         : null
-
     // mark initialized; we’ll still populate allowedBlocks once we have a block list
     this.__initializedFromManifest = true
   }
 
   _refreshBlocksList() {
-    const elementList = HAXStore && HAXStore.elementList ? HAXStore.elementList : null
-    if (!elementList || typeof elementList !== 'object') {
-      return
-    }
-
     const blocks = []
-    Object.keys(elementList).forEach((tag) => {
-      const def = elementList[tag]
-      if (!def || typeof def !== 'object') {
+    Object.keys(this.gizmoList).forEach((tag) => {
+      const def = this.gizmoList[tag]
+        // remove inline and hidden references
+      if (
+        def &&
+        def.meta &&
+        (def.meta.inlineOnly || def.meta.hidden || def.requiresParent)
+      ) {
         return
       }
       let title = tag
       let category = 'Other'
+      let icon = def.icon
       let tags = []
       const locked = REQUIRED_TEXT_PRIMITIVES_SET.has(tag)
-      if (def.gizmo && typeof def.gizmo === 'object') {
-        if (def.gizmo.title) {
-          title = def.gizmo.title
+      if (def && typeof def === 'object') {
+        if (def.title) {
+          title = def.title
         }
-        if (Array.isArray(def.gizmo.tags) && def.gizmo.tags.length > 0) {
-          tags = def.gizmo.tags
-          category = def.gizmo.tags[0] || category
+        if (Array.isArray(def.tags) && def.tags.length > 0) {
+          tags = def.tags
+          category = def.tags[0] || category
         }
       }
       // Ensure required text primitives show up in Writing group even if missing tags
       if (locked && category === 'Other') {
         category = 'Writing'
       }
-      blocks.push({ tag, title, category, tags, locked })
+      blocks.push({ tag, title, category, icon, tags, locked })
     })
 
     // Keep stable grouping order aligned with HAX block panel: Writing first, Other last
@@ -914,42 +943,51 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
   }
 
   _compareCategories(a, b) {
-    const catA = a || 'Other'
-    const catB = b || 'Other'
+    const categoryA = a || 'Other'
+    const categoryB = b || 'Other'
 
     // Writing / Text first, Other last, then alphabetical
     const first = ['Writing', 'Text']
     const last = ['Other']
 
-    if (first.includes(catA) && !first.includes(catB)) return -1
-    if (!first.includes(catA) && first.includes(catB)) return 1
+    if (first.includes(categoryA) && !first.includes(categoryB)) return -1
+    if (!first.includes(categoryA) && first.includes(categoryB)) return 1
 
-    if (last.includes(catA) && !last.includes(catB)) return 1
-    if (!last.includes(catA) && last.includes(catB)) return -1
+    if (last.includes(categoryA) && !last.includes(categoryB)) return 1
+    if (!last.includes(categoryA) && last.includes(categoryB)) return -1
 
-    if (first.includes(catA) && first.includes(catB)) {
-      return first.indexOf(catA) - first.indexOf(catB)
+    if (first.includes(categoryA) && first.includes(categoryB)) {
+      return first.indexOf(categoryA) - first.indexOf(categoryB)
     }
 
-    if (catA < catB) return -1
-    if (catA > catB) return 1
+    if (categoryA < categoryB) return -1
+    if (categoryA > categoryB) return 1
     return 0
   }
 
-  _groupBlocksByCategory(blocks) {
+  _groupBlocksByCategory(items) {
     const groupMap = {}
-    ;(blocks || []).forEach((b) => {
-      const cat = b.category || 'Other'
-      if (!groupMap[cat]) {
-        groupMap[cat] = []
+    items.forEach((item) => {
+      const required = REQUIRED_TEXT_PRIMITIVES_SET.has(item.tag);
+      let category = "Other"
+      if(Array.isArray(item.tags) && item.tags.length > 0){
+        category = item.tags[0]
       }
-      groupMap[cat].push(b)
-    })
+      // Ensure required text primitives show up in Writing group even if missing tags
+      if (required && category === "Other"){
+        category = "Writing"
+      }
 
-    const cats = Object.keys(groupMap)
-    cats.sort((a, b) => this._compareCategories(a, b))
+      if (!groupMap[category]) {
+        groupMap[category] = []
+      }
+      groupMap[category].push(item)
+    });
 
-    return cats.map((category) => ({
+    const categories = Object.keys(groupMap)
+    categories.sort((a, b) => this._compareCategories(a, b))
+    
+    return categories.map((category) => ({
       category,
       blocks: groupMap[category],
     }))

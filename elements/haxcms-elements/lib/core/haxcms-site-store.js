@@ -1081,6 +1081,7 @@ class Store {
       // NOTE: keep this list in sync with hax-body's platformAllows usage.
       platformConfigObj.__supportedFeatures = new Set([
         "addPage",
+        "saveAndEdit",
         "deletePage",
         "styleGuide",
         "outlineDesigner",
@@ -1089,8 +1090,14 @@ class Store {
         "addBlock",
         "contentMap",
         "viewSource",
-        "onlineSearch",
+        "uploadMedia",
+        "onlineMedia",
         "pageBreak",
+        "pageTemplates",
+        "blockTemplates",
+        "popularGizmos",
+        "recentGizmos",
+        "community"
       ]);
 
       // If audience is not defined, default to expert mode
