@@ -2739,7 +2739,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             voice-command="edit (this) page"
           ></simple-toolbar-button>
           <simple-toolbar-button
-            ?hidden="${!this.editMode || !store.platformAllows("saveAndEdit")}"
+            ?hidden="${!this.editMode || store.isPlatformAudience("novice") || !store.platformAllows("saveAndEdit")}"
             class="top-bar-button"
             id="saveandeditbutton"
             icon="hax:page-edit"
