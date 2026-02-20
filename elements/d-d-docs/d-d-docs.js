@@ -1557,59 +1557,65 @@ class DDDocs extends DDD {
           >
           <span class="fw-3">900 (fw-3) [--ddd-font-weight-black]</span>
         </p>
+        <p class="mb-10">
+          Font sizes:
+          <span class="fw-3"
+            >16 (fs-4xs) to 72 (fs-4xl) [--ddd-font-size-VALUE]</span
+          >
+        </p>
       </div>
       <div
         class="b-xs grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10"
       >
-        <p>16</p>
+        <p>16 <strong class="fs-4xs">4xs</strong></p>
         <h3 class="fs-4xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>18</p>
+        <p>18 <strong class="fs-4xs">3xs</strong></p>
         <h3 class="fs-3xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>20</p>
+        <p>20 <strong class="fs-4xs">xxs</strong></p>
         <h3 class="fs-xxs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>24</p>
+        <p>24 <strong class="fs-4xs">xs</strong></p>
         <h3 class="fs-xs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>28</p>
+        <p>28 <strong class="fs-4xs">s</strong></p>
         <h3 class="fs-s m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>32</p>
+        <p>32 <strong class="fs-4xs">ms</strong></p>
         <h3 class="fs-ms m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>36</p>
+        <p>36 <strong class="fs-4xs">m</strong></p>
         <h3 class="fs-m m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>40</p>
+        <p>40 <strong class="fs-4xs">ml</strong></p>
         <h3 class="fs-ml m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>44</p>
+        <p>44 <strong class="fs-4xs">l</strong></p>
         <h3 class="fs-l m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>48</p>
+        <p>48 <strong class="fs-4xs">xl</strong></p>
         <h3 class="fs-xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>56</p>
+        <p>56 <strong class="fs-4xs">xxl</strong></p>
         <h3 class="fs-xxl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>64</p>
+        <p>64 <strong class="fs-4xs">3xl</strong></p>
         <h3 class="fs-3xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>72</p>
+        <p>72 <strong class="fs-4xs">4xl</strong></p>
         <h3 class="fs-4xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
@@ -1629,55 +1635,55 @@ class DDDocs extends DDD {
       <div
         class="b-xs grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10"
       >
-        <p>16</p>
+        <p>16 <strong class="fs-4xs">4xs</strong></p>
         <h3 class="ddd-font-secondary fs-4xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>18</p>
+        <p>18 <strong class="fs-4xs">3xs</strong></p>
         <h3 class="ddd-font-secondary fs-3xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>20</p>
+        <p>20 <strong class="fs-4xs">xxs</strong></p>
         <h3 class="ddd-font-secondary fs-xxs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>24</p>
+        <p>24 <strong class="fs-4xs">xs</strong></p>
         <h3 class="ddd-font-secondary fs-xs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>28</p>
+        <p>28 <strong class="fs-4xs">s</strong></p>
         <h3 class="ddd-font-secondary fs-s m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>32</p>
+        <p>32 <strong class="fs-4xs">ms</strong></p>
         <h3 class="ddd-font-secondary fs-ms m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>36</p>
+        <p>36 <strong class="fs-4xs">m</strong></p>
         <h3 class="ddd-font-secondary fs-m m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>40</p>
+        <p>40 <strong class="fs-4xs">ml</strong></p>
         <h3 class="ddd-font-secondary fs-ml m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>44</p>
+        <p>44 <strong class="fs-4xs">l</strong></p>
         <h3 class="ddd-font-secondary fs-l m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>48</p>
+        <p>48 <strong class="fs-4xs">xl</strong></p>
         <h3 class="ddd-font-secondary fs-xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>56</p>
+        <p>56 <strong class="fs-4xs">xxl</strong></p>
         <h3 class="ddd-font-secondary fs-xxl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>64</p>
+        <p>64 <strong class="fs-4xs">3xl</strong></p>
         <h3 class="ddd-font-secondary fs-3xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>72</p>
+        <p>72 <strong class="fs-4xs">4xl</strong></p>
         <h3 class="ddd-font-secondary fs-4xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
@@ -1699,55 +1705,55 @@ class DDDocs extends DDD {
       <div
         class="b-1 grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10"
       >
-        <p>16</p>
+        <p>16 <strong class="fs-4xs">4xs</strong></p>
         <h3 class="ddd-font-navigation fs-4xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>18</p>
+        <p>18 <strong class="fs-4xs">3xs</strong></p>
         <h3 class="ddd-font-navigation fs-3xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>20</p>
+        <p>20 <strong class="fs-4xs">xxs</strong></p>
         <h3 class="ddd-font-navigation fs-xxs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>24</p>
+        <p>24 <strong class="fs-4xs">xs</strong></p>
         <h3 class="ddd-font-navigation fs-xs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>28</p>
+        <p>28 <strong class="fs-4xs">s</strong></p>
         <h3 class="ddd-font-navigation fs-s m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>32</p>
+        <p>32 <strong class="fs-4xs">ms</strong></p>
         <h3 class="ddd-font-navigation fs-ms m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>36</p>
+        <p>36 <strong class="fs-4xs">m</strong></p>
         <h3 class="ddd-font-navigation fs-m m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>40</p>
+        <p>40 <strong class="fs-4xs">ml</strong></p>
         <h3 class="ddd-font-navigation fs-ml m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>44</p>
+        <p>44 <strong class="fs-4xs">l</strong></p>
         <h3 class="ddd-font-navigation fs-l m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>48</p>
+        <p>48 <strong class="fs-4xs">xl</strong></p>
         <h3 class="ddd-font-navigation fs-xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>56</p>
+        <p>56 <strong class="fs-4xs">xxl</strong></p>
         <h3 class="ddd-font-navigation fs-xxl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>64</p>
+        <p>64 <strong class="fs-4xs">3xl</strong></p>
         <h3 class="ddd-font-navigation fs-3xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>72</p>
+        <p>72 <strong class="fs-4xs">4xl</strong></p>
         <h3 class="ddd-font-navigation fs-4xl m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
