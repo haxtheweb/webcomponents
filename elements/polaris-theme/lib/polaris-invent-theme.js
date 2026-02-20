@@ -61,28 +61,30 @@ class PolarisInventTheme extends LTIResizingMixin(
         :host {
           display: block;
           --polaris-content-bg-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-coalyGray)
           );
-          --polaris-header-bg-color: var(--ddd-palette-color-4, var(--ddd-theme-default-beaver80));
-          --polaris-nav-color: var(--ddd-accent-6);
+
+          --polaris-header-bg-color: var(--ddd-palette-color-2);
+          --polaris-nav-color: var(--ddd-palette-color-6);
           --polaris-nav-bg-color: light-dark(
-            var(--ddd-palette-color-6, var(--ddd-theme-default-skyBlue)),
-            var(--ddd-palette-color-3, var(--ddd-theme-default-nittanyNavy))
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-coalyGray)
           );
           --polaris-footer-secondary-bg-color: var(
-            --ddd-palette-color-5, var(--ddd-theme-default-beaverBlue)
+            --ddd-palette-color-3
           );
-          --polaris-footer-primary-bg-color: var(--ddd-palette-color-3, var(--ddd-theme-default-nittanyNavy));
+          --polaris-footer-primary-bg-color: var(--ddd-palette-color-4);
 
           background-color: light-dark(
-            var(--ddd-accent-6),
-            var(--ddd-primary-4)
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-coalyGray)
           );
+          
           color: light-dark(black, var(--ddd-accent-6));
 
           --video-player-color: var(--ddd-palette-video-player-color, var(--ddd-theme-default-white));
-          --video-player-caption-color: var(--ddd-palette-video-player-caption-color, var(--ddd-theme-default-white));
+          --video-player-caption-color: var(--ddd-palette-color-1, var(--ddd-theme-default-white));
           --video-player-disabled-color: var(--ddd-palette-video-player-disabled-color, var(--ddd-theme-default-disabled));
 
           --video-player-bg-color: var(--ddd-palette-color-3, var(--ddd-theme-default-nittanyNavy));
@@ -148,7 +150,7 @@ class PolarisInventTheme extends LTIResizingMixin(
         }
 
         .nav {
-          background-color: var(--polaris-nav-bg-color);
+          background-color: var(--ddd-palette-color-1);
           color: var(--polaris-nav-color);
         }
 
@@ -166,8 +168,8 @@ class PolarisInventTheme extends LTIResizingMixin(
           --map-menu-item-button-active-color: white;
           --map-menu-item-button-active-background-color: var(--ddd-palette-color-7, var(--ddd-theme-default-inventOrange));
           --map-menu-overflow: visible;
-          --site-menu-container-background-color: var(--ddd-accent-6);
-          --map-menu-item-a-active-color: var(--ddd-accent-6);
+          --site-menu-container-background-color: var(--ddd-palette-color-6);
+          --map-menu-item-a-active-color: var(--ddd-palette-color-6);
           --map-menu-item-icon-active-color: black;
         }
 
@@ -209,7 +211,7 @@ class PolarisInventTheme extends LTIResizingMixin(
         }
         site-menu-button {
           --site-menu-button-link-decoration: none;
-          --site-menu-button-button-hover-color: black;
+          --site-menu-button-button-hover-color: var(--ddd-palette-color-4);
           --site-menu-button-icon-fill-color: white;
           color: white;
           background-color: var(--ddd-palette-color-7, var(--ddd-theme-default-inventOrange));
@@ -693,6 +695,7 @@ class PolarisInventTheme extends LTIResizingMixin(
   constructor() {
     super();
     this.dataPalette = 8;
+    // MAKE SURE IT'S SET TO 8^
     // forcibly set things about the RPG toast for this design
     HAXCMSToastInstance.style.setProperty(
       "--rpg-character-toast-display",
