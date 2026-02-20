@@ -4473,14 +4473,15 @@ export const DDDAnimations = css`
 export const DDDPaletteStyles = css`
 /** Default Palette */
 html, :root {
-  --ddd-palette-color-1: var(--simple-colors-default-theme-green-10);
-  --ddd-palette-color-2: var(--simple-colors-default-theme-lime-8);
-  --ddd-palette-color-3: var(--simple-colors-fixed-theme-lime-7);
-  --ddd-palette-color-4: var(--ddd-theme-default-futureLime);
-  --ddd-palette-color-5: var(--simple-colors-default-theme-lime-5);
-  --ddd-palette-color-6: var(--ddd-theme-default-inventOrange);
-  --ddd-palette-color-7: var(--simple-colors-default-theme-orange-3);
+  --ddd-palette-color-1: var(--ddd-theme-default-coalyGray);
+  --ddd-palette-color-2: var(--simple-colors-default-theme-grey-9);
+  --ddd-palette-color-3: var(--simple-colors-default-theme-grey-7);
+  --ddd-palette-color-4: var(--simple-colors-default-theme-grey-5);
+  --ddd-palette-color-5: var(--simple-colors-default-theme-grey-3);
+  --ddd-palette-color-6: var(--simple-colors-default-theme-grey-11);
+  --ddd-palette-color-7: var(--simple-colors-default-theme-amber-6);
   --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
 }
 
 /** Wisdom Walk Green */
@@ -4493,6 +4494,11 @@ html, :root {
   --ddd-palette-color-5: var(--simple-colors-default-theme-lime-5);
   --ddd-palette-color-6: var(--ddd-theme-default-inventOrange);
   --ddd-palette-color-7: var(--simple-colors-default-theme-orange-3);
+
+  --ddd-palette-text-color-1: var(--ddd-theme-default-potential0);
+  --ddd-palette-text-color-2: var(--ddd-theme-default-coalyGray);
+  // Later on add specific text colors to be used with specific palette colors
+
   --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 }
 
@@ -4506,8 +4512,17 @@ html, :root {
   --ddd-palette-color-5: var(--simple-colors-default-theme-red-2);
   --ddd-palette-color-6: var(--ddd-theme-default-slateGray);
   --ddd-palette-color-7: var(--ddd-theme-default-pughBlue);
+
   --ddd-palette-video-player-color: var(--ddd-theme-default-black);
-  --ddd-palette-video-player-caption-color
+
+  /* text colors; to be used on top of corresponding palette-color */
+  --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-red-2);
+  --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-red-1);
+  --ddd-palette-text-color-3: var(--simple-colors-default-theme-deep-orange-12);
+  --ddd-palette-text-color-4: var(--simple-colors-default-theme-red-12);
+  --ddd-palette-text-color-5: var(--simple-colors-default-theme-red-10);
+  --ddd-palette-text-color-6: var(--ddd-theme-default-skyLight);
+  --ddd-palette-text-color-7: var(--simple-colors-default-theme-blue-10);
 }
 
 /** Beetles Yellow */
@@ -4520,46 +4535,87 @@ html, :root {
   --ddd-palette-color-5: var(--ddd-theme-default-keystoneYellow);
   --ddd-palette-color-6: var(--ddd-theme-default-creekTeal);
   --ddd-palette-color-7: var(--simple-colors-default-theme-cyan-1);
+
   --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
+  /* text colors; to be used on top of corresponding palette-color */
+  --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-yellow-2);
+  --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-orange-12);
+  --ddd-palette-text-color-3: var(--simple-colors-fixed-theme-orange-11);
+  --ddd-palette-text-color-4: var(--simple-colors-fixed-theme-orange-10);
+  --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-deep-orange-11);
+  --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-cyan-12);
+  --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-light-blue-10);
 }
 
-/** Offbrand Nittany Blue */
+/* Offbrand Nittany Blue */
 [data-palette="offbrand-nittany-blue"],
 [data-palette="3"] {
   --ddd-palette-color-1: var(--ddd-theme-default-nittanyNavy);
   --ddd-palette-color-2: var(--simple-colors-fixed-theme-light-blue-10);
   --ddd-palette-color-3: var(--simple-colors-fixed-theme-light-blue-8);
-  --ddd-palette-color-4: var(--simple-colors-default-theme-light-blue-6);
-  --ddd-palette-color-5: var(--simple-colors-default-theme-cyan-2);
-  --ddd-palette-color-6: var(--simple-colors-default-theme-orange-7);
+  --ddd-palette-color-4: var(--simple-colors-fixed-theme-light-blue-6);
+  --ddd-palette-color-5: var(--simple-colors-fixed-theme-cyan-2);
+  --ddd-palette-color-6: var(--simple-colors-fixed-theme-orange-7);
   --ddd-palette-color-7: var(--ddd-theme-default-keystoneYellow);
+
   --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
+  /* text colors; to be used on top of corresponding palette-color */
+  --ddd-palette-text-color-1: var(--simple-colors-default-theme-light-blue-4);
+  --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-cyan-2);
+  --ddd-palette-text-color-3: var(--ddd-theme-default-white);
+  --ddd-palette-text-color-4: var(--simple-colors-fixed-theme-blue-11);
+  --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-light-blue-10);
+  --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-orange-12);
+  --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-orange-10
+    );
 }
 
-/** Boring Blue Gray */
+/* Boring Blue Gray */
 [data-palette="boring-blue-gray"],
 [data-palette="4"] {
   --ddd-palette-color-1: var(--ddd-theme-default-coalyGray);
-  --ddd-palette-color-2: var(--simple-colors-default-theme-blue-grey-9);
+  --ddd-palette-color-2: var(--simple-colors-fixed-theme-blue-grey-9);
   --ddd-palette-color-3: var(--simple-colors-fixed-theme-blue-grey-8);
-  --ddd-palette-color-4: var(--simple-colors-default-theme-blue-grey-6);
+  --ddd-palette-color-4: var(--simple-colors-fixed-theme-blue-grey-6);
   --ddd-palette-color-5: var(--simple-colors-fixed-theme-blue-grey-4);
   --ddd-palette-color-6: var(--ddd-theme-default-slateGray);
-  --ddd-palette-color-7: var(--simple-colors-default-theme-blue-grey-2);
+  --ddd-palette-color-7: var(--simple-colors-fixed-theme-blue-grey-2);
+  
   --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
+  /* text colors; to be used on top of corresponding palette-color */
+  --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-blue-grey-2);
+  --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-blue-grey-1);
+  --ddd-palette-text-color-3: var(--ddd-theme-default-white);
+  --ddd-palette-text-color-4: var(--simple-colors-fixed-theme-blue-grey-12);
+  --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-blue-grey-11);
+  --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-blue-grey-1);
+  --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-blue-grey-10);
 }
 
 /** Monotone Gray */
 [data-palette="monotone"],
 [data-palette="5"] {
 --ddd-palette-color-1: var(--ddd-theme-default-coalyGray);
---ddd-palette-color-2: var(--simple-colors-default-theme-grey-9);
---ddd-palette-color-3: var(--simple-colors-default-theme-grey-7);
---ddd-palette-color-4: var(--simple-colors-default-theme-grey-5);
---ddd-palette-color-5: var(--simple-colors-default-theme-grey-3);
---ddd-palette-color-6: var(--simple-colors-default-theme-grey-11);
---ddd-palette-color-7: var(--simple-colors-default-theme-amber-6);
+--ddd-palette-color-2: var(--simple-colors-fixed-theme-grey-9);
+--ddd-palette-color-3: var(--simple-colors-fixed-theme-grey-7);
+--ddd-palette-color-4: var(--simple-colors-fixed-theme-grey-5);
+--ddd-palette-color-5: var(--simple-colors-fixed-theme-grey-3);
+--ddd-palette-color-6: var(--simple-colors-fixed-theme-grey-11);
+--ddd-palette-color-7: var(--simple-colors-fixed-theme-amber-6);
+
 --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
+/* text colors; to be used on top of corresponding palette-color */
+  --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-blue-grey-2);
+  --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-grey-3);
+  --ddd-palette-text-color-3: var(--simple-colors-fixed-theme-grey-1);
+  --ddd-palette-text-color-4: var(--simple-colors-fixed-theme-grey-10);
+  --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-grey-8);
+  --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-grey-5);
+  --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-orange-10);
 }
 
 /** Salmon Season */
@@ -4572,8 +4628,18 @@ html, :root {
 --ddd-palette-color-5: var(--simple-colors-default-theme-red-10);
 --ddd-palette-color-6: var(--simple-colors-default-theme-lime-9);
 --ddd-palette-color-7: var(--simple-colors-default-theme-lime-5);
+
 --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 --ddd-palette-video-player-caption-color: var(--ddd-theme-default-black);
+
+/* text colors; to be used on top of corresponding palette-color */
+  --ddd-palette-text-color-1: var(--simple-colors-default-theme-pink-11);
+  --ddd-palette-text-color-2: var(--simple-colors-default-theme-pink-12);
+  --ddd-palette-text-color-3: var(--simple-colors-default-theme-pink-1);
+  --ddd-palette-text-color-4: var(--simple-colors-default-theme-red-12);
+  --ddd-palette-text-color-5: var(--simple-colors-default-theme-pink-2);
+  --ddd-palette-text-color-6: var(--simple-colors-default-theme-lime-1);
+  --ddd-palette-text-color-7: var(--simple-colors-default-theme-light-green-10);
 }
 
 /* This palette doesn't follow the same design pattern as the others */
@@ -4586,21 +4652,42 @@ html, :root {
 --ddd-palette-color-5: var(--ddd-theme-default-skyBlue);
 --ddd-palette-color-6: var(--simple-colors-default-theme-blue-grey-2);
 --ddd-palette-color-7: var(--simple-colors-default-theme-cyan-12);
+
 --ddd-palette-video-player-color: var(--ddd-theme-default-white);
+
+/* text colors; to be used on top of corresponding palette-color */
+  --ddd-palette-text-color-1: var(--simple-colors-default-theme-blue-9);
+  --ddd-palette-text-color-2: var(--simple-colors-default-theme-blue-grey-2);
+  --ddd-palette-text-color-3: var(--simple-colors-default-theme-blue-grey-1);
+  --ddd-palette-text-color-4: var(--simple-colors-default-theme-blue-10);
+  --ddd-palette-text-color-5: var(--ddd-theme-default-white);
+  --ddd-palette-text-color-6: var(--simple-colors-default-theme-blue-grey-10);
+  --ddd-palette-text-color-7: var(--simple-colors-default-theme-cyan-3);
 }
 
 /* Polaris Invent */
 [data-palette="polaris-invent"],
 [data-palette="8"] {
   /* Derived from colors in polaris-invent-theme */
-  --ddd-palette-color-1: var(--ddd-theme-default-limestoneLight);
-  --ddd-palette-color-2: var(--ddd-theme-default-coalyGray);
-  --ddd-palette-color-3: var(--ddd-theme-default-nittanyNavy);
-  --ddd-palette-color-4: var(--ddd-theme-default-beaver80);
-  --ddd-palette-color-5: var(--ddd-theme-default-beaverBlue);
-  --ddd-palette-color-6: var(--ddd-theme-default-skyBlue);
+  --ddd-palette-color-1: var(--ddd-theme-default-skyBlue);
+  --ddd-palette-color-2: var(--ddd-theme-default-beaver80);
+  --ddd-palette-color-3: var(--ddd-theme-default-beaverBlue);
+  --ddd-palette-color-4: var(--ddd-theme-default-nittanyNavy);
+  --ddd-palette-color-5: var(--ddd-theme-default-coalyGray);
+  --ddd-palette-color-6: var(--ddd-theme-default-limestoneLight);
   --ddd-palette-color-7: var(--ddd-theme-default-inventOrange);
+
   --ddd-palette-video-player-color: var(--ddd-theme-default-white);
+
+  /* text colors; to be used on top of corresponding palette-color */
+  --ddd-palette-text-color-1: var(--ddd-theme-default-white);
+  --ddd-palette-text-color-2: var(--simple-colors-default-theme-cyan-2);
+  --ddd-palette-text-color-3: var(--simple-colors-default-theme-cyan-2);
+  --ddd-palette-text-color-4: var(--simple-colors-default-theme-cyan-4);
+  --ddd-palette-text-color-5: var(--simple-colors-default-theme-blue-grey-2);
+  --ddd-palette-text-color-6: var(--simple-colors-default-theme-blue-grey-10);
+  --ddd-palette-text-color-7: var(--ddd-theme-default-white);
+
 }
 `;
 
