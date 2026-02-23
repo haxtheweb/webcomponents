@@ -109,6 +109,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           display: block;
           max-width: 100%;
           font-family: var(--ddd-font-primary, sans-serif);
+          margin-top: 2px;
         }
         :host([dark]) {
           --accent-color: var(--ddd-theme-default-white, white);
