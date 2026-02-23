@@ -301,7 +301,7 @@ export class AppHaxSiteBars extends SimpleColors {
         :host(:focus),
         :host(:focus-within) {
           border: var(--ddd-border-md);
-          border-color:var(--ddd-theme-default-beaverBlue, #0078d4);
+          border-color:var(--ddd-theme-default-beaverBlue);
           box-shadow: light-dark(
             4px 8px 24px rgba(28, 28, 28, 0.15),
             4px 8px 24px rgba(0, 0, 0, 0.5)
@@ -310,6 +310,13 @@ export class AppHaxSiteBars extends SimpleColors {
           transform-origin: center top;
           z-index: 2;
         }
+
+        :host([dark]:hover),
+        :host([dark]:focus),
+        :host([dark]:focus-within) {
+          border-color: var(--ddd-theme-default-skyBlue);
+        }
+
 
         #mainCard {
           display: flex;

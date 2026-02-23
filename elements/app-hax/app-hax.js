@@ -727,29 +727,31 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           box-sizing: border-box;
         }
 
-        .leftSection,
-        .rightSection {
+        .left-group {
           display: flex;
-          flex-direction: column;
-          flex: 1 1 0;
+          align-items: center;
+          gap: 8px;
+          height: 100%;
         }
-        .leftSection {
-          width: 240px;
-          min-width: 200px;
-          max-width: 260px;
-          margin-left: 0;
-          padding-top: 0;
-          box-sizing: border-box;
-          align-self: flex-start;
-        }
-        .rightSection {
-          flex: 1;
-          min-width: 0;
-          box-sizing: border-box;
+
+        #home {
           display: flex;
-          flex-direction: column;
-          overflow: visible;
+          align-items: center;
         }
+
+        .right-group {
+          margin-right: var(--ddd-spacing-3, 12px);
+        }
+
+        div[slot="center"] {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: var(--top-bar-height, 46px);
+          width: 100%;
+          font-family: 
+        }
+                
         .template-results {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(200px, 0fr));
@@ -1112,14 +1114,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           .contentSection {
             display: block;
           }
-          .leftSection, .rightSection {
-            width: 100%;
-            max-width: 100%;
-            position: relative;
-          }
-          .leftSection {
-            margin-bottom: var(--ddd-spacing-4, 16px);
-          }
           :host([show-filter]) .filter {
             display: flex;
             width: 250px;
@@ -1136,9 +1130,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
         /* 600px - 481px*/
         @media (max-width: 600px) {
-          .leftSection {
-            margin-bottom: var(--ddd-spacing-3, 12px);
-          }
           :host([show-filter]) .filter {
             width: 200px;
           }
@@ -1274,109 +1265,79 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     return html`<app-hax-router></app-hax-router>
       <header>
         <app-hax-top-bar>
-          <slot name="app-header-pre" slot="left"></slot>
-          <a
-            id="home"
-            title="${this.t.home}"
-            href="home"
-            tabindex="-1"
-            slot="left"
-          >
-            <simple-icon-lite
-              id="hlogo"
-              icon="hax:hax2022"
-              tabindex="0"
-              class="haxLogo"
-              title="${this.t.home}"
-            >
-            </simple-icon-lite>
-          </a>
-          <simple-tooltip for="hlogo" position="right" slot="left"
-            >${this.t.home}</simple-tooltip
-          >
-          <div slot="center">HAXcms Site Dashboard</div>
-          <wired-button
-            elevation="1"
-            slot="right"
-            class="soundToggle"
-            id="soundtb"
-            @click="${soundToggle}"
-            aria-label="Toggle sound effects ${this.soundIcon.includes(
-              "FullVolume",
-            )
-              ? "off"
-              : "on"}"
-            aria-pressed="${this.soundIcon.includes("FullVolume")}"
-          >
-            <span class="wired-button-label">Toggle sound effects</span>
-            <simple-icon-lite
-              src="${this.soundIcon}"
-              loading="lazy"
-              decoding="async"
-              alt="${this.soundIcon.includes("FullVolume")
-                ? "Sound enabled"
-                : "Sound disabled"}"
-            >
-            </simple-icon-lite>
-          </wired-button>
-          <simple-tooltip for="soundtb" position="bottom" slot="right"
-            >Toggle sound</simple-tooltip
-          >
-          <app-hax-wired-toggle id="wt" slot="right"></app-hax-wired-toggle>
-          <simple-tooltip for="wt" position="bottom" slot="right"
-            >Toggle dark mode</simple-tooltip
-          >
-          <app-hax-user-menu
-            slot="right"
-            id="user-menu"
-            ?is-open="${this.userMenuOpen}"
-          >
-            <button
-              @click="${this.toggleMenu}"
-              class="topbar-character"
-              slot="menuButton"
-              id="tbchar"
-              title="System menu"
-              aria-label="User menu for ${this.userName}"
-              aria-expanded="${this.userMenuOpen}"
-              aria-haspopup="menu"
-            >
-              <rpg-character
-                seed="${this.userName}"
-                width="68"
-                height="68"
-                hat="${this.userMenuOpen ? "edit" : "none"}"
-                alt="Avatar for ${this.userName}"
-                role="img"
-              ></rpg-character>
-              <span class="characterbtn-name" aria-hidden="true"
-                >${this.userName}</span
-              >
-            </button>
+          <div slot="left" class="left-group">
+            <slot name="app-header-pre"></slot>
             <a
-              slot="main-menu"
-              title="${this.t.listMySites}"
+              id="home"
+              title="${this.t.home}"
               href="home"
-              tabindex="-1"
             >
-              <app-hax-user-menu-button
+              <simple-icon-lite
+                id="hlogo"
                 icon="hax:hax2022"
-                label="${this.t.listMySites}"
-                part="listMySites"
-              ></app-hax-user-menu-button>
+                class="haxLogo"
+                title="${this.t.home}"
+              ></simple-icon-lite>
             </a>
-            <!-- <app-hax-user-menu-button
-              slot="main-menu"
-              icon="face"
-              label="Account Info"
-            ></app-hax-user-menu-button> -->
-            <app-hax-user-menu-button
-              slot="post-menu"
-              class="logout"
-              label="Logout"
-              @click=${this.logout}
-            ></app-hax-user-menu-button>
-          </app-hax-user-menu>
+            <simple-tooltip for="hlogo" position="right">
+              ${this.t.home}
+            </simple-tooltip>
+          </div>
+
+          <div slot="center">HAXcms Site Dashboard</div>
+          
+          <div slot="right" class="right-group">
+            <app-hax-wired-toggle id="wt" slot="right"></app-hax-wired-toggle>
+            <simple-tooltip for="wt" position="bottom" slot="right"
+              >Toggle dark mode</simple-tooltip
+            >
+            <app-hax-user-menu
+              slot="right"
+              id="user-menu"
+              ?is-open="${this.userMenuOpen}"
+            >
+                <button
+                  @click="${this.toggleMenu}"
+                  class="topbar-character"
+                  slot="menuButton"
+                  id="tbchar"
+                  title="System menu"
+                  aria-label="User menu for ${this.userName}"
+                  aria-expanded="${this.userMenuOpen}"
+                  aria-haspopup="menu"
+                >
+                <rpg-character
+                  seed="${this.userName}"
+                  width="60"
+                  height="40"
+                  hat="${this.userMenuOpen ? "edit" : "none"}"
+                  alt="Avatar for ${this.userName}"
+                  role="img"
+                ></rpg-character>
+                <span class="characterbtn-name" aria-hidden="true"
+                  >${this.userName}</span
+                >
+                </button>
+                <a
+                  slot="main-menu"
+                  title="${this.t.listMySites}"
+                  href="home"
+                  tabindex="-1"
+                >
+                  <app-hax-user-menu-button
+                    icon="hax:hax2022"
+                    label="${this.t.listMySites}"
+                    part="listMySites"
+                  ></app-hax-user-menu-button>
+                </a>
+                <app-hax-user-menu-button
+                  slot="post-menu"
+                  class="logout"
+                  label="Logout"
+                  @click=${this.logout}
+                ></app-hax-user-menu-button>
+            </app-hax-user-menu>
+          </div>
         </app-hax-top-bar>
       </header>
       <main @click="${this.closeMenu}">
