@@ -83,6 +83,8 @@ export class PageBreak extends IntersectionObserverMixin(
     this.depth = 0;
     this.itemId = null;
     this._haxState = false;
+    // If allowed, don't hide
+    this.hidden = !store.platformAllows("pageBreak");
     this.IORemoveOnVisible = false;
     this.IODelay = 250;
     this.remoteHeadingobserver = new MutationObserver(() => {
@@ -142,20 +144,12 @@ export class PageBreak extends IntersectionObserverMixin(
       linkUrl: { type: String, attribute: "link-url" },
       linkTarget: { type: String, attribute: "link-target" },
       _haxState: { type: Boolean },
-      /**
-       * Platform-controlled visibility - when true, page-break won't show in editor
-       * even when data-hax-ray is set
-       */
-      platformHidden: {
-        type: Boolean,
-        attribute: "platform-hidden",
-        reflect: true,
-      },
+      hidden: { type: Boolean, reflect: true, },
       isLoggedIn: { type: Boolean, reflect: true, attribute: "is-logged-in" },
     };
   }
   async _ensureEditingUI() {
-    if (!this._editingUILoaded) {
+    if (!this._editingUILoaded && store.platformAllows("pageBreak")) {
       await Promise.all([
         import("@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js"),
         import("@haxtheweb/simple-fields/lib/simple-context-menu.js"),
@@ -486,10 +480,9 @@ export class PageBreak extends IntersectionObserverMixin(
           position: relative;
           height: 0;
         }
-        /* Platform configuration can force page-break to always be hidden */
-        :host([platform-hidden]) {
+        /* Force page-break to always be hidden */
+        :host([hidden]) {
           display: none !important;
-          opacity: 0 !important;
           pointer-events: none;
         }
         :host([data-hax-ray]) {
@@ -753,6 +746,7 @@ export class PageBreak extends IntersectionObserverMixin(
                 show-text-label
                 @click="${this._editMedia}"
                 ?disabled="${this.locked}"
+                ?hidden=${!store.platformAllows("uploadMedia")}
               ></simple-toolbar-button>
               <simple-toolbar-button
                 class="menu-item"
@@ -786,6 +780,7 @@ export class PageBreak extends IntersectionObserverMixin(
                 show-text-label
                 @click="${this._deletePage}"
                 ?disabled="${this.locked}"
+                ?hidden=${!store.platformAllows("deletePage")}
               ></simple-toolbar-button>
             </simple-context-menu>
           `

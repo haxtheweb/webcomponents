@@ -35,7 +35,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
           text-align: start;
           position: relative;
         }
-        site-active-title[edit-mode]:hover {
+        site-active-title[edit-mode][active-pagebreak]:hover {
           cursor: pointer;
           outline: 2px solid var(--hax-ui-color-hover, #0001);
           transition: 0.2s outline-width ease-in-out;
@@ -93,14 +93,16 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
           setTimeout(() => {
             const haxStore = globalThis.HaxStore.requestAvailability();
             this.activateController = new AbortController();
-            this.addEventListener(
-              "click",
-              (e) => {
-                haxStore.activeNode =
-                  haxStore.activeHaxBody.querySelector("page-break");
-              },
-              { signal: this.activateController.signal },
-            );
+            if(this.activePageBreak){
+              this.addEventListener(
+                "click",
+                (e) => {
+                  haxStore.activeNode =
+                    haxStore.activeHaxBody.querySelector("page-break");
+                },
+                { signal: this.activateController.signal },
+              );
+            }
             this._inProgressPageBreak = new MutationObserver((mutationList) => {
               mutationList.forEach((mutation) => {
                 switch (mutation.type) {
@@ -182,6 +184,11 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
         reflect: true,
         attribute: "edit-mode",
       },
+      activePageBreak: {
+        type: Boolean,
+        reflect: true,
+        attribute: "active-pagebreak"
+      },
       t: {
         type: Object,
       },
@@ -219,6 +226,7 @@ class SiteActiveTitle extends I18NMixin(LitElement) {
     this.dynamicMethodology = "active";
     this.__title = "";
     this.icon = null;
+    this.activePageBreak = store.platformAllows("pageBreak");
     this.__disposer = [];
     this.registerLocalization({
       context: this,
