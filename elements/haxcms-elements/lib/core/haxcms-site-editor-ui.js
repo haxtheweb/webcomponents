@@ -4070,9 +4070,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         if(store.platformAllows(key)) return;
         // If an option isn't supported, add it to the array so we don't re-enable it
         Object.keys(this.platformContexts).forEach((type) => {
-          console.log('hey')
           if(this.platformContexts[type].includes(key)) {
-            console.log(this.platformContexts[type])
             this.platformContexts[type] = this.platformContexts[type].filter(item => item !== key)
             SuperDaemonInstance.removeContext(key)
           }
