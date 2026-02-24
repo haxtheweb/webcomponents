@@ -82,9 +82,10 @@ function generateTranslationManifest() {
   const sortedLanguages = Array.from(languageSet).sort();
   
   // Create the JSON manifest
+  // NOTE: Intentionally omit timestamps to keep this file deterministic between builds
+  // and avoid needless commits during local testing.
   const jsonManifest = {
     _meta: {
-      generated: new Date().toISOString(),
       elementsScanned: elements.length,
       elementsWithTranslations: elementsWithTranslations,
       translationFilesFound: totalFiles,

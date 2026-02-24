@@ -402,7 +402,13 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         font-size: 0.875rem;
         line-height: 1.25rem;
-        --map-menu-item-a-active-color: light-dark(black, white);
+
+        /* map-menu uses these vars for hover/active states (otherwise it falls back to black) */
+        --map-menu-item-a-color: var(--site-menu-link-color);
+        --map-menu-item-a-active-color: var(--site-menu-link-active-color);
+        --map-menu-item-a-active-background-color: var(
+          --site-menu-item-active-background-color
+        );
       }
       
       :host([dark-mode]) site-menu {
