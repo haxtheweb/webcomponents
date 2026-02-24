@@ -658,6 +658,20 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
         color: var(--spacebook-theme-text-gray-700);
         text-decoration: none;
       }
+
+      /* site-menu-button has internal default font-size + underlined link; normalize to theme */
+      site-menu-button.nav-link {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        --site-menu-button-link-decoration: none;
+        --site-menu-button-link-color: currentColor;
+        --site-menu-button-button-hover-color: var(--spacebook-theme-text-gray-900);
+        --site-menu-button-button-hover-background-color: var(
+          --spacebook-theme-bg-gray-100
+        );
+        --site-menu-button-button-background-color: transparent;
+      }
       
       .nav-link:hover {
         color: var(--spacebook-theme-text-gray-900);
@@ -665,6 +679,13 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
       
       :host([dark-mode]) .nav-link {
         color: var(--spacebook-theme-text-gray-400);
+      }
+
+      :host([dark-mode]) site-menu-button.nav-link {
+        --site-menu-button-button-hover-color: var(--spacebook-theme-text-gray-300);
+        --site-menu-button-button-hover-background-color: var(
+          --spacebook-theme-bg-gray-800
+        );
       }
       
       :host([dark-mode]) .nav-link:hover {
@@ -702,9 +723,9 @@ export class SpacebookTheme extends HAXCMSThemeParts(DDDSuper(HAXCMSLitElementTh
       }
       
       .nav-title {
-        font-size: 0.875rem;
+        font-size: inherit;
         color: var(--spacebook-navigation-link-color, var(--spacebook-theme-text-gray-700));
-        font-weight: 500;
+        font-weight: inherit;
         line-height: 1.2;
         word-wrap: break-word;
         overflow-wrap: break-word;
