@@ -39,6 +39,10 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.sortMenuOpen = false;
     // Default to sorting sites by most recently updated
     this.sortOption = "newest";
+    // URL-driven flow: allow deep-linking into a specific template / use-case
+    // Example: ?use-case=course-template
+    this.__useCaseParamHandled = false;
+    this.__useCaseParamHandling = false;
 
     // Listen to store changes for dark mode and manifest updates
     if (typeof store !== "undefined") {
@@ -545,6 +549,210 @@ export class AppHaxUseCaseFilter extends LitElement {
         }
       `,
     ];
+  }
+
+  _getUseCaseParamFromUrl() {
+    try {
+      const url = new URL(globalThis.location.href)
+      const useCase = url.searchParams.get('use-case')
+      if (useCase) {
+        return useCase
+      }
+      const useCaseAlt = url.searchParams.get('use_case')
+      if (useCaseAlt) {
+        return useCaseAlt
+      }
+      const useCaseAlt2 = url.searchParams.get('useCase')
+      if (useCaseAlt2) {
+        return useCaseAlt2
+      }
+    } catch (e) {
+      // do nothing
+    }
+    return ''
+  }
+
+  _normalizeUseCaseMachineName(raw) {
+    if (!raw || typeof raw !== 'string') {
+      return ''
+    }
+    let name = raw.trim().toLowerCase()
+    // If it's a path/URL-ish string, take the last segment
+    if (name.indexOf('/') !== -1) {
+      name = name.split('/').pop()
+    }
+    // Strip query/hash if present
+    if (name.indexOf('?') !== -1) {
+      name = name.split('?').shift()
+    }
+    if (name.indexOf('#') !== -1) {
+      name = name.split('#').shift()
+    }
+    // Remove file extension (e.g. .json)
+    name = name.replace(/\.[^/.]+$/, '')
+    // Normalize separators + strip non-url-safe chars
+    name = name.replace(/[\s_]+/g, '-')
+    name = name.replace(/[^a-z0-9-]/g, '-')
+    name = name.replace(/-+/g, '-')
+    name = name.replace(/^-+/, '').replace(/-+$/, '')
+    return name
+  }
+
+  _looseNormalizeUseCaseMachineName(raw) {
+    let name = this._normalizeUseCaseMachineName(raw)
+    if (!name) {
+      return ''
+    }
+    // Many templates wind up with an extra "-site-" segment in their machine names.
+    // Strip that segment so that (course-template) can match (course-site-template).
+    name = name.replace(/-site-/g, '-')
+    if (name.indexOf('-site') !== -1 && name.lastIndexOf('-site') === name.length - 5) {
+      name = name.replace(/-site$/, '')
+    }
+    name = name.replace(/-+/g, '-')
+    name = name.replace(/^-+/, '').replace(/-+$/, '')
+    return name
+  }
+
+  _deriveTemplateMachineName(primary, fallbackTitle = '') {
+    const derived = this._normalizeUseCaseMachineName(primary)
+    if (derived) {
+      return derived
+    }
+    return this._normalizeUseCaseMachineName(fallbackTitle)
+  }
+
+  _getTemplateMachineNameCandidates(template) {
+    const candidates = []
+    if (!template) {
+      return candidates
+    }
+    if (template.machineName) {
+      candidates.push(template.machineName)
+    }
+    if (template.skeletonUrl) {
+      candidates.push(template.skeletonUrl)
+    }
+    if (template.importType) {
+      candidates.push('import-' + template.importType)
+      candidates.push(template.importType)
+    }
+    if (template.themeElement) {
+      candidates.push(template.themeElement)
+    }
+    if (template.originalData && template.originalData.element) {
+      candidates.push(template.originalData.element)
+    }
+    if (template.useCaseTitle) {
+      candidates.push(template.useCaseTitle)
+    }
+
+    const normalized = candidates
+      .map((c) => this._normalizeUseCaseMachineName(c))
+      .filter((c) => c)
+    return [...new Set(normalized)]
+  }
+
+  _matchesUseCaseParam(template, rawParam) {
+    const target = this._normalizeUseCaseMachineName(rawParam)
+    const targetLoose = this._looseNormalizeUseCaseMachineName(rawParam)
+    if (!target) {
+      return false
+    }
+
+    const candidates = this._getTemplateMachineNameCandidates(template)
+    for (let i = 0; i < candidates.length; i++) {
+      const cand = candidates[i]
+      if (cand === target) {
+        return true
+      }
+      const candLoose = this._looseNormalizeUseCaseMachineName(cand)
+      if (candLoose && candLoose === targetLoose) {
+        return true
+      }
+    }
+    return false
+  }
+
+  _findTemplateByUseCaseParam(rawParam) {
+    if (!rawParam || !Array.isArray(this.items) || this.items.length === 0) {
+      return null
+    }
+
+    const target = this._normalizeUseCaseMachineName(rawParam)
+    const targetLoose = this._looseNormalizeUseCaseMachineName(rawParam)
+
+    // Pass 1: exact match
+    for (let i = 0; i < this.items.length; i++) {
+      const item = this.items[i]
+      const candidates = this._getTemplateMachineNameCandidates(item)
+      if (candidates.indexOf(target) !== -1) {
+        return item
+      }
+    }
+
+    // Pass 2: loose match
+    for (let i = 0; i < this.items.length; i++) {
+      const item = this.items[i]
+      const candidates = this._getTemplateMachineNameCandidates(item)
+      for (let j = 0; j < candidates.length; j++) {
+        const candLoose = this._looseNormalizeUseCaseMachineName(candidates[j])
+        if (candLoose && candLoose === targetLoose) {
+          return item
+        }
+      }
+    }
+
+    return null
+  }
+
+  async _maybeAutoOpenUseCaseFromUrl() {
+    if (this.__useCaseParamHandled || this.__useCaseParamHandling) {
+      return
+    }
+
+    const useCaseParam = this._getUseCaseParamFromUrl()
+    if (!useCaseParam) {
+      this.__useCaseParamHandled = true
+      return
+    }
+
+    if (!Array.isArray(this.items) || this.items.length === 0) {
+      return
+    }
+
+    this.__useCaseParamHandling = true
+
+    try {
+      await this.updateComplete
+
+      const template = this._findTemplateByUseCaseParam(useCaseParam)
+      if (template) {
+        // Update selection state so the UI reflects what was deep-linked.
+        if (Array.isArray(this.filteredItems) && this.filteredItems.length > 0) {
+          const idx = this.filteredItems.findIndex((i) =>
+            this._matchesUseCaseParam(i, useCaseParam),
+          )
+          if (idx !== -1) {
+            this.selectedCardIndex = idx
+            if (this.filteredItems[idx]) {
+              this.filteredItems[idx].isSelected = true
+              this.filteredItems[idx].showContinue = true
+            }
+          }
+        }
+
+        await this.openTemplateModal(template)
+      } else if (store && store.toast) {
+        store.toast(`Could not find use-case: ${useCaseParam}`, 4000)
+      }
+
+      this.__useCaseParamHandled = true
+    } catch (e) {
+      this.__useCaseParamHandled = true
+    }
+
+    this.__useCaseParamHandling = false
   }
 
   testKeydown(e) {
@@ -1178,6 +1386,12 @@ export class AppHaxUseCaseFilter extends LitElement {
     ) {
       this.applyFilters();
     }
+
+    // If a URL param like `?use-case=course-template` is present, try to
+    // auto-open the corresponding template once the items are loaded.
+    if (changedProperties.has("items")) {
+      this._maybeAutoOpenUseCaseFromUrl()
+    }
   }
 
   toggleSearch() {
@@ -1442,15 +1656,28 @@ export class AppHaxUseCaseFilter extends LitElement {
               const packagePath = "../../../../" + thumbnailPath;
               thumbnailPath = new URL(packagePath, import.meta.url).href;
             }
+
+            const skeletonUrl = item["skeleton-url"] || "";
+            const machineName = this._deriveTemplateMachineName(
+              item.machineName ||
+                item.name ||
+                item["machine-name"] ||
+                skeletonUrl ||
+                item.title ||
+                "",
+              item.title || "",
+            );
+
             return {
               dataType: "skeleton",
+              machineName: machineName,
               useCaseTitle: item.title || "Untitled Template",
               useCaseImage: thumbnailPath || "",
               useCaseDescription: item.description || "",
               useCaseIcon: icons,
               useCaseTag: tags,
               demoLink: item["demo-url"] || "#",
-              skeletonUrl: item["skeleton-url"] || "",
+              skeletonUrl: skeletonUrl,
               originalData: item,
             };
           }) || [];
@@ -1488,8 +1715,12 @@ export class AppHaxUseCaseFilter extends LitElement {
               thumbnailPath = new URL(packagePath, import.meta.url).href;
             }
 
+            const themeElement = theme && theme.element ? theme.element : themeMachineName;
+
             return {
               dataType: "blank",
+              machineName: themeMachineName,
+              themeElement: themeElement,
               useCaseTitle: theme.name || "Untitled Theme",
               useCaseImage: thumbnailPath || "",
               useCaseDescription:
@@ -1844,45 +2075,51 @@ export class AppHaxUseCaseFilter extends LitElement {
         modal.themeElement = "clean-one"; // fallback
         return;
       }
-    } else if (
-      selectedTemplate.dataType === "blank" &&
-      selectedTemplate.originalData &&
-      selectedTemplate.originalData.element
-    ) {
+    } else if (selectedTemplate.dataType === "blank") {
       // Generate skeleton data for blank themes with a Home page
-      modal.themeElement = selectedTemplate.originalData.element;
-      modal.skeletonData = {
-        meta: {
-          name: selectedTemplate.originalData.element,
-          type: "skeleton",
-        },
-        site: {
-          name: selectedTemplate.originalData.element,
-          theme: selectedTemplate.originalData.element,
-        },
-        build: {
-          type: "skeleton",
-          structure: "from-skeleton",
-          items: [
-            {
-              id: `item-home-${selectedTemplate.originalData.element}`,
-              title: "Home",
-              slug: "home",
-              order: 0,
-              parent: null,
-              indent: 0,
-              content: "<p>Edit this page to get started on your HAX site!</p>",
-              metadata: {
-                published: true,
-                hideInMenu: false,
-                tags: [],
+      const themeElement =
+        selectedTemplate.themeElement ||
+        (selectedTemplate.originalData && selectedTemplate.originalData.element
+          ? selectedTemplate.originalData.element
+          : selectedTemplate.machineName || "");
+
+      if (themeElement) {
+        modal.themeElement = themeElement;
+        modal.skeletonData = {
+          meta: {
+            name: themeElement,
+            type: "skeleton",
+          },
+          site: {
+            name: themeElement,
+            theme: themeElement,
+          },
+          build: {
+            type: "skeleton",
+            structure: "from-skeleton",
+            items: [
+              {
+                id: `item-home-${themeElement}`,
+                title: "Home",
+                slug: "home",
+                order: 0,
+                parent: null,
+                indent: 0,
+                content: "<p>Edit this page to get started on your HAX site!</p>",
+                metadata: {
+                  published: true,
+                  hideInMenu: false,
+                  tags: [],
+                },
               },
-            },
-          ],
-          files: [],
-        },
-        theme: {},
-      };
+            ],
+            files: [],
+          },
+          theme: {},
+        };
+      } else {
+        modal.themeElement = "clean-one"; // fallback
+      }
     } else {
       modal.themeElement = "clean-one"; // fallback
     }
