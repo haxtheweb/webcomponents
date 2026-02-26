@@ -32,6 +32,8 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.promises = [];
     this.max = 100;
     this.skeletonData = null;
+    // Used to decide if we should write `name=` into the URL
+    this.__defaultSiteName = "";
   }
 
   static get properties() {
@@ -512,11 +514,93 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     ];
   }
 
+  _getNameParamFromUrl() {
+    try {
+      const url = new URL(globalThis.location.href);
+      return url.searchParams.get("name") || "";
+    } catch (e) {
+      return "";
+    }
+  }
+
+  _sanitizeNameForUrl(raw) {
+    if (!raw || typeof raw !== "string") {
+      return "";
+    }
+    // Strip non letter/number chars (keeping spaces for readability)
+    let name = raw.replace(/[^a-zA-Z0-9\s]+/g, "");
+    name = name.replace(/\s+/g, " ").trim();
+    if (name.length > 50) {
+      name = name.substring(0, 50).trim();
+    }
+    return name;
+  }
+
+  _updateUrlQueryParam(param, value) {
+    if (!param || typeof param !== "string") {
+      return;
+    }
+    try {
+      const url = new URL(globalThis.location.href);
+      if (value === null || typeof value === "undefined" || value === "") {
+        url.searchParams.delete(param);
+      } else {
+        url.searchParams.set(param, value);
+      }
+      globalThis.history.replaceState(
+        globalThis.history.state,
+        "",
+        `${url.pathname}${url.search}${url.hash}`,
+      );
+    } catch (e) {
+      // do nothing
+    }
+  }
+
+  _syncUrlNameParam() {
+    const current = this._sanitizeNameForUrl(this.siteName);
+    const defaultName = this._sanitizeNameForUrl(this.__defaultSiteName);
+
+    // Keep the on-screen value sanitized as well.
+    if (current !== this.siteName) {
+      this.siteName = current;
+    }
+
+    // Only write `name=` when the user has changed it away from the default.
+    if (!current || current === defaultName) {
+      this._updateUrlQueryParam("name", "");
+    } else {
+      this._updateUrlQueryParam("name", current);
+    }
+  }
+
+  _handleSiteNameInput(e) {
+    const value = e && e.target ? e.target.value : "";
+    this.siteName = this._sanitizeNameForUrl(value);
+    this.validateSiteName();
+    this._syncUrlNameParam();
+  }
+
   openModal() {
     this.open = true;
     this.currentStep = 1;
-    // Preserve any prepopulated siteName from the caller; default to empty string
+
+    // Preserve any prepopulated siteName from the caller (typically the use-case title)
     this.siteName = this.siteName || "";
+    this.__defaultSiteName = this.siteName;
+
+    // If URL has ?name=..., use it (sanitized) to prepopulate the field
+    const urlName = this._getNameParamFromUrl();
+    if (urlName) {
+      const sanitized = this._sanitizeNameForUrl(urlName);
+      if (sanitized) {
+        this.siteName = sanitized;
+      }
+    }
+
+    // Keep URL in sync with the current name state (do not write `name=` for defaults)
+    this._syncUrlNameParam();
+
     this.errorMessage = "";
     this.showConfetti = false;
     this.isCreating = false;
@@ -574,6 +658,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
 
     this.currentStep = 1;
     this.siteName = "";
+    this.__defaultSiteName = "";
     this.errorMessage = "";
     this.showConfetti = false;
     this.isCreating = false;
@@ -610,6 +695,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.open = false;
     this.currentStep = 1;
     this.siteName = "";
+    this.__defaultSiteName = "";
     this.errorMessage = "";
     this.showConfetti = false;
     this.isCreating = false;
@@ -881,8 +967,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
           type="text"
           .value="${this.siteName}"
           @input="${(e) => {
-            this.siteName = e.target.value;
-            this.validateSiteName();
+            this._handleSiteNameInput(e);
           }}"
           @keydown="${this.handleKeyDown}"
           placeholder="Enter your site name..."

@@ -572,6 +572,38 @@ export class AppHaxUseCaseFilter extends LitElement {
     return ''
   }
 
+  _updateUrlQueryParam(param, value) {
+    if (!param || typeof param !== 'string') {
+      return
+    }
+    try {
+      const url = new URL(globalThis.location.href)
+      if (value === null || typeof value === 'undefined' || value === '') {
+        url.searchParams.delete(param)
+      } else {
+        url.searchParams.set(param, value)
+      }
+      globalThis.history.replaceState(
+        globalThis.history.state,
+        '',
+        `${url.pathname}${url.search}${url.hash}`,
+      )
+    } catch (e) {
+      // do nothing
+    }
+  }
+
+  _getUseCaseMachineNameForTemplate(template) {
+    if (!template) {
+      return ''
+    }
+    const candidates = this._getTemplateMachineNameCandidates(template)
+    if (candidates && candidates.length > 0) {
+      return candidates[0]
+    }
+    return ''
+  }
+
   _normalizeUseCaseMachineName(raw) {
     if (!raw || typeof raw !== 'string') {
       return ''
@@ -674,6 +706,24 @@ export class AppHaxUseCaseFilter extends LitElement {
     return false
   }
 
+  _scrollUseCaseIndexIntoView(index) {
+    if (typeof index !== 'number' || index < 0) {
+      return
+    }
+    const el =
+      this.shadowRoot &&
+      this.shadowRoot.querySelector(
+        `app-hax-use-case[data-item-index="${index}"]`,
+      )
+    if (el && typeof el.scrollIntoView === 'function') {
+      try {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      } catch (e) {
+        el.scrollIntoView()
+      }
+    }
+  }
+
   _findTemplateByUseCaseParam(rawParam) {
     if (!rawParam || !Array.isArray(this.items) || this.items.length === 0) {
       return null
@@ -738,6 +788,19 @@ export class AppHaxUseCaseFilter extends LitElement {
             if (this.filteredItems[idx]) {
               this.filteredItems[idx].isSelected = true
               this.filteredItems[idx].showContinue = true
+            }
+            // Ensure the selected card is visible in the viewport.
+            this._scrollUseCaseIndexIntoView(idx)
+          } else if (template && template.dataType) {
+            // Fallback: scroll to the relevant group heading.
+            if (template.dataType === 'skeleton') {
+              this.scrollToGroup('from-template-heading', 'skeleton')
+            }
+            if (template.dataType === 'blank') {
+              this.scrollToGroup('from-scratch-heading', 'blank')
+            }
+            if (template.dataType === 'import') {
+              this.scrollToGroup('from-existing-heading', 'import')
             }
           }
         }
@@ -1909,6 +1972,9 @@ export class AppHaxUseCaseFilter extends LitElement {
 
     // Handle fallback case when index is -1 (blank site with clean-one)
     if (index === -1) {
+      // Keep URL in sync for link sharing
+      this._updateUrlQueryParam('use-case', 'blank-site')
+
       modal.title = "Blank Site";
       modal.description = "Create a blank site using the clean-one theme";
       modal.source = "";
@@ -1998,6 +2064,12 @@ export class AppHaxUseCaseFilter extends LitElement {
     const modal = this.shadowRoot.querySelector("#siteCreationModal");
     if (!modal || !selectedTemplate) {
       return;
+    }
+
+    // Keep URL in sync for link sharing
+    const useCaseMachineName = this._getUseCaseMachineNameForTemplate(selectedTemplate)
+    if (useCaseMachineName) {
+      this._updateUrlQueryParam('use-case', useCaseMachineName)
     }
 
     // Set the template details in the modal
