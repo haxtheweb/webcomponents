@@ -409,6 +409,44 @@ class SimpleTooltip extends LitElement {
    * Hides the tooltip programatically
    * @return {void}
    */
+  _timeToMs(time) {
+    if (typeof time !== "string") {
+      return 0;
+    }
+    var t = time.trim();
+    if (t.endsWith("ms")) {
+      var ms = parseFloat(t.replace("ms", ""));
+      return Number.isNaN(ms) ? 0 : ms;
+    }
+    if (t.endsWith("s")) {
+      var s = parseFloat(t.replace("s", ""));
+      return Number.isNaN(s) ? 0 : s * 1000;
+    }
+    var n = parseFloat(t);
+    return Number.isNaN(n) ? 0 : n;
+  }
+
+  _getExitAnimationTiming() {
+    var tip =
+      this.shadowRoot && this.shadowRoot.querySelector
+        ? this.shadowRoot.querySelector("#tooltip")
+        : null;
+    if (!tip || !globalThis.getComputedStyle) {
+      return {
+        delay: 0,
+        duration: 0,
+      };
+    }
+    var style = globalThis.getComputedStyle(tip);
+    // can be comma-separated lists; use the first item
+    var durationRaw = (style.animationDuration || "0s").split(",")[0].trim();
+    var delayRaw = (style.animationDelay || "0s").split(",")[0].trim();
+    return {
+      delay: this._timeToMs(delayRaw),
+      duration: this._timeToMs(durationRaw),
+    };
+  }
+
   hide() {
     // If the tooltip is already hidden, there's nothing to do.
     if (!this._showing) {
@@ -427,12 +465,27 @@ class SimpleTooltip extends LitElement {
     }
     this._showing = false;
     this._animationPlaying = true;
+
+    // If duration-out is 0ms (common in DDD/HAX UI), some browsers won't emit
+    // animationend; compute timing and ensure we still hide quickly.
+    var timing = this._getExitAnimationTiming();
+    var total = timing.delay + timing.duration;
+
     // force hide if we are open too long
     // helps older platforms and the monster known as Safari
     clearTimeout(this.__debounceCancel);
-    this.__debounceCancel = setTimeout(() => {
-      this._cancelAnimation();
-    }, 5000);
+    this.__debounceCancel = setTimeout(
+      () => {
+        this._cancelAnimation();
+      },
+      Math.max(0, total + 50),
+    );
+
+    // If there's no exit animation time, hide immediately.
+    if (total === 0) {
+      // allow the exit class to apply before forcing the final state
+      globalThis.requestAnimationFrame(() => this._onAnimationEnd());
+    }
   }
 
   /**
@@ -521,6 +574,8 @@ class SimpleTooltip extends LitElement {
 
   _cancelAnimation() {
     // Short-cut and cancel all animations and hide
+    clearTimeout(this.__debounceCancel);
+    this._animationPlaying = false;
     this.shadowRoot
       .querySelector("#tooltip")
       .classList.remove(this._getAnimationType("entry"));
