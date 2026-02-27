@@ -77,6 +77,7 @@ export const HaxIconsetManifest = [
     name: "hax",
     icons: [
       "12",
+      "2026",
       "3-3-3-3",
       "4-4-4",
       "4-8",

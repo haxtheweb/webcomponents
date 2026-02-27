@@ -1,0 +1,22 @@
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="12" cy="12" r="11.5" fill="#D32F2F" stroke="#8B0000" stroke-width="0.5"/>
+  
+  <path d="M12 3L13.5 8L18 6L16 10L21 12L16 14L18 18L13 16L12 21L11 16L6 18L8 14L3 12L8 10L6 6L10.5 8L12 3Z" fill="white"/>
+  
+  <rect x="7" y="10" width="10" height="8" rx="1" fill="#004D40"/>
+  
+  <path d="M8.5 12C8.5 10.067 10.067 8.5 12 8.5C13.933 8.5 15.5 10.067 15.5 12V18H8.5V12Z" fill="#BF360C"/>
+  
+  <rect x="9.5" y="11" width="5" height="3" fill="black"/>
+  <path d="M10 11.5V13.5M11 11.5V13.5M10 12.5H11" stroke="white" stroke-width="0.3"/>
+  <path d="M11.5 13.5L12 11.5L12.5 13.5M11.7 12.7H12.3" stroke="white" stroke-width="0.3" fill="none"/>
+  <path d="M13 11.5L14 13.5M14 11.5L13 13.5" stroke="white" stroke-width="0.3"/>
+  
+  <circle cx="10.5" cy="15.5" r="1.2" fill="#00BCD4" stroke="#006064" stroke-width="0.2"/>
+  <circle cx="13.5" cy="15.5" r="1.2" fill="#00BCD4" stroke="#006064" stroke-width="0.2"/>
+  
+  <circle cx="16.5" cy="8.5" r="1" fill="#FFEB3B"/>
+  <path d="M16.5 9.5C16.5 9.5 17 10.5 15.5 11.5" stroke="black" stroke-width="0.3" fill="none"/>
+  
+  <rect x="4" y="20" width="16" height="2" rx="1" fill="#1A1A1A"/>
+</svg>
