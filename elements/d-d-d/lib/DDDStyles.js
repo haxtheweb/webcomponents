@@ -2309,6 +2309,7 @@ export const DDDReset = css`
       --ddd-theme-default-limestoneMaxLight,
       rgba(175, 184, 193, 0.2)
     );
+    color: black; /* required because background is light and we want to ensure contrast */
     border-radius: var(--ddd-radius-sm);
     margin: var(--ddd-spacing-1) 0;
     word-break: normal;
