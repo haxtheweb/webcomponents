@@ -146,6 +146,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       this._tokenRefreshFailed.bind(this),
       { signal: this.windowControllers.signal },
     );
+
+    // Ensure Merlin doesn't leave the dashboard in a scroll-locked state after it closes
+    globalThis.addEventListener(
+      "super-daemon-close",
+      this._handleSuperDaemonClose.bind(this),
+      { signal: this.windowControllers.signal },
+    );
   }
 
   goToLocation(location) {
@@ -241,6 +248,36 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       },
       eventName: "super-daemon-element-method",
       path: ">developer/hax/unlockAll",
+      context: [">"],
+    });
+
+    // Expose terrible themes ("90s" themes) in the v2 template picker
+    SuperDaemonInstance.defineOption({
+      title: "Show terrible themes",
+      icon: "icons:warning",
+      tags: ["Developer", "themes", "terrible"],
+      value: {
+        target: this,
+        method: "fireTerrible",
+        args: [],
+      },
+      eventName: "super-daemon-element-method",
+      path: ">developer/hax/showTerribleThemes",
+      context: [">"],
+    });
+
+    // Expose hidden themes / use cases in the v2 template picker
+    SuperDaemonInstance.defineOption({
+      title: "Show hidden templates",
+      icon: "icons:visibility",
+      tags: ["Developer", "templates", "hidden"],
+      value: {
+        target: this,
+        method: "fireHiddenTemplates",
+        args: [],
+      },
+      eventName: "super-daemon-element-method",
+      path: ">developer/hax/showHiddenTemplates",
       context: [">"],
     });
     SuperDaemonInstance.defineOption({
@@ -604,6 +641,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
   }
   fireTerrible() {
     this.unlockTerrible = true;
+    // Ensure v2 template picker includes terrible themes
+    store.showTerribleTemplates = true;
     store.appEl.playSound("coin").then(() => {
       store.appEl.playSound("coin2").then(() => {
         store.appEl.playSound("success").then(() => {
@@ -612,6 +651,16 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           );
         });
       });
+    });
+  }
+
+  fireHiddenTemplates() {
+    // Expose hidden themes / use cases in v2 template picker
+    store.showHiddenTemplates = true;
+    store.appEl.playSound("success").then(() => {
+      SuperDaemonInstance.merlinSpeak(
+        "Hidden templates revealed. With great power comes great questionable design decisions.",
+      );
     });
   }
   fireUnlocked() {
@@ -1254,6 +1303,62 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
   closeMenu() {
     this.userMenuOpen = false;
+  }
+
+  _isDashboardModalOpen() {
+    // If simple-modal is open (login, etc), keep scroll locked
+    const simpleModal =
+      globalThis.document && globalThis.document.querySelector
+        ? globalThis.document.querySelector("simple-modal")
+        : null;
+    if (simpleModal && simpleModal.opened) {
+      return true;
+    }
+
+    // app-hax-site-creation-modal is rendered inside app-hax-use-case-filter's shadowRoot
+    const filter =
+      this.shadowRoot && this.shadowRoot.querySelector
+        ? this.shadowRoot.querySelector("app-hax-use-case-filter")
+        : null;
+    if (filter && filter.shadowRoot && filter.shadowRoot.querySelector) {
+      const creationModal = filter.shadowRoot.querySelector(
+        "app-hax-site-creation-modal",
+      );
+      if (creationModal && creationModal.open) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  _handleSuperDaemonClose(e) {
+    // Defer to allow the underlying dialog to fully close first
+    requestAnimationFrame(() => {
+      if (this._isDashboardModalOpen()) {
+        return;
+      }
+      try {
+        if (
+          globalThis.document &&
+          globalThis.document.body &&
+          globalThis.document.body.style &&
+          globalThis.document.body.style.overflow === "hidden"
+        ) {
+          globalThis.document.body.style.overflow = "";
+        }
+        if (
+          globalThis.document &&
+          globalThis.document.documentElement &&
+          globalThis.document.documentElement.style &&
+          globalThis.document.documentElement.style.overflow === "hidden"
+        ) {
+          globalThis.document.documentElement.style.overflow = "";
+        }
+      } catch (e) {
+        // do nothing
+      }
+    });
   }
 
   openMerlin() {

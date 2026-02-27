@@ -39,6 +39,10 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.sortMenuOpen = false;
     // Default to sorting sites by most recently updated
     this.sortOption = "newest";
+
+    // Advanced template visibility (controlled via Merlin programs)
+    this.showTerrible = false;
+    this.showHidden = false;
     // URL-driven flow: allow deep-linking into a specific template / use-case
     // Example: ?use-case=course-template
     this.__useCaseParamHandled = false;
@@ -58,11 +62,46 @@ export class AppHaxUseCaseFilter extends LitElement {
 
           this.isLoggedIn = loggedIn;
 
+          // Track advanced template visibility flags from the store
+          this.showTerrible = toJS(store.showTerribleTemplates);
+          this.showHidden = toJS(store.showHiddenTemplates);
+
           // Trigger skeleton/theme loading when both app is ready and user is logged in
           // Only load once per session
           if (appReady && loggedIn && !hasLoaded) {
             hasLoaded = true;
             this.updateSkeletonResults();
+            this.updateSiteResults();
+          }
+        });
+
+        // Rebuild skeleton/theme listing when toggles change
+        let lastShowTerrible = null;
+        let lastShowHidden = null;
+        autorun(() => {
+          const appReady = toJS(store.appReady);
+          const loggedIn = toJS(store.isLoggedIn);
+          const showTerrible = toJS(store.showTerribleTemplates);
+          const showHidden = toJS(store.showHiddenTemplates);
+
+          if (
+            lastShowTerrible === null &&
+            lastShowHidden === null
+          ) {
+            lastShowTerrible = showTerrible;
+            lastShowHidden = showHidden;
+            return;
+          }
+
+          if (
+            appReady &&
+            loggedIn &&
+            (showTerrible !== lastShowTerrible || showHidden !== lastShowHidden)
+          ) {
+            lastShowTerrible = showTerrible;
+            lastShowHidden = showHidden;
+            this.updateSkeletonResults();
+            // maintain filters list by re-appending site tags after rebuild
             this.updateSiteResults();
           }
         });
@@ -99,6 +138,8 @@ export class AppHaxUseCaseFilter extends LitElement {
       isLoggedIn: { type: Boolean },
       sortOption: { type: String, attribute: "sort-option" },
       sortMenuOpen: { type: Boolean },
+      showTerrible: { type: Boolean, attribute: false },
+      showHidden: { type: Boolean, attribute: false },
     };
   }
 
@@ -725,7 +766,12 @@ export class AppHaxUseCaseFilter extends LitElement {
   }
 
   _findTemplateByUseCaseParam(rawParam) {
-    if (!rawParam || !Array.isArray(this.items) || this.items.length === 0) {
+    const list =
+      Array.isArray(this.__allItems) && this.__allItems.length > 0
+        ? this.__allItems
+        : this.items;
+
+    if (!rawParam || !Array.isArray(list) || list.length === 0) {
       return null
     }
 
@@ -733,8 +779,8 @@ export class AppHaxUseCaseFilter extends LitElement {
     const targetLoose = this._looseNormalizeUseCaseMachineName(rawParam)
 
     // Pass 1: exact match
-    for (let i = 0; i < this.items.length; i++) {
-      const item = this.items[i]
+    for (let i = 0; i < list.length; i++) {
+      const item = list[i]
       const candidates = this._getTemplateMachineNameCandidates(item)
       if (candidates.indexOf(target) !== -1) {
         return item
@@ -742,8 +788,8 @@ export class AppHaxUseCaseFilter extends LitElement {
     }
 
     // Pass 2: loose match
-    for (let i = 0; i < this.items.length; i++) {
-      const item = this.items[i]
+    for (let i = 0; i < list.length; i++) {
+      const item = list[i]
       const candidates = this._getTemplateMachineNameCandidates(item)
       for (let j = 0; j < candidates.length; j++) {
         const candLoose = this._looseNormalizeUseCaseMachineName(candidates[j])
@@ -767,7 +813,10 @@ export class AppHaxUseCaseFilter extends LitElement {
       return
     }
 
-    if (!Array.isArray(this.items) || this.items.length === 0) {
+    if (
+      (!Array.isArray(this.items) || this.items.length === 0) &&
+      (!Array.isArray(this.__allItems) || this.__allItems.length === 0)
+    ) {
       return
     }
 
@@ -1634,6 +1683,9 @@ export class AppHaxUseCaseFilter extends LitElement {
       return;
     }
 
+    // Reset filters for a clean rebuild
+    this.allFilters = new Set();
+
     // Build promises: backend call for skeletons, appSettings themes or fallback fetch
     const skeletonsPromise =
       store.AppHaxAPI && store.AppHaxAPI.makeCall
@@ -1688,7 +1740,7 @@ export class AppHaxUseCaseFilter extends LitElement {
           Array.isArray(skeletonsData.value.data)
             ? skeletonsData.value.data
             : [];
-        const skeletonItems =
+        const skeletonItemsAll =
           skeletonArray.map((item) => {
             let tags = [];
             if (Array.isArray(item.category)) {
@@ -1702,7 +1754,15 @@ export class AppHaxUseCaseFilter extends LitElement {
               tags = [item.category.trim()];
             }
             if (tags.length === 0) tags = ["Empty"];
-            tags.forEach((tag) => this.allFilters.add(tag)); // Add to global Set
+
+            // Only add filter tags when this entry will be visible.
+            const isHidden = item && item.hidden ? true : false;
+            const isTerrible = item && item.terrible ? true : false;
+            const visible =
+              (!isHidden || this.showHidden) && (!isTerrible || this.showTerrible);
+            if (visible) {
+              tags.forEach((tag) => this.allFilters.add(tag));
+            }
 
             const icons = Array.isArray(item.attributes)
               ? item.attributes.map((attr) => ({
@@ -1734,6 +1794,8 @@ export class AppHaxUseCaseFilter extends LitElement {
             return {
               dataType: "skeleton",
               machineName: machineName,
+              hidden: isHidden,
+              terrible: isTerrible,
               useCaseTitle: item.title || "Untitled Template",
               useCaseImage: thumbnailPath || "",
               useCaseDescription: item.description || "",
@@ -1745,10 +1807,16 @@ export class AppHaxUseCaseFilter extends LitElement {
             };
           }) || [];
 
+        const skeletonItems = skeletonItemsAll.filter(
+          (i) =>
+            i &&
+            (!i.hidden || this.showHidden) &&
+            (!i.terrible || this.showTerrible),
+        );
+
         // Process themes data into blank use cases (filter out hidden themes)
         const themeSource = themesData.value || {};
-        const themeItems = Object.entries(themeSource)
-          .filter(([, theme]) => !theme.hidden) // Exclude hidden system/debug themes
+        const themeItemsAll = Object.entries(themeSource)
           .map(([themeMachineName, theme]) => {
             let tags = [];
             if (Array.isArray(theme.category)) {
@@ -1762,7 +1830,22 @@ export class AppHaxUseCaseFilter extends LitElement {
               tags = [theme.category.trim()];
             }
             if (tags.length === 0) tags = ["Blank"];
-            tags.forEach((tag) => this.allFilters.add(tag)); // Add to global Set
+
+            const isHidden = theme && theme.hidden ? true : false;
+            let isTerrible = theme && theme.terrible ? true : false;
+            // Fallback: infer terrible themes by machine name prefix if backend didn't supply flag
+            if (
+              !isTerrible &&
+              typeof themeMachineName === "string" &&
+              themeMachineName.indexOf("terrible") === 0
+            ) {
+              isTerrible = true;
+            }
+            const visible =
+              (!isHidden || this.showHidden) && (!isTerrible || this.showTerrible);
+            if (visible) {
+              tags.forEach((tag) => this.allFilters.add(tag));
+            }
 
             // Simple icon array for blank themes
             const icons = [{ icon: "icons:build", tooltip: "Customizable" }];
@@ -1784,6 +1867,8 @@ export class AppHaxUseCaseFilter extends LitElement {
               dataType: "blank",
               machineName: themeMachineName,
               themeElement: themeElement,
+              hidden: isHidden,
+              terrible: isTerrible,
               useCaseTitle: theme.name || "Untitled Theme",
               useCaseImage: thumbnailPath || "",
               useCaseDescription:
@@ -1794,6 +1879,13 @@ export class AppHaxUseCaseFilter extends LitElement {
               originalData: theme,
             };
           });
+
+        const themeItems = themeItemsAll.filter(
+          (i) =>
+            i &&
+            (!i.hidden || this.showHidden) &&
+            (!i.terrible || this.showTerrible),
+        );
         // Add import options (local definitions)
         const importItems = this.getImportItems();
         // Ensure their tags are included in the global filter list
@@ -1804,8 +1896,9 @@ export class AppHaxUseCaseFilter extends LitElement {
         });
 
         // Combine skeleton, theme, and import items
+        this.__allItems = [...skeletonItemsAll, ...themeItemsAll, ...importItems];
         this.items = [...skeletonItems, ...themeItems, ...importItems];
-        this.filters = Array.from(this.allFilters).sort(); // Set AFTER all items
+        this.filters = Array.from(this.allFilters).sort(); // Set AFTER all visible items
 
         if (this.items.length === 0 && !this.errorMessage) {
           this.errorMessage = "No Templates Found";

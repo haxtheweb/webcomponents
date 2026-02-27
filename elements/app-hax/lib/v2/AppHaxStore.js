@@ -157,6 +157,9 @@ class Store {
     this.manifest = {};
     this.searchTerm = "";
     this.themesData = {};
+    // Advanced template visibility toggles (controlled via Merlin programs)
+    this.showTerribleTemplates = false;
+    this.showHiddenTemplates = false;
     this.user = {
       name: "",
     };
@@ -193,6 +196,8 @@ class Store {
       themesData: observable, // themes.json data for theme thumbnails
       darkMode: observable, // dark mode pref
       soundStatus: observable, // toggle sounds on and off
+      showTerribleTemplates: observable, // show terrible themes / use-cases
+      showHiddenTemplates: observable, // show hidden themes / use-cases
       activeItem: computed, // active item is route
       isNewUser: computed, // if they are new so we can auto kick to createSiteSteps if needed
       isLoggedIn: computed, // basic bool for logged in
