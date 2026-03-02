@@ -699,7 +699,7 @@ class PolarisInventTheme extends LTIResizingMixin(
    */
   constructor() {
     super();
-    this.dataPalette = 2;
+    this.dataPalette = 8;
     // MAKE SURE IT'S SET TO 8^
     // To Exclude: 6 (Salmon Season), 
     // 1 (Violent Red),
