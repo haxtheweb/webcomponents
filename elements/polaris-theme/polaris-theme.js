@@ -23,7 +23,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/blocks/site-children-block.
 import { autorun, toJS } from "mobx";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 /**
- * `Polaris Theme`
+ * @title Polaris
  * `A HAXcms inspired by an old wordpress theme
  *
  * @microcopy - language worth noting:

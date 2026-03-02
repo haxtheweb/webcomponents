@@ -342,6 +342,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           height: 48px;
           word-break: break-all;
         }
+
+        .characterbtn-menu-icon {
+          --simple-icon-height: var(--ddd-icon-4xs, 16px);
+          --simple-icon-width: var(--ddd-icon-4xs, 16px);
+          margin-left: var(--ddd-spacing-1, 4px);
+          display: inline-flex;
+          vertical-align: top;
+          margin-top: 20px;
+          color: currentColor;
+          transform: rotate(0deg);
+          transition: transform var(--ddd-duration-fast, 150ms)
+            var(--ddd-timing-ease, ease);
+        }
+
+        .characterbtn-menu-icon.rotated {
+          transform: rotate(-90deg);
+        }
         :host([dark-mode]) .topbar-character,
         :host([dark-mode]) .topbar-character {
           color: #e0e0e0;
@@ -2980,6 +2997,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             <span class="characterbtn-name" aria-hidden="true"
               >${this.userName}</span
             >
+            <simple-icon-lite
+              class="characterbtn-menu-icon ${this.userMenuOpen
+                ? ""
+                : "rotated"}"
+              icon="icons:expand-more"
+              aria-hidden="true"
+            ></simple-icon-lite>
             <slot name="haxcms-site-editor-ui-topbar-character-button"></slot>
           </button>
           <div slot="pre-menu" class="ops-panel">

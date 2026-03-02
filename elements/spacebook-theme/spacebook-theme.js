@@ -17,7 +17,7 @@ import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXC
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
- * `Space Book theme`
+ * @title Space Book
  * `SpaceBook theme inspired by 11ty SpaceBook theme for HAXcms`
  * 
  * @demo index.html

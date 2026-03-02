@@ -27,7 +27,7 @@ import { HAXCMSToastInstance } from "@haxtheweb/haxcms-elements/lib/core/haxcms-
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 
 /**
- * `Polaris Flex Theme`
+ * @title Polaris Flex
  * `Polaris theme based on modern flex design system`
  *
  * @microcopy - language worth noting:

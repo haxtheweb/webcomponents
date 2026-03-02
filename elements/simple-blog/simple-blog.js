@@ -11,8 +11,9 @@ import "@haxtheweb/simple-icon/lib/simple-icon-button.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
- * `simple-blog`
+ * @title  Simple Blog
  * `A simple blog and associated elements`
+ * @haxcms-theme-hidden true
  * @demo demo/index.html
  * @element simple-blog
  */

@@ -21,7 +21,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
- * `8-bit Overworld theme`
+ * @title 8-Bit Land
  *
  * @microcopy - language worth noting:
  *  - HAXcms - A headless content management system
@@ -29,6 +29,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
  *
  * @haxcms-theme-category Course
  * @haxcms-theme-internal false
+ * @haxcms-theme-hidden true
  * @demo demo/index.html
  * @element app-hax-theme
  */

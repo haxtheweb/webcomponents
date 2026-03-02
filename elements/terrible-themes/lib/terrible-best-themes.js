@@ -13,7 +13,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/navigation/site-menu-button
 import "@haxtheweb/scroll-button/scroll-button.js";
 import { autorun, toJS } from "mobx";
 /**
- * `Terrible 90s - hockey player theme`
+ * @title Terrible hockey
  * `themes inspired by creations by btopro from his youth. legitimate, terrible websites.`
  *
  * @microcopy - language worth noting:
@@ -22,6 +22,7 @@ import { autorun, toJS } from "mobx";
  *
  * @haxcms-theme-category Fun, Website
  * @haxcms-theme-internal false
+ * @haxcms-theme-terrible true
  * @demo demo/index.html
  * @element terrible-themes
  */

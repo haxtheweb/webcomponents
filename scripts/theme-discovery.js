@@ -96,16 +96,42 @@ function generateBlankDescription(displayName) {
 function shouldHideTheme(elementName) {
   const hiddenThemes = [
     'haxcms-json-theme',
-    'haxcms-blank-theme', 
-    'haxcms-print-theme'
+    'haxcms-blank-theme',
+    'haxcms-print-theme',
   ];
   return hiddenThemes.includes(elementName);
 }
 
 /**
+ * Extract a boolean tag from a JSDoc block.
+ *
+ * Supports either:
+ * - @tag true|false
+ * - @tag  (implies true)
+ */
+function extractBooleanDocblockTag(content, tagName) {
+  const tagMatch = content.match(
+    new RegExp(`@${tagName}(?:\\s+(true|false))?`, 'i'),
+  );
+  if (tagMatch) {
+    if (typeof tagMatch[1] === 'string') {
+      return tagMatch[1].toLowerCase() === 'true';
+    }
+    return true;
+  }
+  return null;
+}
+
+/**
  * Determine if a theme is a terrible theme (intentionally bad design)
  */
-function isTerribleTheme(elementName) {
+function extractThemeTerrible(content, elementName) {
+  // Docblock override
+  const terrible = extractBooleanDocblockTag(content, 'haxcms-theme-terrible');
+  if (terrible !== null) {
+    return terrible;
+  }
+  // Fallback: infer from name
   return elementName.includes('terrible');
 }
 
@@ -135,13 +161,21 @@ function extractThemeCategories(content, elementName) {
 
 /**
  * Determine if a theme should be hidden from selection based on JSDoc.
- * Internal themes stay in themes.json but are not shown in the v2 picker.
+ * Hidden themes stay in themes.json but are not shown in the v2 picker.
  */
 function extractThemeHidden(content, elementName) {
-  const hiddenMatch = content.match(/@haxcms-theme-internal\s+(true|false)/i);
-  if (hiddenMatch) {
-    return hiddenMatch[1].toLowerCase() === 'true';
+  // Prefer explicit hidden flag
+  const hidden = extractBooleanDocblockTag(content, 'haxcms-theme-hidden');
+  if (hidden !== null) {
+    return hidden;
   }
+
+  // Backwards compatible alias: internal => hidden
+  const internal = extractBooleanDocblockTag(content, 'haxcms-theme-internal');
+  if (internal !== null) {
+    return internal;
+  }
+
   return shouldHideTheme(elementName);
 }
 
@@ -284,7 +318,7 @@ async function discoverThemes() {
             description: generateBlankDescription(displayName),
             category: categories,
             hidden: hidden,
-            terrible: isTerribleTheme(elementName)
+            terrible: extractThemeTerrible(content, elementName),
           };
           
           // Extract the class name from the content for inheritance tracking
@@ -332,7 +366,7 @@ async function discoverThemes() {
             description: generateBlankDescription(displayName),
             category: categories,
             hidden: hidden,
-            terrible: isTerribleTheme(elementName)
+            terrible: extractThemeTerrible(content, elementName),
           };
           
           // Extract the class name for future inheritance tracking

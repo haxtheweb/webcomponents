@@ -11,8 +11,9 @@ import { autorun, toJS } from "mobx";
 import "@haxtheweb/haxcms-elements/lib/ui-components/layout/site-region.js";
 
 /**
- * `Brochure Theme`
+ * @title Brochure
  * `A theme for brochure style sites that reads page-sections and builds a nav off of them`
+ * @haxcms-theme-hidden true
  * @demo demo/index.html
  * @element ddd-brochure-theme
  */

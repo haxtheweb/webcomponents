@@ -2,6 +2,8 @@ import { css, html, unsafeCSS } from "lit";
 import { toJS, autorun } from "mobx";
 import { localStorageSet, localStorageGet } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { store } from "./lib/v2/AppHaxStore.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
@@ -792,6 +794,23 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           margin-right: var(--ddd-spacing-3, 12px);
         }
 
+        .characterbtn-menu-icon {
+          --simple-icon-height: var(--ddd-icon-4xs, 16px);
+          --simple-icon-width: var(--ddd-icon-4xs, 16px);
+          margin-left: var(--ddd-spacing-1, 4px);
+          display: inline-flex;
+          vertical-align: top;
+          margin-top: 20px;
+          color: currentColor;
+          transform: rotate(0deg);
+          transition: transform var(--ddd-duration-fast, 150ms)
+            var(--ddd-timing-ease, ease);
+        }
+
+        .characterbtn-menu-icon.rotated {
+          transform: rotate(-90deg);
+        }
+
         div[slot="center"] {
           display: flex;
           align-items: center;
@@ -1422,6 +1441,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 <span class="characterbtn-name" aria-hidden="true"
                   >${this.userName}</span
                 >
+                <simple-icon-lite
+                  class="characterbtn-menu-icon ${this.userMenuOpen
+                    ? ""
+                    : "rotated"}"
+                  icon="icons:expand-more"
+                  aria-hidden="true"
+                ></simple-icon-lite>
                 </button>
                 <a
                   slot="main-menu"

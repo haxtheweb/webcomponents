@@ -30,8 +30,8 @@ const CONFIG = {
     height: 900, // Maintain 16:10 aspect ratio
   },
   thumbnailSize: {
-    width: 300,
-    height: 188, // Maintain same aspect ratio as large
+    width: 145,
+    height: 204, // Maintain same aspect ratio as large
   },
   themeLoadDelay: 3000, // Wait time after theme change for rendering
   uiSetupDelay: 2000, // Wait time after setting user scaffolding
@@ -252,6 +252,10 @@ async function setupNonEditingView(page) {
 
     // Remove the haxcms-site-editor-ui element from the DOM
     const removed = await page.evaluate(() => {
+      const superDaemon = document.querySelector("super-daemon");
+      if (superDaemon) {
+        superDaemon.remove();
+      }
       const editorUI = document.querySelector("haxcms-site-editor-ui");
       if (editorUI) {
         editorUI.remove();
@@ -293,6 +297,7 @@ async function captureThemeScreenshot(page, themeElement) {
     // Switch to the theme
     console.log(`    → Switching to theme: ${themeElement}`);
     await page.evaluate((theme) => {
+      globalThis.HAXCMSContext="nodejs";
       if (
         typeof globalThis.HAXCMS !== "undefined" &&
         globalThis.HAXCMS.setTheme
@@ -353,7 +358,7 @@ async function captureThemeScreenshot(page, themeElement) {
       await sharp(screenshotBuffer)
         .resize(CONFIG.thumbnailSize.width, CONFIG.thumbnailSize.height, {
           fit: "cover",
-          position: "top",
+          position: "left",
         })
         .jpeg({
           quality: 60,
@@ -400,6 +405,10 @@ async function captureThemeScreenshot(page, themeElement) {
         const editorUI = document.querySelector("haxcms-site-editor-ui");
         if (editorUI) {
           editorUI.remove();
+        }
+        const superDaemon = document.querySelector("super-daemon");
+        if (superDaemon) {
+          superDaemon.remove();
         }
       });
 

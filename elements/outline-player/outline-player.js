@@ -14,10 +14,11 @@ import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIR
  */
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
- * `outline-player`
+ * @title Outline Player
  * @element outline-player
  * `A basic outline presentation`
  *
+ * @haxcms-theme-hidden true
  * @demo demo/index.html
  */
 class OutlinePlayer extends LTIResizingMixin(

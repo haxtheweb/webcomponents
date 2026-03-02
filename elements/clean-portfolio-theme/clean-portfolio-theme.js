@@ -18,7 +18,7 @@ import { licenseList } from "@haxtheweb/license-element/license-element.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 
 /**
- * `Clean Portfolio Theme`
+ * @title Clean Portfolio
  * A theme for creating clean and modern portfolio websites.
  * @demo index.html
  * @element clean-portfolio-theme

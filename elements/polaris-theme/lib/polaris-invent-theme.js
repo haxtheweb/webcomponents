@@ -26,7 +26,7 @@ import { HAXCMSToastInstance } from "@haxtheweb/haxcms-elements/lib/core/haxcms-
 import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIResizingMixin.js";
 
 /**
- * `Polaris Invent Theme`
+ * @title Polaris Invent
  * `A 2nd polaris theme customized for Invent PSU`
  *
  * @microcopy - language worth noting:

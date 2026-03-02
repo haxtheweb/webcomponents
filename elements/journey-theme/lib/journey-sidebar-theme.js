@@ -13,9 +13,9 @@ import "@haxtheweb/scroll-button/scroll-button.js";
 import { JourneySidebarThemeStyles } from "./journey-sidebar-theme-styles.js"; // custom styles for this theme
 
 /**
- * `Journey Sidebar theme`
+ * @title Journey Side
  * `JourneySidebarTheme based on HAXCMS theming ecosystem`
- *
+ * @haxcms-theme-hidden true
  * @microcopy - language worth noting:
  *  - HAXcms - A headless content management system
  *  - HAXCMSLitElementTheme - A class that provides correct baseline wiring to build a new theme that HAX can use

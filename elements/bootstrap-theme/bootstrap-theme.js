@@ -19,8 +19,8 @@ import "@haxtheweb/bootstrap-theme/lib/BootstrapSearch.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
 /**
- * `Bootstrap Theme`
- * `Hax bootstrap themeing`
+ * @title Bootstrap
+ * `Hax bootstrap`
  * @demo demo/index.html
  * @element bootstrap-theme
  */

@@ -108,6 +108,7 @@ export class AppHaxUseCase extends LitElement {
       .image img {
         object-fit: cover;
         display: block;
+        object-position: left;
       }
 
       .image-placeholder {

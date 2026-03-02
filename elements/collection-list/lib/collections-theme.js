@@ -26,13 +26,14 @@ import "./collections-theme-banner.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
- * `Collections Theme`
+ * @title Collections
  * `A theme for presenting collections of material`
  *
  * @microcopy - language worth noting:
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
  *
+ * @haxcms-theme-hidden true
  * @demo demo/index.html
  * @element collections-theme
  */

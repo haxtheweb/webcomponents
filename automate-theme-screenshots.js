@@ -118,8 +118,8 @@ export const automationWorkflow = {
     if (!theme) return null;
     
     return {
-      switchTheme: `globalThis.HAXCMS.setTheme('${theme.element}')`,
-      wait: `new Promise(resolve => setTimeout(() => resolve('Theme loaded'), 3000))`,
+      switchTheme: `globalThis.HAXCMSContext="nodejs";globalThis.HAXCMS.setTheme('${theme.element}')`,
+      wait: `new Promise(resolve => setTimeout(() => resolve('Theme loaded'), 2000))`,
       screenshot: {
         name: theme.element,
         width: 1280,

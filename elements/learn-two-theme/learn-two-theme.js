@@ -18,7 +18,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
  */
 import "@polymer/polymer/lib/elements/custom-style.js";
 /**
- * `Learn theme`
+ * @title Learn2
  * @element learn-two-theme
  * `Learn2 theme for HAXcms`
  *

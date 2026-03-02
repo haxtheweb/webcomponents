@@ -14,7 +14,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/active-item/site-active-tit
 import "@haxtheweb/scroll-button/scroll-button.js";
 import { autorun, toJS } from "mobx";
 /**
- * `Terrible 90s - blog theme`
+ * @title Terrible Blog
  * `themes inspired by creations by btopro from his youth. legitimate, terrible websites.`
  *
  * @microcopy - language worth noting:
@@ -23,6 +23,7 @@ import { autorun, toJS } from "mobx";
  *
  * @haxcms-theme-category Fun, Website
  * @haxcms-theme-internal false
+ * @haxcms-theme-terrible true
  * @demo demo/index.html
  * @element terrible-themes
  */
