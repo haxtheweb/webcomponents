@@ -66,7 +66,7 @@ class PolarisInventTheme extends LTIResizingMixin(
           );
 
           --polaris-header-bg-color: var(--ddd-palette-color-2);
-          --polaris-nav-color: var(--ddd-palette-color-6);
+          --polaris-nav-color: var(--ddd-palette-color-5);
           --polaris-nav-bg-color: light-dark(
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-coalyGray)
@@ -100,6 +100,10 @@ class PolarisInventTheme extends LTIResizingMixin(
           color: black;
           --polaris-content-bg-color: var(--ddd-accent-6);
           --polaris-nav-bg-color: var(--ddd-theme-default-skyBlue);
+        }
+
+        :host([data-palette="8"]) site-menu {
+          --site-menu-container-background-color: var(--ddd-palette-color-7);
         }
 
         scroll-button {
@@ -165,12 +169,13 @@ class PolarisInventTheme extends LTIResizingMixin(
           --map-menu-item-a-active-background-color: var(
             --polaris-header-bg-color
           );
+
           --map-menu-item-button-active-color: white;
           --map-menu-item-button-active-background-color: var(--ddd-palette-color-7, var(--ddd-theme-default-inventOrange));
           --map-menu-overflow: visible;
           --site-menu-container-background-color: var(--ddd-palette-color-6);
-          --map-menu-item-a-active-color: var(--ddd-palette-color-6);
-          --map-menu-item-icon-active-color: black;
+          --map-menu-item-a-active-color: var(--ddd-palette-text-text-color-1);
+          --map-menu-item-icon-active-color: white;
         }
 
         site-modal {
@@ -211,7 +216,7 @@ class PolarisInventTheme extends LTIResizingMixin(
         }
         site-menu-button {
           --site-menu-button-link-decoration: none;
-          --site-menu-button-button-hover-color: var(--ddd-palette-color-4);
+          --site-menu-button-button-hover-color: var(--ddd-palette-color-1);
           --site-menu-button-icon-fill-color: white;
           color: white;
           background-color: var(--ddd-palette-color-7, var(--ddd-theme-default-inventOrange));
@@ -405,7 +410,7 @@ class PolarisInventTheme extends LTIResizingMixin(
           border-bottom: 1px solid #fff;
         }
         a {
-          color: var(--ddd-palette-color-6, #2c76c7);
+          color: var(--ddd-palette-text-color-6, #2c76c7);
           text-decoration: none;
         }
         #haxcmsmobilemenubutton {
@@ -694,8 +699,11 @@ class PolarisInventTheme extends LTIResizingMixin(
    */
   constructor() {
     super();
-    this.dataPalette = 8;
+    this.dataPalette = 2;
     // MAKE SURE IT'S SET TO 8^
+    // To Exclude: 6 (Salmon Season), 
+    // 1 (Violent Red),
+    // 2 (Beetles Yellow),
     // forcibly set things about the RPG toast for this design
     HAXCMSToastInstance.style.setProperty(
       "--rpg-character-toast-display",
