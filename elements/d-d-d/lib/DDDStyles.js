@@ -4481,6 +4481,15 @@ html, :root {
   --ddd-palette-color-5: var(--simple-colors-default-theme-grey-3);
   --ddd-palette-color-6: var(--simple-colors-default-theme-grey-11);
   --ddd-palette-color-7: var(--simple-colors-default-theme-amber-6);
+
+  --ddd-palette-text-color-1: var(--ddd-theme-default-white);
+  --ddd-palette-text-color-2: var(--simple-colors-default-theme-grey-4);
+  --ddd-palette-text-color-3: var(--simple-colors-default-theme-grey-2);
+  --ddd-palette-text-color-4: var(--simple-colors-default-theme-grey-10);
+  --ddd-palette-text-color-5: var(--simple-colors-default-theme-grey-9);
+  --ddd-palette-text-color-6: var(--simple-colors-default-theme-grey-4);
+  --ddd-palette-text-color-7: var(--simple-colors-default-theme-grey-10);
+
   --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 
 }
@@ -4496,9 +4505,14 @@ html, :root {
   --ddd-palette-color-6: var(--ddd-theme-default-inventOrange);
   --ddd-palette-color-7: var(--simple-colors-default-theme-orange-3);
 
-  --ddd-palette-text-color-1: var(--ddd-theme-default-potential0);
-  --ddd-palette-text-color-2: var(--ddd-theme-default-coalyGray);
-  // Later on add specific text colors to be used with specific palette colors
+  --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-green-3);
+  --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-green-4);
+  --ddd-palette-text-color-3: var(--simple-colors-fixed-theme-green-1); 
+  /* This does NOT pass accessibility standards */
+  --ddd-palette-text-color-4: var(--simple-colors-fixed-theme-teal-12);
+  --ddd-palette-text-color-5: var(--simple-colors-default-theme-lime-10);
+  --ddd-palette-text-color-6: var(--ddd-theme-default-white);
+  --ddd-palette-text-color-7: var(--simple-colors-default-theme-deep-orange-10);
 
   --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 }
@@ -4674,8 +4688,8 @@ html, :root {
   --ddd-palette-color-2: var(--ddd-theme-default-beaver80);
   --ddd-palette-color-3: var(--ddd-theme-default-beaverBlue);
   --ddd-palette-color-4: var(--ddd-theme-default-nittanyNavy);
-  --ddd-palette-color-5: var(--ddd-theme-default-coalyGray);
-  --ddd-palette-color-6: var(--ddd-theme-default-limestoneLight);
+  --ddd-palette-color-5: var(--ddd-theme-default-limestoneLight);
+  --ddd-palette-color-6: var(--ddd-theme-default-coalyGray);
   --ddd-palette-color-7: var(--ddd-theme-default-inventOrange);
 
   --ddd-palette-video-player-color: var(--ddd-theme-default-white);
@@ -4688,7 +4702,6 @@ html, :root {
   --ddd-palette-text-color-5: var(--simple-colors-default-theme-blue-grey-2);
   --ddd-palette-text-color-6: var(--simple-colors-default-theme-blue-grey-10);
   --ddd-palette-text-color-7: var(--ddd-theme-default-white);
-
 }
 `;
 

@@ -1285,8 +1285,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
     if (this.dataPalette > 6) this.dataPalette = 0;
     
   }
-
-
+  
   // Lit render the HTML
   render() {
     return html`
