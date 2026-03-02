@@ -134,9 +134,9 @@
   "haxma-theme": {
     "element": "haxma-theme",
     "path": "@haxtheweb/haxma-theme/haxma-theme.js",
-    "name": "HAXma docs",
+    "name": "Design docs",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-haxma-theme-thumb.jpg",
-    "description": "Start with a blank site using the HAXma docs",
+    "description": "Start with a blank site using the Design docs",
     "category": [
       "Website"
     ],
@@ -218,9 +218,9 @@
   "polaris-flex-sidebar": {
     "element": "polaris-flex-sidebar",
     "path": "@haxtheweb/polaris-theme/lib/polaris-flex-sidebar.js",
-    "name": "Polaris Flex Sidebar",
+    "name": "Polaris Sidebar",
     "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-polaris-flex-sidebar-thumb.jpg",
-    "description": "Start with a blank site using the Polaris Flex Sidebar",
+    "description": "Start with a blank site using the Polaris Sidebar",
     "category": [
       "Website"
     ],

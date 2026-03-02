@@ -19,7 +19,7 @@ import { HAXCMSThemeParts } from "@haxtheweb/haxcms-elements/lib/core/utils/HAXC
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 
 /**
- * @title HAXma docs
+ * @title Design docs
  * `Inspired by Figma documentation for HAXcms`
  * 
  * @demo index.html

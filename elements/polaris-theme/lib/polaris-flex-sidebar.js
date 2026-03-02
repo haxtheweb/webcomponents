@@ -7,7 +7,7 @@ import { PolarisFlexTheme } from "./polaris-flex-theme";
 import "@haxtheweb/haxcms-elements/lib/ui-components/blocks/site-children-block.js";
 
 /**
- * `psu-flex-sidebar`
+ * @title Polaris Sidebar
  * `PSU theme based on modern flex design system`
  *
  * @microcopy - language worth noting:
