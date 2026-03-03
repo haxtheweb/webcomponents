@@ -21,6 +21,7 @@ import { autorun, toJS } from "mobx";
 /**
  * @title Bootstrap
  * `Hax bootstrap`
+ * @haxcms-theme-priority 100
  * @demo demo/index.html
  * @element bootstrap-theme
  */

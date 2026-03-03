@@ -36,6 +36,7 @@ import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIR
  *
  * @haxcms-theme-category Website
  * @haxcms-theme-internal false
+ * @haxcms-theme-priority -1
  * @demo demo/index.html
  * @element polaris-flex-theme
  */

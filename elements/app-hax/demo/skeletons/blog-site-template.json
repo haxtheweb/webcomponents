@@ -2,6 +2,7 @@
   "meta": {
     "name": "blog-site-template",
     "type": "skeleton",
+    "priority": 0,
     "version": "1.0.0"
   },
   "site": {

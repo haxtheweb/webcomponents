@@ -33,6 +33,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
  *
  * @haxcms-theme-category Course
  * @haxcms-theme-internal false
+ * @haxcms-theme-priority 0
  * @demo demo/index.html
  * @element clean-two
  */

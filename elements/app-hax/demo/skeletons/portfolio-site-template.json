@@ -2,6 +2,7 @@
   "meta": {
     "name": "portfolio-site-template",
     "type": "skeleton",
+    "priority": -10,
     "version": "1.0.0"
   },
   "site": {

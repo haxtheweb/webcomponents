@@ -16,6 +16,7 @@ import "@haxtheweb/haxcms-elements/lib/ui-components/blocks/site-children-block.
  *
  * @haxcms-theme-category Website
  * @haxcms-theme-internal false
+ * @haxcms-theme-priority -1
  * @demo demo/index.html
  * @element psu-flex-base
  */

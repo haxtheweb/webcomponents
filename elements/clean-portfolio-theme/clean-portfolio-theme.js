@@ -20,6 +20,7 @@ import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js"
 /**
  * @title Clean Portfolio
  * A theme for creating clean and modern portfolio websites.
+ * @haxcms-theme-priority -10
  * @demo index.html
  * @element clean-portfolio-theme
  */

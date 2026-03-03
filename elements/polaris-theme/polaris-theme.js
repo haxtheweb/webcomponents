@@ -32,6 +32,7 @@ import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
  *
  * @haxcms-theme-category Website
  * @haxcms-theme-internal false
+ * @haxcms-theme-priority 10
  * @demo demo/index.html
  * @element polaris-theme
  */

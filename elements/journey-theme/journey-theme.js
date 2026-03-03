@@ -20,6 +20,7 @@ import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js"
 /**
  * @title Journey
  * `JourneyTheme based on HAXCMS theming ecosystem`
+ * @haxcms-theme-priority -1
  *
  * @microcopy - language worth noting:
  *  - HAXcms - A headless content management system

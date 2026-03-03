@@ -9,6 +9,7 @@
       "Course"
     ],
     "hidden": true,
+    "priority": 0,
     "terrible": false
   },
   "bootstrap-theme": {
@@ -21,6 +22,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": 100,
     "terrible": false
   },
   "clean-one": {
@@ -33,6 +35,7 @@
       "Course"
     ],
     "hidden": false,
+    "priority": -2,
     "terrible": false
   },
   "clean-portfolio-theme": {
@@ -45,6 +48,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": -10,
     "terrible": false
   },
   "clean-two": {
@@ -57,6 +61,7 @@
       "Course"
     ],
     "hidden": false,
+    "priority": 0,
     "terrible": false
   },
   "collections-theme": {
@@ -69,6 +74,7 @@
       "Website"
     ],
     "hidden": true,
+    "priority": 0,
     "terrible": false
   },
   "ddd-brochure-theme": {
@@ -81,6 +87,7 @@
       "Website"
     ],
     "hidden": true,
+    "priority": 0,
     "terrible": false
   },
   "glossy-portfolio-theme": {
@@ -93,6 +100,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": 0,
     "terrible": false
   },
   "haxcms-blank-theme": {
@@ -105,6 +113,7 @@
       "Website"
     ],
     "hidden": true,
+    "priority": 0,
     "terrible": false
   },
   "haxcms-json-theme": {
@@ -117,6 +126,7 @@
       "Website"
     ],
     "hidden": true,
+    "priority": 0,
     "terrible": false
   },
   "haxcms-print-theme": {
@@ -129,6 +139,7 @@
       "Website"
     ],
     "hidden": true,
+    "priority": 0,
     "terrible": false
   },
   "haxma-theme": {
@@ -141,6 +152,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": 0,
     "terrible": false
   },
   "haxor-slevin": {
@@ -153,6 +165,7 @@
       "Website"
     ],
     "hidden": true,
+    "priority": 0,
     "terrible": false
   },
   "journey-sidebar-theme": {
@@ -165,6 +178,7 @@
       "Website"
     ],
     "hidden": true,
+    "priority": 0,
     "terrible": false
   },
   "journey-theme": {
@@ -177,6 +191,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": -1,
     "terrible": false
   },
   "journey-topbar-theme": {
@@ -189,6 +204,7 @@
       "Website"
     ],
     "hidden": true,
+    "priority": 0,
     "terrible": false
   },
   "learn-two-theme": {
@@ -201,6 +217,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": 0,
     "terrible": false
   },
   "outline-player": {
@@ -213,6 +230,7 @@
       "Website"
     ],
     "hidden": true,
+    "priority": 0,
     "terrible": false
   },
   "polaris-flex-sidebar": {
@@ -225,6 +243,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": -1,
     "terrible": false
   },
   "polaris-flex-theme": {
@@ -237,6 +256,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": -1,
     "terrible": false
   },
   "polaris-invent-theme": {
@@ -249,6 +269,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": 0,
     "terrible": false
   },
   "polaris-theme": {
@@ -261,6 +282,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": 10,
     "terrible": false
   },
   "simple-blog": {
@@ -273,6 +295,7 @@
       "Website"
     ],
     "hidden": true,
+    "priority": 0,
     "terrible": false
   },
   "spacebook-theme": {
@@ -285,6 +308,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": 0,
     "terrible": false
   },
   "terrible-best-themes": {
@@ -298,6 +322,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": 0,
     "terrible": true
   },
   "terrible-outlet-themes": {
@@ -311,6 +336,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": 0,
     "terrible": true
   },
   "terrible-productionz-themes": {
@@ -324,6 +350,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": 0,
     "terrible": true
   },
   "terrible-resume-themes": {
@@ -337,6 +364,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": 0,
     "terrible": true
   },
   "terrible-themes": {
@@ -350,6 +378,7 @@
       "Website"
     ],
     "hidden": false,
+    "priority": 0,
     "terrible": true
   },
   "training-theme": {
@@ -362,6 +391,7 @@
       "Website"
     ],
     "hidden": true,
+    "priority": 0,
     "terrible": false
   }
 }

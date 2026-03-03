@@ -123,6 +123,25 @@ function extractBooleanDocblockTag(content, tagName) {
 }
 
 /**
+ * Extract a numeric tag from a JSDoc block.
+ *
+ * Supports:
+ * - @tag -10
+ * - @tag 0
+ * - @tag 100
+ */
+function extractNumericDocblockTag(content, tagName) {
+  const tagMatch = content.match(
+    new RegExp(`@${tagName}\\s+(-?\\d+(?:\\.\\d+)?)`, 'i'),
+  );
+  if (tagMatch && typeof tagMatch[1] !== 'undefined') {
+    const num = Number(tagMatch[1]);
+    return Number.isFinite(num) ? num : null;
+  }
+  return null;
+}
+
+/**
  * Determine if a theme is a terrible theme (intentionally bad design)
  */
 function extractThemeTerrible(content, elementName) {
@@ -163,6 +182,11 @@ function extractThemeCategories(content, elementName) {
  * Determine if a theme should be hidden from selection based on JSDoc.
  * Hidden themes stay in themes.json but are not shown in the v2 picker.
  */
+function extractThemePriority(content) {
+  const priority = extractNumericDocblockTag(content, 'haxcms-theme-priority');
+  return priority !== null ? priority : 0;
+}
+
 function extractThemeHidden(content, elementName) {
   // Prefer explicit hidden flag
   const hidden = extractBooleanDocblockTag(content, 'haxcms-theme-hidden');
@@ -309,6 +333,7 @@ async function discoverThemes() {
           const npmPath = generateNpmPath(file, elementName);
           const categories = extractThemeCategories(content, elementName);
           const hidden = extractThemeHidden(content, elementName);
+          const priority = extractThemePriority(content);
           
           themes[elementName] = {
             element: elementName,
@@ -318,6 +343,7 @@ async function discoverThemes() {
             description: generateBlankDescription(displayName),
             category: categories,
             hidden: hidden,
+            priority: priority,
             terrible: extractThemeTerrible(content, elementName),
           };
           
@@ -357,6 +383,7 @@ async function discoverThemes() {
           const npmPath = generateNpmPath(file, elementName);
           const categories = extractThemeCategories(content, elementName);
           const hidden = extractThemeHidden(content, elementName);
+          const priority = extractThemePriority(content);
           
           themes[elementName] = {
             element: elementName,
@@ -366,6 +393,7 @@ async function discoverThemes() {
             description: generateBlankDescription(displayName),
             category: categories,
             hidden: hidden,
+            priority: priority,
             terrible: extractThemeTerrible(content, elementName),
           };
           

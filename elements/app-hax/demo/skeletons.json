@@ -3,6 +3,7 @@
   "data": [
     {
       "title": "Course",
+      "priority": -2,
       "description": "A structured template for online courses with lessons and modules",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-one-thumb.jpg",
       "category": ["course", "education"],
@@ -14,6 +15,7 @@
     },
     {
       "title": "Portfolio",
+      "priority": -10,
       "description": "A clean template for showcasing work and projects",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-clean-portfolio-theme-thumb.jpg",
       "category": ["portfolio", "showcase"],
@@ -25,6 +27,7 @@
     },
     {
       "title": "Blog",
+      "priority": 0,
       "description": "A template for creating blog sites with posts and categories",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-haxma-theme-thumb.jpg",
       "category": ["blog", "writing"],
@@ -34,6 +37,7 @@
     },
     {
       "title": "Documentation",
+      "priority": 10,
       "description": "Template for creating documentation and knowledge bases",
       "image": "/elements/haxcms-elements/lib/theme-screenshots/theme-app-hax-theme-thumb.jpg",
       "category": ["documentation", "reference"],

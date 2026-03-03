@@ -1740,6 +1740,35 @@ export class AppHaxUseCaseFilter extends LitElement {
           Array.isArray(skeletonsData.value.data)
             ? skeletonsData.value.data
             : [];
+
+        // Priority ordering: negative numbers float to the top.
+        // 0 is default, positive numbers sink lower in the UI.
+        const _getUseCasePriority = (useCase) => {
+          if (!useCase) {
+            return 0;
+          }
+          const original = useCase.originalData ? useCase.originalData : {};
+          const raw =
+            typeof original.priority !== "undefined"
+              ? original.priority
+              : typeof useCase.priority !== "undefined"
+                ? useCase.priority
+                : 0;
+          const num = typeof raw === "number" ? raw : Number(raw);
+          return Number.isFinite(num) ? num : 0;
+        };
+
+        const _sortUseCasesByPriority = (a, b) => {
+          const pa = _getUseCasePriority(a);
+          const pb = _getUseCasePriority(b);
+          if (pa !== pb) {
+            return pa - pb;
+          }
+          const at = a && a.useCaseTitle ? a.useCaseTitle : "";
+          const bt = b && b.useCaseTitle ? b.useCaseTitle : "";
+          return at.localeCompare(bt);
+        };
+
         const skeletonItemsAll =
           skeletonArray.map((item) => {
             let tags = [];
@@ -1806,6 +1835,9 @@ export class AppHaxUseCaseFilter extends LitElement {
               originalData: item,
             };
           }) || [];
+
+        // Sort templates by priority so system defaults can float above legacy options.
+        skeletonItemsAll.sort(_sortUseCasesByPriority);
 
         const skeletonItems = skeletonItemsAll.filter(
           (i) =>
@@ -1879,6 +1911,9 @@ export class AppHaxUseCaseFilter extends LitElement {
               originalData: theme,
             };
           });
+
+        // Sort themes by priority so recommended themes float above legacy options.
+        themeItemsAll.sort(_sortUseCasesByPriority);
 
         const themeItems = themeItemsAll.filter(
           (i) =>

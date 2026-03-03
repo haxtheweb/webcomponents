@@ -2,6 +2,7 @@
   "meta": {
     "name": "course-site-template",
     "type": "skeleton",
+    "priority": -2,
     "version": "1.0.0"
   },
   "site": {
