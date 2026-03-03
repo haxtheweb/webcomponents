@@ -90,12 +90,13 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     return {
       audience: { type: String },
       features: { type: Object },
-      haxBlocks: { type: Object },
+      haxBlocks: { type: Array },
       allowedBlocks: { type: Object },
       blockFilter: { type: String, attribute: 'block-filter' },
       busy: { type: Boolean, reflect: true },
       pageCount: { type: Number, attribute: 'page-count' },
       platformConfig: { type: Object },
+      platformSettingsMode: { type: Boolean, attribute: 'platform-settings-mode' },
     }
   }
 
@@ -107,12 +108,13 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       { value: 'expert', label: 'Expert' },
     ];
     this.features = {};
-    this.haxBlocks = {};
+    this.haxBlocks = [];
     this.allowedBlocks = new Set()
     this.blockFilter = ''
     this.busy = false
     this.pageCount = 0
     this.platformConfig = {};
+    this.platformSettingsMode = false;
 
     this.__disposer = []
 
@@ -130,6 +132,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       selectAll: 'Select all',
       deselectAll: 'Deselect all',
       download: 'Download skeleton',
+      savePlatformSettings: 'Save platform settings',
       cancel: 'Cancel',
       generating: 'Generating skeleton…',
       generated: 'Skeleton downloaded',
@@ -407,13 +410,43 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     })
 
     autorun((reaction) => {
-      this.features = toJS(HAXStore.platformConfig.features);
-      
-      const currentGizmos = toJS(HAXStore.gizmoList)
-      this.haxBlocks = currentGizmos.filter(item => 
-        !(item.meta && (item.meta.inlineOnly || item.meta.hidden || item.meta.requiresParent))
+      const platformConfig = toJS(HAXStore.platformConfig);
+      this.platformConfig = platformConfig || {};
+
+      // hydrate local state from platformConfig so the UI reflects current site settings
+      if (platformConfig) {
+        if (platformConfig.audience) {
+          this.audience = platformConfig.audience;
+        }
+
+        if (platformConfig.features) {
+          this.features = toJS(platformConfig.features);
+        } else {
+          this.features = {};
+        }
+
+        // allowedBlocks may arrive as a Set (store) or Array (serialized)
+        const allowedBlocks = platformConfig.allowedBlocks;
+        if (allowedBlocks) {
+          if (allowedBlocks instanceof Set) {
+            this.allowedBlocks = new Set(Array.from(allowedBlocks));
+          } else if (Array.isArray(allowedBlocks)) {
+            this.allowedBlocks = new Set(allowedBlocks);
+          }
+        }
+      } else {
+        this.features = {};
+      }
+
+      const currentGizmos = toJS(HAXStore.gizmoList);
+      const gizmos = Array.isArray(currentGizmos) ? currentGizmos : [];
+      this.haxBlocks = gizmos.filter(
+        (item) =>
+          !(
+            item.meta &&
+            (item.meta.inlineOnly || item.meta.hidden || item.meta.requiresParent)
+          ),
       );
-      console.log(this.haxBlocks)
       this.__disposer.push(reaction)
     })
 
@@ -451,12 +484,12 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     const cmsFeatures = FEATURE_DEFS.filter((f) => f.group === 'CMS')
     const editorFeatures = FEATURE_DEFS.filter((f) => f.group === 'HAX')
 
-    const toggleableTotal = this.haxBlocks
-      ? this.haxBlocks.filter((b) => !b.gizmoList).length
-      : 0
-    const toggleableSelected = this.haxBlocks
-      ? this.haxBlocks.filter((b) => HAXStore.requiredPrimitives.has(b.tag) || this.allowedBlocks.has(b.tag)).length
-      : 0
+    const blocks = Array.isArray(this.haxBlocks) ? this.haxBlocks : []
+
+    const toggleableTotal = blocks.filter((b) => !b.gizmoList).length
+    const toggleableSelected = blocks.filter(
+      (b) => HAXStore.requiredPrimitives.has(b.tag) || this.allowedBlocks.has(b.tag),
+    ).length
 
     let toolbarImgPath = new URL(`./assets/${this.audience.toLowerCase()}.png`, import.meta.url).href
     return html`
@@ -580,7 +613,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           </div>
 
           <div class="blocks-list">
-            ${this._groupBlocksByCategory(this.haxBlocks).map(
+            ${this._groupBlocksByCategory(blocks).map(
               (group) => html`
                 <details class="block-category">
                   <summary class="block-category-title">
@@ -618,8 +651,15 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         <button class="action secondary" @click="${this._cancel}">
           ${this.t.cancel}
         </button>
-        <button class="action" @click="${this._download}">
-          ${this.busy ? this.t.generating : this.t.download}
+        <button
+          class="action"
+          @click="${this.platformSettingsMode ? this._savePlatformSettings : this._download}"
+        >
+          ${this.busy
+            ? this.t.generating
+            : this.platformSettingsMode
+              ? this.t.savePlatformSettings
+              : this.t.download}
         </button>
       </div>
     `
@@ -727,7 +767,12 @@ console.log(this.features)
         break;
       }
       case "all-blocks": {
-        this.allowedBlocks = new Set(this.haxBlocks.filter(item => !HAXStore.requiredPrimitives.has(item.tag)).map(item => item.tag));
+        const blocks = Array.isArray(this.haxBlocks) ? this.haxBlocks : []
+        this.allowedBlocks = new Set(
+          blocks
+            .filter((item) => !HAXStore.requiredPrimitives.has(item.tag))
+            .map((item) => item.tag),
+        );
         const container = this.shadowRoot.querySelector(`.blocks-list`);
         const checkboxes = container.querySelectorAll('input[type="checkbox"]');
         checkboxes.forEach((item) => {
@@ -912,6 +957,43 @@ console.log(this.features)
       console.error('Skeleton export failed:', error)
       HAXStore.toast(
         `Skeleton export failed: ${error.message}`,
+        5000,
+        {},
+        'fit-bottom',
+      )
+    }
+
+    this.busy = false
+  }
+
+  async _savePlatformSettings() {
+    try {
+      this.busy = true
+      const platformConfig = this._platformConfigForExport()
+
+      // bubble up to the site editor, which owns the iron-ajax calls
+      this.dispatchEvent(
+        new CustomEvent('haxcms-save-platform-settings', {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: platformConfig,
+        }),
+      )
+
+      // close modal; successful write will reload (just like saving the manifest)
+      this.dispatchEvent(
+        new CustomEvent('simple-modal-hide', {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: false,
+        }),
+      )
+    } catch (error) {
+      console.error('Saving platform settings failed:', error)
+      HAXStore.toast(
+        `Saving platform settings failed: ${error.message}`,
         5000,
         {},
         'fit-bottom',

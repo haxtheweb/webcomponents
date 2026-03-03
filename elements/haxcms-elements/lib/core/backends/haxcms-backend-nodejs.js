@@ -164,6 +164,8 @@ class HAXCMSBackendNodeJS extends LitElement {
               globalThis.appSettings.saveOutlinePath;
             store.cmsSiteEditor.instance.saveNodeDetailsPath =
               globalThis.appSettings.saveNodeDetailsPath || globalThis.appSettings.saveNodePath;
+            store.cmsSiteEditor.instance.savePlatformSettingsPath =
+              globalThis.appSettings.savePlatformSettingsPath;
             store.cmsSiteEditor.instance.getSiteFieldsPath =
               globalThis.appSettings.getSiteFieldsPath;
             store.cmsSiteEditor.instance.getFormToken =

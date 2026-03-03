@@ -121,6 +121,17 @@ class HAXCMSSiteEditor extends LitElement {
       <iron-ajax
         reject-with-request
         .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        id="platformsettingsajax"
+        .url="${this.savePlatformSettingsPath}"
+        .method="${this.method}"
+        content-type="application/json"
+        handle-as="json"
+        @response="${this._handlePlatformSettingsResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="createajax"
         .url="${this.createNodePath}"
         .method="${this.method}"
@@ -201,6 +212,14 @@ class HAXCMSSiteEditor extends LitElement {
       saveNodePath: {
         type: String,
         attribute: "save-node-path",
+      },
+
+      /**
+       * end point for saving platform settings to site.json
+       */
+      savePlatformSettingsPath: {
+        type: String,
+        attribute: "save-platform-settings-path",
       },
 
       /**
@@ -542,6 +561,12 @@ class HAXCMSSiteEditor extends LitElement {
     globalThis.addEventListener(
       "haxcms-save-site-data",
       this.saveManifest.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+
+    globalThis.addEventListener(
+      "haxcms-save-platform-settings",
+      this.savePlatformSettings.bind(this),
       { signal: this.windowControllers.signal },
     );
 
@@ -1071,6 +1096,22 @@ class HAXCMSSiteEditor extends LitElement {
     }, 300);
   }
 
+  _handlePlatformSettingsResponse(e) {
+    // mirror the site manifest save UX
+    store.playSound("coin");
+    this.dispatchEvent(
+      new CustomEvent("haxcms-trigger-update", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true,
+      }),
+    );
+    setTimeout(() => {
+      globalThis.location.reload();
+    }, 300);
+  }
+
   _handleNodeDetailsResponse(e) {
     setTimeout(() => {
       store.playSound("coin");
@@ -1232,6 +1273,20 @@ class HAXCMSSiteEditor extends LitElement {
       this.querySelector("#manifestupdateajax").body = values;
       this.setProcessingVisual();
       this.querySelector("#manifestupdateajax").generateRequest();
+    }
+  }
+
+  savePlatformSettings(e) {
+    if (this.savePlatformSettingsPath) {
+      this.querySelector("#platformsettingsajax").body = {
+        jwt: this.jwt,
+        site: {
+          name: this.manifest.metadata.site.name,
+        },
+        platform: e.detail,
+      };
+      this.setProcessingVisual();
+      this.querySelector("#platformsettingsajax").generateRequest();
     }
   }
   /**

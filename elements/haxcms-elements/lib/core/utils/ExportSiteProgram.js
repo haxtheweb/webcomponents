@@ -94,7 +94,7 @@ export function createExportSiteProgram(context) {
 }
 
 // Export site method to be added to haxcms-site-editor-ui class
-export async function exportSiteAs(format) {
+export async function exportSiteAs(format, options = {}) {
   try {
     const manifest = toJS(store.manifest);
     if (!manifest || !manifest.metadata) {
@@ -137,7 +137,7 @@ export async function exportSiteAs(format) {
         break;
 
       case "skeleton":
-        await this._exportSiteAsSkeleton(manifest, siteTitle, baseUrl);
+        await this._exportSiteAsSkeleton(manifest, siteTitle, baseUrl, options);
         break;
 
       default:
@@ -421,12 +421,22 @@ export function _downloadBlob(blob, filename) {
 }
 
 // Export site as skeleton template
-export async function _exportSiteAsSkeleton(manifest, title, baseUrl) {
+export async function _exportSiteAsSkeleton(manifest, title, baseUrl, options = {}) {
   try {
     // Load the modal UI on demand
     await import("../ui/haxcms-site-platform-ui.js");
 
     const el = globalThis.document.createElement("haxcms-site-platform-ui");
+
+    // platform settings mode uses the same UI but saves to the backend
+    if (options && options.platformSettings) {
+      el.platformSettingsMode = true;
+    }
+
+    const modalTitle =
+      options && options.platformSettings
+        ? "Edit platform settings"
+        : "Export site skeleton";
 
     // Present a modal similar to outline-designer workflows
     globalThis.dispatchEvent(
@@ -435,7 +445,7 @@ export async function _exportSiteAsSkeleton(manifest, title, baseUrl) {
         cancelable: true,
         composed: true,
         detail: {
-          title: "Export site skeleton",
+          title: modalTitle,
           elements: {
             content: el,
           },

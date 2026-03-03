@@ -3710,6 +3710,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }
     });
 
+    // Edit platform settings (developer-only)
+    SuperDaemonInstance.defineOption({
+      title: "Edit Platform Settings",
+      icon: "hax:home-edit",
+      tags: ["Developer", "platform", "settings", "skeleton"],
+      eventName: "super-daemon-element-method",
+      path: ">settings/platform",
+      context: [">"],
+      more: html`<span>Edit the platform settings for this site</span>`,
+      voice: "edit platform settings",
+      value: {
+        target: this,
+        method: "exportSiteAs",
+        args: ["skeleton", { platformSettings: true }],
+      },
+    });
+
     SuperDaemonInstance.defineOption({
       title: "HAX Labs",
       icon: "hax:hax2022",
@@ -4324,9 +4341,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
 
   // Export methods from ExportSiteProgram
-  async exportSiteAs(format) {
+  async exportSiteAs(format, options = {}) {
     const { exportSiteAs } = await import("./utils/ExportSiteProgram.js");
-    return exportSiteAs.call(this, format);
+    return exportSiteAs.call(this, format, options);
   }
 
   async _exportSiteAsHTML(manifest, title, baseUrl) {
@@ -4363,11 +4380,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     return _downloadSiteArchive.call(this);
   }
 
-  async _exportSiteAsSkeleton(manifest, title, baseUrl) {
+  async _exportSiteAsSkeleton(manifest, title, baseUrl, options = {}) {
     const { _exportSiteAsSkeleton } = await import(
       "./utils/ExportSiteProgram.js"
     );
-    return _exportSiteAsSkeleton.call(this, manifest, title, baseUrl);
+    return _exportSiteAsSkeleton.call(this, manifest, title, baseUrl, options);
   }
 
   // Utility methods from both export programs

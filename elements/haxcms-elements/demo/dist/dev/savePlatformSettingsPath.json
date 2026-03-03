@@ -1,0 +1,26 @@
+{
+  "status": 200,
+  "data": {
+    "saved": true,
+    "platform": {
+      "audience": "novice",
+      "features": {
+        "addPage": false,
+        "deletePage": false,
+        "outlineDesigner": false,
+        "styleGuide": false,
+        "insights": false,
+        "manifest": false,
+        "pageBreak": false,
+        "addBlock": false,
+        "contentMap": false,
+        "viewSource": false,
+        "onlineSearch": false
+      },
+      "allowedBlocks": [
+        "p",
+        "video-player"
+      ]
+    }
+  }
+}

@@ -398,6 +398,11 @@ class Store {
       delete manifest.metadata.dynamicElementLoader;
       delete manifest.metadata.fields;
     }
+    // Ensure platform exists so platformConfig is never null downstream
+    if (!manifest.metadata.platform) {
+      manifest.metadata.platform = {};
+    }
+
     // repair slug not being in earlier builds of json schema
     await manifest.items.forEach((item, index, array) => {
       // if we did not have a slug, generate one off location
