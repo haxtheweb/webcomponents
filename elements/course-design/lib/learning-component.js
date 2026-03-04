@@ -2,29 +2,29 @@
  * Copyright 2021
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
-import "@haxtheweb/simple-tooltip/simple-tooltip.js";
-import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
-import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
-  learningComponentNouns,
-  learningComponentVerbs,
-  learningComponentTypes,
-  learningComponentColors,
   iconFromPageType,
+  learningComponentColors,
+  learningComponentNouns,
+  learningComponentTypes,
+  learningComponentVerbs,
 } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import { css, html } from "lit";
 
 // export as other things have imported this previously
 export {
-  learningComponentNouns,
-  learningComponentVerbs,
-  learningComponentTypes,
-  learningComponentColors,
   iconFromPageType,
+  learningComponentColors,
+  learningComponentNouns,
+  learningComponentTypes,
+  learningComponentVerbs,
 };
 /**
  * `learning-component`
@@ -88,8 +88,6 @@ class LearningComponent extends I18NMixin(DDD) {
         :host {
           display: block;
           margin: var(--ddd-spacing-4) 0;
-          color: black;
-          background-color: var(--ddd-theme-accent, white);
         }
         .header {
           display: grid;

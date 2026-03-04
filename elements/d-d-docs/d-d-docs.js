@@ -210,10 +210,10 @@ class DDDocs extends DDD {
       >
         ${Object.keys(ApplicationAttributeData.primary).map(
           (key) => html`
-            <simple-cta data-primary="${key}" data-pulse
+            <simple-cta data-primary="${key}" data-pulse="1"
               >Primary-${key}</simple-cta
             >
-            <simple-cta data-primary="${key}" data-pulse light
+            <simple-cta data-primary="${key}" data-pulse="1" light
               >Primary-${key}</simple-cta
             >
           `,
@@ -2007,9 +2007,15 @@ class DDDocs extends DDD {
           'block-code', redundant, but avoids common 'block' class name
         </code>
         <pre>
-    Here is an    example of a    block using the    'pre'    tag on it's    own</pre
+    Here is an    example of a    block using the         'pre'    tag on it's    own</pre
         >
-        <p>Here is a good example of some <mark>Highlighted Text</mark></p>
+        <p>
+          Here is a good example of some
+          <mark
+            >Here's a super long version of a Highlighted Text that extends
+            beyond the end of the border box</mark
+          >
+        </p>
         <p>
           Here is an example of an abbreviation:
           <abbr title="Pennsylvania State University">Penn State</abbr>
@@ -2022,6 +2028,10 @@ class DDDocs extends DDD {
           <li><a href="#">NEW: Polymer Engineering and Science Degree</a></li>
           <li><a href="#">NEW: Digital Media Arts and Technology</a></li>
         </ul>
+        <p>Here's an example of a sub: H<sub>2</sub>O</p>
+        <p>And a sup: x<sup>3</sup> = 9</p>
+        <p>My favorite color is <del>blue</del> <ins>red</ins>!</p>
+        <p><s>My car is blue.</s></p>
       </div>
     `;
   }
