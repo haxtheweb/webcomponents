@@ -2933,7 +2933,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             class="top-bar-button"
             id="manifestbtn"
             ?disabled="${this.editMode}"
-            ?hidden="${this.editMode || !store.platformAllows("manifest")}"
+            ?hidden="${this.editMode}"
             label="${this.t.siteSettings} • Ctrl⇧5"
           ></simple-toolbar-button>
           <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
@@ -4949,9 +4949,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           );
         } else {
           // Non-edit mode: Site settings
-          if (store.platformAllows("manifest")) {
-            this._manifestButtonTap(e);
-          }
+          this._manifestButtonTap(e);
         }
       },
       condition: () => store.isLoggedIn,

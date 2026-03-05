@@ -16,6 +16,12 @@ const FEATURE_DEFS = [
     group: 'CMS',
   },
   {
+    key: 'saveAndEdit',
+    label: 'Add pages',
+    icon: 'hax:add-page',
+    group: 'CMS',
+  },
+  {
     key: 'deletePage',
     label: 'Delete pages',
     icon: 'icons:delete',
@@ -40,7 +46,25 @@ const FEATURE_DEFS = [
     group: 'CMS',
   },
   {
-    key: 'manifest',
+    key: 'siteManifest',
+    label: 'Site settings',
+    icon: 'hax:home-edit',
+    group: 'CMS',
+  },
+  {
+    key: 'themeManifest',
+    label: 'Site settings',
+    icon: 'hax:home-edit',
+    group: 'CMS',
+  },
+  {
+    key: 'authorManifest',
+    label: 'Site settings',
+    icon: 'hax:home-edit',
+    group: 'CMS',
+  },
+  {
+    key: 'seoManifest',
     label: 'Site settings',
     icon: 'hax:home-edit',
     group: 'CMS',
@@ -58,6 +82,18 @@ const FEATURE_DEFS = [
     group: 'HAX',
   },
   {
+    key: 'popularGizmos',
+    label: 'Add blocks',
+    icon: 'hax:add-brick',
+    group: 'HAX',
+  },
+  {
+    key: 'recentGizmos',
+    label: 'Add blocks',
+    icon: 'hax:add-brick',
+    group: 'HAX',
+  },
+  {
     key: 'contentMap',
     label: 'Page structure (content map)',
     icon: 'hax:newspaper',
@@ -70,7 +106,19 @@ const FEATURE_DEFS = [
     group: 'HAX',
   },
   {
-    key: 'onlineSearch',
+    key: 'uploadMedia',
+    label: 'Online search',
+    icon: 'hax:add-page',
+    group: 'HAX',
+  },
+  {
+    key: 'onlineMedia',
+    label: 'Online search',
+    icon: 'hax:add-page',
+    group: 'HAX',
+  },
+  {
+    key: 'community',
     label: 'Online search',
     icon: 'hax:add-page',
     group: 'HAX',
