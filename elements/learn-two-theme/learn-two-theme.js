@@ -72,8 +72,8 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
             --learn-two-theme-headers-text-rendering,
             optimizeLegibility
           );
-          line-height: var(--learn-two-theme-headers-line-height, 150%);
-          letter-spacing: var(--learn-two-theme-headers-letter-spacing, 150%);
+          line-height: var(--learn-two-theme-headers-line-height);
+          letter-spacing: var(--learn-two-theme-headers-letter-spacing);
         }
 
         :host([hidden]) {
