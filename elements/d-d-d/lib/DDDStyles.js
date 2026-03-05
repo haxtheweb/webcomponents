@@ -2334,7 +2334,7 @@ export const DDDReset = css`
     pointer-events: auto;
     cursor: pointer;
     outline-color: var(--ddd-theme-primary, var(--ddd-theme-default-info));
-    color: var(--ddd-theme-bgContrast, black);
+    color: var(--ddd-theme-bgContrast, var(--lowContrast-override, white));
     position: relative;
   }
   abbr:focus,
