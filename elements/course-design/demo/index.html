@@ -1,59 +1,71 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
     <title>CourseDesign: course-design Demo</title>
     <script>
       window.process = window.process || {
         env: {
-          NODE_ENV: "production"
-        }
+          NODE_ENV: "production",
+        },
       };
     </script>
     <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
 
-    <script src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js" charset="UTF-8"></script>
+    <script
+      src="https://h5p.org/sites/all/modules/h5p/library/js/h5p-resizer.js"
+      charset="UTF-8"
+    ></script>
     <script type="module">
-      
       import "@haxtheweb/demo-snippet/demo-snippet.js";
-      import '../lib/block-quote.js';
-      import '../lib/block-quote.js';
-      import '../lib/ebook-button.js';
-      import '../lib/lrn-h5p.js';
-      import '../lib/course-intro.js';
-      import '../lib/learning-component.js';
-      import '../lib/activity-box.js';
-      import '../lib/worksheet-download.js';
+      import "../lib/block-quote.js";
+      import "../lib/block-quote.js";
+      import "../lib/ebook-button.js";
+      import "../lib/lrn-h5p.js";
+      import "../lib/course-intro.js";
+      import "../lib/learning-component.js";
+      import "../lib/activity-box.js";
+      import "../lib/worksheet-download.js";
     </script>
-    
   </head>
   <body>
     <div class="vertical-section-container centered">
       <h3>Basic usage of activity-box</h3>
       <demo-snippet>
         <template>
-          <learning-component data-accent="6" data-primary="20" subtitle="Step 2: Interview Potential Customers  here is a super long title in order to be able to recreate the bug that was occuring" url="https://www.google.com/" accent-color="orange" title="Learning Objectives here is a super long title in order to be able to recreate the bug that was occuring" icon="courseicons:learning-objectives" type="">
-
+          <learning-component
+            data-accent="6"
+            data-primary="20"
+            subtitle="Step 2: Interview Potential Customers  here is a super long title in order to be able to recreate the bug that was occuring"
+            url="https://www.google.com/"
+            accent-color="orange"
+            title="Learning Objectives here is a super long title in order to be able to recreate the bug that was occuring"
+            icon="courseicons:learning-objectives"
+            type=""
+          >
             <p>This step includes three parts:&nbsp;</p>
             <ul>
-          
               <li>
-          
                 <a href="/step2-part1">Part 1: Figure Out What To Ask</a>
               </li>
               <li>
-          
                 <a href="/step2-part2">Part 2: Find People To Interview</a>
-          &nbsp;
-          
+                &nbsp;
               </li>
               <li>
-          
                 <a href="/step2-part3">Part 3: Conduct Customer Interviews</a>
               </li>
             </ul>
-            <p>In Step 2, you will be interviewing potential customers to find out if your assumptions are correct or where they fall short. This process helps you make sure that you are building something that solves a real problem for real customers.</p>
+            <p>
+              In Step 2, you will be interviewing potential customers to find
+              out if your assumptions are correct or where they fall short. This
+              process helps you make sure that you are building something that
+              solves a real problem for real customers.
+            </p>
           </learning-component>
           <learning-component icon="av:explicit">
             <div>
@@ -111,11 +123,25 @@
           <learning-component type="connection" subtitle="Unit 1">
             <div>This specific chemistry foundation is related to...</div>
           </learning-component>
-          <learning-component type="strategy" subtitle="Draw a Diagram" url="https://www.google.com/">
-            <div>In order to better understand this complex process, try drawing a diagam to help undestand the concept..</div>
+          <learning-component
+            type="strategy"
+            subtitle="Draw a Diagram"
+            url="https://www.google.com/"
+          >
+            <div>
+              In order to better understand this complex process, try drawing a
+              diagam to help undestand the concept..
+            </div>
           </learning-component>
-          <learning-component type="strategy" subtitle="Draw a Diagram" url="https://www.google.com/">
-            <div>In order to better understand this complex process, try drawing a diagam to help undestand the concept..</div>
+          <learning-component
+            type="strategy"
+            subtitle="Draw a Diagram"
+            url="https://www.google.com/"
+          >
+            <div>
+              In order to better understand this complex process, try drawing a
+              diagam to help undestand the concept..
+            </div>
           </learning-component>
           <learning-component type="assessment" subtitle="Unit 1">
             <div>Did you know that the topic in this lessson relates to...</div>
@@ -207,14 +233,20 @@
           </activity-box>
         </template>
       </demo-snippet>
+      <activity-box data-primary="0" data-accent="1" icon="settings">
+        Drag &amp; drop - drag the icons to the matching descriptions.
+      </activity-box>
       <h3>block-quote</h3>
       <demo-snippet>
         <template>
-          <block-quote citation="Albert Einstein" image="https://www.vidavetcare.com/wp-content/uploads/sites/234/2022/04/golden-retriever-dog-breed-info.jpeg">
+          <block-quote
+            citation="Albert Einstein"
+            image="https://www.vidavetcare.com/wp-content/uploads/sites/234/2022/04/golden-retriever-dog-breed-info.jpeg"
+          >
             <span slot="quote">
-              I was sitting in a chair in the patent office at Bern, when all of a sudden
-              a thought occurred to me: ‘If a person falls freely, he will not feel his
-              own weight.
+              I was sitting in a chair in the patent office at Bern, when all of
+              a sudden a thought occurred to me: ‘If a person falls freely, he
+              will not feel his own weight.
             </span>
           </block-quote>
         </template>
@@ -222,19 +254,34 @@
       <h3>worksheet-download</h3>
       <demo-snippet>
         <template>
-          <worksheet-download title="Download site schema" link="https://btopro.com/site.json"></worksheet-download>
+          <worksheet-download
+            title="Download site schema"
+            link="https://btopro.com/site.json"
+          ></worksheet-download>
         </template>
       </demo-snippet>
       <h3>ebook-button</h3>
       <demo-snippet>
         <template>
-          <ebook-button title="Check out the website text" link="https://btopro.com/"></ebook-button>
+          <ebook-button
+            title="Check out the website text"
+            link="https://btopro.com/"
+          ></ebook-button>
         </template>
       </demo-snippet>
       <h3>lrn-h5p</h3>
       <demo-snippet>
         <template>
-          <lrn-h5p><iframe src="https://h5p.org/h5p/embed/612" width="1090" height="639" frameborder="0" allowfullscreen="allowfullscreen" allow="geolocation *; microphone *; camera *; midi *; encrypted-media *"></iframe></lrn-h5p>
+          <lrn-h5p
+            ><iframe
+              src="https://h5p.org/h5p/embed/612"
+              width="1090"
+              height="639"
+              frameborder="0"
+              allowfullscreen="allowfullscreen"
+              allow="geolocation *; microphone *; camera *; midi *; encrypted-media *"
+            ></iframe
+          ></lrn-h5p>
         </template>
       </demo-snippet>
     </div>

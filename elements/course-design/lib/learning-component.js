@@ -143,11 +143,28 @@ class LearningComponent extends I18NMixin(DDD) {
         .content {
           padding: var(--ddd-spacing-5) var(--ddd-spacing-3)
             var(--ddd-spacing-5) var(--ddd-spacing-6);
+          background-color: light-dark(
+            var(
+              --ddd-theme-acccent,
+              var(--ddd-theme-default-limestoneMaxLight, inherit)
+            ),
+            var(
+              --ddd-theme-acccent,
+              var(--ddd-theme-default-coalyGray, inherit)
+            )
+          );
+          border-color: var(
+            --ddd-component-learning-component-title-background,
+            var(
+              --ddd-theme-primary,
+              var(--simple-colors-default-theme-accent-8, #dc7927)
+            )
+          ) !important;
+          position: relative;
         }
 
-        .urlPresent {
-          display: grid;
-          grid-template-columns: 1fr 0.1fr;
+        .content.urlPresent {
+          padding-right: var(--ddd-spacing-12);
         }
 
         @media screen and (min-width: 320px) {
@@ -158,9 +175,9 @@ class LearningComponent extends I18NMixin(DDD) {
             font-size: var(--ddd-font-size-4xs);
           }
           .urlbutton {
-            display: flex;
-            flex-direction: column;
-            justify-content: end;
+            position: absolute;
+            right: -16px;
+            bottom: 0;
           }
           simple-icon-lite {
             aspect-ratio: 1 / 1;
@@ -192,15 +209,15 @@ class LearningComponent extends I18NMixin(DDD) {
           }
         }
 
+        /* The following classes are duplicated from DDDStyle, but for some reason need to be redundant otherwise the styling breaks. */
+
         .b-sm {
           border: var(--ddd-border-sm);
         }
         .r-circle {
           border-radius: var(--ddd-radius-circle);
         }
-        .lh-120 {
-          line-height: var(--ddd-lh-120);
-        }
+
         .bt-0 {
           border-top: none;
         }

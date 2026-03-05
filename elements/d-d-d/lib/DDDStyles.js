@@ -1194,11 +1194,9 @@ export const DDDDataAttributes = [
     }
 
     [data-primary] {
-      --ddd-theme-primary: var(--ddd-primary-0);
+      --lowContrast-override: unset;
       --ddd-theme-bgContrast: unset;
-    }
-    [data-primary=""] {
-      --lowContrast-override: black;
+      --ddd-theme-primary: var(--ddd-primary-0);
     }
     [data-primary="0"] {
       --ddd-theme-primary: var(--ddd-primary-0);
