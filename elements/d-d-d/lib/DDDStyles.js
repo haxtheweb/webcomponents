@@ -2326,7 +2326,7 @@ export const DDDReset = css`
     box-decoration-break: clone;
   }
   abbr {
-    background-color: var(--ddd-theme-primary, (--ddd-theme-default-info));
+    background-color: var(--ddd-theme-primary, var(--ddd-theme-default-info));
     transition: all 0.3s ease 0s;
     padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
     font-style: italic;
