@@ -975,6 +975,10 @@ console.log(this.features)
       const skeleton = await SiteSkeletonGenerator.generateFromCurrentSite(true)
 
       const platformConfig = this._platformConfigForExport()
+      if (!skeleton.site) {
+        skeleton.site = {}
+      }
+      skeleton.site.platform = platformConfig
       if (!skeleton._skeleton) {
         skeleton._skeleton = {}
       }

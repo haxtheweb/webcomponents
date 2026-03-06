@@ -32,6 +32,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.promises = [];
     this.max = 100;
     this.skeletonData = null;
+    this.skeletonMachineName = null;
     // Used to decide if we should write `name=` into the URL
     this.__defaultSiteName = "";
   }
@@ -55,6 +56,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       promises: { type: Array },
       max: { type: Number },
       skeletonData: { type: Object },
+      skeletonMachineName: { type: String },
     };
   }
 
@@ -667,6 +669,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.siteUrl = "";
     this.themeElement = "";
     this.skeletonData = null;
+    this.skeletonMachineName = null;
 
     this.dispatchEvent(
       new CustomEvent("modal-closed", {
@@ -743,6 +746,41 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     return true;
   }
 
+  _extractSkeletonMachineName() {
+    if (!this.skeletonData || typeof this.skeletonData !== "object") {
+      return null;
+    }
+    let machineName = null;
+    if (
+      this.skeletonData.meta &&
+      typeof this.skeletonData.meta === "object" &&
+      this.skeletonData.meta.machineName &&
+      typeof this.skeletonData.meta.machineName === "string"
+    ) {
+      machineName = this.skeletonData.meta.machineName;
+    } else if (
+      this.skeletonData.meta &&
+      typeof this.skeletonData.meta === "object" &&
+      this.skeletonData.meta.name &&
+      typeof this.skeletonData.meta.name === "string"
+    ) {
+      machineName = this.skeletonData.meta.name;
+    } else if (
+      this.skeletonData.metadata &&
+      typeof this.skeletonData.metadata === "object" &&
+      this.skeletonData.metadata.skeleton &&
+      typeof this.skeletonData.metadata.skeleton === "object" &&
+      this.skeletonData.metadata.skeleton.machineName &&
+      typeof this.skeletonData.metadata.skeleton.machineName === "string"
+    ) {
+      machineName = this.skeletonData.metadata.skeleton.machineName;
+    }
+    if (!machineName) {
+      return null;
+    }
+    return machineName.replace(/\.json$/i, "").trim();
+  }
+
   async createSite() {
     if (!this.validateSiteName()) {
       return;
@@ -762,11 +800,14 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       if (this.skeletonData.build.files) {
         store.itemFiles = this.skeletonData.build.files;
       }
+      store.skeletonMachineName =
+        this.skeletonMachineName || this._extractSkeletonMachineName();
     } else {
       store.site.structure = this.themeElement || "website";
       store.site.type = "own";
       store.items = null;
       store.itemFiles = null;
+      store.skeletonMachineName = null;
     }
     store.site.theme = this.themeElement || "polaris-flex-theme"; // Use selected theme
 

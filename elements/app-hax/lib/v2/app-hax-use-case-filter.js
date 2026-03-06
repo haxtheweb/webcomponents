@@ -2108,6 +2108,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       modal.source = "";
       modal.template = "Blank Site";
       modal.themeElement = "clean-one";
+      modal.skeletonMachineName = null;
       // Generate skeleton data for fallback blank site with Home page
       modal.skeletonData = {
         meta: {
@@ -2205,6 +2206,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     modal.description = selectedTemplate.useCaseDescription;
     modal.source = selectedTemplate.useCaseImage;
     modal.template = selectedTemplate.useCaseTitle;
+    modal.skeletonMachineName = null;
 
     // Import options (existing sites / migrations)
     if (selectedTemplate.dataType === "import") {
@@ -2226,6 +2228,12 @@ export class AppHaxUseCaseFilter extends LitElement {
 
     if (selectedTemplate.dataType === "skeleton" && selectedTemplate.skeletonUrl) {
       try {
+        if (
+          selectedTemplate.machineName &&
+          typeof selectedTemplate.machineName === "string"
+        ) {
+          modal.skeletonMachineName = selectedTemplate.machineName;
+        }
         const rawUrl = selectedTemplate.skeletonUrl || "";
         const safeUrl = this._resolveSameOriginPath(rawUrl);
 
@@ -2250,6 +2258,19 @@ export class AppHaxUseCaseFilter extends LitElement {
           const skeletonData = await response.json();
           // Store skeleton data for use in site creation
           modal.skeletonData = skeletonData.data || skeletonData;
+          if (!modal.skeletonMachineName && modal.skeletonData.meta) {
+            if (
+              modal.skeletonData.meta.machineName &&
+              typeof modal.skeletonData.meta.machineName === "string"
+            ) {
+              modal.skeletonMachineName = modal.skeletonData.meta.machineName;
+            } else if (
+              modal.skeletonData.meta.name &&
+              typeof modal.skeletonData.meta.name === "string"
+            ) {
+              modal.skeletonMachineName = modal.skeletonData.meta.name;
+            }
+          }
           modal.themeElement =
             (modal.skeletonData.site && modal.skeletonData.site.theme) ||
             "clean-one";
@@ -2276,6 +2297,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         return;
       }
     } else if (selectedTemplate.dataType === "blank") {
+      modal.skeletonMachineName = null;
       // Generate skeleton data for blank themes with a Home page
       const themeElement =
         selectedTemplate.themeElement ||
@@ -2321,6 +2343,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         modal.themeElement = "clean-one"; // fallback
       }
     } else {
+      modal.skeletonMachineName = null;
       modal.themeElement = "clean-one"; // fallback
     }
 
@@ -2395,6 +2418,7 @@ export class AppHaxUseCaseFilter extends LitElement {
         );
 
         modal.themeElement = modal.themeElement || "clean-one";
+        modal.skeletonMachineName = null;
         modal.skeletonData = {
           meta: {
             name: selectedTemplate.importType,

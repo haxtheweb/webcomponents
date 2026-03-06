@@ -16,6 +16,7 @@ class Store {
     this.version = "0.0.0";
     this.items = null;
     this.itemFiles = null;
+    this.skeletonMachineName = null;
     this.refreshSiteList = true;
     this.createSiteSteps = false;
     fetch(new URL("../../../haxcms-elements/package.json", import.meta.url))
@@ -182,6 +183,7 @@ class Store {
       createSiteSteps: observable, // if we're making a site or in another part of app
       step: observable, // step that we're on in our build
       site: observable, // information about the site being created
+      skeletonMachineName: observable, // trusted skeleton reference for server-side generation
       newSitePromiseList: observable,
       items: observable, // site items / structure from a docx micro if option selected
       itemFiles: observable, // files related to the items to be imported from another site format

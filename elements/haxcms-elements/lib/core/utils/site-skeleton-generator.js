@@ -31,6 +31,8 @@ export class SiteSkeletonGenerator {
     }
 
     const themeConfig = this.extractThemeConfiguration(manifest);
+    const originalMetadata = this.extractSiteMetadata(manifest);
+    const originalSettings = this.extractSiteSettings(manifest);
     const structure = await this.extractSiteStructure(manifest.items);
     const files = await this.extractSiteFiles();
 
@@ -39,6 +41,10 @@ export class SiteSkeletonGenerator {
       // Metadata for discoverability and template management
       meta: {
         name: this.getSiteMetaName(manifest),
+        // machineName is required for downstream template systems (even if name changes later)
+        machineName: this.getSiteMetaName(manifest),
+        // priority allows sorting / ordering of templates; default to 0 so it can be adjusted later
+        priority: 0,
         description: this.getSiteDescription(manifest),
         version: "1.0.0",
         created: new Date().toISOString(),
@@ -58,6 +64,8 @@ export class SiteSkeletonGenerator {
         name: this.getSiteMetaName(manifest),
         description: this.getSiteDescription(manifest),
         theme: themeConfig.element || "clean-one",
+        settings: originalSettings || {},
+        platform: originalMetadata.platform || {},
       },
 
       build: {
@@ -76,8 +84,8 @@ export class SiteSkeletonGenerator {
 
       // Additional metadata for template system
       _skeleton: {
-        originalMetadata: this.extractSiteMetadata(manifest),
-        originalSettings: this.extractSiteSettings(manifest),
+        originalMetadata: originalMetadata,
+        originalSettings: originalSettings,
         fullThemeConfig: themeConfig,
       },
     };
