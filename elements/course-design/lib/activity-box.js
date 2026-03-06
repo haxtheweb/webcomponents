@@ -1,13 +1,10 @@
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { DDDDataAttributes } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
-import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import { css, html } from "lit";
+import { LitElement, css, html } from "lit";
 
-export class ActivityBox extends I18NMixin(DDD) {
+export class ActivityBox extends LitElement {
   static get styles() {
     return [
       super.styles,
-      ...DDDDataAttributes,
       css`
         :host {
           display: block;
@@ -92,6 +89,7 @@ export class ActivityBox extends I18NMixin(DDD) {
           padding: var(--activity-box-content-padding, 0px 0px 0px 85px);
           margin-bottom: 13px !important;
           max-width: 100%;
+          font-size: 126%;
         }
         :host([icon="null"]) .pullout,
         :host([icon="null"]) .tag,
@@ -178,7 +176,7 @@ export class ActivityBox extends I18NMixin(DDD) {
             ><simple-icon icon="check-circle"></simple-icon>${this.tag}</span
           >
         </div>
-        <div data-font-size="s" class="pullout"><slot></slot></div>
+        <div class="pullout"><slot></slot></div>
       </div>
     `;
   }
