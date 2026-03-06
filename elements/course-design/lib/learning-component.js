@@ -2,29 +2,29 @@
  * Copyright 2021
  * @license Apache-2.0, see License.md for full text.
  */
-import { html, css } from "lit";
-import "@haxtheweb/simple-tooltip/simple-tooltip.js";
-import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
-import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
-import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import {
-  learningComponentNouns,
-  learningComponentVerbs,
-  learningComponentTypes,
-  learningComponentColors,
   iconFromPageType,
+  learningComponentColors,
+  learningComponentNouns,
+  learningComponentTypes,
+  learningComponentVerbs,
 } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
+import { css, html } from "lit";
 
 // export as other things have imported this previously
 export {
-  learningComponentNouns,
-  learningComponentVerbs,
-  learningComponentTypes,
-  learningComponentColors,
   iconFromPageType,
+  learningComponentColors,
+  learningComponentNouns,
+  learningComponentTypes,
+  learningComponentVerbs,
 };
 /**
  * `learning-component`
@@ -88,8 +88,6 @@ class LearningComponent extends I18NMixin(DDD) {
         :host {
           display: block;
           margin: var(--ddd-spacing-4) 0;
-          color: black;
-          background-color: var(--ddd-theme-accent, white);
         }
         .header {
           display: grid;
@@ -145,11 +143,28 @@ class LearningComponent extends I18NMixin(DDD) {
         .content {
           padding: var(--ddd-spacing-5) var(--ddd-spacing-3)
             var(--ddd-spacing-5) var(--ddd-spacing-6);
+          background-color: light-dark(
+            var(
+              --ddd-theme-acccent,
+              var(--ddd-theme-default-limestoneMaxLight, inherit)
+            ),
+            var(
+              --ddd-theme-acccent,
+              var(--ddd-theme-default-coalyGray, inherit)
+            )
+          );
+          border-color: var(
+            --ddd-component-learning-component-title-background,
+            var(
+              --ddd-theme-primary,
+              var(--simple-colors-default-theme-accent-8, #dc7927)
+            )
+          ) !important;
+          position: relative;
         }
 
-        .urlPresent {
-          display: grid;
-          grid-template-columns: 1fr 0.1fr;
+        .content.urlPresent {
+          padding-right: var(--ddd-spacing-12);
         }
 
         @media screen and (min-width: 320px) {
@@ -160,9 +175,9 @@ class LearningComponent extends I18NMixin(DDD) {
             font-size: var(--ddd-font-size-4xs);
           }
           .urlbutton {
-            display: flex;
-            flex-direction: column;
-            justify-content: end;
+            position: absolute;
+            right: -16px;
+            bottom: 0;
           }
           simple-icon-lite {
             aspect-ratio: 1 / 1;
@@ -194,15 +209,15 @@ class LearningComponent extends I18NMixin(DDD) {
           }
         }
 
+        /* The following classes are duplicated from DDDStyle, but for some reason need to be redundant otherwise the styling breaks. */
+
         .b-sm {
           border: var(--ddd-border-sm);
         }
         .r-circle {
           border-radius: var(--ddd-radius-circle);
         }
-        .lh-120 {
-          line-height: var(--ddd-lh-120);
-        }
+
         .bt-0 {
           border-top: none;
         }
