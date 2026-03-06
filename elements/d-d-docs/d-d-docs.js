@@ -2032,6 +2032,12 @@ class DDDocs extends DDD {
         <p>And a sup: x<sup>3</sup> = 9</p>
         <p>My favorite color is <del>blue</del> <ins>red</ins>!</p>
         <p><s>My car is blue.</s></p>
+        <hr />
+        <p>Default horizontal line</p>
+        <br />
+        <hr data-primary="1" />
+        <p>DDD Data-primary enabled horizontal lines</p>
+        <hr data-primary="14" />
       </div>
     `;
   }
