@@ -156,10 +156,6 @@ export class ActivityBox extends LitElement {
     this.tag = "";
   }
 
-  updated(changedProperties) {
-    super.updated(changedProperties);
-  }
-
   render() {
     return html`
       <div class="container">
