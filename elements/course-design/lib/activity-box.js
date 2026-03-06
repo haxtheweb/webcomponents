@@ -1,7 +1,7 @@
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { LitElement, css, html } from "lit";
+import { css, html } from "lit";
 
-export class ActivityBox extends LitElement {
+export class ActivityBox extends DDD {
   static get styles() {
     return [
       super.styles,
@@ -27,17 +27,17 @@ export class ActivityBox extends LitElement {
           background: var(--ddd-theme-primary);
           background: -moz-linear-gradient(
             -45deg,
-            var(--ddd-theme-primary) 0%,
+            var(--ddd-theme-primary) 50%,
             var(--ddd-theme-accent) 99%
           );
           background: -webkit-linear-gradient(
             -45deg,
-            var(--ddd-theme-primary) 0%,
+            var(--ddd-theme-primary) 50%,
             var(--ddd-theme-accent) 99%
           );
           background: linear-gradient(
             135deg,
-            var(--ddd-theme-primary) 0%,
+            var(--ddd-theme-primary) 50%,
             var(--ddd-theme-accent) 99%
           );
           color: var(
@@ -89,7 +89,7 @@ export class ActivityBox extends LitElement {
           padding: var(--activity-box-content-padding, 0px 0px 0px 85px);
           margin-bottom: 13px !important;
           max-width: 100%;
-          font-size: 126%;
+          font-size: 24px;
         }
         :host([icon="null"]) .pullout,
         :host([icon="null"]) .tag,
