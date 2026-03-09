@@ -2531,8 +2531,8 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           unwrap(parentNode);
 
           // If we're outdenting into a paragraph, the LI tag shouldn't be preserved
-          if(grandparentNode.tagName.toLowerCase() !== "ol" || grandparentNode.tagName.toLowerCase() !== "ul" ){
-            const strippedLI = globalThis.document.createElement("span");
+          if(grandparentNode.tagName.toLowerCase() !== "ol" && grandparentNode.tagName.toLowerCase() !== "ul" ){
+            const strippedLI = globalThis.document.createElement("fake-hax-list-break");
             strippedLI.innerHTML = currentNode.innerHTML.trim() + "<br/>"
             currentNode.replaceWith(strippedLI)
           };
@@ -2559,9 +2559,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             replacement.innerHTML =
               node.innerHTML
                 .trim()
-                .replace(/<span>/g, "<li>")
-                .replace(/<br><\/span>/g, "</li>\n")
-                .replace(/<br\/><\/span>/g, "</li>\n");
+                .replace(/<fake-hax-list-break>/g, "<li>")
+                .replace(/<br><\/fake-hax-list-break>/g, "</li>\n")
+                .replace(/<br\/><\/fake-hax-list-break>/g, "</li>\n");
           }
           // when converting to list, ensure slot is on the list, not the items
           if (originalSlot) {
@@ -2582,7 +2582,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           // if we're coming from ul or ol strip out the li tags
           const items = Array.from(node.children).map((child) => {
             const tag = child.tagName.toLowerCase();
-            if(tag === "li") return "<span>" + child.innerHTML.trim() + "<br/></span>";
+            if(tag === "li") return "<fake-hax-list-break>" + child.innerHTML.trim() + "<br/></fake-hax-list-break>";
             else if(tag === "ul" || tag === "ol") return child.outerHTML;
           });
           replacement.innerHTML = items.join("");
