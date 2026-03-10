@@ -178,7 +178,7 @@ class HAXCMSSiteEditor extends LitElement {
       <h-a-x
         id="hax"
         element-align="left"
-        offset-margin="48px 0 0 0"
+        offset-margin="64px 0 0 0"
         hide-panel-ops="hide-panel-ops"
         hide-toolbar="hide-toolbar"
       ></h-a-x>
@@ -626,6 +626,11 @@ class HAXCMSSiteEditor extends LitElement {
       this.siteDashboard = globalThis.document.body.querySelector(
         "haxcms-site-dashboard",
       );
+      let activeSection = "site";
+      if (e && e.detail && e.detail.section) {
+        activeSection = e.detail.section;
+      }
+      this.siteDashboard.activeSection = activeSection;
       this.siteDashboard.headers = {
         Authorization: `Bearer ${this.jwt}`,
       };

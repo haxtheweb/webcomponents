@@ -30,7 +30,7 @@ export class AppHaxTopBar extends LitElement {
       :host {
         --bg-color: var(--app-hax-background-color);
         --accent-color: var(--app-hax-accent-color);
-        --top-bar-height: 48px;
+        --top-bar-height: 64px;
         display: block;
         height: var(--top-bar-height);
       }

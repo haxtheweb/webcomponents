@@ -52,6 +52,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
       value: { type: Object },
       tags: { type: Array },
       active: { type: Boolean, reflect: true },
+      striped: { type: Boolean, reflect: true },
     };
   }
 
@@ -68,6 +69,23 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           margin: var(--ddd-spacing-2) var(--ddd-spacing-4);
           color: var(--simple-colors-default-theme-accent-12, black);
           background-color: var(--simple-colors-default-theme-accent-1, white);
+        }
+        :host([striped]) {
+          background-color: var(
+            --super-daemon-row-striped-bg,
+            var(
+              --ddd-theme-default-limestoneMaxLight
+            )
+          );
+        }
+        :host([striped][dark]) {
+          background-color: var(
+            --super-daemon-row-striped-bg-dark,
+            var(
+              --ddd-theme-default-slateGray,
+              var(--simple-colors-dark-theme-grey-10, #2b2b2b)
+            )
+          );
         }
         :host([active]) {
           cursor: pointer;
@@ -118,7 +136,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
           background-color: transparent;
         }
         :host([mini]) button {
-          padding: var(--ddd-spacing-1);
+          padding: var(--ddd-spacing-3);
           justify-content: flex-start;
           align-items: center;
         }

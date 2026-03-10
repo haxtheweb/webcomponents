@@ -54,13 +54,13 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
 
         .user-menu.open {
           display: block;
-          top: var(--ddd-spacing-12, 48px);
+          top: var(--ddd-spacing-16, 64px);
           right: 0px;
           position: absolute;
           border: var(--ddd-border-xs, 1px solid)
             var(--ddd-theme-default-slateGray, #666);
           background: var(--ddd-theme-default-white, white);
-          border-radius: var(--ddd-radius-sm, 4px);
+          border-radius: none;
           box-shadow: var(--ddd-boxShadow-lg);
           min-width: var(--ddd-spacing-30, 200px);
           z-index: 1000;

@@ -485,14 +485,14 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           font-style: italic;
         }
         simple-fields-field {
-          line-height: var(--ddd-spacing-10);
+          line-height: var(--ddd-spacing-12);
           padding: var(--ddd-spacing-2);
           color: var(--simple-colors-default-theme-grey-12, black);
           background-color: var(--simple-colors-default-theme-grey-1, white);
           line-height: normal;
           font-family: inherit;
-          width: var(--super-daemon-search-width, 240px);
-          margin: var(--ddd-spacing-1) 0 0 0;
+          width: var(--super-daemon-search-width, 30vw);
+          margin: var(--ddd-spacing-3) 0 0 0;
           min-width: 100px;
           --simple-fields-background-color: transparent;
           --simple-fields-placeholder-opacity: 0.4;

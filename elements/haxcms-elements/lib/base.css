@@ -74,6 +74,7 @@ simple-modal[opened] {
 
 super-daemon {
   --simple-modal-z-index: 100000001;
+  --super-daemon-width: 30vw;
 }
 
 simple-modal::part(title) {

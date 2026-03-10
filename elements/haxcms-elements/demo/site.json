@@ -53,16 +53,6 @@
       "fields": {}
     },
     "platform": {
-      "audience": "novice",
-      "allowedBlocks": [ "video-player"],
-      "features": {
-        "addPage": false,
-        "styleGuide": false,
-        "manifest": false,
-        "addBlock": false,
-        "media": false,
-        "contentMap": false
-      }
     },
     "build": {
       "version": "6.0.1",

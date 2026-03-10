@@ -1130,12 +1130,12 @@ export class AppHaxSteps extends SimpleColors {
                       tabindex="0"
                       src="${homeIcon}"
                       id="homebtn"
-                      title="Site list"
+                      title="Site Dashboard"
                       @click="${this.stepLinkClick}"
                     ></simple-icon-lite>
                   </a>
                   <simple-tooltip for="homebtn" position="bottom"
-                    >Site list</simple-tooltip
+                    >Site Dashboard</simple-tooltip
                   >
                 `
               : html``}

@@ -176,7 +176,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     this.t = {
       ...this.t,
       selectPage: "Select page",
-      backToSiteList: "Back to site list",
       listMySites: "List my sites",
       cancel: "Cancel",
       editDetails: "Page details",
@@ -767,16 +766,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           max-width: 100%;
           font-family: var(--ddd-font-primary, sans-serif);
         }
-        .contentSection {
-          display: flex;
-          align-items: flex-start;
-          justify-content: flex-start;
-          gap: var(--ddd-spacing-12, 48px);
-          width: 100%;
-          margin: 0;
-          margin-top: var(--ddd-spacing-5, 20px);
-          box-sizing: border-box;
-        }
 
         .left-group {
           display: flex;
@@ -800,7 +789,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           margin-left: var(--ddd-spacing-1, 4px);
           display: inline-flex;
           vertical-align: top;
-          margin-top: 20px;
+          margin-top: 24px;
           color: currentColor;
           transform: rotate(0deg);
           transition: transform var(--ddd-duration-fast, 150ms)
@@ -815,7 +804,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           display: flex;
           align-items: center;
           justify-content: center;
-          height: var(--top-bar-height, 46px);
+          height: var(--top-bar-height, 64px);
           width: 100%;
           font-family: 
         }
@@ -1178,9 +1167,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           :host {
             padding-left: var(--ddd-spacing-5, 20px);
             padding-right: var(--ddd-spacing-5, 20px);
-          }
-          .contentSection {
-            display: block;
           }
           :host([show-filter]) .filter {
             display: flex;

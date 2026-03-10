@@ -244,7 +244,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
           }
           super-daemon-row {
             --super-daemon-row-icon: 30px;
-            margin: var(--ddd-spacing-1);
           }
 
           super-daemon-row::part(label-wrap) {
@@ -270,7 +269,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         :host([mini]) super-daemon-row {
           --super-daemon-row-icon: var(--ddd-icon-xxs);
           border-radius: 0;
-          margin: var(--ddd-spacing-1);
         }
         :host([mini]) .results-stats {
           display: none;
@@ -752,6 +750,7 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
                               tabindex="-1"
                               aria-selected="${this._selectedIndex === i}"
                               data-row-index="${i}"
+                              ?striped="${i % 2 !== 0}"
                               .value="${item.value || {}}"
                               icon="${item.icon}"
                               image="${item.image}"

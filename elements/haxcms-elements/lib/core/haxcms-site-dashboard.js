@@ -30,6 +30,7 @@ class HAXCMSSiteDashboard extends SimpleColors {
   constructor() {
     super();
     this.siteTitle = "";
+    this.activeSection = "site";
     this.method = "POST";
     this.loadEndpoint = "";
     this.body = {};
@@ -174,7 +175,19 @@ class HAXCMSSiteDashboard extends SimpleColors {
       siteTitle: {
         type: String,
       },
+      activeSection: {
+        type: String,
+        attribute: "active-section",
+      },
     };
+  }
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    if (changedProperties.has("activeSection")) {
+      this._activateSettingsSection();
+    }
   }
   /**
    * Detatched life cycle
@@ -246,9 +259,41 @@ class HAXCMSSiteDashboard extends SimpleColors {
         this.shadowRoot.querySelector("#siteform").fields = [...fields];
         requestAnimationFrame(() => {
           this.shadowRoot.querySelector("#siteform").requestUpdate();
+          this._activateSettingsSection();
         });
       }, 0);
     });
+  }
+  _activateSettingsSection() {
+    const sectionMap = {
+      site: "manifest/site",
+      theme: "manifest/theme",
+      seo: "manifest/seo",
+      author: "manifest/author",
+    };
+    const activePath = sectionMap[this.activeSection] || sectionMap.site;
+    let tries = 0;
+    const applyActivePath = () => {
+      const siteForm = this.shadowRoot.querySelector("#siteform");
+      if (
+        siteForm &&
+        siteForm.shadowRoot &&
+        siteForm.shadowRoot.querySelector("#sf")
+      ) {
+        const sf = siteForm.shadowRoot.querySelector("#sf");
+        if (sf && sf.setActivePath) {
+          sf.setActivePath(activePath);
+          return;
+        }
+      }
+      tries++;
+      if (tries < 15) {
+        setTimeout(() => {
+          applyActivePath();
+        }, 100);
+      }
+    };
+    applyActivePath();
   }
   generateRequest() {
     this.shadowRoot.querySelector("#siteform").loadData();
