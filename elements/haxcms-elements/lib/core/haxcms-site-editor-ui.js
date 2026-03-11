@@ -1236,6 +1236,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                           title: "Confirm structure",
                           elements: { content: outline, buttons: div },
                           modal: true,
+                          showClose: true,
                           styles: {
                             "--simple-modal-titlebar-background": "transparent",
                             "--simple-modal-titlebar-color": "light-dark(black, white)",
@@ -1626,7 +1627,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.soundIcon = "";
     this.__disposer = this.__disposer || [];
     this.t = this.t || {};
-    this._configureWasFocused = false; // Track toggle state for Ctrl+Shift+1
+    this._configureWasFocused = false; // Track toggle state for Ctrl+Shift+4
 
     // default sub-contexts for Merlin before platform filtering
     this.platformContexts = {
@@ -2744,7 +2745,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             <simple-toolbar-button
               id="exportbtn"
               icon="hax:html-code"
-              label="${this.t.viewSource} • Ctrl⇧4"
+              label="${this.t.viewSource} • Ctrl⇧1"
               data-event="view-source"
               class="top-bar-button"
               @click="${this.haxButtonOp}"
@@ -2762,23 +2763,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon="hax:newspaper"
               id="content-map"
               class="top-bar-button"
-              label="${this.t.pageOutline} • Ctrl⇧3"
+              label="${this.t.pageOutline} • Ctrl⇧2"
               voice-command="select content outline (menu)"
               @click="${this.haxButtonOp}"
               ?active="${this.trayDetail === "content-map"}"
               icon-position="${this.getIconPosition(this.responsiveSize)}"
-            >
-            </simple-toolbar-button>
-            <simple-toolbar-button
-              ?hidden="${!this.editMode}"
-              ?disabled="${!this.editMode}"
-              icon="hax:multimedia"
-              class="top-bar-button"
-              label="${this.t.findMedia} • Ctrl⇧5"
-              voice-command="select media (menu)"
-              icon-position="${this.getIconPosition(this.responsiveSize)}"
-              data-event="media-program"
-              @click="${this.haxButtonOp}"
             >
             </simple-toolbar-button>
             <simple-toolbar-button
@@ -2788,7 +2777,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon="hax:add-brick"
               id="content-add"
               class="top-bar-button"
-              label="${this.t.addBlock} • Ctrl⇧2"
+              label="${this.t.addBlock} • Ctrl⇧3"
               voice-command="select blocks (menu)"
               ?active="${this.trayDetail === "content-add"}"
               icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -2801,7 +2790,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               class="top-bar-button"
               @click="${this.haxButtonOp}"
               id="content-edit"
-              label="${this.t.configureBlock} • Ctrl⇧1"
+              label="${this.t.configureBlock} • Ctrl⇧4"
               ?hidden="${!this.editMode}"
               ?disabled="${!this.activeTagName ||
               this.activeTagName == "" ||
@@ -4783,92 +4772,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
 
     // Numbered shortcuts - contextual based on edit mode
-    // Ctrl+Shift+1 - Configure panel (edit) OR Add page (non-edit)
+    // Ctrl+Shift+1 - View source (edit) OR Add page (non-edit)
     HAXCMSKeyboardShortcutsInstance.register({
       key: "1",
-      ctrl: true,
-      shift: true,
-      callback: (e) => {
-        if (this.editMode) {
-          // Edit mode: Open configure panel
-          if (HAXStore.haxTray) {
-            HAXStore.haxTray.trayDetail = "content-edit";
-            HAXStore.haxTray.collapsed = false;
-          }
-        } else {
-          // Non-edit mode: Add page
-          if (store.platformAllows("addPage")) {
-            const addButton = this.shadowRoot.querySelector("#addpagebutton");
-            if (addButton) {
-              addButton.HAXCMSButtonClick();
-            }
-          }
-        }
-      },
-      condition: () => store.isLoggedIn,
-      description: "Configure panel (edit) / Add page (view)",
-      context: "global",
-    });
-
-    // Ctrl+Shift+2 - Blocks browser (edit) OR Site outline (non-edit)
-    HAXCMSKeyboardShortcutsInstance.register({
-      key: "2",
-      ctrl: true,
-      shift: true,
-      callback: (e) => {
-        if (this.editMode) {
-          // Edit mode: Blocks browser
-          if (HAXStore.haxTray) {
-            if (HAXStore.haxTray.trayDetail === "content-add") {
-              HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
-            } else {
-              HAXStore.haxTray.trayDetail = "content-add";
-              HAXStore.haxTray.collapsed = false;
-            }
-          }
-        } else {
-          // Non-edit mode: Site outline
-          if (store.platformAllows("outlineDesigner")) {
-            this._outlineButtonTap(e);
-          }
-        }
-      },
-      condition: () => store.isLoggedIn,
-      description: "Blocks browser (edit) / Site outline (view)",
-      context: "global",
-    });
-
-    // Ctrl+Shift+3 - Page structure (edit) OR Style guide (non-edit)
-    HAXCMSKeyboardShortcutsInstance.register({
-      key: "3",
-      ctrl: true,
-      shift: true,
-      callback: (e) => {
-        if (this.editMode) {
-          // Edit mode: Page structure
-          if (HAXStore.haxTray) {
-            if (HAXStore.haxTray.trayDetail === "content-map") {
-              HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
-            } else {
-              HAXStore.haxTray.trayDetail = "content-map";
-              HAXStore.haxTray.collapsed = false;
-            }
-          }
-        } else {
-          // Non-edit mode: Style guide
-          if (store.platformAllows("styleGuide")) {
-            this._styleGuideButtonTap(e);
-          }
-        }
-      },
-      condition: () => store.isLoggedIn,
-      description: "Page structure (edit) / Style guide (view)",
-      context: "global",
-    });
-
-    // Ctrl+Shift+4 - View source (edit) OR Insights dashboard (non-edit)
-    HAXCMSKeyboardShortcutsInstance.register({
-      key: "4",
       ctrl: true,
       shift: true,
       callback: (e) => {
@@ -4886,6 +4792,89 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             }
           }
         } else {
+          // Non-edit mode: Add page
+          if (store.platformAllows("addPage")) {
+            const addButton = this.shadowRoot.querySelector("#addpagebutton");
+            if (addButton) {
+              addButton.HAXCMSButtonClick();
+            }
+          }
+        }
+      },
+      condition: () => store.isLoggedIn,
+      description: "View source (edit) / Add page (view)",
+      context: "global",
+    });
+
+    // Ctrl+Shift+2 - Page structure (edit) OR Site outline (non-edit)
+    HAXCMSKeyboardShortcutsInstance.register({
+      key: "2",
+      ctrl: true,
+      shift: true,
+      callback: (e) => {
+        if (this.editMode) {
+          // Edit mode: Page structure
+          if (HAXStore.haxTray) {
+            if (HAXStore.haxTray.trayDetail === "content-map") {
+              HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
+            } else {
+              HAXStore.haxTray.trayDetail = "content-map";
+              HAXStore.haxTray.collapsed = false;
+            }
+          }
+        } else {
+          // Non-edit mode: Site outline
+          if (store.platformAllows("outlineDesigner")) {
+            this._outlineButtonTap(e);
+          }
+        }
+      },
+      condition: () => store.isLoggedIn,
+      description: "Page structure (edit) / Site outline (view)",
+      context: "global",
+    });
+
+    // Ctrl+Shift+3 - Blocks browser (edit) OR Style guide (non-edit)
+    HAXCMSKeyboardShortcutsInstance.register({
+      key: "3",
+      ctrl: true,
+      shift: true,
+      callback: (e) => {
+        if (this.editMode) {
+          // Edit mode: Blocks browser
+          if (HAXStore.haxTray) {
+            if (HAXStore.haxTray.trayDetail === "content-add") {
+              HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
+            } else {
+              HAXStore.haxTray.trayDetail = "content-add";
+              HAXStore.haxTray.collapsed = false;
+            }
+          }
+        } else {
+          // Non-edit mode: Style guide
+          if (store.platformAllows("styleGuide")) {
+            this._styleGuideButtonTap(e);
+          }
+        }
+      },
+      condition: () => store.isLoggedIn,
+      description: "Blocks browser (edit) / Style guide (view)",
+      context: "global",
+    });
+
+    // Ctrl+Shift+4 - Configure panel (edit) OR Insights dashboard (non-edit)
+    HAXCMSKeyboardShortcutsInstance.register({
+      key: "4",
+      ctrl: true,
+      shift: true,
+      callback: (e) => {
+        if (this.editMode) {
+          // Edit mode: Open configure panel
+          if (HAXStore.haxTray) {
+            HAXStore.haxTray.trayDetail = "content-edit";
+            HAXStore.haxTray.collapsed = false;
+          }
+        } else {
           // Non-edit mode: Insights dashboard
           if (store.platformAllows("insights")) {
             this._insightsButtonTap(e);
@@ -4893,30 +4882,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
       },
       condition: () => store.isLoggedIn,
-      description: "View source (edit) / Insights dashboard (view)",
+      description: "Configure panel (edit) / Insights dashboard (view)",
       context: "global",
     });
 
-    // Ctrl+Shift+5 - Media browser (edit) OR Site settings (non-edit)
+    // Ctrl+Shift+5 - Site settings (non-edit)
     HAXCMSKeyboardShortcutsInstance.register({
       key: "5",
       ctrl: true,
       shift: true,
       callback: (e) => {
-        if (this.editMode) {
-          // Edit mode: Media browser
-          SuperDaemonInstance.waveWand(
-            ["sources", "/"],
-            this.shadowRoot.querySelector("#merlin"),
-            null,
-          );
-        } else {
+        if (!this.editMode) {
           // Non-edit mode: Site settings
           this._manifestButtonTap(e);
         }
       },
       condition: () => store.isLoggedIn,
-      description: "Media browser (edit) / Site settings (view)",
+      description: "Site settings (view)",
       context: "global",
     });
 
@@ -4996,7 +4978,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         title: this.t.insights,
         styles: {
           "--simple-modal-titlebar-background": "black",
-          "--simple-modal-titlebar-color": "light-dark(black, white)",
+          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
           "--simple-modal-width": "94vw",
           "--simple-modal-min-width": "300px",
           "--simple-modal-z-index": "100000000",
@@ -5077,7 +5059,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         title: "Permanently delete this page?",
         styles: {
           "--simple-modal-titlebar-background": "black",
-          "--simple-modal-titlebar-color": "light-dark(black, white)",
+          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
           "--simple-modal-width": "25vw",
           "--simple-modal-min-width": "300px",
           "--simple-modal-z-index": "100000000",
@@ -5089,6 +5071,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         invokedBy: this,
         clone: false,
         modal: true,
+        showClose: true,
       },
     });
     globalThis.dispatchEvent(evt);
@@ -5298,7 +5281,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         title: this.t.outlineDesigner,
         styles: {
           "--simple-modal-titlebar-background": "black",
-          "--simple-modal-titlebar-color": "light-dark(black, white)",
+          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
           "--simple-modal-z-index": "100000000",
           "--simple-modal-titlebar-height": "80px",
           "--simple-modal-width": "85vw",
@@ -5314,6 +5297,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         invokedBy: this.shadowRoot.querySelector("#outlinebutton"),
         clone: false,
         modal: true,
+        showClose: true,
       },
     });
     globalThis.dispatchEvent(evt);
@@ -5355,7 +5339,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             title: this.t.siteSettings,
             styles: {
               "--simple-modal-titlebar-background": "black",
-              "--simple-modal-titlebar-color": "light-dark(black, white)",
+              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
               "--simple-modal-z-index": "100000000",
               "--simple-modal-titlebar-height": "80px",
               "--simple-modal-width": "80vw",
@@ -5445,7 +5429,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           title: title,
           styles: {
             "--simple-modal-titlebar-background": "black",
-            "--simple-modal-titlebar-color": "light-dark(black, white)",
+            "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
             "--simple-modal-z-index": "100000000",
             "--simple-modal-titlebar-height": "80px",
             "--simple-modal-width": "85vw",
@@ -5459,6 +5443,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           invokedBy: invokedBy,
           clone: false,
           modal: true,
+          showClose: true,
         },
       }));
       setTimeout(() => {

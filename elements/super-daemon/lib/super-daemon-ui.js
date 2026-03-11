@@ -190,7 +190,6 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
         }
         .results lit-virtualizer {
           max-height: 50vh;
-          min-height: 264px !important;
           width: 100%;
           display: block;
           height: 50vh;

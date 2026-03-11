@@ -60,11 +60,19 @@ class HAXCMSSiteSettingsDashboard extends DDD {
           flex-direction: column;
           align-items: center;
           gap: var(--ddd-spacing-2);
+          height: 125px;
+          width: 125px;
+        }
+        .dashboard-item:focus-within {
+          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-slateGray);
+          outline-offset: 2px;
         }
         .dashboard-action {
           --simple-icon-button-border-radius: var(--ddd-radius-md);
           --simple-icon-button-border: var(--ddd-border-sm) solid
-            var(--ddd-theme-default-limestoneGray);
+            var(--ddd-theme-default-slateGray);
+          --simple-icon-button-focus-border: var(--ddd-border-sm) solid
+            var(--ddd-theme-default-slateGray);
           --simple-icon-button-padding: 0;
           --simple-icon-width: 48px;
           --simple-icon-height: 48px;
@@ -80,6 +88,18 @@ class HAXCMSSiteSettingsDashboard extends DDD {
           min-width: 96px;
           height: 96px;
           min-height: 96px;
+        }
+        .dashboard-action::part(button) {
+          border: var(--simple-icon-button-focus-border);
+          background-color: var(--simple-icon-button-focus-background-color);
+          opacity: var(--simple-icon-button-focus-opacity, 0.8);
+        }
+        :host([dark]) .dashboard-action,
+        :host-context(body.dark-mode) .dashboard-action {
+          --simple-icon-button-border: var(--ddd-border-sm) solid
+            var(--ddd-theme-default-white);
+          --simple-icon-button-focus-border: var(--ddd-border-sm) solid
+            var(--ddd-theme-default-white);
         }
         .dashboard-action-label {
           font-family: var(--ddd-font-navigation);
@@ -165,7 +185,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
           <simple-icon-button-lite
             class="dashboard-action"
             icon="lrn:palette"
-            label="Style Guide"
+            label="Styles"
             @click="${() => this._actionTap("style-guide")}"
           ></simple-icon-button-lite>
           <div class="dashboard-action-label">Style Guide</div>
@@ -183,7 +203,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
           <simple-icon-button-lite
             class="dashboard-action"
             icon="settings"
-            label="Site Settings"
+            label="Settings"
             @click="${() => this._actionTap("site-settings")}"
           ></simple-icon-button-lite>
           <div class="dashboard-action-label">Site Settings</div>

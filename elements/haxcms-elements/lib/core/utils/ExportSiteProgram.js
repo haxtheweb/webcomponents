@@ -450,6 +450,7 @@ export async function _exportSiteAsSkeleton(manifest, title, baseUrl, options = 
             content: el,
           },
           modal: true,
+          showClose: true,
           styles: {
             "--simple-modal-titlebar-background": "transparent",
             "--simple-modal-titlebar-color": "light-dark(black, white)",

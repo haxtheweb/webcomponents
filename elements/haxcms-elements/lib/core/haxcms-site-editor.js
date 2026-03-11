@@ -812,6 +812,7 @@ class HAXCMSSiteEditor extends LitElement {
                     title: "Confirm structure",
                     elements: { content: outline, buttons: div },
                     modal: true,
+                    showClose: true,
                     styles: {
                       "--simple-modal-titlebar-background": "transparent",
                       "--simple-modal-titlebar-color": "light-dark(black, white)",

@@ -81,10 +81,7 @@ export class SuperDaemonRow extends I18NMixin(SimpleColors) {
         :host([striped][dark]) {
           background-color: var(
             --super-daemon-row-striped-bg-dark,
-            var(
-              --ddd-theme-default-slateGray,
-              var(--simple-colors-dark-theme-grey-10, #2b2b2b)
-            )
+            var(--ddd-theme-default-potentialMidnight)
           );
         }
         :host([active]) {
