@@ -337,18 +337,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
         .topbar-character {
           cursor: pointer;
-          display: inline-block;
           border: none;
-          border-radius: 0px;
-          padding: 0 8px;
-          margin: 0 0 0 16px;
           background-color: transparent;
           height: 64px;
-          max-width: 160px;
-          overflow: hidden;
-          word-break: break-all;
-          transition: all 0.6 ease-in-out;
-          color: #222;
         }
         .characterbtn-name {
           margin-left: 8px;
@@ -383,11 +374,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           background-color: #222;
         }
         .topbar-character rpg-character {
-          height: 42px;
-          width: 42px;
-          display: inline-block;
-          vertical-align: super;
-          transition: all 0.5 ease-in-out;
+          border-radius: 50%;
+          border: 2px solid black;
+          padding: 2px 12px 12px 2px;
+          margin: 4px 0 0 0;
+          height: 32px;
+          width: 32px;
         }
         .topbar-character:hover rpg-character,
         .topbar-character:focus rpg-character {
@@ -433,20 +425,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             padding: 0;
             margin: 0;
           }
-          .characterbtn-name {
-            padding: 0;
-            margin: 0;
-            width: 30px;
-            display: inline-flex;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            letter-spacing: -2px;
-            margin-left: -6px;
-          }
           simple-toolbar {
             --simple-toolbar-button-padding: 3px 3px;
           }
-          .characterbtn-name,
           haxcms-button-add,
           simple-toolbar-menu,
           simple-toolbar-button {
@@ -480,17 +461,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             justify-content: space-between;
             background-color: white;
             height: auto;
-          }
-          .characterbtn-name {
-            padding: 0px;
-            margin: -42px 8px 0px 0px;
-            width: 40px;
-            display: block;
-            text-overflow: ellipsis;
-            font-size: 12px;
-            font-family: auto;
-            letter-spacing: normal;
-            font-weight: normal;
           }
         }
       `,
@@ -2459,7 +2429,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.t = {
       ...this.t,
       selectPage: "Select page",
-      mySites: "My sites",
+      siteDashboard: "Site dashboard",
       cancel: "Cancel",
       unsavedChangesWillBeLostIfSelectingOkAreYouSure:
         "Unsaved changes will be lost if selecting OK, are you sure?",
@@ -2493,7 +2463,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       save: "Save",
       saveAndEdit: "Save & Edit",
       unlockPage: "Unlock page",
-      newJourney: "New Journey",
+      newSite: "New Site",
       accountInfo: "Account Info",
       outlineDesigner: "Site Outline",
       outline: "Outline",
@@ -2956,17 +2926,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               role="img"
               alt="Avatar for ${this.userName}"
               hat="${this.rpgHat}"
+              title="${this.userName}"
             ></rpg-character>
-            <span class="characterbtn-name" aria-hidden="true"
-              >${this.userName}</span
-            >
-            <simple-icon-lite
-              class="characterbtn-menu-icon ${this.userMenuOpen
-                ? ""
-                : "rotated"}"
-              icon="icons:expand-more"
-              aria-hidden="true"
-            ></simple-icon-lite>
             <slot name="haxcms-site-editor-ui-topbar-character-button"></slot>
           </button>
           <div slot="pre-menu" class="ops-panel">
@@ -3008,15 +2969,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           >
             <app-hax-user-menu-button
               icon="hax:hax2022"
-              label="${this.t.mySites}"
+              label="${this.t.siteDashboard}"
               part="mysitesbtn"
             ></app-hax-user-menu-button>
           </a>
           <app-hax-user-menu-button
             slot="main-menu"
             icon="add"
-            label="${this.t.newJourney}"
-            part="newjourneybtn"
+            label="${this.t.newSite}"
+            part="newsitebtn"
             @click="${this._addButtonTap}"
           ></app-hax-user-menu-button>
           <slot slot="post-menu" name="haxcms-site-editor-ui-post-menu"></slot>
@@ -3332,7 +3293,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/theme/style-guide",
     });
     SuperDaemonInstance.defineOption({
-      title: this.t.newJourney,
+      title: this.t.newSite,
       icon: "add",
       tags: ["CMS", "create", "new site"],
       value: {

@@ -47,7 +47,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       basePath: import.meta.url + "/../../",
     });
     // Initialize with fallback values to prevent undefined during initial render
-    this.possibleActions = ["🪄 Do anything..", "🔍 Type to search..."];
+    this.possibleActions = ["🔍 Search.."];
   }
   static get properties() {
     return {
@@ -360,7 +360,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
     // Use default suggestions
     else {
       inputField.placeholder =
-        this.suggestPossibleAction() || "Type to search...";
+        this.suggestPossibleAction() || "Search..";
     }
   }
 
@@ -486,13 +486,14 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
         }
         simple-fields-field {
           line-height: var(--ddd-spacing-12);
-          padding: var(--ddd-spacing-2);
+          height: var(--ddd-spacing-12);
+          padding: var(--ddd-spacing-4);
           color: var(--simple-colors-default-theme-grey-12, black);
-          background-color: var(--simple-colors-default-theme-grey-1, white);
+          background-color: var(--simple-colors-default-theme-grey-2, white);
           line-height: normal;
           font-family: inherit;
           width: var(--super-daemon-search-width, 30vw);
-          margin: var(--ddd-spacing-3) 0 0 0;
+          margin: 0;
           min-width: 100px;
           --simple-fields-background-color: transparent;
           --simple-fields-placeholder-opacity: 0.4;

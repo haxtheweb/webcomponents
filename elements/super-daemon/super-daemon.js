@@ -595,12 +595,13 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           --simple-icon-height: var(--ddd-icon-xxs);
         }
         :host([wand]) absolute-position-behavior {
-          top: var(--ddd-spacing-6) !important;
+          top: var(--ddd-spacing-8) !important;
           right: 0;
           position: fixed !important;
           display: table;
           /* Expand to available width when in wand mode at top */
           left: var(--ddd-spacing-6);
+          margin-left: 16px;
           width: calc(100vw - var(--ddd-spacing-12));
           max-width: calc(100vw - 200px); /* Leave space for user menu */
         }
