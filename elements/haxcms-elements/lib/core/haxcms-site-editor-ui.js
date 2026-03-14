@@ -124,7 +124,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         haxcms-button-add::part(button) {
           --simple-toolbar-button-border-width: 1px;
-          border-bottom: 0;
         }
 
         simple-toolbar-menu-item a {
@@ -297,6 +296,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         .toolbar-buttons haxcms-button-add {
           background-color: var(--ddd-theme-default-skyBlue);
           color: white;
+        }
+        .toolbar-buttons haxcms-button-add[disabled] {
+          background-color: transparent;
         }
         .toolbar-buttons simple-toolbar-menu {
           --a11y-menu-button-bg-color: light-dark(

@@ -602,8 +602,6 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           /* Expand to available width when in wand mode at top */
           left: var(--ddd-spacing-6);
           margin-left: 16px;
-          width: calc(100vw - var(--ddd-spacing-12));
-          max-width: calc(100vw - 200px); /* Leave space for user menu */
         }
         absolute-position-behavior {
           z-index: var(--simple-modal-z-index, 10000);
@@ -641,7 +639,6 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           :host([wand]) absolute-position-behavior {
             max-width: calc(100vw - 60px); /* Even less space on mobile */
             left: var(--ddd-spacing-2);
-            width: calc(100vw - var(--ddd-spacing-4));
           }
         }
       `,
