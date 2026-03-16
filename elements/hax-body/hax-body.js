@@ -1949,6 +1949,17 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // keep comments with a special case since they need wrapped
       else if (children[i].nodeType === 8) {
         content += "<!-- " + children[i].textContent + " -->";
+      } 
+      // Sanitize fake-hax-line-break when saving
+      else if(children[i].querySelector(":scope > fake-hax-list-break")){   
+        for(const node of children[i].children){
+          if(node.tagName.toLowerCase() === "ul" || node.tagName.toLowerCase() === "ol"){
+            content += await HAXStore.nodeToContent(node);
+          } else {
+            const nodeContent = node.innerHTML.replace(/<br>/g, "").replace(/<br\/>/g, "")
+            content += "<p>" + nodeContent + "</p>\n";
+          }
+        };
       }
       // special support for UI elements that are still active on page
       // yet we need to remove from output as they do not really exist :)
@@ -2531,7 +2542,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           unwrap(parentNode);
 
           // If we're outdenting into a paragraph, the LI tag shouldn't be preserved
-          if(grandparentNode.tagName.toLowerCase() !== "ol" && grandparentNode.tagName.toLowerCase() !== "ul" ){
+          if(grandparentNode.tagName.toLowerCase() !== "ol" && grandparentNode.tagName.toLowerCase() !== "ul"){
             const strippedLI = globalThis.document.createElement("fake-hax-list-break");
             strippedLI.innerHTML = currentNode.innerHTML.trim() + "<br/>"
             currentNode.replaceWith(strippedLI)
@@ -2548,8 +2559,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           replacement.innerHTML = node.innerHTML.trim();
         }
         if (tagName == "ul" || tagName == "ol") {
-          if (replacement.innerHTML == "<br />") {
-            replacement.innerHTML = "<li><br /></li>";
+          // make sure a new list also creates an li
+          if (!replacement.innerHTML.includes("<fake-hax-list-break>")) {
+            replacement.innerHTML = "<li>" + node.innerHTML + "</li>";
           } else if (
             !(
               node.tagName.toLowerCase() == "ul" ||
@@ -3891,6 +3903,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         !allowInline &&
         this._HTMLInlineTextDecorationTest(node) &&
         node.parentNode != "HAX-BODY"
+      ) {
+        return false;
+      } 
+      // Sanitize the internal list-break tag, if it's within a paragraph
+      else if(node.tagName === "P" && 
+        node.querySelector(":scope > fake-hax-list-break")
       ) {
         return false;
       }
