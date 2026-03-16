@@ -64,7 +64,7 @@ class HaxTray extends I18NMixin(
       "hax-drop-focus-event": "_expandSettingsPanel",
       "hax-toggle-active-node-lock": "_handleActiveNodeLock",
     };
-    this.trayIcon = "settings";
+    this.trayIcon = "image:tune";
     this.resizeDrag = false;
     this.hideToolbar = false;
     this.dark = false;
@@ -818,7 +818,7 @@ class HaxTray extends I18NMixin(
   get contentButtons() {
     return html` <hax-tray-button
         event-name="content-edit"
-        icon="settings"
+        icon="image:tune"
         id="content-edit"
         label="${this.t.edit}"
         ?disabled="${!this.activeTagName ||
@@ -1739,7 +1739,7 @@ class HaxTray extends I18NMixin(
       this.trayLabel = this.t.blocks;
       this._refreshAddData();
     } else if (newValue == "content-map") {
-      this.trayIcon = "hax:newspaper";
+      this.trayIcon = "editor:format-line-spacing";
       this.trayLabel = this.t.structure;
       this.shadowRoot.querySelector("hax-map").updateHAXMap();
     } else if (
@@ -1772,15 +1772,15 @@ class HaxTray extends I18NMixin(
       }
     } else if (!newValue || newValue == "") {
       this.trayDetail = "content-edit";
-      this.trayIcon = "settings";
+      this.trayIcon = "image:tune";
     } else if (newValue == "content-edit") {
-      this.trayIcon = "settings";
+      this.trayIcon = "image:tune";
       this.trayLabel = null;
     } else if (newValue == "view-source") {
       this.trayIcon = "hax:html-code";
       this.trayLabel = this.t.htmlSource;
     } else {
-      this.trayIcon = "settings";
+      this.trayIcon = "image:tune";
       this.trayLabel = null;
     }
     this.requestUpdate();

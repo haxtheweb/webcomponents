@@ -435,8 +435,8 @@ export async function _exportSiteAsSkeleton(manifest, title, baseUrl, options = 
 
     const modalTitle =
       options && options.platformSettings
-        ? "Edit platform settings"
-        : "Export site skeleton";
+        ? "Platform settings"
+        : "Site skeleton";
 
     // Present a modal similar to outline-designer workflows
     globalThis.dispatchEvent(

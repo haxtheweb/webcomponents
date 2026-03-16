@@ -34,16 +34,10 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         }
         hax-tray-button {
           flex: auto;
-          font-size: 12px;
-          --hax-ui-font-size-sm: 12px;
-          --simple-toolbar-button-height: 22px;
-          --simple-toolbar-button-width: 22px;
-        }
-        hax-tray-button[small] {
-          font-size: 8px;
-          --hax-ui-font-size-sm: 8px;
-          --simple-toolbar-button-height: 16px;
-          --simple-toolbar-button-width: 16px;
+          font-size: 16px;
+          --hax-ui-font-size-sm: 16px;
+          --simple-toolbar-button-height: 30px;
+          --simple-toolbar-button-width: 30px;
         }
         .toolbar-inner {
           max-width: 96%;
@@ -52,7 +46,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           font-size: var(hax-ui-font-size-xs);
         }
         simple-button-grid {
-          --simple-button-grid-margin: 2px;
+          --simple-button-grid-margin: 4px;
         }
         simple-fields-field {
           margin-top: 0;
@@ -156,7 +150,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
             heading-button
             expanded
           >
-            <simple-button-grid columns="5" always-expanded part="grid">
+            <simple-button-grid columns="3" always-expanded part="grid">
               ${this.popularGizmoList.map(
                 (gizmo, i) =>
                   html` <simple-popover-selection
@@ -165,7 +159,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                     event="hover"
                   >
                     <hax-tray-button
-                      small
                       show-text-label
                       voice-command="insert ${gizmo.title}"
                       draggable="true"
@@ -202,7 +195,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
             heading-button
             expanded
           >
-            <simple-button-grid columns="5" always-expanded part="grid">
+            <simple-button-grid columns="3" always-expanded part="grid">
               ${this.recentGizmoList.map(
                 (gizmo, i) =>
                   html` <simple-popover-selection
@@ -211,7 +204,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                     event="hover"
                   >
                     <hax-tray-button
-                      small
                       show-text-label
                       voice-command="insert ${gizmo.title}"
                       draggable="true"
@@ -247,7 +239,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                 heading="${this.ucfirst(tag)}"
                 heading-button
               >
-                <simple-button-grid columns="4" always-expanded part="grid">
+                <simple-button-grid columns="3" always-expanded part="grid">
                   ${this.filtered.map(
                     (gizmo, i) =>
                       html`${gizmo && gizmo.tags && gizmo.tags.includes(tag)
