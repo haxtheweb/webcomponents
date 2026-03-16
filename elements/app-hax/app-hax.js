@@ -209,7 +209,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       pageOutline: "Structure",
       more: "More",
       siteActions: "Site actions",
-      insights: "Insights dashboard",
+      insights: "Insights",
       merlin: "Merlin",
       summonMerlin: "Summon Merlin",
       logOut: "Log out",

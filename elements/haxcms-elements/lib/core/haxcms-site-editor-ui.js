@@ -139,7 +139,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         simple-toolbar-button.merlin:hover,
         simple-toolbar-button.merlin:active,
-        simple-toolbar-button.merlin:focus {
+        simple-toolbar-button.merlin:focus,
+        simple-toolbar-button.merlin:focus-visible {
           background-color: var(--simple-colors-default-theme-purple-1);
           color: light-dark(
             var(--ddd-theme-default-white),
@@ -149,12 +150,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         simple-toolbar-menu:hover,
         simple-toolbar-menu:active,
         simple-toolbar-menu:focus,
+        simple-toolbar-menu:focus-visible,
         simple-toolbar-button:not(.merlin):hover,
         simple-toolbar-button:not(.merlin):active,
         simple-toolbar-button:not(.merlin):focus,
+        simple-toolbar-button:not(.merlin):focus-visible,
         haxcms-button-add:hover,
         haxcms-button-add:active,
-        haxcms-button-add:focus {
+        haxcms-button-add:focus,
+        haxcms-button-add:focus-visible {
           color: var(--hax-ui-color);
           background-color: light-dark(
             var(--ddd-theme-default-white),
@@ -163,7 +167,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         simple-toolbar-button:hover,
         simple-toolbar-button:active,
-        simple-toolbar-button:focus {
+        simple-toolbar-button:focus,
+        simple-toolbar-button:focus-visible {
+          --simple-toolbar-border-color: black;
+        }
+        simple-toolbar-button.top-bar-button::part(button):focus-visible,
+        simple-toolbar-menu.top-bar-button::part(button):focus-visible,
+        haxcms-button-add.top-bar-button::part(button):focus-visible,
+        .topbar-character:focus-visible,
+        .haxLogo:focus-visible,
+        .mysiteslink:focus-visible {
+          outline: var(--ddd-border-sm, 2px solid)
+            var(--ddd-theme-default-skyBlue);
+          outline-offset: 2px;
           --simple-toolbar-border-color: black;
         }
         :host(:hover),
@@ -387,12 +403,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           width: 32px;
         }
         .topbar-character:hover rpg-character,
-        .topbar-character:focus rpg-character {
+        .topbar-character:focus rpg-character,
+        .topbar-character:focus-visible rpg-character {
           border-color: var(--simple-colors-default-theme-grey-12);
           background-color: var(--simple-colors-default-theme-grey-2);
         }
 
         .mysiteslink {
+          display: block;
           text-decoration: none;
         }
 
@@ -455,12 +473,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         @media (max-width: 600px) {
           .haxLogo {
             display: none;
-          }
-
-          .topbar-character rpg-character {
-            margin: 0 0 0px -8px;
-            height: 10px;
-            width: 48px;
           }
           simple-toolbar {
             --simple-toolbar-button-padding: 0px;
@@ -2476,7 +2488,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       pageOutline: "Structure",
       more: "More",
       pageActions: "Page actions",
-      insights: "Insights dashboard",
+      insights: "Insights",
       merlin: "Merlin",
       summonMerlin: "Summon Merlin",
       logOut: "Log out",
@@ -2720,6 +2732,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
             <simple-toolbar-button
               id="exportbtn"
+              role="menuitem"
               icon="hax:html-code"
               label="${this.t.viewSource} • Ctrl⇧1"
               data-event="view-source"
@@ -2733,6 +2746,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             >
             </simple-toolbar-button>
             <simple-toolbar-button
+              role="menuitem"
               ?hidden="${!this.editMode || !store.platformAllows("contentMap")}"
               ?disabled="${!this.editMode}"
               data-event="content-map"
@@ -2749,6 +2763,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             <simple-toolbar-button
               ?hidden="${!this.editMode || !store.platformAllows("addBlock")}"
               ?disabled="${!this.editMode}"
+              role="menuitem"
               data-event="content-add"
               icon="hax:add-brick"
               id="content-add"
@@ -2773,6 +2788,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               !this.activeNode ||
               !this.activeNode.tagName}"
               voice-command="(modify)(configure)(edit) selected"
+              role="menuitem"
               controls="tray-detail"
               tooltip="${this.t.configure} ${this.activeTagName}"
               ?active="${this.trayDetail === "content-edit"}"
@@ -2782,6 +2798,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             <simple-toolbar-button
               icon="icons:undo"
               class="top-bar-button"
+              role="menuitem"
               icon-position="${this.getIconPosition(this.responsiveSize)}"
               ?disabled="${!this.canUndo}"
               @click="${this.haxButtonOp}"
@@ -2795,6 +2812,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             <simple-toolbar-button
               icon="icons:redo"
               class="top-bar-button"
+              role="menuitem"
               @click="${this.haxButtonOp}"
               ?disabled="${!this.canRedo}"
               ?hidden="${!this.editMode}"
@@ -2813,7 +2831,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               @click="${this._cancelButtonTap}"
               ?hidden="${!this.editMode}"
               ?disabled="${!this.editMode}"
-              tabindex="${this.editMode ? "0" : "-1"}"
+              role="menuitem"
               label="${this.t.cancel} • Ctrl⇧/"
               voice-command="cancel (editing)"
             ></simple-toolbar-button>
@@ -2824,6 +2842,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               this.activeItem.metadata.locked &&
               !this.editMode}"
               class="top-bar-button"
+              role="menuitem"
               id="editbutton"
               icon="${this.__editIcon}"
               icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -2842,6 +2861,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon-position="${this.getIconPosition(this.responsiveSize)}"
               label="${this.t.unlockPage}"
               @click="${this._toggleLockedStatus}"
+              role="menuitem"
             ></simple-toolbar-button>
           </div>
         </div>
@@ -2888,11 +2908,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon="hax:add-page"
               label="${this.t.addPage} • Ctrl⇧1"
               merlin
+              role="menuitem"
             ></haxcms-button-add>
             <simple-toolbar-button
               ?hidden="${!store.platformAllows("outlineDesigner")}"
               ?disabled="${this.editMode}"
               id="outlinebutton"
+              role="menuitem"
               class="top-bar-button"
               icon="hax:site-map"
               icon-position="${this.getIconPosition(this.responsiveSize)}"
@@ -2905,6 +2927,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               icon="hax:home-edit"
               part="manifestbtn"
               class="top-bar-button"
+              role="menuitem"
               id="manifestbtn"
               ?disabled="${this.editMode}"
               label="${this.t.siteSettings} • Ctrl⇧3"
@@ -2978,7 +3001,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             href="${this.backLink}"
             slot="main-menu"
             part="mysiteslink"
-            tabindex="-1"
           >
             <app-hax-user-menu-button
               icon="hax:hax2022"
@@ -3650,14 +3672,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit platform settings (developer-only)
     SuperDaemonInstance.defineOption({
-      title: "Edit Platform Settings",
+      title: "Platform Settings",
       icon: "hax:home-edit",
       tags: ["Developer", "platform", "settings", "skeleton"],
       eventName: "super-daemon-element-method",
       path: ">settings/platform",
       context: [">"],
-      more: html`<span>Edit the platform settings for this site</span>`,
-      voice: "edit platform settings",
+      voice: "platform settings",
       value: {
         target: this,
         method: "exportSiteAs",
