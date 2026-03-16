@@ -2548,8 +2548,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           replacement.innerHTML = node.innerHTML.trim();
         }
         if (tagName == "ul" || tagName == "ol") {
-          if (replacement.innerHTML == "<br />") {
-            replacement.innerHTML = "<li><br /></li>";
+          // make sure a new list also creates an li
+          if (!replacement.innerHTML.includes("<fake-hax-list-break>")) {
+            replacement.innerHTML = "<li>" + node.innerHTML + "</li>";
           } else if (
             !(
               node.tagName.toLowerCase() == "ul" ||
