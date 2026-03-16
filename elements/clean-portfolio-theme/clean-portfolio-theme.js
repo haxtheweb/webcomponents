@@ -480,8 +480,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       /* Semantic elements */
 
       :host {
-         --ddd-palette-light: #FFFFFF;
-        --ddd-palette-dark: var(--ddd-theme-default-coalyGray);
+          --ddd-palette-light: var(--ddd-theme-default-white);
+          --ddd-palette-dark: var(--ddd-theme-default-coalyGray);
 
           --ddd-palette-1: var(--ddd-palette-color-1, default);
           --ddd-palette-2: var(--ddd-palette-color-2, default);
@@ -1283,8 +1283,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   togglePalette(e) {
     this.dataPalette++;
-    if (this.dataPalette > 6) this.dataPalette = 0;
-    
+    if (this.dataPalette > 8) this.dataPalette = 0;
   }
   
   // Lit render the HTML
