@@ -1739,7 +1739,7 @@ class HaxTray extends I18NMixin(
       this.trayLabel = this.t.blocks;
       this._refreshAddData();
     } else if (newValue == "content-map") {
-      this.trayIcon = "hax:newspaper";
+      this.trayIcon = "editor:format-line-spacing";
       this.trayLabel = this.t.structure;
       this.shadowRoot.querySelector("hax-map").updateHAXMap();
     } else if (

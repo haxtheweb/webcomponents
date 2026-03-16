@@ -2732,7 +2732,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               ?hidden="${!this.editMode || !store.platformAllows("contentMap")}"
               ?disabled="${!this.editMode}"
               data-event="content-map"
-              icon="hax:newspaper"
+              icon="editor:format-line-spacing"
               id="content-map"
               class="top-bar-button"
               label="${this.t.pageOutline} • Ctrl⇧2"
