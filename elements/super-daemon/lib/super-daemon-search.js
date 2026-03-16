@@ -47,7 +47,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
       basePath: import.meta.url + "/../../",
     });
     // Initialize with fallback values to prevent undefined during initial render
-    this.possibleActions = ["🔍 Search.."];
+    this.possibleActions = ["Search.."];
   }
   static get properties() {
     return {
@@ -488,6 +488,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           line-height: var(--ddd-spacing-12);
           height: var(--ddd-spacing-12);
           padding: var(--ddd-spacing-4);
+          border-radius: var(--ddd-radius-md);
           color: var(--simple-colors-default-theme-grey-12, black);
           background-color: var(--simple-colors-default-theme-grey-2, white);
           line-height: normal;
@@ -501,6 +502,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
             --simple-colors-default-theme-purple-12,
             purple
           );
+          --simple-fields-border-bottom-size: 0;
         }
         simple-tag:hover,
         simple-tag:focus {

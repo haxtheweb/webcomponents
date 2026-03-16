@@ -66,7 +66,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             var(--ddd-primary-4)
           );
           z-index: 1;
-          padding: var(--ddd-spacing-4) 0 var(--ddd-spacing-2) 0;
+          padding: var(--ddd-spacing-2) 0;
           border-bottom: var(--ddd-border-xs);
           border-color: light-dark(
             var(--ddd-theme-default-limestoneLight),
@@ -79,8 +79,9 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             var(--ddd-primary-4),
             var(--ddd-accent-6)
           );
-          --simple-toolbar-border-radius: var(--ddd-radius-xs);
+          --simple-toolbar-border-radius: var(--ddd-radius-md);
           --simple-toolbar-button-padding: var(--ddd-spacing-1);
+          margin: 0 var(--ddd-spacing-1);
           background-color: light-dark(
             var(--ddd-accent-6),
             var(--ddd-primary-3)
