@@ -56,6 +56,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
           font-weight: var(--ddd-font-weight-medium);
         }
         .dashboard-item {
+          color: light-dark(black, white);
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -125,7 +126,6 @@ class HAXCMSSiteSettingsDashboard extends DDD {
 
   render() {
     return html`
-      <p class="dashboard-title">Site dashboard</p>
       <div class="dashboard">
         <div class="dashboard-item">
           <simple-icon-button-lite
