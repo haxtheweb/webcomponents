@@ -4482,6 +4482,8 @@ html, :root {
   --ddd-palette-color-6: var(--simple-colors-default-theme-grey-11);
   --ddd-palette-color-7: var(--simple-colors-default-theme-amber-6);
 
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
   --ddd-palette-text-color-1: var(--ddd-theme-default-white);
   --ddd-palette-text-color-2: var(--simple-colors-default-theme-grey-4);
   --ddd-palette-text-color-3: var(--simple-colors-default-theme-grey-2);
@@ -4489,9 +4491,6 @@ html, :root {
   --ddd-palette-text-color-5: var(--simple-colors-default-theme-grey-9);
   --ddd-palette-text-color-6: var(--simple-colors-default-theme-grey-4);
   --ddd-palette-text-color-7: var(--simple-colors-default-theme-grey-10);
-
-  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
-
 }
 
 /** Wisdom Walk Green */
@@ -4505,6 +4504,8 @@ html, :root {
   --ddd-palette-color-6: var(--ddd-theme-default-inventOrange);
   --ddd-palette-color-7: var(--simple-colors-default-theme-orange-3);
 
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
   --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-green-3);
   --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-green-4);
   --ddd-palette-text-color-3: var(--simple-colors-fixed-theme-green-1); 
@@ -4513,8 +4514,6 @@ html, :root {
   --ddd-palette-text-color-5: var(--simple-colors-default-theme-lime-10);
   --ddd-palette-text-color-6: var(--ddd-theme-default-white);
   --ddd-palette-text-color-7: var(--simple-colors-default-theme-deep-orange-10);
-
-  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
 }
 
 /** Very Violent Red */
@@ -4645,7 +4644,6 @@ html, :root {
 --ddd-palette-color-7: var(--simple-colors-default-theme-lime-5);
 
 --ddd-palette-video-player-color: var(--ddd-theme-default-black);
---ddd-palette-video-player-caption-color: var(--ddd-theme-default-black);
 
 /* text colors; to be used on top of corresponding palette-color */
   --ddd-palette-text-color-1: var(--simple-colors-default-theme-pink-11);
@@ -4702,6 +4700,28 @@ html, :root {
   --ddd-palette-text-color-5: var(--simple-colors-default-theme-blue-grey-2);
   --ddd-palette-text-color-6: var(--simple-colors-default-theme-blue-grey-10);
   --ddd-palette-text-color-7: var(--ddd-theme-default-white);
+}
+
+[data-palette="positively-purple"],
+[data-palette="9"] {
+  --ddd-palette-color-1: var(--simple-colors-default-theme-deep-purple-2);
+  --ddd-palette-color-2: var(--ddd-theme-default-wonderPurple);
+  --ddd-palette-color-3: var(--ddd-theme-default-athertonViolet);   
+  --ddd-palette-color-4: var(--simple-colors-default-theme-deep-purple-11);
+  --ddd-palette-color-5: var(--simple-colors-default-theme-deep-purple-12);
+  --ddd-palette-color-6: var(--ddd-theme-default-shrineTan);
+  --ddd-palette-color-7: var(--simple-colors-default-theme-brown-2);
+
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
+   /* text colors; to be used on top of corresponding palette-color */
+  --ddd-palette-text-color-1: var(--simple-colors-default-theme-deep-purple-11);
+  --ddd-palette-text-color-2: var(--simple-colors-default-theme-deep-purple-12);
+  --ddd-palette-text-color-3: var(--simple-colors-default-theme-deep-purple-1);
+  --ddd-palette-text-color-4: var(--simple-colors-default-theme-deep-purple-2);
+  --ddd-palette-text-color-5: var(--simple-colors-default-theme-deep-purple-5);
+  --ddd-palette-text-color-6: var(--ddd-theme-default-white);
+  --ddd-palette-text-color-7: var(--simple-colors-default-theme-brown-11);
 }
 `;
 

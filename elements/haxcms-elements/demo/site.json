@@ -33,7 +33,7 @@
       "tags": ""
     },
     "theme": {
-      "element": "polaris-invent-theme",
+      "element": "clean-portfolio-theme",
       "path": "@haxtheweb/clean-one/clean-one.js",
       "name": "Clean One",
       "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg",
