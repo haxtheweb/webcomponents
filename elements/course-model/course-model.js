@@ -51,7 +51,7 @@ class CourseModel extends LitElement {
             description: "3D Model viewer",
             icon: "3d-rotation",
             color: "purple",
-            tags: ["Resource", "3D", "model", "viewer"],
+            tags: ["Media", "3D", "model", "viewer"],
             handles: [],
             meta: {
               author: "Google",

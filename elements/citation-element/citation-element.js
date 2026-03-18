@@ -285,7 +285,7 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
         icon: "editor:title",
         color: "grey",
         tags: [
-          "Writing",
+          "Text",
           "content",
           "citation",
           "reference",

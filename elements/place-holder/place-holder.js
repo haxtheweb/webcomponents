@@ -255,7 +255,7 @@ class PlaceHolder extends DDD {
         icon: "hax:placeholder-image",
         color: "grey",
         tags: [
-          "Writing",
+          "Text",
           "development",
           "authoring",
           "media",

@@ -934,7 +934,7 @@ console.log(this.features)
       }
       // Ensure required text primitives show up in Writing group even if missing tags
       if (required && category === "Other"){
-        category = "Writing"
+        category = "Text"
       }
 
       if (!groupMap[category]) {

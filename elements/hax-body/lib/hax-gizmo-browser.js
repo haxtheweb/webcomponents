@@ -368,17 +368,17 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     });
 
     // Create custom ordering with logical priority
-    // Writing first, then alphabetical, then Other at the end
+    // Text first, then alphabetical, then Other at the end
     const otherCategory = "Other";
 
-    // Separate Writing, Other, and regular categories
+    // Separate Text, Other, and regular categories
     const regularTags = [];
-    let hasWriting = false;
+    let hasText = false;
     let hasOther = false;
 
     tags.forEach((tag) => {
-      if (tag === "Writing") {
-        hasWriting = true;
+      if (tag === "Text") {
+        hasText = true;
       } else if (tag === otherCategory) {
         hasOther = true;
       } else {
@@ -389,9 +389,9 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     // Sort regular categories alphabetically
     regularTags.sort();
 
-    // Combine in final order: Writing first, then alphabetical, then Other
+    // Combine in final order: Text first, then alphabetical, then Other
     const orderedTags = [];
-    if (hasWriting) orderedTags.push("Writing");
+    if (hasText) orderedTags.push("Text");
     orderedTags.push(...regularTags);
     if (hasOther) orderedTags.push(otherCategory);
     return orderedTags;

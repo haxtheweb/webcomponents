@@ -8,11 +8,11 @@
   "canEditSource": false,
   "contentEditable": false,
   "gizmo": {
-    "title": "Discord Embed",
+    "title": "Discord",
     "description": "Embed discord communities based on share URL",
     "icon": "hax:discord",
     "color": "purple",
-    "tags": ["Resource", "discord", "embed", "link", "social"],
+    "tags": ["Other", "discord", "embed", "link", "social"],
     "handles": [],
     "meta": {
       "author": "HAXTheWeb core team"
