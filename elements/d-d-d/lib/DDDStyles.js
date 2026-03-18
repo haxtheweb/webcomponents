@@ -258,6 +258,8 @@ if (globalThis && globalThis.addEventListener) {
                 property: "ddd-designtreatment",
                 disabled: designTreatmentProps.length === 0,
                 properties: designTreatmentProps,
+                hidden: designTreatmentProps.length === 0,
+                
               },
               {
                 title: "Colors",
@@ -266,6 +268,7 @@ if (globalThis && globalThis.addEventListener) {
                 property: "ddd-card",
                 disabled: colorProps.length === 0,
                 properties: colorProps,
+                hidden: colorProps.length === 0, 
               },
               {
                 title: "Font",
@@ -274,6 +277,7 @@ if (globalThis && globalThis.addEventListener) {
                 property: "ddd-font",
                 disabled: fontProps.length === 0,
                 properties: fontProps,
+                hidden: fontProps.length === 0,
               },
               {
                 title: "Spacing",
@@ -282,6 +286,7 @@ if (globalThis && globalThis.addEventListener) {
                 property: "ddd-spacing",
                 disabled: spacingProps.length === 0,
                 properties: spacingProps,
+                hidden: spacingProps.length === 0,
               },
               {
                 title: "Box appearance",
@@ -290,6 +295,7 @@ if (globalThis && globalThis.addEventListener) {
                 property: "ddd-box",
                 disabled: cardProps.length === 0,
                 properties: cardProps,
+                hidden: cardProps.length === 0,
               },
             ],
           });

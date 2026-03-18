@@ -546,6 +546,7 @@ export class HAXWiring {
           title: "Lock editing",
           description: "Prevent changes to this element and all its content",
           inputMethod: "boolean",
+          
         });
         // allow classes to be modified this way
         props.settings.developer.push({
