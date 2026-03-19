@@ -12,6 +12,20 @@ import { DeviceDetails } from "@haxtheweb/replace-tag/lib/PerformanceDetect.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js";
 configure({ enforceActions: false }); // strict mode off
+function hasStoredSoundPreference() {
+  try {
+    return globalThis.localStorage.getItem("app-hax-soundStatus") !== null;
+  } catch (e) {
+    return false;
+  }
+}
+
+function getDefaultSoundStatus() {
+  if (hasStoredSoundPreference()) {
+    return localStorageGet("app-hax-soundStatus", true);
+  }
+  return !DeviceDetails.mobileDevice();
+}
 
 export function iconFromPageType(type) {
   switch (type) {
@@ -99,7 +113,7 @@ class Store {
     this.currentRouterLocation = {};
     this.jwt = null;
     this.version = null;
-    this.soundStatus = localStorageGet("app-hax-soundStatus", true);
+    this.soundStatus = getDefaultSoundStatus();
     this.darkMode = !localStorageGet("app-hax-darkMode")
       ? false
       : localStorageGet("app-hax-darkMode");
@@ -281,7 +295,7 @@ class Store {
   // see if this device is poor
   async evaluatebadDevice() {
     this.badDevice = await DeviceDetails.badDevice();
-    if (this.badDevice) {
+    if (this.badDevice && !hasStoredSoundPreference()) {
       this.soundStatus = false;
     }
   }

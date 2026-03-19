@@ -877,7 +877,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.max = e.detail.value;
   }
 
-  promiseProgressFinished(e) {
+  async promiseProgressFinished(e) {
     if (e.detail.value) {
       // Site creation completed successfully!
       const createResponse = store.AppHaxAPI.lastResponse.createSite.data;
@@ -927,6 +927,9 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       if (store.appEl && store.appEl.playSound) {
         store.appEl.playSound("success");
       }
+      // Always refresh site state after create and resolve URL from the
+      // server list if needed (or to stabilize any race conditions).
+      await this._refreshSiteListingFromServer();
     }
   }
 

@@ -4,6 +4,21 @@ import { observable, makeObservable, computed, configure } from "mobx";
 import { DeviceDetails } from "@haxtheweb/replace-tag/lib/PerformanceDetect.js";
 configure({ enforceActions: false }); // strict mode off
 
+function hasStoredSoundPreference() {
+  try {
+    return globalThis.localStorage.getItem("app-hax-soundStatus") !== null;
+  } catch (e) {
+    return false;
+  }
+}
+
+function getDefaultSoundStatus() {
+  if (hasStoredSoundPreference()) {
+    return localStorageGet("app-hax-soundStatus", true);
+  }
+  return !DeviceDetails.mobileDevice();
+}
+
 class Store {
   constructor() {
     this.badDevice = null;
@@ -53,7 +68,7 @@ class Store {
     ];
     this.appEl = null;
     this.appReady = false;
-    this.soundStatus = localStorageGet("app-hax-soundStatus", true);
+    this.soundStatus = getDefaultSoundStatus();
     // If user is new, make sure they are on step 1
     this.appMode = "search";
     this.activeSiteOp = null;
@@ -237,7 +252,7 @@ class Store {
   // see if this device is poor
   async evaluateBadDevice() {
     this.badDevice = await DeviceDetails.badDevice();
-    if (this.badDevice === true) {
+    if (this.badDevice === true && !hasStoredSoundPreference()) {
       this.soundStatus = false;
     }
   }

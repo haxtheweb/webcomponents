@@ -59,18 +59,13 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
           position: absolute;
           border: var(--ddd-border-xs, 1px solid)
             var(--ddd-theme-default-slateGray, #666);
-          background: var(--ddd-theme-default-white, white);
+          background: light-dark(white, black);
+          color: light-dark(black, white);
           border-radius: none;
           box-shadow: var(--ddd-boxShadow-lg);
           min-width: var(--ddd-spacing-30, 200px);
           z-index: 1000;
           overflow: hidden;
-        }
-
-        :host([dark]) .user-menu.open,
-        body.dark-mode .user-menu.open {
-          background: var(--ddd-theme-default-coalyGray, #333);
-          border-color: var(--ddd-theme-default-slateGray, #666);
         }
 
         .user-menu.open ::slotted(*) {
@@ -80,21 +75,14 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
           font-size: var(--ddd-font-size-3xs, 12px);
           text-align: left;
           font-family: var(--ddd-font-primary, sans-serif);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
           background: transparent;
           text-decoration: none;
-        }
-
-        :host([dark]) .user-menu.open ::slotted(*),
-        body.dark-mode .user-menu.open ::slotted(*) {
-          color: var(--ddd-theme-default-white, white);
         }
 
         .user-menu.open .main-menu ::slotted(*:hover),
         .user-menu.open .main-menu ::slotted(*:active),
         .user-menu.open .main-menu ::slotted(*:focus) {
-          background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          background-color: light-dark(var(--ddd-theme-default-limestoneGray, #f5f5f5), var(--ddd-theme-default-coalyGray, #333));
         }
 
         :host([dark]) .user-menu.open .main-menu ::slotted(*:hover),
@@ -103,15 +91,13 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
         body.dark-mode .user-menu.open .main-menu ::slotted(*:hover),
         body.dark-mode .user-menu.open .main-menu ::slotted(*:active),
         body.dark-mode .user-menu.open .main-menu ::slotted(*:focus) {
-          background: var(--ddd-theme-default-slateGray, #666);
           color: var(--ddd-theme-default-white, white);
         }
 
         .user-menu.open .post-menu ::slotted(*:hover),
         .user-menu.open .post-menu ::slotted(*:active),
         .user-menu.open .post-menu ::slotted(*:focus) {
-          background: var(--ddd-theme-default-original87Pink, #e4007c);
-          color: var(--ddd-theme-default-white, white);
+          background-color: var(--ddd-theme-default-original87Pink, #e4007c);
         }
 
         .user-menu ::slotted(button) {

@@ -4163,8 +4163,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
           // Show a toast to let the user know Merlin is here to help
           store.toast(
-            "👋 Welcome to HAX! Merlin is here to help you get started",
-            8000,
+            "Welcome to HAX! Here's some common tasks",
+            3000,
             {
               hat: "knight",
             },
