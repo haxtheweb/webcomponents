@@ -658,6 +658,11 @@ export class PageBreak extends IntersectionObserverMixin(
           color: black;
           background-color: var(--ddd-theme-default-discoveryCoral);
         }
+        @media (max-width: 600px) {
+          #pageactionsbtn {
+            display: none;
+          }
+        }
       `,
     ];
   }
@@ -710,6 +715,7 @@ export class PageBreak extends IntersectionObserverMixin(
             <simple-toolbar-button
               class="menu-button"
               icon="icons:create"
+              id="pageactionsbtn"
               label="${this.t.pageActions}"
               @click="${this._toggleMenu}"
             ></simple-toolbar-button>

@@ -1386,7 +1386,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     import("wired-elements/lib/wired-button.js");
     import("./lib/v2/app-hax-toast.js");
     import("./lib/v2/app-hax-wired-toggle.js");
-    import("./lib/v2/app-hax-search-bar.js");
     import("./lib/v2/app-hax-search-results.js");
     import("./lib/v2/app-hax-user-menu.js");
     import("./lib/v2/app-hax-user-menu-button.js");
