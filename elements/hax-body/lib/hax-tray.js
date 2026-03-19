@@ -483,6 +483,12 @@ class HaxTray extends I18NMixin(
           margin: 0;
           padding: 0;
         }
+        /* If hax-tray hides several unused a11y-collapse tags, this corrects the 
+        border color for the first VISIBLE a11y-collapse */
+        a11y-collapse:not([hidden]):nth-child(1 of a11y-collapse:not([hidden])) {
+          border-top: var(--ddd-border-sm);
+          border-top-color: var(--ddd-theme-default-coalyGray);
+        }
         hax-tray-button,
         hax-gizmo-browser {
           visibility: visible;
