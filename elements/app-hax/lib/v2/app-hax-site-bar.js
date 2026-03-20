@@ -4,7 +4,6 @@ import { html, css, unsafeCSS } from "lit";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
-import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "@haxtheweb/simple-fields/lib/simple-context-menu.js";
 import { toJS } from "mobx";
@@ -12,10 +11,6 @@ import { store } from "./AppHaxStore.js";
 import "./app-hax-user-access-modal.js";
 import "./app-hax-confirmation-modal.js";
 
-const DropDownBorder = new URL(
-  "../assets/images/DropDownBorder.svg",
-  import.meta.url,
-);
 let appHaxSiteBarInstanceCount = 0;
 // EXPORT (so make available to other documents that reference this file) a class, that extends LitElement
 // which has the magic life-cycles and developer experience below added
@@ -357,9 +352,6 @@ export class AppHaxSiteBars extends SimpleColors {
         .more-options simple-icon-button-lite {
           --simple-icon-color: var(--ddd-theme-default-nittanyNavy);
         }
-        .more-options simple-tooltip:not(:defined) {
-          display: none;
-        }
 
         .more-options simple-icon-button-lite:hover,
         .more-options simple-icon-button-lite:focus,
@@ -452,11 +444,8 @@ export class AppHaxSiteBars extends SimpleColors {
                 @click="${this.toggleOptionsMenu}"
                 aria-label="Open options"
                 aria-haspopup="menu"
+                title="Options"
               ></simple-icon-button-lite>
-              <simple-tooltip for="${this.moreOptionsId}" position="left">
-                Options
-              </simple-tooltip>
-
               <simple-context-menu title="Options">
                 <simple-toolbar-button
                   icon="content-copy"
