@@ -933,6 +933,82 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     }
   }
 
+  async _refreshSiteListingFromServer() {
+    if (store && store.refreshSiteListing) {
+      store.refreshSiteListing();
+    }
+
+    const api = store && store.AppHaxAPI ? store.AppHaxAPI : null;
+    if (!api || !api.makeCall) {
+      return;
+    }
+
+    let createResponse = null;
+    if (
+      api.lastResponse &&
+      api.lastResponse.createSite &&
+      api.lastResponse.createSite.data
+    ) {
+      createResponse = api.lastResponse.createSite.data;
+    }
+
+    // Give the backend a brief moment to complete async writes before a
+    // cache-busted list refresh.
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    try {
+      const results = await api.makeCall("getSitesList", { _t: Date.now() });
+      if (!results || !results.data) {
+        return;
+      }
+
+      store.manifest = results.data;
+
+      if (
+        !results.data.items ||
+        !Array.isArray(results.data.items) ||
+        results.data.items.length === 0
+      ) {
+        return;
+      }
+
+      let matchedSite = null;
+
+      if (createResponse && createResponse.id) {
+        matchedSite = results.data.items.find(
+          (item) => item && item.id === createResponse.id,
+        );
+      }
+
+      if (!matchedSite && createResponse && createResponse.slug) {
+        matchedSite = results.data.items.find(
+          (item) => item && item.slug === createResponse.slug,
+        );
+      }
+
+      if (!matchedSite && this.siteName) {
+        const normalizedSiteName = this.siteName.trim().toLowerCase();
+        matchedSite = results.data.items.find((item) => {
+          if (
+            !item ||
+            !item.metadata ||
+            !item.metadata.site ||
+            !item.metadata.site.name
+          ) {
+            return false;
+          }
+          return item.metadata.site.name.trim().toLowerCase() === normalizedSiteName;
+        });
+      }
+
+      if (matchedSite && matchedSite.slug) {
+        this.siteUrl = matchedSite.slug.replace("index.html", "");
+      }
+    } catch (e) {
+      // Non-fatal: UI already has a fallback URL and can still continue.
+    }
+  }
+
   triggerMainPageConfetti() {
     // Find the main page confetti container and trigger confetti
     const mainConfettiContainer =
