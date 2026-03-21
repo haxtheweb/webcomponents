@@ -33,7 +33,7 @@
       "tags": ""
     },
     "theme": {
-      "element": "polaris-invent-theme",
+      "element": "clean-portfolio-theme",
       "path": "@haxtheweb/clean-one/clean-one.js",
       "name": "Clean One",
       "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg",
@@ -53,16 +53,6 @@
       "fields": {}
     },
     "platform": {
-      "audience": "novice",
-      "allowedBlocks": [ "video-player"],
-      "features": {
-        "addPage": false,
-        "styleGuide": false,
-        "manifest": false,
-        "addBlock": false,
-        "media": false,
-        "contentMap": false
-      }
     },
     "build": {
       "version": "6.0.1",

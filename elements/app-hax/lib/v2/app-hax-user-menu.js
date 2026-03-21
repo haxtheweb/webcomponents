@@ -40,12 +40,12 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
         }
 
         .entireComponent {
-          max-height: var(--ddd-spacing-10, 40px);
+          height: var(--ddd-spacing-16, 64px);
         }
 
         .menuToggle {
           cursor: pointer;
-          max-height: var(--ddd-spacing-10, 40px);
+          height: var(--ddd-spacing-16, 64px);
         }
 
         .user-menu {
@@ -54,23 +54,17 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
 
         .user-menu.open {
           display: block;
-          top: var(--ddd-spacing-12, 48px);
+          top: var(--ddd-spacing-16, 64px);
           right: 0px;
           position: absolute;
           border: var(--ddd-border-xs, 1px solid)
             var(--ddd-theme-default-slateGray, #666);
-          background: var(--ddd-theme-default-white, white);
-          border-radius: var(--ddd-radius-sm, 4px);
+          background-color: light-dark(white, black);
+          border-radius: none;
           box-shadow: var(--ddd-boxShadow-lg);
           min-width: var(--ddd-spacing-30, 200px);
           z-index: 1000;
           overflow: hidden;
-        }
-
-        :host([dark]) .user-menu.open,
-        body.dark-mode .user-menu.open {
-          background: var(--ddd-theme-default-coalyGray, #333);
-          border-color: var(--ddd-theme-default-slateGray, #666);
         }
 
         .user-menu.open ::slotted(*) {
@@ -80,8 +74,8 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
           font-size: var(--ddd-font-size-3xs, 12px);
           text-align: left;
           font-family: var(--ddd-font-primary, sans-serif);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
-          background: transparent;
+          color: light-dark(black, white);
+          background-color: light-dark(white, black);
           text-decoration: none;
         }
 
@@ -93,8 +87,7 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
         .user-menu.open .main-menu ::slotted(*:hover),
         .user-menu.open .main-menu ::slotted(*:active),
         .user-menu.open .main-menu ::slotted(*:focus) {
-          background: var(--ddd-theme-default-limestoneGray, #f5f5f5);
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          background-color: light-dark(var(--ddd-theme-default-limestoneGray, #f5f5f5), var(--ddd-theme-default-coalyGray, #333));
         }
 
         :host([dark]) .user-menu.open .main-menu ::slotted(*:hover),
@@ -103,15 +96,13 @@ export class AppHaxUserMenu extends DDDSuper(LitElement) {
         body.dark-mode .user-menu.open .main-menu ::slotted(*:hover),
         body.dark-mode .user-menu.open .main-menu ::slotted(*:active),
         body.dark-mode .user-menu.open .main-menu ::slotted(*:focus) {
-          background: var(--ddd-theme-default-slateGray, #666);
           color: var(--ddd-theme-default-white, white);
         }
 
         .user-menu.open .post-menu ::slotted(*:hover),
         .user-menu.open .post-menu ::slotted(*:active),
         .user-menu.open .post-menu ::slotted(*:focus) {
-          background: var(--ddd-theme-default-original87Pink, #e4007c);
-          color: var(--ddd-theme-default-white, white);
+          background-color: var(--ddd-theme-default-original87Pink, #e4007c);
         }
 
         .user-menu ::slotted(button) {

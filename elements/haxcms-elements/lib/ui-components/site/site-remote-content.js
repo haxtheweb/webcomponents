@@ -357,7 +357,7 @@ class SiteRemoteContent extends HAXCMSI18NMixin(
         icon: "hax:remote",
         color: "grey",
         tags: [
-          "Resource",
+          "Other",
           "haxcms",
           "content",
           "remote",

@@ -34,16 +34,10 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         }
         hax-tray-button {
           flex: auto;
-          font-size: 12px;
-          --hax-ui-font-size-sm: 12px;
-          --simple-toolbar-button-height: 22px;
-          --simple-toolbar-button-width: 22px;
-        }
-        hax-tray-button[small] {
-          font-size: 8px;
-          --hax-ui-font-size-sm: 8px;
-          --simple-toolbar-button-height: 16px;
-          --simple-toolbar-button-width: 16px;
+          font-size: 16px;
+          --hax-ui-font-size-sm: 16px;
+          --simple-toolbar-button-height: 30px;
+          --simple-toolbar-button-width: 30px;
         }
         .toolbar-inner {
           max-width: 96%;
@@ -52,7 +46,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           font-size: var(hax-ui-font-size-xs);
         }
         simple-button-grid {
-          --simple-button-grid-margin: 2px;
+          --simple-button-grid-margin: 4px;
         }
         simple-fields-field {
           margin-top: 0;
@@ -156,7 +150,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
             heading-button
             expanded
           >
-            <simple-button-grid columns="5" always-expanded part="grid">
+            <simple-button-grid columns="3" always-expanded part="grid">
               ${this.popularGizmoList.map(
                 (gizmo, i) =>
                   html` <simple-popover-selection
@@ -165,7 +159,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                     event="hover"
                   >
                     <hax-tray-button
-                      small
                       show-text-label
                       voice-command="insert ${gizmo.title}"
                       draggable="true"
@@ -202,7 +195,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
             heading-button
             expanded
           >
-            <simple-button-grid columns="5" always-expanded part="grid">
+            <simple-button-grid columns="3" always-expanded part="grid">
               ${this.recentGizmoList.map(
                 (gizmo, i) =>
                   html` <simple-popover-selection
@@ -211,7 +204,6 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                     event="hover"
                   >
                     <hax-tray-button
-                      small
                       show-text-label
                       voice-command="insert ${gizmo.title}"
                       draggable="true"
@@ -247,7 +239,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
                 heading="${this.ucfirst(tag)}"
                 heading-button
               >
-                <simple-button-grid columns="4" always-expanded part="grid">
+                <simple-button-grid columns="3" always-expanded part="grid">
                   ${this.filtered.map(
                     (gizmo, i) =>
                       html`${gizmo && gizmo.tags && gizmo.tags.includes(tag)
@@ -376,17 +368,17 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     });
 
     // Create custom ordering with logical priority
-    // Writing first, then alphabetical, then Other at the end
+    // Text first, then alphabetical, then Other at the end
     const otherCategory = "Other";
 
-    // Separate Writing, Other, and regular categories
+    // Separate Text, Other, and regular categories
     const regularTags = [];
-    let hasWriting = false;
+    let hasText = false;
     let hasOther = false;
 
     tags.forEach((tag) => {
-      if (tag === "Writing") {
-        hasWriting = true;
+      if (tag === "Text") {
+        hasText = true;
       } else if (tag === otherCategory) {
         hasOther = true;
       } else {
@@ -397,9 +389,9 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     // Sort regular categories alphabetically
     regularTags.sort();
 
-    // Combine in final order: Writing first, then alphabetical, then Other
+    // Combine in final order: Text first, then alphabetical, then Other
     const orderedTags = [];
-    if (hasWriting) orderedTags.push("Writing");
+    if (hasText) orderedTags.push("Text");
     orderedTags.push(...regularTags);
     if (hasOther) orderedTags.push(otherCategory);
     return orderedTags;

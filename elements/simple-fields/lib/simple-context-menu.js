@@ -45,7 +45,7 @@ class SimpleContextMenu extends DDD {
           padding: 0;
           margin: 0;
           z-index: var(--simple-context-menu-z-index, 1000);
-          border-radius: var(--ddd-radius-sm);
+          border-radius: var(--ddd-radius-md);
         }
 
         dialog::backdrop {

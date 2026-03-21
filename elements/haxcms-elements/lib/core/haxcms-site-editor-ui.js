@@ -33,7 +33,6 @@ import "../ui-components/site/site-remote-content.js";
 import "@haxtheweb/page-flag/page-flag.js";
 import "wired-elements/lib/wired-button.js";
 
-const LogOut = new URL("../assets/images/Logout.svg", import.meta.url).href;
 /**
  * `haxcms-site-editor-ui`
  * `haxcms editor element buttons that you see`
@@ -54,7 +53,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         :host {
           display: block;
           position: relative;
-          height: 48px;
+          height: 64px;
           left: 0;
           top: 0;
           right: 0;
@@ -70,16 +69,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         :host *[hidden] {
           display: none;
         }
-        /* Ensure Add Page button is never visible while actively editing */
-        :host([edit-mode]) #addpagebutton {
-          display: none;
-        }
         simple-tooltip:not(:defined) {
           display: none !important;
         }
         :host([painting]) {
           opacity: 0;
-          margin-top: -48px;
+          margin-top: -64px;
           visibility: hidden;
         }
         #editbutton {
@@ -87,24 +82,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           opacity: 0;
         }
 
-        #saveandeditbutton {
-          visibility: hidden;
-          opacity: 0;
-        }
-
         :host([page-allowed]) #editbutton,
-        :host([page-allowed]) #saveandeditbutton,
         :host([page-allowed]) #editdetails {
           visibility: visible;
           opacity: 1;
         }
         /* Ensure edit and save buttons are visible when in edit mode */
-        :host([edit-mode]) #editbutton,
-        :host([edit-mode]) #saveandeditbutton {
+        :host([edit-mode]) #editbutton {
           visibility: visible;
           opacity: 1;
         }
-        #saveandeditbutton,
         #editbutton {
           background-color: var(--ddd-theme-default-skyBlue);
           color: white; /* Ensure text is visible on blue background */
@@ -116,7 +103,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
 
         super-daemon-search.merlin {
-          border: var(--ddd-border-xs);
+          border: none;
+          height: 48px;
+          margin: var(--ddd-spacing-2) 0 0 var(--ddd-spacing-4);
         }
 
         :host([dark-mode]) #merlin,
@@ -135,7 +124,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         haxcms-button-add::part(button) {
           --simple-toolbar-button-border-width: 1px;
-          border-bottom: 0;
         }
 
         simple-toolbar-menu-item a {
@@ -147,12 +135,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
 
         simple-toolbar-button.top-bar-button::part(button) {
-          --simple-toolbar-button-border-width: 1px;
-          border-bottom: 0;
+          --simple-toolbar-button-border-width: 2px;
         }
         simple-toolbar-button.merlin:hover,
         simple-toolbar-button.merlin:active,
-        simple-toolbar-button.merlin:focus {
+        simple-toolbar-button.merlin:focus,
+        simple-toolbar-button.merlin:focus-visible {
           background-color: var(--simple-colors-default-theme-purple-1);
           color: light-dark(
             var(--ddd-theme-default-white),
@@ -162,12 +150,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         simple-toolbar-menu:hover,
         simple-toolbar-menu:active,
         simple-toolbar-menu:focus,
+        simple-toolbar-menu:focus-visible,
         simple-toolbar-button:not(.merlin):hover,
         simple-toolbar-button:not(.merlin):active,
         simple-toolbar-button:not(.merlin):focus,
+        simple-toolbar-button:not(.merlin):focus-visible,
         haxcms-button-add:hover,
         haxcms-button-add:active,
-        haxcms-button-add:focus {
+        haxcms-button-add:focus,
+        haxcms-button-add:focus-visible {
           color: var(--hax-ui-color);
           background-color: light-dark(
             var(--ddd-theme-default-white),
@@ -176,7 +167,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
         simple-toolbar-button:hover,
         simple-toolbar-button:active,
-        simple-toolbar-button:focus {
+        simple-toolbar-button:focus,
+        simple-toolbar-button:focus-visible {
+          --simple-toolbar-border-color: black;
+        }
+        simple-toolbar-button.top-bar-button::part(button):focus-visible,
+        simple-toolbar-menu.top-bar-button::part(button):focus-visible,
+        haxcms-button-add.top-bar-button::part(button):focus-visible,
+        .topbar-character:focus-visible,
+        .haxLogo:focus-visible,
+        .mysiteslink:focus-visible {
+          outline: var(--ddd-border-sm, 2px solid)
+            var(--ddd-theme-default-skyBlue);
+          outline-offset: 2px;
           --simple-toolbar-border-color: black;
         }
         :host(:hover),
@@ -184,38 +187,51 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         :host(:focus) {
           opacity: 1;
         }
-        simple-tooltip {
-          --simple-tooltip-background: #000000;
-          --simple-tooltip-opacity: 1;
-          --simple-tooltip-text-color: #ffffff;
-          --simple-tooltip-delay-in: 0;
-          --simple-tooltip-duration-in: 300ms;
-          --simple-tooltip-duration-out: 0;
-          --simple-tooltip-border-radius: 0;
-          --simple-tooltip-font-size: 14px;
-        }
         app-hax-top-bar {
           z-index: 1000;
-          right: 8px;
-          left: 8px;
+          right: 0px;
+          left: 0px;
           position: fixed;
           transition-delay: 0.9s;
           transition: all 0.9s ease-in-out;
-        }
-        app-hax-top-bar[edit-mode] {
-          right: 0px;
-          left: 0px;
         }
         :host([dark-mode]) app-hax-top-bar {
           --bg-color: #000;
           --accent-color: #fff;
         }
         app-hax-top-bar::part(top-bar) {
-          grid-template-columns: 5% 85% 10%;
+          grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
           overflow: visible;
+          display: grid;
+        }
+        .topbar-left-group,
+        .topbar-center-group,
+        .topbar-right-group {
+          align-items: center;
+          display: flex;
+          height: var(--top-bar-height, 64px);
+        }
+        .topbar-left-group {
+          justify-content: flex-start;
+          gap: var(--ddd-spacing-2);
+        }
+        .topbar-center-group {
+          justify-content: center;
+        }
+        .topbar-right-group {
+          justify-content: flex-end;
+        }
+        .home-btn {
+          align-items: center;
+          display: inline-flex;
+          height: var(--top-bar-height, 64px);
         }
         .haxLogo {
-          color: var(--simple-colors-default-theme-accent-11, black);
+          color: white;
+          background-color: var(--ddd-primary-2) !important;
+          height: 64px;
+          width: 64px;
+          display: block;
         }
         :host([dark-mode]) .haxLogo:hover,
         :host([dark-mode]) .haxLogo:focus,
@@ -223,11 +239,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         .haxLogo:hover,
         .haxLogo:focus,
         .haxLogo:active {
-          color: var(--haxcms-color);
+          color: white;
         }
         .haxLogo simple-icon-lite {
-          --simple-icon-height: 32px;
-          --simple-icon-width: 32px;
+          --simple-icon-height: 48px;
+          --simple-icon-width: 48px;
           margin: 8px;
           transition: all 0.3s ease-in-out;
         }
@@ -249,7 +265,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
         simple-toolbar simple-toolbar-button,
         simple-toolbar simple-toolbar-menu {
-          --simple-toolbar-border-radius: 0;
+          --simple-toolbar-border-radius: var(--ddd-radius-md);
+          border-radius: var(--ddd-radius-md);
           background-color: var(--simple-colors-default-theme-grey-1);
         }
 
@@ -264,13 +281,32 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           height: var(--top-bar-height);
           gap: 0;
         }
+        .left-toolbar-buttons {
+          justify-content: flex-start;
+        }
+        .center-toolbar-buttons {
+          justify-content: center;
+        }
+        .right-toolbar-buttons {
+          justify-content: flex-end;
+        }
+        .merlin-anchor-button {
+          opacity: 0;
+          pointer-events: none;
+          height: 1px !important;
+          width: 1px !important;
+          margin: 0 !important;
+        }
         .toolbar-buttons simple-toolbar-button,
         .toolbar-buttons simple-toolbar-menu,
         .toolbar-buttons haxcms-button-add {
-          min-width: 48px;
+          width: 48px;
+          height: 48px;
+          margin: var(--ddd-spacing-2) var(--ddd-spacing-1);
           --simple-toolbar-button-disabled-opacity: 0.3;
           --simple-toolbar-button-padding: 3px 6px;
-          --simple-toolbar-border-radius: 0;
+          --simple-toolbar-border-radius: var(--ddd-radius-md);
+          border-radius: var(--ddd-radius-md);
         }
         /* Visually indicate which HAX content tab is active (config / blocks / map / source) */
         .toolbar-buttons simple-toolbar-button[active] {
@@ -279,6 +315,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         .toolbar-buttons haxcms-button-add {
           background-color: var(--ddd-theme-default-skyBlue);
           color: white;
+        }
+        .toolbar-buttons haxcms-button-add[disabled] {
+          background-color: transparent;
+          color: light-dark(black, white);
         }
         .toolbar-buttons simple-toolbar-menu {
           --a11y-menu-button-bg-color: light-dark(
@@ -319,27 +359,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
         .topbar-character {
           cursor: pointer;
-          display: inline-block;
           border: none;
-          border-radius: 0px;
-          padding: 0 8px;
-          margin: 0 0 0 16px;
           background-color: transparent;
-          height: 48px;
-          max-width: 160px;
-          overflow: hidden;
-          word-break: break-all;
-          transition: all 0.6 ease-in-out;
-          color: #222;
+          height: 64px;
         }
         .characterbtn-name {
           margin-left: 8px;
           font-size: 12px;
           vertical-align: bottom;
-          line-height: 48px;
+          line-height: 64px;
           overflow: hidden;
           text-overflow: ellipsis;
-          height: 48px;
+          height: 64px;
           word-break: break-all;
         }
 
@@ -349,7 +380,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           margin-left: var(--ddd-spacing-1, 4px);
           display: inline-flex;
           vertical-align: top;
-          margin-top: 20px;
+          margin-top: 24px;
           color: currentColor;
           transform: rotate(0deg);
           transition: transform var(--ddd-duration-fast, 150ms)
@@ -365,32 +396,28 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           background-color: #222;
         }
         .topbar-character rpg-character {
-          margin: -4px -14px 0px -10px;
-          height: 52px;
-          width: 64px;
-          display: inline-block;
-          transform: scale(0.7);
-          transition: all 0.5 ease-in-out;
+          --simple-toolbar-border-radius: var(--ddd-radius-md);
+          border-radius: var(--ddd-radius-md);
+          background-color: var(--simple-colors-default-theme-grey-1);
+          border: var(--ddd-border-sm);
+          border-color: var(--ddd-theme-default-limestoneGray);
+          padding: 2px 12px 12px 2px;
+          margin: 4px 0 0 0;
+          height: 32px;
+          width: 32px;
         }
         .topbar-character:hover rpg-character,
-        .topbar-character:focus rpg-character {
-          transform: scale(0.9);
+        .topbar-character:focus rpg-character,
+        .topbar-character:focus-visible rpg-character {
+          border-color: var(--simple-colors-default-theme-grey-12);
+          background-color: var(--simple-colors-default-theme-grey-2);
         }
 
         .mysiteslink {
+          display: block;
           text-decoration: none;
         }
 
-        .logout::part(menu-button) {
-          background-image: url("${unsafeCSS(LogOut)}");
-          background-repeat: no-repeat;
-          background-position: center center;
-          text-align: center;
-          background-size: cover;
-          border-top: 0px;
-          border-bottom: 0px;
-          padding: 10px;
-        }
         app-hax-user-menu app-hax-user-menu-button::part(menu-button) {
           font-size: 12px;
         }
@@ -415,9 +442,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           :host([edit-mode]) {
             bottom: unset;
           }
-          app-hax-top-bar::part(top-bar) {
-            display: grid;
-          }
           #undo,
           #redo {
             display: none;
@@ -426,20 +450,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             padding: 0;
             margin: 0;
           }
-          .characterbtn-name {
-            padding: 0;
-            margin: 0;
-            width: 30px;
-            display: inline-flex;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            letter-spacing: -2px;
-            margin-left: -6px;
-          }
           simple-toolbar {
             --simple-toolbar-button-padding: 3px 3px;
           }
-          .characterbtn-name,
           haxcms-button-add,
           simple-toolbar-menu,
           simple-toolbar-button {
@@ -459,14 +472,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
         }
         @media (max-width: 600px) {
-          .haxLogo {
+          /** hide buttons on a phone bc its too small */
+          .haxLogo,#exportbtn, #content-map, #outlinebutton {
             display: none;
-          }
-
-          .topbar-character rpg-character {
-            margin: 0 0 0px -8px;
-            height: 10px;
-            width: 48px;
           }
           simple-toolbar {
             --simple-toolbar-button-padding: 0px;
@@ -474,17 +482,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             background-color: white;
             height: auto;
           }
-          .characterbtn-name {
-            padding: 0px;
-            margin: -42px 8px 0px 0px;
-            width: 40px;
-            display: block;
-            text-overflow: ellipsis;
-            font-size: 12px;
-            font-family: auto;
-            letter-spacing: normal;
-            font-weight: normal;
+          
+          app-hax-top-bar::part(top-bar) {
+            grid-template-columns: 0 1fr minmax(0, 1fr) !important;
           }
+          app-hax-top-bar[edit-mode]::part(top-bar) {
+          grid-template-columns: 1fr 1fr !important;
+          overflow: hidden;
+        }
         }
       `,
     ];
@@ -1229,6 +1234,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                           title: "Confirm structure",
                           elements: { content: outline, buttons: div },
                           modal: true,
+                          showClose: true,
                           styles: {
                             "--simple-modal-titlebar-background": "transparent",
                             "--simple-modal-titlebar-color": "light-dark(black, white)",
@@ -1619,7 +1625,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.soundIcon = "";
     this.__disposer = this.__disposer || [];
     this.t = this.t || {};
-    this._configureWasFocused = false; // Track toggle state for Ctrl+Shift+1
+    this._configureWasFocused = false; // Track toggle state for Ctrl+Shift+4
 
     // default sub-contexts for Merlin before platform filtering
     this.platformContexts = {
@@ -2451,8 +2457,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.t = {
       ...this.t,
       selectPage: "Select page",
-      backToSiteList: "Back to site list",
-      mySites: "My sites",
+      siteDashboard: "Site dashboard",
       cancel: "Cancel",
       unsavedChangesWillBeLostIfSelectingOkAreYouSure:
         "Unsaved changes will be lost if selecting OK, are you sure?",
@@ -2486,14 +2491,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       save: "Save",
       saveAndEdit: "Save & Edit",
       unlockPage: "Unlock page",
-      newJourney: "New Journey",
+      newSite: "New Site",
       accountInfo: "Account Info",
       outlineDesigner: "Site Outline",
       outline: "Outline",
       pageOutline: "Structure",
       more: "More",
       pageActions: "Page actions",
-      insights: "Insights dashboard",
+      insights: "Insights",
       merlin: "Merlin",
       summonMerlin: "Summon Merlin",
       logOut: "Log out",
@@ -2501,7 +2506,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       showMore: "More",
       contentImported: "Content imported!",
     };
-    this.backText = "Site list";
+    this.backText = "Site Dashboard";
     this.painting = true;
     this.pageAllowed = false;
     this.editMode = false;
@@ -2705,6 +2710,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.userMenuOpen = !this.userMenuOpen;
     store.playSound("click");
   }
+  shouldAutoOpenTrayOnEdit() {
+    const responsiveWidth = parseInt(this.responsiveWidth);
+    const mediumBreakpoint = parseInt(this.md) || 900;
+    const isNarrowViewport =
+      !Number.isNaN(responsiveWidth) && responsiveWidth < mediumBreakpoint;
+    return !(
+      ["xs", "sm"].includes(this.responsiveSize) || isNarrowViewport
+    );
+  }
   getIconPosition(size) {
     return !["xl", "lg"].includes(size) ? "top" : "left";
   }
@@ -2712,274 +2726,241 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   render() {
     return html`
       <app-hax-top-bar part="top-bar" ?edit-mode="${this.editMode}">
-        <span slot="left" class="home-btn">
-          <a
-            href="${this.backLink}"
-            class="haxLogo"
-            id="backtosites"
-            title="${this.backText}"
-            part="hax-logo"
-          >
-            <simple-icon-lite icon="hax:hax2022"></simple-icon-lite>
-          </a>
-          <simple-tooltip for="backtosites" position="right"
-            >${this.backText}</simple-tooltip
-          >
-          <slot name="haxcms-site-editor-ui-prefix-avatar"></slot>
-        </span>
-        <div slot="center" class="toolbar-buttons">
-          <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
-          <simple-toolbar-button
-            ?hidden="${!this.activeItem ||
-            !this.activeItem.metadata ||
-            !this.activeItem.metadata.locked ||
-            this.editMode}"
-            id="lockbutton"
-            class="top-bar-button"
-            icon="icons:lock"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            label="${this.t.unlockPage}"
-            @click="${this._toggleLockedStatus}"
-          ></simple-toolbar-button>
-          <simple-toolbar-button
-            ?hidden="${!this.pageAllowed}"
-            ?disabled="${this.activeItem &&
-            this.activeItem.metadata &&
-            this.activeItem.metadata.locked &&
-            !this.editMode}"
-            class="top-bar-button"
-            id="editbutton"
-            icon="${this.__editIcon}"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            @click="${this._editButtonTap}"
-            label="${this.__editText}"
-            voice-command="edit (this) page"
-          ></simple-toolbar-button>
-          <simple-toolbar-button
-            ?hidden="${!this.editMode || store.isPlatformAudience("novice") || !store.platformAllows("saveAndEdit")}"
-            class="top-bar-button"
-            id="saveandeditbutton"
-            icon="hax:page-edit"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            @click="${this._saveAndEditButtonTap}"
-            label="${this.t.saveAndEdit} • Ctrl⇧W"
-            data-primary="4"
-            voice-command="save and edit page"
-          ></simple-toolbar-button>
-          <haxcms-button-add
-            ?hidden="${this.editMode || !store.platformAllows("addPage")}"
-            id="addpagebutton"
-            class="top-bar-button"
-            align-horizontal="center"
-            icon="hax:add-page"
-            label="${this.t.addPage} • Ctrl⇧1"
-            merlin
-          ></haxcms-button-add>
-          <simple-toolbar-button
-            ?hidden="${this.editMode || !store.platformAllows("outlineDesigner")}"
-            id="outlinebutton"
-            class="top-bar-button"
-            icon="hax:site-map"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            label="${this.t.outline} • Ctrl⇧2"
-            @click="${this._outlineButtonTap}"
-          ></simple-toolbar-button>
-
-          <simple-toolbar-button
-            id="cancelbutton"
-            class="top-bar-button"
-            icon="icons:cancel"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            @click="${this._cancelButtonTap}"
-            ?hidden="${!this.editMode}"
-            ?disabled="${!this.editMode}"
-            tabindex="${this.editMode ? "0" : "-1"}"
-            label="${this.t.cancel} • Ctrl⇧/"
-            voice-command="cancel (editing)"
-          ></simple-toolbar-button>
-          <simple-toolbar-button
-            icon="icons:undo"
-            class="top-bar-button"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            ?disabled="${!this.canUndo}"
-            @click="${this.haxButtonOp}"
-            label="${this.t.undo} • Ctrl Z"
-            data-event="undo"
-            id="undo"
-            ?hidden="${!this.editMode}"
-            voice-command="undo"
-          >
-          </simple-toolbar-button>
-          <simple-toolbar-button
-            icon="icons:redo"
-            class="top-bar-button"
-            @click="${this.haxButtonOp}"
-            ?disabled="${!this.canRedo}"
-            ?hidden="${!this.editMode}"
-            label="${this.t.redo} • Ctrl⇧Z"
-            data-event="redo"
-            id="redo"
-            voice-command="redo"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-          >
-          </simple-toolbar-button>
-
-          <simple-toolbar-button
-            data-event="content-edit"
-            icon="settings"
-            class="top-bar-button"
-            @click="${this.haxButtonOp}"
-            id="content-edit"
-            label="${this.t.configureBlock} • Ctrl⇧1"
-            ?hidden="${!this.editMode}"
-            ?disabled="${!this.activeTagName ||
-            this.activeTagName == "" ||
-            !this.activeNode ||
-            !this.activeNode.tagName}"
-            voice-command="(modify)(configure)(edit) selected"
-            controls="tray-detail"
-            tooltip="${this.t.configure} ${this.activeTagName}"
-            ?active="${this.trayDetail === "content-edit"}"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-          >
-          </simple-toolbar-button>
-          <simple-toolbar-button
-            ?hidden="${!this.editMode || !store.platformAllows("addBlock")}"
-            ?disabled="${!this.editMode}"
-            data-event="content-add"
-            icon="hax:add-brick"
-            id="content-add"
-            class="top-bar-button"
-            label="${this.t.addBlock} • Ctrl⇧2"
-            voice-command="select blocks (menu)"
-            ?active="${this.trayDetail === "content-add"}"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            @click="${this.haxButtonOp}"
-          >
-          </simple-toolbar-button>
-          <simple-toolbar-button
-            ?hidden="${!this.editMode || !store.platformAllows("contentMap")}"
-            ?disabled="${!this.editMode}"
-            data-event="content-map"
-            icon="hax:newspaper"
-            id="content-map"
-            class="top-bar-button"
-            label="${this.t.pageOutline} • Ctrl⇧3"
-            voice-command="select content outline (menu)"
-            @click="${this.haxButtonOp}"
-            ?active="${this.trayDetail === "content-map"}"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-          >
-          </simple-toolbar-button>
-
-          <simple-toolbar-button
-            id="exportbtn"
-            icon="hax:html-code"
-            label="${this.t.viewSource} • Ctrl⇧4"
-            data-event="view-source"
-            class="top-bar-button"
-            @click="${this.haxButtonOp}"
-            voice-command="view (page) source"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            ?hidden="${!this.editMode || !store.platformAllows("viewSource")}"
-            ?disabled="${!this.editMode}"
-            ?active="${this.trayDetail === "view-source"}"
-          >
-          </simple-toolbar-button>
-
-          <simple-toolbar-button
-            ?hidden="${!this.editMode}"
-            ?disabled="${!this.editMode}"
-            icon="hax:multimedia"
-            class="top-bar-button"
-            label="${this.t.findMedia} • Ctrl⇧5"
-            voice-command="select media (menu)"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            data-event="media-program"
-            @click="${this.haxButtonOp}"
-          >
-          </simple-toolbar-button>
-
-          <simple-toolbar-button
-            ?hidden="${this.editMode || !store.platformAllows("styleGuide")}"
-            ?disabled="${this.editMode}"
-            id="styleguidebutton"
-            @click="${this._styleGuideButtonTap}"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            icon="lrn:palette"
-            part="styleguidebtn"
-            class="top-bar-button"
-            label="${this.t.styleGuide} • Ctrl⇧3"
-          ></simple-toolbar-button>
-
-          <simple-toolbar-button
-            ?hidden="${this.editMode || !store.platformAllows("insights")}"
-            ?disabled="${this.editMode}"
-            id="insightsbutton"
-            icon="hax:clipboard-pulse"
-            part="insightsbtn"
-            class="top-bar-button"
-            icon-position="${this.getIconPosition(this.responsiveSize)}"
-            @click="${this._insightsButtonTap}"
-            label="${this.t.insights} • Ctrl⇧4"
-            voice-command="insights"
-          ></simple-toolbar-button>
-
-          <simple-toolbar-button
-            @click="${this._manifestButtonTap}"
-            icon-position="left"
-            icon="hax:home-edit"
-            part="manifestbtn"
-            class="top-bar-button"
-            id="manifestbtn"
-            ?disabled="${this.editMode}"
-            ?hidden="${this.editMode || !store.platformAllows("manifest")}"
-            label="${this.t.siteSettings} • Ctrl⇧5"
-          ></simple-toolbar-button>
-          <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
-          <simple-toolbar-button
-            icon="hax:wizard-hat"
-            label="${this.t.merlin} • Alt⇧"
-            voice-command="${this.t.merlin}"
-            class="merlin top-bar-button"
-            id="merlin"
-            @click="${this.haxButtonOp}"
-            data-event="${this.responsiveSize === "xs"
-              ? "super-daemon-modal"
-              : "super-daemon"}"
-          ></simple-toolbar-button>
-          <super-daemon-search
-            @click="${this.haxButtonOp}"
-            @value-changed="${this.haxButtonOp}"
-            @drop="${this.dropEvent}"
-            @dragenter="${this.dragenterEvent}"
-            @dragleave="${this.dragleaveEvent}"
-            @dragover="${this.dragoverEvent}"
-            icon="hax:wizard-hat"
-            id="search"
-            voice-search
-            class="merlin"
-            data-event="${this.responsiveSize === "xs"
-              ? "super-daemon-modal"
-              : "super-daemon"}"
-            ?hidden="${["xs"].includes(this.responsiveSize)}"
-            mini
-            wand
-            droppable-type="${this.activeType}"
-            ?droppable="${this.activeDrag}"
-          >
-          </super-daemon-search>
+        <div slot="left" class="topbar-left-group">
+          <span class="home-btn">
+            <a
+              href="${this.backLink}"
+              class="haxLogo"
+              id="backtosites"
+              title="${this.backText}"
+              part="hax-logo"
+              ?hidden="${this.editMode}"
+            >
+              <simple-icon-lite icon="hax:hax2022"></simple-icon-lite>
+            </a>
+            <simple-tooltip
+              for="backtosites"
+              position="bottom"
+              ?hidden="${this.editMode}"
+            >
+              >${this.backText}</simple-tooltip
+            >
+            <slot name="haxcms-site-editor-ui-prefix-avatar"></slot>
+          </span>
+          <div class="toolbar-buttons left-toolbar-buttons">
+            <slot name="haxcms-site-editor-ui-prefix-buttons"></slot>
+            <simple-toolbar-button
+              id="exportbtn"
+              role="menuitem"
+              icon="hax:html-code"
+              label="${this.t.viewSource} • Ctrl⇧1"
+              data-event="view-source"
+              class="top-bar-button"
+              @click="${this.haxButtonOp}"
+              voice-command="view (page) source"
+              icon-position="${this.getIconPosition(this.responsiveSize)}"
+              ?hidden="${!this.editMode || !store.platformAllows("viewSource")}"
+              ?disabled="${!this.editMode}"
+              ?active="${this.trayDetail === "view-source"}"
+            >
+            </simple-toolbar-button>
+            <simple-toolbar-button
+              role="menuitem"
+              ?hidden="${!this.editMode || !store.platformAllows("contentMap")}"
+              ?disabled="${!this.editMode}"
+              data-event="content-map"
+              icon="editor:format-line-spacing"
+              id="content-map"
+              class="top-bar-button"
+              label="${this.t.pageOutline} • Ctrl⇧2"
+              voice-command="select content outline (menu)"
+              @click="${this.haxButtonOp}"
+              ?active="${this.trayDetail === "content-map"}"
+              icon-position="${this.getIconPosition(this.responsiveSize)}"
+            >
+            </simple-toolbar-button>
+            <simple-toolbar-button
+              ?hidden="${!this.editMode || !store.platformAllows("addBlock")}"
+              ?disabled="${!this.editMode}"
+              role="menuitem"
+              data-event="content-add"
+              icon="hax:add-brick"
+              id="content-add"
+              class="top-bar-button"
+              label="${this.t.addBlock} • Ctrl⇧3"
+              voice-command="select blocks (menu)"
+              ?active="${this.trayDetail === "content-add"}"
+              icon-position="${this.getIconPosition(this.responsiveSize)}"
+              @click="${this.haxButtonOp}"
+            >
+            </simple-toolbar-button>
+            <simple-toolbar-button
+              data-event="content-edit"
+              icon="image:tune"
+              class="top-bar-button"
+              @click="${this.haxButtonOp}"
+              id="content-edit"
+              label="${this.t.configureBlock} • Ctrl⇧4"
+              ?hidden="${!this.editMode}"
+              ?disabled="${!this.activeTagName ||
+              this.activeTagName == "" ||
+              !this.activeNode ||
+              !this.activeNode.tagName}"
+              voice-command="(modify)(configure)(edit) selected"
+              role="menuitem"
+              controls="tray-detail"
+              tooltip="${this.t.configure} ${this.activeTagName}"
+              ?active="${this.trayDetail === "content-edit"}"
+              icon-position="${this.getIconPosition(this.responsiveSize)}"
+            >
+            </simple-toolbar-button>
+            <simple-toolbar-button
+              icon="icons:undo"
+              class="top-bar-button"
+              role="menuitem"
+              icon-position="${this.getIconPosition(this.responsiveSize)}"
+              ?disabled="${!this.canUndo}"
+              @click="${this.haxButtonOp}"
+              label="${this.t.undo} • Ctrl Z"
+              data-event="undo"
+              id="undo"
+              ?hidden="${!this.editMode}"
+              voice-command="undo"
+            >
+            </simple-toolbar-button>
+            <simple-toolbar-button
+              icon="icons:redo"
+              class="top-bar-button"
+              role="menuitem"
+              @click="${this.haxButtonOp}"
+              ?disabled="${!this.canRedo}"
+              ?hidden="${!this.editMode}"
+              label="${this.t.redo} • Ctrl⇧Z"
+              data-event="redo"
+              id="redo"
+              voice-command="redo"
+              icon-position="${this.getIconPosition(this.responsiveSize)}"
+            >
+            </simple-toolbar-button>
+            <simple-toolbar-button
+              id="cancelbutton"
+              class="top-bar-button"
+              icon="icons:cancel"
+              icon-position="${this.getIconPosition(this.responsiveSize)}"
+              @click="${this._cancelButtonTap}"
+              ?hidden="${!this.editMode}"
+              ?disabled="${!this.editMode}"
+              role="menuitem"
+              label="${this.t.cancel} • Ctrl⇧/"
+              voice-command="cancel (editing)"
+            ></simple-toolbar-button>
+            <simple-toolbar-button
+              ?hidden="${!this.pageAllowed}"
+              ?disabled="${this.activeItem &&
+              this.activeItem.metadata &&
+              this.activeItem.metadata.locked &&
+              !this.editMode}"
+              class="top-bar-button"
+              role="menuitem"
+              id="editbutton"
+              icon="${this.__editIcon}"
+              icon-position="${this.getIconPosition(this.responsiveSize)}"
+              @click="${this._editButtonTap}"
+              label="${this.__editText}"
+              voice-command="edit (this) page"
+            ></simple-toolbar-button>
+            <simple-toolbar-button
+              ?hidden="${!this.activeItem ||
+              !this.activeItem.metadata ||
+              !this.activeItem.metadata.locked ||
+              this.editMode}"
+              id="lockbutton"
+              class="top-bar-button"
+              icon="icons:lock"
+              icon-position="${this.getIconPosition(this.responsiveSize)}"
+              label="${this.t.unlockPage}"
+              @click="${this._toggleLockedStatus}"
+              role="menuitem"
+            ></simple-toolbar-button>
+          </div>
         </div>
-
-        <app-hax-user-menu
-          slot="right"
-          id="user-menu"
-          part="app-hax-user-menu"
-          ?is-open="${this.userMenuOpen}"
-        >
+        <div slot="center" class="topbar-center-group">
+          <div class="toolbar-buttons center-toolbar-buttons">
+            <simple-toolbar-button
+              icon="hax:wizard-hat"
+              label="${this.t.merlin}"
+              class="merlin top-bar-button merlin-anchor-button"
+              id="merlin"
+              tabindex="-1"
+              aria-hidden="true"
+            ></simple-toolbar-button>
+            <super-daemon-search
+              @click="${this.haxButtonOp}"
+              @value-changed="${this.haxButtonOp}"
+              @drop="${this.dropEvent}"
+              @dragenter="${this.dragenterEvent}"
+              @dragleave="${this.dragleaveEvent}"
+              @dragover="${this.dragoverEvent}"
+              icon="hax:wizard-hat"
+              id="search"
+              class="merlin"
+              data-event="${this.responsiveSize === "xs"
+                ? "super-daemon-modal"
+                : "super-daemon"}"
+              mini
+              wand
+              droppable-type="${this.activeType}"
+              ?droppable="${this.activeDrag}"
+            >
+            </super-daemon-search>
+          </div>
+        </div>
+        <div slot="right" class="topbar-right-group">
+          <div class="toolbar-buttons right-toolbar-buttons">
+            <haxcms-button-add
+              ?hidden="${!store.platformAllows("addPage")}"
+              ?disabled="${this.editMode}"
+              id="addpagebutton"
+              class="top-bar-button"
+              align-horizontal="center"
+              icon="hax:add-page"
+              label="${this.t.addPage} • Ctrl⇧1"
+              merlin
+              role="menuitem"
+            ></haxcms-button-add>
+            <simple-toolbar-button
+              ?hidden="${!store.platformAllows("outlineDesigner")}"
+              ?disabled="${this.editMode}"
+              id="outlinebutton"
+              role="menuitem"
+              class="top-bar-button"
+              icon="hax:site-map"
+              icon-position="${this.getIconPosition(this.responsiveSize)}"
+              label="${this.t.outline} • Ctrl⇧2"
+              @click="${this._outlineButtonTap}"
+            ></simple-toolbar-button>
+            <simple-toolbar-button
+              @click="${this._manifestButtonTap}"
+              icon-position="left"
+              icon="hax:home-edit"
+              part="manifestbtn"
+              class="top-bar-button"
+              role="menuitem"
+              id="manifestbtn"
+              ?disabled="${this.editMode}"
+              label="${this.t.siteSettings} • Ctrl⇧3"
+            ></simple-toolbar-button>
+            <slot name="haxcms-site-editor-ui-suffix-buttons"></slot>
+          </div>
+          <app-hax-user-menu
+            id="user-menu"
+            part="app-hax-user-menu"
+            ?is-open="${this.userMenuOpen}"
+          >
           <button
             class="topbar-character"
             slot="menuButton"
+            id="menubtn"
             @click="${this.toggleMenu}"
             aria-label="User menu for ${this.userName}"
             aria-expanded="${this.userMenuOpen}"
@@ -2993,19 +2974,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               role="img"
               alt="Avatar for ${this.userName}"
               hat="${this.rpgHat}"
+              title="${this.userName}"
             ></rpg-character>
-            <span class="characterbtn-name" aria-hidden="true"
-              >${this.userName}</span
-            >
-            <simple-icon-lite
-              class="characterbtn-menu-icon ${this.userMenuOpen
-                ? ""
-                : "rotated"}"
-              icon="icons:expand-more"
-              aria-hidden="true"
-            ></simple-icon-lite>
             <slot name="haxcms-site-editor-ui-topbar-character-button"></slot>
           </button>
+          <simple-tooltip
+            for="menubtn"
+            slot="menuButton"
+            position="bottom"
+            ?hidden="${this.editMode}"
+          >${this.userName}</simple-tooltip>
           <div slot="pre-menu" class="ops-panel">
             <slot name="haxcms-site-editor-ui-pre-menu"></slot>
             <wired-button
@@ -3041,19 +3019,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             href="${this.backLink}"
             slot="main-menu"
             part="mysiteslink"
-            tabindex="-1"
           >
             <app-hax-user-menu-button
               icon="hax:hax2022"
-              label="${this.t.mySites}"
+              label="${this.t.siteDashboard}"
               part="mysitesbtn"
             ></app-hax-user-menu-button>
           </a>
           <app-hax-user-menu-button
             slot="main-menu"
             icon="add"
-            label="${this.t.newJourney}"
-            part="newjourneybtn"
+            label="${this.t.newSite}"
+            part="newsitebtn"
             @click="${this._addButtonTap}"
           ></app-hax-user-menu-button>
           <slot slot="post-menu" name="haxcms-site-editor-ui-post-menu"></slot>
@@ -3064,7 +3041,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             label="${this.t.logOut}"
             @click=${this._logout}
           ></app-hax-user-menu-button>
-        </app-hax-user-menu>
+          </app-hax-user-menu>
+        </div>
       </app-hax-top-bar>
     `;
   }
@@ -3368,7 +3346,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/theme/style-guide",
     });
     SuperDaemonInstance.defineOption({
-      title: this.t.newJourney,
+      title: this.t.newSite,
       icon: "add",
       tags: ["CMS", "create", "new site"],
       value: {
@@ -3497,19 +3475,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               path: "CMS/welcome/edit-page",
             },
             {
-              title: "Create a new page",
-              icon: "hax:add-page",
-              tags: ["welcome", "common", "operation"],
-              value: {
-                target: this,
-                method: "executeWelcomeAction",
-                args: ["create-page"],
-              },
-              eventName: "super-daemon-element-method",
-              context: "addPage",
-              path: "CMS/welcome/create-page",
-            },
-            {
               title: "Upload a file",
               icon: "file-upload",
               tags: ["welcome", "common", "operation"],
@@ -3521,6 +3486,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               eventName: "super-daemon-element-method",
               context: "CMS",
               path: "CMS/welcome/upload-file",
+            },
+            {
+              title: "Create a new page",
+              icon: "hax:add-page",
+              tags: ["welcome", "common", "operation"],
+              value: {
+                target: this,
+                method: "executeWelcomeAction",
+                args: ["create-page"],
+              },
+              eventName: "super-daemon-element-method",
+              context: "addPage",
+              path: "CMS/welcome/create-page",
             },
             {
               title: "Edit site outline",
@@ -3712,14 +3690,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit platform settings (developer-only)
     SuperDaemonInstance.defineOption({
-      title: "Edit Platform Settings",
+      title: "Platform Settings",
       icon: "hax:home-edit",
       tags: ["Developer", "platform", "settings", "skeleton"],
       eventName: "super-daemon-element-method",
       path: ">settings/platform",
       context: [">"],
-      more: html`<span>Edit the platform settings for this site</span>`,
-      voice: "edit platform settings",
+      voice: "platform settings",
       value: {
         target: this,
         method: "exportSiteAs",
@@ -4204,8 +4181,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
           // Show a toast to let the user know Merlin is here to help
           store.toast(
-            "👋 Welcome to HAX! Merlin is here to help you get started",
-            8000,
+            "Welcome to HAX! Here's some common tasks",
+            3000,
             {
               hat: "knight",
             },
@@ -4619,18 +4596,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const newEditMode = toJS(store.editMode);
       this.editMode = newEditMode;
       UserScaffoldInstance.writeMemory("editMode", this.editMode);
+      const autoOpenTray = this.shouldAutoOpenTrayOnEdit();
       // When we first enter edit mode and there is an active node selected,
       // prefer the Configure tab over Blocks as the default tray panel.
       if (
         !previousEditMode &&
         newEditMode &&
+        autoOpenTray &&
         HAXStore.activeNode &&
         HAXStore.activeNode.tagName
       ) {
         HAXStore.trayDetail = "content-edit";
         if (HAXStore.haxTray) {
           HAXStore.haxTray.trayDetail = "content-edit";
-          HAXStore.haxTray.collapsed = false;
+          HAXStore.haxTray.collapsed = !autoOpenTray;
+        }
+      } else if (!previousEditMode && newEditMode && !autoOpenTray) {
+        HAXStore.trayDetail = "no-active-tray";
+        if (HAXStore.haxTray) {
+          HAXStore.haxTray.trayDetail = "no-active-tray";
+          HAXStore.haxTray.collapsed = true;
         }
       }
       this.__disposer.push(reaction);
@@ -4747,18 +4732,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "view",
     });
 
-    // Ctrl+Shift+W - Save and Edit (when in edit mode)
-    HAXCMSKeyboardShortcutsInstance.register({
-      key: "W",
-      ctrl: true,
-      shift: true,
-      callback: (e) => {
-        this._saveAndEditButtonTap(e);
-      },
-      condition: () => store.isLoggedIn && this.pageAllowed && this.editMode,
-      description: "Save and continue editing",
-      context: "edit",
-    });
 
     // Ctrl+Shift+/ - Cancel editing (register as / not ?)
     HAXCMSKeyboardShortcutsInstance.register({
@@ -4799,113 +4772,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "edit",
     });
 
-    // Ctrl+Shift+B - Open block browser in HAX
-    HAXCMSKeyboardShortcutsInstance.register({
-      key: "B",
-      ctrl: true,
-      shift: true,
-      callback: (e) => {
-        if (HAXStore.haxTray) {
-          if (HAXStore.haxTray.trayDetail === "content-add") {
-            HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
-          } else {
-            HAXStore.haxTray.trayDetail = "content-add";
-            HAXStore.haxTray.collapsed = false;
-          }
-        }
-      },
-      condition: () => store.isLoggedIn && this.editMode,
-      description: "Open block browser",
-      context: "edit",
-    });
-
     // Numbered shortcuts - contextual based on edit mode
-    // Ctrl+Shift+1 - Configure panel (edit) OR Add page (non-edit)
+    // Ctrl+Shift+1 - View source (edit) OR Add page (non-edit)
     HAXCMSKeyboardShortcutsInstance.register({
       key: "1",
-      ctrl: true,
-      shift: true,
-      callback: (e) => {
-        if (this.editMode) {
-          // Edit mode: Open configure panel
-          if (HAXStore.haxTray) {
-            HAXStore.haxTray.trayDetail = "content-edit";
-            HAXStore.haxTray.collapsed = false;
-          }
-        } else {
-          // Non-edit mode: Add page
-          if (store.platformAllows("addPage")) {
-            const addButton = this.shadowRoot.querySelector("#addpagebutton");
-            if (addButton) {
-              addButton.HAXCMSButtonClick();
-            }
-          }
-        }
-      },
-      condition: () => store.isLoggedIn,
-      description: "Configure panel (edit) / Add page (view)",
-      context: "global",
-    });
-
-    // Ctrl+Shift+2 - Blocks browser (edit) OR Site outline (non-edit)
-    HAXCMSKeyboardShortcutsInstance.register({
-      key: "2",
-      ctrl: true,
-      shift: true,
-      callback: (e) => {
-        if (this.editMode) {
-          // Edit mode: Blocks browser
-          if (HAXStore.haxTray) {
-            if (HAXStore.haxTray.trayDetail === "content-add") {
-              HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
-            } else {
-              HAXStore.haxTray.trayDetail = "content-add";
-              HAXStore.haxTray.collapsed = false;
-            }
-          }
-        } else {
-          // Non-edit mode: Site outline
-          if (store.platformAllows("outlineDesigner")) {
-            this._outlineButtonTap(e);
-          }
-        }
-      },
-      condition: () => store.isLoggedIn,
-      description: "Blocks browser (edit) / Site outline (view)",
-      context: "global",
-    });
-
-    // Ctrl+Shift+3 - Page structure (edit) OR Style guide (non-edit)
-    HAXCMSKeyboardShortcutsInstance.register({
-      key: "3",
-      ctrl: true,
-      shift: true,
-      callback: (e) => {
-        if (this.editMode) {
-          // Edit mode: Page structure
-          if (HAXStore.haxTray) {
-            if (HAXStore.haxTray.trayDetail === "content-map") {
-              HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
-            } else {
-              HAXStore.haxTray.trayDetail = "content-map";
-              HAXStore.haxTray.collapsed = false;
-            }
-          }
-        } else {
-          // Non-edit mode: Style guide
-          if (store.platformAllows("styleGuide")) {
-            this._styleGuideButtonTap(e);
-          }
-        }
-      },
-      condition: () => store.isLoggedIn,
-      description: "Page structure (edit) / Style guide (view)",
-      context: "global",
-    });
-
-    // Ctrl+Shift+4 - View source (edit) OR Insights dashboard (non-edit)
-    HAXCMSKeyboardShortcutsInstance.register({
-      key: "4",
       ctrl: true,
       shift: true,
       callback: (e) => {
@@ -4923,6 +4793,86 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             }
           }
         } else {
+          // Non-edit mode: Add page
+          if (store.platformAllows("addPage")) {
+            const addButton = this.shadowRoot.querySelector("#addpagebutton");
+            if (addButton) {
+              addButton.HAXCMSButtonClick();
+            }
+          }
+        }
+      },
+      condition: () => store.isLoggedIn,
+      description: "View source (edit) / Add page (view)",
+      context: "global",
+    });
+
+    // Ctrl+Shift+2 - Page structure (edit) OR Site outline (non-edit)
+    HAXCMSKeyboardShortcutsInstance.register({
+      key: "2",
+      ctrl: true,
+      shift: true,
+      callback: (e) => {
+        if (this.editMode) {
+          // Edit mode: Page structure
+          if (HAXStore.haxTray) {
+            if (HAXStore.haxTray.trayDetail === "content-map") {
+              HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
+            } else {
+              HAXStore.haxTray.trayDetail = "content-map";
+              HAXStore.haxTray.collapsed = false;
+            }
+          }
+        } else {
+          // Non-edit mode: Site outline
+          if (store.platformAllows("outlineDesigner")) {
+            this._outlineButtonTap(e);
+          }
+        }
+      },
+      condition: () => store.isLoggedIn,
+      description: "Page structure (edit) / Site outline (view)",
+      context: "global",
+    });
+
+    // Ctrl+Shift+3 - Blocks browser (edit) OR Style guide (non-edit)
+    HAXCMSKeyboardShortcutsInstance.register({
+      key: "3",
+      ctrl: true,
+      shift: true,
+      callback: (e) => {
+        if (this.editMode) {
+          // Edit mode: Blocks browser
+          if (HAXStore.haxTray) {
+            if (HAXStore.haxTray.trayDetail === "content-add") {
+              HAXStore.haxTray.collapsed = !HAXStore.haxTray.collapsed;
+            } else {
+              HAXStore.haxTray.trayDetail = "content-add";
+              HAXStore.haxTray.collapsed = false;
+            }
+          }
+        } else {
+          this._manifestButtonTap(e);
+        }
+      },
+      condition: () => store.isLoggedIn,
+      description: "Blocks browser (edit) / Style guide (view)",
+      context: "global",
+    });
+
+    // Ctrl+Shift+4 - Configure panel (edit) OR Insights dashboard (non-edit)
+    HAXCMSKeyboardShortcutsInstance.register({
+      key: "4",
+      ctrl: true,
+      shift: true,
+      callback: (e) => {
+        if (this.editMode) {
+          // Edit mode: Open configure panel
+          if (HAXStore.haxTray) {
+            HAXStore.haxTray.trayDetail = "content-edit";
+            HAXStore.haxTray.collapsed = false;
+          }
+        } else {
           // Non-edit mode: Insights dashboard
           if (store.platformAllows("insights")) {
             this._insightsButtonTap(e);
@@ -4930,49 +4880,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         }
       },
       condition: () => store.isLoggedIn,
-      description: "View source (edit) / Insights dashboard (view)",
-      context: "global",
-    });
-
-    // Ctrl+Shift+5 - Media browser (edit) OR Site settings (non-edit)
-    HAXCMSKeyboardShortcutsInstance.register({
-      key: "5",
-      ctrl: true,
-      shift: true,
-      callback: (e) => {
-        if (this.editMode) {
-          // Edit mode: Media browser
-          SuperDaemonInstance.waveWand(
-            ["sources", "/"],
-            this.shadowRoot.querySelector("#merlin"),
-            null,
-          );
-        } else {
-          // Non-edit mode: Site settings
-          if (store.platformAllows("manifest")) {
-            this._manifestButtonTap(e);
-          }
-        }
-      },
-      condition: () => store.isLoggedIn,
-      description: "Media browser (edit) / Site settings (view)",
-      context: "global",
-    });
-
-    // Ctrl+Shift+6 - Super Daemon (alternative shortcut)
-    HAXCMSKeyboardShortcutsInstance.register({
-      key: "6",
-      ctrl: true,
-      shift: true,
-      callback: (e) => {
-        SuperDaemonInstance.waveWand(
-          ["", "*"],
-          this.shadowRoot.querySelector("#merlin"),
-          null,
-        );
-      },
-      condition: () => store.isLoggedIn,
-      description: "Open Merlin (Super Daemon)",
+      description: "Configure panel (edit) / Insights dashboard (view)",
       context: "global",
     });
   }
@@ -5024,34 +4932,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }),
     );
   }
-  /**
-   * Save and edit button tap - saves but keeps edit mode active
-   */
-  _saveAndEditButtonTap(e) {
-    if (this.editMode && HAXStore.haxTray.trayDetail === "view-source") {
-      if (!globalThis.confirm(this.t.confirmHtmlSourceExit)) {
-        return false;
-      }
-    }
-    store.playSound("click");
-    // Save the content but keep edit mode active
-    this.dispatchEvent(
-      new CustomEvent("haxcms-save-node", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: { ...store.activeItem, keepEditMode: true },
-      }),
-    );
-    // Hide any modals that might be open
-    globalThis.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        cancelable: true,
-        detail: {},
-      }),
-    );
-  }
   _insightsButtonTap(e) {
     store.playSound("click");
     const c = globalThis.document.createElement("haxcms-site-insights");
@@ -5063,7 +4943,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         title: this.t.insights,
         styles: {
           "--simple-modal-titlebar-background": "black",
-          "--simple-modal-titlebar-color": "light-dark(black, white)",
+          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
           "--simple-modal-width": "94vw",
           "--simple-modal-min-width": "300px",
           "--simple-modal-z-index": "100000000",
@@ -5072,7 +4952,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           "--simple-modal-titlebar-height": "80px",
         },
         elements: { content: c },
-        invokedBy: this.shadowRoot.querySelector("#insightsbutton"),
+        invokedBy:
+          this.shadowRoot.querySelector("#insightsbutton") ||
+          this.shadowRoot.querySelector("#manifestbtn"),
         clone: false,
         modal: false,
       },
@@ -5142,7 +5024,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         title: "Permanently delete this page?",
         styles: {
           "--simple-modal-titlebar-background": "black",
-          "--simple-modal-titlebar-color": "light-dark(black, white)",
+          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
           "--simple-modal-width": "25vw",
           "--simple-modal-min-width": "300px",
           "--simple-modal-z-index": "100000000",
@@ -5154,6 +5036,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         invokedBy: this,
         clone: false,
         modal: true,
+        showClose: true,
       },
     });
     globalThis.dispatchEvent(evt);
@@ -5363,7 +5246,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         title: this.t.outlineDesigner,
         styles: {
           "--simple-modal-titlebar-background": "black",
-          "--simple-modal-titlebar-color": "light-dark(black, white)",
+          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
           "--simple-modal-z-index": "100000000",
           "--simple-modal-titlebar-height": "80px",
           "--simple-modal-width": "85vw",
@@ -5379,6 +5262,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         invokedBy: this.shadowRoot.querySelector("#outlinebutton"),
         clone: false,
         modal: true,
+        showClose: true,
       },
     });
     globalThis.dispatchEvent(evt);
@@ -5401,17 +5285,116 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         detail: {},
       }),
     );
+    import("./haxcms-site-settings-dashboard.js").then(() => {
+      const dashboard = globalThis.document.createElement(
+        "haxcms-site-settings-dashboard",
+      );
+      dashboard.allowStyleGuide = store.platformAllows("styleGuide");
+      dashboard.allowInsights = store.platformAllows("insights");
+      dashboard.addEventListener(
+        "haxcms-site-settings-dashboard-action",
+        this._siteSettingsDashboardAction.bind(this),
+      );
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            title: this.t.siteSettings,
+            styles: {
+              "--simple-modal-titlebar-background": "black",
+              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+              "--simple-modal-z-index": "100000000",
+              "--simple-modal-titlebar-height": "80px",
+              "--simple-modal-width": "80vw",
+              "--simple-modal-max-width": "80vw",
+              "--simple-modal-height": "80vh",
+              "--simple-modal-max-height": "80vh",
+            },
+            elements: {
+              content: dashboard,
+            },
+            invokedBy: this.shadowRoot.querySelector("#manifestbtn"),
+            clone: false,
+            modal: false,
+          },
+        }),
+      );
+    });
+  }
+  _siteSettingsDashboardAction(e) {
+    globalThis.dispatchEvent(
+      new CustomEvent("simple-modal-hide", {
+        bubbles: true,
+        cancelable: true,
+        detail: {},
+      }),
+    );
+    const action = e && e.detail ? e.detail.action : null;
+    setTimeout(() => {
+      switch (action) {
+        case "style-guide":
+          this._styleGuideButtonTap(e);
+          break;
+        case "insights":
+          this._insightsButtonTap(e);
+          break;
+        case "outline":
+          this._outlineButtonTap(e);
+          break;
+        case "site-settings":
+          this._openSiteSettingsForm(
+            this.shadowRoot.querySelector("#manifestbtn"),
+            "site",
+          );
+          break;
+        case "theme-settings":
+          this._openSiteSettingsForm(
+            this.shadowRoot.querySelector("#manifestbtn"),
+            "theme",
+          );
+          break;
+        case "seo-settings":
+          this._openSiteSettingsForm(
+            this.shadowRoot.querySelector("#manifestbtn"),
+            "seo",
+          );
+          break;
+        case "blocks":
+        case "editor":
+        case "platform":
+          this._openPlatformSettings();
+          break;
+      }
+    }, 0);
+  }
+  _openPlatformSettings() {
+    this.exportSiteAs("skeleton", { platformSettings: true });
+  }
+  _openSiteSettingsForm(target, section = "site") {
     // prettier-ignore
     import("@haxtheweb/haxcms-elements/lib/core/haxcms-site-dashboard.js").then(() => {
+      const invokedBy = target || this.shadowRoot.querySelector("#manifestbtn");
+      const settingsDialog = globalThis.document.createElement("haxcms-site-dashboard");
+      settingsDialog.activeSection = section;
+      let title = this.t.siteSettings;
+      if (section === "theme") {
+        title = this.t.themeSettings;
+      } else if (section === "seo") {
+        title = this.t.seoSettings;
+      } else if (section === "author") {
+        title = this.t.authorSettings;
+      }
       globalThis.dispatchEvent(new CustomEvent("simple-modal-show", {
         bubbles: true,
         composed: true,
         cancelable: false,
         detail: {
-          title: this.t.siteSettings,
+          title: title,
           styles: {
             "--simple-modal-titlebar-background": "black",
-            "--simple-modal-titlebar-color": "light-dark(black, white)",
+            "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
             "--simple-modal-z-index": "100000000",
             "--simple-modal-titlebar-height": "80px",
             "--simple-modal-width": "85vw",
@@ -5420,23 +5403,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             "--simple-modal-max-height": "85vh",
           },
           elements: {
-            content: globalThis.document.createElement("haxcms-site-dashboard"),
+            content: settingsDialog,
           },
-          invokedBy: this.shadowRoot.querySelector("#manifestbtn"),
+          invokedBy: invokedBy,
           clone: false,
           modal: true,
+          showClose: true,
         },
       }));
-      // delay send so that the modal can be created
       setTimeout(() => {
         globalThis.dispatchEvent(
           new CustomEvent("haxcms-load-site-dashboard", {
             bubbles: true,
             composed: true,
             cancelable: false,
-            detail: e.target,
-          })
-        );          
+            detail: {
+              invokedBy: invokedBy,
+              section: section,
+            },
+          }),
+        );
       }, 0);
     });
   }
@@ -5466,8 +5452,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       store.editMode = newValue;
       // force tray status to be the opposite of the editMode
       // to open when editing and close when not
-      if (newValue) {
-        HAXStore.haxTray.collapsed = false;
+      if (newValue && HAXStore.haxTray) {
+        const autoOpenTray = this.shouldAutoOpenTrayOnEdit();
+        if (!autoOpenTray) {
+          HAXStore.trayDetail = "no-active-tray";
+          HAXStore.haxTray.trayDetail = "no-active-tray";
+        }
+        HAXStore.haxTray.collapsed = !autoOpenTray;
       }
     }
   }

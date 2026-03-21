@@ -244,7 +244,7 @@ class SimpleModal extends LitElement {
         </h3>
         <div></div>
         ${
-          !this.modal
+          !this.modal || this.showClose
             ? html`<simple-icon-button-lite
                 id="close"
                 dark
@@ -312,6 +312,13 @@ class SimpleModal extends LitElement {
         type: Boolean,
       },
       /**
+       * support showing close icon while still in modal mode
+       */
+      showClose: {
+        type: Boolean,
+        attribute: "show-close",
+      },
+      /**
        * can add a custom string to style modal based on what is calling it
        */
       mode: {
@@ -338,6 +345,7 @@ class SimpleModal extends LitElement {
     this.closeLabel = "Close";
     this.closeIcon = "close";
     this.modal = false;
+    this.showClose = false;
   }
   /**
    * LitElement
@@ -414,6 +422,7 @@ class SimpleModal extends LitElement {
           e.detail.styles,
           e.detail.clone,
           e.detail.modal,
+          e.detail.showClose,
         );
       }, 0);
     } else {
@@ -427,6 +436,7 @@ class SimpleModal extends LitElement {
         e.detail.styles,
         e.detail.clone,
         e.detail.modal,
+        e.detail.showClose,
       );
     }
   }
@@ -443,9 +453,11 @@ class SimpleModal extends LitElement {
     styles = null,
     clone = false,
     modal = false,
+    showClose = false,
   ) {
     this.invokedBy = invokedBy;
     this.modal = modal;
+    this.showClose = showClose;
     this.title = title;
     this.mode = mode;
     let element;
@@ -545,6 +557,7 @@ class SimpleModal extends LitElement {
           this.invokedBy.focus();
         }, 500);
       }
+      this.showClose = false;
       const evt = new CustomEvent("simple-modal-closed", {
         bubbles: true,
         cancelable: true,
@@ -600,6 +613,53 @@ class SimpleModal extends LitElement {
         },
       });
       this.dispatchEvent(evt);
+      setTimeout(() => {
+        this._focusModalContent();
+      }, 0);
+    }
+  }
+  _focusModalContent(attempt = 0) {
+    if (!this.opened) {
+      return;
+    }
+    const maxAttempts = 20;
+    const contentTarget = this.querySelector(
+      [
+        "[slot='content'] [autofocus]",
+        "[slot='content'] button:not([disabled])",
+        "[slot='content'] [href]",
+        "[slot='content'] input:not([disabled]):not([type='hidden'])",
+        "[slot='content'] select:not([disabled])",
+        "[slot='content'] textarea:not([disabled])",
+        "[slot='content'] [tabindex]:not([tabindex='-1'])",
+        "[slot='buttons'] button:not([disabled])",
+        "[slot='buttons'] [tabindex]:not([tabindex='-1'])",
+      ].join(", "),
+    );
+    if (contentTarget && typeof contentTarget.focus === "function") {
+      contentTarget.focus();
+      return;
+    }
+    const close = this.shadowRoot.querySelector("#close");
+    if (close && close.shadowRoot) {
+      const closeButton = close.shadowRoot.querySelector("button");
+      if (closeButton && typeof closeButton.focus === "function") {
+        closeButton.focus();
+        return;
+      }
+    }
+    const dialog = this.shadowRoot.querySelector("#dialog");
+    if (dialog && typeof dialog.focus === "function") {
+      if (!dialog.hasAttribute("tabindex")) {
+        dialog.setAttribute("tabindex", "-1");
+      }
+      dialog.focus();
+      return;
+    }
+    if (attempt < maxAttempts) {
+      setTimeout(() => {
+        this._focusModalContent(attempt + 1);
+      }, 25);
     }
   }
   /**

@@ -9,7 +9,7 @@ export class AppHaxLabel extends LitElement {
 
   constructor() {
     super();
-    this.title = "HAX site list";
+    this.title = "HAX Site Dashboard";
     this.subtitle = "Let's build something awesome!";
   }
 

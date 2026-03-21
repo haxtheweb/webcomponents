@@ -16,6 +16,12 @@ const FEATURE_DEFS = [
     group: 'CMS',
   },
   {
+    key: 'saveAndEdit',
+    label: 'Save and continue',
+    icon: 'hax:add-page',
+    group: 'CMS',
+  },
+  {
     key: 'deletePage',
     label: 'Delete pages',
     icon: 'icons:delete',
@@ -40,14 +46,32 @@ const FEATURE_DEFS = [
     group: 'CMS',
   },
   {
-    key: 'manifest',
+    key: 'siteManifest',
     label: 'Site settings',
     icon: 'hax:home-edit',
     group: 'CMS',
   },
   {
+    key: 'themeManifest',
+    label: 'Theme settings',
+    icon: 'hax:home-edit',
+    group: 'CMS',
+  },
+  {
+    key: 'authorManifest',
+    label: 'Author settings',
+    icon: 'hax:home-edit',
+    group: 'CMS',
+  },
+  {
+    key: 'seoManifest',
+    label: 'SEO settings',
+    icon: 'hax:home-edit',
+    group: 'CMS',
+  },
+  {
     key: 'pageBreak',
-    label: 'Edit Page Details',
+    label: 'Edit page details',
     icon: 'hax:page-edit',
     group: 'CMS',
   },
@@ -58,8 +82,20 @@ const FEATURE_DEFS = [
     group: 'HAX',
   },
   {
+    key: 'popularGizmos',
+    label: 'Popular blocks section',
+    icon: 'hax:add-brick',
+    group: 'HAX',
+  },
+  {
+    key: 'recentGizmos',
+    label: 'Recent blocks section',
+    icon: 'hax:add-brick',
+    group: 'HAX',
+  },
+  {
     key: 'contentMap',
-    label: 'Page structure (content map)',
+    label: 'Page content map',
     icon: 'hax:newspaper',
     group: 'HAX',
   },
@@ -70,8 +106,20 @@ const FEATURE_DEFS = [
     group: 'HAX',
   },
   {
-    key: 'onlineSearch',
-    label: 'Online search',
+    key: 'uploadMedia',
+    label: 'Upload media',
+    icon: 'hax:add-page',
+    group: 'HAX',
+  },
+  {
+    key: 'onlineMedia',
+    label: 'Online media search',
+    icon: 'hax:add-page',
+    group: 'HAX',
+  },
+  {
+    key: 'community',
+    label: 'Community outreach',
     icon: 'hax:add-page',
     group: 'HAX',
   },
@@ -886,7 +934,7 @@ console.log(this.features)
       }
       // Ensure required text primitives show up in Writing group even if missing tags
       if (required && category === "Other"){
-        category = "Writing"
+        category = "Text"
       }
 
       if (!groupMap[category]) {
@@ -927,6 +975,10 @@ console.log(this.features)
       const skeleton = await SiteSkeletonGenerator.generateFromCurrentSite(true)
 
       const platformConfig = this._platformConfigForExport()
+      if (!skeleton.site) {
+        skeleton.site = {}
+      }
+      skeleton.site.platform = platformConfig
       if (!skeleton._skeleton) {
         skeleton._skeleton = {}
       }

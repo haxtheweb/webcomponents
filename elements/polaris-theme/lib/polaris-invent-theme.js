@@ -32,6 +32,14 @@ import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIR
  * @microcopy - language worth noting:
  *  - HAXcms - A headless content management system
  *  - HAXCMSTheme - A super class that provides correct baseline wiring to build a new theme
+ * 
+ * Working palettes:
+ * - 0 (Default)
+ * - 3 (Offbrand Nittany Blue)
+ * - 4 (Boring Blue Grey)
+ * - 5 (Monotone)
+ * - 7 (Tweedle Dee)
+ * - 8 (Polaris)
  *
  * @haxcms-theme-category Website
  * @haxcms-theme-internal false
@@ -81,11 +89,11 @@ class PolarisInventTheme extends LTIResizingMixin(
             var(--ddd-theme-default-coalyGray)
           );
           
-          color: light-dark(black, var(--ddd-accent-6));
+          color: light-dark(black, var(--ddd-palette-light));
 
-          --video-player-color: var(--ddd-palette-video-player-color, var(--ddd-theme-default-white));
-          --video-player-caption-color: var(--ddd-palette-color-1, var(--ddd-theme-default-white));
-          --video-player-disabled-color: var(--ddd-palette-video-player-disabled-color, var(--ddd-theme-default-disabled));
+          --video-player-color: var(--ddd-palette-text-color-3, var(--ddd-theme-default-white));
+          --video-player-caption-color: var(--ddd-palette-text-color-7, var(--ddd-theme-default-white));
+          --video-player-disabled-color: var(--ddd-palette-text-color-3, var(--ddd-theme-default-disabled));
 
           --video-player-bg-color: var(--ddd-palette-color-3, var(--ddd-theme-default-nittanyNavy));
           --video-player-border-color: var(--ddd-palette-color-1, var(--ddd-theme-default-limestoneLight));
@@ -96,9 +104,9 @@ class PolarisInventTheme extends LTIResizingMixin(
         }
 
         :host([is-safari]) {
-          background-color: var(--ddd-accent-6);
+          background-color: var(--ddd-palette-light);
           color: black;
-          --polaris-content-bg-color: var(--ddd-accent-6);
+          --polaris-content-bg-color: var(--ddd-palette-light);
           --polaris-nav-bg-color: var(--ddd-theme-default-skyBlue);
         }
 
@@ -174,7 +182,7 @@ class PolarisInventTheme extends LTIResizingMixin(
           --map-menu-item-button-active-background-color: var(--ddd-palette-color-7, var(--ddd-theme-default-inventOrange));
           --map-menu-overflow: visible;
           --site-menu-container-background-color: var(--ddd-palette-color-6);
-          --map-menu-item-a-active-color: var(--ddd-palette-text-text-color-1);
+          --map-menu-item-a-active-color: var(--ddd-palette-text-color-1);
           --map-menu-item-icon-active-color: white;
         }
 
@@ -216,7 +224,7 @@ class PolarisInventTheme extends LTIResizingMixin(
         }
         site-menu-button {
           --site-menu-button-link-decoration: none;
-          --site-menu-button-button-hover-color: var(--ddd-palette-color-1);
+          --site-menu-button-button-hover-color: var(--ddd-palette-text-color-6);
           --site-menu-button-icon-fill-color: white;
           color: white;
           background-color: var(--ddd-palette-color-7, var(--ddd-theme-default-inventOrange));
@@ -369,7 +377,7 @@ class PolarisInventTheme extends LTIResizingMixin(
         .footer-secondary a {
           border-bottom: 1px solid #666;
           color: #999;
-        }1
+        }
         .footer-secondary p {
           margin: 0 0 24px;
           padding: 0;
@@ -402,7 +410,7 @@ class PolarisInventTheme extends LTIResizingMixin(
         }
 
         .footer-primary a {
-          color: var(--ddd-palette-color-6, #2c76c7);
+          color: var(--ddd-palette-text-color-4, #2c76c7);
           border-bottom: 1px solid var(--ddd-palette-color-6, #2c76c7);
         }
         .footer-primary a:hover {
@@ -700,10 +708,6 @@ class PolarisInventTheme extends LTIResizingMixin(
   constructor() {
     super();
     this.dataPalette = 8;
-    // MAKE SURE IT'S SET TO 8^
-    // To Exclude: 6 (Salmon Season), 
-    // 1 (Violent Red),
-    // 2 (Beetles Yellow),
     // forcibly set things about the RPG toast for this design
     HAXCMSToastInstance.style.setProperty(
       "--rpg-character-toast-display",

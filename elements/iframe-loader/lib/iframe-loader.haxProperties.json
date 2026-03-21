@@ -7,11 +7,11 @@
   },
   "canEditSource": false,
   "gizmo": {
-    "title": "iFrame",
+    "title": "Iframe",
     "description": "A basic way to frame external web content",
     "icon": "hax:iframe",
     "color": "blue-grey",
-    "tags": ["Resource", "iframe", "embed", "web", "link"],
+    "tags": ["Other", "iframe", "embed", "web", "link"],
     "handles": [
       {
         "type": "link",

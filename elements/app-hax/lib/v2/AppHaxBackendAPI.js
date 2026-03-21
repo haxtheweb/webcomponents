@@ -205,6 +205,12 @@ export class AppHaxBackendAPI extends LitElement {
     // html contents if we are starting from a file import, otherwise its null
     const items = toJS(store.items);
     const itemFiles = toJS(store.itemFiles);
+    const skeletonMachineName = toJS(store.skeletonMachineName);
+    const useTrustedSkeleton =
+      site &&
+      site.structure === "from-skeleton" &&
+      typeof skeletonMachineName === "string" &&
+      skeletonMachineName !== "";
     const colors = Object.keys(SimpleColorsSharedStylesGlobal.colors);
     const buildData = {
       site: {
@@ -215,21 +221,26 @@ export class AppHaxBackendAPI extends LitElement {
       build: {
         type: site.type,
         structure: site.structure,
-        items: items,
-        files: itemFiles,
+        items: useTrustedSkeleton ? null : items,
+        files: useTrustedSkeleton ? null : itemFiles,
       },
-      theme: {
-        // select a random color
-        color: colors[Math.floor(Math.random() * colors.length)],
-        // select a random av icon
-        icon: `${SimpleIconIconsetsManifest[0].name}:${
-          SimpleIconIconsetsManifest[0].icons[
-            Math.floor(
-              Math.random() * SimpleIconIconsetsManifest[0].icons.length,
-            )
-          ]
-        }`,
-      },
+      theme: {},
+    };
+    if (useTrustedSkeleton) {
+      buildData.build.skeletonMachineName = skeletonMachineName;
+      return buildData;
+    }
+    buildData.theme = {
+      // select a random color
+      color: colors[Math.floor(Math.random() * colors.length)],
+      // select a random av icon
+      icon: `${SimpleIconIconsetsManifest[0].name}:${
+        SimpleIconIconsetsManifest[0].icons[
+          Math.floor(
+            Math.random() * SimpleIconIconsetsManifest[0].icons.length,
+          )
+        ]
+      }`,
     };
     return buildData;
   }

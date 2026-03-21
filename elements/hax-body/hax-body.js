@@ -1949,6 +1949,17 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // keep comments with a special case since they need wrapped
       else if (children[i].nodeType === 8) {
         content += "<!-- " + children[i].textContent + " -->";
+      } 
+      // Sanitize fake-hax-line-break when saving
+      else if(children[i].querySelector(":scope > fake-hax-list-break")){   
+        for(const node of children[i].children){
+          if(node.tagName.toLowerCase() === "ul" || node.tagName.toLowerCase() === "ol"){
+            content += await HAXStore.nodeToContent(node);
+          } else {
+            const nodeContent = node.innerHTML.replace(/<br>/g, "").replace(/<br\/>/g, "")
+            content += "<p>" + nodeContent + "</p>\n";
+          }
+        };
       }
       // special support for UI elements that are still active on page
       // yet we need to remove from output as they do not really exist :)
@@ -2476,8 +2487,68 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
         // If hax-body isn't the next parent
         if(currentNode.parentNode && currentNode.parentNode !== bodyNode){
-          unwrap(currentNode.parentNode)
-          return currentNode.parentNode;
+          const parentNode = currentNode.parentNode;
+          const grandparentNode = currentNode.parentNode.parentNode;
+
+          if(currentNode.previousElementSibling){
+            const prevParent = parentNode.previousElementSibling;
+            // If the previous parent container is a matching list type, append to it in order
+            if(prevParent && 
+              prevParent.tagName === parentNode.tagName) {
+              let prevLI = parentNode.firstChild;
+              while(prevLI !== currentNode){
+                const isPrev = prevLI.nextElementSibling;
+                prevParent.appendChild(parentNode.firstChild);
+                prevLI = isPrev;
+              }
+            } else {
+              const beforeNodes = parentNode.cloneNode(false);
+              let prevLI = currentNode.previousElementSibling;
+              while(prevLI){
+                beforeNodes.prepend(prevLI)
+                const isPrev = prevLI.previousElementSibling;
+                prevLI = isPrev;
+              }
+              beforeNodes.removeAttribute("data-hax-active");
+              grandparentNode.insertBefore(beforeNodes, parentNode);
+            }
+          }
+
+          if(currentNode.nextElementSibling){
+            const nextParent = parentNode.nextElementSibling;
+            // If the next parent container is a matching list type, prepend to it in order
+            if(nextParent && 
+              nextParent.tagName === parentNode.tagName) {
+              let nextLI = parentNode.lastChild;
+              while(nextLI !== currentNode){
+                const isNext = nextLI.previousElementSibling;
+                nextParent.prepend(nextLI);
+                nextLI = isNext;
+              }
+            } else {
+              const afterNodes = parentNode.cloneNode(false);
+              let nextLI = currentNode.nextElementSibling;
+              while(nextLI){
+                const isNext = nextLI.nextElementSibling;
+                afterNodes.appendChild(nextLI)
+                nextLI = isNext;
+              }
+              afterNodes.removeAttribute("data-hax-active");
+              // If no nextSibling, nextParent is null and insertBefore acts like appendChild
+              grandparentNode.insertBefore(afterNodes, nextParent);
+            }
+          }
+          // Unwrap original UL/OL
+          unwrap(parentNode);
+
+          // If we're outdenting into a paragraph, the LI tag shouldn't be preserved
+          if(grandparentNode.tagName.toLowerCase() !== "ol" && grandparentNode.tagName.toLowerCase() !== "ul"){
+            const strippedLI = globalThis.document.createElement("fake-hax-list-break");
+            strippedLI.innerHTML = currentNode.innerHTML.trim() + "<br/>"
+            currentNode.replaceWith(strippedLI)
+          };
+
+          return grandparentNode;
         } else {
           return this.haxChangeTagName(node, "p", true)
         }
@@ -2488,8 +2559,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           replacement.innerHTML = node.innerHTML.trim();
         }
         if (tagName == "ul" || tagName == "ol") {
-          if (replacement.innerHTML == "<br />") {
-            replacement.innerHTML = "<li><br /></li>";
+          // make sure a new list also creates an li
+          if (!replacement.innerHTML.includes("<fake-hax-list-break>")) {
+            replacement.innerHTML = "<li>" + node.innerHTML + "</li>";
           } else if (
             !(
               node.tagName.toLowerCase() == "ul" ||
@@ -2497,12 +2569,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             )
           ) {
             replacement.innerHTML =
-              "<li>" +
               node.innerHTML
                 .trim()
-                .replace(/<br\/>/g, "</li>\n<li>")
-                .replace(/<br>/g, "</li>\n<li>") +
-              "</li>";
+                .replace(/<fake-hax-list-break>/g, "<li>")
+                .replace(/<br><\/fake-hax-list-break>/g, "</li>\n")
+                .replace(/<br\/><\/fake-hax-list-break>/g, "</li>\n");
           }
           // when converting to list, ensure slot is on the list, not the items
           if (originalSlot) {
@@ -2521,12 +2592,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           node.tagName.toLowerCase() == "ol"
         ) {
           // if we're coming from ul or ol strip out the li tags
-          replacement.innerHTML = replacement.innerHTML
-            .replace(/<ul>/g, "")
-            .replace(/<\/ul>/g, "")
-            .replace(/<li><\/li>/g, "")
-            .replace(/<li>/g, "")
-            .replace(/<\/li>/g, "<br/>");
+          const items = Array.from(node.children).map((child) => {
+            const tag = child.tagName.toLowerCase();
+            if(tag === "li") return "<fake-hax-list-break>" + child.innerHTML.trim() + "<br/></fake-hax-list-break>";
+            else if(tag === "ul" || tag === "ol") return child.outerHTML;
+          });
+          replacement.innerHTML = items.join("");
         }
         // Switch!
         try {
@@ -3832,6 +3903,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         !allowInline &&
         this._HTMLInlineTextDecorationTest(node) &&
         node.parentNode != "HAX-BODY"
+      ) {
+        return false;
+      } 
+      // Sanitize the internal list-break tag, if it's within a paragraph
+      else if(node.tagName === "P" && 
+        node.querySelector(":scope > fake-hax-list-break")
       ) {
         return false;
       }

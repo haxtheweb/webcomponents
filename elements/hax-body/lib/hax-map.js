@@ -33,27 +33,6 @@ class HaxMap extends I18NMixin(SimpleColors) {
         .container {
           text-align: left;
         }
-        .stats {
-          display: flex;
-          align-items: stretch;
-          flex-wrap: wrap;
-        }
-        .stat {
-          flex: 1 1 auto;
-          text-align: center;
-          border: 1px solid var(--hax-ui-border-color);
-          font-weight: normal;
-          font-size: var(--hax-ui-font-size-xs);
-          line-height: 140%;
-          padding: var(--hax-ui-spacing-sm);
-        }
-        .stat > * {
-          display: block;
-        }
-        .stat *:first-child {
-          font-weight: bold;
-          font-size: 150%;
-        }
         ul {
           list-style: none;
           padding: 0;
@@ -161,15 +140,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
     super();
     this.elementList = [];
     this.dark = false;
-    this.t = {
-      contentStatistics: "Content Statistics",
-      words: "Words",
-      headings: "Headings",
-      paragraphs: "Paragraphs",
-      widgets: "Widgets",
-      characters: "Characters",
-      listView: "List view",
-    };
+    this.t = {};
     this.registerLocalization({
       context: this,
       namespace: "hax",
@@ -220,7 +191,6 @@ class HaxMap extends I18NMixin(SimpleColors) {
         }
       }
     }
-    this.calcStats(list);
     let elements = [];
     for (var i = 0; i < list.length; i++) {
       let def = HAXStore.haxSchemaFromTag(list[i].tag);
@@ -252,77 +222,10 @@ class HaxMap extends I18NMixin(SimpleColors) {
     }
     this.elementList = [...elements];
   }
-  /**
-   * Calculate statistics from the array of hax elements
-   */
-  calcStats(elements) {
-    if (elements && HAXStore.activeHaxBody.innerText) {
-      let counts = {
-        c: HAXStore.activeHaxBody.innerText.length,
-        w: parseInt(HAXStore.activeHaxBody.innerText.split(/\s+/g).length - 1),
-        h: 0,
-        b: 0,
-        p: 0,
-        e: 0,
-      };
-      elements.forEach((el) => {
-        switch (el.tag) {
-          case "blockquote":
-          case "div":
-          case "span":
-          case "p":
-          case "ul":
-          case "ol":
-          case "strong":
-          case "em":
-            counts.p++;
-            break;
-          case "h1":
-          case "h2":
-          case "h3":
-          case "h4":
-          case "h5":
-          case "h6":
-            counts.h++;
-            break;
-          default:
-            counts.e++;
-            break;
-        }
-      });
-      for (var i in counts) {
-        this[`${i}Count`] = counts[i];
-      }
-    }
-  }
   render() {
     return html`${this.hidden
       ? ``
-      : html` <h5>${this.t.contentStatistics}</h5>
-          <div class="stats">
-            <div class="stat">
-              <span>${this.wCount}</span>
-              <span>${this.t.words}</span>
-            </div>
-            <div class="stat">
-              <span>${this.pCount}</span>
-              <span>${this.t.paragraphs}</span>
-            </div>
-            <div class="stat">
-              <span>${this.cCount}</span>
-              <span>${this.t.characters}</span>
-            </div>
-            <div class="stat">
-              <span>${this.hCount}</span>
-              <span>${this.t.headings}</span>
-            </div>
-            <div class="stat">
-              <span>${this.eCount}</span>
-              <span>${this.t.widgets}</span>
-            </div>
-          </div>
-          <h5>${this.t.listView}</h5>
-          <ul>
+      : html` <ul>
             ${this.indentedElements(this.elementList).map((element, index) => {
               return html`
                 <li
@@ -536,24 +439,6 @@ class HaxMap extends I18NMixin(SimpleColors) {
       },
       elementList: {
         type: Array,
-      },
-      cCount: {
-        type: String,
-      },
-      wCount: {
-        type: String,
-      },
-      bCount: {
-        type: String,
-      },
-      hCount: {
-        type: String,
-      },
-      pCount: {
-        type: String,
-      },
-      eCount: {
-        type: String,
       },
       activeNode: {
         type: Object,

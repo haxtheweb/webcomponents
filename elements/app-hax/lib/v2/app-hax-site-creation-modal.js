@@ -32,6 +32,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.promises = [];
     this.max = 100;
     this.skeletonData = null;
+    this.skeletonMachineName = null;
     // Used to decide if we should write `name=` into the URL
     this.__defaultSiteName = "";
   }
@@ -55,6 +56,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       promises: { type: Array },
       max: { type: Number },
       skeletonData: { type: Object },
+      skeletonMachineName: { type: String },
     };
   }
 
@@ -667,6 +669,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.siteUrl = "";
     this.themeElement = "";
     this.skeletonData = null;
+    this.skeletonMachineName = null;
 
     this.dispatchEvent(
       new CustomEvent("modal-closed", {
@@ -743,6 +746,41 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     return true;
   }
 
+  _extractSkeletonMachineName() {
+    if (!this.skeletonData || typeof this.skeletonData !== "object") {
+      return null;
+    }
+    let machineName = null;
+    if (
+      this.skeletonData.meta &&
+      typeof this.skeletonData.meta === "object" &&
+      this.skeletonData.meta.machineName &&
+      typeof this.skeletonData.meta.machineName === "string"
+    ) {
+      machineName = this.skeletonData.meta.machineName;
+    } else if (
+      this.skeletonData.meta &&
+      typeof this.skeletonData.meta === "object" &&
+      this.skeletonData.meta.name &&
+      typeof this.skeletonData.meta.name === "string"
+    ) {
+      machineName = this.skeletonData.meta.name;
+    } else if (
+      this.skeletonData.metadata &&
+      typeof this.skeletonData.metadata === "object" &&
+      this.skeletonData.metadata.skeleton &&
+      typeof this.skeletonData.metadata.skeleton === "object" &&
+      this.skeletonData.metadata.skeleton.machineName &&
+      typeof this.skeletonData.metadata.skeleton.machineName === "string"
+    ) {
+      machineName = this.skeletonData.metadata.skeleton.machineName;
+    }
+    if (!machineName) {
+      return null;
+    }
+    return machineName.replace(/\.json$/i, "").trim();
+  }
+
   async createSite() {
     if (!this.validateSiteName()) {
       return;
@@ -762,11 +800,14 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       if (this.skeletonData.build.files) {
         store.itemFiles = this.skeletonData.build.files;
       }
+      store.skeletonMachineName =
+        this.skeletonMachineName || this._extractSkeletonMachineName();
     } else {
       store.site.structure = this.themeElement || "website";
       store.site.type = "own";
       store.items = null;
       store.itemFiles = null;
+      store.skeletonMachineName = null;
     }
     store.site.theme = this.themeElement || "polaris-flex-theme"; // Use selected theme
 
@@ -836,7 +877,7 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
     this.max = e.detail.value;
   }
 
-  promiseProgressFinished(e) {
+  async promiseProgressFinished(e) {
     if (e.detail.value) {
       // Site creation completed successfully!
       const createResponse = store.AppHaxAPI.lastResponse.createSite.data;
@@ -886,6 +927,85 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
       if (store.appEl && store.appEl.playSound) {
         store.appEl.playSound("success");
       }
+      // Always refresh site state after create and resolve URL from the
+      // server list if needed (or to stabilize any race conditions).
+      await this._refreshSiteListingFromServer();
+    }
+  }
+
+  async _refreshSiteListingFromServer() {
+    if (store && store.refreshSiteListing) {
+      store.refreshSiteListing();
+    }
+
+    const api = store && store.AppHaxAPI ? store.AppHaxAPI : null;
+    if (!api || !api.makeCall) {
+      return;
+    }
+
+    let createResponse = null;
+    if (
+      api.lastResponse &&
+      api.lastResponse.createSite &&
+      api.lastResponse.createSite.data
+    ) {
+      createResponse = api.lastResponse.createSite.data;
+    }
+
+    // Give the backend a brief moment to complete async writes before a
+    // cache-busted list refresh.
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
+    try {
+      const results = await api.makeCall("getSitesList", { _t: Date.now() });
+      if (!results || !results.data) {
+        return;
+      }
+
+      store.manifest = results.data;
+
+      if (
+        !results.data.items ||
+        !Array.isArray(results.data.items) ||
+        results.data.items.length === 0
+      ) {
+        return;
+      }
+
+      let matchedSite = null;
+
+      if (createResponse && createResponse.id) {
+        matchedSite = results.data.items.find(
+          (item) => item && item.id === createResponse.id,
+        );
+      }
+
+      if (!matchedSite && createResponse && createResponse.slug) {
+        matchedSite = results.data.items.find(
+          (item) => item && item.slug === createResponse.slug,
+        );
+      }
+
+      if (!matchedSite && this.siteName) {
+        const normalizedSiteName = this.siteName.trim().toLowerCase();
+        matchedSite = results.data.items.find((item) => {
+          if (
+            !item ||
+            !item.metadata ||
+            !item.metadata.site ||
+            !item.metadata.site.name
+          ) {
+            return false;
+          }
+          return item.metadata.site.name.trim().toLowerCase() === normalizedSiteName;
+        });
+      }
+
+      if (matchedSite && matchedSite.slug) {
+        this.siteUrl = matchedSite.slug.replace("index.html", "");
+      }
+    } catch (e) {
+      // Non-fatal: UI already has a fallback URL and can still continue.
     }
   }
 

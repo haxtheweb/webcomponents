@@ -4,6 +4,21 @@ import { observable, makeObservable, computed, configure } from "mobx";
 import { DeviceDetails } from "@haxtheweb/replace-tag/lib/PerformanceDetect.js";
 configure({ enforceActions: false }); // strict mode off
 
+function hasStoredSoundPreference() {
+  try {
+    return globalThis.localStorage.getItem("app-hax-soundStatus") !== null;
+  } catch (e) {
+    return false;
+  }
+}
+
+function getDefaultSoundStatus() {
+  if (hasStoredSoundPreference()) {
+    return localStorageGet("app-hax-soundStatus", true);
+  }
+  return !DeviceDetails.mobileDevice();
+}
+
 class Store {
   constructor() {
     this.badDevice = null;
@@ -16,6 +31,7 @@ class Store {
     this.version = "0.0.0";
     this.items = null;
     this.itemFiles = null;
+    this.skeletonMachineName = null;
     this.refreshSiteList = true;
     this.createSiteSteps = false;
     fetch(new URL("../../../haxcms-elements/package.json", import.meta.url))
@@ -52,7 +68,7 @@ class Store {
     ];
     this.appEl = null;
     this.appReady = false;
-    this.soundStatus = localStorageGet("app-hax-soundStatus", true);
+    this.soundStatus = getDefaultSoundStatus();
     // If user is new, make sure they are on step 1
     this.appMode = "search";
     this.activeSiteOp = null;
@@ -182,6 +198,7 @@ class Store {
       createSiteSteps: observable, // if we're making a site or in another part of app
       step: observable, // step that we're on in our build
       site: observable, // information about the site being created
+      skeletonMachineName: observable, // trusted skeleton reference for server-side generation
       newSitePromiseList: observable,
       items: observable, // site items / structure from a docx micro if option selected
       itemFiles: observable, // files related to the items to be imported from another site format
@@ -235,7 +252,7 @@ class Store {
   // see if this device is poor
   async evaluateBadDevice() {
     this.badDevice = await DeviceDetails.badDevice();
-    if (this.badDevice === true) {
+    if (this.badDevice === true && !hasStoredSoundPreference()) {
       this.soundStatus = false;
     }
   }

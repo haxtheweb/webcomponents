@@ -595,14 +595,13 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           --simple-icon-height: var(--ddd-icon-xxs);
         }
         :host([wand]) absolute-position-behavior {
-          top: var(--ddd-spacing-6) !important;
+          top: var(--ddd-spacing-8) !important;
           right: 0;
           position: fixed !important;
           display: table;
           /* Expand to available width when in wand mode at top */
           left: var(--ddd-spacing-6);
-          width: calc(100vw - var(--ddd-spacing-12));
-          max-width: calc(100vw - 200px); /* Leave space for user menu */
+          margin-left: 16px;
         }
         absolute-position-behavior {
           z-index: var(--simple-modal-z-index, 10000);
@@ -640,7 +639,6 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           :host([wand]) absolute-position-behavior {
             max-width: calc(100vw - 60px); /* Even less space on mobile */
             left: var(--ddd-spacing-2);
-            width: calc(100vw - var(--ddd-spacing-4));
           }
         }
       `,
@@ -901,19 +899,24 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   // if we click away, take the active value and apply it to the line
   // ensure a synthetic event does not trigger this
   clickOnMiniMode(e) {
-    if (e.isTrusted) {
-      // ensure clicking on us does not disappear but since this is a "once"
-      // event application we need to reissue the event if we clicked on us
-      if (e.target !== this) {
-        this.miniCancel();
-      } else {
-        globalThis.addEventListener("click", this.clickOnMiniMode.bind(this), {
-          once: true,
-          passive: true,
-          signal: this.windowControllers2.signal,
-        });
-      }
+    if (!this.mini || !this.opened) {
+      return;
     }
+    const path = e.composedPath ? e.composedPath() : [];
+    const clickedInsideMerlin = path.includes(this);
+    // ensure clicking on us does not disappear but since this is a "once"
+    // event application we need to reissue the event if we clicked on us.
+    // also reissue if the event is synthetic so startup interactions do not
+    // consume the one-time listener before a real click-away occurs.
+    if (!e.isTrusted || clickedInsideMerlin) {
+      globalThis.addEventListener("click", this.clickOnMiniMode.bind(this), {
+        once: true,
+        passive: true,
+        signal: this.windowControllers2.signal,
+      });
+      return;
+    }
+    this.miniCancel();
   }
   // if we cancel out of mini mode there's a lot of UX enhancements we can do for the end user
   miniCancel() {

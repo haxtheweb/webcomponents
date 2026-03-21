@@ -56,7 +56,7 @@ class MdBlock extends DDD {
         icon: "icons:code",
         color: "yellow",
         tags: [
-          "Resource",
+          "Other",
           "md",
           "markdown",
           "content",

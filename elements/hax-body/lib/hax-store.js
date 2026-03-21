@@ -2906,7 +2906,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       h2: {
         title: "Heading",
         icon: "hax:h2",
-        tags: ["Writing", "h2", "html", "text", "heading", "header"],
+        tags: ["Text", "h2", "html", "heading", "header"],
       },
       h3: {
         title: "Heading",
@@ -3512,7 +3512,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         icon: "icons:link",
         color: "blue-grey",
         tags: [
-          "Writing",
+          "Text",
           "link",
           "a",
           "url",
@@ -3610,7 +3610,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         description: "A basic text area",
         icon: "hax:paragraph",
         color: "blue-grey",
-        tags: ["Writing", "p", "paragraph", "text", "html"],
+        tags: ["Text", "p", "paragraph", "text", "html"],
         handles: [
           {
             type: "content",
@@ -3700,7 +3700,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           icon: "hax:iframe",
           color: "blue-grey",
           tags: [
-            "Resource",
+            "Media",
             "iframe",
             "content",
             "url",
@@ -3769,7 +3769,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             title: this.__primsBuilder[tag].title,
             icon: this.__primsBuilder[tag].icon,
             tags: this.__primsBuilder[tag].tags || [
-              "Writing",
+              "Text",
               tag,
               "html",
               "text",
