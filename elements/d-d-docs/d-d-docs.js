@@ -2060,8 +2060,8 @@ class DDDocs extends DDD {
           <h5 class="label" data-design-treatment="horz-md" data-primary="15">Vertical Line - <i>data-design-treament="horz-md"</i></h5>
           <h5 class="label" data-design-treatment="horz-lg" data-primary="15">Vertical Line - <i>data-design-treament="horz-lg"</i></h5>
           <br />
+          <h3>Other design treatments:</h3>
           <p data-design-treatment="bg" data-primary="1">Background color <i>data-design-treatment="bg"</i></p>
-          <br/>
           <h5 data-design-treatment="dropCap-sm">Drop Cap - Small <i>data-design-treatment="dropCap-sm"</i></h5>
           <h3 data-design-treatment="dropCap-md">Drop Cap - Medium <i>data-design-treatment="dropCap-md"</i></h3>
           <h1 data-design-treatment="dropCap-lg">Drop Cap - Large <i>data-design-treatment="dropCap-lg"</i></h1>
