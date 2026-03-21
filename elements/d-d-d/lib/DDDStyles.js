@@ -1998,7 +1998,10 @@ export const DDDReset = css`
   [data-design-treatment^="dropCap"] {
     --initialLetter: 6;
     min-height: calc(
-      (var(--initialLetter) * var(--ddd-theme-body-font-size) * 1.5) + 20px
+      (
+          var(--initialLetter) * var(--ddd-theme-body-font-size) * 1.5 *
+            var(--special-multiplier)
+        ) + 20px
     );
   }
 
@@ -2034,6 +2037,7 @@ export const DDDReset = css`
 
   [data-design-treatment="dropCap-lg"] {
     --initialLetter: 8;
+    --special-multiplier: 1.7;
   }
 
   [data-design-treatment="dropCap-xl"] {
@@ -2113,9 +2117,11 @@ export const DDDReset = css`
     padding: 12px 0px 0px 0px;
   }
 
-  h2 > hr {
-    margin-top: var(--ddd-spacing-4);
-  }
+  /*
+    h2 > hr {
+      margin-top: var(--ddd-spacing-4);
+    }
+  */
 
   .ddd-theme-header-border-thickness-0 {
     --ddd-theme-header-border-thickness: var(
