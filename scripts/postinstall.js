@@ -2,6 +2,16 @@ const fs = require("fs");
 const path = require("path");
 const { execSync } = require("child_process");
 
+// Is this a Bash Shell running on Windows?
+let isWinBash = false;
+try {
+  const unameOut = execSync("uname -s", { stdio: "ignore" }).toString().trim();
+  // Set to true if the uname includes CYGWIN or MINGW
+  isWinBash = /CYGWIN|MINGW/.test(unameOut);
+} catch(e) {
+  // ignore otherwise
+}
+
 const dir = __dirname;
 
 // where am i? move to where I am. This ensures source is properly sourced
@@ -106,7 +116,9 @@ function symlinkFile(name, symlinkRoot) {
 
   try {
     if (!fs.existsSync(dest)) {
-      fs.symlinkSync(src, dest, "file");
+      // Node:FS still calls Windows-native symlinks when running in Git Bash/Cygwin
+      // We override this because the Unix utility works without an Administrator shell
+      isWinBash ? execSync(`ln -s "${src}" "${dest}"`) : fs.symlinkSync(src, dest, "file");
     }
   } catch (e) {
     console.warn("Symlink failed:", dest);
@@ -122,7 +134,9 @@ function symlinkDir(name, symlinkRoot) {
 
   try {
     if (!fs.existsSync(dest)) {
-      fs.symlinkSync(src, dest, "dir");
+      // Node:FS still calls Windows-native symlinks when running in Git Bash/Cygwin
+      // We override this because the Unix utility works without an Administrator shell
+      isWinBash ? execSync(`ln -s "${src}" "${dest}"`) : fs.symlinkSync(src, dest, "dir");
     }
   } catch (e) {
     console.warn("Symlink failed:", dest);
