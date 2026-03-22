@@ -37,14 +37,14 @@ Watch and Learn more about HAX here:
 - [HAX doc site](https://haxtheweb.org/)
 - [HAX + 11ty](https://github.com/haxtheweb/hax11ty)
 
-# Welcome to the haxtheweb project!
+# Welcome to the HaxTheWeb project!
 Web components that can work in just about anything, are very small (Vanila or Lit based) and have full on authoring solutions if you dig deeper; Enjoy!
 
-## Quick start
+## Getting Started
 
 *Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass legacy browsers.*
 
-### Quick Install
+### Quick Install for Git Bash/WSL/macOS/Linux
 ```bash
 curl -fsSL https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scripts/haxthewebme.sh -o haxthewebme.sh && sh haxthewebme.sh
 ```
@@ -56,13 +56,19 @@ git clone https://github.com/haxtheweb/webcomponents.git
 cd webcomponents
 npm install --global @haxtheweb/create
 yarn global add web-component-analyzer
+yarn global add symlink-dir
+yarn global add @web/test-runner
+yarn global add @web/test-runner-commands
+yarn global add @web/test-runner-puppeteer
+yarn global add @web/test-runner-playwright
+yarn global add lerna
 yarn install
 ```
 
-### Lerna
+#### Lerna
 This monorepo has configuration settings for lerna. Lerna is for the core team, but to bulk run commands against the monorepo consider things like `npx lerna run build` to run build against all elements. This is useful when getting ready to ship.
 
-### Syncing Your Fork
+#### Syncing Your Fork
 ```
 git remote add upstream https://github.com/haxtheweb/webcomponents.git
 git fetch upstream
@@ -70,48 +76,19 @@ git pull
 ```
 
 ## Windows Install
+[Git Bash](https://git-scm.com/install/windows) or [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) are recommended for the best cross-compatibility with HAX's developer tooling. We also support native **PowerShell** for Windows contributors, although certain advanced utilities may experience instability.
 
-### Installing Windows Subsystem for Linux (WSL) 
-[Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) is required for this setup. To install WSL, run the following command in Command Prompt or PowerShell:
-```
-wsl --install
-```
-### Installing Node.js in WSL
-Refer to the official Windows guide: [Install Node.js on Windows Subsystem for Linux (WSL2)](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl)
+### Windows Developer Mode
+HAXTheWeb uses symlinks in many parts of the local environment. This allows us to emulate the functionality of a live HAXsite without running the full system. On Windows, PowerShell-based symlinks normally require running the shell as *Administrator*.
 
-### Installing Yarn in WSL
-To install Yarn, open WSL and run:
-```
-curl -o- -L https://yarnpkg.com/install.sh | bash
-```
-To install Yarn globally, restart WSL and run:
-```
-npm install --global yarn
-```
-To verify installation, run: 
-```
-yarn --version
-```
+Enabling **Developer Mode** removes this *Administrator* requirement for common development tasks. Start by opening your **Windows Settings**:
+* On Windows 10: Update and Security -> For developers -> Developer Mode
+* On Windows 11: System -> Advanced -> For developers -> Developer Mode
 
-### Clone and Set Up webcomponents in WSL
-
-Run this configuration in WSL to properly configure git endlines for Windows:
-```bash
-git config --global core.autocrlf true
+### Quick Install for Windows
+```powershell
+Invoke-WebRequest -Uri "https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scripts/haxthewebme.ps1" -OutFile "haxthewebme.ps1" && .\haxtheme.ps1
 ```
-Install bzip2 (required to required to extract PhantomJS during installation):
-```
-sudo apt install bzip2
-```
-To clone webcomponents, run:
-```bash
-git clone https://github.com/haxtheweb/webcomponents.git
-cd webcomponents
-npm install --global @haxtheweb/create
-yarn global add web-component-analyzer
-yarn install
-```
-
 
 ## To work on any element in our repo
 ```bash
