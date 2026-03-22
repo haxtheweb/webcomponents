@@ -53,7 +53,7 @@ export class AppHaxUserMenuButton extends DDDSuper(LitElement) {
           padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-3, 12px);
           font-size: var(--ddd-font-size-3xs, 12px);
           text-align: left;
-          color: var(--ddd-theme-default-nittanyNavy, #001e44);
+          color: light-dark(var(--ddd-theme-default-coalyGray, #222), var(--ddd-theme-default-white, white));
           background: transparent;
           cursor: pointer;
           font-family: var(--ddd-font-primary, sans-serif);

@@ -18,19 +18,32 @@ export const DeviceDetails =
 class PerformanceDetect extends HTMLElement {
   constructor() {
     super();
-    this.details = this.updateDetails();
+    this.details = {
+      lowMemory: false,
+      lowProcessor: false,
+      lowBattery: false,
+      poorConnection: false,
+      dataSaver: false,
+      mobileDevice: false,
+    };
+    this.updateDetails();
   }
   static get tag() {
     return "performance-detect";
   }
   // test device for ANY poor setting
   async badDevice() {
-    for (const [key, value] of Object.entries(await this.details)) {
-      if (value) {
-        return true;
-      }
-    }
-    return false;
+    const details = await this.updateDetails();
+    return (
+      details.lowMemory ||
+      details.lowProcessor ||
+      details.lowBattery ||
+      details.poorConnection ||
+      details.dataSaver
+    );
+  }
+  mobileDevice() {
+    return this.detectMobileDevice();
   }
   // return any details
   getDetails(detail = null) {
@@ -50,8 +63,35 @@ class PerformanceDetect extends HTMLElement {
       case "data":
         return this.details.dataSaver;
         break;
+      case "mobile":
+        return this.details.mobileDevice;
+        break;
     }
     return this.details;
+  }
+  detectMobileDevice() {
+    const userAgent =
+      globalThis.navigator && globalThis.navigator.userAgent
+        ? globalThis.navigator.userAgent
+        : "";
+    const touchPoints =
+      globalThis.navigator &&
+      typeof globalThis.navigator.maxTouchPoints === "number"
+        ? globalThis.navigator.maxTouchPoints
+        : 0;
+    const mobileUserAgent =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(
+        userAgent,
+      );
+    const iPadDesktopMode = /Macintosh/i.test(userAgent) && touchPoints > 1;
+    const coarsePointer =
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(pointer: coarse)").matches;
+    return (
+      mobileUserAgent ||
+      iPadDesktopMode ||
+      (coarsePointer && touchPoints > 0)
+    );
   }
   async updateDetails() {
     let details = {
@@ -60,42 +100,55 @@ class PerformanceDetect extends HTMLElement {
       lowBattery: false,
       poorConnection: false,
       dataSaver: false,
+      mobileDevice: this.detectMobileDevice(),
     };
-    if (navigator) {
+    if (globalThis.navigator) {
       // if less than a gig we know its bad
-      if (navigator.deviceMemory && globalThis.navigator.deviceMemory < 1) {
+      if (
+        globalThis.navigator.deviceMemory &&
+        globalThis.navigator.deviceMemory < 1
+      ) {
         details.lowMemory = true;
       }
       // even phones have multi-core processors so another sign
       if (
-        navigator.hardwareConcurrency &&
+        globalThis.navigator.hardwareConcurrency &&
         globalThis.navigator.hardwareConcurrency < 2
       ) {
         details.lowProcessor = true;
       }
       // some platforms support getting the battery status
-      if (navigator.getBattery) {
-        globalThis.navigator.getBattery().then(function (battery) {
+      if (globalThis.navigator.getBattery) {
+        try {
+          const battery = await globalThis.navigator.getBattery();
           // if we are not charging AND we have under 25% be kind
           if (!battery.charging && battery.level < 0.25) {
             details.lowBattery = true;
           }
-        });
+        } catch (e) {
+          // ignore
+        }
       }
       // some things report the "type" of internet connection speed
       // for terrible connections lets save frustration
       if (
         globalThis.navigator.connection &&
         globalThis.navigator.connection.effectiveType &&
-        ["slow-2g", "2g", "3g"].includes(navigator.connection.effectiveType)
+        ["slow-2g", "2g", "3g"].includes(
+          globalThis.navigator.connection.effectiveType,
+        )
       ) {
         details.poorConnection = true;
       }
       // see if they said "hey, save me data"
-      if (navigator.connection && globalThis.navigator.connection.saveData) {
+      if (
+        globalThis.navigator.connection &&
+        globalThis.navigator.connection.saveData
+      ) {
         details.dataSaver = true;
       }
     }
+    this.details = details;
     return details;
   }
 }

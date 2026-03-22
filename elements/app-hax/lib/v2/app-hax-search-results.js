@@ -20,10 +20,6 @@ export class AppHaxSearchResults extends SimpleColors {
     this.displayItems = [];
     this.searchTerm = "";
     this.dark = false;
-    this.isPointerDown = false;
-    this.startX = 0;
-    this.scrollLeftVal = 0;
-    this.isDragging = false;
     this.currentIndex = 1;
     this.totalItems = 0;
     // Default carousel order: sites most recently updated first
@@ -54,10 +50,6 @@ export class AppHaxSearchResults extends SimpleColors {
       searchItems: { type: Array },
       displayItems: { type: Array },
       siteUrl: { type: String, attribute: "site-url" },
-      isPointerDown: { type: Boolean },
-      startX: { type: Number },
-      scrollLeftVal: { type: Number },
-      isDragging: { type: Boolean },
       currentIndex: { type: Number },
       totalItems: { type: Number },
       sortOption: { type: String, attribute: "sort-option" },
@@ -176,8 +168,8 @@ export class AppHaxSearchResults extends SimpleColors {
             padding: var(--ddd-spacing-2, 8px) 0 0 var(--ddd-spacing-2, 8px);
           flex: 1;
           min-width: 0;
-          cursor: grab;
-          user-select: none;
+          scroll-behavior: smooth;
+          -webkit-overflow-scrolling: touch;
           /* Keep scrollbar visible for multiple interaction methods */
           scrollbar-width: thin;
           scrollbar-color: var(--ddd-theme-default-slateGray, #666)
@@ -190,10 +182,6 @@ export class AppHaxSearchResults extends SimpleColors {
             var(--ddd-theme-default-coalyGray, #444);
         }
 
-        #results.dragging {
-          cursor: grabbing;
-          scroll-behavior: auto;
-        }
 
         #results::-webkit-scrollbar {
           height: 8px;
@@ -441,16 +429,9 @@ export class AppHaxSearchResults extends SimpleColors {
         </button>
         <ul
           id="results"
-          class="${this.isDragging ? "dragging" : ""}"
-          @mousedown="${this.handlePointerStart}"
-          @touchstart="${this.handlePointerStart}"
-          @mousemove="${this.handlePointerMove}"
-          @touchmove="${this.handlePointerMove}"
-          @mouseup="${this.handlePointerEnd}"
-          @touchend="${this.handlePointerEnd}"
-          @mouseleave="${this.handlePointerEnd}"
           @scroll="${this.handleScroll}"
->\n          ${itemsToRender.length > 0
+        >
+          ${itemsToRender.length > 0
             ? itemsToRender.map(
                 (item) =>
                   html` <li>
@@ -511,7 +492,6 @@ export class AppHaxSearchResults extends SimpleColors {
           class="scroll-right"
           @click="${this.scrollRight}"
           ?disabled="${this.isAtEnd || this.totalItems <= 1}"
-          this.totalItems <= 1}"
           aria-label="Next sites"
           aria-describedby="scroll-right-desc"
         >
@@ -558,55 +538,6 @@ export class AppHaxSearchResults extends SimpleColors {
 
     const itemWidth = 180 + 24;
     el.scrollBy({ left: itemWidth, behavior: "smooth" });
-  }
-
-
-  handlePointerStart(e) {
-    const resultsEl = this.shadowRoot.querySelector("#results");
-    this.isPointerDown = true;
-    this.isDragging = false;
-    this.startX =
-      (e.type === "mousedown" ? e.clientX : e.touches[0].clientX) -
-      resultsEl.offsetLeft;
-    this.scrollLeftVal = resultsEl.scrollLeft;
-    e.preventDefault();
-  }
-
-  handlePointerMove(e) {
-    if (!this.isPointerDown) return;
-
-    const resultsEl = this.shadowRoot.querySelector("#results");
-    const x =
-      (e.type === "mousemove" ? e.clientX : e.touches[0].clientX) -
-      resultsEl.offsetLeft;
-    const walk = (x - this.startX) * 2; // Multiply for faster scrolling
-
-    // Only start dragging if we've moved a significant distance
-    if (Math.abs(walk) > 5) {
-      this.isDragging = true;
-      // Disable smooth scrolling during drag for immediate feedback
-      resultsEl.style.scrollBehavior = "auto";
-    }
-
-    if (this.isDragging) {
-      resultsEl.scrollLeft = this.scrollLeftVal - walk;
-      e.preventDefault();
-    }
-  }
-
-  handlePointerEnd(e) {
-    this.isPointerDown = false;
-
-    // Restore smooth scrolling behavior
-    const resultsEl = this.shadowRoot.querySelector("#results");
-    if (resultsEl) {
-      resultsEl.style.scrollBehavior = "smooth";
-    }
-
-    // Use timeout to allow for click events to fire before resetting drag state
-    setTimeout(() => {
-      this.isDragging = false;
-    }, 100);
   }
 
   handleScroll(e) {

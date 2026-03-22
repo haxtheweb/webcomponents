@@ -105,7 +105,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         super-daemon-search.merlin {
           border: none;
           height: 48px;
-          margin: var(--ddd-spacing-2);
+          margin: var(--ddd-spacing-2) 0 0 var(--ddd-spacing-4);
         }
 
         :host([dark-mode]) #merlin,
@@ -202,6 +202,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         app-hax-top-bar::part(top-bar) {
           grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
           overflow: visible;
+          display: grid;
         }
         .topbar-left-group,
         .topbar-center-group,
@@ -292,6 +293,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         .merlin-anchor-button {
           opacity: 0;
           pointer-events: none;
+          height: 1px !important;
+          width: 1px !important;
+          margin: 0 !important;
         }
         .toolbar-buttons simple-toolbar-button,
         .toolbar-buttons simple-toolbar-menu,
@@ -438,9 +442,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           :host([edit-mode]) {
             bottom: unset;
           }
-          app-hax-top-bar::part(top-bar) {
-            display: grid;
-          }
           #undo,
           #redo {
             display: none;
@@ -471,7 +472,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
         }
         @media (max-width: 600px) {
-          .haxLogo {
+          /** hide buttons on a phone bc its too small */
+          .haxLogo,#exportbtn, #content-map, #outlinebutton {
             display: none;
           }
           simple-toolbar {
@@ -480,6 +482,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             background-color: white;
             height: auto;
           }
+          
+          app-hax-top-bar::part(top-bar) {
+            grid-template-columns: 0 1fr minmax(0, 1fr) !important;
+          }
+          app-hax-top-bar[edit-mode]::part(top-bar) {
+          grid-template-columns: 1fr 1fr !important;
+          overflow: hidden;
+        }
         }
       `,
     ];
@@ -2700,6 +2710,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.userMenuOpen = !this.userMenuOpen;
     store.playSound("click");
   }
+  shouldAutoOpenTrayOnEdit() {
+    const responsiveWidth = parseInt(this.responsiveWidth);
+    const mediumBreakpoint = parseInt(this.md) || 900;
+    const isNarrowViewport =
+      !Number.isNaN(responsiveWidth) && responsiveWidth < mediumBreakpoint;
+    return !(
+      ["xs", "sm"].includes(this.responsiveSize) || isNarrowViewport
+    );
+  }
   getIconPosition(size) {
     return !["xl", "lg"].includes(size) ? "top" : "left";
   }
@@ -2888,7 +2907,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               data-event="${this.responsiveSize === "xs"
                 ? "super-daemon-modal"
                 : "super-daemon"}"
-              ?hidden="${["xs"].includes(this.responsiveSize)}"
               mini
               wand
               droppable-type="${this.activeType}"
@@ -4163,8 +4181,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
           // Show a toast to let the user know Merlin is here to help
           store.toast(
-            "👋 Welcome to HAX! Merlin is here to help you get started",
-            8000,
+            "Welcome to HAX! Here's some common tasks",
+            3000,
             {
               hat: "knight",
             },
@@ -4578,18 +4596,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const newEditMode = toJS(store.editMode);
       this.editMode = newEditMode;
       UserScaffoldInstance.writeMemory("editMode", this.editMode);
+      const autoOpenTray = this.shouldAutoOpenTrayOnEdit();
       // When we first enter edit mode and there is an active node selected,
       // prefer the Configure tab over Blocks as the default tray panel.
       if (
         !previousEditMode &&
         newEditMode &&
+        autoOpenTray &&
         HAXStore.activeNode &&
         HAXStore.activeNode.tagName
       ) {
         HAXStore.trayDetail = "content-edit";
         if (HAXStore.haxTray) {
           HAXStore.haxTray.trayDetail = "content-edit";
-          HAXStore.haxTray.collapsed = false;
+          HAXStore.haxTray.collapsed = !autoOpenTray;
+        }
+      } else if (!previousEditMode && newEditMode && !autoOpenTray) {
+        HAXStore.trayDetail = "no-active-tray";
+        if (HAXStore.haxTray) {
+          HAXStore.haxTray.trayDetail = "no-active-tray";
+          HAXStore.haxTray.collapsed = true;
         }
       }
       this.__disposer.push(reaction);
@@ -5426,8 +5452,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       store.editMode = newValue;
       // force tray status to be the opposite of the editMode
       // to open when editing and close when not
-      if (newValue) {
-        HAXStore.haxTray.collapsed = false;
+      if (newValue && HAXStore.haxTray) {
+        const autoOpenTray = this.shouldAutoOpenTrayOnEdit();
+        if (!autoOpenTray) {
+          HAXStore.trayDetail = "no-active-tray";
+          HAXStore.haxTray.trayDetail = "no-active-tray";
+        }
+        HAXStore.haxTray.collapsed = !autoOpenTray;
       }
     }
   }

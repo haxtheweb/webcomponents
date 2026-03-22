@@ -435,6 +435,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       }
     });
     this.userMenuOpen = false;
+    this.hasHeaderPre = false;
     this.courses = [];
     this.activeItem = {};
     this.phrases = {
@@ -600,6 +601,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       isNewUser: { type: Boolean },
       phrases: { type: Object },
       userMenuOpen: { type: Boolean }, // leave here to ensure hat change and sound effects happen
+      hasHeaderPre: {
+        type: Boolean,
+        reflect: true,
+        attribute: "has-header-pre",
+      },
       siteReady: { type: Boolean },
       basePath: { type: String, attribute: "base-path" },
       token: { type: String },
@@ -761,26 +767,156 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       super.styles,
       css`
         :host {
-          overflow: hidden;
+          overflow: visible;
           display: block;
           max-width: 100%;
           font-family: var(--ddd-font-primary, sans-serif);
+        }
+        app-hax-top-bar::part(top-bar) {
+          grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+          overflow: visible;
+        }
+
+        :host([dark]) app-hax-top-bar,
+        body.dark-mode app-hax-top-bar {
+          --bg-color: #000;
+          --accent-color: #fff;
         }
 
         .left-group {
           display: flex;
           align-items: center;
-          gap: 8px;
-          height: 100%;
+          gap: var(--ddd-spacing-2, 8px);
+          height: var(--top-bar-height, 64px);
+          justify-content: flex-start;
+        }
+        slot[name="app-header-pre"] {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          height: var(--top-bar-height, 64px);
+        }
+        slot[name="app-header-pre"]::slotted(*) {
+          color: var(--ddd-theme-default-white, #fff);
+          background-color: var(--ddd-primary-2, #1e407c);
+          height: var(--top-bar-height, 64px);
+          width: var(--top-bar-height, 64px);
+          min-height: var(--top-bar-height, 64px);
+          min-width: var(--top-bar-height, 64px);
+          flex: 0 0 var(--top-bar-height, 64px);
+          box-sizing: border-box;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          text-decoration: none;
+          --simple-icon-height: var(--ddd-icon-2xl, 48px);
+          --simple-icon-width: var(--ddd-icon-2xl, 48px);
         }
 
         #home {
+          color: var(--ddd-theme-default-white, #fff);
+          background-color: var(--ddd-primary-2, #1e407c);
+          height: var(--top-bar-height, 64px);
+          width: var(--top-bar-height, 64px);
           display: flex;
           align-items: center;
+          justify-content: center;
+          text-decoration: none;
+        }
+
+        #home:hover,
+        #home:focus,
+        #home:active {
+          color: var(--ddd-theme-default-white, #fff);
+        }
+
+        #home:focus-visible,
+        .topbar-character:focus-visible,
+        #tbchar:focus-visible {
+          outline: var(--ddd-border-sm, 2px solid)
+            var(--ddd-theme-default-skyBlue);
+          outline-offset: 2px;
+        }
+
+        .haxLogo {
+          --simple-icon-height: var(--ddd-icon-2xl, 48px);
+          --simple-icon-width: var(--ddd-icon-2xl, 48px);
         }
 
         .right-group {
-          margin-right: var(--ddd-spacing-3, 12px);
+          align-items: center;
+          justify-content: flex-end;
+          display: flex;
+          gap: var(--ddd-spacing-2, 8px);
+          height: var(--top-bar-height, 64px);
+        }
+
+        .topbar-character {
+          cursor: pointer;
+          border: none;
+          background-color: transparent;
+          min-height: var(--top-bar-height, 64px);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray, #222),
+            var(--ddd-theme-default-white, #fff)
+          );
+          padding: 0;
+          margin: 0;
+          line-height: 0;
+        }
+
+        .topbar-character rpg-character {
+          --simple-toolbar-border-radius: var(--ddd-radius-md);
+          border-radius: var(--ddd-radius-md);
+          background-color: var(--simple-colors-default-theme-grey-1);
+          border: var(--ddd-border-sm);
+          border-color: var(--ddd-theme-default-limestoneGray);
+          padding: 0;
+          margin: 0;
+          height: var(--ddd-spacing-10, 40px);
+          width: var(--ddd-spacing-10, 40px);
+          display: block;
+        }
+
+        .topbar-character:hover rpg-character,
+        .topbar-character:focus rpg-character,
+        .topbar-character:focus-visible rpg-character {
+          border-color: var(--simple-colors-default-theme-grey-12);
+          background-color: var(--simple-colors-default-theme-grey-2);
+        }
+
+        .characterbtn-name {
+          margin-left: var(--ddd-spacing-2, 8px);
+          font-size: var(--ddd-font-size-3xs, 12px);
+          vertical-align: bottom;
+          line-height: var(--top-bar-height, 64px);
+          overflow: hidden;
+          text-overflow: ellipsis;
+          min-height: var(--top-bar-height, 64px);
+          word-break: break-all;
+        }
+        .ops-panel {
+          justify-content: space-around;
+          display: flex;
+          align-items: center;
+          padding: var(--ddd-spacing-1, 4px) 0px;
+          gap: var(--ddd-spacing-2, 8px);
+        }
+        .soundToggle {
+          position: relative;
+          display: inline-flex;
+          vertical-align: top;
+          min-width: var(--ddd-spacing-12, 48px);
+          min-height: var(--ddd-spacing-12, 48px);
+          align-items: center;
+          justify-content: center;
+        }
+        .soundToggle simple-icon-lite {
+          --simple-icon-height: var(--ddd-icon-xs, 24px);
+          --simple-icon-width: var(--ddd-icon-xs, 24px);
         }
 
         .characterbtn-menu-icon {
@@ -806,7 +942,12 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           justify-content: center;
           height: var(--top-bar-height, 64px);
           width: 100%;
-          font-family: 
+          font-family: var(--ddd-font-primary, sans-serif);
+          font-weight: var(--ddd-font-weight-medium, 500);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray, #222),
+            var(--ddd-theme-default-white, #fff)
+          );
         }
                 
         .template-results {
@@ -1245,7 +1386,6 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     import("wired-elements/lib/wired-button.js");
     import("./lib/v2/app-hax-toast.js");
     import("./lib/v2/app-hax-wired-toggle.js");
-    import("./lib/v2/app-hax-search-bar.js");
     import("./lib/v2/app-hax-search-results.js");
     import("./lib/v2/app-hax-user-menu.js");
     import("./lib/v2/app-hax-user-menu-button.js");
@@ -1299,6 +1439,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         this.login();
       }
     });
+    this._syncHeaderPreSlot();
   }
 
   toggleMenu() {
@@ -1308,6 +1449,16 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
   closeMenu() {
     this.userMenuOpen = false;
+  }
+
+  _syncHeaderPreSlot(e) {
+    let hasContent = false;
+    if (e && e.target && e.target.assignedElements) {
+      hasContent = e.target.assignedElements({ flatten: true }).length > 0;
+    } else if (this.querySelector('[slot="app-header-pre"]')) {
+      hasContent = true;
+    }
+    this.hasHeaderPre = hasContent;
   }
 
   _isDashboardModalOpen() {
@@ -1376,31 +1527,32 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       <header>
         <app-hax-top-bar>
           <div slot="left" class="left-group">
-            <slot name="app-header-pre"></slot>
-            <a
-              id="home"
-              title="${this.t.home}"
-              href="home"
-            >
-              <simple-icon-lite
-                id="hlogo"
-                icon="hax:hax2022"
-                class="haxLogo"
-                title="${this.t.home}"
-              ></simple-icon-lite>
-            </a>
-            <simple-tooltip for="hlogo" position="right">
-              ${this.t.home}
-            </simple-tooltip>
+            <slot
+              name="app-header-pre"
+              @slotchange="${this._syncHeaderPreSlot}"
+            ></slot>
+            ${!this.hasHeaderPre
+              ? html`<a
+                    id="home"
+                    title="${this.t.home}"
+                    href="home"
+                  >
+                    <simple-icon-lite
+                      id="hlogo"
+                      icon="hax:hax2022"
+                      class="haxLogo"
+                      title="${this.t.home}"
+                    ></simple-icon-lite>
+                  </a>
+                  <simple-tooltip for="hlogo" position="right">
+                    ${this.t.home}
+                  </simple-tooltip>`
+              : ``}
           </div>
 
           <div slot="center">HAXcms Site Dashboard</div>
           
           <div slot="right" class="right-group">
-            <app-hax-wired-toggle id="wt" slot="right"></app-hax-wired-toggle>
-            <simple-tooltip for="wt" position="bottom" slot="right"
-              >Toggle dark mode</simple-tooltip
-            >
             <app-hax-user-menu
               slot="right"
               id="user-menu"
@@ -1418,39 +1570,47 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 >
                 <rpg-character
                   seed="${this.userName}"
-                  width="60"
-                  height="40"
+                  width="68"
+                  height="68"
                   hat="${this.userMenuOpen ? "edit" : "none"}"
                   alt="Avatar for ${this.userName}"
                   role="img"
                 ></rpg-character>
-                <span class="characterbtn-name" aria-hidden="true"
-                  >${this.userName}</span
-                >
-                <simple-icon-lite
-                  class="characterbtn-menu-icon ${this.userMenuOpen
-                    ? ""
-                    : "rotated"}"
-                  icon="icons:expand-more"
-                  aria-hidden="true"
-                ></simple-icon-lite>
                 </button>
-                <a
-                  slot="main-menu"
-                  title="${this.t.listMySites}"
-                  href="home"
-                  tabindex="-1"
+                <simple-tooltip
+                  for="tbchar"
+                  slot="menuButton"
+                  position="bottom"
                 >
-                  <app-hax-user-menu-button
-                    icon="hax:hax2022"
-                    label="${this.t.listMySites}"
-                    part="listMySites"
-                  ></app-hax-user-menu-button>
-                </a>
+                  ${this.userName}
+                </simple-tooltip>
+                <div slot="pre-menu" class="ops-panel">
+                  <wired-button
+                    elevation="1"
+                    class="soundToggle"
+                    @click="${soundToggle}"
+                    aria-label="Toggle sound effects ${this.soundIcon &&
+                    this.soundIcon.indexOf("Full") !== -1
+                      ? "off"
+                      : "on"}"
+                    aria-pressed="${this.soundIcon &&
+                    this.soundIcon.indexOf("Full") !== -1
+                      ? "true"
+                      : "false"}"
+                  >
+                    <simple-icon-lite
+                      src="${this.soundIcon}"
+                      loading="lazy"
+                      decoding="async"
+                      aria-hidden="true"
+                    ></simple-icon-lite>
+                  </wired-button>
+                  <app-hax-wired-toggle id="wt"></app-hax-wired-toggle>
+                </div>
                 <app-hax-user-menu-button
                   slot="post-menu"
                   class="logout"
-                  label="Logout"
+                  label="${this.t.logOut}"
                   @click=${this.logout}
                 ></app-hax-user-menu-button>
             </app-hax-user-menu>

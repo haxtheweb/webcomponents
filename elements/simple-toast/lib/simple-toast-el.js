@@ -21,80 +21,82 @@ class SimpleToastEl extends DDD {
           border: var(--simple-toast-border, none);
           font-size: var(--simple-toast-font-size, 1em);
           font-family: var(--simple-toast-font-family, sans-serif);
+          transform: translateY(0);
+          will-change: transform, opacity;
         }
         :host(.show) {
           display: flex;
         }
         @-webkit-keyframes fadein {
           from {
-            display: flex;
-            bottom: var(--simple-toast-bottom-offscreen, 0px);
             opacity: 0;
+            transform: translateY(
+              var(--simple-toast-slide-offset-y, var(--ddd-spacing-5, 20px))
+            );
           }
           to {
-            display: flex;
-            bottom: var(--simple-toast-bottom, 40px);
             opacity: 1;
+            transform: translateY(0);
           }
         }
         @keyframes fadein {
           from {
-            display: flex;
-            bottom: var(--simple-toast-bottom-offscreen, 0px);
             opacity: 0;
+            transform: translateY(
+              var(--simple-toast-slide-offset-y, var(--ddd-spacing-5, 20px))
+            );
           }
           to {
-            display: flex;
-            bottom: var(--simple-toast-bottom, 40px);
             opacity: 1;
+            transform: translateY(0);
           }
         }
         @-webkit-keyframes fadeout {
           from {
-            display: flex;
-            bottom: var(--simple-toast-bottom, 40px);
             opacity: 1;
+            transform: translateY(0);
           }
           to {
-            display: flex;
-            bottom: var(--simple-toast-bottom-offscreen, 0px);
             opacity: 0;
+            transform: translateY(
+              var(--simple-toast-slide-offset-y, var(--ddd-spacing-5, 20px))
+            );
           }
         }
         @keyframes fadeout {
           from {
-            display: flex;
-            bottom: var(--simple-toast-bottom, 40px);
             opacity: 1;
+            transform: translateY(0);
           }
           to {
-            display: flex;
-            bottom: var(--simple-toast-bottom-offscreen, 0px);
             opacity: 0;
+            transform: translateY(
+              var(--simple-toast-slide-offset-y, var(--ddd-spacing-5, 20px))
+            );
           }
         }
         @-webkit-keyframes forcedfadeout {
           from {
-            display: flex;
-            bottom: var(--simple-toast-bottom, 40px);
             opacity: 1;
+            transform: translateY(0);
           }
           to {
-            display: flex;
-            bottom: var(--simple-toast-bottom-offscreen, 0px);
             opacity: 0;
+            transform: translateY(
+              var(--simple-toast-slide-offset-y, var(--ddd-spacing-5, 20px))
+            );
           }
         }
         @keyframes forcedfadeout {
           from {
-            display: flex;
-            bottom: var(--simple-toast-bottom, 40px);
             opacity: 1;
+            transform: translateY(0);
           }
           to {
-            display: flex;
-            bottom: var(--simple-toast-bottom-offscreen, 0px);
             opacity: 0;
+            transform: translateY(
+              var(--simple-toast-slide-offset-y, var(--ddd-spacing-5, 20px))
+            );
           }
         }
       `,
@@ -116,10 +118,26 @@ class SimpleToastEl extends DDD {
       this.hide();
     }
   }
+  _prefersReducedMotion() {
+    return (
+      globalThis.matchMedia &&
+      globalThis.matchMedia("(prefers-reduced-motion: reduce)").matches
+    );
+  }
+  _getAnimation(duration = this.duration) {
+    if (this._prefersReducedMotion()) {
+      return "none";
+    }
+    if (!this.alwaysvisible && !this.awaitingMerlinInput) {
+      return "fadein 0.3s, fadeout 0.6s " + duration / 1000 + "s";
+    }
+    return "fadein 0.3s";
+  }
   constructor() {
     super();
     this.text = "";
     this.alwaysvisible = false;
+    this.awaitingMerlinInput = false;
     this.duration = 3000;
     this.opened = false;
     this.addEventListener("animationend", this._onAnimationEnd);
@@ -142,22 +160,12 @@ class SimpleToastEl extends DDD {
         } else {
           this.style.animation = "none";
           setTimeout(() => {
-            if (!this.alwaysvisible && !this.awaitingMerlinInput) {
-              this.style.animation =
-                "fadein 0.3s, fadeout 0.6s " + this.duration / 1000 + "s";
-            } else {
-              this.style.animation = "fadein 0.3s";
-            }
+            this.style.animation = this._getAnimation();
           }, 600);
         }
       }
       if (propName === "duration" && this[propName]) {
-        if (!this.alwaysvisible && !this.awaitingMerlinInput) {
-          this.style.animation =
-            "fadein 0.3s, fadeout 0.6s " + this[propName] / 1000 + "s";
-        } else {
-          this.style.animation = "fadein 0.3s";
-        }
+        this.style.animation = this._getAnimation(this[propName]);
       }
     });
   }
@@ -168,11 +176,11 @@ class SimpleToastEl extends DDD {
 
   // To read out loud the toast
   firstUpdated(changedProperties) {
-    super.updated(changedProperties);
-    this.style.setProperty("aria-live", "assertive");
-    this.style.setProperty("role", "alert");
-    this.style.setProperty("aria-atomic", "true");
-    this.style.setProperty("aria-relevant", "all");
+    super.firstUpdated(changedProperties);
+    this.setAttribute("aria-live", "polite");
+    this.setAttribute("role", "status");
+    this.setAttribute("aria-atomic", "true");
+    this.setAttribute("aria-relevant", "additions text");
   }
   hide() {
     this.classList.remove("show");

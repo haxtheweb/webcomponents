@@ -72,6 +72,11 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
           color: black;
           background-color: var(--ddd-theme-default-discoveryCoral);
         }
+        @media (max-width: 600px) {
+          #outlineactionsbtn {
+            display: none;
+          }
+        }
       `,
     ];
   }
@@ -91,7 +96,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
     this.editMode = false;
     this.t = {
       ...super.t,
-      outlineActions: "Outline actions",
+      outlineActions: "Outline Actions",
       editPage: "Edit page",
       addPage: "Add child page",
       moveUp: "Move up",
@@ -142,6 +147,7 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
     return html`
       <simple-icon-button-lite
         class="ops"
+        id="outlineactionsbtn"
         icon="icons:create"
         label="${this.t.outlineActions}"
         title="${this.t.outlineActions}"

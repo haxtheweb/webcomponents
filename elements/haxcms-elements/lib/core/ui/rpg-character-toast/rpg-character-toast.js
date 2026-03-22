@@ -33,6 +33,8 @@ export class RPGCharacterToast extends SimpleToastEl {
     this.hat = "coffee";
     this.speed = 500;
     this.walking = false;
+    this.characterHeight = 180;
+    this.characterWidth = 64;
   }
 
   static get styles() {
@@ -210,6 +212,14 @@ export class RPGCharacterToast extends SimpleToastEl {
       hat: { type: String },
       walking: { type: Boolean },
       speed: { type: Number },
+      characterHeight: {
+        type: Number,
+        attribute: "character-height",
+      },
+      characterWidth: {
+        type: Number,
+        attribute: "character-width",
+      },
       /**
        * Opened state of the toast, use event to change
        */
@@ -286,8 +296,8 @@ export class RPGCharacterToast extends SimpleToastEl {
             ></simple-icon>`
           : html`
               <rpg-character
-                height="180"
-                width="64"
+                height="${this.characterHeight}"
+                width="${this.characterWidth}"
                 seed="${this.userName}"
                 ?fire="${this.fire}"
                 hat="${this.hat}"
