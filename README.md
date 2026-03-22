@@ -87,7 +87,7 @@ Enabling **Developer Mode** removes this *Administrator* requirement for common 
 
 ### Quick Install for Windows
 ```powershell
-Invoke-WebRequest -Uri "https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scripts/haxthewebme.ps1" -OutFile "haxthewebme.ps1" && .\haxtheme.ps1
+irm https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scripts/haxthewebme.ps1 | iex
 ```
 
 ## To work on any element in our repo
