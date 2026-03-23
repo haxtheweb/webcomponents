@@ -1,7 +1,7 @@
-import { html, css } from "lit";
-import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import { css, html } from "lit";
 
 export class BlockQuote extends DDD {
   static get properties() {
@@ -63,11 +63,16 @@ export class BlockQuote extends DDD {
       super.styles,
       css`
         :host {
-          background-color: var(
-            --ddd-component-block-quote-background,
-            var(--ddd-theme-default-limestoneMaxLight, #f5f5f5)
+          background-color: light-dark(
+            var(
+              --ddd-component-block-quote-background,
+              var(--ddd-theme-default-limestoneMaxLight, inherit)
+            ),
+            var(
+              --ddd-component-block-quote-background,
+              var(--ddd-theme-default-coalyGray, inherit)
+            )
           );
-          color: var(--ddd-theme-default-potentialMidnight);
           display: flex;
           align-items: start;
           width: 100%;
@@ -120,7 +125,7 @@ export class BlockQuote extends DDD {
           align-self: flex-start;
           color: var(
             --ddd-component-block-quote-icon,
-            var(--ddd-theme-accent, var(--ddd-theme-default-potential50))
+            var(--ddd-theme-accent, inherit)
           );
           height: var(--ddd-icon-xs);
           width: var(--ddd-icon-xs);

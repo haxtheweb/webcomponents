@@ -210,10 +210,10 @@ class DDDocs extends DDD {
       >
         ${Object.keys(ApplicationAttributeData.primary).map(
           (key) => html`
-            <simple-cta data-primary="${key}" data-pulse
+            <simple-cta data-primary="${key}" data-pulse="1"
               >Primary-${key}</simple-cta
             >
-            <simple-cta data-primary="${key}" data-pulse light
+            <simple-cta data-primary="${key}" data-pulse="1" light
               >Primary-${key}</simple-cta
             >
           `,
@@ -1950,6 +1950,7 @@ class DDDocs extends DDD {
       <h2 class="fs-s mt-0 mb-5 pb-5 bb-sm">
         Rich text formatting and other data displays
       </h2>
+      <h3 class="mx-10">Basic text types</h3>
       <div class="b-xs py-8 px-4 my-10 mx-30">
         <h1>h1 Heading</h1>
         <h2>h2 Heading</h2>
@@ -1980,14 +1981,15 @@ class DDDocs extends DDD {
           <li>Item 2</li>
           <li>Item 3</li>
         </ol>
+      </div>
+      <h3 class="mx-10">Other html text types</h3>
+      <div class="b-xs py-8 px-4 my-10 mx-30">
         <blockquote>
           The Pennsylvania State University is a multi-campus, land-grant,
           public research university that educates students from around the
           world and supports individuals and communities through integrated
           programs of teaching, research, and service.
         </blockquote>
-        <h2 class="hr-horz">Sample Text</h2>
-        <h2 class="hr-vert">Sample Text</h2>
         <ul class="breadcrumb">
           <li><a href="#">Home</a></li>
           <li><a href="#">Departments</a></li>
@@ -2007,9 +2009,15 @@ class DDDocs extends DDD {
           'block-code', redundant, but avoids common 'block' class name
         </code>
         <pre>
-    Here is an    example of a    block using the    'pre'    tag on it's    own</pre
+        Here is an    example of a    block using the         'pre'    tag on it's    own</pre
         >
-        <p>Here is a good example of some <mark>Highlighted Text</mark></p>
+        <p>
+          Here is a good example of some
+          <mark
+            >Here's a super long version of a Highlighted Text that extends
+            beyond the end of the border box</mark
+          >
+        </p>
         <p>
           Here is an example of an abbreviation:
           <abbr title="Pennsylvania State University">Penn State</abbr>
@@ -2022,7 +2030,44 @@ class DDDocs extends DDD {
           <li><a href="#">NEW: Polymer Engineering and Science Degree</a></li>
           <li><a href="#">NEW: Digital Media Arts and Technology</a></li>
         </ul>
+        <p>Here's an example of a sub: H<sub>2</sub>O</p>
+        <p>And a sup: x<sup>3</sup> = 9</p>
+        <p>My favorite color is <del>blue</del> <ins>red</ins>!</p>
+        <p><s>My car is blue.</s></p>
       </div>
+      <h3 class="mx-10">Text design-treatment</h3>
+      <div class="b-xs py-8 px-4 my-10 mx-30">
+      <h2>There's 2 ways to get underlined styling</h2>
+      <h3>HR elements</h3>
+      <div class="pl-5">
+        <hr />
+        <p>Default horizontal line using hr element </p>
+        <br />
+        <hr data-primary="1" />
+        <p>hr elements also accept data-primary values, and are are designed to play-nice when placed inside a heading element</p>
+        <h2 style="width: fit-content">Heading with internal hr element<hr /></h2>
+        <code class="block-code">&lt;h2 style="width: fit-content"&gt;Heading with internal hr element&lt;hr /&gt;&lt;/h2&gt;</code>
+        <p>When combined with width: fit-content on the header itself, can limit the underlining to exactly the text</p>
+      </div>
+        <h3>Or, if you want variable length, use design-treatment:</h3>
+        <h4>(with p meaning %)</h4>
+        <div class="pl-5">
+          <h5 class="label" data-design-treatment="vert" data-primary="15">Vertical Line - <i>data-design-treament="vert"</i></h5>
+          <h5 class="label" data-design-treatment="horz-10p" data-primary="15">Vertical Line - <i>data-design-treament="horz-10p"</i></h5>
+          <h5 class="label" data-design-treatment="horz-25p" data-primary="15">Vertical Line - <i>data-design-treament="horz-25p"</i></h5>
+          <h5 class="label" data-design-treatment="horz-50p" data-primary="15">Vertical Line - <i>data-design-treament="horz-50p"</i></h5>
+          <h5 class="label" data-design-treatment="horz-full" data-primary="15">Vertical Line - <i>data-design-treament="horz-full"</i></h5>
+          <h5 class="label" data-design-treatment="horz-md" data-primary="15">Vertical Line - <i>data-design-treament="horz-md"</i></h5>
+          <h5 class="label" data-design-treatment="horz-lg" data-primary="15">Vertical Line - <i>data-design-treament="horz-lg"</i></h5>
+          <br />
+          <h3>Other design treatments:</h3>
+          <p data-design-treatment="bg" data-primary="1">Background color <i>data-design-treatment="bg"</i></p>
+          <h5 data-design-treatment="dropCap-sm">Drop Cap - Small <i>data-design-treatment="dropCap-sm"</i></h5>
+          <h3 data-design-treatment="dropCap-md">Drop Cap - Medium <i>data-design-treatment="dropCap-md"</i></h3>
+          <h1 data-design-treatment="dropCap-lg">Drop Cap - Large <i>data-design-treatment="dropCap-lg"</i></h1>
+        </div>
+      </div>
+    </div>
     `;
   }
 
