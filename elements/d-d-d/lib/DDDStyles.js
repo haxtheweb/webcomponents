@@ -2,6 +2,140 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import { css, html, unsafeCSS } from "lit";
+const DDDStyleGuidePresets = {
+  "style-1": {
+    name: "Box Style 1",
+    allowedTags: ["p"],
+    properties: {
+      "data-design-treatment": "dropCap-sm",
+      "data-accent": "2",
+      "data-border-radius": "md",
+    },
+  },
+  "example-1": {
+    name: "Example 1",
+    allowedTags: ["h1", "h2", "h3", "h4", "h5", "h6"],
+    properties: {
+      "data-design-treatment": "vert",
+      "data-primary": "8",
+      "data-padding": "xs",
+      "data-border-radius": "xs",
+    },
+  },
+};
+
+function getFormElementBySuffix(form, suffix) {
+  const keys = Object.keys(form.formElements || {});
+  const key = keys.find((fieldKey) => fieldKey.endsWith(`.${suffix}`));
+  return key ? form.formElements[key] : null;
+}
+
+
+function getDDDStyleGuideOptionsForTag(tag) {
+  return Object.keys(DDDStyleGuidePresets)
+    .filter((presetKey) => {
+      const preset = DDDStyleGuidePresets[presetKey];
+      return (
+        preset &&
+        Array.isArray(preset.allowedTags) &&
+        preset.allowedTags.includes(tag)
+      );
+    })
+    .map((presetKey) => {
+      const preset = DDDStyleGuidePresets[presetKey];
+      return {
+        value: presetKey,
+        text: preset.name,
+      };
+    });
+}
+function dddStyleGuideValueChanged(e, detail = {}) {
+  if (!detail.form || !detail.form.formElements) {
+    return;
+  }
+  const form = detail.form;
+  const selectedPreset = e && e.detail ? e.detail.value : undefined;
+  const preset =
+    DDDStyleGuidePresets[selectedPreset] &&
+    DDDStyleGuidePresets[selectedPreset].properties
+      ? DDDStyleGuidePresets[selectedPreset].properties
+      : null;
+  const dddFieldKeys = Object.keys(form.formElements).filter(
+    (fieldKey) => fieldKey.indexOf("settings.configure.ddd-styles.") === 0,
+  );
+  dddFieldKeys.forEach((fieldKey) => {
+    const fieldRef = form.formElements[fieldKey];
+    const isStyleGuideField =
+      fieldKey.indexOf(".ddd-styleguide") !== -1 ||
+      fieldKey.indexOf(".data-style-guide") !== -1;
+    if (!isStyleGuideField && fieldRef) {
+      if (
+        fieldRef.field &&
+        typeof fieldRef.field.disabled !== typeof undefined
+      ) {
+        if (preset) {
+          if (
+            typeof fieldRef.field.__dddStyleGuidePrevDisabled ===
+            typeof undefined
+          ) {
+            fieldRef.field.__dddStyleGuidePrevDisabled = !!fieldRef.field
+              .disabled;
+          }
+          fieldRef.field.disabled = true;
+        } else if (
+          typeof fieldRef.field.__dddStyleGuidePrevDisabled !==
+          typeof undefined
+        ) {
+          fieldRef.field.disabled = fieldRef.field.__dddStyleGuidePrevDisabled;
+          delete fieldRef.field.__dddStyleGuidePrevDisabled;
+        }
+      }
+      if (
+        fieldRef.element &&
+        typeof fieldRef.element.disabled !== typeof undefined
+      ) {
+        if (preset) {
+          if (
+            typeof fieldRef.element.__dddStyleGuidePrevDisabled ===
+            typeof undefined
+          ) {
+            fieldRef.element.__dddStyleGuidePrevDisabled = !!fieldRef.element
+              .disabled;
+          }
+          fieldRef.element.disabled = true;
+        } else if (
+          typeof fieldRef.element.__dddStyleGuidePrevDisabled !==
+          typeof undefined
+        ) {
+          fieldRef.element.disabled =
+            fieldRef.element.__dddStyleGuidePrevDisabled;
+          delete fieldRef.element.__dddStyleGuidePrevDisabled;
+        }
+      }
+    }
+  });
+  const presetAttributes = {};
+  Object.keys(DDDStyleGuidePresets).forEach((presetKey) => {
+    const presetConfig = DDDStyleGuidePresets[presetKey];
+    if (presetConfig && presetConfig.properties) {
+      Object.keys(presetConfig.properties).forEach((attribute) => {
+        presetAttributes[attribute] = true;
+      });
+    }
+  });
+  Object.keys(presetAttributes).forEach((attribute) => {
+    const value =
+      preset && typeof preset[attribute] !== typeof undefined
+        ? preset[attribute]
+        : undefined;
+    const targetField = getFormElementBySuffix(form, attribute);
+    if (targetField && targetField.element) {
+      targetField.element.value = value;
+    } else if (typeof form._setValue === "function") {
+      form._setValue(`settings.configure.${attribute}`, value);
+    }
+  });
+}
 
 /**
  * @note Gut all design settings in HAX core. this allows for design systems to hook in
@@ -25,6 +159,7 @@ if (globalThis && globalThis.addEventListener) {
         HAXStore.designSystemHAXProperties = (props, tag) => {
           // setup the props of the design system to populate based on matches below
           let spacingProps = [];
+          let styleGuideProps = [];
           let designTreatmentProps = [];
           let fontProps = [];
           let cardProps = [];
@@ -55,6 +190,17 @@ if (globalThis && globalThis.addEventListener) {
             !inline &&
             props.designSystem !== false
           ) {
+            const styleGuideOptions = getDDDStyleGuideOptionsForTag(tag);
+            if (styleGuideOptions.length > 0) {
+              styleGuideProps.push({
+                attribute: "data-style-guide",
+                title: "Style guide",
+                description: "Preset style combinations from the style guide",
+                inputMethod: "radio",
+                onValueChanged: dddStyleGuideValueChanged,
+                itemsList: styleGuideOptions,
+              });
+            }
             if (["media-image", "img"].includes(tag)) {
               spacingProps.push({
                 attribute: "data-float-position",
@@ -251,6 +397,15 @@ if (globalThis && globalThis.addEventListener) {
             inputMethod: "collapse",
             property: "ddd-styles",
             properties: [
+              {
+                title: "Style Guide",
+                collapsed: true,
+                accordion: true,
+                property: "ddd-styleguide",
+                disabled: styleGuideProps.length === 0,
+                properties: styleGuideProps,
+                hidden: styleGuideProps.length === 0,
+              },
               {
                 title: "Design treatment",
                 collapsed: true,

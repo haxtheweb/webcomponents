@@ -1241,6 +1241,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               break;
             case "Enter":
               this._useristyping = true;
+              let handledEnter = false;
               if (this.activeNode) {
                 this.__slot = this.activeNode.getAttribute("slot");
               }
@@ -1250,6 +1251,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 e.preventDefault();
                 e.stopPropagation();
                 e.stopImmediatePropagation();
+                handledEnter = true;
                 // Check if there's already a DD following this DT
                 let nextSibling = this.activeNode.nextElementSibling;
                 if (nextSibling && nextSibling.tagName === "DD") {
@@ -1273,6 +1275,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 e.preventDefault();
                 e.stopPropagation();
                 e.stopImmediatePropagation();
+                handledEnter = true;
                 // Create a new DT + DD pair after the current DD
                 let dt = globalThis.document.createElement("dt");
                 let dd = globalThis.document.createElement("dd");
@@ -1297,14 +1300,27 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 this.activeNode &&
                 this.activeNode.tagName === "P" &&
                 ["1", "#", "`", ">", "-"].includes(
-                  this.activeNode.textContent[0],
+                  this._normalizeKeyboardShortcutGuess(this.activeNode)[0],
                 )
               ) {
                 // ensure the "whitespace character" has been replaced w/ a normal space
-                const guess = this.activeNode.textContent.replaceAll(/ /g, " ");
+                const guess = this._normalizeKeyboardShortcutGuess(
+                  this.activeNode,
+                );
                 // ensures that the user has done a matching action and a " " spacebar to ensure they
                 // are ready to commit the action
                 this.keyboardShortCutProcess(guess);
+              }
+              // keyboard-based insertion of a new paragraph should not
+              // rely on browser placeholder BR behavior
+              if (
+                !handledEnter &&
+                this.__isKeyboardParagraphInsertTarget(this.activeNode)
+              ) {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                this.haxInsert("p", "", {}, this.activeNode);
               }
               break;
             // extra trap set for this in case we care that we are in the act of deleting
@@ -1455,13 +1471,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   this.activeNode &&
                   this.activeNode.tagName === "P" &&
                   ["1", "#", "`", ">", "-"].includes(
-                    this.activeNode.textContent[0],
+                    this._normalizeKeyboardShortcutGuess(this.activeNode)[0],
                   )
                 ) {
                   // ensure the "whitespace character" has been replaced w/ a normal space
-                  const guess = this.activeNode.textContent.replaceAll(
-                    / /g,
-                    " ",
+                  const guess = this._normalizeKeyboardShortcutGuess(
+                    this.activeNode,
                   );
                   // ensures that the user has done a matching action and a " " spacebar to ensure they
                   // are ready to commit the action
@@ -1475,6 +1490,118 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
       }
     }
+  }
+  /**
+   * Normalize keyboard shortcut text so empty-line BR/ZWSP artifacts
+   * do not block markdown-style shortcut detection.
+   */
+  _normalizeKeyboardShortcutGuess(node = this.activeNode) {
+    if (!node || typeof node.textContent === typeof undefined) {
+      return "";
+    }
+    let guess = node.textContent
+      .replaceAll(/\u200b/g, "")
+      .replaceAll(/ /g, " ")
+      .replaceAll(/\n/g, "")
+      .replaceAll(/\r/g, "");
+    if (guess[0] === " ") {
+      guess = guess.trimStart();
+    }
+    return guess;
+  }
+  /**
+   * Test if a text block is effectively empty in a way that should
+   * allow :empty styles and markdown shortcuts to work.
+   */
+  __isEffectivelyEmptyTextBlock(node) {
+    if (!node || !node.tagName) {
+      return false;
+    }
+    if (!HAXStore.__validGridTags().includes(node.tagName.toLowerCase())) {
+      return false;
+    }
+    let meaningfulText = "";
+    if (typeof node.textContent !== typeof undefined && node.textContent != null) {
+      meaningfulText = node.textContent
+        .replaceAll(/\u200b/g, "")
+        .replaceAll(/ /g, " ")
+        .replaceAll(/\n/g, "")
+        .replaceAll(/\r/g, "")
+        .trim();
+    }
+    if (meaningfulText !== "") {
+      return false;
+    }
+    for (let i = 0; i < node.childNodes.length; i++) {
+      const child = node.childNodes[i];
+      if (
+        child.nodeType === globalThis.Node.ELEMENT_NODE &&
+        child.tagName !== "BR"
+      ) {
+        return false;
+      }
+    }
+    return true;
+  }
+  /**
+   * Remove direct BR children from a block.
+   */
+  __removeDirectBreakChildren(node) {
+    if (!node || !node.childNodes) {
+      return;
+    }
+    for (let i = node.childNodes.length - 1; i >= 0; i--) {
+      const child = node.childNodes[i];
+      if (
+        child.nodeType === globalThis.Node.ELEMENT_NODE &&
+        child.tagName === "BR"
+      ) {
+        child.remove();
+      }
+    }
+  }
+  /**
+   * Text blocks where Enter should result in a fresh paragraph insert
+   * handled by HAX instead of browser placeholder BR behavior.
+   */
+  __isKeyboardParagraphInsertTarget(node) {
+    if (!node || !node.tagName) {
+      return false;
+    }
+    return [
+      "P",
+      "H1",
+      "H2",
+      "H3",
+      "H4",
+      "H5",
+      "H6",
+      "BLOCKQUOTE",
+      "PRE",
+      "SECTION",
+      "FIGURE",
+      "CODE",
+    ].includes(node.tagName);
+  }
+  /**
+   * Normalize newly inserted text primitives so BR-only placeholders
+   * are removed immediately.
+   */
+  __normalizeInsertedTextPrimitive(node) {
+    if (!node || !node.tagName) {
+      return false;
+    }
+    if (!HAXStore.__validGridTags().includes(node.tagName.toLowerCase())) {
+      return false;
+    }
+    if (!this.__isEffectivelyEmptyTextBlock(node)) {
+      return false;
+    }
+    this.__removeDirectBreakChildren(node);
+    if (this.__isEffectivelyEmptyTextBlock(node)) {
+      node.textContent = "";
+    }
+    return true;
   }
   /**
    * Process input to see if it matches any defined keyboard shortcuts
@@ -1887,35 +2014,40 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     // drag-and-drop state applied, even while the MutationObserver
     // is ignoring mutations flagged as "inserting".
     this.__applyNodeEditableStateWhenReady(newNode, this.editMode);
-    
-    // Wait for custom element to upgrade if applicable, then focus/scroll
-    const tagName = newNode.tagName.toLowerCase();
-    if (tagName.includes('-')) {
-      // Custom element - wait for it to be defined and upgraded
-      customElements.whenDefined(tagName).then(() => {
-        // Additional frame to ensure render completes
-        requestAnimationFrame(() => {
-          this.__focusLogic(newNode);
-          this.scrollHere(newNode);
-          this._contentState.setState('inserting', false);
-        });
-      }).catch(() => {
-        // Element not registered, proceed anyway
-        requestAnimationFrame(() => {
-          this.__focusLogic(newNode);
-          this.scrollHere(newNode);
-          this._contentState.setState('inserting', false);
-        });
-      });
-    } else {
-      // Standard HTML element - use RAF as before
+
+    const finalizeInsert = () => {
       requestAnimationFrame(() => {
         this.__focusLogic(newNode);
         this.scrollHere(newNode);
-        this._contentState.setState('inserting', false);
+        this._contentState.setState("inserting", false);
       });
+    };
+
+    // Wait for custom element to upgrade if applicable, but do not allow
+    // inserting state to stall forever if a definition never resolves.
+    const tagName = newNode.tagName.toLowerCase();
+    if (tagName.includes("-")) {
+      let finalized = false;
+      const done = () => {
+        if (!finalized) {
+          finalized = true;
+          finalizeInsert();
+        }
+      };
+      try {
+        customElements.whenDefined(tagName).then(() => {
+          done();
+        });
+      } catch (e) {
+        done();
+      }
+      setTimeout(() => {
+        done();
+      }, 500);
+    } else {
+      // Standard HTML element
+      finalizeInsert();
     }
-    
     return newNode;
   }
   /**
@@ -2408,6 +2540,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         replacement.setAttribute("slot", node.getAttribute("slot"));
       }
       node.replaceWith(replacement);
+      if (this.editMode) {
+        this.__applyNodeEditableStateWhenReady(replacement, this.editMode);
+      }
     } catch (e) {
       console.warn(e);
     }
@@ -3530,28 +3665,50 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             if (mutation.addedNodes.length > 0) {
               for (var node of mutation.addedNodes) {
                 if (this._validElementTest(node)) {
+                  // text primitives may be inserted as a whole node with a BR inside
+                  // (for example <p><br></p>). Normalize this immediately.
+                  if (this.__normalizeInsertedTextPrimitive(node)) {
+                    HAXStore.activeNode = node;
+                    this.__delHit = false;
+                    continue;
+                  }
                   // no empty HTML primative tags w/ just a BR in it for spacing purposes
                   if (
-                    !this.__delHit &&
                     node.tagName === "BR" &&
                     node.parentElement &&
                     HAXStore.__validGridTags().includes(
                       node.parentElement.tagName.toLowerCase(),
-                    ) &&
-                    node ===
-                      node.parentElement.childNodes[
-                        node.parentElement.childNodes.length - 1
-                      ]
+                    )
                   ) {
                     let p = node.parentElement;
-                    node.remove();
-                    // add space to end of text content if it exists
-                    if (p.childNodes.length > 0) {
-                      let txt = p.childNodes[p.childNodes.length - 1];
-                      txt.textContent += "\u200b";
-                      HAXStore._positionCursorInNode(txt, txt.length);
+                    const trailingBreak =
+                      node ===
+                      p.childNodes[p.childNodes.length - 1];
+                    const emptyBlock = this.__isEffectivelyEmptyTextBlock(p);
+                    if (emptyBlock || (!this.__delHit && trailingBreak)) {
+                      this.__delHit = false;
+                      // ensure we retain a stable active text block before
+                      // removing the placeholder BR
+                      HAXStore.activeNode = p;
+                      node.remove();
+                      this.__removeDirectBreakChildren(p);
+                      // Keep truly empty blocks empty so :empty CSS and markdown
+                      // shortcuts work consistently.
+                      if (this.__isEffectivelyEmptyTextBlock(p)) {
+                        p.textContent = "";
+                      } else if (p.childNodes.length > 0) {
+                        // add marker to end of text content when non-empty so caret stays sane
+                        let txt = p.childNodes[p.childNodes.length - 1];
+                        if (txt && txt.nodeType === globalThis.Node.TEXT_NODE) {
+                          txt.textContent += "\u200b";
+                          HAXStore._positionCursorInNode(
+                            txt,
+                            txt.textContent.length,
+                          );
+                        }
+                      }
+                      continue;
                     }
-                    continue;
                   }
                   this.__delHit = false;
                   // P should not be in a P; parent detects it
@@ -3765,18 +3922,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                     ) {
                       HAXStore.activeNode = node;
                     } else if (node.tagName === "BR") {
-                      const tmp = HAXStore.getSelection();
-                      HAXStore._tmpSelection = tmp;
-                      HAXStore.haxSelectedText = tmp.toString();
-                      const rng = HAXStore.getRange();
                       if (
-                        rng.collapsed &&
-                        this.activeNode.tagName === "BR" &&
-                        this.activeNode.parentNode ===
-                          rng.commonAncestorContainer &&
-                        this.activeNode.innerText === ""
+                        node.parentNode &&
+                        node.parentNode.tagName &&
+                        node.parentNode.tagName !== "HAX-BODY"
                       ) {
-                        HAXStore.activeNode = this.activeNode.parentNode;
+                        HAXStore.activeNode = node.parentNode;
                       }
                     } else {
                       HAXStore.activeNode = node;
