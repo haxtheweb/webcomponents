@@ -2,52 +2,16 @@ import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import { SimpleIconsetStore } from "@haxtheweb/simple-icon/lib/simple-iconset.js";
 import { css, html, unsafeCSS } from "lit";
-const DDDStyleGuidePresets = {
-  "style-1": {
-    name: "Box Style 1",
-    allowedTags: ["p"],
-    properties: {
-      "data-design-treatment": "dropCap-sm",
-      "data-accent": "2",
-      "data-border-radius": "md",
-    },
-  },
-  "example-1": {
-    name: "Example 1",
-    allowedTags: ["h1", "h2", "h3", "h4", "h5", "h6"],
-    properties: {
-      "data-design-treatment": "vert",
-      "data-primary": "8",
-      "data-padding": "xs",
-      "data-border-radius": "xs",
-    },
-  },
-};
+import {
+  getDDDStyleGuideOptionsForTag,
+  getDDDStyleGuidePresetByKey,
+  getDDDStyleGuidePresetManagedAttributes,
+} from "./DDDStyleGuidePresets.js";
 
 function getFormElementBySuffix(form, suffix) {
   const keys = Object.keys(form.formElements || {});
   const key = keys.find((fieldKey) => fieldKey.endsWith(`.${suffix}`));
   return key ? form.formElements[key] : null;
-}
-
-
-function getDDDStyleGuideOptionsForTag(tag) {
-  return Object.keys(DDDStyleGuidePresets)
-    .filter((presetKey) => {
-      const preset = DDDStyleGuidePresets[presetKey];
-      return (
-        preset &&
-        Array.isArray(preset.allowedTags) &&
-        preset.allowedTags.includes(tag)
-      );
-    })
-    .map((presetKey) => {
-      const preset = DDDStyleGuidePresets[presetKey];
-      return {
-        value: presetKey,
-        text: preset.name,
-      };
-    });
 }
 function dddStyleGuideValueChanged(e, detail = {}) {
   if (!detail.form || !detail.form.formElements) {
@@ -55,11 +19,9 @@ function dddStyleGuideValueChanged(e, detail = {}) {
   }
   const form = detail.form;
   const selectedPreset = e && e.detail ? e.detail.value : undefined;
+  const presetConfig = getDDDStyleGuidePresetByKey(selectedPreset);
   const preset =
-    DDDStyleGuidePresets[selectedPreset] &&
-    DDDStyleGuidePresets[selectedPreset].properties
-      ? DDDStyleGuidePresets[selectedPreset].properties
-      : null;
+    presetConfig && presetConfig.properties ? presetConfig.properties : null;
   const dddFieldKeys = Object.keys(form.formElements).filter(
     (fieldKey) => fieldKey.indexOf("settings.configure.ddd-styles.") === 0,
   );
@@ -114,16 +76,7 @@ function dddStyleGuideValueChanged(e, detail = {}) {
       }
     }
   });
-  const presetAttributes = {};
-  Object.keys(DDDStyleGuidePresets).forEach((presetKey) => {
-    const presetConfig = DDDStyleGuidePresets[presetKey];
-    if (presetConfig && presetConfig.properties) {
-      Object.keys(presetConfig.properties).forEach((attribute) => {
-        presetAttributes[attribute] = true;
-      });
-    }
-  });
-  Object.keys(presetAttributes).forEach((attribute) => {
+  getDDDStyleGuidePresetManagedAttributes().forEach((attribute) => {
     const value =
       preset && typeof preset[attribute] !== typeof undefined
         ? preset[attribute]
