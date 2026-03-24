@@ -6,12 +6,87 @@ import {
   getDDDStyleGuideOptionsForTag,
   getDDDStyleGuidePresetByKey,
   getDDDStyleGuidePresetManagedAttributes,
+  getDDDStyleGuideSchemaOverride,
 } from "./DDDStyleGuidePresets.js";
 
 function getFormElementBySuffix(form, suffix) {
   const keys = Object.keys(form.formElements || {});
   const key = keys.find((fieldKey) => fieldKey.endsWith(`.${suffix}`));
   return key ? form.formElements[key] : null;
+}
+
+function getStyleGuideDefaultDemoSchemaForTag(tag) {
+  const schemaOverride = getDDDStyleGuideSchemaOverride(tag);
+  if (schemaOverride && schemaOverride.demoSchema && schemaOverride.demoSchema[0]) {
+    return schemaOverride.demoSchema[0];
+  }
+  return null;
+}
+
+function applyStyleGuideDefaultsToProperties(tag, properties) {
+  if (!properties || !tag) {
+    return null;
+  }
+  const defaultDemoSchema = getStyleGuideDefaultDemoSchemaForTag(tag);
+  if (!defaultDemoSchema) {
+    return null;
+  }
+  const currentDemoSchema =
+    properties.demoSchema && properties.demoSchema[0] ? properties.demoSchema[0] : {};
+  const currentProperties = currentDemoSchema.properties
+    ? currentDemoSchema.properties
+    : {};
+  properties.demoSchema = [
+    {
+      tag: currentDemoSchema.tag || defaultDemoSchema.tag || tag,
+      content:
+        typeof currentDemoSchema.content === "string"
+          ? currentDemoSchema.content
+          : typeof defaultDemoSchema.content === "string"
+            ? defaultDemoSchema.content
+            : "",
+      properties: {
+        ...(defaultDemoSchema.properties || {}),
+        ...currentProperties,
+      },
+    },
+  ];
+  return defaultDemoSchema;
+}
+
+function applyStyleGuideDefaultsToStore(HAXStore, tag, properties) {
+  if (!HAXStore || !tag) {
+    return;
+  }
+  const defaultDemoSchema = applyStyleGuideDefaultsToProperties(tag, properties);
+  if (!defaultDemoSchema) {
+    return;
+  }
+  if (!HAXStore.styleGuideSchema) {
+    HAXStore.styleGuideSchema = {};
+  }
+  if (!HAXStore.styleGuideSchema[tag]) {
+    HAXStore.styleGuideSchema[tag] = {};
+  }
+  HAXStore.styleGuideSchema[tag].demoSchema = [
+    {
+      tag: defaultDemoSchema.tag || tag,
+      content:
+        typeof defaultDemoSchema.content === "string"
+          ? defaultDemoSchema.content
+          : "",
+      properties: {
+        ...(defaultDemoSchema.properties || {}),
+      },
+    },
+  ];
+  if (
+    HAXStore.elementList &&
+    HAXStore.elementList[tag] &&
+    HAXStore.elementList[tag] !== properties
+  ) {
+    applyStyleGuideDefaultsToProperties(tag, HAXStore.elementList[tag]);
+  }
 }
 function dddStyleGuideValueChanged(e, detail = {}) {
   if (!detail.form || !detail.form.formElements) {
@@ -109,6 +184,30 @@ if (globalThis && globalThis.addEventListener) {
     (e) => {
       if (globalThis.HaxStore) {
         const HAXStore = globalThis.HaxStore.requestAvailability();
+        if (!HAXStore.__dddStyleGuideDefaultSchemaReady) {
+          HAXStore.__dddStyleGuideDefaultSchemaReady = true;
+          globalThis.addEventListener("hax-register-properties", (event) => {
+            if (
+              event &&
+              event.detail &&
+              event.detail.tag &&
+              event.detail.properties
+            ) {
+              applyStyleGuideDefaultsToStore(
+                HAXStore,
+                event.detail.tag,
+                event.detail.properties,
+              );
+            }
+          });
+        }
+        Object.keys(HAXStore.elementList || {}).forEach((registeredTag) => {
+          applyStyleGuideDefaultsToStore(
+            HAXStore,
+            registeredTag,
+            HAXStore.elementList[registeredTag],
+          );
+        });
         HAXStore.designSystemHAXProperties = (props, tag) => {
           // setup the props of the design system to populate based on matches below
           let spacingProps = [];
