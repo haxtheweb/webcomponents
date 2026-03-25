@@ -59,7 +59,7 @@ source_shell(){
   elif [ "$CURRENT_SHELL" = "bash" ]; then
     source $HOME/.bashrc
   else
-    echo "Could not infer shell type. Please run 'source <your shell config> manually."
+    echo "Could not infer shell type. Please run 'source <your shell config>' manually."
     echo "Then re-run script"
     exit
   fi
