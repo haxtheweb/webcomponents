@@ -38,8 +38,19 @@ if (-not (Get-Command yarn -ErrorAction SilentlyContinue)) {
   npm install -g yarn
 }
 
-git clone https://github.com/haxtheweb/webcomponents.git
-Set-Location webcomponents
+if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+  if(-not (Test-Path -Path "webcomponents")) {
+    Write-Host "Install Git for Windows CLI from https://git-scm.com/install/windows"
+    Write-Host "Or clone" -NoNewline
+    Write-Host " haxtheweb/webcomponents " -ForegroundColor Blue -NoNewline
+    Write-Host "with GitHub Desktop and re-run script in the new directory"
+    exit
+  }
+} else {
+  git clone https://github.com/haxtheweb/webcomponents.git
+  Set-Location webcomponents
+}
+
 npm install -g @haxtheweb/create
 yarn global add web-component-analyzer
 yarn install
