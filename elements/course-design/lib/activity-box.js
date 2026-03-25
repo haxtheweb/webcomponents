@@ -1,8 +1,10 @@
-import { LitElement, html, css } from "lit";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
+import { css, html } from "lit";
 
-export class ActivityBox extends LitElement {
+export class ActivityBox extends DDD {
   static get styles() {
     return [
+      super.styles,
       css`
         :host {
           display: block;
@@ -18,11 +20,38 @@ export class ActivityBox extends LitElement {
           margin-bottom: var(--activity-box-container-margin-bottom, 20px);
           position: relative;
           min-height: 60px;
+          --simple-icon-color: white;
+          color: white;
+        }
+        :host([data-primary][data-accent]) .container {
+          background: var(--ddd-theme-primary);
+          background: -moz-linear-gradient(
+            -45deg,
+            var(--ddd-theme-primary) 50%,
+            var(--ddd-theme-accent) 99%
+          );
+          background: -webkit-linear-gradient(
+            -45deg,
+            var(--ddd-theme-primary) 50%,
+            var(--ddd-theme-accent) 99%
+          );
+          background: linear-gradient(
+            135deg,
+            var(--ddd-theme-primary) 50%,
+            var(--ddd-theme-accent) 99%
+          );
+          color: var(
+            --ddd-theme-bgContrast,
+            var(--lowContrast-override, inherit)
+          );
+          --simple-icon-color: var(
+            --ddd-theme-bgContrast,
+            var(--lowContrast-override, inherit)
+          );
         }
         simple-icon {
           --simple-icon-height: 80px;
           --simple-icon-width: 80px;
-          --simple-icon-color: white;
           float: left;
           position: absolute;
           top: 0px;
@@ -52,16 +81,15 @@ export class ActivityBox extends LitElement {
         }
         .pullout {
           padding-left: 48px;
-          color: white;
           margin-top: 0;
           font-family: var(--activity-box-content-font-family, inherit);
           font-weight: 400;
           margin-bottom: 10px;
-          font-size: 126%;
           line-height: 28px;
           padding: var(--activity-box-content-padding, 0px 0px 0px 85px);
           margin-bottom: 13px !important;
           max-width: 100%;
+          font-size: 24px;
         }
         :host([icon="null"]) .pullout,
         :host([icon="null"]) .tag,
@@ -101,6 +129,7 @@ export class ActivityBox extends LitElement {
   static get haxProperties() {
     return new URL("./activity-box.haxProperties.json", import.meta.url).href;
   }
+
   static get properties() {
     return {
       /* The icon to use for the activity box */

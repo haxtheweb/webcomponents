@@ -768,9 +768,18 @@ class SimpleFieldsLite extends LitElement {
               data.valueSlot,
             );
           //watch field for changes
-          element.addEventListener(data.valueChangedProperty, (e) =>
-            this._handleChange(element, data.valueProperty, e),
-          );
+          element.addEventListener(data.valueChangedProperty, (e) => {
+            this._handleChange(element, data.valueProperty, e);
+            if (typeof onValueChanged === "function") {
+              onValueChanged(e, {
+                id: id,
+                element: element,
+                field: wrapper,
+                schemaProperty: schemaProp,
+                form: this,
+              });
+            }
+          });
           //update wrapper on error
           wrapper.addEventListener(data.errorChangedProperty, (e) => {
             let error = this._deepClone(this.error || {});

@@ -869,7 +869,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       }
 
       this.audio = new Audio(soundPath);
-      this.audio.volume = 0.2;
+      this.audio.volume = 0.1;
       this.audio.onended = (event) => {
         resolve();
       };

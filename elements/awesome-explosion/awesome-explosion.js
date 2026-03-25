@@ -463,7 +463,7 @@ class AwesomeExplosion extends DDDSuper(LitElement) {
     if (typeof globalThis.audio === typeof undefined) {
       globalThis.audio = new Audio(this.sound);
       // Set volume to a reasonable level
-      globalThis.audio.volume = 0.2;
+      globalThis.audio.volume = 0.1;
     }
 
     // Catch and handle audio play errors gracefully
