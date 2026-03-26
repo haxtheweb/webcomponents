@@ -2016,17 +2016,8 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
           return false;
         }
 
-        // For inline pastes, continue with original logic
-        let values = {
-          source: pasteContent,
-          title: pasteContent,
-        };
-        // if we DID get a match, block default values
-        if (!this.insertLogicFromValues(values, this, false, true)) {
-          // prevents the text being inserted previously so that the insertLogic does it
-          // for us. false only is returned if we didn't do anthing in this function
-          return false;
-        }
+        // For inline URL pastes, defer to the unified inlinePaste insertion logic below.
+        // This prevents duplicate insertion from insertLogicFromValues + inline insertion.
       } else if (haxElements.length === 0) {
         inlinePaste = true;
         // wrap in a paragraph tag if there is any this ensures it correctly imports

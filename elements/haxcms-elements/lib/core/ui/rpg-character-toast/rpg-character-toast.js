@@ -2,6 +2,8 @@ import { css, html, unsafeCSS } from "lit";
 import { SimpleToastEl } from "@haxtheweb/simple-toast/lib/simple-toast-el.js";
 import "@haxtheweb/rpg-character/rpg-character.js";
 import "@haxtheweb/future-terminal-text/future-terminal-text.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 
 const SpeechBubbleL = new URL("./images/SpeechBubbleL.svg", import.meta.url)
   .href;
@@ -147,15 +149,26 @@ export class RPGCharacterToast extends SimpleToastEl {
           font-size: 16px;
           height: 16px;
         }
+        .dismiss-wrap {
+          display: inline-flex;
+          align-items: center;
+          justify-content: flex-start;
+          margin-bottom: 4px;
+        }
         .dismiss {
-          padding: 4px;
-          font-weight: bold;
-          background-color: black;
+          --simple-icon-height: 16px;
+          --simple-icon-width: 16px;
+          --simple-icon-button-padding: 4px;
+          --simple-icon-button-border: 2px solid black;
+          --simple-icon-button-border-radius: 0;
+          --simple-icon-color: currentColor;
           color: white;
-          border: 4px solid black;
-          border-radius: none;
-          margin-left: 4px;
+          background-color: black;
           cursor: pointer;
+        }
+        .dismiss::part(button) {
+          border-color: currentColor;
+          background-color: black;
         }
         .leftedge {
           background-image: var(
@@ -174,7 +187,7 @@ export class RPGCharacterToast extends SimpleToastEl {
         .progress {
           border: 2px solid var(--ddd-theme-default-keystoneYellow);
           height: 4px;
-          margin: -6px 0px 0px 0px;
+          margin: 0px 0px 6px 0px;
         }
 
         .progress .progress__bar {
@@ -268,7 +281,28 @@ export class RPGCharacterToast extends SimpleToastEl {
 
   render() {
     return html`
+      <div class="progress">
+        <div
+          class="progress__bar"
+          style="animation-duration:${this.duration}ms;"
+        ></div>
+      </div>
       <div class="bubble bubble-wrapper" part="bubble-wrapper">
+        ${!this.merlin
+          ? html`<div class="dismiss-wrap">
+              <simple-icon-button-lite
+                class="dismiss"
+                icon="close"
+                id="toast-dismiss-button"
+                label="${this.closeText}"
+                title="${this.closeText}"
+                @click="${this.hide}"
+              ></simple-icon-button-lite>
+              <simple-tooltip for="toast-dismiss-button" position="bottom"
+                >${this.closeText}</simple-tooltip
+              >
+            </div>`
+          : ``}
         <span class="bubble leftedge" part="bubble-left"></span>
         <span class="bubble mid" part="bubble-mid">
           <slot name="pre"></slot>
@@ -307,19 +341,8 @@ export class RPGCharacterToast extends SimpleToastEl {
               ></rpg-character>
             `}
         ${!this.merlin
-          ? html`<div class="buttons">
-              <slot></slot
-              ><button class="dismiss" @click="${this.hide}">
-                ${this.closeText}
-              </button>
-            </div>`
+          ? html`<div class="buttons"><slot></slot></div>`
           : ``}
-      </div>
-      <div class="progress">
-        <div
-          class="progress__bar"
-          style="animation-duration:${this.duration}ms;"
-        ></div>
       </div>
     `;
   }
