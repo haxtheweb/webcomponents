@@ -1,0 +1,186 @@
+{
+  "schemaVersion": "1.0.0",
+  "readme": "",
+  "modules": [
+    {
+      "kind": "javascript-module",
+      "path": "ai-usage-license.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "`ai-usage-license`\n`A simple way of applying a semantically accurate AI usage license (AIUL) to work.`",
+          "name": "AiUsageLicense",
+          "cssProperties": [
+            {
+              "description": "Background color of the element",
+              "name": "--ai-usage-license-background-color"
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "license",
+              "type": {
+                "text": "string"
+              },
+              "description": "License code shorthand, e.g. \"NA\", \"WA\", \"CD\", \"TC\", \"DP\", \"IU\".",
+              "attribute": "license"
+            },
+            {
+              "kind": "field",
+              "name": "modifier",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional media modifier code, e.g. \"3D\", \"AU\", \"CO\", \"IM\", \"MX\", \"TR\", \"VD\", \"WR\".",
+              "attribute": "modifier"
+            },
+            {
+              "kind": "field",
+              "name": "licenseName",
+              "type": {
+                "text": "string"
+              },
+              "description": "Full license name, resolved from the AIUL API.",
+              "attribute": "license-name"
+            },
+            {
+              "kind": "field",
+              "name": "licenseImage",
+              "type": {
+                "text": "string"
+              },
+              "description": "License badge image URL, resolved from the AIUL API.",
+              "attribute": "license-image"
+            },
+            {
+              "kind": "field",
+              "name": "licenseLink",
+              "type": {
+                "text": "string"
+              },
+              "description": "License details link, resolved from the AIUL API.",
+              "attribute": "license-link"
+            },
+            {
+              "kind": "field",
+              "name": "licenseDescription",
+              "type": {
+                "text": "string"
+              },
+              "description": "License description text.",
+              "attribute": "license-description"
+            },
+            {
+              "kind": "field",
+              "name": "licenseTag",
+              "type": {
+                "text": "string"
+              },
+              "description": "The full AIUL tag code, e.g. \"AIUL-NA\" or \"AIUL-CD-IM\".",
+              "attribute": "license-tag"
+            }
+          ],
+          "attributes": [
+            {
+              "name": "license",
+              "type": {
+                "text": "string"
+              },
+              "description": "License code shorthand, e.g. \"NA\", \"WA\", \"CD\", \"TC\", \"DP\", \"IU\".",
+              "fieldName": "license"
+            },
+            {
+              "name": "modifier",
+              "type": {
+                "text": "string"
+              },
+              "description": "Optional media modifier code, e.g. \"3D\", \"AU\", \"CO\", \"IM\", \"MX\", \"TR\", \"VD\", \"WR\".",
+              "fieldName": "modifier"
+            },
+            {
+              "name": "license-name",
+              "type": {
+                "text": "string"
+              },
+              "description": "Full license name, resolved from the AIUL API.",
+              "fieldName": "licenseName"
+            },
+            {
+              "name": "license-image",
+              "type": {
+                "text": "string"
+              },
+              "description": "License badge image URL, resolved from the AIUL API.",
+              "fieldName": "licenseImage"
+            },
+            {
+              "name": "license-link",
+              "type": {
+                "text": "string"
+              },
+              "description": "License details link, resolved from the AIUL API.",
+              "fieldName": "licenseLink"
+            },
+            {
+              "name": "license-description",
+              "type": {
+                "text": "string"
+              },
+              "description": "License description text.",
+              "fieldName": "licenseDescription"
+            },
+            {
+              "name": "license-tag",
+              "type": {
+                "text": "string"
+              },
+              "description": "The full AIUL tag code, e.g. \"AIUL-NA\" or \"AIUL-CD-IM\".",
+              "fieldName": "licenseTag"
+            }
+          ],
+          "superclass": {
+            "name": "DDDSuper",
+            "package": "@haxtheweb/d-d-d"
+          },
+          "tagName": "ai-usage-license",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "fetchAiulData",
+          "declaration": {
+            "name": "fetchAiulData",
+            "module": "ai-usage-license.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "setAiulDataCache",
+          "declaration": {
+            "name": "setAiulDataCache",
+            "module": "ai-usage-license.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "AiUsageLicense",
+          "declaration": {
+            "name": "AiUsageLicense",
+            "module": "ai-usage-license.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "ai-usage-license",
+          "declaration": {
+            "name": "AiUsageLicense",
+            "module": "ai-usage-license.js"
+          }
+        }
+      ]
+    }
+  ]
+}

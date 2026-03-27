@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes"
+    />
+    <title>AiUsageLicense: ai-usage-license Demo</title>
+
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "../ai-usage-license.js";
+    </script>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Not Allowed (AIUL-NA)</h3>
+      <demo-snippet>
+        <template>
+          <ai-usage-license license="NA"></ai-usage-license>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Conceptual Development for Image Work (AIUL-CD-IM)</h3>
+      <demo-snippet>
+        <template>
+          <ai-usage-license license="CD" modifier="IM"></ai-usage-license>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Integrated Usage for Code (AIUL-IU-CO)</h3>
+      <demo-snippet>
+        <template>
+          <ai-usage-license license="IU" modifier="CO"></ai-usage-license>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Transformative Collaboration for Writing (AIUL-TC-WR)</h3>
+      <demo-snippet>
+        <template>
+          <ai-usage-license license="TC" modifier="WR"></ai-usage-license>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Directed Production for Video (AIUL-DP-VD)</h3>
+      <demo-snippet>
+        <template>
+          <ai-usage-license license="DP" modifier="VD"></ai-usage-license>
+        </template>
+      </demo-snippet>
+    </div>
+
+    <div class="vertical-section-container centered">
+      <h3>With Approval for 3D Design (AIUL-WA-3D)</h3>
+      <demo-snippet>
+        <template>
+          <ai-usage-license license="WA" modifier="3D"></ai-usage-license>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>
