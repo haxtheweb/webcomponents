@@ -1,51 +1,19 @@
-import { LitElement, html, css } from "lit"
-import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js"
-import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js"
-
-const AIUL_API = "https://dmd-program.github.io/aiul/api/v1.json"
-
-// Module-level API data cache — populated on first fetch
-let _aiulData = null
-let _aiulFetchPromise = null
-
 /**
- * Fetch and cache the AIUL API data (v1).
- * Only one network request is made regardless of how many elements are on the page.
- * @returns {Promise<Object>} Resolves with the full v1 API payload.
+ * Copyright 2026 haxtheweb
+ * @license Apache-2.0, see LICENSE for full text.
  */
-export function fetchAiulData() {
-  if (!_aiulFetchPromise) {
-    _aiulFetchPromise = globalThis
-      .fetch(AIUL_API)
-      .then((r) => r.json())
-      .then((data) => {
-        _aiulData = data
-        return data
-      })
-  }
-  return _aiulFetchPromise
-}
-
-/**
- * Seed the module-level cache with pre-loaded data.
- * Intended for use in tests so network requests can be avoided.
- * @param {Object} data - An object with the same shape as the v1 API response.
- */
-export function setAiulDataCache(data) {
-  _aiulData = data
-  _aiulFetchPromise = Promise.resolve(data)
-}
-
-// Kick off the fetch as soon as the module loads so data is available quickly.
-fetchAiulData()
+import { LitElement, html, css } from "lit";
+import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 
 /**
  * `ai-usage-license`
  * `A simple way of applying a semantically accurate AI usage license (AIUL) to work.`
- * @demo demo/index.html
+ * 
+ * @demo index.html
  * @element ai-usage-license
  */
-class AiUsageLicense extends SchemaBehaviors(DDDSuper(LitElement)) {
+class AiUsageLicense extends I18NMixin(DDDSuper(LitElement)) {
   /**
    * LitElement constructable styles enhancement
    */
@@ -196,37 +164,88 @@ class AiUsageLicense extends SchemaBehaviors(DDDSuper(LitElement)) {
 
   constructor() {
     super()
-    this.license = null
-    this.modifier = null
-    this.licenseName = null
-    this.licenseImage = null
-    this.licenseLink = null
-    this.licenseDescription = null
-    this.licenseTag = null
+    this.license = null;
+    this.modifier = null;
+    this.licenseName = null;
+    this.licenseImage = null;
+    this.licenseLink = null;
+    this.licenseDescription = null;
+    this.licenseTag = null;
+    this.__aiulDataPromise = null;
+    this._setAIULData();
+  }
+
+  async _setAIULData() {
+    // Fetch the AIUL license and modifier data once and cache it.
+    if (this._aiulData) {
+      return this._aiulData
+    }
+    if (!this.__aiulDataPromise) {
+      this.__aiulDataPromise = fetch(new URL('./lib/v1.json', import.meta.url).href)
+        .then((r) => r.json())
+        .then((data) => {
+          this._aiulData = data
+          return data
+        })
+        .catch((e) => {
+          console.warn(e)
+          return null
+        })
+    }
+    return this.__aiulDataPromise
+  }
+
+  _getHaxSelectOptions() {
+    var licenseOptions = {}
+    var modifierOptions = { "": "No modifier" }
+    if (
+      this._aiulData &&
+      this._aiulData.licenses &&
+      this._aiulData.modifiers
+    ) {
+      for (const lic of this._aiulData.licenses) {
+        licenseOptions[lic.code] = lic.fullName
+      }
+      for (const mod of this._aiulData.modifiers) {
+        modifierOptions[mod.code] = mod.title
+      }
+    }
+    return {
+      licenseOptions,
+      modifierOptions,
+    }
   }
 
   updated(changedProperties) {
     changedProperties.forEach((oldValue, propName) => {
       if (propName === "license" || propName === "modifier") {
-        this._licenseUpdated(this.license, this.modifier)
+        this._licenseUpdated(this.license, this.modifier);
+      }
+    })
+  }
+  /**
+   * Implements haxHooks to tie into life-cycle if hax exists.
+   */
+  haxHooks() {
+    return {
+      setupActiveElementForm: "haxsetupActiveElementForm",
+    }
+  }
+
+  async haxsetupActiveElementForm(props) {
+    await this._setAIULData()
+    const options = this._getHaxSelectOptions()
+    props.settings.configure.forEach((attr, index) => {
+      if (attr.property === "license") {
+        props.settings.configure[index].options = options.licenseOptions
+      }
+      if (attr.property === "modifier") {
+        props.settings.configure[index].options = options.modifierOptions
       }
     })
   }
 
   static get haxProperties() {
-    // Build select options from the API cache when available.
-    // By the time an author opens the HAX settings panel the fetch will have
-    // resolved, so the options will be populated correctly.
-    const licenseOptions = {}
-    const modifierOptions = { "": "No modifier" }
-    if (_aiulData) {
-      for (const lic of _aiulData.licenses) {
-        licenseOptions[lic.code] = lic.fullName
-      }
-      for (const mod of _aiulData.modifiers) {
-        modifierOptions[mod.code] = mod.title
-      }
-    }
     return {
       canScale: false,
       canEditSource: true,
@@ -257,7 +276,7 @@ class AiUsageLicense extends SchemaBehaviors(DDDSuper(LitElement)) {
             description:
               "The AI usage license level for this work. See https://dmd-program.github.io/aiul/ for details.",
             inputMethod: "select",
-            options: licenseOptions,
+            options: {},
             icon: "hardware:memory",
           },
           {
@@ -266,7 +285,9 @@ class AiUsageLicense extends SchemaBehaviors(DDDSuper(LitElement)) {
             description:
               "Optional media domain modifier. Specifies the type of media this license applies to.",
             inputMethod: "select",
-            options: modifierOptions,
+            options: {
+              "": "No modifier",
+            },
             icon: "image:photo",
           },
         ],
@@ -289,41 +310,46 @@ class AiUsageLicense extends SchemaBehaviors(DDDSuper(LitElement)) {
    * Fetch license and modifier data from the AIUL API then update reactive
    * properties so the element re-renders with the correct badge.
    */
-  _licenseUpdated(license, modifier) {
+  async _licenseUpdated(license, modifier) {
     if (!license) return
-    fetchAiulData().then((data) => {
-      const licenseEntry = data.licenses.find((l) => l.code === license)
-      if (!licenseEntry) return
+    await this._setAIULData()
+    if (
+      !this._aiulData ||
+      !this._aiulData.licenses ||
+      !this._aiulData.modifiers
+    ) {
+      return
+    }
+    const licenseEntry = this._aiulData.licenses.find((l) => l.code === license)
+    if (!licenseEntry) return
+    const modifierEntry = modifier
+      ? this._aiulData.modifiers.find((m) => m.code === modifier)
+      : null
 
-      const modifierEntry = modifier
-        ? data.modifiers.find((m) => m.code === modifier)
+    // Build the full AIUL tag string (e.g. "AIUL-CD" or "AIUL-CD-IM")
+    this.licenseTag = modifierEntry
+      ? `AIUL-${license}-${modifier}`
+      : `AIUL-${license}`
+
+    this.licenseName = modifierEntry
+      ? `${licenseEntry.fullName} / ${modifierEntry.title}`
+      : licenseEntry.fullName
+
+    this.licenseLink = modifierEntry
+      ? `https://dmd-program.github.io/aiul/combinations/${license.toLowerCase()}-${modifier.toLowerCase()}.html`
+      : licenseEntry.url
+
+    if (modifierEntry) {
+      // Look up the pre-generated combination image from the API
+      const combo = this._aiulData.combinations
+        ? this._aiulData.combinations.find(
+            (c) => c.license.code === license && c.modifier.code === modifier,
+          )
         : null
-
-      // Build the full AIUL tag string (e.g. "AIUL-CD" or "AIUL-CD-IM")
-      this.licenseTag = modifierEntry
-        ? `AIUL-${license}-${modifier}`
-        : `AIUL-${license}`
-
-      this.licenseName = modifierEntry
-        ? `${licenseEntry.fullName} / ${modifierEntry.title}`
-        : licenseEntry.fullName
-
-      this.licenseLink = modifierEntry
-        ? `https://dmd-program.github.io/aiul/combinations/${license.toLowerCase()}-${modifier.toLowerCase()}.html`
-        : licenseEntry.url
-
-      if (modifierEntry) {
-        // Look up the pre-generated combination image from the API
-        const combo = data.combinations
-          ? data.combinations.find(
-              (c) => c.license.code === license && c.modifier.code === modifier,
-            )
-          : null
-        this.licenseImage = combo ? combo.image : licenseEntry.image
-      } else {
-        this.licenseImage = licenseEntry.image
-      }
-    })
+      this.licenseImage = combo ? combo.image : licenseEntry.image
+    } else {
+      this.licenseImage = licenseEntry.image
+    }
   }
 }
 

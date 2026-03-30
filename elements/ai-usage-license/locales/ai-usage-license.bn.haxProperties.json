@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "শিরোনাম"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "কাস্টম মান"
+            }
+        }
+    ]
+}

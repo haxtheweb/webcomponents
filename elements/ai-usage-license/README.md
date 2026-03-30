@@ -1,68 +1,49 @@
-# `<ai-usage-license>` [![Published on npm](https://img.shields.io/npm/v/@haxtheweb/ai-usage-license.svg)](https://www.npmjs.com/package/@haxtheweb/ai-usage-license)
+# ai-usage-license
+DDD + Lit web component based on OpenWC toolchain. This is intended to provide the following:
+- Look good via DDD, HAX design system
+- Simple, easy to read code via Lit
+- Great workflow via OpenWC tooling + Vercel for sharing demos
+- Simplify contribution to the HAX ecosystem
+- Publish and distribute via npmjs.com
 
-## Overview
+## Install dependencies
+- `npm install` - installs dependencies so you can work
 
-`ai-usage-license` is a web component that makes it easy to display an [AI Usage License (AIUL)](https://dmd-program.github.io/aiul/) badge on your work. It is modeled after `@haxtheweb/license-element` and is fully compatible with the [HAX](https://haxtheweb.org/) editor ecosystem.
+## Commands
+- `npm start` - runs your web component for development, reloading on file changes
+- `npm run build` - builds your web component and outputs it in your `dist` directory for placement on web servers in a compiled form. Vercel automatically does this on commit to github.
+- `npm run release` - this will build your code, update the version, and publish it to npm for others to use
 
-AIUL provides standardized visual tags specifying the permitted uses of AI tools in a given assignment or project.
+## Working with your web component
+- edit `./ai-usage-license.js`
+- edit your 'demo' by modifying `./index.html`
+- add dependencies using `npm install --save @whatever/repo` or editing `./package.json` directly
+- if you must reference additional non-JS files, ensure you use the `new URL('./my-file.jpg', import.meta.url).href` syntax so that it builds correctly
+- if you add additional `.js` files / web components then place them under `/lib/`
+- to improve HAX wiring edit file in `/lib/ai-usage-license.haxProperties.json`
+- for i18n / internationalization efforts, see associated language `.json` files in `/locales/` as well as `/lib/` for haxProperties related translation examples.
 
-## Usage
+## Recommended setup
+- Load VS code in 1 window to project root
+- Browser open
+- Right click -> Inspect and open the Console to see error output
 
-```html
-<!-- License only (no modifier) -->
-<ai-usage-license license="CD"></ai-usage-license>
+## Recommended Integrated Development Environment (IDE)
+- [VSCode](https://code.visualstudio.com/Download)
 
-<!-- License with media modifier -->
-<ai-usage-license license="CD" modifier="IM"></ai-usage-license>
-```
+### Plugins
 
-## License Codes
+Name: lit-html
+Description: Syntax highlighting and IntelliSense for html inside of JavaScript and TypeScript tagged template strings
+Publisher: Matt Bierner
+VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=bierner.lit-html
 
-| Code | Full Name               | Description |
-|------|-------------------------|-------------|
-| `NA` | Not Allowed             | No AI tools allowed. All work must be entirely student-generated. |
-| `WA` | With Approval           | AI tools may be used only with prior instructor approval. |
-| `CD` | Conceptual Development  | AI tools may be used for research and ideation, but final work must be student-generated. |
-| `TC` | Transformative Collaboration | AI tools may be used as a collaborative partner, but students must significantly transform AI-generated content. |
-| `DP` | Directed Production     | AI tools may be used under the student's direction as a creative production tool. |
-| `IU` | Integrated Usage        | Full, intentional, and skillful use of AI tools is permitted and encouraged. |
+Name: lit-plugin
+Description: Syntax highlighting, type checking and code completion for lit-html
+Publisher: Rune Mehlsen
+VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=runem.lit-plugin
 
-## Media Modifier Codes
+# Credits
+A brighter future dreamed and developed by the Penn State [HAXTheWeb](https://hax.psu.edu/) initative.
 
-| Code | Name               |
-|------|--------------------|
-| `3D` | 3D Design          |
-| `AU` | Audio              |
-| `CO` | Code               |
-| `IM` | Image              |
-| `MX` | Mixed Media        |
-| `TR` | Traditional Media  |
-| `VD` | Video              |
-| `WR` | Writing            |
-
-## Properties
-
-| Property            | Attribute            | Type     | Description |
-|---------------------|----------------------|----------|-------------|
-| `license`           | `license`            | `String` | AIUL license code (e.g. `"CD"`) |
-| `modifier`          | `modifier`           | `String` | Optional media modifier code (e.g. `"IM"`) |
-| `licenseName`       | `license-name`       | `String` | Calculated full license name |
-| `licenseImage`      | `license-image`      | `String` | License badge image URL |
-| `licenseLink`       | `license-link`       | `String` | Link to license details page |
-| `licenseDescription`| `license-description`| `String` | Description of the license |
-| `licenseTag`        | `license-tag`        | `String` | Full AIUL tag string (e.g. `"AIUL-CD-IM"`) |
-
-## Demo
-
-```html
-<script type="module" src="@haxtheweb/ai-usage-license/ai-usage-license.js"></script>
-<ai-usage-license license="IU" modifier="CO"></ai-usage-license>
-```
-
-## API Reference
-
-This component uses the [AIUL API](https://dmd-program.github.io/aiul/api/) for license data:
-- License images: `https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-{code}.png`
-- Combination images: `https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-{license}-{modifier}.png`
-
-For more details, see the [AIUL project](https://dmd-program.github.io/aiul/).
+Never. Stop. innovating.

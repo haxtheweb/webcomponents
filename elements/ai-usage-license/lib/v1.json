@@ -1,0 +1,947 @@
+{
+"version": "1.0.0",
+"generated": "2026-02-02T18:25:40.227Z",
+"baseUrl": "https://dmd-program.github.io/aiul",
+"cdnUrl": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main",
+"documentation": "https://dmd-program.github.io/aiul/guide.html",
+"licenses": [
+{
+"id": "na",
+"code": "NA",
+"title": "AIUL-NA",
+"fullName": "Not Allowed",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/licenses/na/1.0.0/",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-na.png",
+"released": "2025-12-09T00:00:00.000Z"
+},
+{
+"id": "wa",
+"code": "WA",
+"title": "AIUL-WA",
+"fullName": "With Approval",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/licenses/wa/1.0.0/",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-wa.png",
+"released": "2025-12-09T00:00:00.000Z"
+},
+{
+"id": "cd",
+"code": "CD",
+"title": "AIUL-CD",
+"fullName": "Conceptual Development",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/licenses/cd/1.0.0/",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-cd.png",
+"released": "2025-12-09T00:00:00.000Z"
+},
+{
+"id": "tc",
+"code": "TC",
+"title": "AIUL-TC",
+"fullName": "Transformative Collaboration",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/licenses/tc/1.0.0/",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-tc.png",
+"released": "2025-12-09T00:00:00.000Z"
+},
+{
+"id": "dp",
+"code": "DP",
+"title": "AIUL-DP",
+"fullName": "Directed Production",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/licenses/dp/1.0.0/",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-dp.png",
+"released": "2025-12-09T00:00:00.000Z"
+},
+{
+"id": "iu",
+"code": "IU",
+"title": "AIUL-IU",
+"fullName": "Integrated Usage",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/licenses/iu/1.0.0/",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-iu.png",
+"released": "2025-12-09T00:00:00.000Z"
+}
+],
+"modifiers": [
+{
+"id": "3d",
+"code": "3D",
+"title": "3D Design",
+"fullName": "3-Dimensional Design",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/modifiers/3d/1.0.0/",
+"released": "2025-12-09T00:00:00.000Z"
+},
+{
+"id": "audio",
+"code": "AU",
+"title": "Audio",
+"fullName": "Audio",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/modifiers/audio/1.0.0/",
+"released": "2025-12-09T00:00:00.000Z"
+},
+{
+"id": "code",
+"code": "CO",
+"title": "Code",
+"fullName": "Code",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/modifiers/code/1.0.0/",
+"released": "2025-12-09T00:00:00.000Z"
+},
+{
+"id": "image",
+"code": "IM",
+"title": "Image",
+"fullName": "Image",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/modifiers/image/1.0.0/",
+"released": "2025-12-09T00:00:00.000Z"
+},
+{
+"id": "mixed-media",
+"code": "MX",
+"title": "Mixed Media",
+"fullName": "Mixed Media",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/modifiers/mixed-media/1.0.0/",
+"released": "2025-12-09T00:00:00.000Z"
+},
+{
+"id": "traditional-media",
+"code": "TR",
+"title": "Traditional Media",
+"fullName": "Traditional Media",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/modifiers/traditional-media/1.0.0/",
+"released": "2025-12-09T00:00:00.000Z"
+},
+{
+"id": "video",
+"code": "VD",
+"title": "Video",
+"fullName": "Video",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/modifiers/video/1.0.0/",
+"released": "2025-12-09T00:00:00.000Z"
+},
+{
+"id": "writing",
+"code": "WR",
+"title": "Writing",
+"fullName": "Writing",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/modifiers/writing/1.0.0/",
+"released": "2025-12-09T00:00:00.000Z"
+}
+],
+"combinations": [
+{
+"id": "na-3d",
+"code": "NA-3D",
+"license": {
+"id": "na",
+"code": "NA",
+"title": "AIUL-NA"
+},
+"modifier": {
+"id": "3d",
+"code": "3D",
+"title": "3D Design"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/na-3d.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-na-3d.png"
+},
+{
+"id": "na-au",
+"code": "NA-AU",
+"license": {
+"id": "na",
+"code": "NA",
+"title": "AIUL-NA"
+},
+"modifier": {
+"id": "audio",
+"code": "AU",
+"title": "Audio"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/na-au.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-na-au.png"
+},
+{
+"id": "na-co",
+"code": "NA-CO",
+"license": {
+"id": "na",
+"code": "NA",
+"title": "AIUL-NA"
+},
+"modifier": {
+"id": "code",
+"code": "CO",
+"title": "Code"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/na-co.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-na-co.png"
+},
+{
+"id": "na-im",
+"code": "NA-IM",
+"license": {
+"id": "na",
+"code": "NA",
+"title": "AIUL-NA"
+},
+"modifier": {
+"id": "image",
+"code": "IM",
+"title": "Image"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/na-im.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-na-im.png"
+},
+{
+"id": "na-mx",
+"code": "NA-MX",
+"license": {
+"id": "na",
+"code": "NA",
+"title": "AIUL-NA"
+},
+"modifier": {
+"id": "mixed-media",
+"code": "MX",
+"title": "Mixed Media"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/na-mx.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-na-mx.png"
+},
+{
+"id": "na-tr",
+"code": "NA-TR",
+"license": {
+"id": "na",
+"code": "NA",
+"title": "AIUL-NA"
+},
+"modifier": {
+"id": "traditional-media",
+"code": "TR",
+"title": "Traditional Media"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/na-tr.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-na-tr.png"
+},
+{
+"id": "na-vd",
+"code": "NA-VD",
+"license": {
+"id": "na",
+"code": "NA",
+"title": "AIUL-NA"
+},
+"modifier": {
+"id": "video",
+"code": "VD",
+"title": "Video"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/na-vd.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-na-vd.png"
+},
+{
+"id": "na-wr",
+"code": "NA-WR",
+"license": {
+"id": "na",
+"code": "NA",
+"title": "AIUL-NA"
+},
+"modifier": {
+"id": "writing",
+"code": "WR",
+"title": "Writing"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/na-wr.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-na-wr.png"
+},
+{
+"id": "wa-3d",
+"code": "WA-3D",
+"license": {
+"id": "wa",
+"code": "WA",
+"title": "AIUL-WA"
+},
+"modifier": {
+"id": "3d",
+"code": "3D",
+"title": "3D Design"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/wa-3d.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-wa-3d.png"
+},
+{
+"id": "wa-au",
+"code": "WA-AU",
+"license": {
+"id": "wa",
+"code": "WA",
+"title": "AIUL-WA"
+},
+"modifier": {
+"id": "audio",
+"code": "AU",
+"title": "Audio"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/wa-au.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-wa-au.png"
+},
+{
+"id": "wa-co",
+"code": "WA-CO",
+"license": {
+"id": "wa",
+"code": "WA",
+"title": "AIUL-WA"
+},
+"modifier": {
+"id": "code",
+"code": "CO",
+"title": "Code"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/wa-co.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-wa-co.png"
+},
+{
+"id": "wa-im",
+"code": "WA-IM",
+"license": {
+"id": "wa",
+"code": "WA",
+"title": "AIUL-WA"
+},
+"modifier": {
+"id": "image",
+"code": "IM",
+"title": "Image"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/wa-im.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-wa-im.png"
+},
+{
+"id": "wa-mx",
+"code": "WA-MX",
+"license": {
+"id": "wa",
+"code": "WA",
+"title": "AIUL-WA"
+},
+"modifier": {
+"id": "mixed-media",
+"code": "MX",
+"title": "Mixed Media"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/wa-mx.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-wa-mx.png"
+},
+{
+"id": "wa-tr",
+"code": "WA-TR",
+"license": {
+"id": "wa",
+"code": "WA",
+"title": "AIUL-WA"
+},
+"modifier": {
+"id": "traditional-media",
+"code": "TR",
+"title": "Traditional Media"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/wa-tr.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-wa-tr.png"
+},
+{
+"id": "wa-vd",
+"code": "WA-VD",
+"license": {
+"id": "wa",
+"code": "WA",
+"title": "AIUL-WA"
+},
+"modifier": {
+"id": "video",
+"code": "VD",
+"title": "Video"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/wa-vd.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-wa-vd.png"
+},
+{
+"id": "wa-wr",
+"code": "WA-WR",
+"license": {
+"id": "wa",
+"code": "WA",
+"title": "AIUL-WA"
+},
+"modifier": {
+"id": "writing",
+"code": "WR",
+"title": "Writing"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/wa-wr.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-wa-wr.png"
+},
+{
+"id": "cd-3d",
+"code": "CD-3D",
+"license": {
+"id": "cd",
+"code": "CD",
+"title": "AIUL-CD"
+},
+"modifier": {
+"id": "3d",
+"code": "3D",
+"title": "3D Design"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/cd-3d.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-cd-3d.png"
+},
+{
+"id": "cd-au",
+"code": "CD-AU",
+"license": {
+"id": "cd",
+"code": "CD",
+"title": "AIUL-CD"
+},
+"modifier": {
+"id": "audio",
+"code": "AU",
+"title": "Audio"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/cd-au.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-cd-au.png"
+},
+{
+"id": "cd-co",
+"code": "CD-CO",
+"license": {
+"id": "cd",
+"code": "CD",
+"title": "AIUL-CD"
+},
+"modifier": {
+"id": "code",
+"code": "CO",
+"title": "Code"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/cd-co.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-cd-co.png"
+},
+{
+"id": "cd-im",
+"code": "CD-IM",
+"license": {
+"id": "cd",
+"code": "CD",
+"title": "AIUL-CD"
+},
+"modifier": {
+"id": "image",
+"code": "IM",
+"title": "Image"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/cd-im.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-cd-im.png"
+},
+{
+"id": "cd-mx",
+"code": "CD-MX",
+"license": {
+"id": "cd",
+"code": "CD",
+"title": "AIUL-CD"
+},
+"modifier": {
+"id": "mixed-media",
+"code": "MX",
+"title": "Mixed Media"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/cd-mx.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-cd-mx.png"
+},
+{
+"id": "cd-tr",
+"code": "CD-TR",
+"license": {
+"id": "cd",
+"code": "CD",
+"title": "AIUL-CD"
+},
+"modifier": {
+"id": "traditional-media",
+"code": "TR",
+"title": "Traditional Media"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/cd-tr.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-cd-tr.png"
+},
+{
+"id": "cd-vd",
+"code": "CD-VD",
+"license": {
+"id": "cd",
+"code": "CD",
+"title": "AIUL-CD"
+},
+"modifier": {
+"id": "video",
+"code": "VD",
+"title": "Video"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/cd-vd.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-cd-vd.png"
+},
+{
+"id": "cd-wr",
+"code": "CD-WR",
+"license": {
+"id": "cd",
+"code": "CD",
+"title": "AIUL-CD"
+},
+"modifier": {
+"id": "writing",
+"code": "WR",
+"title": "Writing"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/cd-wr.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-cd-wr.png"
+},
+{
+"id": "tc-3d",
+"code": "TC-3D",
+"license": {
+"id": "tc",
+"code": "TC",
+"title": "AIUL-TC"
+},
+"modifier": {
+"id": "3d",
+"code": "3D",
+"title": "3D Design"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/tc-3d.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-tc-3d.png"
+},
+{
+"id": "tc-au",
+"code": "TC-AU",
+"license": {
+"id": "tc",
+"code": "TC",
+"title": "AIUL-TC"
+},
+"modifier": {
+"id": "audio",
+"code": "AU",
+"title": "Audio"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/tc-au.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-tc-au.png"
+},
+{
+"id": "tc-co",
+"code": "TC-CO",
+"license": {
+"id": "tc",
+"code": "TC",
+"title": "AIUL-TC"
+},
+"modifier": {
+"id": "code",
+"code": "CO",
+"title": "Code"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/tc-co.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-tc-co.png"
+},
+{
+"id": "tc-im",
+"code": "TC-IM",
+"license": {
+"id": "tc",
+"code": "TC",
+"title": "AIUL-TC"
+},
+"modifier": {
+"id": "image",
+"code": "IM",
+"title": "Image"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/tc-im.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-tc-im.png"
+},
+{
+"id": "tc-mx",
+"code": "TC-MX",
+"license": {
+"id": "tc",
+"code": "TC",
+"title": "AIUL-TC"
+},
+"modifier": {
+"id": "mixed-media",
+"code": "MX",
+"title": "Mixed Media"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/tc-mx.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-tc-mx.png"
+},
+{
+"id": "tc-tr",
+"code": "TC-TR",
+"license": {
+"id": "tc",
+"code": "TC",
+"title": "AIUL-TC"
+},
+"modifier": {
+"id": "traditional-media",
+"code": "TR",
+"title": "Traditional Media"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/tc-tr.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-tc-tr.png"
+},
+{
+"id": "tc-vd",
+"code": "TC-VD",
+"license": {
+"id": "tc",
+"code": "TC",
+"title": "AIUL-TC"
+},
+"modifier": {
+"id": "video",
+"code": "VD",
+"title": "Video"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/tc-vd.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-tc-vd.png"
+},
+{
+"id": "tc-wr",
+"code": "TC-WR",
+"license": {
+"id": "tc",
+"code": "TC",
+"title": "AIUL-TC"
+},
+"modifier": {
+"id": "writing",
+"code": "WR",
+"title": "Writing"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/tc-wr.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-tc-wr.png"
+},
+{
+"id": "dp-3d",
+"code": "DP-3D",
+"license": {
+"id": "dp",
+"code": "DP",
+"title": "AIUL-DP"
+},
+"modifier": {
+"id": "3d",
+"code": "3D",
+"title": "3D Design"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/dp-3d.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-dp-3d.png"
+},
+{
+"id": "dp-au",
+"code": "DP-AU",
+"license": {
+"id": "dp",
+"code": "DP",
+"title": "AIUL-DP"
+},
+"modifier": {
+"id": "audio",
+"code": "AU",
+"title": "Audio"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/dp-au.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-dp-au.png"
+},
+{
+"id": "dp-co",
+"code": "DP-CO",
+"license": {
+"id": "dp",
+"code": "DP",
+"title": "AIUL-DP"
+},
+"modifier": {
+"id": "code",
+"code": "CO",
+"title": "Code"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/dp-co.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-dp-co.png"
+},
+{
+"id": "dp-im",
+"code": "DP-IM",
+"license": {
+"id": "dp",
+"code": "DP",
+"title": "AIUL-DP"
+},
+"modifier": {
+"id": "image",
+"code": "IM",
+"title": "Image"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/dp-im.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-dp-im.png"
+},
+{
+"id": "dp-mx",
+"code": "DP-MX",
+"license": {
+"id": "dp",
+"code": "DP",
+"title": "AIUL-DP"
+},
+"modifier": {
+"id": "mixed-media",
+"code": "MX",
+"title": "Mixed Media"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/dp-mx.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-dp-mx.png"
+},
+{
+"id": "dp-tr",
+"code": "DP-TR",
+"license": {
+"id": "dp",
+"code": "DP",
+"title": "AIUL-DP"
+},
+"modifier": {
+"id": "traditional-media",
+"code": "TR",
+"title": "Traditional Media"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/dp-tr.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-dp-tr.png"
+},
+{
+"id": "dp-vd",
+"code": "DP-VD",
+"license": {
+"id": "dp",
+"code": "DP",
+"title": "AIUL-DP"
+},
+"modifier": {
+"id": "video",
+"code": "VD",
+"title": "Video"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/dp-vd.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-dp-vd.png"
+},
+{
+"id": "dp-wr",
+"code": "DP-WR",
+"license": {
+"id": "dp",
+"code": "DP",
+"title": "AIUL-DP"
+},
+"modifier": {
+"id": "writing",
+"code": "WR",
+"title": "Writing"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/dp-wr.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-dp-wr.png"
+},
+{
+"id": "iu-3d",
+"code": "IU-3D",
+"license": {
+"id": "iu",
+"code": "IU",
+"title": "AIUL-IU"
+},
+"modifier": {
+"id": "3d",
+"code": "3D",
+"title": "3D Design"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/iu-3d.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-iu-3d.png"
+},
+{
+"id": "iu-au",
+"code": "IU-AU",
+"license": {
+"id": "iu",
+"code": "IU",
+"title": "AIUL-IU"
+},
+"modifier": {
+"id": "audio",
+"code": "AU",
+"title": "Audio"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/iu-au.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-iu-au.png"
+},
+{
+"id": "iu-co",
+"code": "IU-CO",
+"license": {
+"id": "iu",
+"code": "IU",
+"title": "AIUL-IU"
+},
+"modifier": {
+"id": "code",
+"code": "CO",
+"title": "Code"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/iu-co.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-iu-co.png"
+},
+{
+"id": "iu-im",
+"code": "IU-IM",
+"license": {
+"id": "iu",
+"code": "IU",
+"title": "AIUL-IU"
+},
+"modifier": {
+"id": "image",
+"code": "IM",
+"title": "Image"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/iu-im.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-iu-im.png"
+},
+{
+"id": "iu-mx",
+"code": "IU-MX",
+"license": {
+"id": "iu",
+"code": "IU",
+"title": "AIUL-IU"
+},
+"modifier": {
+"id": "mixed-media",
+"code": "MX",
+"title": "Mixed Media"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/iu-mx.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-iu-mx.png"
+},
+{
+"id": "iu-tr",
+"code": "IU-TR",
+"license": {
+"id": "iu",
+"code": "IU",
+"title": "AIUL-IU"
+},
+"modifier": {
+"id": "traditional-media",
+"code": "TR",
+"title": "Traditional Media"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/iu-tr.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-iu-tr.png"
+},
+{
+"id": "iu-vd",
+"code": "IU-VD",
+"license": {
+"id": "iu",
+"code": "IU",
+"title": "AIUL-IU"
+},
+"modifier": {
+"id": "video",
+"code": "VD",
+"title": "Video"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/iu-vd.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-iu-vd.png"
+},
+{
+"id": "iu-wr",
+"code": "IU-WR",
+"license": {
+"id": "iu",
+"code": "IU",
+"title": "AIUL-IU"
+},
+"modifier": {
+"id": "writing",
+"code": "WR",
+"title": "Writing"
+},
+"url": "https://dmd-program.github.io/aiul/combinations/iu-wr.html",
+"image": "https://cdn.jsdelivr.net/gh/dmd-program/aiul@main/assets/images/licenses/aiul-iu-wr.png"
+}
+],
+"usageLevels": [
+{
+"id": "ideation",
+"name": "Ideation",
+"icon": "lightbulb",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/usage-levels/ideation/1.0.0/",
+"released": "2025-12-09T00:00:00.000Z"
+},
+{
+"id": "assistance",
+"name": "Assistance",
+"icon": "wrench",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/usage-levels/assistance/1.0.0/",
+"released": "2025-12-09T00:00:00.000Z"
+},
+{
+"id": "generation",
+"name": "Generation",
+"icon": "sparkles",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/usage-levels/generation/1.0.0/",
+"released": "2025-12-09T00:00:00.000Z"
+},
+{
+"id": "refinement",
+"name": "Refinement",
+"icon": "robot",
+"version": "1.0.0",
+"url": "https://dmd-program.github.io/aiul/usage-levels/refinement/1.0.0/",
+"released": "2025-12-09T00:00:00.000Z"
+}
+]
+}
