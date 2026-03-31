@@ -41,8 +41,8 @@ const FEATURE_DEFS = [
   },
   {
     key: 'insights',
-    label: 'Insights',
-    icon: 'hax:clipboard-pulse',
+    label: 'Reports',
+    icon: 'hax:graph',
     group: 'CMS',
   },
   {
@@ -210,7 +210,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           );
           background: light-dark(
             var(--ddd-theme-default-white),
-            var(--ddd-theme-default-nittanyNavy)
+            var(--ddd-theme-default-coalyGray)
           );
         }
 
@@ -400,7 +400,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
             to top,
             light-dark(
               var(--ddd-theme-default-white),
-              var(--ddd-theme-default-nittanyNavy)
+              var(--ddd-theme-default-coalyGray)
             ) 60%,
             transparent
           );

@@ -694,8 +694,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       >
         <a11y-tab
           id="insights"
-          icon="hax:clipboard-pulse"
-          label="${this.t.insights}"
+          icon="hax:graph"
+          label="${this.t.reports}"
         >
           ${this.activeTab === "insights"
             ? html`
@@ -704,10 +704,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                   ?loading="${this.loading}"
                 ></loading-indicator>
                 ${this.loading
-                  ? html`<p>${this.t.loading} ${this.t.insights}..</p>`
+                  ? html`<p>${this.t.loading} ${this.t.reports}..</p>`
                   : html`
         <div class="insights">
-          <h2>${data && data.title ? data.title : ""} ${this.t.insights}</h2>
+          <h2>${data && data.title ? data.title : ""} ${this.t.reports}</h2>
           <ul>
             <li>
             <lesson-highlight icon="editor:insert-drive-file">
@@ -1294,13 +1294,13 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     this.t = this.t || {};
     this.t = {
       ...this.t,
-      pageToProvideInsightsAbout: "Page to provide insights about",
+      pageToProvideReportsAbout: "Page to provide reports about",
       noLinksInSelectedPages: "No links in selected pages",
       noMediaInSelectedPages: "No media in selected pages",
       recentUpdates: "Recent updates",
       created: "Created",
       lastUpdated: "Last updated",
-      updateInsights: "Update insights",
+      updateReports: "Update reports",
       onPage: "on page",
       learningObjectives: "learning objectives",
       specialElements: "Special elements",
@@ -1324,7 +1324,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       linkReport: "Link report",
       loading: "Loading",
       fullSite: "Full site",
-      insights: "Insights",
+      reports: "Reports",
       linkChecker: "Link checker",
       mediaBrowser: "Media browser",
       contentBrowser: "Content browser",
@@ -1394,7 +1394,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       });
     });
     return html`<div class="selector-wrapper">
-      <label for="selector">${this.t.pageToProvideInsightsAbout}:</label>
+      <label for="selector">${this.t.pageToProvideReportsAbout}:</label>
       <select id="selector">
         ${items.map(
           (item) => html`
@@ -1411,7 +1411,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         @click="${this.refreshData}"
         icon="refresh"
         ?disabled="${this.loading}"
-        label="${this.t.updateInsights}"
+        label="${this.t.updateReports}"
       ></simple-toolbar-button>
     </div>`;
   }

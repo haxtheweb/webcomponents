@@ -98,6 +98,7 @@ export const HaxIconsetManifest = [
       "arrow-left",
       "arrow-right",
       "assess",
+      "blocks",
       "bricks",
       "bulletin-board",
       "calendar",

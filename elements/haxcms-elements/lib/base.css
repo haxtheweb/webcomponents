@@ -15,6 +15,7 @@
   --simple-modal-titlebar-color: var(--ddd-theme-default-infoLight);
   --simple-modal-z-index: 10000000;
   --simple-modal-titlebar-background: var(--ddd-theme-default-info);
+  --simple-modal-border-radius: var(--ddd-radius-md);
   --simple-modal-header-color: #FFFFFF;
   --simple-modal-header-background: var(--haxcms-system-bg);
   --simple-modal-button-color: #FFFFFF;

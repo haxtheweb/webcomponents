@@ -605,6 +605,20 @@ class HAXCMSSiteEditor extends LitElement {
         signal: this.windowControllers.signal,
       },
     );
+    globalThis.addEventListener(
+      "haxcms-content-dashboard-operation",
+      this.contentDashboardOperation.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
+    globalThis.addEventListener(
+      "haxcms-files-dashboard-operation",
+      this.filesDashboardOperation.bind(this),
+      {
+        signal: this.windowControllers.signal,
+      },
+    );
   }
 
   /**
@@ -1302,6 +1316,71 @@ class HAXCMSSiteEditor extends LitElement {
     if (HAXStore.activeHaxBody) {
       HAXStore.activeHaxBody.importContent(e.detail);
     }
+  }
+  async contentDashboardOperation(e) {
+    if (!e.detail || !e.detail.operation) {
+      return;
+    }
+    const operation = e.detail.operation;
+    const ids = Array.isArray(e.detail.itemIds) ? e.detail.itemIds : [];
+    if (operation === "publish" || operation === "unpublish") {
+      const published = operation === "publish";
+      ids.forEach((id) => {
+        this.saveNodeDetails({
+          detail: {
+            id,
+            operation: "setPublished",
+            published,
+          },
+        });
+      });
+      return;
+    }
+    if (operation === "delete") {
+      ids.forEach((id) => {
+        const item = store.findItem(id);
+        if (item) {
+          this.deleteNode({
+            detail: {
+              item,
+            },
+          });
+        }
+      });
+      return;
+    }
+    if (operation === "search-replace") {
+      globalThis.dispatchEvent(
+        new CustomEvent("haxcms-content-dashboard-search-replace", {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: e.detail,
+        }),
+      );
+      store.toast("Search and replace queued for backend endpoint wiring.", 3500, {
+        hat: "construction",
+      });
+    }
+  }
+  filesDashboardOperation(e) {
+    if (!e.detail || !e.detail.operation) {
+      return;
+    }
+    if (e.detail.operation === "upload") {
+      store.toast("Use the existing upload workflow to process files.", 3000, {
+        hat: "construction",
+      });
+      return;
+    }
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-files-dashboard-operation-request", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: e.detail,
+      }),
+    );
   }
 }
 
