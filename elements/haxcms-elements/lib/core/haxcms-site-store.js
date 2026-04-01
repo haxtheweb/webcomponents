@@ -1104,6 +1104,7 @@ class Store {
         "deletePage",
         "styleGuide",
         "outlineDesigner",
+        // Keep "insights" for compatibility in platform config; it gates Reports UI.
         "insights",
         "siteManifest",
         "themeManifest",

@@ -25,7 +25,7 @@ import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js"
 import { HAXCMSKeyboardShortcutsInstance } from "./utils/HAXCMSKeyboardShortcuts.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import "./haxcms-site-insights.js";
+import "./haxcms-site-insights.js"; // Legacy element tag name retained; it now renders Reports UI.
 import "@haxtheweb/simple-fields/lib/simple-fields-form.js";
 import "./micros/haxcms-button-add.js";
 import "./haxcms-darkmode-toggle.js";
@@ -1634,7 +1634,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "addPage",
         "styleGuide",
         "outlineDesigner",
-        "insights",
+        "reports",
         "manifest",
       ],
       global: [
@@ -3231,7 +3231,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         target: this,
         method: "_reportsButtonTap",
       },
-      context: "insights",
+      context: "reports",
       eventName: "super-daemon-element-method",
       path: "CMS/site/reports",
     });
@@ -4089,11 +4089,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if(store.platformConfig && store.platformConfig.features){
       Object.keys(store.platformConfig.features).forEach((key) => {
         if(store.platformAllows(key)) return;
+        // "insights" is the compatibility platform feature key for the Reports context.
+        const contextKey = key === "insights" ? "reports" : key;
         // If an option isn't supported, add it to the array so we don't re-enable it
         Object.keys(this.platformContexts).forEach((type) => {
-          if(this.platformContexts[type].includes(key)) {
-            this.platformContexts[type] = this.platformContexts[type].filter(item => item !== key)
-            SuperDaemonInstance.removeContext(key)
+          if(this.platformContexts[type].includes(contextKey)) {
+            this.platformContexts[type] = this.platformContexts[type].filter(item => item !== contextKey)
+            SuperDaemonInstance.removeContext(contextKey)
           }
         })
       });
@@ -4877,6 +4879,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           }
         } else {
           // Non-edit mode: Reports dashboard
+          // "insights" is the platform feature key used by site config/backend for Reports.
           if (store.platformAllows("insights")) {
             this._reportsButtonTap(e);
           }
@@ -4937,6 +4940,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   _reportsButtonTap(e, fromSiteSettings = false) {
     store.playSound("click");
+    // Legacy element tag name retained for compatibility; content is Reports UI.
     const c = globalThis.document.createElement("haxcms-site-insights");
     const title = fromSiteSettings
       ? this._siteSettingsTrailTitle(this.t.reports)
@@ -4960,6 +4964,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
         elements: { content: c },
         invokedBy:
+          this.shadowRoot.querySelector("#reportsbutton") ||
+          // Legacy button id fallback retained for compatibility.
           this.shadowRoot.querySelector("#insightsbutton") ||
           this.shadowRoot.querySelector("#manifestbtn"),
         clone: false,
@@ -5305,6 +5311,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "haxcms-site-settings-dashboard",
       );
       dashboard.allowStyleGuide = store.platformAllows("styleGuide");
+      // "insights" is the compatibility platform feature key for Reports availability.
       dashboard.allowReports = store.platformAllows("insights");
       dashboard.addEventListener(
         "haxcms-site-settings-dashboard-action",

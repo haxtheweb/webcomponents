@@ -40,6 +40,7 @@ const FEATURE_DEFS = [
     group: 'CMS',
   },
   {
+    // Keep "insights" as the platform feature key for compatibility; this controls Reports UI.
     key: 'insights',
     label: 'Reports',
     icon: 'hax:graph',

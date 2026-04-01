@@ -140,7 +140,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             var(--ddd-theme-default-skyBlue)
           );
         }
-        a11y-tabs[active-tab="insights"]::part(tab-insights) {
+        a11y-tabs[active-tab="reports"]::part(tab-reports) {
           color: light-dark(
             var(--ddd-theme-default-futureLime),
             var(--ddd-theme-default-futureLime)
@@ -171,13 +171,13 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         a11y-tab {
           display: block;
         }
-        .insights,
+        .reports,
         .tab-content-wrapper {
           padding: var(--ddd-spacing-4);
           max-height: 100%;
           overflow-y: auto;
         }
-        a11y-tab#insights loading-indicator {
+        a11y-tab#reports loading-indicator {
           --loading-indicator-color: var(--ddd-theme-default-futureLime);
         }
         a11y-tab#linkchecker loading-indicator {
@@ -241,11 +241,11 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           font-size: 12px;
           --accent-card-padding: 0;
         }
-        .insights {
+        .reports {
           column-count: 3;
           padding: var(--ddd-spacing-4);
         }
-        .insights .recently-updated-items {
+        .reports .recently-updated-items {
           font-size: 16px;
           line-height: 20px;
         }
@@ -295,7 +295,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     });
   }
 
-  _insightResponse(data) {
+  _reportsResponse(data) {
     this.loading = false;
     this.data = data.data;
     // for filtering purposes
@@ -471,11 +471,12 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     };
     this.loading = true;
     switch (this.activeTab) {
-      case "insights":
+      case "reports":
+        // Backend service remains named "insights" for compatibility; this powers Reports.
         MicroFrontendRegistry.call(
           "@haxcms/insights",
           params,
-          this._insightResponse.bind(this),
+          this._reportsResponse.bind(this),
           this,
         );
         break;
@@ -483,7 +484,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         MicroFrontendRegistry.call(
           "@haxcms/linkChecker",
           params,
-          this._insightResponse.bind(this),
+          this._reportsResponse.bind(this),
           this,
         );
         break;
@@ -491,7 +492,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         MicroFrontendRegistry.call(
           "@haxcms/contentBrowser",
           params,
-          this._insightResponse.bind(this),
+          this._reportsResponse.bind(this),
           this,
         );
         break;
@@ -499,7 +500,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         MicroFrontendRegistry.call(
           "@haxcms/mediaBrowser",
           params,
-          this._insightResponse.bind(this),
+          this._reportsResponse.bind(this),
           this,
         );
         break;
@@ -513,6 +514,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
    * Store the tag name to make it easier to obtain directly.
    */
   static get tag() {
+    // Legacy custom element name retained for compatibility; this element renders Reports UI.
     return "haxcms-site-insights";
   }
   getReadingTime(value) {
@@ -693,11 +695,11 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         @a11y-tabs-active-changed="${this.activeChanged}"
       >
         <a11y-tab
-          id="insights"
+          id="reports"
           icon="hax:graph"
           label="${this.t.reports}"
         >
-          ${this.activeTab === "insights"
+          ${this.activeTab === "reports"
             ? html`
                 <loading-indicator
                   full
@@ -706,7 +708,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                 ${this.loading
                   ? html`<p>${this.t.loading} ${this.t.reports}..</p>`
                   : html`
-        <div class="insights">
+        <div class="reports">
           <h2>${data && data.title ? data.title : ""} ${this.t.reports}</h2>
           <ul>
             <li>
@@ -1337,7 +1339,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       readability: {},
       updatedItems: [],
     };
-    this.activeTab = "insights";
+    this.activeTab = "reports";
     this.loading = false;
   }
   static get properties() {

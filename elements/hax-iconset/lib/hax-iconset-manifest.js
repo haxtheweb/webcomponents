@@ -165,6 +165,7 @@ export const HaxIconsetManifest = [
       "keyboard-arrow-up",
       "lesson",
       "loading",
+      "lowkeychloe",
       "map-legend",
       "map",
       "math",
