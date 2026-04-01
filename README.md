@@ -57,7 +57,7 @@ HAXTheWeb is dedicated to making contribution an accessible and simple experienc
     * [Linux](https://docs.docker.com/desktop/setup/install/linux/)
     * [Dev Containers](https://containers.dev/) are broadly supported across OCI-compliant runtimes like Docker, Podman, and OrbStack.
 
-After this step you're ready to go, no fiddling with the command line! Clone the project, open your IDE, then select **Reopen in Container**!
+After this step you're ready to go, no fiddling with the command line! Clone the project, open your IDE, accept our recommended extensions, then select **Reopen in Container**!
 
 ### Quick Install: Git Bash/WSL/macOS/Linux
 
