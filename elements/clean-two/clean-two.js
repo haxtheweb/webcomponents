@@ -145,6 +145,9 @@ class CleanTwo extends LTIResizingMixin(
         .email-btn,
         .print-branch-btn simple-icon-button-lite,
         .pdf-page-btn simple-icon-button-lite {
+          --simple-icon-button-background-color: transparent;
+          --simple-icon-button-focus-background-color: transparent;
+          --simple-icon-button-disabled-background-color: transparent;
           --simple-icon-height: var(--ddd-icon-xxs);
           --simple-icon-width: var(--ddd-icon-xxs);
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
@@ -601,6 +604,9 @@ class CleanTwo extends LTIResizingMixin(
         site-rss-button,
         site-print-button,
         site-modal {
+          --simple-icon-button-background-color: transparent;
+          --simple-icon-button-focus-background-color: transparent;
+          --simple-icon-button-disabled-background-color: transparent;
           --simple-icon-height: var(--ddd-icon-xxs);
           --simple-icon-width: var(--ddd-icon-xxs);
           padding: 8px;

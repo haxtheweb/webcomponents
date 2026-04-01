@@ -116,8 +116,8 @@ clone_and_install () {
   fi
   npm install -g add @haxtheweb/create
   yarn global add web-component-analyzer
-  [ ! -d node_modules ] && { [ -f yarn.lock ] && rm yarn.lock; yarn install; }
-  
+  [ ! -d node_modules ] && { [ -f yarn.lock ] && rm yarn.lock; }
+  yarn install
   printf "Use \033[34myarn run haxsite\033[0m to work on the HAXcms interface\n"
   printf "Run \033[34mcd elements/<ELEMENTNAME>\033[0m, then \033[34myarn start\033[0m to work on a specific element\n"
 }

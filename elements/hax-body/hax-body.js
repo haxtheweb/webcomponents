@@ -1317,10 +1317,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 !handledEnter &&
                 this.__isKeyboardParagraphInsertTarget(this.activeNode)
               ) {
-                e.preventDefault();
-                e.stopPropagation();
-                e.stopImmediatePropagation();
-                this.haxInsert("p", "", {}, this.activeNode);
+                handledEnter = this.__handleEnterKeyForTextBlock(
+                  this.activeNode,
+                  e,
+                );
               }
               break;
             // extra trap set for this in case we care that we are in the act of deleting
@@ -1364,6 +1364,31 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 HAXStore._tmpSelection = tmp;
                 HAXStore.haxSelectedText = tmp.toString();
                 const rng = HAXStore.getRange();
+                this.__scrubTransientEditorStyleSpans(this.activeNode);
+                if (rng && rng.commonAncestorContainer) {
+                  if (
+                    rng.commonAncestorContainer.nodeType ===
+                    globalThis.Node.ELEMENT_NODE
+                  ) {
+                    this.__scrubTransientEditorStyleSpans(
+                      rng.commonAncestorContainer,
+                    );
+                    if (rng.commonAncestorContainer.parentNode) {
+                      this.__scrubTransientEditorStyleSpans(
+                        rng.commonAncestorContainer.parentNode,
+                      );
+                    }
+                  } else if (rng.commonAncestorContainer.parentNode) {
+                    this.__scrubTransientEditorStyleSpans(
+                      rng.commonAncestorContainer.parentNode,
+                    );
+                    if (rng.commonAncestorContainer.parentNode.parentNode) {
+                      this.__scrubTransientEditorStyleSpans(
+                        rng.commonAncestorContainer.parentNode.parentNode,
+                      );
+                    }
+                  }
+                }
                 if (
                   rng.commonAncestorContainer &&
                   this.activeNode !== rng.commonAncestorContainer &&
@@ -1582,6 +1607,165 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       "FIGURE",
       "CODE",
     ].includes(node.tagName);
+  }
+  /**
+   * Determines if a node is a heading tag.
+   */
+  __isHeadingNode(node) {
+    if (!node || !node.tagName) {
+      return false;
+    }
+    return ["H1", "H2", "H3", "H4", "H5", "H6"].includes(node.tagName);
+  }
+  /**
+   * Convert a document fragment into HTML string output.
+   */
+  __rangeFragmentToHTML(fragment) {
+    const wrapper = globalThis.document.createElement("div");
+    wrapper.appendChild(fragment);
+    return wrapper.innerHTML;
+  }
+  /**
+   * Detect browser-injected transient spans used during editing operations.
+   */
+  __isTransientEditorStyleSpan(node) {
+    if (!node || node.tagName !== "SPAN") {
+      return false;
+    }
+    const styleAttr = node.getAttribute("style");
+    if (!styleAttr) {
+      return false;
+    }
+    return true;
+  }
+  /**
+   * Remove a transient editor span while preserving content.
+   */
+  __unwrapTransientEditorStyleSpan(node) {
+    if (!node || !node.parentNode) {
+      return;
+    }
+    if (node.childNodes && node.childNodes.length > 0) {
+      unwrap(node);
+    } else {
+      node.remove();
+    }
+  }
+  /**
+   * Scrub transient editor style spans from a node subtree.
+   */
+  __scrubTransientEditorStyleSpans(rootNode) {
+    if (!rootNode) {
+      return;
+    }
+    if (
+      rootNode.nodeType === globalThis.Node.ELEMENT_NODE &&
+      this.__isTransientEditorStyleSpan(rootNode)
+    ) {
+      this.__unwrapTransientEditorStyleSpan(rootNode);
+      return;
+    }
+    if (
+      rootNode.nodeType !== globalThis.Node.ELEMENT_NODE ||
+      !rootNode.querySelectorAll
+    ) {
+      return;
+    }
+    const spans = Array.from(rootNode.querySelectorAll("span[style]"));
+    for (var i = 0; i < spans.length; i++) {
+      if (this.__isTransientEditorStyleSpan(spans[i])) {
+        this.__unwrapTransientEditorStyleSpan(spans[i]);
+      }
+    }
+  }
+  /**
+   * Split text primitive content at the current selection range.
+   * Paragraphs split into paragraphs; headings split into heading + paragraph.
+   */
+  __splitTextBlockAtSelection(node) {
+    const range = HAXStore.getRange();
+    if (
+      !range ||
+      !node ||
+      !node.tagName ||
+      !node.contains(range.startContainer) ||
+      !node.contains(range.endContainer)
+    ) {
+      return false;
+    }
+    const beforeRange = globalThis.document.createRange();
+    beforeRange.selectNodeContents(node);
+    beforeRange.setEnd(range.startContainer, range.startOffset);
+    const beforeHTML = this.__rangeFragmentToHTML(beforeRange.cloneContents());
+    const afterRange = globalThis.document.createRange();
+    afterRange.selectNodeContents(node);
+    afterRange.setStart(range.endContainer, range.endOffset);
+    const afterHTML = this.__rangeFragmentToHTML(afterRange.cloneContents());
+    const insertTag = this.__isHeadingNode(node)
+      ? "p"
+      : node.tagName.toLowerCase();
+    const newNode = globalThis.document.createElement(insertTag);
+    if (insertTag === node.tagName.toLowerCase()) {
+      for (var i = 0; i < node.attributes.length; i++) {
+        const attr = node.attributes[i];
+        if (
+          !["id", "data-hax-active", "contenteditable"].includes(attr.name)
+        ) {
+          newNode.setAttribute(attr.name, attr.value);
+        }
+      }
+    } else if (node.getAttribute("slot")) {
+      newNode.setAttribute("slot", node.getAttribute("slot"));
+    }
+    node.innerHTML = beforeHTML;
+    newNode.innerHTML = afterHTML;
+    this.__scrubTransientEditorStyleSpans(node);
+    this.__scrubTransientEditorStyleSpans(newNode);
+    if (this.__isEffectivelyEmptyTextBlock(node)) {
+      this.__removeDirectBreakChildren(node);
+      node.textContent = "";
+    }
+    if (this.__isEffectivelyEmptyTextBlock(newNode)) {
+      this.__removeDirectBreakChildren(newNode);
+      newNode.textContent = "";
+    }
+    if (!node.parentNode) {
+      return false;
+    }
+    node.parentNode.insertBefore(newNode, node.nextSibling);
+    this.__applyNodeEditableStateWhenReady(newNode, this.editMode);
+    this.__focusLogic(newNode);
+    HAXStore._positionCursorInNode(newNode, 0);
+    this.scrollHere(newNode);
+    return true;
+  }
+  /**
+   * Handle Enter in text blocks with split-at-selection semantics where applicable.
+   */
+  __handleEnterKeyForTextBlock(node, e) {
+    const range = HAXStore.getRange();
+    if (
+      range &&
+      node &&
+      node.tagName &&
+      (!node.contains(range.startContainer) || !node.contains(range.endContainer))
+    ) {
+      return false;
+    }
+    if (node.tagName === "P" || this.__isHeadingNode(node)) {
+      const didSplit = this.__splitTextBlockAtSelection(node);
+      if (didSplit) {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        return true;
+      }
+    }
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    this.haxInsert("p", "", {}, node);
+    return true;
   }
   /**
    * Normalize newly inserted text primitives so BR-only placeholders
@@ -3664,6 +3848,11 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               }
             if (mutation.addedNodes.length > 0) {
               for (var node of mutation.addedNodes) {
+                if (this.__isTransientEditorStyleSpan(node)) {
+                  this.__unwrapTransientEditorStyleSpan(node);
+                  continue;
+                }
+                this.__scrubTransientEditorStyleSpans(node);
                 if (this._validElementTest(node)) {
                   // text primitives may be inserted as a whole node with a BR inside
                   // (for example <p><br></p>). Normalize this immediately.

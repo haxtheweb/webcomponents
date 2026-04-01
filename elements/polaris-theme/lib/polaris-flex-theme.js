@@ -110,6 +110,11 @@ class PolarisFlexTheme extends LTIResizingMixin(
         :host([edit-mode][tray-status="collapsed"]) {
           margin: 0;
         }
+        @media (max-width: 800px) {
+          :host([edit-mode]) {
+            margin: 0;
+          }
+        }
         
         :host([is-safari]) {
           background-color: var(--ddd-accent-6);

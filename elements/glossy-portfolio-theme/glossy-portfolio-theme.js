@@ -149,6 +149,11 @@ export class GlossyPortfolioTheme extends DDDSuper(I18NMixin(HAXCMSLitElementThe
         :host([edit-mode][tray-status="collapsed"]) {
           margin: 0;
         }
+        @media (max-width: 800px) {
+          :host([edit-mode]) {
+            margin: 0;
+          }
+        }
 
       :host([is-logged-in]) {
         glossy-portfolio-header {

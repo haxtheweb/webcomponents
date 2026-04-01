@@ -25,7 +25,7 @@ import { UserScaffoldInstance } from "@haxtheweb/user-scaffold/user-scaffold.js"
 import { HAXCMSKeyboardShortcutsInstance } from "./utils/HAXCMSKeyboardShortcuts.js";
 import "@haxtheweb/simple-modal/simple-modal.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
-import "./haxcms-site-insights.js";
+import "./haxcms-site-insights.js"; // Legacy element tag name retained; it now renders Reports UI.
 import "@haxtheweb/simple-fields/lib/simple-fields-form.js";
 import "./micros/haxcms-button-add.js";
 import "./haxcms-darkmode-toggle.js";
@@ -1244,6 +1244,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                             "--simple-modal-height": "90vh",
                             "--simple-modal-min-height": "400px",
                             "--simple-modal-titlebar-height": "80px",
+                            "--simple-modal-border-radius": "var(--ddd-radius-md)",
                           },
                         },
                       }),
@@ -1613,6 +1614,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "can-undo-changed": "_undoChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
       "jwt-logged-in": "_jwtLoggedIn",
+      "simple-modal-breadcrumb-click": "_simpleModalBreadcrumbClick",
       "super-daemon-close": "sdCloseEvent",
       "super-daemon-konami-code": "_konamiCodeActivated",
     };
@@ -1633,7 +1635,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "addPage",
         "styleGuide",
         "outlineDesigner",
-        "insights",
+        "reports",
         "manifest",
       ],
       global: [
@@ -2498,13 +2500,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       pageOutline: "Structure",
       more: "More",
       pageActions: "Page actions",
-      insights: "Insights",
+      reports: "Reports",
       merlin: "Merlin",
       summonMerlin: "Summon Merlin",
       logOut: "Log out",
       menu: "Menu",
       showMore: "More",
       contentImported: "Content imported!",
+      content: "Content",
+      files: "Files",
     };
     this.backText = "Site Dashboard";
     this.painting = true;
@@ -3221,16 +3225,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/action/save",
     });
     SuperDaemonInstance.defineOption({
-      title: this.t.insights,
-      icon: "hax:clipboard-pulse",
-      tags: ["CMS", "insights", "data", "operation"],
+      title: this.t.reports,
+      icon: "hax:graph",
+      tags: ["CMS", "reports", "data", "operation"],
       value: {
         target: this,
-        method: "_insightsButtonTap",
+        method: "_reportsButtonTap",
       },
-      context: "insights",
+      context: "reports",
       eventName: "super-daemon-element-method",
-      path: "CMS/site/insights",
+      path: "CMS/site/reports",
     });
     SuperDaemonInstance.defineOption({
       title: this.t.edit,
@@ -4086,11 +4090,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if(store.platformConfig && store.platformConfig.features){
       Object.keys(store.platformConfig.features).forEach((key) => {
         if(store.platformAllows(key)) return;
+        // "insights" is the compatibility platform feature key for the Reports context.
+        const contextKey = key === "insights" ? "reports" : key;
         // If an option isn't supported, add it to the array so we don't re-enable it
         Object.keys(this.platformContexts).forEach((type) => {
-          if(this.platformContexts[type].includes(key)) {
-            this.platformContexts[type] = this.platformContexts[type].filter(item => item !== key)
-            SuperDaemonInstance.removeContext(key)
+          if(this.platformContexts[type].includes(contextKey)) {
+            this.platformContexts[type] = this.platformContexts[type].filter(item => item !== contextKey)
+            SuperDaemonInstance.removeContext(contextKey)
           }
         })
       });
@@ -4860,7 +4866,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "global",
     });
 
-    // Ctrl+Shift+4 - Configure panel (edit) OR Insights dashboard (non-edit)
+    // Ctrl+Shift+4 - Configure panel (edit) OR Reports dashboard (non-edit)
     HAXCMSKeyboardShortcutsInstance.register({
       key: "4",
       ctrl: true,
@@ -4873,14 +4879,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             HAXStore.haxTray.collapsed = false;
           }
         } else {
-          // Non-edit mode: Insights dashboard
+          // Non-edit mode: Reports dashboard
+          // "insights" is the platform feature key used by site config/backend for Reports.
           if (store.platformAllows("insights")) {
-            this._insightsButtonTap(e);
+            this._reportsButtonTap(e);
           }
         }
       },
       condition: () => store.isLoggedIn,
-      description: "Configure panel (edit) / Insights dashboard (view)",
+      description: "Configure panel (edit) / Reports dashboard (view)",
       context: "global",
     });
   }
@@ -4932,15 +4939,28 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }),
     );
   }
-  _insightsButtonTap(e) {
+  _reportsButtonTap(e, fromSiteSettings = false) {
     store.playSound("click");
+    // Legacy element tag name retained for compatibility; content is Reports UI.
     const c = globalThis.document.createElement("haxcms-site-insights");
+    let title = this.t.reports;
+    let breadcrumbs = [];
+    if (fromSiteSettings) {
+      const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+        this.t.reports,
+        "hax:graph",
+      );
+      title = breadcrumbMeta.title;
+      breadcrumbs = breadcrumbMeta.breadcrumbs;
+    }
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       composed: true,
       cancelable: false,
       detail: {
-        title: this.t.insights,
+        title: title,
+        titleIcon: "hax:graph",
+        breadcrumbs: breadcrumbs,
         styles: {
           "--simple-modal-titlebar-background": "black",
           "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
@@ -4950,9 +4970,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           "--simple-modal-height": "94vh",
           "--simple-modal-min-height": "300px",
           "--simple-modal-titlebar-height": "80px",
+          "--simple-modal-border-radius": "var(--ddd-radius-md)",
         },
         elements: { content: c },
         invokedBy:
+          this.shadowRoot.querySelector("#reportsbutton") ||
+          // Legacy button id fallback retained for compatibility.
           this.shadowRoot.querySelector("#insightsbutton") ||
           this.shadowRoot.querySelector("#manifestbtn"),
         clone: false,
@@ -4960,6 +4983,57 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     globalThis.dispatchEvent(evt);
+  }
+  _siteSettingsTrailTitle(sectionTitle) {
+    return `${this.t.siteSettings} > ${sectionTitle}`;
+  }
+  _siteSettingsBreadcrumbMeta(sectionTitle, sectionIcon = "settings") {
+    return {
+      title: this._siteSettingsTrailTitle(sectionTitle),
+      titleIcon: sectionIcon,
+      breadcrumbs: [
+        {
+          label: this.t.siteSettings,
+          icon: "settings",
+          action: "site-settings-dashboard",
+          clickable: true,
+        },
+        {
+          label: sectionTitle,
+          icon: sectionIcon,
+          clickable: false,
+        },
+      ],
+    };
+  }
+  _platformSettingsIcon(sectionTitle = "") {
+    const title = `${sectionTitle}`.toLowerCase();
+    switch (title) {
+      case "blocks":
+        return "hax:blocks";
+      case "editor":
+        return "hax:page-edit";
+      default:
+        return "hax:add-item";
+    }
+  }
+  _simpleModalBreadcrumbClick(e) {
+    if (!e || !e.detail || !e.detail.breadcrumb) {
+      return;
+    }
+    const breadcrumb = e.detail.breadcrumb;
+    if (!breadcrumb.action) {
+      return;
+    }
+    switch (breadcrumb.action) {
+      case "site-settings-dashboard":
+        this._manifestButtonTap({
+          target: this.shadowRoot.querySelector("#manifestbtn"),
+        });
+        break;
+      default:
+        break;
+    }
   }
   /**
    * Navigate to style guide route
@@ -5031,6 +5105,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           "--simple-modal-height": "15vh",
           "--simple-modal-min-height": "300px",
           "--simple-modal-titlebar-height": "80px",
+          "--simple-modal-border-radius": "var(--ddd-radius-md)",
         },
         elements: { content: c, buttons: b },
         invokedBy: this,
@@ -5236,14 +5311,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * toggle state on button tap
    */
-  _outlineButtonTap(e) {
+  _outlineButtonTap(e, fromSiteSettings = false, sectionTitle = null) {
     store.playSound("click");
+    let title = this.t.outlineDesigner;
+    let breadcrumbs = [];
+    if (fromSiteSettings) {
+      const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+        sectionTitle || this.t.outlineDesigner,
+        "hax:site-map",
+      );
+      title = breadcrumbMeta.title;
+      breadcrumbs = breadcrumbMeta.breadcrumbs;
+    }
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       composed: true,
       cancelable: false,
       detail: {
-        title: this.t.outlineDesigner,
+        title: title,
+        titleIcon: "hax:site-map",
+        breadcrumbs: breadcrumbs,
         styles: {
           "--simple-modal-titlebar-background": "black",
           "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
@@ -5253,6 +5340,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           "--simple-modal-max-width": "85vw",
           "--simple-modal-height": "85vh",
           "--simple-modal-max-height": "85vh",
+          "--simple-modal-border-radius": "var(--ddd-radius-md)",
         },
         elements: {
           content: globalThis.document.createElement(
@@ -5290,7 +5378,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "haxcms-site-settings-dashboard",
       );
       dashboard.allowStyleGuide = store.platformAllows("styleGuide");
-      dashboard.allowInsights = store.platformAllows("insights");
+      // "insights" is the compatibility platform feature key for Reports availability.
+      dashboard.allowReports = store.platformAllows("insights");
       dashboard.addEventListener(
         "haxcms-site-settings-dashboard-action",
         this._siteSettingsDashboardAction.bind(this),
@@ -5302,6 +5391,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           cancelable: false,
           detail: {
             title: this.t.siteSettings,
+            titleIcon: "settings",
             styles: {
               "--simple-modal-titlebar-background": "black",
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
@@ -5311,6 +5401,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-max-width": "80vw",
               "--simple-modal-height": "80vh",
               "--simple-modal-max-height": "80vh",
+              "--simple-modal-border-radius": "var(--ddd-radius-md)",
             },
             elements: {
               content: dashboard,
@@ -5337,54 +5428,216 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         case "style-guide":
           this._styleGuideButtonTap(e);
           break;
-        case "insights":
-          this._insightsButtonTap(e);
+        case "reports":
+          this._reportsButtonTap(e, true);
           break;
         case "outline":
-          this._outlineButtonTap(e);
+          this._outlineButtonTap(e, true, "Structure");
           break;
         case "site-settings":
           this._openSiteSettingsForm(
             this.shadowRoot.querySelector("#manifestbtn"),
             "site",
+            true,
+            "Site Details",
           );
           break;
         case "theme-settings":
           this._openSiteSettingsForm(
             this.shadowRoot.querySelector("#manifestbtn"),
             "theme",
+            true,
+            "Appearance",
           );
           break;
         case "seo-settings":
           this._openSiteSettingsForm(
             this.shadowRoot.querySelector("#manifestbtn"),
             "seo",
+            true,
+            "SEO",
           );
           break;
         case "blocks":
+          this._openPlatformSettings(true, "Blocks");
+          break;
         case "editor":
+          this._openPlatformSettings(true, "Editor");
+          break;
         case "platform":
-          this._openPlatformSettings();
+          this._openPlatformSettings(true, "Features");
+          break;
+        case "content-admin":
+          this._openContentAdmin(true);
+          break;
+        case "files-admin":
+          this._openFilesAdmin(true);
           break;
       }
     }, 0);
   }
-  _openPlatformSettings() {
-    this.exportSiteAs("skeleton", { platformSettings: true });
+  _openContentAdmin(fromSiteSettings = false) {
+    import("./haxcms-content-admin-dialog.js").then(() => {
+      const dialog = globalThis.document.createElement(
+        "haxcms-content-admin-dialog",
+      );
+      let title = this.t.content;
+      let breadcrumbs = [];
+      if (fromSiteSettings) {
+        const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+          this.t.content,
+          "editor:insert-drive-file",
+        );
+        title = breadcrumbMeta.title;
+        breadcrumbs = breadcrumbMeta.breadcrumbs;
+      }
+      dialog.addEventListener("haxcms-content-dashboard-operation", (e) => {
+        globalThis.dispatchEvent(
+          new CustomEvent("haxcms-content-dashboard-operation", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: e.detail,
+          }),
+        );
+      });
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            title: title,
+            titleIcon: "editor:insert-drive-file",
+            breadcrumbs: breadcrumbs,
+            styles: {
+              "--simple-modal-titlebar-background": "black",
+              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+              "--simple-modal-z-index": "100000000",
+              "--simple-modal-titlebar-height": "80px",
+              "--simple-modal-width": "90vw",
+              "--simple-modal-max-width": "90vw",
+              "--simple-modal-height": "85vh",
+              "--simple-modal-max-height": "85vh",
+              "--simple-modal-border-radius": "var(--ddd-radius-md)",
+            },
+            elements: {
+              content: dialog,
+            },
+            invokedBy: this.shadowRoot.querySelector("#manifestbtn"),
+            clone: false,
+            modal: true,
+            showClose: true,
+          },
+        }),
+      );
+    });
   }
-  _openSiteSettingsForm(target, section = "site") {
+  _openFilesAdmin(fromSiteSettings = false) {
+    import("./haxcms-files-admin-dialog.js").then(() => {
+      const dialog = globalThis.document.createElement("haxcms-files-admin-dialog");
+      let title = this.t.files;
+      let breadcrumbs = [];
+      if (fromSiteSettings) {
+        const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+          this.t.files,
+          "icons:folder",
+        );
+        title = breadcrumbMeta.title;
+        breadcrumbs = breadcrumbMeta.breadcrumbs;
+      }
+      dialog.addEventListener("haxcms-files-dashboard-operation", (e) => {
+        globalThis.dispatchEvent(
+          new CustomEvent("haxcms-files-dashboard-operation", {
+            bubbles: true,
+            composed: true,
+            cancelable: true,
+            detail: e.detail,
+          }),
+        );
+      });
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            title: title,
+            titleIcon: "icons:folder",
+            breadcrumbs: breadcrumbs,
+            styles: {
+              "--simple-modal-titlebar-background": "black",
+              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+              "--simple-modal-z-index": "100000000",
+              "--simple-modal-titlebar-height": "80px",
+              "--simple-modal-width": "90vw",
+              "--simple-modal-max-width": "90vw",
+              "--simple-modal-height": "85vh",
+              "--simple-modal-max-height": "85vh",
+              "--simple-modal-border-radius": "var(--ddd-radius-md)",
+            },
+            elements: {
+              content: dialog,
+            },
+            invokedBy: this.shadowRoot.querySelector("#manifestbtn"),
+            clone: false,
+            modal: true,
+            showClose: true,
+          },
+        }),
+      );
+    });
+  }
+  _openPlatformSettings(fromSiteSettings = false, sectionTitle = "Features") {
+    const sectionIcon = this._platformSettingsIcon(sectionTitle);
+    const options = {
+      platformSettings: true,
+      modalTitle: fromSiteSettings
+        ? this._siteSettingsTrailTitle(sectionTitle)
+        : "Platform settings",
+      modalTitleIcon: sectionIcon,
+    };
+    if (fromSiteSettings) {
+      const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+        sectionTitle,
+        sectionIcon,
+      );
+      options.modalTitle = breadcrumbMeta.title;
+      options.modalBreadcrumbs = breadcrumbMeta.breadcrumbs;
+    }
+    this.exportSiteAs("skeleton", options);
+  }
+  _openSiteSettingsForm(
+    target,
+    section = "site",
+    fromSiteSettings = false,
+    sectionTitle = "",
+  ) {
     // prettier-ignore
     import("@haxtheweb/haxcms-elements/lib/core/haxcms-site-dashboard.js").then(() => {
       const invokedBy = target || this.shadowRoot.querySelector("#manifestbtn");
       const settingsDialog = globalThis.document.createElement("haxcms-site-dashboard");
       settingsDialog.activeSection = section;
       let title = this.t.siteSettings;
+      let titleIcon = "settings";
+      let breadcrumbs = [];
       if (section === "theme") {
         title = this.t.themeSettings;
+        titleIcon = "lrn:palette";
       } else if (section === "seo") {
         title = this.t.seoSettings;
+        titleIcon = "icons:search";
       } else if (section === "author") {
         title = this.t.authorSettings;
+        titleIcon = "account-circle";
+      }
+      if (fromSiteSettings) {
+        const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+          sectionTitle || title,
+          titleIcon,
+        );
+        title = breadcrumbMeta.title;
+        breadcrumbs = breadcrumbMeta.breadcrumbs;
       }
       globalThis.dispatchEvent(new CustomEvent("simple-modal-show", {
         bubbles: true,
@@ -5392,6 +5645,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         cancelable: false,
         detail: {
           title: title,
+          titleIcon: titleIcon,
+          breadcrumbs: breadcrumbs,
           styles: {
             "--simple-modal-titlebar-background": "black",
             "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
@@ -5401,6 +5656,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             "--simple-modal-max-width": "85vw",
             "--simple-modal-height": "85vh",
             "--simple-modal-max-height": "85vh",
+            "--simple-modal-border-radius": "var(--ddd-radius-md)",
           },
           elements: {
             content: settingsDialog,

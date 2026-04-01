@@ -59,7 +59,6 @@ export class PageBreak extends IntersectionObserverMixin(
       publish: "Publish",
       unpublish: "Unpublish",
       savePage: "Save page",
-      saveAndEdit: "Save & Edit",
       cancel: "Cancel",
     };
     this.registerLocalization({
@@ -587,7 +586,6 @@ export class PageBreak extends IntersectionObserverMixin(
         }
         simple-toolbar-button.menu-button,
         simple-toolbar-button.save-button,
-        simple-toolbar-button.save-edit-button,
         simple-toolbar-button.cancel-button {
           position: absolute;
           top: 0;
@@ -610,16 +608,12 @@ export class PageBreak extends IntersectionObserverMixin(
           color: var(--ddd-theme-default-white);
           background-color: var(--ddd-theme-default-skyBlue);
         }
-        simple-toolbar-button.save-edit-button {
+
+        simple-toolbar-button.save-button {
           right: 32px;
         }
 
-        simple-toolbar-button.save-button {
-          right: 64px;
-        }
-
         simple-toolbar-button.save-button,
-        simple-toolbar-button.save-edit-button,
         simple-toolbar-button.cancel-button {
           --simple-toolbar-button-height: 20px;
           --simple-toolbar-button-width: 20px;
@@ -800,12 +794,6 @@ export class PageBreak extends IntersectionObserverMixin(
               @click="${this._savePage}"
             ></simple-toolbar-button>
             <simple-toolbar-button
-              class="save-edit-button"
-              icon="hax:page-edit"
-              label="${this.t.saveAndEdit}"
-              @click="${this._saveAndEdit}"
-            ></simple-toolbar-button>
-            <simple-toolbar-button
               class="cancel-button"
               icon="icons:cancel"
               label="${this.t.cancel}"
@@ -836,9 +824,6 @@ export class PageBreak extends IntersectionObserverMixin(
     store.cmsSiteEditor.haxCmsSiteEditorUIElement._editButtonTap();
   }
 
-  _saveAndEdit(e) {
-    store.cmsSiteEditor.haxCmsSiteEditorUIElement._saveAndEditButtonTap();
-  }
 
   _cancelEdit(e) {
     store.cmsSiteEditor.haxCmsSiteEditorUIElement._cancelButtonTap(e);

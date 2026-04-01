@@ -61,13 +61,13 @@ export class HAXCMSToast extends RPGCharacterToast {
         }
         .bubble-wrapper {
           display: grid;
-          grid-template-columns: minmax(0, 1fr) auto;
+          grid-template-columns: auto minmax(0, 1fr) auto;
           grid-template-areas:
-            "message avatar"
-            "actions actions";
+            "dismiss message avatar"
+            "actions actions actions";
           column-gap: var(--ddd-spacing-2, 8px);
           row-gap: var(--ddd-spacing-1, 4px);
-          align-items: end;
+          align-items: start;
           min-width: 0;
           width: 100%;
         }
@@ -147,6 +147,11 @@ export class HAXCMSToast extends RPGCharacterToast {
           background-color: var(--ddd-theme-default-slateGray, #666);
           color: var(--ddd-theme-default-white, white);
         }
+        .dismiss-wrap {
+          grid-area: dismiss;
+          align-self: start;
+          justify-self: start;
+        }
         .buttons {
           grid-area: actions;
           display: flex;
@@ -159,28 +164,31 @@ export class HAXCMSToast extends RPGCharacterToast {
         }
         .dismiss {
           margin: 0;
-          padding: var(--ddd-spacing-1, 4px) var(--ddd-spacing-2, 8px);
-          border: var(--ddd-border-xs, 1px solid);
-          border-color: currentColor;
-          border-radius: var(--ddd-radius-sm, 4px);
-          background-color: transparent;
           color: inherit;
-          font-size: var(--ddd-font-size-4xs, 10px);
-          line-height: 1.4;
+          --simple-icon-height: var(--ddd-icon-xs, 20px);
+          --simple-icon-width: var(--ddd-icon-xs, 20px);
+          --simple-icon-button-padding: var(--ddd-spacing-1, 4px);
+          --simple-icon-button-border: var(--ddd-border-xs, 1px solid);
+          --simple-icon-button-border-radius: var(--ddd-radius-sm, 4px);
+          --simple-icon-button-focus-background-color: var(
+            --ddd-theme-default-limestoneGray,
+            #f5f5f5
+          );
+          --simple-icon-button-focus-opacity: 1;
         }
-        .dismiss:hover,
-        .dismiss:focus-visible {
-          background-color: var(--ddd-theme-default-limestoneGray, #f5f5f5);
-          outline: none;
+        .dismiss::part(button) {
+          border-color: currentColor;
         }
-        :host([dark-mode]) .dismiss:hover,
-        :host([dark-mode]) .dismiss:focus-visible {
-          background-color: var(--ddd-theme-default-slateGray, #666);
+        :host([dark-mode]) .dismiss {
+          --simple-icon-button-focus-background-color: var(
+            --ddd-theme-default-slateGray,
+            #666
+          );
         }
         .progress {
           border: none;
           height: var(--ddd-spacing-1, 4px);
-          margin: var(--ddd-spacing-1, 4px) 0 0 0;
+          margin: 0 0 var(--ddd-spacing-1, 4px) 0;
           border-radius: var(--ddd-radius-xs, 2px);
           overflow: hidden;
           background-color: var(--ddd-theme-default-limestoneGray, #f5f5f5);

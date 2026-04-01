@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 219,
-    "elementsWithTranslations": 33,
-    "translationFilesFound": 715,
+    "elementsScanned": 220,
+    "elementsWithTranslations": 34,
+    "translationFilesFound": 733,
     "languagesSupported": [
       "af",
       "am",
@@ -140,6 +140,44 @@
       "ta",
       "te",
       "yo"
+    ],
+    "ai-usage-license.ar": [
+      "haxProperties"
+    ],
+    "ai-usage-license": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "ai-usage-license.bn": [
+      "haxProperties"
+    ],
+    "ai-usage-license.es": [
+      "haxProperties"
+    ],
+    "ai-usage-license.fr": [
+      "haxProperties"
+    ],
+    "ai-usage-license.hi": [
+      "haxProperties"
+    ],
+    "ai-usage-license.ja": [
+      "haxProperties"
+    ],
+    "ai-usage-license.pt": [
+      "haxProperties"
+    ],
+    "ai-usage-license.ru": [
+      "haxProperties"
+    ],
+    "ai-usage-license.zh": [
+      "haxProperties"
     ],
     "app-hax": [
       "af",

@@ -1,0 +1,16 @@
+{
+    "settings": {
+        "configure": [
+            {
+                "title": "عنوان"
+            }
+        ]
+    },
+    "demoSchema": [
+        {
+            "properties": {
+              "title": "قيمة مخصصة"
+            }
+        }
+    ]
+}

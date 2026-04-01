@@ -162,6 +162,12 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
           margin: 0 auto;
           padding: 0 var(--ddd-spacing-5);
         }
+        @media (max-width: 800px) {
+          :host([edit-mode]) {
+            margin: 0 auto;
+            padding: 0 var(--ddd-spacing-5);
+          }
+        }
         :host([hidden]) {
           display: none;
         }

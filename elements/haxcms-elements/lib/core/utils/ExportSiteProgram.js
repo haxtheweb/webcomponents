@@ -434,9 +434,47 @@ export async function _exportSiteAsSkeleton(manifest, title, baseUrl, options = 
     }
 
     const modalTitle =
+      options && options.modalTitle
+        ? options.modalTitle
+        : options && options.platformSettings
+          ? "Platform settings"
+          : "Site skeleton";
+    const modalTitleIcon =
+      options && options.modalTitleIcon
+        ? options.modalTitleIcon
+        : options && options.platformSettings
+          ? "hax:add-item"
+          : "icons:description";
+    const modalBreadcrumbs =
+      options && Array.isArray(options.modalBreadcrumbs)
+        ? options.modalBreadcrumbs
+        : [];
+    const modalStyles =
       options && options.platformSettings
-        ? "Platform settings"
-        : "Site skeleton";
+        ? {
+            "--simple-modal-titlebar-background": "black",
+            "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+            "--simple-modal-background":
+              "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
+            "--simple-modal-width": "90vw",
+            "--simple-modal-min-width": "300px",
+            "--simple-modal-z-index": "100000000",
+            "--simple-modal-height": "90vh",
+            "--simple-modal-min-height": "400px",
+            "--simple-modal-titlebar-height": "80px",
+            "--simple-modal-border-radius": "var(--ddd-radius-md)",
+          }
+        : {
+            "--simple-modal-titlebar-background": "transparent",
+            "--simple-modal-titlebar-color": "light-dark(black, white)",
+            "--simple-modal-width": "90vw",
+            "--simple-modal-min-width": "300px",
+            "--simple-modal-z-index": "100000000",
+            "--simple-modal-height": "90vh",
+            "--simple-modal-min-height": "400px",
+            "--simple-modal-titlebar-height": "80px",
+            "--simple-modal-border-radius": "var(--ddd-radius-md)",
+          };
 
     // Present a modal similar to outline-designer workflows
     globalThis.dispatchEvent(
@@ -446,21 +484,14 @@ export async function _exportSiteAsSkeleton(manifest, title, baseUrl, options = 
         composed: true,
         detail: {
           title: modalTitle,
+          titleIcon: modalTitleIcon,
+          breadcrumbs: modalBreadcrumbs,
           elements: {
             content: el,
           },
           modal: true,
           showClose: true,
-          styles: {
-            "--simple-modal-titlebar-background": "transparent",
-            "--simple-modal-titlebar-color": "light-dark(black, white)",
-            "--simple-modal-width": "90vw",
-            "--simple-modal-min-width": "300px",
-            "--simple-modal-z-index": "100000000",
-            "--simple-modal-height": "90vh",
-            "--simple-modal-min-height": "400px",
-            "--simple-modal-titlebar-height": "80px",
-          },
+          styles: modalStyles,
         },
       }),
     );

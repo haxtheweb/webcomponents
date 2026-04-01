@@ -304,6 +304,11 @@ class JourneyTheme extends HAXCMSLitElementTheme {
         :host([edit-mode][tray-status="collapsed"]) {
           margin: 0;
         }
+        @media (max-width: 800px) {
+          :host([edit-mode]) {
+            margin: 0;
+          }
+        }
 
         header {
           display: flex;
