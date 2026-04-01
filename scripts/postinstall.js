@@ -87,7 +87,8 @@ function remove(target) {
 
 function unlink(target) {
   try {
-    if (fs.existsSync(target)) {
+    const stat = fs.lstatSync(target);
+    if (stat.isSymbolicLink()) {
       fs.unlinkSync(target);
     }
   } catch (e) {
@@ -113,12 +114,13 @@ function symlinkFile(name, symlinkRoot) {
 
   const src = path.resolve(process.cwd(), name);
   const dest = path.join(symlinkRoot, name);
+  const relativeSrc = path.relative(path.dirname(dest), src);
 
   try {
     if (!fs.existsSync(dest)) {
       // Node:FS still calls Windows-native symlinks when running in Git Bash/Cygwin
       // We override this because the Unix utility works without an Administrator shell
-      isWinBash ? execSync(`ln -s "${src}" "${dest}"`) : fs.symlinkSync(src, dest, "file");
+      isWinBash ? execSync(`ln -s "${relativeSrc}" "${dest}"`) : fs.symlinkSync(relativeSrc, dest, "file");
     }
   } catch (e) {
     console.warn("Symlink failed:", dest);
@@ -131,12 +133,13 @@ function symlinkDir(name, symlinkRoot) {
 
   const src = path.resolve(process.cwd(), name);
   const dest = path.join(symlinkRoot, name);
+  const relativeSrc = path.relative(path.dirname(dest), src);
 
   try {
     if (!fs.existsSync(dest)) {
       // Node:FS still calls Windows-native symlinks when running in Git Bash/Cygwin
       // We override this because the Unix utility works without an Administrator shell
-      isWinBash ? execSync(`ln -s "${src}" "${dest}"`) : fs.symlinkSync(src, dest, "dir");
+      isWinBash ? execSync(`ln -s "${relativeSrc}" "${dest}"`) : fs.symlinkSync(relativeSrc, dest, "dir");
     }
   } catch (e) {
     console.warn("Symlink failed:", dest);
