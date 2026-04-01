@@ -1349,16 +1349,16 @@ class HAXCMSSiteEditor extends LitElement {
       });
       return;
     }
-    if (operation === "search-replace") {
+    if (operation === "search") {
       globalThis.dispatchEvent(
-        new CustomEvent("haxcms-content-dashboard-search-replace", {
+        new CustomEvent("haxcms-content-dashboard-search", {
           bubbles: true,
           composed: true,
           cancelable: true,
           detail: e.detail,
         }),
       );
-      store.toast("Search and replace queued for backend endpoint wiring.", 3500, {
+      store.toast("Content search queued for backend endpoint wiring.", 3500, {
         hat: "construction",
       });
     }

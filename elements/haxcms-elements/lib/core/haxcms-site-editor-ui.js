@@ -1614,6 +1614,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "can-undo-changed": "_undoChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
       "jwt-logged-in": "_jwtLoggedIn",
+      "simple-modal-breadcrumb-click": "_simpleModalBreadcrumbClick",
       "super-daemon-close": "sdCloseEvent",
       "super-daemon-konami-code": "_konamiCodeActivated",
     };
@@ -4942,15 +4943,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     store.playSound("click");
     // Legacy element tag name retained for compatibility; content is Reports UI.
     const c = globalThis.document.createElement("haxcms-site-insights");
-    const title = fromSiteSettings
-      ? this._siteSettingsTrailTitle(this.t.reports)
-      : this.t.reports;
+    let title = this.t.reports;
+    let breadcrumbs = [];
+    if (fromSiteSettings) {
+      const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+        this.t.reports,
+        "hax:graph",
+      );
+      title = breadcrumbMeta.title;
+      breadcrumbs = breadcrumbMeta.breadcrumbs;
+    }
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       composed: true,
       cancelable: false,
       detail: {
         title: title,
+        titleIcon: "hax:graph",
+        breadcrumbs: breadcrumbs,
         styles: {
           "--simple-modal-titlebar-background": "black",
           "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
@@ -4976,6 +4986,54 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   _siteSettingsTrailTitle(sectionTitle) {
     return `${this.t.siteSettings} > ${sectionTitle}`;
+  }
+  _siteSettingsBreadcrumbMeta(sectionTitle, sectionIcon = "settings") {
+    return {
+      title: this._siteSettingsTrailTitle(sectionTitle),
+      titleIcon: sectionIcon,
+      breadcrumbs: [
+        {
+          label: this.t.siteSettings,
+          icon: "settings",
+          action: "site-settings-dashboard",
+          clickable: true,
+        },
+        {
+          label: sectionTitle,
+          icon: sectionIcon,
+          clickable: false,
+        },
+      ],
+    };
+  }
+  _platformSettingsIcon(sectionTitle = "") {
+    const title = `${sectionTitle}`.toLowerCase();
+    switch (title) {
+      case "blocks":
+        return "hax:blocks";
+      case "editor":
+        return "hax:page-edit";
+      default:
+        return "hax:add-item";
+    }
+  }
+  _simpleModalBreadcrumbClick(e) {
+    if (!e || !e.detail || !e.detail.breadcrumb) {
+      return;
+    }
+    const breadcrumb = e.detail.breadcrumb;
+    if (!breadcrumb.action) {
+      return;
+    }
+    switch (breadcrumb.action) {
+      case "site-settings-dashboard":
+        this._manifestButtonTap({
+          target: this.shadowRoot.querySelector("#manifestbtn"),
+        });
+        break;
+      default:
+        break;
+    }
   }
   /**
    * Navigate to style guide route
@@ -5255,15 +5313,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    */
   _outlineButtonTap(e, fromSiteSettings = false, sectionTitle = null) {
     store.playSound("click");
-    const title = fromSiteSettings
-      ? this._siteSettingsTrailTitle(sectionTitle || this.t.outlineDesigner)
-      : this.t.outlineDesigner;
+    let title = this.t.outlineDesigner;
+    let breadcrumbs = [];
+    if (fromSiteSettings) {
+      const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+        sectionTitle || this.t.outlineDesigner,
+        "hax:site-map",
+      );
+      title = breadcrumbMeta.title;
+      breadcrumbs = breadcrumbMeta.breadcrumbs;
+    }
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       composed: true,
       cancelable: false,
       detail: {
         title: title,
+        titleIcon: "hax:site-map",
+        breadcrumbs: breadcrumbs,
         styles: {
           "--simple-modal-titlebar-background": "black",
           "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
@@ -5324,6 +5391,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           cancelable: false,
           detail: {
             title: this.t.siteSettings,
+            titleIcon: "settings",
             styles: {
               "--simple-modal-titlebar-background": "black",
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
@@ -5410,10 +5478,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   _openContentAdmin(fromSiteSettings = false) {
     import("./haxcms-content-admin-dialog.js").then(() => {
-      const dialog = globalThis.document.createElement("haxcms-content-admin-dialog");
-      const title = fromSiteSettings
-        ? this._siteSettingsTrailTitle(this.t.content)
-        : this.t.content;
+      const dialog = globalThis.document.createElement(
+        "haxcms-content-admin-dialog",
+      );
+      let title = this.t.content;
+      let breadcrumbs = [];
+      if (fromSiteSettings) {
+        const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+          this.t.content,
+          "editor:insert-drive-file",
+        );
+        title = breadcrumbMeta.title;
+        breadcrumbs = breadcrumbMeta.breadcrumbs;
+      }
       dialog.addEventListener("haxcms-content-dashboard-operation", (e) => {
         globalThis.dispatchEvent(
           new CustomEvent("haxcms-content-dashboard-operation", {
@@ -5431,6 +5508,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           cancelable: false,
           detail: {
             title: title,
+            titleIcon: "editor:insert-drive-file",
+            breadcrumbs: breadcrumbs,
             styles: {
               "--simple-modal-titlebar-background": "black",
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
@@ -5457,9 +5536,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   _openFilesAdmin(fromSiteSettings = false) {
     import("./haxcms-files-admin-dialog.js").then(() => {
       const dialog = globalThis.document.createElement("haxcms-files-admin-dialog");
-      const title = fromSiteSettings
-        ? this._siteSettingsTrailTitle(this.t.files)
-        : this.t.files;
+      let title = this.t.files;
+      let breadcrumbs = [];
+      if (fromSiteSettings) {
+        const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+          this.t.files,
+          "icons:folder",
+        );
+        title = breadcrumbMeta.title;
+        breadcrumbs = breadcrumbMeta.breadcrumbs;
+      }
       dialog.addEventListener("haxcms-files-dashboard-operation", (e) => {
         globalThis.dispatchEvent(
           new CustomEvent("haxcms-files-dashboard-operation", {
@@ -5477,6 +5563,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           cancelable: false,
           detail: {
             title: title,
+            titleIcon: "icons:folder",
+            breadcrumbs: breadcrumbs,
             styles: {
               "--simple-modal-titlebar-background": "black",
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
@@ -5501,12 +5589,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
   }
   _openPlatformSettings(fromSiteSettings = false, sectionTitle = "Features") {
-    this.exportSiteAs("skeleton", {
+    const sectionIcon = this._platformSettingsIcon(sectionTitle);
+    const options = {
       platformSettings: true,
       modalTitle: fromSiteSettings
         ? this._siteSettingsTrailTitle(sectionTitle)
         : "Platform settings",
-    });
+      modalTitleIcon: sectionIcon,
+    };
+    if (fromSiteSettings) {
+      const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+        sectionTitle,
+        sectionIcon,
+      );
+      options.modalTitle = breadcrumbMeta.title;
+      options.modalBreadcrumbs = breadcrumbMeta.breadcrumbs;
+    }
+    this.exportSiteAs("skeleton", options);
   }
   _openSiteSettingsForm(
     target,
@@ -5520,15 +5619,25 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const settingsDialog = globalThis.document.createElement("haxcms-site-dashboard");
       settingsDialog.activeSection = section;
       let title = this.t.siteSettings;
+      let titleIcon = "settings";
+      let breadcrumbs = [];
       if (section === "theme") {
         title = this.t.themeSettings;
+        titleIcon = "lrn:palette";
       } else if (section === "seo") {
         title = this.t.seoSettings;
+        titleIcon = "icons:search";
       } else if (section === "author") {
         title = this.t.authorSettings;
+        titleIcon = "account-circle";
       }
       if (fromSiteSettings) {
-        title = this._siteSettingsTrailTitle(sectionTitle || title);
+        const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+          sectionTitle || title,
+          titleIcon,
+        );
+        title = breadcrumbMeta.title;
+        breadcrumbs = breadcrumbMeta.breadcrumbs;
       }
       globalThis.dispatchEvent(new CustomEvent("simple-modal-show", {
         bubbles: true,
@@ -5536,6 +5645,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         cancelable: false,
         detail: {
           title: title,
+          titleIcon: titleIcon,
+          breadcrumbs: breadcrumbs,
           styles: {
             "--simple-modal-titlebar-background": "black",
             "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",

@@ -109,6 +109,59 @@ class SimpleModal extends LitElement {
           );
           font-size: var(--ddd-theme-h3-font-size);
         }
+        #simple-modal-title {
+          margin: 0;
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          flex-wrap: wrap;
+        }
+        .title-inline {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          flex-wrap: wrap;
+        }
+        .title-icon,
+        .breadcrumb-icon {
+          --simple-icon-color: currentColor;
+          --simple-icon-width: var(--ddd-icon-xs, 20px);
+          --simple-icon-height: var(--ddd-icon-xs, 20px);
+        }
+        .breadcrumbs {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          flex-wrap: wrap;
+        }
+        .breadcrumb-separator {
+          display: inline-flex;
+          align-items: center;
+          opacity: 0.8;
+          font-size: var(--ddd-font-size-4xs, 12px);
+        }
+        .breadcrumb-button,
+        .breadcrumb-current {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          color: inherit;
+          font: inherit;
+          line-height: inherit;
+          border: 0;
+          background: transparent;
+          padding: 0;
+          margin: 0;
+          text-align: left;
+        }
+        .breadcrumb-button {
+          cursor: pointer;
+        }
+        .breadcrumb-button:hover,
+        .breadcrumb-button:focus-visible {
+          text-decoration: underline;
+          outline: none;
+        }
 
         #headerbar {
           margin: 0;
@@ -240,7 +293,7 @@ class SimpleModal extends LitElement {
     >
       <div id="titlebar" part="titlebar" class=${this.title ? "full" : "empty"}>
         <h3 id="simple-modal-title" ?hidden="${!this.title}" part="title" class=${this.title ? "hr-vert" : ""}>
-          ${this.title}
+          ${this._renderTitle()}
         </h3>
         <div></div>
         ${
@@ -325,6 +378,19 @@ class SimpleModal extends LitElement {
         type: String,
         reflect: true,
       },
+      /**
+       * Optional icon shown with the modal title
+       */
+      titleIcon: {
+        type: String,
+        attribute: "title-icon",
+      },
+      /**
+       * Optional breadcrumb metadata for title rendering
+       */
+      breadcrumbs: {
+        type: Array,
+      },
     };
   }
 
@@ -346,6 +412,8 @@ class SimpleModal extends LitElement {
     this.closeIcon = "close";
     this.modal = false;
     this.showClose = false;
+    this.titleIcon = "";
+    this.breadcrumbs = [];
   }
   /**
    * LitElement
@@ -423,6 +491,8 @@ class SimpleModal extends LitElement {
           e.detail.clone,
           e.detail.modal,
           e.detail.showClose,
+          e.detail.titleIcon,
+          e.detail.breadcrumbs,
         );
       }, 0);
     } else {
@@ -437,6 +507,8 @@ class SimpleModal extends LitElement {
         e.detail.clone,
         e.detail.modal,
         e.detail.showClose,
+        e.detail.titleIcon,
+        e.detail.breadcrumbs,
       );
     }
   }
@@ -454,12 +526,16 @@ class SimpleModal extends LitElement {
     clone = false,
     modal = false,
     showClose = false,
+    titleIcon = null,
+    breadcrumbs = [],
   ) {
     this.invokedBy = invokedBy;
     this.modal = modal;
     this.showClose = showClose;
     this.title = title;
     this.mode = mode;
+    this.titleIcon = titleIcon || "";
+    this.breadcrumbs = Array.isArray(breadcrumbs) ? breadcrumbs : [];
     let element;
     // append element areas into the appropriate slots
     // ensuring they are set if it wasn't previously
@@ -549,6 +625,8 @@ class SimpleModal extends LitElement {
       document.documentElement.style.overflow = "";
       // wipe the slot of our modal
       this.title = "";
+      this.titleIcon = "";
+      this.breadcrumbs = [];
       while (this.firstChild !== null) {
         this.removeChild(this.firstChild);
       }
@@ -673,6 +751,103 @@ class SimpleModal extends LitElement {
    */
   _getAriaLabel(title) {
     return !title ? "Modal Dialog" : null;
+  }
+  _renderTitle() {
+    if (Array.isArray(this.breadcrumbs) && this.breadcrumbs.length > 0) {
+      return this._renderBreadcrumbs();
+    }
+    if (this.titleIcon) {
+      return html`<span class="title-inline">
+        <simple-icon-lite
+          class="title-icon"
+          icon="${this.titleIcon}"
+          aria-hidden="true"
+        ></simple-icon-lite>
+        <span>${this.title}</span>
+      </span>`;
+    }
+    return this.title;
+  }
+  _renderBreadcrumbs() {
+    const crumbs = this.breadcrumbs.filter(
+      (crumb) => crumb && crumb.label && typeof crumb.label === "string",
+    );
+    if (crumbs.length === 0) {
+      return this.title;
+    }
+    const lastIndex = crumbs.length - 1;
+    return html`<nav class="breadcrumbs" aria-label="Modal breadcrumb">
+      ${crumbs.map((crumb, index) => {
+        const icon =
+          crumb.icon || (index === lastIndex && this.titleIcon ? this.titleIcon : "");
+        const clickable = this._isBreadcrumbClickable(crumb, index, lastIndex);
+        const item = clickable
+          ? html`<button
+              type="button"
+              class="breadcrumb-button"
+              @click="${(e) => this._handleBreadcrumbClick(crumb, index, e)}"
+            >
+              ${icon
+                ? html`<simple-icon-lite
+                    class="breadcrumb-icon"
+                    icon="${icon}"
+                    aria-hidden="true"
+                  ></simple-icon-lite>`
+                : ``}
+              <span>${crumb.label}</span>
+            </button>`
+          : html`<span class="breadcrumb-current" aria-current="page">
+              ${icon
+                ? html`<simple-icon-lite
+                    class="breadcrumb-icon"
+                    icon="${icon}"
+                    aria-hidden="true"
+                  ></simple-icon-lite>`
+                : ``}
+              <span>${crumb.label}</span>
+            </span>`;
+        return html`${index > 0
+            ? html`<span class="breadcrumb-separator" aria-hidden="true"
+                >&gt;</span
+              >`
+            : ``}${item}`;
+      })}
+    </nav>`;
+  }
+  _isBreadcrumbClickable(crumb, index, lastIndex) {
+    if (index >= lastIndex) {
+      return false;
+    }
+    if (crumb.clickable === false) {
+      return false;
+    }
+    if (crumb.action || typeof crumb.onClick === "function") {
+      return true;
+    }
+    return false;
+  }
+  _handleBreadcrumbClick(crumb, index, e) {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
+    const detail = {
+      breadcrumb: crumb,
+      index: index,
+      breadcrumbs: this.breadcrumbs,
+      title: this.title,
+    };
+    if (crumb && typeof crumb.onClick === "function") {
+      crumb.onClick(detail);
+    }
+    this.dispatchEvent(
+      new CustomEvent("simple-modal-breadcrumb-click", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: detail,
+      }),
+    );
   }
 }
 globalThis.customElements.define(SimpleModal.tag, SimpleModal);

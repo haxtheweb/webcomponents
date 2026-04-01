@@ -1,4 +1,5 @@
 import { html, css } from "lit";
+import { keyed } from "lit/directives/keyed.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
@@ -15,9 +16,7 @@ class HAXCMSContentAdminDialog extends DDD {
       selectedIds: { type: Array },
       textFilter: { type: String, attribute: "text-filter" },
       statusFilter: { type: String, attribute: "status-filter" },
-      findText: { type: String, attribute: "find-text" },
-      replaceText: { type: String, attribute: "replace-text" },
-      replaceScope: { type: String, attribute: "replace-scope" },
+      searchText: { type: String, attribute: "search-text" },
     };
   }
 
@@ -27,9 +26,7 @@ class HAXCMSContentAdminDialog extends DDD {
     this.selectedIds = [];
     this.textFilter = "";
     this.statusFilter = "any";
-    this.findText = "";
-    this.replaceText = "";
-    this.replaceScope = "selected";
+    this.searchText = "";
     this.__disposer = [];
   }
 
@@ -47,7 +44,7 @@ class HAXCMSContentAdminDialog extends DDD {
         }
         .filters,
         .bulk,
-        .search-replace {
+        .search {
           border: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-md);
           padding: var(--ddd-spacing-3);
@@ -55,7 +52,7 @@ class HAXCMSContentAdminDialog extends DDD {
         }
         .filters-title,
         .bulk-title,
-        .search-replace-title {
+        .search-title {
           margin: 0 0 var(--ddd-spacing-2) 0;
           font-size: var(--ddd-font-size-s);
           font-weight: var(--ddd-font-weight-medium);
@@ -248,12 +245,12 @@ class HAXCMSContentAdminDialog extends DDD {
     this.statusFilter = e.target.value;
   }
 
-  _onSelectAll(e) {
-    if (e.target.checked) {
-      this.selectedIds = this.filteredRows.map((row) => row.id);
-    } else {
-      this.selectedIds = [];
-    }
+  _selectAllVisible() {
+    this.selectedIds = this.filteredRows.map((row) => row.id);
+  }
+
+  _clearSelection() {
+    this.selectedIds = [];
   }
 
   _onSelectRow(e) {
@@ -270,12 +267,7 @@ class HAXCMSContentAdminDialog extends DDD {
     this.selectedIds = Array.from(selected);
   }
 
-  _selectedVisibleCount() {
-    const selected = new Set(this.selectedIds);
-    return this.filteredRows.filter((row) => selected.has(row.id)).length;
-  }
-
-  _applyBulkOperation(e) {
+  _applyBulkOperation() {
     const select = this.shadowRoot.querySelector("#bulk-action");
     const action = select ? select.value : "";
     if (!action || this.selectedIds.length === 0) {
@@ -302,30 +294,12 @@ class HAXCMSContentAdminDialog extends DDD {
     );
   }
 
-  _onFindText(e) {
-    this.findText = e.target.value;
+  _onSearchText(e) {
+    this.searchText = e.target.value;
   }
 
-  _onReplaceText(e) {
-    this.replaceText = e.target.value;
-  }
-
-  _onReplaceScope(e) {
-    this.replaceScope = e.target.value;
-  }
-
-  _applySearchReplace(e) {
-    if (!this.findText || this.findText.trim() === "") {
-      return;
-    }
-    const useSelected = this.replaceScope === "selected";
-    if (useSelected && this.selectedIds.length === 0) {
-      return;
-    }
-    const summary = useSelected
-      ? `Replace "${this.findText}" in ${this.selectedIds.length} selected item(s)?`
-      : `Replace "${this.findText}" across the entire site?`;
-    if (!globalThis.confirm(summary)) {
+  _applySearch() {
+    if (!this.searchText || this.searchText.trim() === "") {
       return;
     }
     this.dispatchEvent(
@@ -334,20 +308,14 @@ class HAXCMSContentAdminDialog extends DDD {
         composed: true,
         cancelable: true,
         detail: {
-          operation: "search-replace",
-          scope: this.replaceScope,
-          itemIds: useSelected ? [...this.selectedIds] : [],
-          find: this.findText,
-          replace: this.replaceText,
+          operation: "search",
+          query: this.searchText,
         },
       }),
     );
   }
 
   render() {
-    const visibleSelected = this._selectedVisibleCount();
-    const allVisibleSelected =
-      this.filteredRows.length > 0 && visibleSelected === this.filteredRows.length;
     return html`
       <div class="filters">
         <h3 class="filters-title">Show only items where</h3>
@@ -369,6 +337,12 @@ class HAXCMSContentAdminDialog extends DDD {
               placeholder="title, parent, tags, slug"
             />
           </label>
+          <button @click="${this._selectAllVisible}" ?disabled="${this.filteredRows.length === 0}">
+            Select all shown
+          </button>
+          <button @click="${this._clearSelection}" ?disabled="${this.selectedIds.length === 0}">
+            Clear selection
+          </button>
         </div>
       </div>
       <div class="bulk" ?hidden="${this.selectedIds.length === 0}">
@@ -386,60 +360,27 @@ class HAXCMSContentAdminDialog extends DDD {
         </div>
         <div class="selected-count">${this.selectedIds.length} selected</div>
       </div>
-      <div class="search-replace">
-        <h3 class="search-replace-title">Search and replace</h3>
+      <div class="search">
+        <h3 class="search-title">Search content</h3>
         <div class="controls">
           <label>
-            find
-            <input type="text" .value="${this.findText}" @input="${this._onFindText}" />
+            query
+            <input type="text" .value="${this.searchText}" @input="${this._onSearchText}" />
           </label>
-          <label>
-            replace
-            <input
-              type="text"
-              .value="${this.replaceText}"
-              @input="${this._onReplaceText}"
-            />
-          </label>
-          <label>
-            scope
-            <select .value="${this.replaceScope}" @change="${this._onReplaceScope}">
-              <option value="selected">selected rows</option>
-              <option value="site">entire site</option>
-            </select>
-          </label>
-          <button
-            @click="${this._applySearchReplace}"
-            ?disabled="${!this.findText ||
-            (this.replaceScope === "selected" && this.selectedIds.length === 0)}"
-          >
-            Run replace
+          <button @click="${this._applySearch}" ?disabled="${!this.searchText}">
+            Search
           </button>
         </div>
       </div>
       ${this.filteredRows.length === 0
         ? html`<div class="empty">No matching content found.</div>`
-        : html`
-            <editable-table
-              bordered
-              condensed
-              column-header
-              filter
-              sort
-              striped
-              scroll
-            >
+        : keyed(
+            `${this.statusFilter}|${this.textFilter}|${this.filteredRows.length}`,
+            html`<editable-table bordered condensed column-header sort striped scroll>
               <table>
                 <thead>
                   <tr>
-                    <th>
-                      <input
-                        type="checkbox"
-                        aria-label="Select all content"
-                        .checked="${allVisibleSelected}"
-                        @change="${this._onSelectAll}"
-                      />
-                    </th>
+                    <th>Select</th>
                     <th>Title</th>
                     <th>Status</th>
                     <th>Updated</th>
@@ -461,7 +402,7 @@ class HAXCMSContentAdminDialog extends DDD {
                             @change="${this._onSelectRow}"
                           />
                         </td>
-                        <td>${row.title}</td>
+                        <td><a href="${row.slug}">${row.title}</a></td>
                         <td>${row.statusLabel}</td>
                         <td>${row.updatedLabel}</td>
                         <td>${row.parent}</td>
@@ -472,8 +413,8 @@ class HAXCMSContentAdminDialog extends DDD {
                   )}
                 </tbody>
               </table>
-            </editable-table>
-          `}
+            </editable-table>`,
+          )}
     `;
   }
 }

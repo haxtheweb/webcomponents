@@ -160,9 +160,6 @@ class CleanOne extends LTIResizingMixin(
           --simple-icon-fill-color: var(
             --haxcms-user-styles-color-theme-color-1
           );
-          --simple-icon-button-background-color: var(
-            --ddd-palette-color-1
-          );
 
         }
 

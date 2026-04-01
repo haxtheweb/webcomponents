@@ -439,6 +439,16 @@ export async function _exportSiteAsSkeleton(manifest, title, baseUrl, options = 
         : options && options.platformSettings
           ? "Platform settings"
           : "Site skeleton";
+    const modalTitleIcon =
+      options && options.modalTitleIcon
+        ? options.modalTitleIcon
+        : options && options.platformSettings
+          ? "hax:add-item"
+          : "icons:description";
+    const modalBreadcrumbs =
+      options && Array.isArray(options.modalBreadcrumbs)
+        ? options.modalBreadcrumbs
+        : [];
     const modalStyles =
       options && options.platformSettings
         ? {
@@ -474,6 +484,8 @@ export async function _exportSiteAsSkeleton(manifest, title, baseUrl, options = 
         composed: true,
         detail: {
           title: modalTitle,
+          titleIcon: modalTitleIcon,
+          breadcrumbs: modalBreadcrumbs,
           elements: {
             content: el,
           },
