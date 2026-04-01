@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "bierner.lit-html",
+        "deque-systems.vscode-axe-linter",
+        "ecmel.vscode-html-css",
+        "oliversturm.fix-json",
+        "runem.lit-plugin",
+        "yzhang.markdown-all-in-one",
+        "zdodson.dddignore",
+        "ms-vscode-remote.remote-containers"
+    ]
+}
