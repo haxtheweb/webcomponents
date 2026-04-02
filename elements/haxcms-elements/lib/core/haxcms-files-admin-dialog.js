@@ -36,12 +36,32 @@ class HAXCMSFilesAdminDialog extends DDD {
       super.styles,
       css`
         :host {
-          display: block;
+          --haxcms-admin-panel-height: calc(
+            var(--simple-modal-height, 85vh) -
+              var(--simple-modal-titlebar-height, 80px) - var(--ddd-spacing-8, 32px)
+          );
+          display: flex;
+          flex-direction: column;
           min-width: 80vw;
-          min-height: 70vh;
-          overflow: auto;
-          padding: var(--ddd-spacing-4);
+          min-height: min(60vh, var(--haxcms-admin-panel-height));
+          height: var(--haxcms-admin-panel-height);
+          max-height: var(--haxcms-admin-panel-height);
+          overflow: hidden;
           font-family: var(--ddd-font-navigation);
+        }
+        .panel-shell {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          min-height: 0;
+          padding: var(--ddd-spacing-4);
+          gap: var(--ddd-spacing-3);
+        }
+        .panel-scroll {
+          flex: 1;
+          min-height: 0;
+          overflow-y: auto;
+          padding-right: var(--ddd-spacing-1);
         }
         .panel {
           border: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
@@ -184,13 +204,26 @@ class HAXCMSFilesAdminDialog extends DDD {
     if (!browse) {
       return null;
     }
-    const protocol = app.connection.protocol || "https";
-    let url = `${protocol}://${app.connection.url || ""}`;
-    if (url.slice(-1) !== "/") {
-      url += "/";
-    }
+    let url = "";
     if (browse.endPoint) {
-      url += browse.endPoint;
+      if (
+        browse.endPoint.indexOf("http://") === 0 ||
+        browse.endPoint.indexOf("https://") === 0
+      ) {
+        url = browse.endPoint;
+      } else {
+        if (app.connection && app.connection.url) {
+          const protocol = app.connection.protocol || "https";
+          url = `${protocol}://${app.connection.url || ""}`;
+          if (url.slice(-1) !== "/") {
+            url += "/";
+          }
+        }
+        url += browse.endPoint;
+      }
+    }
+    if (!url) {
+      return null;
     }
     const params = {};
     Object.assign(params, app.connection.data || {}, browse.data || {});
@@ -414,104 +447,108 @@ class HAXCMSFilesAdminDialog extends DDD {
       this.filteredRows.length > 0 &&
       this.filteredRows.every((row) => this.selectedIds.includes(row.id));
     return html`
-      <div class="panel">
-        <h3 class="title">Show only items where</h3>
-        <div class="controls">
-          <label>
-            type
-            <select .value="${this.typeFilter}" @change="${this._onTypeFilter}">
-              <option value="any">any</option>
-              <option value="image">image</option>
-              <option value="video">video</option>
-              <option value="audio">audio</option>
-              <option value="document">document</option>
-              <option value="file">file</option>
-            </select>
-          </label>
-          <label>
-            text
-            <input
-              type="text"
-              .value="${this.textFilter}"
-              @input="${this._onTextFilter}"
-              placeholder="name, type, url"
-            />
-          </label>
-          <button @click="${this.loadFiles}" ?disabled="${this.loading}">
-            ${this.loading ? "Loading..." : "Refresh"}
-          </button>
-        </div>
-      </div>
-      <div class="panel" ?hidden="${this.selectedIds.length === 0}">
-        <h3 class="title">Update options</h3>
-        <div class="controls">
-          <button @click="${this._bulkDelete}">Delete selected files</button>
-        </div>
-      </div>
-      <div class="panel">
-        <h3 class="title">Bulk upload</h3>
-        <div class="controls">
-          <button @click="${this._openExistingUploadWorkflow}">
-            Open existing upload workflow
-          </button>
-        </div>
-      </div>
-      <editable-table bordered condensed column-header filter sort striped scroll>
-        <table>
-          <thead>
-            <tr>
-              <th>
+      <div class="panel-shell">
+        <div class="panel-scroll">
+          <div class="panel">
+            <h3 class="title">Show only items where</h3>
+            <div class="controls">
+              <label>
+                type
+                <select .value="${this.typeFilter}" @change="${this._onTypeFilter}">
+                  <option value="any">any</option>
+                  <option value="image">image</option>
+                  <option value="video">video</option>
+                  <option value="audio">audio</option>
+                  <option value="document">document</option>
+                  <option value="file">file</option>
+                </select>
+              </label>
+              <label>
+                text
                 <input
-                  type="checkbox"
-                  aria-label="Select all files"
-                  .checked="${allVisibleSelected}"
-                  @change="${this._onSelectAll}"
+                  type="text"
+                  .value="${this.textFilter}"
+                  @input="${this._onTextFilter}"
+                  placeholder="name, type, url"
                 />
-              </th>
-              <th>Title</th>
-              <th>Type</th>
-              <th>Updated</th>
-              <th>Used in</th>
-              <th>Operations</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${this.filteredRows.map(
-              (row) => html`
+              </label>
+              <button @click="${this.loadFiles}" ?disabled="${this.loading}">
+                ${this.loading ? "Loading..." : "Refresh"}
+              </button>
+            </div>
+          </div>
+          <div class="panel" ?hidden="${this.selectedIds.length === 0}">
+            <h3 class="title">Update options</h3>
+            <div class="controls">
+              <button @click="${this._bulkDelete}">Delete selected files</button>
+            </div>
+          </div>
+          <div class="panel">
+            <h3 class="title">Bulk upload</h3>
+            <div class="controls">
+              <button @click="${this._openExistingUploadWorkflow}">
+                Open existing upload workflow
+              </button>
+            </div>
+          </div>
+          <editable-table bordered condensed column-header filter sort striped scroll>
+            <table>
+              <thead>
                 <tr>
-                  <td>
+                  <th>
                     <input
                       type="checkbox"
-                      aria-label="Select ${row.name}"
-                      data-id="${row.id}"
-                      .checked="${this.selectedIds.includes(row.id)}"
-                      @change="${this._onSelectRow}"
+                      aria-label="Select all files"
+                      .checked="${allVisibleSelected}"
+                      @change="${this._onSelectAll}"
                     />
-                  </td>
-                  <td>${row.name}</td>
-                  <td>${row.type}</td>
-                  <td>${row.updatedLabel}</td>
-                  <td>${row.usedIn} place(s)</td>
-                  <td>
-                    <simple-icon-button-lite
-                      class="op-btn"
-                      icon="create"
-                      label="Edit ${row.name}"
-                      @click="${() => this._editFile(row)}"
-                    ></simple-icon-button-lite>
-                    <simple-icon-button-lite
-                      class="op-btn"
-                      icon="delete"
-                      label="Delete ${row.name}"
-                      @click="${() => this._deleteFile(row)}"
-                    ></simple-icon-button-lite>
-                  </td>
+                  </th>
+                  <th>Title</th>
+                  <th>Type</th>
+                  <th>Updated</th>
+                  <th>Used in</th>
+                  <th>Operations</th>
                 </tr>
-              `,
-            )}
-          </tbody>
-        </table>
-      </editable-table>
+              </thead>
+              <tbody>
+                ${this.filteredRows.map(
+                  (row) => html`
+                    <tr>
+                      <td>
+                        <input
+                          type="checkbox"
+                          aria-label="Select ${row.name}"
+                          data-id="${row.id}"
+                          .checked="${this.selectedIds.includes(row.id)}"
+                          @change="${this._onSelectRow}"
+                        />
+                      </td>
+                      <td>${row.name}</td>
+                      <td>${row.type}</td>
+                      <td>${row.updatedLabel}</td>
+                      <td>${row.usedIn} place(s)</td>
+                      <td>
+                        <simple-icon-button-lite
+                          class="op-btn"
+                          icon="create"
+                          label="Edit ${row.name}"
+                          @click="${() => this._editFile(row)}"
+                        ></simple-icon-button-lite>
+                        <simple-icon-button-lite
+                          class="op-btn"
+                          icon="delete"
+                          label="Delete ${row.name}"
+                          @click="${() => this._deleteFile(row)}"
+                        ></simple-icon-button-lite>
+                      </td>
+                    </tr>
+                  `,
+                )}
+              </tbody>
+            </table>
+          </editable-table>
+        </div>
+      </div>
     `;
   }
 }

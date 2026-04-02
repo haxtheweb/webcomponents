@@ -40,13 +40,33 @@ class HAXCMSContentAdminDialog extends DDD {
       super.styles,
       css`
         :host {
-          display: block;
+          --haxcms-admin-panel-height: calc(
+            var(--simple-modal-height, 85vh) -
+              var(--simple-modal-titlebar-height, 80px) - var(--ddd-spacing-8, 32px)
+          );
+          display: flex;
+          flex-direction: column;
           min-width: 75vw;
-          min-height: 70vh;
-          overflow: auto;
-          padding: var(--ddd-spacing-4);
+          min-height: min(60vh, var(--haxcms-admin-panel-height));
+          height: var(--haxcms-admin-panel-height);
+          max-height: var(--haxcms-admin-panel-height);
+          overflow: hidden;
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-5xs, 0.7rem);
+        }
+        .panel-shell {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          min-height: 0;
+          padding: var(--ddd-spacing-4);
+          gap: var(--ddd-spacing-3);
+        }
+        .panel-scroll {
+          flex: 1;
+          min-height: 0;
+          overflow-y: auto;
+          padding-right: var(--ddd-spacing-1);
         }
         .filters,
         .bulk {
@@ -447,121 +467,125 @@ class HAXCMSContentAdminDialog extends DDD {
       this.filteredRows.length > 0 &&
       this.filteredRows.every((row) => this.selectedIds.includes(row.id));
     return html`
-      <div class="filters">
-        <h3 class="filters-title">Show only items where</h3>
-        <div class="controls">
-          <label>
-            filter by
-            <select .value="${this.filterField}" @change="${this._onFilterField}">
-              <option value="visibility">visibility</option>
-              <option value="tags">tags</option>
-              <option value="parents">parents</option>
-              <option value="search">search content</option>
-            </select>
-          </label>
-          ${this.filterField === "visibility"
-            ? html`<label>
-                value
-                <select .value="${this.filterValue}" @change="${this._onFilterValue}">
-                  <option value="any">any</option>
-                  <option value="published">published</option>
-                  <option value="unpublished">unpublished</option>
-                  <option value="visible">visible</option>
-                  <option value="not-visible">not visible</option>
+      <div class="panel-shell">
+        <div class="panel-scroll">
+          <div class="filters">
+            <h3 class="filters-title">Show only items where</h3>
+            <div class="controls">
+              <label>
+                filter by
+                <select .value="${this.filterField}" @change="${this._onFilterField}">
+                  <option value="visibility">visibility</option>
+                  <option value="tags">tags</option>
+                  <option value="parents">parents</option>
+                  <option value="search">search content</option>
                 </select>
-              </label>`
-            : html`<label>
-                value
-                <input
-                  type="text"
-                  .value="${this.filterValue}"
-                  @input="${this._onFilterValue}"
-                  placeholder="${this._searchPlaceholder()}"
-                />
-              </label>`}
-          ${this.filterField === "search"
-            ? html`<button
-                @click="${this._applySearch}"
-                ?disabled="${!this.filterValue || this.searchLoading}"
-              >
-                ${this.searchLoading ? "Searching..." : "Search content"}
-              </button>`
-            : ``}
-          <button @click="${this._selectAllVisible}" ?disabled="${this.filteredRows.length === 0}">
-            Select all shown
-          </button>
-          <button @click="${this._clearSelection}" ?disabled="${this.selectedIds.length === 0}">
-            Clear selection
-          </button>
-        </div>
-      </div>
-      <div class="bulk" ?hidden="${this.selectedIds.length === 0}">
-        <h3 class="bulk-title">Update options</h3>
-        <div class="controls">
-          <label>
-            action
-            <select id="bulk-action">
-              <option value="publish">Publish selected content</option>
-              <option value="unpublish">Unpublish selected content</option>
-              <option value="delete">Delete selected content</option>
-            </select>
-          </label>
-          <button @click="${this._applyBulkOperation}">Update</button>
-        </div>
-        <div class="selected-count">${this.selectedIds.length} selected</div>
-      </div>
-      ${this.filteredRows.length === 0
-        ? html`<div class="empty">No matching content found.</div>`
-        : keyed(
-            `${this.filterField}|${this.filterValue}|${this.filteredRows.length}`,
-            html`<editable-table bordered condensed column-header sort striped scroll>
-              <table>
-                <thead>
-                  <tr>
-                    <th>
-                      <input
-                        type="checkbox"
-                        aria-label="Select all shown content"
-                        .checked="${allVisibleSelected}"
-                        @change="${this._onSelectAllRows}"
-                      />
-                    </th>
-                    <th>Title</th>
-                    <th>Status</th>
-                    <th>Updated</th>
-                    <th>Parent</th>
-                    <th>Slug</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${this.filteredRows.map(
-                    (row) => html`
+              </label>
+              ${this.filterField === "visibility"
+                ? html`<label>
+                    value
+                    <select .value="${this.filterValue}" @change="${this._onFilterValue}">
+                      <option value="any">any</option>
+                      <option value="published">published</option>
+                      <option value="unpublished">unpublished</option>
+                      <option value="visible">visible</option>
+                      <option value="not-visible">not visible</option>
+                    </select>
+                  </label>`
+                : html`<label>
+                    value
+                    <input
+                      type="text"
+                      .value="${this.filterValue}"
+                      @input="${this._onFilterValue}"
+                      placeholder="${this._searchPlaceholder()}"
+                    />
+                  </label>`}
+              ${this.filterField === "search"
+                ? html`<button
+                    @click="${this._applySearch}"
+                    ?disabled="${!this.filterValue || this.searchLoading}"
+                  >
+                    ${this.searchLoading ? "Searching..." : "Search content"}
+                  </button>`
+                : ``}
+              <button @click="${this._selectAllVisible}" ?disabled="${this.filteredRows.length === 0}">
+                Select all shown
+              </button>
+              <button @click="${this._clearSelection}" ?disabled="${this.selectedIds.length === 0}">
+                Clear selection
+              </button>
+            </div>
+          </div>
+          <div class="bulk" ?hidden="${this.selectedIds.length === 0}">
+            <h3 class="bulk-title">Update options</h3>
+            <div class="controls">
+              <label>
+                action
+                <select id="bulk-action">
+                  <option value="publish">Publish selected content</option>
+                  <option value="unpublish">Unpublish selected content</option>
+                  <option value="delete">Delete selected content</option>
+                </select>
+              </label>
+              <button @click="${this._applyBulkOperation}">Update</button>
+            </div>
+            <div class="selected-count">${this.selectedIds.length} selected</div>
+          </div>
+          ${this.filteredRows.length === 0
+            ? html`<div class="empty">No matching content found.</div>`
+            : keyed(
+                `${this.filterField}|${this.filterValue}|${this.filteredRows.length}`,
+                html`<editable-table bordered condensed column-header sort striped scroll>
+                  <table>
+                    <thead>
                       <tr>
-                        <td>
+                        <th>
                           <input
                             type="checkbox"
-                            aria-label="Select ${row.title}"
-                            data-id="${row.id}"
-                            .checked="${this.selectedIds.includes(row.id)}"
-                            @change="${this._onSelectRow}"
+                            aria-label="Select all shown content"
+                            .checked="${allVisibleSelected}"
+                            @change="${this._onSelectAllRows}"
                           />
-                        </td>
-                        <td><a href="${row.slug}">${row.title}</a></td>
-                        <td>${row.statusLabel}</td>
-                        <td>${row.updatedLabel}</td>
-                        <td>
-                          ${row.parentSlug
-                            ? html`<a href="${row.parentSlug}">${row.parent}</a>`
-                            : html`—`}
-                        </td>
-                        <td>${row.slug}</td>
+                        </th>
+                        <th>Title</th>
+                        <th>Status</th>
+                        <th>Updated</th>
+                        <th>Parent</th>
+                        <th>Slug</th>
                       </tr>
-                    `,
-                  )}
-                </tbody>
-              </table>
-            </editable-table>`,
-          )}
+                    </thead>
+                    <tbody>
+                      ${this.filteredRows.map(
+                        (row) => html`
+                          <tr>
+                            <td>
+                              <input
+                                type="checkbox"
+                                aria-label="Select ${row.title}"
+                                data-id="${row.id}"
+                                .checked="${this.selectedIds.includes(row.id)}"
+                                @change="${this._onSelectRow}"
+                              />
+                            </td>
+                            <td><a href="${row.slug}">${row.title}</a></td>
+                            <td>${row.statusLabel}</td>
+                            <td>${row.updatedLabel}</td>
+                            <td>
+                              ${row.parentSlug
+                                ? html`<a href="${row.parentSlug}">${row.parent}</a>`
+                                : html`—`}
+                            </td>
+                            <td>${row.slug}</td>
+                          </tr>
+                        `,
+                      )}
+                    </tbody>
+                  </table>
+                </editable-table>`,
+              )}
+        </div>
+      </div>
     `;
   }
 }

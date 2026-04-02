@@ -1,0 +1,30 @@
+[
+  {
+    "path": "files/IST402.004-SP2122-Ollendyke.pdf",
+    "fullUrl": "/demo/files/IST402.004-SP2122-Ollendyke.pdf",
+    "url": "files/IST402.004-SP2122-Ollendyke.pdf",
+    "mimetype": "application/pdf",
+    "name": "IST402.004-SP2122-Ollendyke.pdf"
+  },
+  {
+    "path": "files/IST402.002-FA2122-Ollendyke.pdf",
+    "fullUrl": "/demo/files/IST402.002-FA2122-Ollendyke.pdf",
+    "url": "files/IST402.002-FA2122-Ollendyke.pdf",
+    "mimetype": "application/pdf",
+    "name": "IST402.002-FA2122-Ollendyke.pdf"
+  },
+  {
+    "path": "files/Screenshot from 2023-04-21 09-46-40.png",
+    "fullUrl": "/demo/files/Screenshot from 2023-04-21 09-46-40.png",
+    "url": "files/Screenshot from 2023-04-21 09-46-40.png",
+    "mimetype": "image/png",
+    "name": "Screenshot from 2023-04-21 09-46-40.png"
+  },
+  {
+    "path": "files/Screenshot from 2023-02-17 15-54-46.png",
+    "fullUrl": "/demo/files/Screenshot from 2023-02-17 15-54-46.png",
+    "url": "files/Screenshot from 2023-02-17 15-54-46.png",
+    "mimetype": "image/png",
+    "name": "Screenshot from 2023-02-17 15-54-46.png"
+  }
+]

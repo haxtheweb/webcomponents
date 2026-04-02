@@ -33,8 +33,28 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     return [
       css`
         :host {
+          --haxcms-admin-panel-height: calc(
+            var(--simple-modal-height, 85vh) -
+              var(--simple-modal-titlebar-height, 80px) - var(--ddd-spacing-8, 32px)
+          );
           display: flex;
           flex-direction: column;
+          min-height: min(60vh, var(--haxcms-admin-panel-height));
+          height: var(--haxcms-admin-panel-height);
+          max-height: var(--haxcms-admin-panel-height);
+          overflow: hidden;
+        }
+        .panel-shell {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          min-height: 0;
+        }
+        .panel-scroll {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          min-height: 0;
           overflow: hidden;
         }
         :host([hide-results*="link-status-false"]) .link-status-false,
@@ -174,8 +194,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         .reports,
         .tab-content-wrapper {
           padding: var(--ddd-spacing-4);
-          max-height: 100%;
-          overflow-y: auto;
         }
         a11y-tab#reports loading-indicator {
           --loading-indicator-color: var(--ddd-theme-default-futureLime);
@@ -688,8 +706,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       base = globalThis.document.querySelector("base").href;
     }
     return html`
-      ${this.pageSelector()}
-      <a11y-tabs
+      <div class="panel-shell">
+        <div class="panel-scroll">
+          ${this.pageSelector()}
+          <a11y-tabs
         id="tabs"
         full-width
         @a11y-tabs-active-changed="${this.activeChanged}"
@@ -1149,7 +1169,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
               `
             : ``}
         </a11y-tab>
-      </a11y-tabs>
+          </a11y-tabs>
+        </div>
+      </div>
     `;
   }
   // alt feedback

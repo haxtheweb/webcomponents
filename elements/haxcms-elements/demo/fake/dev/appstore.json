@@ -532,7 +532,7 @@
         "operations": {
           "browse": {
             "method": "GET",
-            "endPoint": "system/loadFiles.php",
+            "endPoint": "/elements/haxcms-elements/demo/system/listFiles",
             "pagination": {
               "style": "link",
               "props": {

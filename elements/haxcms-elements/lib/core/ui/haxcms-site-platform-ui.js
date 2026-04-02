@@ -199,10 +199,19 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       super.styles,
       css`
         :host {
-          display: block;
+          --haxcms-admin-panel-height: calc(
+            var(--simple-modal-height, 85vh) -
+              var(--simple-modal-titlebar-height, 80px) - var(--ddd-spacing-8, 32px)
+          );
+          display: flex;
+          flex-direction: column;
           box-sizing: border-box;
           font-family: var(--ddd-font-primary);
           min-width: 70vw;
+          min-height: min(60vh, var(--haxcms-admin-panel-height));
+          height: var(--haxcms-admin-panel-height);
+          max-height: var(--haxcms-admin-panel-height);
+          overflow: hidden;
           padding: var(--ddd-spacing-4);
           color: light-dark(
             var(--ddd-theme-default-coalyGray),
@@ -212,6 +221,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
             var(--ddd-theme-default-white),
             var(--ddd-theme-default-coalyGray)
           );
+          flex-shrink: 0;
         }
 
         :host([busy]) {
@@ -229,6 +239,20 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           margin: 0;
           font-size: var(--ddd-font-size-xs);
           font-weight: var(--ddd-font-weight-bold);
+        }
+        .panel-shell {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          min-height: 0;
+        }
+        .panel-scroll {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          min-height: 0;
+          overflow-y: auto;
+          padding-right: var(--ddd-spacing-1);
         }
 
         .row {
@@ -389,21 +413,21 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
         }
 
         .actions {
-          position: sticky;
-          bottom: 0;
           display: flex;
           justify-content: flex-end;
           gap: var(--ddd-spacing-3);
           padding-top: var(--ddd-spacing-4);
           margin-top: var(--ddd-spacing-4);
-          background: linear-gradient(
-            to top,
+          border-top: var(--ddd-border-xs) solid
             light-dark(
-              var(--ddd-theme-default-white),
-              var(--ddd-theme-default-coalyGray)
-            ) 60%,
-            transparent
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
           );
+          flex-shrink: 0;
         }
 
         button.action {
@@ -541,9 +565,11 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
 
     let toolbarImgPath = new URL(`./assets/${this.audience.toLowerCase()}.png`, import.meta.url).href
     return html`
-      <h2>${this.t.title}</h2>
+      <div class="panel-shell">
+        <div class="panel-scroll">
+          <h2>${this.t.title}</h2>
 
-      <div class="row">
+          <div class="row">
         <div class="section">
           <!-- <div class="audience"> -->
             <div class="audience-content">
@@ -558,7 +584,11 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
               )}
             </select>
             </div>
-            <img class="toolbar-img" src=${toolbarImgPath}>
+            <img
+              class="toolbar-img"
+              src=${toolbarImgPath}
+              alt="${this.audience} editing toolbar preview"
+            />
             </div>
             ${this.pageCount > 20
               ? html`<div class="note">${this.t.largeSiteWarning}</div>`
@@ -694,18 +724,19 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           </div>
           </details>
       </div>
-
-      <div class="actions">
-        <button
-          class="action"
-          @click="${this.platformSettingsMode ? this._savePlatformSettings : this._download}"
-        >
-          ${this.busy
-            ? this.t.generating
-            : this.platformSettingsMode
-              ? this.t.save
-              : this.t.download}
-        </button>
+        </div>
+        <div class="actions">
+          <button
+            class="action"
+            @click="${this.platformSettingsMode ? this._savePlatformSettings : this._download}"
+          >
+            ${this.busy
+              ? this.t.generating
+              : this.platformSettingsMode
+                ? this.t.save
+                : this.t.download}
+          </button>
+        </div>
       </div>
     `
   }
