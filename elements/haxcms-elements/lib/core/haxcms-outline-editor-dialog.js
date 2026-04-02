@@ -63,17 +63,10 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           cursor: pointer;
           transition: background-color 0.3s ease;
         }
-        button.hax-modal-btn.cancel {
-          background-color: var(--ddd-theme-default-original87Pink);
-        }
         button.hax-modal-btn:hover,
         button.hax-modal-btn:focus {
           outline: 2px solid var(--ddd-theme-default-keystoneYellow);
           background-color: var(--ddd-theme-default-nittanyNavy);
-        }
-        button.hax-modal-btn.cancel:hover,
-        button.hax-modal-btn.cancel:focus {
-          background-color: var(--ddd-theme-default-error);
         }
       `,
     ];
@@ -97,9 +90,6 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
         <button @click="${this._saveTap}" class="hax-modal-btn">
           ${this.t.save}
         </button>
-        <button @click="${this._cancelTap}" class="cancel hax-modal-btn">
-          ${this.t.cancel}
-        </button>
       </div>
     `;
   }
@@ -112,7 +102,6 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     this.t = {
       ...this.t,
       save: "Save",
-      cancel: "Cancel",
     };
   }
   static get properties() {
@@ -265,17 +254,6 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
         );
       }, 0);
     }
-  }
-  _cancelTap(e) {
-    store.playSound("error");
-    this.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: false,
-      }),
-    );
   }
 }
 globalThis.customElements.define(

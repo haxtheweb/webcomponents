@@ -14,9 +14,11 @@ class HAXCMSContentAdminDialog extends DDD {
     return {
       rows: { type: Array },
       selectedIds: { type: Array },
-      textFilter: { type: String, attribute: "text-filter" },
-      statusFilter: { type: String, attribute: "status-filter" },
-      searchText: { type: String, attribute: "search-text" },
+      filterField: { type: String, attribute: "filter-field" },
+      filterValue: { type: String, attribute: "filter-value" },
+      searchLoading: { type: Boolean, attribute: "search-loading" },
+      searchMatches: { type: Array, attribute: false },
+      lastSearchQuery: { type: String, attribute: "last-search-query" },
     };
   }
 
@@ -24,10 +26,13 @@ class HAXCMSContentAdminDialog extends DDD {
     super();
     this.rows = [];
     this.selectedIds = [];
-    this.textFilter = "";
-    this.statusFilter = "any";
-    this.searchText = "";
+    this.filterField = "visibility";
+    this.filterValue = "any";
+    this.searchLoading = false;
+    this.searchMatches = null;
+    this.lastSearchQuery = "";
     this.__disposer = [];
+    this.__searchResponseHandler = this._onSearchResults.bind(this);
   }
 
   static get styles() {
@@ -41,18 +46,17 @@ class HAXCMSContentAdminDialog extends DDD {
           overflow: auto;
           padding: var(--ddd-spacing-4);
           font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-5xs, 0.7rem);
         }
         .filters,
-        .bulk,
-        .search {
+        .bulk {
           border: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-md);
           padding: var(--ddd-spacing-3);
           margin: 0 0 var(--ddd-spacing-3) 0;
         }
         .filters-title,
-        .bulk-title,
-        .search-title {
+        .bulk-title {
           margin: 0 0 var(--ddd-spacing-2) 0;
           font-size: var(--ddd-font-size-s);
           font-weight: var(--ddd-font-weight-medium);
@@ -105,7 +109,7 @@ class HAXCMSContentAdminDialog extends DDD {
         }
         editable-table {
           --editable-table-font-family: var(--ddd-font-navigation);
-          --editable-table-font-size: var(--ddd-font-size-4xs);
+          --editable-table-font-size: var(--ddd-font-size-5xs, 0.7rem);
         }
         .selected-count {
           font-size: var(--ddd-font-size-4xs);
@@ -127,9 +131,17 @@ class HAXCMSContentAdminDialog extends DDD {
       this._syncSelectionToRows();
     });
     this.__disposer.push(reaction);
+    globalThis.addEventListener(
+      "haxcms-content-dashboard-search-results",
+      this.__searchResponseHandler,
+    );
   }
 
   disconnectedCallback() {
+    globalThis.removeEventListener(
+      "haxcms-content-dashboard-search-results",
+      this.__searchResponseHandler,
+    );
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
@@ -137,23 +149,51 @@ class HAXCMSContentAdminDialog extends DDD {
   }
 
   get filteredRows() {
-    const txt = (this.textFilter || "").toLowerCase().trim();
+    const value = (this.filterValue || "").toLowerCase().trim();
+    const queryMatchesCurrentFilter =
+      this.filterField === "search" &&
+      this.lastSearchQuery === value &&
+      Array.isArray(this.searchMatches);
+    const matchedIdSet = queryMatchesCurrentFilter
+      ? new Set(this.searchMatches)
+      : null;
     return this.rows.filter((row) => {
-      if (this.statusFilter === "published" && !row.published) {
-        return false;
-      }
-      if (this.statusFilter === "unpublished" && row.published) {
-        return false;
-      }
-      if (!txt) {
+      if (this.filterField === "visibility") {
+        if (this.filterValue === "published" && !row.published) {
+          return false;
+        }
+        if (this.filterValue === "unpublished" && row.published) {
+          return false;
+        }
+        if (this.filterValue === "visible" && !row.visible) {
+          return false;
+        }
+        if (this.filterValue === "not-visible" && row.visible) {
+          return false;
+        }
         return true;
       }
-      return (
-        row.titleLower.includes(txt) ||
-        row.slugLower.includes(txt) ||
-        row.parentLower.includes(txt) ||
-        row.tagsLower.includes(txt)
-      );
+      if (!value) {
+        return true;
+      }
+      if (this.filterField === "tags") {
+        return row.tagsLower.includes(value);
+      }
+      if (this.filterField === "parents") {
+        return row.parentLower.includes(value);
+      }
+      if (this.filterField === "search") {
+        if (matchedIdSet) {
+          return matchedIdSet.has(row.id);
+        }
+        return (
+          row.titleLower.includes(value) ||
+          row.slugLower.includes(value) ||
+          row.parentLower.includes(value) ||
+          row.tagsLower.includes(value)
+        );
+      }
+      return true;
     });
   }
 
@@ -168,17 +208,22 @@ class HAXCMSContentAdminDialog extends DDD {
         item.parent && itemMap[item.parent] ? itemMap[item.parent].title : "";
       const tags = this._tagsFromItem(item);
       const published = this._toBoolPublished(metadata.published);
+      const visible = this._toBoolVisible(metadata.hideInMenu);
       const updated = this._toNumber(metadata.updated);
+      const parentSlug =
+        item.parent && itemMap[item.parent] ? itemMap[item.parent].slug || "" : "";
       return {
         id: item.id,
         title: item.title || "",
         slug: item.slug || "",
         parent: parentTitle,
+        parentSlug,
         tags: tags,
         published: published,
+        visible: visible,
         statusLabel: published ? "published" : "unpublished",
         updated,
-        updatedLabel: this._formatDateForSort(updated),
+        updatedLabel: this._formatRelativeTime(updated),
         titleLower: (item.title || "").toLowerCase(),
         slugLower: (item.slug || "").toLowerCase(),
         parentLower: parentTitle.toLowerCase(),
@@ -219,17 +264,49 @@ class HAXCMSContentAdminDialog extends DDD {
     return true;
   }
 
-  _formatDateForSort(ts) {
+  _toBoolVisible(value) {
+    if (value === true || value === "1" || value === 1 || value === "true") {
+      return false;
+    }
+    return true;
+  }
+
+  _formatRelativeTime(ts) {
     if (!ts) {
       return "";
     }
-    const d = new Date(ts * 1000);
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, "0");
-    const day = String(d.getDate()).padStart(2, "0");
-    const hrs = String(d.getHours()).padStart(2, "0");
-    const mins = String(d.getMinutes()).padStart(2, "0");
-    return `${year}-${month}-${day} ${hrs}:${mins}`;
+    const nowMs = Date.now();
+    const ms = ts < 1000000000000 ? ts * 1000 : ts;
+    let delta = Math.floor((nowMs - ms) / 1000);
+    if (delta < 0) {
+      delta = 0;
+    }
+    const month = 2592000;
+    const day = 86400;
+    const hour = 3600;
+    const minute = 60;
+    if (delta >= month) {
+      const months = Math.floor(delta / month);
+      return `${months} month${months === 1 ? "" : "s"} ago`;
+    }
+    if (delta >= day) {
+      const days = Math.floor(delta / day);
+      return `${days} day${days === 1 ? "" : "s"} ago`;
+    }
+    if (delta >= hour) {
+      const hours = Math.floor(delta / hour);
+      const minutes = Math.floor((delta % hour) / minute);
+      if (minutes > 0) {
+        return `${hours} hour${hours === 1 ? "" : "s"} ${minutes} minute${minutes === 1 ? "" : "s"} ago`;
+      }
+      return `${hours} hour${hours === 1 ? "" : "s"} ago`;
+    }
+    if (delta >= minute) {
+      const minutes = Math.floor(delta / minute);
+      const seconds = Math.floor(delta % minute);
+      return `${minutes} minute${minutes === 1 ? "" : "s"} ${seconds} second${seconds === 1 ? "" : "s"} ago`;
+    }
+    return `${delta} second${delta === 1 ? "" : "s"} ago`;
   }
 
   _syncSelectionToRows() {
@@ -237,12 +314,24 @@ class HAXCMSContentAdminDialog extends DDD {
     this.selectedIds = this.selectedIds.filter((id) => validIds.has(id));
   }
 
-  _onTextFilter(e) {
-    this.textFilter = e.target.value;
+  _onFilterField(e) {
+    this.filterField = e.target.value;
+    this.searchMatches = null;
+    this.lastSearchQuery = "";
+    this.searchLoading = false;
+    if (this.filterField === "visibility") {
+      this.filterValue = "any";
+    } else {
+      this.filterValue = "";
+    }
   }
 
-  _onStatusFilter(e) {
-    this.statusFilter = e.target.value;
+  _onFilterValue(e) {
+    this.filterValue = e.target.value;
+    if (this.filterField === "search") {
+      this.searchMatches = null;
+      this.lastSearchQuery = "";
+    }
   }
 
   _selectAllVisible() {
@@ -265,6 +354,14 @@ class HAXCMSContentAdminDialog extends DDD {
       selected.delete(id);
     }
     this.selectedIds = Array.from(selected);
+  }
+
+  _onSelectAllRows(e) {
+    if (e.target.checked) {
+      this._selectAllVisible();
+    } else {
+      this._clearSelection();
+    }
   }
 
   _applyBulkOperation() {
@@ -294,14 +391,31 @@ class HAXCMSContentAdminDialog extends DDD {
     );
   }
 
-  _onSearchText(e) {
-    this.searchText = e.target.value;
+  _onSearchResults(e) {
+    if (!e.detail) {
+      return;
+    }
+    if (this.filterField !== "search") {
+      return;
+    }
+    const query = e.detail.query ? String(e.detail.query).toLowerCase().trim() : "";
+    const matches = Array.isArray(e.detail.matches) ? e.detail.matches : [];
+    this.searchLoading = false;
+    this.lastSearchQuery = query;
+    this.searchMatches = matches;
   }
 
   _applySearch() {
-    if (!this.searchText || this.searchText.trim() === "") {
+    if (this.filterField !== "search") {
       return;
     }
+    const query = this.filterValue ? this.filterValue.trim() : "";
+    if (!query) {
+      return;
+    }
+    this.searchLoading = true;
+    this.searchMatches = null;
+    this.lastSearchQuery = query.toLowerCase();
     this.dispatchEvent(
       new CustomEvent("haxcms-content-dashboard-operation", {
         bubbles: true,
@@ -309,34 +423,70 @@ class HAXCMSContentAdminDialog extends DDD {
         cancelable: true,
         detail: {
           operation: "search",
-          query: this.searchText,
+          query,
         },
       }),
     );
   }
 
+  _searchPlaceholder() {
+    if (this.filterField === "tags") {
+      return "tag name";
+    }
+    if (this.filterField === "parents") {
+      return "parent title";
+    }
+    if (this.filterField === "search") {
+      return "title or content (eg: <h2 class..)";
+    }
+    return "filter value";
+  }
+
   render() {
+    const allVisibleSelected =
+      this.filteredRows.length > 0 &&
+      this.filteredRows.every((row) => this.selectedIds.includes(row.id));
     return html`
       <div class="filters">
         <h3 class="filters-title">Show only items where</h3>
         <div class="controls">
           <label>
-            status
-            <select .value="${this.statusFilter}" @change="${this._onStatusFilter}">
-              <option value="any">any</option>
-              <option value="published">published</option>
-              <option value="unpublished">unpublished</option>
+            filter by
+            <select .value="${this.filterField}" @change="${this._onFilterField}">
+              <option value="visibility">visibility</option>
+              <option value="tags">tags</option>
+              <option value="parents">parents</option>
+              <option value="search">search content</option>
             </select>
           </label>
-          <label>
-            text
-            <input
-              type="text"
-              .value="${this.textFilter}"
-              @input="${this._onTextFilter}"
-              placeholder="title, parent, tags, slug"
-            />
-          </label>
+          ${this.filterField === "visibility"
+            ? html`<label>
+                value
+                <select .value="${this.filterValue}" @change="${this._onFilterValue}">
+                  <option value="any">any</option>
+                  <option value="published">published</option>
+                  <option value="unpublished">unpublished</option>
+                  <option value="visible">visible</option>
+                  <option value="not-visible">not visible</option>
+                </select>
+              </label>`
+            : html`<label>
+                value
+                <input
+                  type="text"
+                  .value="${this.filterValue}"
+                  @input="${this._onFilterValue}"
+                  placeholder="${this._searchPlaceholder()}"
+                />
+              </label>`}
+          ${this.filterField === "search"
+            ? html`<button
+                @click="${this._applySearch}"
+                ?disabled="${!this.filterValue || this.searchLoading}"
+              >
+                ${this.searchLoading ? "Searching..." : "Search content"}
+              </button>`
+            : ``}
           <button @click="${this._selectAllVisible}" ?disabled="${this.filteredRows.length === 0}">
             Select all shown
           </button>
@@ -360,32 +510,26 @@ class HAXCMSContentAdminDialog extends DDD {
         </div>
         <div class="selected-count">${this.selectedIds.length} selected</div>
       </div>
-      <div class="search">
-        <h3 class="search-title">Search content</h3>
-        <div class="controls">
-          <label>
-            query
-            <input type="text" .value="${this.searchText}" @input="${this._onSearchText}" />
-          </label>
-          <button @click="${this._applySearch}" ?disabled="${!this.searchText}">
-            Search
-          </button>
-        </div>
-      </div>
       ${this.filteredRows.length === 0
         ? html`<div class="empty">No matching content found.</div>`
         : keyed(
-            `${this.statusFilter}|${this.textFilter}|${this.filteredRows.length}`,
+            `${this.filterField}|${this.filterValue}|${this.filteredRows.length}`,
             html`<editable-table bordered condensed column-header sort striped scroll>
               <table>
                 <thead>
                   <tr>
-                    <th>Select</th>
+                    <th>
+                      <input
+                        type="checkbox"
+                        aria-label="Select all shown content"
+                        .checked="${allVisibleSelected}"
+                        @change="${this._onSelectAllRows}"
+                      />
+                    </th>
                     <th>Title</th>
                     <th>Status</th>
                     <th>Updated</th>
                     <th>Parent</th>
-                    <th>Tags</th>
                     <th>Slug</th>
                   </tr>
                 </thead>
@@ -405,8 +549,11 @@ class HAXCMSContentAdminDialog extends DDD {
                         <td><a href="${row.slug}">${row.title}</a></td>
                         <td>${row.statusLabel}</td>
                         <td>${row.updatedLabel}</td>
-                        <td>${row.parent}</td>
-                        <td>${row.tags}</td>
+                        <td>
+                          ${row.parentSlug
+                            ? html`<a href="${row.parentSlug}">${row.parent}</a>`
+                            : html`—`}
+                        </td>
                         <td>${row.slug}</td>
                       </tr>
                     `,

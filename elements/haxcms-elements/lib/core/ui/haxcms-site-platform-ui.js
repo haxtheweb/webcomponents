@@ -181,8 +181,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       selectAll: 'Select all',
       deselectAll: 'Deselect all',
       download: 'Download skeleton',
-      savePlatformSettings: 'Save platform settings',
-      cancel: 'Cancel',
+      save: 'Save',
       generating: 'Generating skeleton…',
       generated: 'Skeleton downloaded',
       largeSiteWarning:
@@ -697,9 +696,6 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       </div>
 
       <div class="actions">
-        <button class="action secondary" @click="${this._cancel}">
-          ${this.t.cancel}
-        </button>
         <button
           class="action"
           @click="${this.platformSettingsMode ? this._savePlatformSettings : this._download}"
@@ -707,7 +703,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           ${this.busy
             ? this.t.generating
             : this.platformSettingsMode
-              ? this.t.savePlatformSettings
+              ? this.t.save
               : this.t.download}
         </button>
       </div>
@@ -1054,17 +1050,6 @@ console.log(this.features)
     }
 
     this.busy = false
-  }
-
-  _cancel() {
-    this.dispatchEvent(
-      new CustomEvent('simple-modal-hide', {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: false,
-      }),
-    )
   }
 }
 
