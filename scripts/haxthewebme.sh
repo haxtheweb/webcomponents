@@ -107,6 +107,14 @@ if ! command -v yarn;then
   npm -g install yarn
 fi
 
+if ! command -v hax;then
+  npm -g install @haxtheweb/create
+fi
+
+if ! command -v web-component-analyzer;then
+  yarn global add web-component-analyzer
+fi
+
 clone_and_install () {
   if [[ "$PWD" == *webcomponents* && -d ".git/" ]]; then
     echo "Already cloned repository to working directory, continuing"
@@ -114,8 +122,6 @@ clone_and_install () {
     git clone https://github.com/haxtheweb/webcomponents.git
     cd webcomponents
   fi
-  npm install -g add @haxtheweb/create
-  yarn global add web-component-analyzer
   [ ! -d node_modules ] && { [ -f yarn.lock ] && rm yarn.lock; }
   yarn install
   printf "Use \033[34myarn run haxsite\033[0m to work on the HAXcms interface\n"
