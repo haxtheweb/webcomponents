@@ -100,6 +100,8 @@
     "!node_modules/@polymer/app-layout/templates/**",
     "!node_modules/@polymer/app-layout/patterns/**",
     "!node_modules/@polymer/*/demo/*.js",
+    "!node_modules/@polymer/*/demo/**",
+    "!node_modules/@polymer/**/demo/**",
     "!node_modules/@haxtheweb/haxcms-elements/demo/dist/*.js",
     "!node_modules/@haxtheweb/elmsln-apps/lib/*/demo/*",
     "!node_modules/@haxtheweb/simple-icon/lib/svgs/elmsln-custom",
@@ -131,7 +133,10 @@
         "minify": false,
         "transformImportMeta": true,
         "exclude": [
-          "**/node_modules/@xterm/**/*.js"
+          "node_modules/@xterm/**/*.js",
+          "**/node_modules/@xterm/**/*.js",
+          "node_modules/@xterm/**/*.mjs",
+          "**/node_modules/@xterm/**/*.mjs"
         ]
       },
       "css": {
