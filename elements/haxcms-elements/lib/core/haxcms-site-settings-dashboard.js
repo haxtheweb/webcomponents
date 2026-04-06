@@ -70,18 +70,18 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         .advanced-heading {
           display: flex;
           align-items: center;
-          gap: var(--ddd-spacing-3);
+          gap: var(--ddd-spacing-4);
+          margin: 12px 0px;
         }
         .advanced-title {
           margin: 0;
           font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-s);
+          font-size: var(--ddd-font-size-m);
           font-weight: var(--ddd-font-weight-bold);
           white-space: nowrap;
         }
         .advanced-rule {
-          border-top: var(--ddd-border-xs) solid
-            var(--ddd-theme-default-limestoneGray);
+          border-top: 6px solid light-dark(black, white);
           height: 0;
           flex: 1;
         }
@@ -91,16 +91,12 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         .dashboard-action {
           width: 100%;
           border-radius: var(--ddd-radius-sm);
-          border: 2px solid var(--ddd-theme-default-limestoneGray);
+          border: 2px solid light-dark(black, white);
           background: light-dark(
             var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
+            var(--ddd-theme-default-black)
           );
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          font-family: var(--ddd-font-navigation);
+          font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-xs);
           line-height: 1.2;
           cursor: pointer;
@@ -118,10 +114,11 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         }
         .dashboard-action:hover,
         .dashboard-action:focus-visible {
-          border-color: black;
+          border-color: var(--ddd-theme-default-skyBlue);
           box-shadow: var(--ddd-boxShadow-sm);
           transform: translateY(-2px);
           outline: none;
+          color: var(--ddd-theme-default-skyBlue);
         }
         .dashboard-action:disabled {
           cursor: not-allowed;
@@ -134,10 +131,6 @@ class HAXCMSSiteSettingsDashboard extends DDD {
           border-color: var(--ddd-theme-default-limestoneGray);
           box-shadow: none;
           transform: none;
-        }
-        :host([dark]) .dashboard-action,
-        :host-context(body.dark-mode) .dashboard-action {
-          border-color: var(--ddd-theme-default-white);
         }
         .dashboard-action.primary {
           min-height: 160px;
