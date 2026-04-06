@@ -194,7 +194,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       addChildPage: "Add child page",
       clonePage: "Clone page",
       delete: "Delete page",
-      siteSettings: "Site settings",
+      siteSettings: "Site Settings",
       close: "Close",
       settings: "Settings",
       edit: "Edit",

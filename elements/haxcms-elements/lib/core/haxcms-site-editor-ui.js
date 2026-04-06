@@ -2485,7 +2485,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       addChildPage: "Add child page",
       clonePage: "Clone page",
       delete: "Delete page",
-      siteSettings: "Site settings",
+      siteSettings: "Site Settings",
       themeSettings: "Theme settings",
       seoSettings: "SEO settings",
       authorSettings: "Author settings",
