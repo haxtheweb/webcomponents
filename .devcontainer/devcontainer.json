@@ -29,13 +29,13 @@
 			"onAutoForward": "silent"
 		},
     "8000": {
-        "label": "HAXsite Port",
+        "label": "HAXsite/Web Component Port",
         "onAutoForward": "silent"
     }
 	},
 
-  "workspaceFolder": "/home/ubuntu/${localWorkspaceFolderBasename}",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/home/ubuntu/${localWorkspaceFolderBasename},type=bind,consistency=cached",
+  "workspaceFolder": "/home/node/${localWorkspaceFolderBasename}",
+  "workspaceMount": "source=${localWorkspaceFolder},target=${containerWorkspaceFolder},type=bind,consistency=cached",
 
 	"postCreateCommand": "bash scripts/haxthewebme.sh"
 }
