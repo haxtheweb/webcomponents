@@ -89,19 +89,53 @@ export var badJSEventAttributes = [
   "onwaiting",
   "onwheel",
 ];
+export var badIFrameAttributes = ["srcdoc"];
+
+function isIframeLikeElement(el) {
+  return (
+    el &&
+    el.tagName &&
+    ["iframe", "webview"].includes(el.tagName.toLowerCase())
+  );
+}
+
+export function removeUnsafeIframeAttributes(el) {
+  if (!el) {
+    return el;
+  }
+  let replacements = [];
+  if (isIframeLikeElement(el)) {
+    replacements.push(el);
+  }
+  if (el.querySelectorAll) {
+    const nested = el.querySelectorAll("iframe, webview");
+    for (let i = 0; i < nested.length; i++) {
+      replacements.push(nested[i]);
+    }
+  }
+  for (let i = 0; i < replacements.length; i++) {
+    for (let j = 0; j < badIFrameAttributes.length; j++) {
+      replacements[i].removeAttribute(badIFrameAttributes[j]);
+    }
+  }
+  return el;
+}
 
 export function removeBadJSEventAttributes(el) {
   // remove any bad event attributes that might have snuck in
-  if (el && el.attributes) {
-    // remove any attributes that are not allowed
-    for (let i = 0; i < badJSEventAttributes.length; i++) {
-      el.removeAttribute(badJSEventAttributes[i]);
-      // regex the innerHTML to remove the current attribute
-      let replacement = el.querySelectorAll(`[${badJSEventAttributes[i]}]`);
-      for (let j = 0; j < replacement.length; j++) {
-        replacement[j].removeAttribute(badJSEventAttributes[i]);
+  if (el) {
+    if (el.attributes) {
+      // remove any attributes that are not allowed
+      for (let i = 0; i < badJSEventAttributes.length; i++) {
+        el.removeAttribute(badJSEventAttributes[i]);
+        // regex the innerHTML to remove the current attribute
+        let replacement = el.querySelectorAll(`[${badJSEventAttributes[i]}]`);
+        for (let j = 0; j < replacement.length; j++) {
+          replacement[j].removeAttribute(badJSEventAttributes[i]);
+        }
       }
     }
+    removeUnsafeIframeAttributes(el);
   }
   return el;
 }
@@ -1095,7 +1129,11 @@ function haxElementToNode(haxSchema) {
     // don't get set as attributes on the node, ever.
     if (
       properties.hasOwnProperty(property) &&
-      badJSEventAttributes.indexOf(property) === -1
+      badJSEventAttributes.indexOf(property) === -1 &&
+      !(
+        ["iframe", "webview"].includes(tag.toLowerCase()) &&
+        badIFrameAttributes.includes(attributeName)
+      )
     ) {
       // special supporting for boolean because html is weird :p
       if (properties[property] === true) {
@@ -1509,6 +1547,7 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
   if (!node) {
     return null;
   }
+  const nodeTag = node.tagName.toLowerCase();
   // build out the properties to send along
   var props = {};
   // support basic styles
@@ -1575,11 +1614,21 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
         typeof node.attributes[attribute].value !== undefined &&
         node.attributes[attribute].value != null &&
         node.attributes[attribute].value != "" &&
+        !(
+          ["iframe", "webview"].includes(nodeTag) &&
+          node.attributes[attribute].name === "srcdoc"
+        ) &&
         !tmpProps.hasOwnProperty(dashToCamel(node.attributes[attribute].name))
       ) {
         props[node.attributes[attribute].name] =
           node.attributes[attribute].value;
-      } else if (node.attributes[attribute].value == "0") {
+      } else if (
+        node.attributes[attribute].value == "0" &&
+        !(
+          ["iframe", "webview"].includes(nodeTag) &&
+          node.attributes[attribute].name === "srcdoc"
+        )
+      ) {
         props[node.attributes[attribute].name] =
           node.attributes[attribute].value;
       } else {
@@ -1599,7 +1648,11 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
         node.attributes.hasOwnProperty(attribute) &&
         typeof node.attributes[attribute].value !== undefined &&
         node.attributes[attribute].value != null &&
-        node.attributes[attribute].value != ""
+        node.attributes[attribute].value != "" &&
+        !(
+          ["iframe", "webview"].includes(nodeTag) &&
+          node.attributes[attribute].name === "srcdoc"
+        )
       ) {
         props[node.attributes[attribute].name] =
           node.attributes[attribute].value;
@@ -1608,7 +1661,7 @@ async function nodeToHaxElement(node, eventName = "insert-element") {
   }
   // support sandboxed environments which
   // will hate iframe tags but love webview
-  let tag = node.tagName.toLowerCase();
+  let tag = nodeTag;
   if (
     globalThis.HaxStore &&
     globalThis.HaxStore.instance &&

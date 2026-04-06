@@ -7,6 +7,7 @@ import {
   localStorageSet,
   winEventsElement,
   validURL,
+  removeBadJSEventAttributes,
 } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/simple-icon/simple-icon.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -1339,6 +1340,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     const div = globalThis.document.createElement("div");
     div.innerHTML = content;
+    removeBadJSEventAttributes(div);
 
     let slot = false;
     // ensure we have a parent or we won't be able to insert beyond active and should just append to the bottom
