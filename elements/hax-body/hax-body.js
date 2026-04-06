@@ -288,7 +288,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 [data-instructional-action]
               )
           )::before {
-          content: "Type '/' for Merlin";
+          content: "Type '/' for quick actions";
           opacity: 0.4;
         }
 
