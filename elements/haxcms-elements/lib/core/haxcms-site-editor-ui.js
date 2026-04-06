@@ -1614,7 +1614,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "can-undo-changed": "_undoChanged",
       "hax-drop-focus-event": "_expandSettingsPanel",
       "jwt-logged-in": "_jwtLoggedIn",
+      popstate: "_adminRoutePopState",
       "simple-modal-breadcrumb-click": "_simpleModalBreadcrumbClick",
+      "simple-modal-closed": "_simpleModalClosed",
       "super-daemon-close": "sdCloseEvent",
       "super-daemon-konami-code": "_konamiCodeActivated",
     };
@@ -1626,6 +1628,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.userMenuOpen = false;
     this.soundIcon = "";
     this.__disposer = this.__disposer || [];
+    this.__currentAdminRoutePath = null;
     this.t = this.t || {};
     this._configureWasFocused = false; // Track toggle state for Ctrl+Shift+4
 
@@ -4686,6 +4689,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }
       this.__disposer.push(reaction);
     });
+    autorun((reaction) => {
+      const appReady = toJS(store.appReady);
+      const isLoggedIn = toJS(store.isLoggedIn);
+      const routePath = this._getAdminRoutePathFromLocation();
+      if (appReady && isLoggedIn && routePath && !this.__currentAdminRoutePath) {
+        this._applyAdminRoutePath(routePath, 0, true);
+      }
+      this.__disposer.push(reaction);
+    });
   }
   disconnectedCallback() {
     // Unregister keyboard shortcuts
@@ -4939,8 +4951,305 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }),
     );
   }
-  _reportsButtonTap(e, fromSiteSettings = false) {
-    store.playSound("click");
+  _normalizeAdminRoutePath(path = "") {
+    if (typeof path !== "string") {
+      return null;
+    }
+    let normalized = path.trim().toLowerCase();
+    if (!normalized) {
+      return null;
+    }
+    normalized = normalized.replace(/^\/+/, "").replace(/\/+$/, "");
+    if (!normalized) {
+      return null;
+    }
+    const allowed = new Set([
+      "admin",
+      "appearance",
+      "site",
+      "seo",
+      "author",
+      "structure",
+      "content",
+      "files",
+      "reports",
+      "blocks",
+      "editor",
+      "features",
+    ]);
+    if (allowed.has(normalized)) {
+      return normalized;
+    }
+    return null;
+  }
+  _getAdminRoutePathFromLocation() {
+    const params = new URLSearchParams(globalThis.location.search);
+    return this._normalizeAdminRoutePath(params.get("admin"));
+  }
+  _setAdminRoutePathOnLocation(path = null, historyMode = "push") {
+    const params = new URLSearchParams(globalThis.location.search);
+    if (path) {
+      params.set("admin", path);
+    } else {
+      params.delete("admin");
+    }
+    const nextSearch = params.toString();
+    const nextUrl = `${globalThis.location.pathname}${nextSearch ? `?${nextSearch}` : ""}${globalThis.location.hash || ""}`;
+    if (historyMode === "replace") {
+      globalThis.history.replaceState(globalThis.history.state, "", nextUrl);
+    } else {
+      globalThis.history.pushState(globalThis.history.state, "", nextUrl);
+    }
+  }
+  _clearAdminRoutePathFromLocation(historyMode = "replace") {
+    this.__currentAdminRoutePath = null;
+    this._setAdminRoutePathOnLocation(null, historyMode);
+  }
+  _adminRouteCapability(path = "") {
+    switch (path) {
+      case "appearance":
+        return "themeManifest";
+      case "site":
+      case "blocks":
+      case "editor":
+      case "features":
+        return "siteManifest";
+      case "seo":
+        return "seoManifest";
+      case "author":
+        return "authorManifest";
+      case "structure":
+        return "outlineDesigner";
+      case "reports":
+        return "insights";
+      case "content":
+      case "files":
+        return "uploadMedia";
+      default:
+        return null;
+    }
+  }
+  _adminRouteAllowed(path = "") {
+    const normalizedPath = this._normalizeAdminRoutePath(path);
+    if (!normalizedPath || !store.isLoggedIn) {
+      return false;
+    }
+    const capability = this._adminRouteCapability(normalizedPath);
+    if (!capability) {
+      return true;
+    }
+    return store.platformAllows(capability);
+  }
+  _syncAdminRoutePath(path, routeOptions = {}) {
+    const normalizedPath = this._normalizeAdminRoutePath(path);
+    if (!normalizedPath) {
+      return false;
+    }
+    if (!this._adminRouteAllowed(normalizedPath)) {
+      return false;
+    }
+    this.__currentAdminRoutePath = normalizedPath;
+    if (routeOptions.skipUrlUpdate) {
+      return true;
+    }
+    const currentPath = this._getAdminRoutePathFromLocation();
+    if (currentPath === normalizedPath) {
+      return true;
+    }
+    this._setAdminRoutePathOnLocation(
+      normalizedPath,
+      routeOptions.historyMode || "push",
+    );
+    return true;
+  }
+  setAdminPath(path, historyMode = "push", silent = false) {
+    if (!this._syncAdminRoutePath(path, { historyMode: historyMode })) {
+      return false;
+    }
+    this._applyAdminRoutePath(
+      this._getAdminRoutePathFromLocation(),
+      0,
+      false,
+      silent,
+    );
+    return true;
+  }
+  _canApplyAdminRoutePath() {
+    return (
+      !!this.shadowRoot &&
+      !!this.shadowRoot.querySelector("#manifestbtn") &&
+      store.appReady &&
+      !this.painting &&
+      store.isLoggedIn
+    );
+  }
+  _openAdminRouteFromPath(path, routeOptions = {}) {
+    const normalizedPath = this._normalizeAdminRoutePath(path);
+    if (!normalizedPath || !this._adminRouteAllowed(normalizedPath)) {
+      return false;
+    }
+    const invokedTarget =
+      this.shadowRoot && this.shadowRoot.querySelector("#manifestbtn")
+        ? this.shadowRoot.querySelector("#manifestbtn")
+        : null;
+    switch (normalizedPath) {
+      case "admin":
+        this._manifestButtonTap({ target: invokedTarget }, routeOptions);
+        return true;
+      case "structure":
+        this._outlineButtonTap(null, true, "Structure", routeOptions);
+        return true;
+      case "appearance":
+        this._openSiteSettingsForm(
+          invokedTarget,
+          "theme",
+          true,
+          "Appearance",
+          routeOptions,
+        );
+        return true;
+      case "site":
+        this._openSiteSettingsForm(
+          invokedTarget,
+          "site",
+          true,
+          "Site Details",
+          routeOptions,
+        );
+        return true;
+      case "seo":
+        this._openSiteSettingsForm(
+          invokedTarget,
+          "seo",
+          true,
+          "SEO",
+          routeOptions,
+        );
+        return true;
+      case "author":
+        this._openSiteSettingsForm(
+          invokedTarget,
+          "author",
+          true,
+          this.t.authorSettings,
+          routeOptions,
+        );
+        return true;
+      case "content":
+        this._openContentAdmin(true, routeOptions);
+        return true;
+      case "files":
+        this._openFilesAdmin(true, routeOptions);
+        return true;
+      case "reports":
+        this._reportsButtonTap(null, true, routeOptions);
+        return true;
+      case "blocks":
+        this._openPlatformSettings(true, "Blocks", routeOptions);
+        return true;
+      case "editor":
+        this._openPlatformSettings(true, "Editor", routeOptions);
+        return true;
+      case "features":
+        this._openPlatformSettings(true, "Features", routeOptions);
+        return true;
+      default:
+        return false;
+    }
+  }
+  _applyAdminRoutePath(
+    path,
+    attempt = 0,
+    fromInitialLoad = false,
+    silent = true,
+  ) {
+    const normalizedPath = this._normalizeAdminRoutePath(path);
+    if (!normalizedPath) {
+      return;
+    }
+    if (!this._canApplyAdminRoutePath()) {
+      if (attempt < 120) {
+        setTimeout(() => {
+          this._applyAdminRoutePath(
+            normalizedPath,
+            attempt + 1,
+            fromInitialLoad,
+            silent,
+          );
+        }, 100);
+      }
+      return;
+    }
+    const opened = this._openAdminRouteFromPath(normalizedPath, {
+      skipUrlUpdate: true,
+      silent: silent,
+    });
+    if (!opened) {
+      this._clearAdminRoutePathFromLocation("replace");
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          cancelable: true,
+          detail: {},
+        }),
+      );
+    }
+  }
+  _applyInitialAdminRoutePath() {
+    const routePath = this._getAdminRoutePathFromLocation();
+    if (routePath) {
+      this._applyAdminRoutePath(routePath, 0, true);
+    }
+  }
+  _adminRoutePopState(e) {
+    const routePath = this._getAdminRoutePathFromLocation();
+    if (routePath) {
+      this._applyAdminRoutePath(routePath);
+      return;
+    }
+    if (this.__currentAdminRoutePath) {
+      this.__currentAdminRoutePath = null;
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          cancelable: true,
+          detail: {},
+        }),
+      );
+    }
+  }
+  _simpleModalClosed(e) {
+    const hasAdminContext =
+      this.__currentAdminRoutePath || this._getAdminRoutePathFromLocation();
+    if (!hasAdminContext) {
+      return;
+    }
+    setTimeout(() => {
+      let modalOpen = false;
+      if (globalThis.SimpleModal && globalThis.SimpleModal.requestAvailability) {
+        modalOpen = globalThis.SimpleModal.requestAvailability().opened;
+      }
+      if (modalOpen) {
+        return;
+      }
+      if (this._getAdminRoutePathFromLocation()) {
+        this._clearAdminRoutePathFromLocation("replace");
+      } else {
+        this.__currentAdminRoutePath = null;
+      }
+    }, 40);
+  }
+  _reportsButtonTap(e, fromSiteSettings = false, routeOptions = {}) {
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath("reports", routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (!this._syncAdminRoutePath("reports", routeOptions)) {
+      return;
+    }
+    if (!routeOptions.silent) {
+      store.playSound("click");
+    }
     // Legacy element tag name retained for compatibility; content is Reports UI.
     const c = globalThis.document.createElement("haxcms-site-insights");
     let title = this.t.reports;
@@ -4964,11 +5273,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         styles: {
           "--simple-modal-titlebar-background": "black",
           "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-          "--simple-modal-width": "94vw",
+              "--simple-modal-width": "85vw",
+              "--simple-modal-max-width": "85vw",
           "--simple-modal-min-width": "300px",
           "--simple-modal-z-index": "100000000",
-          "--simple-modal-height": "94vh",
-          "--simple-modal-min-height": "300px",
+              "--simple-modal-height": "85vh",
+              "--simple-modal-max-height": "85vh",
+              "--simple-modal-min-height": "400px",
           "--simple-modal-titlebar-height": "80px",
           "--simple-modal-border-radius": "var(--ddd-radius-md)",
         },
@@ -4979,7 +5290,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           this.shadowRoot.querySelector("#insightsbutton") ||
           this.shadowRoot.querySelector("#manifestbtn"),
         clone: false,
-        modal: false,
+            modal: true,
+            showClose: true,
       },
     });
     globalThis.dispatchEvent(evt);
@@ -4994,7 +5306,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       breadcrumbs: [
         {
           label: this.t.siteSettings,
-          icon: "settings",
+          icon: "home",
           action: "site-settings-dashboard",
           clickable: true,
         },
@@ -5015,6 +5327,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         return "hax:page-edit";
       default:
         return "hax:add-item";
+    }
+  }
+  _platformSettingsRoute(sectionTitle = "") {
+    const title = `${sectionTitle}`.toLowerCase();
+    switch (title) {
+      case "blocks":
+        return "blocks";
+      case "editor":
+        return "editor";
+      default:
+        return "features";
     }
   }
   _simpleModalBreadcrumbClick(e) {
@@ -5039,6 +5362,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    * Navigate to style guide route
    */
   _styleGuideButtonTap(e) {
+    this._clearAdminRoutePathFromLocation("replace");
     store.playSound("click");
     globalThis.location.href = "x/theme/style-guide";
   }
@@ -5311,8 +5635,22 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * toggle state on button tap
    */
-  _outlineButtonTap(e, fromSiteSettings = false, sectionTitle = null) {
-    store.playSound("click");
+  _outlineButtonTap(
+    e,
+    fromSiteSettings = false,
+    sectionTitle = null,
+    routeOptions = {},
+  ) {
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath("structure", routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (!this._syncAdminRoutePath("structure", routeOptions)) {
+      return;
+    }
+    if (!routeOptions.silent) {
+      store.playSound("click");
+    }
     let title = this.t.outlineDesigner;
     let breadcrumbs = [];
     if (fromSiteSettings) {
@@ -5364,8 +5702,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   /**
    * toggle state on button tap
    */
-  _manifestButtonTap(e) {
-    store.playSound("click");
+  _manifestButtonTap(e, routeOptions = {}) {
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath("admin", routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (!this._syncAdminRoutePath("admin", routeOptions)) {
+      return;
+    }
+    if (!routeOptions.silent) {
+      store.playSound("click");
+    }
     globalThis.dispatchEvent(
       new CustomEvent("simple-modal-hide", {
         bubbles: true,
@@ -5391,7 +5738,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           cancelable: false,
           detail: {
             title: this.t.siteSettings,
-            titleIcon: "settings",
+            titleIcon: "home",
             styles: {
               "--simple-modal-titlebar-background": "black",
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
@@ -5476,7 +5823,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }
     }, 0);
   }
-  _openContentAdmin(fromSiteSettings = false) {
+  _openContentAdmin(fromSiteSettings = false, routeOptions = {}) {
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath("content", routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (!this._syncAdminRoutePath("content", routeOptions)) {
+      return;
+    }
     import("./haxcms-content-admin-dialog.js").then(() => {
       const dialog = globalThis.document.createElement(
         "haxcms-content-admin-dialog",
@@ -5515,10 +5869,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
               "--simple-modal-z-index": "100000000",
               "--simple-modal-titlebar-height": "80px",
-              "--simple-modal-width": "90vw",
-              "--simple-modal-max-width": "90vw",
+              "--simple-modal-width": "85vw",
+              "--simple-modal-max-width": "85vw",
               "--simple-modal-height": "85vh",
               "--simple-modal-max-height": "85vh",
+              "--simple-modal-min-height": "400px",
               "--simple-modal-border-radius": "var(--ddd-radius-md)",
             },
             elements: {
@@ -5533,7 +5888,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
     });
   }
-  _openFilesAdmin(fromSiteSettings = false) {
+  _openFilesAdmin(fromSiteSettings = false, routeOptions = {}) {
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath("files", routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (!this._syncAdminRoutePath("files", routeOptions)) {
+      return;
+    }
     import("./haxcms-files-admin-dialog.js").then(() => {
       const dialog = globalThis.document.createElement("haxcms-files-admin-dialog");
       let title = this.t.files;
@@ -5570,10 +5932,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
               "--simple-modal-z-index": "100000000",
               "--simple-modal-titlebar-height": "80px",
-              "--simple-modal-width": "90vw",
-              "--simple-modal-max-width": "90vw",
+              "--simple-modal-width": "85vw",
+              "--simple-modal-max-width": "85vw",
               "--simple-modal-height": "85vh",
               "--simple-modal-max-height": "85vh",
+              "--simple-modal-min-height": "400px",
               "--simple-modal-border-radius": "var(--ddd-radius-md)",
             },
             elements: {
@@ -5588,7 +5951,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
     });
   }
-  _openPlatformSettings(fromSiteSettings = false, sectionTitle = "Features") {
+  _openPlatformSettings(
+    fromSiteSettings = false,
+    sectionTitle = "Features",
+    routeOptions = {},
+  ) {
+    const routePath = this._platformSettingsRoute(sectionTitle);
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath(routePath, routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (
+      !this._syncAdminRoutePath(
+        routePath,
+        routeOptions,
+      )
+    ) {
+      return;
+    }
     const sectionIcon = this._platformSettingsIcon(sectionTitle);
     const options = {
       platformSettings: true,
@@ -5612,7 +5992,27 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     section = "site",
     fromSiteSettings = false,
     sectionTitle = "",
+    routeOptions = {},
   ) {
+    const sectionRouteMap = {
+      site: "site",
+      theme: "appearance",
+      seo: "seo",
+      author: "author",
+    };
+    const routePath = sectionRouteMap[section] || "admin";
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath(routePath, routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (
+      !this._syncAdminRoutePath(
+        routePath,
+        routeOptions,
+      )
+    ) {
+      return;
+    }
     // prettier-ignore
     import("@haxtheweb/haxcms-elements/lib/core/haxcms-site-dashboard.js").then(() => {
       const invokedBy = target || this.shadowRoot.querySelector("#manifestbtn");

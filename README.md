@@ -11,32 +11,6 @@
 [![build](https://github.com/haxtheweb/webcomponents/workflows/build/badge.svg?branch=master)](https://github.com/haxtheweb/webcomponents/actions?query=branch%3Amaster)
 [![X](https://img.shields.io/twitter/follow/haxtheweb.svg?style=social&label=Follow)](https://twitter.com/intent/follow?screen_name=haxtheweb)
 
-# webcomponents
-Monorepo of all web components built as part of the HAX ecosystem, many working stand-alone.
-
-# HAX
-The authoring experience of HAX and the ability to make fast, static file backed websites rapidly.
-Get all the details you want on [HAX docs](https://haxtheweb.org/)!
-HAX seeks to be the smallest possible back-end CMS to make HAX work and be able to build websites with it. Leveraging JSON Outline Schema, HAX is able to author multiple pages, which it then writes onto the file system. This way a slim server layer is just for basic authentication, knowing how to save files, and placing them in version control.
-
-Watch and Learn more about HAX here:
-- Try Hax: https://hax.cloud
-- HAXCellence https://haxtheweb.org/what-is-hax
-- Youtube channel - https://www.youtube.com/@haxtheweb
-
-# Issues / Support / Community
-- Discord Channel - https://bit.ly/hax-discord
-- Unified issue queue - https://github.com/haxtheweb/issues/issues
-- Using Merlin directly in any HAX spaces and type "Issue" to jump start a report!
-
-# Related links and tech
-- [HAXcms (NodeJS)](https://github.com/haxtheweb/haxcms-nodejs)
-- [HAXcms (PHP)](https://github.com/haxtheweb/haxcms-php)
-- [Storybook docs](https://open-apis.hax.cloud/)
-- [HAX [dot] PSU](https://hax.psu.edu)
-- [HAX doc site](https://haxtheweb.org/)
-- [HAX + 11ty](https://github.com/haxtheweb/hax11ty)
-
 # Welcome to the HaxTheWeb project!
 Web components that can work in just about anything, are very small (Vanila or Lit based) and have full on authoring solutions if you dig deeper; Enjoy!
 
@@ -65,6 +39,30 @@ You can also install the `webcomponents` monorepo natively. Use our onboarding s
 ```bash
 curl -fsSL https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scripts/haxthewebme.sh -o haxthewebme.sh && sh haxthewebme.sh
 ```
+
+# HAX
+The authoring experience of HAX and the ability to make fast, static file backed websites rapidly.
+Get all the details you want on [HAX docs](https://haxtheweb.org/)!
+HAX seeks to be the smallest possible back-end CMS to make HAX work and be able to build websites with it. Leveraging JSON Outline Schema, HAX is able to author multiple pages, which it then writes onto the file system. This way a slim server layer is just for basic authentication, knowing how to save files, and placing them in version control.
+
+Watch and Learn more about HAX here:
+- Try Hax: https://hax.cloud
+- HAXCellence https://haxtheweb.org/what-is-hax
+- Youtube channel - https://www.youtube.com/@haxtheweb
+
+# Issues / Support / Community
+- Discord Channel - https://bit.ly/hax-discord
+- Unified issue queue - https://github.com/haxtheweb/issues/issues
+- Using Merlin directly in any HAX spaces and type "Issue" to jump start a report!
+
+# Related links and tech
+- [HAXcms (NodeJS)](https://github.com/haxtheweb/haxcms-nodejs)
+- [HAXcms (PHP)](https://github.com/haxtheweb/haxcms-php)
+- [Storybook docs](https://open-apis.hax.cloud/)
+- [HAX [dot] PSU](https://hax.psu.edu)
+- [HAX doc site](https://haxtheweb.org/)
+- [HAX + 11ty](https://github.com/haxtheweb/hax11ty)
+
 
 ### Manual Install (as a core dev, forks preferrable)
 

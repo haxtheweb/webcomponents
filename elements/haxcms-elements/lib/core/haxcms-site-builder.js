@@ -1058,6 +1058,7 @@ globalThis.HAXme = function (context = null) {
       deleteNodePath: "dist/dev/saveNode.json",
       saveOutlinePath: "dist/dev/saveNode.json",
       getSiteFieldsPath: "dist/dev/getSiteFieldsPath.json",
+      contentSearchPath: "dist/dev/contentSearchPath.json",
       getFormToken: "adskjadshjudfu823u823u8fu8fij",
       appStore: {
         url: "dist/dev/appstore.json",

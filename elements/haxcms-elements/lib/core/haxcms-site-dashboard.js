@@ -135,9 +135,6 @@ class HAXCMSSiteDashboard extends SimpleColors {
         <button class="hax-modal-btn" @click="${this._saveSiteFieldsTap}">
           Save
         </button>
-        <button class="hax-modal-btn cancel" @click="${this._cancel}">
-          Cancel
-        </button>
       </div>
     `;
   }
@@ -321,19 +318,6 @@ class HAXCMSSiteDashboard extends SimpleColors {
         }),
       );
     }, 0);
-  }
-  /**
-   * Close the dashboard and reset state
-   */
-  _cancel(e) {
-    store.playSound("error");
-    globalThis.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        cancelable: true,
-        detail: {},
-      }),
-    );
   }
 }
 globalThis.customElements.define(HAXCMSSiteDashboard.tag, HAXCMSSiteDashboard);

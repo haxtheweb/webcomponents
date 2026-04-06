@@ -175,6 +175,17 @@ class HAXCMSSiteEditor extends LitElement {
         @response="${this._handleUserDataResponse}"
         @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        id="contentsearchajax"
+        .url="${this.contentSearchPath}"
+        .method="${this.method}"
+        content-type="application/json"
+        handle-as="json"
+        @response="${this._handleContentSearchResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
+      ></iron-ajax>
       <h-a-x
         id="hax"
         element-align="left"
@@ -301,6 +312,10 @@ class HAXCMSSiteEditor extends LitElement {
         type: String,
         attribute: "save-site-fields-path",
       },
+      contentSearchPath: {
+        type: String,
+        attribute: "content-search-path",
+      },
       getFormToken: {
         type: String,
         attribute: "get-form-token",
@@ -353,6 +368,39 @@ class HAXCMSSiteEditor extends LitElement {
         }),
       );
     }
+  }
+  _handleContentSearchResponse(e) {
+    const response = e.detail && e.detail.response ? e.detail.response : {};
+    const query = this.__lastContentSearchQuery
+      ? String(this.__lastContentSearchQuery)
+      : "";
+    let matches = [];
+    if (Array.isArray(response.matches)) {
+      matches = response.matches;
+    } else if (response.data && Array.isArray(response.data)) {
+      matches = response.data.filter((id) => typeof id === "string");
+    } else if (
+      response.data &&
+      typeof response.data === "object" &&
+      Array.isArray(response.data.matches)
+    ) {
+      matches = response.data.matches;
+    }
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-content-dashboard-search-results", {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          query,
+          matches,
+          raw: response,
+        },
+      }),
+    );
+    store.toast(`Content search found ${matches.length} matching item(s).`, 3000, {
+      hat: "construction",
+    });
   }
 
   /**
@@ -1350,6 +1398,19 @@ class HAXCMSSiteEditor extends LitElement {
       return;
     }
     if (operation === "search") {
+      if (this.contentSearchPath) {
+        this.__lastContentSearchQuery = e.detail.query || "";
+        this.querySelector("#contentsearchajax").body = {
+          jwt: this.jwt,
+          site: {
+            name: this.manifest.metadata.site.name,
+          },
+          query: e.detail.query || "",
+        };
+        this.setProcessingVisual();
+        this.querySelector("#contentsearchajax").generateRequest();
+        return;
+      }
       globalThis.dispatchEvent(
         new CustomEvent("haxcms-content-dashboard-search", {
           bubbles: true,

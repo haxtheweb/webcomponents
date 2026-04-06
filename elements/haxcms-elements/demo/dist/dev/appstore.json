@@ -538,11 +538,11 @@
       },
       "connection": {
         "protocol": "http",
-        "url": "haxcms.ddev.local/",
+        "url": "",
         "operations": {
           "browse": {
             "method": "GET",
-            "endPoint": "system/listFiles",
+            "endPoint": "/elements/haxcms-elements/demo/system/listFiles",
             "pagination": {
               "style": "link",
               "props": {
