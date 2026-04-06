@@ -5,7 +5,7 @@ const { execSync } = require("child_process");
 // Is this a Bash Shell running on Windows?
 let isWinBash = false;
 try {
-  const unameOut = execSync("uname -s", { stdio: "ignore" }).toString().trim();
+  const unameOut = execSync("uname -s", { stdio: "pipe" }).toString().trim();
   // Set to true if the uname includes CYGWIN or MINGW
   isWinBash = /CYGWIN|MINGW/.test(unameOut);
 } catch(e) {

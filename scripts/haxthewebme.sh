@@ -32,8 +32,6 @@ install_if_missing() {
 }
 
 install_if_missing bzip2
-install_if_missing curl
-install_if_missing unzip
 
 unameOut="$(uname -s)"
 case "${unameOut}" in
@@ -89,6 +87,8 @@ if ! command -v node; then
         source "$HOME/.bashrc"
         fnm install --lts --use
       else
+        install_if_missing curl
+        install_if_missing unzip
         curl -fsSL https://fnm.vercel.app/install | bash -s -- --force-install
         source_shell
         fnm install --lts --use
@@ -102,7 +102,7 @@ if ! command -v node; then
   done
 fi
 
-# if yarn isn't installed install it
+# if package isn't installed install it
 if ! command -v yarn;then
   npm -g install yarn
 fi
