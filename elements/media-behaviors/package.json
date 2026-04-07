@@ -36,6 +36,9 @@
     "url": "https://hax.psu.edu/"
   },
   "license": "Apache-2.0",
+  "dependencies": {
+    "@haxtheweb/utils": "^25.0.0"
+  },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",
     "@haxtheweb/deduping-fix": "^25.0.0",

@@ -1,7 +1,11 @@
 import { LitElement, html, css } from "lit";
+import { sanitizeEmbeddableURL } from "@haxtheweb/utils/utils.js";
 import "./lib/loading-indicator.js";
 
 export class IframeLoader extends LitElement {
+  _safeSource(source) {
+    return sanitizeEmbeddableURL(source, null);
+  }
   static get tag() {
     return "iframe-loader";
   }
@@ -74,7 +78,7 @@ export class IframeLoader extends LitElement {
       );
       // ensure source matches iframe source
       if (this.__iframe.getAttribute("src")) {
-        this.source = this.__iframe.getAttribute("src");
+        this.source = this._safeSource(this.__iframe.getAttribute("src"));
         this.height = this.__iframe.getAttribute("height") || this.height;
         this.width = this.__iframe.getAttribute("width") || this.width;
       }
@@ -94,7 +98,7 @@ export class IframeLoader extends LitElement {
     this.__observer = new MutationObserver((mutations) => {
       if (this.querySelector("iframe")) {
         this.__iframe = this.querySelector("iframe");
-        this.source = this.__iframe.getAttribute("src");
+        this.source = this._safeSource(this.__iframe.getAttribute("src"));
         // Listen for new
         this.__iframe.addEventListener(
           "load",
@@ -141,11 +145,11 @@ export class IframeLoader extends LitElement {
   haxactiveElementChanged(el, val) {
     if (this.__iframe) {
       if (this.source !== this.__iframe.getAttribute("src")) {
-        this.source = this.__iframe.getAttribute("src");
+        this.source = this._safeSource(this.__iframe.getAttribute("src"));
       }
     } else {
       if (el && el.src && this.source !== el.src) {
-        this.source = el.src;
+        this.source = this._safeSource(el.src);
       }
     }
     this.disabled = true;
@@ -179,7 +183,13 @@ export class IframeLoader extends LitElement {
       this.__mutationObserver.observe(this.__iframe, {
         attributes: true,
       });
-      this.__iframe.setAttribute("src", this.source);
+      const safeSource = this._safeSource(this.source);
+      this.source = safeSource;
+      if (safeSource) {
+        this.__iframe.setAttribute("src", safeSource);
+      } else {
+        this.__iframe.removeAttribute("src");
+      }
       // PDFs can't work if this security is applied so we need to check
       if (!this.isPDF) {
         this.__iframe.setAttribute(
@@ -229,9 +239,14 @@ export class IframeLoader extends LitElement {
             );
           }
         } else if (propName === "source") {
+          const safeSource = this._safeSource(this.source);
+          if (safeSource !== this.source) {
+            this.source = safeSource;
+            return;
+          }
           this.isPDF = false;
           // test if source is a PDF
-          if (this.source && this.source.endsWith(".pdf")) {
+          if (safeSource && safeSource.endsWith(".pdf")) {
             this.isPDF = true;
           }
 
@@ -244,7 +259,11 @@ export class IframeLoader extends LitElement {
                 "allow-scripts allow-same-origin",
               );
             }
-            this.__iframe.setAttribute("src", this.source);
+            if (safeSource) {
+              this.__iframe.setAttribute("src", safeSource);
+            } else {
+              this.__iframe.removeAttribute("src");
+            }
           } else {
             this.__iframe = globalThis.document.createElement("iframe");
             this.__iframe.setAttribute("width", this.width);
@@ -260,7 +279,11 @@ export class IframeLoader extends LitElement {
                 "allow-scripts allow-same-origin",
               );
             }
-            this.__iframe.setAttribute("src", this.source);
+            if (safeSource) {
+              this.__iframe.setAttribute("src", safeSource);
+            } else {
+              this.__iframe.removeAttribute("src");
+            }
             this.appendChild(this.__iframe);
           }
         } else if (["height", "width"].includes(propName)) {
