@@ -531,7 +531,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               type: type,
             },
             "hax-agent",
-            "Agent",
+            "Upload a file",
           ],
           this.shadowRoot.querySelector("#merlin"),
           "coin2",
@@ -555,7 +555,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             data: url,
           },
           "hax-link-agent",
-          "Link Agent",
+          "Create block from Link",
         ],
         this.shadowRoot.querySelector("#merlin"),
         "coin2",
@@ -1690,9 +1690,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         >`;
     };
     SuperDaemonInstance.appendContext("CMS");
+    this.platformContexts.global.forEach((item) =>
+      SuperDaemonInstance.appendContext(item),
+    );
     // Unified page creation program
     SuperDaemonInstance.defineOption({
-      title: "Add Page",
+      title: "Create a page",
       icon: "hax:add-page",
       priority: -2000,
       tags: ["page", "add", "create", "new", "CMS"],
@@ -1946,7 +1949,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
 
     SuperDaemonInstance.defineOption({
-      title: "Magic File Wand",
+      title: "Upload a file",
       icon: "hax:hax2022",
       priority: -10000,
       tags: ["Agent", "help", "merlin"],
@@ -1954,7 +1957,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "HAX/agent",
       context: "uploadMedia",
       value: {
-        name: "Agent",
+        name: "Upload a file",
         machineName: "hax-agent",
         program: async (input, values) => {
           const usAction = toJS(UserScaffoldInstance.action);
@@ -2177,7 +2180,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   type: type,
                 },
                 "hax-agent",
-                "Agent",
+                "Upload a file",
               ],
               this.shadowRoot.querySelector("#merlin"),
               "coin2",
@@ -2238,14 +2241,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Add Magic Link Wand program
     SuperDaemonInstance.defineOption({
-      title: "Magic Link Wand",
+      title: "Create block from Link",
       icon: "editor:insert-link",
       priority: -9999,
       tags: ["Agent", "help", "merlin", "url", "link"],
       eventName: "super-daemon-run-program",
       path: "HAX/link-agent",
       value: {
-        name: "Link Agent",
+        name: "Create block from Link",
         machineName: "hax-link-agent",
         program: async (input, values) => {
           const usAction = toJS(UserScaffoldInstance.action);
@@ -2395,7 +2398,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     data: pastedText,
                   },
                   "hax-link-agent",
-                  "Link Agent",
+                  "Create block from Link",
                 ],
                 this.shadowRoot.querySelector("#merlin"),
                 "coin2",
@@ -2582,7 +2585,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       ) {
         if (validURL(SuperDaemonInstance.value)) {
           SuperDaemonInstance.waveWand(
-            [SuperDaemonInstance.value, "/", {}, "hax-agent", "Agent"],
+            [SuperDaemonInstance.value, "/", {}, "hax-agent", "Upload a file"],
             null,
             "coin2",
           );
@@ -2600,7 +2603,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             "/",
             {},
             "hax-agent",
-            "Agent",
+            "Upload a file",
           ],
           null,
           "coin2",
@@ -3064,7 +3067,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.activeDrag = false;
     this.activeType = null;
     SuperDaemonInstance.waveWand(
-      ["", "/", e, "hax-agent", "Agent"],
+      ["", "/", e, "hax-agent", "Upload a file"],
       this.shadowRoot.querySelector("#merlin"),
     );
   }
@@ -3423,14 +3426,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     // force item to load schema
     SuperDaemonInstance.defineOption({
-      title: "Load HAXSchema",
+      title: "Load component schema",
       icon: "hax:hax2022",
       tags: ["Developer", "schema", "load", "demo", "testing"],
       eventName: "super-daemon-run-program",
       path: ">hax/loadElement",
       context: [">"],
       value: {
-        name: "Load HAXSchema",
+        name: "Load component schema",
         context: ">",
         program: async (input, values) => {
           const reg = globalThis.WCAutoload.requestAvailability();
@@ -3550,7 +3553,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             },
           ];
     SuperDaemonInstance.defineOption({
-      title: "Welcome to HAX",
+      title: "Show getting started tasks",
       icon: "hax:hax2022",
       tags: [
         "welcome",
@@ -3565,7 +3568,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS", "logged-in"],
       priority: 2000, // Low priority to appear at bottom
       value: {
-        name: "Welcome to HAX",
+        name: "Show getting started tasks",
         machineName: "welcome",
         context: "CMS",
         program: async (input, values) => {
@@ -3576,7 +3579,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     // change theme program
     SuperDaemonInstance.defineOption({
-      title: "Change theme temporarily",
+      title: "Preview a different theme",
       icon: "image:style",
       tags: ["Developer", "theme"],
       eventName: "super-daemon-run-program",
@@ -3587,7 +3590,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       >`,
       voice: "change theme (temporarily)",
       value: {
-        name: "Change theme",
+        name: "Preview a different theme",
         context: ">",
         program: async (input, values) => {
           let results = [];
@@ -3650,7 +3653,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     // change platform audience, only load if the site supports platformConfigs
     SuperDaemonInstance.defineOption({
-      title: "Change audience temporarily",
+      title: "Preview audience mode",
       icon: "lrn:people",
       tags: ["Developer", "skeleton"],
       eventName: "super-daemon-run-program",
@@ -3661,7 +3664,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       >`,
       voice: "change audience (temporarily)",
       value: {
-        name: "Change platform audience",
+        name: "Preview audience mode",
         context: ">",
         program: async (input, values) => {
           let results = [];
@@ -3746,14 +3749,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     // force item to load schema
     SuperDaemonInstance.defineOption({
-      title: "Go to site",
+      title: "Switch to another site",
       icon: "hax:hax2022",
       tags: ["Developer", "change", "sites", "administration"],
       eventName: "super-daemon-run-program",
       path: "/hax/changeSite",
       context: ["CMS"],
       value: {
-        name: "Go to site",
+        name: "Switch to another site",
         context: "CMS",
         program: async (input, values) => {
           let results = [];
@@ -3826,7 +3829,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Export Page Program
     SuperDaemonInstance.defineOption({
-      title: "Export page",
+      title: "Export this page",
       icon: "icons:file-download",
       tags: ["CMS", "export", "page"],
       eventName: "super-daemon-run-program",
@@ -3834,7 +3837,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS", "HAX"],
       voice: "export page",
       value: {
-        name: "Export page",
+        name: "Export this page",
         machineName: "export-page",
         program: async (input, values) => {
           const { createExportPageProgram } = await import(
@@ -3848,7 +3851,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Export Site Program
     SuperDaemonInstance.defineOption({
-      title: "Export site",
+      title: "Export this site",
       icon: "icons:file-download",
       tags: ["CMS", "export", "site"],
       eventName: "super-daemon-run-program",
@@ -3856,7 +3859,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       voice: "export site",
       value: {
-        name: "Export site",
+        name: "Export this site",
         machineName: "export-site",
         program: async (input, values) => {
           const { createExportSiteProgram } = await import(
@@ -3870,7 +3873,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit Title Program
     SuperDaemonInstance.defineOption({
-      title: "Edit title",
+      title: "Rename this page",
       icon: "editor:title",
       tags: ["CMS", "edit", "title", "metadata"],
       eventName: "super-daemon-run-program",
@@ -3878,7 +3881,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       voice: "edit title",
       value: {
-        name: "Edit title",
+        name: "Rename this page",
         machineName: "edit-title",
         placeholder: "Enter new title",
         program: async (input, values) => {
@@ -3893,7 +3896,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit Description Program
     SuperDaemonInstance.defineOption({
-      title: "Edit description",
+      title: "Update page description",
       icon: "editor:format-quote",
       tags: ["CMS", "edit", "description", "metadata"],
       eventName: "super-daemon-run-program",
@@ -3901,7 +3904,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       voice: "edit description",
       value: {
-        name: "Edit description",
+        name: "Update page description",
         machineName: "edit-description",
         placeholder: "Enter new description",
         program: async (input, values) => {
@@ -3916,7 +3919,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit Slug Program
     SuperDaemonInstance.defineOption({
-      title: "Edit slug",
+      title: "Update page URL (slug)",
       icon: "editor:insert-link",
       tags: ["CMS", "edit", "slug", "url", "metadata"],
       eventName: "super-daemon-run-program",
@@ -3924,7 +3927,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       voice: "edit slug",
       value: {
-        name: "Edit slug",
+        name: "Update page URL (slug)",
         machineName: "edit-slug",
         placeholder: "Enter new slug (URL path)",
         program: async (input, values) => {
@@ -3939,7 +3942,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Edit Tags Program
     SuperDaemonInstance.defineOption({
-      title: "Edit tags",
+      title: "Update page tags",
       icon: "icons:label",
       tags: ["CMS", "edit", "tags", "metadata"],
       eventName: "super-daemon-run-program",
@@ -3947,7 +3950,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["CMS"],
       voice: "edit tags",
       value: {
-        name: "Edit tags",
+        name: "Update page tags",
         machineName: "edit-tags",
         placeholder: "Enter tags separated by commas",
         program: async (input, values) => {
@@ -3962,14 +3965,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Core site navigation programs - available regardless of theme
     SuperDaemonInstance.defineOption({
-      title: "Go to page in this site",
+      title: "Open a page in this site",
       icon: "link",
       tags: ["Site", "navigation"],
       eventName: "super-daemon-run-program",
       context: ["CMS"],
       path: "/site/navigation",
       value: {
-        name: "Go to page",
+        name: "Open a page in this site",
         context: ["CMS"],
         program: async (input, values) => {
           let results = [];
@@ -4003,7 +4006,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Core site page linking program - available in HAX editor for linking to pages
     SuperDaemonInstance.defineOption({
-      title: "Link to site page",
+      title: "Insert a link to a page",
       icon: "hax:file-link-outline",
       tags: ["Search", "pages", "links"],
       eventName: "super-daemon-run-program",
@@ -4011,7 +4014,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: ["HAX", "/"],
       priority: -1,
       value: {
-        name: "Search pages",
+        name: "Insert a link to a page",
         context: ["HAX", "/"],
         program: async (input, values) => {
           let results = [];
@@ -4049,14 +4052,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Keyboard shortcuts program - displays all shortcuts and executes them on click
     SuperDaemonInstance.defineOption({
-      title: "Keyboard shortcuts",
+      title: "View keyboard shortcuts",
       icon: "hardware:keyboard",
       tags: ["help", "shortcuts", "keyboard", "reference"],
       eventName: "super-daemon-run-program",
       path: "CMS/help/keyboard-shortcuts",
       context: ["CMS"],
       value: {
-        name: "Keyboard shortcuts",
+        name: "View keyboard shortcuts",
         context: ["CMS"],
         program: async (input) => {
           const shortcuts =
@@ -4184,7 +4187,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "CMS", // context
               { operation: "welcome" }, // values
               "welcome", // program machine name
-              "Welcome to HAX", // display name
+              "Show getting started tasks", // display name
             ],
             this.shadowRoot.querySelector("#merlin"), // target for mini mode
             "magic", // sound
@@ -4251,7 +4254,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             "/", // context for file operations
             { operation: "file-upload" },
             "hax-agent",
-            "File Agent",
+            "Upload a file",
           ],
           this.shadowRoot.querySelector("#merlin"),
           "coin2",
@@ -5474,7 +5477,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "/",
       {},
       "edit-title",
-      "Edit title",
+      "Rename this page",
     ]);
   }
   /**
@@ -5494,7 +5497,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "/",
       {},
       "edit-description",
-      "Edit description",
+      "Update page description",
       "",
     ]);
   }
@@ -5541,7 +5544,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         "/",
         {},
         "create-page",
-        "Add Page",
+        "Create a page",
       ]);
     }
   }
@@ -5562,7 +5565,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "/",
       {},
       "edit-slug",
-      "Edit slug",
+      "Update page URL (slug)",
       "",
     ]);
   }

@@ -13,7 +13,6 @@ class HAXCMSContentAdminDialog extends DDD {
   static get properties() {
     return {
       rows: { type: Array },
-      selectedIds: { type: Array },
       filterField: { type: String, attribute: "filter-field" },
       filterValue: { type: String, attribute: "filter-value" },
       searchLoading: { type: Boolean, attribute: "search-loading" },
@@ -25,7 +24,6 @@ class HAXCMSContentAdminDialog extends DDD {
   constructor() {
     super();
     this.rows = [];
-    this.selectedIds = [];
     this.filterField = "visibility";
     this.filterValue = "any";
     this.searchLoading = false;
@@ -68,15 +66,13 @@ class HAXCMSContentAdminDialog extends DDD {
           overflow-y: auto;
           padding-right: var(--ddd-spacing-1);
         }
-        .filters,
-        .bulk {
+        .filters {
           border: var(--ddd-border-sm) solid var(--ddd-theme-default-limestoneGray);
           border-radius: var(--ddd-radius-md);
           padding: var(--ddd-spacing-3);
           margin: 0 0 var(--ddd-spacing-3) 0;
         }
-        .filters-title,
-        .bulk-title {
+        .filters-title {
           margin: 0 0 var(--ddd-spacing-2) 0;
           font-size: var(--ddd-font-size-s);
           font-weight: var(--ddd-font-weight-medium);
@@ -131,10 +127,6 @@ class HAXCMSContentAdminDialog extends DDD {
           --editable-table-font-family: var(--ddd-font-navigation);
           --editable-table-font-size: var(--ddd-font-size-5xs, 0.7rem);
         }
-        .selected-count {
-          font-size: var(--ddd-font-size-4xs);
-          margin: var(--ddd-spacing-2) 0 0 0;
-        }
         .empty {
           margin: var(--ddd-spacing-4) 0;
         }
@@ -148,7 +140,6 @@ class HAXCMSContentAdminDialog extends DDD {
       const manifest = toJS(store.manifest);
       const items = manifest && manifest.items ? manifest.items : [];
       this.rows = this._buildRows(items);
-      this._syncSelectionToRows();
     });
     this.__disposer.push(reaction);
     globalThis.addEventListener(
@@ -329,10 +320,6 @@ class HAXCMSContentAdminDialog extends DDD {
     return `${delta} second${delta === 1 ? "" : "s"} ago`;
   }
 
-  _syncSelectionToRows() {
-    const validIds = new Set(this.rows.map((row) => row.id));
-    this.selectedIds = this.selectedIds.filter((id) => validIds.has(id));
-  }
 
   _onFilterField(e) {
     this.filterField = e.target.value;
@@ -352,63 +339,6 @@ class HAXCMSContentAdminDialog extends DDD {
       this.searchMatches = null;
       this.lastSearchQuery = "";
     }
-  }
-
-  _selectAllVisible() {
-    this.selectedIds = this.filteredRows.map((row) => row.id);
-  }
-
-  _clearSelection() {
-    this.selectedIds = [];
-  }
-
-  _onSelectRow(e) {
-    const id = e.target.getAttribute("data-id");
-    if (!id) {
-      return;
-    }
-    const selected = new Set(this.selectedIds);
-    if (e.target.checked) {
-      selected.add(id);
-    } else {
-      selected.delete(id);
-    }
-    this.selectedIds = Array.from(selected);
-  }
-
-  _onSelectAllRows(e) {
-    if (e.target.checked) {
-      this._selectAllVisible();
-    } else {
-      this._clearSelection();
-    }
-  }
-
-  _applyBulkOperation() {
-    const select = this.shadowRoot.querySelector("#bulk-action");
-    const action = select ? select.value : "";
-    if (!action || this.selectedIds.length === 0) {
-      return;
-    }
-    if (
-      action === "delete" &&
-      !globalThis.confirm(
-        `Delete ${this.selectedIds.length} selected item(s)? This cannot be undone.`,
-      )
-    ) {
-      return;
-    }
-    this.dispatchEvent(
-      new CustomEvent("haxcms-content-dashboard-operation", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          operation: action,
-          itemIds: [...this.selectedIds],
-        },
-      }),
-    );
   }
 
   _onSearchResults(e) {
@@ -463,9 +393,6 @@ class HAXCMSContentAdminDialog extends DDD {
   }
 
   render() {
-    const allVisibleSelected =
-      this.filteredRows.length > 0 &&
-      this.filteredRows.every((row) => this.selectedIds.includes(row.id));
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
@@ -509,28 +436,7 @@ class HAXCMSContentAdminDialog extends DDD {
                     ${this.searchLoading ? "Searching..." : "Search content"}
                   </button>`
                 : ``}
-              <button @click="${this._selectAllVisible}" ?disabled="${this.filteredRows.length === 0}">
-                Select all shown
-              </button>
-              <button @click="${this._clearSelection}" ?disabled="${this.selectedIds.length === 0}">
-                Clear selection
-              </button>
             </div>
-          </div>
-          <div class="bulk" ?hidden="${this.selectedIds.length === 0}">
-            <h3 class="bulk-title">Update options</h3>
-            <div class="controls">
-              <label>
-                action
-                <select id="bulk-action">
-                  <option value="publish">Publish selected content</option>
-                  <option value="unpublish">Unpublish selected content</option>
-                  <option value="delete">Delete selected content</option>
-                </select>
-              </label>
-              <button @click="${this._applyBulkOperation}">Update</button>
-            </div>
-            <div class="selected-count">${this.selectedIds.length} selected</div>
           </div>
           ${this.filteredRows.length === 0
             ? html`<div class="empty">No matching content found.</div>`
@@ -540,14 +446,6 @@ class HAXCMSContentAdminDialog extends DDD {
                   <table>
                     <thead>
                       <tr>
-                        <th>
-                          <input
-                            type="checkbox"
-                            aria-label="Select all shown content"
-                            .checked="${allVisibleSelected}"
-                            @change="${this._onSelectAllRows}"
-                          />
-                        </th>
                         <th>Title</th>
                         <th>Status</th>
                         <th>Updated</th>
@@ -559,15 +457,6 @@ class HAXCMSContentAdminDialog extends DDD {
                       ${this.filteredRows.map(
                         (row) => html`
                           <tr>
-                            <td>
-                              <input
-                                type="checkbox"
-                                aria-label="Select ${row.title}"
-                                data-id="${row.id}"
-                                .checked="${this.selectedIds.includes(row.id)}"
-                                @change="${this._onSelectRow}"
-                              />
-                            </td>
                             <td><a href="${row.slug}">${row.title}</a></td>
                             <td>${row.statusLabel}</td>
                             <td>${row.updatedLabel}</td>

@@ -174,6 +174,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
           type="button"
           class="dashboard-action ${size}"
           aria-label="${item.label}"
+          title="${item.tooltip || ''}"
           ?disabled="${item.disabled}"
           @click="${() => this._actionTap(item.action)}"
         >
@@ -192,21 +193,51 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         label: "Content",
       },
       { action: "outline", icon: "hax:site-map", label: "Structure" },
-      { action: "theme-settings", icon: "lrn:palette", label: "Appearance" },
+      {
+        action: "theme-settings",
+        icon: "lrn:palette",
+        label: "Appearance",
+        disabled: true,
+        tooltip: "Coming soon",
+      },
       { action: "site-settings", icon: "settings", label: "Site Details" },
     ];
     const advancedActions = [
-      { action: "blocks", icon: "hax:blocks", label: "Blocks" },
-      { action: "editor", icon: "hax:page-edit", label: "Editor" },
+      {
+        action: "blocks",
+        icon: "hax:blocks",
+        label: "Blocks",
+        disabled: true,
+        tooltip: "Coming soon",
+      },
+      {
+        action: "editor",
+        icon: "hax:page-edit",
+        label: "Editor",
+        disabled: true,
+        tooltip: "Coming soon",
+      },
       { action: "platform", icon: "hax:add-item", label: "Features" },
-      { action: "seo-settings", icon: "icons:search", label: "SEO" },
+      {
+        action: "seo-settings",
+        icon: "icons:search",
+        label: "SEO",
+        disabled: true,
+        tooltip: "Coming soon",
+      },
       {
         action: "reports",
         icon: "hax:graph",
         label: "Reports",
         disabled: !this.allowReports,
       },
-      { action: "files-admin", icon: "icons:folder", label: "Files" },
+      {
+        action: "files-admin",
+        icon: "icons:folder",
+        label: "Files",
+        disabled: true,
+        tooltip: "Coming soon",
+      },
     ];
     return html`
       <div class="dashboard-shell">
