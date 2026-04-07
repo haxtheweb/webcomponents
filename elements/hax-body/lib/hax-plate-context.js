@@ -157,7 +157,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
   }
   render() {
     return html`
-      <hax-toolbar always-expanded ?hidden=${HAXStore.isPlatformAudience("novice")}>
+      <hax-toolbar always-expanded ?hidden=${HAXStore.isPlatformAudience("novice") && HAXStore.isTextElement(this.activeNode)}>
         <div class="group">
           <hax-toolbar-menu
             ?disabled="${
@@ -240,6 +240,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               ((!this.layoutParent || this.activeNode !== this.layoutElement) &&
                 !this.layoutElement)
             }"
+            ?hidden="${HAXStore.isPlatformAudience("novice")}"
             icon="hax:select-element"
             label="${this.t.selectLayout}"
           >
@@ -370,6 +371,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               this.disableOps ||
               this.disableDuplicate
             }"
+            ?hidden="${HAXStore.isPlatformAudience("novice")}"
             label="${this.t.duplicate}"
             icon="icons:content-copy"
             event-name="hax-plate-duplicate"
@@ -410,6 +412,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
             ?disabled="${
               this.hasActiveEditingElement || this.viewSource || this.disableOps
             }"
+            ?hidden="${HAXStore.isPlatformAudience("novice")}"
             event-name="hax-plate-create-right"
             data-simple-tour-stop
             data-stop-title="label"
@@ -429,7 +432,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
               this.hasActiveEditingElement || this.viewSource || this.disableOps
             }"
             event-name="hax-plate-remove-right"
-            ?hidden="${!this.activeNode}"
+            ?hidden="${!this.activeNode || HAXStore.isPlatformAudience("novice")}"
             id="rightremove"
             data-simple-tour-stop
             data-stop-title="label"
@@ -453,7 +456,7 @@ class HaxPlateContext extends I18NMixin(HaxContextBehaviors(LitElement)) {
           <slot name="secondary"></slot>
         </div>
         </div>
-        <div class="group">
+        <div class="group" ?hidden="${HAXStore.isPlatformAudience("novice")}">
             <hax-context-item
               action
               label="${this.t.editElement}"
