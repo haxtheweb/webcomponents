@@ -170,7 +170,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     this.t = this.t || {}
     this.t = {
       ...this.t,
-      title: 'Skeleton platform settings',
+      title: 'Platform Features',
       experienceLevel: 'Experience level',
       cmsFeatures: 'CMS features',
       editorFeatures: 'Editor features',
