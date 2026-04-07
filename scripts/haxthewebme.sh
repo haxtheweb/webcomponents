@@ -81,6 +81,8 @@ if ! command -v node; then
         powershell -C 'Add-Content -Path $PROFILE -Value "`nfnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression"'
         # Write to PowerShell start profile so Node works outside Git Bash
         echo "Added fnm init to PowerShell profile."
+        # Allow Node.js executables to run properly
+        powershell -C 'Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser'
 
         # Write to bashrc
         echo 'eval "$(fnm env --use-on-cd --shell bash)"' >> ~/.bashrc
