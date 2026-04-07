@@ -16,13 +16,9 @@ Web components that can work in just about anything, are very small (Vanila or L
 
 ## Getting Started
 
-*Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass legacy browsers.*
-
-### Quick Install: Dev Containers 
+### Quick contribution install: Dev Containers 
 
 HAXTheWeb is dedicated to making contribution an accessible and simple experience. That's why we prepare an environment tailored with the right tools for getting started! Our project follows the [Dev Container specification](https://containers.dev/implementors/spec/) to provide a consistent, UX-focused experience across operating systems.
-
-#### Prerequisites
 
 1. Install Docker (or another container runtime)
     * [Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
@@ -33,7 +29,10 @@ HAXTheWeb is dedicated to making contribution an accessible and simple experienc
 
 After this step you're ready to go, no fiddling with the command line! Clone the project, open your IDE, accept our recommended extensions, then select **Reopen in Container**!
 
-### Quick Install: Git Bash/WSL/macOS/Linux
+-----------------------------------------------
+
+# Manual Quick Install: Git Bash/WSL/macOS/Linux
+*Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass legacy browsers.*
 
 You can also install the `webcomponents` monorepo natively. Use our onboarding script or follow the manual steps below:
 ```bash

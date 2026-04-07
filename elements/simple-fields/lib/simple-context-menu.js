@@ -27,7 +27,7 @@ class SimpleContextMenu extends DDD {
         }
 
         dialog {
-          position: absolute;
+          position: fixed;
           background: light-dark(
             var(--simple-context-menu-background, white),
             var(--simple-context-menu-background-dark, #000000)

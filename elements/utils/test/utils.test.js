@@ -18,6 +18,8 @@ import {
   getRange,
   internalGetShadowSelection,
   ReplaceWithPolyfill,
+  haxElementToNode,
+  nodeToHaxElement,
 } from "../utils.js";
 
 describe("Utils test", () => {
@@ -72,6 +74,57 @@ describe("Utils test", () => {
 
       expect(result).to.equal(div);
       expect(() => removeBadJSEventAttributes(div)).to.not.throw;
+    });
+
+    it("removeBadJSEventAttributes removes srcdoc from iframe", async () => {
+      const iframe = document.createElement("iframe");
+      iframe.setAttribute("src", "https://example.org");
+      iframe.setAttribute("srcdoc", "<h1>Unsafe</h1>");
+
+      const cleaned = removeBadJSEventAttributes(iframe);
+
+      expect(cleaned.hasAttribute("src")).to.be.true;
+      expect(cleaned.hasAttribute("srcdoc")).to.be.false;
+    });
+
+    it("removeBadJSEventAttributes removes srcdoc from nested iframe", async () => {
+      const div = document.createElement("div");
+      const iframe = document.createElement("iframe");
+      iframe.setAttribute("src", "https://example.org");
+      iframe.setAttribute("srcdoc", "<script>alert('xss')</script>");
+      div.appendChild(iframe);
+
+      const cleaned = removeBadJSEventAttributes(div);
+      const nestedIframe = cleaned.querySelector("iframe");
+
+      expect(nestedIframe).to.exist;
+      expect(nestedIframe.hasAttribute("src")).to.be.true;
+      expect(nestedIframe.hasAttribute("srcdoc")).to.be.false;
+    });
+
+    it("haxElementToNode does not set srcdoc on iframe", async () => {
+      const iframe = haxElementToNode({
+        tag: "iframe",
+        properties: {
+          src: "https://example.org",
+          srcdoc: "<p>unsafe</p>",
+        },
+        content: "",
+      });
+
+      expect(iframe.hasAttribute("src")).to.be.true;
+      expect(iframe.hasAttribute("srcdoc")).to.be.false;
+    });
+
+    it("nodeToHaxElement does not serialize srcdoc on iframe", async () => {
+      const iframe = document.createElement("iframe");
+      iframe.setAttribute("src", "https://example.org");
+      iframe.setAttribute("srcdoc", "<p>unsafe</p>");
+
+      const haxElement = await nodeToHaxElement(iframe, null);
+
+      expect(haxElement.properties.src).to.equal("https://example.org");
+      expect(haxElement.properties.srcdoc).to.be.undefined;
     });
   });
 

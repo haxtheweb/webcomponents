@@ -916,15 +916,24 @@ export class AppHaxUseCaseFilter extends LitElement {
       );
 
     if (el && el.shadowRoot) {
-      const btn = el.shadowRoot.querySelector("button.select");
-      if (btn) {
-        btn.focus();
+      const focusTarget = el.shadowRoot.querySelector(
+        "button.card, button.select, button, a[href], input, select, textarea, [tabindex]:not([tabindex=\"-1\"])",
+      );
+      if (focusTarget && typeof focusTarget.focus === "function") {
+        try {
+          focusTarget.focus({ preventScroll: true });
+        } catch (e) {
+          focusTarget.focus();
+        }
         return;
       }
     }
 
     // Fallback focus
     if (el && typeof el.focus === "function") {
+      if (!el.hasAttribute("tabindex")) {
+        el.setAttribute("tabindex", "-1");
+      }
       el.focus();
     }
   }

@@ -288,7 +288,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                 [data-instructional-action]
               )
           )::before {
-          content: "Type '/' for Merlin";
+          content: "Type '/' for quick actions";
           opacity: 0.4;
         }
 
@@ -2129,6 +2129,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         }
       }
     }
+    removeBadJSEventAttributes(newNode);
     // special support for a drag and drop into a place-holder tag
     // as this is a more aggressive operation then the others
     if (
@@ -2723,6 +2724,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       if (node && node.getAttribute && node.getAttribute("slot") != null) {
         replacement.setAttribute("slot", node.getAttribute("slot"));
       }
+      removeBadJSEventAttributes(replacement);
       node.replaceWith(replacement);
       if (this.editMode) {
         this.__applyNodeEditableStateWhenReady(replacement, this.editMode);
@@ -2995,6 +2997,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       fragment.insertAdjacentHTML("beforeend", html);
       while (fragment.firstChild !== null) {
         if (typeof fragment.firstChild.tagName !== typeof undefined) {
+          removeBadJSEventAttributes(fragment.firstChild);
           // ensure import doesn't import non-sandbox safe things!
           if (
             HAXStore._isSandboxed &&
@@ -3015,9 +3018,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               }
               replacement.setAttribute(nodeName, value);
             }
+            removeBadJSEventAttributes(replacement);
             this.appendChild(replacement);
           } else {
-            removeBadJSEventAttributes(fragment.firstChild);
             this.appendChild(fragment.firstChild);
           }
         } else {
