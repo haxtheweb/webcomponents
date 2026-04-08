@@ -23,6 +23,7 @@ HAXTheWeb is dedicated to making contribution an accessible and simple experienc
 * Install Docker (or another container runtime)
     * [Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
         * Ensure that you select the **WSL 2 Backend** option
+        * Certain Windows editions are bundled with an old WSL 2 version. If Docker Desktop warns that WSL 2 is outdated, please update through the [Windows Store](https://aka.ms/wslstorepage) or run `wsl --update` in **PowerShell**.
     * [macOS](https://docs.docker.com/desktop/setup/install/mac-install/)
     * [Linux](https://docs.docker.com/desktop/setup/install/linux/)
     * [Dev Containers](https://containers.dev/) are broadly supported across OCI-compliant runtimes like Docker, Podman, and OrbStack.
