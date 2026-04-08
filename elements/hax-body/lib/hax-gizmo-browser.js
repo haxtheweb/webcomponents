@@ -99,7 +99,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
         let recentList = [];
         let recentTags = [];
         recent.forEach((gizmo) => {
-          if (gizmo && gizmo.tag) {
+          if (this._gizmoAllowedInTray(gizmo)) {
             if (!recentTags.includes(gizmo.tag)) {
               recentTags.push(gizmo.tag);
               recentList.push(gizmo);
@@ -129,6 +129,27 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     this.activePreview = null;
     let popover = globalThis.SimplePopoverManager.requestAvailability();
     popover.opened = false;
+  }
+  _gizmoAllowedInTray(gizmo) {
+    if (!gizmo || !gizmo.tag) {
+      return false;
+    }
+    if (
+      gizmo.meta &&
+      (gizmo.meta.inlineOnly || gizmo.meta.hidden || gizmo.requiresParent)
+    ) {
+      return false;
+    }
+    const requiredPrimitives = HAXStore.requiredPrimitives;
+    const isRequiredPrimitive =
+      requiredPrimitives && requiredPrimitives.has(gizmo.tag);
+    if (gizmo.platformRestricted && !isRequiredPrimitive) {
+      return false;
+    }
+    if (!HAXStore.platformAllows(gizmo.tag) && !isRequiredPrimitive) {
+      return false;
+    }
+    return true;
   }
   render() {
     return html`${this.hidden
@@ -429,11 +450,18 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
       "stop-note",
     ];
 
+    const sourceList =
+      this.items && this.items.length > 0 ? this.items : HAXStore.gizmoList;
     // Wait for HAXStore to be ready and get gizmo list
-    if (HAXStore.gizmoList && HAXStore.gizmoList.length > 0) {
+    if (sourceList && sourceList.length > 0) {
       const popularGizmos = [];
       popularTags.forEach((tag) => {
-        const gizmo = HAXStore.gizmoList.find((g) => g && g.tag === tag);
+        const gizmo = sourceList.find((g) => {
+          if (!g || g.tag !== tag) {
+            return false;
+          }
+          return this._gizmoAllowedInTray(g);
+        });
         if (gizmo) {
           popularGizmos.push(gizmo);
         }
@@ -451,21 +479,7 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
     if (list) {
       this.like = "";
       this.value = "";
-      const items = list.filter((gizmo, i) => {
-        // remove inline and hidden references
-        if (
-          gizmo &&
-          gizmo.meta &&
-          (gizmo.meta.inlineOnly || gizmo.meta.hidden || gizmo.requiresParent)
-        ) {
-          return false;
-        }
-        // remove references restricted by a defined platformConfig
-        else if(gizmo.platformRestricted){
-          return false;
-        }
-        return true;
-      });
+      const items = list.filter((gizmo) => this._gizmoAllowedInTray(gizmo));
       // build index for improved searchability
       items.map((gizmo, i) => {
         items[i].index = gizmo.title + " " + gizmo.tag;

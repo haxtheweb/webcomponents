@@ -2,6 +2,9 @@ import { html, css } from "lit";
 import {
   winEventsElement,
   camelCaseToDash,
+  isURLAttribute,
+  sanitizeURLValue,
+  sanitizeEmbeddableURL,
   wipeSlot,
   normalizeEventPath,
   localStorageSet,
@@ -1845,6 +1848,23 @@ class HaxTray extends I18NMixin(
           for (let prop in settings[key]) {
             setAhead = false;
             if (settings[key][prop] != null && !settings[key][prop].readOnly) {
+              const dashProp = camelCaseToDash(prop);
+              if (
+                typeof settings[key][prop] === "string" &&
+                isURLAttribute(dashProp)
+              ) {
+                if (/(^|[-_:])(src|source)$/.test(dashProp)) {
+                  settings[key][prop] = sanitizeEmbeddableURL(
+                    settings[key][prop],
+                    "",
+                  );
+                } else {
+                  settings[key][prop] = sanitizeURLValue(
+                    settings[key][prop],
+                    "",
+                  );
+                }
+              }
               // prefix is a special attribute and must be handled this way
               if (prop === "prefix" && settings[key][prop] != "") {
                 this.activeNode.setAttribute("prefix", settings[key][prop]);

@@ -1,3 +1,4 @@
+import { sanitizeEmbeddableURL } from "@haxtheweb/utils/utils.js";
 // ensure MediaBehaviors exists
 globalThis.MediaBehaviors = globalThis.MediaBehaviors || {};
 /**
@@ -31,6 +32,10 @@ globalThis.MediaBehaviors.Video = {
    * Check source of the video, potentially correcting bad links.
    */
   cleanVideoSource(input, type) {
+    input = sanitizeEmbeddableURL(input, "");
+    if (input === "") {
+      return input;
+    }
     // ensure we are NOT local and do a sanity check
     if (type != "local" && typeof input === "string") {
       // strip off the ? modifier for youtube/vimeo so we can build ourselves
@@ -109,6 +114,9 @@ globalThis.MediaBehaviors.Video = {
    * Figure out the type of video based on source.
    */
   getVideoType(source) {
+    if (typeof source !== "string" || source === "") {
+      return "external";
+    }
     let localFormats = [
         "aac",
         "flac",
@@ -163,6 +171,10 @@ export const MediaBehaviorsVideo = function (SuperClass) {
      * Check source of the video, potentially correcting bad links.
      */
     cleanVideoSource(input, type) {
+      input = sanitizeEmbeddableURL(input, "");
+      if (input === "") {
+        return input;
+      }
       if (type != "local") {
         // strip off the ? modifier for youtube/vimeo so we can build ourselves
         var tmp = input.split("?");
@@ -236,6 +248,9 @@ export const MediaBehaviorsVideo = function (SuperClass) {
      * Figure out the type of video based on source.
      */
     getVideoType(source) {
+      if (typeof source !== "string" || source === "") {
+        return "external";
+      }
       let localFormats = [
           "aac",
           "flac",

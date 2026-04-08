@@ -90,6 +90,122 @@ export var badJSEventAttributes = [
   "onwheel",
 ];
 export var badIFrameAttributes = ["srcdoc"];
+export var badURLProtocols = ["javascript:", "vbscript:", "data:"];
+
+function urlValueToProtocolCheck(value) {
+  if (typeof value !== "string") {
+    return "";
+  }
+  return value
+    .trim()
+    .replace(/[\u0000-\u001F\u007F\s]+/g, "")
+    .toLowerCase();
+}
+
+function protocolFromValue(value) {
+  const normalizedValue = urlValueToProtocolCheck(value);
+  if (!normalizedValue) {
+    return "";
+  }
+  const match = normalizedValue.match(/^([a-z][a-z0-9+.-]*:)/i);
+  return match && match[1] ? match[1].toLowerCase() : "";
+}
+
+export function hasUnsafeURLProtocol(value) {
+  const protocol = protocolFromValue(value);
+  if (!protocol) {
+    return false;
+  }
+  return badURLProtocols.includes(protocol);
+}
+
+export function isURLAttribute(attributeName) {
+  if (!attributeName || typeof attributeName !== "string") {
+    return false;
+  }
+  const name = attributeName.toLowerCase();
+  return (
+    [
+      "src",
+      "source",
+      "href",
+      "xlink:href",
+      "action",
+      "formaction",
+      "poster",
+      "data",
+      "cite",
+    ].includes(name) || /(^|[-_:])(src|source|href)$/.test(name)
+  );
+}
+
+export function sanitizeURLValue(value, fallback = "") {
+  if (value === null || typeof value === "undefined") {
+    return fallback;
+  }
+  if (typeof value !== "string") {
+    return fallback;
+  }
+  const normalizedValue = value.trim();
+  if (normalizedValue === "") {
+    return fallback;
+  }
+  if (hasUnsafeURLProtocol(normalizedValue)) {
+    return fallback;
+  }
+  return normalizedValue;
+}
+
+export function sanitizeEmbeddableURL(value, fallback = "") {
+  const normalizedValue = sanitizeURLValue(value, "");
+  if (normalizedValue === "") {
+    return fallback;
+  }
+  const protocol = protocolFromValue(normalizedValue);
+  if (protocol && !["http:", "https:"].includes(protocol)) {
+    return fallback;
+  }
+  try {
+    const parsed =
+      globalThis.location && globalThis.location.href
+        ? new URL(normalizedValue, globalThis.location.href)
+        : new URL(normalizedValue);
+    if (!["http:", "https:"].includes(parsed.protocol)) {
+      return fallback;
+    }
+  } catch (e) {
+    return fallback;
+  }
+  return normalizedValue;
+}
+
+export function removeUnsafeURLAttributes(el) {
+  if (!el) {
+    return el;
+  }
+  let replacements = [];
+  if (el.attributes) {
+    replacements.push(el);
+  }
+  if (el.querySelectorAll) {
+    const nested = el.querySelectorAll("*");
+    for (let i = 0; i < nested.length; i++) {
+      replacements.push(nested[i]);
+    }
+  }
+  for (let i = 0; i < replacements.length; i++) {
+    if (!replacements[i].attributes) {
+      continue;
+    }
+    for (let j = replacements[i].attributes.length - 1; j >= 0; j--) {
+      const attr = replacements[i].attributes.item(j);
+      if (attr && isURLAttribute(attr.name) && hasUnsafeURLProtocol(attr.value)) {
+        replacements[i].removeAttribute(attr.name);
+      }
+    }
+  }
+  return el;
+}
 
 function isIframeLikeElement(el) {
   return (
@@ -117,6 +233,13 @@ export function removeUnsafeIframeAttributes(el) {
     for (let j = 0; j < badIFrameAttributes.length; j++) {
       replacements[i].removeAttribute(badIFrameAttributes[j]);
     }
+    const src = replacements[i].getAttribute("src");
+    const safeSrc = sanitizeEmbeddableURL(src, "");
+    if (safeSrc === "") {
+      replacements[i].removeAttribute("src");
+    } else if (safeSrc !== src) {
+      replacements[i].setAttribute("src", safeSrc);
+    }
   }
   return el;
 }
@@ -136,6 +259,7 @@ export function removeBadJSEventAttributes(el) {
       }
     }
     removeUnsafeIframeAttributes(el);
+    removeUnsafeURLAttributes(el);
   }
   return el;
 }
@@ -225,6 +349,10 @@ export function CSVtoArray(text) {
  * Check source of the video, potentially correcting bad links.
  */
 export function cleanVideoSource(input) {
+  input = sanitizeEmbeddableURL(input, "");
+  if (input === "") {
+    return input;
+  }
   // strip off the ? modifier for youtube/vimeo so we can build ourselves
   var tmp = input.split("?");
   var v = "";
@@ -1181,6 +1309,7 @@ function haxElementToNode(haxSchema) {
       }
     }
   }
+  removeBadJSEventAttributes(newNode);
   return newNode;
 }
 /**
