@@ -67,6 +67,12 @@ for (const project of listDirs(".")) {
   process.chdir(elementsDir);
 }
 
+// ensure haxcms-elements/demo/node_modules symlink is valid
+process.chdir("..")
+const demoDir = path.resolve(dir, "../elements/haxcms-elements/demo/")
+unlink(`${demoDir}/node_modules`)
+symlinkDir("node_modules", demoDir)
+
 // this ensures that the storybook tooling works
 const storybookDir = path.resolve(dir, "../node_modules/storybook-prebuilt");
 
