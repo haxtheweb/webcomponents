@@ -97,7 +97,14 @@ class SimpleModal extends LitElement {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          background-color: light-dark(black, var(--ddd-theme-default-coalyGray));
+          background-color: var(
+            --simple-modal-titlebar-background,
+            light-dark(black, var(--ddd-theme-default-coalyGray))
+          );
+          color: var(
+            --simple-modal-titlebar-color,
+            var(--ddd-theme-default-white, white)
+          );
           height: var(--simple-modal-titlebar-height, unset);
           line-height: var(--simple-modal-titlebar-line-height, unset);
           font-family: var(--ddd-font-navigation);
@@ -115,7 +122,7 @@ class SimpleModal extends LitElement {
           align-items: center;
           gap: var(--ddd-spacing-1);
           flex-wrap: wrap;
-          color: white;
+          color: currentColor;
            font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-m);
           font-weight: var(--ddd-font-weight-bold);
@@ -152,7 +159,7 @@ class SimpleModal extends LitElement {
           display: inline-flex;
           align-items: center;
           font-size: var(--ddd-font-size-xs);
-          color: white;
+          color: currentColor;
           font-family: var(--ddd-font-navigation);
         }
         .breadcrumb-button,
@@ -160,7 +167,7 @@ class SimpleModal extends LitElement {
           display: inline-flex;
           align-items: center;
           gap: var(--ddd-spacing-1);
-           color: white;
+           color: currentColor;
           font: inherit;
           line-height: inherit;
           border: 0;
@@ -194,7 +201,10 @@ class SimpleModal extends LitElement {
           min-width: unset;
           text-transform: none;
           background-color: transparent;
-          color: white;
+          color: var(
+            --simple-modal-titlebar-color,
+            var(--ddd-theme-default-white, white)
+          );
           --simple-icon-width: var(--ddd-icon-sm);
           --simple-icon-height: var(--ddd-icon-sm);
         }
@@ -227,21 +237,42 @@ class SimpleModal extends LitElement {
             --simple-modal-content-container-color,
             var(--ddd-theme-primary)
           );
-          background-color: light-dark(white, black);
+          background-color: var(
+            --simple-modal-content-container-background,
+            light-dark(white, black)
+          );
         }
 
         .buttons {
           padding: 0;
           padding: var(--simple-modal-buttons-padding, 0);
           margin: var(--ddd-spacing-2);
-          background-color: light-dark(white, black);
+          background-color: var(
+            --simple-modal-buttons-background,
+            var(
+              --simple-modal-content-container-background,
+              light-dark(white, black)
+            )
+          );
         }
 
         .buttons ::slotted(*) {
           padding: 0 var(--ddd-spacing-4) var(--ddd-spacing-4);
           margin: 0;
-          color: var(--simple-modal-button-color, --simple-modal-buttons-color);
-          background-color: light-dark(white, black);
+          color: var(
+            --simple-modal-button-color,
+            var(--simple-modal-buttons-color, inherit)
+          );
+          background-color: var(
+            --simple-modal-button-background,
+            var(
+              --simple-modal-buttons-background,
+              var(
+                --simple-modal-content-container-background,
+                light-dark(white, black)
+              )
+            )
+          );
         }
         web-dialog {
           --dialog-border-radius: var(--ddd-radius-sm);
@@ -249,7 +280,10 @@ class SimpleModal extends LitElement {
           padding: 0;
         }
         web-dialog::part(dialog) {
-          background-color: light-dark(white, black);
+          background-color: var(
+            --simple-modal-content-container-background,
+            light-dark(white, black)
+          );
           min-height: var(--simple-modal-min-height, unset);
           min-width: var(--simple-modal-min-width, unset);
           z-index: var(--simple-modal-z-index, 1000);
@@ -278,7 +312,10 @@ class SimpleModal extends LitElement {
         }
 
         .full {
-          background-color: light-dark(white, black);
+          background-color: var(
+            --simple-modal-titlebar-background,
+            light-dark(black, var(--ddd-theme-default-coalyGray))
+          );
         }
 
         div.empty {

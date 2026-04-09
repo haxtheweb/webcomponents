@@ -81,7 +81,14 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
         :host {
           display: block;
           font-family: var(--ddd-font-primary);
-          background-color: var(--ddd-theme-default-white);
+          background-color: light-dark(
+            var(--ddd-theme-default-white, white),
+            var(--ddd-theme-default-coalyGray, #1c1c1c)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray, #1c1c1c),
+            var(--ddd-theme-default-white, white)
+          );
           border-radius: var(--ddd-radius-sm);
           padding: var(--ddd-spacing-6);
           min-width: 420px;
@@ -101,7 +108,10 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
         }
 
         .site-title {
-          color: var(--ddd-theme-default-nittanyNavy);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-skyBlue, #7eb3ff)
+          );
           font-weight: var(--ddd-font-weight-bold);
           font-size: var(--ddd-font-size-s);
           margin: var(--ddd-spacing-1) 0;
@@ -113,7 +123,10 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
           margin: var(--ddd-spacing-2) 0;
           padding: var(--ddd-spacing-3);
           border-radius: var(--ddd-radius-sm);
-          background-color: var(--ddd-theme-default-limestoneLight);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight, #f5f5f5),
+            var(--ddd-theme-default-slateGray, #2b2b2b)
+          );
         }
 
         .input-container {
@@ -129,16 +142,33 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
           border-radius: var(--ddd-radius-xs);
           font-family: var(--ddd-font-primary);
           font-size: var(--ddd-font-size-s);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray, #1c1c1c),
+            var(--ddd-theme-default-white, white)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-white, white),
+            var(--ddd-theme-default-slateGray, #2b2b2b)
+          );
           width: 100%;
           box-sizing: border-box;
           transition:
             border-color 0.2s ease,
             box-shadow 0.2s ease;
         }
+        input::placeholder {
+          color: light-dark(
+            var(--ddd-theme-default-slateGray, #6f6f6f),
+            var(--ddd-theme-default-limestoneGray, #d0d0d0)
+          );
+        }
 
         input:focus {
           outline: none;
-          border-color: var(--ddd-theme-default-nittanyNavy);
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-skyBlue, #7eb3ff)
+          );
           box-shadow: 0 0 0 2px var(--ddd-theme-default-potential30);
         }
 
@@ -184,13 +214,22 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
 
         .cancel-button {
           background: transparent;
-          color: var(--ddd-theme-default-nittanyNavy);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-white, white)
+          );
           border: var(--ddd-border-sm);
         }
 
         .cancel-button:hover:not(:disabled) {
-          background: var(--ddd-theme-default-slateLight);
-          color: var(--ddd-theme-default-nittanyNavy);
+          background: light-dark(
+            var(--ddd-theme-default-slateLight, #ececec),
+            var(--ddd-theme-default-slateGray, #2b2b2b)
+          );
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-white, white)
+          );
           transform: translateY(-1px);
         }
 
@@ -228,7 +267,10 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
 
         h3 {
           margin: 0;
-          color: var(--ddd-theme-default-nittanyNavy);
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-white, white)
+          );
           font-size: var(--ddd-font-size-l);
           text-align: center;
           font-weight: var(--ddd-font-weight-bold);
@@ -236,7 +278,10 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
 
         p {
           margin: 0;
-          color: var(--ddd-theme-default-coalyGray);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray, #1c1c1c),
+            var(--ddd-theme-default-white, white)
+          );
           font-size: var(--ddd-font-size-s);
           text-align: center;
           line-height: 1.4;
@@ -248,7 +293,10 @@ class AppHaxUserAccessModal extends I18NMixin(DDD) {
           justify-content: center;
           width: 120px;
           height: 120px;
-          color: var(--ddd-theme-default-slateGray);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray, #6f6f6f),
+            var(--ddd-theme-default-limestoneGray, #d0d0d0)
+          );
           font-size: var(--ddd-font-size-xs);
           text-align: center;
         }

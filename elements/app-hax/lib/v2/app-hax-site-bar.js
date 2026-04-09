@@ -124,7 +124,8 @@ export class AppHaxSiteBars extends SimpleColors {
           styles: {
             "--simple-modal-titlebar-background":
               "var(--ddd-theme-default-nittanyNavy, #001e44)",
-            "--simple-modal-titlebar-color": "light-dark(black, white)",
+            "--simple-modal-titlebar-color":
+              "var(--ddd-theme-default-white, white)",
             "--simple-modal-width": "90vw",
             "--simple-modal-max-width": "var(--ddd-spacing-32, 480px)",
             "--simple-modal-min-width": "300px",
@@ -135,7 +136,13 @@ export class AppHaxSiteBars extends SimpleColors {
             "--simple-modal-titlebar-height": "80px",
             "--simple-modal-border-radius": "var(--ddd-radius-md, 8px)",
             "--simple-modal-background":
-              "var(--ddd-theme-default-white, white)",
+              "light-dark(var(--ddd-theme-default-white, white), var(--ddd-theme-default-coalyGray, #1c1c1c))",
+            "--simple-modal-content-container-background":
+              "light-dark(var(--ddd-theme-default-white, white), var(--ddd-theme-default-coalyGray, #1c1c1c))",
+            "--simple-modal-content-container-color":
+              "light-dark(var(--ddd-theme-default-coalyGray, #1c1c1c), var(--ddd-theme-default-white, white))",
+            "--simple-modal-buttons-background":
+              "light-dark(var(--ddd-theme-default-white, white), var(--ddd-theme-default-coalyGray, #1c1c1c))",
             "--simple-modal-box-shadow": "var(--ddd-boxShadow-xl)",
           },
         },

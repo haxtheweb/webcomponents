@@ -164,11 +164,13 @@ export class AppHaxToast extends RPGCharacterToast {
         .dismiss {
           margin: 0;
           color: inherit;
+          background-color: transparent;
           --simple-icon-height: var(--ddd-icon-xs, 20px);
           --simple-icon-width: var(--ddd-icon-xs, 20px);
           --simple-icon-button-padding: var(--ddd-spacing-1, 4px);
           --simple-icon-button-border: var(--ddd-border-xs, 1px solid);
           --simple-icon-button-border-radius: var(--ddd-radius-sm, 4px);
+          --simple-icon-button-background-color: transparent;
           --simple-icon-button-focus-background-color: var(
             --ddd-theme-default-limestoneGray,
             #f5f5f5
@@ -177,6 +179,7 @@ export class AppHaxToast extends RPGCharacterToast {
         }
         .dismiss::part(button) {
           border-color: currentColor;
+          background-color: transparent;
         }
         :host([dark-mode]) .dismiss {
           --simple-icon-button-focus-background-color: var(

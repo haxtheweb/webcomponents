@@ -52,9 +52,16 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
           );
           --simple-modal-titlebar-color: var(--ddd-theme-default-white, white);
           --simple-modal-content-padding: var(--ddd-spacing-6, 24px);
-          --simple-modal-content-container-background: var(
-            --ddd-theme-default-white,
-            white
+          --simple-modal-content-container-color: light-dark(
+            var(--ddd-theme-default-coalyGray, #444),
+            var(--ddd-theme-default-white, white)
+          );
+          --simple-modal-content-container-background: light-dark(
+            var(--ddd-theme-default-white, white),
+            var(--ddd-theme-default-coalyGray, #1c1c1c)
+          );
+          --simple-modal-buttons-background: var(
+            --simple-modal-content-container-background
           );
           --simple-modal-background: var(--ddd-theme-default-white, white);
           --simple-modal-box-shadow: var(--ddd-boxShadow-xl);
@@ -77,6 +84,21 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
           font-family: var(--ddd-font-primary, sans-serif) !important;
           font-size: var(--ddd-font-size-m, 18px) !important;
           font-weight: var(--ddd-font-weight-bold, 700) !important;
+          color: var(--simple-modal-titlebar-color) !important;
+        }
+
+        simple-modal::part(titlebar) {
+          background-color: var(--simple-modal-titlebar-background) !important;
+          color: var(--simple-modal-titlebar-color) !important;
+        }
+
+        simple-modal::part(dialog),
+        simple-modal::part(content),
+        simple-modal::part(buttons) {
+          background-color: var(
+            --simple-modal-content-container-background
+          ) !important;
+          color: var(--simple-modal-content-container-color) !important;
         }
 
         .modal-content {
@@ -85,11 +107,12 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
           align-items: center;
           text-align: center;
           min-height: var(--ddd-spacing-16, 120px);
+          color: var(--simple-modal-content-container-color);
         }
 
         .message {
           font-size: var(--ddd-font-size-s, 16px);
-          color: var(--ddd-theme-default-coalyGray, #444);
+          color: var(--simple-modal-content-container-color);
           margin: 0 0 var(--ddd-spacing-6, 24px) 0;
           line-height: var(--ddd-lh-140, 1.4);
         }
@@ -147,16 +170,28 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
             --ddd-theme-default-original87Pink-dark,
             #c4006c
           ) !important;
+          color: var(--ddd-theme-default-white, white) !important;
         }
 
         .button-cancel {
           background: transparent !important;
-          border: var(--ddd-border-sm, 2px solid)
-            var(--ddd-theme-default-nittanyNavy, #001e44) !important;
+          color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-white, white)
+          ) !important;
+          border: var(--ddd-border-sm, 2px solid) !important;
+          border-color: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-white, white)
+          ) !important;
         }
 
         .button-cancel:hover:not(:disabled) {
-          background: var(--ddd-theme-default-nittanyNavy, #001e44) !important;
+          background: light-dark(
+            var(--ddd-theme-default-nittanyNavy, #001e44),
+            var(--ddd-theme-default-slateGray, #2b2b2b)
+          ) !important;
+          color: var(--ddd-theme-default-white, white) !important;
         }
 
         @media (max-width: 600px) {
