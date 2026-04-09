@@ -4769,32 +4769,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "edit",
     });
 
-
-
-
-    // Ctrl+Shift+V - Toggle view source mode in HAX
-    HAXCMSKeyboardShortcutsInstance.register({
-      key: "V",
-      ctrl: true,
-      shift: true,
-      callback: (e) => {
-        if (HAXStore.haxTray) {
-          if (HAXStore.haxTray.trayDetail === "view-source") {
-            HAXStore.haxTray.collapsed = true;
-          } else {
-            HAXStore.haxTray.trayDetail = "view-source";
-            HAXStore.haxTray.shadowRoot
-              .querySelector("#view-source")
-              .openSource();
-            HAXStore.haxTray.collapsed = false;
-          }
-        }
-      },
-      condition: () => store.isLoggedIn && this.editMode,
-      description: "Toggle view source mode",
-      context: "edit",
-    });
-
     // Numbered shortcuts - contextual based on edit mode
     // Ctrl+Shift+1 - View source (edit) OR Add page (non-edit)
     HAXCMSKeyboardShortcutsInstance.register({

@@ -37,7 +37,6 @@ The keyboard shortcut system is implemented in:
 |----------|--------|---------|-------------|
 | `Ctrl+Shift+Z` | Undo | Edit Mode | Undo the last change |
 | `Ctrl+Shift+Y` | Redo | Edit Mode | Redo the last undone change |
-| `Ctrl+Shift+V` | View Source | Edit Mode | Toggle HTML source view |
 | `Ctrl+Shift+B` | Block Browser | Edit Mode | Open the block/element browser |
 
 ### Numbered Tray Panel Shortcuts
