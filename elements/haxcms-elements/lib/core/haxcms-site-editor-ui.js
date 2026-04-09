@@ -5017,8 +5017,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "site":
       case "blocks":
       case "editor":
-      case "features":
         return "siteManifest";
+      case "features":
+        return null;
       case "seo":
         return "seoManifest";
       case "author":
@@ -5028,6 +5029,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       case "reports":
         return "insights";
       case "content":
+        return null;
       case "files":
         return "uploadMedia";
       default:
@@ -5729,9 +5731,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const dashboard = globalThis.document.createElement(
         "haxcms-site-settings-dashboard",
       );
+      dashboard.allowContent = this._adminRouteAllowed("content");
+      dashboard.allowStructure = this._adminRouteAllowed("structure");
+      dashboard.allowSiteDetails = this._adminRouteAllowed("site");
       dashboard.allowStyleGuide = store.platformAllows("styleGuide");
       // "insights" is the compatibility platform feature key for Reports availability.
-      dashboard.allowReports = store.platformAllows("insights");
+      dashboard.allowReports = this._adminRouteAllowed("reports");
       dashboard.addEventListener(
         "haxcms-site-settings-dashboard-action",
         this._siteSettingsDashboardAction.bind(this),

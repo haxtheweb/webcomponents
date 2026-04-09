@@ -9,6 +9,9 @@ class HAXCMSSiteSettingsDashboard extends DDD {
 
   static get properties() {
     return {
+      allowContent: { type: Boolean, attribute: "allow-content" },
+      allowStructure: { type: Boolean, attribute: "allow-structure" },
+      allowSiteDetails: { type: Boolean, attribute: "allow-site-details" },
       allowStyleGuide: { type: Boolean, attribute: "allow-style-guide" },
       allowReports: { type: Boolean, attribute: "allow-reports" },
     };
@@ -16,6 +19,9 @@ class HAXCMSSiteSettingsDashboard extends DDD {
 
   constructor() {
     super();
+    this.allowContent = true;
+    this.allowStructure = true;
+    this.allowSiteDetails = true;
     this.allowStyleGuide = false;
     this.allowReports = false;
   }
@@ -164,6 +170,9 @@ class HAXCMSSiteSettingsDashboard extends DDD {
       }),
     );
   }
+  _disabledViaFeaturesTooltip(disabled) {
+    return disabled ? "Disabled via Features" : "";
+  }
   _renderActionButton(item, size = "advanced") {
     if (item.hidden) {
       return "";
@@ -186,13 +195,25 @@ class HAXCMSSiteSettingsDashboard extends DDD {
   }
 
   render() {
+    const contentDisabled = !this.allowContent;
+    const structureDisabled = !this.allowStructure;
+    const siteDetailsDisabled = !this.allowSiteDetails;
+    const reportsDisabled = !this.allowReports;
     const primaryActions = [
       {
         action: "content-admin",
         icon: "editor:insert-drive-file",
         label: "Content",
+        disabled: contentDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(contentDisabled),
       },
-      { action: "outline", icon: "hax:site-map", label: "Structure" },
+      {
+        action: "outline",
+        icon: "hax:site-map",
+        label: "Structure",
+        disabled: structureDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(structureDisabled),
+      },
       {
         action: "theme-settings",
         icon: "lrn:palette",
@@ -200,7 +221,13 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         disabled: true,
         tooltip: "Coming soon",
       },
-      { action: "site-settings", icon: "settings", label: "Site Details" },
+      {
+        action: "site-settings",
+        icon: "settings",
+        label: "Site Details",
+        disabled: siteDetailsDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(siteDetailsDisabled),
+      },
     ];
     const advancedActions = [
       {
@@ -229,7 +256,8 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         action: "reports",
         icon: "hax:graph",
         label: "Reports",
-        disabled: !this.allowReports,
+        disabled: reportsDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(reportsDisabled),
       },
       {
         action: "files-admin",
