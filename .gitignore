@@ -18,6 +18,8 @@ test/index.html
 component-gallery.html
 elements/video-player/demo/samples/ad/
 elements/haxcms-elements/demo/files/
+# No end-/ because node_modules is a symlink
+elements/haxcms-elements/demo/node_modules
 elements/grade-book/demo/psu/
 elements/elmsln-apps/lib/lrnapp-studio-instructor/demo/*
 elements/elmsln-apps/lib/lrnapp-studio-instructor/lrnapp-studio-submission/api/submissions/353
