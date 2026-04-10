@@ -823,44 +823,78 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     if (htmlcontent !== null && activeItem && activeItem.metadata) {
       // Check if page-break should be hidden by platform configuration
       const pageBreakHidden = store.platformAllows("pageBreak") === false;
-
+      const setAttrIfValue = (el, name, value) => {
+        if (
+          typeof value !== typeof undefined &&
+          value !== null &&
+          String(value) !== ""
+        ) {
+          el.setAttribute(name, String(value))
+        }
+      }
       // force a page break w/ the relevant details in code
       // this allows the UI to be modified
       // required fields followed by optional fields if defined
-      htmlcontent = `<page-break
-      break-type="site"
-      title="${activeItem.title}"
-      parent="${activeItem.parent}"
-      item-id="${activeItem.id}"
-      slug="${activeItem.slug}"
-      description="${activeItem.description}"
-      order="${activeItem.order}"
-      ${activeItem.metadata.pageType ? `page-type="${activeItem.metadata.pageType}"` : ``}
-      ${activeItem.metadata.tags ? `tags="${activeItem.metadata.tags}"` : ``}
-      ${activeItem.metadata.hideInMenu ? `hide-in-menu="hide-in-menu"` : ``}
-      ${activeItem.metadata.relatedItems ? `related-items="${activeItem.metadata.relatedItems}"` : ``}
-      ${activeItem.metadata.image ? `image="${activeItem.metadata.image}"` : ``}
-      ${activeItem.metadata.icon ? `icon="${activeItem.metadata.icon}"` : ``}
-      ${activeItem.metadata.accentColor ? `accent-color="${activeItem.metadata.accentColor}"` : ``}
-      ${activeItem.metadata.theme && activeItem.metadata.theme.key ? `developer-theme="${activeItem.metadata.theme.key}"` : ``}
-      ${activeItem.metadata.linkUrl ? `link-url="${activeItem.metadata.linkUrl}"` : ``}
-      ${activeItem.metadata.linkTarget ? `link-target="${activeItem.metadata.linkTarget}"` : ``}
-      ${activeItem.metadata.locked ? 'locked="locked"' : ``}
-      ${pageBreakHidden ? 'platform-hidden="platform-hidden"' : ``}
-      ${activeItem.metadata.published === false ? "" : 'published="published"'} ></page-break>${htmlcontent}`;
+      const wrapper = globalThis.document.createElement("div")
+      const pageBreak = globalThis.document.createElement("page-break")
+      pageBreak.setAttribute("break-type", "site")
+      setAttrIfValue(pageBreak, "title", activeItem.title)
+      setAttrIfValue(pageBreak, "parent", activeItem.parent)
+      setAttrIfValue(pageBreak, "item-id", activeItem.id)
+      setAttrIfValue(pageBreak, "slug", activeItem.slug)
+      setAttrIfValue(pageBreak, "description", activeItem.description)
+      setAttrIfValue(pageBreak, "order", activeItem.order)
+      setAttrIfValue(pageBreak, "page-type", activeItem.metadata.pageType)
+      setAttrIfValue(pageBreak, "tags", activeItem.metadata.tags)
+      setAttrIfValue(pageBreak, "related-items", activeItem.metadata.relatedItems)
+      setAttrIfValue(pageBreak, "image", activeItem.metadata.image)
+      setAttrIfValue(pageBreak, "icon", activeItem.metadata.icon)
+      setAttrIfValue(pageBreak, "accent-color", activeItem.metadata.accentColor)
+      if (
+        activeItem.metadata.theme &&
+        activeItem.metadata.theme.key
+      ) {
+        pageBreak.setAttribute("developer-theme", activeItem.metadata.theme.key)
+      }
+      setAttrIfValue(pageBreak, "link-url", activeItem.metadata.linkUrl)
+      setAttrIfValue(pageBreak, "link-target", activeItem.metadata.linkTarget)
+      if (activeItem.metadata.hideInMenu) {
+        pageBreak.setAttribute("hide-in-menu", "hide-in-menu")
+      }
+      if (activeItem.metadata.locked) {
+        pageBreak.setAttribute("locked", "locked")
+      }
+      if (pageBreakHidden) {
+        pageBreak.setAttribute("platform-hidden", "platform-hidden")
+      }
+      if (activeItem.metadata.published !== false) {
+        pageBreak.setAttribute("published", "published")
+      }
+      wrapper.appendChild(pageBreak)
+      const contentFragment = globalThis.document
+        .createRange()
+        .createContextualFragment(htmlcontent)
+      wrapper.appendChild(contentFragment)
 
       // If this page has a link URL configured and the user is not logged in,
       // append simple redirect messaging for a better user experience
       if (activeItem.metadata.linkUrl) {
-        const linkTarget = activeItem.metadata.linkTarget || "_self";
-        const redirectMessage = `
-          <p><a href="${activeItem.metadata.linkUrl}" target="${linkTarget}" rel="noopener noreferrer">${activeItem.metadata.linkUrl}</a></p>
-          <p><small>If the redirect doesn't work, please click the link above.</small></p>
-        `;
-
-        // Append the redirect message to the content
-        htmlcontent = htmlcontent + redirectMessage;
+        const linkTarget = activeItem.metadata.linkTarget || "_self"
+        const linkParagraph = globalThis.document.createElement("p")
+        const link = globalThis.document.createElement("a")
+        link.setAttribute("href", String(activeItem.metadata.linkUrl))
+        link.setAttribute("target", String(linkTarget))
+        link.setAttribute("rel", "noopener noreferrer")
+        link.textContent = String(activeItem.metadata.linkUrl)
+        linkParagraph.appendChild(link)
+        const hintParagraph = globalThis.document.createElement("p")
+        const hint = globalThis.document.createElement("small")
+        hint.textContent = "If the redirect doesn't work, please click the link above."
+        hintParagraph.appendChild(hint)
+        wrapper.appendChild(linkParagraph)
+        wrapper.appendChild(hintParagraph)
       }
+      htmlcontent = wrapper.innerHTML
 
       // Previously, style-guide-driven defaults were applied here.
       // That behavior has been removed so page content renders as-is.
