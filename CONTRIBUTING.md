@@ -4,7 +4,10 @@
   - [What is HAX and this Project?](#what-is-hax-and-this-project)
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
-    - [Development Setup](#development-setup)
+    - [Install: w/ Dev Containers](#install-w-dev-containers)
+    - [Install: w/ Bash script (supporting Git Bash/WSL/macOS/Linux)](#install-w-bash-script-supporting-git-bashwslmacoslinux)
+    - [Windows Support](#windows-support)
+    - [Manual Install](#manual-install)
     - [First-time Setup Verification](#first-time-setup-verification)
   - [Finding Issues to Work On](#finding-issues-to-work-on)
   - [Development Workflow](#development-workflow)
@@ -42,16 +45,53 @@ This project contains 200+ web components in the `elements/` directory, each des
 ## Getting Started
 
 ### Prerequisites
-
-Before contributing, ensure you have:
-- **Node.js** version 22.0 or higher ([Install Node.js](https://nodejs.org/))
-- **Yarn** package manager ([Install Yarn](https://yarnpkg.com/getting-started/install))
-- **Git** for version control
+Before setting up your development environment, ensure you have:
+- **Git** or **GitHub Desktop** for version control
 - A **GitHub account** for submitting contributions
 
-### Development Setup
+### Install: w/ Dev Containers
+Our project follows the [Dev Container specification](https://containers.dev/implementors/spec/) to provide a consistent, UX-focused experience across operating systems. The container isolation ensures that users on Windows, macOS, and Linux can all develop with the same curated environment. <u>If</u> you're interested in **Dev Containers** (but want a more personalized setup), follow along these general steps: 
+1. Install [Docker](https://docs.docker.com/get-started/get-docker/) (or another container runtime)
+    * **Dev Containers** are broadly supported across OCI-compliant runtimes like Docker, [Podman](https://podman.io/docs/installation), and [OrbStack](https://docs.orbstack.dev/quick-start).
+2. Install the [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) extension for **VS Code**
+    * Open **VS Code**, then select **Install Recommended Extensions** 
+    * Accepting the alert will automatically download this with other helpful extensions
+3. Afterwards, another alert will pop up in the **bottom right** corner of **VS Code**
+    * Select **Reopen in Container**
 
-1. **Fork and Clone the Repository**
+Wait a few minutes for your **Dev Container** to be built, then you're ready to go!
+
+Otherwise, please check out the [Quick install](README.md#getting-started) section in our README. This is a full, step-by-step walkthrough of a **Dev Container** installation (using simple applications and sane defaults)!
+
+### Install: w/ Bash script (supporting Git Bash/WSL/macOS/Linux)
+```bash
+curl -fsSL https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scripts/haxthewebme.sh -o haxthewebme.sh && sh haxthewebme.sh
+```
+
+### Windows Support
+[Docker](https://docs.docker.com/desktop/setup/install/windows-install/), [Git Bash](https://git-scm.com/install/windows), or [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) are recommended for the best cross-compatibility with HAX's developer tooling. We also support **PowerShell** for Windows contributors, although certain utilities may experience instability.
+
+#### Windows Developer Mode
+The monorepo uses symlinks in many parts of its local environment. This allows us to emulate the functionality of a live HAXsite without running the full system. On Windows, symlinks normally require running the shell as *Administrator*.
+
+Enable **Developer Mode** to remove this *Administrator* requirement for common development tasks. Start by opening your **Windows Settings**:
+* On Windows 10: Update and Security -> For developers -> Developer Mode
+* On Windows 11: System -> Advanced -> For developers -> Developer Mode
+
+#### Install: w/ PowerShell script (Windows)
+```powershell
+irm https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scripts/haxthewebme.ps1 | iex
+```
+
+### Manual Install
+*Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass legacy browsers.*
+
+1. **Install Node.js**
+
+   Visit [nodejs.org](https://nodejs.org/), then install **Node.js version 22.0** or higher
+   * We recommend **fnm** as a cross-platform Node.js manager
+
+2. **Fork and Clone the Repository**
    ```bash
    # Fork the repo on GitHub, then clone your fork
    git clone https://github.com/YOUR_USERNAME/webcomponents.git
@@ -61,10 +101,10 @@ Before contributing, ensure you have:
    git remote add upstream https://github.com/haxtheweb/webcomponents.git
    ```
 
-2. **Install Dependencies**
+3. **Install Dependencies**
    ```bash
-   # Install HAX CLI globally
-   npm install --global @haxtheweb/create
+   # Install HAX CLI and yarn globally
+   npm install --global @haxtheweb/create yarn
    
    # Install web component analyzer
    yarn global add web-component-analyzer
@@ -73,19 +113,19 @@ Before contributing, ensure you have:
    yarn install
    ```
 
-3. **Start the Development Server**
+4. **Start the Development Server**
    ```bash
    # Start the main development server
    yarn start
    ```
-   This will start the development environment at `http://localhost:8001/elements/haxcms-elements/demo/`
+   This will start the development environment at `http://localhost:8000/elements/haxcms-elements/demo/`
 
 ### First-time Setup Verification
 
 Verify your setup is working:
 
 1. **Check that the development server runs:**
-   - Navigate to `http://localhost:8001/elements/haxcms-elements/demo/` in your browser
+   - Navigate to `http://localhost:8000/elements/haxcms-elements/demo/` in your browser
    - You should see the HAX development interface
 
 2. **Test building components:**
@@ -95,7 +135,7 @@ Verify your setup is working:
    ```
 
 3. **Browse component demos:**
-   - Navigate to `http://localhost:8001/elements/` to see available components
+   - Navigate to `http://localhost:8000/elements/` to see available components
    - Click into individual component directories to view their demos
 
 ## Finding Issues to Work On
@@ -187,18 +227,21 @@ yarn start
 - Ensure existing tests still pass: `yarn test`
 - Test in multiple browsers if making significant changes
 
+### Lerna
+This monorepo has configuration settings for lerna. Lerna is for the core team, but to bulk run commands against the monorepo consider things like `npx lerna run build` to run build against all elements. This is useful when getting ready to ship.
+
 ## Common Issues
 
 New contributors often encounter these issues. Here are solutions to the most common problems:
 
 ### Setup and Installation Issues
 
-**"Port 8001 already in use" error:**
+**"Port 8000 already in use" error:**
 ```bash
-# Find and kill processes using port 8001
-kill -9 $(lsof -t -i:8001)
+# Find and kill processes using port 8000
+kill -9 $(lsof -t -i:8000)
 # Or try a different port range
-PORT=8002 yarn start
+PORT=8001 yarn start
 ```
 
 **Yarn install fails or hangs:**

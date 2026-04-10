@@ -1,6 +1,6 @@
 // For format details, see https://aka.ms/devcontainer.json.
 {
-	"name": "Webcomponents Dev Container",
+	"name": "haxtheweb/webcomponents Dev Container",
 	"image": "ghcr.io/haxtheweb/devcontainer-nodejs:latest",
   // Compatibility with SELinux
 	"runArgs": ["--security-opt", "label=disable"],
