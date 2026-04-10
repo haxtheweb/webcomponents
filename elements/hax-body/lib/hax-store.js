@@ -18,6 +18,7 @@ import {
   localStorageSet,
   detectMarkdown,
   markdownToHTML,
+  sanitizeHTMLForImport,
 } from "@haxtheweb/utils/utils.js";
 import {
   observable,
@@ -4353,8 +4354,10 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
    */
   async htmlToHaxElements(html) {
     let elements = [];
-    let fragment = globalThis.document.createElement("div");
-    fragment.innerHTML = html;
+    let fragment = sanitizeHTMLForImport(html, {
+      sanitizeTemplateContents: true,
+      encapsulateScriptTags: true,
+    });
     // test that this is valid HTML before we dig into it as elements
     // and that it actually has children prior to parsing for children
     if (fragment.children) {

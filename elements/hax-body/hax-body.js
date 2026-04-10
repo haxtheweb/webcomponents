@@ -7,6 +7,7 @@ import "./lib/hax-text-editor-toolbar.js";
 import {
   encapScript,
   removeBadJSEventAttributes,
+  sanitizeHTMLForImport,
   wipeSlot,
   generateResourceID,
   nodeToHaxElement,
@@ -2992,12 +2993,12 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       wipeSlot(this, "*");
     }
     setTimeout(() => {
-      html = encapScript(html);
-      let fragment = globalThis.document.createElement("div");
-      fragment.insertAdjacentHTML("beforeend", html);
+      let fragment = sanitizeHTMLForImport(html, {
+        sanitizeTemplateContents: true,
+        encapsulateScriptTags: true,
+      });
       while (fragment.firstChild !== null) {
         if (typeof fragment.firstChild.tagName !== typeof undefined) {
-          removeBadJSEventAttributes(fragment.firstChild);
           // ensure import doesn't import non-sandbox safe things!
           if (
             HAXStore._isSandboxed &&

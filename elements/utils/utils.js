@@ -263,6 +263,57 @@ export function removeBadJSEventAttributes(el) {
   }
   return el;
 }
+export function sanitizeNodeTree(
+  root,
+  { sanitizeTemplateContents = true } = {},
+) {
+  if (!root) {
+    return root;
+  }
+  if (root.nodeType === globalThis.Node.ELEMENT_NODE) {
+    removeBadJSEventAttributes(root);
+    if (
+      sanitizeTemplateContents &&
+      root.tagName &&
+      root.tagName.toLowerCase() === "template" &&
+      root.content
+    ) {
+      sanitizeNodeTree(root.content, {
+        sanitizeTemplateContents: sanitizeTemplateContents,
+      });
+    }
+  }
+  if (root.childNodes && root.childNodes.length > 0) {
+    for (let i = 0; i < root.childNodes.length; i++) {
+      const child = root.childNodes[i];
+      if (
+        child.nodeType === globalThis.Node.ELEMENT_NODE ||
+        child.nodeType === globalThis.Node.DOCUMENT_FRAGMENT_NODE
+      ) {
+        sanitizeNodeTree(child, {
+          sanitizeTemplateContents: sanitizeTemplateContents,
+        });
+      }
+    }
+  }
+  return root;
+}
+export function sanitizeHTMLForImport(
+  html,
+  { sanitizeTemplateContents = true, encapsulateScriptTags = true } = {},
+) {
+  const safeHTML = encapsulateScriptTags
+    ? encapScript(typeof html === "string" ? html : "")
+    : typeof html === "string"
+      ? html
+      : "";
+  const template = globalThis.document.createElement("template");
+  template.innerHTML = safeHTML;
+  sanitizeNodeTree(template.content, {
+    sanitizeTemplateContents: sanitizeTemplateContents,
+  });
+  return template.content.cloneNode(true);
+}
 
 /**
  * copy to clipboard w/ toast and authorization
