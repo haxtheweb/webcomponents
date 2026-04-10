@@ -16,45 +16,47 @@ Web components that can work in just about anything, are very small (Vanila or L
 
 ## Getting Started
 
-### Quick contribution install: Dev Containers 
+### Quick install: Dev Containers (as a core dev, forks preferrable)
 
-HAXTheWeb is dedicated to making contribution an accessible and simple experience. That's why we prepare an environment tailored with the right tools for getting started! Our project follows the [Dev Container specification](https://containers.dev/implementors/spec/) to provide a consistent, UX-focused experience across operating systems.
+HAXTheWeb is dedicated to making contribution an accessible and simple experience. Follow the step-by-step guide below to explore our curated development environment:
 
-* Install Docker (or another container runtime)
+### Prerequisites
+* On **Windows**: Update **WSL 2**
+    * Open **PowerShell**, run the command: `wsl --update`
+    * Why: Certain Windows editions are bundled with an outdated **WSL 2** version.
+
+* On macOS or Linux: None
+
+---
+### Guide
+1. Install **Docker Desktop**
     * [Windows](https://docs.docker.com/desktop/setup/install/windows-install/)
-        * Ensure that you select the **WSL 2 Backend** option
-        * Restart after install
-        * Certain Windows editions are bundled with an old WSL 2 version. If Docker Desktop warns that WSL 2 is outdated, please update through the [Windows Store](https://aka.ms/wslstorepage) or run `wsl --update` in **PowerShell**.
+        * Select the **WSL 2 Backend** option
+        * **Restart** after installing
     * [macOS](https://docs.docker.com/desktop/setup/install/mac-install/)
     * [Linux](https://docs.docker.com/desktop/setup/install/linux/)
-    * [Dev Containers](https://containers.dev/) are broadly supported across OCI-compliant runtimes like Docker, Podman, and OrbStack.
+    * **Docker Desktop** must remain open for **VS Code** to connect with it.
+2. Install [GitHub Desktop](https://desktop.github.com/download/) (optional)
+3. Clone the repository with **Git**
+    * Using **GitHub Desktop**: select **Clone Repository**, then select the **URL** option.
+    * Enter the link to your repository: `https://github.com/haxtheweb/webcomponents`
+4. Open the repository in **VS Code**
+    * Using **GitHub Desktop**: simply select **Open in VS Code**
+5. Some alerts with pop up in the **bottom right** corner of **VS Code**:
+    * Select **Install Recommended Extensions**
+    * Select **Reopen in Container**
 
-After this step you're ready to go, no fiddling with the command line! 
-1. Clone the project with [Git](https://git-scm.com/install/) or [GitHub Desktop](https://desktop.github.com/download/)
-2. Select **Open in VS Code**
-3. Select **Install Recommended Extensions** 
-4. Select **Reopen in Container**!
+Wait a few minutes for your **Dev Container** to be built, then you're ready to go! Try the following command to open a demo HAXsite:
+```bash
+yarn run haxsite
+```
+
+### Alternative installs
+If you're interested in other installation methods, visit our [Contributing Docs](CONTRIBUTING.md#getting-started)! We provide native Bash and PowerShell scripts, in addition to manual instructions.
 
 -----------------------------------------------
 
-### Manual install: Git Bash/WSL/macOS/Linux (as a core dev, forks preferrable)
-*Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass legacy browsers.*
-
-You can also install the `webcomponents` monorepo natively. Use our onboarding script or follow the manual steps below:
-```bash
-curl -fsSL https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scripts/haxthewebme.sh -o haxthewebme.sh && sh haxthewebme.sh
-```
-#### Lerna
-This monorepo has configuration settings for lerna. Lerna is for the core team, but to bulk run commands against the monorepo consider things like `npx lerna run build` to run build against all elements. This is useful when getting ready to ship.
-
-#### Syncing Your Fork
-```
-git remote add upstream https://github.com/haxtheweb/webcomponents.git
-git fetch upstream
-git pull
-```
-
-# HAX
+## What is HAX
 The authoring experience of HAX and the ability to make fast, static file backed websites rapidly.
 Get all the details you want on [HAX docs](https://haxtheweb.org/)!
 HAX seeks to be the smallest possible back-end CMS to make HAX work and be able to build websites with it. Leveraging JSON Outline Schema, HAX is able to author multiple pages, which it then writes onto the file system. This way a slim server layer is just for basic authentication, knowing how to save files, and placing them in version control.
@@ -64,34 +66,18 @@ Watch and Learn more about HAX here:
 - HAXCellence https://haxtheweb.org/what-is-hax
 - Youtube channel - https://www.youtube.com/@haxtheweb
 
-# Issues / Support / Community
+### Issues / Support / Community
 - Discord Channel - https://bit.ly/hax-discord
 - Unified issue queue - https://github.com/haxtheweb/issues/issues
 - Using Merlin directly in any HAX spaces and type "Issue" to jump start a report!
 
-# Related links and tech
+### Related links and tech
 - [HAXcms (NodeJS)](https://github.com/haxtheweb/haxcms-nodejs)
 - [HAXcms (PHP)](https://github.com/haxtheweb/haxcms-php)
 - [Storybook docs](https://open-apis.hax.cloud/)
 - [HAX [dot] PSU](https://hax.psu.edu)
 - [HAX doc site](https://haxtheweb.org/)
 - [HAX + 11ty](https://github.com/haxtheweb/hax11ty)
-
-
-### Windows Support
-[Docker](https://docs.docker.com/desktop/setup/install/windows-install/), [Git Bash](https://git-scm.com/install/windows), or [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install) are recommended for the best cross-compatibility with HAX's developer tooling. We also support **PowerShell** for Windows contributors, although certain utilities may experience instability.
-
-#### Windows Developer Mode
-The monorepo uses symlinks in many parts of its local environment. This allows us to emulate the functionality of a live HAXsite without running the full system. On Windows, symlinks normally require running the shell as *Administrator*.
-
-Enabling **Developer Mode** removes this *Administrator* requirement for common development tasks. Start by opening your **Windows Settings**:
-* On Windows 10: Update and Security -> For developers -> Developer Mode
-* On Windows 11: System -> Advanced -> For developers -> Developer Mode
-
-#### Manual install: Windows
-```powershell
-irm https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scripts/haxthewebme.ps1 | iex
-```
 
 ## To work on any element in our repo
 ```bash
