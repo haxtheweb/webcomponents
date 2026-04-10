@@ -1283,7 +1283,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
   togglePalette(e) {
     this.dataPalette++;
-    if (this.dataPalette > 8) this.dataPalette = 0;
+    if (this.dataPalette > 10) this.dataPalette = 0;
   }
   
   // Lit render the HTML
