@@ -22,7 +22,9 @@ HAXTheWeb is dedicated to making contribution an accessible and simple experienc
 
 ### Prerequisites
 * On **Windows**: Update **WSL 2**
-    * Open **PowerShell**, run the command: `wsl --update`
+    * There are two methods available:
+      * Open **WSL 2** in the [Microsoft Store](https://aka.ms/wslstorepage), select **Install/Update**
+      * Open **PowerShell**, run the command: `wsl --update`
     * Why: Certain Windows editions are bundled with an outdated **WSL 2** version.
 
 * On macOS or Linux: None
