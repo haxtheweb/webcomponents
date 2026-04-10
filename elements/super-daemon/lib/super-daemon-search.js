@@ -490,7 +490,7 @@ export class SuperDaemonSearch extends I18NMixin(SimpleColors) {
           padding: var(--ddd-spacing-4);
           border-radius: var(--ddd-radius-md);
           color: var(--simple-colors-default-theme-grey-12, black);
-          background-color: var(--simple-colors-default-theme-grey-2, white);
+          background-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-coalyGray));
           line-height: normal;
           font-family: inherit;
           width: var(--super-daemon-search-width, 30vw);

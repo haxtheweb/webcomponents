@@ -139,12 +139,10 @@ class SimpleModal extends LitElement {
           align-items: center;  
           vertical-align: middle;
         }
-
-
         .breadcrumb-icon {
           --simple-icon-color: currentColor;
-          --simple-icon-width: 1em;
-          --simple-icon-height: 1em;
+          --simple-icon-width: 40px;
+          --simple-icon-height: 40px;
           display: inline-flex; 
           align-items: center;  
           vertical-align: middle;
@@ -158,16 +156,16 @@ class SimpleModal extends LitElement {
         .breadcrumb-separator {
           display: inline-flex;
           align-items: center;
-          font-size: var(--ddd-font-size-xs);
+          font-size: var(--ddd-font-size-m);
           color: currentColor;
           font-family: var(--ddd-font-navigation);
+          margin: 0 var(--ddd-spacing-1);
         }
         .breadcrumb-button,
         .breadcrumb-current {
           display: inline-flex;
           align-items: center;
-          gap: var(--ddd-spacing-1);
-           color: currentColor;
+          color: currentColor;
           font: inherit;
           line-height: inherit;
           border: 0;
@@ -176,6 +174,10 @@ class SimpleModal extends LitElement {
           margin: 0;
           text-align: left;
           font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-m);
+        }
+        .breadcrumb-button span, .breadcrumb-current span {
+          transform: translateY(2px);
         }
         .breadcrumb-button {
           cursor: pointer;
