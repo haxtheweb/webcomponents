@@ -153,7 +153,10 @@ export function isURLAttribute(attributeName) {
   return (
     [
       "src",
+      "srcset",
       "source",
+      "url",
+      "link-url",
       "href",
       "xlink:href",
       "action",
@@ -161,7 +164,7 @@ export function isURLAttribute(attributeName) {
       "poster",
       "data",
       "cite",
-    ].includes(name) || /(^|[-_:])(src|source|href)$/.test(name)
+    ].includes(name) || /(^|[-_:])(src|source|href|url)$/.test(name)
   );
 }
 

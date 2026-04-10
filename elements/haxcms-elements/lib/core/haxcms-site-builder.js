@@ -7,6 +7,7 @@ import {
   localStorageSet,
   nodeToHaxElement,
   haxElementToNode,
+  sanitizeURLValue,
 } from "@haxtheweb/utils/utils.js";
 import { autorun, toJS } from "mobx";
 import { store, HAXcmsStore } from "./haxcms-site-store.js";
@@ -856,7 +857,8 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       ) {
         pageBreak.setAttribute("developer-theme", activeItem.metadata.theme.key)
       }
-      setAttrIfValue(pageBreak, "link-url", activeItem.metadata.linkUrl)
+      const safeLinkUrl = sanitizeURLValue(activeItem.metadata.linkUrl, "")
+      setAttrIfValue(pageBreak, "link-url", safeLinkUrl)
       setAttrIfValue(pageBreak, "link-target", activeItem.metadata.linkTarget)
       if (activeItem.metadata.hideInMenu) {
         pageBreak.setAttribute("hide-in-menu", "hide-in-menu")
@@ -878,14 +880,17 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
 
       // If this page has a link URL configured and the user is not logged in,
       // append simple redirect messaging for a better user experience
-      if (activeItem.metadata.linkUrl) {
-        const linkTarget = activeItem.metadata.linkTarget || "_self"
+      if (safeLinkUrl) {
+        const linkTargetCandidates = ["_self", "_blank", "_parent", "_top"]
+        const linkTarget = linkTargetCandidates.includes(activeItem.metadata.linkTarget)
+          ? activeItem.metadata.linkTarget
+          : "_self"
         const linkParagraph = globalThis.document.createElement("p")
         const link = globalThis.document.createElement("a")
-        link.setAttribute("href", String(activeItem.metadata.linkUrl))
+        link.setAttribute("href", String(safeLinkUrl))
         link.setAttribute("target", String(linkTarget))
         link.setAttribute("rel", "noopener noreferrer")
-        link.textContent = String(activeItem.metadata.linkUrl)
+        link.textContent = String(safeLinkUrl)
         linkParagraph.appendChild(link)
         const hintParagraph = globalThis.document.createElement("p")
         const hint = globalThis.document.createElement("small")
