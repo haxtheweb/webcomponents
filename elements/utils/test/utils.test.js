@@ -20,6 +20,9 @@ import {
   ReplaceWithPolyfill,
   haxElementToNode,
   nodeToHaxElement,
+  sanitizeHTMLForImport,
+  isURLAttribute,
+  sanitizeURLValue,
 } from "../utils.js";
 
 describe("Utils test", () => {
@@ -32,6 +35,9 @@ describe("Utils test", () => {
       expect(badJSEventAttributes).to.include("onload");
       expect(badJSEventAttributes).to.include("onerror");
       expect(badJSEventAttributes).to.include("onmouseover");
+      expect(badJSEventAttributes).to.include("onpointerdown");
+      expect(badJSEventAttributes).to.include("ontouchstart");
+      expect(badJSEventAttributes).to.include("ontransitionend");
     });
 
     it("removeBadJSEventAttributes removes dangerous event handlers from element", async () => {
@@ -53,12 +59,14 @@ describe("Utils test", () => {
       const div = document.createElement("div");
       const span = document.createElement("span");
       span.setAttribute("onclick", 'alert("nested xss")');
+      span.setAttribute("onpointerdown", "steal()");
       div.appendChild(span);
 
       removeBadJSEventAttributes(div);
 
       const nestedSpan = div.querySelector("span");
       expect(nestedSpan.hasAttribute("onclick")).to.be.false;
+      expect(nestedSpan.hasAttribute("onpointerdown")).to.be.false;
     });
 
     it("removeBadJSEventAttributes handles null/undefined elements gracefully", async () => {
@@ -125,6 +133,53 @@ describe("Utils test", () => {
 
       expect(haxElement.properties.src).to.equal("https://example.org");
       expect(haxElement.properties.srcdoc).to.be.undefined;
+    });
+
+    it("sanitizeHTMLForImport strips dangerous handlers and unsafe URL attributes", async () => {
+      const fragment = sanitizeHTMLForImport(
+        '<div onclick="bad()"><svg><a xlink:href="javascript:alert(1)">x</a></svg><iframe srcdoc="<h1>unsafe</h1>" src="https://example.org"></iframe></div>',
+      );
+      const host = document.createElement("div");
+      host.appendChild(fragment);
+
+      const wrapper = host.querySelector("div");
+      const svgLink = host.querySelector("a");
+      const iframe = host.querySelector("iframe");
+
+      expect(wrapper.hasAttribute("onclick")).to.be.false;
+      expect(svgLink.hasAttribute("xlink:href")).to.be.false;
+      expect(iframe.hasAttribute("srcdoc")).to.be.false;
+      expect(iframe.getAttribute("src")).to.equal("https://example.org");
+    });
+
+    it("sanitizeHTMLForImport sanitizes template contents recursively", async () => {
+      const fragment = sanitizeHTMLForImport(
+        '<template><div onpointerdown="bad()"><a link-url="javascript:alert(1)">x</a></div></template>',
+      );
+      const host = document.createElement("div");
+      host.appendChild(fragment);
+      const template = host.querySelector("template");
+      const innerDiv = template.content.querySelector("div");
+      const innerLink = template.content.querySelector("a");
+
+      expect(innerDiv.hasAttribute("onpointerdown")).to.be.false;
+      expect(innerLink.hasAttribute("link-url")).to.be.false;
+    });
+
+    it("isURLAttribute identifies custom URL-like attribute names", async () => {
+      expect(isURLAttribute("href")).to.be.true;
+      expect(isURLAttribute("xlink:href")).to.be.true;
+      expect(isURLAttribute("link-url")).to.be.true;
+      expect(isURLAttribute("data-src")).to.be.true;
+      expect(isURLAttribute("nope")).to.be.false;
+    });
+
+    it("sanitizeURLValue rejects unsafe protocols and preserves safe ones", async () => {
+      expect(sanitizeURLValue("javascript:alert(1)", "")).to.equal("");
+      expect(sanitizeURLValue("vbscript:alert(1)", "")).to.equal("");
+      expect(sanitizeURLValue("https://example.org", "")).to.equal(
+        "https://example.org",
+      );
     });
   });
 
