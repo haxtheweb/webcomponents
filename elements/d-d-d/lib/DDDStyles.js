@@ -4834,9 +4834,7 @@ html, :root {
     /* text colors; to be used on top of corresponding palette-color */
     --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-red-2);
     --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-red-1);
-    --ddd-palette-text-color-3: var(
-      --simple-colors-default-theme-deep-orange-12
-    );
+    --ddd-palette-text-color-3: var(--simple-colors-default-theme-deep-orange-12);
     --ddd-palette-text-color-4: var(--simple-colors-default-theme-red-12);
     --ddd-palette-text-color-5: var(--simple-colors-default-theme-red-10);
     --ddd-palette-text-color-6: var(--ddd-theme-default-skyLight);
@@ -5005,6 +5003,28 @@ html, :root {
   --ddd-palette-text-color-5: var(--simple-colors-default-theme-deep-purple-5);
   --ddd-palette-text-color-6: var(--ddd-theme-default-white);
   --ddd-palette-text-color-7: var(--simple-colors-default-theme-brown-11);
+}
+
+[data-palette="honey-bear"],
+[data-palette="10"]{
+  --ddd-palette-color-1: var(--simple-colors-default-theme-deep-orange-1);
+  --ddd-palette-color-2: var(--simple-colors-default-theme-deep-orange-3);
+  --ddd-palette-color-3: var(--ddd-theme-default-landgrantBrown);   
+  --ddd-palette-color-4: var(--simple-colors-default-theme-brown-8);
+  --ddd-palette-color-5: var(--simple-colors-default-theme-brown-11);
+  --ddd-palette-color-6: var(--simple-colors-default-theme-amber-11);
+  --ddd-palette-color-7: var(--simple-colors-default-theme-amber-12);
+
+  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
+   /* text colors; to be used on top of corresponding palette-color */
+  --ddd-palette-text-color-1: var(--simple-colors-default-theme-orange-7);
+  --ddd-palette-text-color-2: var(--simple-colors-default-theme-orange-10);
+  --ddd-palette-text-color-3: var(--simple-colors-default-theme-orange-12);
+  --ddd-palette-text-color-4: var(--simple-colors-default-theme-brown-1);
+  --ddd-palette-text-color-5: var(--simple-colors-default-theme-brown-2);
+  --ddd-palette-text-color-6: var(--simple-colors-default-theme-orange-3);
+  --ddd-palette-text-color-7: var(--simple-colors-default-theme-orange-4);
 }
 `;
 
