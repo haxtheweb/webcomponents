@@ -1,27 +1,28 @@
-#!/bin/bash
+#!/bin/sh
 
 install_if_missing() {
-  local pkg="$1"
+  pkg="$1"
 
-  if ! command -v "$pkg" &>/dev/null; then
+  # >/dev/null 2>&1 nullifies all the stderr messages
+  if ! command -v "$pkg" >/dev/null 2>&1; then
     echo "$pkg dependency is missing"
     # Git Bash/Cygwin usually already have common utils
-    if command -v apt-get &>/dev/null; then
+    if command -v apt-get >/dev/null 2>&1; then
       echo "Installing $pkg with apt..."
       sudo apt-get update -qq && sudo apt-get install -y "$pkg"
-    elif command -v dnf &>/dev/null; then
+    elif command -v dnf >/dev/null 2>&1; then
       echo "Installing $pkg with dnf..."
       sudo dnf install -y "$pkg"
-    elif command -v yum &>/dev/null; then
+    elif command -v yum >/dev/null 2>&1; then
       echo "Installing $pkg with yum..."
       sudo yum install -y "$pkg"
-    elif command -v zypper &>/dev/null; then
+    elif command -v zypper >/dev/null 2>&1; then
       echo "Installing $pkg with zypper..."
       sudo zypper install -y "$pkg"
-    elif command -v pacman &>/dev/null; then
+    elif command -v pacman >/dev/null 2>&1; then
       echo "Installing $pkg with pacman..."
       sudo pacman -Sy --noconfirm "$pkg"
-    elif command -v apk &>/dev/null; then
+    elif command -v apk >/dev/null 2>&1; then
       echo "Installing $pkg with apk..."
       sudo apk update -q && sudo apk add "$pkg"
     else
@@ -49,13 +50,13 @@ unable_to_install(){
 }
 
 source_shell(){
-  CURRENT_SHELL="$(basename "$SHELL")"
-  if [ "$CURRENT_SHELL" = "zsh" ]; then
-    source ${ZDOTDIR:-$HOME}/.zshrc
-  elif [ "$CURRENT_SHELL" = "fish" ]; then
-    source $HOME/.config/fish/conf.d/fnm.fish
-  elif [ "$CURRENT_SHELL" = "bash" ]; then
-    source $HOME/.bashrc
+  current_shell="$(basename "$SHELL")"
+  if [ "$current_shell" = "zsh" ]; then
+    . ${ZDOTDIR:-$HOME}/.zshrc
+  elif [ "$current_shell" = "fish" ]; then
+    . $HOME/.config/fish/conf.d/fnm.fish
+  elif [ "$current_shell" = "bash" ]; then
+    . $HOME/.bashrc
   else
     echo "Could not infer shell type. Please run 'source <your shell config>' manually."
     echo "Then re-run script"
@@ -64,14 +65,15 @@ source_shell(){
 }
 
 # make sure node is installed
-if ! command -v node; then
+if ! command -v node >/dev/null 2>&1; then
   while true; do
-    read -rp "Install Node.js via fnm? [y/n]: " confirm
-    confirm_lowercase="${confirm,,}"
+    printf "Install Node.js via fnm? [y/n]: "
+    read -r confirm
+    confirm_lowercase=$(echo "$confirm" | tr '[:upper:]' '[:lower:]')
 
-    if [[ "$confirm_lowercase" == "y" || "$confirm_lowercase" == "yes" ]]; then
-      if [[ "${machine}" == "Cygwin" || "${machine}" == "MinGw" ]]; then
-        if ! command -v winget; then echo "Winget is not available"; unable_to_install; fi
+    if [ "$confirm_lowercase" = "y" ] || [ "$confirm_lowercase" = "yes" ]; then
+      if [ "$machine" = "Cygwin" ] || [ "$machine" = "MinGw" ]; then
+        if ! command -v winget >/dev/null 2>&1; then echo "Winget is not available"; unable_to_install; fi
 
         winget install Schniz.fnm
         # Simplest way to refresh PATH changes from Windows side
@@ -86,7 +88,7 @@ if ! command -v node; then
 
         # Write to bashrc
         echo 'eval "$(fnm env --use-on-cd --shell bash)"' >> ~/.bashrc
-        source "$HOME/.bashrc"
+        . "$HOME/.bashrc"
         fnm install --lts --use
       else
         install_if_missing curl
@@ -96,7 +98,7 @@ if ! command -v node; then
         fnm install --lts --use
       fi
       break
-    elif [[ "$confirm_lowercase" == "n" || "$confirm_lowercase" == "no" ]]; then
+    elif [ "$confirm_lowercase" = "n" ] || [ "$confirm_lowercase" = "no" ]; then
       unable_to_install
     else
       echo "Please enter yes or no."
@@ -105,32 +107,56 @@ if ! command -v node; then
 fi
 
 # if package isn't installed install it
-if ! command -v yarn;then
+if ! command -v yarn >/dev/null 2>&1;then
   npm -g install yarn
 fi
 
-if ! command -v hax;then
+if ! command -v hax >/dev/null 2>&1;then
   npm -g install @haxtheweb/create
 fi
 
-if ! command -v web-component-analyzer;then
+if ! command -v web-component-analyzer >/dev/null 2>&1;then
   yarn global add web-component-analyzer
 fi
 
+# Optionally install advanced HAX tooling, only runs in interactive shells
+if [ -t 0 ] && ! command -v lerna >/dev/null 2>&1; then
+  while true; do
+    printf "Install advanced HAX tooling via yarn? [y/n]: "
+    read -r confirm
+    confirm_lowercase=$(echo "$confirm" | tr '[:upper:]' '[:lower:]')
+    if [ "$confirm_lowercase" = "y" ] || [ "$confirm_lowercase" = "yes" ]; then
+      yarn global add symlink-dir @web/test-runner @web/test-runner-commands \
+        @web/test-runner-puppeteer @web/test-runner-playwright lerna
+      break
+    elif [ "$confirm_lowercase" = "n" ] || [ "$confirm_lowercase" = "no" ]; then
+      break
+    else
+      echo "Please enter yes or no."
+    fi
+  done
+fi
+
 clone_and_install () {
-  if [[ "$PWD" == *webcomponents* && -d ".git/" ]]; then
+  # POSIX-compatible pattern matching:
+  # Does dir contain "webcomponents" substring? For people using custom repo names
+  if [ -z "${PWD##*webcomponents*}" ] && [ -d ".git/" ]; then
     echo "Already cloned repository to working directory, continuing"
   else
     git clone https://github.com/haxtheweb/webcomponents.git
     cd webcomponents
   fi
-  [ ! -d node_modules ] && { [ -f yarn.lock ] && rm yarn.lock; }
+  # Remove yarn.lock if it exists and node_modules needs to be completely rebuilt
+  if [ ! -d node_modules ] && [ -f yarn.lock ]; then
+    rm yarn.lock
+  fi
+
   yarn install
   printf "Use \033[34myarn run haxsite\033[0m to work on the HAXcms interface\n"
   printf "Run \033[34mcd elements/<ELEMENTNAME>\033[0m, then \033[34myarn start\033[0m to work on a specific element\n"
 }
 
-if [[ "${machine}" == "Cygwin" || "${machine}" == "MinGw" ]]; then
+if [ "$machine" = "Cygwin" ] || [ "$machine" = "MinGw" ]; then
   git config --global core.autocrlf true
   clone_and_install
 else

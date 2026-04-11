@@ -49,17 +49,55 @@ if (-not (Get-Command web-component-analyzer -ErrorAction SilentlyContinue)) {
   yarn global add web-component-analyzer
 }
 
-if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
-  if(-not (Test-Path -Path "webcomponents")) {
-    Write-Host "Install Git for Windows CLI from https://git-scm.com/install/windows"
-    Write-Host "Or clone" -NoNewline
-    Write-Host " haxtheweb/webcomponents " -ForegroundColor Blue -NoNewline
-    Write-Host "with GitHub Desktop and re-run script in the new directory"
-    return
+if (-not (Get-Command lerna -ErrorAction SilentlyContinue)) {
+  while ($true) {
+    $confirm = Read-Host "Install advanced HAX tooling via yarn? [y/n]"
+    $confirm = $confirm.ToLower().Trim()
+
+    if ($confirm -eq "y" -or $confirm -eq "yes") {
+      yarn global add symlink-dir @web/test-runner @web/test-runner-commands `
+        @web/test-runner-puppeteer @web/test-runner-playwright lerna
+      break
+    } elseif ($confirm -eq "n" -or $confirm -eq "no") {
+      break
+    } else {
+      Write-Host "Please enter yes or no."
+    }
   }
+}
+
+# Does dir contain "webcomponents" substring? For people using custom repo names
+if ($PWD.Path -like "*webcomponents*" -and (Test-Path ".git/" -PathType Container)) {
+  Write-Host "Already cloned repository to working directory, continuing"
 } else {
-  git clone https://github.com/haxtheweb/webcomponents.git
-  Set-Location webcomponents
+  if (-not (Get-Command git -ErrorAction SilentlyContinue)) {
+    while ($true) {
+      $confirm = Read-Host "Install Git CLI via winget? [y/n]"
+      $confirm = $confirm.ToLower().Trim()
+
+      if ($confirm -eq "y" -or $confirm -eq "yes") {
+        winget install Git.Git
+        git clone https://github.com/haxtheweb/webcomponents.git
+        Set-Location webcomponents
+        break
+      } elseif ($confirm -eq "n" -or $confirm -eq "no") {
+        Write-Host "Clone" -NoNewline
+        Write-Host " haxtheweb/webcomponents " -ForegroundColor Blue -NoNewline
+        Write-Host "with GitHub Desktop and re-run in the new directory"
+        return
+      } else {
+        Write-Host "Please enter yes or no."
+      }
+    }
+  } else {
+    git clone https://github.com/haxtheweb/webcomponents.git
+    Set-Location webcomponents
+  }
+}
+
+# Remove yarn.lock if it exists and node_modules needs to be completely rebuilt
+if (-not (Test-Path "node_modules" -PathType Container) -and (Test-Path "yarn.lock" -PathType Leaf)) {
+  Remove-Item yarn.lock
 }
 
 yarn install
