@@ -1,8 +1,8 @@
 {
   "_meta": {
-    "elementsScanned": 220,
-    "elementsWithTranslations": 34,
-    "translationFilesFound": 733,
+    "elementsScanned": 221,
+    "elementsWithTranslations": 35,
+    "translationFilesFound": 751,
     "languagesSupported": [
       "af",
       "am",
@@ -322,6 +322,44 @@
       "haxProperties"
     ],
     "author-card.zh": [
+      "haxProperties"
+    ],
+    "citation-builder.ar": [
+      "haxProperties"
+    ],
+    "citation-builder": [
+      "ar",
+      "bn",
+      "es",
+      "fr",
+      "hi",
+      "ja",
+      "pt",
+      "ru",
+      "zh"
+    ],
+    "citation-builder.bn": [
+      "haxProperties"
+    ],
+    "citation-builder.es": [
+      "haxProperties"
+    ],
+    "citation-builder.fr": [
+      "haxProperties"
+    ],
+    "citation-builder.hi": [
+      "haxProperties"
+    ],
+    "citation-builder.ja": [
+      "haxProperties"
+    ],
+    "citation-builder.pt": [
+      "haxProperties"
+    ],
+    "citation-builder.ru": [
+      "haxProperties"
+    ],
+    "citation-builder.zh": [
       "haxProperties"
     ],
     "clean-one": [
