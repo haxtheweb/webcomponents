@@ -1,5 +1,11 @@
 import { css, html } from "lit";
-import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import {
+  normalizeEventPath,
+  localStorageGet,
+  localStorageSet,
+} from "@haxtheweb/utils/utils.js";
+import { autorun, toJS } from "mobx";
+import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 
 const BootstrapUserStylesMenuMixin = function (SuperClass) {
   return class extends SuperClass {
@@ -8,10 +14,24 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
       this.hideUserStylesMenu = true;
       this.fontSize = 1;
       this.fontFamily = 0;
-      this.colorTheme = "0";
+      this.colorTheme = localStorageGet("haxcms-bootstrap-userPref-colorTheme", 0);
       let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
       this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
       this.addEventListener("click", this.checkUserStylesMenuOpen.bind(this));
+      autorun(() => {
+        const darkMode = toJS(store.darkMode);
+        const localColorTheme = localStorageGet(
+          "haxcms-bootstrap-userPref-colorTheme",
+          0,
+        );
+        if (darkMode) {
+          this.colorTheme = 1;
+        } else if (localColorTheme === 1) {
+          this.colorTheme = 0;
+        } else {
+          this.colorTheme = localColorTheme;
+        }
+      });
     }
     static get styles() {
       let styles = [];
@@ -370,7 +390,11 @@ const BootstrapUserStylesMenuMixin = function (SuperClass) {
     }
     UserStylesColorThemeChange(e) {
       var target = normalizeEventPath(e)[0];
-      this.colorTheme = parseInt(target.getAttribute("data-theme"));
+      this.colorTheme = parseInt(target.getAttribute("data-theme"), 10);
+      localStorageSet(
+        "haxcms-bootstrap-userPref-colorTheme",
+        this.colorTheme,
+      );
     }
   };
 };

@@ -42,6 +42,7 @@ class BootstrapBreadcrumb extends LitElement {
         }
         .breadcrumb-item {
           padding: 0.5rem 0.75rem;
+          color: light-dark(black, white);
         }
 
         simple-icon-lite {

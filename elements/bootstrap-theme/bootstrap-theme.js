@@ -465,7 +465,7 @@ class BootstrapTheme extends HAXCMSThemeParts(
         reflect: true,
       },
       colorTheme: {
-        type: String,
+        type: Number,
         attribute: "color-theme",
         reflect: true,
       },
@@ -482,7 +482,9 @@ class BootstrapTheme extends HAXCMSThemeParts(
     let basePath = this.getBasePath(decodeURIComponent(import.meta.url));
     this._bootstrapPath = basePath + "bootstrap/dist/css/bootstrap.min.css";
     this._themeElements = [];
-    this.colorTheme = "0";
+    if (typeof this.colorTheme === typeof undefined || this.colorTheme === null) {
+      this.colorTheme = 0;
+    }
     this.searchTerm = "";
     this.__siteTitle = "";
     this.___pageTitle = "";
