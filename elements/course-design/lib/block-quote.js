@@ -36,13 +36,11 @@ export class BlockQuote extends DDD {
               <simple-icon-lite
                 id="iconflip"
                 icon="editor:format-quote"
-                style="align-items: start"
               ></simple-icon-lite>
               <span><slot></slot></span>
               <span><slot name="quote"></slot></span>
               <simple-icon-lite
                 icon="editor:format-quote"
-                style="align-items: start"
               ></simple-icon-lite>
             </div>
             <div id="citation">
@@ -73,6 +71,24 @@ export class BlockQuote extends DDD {
               var(--ddd-theme-default-coalyGray, inherit)
             )
           );
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray, inherit),
+            var(--ddd-theme-default-limestoneMaxLight, inherit)
+          );
+          --ddd-component-block-quote-border-color-default: light-dark(
+            var(--ddd-theme-accent, var(--ddd-theme-default-limestoneGray)),
+            var(
+              --ddd-theme-default-limestoneLight,
+              var(--ddd-theme-default-limestoneGray)
+            )
+          );
+          --ddd-component-block-quote-icon-color-default: light-dark(
+            var(--ddd-theme-accent, var(--ddd-theme-default-limestoneGray)),
+            var(
+              --ddd-theme-default-limestoneLight,
+              var(--ddd-theme-default-limestoneGray)
+            )
+          );
           display: flex;
           align-items: start;
           width: 100%;
@@ -84,7 +100,7 @@ export class BlockQuote extends DDD {
           border-left: var(--ddd-border-lg);
           border-color: var(
             --ddd-component-block-quote-border-color,
-            var(--ddd-theme-accent, var(--ddd-theme-default-limestoneGray))
+            var(--ddd-component-block-quote-border-color-default)
           );
           padding: var(--ddd-spacing-6);
           text-align: center;
@@ -125,7 +141,7 @@ export class BlockQuote extends DDD {
           align-self: flex-start;
           color: var(
             --ddd-component-block-quote-icon,
-            var(--ddd-theme-accent, inherit)
+            var(--ddd-component-block-quote-icon-color-default)
           );
           height: var(--ddd-icon-xs);
           width: var(--ddd-icon-xs);
@@ -149,7 +165,10 @@ export class BlockQuote extends DDD {
             border: var(--ddd-border-lg);
             border-color: var(
               --ddd-component-block-quote-image-border,
-              var(--ddd-theme-accent, var(--ddd-theme-default-limestoneGray))
+              var(
+                --ddd-component-block-quote-border-color,
+                var(--ddd-component-block-quote-border-color-default)
+              )
             );
             border-radius: var(--ddd-radius-circle);
           }
