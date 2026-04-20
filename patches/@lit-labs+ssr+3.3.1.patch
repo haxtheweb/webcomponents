@@ -1,0 +1,19 @@
+diff --git a/node_modules/@lit-labs/ssr/lib/render-result.js b/node_modules/@lit-labs/ssr/lib/render-result.js
+index 25c9490..c8fac1a 100644
+--- a/node_modules/@lit-labs/ssr/lib/render-result.js
++++ b/node_modules/@lit-labs/ssr/lib/render-result.js
+@@ -8,9 +8,12 @@
+  */
+ export const collectResult = async (result) => {
+     let value = '';
+-    for (const chunk of result) {
++    if (result) {
++      for (const chunk of result) {
++        //console.log(chunk);
+         value +=
+-            typeof chunk === 'string' ? chunk : await collectResult(await chunk);
++              typeof chunk === 'string' ? chunk : await collectResult(await chunk);
++      }
+     }
+     return value;
+ };
