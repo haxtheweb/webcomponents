@@ -10,9 +10,14 @@ import "@haxtheweb/d-d-d/lib/ddd-card.js";
 import "@haxtheweb/d-d-d/lib/ddd-steps-list-item.js";
 import "@haxtheweb/d-d-d/lib/ddd-steps-list.js";
 import {
+  getDDDPaletteOptionByValue,
+  getDDDPaletteOptions,
+} from "@haxtheweb/d-d-d/lib/DDDPaletteRegistry.js";
+import {
   ApplicationAttributeData,
   DDDAllStyles,
 } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
+import "@haxtheweb/d-d-d/lib/hax-palette-picker.js";
 import "@haxtheweb/figure-label/figure-label.js";
 import "@haxtheweb/media-image/media-image.js";
 import "@haxtheweb/page-section/page-section.js";
@@ -36,6 +41,7 @@ export const styleGuideTopics = {
   DefaultColors: "DefaultColors",
   DefaultFunctionalColors: "DefaultFunctionalColors",
   Palettes: "Palettes",
+  PalettePicker: "PalettePicker",
   Gradients: "Gradients",
   Radius: "Radius",
   Shadows: "Shadows",
@@ -58,11 +64,20 @@ class DDDocs extends DDD {
     super();
     this.option = "*";
     this.options = Object.keys(styleGuideTopics);
+    this.palettePickerOptions = getDDDPaletteOptions();
+    const defaultPalette = getDDDPaletteOptionByValue(
+      "0",
+      "0",
+      this.palettePickerOptions,
+    );
+    this.palettePickerValue = defaultPalette ? defaultPalette.dataPalette : "0";
   }
   static get properties() {
     return {
       option: { type: String },
       options: { type: Array },
+      palettePickerOptions: { type: Array, attribute: false },
+      palettePickerValue: { type: String },
     };
   }
   static get styles() {
@@ -179,6 +194,82 @@ class DDDocs extends DDD {
         .squareButton {
           width: var(--ddd-spacing-12);
           height: var(--ddd-spacing-12);
+        }
+        .palette-picker-layout {
+          display: grid;
+          gap: var(--ddd-spacing-4);
+          margin: var(--ddd-spacing-4) 0;
+          grid-template-columns: minmax(0, 1fr);
+        }
+        @media screen and (min-width: 1080px) {
+          .palette-picker-layout {
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          }
+        }
+        .palette-picker-control,
+        .palette-picker-preview {
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-theme-default-limestoneGray);
+          border-radius: var(--ddd-radius-sm);
+          padding: var(--ddd-spacing-4);
+        }
+        .palette-picker-preview-stack {
+          display: grid;
+          gap: var(--ddd-spacing-3);
+        }
+        .palette-picker-preview {
+          background-color: var(--ddd-theme-default-limestoneMaxLight);
+        }
+        .palette-picker-preview-dark {
+          color-scheme: dark;
+          background-color: var(--ddd-theme-default-potentialMidnight);
+          color: var(--ddd-theme-default-limestoneMaxLight);
+          border-color: var(--ddd-theme-default-slateGray);
+        }
+        .palette-picker-preview-dark .palette-picker-meta {
+          color: var(--ddd-theme-default-limestoneGray);
+        }
+        .palette-picker-meta {
+          margin: 0 0 var(--ddd-spacing-3);
+          font-size: var(--ddd-font-size-5xs);
+          color: var(--ddd-theme-default-slateGray);
+        }
+        .palette-picker-swatches {
+          display: grid;
+          grid-template-columns: repeat(7, minmax(0, 1fr));
+          gap: var(--ddd-spacing-1);
+        }
+        .palette-picker-swatch {
+          display: block;
+          border: var(--ddd-border-xs);
+          border-color: color-mix(
+            in srgb,
+            var(--ddd-theme-default-coalyGray) 30%,
+            transparent
+          );
+          border-radius: var(--ddd-radius-xs);
+          min-block-size: var(--ddd-spacing-8);
+        }
+        .palette-picker-swatch-1 {
+          background-color: var(--ddd-palette-color-1);
+        }
+        .palette-picker-swatch-2 {
+          background-color: var(--ddd-palette-color-2);
+        }
+        .palette-picker-swatch-3 {
+          background-color: var(--ddd-palette-color-3);
+        }
+        .palette-picker-swatch-4 {
+          background-color: var(--ddd-palette-color-4);
+        }
+        .palette-picker-swatch-5 {
+          background-color: var(--ddd-palette-color-5);
+        }
+        .palette-picker-swatch-6 {
+          background-color: var(--ddd-palette-color-6);
+        }
+        .palette-picker-swatch-7 {
+          background-color: var(--ddd-palette-color-7);
         }
       `,
     ];
@@ -1173,6 +1264,83 @@ class DDDocs extends DDD {
     `;
   }
 
+  _onPalettePickerValueChanged(e) {
+    if (
+      e.detail &&
+      (e.detail.value || e.detail.value === "0") &&
+      e.detail.value.toString
+    ) {
+      this.palettePickerValue = e.detail.value.toString();
+      return;
+    }
+    this.palettePickerValue = "0";
+  }
+
+  renderPalettePicker() {
+    const selectedPalette = getDDDPaletteOptionByValue(
+      this.palettePickerValue,
+      "0",
+      this.palettePickerOptions,
+    );
+    const selectedDataPalette = selectedPalette
+      ? selectedPalette.dataPalette
+      : "0";
+    const selectedLabel = selectedPalette ? selectedPalette.label : "";
+    const selectedKey = selectedPalette ? selectedPalette.key : "";
+    const selectedSwatches =
+      selectedPalette && Array.isArray(selectedPalette.swatches)
+        ? selectedPalette.swatches
+        : [1, 2, 3, 4, 5, 6, 7];
+    return html`
+      <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">hax-palette-picker prototype</h2>
+      <p class="mb-4">
+        Registry-driven field prototype for HAX appearance settings, using the
+        same palette data model as DDD.
+      </p>
+      <div class="palette-picker-layout">
+        <div class="palette-picker-control">
+          <h3 class="mt-0 mb-4">Default context</h3>
+          <hax-palette-picker
+            .options="${this.palettePickerOptions}"
+            value="${selectedDataPalette}"
+            label="Theme palette"
+            description="Choose a palette; this value is written as the data-palette attribute at theme scope."
+            @value-changed="${this._onPalettePickerValueChanged}"
+          ></hax-palette-picker>
+        </div>
+        <div class="palette-picker-preview-stack">
+          <div class="palette-picker-preview" data-palette="${selectedDataPalette}">
+            <h3 class="mt-0 mb-2">Selected palette tokens</h3>
+            <p class="palette-picker-meta">
+              ${selectedLabel} (${selectedKey}) → data-palette="${selectedDataPalette}"
+            </p>
+            <div class="palette-picker-swatches">
+              ${selectedSwatches.map(
+                (index) => html`
+                  <span class="palette-picker-swatch palette-picker-swatch-${index}"></span>
+                `,
+              )}
+            </div>
+          </div>
+          <div
+            class="palette-picker-preview palette-picker-preview-dark"
+            data-palette="${selectedDataPalette}"
+          >
+            <h3 class="mt-0 mb-2">Dark context check</h3>
+            <p class="palette-picker-meta">
+              Readability and selected state preview in dark-mode presentation.
+            </p>
+            <hax-palette-picker
+              .options="${this.palettePickerOptions}"
+              value="${selectedDataPalette}"
+              label="Theme palette (dark context)"
+              @value-changed="${this._onPalettePickerValueChanged}"
+            ></hax-palette-picker>
+          </div>
+        </div>
+      </div>
+    `;
+  }
   renderGradients() {
     return html`
       <h2 class="fs-s mt-0 mb-2 pb-5 bb-sm">

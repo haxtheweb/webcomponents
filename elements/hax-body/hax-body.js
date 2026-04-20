@@ -2946,28 +2946,74 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
   /**
    * Delete the node passed in
    */
-  haxDeleteNode(node) {
-    if (node.previousElementSibling) {
-      HAXStore.activeNode = node.previousElementSibling;
-    } else if (node.nextElementSibling) {
-      HAXStore.activeNode = node.nextElementSibling;
-    } else {
-      // implies nothing; let's not allow NOTHING as it breaks user context
-      this.haxInsert("p", "", {});
-      try {
-        var range = globalThis.document.createRange();
-        var sel = HAXStore.getSelection();
-        range.setStart(this.activeNode, 0);
-        range.collapse(true);
-        sel.removeAllRanges();
-        sel.addRange(range);
-        this.activeNode.focus();
-      } catch (e) {
-        console.warn(e);
+  __nearestEditableSibling(node, direction = "previous") {
+    let target = node;
+    while (target && target.tagName) {
+      if (
+        !["PAGE-BREAK", "FAKE-HAX-BODY-END"].includes(target.tagName) &&
+        target.tagName.substring(0, 4) !== "HAX-"
+      ) {
+        return target;
+      }
+      if (direction === "next") {
+        target = target.nextElementSibling;
+      } else {
+        target = target.previousElementSibling;
       }
     }
+    return null;
+  }
+  __ensureMinimumEditableNode() {
+    let hasContent = false;
+    const children = this.children ? Array.from(this.children) : [];
+    for (let i = 0; i < children.length; i++) {
+      const child = children[i];
+      if (
+        child &&
+        child.tagName &&
+        !["PAGE-BREAK", "FAKE-HAX-BODY-END"].includes(child.tagName) &&
+        child.tagName.substring(0, 4) !== "HAX-"
+      ) {
+        hasContent = true;
+        break;
+      }
+    }
+    if (!hasContent) {
+      const fallbackNode = this.haxInsert("p", "", {}, null);
+      if (fallbackNode && fallbackNode.focus) {
+        HAXStore.activeNode = fallbackNode;
+        try {
+          var range = globalThis.document.createRange();
+          var sel = HAXStore.getSelection();
+          range.setStart(fallbackNode, 0);
+          range.collapse(true);
+          sel.removeAllRanges();
+          sel.addRange(range);
+          fallbackNode.focus();
+        } catch (e) {
+          console.warn(e);
+        }
+      }
+    }
+  }
+  haxDeleteNode(node) {
+    if (!node || !node.tagName) {
+      return false;
+    }
+    const previous = this.__nearestEditableSibling(
+      node.previousElementSibling,
+      "previous",
+    );
+    const next = this.__nearestEditableSibling(node.nextElementSibling, "next");
+    if (previous) {
+      HAXStore.activeNode = previous;
+    } else if (next) {
+      HAXStore.activeNode = next;
+    }
     try {
-      return node.remove();
+      const response = node.remove();
+      this.__ensureMinimumEditableNode();
+      return response;
     } catch (e) {
       console.warn(e);
     }

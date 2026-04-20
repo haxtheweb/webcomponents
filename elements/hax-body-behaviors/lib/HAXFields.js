@@ -130,6 +130,12 @@ export const HaxSchematizer = {
         format: "radio",
       },
     },
+    "hax-palette-picker": {
+      defaultSettings: {
+        type: "string",
+        format: "hax-palette-picker",
+      },
+    },
     slider: {
       defaultSettings: {
         type: "number",
@@ -232,6 +238,19 @@ export const HaxElementizer = {
     "simple-picker": {
       defaultSettings: {
         element: "simple-picker",
+        attributes: {
+          autofocus: true,
+        },
+        properties: {
+          options: "options",
+        },
+      },
+    },
+    "hax-palette-picker": {
+      defaultSettings: {
+        import: "@haxtheweb/d-d-d/lib/hax-palette-picker.js",
+        element: "hax-palette-picker",
+        noWrap: true,
         attributes: {
           autofocus: true,
         },

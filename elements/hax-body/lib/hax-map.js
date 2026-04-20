@@ -57,20 +57,25 @@ class HaxMap extends I18NMixin(SimpleColors) {
           visibility: hidden;
           --simple-icon-width: var(--ddd-icon-4xs, 16px);
           --simple-icon-height: var(--ddd-icon-4xs, 16px);
-          width: 24px;
+          --simple-icon-button-border-radius: var(--ddd-radius-sm, 6px);
+          --simple-icon-button-padding: 3px;
+          width: 28px;
           height: 24px;
-          border-radius: 50%;
+          border-radius: var(--ddd-radius-sm, 6px);
           margin: 0 2px;
-          padding: 4px;
+          padding: 2px;
           color: var(--ddd-theme-default-coalyGray);
-          background-color: var(--simple-colors-default-theme-grey-3, #e0e0e0);
-          border: 1px solid var(--simple-colors-default-theme-grey-5, #999);
+          background-color: var(--ddd-theme-default-white, #ffffff);
+          border: var(--ddd-border-xs, 1px solid);
+          border-color: var(--ddd-theme-default-limestoneGray, #999999);
           transition: all 0.2s ease-in-out;
         }
         li simple-icon-button-lite:hover,
-        li simple-icon-button-lite:focus {
-          background-color: var(--simple-colors-default-theme-grey-4, #bdbdbd);
-          border-color: var(--simple-colors-default-theme-grey-7, #666);
+        li simple-icon-button-lite:focus,
+        li simple-icon-button-lite:focus-within {
+          background-color: var(--ddd-theme-default-skyBlue, #0174be);
+          border-color: var(--ddd-theme-default-skyBlue, #0174be);
+          color: var(--ddd-theme-default-white, #ffffff);
           opacity: 1;
         }
         li simple-icon-button.del {
@@ -82,15 +87,16 @@ class HaxMap extends I18NMixin(SimpleColors) {
           opacity: 1;
         }
         :host([dark]) li simple-icon-button-lite {
-          color: var(--ddd-theme-default-white);
-          background-color: var(--simple-colors-default-theme-grey-7, #616161);
-          border-color: var(--simple-colors-default-theme-grey-9, #424242);
+          color: var(--ddd-theme-default-white, #ffffff);
+          background-color: var(--ddd-theme-default-coalyGray, #2f2f2f);
+          border-color: var(--ddd-theme-default-limestoneGray, #7a7a7a);
         }
         :host([dark]) li simple-icon-button-lite:hover,
-        :host([dark]) li simple-icon-button-lite:focus {
-          background-color: var(--simple-colors-default-theme-grey-8, #424242);
-          border-color: var(--simple-colors-default-theme-grey-10, #212121);
-          color: var(--ddd-theme-default-white);
+        :host([dark]) li simple-icon-button-lite:focus,
+        :host([dark]) li simple-icon-button-lite:focus-within {
+          background-color: var(--ddd-theme-default-skyBlue, #0174be);
+          border-color: var(--ddd-theme-default-skyBlue, #0174be);
+          color: var(--ddd-theme-default-white, #ffffff);
         }
         hax-toolbar-item[data-active-item]::part(button) {
           color: var(--hax-ui-color);
@@ -140,6 +146,9 @@ class HaxMap extends I18NMixin(SimpleColors) {
     super();
     this.elementList = [];
     this.dark = false;
+    this.__mapMutationObserver = null;
+    this.__mapMutationObserverTarget = null;
+    this.__mapRefreshDebounce = null;
     this.t = {};
     this.registerLocalization({
       context: this,
@@ -159,22 +168,142 @@ class HaxMap extends I18NMixin(SimpleColors) {
       this.dark = haxUiTheme === "haxdark";
     });
   }
+  connectedCallback() {
+    super.connectedCallback();
+    if (!this.hidden) {
+      this._connectBodyObserver();
+      this._scheduleMapRefresh(0);
+    }
+  }
+  disconnectedCallback() {
+    this._disconnectBodyObserver();
+    clearTimeout(this.__mapRefreshDebounce);
+    if (super.disconnectedCallback) {
+      super.disconnectedCallback();
+    }
+  }
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+    if (changedProperties.has("hidden")) {
+      if (this.hidden) {
+        this._disconnectBodyObserver();
+      } else {
+        this._connectBodyObserver();
+        this._scheduleMapRefresh(0);
+      }
+    }
+  }
+  _scheduleMapRefresh(delay = 75) {
+    if (this.hidden) {
+      return;
+    }
+    clearTimeout(this.__mapRefreshDebounce);
+    this.__mapRefreshDebounce = setTimeout(() => {
+      this.updateHAXMap();
+    }, delay);
+  }
+  _disconnectBodyObserver() {
+    if (this.__mapMutationObserver) {
+      this.__mapMutationObserver.disconnect();
+    }
+    this.__mapMutationObserver = null;
+    this.__mapMutationObserverTarget = null;
+  }
+  _connectBodyObserver() {
+    const activeBody = HAXStore.activeHaxBody;
+    if (!this.isConnected || this.hidden || !activeBody) {
+      this._disconnectBodyObserver();
+      return;
+    }
+    if (
+      this.__mapMutationObserver &&
+      this.__mapMutationObserverTarget === activeBody
+    ) {
+      return;
+    }
+    this._disconnectBodyObserver();
+    this.__mapMutationObserverTarget = activeBody;
+    this.__mapMutationObserver = new MutationObserver((mutations) => {
+      if (this.hidden) {
+        return;
+      }
+      let shouldRefresh = false;
+      for (const mutation of mutations) {
+        if (
+          mutation.type === "childList" ||
+          mutation.type === "characterData"
+        ) {
+          shouldRefresh = true;
+          break;
+        }
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName &&
+          ["slot", "data-hax-lock", "class", "id"].includes(
+            mutation.attributeName,
+          )
+        ) {
+          shouldRefresh = true;
+          break;
+        }
+      }
+      if (shouldRefresh) {
+        this._scheduleMapRefresh(40);
+      }
+    });
+    this.__mapMutationObserver.observe(activeBody, {
+      childList: true,
+      subtree: true,
+      characterData: true,
+      attributes: true,
+      attributeFilter: ["slot", "data-hax-lock", "class", "id"],
+    });
+  }
   async updateHAXMap(e) {
+    this._connectBodyObserver();
+    const activeBody = HAXStore.activeHaxBody;
+    if (!activeBody || !activeBody.childNodes) {
+      this.elementList = [];
+      return;
+    }
     let list = [];
-    for (var i = 0; i < HAXStore.activeHaxBody.childNodes.length; i++) {
-      const node = HAXStore.activeHaxBody.childNodes[i];
+    for (var i = 0; i < activeBody.childNodes.length; i++) {
+      const node = activeBody.childNodes[i];
+      if (!node || !node.tagName || node.tagName.toLowerCase() === "br") {
+        continue;
+      }
       let tmpNode = await nodeToHaxElement(node, null);
+      if (!tmpNode || !tmpNode.tag || tmpNode.tag.toLowerCase() === "br") {
+        continue;
+      }
       tmpNode.parent = null;
       tmpNode.node = node;
       list.push(tmpNode);
       if (node.children && node.children.length > 0) {
         for (var j = 0; j < node.children.length; j++) {
+          if (
+            !node.children[j] ||
+            !node.children[j].tagName ||
+            node.children[j].tagName.toLowerCase() === "br"
+          ) {
+            continue;
+          }
           let tmpNodeChild = await nodeToHaxElement(node.children[j], null);
+          if (
+            !tmpNodeChild ||
+            !tmpNodeChild.tag ||
+            tmpNodeChild.tag.toLowerCase() === "br"
+          ) {
+            continue;
+          }
           tmpNodeChild.parent = tmpNode.tag;
           tmpNodeChild.node = node.children[j];
           // ignore certain tags we don't need a deep selection of
           if (
             ![
+              "br",
               "span",
               "strong",
               "b",
@@ -193,6 +322,9 @@ class HaxMap extends I18NMixin(SimpleColors) {
     }
     let elements = [];
     for (var i = 0; i < list.length; i++) {
+      if (!list[i] || !list[i].tag || list[i].tag.toLowerCase() === "br") {
+        continue;
+      }
       let def = HAXStore.haxSchemaFromTag(list[i].tag);
       if (def.gizmo) {
         elements.push({
@@ -374,6 +506,7 @@ class HaxMap extends I18NMixin(SimpleColors) {
           }),
         );
       }
+      this._scheduleMapRefresh(50);
       setTimeout(() => {
         this.requestUpdate();
       }, 0);
