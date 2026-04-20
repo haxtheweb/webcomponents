@@ -26,7 +26,7 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
           .resources="${this.resources}"
           .schema="${this.schema}"
           .fields="${this.fields}"
-          .schematizer="${this.fieldsConversion}"
+          .schematizer="${this.fieldsConversion || this.schematizer}"
           .elementizer="${this.elementizer}"
           .value="${this.value}"
           @value-changed="${this._valueChanged}"
@@ -73,6 +73,12 @@ class SimpleFieldsForm extends SimpleFieldsFormLite {
       fieldsConversion: {
         type: "Object",
         attribute: "fields-conversion",
+      },
+      /**
+       * Backward-compatible alias for fieldsConversion.
+       */
+      schematizer: {
+        type: "Object",
       },
     };
   }

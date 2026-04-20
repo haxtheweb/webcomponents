@@ -850,11 +850,13 @@ class SimpleFields extends SimpleFieldsLite {
    * @memberof SimpleFields
    */
   setActiveTab(tabId) {
-    let tabsId = tabId.replace(/\.[0-9a-z]+$/, ""),
-      tabs = this.querySelector(`#${tabsId}`),
-      tab = tabs.querySelector(`#${tabId}`);
-
-    if (tabs && tab) tabs.activeTab = tabId;
+    let tabsId = tabId.replace(/\.[^.]+$/, ""),
+      tabs = this.querySelector(`[id="${tabsId}"]`);
+    if (!tabs) {
+      return;
+    }
+    let tab = tabs.querySelector(`[id="${tabId}"]`);
+    if (tab) tabs.activeTab = tabId;
   }
 
   /**
@@ -864,11 +866,11 @@ class SimpleFields extends SimpleFieldsLite {
    * @memberof SimpleFields
    */
   setActivePath(path) {
-    let parts = path.split("/"),
+    let parts = path.split("/").filter((part) => part),
       tabId = "";
-    parts.forEach((part) => {
-      this.setActiveTab(part);
-      tabId += part;
+    parts.forEach((part, index) => {
+      tabId = `${tabId}${index === 0 ? "" : "."}${part}`;
+      this.setActiveTab(tabId);
     });
   }
 

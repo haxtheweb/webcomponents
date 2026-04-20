@@ -93,6 +93,13 @@
                 "required": true
               },
               {
+                "property": "manifest-metadata-theme-variables-palette",
+                "title": "Palette",
+                "description": "DDD palette applied at theme scope for color-token cascading",
+                "inputMethod": "hax-palette-picker",
+                "required": false
+              },
+              {
                 "property": "manifest-metadata-theme-variables-icon",
                 "title": "Icon",
                 "description": "Icon to represent the site in themes that implement it",
@@ -350,6 +357,7 @@
           "manifest-metadata-theme-variables-image": "https://images-assets.nasa.gov/image/201106070074HQ/201106070074HQ~thumb.jpg",
           "manifest-metadata-theme-variables-hexCode": "#aeff00",
           "manifest-metadata-theme-variables-cssVariable": "pink",
+          "manifest-metadata-theme-variables-palette": "0",
           "manifest-metadata-theme-variables-icon": "av:art-track",
           "manifest-metadata-theme-variables-imageLink": null,
           "manifest-metadata-theme-variables-imageAlt": "fgbhnfghfgh",
