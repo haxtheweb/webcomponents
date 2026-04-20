@@ -80,6 +80,11 @@ class HAXCMSBackendUserfs extends LitElement {
       { signal: this.windowControllers.signal },
     );
     globalThis.addEventListener(
+      "haxcms-save-seo-data",
+      this.saveManifest.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+    globalThis.addEventListener(
       "haxcms-save-outline",
       this.saveOutline.bind(this),
       { signal: this.windowControllers.signal },

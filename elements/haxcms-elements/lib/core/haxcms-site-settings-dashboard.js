@@ -11,7 +11,11 @@ class HAXCMSSiteSettingsDashboard extends DDD {
     return {
       allowContent: { type: Boolean, attribute: "allow-content" },
       allowStructure: { type: Boolean, attribute: "allow-structure" },
+      allowAppearance: { type: Boolean, attribute: "allow-appearance" },
       allowSiteDetails: { type: Boolean, attribute: "allow-site-details" },
+      allowSeo: { type: Boolean, attribute: "allow-seo" },
+      allowBlocks: { type: Boolean, attribute: "allow-blocks" },
+      allowEditor: { type: Boolean, attribute: "allow-editor" },
       allowStyleGuide: { type: Boolean, attribute: "allow-style-guide" },
       allowReports: { type: Boolean, attribute: "allow-reports" },
     };
@@ -21,7 +25,11 @@ class HAXCMSSiteSettingsDashboard extends DDD {
     super();
     this.allowContent = true;
     this.allowStructure = true;
+    this.allowAppearance = true;
     this.allowSiteDetails = true;
+    this.allowSeo = true;
+    this.allowBlocks = true;
+    this.allowEditor = true;
     this.allowStyleGuide = false;
     this.allowReports = false;
   }
@@ -197,7 +205,11 @@ class HAXCMSSiteSettingsDashboard extends DDD {
   render() {
     const contentDisabled = !this.allowContent;
     const structureDisabled = !this.allowStructure;
+    const appearanceDisabled = !this.allowAppearance;
     const siteDetailsDisabled = !this.allowSiteDetails;
+    const seoDisabled = !this.allowSeo;
+    const blocksDisabled = !this.allowBlocks;
+    const editorDisabled = !this.allowEditor;
     const reportsDisabled = !this.allowReports;
     const primaryActions = [
       {
@@ -218,8 +230,8 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         action: "theme-settings",
         icon: "lrn:palette",
         label: "Appearance",
-        disabled: true,
-        tooltip: "Coming soon",
+        disabled: appearanceDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(appearanceDisabled),
       },
       {
         action: "site-settings",
@@ -234,23 +246,23 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         action: "blocks",
         icon: "hax:blocks",
         label: "Blocks",
-        disabled: true,
-        tooltip: "Coming soon",
+        disabled: blocksDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(blocksDisabled),
       },
       {
         action: "editor",
         icon: "hax:page-edit",
         label: "Editor",
-        disabled: true,
-        tooltip: "Coming soon",
+        disabled: editorDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(editorDisabled),
       },
       { action: "platform", icon: "hax:add-item", label: "Features" },
       {
         action: "seo-settings",
         icon: "icons:search",
         label: "SEO",
-        disabled: true,
-        tooltip: "Coming soon",
+        disabled: seoDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(seoDisabled),
       },
       {
         action: "reports",

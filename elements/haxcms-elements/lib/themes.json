@@ -77,6 +77,19 @@
     "priority": 0,
     "terrible": false
   },
+  "ddd-brochure-theme": {
+    "element": "ddd-brochure-theme",
+    "path": "@haxtheweb/d-d-d/lib/ddd-brochure-theme.js",
+    "name": "Brochure",
+    "thumbnail": "@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-ddd-brochure-theme-thumb.jpg",
+    "description": "Start with a blank site using the Brochure",
+    "category": [
+      "Website"
+    ],
+    "hidden": true,
+    "priority": 0,
+    "terrible": false
+  },
   "glossy-portfolio-theme": {
     "element": "glossy-portfolio-theme",
     "path": "@haxtheweb/glossy-portfolio-theme/glossy-portfolio-theme.js",

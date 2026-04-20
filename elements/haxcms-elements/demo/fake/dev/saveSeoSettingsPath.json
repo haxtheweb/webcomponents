@@ -1,0 +1,10 @@
+{
+  "status": 200,
+  "data": {
+    "saved": true,
+    "seo": {
+      "pathauto": true,
+      "publishPagesOn": true
+    }
+  }
+}

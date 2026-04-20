@@ -43,6 +43,7 @@
         "imageLink": "",
         "hexCode": "#aeff00",
         "cssVariable": "--simple-colors-default-theme--7",
+        "palette": "3",
         "icon": "hax:hax2022"
       },
       "styleGuide": "theme/style-guide.html",

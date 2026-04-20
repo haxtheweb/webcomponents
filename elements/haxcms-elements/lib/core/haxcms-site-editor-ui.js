@@ -3325,6 +3325,27 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/action/site/settings/seo",
     });
     SuperDaemonInstance.defineOption({
+      title: this.t.seoSettings,
+      icon: "icons:search",
+      tags: [
+        "CMS",
+        "seo",
+        "search",
+        "engine",
+        "settings",
+        "operation",
+        "command",
+      ],
+      value: {
+        target: this,
+        method: "_openSeoAdmin",
+        args: [true],
+      },
+      context: "seoManifest",
+      eventName: "super-daemon-element-method",
+      path: "CMS/site/seo/settings",
+    });
+    SuperDaemonInstance.defineOption({
       title: this.t.authorSettings,
       icon: "hax:site-settings",
       tags: [
@@ -5081,13 +5102,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this._outlineButtonTap(null, true, "Structure", routeOptions);
         return true;
       case "appearance":
-        this._openSiteSettingsForm(
-          invokedTarget,
-          "theme",
-          true,
-          "Appearance",
-          routeOptions,
-        );
+        this._openAppearanceSettings(true, "Appearance", routeOptions);
         return true;
       case "site":
         this._openSiteSettingsForm(
@@ -5099,13 +5114,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         );
         return true;
       case "seo":
-        this._openSiteSettingsForm(
-          invokedTarget,
-          "seo",
-          true,
-          "SEO",
-          routeOptions,
-        );
+        this._openSeoAdmin(true, routeOptions);
         return true;
       case "author":
         this._openSiteSettingsForm(
@@ -5126,10 +5135,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this._reportsButtonTap(null, true, routeOptions);
         return true;
       case "blocks":
-        this._openPlatformSettings(true, "Blocks", routeOptions);
+        this._openAllowedBlocksSettings(true, "Blocks", routeOptions);
         return true;
       case "editor":
-        this._openPlatformSettings(true, "Editor", routeOptions);
+        this._openEditorSettings(true, "Editor", routeOptions);
         return true;
       case "features":
         this._openPlatformSettings(true, "Features", routeOptions);
@@ -5707,7 +5716,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
       dashboard.allowContent = this._adminRouteAllowed("content");
       dashboard.allowStructure = this._adminRouteAllowed("structure");
+      dashboard.allowAppearance = this._adminRouteAllowed("appearance");
       dashboard.allowSiteDetails = this._adminRouteAllowed("site");
+      dashboard.allowSeo = this._adminRouteAllowed("seo");
+      dashboard.allowBlocks = this._adminRouteAllowed("blocks");
+      dashboard.allowEditor = this._adminRouteAllowed("editor");
       dashboard.allowStyleGuide = store.platformAllows("styleGuide");
       // "insights" is the compatibility platform feature key for Reports availability.
       dashboard.allowReports = this._adminRouteAllowed("reports");
@@ -5774,26 +5787,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           );
           break;
         case "theme-settings":
-          this._openSiteSettingsForm(
-            this.shadowRoot.querySelector("#manifestbtn"),
-            "theme",
-            true,
-            "Appearance",
-          );
+          this._openAppearanceSettings(true, "Appearance");
           break;
         case "seo-settings":
-          this._openSiteSettingsForm(
-            this.shadowRoot.querySelector("#manifestbtn"),
-            "seo",
-            true,
-            "SEO",
-          );
+          this._openSeoAdmin(true);
           break;
         case "blocks":
-          this._openPlatformSettings(true, "Blocks");
+          this._openAllowedBlocksSettings(true, "Blocks");
           break;
         case "editor":
-          this._openPlatformSettings(true, "Editor");
+          this._openEditorSettings(true, "Editor");
           break;
         case "platform":
           this._openPlatformSettings(true, "Features");
@@ -5935,6 +5938,188 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       );
     });
   }
+  _openAppearanceSettings(
+    fromSiteSettings = false,
+    sectionTitle = "Appearance",
+    routeOptions = {},
+  ) {
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath("appearance", routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (!this._syncAdminRoutePath("appearance", routeOptions)) {
+      return;
+    }
+    if (!routeOptions.silent) {
+      store.playSound("click");
+    }
+    import("./haxcms-appearance-admin-dialog.js").then(() => {
+      const dialog = globalThis.document.createElement(
+        "haxcms-appearance-admin-dialog",
+      );
+      let title = sectionTitle || "Appearance";
+      let breadcrumbs = [];
+      if (fromSiteSettings) {
+        const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+          title,
+          "lrn:palette",
+        );
+        title = breadcrumbMeta.title;
+        breadcrumbs = breadcrumbMeta.breadcrumbs;
+      }
+      dialog.refreshFromManifest();
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            title: title,
+            titleIcon: "lrn:palette",
+            breadcrumbs: breadcrumbs,
+            styles: {
+              "--simple-modal-titlebar-background": "black",
+              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+              "--simple-modal-z-index": "100000000",
+              "--simple-modal-titlebar-height": "80px",
+              "--simple-modal-width": "85vw",
+              "--simple-modal-max-width": "85vw",
+              "--simple-modal-height": "85vh",
+              "--simple-modal-max-height": "85vh",
+              "--simple-modal-min-height": "400px",
+              "--simple-modal-border-radius": "var(--ddd-radius-md)",
+            },
+            elements: {
+              content: dialog,
+            },
+            invokedBy: this.shadowRoot.querySelector("#manifestbtn"),
+            clone: false,
+            modal: true,
+            showClose: true,
+          },
+        }),
+      );
+    });
+  }
+  _openAllowedBlocksSettings(
+    fromSiteSettings = false,
+    sectionTitle = "Blocks",
+    routeOptions = {},
+  ) {
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath("blocks", routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (!this._syncAdminRoutePath("blocks", routeOptions)) {
+      return;
+    }
+    if (!routeOptions.silent) {
+      store.playSound("click");
+    }
+    import("./ui/haxcms-allowed-blocks-ui.js").then(() => {
+      const dialog = globalThis.document.createElement("haxcms-allowed-blocks-ui");
+      let title = sectionTitle || "Blocks";
+      let breadcrumbs = [];
+      if (fromSiteSettings) {
+        const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(title, "hax:blocks");
+        title = breadcrumbMeta.title;
+        breadcrumbs = breadcrumbMeta.breadcrumbs;
+      }
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            title: title,
+            titleIcon: "hax:blocks",
+            breadcrumbs: breadcrumbs,
+            styles: {
+              "--simple-modal-titlebar-background": "black",
+              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+              "--simple-modal-z-index": "100000000",
+              "--simple-modal-titlebar-height": "80px",
+              "--simple-modal-width": "85vw",
+              "--simple-modal-max-width": "85vw",
+              "--simple-modal-height": "85vh",
+              "--simple-modal-max-height": "85vh",
+              "--simple-modal-min-height": "400px",
+              "--simple-modal-border-radius": "var(--ddd-radius-md)",
+            },
+            elements: {
+              content: dialog,
+            },
+            invokedBy: this.shadowRoot.querySelector("#manifestbtn"),
+            clone: false,
+            modal: true,
+            showClose: true,
+          },
+        }),
+      );
+    });
+  }
+  _openEditorSettings(
+    fromSiteSettings = false,
+    sectionTitle = "Editor",
+    routeOptions = {},
+  ) {
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath("editor", routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (!this._syncAdminRoutePath("editor", routeOptions)) {
+      return;
+    }
+    if (!routeOptions.silent) {
+      store.playSound("click");
+    }
+    import("./ui/haxcms-editor-settings-dialog-ui.js").then(() => {
+      const dialog = globalThis.document.createElement(
+        "haxcms-editor-settings-dialog-ui",
+      );
+      let title = sectionTitle || "Editor";
+      let breadcrumbs = [];
+      if (fromSiteSettings) {
+        const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+          title,
+          "hax:page-edit",
+        );
+        title = breadcrumbMeta.title;
+        breadcrumbs = breadcrumbMeta.breadcrumbs;
+      }
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            title: title,
+            titleIcon: "hax:page-edit",
+            breadcrumbs: breadcrumbs,
+            styles: {
+              "--simple-modal-titlebar-background": "black",
+              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+              "--simple-modal-z-index": "100000000",
+              "--simple-modal-titlebar-height": "80px",
+              "--simple-modal-width": "85vw",
+              "--simple-modal-max-width": "85vw",
+              "--simple-modal-height": "85vh",
+              "--simple-modal-max-height": "85vh",
+              "--simple-modal-min-height": "400px",
+              "--simple-modal-border-radius": "var(--ddd-radius-md)",
+            },
+            elements: {
+              content: dialog,
+            },
+            invokedBy: this.shadowRoot.querySelector("#manifestbtn"),
+            clone: false,
+            modal: true,
+            showClose: true,
+          },
+        }),
+      );
+    });
+  }
   _openPlatformSettings(
     fromSiteSettings = false,
     sectionTitle = "Features",
@@ -5970,6 +6155,62 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       options.modalBreadcrumbs = breadcrumbMeta.breadcrumbs;
     }
     this.exportSiteAs("skeleton", options);
+  }
+  _openSeoAdmin(fromSiteSettings = false, routeOptions = {}) {
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath("seo", routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (!this._syncAdminRoutePath("seo", routeOptions)) {
+      return;
+    }
+    if (!routeOptions.silent) {
+      store.playSound("click");
+    }
+    import("./haxcms-seo-admin-dialog.js").then(() => {
+      const invokedBy = this.shadowRoot.querySelector("#manifestbtn");
+      const dialog = globalThis.document.createElement("haxcms-seo-admin-dialog");
+      let title = this.t.seoSettings;
+      let breadcrumbs = [];
+      if (fromSiteSettings) {
+        const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(
+          this.t.seoSettings,
+          "icons:search",
+        );
+        title = breadcrumbMeta.title;
+        breadcrumbs = breadcrumbMeta.breadcrumbs;
+      }
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            title: title,
+            titleIcon: "icons:search",
+            breadcrumbs: breadcrumbs,
+            styles: {
+              "--simple-modal-titlebar-background": "black",
+              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+              "--simple-modal-z-index": "100000000",
+              "--simple-modal-titlebar-height": "80px",
+              "--simple-modal-width": "85vw",
+              "--simple-modal-max-width": "85vw",
+              "--simple-modal-height": "85vh",
+              "--simple-modal-max-height": "85vh",
+              "--simple-modal-border-radius": "var(--ddd-radius-md)",
+            },
+            elements: {
+              content: dialog,
+            },
+            invokedBy: invokedBy,
+            clone: false,
+            modal: true,
+            showClose: true,
+          },
+        }),
+      );
+    });
   }
   _openSiteSettingsForm(
     target,

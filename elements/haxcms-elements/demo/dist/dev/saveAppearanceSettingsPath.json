@@ -1,0 +1,9 @@
+{
+  "status": 200,
+  "data": {
+    "saved": true,
+    "appearance": {
+      "theme": true
+    }
+  }
+}

@@ -507,7 +507,45 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       store.themeElement = globalThis.document.createElement(newValue);
       // apply a class so that we can write generic CSS selectors in integrations
       store.themeElement.classList.add("haxcms-theme-element");
+      this._applyThemePalette(store.themeElement, this.themeData);
       this.appendChild(store.themeElement);
+    }
+  }
+
+  _getThemePalette(themeData) {
+    let palette = null;
+    if (
+      themeData &&
+      themeData.variables &&
+      typeof themeData.variables.palette !== typeof undefined &&
+      themeData.variables.palette !== null
+    ) {
+      palette = String(themeData.variables.palette).trim();
+    }
+    if (
+      (palette === null || palette === "") &&
+      store.manifest &&
+      store.manifest.metadata &&
+      store.manifest.metadata.theme &&
+      store.manifest.metadata.theme.variables &&
+      typeof store.manifest.metadata.theme.variables.palette !==
+        typeof undefined &&
+      store.manifest.metadata.theme.variables.palette !== null
+    ) {
+      palette = String(store.manifest.metadata.theme.variables.palette).trim();
+    }
+    return palette;
+  }
+
+  _applyThemePalette(themeElement, themeData) {
+    if (!themeElement) {
+      return;
+    }
+    const palette = this._getThemePalette(themeData);
+    if (palette) {
+      themeElement.setAttribute("data-palette", palette);
+    } else {
+      themeElement.removeAttribute("data-palette");
     }
   }
 
@@ -991,6 +1029,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    */
   _themeChanged(newValue, oldValue) {
     if (newValue) {
+      this._applyThemePalette(store.themeElement, newValue);
       this.themeLoaded = false;
       let theme = newValue;
       // create the 'theme' as a new element
@@ -1093,6 +1132,9 @@ globalThis.HAXme = function (context = null) {
       logout: "dist/dev/logout.json",
       saveNodePath: "dist/dev/saveNode.json",
       saveManifestPath: "dist/dev/saveManifestPath.json",
+      saveAppearanceSettingsPath: "dist/dev/saveAppearanceSettingsPath.json",
+      saveSeoSettingsPath: "dist/dev/saveSeoSettingsPath.json",
+      saveEditorSettingsPath: "dist/dev/saveEditorSettingsPath.json",
       createNodePath: "dist/dev/saveNode.json",
       deleteNodePath: "dist/dev/saveNode.json",
       saveOutlinePath: "dist/dev/saveNode.json",

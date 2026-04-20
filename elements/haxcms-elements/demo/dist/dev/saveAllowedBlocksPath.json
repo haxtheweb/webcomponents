@@ -1,0 +1,12 @@
+{
+  "status": 200,
+  "data": {
+    "saved": true,
+    "platform": {
+      "allowedBlocks": [
+        "p",
+        "video-player"
+      ]
+    }
+  }
+}

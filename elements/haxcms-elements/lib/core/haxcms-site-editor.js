@@ -121,12 +121,56 @@ class HAXCMSSiteEditor extends LitElement {
       <iron-ajax
         reject-with-request
         .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        id="seoupdateajax"
+        .url="${this.saveSeoSettingsPath}"
+        .method="${this.method}"
+        content-type="application/json"
+        handle-as="json"
+        @response="${this._handleManifestResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        id="appearancesettingsajax"
+        .url="${this.saveAppearanceSettingsPath}"
+        .method="${this.method}"
+        content-type="application/json"
+        handle-as="json"
+        @response="${this._handleAppearanceSettingsResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
         id="platformsettingsajax"
         .url="${this.savePlatformSettingsPath}"
         .method="${this.method}"
         content-type="application/json"
         handle-as="json"
         @response="${this._handlePlatformSettingsResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        id="allowedblocksajax"
+        .url="${this.saveAllowedBlocksPath}"
+        .method="${this.method}"
+        content-type="application/json"
+        handle-as="json"
+        @response="${this._handleAllowedBlocksResponse}"
+        @last-error-changed="${this.lastErrorChanged}"
+      ></iron-ajax>
+      <iron-ajax
+        reject-with-request
+        .headers="${{ Authorization: "Bearer ${this.jwt}" }}"
+        id="editorsettingsajax"
+        .url="${this.saveEditorSettingsPath}"
+        .method="${this.method}"
+        content-type="application/json"
+        handle-as="json"
+        @response="${this._handleEditorSettingsResponse}"
         @last-error-changed="${this.lastErrorChanged}"
       ></iron-ajax>
       <iron-ajax
@@ -232,6 +276,20 @@ class HAXCMSSiteEditor extends LitElement {
         type: String,
         attribute: "save-platform-settings-path",
       },
+      /**
+       * end point for saving blocks only
+       */
+      saveAllowedBlocksPath: {
+        type: String,
+        attribute: "save-allowed-blocks-path",
+      },
+      /**
+       * end point for saving editor settings only
+       */
+      saveEditorSettingsPath: {
+        type: String,
+        attribute: "save-editor-settings-path",
+      },
 
       /**
        * end point for create new nodes
@@ -255,6 +313,20 @@ class HAXCMSSiteEditor extends LitElement {
       saveManifestPath: {
         type: String,
         attribute: "save-manifest-path",
+      },
+      /**
+       * end point for saving appearance settings only
+       */
+      saveAppearanceSettingsPath: {
+        type: String,
+        attribute: "save-appearance-settings-path",
+      },
+      /**
+       * end point for saving SEO settings
+       */
+      saveSeoSettingsPath: {
+        type: String,
+        attribute: "save-seo-settings-path",
       },
 
       /**
@@ -611,10 +683,30 @@ class HAXCMSSiteEditor extends LitElement {
       this.saveManifest.bind(this),
       { signal: this.windowControllers.signal },
     );
+    globalThis.addEventListener(
+      "haxcms-save-seo-data",
+      this.saveSEOSettings.bind(this),
+      { signal: this.windowControllers.signal },
+    );
 
     globalThis.addEventListener(
       "haxcms-save-platform-settings",
       this.savePlatformSettings.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+    globalThis.addEventListener(
+      "haxcms-save-allowed-blocks",
+      this.saveAllowedBlocks.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+    globalThis.addEventListener(
+      "haxcms-save-editor-settings",
+      this.saveEditorSettings.bind(this),
+      { signal: this.windowControllers.signal },
+    );
+    globalThis.addEventListener(
+      "haxcms-save-appearance-settings",
+      this.saveAppearanceSettings.bind(this),
       { signal: this.windowControllers.signal },
     );
 
@@ -1179,6 +1271,28 @@ class HAXCMSSiteEditor extends LitElement {
       globalThis.location.reload();
     }, 300);
   }
+  _handleAllowedBlocksResponse(e) {
+    this._handlePlatformSettingsResponse(e);
+  }
+  _handleEditorSettingsResponse(e) {
+    this._handlePlatformSettingsResponse(e);
+  }
+
+  _handleAppearanceSettingsResponse(e) {
+    // mirror the platform + manifest save UX
+    store.playSound("coin");
+    this.dispatchEvent(
+      new CustomEvent("haxcms-trigger-update", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true,
+      }),
+    );
+    setTimeout(() => {
+      globalThis.location.reload();
+    }, 300);
+  }
 
   _handleNodeDetailsResponse(e) {
     setTimeout(() => {
@@ -1344,6 +1458,127 @@ class HAXCMSSiteEditor extends LitElement {
     }
   }
 
+  saveSEOSettings(e) {
+    if (!this.saveSeoSettingsPath) {
+      store.toast("SEO save endpoint is not available.", 3000, {
+        fire: true,
+      });
+      return;
+    }
+    const detail = e && e.detail ? e.detail : {};
+    const manifestAuthor =
+      this.manifest && this.manifest.metadata && this.manifest.metadata.author
+        ? this.manifest.metadata.author
+        : {};
+    const license =
+      detail.license && detail.license !== ""
+        ? String(detail.license)
+        : this.manifest && this.manifest.license
+          ? String(this.manifest.license)
+          : "by-sa";
+    const authorImage =
+      typeof detail.authorImage !== typeof undefined
+        ? String(detail.authorImage || "")
+        : manifestAuthor && manifestAuthor.image
+          ? String(manifestAuthor.image)
+          : "";
+    const authorName =
+      typeof detail.authorName !== typeof undefined
+        ? String(detail.authorName || "")
+        : manifestAuthor && manifestAuthor.name
+          ? String(manifestAuthor.name)
+          : "";
+    const authorSocialLink =
+      typeof detail.authorSocialLink !== typeof undefined
+        ? String(detail.authorSocialLink || "")
+        : manifestAuthor && manifestAuthor.socialLink
+          ? String(manifestAuthor.socialLink)
+          : "";
+    const pathauto =
+      detail.pathauto === false ||
+      detail.pathauto === "false" ||
+      detail.pathauto === 0 ||
+      detail.pathauto === "0"
+        ? false
+        : true;
+    const publishPagesOn =
+      detail.publishPagesOn === false ||
+      detail.publishPagesOn === "false" ||
+      detail.publishPagesOn === 0 ||
+      detail.publishPagesOn === "0"
+        ? false
+        : true;
+    const seoValues = {
+      pathauto,
+      publishPagesOn,
+    };
+    this.querySelector("#seoupdateajax").body = {
+      jwt: this.jwt,
+      site: {
+        name: this.manifest.metadata.site.name,
+      },
+      seo: seoValues,
+      author: {
+        license: license,
+        image: authorImage,
+        name: authorName,
+        socialLink: authorSocialLink,
+      },
+      manifest: {
+        author: {
+          "manifest.license": license,
+          "manifest.metadata.author.image": authorImage,
+          "manifest.metadata.author.name": authorName,
+          "manifest.metadata.author.socialLink": authorSocialLink,
+        },
+        seo: {
+          "manifest.metadata.site.settings.pathauto": pathauto,
+          "manifest.metadata.site.settings.publishPagesOn": publishPagesOn,
+        },
+      },
+    };
+    this.setProcessingVisual();
+    this.querySelector("#seoupdateajax").generateRequest();
+  }
+
+  saveAppearanceSettings(e) {
+    if (!this.saveAppearanceSettingsPath) {
+      store.toast("Appearance save endpoint is not available.", 3000, {
+        fire: true,
+      });
+      return;
+    }
+    let values = e && e.detail ? JSON.parse(JSON.stringify(e.detail)) : {};
+    if (!values.manifest) {
+      values.manifest = {};
+    }
+    if (!values.manifest.theme) {
+      values.manifest.theme = {};
+    }
+    // regions translation to simplify submission
+    if (values.manifest.theme && values.manifest.theme.regions) {
+      Object.keys(values.manifest.theme.regions).forEach((key) => {
+        if (Array.isArray(values.manifest.theme.regions[key])) {
+          values.manifest.theme[key] = values.manifest.theme.regions[key].map(
+            (item) => (item.node ? item.node : null),
+          );
+        }
+      });
+      delete values.manifest.theme.regions;
+    }
+    values.jwt = this.jwt;
+    if (values.site) {
+      values.site.name = this.manifest.metadata.site.name;
+    } else {
+      values.site = {
+        name: this.manifest.metadata.site.name,
+      };
+    }
+    this.querySelector("#appearancesettingsajax").body = values;
+    this.setProcessingVisual();
+    this.querySelector("#appearancesettingsajax").generateRequest();
+  }
+
   savePlatformSettings(e) {
     if (this.savePlatformSettingsPath) {
       this.querySelector("#platformsettingsajax").body = {
@@ -1356,6 +1591,56 @@ class HAXCMSSiteEditor extends LitElement {
       this.setProcessingVisual();
       this.querySelector("#platformsettingsajax").generateRequest();
     }
+  }
+  saveEditorSettings(e) {
+    if (!this.saveEditorSettingsPath) {
+      store.toast("Editor settings save endpoint is not available.", 3000, {
+        fire: true,
+      });
+      return;
+    }
+    const detail = e && e.detail ? JSON.parse(JSON.stringify(e.detail)) : {};
+    const audience = detail && detail.audience ? String(detail.audience) : "";
+    if (audience !== "novice" && audience !== "expert") {
+      store.toast("Editor settings are invalid.", 3000, {
+        fire: true,
+      });
+      return;
+    }
+    this.querySelector("#editorsettingsajax").body = {
+      jwt: this.jwt,
+      site: {
+        name: this.manifest.metadata.site.name,
+      },
+      platform: {
+        audience: audience,
+      },
+    };
+    this.setProcessingVisual();
+    this.querySelector("#editorsettingsajax").generateRequest();
+  }
+  saveAllowedBlocks(e) {
+    if (!this.saveAllowedBlocksPath) {
+      store.toast("Blocks save endpoint is not available.", 3000, {
+        fire: true,
+      });
+      return;
+    }
+    const detail = e && e.detail ? JSON.parse(JSON.stringify(e.detail)) : {};
+    const allowedBlocks = Array.isArray(detail.allowedBlocks)
+      ? detail.allowedBlocks
+      : [];
+    this.querySelector("#allowedblocksajax").body = {
+      jwt: this.jwt,
+      site: {
+        name: this.manifest.metadata.site.name,
+      },
+      platform: {
+        allowedBlocks: allowedBlocks,
+      },
+    };
+    this.setProcessingVisual();
+    this.querySelector("#allowedblocksajax").generateRequest();
   }
   /**
    * Notice body of content has changed and import into HAX
