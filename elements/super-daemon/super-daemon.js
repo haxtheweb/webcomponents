@@ -853,31 +853,14 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
 
   playSound(sound = "coin2") {
     return new Promise((resolve) => {
-      let playSound = ["coin2", "success"].includes(sound) ? sound : "coin2";
-      // Use app-hax sounds path for success sound, local path for coin
-      let soundPath;
-      if (sound === "success") {
-        soundPath = new URL(
-          `../app-hax/lib/assets/sounds/${playSound}.mp3`,
-          import.meta.url,
-        ).href;
-      } else {
-        soundPath = new URL(
-          `./lib/assets/sounds/${playSound}.mp3`,
-          import.meta.url,
-        ).href;
-      }
-
-      this.audio = new Audio(soundPath);
-      this.audio.volume = 0.1;
-      this.audio.onended = (event) => {
-        resolve();
-      };
-      this.audio.play();
-      // resolve after 1s if sound failed to load
-      setTimeout(() => {
-        resolve();
-      }, 1000);
+      globalThis.dispatchEvent(
+        new CustomEvent("playaudio", {
+          detail: {
+            sound: sound,
+          },
+        }),
+      );
+      resolve();
     });
   }
   // can't directly set context

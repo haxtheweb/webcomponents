@@ -133,16 +133,28 @@ class SimpleModal extends LitElement {
         }
         .title-icon{
           --simple-icon-color: currentColor;
-          --simple-icon-width: 40px;
-          --simple-icon-height: 40px;
+          --simple-icon-width: var(
+            --simple-modal-title-icon-size,
+            var(--ddd-icon-sm, 40px)
+          );
+          --simple-icon-height: var(
+            --simple-modal-title-icon-size,
+            var(--ddd-icon-sm, 40px)
+          );
           display: inline-flex; 
           align-items: center;  
           vertical-align: middle;
         }
         .breadcrumb-icon {
           --simple-icon-color: currentColor;
-          --simple-icon-width: 40px;
-          --simple-icon-height: 40px;
+          --simple-icon-width: var(
+            --simple-modal-title-icon-size,
+            var(--ddd-icon-sm, 40px)
+          );
+          --simple-icon-height: var(
+            --simple-modal-title-icon-size,
+            var(--ddd-icon-sm, 40px)
+          );
           display: inline-flex; 
           align-items: center;  
           vertical-align: middle;
@@ -220,12 +232,53 @@ class SimpleModal extends LitElement {
         #close simple-icon-lite {
           --simple-icon-height: var(
             --simple-modal-titlebar-icon-height,
-            --ddd-icon-3xs
+            var(--ddd-icon-3xs)
           );
           --simple-icon-width: var(
             --simple-modal-titlebar-icon-width,
-            --ddd-icon-3xs
+            var(--ddd-icon-3xs)
           );
+        }
+        @media (max-width: 800px) {
+          #titlebar {
+            padding: var(
+              --simple-modal-titlebar-mobile-padding,
+              0px var(--ddd-spacing-2)
+            );
+            height: var(--simple-modal-titlebar-mobile-height, 64px);
+          }
+          #simple-modal-title {
+            gap: var(--ddd-spacing-1);
+          }
+          .title-inline,
+          .breadcrumb-button,
+          .breadcrumb-current,
+          .breadcrumb-separator {
+            font-size: var(
+              --simple-modal-titlebar-font-size-mobile,
+              var(--ddd-font-size-4xs)
+            );
+          }
+          .title-inline span,
+          .breadcrumb-button span,
+          .breadcrumb-current span {
+            transform: none;
+          }
+          .title-icon,
+          .breadcrumb-icon {
+            --simple-icon-width: var(
+              --simple-modal-title-icon-size-mobile,
+              var(--ddd-icon-xxs, 24px)
+            );
+            --simple-icon-height: var(
+              --simple-modal-title-icon-size-mobile,
+              var(--ddd-icon-xxs, 24px)
+            );
+          }
+          #close {
+            --simple-modal-titlebar-icon-height: var(--ddd-icon-3xs, 20px);
+            --simple-modal-titlebar-icon-width: var(--ddd-icon-3xs, 20px);
+          }
         }
 
         #simple-modal-content {
@@ -821,12 +874,13 @@ class SimpleModal extends LitElement {
     const crumbs = this.breadcrumbs.filter(
       (crumb) => crumb && crumb.label && typeof crumb.label === "string",
     );
-    if (crumbs.length === 0) {
+    const visibleCrumbs = this._mobileBreadcrumbLimit(crumbs);
+    if (visibleCrumbs.length === 0) {
       return this.title;
     }
-    const lastIndex = crumbs.length - 1;
+    const lastIndex = visibleCrumbs.length - 1;
     return html`<nav class="breadcrumbs" aria-label="Modal breadcrumb">
-      ${crumbs.map((crumb, index) => {
+      ${visibleCrumbs.map((crumb, index) => {
         const icon =
           crumb.icon || (index === lastIndex && this.titleIcon ? this.titleIcon : "");
         const clickable = this._isBreadcrumbClickable(crumb, index, lastIndex);
@@ -862,6 +916,15 @@ class SimpleModal extends LitElement {
             : ``}${item}`;
       })}
     </nav>`;
+  }
+  _mobileBreadcrumbLimit(crumbs = []) {
+    if (!Array.isArray(crumbs) || crumbs.length <= 2) {
+      return crumbs;
+    }
+    if (globalThis.matchMedia && globalThis.matchMedia("(max-width: 800px)").matches) {
+      return [crumbs[0], crumbs[crumbs.length - 1]];
+    }
+    return crumbs;
   }
   _isBreadcrumbClickable(crumb, index, lastIndex) {
     if (index >= lastIndex) {

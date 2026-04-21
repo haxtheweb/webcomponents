@@ -344,7 +344,7 @@ class HAXCMSBackendBeaker extends LitElement {
     // simulate save events since they wont fire
     store.cmsSiteEditor.instance.shadowRoot
       .querySelector("#toast")
-      .show("Site details saved!");
+      .show("Details saved!");
     store.cmsSiteEditor.instance.dispatchEvent(
       new CustomEvent("haxcms-trigger-update", {
         bubbles: true,

@@ -2467,7 +2467,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.t = {
       ...this.t,
       selectPage: "Select page",
-      siteDashboard: "Site dashboard",
+      siteDashboard: "Sites Dashboard",
       cancel: "Cancel",
       unsavedChangesWillBeLostIfSelectingOkAreYouSure:
         "Unsaved changes will be lost if selecting OK, are you sure?",
@@ -2501,7 +2501,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       save: "Save",
       saveAndEdit: "Save & Edit",
       unlockPage: "Unlock page",
-      newSite: "New Site",
       accountInfo: "Account Info",
       outlineDesigner: "Site Outline",
       outline: "Outline",
@@ -3038,13 +3037,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               part="mysitesbtn"
             ></app-hax-user-menu-button>
           </a>
-          <app-hax-user-menu-button
-            slot="main-menu"
-            icon="add"
-            label="${this.t.newSite}"
-            part="newsitebtn"
-            @click="${this._addButtonTap}"
-          ></app-hax-user-menu-button>
           <slot slot="post-menu" name="haxcms-site-editor-ui-post-menu"></slot>
           <app-hax-user-menu-button
             slot="post-menu"
@@ -3377,18 +3369,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "styleGuide",
       eventName: "super-daemon-element-method",
       path: "CMS/theme/style-guide",
-    });
-    SuperDaemonInstance.defineOption({
-      title: this.t.newSite,
-      icon: "add",
-      tags: ["CMS", "create", "new site"],
-      value: {
-        target: this,
-        method: "_addButtonTap",
-      },
-      context: "CMS",
-      eventName: "super-daemon-element-method",
-      path: "CMS/action/create-site",
     });
     SuperDaemonInstance.defineOption({
       title: this.t.logOut,
@@ -5109,7 +5089,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           invokedTarget,
           "site",
           true,
-          "Site Details",
+          "Details",
           routeOptions,
         );
         return true;
@@ -5683,12 +5663,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
     globalThis.dispatchEvent(evt);
   }
-  _addButtonTap() {
-    store.playSound("click");
-    setTimeout(() => {
-      globalThis.location = this.backLink;
-    }, 100);
-  }
   /**
    * toggle state on button tap
    */
@@ -5783,7 +5757,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             this.shadowRoot.querySelector("#manifestbtn"),
             "site",
             true,
-            "Site Details",
+            "Details",
           );
           break;
         case "theme-settings":

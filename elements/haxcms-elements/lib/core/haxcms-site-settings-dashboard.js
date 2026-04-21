@@ -236,7 +236,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
       {
         action: "site-settings",
         icon: "settings",
-        label: "Site Details",
+        label: "Details",
         disabled: siteDetailsDisabled,
         tooltip: this._disabledViaFeaturesTooltip(siteDetailsDisabled),
       },

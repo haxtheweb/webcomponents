@@ -137,14 +137,14 @@ hax-tray {
     --hax-panel-padding: 8px 0 8px 50px;
   }
   simple-modal::part(title) {
-    font-size: 18px;
-    line-height: 18px;
-    padding: 4px;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 0px;
     font-family: var(--ddd-font-navigation, sans-serif);
   }
   simple-modal button.hax-modal-btn {
-    font-size: 20px;
-    padding: 4px;
+    font-size: 12px;
+    padding: 0px;
     font-family: var(--ddd-font-navigation, sans-serif);
   }
 }
