@@ -394,8 +394,12 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
           "haxcms-site-editor-ui",
         );
         if (siteEditorUI && siteEditorUI.createPageWithTitle) {
-          // Create page as sibling by default when Enter is pressed
-          siteEditorUI.createPageWithTitle(input, "sibling");
+          // Respect requested page creation type when Enter is pressed
+          const createType =
+            this._programValues && this._programValues.type
+              ? this._programValues.type
+              : "sibling";
+          siteEditorUI.createPageWithTitle(input, createType);
         }
       }
     }

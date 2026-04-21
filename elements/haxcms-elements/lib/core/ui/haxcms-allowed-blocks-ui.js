@@ -36,6 +36,17 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     this.blockFilter = ''
     this.busy = false
     this.activePreview = null
+    this.configurableHiddenTags = new Set([
+      'mark',
+      'ol',
+      'ul',
+      'blockquote',
+      'code',
+      'pre',
+      'h5',
+      'h6',
+      'u',
+    ])
     this.__disposer = []
 
     this.t = this.t || {}
@@ -383,7 +394,8 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         (item) =>
           !(
             item.meta &&
-            (item.meta.hidden || item.meta.requiresParent)
+            (item.meta.requiresParent ||
+              (item.meta.hidden && !this._isConfigurableHiddenTag(item.tag)))
           ),
       )
       this.haxBlocks = blocks
@@ -391,10 +403,9 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       const platformConfig = toJS(HAXStore.platformConfig)
       const hasAllowedBlocks =
         !!platformConfig &&
-        (platformConfig.allowedBlocksDefined === true ||
-          (platformConfig.allowedBlocks &&
-            typeof platformConfig.allowedBlocks.size === 'number' &&
-            platformConfig.allowedBlocks.size > 0) ||
+        ((platformConfig.allowedBlocks &&
+          typeof platformConfig.allowedBlocks.size === 'number' &&
+          platformConfig.allowedBlocks.size > 0) ||
           (Array.isArray(platformConfig.allowedBlocks) &&
             platformConfig.allowedBlocks.length > 0))
       this.allowedBlocksDefined = !!hasAllowedBlocks
@@ -611,6 +622,10 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
   _blockInputId(tag) {
     const safeTag = (tag || '').replace(/[^a-zA-Z0-9-_]/g, '-')
     return `allowed-block-${safeTag}`
+  }
+
+  _isConfigurableHiddenTag(tag) {
+    return !!(tag && this.configurableHiddenTags.has(tag))
   }
 
   _getBlockDescription(item) {

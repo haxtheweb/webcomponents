@@ -616,6 +616,7 @@
     "code-sample": "@haxtheweb/code-sample/code-sample.js",
     "image-compare-slider": "@haxtheweb/image-compare-slider/image-compare-slider.js",
     "license-element": "@haxtheweb/license-element/license-element.js",
+    "ai-usage-license": "@haxtheweb/ai-usage-license/ai-usage-license.js",
     "lrn-math": "@haxtheweb/lrn-math/lrn-math.js",
     "lrn-vocab": "@haxtheweb/lrn-vocab/lrn-vocab.js",
     "media-image": "@haxtheweb/media-image/media-image.js",

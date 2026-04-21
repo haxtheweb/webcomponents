@@ -1142,9 +1142,8 @@ class Store {
       }
 
       // allowedBlocks: prefer new-style allowedBlocks, fallback to legacy blocks.
-      // Keep a defined-state flag so we can distinguish:
-      // - undefined => all optional blocks allowed
-      // - [] => no optional blocks allowed
+      // Keep a defined-state flag so we can distinguish persisted state.
+      // Enforcement should only happen when the resulting allow-list is non-empty.
       platformConfigObj.allowedBlocksDefined =
         Object.prototype.hasOwnProperty.call(raw, "allowedBlocks") ||
         Object.prototype.hasOwnProperty.call(raw, "blocks");
@@ -1179,10 +1178,9 @@ class Store {
     } 
 
     const hasExplicitAllowedBlocks =
-      this.platformConfig.allowedBlocksDefined === true ||
-      (this.platformConfig.allowedBlocks &&
-        typeof this.platformConfig.allowedBlocks.size === "number" &&
-        this.platformConfig.allowedBlocks.size > 0);
+      this.platformConfig.allowedBlocks &&
+      typeof this.platformConfig.allowedBlocks.size === "number" &&
+      this.platformConfig.allowedBlocks.size > 0;
     if (!hasExplicitAllowedBlocks) {
       return true;
     }

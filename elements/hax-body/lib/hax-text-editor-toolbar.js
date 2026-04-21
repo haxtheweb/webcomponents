@@ -103,6 +103,39 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     ];
   }
 
+  _platformAllowsTag(tag) {
+    if (!tag) {
+      return true
+    }
+    if (HAXStore.requiredPrimitives && HAXStore.requiredPrimitives.has(tag)) {
+      return true
+    }
+    return HAXStore.platformAllows(tag)
+  }
+  _buttonTag(button) {
+    if (!button) {
+      return null
+    }
+    if (button.tag) {
+      return button.tag
+    }
+    if (
+      button.element &&
+      button.element.gizmo &&
+      button.element.gizmo.tag
+    ) {
+      return button.element.gizmo.tag
+    }
+    return null
+  }
+
+  _filterButtonsByTag(buttons = []) {
+    return buttons.filter((button) => {
+      const tag = this._buttonTag(button)
+      return tag ? this._platformAllowsTag(tag) : true
+    })
+  }
+
   get tourTemplate() {
     return html` <div slot="tour" data-stop-content>
       ${this.t.textEditorToolbarTour}
@@ -315,6 +348,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   get underlineButton() {
     return {
       ...super.underlineButton,
+      tag: "u",
       label: this.t.underlineButton,
     };
   }
@@ -337,6 +371,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   get codeButton() {
     return {
       ...super.codeButton,
+      tag: "code",
       icon: "hax:html-code",
       label: this.t.codeButton,
     };
@@ -349,6 +384,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   get markButton() {
     return {
       ...super.markButton,
+      tag: "mark",
       icon: "editor:highlight",
       label: this.t.markButton,
     };
@@ -397,6 +433,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         this.strikethroughButton
       ];
     };
+    buttons = this._filterButtonsByTag(buttons)
 
     return {
       type: "button-group",
@@ -526,6 +563,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {
       ...super.orderedListButton,
       command: "ol",
+      tag: "ol",
       label: this.t.orderedListButton,
       type: "hax-text-editor-tag-toggle"
     };
@@ -539,6 +577,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     return {
       ...super.unorderedListButton,
       command: "ul",
+      tag: "ul",
       label: this.t.unorderedListButton,
       type: "hax-text-editor-tag-toggle"
     };
@@ -552,6 +591,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   get blockquoteButton() {
     return {
       ...super.blockquoteButton,
+      tag: "blockquote",
       label: "Blockquote",
       type: "hax-text-editor-tag-toggle"
     };
@@ -657,6 +697,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
         this.italicButton
       ];
     }
+    buttons = this._filterButtonsByTag(buttons)
 
     return {
       type: "button-group",
@@ -688,7 +729,10 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
   }
 
   get filteredBlocks() {
-    return this.getFilteredBlocks(this.formatBlocks);
+    const blocks = this.formatBlocks.filter((block) =>
+      this._platformAllowsTag(block.tag),
+    )
+    return this.getFilteredBlocks(blocks);
   }
 
   get formatButtonElement() {
@@ -856,6 +900,12 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
       handlesInline =
         handles.filter((handle) => handle.type === "inline").length > 1,
       inline = custom && (inlineOnly || handlesInline);
+    if (!element.gizmo) {
+      element.gizmo = {};
+    }
+    if (!element.gizmo.tag) {
+      element.gizmo.tag = tag;
+    }
     if (!element.gizmo.title) element.gizmo.title = title;
     if (inline) {
       globalThis.HaxTextEditorToolbarConfig.inlineGizmos[tag] = {
@@ -879,6 +929,7 @@ class HaxTextEditorToolbar extends RichTextEditorToolbarBehaviors(
     let buttons = Object.keys(
       globalThis.HaxTextEditorToolbarConfig.inlineGizmos || {},
     ).map((key) => globalThis.HaxTextEditorToolbarConfig.inlineGizmos[key]);
+    buttons = this._filterButtonsByTag(buttons)
     return buttons.length === 0
       ? [...(this.defaultConfig || [])]
       : [

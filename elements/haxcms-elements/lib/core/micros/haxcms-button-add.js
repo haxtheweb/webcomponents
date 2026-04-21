@@ -111,12 +111,33 @@ export class HAXCMSButtonAdd extends SimpleToolbarButtonBehaviors(
     if (this.merlin) {
       const SuperDaemonInstance =
         globalThis.SuperDaemonManager.requestAvailability();
+      const values = {};
+      let item = {};
+      if (this.type) {
+        values.type = this.type;
+      }
+      // support for button defining the id of the associated item
+      if (this.actionId) {
+        // support for null as in top of heirarchy
+        if (this.actionId == "null" || this.actionId == null) {
+          item = toJS(await store.getLastChildItem(null));
+        } else {
+          item = await store.findItemAsObject(this.actionId);
+        }
+      }
+      // if we lacked dedicated context, assume the active Item
+      else {
+        item = toJS(store.activeItem);
+      }
+      if (item && item.id) {
+        values.contextItemId = item.id;
+      }
 
       // Use waveWand for proper mini-Merlin invocation like drag/drop does
       SuperDaemonInstance.waveWand([
         "", // no initial search term
         "/", // program context
-        {}, // no initial values
+        values, // pass initial values
         "create-page", // unified program machine name
         "Create Page", // program display name
         "", // no initial search

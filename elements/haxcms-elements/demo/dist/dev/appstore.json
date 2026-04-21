@@ -667,6 +667,7 @@
     "worksheet-download": "@haxtheweb/course-design/lib/worksheet-download.js",
     "image-compare-slider": "@haxtheweb/image-compare-slider/image-compare-slider.js",
     "license-element": "@haxtheweb/license-element/license-element.js",
+    "ai-usage-license": "@haxtheweb/ai-usage-license/ai-usage-license.js",
     "lrn-math": "@haxtheweb/lrn-math/lrn-math.js",
     "vocab-term": "@haxtheweb/vocab-term/vocab-term.js",
     "meme-maker": "@haxtheweb/meme-maker/meme-maker.js",

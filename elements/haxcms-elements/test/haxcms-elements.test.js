@@ -1,6 +1,7 @@
 // local development and mobx
 import { fixture, expect, html } from "@open-wc/testing";
 import "@haxtheweb/haxcms-elements/lib/core/haxcms-site-builder.js";
+import { store } from "../lib/core/haxcms-site-store.js";
 describe("haxcms-elements test", () => {
   let element;
   beforeEach(async () => {
@@ -14,6 +15,54 @@ describe("haxcms-elements test", () => {
 
   it("passes the a11y audit", async () => {
     await expect(element).shadowDom.to.be.accessible();
+  });
+});
+
+describe("haxcms-elements inline block render safety", () => {
+  let originalManifest;
+  let originalThemeElement;
+  let originalActiveItemContent;
+
+  beforeEach(() => {
+    originalManifest = store.manifest;
+    originalThemeElement = store.themeElement;
+    originalActiveItemContent = store.activeItemContent;
+  });
+
+  afterEach(() => {
+    store.manifest = originalManifest;
+    store.themeElement = originalThemeElement;
+    store.activeItemContent = originalActiveItemContent;
+  });
+  it("preserves inline custom elements in site content even when they are editor-restricted", async () => {
+    store.manifest = {
+      metadata: {
+        platform: {
+          allowedBlocks: ["p"],
+        },
+      },
+      items: [],
+    };
+
+    expect(store.platformAllows("moar-sarcasm")).to.equal(false);
+    expect(store.platformAllows("lrn-math")).to.equal(false);
+
+    const Builder = globalThis.customElements.get("haxcms-site-builder");
+    const builder = new Builder();
+    store.themeElement = globalThis.document.createElement("div");
+    await builder._activeItemContentChanged(
+      "<p><moar-sarcasm>Totally serious.</moar-sarcasm> <lrn-math>x^2</lrn-math></p>",
+      {
+        id: "item-1",
+        title: "Inline test",
+        parent: null,
+        slug: "inline-test",
+        order: 1,
+        metadata: {},
+      },
+    );
+    expect(store.activeItemContent).to.include("<moar-sarcasm>");
+    expect(store.activeItemContent).to.include("<lrn-math>");
   });
 });
 

@@ -28,7 +28,6 @@ import "@haxtheweb/simple-modal/simple-modal.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import "./haxcms-site-insights.js"; // Legacy element tag name retained; it now renders Reports UI.
 import "@haxtheweb/simple-fields/lib/simple-fields-form.js";
-import "./micros/haxcms-button-add.js";
 import "./haxcms-darkmode-toggle.js";
 import "../ui-components/site/site-remote-content.js";
 import "@haxtheweb/page-flag/page-flag.js";
@@ -1125,6 +1124,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   mode.replace("create-", ""),
                   values.data.name,
                   response.data.contents || response.data,
+                  values && values.contextItemId ? values.contextItemId : null,
                 );
               } else {
                 // must be a valid response and have at least SOME html to bother attempting
@@ -1267,6 +1267,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               mode.replace("create-", ""),
               values.data.name,
               values.contents,
+              values && values.contextItemId ? values.contextItemId : null,
             );
           }
         }
@@ -1274,10 +1275,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
   }
   // create node w/ title and contents passed in
-  async createNewNode(type, title = "New page", contents = "<p></p>") {
+  async createNewNode(
+    type,
+    title = "New page",
+    contents = "<p></p>",
+    contextItemId = null,
+  ) {
     let order = null;
     let parent = null;
-    const item = toJS(store.activeItem);
+    let item = null;
+    if (contextItemId) {
+      item = toJS(await store.findItemAsObject(contextItemId));
+    }
+    if (!item) {
+      item = toJS(store.activeItem);
+    }
     if (item) {
       if (type === "sibling") {
         parent = item.parent;
@@ -1286,10 +1298,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       } else if (type === "child") {
         parent = item.id;
         // find last child, or just be the 1st one.
-        let tmp = toJS(await store.getLastChildItem(item.id)).order;
+        const childItem = toJS(await store.getLastChildItem(item.id));
+        let tmp = null;
+        if (childItem && (childItem.order || childItem.order === 0)) {
+          tmp = childItem.order;
+        }
         order = 0;
         if (tmp || tmp === 0) {
-          order = tmp + 1;
+          order = parseInt(tmp) + 1;
         }
       } else if (type === "branch") {
         parent = null;
@@ -1708,6 +1724,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           const siteEditorUI =
             globalThis.document.querySelector("haxcms-site-editor-ui") || this;
           const currentItem = toJS(store.activeItem);
+          const createType = values && values.type ? values.type : "sibling";
 
           // If no input provided, show default page creation option to match prior UX
           if (!input || input.trim() === "") {
@@ -1719,7 +1736,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 value: {
                   target: siteEditorUI,
                   method: "createPageWithTitle",
-                  args: ["New Page", "sibling"],
+                  args: ["New Page", createType],
                 },
                 eventName: "super-daemon-element-method",
                 path: "CMS/action/create/page",
@@ -1742,7 +1759,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               value: {
                 target: siteEditorUI,
                 method: "createPageWithTitle",
-                args: [title, "sibling"],
+                args: [title, createType],
               },
               eventName: "super-daemon-element-method",
               path: "CMS/action/create/page/blank",
@@ -1758,7 +1775,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   value: {
                     target: siteEditorUI,
                     method: "createPageWithTitle",
-                    args: [title, "sibling", template.content],
+                    args: [title, createType, template.content],
                   },
                   eventName: "super-daemon-element-method",
                   path: `CMS/action/create/page/template/${template.id}`,
@@ -1808,6 +1825,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       tags: ["page", "move", "relocate", "parent", "CMS"],
       eventName: "super-daemon-run-program",
       path: "CMS/action/move/page",
+      context: ["CMS"],
       value: {
         name: "move-page",
         machineName: "move-page",
@@ -2244,7 +2262,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       priority: -9999,
       tags: ["Agent", "help", "merlin", "url", "link"],
       eventName: "super-daemon-run-program",
-      path: "HAX/link-agent",
+      path: "CMS/action/link-agent",
+      context: ["CMS"],
       inline: true,
       value: {
         name: "Create block from Link",
@@ -2527,11 +2546,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.activeNode = null;
     this.activeDrag = false;
     this.activeType = null;
+    this.__haxcmsButtonAddReady = false;
+    this.__haxcmsButtonAddImporting = false;
     if (globalThis.appSettings && globalThis.appSettings.backLink) {
       this.backLink = globalThis.appSettings.backLink;
     }
     autorun(() => {
       const isLoggedIn = toJS(store.isLoggedIn);
+      if (isLoggedIn) {
+        this._ensureHaxcmsButtonAddLoaded();
+      }
       UserScaffoldInstance.writeMemory("isLoggedIn", this.isLoggedIn);
       const tstamp = Math.floor(Date.now() / 1000);
 
@@ -2732,6 +2756,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   getIconPosition(size) {
     return !["xl", "lg"].includes(size) ? "top" : "left";
   }
+  async _ensureHaxcmsButtonAddLoaded() {
+    if (this.__haxcmsButtonAddReady || this.__haxcmsButtonAddImporting) {
+      return;
+    }
+    if (globalThis.customElements.get("haxcms-button-add")) {
+      this.__haxcmsButtonAddReady = true;
+      this.requestUpdate();
+      return;
+    }
+    this.__haxcmsButtonAddImporting = true;
+    await import("./micros/haxcms-button-add.js");
+    this.__haxcmsButtonAddReady = true;
+    this.__haxcmsButtonAddImporting = false;
+    this.requestUpdate();
+  }
   // render function
   render() {
     return html`
@@ -2927,17 +2966,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         </div>
         <div slot="right" class="topbar-right-group">
           <div class="toolbar-buttons right-toolbar-buttons">
-            <haxcms-button-add
-              ?hidden="${!store.platformAllows("addPage")}"
-              ?disabled="${this.editMode}"
-              id="addpagebutton"
-              class="top-bar-button"
-              align-horizontal="center"
-              icon="hax:add-page"
-              label="${this.t.addPage} • Ctrl⇧1"
-              merlin
-              role="menuitem"
-            ></haxcms-button-add>
+            ${this.__haxcmsButtonAddReady
+              ? html`<haxcms-button-add
+                  ?hidden="${!store.platformAllows("addPage")}"
+                  ?disabled="${this.editMode}"
+                  id="addpagebutton"
+                  class="top-bar-button"
+                  align-horizontal="center"
+                  icon="hax:add-page"
+                  label="${this.t.addPage} • Ctrl⇧1"
+                  merlin
+                  role="menuitem"
+                ></haxcms-button-add>`
+              : ``}
             <simple-toolbar-button
               ?hidden="${!store.platformAllows("outlineDesigner")}"
               ?disabled="${this.editMode}"
@@ -3463,6 +3504,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       voice: "(toggle) dark mode",
       eventName: "super-daemon-element-method",
       path: "CMS/action/darkMode",
+      context: ["CMS"],
     });
 
     SuperDaemonInstance.defineOption({
@@ -3474,6 +3516,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
       eventName: "super-daemon-element-click",
       path: "CMS/action/sound",
+      context: ["CMS"],
     });
 
     if (store.platformAllows("outlineDesigner")) {
@@ -3781,21 +3824,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       }
     });
 
-    // Edit platform settings (developer-only)
-    SuperDaemonInstance.defineOption({
-      title: "Platform Settings",
-      icon: "hax:home-edit",
-      tags: ["Developer", "platform", "settings", "skeleton"],
-      eventName: "super-daemon-element-method",
-      path: ">settings/platform",
-      context: [">"],
-      voice: "platform settings",
-      value: {
-        target: this,
-        method: "exportSiteAs",
-        args: ["skeleton", { platformSettings: true }],
-      },
-    });
 
     SuperDaemonInstance.defineOption({
       title: "HAX Labs",
@@ -3813,10 +3841,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     SuperDaemonInstance.defineOption({
       title: "View only mode",
       icon: "visibility",
-      tags: ["CMS", "view", "read-only", "preview"],
+      tags: [
+        "Developer",
+        "view",
+        "read-only",
+        "preview",
+        "anonymous",
+        "logged out",
+        "logged-out",
+        "unauthenticated",
+        "guest",
+        "visitor",
+      ],
       eventName: "super-daemon-element-method",
-      path: "CMS/mode/view-only",
-      context: ["CMS"],
+      path: ">settings/view-only",
+      context: [">"],
       more: html`<span
         >Enable view only mode to hide all editing tools and experience the site
         as a visitor would see it</span

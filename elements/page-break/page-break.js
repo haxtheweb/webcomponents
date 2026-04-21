@@ -9,7 +9,6 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import "@haxtheweb/haxcms-elements/lib/core/micros/haxcms-button-add.js";
 import { pageBreakManager } from "./lib/page-break-manager.js";
 import { DDDExtra } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
@@ -1092,13 +1091,6 @@ export class PageBreak extends IntersectionObserverMixin(
 
   async _savePage(e) {
     store.cmsSiteEditor.haxCmsSiteEditorUIElement._editButtonTap();
-  }
-
-  _addPage(e) {
-    const menu = this.shadowRoot.querySelector("#menu");
-    if (menu) menu.close();
-    // Trigger the merlin mini interface for adding a page
-    // This is handled by haxcms-button-add internally
   }
 
   _deletePage(e) {

@@ -1355,18 +1355,26 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (!this.platformConfig || typeof this.platformConfig !== "object") {
       return true; // No restrictions if no platform config
     }
+    const supportedFeatures =
+      this.platformConfig.__supportedFeatures &&
+      typeof this.platformConfig.__supportedFeatures.has === "function"
+        ? this.platformConfig.__supportedFeatures
+        : new Set();
+    const features =
+      this.platformConfig.features && typeof this.platformConfig.features === "object"
+        ? this.platformConfig.features
+        : {};
 
     // If the capability is in the list of accepted features, evaluate as feature
     // If not defined, default to true (allowed), if it is defined, use its value
-    if(this.platformConfig.__supportedFeatures.has(capability)){
-      return this.platformConfig.features[capability] !== false;
+    if(supportedFeatures.has(capability)){
+      return features[capability] !== false;
     } 
 
     const hasExplicitAllowedBlocks =
-      this.platformConfig.allowedBlocksDefined === true ||
-      (this.platformConfig.allowedBlocks &&
-        typeof this.platformConfig.allowedBlocks.size === "number" &&
-        this.platformConfig.allowedBlocks.size > 0);
+      this.platformConfig.allowedBlocks &&
+      typeof this.platformConfig.allowedBlocks.size === "number" &&
+      this.platformConfig.allowedBlocks.size > 0;
     if (!hasExplicitAllowedBlocks) {
       return true;
     }
@@ -3826,7 +3834,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       contentEditable: true,
       gizmo: {
         title: "Horizontal line",
+        description: "A horizontal divider line",
         icon: "hax:hr",
+        tags: ["Text", "hr", "html", "separator"],
         meta: {
           author: "W3C",
         },

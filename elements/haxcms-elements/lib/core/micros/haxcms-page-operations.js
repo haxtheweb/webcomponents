@@ -162,6 +162,8 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
                 icon="hax:add-page"
                 icon-position="left"
                 label="${this.t.addPage}"
+                type="child"
+                action-id="${this.actionId}"
                 merlin
                 @click="${this._closeDialog}"
                 show-text-label
