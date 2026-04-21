@@ -1433,6 +1433,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
               ) {
                 e.preventDefault();
                 SuperDaemonInstance.mini = true;
+                SuperDaemonInstance.inlineMode = true;
                 SuperDaemonInstance.activeRange = rng;
                 SuperDaemonInstance.activeSelection = HAXStore.getSelection();
 

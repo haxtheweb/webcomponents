@@ -508,6 +508,8 @@ class SimpleModal extends LitElement {
   constructor() {
     super();
     this.windowControllers = new AbortController();
+    this.__focusRestoreTimer = null;
+    this.__modalContentFocusTimer = null;
     this.title = "";
     this.opened = false;
     this.closeLabel = "Close";
@@ -559,6 +561,14 @@ class SimpleModal extends LitElement {
    * HTMLElement
    */
   disconnectedCallback() {
+    if (this.__focusRestoreTimer) {
+      clearTimeout(this.__focusRestoreTimer);
+      this.__focusRestoreTimer = null;
+    }
+    if (this.__modalContentFocusTimer) {
+      clearTimeout(this.__modalContentFocusTimer);
+      this.__modalContentFocusTimer = null;
+    }
     this.windowControllers.abort();
     super.disconnectedCallback();
   }
@@ -578,39 +588,47 @@ class SimpleModal extends LitElement {
         detail: false,
       }),
     );
+    if (this.__focusRestoreTimer) {
+      clearTimeout(this.__focusRestoreTimer);
+      this.__focusRestoreTimer = null;
+    }
+    if (this.__modalContentFocusTimer) {
+      clearTimeout(this.__modalContentFocusTimer);
+      this.__modalContentFocusTimer = null;
+    }
+    const detail = e.detail;
     if (this.opened) {
       // wipe the slot of our modal
       this.innerHTML = "";
-      setTimeout(() => {
-        this.show(
-          e.detail.title,
-          e.detail.mode,
-          e.detail.elements,
-          e.detail.invokedBy,
-          e.detail.id,
-          e.detail.modalClass,
-          e.detail.styles,
-          e.detail.clone,
-          e.detail.modal,
-          e.detail.showClose,
-          e.detail.titleIcon,
-          e.detail.breadcrumbs,
-        );
-      }, 0);
+      this.show(
+        detail.title,
+        detail.mode,
+        detail.elements,
+        detail.invokedBy,
+        detail.id,
+        detail.modalClass,
+        detail.styles,
+        detail.clone,
+        detail.modal,
+        detail.showClose,
+        detail.titleIcon,
+        detail.breadcrumbs,
+      );
+      this._queueFocusModalContent();
     } else {
       this.show(
-        e.detail.title,
-        e.detail.mode,
-        e.detail.elements,
-        e.detail.invokedBy,
-        e.detail.id,
-        e.detail.modalClass,
-        e.detail.styles,
-        e.detail.clone,
-        e.detail.modal,
-        e.detail.showClose,
-        e.detail.titleIcon,
-        e.detail.breadcrumbs,
+        detail.title,
+        detail.mode,
+        detail.elements,
+        detail.invokedBy,
+        detail.id,
+        detail.modalClass,
+        detail.styles,
+        detail.clone,
+        detail.modal,
+        detail.showClose,
+        detail.titleIcon,
+        detail.breadcrumbs,
       );
     }
   }
@@ -732,9 +750,20 @@ class SimpleModal extends LitElement {
       while (this.firstChild !== null) {
         this.removeChild(this.firstChild);
       }
+      if (this.__focusRestoreTimer) {
+        clearTimeout(this.__focusRestoreTimer);
+        this.__focusRestoreTimer = null;
+      }
       if (this.invokedBy) {
-        setTimeout(() => {
-          this.invokedBy.focus();
+        this.__focusRestoreTimer = setTimeout(() => {
+          this.__focusRestoreTimer = null;
+          if (
+            !this.opened &&
+            this.invokedBy &&
+            typeof this.invokedBy.focus === "function"
+          ) {
+            this.invokedBy.focus();
+          }
         }, 500);
       }
       this.showClose = false;
@@ -748,6 +777,10 @@ class SimpleModal extends LitElement {
       });
       this.dispatchEvent(evt);
     } else if (newValue) {
+      if (this.__focusRestoreTimer) {
+        clearTimeout(this.__focusRestoreTimer);
+        this.__focusRestoreTimer = null;
+      }
       // Prevent body scrolling when modal opens
       document.body.style.overflow = "hidden";
       // p dialog backport; a nice, simple solution for close buttons
@@ -793,10 +826,17 @@ class SimpleModal extends LitElement {
         },
       });
       this.dispatchEvent(evt);
-      setTimeout(() => {
-        this._focusModalContent();
-      }, 0);
+      this._queueFocusModalContent();
     }
+  }
+  _queueFocusModalContent() {
+    if (this.__modalContentFocusTimer) {
+      clearTimeout(this.__modalContentFocusTimer);
+    }
+    this.__modalContentFocusTimer = setTimeout(() => {
+      this.__modalContentFocusTimer = null;
+      this._focusModalContent();
+    }, 0);
   }
   _focusModalContent(attempt = 0) {
     if (!this.opened) {

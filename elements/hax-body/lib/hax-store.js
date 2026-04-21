@@ -4994,6 +4994,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
                 title: gizmo.title,
                 icon: gizmo.icon,
                 tags: gizmo.tags || [],
+                inline: true,
                 value: {
                   value: gizmo.tag,
                   eventName: "insert-tag",

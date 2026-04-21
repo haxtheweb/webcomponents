@@ -1638,10 +1638,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.platformContexts = {
       cms: [
         "addPage",
-        "styleGuide",
-        "outlineDesigner",
-        "reports",
-        "manifest",
+        "admin",
       ],
       global: [
         "uploadMedia",
@@ -1956,6 +1953,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       eventName: "super-daemon-run-program",
       path: "HAX/agent",
       context: "uploadMedia",
+      inline: true,
       value: {
         name: "Upload a file",
         machineName: "hax-agent",
@@ -2247,6 +2245,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       tags: ["Agent", "help", "merlin", "url", "link"],
       eventName: "super-daemon-run-program",
       path: "HAX/link-agent",
+      inline: true,
       value: {
         name: "Create block from Link",
         machineName: "hax-link-agent",
@@ -3224,18 +3223,21 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       eventName: "super-daemon-element-method",
       path: "CMS/action/save",
     });
-    SuperDaemonInstance.defineOption({
-      title: this.t.reports,
-      icon: "hax:graph",
-      tags: ["CMS", "reports", "data", "operation"],
-      value: {
-        target: this,
-        method: "_reportsButtonTap",
-      },
-      context: "reports",
-      eventName: "super-daemon-element-method",
-      path: "CMS/site/reports",
-    });
+    if (store.platformAllows("insights")) {
+      SuperDaemonInstance.defineOption({
+        title: `Admin - ${this.t.reports}`,
+        icon: "hax:graph",
+        tags: ["CMS", "admin", "reports", "data", "operation"],
+        value: {
+          target: this,
+          method: "_reportsButtonTap",
+          args: [null, true],
+        },
+        context: "admin",
+        eventName: "super-daemon-element-method",
+        path: "CMS/admin/reports",
+      });
+    }
     SuperDaemonInstance.defineOption({
       title: this.t.edit,
       icon: "hax:page-edit",
@@ -3250,126 +3252,193 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/action/edit",
     });
     SuperDaemonInstance.defineOption({
-      title: this.t.siteSettings,
+      title: `Admin - ${this.t.siteSettings}`,
       icon: "hax:site-settings",
       tags: [
         "CMS",
+        "admin",
         "site",
         "settings",
         "operation",
         "command",
-        "theme",
-        "seo",
-        "author",
       ],
       value: {
         target: this,
         method: "_manifestButtonTap",
         args: [{ target: this.shadowRoot.querySelector("#manifestbtn") }],
       },
-      context: "manifest",
+      context: "admin",
       eventName: "super-daemon-element-method",
-      path: "CMS/action/site/settings",
+      path: "CMS/admin/dashboard",
     });
+    if (store.platformAllows("themeManifest")) {
+      SuperDaemonInstance.defineOption({
+        title: "Admin - Appearance",
+        icon: "lrn:palette",
+        tags: [
+          "CMS",
+          "admin",
+          "appearance",
+          "theme",
+          "settings",
+          "operation",
+          "command",
+        ],
+        value: {
+          target: this,
+          method: "_openAppearanceSettings",
+          args: [true, "Appearance"],
+        },
+        context: "admin",
+        eventName: "super-daemon-element-method",
+        path: "CMS/admin/appearance",
+      });
+    }
+    if (store.platformAllows("seoManifest")) {
+      SuperDaemonInstance.defineOption({
+        title: `Admin - ${this.t.seoSettings}`,
+        icon: "icons:search",
+        tags: [
+          "CMS",
+          "admin",
+          "seo",
+          "search",
+          "engine",
+          "settings",
+          "operation",
+          "command",
+        ],
+        value: {
+          target: this,
+          method: "_openSeoAdmin",
+          args: [true],
+        },
+        context: "admin",
+        eventName: "super-daemon-element-method",
+        path: "CMS/admin/seo",
+      });
+    }
+    if (store.platformAllows("authorManifest")) {
+      SuperDaemonInstance.defineOption({
+        title: `Admin - ${this.t.authorSettings}`,
+        icon: "account-circle",
+        tags: ["CMS", "admin", "author", "settings", "site settings"],
+        value: {
+          target: this,
+          method: "_openSiteSettingsForm",
+          args: [
+            this.shadowRoot.querySelector("#manifestbtn"),
+            "author",
+            true,
+            this.t.authorSettings,
+          ],
+        },
+        context: "admin",
+        eventName: "super-daemon-element-method",
+        path: "CMS/admin/author",
+      });
+    }
     SuperDaemonInstance.defineOption({
-      title: this.t.themeSettings,
-      icon: "hax:site-settings",
-      tags: [
-        "CMS",
-        "site",
-        "settings",
-        "operation",
-        "command",
-        "theme",
-        "seo",
-        "author",
-      ],
+      title: `Admin - ${this.t.content}`,
+      icon: "editor:insert-drive-file",
+      tags: ["CMS", "admin", "content", "site settings", "operation"],
       value: {
         target: this,
-        method: "_manifestButtonTap",
-        args: [{ target: this.shadowRoot.querySelector("#manifestbtn") }],
-      },
-      context: "manifest",
-      eventName: "super-daemon-element-method",
-      path: "CMS/action/site/settings/theme",
-    });
-    SuperDaemonInstance.defineOption({
-      title: this.t.seoSettings,
-      icon: "hax:site-settings",
-      tags: [
-        "CMS",
-        "site",
-        "settings",
-        "operation",
-        "command",
-        "theme",
-        "seo",
-        "search",
-        "engine",
-      ],
-      value: {
-        target: this,
-        method: "_manifestButtonTap",
-        args: [{ target: this.shadowRoot.querySelector("#manifestbtn") }],
-      },
-      context: "manifest",
-      eventName: "super-daemon-element-method",
-      path: "CMS/action/site/settings/seo",
-    });
-    SuperDaemonInstance.defineOption({
-      title: this.t.seoSettings,
-      icon: "icons:search",
-      tags: [
-        "CMS",
-        "seo",
-        "search",
-        "engine",
-        "settings",
-        "operation",
-        "command",
-      ],
-      value: {
-        target: this,
-        method: "_openSeoAdmin",
+        method: "_openContentAdmin",
         args: [true],
       },
-      context: "seoManifest",
+      context: "admin",
       eventName: "super-daemon-element-method",
-      path: "CMS/site/seo/settings",
+      path: "CMS/admin/content",
     });
+    if (store.platformAllows("siteManifest")) {
+      SuperDaemonInstance.defineOption({
+        title: "Admin - Details",
+        icon: "settings",
+        tags: ["CMS", "admin", "details", "site", "settings", "metadata"],
+        value: {
+          target: this,
+          method: "_openSiteSettingsForm",
+          args: [
+            this.shadowRoot.querySelector("#manifestbtn"),
+            "site",
+            true,
+            "Details",
+          ],
+        },
+        context: "admin",
+        eventName: "super-daemon-element-method",
+        path: "CMS/admin/details",
+      });
+      SuperDaemonInstance.defineOption({
+        title: "Admin - Blocks",
+        icon: "hax:blocks",
+        tags: ["CMS", "admin", "blocks", "settings", "site settings"],
+        value: {
+          target: this,
+          method: "_openAllowedBlocksSettings",
+          args: [true, "Blocks"],
+        },
+        context: "admin",
+        eventName: "super-daemon-element-method",
+        path: "CMS/admin/blocks",
+      });
+      SuperDaemonInstance.defineOption({
+        title: "Admin - Editor",
+        icon: "hax:page-edit",
+        tags: ["CMS", "admin", "editor", "settings", "site settings"],
+        value: {
+          target: this,
+          method: "_openEditorSettings",
+          args: [true, "Editor"],
+        },
+        context: "admin",
+        eventName: "super-daemon-element-method",
+        path: "CMS/admin/editor",
+      });
+    }
     SuperDaemonInstance.defineOption({
-      title: this.t.authorSettings,
-      icon: "hax:site-settings",
-      tags: [
-        "CMS",
-        "site",
-        "settings",
-        "operation",
-        "command",
-        "theme",
-        "author",
-      ],
+      title: "Admin - Features",
+      icon: "hax:add-item",
+      tags: ["CMS", "admin", "features", "platform", "settings"],
       value: {
         target: this,
-        method: "_manifestButtonTap",
-        args: [{ target: this.shadowRoot.querySelector("#manifestbtn") }],
+        method: "_openPlatformSettings",
+        args: [true, "Features"],
       },
-      context: "manifest",
+      context: "admin",
       eventName: "super-daemon-element-method",
-      path: "CMS/action/site/settings/author",
+      path: "CMS/admin/features",
     });
-    SuperDaemonInstance.defineOption({
-      title: this.t.styleGuide,
-      icon: "lrn:palette",
-      tags: ["CMS", "theme", "style guide", "design"],
-      value: {
-        target: this,
-        method: "_styleGuideButtonTap",
-      },
-      context: "styleGuide",
-      eventName: "super-daemon-element-method",
-      path: "CMS/theme/style-guide",
-    });
+    if (store.platformAllows("uploadMedia")) {
+      SuperDaemonInstance.defineOption({
+        title: `Admin - ${this.t.files}`,
+        icon: "icons:folder",
+        tags: ["CMS", "admin", "files", "media", "site settings"],
+        value: {
+          target: this,
+          method: "_openFilesAdmin",
+          args: [true],
+        },
+        context: "admin",
+        eventName: "super-daemon-element-method",
+        path: "CMS/admin/files",
+      });
+    }
+    if (store.platformAllows("styleGuide")) {
+      SuperDaemonInstance.defineOption({
+        title: `Admin - ${this.t.styleGuide}`,
+        icon: "lrn:palette",
+        tags: ["CMS", "admin", "theme", "style guide", "design"],
+        value: {
+          target: this,
+          method: "_styleGuideButtonTap",
+        },
+        context: "admin",
+        eventName: "super-daemon-element-method",
+        path: "CMS/admin/style-guide",
+      });
+    }
     SuperDaemonInstance.defineOption({
       title: this.t.logOut,
       icon: "add",
@@ -3407,24 +3476,30 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       path: "CMS/action/sound",
     });
 
-    SuperDaemonInstance.defineOption({
-      title: this.t.outlineDesigner,
-      icon: "hax:site-map",
-      tags: [
-        "CMS",
-        "outline",
-        "designer",
-        "site outline",
-        "operation",
-        "command",
-      ],
-      value: {
-        target: this.shadowRoot.querySelector("#outlinebutton"),
-      },
-      context: "outlineDesigner",
-      eventName: "super-daemon-element-click",
-      path: "CMS/action/outline",
-    });
+    if (store.platformAllows("outlineDesigner")) {
+      SuperDaemonInstance.defineOption({
+        title: `Admin - ${this.t.outlineDesigner}`,
+        icon: "hax:site-map",
+        tags: [
+          "CMS",
+          "admin",
+          "outline",
+          "designer",
+          "site outline",
+          "operation",
+          "command",
+          "structure",
+        ],
+        value: {
+          target: this,
+          method: "_outlineButtonTap",
+          args: [null, true, "Structure"],
+        },
+        context: "admin",
+        eventName: "super-daemon-element-method",
+        path: "CMS/admin/structure",
+      });
+    }
     // force item to load schema
     SuperDaemonInstance.defineOption({
       title: "Load component schema",
@@ -3536,7 +3611,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                 args: ["site-settings"],
               },
               eventName: "super-daemon-element-method",
-              context: "manifest",
+              context: "admin",
               path: "CMS/welcome/site-settings",
             },
             {
@@ -3574,7 +3649,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         context: "CMS",
         program: async (input, values) => {
           // Five most common operations for new users
-          return welcomeOps.filter(item => item.context==="CMS" || store.platformAllows(item.context));
+          return welcomeOps.filter(
+            (item) =>
+              item.context === "CMS" ||
+              item.context === "admin" ||
+              store.platformAllows(item.context),
+          );
         },
       },
     });
@@ -5677,13 +5757,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!routeOptions.silent) {
       store.playSound("click");
     }
-    globalThis.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        cancelable: true,
-        detail: {},
-      }),
-    );
     import("./haxcms-site-settings-dashboard.js").then(() => {
       const dashboard = globalThis.document.createElement(
         "haxcms-site-settings-dashboard",
@@ -5726,20 +5799,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             },
             invokedBy: this.shadowRoot.querySelector("#manifestbtn"),
             clone: false,
-            modal: false,
+            modal: true,
+            showClose: true,
           },
         }),
       );
     });
   }
   _siteSettingsDashboardAction(e) {
-    globalThis.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        cancelable: true,
-        detail: {},
-      }),
-    );
     const action = e && e.detail ? e.detail.action : null;
     setTimeout(() => {
       switch (action) {

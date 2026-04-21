@@ -40,6 +40,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       value: { type: String },
       mini: { type: Boolean },
       wand: { type: Boolean, reflect: true },
+      inlineMode: { type: Boolean, attribute: "inline-mode" },
       activeNode: { type: Object },
       programTarget: { type: Object },
       voiceSearch: { type: Boolean, reflect: true, attribute: "voice-search" },
@@ -149,6 +150,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.like = "";
     this.mini = false;
     this.wand = false;
+    this.inlineMode = false;
     this._programValues = {};
     this.programSearch = "";
     this.allItems = [];
@@ -229,6 +231,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     if (!target) {
       target = this.wandTarget;
     }
+    this.inlineMode = false;
 
     // Check if we're on mobile and if this is a page creation program
     const isMobile =
@@ -417,6 +420,9 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
       // no context means it's pervasive
       if (!option.context) {
         option.context = "*";
+      }
+      if (typeof option.inline === typeof undefined) {
+        option.inline = false;
       }
       // create new object from existing so we can build an index
       // remove icon, image, value, textCharacter, eventName as these are not searchable values
@@ -663,6 +669,7 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
     this.opened = false;
     this.mini = false;
     this.wand = false;
+    this.inlineMode = false;
     this._programValues = {};
     this.programSearch = "";
     this.voiceCommands = {};
@@ -716,6 +723,9 @@ class SuperDaemon extends I18NMixin(SimpleColors) {
   }
   filterItems(items, context) {
     let tmpItems = items.filter((item) => {
+      if (this.inlineMode && !item.inline) {
+        return false;
+      }
       // ensuire we have a context at all
       if (item.context) {
         // if we're in a global context, include all global context results
