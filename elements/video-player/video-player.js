@@ -202,7 +202,6 @@ class VideoPlayer extends IntersectionObserverMixin(
         color: "red",
         tags: [
           "Media",
-          "Media",
           "youtube",
           "watch",
           "vimeo",

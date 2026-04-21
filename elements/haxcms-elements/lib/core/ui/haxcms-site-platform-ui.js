@@ -4,7 +4,6 @@ import { DDD } from '@haxtheweb/d-d-d/d-d-d.js'
 import { HAXStore } from '@haxtheweb/hax-body/lib/hax-store.js'
 import { store } from '@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js'
 import { HAXCMSI18NMixin } from '../utils/HAXCMSI18NMixin.js'
-import '@haxtheweb/simple-icon/lib/simple-icon-button-lite.js'
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import '@haxtheweb/hax-body/lib/hax-text-editor-toolbar.js'
 
@@ -14,30 +13,32 @@ const FEATURE_DEFS = [
     label: 'Add pages',
     icon: 'hax:add-page',
     group: 'CMS',
-  },
-  {
-    key: 'saveAndEdit',
-    label: 'Save and continue',
-    icon: 'hax:add-page',
-    group: 'CMS',
+    description:
+      'Allows creating new pages from the top bar, outline actions, and command search actions.',
   },
   {
     key: 'deletePage',
     label: 'Delete pages',
     icon: 'icons:delete',
     group: 'CMS',
+    description:
+      'Allows deleting pages from page actions, outline actions, and related admin flows.',
   },
   {
     key: 'outlineDesigner',
     label: 'Outline designer',
     icon: 'hax:site-map',
     group: 'CMS',
+    description:
+      'Enables site structure tools, including outline actions and Structure admin operations.',
   },
   {
     key: 'styleGuide',
     label: 'Style guide',
     icon: 'lrn:palette',
     group: 'CMS',
+    description:
+      'Shows Style Guide access in admin tools and command search shortcuts.',
   },
   {
     // Keep "insights" as the platform feature key for compatibility; this controls Reports UI.
@@ -45,84 +46,112 @@ const FEATURE_DEFS = [
     label: 'Reports',
     icon: 'hax:graph',
     group: 'CMS',
+    description:
+      'Enables Reports in admin and command search so analytics and insights views are available.',
   },
   {
     key: 'siteManifest',
     label: 'Site settings',
     icon: 'hax:home-edit',
     group: 'CMS',
+    description:
+      'Controls Site Settings sections for Details, Blocks, and Editor configuration.',
   },
   {
     key: 'themeManifest',
     label: 'Theme settings',
     icon: 'hax:home-edit',
     group: 'CMS',
+    description:
+      'Enables the Appearance/Theme settings section in site administration.',
   },
   {
     key: 'authorManifest',
     label: 'Author settings',
     icon: 'hax:home-edit',
     group: 'CMS',
+    description:
+      'Enables author profile and author metadata settings in site administration.',
   },
   {
     key: 'seoManifest',
     label: 'SEO settings',
     icon: 'hax:home-edit',
     group: 'CMS',
+    description:
+      'Enables search engine and metadata optimization settings in site administration.',
   },
   {
     key: 'pageBreak',
     label: 'Edit page details',
     icon: 'hax:page-edit',
     group: 'CMS',
+    description:
+      'Shows page-level metadata editing controls like title, icon, status, tags, and locking.',
   },
   {
     key: 'addBlock',
     label: 'Add blocks',
     icon: 'hax:add-brick',
     group: 'HAX',
+    description:
+      'Shows the blocks browser and allows adding new content blocks while editing.',
   },
   {
     key: 'popularGizmos',
     label: 'Popular blocks section',
     icon: 'hax:add-brick',
     group: 'HAX',
+    description:
+      'Shows the Popular blocks section inside the block picker.',
   },
   {
     key: 'recentGizmos',
     label: 'Recent blocks section',
     icon: 'hax:add-brick',
     group: 'HAX',
+    description:
+      'Shows the Recent blocks section inside the block picker.',
   },
   {
     key: 'contentMap',
     label: 'Page content map',
     icon: 'hax:newspaper',
     group: 'HAX',
+    description:
+      'Shows the page content map/structure panel while editing content.',
   },
   {
     key: 'viewSource',
     label: 'View source',
     icon: 'hax:html-code',
     group: 'HAX',
+    description:
+      'Enables HTML source view for direct page markup editing.',
   },
   {
     key: 'uploadMedia',
     label: 'Upload media',
     icon: 'hax:add-page',
     group: 'HAX',
+    description:
+      'Enables file upload workflows and related media/file management access.',
   },
   {
     key: 'onlineMedia',
     label: 'Online media search',
     icon: 'hax:add-page',
     group: 'HAX',
+    description:
+      'Enables online media integrations and remote media search sources.',
   },
   {
     key: 'community',
     label: 'Community outreach',
     icon: 'hax:add-page',
     group: 'HAX',
+    description:
+      'Enables community-related command search context and outreach-oriented actions.',
   },
 ]
 
@@ -178,12 +207,14 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       filterBlocks: 'Filter blocks',
       requiredTextNote:
         'Some text tags are required and always enabled (shown disabled).',
-      selectAll: 'Select all',
-      deselectAll: 'Deselect all',
       download: 'Download skeleton',
       save: 'Save',
       generating: 'Generating skeleton…',
       generated: 'Skeleton downloaded',
+      enabled: 'Enabled',
+      feature: 'Feature',
+      featuresWarning:
+        'Disabling these options can remove major authoring and administration capabilities.',
       largeSiteWarning:
         'This site has many pages. Skeleton generation may take a while.',
     }
@@ -311,27 +342,107 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
 
         .controls-container {
           display: flex;
+          align-items: flex-start;
+          gap: var(--ddd-spacing-3);
         }
 
-        .controls {
-          flex: 1;
-          display: inline-flex;
-          gap: var(--ddd-spacing-2);
-          align-items: center;
-          flex-direction: column;
+        .feature-table-wrapper {
+          flex: 7;
+          min-width: 0;
         }
 
-        .controls simple-icon-button-lite {
-          --simple-icon-height: var(--ddd-icon-4xs);
-          --simple-icon-width: var(--ddd-icon-4xs);
+        .feature-table {
+          width: 100%;
+          border-collapse: collapse;
+          table-layout: fixed;
           border: var(--ddd-border-xs);
           border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-2);
+          overflow: hidden;
           background: light-dark(
             var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.2)
+            rgba(0, 0, 0, 0.12)
           );
         }
+
+        .feature-table th,
+        .feature-table td {
+          text-align: left;
+          vertical-align: top;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          border-bottom: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+        }
+
+        .feature-table tbody tr:last-child td {
+          border-bottom: 0;
+        }
+        .feature-row {
+          transition: opacity 0.2s ease, background-color 0.2s ease;
+        }
+
+        .feature-row.enabled {
+          opacity: 1;
+          background-color: light-dark(
+            rgba(0, 0, 0, 0.02),
+            rgba(255, 255, 255, 0.06)
+          );
+        }
+
+        .feature-row.disabled {
+          opacity: 0.58;
+          background-color: light-dark(
+            rgba(0, 0, 0, 0),
+            rgba(255, 255, 255, 0.02)
+          );
+        }
+
+        .feature-table th {
+          font-size: var(--ddd-font-size-4xs);
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          font-weight: var(--ddd-font-weight-bold);
+        }
+
+        .feature-table .select-col {
+          width: 88px;
+          text-align: center;
+        }
+
+        .feature-table input[type='checkbox'] {
+          margin-top: 0;
+          inline-size: var(--ddd-icon-xs);
+          block-size: var(--ddd-icon-xs);
+          cursor: pointer;
+        }
+
+        .feature-title {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+
+        .feature-title simple-icon-lite {
+          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--ddd-icon-xs);
+        }
+
+        .feature-description {
+          margin: var(--ddd-spacing-1) 0 0 0;
+          font-size: var(--ddd-font-size-3xs);
+          line-height: 1.35;
+          opacity: 0.92;
+        }
+
+        .platform-note {
+          margin: 0 0 var(--ddd-spacing-4) 0;
+          font-size: var(--ddd-font-size-xs);
+          line-height: 1.4;
+        }
+
 
         select,
         input[type='text'] {
@@ -561,6 +672,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       <div class="panel-shell">
         <div class="panel-scroll">
           <h2>${this.t.title}</h2>
+          <p class="platform-note">${this.t.featuresWarning}</p>
 
           <div class="row">
             ${!this.platformSettingsMode
@@ -596,24 +708,18 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
                 <h3>${this.t.cmsFeatures}</h3>
               </summary>
               <div class="controls-container">
-                <fieldset class="check-grid cms-container">
-                  ${cmsFeatures.map((f) => this._renderFeatureCheckbox(f))}
-                </fieldset>
-                <div class="controls">
-                  <simple-icon-button-lite
-                    icon="icons:select-all"
-                    label="${this.t.selectAll}"
-                    title="${this.t.selectAll}"
-                    data-category="cms"
-                    @click="${this._selectAll}"
-                  >Select All</simple-icon-button-lite>
-                  <simple-icon-button-lite
-                    icon="icons:select-all"
-                    label="${this.t.deselectAll}"
-                    title="${this.t.deselectAll}"
-                    data-category="cms"
-                    @click="${this._deselectAll}"
-                  >Deselect All</simple-icon-button-lite>
+                <div class="feature-table-wrapper">
+                  <table class="feature-table">
+                    <thead>
+                      <tr>
+                        <th class="select-col">${this.t.enabled}</th>
+                        <th>${this.t.feature}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${cmsFeatures.map((f) => this._renderFeatureRow(f))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </details>
@@ -623,24 +729,18 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
                 <h3>${this.t.editorFeatures}</h3>
               </summary>
               <div class="controls-container">
-                <fieldset class="check-grid hax-container">
-                  ${editorFeatures.map((f) => this._renderFeatureCheckbox(f))}
-                </fieldset>
-                <div class="controls">
-                  <simple-icon-button-lite
-                    icon="icons:select-all"
-                    label="${this.t.selectAll}"
-                    title="${this.t.selectAll}"
-                    data-category="hax"
-                    @click="${this._selectAll}"
-                  >Select All</simple-icon-button-lite>
-                  <simple-icon-button-lite
-                    icon="icons:select-all"
-                    label="${this.t.deselectAll}"
-                    title="${this.t.deselectAll}"
-                    data-category="hax"
-                    @click="${this._deselectAll}"
-                  >Deselect All</simple-icon-button-lite>
+                <div class="feature-table-wrapper">
+                  <table class="feature-table">
+                    <thead>
+                      <tr>
+                        <th class="select-col">${this.t.enabled}</th>
+                        <th>${this.t.feature}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${editorFeatures.map((f) => this._renderFeatureRow(f))}
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </details>
@@ -662,18 +762,36 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     `
   }
 
-  _renderFeatureCheckbox(item) {
-    const checked = store.platformAllows(item.key) 
+  _isFeatureChecked(key) {
+    if (this.features && Object.hasOwn(this.features, key)) {
+      return this.features[key] !== false
+    }
+    return store.platformAllows(key)
+  }
+
+  _renderFeatureRow(item) {
+    const checked = this._isFeatureChecked(item.key)
+    const inputId = `platform-feature-${item.group.toLowerCase()}-${item.key}`
+    const rowClass = checked ? 'feature-row enabled' : 'feature-row disabled'
     return html`
-      <label class="check">
-        <input
-          type="checkbox"
-          data-key="${item.key}"
-          .checked=${checked}
-          @change=${this._checkboxChanged}
-        /> <simple-icon-lite icon=${item.icon}></simple-icon-lite>
-        <span>${item.label}</span>
-      </label>
+      <tr class="${rowClass}">
+        <td class="select-col">
+          <input
+            id="${inputId}"
+            type="checkbox"
+            data-key="${item.key}"
+            .checked=${checked}
+            @change=${this._checkboxChanged}
+          />
+        </td>
+        <td>
+          <label class="feature-title" for="${inputId}">
+            <simple-icon-lite icon=${item.icon}></simple-icon-lite>
+            <span>${item.label}</span>
+          </label>
+          <p class="feature-description">${item.description}</p>
+        </td>
+      </tr>
     `
   }
 
@@ -707,86 +825,12 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     if(key){
       this.features = {
         ...this.features,
-        [key]: e.target.checked,
+        [key]: input.checked,
       }
-console.log(this.features)
       return;
     }
   }
 
-  _selectAll(e){
-    const category = e && e.target ? e.target.getAttribute('data-category') : null
-    switch(category){
-      case "cms": {
-        const tmpFeatures = { ...this.features }
-        FEATURE_DEFS.filter((feat) => feat.group === "CMS").forEach((feat) => {
-          tmpFeatures[feat.key] = true
-        })
-        this.features = tmpFeatures
-        console.log(this.features)
-        const container = this.shadowRoot.querySelector(`.${category}-container`);
-        const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach((item) => {
-          item.checked = true;
-        });
-        break;
-      }
-      case "hax": {
-        const tmpFeatures = { ...this.features }
-        FEATURE_DEFS.filter((feat) => feat.group === "HAX").forEach((feat) => {
-          tmpFeatures[feat.key] = true
-        })
-        this.features = tmpFeatures
-        console.log(this.features)
-        const container = this.shadowRoot.querySelector(`.${category}-container`);
-        const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach((item) => {
-          item.checked = true;
-        });
-        break;
-      }
-      default: {
-        break;
-      }
-    }
-  }
-
-  _deselectAll(e){
-    const category = e && e.target ? e.target.getAttribute('data-category') : null
-    switch(category){
-      case "cms": {
-        const tmpFeatures = { ...this.features }
-        FEATURE_DEFS.filter((feat) => feat.group === "CMS").forEach((feat) => {
-          tmpFeatures[feat.key] = false
-        })
-        this.features = tmpFeatures
-        console.log(this.features)
-        const container = this.shadowRoot.querySelector(`.${category}-container`);
-        const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach((item) => {
-          item.checked = false;
-        });
-        break;
-      }
-      case "hax": {
-        const tmpFeatures = { ...this.features }
-        FEATURE_DEFS.filter((feat) => feat.group === "HAX").forEach((feat) => {
-          tmpFeatures[feat.key] = false
-        })
-        this.features = tmpFeatures
-        console.log(this.features)
-        const container = this.shadowRoot.querySelector(`.${category}-container`);
-        const checkboxes = container.querySelectorAll('input[type="checkbox"]');
-        checkboxes.forEach((item) => {
-          item.checked = false;
-        });
-        break;
-      }
-      default: {
-        break;
-      }
-    }
-  }
 
   _compareCategories(a, b) {
     const categoryA = a || 'Other'

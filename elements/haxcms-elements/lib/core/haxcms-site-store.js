@@ -1141,13 +1141,19 @@ class Store {
         platformConfigObj.features.deletePage = raw.delete;
       }
 
-      // allowedBlocks: prefer new-style allowedBlocks, fallback to legacy blocks
+      // allowedBlocks: prefer new-style allowedBlocks, fallback to legacy blocks.
+      // Keep a defined-state flag so we can distinguish:
+      // - undefined => all optional blocks allowed
+      // - [] => no optional blocks allowed
+      platformConfigObj.allowedBlocksDefined =
+        Object.prototype.hasOwnProperty.call(raw, "allowedBlocks") ||
+        Object.prototype.hasOwnProperty.call(raw, "blocks");
       const blocksAry = Array.isArray(raw.allowedBlocks)
         ? raw.allowedBlocks
         : Array.isArray(raw.blocks)
           ? raw.blocks
-          : null;
-      platformConfigObj.allowedBlocks = blocksAry ? new Set(blocksAry) : new Set();
+          : [];
+      platformConfigObj.allowedBlocks = new Set(blocksAry);
 
       return platformConfigObj;
     }
@@ -1172,12 +1178,16 @@ class Store {
       return this.platformConfig.features[capability] !== false;
     } 
 
-    // Only filter blocks in expert mode if explicitly declared, otherwise default to true (all blocks)
-    if(this.platformConfig.audience === "expert"){
-      return this.platformConfig.allowedBlocks.size > 0 ? this.platformConfig.allowedBlocks.has(capability) : true;
+    const hasExplicitAllowedBlocks =
+      this.platformConfig.allowedBlocksDefined === true ||
+      (this.platformConfig.allowedBlocks &&
+        typeof this.platformConfig.allowedBlocks.size === "number" &&
+        this.platformConfig.allowedBlocks.size > 0);
+    if (!hasExplicitAllowedBlocks) {
+      return true;
     }
 
-    // If the capability is not a feature and we're not in expert mode, evaluate as block  
+    // Non-feature capabilities are treated as explicit block allow-list entries.
     return this.platformConfig.allowedBlocks.has(capability);
   }
   /**

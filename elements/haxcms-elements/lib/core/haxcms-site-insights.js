@@ -4,12 +4,14 @@ import { LitElement, html, css } from "lit";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
-import "@haxtheweb/a11y-tabs/a11y-tabs.js";
+import "@haxtheweb/a11y-collapse/a11y-collapse.js";
+import "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js";
 import "@haxtheweb/accent-card/accent-card.js";
 import "@haxtheweb/retro-card/retro-card.js";
 import "@haxtheweb/simple-img/simple-img.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "../ui-components/lesson-overview/lib/lesson-highlight.js";
 import "@github/time-elements/dist/relative-time-element.js";
 import "@haxtheweb/iframe-loader/lib/loading-indicator.js";
@@ -127,86 +129,49 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           margin: 0;
           padding: 0;
         }
-        a11y-tabs {
+        a11y-collapse-group {
           flex: 1;
-          display: flex;
-          flex-direction: column;
-          --a11y-tabs-horizontal-background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-primary-3)
-          );
-        }
-        a11y-tabs::part(tabs-container) {
-          flex-shrink: 0;
-        }
-        a11y-tabs::part(content-container) {
-          flex: 1;
-          overflow: auto;
           min-height: 0;
+          overflow-y: auto;
+          overflow-x: hidden;
+          padding-right: var(--ddd-spacing-1);
+          --a11y-collapse-group-margin: 0;
+          --a11y-collapse-margin: 0;
         }
-        a11y-tabs::part(tab) {
-          font-size: var(--ddd-font-size-m);
+        a11y-collapse {
+          --a11y-collapse-margin: 0 0 var(--ddd-spacing-2) 0;
+          --a11y-collapse-border: var(--ddd-border-xs);
+          --a11y-collapse-border-color: var(--ddd-theme-default-navy);
+          --a11y-collapse-horizontal-padding: var(--ddd-spacing-3);
+          --a11y-collapse-vertical-padding: var(--ddd-spacing-3);
+          --a11y-collapse-heading-font-weight: var(--ddd-font-weight-medium);
+          border-radius: var(--ddd-radius-sm);
+          overflow: hidden;
+        }
+        a11y-collapse::part(heading-id) {
+          font-size: var(--ddd-font-size-s);
           font-family: var(--ddd-font-navigation);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-slateGray)
-          );
-          border-bottom: 3px solid transparent;
-          transition: all 0.3s ease-in-out;
+          color: var(--ddd-theme-default-white);
+          background-color: var(--ddd-theme-default-navy);
         }
-        a11y-tabs::part(tab):hover {
-          color: light-dark(
-            var(--ddd-theme-default-original87Pink),
-            var(--ddd-theme-default-skyBlue)
-          );
+        a11y-collapse::part(icon) {
+          color: var(--ddd-theme-default-white);
         }
-        a11y-tabs[active-tab="reports"]::part(tab-reports) {
-          color: light-dark(
-            var(--ddd-theme-default-futureLime),
-            var(--ddd-theme-default-futureLime)
-          );
-          border-bottom-color: var(--ddd-theme-default-futureLime);
+        .collapse-heading {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
         }
-        a11y-tabs[active-tab="linkchecker"]::part(tab-linkchecker) {
-          color: light-dark(
-            var(--ddd-theme-default-opportunityGreen),
-            var(--ddd-theme-default-opportunityGreen)
-          );
-          border-bottom-color: var(--ddd-theme-default-opportunityGreen);
-        }
-        a11y-tabs[active-tab="mediabrowser"]::part(tab-mediabrowser) {
-          color: light-dark(
-            var(--ddd-theme-default-original87Pink),
-            var(--ddd-theme-default-original87Pink)
-          );
-          border-bottom-color: var(--ddd-theme-default-original87Pink);
-        }
-        a11y-tabs[active-tab="contentbrowser"]::part(tab-contentbrowser) {
-          color: light-dark(
-            var(--ddd-theme-default-skyBlue),
-            var(--ddd-theme-default-skyBlue)
-          );
-          border-bottom-color: var(--ddd-theme-default-skyBlue);
-        }
-        a11y-tab {
-          display: block;
+        .collapse-heading simple-icon-lite {
+          --simple-icon-color: currentColor;
+          --simple-icon-width: var(--ddd-icon-3xs, 20px);
+          --simple-icon-height: var(--ddd-icon-3xs, 20px);
         }
         .reports,
         .tab-content-wrapper {
           padding: var(--ddd-spacing-4);
         }
-        a11y-tab#reports loading-indicator {
-          --loading-indicator-color: var(--ddd-theme-default-futureLime);
-        }
-        a11y-tab#linkchecker loading-indicator {
-          --loading-indicator-color: var(
-            --ddd-theme-default-opportunityGreen
-          );
-        }
-        a11y-tab#mediabrowser loading-indicator {
-          --loading-indicator-color: var(--ddd-theme-default-original87Pink);
-        }
-        a11y-tab#contentbrowser loading-indicator {
+        a11y-collapse loading-indicator {
           --loading-indicator-color: var(--ddd-theme-default-skyBlue);
         }
         simple-fields-field[type="checkbox"],
@@ -312,6 +277,42 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       }
     });
   }
+  _activeSchema() {
+    switch (this.activeTab) {
+      case "linkchecker":
+        return this.shadowRoot.querySelector("#linkchecker-schema");
+      case "contentbrowser":
+        return this.shadowRoot.querySelector("#contentbrowser-schema");
+      case "mediabrowser":
+        return this.shadowRoot.querySelector("#mediabrowser-schema");
+      default:
+        return null;
+    }
+  }
+  _reportHeading(icon, label) {
+    return html`<span slot="heading" class="collapse-heading">
+      <simple-icon-lite icon="${icon}" aria-hidden="true"></simple-icon-lite>
+      <span>${label}</span>
+    </span>`;
+  }
+  _collapseToggled(e) {
+    if (!e || !e.detail || !e.detail.id) {
+      return;
+    }
+    const item = e.detail;
+    if (item.expanded) {
+      this.shadowRoot.querySelectorAll("a11y-collapse").forEach((collapse) => {
+        if (collapse !== item && collapse.expanded) {
+          collapse.expanded = false;
+        }
+      });
+      if (this.activeTab !== item.id) {
+        this.activeTab = item.id;
+      }
+    } else if (this.activeTab === item.id) {
+      item.expanded = true;
+    }
+  }
 
   _reportsResponse(data) {
     this.loading = false;
@@ -320,10 +321,14 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     this._originalData = JSON.parse(JSON.stringify(data.data));
     this.filters = {};
     setTimeout(() => {
+      const schema = this._activeSchema();
+      if (!schema && this.activeTab !== "reports") {
+        return;
+      }
       switch (this.activeTab) {
         case "linkchecker":
           this.filters = { links: "all" };
-          this.shadowRoot.querySelector("#schema").fields = [
+          schema.fields = [
             {
               property: "links",
               title: "Link status",
@@ -348,8 +353,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             hasPlaceholders: false,
             hasSiteRemoteContent: false,
           };
-          this.shadowRoot.querySelector("#schema").value = this.filters;
-          this.shadowRoot.querySelector("#schema").fields = [
+          schema.value = this.filters;
+          schema.fields = [
             {
               property: "title",
               title: "Title",
@@ -420,7 +425,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           break;
         case "mediabrowser":
           this.filters = { title: "", type: "all", location: "all" };
-          this.shadowRoot.querySelector("#schema").fields = [
+          schema.fields = [
             {
               property: "title",
               title: "Title",
@@ -461,7 +466,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
               },
             },
           ];
-          this.shadowRoot.querySelector("#schema").values = this.filters;
+          schema.value = this.filters;
+          schema.values = this.filters;
           break;
       }
     }, 0);
@@ -560,9 +566,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   closeModal() {
     globalThis.dispatchEvent(new CustomEvent("simple-modal-hide"));
   }
-  activeChanged(e) {
-    this.activeTab = e.detail.activeTab;
-  }
   linkFormChanged(e) {
     this.filters.links = e.detail.value.links;
     // @todo refactor
@@ -570,6 +573,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       this.hideResults = "link-status-true";
     } else if (this.filters.links === "ok") {
       this.hideResults = "link-status-false";
+    } else {
+      this.hideResults = "";
     }
   }
   contentBrowserFormChanged(e) {
@@ -709,467 +714,512 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       <div class="panel-shell">
         <div class="panel-scroll">
           ${this.pageSelector()}
-          <a11y-tabs
-        id="tabs"
-        full-width
-        @a11y-tabs-active-changed="${this.activeChanged}"
-      >
-        <a11y-tab
-          id="reports"
-          icon="hax:graph"
-          label="${this.t.reports}"
-        >
-          ${this.activeTab === "reports"
-            ? html`
-                <loading-indicator
-                  full
-                  ?loading="${this.loading}"
-                ></loading-indicator>
-                ${this.loading
-                  ? html`<p>${this.t.loading} ${this.t.reports}..</p>`
-                  : html`
-        <div class="reports">
-          <h2>${data && data.title ? data.title : ""} ${this.t.reports}</h2>
-          <ul>
-            <li>
-            <lesson-highlight icon="editor:insert-drive-file">
-              <p slot="title">${data.pages ? data.pages : html`0`} ${
-                this.t.pages
-              }</p>
-              <p>${data.objectives} ${this.t.learningObjectives},
-              ${data.authorNotes} ${this.t.authorNotes},
-              ${data.specialTags} ${this.t.specialElements},
-              ${data.dataTables} ${this.t.dataTables},
-              ${data.headings} ${this.t.headings}</p>
-            </lesson-highlight>
-            </li>
-            ${
-              data.video == 0
-                ? ``
-                : html`<li>
-                    <lesson-highlight icon="av:play-circle-outline">
-                      <p slot="title">${data.video} ${this.t.videos}</p>
-                      ${data.videoLength != 0
-                        ? html`(
-                            <p>${toHHMMSS(data.videoLength)}</p>
-                            )`
-                        : ``}
-                    </lesson-highlight>
-                  </li>`
-            }
-            ${
-              data.h5p == 0
-                ? ``
-                : html`<li>
-                    <lesson-highlight icon="lrn:interact">
-                      <p slot="title">${data.h5p} H5P</p>
-                    </lesson-highlight>
-                  </li>`
-            }
-            ${
-              data.audio == 0
-                ? ``
-                : html`<li>
-                    <lesson-highlight icon="av:music-video">
-                      <p slot="title">${data.audio} ${this.t.audio}</p>
-                    </lesson-highlight>
-                  </li>`
-            }
-            <li>
-            <lesson-highlight icon="icons:link">
-              <p slot="title">${data.links} ${this.t.externalLinks}</p>
-            </lesson-highlight>
-            </li>
-            <li>
-            <lesson-highlight icon="communication:import-contacts">
-              <p slot="title">${this.getReadingTime(data.readTime)} ${
-                this.t.ofReading
-              }</p>
-            </lesson-highlight>
-            </li>
-            ${
-              data.readability
+          <a11y-collapse-group radio>
+            <a11y-collapse
+              id="reports"
+              heading-button
+              icon="add"
+              icon-expanded="remove"
+              ?expanded="${this.activeTab === "reports"}"
+              @toggle="${this._collapseToggled}"
+            >
+              ${this._reportHeading("hax:graph", this.t.reports)}
+              ${this.activeTab === "reports"
                 ? html`
-                    <li>
-                      <lesson-highlight icon="editable-table:numbers">
-                        <p slot="title">${data.readability.gradeLevel}</p>
-                        <p>Dale-Chall ${this.t.basedGradeReadingLevel}</p>
-                      </lesson-highlight>
-                    </li>
-                    <li>
-                      <lesson-highlight icon="hax:format-textblock">
-                        <p slot="title">
-                          ${data.readability.lexiconCount} ${this.t.words}
-                        </p>
-                        <p>
-                          ${data.readability.difficultWords} ${this.t.longWords}
-                        </p>
-                      </lesson-highlight>
-                    </li>
+                    <div class="tab-content-wrapper">
+                      <loading-indicator
+                        full
+                        ?loading="${this.loading}"
+                      ></loading-indicator>
+                      ${this.loading
+                        ? html`<p>${this.t.loading} ${this.t.reports}..</p>`
+                        : html`
+                            <div class="reports">
+                              <h2>
+                                ${data && data.title ? data.title : ""}
+                                ${this.t.reports}
+                              </h2>
+                              <ul>
+                                <li>
+                                  <lesson-highlight icon="editor:insert-drive-file">
+                                    <p slot="title">
+                                      ${data.pages ? data.pages : html`0`}
+                                      ${this.t.pages}
+                                    </p>
+                                    <p>
+                                      ${data.objectives} ${this.t.learningObjectives},
+                                      ${data.authorNotes} ${this.t.authorNotes},
+                                      ${data.specialTags} ${this.t.specialElements},
+                                      ${data.dataTables} ${this.t.dataTables},
+                                      ${data.headings} ${this.t.headings}
+                                    </p>
+                                  </lesson-highlight>
+                                </li>
+                                ${data.video == 0
+                                  ? ``
+                                  : html`<li>
+                                      <lesson-highlight icon="av:play-circle-outline">
+                                        <p slot="title">${data.video} ${this.t.videos}</p>
+                                        ${data.videoLength != 0
+                                          ? html`(
+                                              <p>${toHHMMSS(data.videoLength)}</p>
+                                              )`
+                                          : ``}
+                                      </lesson-highlight>
+                                    </li>`}
+                                ${data.h5p == 0
+                                  ? ``
+                                  : html`<li>
+                                      <lesson-highlight icon="lrn:interact">
+                                        <p slot="title">${data.h5p} H5P</p>
+                                      </lesson-highlight>
+                                    </li>`}
+                                ${data.audio == 0
+                                  ? ``
+                                  : html`<li>
+                                      <lesson-highlight icon="av:music-video">
+                                        <p slot="title">${data.audio} ${this.t.audio}</p>
+                                      </lesson-highlight>
+                                    </li>`}
+                                <li>
+                                  <lesson-highlight icon="icons:link">
+                                    <p slot="title">
+                                      ${data.links} ${this.t.externalLinks}
+                                    </p>
+                                  </lesson-highlight>
+                                </li>
+                                <li>
+                                  <lesson-highlight icon="communication:import-contacts">
+                                    <p slot="title">
+                                      ${this.getReadingTime(data.readTime)}
+                                      ${this.t.ofReading}
+                                    </p>
+                                  </lesson-highlight>
+                                </li>
+                                ${data.readability
+                                  ? html`
+                                      <li>
+                                        <lesson-highlight icon="editable-table:numbers">
+                                          <p slot="title">
+                                            ${data.readability.gradeLevel}
+                                          </p>
+                                          <p>
+                                            Dale-Chall
+                                            ${this.t.basedGradeReadingLevel}
+                                          </p>
+                                        </lesson-highlight>
+                                      </li>
+                                      <li>
+                                        <lesson-highlight icon="hax:format-textblock">
+                                          <p slot="title">
+                                            ${data.readability.lexiconCount}
+                                            ${this.t.words}
+                                          </p>
+                                          <p>
+                                            ${data.readability.difficultWords}
+                                            ${this.t.longWords}
+                                          </p>
+                                        </lesson-highlight>
+                                      </li>
+                                    `
+                                  : ``}
+                                <li>
+                                  <lesson-highlight icon="device:access-time">
+                                    <p slot="title">
+                                      ${this.t.created}:
+                                      <relative-time
+                                        datetime="${data.created}"
+                                      ></relative-time>
+                                    </p>
+                                  </lesson-highlight>
+                                </li>
+                                <li>
+                                  <lesson-highlight icon="device:access-time">
+                                    <p slot="title">
+                                      ${this.t.lastUpdated}:
+                                      <relative-time
+                                        datetime="${data.updated}"
+                                      ></relative-time>
+                                    </p>
+                                  </lesson-highlight>
+                                </li>
+                                <li>
+                                  <lesson-highlight icon="av:av-timer">
+                                    <p slot="title">${this.t.recentUpdates}</p>
+                                    <ol class="recently-updated-items">
+                                      ${data.updatedItems
+                                        ? data.updatedItems.map(
+                                            (item) =>
+                                              html`<li>
+                                                <a
+                                                  @click="${this.closeModal}"
+                                                  href="${item.slug}"
+                                                  >${item.title}
+                                                  <relative-time
+                                                    datetime="${item.metadata.updated}"
+                                                  ></relative-time
+                                                ></a>
+                                              </li>`,
+                                          )
+                                        : ``}
+                                    </ol>
+                                  </lesson-highlight>
+                                </li>
+                              </ul>
+                            </div>
+                          `}
+                    </div>
                   `
-                : ``
-            }
-            <li>
-            <lesson-highlight icon="device:access-time">
-              <p slot="title">${this.t.created}: <relative-time datetime="${
-                data.created
-              }"></relative-time></p>
-            </lesson-highlight>
-            </li>
-            <li>
-            <lesson-highlight icon="device:access-time">
-              <p slot="title">${this.t.lastUpdated}: <relative-time datetime="${
-                data.updated
-              }"></relative-time></p>
-            </lesson-highlight>
-            </li>
-            <li>
-              <lesson-highlight icon="av:av-timer">
-              <p slot="title">${this.t.recentUpdates}</p>
-              <ol class="recently-updated-items">
-                ${
-                  data.updatedItems
-                    ? data.updatedItems.map(
-                        (item) =>
-                          html` <li>
-                            <a @click="${this.closeModal}" href="${item.slug}"
-                              >${item.title}
-                              <relative-time
-                                datetime="${item.metadata.updated}"
-                              ></relative-time
-                            ></a>
-                          </li>`,
-                      )
-                    : ``
-                }
-              </ol>
-              </lesson-highlight>
-            </li>
-            </ul>
-            </div>
-        </div>
-      `}
-              `
-            : ``}
-        </a11y-tab>
-        <a11y-tab
-          id="linkchecker"
-          icon="icons:link"
-          label="${this.t.linkChecker}"
-        >
-          ${this.activeTab == "linkchecker"
-            ? html`
-                <loading-indicator
-                  full
-                  ?loading="${this.loading}"
-                ></loading-indicator>
-                ${this.loading
-                  ? html`<p>${this.t.loading} ${this.t.linkChecker}..</p>`
-                  : html`
-                      <div>
-                        <h2>${this.t.linkReport}</h2>
-                        <form id="form">
-                          <simple-fields
-                            id="schema"
-                            autofocus
-                            @value-changed="${this.linkFormChanged}"
-                          ></simple-fields>
-                        </form>
-                        <ul class="link-list">
-                          ${data.linkData
-                            ? Object.keys(data.linkData).map((key) =>
-                                this.renderLinkCheck(data.linkData, key),
-                              )
-                            : html`${this.t.noLinksInSelectedPages}`}
-                        </ul>
-                      </div>
-                    `}
-              `
-            : ``}
-        </a11y-tab>
-        <a11y-tab
-          id="contentbrowser"
-          icon="icons:view-module"
-          label="${this.t.contentBrowser}"
-        >
-          ${this.activeTab == "contentbrowser"
-            ? html`
-                <loading-indicator
-                  full
-                  ?loading="${this.loading}"
-                ></loading-indicator>
-                ${this.loading
-                  ? html`<p>${this.t.loading} ${this.t.contentBrowser}..</p>`
-                  : html`
-                      <div>
-                        <h2>${this.t.contentBrowser}</h2>
-                        <form id="form">
-                          <simple-fields
-                            id="schema"
-                            autofocus
-                            @value-changed="${this.contentBrowserFormChanged}"
-                          ></simple-fields>
-                        </form>
-                        <ul class="content-list">
-                          ${data.contentData
-                            ? data.contentData.map(
-                                (item) => html`
-                                  <li>
-                                    <accent-card
-                                      image-src="https://screenshoturl.open-apis.hax.cloud/api/screenshotUrl?quality=25&render=img&urlToCapture=${base}${item.location}"
-                                      horizontal
-                                    >
-                                      <div slot="heading">
-                                        <a
-                                          class="title-link"
-                                          href="${item.slug}"
-                                          @click="${this.closeModal}"
-                                          >${item.pageType
-                                            ? html`
-                                                <simple-icon-lite
-                                                  title="${item.pageType}"
-                                                  icon="${iconFromPageType(
-                                                    item.pageType,
-                                                  )}"
-                                                ></simple-icon-lite>
-                                              `
-                                            : ``}
-                                          ${item.title}</a
-                                        >
-                                      </div>
-                                      <div slot="content">
-                                        <div>
-                                          ${this.t.created}
-                                          <relative-time
-                                            datetime="${item.created}"
-                                          ></relative-time>
-                                        </div>
-                                        <div>
-                                          ${this.t.lastUpdated}
-                                          <relative-time
-                                            datetime="${item.updated}"
-                                          ></relative-time>
-                                        </div>
-                                      </div>
-                                      <div slot="footer">
-                                        <ul class="stats">
-                                          ${item.objectives > 0
-                                            ? html`<li>
-                                                <simple-icon
-                                                  icon="editor:format-list-bulleted"
-                                                ></simple-icon
-                                                >${item.objectives}
-                                                ${this.t.learningObjectives}
-                                              </li>`
-                                            : ``}
-                                          ${item.authorNotes > 0
-                                            ? html`<li>
-                                                <simple-icon
-                                                  icon="hax:figure"
-                                                ></simple-icon
-                                                >${item.authorNotes}
-                                                ${this.t.authorNotes}
-                                              </li>`
-                                            : ``}
-                                          ${item.videos > 0
-                                            ? html`<li>
-                                                <simple-icon
-                                                  icon="av:play-arrow"
-                                                ></simple-icon
-                                                >${item.videos} ${this.t.videos}
-                                              </li>`
-                                            : ``}
-                                          ${item.h5p > 0
-                                            ? html`<li>
-                                                <simple-icon
-                                                  icon="lrn:interact"
-                                                ></simple-icon
-                                                >${item.h5p} H5P
-                                              </li>`
-                                            : ``}
-                                          ${item.placeholders > 0
-                                            ? html`<li>
-                                                <simple-icon
-                                                  icon="hax:placeholder-image"
-                                                ></simple-icon
-                                                >${item.placeholders}
-                                                ${this.t.placeholders}
-                                              </li>`
-                                            : ``}
-                                          ${item.audio > 0
-                                            ? html`<li>
-                                                <simple-icon
-                                                  icon="av:music-video"
-                                                ></simple-icon
-                                                >${item.audio} ${this.t.audio}
-                                              </li>`
-                                            : ``}
-                                          ${item.selfChecks > 0
-                                            ? html`<li>
-                                                <simple-icon
-                                                  icon="hardware:videogame-asset"
-                                                ></simple-icon
-                                                >${item.selfChecks}
-                                                ${this.t.selfChecks}
-                                              </li>`
-                                            : ``}
-                                          ${item.images > 0
-                                            ? html`<li>
-                                                <simple-icon
-                                                  icon="image:collections"
-                                                ></simple-icon
-                                                >${item.images} ${this.t.images}
-                                              </li>`
-                                            : ``}
-                                          ${item.dataTables > 0
-                                            ? html`<li>
-                                                <simple-icon
-                                                  icon="image:grid-on"
-                                                ></simple-icon
-                                                >${item.dataTables}
-                                                ${this.t.dataTables}
-                                              </li>`
-                                            : ``}
-                                          ${item.specialTags > 0
-                                            ? html`<li>
-                                                <simple-icon
-                                                  icon="icons:stars"
-                                                ></simple-icon
-                                                >${item.specialTags}
-                                                ${this.t.specialElements}
-                                              </li>`
-                                            : ``}
-                                          ${item.links > 0
-                                            ? html`<li>
-                                                <simple-icon
-                                                  icon="icons:link"
-                                                ></simple-icon
-                                                >${item.links} ${this.t.links}
-                                              </li>`
-                                            : ``}
-                                          ${item.readTime > 0
-                                            ? html`<li>
-                                                <simple-icon
-                                                  icon="icons:chrome-reader-mode"
-                                                ></simple-icon
-                                                >${this.getReadingTime(
-                                                  item.readTime,
-                                                )}
-                                                ${this.t.ofReading}
-                                              </li>`
-                                            : ``}
-                                        </ul>
-                                      </div>
-                                    </accent-card>
-                                  </li>
-                                `,
-                              )
-                            : ``}
-                        </ul>
-                      </div>
-                    `}
-              `
-            : ``}
-        </a11y-tab>
-        <a11y-tab
-          id="mediabrowser"
-          icon="icons:perm-media"
-          label="${this.t.mediaBrowser}"
-        >
-          ${this.activeTab == "mediabrowser"
-            ? html`
-                <loading-indicator
-                  full
-                  ?loading="${this.loading}"
-                ></loading-indicator>
-                ${this.loading
-                  ? html`<p>${this.t.loading} ${this.t.mediaBrowser}..</p>`
-                  : html`
-                      <div class="mediabrowser-wrapper">
-                        <h2>${this.t.mediaBrowser}</h2>
-                        <form id="form">
-                          <simple-fields
-                            id="schema"
-                            autofocus
-                            @value-changed="${this.mediaBrowserFormChanged}"
-                          ></simple-fields>
-                        </form>
-                        <ul class="media-list">
-                          ${data.mediaData
-                            ? data.mediaData.map(
-                                (item) => html`
-                                  <li>
-                                    <retro-card
-                                      nosource
-                                      class="${item.locType} ${item.type}"
-                                      accent-color="${this.accentColorFromType(
-                                        item.type,
-                                      )}"
-                                      title="${item.name} ${item.title}"
-                                      tags="${item.locType}, ${item.type}"
-                                    >
-                                      <div class="body">
-                                        ${item.type == "image"
-                                          ? html`<img
-                                                src="${item.source}"
-                                                alt="${item.alt}"
-                                                title="${item.title}"
-                                              />
-                                              <div>
-                                                ${this.analyzeAltData(item)}
-                                              </div>`
-                                          : ``}
-                                        ${item.type == "video" &&
-                                        item.source.includes("videoseries")
-                                          ? html`<iframe
-                                              src="${item.source}"
-                                            ></iframe>`
-                                          : ``}
-                                        ${item.type == "video" &&
-                                        !item.source.includes("videoseries")
-                                          ? html`<video-player
-                                              source="${item.source}"
-                                            ></video-player>`
-                                          : ``}
-                                        ${item.type == "h5p"
-                                          ? html`<iframe
-                                              src="${item.source}"
-                                            ></iframe>`
-                                          : ``}
-                                        ${item.type == "audio"
-                                          ? html`<video-player
-                                              source="${item.source}"
-                                            ></video-player>`
-                                          : ``}
-                                        ${item.type == "document"
-                                          ? html`<div>
+                : ``}
+            </a11y-collapse>
+            <a11y-collapse
+              id="linkchecker"
+              heading-button
+              icon="add"
+              icon-expanded="remove"
+              ?expanded="${this.activeTab === "linkchecker"}"
+              @toggle="${this._collapseToggled}"
+            >
+              ${this._reportHeading(
+                "icons:link",
+                this.t.linkChecker,
+              )}
+              ${this.activeTab == "linkchecker"
+                ? html`
+                    <div class="tab-content-wrapper">
+                      <loading-indicator
+                        full
+                        ?loading="${this.loading}"
+                      ></loading-indicator>
+                      ${this.loading
+                        ? html`<p>${this.t.loading} ${this.t.linkChecker}..</p>`
+                        : html`
+                            <div>
+                              <h2>${this.t.linkReport}</h2>
+                              <form>
+                                <simple-fields
+                                  id="linkchecker-schema"
+                                  autofocus
+                                  @value-changed="${this.linkFormChanged}"
+                                ></simple-fields>
+                              </form>
+                              <ul class="link-list">
+                                ${data.linkData
+                                  ? Object.keys(data.linkData).map((key) =>
+                                      this.renderLinkCheck(data.linkData, key),
+                                    )
+                                  : html`${this.t.noLinksInSelectedPages}`}
+                              </ul>
+                            </div>
+                          `}
+                    </div>
+                  `
+                : ``}
+            </a11y-collapse>
+            <a11y-collapse
+              id="contentbrowser"
+              heading-button
+              icon="add"
+              icon-expanded="remove"
+              ?expanded="${this.activeTab === "contentbrowser"}"
+              @toggle="${this._collapseToggled}"
+            >
+              ${this._reportHeading(
+                "icons:view-module",
+                this.t.contentBrowser,
+              )}
+              ${this.activeTab == "contentbrowser"
+                ? html`
+                    <div class="tab-content-wrapper">
+                      <loading-indicator
+                        full
+                        ?loading="${this.loading}"
+                      ></loading-indicator>
+                      ${this.loading
+                        ? html`<p>${this.t.loading} ${this.t.contentBrowser}..</p>`
+                        : html`
+                            <div>
+                              <h2>${this.t.contentBrowser}</h2>
+                              <form>
+                                <simple-fields
+                                  id="contentbrowser-schema"
+                                  autofocus
+                                  @value-changed="${this.contentBrowserFormChanged}"
+                                ></simple-fields>
+                              </form>
+                              <ul class="content-list">
+                                ${data.contentData
+                                  ? data.contentData.map(
+                                      (item) => html`
+                                        <li>
+                                          <accent-card
+                                            image-src="https://screenshoturl.open-apis.hax.cloud/api/screenshotUrl?quality=25&render=img&urlToCapture=${base}${item.location}"
+                                            horizontal
+                                          >
+                                            <div slot="heading">
                                               <a
-                                                href="${item.source}"
-                                                target="_blank"
-                                                >${this.t.openInNewTab}</a
+                                                class="title-link"
+                                                href="${item.slug}"
+                                                @click="${this.closeModal}"
+                                                >${item.pageType
+                                                  ? html`
+                                                      <simple-icon-lite
+                                                        title="${item.pageType}"
+                                                        icon="${iconFromPageType(
+                                                          item.pageType,
+                                                        )}"
+                                                      ></simple-icon-lite>
+                                                    `
+                                                  : ``}
+                                                ${item.title}</a
                                               >
-                                            </div>`
-                                          : ``}
-                                        <div>
-                                          ${item.itemId
-                                            ? this.renderItemLinkById(
-                                                item.itemId,
-                                              )
-                                            : ``}
-                                        </div>
-                                      </div>
-                                    </retro-card>
-                                  </li>
-                                `,
-                              )
-                            : `${this.t.noMediaInSelectedPages}`}
-                        </ul>
-                      </div>
-                    `}
-              `
-            : ``}
-        </a11y-tab>
-          </a11y-tabs>
+                                            </div>
+                                            <div slot="content">
+                                              <div>
+                                                ${this.t.created}
+                                                <relative-time
+                                                  datetime="${item.created}"
+                                                ></relative-time>
+                                              </div>
+                                              <div>
+                                                ${this.t.lastUpdated}
+                                                <relative-time
+                                                  datetime="${item.updated}"
+                                                ></relative-time>
+                                              </div>
+                                            </div>
+                                            <div slot="footer">
+                                              <ul class="stats">
+                                                ${item.objectives > 0
+                                                  ? html`<li>
+                                                      <simple-icon
+                                                        icon="editor:format-list-bulleted"
+                                                      ></simple-icon
+                                                      >${item.objectives}
+                                                      ${this.t.learningObjectives}
+                                                    </li>`
+                                                  : ``}
+                                                ${item.authorNotes > 0
+                                                  ? html`<li>
+                                                      <simple-icon
+                                                        icon="hax:figure"
+                                                      ></simple-icon
+                                                      >${item.authorNotes}
+                                                      ${this.t.authorNotes}
+                                                    </li>`
+                                                  : ``}
+                                                ${item.videos > 0
+                                                  ? html`<li>
+                                                      <simple-icon
+                                                        icon="av:play-arrow"
+                                                      ></simple-icon
+                                                      >${item.videos}
+                                                      ${this.t.videos}
+                                                    </li>`
+                                                  : ``}
+                                                ${item.h5p > 0
+                                                  ? html`<li>
+                                                      <simple-icon
+                                                        icon="lrn:interact"
+                                                      ></simple-icon
+                                                      >${item.h5p} H5P
+                                                    </li>`
+                                                  : ``}
+                                                ${item.placeholders > 0
+                                                  ? html`<li>
+                                                      <simple-icon
+                                                        icon="hax:placeholder-image"
+                                                      ></simple-icon
+                                                      >${item.placeholders}
+                                                      ${this.t.placeholders}
+                                                    </li>`
+                                                  : ``}
+                                                ${item.audio > 0
+                                                  ? html`<li>
+                                                      <simple-icon
+                                                        icon="av:music-video"
+                                                      ></simple-icon
+                                                      >${item.audio} ${this.t.audio}
+                                                    </li>`
+                                                  : ``}
+                                                ${item.selfChecks > 0
+                                                  ? html`<li>
+                                                      <simple-icon
+                                                        icon="hardware:videogame-asset"
+                                                      ></simple-icon
+                                                      >${item.selfChecks}
+                                                      ${this.t.selfChecks}
+                                                    </li>`
+                                                  : ``}
+                                                ${item.images > 0
+                                                  ? html`<li>
+                                                      <simple-icon
+                                                        icon="image:collections"
+                                                      ></simple-icon
+                                                      >${item.images}
+                                                      ${this.t.images}
+                                                    </li>`
+                                                  : ``}
+                                                ${item.dataTables > 0
+                                                  ? html`<li>
+                                                      <simple-icon
+                                                        icon="image:grid-on"
+                                                      ></simple-icon
+                                                      >${item.dataTables}
+                                                      ${this.t.dataTables}
+                                                    </li>`
+                                                  : ``}
+                                                ${item.specialTags > 0
+                                                  ? html`<li>
+                                                      <simple-icon
+                                                        icon="icons:stars"
+                                                      ></simple-icon
+                                                      >${item.specialTags}
+                                                      ${this.t.specialElements}
+                                                    </li>`
+                                                  : ``}
+                                                ${item.links > 0
+                                                  ? html`<li>
+                                                      <simple-icon
+                                                        icon="icons:link"
+                                                      ></simple-icon
+                                                      >${item.links}
+                                                      ${this.t.links}
+                                                    </li>`
+                                                  : ``}
+                                                ${item.readTime > 0
+                                                  ? html`<li>
+                                                      <simple-icon
+                                                        icon="icons:chrome-reader-mode"
+                                                      ></simple-icon
+                                                      >${this.getReadingTime(
+                                                        item.readTime,
+                                                      )}
+                                                      ${this.t.ofReading}
+                                                    </li>`
+                                                  : ``}
+                                              </ul>
+                                            </div>
+                                          </accent-card>
+                                        </li>
+                                      `,
+                                    )
+                                  : ``}
+                              </ul>
+                            </div>
+                          `}
+                    </div>
+                  `
+                : ``}
+            </a11y-collapse>
+            <a11y-collapse
+              id="mediabrowser"
+              heading-button
+              icon="add"
+              icon-expanded="remove"
+              ?expanded="${this.activeTab === "mediabrowser"}"
+              @toggle="${this._collapseToggled}"
+            >
+              ${this._reportHeading(
+                "icons:perm-media",
+                this.t.mediaBrowser,
+              )}
+              ${this.activeTab == "mediabrowser"
+                ? html`
+                    <div class="tab-content-wrapper">
+                      <loading-indicator
+                        full
+                        ?loading="${this.loading}"
+                      ></loading-indicator>
+                      ${this.loading
+                        ? html`<p>${this.t.loading} ${this.t.mediaBrowser}..</p>`
+                        : html`
+                            <div class="mediabrowser-wrapper">
+                              <h2>${this.t.mediaBrowser}</h2>
+                              <form>
+                                <simple-fields
+                                  id="mediabrowser-schema"
+                                  autofocus
+                                  @value-changed="${this.mediaBrowserFormChanged}"
+                                ></simple-fields>
+                              </form>
+                              <ul class="media-list">
+                                ${data.mediaData
+                                  ? data.mediaData.map(
+                                      (item) => html`
+                                        <li>
+                                          <retro-card
+                                            nosource
+                                            class="${item.locType} ${item.type}"
+                                            accent-color="${this.accentColorFromType(
+                                              item.type,
+                                            )}"
+                                            title="${item.name} ${item.title}"
+                                            tags="${item.locType}, ${item.type}"
+                                          >
+                                            <div class="body">
+                                              ${item.type == "image"
+                                                ? html`<img
+                                                      src="${item.source}"
+                                                      alt="${item.alt}"
+                                                      title="${item.title}"
+                                                    />
+                                                    <div>
+                                                      ${this.analyzeAltData(item)}
+                                                    </div>`
+                                                : ``}
+                                              ${item.type == "video" &&
+                                              item.source.includes("videoseries")
+                                                ? html`<iframe
+                                                    src="${item.source}"
+                                                  ></iframe>`
+                                                : ``}
+                                              ${item.type == "video" &&
+                                              !item.source.includes("videoseries")
+                                                ? html`<video-player
+                                                    source="${item.source}"
+                                                  ></video-player>`
+                                                : ``}
+                                              ${item.type == "h5p"
+                                                ? html`<iframe
+                                                    src="${item.source}"
+                                                  ></iframe>`
+                                                : ``}
+                                              ${item.type == "audio"
+                                                ? html`<video-player
+                                                    source="${item.source}"
+                                                  ></video-player>`
+                                                : ``}
+                                              ${item.type == "document"
+                                                ? html`<div>
+                                                    <a
+                                                      href="${item.source}"
+                                                      target="_blank"
+                                                      >${this.t.openInNewTab}</a
+                                                    >
+                                                  </div>`
+                                                : ``}
+                                              <div>
+                                                ${item.itemId
+                                                  ? this.renderItemLinkById(
+                                                      item.itemId,
+                                                    )
+                                                  : ``}
+                                              </div>
+                                            </div>
+                                          </retro-card>
+                                        </li>
+                                      `,
+                                    )
+                                  : `${this.t.noMediaInSelectedPages}`}
+                              </ul>
+                            </div>
+                          `}
+                    </div>
+                  `
+                : ``}
+            </a11y-collapse>
+          </a11y-collapse-group>
         </div>
       </div>
     `;

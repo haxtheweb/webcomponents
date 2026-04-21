@@ -46,7 +46,7 @@
   "dependencies": {
     "@haxtheweb/absolute-position-behavior": "^25.0.0",
     "@haxtheweb/simple-icon": "^25.0.0",
-    "lit": "3.3.1"
+    "lit": "3.3.2"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "0.10.4",

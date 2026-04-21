@@ -55,7 +55,7 @@
     "@haxtheweb/simple-popover": "^25.0.0",
     "@haxtheweb/simple-toolbar": "^25.0.0",
     "@haxtheweb/utils": "^25.0.0",
-    "lit": "3.3.1",
+    "lit": "3.3.2",
     "shadow-selection-polyfill": "^1.1.0"
   },
   "devDependencies": {

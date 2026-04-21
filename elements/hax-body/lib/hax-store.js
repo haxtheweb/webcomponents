@@ -1362,12 +1362,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       return this.platformConfig.features[capability] !== false;
     } 
 
-    // Only filter blocks in expert mode if explicitly declared, otherwise default to true (all blocks)
-    if(this.platformConfig.audience === "expert"){
-      return this.platformConfig.allowedBlocks.size > 0 ? this.platformConfig.allowedBlocks.has(capability) : true;
+    const hasExplicitAllowedBlocks =
+      this.platformConfig.allowedBlocksDefined === true ||
+      (this.platformConfig.allowedBlocks &&
+        typeof this.platformConfig.allowedBlocks.size === "number" &&
+        this.platformConfig.allowedBlocks.size > 0);
+    if (!hasExplicitAllowedBlocks) {
+      return true;
     }
 
-    // If the capability is not a feature and we're not in expert mode, evaluate as block  
+    // Non-feature capabilities are treated as explicit block allow-list entries.
     return this.platformConfig.allowedBlocks.has(capability);
   }
   /**

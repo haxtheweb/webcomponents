@@ -5,6 +5,8 @@ import { HAXStore } from '@haxtheweb/hax-body/lib/hax-store.js'
 import { HAXCMSI18NMixin } from '../utils/HAXCMSI18NMixin.js'
 import '@haxtheweb/simple-icon/lib/simple-icon-button-lite.js'
 import '@haxtheweb/simple-icon/lib/simple-icon-lite.js'
+import '@haxtheweb/simple-popover/lib/simple-popover-selection.js'
+import '@haxtheweb/hax-body/lib/hax-element-demo.js'
 
 /**
  * `haxcms-allowed-blocks-ui`
@@ -19,8 +21,10 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     return {
       haxBlocks: { type: Array },
       allowedBlocks: { type: Object },
+      allowedBlocksDefined: { type: Boolean, attribute: 'allowed-blocks-defined' },
       blockFilter: { type: String, attribute: 'block-filter' },
       busy: { type: Boolean, reflect: true },
+      activePreview: { type: String, attribute: false },
     }
   }
 
@@ -28,20 +32,26 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     super()
     this.haxBlocks = []
     this.allowedBlocks = new Set()
+    this.allowedBlocksDefined = false
     this.blockFilter = ''
     this.busy = false
+    this.activePreview = null
     this.__disposer = []
 
     this.t = this.t || {}
     this.t = {
       ...this.t,
       title: 'Blocks',
+      enabled: 'Enabled',
+      block: 'Block',
+      preview: 'Preview',
       filterBlocks: 'Filter blocks',
       requiredTextNote:
         'Some text tags are required and always enabled (shown disabled).',
       selectAll: 'Select all',
       deselectAll: 'Deselect all',
       save: 'Save',
+      noDescription: 'No description available.',
     }
 
     this.registerLocalization({
@@ -117,32 +127,10 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           max-width: 100%;
         }
 
-        fieldset {
-          border: 0;
-          padding: 0;
-          margin: 0;
-        }
-
-        .check-grid {
-          flex: 7;
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-          gap: var(--ddd-spacing-3);
-        }
-
-        label.check {
-          display: flex;
-          align-items: flex-start;
-          gap: var(--ddd-spacing-2);
-          line-height: 1.3;
-        }
-
-        label.check input {
-          margin-top: 2px;
-        }
-
         .controls-container {
           display: flex;
+          align-items: flex-start;
+          gap: var(--ddd-spacing-3);
         }
 
         .controls {
@@ -220,6 +208,128 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           flex: 7;
         }
 
+        .table-wrapper {
+          flex: 7;
+          min-width: 0;
+        }
+
+        .block-table {
+          width: 100%;
+          border-collapse: collapse;
+          table-layout: fixed;
+          border: var(--ddd-border-xs);
+          border-radius: var(--ddd-radius-sm);
+          overflow: hidden;
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            rgba(0, 0, 0, 0.12)
+          );
+        }
+
+        .block-table th,
+        .block-table td {
+          text-align: left;
+          vertical-align: top;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          border-bottom: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+        }
+
+        .block-table tbody tr:last-child td {
+          border-bottom: 0;
+        }
+
+        .block-row {
+          transition: opacity 0.2s ease, background-color 0.2s ease;
+        }
+
+        .block-row.enabled {
+          opacity: 1;
+          background-color: light-dark(
+            rgba(0, 0, 0, 0.02),
+            rgba(255, 255, 255, 0.06)
+          );
+        }
+
+        .block-row.disabled {
+          opacity: 0.58;
+          background-color: light-dark(
+            rgba(0, 0, 0, 0),
+            rgba(255, 255, 255, 0.02)
+          );
+        }
+
+        .block-table th {
+          font-size: var(--ddd-font-size-4xs);
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          font-weight: var(--ddd-font-weight-bold);
+        }
+
+        .block-table .select-col,
+        .block-table .preview-col {
+          width: 88px;
+          text-align: center;
+        }
+
+        .block-table input[type='checkbox'] {
+          margin-top: 0;
+          inline-size: var(--ddd-icon-xs);
+          block-size: var(--ddd-icon-xs);
+          cursor: pointer;
+        }
+
+        .block-meta {
+          display: block;
+          cursor: pointer;
+        }
+
+        .block-title {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          font-weight: var(--ddd-font-weight-bold);
+          cursor: pointer;
+        }
+
+        .block-title simple-icon-lite {
+          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--ddd-icon-xs);
+        }
+        .preview-control {
+          display: inline-flex;
+          justify-content: center;
+        }
+
+        .preview-button {
+          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--ddd-icon-xs);
+          border: var(--ddd-border-xs);
+          border-radius: var(--ddd-radius-sm);
+          padding: var(--ddd-spacing-1);
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            rgba(0, 0, 0, 0.2)
+          );
+        }
+
+        .block-description {
+          margin: var(--ddd-spacing-1) 0 0 0;
+          font-size: var(--ddd-font-size-3xs);
+          line-height: 1.35;
+          opacity: 0.92;
+        }
+
+        simple-popover-selection.block-preview {
+          display: inline-flex;
+          justify-content: center;
+          --simple-popover-manager-max-width: 320px;
+          --simple-popover-manager-min-width: 260px;
+        }
+
         .actions {
           display: flex;
           justify-content: flex-end;
@@ -265,31 +375,48 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
 
   connectedCallback() {
     super.connectedCallback()
+    const disposer = autorun(() => {
 
-    autorun((reaction) => {
+      const currentGizmos = toJS(HAXStore.gizmoList)
+      const gizmos = Array.isArray(currentGizmos) ? currentGizmos : []
+      const blocks = gizmos.filter(
+        (item) =>
+          !(
+            item.meta &&
+            (item.meta.hidden || item.meta.requiresParent)
+          ),
+      )
+      this.haxBlocks = blocks
+
       const platformConfig = toJS(HAXStore.platformConfig)
-      if (platformConfig && platformConfig.allowedBlocks) {
+      const hasAllowedBlocks =
+        !!platformConfig &&
+        (platformConfig.allowedBlocksDefined === true ||
+          (platformConfig.allowedBlocks &&
+            typeof platformConfig.allowedBlocks.size === 'number' &&
+            platformConfig.allowedBlocks.size > 0) ||
+          (Array.isArray(platformConfig.allowedBlocks) &&
+            platformConfig.allowedBlocks.length > 0))
+      this.allowedBlocksDefined = !!hasAllowedBlocks
+
+      if (hasAllowedBlocks) {
         const allowedBlocks = platformConfig.allowedBlocks
         if (allowedBlocks instanceof Set) {
           this.allowedBlocks = new Set(Array.from(allowedBlocks))
         } else if (Array.isArray(allowedBlocks)) {
           this.allowedBlocks = new Set(allowedBlocks)
+        } else {
+          this.allowedBlocks = new Set()
         }
       } else {
-        this.allowedBlocks = new Set()
+        this.allowedBlocks = new Set(
+          blocks
+            .filter((item) => !HAXStore.requiredPrimitives.has(item.tag))
+            .map((item) => item.tag),
+        )
       }
-
-      const currentGizmos = toJS(HAXStore.gizmoList)
-      const gizmos = Array.isArray(currentGizmos) ? currentGizmos : []
-      this.haxBlocks = gizmos.filter(
-        (item) =>
-          !(
-            item.meta &&
-            (item.meta.inlineOnly || item.meta.hidden || item.meta.requiresParent)
-          ),
-      )
-      this.__disposer.push(reaction)
     })
+    this.__disposer.push(disposer)
   }
 
   disconnectedCallback() {
@@ -304,10 +431,16 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
 
   render() {
     const blocks = Array.isArray(this.haxBlocks) ? this.haxBlocks : []
-    const toggleableTotal = blocks.filter((b) => !b.gizmoList).length
-    const toggleableSelected = blocks.filter(
-      (b) => HAXStore.requiredPrimitives.has(b.tag) || this.allowedBlocks.has(b.tag),
+    const toggleableTotal = blocks.filter(
+      (b) => !b.gizmoList && !HAXStore.requiredPrimitives.has(b.tag),
     ).length
+    const toggleableSelected = blocks.filter(
+      (b) =>
+        !b.gizmoList &&
+        !HAXStore.requiredPrimitives.has(b.tag) &&
+        this.allowedBlocks.has(b.tag),
+    ).length
+    const groupedBlocks = this._groupBlocksByCategory(blocks)
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
@@ -351,22 +484,33 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
             </div>
 
             <div class="blocks-list">
-              ${this._groupBlocksByCategory(blocks).map(
+              ${groupedBlocks.map(
                 (group) => html`
                   <details class="block-category">
                     <summary class="block-category-title">
                       <h4>${group.category}</h4>
                     </summary>
                     <div class="controls-container">
-                      <fieldset class="check-grid ${group.category.toLowerCase()}-container">
-                        ${group.blocks.map((item) => this._renderBlockCheckbox(item))}
-                      </fieldset>
+                      <div class="table-wrapper">
+                        <table class="block-table">
+                          <thead>
+                            <tr>
+                              <th class="select-col">${this.t.enabled}</th>
+                              <th>${this.t.block}</th>
+                              <th class="preview-col">${this.t.preview}</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            ${group.blocks.map((item) => this._renderBlockRow(item))}
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="controls">
                         <simple-icon-button-lite
                           icon="icons:select-all"
                           label="${this.t.selectAll}"
                           title="${this.t.selectAll}"
-                          data-category=${group.category.toLowerCase()}
+                          data-category="${this._categoryKey(group.category)}"
                           @click="${this._selectAll}"
                           >Select All</simple-icon-button-lite
                         >
@@ -374,7 +518,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                           icon="icons:select-all"
                           label="${this.t.deselectAll}"
                           title="${this.t.deselectAll}"
-                          data-category=${group.category.toLowerCase()}
+                          data-category="${this._categoryKey(group.category)}"
                           @click="${this._deselectAll}"
                           >Deselect All</simple-icon-button-lite
                         >
@@ -395,23 +539,102 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     `
   }
 
-  _renderBlockCheckbox(item) {
-    const isDisabled = HAXStore.requiredPrimitives.has(item.tag) ? true : false
+  _renderBlockRow(item) {
+    const isDisabled = HAXStore.requiredPrimitives.has(item.tag)
+    const checked = this._isBlockChecked(item.tag)
+    const rowClass = checked ? 'enabled' : 'disabled'
+    const description = this._getBlockDescription(item)
+    const rowId = this._blockInputId(item.tag)
     return html`
-      <label class="check">
-        <input
-          type="checkbox"
-          data-tag="${item.tag}"
-          .checked=${!item.platformRestricted}
-          ?disabled=${isDisabled}
-          @change=${this._checkboxChanged}
-        />
-        <simple-icon-lite icon="${item.icon}"></simple-icon-lite>
-        <span>${item.title}</span>
-      </label>
+      <tr class="block-row ${rowClass}">
+        <td class="select-col">
+          <input
+            id="${rowId}"
+            type="checkbox"
+            data-tag="${item.tag}"
+            .checked=${checked}
+            ?disabled=${isDisabled}
+            @change=${this._checkboxChanged}
+          />
+        </td>
+        <td>
+          <label class="block-meta" for="${rowId}">
+            <span class="block-title">
+              <simple-icon-lite icon="${item.icon}"></simple-icon-lite>
+              <span>${item.title}</span>
+            </span>
+            <p class="block-description">${description}</p>
+          </label>
+        </td>
+        <td class="preview-col">
+          <simple-popover-selection
+            class="block-preview"
+            data-index="${item.tag}"
+            @opened-changed="${this._hoverForPreviewChange}"
+            event="hover"
+          >
+            <span class="preview-control" slot="button">
+              <simple-icon-button-lite
+                class="preview-button"
+                icon="icons:visibility"
+                label="${this.t.preview}"
+                title="${this.t.preview}"
+              ></simple-icon-button-lite>
+            </span>
+            ${this.activePreview === item.tag
+              ? html`
+                  <hax-element-demo
+                    slot="options"
+                    render-tag="${item.tag}"
+                    gizmo-title="${item.title}"
+                    gizmo-description="${description}"
+                    gizmo-icon="${item.icon}"
+                  ></hax-element-demo>
+                `
+              : ''}
+          </simple-popover-selection>
+        </td>
+      </tr>
     `
   }
 
+  _isBlockChecked(tag) {
+    if (!tag) {
+      return false
+    }
+    if (HAXStore.requiredPrimitives.has(tag)) {
+      return true
+    }
+    return this.allowedBlocks.has(tag)
+  }
+
+  _blockInputId(tag) {
+    const safeTag = (tag || '').replace(/[^a-zA-Z0-9-_]/g, '-')
+    return `allowed-block-${safeTag}`
+  }
+
+  _getBlockDescription(item) {
+    if (item && item.description) {
+      return item.description
+    }
+    if (item && item.meta && item.meta.description) {
+      return item.meta.description
+    }
+    return this.t.noDescription
+  }
+
+  _hoverForPreviewChange(e) {
+    const popover = e && e.detail ? e.detail : null
+    if (!popover || !popover.opened) {
+      return
+    }
+    this.activePreview = popover.dataset.index
+    setTimeout(() => {
+      if (popover && typeof popover.openedChanged === 'function') {
+        popover.openedChanged(true)
+      }
+    }, 10)
+  }
   _checkboxChanged(e) {
     const input = e.currentTarget
     if (!input || input.type !== 'checkbox') return
@@ -421,6 +644,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     // Required primitives are locked on; ignore toggles.
     if (HAXStore.requiredPrimitives.has(tag)) return
 
+    this.allowedBlocksDefined = true
     if (e.target.checked) {
       this.allowedBlocks.add(tag)
     } else {
@@ -434,65 +658,64 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
   }
 
   _selectAll(e) {
-    const category = e && e.target ? e.target.getAttribute('data-category') : null
-    switch (category) {
-      case 'all-blocks': {
-        const blocks = Array.isArray(this.haxBlocks) ? this.haxBlocks : []
-        this.allowedBlocks = new Set(
-          blocks
-            .filter((item) => !HAXStore.requiredPrimitives.has(item.tag))
-            .map((item) => item.tag),
-        )
-        const container = this.shadowRoot.querySelector('.blocks-list')
-        const checkboxes = container.querySelectorAll('input[type="checkbox"]')
-        checkboxes.forEach((item) => {
-          item.checked = true
-        })
-        break
-      }
-      // Any sub-category of blocks (i.e., Writing, Instructional, etc.)
-      default: {
-        const container = this.shadowRoot.querySelector(`.${category}-container`)
-        const checkboxes = container.querySelectorAll('input[type="checkbox"]')
-        checkboxes.forEach((item) => {
-          if (HAXStore.requiredPrimitives.has(item.dataset.tag)) return
+    const category = e && e.currentTarget ? e.currentTarget.dataset.category : null
+    const blocks = Array.isArray(this.haxBlocks) ? this.haxBlocks : []
+    this.allowedBlocksDefined = true
 
-          this.allowedBlocks.add(item.dataset.tag)
-          item.checked = true
-        })
-        this.requestUpdate()
-        break
-      }
+    if (category === 'all-blocks') {
+      this.allowedBlocks = new Set(
+        blocks
+          .filter((item) => !HAXStore.requiredPrimitives.has(item.tag))
+          .map((item) => item.tag),
+      )
+      this.requestUpdate()
+      return
     }
+    blocks
+      .filter((item) => this._categoryKey(this._blockCategory(item)) === category)
+      .forEach((item) => {
+        if (!HAXStore.requiredPrimitives.has(item.tag)) {
+          this.allowedBlocks.add(item.tag)
+        }
+      })
+    this.requestUpdate()
   }
 
   _deselectAll(e) {
-    const category = e && e.target ? e.target.getAttribute('data-category') : null
-    switch (category) {
-      case 'all-blocks': {
-        this.allowedBlocks = new Set([])
-        const container = this.shadowRoot.querySelector('.blocks-list')
-        const checkboxes = container.querySelectorAll('input[type="checkbox"]')
-        checkboxes.forEach((item) => {
-          if (HAXStore.requiredPrimitives.has(item.dataset.tag)) return
-          item.checked = false
-        })
-        break
-      }
-      // Any sub-category of blocks (i.e., Writing, Instructional, etc.)
-      default: {
-        const container = this.shadowRoot.querySelector(`.${category}-container`)
-        const checkboxes = container.querySelectorAll('input[type="checkbox"]')
-        checkboxes.forEach((item) => {
-          if (HAXStore.requiredPrimitives.has(item.dataset.tag)) return
+    const category = e && e.currentTarget ? e.currentTarget.dataset.category : null
+    const blocks = Array.isArray(this.haxBlocks) ? this.haxBlocks : []
+    this.allowedBlocksDefined = true
 
-          this.allowedBlocks.delete(item.dataset.tag)
-          item.checked = false
-        })
-        this.requestUpdate()
-        break
-      }
+    if (category === 'all-blocks') {
+      this.allowedBlocks = new Set([])
+      this.requestUpdate()
+      return
     }
+    blocks
+      .filter((item) => this._categoryKey(this._blockCategory(item)) === category)
+      .forEach((item) => {
+        if (!HAXStore.requiredPrimitives.has(item.tag)) {
+          this.allowedBlocks.delete(item.tag)
+        }
+      })
+    this.requestUpdate()
+  }
+
+  _categoryKey(category) {
+    return (category || 'other').toLowerCase().replace(/[^a-z0-9]+/g, '-')
+  }
+
+  _blockCategory(item) {
+    if (item && item.meta && item.meta.inlineOnly) {
+      return 'Inline'
+    }
+    if (Array.isArray(item.tags) && item.tags.length > 0) {
+      return item.tags[0]
+    }
+    if (HAXStore.requiredPrimitives.has(item.tag)) {
+      return 'Text'
+    }
+    return 'Other'
   }
 
   _compareCategories(a, b) {
@@ -529,15 +752,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           return
         }
       }
-      const required = HAXStore.requiredPrimitives.has(item.tag)
-      let category = 'Other'
-      if (Array.isArray(item.tags) && item.tags.length > 0) {
-        category = item.tags[0]
-      }
-      // Ensure required text primitives show up in Writing group even if missing tags
-      if (required && category === 'Other') {
-        category = 'Text'
-      }
+      const category = this._blockCategory(item)
 
       if (!groupMap[category]) {
         groupMap[category] = []
@@ -569,6 +784,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           composed: true,
           cancelable: true,
           detail: {
+            allowedBlocksDefined: this.allowedBlocksDefined,
             allowedBlocks: this._allowedBlocksForSave(),
           },
         }),

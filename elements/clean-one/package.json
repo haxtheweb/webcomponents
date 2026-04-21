@@ -52,7 +52,7 @@
     "@haxtheweb/simple-icon": "^25.0.0",
     "@haxtheweb/simple-popover": "^25.0.0",
     "@haxtheweb/utils": "^25.0.0",
-    "lit": "3.3.1",
+    "lit": "3.3.2",
     "mobx": "6.13.7"
   },
   "devDependencies": {

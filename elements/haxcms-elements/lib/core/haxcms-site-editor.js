@@ -1627,17 +1627,20 @@ class HAXCMSSiteEditor extends LitElement {
       return;
     }
     const detail = e && e.detail ? JSON.parse(JSON.stringify(e.detail)) : {};
+    const allowedBlocksDefined = detail.allowedBlocksDefined === true;
     const allowedBlocks = Array.isArray(detail.allowedBlocks)
       ? detail.allowedBlocks
       : [];
+    const platform = {};
+    if (allowedBlocksDefined) {
+      platform.allowedBlocks = allowedBlocks;
+    }
     this.querySelector("#allowedblocksajax").body = {
       jwt: this.jwt,
       site: {
         name: this.manifest.metadata.site.name,
       },
-      platform: {
-        allowedBlocks: allowedBlocks,
-      },
+      platform: platform,
     };
     this.setProcessingVisual();
     this.querySelector("#allowedblocksajax").generateRequest();

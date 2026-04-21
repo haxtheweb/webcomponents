@@ -30,7 +30,7 @@
   "dependencies": {
     "@haxtheweb/d-d-d": "^25.0.0",
     "@haxtheweb/i18n-manager": "^25.0.0",
-    "lit": "3.3.1"
+    "lit": "3.3.2"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.16.4",

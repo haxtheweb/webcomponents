@@ -32,6 +32,13 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           display: block;
           font-family: var(--ddd-font-navigation);
           --outline-designer-zoom: 1;
+          --outline-designer-control-slot-size: calc(
+            var(--ddd-icon-xs) + (2 * var(--ddd-spacing-1))
+          );
+          --outline-designer-indent-step: var(
+            --outline-designer-control-slot-size
+          );
+          margin-bottom: var(--ddd-spacing-10);
         }
         :host(.zoom-out-1) {
           --outline-designer-zoom: 0.85;
@@ -49,6 +56,9 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             var(--ddd-spacing-1) * var(--outline-designer-zoom)
           );
         }
+        .controls simple-toolbar-button.control[disabled] {
+          --simple-toolbar-button-disabled-opacity: 0.3;
+        }
         simple-icon-button[hidden] {
           visibility: hidden !important;
           opacity: 0;
@@ -61,12 +71,16 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         .controls {
           position: sticky;
           top: -16px;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
           background-color: light-dark(
-            var(--ddd-accent-6),
+            var(--ddd-theme-default-white),
             var(--ddd-primary-4)
           );
           z-index: 1;
-          padding: var(--ddd-spacing-4) 0 var(--ddd-spacing-2) 0;
+          padding: var(--ddd-spacing-2) 0;
           border-bottom: var(--ddd-border-xs);
           border-color: light-dark(
             var(--ddd-theme-default-limestoneLight),
@@ -74,28 +88,34 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           );
         }
         .controls simple-toolbar-button.control {
+          margin: 0;
+          --simple-toolbar-button-height: var(--ddd-icon-md);
+          --simple-toolbar-button-min-width: var(--ddd-icon-md);
           --simple-toolbar-button-border-width: 1px;
           --simple-toolbar-border-color: light-dark(
-            var(--ddd-primary-4),
-            var(--ddd-accent-6)
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-accent-5)
           );
           --simple-toolbar-border-radius: var(--ddd-radius-md);
           border-radius: var(--ddd-radius-md);
-          --simple-toolbar-button-padding: var(--ddd-spacing-1);
+          --simple-toolbar-button-padding: 3px 6px;
           background-color: light-dark(
             var(--ddd-accent-6),
             var(--ddd-primary-3)
           );
-          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-accent-6)
+          );
         }
         .controls simple-toolbar-button.control:hover {
           background-color: light-dark(
             var(--ddd-theme-default-limestoneMaxLight),
-            black
+            var(--ddd-primary-5)
           );
           --simple-toolbar-border-color: light-dark(
-            black,
-            var(--ddd-theme-default-limestoneMaxLight)
+            var(--ddd-primary-1),
+            var(--ddd-accent-5)
           );
         }
         simple-popover {
@@ -372,6 +392,78 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           transform: scale(1.02);
           z-index: 1000;
         }
+        .item-leading-operations {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          margin-right: var(--ddd-spacing-1);
+          flex-shrink: 0;
+        }
+        .item-leading-operations simple-toolbar-button,
+        .item-leading-operations simple-icon-button-lite {
+          margin: 0;
+        }
+        .item-leading-operations .actions-menu-button {
+          width: var(--outline-designer-control-slot-size);
+          height: var(--outline-designer-control-slot-size);
+          --simple-toolbar-button-height: var(--outline-designer-control-slot-size);
+          --simple-toolbar-button-min-width: var(--outline-designer-control-slot-size);
+          --simple-toolbar-button-padding: 0;
+          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--ddd-icon-xs);
+          --simple-toolbar-button-border-width: 0;
+          --simple-toolbar-border-radius: var(--ddd-radius-xs);
+          --simple-toolbar-border-color: transparent;
+          background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-3)
+          );
+          color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
+        }
+        .item-leading-operations .actions-menu-button:hover {
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-primary-5)
+          );
+          --simple-toolbar-border-color: transparent;
+        }
+        .item-leading-operations simple-icon-button-lite,
+        .collapse-btn,
+        .content-toggle-btn {
+          width: var(--outline-designer-control-slot-size);
+          height: var(--outline-designer-control-slot-size);
+          --simple-icon-height: var(--ddd-icon-xs);
+          --simple-icon-width: var(--ddd-icon-xs);
+          --simple-icon-button-padding: var(--ddd-spacing-1);
+          --simple-icon-button-border-radius: var(--ddd-radius-xs);
+          --simple-icon-button-border: var(--ddd-border-xs) solid
+            light-dark(var(--ddd-primary-5), var(--ddd-accent-5));
+          --simple-icon-button-focus-border: var(--ddd-border-xs) solid
+            light-dark(var(--ddd-primary-1), var(--ddd-accent-5));
+          --simple-icon-button-background-color: light-dark(
+            var(--ddd-accent-6),
+            var(--ddd-primary-3)
+          );
+          --simple-icon-button-focus-background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-primary-5)
+          );
+        }
+        .content-toggle-btn {
+          margin-right: var(--ddd-spacing-1);
+        }
+        .collapse-slot {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: var(--outline-designer-control-slot-size);
+          height: var(--outline-designer-control-slot-size);
+          margin-right: var(--ddd-spacing-1);
+          flex: 0 0 auto;
+        }
+        .collapse-btn {
+          margin: 0;
+        }
         /* Menu button styling */
         .actions-menu {
           margin-left: var(--ddd-spacing-2);
@@ -433,7 +525,7 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           cursor: text;
           font-size: 14px;
           font-weight: bold;
-          min-width: 200px;
+          min-width: 50px;
           margin-right: 8px;
           max-width: 40%;
           line-height: 1.2;
@@ -460,83 +552,142 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           position: relative;
         }
         .indent-1 {
-          padding-left: calc(16px * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-2 {
-          padding-left: calc(16px * 2 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 2 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-3 {
-          padding-left: calc(16px * 3 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 3 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-4 {
-          padding-left: calc(16px * 4 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 4 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-5 {
-          padding-left: calc(16px * 5 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 5 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-6 {
-          padding-left: calc(16px * 6 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 6 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-7 {
-          padding-left: calc(16px * 7 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 7 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-8 {
-          padding-left: calc(16px * 8 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 8 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-9 {
-          padding-left: calc(16px * 9 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 9 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-10 {
-          padding-left: calc(16px * 10 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 10 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-11 {
-          padding-left: calc(16px * 11 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 11 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-12 {
-          padding-left: calc(16px * 12 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 12 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-13 {
-          padding-left: calc(16px * 13 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 13 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-14 {
-          padding-left: calc(16px * 14 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 14 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-15 {
-          padding-left: calc(16px * 15 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 15 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-16 {
-          padding-left: calc(16px * 16 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 16 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-17 {
-          padding-left: calc(16px * 17 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 17 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-18 {
-          padding-left: calc(16px * 18 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 18 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-19 {
-          padding-left: calc(16px * 19 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 19 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .indent-20 {
-          padding-left: calc(16px * 20 * var(--outline-designer-zoom));
+          padding-left: calc(
+            var(--outline-designer-indent-step) * 20 *
+              var(--outline-designer-zoom)
+          );
           position: relative;
         }
         .sr-only {
@@ -585,25 +736,24 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         }
         /* Drag preview styles */
         .drag-preview {
-          position: absolute;
-          top: -1000px;
-          left: -1000px;
-          padding: 8px 12px;
-          background: light-dark(var(--ddd-accent-6), var(--ddd-primary-3));
-          border: 2px solid
-            light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
-          border-radius: var(--ddd-radius-sm);
-          font-weight: var(--ddd-font-weight-bold);
-          box-shadow: var(--ddd-boxShadow-lg);
-          z-index: 10000;
+          position: fixed;
+          top: -10000px;
+          left: -10000px;
+          margin: 0 !important;
+          transform: none !important;
           pointer-events: none;
-          display: flex;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
+          z-index: 10000;
+          box-shadow: var(--ddd-boxShadow-lg);
+        }
+        .drag-preview .item-leading-operations {
+          transform: none;
+        }
+        .drag-preview simple-context-menu {
+          display: none;
         }
         /* Stacked effect for items with children */
         .drag-preview.has-children {
-          position: relative;
+          position: fixed;
         }
         .drag-preview.has-children::before,
         .drag-preview.has-children::after {
@@ -821,16 +971,6 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
               label="Delete Selected (${this.selectedPages.length})"
             ></simple-toolbar-button>`
           : ``}
-        ${this.hasDeletedItems()
-          ? html`<simple-toolbar-button
-              icon="delete"
-              @click="${this.toggleDelete}"
-              class="control"
-              label="${!this.hideDelete
-                ? "Hide Deleted"
-                : "Show Deleted"}"
-            ></simple-toolbar-button>`
-          : ``}
         <simple-toolbar-button
           icon="zoom-in"
           @click="${this.zoomIn}"
@@ -845,6 +985,16 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
           ?disabled="${this.zoomLevel <= -3}"
           label="Zoom Out"
         ></simple-toolbar-button>
+        ${this.hasDeletedItems()
+          ? html`<simple-toolbar-button
+              icon="delete"
+              @click="${this.toggleDelete}"
+              class="control"
+              label="${!this.hideDelete
+                ? "Hide Deleted"
+                : "Show Deleted"}"
+            ></simple-toolbar-button>`
+          : ``}
       </div>
       <ul
         id="list"
@@ -1071,41 +1221,54 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         ?data-about-to-delete="${item.delete}"
         ?hidden="${this.hideDelete && item.delete}"
       >
-        <simple-toolbar-button
-          class="actions-menu-button"
-          icon="icons:more-vert"
-          label="${this.t.pageActions}"
-          @click="${(e) => this._toggleActionsMenu(e, index)}"
-        ></simple-toolbar-button>
+        <div class="item-leading-operations">
+          ${this.hasChildren(item.id)
+            ? html`<simple-icon-button-lite
+                ?disabled="${this.isLocked(index)}"
+                class="collapse-btn collapse-slot"
+                icon="${this.isCollapsed(item.id)
+                  ? `hardware:keyboard-arrow-right`
+                  : `hardware:keyboard-arrow-down`}"
+                label="${this.isCollapsed(item.id)
+                  ? "Expand children"
+                  : "Collapse children"}"
+                title="${this.isCollapsed(item.id)
+                  ? "Expand children"
+                  : "Collapse children"}"
+                @click="${this.collapseExpand}"
+              ></simple-icon-button-lite>`
+            : html`<span class="collapse-spacer collapse-slot" aria-hidden="true"></span>`}
+          <simple-icon-button-lite
+            ?disabled="${this.isLocked(index)}"
+            @dragstart="${this._dragStart}"
+            @dragend="${this._dragEnd}"
+            @drag="${this._onDrag}"
+            @keydown="${this._handleDragHandleKeydown}"
+            draggable="${!this.isLocked(index)}"
+            icon="icons:reorder"
+            class="drag-handle ${this._dragHandleActive === item.id
+              ? "drag-handle-active"
+              : ""}"
+            label="Drag to reorder"
+            title="Drag to reorder or press Enter to activate keyboard controls"
+            data-drag-handle-id="${item.id}"
+          ></simple-icon-button-lite>
+          <simple-toolbar-button
+            class="actions-menu-button"
+            icon="icons:more-vert"
+            label="${this.t.pageActions}"
+            @click="${(e) => this._toggleActionsMenu(e, index)}"
+          ></simple-toolbar-button>
+        </div>
         <simple-icon-button-lite
           ?disabled="${this.isLocked(index)}"
-          class="collapse-btn"
-          icon="${this.isCollapsed(item.id)
-            ? `hardware:keyboard-arrow-right`
-            : `hardware:keyboard-arrow-down`}"
-          @click="${this.collapseExpand}"
-        ></simple-icon-button-lite>
-        <simple-icon-button-lite
-          ?disabled="${this.isLocked(index)}"
-          @dragstart="${this._dragStart}"
-          @dragend="${this._dragEnd}"
-          @drag="${this._onDrag}"
-          @keydown="${this._handleDragHandleKeydown}"
-          draggable="${!this.isLocked(index)}"
-          icon="icons:reorder"
-          class="drag-handle ${this._dragHandleActive === item.id
-            ? "drag-handle-active"
-            : ""}"
-          title="Drag to reorder or press Enter to activate keyboard controls"
-          data-drag-handle-id="${item.id}"
-        ></simple-icon-button-lite>
-        <simple-icon-button-lite
-          ?disabled="${this.isLocked(index)}"
+          class="content-toggle-btn"
           ?hidden="${this.hideContentOps ||
           item.contents === "" ||
           !item.contents}"
           icon="editor:insert-drive-file"
           @click="${this.toggleContent}"
+          label="Content structure"
           title="Content structure"
         >
           ${item.new
@@ -2119,36 +2282,31 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     const item = this.items.find((i) => i.id === itemId);
 
     if (!item) return null;
+    const preview = target.cloneNode(true);
+    preview.classList.add("drag-preview");
+    preview.classList.remove(
+      "active-page",
+      "selected-page",
+      "drop-above-target",
+      "drop-below-target",
+    );
+    preview.removeAttribute("tabindex");
+    preview.removeAttribute("data-dragging");
+    preview.setAttribute("aria-hidden", "true");
+    preview.setAttribute("inert", "");
 
-    const preview = globalThis.document.createElement("div");
-    preview.className = "drag-preview";
+    const rect = target.getBoundingClientRect();
+    preview.style.width = `${rect.width}px`;
+    preview.style.height = `${rect.height}px`;
 
-    // Count all descendants recursively
-    const totalDescendants = this._countAllDescendants(itemId);
-
-    // Add stacked class if has children
-    if (totalDescendants > 0) {
-      preview.classList.add("has-children");
+    const contextMenu = preview.querySelector("simple-context-menu");
+    if (contextMenu) {
+      contextMenu.remove();
     }
 
-    // Create icon
-    const icon = globalThis.document.createElement("simple-icon-lite");
-    icon.setAttribute("icon", "icons:reorder");
-
-    // Create title span
-    const title = globalThis.document.createElement("span");
-    title.textContent =
-      item.title.length > 40 ? item.title.substring(0, 40) + "..." : item.title;
-
-    preview.appendChild(icon);
-    preview.appendChild(title);
-
-    // Add descendant count if applicable
+    const totalDescendants = this._countAllDescendants(itemId);
     if (totalDescendants > 0) {
-      const childCountSpan = globalThis.document.createElement("span");
-      childCountSpan.className = "drag-preview-children";
-      childCountSpan.textContent = `(+${totalDescendants} page${totalDescendants !== 1 ? "s" : ""})`;
-      preview.appendChild(childCountSpan);
+      preview.classList.add("has-children");
     }
 
     return preview;
@@ -2168,21 +2326,23 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
 
     return count;
   }
+  _targetFromPoint(clientX, clientY) {
+    let elementAtPoint = null;
+    if (this.shadowRoot && this.shadowRoot.elementFromPoint) {
+      elementAtPoint = this.shadowRoot.elementFromPoint(clientX, clientY);
+    }
+    if (!elementAtPoint) {
+      elementAtPoint = globalThis.document.elementFromPoint(clientX, clientY);
+    }
+    if (!elementAtPoint || !elementAtPoint.closest) {
+      return null;
+    }
+    return elementAtPoint.closest("[data-item-id]");
+  }
   _onDrag(e) {
     // Continuously update drag position for better feedback
     if (this._targetDrag && e.clientX && e.clientY) {
-      // Trigger dragenter to update drop indicators
-      const elementAtPoint = globalThis.document.elementFromPoint(
-        e.clientX,
-        e.clientY,
-      );
-      if (elementAtPoint) {
-        const target = elementAtPoint.closest("[data-item-id]");
-        if (target && target !== this._lastDragTarget) {
-          this._lastDragTarget = target;
-          this._dragEnter(e);
-        }
-      }
+      this._dragEnter(e);
     }
   }
 
@@ -2204,7 +2364,22 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
    * Enter an element, meaning we've over it while dragging
    */
   _dragEnter(e) {
-    const target = e.target.closest("[data-item-id]");
+    let target = null;
+    if (e && e.clientX && e.clientY) {
+      target = this._targetFromPoint(e.clientX, e.clientY);
+    }
+    if (
+      !target &&
+      e &&
+      e.currentTarget &&
+      e.currentTarget.hasAttribute &&
+      e.currentTarget.hasAttribute("data-item-id")
+    ) {
+      target = e.currentTarget;
+    }
+    if (!target && e && e.target && e.target.closest) {
+      target = e.target.closest("[data-item-id]");
+    }
     if (!target || !this._targetDrag) return;
 
     // Don't allow dropping on itself
@@ -2217,7 +2392,6 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
     const y = e.clientY - rect.top;
     const x = e.clientX - rect.left;
     const height = rect.height;
-    const width = rect.width;
 
     // Determine if indenting based on horizontal position
     // More than 40px from left = potential indent/child drop
@@ -2291,9 +2465,6 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         (item) => item.id === target.getAttribute("data-item-id"),
       );
       if (targetItem) {
-        const dragItem = this.items.find(
-          (item) => item.id === this._targetDrag.getAttribute("data-item-id"),
-        );
         let announcement = "";
         if (dropZone === "above") {
           announcement = `Drop above ${targetItem.title}`;
@@ -2415,14 +2586,22 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
       // Create custom drag preview
       const dragPreview = this._createDragPreview(target);
       if (dragPreview) {
-        globalThis.document.body.appendChild(dragPreview);
+        if (this.shadowRoot) {
+          this.shadowRoot.appendChild(dragPreview);
+        } else {
+          globalThis.document.body.appendChild(dragPreview);
+        }
         this._dragPreviewElement = dragPreview;
 
         if (e.dataTransfer) {
           e.dataTransfer.effectAllowed = "move";
           e.dataTransfer.dropEffect = "move";
           // Use custom preview as drag image
-          e.dataTransfer.setDragImage(dragPreview, 20, 20);
+          e.dataTransfer.setDragImage(
+            dragPreview,
+            24,
+            target.getBoundingClientRect().height / 2,
+          );
         }
       }
 
