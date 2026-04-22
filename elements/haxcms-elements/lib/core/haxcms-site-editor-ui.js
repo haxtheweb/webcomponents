@@ -6058,7 +6058,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             titleIcon: "lrn:palette",
             breadcrumbs: breadcrumbs,
             styles: {
-              "--simple-modal-titlebar-background": "black",
+              "--simple-modal-titlebar-background":
+                "light-dark(var(--ddd-theme-default-navy), var(--ddd-theme-default-coalyGray))",
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
               "--simple-modal-z-index": "100000000",
               "--simple-modal-titlebar-height": "80px",

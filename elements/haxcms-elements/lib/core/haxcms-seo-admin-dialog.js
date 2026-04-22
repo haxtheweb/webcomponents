@@ -63,20 +63,29 @@ class HAXCMSSEOAdminDialog extends DDD {
           );
           display: flex;
           flex-direction: column;
+          box-sizing: border-box;
           min-width: 70vw;
           min-height: min(60vh, var(--haxcms-admin-panel-height));
           height: var(--haxcms-admin-panel-height);
           max-height: var(--haxcms-admin-panel-height);
           overflow: hidden;
-          font-family: var(--ddd-font-navigation);
+          font-family: var(--ddd-font-primary);
+          padding: var(--ddd-spacing-4);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          flex-shrink: 0;
         }
         .panel-shell {
           display: flex;
           flex-direction: column;
           flex: 1;
           min-height: 0;
-          padding: var(--ddd-spacing-4);
-          gap: var(--ddd-spacing-3);
         }
         .panel-scroll {
           flex: 1;
@@ -86,40 +95,35 @@ class HAXCMSSEOAdminDialog extends DDD {
           padding-right: var(--ddd-spacing-1);
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-2);
+          gap: var(--ddd-spacing-4);
+        }
+        details {
+          max-width: 100%;
+          min-width: 100%;
+          box-sizing: border-box;
         }
         .group {
-          display: inline-table;
           width: 100%;
-          min-width: 0;
-          border: var(--ddd-border-sm) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-theme-default-slateGray)
-            );
-          border-radius: var(--ddd-radius-sm);
+          border: var(--ddd-border-sm);
+          border-radius: var(--ddd-radius-md);
           background: light-dark(
             var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
+            rgba(0, 0, 0, 0.15)
           );
-          overflow: hidden;
+          padding: var(--ddd-spacing-4);
+          box-sizing: border-box;
         }
         .group-summary {
           list-style: none;
           cursor: pointer;
-          padding: var(--ddd-spacing-3);
           display: flex;
           align-items: center;
           justify-content: space-between;
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-medium);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
+          gap: var(--ddd-spacing-3);
+          margin-bottom: 0;
         }
-        details {
-          max-width: 100%;
+        .group[open] .group-summary {
+          margin-bottom: var(--ddd-spacing-3);
         }
         .group-summary::-webkit-details-marker {
           display: none;
@@ -139,9 +143,13 @@ class HAXCMSSEOAdminDialog extends DDD {
           --simple-icon-width: var(--ddd-icon-3xs, 20px);
           --simple-icon-height: var(--ddd-icon-3xs, 20px);
         }
+        .group-summary h3 {
+          margin: 0;
+          font-size: var(--ddd-font-size-s);
+          font-weight: var(--ddd-font-weight-bold);
+        }
         .group-body {
-          padding: var(--ddd-spacing-3);
-          border-top: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
+          padding: 0;
         }
         .status,
         .error {
@@ -151,7 +159,11 @@ class HAXCMSSEOAdminDialog extends DDD {
           font-size: var(--ddd-font-size-4xs);
         }
         .status {
-          border: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
+          border: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
           background: light-dark(
             var(--ddd-theme-default-athertonViolet),
             var(--ddd-theme-default-coalyGray)
@@ -174,27 +186,39 @@ class HAXCMSSEOAdminDialog extends DDD {
         }
         .actions {
           display: flex;
-          justify-content: flex-start;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
-          border-top: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
-          padding-top: var(--ddd-spacing-3);
+          justify-content: flex-end;
+          gap: var(--ddd-spacing-3);
+          padding-top: var(--ddd-spacing-4);
+          margin-top: var(--ddd-spacing-4);
+          border-top: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          position: sticky;
+          bottom: 0;
+          z-index: 2;
+          flex-shrink: 0;
         }
-        .hax-modal-btn {
+        button.action {
+          font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-s);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
+          border-radius: var(--ddd-radius-sm);
+          border: var(--ddd-border-xs);
+          cursor: pointer;
           color: var(--ddd-theme-default-white);
           background-color: var(--ddd-theme-default-skyBlue);
-          border: var(--ddd-border-sm) solid var(--ddd-theme-default-navy);
-          border-radius: var(--ddd-radius-sm);
-          font-family: var(--ddd-font-navigation);
-          cursor: pointer;
         }
-        .hax-modal-btn:focus-visible {
-          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-keystoneYellow);
-          outline-offset: 2px;
+        button.action:focus,
+        button.action:hover {
+          outline: 2px solid var(--ddd-theme-default-keystoneYellow);
         }
-        .hax-modal-btn[disabled] {
+        button.action[disabled] {
           opacity: 0.6;
           cursor: not-allowed;
         }
@@ -203,6 +227,25 @@ class HAXCMSSEOAdminDialog extends DDD {
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
           );
+          --simple-fields-background-color: transparent;
+          --simple-fields-button-background-color: transparent;
+          --simple-icon-width: var(--ddd-icon-xs);
+          --simple-icon-height: var(--ddd-icon-xs);
+        }
+        @media screen and (max-width: 900px) {
+          :host {
+            min-width: 0;
+            width: 100%;
+            padding: var(--ddd-spacing-3);
+          }
+          .group {
+            padding: var(--ddd-spacing-3);
+          }
+          .actions {
+            padding-bottom: calc(
+              var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
+            );
+          }
         }
       `,
     ];
@@ -529,7 +572,7 @@ class HAXCMSSEOAdminDialog extends DDD {
                           icon="${group.icon}"
                           aria-hidden="true"
                         ></simple-icon-lite>
-                        <span>${group.label}</span>
+                        <h3>${group.label}</h3>
                       </span>
                     </summary>
                     <div class="group-body">
@@ -549,7 +592,7 @@ class HAXCMSSEOAdminDialog extends DDD {
         </div>
         <div class="actions">
           <button
-            class="hax-modal-btn"
+            class="action"
             @click="${this._saveSEOSettingsTap}"
             ?disabled="${this.groups.length === 0}"
           >

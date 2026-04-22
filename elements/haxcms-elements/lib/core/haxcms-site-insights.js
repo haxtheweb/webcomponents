@@ -4,8 +4,6 @@ import { LitElement, html, css } from "lit";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
-import "@haxtheweb/a11y-collapse/a11y-collapse.js";
-import "@haxtheweb/a11y-collapse/lib/a11y-collapse-group.js";
 import "@haxtheweb/accent-card/accent-card.js";
 import "@haxtheweb/retro-card/retro-card.js";
 import "@haxtheweb/simple-img/simple-img.js";
@@ -41,16 +39,29 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           );
           display: flex;
           flex-direction: column;
+          box-sizing: border-box;
+          font-family: var(--ddd-font-primary);
           min-height: min(60vh, var(--haxcms-admin-panel-height));
           height: var(--haxcms-admin-panel-height);
           max-height: var(--haxcms-admin-panel-height);
           overflow: hidden;
+          padding: var(--ddd-spacing-4);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          flex-shrink: 0;
         }
         .panel-shell {
           display: flex;
           flex-direction: column;
           flex: 1;
           min-height: 0;
+          gap: var(--ddd-spacing-2);
         }
         .panel-scroll {
           display: flex;
@@ -87,7 +98,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           border: var(--ddd-border-xs);
           border-color: light-dark(
             var(--ddd-theme-default-limestoneGray),
-            var(--ddd-primary-5)
+            var(--ddd-theme-default-white)
           );
           border-radius: var(--ddd-radius-xs);
           background-color: light-dark(
@@ -129,59 +140,183 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           margin: 0;
           padding: 0;
         }
-        a11y-collapse-group {
+        .group-set {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-4);
           flex: 1;
           min-height: 0;
           overflow-y: auto;
           overflow-x: hidden;
           padding-right: var(--ddd-spacing-1);
-          --a11y-collapse-group-margin: 0;
-          --a11y-collapse-margin: 0;
         }
-        a11y-collapse {
-          --a11y-collapse-margin: 0 0 var(--ddd-spacing-2) 0;
-          --a11y-collapse-border: var(--ddd-border-xs);
-          --a11y-collapse-border-color: var(--ddd-theme-default-navy);
-          --a11y-collapse-horizontal-padding: var(--ddd-spacing-3);
-          --a11y-collapse-vertical-padding: var(--ddd-spacing-3);
-          --a11y-collapse-heading-font-weight: var(--ddd-font-weight-medium);
-          border-radius: var(--ddd-radius-sm);
-          overflow: hidden;
+        details {
+          max-width: 100%;
+          min-width: 100%;
+          box-sizing: border-box;
         }
-        a11y-collapse::part(heading-id) {
-          font-size: var(--ddd-font-size-s);
-          font-family: var(--ddd-font-navigation);
-          color: var(--ddd-theme-default-white);
-          background-color: var(--ddd-theme-default-navy);
+        .group {
+          margin: 0;
+          border: var(--ddd-border-sm);
+          border-radius: var(--ddd-radius-md);
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            rgba(0, 0, 0, 0.15)
+          );
+          padding: var(--ddd-spacing-4);
         }
-        a11y-collapse::part(icon) {
-          color: var(--ddd-theme-default-white);
+        .group-summary {
+          list-style: none;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+          gap: var(--ddd-spacing-3);
+          margin-bottom: 0;
+          font-size: var(--ddd-theme-h4-font-size);
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(
+              --lowContrast-override,
+              var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))
+            ),
+            var(
+              --lowContrast-override,
+              var(--ddd-theme-primary, var(--ddd-theme-default-linkLight))
+            )
+          );
+          text-wrap: wrap;
+          padding: var(--ddd-spacing-5) var(--ddd-spacing-4);
+          user-select: none;
+          transition: all 0.3s ease-in-out;
         }
-        .collapse-heading {
+        .group[open] .group-summary {
+          margin-bottom: var(--ddd-spacing-3);
+          filter: saturate(1.5);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+        }
+        .group-summary::-webkit-details-marker {
+          display: none;
+        }
+        .group-summary::marker {
+          content: "";
+        }
+        .group-summary::after {
+          content: "+";
+          margin-left: auto;
+          text-align: right;
+          font-weight: var(--ddd-font-weight-regular);
+          font-size: var(--ddd-font-size-m);
+          line-height: 1;
+        }
+        .group[open] .group-summary::after {
+          content: "-";
+        }
+        .group summary:focus,
+        .group summary:hover {
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-nittanyNavy)
+          );
+        }
+        .group-summary:focus-visible {
+          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-skyBlue);
+          outline-offset: 2px;
+          border-radius: var(--ddd-radius-xs);
+        }
+        .summary-leading {
           display: inline-flex;
           align-items: center;
           gap: var(--ddd-spacing-2);
         }
-        .collapse-heading simple-icon-lite {
+        .summary-toggle-icon {
+          display: none;
+          align-items: center;
+        }
+        .summary-toggle-icon simple-icon-lite {
           --simple-icon-color: currentColor;
           --simple-icon-width: var(--ddd-icon-3xs, 20px);
           --simple-icon-height: var(--ddd-icon-3xs, 20px);
         }
-        .reports,
-        .tab-content-wrapper {
-          padding: var(--ddd-spacing-4);
+        .group .group-summary .collapse-icon-expanded {
+          display: none;
         }
-        a11y-collapse loading-indicator {
+        .group[open] .group-summary .collapse-icon-collapsed {
+          display: none;
+        }
+        .group[open] .group-summary .collapse-icon-expanded {
+          display: inline-flex;
+        }
+        .group-body {
+          padding: 0;
+          border-top: 0;
+          background: transparent;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+        }
+        h2 {
+          margin: 0 0 var(--ddd-spacing-4) 0;
+          font-size: var(--ddd-font-size-m);
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .summary-leading simple-icon-lite {
+          --simple-icon-color: currentColor;
+          --simple-icon-width: var(--ddd-icon-3xs, 20px);
+          --simple-icon-height: var(--ddd-icon-3xs, 20px);
+        }
+        .group-summary h3 {
+          margin: 0;
+          font-size: var(--ddd-font-size-s);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        .group-body a {
+          color: light-dark(
+            var(--ddd-theme-default-navy),
+            var(--ddd-theme-default-skyBlue)
+          );
+        }
+        .group-body a:hover,
+        .group-body a:focus,
+        .group-body a:active {
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .group-body a:focus-visible {
+          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-keystoneYellow);
+          outline-offset: 2px;
+          border-radius: var(--ddd-radius-xs);
+        }
+        .group-body loading-indicator {
           --loading-indicator-color: var(--ddd-theme-default-skyBlue);
+        }
+        simple-fields {
+          --simple-fields-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          --simple-icon-width: var(--ddd-icon-xs);
+          --simple-icon-height: var(--ddd-icon-xs);
         }
         simple-fields-field[type="checkbox"],
         simple-fields-field[type="select"] {
           display: inline-block;
-          margin: 16px;
+          margin: var(--ddd-spacing-2) var(--ddd-spacing-3) var(--ddd-spacing-2)
+            0;
         }
         simple-icon {
-          --simple-icon-height: 24px;
-          --simple-icon-width: 24px;
+          --simple-icon-height: var(--ddd-icon-4xs, 24px);
+          --simple-icon-width: var(--ddd-icon-4xs, 24px);
           padding: 2px;
         }
         accent-card {
@@ -195,15 +330,21 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         }
         accent-card .title-link {
           text-decoration: none;
-          font-family: "Roboto Mono", Consolas, Monospace;
-          font-size: 20px;
-          color: blue;
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-s);
+          color: light-dark(
+            var(--ddd-theme-default-navy),
+            var(--ddd-theme-default-skyBlue)
+          );
         }
         accent-card .title-link:hover,
         accent-card .title-link:focus,
         accent-card .title-link:active {
           text-decoration: underline;
-          color: black;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
         }
         accent-card .stats {
           height: 125px;
@@ -226,7 +367,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         }
         .reports {
           column-count: 3;
-          padding: var(--ddd-spacing-4);
+          padding: 0;
         }
         .reports .recently-updated-items {
           font-size: 16px;
@@ -265,6 +406,16 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         .media-list {
           padding: var(--ddd-spacing-4);
         }
+        @media screen and (max-width: 900px) {
+          :host {
+            min-width: 0;
+            width: 100%;
+            padding: var(--ddd-spacing-3);
+          }
+          .group {
+            padding: var(--ddd-spacing-3);
+          }
+        }
       `,
     ];
   }
@@ -290,27 +441,31 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
     }
   }
   _reportHeading(icon, label) {
-    return html`<span slot="heading" class="collapse-heading">
+    return html`<span class="summary-leading">
       <simple-icon-lite icon="${icon}" aria-hidden="true"></simple-icon-lite>
-      <span>${label}</span>
+      <h3>${label}</h3>
     </span>`;
   }
-  _collapseToggled(e) {
-    if (!e || !e.detail || !e.detail.id) {
+  _groupToggled(e) {
+    if (!e || !e.currentTarget) {
       return;
     }
-    const item = e.detail;
-    if (item.expanded) {
-      this.shadowRoot.querySelectorAll("a11y-collapse").forEach((collapse) => {
-        if (collapse !== item && collapse.expanded) {
-          collapse.expanded = false;
+    const item = e.currentTarget;
+    const itemId = item.getAttribute("data-id");
+    if (!itemId) {
+      return;
+    }
+    if (item.open) {
+      this.shadowRoot.querySelectorAll("details.group").forEach((group) => {
+        if (group !== item && group.open) {
+          group.open = false;
         }
       });
-      if (this.activeTab !== item.id) {
-        this.activeTab = item.id;
+      if (this.activeTab !== itemId) {
+        this.activeTab = itemId;
       }
-    } else if (this.activeTab === item.id) {
-      item.expanded = true;
+    } else if (this.activeTab === itemId) {
+      item.open = true;
     }
   }
 
@@ -714,19 +869,29 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       <div class="panel-shell">
         <div class="panel-scroll">
           ${this.pageSelector()}
-          <a11y-collapse-group radio>
-            <a11y-collapse
-              id="reports"
-              heading-button
-              icon="add"
-              icon-expanded="remove"
-              ?expanded="${this.activeTab === "reports"}"
-              @toggle="${this._collapseToggled}"
+          <div class="group-set">
+            <details
+              class="group"
+              data-id="reports"
+              ?open="${this.activeTab === "reports"}"
+              @toggle="${this._groupToggled}"
             >
-              ${this._reportHeading("hax:graph", this.t.reports)}
+              <summary class="group-summary">
+                ${this._reportHeading("hax:graph", this.t.reports)}
+                <span class="summary-toggle-icon" aria-hidden="true">
+                  <simple-icon-lite
+                    class="collapse-icon-collapsed"
+                    icon="add"
+                  ></simple-icon-lite>
+                  <simple-icon-lite
+                    class="collapse-icon-expanded"
+                    icon="remove"
+                  ></simple-icon-lite>
+                </span>
+              </summary>
               ${this.activeTab === "reports"
                 ? html`
-                    <div class="tab-content-wrapper">
+                    <div class="group-body">
                       <loading-indicator
                         full
                         ?loading="${this.loading}"
@@ -871,22 +1036,32 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                     </div>
                   `
                 : ``}
-            </a11y-collapse>
-            <a11y-collapse
-              id="linkchecker"
-              heading-button
-              icon="add"
-              icon-expanded="remove"
-              ?expanded="${this.activeTab === "linkchecker"}"
-              @toggle="${this._collapseToggled}"
+            </details>
+            <details
+              class="group"
+              data-id="linkchecker"
+              ?open="${this.activeTab === "linkchecker"}"
+              @toggle="${this._groupToggled}"
             >
-              ${this._reportHeading(
-                "icons:link",
-                this.t.linkChecker,
-              )}
+              <summary class="group-summary">
+                ${this._reportHeading(
+                  "icons:link",
+                  this.t.linkChecker,
+                )}
+                <span class="summary-toggle-icon" aria-hidden="true">
+                  <simple-icon-lite
+                    class="collapse-icon-collapsed"
+                    icon="add"
+                  ></simple-icon-lite>
+                  <simple-icon-lite
+                    class="collapse-icon-expanded"
+                    icon="remove"
+                  ></simple-icon-lite>
+                </span>
+              </summary>
               ${this.activeTab == "linkchecker"
                 ? html`
-                    <div class="tab-content-wrapper">
+                    <div class="group-body">
                       <loading-indicator
                         full
                         ?loading="${this.loading}"
@@ -915,22 +1090,32 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                     </div>
                   `
                 : ``}
-            </a11y-collapse>
-            <a11y-collapse
-              id="contentbrowser"
-              heading-button
-              icon="add"
-              icon-expanded="remove"
-              ?expanded="${this.activeTab === "contentbrowser"}"
-              @toggle="${this._collapseToggled}"
+            </details>
+            <details
+              class="group"
+              data-id="contentbrowser"
+              ?open="${this.activeTab === "contentbrowser"}"
+              @toggle="${this._groupToggled}"
             >
-              ${this._reportHeading(
-                "icons:view-module",
-                this.t.contentBrowser,
-              )}
+              <summary class="group-summary">
+                ${this._reportHeading(
+                  "icons:view-module",
+                  this.t.contentBrowser,
+                )}
+                <span class="summary-toggle-icon" aria-hidden="true">
+                  <simple-icon-lite
+                    class="collapse-icon-collapsed"
+                    icon="add"
+                  ></simple-icon-lite>
+                  <simple-icon-lite
+                    class="collapse-icon-expanded"
+                    icon="remove"
+                  ></simple-icon-lite>
+                </span>
+              </summary>
               ${this.activeTab == "contentbrowser"
                 ? html`
-                    <div class="tab-content-wrapper">
+                    <div class="group-body">
                       <loading-indicator
                         full
                         ?loading="${this.loading}"
@@ -1111,22 +1296,32 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                     </div>
                   `
                 : ``}
-            </a11y-collapse>
-            <a11y-collapse
-              id="mediabrowser"
-              heading-button
-              icon="add"
-              icon-expanded="remove"
-              ?expanded="${this.activeTab === "mediabrowser"}"
-              @toggle="${this._collapseToggled}"
+            </details>
+            <details
+              class="group"
+              data-id="mediabrowser"
+              ?open="${this.activeTab === "mediabrowser"}"
+              @toggle="${this._groupToggled}"
             >
-              ${this._reportHeading(
-                "icons:perm-media",
-                this.t.mediaBrowser,
-              )}
+              <summary class="group-summary">
+                ${this._reportHeading(
+                  "icons:perm-media",
+                  this.t.mediaBrowser,
+                )}
+                <span class="summary-toggle-icon" aria-hidden="true">
+                  <simple-icon-lite
+                    class="collapse-icon-collapsed"
+                    icon="add"
+                  ></simple-icon-lite>
+                  <simple-icon-lite
+                    class="collapse-icon-expanded"
+                    icon="remove"
+                  ></simple-icon-lite>
+                </span>
+              </summary>
               ${this.activeTab == "mediabrowser"
                 ? html`
-                    <div class="tab-content-wrapper">
+                    <div class="group-body">
                       <loading-indicator
                         full
                         ?loading="${this.loading}"
@@ -1218,8 +1413,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                     </div>
                   `
                 : ``}
-            </a11y-collapse>
-          </a11y-collapse-group>
+            </details>
+          </div>
         </div>
       </div>
     `;

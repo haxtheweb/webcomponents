@@ -46,23 +46,29 @@ class HAXCMSAppearanceAdminDialog extends DDD {
           );
           display: flex;
           flex-direction: column;
+          box-sizing: border-box;
           min-width: 70vw;
           min-height: min(60vh, var(--haxcms-admin-panel-height));
           height: var(--haxcms-admin-panel-height);
           max-height: var(--haxcms-admin-panel-height);
           overflow: hidden;
-          font-family: var(--ddd-font-navigation);
+          font-family: var(--ddd-font-primary);
+          padding: var(--ddd-spacing-4);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          flex-shrink: 0;
         }
         .panel-shell {
           display: flex;
           flex-direction: column;
           flex: 1;
           min-height: 0;
-          padding: var(--ddd-spacing-4);
-          gap: var(--ddd-spacing-3);
-        }
-        details {
-          max-width: 100%;
         }
         .panel-scroll {
           flex: 1;
@@ -72,45 +78,45 @@ class HAXCMSAppearanceAdminDialog extends DDD {
           padding-right: var(--ddd-spacing-1);
           display: flex;
           flex-direction: column;
-          gap: var(--ddd-spacing-2);
         }
-        .group {
-          display: inline-table;
-          width: 100%;
-          min-width: 0;
-          border: var(--ddd-border-sm) solid
-            light-dark(
-              var(--ddd-theme-default-limestoneGray),
-              var(--ddd-theme-default-slateGray)
-            );
-          border-radius: var(--ddd-radius-sm);
+        h2 {
+          margin: 0 0 var(--ddd-spacing-4) 0;
+          font-size: var(--ddd-font-size-m);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+        .appearance-note {
+          margin: 0 0 var(--ddd-spacing-4) 0;
+          font-size: var(--ddd-font-size-xs);
+          line-height: 1.4;
+          opacity: 0.92;
+        }
+        .section {
+          border: var(--ddd-border-sm);
+          border-radius: var(--ddd-radius-md);
           background: light-dark(
             var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
+            rgba(0, 0, 0, 0.15)
           );
-          overflow: hidden;
+          padding: var(--ddd-spacing-4);
+        }
+        details {
+          max-width: 100%;
+        }
+        .group {
+          padding: var(--ddd-spacing-3) 0;
+          border-top: var(--ddd-border-xs);
+        }
+        .group:first-of-type {
+          border-top: 0;
+          padding-top: 0;
         }
         .group-summary {
-          list-style: none;
-          cursor: pointer;
-          padding: var(--ddd-spacing-3);
           display: flex;
           align-items: center;
           justify-content: space-between;
-          font-size: var(--ddd-font-size-s);
-          font-weight: var(--ddd-font-weight-medium);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-        }
-        .group-summary::-webkit-details-marker {
-          display: none;
-        }
-        .group-summary:focus-visible {
-          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-skyBlue);
-          outline-offset: 2px;
-          border-radius: var(--ddd-radius-xs);
+          gap: var(--ddd-spacing-3);
+          margin-bottom: var(--ddd-spacing-2);
+          cursor: pointer;
         }
         .summary-leading {
           display: inline-flex;
@@ -119,12 +125,22 @@ class HAXCMSAppearanceAdminDialog extends DDD {
         }
         .group-summary simple-icon-lite {
           --simple-icon-color: currentColor;
-          --simple-icon-width: var(--ddd-icon-3xs, 20px);
           --simple-icon-height: var(--ddd-icon-3xs, 20px);
+          --simple-icon-width: var(--ddd-icon-3xs, 20px);
+        }
+        .group-summary h3 {
+          margin: 0;
+          font-size: var(--ddd-font-size-s);
+          font-weight: var(--ddd-font-weight-bold);
         }
         .group-body {
-          padding: var(--ddd-spacing-3);
-          border-top: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
+          padding-bottom: var(--ddd-spacing-2);
+        }
+        .group-description {
+          margin: 0 0 var(--ddd-spacing-3) 0;
+          font-size: var(--ddd-font-size-3xs);
+          line-height: 1.35;
+          opacity: 0.9;
         }
         .status,
         .error {
@@ -134,7 +150,11 @@ class HAXCMSAppearanceAdminDialog extends DDD {
           font-size: var(--ddd-font-size-4xs);
         }
         .status {
-          border: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
+          border: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
           background: light-dark(
             var(--ddd-theme-default-athertonViolet),
             var(--ddd-theme-default-coalyGray)
@@ -157,31 +177,39 @@ class HAXCMSAppearanceAdminDialog extends DDD {
         }
         .actions {
           display: flex;
-          justify-content: flex-start;
-          align-items: center;
-          gap: var(--ddd-spacing-2);
-          border-top: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
-          padding-top: var(--ddd-spacing-3);
+          justify-content: flex-end;
+          gap: var(--ddd-spacing-3);
+          padding-top: var(--ddd-spacing-4);
+          margin-top: var(--ddd-spacing-4);
+          border-top: var(--ddd-border-xs) solid
+            light-dark(
+              var(--ddd-theme-default-limestoneGray),
+              var(--ddd-primary-5)
+            );
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          position: sticky;
+          bottom: 0;
+          z-index: 2;
+          flex-shrink: 0;
         }
-        .hax-modal-btn {
+        button.action {
+          font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-s);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-3) var(--ddd-spacing-5);
+          border-radius: var(--ddd-radius-sm);
+          border: var(--ddd-border-xs);
+          cursor: pointer;
           color: var(--ddd-theme-default-white);
           background-color: var(--ddd-theme-default-skyBlue);
-          border: var(--ddd-border-sm) solid var(--ddd-theme-default-navy);
-          border-radius: var(--ddd-radius-sm);
-          font-family: var(--ddd-font-navigation);
-          cursor: pointer;
         }
-        .hax-modal-btn.cancel {
-          background-color: var(--ddd-theme-default-original87Pink);
-          border-color: var(--ddd-theme-default-potentialMidnight);
+        button.action:focus,
+        button.action:hover {
+          outline: 2px solid var(--ddd-theme-default-keystoneYellow);
         }
-        .hax-modal-btn:focus-visible {
-          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-keystoneYellow);
-          outline-offset: 2px;
-        }
-        .hax-modal-btn[disabled] {
+        .action[disabled] {
           opacity: 0.6;
           cursor: not-allowed;
         }
@@ -190,6 +218,23 @@ class HAXCMSAppearanceAdminDialog extends DDD {
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
           );
+          --simple-fields-background-color: transparent;
+          --simple-fields-button-background-color: transparent;
+        }
+        @media screen and (max-width: 900px) {
+          :host {
+            min-width: 0;
+            width: 100%;
+            padding: var(--ddd-spacing-3);
+          }
+          .section {
+            padding: var(--ddd-spacing-3);
+          }
+          .actions {
+            padding-bottom: calc(
+              var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
+            );
+          }
         }
       `,
     ];
@@ -348,6 +393,7 @@ class HAXCMSAppearanceAdminDialog extends DDD {
         key: "theme",
         label: "Theme",
         icon: "image:style",
+        description: "Choose the active theme for your site.",
         open: true,
         fields: [
           {
@@ -364,6 +410,7 @@ class HAXCMSAppearanceAdminDialog extends DDD {
         key: "palette",
         label: "Palette",
         icon: "lrn:palette",
+        description: "Control accent colors and DDD palette tokens.",
         open: false,
         fields: [
           {
@@ -386,6 +433,7 @@ class HAXCMSAppearanceAdminDialog extends DDD {
         key: "branding",
         label: "Branding",
         icon: "editor:insert-photo",
+        description: "Set brand imagery, iconography, and related metadata.",
         open: false,
         fields: [
           {
@@ -423,6 +471,7 @@ class HAXCMSAppearanceAdminDialog extends DDD {
         key: "regions",
         label: "Regions",
         icon: "hax:site-map",
+        description: "Assign pages to theme region slots.",
         open: false,
         fields: [
           this._regionField(
@@ -695,45 +744,61 @@ class HAXCMSAppearanceAdminDialog extends DDD {
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
+          <h2>Appearance</h2>
+          <p class="appearance-note">
+            Configure theme, palette, branding, and layout regions for your site.
+          </p>
           ${this.errorMessage ? html`<p class="error">${this.errorMessage}</p>` : ``}
           ${!this.errorMessage && this.groups.length === 0
             ? html`<p class="status">No appearance settings are available.</p>`
             : ``}
           ${!this.errorMessage
-            ? this.groups.map(
-                (group) => html`
-                  <details class="group" ?open="${group.open}">
-                    <summary class="group-summary">
-                      <span class="summary-leading">
-                        <simple-icon-lite
-                          icon="${group.icon}"
-                          aria-hidden="true"
-                        ></simple-icon-lite>
-                        <span>${group.label}</span>
-                      </span>
-                    </summary>
-                    <div class="group-body">
-                      <simple-fields
-                        data-group="${group.key}"
-                        .fields="${group.fields}"
-                        .value="${this._groupValue(group)}"
-                        .schematizer="${HaxSchematizer}"
-                        .elementizer="${HaxElementizer}"
-                        @value-changed="${this._onGroupValueChanged}"
-                      ></simple-fields>
-                    </div>
-                  </details>
-                `,
-              )
+            ? html`
+                <div class="section">
+                  ${this.groups.map(
+                    (group) => html`
+                      <details class="group" ?open="${group.open}">
+                        <summary class="group-summary">
+                          <span class="summary-leading">
+                            <simple-icon-lite
+                              icon="${group.icon}"
+                              aria-hidden="true"
+                            ></simple-icon-lite>
+                            <h3>${group.label}</h3>
+                          </span>
+                        </summary>
+                        <div class="group-body">
+                          ${group.description
+                            ? html`
+                                <p class="group-description">
+                                  ${group.description}
+                                </p>
+                              `
+                            : ``}
+                          <simple-fields
+                            data-group="${group.key}"
+                            .fields="${group.fields}"
+                            .value="${this._groupValue(group)}"
+                            .schematizer="${HaxSchematizer}"
+                            .elementizer="${HaxElementizer}"
+                            @value-changed="${this._onGroupValueChanged}"
+                          ></simple-fields>
+                        </div>
+                      </details>
+                    `,
+                  )}
+                </div>
+              `
             : ``}
         </div>
         <div class="actions">
           <button
-            class="hax-modal-btn"
+            type="button"
+            class="action"
             @click="${this._saveAppearanceSettingsTap}"
             ?disabled="${this.groups.length === 0}"
           >
-            OK
+            Save
           </button>
         </div>
       </div>

@@ -311,8 +311,25 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           justify-content: space-between;
           gap: var(--ddd-spacing-3);
           margin-bottom: var(--ddd-spacing-3);
+          cursor: pointer;
+        }
+        .section-title:focus-visible {
+          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-skyBlue);
+          outline-offset: 2px;
+          border-radius: var(--ddd-radius-xs);
         }
 
+        .summary-leading {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+        }
+
+        .section-title simple-icon-lite {
+          --simple-icon-color: currentColor;
+          --simple-icon-width: var(--ddd-icon-3xs, 20px);
+          --simple-icon-height: var(--ddd-icon-3xs, 20px);
+        }
         .section-title h3 {
           margin: 0;
           font-size: var(--ddd-font-size-s);
@@ -829,8 +846,17 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
                 `
               : ``}
 
-            ${this._renderFeatureSection(this.t.cmsFeatures, cmsFeatures, true)}
-            ${this._renderFeatureSection(this.t.editorFeatures, editorFeatures)}
+            ${this._renderFeatureSection(
+              this.t.cmsFeatures,
+              'hax:home-edit',
+              cmsFeatures,
+              true,
+            )}
+            ${this._renderFeatureSection(
+              this.t.editorFeatures,
+              'hax:page-edit',
+              editorFeatures,
+            )}
           </div>
         </div>
         <div class="actions">
@@ -866,11 +892,14 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     }
   }
 
-  _renderFeatureSection(title, features, open = false) {
+  _renderFeatureSection(title, icon, features, open = false) {
     return html`
       <details class="section" ?open=${open}>
         <summary class="section-title">
-          <h3>${title}</h3>
+          <span class="summary-leading">
+            <simple-icon-lite icon="${icon}" aria-hidden="true"></simple-icon-lite>
+            <h3>${title}</h3>
+          </span>
         </summary>
         <div class="controls-container">
           ${this.isMobile

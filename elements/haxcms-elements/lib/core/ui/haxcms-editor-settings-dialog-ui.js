@@ -3,6 +3,7 @@ import { autorun, toJS } from 'mobx'
 import { DDD } from '@haxtheweb/d-d-d/d-d-d.js'
 import { HAXStore } from '@haxtheweb/hax-body/lib/hax-store.js'
 import { HAXCMSI18NMixin } from '../utils/HAXCMSI18NMixin.js'
+import '@haxtheweb/simple-icon/lib/simple-icon-lite.js'
 
 /**
  * `haxcms-editor-settings-dialog-ui`
@@ -34,7 +35,11 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
     this.t = {
       ...this.t,
       title: 'Editor settings',
-      experienceLevel: 'Experience level',
+      experienceLevel: 'Experience Level',
+      experienceLevelDescription:
+        'Select the editor experience and preview the toolbar layout.',
+      buttons: 'Buttons',
+      futureButtonConfiguration: 'Future customized editor button configuration',
       save: 'Save',
       saving: 'Saving…',
     }
@@ -101,7 +106,16 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
           font-size: var(--ddd-font-size-m);
           font-weight: var(--ddd-font-weight-bold);
         }
-
+        .row {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-6);
+        }
+        details {
+          max-width: 100%;
+          min-width: 100%;
+          box-sizing: border-box;
+        }
         .section {
           border: var(--ddd-border-sm);
           border-radius: var(--ddd-radius-md);
@@ -110,6 +124,55 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
             rgba(0, 0, 0, 0.15)
           );
           padding: var(--ddd-spacing-4);
+        }
+        .section-title {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--ddd-spacing-3);
+          margin-bottom: 0;
+          cursor: pointer;
+        }
+        .section[open] .section-title {
+          margin-bottom: var(--ddd-spacing-3);
+        }
+        .section-title:focus-visible {
+          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-skyBlue);
+          outline-offset: 2px;
+          border-radius: var(--ddd-radius-xs);
+        }
+        .summary-leading {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+        }
+        .section-title simple-icon-lite {
+          --simple-icon-color: currentColor;
+          --simple-icon-width: var(--ddd-icon-3xs, 20px);
+          --simple-icon-height: var(--ddd-icon-3xs, 20px);
+        }
+        .section-title h3 {
+          margin: 0;
+          font-size: var(--ddd-font-size-s);
+          font-weight: var(--ddd-font-weight-bold);
+        }
+
+        .collapse-body {
+          padding: 0;
+        }
+
+        .section-description {
+          margin: 0 0 var(--ddd-spacing-3) 0;
+          font-size: var(--ddd-font-size-3xs);
+          line-height: 1.35;
+          opacity: 0.92;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+        }
+
+        .audience-content {
           display: flex;
           flex-direction: row;
           justify-content: space-between;
@@ -127,6 +190,10 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
         .audience-selector label {
           font-weight: var(--ddd-font-weight-bold);
           font-size: var(--ddd-font-size-xs);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
         }
 
         select {
@@ -169,6 +236,9 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
             var(--ddd-theme-default-coalyGray)
           );
           flex-shrink: 0;
+          position: sticky;
+          bottom: 0;
+          z-index: 2;
         }
 
         button.action {
@@ -185,6 +255,28 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
         button.action:focus,
         button.action:hover {
           outline: 2px solid var(--ddd-theme-default-keystoneYellow);
+        }
+        @media screen and (max-width: 900px) {
+          :host {
+            min-width: 0;
+            width: 100%;
+            padding: var(--ddd-spacing-3);
+          }
+          .section {
+            padding: var(--ddd-spacing-3);
+          }
+          .audience-content {
+            flex-direction: column;
+            gap: var(--ddd-spacing-3);
+          }
+          .toolbar-preview {
+            max-width: 100%;
+          }
+          .actions {
+            padding-bottom: calc(
+              var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
+            );
+          }
         }
       `,
     ]
@@ -227,24 +319,59 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
       <div class="panel-shell">
         <div class="panel-scroll">
           <h2>${this.t.title}</h2>
-          <div class="section">
-            <div class="audience-selector">
-              <label for="audience">${this.t.experienceLevel}</label>
-              <select id="audience" .value="${this.audience}" @change="${this._audienceChanged}">
-                ${this.audienceOptions.map(
-                  (opt) => html`
-                    <option value="${opt.value}" ?selected="${this.audience === opt.value}">
-                      ${opt.label}
-                    </option>
-                  `,
-                )}
-              </select>
-            </div>
-            <img
-              class="toolbar-preview"
-              src="${toolbarImgPath}"
-              alt="${this.audience} editing toolbar preview"
-            />
+          <div class="row">
+            <details class="section" open>
+              <summary class="section-title">
+                <span class="summary-leading">
+                  <simple-icon-lite icon="hax:page-edit" aria-hidden="true"></simple-icon-lite>
+                  <h3>${this.t.experienceLevel}</h3>
+                </span>
+              </summary>
+              <div class="collapse-body">
+                <p class="section-description">
+                  ${this.t.experienceLevelDescription}
+                </p>
+                <div class="audience-content">
+                  <div class="audience-selector">
+                    <label for="audience">${this.t.experienceLevel}</label>
+                    <select
+                      id="audience"
+                      .value="${this.audience}"
+                      @change="${this._audienceChanged}"
+                    >
+                      ${this.audienceOptions.map(
+                        (opt) => html`
+                          <option
+                            value="${opt.value}"
+                            ?selected="${this.audience === opt.value}"
+                          >
+                            ${opt.label}
+                          </option>
+                        `,
+                      )}
+                    </select>
+                  </div>
+                  <img
+                    class="toolbar-preview"
+                    src="${toolbarImgPath}"
+                    alt="${this.audience} editing toolbar preview"
+                  />
+                </div>
+              </div>
+            </details>
+            <details class="section">
+              <summary class="section-title">
+                <span class="summary-leading">
+                  <simple-icon-lite icon="hax:add-brick" aria-hidden="true"></simple-icon-lite>
+                  <h3>${this.t.buttons}</h3>
+                </span>
+              </summary>
+              <div class="collapse-body">
+                <p class="section-description">
+                  ${this.t.futureButtonConfiguration}
+                </p>
+              </div>
+            </details>
           </div>
         </div>
         <div class="actions">

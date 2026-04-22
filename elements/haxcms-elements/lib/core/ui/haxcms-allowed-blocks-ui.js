@@ -140,6 +140,8 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
 
         details {
           max-width: 100%;
+          min-width: 100%;
+          box-sizing: border-box;
         }
 
         .controls-container {
@@ -182,25 +184,19 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         }
 
         .blocks-list {
-          max-height: 40vh;
-          overflow: auto;
-          border: var(--ddd-border-xs);
-          border-radius: var(--ddd-radius-sm);
-          padding: var(--ddd-spacing-3);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.2)
-          );
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-4);
         }
 
         .block-category {
-          padding: var(--ddd-spacing-3) 0;
-          border-top: var(--ddd-border-xs);
-        }
-
-        .block-category:first-of-type {
-          border-top: 0;
-          padding-top: 0;
+          border: var(--ddd-border-sm);
+          border-radius: var(--ddd-radius-md);
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            rgba(0, 0, 0, 0.15)
+          );
+          padding: var(--ddd-spacing-4);
         }
 
         .block-category-title {
@@ -208,7 +204,28 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           align-items: center;
           justify-content: space-between;
           gap: var(--ddd-spacing-3);
-          margin-bottom: var(--ddd-spacing-2);
+          margin-bottom: 0;
+          cursor: pointer;
+        }
+        .block-category[open] .block-category-title {
+          margin-bottom: var(--ddd-spacing-3);
+        }
+        .block-category-title:focus-visible {
+          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-skyBlue);
+          outline-offset: 2px;
+          border-radius: var(--ddd-radius-xs);
+        }
+
+        .summary-leading {
+          display: inline-flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+        }
+
+        .block-category-title simple-icon-lite {
+          --simple-icon-color: currentColor;
+          --simple-icon-height: var(--ddd-icon-3xs, 20px);
+          --simple-icon-width: var(--ddd-icon-3xs, 20px);
         }
 
         .blocks-meta {
@@ -512,10 +529,6 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
             display: flex;
           }
 
-          .blocks-list {
-            max-height: none;
-          }
-
           .actions {
             padding-bottom: calc(
               var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
@@ -646,7 +659,13 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                 (group) => html`
                   <details class="block-category">
                     <summary class="block-category-title">
-                      <h4>${group.category}</h4>
+                      <span class="summary-leading">
+                        <simple-icon-lite
+                          icon="${this._blockCategoryIcon(group)}"
+                          aria-hidden="true"
+                        ></simple-icon-lite>
+                        <h4>${group.category}</h4>
+                      </span>
                     </summary>
                     <div class="controls-container">
                       ${this.isMobile
@@ -1035,6 +1054,14 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
 
   _categoryKey(category) {
     return (category || 'other').toLowerCase().replace(/[^a-z0-9]+/g, '-')
+  }
+  _blockCategoryIcon(group) {
+    const blocks = group && Array.isArray(group.blocks) ? group.blocks : []
+    const itemWithIcon = blocks.find((item) => item && item.icon)
+    if (itemWithIcon && itemWithIcon.icon) {
+      return itemWithIcon.icon
+    }
+    return 'hax:blocks'
   }
 
   _blockCategory(item) {
