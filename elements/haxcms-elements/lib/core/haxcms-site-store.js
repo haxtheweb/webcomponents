@@ -117,6 +117,7 @@ class Store {
     this.darkMode = !localStorageGet("app-hax-darkMode")
       ? false
       : localStorageGet("app-hax-darkMode");
+    this.responsiveSize = "";
     this.setupSlots = {
       "haxcms-site-editor-ui-prefix-avatar": [],
       "haxcms-site-editor-ui-prefix-buttons": [],
@@ -188,6 +189,8 @@ class Store {
       ancestorItem: computed, // active page ancestor
       pageCounter: computed, // current and total page count
       darkMode: observable, // dark mode pref
+      responsiveSize: observable, // viewport size bucket from theme responsive utility
+      isMobile: computed, // derived mobile mode for store consumers
       viewOnlyMode: computed, // view only mode pref
       soundStatus: observable, // toggle sounds on and off
       appReady: observable, // system is ready via firstUpdated of haxcms-site-builder
@@ -932,6 +935,10 @@ class Store {
     return UserScaffoldInstance.readMemory("ViewOnlyMode");
   }
 
+  get isMobile() {
+    return this.responsiveSize === "xs" || this.responsiveSize === "sm";
+  }
+
   get isLoggedIn() {
     // Check if we're in view-only mode - if so, treat as not logged in
     if (this.viewOnlyMode) {
@@ -1142,17 +1149,34 @@ class Store {
       }
 
       // allowedBlocks: prefer new-style allowedBlocks, fallback to legacy blocks.
-      // Keep a defined-state flag so we can distinguish persisted state.
-      // Enforcement should only happen when the resulting allow-list is non-empty.
-      platformConfigObj.allowedBlocksDefined =
-        Object.prototype.hasOwnProperty.call(raw, "allowedBlocks") ||
-        Object.prototype.hasOwnProperty.call(raw, "blocks");
-      const blocksAry = Array.isArray(raw.allowedBlocks)
+      // Semantics:
+      // - null => explicitly no optional blocks are allowed
+      // - [] or missing => no allow-list has been defined yet
+      // - [..tags] => explicit optional-block allow-list
+      const hasAllowedBlocksProp = Object.prototype.hasOwnProperty.call(
+        raw,
+        "allowedBlocks",
+      );
+      const hasLegacyBlocksProp = Object.prototype.hasOwnProperty.call(
+        raw,
+        "blocks",
+      );
+      const rawAllowedBlocks = hasAllowedBlocksProp
         ? raw.allowedBlocks
-        : Array.isArray(raw.blocks)
+        : hasLegacyBlocksProp
           ? raw.blocks
-          : [];
-      platformConfigObj.allowedBlocks = new Set(blocksAry);
+          : undefined;
+      const hasExplicitNoOptionalBlocks = rawAllowedBlocks === null;
+      const hasAllowedBlocksList =
+        Array.isArray(rawAllowedBlocks) && rawAllowedBlocks.length > 0;
+
+      platformConfigObj.allowedBlocksDefined =
+        hasExplicitNoOptionalBlocks || hasAllowedBlocksList;
+      platformConfigObj.allowedBlocks = hasExplicitNoOptionalBlocks
+        ? null
+        : hasAllowedBlocksList
+          ? new Set(rawAllowedBlocks)
+          : new Set();
 
       return platformConfigObj;
     }
@@ -1176,6 +1200,10 @@ class Store {
     if(this.platformConfig.__supportedFeatures.has(capability)){
       return this.platformConfig.features[capability] !== false;
     } 
+
+    if (this.platformConfig.allowedBlocks === null) {
+      return false;
+    }
 
     const hasExplicitAllowedBlocks =
       this.platformConfig.allowedBlocks &&

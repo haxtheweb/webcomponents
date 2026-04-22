@@ -2,6 +2,7 @@ import { html, css } from 'lit'
 import { autorun, toJS } from 'mobx'
 import { DDD } from '@haxtheweb/d-d-d/d-d-d.js'
 import { HAXStore } from '@haxtheweb/hax-body/lib/hax-store.js'
+import { store } from '@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js'
 import { HAXCMSI18NMixin } from '../utils/HAXCMSI18NMixin.js'
 import '@haxtheweb/simple-icon/lib/simple-icon-button-lite.js'
 import '@haxtheweb/simple-icon/lib/simple-icon-lite.js'
@@ -25,6 +26,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       blockFilter: { type: String, attribute: 'block-filter' },
       busy: { type: Boolean, reflect: true },
       activePreview: { type: String, attribute: false },
+      isMobile: { type: Boolean, attribute: 'is-mobile', reflect: true },
     }
   }
 
@@ -36,6 +38,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     this.blockFilter = ''
     this.busy = false
     this.activePreview = null
+    this.isMobile = false
     this.configurableHiddenTags = new Set([
       'mark',
       'ol',
@@ -63,6 +66,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       deselectAll: 'Deselect all',
       save: 'Save',
       noDescription: 'No description available.',
+      details: 'Details',
     }
 
     this.registerLocalization({
@@ -341,6 +345,95 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           --simple-popover-manager-min-width: 260px;
         }
 
+        .mobile-chip-controls {
+          display: none;
+          flex-wrap: wrap;
+          gap: var(--ddd-spacing-2);
+          margin-bottom: var(--ddd-spacing-3);
+        }
+
+        .mobile-chip-controls simple-icon-button-lite {
+          --simple-icon-height: var(--ddd-icon-4xs);
+          --simple-icon-width: var(--ddd-icon-4xs);
+          border: var(--ddd-border-xs);
+          border-radius: var(--ddd-radius-sm);
+          min-height: 44px;
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            rgba(0, 0, 0, 0.2)
+          );
+        }
+
+        .mobile-block-list {
+          display: none;
+          flex-direction: column;
+          gap: var(--ddd-spacing-2);
+        }
+
+        .block-card {
+          border: var(--ddd-border-xs);
+          border-radius: var(--ddd-radius-sm);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          transition: opacity 0.2s ease, background-color 0.2s ease;
+          cursor: pointer;
+          outline: none;
+        }
+
+        .block-card.enabled {
+          opacity: 1;
+          background-color: light-dark(
+            rgba(0, 0, 0, 0.02),
+            rgba(255, 255, 255, 0.06)
+          );
+        }
+
+        .block-card.disabled {
+          opacity: 0.58;
+          background-color: light-dark(
+            rgba(0, 0, 0, 0),
+            rgba(255, 255, 255, 0.02)
+          );
+        }
+
+        .block-card:focus-visible {
+          outline: 2px solid var(--ddd-theme-default-keystoneYellow);
+          outline-offset: 2px;
+        }
+
+        .block-card-main {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          min-height: 44px;
+        }
+
+        .block-card-main input[type='checkbox'] {
+          margin-top: 0;
+          inline-size: var(--ddd-icon-xs);
+          block-size: var(--ddd-icon-xs);
+          cursor: pointer;
+        }
+
+        .block-card-details {
+          margin-top: var(--ddd-spacing-2);
+        }
+
+        .block-card-details summary {
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          font-size: var(--ddd-font-size-4xs);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          font-weight: var(--ddd-font-weight-bold);
+        }
+
+        .block-card-preview {
+          margin-top: var(--ddd-spacing-2);
+        }
+
         .actions {
           display: flex;
           justify-content: flex-end;
@@ -357,6 +450,9 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
             var(--ddd-theme-default-coalyGray)
           );
           flex-shrink: 0;
+          position: sticky;
+          bottom: 0;
+          z-index: 2;
         }
 
         button.action {
@@ -380,6 +476,52 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           font-size: var(--ddd-font-size-xs);
           opacity: 0.9;
         }
+
+        @media screen and (max-width: 900px) {
+          :host {
+            min-width: 0;
+            width: 100%;
+            padding: var(--ddd-spacing-3);
+          }
+
+          .blocks-meta {
+            flex-direction: column;
+            align-items: stretch;
+          }
+
+          .controls {
+            width: 100%;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+          }
+
+          .controls-container {
+            display: block;
+          }
+
+          .table-wrapper {
+            display: none;
+          }
+
+          .mobile-chip-controls {
+            display: flex;
+          }
+
+          .mobile-block-list {
+            display: flex;
+          }
+
+          .blocks-list {
+            max-height: none;
+          }
+
+          .actions {
+            padding-bottom: calc(
+              var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
+            );
+          }
+        }
       `,
     ]
   }
@@ -401,17 +543,19 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       this.haxBlocks = blocks
 
       const platformConfig = toJS(HAXStore.platformConfig)
+      const allowedBlocks = platformConfig ? platformConfig.allowedBlocks : undefined
+      const hasExplicitNoOptionalBlocks = allowedBlocks === null
       const hasAllowedBlocks =
-        !!platformConfig &&
-        ((platformConfig.allowedBlocks &&
-          typeof platformConfig.allowedBlocks.size === 'number' &&
-          platformConfig.allowedBlocks.size > 0) ||
-          (Array.isArray(platformConfig.allowedBlocks) &&
-            platformConfig.allowedBlocks.length > 0))
-      this.allowedBlocksDefined = !!hasAllowedBlocks
+        (allowedBlocks &&
+          typeof allowedBlocks.size === 'number' &&
+          allowedBlocks.size > 0) ||
+        (Array.isArray(allowedBlocks) && allowedBlocks.length > 0)
+      this.allowedBlocksDefined =
+        hasExplicitNoOptionalBlocks || !!hasAllowedBlocks
 
-      if (hasAllowedBlocks) {
-        const allowedBlocks = platformConfig.allowedBlocks
+      if (hasExplicitNoOptionalBlocks) {
+        this.allowedBlocks = new Set()
+      } else if (hasAllowedBlocks) {
         if (allowedBlocks instanceof Set) {
           this.allowedBlocks = new Set(Array.from(allowedBlocks))
         } else if (Array.isArray(allowedBlocks)) {
@@ -428,6 +572,11 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       }
     })
     this.__disposer.push(disposer)
+
+    const mobileDisposer = autorun(() => {
+      this.isMobile = !!toJS(store.isMobile)
+    })
+    this.__disposer.push(mobileDisposer)
   }
 
   disconnectedCallback() {
@@ -486,14 +635,12 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                 >
               </div>
             </div>
-
             <div class="note">
               ${toggleableSelected} selected / ${toggleableTotal} available
               ${HAXStore.requiredPrimitives.size
                 ? html`<span> • ${this.t.requiredTextNote}</span>`
                 : ''}
             </div>
-
             <div class="blocks-list">
               ${groupedBlocks.map(
                 (group) => html`
@@ -502,38 +649,64 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                       <h4>${group.category}</h4>
                     </summary>
                     <div class="controls-container">
-                      <div class="table-wrapper">
-                        <table class="block-table">
-                          <thead>
-                            <tr>
-                              <th class="select-col">${this.t.enabled}</th>
-                              <th>${this.t.block}</th>
-                              <th class="preview-col">${this.t.preview}</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            ${group.blocks.map((item) => this._renderBlockRow(item))}
-                          </tbody>
-                        </table>
-                      </div>
-                      <div class="controls">
-                        <simple-icon-button-lite
-                          icon="icons:select-all"
-                          label="${this.t.selectAll}"
-                          title="${this.t.selectAll}"
-                          data-category="${this._categoryKey(group.category)}"
-                          @click="${this._selectAll}"
-                          >Select All</simple-icon-button-lite
-                        >
-                        <simple-icon-button-lite
-                          icon="icons:select-all"
-                          label="${this.t.deselectAll}"
-                          title="${this.t.deselectAll}"
-                          data-category="${this._categoryKey(group.category)}"
-                          @click="${this._deselectAll}"
-                          >Deselect All</simple-icon-button-lite
-                        >
-                      </div>
+                      ${this.isMobile
+                        ? html`
+                            <div class="mobile-chip-controls">
+                              <simple-icon-button-lite
+                                icon="icons:select-all"
+                                label="${this.t.selectAll}"
+                                title="${this.t.selectAll}"
+                                data-category="${this._categoryKey(group.category)}"
+                                @click="${this._selectAll}"
+                                >${this.t.selectAll}</simple-icon-button-lite
+                              >
+                              <simple-icon-button-lite
+                                icon="icons:select-all"
+                                label="${this.t.deselectAll}"
+                                title="${this.t.deselectAll}"
+                                data-category="${this._categoryKey(group.category)}"
+                                @click="${this._deselectAll}"
+                                >${this.t.deselectAll}</simple-icon-button-lite
+                              >
+                            </div>
+                            <div class="mobile-block-list">
+                              ${group.blocks.map((item) => this._renderBlockCard(item))}
+                            </div>
+                          `
+                        : html`
+                            <div class="table-wrapper">
+                              <table class="block-table">
+                                <thead>
+                                  <tr>
+                                    <th class="select-col">${this.t.enabled}</th>
+                                    <th>${this.t.block}</th>
+                                    <th class="preview-col">${this.t.preview}</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  ${group.blocks.map((item) => this._renderBlockRow(item))}
+                                </tbody>
+                              </table>
+                            </div>
+                            <div class="controls">
+                              <simple-icon-button-lite
+                                icon="icons:select-all"
+                                label="${this.t.selectAll}"
+                                title="${this.t.selectAll}"
+                                data-category="${this._categoryKey(group.category)}"
+                                @click="${this._selectAll}"
+                                >Select All</simple-icon-button-lite
+                              >
+                              <simple-icon-button-lite
+                                icon="icons:select-all"
+                                label="${this.t.deselectAll}"
+                                title="${this.t.deselectAll}"
+                                data-category="${this._categoryKey(group.category)}"
+                                @click="${this._deselectAll}"
+                                >Deselect All</simple-icon-button-lite
+                              >
+                            </div>
+                          `}
                     </div>
                   </details>
                 `,
@@ -609,6 +782,84 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     `
   }
 
+
+  _renderBlockCard(item) {
+    const isDisabled = HAXStore.requiredPrimitives.has(item.tag)
+    const checked = this._isBlockChecked(item.tag)
+    const rowClass = checked ? 'block-card enabled' : 'block-card disabled'
+    const description = this._getBlockDescription(item)
+    const rowId = this._blockInputId(item.tag)
+    return html`
+      <div
+        class="${rowClass}"
+        data-tag="${item.tag}"
+        role="checkbox"
+        aria-checked="${checked ? 'true' : 'false'}"
+        tabindex="${isDisabled ? '-1' : '0'}"
+        @click="${this._blockCardClicked}"
+        @keydown="${this._blockCardKeydown}"
+      >
+        <div class="block-card-main">
+          <input
+            id="${rowId}"
+            type="checkbox"
+            data-tag="${item.tag}"
+            data-stop-toggle="true"
+            .checked=${checked}
+            ?disabled=${isDisabled}
+            @click="${this._stopCardToggle}"
+            @change=${this._checkboxChanged}
+          />
+          <label
+            class="block-title"
+            for="${rowId}"
+            data-stop-toggle="true"
+            @click="${this._stopCardToggle}"
+          >
+            <simple-icon-lite icon="${item.icon}"></simple-icon-lite>
+            <span>${item.title}</span>
+          </label>
+        </div>
+        <details
+          class="block-card-details"
+          data-stop-toggle="true"
+          @click="${this._stopCardToggle}"
+        >
+          <summary data-stop-toggle="true">${this.t.details}</summary>
+          <p class="block-description">${description}</p>
+          <div class="block-card-preview">
+            <simple-popover-selection
+              class="block-preview"
+              data-index="${item.tag}"
+              @opened-changed="${this._hoverForPreviewChange}"
+              event="click"
+            >
+              <span class="preview-control" slot="button">
+                <simple-icon-button-lite
+                  class="preview-button"
+                  icon="icons:visibility"
+                  label="${this.t.preview}"
+                  title="${this.t.preview}"
+                  data-stop-toggle="true"
+                ></simple-icon-button-lite>
+              </span>
+              ${this.activePreview === item.tag
+                ? html`
+                    <hax-element-demo
+                      slot="options"
+                      render-tag="${item.tag}"
+                      gizmo-title="${item.title}"
+                      gizmo-description="${description}"
+                      gizmo-icon="${item.icon}"
+                    ></hax-element-demo>
+                  `
+                : ''}
+            </simple-popover-selection>
+          </div>
+        </details>
+      </div>
+    `
+  }
   _isBlockChecked(tag) {
     if (!tag) {
       return false
@@ -617,6 +868,19 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       return true
     }
     return this.allowedBlocks.has(tag)
+  }
+
+  _setBlockChecked(tag, checked) {
+    if (!tag || HAXStore.requiredPrimitives.has(tag)) {
+      return
+    }
+    this.allowedBlocksDefined = true
+    if (checked) {
+      this.allowedBlocks.add(tag)
+    } else {
+      this.allowedBlocks.delete(tag)
+    }
+    this.requestUpdate()
   }
 
   _blockInputId(tag) {
@@ -650,22 +914,75 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       }
     }, 10)
   }
+  _isCardInteraction(e) {
+    const path = e && e.composedPath ? e.composedPath() : []
+    for (const node of path) {
+      if (!node) {
+        continue
+      }
+      if (
+        node.getAttribute &&
+        node.getAttribute('data-stop-toggle') === 'true'
+      ) {
+        return true
+      }
+      if (!node.tagName) {
+        continue
+      }
+      const tag = node.tagName.toLowerCase()
+      if (
+        tag === 'input' ||
+        tag === 'button' ||
+        tag === 'a' ||
+        tag === 'summary' ||
+        tag === 'details' ||
+        tag === 'simple-icon-button-lite' ||
+        tag === 'simple-popover-selection'
+      ) {
+        return true
+      }
+    }
+    return false
+  }
+
+  _blockCardClicked(e) {
+    if (this._isCardInteraction(e)) {
+      return
+    }
+    const tag = e && e.currentTarget ? e.currentTarget.dataset.tag : null
+    if (!tag) {
+      return
+    }
+    this._setBlockChecked(tag, !this._isBlockChecked(tag))
+  }
+
+  _blockCardKeydown(e) {
+    const key = e && e.key ? e.key : ''
+    if (key !== ' ' && key !== 'Enter') {
+      return
+    }
+    if (this._isCardInteraction(e)) {
+      return
+    }
+    e.preventDefault()
+    const tag = e && e.currentTarget ? e.currentTarget.dataset.tag : null
+    if (!tag) {
+      return
+    }
+    this._setBlockChecked(tag, !this._isBlockChecked(tag))
+  }
+
+  _stopCardToggle(e) {
+    if (e) {
+      e.stopPropagation()
+    }
+  }
   _checkboxChanged(e) {
     const input = e.currentTarget
     if (!input || input.type !== 'checkbox') return
     const tag = input.dataset.tag
     if (!tag) return
-
-    // Required primitives are locked on; ignore toggles.
-    if (HAXStore.requiredPrimitives.has(tag)) return
-
-    this.allowedBlocksDefined = true
-    if (e.target.checked) {
-      this.allowedBlocks.add(tag)
-    } else {
-      this.allowedBlocks.delete(tag)
-    }
-    this.requestUpdate()
+    this._setBlockChecked(tag, !!input.checked)
   }
 
   _blockFilterChanged(e) {
@@ -793,6 +1110,11 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
   async _saveAllowedBlocks() {
     try {
       this.busy = true
+      const allowedBlocks = this._allowedBlocksForSave()
+      const allowedBlocksPayload =
+        this.allowedBlocksDefined && allowedBlocks.length === 0
+          ? null
+          : allowedBlocks
       this.dispatchEvent(
         new CustomEvent('haxcms-save-allowed-blocks', {
           bubbles: true,
@@ -800,7 +1122,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           cancelable: true,
           detail: {
             allowedBlocksDefined: this.allowedBlocksDefined,
-            allowedBlocks: this._allowedBlocksForSave(),
+            allowedBlocks: allowedBlocksPayload,
           },
         }),
       )

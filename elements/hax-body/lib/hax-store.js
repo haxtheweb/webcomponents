@@ -1371,6 +1371,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       return features[capability] !== false;
     } 
 
+    if (this.platformConfig.allowedBlocks === null) {
+      return false;
+    }
+
     const hasExplicitAllowedBlocks =
       this.platformConfig.allowedBlocks &&
       typeof this.platformConfig.allowedBlocks.size === "number" &&

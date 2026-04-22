@@ -175,6 +175,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       pageCount: { type: Number, attribute: 'page-count' },
       platformConfig: { type: Object },
       platformSettingsMode: { type: Boolean, attribute: 'platform-settings-mode' },
+      isMobile: { type: Boolean, attribute: 'is-mobile', reflect: true },
     }
   }
 
@@ -193,6 +194,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     this.pageCount = 0
     this.platformConfig = {};
     this.platformSettingsMode = false;
+    this.isMobile = false;
 
     this.__disposer = []
 
@@ -213,6 +215,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       generated: 'Skeleton downloaded',
       enabled: 'Enabled',
       feature: 'Feature',
+      details: 'Details',
       featuresWarning:
         'Disabling these options can remove major authoring and administration capabilities.',
       largeSiteWarning:
@@ -437,6 +440,77 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           opacity: 0.92;
         }
 
+
+        .mobile-feature-list {
+          display: none;
+          flex-direction: column;
+          gap: var(--ddd-spacing-2);
+        }
+
+        .feature-card {
+          border: var(--ddd-border-xs);
+          border-radius: var(--ddd-radius-sm);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          transition: opacity 0.2s ease, background-color 0.2s ease;
+          cursor: pointer;
+          outline: none;
+        }
+
+        .feature-card.enabled {
+          opacity: 1;
+          background-color: light-dark(
+            rgba(0, 0, 0, 0.02),
+            rgba(255, 255, 255, 0.06)
+          );
+        }
+
+        .feature-card.disabled {
+          opacity: 0.58;
+          background-color: light-dark(
+            rgba(0, 0, 0, 0),
+            rgba(255, 255, 255, 0.02)
+          );
+        }
+
+        .feature-card:focus-visible {
+          outline: 2px solid var(--ddd-theme-default-keystoneYellow);
+          outline-offset: 2px;
+        }
+
+        .feature-card-main {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-2);
+          min-height: 44px;
+        }
+
+        .feature-card-main input[type='checkbox'] {
+          margin-top: 0;
+          inline-size: var(--ddd-icon-xs);
+          block-size: var(--ddd-icon-xs);
+          cursor: pointer;
+        }
+
+        .feature-card .feature-title {
+          flex: 1;
+          min-width: 0;
+        }
+
+        .feature-card-details {
+          margin-top: var(--ddd-spacing-2);
+        }
+
+        .feature-card-details summary {
+          min-height: 44px;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          font-size: var(--ddd-font-size-4xs);
+          letter-spacing: 0.04em;
+          text-transform: uppercase;
+          font-weight: var(--ddd-font-weight-bold);
+        }
+
         .platform-note {
           margin: 0 0 var(--ddd-spacing-4) 0;
           font-size: var(--ddd-font-size-xs);
@@ -539,6 +613,9 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
             var(--ddd-theme-default-coalyGray)
           );
           flex-shrink: 0;
+          position: sticky;
+          bottom: 0;
+          z-index: 2;
         }
 
         button.action {
@@ -577,6 +654,47 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           flex-direction: row;
           justify-content: space-between;
         }
+
+        @media screen and (max-width: 900px) {
+          :host {
+            min-width: 0;
+            width: 100%;
+            padding: var(--ddd-spacing-3);
+          }
+
+          .section {
+            padding: var(--ddd-spacing-3);
+          }
+
+          .audience-content {
+            flex-direction: column;
+            gap: var(--ddd-spacing-3);
+          }
+
+          .toolbar-img {
+            width: 100%;
+            max-width: 320px;
+          }
+
+          .feature-table-wrapper {
+            display: none;
+          }
+
+          .controls-container {
+            display: block;
+          }
+
+
+          .mobile-feature-list {
+            display: flex;
+          }
+
+          .actions {
+            padding-bottom: calc(
+              var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
+            );
+          }
+        }
       `,
     ]
   }
@@ -608,17 +726,20 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           this.features = {};
         }
 
-        // allowedBlocks may arrive as a Set (store) or Array (serialized)
+        // allowedBlocks may arrive as null, a Set (store), or an Array (serialized)
         const allowedBlocks = platformConfig.allowedBlocks;
-        if (allowedBlocks) {
-          if (allowedBlocks instanceof Set) {
-            this.allowedBlocks = new Set(Array.from(allowedBlocks));
-          } else if (Array.isArray(allowedBlocks)) {
-            this.allowedBlocks = new Set(allowedBlocks);
-          }
+        if (allowedBlocks === null) {
+          this.allowedBlocks = null;
+        } else if (allowedBlocks instanceof Set) {
+          this.allowedBlocks = new Set(Array.from(allowedBlocks));
+        } else if (Array.isArray(allowedBlocks)) {
+          this.allowedBlocks = new Set(allowedBlocks);
+        } else {
+          this.allowedBlocks = new Set();
         }
       } else {
         this.features = {};
+        this.allowedBlocks = new Set();
       }
 
       const currentGizmos = toJS(HAXStore.gizmoList);
@@ -630,6 +751,11 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
             (item.meta.inlineOnly || item.meta.hidden || item.meta.requiresParent)
           ),
       );
+      this.__disposer.push(reaction)
+    })
+
+    autorun((reaction) => {
+      this.isMobile = !!toJS(store.isMobile)
       this.__disposer.push(reaction)
     })
 
@@ -703,47 +829,8 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
                 `
               : ``}
 
-            <details class="section" open>
-              <summary class="section-title">
-                <h3>${this.t.cmsFeatures}</h3>
-              </summary>
-              <div class="controls-container">
-                <div class="feature-table-wrapper">
-                  <table class="feature-table">
-                    <thead>
-                      <tr>
-                        <th class="select-col">${this.t.enabled}</th>
-                        <th>${this.t.feature}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      ${cmsFeatures.map((f) => this._renderFeatureRow(f))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
-
-            <details class="section">
-              <summary class="section-title">
-                <h3>${this.t.editorFeatures}</h3>
-              </summary>
-              <div class="controls-container">
-                <div class="feature-table-wrapper">
-                  <table class="feature-table">
-                    <thead>
-                      <tr>
-                        <th class="select-col">${this.t.enabled}</th>
-                        <th>${this.t.feature}</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      ${editorFeatures.map((f) => this._renderFeatureRow(f))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </details>
+            ${this._renderFeatureSection(this.t.cmsFeatures, cmsFeatures, true)}
+            ${this._renderFeatureSection(this.t.editorFeatures, editorFeatures)}
           </div>
         </div>
         <div class="actions">
@@ -767,6 +854,49 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
       return this.features[key] !== false
     }
     return store.platformAllows(key)
+  }
+
+  _setFeatureChecked(key, checked) {
+    if (!key) {
+      return
+    }
+    this.features = {
+      ...this.features,
+      [key]: !!checked,
+    }
+  }
+
+  _renderFeatureSection(title, features, open = false) {
+    return html`
+      <details class="section" ?open=${open}>
+        <summary class="section-title">
+          <h3>${title}</h3>
+        </summary>
+        <div class="controls-container">
+          ${this.isMobile
+            ? html`
+                <div class="mobile-feature-list">
+                  ${features.map((f) => this._renderFeatureCard(f))}
+                </div>
+              `
+            : html`
+                <div class="feature-table-wrapper">
+                  <table class="feature-table">
+                    <thead>
+                      <tr>
+                        <th class="select-col">${this.t.enabled}</th>
+                        <th>${this.t.feature}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${features.map((f) => this._renderFeatureRow(f))}
+                    </tbody>
+                  </table>
+                </div>
+              `}
+        </div>
+      </details>
+    `
   }
 
   _renderFeatureRow(item) {
@@ -795,6 +925,52 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     `
   }
 
+  _renderFeatureCard(item) {
+    const checked = this._isFeatureChecked(item.key)
+    const inputId = `platform-feature-${item.group.toLowerCase()}-${item.key}`
+    const rowClass = checked ? 'feature-card enabled' : 'feature-card disabled'
+    return html`
+      <div
+        class="${rowClass}"
+        data-key="${item.key}"
+        role="checkbox"
+        aria-checked="${checked ? 'true' : 'false'}"
+        tabindex="0"
+        @click="${this._featureCardClicked}"
+        @keydown="${this._featureCardKeydown}"
+      >
+        <div class="feature-card-main">
+          <input
+            id="${inputId}"
+            type="checkbox"
+            data-key="${item.key}"
+            data-stop-toggle="true"
+            .checked=${checked}
+            @click="${this._stopCardToggle}"
+            @change=${this._checkboxChanged}
+          />
+          <label
+            class="feature-title"
+            for="${inputId}"
+            data-stop-toggle="true"
+            @click="${this._stopCardToggle}"
+          >
+            <simple-icon-lite icon=${item.icon}></simple-icon-lite>
+            <span>${item.label}</span>
+          </label>
+        </div>
+        <details
+          class="feature-card-details"
+          data-stop-toggle="true"
+          @click="${this._stopCardToggle}"
+        >
+          <summary data-stop-toggle="true">${this.t.details}</summary>
+          <p class="feature-description">${item.description}</p>
+        </details>
+      </div>
+    `
+  }
+
   _renderBlockCheckbox(item) {
     const isDisabled = HAXStore.requiredPrimitives.has(item.tag) ? true : false;
     return html`
@@ -816,6 +992,68 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     const value = e && e.target ? e.target.value : 'expert'
     this.audience = value
   }
+  _isCardInteraction(e) {
+    const path = e && e.composedPath ? e.composedPath() : []
+    for (const node of path) {
+      if (!node) {
+        continue
+      }
+      if (
+        node.getAttribute &&
+        node.getAttribute('data-stop-toggle') === 'true'
+      ) {
+        return true
+      }
+      if (!node.tagName) {
+        continue
+      }
+      const tag = node.tagName.toLowerCase()
+      if (
+        tag === 'input' ||
+        tag === 'button' ||
+        tag === 'a' ||
+        tag === 'summary' ||
+        tag === 'details' ||
+        tag === 'simple-icon-button-lite'
+      ) {
+        return true
+      }
+    }
+    return false
+  }
+
+  _featureCardClicked(e) {
+    if (this._isCardInteraction(e)) {
+      return
+    }
+    const key = e && e.currentTarget ? e.currentTarget.dataset.key : null
+    if (!key) {
+      return
+    }
+    this._setFeatureChecked(key, !this._isFeatureChecked(key))
+  }
+
+  _featureCardKeydown(e) {
+    const key = e && e.key ? e.key : ''
+    if (key !== ' ' && key !== 'Enter') {
+      return
+    }
+    if (this._isCardInteraction(e)) {
+      return
+    }
+    e.preventDefault()
+    const featureKey = e && e.currentTarget ? e.currentTarget.dataset.key : null
+    if (!featureKey) {
+      return
+    }
+    this._setFeatureChecked(featureKey, !this._isFeatureChecked(featureKey))
+  }
+
+  _stopCardToggle(e) {
+    if (e) {
+      e.stopPropagation()
+    }
+  }
 
   _checkboxChanged(e){
     const input = e.currentTarget;
@@ -823,10 +1061,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
     const { key } = input.dataset;
 
     if(key){
-      this.features = {
-        ...this.features,
-        [key]: input.checked,
-      }
+      this._setFeatureChecked(key, input.checked)
       return;
     }
   }
@@ -884,14 +1119,20 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
   }
 
   _platformConfigForExport() {
-    const allowedBlocks = Array.from(this.allowedBlocks || []).filter(
-      (tag) => !HAXStore.requiredPrimitives.has(tag),
-    )
+    let allowedBlocks = []
+    if (this.allowedBlocks === null) {
+      allowedBlocks = null
+    } else {
+      allowedBlocks = Array.from(this.allowedBlocks || []).filter(
+        (tag) => !HAXStore.requiredPrimitives.has(tag),
+      )
+      allowedBlocks.sort()
+    }
 
     return {
       audience: this.audience,
       features: this.features,
-      allowedBlocks: allowedBlocks.sort(),
+      allowedBlocks: allowedBlocks,
     }
   }
 

@@ -1628,12 +1628,24 @@ class HAXCMSSiteEditor extends LitElement {
     }
     const detail = e && e.detail ? JSON.parse(JSON.stringify(e.detail)) : {};
     const allowedBlocksDefined = detail.allowedBlocksDefined === true;
-    const allowedBlocks = Array.isArray(detail.allowedBlocks)
+    const allowedBlocksValue = Object.prototype.hasOwnProperty.call(
+      detail,
+      "allowedBlocks",
+    )
       ? detail.allowedBlocks
       : [];
     const platform = {};
     if (allowedBlocksDefined) {
-      platform.allowedBlocks = allowedBlocks;
+      if (allowedBlocksValue === null) {
+        platform.allowedBlocks = null;
+      } else if (Array.isArray(allowedBlocksValue)) {
+        platform.allowedBlocks =
+          allowedBlocksValue.length === 0 ? null : allowedBlocksValue;
+      } else {
+        platform.allowedBlocks = null;
+      }
+    } else {
+      platform.allowedBlocks = [];
     }
     this.querySelector("#allowedblocksajax").body = {
       jwt: this.jwt,

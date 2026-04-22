@@ -66,6 +66,46 @@ describe("haxcms-elements inline block render safety", () => {
   });
 });
 
+describe("haxcms-elements allowed blocks semantics", () => {
+  let originalManifest;
+
+  beforeEach(() => {
+    originalManifest = store.manifest;
+  });
+
+  afterEach(() => {
+    store.manifest = originalManifest;
+  });
+
+  it("treats null as no optional blocks and [] as undefined allow-list", async () => {
+    store.manifest = {
+      metadata: {
+        platform: {
+          allowedBlocks: null,
+        },
+      },
+      items: [],
+    };
+
+    expect(store.platformConfig.allowedBlocks).to.equal(null);
+    expect(store.platformConfig.allowedBlocksDefined).to.equal(true);
+    expect(store.platformAllows("video-player")).to.equal(false);
+
+    store.manifest = {
+      metadata: {
+        platform: {
+          allowedBlocks: [],
+        },
+      },
+      items: [],
+    };
+
+    expect(store.platformConfig.allowedBlocksDefined).to.equal(false);
+    expect(store.platformConfig.allowedBlocks.size).to.equal(0);
+    expect(store.platformAllows("video-player")).to.equal(true);
+  });
+});
+
 /*
 describe("A11y/chai axe tests", () => {
   it("haxcms-elements passes accessibility test", async () => {

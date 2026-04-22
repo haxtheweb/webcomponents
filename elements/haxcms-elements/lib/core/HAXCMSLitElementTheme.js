@@ -139,6 +139,15 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
     globalThis.dispatchEvent(new PopStateEvent("popstate"));
     copyToClipboard(headingLink, "Anchor link copied!");
   }
+  _syncResponsiveStoreState() {
+    if (
+      typeof this.responsiveSize === "string" &&
+      this.responsiveSize !== "" &&
+      store.responsiveSize !== this.responsiveSize
+    ) {
+      store.responsiveSize = this.responsiveSize;
+    }
+  }
   static get properties() {
     let props = {};
     if (super.properties) {
@@ -246,6 +255,7 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       this.contentContainer =
         this.shadowRoot.querySelector("#contentcontainer");
     }
+    this._syncResponsiveStoreState();
     // update the global managed CSS styles so we can "theme" the content
     // witout leaning on ::slotted which doesn't work always
     render(this.HAXCMSGlobalStyleSheetContent(), store.themeStyleElement);
@@ -321,6 +331,9 @@ class HAXCMSLitElementTheme extends HAXCMSTheme(
       }
       if (propName == "color") {
         this._colorChanged(this[propName], oldValue);
+      }
+      if (propName == "responsiveSize") {
+        this._syncResponsiveStoreState();
       }
       if (propName == "contentContainer") {
         // fire an to match notify

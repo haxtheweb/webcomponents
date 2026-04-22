@@ -34,6 +34,7 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
       recordAudio: "Record audio",
       cancel: "Cancel",
       uploadMedia: "Upload media",
+      uploadDisabled: "Uploading media is disabled for this site",
     };
     this.registerLocalization({
       context: this,
@@ -43,6 +44,15 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
 
   static get tag() {
     return "hax-upload-field";
+  }
+  _uploadsAllowed() {
+    if (
+      HAXStore &&
+      typeof HAXStore.platformAllows === "function"
+    ) {
+      return HAXStore.platformAllows("uploadMedia");
+    }
+    return true;
   }
 
   _canUpload() {
@@ -63,6 +73,14 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
    * Respond to uploading a file
    */
   _fileAboutToUpload(e) {
+    if (!this._uploadsAllowed()) {
+      e.preventDefault();
+      e.stopPropagation();
+      HAXStore.toast(this.t.uploadDisabled, 5000);
+      this.__allowUpload = false;
+      this.shadowRoot.querySelector("#fileupload").files = [];
+      return;
+    }
     if (this._canUpload()) {
       // cancel the event so we can jump in
       e.preventDefault();
@@ -108,6 +126,11 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
    * This happens when multiple upload targets support the given type
    */
   _haxAppPickerSelection(e) {
+    if (!this._uploadsAllowed()) {
+      this.__allowUpload = false;
+      HAXStore.toast(this.t.uploadDisabled, 5000);
+      return;
+    }
     // details for where to upload the file
     let connection = e.detail.connection;
     this.__appUsed = e.detail;
@@ -194,6 +217,15 @@ class HaxUploadField extends winEventsElement(I18NMixin(SimpleFieldsUpload)) {
   _fileUploadResponse(e) {
     // Handle 403 - JWT needs refresh
     if (e.detail.xhr.status === 403) {
+      if (!this._uploadsAllowed()) {
+        HAXStore.toast(this.t.uploadDisabled, 5000);
+        this.__allowUpload = false;
+        this.__pendingUploadRetry = null;
+        if (this.shadowRoot.querySelector("#fileupload")) {
+          this.shadowRoot.querySelector("#fileupload").files = [];
+        }
+        return;
+      }
       // Store upload context for retry after token refresh
       this.__pendingUploadRetry = {
         baseEndpoint: this.__baseEndpoint,
