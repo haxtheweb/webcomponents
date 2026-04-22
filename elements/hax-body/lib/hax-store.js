@@ -2897,10 +2897,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       ol: {
         title: "Numbered list",
+        description: "Create an ordered list with numbered items.",
         icon: "editor:format-list-numbered",
       },
       ul: {
         title: "Bulleted list",
+        description: "Create an unordered list with bullet points.",
         icon: "editor:format-list-bulleted",
       },
       li: {
@@ -2909,27 +2911,33 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       h1: {
         title: "Heading",
+        description: "Primary heading used for top-level section titles.",
         icon: "hax:h1",
       },
       h2: {
         title: "Heading",
+        description: "Secondary heading used for major section groupings.",
         icon: "hax:h2",
         tags: ["Text", "h2", "html", "heading", "header"],
       },
       h3: {
         title: "Heading",
+        description: "Tertiary heading used for subsection titles.",
         icon: "hax:h3",
       },
       h4: {
         title: "Heading",
+        description: "Fourth-level heading used for nested subsections.",
         icon: "hax:h4",
       },
       h5: {
         title: "Heading",
+        description: "Fifth-level heading for deeper content hierarchy.",
         icon: "hax:h5",
       },
       h6: {
         title: "Heading",
+        description: "Sixth-level heading for the smallest heading hierarchy.",
         icon: "hax:h6",
       },
       strike: {
@@ -2938,6 +2946,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       u: {
         title: "Underline",
+        description: "Underline inline text for emphasis.",
         icon: "editor:format-underlined",
       },
       sub: {
@@ -2980,14 +2989,17 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       blockquote: {
         title: "Block quote",
+        description: "Display quoted text as an emphasized block quote.",
         icon: "editor:format-quote",
       },
       code: {
         title: "Code",
+        description: "Show inline code snippets within text.",
         icon: "icons:code",
       },
       pre: {
         title: "Preformatted",
+        description: "Preserve whitespace and formatting for preformatted text.",
         icon: "icons:code",
       },
       time: {
@@ -3421,7 +3433,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       contentEditable: true,
       gizmo: {
         title: "Highlight",
-        description: "Highlight text within a block of content",
+        description: "Highlight inline text within a block of content.",
         icon: "editor:highlight",
         color: "yellow",
         tags: ["Text", "highlight", "mark", "html"],
@@ -3775,6 +3787,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           contentEditable: true,
           gizmo: {
             title: this.__primsBuilder[tag].title,
+            description: this.__primsBuilder[tag].description,
             icon: this.__primsBuilder[tag].icon,
             tags: this.__primsBuilder[tag].tags || [
               "Text",

@@ -411,7 +411,7 @@ class MediaImage extends DDD {
       canEditSource: true,
       gizmo: {
         title: "Enhanced Image",
-        descrption: "A way of presenting images with various enhancements.",
+        description: "A way of presenting images with various enhancements.",
         icon: "editor:insert-photo",
         color: "indigo",
         tags: [

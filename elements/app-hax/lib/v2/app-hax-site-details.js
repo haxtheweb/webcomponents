@@ -50,13 +50,6 @@ export class AppHaxSiteDetails extends SimpleColors {
         icon: "icons:archive",
       },
     ];
-    if (globalThis.HAXCMSContext && globalThis.HAXCMSContext === "php") {
-      this.detailOps.push({
-        name: "Git",
-        op: "gitList",
-        icon: "hax:git",
-      });
-    }
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
@@ -220,44 +213,31 @@ export class AppHaxSiteDetails extends SimpleColors {
       store.manifest.items.filter((item) => item.id === siteID).pop(),
     );
 
-    // gitlist opens in a new window
-    if (op === "gitList") {
-      // php library is basis for this button, rare instance
-      if (globalThis.HAXCMSContext === "php") {
-        // open link in new window
-        globalThis.open(
-          `gitlist/${site.metadata.site.name}`,
-          "_blank",
-          "noopener noreferrer",
-        );
-      }
-    } else {
-      // Create and configure the confirmation modal
-      const modal = document.createElement("app-hax-confirmation-modal");
-      modal.title = `${opName} ${site.metadata.site.name}?`;
-      modal.message = `Are you sure you want to ${op.replace("Site", "")} ${site.metadata.site.name}?`;
-      modal.confirmText = "Confirm";
-      modal.cancelText = "Cancel";
+    // Create and configure the confirmation modal
+    const modal = document.createElement("app-hax-confirmation-modal");
+    modal.title = `${opName} ${site.metadata.site.name}?`;
+    modal.message = `Are you sure you want to ${op.replace("Site", "")} ${site.metadata.site.name}?`;
+    modal.confirmText = "Confirm";
+    modal.cancelText = "Cancel";
 
-      // Mark archive operations as dangerous for red styling
-      modal.dangerous = op === "archiveSite";
+    // Mark archive operations as dangerous for red styling
+    modal.dangerous = op === "archiveSite";
 
-      modal.confirmAction = this.confirmOperation.bind(this);
-      modal.cancelAction = this.cancelOperation.bind(this);
+    modal.confirmAction = this.confirmOperation.bind(this);
+    modal.cancelAction = this.cancelOperation.bind(this);
 
-      // Add modal to document and show it
-      document.body.appendChild(modal);
-      modal.openModal();
+    // Add modal to document and show it
+    document.body.appendChild(modal);
+    modal.openModal();
 
-      // Clean up modal when it closes
-      modal.addEventListener(
-        "close",
-        () => {
-          document.body.removeChild(modal);
-        },
-        { once: true },
-      );
-    }
+    // Clean up modal when it closes
+    modal.addEventListener(
+      "close",
+      () => {
+        document.body.removeChild(modal);
+      },
+      { once: true },
+    );
   }
 
   cancelOperation() {
@@ -382,10 +362,7 @@ export class AppHaxSiteDetails extends SimpleColors {
                 >
                   <div class="info-item">${item.name.toLowerCase()}</div>
                 </simple-icon-button-lite>
-                <simple-tooltip for="op-${item.op}" position="bottom"
-                  >${item.op != "gitList" ? "" : "View"} ${item.name}
-                  ${item.op != "gitList" ? "Site" : "source"}</simple-tooltip
-                >
+                <simple-tooltip for="op-${item.op}" position="bottom">${item.name}</simple-tooltip>
               </div>
             `,
           )}

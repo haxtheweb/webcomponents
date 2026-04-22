@@ -6,7 +6,7 @@
   "contentEditable": false,
   "gizmo": {
     "title": "course model",
-    "description": "",
+    "description": "Interactive layout for presenting a course concept with details, animation, and knowledge checks.",
     "icon": "3d-rotation",
     "color": "purple",
     "tags": ["Other", "Course", "Model", "Eberly"],

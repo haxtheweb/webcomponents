@@ -13,7 +13,7 @@
   "contentEditable": true,
   "gizmo": {
     "title": "Collection",
-    "description": "",
+    "description": "Container that groups and displays multiple collection items.",
     "icon": "lrn:canban",
     "color": "purple",
     "tags": ["Layout", "collection", "list", "items"],

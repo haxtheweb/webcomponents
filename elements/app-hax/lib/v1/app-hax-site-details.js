@@ -47,13 +47,6 @@ export class AppHaxSiteDetails extends SimpleColors {
         icon: "icons:archive",
       },
     ];
-    if (globalThis.HAXCMSContext && globalThis.HAXCMSContext === "php") {
-      this.detailOps.push({
-        name: "Git",
-        op: "gitList",
-        icon: "hax:git",
-      });
-    }
   }
 
   // properties that you wish to use as data in HTML, CSS, and the updated life-cycle
@@ -219,53 +212,40 @@ export class AppHaxSiteDetails extends SimpleColors {
             }?`,
           ),
         );
-        // gitlist opens in a new window
-        if (op === "gitList") {
-          // php library is basis for this button, rare instance
-          if (globalThis.HAXCMSContext === "php") {
-            // open link in new window
-            globalThis.open(
-              `gitlist/${site.metadata.site.name}`,
-              "_blank",
-              "noopener noreferrer",
-            );
-          }
-        } else {
-          const bcontainer = globalThis.document.createElement("div");
-          const b = globalThis.document.createElement("button");
-          b.innerText = "Confirm";
-          b.classList.add("hax-modal-btn");
-          b.addEventListener("click", this.confirmOperation.bind(this));
-          bcontainer.appendChild(b);
-          const b2 = globalThis.document.createElement("button");
-          b2.innerText = "Cancel";
-          b2.classList.add("hax-modal-btn");
-          b2.classList.add("cancel");
-          b2.addEventListener("click", this.cancelOperation.bind(this));
-          bcontainer.appendChild(b2);
-          this.dispatchEvent(
-            new CustomEvent("simple-modal-show", {
-              bubbles: true,
-              cancelable: true,
-              composed: true,
-              detail: {
-                title: `${opName} ${site.metadata.site.name}?`,
-                elements: { content: div, buttons: bcontainer },
-                invokedBy: target,
-                styles: {
-                  "--simple-modal-titlebar-background": "orange",
-                  "--simple-modal-titlebar-color": "light-dark(black, white)",
-                  "--simple-modal-width": "30vw",
-                  "--simple-modal-min-width": "300px",
-                  "--simple-modal-z-index": "100000000",
-                  "--simple-modal-height": "20vh",
-                  "--simple-modal-min-height": "300px",
-                  "--simple-modal-titlebar-height": "80px",
-                },
+        const bcontainer = globalThis.document.createElement("div");
+        const b = globalThis.document.createElement("button");
+        b.innerText = "Confirm";
+        b.classList.add("hax-modal-btn");
+        b.addEventListener("click", this.confirmOperation.bind(this));
+        bcontainer.appendChild(b);
+        const b2 = globalThis.document.createElement("button");
+        b2.innerText = "Cancel";
+        b2.classList.add("hax-modal-btn");
+        b2.classList.add("cancel");
+        b2.addEventListener("click", this.cancelOperation.bind(this));
+        bcontainer.appendChild(b2);
+        this.dispatchEvent(
+          new CustomEvent("simple-modal-show", {
+            bubbles: true,
+            cancelable: true,
+            composed: true,
+            detail: {
+              title: `${opName} ${site.metadata.site.name}?`,
+              elements: { content: div, buttons: bcontainer },
+              invokedBy: target,
+              styles: {
+                "--simple-modal-titlebar-background": "orange",
+                "--simple-modal-titlebar-color": "light-dark(black, white)",
+                "--simple-modal-width": "30vw",
+                "--simple-modal-min-width": "300px",
+                "--simple-modal-z-index": "100000000",
+                "--simple-modal-height": "20vh",
+                "--simple-modal-min-height": "300px",
+                "--simple-modal-titlebar-height": "80px",
               },
-            }),
-          );
-        }
+            },
+          }),
+        );
       }, 0);
     });
   }
@@ -374,10 +354,7 @@ export class AppHaxSiteDetails extends SimpleColors {
                 >
                   <div class="info-item">${item.name.toLowerCase()}</div>
                 </simple-icon-button-lite>
-                <simple-tooltip for="op-${item.op}" position="bottom"
-                  >${item.op != "gitList" ? "" : "View"} ${item.name}
-                  ${item.op != "gitList" ? "Site" : "source"}</simple-tooltip
-                >
+                <simple-tooltip for="op-${item.op}" position="bottom">${item.name}</simple-tooltip>
               </div>
             `,
           )}

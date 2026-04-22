@@ -12,7 +12,7 @@
     },
     "gizmo": {
         "title": "example-hax-element",
-        "description": "",
+        "description": "Example starter element used to demonstrate HAX configuration and editable properties.",
         "icon": "icons:android",
         "color": "purple",
         "tags": [

@@ -12,7 +12,7 @@
   },
   "gizmo": {
     "title": "Matching Question",
-    "description": "",
+    "description": "Drag-and-drop matching activity that pairs prompts with their correct responses.",
     "icon": "editor:drag-handle",
     "color": "purple",
     "tags": ["Instructional", "matching", "drag and drop", "question"],
