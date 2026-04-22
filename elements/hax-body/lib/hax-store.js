@@ -3424,7 +3424,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         description: "Highlight text within a block of content",
         icon: "editor:highlight",
         color: "yellow",
-        tags: ["Content", "text", "highlight", "mark", "html"],
+        tags: ["Text", "highlight", "mark", "html"],
         handles: [],
         meta: {
           author: "W3C",
