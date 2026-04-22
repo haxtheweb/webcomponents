@@ -84,7 +84,7 @@ irm https://raw.githubusercontent.com/haxtheweb/webcomponents/master/scripts/hax
 ```
 
 ### Manual Install
-*Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](http://es6-features.org/) and build routines compile to es5 to encompass legacy browsers.*
+*Notice: You will need to use [Node](https://nodejs.org/en/) version 6.0 or higher. Verify that you have yarn enabled — if not [install yarn globally](https://yarnpkg.com/lang/en/docs/install/). These web components are written in [ES6](https://tc39.es/ecma262/) and build routines compile to es5 to encompass legacy browsers.*
 
 1. **Install Node.js**
 
