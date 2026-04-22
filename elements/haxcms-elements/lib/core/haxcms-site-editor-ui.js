@@ -117,15 +117,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           background-color: var(--ddd-theme-default-discoveryCoral);
           color: white; /* Ensure text is visible on blue background */
         }
-        haxcms-button-add {
-          color: inherit;
-          background-color: var(--simple-colors-default-theme-grey-1);
-          --simple-toolbar-border-color: var(--ddd-theme-default-limestoneGray);
-        }
-        haxcms-button-add::part(button) {
-          --simple-toolbar-button-border-width: 1px;
-        }
 
+        #cancelbutton::part(button):hover,
+        #cancelbutton::part(button):focus {
+          border-color: var(--ddd-theme-default-discoveryCoral);
+        }
+        
         simple-toolbar-menu-item a {
           color: var(--simple-colors-default-theme-grey-12);
           text-decoration: none;
@@ -134,43 +131,27 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           --simple-toolbar-button-min-width: 100%;
         }
 
-        simple-toolbar-button.top-bar-button::part(button) {
+        simple-toolbar-button.top-bar-button::part(button),
+        haxcms-button-add::part(button) {
           --simple-toolbar-button-border-width: 2px;
         }
-        simple-toolbar-button.merlin:hover,
-        simple-toolbar-button.merlin:active,
-        simple-toolbar-button.merlin:focus,
-        simple-toolbar-button.merlin:focus-visible {
-          background-color: var(--simple-colors-default-theme-purple-1);
-          color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
-        }
+       
+        simple-toolbar-button:not(#editbutton):not(.merlin):hover,
+        simple-toolbar-button:not(#editbutton):not(.merlin):focus,
+        simple-toolbar-button:not(#editbutton):not(.merlin):active,
+        simple-toolbar-button:not(#editbutton):not(.merlin):focus-visible,
         simple-toolbar-menu:hover,
         simple-toolbar-menu:active,
         simple-toolbar-menu:focus,
-        simple-toolbar-menu:focus-visible,
-        simple-toolbar-button:not(.merlin):hover,
-        simple-toolbar-button:not(.merlin):active,
-        simple-toolbar-button:not(.merlin):focus,
-        simple-toolbar-button:not(.merlin):focus-visible,
-        haxcms-button-add:hover,
-        haxcms-button-add:active,
-        haxcms-button-add:focus,
-        haxcms-button-add:focus-visible {
+        simple-toolbar-menu:focus-visible {
           color: var(--hax-ui-color);
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
+          --simple-toolbar-button-hover-bg: light-dark(
+            var(--simple-colors-default-theme-grey-3),
+            var(--simple-colors-default-theme-grey-9)
           );
+          --simple-toolbar-button-hover-border-color: var(--ddd-theme-default-skyBlue);
         }
-        simple-toolbar-button:hover,
-        simple-toolbar-button:active,
-        simple-toolbar-button:focus,
-        simple-toolbar-button:focus-visible {
-          --simple-toolbar-border-color: black;
-        }
+      
         simple-toolbar-button.top-bar-button::part(button):focus-visible,
         simple-toolbar-menu.top-bar-button::part(button):focus-visible,
         haxcms-button-add.top-bar-button::part(button):focus-visible,
@@ -260,7 +241,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
         :host([edit-mode]) simple-toolbar simple-toolbar-button,
         :host([edit-mode]) simple-toolbar simple-toolbar-menu {
-          --simple-toolbar-border-color: #dddddd;
+          --simple-toolbar-border-color: black;
         }
 
         simple-toolbar simple-toolbar-button,
@@ -311,10 +292,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         /* Visually indicate which HAX content tab is active (config / blocks / map / source) */
         .toolbar-buttons simple-toolbar-button[active] {
           --simple-icon-color: var(--ddd-theme-default-skyBlue);
+          --simple-toolbar-button-toggled-border-color: var(--ddd-theme-default-skyBlue);
+          --simple-toolbar-button-toggled-color: var(--ddd-theme-default-skyBlue);
         }
         .toolbar-buttons haxcms-button-add {
           background-color: var(--ddd-theme-default-skyBlue);
           color: white;
+          --simple-toolbar-border-color: light-dark(black, white);
         }
         .toolbar-buttons haxcms-button-add[disabled] {
           background-color: transparent;
@@ -393,14 +377,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         :host([dark-mode]) .topbar-character,
         :host([dark-mode]) .topbar-character {
           color: #e0e0e0;
-          background-color: #222;
         }
         .topbar-character rpg-character {
           --simple-toolbar-border-radius: var(--ddd-radius-md);
           border-radius: var(--ddd-radius-md);
           background-color: var(--simple-colors-default-theme-grey-1);
           border: var(--ddd-border-sm);
-          border-color: var(--ddd-theme-default-limestoneGray);
+          border-color: light-dark(black, white);
           padding: 2px 12px 12px 2px;
           margin: 4px 0 0 0;
           height: 32px;
@@ -409,7 +392,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         .topbar-character:hover rpg-character,
         .topbar-character:focus rpg-character,
         .topbar-character:focus-visible rpg-character {
-          border-color: var(--simple-colors-default-theme-grey-12);
+          border-color: var(--ddd-theme-default-skyBlue);
           background-color: var(--simple-colors-default-theme-grey-2);
         }
 
@@ -422,14 +405,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           font-size: 12px;
         }
         simple-toolbar-menu,
-        simple-toolbar-button {
+        simple-toolbar-button,
+        haxcms-button-add {
           min-width: 48px;
           margin: 0;
-          --simple-toolbar-border-color: var(--ddd-theme-default-limestoneGray);
+          --simple-toolbar-border-color: light-dark(black, white);
         }
         simple-toolbar-menu-item.menu-item-delete simple-toolbar-button {
-          border-top: var(--ddd-border-sm) solid
-            var(--ddd-theme-default-limestoneGray);
+          border-top: var(--ddd-border-sm) solid;
+          border-color: light-dark(black, white);
           margin-top: var(--ddd-spacing-1);
           padding-top: var(--ddd-spacing-2);
         }
