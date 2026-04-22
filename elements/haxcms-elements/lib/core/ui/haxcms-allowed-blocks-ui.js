@@ -25,6 +25,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       allowedBlocksDefined: { type: Boolean, attribute: 'allowed-blocks-defined' },
       blockFilter: { type: String, attribute: 'block-filter' },
       busy: { type: Boolean, reflect: true },
+      inventoryReady: { type: Boolean, attribute: 'inventory-ready' },
       activePreview: { type: String, attribute: false },
       isMobile: { type: Boolean, attribute: 'is-mobile', reflect: true },
     }
@@ -37,6 +38,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
     this.allowedBlocksDefined = false
     this.blockFilter = ''
     this.busy = false
+    this.inventoryReady = false
     this.activePreview = null
     this.isMobile = false
     this.configurableHiddenTags = new Set([
@@ -67,6 +69,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
       save: 'Save',
       noDescription: 'No description available.',
       details: 'Details',
+      loadingInventory: 'Loading full block inventory…',
     }
 
     this.registerLocalization({
@@ -545,6 +548,20 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
 
       const currentGizmos = toJS(HAXStore.gizmoList)
       const gizmos = Array.isArray(currentGizmos) ? currentGizmos : []
+      const appStoreData = toJS(HAXStore.__appStoreData)
+      const autoloader =
+        appStoreData && appStoreData.autoloader ? appStoreData.autoloader : null
+      const hasAutoloaderInventory = !!(
+        autoloader &&
+        ((Array.isArray(autoloader) && autoloader.length > 0) ||
+          (!Array.isArray(autoloader) &&
+            typeof autoloader === 'object' &&
+            Object.keys(autoloader).length > 0))
+      )
+      const appStoreLoaded = !!toJS(HAXStore.appStoreLoaded)
+      const shouldWaitForStableInventory =
+        hasAutoloaderInventory && !appStoreLoaded
+      this.inventoryReady = !shouldWaitForStableInventory
       const blocks = gizmos.filter(
         (item) =>
           !(
@@ -553,7 +570,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
               (item.meta.hidden && !this._isConfigurableHiddenTag(item.tag)))
           ),
       )
-      this.haxBlocks = blocks
+      this.haxBlocks = shouldWaitForStableInventory ? [] : blocks
 
       const platformConfig = toJS(HAXStore.platformConfig)
       const allowedBlocks = platformConfig ? platformConfig.allowedBlocks : undefined
@@ -613,7 +630,9 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
         !HAXStore.requiredPrimitives.has(b.tag) &&
         this.allowedBlocks.has(b.tag),
     ).length
-    const groupedBlocks = this._groupBlocksByCategory(blocks)
+    const groupedBlocks = this.inventoryReady
+      ? this._groupBlocksByCategory(blocks)
+      : []
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
@@ -626,6 +645,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                   id="blockFilter"
                   type="text"
                   .value=${this.blockFilter}
+                  ?disabled=${!this.inventoryReady}
                   @input=${this._blockFilterChanged}
                 />
               </div>
@@ -634,6 +654,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                   icon="icons:select-all"
                   label="${this.t.selectAll}"
                   title="${this.t.selectAll}"
+                  ?disabled=${!this.inventoryReady}
                   data-category="all-blocks"
                   @click="${this._selectAll}"
                   >Select All</simple-icon-button-lite
@@ -642,6 +663,7 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
                   icon="icons:select-all"
                   label="${this.t.deselectAll}"
                   title="${this.t.deselectAll}"
+                  ?disabled=${!this.inventoryReady}
                   data-category="all-blocks"
                   @click="${this._deselectAll}"
                   >Deselect All</simple-icon-button-lite
@@ -649,10 +671,13 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
               </div>
             </div>
             <div class="note">
-              ${toggleableSelected} selected / ${toggleableTotal} available
-              ${HAXStore.requiredPrimitives.size
-                ? html`<span> • ${this.t.requiredTextNote}</span>`
-                : ''}
+              ${this.inventoryReady
+                ? html`${toggleableSelected} selected / ${toggleableTotal}
+                      available
+                      ${HAXStore.requiredPrimitives.size
+                        ? html`<span> • ${this.t.requiredTextNote}</span>`
+                        : ''}`
+                : html`${this.t.loadingInventory}`}
             </div>
             <div class="blocks-list">
               ${groupedBlocks.map(
@@ -734,7 +759,11 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
           </div>
         </div>
         <div class="actions">
-          <button class="action" @click="${this._saveAllowedBlocks}">
+          <button
+            class="action"
+            ?disabled=${this.busy || !this.inventoryReady}
+            @click="${this._saveAllowedBlocks}"
+          >
             ${this.t.save}
           </button>
         </div>
@@ -1135,6 +1164,10 @@ class HAXCMSAllowedBlocksUI extends HAXCMSI18NMixin(DDD) {
   }
 
   async _saveAllowedBlocks() {
+    if (!this.inventoryReady) {
+      HAXStore.toast(this.t.loadingInventory, 3000, {}, 'fit-bottom')
+      return
+    }
     try {
       this.busy = true
       const allowedBlocks = this._allowedBlocksForSave()
