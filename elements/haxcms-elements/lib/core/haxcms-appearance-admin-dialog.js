@@ -383,6 +383,16 @@ class HAXCMSAppearanceAdminDialog extends DDD {
       return "";
     }
     if (thumbnail.indexOf("@haxtheweb/") === 0) {
+      const scopeMarker = "/@haxtheweb/";
+      const markerIndex = import.meta.url.indexOf(scopeMarker);
+      if (markerIndex !== -1) {
+        const scopedBase = import.meta.url.substring(
+          0,
+          markerIndex + scopeMarker.length,
+        );
+        const packagePath = thumbnail.replace("@haxtheweb/", "");
+        return `${scopedBase}${packagePath}`;
+      }
       let basePath = "";
       if (
         globalThis.WCAutoloadBasePath &&
@@ -394,13 +404,15 @@ class HAXCMSAppearanceAdminDialog extends DDD {
         typeof globalThis.WCGlobalBasePath === "string"
       ) {
         basePath = globalThis.WCGlobalBasePath;
-      } else {
-        basePath = "/node_modules/";
       }
-      if (basePath.charAt(basePath.length - 1) !== "/") {
-        basePath += "/";
+      if (basePath) {
+        if (basePath.charAt(basePath.length - 1) !== "/") {
+          basePath += "/";
+        }
+        return `${basePath}${thumbnail}`;
       }
-      return `${basePath}${thumbnail}`;
+      const packagePath = `../../../../${thumbnail}`;
+      return new URL(packagePath, import.meta.url).href;
     }
     return thumbnail;
   }

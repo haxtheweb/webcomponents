@@ -341,6 +341,45 @@ class HAXCMSThemePicker extends DDD {
     return {};
   }
 
+  _resolveThemeThumbnail(thumbnail = "") {
+    if (!thumbnail || typeof thumbnail !== "string") {
+      return "";
+    }
+    if (thumbnail.indexOf("@haxtheweb/") === 0) {
+      const scopeMarker = "/@haxtheweb/";
+      const markerIndex = import.meta.url.indexOf(scopeMarker);
+      if (markerIndex !== -1) {
+        const scopedBase = import.meta.url.substring(
+          0,
+          markerIndex + scopeMarker.length,
+        );
+        const packagePath = thumbnail.replace("@haxtheweb/", "");
+        return `${scopedBase}${packagePath}`;
+      }
+      let basePath = "";
+      if (
+        globalThis.WCAutoloadBasePath &&
+        typeof globalThis.WCAutoloadBasePath === "string"
+      ) {
+        basePath = globalThis.WCAutoloadBasePath;
+      } else if (
+        globalThis.WCGlobalBasePath &&
+        typeof globalThis.WCGlobalBasePath === "string"
+      ) {
+        basePath = globalThis.WCGlobalBasePath;
+      }
+      if (basePath) {
+        if (basePath.charAt(basePath.length - 1) !== "/") {
+          basePath += "/";
+        }
+        return `${basePath}${thumbnail}`;
+      }
+      const packagePath = `../../../../${thumbnail}`;
+      return new URL(packagePath, import.meta.url).href;
+    }
+    return thumbnail;
+  }
+
   _normalizeOption(option) {
     if (!option && option !== 0) {
       return null;
@@ -365,7 +404,9 @@ class HAXCMSThemePicker extends DDD {
       registryTheme.name ||
       registryTheme.title ||
       value;
-    const thumbnail = raw.thumbnail || raw.preview || registryTheme.thumbnail || "";
+    const thumbnail = this._resolveThemeThumbnail(
+      raw.thumbnail || raw.preview || registryTheme.thumbnail || "",
+    );
     const hidden = this._isTruthy(raw.hidden) || this._isTruthy(registryTheme.hidden);
     const terrible =
       this._isTruthy(raw.terrible) ||
