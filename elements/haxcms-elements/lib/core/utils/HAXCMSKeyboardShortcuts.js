@@ -123,6 +123,7 @@ class HAXCMSKeyboardShortcuts {
    */
   _handleKeydown(e) {
     if (!this.enabled) return;
+    if (store.adminMode) return;
 
     // Don't intercept if user is typing in an input field (unless in HAX edit mode)
     const activeElement = globalThis.document.activeElement;

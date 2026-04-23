@@ -203,7 +203,19 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       }
     }
   }
-  _updateActiveItemContent(data) {
+  _runPendingPageLoad(previousLocation = null, previousItemId = null) {
+    const currentItem = toJS(store.activeItem);
+    const currentItemId = currentItem && currentItem.id ? currentItem.id : null;
+    if (
+      this.__pendingPageLoad ||
+      (this.activeItemLocation && this.activeItemLocation !== previousLocation) ||
+      (currentItemId && previousItemId && currentItemId !== previousItemId)
+    ) {
+      this.__pendingPageLoad = false;
+      this.loadPageData();
+    }
+  }
+  _updateActiveItemContent(data, activeItem = null) {
     if (data) {
       let tmp = globalThis.document.createElement("div");
       tmp.innerHTML = data;
@@ -214,9 +226,13 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       // cheat to ensure we get a rebuild of the content in case
       // they only modified page title / other page-break based details
       this.__pageContent = data;
+      const resolvedActiveItem = activeItem ? activeItem : toJS(store.activeItem);
+      if (resolvedActiveItem && resolvedActiveItem.id) {
+        this.__pageContentOwner = resolvedActiveItem.id;
+      }
       this._activeItemContentChanged(
         this.__pageContent,
-        toJS(store.activeItem),
+        resolvedActiveItem,
       );
     }
     // punt, we didn't find anything
@@ -244,6 +260,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       frag.appendChild(p);
       wipeSlot(store.themeElement, "*");
       store.themeElement.appendChild(frag);
+      this._setThemeBusyState(false);
     }
   }
   // interenal routes supply their own component which we render
@@ -259,8 +276,11 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             frag.appendChild(el);
             wipeSlot(store.themeElement, "*");
             store.themeElement.appendChild(frag);
+            this._setThemeBusyState(false);
           },
         );
+      } else {
+        this._setThemeBusyState(false);
       }
     }
   }
@@ -269,36 +289,68 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    */
   async loadPageData() {
     // file required or we have nothing; other two mixed in for pathing
-    if (this.activeItemLocation && !this.loading) {
-      this.loading = true;
-      let url = `${this.outlineLocation}${this.activeItemLocation}`;
-      if (this._timeStamp) {
-        if (url.indexOf("?") != -1) {
-          url += `&${this._timeStamp}`;
-        } else {
-          url += `?${this._timeStamp}`;
-        }
-      }
-      if (this.activeItemLocation === "hax-internal-route.html") {
-        this.renderInternalRoute();
-        this.loading = false;
+    if (!this.activeItemLocation) {
+      return;
+    }
+    // queue requests while one is in-flight so route switching stays responsive
+    if (this.loading) {
+      this.__pendingPageLoad = true;
+      return;
+    }
+    this.loading = true;
+    this.__pendingPageLoad = false;
+    this._setThemeBusyState(true);
+    const requestedLocation = this.activeItemLocation;
+    const requestedItem = toJS(store.activeItem);
+    const requestedItemId =
+      requestedItem && requestedItem.id ? requestedItem.id : null;
+    let url = `${this.outlineLocation}${requestedLocation}`;
+    if (this._timeStamp) {
+      if (url.indexOf("?") != -1) {
+        url += `&${this._timeStamp}`;
       } else {
-        await fetch(url)
-          .then((response) => {
-            if (response.ok) {
-              return response.text();
-            } else {
-              this.display404Error();
-            }
-          })
-          .then((data) => {
-            this._updateActiveItemContent(data);
-            this.loading = false;
-          })
-          .catch((err) => {
-            this.lastErrorChanged(err);
-          });
+        url += `?${this._timeStamp}`;
       }
+    }
+    if (requestedLocation === "hax-internal-route.html") {
+      this.renderInternalRoute();
+      this.loading = false;
+      this._runPendingPageLoad(requestedLocation, requestedItemId);
+    } else {
+      await fetch(url)
+        .then((response) => {
+          if (response.ok) {
+            return response.text();
+          } else {
+            this.display404Error();
+            this.loading = false;
+            this._runPendingPageLoad(requestedLocation, requestedItemId);
+            return null;
+          }
+        })
+        .then((data) => {
+          if (data === null || typeof data === typeof undefined) {
+            return;
+          }
+          const currentItem = toJS(store.activeItem);
+          const locationUnchanged = this.activeItemLocation === requestedLocation;
+          const itemUnchanged =
+            requestedItemId === null ||
+            (currentItem &&
+              currentItem.id &&
+              currentItem.id === requestedItemId);
+          if (locationUnchanged && itemUnchanged) {
+            this._updateActiveItemContent(data, currentItem);
+          }
+          this.loading = false;
+          this._runPendingPageLoad(requestedLocation, requestedItemId);
+        })
+        .catch((err) => {
+          this.loading = false;
+          this._setThemeBusyState(false);
+          this._runPendingPageLoad(requestedLocation, requestedItemId);
+          this.lastErrorChanged(err);
+        });
     }
   }
   /**
@@ -509,6 +561,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       store.themeElement.classList.add("haxcms-theme-element");
       this._applyThemePalette(store.themeElement, this.themeData);
       this.appendChild(store.themeElement);
+      this._scheduleThemePaletteReapply(this.themeData);
     }
   }
 
@@ -537,16 +590,74 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     return palette;
   }
 
-  _applyThemePalette(themeElement, themeData) {
+  _applyThemePalette(themeElement, themeData, forceReapply = false) {
     if (!themeElement) {
       return;
     }
     const palette = this._getThemePalette(themeData);
     if (palette) {
-      themeElement.setAttribute("data-palette", palette);
+      const normalizedPalette = String(palette).trim();
+      if (
+        forceReapply &&
+        themeElement.getAttribute("data-palette") === normalizedPalette
+      ) {
+        themeElement.removeAttribute("data-palette");
+      }
+      themeElement.setAttribute("data-palette", normalizedPalette);
+      this._ensureDDDPaletteStyles();
     } else {
       themeElement.removeAttribute("data-palette");
     }
+  }
+
+  _ensureDDDPaletteStyles() {
+    if (
+      globalThis.DesignSystemManager &&
+      globalThis.DesignSystemManager.requestAvailability
+    ) {
+      const designSystemManager =
+        globalThis.DesignSystemManager.requestAvailability();
+      if (
+        designSystemManager &&
+        designSystemManager.systems &&
+        designSystemManager.systems.ddd
+      ) {
+        designSystemManager.active = "ddd";
+      }
+    }
+  }
+
+  _scheduleThemePaletteReapply(themeData, delay = 80) {
+    this.__themePaletteReapplyStamp = this.__themePaletteReapplyStamp + 1;
+    const stamp = this.__themePaletteReapplyStamp;
+    if (this.__themePaletteReapplyTimer) {
+      clearTimeout(this.__themePaletteReapplyTimer);
+    }
+    this.__themePaletteReapplyTimer = setTimeout(() => {
+      if (stamp !== this.__themePaletteReapplyStamp) {
+        return;
+      }
+      this._applyThemePalette(store.themeElement, themeData, true);
+    }, delay);
+  }
+
+  _setThemeBusyState(isBusy) {
+    if (store.themeElement) {
+      if (isBusy) {
+        store.themeElement.setAttribute("aria-busy", "true");
+      } else {
+        store.themeElement.removeAttribute("aria-busy");
+      }
+    }
+  }
+
+  _clearStaleThemePresentation() {
+    this.__pageContent = "";
+    this.__pageContentOwner = null;
+    if (store.themeElement) {
+      wipeSlot(store.themeElement, "*");
+    }
+    this._setThemeBusyState(true);
   }
 
   /**
@@ -591,6 +702,9 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   constructor() {
     super();
     this.__pageContent = "";
+    this.__pageContentOwner = null;
+    this.__activeItemId = null;
+    this.__pendingPageLoad = false;
     this.windowControllers = new AbortController();
     this.t = {
       ...super.t,
@@ -619,6 +733,8 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
     this.loading = false;
     this.__imported = {};
     this.themeLoaded = false;
+    this.__themePaletteReapplyTimer = null;
+    this.__themePaletteReapplyStamp = 0;
     this.outlineLocation = "";
     this.activeItemLocation = "";
     HAXcmsStore.storePieces.siteBuilder = this;
@@ -792,10 +908,23 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       });
       autorun((reaction) => {
         const activeItem = toJS(store.activeItem);
+        if (!activeItem || !activeItem.id) {
+          this.__activeItemId = null;
+        } else if (activeItem.id !== this.__activeItemId) {
+          this.__activeItemId = activeItem.id;
+          if (this.__pageContentOwner !== activeItem.id) {
+            this._clearStaleThemePresentation();
+          }
+        }
         // often, active item is in the process of being updated on a page save
         // this generates potential delay in presentation of the node, leading to the
         // a short time where activeItem is not accurate while manifest is being rebuilt
-        if (activeItem && this.__pageContent) {
+        if (
+          activeItem &&
+          activeItem.id &&
+          this.__pageContent &&
+          this.__pageContentOwner === activeItem.id
+        ) {
           this._activeItemContentChanged(this.__pageContent, activeItem);
         }
         if (activeItem && activeItem.location) {
@@ -810,6 +939,10 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
    * Detached life cycle
    */
   disconnectedCallback() {
+    if (this.__themePaletteReapplyTimer) {
+      clearTimeout(this.__themePaletteReapplyTimer);
+      this.__themePaletteReapplyTimer = null;
+    }
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
@@ -961,6 +1094,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
             }),
           );
         }
+        this._setThemeBusyState(false);
         // if there are, dynamically import them but only if we don't have a global manager
         if (
           !globalThis.WCAutoload &&
@@ -1030,6 +1164,7 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
   _themeChanged(newValue, oldValue) {
     if (newValue) {
       this._applyThemePalette(store.themeElement, newValue);
+      this._scheduleThemePaletteReapply(newValue);
       this.themeLoaded = false;
       let theme = newValue;
       // create the 'theme' as a new element

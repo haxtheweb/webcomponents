@@ -17,6 +17,7 @@ import "@haxtheweb/rpg-character/rpg-character.js";
 import "./ui/app-hax-top-bar.js";
 import "./ui/app-hax-user-menu.js";
 import "./ui/app-hax-user-menu-button.js";
+import "./ui/hax-confirm-dialog.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import "@haxtheweb/super-daemon/lib/super-daemon-search.js";
@@ -1614,6 +1615,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.__winEvents = {
       "can-redo-changed": "_redoChanged",
       "can-undo-changed": "_undoChanged",
+      "haxcms-open-theme-preview-program": "_openThemePreviewFromProgram",
       "hax-drop-focus-event": "_expandSettingsPanel",
       "jwt-logged-in": "_jwtLoggedIn",
       popstate: "_adminRoutePopState",
@@ -1631,8 +1633,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     this.soundIcon = "";
     this.__disposer = this.__disposer || [];
     this.__currentAdminRoutePath = null;
+    this.__themePreviewImporting = null;
+    this.__appearancePreviewSelection = null;
     this.t = this.t || {};
     this._configureWasFocused = false; // Track toggle state for Ctrl+Shift+4
+    this.__themePreviewReady = false;
+    this.themePreviewOpen = false;
 
     // default sub-contexts for Merlin before platform filtering
     this.platformContexts = {
@@ -3073,6 +3079,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           </app-hax-user-menu>
         </div>
       </app-hax-top-bar>
+      ${this.themePreviewOpen && this.__themePreviewReady
+        ? html`<haxcms-theme-preview-panel
+            open
+            @haxcms-theme-preview-cancel=${this._handleThemePreviewCancel}
+            @haxcms-theme-preview-open-admin=${this._handleThemePreviewOpenAdmin}
+          ></haxcms-theme-preview-panel>`
+        : ``}
     `;
   }
 
@@ -3331,6 +3344,27 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         context: "admin",
         eventName: "super-daemon-element-method",
         path: "CMS/admin/appearance",
+      });
+      SuperDaemonInstance.defineOption({
+        title: "Admin - Theme preview",
+        icon: "image:style",
+        tags: [
+          "CMS",
+          "admin",
+          "theme",
+          "palette",
+          "preview",
+          "off-canvas",
+          "operation",
+          "command",
+        ],
+        value: {
+          target: this,
+          method: "_openThemePreview",
+        },
+        context: "admin",
+        eventName: "super-daemon-element-method",
+        path: "CMS/admin/theme-preview",
       });
     }
     if (store.platformAllows("seoManifest")) {
@@ -3699,80 +3733,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         },
       },
     });
-    // change theme program
-    SuperDaemonInstance.defineOption({
-      title: "Preview a different theme",
-      icon: "image:style",
-      tags: ["Developer", "theme"],
-      eventName: "super-daemon-run-program",
-      path: ">settings/theme",
-      context: [">"],
-      more: html`<span
-        >Change theme just for the current browsing session</span
-      >`,
-      voice: "change theme (temporarily)",
-      value: {
-        name: "Preview a different theme",
-        context: ">",
-        program: async (input, values) => {
-          let results = [];
-
-          // Load themes dynamically from generated themes.json
-          try {
-            const themesResponse = await fetch(
-              new URL("../themes.json", import.meta.url).href,
-            );
-            const themesData = await themesResponse.json();
-
-            Object.keys(themesData).forEach((elementName) => {
-              const theme = themesData[elementName];
-              if (
-                input == "" ||
-                elementName.includes(input) ||
-                theme.name.toLowerCase().includes(input.toLowerCase())
-              ) {
-                results.push({
-                  title: theme.name,
-                  icon: "image:style",
-                  tags: ["theme"],
-                  value: {
-                    target: globalThis.HAXCMS,
-                    method: "setTheme",
-                    args: [elementName],
-                  },
-                  eventName: "super-daemon-element-method",
-                  context: [">", ">settings/theme/" + elementName],
-                  path: ">settings/theme/" + elementName,
-                });
-              }
-            });
-          } catch (error) {
-            console.warn(
-              "Failed to load themes.json, falling back to basic theme:",
-              error,
-            );
-            // Fallback to a basic theme if themes.json fails to load
-            if (input == "" || "clean-one".includes(input)) {
-              results.push({
-                title: "Clean One",
-                icon: "image:style",
-                tags: ["theme"],
-                value: {
-                  target: globalThis.HAXCMS,
-                  method: "setTheme",
-                  args: ["clean-one"],
-                },
-                eventName: "super-daemon-element-method",
-                context: [">", ">settings/theme/clean-one"],
-                path: ">settings/theme/clean-one",
-              });
-            }
-          }
-
-          return results;
-        },
-      },
-    });
     // change platform audience, only load if the site supports platformConfigs
     SuperDaemonInstance.defineOption({
       title: "Preview audience mode",
@@ -3833,6 +3793,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       value: {
         target: this,
         method: "enableLabExperiments",
+        args: [],
+      },
+    });
+    SuperDaemonInstance.defineOption({
+      title: "Unlock all themes",
+      icon: "image:style",
+      tags: ["Developer", "theme", "hidden", "terrible", "legacy"],
+      eventName: "super-daemon-element-method",
+      path: ">developer/hax/unlockAllThemes",
+      context: [">"],
+      value: {
+        target: this,
+        method: "unlockAllThemes",
         args: [],
       },
     });
@@ -4230,6 +4203,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
     // Listen for keyboard shortcut execution from Merlin
     this.addEventListener("execute-keyboard-shortcut", (e) => {
+      if (store.adminMode) {
+        return;
+      }
       const shortcutKey = e.detail.value.shortcutKey;
       // Parse the shortcut key to get individual components
       const parts = shortcutKey.split("+");
@@ -4247,7 +4223,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         alt,
         meta,
       );
-      if (shortcut && shortcut.callback) {
+      if (shortcut && shortcut.callback && shortcut.condition()) {
         // Create a synthetic keyboard event
         const syntheticEvent = new KeyboardEvent("keydown", {
           key: key,
@@ -4284,21 +4260,43 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     );
   }
 
+  unlockAllThemes() {
+    store.showAllThemes = true;
+    globalThis.dispatchEvent(
+      new CustomEvent("haxcms-theme-picker-refresh", {
+        bubbles: true,
+        composed: true,
+        cancelable: false,
+        detail: true,
+      }),
+    );
+    if (typeof store.playSound === "function") {
+      store.playSound("coin");
+      setTimeout(() => {
+        store.playSound("coin2");
+      }, 120);
+      setTimeout(() => {
+        store.playSound("success");
+      }, 260);
+    }
+    if (
+      SuperDaemonInstance &&
+      typeof SuperDaemonInstance.merlinSpeak === "function"
+    ) {
+      SuperDaemonInstance.merlinSpeak(
+        "All terrible, hidden and legacy themes unlocked. You must choose, but choose wisely.",
+      );
+    }
+  }
+
   // Check if user should see welcome program and trigger it
   checkAndTriggerWelcomeProgram() {
     const isMobileWelcomeSuppressed = () => {
-      if (this.responsiveSize === "xs") {
-        return true;
-      }
       if (globalThis.matchMedia) {
         return globalThis.matchMedia("(max-width: 600px)").matches;
       }
-      return false;
+      return this.responsiveSize === "xs";
     };
-    // Never auto-trigger welcome mini mode on mobile-sized viewports
-    if (isMobileWelcomeSuppressed()) {
-      return;
-    }
     // Only trigger if user is logged in and hasn't seen the welcome before
     if (
       store.isLoggedIn &&
@@ -4306,12 +4304,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     ) {
       // Wait for the store and UI to be fully ready
       const triggerWelcome = () => {
+        const merlinButton =
+          this.shadowRoot && this.shadowRoot.querySelector("#merlin");
         if (
           store.appReady &&
-          this.shadowRoot &&
-          this.shadowRoot.querySelector("#merlin") &&
-          !isMobileWelcomeSuppressed()
+          merlinButton
         ) {
+          // Never auto-trigger welcome mini mode on mobile-sized viewports
+          // and only evaluate this after app readiness to avoid startup false
+          // positives from default responsive values.
+          if (isMobileWelcomeSuppressed()) {
+            return;
+          }
           // Auto-trigger the welcome program using waveWand for mini mode
           SuperDaemonInstance.waveWand(
             [
@@ -4321,23 +4325,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "welcome", // program machine name
               "Show getting started tasks", // display name
             ],
-            this.shadowRoot.querySelector("#merlin"), // target for mini mode
+            merlinButton, // target for mini mode
             "magic", // sound
           );
 
-          // Show a toast to let the user know Merlin is here to help
-          store.toast(
-            "Welcome to HAX! Here's some common tasks",
-            3000,
-            {
-              hat: "knight",
-            },
-          );
         } else {
           // Retry after a short delay if not ready yet
-          if (!isMobileWelcomeSuppressed()) {
-            setTimeout(triggerWelcome, 500);
-          }
+          setTimeout(triggerWelcome, 500);
         }
       };
 
@@ -4690,6 +4684,14 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         attribute: "tray-detail",
         reflect: true,
       },
+      themePreviewOpen: {
+        type: Boolean,
+        attribute: "theme-preview-open",
+        reflect: true,
+      },
+      __themePreviewReady: {
+        type: Boolean,
+      },
       /**
        * Whether we're currently on an internal route
        */
@@ -4769,6 +4771,10 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
+      this.manifestEditMode = toJS(store.adminMode);
+      this.__disposer.push(reaction);
+    });
+    autorun((reaction) => {
       this.pageAllowed = toJS(store.pageAllowed);
       this.__disposer.push(reaction);
     });
@@ -4826,12 +4832,25 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         this.onInternalRoute = false;
         store.pageAllowed = false;
       }
+      if (
+        this.themePreviewOpen &&
+        this._getAdminRoutePathFromLocation() !== "theme-preview"
+      ) {
+        this.__currentAdminRoutePath = "theme-preview";
+        store.adminMode = true;
+        this._setAdminRoutePathOnLocation("theme-preview", "replace");
+      }
       this.__disposer.push(reaction);
     });
     autorun((reaction) => {
       const appReady = toJS(store.appReady);
       const isLoggedIn = toJS(store.isLoggedIn);
       const routePath = this._getAdminRoutePathFromLocation();
+      if (appReady && isLoggedIn && this.themePreviewOpen && routePath !== "theme-preview") {
+        this.__currentAdminRoutePath = "theme-preview";
+        store.adminMode = true;
+        this._setAdminRoutePathOnLocation("theme-preview", "replace");
+      }
       if (appReady && isLoggedIn && routePath && !this.__currentAdminRoutePath) {
         this._applyAdminRoutePath(routePath, 0, true);
       }
@@ -4857,6 +4876,78 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     } else {
       this.__editText = `${this.t.edit} • Ctrl⇧E`;
     }
+  }
+  _closeOpenContextMenus(excludeMenu = null, root = globalThis.document) {
+    if (!root || !root.querySelectorAll) {
+      return;
+    }
+    const menus = root.querySelectorAll("simple-context-menu");
+    menus.forEach((menu) => {
+      if (
+        menu !== excludeMenu &&
+        menu.open &&
+        typeof menu.close === "function"
+      ) {
+        menu.close();
+      }
+    });
+    const descendants = root.querySelectorAll("*");
+    descendants.forEach((node) => {
+      if (node.shadowRoot) {
+        this._closeOpenContextMenus(excludeMenu, node.shadowRoot);
+      }
+    });
+  }
+
+  _openShortcutMenu(button, menu) {
+    if (!button || !menu) {
+      return false;
+    }
+    const rect = button.getBoundingClientRect();
+    if (rect.width === 0 && rect.height === 0) {
+      return false;
+    }
+    this._closeOpenContextMenus(menu);
+    button.focus();
+    if (menu.open) {
+      menu.close();
+    }
+    if (typeof menu.openMenu === "function") {
+      menu.openMenu(button);
+    } else {
+      button.click();
+    }
+    return true;
+  }
+
+  _triggerPageActionsShortcut() {
+    const activeItem = toJS(store.activeItem);
+    const activeId = activeItem && activeItem.id ? activeItem.id : null;
+    let pageBreak = null;
+    if (activeId) {
+      pageBreak = globalThis.document.querySelector(
+        `page-break[item-id="${activeId}"]`,
+      );
+    }
+    if (!pageBreak) {
+      pageBreak = globalThis.document.querySelector("page-break");
+    }
+    if (!pageBreak || !pageBreak.shadowRoot) {
+      return false;
+    }
+    const button = pageBreak.shadowRoot.querySelector("#pageactionsbtn");
+    const menu = pageBreak.shadowRoot.querySelector("#menu");
+    return this._openShortcutMenu(button, menu);
+  }
+
+  _triggerOutlineActionsShortcut() {
+    const operations = store.pageOperationsElement;
+    if (!operations || !operations.isConnected || !operations.shadowRoot) {
+      return false;
+    }
+    const button = operations.shadowRoot.querySelector("#outlineactionsbtn");
+    const menu = operations.shadowRoot.querySelector("simple-context-menu");
+    return this._openShortcutMenu(button, menu);
   }
 
   /**
@@ -4904,7 +4995,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     });
 
     // Numbered shortcuts - contextual based on edit mode
-    // Ctrl+Shift+1 - View source (edit) OR Add page (non-edit)
+    // Ctrl+Shift+1 - View source (edit) OR Edit page (non-edit)
     HAXCMSKeyboardShortcutsInstance.register({
       key: "1",
       ctrl: true,
@@ -4924,21 +5015,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             }
           }
         } else {
-          // Non-edit mode: Add page
-          if (store.platformAllows("addPage")) {
-            const addButton = this.shadowRoot.querySelector("#addpagebutton");
-            if (addButton) {
-              addButton.HAXCMSButtonClick();
-            }
-          }
+          // Non-edit mode: Edit page
+          this._editButtonTap(e);
         }
       },
       condition: () => store.isLoggedIn,
-      description: "View source (edit) / Add page (view)",
+      description: "View source (edit) / Edit page (view)",
       context: "global",
     });
 
-    // Ctrl+Shift+2 - Page structure (edit) OR Site outline (non-edit)
+    // Ctrl+Shift+2 - Page structure (edit) OR Page actions (non-edit)
     HAXCMSKeyboardShortcutsInstance.register({
       key: "2",
       ctrl: true,
@@ -4955,18 +5041,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             }
           }
         } else {
-          // Non-edit mode: Site outline
-          if (store.platformAllows("outlineDesigner")) {
-            this._outlineButtonTap(e);
+          // Non-edit mode: Page actions
+          if (store.platformAllows("pageBreak")) {
+            this._triggerPageActionsShortcut();
           }
         }
       },
       condition: () => store.isLoggedIn,
-      description: "Page structure (edit) / Site outline (view)",
+      description: "Page structure (edit) / Page actions (view)",
       context: "global",
     });
 
-    // Ctrl+Shift+3 - Blocks browser (edit) OR Site settings (non-edit)
+    // Ctrl+Shift+3 - Blocks browser (edit) OR Add page (non-edit)
     HAXCMSKeyboardShortcutsInstance.register({
       key: "3",
       ctrl: true,
@@ -4983,18 +5069,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             }
           }
         } else {
-          // Non-edit mode: Site settings
-          const siteSettingsButton = this.shadowRoot.querySelector("#manifestbtn");
-          if (siteSettingsButton && !siteSettingsButton.disabled) {
-            this._manifestButtonTap({ target: siteSettingsButton });
+          // Non-edit mode: Add page
+          if (store.platformAllows("addPage")) {
+            const addButton = this.shadowRoot.querySelector("#addpagebutton");
+            if (addButton) {
+              addButton.HAXCMSButtonClick();
+            }
           }
         }
       },
       condition: () => store.isLoggedIn,
-      description: "Blocks browser (edit) / Site settings (view)",
+      description: "Blocks browser (edit) / Add page (view)",
       context: "global",
     });
-    // Ctrl+Shift+4 - Configure panel (edit) OR User menu (non-edit)
+    // Ctrl+Shift+4 - Configure panel (edit) OR Site outline actions (non-edit)
     HAXCMSKeyboardShortcutsInstance.register({
       key: "4",
       ctrl: true,
@@ -5007,16 +5095,63 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             HAXStore.haxTray.collapsed = false;
           }
         } else {
-          // Non-edit mode: User menu
-          const userMenuButton = this.shadowRoot.querySelector("#menubtn");
-          if (userMenuButton) {
-            this.toggleMenu();
+          // Non-edit mode: Site outline actions
+          if (store.platformAllows("outlineDesigner")) {
+            this._triggerOutlineActionsShortcut();
           }
         }
       },
       condition: () => store.isLoggedIn,
-      description: "Configure panel (edit) / User menu (view)",
+      description: "Configure panel (edit) / Site outline actions (view)",
       context: "global",
+    });
+
+    // Ctrl+Shift+5 - Outline designer (view mode)
+    HAXCMSKeyboardShortcutsInstance.register({
+      key: "5",
+      ctrl: true,
+      shift: true,
+      callback: (e) => {
+        this._outlineButtonTap(e);
+      },
+      condition: () =>
+        store.isLoggedIn &&
+        !this.editMode &&
+        store.platformAllows("outlineDesigner"),
+      description: "Open site outline designer",
+      context: "view",
+    });
+
+    // Ctrl+Shift+6 - Site settings (view mode)
+    HAXCMSKeyboardShortcutsInstance.register({
+      key: "6",
+      ctrl: true,
+      shift: true,
+      callback: () => {
+        const siteSettingsButton = this.shadowRoot.querySelector("#manifestbtn");
+        if (siteSettingsButton && !siteSettingsButton.disabled) {
+          this._manifestButtonTap({ target: siteSettingsButton });
+        }
+      },
+      condition: () => store.isLoggedIn && !this.editMode,
+      description: "Open site settings menu",
+      context: "view",
+    });
+
+    // Ctrl+Shift+7 - User menu (view mode)
+    HAXCMSKeyboardShortcutsInstance.register({
+      key: "7",
+      ctrl: true,
+      shift: true,
+      callback: () => {
+        const userMenuButton = this.shadowRoot.querySelector("#menubtn");
+        if (userMenuButton) {
+          this.toggleMenu();
+        }
+      },
+      condition: () => store.isLoggedIn && !this.editMode,
+      description: "Open user menu",
+      context: "view",
     });
   }
 
@@ -5042,10 +5177,48 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
 
     if (this.editMode && HAXStore.haxTray.trayDetail === "view-source") {
-      if (!globalThis.confirm(this.t.confirmHtmlSourceExit)) {
-        return false;
-      }
+      this._confirmHtmlSourceExit(e);
+      return false;
     }
+    this._toggleEditMode();
+  }
+  _confirmHtmlSourceExit(e) {
+    let confirmDialog = globalThis.document.createElement("hax-confirm-dialog");
+    confirmDialog.message = this.t.confirmHtmlSourceExit;
+    confirmDialog.confirmLabel = this.t.save;
+    confirmDialog.cancelLabel = this.t.cancel;
+    confirmDialog.closeOnConfirm = false;
+    confirmDialog.confirmCallback = this._toggleEditMode.bind(this);
+    confirmDialog.cancelCallback = () => store.playSound("error");
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: false,
+      detail: {
+        title: "Save before leaving source editor?",
+        styles: {
+          "--simple-modal-titlebar-background": "black",
+          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+          "--simple-modal-width": "560px",
+          "--simple-modal-max-width": "92vw",
+          "--simple-modal-min-width": "320px",
+          "--simple-modal-z-index": "100000000",
+          "--simple-modal-height": "auto",
+          "--simple-modal-min-height": "220px",
+          "--simple-modal-titlebar-height": "80px",
+          "--simple-modal-border-radius": "var(--ddd-radius-md)",
+        },
+        elements: { content: confirmDialog },
+        invokedBy:
+          (e && e.target) || this.shadowRoot.querySelector("#editbutton") || this,
+        clone: false,
+        modal: true,
+        showClose: false,
+      },
+    });
+    globalThis.dispatchEvent(evt);
+  }
+  _toggleEditMode() {
     store.playSound("click");
     this.editMode = !this.editMode;
     // save button shifted to edit
@@ -5083,6 +5256,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       "admin",
       "about",
       "appearance",
+      "theme-preview",
       "site",
       "seo",
       "author",
@@ -5120,11 +5294,13 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   }
   _clearAdminRoutePathFromLocation(historyMode = "replace") {
     this.__currentAdminRoutePath = null;
+    store.adminMode = false;
     this._setAdminRoutePathOnLocation(null, historyMode);
   }
   _adminRouteCapability(path = "") {
     switch (path) {
       case "appearance":
+      case "theme-preview":
         return "themeManifest";
       case "site":
       case "blocks":
@@ -5168,6 +5344,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       return false;
     }
     this.__currentAdminRoutePath = normalizedPath;
+    store.adminMode = true;
     if (routeOptions.skipUrlUpdate) {
       return true;
     }
@@ -5207,6 +5384,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     if (!normalizedPath || !this._adminRouteAllowed(normalizedPath)) {
       return false;
     }
+    if (normalizedPath !== "theme-preview" && this.themePreviewOpen) {
+      this._closeThemePreview(false);
+    }
     const invokedTarget =
       this.shadowRoot && this.shadowRoot.querySelector("#manifestbtn")
         ? this.shadowRoot.querySelector("#manifestbtn")
@@ -5220,6 +5400,16 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         return true;
       case "appearance":
         this._openAppearanceSettings(true, "Appearance", routeOptions);
+        return true;
+      case "theme-preview":
+        globalThis.dispatchEvent(
+          new CustomEvent("simple-modal-hide", {
+            bubbles: true,
+            cancelable: true,
+            detail: {},
+          }),
+        );
+        this._openThemePreview(null, routeOptions);
         return true;
       case "site":
         this._openSiteSettingsForm(
@@ -5314,11 +5504,25 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   _adminRoutePopState(e) {
     const routePath = this._getAdminRoutePathFromLocation();
     if (routePath) {
+      store.adminMode = true;
       this._applyAdminRoutePath(routePath);
       return;
     }
+    if (this.themePreviewOpen) {
+      this.__currentAdminRoutePath = "theme-preview";
+      store.adminMode = true;
+      this._setAdminRoutePathOnLocation("theme-preview", "replace");
+      return;
+    }
     if (this.__currentAdminRoutePath) {
+      if (this.__currentAdminRoutePath === "theme-preview") {
+        this._closeThemePreview(false);
+        this.__currentAdminRoutePath = null;
+        store.adminMode = false;
+        return;
+      }
       this.__currentAdminRoutePath = null;
+      store.adminMode = false;
       globalThis.dispatchEvent(
         new CustomEvent("simple-modal-hide", {
           bubbles: true,
@@ -5329,12 +5533,26 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
   }
   _simpleModalClosed(e) {
+    const initialRoutePath = this._getAdminRoutePathFromLocation();
+    if (
+      this.__currentAdminRoutePath === "theme-preview" ||
+      initialRoutePath === "theme-preview"
+    ) {
+      return;
+    }
     const hasAdminContext =
-      this.__currentAdminRoutePath || this._getAdminRoutePathFromLocation();
+      this.__currentAdminRoutePath || initialRoutePath;
     if (!hasAdminContext) {
       return;
     }
     setTimeout(() => {
+      const routePath = this._getAdminRoutePathFromLocation();
+      if (
+        this.__currentAdminRoutePath === "theme-preview" ||
+        routePath === "theme-preview"
+      ) {
+        return;
+      }
       let modalOpen = false;
       if (globalThis.SimpleModal && globalThis.SimpleModal.requestAvailability) {
         modalOpen = globalThis.SimpleModal.requestAvailability().opened;
@@ -5342,10 +5560,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       if (modalOpen) {
         return;
       }
-      if (this._getAdminRoutePathFromLocation()) {
+      if (routePath) {
         this._clearAdminRoutePathFromLocation("replace");
       } else {
         this.__currentAdminRoutePath = null;
+        store.adminMode = false;
       }
     }, 40);
   }
@@ -5391,6 +5610,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "--simple-modal-max-height": "85vh",
               "--simple-modal-min-height": "400px",
           "--simple-modal-titlebar-height": "80px",
+          "--simple-modal-content-padding": "var(--ddd-spacing-4)",
+          "--simple-modal-buttons-padding":
+            "0 var(--ddd-spacing-4) var(--ddd-spacing-4)",
           "--simple-modal-border-radius": "var(--ddd-radius-md)",
         },
         elements: { content: c },
@@ -5476,16 +5698,151 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     store.playSound("click");
     globalThis.location.href = "x/theme/style-guide";
   }
+  async _openThemePreviewFromProgram(e) {
+    await this._openThemePreview(e);
+  }
+  async _ensureThemePreviewLoaded() {
+    if (this.__themePreviewReady || globalThis.customElements.get("haxcms-theme-preview-panel")) {
+      this.__themePreviewReady = true;
+      return;
+    }
+    if (this.__themePreviewImporting) {
+      await this.__themePreviewImporting;
+      return;
+    }
+    this.__themePreviewImporting = import("./ui/haxcms-theme-preview-panel.js")
+      .then(() => {
+        this.__themePreviewReady = true;
+      })
+      .finally(() => {
+        this.__themePreviewImporting = null;
+      });
+    await this.__themePreviewImporting;
+  }
+  _setThemePreviewCanvasState(isOpen) {
+    if (!store.themeElement) {
+      return;
+    }
+    if (isOpen) {
+      store.themeElement.style.setProperty(
+        "margin-right",
+        "var(--haxcms-theme-preview-width, 420px)",
+      );
+      store.themeElement.style.setProperty(
+        "transition",
+        "margin-right 180ms ease-in-out",
+      );
+    } else {
+      store.themeElement.style.removeProperty("margin-right");
+      store.themeElement.style.removeProperty("transition");
+    }
+  }
+  _closeThemePreview(clearRoute = true, historyMode = "replace") {
+    this.themePreviewOpen = false;
+    this._setThemePreviewCanvasState(false);
+    if (
+      clearRoute &&
+      (this.__currentAdminRoutePath === "theme-preview" ||
+        this._getAdminRoutePathFromLocation() === "theme-preview")
+    ) {
+      this._clearAdminRoutePathFromLocation(historyMode);
+    }
+  }
+  async _openThemePreview(e, routeOptions = {}) {
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath("theme-preview", routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (!this._syncAdminRoutePath("theme-preview", routeOptions)) {
+      return;
+    }
+    if (!store.platformAllows("themeManifest")) {
+      return;
+    }
+    if (this.themePreviewOpen) {
+      return;
+    }
+    await this._ensureThemePreviewLoaded();
+    this.themePreviewOpen = true;
+    this._setThemePreviewCanvasState(true);
+    if (!routeOptions.silent) {
+      store.playSound("click");
+    }
+  }
+  _handleThemePreviewCancel(e) {
+    this._closeThemePreview(true, "replace");
+    store.playSound("error");
+  }
+  _handleThemePreviewOpenAdmin(e) {
+    let previewSelection = null;
+    if (e && e.detail) {
+      const selectedTheme =
+        typeof e.detail.theme === "undefined" || e.detail.theme === null
+          ? ""
+          : `${e.detail.theme}`.trim();
+      const selectedPalette =
+        typeof e.detail.palette === "undefined" || e.detail.palette === null
+          ? ""
+          : `${e.detail.palette}`.trim();
+      if (selectedTheme !== "" || selectedPalette !== "") {
+        previewSelection = {
+          theme: selectedTheme,
+          palette: selectedPalette,
+        };
+      }
+    }
+    this.__appearancePreviewSelection = previewSelection;
+    this._closeThemePreview(false);
+    this._openAppearanceSettings(true, "Appearance");
+  }
   async _cancelButtonTap(e) {
     const body = await HAXStore.activeHaxBody.haxToContent();
-    if (
-      body != this._originalContent &&
-      !globalThis.confirm(
-        this.t.unsavedChangesWillBeLostIfSelectingOkAreYouSure,
-      )
-    ) {
+    if (body != this._originalContent) {
+      this._confirmCancelEditing(e);
       return false;
     }
+    this._cancelEditing(e);
+  }
+  _confirmCancelEditing(e) {
+    let confirmDialog = globalThis.document.createElement("hax-confirm-dialog");
+    confirmDialog.message = this.t.unsavedChangesWillBeLostIfSelectingOkAreYouSure;
+    confirmDialog.confirmLabel = "OK";
+    confirmDialog.cancelLabel = this.t.cancel;
+    confirmDialog.destructive = true;
+    confirmDialog.closeOnConfirm = false;
+    confirmDialog.confirmCallback = () => this._cancelEditing(e);
+    confirmDialog.cancelCallback = () => store.playSound("error");
+    const evt = new CustomEvent("simple-modal-show", {
+      bubbles: true,
+      composed: true,
+      cancelable: false,
+      detail: {
+        title: "Discard unsaved changes?",
+        styles: {
+          "--simple-modal-titlebar-background": "black",
+          "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+          "--simple-modal-width": "560px",
+          "--simple-modal-max-width": "92vw",
+          "--simple-modal-min-width": "320px",
+          "--simple-modal-z-index": "100000000",
+          "--simple-modal-height": "auto",
+          "--simple-modal-min-height": "220px",
+          "--simple-modal-titlebar-height": "80px",
+          "--simple-modal-border-radius": "var(--ddd-radius-md)",
+        },
+        elements: { content: confirmDialog },
+        invokedBy:
+          (e && e.target) ||
+          this.shadowRoot.querySelector("#cancelbutton") ||
+          this,
+        clone: false,
+        modal: true,
+        showClose: false,
+      },
+    });
+    globalThis.dispatchEvent(evt);
+  }
+  _cancelEditing(e) {
     this.editMode = false;
     store.playSound("error");
     this.dispatchEvent(
@@ -5493,7 +5850,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         bubbles: true,
         composed: true,
         cancelable: false,
-        detail: e.detail,
+        detail: e && e.detail ? e.detail : {},
       }),
     );
     globalThis.dispatchEvent(
@@ -5509,21 +5866,17 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
    */
   _deleteButtonTap(e) {
     store.playSound("click");
-    let c = globalThis.document.createElement("span");
-    c.innerHTML = `"${store.activeItem.title}" will be removed from the outline but its content stays on the file system.`;
-    let b1 = globalThis.document.createElement("button");
-    b1.appendChild(globalThis.document.createTextNode("Confirm"));
-    b1.classList.add("hax-modal-btn");
-    b1.addEventListener("click", this._deleteActive.bind(this));
-    let b2 = globalThis.document.createElement("button");
-    b2.appendChild(globalThis.document.createTextNode("cancel"));
-    b2.addEventListener("click", () => store.playSound("error"));
-    b2.setAttribute("dialog-dismiss", "dialog-dismiss");
-    b2.classList.add("hax-modal-btn");
-    b2.classList.add("cancel");
-    let b = globalThis.document.createElement("span");
-    b.appendChild(b1);
-    b.appendChild(b2);
+    const activeTitle =
+      store.activeItem && store.activeItem.title
+        ? store.activeItem.title
+        : "This page";
+    let confirmDialog = globalThis.document.createElement("hax-confirm-dialog");
+    confirmDialog.message = `"${activeTitle}" will be removed from the outline but its content stays on the file system.`;
+    confirmDialog.confirmLabel = "Delete page";
+    confirmDialog.cancelLabel = "Cancel";
+    confirmDialog.destructive = true;
+    confirmDialog.confirmCallback = this._deleteActive.bind(this);
+    confirmDialog.cancelCallback = () => store.playSound("error");
     const evt = new CustomEvent("simple-modal-show", {
       bubbles: true,
       composed: true,
@@ -5533,19 +5886,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         styles: {
           "--simple-modal-titlebar-background": "black",
           "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
-          "--simple-modal-width": "25vw",
-          "--simple-modal-min-width": "300px",
+          "--simple-modal-width": "560px",
+          "--simple-modal-max-width": "92vw",
+          "--simple-modal-min-width": "320px",
           "--simple-modal-z-index": "100000000",
-          "--simple-modal-height": "15vh",
-          "--simple-modal-min-height": "300px",
+          "--simple-modal-height": "auto",
+          "--simple-modal-min-height": "220px",
           "--simple-modal-titlebar-height": "80px",
           "--simple-modal-border-radius": "var(--ddd-radius-md)",
         },
-        elements: { content: c, buttons: b },
-        invokedBy: this,
+        elements: { content: confirmDialog },
+        invokedBy: e && e.target ? e.target : this,
         clone: false,
         modal: true,
-        showClose: true,
+        showClose: false,
       },
     });
     globalThis.dispatchEvent(evt);
@@ -6063,6 +6417,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       const dialog = globalThis.document.createElement(
         "haxcms-appearance-admin-dialog",
       );
+      const previewSelection = this.__appearancePreviewSelection;
+      this.__appearancePreviewSelection = null;
       let title = sectionTitle || "Appearance";
       let breadcrumbs = [];
       if (fromSiteSettings) {
@@ -6074,6 +6430,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         breadcrumbs = breadcrumbMeta.breadcrumbs;
       }
       dialog.refreshFromManifest();
+      if (
+        previewSelection &&
+        typeof dialog.applyThemePreviewSelection === "function"
+      ) {
+        dialog.applyThemePreviewSelection(previewSelection);
+      }
       globalThis.dispatchEvent(
         new CustomEvent("simple-modal-show", {
           bubbles: true,

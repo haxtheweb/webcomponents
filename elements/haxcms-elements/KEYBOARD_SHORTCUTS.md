@@ -39,20 +39,23 @@ The keyboard shortcut system is implemented in:
 | `Ctrl+Shift+Y` | Redo | Edit Mode | Redo the last undone change |
 | `Ctrl+Shift+B` | Block Browser | Edit Mode | Open the block/element browser |
 
-### Numbered Tray Panel Shortcuts
+### Numbered Shortcuts
 
-These shortcuts provide quick access to HAX editor panels using numbers 1-6:
+Numbered shortcuts are contextual and prioritize view-mode actions from left to right in the site editor UI:
 
 | Shortcut | Action | Context | Description |
 |----------|--------|---------|-------------|
-| `Ctrl+Shift+1` | Configure | Edit Mode | Toggle between configure panel and active element |
-| `Ctrl+Shift+2` | Blocks | Edit Mode | Open blocks browser |
-| `Ctrl+Shift+3` | Structure | Edit Mode | Open page structure/content map |
-| `Ctrl+Shift+4` | View Source | Edit Mode | Toggle HTML source view |
-| `Ctrl+Shift+5` | Media | Edit Mode | Open media browser |
-| `Ctrl+Shift+6` | Merlin | Global | Open Merlin/Super Daemon (alternative to Alt+Shift) |
-
-**Note**: `Ctrl+Shift+1` has special toggle behavior - press once to focus the configure panel, press again to return focus to the active element.
+| `Ctrl+Shift+1` | Edit page | View Mode | Enter edit mode for the current page |
+| `Ctrl+Shift+2` | Page actions | View Mode | Open page actions menu |
+| `Ctrl+Shift+3` | Create page | View Mode | Open add page flow |
+| `Ctrl+Shift+4` | Site outline actions | View Mode | Open outline actions menu |
+| `Ctrl+Shift+5` | Outline designer | View Mode | Open site outline designer |
+| `Ctrl+Shift+6` | Site settings | View Mode | Open site settings/manifest dialog |
+| `Ctrl+Shift+7` | User menu | View Mode | Open user account menu |
+| `Ctrl+Shift+1` | View Source | Edit Mode | Toggle HTML source view |
+| `Ctrl+Shift+2` | Structure | Edit Mode | Open page structure/content map |
+| `Ctrl+Shift+3` | Blocks | Edit Mode | Open blocks browser |
+| `Ctrl+Shift+4` | Configure | Edit Mode | Open configure panel |
 
 ## Super Daemon Integration
 

@@ -150,6 +150,7 @@ class SimpleContextMenu extends DDD {
         id="menu"
         @click=${this._handleBackdropClick}
         @keydown=${this._handleKeydown}
+        @focusout=${this._handleFocusOut}
       >
         ${this.title
           ? html` <div class="menu-header">${this.title}</div> `
@@ -234,16 +235,155 @@ class SimpleContextMenu extends DDD {
   /**
    * Get all focusable items in the menu
    */
+  _isFocusableMenuNode(node) {
+    if (!node || node.hasAttribute("disabled")) {
+      return false;
+    }
+    if (node.getAttribute("aria-disabled") === "true") {
+      return false;
+    }
+    if (
+      [
+        "BUTTON",
+        "A",
+        "INPUT",
+        "SELECT",
+        "TEXTAREA",
+        "SUMMARY",
+      ].includes(node.tagName)
+    ) {
+      return true;
+    }
+    if (node.tabIndex >= 0) {
+      return true;
+    }
+    if (node.hasAttribute("tabindex")) {
+      const tabIndexAttr = parseInt(node.getAttribute("tabindex"));
+      if (!Number.isNaN(tabIndexAttr) && tabIndexAttr >= 0) {
+        return true;
+      }
+    }
+    if (node.focusableElement && !node.focusableElement.disabled) {
+      return true;
+    }
+    if (node.shadowRoot) {
+      const nestedFocusable = node.shadowRoot.querySelector(
+        "button:not([disabled]),[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled]),summary,[tabindex]:not([tabindex='-1'])",
+      );
+      if (nestedFocusable) {
+        return true;
+      }
+    }
+    return false;
+  }
   _getFocusableItems() {
     const slot = this.shadowRoot.querySelector("slot");
-    const nodes = slot.assignedElements();
-    return nodes.filter(
-      (node) =>
-        !node.hasAttribute("disabled") &&
-        (node.tagName === "BUTTON" ||
-          node.tabIndex >= 0 ||
-          node.hasAttribute("tabindex")),
-    );
+    if (!slot) {
+      return [];
+    }
+    const nodes = slot.assignedElements({ flatten: true });
+    return nodes.filter((node) => this._isFocusableMenuNode(node));
+  }
+
+  _pathContainsItem(path, item) {
+    if (!Array.isArray(path) || !item) {
+      return false;
+    }
+    for (let i = 0; i < path.length; i++) {
+      const node = path[i];
+      if (node === item) {
+        return true;
+      }
+      if (item.focusableElement && node === item.focusableElement) {
+        return true;
+      }
+      if (
+        item.shadowRoot &&
+        node &&
+        node.nodeType &&
+        item.shadowRoot.contains(node)
+      ) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  _itemMatchesFocus(item, activeElement, path) {
+    if (!item) {
+      return false;
+    }
+    if (this._pathContainsItem(path, item)) {
+      return true;
+    }
+    if (!activeElement) {
+      return false;
+    }
+    if (activeElement === item) {
+      return true;
+    }
+    if (item.focusableElement && activeElement === item.focusableElement) {
+      return true;
+    }
+    if (item.shadowRoot && item.shadowRoot.activeElement) {
+      return true;
+    }
+    return false;
+  }
+
+  _getFocusedItemIndex(menuItems, e) {
+    if (!Array.isArray(menuItems) || menuItems.length === 0) {
+      return -1;
+    }
+    const path = e && e.composedPath ? e.composedPath() : [];
+    const activeElement = globalThis.document.activeElement;
+    for (let i = 0; i < menuItems.length; i++) {
+      if (this._itemMatchesFocus(menuItems[i], activeElement, path)) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  _focusItem(menuItems, index) {
+    if (!Array.isArray(menuItems) || menuItems.length === 0) {
+      return;
+    }
+    let nextIndex = index;
+    while (nextIndex < 0) {
+      nextIndex += menuItems.length;
+    }
+    nextIndex = nextIndex % menuItems.length;
+    const item = menuItems[nextIndex];
+    if (item && typeof item.focus === "function") {
+      item.focus();
+    }
+  }
+
+  _activateMenuItem(item) {
+    if (!item) {
+      return;
+    }
+    if (
+      item.focusableElement &&
+      !item.focusableElement.disabled &&
+      typeof item.focusableElement.click === "function"
+    ) {
+      item.focusableElement.click();
+      return;
+    }
+    if (item.shadowRoot) {
+      const innerControl = item.shadowRoot.querySelector(
+        "button:not([disabled]),[href],input:not([disabled]),select:not([disabled]),textarea:not([disabled])",
+      );
+      if (innerControl && typeof innerControl.click === "function") {
+        innerControl.click();
+        return;
+      }
+    }
+    if (typeof item.click === "function") {
+      item.click();
+    }
   }
 
   /**
@@ -252,36 +392,79 @@ class SimpleContextMenu extends DDD {
   _handleKeydown(e) {
     const menuItems = this._getFocusableItems();
     if (menuItems.length === 0) return;
-    
-    const currentIndex = menuItems.indexOf(globalThis.document.activeElement);
+    const currentIndex = this._getFocusedItemIndex(menuItems, e);
 
     switch (e.key) {
       case "ArrowDown":
         e.preventDefault();
-        const nextIndex = (currentIndex + 1) % menuItems.length;
-        if (menuItems[nextIndex]) {
-          menuItems[nextIndex].focus();
-        }
+        this._focusItem(menuItems, currentIndex === -1 ? 0 : currentIndex + 1);
         break;
       case "ArrowUp":
         e.preventDefault();
-        const prevIndex =
-          currentIndex === 0 ? menuItems.length - 1 : currentIndex - 1;
-        if (menuItems[prevIndex]) {
-          menuItems[prevIndex].focus();
-        }
+        this._focusItem(
+          menuItems,
+          currentIndex === -1 ? menuItems.length - 1 : currentIndex - 1,
+        );
+        break;
+      case "Tab":
+        e.preventDefault();
+        this._focusItem(
+          menuItems,
+          currentIndex === -1
+            ? e.shiftKey
+              ? menuItems.length - 1
+              : 0
+            : currentIndex + (e.shiftKey ? -1 : 1),
+        );
         break;
       case "Escape":
+        e.preventDefault();
         this.close();
         break;
       case "Enter":
       case " ":
         e.preventDefault();
-        if (currentIndex >= 0 && menuItems[currentIndex]) {
-          menuItems[currentIndex].click();
+        let itemToActivate = currentIndex >= 0 ? menuItems[currentIndex] : null;
+        if (!itemToActivate) {
+          const path = e && e.composedPath ? e.composedPath() : [];
+          for (let i = 0; i < path.length; i++) {
+            const node = path[i];
+            if (
+              node &&
+              node !== this &&
+              typeof node.click === "function" &&
+              node.nodeName !== "DIALOG"
+            ) {
+              itemToActivate = node;
+              break;
+            }
+          }
+        }
+        if (itemToActivate) {
+          this._activateMenuItem(itemToActivate);
         }
         break;
     }
+  }
+
+  _handleFocusOut() {
+    setTimeout(() => {
+      if (!this.open) {
+        return;
+      }
+      const activeElement = globalThis.document.activeElement;
+      if (!activeElement) {
+        this.close();
+        return;
+      }
+      const menuItems = this._getFocusableItems();
+      const activeInMenu = menuItems.some((item) =>
+        this._itemMatchesFocus(item, activeElement, []),
+      );
+      if (!activeInMenu) {
+        this.close();
+      }
+    }, 0);
   }
 
   /**

@@ -320,6 +320,9 @@ class TerribleProductionzThemes extends HAXCMSRememberRoute(
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
+    globalThis.document.body.style.removeProperty("background-color");
+    globalThis.document.body.style.removeProperty("color");
+    globalThis.document.body.style.removeProperty("background-image");
     if (this.__link) {
       this.__link.remove();
     }

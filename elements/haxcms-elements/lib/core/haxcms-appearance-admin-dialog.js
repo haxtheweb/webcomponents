@@ -28,11 +28,15 @@ class HAXCMSAppearanceAdminDialog extends DDD {
     this.errorMessage = "";
     this.__valueChangeLock = false;
     this.__groupValues = {};
+    this.__themesRegistry = {};
+    this.__themesRegistryLoaded = false;
+    this.__themePreviewSelection = null;
   }
 
   connectedCallback() {
     super.connectedCallback();
     this.refreshFromManifest();
+    this._loadThemeRegistry();
   }
 
   static get styles() {
@@ -214,6 +218,13 @@ class HAXCMSAppearanceAdminDialog extends DDD {
         button.action:hover {
           outline: 2px solid var(--ddd-theme-default-keystoneYellow);
         }
+        button.action.secondary {
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          background-color: transparent;
+        }
         .action[disabled] {
           opacity: 0.6;
           cursor: not-allowed;
@@ -367,17 +378,119 @@ class HAXCMSAppearanceAdminDialog extends DDD {
     });
     return items;
   }
+  _resolveThemeThumbnail(thumbnail = "") {
+    if (!thumbnail || typeof thumbnail !== "string") {
+      return "";
+    }
+    if (thumbnail.indexOf("@haxtheweb/") === 0) {
+      let basePath = "";
+      if (
+        globalThis.WCAutoloadBasePath &&
+        typeof globalThis.WCAutoloadBasePath === "string"
+      ) {
+        basePath = globalThis.WCAutoloadBasePath;
+      } else if (
+        globalThis.WCGlobalBasePath &&
+        typeof globalThis.WCGlobalBasePath === "string"
+      ) {
+        basePath = globalThis.WCGlobalBasePath;
+      } else {
+        basePath = "/node_modules/";
+      }
+      if (basePath.charAt(basePath.length - 1) !== "/") {
+        basePath += "/";
+      }
+      return `${basePath}${thumbnail}`;
+    }
+    return thumbnail;
+  }
+
+  async _loadThemeRegistry() {
+    if (this.__themesRegistryLoaded) {
+      return;
+    }
+    this.__themesRegistryLoaded = true;
+    try {
+      const themesUrl = new URL("../themes.json", import.meta.url).href;
+      const response = await fetch(themesUrl);
+      if (response && response.ok) {
+        const data = await response.json();
+        if (data && typeof data === "object") {
+          this.__themesRegistry = data;
+          this.refreshFromManifest();
+        }
+      }
+    } catch (e) {}
+  }
 
   _themeOptions(currentThemeElement = "") {
-    const options = {};
-    if (globalThis.appSettings && globalThis.appSettings.themes) {
-      Object.keys(globalThis.appSettings.themes).forEach((key) => {
-        const theme = globalThis.appSettings.themes[key];
-        options[key] = theme && theme.name ? theme.name : key;
+    const mergedThemes = {};
+    if (this.__themesRegistry && typeof this.__themesRegistry === "object") {
+      Object.keys(this.__themesRegistry).forEach((key) => {
+        mergedThemes[key] = this._cloneData(this.__themesRegistry[key]);
       });
     }
-    if (currentThemeElement && !options[currentThemeElement]) {
-      options[currentThemeElement] = currentThemeElement;
+    if (globalThis.appSettings && globalThis.appSettings.themes) {
+      Object.keys(globalThis.appSettings.themes).forEach((key) => {
+        const incomingTheme = globalThis.appSettings.themes[key];
+        const currentTheme =
+          mergedThemes[key] && typeof mergedThemes[key] === "object"
+            ? mergedThemes[key]
+            : {};
+        mergedThemes[key] = {
+          ...currentTheme,
+          ...incomingTheme,
+        };
+      });
+    }
+    const options = Object.keys(mergedThemes).map((key) => {
+      const theme =
+        mergedThemes[key] && typeof mergedThemes[key] === "object"
+          ? mergedThemes[key]
+          : {};
+      const label = theme && theme.name ? theme.name : key;
+      const rawPriority =
+        typeof theme.priority === "number" ? theme.priority : Number(theme.priority);
+      const priority = Number.isFinite(rawPriority) ? rawPriority : 0;
+      return {
+        key: key,
+        value: key,
+        label: label,
+        name: label,
+        thumbnail: this._resolveThemeThumbnail(
+          theme && theme.thumbnail ? theme.thumbnail : "",
+        ),
+        hidden: theme && theme.hidden ? true : false,
+        terrible:
+          theme && theme.terrible ? true : key.indexOf("terrible") === 0,
+        legacy:
+          theme && (theme.legacy || theme.deprecated || theme.isLegacy)
+            ? true
+            : false,
+        priority: priority,
+      };
+    });
+    options.sort((a, b) => {
+      if (a.priority !== b.priority) {
+        return a.priority - b.priority;
+      }
+      return a.label.localeCompare(b.label);
+    });
+    if (
+      currentThemeElement &&
+      !options.find((option) => option.value === currentThemeElement)
+    ) {
+      options.unshift({
+        key: currentThemeElement,
+        value: currentThemeElement,
+        label: currentThemeElement,
+        name: currentThemeElement,
+        thumbnail: "",
+        hidden: false,
+        terrible: false,
+        legacy: false,
+        priority: -1000,
+      });
     }
     return options;
   }
@@ -427,9 +540,11 @@ class HAXCMSAppearanceAdminDialog extends DDD {
             property: "manifest-metadata-theme-element",
             title: "Theme",
             description: "Design and presentation layer for your site",
-            inputMethod: "select",
+            inputMethod: "haxcms-theme-picker",
             required: false,
             options: this._themeOptions(themeElement),
+            showAllThemes: store.showAllThemes,
+            activeValue: themeElement,
           },
         ],
       },
@@ -638,12 +753,96 @@ class HAXCMSAppearanceAdminDialog extends DDD {
     this.errorMessage = "";
     this.groups = this._buildAppearanceGroups(manifest);
     this.values = this._buildValueState(manifest);
+    this._applyStoredThemePreviewSelection();
     this.__groupValues = {};
     this.groups.forEach((group) => {
       this.__groupValues[group.key] = this._buildGroupValue(group);
     });
     setTimeout(() => {
       this.__valueChangeLock = false;
+    }, 0);
+  }
+
+  _applyStoredThemePreviewSelection() {
+    if (
+      !this.__themePreviewSelection ||
+      !this.values ||
+      typeof this.values !== "object"
+    ) {
+      return;
+    }
+    const selection = this.__themePreviewSelection;
+    const hasTheme =
+      typeof selection.theme !== "undefined" && selection.theme !== null;
+    const hasPalette = typeof selection.palette !== "undefined";
+    if (hasTheme) {
+      this.values["manifest-metadata-theme-element"] = this._normalizeFieldValue(
+        "manifest-metadata-theme-element",
+        selection.theme,
+      );
+    }
+    if (hasPalette) {
+      this.values[
+        "manifest-metadata-theme-variables-palette"
+      ] = this._normalizeFieldValue(
+        "manifest-metadata-theme-variables-palette",
+        selection.palette,
+      );
+    }
+  }
+
+  applyThemePreviewSelection(selection = {}) {
+    if (!selection || typeof selection !== "object") {
+      return;
+    }
+    const hasTheme =
+      typeof selection.theme !== "undefined" && selection.theme !== null;
+    const hasPalette = typeof selection.palette !== "undefined";
+    if (!hasTheme && !hasPalette) {
+      return;
+    }
+    this.__themePreviewSelection = {};
+    if (hasTheme) {
+      this.__themePreviewSelection.theme = selection.theme;
+    }
+    if (hasPalette) {
+      this.__themePreviewSelection.palette = selection.palette;
+    }
+    this.__valueChangeLock = true;
+    this._applyStoredThemePreviewSelection();
+    this.__groupValues = {};
+    this.groups.forEach((group) => {
+      this.__groupValues[group.key] = this._buildGroupValue(group);
+    });
+    this.requestUpdate();
+    setTimeout(() => {
+      this.__valueChangeLock = false;
+    }, 0);
+  }
+
+  _openThemePreviewTap() {
+    if (this.groups.length === 0) {
+      return;
+    }
+    store.playSound('click');
+    globalThis.dispatchEvent(
+      new CustomEvent('simple-modal-hide', {
+        bubbles: true,
+        cancelable: true,
+        detail: {},
+      }),
+    );
+    setTimeout(() => {
+      globalThis.dispatchEvent(
+        new CustomEvent('haxcms-open-theme-preview-program', {
+          bubbles: true,
+          composed: true,
+          cancelable: true,
+          detail: {
+            source: 'appearance-admin-dialog',
+          },
+        }),
+      );
     }, 0);
   }
 
@@ -819,6 +1018,14 @@ class HAXCMSAppearanceAdminDialog extends DDD {
             : ``}
         </div>
         <div class="actions">
+          <button
+            type="button"
+            class="action secondary"
+            @click="${this._openThemePreviewTap}"
+            ?disabled="${this.groups.length === 0}"
+          >
+            Theme preview
+          </button>
           <button
             type="button"
             class="action"

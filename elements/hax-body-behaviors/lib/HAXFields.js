@@ -136,6 +136,12 @@ export const HaxSchematizer = {
         format: "hax-palette-picker",
       },
     },
+    "haxcms-theme-picker": {
+      defaultSettings: {
+        type: "string",
+        format: "haxcms-theme-picker",
+      },
+    },
     slider: {
       defaultSettings: {
         type: "number",
@@ -256,6 +262,21 @@ export const HaxElementizer = {
         },
         properties: {
           options: "options",
+        },
+      },
+    },
+    "haxcms-theme-picker": {
+      defaultSettings: {
+        import: "@haxtheweb/haxcms-elements/lib/core/haxcms-theme-picker.js",
+        element: "haxcms-theme-picker",
+        noWrap: true,
+        attributes: {
+          autofocus: true,
+        },
+        properties: {
+          options: "options",
+          showAllThemes: "showAllThemes",
+          activeValue: "activeValue",
         },
       },
     },

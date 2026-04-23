@@ -24,12 +24,18 @@ class HAXCMSAboutDialogUI extends DDD {
     this.keyboardShortcuts = [];
     this.markdownShortcuts = [];
     this.__disposer = [];
+    this.__keyboardShortcutsUpdatedHandler =
+      this._handleKeyboardShortcutsUpdated.bind(this);
     this._loadKeyboardShortcuts();
     this._loadMarkdownShortcuts();
   }
 
   connectedCallback() {
     super.connectedCallback();
+    globalThis.addEventListener(
+      "haxcms-keyboard-shortcuts-updated",
+      this.__keyboardShortcutsUpdatedHandler,
+    );
     const disposeVersion = autorun(() => {
       const version = toJS(store.version);
       this.haxVersion = version ? version : "Loading…";
@@ -40,6 +46,10 @@ class HAXCMSAboutDialogUI extends DDD {
   }
 
   disconnectedCallback() {
+    globalThis.removeEventListener(
+      "haxcms-keyboard-shortcuts-updated",
+      this.__keyboardShortcutsUpdatedHandler,
+    );
     while (this.__disposer.length) {
       const d = this.__disposer.pop();
       if (d && typeof d === "function") {
@@ -58,6 +68,10 @@ class HAXCMSAboutDialogUI extends DDD {
       .sort((a, b) =>
         `${a.label} ${a.description}`.localeCompare(`${b.label} ${b.description}`),
       );
+  }
+
+  _handleKeyboardShortcutsUpdated() {
+    this._loadKeyboardShortcuts();
   }
 
   _loadMarkdownShortcuts() {

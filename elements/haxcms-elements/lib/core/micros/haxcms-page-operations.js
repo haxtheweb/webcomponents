@@ -130,6 +130,18 @@ export class HAXCMSPageOperations extends I18NMixin(DDD) {
     });
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    store.pageOperationsElement = this;
+  }
+
+  disconnectedCallback() {
+    if (store.pageOperationsElement === this) {
+      store.pageOperationsElement = null;
+    }
+    super.disconnectedCallback();
+  }
+
   _toggleDialog() {
     const menu = this.shadowRoot.querySelector("simple-context-menu");
     const button = this.shadowRoot.querySelector(".ops");

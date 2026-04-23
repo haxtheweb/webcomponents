@@ -118,6 +118,7 @@ class Store {
       ? false
       : localStorageGet("app-hax-darkMode");
     this.responsiveSize = "";
+    this.showAllThemes = false;
     this.setupSlots = {
       "haxcms-site-editor-ui-prefix-avatar": [],
       "haxcms-site-editor-ui-prefix-buttons": [],
@@ -130,6 +131,7 @@ class Store {
       .then((obj) => (this.version = obj.version));
     this.appReady = false;
     this.editMode = false;
+    this.adminMode = false;
     this.trayStatus = "";
     this.manifest = null;
     this.pageAllowed = false;
@@ -156,12 +158,14 @@ class Store {
     this.cmsSiteEditorBackend = {
       instance: null,
     };
+    this.pageOperationsElement = null;
     this._registration = {}; // used for initial state registration as system setsup
     makeObservable(this, {
       location: observable.ref, // router location in url
       currentRouterLocation: observable.ref,
       internalRoutes: observable, // internal routes to haxcms
       editMode: observable, // global editing state
+      adminMode: observable, // global admin modal state
       trayStatus: observable, // tray status (collapsed/expanded)
       jwt: observable, // json web token
       userData: observable, // user data object for logged in users
@@ -190,6 +194,7 @@ class Store {
       pageCounter: computed, // current and total page count
       darkMode: observable, // dark mode pref
       responsiveSize: observable, // viewport size bucket from theme responsive utility
+      showAllThemes: observable, // reveal hidden/terrible/legacy themes in theme pickers
       isMobile: computed, // derived mobile mode for store consumers
       viewOnlyMode: computed, // view only mode pref
       soundStatus: observable, // toggle sounds on and off

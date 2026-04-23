@@ -508,13 +508,38 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
   focusedChanged(e) {
     this.focused = e.detail.value;
   }
+  _isWelcomeProgram() {
+    return this.programName === "Show getting started tasks";
+  }
+
+  _isInputIntentKey(e) {
+    return !!e.key && e.key.length === 1 && !e.ctrlKey && !e.metaKey && !e.altKey;
+  }
 
   // feed results to the program as opposed to the global context based on program running
   inputfilterChanged(e) {
     const value =
       e.target && typeof e.target.value === "string" ? e.target.value : "";
-
-    if (this.programName) {
+    if (this._isWelcomeProgram() && value !== "") {
+      // Welcome program is onboarding-only: typing indicates intent to search globally.
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-run-program", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: false,
+        }),
+      );
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-command-context-changed", {
+          detail: {
+            value: "*",
+          },
+        }),
+      );
+      this.like = value;
+      this.programSearch = "";
+    } else if (this.programName) {
       // don't set like if we're in a program; the active program is
       // responsible for filtering its own results based on input, and
       // SimpleFilterMixin should see all programResults unfiltered.
@@ -550,6 +575,47 @@ export class SuperDaemonUI extends SimpleFilterMixin(I18NMixin(SimpleColors)) {
 
   // keydown when we have focus on the input field
   _inputKeydown(e) {
+    // In welcome mode, first typed input should leave onboarding and return to general search.
+    // Arrow-key navigation remains unchanged and still cycles welcome options.
+    if (
+      this._isWelcomeProgram() &&
+      this.programSearch === "" &&
+      this._isInputIntentKey(e)
+    ) {
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-run-program", {
+          bubbles: true,
+          cancelable: true,
+          composed: true,
+          detail: false,
+        }),
+      );
+      // Preserve context-mode key behavior while exiting welcome.
+      if (["!", "/", "\\", ">", "<"].includes(e.key)) {
+        let value = e.key;
+        if (e.key === "\\" || e.key === "!") {
+          value = "/";
+        } else if (e.key === "<") {
+          value = ">";
+        }
+        this.dispatchEvent(
+          new CustomEvent("super-daemon-command-context-changed", {
+            detail: {
+              value: value,
+            },
+          }),
+        );
+        e.preventDefault();
+        return;
+      }
+      this.dispatchEvent(
+        new CustomEvent("super-daemon-command-context-changed", {
+          detail: {
+            value: "*",
+          },
+        }),
+      );
+    }
     if (this.filtered.length > 0) {
       switch (e.key) {
         case "Enter":

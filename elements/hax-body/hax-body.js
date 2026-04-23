@@ -2055,20 +2055,6 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     return haxElements;
   }
   /**
-   * Clear area.
-   */
-  haxClearBody(confirm = true) {
-    let status = true;
-    // only confirm if asked so we can support wipes without it
-    if (confirm) {
-      status = prompt("Are you sure you want to delete all content?");
-    }
-    // ensure they said yes
-    if (status) {
-      wipeSlot(this);
-    }
-  }
-  /**
    * Insert new tag + content into the local DOM as a node.
    */
   haxInsert(

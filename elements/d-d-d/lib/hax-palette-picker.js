@@ -27,7 +27,9 @@ class HaxPalettePicker extends DDD {
       label: { type: String },
       description: { type: String },
       value: { type: String, reflect: true },
+      activeValue: { type: String, attribute: "active-value", reflect: true },
       selectedKey: { type: String, attribute: "selected-key", reflect: true },
+      showStatusFlags: { type: Boolean, attribute: "show-status-flags" },
       options: { type: Array },
       name: { type: String },
       fallbackValue: { type: String, attribute: "fallback-value" },
@@ -95,6 +97,29 @@ class HaxPalettePicker extends DDD {
             border-color 120ms ease-in-out,
             box-shadow 120ms ease-in-out,
             background-color 120ms ease-in-out;
+        }
+        .flags {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          margin-bottom: var(--ddd-spacing-2);
+          min-block-size: var(--ddd-spacing-4);
+        }
+        .flag {
+          border-radius: var(--ddd-radius-xs);
+          padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          line-height: 1.2;
+        }
+        .flag.active {
+          background: var(--ddd-theme-default-keystoneYellow);
+          color: var(--ddd-theme-default-coalyGray);
+        }
+        .flag.selected {
+          background: var(--ddd-theme-default-link);
+          color: var(--ddd-theme-default-white);
         }
         .option:hover {
           border-color: var(--ddd-theme-default-link);
@@ -177,6 +202,17 @@ class HaxPalettePicker extends DDD {
           cursor: not-allowed;
           opacity: 0.7;
         }
+        .sr-only {
+          position: absolute;
+          inline-size: 1px;
+          block-size: 1px;
+          margin: -1px;
+          padding: 0;
+          border: 0;
+          clip: rect(0 0 0 0);
+          overflow: hidden;
+          white-space: nowrap;
+        }
       `,
     ];
   }
@@ -185,6 +221,8 @@ class HaxPalettePicker extends DDD {
     super();
     this.label = "Palette";
     this.description = "";
+    this.activeValue = "";
+    this.showStatusFlags = false;
     this.name = "";
     this.disabled = false;
     this.required = false;
@@ -356,6 +394,7 @@ class HaxPalettePicker extends DDD {
 
   _renderOption(option, index) {
     const checked = this._optionMatchesValue(option, this.value);
+    const active = this._optionMatchesValue(option, this.activeValue);
     const id = `${this.__inputId}-${index}`;
     return html`
       <label
@@ -372,6 +411,10 @@ class HaxPalettePicker extends DDD {
           ?disabled="${this.disabled}"
           @change="${() => this._handleSelection(option)}"
         />
+        <div class="flags" ?hidden="${!this.showStatusFlags || !(active || checked)}">
+          <span class="flag active" ?hidden="${!active}">Active</span>
+          <span class="flag selected" ?hidden="${!checked}">Selected</span>
+        </div>
         <div class="option-display">
           <div class="option-header">
             <span class="option-label">${option.label}</span>
@@ -384,6 +427,15 @@ class HaxPalettePicker extends DDD {
             )}
           </div>
         </div>
+        <span class="sr-only" ?hidden="${!this.showStatusFlags || !(active && checked)}">
+          Currently active and selected palette
+        </span>
+        <span class="sr-only" ?hidden="${!this.showStatusFlags || !(active && !checked)}">
+          Currently active palette
+        </span>
+        <span class="sr-only" ?hidden="${!this.showStatusFlags || !(!active && checked)}">
+          Selected palette to apply
+        </span>
       </label>
     `;
   }
