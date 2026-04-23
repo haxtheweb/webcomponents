@@ -64,6 +64,9 @@ export class AppHaxSearchResults extends SimpleColors {
           display: block;
           width: 100%;
           overflow: visible;
+          --app-hax-site-card-width: 180px;
+          --app-hax-site-card-gap: var(--ddd-spacing-6, 24px);
+          --app-hax-site-card-mobile-min-width: clamp(120px, 30vw, 148px);
         }
 
         .carousel-container {
@@ -164,10 +167,12 @@ export class AppHaxSearchResults extends SimpleColors {
           flex-wrap: nowrap;
           overflow-x: auto;
           scroll-snap-type: x mandatory;
-          gap: var(--ddd-spacing-6, 24px);
-            padding: var(--ddd-spacing-2, 8px) 0 0 var(--ddd-spacing-2, 8px);
+          gap: var(--app-hax-site-card-gap);
+          padding: var(--ddd-spacing-2, 8px) 0 0 var(--ddd-spacing-2, 8px);
           flex: 1;
           min-width: 0;
+          margin: 0;
+          list-style: none;
           scroll-behavior: smooth;
           -webkit-overflow-scrolling: touch;
           /* Keep scrollbar visible for multiple interaction methods */
@@ -220,8 +225,8 @@ export class AppHaxSearchResults extends SimpleColors {
         li {
           flex: 0 0 auto;
           scroll-snap-align: center;
-          width: 180px;
-          min-width: 180px;
+          width: var(--app-hax-site-card-width);
+          min-width: var(--app-hax-site-card-width);
           height: 300px;
           display: flex;
           flex-direction: column;
@@ -248,7 +253,7 @@ export class AppHaxSearchResults extends SimpleColors {
         @media (max-width: 1200px) {
           :host {
             min-width: calc(
-              2 * 180px + var(--ddd-spacing-6, 24px) + 2 *
+              2 * var(--app-hax-site-card-width) + var(--app-hax-site-card-gap) + 2 *
                 var(--ddd-spacing-12, 56px)
             );
           }
@@ -256,7 +261,9 @@ export class AppHaxSearchResults extends SimpleColors {
 
         @media (max-width: 800px) {
           :host {
-            min-width: calc(180px + 2 * var(--ddd-spacing-12, 56px));
+            min-width: calc(
+              var(--app-hax-site-card-width) + 2 * var(--ddd-spacing-12, 56px)
+            );
           }
 
           app-hax-site-bar {
@@ -277,34 +284,49 @@ export class AppHaxSearchResults extends SimpleColors {
           }
         }
         @media (max-width: 640px) {
-          app-hax-site-bar a {
-            font-size: var(--ddd-font-size-xs, 14px);
+          :host {
+            min-width: 0;
           }
           app-hax-site-bar {
-            --main-banner-width: 70vw;
+            margin: 0;
+            --app-hax-site-card-width: 100%;
+            --app-hax-site-card-min-height: 210px;
+            --app-hax-site-image-height: clamp(96px, 27vw, 120px);
+            --app-hax-site-title-font-size: var(--ddd-font-size-5xs, 12px);
+            --app-hax-site-date-font-size: var(--ddd-font-size-5xs, 11px);
+            --app-hax-site-card-content-padding: var(--ddd-spacing-1, 4px);
           }
 
           li {
-            width: 180px;
-            min-width: 180px;
+            width: auto;
+            min-width: 0;
+            height: auto;
+            scroll-snap-align: none;
           }
 
-          /* Mobile: Show only 1 item, hide arrows */
+          /* Mobile: hide arrows and use a compact multi-column card layout */
           .scroll-left,
           .scroll-right {
             display: none;
           }
 
           #results {
-            /* Single item takes full width on mobile */
-            gap: 0;
-            scroll-snap-type: x mandatory;
-            overflow-x: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
+            display: grid;
+            grid-template-columns: repeat(
+              auto-fit,
+              minmax(var(--app-hax-site-card-mobile-min-width), 1fr)
+            );
+            gap: var(--ddd-spacing-2, 8px);
+            padding: var(--ddd-spacing-2, 8px) var(--ddd-spacing-1, 4px) 0;
+            scroll-snap-type: none;
+            overflow-x: visible;
+            overflow-y: visible;
+            scrollbar-width: auto;
+            -ms-overflow-style: auto;
           }
           #results::-webkit-scrollbar {
-            display: none;               
+            display: block;
+            height: var(--ddd-spacing-1, 4px);
           }
         }
         span[slot="band"] {
@@ -505,12 +527,12 @@ export class AppHaxSearchResults extends SimpleColors {
   }
 
   get isAtStart() {
-    const el = this.shadowRoot?.querySelector("#results");
+    const el = this.shadowRoot && this.shadowRoot.querySelector("#results");
     return !el || el.scrollLeft <= 2; // tolerance for sub-pixel scroll
   }
 
   get isAtEnd() {
-    const el = this.shadowRoot?.querySelector("#results");
+    const el = this.shadowRoot && this.shadowRoot.querySelector("#results");
     return (
       !el ||
       el.scrollLeft + el.clientWidth >= el.scrollWidth - 2

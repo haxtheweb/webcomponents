@@ -118,6 +118,11 @@ class HAXCMSAppearanceAdminDialog extends DDD {
           margin-bottom: var(--ddd-spacing-2);
           cursor: pointer;
         }
+        .group-summary:focus-visible {
+          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-skyBlue);
+          outline-offset: 2px;
+          border-radius: var(--ddd-radius-xs);
+        }
         .summary-leading {
           display: inline-flex;
           align-items: center;
@@ -225,12 +230,34 @@ class HAXCMSAppearanceAdminDialog extends DDD {
           :host {
             min-width: 0;
             width: 100%;
+            min-height: 0;
+            height: auto;
+            max-height: calc(
+              100dvh -
+                var(
+                  --simple-modal-titlebar-mobile-height,
+                  var(--simple-modal-titlebar-height, 80px)
+                ) -
+                var(--ddd-spacing-4, 16px)
+            );
+            overflow-y: auto;
+            overflow-x: hidden;
             padding: var(--ddd-spacing-3);
+          }
+          .panel-shell {
+            min-height: auto;
+          }
+          .panel-scroll {
+            flex: 0 0 auto;
+            min-height: auto;
+            overflow: visible;
+            padding-right: 0;
           }
           .section {
             padding: var(--ddd-spacing-3);
           }
           .actions {
+            position: static;
             padding-bottom: calc(
               var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
             );

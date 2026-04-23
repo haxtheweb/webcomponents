@@ -40,6 +40,10 @@ export class AppHaxUseCase extends LitElement {
         flex-direction: column;
         align-items: center;
         margin: 0;
+        --app-hax-use-case-card-width: 180px;
+        --app-hax-use-case-card-height: 300px;
+        --app-hax-use-case-image-height: 240px;
+        --app-hax-use-case-title-font-size: var(--ddd-font-size-4xs, 14px);
         text-align: left;
         font-family: var(--ddd-font-primary);
         color: light-dark(
@@ -74,9 +78,9 @@ export class AppHaxUseCase extends LitElement {
         outline: none;
         display: flex;
         flex-direction: column;
-        padding: 4px;
-        height: 300px;
-        width: 180px;
+        padding: var(--ddd-spacing-1, 4px);
+        height: var(--app-hax-use-case-card-height);
+        width: var(--app-hax-use-case-card-width);
         background-color: transparent;
         border: none;
         text-align: left;
@@ -84,7 +88,7 @@ export class AppHaxUseCase extends LitElement {
 
       .image {
         transition: transform 0.2s ease-in-out;
-        height: 240px; 
+        height: var(--app-hax-use-case-image-height);
         flex-shrink: 0;
         position: relative;
         display: flex;
@@ -233,7 +237,7 @@ export class AppHaxUseCase extends LitElement {
       }
 
       .title h3 {
-        font-size: var(--ddd-font-size-4xs, 14px);
+        font-size: var(--app-hax-use-case-title-font-size);
         line-height: 1.2;
         height: calc(1.2em * 2); 
         overflow: hidden;
@@ -246,20 +250,23 @@ export class AppHaxUseCase extends LitElement {
       /* Responsive */
       @media (max-width: 780px) {
         :host {
-          margin: var(--ddd-spacing-1, 4px);
-          min-height: 200px;
-          width: 100%;
-          max-width: none;
+          margin: 0;
+          min-height: auto;
+          width: auto;
+          max-width: 100%;
         }
 
         .card {
-          padding: var(--ddd-spacing-2, 8px)
-            var(--ddd-spacing-3, 12px)
-            var(--ddd-spacing-4, 16px);
+          padding: var(--ddd-spacing-1, 4px);
         }
+      }
 
-        .title {
-          font-size: var(--ddd-font-size-s, 16px) !important;
+      @media (max-width: 640px) {
+        :host {
+          --app-hax-use-case-card-width: clamp(120px, 30vw, 144px);
+          --app-hax-use-case-card-height: 220px;
+          --app-hax-use-case-image-height: 170px;
+          --app-hax-use-case-title-font-size: var(--ddd-font-size-5xs, 12px);
         }
       }
     `,

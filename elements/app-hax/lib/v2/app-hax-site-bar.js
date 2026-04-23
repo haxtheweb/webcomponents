@@ -288,12 +288,18 @@ export class AppHaxSiteBars extends SimpleColors {
       css`
         :host {
           text-align: left;
-          width: 180px;
-          max-width: 180px;
+          --app-hax-site-card-width: 180px;
+          --app-hax-site-card-min-height: 260px;
+          --app-hax-site-image-height: 180px;
+          --app-hax-site-title-font-size: var(--ddd-font-size-xxs, 13px);
+          --app-hax-site-date-font-size: var(--ddd-font-size-4xs, 12px);
+          --app-hax-site-card-content-padding: var(--ddd-spacing-2, 8px);
+          width: var(--app-hax-site-card-width);
+          max-width: var(--app-hax-site-card-width);
           font-family: var(--ddd-font-primary);
           background-color: white;
           border: var(--ddd-border-sm);
-          min-height: 260px;
+          min-height: var(--app-hax-site-card-min-height);
           box-shadow: light-dark(
             2px 2px 12px #1c1c1c,
             2px 2px 12px rgba(0, 0, 0, 0.3)
@@ -330,15 +336,16 @@ export class AppHaxSiteBars extends SimpleColors {
         }
 
         .cardContent {
-          padding: var(--ddd-spacing-2);
+          padding: var(--app-hax-site-card-content-padding);
         }
 
         .cardImage {
           width: 100%;
           object-fit: cover;
-          border-top-left-radius: 8px;
-          border-top-right-radius: 8px;
-          border-bottom: 1px solid var(--ddd-theme-default-limestoneGray);
+          border-top-left-radius: var(--ddd-radius-md, 8px);
+          border-top-right-radius: var(--ddd-radius-md, 8px);
+          border-bottom: var(--ddd-border-xs, 1px solid)
+            var(--ddd-theme-default-limestoneGray);
           background-color: var(--ddd-theme-default-skyLight);
         }
 
@@ -348,7 +355,7 @@ export class AppHaxSiteBars extends SimpleColors {
           align-items: center;
           position: relative;
           overflow: visible;
-          margin-bottom: 8px;
+          margin-bottom: var(--ddd-spacing-2, 8px);
         }
 
         .more-options {
@@ -369,7 +376,7 @@ export class AppHaxSiteBars extends SimpleColors {
         }
 
         ::slotted([slot="heading"]) {
-          font-size: var(--ddd-font-size-xxs);
+          font-size: var(--app-hax-site-title-font-size);
           font-weight: var(--ddd-font-weight-bold, 700);
           color: var(--ddd-theme-default-nittanyNavy);
           white-space: nowrap;
@@ -385,7 +392,7 @@ export class AppHaxSiteBars extends SimpleColors {
           display: flex;
           gap: var(--ddd-spacing-1, 4px);
           margin-top: var(--ddd-spacing-2, 8px);
-          font-size: var(--ddd-font-size-4xs);
+          font-size: var(--app-hax-site-date-font-size);
           color: var(--ddd-theme-default-nittanyNavy);
           align-items: center;
           line-height: 1;
@@ -405,7 +412,22 @@ export class AppHaxSiteBars extends SimpleColors {
         .imageLink {
           display: block;
           overflow: hidden;
-          height: 180px;
+          height: var(--app-hax-site-image-height);
+        }
+
+        @media (max-width: 640px) {
+          :host {
+            --app-hax-site-card-width: clamp(120px, 30vw, 148px);
+            --app-hax-site-card-min-height: 210px;
+            --app-hax-site-image-height: clamp(96px, 27vw, 120px);
+            --app-hax-site-title-font-size: var(--ddd-font-size-5xs, 12px);
+            --app-hax-site-date-font-size: var(--ddd-font-size-5xs, 11px);
+            --app-hax-site-card-content-padding: var(--ddd-spacing-1, 4px);
+          }
+
+          .titleBar {
+            margin-bottom: var(--ddd-spacing-1, 4px);
+          }
         }
       `,
     ];

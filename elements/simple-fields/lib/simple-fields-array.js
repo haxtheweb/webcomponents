@@ -244,18 +244,25 @@ class SimpleFieldsArray extends SimpleFieldsFieldsetBehaviors(LitElement) {
    * @memberof SimpleFieldsArray
    */
   focus(index) {
-    if (this.childNodes && index) {
-      if (this.childNodes.length < index) index = this.childNodes.length - 1;
+    let items = Array.from(this.children || []);
+    let hasIndex = index || index === 0;
+    if (hasIndex) {
+      index = parseInt(index, 10);
+      if (isNaN(index)) index = 0;
+      if (items.length - 1 < index) index = items.length - 1;
       // account for delete of 1st item
-      if (index == -1) {
-        index = 0;
+      if (index < 0) index = 0;
+      if (items.length !== 0 && items[index] && items[index].focus) {
+        items[index].focus();
+        return;
       }
-      if (this.childNodes.length != 0) {
-        this.childNodes[index].focus();
-      }
-    } else if (this.shadowRoot) {
-      let id = !this.childNodes ? "add" : "expand";
-      this.shadowRoot.getElementById(id).focus();
+    }
+    if (this.shadowRoot) {
+      let id = items.length === 0 ? "add" : "expand";
+      let target = this.shadowRoot.getElementById(id);
+      if (!target) target = this.shadowRoot.getElementById("add");
+      if (!target) target = this.shadowRoot.getElementById("expand");
+      if (target && target.focus) target.focus();
     }
   }
 

@@ -35,6 +35,7 @@ export class AppHaxUseCaseFilter extends LitElement {
     this.returningSites = [];
     this.allFilters = new Set();
     this.dark = false;
+    this.isMobile = false;
     this.isLoggedIn = false;
     this.sortMenuOpen = false;
     // Default to sorting sites by most recently updated
@@ -53,6 +54,9 @@ export class AppHaxUseCaseFilter extends LitElement {
       import("mobx").then(({ autorun, toJS }) => {
         autorun(() => {
           this.dark = toJS(store.darkMode);
+        });
+        autorun(() => {
+          this.isMobile = toJS(store.isMobile);
         });
         // Watch for appReady AND login state to trigger skeleton loading
         let hasLoaded = false;
@@ -135,6 +139,7 @@ export class AppHaxUseCaseFilter extends LitElement {
       returningSites: { type: Array },
       allFilters: { attribute: false },
       dark: { type: Boolean, reflect: true },
+      isMobile: { type: Boolean, attribute: false },
       isLoggedIn: { type: Boolean },
       sortOption: { type: String, attribute: "sort-option" },
       sortMenuOpen: { type: Boolean },
@@ -224,6 +229,9 @@ export class AppHaxUseCaseFilter extends LitElement {
         .template-results {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(200px, 0fr));
+          gap: var(--ddd-spacing-4, 16px);
+          justify-content: flex-start;
+          justify-items: center;
           padding: 0 var(--ddd-spacing-5, 20px);
           box-sizing: border-box;
         }
@@ -570,12 +578,28 @@ export class AppHaxUseCaseFilter extends LitElement {
           .startNew h4 {
             font-size: var(--ddd-font-size-s, 18px);
           }
+
+          .template-group-heading {
+            margin-left: var(--ddd-spacing-3, 12px);
+          }
+
+          .template-results {
+            grid-template-columns: repeat(
+              auto-fit,
+              minmax(clamp(120px, 30vw, 144px), 1fr)
+            );
+            gap: var(--ddd-spacing-2, 8px);
+            padding: 0 var(--ddd-spacing-3, 12px);
+          }
         }
 
         @media (max-width: 480px) {
           h4, .returnTo h4, .startNew h4 {
             font-size: var(--ddd-font-size-s, 16px);
             margin: 0 0 var(--ddd-spacing-3, 12px) 0;
+          }
+          .template-results {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
           }
           #returnToSection app-hax-search-results {
             min-width: 100%;
@@ -939,10 +963,11 @@ export class AppHaxUseCaseFilter extends LitElement {
   }
 
   render() {
+    const isMobile = this.isMobile;
     const skeletons = Array.isArray(this.items)
       ? this.items.filter((i) => i && i.dataType === "skeleton")
       : [];
-    const quickSkeletons = skeletons.slice(0, 3);
+    const quickSkeletons = isMobile ? [] : skeletons.slice(0, 3);
 
     return html`
       <div class="contentSection">
@@ -973,40 +998,48 @@ export class AppHaxUseCaseFilter extends LitElement {
             <div role="listitem">
               <app-hax-use-case
                 .source=${""}
-                .title=${"More Templates"}
+                .title=${isMobile ? "Templates" : "More Templates"}
                 .description=${"Browse all template starters"}
                 .iconImage=${[{ icon: "icons:add", tooltip: "More templates" }]}
                 ?dark="${this.dark}"
-                aria-label="More templates"
+                aria-label=${isMobile ? "Templates" : "More templates"}
                 @click=${() =>
                   this.scrollToGroup("from-template-heading", "skeleton")}
               ></app-hax-use-case>
             </div>
+            ${!isMobile
+              ? html`
+                  <div role="listitem">
+                    <app-hax-use-case
+                      .source=${""}
+                      .title=${"From Scratch"}
+                      .description=${"Start from a blank site using a theme"}
+                      .iconImage=${[{ icon: "editor:insert-drive-file", tooltip: "From scratch" }]}
+                      ?dark="${this.dark}"
+                      aria-label="From scratch"
+                      @click=${() =>
+                        this.scrollToGroup("from-scratch-heading", "blank")}
+                    ></app-hax-use-case>
+                  </div>
+                `
+              : ""}
 
-            <div role="listitem">
-              <app-hax-use-case
-                .source=${""}
-                .title=${"From Scratch"}
-                .description=${"Start from a blank site using a theme"}
-                .iconImage=${[{ icon: "editor:insert-drive-file", tooltip: "From scratch" }]}
-                ?dark="${this.dark}"
-                aria-label="From scratch"
-                @click=${() => this.scrollToGroup("from-scratch-heading", "blank")}
-              ></app-hax-use-case>
-            </div>
-
-            <div role="listitem">
-              <app-hax-use-case
-                .source=${""}
-                .title=${"Import"}
-                .description=${"Import content from an existing source"}
-                .iconImage=${[{ icon: "icons:cloud-download", tooltip: "Import content" }]}
-                ?dark="${this.dark}"
-                aria-label="Import"
-                @click=${() =>
-                  this.scrollToGroup("from-existing-heading", "import")}
-              ></app-hax-use-case>
-            </div>
+            ${!isMobile
+              ? html`
+                  <div role="listitem">
+                    <app-hax-use-case
+                      .source=${""}
+                      .title=${"Import"}
+                      .description=${"Import content from an existing source"}
+                      .iconImage=${[{ icon: "icons:cloud-download", tooltip: "Import content" }]}
+                      ?dark="${this.dark}"
+                      aria-label="Import"
+                      @click=${() =>
+                        this.scrollToGroup("from-existing-heading", "import")}
+                    ></app-hax-use-case>
+                  </div>
+                `
+              : ""}
           </div>
         </section>
 
@@ -1249,35 +1282,39 @@ export class AppHaxUseCaseFilter extends LitElement {
                           </p>`}
                     </div>
 
-                    <div
-                      class="template-group"
-                      role="region"
-                      aria-labelledby="from-existing-heading"
-                      aria-live="polite"
-                    >
-                      <h3
-                        id="from-existing-heading"
-                        class="template-group-heading"
-                      >
-                        From Existing Site
-                      </h3>
-                      ${importEntries.length > 0
-                        ? html`<div
-                            class="template-results"
-                            role="grid"
-                            aria-label="Import options"
-                            aria-describedby="template-count"
-                          >
-                            ${renderEntries(importEntries, "Import")}
-                          </div>`
-                        : html`<p
-                            role="status"
-                            class="no-results"
+                    ${!isMobile
+                      ? html`
+                          <div
+                            class="template-group"
+                            role="region"
+                            aria-labelledby="from-existing-heading"
                             aria-live="polite"
                           >
-                            No import options match your current filters.
-                          </p>`}
-                    </div>
+                            <h3
+                              id="from-existing-heading"
+                              class="template-group-heading"
+                            >
+                              From Existing Site
+                            </h3>
+                            ${importEntries.length > 0
+                              ? html`<div
+                                  class="template-results"
+                                  role="grid"
+                                  aria-label="Import options"
+                                  aria-describedby="template-count"
+                                >
+                                  ${renderEntries(importEntries, "Import")}
+                                </div>`
+                              : html`<p
+                                  role="status"
+                                  class="no-results"
+                                  aria-live="polite"
+                                >
+                                  No import options match your current filters.
+                                </p>`}
+                          </div>
+                        `
+                      : ""}
                   `
                 })()
               : this.loading

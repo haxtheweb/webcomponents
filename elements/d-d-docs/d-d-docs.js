@@ -1728,13 +1728,21 @@ class DDDocs extends DDD {
         <p class="mb-10">
           Font sizes:
           <span class="fw-3"
-            >16 (fs-4xs) to 72 (fs-4xl) [--ddd-font-size-VALUE]</span
+            >12 (fs-6xs) to 72 (fs-4xl) [--ddd-font-size-VALUE]</span
           >
         </p>
       </div>
       <div
         class="b-xs grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10"
       >
+        <p>12 <strong class="fs-4xs">6xs</strong></p>
+        <h3 class="fs-6xs my-1 mx-0">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </h3>
+        <p>14 <strong class="fs-4xs">5xs</strong></p>
+        <h3 class="fs-5xs my-1 mx-0">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </h3>
         <p>16 <strong class="fs-4xs">4xs</strong></p>
         <h3 class="fs-4xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -1747,27 +1755,27 @@ class DDDocs extends DDD {
         <h3 class="fs-xxs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>24 <strong class="fs-4xs">xs</strong></p>
+        <p>22 <strong class="fs-4xs">xs</strong></p>
         <h3 class="fs-xs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>28 <strong class="fs-4xs">s</strong></p>
+        <p>24 <strong class="fs-4xs">s</strong></p>
         <h3 class="fs-s m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>32 <strong class="fs-4xs">ms</strong></p>
+        <p>28 <strong class="fs-4xs">ms</strong></p>
         <h3 class="fs-ms m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>36 <strong class="fs-4xs">m</strong></p>
+        <p>32 <strong class="fs-4xs">m</strong></p>
         <h3 class="fs-m m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>40 <strong class="fs-4xs">ml</strong></p>
+        <p>36 <strong class="fs-4xs">ml</strong></p>
         <h3 class="fs-ml m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>44 <strong class="fs-4xs">l</strong></p>
+        <p>40 <strong class="fs-4xs">l</strong></p>
         <h3 class="fs-l m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
@@ -1803,6 +1811,14 @@ class DDDocs extends DDD {
       <div
         class="b-xs grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10"
       >
+        <p>12 <strong class="fs-4xs">6xs</strong></p>
+        <h3 class="ddd-font-secondary fs-6xs my-1 mx-0">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </h3>
+        <p>14 <strong class="fs-4xs">5xs</strong></p>
+        <h3 class="ddd-font-secondary fs-5xs my-1 mx-0">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </h3>
         <p>16 <strong class="fs-4xs">4xs</strong></p>
         <h3 class="ddd-font-secondary fs-4xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -1815,27 +1831,27 @@ class DDDocs extends DDD {
         <h3 class="ddd-font-secondary fs-xxs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>24 <strong class="fs-4xs">xs</strong></p>
+        <p>22 <strong class="fs-4xs">xs</strong></p>
         <h3 class="ddd-font-secondary fs-xs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>28 <strong class="fs-4xs">s</strong></p>
+        <p>24 <strong class="fs-4xs">s</strong></p>
         <h3 class="ddd-font-secondary fs-s m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>32 <strong class="fs-4xs">ms</strong></p>
+        <p>28 <strong class="fs-4xs">ms</strong></p>
         <h3 class="ddd-font-secondary fs-ms m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>36 <strong class="fs-4xs">m</strong></p>
+        <p>32 <strong class="fs-4xs">m</strong></p>
         <h3 class="ddd-font-secondary fs-m m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>40 <strong class="fs-4xs">ml</strong></p>
+        <p>36 <strong class="fs-4xs">ml</strong></p>
         <h3 class="ddd-font-secondary fs-ml m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>44 <strong class="fs-4xs">l</strong></p>
+        <p>40 <strong class="fs-4xs">l</strong></p>
         <h3 class="ddd-font-secondary fs-l m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
@@ -1873,6 +1889,14 @@ class DDDocs extends DDD {
       <div
         class="b-1 grid-2-narrow gap-4 py-8 px-4 boxshadow-sm overflow-hidden m-10"
       >
+        <p>12 <strong class="fs-4xs">6xs</strong></p>
+        <h3 class="ddd-font-navigation fs-6xs my-1 mx-0">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </h3>
+        <p>14 <strong class="fs-4xs">5xs</strong></p>
+        <h3 class="ddd-font-navigation fs-5xs my-1 mx-0">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </h3>
         <p>16 <strong class="fs-4xs">4xs</strong></p>
         <h3 class="ddd-font-navigation fs-4xs my-1 mx-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -1885,27 +1909,27 @@ class DDDocs extends DDD {
         <h3 class="ddd-font-navigation fs-xxs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>24 <strong class="fs-4xs">xs</strong></p>
+        <p>22 <strong class="fs-4xs">xs</strong></p>
         <h3 class="ddd-font-navigation fs-xs m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>28 <strong class="fs-4xs">s</strong></p>
+        <p>24 <strong class="fs-4xs">s</strong></p>
         <h3 class="ddd-font-navigation fs-s m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>32 <strong class="fs-4xs">ms</strong></p>
+        <p>28 <strong class="fs-4xs">ms</strong></p>
         <h3 class="ddd-font-navigation fs-ms m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>36 <strong class="fs-4xs">m</strong></p>
+        <p>32 <strong class="fs-4xs">m</strong></p>
         <h3 class="ddd-font-navigation fs-m m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>40 <strong class="fs-4xs">ml</strong></p>
+        <p>36 <strong class="fs-4xs">ml</strong></p>
         <h3 class="ddd-font-navigation fs-ml m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>
-        <p>44 <strong class="fs-4xs">l</strong></p>
+        <p>40 <strong class="fs-4xs">l</strong></p>
         <h3 class="ddd-font-navigation fs-l m-0">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </h3>

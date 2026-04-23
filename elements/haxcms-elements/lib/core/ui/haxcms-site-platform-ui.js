@@ -676,7 +676,28 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           :host {
             min-width: 0;
             width: 100%;
+            min-height: 0;
+            height: auto;
+            max-height: calc(
+              100dvh -
+                var(
+                  --simple-modal-titlebar-mobile-height,
+                  var(--simple-modal-titlebar-height, 80px)
+                ) -
+                var(--ddd-spacing-4, 16px)
+            );
+            overflow-y: auto;
+            overflow-x: hidden;
             padding: var(--ddd-spacing-3);
+          }
+          .panel-shell {
+            min-height: auto;
+          }
+          .panel-scroll {
+            flex: 0 0 auto;
+            min-height: auto;
+            overflow: visible;
+            padding-right: 0;
           }
 
           .section {
@@ -707,6 +728,7 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
           }
 
           .actions {
+            position: static;
             padding-bottom: calc(
               var(--ddd-spacing-3) + env(safe-area-inset-bottom, 0px)
             );

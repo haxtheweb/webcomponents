@@ -186,6 +186,7 @@ class Store {
     this.darkMode = !localStorageGet("app-hax-darkMode")
       ? false
       : localStorageGet("app-hax-darkMode");
+    this.responsiveSize = "";
 
     makeObservable(this, {
       // internal state for routing
@@ -212,9 +213,11 @@ class Store {
       searchTerm: observable, // current search term for filtering own list of sites
       themesData: observable, // themes.json data for theme thumbnails
       darkMode: observable, // dark mode pref
+      responsiveSize: observable, // viewport size bucket from responsive utility
       soundStatus: observable, // toggle sounds on and off
       showTerribleTemplates: observable, // show terrible themes / use-cases
       showHiddenTemplates: observable, // show hidden themes / use-cases
+      isMobile: computed, // derived mobile mode for store consumers
       activeItem: computed, // active item is route
       isNewUser: computed, // if they are new so we can auto kick to createSiteSteps if needed
       isLoggedIn: computed, // basic bool for logged in
@@ -297,6 +300,10 @@ class Store {
     if (this.appReady && this.AppHaxAPI) {
       return this.jwt !== "null" && this.jwt;
     }
+  }
+
+  get isMobile() {
+    return this.responsiveSize === "xs" || this.responsiveSize === "sm";
   }
 
   get isNewUser() {

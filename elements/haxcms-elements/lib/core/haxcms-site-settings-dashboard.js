@@ -13,11 +13,17 @@ class HAXCMSSiteSettingsDashboard extends DDD {
       allowStructure: { type: Boolean, attribute: "allow-structure" },
       allowAppearance: { type: Boolean, attribute: "allow-appearance" },
       allowSiteDetails: { type: Boolean, attribute: "allow-site-details" },
+      allowAbout: { type: Boolean, attribute: "allow-about" },
       allowSeo: { type: Boolean, attribute: "allow-seo" },
       allowBlocks: { type: Boolean, attribute: "allow-blocks" },
       allowEditor: { type: Boolean, attribute: "allow-editor" },
       allowStyleGuide: { type: Boolean, attribute: "allow-style-guide" },
       allowReports: { type: Boolean, attribute: "allow-reports" },
+      allowFiles: { type: Boolean, attribute: "allow-files" },
+      showDisabledActions: {
+        type: Boolean,
+        attribute: "show-disabled-actions",
+      },
     };
   }
 
@@ -27,11 +33,14 @@ class HAXCMSSiteSettingsDashboard extends DDD {
     this.allowStructure = true;
     this.allowAppearance = true;
     this.allowSiteDetails = true;
+    this.allowAbout = true;
     this.allowSeo = true;
     this.allowBlocks = true;
     this.allowEditor = true;
     this.allowStyleGuide = false;
     this.allowReports = false;
+    this.allowFiles = false;
+    this.showDisabledActions = false;
   }
 
   static get styles() {
@@ -49,7 +58,7 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         }
         .primary-grid {
           display: grid;
-          grid-template-columns: repeat(4, minmax(0, 1fr));
+          grid-template-columns: repeat(5, minmax(0, 1fr));
           gap: var(--ddd-spacing-4);
         }
         .advanced-grid {
@@ -181,8 +190,20 @@ class HAXCMSSiteSettingsDashboard extends DDD {
   _disabledViaFeaturesTooltip(disabled) {
     return disabled ? "Disabled via Features" : "";
   }
-  _renderActionButton(item, size = "advanced") {
+  _shouldHideAction(item) {
+    if (!item) {
+      return true;
+    }
     if (item.hidden) {
+      return true;
+    }
+    if (item.disabled && !this.showDisabledActions) {
+      return true;
+    }
+    return false;
+  }
+  _renderActionButton(item, size = "advanced") {
+    if (this._shouldHideAction(item)) {
       return "";
     }
     return html`
@@ -207,10 +228,12 @@ class HAXCMSSiteSettingsDashboard extends DDD {
     const structureDisabled = !this.allowStructure;
     const appearanceDisabled = !this.allowAppearance;
     const siteDetailsDisabled = !this.allowSiteDetails;
+    const aboutDisabled = !this.allowAbout;
     const seoDisabled = !this.allowSeo;
     const blocksDisabled = !this.allowBlocks;
     const editorDisabled = !this.allowEditor;
     const reportsDisabled = !this.allowReports;
+    const filesDisabled = !this.allowFiles;
     const primaryActions = [
       {
         action: "content-admin",
@@ -239,6 +262,13 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         label: "Details",
         disabled: siteDetailsDisabled,
         tooltip: this._disabledViaFeaturesTooltip(siteDetailsDisabled),
+      },
+      {
+        action: "about",
+        icon: "help",
+        label: "About",
+        disabled: aboutDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(aboutDisabled),
       },
     ];
     const advancedActions = [
@@ -275,8 +305,8 @@ class HAXCMSSiteSettingsDashboard extends DDD {
         action: "files-admin",
         icon: "icons:folder",
         label: "Files",
-        disabled: true,
-        tooltip: "Coming soon",
+        disabled: filesDisabled,
+        tooltip: this._disabledViaFeaturesTooltip(filesDisabled),
       },
     ];
     return html`

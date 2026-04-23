@@ -1,4 +1,5 @@
 import { html, css } from "lit";
+import { keyed } from "lit/directives/keyed.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { HAXStore } from "@haxtheweb/hax-body/lib/hax-store.js";
@@ -14,20 +15,16 @@ class HAXCMSFilesAdminDialog extends DDD {
   static get properties() {
     return {
       rows: { type: Array },
-      selectedIds: { type: Array },
       textFilter: { type: String, attribute: "text-filter" },
       typeFilter: { type: String, attribute: "type-filter" },
-      loading: { type: Boolean, reflect: true },
     };
   }
 
   constructor() {
     super();
     this.rows = [];
-    this.selectedIds = [];
     this.textFilter = "";
     this.typeFilter = "any";
-    this.loading = false;
     this.__disposer = [];
   }
 
@@ -120,20 +117,129 @@ class HAXCMSFilesAdminDialog extends DDD {
           opacity: 0.6;
           cursor: not-allowed;
         }
-        .op-btn {
+        editable-table {
+          --editable-table-font-family: var(--ddd-font-navigation);
+          --editable-table-font-size: var(--ddd-font-size-4xs);
+        }
+        .preview-cell {
+          min-width: 120px;
+        }
+        .preview-wrap {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 100px;
+          height: 100px;
+          max-width: 100px;
+          max-height: 100px;
+          overflow: hidden;
+          border: var(--ddd-border-xs) solid var(--ddd-theme-default-limestoneGray);
+          border-radius: var(--ddd-radius-sm);
+          background: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-coalyGray)
+          );
+        }
+        .preview-wrap img {
+          width: 100px;
+          height: 100px;
+          max-width: 100px;
+          max-height: 100px;
+          object-fit: contain;
+          border-radius: var(--ddd-radius-sm);
+          background: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          display: block;
+        }
+        .file-name-cell {
+          min-width: 230px;
+        }
+        .file-name-main {
+          display: flex;
+          align-items: center;
+          gap: var(--ddd-spacing-1);
+          min-width: 0;
+        }
+        .file-name-main span {
+          overflow-wrap: anywhere;
+        }
+        .file-path {
+          margin-top: var(--ddd-spacing-1);
+          font-size: var(--ddd-font-size-6xs, 0.62rem);
+          line-height: var(--ddd-lh-120, 1.2);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneGray)
+          );
+          overflow-wrap: anywhere;
+        }
+        .copy-btn {
           --simple-icon-button-border-radius: var(--ddd-radius-sm);
           --simple-icon-button-border: var(--ddd-border-xs) solid
             var(--ddd-theme-default-limestoneGray);
           --simple-icon-button-focus-border: var(--ddd-border-xs) solid
             var(--ddd-theme-default-navy);
           --simple-icon-button-padding: var(--ddd-spacing-1);
-          --simple-icon-height: var(--ddd-icon-4xs);
-          --simple-icon-width: var(--ddd-icon-4xs);
-          margin-right: var(--ddd-spacing-1);
+          --simple-icon-height: var(--ddd-icon-3xs);
+          --simple-icon-width: var(--ddd-icon-3xs);
+          flex: 0 0 auto;
         }
-        editable-table {
-          --editable-table-font-family: var(--ddd-font-navigation);
-          --editable-table-font-size: var(--ddd-font-size-4xs);
+        a {
+          color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-linkLight)
+          );
+        }
+        .empty {
+          margin: var(--ddd-spacing-4) 0;
+        }
+        .sr-only {
+          border: 0;
+          clip: rect(0, 0, 0, 0);
+          height: 1px;
+          margin: -1px;
+          overflow: hidden;
+          padding: 0;
+          position: absolute;
+          white-space: nowrap;
+          width: 1px;
+        }
+        @media screen and (max-width: 900px) {
+          :host {
+            min-width: 0;
+            width: 100%;
+            min-height: 0;
+            height: auto;
+            max-height: calc(
+              100dvh -
+                var(
+                  --simple-modal-titlebar-mobile-height,
+                  var(--simple-modal-titlebar-height, 80px)
+                ) -
+                var(--ddd-spacing-4, 16px)
+            );
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: var(--ddd-spacing-3);
+          }
+          .panel-shell {
+            min-height: auto;
+            padding: 0;
+          }
+          .panel-scroll {
+            flex: 0 0 auto;
+            min-height: auto;
+            overflow: visible;
+            padding-right: 0;
+          }
+          th.col-mime,
+          td.col-mime,
+          th.col-size,
+          td.col-size {
+            display: none;
+          }
         }
       `,
     ];
@@ -142,141 +248,278 @@ class HAXCMSFilesAdminDialog extends DDD {
   connectedCallback() {
     super.connectedCallback();
     const reaction = autorun(() => {
-      toJS(store.manifest);
-      this.rows = this.rows.map((row) => ({
-        ...row,
-        usedIn: this._countFileUsage(row),
-      }));
+      const manifest = toJS(store.manifest);
+      this.rows = this._buildRows(manifest);
     });
     this.__disposer.push(reaction);
-    this.loadFiles();
   }
 
   disconnectedCallback() {
     for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
+      if (this.__disposer[i] && typeof this.__disposer[i].dispose === "function") {
+        this.__disposer[i].dispose();
+      }
     }
     super.disconnectedCallback();
   }
 
-  async loadFiles() {
-    this.loading = true;
-    try {
-      const app = this._getLocalFilesApp();
-      const endpoint = app ? this._buildFilesEndpoint(app) : null;
-      if (!endpoint) {
-        this.rows = [];
-        this.loading = false;
-        return;
-      }
-      const response = await fetch(endpoint.url, {
-        method: endpoint.method,
+  _buildRows(manifest) {
+    const rowsByKey = {};
+    const items = manifest && Array.isArray(manifest.items) ? manifest.items : [];
+    items.forEach((item) => {
+      const references = this._itemFileReferences(item);
+      references.forEach((reference) => {
+        this._upsertReferenceRow(rowsByKey, reference, item);
       });
-      const data = response.ok ? await response.json() : [];
-      const list = Array.isArray(data) ? data : data && data.list ? data.list : [];
-      this.rows = list.map((item) => this._normalizeFile(item));
-      this._syncSelectionToRows();
-    } catch (e) {
-      this.rows = [];
-    }
-    this.loading = false;
+    });
+    this._siteFileReferences(manifest).forEach((reference) => {
+      this._upsertReferenceRow(rowsByKey, reference, null);
+    });
+    const rows = Object.keys(rowsByKey).map((key) => {
+      const row = rowsByKey[key];
+      row.pageRefs.sort((a, b) => a.title.localeCompare(b.title));
+      row.pageSearch = row.pageRefs
+        .map((page) => page.title.toLowerCase())
+        .join(" ");
+      row.name = row.name || this._extractFileName(row.url || row.fullUrl);
+      row.mimeType = row.mimeType || this._inferMimeType(row);
+      row.type = this._normalizeType(row.mimeType);
+      row.sizeLabel = this._formatBytes(row.size);
+      row.path = row.url || row.fullUrl || "";
+      row.previewUrl = row.type === "image" ? row.url || row.fullUrl : "";
+      return row;
+    });
+    rows.sort((a, b) => {
+      const left = (a.name || "").toLowerCase();
+      const right = (b.name || "").toLowerCase();
+      return left.localeCompare(right);
+    });
+    return rows;
   }
 
-  _getLocalFilesApp() {
-    const editor = store.cmsSiteEditorAvailability();
-    if (!editor || !editor.appStore || !editor.appStore.apps) {
-      return null;
+  _upsertReferenceRow(rowsByKey, reference, item) {
+    const key = this._rowKey(reference);
+    if (!key) {
+      return;
     }
-    const apps = editor.appStore.apps;
-    if (!Array.isArray(apps)) {
-      return null;
+    if (!rowsByKey[key]) {
+      rowsByKey[key] = {
+        key,
+        name: reference.name || "",
+        mimeType: reference.mimeType || "",
+        size: this._normalizeSize(reference.size),
+        url: reference.url || "",
+        fullUrl: reference.fullUrl || "",
+        pageRefs: [],
+        siteReferenced: false,
+        pageSearch: "",
+      };
     }
-    return (
-      apps.find((app) => app.details && app.details.title === "Local files") || null
-    );
-  }
-
-  _buildFilesEndpoint(app) {
-    const browse =
-      app.connection && app.connection.operations
-        ? app.connection.operations.browse
-        : null;
-    if (!browse) {
-      return null;
+    const row = rowsByKey[key];
+    if (!row.name && reference.name) {
+      row.name = reference.name;
     }
-    let url = "";
-    if (browse.endPoint) {
-      if (
-        browse.endPoint.indexOf("http://") === 0 ||
-        browse.endPoint.indexOf("https://") === 0
-      ) {
-        url = browse.endPoint;
-      } else {
-        if (app.connection && app.connection.url) {
-          const protocol = app.connection.protocol || "https";
-          url = `${protocol}://${app.connection.url || ""}`;
-          if (url.slice(-1) !== "/") {
-            url += "/";
-          }
-        }
-        url += browse.endPoint;
-      }
+    if (!row.mimeType && reference.mimeType) {
+      row.mimeType = reference.mimeType;
     }
-    if (!url) {
-      return null;
+    if (!row.size && reference.size) {
+      row.size = this._normalizeSize(reference.size);
     }
-    const params = {};
-    Object.assign(params, app.connection.data || {}, browse.data || {});
-    if (params.__HAXJWT__) {
-      const editor = store.cmsSiteEditorAvailability();
-      if (editor && editor.jwt) {
-        params.jwt = editor.jwt;
-      }
-      delete params.__HAXJWT__;
+    if (!row.url && reference.url) {
+      row.url = reference.url;
     }
-    if (params.__HAXAPPENDUPLOADENDPOINT__) {
-      const append = HAXStore.connectionRewrites.appendUploadEndPoint;
-      if (append) {
-        const extra = new URLSearchParams(append);
-        extra.forEach((value, key) => {
-          params[key] = value;
+    if (!row.fullUrl && reference.fullUrl) {
+      row.fullUrl = reference.fullUrl;
+    }
+    if (item) {
+      const pageId = item.id || item.slug || item.title;
+      const hasReference = row.pageRefs.some((page) => page.id === pageId);
+      if (!hasReference) {
+        row.pageRefs.push({
+          id: pageId,
+          title: item.title || item.slug || "Untitled page",
+          slug: item.slug || "",
         });
       }
-      delete params.__HAXAPPENDUPLOADENDPOINT__;
+    } else {
+      row.siteReferenced = true;
     }
-    const qs = new URLSearchParams();
-    Object.keys(params).forEach((key) => {
-      if (params[key] !== null && params[key] !== undefined) {
-        qs.set(key, params[key]);
-      }
-    });
-    const query = qs.toString();
-    return {
-      method: browse.method || "GET",
-      url: query ? `${url}?${query}` : url,
-    };
   }
 
-  _normalizeFile(item) {
-    const id = item.uuid || item.url || item.path || item.name;
-    const name = item.name || item.path || item.url || "";
-    const type = this._normalizeType(item.type || item.mimetype || item.mime || "");
-    const updated = this._toNumber(
-      item.updated || item.timestamp || item.modified || item.lastModified,
-    );
-    const file = {
-      id,
-      name,
-      type,
-      url: item.url || item.path || "",
-      fullUrl: item.fullUrl || item.url || "",
-      updated,
-      updatedLabel: this._formatDateForSort(updated),
-      usedIn: 0,
-      raw: item,
+  _siteFileReferences(manifest) {
+    const references = [];
+    if (!manifest || !manifest.metadata) {
+      return references;
+    }
+    const metadata = manifest.metadata;
+    const site = metadata.site || {};
+    const theme = metadata.theme || {};
+    if (site.logo) {
+      references.push(this._normalizeReference(site.logo));
+    }
+    if (theme.variables && theme.variables.image) {
+      references.push(this._normalizeReference(theme.variables.image));
+    }
+    if (theme.image) {
+      references.push(this._normalizeReference(theme.image));
+    }
+    if (theme.thumbnail) {
+      references.push(this._normalizeReference(theme.thumbnail));
+    }
+    return references.filter((reference) => !!reference);
+  }
+
+  _itemFileReferences(item) {
+    const references = [];
+    if (!item || !item.metadata) {
+      return references;
+    }
+    const metadata = item.metadata;
+    if (Array.isArray(metadata.files)) {
+      metadata.files.forEach((entry) => {
+        const normalized = this._normalizeReference(entry);
+        if (normalized) {
+          references.push(normalized);
+        }
+      });
+    }
+    if (Array.isArray(metadata.images)) {
+      metadata.images.forEach((entry) => {
+        const normalized = this._normalizeReference(entry);
+        if (normalized) {
+          references.push(normalized);
+        }
+      });
+    }
+    if (metadata.image) {
+      const normalized = this._normalizeReference(metadata.image);
+      if (normalized) {
+        references.push(normalized);
+      }
+    }
+    return references;
+  }
+
+  _normalizeReference(reference) {
+    if (!reference) {
+      return null;
+    }
+    if (typeof reference === "string") {
+      const url = this._cleanString(reference);
+      if (!this._looksLikeFileReference(url)) {
+        return null;
+      }
+      return {
+        url,
+        fullUrl: "",
+        name: this._extractFileName(url),
+        mimeType: this._inferMimeType({ url }),
+        size: 0,
+      };
+    }
+    if (typeof reference === "object") {
+      const url = this._cleanString(reference.url || reference.path);
+      const fullUrl = this._cleanString(reference.fullUrl || "");
+      const name =
+        this._cleanString(reference.name) ||
+        this._extractFileName(url || fullUrl || "");
+      const mimeType = this._normalizeMimeType(
+        reference.type || reference.mimetype || reference.mime,
+      );
+      if (!this._looksLikeFileReference(url) && !this._looksLikeFileReference(fullUrl)) {
+        return null;
+      }
+      return {
+        url,
+        fullUrl,
+        name,
+        mimeType,
+        size: this._normalizeSize(reference.size),
+      };
+    }
+    return null;
+  }
+
+  _cleanString(value) {
+    return typeof value === "string" ? value.trim() : "";
+  }
+
+  _looksLikeFileReference(value) {
+    const test = this._cleanString(value).toLowerCase();
+    if (!test) {
+      return false;
+    }
+    if (test.indexOf("files/") !== -1 || test.indexOf("/files/") !== -1) {
+      return true;
+    }
+    return false;
+  }
+
+  _rowKey(reference) {
+    const key =
+      this._cleanString(reference.url) ||
+      this._cleanString(reference.fullUrl) ||
+      this._cleanString(reference.name);
+    return key.toLowerCase();
+  }
+
+  _extractFileName(value) {
+    const clean = this._cleanString(value).split("?")[0];
+    if (!clean) {
+      return "";
+    }
+    const parts = clean.split("/");
+    const name = parts.length > 0 ? parts[parts.length - 1] : clean;
+    try {
+      return decodeURIComponent(name);
+    } catch (e) {
+      return name;
+    }
+  }
+
+  _normalizeMimeType(value) {
+    const mime = this._cleanString(value).toLowerCase();
+    return mime;
+  }
+
+  _inferMimeType(reference) {
+    const target = reference.name || reference.url || reference.fullUrl || "";
+    const extParts = target.toLowerCase().split("?");
+    const extTarget = extParts.length > 0 ? extParts[0] : target.toLowerCase();
+    const extension = extTarget.indexOf(".") !== -1 ? extTarget.split(".").pop() : "";
+    const mimeMap = {
+      png: "image/png",
+      jpg: "image/jpeg",
+      jpeg: "image/jpeg",
+      gif: "image/gif",
+      webp: "image/webp",
+      svg: "image/svg+xml",
+      avif: "image/avif",
+      bmp: "image/bmp",
+      tif: "image/tiff",
+      tiff: "image/tiff",
+      mp4: "video/mp4",
+      m4v: "video/mp4",
+      webm: "video/webm",
+      mov: "video/quicktime",
+      ogv: "video/ogg",
+      mp3: "audio/mpeg",
+      wav: "audio/wav",
+      ogg: "audio/ogg",
+      m4a: "audio/mp4",
+      pdf: "application/pdf",
+      txt: "text/plain",
+      md: "text/markdown",
+      csv: "text/csv",
+      json: "application/json",
+      doc: "application/msword",
+      docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      xls: "application/vnd.ms-excel",
+      xlsx: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      ppt: "application/vnd.ms-powerpoint",
+      pptx: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
     };
-    file.usedIn = this._countFileUsage(file);
-    return file;
+    return extension && mimeMap[extension] ? mimeMap[extension] : "";
   }
 
   _normalizeType(value) {
@@ -290,50 +533,31 @@ class HAXCMSFilesAdminDialog extends DDD {
     return lower || "file";
   }
 
-  _toNumber(value) {
+  _normalizeSize(value) {
     if (typeof value === "number") {
       return value;
     }
     if (typeof value === "string" && value !== "") {
-      const n = parseInt(value);
+      const n = parseInt(value, 10);
       return Number.isNaN(n) ? 0 : n;
     }
     return 0;
   }
 
-  _formatDateForSort(ts) {
-    if (!ts) {
+  _formatBytes(size) {
+    const sizeValue = this._normalizeSize(size);
+    if (!sizeValue) {
       return "";
     }
-    const ms = ts < 1000000000000 ? ts * 1000 : ts;
-    const d = new Date(ms);
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, "0");
-    const day = String(d.getDate()).padStart(2, "0");
-    const hrs = String(d.getHours()).padStart(2, "0");
-    const mins = String(d.getMinutes()).padStart(2, "0");
-    return `${year}-${month}-${day} ${hrs}:${mins}`;
-  }
-
-  _countFileUsage(file) {
-    const manifest = toJS(store.manifest);
-    if (!manifest || !manifest.items) {
-      return 0;
+    const units = ["B", "KB", "MB", "GB"];
+    let unitIndex = 0;
+    let current = sizeValue;
+    while (current >= 1024 && unitIndex < units.length - 1) {
+      current = current / 1024;
+      unitIndex++;
     }
-    const tests = [file.url, file.fullUrl, file.name].filter((v) => !!v);
-    let count = 0;
-    manifest.items.forEach((item) => {
-      const files = item.metadata && Array.isArray(item.metadata.files)
-        ? item.metadata.files
-        : [];
-      const matched = files.some((entry) =>
-        [entry.url, entry.fullUrl, entry.name].some((v) => tests.includes(v)),
-      );
-      if (matched) {
-        count++;
-      }
-    });
-    return count;
+    const precision = current >= 10 || unitIndex === 0 ? 0 : 1;
+    return `${current.toFixed(precision)} ${units[unitIndex]}`;
   }
 
   get filteredRows() {
@@ -346,16 +570,12 @@ class HAXCMSFilesAdminDialog extends DDD {
         return true;
       }
       return (
-        row.name.toLowerCase().includes(txt) ||
-        row.type.toLowerCase().includes(txt) ||
-        row.url.toLowerCase().includes(txt)
+        (row.name || "").toLowerCase().includes(txt) ||
+        (row.mimeType || "").toLowerCase().includes(txt) ||
+        (row.path || "").toLowerCase().includes(txt) ||
+        (row.pageSearch || "").includes(txt)
       );
     });
-  }
-
-  _syncSelectionToRows() {
-    const valid = new Set(this.rows.map((row) => row.id));
-    this.selectedIds = this.selectedIds.filter((id) => valid.has(id));
   }
 
   _onTextFilter(e) {
@@ -366,86 +586,12 @@ class HAXCMSFilesAdminDialog extends DDD {
     this.typeFilter = e.target.value;
   }
 
-  _onSelectAll(e) {
-    this.selectedIds = e.target.checked
-      ? this.filteredRows.map((row) => row.id)
-      : [];
-  }
-
-  _onSelectRow(e) {
-    const id = e.target.getAttribute("data-id");
-    if (!id) {
-      return;
-    }
-    const set = new Set(this.selectedIds);
-    if (e.target.checked) {
-      set.add(id);
-    } else {
-      set.delete(id);
-    }
-    this.selectedIds = Array.from(set);
-  }
-
-  _emitOperation(operation, files) {
-    this.dispatchEvent(
-      new CustomEvent("haxcms-files-dashboard-operation", {
-        bubbles: true,
-        composed: true,
-        cancelable: true,
-        detail: {
-          operation,
-          itemIds: files.map((file) => file.id),
-          files,
-        },
-      }),
-    );
-  }
-
-  _bulkDelete() {
-    if (this.selectedIds.length === 0) {
-      return;
-    }
-    if (
-      !globalThis.confirm(
-        `Delete ${this.selectedIds.length} selected file(s)? This cannot be undone.`,
-      )
-    ) {
-      return;
-    }
-    const files = this.rows.filter((row) => this.selectedIds.includes(row.id));
-    this._emitOperation("delete", files);
-  }
-
-  _editFile(file) {
-    this._emitOperation("edit", [file]);
-  }
-
-  _deleteFile(file) {
-    if (!globalThis.confirm(`Delete file "${file.name}"?`)) {
-      return;
-    }
-    this._emitOperation("delete", [file]);
-  }
-
-  _openExistingUploadWorkflow() {
-    if (HAXStore.haxTray) {
-      HAXStore.haxTray.collapsed = false;
-      HAXStore.haxTray.trayDetail = "content-add";
-    }
-    this.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        composed: true,
-        cancelable: false,
-        detail: false,
-      }),
-    );
+  _resetFilters() {
+    this.textFilter = "";
+    this.typeFilter = "any";
   }
 
   render() {
-    const allVisibleSelected =
-      this.filteredRows.length > 0 &&
-      this.filteredRows.every((row) => this.selectedIds.includes(row.id));
     return html`
       <div class="panel-shell">
         <div class="panel-scroll">
@@ -469,84 +615,84 @@ class HAXCMSFilesAdminDialog extends DDD {
                   type="text"
                   .value="${this.textFilter}"
                   @input="${this._onTextFilter}"
-                  placeholder="name, type, url"
+                  placeholder="name, mime, page title, path"
                 />
               </label>
-              <button @click="${this.loadFiles}" ?disabled="${this.loading}">
-                ${this.loading ? "Loading..." : "Refresh"}
+              <button
+                @click="${this._resetFilters}"
+                ?disabled="${!this.textFilter && this.typeFilter === "any"}"
+              >
+                Reset filters
               </button>
             </div>
           </div>
-          <div class="panel" ?hidden="${this.selectedIds.length === 0}">
-            <h3 class="title">Update options</h3>
-            <div class="controls">
-              <button @click="${this._bulkDelete}">Delete selected files</button>
-            </div>
-          </div>
-          <div class="panel">
-            <h3 class="title">Bulk upload</h3>
-            <div class="controls">
-              <button @click="${this._openExistingUploadWorkflow}">
-                Open existing upload workflow
-              </button>
-            </div>
-          </div>
-          <editable-table bordered condensed column-header filter sort striped scroll>
-            <table>
-              <thead>
-                <tr>
-                  <th>
-                    <input
-                      type="checkbox"
-                      aria-label="Select all files"
-                      .checked="${allVisibleSelected}"
-                      @change="${this._onSelectAll}"
-                    />
-                  </th>
-                  <th>Title</th>
-                  <th>Type</th>
-                  <th>Updated</th>
-                  <th>Used in</th>
-                  <th>Operations</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${this.filteredRows.map(
-                  (row) => html`
-                    <tr>
-                      <td>
-                        <input
-                          type="checkbox"
-                          aria-label="Select ${row.name}"
-                          data-id="${row.id}"
-                          .checked="${this.selectedIds.includes(row.id)}"
-                          @change="${this._onSelectRow}"
-                        />
-                      </td>
-                      <td>${row.name}</td>
-                      <td>${row.type}</td>
-                      <td>${row.updatedLabel}</td>
-                      <td>${row.usedIn} place(s)</td>
-                      <td>
-                        <simple-icon-button-lite
-                          class="op-btn"
-                          icon="create"
-                          label="Edit ${row.name}"
-                          @click="${() => this._editFile(row)}"
-                        ></simple-icon-button-lite>
-                        <simple-icon-button-lite
-                          class="op-btn"
-                          icon="delete"
-                          label="Delete ${row.name}"
-                          @click="${() => this._deleteFile(row)}"
-                        ></simple-icon-button-lite>
-                      </td>
-                    </tr>
-                  `,
-                )}
-              </tbody>
-            </table>
-          </editable-table>
+          ${this.filteredRows.length === 0
+            ? html`<div class="empty">No file references found in the manifest.</div>`
+            : keyed(
+                `${this.typeFilter}|${this.textFilter}|${this.filteredRows.length}`,
+                html`<editable-table
+                  bordered
+                  condensed
+                  column-header
+                  sort
+                  striped
+                  scroll
+                >
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Preview</th>
+                        <th>File name</th>
+                        <th class="col-mime">Mime type</th>
+                        <th>Referenced by page</th>
+                        <th class="col-size">Size</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${this.filteredRows.map(
+                        (row) => html`
+                          <tr>
+                            <td class="preview-cell">
+                              <span class="preview-wrap">
+                                ${row.previewUrl
+                                  ? html`<img
+                                      loading="lazy"
+                                      decoding="async"
+                                      width="100px"
+                                      height="100px"
+                                      style="display: block; background-color: light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray));"
+                                      class="preview-image"
+                                      src="${row.previewUrl}"
+                                      alt="Preview of ${row.name}"
+                                    />`
+                                  : html`<span class="sr-only">No image preview available</span>`}
+                              </span>
+                            </td>
+                            <td class="file-name-cell">
+                              <div class="file-name-main">
+                                <span>${row.name || "—"}</span>
+                              </div>
+                            </td>
+                            <td class="col-mime">${row.mimeType || "—"}</td>
+                            <td>
+                              ${row.pageRefs.length > 0
+                                ? row.pageRefs[0].slug
+                                  ? html`<a href="${row.pageRefs[0].slug}"
+                                      >${row.pageRefs[0].title}</a
+                                    >`
+                                  : html`${row.pageRefs[0].title}`
+                                : row.siteReferenced
+                                  ? html`Site settings`
+                                  : html`—`}
+                            </td>
+                            <td class="col-size">${row.sizeLabel || "—"}</td>
+                          </tr>
+                        `,
+                      )}
+                    </tbody>
+                  </table>
+                </editable-table>`,
+              )}
         </div>
       </div>
     `;

@@ -10,6 +10,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { AppHaxAPI } from "./lib/v2/AppHaxBackendAPI.js";
 import { SuperDaemonInstance } from "@haxtheweb/super-daemon/super-daemon.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
+import { ResponsiveUtilityBehaviors } from "@haxtheweb/responsive-utility/lib/responsive-utility-behaviors.js";
 import "./lib/v2/AppHaxRouter.js";
 import "@haxtheweb/haxcms-elements/lib/core/ui/app-hax-top-bar.js";
 import "./lib/v2/app-hax-use-case.js";
@@ -34,9 +35,19 @@ function soundToggle() {
   store.appEl.playSound("click");
 }
 
-export class AppHax extends I18NMixin(DDD) {
+export class AppHax extends I18NMixin(ResponsiveUtilityBehaviors(DDD)) {
   static get tag() {
     return "app-hax";
+  }
+
+  _syncResponsiveStoreState() {
+    if (
+      typeof this.responsiveSize === "string" &&
+      this.responsiveSize !== "" &&
+      store.responsiveSize !== this.responsiveSize
+    ) {
+      store.responsiveSize = this.responsiveSize;
+    }
   }
 
   _openExternalLink(link) {
@@ -336,7 +347,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       value: {
         target: this,
         method: "_openExternalLink",
-        args: ["https://bit.ly/hax-discord"],
+        args: ["https://discord.gg/VVcAcCeZQ"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/join",
@@ -1366,6 +1377,9 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       if (["basePath"].includes(propName) && this[propName]) {
         store.AppHaxAPI[propName] = this[propName];
       }
+      if (propName === "responsiveSize") {
+        this._syncResponsiveStoreState();
+      }
       // settings for the store itself
       if (["token"].includes(propName) && this[propName]) {
         store[propName] = this[propName];
@@ -1377,6 +1391,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     if (super.firstUpdated) {
       super.firstUpdated(changedProperties);
     }
+    this._syncResponsiveStoreState();
     // required for our early siteList updating
     if (store.AppHaxAPI && this.basePath) {
       store.AppHaxAPI.basePath = this.basePath;

@@ -2650,7 +2650,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       value: {
         target: this,
         method: "_openExternalLink",
-        args: ["https://bit.ly/hax-discord"],
+        args: ["https://discord.gg/VVcAcCeZQ"],
       },
       eventName: "super-daemon-element-method",
       path: "HAX/community/join",
@@ -2697,22 +2697,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       context: "community",
     });
     SuperDaemonInstance.defineOption({
-      title: "Bug / issue",
-      icon: "mdi-social:github-circle",
-      tags: ["Bug report", "github", "git", "community", "issue queue"],
-      value: {
-        target: this,
-        method: "_haxStoreContribute",
-        args: ["bug", "POP,bug"],
-      },
-      eventName: "super-daemon-element-method",
-      path: "HAX/community/contribute",
-      context: "community",
-    });
-    SuperDaemonInstance.defineOption({
-      title: "Idea / Feature request",
+      title: "Report an issue together",
       icon: "mdi-social:github-circle",
       tags: [
+        "Bug report",
         "Feature request",
         "idea",
         "github",
@@ -2723,11 +2711,11 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       value: {
         target: this,
         method: "_haxStoreContribute",
-        args: ["feature", "POP,enhancement"],
+        args: ["issue", "POP"],
       },
-      context: "community",
       eventName: "super-daemon-element-method",
       path: "HAX/community/contribute",
+      context: "community",
     });
     // container for HTML primatives to have hooks declared on their behalf
     this.primativeHooks = {};
@@ -3119,15 +3107,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
   }
 
   async _haxStoreContribute(type, tags, daemonTerm = null) {
+    const reportType = type || "bug";
     let body = "";
-    if (type == "merlin") {
-      var title = `[${type}] New command request from HAX daemon`;
+    if (reportType == "merlin") {
+      var title = `[${reportType}] New command request from HAX daemon`;
       body = `Location: ${globalThis.location.href}
 Merlin command: ${daemonTerm}
 What did you want merlin to do?
 `;
     } else {
-      var title = `[${type}] User report from HAX daemon`;
+      var title = `[${reportType}] User report from HAX daemon`;
       body = `Location: ${globalThis.location.href}
 Browser: ${navigator.userAgent}
 OS: ${this.getOperatingSystem()} - ${navigator.deviceMemory}GB RAM - ${navigator.hardwareConcurrency} cores
@@ -3148,8 +3137,16 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         body += `Connection: ${navigator.connection.effectiveType}
 `;
       }
-      body += `${type == "feature" ? `Your idea:` : `Bug you experienced:`}
+      if (reportType == "feature") {
+        body += `Your idea:
 `;
+      } else if (reportType == "issue") {
+        body += `Issue or idea to discuss:
+`;
+      } else {
+        body += `Bug you experienced:
+`;
+      }
     }
     globalThis.open(
       `https://github.com/haxtheweb/issues/issues/new?assignees=&labels=${tags}&template=issue-report.md&title=${title}&body=${encodeURIComponent(

@@ -1023,6 +1023,8 @@ export const DDDVariables = css`
     --ddd-font-weight-black: 900;
 
     /* font sizes */
+    --ddd-font-size-6xs: 12px;
+    --ddd-font-size-5xs: 14px;
     --ddd-font-size-4xs: 16px;
     --ddd-font-size-3xs: 18px; /* body default */
     --ddd-font-size-xxs: 20px; /* h6 */
@@ -1605,6 +1607,12 @@ export const DDDDataAttributes = [
     /* normal line height if we are letting use mess w/ font size */
     [data-font-size] {
       line-height: normal;
+    }
+    [data-font-size="6xs"] {
+      font-size: var(--ddd-font-size-6xs);
+    }
+    [data-font-size="5xs"] {
+      font-size: var(--ddd-font-size-5xs);
     }
     [data-font-size="4xs"] {
       font-size: var(--ddd-font-size-4xs);
@@ -4266,6 +4274,12 @@ export const DDDMarginPadding = css`
 `;
 /* font sizing */
 export const DDDFontSizing = css`
+  .fs-6xs {
+    font-size: var(--ddd-font-size-6xs);
+  }
+  .fs-5xs {
+    font-size: var(--ddd-font-size-5xs);
+  }
   .fs-4xs {
     font-size: var(--ddd-font-size-4xs);
   }

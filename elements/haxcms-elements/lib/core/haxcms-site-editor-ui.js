@@ -2491,6 +2491,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       clonePage: "Clone page",
       delete: "Delete page",
       siteSettings: "Site Settings",
+      about: "About",
       themeSettings: "Theme settings",
       seoSettings: "SEO settings",
       authorSettings: "Author settings",
@@ -3295,6 +3296,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "admin",
       eventName: "super-daemon-element-method",
       path: "CMS/admin/dashboard",
+    });
+    SuperDaemonInstance.defineOption({
+      title: `Admin - ${this.t.about}`,
+      icon: "help",
+      tags: ["CMS", "admin", "about", "help", "tutorials", "community"],
+      value: {
+        target: this,
+        method: "_openAboutAdmin",
+        args: [true, this.t.about],
+      },
+      context: "admin",
+      eventName: "super-daemon-element-method",
+      path: "CMS/admin/about",
     });
     if (store.platformAllows("themeManifest")) {
       SuperDaemonInstance.defineOption({
@@ -4272,6 +4286,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
   // Check if user should see welcome program and trigger it
   checkAndTriggerWelcomeProgram() {
+    const isMobileWelcomeSuppressed = () => {
+      if (this.responsiveSize === "xs") {
+        return true;
+      }
+      if (globalThis.matchMedia) {
+        return globalThis.matchMedia("(max-width: 600px)").matches;
+      }
+      return false;
+    };
+    // Never auto-trigger welcome mini mode on mobile-sized viewports
+    if (isMobileWelcomeSuppressed()) {
+      return;
+    }
     // Only trigger if user is logged in and hasn't seen the welcome before
     if (
       store.isLoggedIn &&
@@ -4282,7 +4309,8 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         if (
           store.appReady &&
           this.shadowRoot &&
-          this.shadowRoot.querySelector("#merlin")
+          this.shadowRoot.querySelector("#merlin") &&
+          !isMobileWelcomeSuppressed()
         ) {
           // Auto-trigger the welcome program using waveWand for mini mode
           SuperDaemonInstance.waveWand(
@@ -4307,7 +4335,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           );
         } else {
           // Retry after a short delay if not ready yet
-          setTimeout(triggerWelcome, 500);
+          if (!isMobileWelcomeSuppressed()) {
+            setTimeout(triggerWelcome, 500);
+          }
         }
       };
 
@@ -4936,7 +4966,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       context: "global",
     });
 
-    // Ctrl+Shift+3 - Blocks browser (edit) OR Style guide (non-edit)
+    // Ctrl+Shift+3 - Blocks browser (edit) OR Site settings (non-edit)
     HAXCMSKeyboardShortcutsInstance.register({
       key: "3",
       ctrl: true,
@@ -4953,15 +4983,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             }
           }
         } else {
-          this._manifestButtonTap(e);
+          // Non-edit mode: Site settings
+          const siteSettingsButton = this.shadowRoot.querySelector("#manifestbtn");
+          if (siteSettingsButton && !siteSettingsButton.disabled) {
+            this._manifestButtonTap({ target: siteSettingsButton });
+          }
         }
       },
       condition: () => store.isLoggedIn,
-      description: "Blocks browser (edit) / Style guide (view)",
+      description: "Blocks browser (edit) / Site settings (view)",
       context: "global",
     });
-
-    // Ctrl+Shift+4 - Configure panel (edit) OR Reports dashboard (non-edit)
+    // Ctrl+Shift+4 - Configure panel (edit) OR User menu (non-edit)
     HAXCMSKeyboardShortcutsInstance.register({
       key: "4",
       ctrl: true,
@@ -4974,15 +5007,15 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             HAXStore.haxTray.collapsed = false;
           }
         } else {
-          // Non-edit mode: Reports dashboard
-          // "insights" is the platform feature key used by site config/backend for Reports.
-          if (store.platformAllows("insights")) {
-            this._reportsButtonTap(e);
+          // Non-edit mode: User menu
+          const userMenuButton = this.shadowRoot.querySelector("#menubtn");
+          if (userMenuButton) {
+            this.toggleMenu();
           }
         }
       },
       condition: () => store.isLoggedIn,
-      description: "Configure panel (edit) / Reports dashboard (view)",
+      description: "Configure panel (edit) / User menu (view)",
       context: "global",
     });
   }
@@ -5048,6 +5081,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     }
     const allowed = new Set([
       "admin",
+      "about",
       "appearance",
       "site",
       "seo",
@@ -5195,6 +5229,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           "Details",
           routeOptions,
         );
+        return true;
+      case "about":
+        this._openAboutAdmin(true, this.t.about, routeOptions);
         return true;
       case "seo":
         this._openSeoAdmin(true, routeOptions);
@@ -5791,9 +5828,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       dashboard.allowSeo = this._adminRouteAllowed("seo");
       dashboard.allowBlocks = this._adminRouteAllowed("blocks");
       dashboard.allowEditor = this._adminRouteAllowed("editor");
+      dashboard.allowAbout = this._adminRouteAllowed("about");
       dashboard.allowStyleGuide = store.platformAllows("styleGuide");
       // "insights" is the compatibility platform feature key for Reports availability.
       dashboard.allowReports = this._adminRouteAllowed("reports");
+      dashboard.allowFiles = this._adminRouteAllowed("files");
       dashboard.addEventListener(
         "haxcms-site-settings-dashboard-action",
         this._siteSettingsDashboardAction.bind(this),
@@ -5861,6 +5900,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           break;
         case "editor":
           this._openEditorSettings(true, "Editor");
+          break;
+        case "about":
+          this._openAboutAdmin(true, this.t.about);
           break;
         case "platform":
           this._openPlatformSettings(true, "Features");
@@ -6042,8 +6084,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             titleIcon: "lrn:palette",
             breadcrumbs: breadcrumbs,
             styles: {
-              "--simple-modal-titlebar-background":
-                "light-dark(var(--ddd-theme-default-navy), var(--ddd-theme-default-coalyGray))",
+              "--simple-modal-titlebar-background": "black",
               "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
               "--simple-modal-z-index": "100000000",
               "--simple-modal-titlebar-height": "80px",
@@ -6160,6 +6201,63 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           detail: {
             title: title,
             titleIcon: "hax:page-edit",
+            breadcrumbs: breadcrumbs,
+            styles: {
+              "--simple-modal-titlebar-background": "black",
+              "--simple-modal-titlebar-color": "var(--ddd-theme-default-white)",
+              "--simple-modal-z-index": "100000000",
+              "--simple-modal-titlebar-height": "80px",
+              "--simple-modal-width": "85vw",
+              "--simple-modal-max-width": "85vw",
+              "--simple-modal-height": "85vh",
+              "--simple-modal-max-height": "85vh",
+              "--simple-modal-min-height": "400px",
+              "--simple-modal-border-radius": "var(--ddd-radius-md)",
+            },
+            elements: {
+              content: dialog,
+            },
+            invokedBy: this.shadowRoot.querySelector("#manifestbtn"),
+            clone: false,
+            modal: true,
+            showClose: true,
+          },
+        }),
+      );
+    });
+  }
+  _openAboutAdmin(
+    fromSiteSettings = false,
+    sectionTitle = "About",
+    routeOptions = {},
+  ) {
+    if (!routeOptions.skipUrlUpdate) {
+      this.setAdminPath("about", routeOptions.historyMode || "push", false);
+      return;
+    }
+    if (!this._syncAdminRoutePath("about", routeOptions)) {
+      return;
+    }
+    if (!routeOptions.silent) {
+      store.playSound("click");
+    }
+    import("./ui/haxcms-about-dialog-ui.js").then(() => {
+      const dialog = globalThis.document.createElement("haxcms-about-dialog-ui");
+      let title = sectionTitle || this.t.about;
+      let breadcrumbs = [];
+      if (fromSiteSettings) {
+        const breadcrumbMeta = this._siteSettingsBreadcrumbMeta(title, "help");
+        title = breadcrumbMeta.title;
+        breadcrumbs = breadcrumbMeta.breadcrumbs;
+      }
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-show", {
+          bubbles: true,
+          composed: true,
+          cancelable: false,
+          detail: {
+            title: title,
+            titleIcon: "help",
             breadcrumbs: breadcrumbs,
             styles: {
               "--simple-modal-titlebar-background": "black",

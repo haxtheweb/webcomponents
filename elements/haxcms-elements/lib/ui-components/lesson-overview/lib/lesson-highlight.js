@@ -45,6 +45,7 @@ class LessonHighlight extends SimpleColors {
           display: block;
           --lesson-highlight-icon-width: 28px;
           --lesson-highlight-icon-height: var(--lesson-highlight-icon-width);
+          --lesson-highlight-grid-template-columns: 3.5em 0.5em 21em;
         }
         :host([smart]:not([loaded]):not([loading])) {
           display: none;
@@ -72,10 +73,14 @@ class LessonHighlight extends SimpleColors {
         }
         .wrapper {
           display: grid;
-          grid-template-columns: 3.5em 0.5em 21em;
+          grid-template-columns: var(--lesson-highlight-grid-template-columns);
           margin: var(--lesson-highlight-internal-margin, 0.25em);
           background-color: var(--simple-colors-default-theme-grey-1, #eeeeee);
           padding: var(--lesson-highlight-internal-padding, 0.5em);
+          max-width: 100%;
+          width: 100%;
+          box-sizing: border-box;
+          align-items: start;
         }
         .icon-wrapper {
           padding: var(--lesson-highlight-internal-padding, 0.5em);
@@ -89,13 +94,23 @@ class LessonHighlight extends SimpleColors {
           height: var(--lesson-highlight-icon-height);
           --simple-icon-height: var(--lesson-highlight-icon-height);
           --simple-icon-width: var(--lesson-highlight-icon-width);
-          border: 2px solid var(--simple-colors-default-theme-grey-4, #eeeeee);
+          --simple-icon-color: var(
+            --lesson-highlight-icon-color,
+            var(--simple-colors-default-theme-accent-10, #222222)
+          );
+          border: 2px solid
+            var(
+              --lesson-highlight-icon-border-color,
+              var(--simple-colors-default-theme-grey-4, #eeeeee)
+            );
           border-radius: 50%;
           padding: var(--lesson-highlight-internal-padding, 0.4em);
           display: block;
+          background-color: var(--lesson-highlight-icon-background-color, transparent);
         }
         .text-wrapper {
           padding: 0 8px;
+          min-width: 0;
         }
         .title-text {
           margin-top: var(--lesson-highlight-title-margin-top, 8px);
@@ -114,6 +129,7 @@ class LessonHighlight extends SimpleColors {
           font-family: "OpenSans-Bold", "OpenSans", "Arial", sans-serif;
           font-size: 1.25em;
           font-weight: bold;
+          overflow-wrap: anywhere;
         }
 
         .subtitle-text {
@@ -129,6 +145,7 @@ class LessonHighlight extends SimpleColors {
           font-family: "OpenSans-Bold", "OpenSans", "Arial", sans-serif;
           font-size: 0.95em;
           line-height: 1.2;
+          overflow-wrap: anywhere;
         }
       `,
     ];

@@ -130,6 +130,35 @@ class HAXCMSContentAdminDialog extends DDD {
         .empty {
           margin: var(--ddd-spacing-4) 0;
         }
+        @media screen and (max-width: 900px) {
+          :host {
+            min-width: 0;
+            width: 100%;
+            min-height: 0;
+            height: auto;
+            max-height: calc(
+              100dvh -
+                var(
+                  --simple-modal-titlebar-mobile-height,
+                  var(--simple-modal-titlebar-height, 80px)
+                ) -
+                var(--ddd-spacing-4, 16px)
+            );
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: var(--ddd-spacing-3);
+          }
+          .panel-shell {
+            min-height: auto;
+            padding: 0;
+          }
+          .panel-scroll {
+            flex: 0 0 auto;
+            min-height: auto;
+            overflow: visible;
+            padding-right: 0;
+          }
+        }
       `,
     ];
   }
@@ -154,7 +183,9 @@ class HAXCMSContentAdminDialog extends DDD {
       this.__searchResponseHandler,
     );
     for (var i in this.__disposer) {
-      this.__disposer[i].dispose();
+      if (this.__disposer[i] && typeof this.__disposer[i].dispose === "function") {
+        this.__disposer[i].dispose();
+      }
     }
     super.disconnectedCallback();
   }
@@ -442,7 +473,15 @@ class HAXCMSContentAdminDialog extends DDD {
             ? html`<div class="empty">No matching content found.</div>`
             : keyed(
                 `${this.filterField}|${this.filterValue}|${this.filteredRows.length}`,
-                html`<editable-table bordered condensed column-header sort striped scroll>
+                html`<editable-table
+                  bordered
+                  condensed
+                  column-header
+                  responsive
+                  sort
+                  striped
+                  scroll
+                >
                   <table>
                     <thead>
                       <tr>

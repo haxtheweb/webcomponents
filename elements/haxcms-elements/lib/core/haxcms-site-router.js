@@ -66,6 +66,23 @@ class HAXCMSSiteRouter extends HTMLElement {
   addRoutes(pathAry) {
     this.router.addRoutes(pathAry);
   }
+  _locationHasAdminQuery(location) {
+    if (
+      !location ||
+      typeof location.search !== "string" ||
+      location.search === ""
+    ) {
+      return false;
+    }
+    const search = location.search.startsWith("?")
+      ? location.search.substring(1)
+      : location.search;
+    if (!search) {
+      return false;
+    }
+    const params = new URLSearchParams(search);
+    return params.has("admin");
+  }
 
   /**
    * Update the router based on a manifest.
@@ -107,13 +124,17 @@ class HAXCMSSiteRouter extends HTMLElement {
    */
   _routerLocationChanged(e) {
     // no modal / toast should be open when we go to switch routes
-    globalThis.dispatchEvent(
-      new CustomEvent("simple-modal-hide", {
-        bubbles: true,
-        cancelable: true,
-        detail: {},
-      }),
-    );
+    // except when URL-managed admin panels are being switched
+    const hasAdminQuery = this._locationHasAdminQuery(e.detail.location);
+    if (!hasAdminQuery) {
+      globalThis.dispatchEvent(
+        new CustomEvent("simple-modal-hide", {
+          bubbles: true,
+          cancelable: true,
+          detail: {},
+        }),
+      );
+    }
     globalThis.dispatchEvent(
       new CustomEvent("haxcms-toast-hide", {
         bubbles: true,

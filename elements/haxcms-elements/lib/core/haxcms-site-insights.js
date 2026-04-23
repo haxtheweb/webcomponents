@@ -4,8 +4,6 @@ import { LitElement, html, css } from "lit";
 import { HAXCMSI18NMixin } from "./utils/HAXCMSI18NMixin.js";
 import { MicroFrontendRegistry } from "@haxtheweb/micro-frontend-registry/micro-frontend-registry.js";
 import { enableServices } from "@haxtheweb/micro-frontend-registry/lib/microServices.js";
-import "@haxtheweb/accent-card/accent-card.js";
-import "@haxtheweb/retro-card/retro-card.js";
 import "@haxtheweb/simple-img/simple-img.js";
 import "@haxtheweb/simple-fields/simple-fields.js";
 import "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
@@ -37,6 +35,34 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
             var(--simple-modal-height, 85vh) -
               var(--simple-modal-titlebar-height, 80px) - var(--ddd-spacing-8, 32px)
           );
+          --haxcms-insights-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          --haxcms-insights-surface: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-coalyGray)
+          );
+          --haxcms-insights-surface-subtle: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --haxcms-insights-border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateGray)
+          );
+          --haxcms-insights-link-color: light-dark(
+            var(--ddd-theme-default-navy),
+            var(--ddd-theme-default-linkLight)
+          );
+          --haxcms-insights-link-hover-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          --haxcms-insights-focus-color: light-dark(
+            var(--ddd-theme-default-skyBlue),
+            var(--ddd-theme-default-keystoneYellow)
+          );
           display: flex;
           flex-direction: column;
           box-sizing: border-box;
@@ -46,14 +72,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           max-height: var(--haxcms-admin-panel-height);
           overflow: hidden;
           padding: var(--ddd-spacing-4);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-theme-default-coalyGray)
-          );
+          color: var(--haxcms-insights-color);
+          background: var(--haxcms-insights-surface);
           flex-shrink: 0;
         }
         .panel-shell {
@@ -86,37 +106,26 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         .selector-wrapper label {
           font-weight: var(--ddd-font-weight-bold);
           font-family: var(--ddd-font-navigation);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
+          color: var(--haxcms-insights-color);
         }
         .selector-wrapper select {
           font-size: var(--ddd-font-size-s);
           line-height: var(--ddd-lh-120);
           padding: var(--ddd-spacing-2);
           border: var(--ddd-border-xs);
-          border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-theme-default-white)
-          );
+          border-color: var(--haxcms-insights-border-color);
           border-radius: var(--ddd-radius-xs);
-          background-color: light-dark(
-            var(--ddd-theme-default-white),
-            var(--ddd-primary-3)
-          );
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
+          background-color: var(--haxcms-insights-surface);
+          color: var(--haxcms-insights-color);
           font-family: var(--ddd-font-navigation);
+        }
+        .selector-wrapper select:focus-visible {
+          outline: var(--ddd-border-sm) solid var(--haxcms-insights-focus-color);
+          outline-offset: 2px;
         }
         .selector-wrapper simple-toolbar-button {
           --simple-toolbar-button-border-width: 1px;
-          --simple-toolbar-border-color: light-dark(
-            var(--ddd-theme-default-limestoneGray),
-            var(--ddd-primary-5)
-          );
+          --simple-toolbar-border-color: var(--haxcms-insights-border-color);
           --simple-toolbar-border-radius: var(--ddd-radius-xs);
           --simple-toolbar-button-padding: var(--ddd-spacing-2);
           background-color: light-dark(
@@ -129,6 +138,11 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           );
           font-family: var(--ddd-font-navigation);
         }
+        .selector-wrapper simple-toolbar-button:focus-within {
+          outline: var(--ddd-border-sm) solid var(--haxcms-insights-focus-color);
+          outline-offset: 2px;
+          border-radius: var(--ddd-radius-xs);
+        }
         .selector-wrapper simple-toolbar-button:hover {
           background-color: light-dark(
             var(--ddd-theme-default-original87Pink),
@@ -139,6 +153,15 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           list-style: none;
           margin: 0;
           padding: 0;
+        }
+        .report-highlight-list {
+          margin: 0;
+          padding: 0;
+          list-style: none;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+          gap: var(--ddd-spacing-3);
+          align-items: stretch;
         }
         .group-set {
           display: flex;
@@ -158,11 +181,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         .group {
           margin: 0;
           border: var(--ddd-border-sm);
+          border-color: var(--haxcms-insights-border-color);
           border-radius: var(--ddd-radius-md);
-          background: light-dark(
-            var(--ddd-theme-default-white),
-            rgba(0, 0, 0, 0.15)
-          );
+          background: var(--haxcms-insights-surface);
           padding: var(--ddd-spacing-4);
         }
         .group-summary {
@@ -173,26 +194,20 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           justify-content: flex-start;
           gap: var(--ddd-spacing-3);
           margin-bottom: 0;
-          font-size: var(--ddd-theme-h4-font-size);
+          font-size: var(--ddd-font-size-m);
           font-weight: var(--ddd-font-weight-bold);
-          color: light-dark(
-            var(
-              --lowContrast-override,
-              var(--ddd-theme-primary, var(--ddd-theme-default-nittanyNavy))
-            ),
-            var(
-              --lowContrast-override,
-              var(--ddd-theme-primary, var(--ddd-theme-default-linkLight))
-            )
-          );
+          color: var(--haxcms-insights-color);
+          background-color: var(--haxcms-insights-surface-subtle);
+          border-radius: var(--ddd-radius-sm);
           text-wrap: wrap;
-          padding: var(--ddd-spacing-5) var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-4);
           user-select: none;
-          transition: all 0.3s ease-in-out;
+          transition:
+            background-color 0.2s ease-in-out,
+            color 0.2s ease-in-out;
         }
         .group[open] .group-summary {
           margin-bottom: var(--ddd-spacing-3);
-          filter: saturate(1.5);
           background-color: light-dark(
             var(--ddd-theme-default-limestoneMaxLight),
             var(--ddd-theme-default-potentialMidnight)
@@ -205,25 +220,17 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           content: "";
         }
         .group-summary::after {
-          content: "+";
-          margin-left: auto;
-          text-align: right;
-          font-weight: var(--ddd-font-weight-regular);
-          font-size: var(--ddd-font-size-m);
-          line-height: 1;
+          content: "";
         }
-        .group[open] .group-summary::after {
-          content: "-";
-        }
-        .group summary:focus,
-        .group summary:hover {
+        .group-summary:focus,
+        .group-summary:hover {
           background-color: light-dark(
             var(--ddd-theme-default-limestoneLight),
             var(--ddd-theme-default-nittanyNavy)
           );
         }
         .group-summary:focus-visible {
-          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-skyBlue);
+          outline: var(--ddd-border-sm) solid var(--haxcms-insights-focus-color);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }
@@ -233,8 +240,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           gap: var(--ddd-spacing-2);
         }
         .summary-toggle-icon {
-          display: none;
+          display: inline-flex;
           align-items: center;
+          margin-left: auto;
         }
         .summary-toggle-icon simple-icon-lite {
           --simple-icon-color: currentColor;
@@ -254,19 +262,13 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           padding: 0;
           border-top: 0;
           background: transparent;
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
+          color: var(--haxcms-insights-color);
         }
         h2 {
           margin: 0 0 var(--ddd-spacing-4) 0;
           font-size: var(--ddd-font-size-m);
           font-weight: var(--ddd-font-weight-bold);
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
+          color: var(--haxcms-insights-color);
         }
         .summary-leading simple-icon-lite {
           --simple-icon-color: currentColor;
@@ -279,21 +281,15 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           font-weight: var(--ddd-font-weight-bold);
         }
         .group-body a {
-          color: light-dark(
-            var(--ddd-theme-default-navy),
-            var(--ddd-theme-default-skyBlue)
-          );
+          color: var(--haxcms-insights-link-color);
         }
         .group-body a:hover,
         .group-body a:focus,
         .group-body a:active {
-          color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
+          color: var(--haxcms-insights-link-hover-color);
         }
         .group-body a:focus-visible {
-          outline: var(--ddd-border-sm) solid var(--ddd-theme-default-keystoneYellow);
+          outline: var(--ddd-border-sm) solid var(--haxcms-insights-focus-color);
           outline-offset: 2px;
           border-radius: var(--ddd-radius-xs);
         }
@@ -301,10 +297,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           --loading-indicator-color: var(--ddd-theme-default-skyBlue);
         }
         simple-fields {
-          --simple-fields-color: light-dark(
-            var(--ddd-theme-default-coalyGray),
-            var(--ddd-theme-default-white)
-          );
+          --simple-fields-color: var(--haxcms-insights-color);
+          --simple-fields-background-color: transparent;
+          --simple-fields-button-background-color: transparent;
           --simple-icon-width: var(--ddd-icon-xs);
           --simple-icon-height: var(--ddd-icon-xs);
         }
@@ -319,92 +314,233 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           --simple-icon-width: var(--ddd-icon-4xs, 24px);
           padding: 2px;
         }
-        accent-card {
-          height: 225px;
-          width: 300px;
-          overflow-x: hidden;
-          overflow-y: auto;
-          --accent-card-image-width: 25%;
-          --accent-card-image-x: left;
-          --accent-card-image-y: top;
+        .content-item {
+          min-height: 225px;
+          width: 100%;
+          max-width: 100%;
+          border: var(--ddd-border-sm);
+          border-color: var(--haxcms-insights-border-color);
+          border-radius: var(--ddd-radius-md);
+          background: var(--haxcms-insights-surface-subtle);
+          padding: var(--ddd-spacing-4);
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-3);
         }
-        accent-card .title-link {
+        .content-item .title-link {
           text-decoration: none;
           font-family: var(--ddd-font-navigation);
           font-size: var(--ddd-font-size-s);
-          color: light-dark(
-            var(--ddd-theme-default-navy),
-            var(--ddd-theme-default-skyBlue)
-          );
+          font-weight: var(--ddd-font-weight-bold);
+          color: var(--haxcms-insights-link-color);
+          display: inline-flex;
+          align-items: flex-start;
+          gap: var(--ddd-spacing-2);
         }
-        accent-card .title-link:hover,
-        accent-card .title-link:focus,
-        accent-card .title-link:active {
+        .content-item-title {
+          margin: 0;
+          font-size: var(--ddd-font-size-s);
+          line-height: var(--ddd-lh-120);
+        }
+        .content-item .title-link:hover,
+        .content-item .title-link:focus,
+        .content-item .title-link:active {
           text-decoration: underline;
-          color: light-dark(
+          color: var(--haxcms-insights-link-hover-color);
+        }
+        .content-item .title-link:focus-visible {
+          outline: var(--ddd-border-sm) solid var(--haxcms-insights-focus-color);
+          outline-offset: 2px;
+          border-radius: var(--ddd-radius-xs);
+        }
+        .content-item-preview simple-img {
+          width: 100%;
+          max-width: 100%;
+          min-height: 140px;
+          border-radius: var(--ddd-radius-sm);
+          overflow: hidden;
+        }
+        .content-item .meta {
+          font-size: var(--ddd-font-size-xs, 12px);
+          line-height: var(--ddd-lh-140, 1.4);
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-1);
+        }
+        .content-item .stats {
+          margin: 0;
+          padding: 0;
+          display: grid;
+          gap: var(--ddd-spacing-1);
+        }
+        .content-item .stats li {
+          display: flex;
+          align-items: flex-start;
+          gap: var(--ddd-spacing-2);
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        .content-item .stats li simple-icon {
+          --simple-icon-height: var(--ddd-icon-4xs, 20px);
+          --simple-icon-width: var(--ddd-icon-4xs, 20px);
+          padding: 0;
+          flex-shrink: 0;
+        }
+        .content-list li {
+          display: block;
+          margin: 0;
+          padding: 0;
+          font-size: var(--ddd-font-size-xs, 12px);
+        }
+        .reports {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-4);
+          padding: 0;
+        }
+        .reports lesson-highlight {
+          --lesson-highlight-grid-template-columns: 3.5em
+            var(--ddd-spacing-2, 8px) minmax(0, 1fr);
+          --lesson-highlight-internal-margin: 0;
+          --lesson-highlight-internal-padding: var(--ddd-spacing-3);
+          --simple-colors-default-theme-accent-8: light-dark(
+            var(--ddd-theme-default-navy),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          --simple-colors-default-theme-accent-9: light-dark(
+            var(--ddd-theme-default-nittanyNavy),
+            var(--ddd-theme-default-white)
+          );
+          --simple-colors-default-theme-accent-10: light-dark(
             var(--ddd-theme-default-coalyGray),
             var(--ddd-theme-default-white)
           );
-        }
-        accent-card .stats {
-          height: 125px;
-        }
-        .content-list li accent-card .stats li {
-          display: block;
-          padding: 0px;
-          margin: 0px;
-          list-style: none;
-        }
-        .content-list li accent-card .stats li simple-icon {
-          padding-right: 8px;
-        }
-        .content-list li {
-          display: inline-block;
-          margin: 0;
-          padding: 0;
-          font-size: 12px;
-          --accent-card-padding: 0;
-        }
-        .reports {
-          column-count: 3;
-          padding: 0;
+          --simple-colors-default-theme-accent-11: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          --simple-colors-default-theme-accent-12: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          --simple-colors-default-theme-grey-1: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-theme-default-potentialMidnight)
+          );
+          --simple-colors-default-theme-grey-4: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-theme-default-slateGray)
+          );
+          --simple-colors-default-theme-grey-8: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          --simple-colors-default-theme-grey-10: var(--haxcms-insights-color);
+          --simple-colors-default-theme-grey-12: var(--haxcms-insights-color);
+          --lesson-highlight-icon-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          --lesson-highlight-icon-border-color: light-dark(
+            var(--ddd-theme-default-navy),
+            var(--ddd-theme-default-limestoneLight)
+          );
+          --lesson-highlight-icon-background-color: light-dark(
+            var(--ddd-theme-default-white),
+            var(--ddd-theme-default-nittanyNavy)
+          );
+          --lesson-highlight-text-color: var(--haxcms-insights-color);
+          --lesson-highlight-subtext-color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
         }
         .reports .recently-updated-items {
-          font-size: 16px;
-          line-height: 20px;
+          font-size: var(--ddd-font-size-s);
+          line-height: var(--ddd-lh-140, 1.4);
+          margin: 0;
+          padding-left: var(--ddd-spacing-4);
         }
-        .media-list li {
-          margin: 8px;
-          display: inline-flex;
+        .reports .recently-updated-items li {
+          margin-bottom: var(--ddd-spacing-1);
         }
-        .media-list retro-card {
-          width: 350px;
-        }
-        .media-list retro-card::part(title) {
-          padding: 0;
-          font-size: 20px;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          word-break: break-word;
-          height: 75px;
-        }
-        .media-list retro-card::part(description) {
-          padding: 0;
-          font-size: 14px;
-        }
-        .media-list retro-card .body {
-          height: 275px;
-        }
-        .media-list retro-card img {
-          max-height: 225px;
-          width: 275px;
-        }
+        .reports-wrapper,
+        .linkchecker-wrapper,
+        .contentbrowser-wrapper,
         .mediabrowser-wrapper {
           padding: var(--ddd-spacing-4);
         }
+        .media-list li {
+          margin: 0;
+          display: block;
+        }
+        .media-item {
+          width: 100%;
+          max-width: 100%;
+          border: var(--ddd-border-sm);
+          border-color: var(--haxcms-insights-border-color);
+          border-radius: var(--ddd-radius-md);
+          background: var(--haxcms-insights-surface-subtle);
+          padding: var(--ddd-spacing-4);
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-3);
+          min-height: 100%;
+        }
+        .media-item-header {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-1);
+        }
+        .media-item-title {
+          margin: 0;
+          font-size: var(--ddd-font-size-s);
+          line-height: var(--ddd-lh-120);
+          font-weight: var(--ddd-font-weight-bold);
+          word-break: break-word;
+        }
+        .media-item-meta {
+          margin: 0;
+          font-size: var(--ddd-font-size-xs, 12px);
+          line-height: var(--ddd-lh-120);
+          color: light-dark(
+            var(--ddd-theme-default-slateGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
+        }
+        .media-item-preview {
+          width: 100%;
+          max-width: 100%;
+        }
+        .media-item-preview simple-img,
+        .media-item-preview iframe,
+        .media-item-preview video-player {
+          width: 100%;
+          max-width: 100%;
+          border-radius: var(--ddd-radius-sm);
+          overflow: hidden;
+          border: 0;
+        }
+        .media-item-preview iframe,
+        .media-item-preview video-player {
+          min-height: 220px;
+        }
+        .media-item-preview simple-img {
+          min-height: 180px;
+        }
+        .media-item-audit {
+          margin-top: var(--ddd-spacing-2);
+        }
         .content-list,
         .media-list {
-          padding: var(--ddd-spacing-4);
+          padding: 0;
+          margin: 0;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          gap: var(--ddd-spacing-4);
         }
         @media screen and (max-width: 900px) {
           :host {
@@ -414,6 +550,11 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
           }
           .group {
             padding: var(--ddd-spacing-3);
+          }
+          .report-highlight-list,
+          .content-list,
+          .media-list {
+            grid-template-columns: 1fr;
           }
         }
       `,
@@ -465,15 +606,17 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
         this.activeTab = itemId;
       }
     } else if (this.activeTab === itemId) {
-      item.open = true;
+      this.activeTab = "";
     }
   }
 
   _reportsResponse(data) {
     this.loading = false;
-    this.data = data.data;
+    const responseData =
+      data && data.data && typeof data.data === "object" ? data.data : {};
+    this.data = responseData;
     // for filtering purposes
-    this._originalData = JSON.parse(JSON.stringify(data.data));
+    this._originalData = JSON.parse(JSON.stringify(responseData));
     this.filters = {};
     setTimeout(() => {
       const schema = this._activeSchema();
@@ -747,7 +890,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       hasLinks: val.hasLinks,
       hasImages: val.hasImages,
     };
-    if (this.data.contentData) {
+    if (this.data && this.data.contentData) {
       this.data.contentData = this.data.contentData.filter((item) => {
         if (this.filters.hasVideo === true && item.videos === 0) {
           return false;
@@ -813,7 +956,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       status: val.status ? val.status : "all",
       location: val.location ? val.location : "all",
     };
-    if (this.data.mediaData) {
+    if (this.data && this.data.mediaData) {
       this.data.mediaData = this.data.mediaData.filter((item) => {
         if (this.filters.location != "all") {
           if (this.filters.location != item.locType) {
@@ -860,7 +1003,25 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
   }
   // render function
   render() {
-    const data = this.data;
+    const data = {
+      pages: 0,
+      objectives: 0,
+      authorNotes: 0,
+      specialTags: 0,
+      dataTables: 0,
+      headings: 0,
+      video: 0,
+      videoLength: 0,
+      h5p: 0,
+      audio: 0,
+      links: 0,
+      readTime: 0,
+      readability: null,
+      updatedItems: [],
+      created: "",
+      updated: "",
+      ...(this.data && typeof this.data === "object" ? this.data : {}),
+    };
     let base = this.base;
     if (base == "" && globalThis.document.querySelector("base")) {
       base = globalThis.document.querySelector("base").href;
@@ -877,7 +1038,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
               @toggle="${this._groupToggled}"
             >
               <summary class="group-summary">
-                ${this._reportHeading("hax:graph", this.t.reports)}
+                ${this._reportHeading("hax:graph", this.t.summary)}
                 <span class="summary-toggle-icon" aria-hidden="true">
                   <simple-icon-lite
                     class="collapse-icon-collapsed"
@@ -897,14 +1058,16 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                         ?loading="${this.loading}"
                       ></loading-indicator>
                       ${this.loading
-                        ? html`<p>${this.t.loading} ${this.t.reports}..</p>`
+                        ? html`<p role="status" aria-live="polite">
+                            ${this.t.loading} ${this.t.reports}..
+                          </p>`
                         : html`
-                            <div class="reports">
+                            <div class="reports reports-wrapper">
                               <h2>
                                 ${data && data.title ? data.title : ""}
                                 ${this.t.reports}
                               </h2>
-                              <ul>
+                              <ul class="report-highlight-list">
                                 <li>
                                   <lesson-highlight icon="editor:insert-drive-file">
                                     <p slot="title">
@@ -926,9 +1089,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                       <lesson-highlight icon="av:play-circle-outline">
                                         <p slot="title">${data.video} ${this.t.videos}</p>
                                         ${data.videoLength != 0
-                                          ? html`(
-                                              <p>${toHHMMSS(data.videoLength)}</p>
-                                              )`
+                                          ? html`<p>${toHHMMSS(data.videoLength)}</p>`
                                           : ``}
                                       </lesson-highlight>
                                     </li>`}
@@ -1067,9 +1228,11 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                         ?loading="${this.loading}"
                       ></loading-indicator>
                       ${this.loading
-                        ? html`<p>${this.t.loading} ${this.t.linkChecker}..</p>`
+                        ? html`<p role="status" aria-live="polite">
+                            ${this.t.loading} ${this.t.linkChecker}..
+                          </p>`
                         : html`
-                            <div>
+                            <div class="linkchecker-wrapper">
                               <h2>${this.t.linkReport}</h2>
                               <form>
                                 <simple-fields
@@ -1121,9 +1284,11 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                         ?loading="${this.loading}"
                       ></loading-indicator>
                       ${this.loading
-                        ? html`<p>${this.t.loading} ${this.t.contentBrowser}..</p>`
+                        ? html`<p role="status" aria-live="polite">
+                            ${this.t.loading} ${this.t.contentBrowser}..
+                          </p>`
                         : html`
-                            <div>
+                            <div class="contentbrowser-wrapper">
                               <h2>${this.t.contentBrowser}</h2>
                               <form>
                                 <simple-fields
@@ -1137,11 +1302,8 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                   ? data.contentData.map(
                                       (item) => html`
                                         <li>
-                                          <accent-card
-                                            image-src="https://screenshoturl.open-apis.hax.cloud/api/screenshotUrl?quality=25&render=img&urlToCapture=${base}${item.location}"
-                                            horizontal
-                                          >
-                                            <div slot="heading">
+                                          <article class="content-item">
+                                            <h3 class="content-item-title">
                                               <a
                                                 class="title-link"
                                                 href="${item.slug}"
@@ -1158,8 +1320,20 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                   : ``}
                                                 ${item.title}</a
                                               >
+                                            </h3>
+                                            <div class="content-item-preview">
+                                              <simple-img
+                                                loading="lazy"
+                                                fetchpriority="low"
+                                                decoding="async"
+                                                src="https://screenshoturl.open-apis.hax.cloud/api/screenshotUrl?quality=25&render=img&urlToCapture=${base}${item.location}"
+                                                alt="${item.title} preview"
+                                                width="320"
+                                                height="180"
+                                                quality="80"
+                                              ></simple-img>
                                             </div>
-                                            <div slot="content">
+                                            <div class="meta">
                                               <div>
                                                 ${this.t.created}
                                                 <relative-time
@@ -1173,119 +1347,117 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                 ></relative-time>
                                               </div>
                                             </div>
-                                            <div slot="footer">
-                                              <ul class="stats">
-                                                ${item.objectives > 0
-                                                  ? html`<li>
-                                                      <simple-icon
-                                                        icon="editor:format-list-bulleted"
-                                                      ></simple-icon
-                                                      >${item.objectives}
-                                                      ${this.t.learningObjectives}
-                                                    </li>`
-                                                  : ``}
-                                                ${item.authorNotes > 0
-                                                  ? html`<li>
-                                                      <simple-icon
-                                                        icon="hax:figure"
-                                                      ></simple-icon
-                                                      >${item.authorNotes}
-                                                      ${this.t.authorNotes}
-                                                    </li>`
-                                                  : ``}
-                                                ${item.videos > 0
-                                                  ? html`<li>
-                                                      <simple-icon
-                                                        icon="av:play-arrow"
-                                                      ></simple-icon
-                                                      >${item.videos}
-                                                      ${this.t.videos}
-                                                    </li>`
-                                                  : ``}
-                                                ${item.h5p > 0
-                                                  ? html`<li>
-                                                      <simple-icon
-                                                        icon="lrn:interact"
-                                                      ></simple-icon
-                                                      >${item.h5p} H5P
-                                                    </li>`
-                                                  : ``}
-                                                ${item.placeholders > 0
-                                                  ? html`<li>
-                                                      <simple-icon
-                                                        icon="hax:placeholder-image"
-                                                      ></simple-icon
-                                                      >${item.placeholders}
-                                                      ${this.t.placeholders}
-                                                    </li>`
-                                                  : ``}
-                                                ${item.audio > 0
-                                                  ? html`<li>
-                                                      <simple-icon
-                                                        icon="av:music-video"
-                                                      ></simple-icon
-                                                      >${item.audio} ${this.t.audio}
-                                                    </li>`
-                                                  : ``}
-                                                ${item.selfChecks > 0
-                                                  ? html`<li>
-                                                      <simple-icon
-                                                        icon="hardware:videogame-asset"
-                                                      ></simple-icon
-                                                      >${item.selfChecks}
-                                                      ${this.t.selfChecks}
-                                                    </li>`
-                                                  : ``}
-                                                ${item.images > 0
-                                                  ? html`<li>
-                                                      <simple-icon
-                                                        icon="image:collections"
-                                                      ></simple-icon
-                                                      >${item.images}
-                                                      ${this.t.images}
-                                                    </li>`
-                                                  : ``}
-                                                ${item.dataTables > 0
-                                                  ? html`<li>
-                                                      <simple-icon
-                                                        icon="image:grid-on"
-                                                      ></simple-icon
-                                                      >${item.dataTables}
-                                                      ${this.t.dataTables}
-                                                    </li>`
-                                                  : ``}
-                                                ${item.specialTags > 0
-                                                  ? html`<li>
-                                                      <simple-icon
-                                                        icon="icons:stars"
-                                                      ></simple-icon
-                                                      >${item.specialTags}
-                                                      ${this.t.specialElements}
-                                                    </li>`
-                                                  : ``}
-                                                ${item.links > 0
-                                                  ? html`<li>
-                                                      <simple-icon
-                                                        icon="icons:link"
-                                                      ></simple-icon
-                                                      >${item.links}
-                                                      ${this.t.links}
-                                                    </li>`
-                                                  : ``}
-                                                ${item.readTime > 0
-                                                  ? html`<li>
-                                                      <simple-icon
-                                                        icon="icons:chrome-reader-mode"
-                                                      ></simple-icon
-                                                      >${this.getReadingTime(
-                                                        item.readTime,
-                                                      )}
-                                                      ${this.t.ofReading}
-                                                    </li>`
-                                                  : ``}
-                                              </ul>
-                                            </div>
-                                          </accent-card>
+                                            <ul class="stats">
+                                              ${item.objectives > 0
+                                                ? html`<li>
+                                                    <simple-icon
+                                                      icon="editor:format-list-bulleted"
+                                                    ></simple-icon
+                                                    >${item.objectives}
+                                                    ${this.t.learningObjectives}
+                                                  </li>`
+                                                : ``}
+                                              ${item.authorNotes > 0
+                                                ? html`<li>
+                                                    <simple-icon
+                                                      icon="hax:figure"
+                                                    ></simple-icon
+                                                    >${item.authorNotes}
+                                                    ${this.t.authorNotes}
+                                                  </li>`
+                                                : ``}
+                                              ${item.videos > 0
+                                                ? html`<li>
+                                                    <simple-icon
+                                                      icon="av:play-arrow"
+                                                    ></simple-icon
+                                                    >${item.videos}
+                                                    ${this.t.videos}
+                                                  </li>`
+                                                : ``}
+                                              ${item.h5p > 0
+                                                ? html`<li>
+                                                    <simple-icon
+                                                      icon="lrn:interact"
+                                                    ></simple-icon
+                                                    >${item.h5p} H5P
+                                                  </li>`
+                                                : ``}
+                                              ${item.placeholders > 0
+                                                ? html`<li>
+                                                    <simple-icon
+                                                      icon="hax:placeholder-image"
+                                                    ></simple-icon
+                                                    >${item.placeholders}
+                                                    ${this.t.placeholders}
+                                                  </li>`
+                                                : ``}
+                                              ${item.audio > 0
+                                                ? html`<li>
+                                                    <simple-icon
+                                                      icon="av:music-video"
+                                                    ></simple-icon
+                                                    >${item.audio} ${this.t.audio}
+                                                  </li>`
+                                                : ``}
+                                              ${item.selfChecks > 0
+                                                ? html`<li>
+                                                    <simple-icon
+                                                      icon="hardware:videogame-asset"
+                                                    ></simple-icon
+                                                    >${item.selfChecks}
+                                                    ${this.t.selfChecks}
+                                                  </li>`
+                                                : ``}
+                                              ${item.images > 0
+                                                ? html`<li>
+                                                    <simple-icon
+                                                      icon="image:collections"
+                                                    ></simple-icon
+                                                    >${item.images}
+                                                    ${this.t.images}
+                                                  </li>`
+                                                : ``}
+                                              ${item.dataTables > 0
+                                                ? html`<li>
+                                                    <simple-icon
+                                                      icon="image:grid-on"
+                                                    ></simple-icon
+                                                    >${item.dataTables}
+                                                    ${this.t.dataTables}
+                                                  </li>`
+                                                : ``}
+                                              ${item.specialTags > 0
+                                                ? html`<li>
+                                                    <simple-icon
+                                                      icon="icons:stars"
+                                                    ></simple-icon
+                                                    >${item.specialTags}
+                                                    ${this.t.specialElements}
+                                                  </li>`
+                                                : ``}
+                                              ${item.links > 0
+                                                ? html`<li>
+                                                    <simple-icon
+                                                      icon="icons:link"
+                                                    ></simple-icon
+                                                    >${item.links}
+                                                    ${this.t.links}
+                                                  </li>`
+                                                : ``}
+                                              ${item.readTime > 0
+                                                ? html`<li>
+                                                    <simple-icon
+                                                      icon="icons:chrome-reader-mode"
+                                                    ></simple-icon
+                                                    >${this.getReadingTime(
+                                                      item.readTime,
+                                                    )}
+                                                    ${this.t.ofReading}
+                                                  </li>`
+                                                : ``}
+                                            </ul>
+                                          </article>
                                         </li>
                                       `,
                                     )
@@ -1327,7 +1499,9 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                         ?loading="${this.loading}"
                       ></loading-indicator>
                       ${this.loading
-                        ? html`<p>${this.t.loading} ${this.t.mediaBrowser}..</p>`
+                        ? html`<p role="status" aria-live="polite">
+                            ${this.t.loading} ${this.t.mediaBrowser}..
+                          </p>`
                         : html`
                             <div class="mediabrowser-wrapper">
                               <h2>${this.t.mediaBrowser}</h2>
@@ -1343,23 +1517,34 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                   ? data.mediaData.map(
                                       (item) => html`
                                         <li>
-                                          <retro-card
-                                            nosource
-                                            class="${item.locType} ${item.type}"
-                                            accent-color="${this.accentColorFromType(
-                                              item.type,
-                                            )}"
-                                            title="${item.name} ${item.title}"
-                                            tags="${item.locType}, ${item.type}"
+                                          <article
+                                            class="media-item ${item.locType} ${item.type}"
                                           >
-                                            <div class="body">
+                                            <div class="media-item-header">
+                                              <h3 class="media-item-title">
+                                                ${item.name}
+                                                ${item.title ? ` ${item.title}` : ``}
+                                              </h3>
+                                              <p class="media-item-meta">
+                                                ${item.locType}, ${item.type}
+                                              </p>
+                                            </div>
+                                            <div class="media-item-preview">
                                               ${item.type == "image"
-                                                ? html`<img
+                                                ? html`<simple-img
+                                                      loading="lazy"
+                                                      fetchpriority="low"
+                                                      decoding="async"
                                                       src="${item.source}"
-                                                      alt="${item.alt}"
-                                                      title="${item.title}"
-                                                    />
-                                                    <div>
+                                                      alt="${item.alt &&
+                                                      item.alt != "null"
+                                                        ? item.alt
+                                                        : ""}"
+                                                      width="320"
+                                                      height="240"
+                                                      quality="80"
+                                                    ></simple-img>
+                                                    <div class="media-item-audit">
                                                       ${this.analyzeAltData(item)}
                                                     </div>`
                                                 : ``}
@@ -1367,6 +1552,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                               item.source.includes("videoseries")
                                                 ? html`<iframe
                                                     src="${item.source}"
+                                                    title="${item.title
+                                                      ? item.title
+                                                      : this.t.video}"
+                                                    loading="lazy"
                                                   ></iframe>`
                                                 : ``}
                                               ${item.type == "video" &&
@@ -1378,6 +1567,10 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                               ${item.type == "h5p"
                                                 ? html`<iframe
                                                     src="${item.source}"
+                                                    title="${item.title
+                                                      ? item.title
+                                                      : "H5P content"}"
+                                                    loading="lazy"
                                                   ></iframe>`
                                                 : ``}
                                               ${item.type == "audio"
@@ -1390,10 +1583,13 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                     <a
                                                       href="${item.source}"
                                                       target="_blank"
+                                                      rel="noopener noreferrer"
                                                       >${this.t.openInNewTab}</a
                                                     >
                                                   </div>`
                                                 : ``}
+                                            </div>
+                                            <div>
                                               <div>
                                                 ${item.itemId
                                                   ? this.renderItemLinkById(
@@ -1402,7 +1598,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
                                                   : ``}
                                               </div>
                                             </div>
-                                          </retro-card>
+                                          </article>
                                         </li>
                                       `,
                                     )
@@ -1526,22 +1722,6 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       </li>
     `;
   }
-  accentColorFromType(type) {
-    switch (type) {
-      case "video":
-        return "red";
-      case "h5p":
-        return "purple";
-      case "audio":
-        return "orange";
-      case "image":
-        return "blue";
-      case "document":
-        return "green";
-      default:
-        return "grey";
-    }
-  }
   renderItemLinkById(itemId) {
     // trap for highest level of the site
     if (itemId != null) {
@@ -1593,6 +1773,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       linkReport: "Link report",
       loading: "Loading",
       fullSite: "Full site",
+      summary: "Summary",
       reports: "Reports",
       linkChecker: "Link checker",
       mediaBrowser: "Media browser",
@@ -1606,7 +1787,7 @@ class HAXCMSShareDialog extends HAXCMSI18NMixin(LitElement) {
       readability: {},
       updatedItems: [],
     };
-    this.activeTab = "reports";
+    this.activeTab = "";
     this.loading = false;
   }
   static get properties() {

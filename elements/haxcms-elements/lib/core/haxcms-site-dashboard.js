@@ -93,6 +93,29 @@ class HAXCMSSiteDashboard extends SimpleColors {
             font-size: var(--ddd-font-size-xs);
             padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           }
+          #siteform {
+            --a11y-tabs-height: auto;
+            --a11y-tabs-tab-height: auto;
+            --a11y-tabs-overflow: visible;
+            --a11y-tabs-overflow-y: visible;
+          }
+          .buttons {
+            position: sticky;
+            bottom: 0;
+            z-index: 2;
+            background-color: light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-coalyGray)
+            );
+            border-top: var(--ddd-border-xs) solid
+              light-dark(
+                var(--ddd-theme-default-limestoneGray),
+                var(--ddd-primary-5)
+              );
+          }
+          .fields-wrapper {
+            padding-bottom: var(--ddd-spacing-2);
+          }
         }
         button {
           background-color: white;
