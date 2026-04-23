@@ -1,51 +1,50 @@
 {
-    "api": "1",
-    "canScale": true,
-    "canEditSource": true,
-    "type": "element",
-    "designSystem": {
-        "accent": true,
-        "primary": true,
-        "card": true,
-        "text": true,
-        "designTreatment": false
-    },
-    "gizmo": {
-        "title": "citation-builder",
-        "description": "",
-        "icon": "icons:android",
-        "color": "purple",
-        "tags": [
-            "Other"
-        ],
-        "handles": [],
-        "meta": {
-            "author": "winstonwumbo"
-        }
-    },
-    "settings": {
-        "configure": [
-            {
-                "property": "title",
-                "title": "Title",
-                "description": "",
-                "inputMethod": "textfield",
-                "icon": "editor:title",
-                "required": true
-            }
-        ]
-    },
-    "saveOptions": {
-        "wipeSlot": false,
-        "unsetAttributes": []
-    },
-    "demoSchema": [
-        {
-            "tag": "citation-builder",
-            "properties": {
-              "title": "Sample property title"
-            },
-            "content": ""
-        }
+  "api": "1",
+  "canScale": true,
+  "canEditSource": true,
+  "type": "grid",
+  "contentEditable": false,
+  "designSystem": {
+    "accent": true,
+    "primary": true,
+    "card": true,
+    "text": true,
+    "designTreatment": false
+  },
+  "gizmo": {
+    "title": "citation-builder",
+    "description": "",
+    "icon": "icons:android",
+    "color": "purple",
+    "tags": [
+      "Other"
+    ],
+    "handles": [],
+    "meta": {
+      "author": "winstonwumbo"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "slot": "",
+        "title": "Citations",
+        "description": "Citation items in this bibliography",
+        "inputMethod": "code-editor"
+      }
     ]
+  },
+  "saveOptions": {
+    "wipeSlot": false,
+    "unsetAttributes": []
+  },
+  "demoSchema": [
+    {
+      "tag": "citation-builder",
+      "properties": {
+        "title": "Sample property title"
+      },
+      "content": ""
+    }
+  ]
 }
