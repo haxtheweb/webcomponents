@@ -123,7 +123,7 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   _showExportModal(e){
-    this._modalContent = this._modalContent || document.createElement('div');
+    this._modalContent = this._modalContent || globalThis.document.createElement('div');
     this.renderExport();
 
     this.dispatchEvent(
@@ -146,6 +146,8 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
       html`
       <style>
         .citation-list {
+          max-height: 40vh;
+          overflow-y: auto;
           border: black solid 1px;
           padding: 8px;
           margin: 8px;
