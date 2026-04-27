@@ -48,8 +48,8 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
       publicationDate: { type: String, attribute: "publication-date" },
       accessDate: { type: String, attribute: "access-date" },
       url: { type: String },
-      volume: { type: String },
-      issue: { type: String },
+      parentVer: { type: Number, attribute: "parent-ver" },
+      childVer: { type: Number, attribute: "child-ver" },
       startPage: { type: String, attribute: 'start-page' },
       endPage: { type: String, attribute: 'end-page' }
     };
@@ -137,8 +137,8 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
       getJournalSource: (format) => {
         if(format === "APA"){
           // Issue num only applies if there's a volume num
-          const volumeDetails = this.volume ? 
-            html`<i>${this.volume}</i>${this.issue ? html`(${this.issue})` : ''}` : '';
+          const volumeDetails = this.parentVer ? 
+            html`<i>${this.parentVer}</i>${this.childVer ? html`(${this.childVer})` : ''}` : '';
 
           // End page only applies if there's a start page
           const pageRange = this.startPage ?
@@ -149,6 +149,18 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
           if (!volumeDetails) return html`${pageRange}`;
 
           return html`${volumeDetails}, ${pageRange}`;
+        }
+      },
+      getBookSource: (format) => {
+        if(format === "APA"){
+          // (#th ed., Vol. #, pp. #-#).
+          const editionDetails = this.parentVer ? 
+            html`${this.parentVer} ed.${this.childVer ? html`, Vol. ${this.childVer}` : ''}` : '';
+          // End page only applies if there's a start page
+          const pageRange = this.startPage ?
+            html`${this.startPage}${this.endPage ? ` - ${this.endPage}` : ''}` : '';
+
+          return html`(${editionDetails}, pp. ${pageRange})`;
         }
       }
     }
@@ -208,6 +220,8 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
     switch(this.citationType) {
       case "journal":
         return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}. ${this.title}. <i>${this.publisher}</i>, ${this._formatSource().getJournalSource("APA")}. ${this.url}`;
+      case "book":
+        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}. <i>${this.title}</i> ${this._formatSource().getBookSource("APA")}. ${this.publisher}. ${this.url}`
       case "web":
       default:
         return html`${this._formatAuthors()} ${this._formatDate().getFullPubDate()}. <i>${this.title}</i>. ${this.publisher}. ${this.url}`
@@ -345,24 +359,110 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
 
   haxsetupActiveElementForm(props) {
     // properties to toggle by type
-    const webOnly = ['publicationMonth', 'publicationDay']
-    const journalOnly = ['volume', 'issue', 'startPage', 'endPage']
 
-    props.settings.configure.forEach((field, index) => {
-      const prop = field.property;
+    let configObj = [];
 
-      if (this.citationType === "web") {
-        field.hidden = journalOnly.includes(prop);
+    switch(this.citationType) {
+      case "book":
+        configObj = [
+          {
+            property: 'url',
+            title: 'URL',
+            description: 'Link to the item',
+            inputMethod: 'textfield',
+          },
+          {
+            property: 'publicationDate',
+            title: 'Publication Date',
+            description: 'mm/dd/yyyy',
+            inputMethod: 'datepicker',
+          },
+          {
+            property: 'parentVer',
+            title: 'Edition',
+            description: 'Volume number',
+            inputMethod: 'textfield',
+          },
+          {
+            property: 'childVer',
+            title: 'Volume',
+            description: 'Issue number',
+            inputMethod: 'textfield',
+          },
+          {
+            property: 'startPage',
+            title: 'Start Page',
+            description: 'First page of publication',
+            inputMethod: 'number',
+          },
+          {
+            property: 'endPage',
+            title: 'End Page',
+            description: 'Final page of publication',
+            inputMethod: 'number',
+          }
+        ]
+        break;
+      case "journal":
+        configObj = [
+          {
+            property: 'url',
+            title: 'DOI / URL (Optional)',
+            description: 'Link to the item',
+            inputMethod: 'textfield',
+          },
+          {
+            property: 'publicationDate',
+            title: 'Publication Date',
+            description: 'mm/dd/yyyy',
+            inputMethod: 'datepicker',
+          },
+          {
+            property: 'volume',
+            title: 'Volume',
+            description: 'Volume number',
+            inputMethod: 'textfield',
+          },
+          {
+            property: 'issue',
+            title: 'Issue',
+            description: 'Issue number',
+            inputMethod: 'textfield',
+          },
+          {
+            property: 'startPage',
+            title: 'Start Page',
+            description: 'First page of publication',
+            inputMethod: 'number',
+          },
+          {
+            property: 'endPage',
+            title: 'End Page',
+            description: 'Final page of publication',
+            inputMethod: 'number',
+          }
+        ]
+        break;
+      case "web":
+      default:
+        configObj = [
+          {
+            property: 'url',
+            title: 'URL',
+            description: 'Link to the item',
+            inputMethod: 'textfield',
+          },
+          {
+            property: 'publicationDate',
+            title: 'Publication Date',
+            description: 'mm/dd/yyyy',
+            inputMethod: 'datepicker',
+          }
+        ]
+        break;
+    }
 
-        if (prop === 'url') field.title = "URL";
-        if (prop === 'publisher') field.description = "Original website";
-      } else if (this.citationType === "journal") {
-        field.hidden = webOnly.includes(prop);
-
-        if (prop === 'url') field.title = "DOI / URL";
-        if (prop === 'publisher') field.description = "Original journal";
-      }
-    });
+    props.settings.configure = [...CitationItem.haxProperties.settings.configure, ...configObj];
   }
 
   /**
@@ -405,6 +505,7 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
             options: {
               web: 'Web',
               journal: 'Journal',
+              book: 'Book'
             },
           },
           // Should we implement the tabs/fieldset menu for better organizing? List is getting a little long
@@ -443,46 +544,6 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
             title: 'Publisher',
             description: 'Original website',
             inputMethod: 'textfield',
-          },
-          {
-            property: 'url',
-            title: 'URL',
-            description: 'Link to the item',
-            inputMethod: 'textfield',
-          },
-          {
-            property: 'publicationDate',
-            title: 'Publication Date',
-            description: 'mm/dd/yyyy',
-            inputMethod: 'datepicker',
-          },
-          {
-            property: 'volume',
-            title: 'Volume',
-            description: 'Volume number',
-            inputMethod: 'textfield',
-            hidden: true
-          },
-          {
-            property: 'issue',
-            title: 'Issue',
-            description: 'Issue number',
-            inputMethod: 'textfield',
-            hidden: true
-          },
-          {
-            property: 'startPage',
-            title: 'Start Page',
-            description: 'First page of publication',
-            inputMethod: 'number',
-            hidden: true
-          },
-          {
-            property: 'endPage',
-            title: 'End Page',
-            description: 'Final page of publication',
-            inputMethod: 'number',
-            hidden: true
           }
         ]
       },
