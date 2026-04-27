@@ -2,7 +2,7 @@
  * Copyright 2026 winstonwumbo
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, render } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
@@ -23,21 +23,18 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
 
   constructor() {
     super();
-    this.title = "We Will Steal Ze Moon";
+    this.title = "HAX The Web";
     this.authors = [
-      { given: 'John Andrew', surname: 'Smith' },
-      { given: 'Jane', surname: 'Doe' },
-      { given: 'Kevin', surname: 'Brown' },
+      { given: 'John', surname: 'Doe' },
     ];
-    this.publicationDate = {
-      month: "June",
-      day: "1",
-      year: "2025" 
-    }
-    this.citationType = "web"
+    this.publicationDate = "";
+    this.accessDate = "";
+    this.citationType = "web";
 
-    this.source = "HAX PSU"
-    this.url = "https://hax.psu.edu"
+    this.publisher = "HAX PSU";
+    this.url = "";
+    this.startPage = "";
+    this.endPage = "";
   }
 
   // Lit reactive properties
@@ -45,13 +42,16 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
-      citationType: { type: String },
-      source: { type: String },
+      citationType: { type: String, reflect: true, attribute: "citation-type" },
+      publisher: { type: String },
       authors: { type: Array },
-      publicationDate: { type: Object },
+      publicationDate: { type: String, attribute: "publication-date" },
+      accessDate: { type: String, attribute: "access-date" },
       url: { type: String },
       volume: { type: String },
       issue: { type: String },
+      startPage: { type: String, attribute: 'start-page' },
+      endPage: { type: String, attribute: 'end-page' }
     };
   }
 
@@ -76,6 +76,9 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
         display: inline;
         font-style: italic;
       }
+      .citation {
+        width: 80%;
+      }
     `];
   }
 
@@ -83,9 +86,7 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
   render() {
     return html`
     <div class="wrapper">
-        <div class="citation">
-          ${this._authorsToAPA()}, ${this._dateToAPA()}, ${this.title}, ${this._sourceToAPA()}
-        </div>
+        <div class="citation">${this.exportAPA()}</div>
         <div class="copy-button">
             <simple-icon-button
               part="icon"
@@ -106,19 +107,16 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
       super.updated(changedProperties);
     }
     changedProperties.forEach((oldValue, propName) => {
-      if (propName === "authors" && oldValue !== undefined) {
-        this._formatAuthors();
-      } else if (propName === "publicationDate" && oldValue !== undefined) {
-        this._formattedDate = this._formatDate();
+      if (propName === "citationType" && oldValue !== undefined) {
+          globalThis.HaxStore.instance.refreshActiveNodeForm()
       };
     });
   }
 
-  _authorsToAPA(){
+  _formatAuthors(){
     if (!this.authors) return '';
 
     // author.given author.surname
-    // Can make etAlThreshold and visible total for inline citation part of sidebar
     const formattedArr = this.authors.map((author) => {
       const surname = author.surname.trim()
       const given = author.given.trim().replace(/\b(\w)\w*/g, '$1.').toUpperCase();
@@ -127,57 +125,383 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
     });
 
     if (this.authors.length === 1){
-      return formattedArr[0] + ".";
+      return formattedArr[0];
     } else {
       const last = formattedArr.pop();
       return formattedArr.join(', ') + ', & ' + last;
     }
   }
 
-  _dateToAPA(){
-    if(!this.publicationDate.year) return "(n.d.)";
+  _formatSource(){
+    return {
+      getJournalSource: (format) => {
+        if(format === "APA"){
+          // Issue num only applies if there's a volume num
+          const volumeDetails = this.volume ? 
+            html`<i>${this.volume}</i>${this.issue ? html`(${this.issue})` : ''}` : '';
 
-    if(this.citationType === 'journal'){
-      return `(${this.publicationDate.year})`
+          // End page only applies if there's a start page
+          const pageRange = this.startPage ?
+            html`${this.startPage}${this.endPage ? ` - ${this.endPage}` : ''}` : '';
+
+          if (!volumeDetails && !pageRange) return '';
+          if (!pageRange) return html`${volumeDetails}`;
+          if (!volumeDetails) return html`${pageRange}`;
+
+          return html`${volumeDetails}, ${pageRange}`;
+        }
+      }
     }
-    else if(this.citationType === 'web'){
-      if (this.publicationDate.month && this.publicationDate.day){
-        return `(${this.publicationDate.year}, ${this.publicationDate.month} ${parseInt(this.publicationDate.day)})`;
-      } else if (this.publicationDate.month){
-        return `(${this.publicationDate.year}, ${this.publicationDate.month})`;
-      } else {
-        return `(${this.publicationDate.year})`; 
+  };
+
+  _formatDate(){
+    const pubDateObj = new Date(this.publicationDate);
+    const accessDateObj = new Date(this.accessDate);
+
+    return {
+      // The same between APA and BibTeX
+      getPubYear: () => {
+        if(isNaN(pubDateObj)) return "(n.d.)";
+
+        return pubDateObj.getFullYear();
+      },
+      getFullPubDate: () => {
+        if(isNaN(pubDateObj)) return "(n.d.)";
+
+        const pubYear = pubDateObj.getFullYear();
+        const pubMonth = pubDateObj.toLocaleString('default', { month: 'long' });;
+        const pubDay = pubDateObj.getDate();
+
+        if (!pubMonth) return `(${pubYear})`;
+        if (!pubDay) return `(${pubYear}, ${pubMonth})`;
+
+        return `(${pubYear}, ${pubMonth} ${pubDay})`;
+      },
+      getFullAccessDate: (format) => {
+        if(isNaN(accessDateObj)) return "(n.d.)";
+
+        if (format === "APA"){
+          const accessYear = accessDateObj.getFullYear();
+          const accessMonth = accessDateObj.toLocaleString('default', { month: 'long' });
+          const accessDay = accessDateObj.getDate();
+
+          if (!accessMonth) return `Retrieved ${accessYear}, from`;
+          if (!accessDay) return `Retrieved ${accessMonth}, ${accessYear}, from`;
+
+          return `Retrieved ${accessMonth} ${accessDay}, ${accessYear}, from`;
+        }
+        if(format === "BibTeX"){
+          const accessYear = accessDateObj.getFullYear();
+          const accessMonth = String(accessDateObj.getMonth() + 1).padStart(2, '0');
+          const accessDay = String(accessDateObj.getDate()).padStart(2, '0');
+
+          if (!accessMonth) return `${accessYear}`;
+          if (!accessDay) return `${accessYear}-${accessMonth}`;
+
+          return `${accessYear}-${accessMonth}-${accessDay}`;
+        };
+      }
+    };
+  }
+
+  exportAPA(){
+    switch(this.citationType) {
+      case "journal":
+        return html`${this._formatAuthors()} ${this._formatDate().getPubYear()}. ${this.title}. <i>${this.publisher}</i>, ${this._formatSource().getJournalSource("APA")}. ${this.url}`;
+      case "web":
+      default:
+        return html`${this._formatAuthors()} ${this._formatDate().getFullPubDate()}. <i>${this.title}</i>. ${this.publisher}. ${this.url}`
+    }
+  }
+
+  exportBibtex(){    
+    // Indent is set to 4 spaces for each field
+    switch(this.citationType) {
+      case "journal": {
+        const bibtexObj = [
+          `@article{${this.title.replaceAll(" ", "")},`,
+          `    title = {${this.title}},`,
+          `    author = {${this._formatAuthors()}},`,
+          `    year = {${this._formatDate().getPubYear()}},`
+        ];
+
+        if(this.volume) bibtexObj.push(`   volume = {${this.volume}},`)
+        if(this.issue) bibtexObj.push(`   number = {${this.issue}},`)
+        if(this.startPage && this.endPage){
+          bibtexObj.push(`    pages = {${this.startPage}--${this.endPage}},`)
+        } else if(this.startPage){
+          bibtexObj.push(`    pages = {${this.startPage}},`)
+        }
+        if(this.url) bibtexObj.push(`    doi = {${this.url}}`)
+        
+        bibtexObj.push(`}`);
+        
+        return html`<div style="white-space: pre-wrap;">${bibtexObj.join('\n').trim()}</div>`;
+      }
+      case "web":
+      default: {
+        const bibtexObj = [
+          `@misc{${this.title.replaceAll(" ", "")},`,
+          `    title = {${this.title}},`,
+          `    author = {${this._formatAuthors()}},`,
+          `    year = {${this._formatDate().getPubYear()}},`
+        ];
+
+        if(this.url) bibtexObj.push(`    howpublished = {\\url{${this.url}}},`)
+        if(this.accessDate) bibtexObj.push(`    note = {Accessed: ${this.accessDate}}`);
+
+        bibtexObj.push(`}`);
+
+        return html`<div style="white-space: pre-wrap;">${bibtexObj.join('\n').trim()}</div>`
       }
     }
   }
 
-  _sourceToAPA(){
-    if(this.citationType === 'journal'){
-      const doi = this.url
-      return html`${this.source}, <div class="italic-section">${this.volume}</div>(${this.issue}), ${pageStart}-${pageEnd}. ${doi}`
-    }
-    if(this.citationType === 'web'){
-      return html`<div class="italic-section">${this.source}</div>, ${this.url}`
-    }
+  _copyToClipboard(){  
+    const target = this.shadowRoot.querySelector(".citation");
+    const htmlContent = target.innerHTML; 
+    const plainContent = target.textContent;
+
+    // const wrappedHtml = `
+    //   <html>
+    //     <head>
+    //       <meta charset="utf-8">
+    //     </head>
+    //     <body>
+    //     <!--StartFragment-->
+    //       ${htmlContent}
+    //       <!--EndFragment-->
+    //     </body>
+    //   </html>
+    // `;
+
+    const blobHtml = new Blob([htmlContent], { type: "text/html" });
+    const blobText = new Blob([plainContent], { type: "text/plain" });
+
+    const data = [new ClipboardItem({
+      "text/html": blobHtml,
+      "text/plain": blobText // Fallback
+    })];
+
+    navigator.clipboard.write(data)
   }
 
-  _copyToClipboard(){
-    const target = this.shadowRoot.querySelector(".citation");
-    // target.focus()
-    navigator.clipboard.writeText(target.textContent)
+  haxHooks() {
+    return {
+      setupActiveElementForm: "haxsetupActiveElementForm",
+      inlineContextMenu: "haxinlineContextMenu",
+    };
+  }
+
+  haxinlineContextMenu(ceMenu) {
+    ceMenu.ceButtons = [
+      {
+        icon: "hax:keyboard-arrow-up",
+        callback: "_addCitationAbove",
+        label: "Add citation above",
+      },
+      {
+        icon: "hax:keyboard-arrow-down",
+        callback: "_addCitationBelow",
+        label: "Add citation below",
+      },
+      {
+        icon: "icons:remove",
+        callback: "_removeCitation",
+        label: "Remove current citation",
+      },
+    ];
+  }
+
+  _addCitationAbove(){
+    this.dispatchEvent(new CustomEvent('add-citation', {
+      detail: { direction: 'above', node: this },
+      bubbles: true,
+      composed: true
+    }));
+  }
+
+  _addCitationBelow(){
+    this.dispatchEvent(new CustomEvent('add-citation', {
+      detail: { direction: 'below', node: this },
+      bubbles: true,
+      composed: true
+    }));
+  }
+
+  _removeCitation(){
+    this.dispatchEvent(new CustomEvent('remove-citation', {
+      detail: { node: this },
+      bubbles: true,
+      composed: true
+    }));
+  }
+
+  haxactiveElementChanged(el, val) {
+    this.editMode = val;
+    console.log("el", el)
+    console.log("val", val)
+  }
+
+  haxsetupActiveElementForm(props) {
+    // properties to toggle by type
+    const webOnly = ['publicationMonth', 'publicationDay']
+    const journalOnly = ['volume', 'issue', 'startPage', 'endPage']
+
+    props.settings.configure.forEach((field, index) => {
+      const prop = field.property;
+
+      if (this.citationType === "web") {
+        field.hidden = journalOnly.includes(prop);
+
+        if (prop === 'url') field.title = "URL";
+        if (prop === 'publisher') field.description = "Original website";
+      } else if (this.citationType === "journal") {
+        field.hidden = webOnly.includes(prop);
+
+        if (prop === 'url') field.title = "DOI / URL";
+        if (prop === 'publisher') field.description = "Original journal";
+      }
+    });
   }
 
   /**
    * haxProperties integration via file reference
    */
   static get haxProperties() {
-    return new URL(`./lib/${this.tag}.haxProperties.json`, import.meta.url)
-      .href;
-  }
+    return {
+      "api": "1",
+      "canScale": true,
+      "canEditSource": true,
+      "type": "element",
+      "designSystem": {
+        "accent": true,
+        "primary": true,
+        "card": true,
+        "text": true,
+        "designTreatment": false
+      },
+      "gizmo": {
+        "title": "citation-item",
+        "description": "",
+        "icon": "icons:android",
+        "color": "purple",
+        "tags": [
+          "Other"
+        ],
+        "handles": [],
+        "meta": {
+          "hidden": true,
+          "author": "winstonwumbo"
+        }
+      },
+      "settings": {
+        "configure": [
+          {
+            property: 'citationType',
+            title: 'Type',
+            description: 'Citation type',
+            inputMethod: 'select',
+            options: {
+              web: 'Web',
+              journal: 'Journal',
+            },
+          },
+          // Should we implement the tabs/fieldset menu for better organizing? List is getting a little long
+          // look at HAXFIELDS and elements/simple-fields/demo/index.html:187 for implementation reference
+          {
+            property: "title",
+            title: "Title",
+            description: "Title of the item",
+            inputMethod: "textfield",
+            icon: "editor:title",
+            required: true
+          },
+          {
+            property: "authors",
+            title: "Author(s)",
+            description: "The events in the timeline",
+            inputMethod: "array",
+            itemLabel: "surname",
+            properties: [
+              {
+                property: "given",
+                title: "Given Name",
+                description: "The Given Name of Author.",
+                inputMethod: "textfield",
+              },
+              {
+                property: "surname",
+                title: "Surname",
+                description: "The Surname of Author.",
+                inputMethod: "textfield",
+              },
+            ],
+          },
+          {
+            property: 'publisher',
+            title: 'Publisher',
+            description: 'Original website',
+            inputMethod: 'textfield',
+          },
+          {
+            property: 'url',
+            title: 'URL',
+            description: 'Link to the item',
+            inputMethod: 'textfield',
+          },
+          {
+            property: 'publicationDate',
+            title: 'Publication Date',
+            description: 'mm/dd/yyyy',
+            inputMethod: 'datepicker',
+          },
+          {
+            property: 'volume',
+            title: 'Volume',
+            description: 'Volume number',
+            inputMethod: 'textfield',
+            hidden: true
+          },
+          {
+            property: 'issue',
+            title: 'Issue',
+            description: 'Issue number',
+            inputMethod: 'textfield',
+            hidden: true
+          },
+          {
+            property: 'startPage',
+            title: 'Start Page',
+            description: 'First page of publication',
+            inputMethod: 'number',
+            hidden: true
+          },
+          {
+            property: 'endPage',
+            title: 'End Page',
+            description: 'Final page of publication',
+            inputMethod: 'number',
+            hidden: true
+          }
+        ]
+      },
+      "saveOptions": {
+        "wipeSlot": false,
+        "unsetAttributes": []
+      },
+      "demoSchema": [
+        {
+          "tag": "citation-item",
+          "properties": {
+            "title": "Sample property title"
+          },
+          "content": ""
+        }
+      ]
+    }
+  };
 
-  haxHooks() {
-
-  }
 }
 
 globalThis.customElements.define(CitationItem.tag, CitationItem);

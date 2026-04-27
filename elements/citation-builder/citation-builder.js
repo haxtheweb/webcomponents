@@ -2,11 +2,14 @@
  * Copyright 2026 winstonwumbo
  * @license Apache-2.0, see LICENSE for full text.
  */
-import { LitElement, html, css } from "lit";
+import { LitElement, html, css, render } from "lit";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-
-import "./lib/citation-item.js"
+import "@haxtheweb/simple-modal/simple-modal.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
+import "@haxtheweb/hax-iconset/lib/simple-hax-iconset.js";
+import "@haxtheweb/citation-builder/lib/citation-item.js"
 
 /**
  * `citation-builder`
@@ -34,6 +37,11 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
         new URL("./locales/citation-builder.ar.json", import.meta.url).href +
         "/../",
     });
+    this.exportMode = "";
+    this.citationArr = [ "Select a citation format below" ];
+
+    this.addEventListener("add-citation", this._addCitationHandler.bind(this));
+    this.addEventListener("remove-citation", this._removeCitationHandler.bind(this))
   }
 
   // Lit reactive properties
@@ -41,6 +49,8 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
     return {
       ...super.properties,
       title: { type: String },
+      exportMode: { type: String, attribute: "export-mode" },
+      citationArr: { type: Array, attribute: "citation-array" }
     };
   }
 
@@ -59,6 +69,9 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
         margin: var(--ddd-spacing-2);
         border: var(--ddd-border-md);
       }
+      h3 {
+        margin-top: 16px;
+      }
       h3 span {
         font-size: var(--citation-builder-label-font-size, var(--ddd-font-size-s));
       }
@@ -67,8 +80,13 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
         justify-content: space-between;
       }
 
-      #export-dropdown {
-        align-self: center; 
+      #export-button {
+        align-self: center;
+        background-color: white;
+      }
+
+      .citation-list {
+        border: black solid 1px;
       }
     `];
   }
@@ -79,18 +97,211 @@ export class CitationBuilder extends DDDSuper(I18NMixin(LitElement)) {
     <div class="wrapper">
       <div class="title-card">
         <h3><span>${this.t.title}:</span> ${this.title}</h3>
-        <select id="export-dropdown">
-          <option value="">Export</option>
-          <option value="APA">APA</option>
-          <option value="BibTex">BibTex</option>
-          <!-- Alert and Copy (Or some Modal like on ResearchGate) -->
-        </select>
-      </div>
-      <citation-item></citation-item>
-      <citation-item></citation-item>
+        <button id="export-button" @click=${this._showExportModal}>Export</button>
+      </div>      
 
-      <slot></slot>
+      <slot>
+        <citation-item title="Make your own citation with the HAX Editor" publication-date="${new Date()}"></citation-item>
+      </slot>
     </div>`;
+  }
+
+  /**
+  * LitElement lifecycle
+  */
+  updated(changedProperties) {
+    if (super.updated) {
+      super.updated(changedProperties);
+    }
+
+    console.log(this.editMode)
+    changedProperties.forEach((oldValue, propName) => {
+      if (propName === "citationArr" && oldValue !== undefined) {
+        this.renderExport();
+      }
+    });
+  }
+
+  _showExportModal(e){
+    this._modalContent = this._modalContent || globalThis.document.createElement('div');
+    this.renderExport();
+
+    this.dispatchEvent(
+      new CustomEvent('simple-modal-show', {
+        bubbles: true,
+        composed: true,
+        cancelable: true,
+        detail: {
+          title: `Export Citations`,
+          elements: { content: this._modalContent },
+          invokedBy: e.target
+        },
+      }),
+    )
+  }
+
+  // simple-modal is independent from our main lit lifecycle, so we do a custom render
+  renderExport(){
+    render(
+      html`
+      <style>
+        .citation-list {
+          max-height: 40vh;
+          overflow-y: auto;
+          border: black solid 1px;
+          padding: 8px;
+          margin: 8px;
+        }
+        .control-bar {
+          --simple-icon-button-border: 1px black solid;
+          --simple-icon-button-border-radius: 4px;
+          --simple-icon-button-focus-border: 2px black solid;
+          --simple-icon-button-padding: 6px;
+          --simple-icon-height: 32px;
+          --simple-icon-width: 32px;
+          display: flex;
+          justify-content: space-between;
+          margin-top: 16px;
+        }
+        simple-icon-button-lite {
+          align-self: center;
+          width: fit-content;
+        }
+        simple-icon-button-lite::part(button) {
+          font-size: 20px;
+        }
+      </style>
+      <div class="citation-list">
+        ${this.citationArr.map(citation => html`<div class="citation-entry">${citation}</div>`)}
+      </div>
+      <div class="control-bar">
+        <div class="copy-button">
+          <simple-icon-button-lite
+            part="icon"
+            class="icon"
+            title="Copy"
+            icon="content-copy"
+            @click=${this._copyToClipboard}
+          >Copy</simple-icon-button-lite>
+        </div>
+        <div class="export-drop">
+          <select id="export-dropdown" @change=${this._exportHandler}>
+            <option value="Export">Export</option>
+            <option value="APA">APA</option>
+            <option value="BibTeX">BibTeX</option>
+          </select>
+        </div>
+      </div>
+      `, 
+      this._modalContent,
+      { host: this }
+    );
+  }
+
+  _exportHandler(e){
+    this.exportMode = e.target.value;
+    const slot = this.shadowRoot.querySelector('slot').assignedElements();
+
+    if(this.exportMode === "APA") {
+      this.citationArr = slot.map((item) => item.exportAPA())
+    } else if (this.exportMode === "BibTeX") {
+      this.citationArr = slot.map((item) => item.exportBibtex())
+    } else {
+      this.citationArr = [ "Select a citation format below" ];
+    }
+  }
+
+  _copyToClipboard(){  
+    const target = this._modalContent.querySelector(".citation-list");
+    const htmlContent = target.innerHTML; 
+    const plainContent = target.textContent;
+
+    // const wrappedHtml = `
+    //   <html>
+    //     <head>
+    //       <meta charset="utf-8">
+    //     </head>
+    //     <body>
+    //     <!--StartFragment-->
+    //       ${htmlContent}
+    //       <!--EndFragment-->
+    //     </body>
+    //   </html>
+    // `;
+
+    const blobHtml = new Blob([htmlContent], { type: "text/html" });
+    const blobText = new Blob([plainContent], { type: "text/plain" });
+
+    const data = [new ClipboardItem({
+      "text/html": blobHtml,
+      "text/plain": blobText // Fallback
+    })];
+
+    navigator.clipboard.write(data)
+  }
+
+  _addCitationHandler(e){
+    const item = globalThis.document.createElement("citation-item");
+
+    const attrs = { 
+      "data-hax-layout": true, 
+      "data-hax-ray": "citation-item"
+    };
+
+    for (const name in attrs) {
+      item.setAttribute(name, attrs[name]);
+    }
+
+    if(e.detail.direction === "above"){
+      // add above current citation
+      e.detail.node.before(item)
+    } else if (e.detail.direction === "below") {
+      // add below current citation
+      e.detail.node.after(item)
+    } else {
+      // add at the end of the citation list
+      this.appendChild(item);
+    }
+  }
+
+  _removeCitationHandler(e){
+    e.detail.node.remove()
+  }
+
+  haxHooks() {
+    return {
+      activeElementChanged: "haxactiveElementChanged",
+      inlineContextMenu: "haxinlineContextMenu",
+    };
+  }
+
+  haxinlineContextMenu(ceMenu) {
+    ceMenu.ceButtons = [
+      {
+        icon: "icons:add",
+        callback: "_addCitationHandler",
+        label: "Add citation",
+      },
+    ];
+  }
+
+  haxactiveElementChanged(el, val) {
+    this.editMode = val;
+    console.log("el", el)
+    console.log("val", val)
+
+    const slot = this.shadowRoot.querySelector('slot').assignedElements()
+    const attrs = { 
+      "data-hax-layout": true, 
+      "data-hax-ray": "citation-item"
+    };
+
+    for (const child of slot){
+      for (const name in attrs) {
+        console.log(child.textContent)
+        child.setAttribute(name, attrs[name]);
+      }
+    }
   }
 
   /**
