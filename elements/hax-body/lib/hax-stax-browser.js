@@ -17,14 +17,25 @@ class HaxStaxBrowser extends LitElement {
           flex-direction: column;
           align-items: stretch;
           flex: 0 0 auto;
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+          box-sizing: border-box;
+          overflow-x: hidden;
           overflow-y: auto;
+        }
+        :host > * {
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+          box-sizing: border-box;
         }
         hax-tray-button {
           flex: auto;
-          font-size: 12px;
-          --hax-ui-font-size-sm: 12px;
-          --simple-toolbar-button-height: 22px;
-          --simple-toolbar-button-width: 22px;
+          font-size: var(--ddd-font-size-6xs, 12px);
+          --hax-ui-font-size-sm: var(--ddd-font-size-6xs, 12px);
+          --simple-toolbar-button-height: var(--ddd-icon-xxs, 24px);
+          --simple-toolbar-button-width: var(--ddd-icon-xxs, 24px);
         }
         hax-tray-button[small] {
           font-size: 8px;
@@ -33,20 +44,21 @@ class HaxStaxBrowser extends LitElement {
           --simple-toolbar-button-width: 16px;
         }
         hax-tray-button::part(button) {
-          font-size: var(hax-ui-font-size-xs);
+          font-size: var(--ddd-font-size-6xs, var(--hax-ui-font-size-xs));
         }
         simple-button-grid {
-          overflow: auto;
-          --simple-button-grid-margin: 2px;
+          overflow-y: auto;
+          overflow-x: hidden;
+          --simple-button-grid-margin: var(--ddd-spacing-1);
         }
         a11y-collapse {
           margin: 0;
           --a11y-collapse-margin: 0;
-          --a11y-collapse-vertical-padding: 8px;
-          --a11y-collapse-horizontal-padding: 4px;
+          --a11y-collapse-vertical-padding: var(--ddd-spacing-3);
+          --a11y-collapse-horizontal-padding: var(--ddd-spacing-3);
         }
         a11y-collapse::part(heading) {
-          margin: 8px 0px;
+          margin: var(--ddd-spacing-2) 0;
         }
       `,
     ];

@@ -4,9 +4,9 @@ export const HaxUiText = [
   css`
     body {
       --hax-ui-font-family: var(--ddd-font-navigation);
-      --hax-ui-font-size-xs: 11px;
-      --hax-ui-font-size-sm: 13px;
-      --hax-ui-font-size: 16px;
+      --hax-ui-font-size-xs: 10px;
+      --hax-ui-font-size-sm: 12px;
+      --hax-ui-font-size: 14px;
       --hax-ui-font-size-lg: 16px;
       --hax-ui-font-size-xl: 20px;
     }

@@ -24,46 +24,56 @@ class HaxGizmoBrowser extends I18NMixin(SimpleFilterMixin(LitElement)) {
           flex-direction: column;
           align-items: stretch;
           flex: 0 1 auto;
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+          box-sizing: border-box;
+          gap: var(--ddd-spacing-2);
+          overflow-x: hidden;
           overflow-y: auto;
         }
         :host > * {
+          width: 100%;
           max-width: 100%;
+          min-width: 0;
+          box-sizing: border-box;
         }
         simple-popover-selection {
           display: flex;
         }
         hax-tray-button {
           flex: auto;
-          font-size: 16px;
-          --hax-ui-font-size-sm: 16px;
-          --simple-toolbar-button-height: 30px;
-          --simple-toolbar-button-width: 30px;
+          font-size: var(--ddd-font-size-6xs, 12px);
+          --hax-ui-font-size-sm: var(--ddd-font-size-6xs, 12px);
+          --simple-toolbar-button-height: var(--ddd-icon-xxs, 24px);
+          --simple-toolbar-button-width: var(--ddd-icon-xxs, 24px);
         }
         .toolbar-inner {
-          max-width: 96%;
+          width: 100%;
+          max-width: 100%;
         }
         hax-tray-button::part(button) {
-          font-size: var(hax-ui-font-size-xs);
+          font-size: var(--ddd-font-size-6xs, var(--hax-ui-font-size-xs));
         }
         simple-button-grid {
-          --simple-button-grid-margin: 4px;
+          --simple-button-grid-margin: var(--ddd-spacing-1);
         }
         simple-fields-field {
           margin-top: 0;
-          margin-bottom: 8px;
+          margin-bottom: var(--ddd-spacing-2);
         }
         simple-fields-field::part(option-input) {
-          padding: 0px 2px;
-          font-size: 12px;
+          padding: 0 var(--ddd-spacing-1);
+          font-size: var(--ddd-font-size-6xs, 12px);
         }
         a11y-collapse {
           margin: 0;
           --a11y-collapse-margin: 0;
-          --a11y-collapse-vertical-padding: 8px;
-          --a11y-collapse-horizontal-padding: 4px;
+          --a11y-collapse-vertical-padding: var(--ddd-spacing-3);
+          --a11y-collapse-horizontal-padding: var(--ddd-spacing-3);
         }
         a11y-collapse::part(heading) {
-          margin: 8px 0px;
+          margin: var(--ddd-spacing-2) 0;
         }
       `,
     ];

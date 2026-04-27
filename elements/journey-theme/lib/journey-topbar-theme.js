@@ -36,6 +36,7 @@ class JourneyTopbarTheme extends HAXCMSLitElementTheme {
   // set defaults or tie into the store
   constructor() {
     super();
+    this.dataPalette = 11;
     this._items = [];
     this.activeId = null;
     autorun(() => {
@@ -48,6 +49,7 @@ class JourneyTopbarTheme extends HAXCMSLitElementTheme {
   static get properties() {
     return {
       ...super.properties,
+      dataPalette: { type: Number, reflect: true, attribute: "data-palette" },
       activeId: { type: String },
       _items: { type: Array },
     };
@@ -62,8 +64,8 @@ class JourneyTopbarTheme extends HAXCMSLitElementTheme {
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
         :root {
-          --my-theme-low-tone: var(--ddd-theme-default-slateMaxLight);
-          --my-theme-high-tone: var(--ddd-theme-default-coalyGray);
+          --my-theme-low-tone: var(--ddd-palette-color-5, var(--ddd-theme-default-slateMaxLight));
+          --my-theme-high-tone: var(--ddd-palette-color-1, var(--ddd-theme-default-coalyGray));
         }
         body {
           padding: var(--ddd-spacing-0);

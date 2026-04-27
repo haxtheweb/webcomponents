@@ -39,6 +39,7 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
   // set defaults or tie into the store
   constructor() {
     super();
+    this.dataPalette = 11;
     this._items = [];
     this.activeId = null;
     autorun(() => {
@@ -51,6 +52,7 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
   static get properties() {
     return {
       ...super.properties,
+      dataPalette: { type: Number, reflect: true, attribute: "data-palette" },
       activeId: { type: String },
       _items: { type: Array },
     };
@@ -65,10 +67,10 @@ class JourneySidebarTheme extends HAXCMSLitElementTheme {
       ...super.HAXCMSGlobalStyleSheetContent(),
       css`
         :root {
-          --journey-theme-bg-light: var(--ddd-theme-default-white);
-          --journey-theme-bg-dark: var(--ddd-theme-default-coalyGray);
-          --journey-theme-text-light: var(--ddd-theme-default-nittanyNavy);
-          --journey-theme-text-dark: var(--ddd-theme-default-white);
+          --journey-theme-bg-light: var(--ddd-palette-color-5, var(--ddd-theme-default-white));
+          --journey-theme-bg-dark: var(--ddd-palette-color-1, var(--ddd-theme-default-coalyGray));
+          --journey-theme-text-light: var(--ddd-palette-text-color-5, var(--ddd-theme-default-nittanyNavy));
+          --journey-theme-text-dark: var(--ddd-palette-text-color-1, var(--ddd-theme-default-white));
           color-scheme: light dark;
         }
         

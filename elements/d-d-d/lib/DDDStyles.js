@@ -5040,6 +5040,29 @@ html, :root {
   --ddd-palette-text-color-6: var(--simple-colors-default-theme-orange-3);
   --ddd-palette-text-color-7: var(--simple-colors-default-theme-orange-4);
 }
+
+[data-palette="boldly-lion"],
+[data-palette="11"]{
+  --ddd-palette-color-1: var(--ddd-theme-default-nittanyNavy);
+  --ddd-palette-color-2: var(--ddd-theme-default-beaverBlue);
+  --ddd-palette-color-3: var(--ddd-theme-default-pughBlue);
+  --ddd-palette-color-4: var(--ddd-theme-default-slateGray);
+  --ddd-palette-color-5: var(--ddd-theme-default-limestoneLight);
+  --ddd-palette-color-6: var(--ddd-theme-default-coalyGray);
+  --ddd-palette-color-7: var(--ddd-theme-default-keystoneYellow);
+
+  --ddd-palette-video-player-color: var(--ddd-theme-default-white);
+  --ddd-palette-video-player-caption-color: var(--ddd-theme-default-white);
+
+   /* text colors; to be used on top of corresponding palette-color */
+  --ddd-palette-text-color-1: var(--ddd-theme-default-white);
+  --ddd-palette-text-color-2: var(--ddd-theme-default-white);
+  --ddd-palette-text-color-3: var(--ddd-theme-default-white);
+  --ddd-palette-text-color-4: var(--ddd-theme-default-white);
+  --ddd-palette-text-color-5: var(--ddd-theme-default-nittanyNavy);
+  --ddd-palette-text-color-6: var(--ddd-theme-default-limestoneLight);
+  --ddd-palette-text-color-7: var(--ddd-theme-default-nittanyNavy);
+}
 `;
 
 // export that has all of them for easy stamping as a single sheet

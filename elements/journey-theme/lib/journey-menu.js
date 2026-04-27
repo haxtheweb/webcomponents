@@ -1,4 +1,4 @@
-import { LitElement, html, css, unsafeCSS } from "lit";
+import { LitElement, html, css } from "lit";
 export class JourneyMenu extends LitElement {
   static get tag() {
     return "journey-menu";
@@ -7,15 +7,25 @@ export class JourneyMenu extends LitElement {
   static get properties() {
     return {
       items: { type: Array },
-      activeID: { type: String },
+      activeId: { type: String },
     };
   }
   static get styles() {
     return css`
       :host {
-        --text-primary: var(--ddd-theme-default-nittanyNavy); /* Navigation text - dark in light mode */
-        --accent-color: light-dark(var(--ddd-theme-default-keystoneYellow), var(--ddd-theme-default-globalNeon));
-        --nav-bg: light-dark(var(--ddd-theme-default-gradient-footer), linear-gradient(var(--ddd-theme-default-potentialMidnight) 0%, var(--ddd-theme-default-coalyGray) 65%, var(--ddd-theme-default-coalyGray) 100%));
+        --text-primary: light-dark(
+          var(--ddd-palette-text-color-5, var(--ddd-theme-default-nittanyNavy)),
+          var(--ddd-palette-text-color-1, var(--ddd-theme-default-white))
+        );
+        --accent-color: var(--ddd-palette-color-7, var(--ddd-theme-default-keystoneYellow));
+        --nav-bg: light-dark(
+          var(--ddd-palette-color-2, var(--ddd-theme-default-gradient-footer)),
+          linear-gradient(
+            var(--ddd-palette-color-1, var(--ddd-theme-default-potentialMidnight)) 0%,
+            var(--ddd-palette-color-4, var(--ddd-theme-default-coalyGray)) 65%,
+            var(--ddd-palette-color-4, var(--ddd-theme-default-coalyGray)) 100%
+          )
+        );
       }
       
       nav {
@@ -31,7 +41,10 @@ export class JourneyMenu extends LitElement {
         background-size: cover;
         background-position: center;
         border-right: var(--ddd-border-sm);
-        border-right-color: light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-theme-default-potentialMidnight));
+        border-right-color: light-dark(
+          var(--ddd-palette-color-5, var(--ddd-theme-default-limestoneLight)),
+          var(--ddd-palette-color-6, var(--ddd-theme-default-potentialMidnight))
+        );
       }
 
       ul {
@@ -46,7 +59,7 @@ export class JourneyMenu extends LitElement {
       li a {
         display: block;
         text-decoration: none;
-        color: var(--ddd-theme-default-nittanyNavy); /* Black in light mode */
+        color: var(--text-primary);
         font-size: var(--ddd-font-size-s);
         font-family: var(--ddd-font-primary);
         font-weight: var(--ddd-font-weight-medium);
@@ -57,35 +70,25 @@ export class JourneyMenu extends LitElement {
         border-radius: var(--ddd-radius-xs);
         border: 2px solid transparent;
       }
-      
-      /* Dark mode - white text */
-      @media (prefers-color-scheme: dark) {
-        li a {
-          color: var(--ddd-theme-default-white);
-        }
-      }
-      
-      body.dark-mode li a {
-        color: var(--ddd-theme-default-white);
-      }
 
       li a:hover,
       li a:focus {
         color: var(--accent-color);
-        background-color: light-dark(rgba(255, 209, 0, 0.1), rgba(0, 169, 157, 0.15));
+        background-color: color-mix(in srgb, var(--accent-color) 16%, transparent);
         text-decoration: underline;
         outline: none;
       }
 
       li a:focus {
         border-color: var(--accent-color);
-        box-shadow: 0 0 0 2px light-dark(rgba(255, 209, 0, 0.3), rgba(0, 169, 157, 0.4));
+        box-shadow: 0 0 0 2px
+          color-mix(in srgb, var(--accent-color) 40%, transparent);
       }
 
       li a.active {
         font-weight: var(--ddd-font-weight-bold);
         color: var(--accent-color);
-        background-color: light-dark(rgba(255, 209, 0, 0.15), rgba(0, 169, 157, 0.2));
+        background-color: color-mix(in srgb, var(--accent-color) 22%, transparent);
         border-left: var(--ddd-spacing-1) solid var(--accent-color);
       }
       
@@ -140,7 +143,7 @@ export class JourneyMenu extends LitElement {
               <li>
                 <a
                   href="${item.slug}"
-                  class="${item.id === this.activeID ? "active" : ""}"
+                  class="${item.id === this.activeId ? "active" : ""}"
                 >
                   ${item.title}
                 </a>

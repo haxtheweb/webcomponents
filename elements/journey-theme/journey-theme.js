@@ -46,7 +46,8 @@ class JourneyTheme extends HAXCMSLitElementTheme {
   constructor() {
     super();
 
-    this.dataPalette = UserScaffoldInstance.readMemory("HAXCMSSitePalette") || "";
+    const storedPalette = UserScaffoldInstance.readMemory("HAXCMSSitePalette");
+    this.dataPalette = storedPalette === "" || storedPalette === null ? 11 : storedPalette;
     this._items = [];
     this.location = null;
     this.activeItem = {};
@@ -751,7 +752,7 @@ class JourneyTheme extends HAXCMSLitElementTheme {
 
   togglePalette(e) {
     this.dataPalette++;
-    if (this.dataPalette > 8) this.dataPalette = 0;
+    if (this.dataPalette > 11) this.dataPalette = 0;
   }
 
   render() {

@@ -245,8 +245,8 @@ class HaxTray extends I18NMixin(
         }
 
         .tray-detail-titlebar-icon {
-          --simple-icon-height: 36px;
-          --simple-icon-width: 36px;
+          --simple-icon-height: var(--ddd-icon-xs, 32px);
+          --simple-icon-width: var(--ddd-icon-xs, 32px);
         }
         .wrapper {
           position: fixed;
@@ -447,48 +447,91 @@ class HaxTray extends I18NMixin(
           display: inline-flex;
         }
         #settingsform {
-          margin: 0 -8px 0 -8px;
-          --a11y-collapse-padding-bottom: 100px;
-          --simple-fields-field-margin: 12px;
+          margin: 0;
+          padding: 0 var(--ddd-spacing-2) var(--ddd-spacing-4);
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+          box-sizing: border-box;
+          --simple-fields-margin: var(--ddd-spacing-2);
+          --simple-fields-margin-small: var(--ddd-spacing-2);
+          --simple-fields-field-margin: var(--ddd-spacing-3);
+          --simple-fields-detail-line-height: var(--ddd-lh-140, 140%);
+          --a11y-collapse-padding-top: var(--ddd-spacing-3);
+          --a11y-collapse-padding-bottom: var(--ddd-spacing-5);
+          --a11y-collapse-vertical-padding: var(--ddd-spacing-3);
+          --a11y-collapse-horizontal-padding: var(--ddd-spacing-3);
+          --a11y-collapse-heading-font-weight: var(--ddd-font-weight-medium);
           --a11y-collapse-heading-color: var(
             --simple-colors-default-theme-accent-12
           );
           overflow-y: auto;
+          overflow-x: hidden;
         }
         .block-add-wrapper {
           overflow-y: auto;
+          overflow-x: hidden;
+          padding: 0 var(--ddd-spacing-2) var(--ddd-spacing-4);
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+          box-sizing: border-box;
         }
-        a11y-collapse {
+        .block-add-wrapper > * {
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+          box-sizing: border-box;
+        }
+        #settingsform * {
+          box-sizing: border-box;
+        }
+        #settingsform simple-fields-tab,
+        #settingsform simple-fields-field,
+        #settingsform a11y-collapse,
+        #settingsform a11y-collapse-group {
+          width: 100%;
+          max-width: 100%;
+          min-width: 0;
+          box-sizing: border-box;
+        }
+        #settingsform a11y-collapse {
           margin: 0px;
           --a11y-collapse-margin: 0;
-          --a11y-collapse-vertical-padding: 12px;
-          --a11y-collapse-horizontal-padding: 12px;
+          --a11y-collapse-vertical-padding: var(--ddd-spacing-3);
+          --a11y-collapse-horizontal-padding: var(--ddd-spacing-3);
         }
-        a11y-collapse span[slot="heading"] {
+        #settingsform a11y-collapse span[slot="heading"] {
           --a11y-collapse-heading-color: var(
             --simple-colors-default-theme-accent-12
           ) !important;
         }
-        simple-fields-field::part(label) {
-          font-size: var(--hax-ui-font-size-sm);
+        #settingsform simple-fields-field::part(label) {
+          font-size: var(--ddd-font-size-6xs, var(--hax-ui-font-size-sm));
+          line-height: var(--ddd-lh-140, 140%);
           font-weight: var(--ddd-font-weight-medium);
         }
-        simple-fields-field:hover::part(label) {
+        #settingsform simple-fields-field:hover::part(label) {
           font-weight: var(--ddd-font-weight-bold);
         }
-        a11y-collapse span[slot="heading"] {
-          line-height: 24px;
-          height: 24px;
+        #settingsform a11y-collapse span[slot="heading"] {
+          line-height: var(--ddd-spacing-7);
+          min-height: var(--ddd-spacing-7);
           display: block;
-          margin: 8px 0;
+          margin: var(--ddd-spacing-2) 0;
         }
-        a11y-collapse-group {
+        #settingsform a11y-collapse-group {
           margin: 0;
           padding: 0;
+          --a11y-collapse-group-margin: 0;
+          --a11y-collapse-margin: 0;
         }
         /* If hax-tray hides several unused a11y-collapse tags, this corrects the 
         border color for the first VISIBLE a11y-collapse */
-        a11y-collapse:not([hidden]):nth-child(1 of a11y-collapse:not([hidden])) {
+        #settingsform
+          a11y-collapse:not([hidden]):nth-child(
+            1 of a11y-collapse:not([hidden])
+          ) {
           border-top: var(--ddd-border-sm);
           border-top-color: var(--ddd-theme-default-coalyGray);
         }

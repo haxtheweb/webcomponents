@@ -528,7 +528,7 @@ class SimpleModal extends LitElement {
         this.shadowRoot
           .querySelector("web-dialog")
           .shadowRoot.querySelector("#backdrop").style.backgroundColor =
-          "var(--ddd-theme-default-potential70)";
+          "var(--simple-modal-backdrop-background, var(--ddd-theme-default-potential70))";
       }, 0);
     });
   }

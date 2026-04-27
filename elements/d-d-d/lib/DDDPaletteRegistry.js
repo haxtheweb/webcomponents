@@ -61,6 +61,18 @@ export const DDDPaletteRegistry = Object.freeze([
     dataPalette: "9",
     aliases: Object.freeze(["positively-purple", "9"]),
   },
+  {
+    key: "honey-bear",
+    label: "Honey Bear",
+    dataPalette: "10",
+    aliases: Object.freeze(["honey-bear", "10"]),
+  },
+  {
+    key: "boldly-lion",
+    label: "Boldly Lion",
+    dataPalette: "11",
+    aliases: Object.freeze(["boldly-lion", "11"]),
+  },
 ]);
 
 function _normalizePaletteInput(value) {

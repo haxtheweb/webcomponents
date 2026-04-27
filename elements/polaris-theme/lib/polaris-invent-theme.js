@@ -40,6 +40,7 @@ import { LTIResizingMixin } from "@haxtheweb/haxcms-elements/lib/core/utils/LTIR
  * - 5 (Monotone)
  * - 7 (Tweedle Dee)
  * - 8 (Polaris)
+ * - 11 (Boldly Lion)
  *
  * @haxcms-theme-category Website
  * @haxcms-theme-internal false
@@ -110,7 +111,9 @@ class PolarisInventTheme extends LTIResizingMixin(
           --polaris-nav-bg-color: var(--ddd-theme-default-skyBlue);
         }
 
-        :host([data-palette="8"]) site-menu {
+        :host([data-palette="8"]) site-menu,
+        :host([data-palette="11"]) site-menu,
+        :host([data-palette="boldly-lion"]) site-menu {
           --site-menu-container-background-color: var(--ddd-palette-color-7);
         }
 
