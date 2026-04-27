@@ -123,6 +123,12 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         #cancelbutton::part(button):focus {
           border-color: var(--ddd-theme-default-discoveryCoral);
         }
+
+        :host([dark-mode]) #cancelbutton::part(button):hover,
+        :host([dark-mode]) #cancelbutton::part(button):focus {
+            --simple-toolbar-button-hover-bg: 
+            var(--simple-colors-default-theme-grey-3);
+        }
         
         simple-toolbar-menu-item a {
           color: var(--simple-colors-default-theme-grey-12);
@@ -148,9 +154,23 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           color: var(--hax-ui-color);
           --simple-toolbar-button-hover-bg: light-dark(
             var(--simple-colors-default-theme-grey-3),
-            var(--simple-colors-default-theme-grey-9)
+            rgb(125, 125, 125, 0.2)
           );
           --simple-toolbar-button-hover-border-color: var(--ddd-theme-default-skyBlue);
+        }
+
+        /* Light gray hover border for Edit Page + Add Page buttons */
+        #editbutton:hover,
+        #editbutton:focus,
+        #editbutton:active,
+        #editbutton:focus-visible,
+        haxcms-button-add:hover,
+        haxcms-button-add:focus,
+        haxcms-button-add:active,
+        haxcms-button-add:focus-visible {
+           --simple-toolbar-button-hover-border-color: var(--ddd-theme-default-skyBlue);
+           --simple-toolbar-button-hover-bg: 
+            var(--simple-colors-default-theme-grey-3);
         }
       
         simple-toolbar-button.top-bar-button::part(button):focus-visible,
@@ -162,7 +182,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           outline: var(--ddd-border-sm, 2px solid)
             var(--ddd-theme-default-skyBlue);
           outline-offset: 2px;
-          --simple-toolbar-border-color: black;
+          
         }
         :host(:hover),
         :host(:active),
@@ -293,8 +313,24 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         /* Visually indicate which HAX content tab is active (config / blocks / map / source) */
         .toolbar-buttons simple-toolbar-button[active] {
           --simple-icon-color: var(--ddd-theme-default-skyBlue);
-          --simple-toolbar-button-toggled-border-color: var(--ddd-theme-default-skyBlue);
           --simple-toolbar-button-toggled-color: var(--ddd-theme-default-skyBlue);
+          --simple-toolbar-button-toggled-border-color: var(--ddd-theme-default-skyBlue);
+
+          --simple-toolbar-border-color: var(--ddd-theme-default-skyBlue);
+          border-color: var(--ddd-theme-default-skyBlue) !important;
+        }
+        .toolbar-buttons simple-toolbar-button[active]::part(button),
+        .toolbar-buttons simple-toolbar-button[active]:hover::part(button),
+        .toolbar-buttons simple-toolbar-button[active]:focus::part(button),
+        .toolbar-buttons simple-toolbar-button[active]:focus-visible::part(button),
+        .toolbar-buttons simple-toolbar-button[active]:active::part(button) {
+          background: transparent !important;
+          border-color: var(--ddd-theme-default-skyBlue) !important;
+        }
+        .toolbar-buttons simple-toolbar-button[active] {
+          --simple-icon-color: var(--ddd-theme-default-skyBlue);
+          --simple-toolbar-button-toggled-color: var(--ddd-theme-default-skyBlue);
+          --simple-toolbar-border-color: var(--ddd-theme-default-skyBlue);
         }
         .toolbar-buttons haxcms-button-add {
           background-color: var(--ddd-theme-default-skyBlue);
@@ -327,12 +363,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           --simple-toolbar-button-disabled-opacity: 0.3;
           --simple-toolbar-button-padding: 3px 6px;
         }
-        simple-toolbar[dark-mode] {
-          --simple-toolbar-button-color: #e0e0e0;
-          --simple-toolbar-button-hover-color: #fff;
-          --simple-toolbar-button-bg: #222;
-          --simple-toolbar-button-hover-bg: #000;
-        }
+    
         simple-toolbar::part(buttons) {
           flex: 0 1 auto;
         }
@@ -394,7 +425,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         .topbar-character:focus rpg-character,
         .topbar-character:focus-visible rpg-character {
           border-color: var(--ddd-theme-default-skyBlue);
-          background-color: var(--simple-colors-default-theme-grey-2);
+          background-color: var(--simple-colors-default-theme-grey-3);
         }
 
         .mysiteslink {
