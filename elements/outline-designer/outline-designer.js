@@ -2862,6 +2862,21 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
         switch (action) {
           // @note this will force reload which is not ideal but not that big a deal
           case "goto":
+            let href = this.items[index].slug || this.items[index].location;
+            const navigationRequested = this.dispatchEvent(
+              new CustomEvent("outline-designer-request-navigate", {
+                bubbles: true,
+                composed: true,
+                cancelable: true,
+                detail: {
+                  href: href,
+                  item: this.items[index],
+                },
+              }),
+            );
+            if (!navigationRequested) {
+              break;
+            }
             this.dispatchEvent(
               new CustomEvent("simple-modal-hide", {
                 bubbles: true,
@@ -2869,8 +2884,8 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
                 detail: {},
               }),
             );
-            let href = this.items[index].slug || this.items[index].location;
             globalThis.location.href = href;
+            break;
           case "lock":
             this.items[index].metadata.locked = true;
             if (this.hasChildren(this.items[index].id)) {

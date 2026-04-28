@@ -693,7 +693,23 @@ class SimpleModal extends LitElement {
   /**
    * Close the modal and do some clean up
    */
-  close() {
+  close(e) {
+    if (!this.opened) {
+      return;
+    }
+    const closeRequest = new CustomEvent("simple-modal-will-close", {
+      bubbles: true,
+      composed: true,
+      cancelable: true,
+      detail: {
+        opened: this.opened,
+        invokedBy: this.invokedBy,
+        trigger: e && e.type ? e.type : "programmatic",
+      },
+    });
+    if (!this.dispatchEvent(closeRequest)) {
+      return;
+    }
     // Restore body scrolling
     document.body.style.overflow = "";
     document.documentElement.style.overflow = "";

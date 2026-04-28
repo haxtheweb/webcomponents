@@ -3755,10 +3755,40 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
 
     for (let tag in this.__primsBuilder) {
       let primContentDemo = "";
+      let configure = [];
       if (["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)) {
         primContentDemo = "Heading";
       } else if (tag == "ul" || tag == "ol") {
         primContentDemo = "<li>Item</li><li>Item</li>";
+      }
+      if (tag === "ul") {
+        configure.push({
+          attribute: "data-design-treatment",
+          title: "Bullet style",
+          description: "Style used for unordered list bullets.",
+          inputMethod: "select",
+          options: {
+            "": "Default (square)",
+            "list-disc": "Disc",
+            "list-circle": "Circle",
+            "list-square": "Square",
+          },
+        });
+      } else if (tag === "ol") {
+        configure.push({
+          attribute: "data-design-treatment",
+          title: "Number style",
+          description: "Style used for ordered list numbering.",
+          inputMethod: "select",
+          options: {
+            "": "Default (decimal)",
+            "list-decimal-leading-zero": "Decimal with leading zero (01, 02, 03)",
+            "list-lower-alpha": "Lower alpha (a, b, c)",
+            "list-upper-alpha": "Upper alpha (A, B, C)",
+            "list-lower-roman": "Lower roman (i, ii, iii)",
+            "list-upper-roman": "Upper roman (I, II, III)",
+          },
+        });
       }
       this.setHaxProperties(
         {
@@ -3818,7 +3848,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             },
           },
           settings: {
-            configure: [],
+            configure: configure,
             advanced: [],
           },
           saveOptions: ["h1", "h2", "h3", "h4", "h5", "h6"].includes(tag)

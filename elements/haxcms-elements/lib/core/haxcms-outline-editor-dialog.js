@@ -83,6 +83,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
       <outline-designer
         id="outline"
         edit-mode
+        @outline-designer-request-navigate="${this._outlineNavigateRequested}"
         .hidden="${this.viewMode}"
         .items="${this.manifestItems}"
       ></outline-designer>
@@ -96,8 +97,14 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
   constructor() {
     super();
     this.__disposer = [];
+    this.__windowAbortController = null;
+    this.__allowNextModalClose = false;
     this.manifestItems = [];
     this.viewMode = false;
+    this._handleSimpleModalWillClose = this._handleSimpleModalWillClose.bind(this);
+    this._handleSimpleModalBreadcrumbClick =
+      this._handleSimpleModalBreadcrumbClick.bind(this);
+    this._outlineNavigateRequested = this._outlineNavigateRequested.bind(this);
     this.t = this.t || {};
     this.t = {
       ...this.t,
@@ -178,6 +185,20 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
 
   connectedCallback() {
     super.connectedCallback();
+    if (this.__windowAbortController) {
+      this.__windowAbortController.abort();
+    }
+    this.__windowAbortController = new AbortController();
+    globalThis.addEventListener(
+      "simple-modal-will-close",
+      this._handleSimpleModalWillClose,
+      { signal: this.__windowAbortController.signal },
+    );
+    globalThis.addEventListener(
+      "simple-modal-breadcrumb-click",
+      this._handleSimpleModalBreadcrumbClick,
+      { capture: true, signal: this.__windowAbortController.signal },
+    );
     const reaction = autorun(() => {
       this.manifestItems = [...toJS(store.manifest.items)];
       this.updateComplete.then(() => {
@@ -196,6 +217,10 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
    * detached life cycle
    */
   disconnectedCallback() {
+    if (this.__windowAbortController) {
+      this.__windowAbortController.abort();
+      this.__windowAbortController = null;
+    }
     for (var i in this.__disposer) {
       if (typeof this.__disposer[i] === "function") {
         this.__disposer[i]();
@@ -209,30 +234,159 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
     this.__disposer = [];
     super.disconnectedCallback();
   }
+  _getOutline() {
+    if (this.shadowRoot) {
+      return this.shadowRoot.querySelector("#outline");
+    }
+    return null;
+  }
+  _getItemChangeSummary(items = []) {
+    let deleted = 0;
+    let modified = 0;
+    let added = 0;
+    if (Array.isArray(items)) {
+      items.forEach((item) => {
+        if (!item) {
+          return;
+        }
+        if (item.delete) {
+          deleted++;
+        } else if (item.new) {
+          added++;
+        } else if (item.modified) {
+          modified++;
+        }
+      });
+    }
+    return {
+      added: added,
+      modified: modified,
+      deleted: deleted,
+    };
+  }
+  _formatItemChangeSummary(summary) {
+    if (!summary) {
+      return "";
+    }
+    const addedText =
+      summary.added > 0
+        ? `‣ ${summary.added} new page${summary.added === 1 ? "" : "s"} will be created\n`
+        : "";
+    const modifiedText =
+      summary.modified > 0
+        ? `‣ ${summary.modified} page${summary.modified === 1 ? "" : "s"} will be updated\n`
+        : "";
+    const deletedText =
+      summary.deleted > 0
+        ? `‣ ${summary.deleted} page${summary.deleted === 1 ? "" : "s"} will be deleted\n`
+        : "";
+    return `${addedText}${modifiedText}${deletedText}`;
+  }
+  _hasUnsavedOutlineChanges() {
+    const outline = this._getOutline();
+    if (!outline || !Array.isArray(outline.items)) {
+      return false;
+    }
+    const summary = this._getItemChangeSummary(outline.items);
+    return summary.added > 0 || summary.modified > 0 || summary.deleted > 0;
+  }
+  _confirmDiscardUnsavedOutlineChanges() {
+    const outline = this._getOutline();
+    if (!outline || !Array.isArray(outline.items)) {
+      return true;
+    }
+    const summary = this._getItemChangeSummary(outline.items);
+    const sumChanges = this._formatItemChangeSummary(summary);
+    if (sumChanges == "") {
+      return true;
+    }
+    return globalThis.confirm(
+      `You have unsaved outline changes:\n${sumChanges}\nIf you continue, these changes will be lost. Continue?`,
+    );
+  }
+  _ownsSimpleModalEvent(e) {
+    if (!e || !e.target || !this.isConnected) {
+      return false;
+    }
+    const modal = e.target;
+    if (!modal.tagName || modal.tagName.toLowerCase() !== "simple-modal") {
+      return false;
+    }
+    return this.parentNode === modal;
+  }
+  _consumeAllowNextModalClose() {
+    if (this.__allowNextModalClose) {
+      this.__allowNextModalClose = false;
+      return true;
+    }
+    return false;
+  }
+  _handleSimpleModalWillClose(e) {
+    if (!this._ownsSimpleModalEvent(e)) {
+      return;
+    }
+    if (this._consumeAllowNextModalClose()) {
+      return;
+    }
+    if (!this._confirmDiscardUnsavedOutlineChanges()) {
+      e.preventDefault();
+      if (e.stopImmediatePropagation) {
+        e.stopImmediatePropagation();
+      }
+      store.playSound("error");
+    }
+  }
+  _handleSimpleModalBreadcrumbClick(e) {
+    if (!this._ownsSimpleModalEvent(e)) {
+      return;
+    }
+    if (!e.detail || !e.detail.breadcrumb) {
+      return;
+    }
+    if (e.detail.breadcrumb.action !== "site-settings-dashboard") {
+      return;
+    }
+    if (!this._confirmDiscardUnsavedOutlineChanges()) {
+      e.preventDefault();
+      if (e.stopImmediatePropagation) {
+        e.stopImmediatePropagation();
+      }
+      if (e.stopPropagation) {
+        e.stopPropagation();
+      }
+      store.playSound("error");
+    }
+  }
+  _outlineNavigateRequested(e) {
+    if (!e || !e.detail || !e.detail.href) {
+      return;
+    }
+    const hasUnsavedChanges = this._hasUnsavedOutlineChanges();
+    if (hasUnsavedChanges && !this._confirmDiscardUnsavedOutlineChanges()) {
+      e.preventDefault();
+      if (e.stopImmediatePropagation) {
+        e.stopImmediatePropagation();
+      }
+      store.playSound("error");
+      return;
+    }
+    if (hasUnsavedChanges) {
+      this.__allowNextModalClose = true;
+    }
+  }
 
   /**
    * Save hit, send the message to push up the outline changes.
    */
   async _saveTap(e) {
     store.playSound("click");
-    const data = await this.shadowRoot.querySelector("#outline").getData();
-    let deleted = 0;
-    let modified = 0;
-    let added = 0;
-    data.items.map((item) => {
-      if (item.delete) {
-        deleted++;
-      } else if (item.new) {
-        added++;
-      } else if (item.modified) {
-        modified++;
-      }
-    });
-    let sumChanges = `${
-      added > 0 ? `‣ ${added} new pages will be created\n` : ""
-    }${modified > 0 ? `‣ ${modified} pages will be updated\n` : ""}${
-      deleted > 0 ? `‣ ${deleted} pages will be deleted\n` : ""
-    }`;
+    const outline = this._getOutline();
+    if (!outline) {
+      return;
+    }
+    const data = await outline.getData();
+    const summary = this._getItemChangeSummary(data.items);
+    let sumChanges = this._formatItemChangeSummary(summary);
     let confirmation = false;
     // no confirmation required if there are no tracked changes
     if (sumChanges == "") {
@@ -250,6 +404,7 @@ class HAXCMSOutlineEditorDialog extends HAXCMSI18NMixin(LitElement) {
           detail: data.items,
         }),
       );
+      this.__allowNextModalClose = true;
       setTimeout(() => {
         // ensure things don't conflict w/ the modal if its around
         this.dispatchEvent(

@@ -31,6 +31,7 @@ class HAXCMSKeyboardShortcuts {
    * @param {Function} options.condition - Optional function that returns true if shortcut should be active
    * @param {String} options.description - Human-readable description
    * @param {String} options.context - Context where shortcut is active (e.g., 'edit', 'view', 'global')
+   * @param {Boolean} options.allowInInput - Allow shortcut while focused in non-editor input fields
    */
   register(options) {
     const {
@@ -43,6 +44,7 @@ class HAXCMSKeyboardShortcuts {
       condition = () => true,
       description = "",
       context = "global",
+      allowInInput = false,
     } = options;
 
     const shortcutKey = this._generateKey(key, ctrl, shift, alt, meta);
@@ -57,6 +59,7 @@ class HAXCMSKeyboardShortcuts {
       condition,
       description,
       context,
+      allowInInput,
     });
   }
 
@@ -125,18 +128,6 @@ class HAXCMSKeyboardShortcuts {
     if (!this.enabled) return;
     if (store.adminMode) return;
 
-    // Don't intercept if user is typing in an input field (unless in HAX edit mode)
-    const activeElement = globalThis.document.activeElement;
-    const isInput =
-      activeElement &&
-      (activeElement.tagName === "INPUT" ||
-        activeElement.tagName === "TEXTAREA" ||
-        activeElement.isContentEditable);
-
-    // Allow shortcuts in HAX editor even when in content editable areas
-    const inHaxEditor = activeElement && activeElement.closest("hax-body");
-
-    if (isInput && !inHaxEditor) return;
 
     // Normalize the key (handles Shift+number keys)
     const normalizedKey = this._normalizeKey(e);
@@ -151,8 +142,23 @@ class HAXCMSKeyboardShortcuts {
     );
 
     const shortcut = this.shortcuts.get(shortcutKey);
+    if (!shortcut) return;
 
-    if (shortcut && shortcut.condition()) {
+    // Don't intercept if user is typing in an input field (unless in HAX editor
+    // or this shortcut explicitly allows usage from inputs)
+    const activeElement = globalThis.document.activeElement;
+    const isInput =
+      activeElement &&
+      (activeElement.tagName === "INPUT" ||
+        activeElement.tagName === "TEXTAREA" ||
+        activeElement.isContentEditable);
+
+    // Allow shortcuts in HAX editor even when in content editable areas
+    const inHaxEditor = activeElement && activeElement.closest("hax-body");
+
+    if (isInput && !inHaxEditor && !shortcut.allowInInput) return;
+
+    if (shortcut.condition()) {
       e.preventDefault();
       shortcut.callback(e);
     }

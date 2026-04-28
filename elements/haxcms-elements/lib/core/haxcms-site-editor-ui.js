@@ -1362,35 +1362,36 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
   // this will be under the active node
   insertElementsFromContentBlob(content) {
     let addToEnd = false;
+    let slot = false;
     // insert HTML needs to be editing the active page if its not in edit mode
     if (store.editMode === false) {
       store.editMode = true;
       addToEnd = true;
-    } else if (this.activeNode.hasAttribute("slot")) {
+    } else if (this.activeNode && this.activeNode.hasAttribute("slot")) {
       // test for slot on insert attempt
       slot = this.activeNode.getAttribute("slot");
     }
     const div = globalThis.document.createElement("div");
     div.innerHTML = content;
     removeBadJSEventAttributes(div);
+    const importedChildren = Array.from(div.children);
 
-    let slot = false;
     // ensure we have a parent or we won't be able to insert beyond active and should just append to the bottom
     if (!addToEnd && this.activeNode && this.activeNode.parentNode) {
-      for (var i = div.children.length - 1; i > 0; i--) {
+      for (let i = importedChildren.length - 1; i >= 0; i--) {
         if (slot) {
-          div.children[i].setAttribute("slot", slot);
+          importedChildren[i].setAttribute("slot", slot);
         }
         this.activeNode.parentNode.insertBefore(
-          div.children[i],
+          importedChildren[i],
           this.activeNode.nextSibling,
         );
       }
     } else {
       // give initial setup time to process since we forced it into edit mode to be here
       setTimeout(() => {
-        for (var i = div.children.length - 1; i > 0; i--) {
-          HAXStore.activeHaxBody.appendChild(div.children[i]);
+        for (let i = 0; i < importedChildren.length; i++) {
+          HAXStore.activeHaxBody.appendChild(importedChildren[i]);
         }
         setTimeout(() => {
           HAXStore.activeHaxBody.scrollHere(this.activeNode);
@@ -4981,6 +4982,135 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
     return this._openShortcutMenu(button, menu);
   }
 
+  _getDeepActiveElement(root = globalThis.document) {
+    if (!root || !root.activeElement) {
+      return null;
+    }
+    let activeElement = root.activeElement;
+    while (
+      activeElement &&
+      activeElement.shadowRoot &&
+      activeElement.shadowRoot.activeElement
+    ) {
+      activeElement = activeElement.shadowRoot.activeElement;
+    }
+    return activeElement;
+  }
+
+  _isElementInsideTag(element, tagName) {
+    if (!element || !tagName) {
+      return false;
+    }
+    const normalizedTag = tagName.toUpperCase();
+    let current = element;
+    while (current) {
+      if (current.tagName === normalizedTag) {
+        return true;
+      }
+      const root = current.getRootNode ? current.getRootNode() : null;
+      if (root && root.host) {
+        current = root.host;
+      } else {
+        current = current.parentNode;
+      }
+    }
+    return false;
+  }
+
+  _focusFirstFocusableElement(root) {
+    if (!root || !root.querySelectorAll) {
+      return null;
+    }
+    const selector =
+      'input:not([type="hidden"]):not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [contenteditable="true"], [tabindex]:not([tabindex="-1"])';
+    const candidates = root.querySelectorAll(selector);
+    for (const candidate of candidates) {
+      if (
+        candidate &&
+        !candidate.hidden &&
+        candidate.getAttribute("aria-hidden") !== "true" &&
+        typeof candidate.focus === "function"
+      ) {
+        const style = globalThis.getComputedStyle(candidate);
+        if (style.display !== "none" && style.visibility !== "hidden") {
+          return candidate;
+        }
+      }
+    }
+    const descendants = root.querySelectorAll("*");
+    for (const node of descendants) {
+      if (node.shadowRoot) {
+        const nestedTarget = this._focusFirstFocusableElement(node.shadowRoot);
+        if (nestedTarget) {
+          return nestedTarget;
+        }
+      }
+    }
+    return null;
+  }
+
+  _focusTrayForActiveNodeOptions() {
+    if (!HAXStore.haxTray || !HAXStore.haxTray.shadowRoot) {
+      return false;
+    }
+    HAXStore.haxTray.collapsed = false;
+    HAXStore.haxTray.trayDetail = "content-edit";
+    const tryFocusTray = () => {
+      let target = this._focusFirstFocusableElement(
+        HAXStore.haxTray.shadowRoot.querySelector("#settingsform"),
+      );
+      if (!target) {
+        target = HAXStore.haxTray.shadowRoot.querySelector("#tray-detail");
+      }
+      if (target && typeof target.focus === "function") {
+        target.focus();
+        return true;
+      }
+      return false;
+    };
+    if (!tryFocusTray()) {
+      setTimeout(() => {
+        tryFocusTray();
+      }, 50);
+    }
+    return true;
+  }
+
+  _focusCurrentActiveNode() {
+    if (!HAXStore.activeNode || typeof HAXStore.activeNode.focus !== "function") {
+      return false;
+    }
+    HAXStore.activeNode.focus();
+    if (
+      HAXStore.isTextElement(HAXStore.activeNode) &&
+      typeof HAXStore._positionCursorInNode === "function"
+    ) {
+      try {
+        const range = globalThis.document.createRange();
+        const selection = HAXStore.getSelection();
+        range.selectNodeContents(HAXStore.activeNode);
+        range.collapse(false);
+        selection.removeAllRanges();
+        selection.addRange(range);
+      } catch (e) {
+        HAXStore._positionCursorInNode(HAXStore.activeNode, 0);
+      }
+    }
+    return true;
+  }
+
+  _triggerEditorTrayFocusShortcut() {
+    if (!this.editMode || !HAXStore.haxTray) {
+      return false;
+    }
+    const activeElement = this._getDeepActiveElement();
+    const focusedInTray = this._isElementInsideTag(activeElement, "hax-tray");
+    if (focusedInTray) {
+      return this._focusCurrentActiveNode();
+    }
+    return this._focusTrayForActiveNodeOptions();
+  }
+
   /**
    * Register all keyboard shortcuts for HAXcms
    */
@@ -5183,6 +5313,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       condition: () => store.isLoggedIn && !this.editMode,
       description: "Open user menu",
       context: "view",
+    });
+
+    // Ctrl+Shift+' - Jump between text editing and tray options
+    HAXCMSKeyboardShortcutsInstance.register({
+      key: "'",
+      ctrl: true,
+      shift: true,
+      callback: () => {
+        this._triggerEditorTrayFocusShortcut();
+      },
+      condition: () => store.isLoggedIn && this.editMode,
+      description: "Jump between text editing and tray options",
+      context: "edit",
+      allowInInput: true,
     });
   }
 
