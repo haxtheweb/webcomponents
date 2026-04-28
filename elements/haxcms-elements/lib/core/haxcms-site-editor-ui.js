@@ -1164,7 +1164,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     outline.storeTools = true;
 
                     const b1 = globalThis.document.createElement("button");
-                    b1.innerText = "Confirm";
+                    b1.innerText = this.t.save || "Save";
                     b1.classList.add("hax-modal-btn");
                     b1.addEventListener("click", async (e) => {
                       const data = await outline.getData();
@@ -1225,7 +1225,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                       }
                     });
                     const b2 = globalThis.document.createElement("button");
-                    b2.innerText = "Cancel";
+                    b2.innerText = this.t.cancel || "Cancel";
                     b2.classList.add("hax-modal-btn");
                     b2.classList.add("cancel");
                     b2.addEventListener("click", (e) => {
@@ -1239,8 +1239,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     });
                     // button container
                     const div = globalThis.document.createElement("div");
-                    div.appendChild(b1);
+                    div.classList.add("hax-modal-actions");
                     div.appendChild(b2);
+                    div.appendChild(b1);
 
                     this.dispatchEvent(
                       new CustomEvent("simple-modal-show", {
@@ -1249,18 +1250,28 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                         composed: true,
                         detail: {
                           title: "Confirm structure",
+                          titleIcon: "hax:site-map",
                           elements: { content: outline, buttons: div },
                           modal: true,
                           showClose: true,
                           styles: {
-                            "--simple-modal-titlebar-background": "transparent",
-                            "--simple-modal-titlebar-color": "light-dark(black, white)",
-                            "--simple-modal-width": "90vw",
+                            "--simple-modal-titlebar-background": "black",
+                            "--simple-modal-titlebar-color":
+                              "var(--ddd-theme-default-white)",
+                            "--simple-modal-content-container-background":
+                              "light-dark(var(--ddd-theme-default-white), var(--ddd-theme-default-coalyGray))",
+                            "--simple-modal-width": "85vw",
+                            "--simple-modal-max-width": "85vw",
                             "--simple-modal-min-width": "300px",
                             "--simple-modal-z-index": "100000000",
-                            "--simple-modal-height": "90vh",
+                            "--simple-modal-height": "85vh",
+                            "--simple-modal-max-height": "85vh",
                             "--simple-modal-min-height": "400px",
                             "--simple-modal-titlebar-height": "80px",
+                            "--simple-modal-content-padding":
+                              "var(--ddd-spacing-4)",
+                            "--simple-modal-buttons-padding":
+                              "0 var(--ddd-spacing-4) var(--ddd-spacing-4)",
                             "--simple-modal-border-radius": "var(--ddd-radius-md)",
                           },
                         },

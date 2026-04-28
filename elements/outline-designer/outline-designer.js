@@ -87,6 +87,75 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             var(--ddd-primary-5)
           );
         }
+        .controls.store-tools {
+          gap: var(--ddd-spacing-2);
+          align-items: flex-end;
+        }
+        .import-controls {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: flex-end;
+          gap: var(--ddd-spacing-3);
+          margin-right: var(--ddd-spacing-1);
+          padding: var(--ddd-spacing-2);
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-accent-5)
+          );
+          border-radius: var(--ddd-radius-sm);
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneMaxLight),
+            var(--ddd-primary-5)
+          );
+        }
+        .import-field {
+          display: flex;
+          flex-direction: column;
+          gap: var(--ddd-spacing-1);
+          min-width: 220px;
+        }
+        .import-field label {
+          font-family: var(--ddd-font-navigation);
+          font-size: var(--ddd-font-size-4xs);
+          font-weight: var(--ddd-font-weight-bold);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+        }
+        .import-field simple-fields-field {
+          min-height: 42px;
+          box-sizing: border-box;
+          border: var(--ddd-border-xs);
+          border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-accent-5)
+          );
+          border-radius: var(--ddd-radius-sm);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
+          --simple-fields-font-size: var(--ddd-font-size-4xs);
+          --simple-fields-line-height: var(--ddd-lh-120, 1.2);
+          --simple-fields-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          --simple-fields-background-color: light-dark(
+            var(--ddd-theme-default-white),
+            rgba(0, 0, 0, 0.2)
+          );
+          --simple-fields-border-color: light-dark(
+            var(--ddd-theme-default-limestoneGray),
+            var(--ddd-accent-5)
+          );
+          --simple-fields-border-bottom-size: 0;
+          --simple-fields-accent-color: var(--ddd-theme-default-skyBlue);
+        }
+        .import-field simple-fields-field:focus-within {
+          outline: var(--ddd-border-xs) solid
+            var(--ddd-theme-default-keystoneYellow);
+          outline-offset: 2px;
+        }
         .controls simple-toolbar-button.control {
           margin: 0;
           --simple-toolbar-button-height: var(--ddd-icon-md);
@@ -117,6 +186,20 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
             var(--ddd-primary-1),
             var(--ddd-accent-5)
           );
+        }
+        @media screen and (max-width: 900px) {
+          .controls.store-tools {
+            align-items: stretch;
+          }
+          .import-controls {
+            width: 100%;
+            margin-right: 0;
+            gap: var(--ddd-spacing-2);
+          }
+          .import-field {
+            min-width: 0;
+            flex: 1 1 180px;
+          }
         }
         simple-popover {
           --simple-popover-max-height: 300px;
@@ -910,39 +993,44 @@ export class OutlineDesigner extends I18NMixin(LitElement) {
   }
   // render function
   render() {
-    return html` <div class="controls">
+    return html` <div class="controls ${this.storeTools ? "store-tools" : ""}">
         ${this.storeTools
           ? html`
-              <label for="targetselector">${this.t.importThisContent}</label>
-              <simple-fields-field
-                id="targetselector"
-                type="select"
-                value="children"
-                .itemsList="${[
-                  {
-                    text: "as children of",
-                    value: "children",
-                  },
-                  {
-                    text: "Above",
-                    value: "above",
-                  },
-                  {
-                    text: "Below",
-                    value: "below",
-                  },
-                ]}"
-              ></simple-fields-field>
-              ${this.t.thisPage}:
-              <simple-fields-field
-                id="itemselector"
-                type="select"
-                value="${this.activeId}"
-                .itemsList="${this.getSiteItems()}"
-              ></simple-fields-field>
-              <label for="itemselector"
-                >${this.t.importContentUnderThisPage}</label
-              >
+              <div class="import-controls">
+                <div class="import-field">
+                  <label for="targetselector">${this.t.importThisContent}</label>
+                  <simple-fields-field
+                    id="targetselector"
+                    type="select"
+                    value="children"
+                    .itemsList="${[
+                      {
+                        text: "as children of",
+                        value: "children",
+                      },
+                      {
+                        text: "Above",
+                        value: "above",
+                      },
+                      {
+                        text: "Below",
+                        value: "below",
+                      },
+                    ]}"
+                  ></simple-fields-field>
+                </div>
+                <div class="import-field">
+                  <label for="itemselector"
+                    >${this.t.importContentUnderThisPage}</label
+                  >
+                  <simple-fields-field
+                    id="itemselector"
+                    type="select"
+                    value="${this.activeId}"
+                    .itemsList="${this.getSiteItems()}"
+                  ></simple-fields-field>
+                </div>
+              </div>
             `
           : ``}
         <simple-toolbar-button
