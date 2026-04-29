@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit";
 import "./lib/a11y-menu-button-item.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
-import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 
 const A11yMenuButtonBehaviors = function (SuperClass) {
   return class extends SuperClass {

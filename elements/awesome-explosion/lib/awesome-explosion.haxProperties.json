@@ -10,7 +10,7 @@
     "description": "An interactive explosion animation with optional sound effects",
     "icon": "av:fiber-manual-record",
     "color": "orange",
-    "tags": ["Silly", "Animation", "Interactive", "Sound", "Effect"],
+    "tags": ["Other", "Animation", "Interactive", "Sound", "Effect"],
     "handles": [],
     "meta": {
       "author": "HAX The Web",

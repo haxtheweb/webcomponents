@@ -9,7 +9,7 @@ import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { IntersectionObserverMixin } from "@haxtheweb/intersection-element/lib/IntersectionObserverMixin.js";
 import { MediaBehaviorsVideo } from "@haxtheweb/media-behaviors/media-behaviors.js";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
-import { copyToClipboard } from "@haxtheweb/utils/utils.js";
+import { copyToClipboard } from "@haxtheweb/utils/lib/clipboard.js";
 /**
  * `video-player`
  * `A simple responsive video player with ridiculously powerful backing`

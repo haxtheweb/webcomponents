@@ -13,11 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { LitElement, html, css } from "lit";
-import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
+import { html, css } from "lit";
+import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
-import "@haxtheweb/media-image/media-image.js";
-import "@haxtheweb/simple-icon/simple-icon.js";
+import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
+import "@haxtheweb/simple-icon/lib/simple-icons.js";
 
 /**
  * Site Available Themes
@@ -26,7 +26,7 @@ import "@haxtheweb/simple-icon/simple-icon.js";
  *
  * @element site-available-themes
  */
-export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
+export class SiteAvailableThemes extends I18NMixin(DDD) {
   static get tag() {
     return "site-available-themes";
   }
@@ -38,6 +38,7 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
     this.error = null;
     this.viewMode = "gallery"; // gallery or table
     this.showDetails = true;
+    this.showAllThemes = false;
     this.columns = 3;
     this.currentTheme = "";
     this.t = this.t || {};
@@ -61,6 +62,7 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
       error: { type: String },
       viewMode: { type: String, attribute: "view-mode" },
       showDetails: { type: Boolean, attribute: "show-details" },
+      showAllThemes: { type: Boolean, attribute: "show-all-themes" },
       columns: { type: Number },
       currentTheme: { type: String, attribute: "current-theme" },
     };
@@ -73,8 +75,15 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
         :host {
           display: block;
           --theme-gallery-gap: var(--ddd-spacing-4);
-          --theme-gallery-border-radius: var(--ddd-radius-sm);
-          --theme-gallery-border: var(--ddd-border-sm);
+          --theme-gallery-border-radius: var(--ddd-radius-xs);
+          --theme-gallery-border: var(--ddd-border-xs);
+          --theme-card-width: 180px;
+          --theme-card-height: 300px;
+          --theme-card-preview-height: 240px;
+        }
+        .toggle-button simple-icon-lite {
+          --simple-icon-width: var(--ddd-icon-4xs);
+          --simple-icon-height: var(--ddd-icon-4xs);
         }
 
         .loading,
@@ -103,6 +112,8 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
         .gallery-title {
           margin: 0;
           color: var(--ddd-theme-default-coalyGray);
+          font-size: var(--ddd-font-size-s);
+          font-family: var(--ddd-font-navigation);
         }
 
         .view-toggle {
@@ -114,13 +125,14 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
           background: var(--ddd-theme-default-white);
           border: var(--theme-gallery-border);
           border-radius: var(--theme-gallery-border-radius);
-          padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-2) var(--ddd-spacing-3);
           cursor: pointer;
           transition: all 0.2s ease;
           display: flex;
           align-items: center;
           gap: var(--ddd-spacing-1);
-          font-size: var(--ddd-font-size-xs);
+          font-size: var(--ddd-font-size-4xs);
+          font-family: var(--ddd-font-navigation);
         }
 
         .toggle-button:hover,
@@ -131,7 +143,7 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
 
         .theme-count {
           color: var(--ddd-theme-default-coalyGray);
-          font-size: var(--ddd-font-size-xs);
+          font-size: var(--ddd-font-size-4xs);
         }
 
         /* Gallery View */
@@ -150,11 +162,24 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
             transform 0.2s ease,
             box-shadow 0.2s ease;
           position: relative;
+          width: 100%;
+          max-width: var(--theme-card-width);
+          min-height: var(--theme-card-height);
+          margin: 0 auto;
+        }
+
+        .theme-thumbnail img {
+          width: 85%;
+          height: 85%;
+          object-fit: cover;
+          object-position: left;
+          display: block;
         }
 
         .theme-card:hover {
           transform: translateY(-2px);
           box-shadow: var(--ddd-boxShadow-md);
+          border-color: var(--ddd-theme-default-beaverBlue);
         }
 
         .theme-card.current {
@@ -164,67 +189,80 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
 
         .theme-thumbnail {
           width: 100%;
-          height: 200px;
+          height: var(--theme-card-preview-height);
           position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-bottom: var(--theme-gallery-border);
+          background: var(--ddd-theme-default-white);
         }
 
         .current-badge {
           position: absolute;
           top: var(--ddd-spacing-2);
           right: var(--ddd-spacing-2);
-          background: var(--ddd-theme-default-skyBlue);
-          color: var(--ddd-theme-default-white);
+          background: var(--ddd-theme-default-keystoneYellow);
+          color: var(--ddd-theme-default-coalyGray);
           padding: var(--ddd-spacing-1) var(--ddd-spacing-2);
           border-radius: var(--ddd-radius-xs);
-          font-size: var(--ddd-font-size-3xs);
+          font-size: var(--ddd-font-size-5xs);
+          font-family: var(--ddd-font-navigation);
           z-index: 1;
         }
 
         .theme-info {
-          padding: var(--ddd-spacing-4);
+          padding: var(--ddd-spacing-2);
         }
 
         .theme-name {
-          font-weight: var(--ddd-font-weight-bold);
+          font-weight: var(--ddd-font-weight-medium);
           color: var(--ddd-theme-default-coalyGray);
-          margin: 0 0 var(--ddd-spacing-2) 0;
-          font-size: var(--ddd-font-size-sm);
+          margin: 0 0 var(--ddd-spacing-1) 0;
+          font-size: var(--ddd-font-size-4xs);
+          font-family: var(--ddd-font-navigation);
         }
 
         .theme-description {
-          font-size: var(--ddd-font-size-xs);
+          font-size: var(--ddd-font-size-5xs);
           color: var(--ddd-theme-default-slateGray);
-          margin: 0 0 var(--ddd-spacing-2) 0;
+          margin: 0 0 var(--ddd-spacing-1) 0;
         }
 
         .theme-element {
-          font-size: var(--ddd-font-size-3xs);
+          font-size: var(--ddd-font-size-5xs);
           color: var(--ddd-theme-default-limestoneGray);
           font-family: var(--ddd-font-navigation);
-          margin-bottom: var(--ddd-spacing-2);
+          margin-bottom: var(--ddd-spacing-1);
         }
 
         .preview-button {
-          background: var(--ddd-theme-default-skyBlue);
+          background: var(--ddd-theme-default-link);
           color: var(--ddd-theme-default-white);
-          border: none;
+          border: var(--ddd-border-xs);
+          border-color: transparent;
           border-radius: var(--theme-gallery-border-radius);
           padding: var(--ddd-spacing-2) var(--ddd-spacing-4);
           cursor: pointer;
-          font-size: var(--ddd-font-size-xs);
-          display: flex;
+          font-size: var(--ddd-font-size-5xs);
+          display: inline-flex;
           align-items: center;
           gap: var(--ddd-spacing-1);
           transition: all 0.2s ease;
+          font-family: var(--ddd-font-navigation);
         }
 
         .preview-button:hover {
-          background: var(--ddd-theme-default-navy);
+          background: var(--ddd-theme-default-beaverBlue);
         }
 
         .preview-button:disabled {
           background: var(--ddd-theme-default-limestoneGray);
           cursor: not-allowed;
+        }
+        .preview-button simple-icon-lite {
+          --simple-icon-width: var(--ddd-icon-5xs);
+          --simple-icon-height: var(--ddd-icon-5xs);
         }
 
         /* Table View */
@@ -259,8 +297,20 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
         }
 
         .table-thumbnail {
-          width: 80px;
-          height: 50px;
+          width: 90px;
+          height: 60px;
+          border: var(--ddd-border-xs);
+          border-color: var(--ddd-theme-default-limestoneGray);
+          border-radius: var(--ddd-radius-xs);
+          overflow: hidden;
+          background: var(--ddd-theme-default-white);
+        }
+
+        .table-thumbnail img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
         }
 
         .table-name {
@@ -270,8 +320,14 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
 
         .table-element {
           font-family: var(--ddd-font-navigation);
-          font-size: var(--ddd-font-size-xs);
+          font-size: var(--ddd-font-size-5xs);
           color: var(--ddd-theme-default-limestoneGray);
+        }
+
+        .current-label {
+          color: var(--ddd-theme-default-link);
+          font-size: var(--ddd-font-size-5xs);
+          font-family: var(--ddd-font-navigation);
         }
 
         /* Responsive */
@@ -291,8 +347,8 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
           }
 
           .table-thumbnail {
-            width: 60px;
-            height: 40px;
+            width: 72px;
+            height: 46px;
           }
         }
 
@@ -317,6 +373,66 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
     this.loadThemes();
     this.detectCurrentTheme();
   }
+  _isTruthy(value) {
+    return value === true || value === "true" || value === 1 || value === "1";
+  }
+
+  _resolveThemeThumbnail(thumbnail = "") {
+    if (!thumbnail || typeof thumbnail !== "string") {
+      return "";
+    }
+    if (thumbnail.indexOf("@haxtheweb/") === 0) {
+      const scopeMarker = "/@haxtheweb/";
+      const markerIndex = import.meta.url.indexOf(scopeMarker);
+      if (markerIndex !== -1) {
+        const scopedBase = import.meta.url.substring(
+          0,
+          markerIndex + scopeMarker.length,
+        );
+        const packagePath = thumbnail.replace("@haxtheweb/", "");
+        return `${scopedBase}${packagePath}`;
+      }
+      let basePath = "";
+      if (
+        globalThis.WCAutoloadBasePath &&
+        typeof globalThis.WCAutoloadBasePath === "string"
+      ) {
+        basePath = globalThis.WCAutoloadBasePath;
+      } else if (
+        globalThis.WCGlobalBasePath &&
+        typeof globalThis.WCGlobalBasePath === "string"
+      ) {
+        basePath = globalThis.WCGlobalBasePath;
+      }
+      if (basePath) {
+        if (basePath.charAt(basePath.length - 1) !== "/") {
+          basePath += "/";
+        }
+        return `${basePath}${thumbnail}`;
+      }
+      const packagePath = `../../../../${thumbnail}`;
+      return new URL(packagePath, import.meta.url).href;
+    }
+    return thumbnail;
+  }
+
+  _getVisibleThemes() {
+    return this.themes.filter((theme) => {
+      if (!theme) {
+        return false;
+      }
+      if (theme.element === this.currentTheme) {
+        return true;
+      }
+      if (this.showAllThemes) {
+        return true;
+      }
+      if (theme.hidden || theme.terrible || theme.legacy) {
+        return false;
+      }
+      return true;
+    });
+  }
 
   async loadThemes() {
     this.loading = true;
@@ -333,16 +449,45 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
 
       const themesData = await response.json();
 
-      // Convert themes object to array and add screenshot paths
-      this.themes = Object.entries(themesData).map(([key, theme]) => ({
-        key,
-        ...theme,
-        thumbnailPath:
-          theme.thumbnail ||
-          `theme-screenshots/theme-${theme.element}-thumb.jpg`,
-        fullImagePath:
-          theme.screenshot || `theme-screenshots/theme-${theme.element}.jpg`,
-      }));
+      // Mirror app-hax and haxcms-theme-picker data normalization
+      this.themes = Object.entries(themesData)
+        .map(([key, theme]) => {
+          const baseTheme =
+            theme && typeof theme === "object" ? theme : { element: key };
+          const element = baseTheme.element || key;
+          const priorityRaw =
+            typeof baseTheme.priority === "number"
+              ? baseTheme.priority
+              : Number(baseTheme.priority);
+          const fallbackThumbnail = `@haxtheweb/haxcms-elements/lib/theme-screenshots/theme-${element}-thumb.jpg`;
+          const thumbnailSource = baseTheme.thumbnail || fallbackThumbnail;
+          const fullImageSource =
+            baseTheme.screenshot || baseTheme.thumbnail || fallbackThumbnail;
+          return {
+            key,
+            ...baseTheme,
+            element: element,
+            name: baseTheme.name || element,
+            description: baseTheme.description || "",
+            hidden: this._isTruthy(baseTheme.hidden),
+            terrible:
+              this._isTruthy(baseTheme.terrible) ||
+              key.indexOf("terrible") === 0,
+            legacy:
+              this._isTruthy(baseTheme.legacy) ||
+              this._isTruthy(baseTheme.deprecated) ||
+              this._isTruthy(baseTheme.isLegacy),
+            priority: Number.isFinite(priorityRaw) ? priorityRaw : 0,
+            thumbnailPath: this._resolveThemeThumbnail(thumbnailSource),
+            fullImagePath: this._resolveThemeThumbnail(fullImageSource),
+          };
+        })
+        .sort((a, b) => {
+          if (a.priority !== b.priority) {
+            return a.priority - b.priority;
+          }
+          return a.name.localeCompare(b.name);
+        });
 
       this.loading = false;
     } catch (error) {
@@ -382,8 +527,6 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
             detail: { themeElement },
           }),
         );
-
-        console.log(`Theme switched to: ${themeElement}`);
       } catch (error) {
         console.error("Failed to switch theme:", error);
       }
@@ -397,9 +540,13 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   renderGalleryView() {
+    const visibleThemes = this._getVisibleThemes();
+    if (visibleThemes.length === 0) {
+      return html`<div class="loading">No themes available for this view.</div>`;
+    }
     return html`
       <div class="gallery-grid">
-        ${this.themes.map(
+        ${visibleThemes.map(
           (theme) => html`
             <div
               class="theme-card ${theme.element === this.currentTheme
@@ -407,16 +554,15 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
                 : ""}"
             >
               ${theme.element === this.currentTheme
-                ? html` <div class="current-badge">Current</div> `
+                ? html` <div class="current-badge">Active</div> `
                 : ""}
               <div class="theme-thumbnail">
-                <media-image
-                  source="${theme.fullImagePath}"
-                  thumbnail="${theme.thumbnailPath}"
-                  alt="${theme.name}"
-                  accent-color="grey"
-                  size="wide"
-                ></media-image>
+                <img
+                  src="${theme.thumbnailPath || theme.fullImagePath}"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                />
               </div>
               ${this.showDetails
                 ? html`
@@ -432,13 +578,17 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
                       <div class="theme-element">&lt;${theme.element}&gt;</div>
                       <button
                         class="preview-button"
+                        type="button"
+                        aria-label="${theme.element === this.currentTheme
+                          ? `${theme.name} theme is active`
+                          : `Apply ${theme.name} theme`}"
                         ?disabled="${theme.element === this.currentTheme}"
                         @click="${() => this.switchTheme(theme.element)}"
                       >
-                        <simple-icon icon="visibility"></simple-icon>
+                        <simple-icon-lite icon="visibility"></simple-icon-lite>
                         ${theme.element === this.currentTheme
-                          ? "Current Theme"
-                          : "Preview Theme"}
+                          ? "Active"
+                          : "Apply"}
                       </button>
                     </div>
                   `
@@ -451,6 +601,10 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
   }
 
   renderTableView() {
+    const visibleThemes = this._getVisibleThemes();
+    if (visibleThemes.length === 0) {
+      return html`<div class="loading">No themes available for this view.</div>`;
+    }
     return html`
       <table class="theme-table">
         <thead>
@@ -463,32 +617,25 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
           </tr>
         </thead>
         <tbody>
-          ${this.themes.map(
+          ${visibleThemes.map(
             (theme) => html`
               <tr
                 class="${theme.element === this.currentTheme ? "current" : ""}"
               >
                 <td>
                   <div class="table-thumbnail">
-                    <media-image
-                      source="${theme.fullImagePath}"
-                      thumbnail="${theme.thumbnailPath}"
-                      alt="${theme.name}"
-                      accent-color="grey"
-                      size="wide"
-                    ></media-image>
+                    <img
+                      src="${theme.thumbnailPath || theme.fullImagePath}"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
                   </div>
                 </td>
                 <td>
                   <div class="table-name">${theme.name}</div>
                   ${theme.element === this.currentTheme
-                    ? html`
-                        <div
-                          style="color: var(--ddd-theme-default-skyBlue); font-size: var(--ddd-font-size-3xs);"
-                        >
-                          Current
-                        </div>
-                      `
+                    ? html` <div class="current-label">Active</div> `
                     : ""}
                 </td>
                 <td>
@@ -500,13 +647,17 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
                 <td>
                   <button
                     class="preview-button"
+                    type="button"
+                    aria-label="${theme.element === this.currentTheme
+                      ? `${theme.name} theme is active`
+                      : `Apply ${theme.name} theme`}"
                     ?disabled="${theme.element === this.currentTheme}"
                     @click="${() => this.switchTheme(theme.element)}"
                   >
-                    <simple-icon icon="visibility"></simple-icon>
+                    <simple-icon-lite icon="visibility"></simple-icon-lite>
                     ${theme.element === this.currentTheme
-                      ? "Current"
-                      : "Preview"}
+                      ? "Active"
+                      : "Apply"}
                   </button>
                 </td>
               </tr>
@@ -525,26 +676,34 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
     if (this.error) {
       return html`<div class="error">${this.error}</div>`;
     }
+    const visibleThemes = this._getVisibleThemes();
+    const themeCountLabel = this.showAllThemes
+      ? `${visibleThemes.length} themes shown`
+      : `${visibleThemes.length} themes shown (app-hax defaults)`;
 
     return html`
       <div class="gallery-header">
         <div>
           <h2 class="gallery-title">Available HAXcms Themes</h2>
-          <div class="theme-count">${this.themes.length} themes available</div>
+          <div class="theme-count">${themeCountLabel}</div>
         </div>
         <div class="view-toggle">
           <button
             class="toggle-button ${this.viewMode === "gallery" ? "active" : ""}"
+            type="button"
+            aria-pressed="${this.viewMode === "gallery" ? "true" : "false"}"
             @click="${() => this.setViewMode("gallery")}"
           >
-            <simple-icon icon="view-module"></simple-icon>
+            <simple-icon-lite icon="view-module"></simple-icon-lite>
             Gallery
           </button>
           <button
             class="toggle-button ${this.viewMode === "table" ? "active" : ""}"
+            type="button"
+            aria-pressed="${this.viewMode === "table" ? "true" : "false"}"
             @click="${() => this.setViewMode("table")}"
           >
-            <simple-icon icon="view-list"></simple-icon>
+            <simple-icon-lite icon="view-list"></simple-icon-lite>
             Table
           </button>
         </div>
@@ -571,7 +730,7 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
           "Display available HAXcms themes with live preview switching",
         icon: "image:collections",
         color: "purple",
-        tags: ["Theme", "Gallery", "HAXcms", "Developer", "Documentation"],
+        tags: ["Other", "Theme", "Gallery", "HAXcms", "Developer", "Documentation"],
         handles: [],
         meta: {
           author: "HAXTheWeb team",
@@ -597,6 +756,13 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
             inputMethod: "boolean",
           },
           {
+            property: "showAllThemes",
+            title: "Show Hidden and Legacy Themes",
+            description:
+              "Show hidden, legacy, and terrible themes in addition to dashboard defaults",
+            inputMethod: "boolean",
+          },
+          {
             property: "columns",
             title: "Columns (Gallery)",
             description: "Number of columns in gallery view",
@@ -612,6 +778,7 @@ export class SiteAvailableThemes extends DDDSuper(I18NMixin(LitElement)) {
           properties: {
             viewMode: "gallery",
             showDetails: true,
+            showAllThemes: false,
             columns: 3,
           },
           content: "",

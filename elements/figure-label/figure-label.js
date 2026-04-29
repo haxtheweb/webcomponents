@@ -137,7 +137,7 @@ class FigureLabel extends DDD {
         icon: "icons:android",
         color: "green",
         tags: [
-          "content",
+          "Content",
           "figure",
           "a11y",
           "accessibility",

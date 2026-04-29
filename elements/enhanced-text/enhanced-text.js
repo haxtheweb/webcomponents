@@ -440,51 +440,6 @@ class EnhancedText extends LitElement {
   static get tag() {
     return "enhanced-text";
   }
-
-  static get haxProperties() {
-    return {
-      gizmo: {
-        title: "Enhanced text",
-        description: "Add content look up to a blob of text",
-      },
-      setttings: {
-        configure: [
-          {
-            slot: "",
-            title: "Text to process",
-            description: "Text that will be enhanced",
-          },
-          {
-            property: "wikipedia",
-            type: "boolean",
-            title: "Wikipedia articles",
-            description:
-              "Enhance found definitions in glossary with possibly related wikipedia article links",
-          },
-          {
-            property: "haxcmsGlossary",
-            type: "boolean",
-            title: "haxcms: Glossary",
-            description:
-              "Automatically link to definitions found on the /glossary page of a haxcms site",
-          },
-          {
-            property: "haxcmsSiteLocation",
-            type: "textfield",
-            title: "haxcms: site url",
-            description:
-              "Link to the HAXcms site to leverage for glossary of terms",
-          },
-          {
-            property: "haxcmsSite",
-            type: "textarea",
-            title: "haxcms: site",
-            description: "JSON blob of the site.json file itself",
-          },
-        ],
-      },
-    };
-  }
 }
 globalThis.customElements.define(EnhancedText.tag, EnhancedText);
 export { EnhancedText };

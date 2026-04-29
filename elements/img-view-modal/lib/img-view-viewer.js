@@ -3,7 +3,7 @@ import { ImgPanZoom } from "@haxtheweb/img-pan-zoom/img-pan-zoom.js";
 import { FullscreenBehaviors } from "@haxtheweb/fullscreen-behaviors/fullscreen-behaviors.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
-import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 
 /**
  * `img-view-viewer`

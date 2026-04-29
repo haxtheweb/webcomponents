@@ -2885,12 +2885,12 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       ol: {
         title: "Numbered list",
-        description: "Create an ordered list with numbered items.",
+        description: "Create a numbered list.",
         icon: "editor:format-list-numbered",
       },
       ul: {
         title: "Bulleted list",
-        description: "Create an unordered list with bullet points.",
+        description: "Create a bulleted list.",
         icon: "editor:format-list-bulleted",
       },
       li: {
@@ -2899,33 +2899,33 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       h1: {
         title: "Heading",
-        description: "Primary heading used for top-level section titles.",
+        description: "Top-level section heading.",
         icon: "hax:h1",
       },
       h2: {
         title: "Heading",
-        description: "Secondary heading used for major section groupings.",
+        description: "Second-level section heading.",
         icon: "hax:h2",
         tags: ["Text", "h2", "html", "heading", "header"],
       },
       h3: {
         title: "Heading",
-        description: "Tertiary heading used for subsection titles.",
+        description: "Third-level section heading.",
         icon: "hax:h3",
       },
       h4: {
         title: "Heading",
-        description: "Fourth-level heading used for nested subsections.",
+        description: "Fourth-level section heading.",
         icon: "hax:h4",
       },
       h5: {
         title: "Heading",
-        description: "Fifth-level heading for deeper content hierarchy.",
+        description: "Fifth-level section heading.",
         icon: "hax:h5",
       },
       h6: {
         title: "Heading",
-        description: "Sixth-level heading for the smallest heading hierarchy.",
+        description: "Sixth-level section heading.",
         icon: "hax:h6",
       },
       strike: {
@@ -2934,7 +2934,7 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       u: {
         title: "Underline",
-        description: "Underline inline text for emphasis.",
+        description: "Underline inline text.",
         icon: "editor:format-underlined",
       },
       sub: {
@@ -2977,17 +2977,17 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
       },
       blockquote: {
         title: "Block quote",
-        description: "Display quoted text as an emphasized block quote.",
+        description: "Display quoted text as a block quote.",
         icon: "editor:format-quote",
       },
       code: {
         title: "Code",
-        description: "Show inline code snippets within text.",
+        description: "Display inline code.",
         icon: "icons:code",
       },
       pre: {
         title: "Preformatted",
-        description: "Preserve whitespace and formatting for preformatted text.",
+        description: "Preserve whitespace in preformatted text.",
         icon: "icons:code",
       },
       time: {
@@ -3267,7 +3267,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             {
               attribute: "src",
               title: "Source",
-              description: "The URL for this resource.",
+              description: "URL for this resource.",
               inputMethod: "textfield",
               icon: "link",
               required: true,
@@ -3290,7 +3290,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       canEditSource: true,
       gizmo: {
         title: "Basic Image",
-        description: "A basic img tag",
+        description: "Basic image element.",
         icon: "image:image",
         color: "blue-grey",
         tags: ["Media", "media", "img", "html"],
@@ -3304,7 +3304,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           {
             attribute: "src",
             title: "Source",
-            description: "The URL for this image.",
+            description: "Image URL.",
             inputMethod: "haxupload",
             noVoiceRecord: true,
             icon: "link",
@@ -3314,15 +3314,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           {
             attribute: "alt",
             title: "Alt text",
-            description: "Useful for screen readers and improved SEO.",
+            description: "Alternative text for accessibility and SEO.",
             inputMethod: "alt",
             icon: "accessibility",
           },
           {
             attribute: "height",
             title: "Height",
-            description:
-              "height in pixels of the item. Leave blank to respond to the natural resolution",
+            description: "Height in pixels. Leave blank to use natural size.",
             inputMethod: "textfield",
             icon: "icons:swap-vert",
           },
@@ -3330,8 +3329,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         advanced: [
           {
             attribute: "loading",
-            title: "Loading method",
-            description: "Whether or not to lazy load this",
+            title: "Loading",
+            description: "Choose when the image loads.",
             inputMethod: "select",
             options: {
               lazy: "Load when visible",
@@ -3358,7 +3357,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       canEditSource: true,
       gizmo: {
         title: "Figure",
-        description: "A basic figure tag",
+        description: "Basic figure element.",
         icon: "hax:figure",
         color: "blue-grey",
         tags: ["Media", "media", "figure", "html"],
@@ -3389,7 +3388,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       canEditSource: true,
       gizmo: {
         title: "Figure caption",
-        description: "Used inside of a figure tag",
+        description: "Caption for a figure.",
         icon: "image:image",
         color: "blue-grey",
         tags: ["Media", "media", "caption", "figure", "html"],
@@ -3404,8 +3403,8 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         configure: [
           {
             slot: "",
-            title: "Figure Caption",
-            description: "Caption for the figure",
+            title: "Caption",
+            description: "Text shown below the figure.",
             inputMethod: "code-editor",
           },
         ],
@@ -3430,7 +3429,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       contentEditable: true,
       gizmo: {
         title: "Highlight",
-        description: "Highlight inline text within a block of content.",
+        description: "Highlight inline text.",
         icon: "editor:highlight",
         color: "yellow",
         tags: ["Text", "highlight", "mark", "html"],
@@ -3445,7 +3444,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           {
             attribute: "innerText",
             title: "Text",
-            description: "Text of the highlight",
+            description: "Highlighted text.",
             inputMethod: "textfield",
             required: true,
           },
@@ -3473,7 +3472,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       contentEditable: true,
       gizmo: {
         title: "Abbreviation",
-        description: "Simple abbreviation with tooltip of full word",
+        description: "Abbreviation with full-term tooltip.",
         icon: "hax:abbr",
         color: "yellow",
         tags: ["Content", "text", "abbr", "html"],
@@ -3488,14 +3487,14 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           {
             attribute: "innerText",
             title: "Text",
-            description: "Text that is visible, the abbreviation",
+            description: "Visible abbreviation text.",
             inputMethod: "textfield",
             required: true,
           },
           {
             attribute: "title",
             title: "Word",
-            description: "Word that the abbreviation is representing",
+            description: "Full term shown on hover.",
             inputMethod: "textfield",
             required: true,
           },
@@ -3525,7 +3524,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       contentEditable: true,
       gizmo: {
         title: "Basic link",
-        description: "A basic a tag",
+        description: "Basic link element.",
         icon: "icons:link",
         color: "blue-grey",
         tags: [
@@ -3548,7 +3547,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           {
             attribute: "href",
             title: "Link",
-            description: "The URL for the link",
+            description: "Destination URL.",
             inputMethod: "haxupload",
             required: true,
             validationType: "url",
@@ -3556,7 +3555,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           {
             attribute: "innerText",
             title: "Text",
-            description: "Text of the link",
+            description: "Visible link text.",
             inputMethod: "textfield",
             required: true,
           },
@@ -3578,14 +3577,13 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
           {
             attribute: "title",
             title: "Title text",
-            description: "Useful for screen readers and improved SEO.",
+            description: "Advisory title for accessibility and SEO.",
             inputMethod: "textfield",
           },
           {
             attribute: "rel",
-            title: "rel",
-            description:
-              "Specifies the relationship between this document and the opened globalThis.document. Change as part of security or SEO policy.",
+            title: "Rel",
+            description: "Relationship to the destination (security/SEO).",
             inputMethod: "select",
             options: {
               noopener: "noopener",
@@ -3624,7 +3622,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       contentEditable: true,
       gizmo: {
         title: "Paragraph",
-        description: "A basic text area",
+        description: "Basic paragraph text.",
         icon: "hax:paragraph",
         color: "blue-grey",
         tags: ["Text", "p", "paragraph", "text", "html"],
@@ -3666,7 +3664,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         canEditSource: false,
         gizmo: {
           title: "Table",
-          description: "A table for displaying data",
+          description: "Display tabular data.",
           icon: "image:grid-on",
           color: "blue-grey",
           tags: [
@@ -3713,7 +3711,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         canEditSource: false,
         gizmo: {
           title: "iFrame",
-          description: "A basic way to frame external web content",
+          description: "Embed external web content.",
           icon: "hax:iframe",
           color: "blue-grey",
           tags: [
@@ -3738,7 +3736,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
             {
               attribute: "src",
               title: "Source",
-              description: "The URL for this resource.",
+              description: "URL for this resource.",
               inputMethod: "textfield",
               icon: "link",
               required: true,

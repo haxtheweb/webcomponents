@@ -1,5 +1,5 @@
 import { pageBreakManager } from "./page-break-manager.js";
-import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 
 export class PageBreakOutline extends HTMLElement {
   constructor() {

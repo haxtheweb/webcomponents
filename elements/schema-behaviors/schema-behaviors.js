@@ -2,7 +2,7 @@
  * Copyright 2018 The Pennsylvania State University
  * @license Apache-2.0, see License.md for full text.
  */
-import { generateResourceID } from "@haxtheweb/utils/utils.js";
+import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
 export const SchemaBehaviors = function (SuperClass) {
   return class extends SuperClass {
     /**

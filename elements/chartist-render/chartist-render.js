@@ -3,7 +3,7 @@
  * @license Apache-2.0, see License.md for full text.
  */
 import { LitElement, html, css } from "lit";
-import { generateResourceID } from "@haxtheweb/utils/utils.js";
+import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
 import "@haxtheweb/es-global-bridge/es-global-bridge.js";
 
 const ChartistRenderSuper = function (SuperClass) {

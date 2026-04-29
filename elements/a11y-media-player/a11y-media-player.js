@@ -8,7 +8,7 @@ import { FullscreenBehaviors } from "@haxtheweb/fullscreen-behaviors/fullscreen-
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import "@haxtheweb/anchor-behaviors/anchor-behaviors.js";
 import "@haxtheweb/responsive-utility/responsive-utility.js";
-import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 import "@haxtheweb/absolute-position-behavior/absolute-position-behavior.js";
 import "@haxtheweb/simple-tooltip/simple-tooltip.js";
 import "@haxtheweb/simple-search/simple-search.js";

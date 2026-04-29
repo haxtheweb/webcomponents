@@ -1,5 +1,5 @@
 import { LitElement, html, css } from "lit";
-import { sanitizeEmbeddableURL } from "@haxtheweb/utils/utils.js";
+import { sanitizeEmbeddableURL } from "@haxtheweb/utils/lib/url.js";
 import "./lib/loading-indicator.js";
 
 export class IframeLoader extends LitElement {

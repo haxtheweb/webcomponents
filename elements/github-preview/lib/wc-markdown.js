@@ -1,4 +1,4 @@
-import { markdownToHTML } from "@haxtheweb/utils/utils.js";
+import { markdownToHTML } from "@haxtheweb/utils/lib/markdown.js";
 
 export class WCMarkdown extends HTMLElement {
   static get observedAttributes() {

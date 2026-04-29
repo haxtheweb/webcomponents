@@ -1,4 +1,4 @@
-import { sanitizeEmbeddableURL } from "@haxtheweb/utils/utils.js";
+import { sanitizeEmbeddableURL } from "@haxtheweb/utils/lib/url.js";
 // ensure MediaBehaviors exists
 globalThis.MediaBehaviors = globalThis.MediaBehaviors || {};
 /**

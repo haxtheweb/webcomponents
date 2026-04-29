@@ -1,7 +1,7 @@
 import { html, css } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
-import { varExists } from "@haxtheweb/utils/utils.js";
+import { varExists } from "@haxtheweb/utils/lib/object-path.js";
 import { autorun, toJS } from "mobx";
 /**
  * `simple-blog-footer`

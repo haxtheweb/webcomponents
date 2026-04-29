@@ -140,7 +140,7 @@ class A11yFigure extends A11yDetails {
         icon: "hax:figure",
         color: "grey",
         tags: [
-          "content",
+          "Content",
           "figure",
           "a11y",
           "accessibility",

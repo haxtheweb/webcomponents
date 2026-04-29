@@ -4,7 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { SimpleFilterMixin } from "@haxtheweb/simple-filter/simple-filter.js";
-import { getRange } from "@haxtheweb/utils/utils.js";
+import { getRange } from "@haxtheweb/utils/lib/selection.js";
 import "@haxtheweb/simple-popover/simple-popover.js";
 
 /**

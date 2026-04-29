@@ -23,35 +23,6 @@ class ResponsiveIframe extends LitElement {
       `,
     ];
   }
-  static get haxProperties() {
-    return {
-      canScale: false,
-
-      canEditSource: true,
-      gizmo: {
-        title: "Responsive iframe",
-        description:
-          "Make an iframe responsive and full width. Useful for Youtube video embeds.",
-        icon: "icons:file-download",
-        color: "blue",
-        meta: {
-          author: "HAXTheWeb core team",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            slot: "",
-            title: "iframe",
-            description: "The html code of the iframe",
-            inputMethod: "code-editor",
-            icon: "editor:iframe",
-          },
-        ],
-        advanced: [],
-      },
-    };
-  }
   render() {
     return html`
       <div id="container">

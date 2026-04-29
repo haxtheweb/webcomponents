@@ -2,7 +2,7 @@ import { html, css } from "lit";
 import { SimpleColors } from "@haxtheweb/simple-colors/simple-colors.js";
 import { store } from "@haxtheweb/haxcms-elements/lib/core/haxcms-site-store.js";
 import { autorun, toJS } from "mobx";
-import { varGet } from "@haxtheweb/utils/utils.js";
+import { varGet } from "@haxtheweb/utils/lib/object-path.js";
 /**
  * `simple-blog-header`
  * `A simple blog header to the front of the site`

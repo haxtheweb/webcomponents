@@ -39,6 +39,7 @@ export class LrnH5p extends LitElement {
         description: "LRN H5P",
         icon: "editor:format-quote",
         color: "blue",
+        tags: ["Instructional", "h5p", "embed", "interactive"],
         meta: {
           author: "HAXTheWeb core team",
         },

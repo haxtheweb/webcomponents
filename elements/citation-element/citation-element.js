@@ -1,7 +1,7 @@
 import { LitElement, html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { licenseList } from "@haxtheweb/license-element/license-element.js";
-import { generateResourceID } from "@haxtheweb/utils/utils.js";
+import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
 import { DDDSuper } from "@haxtheweb/d-d-d/d-d-d.js";
 import { DDDReset } from "@haxtheweb/d-d-d/lib/DDDStyles.js";
 /**

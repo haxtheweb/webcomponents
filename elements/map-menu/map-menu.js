@@ -5,7 +5,7 @@
 import { LitElement, html, css } from "lit";
 import "@haxtheweb/map-menu/lib/map-menu-builder.js";
 import "@haxtheweb/map-menu/lib/map-menu-container.js";
-import { normalizeEventPath } from "@haxtheweb/utils/utils.js";
+import { normalizeEventPath } from "@haxtheweb/utils/lib/events.js";
 
 /**
  * `map-menu`

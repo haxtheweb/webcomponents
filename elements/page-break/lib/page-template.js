@@ -6,7 +6,7 @@ import { html, css } from "lit";
 import { SchemaBehaviors } from "@haxtheweb/schema-behaviors/schema-behaviors.js";
 import { I18NMixin } from "@haxtheweb/i18n-manager/lib/I18NMixin.js";
 import { DDD } from "@haxtheweb/d-d-d/d-d-d.js";
-import { generateResourceID } from "@haxtheweb/utils/utils.js";
+import { generateResourceID } from "@haxtheweb/utils/lib/ids.js";
 
 /**
  * `page-template`
@@ -164,74 +164,6 @@ export class PageTemplate extends I18NMixin(SchemaBehaviors(DDD)) {
     `;
   }
 
-  /**
-   * Implements haxProperties to define HAX editor integration
-   */
-  static get haxProperties() {
-    return {
-      type: "grid",
-      canScale: false,
-      canPosition: false,
-      canEditSource: true,
-      contentEditable: true,
-      gizmo: {
-        title: "Page Template",
-        description:
-          "A template component for defining reusable page layouts and styling",
-        icon: "hax:templates",
-        color: "blue",
-        groups: ["Other"],
-        handles: [],
-        meta: {
-          author: "HAXTheWeb",
-        },
-      },
-      settings: {
-        configure: [
-          {
-            property: "name",
-            title: "Template Name",
-            description: "Name you will see in the editor",
-            inputMethod: "textfield",
-            required: false,
-          },
-          {
-            property: "schema",
-            title: "Template Type",
-            description: "How this template should be categorized and used",
-            inputMethod: "select",
-            options: {
-              block: "Block - Replaces element defaults",
-              area: "Area - Shows in Templates section",
-              page: "Page - Shows in Pages section",
-            },
-            required: true,
-          },
-        ],
-        advanced: [
-          {
-            slot: "",
-            title: "Template Content",
-            description:
-              "The elements and content that define this template section",
-            inputMethod: "textarea",
-            required: false,
-          },
-        ],
-      },
-      demoSchema: [
-        {
-          tag: "page-template",
-          properties: {
-            name: "Example Template",
-            schema: "area",
-          },
-          content:
-            "<h2>Template Heading</h2><p>Add your content elements inside this template. This acts as a container that can hold any HAX elements.</p>",
-        },
-      ],
-    };
-  }
 }
 
 globalThis.customElements.define(PageTemplate.tag, PageTemplate);
