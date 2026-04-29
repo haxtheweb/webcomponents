@@ -290,6 +290,11 @@ class PlayList extends LitElement {
   haxinlineContextMenu(ceMenu) {
     ceMenu.ceButtons = [
       {
+        icon: "icons:open-in-new",
+        callback: "haxBreakOutPlaylist",
+        label: "Break items out of playlist",
+      },
+      {
         icon: "lrn:edit",
         callback: "haxToggleEdit",
         label: "Toggle edit mode",
@@ -304,6 +309,35 @@ class PlayList extends LitElement {
   haxToggleEdit(e) {
     this.edit = !this.edit;
     return true;
+  }
+  haxBreakOutPlaylist(e) {
+    if (!this.parentNode) {
+      return false;
+    }
+    let items = Array.from(this.children);
+    if (items.length === 1 && items[0].tagName === "TEMPLATE") {
+      items = Array.from(items[0].children);
+    }
+    if (items.length === 0 && this.items.length > 0) {
+      items = this.items.map((item) => haxElementToNode(item));
+    }
+    let cloneEl;
+    items.forEach((item) => {
+      if (item && item.tagName) {
+        cloneEl = item.cloneNode(true);
+        if (this.getAttribute("slot")) {
+          cloneEl.setAttribute("slot", this.getAttribute("slot"));
+        } else {
+          cloneEl.removeAttribute("slot");
+        }
+        this.parentNode.insertBefore(cloneEl, this);
+      }
+    });
+    if (cloneEl) {
+      this.remove();
+      return true;
+    }
+    return false;
   }
 }
 globalThis.customElements.define(PlayList.tag, PlayList);

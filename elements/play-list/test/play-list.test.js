@@ -425,12 +425,12 @@ describe("play-list test", () => {
     it("should configure inline context menu", () => {
       const mockMenu = { ceButtons: [] };
       element.haxinlineContextMenu(mockMenu);
-
-      expect(mockMenu.ceButtons).to.have.length(2);
-      expect(mockMenu.ceButtons[0].icon).to.equal("lrn:edit");
-      expect(mockMenu.ceButtons[0].callback).to.equal("haxToggleEdit");
-      expect(mockMenu.ceButtons[1].icon).to.equal("hax:anchor");
-      expect(mockMenu.ceButtons[1].callback).to.equal("haxClickSlideIndex");
+      expect(mockMenu.ceButtons).to.have.length(3);
+      expect(mockMenu.ceButtons[0].callback).to.equal("haxBreakOutPlaylist");
+      expect(mockMenu.ceButtons[1].icon).to.equal("lrn:edit");
+      expect(mockMenu.ceButtons[1].callback).to.equal("haxToggleEdit");
+      expect(mockMenu.ceButtons[2].icon).to.equal("hax:anchor");
+      expect(mockMenu.ceButtons[2].callback).to.equal("haxClickSlideIndex");
     });
 
     it("should toggle edit mode", async () => {
@@ -442,6 +442,36 @@ describe("play-list test", () => {
 
       element.haxToggleEdit();
       expect(element.edit).to.be.false;
+    });
+
+    it("should break playlist items out and preserve slot", async () => {
+      const testElement = await fixture(html`
+        <div>
+          <play-list slot="col-2">
+            <p>Item 1</p>
+            <p>Item 2</p>
+          </play-list>
+        </div>
+      `);
+      const playlist = testElement.querySelector("play-list");
+      const result = playlist.haxBreakOutPlaylist();
+
+      expect(result).to.be.true;
+      expect(testElement.querySelector("play-list")).to.not.exist;
+      const items = testElement.querySelectorAll("p");
+      expect(items).to.have.length(2);
+      expect(items[0].getAttribute("slot")).to.equal("col-2");
+      expect(items[1].getAttribute("slot")).to.equal("col-2");
+    });
+
+    it("should break playlist items out from data-driven items", () => {
+      element.items = [{ tag: "p", properties: {}, content: "From item array" }];
+      const parent = element.parentNode;
+      const result = element.haxBreakOutPlaylist();
+
+      expect(result).to.be.true;
+      expect(parent.querySelector("play-list")).to.not.exist;
+      expect(parent.querySelectorAll("p")).to.have.length(1);
     });
 
     it("should handle click slide index action", () => {
