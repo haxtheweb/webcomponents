@@ -1039,6 +1039,15 @@ export class AppHaxSteps extends SimpleColors {
             @click=${this.pressbooksImport}
             type="pressbooks"
             beta
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.importFromURL}
+            type="wordpress"
+            prompt="URL for the WordPress site"
+            callback="@haxcms/wordpressPagesToSite"
+            param="repoUrl"
+            beta
           ></app-hax-button>`;
         break;
     }

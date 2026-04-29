@@ -334,9 +334,9 @@ export function enableHAXcmsServices() {
     endpoint: "/api/apps/haxcms/convert/pressbooksToSite",
     name: "@haxcms/pressbooksToSite",
     title: "Pressbooks to Site",
-    description: "Convert pressbooks HTML export to Site schema",
+    description: "Convert pressbooks site URL to Site schema",
     params: {
-      body: "FormData class w/ uploaded file encoded into it",
+      repoUrl: "Location of the Pressbooks site",
     },
   });
   // wordpressPagesToSite
