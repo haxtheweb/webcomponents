@@ -850,6 +850,7 @@ const SimpleToolbarButtonBehaviors = function (SuperClass) {
             background-color: var(--simple-toolbar-button-hover-bg);
             border-color: var(--simple-toolbar-button-hover-border-color);
             opacity: var(--simple-toolbar-button-hover-opacity, 0.8);
+            transition: all 0.2s ease-in-out;
           }
           *[part="button"][disabled] {
             cursor: not-allowed;
