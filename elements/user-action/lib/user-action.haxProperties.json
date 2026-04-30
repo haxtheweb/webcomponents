@@ -4,7 +4,7 @@
   "canEditSource": true,
   "gizmo": {
     "title": "User action",
-    "description": "track user actions and allow them to talk to xAPI stores easily",
+    "description": "Track user actions and send data to xAPI stores.",
     "icon": "icons:touch-app",
     "color": "green",
     "tags": ["Other", "developer", "dev", "xapi", "analytics", "user", "track"],
@@ -17,7 +17,7 @@
       {
         "attribute": "track",
         "title": "Event to track",
-        "description": "User action that causes this event to fire",
+        "description": "User action that triggers this event.",
         "inputMethod": "select",
         "options": {
           "visibility": "Can see this",
@@ -30,7 +30,7 @@
       {
         "attribute": "every",
         "title": "Track every time",
-        "description": "Default behavior is just to track the first occurence",
+        "description": "By default, only the first occurrence is tracked.",
         "inputMethod": "boolean",
         "required": false
       }

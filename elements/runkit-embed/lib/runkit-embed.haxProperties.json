@@ -26,13 +26,13 @@
           "preserve-content": "preserve-content"
         },
         "title": "Source",
-        "description": "Code to be presented in content area",
+        "description": "Code shown in the content area.",
         "inputMethod": "code-editor"
       },
       {
         "property": "mode",
         "title": "Mode",
-        "description": "Whether to build a live endpoint or run in-place",
+        "description": "Choose endpoint mode or in-place execution.",
         "inputMethod": "select",
         "options": {
           "default": "default",
@@ -42,7 +42,7 @@
       {
         "property": "nodeVersion",
         "title": "Node Version",
-        "description": "Semver node version",
+        "description": "Node.js version (semver).",
         "inputMethod": "textfield"
       }
     ],

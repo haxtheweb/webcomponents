@@ -3,7 +3,7 @@
   "canEditSource": true,
   "gizmo": {
     "title": "QR Code",
-    "description": "A code to scan from a smartphone.",
+    "description": "Code to scan from a smartphone.",
     "icon": "hax:qr-code",
     "color": "grey",
     "tags": [
@@ -51,14 +51,14 @@
       {
         "property": "title",
         "title": "Alternate title",
-        "description": "An alternate title to go to the source of the QR code.",
+        "description": "Alternate title linked to the QR code source.",
         "inputMethod": "alt",
         "icon": "editor:title"
       },
       {
         "property": "modulesize",
         "title": "Size",
-        "description": "Size of the QR code",
+        "description": "Size of the QR code.",
         "inputMethod": "number",
         "icon": "image:photo-size-select-small"
       },

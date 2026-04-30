@@ -4,7 +4,7 @@
   "canEditSource": true,
   "gizmo": {
     "title": "Image section",
-    "description": "Full width image to break up a section of the page",
+    "description": "Full-width image that breaks up a page section.",
     "icon": "image:image",
     "color": "green",
     "tags": ["Layout", "image", "layout", "section", "heading"],
@@ -24,7 +24,7 @@
     "configure": [
       {
         "property": "source",
-        "description": "Background image",
+        "description": "Background image.",
         "inputMethod": "haxupload",
         "required": true,
         "noVoiceRecord": true,
@@ -32,7 +32,7 @@
       },
       {
         "property": "caption",
-        "description": "Text heading",
+        "description": "Text heading.",
         "inputMethod": "textfield"
       }
     ],

@@ -41,7 +41,7 @@
       {
         "property": "src",
         "title": "Animated GIF",
-        "description": "The URL to your animated GIF.",
+        "description": "URL for the animated GIF.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true,
         "icon": "link",
@@ -59,7 +59,7 @@
       {
         "property": "longdesc",
         "title": "Long Description",
-        "description": "Long descriptions of the GIF for accessibiility",
+        "description": "Long description of the GIF for accessibility.",
         "inputMethod": "textarea"
       }
     ],
@@ -67,7 +67,7 @@
       {
         "property": "srcWithoutAnimation",
         "title": "Still Image",
-        "description": "The URL to a still image version of your GIF.",
+        "description": "URL for a still image version of the GIF.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true,
         "icon": "link",

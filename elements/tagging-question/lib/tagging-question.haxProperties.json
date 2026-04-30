@@ -12,7 +12,7 @@
   },
   "gizmo": {
     "title": "Tagging Question",
-    "description": "Select tags to answer the question",
+    "description": "Select tags to answer the question.",
     "icon": "icons:line-style",
     "color": "purple",
     "tags": ["Instructional", "self check", "assessment", "tag"],
@@ -41,7 +41,7 @@
           {
             "property": "correct",
             "title": "Correct",
-            "description": "Is this correct",
+            "description": "Whether this answer is correct.",
             "inputMethod": "boolean"
           },
           {
@@ -58,7 +58,7 @@
       {
         "property": "quizName",
         "title": "Name of the quiz",
-        "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "description": "Quiz name used for xAPI identification in analytics systems.",
         "inputMethod": "textfield"
       }
     ]

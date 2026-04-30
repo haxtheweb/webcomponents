@@ -26,7 +26,7 @@
       {
         "property": "question",
         "title": "Question",
-        "description": "Question for users to respond to. To define drop targets, check the box. To define answers, list them until the next drop target.",
+        "description": "Question for users. Mark drop targets, then list answers until the next target.",
         "inputMethod": "textfield"
       },
       {
@@ -57,7 +57,7 @@
       {
         "property": "quizName",
         "title": "Name of the quiz",
-        "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "description": "Quiz name used for xAPI identification in analytics systems.",
         "inputMethod": "textfield"
       }
     ]

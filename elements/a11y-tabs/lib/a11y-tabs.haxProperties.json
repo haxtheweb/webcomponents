@@ -40,13 +40,13 @@
         "property": "layoutBreakpoint",
         "title": "Layout Breakpoint",
         "inputMethod": "number",
-        "description": "Minimum breakpoint for horizontal tabs. Leave unset for always horizontal; use -1 for vertical-only."
+        "description": "Breakpoint for horizontal tabs; use -1 for vertical-only."
       },
       {
         "property": "iconBreakpoint",
         "title": "Icon Breakpoint",
         "inputMethod": "number",
-        "description": "Minimum breakpoint for showing text with icons. Default is 0; use -1 for icon-only mode."
+        "description": "Breakpoint for showing text with icons. Default is 0; use -1 for icon-only mode."
       },
       {
         "slot": "",

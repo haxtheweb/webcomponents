@@ -4,7 +4,7 @@
   "canEditSource": false,
   "gizmo": {
     "title": "Vocab",
-    "description": "Vocabulary term",
+    "description": "Vocabulary term.",
     "icon": "hax:vocab",
     "color": "red",
     "tags": ["Instructional", "definition", "term", "vocabulary", "glossary"],
@@ -31,7 +31,7 @@
       {
         "property": "information",
         "title": "Definition",
-        "description": "The definitition to display when the term is clicked.",
+        "description": "Definition shown when the term is clicked.",
         "inputMethod": "textarea",
         "required": true
       },
@@ -53,7 +53,7 @@
       {
         "property": "information",
         "title": "Definition",
-        "description": "The definitition to display when the term is clicked.",
+        "description": "Definition shown when the term is clicked.",
         "inputMethod": "textarea",
         "required": true
       },

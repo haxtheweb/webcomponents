@@ -15,7 +15,7 @@
       {
         "property": "heading",
         "title": "Heading",
-        "description": "The text for the collapse.",
+        "description": "Text for the collapse.",
         "inputMethod": "textfield"
       },
       {
@@ -33,7 +33,7 @@
       {
         "property": "icon",
         "title": "Icon",
-        "description": "The icon for the toggle expand/collapse button.",
+        "description": "Icon for the expand/collapse toggle button.",
         "inputMethod": "iconpicker"
       },
       {
@@ -45,7 +45,7 @@
       {
         "slot": "",
         "title": "Content",
-        "description": "The content for the collapse.",
+        "description": "Content for the collapse.",
         "inputMethod": "code-editor",
         "slotWrapper": "p",
         "editMode": {

@@ -108,7 +108,7 @@
       {
         "property": "breakSmartCollection",
         "title": "Break smart collection",
-        "description": "Convert to Collection List for direct editing; items no longer auto-update from source pages.",
+        "description": "Convert to Collection List for direct editing; items stop auto-updating from source pages.",
         "inputMethod": "boolean"
       }
     ]

@@ -7,7 +7,7 @@
     "designSystem": false,
     "gizmo": {
         "title": "UN SDG",
-        "description": "United Nations Sustainable Development Goal",
+        "description": "United Nations Sustainable Development Goal.",
         "icon": "hax:apps",
         "color": "purple",
         "tags": [
@@ -24,7 +24,7 @@
             {
                 "property": "goal",
                 "title": "Goal",
-                "description": "UN SDG number",
+                "description": "UN SDG number.",
                 "step": 1,
                 "max": 17,
                 "min": 1,
@@ -34,7 +34,7 @@
             {
               "property": "colorOnly",
               "title": "Color only",
-              "description": "Goal color",
+              "description": "Show only the goal color.",
               "inputMethod": "boolean",
               "required": false
           }

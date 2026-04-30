@@ -91,7 +91,7 @@
         "color": "orange"
       },
       "content": "",
-      "description": "A medium orange explosion."
+      "description": "Medium orange explosion."
     },
     {
       "tag": "awesome-explosion",
@@ -101,7 +101,7 @@
         "soundEnabled": false
       },
       "content": "",
-      "description": "A large blue explosion without sound."
+      "description": "Large blue explosion without sound."
     },
     {
       "tag": "awesome-explosion",
@@ -110,7 +110,7 @@
         "color": "red"
       },
       "content": "",
-      "description": "An epic red explosion with sound."
+      "description": "Epic red explosion with sound."
     }
   ]
 }
