@@ -4,7 +4,7 @@
   "canEditSource": true,
   "gizmo": {
     "title": "Twitter (X) embed",
-    "description": "Embed a tweet from X in context",
+    "description": "Embed a tweet from X in context.",
     "icon": "hax:twitter",
     "color": "blue",
     "tags": ["Other", "social media", "twitter", "embed", "tweet"],
@@ -18,13 +18,13 @@
       {
         "attribute": "tweet",
         "title": "Tweet URL",
-        "description": "URL of the tweet in question to be embedded",
+        "description": "URL of the tweet to embed.",
         "inputMethod": "textfield"
       },
       {
         "attribute": "data-theme",
         "title": "Theme",
-        "description": "Light or dark version of X tweets",
+        "description": "Light or dark theme for X tweets.",
         "inputMethod": "select",
         "options": {
           "light": "Light",
@@ -34,7 +34,7 @@
       {
         "attribute": "no-popups",
         "title": "Prevent popup on click",
-        "description": "This blocks the user from clicking the tweet and going to x.com",
+        "description": "Prevent users from opening the tweet on x.com.",
         "inputMethod": "boolean"
       }
     ],

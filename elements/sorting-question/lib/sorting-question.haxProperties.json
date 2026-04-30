@@ -8,7 +8,7 @@
   "type": "grid",
   "gizmo": {
     "title": "Sorting Question",
-    "description": "Sort items in the correct order",
+    "description": "Sort items into the correct order.",
     "icon": "credit-card",
     "color": "blue",
     "tags": [
@@ -31,7 +31,7 @@
       {
         "property": "answers",
         "title": "Answers",
-        "description": "Order of the answers dictates correct order",
+        "description": "Answer order defines the correct sequence.",
         "inputMethod": "array",
         "itemLabel": "label",
         "hideReorder": true,
@@ -47,7 +47,7 @@
           {
             "property": "image",
             "title": "Image",
-            "description": "Image to display with this answer",
+            "description": "Image shown with this answer.",
             "inputMethod": "haxupload",
             "noVoiceRecord": true,
             "noCamera": true
@@ -55,7 +55,7 @@
           {
             "property": "alt",
             "title": "Image Alternative text",
-            "description": "Alternative text for the image",
+            "description": "Alternative text for the image.",
             "inputMethod": "textfield"
           }
         ]
@@ -66,7 +66,7 @@
       {
         "property": "quizName",
         "title": "Name of the quiz",
-        "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "description": "Quiz name used for xAPI identification in analytics systems.",
         "inputMethod": "textfield"
       }
     ]

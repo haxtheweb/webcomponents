@@ -6,7 +6,7 @@
   "canEditSource": false,
   "gizmo": {
     "title": "Icon",
-    "description": "Item from the full icon library",
+    "description": "Icon from the full icon library.",
     "icon": "icons:face",
     "color": "yellow",
     "tags": ["Content", "text", "icon"],
@@ -21,21 +21,21 @@
     "configure": [
       {
         "property": "icon",
-        "title": "icon",
-        "description": "Icon to render",
+        "title": "Icon",
+        "description": "Icon to render.",
         "inputMethod": "iconpicker",
         "required": true
       },
       {
         "property": "accentColor",
         "title": "Accent color",
-        "description": "Accent color to colorize icon",
+        "description": "Accent color for the icon.",
         "inputMethod": "colorpicker"
       },
       {
         "property": "dark",
         "title": "Dark",
-        "description": "Dark mode / inverted colorset",
+        "description": "Use dark mode (inverted colorset).",
         "inputMethod": "boolean"
       }
     ],

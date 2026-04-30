@@ -6,7 +6,7 @@
   "contentEditable": false,
   "gizmo": {
     "title": "Spotify",
-    "description": "Wrapper on the spotify player embed option",
+    "description": "Wrapper for Spotify player embeds.",
     "icon": "hax:spotify",
     "color": "green",
     "tags": ["Media", "music", "spotify"],
@@ -20,13 +20,13 @@
       {
         "property": "source",
         "title": "Source",
-        "description": "Embed / Share link from Spotify",
+        "description": "Embed or share link from Spotify.",
         "inputMethod": "textfield"
       },
       {
         "property": "theme",
         "title": "Theme",
-        "description": "The color of the background in the player",
+        "description": "Background color theme for the player.",
         "inputMethod": "select",
         "options": {
           "": "Default",
@@ -36,7 +36,7 @@
       {
         "property": "size",
         "title": "Size",
-        "description": "The size of the player",
+        "description": "Player size.",
         "inputMethod": "select",
         "options": {
           "normal": "Default",

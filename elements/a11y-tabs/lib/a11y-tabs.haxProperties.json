@@ -4,7 +4,7 @@
   "canEditSource": true,
   "gizmo": {
     "title": "Tabs",
-    "description": "A set of tabs.",
+    "description": "Set of tabs.",
     "icon": "view-day",
     "color": "grey",
     "tags": ["Layout", "tabs", "display", "layout"]
@@ -13,41 +13,45 @@
     "configure": [
       {
         "property": "ariaLabel",
-        "title": "Label (for accesibility)",
+        "title": "Label (for accessibility)",
+        "description": "Accessible label for the tab set.",
         "inputMethod": "textfield"
       },
       {
         "property": "disabled",
         "title": "Disabled",
+        "description": "Disable all tabs.",
         "inputMethod": "boolean"
       },
       {
         "property": "hidden",
         "title": "Hidden",
+        "description": "Hide the tab set.",
         "inputMethod": "boolean"
       },
       {
         "property": "sticky",
-        "title": "Sticky.",
+        "title": "Sticky",
         "desc": "Horizontal tabs stick to the top of the window when scrolling.",
+        "description": "Keep horizontal tabs at the top while scrolling.",
         "inputMethod": "boolean"
       },
       {
         "property": "layoutBreakpoint",
         "title": "Layout Breakpoint",
         "inputMethod": "number",
-        "description": "Optional minimum breakpoint for horizontal layout of tabs. Default is unset (always horizontal). Setting `-1` forces vertical-only mode."
+        "description": "Minimum breakpoint for horizontal tabs. Leave unset for always horizontal; use -1 for vertical-only."
       },
       {
         "property": "iconBreakpoint",
         "title": "Icon Breakpoint",
         "inputMethod": "number",
-        "description": "Optional minimum breakpoint for showing tab text with icons. Default is always text with icons (0). Setting to -1 forces icon-only mode."
+        "description": "Minimum breakpoint for showing text with icons. Default is 0; use -1 for icon-only mode."
       },
       {
         "slot": "",
         "title": "Tabs",
-        "description": "A series of <a11y-tab/> elements.",
+        "description": "Series of <a11y-tab/> elements.",
         "inputMethod": "code-editor"
       }
     ],
@@ -55,6 +59,7 @@
       {
         "property": "id",
         "title": "Unique ID",
+        "description": "Unique ID for this tab set.",
         "inputMethod": "textfield"
       }
     ]

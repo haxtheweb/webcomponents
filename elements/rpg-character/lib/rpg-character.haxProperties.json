@@ -4,7 +4,7 @@
   "canEditSource": true,
   "gizmo": {
     "title": "RPG Character",
-    "description": "Fun character from HAX",
+    "description": "Fun character from HAX.",
     "icon": "hax:hax2022",
     "color": "red",
     "tags": ["Other", "fun", "8bit", "game"],
@@ -18,13 +18,13 @@
       {
         "property": "seed",
         "title": "Name",
-        "description": "A word that will generate a new random character",
+        "description": "Word used to generate a random character.",
         "inputMethod": "textfield"
       },
       {
         "property": "hat",
         "title": "Hat",
-        "description": "Hat to wear",
+        "description": "Hat style.",
         "inputMethod": "select",
         "options": {
           "none": "Default",
@@ -46,25 +46,25 @@
       {
         "property": "width",
         "title": "Width",
-        "description": "A word that will generate a new random character",
+        "description": "Character width in pixels.",
         "inputMethod": "number"
       },
       {
         "property": "height",
         "title": "Height",
-        "description": "A word that will generate a new random character",
+        "description": "Character height in pixels.",
         "inputMethod": "number"
       },
       {
         "property": "fire",
         "title": "On fire?",
-        "description": "Is the character on fire?",
+        "description": "Whether the character is on fire.",
         "inputMethod": "boolean"
       },
       {
         "property": "walking",
         "title": "Walking?",
-        "description": "Walking around or running if on fire",
+        "description": "Walk animation; runs when on fire.",
         "inputMethod": "boolean"
       }
     ]

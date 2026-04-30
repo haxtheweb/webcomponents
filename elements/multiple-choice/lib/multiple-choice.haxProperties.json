@@ -11,7 +11,7 @@
   },
   "gizmo": {
     "title": "Multiple choice",
-    "description": "Multiple choice self check",
+    "description": "Multiple-choice self-check question.",
     "icon": "hax:multiple-choice",
     "color": "purple",
     "tags": [
@@ -42,13 +42,13 @@
       {
         "property": "randomize",
         "title": "Randomize",
-        "description": "Randomize the answers dynamically",
+        "description": "Randomize answers dynamically.",
         "inputMethod": "boolean"
       },
       {
         "property": "singleOption",
         "title": "Single answer",
-        "description": "Only allow one answer",
+        "description": "Allow only one answer.",
         "inputMethod": "boolean"
       },
       {
@@ -69,13 +69,13 @@
           {
             "property": "correct",
             "title": "Correct",
-            "description": "Is this correct",
+            "description": "Whether this answer is correct.",
             "inputMethod": "boolean"
           },
           {
             "property": "image",
             "title": "Image",
-            "description": "Image to display with this answer",
+            "description": "Image shown with this answer.",
             "inputMethod": "haxupload",
             "noVoiceRecord": true,
             "noCamera": true
@@ -83,7 +83,7 @@
           {
             "property": "alt",
             "title": "Image Alternative text",
-            "description": "Alternative text for the image",
+            "description": "Alternative text for the image.",
             "inputMethod": "textfield"
           }
         ]
@@ -94,7 +94,7 @@
       {
         "property": "quizName",
         "title": "Name of the quiz",
-        "description": "Quiz name passed in for use in xAPI driven environments for identification of this item",
+        "description": "Quiz name used for xAPI identification in analytics systems.",
         "inputMethod": "textfield"
       }
     ]

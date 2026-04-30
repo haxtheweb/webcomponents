@@ -4,7 +4,7 @@
   "canEditSource": true,
   "gizmo": {
     "title": "Tags",
-    "description": "Simple listing of tags to show in the page",
+    "description": "Simple tag list for display on the page.",
     "icon": "line-style",
     "color": "orange",
     "tags": ["Other", "content", "tag", "list"],
@@ -18,20 +18,20 @@
       {
         "property": "tags",
         "title": "Tags",
-        "description": "Comma separated list of tags",
+        "description": "Comma-separated list of tags.",
         "inputMethod": "textfield",
         "required": true
       },
       {
         "property": "autoAccentColor",
         "title": "Auto Accent Color",
-        "description": "Automatically set the accent color based on label",
+        "description": "Automatically set accent color based on label.",
         "inputMethod": "boolean"
       },
       {
         "property": "accentColor",
         "title": "Color",
-        "description": "color for tags",
+        "description": "Color for tags.",
         "inputMethod": "colorpicker"
       }
     ],

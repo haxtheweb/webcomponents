@@ -5,8 +5,8 @@
   "contentEditable": false,
   "hideDefaultSettings": false,
   "gizmo": {
-    "title": "Github Contributors list",
-    "description": "Rendered as RPG characters using github API",
+    "title": "GitHub contributors list",
+    "description": "Rendered as RPG characters using the GitHub API.",
     "icon": "mdi-social:github-circle",
     "color": "light-blue",
     "tags": ["Other", "developer", "community", "git"],
@@ -21,19 +21,19 @@
       {
         "property": "org",
         "title": "Organization",
-        "description": "github.com/ORGANIZATIONANME/REPONAME",
+        "description": "Organization name from github.com/ORG/REPO.",
         "inputMethod": "textfield"
       },
       {
         "property": "repo",
         "title": "Repository",
-        "description": "/REPONAME the name of the repository",
+        "description": "Repository name from github.com/ORG/REPO.",
         "inputMethod": "textfield"
       },
       {
         "property": "limit",
         "title": "Limit",
-        "description": "Use this if there are a lot of contributors",
+        "description": "Limit the number of contributors shown.",
         "inputMethod": "number"
       }
     ]

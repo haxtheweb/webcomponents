@@ -544,7 +544,7 @@ export class HAXWiring {
         props.settings.advanced.push({
           attribute: "data-hax-lock",
           title: "Lock editing",
-          description: "Prevent changes to this element and all its content",
+          description: "Prevent changes to this element and all its content.",
           inputMethod: "boolean",
           
         });
@@ -552,54 +552,54 @@ export class HAXWiring {
         props.settings.developer.push({
           attribute: "class",
           title: "Classes",
-          description: "CSS classes applied manually to the element",
+          description: "CSS classes applied manually to the element.",
           inputMethod: "textfield",
         });
         // allow styles to be modified this way
         props.settings.developer.push({
           attribute: "style",
           title: "Styles",
-          description: "Custom CSS styles as applied to the element",
+          description: "Custom CSS styles applied to the element.",
           inputMethod: "textfield",
         });
         // allow schema definitions
         props.settings.developer.push({
           attribute: "prefix",
           title: "Schema: prefix",
-          description: "Schema prefixes",
+          description: "Schema prefixes.",
           inputMethod: "textfield",
         });
         props.settings.developer.push({
           attribute: "typeof",
           title: "Schema: TypeOf",
-          description: "typeof definition for Schema usage",
+          description: "Schema typeof value.",
           inputMethod: "textfield",
         });
         props.settings.developer.push({
           attribute: "property",
           title: "Schema: Property",
-          description: "typeof definition for Schema usage",
+          description: "Schema property value.",
           inputMethod: "textfield",
         });
         props.settings.developer.push({
           attribute: "resource",
           title: "Schema: Resource ID",
-          description: "Schema resource identifier",
+          description: "Schema resource identifier.",
           inputMethod: "textfield",
         });
         // allow the id to be modified
         props.settings.developer.push({
           attribute: "id",
           title: "ID",
-          description: "element ID, only set this if you know why",
+          description: "Element ID. Set this only when needed.",
           inputMethod: "textfield",
         });
         // we need to support slot in the UI but actually shift it around under the hood
         // this is so that shadow roots don't get mad when previewing
         props.settings.developer.push({
           attribute: "slot",
-          title: "slot",
-          description: "DOM slot area",
+          title: "Slot",
+          description: "DOM slot name.",
           inputMethod: "textfield",
         });
       }
@@ -789,7 +789,7 @@ export class HAXWiring {
             {
               slot: "",
               title: "Inner content",
-              description: "The slotted content that lives inside the tag",
+              description: "Slotted content inside this element.",
               inputMethod: "textfield",
               icon: "android",
               required: true,
@@ -798,7 +798,7 @@ export class HAXWiring {
             {
               slot: "button",
               title: "Button content",
-              description: "The content that can override the button",
+              description: "Content that overrides the button.",
               inputMethod: "textfield",
               icon: "android",
               required: true,
@@ -815,7 +815,7 @@ export class HAXWiring {
             },
             {
               property: "primaryColor",
-              title: "Title",
+              title: "Primary color",
               description: "",
               inputMethod: "textfield",
               icon: "android",
@@ -837,7 +837,7 @@ export class HAXWiring {
               property: "endPoint",
               title: "API endpoint",
               description:
-                "An optional endpoint to hit and load in more data dymaically.",
+                "Optional endpoint used to load additional data dynamically.",
               inputMethod: "textfield",
               icon: "android",
               validation: "[a-z0-9]",

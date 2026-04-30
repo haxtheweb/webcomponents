@@ -13,7 +13,7 @@
   },
   "gizmo": {
     "title": "Media quote",
-    "description": "Image with a quote, citation, and optional caption",
+    "description": "Image with a quote, citation, and optional caption.",
     "icon": "editor:format-quote",
     "color": "purple",
     "tags": ["Media", "quote"],
@@ -27,25 +27,25 @@
       {
         "slot": "quote",
         "title": "Quote",
-        "description": "The quote",
+        "description": "Quote text.",
         "inputMethod": "textfield"
       },
       {
         "slot": "author",
         "title": "Author",
-        "description": "The author of the quote",
+        "description": "Quote author.",
         "inputMethod": "textfield"
       },
       {
         "slot": "author-detail",
         "title": "Author details",
-        "description": "The details about the author of the quote",
+        "description": "Author details.",
         "inputMethod": "textfield"
       },
       {
         "slot": "caption",
         "title": "Caption",
-        "description": "The caption for the image",
+        "description": "Image caption.",
         "inputMethod": "textfield"
       },
       {
@@ -66,7 +66,7 @@
       {
         "property": "accentColor",
         "title": "Accent Color",
-        "description": "Changes the accent color of the card",
+        "description": "Card accent color.",
         "inputMethod": "colorpicker"
       }
     ],

@@ -9,7 +9,7 @@
   "contentEditable": false,
   "gizmo": {
     "title": "Smart Collection",
-    "description": "A collection built off of data in the site manifest",
+    "description": "Collection built from site manifest data.",
     "icon": "hax:idea",
     "color": "blue",
     "tags": ["Layout", "smart", "site", "collection", "list", "items"],
@@ -23,25 +23,25 @@
       {
         "property": "parent",
         "title": "Parent",
-        "description": "Limit results to those that have this item as it's parent",
+        "description": "Limit results to items with this parent.",
         "inputMethod": "textfield"
       },
       {
         "property": "tags",
         "title": "Tags",
-        "description": "Filter by tags, comma separated",
+        "description": "Filter by tags (comma-separated).",
         "inputMethod": "textfield"
       },
       {
         "property": "pageType",
         "title": "Page type",
-        "description": "Filter by page type",
+        "description": "Filter by page type.",
         "inputMethod": "textfield"
       },
       {
         "property": "published",
         "title": "Publishing status",
-        "description": "Filter by publishing status",
+        "description": "Filter by publishing status.",
         "inputMethod": "select",
         "itemsList": [
           {
@@ -61,7 +61,7 @@
       {
         "property": "hideInMenu",
         "title": "Hidden in menus status",
-        "description": "Filter by hidden in menus status",
+        "description": "Filter by hidden-in-menu status.",
         "inputMethod": "select",
         "itemsList": [
           {
@@ -81,7 +81,7 @@
       {
         "property": "relatedItems",
         "title": "Related items",
-        "description": "Filter by related items",
+        "description": "Filter by related items.",
         "inputMethod": "textfield"
       }
     ],
@@ -100,7 +100,7 @@
       {
         "property": "limit",
         "title": "Limit",
-        "description": "Limit results",
+        "description": "Limit the number of results.",
         "inputMethod": "number"
       }
     ],
@@ -108,7 +108,7 @@
       {
         "property": "breakSmartCollection",
         "title": "Break smart collection",
-        "description": "Collection items convert to a Collection List to allow editing directly. These items will no longer get updates when the reference pages update.",
+        "description": "Convert to Collection List for direct editing; items no longer auto-update from source pages.",
         "inputMethod": "boolean"
       }
     ]

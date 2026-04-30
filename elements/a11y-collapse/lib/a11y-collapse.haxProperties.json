@@ -5,7 +5,7 @@
   "type": "grid",
   "gizmo": {
     "title": "Collapsible container",
-    "description": "A single instance of an expand collapse.",
+    "description": "Single expandable and collapsible container.",
     "icon": "icons:view-day",
     "color": "grey",
     "tags": ["Layout"]
@@ -21,13 +21,13 @@
       {
         "property": "expanded",
         "title": "Expanded",
-        "description": "Expand by default",
+        "description": "Expand by default.",
         "inputMethod": "boolean"
       },
       {
         "property": "headingButton",
         "title": "Heading Button",
-        "description": "Make entire heading clickble instead of just the icon.",
+        "description": "Make the entire heading clickable instead of only the icon.",
         "inputMethod": "boolean"
       },
       {
@@ -39,7 +39,7 @@
       {
         "property": "iconExpanded",
         "title": "Icon (when expanded)",
-        "description": "Optional: The icon for the toggle expand/collapse button when expanded",
+        "description": "Optional icon for the expanded toggle state.",
         "inputMethod": "iconpicker"
       },
       {
@@ -58,13 +58,13 @@
       {
         "property": "tooltip",
         "title": "Tooltip",
-        "description": "The tooltip for the toggle expand/collapse button",
+        "description": "Tooltip for the expand/collapse toggle button.",
         "inputMethod": "textfield"
       },
       {
         "property": "tooltipExpanded",
         "title": "Tooltip (when expanded)",
-        "description": "The tooltip for the toggle expand/collapse button when expanded",
+        "description": "Tooltip for the expand/collapse button when expanded.",
         "inputMethod": "textfield"
       }
     ]

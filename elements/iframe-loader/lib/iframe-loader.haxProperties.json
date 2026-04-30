@@ -8,7 +8,7 @@
   "canEditSource": false,
   "gizmo": {
     "title": "Iframe",
-    "description": "A basic way to frame external web content",
+    "description": "Embed external web content in an iframe.",
     "icon": "hax:iframe",
     "color": "blue-grey",
     "tags": ["Other", "iframe", "embed", "web", "link"],
@@ -46,8 +46,8 @@
     "configure": [
       {
         "property": "source",
-        "title": "Resource url",
-        "description": "Resource url",
+        "title": "Resource URL",
+        "description": "Resource URL.",
         "inputMethod": "textfield",
         "icon": "link",
         "required": true,
@@ -56,13 +56,13 @@
       {
         "property": "height",
         "title": "Height",
-        "description": "Content frame height",
+        "description": "Iframe height.",
         "inputMethod": "textfield"
       },
       {
         "property": "width",
         "title": "Width",
-        "description": "Content frame width",
+        "description": "Iframe width.",
         "inputMethod": "textfield"
       }
     ],

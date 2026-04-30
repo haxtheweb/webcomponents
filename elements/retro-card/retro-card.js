@@ -235,7 +235,7 @@ class RetroCard extends SimpleColors {
       canEditSource: true,
       gizmo: {
         title: "Retro card",
-        description: "Simple card in a cool retro design",
+        description: "Simple card with a retro design.",
         icon: "icons:credit-card",
         color: "purple",
         tags: ["Layout", "card", "layout"],
@@ -250,13 +250,13 @@ class RetroCard extends SimpleColors {
           {
             property: "title",
             title: "Title",
-            description: "Main title of card",
+            description: "Main card title.",
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "url",
-            description: "Link to go to when clicking the card",
+            description: "URL to open when the card is clicked.",
             inputMethod: "textfield",
             required: false,
             validationType: "url",
@@ -264,21 +264,21 @@ class RetroCard extends SimpleColors {
           {
             property: "subtitle",
             title: "Sub-title",
-            description: "Sub heading",
+            description: "Card subtitle.",
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "tags",
             title: "Tags",
-            description: "Comma separated tags",
+            description: "Comma-separated tags.",
             inputMethod: "textfield",
             required: false,
           },
           {
             property: "mediaSource",
             title: "Media source",
-            description: "Primary media source",
+            description: "Primary media source.",
             inputMethod: "haxupload",
             noVoiceRecord: true,
             required: true,
@@ -286,7 +286,7 @@ class RetroCard extends SimpleColors {
           },
           {
             property: "hoverSource",
-            description: "When user hovers / activates the card",
+            description: "Media source shown when the card is hovered or activated.",
             title: "Source on hover",
             inputMethod: "haxupload",
             noVoiceRecord: true,
@@ -295,7 +295,7 @@ class RetroCard extends SimpleColors {
           },
           {
             property: "accentColor",
-            description: "An accent to apply evenly to the card",
+            description: "Accent color applied across the card.",
             title: "Accent Color",
             inputMethod: "colorpicker",
             required: false,
@@ -303,7 +303,7 @@ class RetroCard extends SimpleColors {
           {
             property: "dark",
             title: "Dark",
-            description: "Sets base color to be dark mode",
+            description: "Use dark mode base colors.",
             inputMethod: "boolean",
             required: false,
           },

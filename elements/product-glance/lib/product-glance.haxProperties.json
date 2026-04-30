@@ -4,7 +4,7 @@
   "canEditSource": true,
   "gizmo": {
     "title": "Product glance",
-    "description": "Quick overview of a thing",
+    "description": "Quick product overview block.",
     "icon": "communication:business",
     "color": "blue",
     "tags": ["Other", "product", "marketing", "overview", "card"],
@@ -18,25 +18,25 @@
       {
         "property": "icon",
         "title": "Icon",
-        "description": "Icon to represent concept at a high level",
+        "description": "Icon representing the concept.",
         "inputMethod": "iconpicker"
       },
       {
         "property": "title",
-        "title": "title",
-        "description": "Primary concept at a glance",
+        "title": "Title",
+        "description": "Primary concept at a glance.",
         "inputMethod": "textfield"
       },
       {
         "property": "subtitle",
         "title": "Subtitle",
-        "description": "Additional detail",
+        "description": "Additional detail.",
         "inputMethod": "textfield"
       },
       {
         "property": "accentColor",
         "title": "Accent color",
-        "description": "Accent for the icon",
+        "description": "Accent color for the icon.",
         "inputMethod": "colorpicker"
       }
     ]

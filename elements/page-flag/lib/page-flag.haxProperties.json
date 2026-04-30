@@ -5,7 +5,7 @@
   "contentEditable": false,
   "gizmo": {
     "title": "Page flag",
-    "description": "An editorial note for authors to work on the page",
+    "description": "Editorial note for page authors.",
     "icon": "lrn:quiz",
     "color": "grey",
     "tags": ["Other", "workflow", "edit", "note", "flag", "page"]
@@ -15,14 +15,14 @@
       {
         "property": "accentColor",
         "title": "Accent Color",
-        "description": "The accent color for the page flag",
+        "description": "Accent color for the page flag.",
         "inputMethod": "colorpicker",
         "icon": "editor:format-color-fill"
       },
       {
         "property": "label",
         "title": "Label",
-        "description": "The label for the page flag",
+        "description": "Label text for the page flag.",
         "inputMethod": "textfield"
       }
     ],

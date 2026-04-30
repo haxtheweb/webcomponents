@@ -7,7 +7,7 @@
   "designSystem": false,
   "gizmo": {
     "title": "Block quote",
-    "description": "Designed Quote",
+    "description": "Styled quote block.",
     "icon": "editor:format-quote",
     "color": "blue",
     "tags": [
@@ -27,19 +27,19 @@
       {
         "property": "citation",
         "title": "Citation",
-        "description": "The citation of the element",
+        "description": "Citation text.",
         "inputMethod": "textfield"
       },
       {
         "property": "alt",
         "title": "Alt",
-        "description": "The alt text for the image",
+        "description": "Alternative text for the image.",
         "inputMethod": "textfield"
       },
       {
         "property": "image",
         "title": "Image",
-        "description": "The image of the element",
+        "description": "Image shown with the quote.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true,
         "validationType": "url"

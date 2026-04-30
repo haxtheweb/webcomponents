@@ -4,7 +4,7 @@
   "canEditSource": false,
   "gizmo": {
     "title": "Event Badge",
-    "description": "Badge",
+    "description": "Event badge component.",
     "icon": "credit-card",
     "color": "blue",
     "tags": ["Other", "event", "badge", "conference", "meeting", "fun"],
@@ -18,7 +18,7 @@
       {
         "property": "image",
         "title": "TV Image",
-        "description": "Image shown on the TV",
+        "description": "Image shown on the TV.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true,
         "validationType": "url"
@@ -26,7 +26,7 @@
       {
         "property": "logo",
         "title": "Logo",
-        "description": "Placed in bottom right corner of badge",
+        "description": "Logo shown in the badge corner.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true,
         "validationType": "url"
@@ -34,25 +34,25 @@
       {
         "property": "title",
         "title": "Title",
-        "description": "Top area on the card",
+        "description": "Title shown at the top of the badge.",
         "inputMethod": "textfield"
       },
       {
         "property": "name",
         "title": "Name",
-        "description": "Name on badge",
+        "description": "Name shown on the badge.",
         "inputMethod": "textfield"
       },
       {
         "property": "position",
         "title": "Position",
-        "description": "Position of person",
+        "description": "Person's role or title.",
         "inputMethod": "textfield"
       },
       {
         "property": "organization",
         "title": "Organization",
-        "description": "Organization person works for",
+        "description": "Organization the person works for.",
         "inputMethod": "textfield"
       },
       {
@@ -64,13 +64,13 @@
       {
         "property": "accentColor",
         "title": "Accent color",
-        "description": "Background / text primary color",
+        "description": "Primary background or text color.",
         "inputMethod": "colorpicker"
       },
       {
         "property": "knobcolor",
         "title": "Knob color",
-        "description": "Knobs on the TV",
+        "description": "Color of the TV knobs.",
         "inputMethod": "colorpicker"
       }
     ],
@@ -78,13 +78,13 @@
       {
         "property": "sepia",
         "title": "Sepia",
-        "description": "Make card sepia.",
+        "description": "Apply a sepia effect.",
         "inputMethod": "boolean"
       },
       {
         "property": "blackwhite",
         "title": "Black and white",
-        "description": "Make card black and white.",
+        "description": "Apply a black-and-white effect.",
         "inputMethod": "boolean"
       }
     ]

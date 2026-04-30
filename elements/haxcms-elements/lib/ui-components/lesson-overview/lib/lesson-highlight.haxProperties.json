@@ -4,7 +4,7 @@
   "canEditSource": true,
   "gizmo": {
     "title": "Lesson Highlight",
-    "description": "Quick overview of a thing",
+    "description": "Quick lesson overview block.",
     "icon": "communication:business",
     "color": "blue",
     "tags": ["Instructional", "layout", "highlight", "summary", "overview"],
@@ -19,31 +19,31 @@
       {
         "property": "icon",
         "title": "Icon",
-        "description": "Icon to represent concept at a high level",
+        "description": "Icon representing the concept.",
         "inputMethod": "iconpicker"
       },
       {
         "slot": "title",
-        "title": "title",
-        "description": "Primary concept at a glance",
+        "title": "Title",
+        "description": "Primary concept at a glance.",
         "inputMethod": "textfield"
       },
       {
         "slot": "",
         "title": "Subtitle",
-        "description": "Additional detail",
+        "description": "Additional detail.",
         "inputMethod": "textfield"
       },
       {
         "property": "disabled",
-        "title": "disabled",
-        "description": "Dark mode",
+        "title": "Disabled",
+        "description": "Disable this highlight.",
         "inputMethod": "boolean"
       },
       {
         "property": "smart",
         "title": "Smart data",
-        "description": "Allow system context to set details dynamically",
+        "description": "Use system context to set details dynamically.",
         "inputMethod": "select",
         "options": {
           "": "- none -",
@@ -59,13 +59,13 @@
       {
         "property": "accentColor",
         "title": "Accent color",
-        "description": "Accent for the icon",
+        "description": "Accent color for the icon.",
         "inputMethod": "colorpicker"
       },
       {
         "property": "dark",
         "title": "Dark",
-        "description": "Dark mode",
+        "description": "Use dark mode.",
         "inputMethod": "boolean"
       }
     ]

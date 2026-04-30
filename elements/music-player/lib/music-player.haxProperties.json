@@ -4,7 +4,7 @@
   "canEditSource": true,
   "gizmo": {
     "title": "MIDI visualizer",
-    "description": "Play MIDI in context with visualization",
+    "description": "Play MIDI in context with visualization.",
     "icon": "image:music-note",
     "color": "blue",
     "tags": [
@@ -25,14 +25,14 @@
       {
         "property": "source",
         "title": "Source",
-        "description": "Source of the file to play",
+        "description": "File URL to play.",
         "inputMethod": "haxupload",
         "noCamera": true
       },
       {
         "property": "visualizer",
         "title": "Visualization",
-        "description": "How to visualize the music file",
+        "description": "Visualization style for the music file.",
         "inputMethod": "select",
         "options": {
           "staff": "Staff",
@@ -43,7 +43,7 @@
       {
         "property": "noWaterfall",
         "title": "Hide waterfall",
-        "description": "Disable the waterfall of notes when visualized as a piano",
+        "description": "Hide waterfall notes in piano visualization.",
         "inputMethod": "boolean"
       }
     ],

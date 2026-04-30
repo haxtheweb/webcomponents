@@ -9,7 +9,7 @@
   "contentEditable": false,
   "gizmo": {
     "title": "Discord",
-    "description": "Embed discord communities based on share URL",
+    "description": "Embed Discord communities from a share URL.",
     "icon": "hax:discord",
     "color": "purple",
     "tags": ["Other", "discord", "embed", "link", "social"],
@@ -22,8 +22,8 @@
     "configure": [
       {
         "property": "source",
-        "title": "Resource url",
-        "description": "Resource url",
+        "title": "Resource URL",
+        "description": "Resource URL.",
         "inputMethod": "textfield",
         "icon": "link",
         "required": true,
@@ -32,13 +32,13 @@
       {
         "property": "height",
         "title": "Height",
-        "description": "Content frame height",
+        "description": "Content frame height.",
         "inputMethod": "textfield"
       },
       {
         "property": "width",
         "title": "Width",
-        "description": "Content frame width",
+        "description": "Content frame width.",
         "inputMethod": "textfield"
       }
     ],

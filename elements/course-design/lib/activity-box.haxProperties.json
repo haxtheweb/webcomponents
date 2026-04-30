@@ -6,7 +6,7 @@
   "type": "grid",
   "gizmo": {
     "title": "Activity Box",
-    "description": "A small designed heading",
+    "description": "Small styled heading block.",
     "icon": "editor:format-quote",
     "color": "blue",
     "tags": ["Instructional", "design", "pedagogy", "presentation", "action"],
@@ -19,19 +19,19 @@
       {
         "property": "icon",
         "title": "Icon",
-        "description": "The icon to be displayed alongside the activity box",
+        "description": "Icon displayed alongside the activity box.",
         "inputMethod": "textfield"
       },
       {
         "property": "tag",
         "title": "Activity box tag",
-        "description": "The tag to be displayed within the activity box",
+        "description": "Tag shown in the activity box.",
         "inputMethod": "textfield"
       },
       {
         "property": "nocolourize",
         "title": "No Colorize",
-        "description": "Check to stop any colors being applied to the icon",
+        "description": "Prevent colors from being applied to the icon.",
         "inputMethod": "boolean"
       }
     ],

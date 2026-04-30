@@ -5,7 +5,7 @@
   "contentEditable": false,
   "gizmo": {
     "title": "Self Check",
-    "description": "The user will be able to complete a self-check.",
+    "description": "Users can complete a self-check.",
     "icon": "icons:check-circle",
     "color": "orange",
     "tags": [
@@ -35,20 +35,20 @@
       {
         "property": "image",
         "title": "Image",
-        "description": "The image of the element",
+        "description": "Image for the self-check.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true
       },
       {
         "property": "title",
         "title": "Title",
-        "description": "The title of the element",
+        "description": "Title of the self-check.",
         "inputMethod": "textfield"
       },
       {
         "property": "alt",
         "title": "Alt Text",
-        "description": "Add alt text to the image",
+        "description": "Alt text for the image.",
         "inputMethod": "alt"
       },
       {
@@ -64,7 +64,7 @@
       {
         "property": "accentColor",
         "title": "Theme Color",
-        "description": "Choose a theme color from the design system",
+        "description": "Choose a theme color from the design system.",
         "inputMethod": "select",
         "options": {
           "primary": "Primary",
@@ -80,7 +80,7 @@
       {
         "property": "link",
         "title": "More link",
-        "description": "Link to additional information",
+        "description": "Link to additional information.",
         "inputMethod": "textfield"
       }
     ]

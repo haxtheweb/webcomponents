@@ -5,7 +5,7 @@
   "canEditSource": true,
   "gizmo": {
     "title": "Image Blockquote",
-    "description": "A quote well designed with an optional image",
+    "description": "Stylized quote with an optional image.",
     "icon": "editor:format-quote",
     "color": "orange",
     "tags": [
@@ -36,7 +36,7 @@
       {
         "property": "image",
         "title": "Image",
-        "description": "Adds image to testimonial",
+        "description": "Add an image to the testimonial.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true,
         "icon": "editor:insert-photo"
@@ -44,35 +44,35 @@
       {
         "property": "accentColor",
         "title": "Accent color",
-        "description": "Select the accent color use",
+        "description": "Select the accent color to use.",
         "inputMethod": "colorpicker",
         "icon": "editor:format-color-fill"
       },
       {
         "property": "dark",
         "title": "Dark",
-        "description": "Use dark theme",
+        "description": "Use a dark theme.",
         "inputMethod": "boolean",
         "icon": "invert-colors"
       },
       {
         "property": "name",
         "title": "Full Name",
-        "description": "Credit the person making the testimonial",
+        "description": "Name of the person giving the testimonial.",
         "inputMethod": "textfield",
         "icon": "account-circle"
       },
       {
         "property": "position",
         "title": "Position or Job Title",
-        "description": "List the position and job title",
+        "description": "Position or job title of the person.",
         "inputMethod": "textfield",
         "icon": "icons:work"
       },
       {
         "slot": "",
         "title": "Quote",
-        "description": "Quote by the person giving the testimonial",
+        "description": "Quote from the testimonial author.",
         "inputMethod": "textfield",
         "slotWrapper": "p",
         "allowedSlotWrappers": ["p"]

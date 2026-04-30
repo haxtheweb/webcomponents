@@ -4,7 +4,7 @@
   "canEditSource": true,
   "gizmo": {
     "title": "Image compare",
-    "description": "Simple element to allow one image to swipe over top of the other.",
+    "description": "Swipe one image over another for comparison.",
     "icon": "image:compare",
     "color": "orange",
     "tags": [
@@ -33,7 +33,7 @@
       {
         "property": "topSrc",
         "title": "Top image",
-        "description": "The base image to swipe over",
+        "description": "Top image to swipe over the bottom image.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true,
         "validationType": "url",
@@ -42,14 +42,14 @@
       {
         "property": "topAlt",
         "title": "Top image alt text",
-        "description": "Required alternate text for accessibility",
+        "description": "Required alt text for accessibility.",
         "inputMethod": "alt",
         "required": true
       },
       {
         "property": "bottomSrc",
         "title": "Bottom image",
-        "description": "The base image to swipe over",
+        "description": "Bottom image shown under the top image.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true,
         "validationType": "url",
@@ -58,7 +58,7 @@
       {
         "property": "bottomAlt",
         "title": "Bottom image alt text",
-        "description": "Required alternate text for accessibility",
+        "description": "Required alt text for accessibility.",
         "inputMethod": "alt",
         "required": true
       }
@@ -67,7 +67,7 @@
       {
         "property": "opacity",
         "title": "Behavior",
-        "description": "Do you want the slider to wipe the top image across the bottom one (default), or to adjust the opacity of the top image?",
+        "description": "Choose wipe mode (default) or top-image opacity mode.",
         "inputMethod": "boolean",
         "icon": "image:compare"
       },
@@ -75,18 +75,18 @@
         "property": "accentColor",
         "title": "Accent Color",
         "inputMethod": "colorpicker",
-        "description": "Slider bar color"
+        "description": "Slider bar color."
       },
       {
         "property": "dark",
         "title": "Dark",
         "inputMethod": "boolean",
-        "description": "Inverts slider bar color"
+        "description": "Invert the slider bar color."
       },
       {
         "property": "position",
         "title": "Initial Position",
-        "description": "Number from 0 to 100",
+        "description": "Starting position from 0 to 100.",
         "inputMethod": "number",
         "min": 0,
         "max": 100
