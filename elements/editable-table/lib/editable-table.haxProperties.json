@@ -5,7 +5,7 @@
   "type": "grid",
   "gizmo": {
     "title": "Table",
-    "description": "Table based data for the web",
+    "description": "Table-based data for the web.",
     "icon": "editor:border-all",
     "color": "purple",
     "tags": [
@@ -30,43 +30,43 @@
       {
         "property": "rowHeader",
         "title": "Row Header",
-        "description": "Treats first row as header",
+        "description": "Treat first row as a header.",
         "inputMethod": "boolean"
       },
       {
         "property": "columnHeader",
         "title": "Column Header",
-        "description": "Treats first column as header",
+        "description": "Treat first column as a header.",
         "inputMethod": "boolean"
       },
       {
         "property": "footer",
         "title": "Footer",
-        "description": "Treats last row as footer",
+        "description": "Treat last row as a footer.",
         "inputMethod": "boolean"
       },
       {
         "property": "sort",
         "title": "Sortable",
-        "description": "Allows rows to be sorted by a column value",
+        "description": "Allow sorting by column values.",
         "inputMethod": "boolean"
       },
       {
         "property": "filter",
         "title": "Allow Filter",
-        "description": "Allows data to be filtered by a column value",
+        "description": "Allow filtering by column values.",
         "inputMethod": "boolean"
       },
       {
         "property": "numericStyles",
         "title": "Numeric Styling",
-        "description": "Styling for numeric columns",
+        "description": "Apply numeric styling to numeric columns.",
         "inputMethod": "boolean"
       },
       {
         "property": "responsive",
         "title": "Responsive",
-        "description": "Automatically adjusts table when viewed on small screens",
+        "description": "Adjust table layout on small screens.",
         "inputMethod": "boolean"
       }
     ],
@@ -79,25 +79,25 @@
       {
         "property": "condensed",
         "title": "Condense Rows",
-        "description": "Condenses row height",
+        "description": "Reduce row height.",
         "inputMethod": "boolean"
       },
       {
         "property": "striped",
         "title": "Striped Rows",
-        "description": "Add shading to every other row",
+        "description": "Shade every other row.",
         "inputMethod": "boolean"
       },
       {
         "property": "downloadable",
         "title": "Download Button",
-        "description": "Adds a button to download the table",
+        "description": "Add a button to download the table.",
         "inputMethod": "boolean"
       },
       {
         "property": "printable",
         "title": "Print Button",
-        "description": "Adds a button to print just the table",
+        "description": "Add a button to print only the table.",
         "inputMethod": "boolean"
       }
     ],
@@ -105,7 +105,7 @@
       {
         "property": "dataCsv",
         "title": "CSV Data",
-        "description": "Make a table from an uploaded CSV file",
+        "description": "Create a table from an uploaded CSV file.",
         "inputMethod": "fileupload",
         "accepts": "csv"
       }

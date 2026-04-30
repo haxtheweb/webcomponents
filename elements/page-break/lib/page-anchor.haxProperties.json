@@ -7,7 +7,7 @@
   "api": "1",
   "gizmo": {
     "title": "Page Anchor",
-    "description": "Link to specific points in a video on the page",
+    "description": "Link to specific points in media on the page.",
     "icon": "hax:anchor",
     "color": "grey",
     "tags": [
@@ -29,19 +29,19 @@
       {
         "property": "target",
         "title": "Page target",
-        "description": "ID or resource that the anchor relates the material to",
+        "description": "ID or resource this anchor points to.",
         "inputMethod": "textfield"
       },
       {
         "property": "value",
-        "title": "Deep link Value",
-        "description": "Value associated to the anchor, example: timestamp, slide id, etc.",
+        "title": "Deep link value",
+        "description": "Deep-link value (for example timestamp or slide ID).",
         "inputMethod": "textfield"
       },
       {
         "property": "entityId",
         "title": "Site entity",
-        "description": "Optional Associated site entity. This allows the site to control the presentation of the related entity concept, taxonomy, etc. Otherwise color and icon defaults to the related item.",
+        "description": "Optional site entity for controlling related concept presentation.",
         "inputMethod": "textfield"
       }
     ],

@@ -197,7 +197,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       gizmo: {
         title: "Video",
         description:
-          "This can present video in a highly accessible manner regardless of source.",
+          "Accessible video playback across multiple sources.",
         icon: "av:play-circle-filled",
         color: "red",
         tags: [
@@ -235,7 +235,7 @@ class VideoPlayer extends IntersectionObserverMixin(
           {
             property: "source",
             title: "Source",
-            description: "The URL for this media.",
+            description: "URL for this media.",
             inputMethod: "haxupload",
             noCamera: true,
             noVoiceRecord: true,
@@ -245,14 +245,14 @@ class VideoPlayer extends IntersectionObserverMixin(
           {
             property: "mediaTitle",
             title: "Title",
-            description: "Simple title for under video",
+            description: "Title shown below the video.",
             inputMethod: "textfield",
             validationType: "text",
           },
           {
             property: "thumbnailSrc",
             title: "Poster image",
-            description: "The image URL for the poster image.",
+            description: "Poster image URL.",
             inputMethod: "haxupload",
             noVoiceRecord: true,
             validationType: "url",
@@ -270,7 +270,7 @@ class VideoPlayer extends IntersectionObserverMixin(
               {
                 property: "src",
                 title: "Track file",
-                description: "The URL for the track file (WebVTT format).",
+                description: "URL for the track file (WebVTT format).",
                 inputMethod: "haxupload",
                 noCamera: true,
                 noVoiceRecord: true,
@@ -310,7 +310,7 @@ class VideoPlayer extends IntersectionObserverMixin(
           {
             property: "startTime",
             title: "Start time",
-            description: "Start video at a specific time (seconds)",
+            description: "Start video at a specific time (seconds).",
             inputMethod: "number",
           },
           {
@@ -378,7 +378,7 @@ class VideoPlayer extends IntersectionObserverMixin(
             property: "allowBackgroundPlay",
             title: "Allow background playback",
             description:
-              "Videos pause / play automatically when tab loses focus; this enables video to play without tab having focus",
+              "Keep playing when the browser tab loses focus.",
             inputMethod: "boolean",
           },
           {
@@ -693,20 +693,20 @@ class VideoPlayer extends IntersectionObserverMixin(
       embeddedMedia: "embedded media",
       gizmoTitle: "Video",
       gizmoDescription:
-        "This can present video in a highly accessible manner regardless of source.",
+        "Accessible video playback across multiple sources.",
       tagAudioVideo: "Media",
       tagMedia: "Media",
       sourceTitle: "Source",
-      sourceDescription: "The URL for this media.",
+      sourceDescription: "URL for this media.",
       titleTitle: "Title",
-      titleDescription: "Simple title for under video",
+      titleDescription: "Title shown below the video.",
       thumbnailTitle: "Thumbnail image",
-      thumbnailDescription: "The URL for a thumbnail/poster image.",
+      thumbnailDescription: "Poster image URL.",
       textTracksTitle: "Text tracks",
       textTracksDescription:
         "Closed captions, subtitles, descriptions, and other text tracks for the video.",
       trackFileTitle: "Track file",
-      trackFileDescription: "The URL for the track file (WebVTT format).",
+      trackFileDescription: "URL for the track file (WebVTT format).",
       trackLabelTitle: "Label",
       trackLabelDescription:
         "Label for the track (e.g., 'English', 'Spanish', 'Audio Description').",
@@ -721,7 +721,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       trackTypeChapters: "Chapters",
       trackTypeMetadata: "Metadata",
       startTimeTitle: "Start time",
-      startTimeDescription: "Start video at a specific time (seconds)",
+      startTimeDescription: "Start video at a specific time (seconds).",
       endTimeTitle: "End time",
       endTimeDescription:
         "End video at a specific time (seconds), requires a start time.",
@@ -740,7 +740,7 @@ class VideoPlayer extends IntersectionObserverMixin(
       crossoriginDescription: "Indicates whether to use CORS.",
       allowBackgroundPlayTitle: "Allow background playback",
       allowBackgroundPlayDescription:
-        "Videos pause / play automatically when tab loses focus; this enables video to play without tab having focus",
+        "Keep playing when the browser tab loses focus.",
       darkTranscriptTitle: "Dark theme for transcript",
       darkTranscriptDescription: "Enable dark theme for the transcript.",
       disableInteractiveTitle: "Disable Interactive",

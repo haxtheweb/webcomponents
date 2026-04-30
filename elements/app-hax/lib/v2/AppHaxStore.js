@@ -180,8 +180,17 @@ class Store {
       name: "",
     };
     this.site = !localStorageGet("app-hax-site")
-      ? { structure: null, type: null, theme: null, name: null }
+      ? {
+          structure: null,
+          type: null,
+          theme: null,
+          name: null,
+          license: null,
+        }
       : localStorageGet("app-hax-site");
+    if (typeof this.site.license === "undefined") {
+      this.site.license = null;
+    }
     this.step = this.stepTest(null);
     this.darkMode = !localStorageGet("app-hax-darkMode")
       ? false

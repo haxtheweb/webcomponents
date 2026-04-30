@@ -269,7 +269,7 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       canEditSource: true,
       gizmo: {
         title: "License",
-        description: "Provide a license for you rwork",
+        description: "Provide a license for your work.",
         icon: "icons:copyright",
         color: "grey",
         tags: [
@@ -304,14 +304,14 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           {
             property: "title",
             title: "Title",
-            description: "The title of the work being cited.",
+            description: "Title of the cited work.",
             inputMethod: "textfield",
             icon: "editor:title",
           },
           {
             property: "source",
             title: "Source link",
-            description: "The source url for the element this is citing.",
+            description: "Source URL for the licensed work.",
             inputMethod: "textfield",
             icon: "link",
             validationType: "url",
@@ -319,7 +319,7 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           {
             property: "license",
             title: "License",
-            description: "The source url for the element this is citing.",
+            description: "License applied to this work.",
             inputMethod: "select",
             options: new licenseList("select"),
             icon: "link",
@@ -327,7 +327,7 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           {
             property: "creator",
             title: "Creator",
-            description: "Who made or owns this.",
+            description: "Creator or owner of this work.",
             inputMethod: "textfield",
             icon: "link",
           },
@@ -336,14 +336,14 @@ class LicenseElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           {
             property: "moreLink",
             title: "Source link",
-            description: "Link to additional licensing details",
+            description: "Link to additional licensing details.",
             inputMethod: "textfield",
             validationType: "url",
           },
           {
             property: "moreLabel",
-            title: "more label",
-            description: "Label for more licensing details",
+            title: "More label",
+            description: "Label for additional licensing details.",
             inputMethod: "textfield",
           },
         ],

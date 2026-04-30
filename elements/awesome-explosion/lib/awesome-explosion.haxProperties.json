@@ -7,7 +7,7 @@
   "canEditSource": false,
   "gizmo": {
     "title": "Awesome Explosion",
-    "description": "An interactive explosion animation with optional sound effects",
+    "description": "Interactive explosion animation with optional sound effects.",
     "icon": "av:fiber-manual-record",
     "color": "orange",
     "tags": ["Other", "Animation", "Interactive", "Sound", "Effect"],
@@ -23,7 +23,7 @@
       {
         "property": "size",
         "title": "Size",
-        "description": "Control the size of the explosion",
+        "description": "Set the explosion size.",
         "inputMethod": "select",
         "options": {
           "tiny": "Tiny",
@@ -36,7 +36,7 @@
       {
         "property": "color",
         "title": "Color",
-        "description": "Color theme for the explosion",
+        "description": "Set the explosion color theme.",
         "inputMethod": "select",
         "options": {
           "": "Default",
@@ -50,26 +50,26 @@
       {
         "property": "soundEnabled",
         "title": "Sound Effects",
-        "description": "Enable or disable sound effects",
+        "description": "Enable sound effects.",
         "inputMethod": "boolean"
       },
       {
         "property": "resetSound",
         "title": "Reset Sound",
-        "description": "Reset sound to beginning each time",
+        "description": "Restart sound from the beginning each time.",
         "inputMethod": "boolean"
       },
       {
         "property": "image",
         "title": "Custom Image",
-        "description": "Optional custom explosion image URL",
+        "description": "Optional URL for a custom explosion image.",
         "inputMethod": "haxupload",
         "validationType": "url"
       },
       {
         "property": "sound",
         "title": "Custom Sound",
-        "description": "Optional custom sound effect URL",
+        "description": "Optional URL for a custom sound effect.",
         "inputMethod": "haxupload",
         "validationType": "url"
       }
@@ -78,7 +78,7 @@
       {
         "property": "disabled",
         "title": "Disabled",
-        "description": "Disable all interactions",
+        "description": "Disable all interactions.",
         "inputMethod": "boolean"
       }
     ]
@@ -91,7 +91,7 @@
         "color": "orange"
       },
       "content": "",
-      "description": "A medium orange explosion"
+      "description": "A medium orange explosion."
     },
     {
       "tag": "awesome-explosion",
@@ -101,7 +101,7 @@
         "soundEnabled": false
       },
       "content": "",
-      "description": "A large blue explosion without sound"
+      "description": "A large blue explosion without sound."
     },
     {
       "tag": "awesome-explosion",
@@ -110,7 +110,7 @@
         "color": "red"
       },
       "content": "",
-      "description": "An epic red explosion with sound"
+      "description": "An epic red explosion with sound."
     }
   ]
 }

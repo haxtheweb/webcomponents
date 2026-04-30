@@ -24,35 +24,35 @@
         "property": "url",
         "inputMethod": "haxupload",
         "title": "Link",
-        "description": "Link this card somewhere",
+        "description": "Destination URL for this card.",
         "required": true
       },
       {
         "property": "image",
         "inputMethod": "haxupload",
         "title": "Image",
-        "description": "Background image",
+        "description": "Background image.",
         "required": false
       },
       {
         "property": "line1",
         "inputMethod": "textfield",
         "title": "Line 1",
-        "description": "First line of text in the design",
+        "description": "First line of text.",
         "required": true
       },
       {
         "property": "line2",
         "inputMethod": "textfield",
         "title": "Line 2",
-        "description": "Second line of text",
+        "description": "Second line of text.",
         "required": false
       },
       {
         "property": "line3",
         "inputMethod": "textfield",
         "title": "Line 3",
-        "description": "Third line of text",
+        "description": "Third line of text.",
         "required": false
       }
     ],
@@ -61,34 +61,34 @@
         "property": "icon",
         "inputMethod": "iconpicker",
         "title": "Icon",
-        "description": "Icon to represent the item",
+        "description": "Icon representing the card.",
         "required": false
       },
       {
         "property": "saturate",
         "inputMethod": "boolean",
         "title": "Saturation effect",
-        "description": "Image saturation shifts based on user focus",
+        "description": "Shift image saturation on user focus.",
         "required": false
       },
       {
         "property": "tags",
         "title": "Tags",
-        "description": "Comma separated list of tags",
+        "description": "Comma-separated list of tags.",
         "inputMethod": "textfield",
         "required": true
       },
       {
         "property": "accentColor",
         "title": "Color",
-        "description": "color for tags",
+        "description": "Color used for tags.",
         "inputMethod": "colorpicker"
       },
       {
         "property": "alt",
         "inputMethod": "alt",
         "title": "Alt",
-        "description": "Alternative text to describe the link",
+        "description": "Alternative text describing the link.",
         "required": false
       }
     ],

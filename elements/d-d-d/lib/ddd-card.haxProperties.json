@@ -9,7 +9,7 @@
   "hideDefaultSettings": true,
   "gizmo": {
     "title": "Card",
-    "description": "A well designed card to the DDD design system.",
+    "description": "Card component styled with the DDD design system.",
     "icon": "chrome-reader-mode",
     "color": "light-blue",
     "tags": ["Layout", "content", "card", "Image"],
@@ -29,27 +29,27 @@
       {
         "property": "src",
         "title": "Image",
-        "description": "Optional image",
+        "description": "Optional image.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true
       },
       {
         "property": "alt",
         "title": "Image alt",
-        "description": "Alternative text to describe the image",
+        "description": "Alternative text describing the image.",
         "inputMethod": "alt",
         "noVoiceRecord": true
       },
       {
         "property": "title",
         "title": "Title",
-        "description": "Card title",
+        "description": "Card title.",
         "inputMethod": "textfield"
       },
       {
         "slot": "",
         "title": "Content",
-        "description": "Content area of the card",
+        "description": "Card content area.",
         "inputMethod": "textfield",
         "slotWrapper": "p",
         "allowedSlotWrappers": ["p"]
@@ -57,7 +57,7 @@
       {
         "property": "href",
         "title": "Link",
-        "description": "Link for card button",
+        "description": "Button link URL.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true,
         "noCamera": true
@@ -67,13 +67,13 @@
       {
         "property": "label",
         "title": "Label",
-        "description": "Button label for link",
+        "description": "Button label.",
         "inputMethod": "textfield"
       },
       {
         "property": "noArrow",
         "title": "No Arrow",
-        "description": "Remove arrow on button",
+        "description": "Hide the button arrow.",
         "inputMethod": "boolean"
       }
     ],
@@ -81,7 +81,7 @@
       {
         "property": "target",
         "title": "Link: target",
-        "description": "Where to open the link",
+        "description": "Where to open the link.",
         "inputMethod": "select",
         "options": {
           "": "Same window",
@@ -93,7 +93,7 @@
       {
         "property": "rel",
         "title": "Link: rel",
-        "description": "relationship between a linked resource and the current document",
+        "description": "Relationship between linked resource and current document.",
         "inputMethod": "textfield"
       }
     ]

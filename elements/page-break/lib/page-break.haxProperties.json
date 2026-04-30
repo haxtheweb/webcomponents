@@ -21,13 +21,13 @@
       {
         "property": "title",
         "title": "Title",
-        "description": "Title seen in the theme / first heading",
+        "description": "Title shown in the theme and first heading.",
         "inputMethod": "textfield"
       },
       {
         "property": "pageType",
         "title": "Type",
-        "description": "Indicates page context to users visually",
+        "description": "Visual page context label.",
         "inputMethod": "select",
         "options": {
           "": "-- none --",
@@ -61,19 +61,19 @@
       {
         "property": "tags",
         "title": "Tags",
-        "description": "Comma separated list of tags",
+        "description": "Comma-separated list of tags.",
         "inputMethod": "textfield"
       },
       {
         "property": "linkUrl",
         "title": "Link URL",
-        "description": "When set, users will be redirected to this URL instead of viewing page content",
+        "description": "Redirect URL shown instead of page content.",
         "inputMethod": "textfield"
       },
       {
         "property": "linkTarget",
         "title": "Link Target",
-        "description": "Whether to open link in same window or new window",
+        "description": "Open links in the same window or a new window.",
         "inputMethod": "select",
         "options": {
           "_self": "Same window",
@@ -85,19 +85,19 @@
       {
         "property": "published",
         "title": "Published",
-        "description": "Unpublished pages are not visible to end users",
+        "description": "Unpublished pages are hidden from end users.",
         "inputMethod": "boolean"
       },
       {
         "property": "locked",
         "title": "Lock page",
-        "description": "Lock / Unlock all elements in this page",
+        "description": "Lock or unlock all elements on this page.",
         "inputMethod": "boolean"
       },
       {
         "property": "slug",
         "title": "Path",
-        "description": "URL slug related to this page",
+        "description": "URL slug for this page.",
         "inputMethod": "textfield"
       },
       {
@@ -111,13 +111,13 @@
       {
         "property": "parent",
         "title": "Parent",
-        "description": "Path of the parent page this page should sit under",
+        "description": "Path of the parent page.",
         "inputMethod": "textfield"
       },
       {
         "property": "noderefs",
         "title": "Related content",
-        "description": "Content related to this page",
+        "description": "Pages related to this page.",
         "inputMethod": "array",
         "itemLabel": "item",
         "hideReorder": true,
@@ -127,7 +127,7 @@
           {
             "property": "node",
             "title": "Page",
-            "description": "A page related to the current content",
+            "description": "Related page.",
             "inputMethod": "textfield"
           }
         ]
@@ -137,13 +137,13 @@
       {
         "property": "description",
         "title": "Description",
-        "description": "Used for collections and enhancing Search engine optimization",
+        "description": "Description used in collections and search engine optimization.",
         "inputMethod": "textfield"
       },
       {
         "property": "entityType",
         "title": "Entity Type",
-        "description": "All entities are pages unless otherwise set",
+        "description": "Defaults to page unless set otherwise.",
         "inputMethod": "select",
         "options": {
           "page": "Page (default)",
@@ -155,37 +155,37 @@
       {
         "property": "icon",
         "title": "Icon",
-        "description": "Icon to associate with this item in the site",
+        "description": "Icon associated with this page in the site.",
         "inputMethod": "iconpicker"
       },
       {
         "property": "accentColor",
         "title": "Accent color",
-        "description": "Color associated with this item in the site",
+        "description": "Color associated with this page in the site.",
         "inputMethod": "colorpicker"
       },
       {
         "property": "hideInMenu",
         "title": "Hide in menu",
-        "description": "Useful if you need content with a slug",
+        "description": "Hide this page from menus while keeping its URL.",
         "inputMethod": "boolean"
       },
       {
         "property": "order",
         "title": "Order",
-        "description": "Order relative to other sibling pages",
+        "description": "Order relative to sibling pages.",
         "inputMethod": "number"
       },
       {
         "property": "developerTheme",
         "title": "Page theme",
-        "description": "Change the theme JUST on this page. Know why you are doing this!",
+        "description": "Override theme for this page only.",
         "inputMethod": "textfield"
       },
       {
         "property": "author",
         "title": "Author",
-        "description": "Username of the last person to modify this page",
+        "description": "Username of the last person to modify this page.",
         "inputMethod": "textfield"
       }
     ]

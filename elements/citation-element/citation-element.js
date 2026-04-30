@@ -281,7 +281,7 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
       canEditSource: true,
       gizmo: {
         title: "Citation",
-        description: "A basic citation element with 3 presentation modes",
+        description: "Citation element with three presentation modes.",
         icon: "editor:title",
         color: "grey",
         tags: [
@@ -316,14 +316,14 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           {
             property: "title",
             title: "Title",
-            description: "The title of the work being cited.",
+            description: "Title of the cited work.",
             inputMethod: "textfield",
             icon: "editor:title",
           },
           {
             property: "source",
             title: "Source link",
-            description: "The source url for the element this is citing.",
+            description: "Source URL for the cited work.",
             inputMethod: "textfield",
             icon: "link",
             validationType: "url",
@@ -331,14 +331,14 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           {
             property: "date",
             title: "Date accessed",
-            description: "The date this was accessed.",
+            description: "Date the source was accessed.",
             inputMethod: "textfield",
             icon: "link",
           },
           {
             property: "scope",
             title: "Scope",
-            description: "Scope of what to cite.",
+            description: "Element scope to cite.",
             inputMethod: "select",
             options: {
               sibling: "Sibling element",
@@ -349,7 +349,7 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           {
             property: "license",
             title: "License",
-            description: "The source url for the element this is citing.",
+            description: "License for the cited work.",
             inputMethod: "select",
             options: new licenseList("select"),
             icon: "link",
@@ -357,7 +357,7 @@ class CitationElement extends SchemaBehaviors(DDDSuper(LitElement)) {
           {
             property: "creator",
             title: "Creator",
-            description: "Who made or owns this.",
+            description: "Creator or owner of the cited work.",
             inputMethod: "textfield",
             icon: "link",
           },

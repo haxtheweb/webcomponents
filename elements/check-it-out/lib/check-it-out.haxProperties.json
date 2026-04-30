@@ -4,7 +4,7 @@
   "canEditSource": true,
   "gizmo": {
     "title": "Check it out",
-    "description": "Clickable button for media and code previews",
+    "description": "Clickable button for media and code previews.",
     "icon": "check-circle",
     "color": "grey",
     "tags": ["Instructional", "design", "pedagogy", "presentation", "action"],
@@ -17,20 +17,20 @@
     "configure": [
       {
         "property": "source",
-        "title": "Resource url",
-        "description": "Resource url",
+        "title": "Resource URL",
+        "description": "Resource URL.",
         "inputMethod": "textfield"
       },
       {
         "property": "icon",
         "title": "Icon",
-        "description": "Icon for button",
+        "description": "Button icon.",
         "inputMethod": "textfield"
       },
       {
         "property": "type",
-        "title": "Type of resource",
-        "description": "Type of resource in url (video, code, pdf)",
+        "title": "Resource type",
+        "description": "Type of resource URL (video, code, or PDF).",
         "inputMethod": "select",
         "options": {
           "code": "Code Snippet",
@@ -41,43 +41,43 @@
       {
         "property": "label",
         "title": "Button label",
-        "description": "Text to display in check-it-out button",
+        "description": "Text displayed on the button.",
         "inputMethod": "textfield"
       },
       {
         "property": "modal",
         "title": "Enable Modal Mode",
-        "description": "Puts content inside a popup modal",
+        "description": "Open content in a modal.",
         "inputMethod": "boolean"
       },
       {
         "property": "modal-title",
-        "title": "Popup Modal Title",
-        "description": "Puts a title at the top of popup modal",
+        "title": "Modal title",
+        "description": "Title shown at the top of the modal.",
         "inputMethod": "textfield"
       },
       {
         "property": "filePath",
         "title": "File Path",
-        "description": "File path for stackblitz embed",
+        "description": "File path for StackBlitz embed.",
         "inputMethod": "textfield"
       },
       {
         "property": "hideExplorer",
         "title": "Hide file explorer",
-        "description": "Hide the file explorer in a stackblitz embed",
+        "description": "Hide the file explorer in StackBlitz.",
         "inputMethod": "boolean"
       },
       {
         "property": "ctl",
-        "title": "Click to load stackblitz",
-        "description": "Require click to load stackblitz embed",
+        "title": "Click to load StackBlitz",
+        "description": "Require click to load the StackBlitz embed.",
         "inputMethod": "boolean"
       },
       {
         "property": "view",
         "title": "View",
-        "description": "Stackblitz default view (preview, editor, or both)",
+        "description": "Default StackBlitz view (preview, editor, or both).",
         "inputMethod": "select",
         "options": {
           "preview": "Preview",

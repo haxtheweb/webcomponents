@@ -2,7 +2,9 @@ import { LitElement, html } from "lit";
 import { localStorageGet } from "@haxtheweb/utils/utils.js";
 import "@haxtheweb/jwt-login/jwt-login.js";
 import { toJS, autorun } from "mobx";
+import { licenseList } from "@haxtheweb/license-element/license-element.js";
 import { store } from "./AppHaxStore.js";
+const SUPPORTED_SITE_LICENSES = Object.keys(new licenseList("select"));
 // this element will manage all connectivity to the backend
 // this way everything is forced to request through calls to this
 // so that it doesn't get messy down below in state
@@ -197,6 +199,33 @@ export class AppHaxBackendAPI extends LitElement {
         await this.makeCall("createSite", this._formatSitePostData(), true),
     ];
   }
+
+  _normalizeSiteLicense(rawValue) {
+    if (!rawValue || typeof rawValue !== "string") {
+      return null;
+    }
+    const value = rawValue
+      .trim()
+      .toLowerCase()
+      .replace(/_/g, "-");
+    if (value === "") {
+      return null;
+    }
+    if (SUPPORTED_SITE_LICENSES.includes(value)) {
+      return value;
+    }
+    for (const code of SUPPORTED_SITE_LICENSES) {
+      if (
+        value.indexOf(`/licenses/${code}`) !== -1 ||
+        value.indexOf(`cc ${code}`) !== -1 ||
+        value.indexOf(`cc-${code}`) !== -1 ||
+        value.indexOf(`cc:${code}`) !== -1
+      ) {
+        return code;
+      }
+    }
+    return null;
+  }
   // just easier to read here
   _formatSitePostData() {
     const site = toJS(store.site);
@@ -222,6 +251,10 @@ export class AppHaxBackendAPI extends LitElement {
         files: useTrustedSkeleton ? null : itemFiles,
       },
     };
+    const normalizedLicense = this._normalizeSiteLicense(site.license);
+    if (normalizedLicense) {
+      buildData.site.license = normalizedLicense;
+    }
     if (useTrustedSkeleton) {
       buildData.build.skeletonMachineName = skeletonMachineName;
       return buildData;

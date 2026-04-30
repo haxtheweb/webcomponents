@@ -2497,6 +2497,14 @@ export class AppHaxUseCaseFilter extends LitElement {
           },
           theme: {},
         };
+        if (
+          response.data.site &&
+          typeof response.data.site === "object" &&
+          response.data.site.license &&
+          typeof response.data.site.license === "string"
+        ) {
+          modal.skeletonData.site.license = response.data.site.license;
+        }
         modal.siteName = importedName;
         modal.openModal();
       } else {

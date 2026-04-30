@@ -788,11 +788,20 @@ export class AppHaxSiteCreationModal extends DDDSuper(LitElement) {
 
     // Set up the site data in store for the API call
     store.site.name = this.siteName;
+    store.site.license = null;
     // If skeleton data exists, use its build configuration
     if (this.skeletonData && this.skeletonData.build) {
       store.site.structure =
         this.skeletonData.build.structure || "from-skeleton";
       store.site.type = this.skeletonData.build.type || "skeleton";
+      if (
+        this.skeletonData.site &&
+        typeof this.skeletonData.site === "object" &&
+        this.skeletonData.site.license &&
+        typeof this.skeletonData.site.license === "string"
+      ) {
+        store.site.license = this.skeletonData.site.license;
+      }
       // Pass skeleton items and files to store for API formatting
       if (this.skeletonData.build.items) {
         store.items = this.skeletonData.build.items;

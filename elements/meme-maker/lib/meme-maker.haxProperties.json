@@ -4,7 +4,7 @@
   "canEditSource": true,
   "gizmo": {
     "title": "Meme",
-    "description": "Make a meme out of an image",
+    "description": "Make a meme out of an image.",
     "icon": "hax:meme",
     "color": "orange",
     "tags": ["Media", "funny", "meme", "image"],
@@ -26,7 +26,7 @@
       {
         "property": "imageUrl",
         "title": "Source",
-        "description": "The source url for the element this is citing.",
+        "description": "Source URL for the meme image.",
         "inputMethod": "haxupload",
         "noVoiceRecord": true
       },

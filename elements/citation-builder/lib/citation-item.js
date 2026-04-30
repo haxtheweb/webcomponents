@@ -355,12 +355,12 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
         field.hidden = journalOnly.includes(prop);
 
         if (prop === 'url') field.title = "URL";
-        if (prop === 'publisher') field.description = "Original website";
+        if (prop === 'publisher') field.description = "Original website.";
       } else if (this.citationType === "journal") {
         field.hidden = webOnly.includes(prop);
 
         if (prop === 'url') field.title = "DOI / URL";
-        if (prop === 'publisher') field.description = "Original journal";
+        if (prop === 'publisher') field.description = "Original journal.";
       }
     });
   }
@@ -382,8 +382,8 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
         "designTreatment": false
       },
       "gizmo": {
-        "title": "citation-item",
-        "description": "",
+        "title": "Citation item",
+        "description": "Single citation entry for citation builder.",
         "icon": "icons:android",
         "color": "purple",
         "tags": [
@@ -400,7 +400,7 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
           {
             property: 'citationType',
             title: 'Type',
-            description: 'Citation type',
+            description: 'Citation type.',
             inputMethod: 'select',
             options: {
               web: 'Web',
@@ -412,7 +412,7 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
           {
             property: "title",
             title: "Title",
-            description: "Title of the item",
+            description: "Title of the cited work.",
             inputMethod: "textfield",
             icon: "editor:title",
             required: true
@@ -420,20 +420,20 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
           {
             property: "authors",
             title: "Author(s)",
-            description: "The events in the timeline",
+            description: "List of authors.",
             inputMethod: "array",
             itemLabel: "surname",
             properties: [
               {
                 property: "given",
                 title: "Given Name",
-                description: "The Given Name of Author.",
+                description: "Author given name.",
                 inputMethod: "textfield",
               },
               {
                 property: "surname",
                 title: "Surname",
-                description: "The Surname of Author.",
+                description: "Author surname.",
                 inputMethod: "textfield",
               },
             ],
@@ -441,46 +441,46 @@ export class CitationItem extends DDDSuper(I18NMixin(LitElement)) {
           {
             property: 'publisher',
             title: 'Publisher',
-            description: 'Original website',
+            description: 'Original publisher or website.',
             inputMethod: 'textfield',
           },
           {
             property: 'url',
             title: 'URL',
-            description: 'Link to the item',
+            description: 'Source URL for the cited work.',
             inputMethod: 'textfield',
           },
           {
             property: 'publicationDate',
             title: 'Publication Date',
-            description: 'mm/dd/yyyy',
+            description: 'Publication date (MM/DD/YYYY).',
             inputMethod: 'datepicker',
           },
           {
             property: 'volume',
             title: 'Volume',
-            description: 'Volume number',
+            description: 'Journal volume number.',
             inputMethod: 'textfield',
             hidden: true
           },
           {
             property: 'issue',
             title: 'Issue',
-            description: 'Issue number',
+            description: 'Journal issue number.',
             inputMethod: 'textfield',
             hidden: true
           },
           {
             property: 'startPage',
             title: 'Start Page',
-            description: 'First page of publication',
+            description: 'First page number.',
             inputMethod: 'number',
             hidden: true
           },
           {
             property: 'endPage',
             title: 'End Page',
-            description: 'Final page of publication',
+            description: 'Last page number.',
             inputMethod: 'number',
             hidden: true
           }

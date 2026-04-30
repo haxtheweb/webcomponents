@@ -8,7 +8,7 @@
   "type": "grid",
   "gizmo": {
     "title": "Page section",
-    "description": "A section of content to a website. Useful for designing in screens of material",
+    "description": "Section container for page content and screen-based layouts.",
     "icon": "av:call-to-action",
     "color": "purple",
     "tags": ["Layout", "page", "section", "container", "cta"],
@@ -23,7 +23,7 @@
         "property": "preset",
         "inputMethod": "radio",
         "title": "Design treatment",
-        "description": "Well designed preset which toggles other settings",
+        "description": "Preset style that updates related settings.",
         "itemsList": [
           { "value": "custom", "text": "Custom" },
           { "value": "antihero", "text": "Anti-hero" },
@@ -35,7 +35,7 @@
         "property": "image",
         "inputMethod": "haxupload",
         "title": "Image",
-        "description": "Background media of the section",
+        "description": "Background media for the section.",
         "noVoiceRecord": true,
         "noCamera": true
       },
@@ -43,7 +43,7 @@
         "property": "bg",
         "inputMethod": "colorpicker",
         "title": "Background color",
-        "description": "Background color of the section if no image is loaded"
+        "description": "Background color when no image is set."
       }
     ],
     "advanced": [
@@ -51,42 +51,42 @@
         "property": "scroller",
         "inputMethod": "boolean",
         "title": "Scroll button",
-        "description": "Displays a scroll button which will scroll down to the next element automatically"
+        "description": "Show a button that scrolls to the next section."
       },
       {
         "property": "fold",
         "inputMethod": "boolean",
         "title": "Display fold",
-        "description": "Shows a fold at the bottom of the section to visually indicate to user to scroll down"
+        "description": "Show a visual fold at the bottom of the section."
       },
       {
         "property": "full",
         "inputMethod": "boolean",
-        "title": "Full screeen size",
-        "description": "Fill to the size of the user's display"
+        "title": "Full screen size",
+        "description": "Fill the viewer's screen height."
       },
       {
         "property": "filter",
         "inputMethod": "boolean",
         "title": "Apply Filter",
-        "description": "Apply visual filter to background / image"
+        "description": "Apply a visual filter to the background image."
       },
       {
         "slot": "",
         "inputMethod": "textfield",
-        "description": "Content for the section",
+        "description": "Section content.",
         "title": "Content"
       },
       {
         "slot": "entice",
         "title": "Entice",
-        "description": "Optional enticement section",
+        "description": "Optional enticement content.",
         "inputMethod": "textfield"
       },
       {
         "slot": "buttons",
         "title": "Buttons",
-        "description": "Buttons grouping below text",
+        "description": "Button group shown below the text.",
         "inputMethod": "textfield"
       }
     ],
@@ -95,7 +95,7 @@
         "property": "anchor",
         "inputMethod": "textfield",
         "title": "Anchor text",
-        "description": "Anchor label when visualized in navigation"
+        "description": "Anchor label shown in navigation."
       }
     ]
   },
