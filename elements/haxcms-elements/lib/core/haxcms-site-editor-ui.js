@@ -159,18 +159,32 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           --simple-toolbar-button-hover-border-color: var(--ddd-theme-default-skyBlue);
         }
 
-        /* Light gray hover border for Edit Page + Add Page buttons */
-        #editbutton:hover,
-        #editbutton:focus,
-        #editbutton:active,
-        #editbutton:focus-visible,
-        haxcms-button-add:hover,
-        haxcms-button-add:focus,
-        haxcms-button-add:active,
-        haxcms-button-add:focus-visible {
-           --simple-toolbar-button-hover-border-color: var(--ddd-theme-default-skyBlue);
-           --simple-toolbar-button-hover-bg: 
-            var(--simple-colors-default-theme-grey-3);
+      /* light mode */
+        #editbutton::part(button):hover,
+        #editbutton::part(button):focus,
+        #editbutton::part(button):focus-visible,
+        #editbutton::part(button):active,
+        haxcms-button-add::part(button):hover,
+        haxcms-button-add::part(button):focus,
+        haxcms-button-add::part(button):focus-visible,
+        haxcms-button-add::part(button):active {
+          border-color: var(--ddd-theme-default-skyBlue);
+          background-color: var(--simple-colors-default-theme-light-blue-1);
+          color: var(--ddd-theme-default-skyBlue);
+        } 
+
+      /* dark mode */
+       :host([dark-mode]) #editbutton::part(button):hover,
+       :host([dark-mode]) #editbutton::part(button):focus,
+       :host([dark-mode]) #editbutton::part(button):focus-visible,
+       :host([dark-mode]) #editbutton::part(button):active,
+       :host([dark-mode]) haxcms-button-add::part(button):hover,
+       :host([dark-mode]) haxcms-button-add::part(button):focus,
+       :host([dark-mode]) haxcms-button-add::part(button):focus-visible,
+       :host([dark-mode]) haxcms-button-add::part(button):active {
+          border-color: var(--ddd-theme-default-skyBlue);
+          background-color: var(--simple-colors-default-theme-light-blue-2);
+          color: var(--ddd-theme-default-white);
         }
       
         simple-toolbar-button.top-bar-button::part(button):focus-visible,
