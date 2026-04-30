@@ -115,6 +115,10 @@ export class AppHaxButton extends LitElement {
             this.icon = "hax:wordpress";
             this.value = "wordpress";
             break;
+          case "drupal":
+            this.icon = "hax:drupal";
+            this.value = "drupal";
+            break;
           case "gitbook":
             this.icon = "mdi-social:github-circle";
             this.value = "gitbook";

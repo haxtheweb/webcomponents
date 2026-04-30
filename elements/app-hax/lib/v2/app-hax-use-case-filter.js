@@ -1389,6 +1389,19 @@ export class AppHaxUseCaseFilter extends LitElement {
       },
       {
         dataType: "import",
+        importKind: "file",
+        importType: "pdf",
+        callback: "@haxcms/pdfToSite",
+        fileType: "pdf",
+        useCaseTitle: "PDF",
+        useCaseImage: "",
+        useCaseDescription: "Import a .pdf outline into a new HAX site",
+        useCaseIcon: [{ icon: "hax:file-pdf", tooltip: "PDF import" }],
+        useCaseTag: ["Import", "PDF"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
         importKind: "url",
         importType: "gitbook",
         callback: "@haxcms/gitbookToSite",
@@ -1471,6 +1484,34 @@ export class AppHaxUseCaseFilter extends LitElement {
         useCaseDescription: "Import WordPress pages into a new HAX site",
         useCaseIcon: [{ icon: "hax:wordpress", tooltip: "WordPress import" }],
         useCaseTag: ["Import", "WordPress"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
+        importKind: "url",
+        importType: "drupal",
+        callback: "@haxcms/drupalBookToSite",
+        prompt: "URL for the Drupal site",
+        param: "repoUrl",
+        useCaseTitle: "Drupal Book",
+        useCaseImage: "",
+        useCaseDescription: "Import a Drupal Book site URL into HAX",
+        useCaseIcon: [{ icon: "hax:drupal", tooltip: "Drupal import" }],
+        useCaseTag: ["Import", "Drupal"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
+        importKind: "url",
+        importType: "plone",
+        callback: "@haxcms/ploneToSite",
+        prompt: "URL for the Plone site",
+        param: "repoUrl",
+        useCaseTitle: "Plone",
+        useCaseImage: "",
+        useCaseDescription: "Import a Plone site URL into HAX",
+        useCaseIcon: [{ icon: "communication:business", tooltip: "Plone import" }],
+        useCaseTag: ["Import", "Plone"],
         demoLink: "#",
       },
     ];
@@ -2441,7 +2482,13 @@ export class AppHaxUseCaseFilter extends LitElement {
       if (selectedTemplate.importKind === "file") {
         const fileType = selectedTemplate.fileType || "docx";
         // Ensure the file broker is available
-        await import("@haxtheweb/file-system-broker/lib/docx-file-system-broker.js");
+        if (fileType === "docx") {
+          await import(
+            "@haxtheweb/file-system-broker/lib/docx-file-system-broker.js"
+          );
+        } else {
+          await import("@haxtheweb/file-system-broker/file-system-broker.js");
+        }
         const broker = globalThis.FileSystemBroker.requestAvailability();
         const file = await broker.loadFile(fileType);
         if (!file) {

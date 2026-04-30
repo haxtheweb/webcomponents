@@ -204,6 +204,62 @@ export class AppHaxSteps extends SimpleColors {
       });
     }
   }
+  // step 2, pdf import
+  async pdfImport(e) {
+    if (!e.target.comingSoon) {
+      const { type } = e.target;
+      import("@haxtheweb/file-system-broker/file-system-broker.js").then(
+        async (e) => {
+          // enable core services
+          enableServices(["haxcms"]);
+          // get the broker for pdf selection
+          const broker = globalThis.FileSystemBroker.requestAvailability();
+          const file = await broker.loadFile("pdf");
+          // tee up as a form for upload
+          const formData = new FormData();
+          formData.append("method", "site"); // this is a site based importer
+          formData.append("type", toJS(store.site.structure));
+          formData.append("upload", file);
+          this.setProcessingVisual();
+          const response = await MicroFrontendRegistry.call(
+            "@haxcms/pdfToSite",
+            formData,
+          );
+          store.toast(`Processed!`, 300);
+          // must be a valid response and have at least SOME html to bother attempting
+          if (
+            response.status == 200 &&
+            response.data &&
+            response.data.contents != ""
+          ) {
+            store.items = response.data.items;
+            if (response.data.files) {
+              store.itemFiles = response.data.files;
+            }
+            // invoke a file broker for a pdf file
+            // send to the endpoint and wait
+            // if it comes back with content, then we engineer details off of it
+            this.nameTyped = response.data.filename
+              .replace(".pdf", "")
+              .replace("outline", "")
+              .replace(/\s/g, "")
+              .replace(/-/g, "")
+              .toLowerCase();
+            setTimeout(() => {
+              this.shadowRoot.querySelector("#sitename").value = this.nameTyped;
+              this.shadowRoot.querySelector("#sitename").select();
+            }, 800);
+            store.site.type = type;
+            store.site.theme = "clean-one";
+            store.appEl.playSound("click2");
+          } else {
+            store.appEl.playSound("error");
+            store.toast(`File did not return valid HTML structure`);
+          }
+        },
+      );
+    }
+  }
   // evolution import
   async evoImport(e) {
     if (!e.target.comingSoon) {
@@ -1064,6 +1120,11 @@ export class AppHaxSteps extends SimpleColors {
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.pdfImport}
+            type="pdf"
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.importFromURL}
             type="elms:ln"
             prompt="URL for the ELMS:LN site"
@@ -1119,9 +1180,27 @@ export class AppHaxSteps extends SimpleColors {
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.importFromURL}
+            type="plone"
+            prompt="URL for the Plone site"
+            callback="@haxcms/ploneToSite"
+            param="repoUrl"
+            beta
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.importFromURL}
             type="wordpress"
             prompt="URL for the WordPress site"
             callback="@haxcms/wordpressPagesToSite"
+            param="repoUrl"
+            beta
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.importFromURL}
+            type="drupal"
+            prompt="URL for the Drupal site"
+            callback="@haxcms/drupalBookToSite"
             param="repoUrl"
             beta
           ></app-hax-button>`;

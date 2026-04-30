@@ -369,7 +369,7 @@ export class AppHaxSiteLogin extends DDDSuper(LitElement) {
                 ></simple-icon-button-lite>
               </div>
               <button ?disabled="${!this.hasPass}" @click=${this.checkPassword}>
-                <simple-icon-lite icon="icons:login"></simple-icon-lite>
+                <simple-icon-lite icon="icons:input"></simple-icon-lite>
                 Login
               </button>`}
         <div class="external">

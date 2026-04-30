@@ -879,13 +879,17 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
           // special support for "format" in the URL dictating the possible output format
           // this is for a11y, mobile, print and other possible output modes
           const urlParams = new URLSearchParams(globalThis.location.search);
-          const format = urlParams.get("format");
+          const formatParam = urlParams.get("format");
+          const format = formatParam ? formatParam.toLowerCase() : null;
           if (format != null) {
             switch (format) {
               case "print-page":
                 this.themeData.element = "haxcms-print-theme";
                 break;
               case "json":
+              case "yaml":
+              case "md":
+              case "xml":
                 // dynamically import the JSON theme
                 import("./themes/haxcms-json-theme.js");
                 this.themeData.element = "haxcms-json-theme";

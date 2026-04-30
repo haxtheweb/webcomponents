@@ -546,7 +546,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
         let type = "";
         // don't assume there is a file extension
         if (tmp.length > 1) {
-          type = tmp.pop();
+          type = tmp.pop().toLowerCase();
         }
         // wand hands off for next part now that we've got a file selected
         SuperDaemonInstance.waveWand(
@@ -1113,6 +1113,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               // set parent to same as current page's parent
               const item = toJS(store.activeItem);
               dataToPost.append("parentId", item.parent);
+            }
+            break;
+          case "pdf":
+            dataToPost.append("upload", values.data);
+            endpointCall = "@core/pdfToHtml";
+            if (mode === "create-branch") {
+              endpointCall = "@haxcms/pdfToSite";
+              dataToPost.append("method", "branch");
+              dataToPost.append("type", "branch");
+              // set parent to same as current page's parent
+              const itemPdf = toJS(store.activeItem);
+              dataToPost.append("parentId", itemPdf.parent);
             }
             break;
           case "md":
@@ -2030,6 +2042,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
           // file selected, so we are looping back around
           if (values.operation === "file-selected") {
             switch (values.type) {
+              case "pdf":
               case "md":
               case "docx":
               case "doc":
@@ -2062,9 +2075,9 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     eventName: "super-daemon-element-method",
                     path: "Page created under current",
                   });
-                  // @todo only docx currently supports this though there's really no reason it can't
+                  // @todo only docx and pdf currently support this though there's really no reason it can't
                   // happen in other HTML structured data
-                  if (["docx", "doc"].includes(values.type)) {
+                  if (["docx", "doc", "pdf"].includes(values.type)) {
                     results.push({
                       title: `Create outline from ${values.type}`,
                       icon: "hax:site-map",
@@ -2091,6 +2104,20 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   eventName: "super-daemon-element-method",
                   path: "Content converted to HTML and inserted",
                 });
+                if (values.type === "pdf") {
+                  results.push({
+                    title: `Embed ${values.type} in page`,
+                    icon: "hax:file-pdf",
+                    tags: ["agent"],
+                    value: {
+                      target: this,
+                      method: "processFileContentsBasedOnUserDesire",
+                      args: [values, "insert-file", "pdf"],
+                    },
+                    eventName: "super-daemon-element-method",
+                    path: "PDF embedded in a frame element",
+                  });
+                }
                 break;
               case "png":
               case "jpeg":
@@ -2149,20 +2176,6 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   },
                   eventName: "super-daemon-element-method",
                   path: "Audio embedded in page",
-                });
-                break;
-              case "pdf":
-                results.push({
-                  title: `Embed ${values.type} in page`,
-                  icon: "hax:file-pdf",
-                  tags: ["agent"],
-                  value: {
-                    target: this,
-                    method: "processFileContentsBasedOnUserDesire",
-                    args: [values, "insert-file", "pdf"],
-                  },
-                  eventName: "super-daemon-element-method",
-                  path: "PDF embedded in a frame element",
                 });
                 break;
               case "xlsx":
@@ -2229,7 +2242,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             let type = "";
             // don't assume there is a file extension
             if (tmp.length > 1) {
-              type = tmp.pop();
+              type = tmp.pop().toLowerCase();
             }
             // wand hands off for next part now that we've got a file selected
             SuperDaemonInstance.waveWand(
@@ -3867,6 +3880,42 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
       },
     });
     SuperDaemonInstance.defineOption({
+      title: "Page as Data format",
+      icon: "hax:code-json",
+      tags: [
+        "Developer",
+        "page",
+        "data",
+        "format",
+        "json",
+        "yaml",
+        "md",
+        "xml",
+        "robot",
+        "llm",
+      ],
+      eventName: "super-daemon-run-program",
+      path: ">developer/page-as-data",
+      context: [">"],
+      more: html`<span
+        >Choose a page response format by applying
+        <code>?format={format}</code> to the current route.</span
+      >`,
+      voice: "page as data",
+      value: {
+        name: "Page as Data format",
+        machineName: "page-as-data",
+        context: ">",
+        program: async (input, values) => {
+          const { createPageAsDataProgram } = await import(
+            "./utils/PageAsDataProgram.js"
+          );
+          const pageAsDataProgram = createPageAsDataProgram(this);
+          return await pageAsDataProgram(input, values);
+        },
+      },
+    });
+    SuperDaemonInstance.defineOption({
       title: "View only mode",
       icon: "visibility",
       tags: [
@@ -4479,6 +4528,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
 
   goToLocation(location) {
     globalThis.location = location;
+  }
+  openPageAsDataFormat(format) {
+    const supportedFormats = ["json", "yaml", "md", "xml"];
+    if (!format) {
+      return;
+    }
+    const normalizedFormat = format.toLowerCase();
+    if (supportedFormats.indexOf(normalizedFormat) === -1) {
+      return;
+    }
+    const url = new URL(globalThis.location.href);
+    url.searchParams.set("format", normalizedFormat);
+    globalThis.location.href = url.toString();
   }
 
   // Export methods from ExportPageProgram

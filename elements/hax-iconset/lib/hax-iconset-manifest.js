@@ -117,6 +117,7 @@ export const HaxIconsetManifest = [
       "disqus",
       "documents",
       "duplicate",
+      "drupal",
       "email",
       "engage",
       "engage2",

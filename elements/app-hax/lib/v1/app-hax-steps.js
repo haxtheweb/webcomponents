@@ -1048,6 +1048,15 @@ export class AppHaxSteps extends SimpleColors {
             callback="@haxcms/wordpressPagesToSite"
             param="repoUrl"
             beta
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.importFromURL}
+            type="drupal"
+            prompt="URL for the Drupal site"
+            callback="@haxcms/drupalBookToSite"
+            param="repoUrl"
+            beta
           ></app-hax-button>`;
         break;
     }

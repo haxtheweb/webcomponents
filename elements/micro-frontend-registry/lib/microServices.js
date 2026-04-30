@@ -202,6 +202,16 @@ export function enableCoreServices() {
       body: "FormData class w/ uploaded file encoded into it",
     },
   });
+  // pdfToHtml
+  MicroFrontendRegistry.add({
+    endpoint: "/api/services/media/format/pdfToHtml",
+    name: "@core/pdfToHtml",
+    title: "PDF to HTML",
+    description: "Convert .pdf file to semantic HTML",
+    params: {
+      body: "FormData class w/ uploaded file encoded into it",
+    },
+  });
 
   // docxToHtml
   MicroFrontendRegistry.add({
@@ -279,6 +289,16 @@ export function enableHAXcmsServices() {
       body: "FormData class w/ uploaded file encoded into it",
     },
   });
+  // pdfToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/pdfToSite",
+    name: "@haxcms/pdfToSite",
+    title: "PDF to Site",
+    description: "Convert .pdf file to Site schema",
+    params: {
+      body: "FormData class w/ uploaded file encoded into it",
+    },
+  });
   // htmlToSite
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/convert/htmlToSite",
@@ -339,6 +359,16 @@ export function enableHAXcmsServices() {
       repoUrl: "Location of the Pressbooks site",
     },
   });
+  // ploneToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/convert/ploneToSite",
+    name: "@haxcms/ploneToSite",
+    title: "Plone to Site",
+    description: "Convert Plone REST API content to Site schema",
+    params: {
+      repoUrl: "Location of the Plone site",
+    },
+  });
   // wordpressPagesToSite
   MicroFrontendRegistry.add({
     endpoint: "/api/apps/haxcms/convert/wordpressPagesToSite",
@@ -347,6 +377,18 @@ export function enableHAXcmsServices() {
     description: "Convert WordPress pages (and menu structure where available) to Site schema",
     params: {
       repoUrl: "Location of the WordPress site",
+    },
+  });
+  // drupalBookToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/convert/drupalBookToSite",
+    name: "@haxcms/drupalBookToSite",
+    title: "Drupal Book to Site",
+    description: "Convert Drupal book content to Site schema",
+    params: {
+      repoUrl: "Location of the Drupal site",
+      allowHtmlFallback:
+        "Optional: true to allow HTML fallback tree derivation when endpoint tree data is unavailable",
     },
   });
   // insights
