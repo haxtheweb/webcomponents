@@ -598,6 +598,71 @@ class HAXCMSAboutDialogUI extends DDD {
           <details class="section">
             <summary class="section-title">
               <span class="summary-leading">
+                <simple-icon-lite icon="hax:hax2022" aria-hidden="true"></simple-icon-lite>
+                <h3>AI-ready content interfaces</h3>
+              </span>
+            </summary>
+            <div class="collapse-body">
+              <p class="section-description">
+                HAXcms can publish pages in machine-friendly formats so LLM tools can
+                read and process your content with less cleanup.
+              </p>
+              <ul>
+                <li>
+                  Add <code>.md</code>, <code>.json</code>, <code>.yaml</code>, or
+                  <code>.xml</code> to page URLs to request alternate page outputs.
+                </li>
+                <li>
+                  Use <code>/llms.txt</code> as a model-facing index for this site,
+                  with links to key machine-readable resources.
+                </li>
+                <li>
+                  Pair <code>/site.json</code> (structure) with
+                  <code>/lunrSearchIndex.json</code> (retrieval) for stronger
+                  AI-powered workflows.
+                </li>
+              </ul>
+              <p class="section-description">Learn more in the HAX ecosystem:</p>
+              <ul>
+                <li>
+                  <a
+                    href="https://haxtheweb.org/documentation/data-formats"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Data formats guide</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://haxtheweb.org/documentation/developers/schema/json-outline-schema"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >JSON Outline Schema</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://haxtheweb.org/documentation/oer-schema"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >OER Schema</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://haxtheweb.org/hax-lab/hax-ai"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >HAX AI overview</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="section">
+            <summary class="section-title">
+              <span class="summary-leading">
                 <simple-icon-lite icon="icons:search" aria-hidden="true"></simple-icon-lite>
                 <h3>Search options in one place</h3>
               </span>
