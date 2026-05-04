@@ -20,9 +20,12 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
     this.confirmAction = null;
     this.cancelAction = null;
     this.dangerous = false; // For destructive actions like delete/archive
+    this.cancelIsNeutral = false;
+    this.cancelActionOnPassiveClose = true;
     // Track whether this modal was confirmed so we don't fire cancel logic
     // (and associated sounds) on confirm.
     this._confirmed = false;
+    this._cancelClicked = false;
   }
 
   static get properties() {
@@ -33,6 +36,8 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
       confirmText: { type: String },
       cancelText: { type: String },
       dangerous: { type: Boolean },
+      cancelIsNeutral: { type: Boolean },
+      cancelActionOnPassiveClose: { type: Boolean, attribute: "cancel-action-on-passive-close" },
     };
   }
 
@@ -214,6 +219,7 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
     document.body.style.overflow = "hidden";
     // Reset confirmation state each time we open
     this._confirmed = false;
+    this._cancelClicked = false;
 
     this.open = true;
     const modal = this.shadowRoot.querySelector("simple-modal");
@@ -224,6 +230,7 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
 
   closeModal() {
     // User explicitly clicked the cancel button.
+    this._cancelClicked = true;
     const modal = this.shadowRoot.querySelector("simple-modal");
     if (modal) {
       modal.opened = false;
@@ -244,13 +251,13 @@ export class AppHaxConfirmationModal extends DDDSuper(LitElement) {
       // Confirm path already handled confirmAction and success sound
       // in confirmModal; do not fire cancel logic.
     } else {
-      // Treat any non-confirm close (cancel button, ESC, clicking backdrop)
-      // as a cancel, with a single error sound.
-      if (store.appEl && store.appEl.playSound) {
-        store.appEl.playSound("error");
-      }
-      if (this.cancelAction && typeof this.cancelAction === "function") {
+      const runCancelAction =
+        this._cancelClicked || this.cancelActionOnPassiveClose;
+      if (runCancelAction && this.cancelAction && typeof this.cancelAction === "function") {
         this.cancelAction();
+      }
+      if (runCancelAction && !this.cancelIsNeutral && store.appEl && store.appEl.playSound) {
+        store.appEl.playSound("error");
       }
     }
     // Dispatch close event for cleanup (listeners can do DOM cleanup)

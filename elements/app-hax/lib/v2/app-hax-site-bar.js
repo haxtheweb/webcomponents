@@ -94,6 +94,191 @@ export class AppHaxSiteBars extends SimpleColors {
     this.closeOptionsMenu();
     this.siteOperation("archiveSite", "Archive", "icons:archive");
   }
+  createTemplate() {
+    this.closeOptionsMenu();
+    const site = this.getSiteRecord();
+    if (!site) {
+      return;
+    }
+    this.openCreateTemplateDialog(site);
+  }
+
+  getSiteRecord() {
+    if (!store || !store.manifest || !Array.isArray(store.manifest.items)) {
+      return null;
+    }
+    return toJS(store.manifest.items.filter((item) => item.id === this.siteId).pop());
+  }
+
+  openCreateTemplateDialog(site) {
+    if (!site || !site.metadata || !site.metadata.site) {
+      return;
+    }
+    const siteName = site.metadata.site.name || this.title || "site";
+    const modal = document.createElement("app-hax-confirmation-modal");
+    modal.title = `Create template from ${siteName}?`;
+    modal.message =
+      "Choose how to turn this site into a reusable template: download the skeleton file or save it to your templates.";
+    modal.confirmText = "Save to templates";
+    modal.cancelText = "Download skeleton";
+    modal.modal = true;
+    modal.cancelIsNeutral = true;
+    modal.cancelActionOnPassiveClose = false;
+    modal.confirmAction = this.saveSiteAsTemplate.bind(this, site);
+    modal.cancelAction = this.downloadSiteSkeleton.bind(this, site);
+    document.body.appendChild(modal);
+    modal.openModal();
+    modal.addEventListener(
+      "close",
+      () => {
+        if (document.body.contains(modal)) {
+          document.body.removeChild(modal);
+        }
+      },
+      { once: true },
+    );
+  }
+
+  triggerJsonDownload(data, filename) {
+    const fileName =
+      filename && typeof filename === "string" && filename.trim() !== ""
+        ? filename.trim()
+        : "site-template.json";
+    const fileData = JSON.stringify(data, null, 2);
+    const blob = new Blob([fileData], { type: "application/json" });
+    const objectUrl = globalThis.URL.createObjectURL(blob);
+    const a = globalThis.document.createElement("a");
+    a.href = objectUrl;
+    a.setAttribute("download", fileName);
+    a.style.display = "none";
+    globalThis.document.body.appendChild(a);
+    a.click();
+    globalThis.document.body.removeChild(a);
+    globalThis.URL.revokeObjectURL(objectUrl);
+  }
+
+  refreshTemplateResults() {
+    let filter = globalThis.document.querySelector("app-hax-use-case-filter");
+    if (!filter && store && store.appEl && store.appEl.shadowRoot) {
+      filter = store.appEl.shadowRoot.querySelector("app-hax-use-case-filter");
+    }
+    if (filter && typeof filter.updateSkeletonResults === "function") {
+      filter.updateSkeletonResults();
+    }
+  }
+
+  async downloadSiteSkeleton(site) {
+    if (
+      !store ||
+      !store.appSettings ||
+      !store.appSettings.downloadSiteSkeleton ||
+      !store.AppHaxAPI ||
+      !store.AppHaxAPI.makeCall
+    ) {
+      store.toast("Download skeleton endpoint is not configured.", 3000, {
+        hat: "random",
+      });
+      return;
+    }
+    const siteName =
+      site &&
+      site.metadata &&
+      site.metadata.site &&
+      typeof site.metadata.site.name === "string"
+        ? site.metadata.site.name
+        : "";
+    if (!siteName) {
+      return;
+    }
+    try {
+      const response = await store.AppHaxAPI.makeCall(
+        "downloadSiteSkeleton",
+        {
+          site: {
+            name: siteName,
+            id: site.id,
+          },
+        },
+        true,
+      );
+      const payload = response && response.data ? response.data : null;
+      const skeletonData =
+        payload && payload.skeleton ? payload.skeleton : payload;
+      if (!skeletonData || typeof skeletonData !== "object") {
+        throw new Error("Skeleton payload missing from response");
+      }
+      const fileName =
+        payload &&
+        payload.filename &&
+        typeof payload.filename === "string"
+          ? payload.filename
+          : `${this.getSiteMachineName() || "site-template"}.json`;
+      this.triggerJsonDownload(skeletonData, fileName);
+      store.toast(`${siteName} skeleton downloaded!`, 3000, {
+        hat: "random",
+      });
+    } catch (error) {
+      if (store.appEl && store.appEl.playSound) {
+        store.appEl.playSound("error");
+      }
+      console.error("downloadSiteSkeleton failed:", error);
+      store.toast("Unable to download site skeleton.", 4000, {
+        hat: "random",
+      });
+    }
+  }
+
+  async saveSiteAsTemplate(site) {
+    if (
+      !store ||
+      !store.appSettings ||
+      !store.appSettings.saveSiteAsTemplate ||
+      !store.AppHaxAPI ||
+      !store.AppHaxAPI.makeCall
+    ) {
+      store.toast("Save template endpoint is not configured.", 3000, {
+        hat: "random",
+      });
+      return;
+    }
+    const siteName =
+      site &&
+      site.metadata &&
+      site.metadata.site &&
+      typeof site.metadata.site.name === "string"
+        ? site.metadata.site.name
+        : "";
+    if (!siteName) {
+      return;
+    }
+    try {
+      const response = await store.AppHaxAPI.makeCall(
+        "saveSiteAsTemplate",
+        {
+          site: {
+            name: siteName,
+            id: site.id,
+          },
+        },
+        true,
+      );
+      if (!response || response.status !== 200) {
+        throw new Error("saveSiteAsTemplate did not return status 200");
+      }
+      this.refreshTemplateResults();
+      store.toast(`${siteName} saved to templates!`, 3000, {
+        hat: "random",
+      });
+    } catch (error) {
+      if (store.appEl && store.appEl.playSound) {
+        store.appEl.playSound("error");
+      }
+      console.error("saveSiteAsTemplate failed:", error);
+      store.toast("Unable to save site as template.", 4000, {
+        hat: "random",
+      });
+    }
+  }
 
   openUserAccess() {
     // Close the options menu first
@@ -490,6 +675,14 @@ export class AppHaxSiteBars extends SimpleColors {
                   show-text-label
                   label="Download"
                   @click=${this.downloadSite}
+                ></simple-toolbar-button>
+                <simple-toolbar-button
+                  icon="icons:add-circle"
+                  icon-position="left"
+                  align-horizontal="left"
+                  show-text-label
+                  label="Create Template"
+                  @click=${this.createTemplate}
                 ></simple-toolbar-button>
                 <simple-toolbar-button
                   icon="archive"

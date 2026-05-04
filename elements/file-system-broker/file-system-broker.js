@@ -128,6 +128,14 @@ class FileSystemBroker extends HTMLElement {
         return ".zip,.gz,.tar";
       case "csv":
         return ".csv,.txt";
+      case "pdf":
+        return ".pdf";
+      case "doc":
+      case "docx":
+        return ".doc,.docx";
+      case "ppt":
+      case "pptx":
+        return ".ppt,.pptx";
       case "image":
         return "image/*";
       case "video":
@@ -204,6 +212,25 @@ class FileSystemBroker extends HTMLElement {
         break;
       case "csv":
         accept = { "text/*": [".csv", ".txt"] };
+        break;
+      case "pdf":
+        accept = { "application/pdf": [".pdf"] };
+        break;
+      case "doc":
+      case "docx":
+        accept = {
+          "application/msword": [".doc"],
+          "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+            [".docx"],
+        };
+        break;
+      case "ppt":
+      case "pptx":
+        accept = {
+          "application/vnd.ms-powerpoint": [".ppt"],
+          "application/vnd.openxmlformats-officedocument.presentationml.presentation":
+            [".pptx"],
+        };
         break;
       case "image":
         accept = { "image/*": [".jpg", ".jpeg", ".gif", ".png"] };

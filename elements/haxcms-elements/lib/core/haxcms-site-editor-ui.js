@@ -1127,6 +1127,18 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               dataToPost.append("parentId", itemPdf.parent);
             }
             break;
+          case "pptx":
+            dataToPost.append("upload", values.data);
+            endpointCall = "@core/pptxToHtml";
+            if (mode === "create-branch") {
+              endpointCall = "@haxcms/pptxToSite";
+              dataToPost.append("method", "branch");
+              dataToPost.append("type", "branch");
+              // set parent to same as current page's parent
+              const itemPptx = toJS(store.activeItem);
+              dataToPost.append("parentId", itemPptx.parent);
+            }
+            break;
           case "md":
           case "txt":
             endpointCall = "@core/mdToHtml";
@@ -2046,6 +2058,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               case "md":
               case "docx":
               case "doc":
+              case "pptx":
               case "txt":
               case "html":
               case "htm":
@@ -2077,7 +2090,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                   });
                   // @todo only docx and pdf currently support this though there's really no reason it can't
                   // happen in other HTML structured data
-                  if (["docx", "doc", "pdf"].includes(values.type)) {
+                  if (["docx", "doc", "pdf", "pptx"].includes(values.type)) {
                     results.push({
                       title: `Create outline from ${values.type}`,
                       icon: "hax:site-map",

@@ -260,6 +260,62 @@ export class AppHaxSteps extends SimpleColors {
       );
     }
   }
+  // step 2, pptx import
+  async pptxImport(e) {
+    if (!e.target.comingSoon) {
+      const { type } = e.target;
+      import("@haxtheweb/file-system-broker/file-system-broker.js").then(
+        async (e) => {
+          // enable core services
+          enableServices(["haxcms"]);
+          // get the broker for pptx selection
+          const broker = globalThis.FileSystemBroker.requestAvailability();
+          const file = await broker.loadFile("pptx");
+          // tee up as a form for upload
+          const formData = new FormData();
+          formData.append("method", "site"); // this is a site based importer
+          formData.append("type", toJS(store.site.structure));
+          formData.append("upload", file);
+          this.setProcessingVisual();
+          const response = await MicroFrontendRegistry.call(
+            "@haxcms/pptxToSite",
+            formData,
+          );
+          store.toast(`Processed!`, 300);
+          // must be a valid response and have at least SOME html to bother attempting
+          if (
+            response.status == 200 &&
+            response.data &&
+            response.data.contents != ""
+          ) {
+            store.items = response.data.items;
+            if (response.data.files) {
+              store.itemFiles = response.data.files;
+            }
+            // invoke a file broker for a pptx file
+            // send to the endpoint and wait
+            // if it comes back with content, then we engineer details off of it
+            this.nameTyped = response.data.filename
+              .replace(".pptx", "")
+              .replace("outline", "")
+              .replace(/\s/g, "")
+              .replace(/-/g, "")
+              .toLowerCase();
+            setTimeout(() => {
+              this.shadowRoot.querySelector("#sitename").value = this.nameTyped;
+              this.shadowRoot.querySelector("#sitename").select();
+            }, 800);
+            store.site.type = type;
+            store.site.theme = "clean-one";
+            store.appEl.playSound("click2");
+          } else {
+            store.appEl.playSound("error");
+            store.toast(`File did not return valid HTML structure`);
+          }
+        },
+      );
+    }
+  }
   // evolution import
   async evoImport(e) {
     if (!e.target.comingSoon) {
@@ -1122,6 +1178,11 @@ export class AppHaxSteps extends SimpleColors {
             tabindex="${step !== 2 ? "-1" : ""}"
             @click=${this.pdfImport}
             type="pdf"
+          ></app-hax-button>
+          <app-hax-button
+            tabindex="${step !== 2 ? "-1" : ""}"
+            @click=${this.pptxImport}
+            type="pptx"
           ></app-hax-button>
           <app-hax-button
             tabindex="${step !== 2 ? "-1" : ""}"

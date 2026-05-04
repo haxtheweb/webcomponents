@@ -33,10 +33,10 @@
       "tags": ""
     },
     "theme": {
-      "element": "clean-one",
-      "path": "@haxtheweb/clean-one/clean-one.js",
-      "name": "Clean One",
-      "thumbnail": "build/es6/node_modules/@haxtheweb/app-hax/lib/assets/images/GreyStyle.svg",
+      "element": "learn-two-theme",
+      "path": "@haxtheweb/learn-two-theme/learn-two-theme.js",
+      "name": "Learn Two",
+      "thumbnail": "build/es6/node_modules/@haxtheweb/learn-two-theme/lib/assets/images/GreyStyle.svg",
       "variables": {
         "image": "",
         "imageAlt": "",

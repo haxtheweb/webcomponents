@@ -223,6 +223,16 @@ export function enableCoreServices() {
       body: "FormData class w/ uploaded file encoded into it",
     },
   });
+  // pptxToHtml
+  MicroFrontendRegistry.add({
+    endpoint: "/api/services/media/format/pptxToHtml",
+    name: "@core/pptxToHtml",
+    title: "PPTX to HTML",
+    description: "Convert .pptx file to HTML",
+    params: {
+      body: "FormData class w/ uploaded file encoded into it",
+    },
+  });
 
   // htmlToDocx
   MicroFrontendRegistry.add({
@@ -295,6 +305,16 @@ export function enableHAXcmsServices() {
     name: "@haxcms/pdfToSite",
     title: "PDF to Site",
     description: "Convert .pdf file to Site schema",
+    params: {
+      body: "FormData class w/ uploaded file encoded into it",
+    },
+  });
+  // pptxToSite
+  MicroFrontendRegistry.add({
+    endpoint: "/api/apps/haxcms/pptxToSite",
+    name: "@haxcms/pptxToSite",
+    title: "PPTX to Site",
+    description: "Convert .pptx file to Site schema",
     params: {
       body: "FormData class w/ uploaded file encoded into it",
     },
