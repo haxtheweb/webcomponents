@@ -103,9 +103,9 @@ class CleanOne extends LTIResizingMixin(
           --site-menu-active-color: var(
             --haxcms-user-styles-color-theme-color-3
           );
-          --site-menu-item-active-item-color: var(
-            --simple-colors-default-theme-light-blue-1,
-            rgba(100, 100, 255, 0.1)
+          --site-menu-item-active-item-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-primary-5)
           );
           --map-menu-item-a-active-background-color: light-dark(
             var(--ddd-primary-4),
@@ -350,7 +350,7 @@ class CleanOne extends LTIResizingMixin(
         }
         .main-content h6 {
           font-size: 1em;
-          color: #777;
+          color: light-dark(var(--ddd-primary-2), var(--ddd-accent-3));
         }
         .main-content h1,
         .main-content h2,
@@ -457,7 +457,10 @@ class CleanOne extends LTIResizingMixin(
           }
           footer {
             color: light-dark(black, white);
-            background-color: light-dark(#ffffffcc, #000000cc);
+            background-color: light-dark(
+              var(--ddd-accent-6),
+              var(--ddd-primary-4)
+            );
             margin-bottom: -1px;
           }
         }
@@ -530,7 +533,7 @@ class CleanOne extends LTIResizingMixin(
           align-content: center;
           flex-direction: column;
           font-size: 40px;
-          color: #ccc;
+          color: light-dark(var(--ddd-primary-2), var(--ddd-accent-3));
           text-align: center;
         }
         @media screen and (max-width: 600px) {
@@ -607,8 +610,10 @@ class CleanOne extends LTIResizingMixin(
           padding: 6px;
           background: 0 0;
           transition: top 0.3s ease-in-out;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-          border-top: 1px solid rgba(0, 0, 0, 0.07);
+          border-bottom: 1px solid
+            light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-primary-5));
+          border-top: 1px solid
+            light-dark(var(--ddd-theme-default-limestoneLight), var(--ddd-primary-5));
           margin-bottom: 10px;
           margin-top: -1px;
         }

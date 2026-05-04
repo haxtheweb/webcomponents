@@ -356,8 +356,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         DDDAllStyles,
         css`
         :root, html, body {
-          --ddd-palette-light: #FFFFFF;
-          --ddd-palette-dark: #000000;
+          --ddd-palette-light: var(--ddd-theme-default-white);
+          --ddd-palette-dark: var(--ddd-theme-default-coalyGray);
 
           --ddd-palette-1: var(--ddd-palette-color-1, default);
           --ddd-palette-2: var(--ddd-palette-color-2, default);
@@ -393,8 +393,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         clean-portfolio-theme a,
         clean-portfolio-theme a:any-link,
         clean-portfolio-theme a:webkit-any-link {
-          color: red !important;
-        } // currently not functional/is not overriding DDDstyles 
+          color: var(--ddd-lightDark-5);
+        }
             
         site-tags-route::part(simple-tag) {
           border-color: var(--ddd-palette-light);
@@ -465,7 +465,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       site-tags-route::part(listing-cardimg):hover,
       site-tags-route::part(listing-cardimg):focus {
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 10px 0px;
+        box-shadow: var(--ddd-boxShadow-sm);
       }
 `
     ];
@@ -634,7 +634,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         font-size: var(--portfolio-fontsize-responsive);
         text-transform: uppercase;
         text-decoration: none;
-        border: 5px solid white;
+        border: 5px solid var(--ddd-palette-light);
         transition: all 0.2s ease-in-out;
       }
 
@@ -692,7 +692,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       header button {
           display: inline-block;
-          color: #fff;
+          color: var(--ddd-palette-light);
           background-color: var(--ddd-palette-1);
           border: 0;
           width: 4em;
@@ -706,7 +706,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           position: relative;
           width: 1.5rem;
           height: .25rem;
-          background: #fff;
+          background: var(--ddd-palette-light);
           margin: auto;
           transition: .3s;
       }
@@ -718,7 +718,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           left: 0;
           width: 1.5rem;
           height: .25rem;
-          background: #fff;
+          background: var(--ddd-palette-light);
           transition: .3s;
       }
 
@@ -731,7 +731,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .close .navicon {
-          background: rgba(0,0,0,0);
+          background: transparent;
       }
 
       .close .navicon:before,
@@ -756,7 +756,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
         padding: 5px;
         gap: 0;
         border-radius: 4px;
-        box-shadow: 0 2px 4px 0 rgba(#000, 0.16), 0 2px 10px 0 rgba(#000, 0.12);
+        box-shadow: var(--ddd-boxShadow-sm);
         background-color: var(--ddd-palette-4);
         z-index: 5;
         transition: .3s;
@@ -831,8 +831,8 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       }
 
       .theme-picker {
-        --simple-icon-width: 24px;
-        --simple-icon-height: 24px;
+        --simple-icon-width: var(--ddd-icon-xs);
+        --simple-icon-height: var(--ddd-icon-xs);
         padding: 8px;
         background-color: var(--ddd-lightDark-3);
         z-index: 4;
@@ -1043,7 +1043,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
 
       .listing-card:hover .listing-cardimg,
       .listing-card:focus .listing-cardimg {
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 10px 0px;
+        box-shadow: var(--ddd-boxShadow-sm);
       }
 
       /* Pagination */
@@ -1090,7 +1090,7 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
       .pagination a:hover,
       .pagination a:focus {
         text-decoration-color: var(--ddd-lightDark-3);
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 10px 0px;
+        box-shadow: var(--ddd-boxShadow-sm);
       }
       .pagination a.prev {
         margin-left: 24px;
@@ -1310,11 +1310,10 @@ export class CleanPortfolioTheme extends DDDSuper(HAXCMSLitElementTheme) {
           ${this.menuOverflow.length > 0
             ? html`
               <div class="mobile-menu-wrapper">
-                <button type="button" class=${this.menuOpen ? 'close' : ''} @click="${() => this.menuOpen = !this.menuOpen}">
-                  <span class="visually-hidden">Toggle Menu</span>
+                <button type="button" class=${this.menuOpen ? 'close' : ''} aria-label="Toggle menu" aria-expanded="${this.menuOpen ? 'true' : 'false'}" aria-controls="overflow-menu" @click="${() => this.menuOpen = !this.menuOpen}">
                   <div class="navicon"></div>
                 </button>
-                <ul class="hidden-links ${!this.menuOpen ? 'hidden' : ''}">
+                <ul id="overflow-menu" class="hidden-links ${!this.menuOpen ? 'hidden' : ''}">
                   ${this.menuOverflow.map(
                     (item) => html`
                     <li>

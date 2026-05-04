@@ -70,7 +70,7 @@ class CleanTwo extends LTIResizingMixin(
           margin: 0;
           display: block;
           padding: 0;
-          border-top: 2px solid #e6ecf1;
+          border-top: var(--ddd-border-sm);
           margin-top: 24px;
           align-items: center;
           padding-top: 24px;
@@ -95,7 +95,7 @@ class CleanTwo extends LTIResizingMixin(
           --site-menu-button-link-decoration: none;
           --site-menu-button-button-hover-color: var(
             --ddd-theme-default-info,
-            #383f45
+            var(--ddd-primary-4)
           );
           transition: all 0.3s ease-in-out;
           color: light-dark(var(--ddd-primary-4), var(--ddd-accent-6));
@@ -567,7 +567,7 @@ class CleanTwo extends LTIResizingMixin(
           margin: 0;
           display: flex;
           padding: 0;
-          border-top: 2px solid #e6ecf1;
+          border-top: var(--ddd-border-sm);
           margin-top: 24px;
           align-items: center;
           padding-top: 24px;
