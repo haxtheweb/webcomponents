@@ -45,6 +45,10 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
           display: block;
           color: black;
           width: auto;
+          --text-color: var(
+            --ddd-component-stop-note-text-color,
+            var(--ddd-theme-default-coalyGray)
+          );
           --background-color: var(
             --ddd-component-stop-note-icon-background,
             var(--ddd-theme-default-errorLight)
@@ -118,6 +122,7 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
           padding: var(--ddd-spacing-1) var(--ddd-spacing-6);
           flex: 1 1 auto;
           transition: background-color 0.3s ease-in-out;
+          color: var(--text-color);
           background-color: var(
             --ddd-component-stop-note-text-background,
             var(--background-color)
@@ -149,11 +154,20 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
 
         .secondary_message {
           width: 100%;
+          color: var(--text-color);
           font-weight: var(--ddd-font-weight-regular);
+        }
+        .secondary_message ::slotted(*) {
+          color: inherit;
+        }
+
+        .secondary_message ::slotted(a) {
+          color: inherit;
         }
 
         a:-webkit-any-link {
           text-decoration: none;
+          color: inherit;
         }
         a:hover {
           text-decoration: underline;
@@ -204,8 +218,8 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
             ${this.title}
           </h3>
           <div class="secondary_message">
-            <slot></slot>
-            <slot name="message"></slot>
+            <slot @slotchange="${this._handleSlotChange}"></slot>
+            <slot name="message" @slotchange="${this._handleSlotChange}"></slot>
           </div>
           ${this.url
             ? html`
@@ -219,6 +233,37 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
         </div>
       </div>
     `;
+  }
+  _handleSlotChange() {
+    this._syncSlottedLinkColor();
+  }
+  _syncSlottedLinkColor() {
+    if (!this.shadowRoot) {
+      return;
+    }
+    this.shadowRoot.querySelectorAll("slot").forEach((slot) => {
+      slot.assignedElements({ flatten: true }).forEach((element) => {
+        this._applySlottedLinkColor(element);
+      });
+    });
+  }
+  _applySlottedLinkColor(element) {
+    if (!element || !element.querySelectorAll) {
+      return;
+    }
+    if (
+      element.tagName &&
+      element.tagName.toLowerCase() === "a" &&
+      element.style &&
+      !element.style.color
+    ) {
+      element.style.color = "inherit";
+    }
+    element.querySelectorAll("a").forEach((link) => {
+      if (link.style && !link.style.color) {
+        link.style.color = "inherit";
+      }
+    });
   }
   static get tag() {
     return "stop-note";
@@ -290,6 +335,7 @@ class StopNote extends I18NMixin(remoteLinkBehavior(DDD)) {
   firstUpdated(changedProperties) {
     if (super.firstUpdated) super.firstUpdated(changedProperties);
     this.remoteLinkTarget = this.shadowRoot.querySelector("#link");
+    this._syncSlottedLinkColor();
     // if we have no status BUT icon was supplied; this is to support legacy implementations
     // where the icon was the thing dictating the status
     if (this.status === null && this.icon) {
