@@ -1261,6 +1261,280 @@ class DDDocs extends DDD {
           title="--ddd-palette-color-7"
         ></div>
       </div>
+
+      <div class="my-5" data-palette="9">
+        <h5>[data-palette="positively-purple"] or [data-palette="9"]</h5>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-1); display: inline-block;"
+          title="--ddd-palette-color-1"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-2); display: inline-block;"
+          title="--ddd-palette-color-2"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-3); display: inline-block;"
+          title="--ddd-palette-color-3"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-4); display: inline-block;"
+          title="--ddd-palette-color-4"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-5); display: inline-block;"
+          title="--ddd-palette-color-5"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-6); display: inline-block;"
+          title="--ddd-palette-color-6"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-7); display: inline-block;"
+          title="--ddd-palette-color-7"
+        ></div>
+      </div>
+
+      <div class="my-5" data-palette="10">
+        <h5>[data-palette="honey-bear"] or [data-palette="10"]</h5>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-1); display: inline-block;"
+          title="--ddd-palette-color-1"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-2); display: inline-block;"
+          title="--ddd-palette-color-2"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-3); display: inline-block;"
+          title="--ddd-palette-color-3"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-4); display: inline-block;"
+          title="--ddd-palette-color-4"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-5); display: inline-block;"
+          title="--ddd-palette-color-5"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-6); display: inline-block;"
+          title="--ddd-palette-color-6"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-7); display: inline-block;"
+          title="--ddd-palette-color-7"
+        ></div>
+      </div>
+
+      <div class="my-5" data-palette="11">
+        <h5>[data-palette="boldly-lion"] or [data-palette="11"]</h5>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-1); display: inline-block;"
+          title="--ddd-palette-color-1"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-2); display: inline-block;"
+          title="--ddd-palette-color-2"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-3); display: inline-block;"
+          title="--ddd-palette-color-3"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-4); display: inline-block;"
+          title="--ddd-palette-color-4"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-5); display: inline-block;"
+          title="--ddd-palette-color-5"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-6); display: inline-block;"
+          title="--ddd-palette-color-6"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-7); display: inline-block;"
+          title="--ddd-palette-color-7"
+        ></div>
+      </div>
+
+      <div class="my-5" data-palette="12">
+        <h5>[data-palette="ocean-current"] or [data-palette="12"]</h5>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-1); display: inline-block;"
+          title="--ddd-palette-color-1"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-2); display: inline-block;"
+          title="--ddd-palette-color-2"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-3); display: inline-block;"
+          title="--ddd-palette-color-3"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-4); display: inline-block;"
+          title="--ddd-palette-color-4"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-5); display: inline-block;"
+          title="--ddd-palette-color-5"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-6); display: inline-block;"
+          title="--ddd-palette-color-6"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-7); display: inline-block;"
+          title="--ddd-palette-color-7"
+        ></div>
+      </div>
+
+      <div class="my-5" data-palette="13">
+        <h5>[data-palette="twilight-indigo"] or [data-palette="13"]</h5>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-1); display: inline-block;"
+          title="--ddd-palette-color-1"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-2); display: inline-block;"
+          title="--ddd-palette-color-2"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-3); display: inline-block;"
+          title="--ddd-palette-color-3"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-4); display: inline-block;"
+          title="--ddd-palette-color-4"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-5); display: inline-block;"
+          title="--ddd-palette-color-5"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-6); display: inline-block;"
+          title="--ddd-palette-color-6"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-7); display: inline-block;"
+          title="--ddd-palette-color-7"
+        ></div>
+      </div>
+
+      <div class="my-5" data-palette="14">
+        <h5>[data-palette="evergreen-earth"] or [data-palette="14"]</h5>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-1); display: inline-block;"
+          title="--ddd-palette-color-1"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-2); display: inline-block;"
+          title="--ddd-palette-color-2"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-3); display: inline-block;"
+          title="--ddd-palette-color-3"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-4); display: inline-block;"
+          title="--ddd-palette-color-4"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-5); display: inline-block;"
+          title="--ddd-palette-color-5"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-6); display: inline-block;"
+          title="--ddd-palette-color-6"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-7); display: inline-block;"
+          title="--ddd-palette-color-7"
+        ></div>
+      </div>
+
+      <div class="my-5" data-palette="15">
+        <h5>[data-palette="graphite-contrast"] or [data-palette="15"]</h5>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-1); display: inline-block;"
+          title="--ddd-palette-color-1"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-2); display: inline-block;"
+          title="--ddd-palette-color-2"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-3); display: inline-block;"
+          title="--ddd-palette-color-3"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-4); display: inline-block;"
+          title="--ddd-palette-color-4"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-5); display: inline-block;"
+          title="--ddd-palette-color-5"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-6); display: inline-block;"
+          title="--ddd-palette-color-6"
+        ></div>
+        <div
+          class="m-5 p-5 b-xs squareButton"
+          style="background-color: var(--ddd-palette-color-7); display: inline-block;"
+          title="--ddd-palette-color-7"
+        ></div>
+      </div>
+
     `;
   }
 

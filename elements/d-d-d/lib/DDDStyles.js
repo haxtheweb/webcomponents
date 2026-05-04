@@ -4787,78 +4787,6 @@ html, :root {
   --ddd-palette-text-color-7: var(--simple-colors-default-theme-deep-orange-10);
 }
 
-/** Very Violent Red */
-[data-palette="very-violent-red"],
-[data-palette="1"] {
-  --ddd-palette-color-1: var(--simple-colors-fixed-theme-red-12);
-  --ddd-palette-color-2: var(--simple-colors-fixed-theme-deep-orange-8);
-  --ddd-palette-color-3: var(--simple-colors-default-theme-deep-orange-7);
-  --ddd-palette-color-4: var(--ddd-theme-default-discoveryCoral);
-  --ddd-palette-color-5: var(--simple-colors-default-theme-red-2);
-  --ddd-palette-color-6: var(--ddd-theme-default-slateGray);
-  --ddd-palette-color-7: var(--ddd-theme-default-pughBlue);
-
-  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
-
-  /* text colors; to be used on top of corresponding palette-color */
-  --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-red-2);
-  --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-red-1);
-  --ddd-palette-text-color-3: var(--simple-colors-default-theme-deep-orange-12);
-  --ddd-palette-text-color-4: var(--simple-colors-default-theme-red-12);
-  --ddd-palette-text-color-5: var(--simple-colors-default-theme-red-10);
-  --ddd-palette-text-color-6: var(--ddd-theme-default-skyLight);
-  --ddd-palette-text-color-7: var(--simple-colors-default-theme-blue-10);
-}
-
-/** Beetles Yellow */
-[data-palette="beetles-yellow"],
-[data-palette="2"] {
-  --ddd-palette-color-1: var(--simple-colors-default-theme-orange-9);
-  --ddd-palette-color-2: var(--simple-colors-fixed-theme-orange-7);
-  --ddd-palette-color-3: var(--simple-colors-default-theme-orange-6);
-  --ddd-palette-color-4: var(--simple-colors-fixed-theme-amber-6);
-  --ddd-palette-color-5: var(--ddd-theme-default-keystoneYellow);
-  --ddd-palette-color-6: var(--ddd-theme-default-creekTeal);
-  --ddd-palette-color-7: var(--simple-colors-default-theme-cyan-1);
-
-  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
-
-  /* text colors; to be used on top of corresponding palette-color */
-  --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-yellow-2);
-  --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-orange-12);
-  --ddd-palette-text-color-3: var(--simple-colors-fixed-theme-orange-11);
-  --ddd-palette-text-color-4: var(--simple-colors-fixed-theme-orange-10);
-  --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-deep-orange-11);
-  --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-cyan-12);
-  --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-light-blue-10);
-}
-
-/* Offbrand Nittany Blue */
-[data-palette="offbrand-nittany-blue"],
-[data-palette="3"] {
-  --ddd-palette-color-1: var(--ddd-theme-default-nittanyNavy);
-  --ddd-palette-color-2: var(--simple-colors-fixed-theme-light-blue-10);
-  --ddd-palette-color-3: var(--simple-colors-fixed-theme-light-blue-8);
-  --ddd-palette-color-4: var(--simple-colors-fixed-theme-light-blue-6);
-  --ddd-palette-color-5: var(--simple-colors-fixed-theme-cyan-2);
-  --ddd-palette-color-6: var(--simple-colors-fixed-theme-orange-7);
-  --ddd-palette-color-7: var(--ddd-theme-default-keystoneYellow);
-
-  --ddd-palette-video-player-color: var(--ddd-theme-default-black);
-
-  /* text colors; to be used on top of corresponding palette-color */
-  --ddd-palette-text-color-1: var(--simple-colors-default-theme-light-blue-4);
-  --ddd-palette-text-color-2: var(--simple-colors-fixed-theme-cyan-2);
-  --ddd-palette-text-color-3: var(--ddd-theme-default-white);
-  --ddd-palette-text-color-4: var(--simple-colors-fixed-theme-blue-11);
-  --ddd-palette-text-color-5: var(--simple-colors-fixed-theme-light-blue-10);
-  --ddd-palette-text-color-6: var(--simple-colors-fixed-theme-orange-12);
-  --ddd-palette-text-color-7: var(--simple-colors-fixed-theme-orange-10
-    );
-
-    --ddd-palette-video-player-color: var(--ddd-theme-default-black);
-  }
-
   /** Very Violent Red */
   [data-palette="very-violent-red"],
   [data-palette="1"] {
@@ -4869,29 +4797,6 @@ html, :root {
     --ddd-palette-color-5: var(--simple-colors-default-theme-red-2);
     --ddd-palette-color-6: var(--ddd-theme-default-slateGray);
     --ddd-palette-color-7: var(--ddd-theme-default-pughBlue);
-
-/** Salmon Season */
-[data-palette="salmon-season"],
-[data-palette="6"] {
---ddd-palette-color-1: var(--simple-colors-default-theme-pink-2);
---ddd-palette-color-2: var(--simple-colors-default-theme-pink-4);
---ddd-palette-color-3: var(--ddd-theme-default-original87Pink);
---ddd-palette-color-4: var(--ddd-theme-default-discoveryCoral);
---ddd-palette-color-5: var(--simple-colors-default-theme-red-10);
---ddd-palette-color-6: var(--simple-colors-default-theme-lime-9);
---ddd-palette-color-7: var(--simple-colors-default-theme-lime-5);
-
---ddd-palette-video-player-color: var(--ddd-theme-default-black);
-
-/* text colors; to be used on top of corresponding palette-color */
-  --ddd-palette-text-color-1: var(--simple-colors-default-theme-pink-11);
-  --ddd-palette-text-color-2: var(--simple-colors-default-theme-pink-12);
-  --ddd-palette-text-color-3: var(--simple-colors-default-theme-pink-1);
-  --ddd-palette-text-color-4: var(--simple-colors-default-theme-red-12);
-  --ddd-palette-text-color-5: var(--simple-colors-default-theme-pink-2);
-  --ddd-palette-text-color-6: var(--simple-colors-default-theme-lime-1);
-  --ddd-palette-text-color-7: var(--simple-colors-default-theme-light-green-10);
-}
 
     /* text colors; to be used on top of corresponding palette-color */
     --ddd-palette-text-color-1: var(--simple-colors-fixed-theme-red-2);
@@ -5021,6 +4926,29 @@ html, :root {
     );
   }
 
+  /** Tweedle Dee */
+  [data-palette="tweedle-dee"],
+  [data-palette="7"] {
+    --ddd-palette-color-1: var(--simple-colors-default-theme-indigo-2);
+    --ddd-palette-color-2: var(--simple-colors-default-theme-blue-5);
+    --ddd-palette-color-3: var(--simple-colors-default-theme-light-blue-7);
+    --ddd-palette-color-4: var(--simple-colors-default-theme-cyan-9);
+    --ddd-palette-color-5: var(--simple-colors-default-theme-teal-10);
+    --ddd-palette-color-6: var(--simple-colors-default-theme-purple-8);
+    --ddd-palette-color-7: var(--simple-colors-default-theme-pink-7);
+
+    --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
+    /* text colors; to be used on top of corresponding palette-color */
+    --ddd-palette-text-color-1: var(--simple-colors-default-theme-indigo-12);
+    --ddd-palette-text-color-2: var(--simple-colors-default-theme-light-blue-12);
+    --ddd-palette-text-color-3: var(--simple-colors-default-theme-light-blue-1);
+    --ddd-palette-text-color-4: var(--simple-colors-default-theme-cyan-1);
+    --ddd-palette-text-color-5: var(--simple-colors-default-theme-teal-1);
+    --ddd-palette-text-color-6: var(--simple-colors-default-theme-purple-1);
+    --ddd-palette-text-color-7: var(--simple-colors-default-theme-pink-1);
+  }
+
 /* Polaris Invent */
 [data-palette="polaris-invent"],
 [data-palette="8"] {
@@ -5111,6 +5039,98 @@ html, :root {
   --ddd-palette-text-color-6: var(--ddd-theme-default-limestoneLight);
   --ddd-palette-text-color-7: var(--ddd-theme-default-nittanyNavy);
 }
+
+/** Ocean Current */
+  [data-palette="ocean-current"],
+  [data-palette="12"] {
+    --ddd-palette-color-1: var(--simple-colors-default-theme-indigo-1);
+    --ddd-palette-color-2: var(--simple-colors-default-theme-blue-3);
+    --ddd-palette-color-3: var(--simple-colors-default-theme-light-blue-6);
+    --ddd-palette-color-4: var(--simple-colors-default-theme-cyan-7);
+    --ddd-palette-color-5: var(--simple-colors-default-theme-teal-7);
+    --ddd-palette-color-6: var(--simple-colors-default-theme-blue-grey-11);
+    --ddd-palette-color-7: var(--simple-colors-default-theme-amber-7);
+
+    --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
+    /* text colors; to be used on top of corresponding palette-color */
+    --ddd-palette-text-color-1: var(--simple-colors-default-theme-indigo-12);
+    --ddd-palette-text-color-2: var(--simple-colors-default-theme-light-blue-12);
+    --ddd-palette-text-color-3: var(--simple-colors-default-theme-light-blue-1);
+    --ddd-palette-text-color-4: var(--simple-colors-default-theme-cyan-1);
+    --ddd-palette-text-color-5: var(--simple-colors-default-theme-teal-1);
+    --ddd-palette-text-color-6: var(--simple-colors-default-theme-blue-grey-2);
+    --ddd-palette-text-color-7: var(--simple-colors-default-theme-amber-1);
+  }
+
+  /** Twilight Indigo */
+  [data-palette="twilight-indigo"],
+  [data-palette="13"] {
+    --ddd-palette-color-1: var(--simple-colors-default-theme-deep-purple-1);
+    --ddd-palette-color-2: var(--simple-colors-default-theme-indigo-3);
+    --ddd-palette-color-3: var(--simple-colors-default-theme-indigo-6);
+    --ddd-palette-color-4: var(--simple-colors-default-theme-deep-purple-8);
+    --ddd-palette-color-5: var(--simple-colors-default-theme-purple-10);
+    --ddd-palette-color-6: var(--simple-colors-default-theme-blue-grey-10);
+    --ddd-palette-color-7: var(--simple-colors-default-theme-blue-grey-12);
+
+    --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
+    /* text colors; to be used on top of corresponding palette-color */
+    --ddd-palette-text-color-1: var(--simple-colors-default-theme-deep-purple-12);
+    --ddd-palette-text-color-2: var(--simple-colors-default-theme-indigo-12);
+    --ddd-palette-text-color-3: var(--simple-colors-default-theme-indigo-12);
+    --ddd-palette-text-color-4: var(--simple-colors-default-theme-deep-purple-1);
+    --ddd-palette-text-color-5: var(--simple-colors-default-theme-purple-2);
+    --ddd-palette-text-color-6: var(--simple-colors-default-theme-blue-grey-1);
+    --ddd-palette-text-color-7: var(--simple-colors-default-theme-blue-grey-2);
+  }
+
+  /** Evergreen Earth */
+  [data-palette="evergreen-earth"],
+  [data-palette="14"] {
+    --ddd-palette-color-1: var(--simple-colors-default-theme-green-2);
+    --ddd-palette-color-2: var(--simple-colors-default-theme-green-5);
+    --ddd-palette-color-3: var(--simple-colors-default-theme-light-green-7);
+    --ddd-palette-color-4: var(--simple-colors-default-theme-lime-9);
+    --ddd-palette-color-5: var(--simple-colors-default-theme-brown-7);
+    --ddd-palette-color-6: var(--simple-colors-default-theme-amber-8);
+    --ddd-palette-color-7: var(--simple-colors-default-theme-brown-11);
+
+    --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
+    /* text colors; to be used on top of corresponding palette-color */
+    --ddd-palette-text-color-1: var(--simple-colors-default-theme-green-12);
+    --ddd-palette-text-color-2: var(--simple-colors-default-theme-green-12);
+    --ddd-palette-text-color-3: var(--simple-colors-default-theme-light-green-1);
+    --ddd-palette-text-color-4: var(--simple-colors-default-theme-lime-1);
+    --ddd-palette-text-color-5: var(--simple-colors-default-theme-brown-1);
+    --ddd-palette-text-color-6: var(--simple-colors-default-theme-amber-1);
+    --ddd-palette-text-color-7: var(--simple-colors-default-theme-brown-2);
+  }
+
+  /** Graphite Contrast */
+  [data-palette="graphite-contrast"],
+  [data-palette="15"] {
+    --ddd-palette-color-1: var(--ddd-theme-default-coalyGray);
+    --ddd-palette-color-2: var(--simple-colors-default-theme-blue-grey-9);
+    --ddd-palette-color-3: var(--simple-colors-default-theme-grey-8);
+    --ddd-palette-color-4: var(--simple-colors-default-theme-grey-5);
+    --ddd-palette-color-5: var(--simple-colors-default-theme-blue-grey-3);
+    --ddd-palette-color-6: var(--simple-colors-default-theme-cyan-7);
+    --ddd-palette-color-7: var(--simple-colors-default-theme-amber-7);
+
+    --ddd-palette-video-player-color: var(--ddd-theme-default-black);
+
+    /* text colors; to be used on top of corresponding palette-color */
+    --ddd-palette-text-color-1: var(--ddd-theme-default-white);
+    --ddd-palette-text-color-2: var(--simple-colors-default-theme-blue-grey-12);
+    --ddd-palette-text-color-3: var(--simple-colors-default-theme-grey-12);
+    --ddd-palette-text-color-4: var(--simple-colors-default-theme-grey-2);
+    --ddd-palette-text-color-5: var(--simple-colors-default-theme-blue-grey-12);
+    --ddd-palette-text-color-6: var(--simple-colors-default-theme-cyan-1);
+    --ddd-palette-text-color-7: var(--simple-colors-default-theme-amber-1);
+  }
 `;
 
 // export that has all of them for easy stamping as a single sheet
