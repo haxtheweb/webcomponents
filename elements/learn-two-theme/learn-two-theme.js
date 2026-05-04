@@ -35,10 +35,16 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
       styles,
       css`
         :host {
-          color: black;
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
           --__learn-two-theme-default-background: var(
             --learn-two-theme-default-background,
-            #ffffff
+            light-dark(
+              var(--ddd-theme-default-white),
+              var(--ddd-theme-default-coalyGray)
+            )
           );
           display: block;
           letter-spacing: var(--learn-two-theme-letter-spacing, -0.03rem);
@@ -91,8 +97,17 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
         }
 
         .header {
-          background: #747474;
-          color: #fafafa;
+          background: var(
+            --learn-two-theme-header-background,
+            var(
+              --learn-two-theme-menu-color,
+              light-dark(
+                var(--ddd-theme-default-coalyGray),
+                var(--ddd-theme-default-potentialMidnight)
+              )
+            )
+          );
+          color: var(--learn-two-theme-header-color, var(--ddd-theme-default-white));
           text-align: center;
           padding: 0 0 16px;
         }
@@ -117,17 +132,40 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
         }
         site-breadcrumb {
           display: block;
+          --site-breadcrumb-color: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-slateLight)
+          );
+          --site-breadcrumb-color-hover: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-white)
+          );
+          --site-breadcrumb-decoration-color-hover: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-white)
+          );
+          --site-breadcrumb-last-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          --site-breadcrumb-separator-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-limestoneLight)
+          );
         }
         :host([responsive-size="xs"]) site-breadcrumb,
         :host([responsive-size="sm"]) site-breadcrumb {
           display: none;
         }
         site-rss-button {
-          color: white;
+          color: var(--ddd-theme-default-white);
         }
 
         site-print-button {
-          color: var(--site-print-button-color, white);
+          color: var(
+            --site-print-button-color,
+            var(--ddd-theme-default-white)
+          );
           margin: var(--ddd-spacing-1);
         }
         site-modal {
@@ -138,10 +176,10 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
         simple-icon-button,
         site-rss-button,
         site-print-button {
-          color: white;
-          --simple-icon-fill-color: white;
-          --haxcms-tooltip-color: #ffffff;
-          --haxcms-tooltip-background-color: #000000;
+          color: var(--ddd-theme-default-white);
+          --simple-icon-fill-color: var(--ddd-theme-default-white);
+          --haxcms-tooltip-color: var(--ddd-theme-default-white);
+          --haxcms-tooltip-background-color: var(--ddd-theme-default-coalyGray);
         }
 
         h-a-x {
@@ -166,7 +204,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           position: fixed;
           top: 0;
           transition: 0.2s linear all;
-          box-shadow: 0 0 6px -3px var(--haxcms-color, black);
+          box-shadow: var(--learn-two-theme-drawer-box-shadow, var(--ddd-boxShadow-sm));
           overflow: hidden;
           width: 300px;
           --app-drawer-content-padding: 0;
@@ -197,7 +235,10 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
         site-menu-button:not([disabled]):active,
         site-menu-button:not([disabled]):focus {
           opacity: 1;
-          background-color: rgba(0, 0, 0, 0.1);
+          background-color: var(
+            --site-menu-button-button-hover-background-color,
+            var(--ddd-theme-default-limestoneLight)
+          );
         }
         site-menu-button {
           --site-menu-button-icon-fill-color: var(
@@ -207,11 +248,14 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           --haxcms-tooltip-background-color: var(
             --haxcms-user-styles-color-theme-color-1
           );
-          --site-menu-button-button-hover-background-color: rgba(0, 0, 0, 0.1);
+          --site-menu-button-button-hover-background-color: var(
+            --learn-two-theme-menu-button-hover-background-color,
+            var(--ddd-theme-default-limestoneLight)
+          );
         }
         site-menu-button {
-          --site-menu-button-icon-width: 64px;
-          --site-menu-button-icon-height: 64px;
+          --site-menu-button-icon-width: var(--ddd-icon-xl);
+          --site-menu-button-icon-height: var(--ddd-icon-xl);
         }
         site-menu-button[type="next"] {
           right: 0;
@@ -243,30 +287,45 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
         site-title {
           position: relative;
           overflow: hidden;
-          color: white;
+          color: var(--ddd-theme-default-white);
         }
 
         site-menu {
-          background-color: var(--learn-two-theme-menu-color, #383f45);
-          color: #ffffff;
+          background-color: var(
+            --learn-two-theme-menu-color,
+            light-dark(
+              var(--ddd-theme-default-coalyGray),
+              var(--ddd-theme-default-potentialMidnight)
+            )
+          );
+          color: var(--ddd-theme-default-white);
           padding: 0;
           height: calc(100vh - 116px);
-          --site-menu-color: #ffffff;
-          --map-menu-item-a-active-color: black;
+          --site-menu-color: var(--ddd-theme-default-white);
+          --map-menu-item-a-active-color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
           overflow: auto;
 
           --site-menu-active-color: var(
             --haxcms-user-styles-color-theme-color-3
           );
           --site-menu-item-active-item-color: var(
-            --simple-colors-default-theme-light-blue-1,
-            rgba(100, 100, 255, 0.1)
+            --learn-two-theme-menu-item-active-item-color,
+            light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-limestoneGray)
+            )
           );
           --haxcms-tooltip-color: var(--ddd-theme-default-infoLight);
           --haxcms-tooltip-background-color: var(--ddd-theme-default-info);
           --map-menu-item-a-active-background-color: var(
-            --simple-colors-default-theme-grey-1,
-            rgba(200, 200, 200, 0.1)
+            --learn-two-theme-menu-item-active-background-color,
+            light-dark(
+              var(--ddd-theme-default-limestoneLight),
+              var(--ddd-theme-default-limestoneGray)
+            )
           );
           font-family: var(--ddd-font-navigation);
           --site-menu-font-size: var(--ddd-font-size-3xs);
@@ -301,9 +360,9 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           align-items: center;
           left: 300px;
           z-index: 1;
-          --site-menu-button-icon-width: 64px;
-          --site-menu-button-icon-height: 64px;
-          --site-menu-button-icon-fill-color: #2d3237;
+          --site-menu-button-icon-width: var(--ddd-icon-xl);
+          --site-menu-button-icon-height: var(--ddd-icon-xl);
+          --site-menu-button-icon-fill-color: var(--ddd-theme-default-coalyGray);
         }
 
         app-drawer-layout[narrow] site-menu-button {
@@ -313,7 +372,7 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
 
         site-title {
           padding: var(--ddd-spacing-4);
-          color: #fafafa;
+          color: var(--ddd-theme-default-white);
           --site-title-link-display: inline-block;
           --site-title-link-h1-display: inline-block;
           --site-title-link-text-decoration: none;
@@ -403,7 +462,13 @@ class LearnTwoTheme extends LTIResizingMixin(DDDSuper(HAXCMSLitElementTheme)) {
           app-drawer-layout {
             --app-drawer-content-container: {
               overflow: hidden;
-              background-color: var(--learn-two-theme-menu-color, #383f45);
+              background-color: var(
+                --learn-two-theme-menu-color,
+                light-dark(
+                  var(--ddd-theme-default-coalyGray),
+                  var(--ddd-theme-default-potentialMidnight)
+                )
+              );
               position: relative;
             }
           }

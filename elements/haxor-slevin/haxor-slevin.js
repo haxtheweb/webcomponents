@@ -185,7 +185,7 @@ class HaxorSlevin extends HAXCMSThemeParts(
           background-color: transparent;
           border: none;
           display: inline-flex;
-          color: var(--simple-colors-default-theme-accent-1);
+          color: var(--ddd-theme-default-link);
           min-width: 100px;
           text-transform: unset;
           margin: 0px var(--ddd-spacing-4);
@@ -210,32 +210,44 @@ class HaxorSlevin extends HAXCMSThemeParts(
         }
 
         site-share-widget {
-          --site-share-widget-bg: var(--haxcms-color, rgba(255, 0, 116, 1));
+          --site-share-widget-bg: var(
+            --haxcms-color,
+            var(--ddd-theme-default-link)
+          );
         }
         site-share-widget:hover,
         site-share-widget:focus,
         site-share-widget:active {
-          --site-share-widget-bg: var(--haxcms-system-action-color, blue);
+          --site-share-widget-bg: var(
+            --haxcms-system-action-color,
+            var(--ddd-theme-default-beaverBlue)
+          );
         }
 
         social-share-link {
-          --social-share-button-color: var(
-            --simple-colors-default-theme-accent-1
+          --social-share-button-color: var(--ddd-theme-default-white);
+          --social-share-button-bg: light-dark(
+            var(--ddd-theme-default-link),
+            var(--ddd-theme-default-beaverBlue)
           );
-          --social-share-button-bg: var(--simple-colors-default-theme-accent-7);
           --social-share-button-padding: 8px;
           --social-share-button-border-radius: 50%;
-          --social-share-button-hover-bg: var(
-            --simple-colors-default-theme-accent-10
+          --social-share-button-hover-bg: light-dark(
+            var(--ddd-theme-default-beaverBlue),
+            var(--ddd-theme-default-link)
           );
-          --social-share-button-hover-color: var(
-            --simple-colors-default-theme-accent-2
-          );
+          --social-share-button-hover-color: var(--ddd-theme-default-white);
         }
 
         .annoy-user {
-          color: var(--simple-colors-default-theme-accent-12);
-          background-color: var(--simple-colors-default-theme-accent-2);
+          color: light-dark(
+            var(--ddd-theme-default-coalyGray),
+            var(--ddd-theme-default-white)
+          );
+          background-color: light-dark(
+            var(--ddd-theme-default-limestoneLight),
+            var(--ddd-theme-default-coalyGray)
+          );
           display: block;
           position: fixed;
           bottom: 0;
@@ -254,10 +266,10 @@ class HaxorSlevin extends HAXCMSThemeParts(
           opacity: 0 !important;
         }
         simple-icon-lite {
-          height: 40px;
-          width: 40px;
-          --simple-icon-height: 40px;
-          --simple-icon-width: 40px;
+          height: var(--ddd-icon-sm);
+          width: var(--ddd-icon-sm);
+          --simple-icon-height: var(--ddd-icon-sm);
+          --simple-icon-width: var(--ddd-icon-sm);
           display: flex;
           padding-right: 20px;
         }
@@ -293,9 +305,9 @@ class HaxorSlevin extends HAXCMSThemeParts(
         site-rss-button {
           margin: 0 4px;
           padding: 0;
-          color: var(--simple-colors-default-theme-accent-12);
-          --site-rss-color: var(--simple-colors-default-theme-accent-10);
-          --site-rss-bg-color: var(--simple-colors-default-theme-accent-10);
+          color: var(--ddd-theme-default-coalyGray);
+          --site-rss-color: var(--ddd-theme-default-white);
+          --site-rss-bg-color: var(--ddd-theme-default-link);
           --site-rss-simple-icon-button-padding: 0 4px;
           --site-rss-simple-icon-button-margin: 0;
         }
