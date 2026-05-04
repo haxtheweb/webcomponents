@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>LinkedIn embed demo</title>
+    <script src="../../../node_modules/@haxtheweb/deduping-fix/deduping-fix.js"></script>
+    <script type="module">
+      import "@haxtheweb/demo-snippet/demo-snippet.js";
+      import "@haxtheweb/grid-plate/grid-plate.js";
+      import "../linkedin-embed.js";
+    </script>
+    <style>
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        background-color: var(--ddd-theme-default-beaverBlue, #f7f7f7);
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 16px;
+        display: grid;
+        gap: 16px;
+      }
+      .intro {
+        border: 1px solid #d8d8d8;
+        border-radius: 8px;
+        background-color: #fff;
+        padding: 16px;
+        display: grid;
+        gap: 8px;
+      }
+      .intro h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+      .intro p {
+        margin: 0;
+      }
+      .demo-card {
+        border: 1px solid #d8d8d8;
+        border-radius: 8px;
+        background-color: #fff;
+        padding: 16px;
+      }
+      .demo-card h2 {
+        margin: 0 0 16px;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <section class="intro">
+        <h1>LinkedIn embed</h1>
+        <p>
+          <code>linkedin-embed</code> renders the LinkedIn profile badge in a single element and can
+          be placed in <code>grid-plate</code> layouts.
+        </p>
+      </section>
+      <section class="demo-card">
+        <h2>Three-column grid-plate example</h2>
+        <grid-plate layout="1-1-1" disable-responsive>
+          <linkedin-embed slot="col-1" vanityname="btopro"></linkedin-embed>
+          <linkedin-embed slot="col-2" vanityname="nisha-neupane-6b7219277"></linkedin-embed>
+          <linkedin-embed slot="col-3" vanityname="drdavefusco"></linkedin-embed>
+        </grid-plate>
+      </section>
+      <section class="demo-card">
+        <h2>Code sample</h2>
+        <demo-snippet>
+          <template>
+            <grid-plate layout="1-1-1" disable-responsive>
+              <linkedin-embed slot="col-1" vanityname="btopro"></linkedin-embed>
+              <linkedin-embed slot="col-2" vanityname="nisha-neupane-6b7219277"></linkedin-embed>
+              <linkedin-embed slot="col-3" vanityname="drdavefusco"></linkedin-embed>
+            </grid-plate>
+          </template>
+        </demo-snippet>
+      </section>
+    </div>
+  </body>
+</html>

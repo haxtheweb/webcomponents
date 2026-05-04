@@ -1,0 +1,52 @@
+{
+  "api": "1",
+  "type": "element",
+  "editingElement": "core",
+  "hideDefaultSettings": false,
+  "canScale": false,
+  "canEditSource": true,
+  "contentEditable": false,
+  "gizmo": {
+    "title": "LinkedIn embed",
+    "description": "Embed a LinkedIn profile card.",
+    "icon": "hax:link",
+    "color": "blue",
+    "tags": ["Other", "social media", "linkedin", "profile", "card"],
+    "handles": [],
+    "meta": {
+      "author": "HAXTheWeb core team"
+    }
+  },
+  "settings": {
+    "configure": [
+      {
+        "property": "vanityname",
+        "title": "Vanity name",
+        "description": "LinkedIn vanity username segment.",
+        "inputMethod": "textfield",
+        "required": true
+      }
+    ],
+    "advanced": [
+      {
+        "property": "locale",
+        "title": "Locale",
+        "description": "Locale metadata value such as en_US.",
+        "inputMethod": "textfield"
+      }
+    ],
+    "saveOptions": {
+      "unsetAttributes": ["_haxstate"]
+    }
+  },
+  "demoSchema": [
+    {
+      "tag": "linkedin-embed",
+      "content": "",
+      "properties": {
+        "vanityname": "btopro",
+        "locale": "en_US"
+      }
+    }
+  ]
+}
