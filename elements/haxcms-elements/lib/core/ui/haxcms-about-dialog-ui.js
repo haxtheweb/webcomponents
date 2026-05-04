@@ -547,6 +547,30 @@ class HAXCMSAboutDialogUI extends DDD {
               </p>
             </div>
           </details>
+          <details class="section">
+            <summary class="section-title">
+              <span class="summary-leading">
+                <simple-icon-lite icon="icons:palette" aria-hidden="true"></simple-icon-lite>
+                <h3>Custom Theming</h3>
+              </span>
+            </summary>
+            <div class="collapse-body">
+              <p class="section-description">
+                Build and customize HAXsite themes with the HAX CLI and
+                supported theme development patterns.
+              </p>
+              <ul>
+                <li>
+                  <a
+                    href="https://haxtheweb.org/documentation/developers/haxsite/custom-theme-development"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Custom theme development docs</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </details>
 
           <details class="section">
             <summary class="section-title">
