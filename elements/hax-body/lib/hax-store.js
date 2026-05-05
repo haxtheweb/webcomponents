@@ -918,6 +918,10 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     if (tag && this.validGridTagList.includes(tag)) {
       return true;
     }
+    // include schema-defined layouts (type: grid), not just primitive grid tags
+    if (this.isLayoutElement(node)) {
+      return true;
+    }
     return false;
   }
 

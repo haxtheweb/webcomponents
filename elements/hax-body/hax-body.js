@@ -4077,18 +4077,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   // now test for this being a grid plate element which implies
                   // we need to ensure this is applied deep into its children
                   if (HAXStore.isGridPlateElement(node)) {
-                    // more lazy selector that will pull ANYTHING in the grid plate element
-                    let grandKids = node.querySelectorAll("*");
-                    for (var j = 0; j < grandKids.length; j++) {
-                      // sanity check for being a valid element / not a "hax" element
-                      if (this._validElementTest(grandKids[j], true)) {
-                        // correctly add or remove listeners
-                        this.__applyNodeEditableState(
-                          grandKids[j],
-                          this.editMode,
-                        );
-                      }
-                    }
+                    this.__rehydrateLayoutDescendants(node, this.editMode);
                   }
                   // special support for Header tags showing up w.o. identifiers
                   // this way it's easier to anchor to them in the future
@@ -4315,6 +4304,20 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     return false;
   }
   /**
+   * Ensure layout/grid descendants retain HAX editable state and data-hax-* attributes.
+   */
+  async __rehydrateLayoutDescendants(layoutNode, status = this.editMode) {
+    if (!layoutNode || !HAXStore.isGridPlateElement(layoutNode)) {
+      return;
+    }
+    let grandKids = layoutNode.querySelectorAll("*");
+    for (var j = 0; j < grandKids.length; j++) {
+      if (this._validElementTest(grandKids[j], true)) {
+        await this.__applyNodeEditableStateWhenReady(grandKids[j], status);
+      }
+    }
+  }
+  /**
    * Walk everything we find and either enable or disable editable state.
    */
   async _applyContentEditable(
@@ -4359,15 +4362,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       // now test for this being a grid plate element which implies
       // we need to ensure this is applied deep into its children
       if (HAXStore.isGridPlateElement(children[i])) {
-        // more lazy selector that will pull ANYTHING in the grid plate element
-        let grandKids = children[i].querySelectorAll("*");
-        for (var j = 0; j < grandKids.length; j++) {
-          // sanity check for being a valid element / not a "hax" element
-          if (this._validElementTest(grandKids[j], true)) {
-            // correctly add or remove listeners
-            this.__applyNodeEditableState(grandKids[j], status);
-          }
-        }
+        await this.__rehydrateLayoutDescendants(children[i], status);
       }
     }
   }
@@ -5227,6 +5222,10 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       this._keepContextVisible();
       // hack, show the icon of the item in the context menu without menu tapping store
       this.contextMenus.text.realSelectedValue = tag;
+      // ensure layout descendants stay hydrated when parent grid is re-selected
+      if (HAXStore.isGridPlateElement(newValue)) {
+        await this.__rehydrateLayoutDescendants(newValue, this.editMode);
+      }
     }
     // just hide menus if we don't have an active item
     else if (newValue === null) {
