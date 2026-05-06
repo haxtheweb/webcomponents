@@ -90,11 +90,7 @@ class TwitterEmbed extends LitElement {
       new CustomEvent("i18n-manager-register-element", {
         detail: {
           namespace: `twitter-embed.haxProperties`,
-          localesPath:
-            new URL(
-              "./locales/twitter-embed.haxProperties.es.json",
-              import.meta.url,
-            ).href + "/../",
+          localesPath: new URL("./locales", import.meta.url).href,
         },
       }),
     );

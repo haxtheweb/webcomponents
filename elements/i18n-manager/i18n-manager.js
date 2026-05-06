@@ -303,6 +303,18 @@ class I18NManager extends LitElement {
     return language && language !== "en" && !language.startsWith("en-");
   }
   /**
+   * Fetch and parse JSON, returning false when URL/file is unavailable or invalid
+   */
+  async _fetchJsonTarget(fetchTarget) {
+    try {
+      const response = await fetch(fetchTarget);
+      if (response && response.ok && response.json) {
+        return await response.json();
+      }
+    } catch (e) {}
+    return false;
+  }
+  /**
    * Convention we use
    */
   static get tag() {
@@ -345,6 +357,7 @@ class I18NManager extends LitElement {
       const isManifestBased = !el.locales;
       const shouldAttemptManifestLoad =
         isManifestBased &&
+        this.needsManifest(lang) &&
         (supportsExact || supportsBase || !this.manifestLoaded);
 
       if (!shouldLoadExact && !shouldLoadBase && !shouldAttemptManifestLoad) {
@@ -356,7 +369,11 @@ class I18NManager extends LitElement {
         fetchTarget = `${el.localesPath}/${el.namespace}.${lang}.json`;
       } else if (shouldLoadBase || (isManifestBased && supportsBase)) {
         fetchTarget = `${el.localesPath}/${el.namespace}.${langPieces[0]}.json`;
-      } else if (isManifestBased && !this.manifestLoaded) {
+      } else if (
+        isManifestBased &&
+        !this.manifestLoaded &&
+        this.needsManifest(lang)
+      ) {
         // For manifest-based elements, try exact match first when manifest not loaded yet
         fetchTarget = `${el.localesPath}/${el.namespace}.${lang}.json`;
       }
@@ -367,12 +384,8 @@ class I18NManager extends LitElement {
 
       // see if we had this previous to avoid another request
       if (!this.fetchTargets[fetchTarget]) {
-        this.fetchTargets[fetchTarget] = await fetch(fetchTarget).then(
-          (response) => {
-            if (response && response.json) return response.json();
-            return false;
-          },
-        );
+        this.fetchTargets[fetchTarget] =
+          await this._fetchJsonTarget(fetchTarget);
       }
       return this.fetchTargets[fetchTarget];
     }
@@ -485,7 +498,11 @@ class I18NManager extends LitElement {
           (isManifestBased && supportsBase)
         ) {
           fetchTarget = `${el.localesPath}/${el.namespace}.${langPieces[0]}.json`;
-        } else if (isManifestBased && !this.manifestLoaded) {
+        } else if (
+          isManifestBased &&
+          !this.manifestLoaded &&
+          this.needsManifest(lang)
+        ) {
           // For manifest-based elements, try exact match first when manifest not loaded yet
           fetchTarget = `${el.localesPath}/${el.namespace}.${lang}.json`;
         }
@@ -497,8 +514,10 @@ class I18NManager extends LitElement {
         if (this.fetchTargets[fetchTarget]) {
           if (el.context) {
             let data = this.fetchTargets[fetchTarget];
-            for (var id in data) {
-              el.context.t[id] = data[id];
+            if (data) {
+              for (var id in data) {
+                el.context.t[id] = data[id];
+              }
             }
             el.context.t = { ...el.context.t };
             // support a forced update / function to run when it finishes
@@ -509,17 +528,15 @@ class I18NManager extends LitElement {
         } else {
           // request the json backing, then make JSON and set the associated values
           // @todo catch this if fetch target was previously requested
-          this.fetchTargets[fetchTarget] = await fetch(fetchTarget).then(
-            (response) => {
-              if (response && response.json) return response.json();
-              return false;
-            },
-          );
+          this.fetchTargets[fetchTarget] =
+            await this._fetchJsonTarget(fetchTarget);
           if (el.context) {
             let data = this.fetchTargets[fetchTarget];
             // set values
-            for (var id in data) {
-              el.context.t[id] = data[id];
+            if (data) {
+              for (var id in data) {
+                el.context.t[id] = data[id];
+              }
             }
             // spread can generate notify statements in downstream elements
             // this probably makes updateCallback irrelevant in reactive
