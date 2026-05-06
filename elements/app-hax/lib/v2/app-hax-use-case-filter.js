@@ -1294,7 +1294,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                               id="from-existing-heading"
                               class="template-group-heading"
                             >
-                              From Existing Site
+                              From Existing Source
                             </h3>
                             ${importEntries.length > 0
                               ? html`<div
