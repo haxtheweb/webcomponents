@@ -2726,6 +2726,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Convert an element from one tag to another.
    */
   haxChangeTagName(node, tagName, maintainContent = true) {
+    if (!node || !node.tagName) {
+      return false;
+    }
     // If the command is indent or outdent, check the list type of the active node
     let command;
     if(tagName == "indent" || tagName == "outdent"){
@@ -2777,15 +2780,43 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       replacement.setAttribute("slot", originalSlot);
     }
 
-    const rng = HAXStore.getRange();
-    const currentNode = rng.commonAncestorContainer.parentNode;
+    let rng = null;
+    let currentNode = null;
+    if (command === "indent" || command === "outdent") {
+      rng = HAXStore.getRange();
+      if (
+        rng &&
+        rng.commonAncestorContainer &&
+        rng.commonAncestorContainer.parentNode
+      ) {
+        currentNode = rng.commonAncestorContainer.parentNode;
+      } else if (rng && rng.anchorNode && rng.anchorNode.nodeType === 1) {
+        currentNode = rng.anchorNode;
+      } else if (rng && rng.anchorNode && rng.anchorNode.parentNode) {
+        currentNode = rng.anchorNode.parentNode;
+      } else if (
+        node.parentNode &&
+        node.parentNode.tagName &&
+        node.parentNode.tagName === "LI"
+      ) {
+        currentNode = node.parentNode;
+      } else {
+        currentNode = node;
+      }
+    }
     switch(command){
       case "indent":
+        if (!currentNode || !currentNode.parentNode) {
+          return node;
+        }
         wrap(currentNode, replacement)
         return replacement;
       case "outdent":
+        if (!currentNode || !currentNode.parentNode) {
+          return node;
+        }
         // validate tag name exists in case of broken DOM
-        let bodyNode = rng.commonAncestorContainer.parentNode
+        let bodyNode = currentNode
         while(bodyNode && typeof bodyNode.tagName !== "undefined" 
           && bodyNode.tagName !== "HAX-BODY"){
           if(bodyNode.parentNode && typeof bodyNode.parentNode.tagName !== "undefined" 

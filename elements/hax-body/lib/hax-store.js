@@ -5132,59 +5132,64 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
     return nodeLookup;
   }
   async attemptGizmoTranslation(tag, properties) {
-    // support locales if available and not default lang
-    var translationMap = await I18NManagerStore.loadNamespaceFile(
-      tag + ".haxProperties",
-    );
-    // if we have a map, rewrite the matching properties within the objects
-    if (
-      !translationMap &&
-      globalThis.customElements.get(tag) &&
-      globalThis.customElements.get(tag).haxProperties
-    ) {
-      translationMap = globalThis.customElements.get(tag).haxProperties;
-      // support
-      if (typeof translationMap === "string") {
-        translationMap = await fetch(translationMap).then((response) => {
-          if (response && response.json) return response.json();
-          return false;
-        });
-      }
-    }
-    if (translationMap) {
-      // gizmo shows user text
-      if (properties.gizmo && translationMap.gizmo) {
-        for (let i in translationMap.gizmo) {
-          properties.gizmo[i] = translationMap.gizmo[i];
+    try {
+      // support locales if available and not default lang
+      var translationMap = await I18NManagerStore.loadNamespaceFile(
+        tag + ".haxProperties",
+      );
+      // if we have a map, rewrite the matching properties within the objects
+      if (
+        !translationMap &&
+        globalThis.customElements.get(tag) &&
+        globalThis.customElements.get(tag).haxProperties
+      ) {
+        translationMap = globalThis.customElements.get(tag).haxProperties;
+        // support
+        if (typeof translationMap === "string") {
+          translationMap = await fetch(translationMap).then((response) => {
+            if (response && response.json) return response.json();
+            return false;
+          });
         }
       }
-      // settings pages
-      if (properties.settings && translationMap.settings) {
-        let sTabs = {
-          advanced: "advanced",
-          configure: "configure",
-        };
-        for (let h in sTabs) {
-          if (properties.settings[h] && translationMap.settings[h]) {
-            for (let i in translationMap.settings[h]) {
-              for (let j in translationMap.settings[h][i]) {
-                properties.settings[h][i][j] = translationMap.settings[h][i][j];
+      if (translationMap) {
+        // gizmo shows user text
+        if (properties.gizmo && translationMap.gizmo) {
+          for (let i in translationMap.gizmo) {
+            properties.gizmo[i] = translationMap.gizmo[i];
+          }
+        }
+        // settings pages
+        if (properties.settings && translationMap.settings) {
+          let sTabs = {
+            advanced: "advanced",
+            configure: "configure",
+          };
+          for (let h in sTabs) {
+            if (properties.settings[h] && translationMap.settings[h]) {
+              for (let i in translationMap.settings[h]) {
+                for (let j in translationMap.settings[h][i]) {
+                  properties.settings[h][i][j] =
+                    translationMap.settings[h][i][j];
+                }
+              }
+            }
+          }
+        }
+        // demo schema can be rewritten too
+        if (properties.demoSchema && translationMap.demoSchema) {
+          for (let i in translationMap.demoSchema) {
+            if (translationMap.demoSchema[i].properties) {
+              for (let j in translationMap.demoSchema[i].properties) {
+                properties.demoSchema[i].properties[j] =
+                  translationMap.demoSchema[i].properties[j];
               }
             }
           }
         }
       }
-      // demo schema can be rewritten too
-      if (properties.demoSchema && translationMap.demoSchema) {
-        for (let i in translationMap.demoSchema) {
-          if (translationMap.demoSchema[i].properties) {
-            for (let j in translationMap.demoSchema[i].properties) {
-              properties.demoSchema[i].properties[j] =
-                translationMap.demoSchema[i].properties[j];
-            }
-          }
-        }
-      }
+    } catch (e) {
+      console.warn(`Error loading translation map for ${tag}`, e);
     }
     return properties;
   }
