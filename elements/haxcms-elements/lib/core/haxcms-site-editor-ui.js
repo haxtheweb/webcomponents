@@ -4495,7 +4495,7 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               "Show getting started tasks", // display name
             ],
             merlinButton, // target for mini mode
-            "magic", // sound
+            "coin2", // sound
           );
 
         } else {
