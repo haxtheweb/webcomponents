@@ -1148,7 +1148,19 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             break;
           case "html":
           case "htm":
-            // take content directly
+            if (["insert-html", "create-sibling", "create-child"].includes(mode)) {
+              dataToPost.append("upload", values.data);
+              endpointCall = "@haxcms/htmlToSite";
+              dataToPost.append("method", "page");
+            } else if (mode === "create-branch") {
+              dataToPost.append("upload", values.data);
+              endpointCall = "@haxcms/htmlToSite";
+              dataToPost.append("method", "branch");
+              dataToPost.append("type", "branch");
+              // set parent to same as current page's parent
+              const itemHtml = toJS(store.activeItem);
+              dataToPost.append("parentId", itemHtml.parent);
+            }
             break;
         }
         // put in editMode if we have to
@@ -1162,10 +1174,28 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
               dataToPost,
             );
             if (response.status == 200) {
-              // fake file event from built in method for same ux
-              this.insertElementsFromContentBlob(
-                response.data.contents || response.data,
-              );
+              let insertHtml = null;
+              if (
+                response.data &&
+                response.data.contents &&
+                typeof response.data.contents === "string"
+              ) {
+                insertHtml = response.data.contents;
+              } else if (
+                response.data &&
+                response.data.items &&
+                response.data.items.length > 0 &&
+                response.data.items[0].contents &&
+                typeof response.data.items[0].contents === "string"
+              ) {
+                insertHtml = response.data.items[0].contents;
+              } else if (typeof response.data === "string") {
+                insertHtml = response.data;
+              }
+              if (insertHtml) {
+                // fake file event from built in method for same ux
+                this.insertElementsFromContentBlob(insertHtml);
+              }
             }
           } else {
             response = await MicroFrontendRegistry.call(
@@ -1174,10 +1204,28 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
             );
             if (response.status == 200) {
               if (["create-sibling", "create-child"].includes(mode)) {
+                let convertedHtml = null;
+                if (
+                  response.data &&
+                  response.data.contents &&
+                  typeof response.data.contents === "string"
+                ) {
+                  convertedHtml = response.data.contents;
+                } else if (
+                  response.data &&
+                  response.data.items &&
+                  response.data.items.length > 0 &&
+                  response.data.items[0].contents &&
+                  typeof response.data.items[0].contents === "string"
+                ) {
+                  convertedHtml = response.data.items[0].contents;
+                } else if (typeof response.data === "string") {
+                  convertedHtml = response.data;
+                }
                 this.createNewNode(
                   mode.replace("create-", ""),
                   values.data.name,
-                  response.data.contents || response.data,
+                  convertedHtml || "<p></p>",
                   values && values.contextItemId ? values.contextItemId : null,
                 );
               } else {
@@ -2088,9 +2136,11 @@ class HAXCMSSiteEditorUI extends HAXCMSThemeParts(
                     eventName: "super-daemon-element-method",
                     path: "Page created under current",
                   });
-                  // @todo only docx and pdf currently support this though there's really no reason it can't
-                  // happen in other HTML structured data
-                  if (["docx", "doc", "pdf", "pptx"].includes(values.type)) {
+                  if (
+                    ["docx", "doc", "pdf", "pptx", "html", "htm"].includes(
+                      values.type,
+                    )
+                  ) {
                     results.push({
                       title: `Create outline from ${values.type}`,
                       icon: "hax:site-map",

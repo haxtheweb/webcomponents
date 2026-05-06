@@ -321,12 +321,12 @@ export function enableHAXcmsServices() {
   });
   // htmlToSite
   MicroFrontendRegistry.add({
-    endpoint: "/api/apps/haxcms/convert/htmlToSite",
+    endpoint: "/api/apps/haxcms/htmlToSite",
     name: "@haxcms/htmlToSite",
     title: "HTML to Site",
-    description: "Convert HTML file location to Site schema",
+    description: "Convert uploaded HTML, repoUrl HTML, or raw HTML to Site schema",
     params: {
-      repoUrl: "Location of the repo",
+      body: "FormData upload or object payload with repoUrl/html plus method and parentId",
     },
   });
   // gitbookToSite

@@ -156,6 +156,10 @@ export class AppHaxButton extends LitElement {
             this.icon = "icons:code";
             this.value = "HTML";
             break;
+          case "html file":
+            this.icon = "icons:code";
+            this.value = "html";
+            break;
           case "Blog":
             this.icon = "social:public";
             this.value = "Blog";
