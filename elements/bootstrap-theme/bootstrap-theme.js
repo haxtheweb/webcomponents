@@ -494,13 +494,14 @@ class BootstrapTheme extends HAXCMSThemeParts(
       "@haxtheweb/haxcms-elements/lib/ui-components/site/site-print-button.js"
     );
     this.__disposer = this.__disposer || [];
-    autorun((reaction) => {
-      this.activeManifestIndex = toJS(store.activeManifestIndex);
-      this.__siteTitle = toJS(store.manifest.title);
-      this.__siteImage = toJS(store.manifest.metadata.author.image);
-      this.__pageTitle = toJS(store.activeTitle);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeManifestIndex = toJS(store.activeManifestIndex);
+        this.__siteTitle = toJS(store.manifest.title);
+        this.__siteImage = toJS(store.manifest.metadata.author.image);
+        this.__pageTitle = toJS(store.activeTitle);
+      }),
+    );
   }
 
   render() {

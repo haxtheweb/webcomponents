@@ -78,18 +78,11 @@ class HAX extends HTMLElement {
     this.windowControllersLoaded = new AbortController();
     this.windowControllersReady = new AbortController();
     this.__rendered = false;
+    this.__canAdoptConstructedStylesheets = null;
     // set tag for later use
     this.tag = HAX.tag;
     this.template = globalThis.document.createElement("template");
     this.attachShadow({ mode: "open" });
-    // see if we have any adoptable stylesheets
-    if (globalThis.document.adoptedStyleSheets) {
-      globalThis.document.adoptedStyleSheets.map((sheet) => {
-        if (sheet.hax) {
-          this.shadowRoot.adoptedStyleSheets.push(sheet);
-        }
-      });
-    }
     // if we shouldn't delay rendering
     if (!delayRender) {
       this.render();
@@ -118,6 +111,122 @@ class HAX extends HTMLElement {
       signal: this.windowControllers.signal,
     });
   }
+  __getHAXAdoptedSheets() {
+    if (
+      !globalThis.document ||
+      !globalThis.document.adoptedStyleSheets ||
+      !globalThis.document.adoptedStyleSheets.length
+    ) {
+      return [];
+    }
+    return Array.from(globalThis.document.adoptedStyleSheets).filter(
+      (sheet) => sheet && sheet.hax,
+    );
+  }
+  __supportsShadowSheetAdoption() {
+    if (typeof this.__canAdoptConstructedStylesheets === "boolean") {
+      return this.__canAdoptConstructedStylesheets;
+    }
+    if (
+      !this.shadowRoot ||
+      !globalThis.Document ||
+      !globalThis.ShadowRoot ||
+      !globalThis.CSSStyleSheet
+    ) {
+      this.__canAdoptConstructedStylesheets = false;
+      return this.__canAdoptConstructedStylesheets;
+    }
+    if (
+      !(globalThis.Document.prototype instanceof Object) ||
+      !(globalThis.ShadowRoot.prototype instanceof Object) ||
+      !(globalThis.CSSStyleSheet.prototype instanceof Object) ||
+      !(
+        "adoptedStyleSheets" in globalThis.Document.prototype &&
+        "adoptedStyleSheets" in globalThis.ShadowRoot.prototype &&
+        "replaceSync" in globalThis.CSSStyleSheet.prototype
+      )
+    ) {
+      this.__canAdoptConstructedStylesheets = false;
+      return this.__canAdoptConstructedStylesheets;
+    }
+    try {
+      const existingSheets = Array.from(this.shadowRoot.adoptedStyleSheets || []);
+      const testSheet = new globalThis.CSSStyleSheet();
+      testSheet.replaceSync(":host{}");
+      this.shadowRoot.adoptedStyleSheets = [...existingSheets, testSheet];
+      this.shadowRoot.adoptedStyleSheets = existingSheets;
+      this.__canAdoptConstructedStylesheets = true;
+    } catch (e) {
+      this.__canAdoptConstructedStylesheets = false;
+    }
+    return this.__canAdoptConstructedStylesheets;
+  }
+  __sheetToCSSText(sheet) {
+    if (!sheet) {
+      return "";
+    }
+    try {
+      if (!sheet.cssRules) {
+        return "";
+      }
+      return Array.from(sheet.cssRules)
+        .map((rule) => rule.cssText)
+        .join("\n");
+    } catch (e) {
+      return "";
+    }
+  }
+  __applyHAXAdoptedStylesToShadowRoot() {
+    if (!this.shadowRoot) {
+      return;
+    }
+    const haxSheets = this.__getHAXAdoptedSheets();
+    let fallbackStyle = this.shadowRoot.querySelector(
+      "style[data-hax-sheet-fallback]",
+    );
+    if (haxSheets.length === 0) {
+      if (fallbackStyle) {
+        fallbackStyle.remove();
+      }
+      return;
+    }
+    let adopted = false;
+    if (this.__supportsShadowSheetAdoption()) {
+      try {
+        const existingSheets = Array.from(this.shadowRoot.adoptedStyleSheets || []);
+        const newSheets = haxSheets.filter(
+          (sheet) => !existingSheets.includes(sheet),
+        );
+        if (newSheets.length > 0) {
+          this.shadowRoot.adoptedStyleSheets = [...existingSheets, ...newSheets];
+        }
+        adopted = haxSheets.every((sheet) =>
+          this.shadowRoot.adoptedStyleSheets.includes(sheet),
+        );
+      } catch (e) {
+        adopted = false;
+      }
+    }
+    if (adopted) {
+      if (fallbackStyle) {
+        fallbackStyle.remove();
+      }
+      return;
+    }
+    const fallbackCSSText = haxSheets
+      .map((sheet) => this.__sheetToCSSText(sheet))
+      .filter((text) => text)
+      .join("\n");
+    if (!fallbackCSSText) {
+      return;
+    }
+    if (!fallbackStyle) {
+      fallbackStyle = globalThis.document.createElement("style");
+      fallbackStyle.setAttribute("data-hax-sheet-fallback", "data-hax-sheet-fallback");
+    }
+    fallbackStyle.textContent = fallbackCSSText;
+    this.shadowRoot.appendChild(fallbackStyle);
+  }
   cancelEvent(e) {
     this.importSlotToHaxBody();
   }
@@ -143,6 +252,7 @@ class HAX extends HTMLElement {
     if (super.connectedCallback) {
       super.connectedCallback();
     }
+    this.__applyHAXAdoptedStylesToShadowRoot();
     // this ensures it's only applied once
     if (!this.__HAXApplied && !globalThis.__HAXApplied) {
       globalThis.__HAXApplied = this.__HAXApplied = this.applyHAX();
@@ -176,6 +286,7 @@ class HAX extends HTMLElement {
         HAXStore.haxTray.hideToolbar = this.hideToolbar;
         HAXStore.haxTray.offsetMargin = this.offsetMargin;
         HAXStore.elementAlign = this.elementAlign;
+        this.__applyHAXAdoptedStylesToShadowRoot();
       }, 0);
       this.windowControllersReady.abort();
     }
@@ -212,6 +323,7 @@ class HAX extends HTMLElement {
     this.shadowRoot.innerHTML = null;
     this.template.innerHTML = this.html;
     this.shadowRoot.appendChild(this.template.content.cloneNode(true));
+    this.__applyHAXAdoptedStylesToShadowRoot();
   }
   /**
    * Apply tags to the screen to establish HAX

@@ -37,27 +37,46 @@ class HAXCMSSiteEditor extends LitElement {
     this.method = "POST";
     this.editMode = false;
     globalThis.SimpleModal.requestAvailability();
-    autorun((reaction) => {
-      this.editMode = toJS(store.editMode);
-      // force import on editMode enabled
-      if (this.editMode && toJS(HAXStore.activeHaxBody)) {
-        HAXStore.activeHaxBody.importContent(toJS(store.activeItemContent));
-      }
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.manifest = toJS(store.manifest);
-      this.__disposer.push(reaction);
-    });
+    this.__setupDisposers();
+  }
+  __setupDisposers() {
+    if (this.__disposer && this.__disposer.length > 0) {
+      return;
+    }
+    this.__disposer = [];
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.editMode = toJS(store.editMode);
+        // force import on editMode enabled
+        if (this.editMode && toJS(HAXStore.activeHaxBody)) {
+          HAXStore.activeHaxBody.importContent(toJS(store.activeItemContent));
+        }
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.manifest = toJS(store.manifest);
+      }),
+    );
     // Sync activeItem directly from store via MobX for proper state management
-    autorun((reaction) => {
-      this.activeItem = toJS(store.activeItem);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      HAXStore.platformConfig = toJS(store.platformConfig);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeItem = toJS(store.activeItem);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        HAXStore.platformConfig = toJS(store.platformConfig);
+      }),
+    );
+  }
+  __disposeDisposers() {
+    if (this.__disposer && this.__disposer.length > 0) {
+      for (var i in this.__disposer) {
+        this.__disposer[i].dispose();
+      }
+    }
+    this.__disposer = [];
   }
   // render function
   render() {
@@ -642,6 +661,9 @@ class HAXCMSSiteEditor extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    if (!this.__disposer || this.__disposer.length === 0) {
+      this.__setupDisposers();
+    }
     if (this.windowControllers) {
       this.windowControllers.abort();
     }
@@ -759,6 +781,24 @@ class HAXCMSSiteEditor extends LitElement {
         signal: this.windowControllers.signal,
       },
     );
+  }
+  disconnectedCallback() {
+    if (this.windowControllers) {
+      this.windowControllers.abort();
+    }
+    if (
+      this._contentReadyHandler &&
+      HAXStore.activeHaxBody &&
+      HAXStore.activeHaxBody.removeEventListener
+    ) {
+      HAXStore.activeHaxBody.removeEventListener(
+        "hax-body-content-ready",
+        this._contentReadyHandler,
+      );
+      this._contentReadyHandler = null;
+    }
+    this.__disposeDisposers();
+    super.disconnectedCallback();
   }
 
   /**

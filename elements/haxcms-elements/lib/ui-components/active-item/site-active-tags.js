@@ -110,14 +110,12 @@ class SiteActiveTags extends I18NMixin(LitElement) {
       context: this,
       basePath: import.meta.url,
     });
-    autorun((reaction) => {
+    this.__disposer.push(autorun((reaction) => {
       this.tags = toJS(store.activeTags);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
+    }));
+    this.__disposer.push(autorun((reaction) => {
       this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
-    });
+    }));
   }
   /**
    * LitElement life cycle - property changed

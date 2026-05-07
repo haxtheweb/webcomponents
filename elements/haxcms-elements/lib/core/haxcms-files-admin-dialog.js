@@ -247,11 +247,12 @@ class HAXCMSFilesAdminDialog extends DDD {
 
   connectedCallback() {
     super.connectedCallback();
-    const reaction = autorun(() => {
-      const manifest = toJS(store.manifest);
-      this.rows = this._buildRows(manifest);
-    });
-    this.__disposer.push(reaction);
+    this.__disposer.push(
+      autorun(() => {
+        const manifest = toJS(store.manifest);
+        this.rows = this._buildRows(manifest);
+      }),
+    );
   }
 
   disconnectedCallback() {

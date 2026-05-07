@@ -4,6 +4,7 @@
  */
 import { LitElement, html, css } from "lit";
 import { RichTextEditorButtonBehaviors } from "./rich-text-editor-button.js";
+import { isWebKit } from "@haxtheweb/utils/lib/browser.js";
 import "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-prompt.js";
 
 /**
@@ -245,6 +246,46 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       let command = this.promptCommand,
         commandVal = this.promptCommandVal;
       this.setInnerHTML(this.getPropValue("innerHTML"));
+      // WebKit: execCommand fails in shadow DOM because the native
+      // selection can't be restored. Use direct DOM manipulation
+      // inside the highlight for link creation/removal and underline.
+      if (isWebKit() && !this.__highlight.hidden) {
+        if (command === "createLink" && commandVal) {
+          var a = globalThis.document.createElement("a");
+          a.href = commandVal;
+          while (this.__highlight.firstChild) {
+            a.appendChild(this.__highlight.firstChild);
+          }
+          this.__highlight.appendChild(a);
+          return;
+        } else if (command === "unlink") {
+          var link = this.__highlight.querySelector("a");
+          if (link) {
+            while (link.firstChild) {
+              link.parentNode.insertBefore(link.firstChild, link);
+            }
+            link.remove();
+          }
+          return;
+        } else if (command === "underline") {
+          var existing = this.__highlight.querySelector("u");
+          if (existing) {
+            // Already underlined — unwrap <u>
+            while (existing.firstChild) {
+              existing.parentNode.insertBefore(existing.firstChild, existing);
+            }
+            existing.remove();
+          } else {
+            // Wrap content in <u>
+            var u = globalThis.document.createElement("u");
+            while (this.__highlight.firstChild) {
+              u.appendChild(this.__highlight.firstChild);
+            }
+            this.__highlight.appendChild(u);
+          }
+          return;
+        }
+      }
       if (this.targetedNode === this.__highlight) {
         this.selectNodeContents(this.targetedNode);
       } else {
@@ -259,6 +300,11 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
      */
     _handleClick(e) {
       e.preventDefault();
+      // WebKit shadow DOM: restore the composed range saved on mouseup
+      // since this.range may be collapsed from the document-level selection
+      if (this.__toolbar && this.__toolbar.__webkitSavedRange) {
+        this.range = this.__toolbar.__webkitSavedRange;
+      }
       this.open();
     }
 

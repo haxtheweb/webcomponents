@@ -58,10 +58,11 @@ class HAXCMSBackendBeaker extends LitElement {
     this.windowControllers = new AbortController();
     this.__disposer = [];
     // see up a tag to place RIGHT next to the site-builder itself
-    autorun((reaction) => {
-      this.jwt = toJS(store.jwt);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.jwt = toJS(store.jwt);
+      }),
+    );
     globalThis.addEventListener("jwt-token", this._jwtTokenFired.bind(this), {
       signal: this.windowControllers.signal,
     });

@@ -35,10 +35,11 @@ class HAXCMSSiteRouter extends HTMLElement {
      * Subscribe to changes in the manifest
      */
     this.__disposer = this.__disposer ? this.__disposer : [];
-    autorun((reaction) => {
-      this._updateRouter(store.routerManifest);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this._updateRouter(store.routerManifest);
+      }),
+    );
 
     globalThis.addEventListener(
       "vaadin-router-location-changed",

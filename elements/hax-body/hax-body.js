@@ -599,6 +599,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
     this.editMode = false;
     this.haxMover = false;
     this.activeNode = null;
+    this.__layoutDragEvents = new WeakMap();
+    this.__nodeDragDropHandlers = new WeakMap();
+    this.__linkClickHandlers = new WeakMap();
     this.part = "hax-body";
     this.t = {
       addContent: "Add Content",
@@ -2726,6 +2729,9 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
    * Convert an element from one tag to another.
    */
   haxChangeTagName(node, tagName, maintainContent = true) {
+    if (!node || !node.tagName) {
+      return false;
+    }
     // If the command is indent or outdent, check the list type of the active node
     let command;
     if(tagName == "indent" || tagName == "outdent"){
@@ -2777,15 +2783,43 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       replacement.setAttribute("slot", originalSlot);
     }
 
-    const rng = HAXStore.getRange();
-    const currentNode = rng.commonAncestorContainer.parentNode;
+    let rng = null;
+    let currentNode = null;
+    if (command === "indent" || command === "outdent") {
+      rng = HAXStore.getRange();
+      if (
+        rng &&
+        rng.commonAncestorContainer &&
+        rng.commonAncestorContainer.parentNode
+      ) {
+        currentNode = rng.commonAncestorContainer.parentNode;
+      } else if (rng && rng.anchorNode && rng.anchorNode.nodeType === 1) {
+        currentNode = rng.anchorNode;
+      } else if (rng && rng.anchorNode && rng.anchorNode.parentNode) {
+        currentNode = rng.anchorNode.parentNode;
+      } else if (
+        node.parentNode &&
+        node.parentNode.tagName &&
+        node.parentNode.tagName === "LI"
+      ) {
+        currentNode = node.parentNode;
+      } else {
+        currentNode = node;
+      }
+    }
     switch(command){
       case "indent":
+        if (!currentNode || !currentNode.parentNode) {
+          return node;
+        }
         wrap(currentNode, replacement)
         return replacement;
       case "outdent":
+        if (!currentNode || !currentNode.parentNode) {
+          return node;
+        }
         // validate tag name exists in case of broken DOM
-        let bodyNode = rng.commonAncestorContainer.parentNode
+        let bodyNode = currentNode
         while(bodyNode && typeof bodyNode.tagName !== "undefined" 
           && bodyNode.tagName !== "HAX-BODY"){
           if(bodyNode.parentNode && typeof bodyNode.parentNode.tagName !== "undefined" 
@@ -2852,9 +2886,14 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
 
           // If we're outdenting into a paragraph, the LI tag shouldn't be preserved
           if(grandparentNode.tagName.toLowerCase() !== "ol" && grandparentNode.tagName.toLowerCase() !== "ul"){
-            const strippedLI = globalThis.document.createElement("fake-hax-list-break");
-            strippedLI.innerHTML = currentNode.innerHTML.trim() + "<br/>"
-            currentNode.replaceWith(strippedLI)
+            const strippedLI = globalThis.document.createElement("p");
+            strippedLI.innerHTML = currentNode.innerHTML.trim();
+            this.__removeDirectBreakChildren(strippedLI);
+            if (this.__isEffectivelyEmptyTextBlock(strippedLI)) {
+              strippedLI.textContent = "";
+            }
+            currentNode.replaceWith(strippedLI);
+            return strippedLI;
           };
 
           return grandparentNode;
@@ -3889,6 +3928,29 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
                   this.__unwrapTransientEditorStyleSpan(node);
                   continue;
                 }
+                if (node.tagName === "FAKE-HAX-LIST-BREAK") {
+                  const normalizedParagraph = globalThis.document.createElement("p");
+                  normalizedParagraph.innerHTML = node.innerHTML.trim();
+                  this.__removeDirectBreakChildren(normalizedParagraph);
+                  if (this.__isEffectivelyEmptyTextBlock(normalizedParagraph)) {
+                    normalizedParagraph.textContent = "";
+                  }
+                  node.replaceWith(normalizedParagraph);
+                  node = normalizedParagraph;
+                }
+                if (
+                  node.tagName === "P" &&
+                  node.children &&
+                  node.children.length === 1 &&
+                  node.children[0].tagName === "FAKE-HAX-LIST-BREAK"
+                ) {
+                  const normalizedListBreak = node.children[0];
+                  node.innerHTML = normalizedListBreak.innerHTML.trim();
+                  this.__removeDirectBreakChildren(node);
+                  if (this.__isEffectivelyEmptyTextBlock(node)) {
+                    node.textContent = "";
+                  }
+                }
                 this.__scrubTransientEditorStyleSpans(node);
                 if (this._validElementTest(node)) {
                   // text primitives may be inserted as a whole node with a BR inside
@@ -4206,6 +4268,28 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
             }
           });
         }
+        // when active-node transitions are being ignored, still ensure
+        // newly added nodes receive editable + data-hax-* state so
+        // inline items are immediately selectable once inserted.
+        else if (
+          this.__ignoreActive &&
+          this.ready &&
+          this.editMode &&
+          !this._contentState.isContentBusy()
+        ) {
+          mutations.forEach((mutation) => {
+            if (mutation.addedNodes.length > 0) {
+              mutation.addedNodes.forEach((node) => {
+                if (this._validElementTest(node, true)) {
+                  this.__applyNodeEditableStateWhenReady(node, this.editMode);
+                  if (HAXStore.isGridPlateElement(node)) {
+                    this.__rehydrateLayoutDescendants(node, this.editMode);
+                  }
+                }
+              });
+            }
+          });
+        }
         // our undo/redo history is being applied. Make sure events
         // are bound but that we don't actively track other changes
         // or it'll poisen our undo stack
@@ -4491,14 +4575,44 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         )
       : [];
   }
+  __getLayoutEvents(layout) {
+    if (!this.__layoutDragEvents.has(layout)) {
+      this.__layoutDragEvents.set(layout, {
+        drop: (e) => this.__layoutDropEvent(e, layout),
+        dragenter: this.__layoutDragEnter.bind(this),
+        dragleave: this.__layoutDragLeave.bind(this),
+        slotchange: this.__layoutMonitor.bind(this),
+      });
+    }
+    return this.__layoutDragEvents.get(layout);
+  }
+  __getNodeDragDropHandlers(node) {
+    if (!this.__nodeDragDropHandlers.has(node)) {
+      this.__nodeDragDropHandlers.set(node, {
+        drop: this.dropEvent.bind(this),
+        dragenter: this.dragEnter.bind(this),
+        dragleave: this.dragLeave.bind(this),
+        dragover: (e) => {
+          this.__dragMoving = true;
+          e.preventDefault();
+        },
+      });
+    }
+    return this.__nodeDragDropHandlers.get(node);
+  }
+  __getLinkClickHandler(link) {
+    if (!this.__linkClickHandlers.has(link)) {
+      this.__linkClickHandlers.set(link, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+      });
+    }
+    return this.__linkClickHandlers.get(link);
+  }
 
   __applyDragDropState(layout, haxRay) {
-    let events = {
-      drop: (e) => this.__layoutDropEvent.bind(this)(e, layout),
-      dragenter: this.__layoutDragEnter.bind(this),
-      dragleave: this.__layoutDragEnter.bind(this),
-      slotchange: this.__layoutMonitor.bind(this),
-    };
+    let events = this.__getLayoutEvents(layout);
     layout.setAttribute("data-hax-layout", true);
     if (HAXStore.isGridPlateElement(layout))
       layout.setAttribute("data-hax-grid", true);
@@ -4550,7 +4664,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
       if (layout.haxLayoutObserver) {
         layout.haxLayoutObserver.disconnect();
       }
-      this.removeEventListener("drop", events.drop);
+      layout.removeEventListener("drop", events.drop);
 
       let containers = [...layout.shadowRoot.querySelectorAll("drag-enabled")],
         slots = [...layout.shadowRoot.querySelectorAll("slot")];
@@ -4562,6 +4676,7 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         slot.removeEventListener("slotchange", events.slotchange),
       );
       layout.removeAttribute("data-hax-ray");
+      this.__layoutDragEvents.delete(layout);
     }
   }
   __isLayout(el) {
@@ -4621,13 +4736,18 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
         this.__applyDragDropState(node, false);
         listenerMethod = "removeEventListener";
       }
-      node[listenerMethod]("drop", this.dropEvent.bind(this));
-      node[listenerMethod]("dragenter", this.dragEnter.bind(this));
-      node[listenerMethod]("dragleave", this.dragLeave.bind(this));
-      node[listenerMethod]("dragover", (e) => {
-        this.__dragMoving = true;
-        e.preventDefault();
-      });
+      let nodeHandlers = status
+        ? this.__getNodeDragDropHandlers(node)
+        : this.__nodeDragDropHandlers.get(node);
+      if (nodeHandlers) {
+        node[listenerMethod]("drop", nodeHandlers.drop);
+        node[listenerMethod]("dragenter", nodeHandlers.dragenter);
+        node[listenerMethod]("dragleave", nodeHandlers.dragleave);
+        node[listenerMethod]("dragover", nodeHandlers.dragover);
+      }
+      if (!status) {
+        this.__nodeDragDropHandlers.delete(node);
+      }
     } else {
       if (status) {
         node.setAttribute("data-hax-ray", "");
@@ -4650,11 +4770,15 @@ class HaxBody extends I18NMixin(UndoManagerBehaviors(SimpleColors)) {
           } else {
             links[j].removeAttribute("contenteditable");
           }
-          links[j][listenerMethod]("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            e.stopImmediatePropagation();
-          });
+          let linkClickHandler = status
+            ? this.__getLinkClickHandler(links[j])
+            : this.__linkClickHandlers.get(links[j]);
+          if (linkClickHandler) {
+            links[j][listenerMethod]("click", linkClickHandler);
+          }
+          if (!status) {
+            this.__linkClickHandlers.delete(links[j]);
+          }
         }
       }
     }

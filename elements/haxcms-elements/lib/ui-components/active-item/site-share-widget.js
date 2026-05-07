@@ -62,12 +62,13 @@ class SiteShareWidget extends LitElement {
     this.icon = "social:share";
     this.activeGitFileLink = "";
     this.__disposer = [];
-    autorun((reaction) => {
-      if (store.activeItem) {
-        this.activeItem = toJS(store.activeItem);
-      }
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        if (store.activeItem) {
+          this.activeItem = toJS(store.activeItem);
+        }
+      }),
+    );
   }
   /**
    * Callback for clicking the button

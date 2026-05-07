@@ -873,70 +873,72 @@ class HAXCMSSiteBuilder extends I18NMixin(LitElement) {
       });
     globalThis.dispatchEvent(new Event("resize"));
     setTimeout(() => {
-      autorun((reaction) => {
-        this.themeData = toJS(store.themeData);
-        if (this.themeData) {
-          // special support for "format" in the URL dictating the possible output format
-          // this is for a11y, mobile, print and other possible output modes
-          const urlParams = new URLSearchParams(globalThis.location.search);
-          const formatParam = urlParams.get("format");
-          const format = formatParam ? formatParam.toLowerCase() : null;
-          if (format != null) {
-            switch (format) {
-              case "print-page":
-                this.themeData.element = "haxcms-print-theme";
-                break;
-              case "json":
-              case "yaml":
-              case "md":
-              case "xml":
-                // dynamically import the JSON theme
-                import("./themes/haxcms-json-theme.js");
-                this.themeData.element = "haxcms-json-theme";
-                break;
+      this.__disposer.push(
+        autorun((reaction) => {
+          this.themeData = toJS(store.themeData);
+          if (this.themeData) {
+            // special support for "format" in the URL dictating the possible output format
+            // this is for a11y, mobile, print and other possible output modes
+            const urlParams = new URLSearchParams(globalThis.location.search);
+            const formatParam = urlParams.get("format");
+            const format = formatParam ? formatParam.toLowerCase() : null;
+            if (format != null) {
+              switch (format) {
+                case "print-page":
+                  this.themeData.element = "haxcms-print-theme";
+                  break;
+                case "json":
+                case "yaml":
+                case "md":
+                case "xml":
+                  // dynamically import the JSON theme
+                  import("./themes/haxcms-json-theme.js");
+                  this.themeData.element = "haxcms-json-theme";
+                  break;
+              }
+            }
+            const disableFeatures = urlParams.get("disable-features");
+            if (disableFeatures != null) {
+              this.disableFeatures = disableFeatures;
             }
           }
-          const disableFeatures = urlParams.get("disable-features");
-          if (disableFeatures != null) {
-            this.disableFeatures = disableFeatures;
+          if (
+            this.themeData &&
+            this.themeData.element !== this.themeName &&
+            this.themeData.element != null
+          ) {
+            this.themeName = this.themeData.element;
           }
-        }
-        if (
-          this.themeData &&
-          this.themeData.element !== this.themeName &&
-          this.themeData.element != null
-        ) {
-          this.themeName = this.themeData.element;
-        }
-        this.__disposer.push(reaction);
-      });
-      autorun((reaction) => {
-        const activeItem = toJS(store.activeItem);
-        if (!activeItem || !activeItem.id) {
-          this.__activeItemId = null;
-        } else if (activeItem.id !== this.__activeItemId) {
-          this.__activeItemId = activeItem.id;
-          if (this.__pageContentOwner !== activeItem.id) {
-            this._clearStaleThemePresentation();
+        }),
+      );
+      this.__disposer.push(
+        autorun((reaction) => {
+          const activeItem = toJS(store.activeItem);
+          if (!activeItem || !activeItem.id) {
+            this.__activeItemId = null;
+          } else if (activeItem.id !== this.__activeItemId) {
+            this.__activeItemId = activeItem.id;
+            if (this.__pageContentOwner !== activeItem.id) {
+              this._clearStaleThemePresentation();
+            }
           }
-        }
-        // often, active item is in the process of being updated on a page save
-        // this generates potential delay in presentation of the node, leading to the
-        // a short time where activeItem is not accurate while manifest is being rebuilt
-        if (
-          activeItem &&
-          activeItem.id &&
-          this.__pageContent &&
-          this.__pageContentOwner === activeItem.id
-        ) {
-          this._activeItemContentChanged(this.__pageContent, activeItem);
-        }
-        if (activeItem && activeItem.location) {
-          this.activeItemLocation = activeItem.location;
-          this.loadPageData();
-        }
-        this.__disposer.push(reaction);
-      });
+          // often, active item is in the process of being updated on a page save
+          // this generates potential delay in presentation of the node, leading to the
+          // a short time where activeItem is not accurate while manifest is being rebuilt
+          if (
+            activeItem &&
+            activeItem.id &&
+            this.__pageContent &&
+            this.__pageContentOwner === activeItem.id
+          ) {
+            this._activeItemContentChanged(this.__pageContent, activeItem);
+          }
+          if (activeItem && activeItem.location) {
+            this.activeItemLocation = activeItem.location;
+            this.loadPageData();
+          }
+        }),
+      );
     }, 0);
   }
   /**

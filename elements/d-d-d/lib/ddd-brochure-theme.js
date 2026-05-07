@@ -30,12 +30,13 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
       childList: true,
     });
     this.__disposer = this.__disposer || [];
-    autorun((reaction) => {
-      if (store && store.location && store.location.pathname) {
-        this.activePathName = toJS(store.location.pathname);
-      }
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        if (store && store.location && store.location.pathname) {
+          this.activePathName = toJS(store.location.pathname);
+        }
+      }),
+    );
   }
   getSections() {
     const sections = this.querySelectorAll("page-section");
@@ -130,9 +131,14 @@ class DDDBrochureTheme extends HAXCMSRememberRoute(
    * life cycle, element is removed from the DOM
    */
   disconnectedCallback() {
+    if (this._observer) {
+      this._observer.disconnect();
+      this._observer = null;
+    }
     for (var i in this.__disposer) {
       this.__disposer[i].dispose();
     }
+    this.__disposer = [];
     // remove overflow
     globalThis.document.body.style.removeProperty("overflow");
     super.disconnectedCallback();

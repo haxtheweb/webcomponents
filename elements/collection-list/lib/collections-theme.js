@@ -375,36 +375,39 @@ class CollectionsTheme extends HAXCMSOperationButtons(
         globalThis.document.head.appendChild(link);
       }
     });
-    autorun((reaction) => {
-      let manifest = toJS(store.manifest);
-      this.color = this._getColor(manifest);
-      this.title = varGet(manifest, "title", "");
-      this.image = varGet(
-        manifest,
-        "metadata.theme.variables.image",
-        "assets/banner.jpg",
-      );
-      this.logo = varGet(manifest, "metadata.site.logo", "assets/banner.jpg");
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      let activeItem = toJS(store.activeItem);
-      if (activeItem && activeItem.metadata && activeItem.metadata.image) {
-        this.image = activeItem.metadata.image;
-      } else {
+    this.__disposer.push(
+      autorun((reaction) => {
         let manifest = toJS(store.manifest);
+        this.color = this._getColor(manifest);
+        this.title = varGet(manifest, "title", "");
         this.image = varGet(
           manifest,
           "metadata.theme.variables.image",
           "assets/banner.jpg",
         );
-      }
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.activeTitle = toJS(store.activeTitle);
-      this.__disposer.push(reaction);
-    });
+        this.logo = varGet(manifest, "metadata.site.logo", "assets/banner.jpg");
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        let activeItem = toJS(store.activeItem);
+        if (activeItem && activeItem.metadata && activeItem.metadata.image) {
+          this.image = activeItem.metadata.image;
+        } else {
+          let manifest = toJS(store.manifest);
+          this.image = varGet(
+            manifest,
+            "metadata.theme.variables.image",
+            "assets/banner.jpg",
+          );
+        }
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeTitle = toJS(store.activeTitle);
+      }),
+    );
   }
   _getColor(manifest) {
     if (

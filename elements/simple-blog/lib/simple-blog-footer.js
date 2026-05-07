@@ -281,7 +281,7 @@ class SimpleBlogFooter extends SimpleColors {
   connectedCallback() {
     super.connectedCallback();
     this.__disposer = [];
-    autorun((reaction) => {
+    this.__disposer.push(autorun((reaction) => {
       this.manifest = toJS(store.routerManifest);
       if (varExists(this.manifest, "title")) {
         globalThis.document.title = this.manifest.title;
@@ -295,16 +295,14 @@ class SimpleBlogFooter extends SimpleColors {
         ary.pop();
         this.accentColor = ary.join("-");
       }
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
+    }
+    ));
+    this.__disposer.push(autorun((reaction) => {
       this.activeManifestIndex = toJS(store.activeManifestIndex);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
+    }));
+    this.__disposer.push(autorun((reaction) => {
       this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
-    });
+    }));
   }
   /**
    * HTMLElement

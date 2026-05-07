@@ -5,6 +5,7 @@
 import { LitElement, html, css } from "lit";
 import { SimpleToolbarButtonBehaviors } from "@haxtheweb/simple-toolbar/lib/simple-toolbar-button.js";
 import { RichTextEditorRangeBehaviors } from "@haxtheweb/rich-text-editor/lib/singletons/rich-text-editor-range-behaviors.js";
+import { isWebKit } from "@haxtheweb/utils/lib/browser.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-lite.js";
 import "@haxtheweb/simple-icon/lib/simple-icons.js";
 import "@haxtheweb/simple-icon/lib/simple-icon-button-lite.js";
@@ -212,6 +213,25 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
     constructor() {
       super();
       this.tagsList = "";
+      // WebKit (Safari + all iOS browsers) clears the contenteditable
+      // selection the moment mousedown fires on a non-editable element.
+      // Capture the range on pointerdown (fires before mousedown)
+      // using the native Selection API — the shadow-selection-polyfill
+      // getRange() can return values WebKit rejects in addRange().
+      if (isWebKit()) {
+        this.addEventListener("pointerdown", (e) => {
+          var sel = globalThis.getSelection();
+          if (sel && sel.rangeCount > 0) {
+            var r = sel.getRangeAt(0);
+            if (r && !r.collapsed) {
+              this.__webkitSavedRange = r.cloneRange();
+            }
+          }
+        });
+        this.addEventListener("mousedown", (e) => {
+          e.preventDefault();
+        }, true);
+      }
     }
 
     /**
@@ -349,6 +369,33 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      */
     _handleClick(e) {
       e.preventDefault();
+      // WebKit: restore focus and selection from the range we captured
+      // on pointerdown, before the toolbar's sendCommand pipeline runs.
+      if (isWebKit()) {
+        var target = this.__toolbar && this.__toolbar.target;
+        var saved = this.__webkitSavedRange
+          || (this.__toolbar && this.__toolbar.__webkitSavedRange);
+        if (target && saved) {
+          target.focus({ preventScroll: true });
+          var sel = globalThis.getSelection();
+          sel.removeAllRanges();
+          try {
+            sel.addRange(saved);
+          } catch (err) {}
+          // addRange may silently fail in shadow DOM; try setBaseAndExtent
+          if (sel.rangeCount === 0) {
+            try {
+              sel.setBaseAndExtent(saved.startContainer, saved.startOffset, saved.endContainer, saved.endOffset);
+            } catch (err) {
+              // last resort: collapse to caret position
+              try {
+                sel.collapse(saved.startContainer, saved.startOffset);
+              } catch (err2) {}
+            }
+          }
+          // Keep saved range for _handleCommand; don't null it yet
+        }
+      }
       this.sendCommand(e);
     }
 

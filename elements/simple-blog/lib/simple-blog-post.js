@@ -215,14 +215,15 @@ class SimpleBlogPost extends SimpleColors {
       globalThis.addEventListener("scroll", this._scrollListener.bind(this), {
         signal: this.windowControllers.signal,
       });
-      autorun((reaction) => {
-        const fields = toJS(store.activeItemFields);
-        this.hasImage = this._computeHasImage(fields);
-        if (this.hasImage) {
-          this.image = fields.images[0].src;
-        }
-        this.__disposer.push(reaction);
-      });
+      this.__disposer.push(
+        autorun((reaction) => {
+          const fields = toJS(store.activeItemFields);
+          this.hasImage = this._computeHasImage(fields);
+          if (this.hasImage) {
+            this.image = fields.images[0].src;
+          }
+        }),
+      );
     }, 0);
   }
   /**

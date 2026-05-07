@@ -5,6 +5,7 @@
 import "./rich-text-editor-highlight.js";
 import "./rich-text-editor-clipboard.js";
 import "./rich-text-editor-source.js";
+import { isWebKit } from "@haxtheweb/utils/lib/browser.js";
 
 export const RichTextEditorRangeBehaviors = function (SuperClass) {
   return class extends SuperClass {
@@ -253,18 +254,22 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
     }
 
     /**
-     * gets closest shadowRoot or document from node
+     * gets document from node, crossing shadow DOM boundaries
      *
      * @param {object} node
      * @returns object
      * @memberof RichTextEditorManager
      */
     getRoot(node) {
-      return !node || node === document
-        ? document
-        : node.parentNode
-          ? this.getRoot(node.parentNode)
-          : node;
+      if (!node || node === document) return document;
+      // Cross shadow DOM boundaries via host so selectionchange
+      // handlers always bind on the document (where the event fires)
+      if (node.nodeType === 11 && node.host) {
+        return this.getRoot(node.host);
+      }
+      return node.parentNode
+        ? this.getRoot(node.parentNode)
+        : node;
     }
     debugRange(range = this.getRange()) {
       let contents =
@@ -617,11 +622,44 @@ export const RichTextEditorRangeBehaviors = function (SuperClass) {
           }
           target.normalize();
         }
-        if (this.__highlight.parentNode === globalThis.document.body)
-          this.__highlight.wrap(range);
-        this.__highlight.unwrap(range);
-        range = range || this.__highlight.range || this.range;
-        this.selectRange(range);
+        // WebKit: the highlight wrap()/unwrap() cycle leaves the Range with
+        // its endContainer pointing to the highlight element which has been
+        // moved to document.body — an invalid cross-tree Range that WebKit
+        // rejects in addRange(). Skip the cycle entirely on WebKit: clean up
+        // any stale highlight, refocus the target, and restore the selection
+        // from the pristine range saved during pointerdown.
+        if (isWebKit() && target) {
+          if (this.__highlight.parentNode !== globalThis.document.body) {
+            this.__highlight.emptyContents();
+          }
+          var webkitRange = toolbar.__webkitSavedRange || range;
+          toolbar.__webkitSavedRange = null;
+          target.focus({ preventScroll: true });
+          if (webkitRange) {
+            var sel = globalThis.getSelection();
+            sel.removeAllRanges();
+            try {
+              sel.addRange(webkitRange);
+            } catch (err) {}
+            // addRange may silently fail in shadow DOM; try setBaseAndExtent
+            if (sel.rangeCount === 0) {
+              try {
+                sel.setBaseAndExtent(webkitRange.startContainer, webkitRange.startOffset, webkitRange.endContainer, webkitRange.endOffset);
+              } catch (err) {
+                // last resort: collapse to caret position
+                try {
+                  sel.collapse(webkitRange.startContainer, webkitRange.startOffset);
+                } catch (err2) {}
+              }
+            }
+          }
+        } else {
+          if (this.__highlight.parentNode === globalThis.document.body)
+            this.__highlight.wrap(range);
+          this.__highlight.unwrap(range);
+          range = range || this.__highlight.range || this.range;
+          this.selectRange(range);
+        }
         if (command != "paste" && command != "wrapRange") {
           globalThis.document.execCommand(command, false, commandVal);
           target.normalize();

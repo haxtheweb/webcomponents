@@ -306,20 +306,21 @@ class HAXCMSEditorSettingsDialogUI extends HAXCMSI18NMixin(DDD) {
 
   connectedCallback() {
     super.connectedCallback()
-    autorun((reaction) => {
-      const platformConfig = toJS(HAXStore.platformConfig)
-      if (
-        platformConfig &&
-        platformConfig.audience &&
-        (platformConfig.audience === 'novice' ||
-          platformConfig.audience === 'expert')
-      ) {
-        this.audience = platformConfig.audience
-      } else {
-        this.audience = 'expert'
-      }
-      this.__disposer.push(reaction)
-    })
+    this.__disposer.push(
+      autorun((reaction) => {
+        const platformConfig = toJS(HAXStore.platformConfig)
+        if (
+          platformConfig &&
+          platformConfig.audience &&
+          (platformConfig.audience === 'novice' ||
+            platformConfig.audience === 'expert')
+        ) {
+          this.audience = platformConfig.audience
+        } else {
+          this.audience = 'expert'
+        }
+      }),
+    )
   }
 
   disconnectedCallback() {

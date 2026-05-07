@@ -1294,7 +1294,7 @@ export class AppHaxUseCaseFilter extends LitElement {
                               id="from-existing-heading"
                               class="template-group-heading"
                             >
-                              From Existing Site
+                              From Existing Source
                             </h3>
                             ${importEntries.length > 0
                               ? html`<div
@@ -1415,6 +1415,19 @@ export class AppHaxUseCaseFilter extends LitElement {
       },
       {
         dataType: "import",
+        importKind: "file",
+        importType: "html",
+        callback: "@haxcms/htmlToSite",
+        fileType: "html",
+        useCaseTitle: "HTML File",
+        useCaseImage: "",
+        useCaseDescription: "Import a .html/.htm outline into a new HAX site",
+        useCaseIcon: [{ icon: "icons:code", tooltip: "HTML file import" }],
+        useCaseTag: ["Import", "HTML"],
+        demoLink: "#",
+      },
+      {
+        dataType: "import",
         importKind: "url",
         importType: "gitbook",
         callback: "@haxcms/gitbookToSite",
@@ -1464,9 +1477,9 @@ export class AppHaxUseCaseFilter extends LitElement {
         callback: "@haxcms/htmlToSite",
         prompt: "URL for the HTML content",
         param: "repoUrl",
-        useCaseTitle: "HTML",
+        useCaseTitle: "HTML URL",
         useCaseImage: "",
-        useCaseDescription: "Import a remote HTML site into HAX",
+        useCaseDescription: "Import remote HTML from a URL into HAX",
         useCaseIcon: [{ icon: "icons:code", tooltip: "HTML import" }],
         useCaseTag: ["Import", "HTML"],
         demoLink: "#",

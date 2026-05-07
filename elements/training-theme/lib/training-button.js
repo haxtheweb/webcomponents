@@ -13,10 +13,11 @@ export class TrainingButton extends HAXCMSThemeParts(LitElement) {
     this.index = null;
     this.active = false;
     this.slug = null;
-    autorun((reaction) => {
-      this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.editMode = toJS(store.editMode);
+      }),
+    );
   }
   // convention I enjoy using to define the tag's name
   static get tag() {

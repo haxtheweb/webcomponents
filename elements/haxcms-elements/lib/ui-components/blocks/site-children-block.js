@@ -81,18 +81,21 @@ class SiteChildrenBlock extends LitElement {
     this.activeId = "";
     this.__items = [];
 
-    autorun((reaction) => {
-      this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.manifest = toJS(store.manifest);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.activeId = toJS(store.activeId);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.editMode = toJS(store.editMode);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.manifest = toJS(store.manifest);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeId = toJS(store.activeId);
+      }),
+    );
   }
 
   static get styles() {

@@ -468,10 +468,11 @@ class OutlinePlayer extends LTIResizingMixin(
       super.firstUpdated(changedProperties);
     }
 
-    autorun((reaction) => {
-      this.activeId = toJS(store.activeId);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeId = toJS(store.activeId);
+      }),
+    );
   }
   /**
    * HTMLElement

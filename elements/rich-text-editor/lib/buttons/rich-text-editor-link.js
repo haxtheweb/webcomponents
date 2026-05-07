@@ -186,7 +186,20 @@ class RichTextEditorLink extends RichTextEditorPromptButtonBehaviors(
           : this.value.target;
     super.updateSelection();
     if (!target) return;
-    range.commonAncestorContainer.children[0].setAttribute("target", target);
+    // Find the link element — check highlight first (WebKit DOM path),
+    // then fall back to range ancestor (execCommand path)
+    var linkEl = this.__highlight
+      ? this.__highlight.querySelector('a')
+      : null;
+    if (!linkEl && range) {
+      var ancestor = range.commonAncestorContainer;
+      linkEl = ancestor && ancestor.nodeType === 1
+        ? (ancestor.querySelector('a') || ancestor.children[0])
+        : ancestor && ancestor.parentElement
+          ? ancestor.parentElement.closest('a') || ancestor.parentElement.querySelector('a')
+          : null;
+    }
+    if (linkEl && linkEl.setAttribute) linkEl.setAttribute("target", target);
   }
 }
 globalThis.customElements.define(RichTextEditorLink.tag, RichTextEditorLink);

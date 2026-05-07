@@ -40,26 +40,27 @@ export class GlossyPortfolioHeader extends DDDSuper(I18NMixin(LitElement)) {
     this.scrollPosition = 0; // Track scroll position
 
     //get top level items (items shown on header -- they have no parent)
-    autorun((reaction) => {
-      let items = toJS(store.getItemChildren(null)); 
-      if (items && items.length > 0) {
-        this.topItems = [...items];
-      }
-      this.__disposer.push(reaction);
-
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        let items = toJS(store.getItemChildren(null));
+        if (items && items.length > 0) {
+          this.topItems = [...items];
+        }
+      }),
+    );
 
     // get home link (lading page slug)
-    autorun((reaction) => {
-      
-      this.homeLink = toJS(store.homeLink);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.homeLink = toJS(store.homeLink);
+      }),
+    );
     //get logo
-    autorun((reaction) => {
-      this.logo = toJS(store.logo);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.logo = toJS(store.logo);
+      }),
+    );
   }
   
 

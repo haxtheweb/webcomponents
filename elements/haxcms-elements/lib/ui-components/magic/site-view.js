@@ -133,13 +133,14 @@ export class SiteView extends SimpleColors {
     this._searchDebounce = null;
     this.__disposer = this.__disposer ? this.__disposer : [];
     enableServices(["haxcms"]);
-    autorun((reaction) => {
-      this.dark = toJS(store.darkMode);
-      setTimeout(() => {
-        this.requestUpdate();
-      }, 0);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.dark = toJS(store.darkMode);
+        setTimeout(() => {
+          this.requestUpdate();
+        }, 0);
+      }),
+    );
   }
 
   /**

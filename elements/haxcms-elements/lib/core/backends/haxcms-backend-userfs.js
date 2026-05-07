@@ -61,14 +61,16 @@ class HAXCMSBackendUserfs extends LitElement {
     this.__disposer = [];
     this.jwt = "hax-cloud-fake";
     // see up a tag to place RIGHT next to the site-builder itself
-    autorun((reaction) => {
-      this.jwt = toJS(store.jwt);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.activeItem = toJS(store.activeItem);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.jwt = toJS(store.jwt);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeItem = toJS(store.activeItem);
+      }),
+    );
     globalThis.addEventListener("jwt-token", this._jwtTokenFired.bind(this), {
       signal: this.windowControllers.signal,
     });

@@ -28,32 +28,34 @@ class SiteMenuContent extends HAXCMSThemeParts(PageContentsMenu) {
     };
     this.hideIfEmpty = true;
     this.__disposer = this.__disposer ? this.__disposer : [];
-    autorun((reaction) => {
-      this.contentContainer = store.themeElement;
-      // target container if we have a fixed UI layout
-      if (
-        this.contentContainer &&
-        this.contentContainer.HAXCMSThemeSettings &&
-        this.contentContainer.HAXCMSThemeSettings.siteMenuContent
-      ) {
-        this.contentContainer.HAXCMSThemeSettings.siteMenuContent.addEventListener(
-          "scroll",
-          this._applyScrollDetect.bind(this),
-        );
-      }
-      setTimeout(() => {
-        this.updateMenu();
-      }, 10);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      // forces a menu rebuild on content change
-      let content = toJS(store.activeItemContent);
-      setTimeout(() => {
-        this.updateMenu();
-      }, 10);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.contentContainer = store.themeElement;
+        // target container if we have a fixed UI layout
+        if (
+          this.contentContainer &&
+          this.contentContainer.HAXCMSThemeSettings &&
+          this.contentContainer.HAXCMSThemeSettings.siteMenuContent
+        ) {
+          this.contentContainer.HAXCMSThemeSettings.siteMenuContent.addEventListener(
+            "scroll",
+            this._applyScrollDetect.bind(this),
+          );
+        }
+        setTimeout(() => {
+          this.updateMenu();
+        }, 10);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        // forces a menu rebuild on content change
+        let content = toJS(store.activeItemContent);
+        setTimeout(() => {
+          this.updateMenu();
+        }, 10);
+      }),
+    );
   }
 
   backToTop() {

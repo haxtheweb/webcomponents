@@ -44,18 +44,20 @@ export class SiteRandomContent extends HAXCMSI18NMixin(DDD) {
     this.__disposer = this.__disposer ? this.__disposer : [];
 
     // React to manifest changes
-    autorun((reaction) => {
-      if (store.manifest && this.page) {
-        this.loadPageElements();
-      }
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        if (store.manifest && this.page) {
+          this.loadPageElements();
+        }
+      }),
+    );
 
     // React to edit mode changes
-    autorun((reaction) => {
-      this.editMode = toJS(store.editMode);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.editMode = toJS(store.editMode);
+      }),
+    );
   }
 
   static get styles() {

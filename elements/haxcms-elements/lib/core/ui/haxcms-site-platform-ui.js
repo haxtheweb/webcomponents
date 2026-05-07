@@ -741,62 +741,65 @@ class HAXCMSSitePlatformUI extends HAXCMSI18NMixin(DDD) {
   connectedCallback() {
     super.connectedCallback()
 
-    autorun((reaction) => {
-      const manifest = toJS(store.manifest)
-      if (manifest && manifest.items) {
-        this.pageCount = manifest.items.length
-      }
-      this.__disposer.push(reaction)
-    })
-
-    autorun((reaction) => {
-      const platformConfig = toJS(HAXStore.platformConfig);
-      this.platformConfig = platformConfig || {};
-
-      // hydrate local state from platformConfig so the UI reflects current site settings
-      if (platformConfig) {
-        if (platformConfig.audience) {
-          this.audience = platformConfig.audience;
+    this.__disposer.push(
+      autorun((reaction) => {
+        const manifest = toJS(store.manifest)
+        if (manifest && manifest.items) {
+          this.pageCount = manifest.items.length
         }
+      }),
+    )
 
-        if (platformConfig.features) {
-          this.features = toJS(platformConfig.features);
+    this.__disposer.push(
+      autorun((reaction) => {
+        const platformConfig = toJS(HAXStore.platformConfig);
+        this.platformConfig = platformConfig || {};
+
+        // hydrate local state from platformConfig so the UI reflects current site settings
+        if (platformConfig) {
+          if (platformConfig.audience) {
+            this.audience = platformConfig.audience;
+          }
+
+          if (platformConfig.features) {
+            this.features = toJS(platformConfig.features);
+          } else {
+            this.features = {};
+          }
+
+          // allowedBlocks may arrive as null, a Set (store), or an Array (serialized)
+          const allowedBlocks = platformConfig.allowedBlocks;
+          if (allowedBlocks === null) {
+            this.allowedBlocks = null;
+          } else if (allowedBlocks instanceof Set) {
+            this.allowedBlocks = new Set(Array.from(allowedBlocks));
+          } else if (Array.isArray(allowedBlocks)) {
+            this.allowedBlocks = new Set(allowedBlocks);
+          } else {
+            this.allowedBlocks = new Set();
+          }
         } else {
+          this.allowedBlocks = new Set();
           this.features = {};
         }
 
-        // allowedBlocks may arrive as null, a Set (store), or an Array (serialized)
-        const allowedBlocks = platformConfig.allowedBlocks;
-        if (allowedBlocks === null) {
-          this.allowedBlocks = null;
-        } else if (allowedBlocks instanceof Set) {
-          this.allowedBlocks = new Set(Array.from(allowedBlocks));
-        } else if (Array.isArray(allowedBlocks)) {
-          this.allowedBlocks = new Set(allowedBlocks);
-        } else {
-          this.allowedBlocks = new Set();
-        }
-      } else {
-        this.features = {};
-        this.allowedBlocks = new Set();
-      }
+        const currentGizmos = toJS(HAXStore.gizmoList);
+        const gizmos = Array.isArray(currentGizmos) ? currentGizmos : [];
+        this.haxBlocks = gizmos.filter(
+          (item) =>
+            !(
+              item.meta &&
+              (item.meta.inlineOnly || item.meta.hidden || item.meta.requiresParent)
+            ),
+        );
+      }),
+    )
 
-      const currentGizmos = toJS(HAXStore.gizmoList);
-      const gizmos = Array.isArray(currentGizmos) ? currentGizmos : [];
-      this.haxBlocks = gizmos.filter(
-        (item) =>
-          !(
-            item.meta &&
-            (item.meta.inlineOnly || item.meta.hidden || item.meta.requiresParent)
-          ),
-      );
-      this.__disposer.push(reaction)
-    })
-
-    autorun((reaction) => {
-      this.isMobile = !!toJS(store.isMobile)
-      this.__disposer.push(reaction)
-    })
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.isMobile = !!toJS(store.isMobile)
+      }),
+    )
 
     // this.__haxRegisterPropertiesHandler = () => {
     //   this._refreshBlocksList()

@@ -758,34 +758,38 @@ class PolarisInventTheme extends LTIResizingMixin(
     this.imageLink = "";
     this.__disposer = this.__disposer ? this.__disposer : [];
 
-    autorun((reaction) => {
-      if (store.themeData && store.themeData.variables) {
-        const vars = toJS(store.themeData.variables);
-        this.imageAlt = vars.imageAlt;
-        this.image = vars.image;
-        this.imageLink = vars.imageLink;
-      }
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.siteDescription = toJS(store.siteDescription);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.activeManifestIndex = toJS(store.activeManifestIndex);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        if (store.themeData && store.themeData.variables) {
+          const vars = toJS(store.themeData.variables);
+          this.imageAlt = vars.imageAlt;
+          this.image = vars.image;
+          this.imageLink = vars.imageLink;
+        }
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.siteDescription = toJS(store.siteDescription);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeManifestIndex = toJS(store.activeManifestIndex);
+      }),
+    );
 
-    autorun((reaction) => {
-      if (
-        store.activeItem &&
-        store.activeItem.metadata &&
-        store.activeItem.metadata.updated
-      ) {
-        this.pageTimestamp = toJS(store.activeItem.metadata.updated);
-      }
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        if (
+          store.activeItem &&
+          store.activeItem.metadata &&
+          store.activeItem.metadata.updated
+        ) {
+          this.pageTimestamp = toJS(store.activeItem.metadata.updated);
+        }
+      }),
+    );
   }
 
   /**

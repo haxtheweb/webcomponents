@@ -151,14 +151,16 @@ class SiteDotIndicator extends LitElement {
   }
   connectedCallback() {
     super.connectedCallback();
-    autorun((reaction) => {
-      this.routerManifest = toJS(store.routerManifest);
-      this.__disposer.push(reaction);
-    });
-    autorun((reaction) => {
-      this.activeId = toJS(store.activeId);
-      this.__disposer.push(reaction);
-    });
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.routerManifest = toJS(store.routerManifest);
+      }),
+    );
+    this.__disposer.push(
+      autorun((reaction) => {
+        this.activeId = toJS(store.activeId);
+      }),
+    );
     if (this.scrollOnActive) {
       this.shadowRoot.querySelector("#list").addEventListener("click", () => {
         this.parentElement.querySelector("#" + this.activeId).scrollIntoView({
