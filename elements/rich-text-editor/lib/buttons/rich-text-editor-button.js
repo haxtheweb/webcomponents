@@ -221,18 +221,14 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
       if (isWebKit()) {
         this.addEventListener("pointerdown", (e) => {
           var sel = globalThis.getSelection();
-          console.log('[WK:btn pointerdown] sel.rangeCount:', sel ? sel.rangeCount : 'no sel', 'type:', sel ? sel.type : 'n/a');
           if (sel && sel.rangeCount > 0) {
             var r = sel.getRangeAt(0);
-            console.log('[WK:btn pointerdown] range collapsed:', r.collapsed, 'text:', r.toString().substring(0, 40));
             if (r && !r.collapsed) {
               this.__webkitSavedRange = r.cloneRange();
-              console.log('[WK:btn pointerdown] SAVED range ok');
             }
           }
         });
         this.addEventListener("mousedown", (e) => {
-          console.log('[WK:btn mousedown] calling preventDefault');
           e.preventDefault();
         }, true);
       }
@@ -373,14 +369,12 @@ const RichTextEditorButtonBehaviors = function (SuperClass) {
      */
     _handleClick(e) {
       e.preventDefault();
-      console.log('[WK:btn click] _handleClick fired, isWebKit:', isWebKit(), 'command:', this.operationCommand);
       // WebKit: restore focus and selection from the range we captured
       // on pointerdown, before the toolbar's sendCommand pipeline runs.
       if (isWebKit()) {
         var target = this.__toolbar && this.__toolbar.target;
         var saved = this.__webkitSavedRange
           || (this.__toolbar && this.__toolbar.__webkitSavedRange);
-        console.log('[WK:btn click] target:', !!target, 'saved range:', !!saved, 'btn saved:', !!this.__webkitSavedRange, 'toolbar saved:', !!(this.__toolbar && this.__toolbar.__webkitSavedRange));
         if (target && saved) {
           target.focus({ preventScroll: true });
           var sel = globalThis.getSelection();

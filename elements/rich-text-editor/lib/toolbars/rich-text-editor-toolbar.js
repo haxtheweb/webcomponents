@@ -646,6 +646,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         label: "Increase Indent",
         shortcutKeys: "ctrl+]",
         type: "rich-text-editor-button",
+        disabled: isWebKit(),
       };
     }
     /**
@@ -660,6 +661,7 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
         label: "Decrease Indent",
         shortcutKeys: "ctrl+[",
         type: "rich-text-editor-button",
+        disabled: isWebKit(),
       };
     }
     /**
@@ -1767,13 +1769,11 @@ const RichTextEditorToolbarBehaviors = function (SuperClass) {
       // selectionchange collapse when the user clicks a toolbar button.
       if (isWebKit()) {
         var sel = globalThis.getSelection();
-        console.log('[WK:_addHighlight] rangeCount:', sel ? sel.rangeCount : 0, 'collapsed:', (sel && sel.rangeCount > 0) ? sel.getRangeAt(0).collapsed : 'n/a');
         if (sel && sel.rangeCount > 0) {
           var r = sel.getRangeAt(0);
           if (r && !r.collapsed) {
             this.__webkitSavedRange = r.cloneRange();
             this.range = r.cloneRange();
-            console.log('[WK:_addHighlight] SAVED range, text:', r.toString().substring(0, 40));
           }
         }
         return;

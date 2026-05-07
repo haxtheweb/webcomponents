@@ -1535,6 +1535,73 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
     return range;
   }
   /**
+   * Re-apply editable / data-hax-ray state for inline insertion contexts.
+   * This is intentionally called from inline insert paths so it does not
+   * depend on MutationObserver timing or ignore-activation state.
+   */
+  _rehydrateInlineEditableState(node = null) {
+    if (!this.editMode || !this.activeHaxBody) {
+      return;
+    }
+    let root = node;
+    if (!root) {
+      let range = this.getRange();
+      if (range && range.commonAncestorContainer) {
+        root = range.commonAncestorContainer;
+      }
+    }
+    if (!root) {
+      root = this.activeNode;
+    }
+    if (!root) {
+      return;
+    }
+    if (
+      root.nodeType !== globalThis.Node.ELEMENT_NODE &&
+      root.parentNode &&
+      root.parentNode.tagName
+    ) {
+      root = root.parentNode;
+    }
+    if (!root || !root.tagName) {
+      return;
+    }
+    if (
+      this.isInlineElement(root) &&
+      root.parentNode &&
+      root.parentNode.tagName &&
+      this.isTextElement(root.parentNode)
+    ) {
+      root = root.parentNode;
+    }
+    if (
+      root !== this.activeHaxBody &&
+      !this.activeHaxBody.contains(root) &&
+      this.activeNode &&
+      this.activeNode.tagName &&
+      this.activeHaxBody.contains(this.activeNode)
+    ) {
+      root = this.activeNode;
+    }
+    if (root !== this.activeHaxBody && !this.activeHaxBody.contains(root)) {
+      return;
+    }
+    let nodes = [root];
+    if (root.querySelectorAll) {
+      nodes = [...nodes, ...root.querySelectorAll("*")];
+    }
+    for (var i = 0; i < nodes.length; i++) {
+      let current = nodes[i];
+      if (
+        current &&
+        current.tagName &&
+        this.activeHaxBody._validElementTest(current, true)
+      ) {
+        this.activeHaxBody.__applyNodeEditableStateWhenReady(current, true);
+      }
+    }
+  }
+  /**
    * Before the browser closes / changes paths, ask if they are sure they want to leave
    */
   _onBeforeUnload(e) {
@@ -1669,6 +1736,16 @@ class HaxStore extends I18NMixin(winEventsElement(HAXElement(LitElement))) {
             this.activeHaxBody.__focusLogic(newNode);
           }
         }
+      }, 0);
+    }
+    if (
+      e.detail.command &&
+      ["wrapRange", "createLink", "unlink", "insertHTML"].includes(
+        e.detail.command,
+      )
+    ) {
+      setTimeout(() => {
+        this._rehydrateInlineEditableState();
       }, 0);
     }
   }
@@ -3227,10 +3304,11 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
       e.detail.value && e.detail.value.target ? e.detail.value.target : null;
     setTimeout(() => {
       // hack for newly created links
-      if (this.activeNode.tagName === "A" && target) {
+      if (this.activeNode && this.activeNode.tagName === "A" && target) {
         this.activeNode.setAttribute("target", target);
         this.refreshActiveNodeForm();
       }
+      this._rehydrateInlineEditableState();
     }, 0);
     if (this.__overflowHiddenOnOpen) {
       globalThis.document.body.style.overflow = this.__overflowHiddenOnOpen;
@@ -4022,6 +4100,7 @@ Window size: ${globalThis.innerWidth}x${globalThis.innerHeight}
         if (this.activePlaceHolder !== null) {
           this.activePlaceHolder.deleteContents();
           this.activePlaceHolder.insertNode(node);
+          this._rehydrateInlineEditableState(node);
         }
         // set it to nothing
         this.activePlaceHolder = null;

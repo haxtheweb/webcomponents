@@ -248,7 +248,7 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
       this.setInnerHTML(this.getPropValue("innerHTML"));
       // WebKit: execCommand fails in shadow DOM because the native
       // selection can't be restored. Use direct DOM manipulation
-      // inside the highlight for link creation/removal.
+      // inside the highlight for link creation/removal and underline.
       if (isWebKit() && !this.__highlight.hidden) {
         if (command === "createLink" && commandVal) {
           var a = globalThis.document.createElement("a");
@@ -265,6 +265,23 @@ const RichTextEditorPromptButtonBehaviors = function (SuperClass) {
               link.parentNode.insertBefore(link.firstChild, link);
             }
             link.remove();
+          }
+          return;
+        } else if (command === "underline") {
+          var existing = this.__highlight.querySelector("u");
+          if (existing) {
+            // Already underlined — unwrap <u>
+            while (existing.firstChild) {
+              existing.parentNode.insertBefore(existing.firstChild, existing);
+            }
+            existing.remove();
+          } else {
+            // Wrap content in <u>
+            var u = globalThis.document.createElement("u");
+            while (this.__highlight.firstChild) {
+              u.appendChild(this.__highlight.firstChild);
+            }
+            this.__highlight.appendChild(u);
           }
           return;
         }
